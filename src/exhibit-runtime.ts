@@ -46,7 +46,10 @@ export function transferFactor(mode: RealismMode) {
 export function detectDeviceTier(compact: boolean): DeviceTier {
   const cores = typeof navigator === 'undefined' ? 4 : navigator.hardwareConcurrency || 4;
   const memory = typeof navigator === 'undefined' ? 4 : (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
-  if (compact || cores <= 4 || memory <= 4) return 'mobile';
+  // Viewport width is a layout concern, not a reliable measure of GPU capability.
+  // Only a genuinely mobile/coarse-pointer device is passed as compact; desktop
+  // browsers can then let the adaptive monitor tune quality from observed FPS.
+  if (compact) return 'mobile';
   if (cores >= 10 && memory >= 8) return 'performance';
   return 'balanced';
 }

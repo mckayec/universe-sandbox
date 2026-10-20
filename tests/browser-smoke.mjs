@@ -33,6 +33,17 @@ try {
   await page.goto(baseURL, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '4');
   assert.equal(await page.locator('#count').textContent(), '4');
+  assert.equal(await page.locator('#habitability-mode').textContent(), 'Life zones: off');
+  assert.equal(await page.locator('#trail-mode').textContent(), 'Trails: off');
+  await page.getByRole('button', { name: /Life zones:/ }).click();
+  assert.equal(await page.locator('#habitability-mode').textContent(), 'Life zones: placement');
+  await page.getByRole('button', { name: /Trails:/ }).click();
+  assert.equal(await page.locator('#trail-mode').textContent(), 'Trails: fading');
+  await page.getByRole('button', { name: /Navigate/ }).click();
+  assert.equal(await page.locator('#viewport').evaluate(element => element.classList.contains('navigating')), true);
+  assert.equal(await page.locator('#navigation-help').isVisible(), true);
+  await page.getByRole('button', { name: /Inspect/ }).click();
+  assert.equal(await page.locator('#navigation-help').isHidden(), true);
 
   await page.getByRole('button', { name: 'Save' }).click();
   await page.getByRole('button', { name: 'Clear all' }).click();
