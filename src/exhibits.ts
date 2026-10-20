@@ -1,4 +1,4 @@
-export type ExhibitId = 'build-star' | 'habitable-world' | 'binary-stars' | 'feed-black-hole' | 'collision-lab' | 'galaxy-tour';
+export type ExhibitId = 'build-star' | 'habitable-world' | 'binary-stars' | 'feed-black-hole' | 'supernova-observatory' | 'collision-lab' | 'galaxy-tour';
 
 export type ExhibitDefinition = {
   id: ExhibitId;
@@ -41,6 +41,14 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     description: 'A build-locked black hole waits at the center of a compact system.',
     objective: 'Add or fling objects toward the event horizon and watch the disk, photon ring, and horizon grow.',
     accent: '#ff9c5f',
+  },
+  {
+    id: 'supernova-observatory',
+    title: 'Witness a Supernova',
+    eyebrow: 'Stellar-death observatory',
+    description: 'A massive hypergiant is seconds away from core collapse.',
+    objective: 'Watch the white flash, asymmetric ejecta, expanding shock front, lingering remnant, and pulsar birth at 1× speed.',
+    accent: '#f4a6ff',
   },
   {
     id: 'collision-lab',

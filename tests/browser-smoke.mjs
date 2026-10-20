@@ -35,6 +35,14 @@ try {
   assert.equal(await page.locator('#count').textContent(), '4');
   assert.equal(await page.locator('#habitability-mode').textContent(), 'Life zones: off');
   assert.equal(await page.locator('#trail-mode').textContent(), 'Trails: off');
+  await page.getByRole('button', { name: 'Universes' }).click();
+  assert.equal(await page.getByRole('heading', { name: 'Choose a universe' }).isVisible(), true);
+  await page.getByRole('button', { name: /Sun Eater/ }).click();
+  assert.match(await page.locator('#pack-source').textContent(), /authorized source files/i);
+  await page.getByRole('button', { name: 'Close universe library' }).click();
+  await page.getByRole('button', { name: 'Exhibits' }).click();
+  assert.equal(await page.getByRole('button', { name: /Witness a Supernova/ }).isVisible(), true);
+  await page.getByRole('button', { name: 'Close guided exhibits' }).click();
   await page.getByRole('button', { name: /Life zones:/ }).click();
   assert.equal(await page.locator('#habitability-mode').textContent(), 'Life zones: placement');
   await page.getByRole('button', { name: /Trails:/ }).click();
