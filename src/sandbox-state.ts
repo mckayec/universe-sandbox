@@ -33,8 +33,11 @@ export type SavedBody = {
 export type SavedCosmicGroup = {
   id: number;
   name: string;
-  kind: 'system' | 'galaxy' | 'binary';
+  kind: 'system' | 'galaxy' | 'binary' | 'triple';
   bodyIds: number[];
+  style?: 'spiral' | 'lenticular' | 'elliptical' | 'irregular' | 'globular';
+  anchorId?: number;
+  haloMass?: number;
 };
 
 export type SandboxSnapshot = {

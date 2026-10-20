@@ -65,6 +65,24 @@ try {
   await page.getByRole('button', { name: /Effects:/ }).click();
   assert.equal(await page.locator('html').evaluate(element => element.classList.contains('gentle-effects')), true);
 
+  await page.getByRole('button', { name: 'Clear all' }).click();
+  await page.getByRole('button', { name: /Our Solar System/ }).click();
+  await page.mouse.click(box.x + box.width * .62, box.y + box.height * .56);
+  await page.waitForFunction(() => document.querySelector('#count')?.textContent === '11');
+  assert.match(await page.locator('#group-select').textContent(), /Solar System/);
+
+  await page.getByRole('button', { name: 'Clear all' }).click();
+  await page.getByRole('button', { name: /Triple stars/ }).click();
+  await page.mouse.click(box.x + box.width * .62, box.y + box.height * .56);
+  await page.waitForFunction(() => document.querySelector('#count')?.textContent === '3');
+  assert.match(await page.locator('#group-select').textContent(), /Triple System/);
+
+  await page.getByRole('button', { name: 'Clear all' }).click();
+  await page.getByRole('button', { name: /Spiral galaxy/ }).click();
+  await page.mouse.click(box.x + box.width * .62, box.y + box.height * .56);
+  await page.waitForFunction(() => Number(document.querySelector('#count')?.textContent) >= 12);
+  assert.match(await page.locator('#group-select').textContent(), /Spiral Galaxy/);
+
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '4');
