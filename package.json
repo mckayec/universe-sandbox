@@ -1,0 +1,22 @@
+{
+  "name": "universe-sandbox",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc && vite build",
+    "test": "node --test tests/*.test.ts",
+    "test:browser": "node tests/browser-smoke.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "playwright": "1.62.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.3"
+  }
+}
