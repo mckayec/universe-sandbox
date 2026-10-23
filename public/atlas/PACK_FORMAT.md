@@ -1,0 +1,566 @@
+STATUS: schema ready
+
+# Atlas pack format (galactic engine, v1)
+
+One shared engine (`engine.js` + `engine.css`) draws every galactic-scale atlas. A series is added by
+writing one **data pack**: a plain JavaScript file in `packs/<id>.js` plus one line in `packs/registry.js`.
+Open `index.html?pack=<id>` to view it. No build step, no other files.
+
+The engine is a generalisation of the Sun Eater Atlas and the Hyperion Atlas. `packs/sun-eater.js`
+and `packs/hyperion.js` are full working examples; `packs/_template.js` is a small starting point.
+
+Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 6 books & spoilers ·
+7 ui strings · 8 intro · 9 groups · 10 worlds · 11 world surfaces (`gfx`, features, sites) ·
+12 events · 13 codex · 14 galaxy (layout, labels, territories, glows, links) · 15 legend ·
+16 hooks · 17 minimum pack · 18 content rules.
+
+---------------------------------------------------------------------------------------------------
+
+## 1. File layout and registration
+
+```js
+/* packs/my-series.js */
+(window.ATLAS_PACKS = window.ATLAS_PACKS || {})["my-series"] = {
+  id: "my-series",
+  meta: { ... }, books: { ... }, worlds: [ ... ], events: [ ... ], ...
+};
+```
+
+* The key in `ATLAS_PACKS` and `id` must match the file name and the registry entry. Use lowercase
+  letters, digits and `-` only.
+* The pack is ordinary JS, so you may compute values (helper functions, `map()` over arrays), but it
+  must not touch the DOM or THREE. Everything must be inline: no fetches, no images, no external URLs.
+* Register it in `packs/registry.js` (order = order in the chooser):
+
+```js
+{id:"my-series", title:"The My Series Atlas", blurb:"One line for the chooser.", accent:"#9db8ff"},
+```
+
+Unknown fields are ignored. Every field marked *optional* may be left out; the engine falls back to
+the default shown. A pack with only `id`, `meta.title`, `books` and `worlds` loads (see section 17).
+
+---------------------------------------------------------------------------------------------------
+
+## 2. Coordinates and units (read this first)
+
+### 2.1 Scene units
+* **1 scene unit = 100 light-years.** The galactic centre is at the origin, the disc lies in the X-Z
+  plane, +Y is "up" out of the disc. The drawn Milky Way is about 1,000 units (100,000 ly) across.
+* **Sol** sits at `galaxy.sol` (section 14). Default `[0, 27.14]` (map kly), i.e. scene `(0, 0.2, 271.4)`.
+
+### 2.2 Map coordinates `map:[x, y, h]` (kly) — the main way to place things
+* `x`, `y` are **thousands of light-years (kly)** on a flat map of the galaxy seen from the north
+  galactic pole: core at `[0,0]`. `h` (optional, kly) is height above the disc plane.
+* Conversion used by the engine: `scene = (x*10, h*10 + 0.2, y*10)`.
+* Convention used by both shipped packs: **Sol / Old Earth lies on the +y axis** (`[0, 26.5]` to
+  `[0, 27.14]`), **+x is "map east"**, and the core is towards −y from Sol. Keep Sol at `x = 0` so
+  that real-sky directions (2.3) point the right way.
+* The spiral arms are drawn from `galaxy.arms` (14.2); place worlds by eye against the arms, or from a
+  published map scaled so that Sol is ~26–27 kly from the core.
+
+### 2.3 Real galactic coordinates `gal:{l, b, ly}` (true distance, linear)
+* `l`, `b` in degrees (galactic longitude/latitude), `ly` = distance from Sol in light-years.
+* Engine: `dir = (cos b·sin l, sin b, −cos b·cos l)`; if `galaxy.mirrorGal` is true, `dir.x = −dir.x`;
+  `position = Sol + dir · ly/100` (scene units). So l = 0 points from Sol to the galactic centre.
+* Equivalent map coordinates (with Sol at `[sx, sy]`, `m = −1` if `mirrorGal` else `+1`):
+  `x = sx + m·ly·cos b·sin l / 1000`, `y = sy − ly·cos b·cos l / 1000`, `h = ly·sin b / 1000`.
+* Use this for real stars when true distances matter at galaxy scale (Deneb, the Pleiades, LMC worlds).
+  Stars a few dozen ly away will sit almost on top of Sol at this scale — use 2.4 for those.
+* `mirrorGal` exists only to reproduce the Sun Eater book map (which is mirrored). **New packs should
+  leave it `false`.** It is applied to every l/b direction (2.3, 2.4, and `lb` points) but never to
+  the drawn Magellanic Clouds and Andromeda, which are always at their true positions.
+
+### 2.4 Compressed local space (log radius) — for real nearby stars and "human space"
+* `star:{ra, dec, ly}` (RA/Dec in **degrees**, J2000) or `dir:{l, b}` plus `ly`: the world is put in the
+  true direction from Sol at a **display radius** `R = 3·ln(1 + ly/6)` scene units, so 6 ly and
+  6,000 ly are both readable around Sol (Hyperion uses this for the whole Web).
+* RA in hours → multiply by 15. Distance used: `star.ly`, else world `ly`, else
+  `galaxy.groupLy[group]`, else `galaxy.defaultLy` (default 300).
+
+### 2.5 Other placements
+* `at:{of:"otherWorldId", spread:1.2}` — near another world: a deterministic random offset of up to
+  `±spread/2` scene units (x, z) and `±spread/4` (y). For moons, twin planets, habitats in one system.
+* `pos3:[x, y, z]` — raw scene units. For places outside normal space (shown far above the disc).
+* No placement at all: if `galaxy.sectors[group]` exists the world gets a seeded random direction in
+  that sector at the compressed radius of its `ly` (2.4); otherwise it sits at Sol.
+
+Priority when several are present: `pos3` > `map` > `gal` > `at` > `star.ra/dec` > `dir` > sector > Sol.
+
+### 2.6 Surface coordinates
+`lat` −90..90 (north +), `lon` −180..180 (east +), degrees, on an equirectangular map. Sites, surface
+features and `rel` offsets all use these.
+
+---------------------------------------------------------------------------------------------------
+
+## 3. Top level
+
+| field | type | req | notes |
+|---|---|---|---|
+| `id` | string | yes | matches file and registry |
+| `meta` | object | yes (`title`) | section 4 |
+| `theme` | object | no | colours, fonts, sigil (5) |
+| `books` | object | yes | `{1:{...},2:{...}}` (6) |
+| `spoilers` | object | no | `{mode:"cumulative"}` default (6) |
+| `ui` | object | no | labels and strings (7) |
+| `intro` | object | no | About panel (8) |
+| `groups` | array | no | index sections, in order (9). Default: one group per distinct `world.group` |
+| `worlds` | array | yes | at least one (10) |
+| `events` | array | no | the Chronicle (12) |
+| `codex` | array | no | codex tabs (13). Empty → Codex button hidden |
+| `galaxy` | object | no | layout, labels, links (14) |
+| `legend` | array/function | no | chronicle-bar legend (15) |
+| `hooks` | object | no | optional functions (16) |
+
+---------------------------------------------------------------------------------------------------
+
+## 4. `meta`
+
+| field | type | default | used for |
+|---|---|---|---|
+| `title` | string | — | `<title>`, header and splash (shown upper-case), mobile sheet title |
+| `series` | string | `title` | heading of the About panel ("The Sun Eater") |
+| `author` | string | "" | About eyebrow: `author · years` |
+| `years` | string | "" | e.g. `"2018–2025"` |
+| `tagline` | HTML | "" | small line under the header title; `<b>` shows in the accent red |
+| `splash` | string | "" | one-sentence teaser on the loading screen |
+| `credits` | HTML | "" | fan-made / attribution note at the right of the Chronicle bar (wide screens) |
+| `srcnote` | string | none | small source note at the bottom of the About panel |
+| `canvasLabel` | string | auto | aria-label of the 3D canvas |
+| `sources` | array of strings | — | not shown; put your citations here and in comments |
+
+---------------------------------------------------------------------------------------------------
+
+## 5. `theme` (all optional; defaults are the Sun Eater gold-on-black theme)
+
+Colours are CSS colour strings. `*Rgb` fields are `"r,g,b"` triples (used inside `rgba()`).
+
+| field | Sun Eater | Hyperion | role |
+|---|---|---|---|
+| `void` | `#060504` | `#04050b` | page background |
+| `deep` | `#120e0a` | `#0a0d1a` | |
+| `panel` | `rgba(16,12,9,.86)` | `rgba(9,12,24,.86)` | |
+| `accent` | `#b8913e` | `#4f78e0` | selection borders |
+| `accentHi` | `#e8cd8a` | `#9db8ff` | eyebrows, highlights |
+| `accentLo` | `#5e4720` | `#2a3f80` | scrollbars, arrows |
+| `chrome` | `#efe6d2` | `#d7dde8` | bright UI text |
+| `ember` | `#c8352c` | `#e0472c` | tagline `<b>` |
+| `amber` | `#e8a948` | `#e8a948` | |
+| `text`/`muted`/`faint` | `#e6dfd2`/`#a89e8a`/`#6e6454` | `#d9deea`/`#8f98b0`/`#5d6680` | text tiers |
+| `line`/`lineStrong` | `rgba(232,205,138,.16)`/`.46` | `rgba(157,184,255,.18)`/`.5` | hairlines |
+| `chromeGrad` | gold gradient | silver gradient | CSS gradient for titles and primary buttons |
+| `chromeStops` | `[[0,"#fff7e2"],[.45,"#e8cd8a"],[.68,"#9a7432"],[1,"#f4e2b2"]]` | silver | SVG gradient `url(#cg)` for the sigil |
+| `fontDisplay` | `"Cinzel","Cormorant Garamond",Georgia,serif` | `"Cormorant SC",…` | big titles |
+| `fontTitle`/`fontBody`/`fontHud` | Cormorant Garamond / Spectral / IBM Plex Mono | same | |
+| `panelRgb`/`panelRgb2` | `22,17,12`/`9,7,5` | `14,18,36`/`6,8,16` | panel gradient |
+| `insetRgb` | `255,236,200` | `200,215,255` | panel top highlight |
+| `btnRgb` | `16,12,9` | `9,12,24` | button backgrounds |
+| `ink` | `#0d0a06` | `#060812` | dark text on chrome |
+| `glowRgb` | `232,170,80` | `110,150,255` | header sigil glow |
+| `hiRgb` | `201,162,74` | `110,150,255` | hover/selected fills |
+| `swRgb`/`pipRgb` | `232,205,138` | `160,190,255`/`130,170,255` | swatch and site-pip glows |
+| `title`/`title2`/`title3` | `#f6efe2` ×3 | `#f2f5fb`/`#f0f3fa`/`#f1f4fb` | headings |
+| `shadeRgb` | `8,6,5` | `5,7,14` | label/hint backgrounds |
+| `tip1`/`tip2` | `#1e1610`/`#0a0806` | `#121831`/`#070912` | tooltip gradient |
+| `voidRgb` | `6,5,4` | `4,5,11` | chronicle fade |
+| `codexRgb` | `4,3,2` | `2,3,8` | codex backdrop |
+| `splashGlow` | `#20150c` | `#0d1330` | loading screen glow |
+| `brandSpacing` | `.12em` | `.16em` | header title letter-spacing |
+| `selRing`/`hoverRing` | `#e8cd8a`/`#ece4d2` | `#9db8ff`/`#d7dde8` | galaxy selection rings |
+| `sigil` | SVG markup | | inner markup of a 48×48 `viewBox` icon; may use `url(#cg)` |
+| `splashSigil` | SVG markup | | splash version (default: `sigil`) |
+| `splashSize` | `78` | `74` | splash sigil size in px |
+
+Bundled fonts (offline, in `atlas/fonts/`): Cinzel, Cormorant Garamond, Cormorant SC, Spectral,
+IBM Plex Mono. Any other family falls back to the next one in the stack.
+
+---------------------------------------------------------------------------------------------------
+
+## 6. `books` and spoiler gating
+
+```js
+books: {
+  1: {n:"I", title:"Empire of Silence", y:2018, c:"#e0b85c"},
+  2: {n:"II", title:"Howling Dark", y:2019, c:"#86a6ea", ink:"#fff"},
+}
+```
+* Keys are the integers 1..N in reading order (1–12 books supported). `n` = short label on the book
+  buttons and badges, `y` = year (button tooltip), `c` = book colour (badges, timeline, routes),
+  `ink` = optional text colour on the badge (default `theme.ink`; use `"#fff"` on dark colours).
+* Chooser "All" = book 0 = everything, with spoilers.
+* Any number of books works. On phones, packs with more than 7 books get the book buttons on their own
+  full-width row so none are hidden.
+
+`spoilers.mode` decides what picking book *k* does:
+
+**`"cumulative"`** (default; Sun Eater) — "I am reading book k": everything first met after book k is
+hidden.
+* World shown iff `world.first <= k` (`first` defaults to the smallest entry of `books`, else 1).
+  Hidden worlds vanish from the galaxy, index, labels and picking; the index notes how many are hidden.
+  Worlds whose `books` does not include k are dimmed.
+* Sites shown iff they have no `books` or `min(site.books) <= k`; sites not in book k are dimmed.
+* Events shown iff `event.book <= k`; in the Chronicle later books are locked, earlier ones faded.
+* World `eras` (10.3) apply for every era key `<= k`; with "All" the latest era applies.
+* Book badges list only books `<= k`.
+* Codex entries shown iff `first <= k` (`first` defaults to `min(books)`, else 1); each `more:[[book,
+  text]]` addition is appended only once its book `<= k`.
+* Links (14.6) and legend entries use their own `book` / `books` gating.
+
+**`"single"`** (Hyperion) — "show me book k": nothing is hidden; things not in book k are dimmed.
+* All worlds shown; those whose `books` lacks k are dimmed. All sites listed; those whose `books`
+  lacks k are faded.
+* Events: only those with `event.book === k` are listed per world; other books' events are dimmed
+  in the Chronicle.
+* Eras apply for keys `<= k`; with "All" the base text applies and the status reads `base → latest`.
+* Codex unfiltered.
+
+Optional fine-tuning: `spoilers.dimLabel` (opacity of off-book labels; 0.4 cumulative, 0.35 single)
+and `spoilers.dimMarker` (0.2 / 0.15).
+
+---------------------------------------------------------------------------------------------------
+
+## 7. `ui` strings (all optional)
+
+| field | default | where |
+|---|---|---|
+| `indexTitle` | `"Worlds of " + series` | eyebrow at the top of the world index |
+| `homeButton` | `"Home"` | header button that flies to `galaxy.home` (SE "Empire") |
+| `homeAction` | `"Fly to " + homeButton` | primary button in the About panel |
+| `homeLink` | `homeButton` | secondary button in a world dossier |
+| `homeCrumb` | `homeButton` | breadcrumb label when no world is selected |
+| `crumbGroups` | `true` | breadcrumb shows the world's group name; `false` → always `homeCrumb` |
+| `go` | first major world | `{id:"delos", label:"Go to Delos"}` About-panel shortcut, or `false` |
+| `bookLabel` | `"Reading"` in cumulative, none in single | small label before the book buttons |
+| `allTitle` | `"All N books, with spoilers"` | tooltip of the "All" button |
+| `booksAria` | `"The book you are reading through"` | |
+| `chronTitle` | `"THE CHRONICLE"` | |
+| `codexTitle` | `"CODEX"` | |
+| `galaxyButton` | `"Galaxy"` | |
+| `hints` | sensible text | `{galaxy, galaxyMob, world, worldMob}` one-line navigation hints |
+| `showCredits` | `true` | show `meta.credits` in the Chronicle bar on wide screens |
+| `wrapBooks` | auto | phones: `true` puts the book buttons on their own full-width row (automatic above 7 books); `false` never |
+| `evCount` | `""` | suffix after an index world's event count (Hyperion `" ev"`) |
+
+---------------------------------------------------------------------------------------------------
+
+## 8. `intro` (About panel, shown when nothing is selected)
+
+```js
+intro: {
+  text: "Two or three sentences in your own words.",
+  legend: [["Galaxy","What the galaxy shows"],["Bright points","Worlds, coloured by their star"], ...]
+}
+```
+Both optional. In cumulative mode a "Reading through" block explaining the book buttons is added.
+
+---------------------------------------------------------------------------------------------------
+
+## 9. `groups` (index sections, in display order)
+
+```js
+groups: [
+  {id:"orion", name:"Spur of Orion", chip:{border:"rgba(232,205,138,.5)", color:"#e8cd8a"}},
+  {id:"outside", name:"Outside time", chip:{border:"rgba(184,140,236,.6)", color:"#d2b6f4"},
+   labelFar:7000, flyDist:70},
+  {id:"far", name:"The far reaches", crumb:{label:"The far reaches", ascendOnly:true}},
+]
+```
+| field | notes |
+|---|---|
+| `id` | matches `world.group` |
+| `name` | section heading, tooltip eyebrow, dossier eyebrow, breadcrumb |
+| `chip` | `{border, color}` of the status chip in the dossier (default: theme line/muted) |
+| `labelFar` | camera distance (scene units) beyond which this group's labels hide (default `galaxy.labelFar`) |
+| `flyDist` | camera distance when flying to a world of this group (default `galaxy.flyDist`) |
+| `eras` | `{book:{name}}`: the section name changes from that book on (like world eras), so a heading need not spoil |
+| `crumb` | `{label, ascendOnly}` replaces the middle breadcrumb for this group; `ascendOnly` makes it only return from a surface instead of flying home |
+
+Worlds whose group is not listed get an extra section at the end, named after the group id (capitalised).
+
+---------------------------------------------------------------------------------------------------
+
+## 10. `worlds`
+
+```js
+{id:"delos", name:"Delos", aka:["Old name"], group:"orion", books:[1,2,3], first:1, major:true,
+ status:"Imperial world · Auriga Province", hero:"devilsrest",
+ star:{name:"Delos’s pale sun", col:"#fff0d2"},
+ map:[6.647, 29.354],             // or gal / star.ra+dec / dir+ly / at / pos3 (section 2)
+ est:true,                        // placement estimated (shown in the distance line)
+ blurb:"Two to four sentences.", short:"One line for the tooltip.",
+ facts:[["Owner","House Kephalos"],["Known for","Uranium"]],
+ gfx:{...}, sites:[...], eras:{...}, moons:[...], ring:{...}}
+```
+
+| field | type | req | notes |
+|---|---|---|---|
+| `id` | string | yes | unique; `[a-z0-9_-]` |
+| `name` | string | yes | |
+| `group` | string | yes | a `groups[].id` |
+| `books` | number[] | yes | books where it appears (badges, dimming) |
+| `first` | number | no | book where a reader first learns of it (cumulative gating). Default `min(books)` |
+| `status` | string | no | chip text ("Imperial capital") |
+| `blurb` | string | yes | dossier text |
+| `short` | string | no | tooltip line (default: first sentence of `blurb`) |
+| `aka` | string[] | no | alternative names |
+| `major` | bool | no | bigger marker, label visible from further away |
+| `star` | object | no | `{name, col, ra, dec, ly}`: star name for the facts list, `col` tints the galaxy marker, the sunlight and the sun sprite on the surface view (default `#fff6e4`) |
+| placement | | yes* | one of `map`, `gal`, `at`, `star.ra/dec`, `dir`+`ly`, `pos3` (2). *Else sector or Sol |
+| `ly` | number | no | distance from Sol, ly (compressed placement, distance text) |
+| `est` | bool | no | placement is an estimate; says so in the distance line |
+| `facts` | `[label, value][]` | no | facts list |
+| `distText` | string | no | overrides the computed distance line |
+| `hero` | site id | no | site turned to face the viewer on landing (default first site) |
+| `view` | number | no | landing camera distance in planet radii (default 4.0, gas giants 4.8) |
+| `gfx` | object | yes | surface recipe (11) |
+| `sites` | array | no | named places (11.4) |
+| `eras` | object | no | per-book changes (10.3) |
+| `moons` | array | no | `{name, size (planet radii, default .18), dist (radii, default 2.4+1.1i), speed (default .05), gfx}`. Decorative only: moons cannot be landed on and carry no sites. A moon that matters in the story should be its own world placed with `at:{of:"planet", spread:.3}` (and can also appear in the parent's `moons` for looks) |
+| `ring` | object | no | `{inner:1.4, outer:2.4, c1, c2, tilt (rad, default .35), seed}` radii in planet radii |
+| `craft` | bool | no | a ship/station: diamond marker and swatch |
+| `swarm` | bool | no | a drifting cloud of red motes around it in the galaxy (fleets, swarms) |
+| any flag | | no | e.g. `web:true`, used by a link `network` (14.6) |
+
+### 10.3 `eras` — the world changes later in the series
+```js
+eras:{ 7:{status:"Revealed: green and living", blurb:"…", gfx:{base:"earth", clouds:.44}} }
+```
+Keys are book numbers. Each entry may override `status`, `blurb`, `short`, `facts` (replaces the whole
+list) and any `gfx` fields (merged over the base `gfx`). This is the intended mechanism for anything about a
+world that changes or is revealed later: keep the base fields safe for the world's `first` book. Site
+descriptions are not era-gated: give a later-revealed place its own site with a later `books`. Applied for every key `<= ` the selected book (see section 6 for "All").
+
+---------------------------------------------------------------------------------------------------
+
+## 11. World surfaces
+
+Every world is landable. On descent the engine bakes a 512 px preview immediately, then the full map
+(4096×2048 on desktop) in strips; past the baked resolution a live procedural detail layer adds
+fractal coastlines and fine relief as you zoom in (always on, nothing to configure).
+
+### 11.1 `gfx` fields
+| field | default | notes |
+|---|---|---|
+| `type` | `"terran"` | `terran ocean archipelago desert forest ice gas city barren lava hive toxic dyson` |
+| `pal` | earth-like | **6 colours**: `[deep water, shallow water, lowland, lowland 2, highland, peak/snow]`. For `gas` it is a 6-stop band ramp; `desert` ramps lowland→peak; `ice` uses `pal[0..2]` for open water and cracks |
+| `sea` | .5 | sea level 0..1 (height field is ~0..1). 0 = no water, .7+ = mostly ocean |
+| `freq` | 1.6 | continent size (lower = bigger landmasses) |
+| `warp` | .6 | coastline swirl |
+| `rough` | .6 | mountain strength |
+| `bump` | 1 | normal-map strength |
+| `ice` | 78 | latitude (deg) where polar ice begins (90 = none) |
+| `moist` | 0 | −.5..+.5 shifts lowland towards `pal[3]` |
+| `dune` | 9 | dune frequency (desert) |
+| `bands` | 14 | band count (gas) |
+| `clouds` | 0 | cloud cover 0..1 (0 = no cloud layer) |
+| `cloudScale` | 2.2 | cloud feature size |
+| `cloudCol` | `#ffffff` | |
+| `cloudOp` | .95 | cloud opacity |
+| `atmo` | `#6fa8ff` | rim/atmosphere colour |
+| `atmoK` | 1 | atmosphere strength; 0 = airless (no halo) |
+| `lights` | 0 | night-side city lights 0..1 (city/hive worlds glow more) |
+| `lightCol` | `#ffc27a` | |
+| `lava` | `#ff5a1a` | glow colour for `lava` and `dyson` |
+| `amb` | .018 | ambient light on the night side |
+| `wall` | 0 | 1 = a single thin glowing line across one face (Hyperion's Wall); rarely needed |
+| `base` | none | `"earth"` = use the built-in real Earth landmask as the height base |
+| `sw` | `pal[3]` | swatch colour in the index |
+| `feat` | [] | hand-laid features, max **14** (11.2) |
+
+### 11.2 `feat` — hand-laid continents and regions (optional)
+Use these to make a world match a described or published map. All angles in degrees.
+
+| `k` | fields | effect |
+|---|---|---|
+| `continent` | `at:[lat,lon]`, `r` (radius, default 5), `s` (height, default .3) | raises a landmass |
+| `basin` | `at`, `r`, `s` | lowers a sea or basin |
+| `peak` | `at`, `r`, `s` | a single mountain / volcano |
+| `range` | `from:[lat,lon]`, `to:[lat,lon]`, `w` (half-width, default 3), `s` | a mountain chain along the great-circle arc |
+| `river` | `from`, `to`, `w`, `s` | cuts a gorge / river valley (wiggles naturally) |
+| `biome` | `at`, `r`, `s` (blend 0..1), `style`, `c` (colour) | paints a land region |
+
+`style` for biomes: `grass forest rock flame farm snow` (texture pattern). `c` is the region colour.
+Typical strengths: continents `s:.2`, ranges `.2–.3`, biomes `s:.9–1`, rivers `.35–.45`.
+Tip: with `sea:.6+`, the noise makes mostly ocean and your continents decide where land is.
+
+### 11.3 Built-in Earth
+`gfx:{type:"terran", base:"earth", sea:.5}` draws Earth's real continents (sites at real lat/lon).
+
+### 11.4 `sites` — named places on the surface
+```js
+sites:[
+ {id:"keats", name:"Keats", lat:1.8, lon:13, books:[1,2], desc:"One to three sentences."},
+ {id:"karch", name:"Karch", lat:12, lon:-40, books:[1], sea:true, desc:"An island city."},
+ {id:"dock", name:"The Docks", rel:{to:"keats", dlat:2, dlon:-3}, books:[1], desc:"…"}
+]
+```
+| field | notes |
+|---|---|
+| `id`, `name`, `desc` | required |
+| `lat`, `lon` | degrees (2.6). Required unless `rel` |
+| `rel` | `{to:siteId, dlat, dlon}` place relative to another site; offsets are multiplied by 0.32 (so `dlat:3` ≈ 1°) |
+| `books` | books where the place matters (badges, gating). Omit = always shown |
+| `sea` | true = may sit on water. Otherwise a site that falls in the sea is moved to the nearest land |
+| `aka` | optional alternative name (not displayed yet) |
+
+---------------------------------------------------------------------------------------------------
+
+## 12. `events` (the Chronicle)
+
+```js
+{id:"e1", book:1, world:"delos", site:"devilsrest", title:"Short title", text:"Two sentences.", side:"Novella"}
+```
+`id` unique; `book` 1..N; `world` a world id; `site` optional site id (clicking the event lands there);
+`side` optional note shown instead of the site name (side stories). Order in the array = order
+within each book on the timeline.
+
+---------------------------------------------------------------------------------------------------
+
+## 13. `codex`
+
+```js
+codex: [
+  {id:"factions", title:"Powers", list:[{name:"The Empire", first:1, desc:"…", more:[[5,"Later addition."]]}]},
+  {id:"people", title:"People", list:[{name:"Hadrian Marlowe", role:"Narrator", books:[1,2,3], desc:"…"}]},
+  {id:"ideas", title:"Ideas & beings", list:[...]}
+]
+```
+Entry fields: `name` (req), `desc` (req), `role`, `books` (badges), `first` (gating, default
+`min(books)` else 1), `more` (`[[book, text], …]` spoiler-gated additions).
+
+---------------------------------------------------------------------------------------------------
+
+## 14. `galaxy`
+
+All optional. Distances are scene units (100 ly) unless marked kly.
+
+### 14.1 Frame
+| field | default | notes |
+|---|---|---|
+| `sol` | `[0, 27.14]` | Sol in map kly (2.2) |
+| `mirrorGal` | `false` | see 2.3 |
+| `seed` | 1977 | star-field seed |
+| `sectors` | none | `{group:{l, dl, b, db}}` direction box (deg) for worlds without placement |
+| `groupLy` | none | `{group: ly}` default distance per group for compressed placement |
+| `defaultLy` | 300 | |
+
+### 14.2 Arms and spur
+```js
+arms:[{a:-4.955, name:"Norma Arm"}, {a:-6.526, name:"Centaurus Arm"}, ...],  // default: 4 arms, Hyperion layout
+pitch:12.5,            // arm pitch angle, degrees
+spur:{r:27.1, span:.8, n:5500}   // optional short bright spur through radius r (kly), centred on the +y axis
+```
+Each arm is a logarithmic spiral: at scene radius `r`, angle `θ = a + ln(r/40)/tan(pitch)`, point
+`(sin θ·r, 0, cos θ·r)`. So `a` is the arm's angle (radians, measured from +z towards +x) at
+r = 40 units (4 kly). Arms are drawn from 4.2 to 47 kly.
+
+### 14.3 Camera
+| field | default | notes |
+|---|---|---|
+| `home` | `{at:{sol:[0,0,0]}, dist:58, pitch:.62, dur:2000}` | view the header "home" button flies to (and the opening view) |
+| `homeMob` | none | fields merged over `home` on phones (narrow screens usually need a larger `dist` or a higher `pitch`) |
+| `overview` | `{at:{xyz:[0,0,40]}, dist:1100, pitch:.95, dur:2200}` | "Galaxy" button |
+| `flyDist` | 24 | camera distance when a world is selected |
+| `flyPitch` | .5 | |
+| `labelFar` | `{major:1500, minor:560}` | label hide distances (scene units) |
+
+### 14.4 Point specs (used by labels, glows, link endpoints)
+A point is a world id string, or an object with one of:
+`{world:"id"}` · `{map:[x,y,h]}` (kly) · `{xyz:[x,y,z]}` (scene) · `{sol:[dx,dy,dz]}` (scene offset
+from Sol) · `{gal:[l,b,ly]}` (2.3, linear) · `{lb:[l,b], ly:N}` (2.4, compressed) ·
+`{sat:"lmc"|"smc"|"andromeda"|"core"}` · `{arm:"Arm name" or index, r:kly}`; plus optional
+`off:[dx,dy,dz]` added in scene units.
+
+### 14.5 Labels, territories, glows
+```js
+labels:[{text:"Veil of Marinus", at:{map:[10.6,10.2]}, off:[0,4,0], min:70, max:1500, big:false}],
+coreLabels:true,   // the built-in "Galactic core", "Large/Small Magellanic Cloud" labels
+territories:[{name:"Sollan Empire", at:[1,24], r:15, c:"#c9a24a", a:.12, sx:1.5, sy:1, h:0}],
+glows:[{at:{map:[17.5,1.5]}, scale:26, opacity:.5, color:"red", pulse:true}],
+swarm:{n:220, spread:4.5}
+```
+* Labels, territories and glows accept optional spoiler gating: `book` (or `first`) = shown only from that book on,
+  `books:[..]` = shown only in those books. "All" always shows them. (Same rule in both spoiler modes.)
+* Labels are faint upper-case region names visible while the camera is between `min` and `max`
+  (scene units) from the point. `big` = brighter, larger. Use `text` = arm name with
+  `at:{arm:"…", r:30}` to label arms.
+* Territories: soft additive discs on the disc plane. `at` map kly, `r` radius kly, `c` colour,
+  `a` opacity (.1–.2), `sx`/`sy` stretch, `h` height kly. (`name` is not drawn: add a label.)
+* Glows: pulsing beacons. `color`: `"white"`, `"red"` or a CSS colour.
+* `swarm`: size of the mote clouds around `swarm:true` worlds (default `{n:160, spread:.7}`; spread in scene units, so use ~4 for a galaxy-wide map).
+
+### 14.5b Local field stars
+`localField` controls the decorative cloud of faint stars around Sol (3,000 points, gaussian, ~14 units):
+`false` removes it; `{density:.5}` thins it; `{spread:14}` sizes it; `{at:<point>}` centres it elsewhere;
+`{clear:7.5}` empties a sphere of that radius (scene units) around its centre, e.g. to keep an enlarged
+solar-system orrery clean. Default: the full cloud around Sol.
+
+### 14.6 Links (animated lines)
+```js
+links:[
+ {id:"r1", path:["delos","emesh"], color:"#e0b85c", book:1},                 // a route, progressive
+ {id:"web", network:{flag:"web", hub:"tc2", nearest:2}, color:"#a9c6ff", books:[1,2],
+  opacity:{all:.4, cur:.65}, speed:.35, dash:1.2, curve:.06},
+ {id:"raids1", pairs:[[{map:[17.5,1.5]},"cressgard"],[{map:[17.5,1.5]},"caishen"]], color:"#ff4a36", book:1,
+  opacity:{all:.4, cur:.85, past:.35}, speed:.8, dash:3, curve:.08}
+]
+```
+| field | default | notes |
+|---|---|---|
+| `id` | required | unique |
+| geometry | required | one of `path` (world ids, consecutive pairs), `pairs` (`[[point, point], …]`), `network:{flag, hub, nearest}` (links every world with `world[flag]` to its `nearest` neighbours and to `hub`) |
+| `color` | book colour | CSS colour; omit with `book` set to use that book's colour |
+| `book` | none | progressive: hidden before book k, full in book k, faint (`past`) after |
+| `books` | none | shown only while one of these books (or All) is selected |
+| `opacity` | `{all:.6, cur:1, past:.22}` | with no `book`/`books` the link always uses `all`/`cur` |
+| `speed` / `dash` | .45 / 2.2 | pulse speed and pulses per segment |
+| `first` | none | extra gate: hidden while the selected book is earlier than this (any link type) |
+| `curve` | .13 | arc height as a fraction of length (0 = straight), capped at `galaxy.link.curveMax` |
+| `label` | none | descriptive only (not drawn); use `legend` to explain lines |
+
+In cumulative mode a `network` link is split by edge: each edge appears from the later `first` of its two
+worlds, so it never points at a world the reader has not met (`network:{…, gate:false}` turns this off).
+
+`galaxy.link:{base:.28, gain:1, curveMax:2.4}` tunes all lines (Sun Eater: `{base:.62, gain:1.5,
+curveMax:90}` for brighter lines and tall arcs across the whole galaxy).
+
+---------------------------------------------------------------------------------------------------
+
+## 15. `legend` (small key in the Chronicle bar; desktop only)
+
+Array of items, each one of:
+* `{color:"#ff4a36", label:"Cielcin raids"}` — always shown
+* `{color, label, books:[1,2]}` — shown with "All" or one of these books
+* `{color, label, book:3}` — shown with "All" or book ≥ 3
+* `{bookColors:true, label:"Hadrian’s road", allLabel:"Hadrian’s road, by book"}` — a swatch in the
+  selected book's colour labelled `label · Book title`, or a gradient of all book colours with "All".
+
+It may also be a function `(book, api) => [[cssColor, label], …]`.
+
+---------------------------------------------------------------------------------------------------
+
+## 16. `hooks` (optional functions)
+* `distText(world, api)` → string: replaces the computed distance line. `api` has `worldBy`, `sol`
+  (THREE.Vector3), `state` (`{book, sel, view}`), `books`.
+  Default: `pos3` → "Not in our time or space"; `gal` → "About N light-years from Sol (real star)";
+  `star.ly` → "N light-years from Sol (real star)"; `ly` → "About N light-years from Sol (placement
+  estimated)"; otherwise the straight-line distance from Sol, plus "· position estimated" if `est`.
+
+---------------------------------------------------------------------------------------------------
+
+## 17. Minimum pack
+
+```js
+(window.ATLAS_PACKS = window.ATLAS_PACKS || {})["mini"] = {
+  id:"mini", meta:{title:"Mini Atlas"},
+  books:{1:{n:"I", title:"Book One", y:2000}},
+  worlds:[{id:"home", name:"Home", group:"core", books:[1], map:[0,26], blurb:"A world.",
+           gfx:{type:"terran"}}]
+};
+```
+Everything else falls back to defaults. Missing books colours get a default palette.
+
+## 18. Content rules (from the brief)
+* Describe the books in your own words: no quoted passages, lyrics, poems, cover art or official art.
+* Cite sources in comments (and `meta.sources`). Mark estimated placements with `est:true` and a
+  comment `/* estimated */`; never invent facts.
+* Keep the pack self-contained (no network requests). Sizes: aim for 30–60 worlds, 40–80 events.
