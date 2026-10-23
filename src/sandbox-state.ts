@@ -28,6 +28,8 @@ export type SavedBody = {
   magnetosphere?: number;
   lastEvent: string;
   groupId?: number;
+  artificial?: string;
+  warpBoost?: number;
 };
 
 export type SavedCosmicGroup = {

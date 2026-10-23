@@ -1,4 +1,4 @@
-export type ExhibitId = 'build-star' | 'habitable-world' | 'binary-stars' | 'feed-black-hole' | 'supernova-observatory' | 'collision-lab' | 'galaxy-tour';
+export type ExhibitId = 'build-star' | 'habitable-world' | 'binary-stars' | 'feed-black-hole' | 'supernova-observatory' | 'collision-lab' | 'tidal-lab' | 'gododdin' | 'galaxy-tour';
 
 export type ExhibitDefinition = {
   id: ExhibitId;
@@ -57,6 +57,22 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     description: 'Two rocky worlds are placed on a destructive head-on trajectory.',
     objective: 'Change their paths to compare merging, grazing encounters, and high-speed fragmentation.',
     accent: '#ff765e',
+  },
+  {
+    id: 'tidal-lab',
+    title: 'Tidal Disruption Lab',
+    eyebrow: 'Roche-limit laboratory',
+    description: 'A rogue black hole is falling through a quiet planetary system.',
+    objective: 'Watch worlds stretch as they cross the Roche limit, then shear into debris streams. Fling the black hole again or drop a new one to repeat it.',
+    accent: '#ffb36b',
+  },
+  {
+    id: 'gododdin',
+    title: 'The Fall of Gododdin',
+    eyebrow: 'Sun Eater scenario · fiction',
+    description: 'A Cielcin worldship tears past Gododdin at warp, its wake ripping the moon apart.',
+    objective: 'Keep time at 1×. As the worldship passes, time drops into slow motion so you can watch the moon stretch and shatter into a debris arc, while Gododdin holds together just outside the lethal zone. The warp-wake boost is fictional; the Roche-limit breakup is real physics.',
+    accent: '#b79bff',
   },
   {
     id: 'galaxy-tour',
