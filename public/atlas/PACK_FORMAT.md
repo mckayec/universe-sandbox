@@ -237,7 +237,7 @@ and `spoilers.dimMarker` (0.2 / 0.15).
 | `galaxyButton` | `"Galaxy"` | |
 | `hints` | sensible text | `{galaxy, galaxyMob, world, worldMob}` one-line navigation hints |
 | `showCredits` | `true` | show `meta.credits` in the Chronicle bar on wide screens |
-| `wrapBooks` | auto | phones: `true` puts the book buttons on their own full-width row (automatic above 7 books); `false` never |
+| `wrapBooks` | auto | phones: `true` puts the book buttons on their own full-width row (automatic above 3 books); `false` never |
 | `evCount` | `""` | suffix after an index world's event count (Hyperion `" ev"`) |
 
 ---------------------------------------------------------------------------------------------------
