@@ -365,7 +365,7 @@ function normalise(P){
   worlds.forEach(w=>{if(!groups.some(g=>g.id===w.group))groups.push({id:w.group,name:w.group==="other"?"Other":w.group.charAt(0).toUpperCase()+w.group.slice(1)});});
   const G=Object.assign({},P.galaxy||{});
   const ui=Object.assign({},P.ui||{});
-  ui.homeButton=ui.homeButton||"Home";ui.homeAction=ui.homeAction||("Fly to "+ui.homeButton.toLowerCase());ui.homeLink=ui.homeLink||ui.homeButton;ui.homeCrumb=ui.homeCrumb||ui.homeButton;
+  ui.homeButton=ui.homeButton||"Home";ui.homeAction=ui.homeAction||("Fly to "+ui.homeButton.toLowerCase());ui.homeLink=ui.homeLink||ui.homeButton;ui.homeCrumb=ui.homeCrumb||ui.homeButton;ui.galaxyCrumb=ui.galaxyCrumb||"Milky Way";
   ui.indexTitle=ui.indexTitle||("Worlds of "+meta.series);ui.crumbGroups=ui.crumbGroups!==false;ui.galaxyButton=ui.galaxyButton||"Galaxy";
   ui.chronTitle=ui.chronTitle||"THE CHRONICLE";ui.codexTitle=ui.codexTitle||"CODEX";ui.showCredits=ui.showCredits!==false;ui.evCount=ui.evCount||"";
   const nW=bookIds.length<=12?NUMW[bookIds.length]:String(bookIds.length);
@@ -998,7 +998,7 @@ $("#codex").addEventListener("click",e=>{if(e.target.id==="codex")$("#codex").hi
 addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("#codex").hidden)$("#codex").hidden=true;else if(S.view==="world")ascend();}});
 
 /* ===================== CRUMBS & HINT ===================== */
-function renderCrumbs(){const c=$("#crumbs");let h='<button data-c="gal">Milky Way</button><i>›</i>';
+function renderCrumbs(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
   const w=S.sel&&WORLD_BY[S.sel];const gc=w&&groupOpt(w,"crumb",null);
   if(gc)h+='<button data-c="'+(gc.ascendOnly?"sat":"web")+'">'+esc(gc.label||GROUP_NAME(w.group))+'</button>';
   else if(UI.crumbGroups)h+='<button data-c="web"'+(!w?' class="here"':"")+'>'+(w?esc(GROUP_NAME(w.group)):esc(UI.homeCrumb))+'</button>';
