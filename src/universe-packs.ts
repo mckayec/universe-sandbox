@@ -1,7 +1,7 @@
 import { EXHIBITS, type ExhibitId } from './exhibits.ts';
 
-export type UniversePackId = 'museum-sandbox' | 'sun-eater' | 'red-rising' | 'cosmere' | 'star-wars' | 'hyperion';
-export type UniversePackStatus = 'ready' | 'source-required';
+export type UniversePackId = 'museum-sandbox' | 'solar-system' | 'red-rising' | 'sun-eater' | 'hyperion' | 'expanse' | 'dune' | 'foundation' | 'exoplanets' | 'powers-of-ten' | 'cosmere' | 'star-wars';
+export type UniversePackStatus = 'ready' | 'atlas' | 'source-required';
 export type LocationScale = 'universe' | 'galaxy' | 'cluster' | 'system' | 'world' | 'surface';
 
 export type SourceReference = {
@@ -43,7 +43,31 @@ export type UniversePackDefinition = {
   locations: readonly UniverseLocation[];
   journeys: readonly CharacterJourney[];
   sourceHint: string;
+  /** Relative URL of a standalone atlas page (status 'atlas'). */
+  atlasPath?: string;
 };
+
+const atlasPack = (
+  id: Exclude<UniversePackId, 'museum-sandbox'>,
+  title: string,
+  eyebrow: string,
+  description: string,
+  accent: string,
+  atlasPath: string,
+  sourceHint: string,
+): UniversePackDefinition => ({
+  id,
+  title,
+  eyebrow,
+  description,
+  accent,
+  status: 'atlas',
+  scenarioIds: [],
+  locations: [],
+  journeys: [],
+  sourceHint,
+  atlasPath,
+});
 
 const plannedPack = (
   id: Exclude<UniversePackId, 'museum-sandbox'>,
@@ -81,11 +105,10 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     journeys: [],
     sourceHint: 'Built from the museum simulation model and its documented educational simplifications.',
   },
-  plannedPack('sun-eater', 'Sun Eater', 'Literary universe', 'Systems, empires, worlds, and character routes reconstructed from cited source material.', '#f2a35c'),
-  plannedPack('red-rising', 'Red Rising', 'Literary universe', 'A tourable Solar System with eras, factions, habitats, and character journeys.', '#d95b54'),
+  atlasPack('solar-system', 'Solar System Atlas', 'Real universe', 'The Sun, planets, dwarf planets, moons, comets, the Kuiper Belt and the Oort Cloud, with cutaways of each world.', '#ffd57c', 'atlas/solar.html', 'Built from published planetary science data.'),
+  atlasPack('red-rising', 'The Society Atlas', 'Red Rising', 'Pierce Brown\'s terraformed Solar System, with its moons, colonies, factions and the Society\'s great ships.', '#d95b54', 'atlas/society.html', 'Reconstructed from the Red Rising books and cited fan references.'),
   plannedPack('cosmere', 'Cosmere', 'Literary universe', 'Connected planetary systems with world-specific physics, cultures, and timelines.', '#9b83f5'),
   plannedPack('star-wars', 'Star Wars', 'Licensed universe', 'A galaxy-scale atlas designed for systems, planets, eras, and character routes.', '#7fc9ff'),
-  plannedPack('hyperion', 'Hyperion', 'Literary universe', 'A source-backed network of worlds, travel links, eras, and pilgrim journeys.', '#d7b26d'),
 ] as const;
 
 export function universePackById(id: UniversePackId): UniversePackDefinition {
@@ -111,5 +134,7 @@ export function validateUniversePack(pack: UniversePackDefinition): string[] {
     }
   }
   if (pack.status === 'ready' && !pack.scenarioIds.length) errors.push('Ready packs must expose at least one scenario.');
+  if (pack.status === 'atlas' && !pack.atlasPath) errors.push('Atlas packs must link to an atlas page.');
+  if (pack.atlasPath && (/^[a-z]+:/i.test(pack.atlasPath) || pack.atlasPath.startsWith('/'))) errors.push('Atlas paths must be relative to the site.');
   return errors;
 }
