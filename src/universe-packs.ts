@@ -107,6 +107,10 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
   },
   atlasPack('solar-system', 'Solar System Atlas', 'Real universe', 'The Sun, planets, dwarf planets, moons, comets, the Kuiper Belt and the Oort Cloud, with cutaways of each world.', '#ffd57c', 'atlas/solar.html', 'Built from published planetary science data.'),
   atlasPack('red-rising', 'The Society Atlas', 'Red Rising', 'Pierce Brown\'s terraformed Solar System, with its moons, colonies, factions and the Society\'s great ships.', '#d95b54', 'atlas/society.html', 'Reconstructed from the Red Rising books and cited fan references.'),
+  atlasPack('sun-eater', 'The Sun Eater Atlas', 'Sun Eater', 'Christopher Ruocchio\'s Sollan Empire, the Cielcin and Hadrian Marlowe\'s road across the galaxy.', '#e8cd8a', 'atlas/?pack=sun-eater', 'Reconstructed from the Sun Eater books, the published galaxy map and cited wiki summaries.'),
+  atlasPack('hyperion', 'The Hyperion Atlas', 'Hyperion Cantos', 'Dan Simmons\'s WorldWeb, the Pax and the Shrike, from Hyperion to The Rise of Endymion.', '#9db8ff', 'atlas/?pack=hyperion', 'Reconstructed from the four Hyperion Cantos novels and cited references.'),
+  atlasPack('expanse', 'The Expanse Atlas', 'The Expanse', 'James S. A. Corey\'s Sol system, the Ring and the gate worlds across all nine novels.', '#ffb27a', 'atlas/?pack=expanse', 'Reconstructed from the nine Expanse novels and cited references; gate-system positions are schematic.'),
+  atlasPack('foundation', 'The Foundation Atlas', 'Foundation', 'Isaac Asimov\'s falling Empire, the Seldon crises and the search for Earth.', '#a8d4f0', 'atlas/?pack=foundation', 'Reconstructed from the seven Foundation novels and cited references; most positions are estimated.'),
   plannedPack('cosmere', 'Cosmere', 'Literary universe', 'Connected planetary systems with world-specific physics, cultures, and timelines.', '#9b83f5'),
   plannedPack('star-wars', 'Star Wars', 'Licensed universe', 'A galaxy-scale atlas designed for systems, planets, eras, and character routes.', '#7fc9ff'),
 ] as const;

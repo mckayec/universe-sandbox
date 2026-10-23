@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Atlases</title>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="stylesheet" href="engine.css">
+<style>
+/* pack chooser (shown when no ?pack= is given) */
+#chooser{min-height:100%;display:grid;place-items:center;padding:40px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px));box-sizing:border-box;
+  background:radial-gradient(ellipse at 50% 40%,#121831,#04050b 70%);color:#d9deea;overflow:auto}
+body.choosing{overflow:auto;background:#04050b}
+#chooser .wrap{width:min(640px,100%)}
+#chooser h1{margin:0;font:600 clamp(28px,6vw,46px)/1.05 "Cormorant SC","Cormorant Garamond",Georgia,serif;letter-spacing:.14em;
+  background:linear-gradient(180deg,#fff 0%,#c8d0de 40%,#7f8aa0 62%,#e6ebf4 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+#chooser p.sub{margin:10px 0 26px;font:italic 300 17px/1.5 "Spectral",Georgia,serif;color:#8f98b0}
+#chooser ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+#chooser a{display:block;text-decoration:none;color:inherit;padding:16px 18px;border:1px solid rgba(157,184,255,.18);background:rgba(9,12,24,.7);border-left:3px solid var(--a,#9db8ff);transition:border-color .15s,background .15s}
+#chooser a:hover,#chooser a:focus-visible{border-color:rgba(157,184,255,.5);background:rgba(20,26,50,.8);outline:none}
+#chooser a b{display:block;font:600 22px "Cormorant Garamond",Georgia,serif;color:#f2f5fb;letter-spacing:.02em}
+#chooser a span{display:block;margin-top:4px;font:400 11px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;color:#8f98b0}
+#chooser .empty{font:italic 15px Georgia,serif;color:#8f98b0}
+</style>
+</head><body>
+<script src="packs/registry.js"></script>
+<script>
+/* Loads three.js r128, engine.js and packs/<id>.js for ?pack=<id>; with no pack, lists the registry. */
+(function(){
+  var REG=window.ATLAS_REGISTRY||[];
+  var id=new URLSearchParams(location.search).get("pack");
+  var entry=null;for(var i=0;i<REG.length;i++)if(REG[i].id===id)entry=REG[i];
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  if(!entry){
+    document.body.className="choosing";
+    var d=document.createElement("div");d.id="chooser";
+    d.innerHTML='<div class="wrap"><h1>ATLASES</h1><p class="sub">'+(id?'No atlas called “'+esc(id)+'” is installed. ':'')+'Interactive maps of the galaxies of the books. Pick one.</p>'+
+      (REG.length?'<ul>'+REG.map(function(r){return '<li><a href="?pack='+encodeURIComponent(r.id)+'" style="--a:'+esc(r.accent||"#9db8ff")+'"><b>'+esc(r.title||r.id)+'</b><span>'+esc(r.blurb||"")+'</span></a></li>';}).join("")+'</ul>':'<p class="empty">No packs are registered in packs/registry.js.</p>')+'</div>';
+    document.body.appendChild(d);return;
+  }
+  function load(src){return new Promise(function(res,rej){var s=document.createElement("script");s.src=src;s.onload=res;s.onerror=function(){rej(new Error("Could not load "+src));};document.body.appendChild(s);});}
+  load("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js")
+    .then(function(){return load("engine.js");})
+    .then(function(){return load("packs/"+encodeURIComponent(entry.id)+".js");})
+    .then(function(){var P=(window.ATLAS_PACKS||{})[entry.id];if(!P)throw new Error("packs/"+entry.id+".js did not register ATLAS_PACKS[\""+entry.id+"\"].");window.AtlasEngine.start(P);})
+    .catch(function(e){if(window.AtlasEngine)window.AtlasEngine.fail(e);else{console.error(e);document.body.innerHTML='<p style="font:15px Georgia,serif;padding:24px">'+esc(e.message)+'</p>';}});
+})();
+</script>
+</body></html>
