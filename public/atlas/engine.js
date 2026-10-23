@@ -394,7 +394,7 @@ function buildShell(K){
   const stops=T.chromeStops||[[0,"#fff7e2"],[.45,"#e8cd8a"],[.68,"#9a7432"],[1,"#f4e2b2"]];
   const defs='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">'+stops.map(s=>'<stop offset="'+s[0]+'" stop-color="'+s[1]+'"/>').join("")+'</linearGradient></defs>';
   const sig=T.sigil||DEF_SIGIL,ssig=T.splashSigil||sig;const TT=M.title.toUpperCase();
-  const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>7))app.classList.add("manybooks");
+  const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");
   app.innerHTML=
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
 '<div class="vignette"></div><div id="labels"></div><div id="fade"></div>'+
