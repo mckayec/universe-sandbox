@@ -37,7 +37,7 @@ try {
   assert.equal(await page.locator('#trail-mode').textContent(), 'Trails: off');
   await page.getByRole('button', { name: 'Universes' }).click();
   assert.equal(await page.getByRole('heading', { name: 'Choose a universe' }).isVisible(), true);
-  await page.getByRole('button', { name: /Sun Eater/ }).click();
+  await page.getByRole('button', { name: /Cosmere/ }).click();
   assert.match(await page.locator('#pack-source').textContent(), /authorized source files/i);
   await page.getByRole('button', { name: 'Close universe library' }).click();
   await page.getByRole('button', { name: 'Exhibits' }).click();
