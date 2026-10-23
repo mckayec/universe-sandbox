@@ -42,6 +42,11 @@ try {
   await page.getByRole('button', { name: 'Close universe library' }).click();
   await page.getByRole('button', { name: 'Exhibits' }).click();
   assert.equal(await page.getByRole('button', { name: /Witness a Supernova/ }).isVisible(), true);
+  assert.equal(await page.getByRole('button', { name: /Tidal Disruption Lab/ }).isVisible(), true);
+  await page.getByRole('button', { name: /The Fall of Gododdin/ }).click();
+  await page.waitForFunction(() => document.querySelector('#count')?.textContent === '4');
+  await page.waitForTimeout(1500);
+  await page.getByRole('button', { name: 'Exhibits' }).click();
   await page.getByRole('button', { name: 'Close guided exhibits' }).click();
   await page.getByRole('button', { name: /Life zones:/ }).click();
   assert.equal(await page.locator('#habitability-mode').textContent(), 'Life zones: placement');

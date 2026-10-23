@@ -48,3 +48,34 @@ export function capPlanarVelocity<T extends { x: number; z: number }>(velocity: 
   }
   return velocity;
 }
+
+/**
+ * Tidal stress on a self-gravitating body: the ratio of the differential pull
+ * across its radius (2·G·M·R / d³) to its own surface gravity (G·m / R²).
+ * Values above 1 mean the classic rigid-body Roche limit has been crossed.
+ * `boost` lets fictional effects (e.g. a warp wake) amplify the stress without
+ * adding real mass to the perturber.
+ */
+export function tidalStressRatio(primaryMass: number, donorMass: number, donorRadius: number, distance: number, boost = 1) {
+  if (primaryMass <= 0 || donorMass <= 0 || donorRadius <= 0 || distance <= 0) return 0;
+  return 2 * primaryMass * Math.pow(donorRadius, 3) * Math.max(0, boost) / (donorMass * Math.pow(distance, 3));
+}
+
+/** Distance at which `tidalStressRatio` reaches `threshold` (the exhibit's effective Roche limit). */
+export function effectiveRocheLimit(primaryMass: number, donorMass: number, donorRadius: number, threshold = 1, boost = 1) {
+  if (primaryMass <= 0 || donorMass <= 0 || donorRadius <= 0 || threshold <= 0) return 0;
+  return donorRadius * Math.cbrt(2 * primaryMass * Math.max(0, boost) / (donorMass * threshold));
+}
+
+/**
+ * Accumulates structural strain while a body sits beyond the disruption
+ * threshold and lets it relax afterwards, so a fast graze stretches a world
+ * while a slow or deep pass tears it apart. Returns strain in [0, 1].
+ */
+export function advanceTidalStrain(strain: number, ratio: number, threshold: number, dt: number, growthRate = 1.6, relaxRate = .35) {
+  const excess = ratio / Math.max(1e-6, threshold) - 1;
+  const next = excess > 0
+    ? strain + Math.min(4, excess) * growthRate * dt
+    : strain - relaxRate * dt;
+  return Math.max(0, Math.min(1, next));
+}
