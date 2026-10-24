@@ -59,6 +59,7 @@ uniform vec3 uP0,uP1,uP2,uP3,uP4,uP5;
 uniform float uEps;
 uniform int uNF;uniform vec4 uFA[14];uniform vec4 uFB[14];uniform vec4 uFC[14];uniform vec4 uFD[14];
 uniform sampler2D tBase;uniform float uBase;
+uniform sampler2D tMapHi,tMapLo,tMapReg;uniform float uMapOn,uMapMtn;
 ${GLSL_NOISE}
 const float PI=3.14159265359;
 /* feature kinds: 1 continent  2 mountain range  3 biome  4 basin  5 peak  6 river/gorge */
@@ -95,6 +96,11 @@ float height(vec3 p){
   h=pow(h,1.15)*1.08;
   if(uBase>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));float b=texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;
     h=uSea+(b-.5)*.3+(h-.5)*.12;}
+  if(uMapOn>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
+    vec4 Hi=texture2D(tMapHi,muv);vec4 Lo=texture2D(tMapLo,muv);float ml=Hi.r;
+    h=uSea+(ml-.5)*.05+Lo.r*.07*ml+(h-.5)*(.05+.1*ml);
+    h+=(Lo.g*.75+Hi.g*.35)*uMapMtn*(.4+.9*ridged(q*4.6+2.,6))*ml;
+    if(Hi.b>.55)h=min(h,uSea-.015);}
   h+=featHeight(p,q);
   float land=smoothstep(uSea-.02,uSea+.18,h);
   float r=ridged(q*1.9+3.1,uOct-2);
@@ -136,6 +142,8 @@ void main(){
     col=ramp6(.15+t*.75+det*.05);
     float dune=abs(snoise(vec3(q.x*uDune,q.y*uDune*.22,q.z*uDune)+vec3(fbm(q,3)*3.)));
     col*=.9+.18*smoothstep(.0,.25,dune);
+    if(uMapOn>.5&&h>=uSea){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
+      float rw=texture2D(tMapLo,muv).b;vec3 rc=texture2D(tMapReg,muv).rgb;col=mix(col,rc*(.9+.18*smoothstep(.0,.25,dune))*(.92+det*.1),clamp(rw*1.1,0.,1.));}
     if(h<uSea){water=true;col=mix(uP0,uP1,smoothstep(uSea-.06,uSea,h));spec=1.;}
     if(alat>uIce)col=mix(col,vec3(.93,.92,.88),smoothstep(uIce,uIce+6.,alat));
   } else if(uType==5){ /* ice */
@@ -171,6 +179,9 @@ void main(){
         float ang=acos(clamp(dot(p,uFA[i].xyz),-1.,1.));if(ang>uFA[i].w*1.6)continue;float en=fbm(p*6.+float(i)*2.3,4);
         float w=1.-smoothstep(uFA[i].w*.5,uFA[i].w*1.1,ang+en*uFA[i].w*.45);
         low=mix(low,biomeStyle(int(uFB[i].z+.5),uFC[i].rgb,q,p),w*uFB[i].y);bw=max(bw,w*uFB[i].y*(int(uFB[i].z+.5)==2?.0:1.));}
+      if(uMapOn>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
+        float rw=texture2D(tMapLo,muv).b;vec3 rc=texture2D(tMapReg,muv).rgb;
+        if(rw>.004){low=mix(low,biomeStyle(0,rc,q,p)*.5+biomeStyle(1,rc,q,p)*.5,clamp(rw*1.15,0.,1.));bw=max(bw,rw*.92);}}
       col=lerp3(low,uP4,smoothstep(.4,.8,e+det*.05)*(1.-bw*.85));
       if(uType==4){ /* world-forest: dense canopy with clumps */
         float cl=fbm(q*22.,5)*.5+.5;float cl2=fbm(q*70.,3)*.5+.5;
@@ -218,7 +229,8 @@ const PLANET_VS=`
 varying vec3 vObj;varying vec3 vNW;varying vec3 vWP;
 void main(){vObj=normalize(position);vec4 wp=modelMatrix*vec4(position,1.);vWP=wp.xyz;vNW=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*wp;}`;
 const PLANET_FS=`
-uniform sampler2D tAlb,tNrm,tCld;
+uniform sampler2D tAlb,tNrm,tCld,tMapHi;
+uniform float uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;
 uniform vec3 uSun,uSunCol,uAtmo,uLightCol,uLava,uSeed;
 uniform float uAtmoK,uCloudShift,uDetail,uAmb,uHasCld,uLavaOn,uTime,uHasSea;
 uniform vec3 uWaterCol,uLandCol;
@@ -242,6 +254,8 @@ void main(){
     /* fractal coastlines: re-threshold the water mask with fine noise */
     if(uHasSea>.5&&A.a>.02&&A.a<.98){float w2=step(.5,A.a+fine*.42*uDetail);
       if(w2>.5&&A.a<.5)alb=uWaterCol;if(w2<.5&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=w2;}
+    if(uMapOn>.5){vec4 Hm=texture2D(tMapHi,uv);float lm=Hm.r+fine*.16*uDetail;bool wm=lm<.5||Hm.b>.55;
+      if(wm&&A.a<.5)alb=uWaterCol;if(!wm&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=wm?1.:0.;}
     float land=1.-wat;
     alb*=1.+fine*.22*uDetail*land;
     vec3 g=vec3(snoise(dp*3.+1.),snoise(dp*3.+5.),snoise(dp*3.+9.))*.6+vec3(snoise(dp*9.+2.),snoise(dp*9.+6.),snoise(dp*9.+10.))*.4;
@@ -267,6 +281,29 @@ void main(){
   float fr=pow(1.-max(dot(Ng,V),0.),3.);
   col=mix(col,uAtmo*(.15+.85*day),clamp(fr*uAtmoK*.55,0.,1.)*smoothstep(-.35,.25,ndlG));
   col+=uAtmo*uAtmoK*.035*day;
+  if(uRealm>.5&&uRealm<1.5){ /* Cognitive Realm: the subastral over the same ground */
+    float pl=1.-wat;vec3 cs;
+    vec3 g=d*620.;vec3 ci=floor(g);vec3 f=fract(g)-.5;vec3 hh=fract(sin(vec3(dot(ci,vec3(127.1,311.7,74.7)),dot(ci,vec3(269.5,183.3,246.1)),dot(ci,vec3(113.5,271.9,124.6))))*43758.5453);
+    float sw=snoise(d*5.+vec3(uTime*.03))*.5+.5;float sw2=snoise(d*17.-vec3(uTime*.05))*.5+.5;
+    if(uRStyle<.5){float r=length(f);float bead=smoothstep(.5,.28,r);vec3 bc=mix(uRC1*.18,mix(uRC1,uRC2,hh.x)*(.5+.5*hh.y),bead);bc+=vec3(1.)*pow(max(0.,1.-length(f-vec3(-.12,.14,0.))*5.),6.)*bead*.6;cs=mix(mix(uRC1*.45,uRC2*.55,sw*.6+sw2*.4),bc,clamp(uDetail*1.6,0.,1.));}
+    else if(uRStyle<1.5){cs=mix(uRC1,uRC2,smoothstep(.2,.8,sw*.7+sw2*.3));}
+    else if(uRStyle<2.5){float t=snoise(d*3.+vec3(uTime*.12))*.5+.5;float t2=snoise(d*9.+vec3(-uTime*.2))*.5+.5;cs=mix(uRC1,uRC2,smoothstep(.3,.7,t))*(.6+.8*t2);pl=1.;}
+    else if(uRStyle<3.5){float st=sin(d.x*40.+sw*9.)*.5+.5;cs=mix(mix(uRC1,uRC2,sw),uRC3*1.6+.2,smoothstep(.6,1.,st)*.6)*(.8+.4*sw2);}
+    else{cs=mix(uRC1*.25,uRC2,smoothstep(.55,.95,sw2)*.8);}
+    float sheen=pow(max(0.,1.-length(f)*2.),3.)*hh.z;
+    vec3 gr=uRC3*(.55+.45*(snoise(d*60.)*.5+.5))+vec3(.05)*sheen;
+    vec3 base=mix(gr,cs,pl);
+    float lt=.3+.7*max(dot(N,L),0.);
+    col=base*lt;
+    float flame=B.a*smoothstep(.55,.95,hh.x)*(.7+.3*sin(uTime*6.+hh.y*30.));
+    col+=vec3(1.,.72,.38)*flame*1.4;
+    col=mix(col,uRC2*.35,clamp(fr*.6,0.,1.));}
+  else if(uRealm>1.5){ /* Spiritual Realm: Investiture and Connection, not a landscape */
+    float n1=abs(snoise(d*4.+vec3(uTime*.05)));float n2=abs(snoise(d*11.-vec3(uTime*.08)));
+    float web=pow(1.-smoothstep(0.,.08,n1),2.)+pow(1.-smoothstep(0.,.06,n2),2.)*.6;
+    float edge=1.-smoothstep(.0,.25,abs((1.-wat)-.5)*2.);
+    col=uRC3*.05+mix(uRC1,uRC2,smoothstep(-.5,.5,snoise(d*2.)))*web*1.2+uRC1*.08*(1.-wat)+vec3(1.,.95,.8)*edge*.12;
+    col+=mix(uRC1,uRC2,.5)*fr*1.2;}
   gl_FragColor=vec4(col,1.);
   #include <tonemapping_fragment>
   #include <encodings_fragment>
@@ -407,6 +444,8 @@ function buildShell(K){
   '<button class="btn" id="galBtn">'+esc(U.galaxyButton)+'</button><button class="btn" id="webBtn">'+esc(U.homeButton)+'</button>'+
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button></div></header>'+
 '<nav id="crumbs" aria-label="Location"></nav>'+
+(K.raw.realms?'<div class="seg" id="realms" role="group" aria-label="Realm">'+["physical","cognitive","spiritual"].filter(r=>r==="physical"||K.raw.realms[r]).map(r=>{const R=K.raw.realms[r]||{};
+  return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
 '<aside class="panel" id="index" aria-label="Worlds"></aside><aside class="panel" id="dossier" aria-live="polite"></aside>'+
 '<div id="navhint"></div><div id="bake" hidden>Charting surface<b><i></i></b></div><div id="tip" hidden></div>'+
 '<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><span class="hint" id="legend"></span>'+
@@ -592,6 +631,18 @@ function buildMarkers(){
   markerPts=new THREE.Points(g,markerMat);markerPts.frustumCulled=false;gal.add(markerPts);
   selRing=new THREE.Sprite(new THREE.SpriteMaterial({map:RING_T,color:CL(K.theme.selRing||"#e8cd8a"),transparent:true,depthWrite:false,depthTest:false,opacity:0,sizeAttenuation:false}));selRing.scale.set(.045,.045,1);gal.add(selRing);
   hoverRing=new THREE.Sprite(new THREE.SpriteMaterial({map:RING_T,color:CL(K.theme.hoverRing||"#ece4d2"),transparent:true,depthWrite:false,depthTest:false,opacity:0,sizeAttenuation:false}));hoverRing.scale.set(.032,.032,1);gal.add(hoverRing);
+  buildLinks();
+  /* swarms: drifting motes around fleets and worldships */
+  const SW=Object.assign({n:160,spread:.7,color:[1,.42,.3]},G.swarm||{});
+  WORLDS.filter(w=>w.swarm).forEach(w=>{const R=rng(hashStr(w.id+"s"));const n=SW.n;const p=new Float32Array(n*3),c=new Float32Array(n*3),s=new Float32Array(n);
+    for(let i=0;i<n;i++){const v=new THREE.Vector3(gauss(R),gauss(R)*.4,gauss(R)).multiplyScalar(SW.spread);p.set([v.x,v.y,v.z],i*3);c.set(SW.color,i*3);s[i]=.4+R()*.7;}
+    const pts=new THREE.Points(pointsGeo(p,c,s),galMat);pts.position.copy(w.pos);gal.add(pts);GMARK[w.id+"_swarm"]=pts;});
+  /* beacons */
+  ARR(G.glows).forEach(gl=>{const at=resolvePoint(gl&&gl.at);if(!at)return;const tex=gl.color==="red"?GLOW_R:gl.color==="white"||!gl.color?GLOW_W:glowTex([[0,"rgba(255,255,255,1)"],[.2,gl.color],[1,"rgba(0,0,0,0)"]]);
+    const op=gl.opacity==null?.5:gl.opacity;const s=glowSprite(tex,gl.scale||26,op);s.position.copy(at);gal.add(s);GLOWS.push({def:gl,s,op,pulse:gl.pulse!==false,gate:(gl.book!=null||gl.first!=null||gl.books)?{books:gl.books,first:gl.first!=null?gl.first:gl.book}:null});});
+}
+/* links are rebuilt when the realm layout moves the worlds */
+function buildLinks(){
   /* animated links: routes, networks, raids (PACK_FORMAT 14.6) */
   ARR(G.links).forEach((L,li)=>{if(!L)return;const id=String(L.id!=null?L.id:"link"+li);const pairs=[];
     const netGate=L.network&&CUM&&L.network.gate!==false;const byFirst={};
@@ -608,15 +659,10 @@ function buildMarkers(){
     Object.keys(byFirst).forEach(f=>mk(byFirst[f],id+"@"+f,+f));
     if(!pairs.length)return;
     mk(pairs,id,L.first!=null?L.first:null);});
-  /* swarms: drifting motes around fleets and worldships */
-  const SW=Object.assign({n:160,spread:.7,color:[1,.42,.3]},G.swarm||{});
-  WORLDS.filter(w=>w.swarm).forEach(w=>{const R=rng(hashStr(w.id+"s"));const n=SW.n;const p=new Float32Array(n*3),c=new Float32Array(n*3),s=new Float32Array(n);
-    for(let i=0;i<n;i++){const v=new THREE.Vector3(gauss(R),gauss(R)*.4,gauss(R)).multiplyScalar(SW.spread);p.set([v.x,v.y,v.z],i*3);c.set(SW.color,i*3);s[i]=.4+R()*.7;}
-    const pts=new THREE.Points(pointsGeo(p,c,s),galMat);pts.position.copy(w.pos);gal.add(pts);GMARK[w.id+"_swarm"]=pts;});
-  /* beacons */
-  ARR(G.glows).forEach(gl=>{const at=resolvePoint(gl&&gl.at);if(!at)return;const tex=gl.color==="red"?GLOW_R:gl.color==="white"||!gl.color?GLOW_W:glowTex([[0,"rgba(255,255,255,1)"],[.2,gl.color],[1,"rgba(0,0,0,0)"]]);
-    const op=gl.opacity==null?.5:gl.opacity;const s=glowSprite(tex,gl.scale||26,op);s.position.copy(at);gal.add(s);GLOWS.push({s,op,pulse:gl.pulse!==false,gate:(gl.book!=null||gl.first!=null||gl.books)?{books:gl.books,first:gl.first!=null?gl.first:gl.book}:null});});
+  if(typeof realmThreads==="function")realmThreads();
 }
+function rebuildLinks(){Object.keys(LINKS).forEach(k=>{const l=LINKS[k];gal.remove(l);l.geometry.dispose();const i=linkMats.indexOf(l.material);if(i>=0)linkMats.splice(i,1);l.material.dispose();delete LINKS[k];});
+  LINK_DEFS.length=0;buildLinks();applyBookToScene();}
 /* field stars around Sol, so the local volume has depth */
 function localField(){const LF=G.localField;if(LF===false)return;const o=Object.assign({},typeof LF==="object"?LF:{});
   const n0=MOB?1400:3000;const n=Math.round(n0*(o.density==null?1:o.density));if(n<=0)return;const ctr=o.at?(resolvePoint(o.at)||SOL):SOL;const spread=o.spread||14;const clear=o.clear||0;
@@ -658,7 +704,7 @@ const orbW=new Orbit(camW,{target:new THREE.Vector3(),yaw:.6,pitch:.25,dist:4.2,
 const TYPES={terran:0,ocean:1,archipelago:2,desert:3,forest:4,ice:5,gas:6,city:7,barren:8,lava:9,hive:10,toxic:11,dyson:12};
 const bakeMat=new THREE.ShaderMaterial({vertexShader:BAKE_VS,fragmentShader:BAKE_FS,depthTest:false,depthWrite:false,
   uniforms:{uPass:{value:0},uType:{value:0},uOct:{value:8},uSeed:{value:new THREE.Vector3()},uFreq:{value:1.6},uWarp:{value:.6},uRough:{value:.6},uSea:{value:.5},uIce:{value:72},
-    uLights:{value:0},uBump:{value:1},uCloud:{value:.5},uCloudScale:{value:2.2},uBands:{value:14},uWall:{value:0},uNF:{value:0},uFA:{value:[]},uFB:{value:[]},uFC:{value:[]},uFD:{value:[]},tBase:{value:null},uBase:{value:0},uDune:{value:9},uMoist:{value:0},uEps:{value:.002},
+    uLights:{value:0},uBump:{value:1},uCloud:{value:.5},uCloudScale:{value:2.2},uBands:{value:14},uWall:{value:0},uNF:{value:0},uFA:{value:[]},uFB:{value:[]},uFC:{value:[]},uFD:{value:[]},tBase:{value:null},uBase:{value:0},tMapHi:{value:null},tMapLo:{value:null},tMapReg:{value:null},uMapOn:{value:0},uMapMtn:{value:.35},uDune:{value:9},uMoist:{value:0},uEps:{value:.002},
     uP0:{value:new THREE.Color()},uP1:{value:new THREE.Color()},uP2:{value:new THREE.Color()},uP3:{value:new THREE.Color()},uP4:{value:new THREE.Color()},uP5:{value:new THREE.Color()}}});
 const bakeScene=new THREE.Scene();const bakeCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 const bakeQuad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),bakeMat);bakeQuad.frustumCulled=false;bakeScene.add(bakeQuad);
@@ -678,10 +724,56 @@ function setFeatures(g){const u=bakeMat.uniforms;const F=ARR(g.feat).filter(f=>f
   F.forEach((f,i)=>{const a=latLonDir(...(f.at||f.from));const b=f.to?latLonDir(...f.to):a;
     u.uFA.value[i].set(a.x,a.y,a.z,(f.r||5)*DEG);u.uFB.value[i].set(FK[f.k],f.s==null?.3:f.s,BS[f.style]||0,0);
     const c=new THREE.Color(f.c||"#ffffff");u.uFC.value[i].set(c.r,c.g,c.b,0);u.uFD.value[i].set(b.x,b.y,b.z,(f.w||3)*DEG);});
-  u.uBase.value=g.base==="earth"&&EARTH_TEX?1:0;u.tBase.value=EARTH_TEX;}
+  u.uBase.value=g.base==="earth"&&EARTH_TEX?1:0;u.tBase.value=EARTH_TEX;
+  const MT=g.map?mapTextures(g.map):null;u.uMapOn.value=MT?1:0;u.tMapHi.value=MT?MT.hi:null;u.tMapLo.value=MT?MT.lo:null;u.tMapReg.value=MT?MT.reg:null;
+  u.uMapMtn.value=g.map&&g.map.mtn!=null?g.map.mtn:.35;}
 let EARTH_TEX=null;let earthReady=null;
 function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+"earth-base.png";});return earthReady;}
 if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
+/* vector maps (gfx.map): hand-laid coastlines, lakes, rivers, ranges and painted regions, given as
+   [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
+   equirectangular textures (8192x4096 on capable desktops). The bake reads them for the 4K surface,
+   and the planet shader reads the full-size one again up close, so coastlines and rivers stay sharp. */
+const MAPW=(()=>{if(window.__MAPW)return window.__MAPW;if(MOB||MAXTEX<8192)return 4096;const dm=navigator.deviceMemory;return dm&&dm<8?4096:8192;})();
+const MAP_CACHE={};
+function fractalLine(pts,closed,rough,depth,seed){const R=rng(seed);let P=ARR(pts).filter(q=>q&&q.length>1).map(q=>[+q[0],+q[1]]);if(P.length<2)return P;
+  for(let i=1;i<P.length;i++){while(P[i][1]-P[i-1][1]>180)P[i][1]-=360;while(P[i][1]-P[i-1][1]<-180)P[i][1]+=360;}
+  for(let d=0;d<depth;d++){const N=[];const n=P.length;const m=closed?n:n-1;
+    for(let i=0;i<m;i++){const a=P[i],b=P[(i+1)%n];let bl=b[1];while(bl-a[1]>180)bl-=360;while(bl-a[1]<-180)bl+=360;
+      const dx=bl-a[1],dy=b[0]-a[0];const L=Math.hypot(dx,dy)||1;const k=(R()-.5)*rough*L;
+      N.push(a,[(a[0]+b[0])/2+dx/L*k,(a[1]+bl)/2-dy/L*k]);}
+    if(!closed)N.push(P[n-1]);P=N;}
+  return P;}
+function mapPath(ctx,P,W,H,closed){ctx.beginPath();[-360,0,360].forEach(off=>{P.forEach((q,i)=>{const x=(q[1]+off+180)/360*W,y=(90-q[0])/180*H;if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);});if(closed)ctx.closePath();});}
+function mapTextures(M){const key=JSON.stringify(M);if(MAP_CACHE[key])return MAP_CACHE[key];
+  const W=MAPW,H=W/2,seed=hashStr(key),rough=M.rough==null?.5:M.rough;
+  const land=ARR(M.land).map((q,i)=>fractalLine(q,true,rough,M.depth||6,seed+i));
+  const water=ARR(M.water).map((q,i)=>fractalLine(q,true,rough*.8,5,seed+100+i));
+  const ranges=ARR(M.ranges).map((r,i)=>({w:r.w||1.6,s:r.s==null?1:r.s,P:fractalLine(r.line,false,.3,4,seed+200+i)}));
+  const rivers=ARR(M.rivers).map((r,i)=>({w:r.w||.16,c:r.c||null,P:fractalLine(r.line,false,.55,5,seed+300+i)}));
+  const regions=ARR(M.regions).map((r,i)=>({c:r.c||"#7a8a4a",s:r.s==null?.9:r.s,P:fractalLine(r.poly,true,.45,5,seed+400+i)}));
+  const px=d=>d/360*W;
+  const hi=document.createElement("canvas");hi.width=W;hi.height=H;const h=hi.getContext("2d");
+  h.fillStyle="#000";h.fillRect(0,0,W,H);h.globalCompositeOperation="lighter";h.lineCap=h.lineJoin="round";
+  h.fillStyle="rgb(255,0,0)";land.forEach(P=>{mapPath(h,P,W,H,true);h.fill();});
+  h.fillStyle="rgb(0,0,255)";water.forEach(P=>{mapPath(h,P,W,H,true);h.fill();});
+  h.strokeStyle="rgb(0,0,255)";rivers.filter(r=>!r.c).forEach(r=>{h.lineWidth=Math.max(1.2,px(r.w*.8));mapPath(h,r.P,W,H,false);h.stroke();});
+  ranges.forEach(r=>{h.strokeStyle="rgb(0,"+Math.round(150*clamp(r.s,0,1))+",0)";h.lineWidth=Math.max(2,px(r.w*.8));mapPath(h,r.P,W,H,false);h.stroke();});
+  const LW=1024,LH=512;
+  const small=(w,draw)=>{const c=document.createElement("canvas");c.width=w;c.height=w/2;const x=c.getContext("2d");x.fillStyle="#000";x.fillRect(0,0,w,w/2);x.lineCap=x.lineJoin="round";draw(x,w,w/2);return c;};
+  const up=c=>{const o=document.createElement("canvas");o.width=LW;o.height=LH;const x=o.getContext("2d");x.imageSmoothingEnabled=true;x.imageSmoothingQuality="high";x.drawImage(c,0,0,LW,LH);return x.getImageData(0,0,LW,LH).data;};
+  const landAt=w=>small(w,(x,ww,hh)=>{x.fillStyle="#fff";land.forEach(P=>{mapPath(x,P,ww,hh,true);x.fill();});});
+  const rel1=up(landAt(64)),rel2=up(landAt(160));
+  const mtn=up(small(320,(x,ww,hh)=>{x.strokeStyle="#fff";ranges.forEach(r=>{x.globalAlpha=clamp(r.s,0,1);x.lineWidth=Math.max(1,r.w*2/360*ww);mapPath(x,r.P,ww,hh,false);x.stroke();});}));
+  const reg=up(small(512,(x,ww,hh)=>{x.fillStyle="#fff";regions.forEach(r=>{x.globalAlpha=clamp(r.s,0,1);mapPath(x,r.P,ww,hh,true);x.fill();});x.globalAlpha=1;x.strokeStyle="#fff";rivers.filter(r=>r.c).forEach(r=>{x.lineWidth=Math.max(1.5,r.w*1.6/360*ww);mapPath(x,r.P,ww,hh,false);x.stroke();});}));
+  const lo=document.createElement("canvas");lo.width=LW;lo.height=LH;const lx=lo.getContext("2d");const id=lx.createImageData(LW,LH);
+  for(let i=0;i<LW*LH;i++){id.data[i*4]=Math.min(255,rel1[i*4]*.6+rel2[i*4]*.4);id.data[i*4+1]=mtn[i*4];id.data[i*4+2]=reg[i*4];id.data[i*4+3]=255;}lx.putImageData(id,0,0);
+  const RW=2048,RH=1024;const rg=document.createElement("canvas");rg.width=RW;rg.height=RH;const rx=rg.getContext("2d");rx.fillStyle="#7a7a6a";rx.fillRect(0,0,RW,RH);rx.lineJoin="round";
+  regions.forEach(r=>{rx.fillStyle=rx.strokeStyle=r.c;rx.lineWidth=28;mapPath(rx,r.P,RW,RH,true);rx.fill();rx.stroke();});
+  rivers.filter(r=>r.c).forEach(r=>{rx.strokeStyle=r.c;rx.lineCap="round";rx.lineWidth=Math.max(2,r.w*1.6/360*RW);mapPath(rx,r.P,RW,RH,false);rx.stroke();});
+  const tex=(c,mip)=>{const t=new THREE.CanvasTexture(c);t.wrapS=THREE.RepeatWrapping;t.wrapT=THREE.ClampToEdgeWrapping;t.minFilter=mip?THREE.LinearMipmapLinearFilter:THREE.LinearFilter;t.generateMipmaps=!!mip;t.anisotropy=ANISO;return t;};
+  return MAP_CACHE[key]={hi:tex(hi,true),lo:tex(lo,false),reg:tex(rg,false)};}
+function freeMaps(keep){Object.keys(MAP_CACHE).forEach(k=>{if(k===keep)return;const m=MAP_CACHE[k];m.hi.dispose();m.lo.dispose();m.reg.dispose();delete MAP_CACHE[k];});}
 function makeRT(w,h,mip){const rt=new THREE.WebGLRenderTarget(w,h,{depthBuffer:false,stencilBuffer:false,wrapS:THREE.RepeatWrapping,wrapT:THREE.ClampToEdgeWrapping,
   minFilter:mip?THREE.LinearMipmapLinearFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,generateMipmaps:!!mip});rt.texture.anisotropy=ANISO;return rt;}
 function renderBake(rt,y0,rows){const W=rt.width;renderer.setRenderTarget(rt);
@@ -731,6 +823,7 @@ skyStars(wsc,MOB?2200:4200,1500,1.4);
     const w=.05+R()*.16*(1+Math.cos(a-1)*.6);c.set([w,w*.93,w*.86],i*3);}
   const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(p,3));g.setAttribute("color",new THREE.BufferAttribute(c,3));
   const pts=new THREE.Points(g,new THREE.PointsMaterial({size:1.2,sizeAttenuation:false,vertexColors:true,transparent:true,opacity:.85,depthWrite:false}));pts.frustumCulled=false;wsc.add(pts);})();
+const WSKY=wsc.children.filter(o=>o.isPoints);
 const sunSprite=glowSprite(GLOW_W,140,.95);sunSprite.position.copy(SUN_DIR).multiplyScalar(600);wsc.add(sunSprite);
 const sunHalo=glowSprite(GLOW_W,520,.18);sunHalo.position.copy(sunSprite.position);wsc.add(sunHalo);
 const planetGroup=new THREE.Group();wsc.add(planetGroup);
@@ -739,7 +832,8 @@ const SPHERE_LO=new THREE.SphereGeometry(1,96,64);
 function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
     uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.12)},uAtmo:{value:CL(g.atmo||"#6fa8ff")},uAtmoK:{value:g.atmoK==null?1:g.atmoK},
     uLightCol:{value:CL(g.lightCol||"#ffc27a")},uLava:{value:CL(g.lava||"#ff5a1a")},uLavaOn:{value:(g.type==="lava"||g.type==="dyson")?1:0},uSeed:{value:new THREE.Vector3(hashStr(w.id)%97,3,7)},
-    uCloudShift:{value:0},uDetail:{value:0},uHasSea:{value:(g.sea>0&&g.type!=="gas")?1:0},uWaterCol:{value:CL((g.pal||[])[1]||"#2a6f97")},uLandCol:{value:CL((g.pal||[])[2]||"#4b6b3a")},uAmb:{value:g.amb==null?.018:g.amb},uHasCld:{value:g.clouds?1:0},uTime:{value:0},uRot:{value:new THREE.Matrix3()}};
+    uCloudShift:{value:0},uDetail:{value:0},uHasSea:{value:(g.sea>0&&g.type!=="gas")?1:0},uWaterCol:{value:CL((g.pal||[])[1]||"#2a6f97")},uLandCol:{value:CL((g.pal||[])[2]||"#4b6b3a")},uAmb:{value:g.amb==null?.018:g.amb},uHasCld:{value:g.clouds?1:0},uTime:{value:0},uRot:{value:new THREE.Matrix3()},
+    tMapHi:{value:g.map?mapTextures(g.map).hi:null},uMapOn:{value:g.map?1:0},uRealm:{value:0},uRStyle:{value:0},uRC1:{value:new THREE.Color()},uRC2:{value:new THREE.Color()},uRC3:{value:new THREE.Color()}};
   return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:PLANET_FS,uniforms:u,extensions:{derivatives:true}});}
 function cloudMaterial(set,g,w){return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:CLOUD_FS,transparent:true,depthWrite:false,extensions:{derivatives:true},
   uniforms:{tCld:{value:set.cld.texture},uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.2)},uCloudCol:{value:CL(g.cloudCol||"#ffffff")},
@@ -757,7 +851,7 @@ const setCache={};
 function cacheKey(w,g){return w.id+"|"+JSON.stringify(g);}
 function buildPlanet(w,book,onProgress){
   clearPlanet();
-  const g=gfxFor(w,book);const key=cacheKey(w,g);
+  const g=gfxFor(w,book);const key=cacheKey(w,g);freeMaps(g.map?JSON.stringify(g.map):null);
   const P={w,g,key,root:new THREE.Group(),moons:[],spin:0,jobs:[]};
   planetGroup.add(P.root);
   let set=setCache[key];
@@ -782,7 +876,7 @@ function buildPlanet(w,book,onProgress){
   P.moons.forEach(m=>P.jobs.push(m.mo.job()));
   /* free other worlds' maps */
   Object.keys(setCache).forEach(k=>{if(k!==key){const s=setCache[k];if(s.hd)disposeSet(s.hd);if(s.pre)disposeSet(s.pre);delete setCache[k];}});
-  PL=P;return P;
+  PL=P;applyRealmToPlanet();return P;
 }
 function applySet(P,s){P.mat.uniforms.tAlb.value=s.alb.texture;P.mat.uniforms.tNrm.value=s.nrm.texture;P.mat.uniforms.tCld.value=s.cld.texture;if(P.cmat)P.cmat.uniforms.tCld.value=s.cld.texture;}
 function clearPlanet(){if(!PL)return;bakeJobs.forEach(j=>{if(PL.jobs.includes(j))j.cancelled=true;});
@@ -800,16 +894,18 @@ function updatePlanet(dt,t,spinOn){if(!PL)return;
 }
 
 /* ===================== STATE & SPOILER RULES (PACK_FORMAT 6) ===================== */
-const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false};
+const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical"};
 const EV_BY={};EVENTS.forEach((e,i)=>{e.ord=i;EV_BY[e.id]=e;});
 const EFF=()=>S.book||99;
 const firstOf=w=>w.first||(w.books&&w.books.length?Math.min(...w.books):1);
 /* optional book gating for labels, glows, territories and links: `books:[..]` = only in those books, `book`/`first` = from that book on */
 const gateOk=(it,b)=>{if(!it||!b)return true;if(it.books)return ARR(it.books).includes(b);const f=it.first!=null?it.first:it.gateBook;return f==null||b>=f;};
 const eraVal=(o,key)=>{let v=o[key];const cur=CUM?EFF():S.book;eraKeys(o).forEach(k=>{if(cur>=k&&o.eras[k][key]!=null)v=o.eras[k][key];});return v;};
-const seen=w=>!CUM||!S.book||firstOf(w)<=S.book;
+const realmOk=it=>{if(!it)return true;const r=it.realm||it.realms;if(!r||typeof r!=="string"&&!Array.isArray(r))return true;return ARR(r).includes(S.realm||"physical");};
+const seen=w=>(!CUM||!S.book||firstOf(w)<=S.book)&&realmOk(w);
 const inBook=w=>!S.book||(w.books||[]).includes(S.book);
-const siteSeen=s=>!CUM||!S.book||!(s.books&&s.books.length)||Math.min(...s.books)<=S.book;
+const siteEraOk=s=>{const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since);};
+const siteSeen=s=>siteEraOk(s)&&(!CUM||!S.book||!(s.books&&s.books.length)||Math.min(...s.books)<=S.book)&&realmOk(s);
 const evFor=(wid,site)=>EVENTS.filter(e=>e.world===wid&&(site==null||e.site===site)&&(!S.book||(CUM?e.book<=S.book:e.book===S.book)));
 const eraKeys=w=>w.eras?Object.keys(w.eras).map(Number).filter(k=>isFinite(k)&&w.eras[k]).sort((a,b)=>a-b):[];
 function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(S.book>=k&&w.eras[k].status)s=w.eras[k].status;});
@@ -833,12 +929,14 @@ WORLDS.forEach(w=>{const b=document.createElement("button");b.className="lbl"+(w
   b.addEventListener("mouseenter",ev=>{S.hover=w.id;showTipWorld(w,ev.clientX,ev.clientY);});b.addEventListener("mousemove",ev=>placeTip(ev.clientX,ev.clientY));
   b.addEventListener("mouseleave",()=>{S.hover=null;hideTip();});});
 const REGIONS=[];
-function regionLabel(text,pos,minD,maxD,big){if(!pos||!text)return;const el=document.createElement("div");el.className="lbl region"+(big?" big":"");el.textContent=text;labelsEl.appendChild(el);REGIONS.push({el,pos,minD,maxD,gate:arguments[5]||null});}
+function regionLabel(text,pos,minD,maxD,big){if(!pos||!text)return;const el=document.createElement("div");el.className="lbl region"+(big?" big":"");el.textContent=text;labelsEl.appendChild(el);
+  const spec=arguments[6]||null;const off=spec&&spec.off?new THREE.Vector3(+spec.off[0]||0,+spec.off[1]||0,+spec.off[2]||0):new THREE.Vector3();
+  REGIONS.push({el,pos,minD,maxD,gate:arguments[5]||null,spec,off});}
 function regionLabels(){
   const core=G.coreLabels!==false;
   if(core)regionLabel("Galactic core",new THREE.Vector3(0,14,0),250,6000,true);
   ARR(G.labels).forEach(r=>{if(!r)return;let text=r.text;if(!text&&r.at&&r.at.arm!=null){const a=typeof r.at.arm==="number"?ARMS[r.at.arm]:{name:r.at.arm};text=a&&a.name;}
-    const at=r.at?Object.assign({},r.at):null;if(at&&r.off&&!at.off)at.off=r.off;regionLabel(text,resolvePoint(at),r.min==null?60:r.min,r.max==null?1500:r.max,!!r.big,(r.book!=null||r.first!=null||r.books)?{books:r.books,first:r.first!=null?r.first:r.book}:null);});
+    const at=r.at?Object.assign({},r.at):null;if(at&&r.off&&!at.off)at.off=r.off;regionLabel(text,resolvePoint(at),r.min==null?60:r.min,r.max==null?1500:r.max,!!r.big,(r.book!=null||r.first!=null||r.books)?{books:r.books,first:r.first!=null?r.first:r.book}:null,{world:at&&at.world,off:at&&at.off,realm:r.realm||r.realms});});
   if(core){regionLabel("Large Magellanic Cloud",SAT.lmc.clone().add(new THREE.Vector3(0,60,0)),300,9000,true);
     regionLabel("Small Magellanic Cloud",SAT.smc.clone().add(new THREE.Vector3(0,40,0)),300,9000);}
 }
@@ -857,7 +955,8 @@ function layoutGalaxyLabels(W,H){
     el.style.opacity=show?(inBook(w)?1:K.spoil.dimLabel):0;el.style.pointerEvents=show?"auto":"none";
     if(show)el.style.transform="translate("+(pr.x+7)+"px,"+(pr.y-11)+"px)";
     el.classList.toggle("sel",w.id===S.sel);});
-  REGIONS.forEach(r=>{const pr=project(r.pos,camG,W,H);const cd=camPos.distanceTo(r.pos);const show=pr.z<1&&cd>r.minD&&cd<r.maxD&&gateOk(r.gate,S.book);
+  REGIONS.forEach(r=>{if(r.spec&&r.spec.world&&WORLD_BY[r.spec.world])r.pos=WORLD_BY[r.spec.world].pos.clone().add(r.off);
+    const pr=project(r.pos,camG,W,H);const cd=camPos.distanceTo(r.pos);const show=pr.z<1&&cd>r.minD&&cd<r.maxD&&gateOk(r.gate,S.book)&&realmOk(r.spec);
     r.el.style.opacity=show?1:0;if(show)r.el.style.transform="translate(-50%,-50%) translate("+pr.x+"px,"+pr.y+"px)";});
 }
 
@@ -893,7 +992,7 @@ const idx=$("#index");
 function renderIndex(){let h='<h2 class="eyebrow">'+esc(UI.indexTitle)+'</h2>';
   K.groups.forEach(gr=>{const g=gr.id;const ws=WORLDS.filter(w=>w.group===g&&seen(w));if(!ws.length)return;h+='<div class="grp">'+esc(GROUP_NAME(g))+'</div>';
     ws.forEach(w=>{const n=evFor(w.id).length;h+='<button class="world'+(inBook(w)?"":" dim")+(S.sel===w.id?" sel":"")+(w.craft?" craft":"")+'" data-id="'+esc(w.id)+'"><span class="sw" style="background:'+esc((w.gfx&&w.gfx.sw)||(w.gfx&&w.gfx.pal&&w.gfx.pal[3])||"#889")+'"></span>'+esc(w.name)+'<span class="n">'+(n?n+UI.evCount:"")+'</span></button>';});});
-  if(S.book){const hid=WORLDS.filter(w=>!seen(w)).length;if(hid)h+='<p class="locked-note">'+hid+' more world'+(hid===1?" appears":"s appear")+' in later books.</p>';}
+  if(S.book){const hid=WORLDS.filter(w=>realmOk(w)&&!seen(w)).length;if(hid)h+='<p class="locked-note">'+hid+' more world'+(hid===1?" appears":"s appear")+' in later books.</p>';}
   idx.innerHTML=h;}
 idx.addEventListener("click",e=>{const b=e.target.closest(".world");if(!b)return;if(MOB){idx.classList.remove("open");$("#idxBtn").setAttribute("aria-expanded","false");}
   if(S.view==="world")descend(b.dataset.id);else selectWorld(b.dataset.id,true);});
@@ -906,7 +1005,7 @@ function grab(title,sub,go){return '<div class="grab" id="grab" role="button" ta
 function chipStyle(w){const g=GROUP_BY[w.group];const c=g&&g.chip;return c?' style="'+(c.border?"--chip-b:"+esc(c.border)+";":"")+(c.color?"--chip-c:"+esc(c.color):"")+'"':"";}
 function renderDossier(){let h="";const M=K.meta,IN=K.intro;
   if(!S.sel){
-    h=grab(M.title,"About")+'<p class="eyebrow">'+esc([M.author,M.years].filter(Boolean).join(" · "))+'</p><h2>'+esc(M.series)+'</h2>'+
+    h=grab(M.title,"About")+'<p class="eyebrow">'+esc([M.author,M.years].filter(Boolean).join(" · "))+'</p><h2>'+esc(M.series)+'</h2>'+realmCard(null)+
       (IN.text?'<p class="blurb">'+esc(IN.text)+'</p>':"")+
       (CUM?'<div class="rule"><span class="eyebrow">Reading through</span></div>'+
       '<p class="shield">'+(S.book?'Showing <b>'+esc(BOOKS[S.book].title)+'</b> and the books before it. Worlds, events and fates from later books are hidden.':
@@ -919,12 +1018,12 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     h=grab(w.name,S.view==="world"?"On the surface":"Selected",S.view==="galaxy")+
       '<p class="eyebrow">'+esc(GROUP_NAME(w.group))+'</p><h2>'+esc(w.name)+'</h2>'+(w.aka&&w.aka.length?'<p class="aka">'+esc(ARR(w.aka).join(" · "))+'</p>':"")+
       '<div class="chips">'+(status?'<span class="chip"'+chipStyle(w)+'>'+esc(status)+'</span>':"")+bks(w.books)+'</div>'+
-      '<p class="blurb">'+esc(eraBlurb(w))+'</p>'+
+      realmCard(w)+(S.realm!=="physical"?'<div class="rule"><span class="eyebrow">In the Physical Realm</span></div>':"")+'<p class="blurb">'+esc(eraBlurb(w))+'</p>'+
       '<dl class="facts">'+(w.star&&w.star.name?'<dt>Star</dt><dd>'+esc(w.star.name)+'</dd>':"")+ARR(eraVal(w,"facts")).map(f=>'<dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>').join("")+
         '<dt>Distance</dt><dd>'+esc(distText(w))+'</dd></dl>'+
       '<div class="actions">'+(S.view==="galaxy"?'<button class="btn primary" data-act="descend">Descend to the surface</button>':'<button class="btn primary" data-act="ascend">Return to the galaxy</button>')+
         (S.view==="world"?'':'<button class="btn" data-act="web">'+esc(UI.homeLink)+'</button>')+'</div>';
-    const all=w.sites||[];
+    const all=(w.sites||[]).filter(siteEraOk);
     if(CUM){const sites=all.filter(siteSeen);
       if(sites.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
         sites.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(!S.book||(s.books||[]).includes(S.book)?"":' style="opacity:.55"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||[])+'</span></span><span class="pd">'+esc(s.desc)+'</span></button>';});}}
@@ -1010,11 +1109,97 @@ $("#crumbs").addEventListener("click",e=>{const b=e.target.closest("[data-c]");i
   if(k==="gal")flyGalaxy();else if(k==="web")flyHuman();else if(k==="sat"){if(S.view==="world")ascend();}else if(k==="world"){if(S.view==="world")selectSite(null);else descend(S.sel);}});
 let hintT=0;function hint(t){const h=$("#navhint");h.textContent=t;h.style.opacity=1;clearTimeout(hintT);hintT=setTimeout(()=>h.style.opacity=0,5200);}
 
+/* ===================== REALMS (PACK_FORMAT 19) =====================
+   One space, three views. Physical: the map as drawn. Cognitive: the same worlds with the empty
+   space between them compressed, each world shown as its subastral. Spiritual: no distance at all;
+   worlds gather by Connection around the Shards that invest them. */
+const RL=K.raw.realms||null;const RCOG=(RL&&RL.cognitive)||{},RSPI=(RL&&RL.spiritual)||{};
+const REALM_FX=[];
+WORLDS.forEach(w=>{w.posP=w.pos.clone();});
+const RCENTER=resolvePoint(RL&&RL.center)||SOL.clone();
+function groupAnchor(gid){const gr=GROUP_BY[gid];if(gr&&gr.anchor&&WORLD_BY[gr.anchor])return WORLD_BY[gr.anchor].posP.clone();
+  const ws=WORLDS.filter(w=>w.group===gid);const c=new THREE.Vector3();ws.forEach(w=>c.add(w.posP));return c.multiplyScalar(1/Math.max(1,ws.length));}
+const ANCH={};K.groups.forEach(gr=>ANCH[gr.id]=groupAnchor(gr.id));
+const anchorOf=w=>w.realmAnchor&&WORLD_BY[w.realmAnchor]?ANCH[WORLD_BY[w.realmAnchor].group]:ANCH[w.group];
+{const kO=RCOG.compress==null?.4:RCOG.compress,kI=RCOG.compressInner==null?.75:RCOG.compressInner;
+  WORLDS.forEach(w=>{const a=anchorOf(w);w.posC=RCENTER.clone().add(a.clone().sub(RCENTER).multiplyScalar(kO)).add(w.posP.clone().sub(a).multiplyScalar(kI));});}
+const SHARDS=ARR(RSPI.shards).filter(x=>x&&x.id);const SNODE={};
+{const n=SHARDS.length||1,R0=RSPI.radius||14,lift=RSPI.lift==null?1.5:RSPI.lift;
+  SHARDS.forEach((sh,i)=>{const a=i/n*TAU+(RSPI.rot||0);SNODE[sh.id]=RCENTER.clone().add(new THREE.Vector3(Math.sin(a)*R0,lift,Math.cos(a)*R0));});
+  WORLDS.forEach(w=>{const gr=GROUP_BY[w.group]||{};const own=w.realms&&w.realms.spiritual&&w.realms.spiritual.shards;
+    const sp=ARR(own||w.spirit||gr.spirit).filter(id=>SNODE[id]);w.spiritShards=sp;let an;
+    if(sp.length){an=new THREE.Vector3();sp.forEach(id=>an.add(SNODE[id]));an.multiplyScalar(1/sp.length);an=RCENTER.clone().add(an.sub(RCENTER).multiplyScalar(RSPI.pull==null?.58:RSPI.pull));}
+    else{const R=rng(hashStr(w.group+"sp"));const a=R()*TAU;an=RCENTER.clone().add(new THREE.Vector3(Math.sin(a)*R0*.2,lift*.6,Math.cos(a)*R0*.2));}
+    w.posS=an.add(w.posP.clone().sub(anchorOf(w)).multiplyScalar(RSPI.inner==null?.45:RSPI.inner));});}
+/* Cognitive extras: embers in the dark between subastrals, glows for each subastral and perpendicularity */
+function realmSprite(tex,scale,op,realm,world,off,first,pulse,stretch){const sp=glowSprite(tex,scale,op);if(stretch)sp.scale.set(scale*stretch[0],scale*stretch[1],1);
+  sp.visible=false;if(!world&&off)sp.position.copy(off);gal.add(sp);const f={s:sp,op,realm,world,off:world?(off||new THREE.Vector3()):new THREE.Vector3(),first,pulse,ph:Math.random()*6};REALM_FX.push(f);return f;}
+if(RL){
+  if(RL.cognitive){const n=MOB?1600:3600,R=rng(5);const p=new Float32Array(n*3),c=new Float32Array(n*3),z=new Float32Array(n);const spread=RCOG.emberSpread||12;
+    for(let i=0;i<n;i++){const v=new THREE.Vector3(gauss(R),gauss(R)*.35,gauss(R)).multiplyScalar(spread);p.set([RCENTER.x+v.x,RCENTER.y+v.y,RCENTER.z+v.z],i*3);
+      const t=R();const col=t<.7?[1,.45,.18]:t<.9?[1,.7,.35]:[.8,.6,1];const b=.25+R()*.5;c.set([col[0]*b,col[1]*b,col[2]*b],i*3);z[i]=.05+R()*.12;}
+    const em=new THREE.Points(pointsGeo(p,c,z),galMat.clone());em.material.uniforms.uAlpha.value=1;em.visible=false;em.frustumCulled=false;gal.add(em);REALM_FX.push({s:em,realm:"cognitive",op:1});
+    const SAS=ARR(RCOG.subastrals).filter(sa=>sa&&WORLD_BY[sa.world]&&WORLD_BY[sa.world].posC);const SAC=new THREE.Vector3();SAS.forEach(sa=>SAC.add(WORLD_BY[sa.world].posC));if(SAS.length)SAC.multiplyScalar(1/SAS.length);
+    /* subastral names fan outward from the middle of the cluster so they do not pile up */
+    const saOff=sa=>{if(sa.off)return sa.off;const w=WORLD_BY[sa.world];const r=sa.r||2.2;if(!w.posC)return [0,-r*.42,0];const d=w.posC.clone().sub(SAC);d.y=0;if(d.length()<1e-3)return [0,-r*.42,0];d.normalize().multiplyScalar(r*1.25+1.1);return [d.x,-r*.2,d.z];};
+    ARR(RCOG.subastrals).forEach(sa=>{if(!sa||!WORLD_BY[sa.world])return;const tex=glowTex([[0,"rgba(255,255,255,.9)"],[.35,sa.color||"#8a6fe8"],[1,"rgba(0,0,0,0)"]]);
+      realmSprite(tex,sa.r||2.2,sa.op==null?.42:sa.op,"cognitive",sa.world,new THREE.Vector3(),sa.first,true);
+      if(sa.name)regionLabel(sa.name,WORLD_BY[sa.world].pos.clone(),.6,60,false,sa.first?{first:sa.first}:null,{world:sa.world,off:saOff(sa),realm:"cognitive"});});
+    ARR(RCOG.perps).forEach(pp=>{if(!pp||!WORLD_BY[pp.world])return;const tex=glowTex([[0,"rgba(255,255,255,1)"],[.25,pp.color||"rgba(200,220,255,.6)"],[1,"rgba(0,0,0,0)"]]);
+      realmSprite(tex,.5,.85,"cognitive",pp.world,new THREE.Vector3(0,.35,0),pp.first,true,[.35,2.4]);});}
+  if(RL.spiritual){const core=glowTex([[0,"rgba(255,250,235,1)"],[.25,"rgba(255,220,150,.45)"],[1,"rgba(0,0,0,0)"]]);
+    realmSprite(core,RSPI.coreSize||6,.75,"spiritual",null,RCENTER.clone().add(new THREE.Vector3(0,RSPI.lift==null?1.5:RSPI.lift,0)),null,true);
+    if(RSPI.coreLabel)regionLabel(RSPI.coreLabel,RCENTER.clone().add(new THREE.Vector3(0,(RSPI.lift==null?1.5:RSPI.lift)+1.6,0)),2,400,true,RSPI.coreFirst?{first:RSPI.coreFirst}:null,{realm:"spiritual"});
+    SHARDS.forEach(sh=>{const tex=glowTex([[0,"rgba(255,255,255,1)"],[.3,sh.color||"#f0d890"],[1,"rgba(0,0,0,0)"]]);realmSprite(tex,sh.size||2.4,.8,"spiritual",null,SNODE[sh.id].clone(),sh.first,true);
+      regionLabel(sh.name||sh.id,SNODE[sh.id].clone().add(new THREE.Vector3(0,1.1,0)),2,400,!!sh.major,sh.first?{first:sh.first}:null,{realm:"spiritual"});});}
+}
+/* Connection threads in the Spiritual Realm: each Shard to the Shattering, each world to the Shards that invest it */
+function realmThreads(){if(S.realm!=="spiritual"||!RL||!RL.spiritual)return;const mid=RCENTER.clone().add(new THREE.Vector3(0,RSPI.lift==null?1.5:RSPI.lift,0));
+  SHARDS.forEach(sh=>{const id="sp_"+sh.id;const m=linkMaterial(sh.color||"#f0d890",.85,.25,1.2);const l=linkLines([[mid,SNODE[sh.id]]],m,.02);LINKS[id]=l;
+    LINK_DEFS.push({id,L:{realm:"spiritual"},op:{all:.35,cur:.35,past:.35},minBook:sh.first||null});});
+  WORLDS.filter(w=>w.spiritShards&&w.spiritShards.length&&(w.major||w.spiritThread)).forEach(w=>w.spiritShards.forEach(sid=>{const sh=SHARDS.find(x=>x.id===sid);const id="spw_"+w.id+"_"+sid;
+    const m=linkMaterial((sh&&sh.color)||"#f0d890",.85,.5,2);const l=linkLines([[w.pos.clone(),SNODE[sid]]],m,.06);LINKS[id]=l;
+    LINK_DEFS.push({id,L:{realm:"spiritual"},op:{all:.6,cur:.6,past:.6},minBook:Math.max(firstOf(w),(sh&&sh.first)||0)||null});}));}
+let RT=null;
+const realmTarget=w=>S.realm==="cognitive"?w.posC:S.realm==="spiritual"?w.posS:w.posP;
+function placeWorlds(k){const pa=markerPts.geometry.attributes.position;WORLDS.forEach((w,i)=>{if(RT)w.pos.lerpVectors(RT.from[i],RT.to[i],k);else w.pos.copy(realmTarget(w));pa.setXYZ(i,w.pos.x,w.pos.y,w.pos.z);});pa.needsUpdate=true;}
+function stepRealmTween(){if(!RT)return;const k=clamp((performance.now()-RT.t0)/RT.dur,0,1);placeWorlds(ease(k));if(k>=1){RT=null;rebuildLinks();}}
+const STYLE_IX={beads:0,mist:1,plasma:2,paint:3,unsea:4};
+function realmLook(w){const r=S.realm;if(r==="cognitive"){const c=Object.assign({},RCOG.look||{},(w.realms&&w.realms.cognitive)||{});return {i:1,st:STYLE_IX[c.style]!=null?STYLE_IX[c.style]:0,c1:c.c1||"#6a4ab0",c2:c.c2||"#b8a0ff",c3:c.c3||"#121018"};}
+  if(r==="spiritual"){const cs=(w.spiritShards||[]).map(id=>(SHARDS.find(x=>x.id===id)||{}).color).filter(Boolean);const d=RSPI.color||"#f0d890";return {i:2,st:0,c1:cs[0]||d,c2:cs[1]||cs[0]||d,c3:"#0a0810"};}
+  return {i:0,st:0,c1:"#000",c2:"#000",c3:"#000"};}
+function applyRealmToPlanet(){if(!PL)return;const L=realmLook(PL.w);const u=PL.mat.uniforms;u.uRealm.value=L.i;u.uRStyle.value=L.st;u.uRC1.value.copy(CL(L.c1));u.uRC2.value.copy(CL(L.c2));u.uRC3.value.copy(CL(L.c3));
+  const phys=S.realm==="physical";if(PL.clouds)PL.clouds.visible=phys;if(PL.atmo)PL.atmo.visible=S.realm!=="spiritual";if(PL.atmo&&PL.atmo.material.uniforms){if(!PL.atmoC)PL.atmoC=PL.atmo.material.uniforms.uC.value.clone();PL.atmo.material.uniforms.uC.value.copy(phys?PL.atmoC:CL(L.c2).multiplyScalar(.6));}
+  if(PL.ring)PL.ring.visible=S.realm!=="spiritual";PL.moons.forEach(m=>m.piv.visible=phys);
+  WSKY.forEach(o=>o.visible=phys);sunSprite.visible=S.realm!=="spiritual";sunHalo.visible=phys;sunSprite.scale.setScalar(phys?140:38);
+  if(!phys)sunSprite.material.color.copy(C("#ffffff"));else sunSprite.material.color.copy(C((PL.w.star&&PL.w.star.col)||"#fff4e0"));
+  renderer.setClearColor(S.realm==="cognitive"?0x030206:S.realm==="spiritual"?0x06040a:0x04050b,1);}
+const REALM_GAL={physical:{g:1,d:.55,clear:0x04050b},cognitive:{g:.1,d:.05,clear:0x030206},spiritual:{g:.04,d:0,clear:0x06040a}};
+function setRealmLook(){const L=REALM_GAL[S.realm];galMat.uniforms.uAlpha.value=L.g;dustMat.uniforms.uAlpha.value=L.d;renderer.setClearColor(L.clear,1);}
+const realmFirst=r=>RL&&RL[r]&&RL[r].first||0;
+const realmOpen=r=>r==="physical"||!CUM||!S.book||S.book>=realmFirst(r);
+function renderRealmBar(){const bar=$("#realms");if(!bar)return;if(!realmOpen(S.realm)){setRealm("physical",true);}
+  bar.querySelectorAll("button").forEach(b=>{const r=b.dataset.r;const open=realmOpen(r);b.disabled=!open;b.setAttribute("aria-pressed",String(r===S.realm));
+    b.title=open?((RL[r]||{}).tip||""):("Appears from "+(BOOKS[realmFirst(r)]?BOOKS[realmFirst(r)].title:"a later book"));});}
+function setRealm(r,quiet){if(!RL||r===S.realm||(r!=="physical"&&!RL[r]))return;S.realm=r;setRealmLook();
+  if(S.view==="galaxy"){RT={t0:performance.now(),dur:1500,from:WORLDS.map(w=>w.pos.clone()),to:WORLDS.map(realmTarget)};
+    Object.values(LINKS).forEach(l=>l.visible=false);
+    if(S.sel&&WORLD_BY[S.sel]){const w=WORLD_BY[S.sel];orbG.flyTo(realmTarget(w),flyDistFor(w),orbG.gyaw,orbG.pitch,1500);}
+    else if(!quiet)orbG.flyTo(HOME_AT.clone().lerp(RCENTER,S.realm==="physical"?0:1),S.realm==="spiritual"?(RSPI.dist||52):HOME.dist*(S.realm==="cognitive"?(RCOG.zoom||.7):1),orbG.gyaw,HOME.pitch,1500);}
+  else{RT=null;placeWorlds(1);rebuildLinks();applyRealmToPlanet();const w=WORLD_BY[S.sel];if(w)buildSiteLabels(w);}
+  if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world")ascend(()=>{S.sel=null;refreshAll();});else S.sel=null;}
+  if(!quiet)refreshAll();}
+function realmCard(w){if(!RL||S.realm==="physical")return "";const R=RL[S.realm]||{};
+  if(!w)return '<div class="realmcard"><p class="eyebrow">'+esc(R.title||S.realm)+'</p><p>'+esc(R.text||"")+'</p></div>';
+  const rw=w.realms&&w.realms[S.realm];const t=rw&&rw.blurb?rw.blurb:(R.unknown||"");if(!t&&!(rw&&rw.name))return "";
+  return '<div class="realmcard"><p class="eyebrow">'+esc((rw&&rw.name)||R.title||S.realm)+'</p><p>'+esc(t)+'</p></div>';}
+if($("#realms"))$("#realms").addEventListener("click",e=>{const b=e.target.closest("[data-r]");if(!b||b.disabled)return;setRealm(b.dataset.r);});
+
 /* ===================== ACTIONS ===================== */
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();}
+function refreshAll(){renderRealmBar();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();}
 function selectWorld(id,fly){if(!WORLD_BY[id])return;S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
@@ -1031,7 +1216,7 @@ function descend(id){const w=WORLD_BY[id];if(!w)return;S.sel=id;S.site=null;if(M
       const hero=SITE_EL.find(o=>o.s.id===w.hero)||SITE_EL[0];
       if(hero&&PL){const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));
         PL.root.rotation.y=Math.atan2(V.x,V.z)-Math.atan2(hero.dir.x,hero.dir.z);orbW.pitch=orbW.gpitch=clamp(Math.asin(hero.dir.y)*.6,-.6,.6);}};
-    orbW.t.set(0,0,0);orbW.gt.set(0,0,0);orbW.dist=orbW.gdist=Math.max(w.view||(w.gfx&&w.gfx.type==="gas"?4.8:4.0),fitDist(w.ring?2.3:1.15));orbW.yaw=orbW.gyaw=.45;orbW.pitch=orbW.gpitch=.18;
+    orbW.min=gfxFor(w,S.book).map?1.012:1.06;orbW.t.set(0,0,0);orbW.gt.set(0,0,0);orbW.dist=orbW.gdist=Math.max(w.view||(w.gfx&&w.gfx.type==="gas"?4.8:4.0),fitDist(w.ring?2.3:1.15));orbW.yaw=orbW.gyaw=.45;orbW.pitch=orbW.gpitch=.18;
     if(gfxFor(w,S.book).base==="earth"&&!EARTH_TEX)loadEarth().then(go);else go();
     S.interacted=false;
     Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
@@ -1046,6 +1231,7 @@ function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
     orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
 function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
+  if(travel&&e.site&&RL){const ew=WORLD_BY[e.world];const st=ew&&(ew.sites||[]).find(x=>x.id===e.site);const rr=st&&(st.realm||st.realms);if(rr&&!ARR(rr).includes(S.realm))setRealm(ARR(rr)[0]);}
   if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
     else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site)setTimeout(()=>selectSite(e.site),900);}
     else{S.sel=e.world;const w=WORLD_BY[e.world];orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}}
@@ -1061,11 +1247,12 @@ $("#galBtn").addEventListener("click",flyGalaxy);
 $("#webBtn").addEventListener("click",flyHuman);
 function applyBookToScene(){const b=S.book;
   LINK_DEFS.forEach(d=>{const L=LINKS[d.id];if(!L)return;const op=d.op,R=d.L;
-    let a=!b?op.all:R.books?(ARR(R.books).includes(b)?op.cur:0):R.book!=null?(R.book===b?op.cur:R.book<b?op.past:0):op.cur;if(d.minBook!=null&&b&&b<d.minBook)a=0;
+    let a=!b?op.all:R.books?(ARR(R.books).includes(b)?op.cur:0):R.book!=null?(R.book===b?op.cur:R.book<b?op.past:0):op.cur;if(d.minBook!=null&&b&&b<d.minBook)a=0;if(!realmOk(R))a=0;
     L.material.uniforms.uA.value=a;L.visible=a>0;});
   const dim=markerPts.geometry.attributes.aDim;WORLDS.forEach((w,i)=>dim.setX(i,!seen(w)?-1:inBook(w)?1:K.spoil.dimMarker));dim.needsUpdate=true;
   WORLDS.filter(w=>w.swarm).forEach(w=>{const s=GMARK[w.id+"_swarm"];if(s)s.visible=CUM?seen(w):(!b||inBook(w));});
-  GLOWS.forEach(g=>{g.s.visible=gateOk(g.gate,b);});TERR.forEach(m=>{m.visible=gateOk(m.userData.gate,b);});}
+  GLOWS.forEach(g=>{g.s.visible=gateOk(g.gate,b)&&realmOk(g.def);});
+  REALM_FX.forEach(f=>{f.s.visible=f.realm===S.realm&&(!f.first||!CUM||!b||b>=f.first);});TERR.forEach(m=>{m.visible=gateOk(m.userData.gate,b);});}
 
 /* ===================== POINTER INPUT ===================== */
 const ptrs=new Map();let dragMoved=0,pinch0=0,lastTap=0,downAt=0;
@@ -1105,7 +1292,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
   bakeStep();
   linkMats.forEach(m=>m.uniforms.uTime.value=T);
   const W=innerWidth,H=innerHeight;
-  if(S.view==="galaxy"){orbG.update(dt);
+  if(S.view==="galaxy"){stepRealmTween();REALM_FX.forEach(f=>{if(f.world&&WORLD_BY[f.world])f.s.position.copy(WORLD_BY[f.world].pos).add(f.off);if(f.pulse)f.s.material.opacity=f.op*(.75+.25*Math.sin(T*1.6+f.ph));});orbG.update(dt);
     if(!S.interacted&&!orbG.fly)orbG.gyaw+=dt*.012;GLOWS.forEach(g=>{if(g.pulse)g.s.material.opacity=g.op*(.7+.3*Math.sin(T*1.3));});
     galMat.uniforms.uNear.value=dustMat.uniforms.uNear.value=clamp(orbG.dist*.25,.4,40);
     const sw=S.sel&&WORLD_BY[S.sel];selRing.material.opacity=sw?.95:0;if(sw)selRing.position.copy(sw.pos);
@@ -1123,7 +1310,7 @@ setTimeout(()=>{$("#splash").classList.add("out");hint(MOB?UI.hints.galaxyMob:UI
   setTimeout(()=>flyHuman(),900);},1400);
 $("#splash").addEventListener("click",()=>$("#splash").classList.add("out"));
 const API={pack:K.raw,LINKS,WORLD_BY,get PL(){return PL;},get SITE_EL(){return SITE_EL;},descend,ascend,selectWorld,flyHuman,flyGalaxy,selectSite,orbG,orbW,S,openEvent,
-  setBook(b){const el=document.querySelector('#books [data-b="'+(b|0)+'"]');if(el)el.click();}};
+  setBook(b){const el=document.querySelector('#books [data-b="'+(b|0)+'"]');if(el)el.click();},setRealm};
 window.__atlas=API;return API;
 }
 

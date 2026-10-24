@@ -294,3 +294,18 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 @media (max-width:1180px){.credits{display:none}}
 @media (hover:none),(pointer:coarse){#tip{display:none!important}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---- realm switch (PACK_FORMAT 19): Physical / Cognitive / Spiritual ---- */
+#realms{position:absolute;z-index:6;left:50%;transform:translateX(-50%);bottom:calc(var(--ch,150px) + 16px);pointer-events:auto;box-shadow:0 6px 24px rgba(0,0,0,.45)}
+#realms button{font:400 10.5px var(--f-hud);letter-spacing:.18em;text-transform:uppercase;padding:8px 14px}
+#realms button[disabled]{opacity:.35;cursor:not-allowed}
+.realmcard{margin:10px 0 4px;padding:10px 12px;border:1px solid var(--line-strong);background:rgba(var(--hi-rgb),.08)}
+.realmcard .eyebrow{margin:0 0 4px}
+.realmcard p:last-child{margin:0;font:400 14.5px/1.5 var(--f-body);color:var(--text)}
+@media (max-width:820px){
+  #realms{bottom:auto;top:132px;box-shadow:none}
+  .manybooks #realms{top:168px}
+  #realms button{padding:6px 10px;font-size:9.5px;letter-spacing:.12em}
+  #navhint{top:166px}
+  .manybooks #navhint{top:204px}
+}
