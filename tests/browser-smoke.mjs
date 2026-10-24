@@ -5,10 +5,14 @@ import { chromium } from 'playwright';
 
 const port = 4174;
 const baseURL = `http://127.0.0.1:${port}`;
-const server = spawn(process.execPath, ['node_modules/vite/bin/vite.js', 'preview', '--host', '127.0.0.1', '--port', String(port)], {
-  cwd: process.cwd(),
-  stdio: ['ignore', 'pipe', 'pipe'],
-});
+const server = spawn(
+  process.execPath,
+  ['node_modules/vite/bin/vite.js', 'preview', '--host', '127.0.0.1', '--port', String(port)],
+  {
+    cwd: process.cwd(),
+    stdio: ['ignore', 'pipe', 'pipe'],
+  },
+);
 
 async function waitForServer() {
   for (let attempt = 0; attempt < 450; attempt++) {
@@ -29,7 +33,9 @@ try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   const failures = [];
   page.on('pageerror', error => failures.push(`pageerror: ${error.message}`));
-  page.on('console', message => { if (message.type() === 'error') failures.push(`console: ${message.text()}`); });
+  page.on('console', message => {
+    if (message.type() === 'error') failures.push(`console: ${message.text()}`);
+  });
   await page.goto(baseURL, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '4');
   assert.equal(await page.locator('#count').textContent(), '4');
@@ -69,7 +75,7 @@ try {
   const canvas = page.locator('#viewport canvas');
   const box = await canvas.boundingBox();
   assert.ok(box);
-  await page.mouse.click(box.x + box.width * .64, box.y + box.height * .55);
+  await page.mouse.click(box.x + box.width * 0.64, box.y + box.height * 0.55);
   await page.waitForFunction(() => Number(document.querySelector('#count')?.textContent) >= 7);
   await page.getByRole('button', { name: /Overlays/ }).click();
   assert.match(await page.locator('#science-mode').textContent(), /orbits/);
@@ -80,19 +86,19 @@ try {
 
   await page.getByRole('button', { name: 'Clear all' }).click();
   await page.getByRole('button', { name: /Our Solar System/ }).click();
-  await page.mouse.click(box.x + box.width * .62, box.y + box.height * .56);
+  await page.mouse.click(box.x + box.width * 0.62, box.y + box.height * 0.56);
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '11');
   assert.match(await page.locator('#group-select').textContent(), /Solar System/);
 
   await page.getByRole('button', { name: 'Clear all' }).click();
   await page.getByRole('button', { name: /Triple stars/ }).click();
-  await page.mouse.click(box.x + box.width * .62, box.y + box.height * .56);
+  await page.mouse.click(box.x + box.width * 0.62, box.y + box.height * 0.56);
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '3');
   assert.match(await page.locator('#group-select').textContent(), /Triple System/);
 
   await page.getByRole('button', { name: 'Clear all' }).click();
   await page.getByRole('button', { name: /Spiral galaxy/ }).click();
-  await page.mouse.click(box.x + box.width * .62, box.y + box.height * .56);
+  await page.mouse.click(box.x + box.width * 0.62, box.y + box.height * 0.56);
   await page.waitForFunction(() => Number(document.querySelector('#count')?.textContent) >= 12);
   assert.match(await page.locator('#group-select').textContent(), /Spiral Galaxy/);
 

@@ -1,11 +1,5 @@
 export type StellarStage =
-  | 'red dwarf'
-  | 'yellow star'
-  | 'white star'
-  | 'blue star'
-  | 'giant'
-  | 'hypergiant'
-  | 'white dwarf';
+  'red dwarf' | 'yellow star' | 'white star' | 'blue star' | 'giant' | 'hypergiant' | 'white dwarf';
 
 export type StellarTrack = 'low-mass' | 'sun-like' | 'hot-intermediate' | 'massive';
 export type StellarStep =
@@ -23,8 +17,8 @@ export function momentumWeightedVelocity(
 ): [number, number, number] {
   const total = receiverMass + transferredMass;
   if (total <= 0) return [0, 0, 0];
-  return receiverVelocity.map((component, index) =>
-    (component * receiverMass + donorVelocity[index] * transferredMass) / total,
+  return receiverVelocity.map(
+    (component, index) => (component * receiverMass + donorVelocity[index] * transferredMass) / total,
   ) as [number, number, number];
 }
 

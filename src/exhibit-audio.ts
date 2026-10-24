@@ -26,7 +26,8 @@ export class ExhibitAudio {
   play(name: SoundName, strength = 1) {
     if (this.muted) return;
     this.ensure();
-    const context = this.context, master = this.master;
+    const context = this.context,
+      master = this.master;
     if (!context || !master) return;
     const now = context.currentTime;
     const oscillator = context.createOscillator();

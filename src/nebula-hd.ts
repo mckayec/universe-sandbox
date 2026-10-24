@@ -13,10 +13,20 @@ import * as THREE from 'three';
 // Every texture and shader fades to zero well before its quad/volume edge.
 
 export type NebulaTier = 'performance' | 'balanced' | 'mobile';
-export interface NebulaBuildOptions { tier: NebulaTier; compact: boolean; quality: number }
+export interface NebulaBuildOptions {
+  tier: NebulaTier;
+  compact: boolean;
+  quality: number;
+}
 
 // Variant order matches NEBULA_VARIANTS in celestial-catalog.ts.
-export const enum NebulaLook { Emission = 0, Reflection = 1, Planetary = 2, Dark = 3, Remnant = 4 }
+export const enum NebulaLook {
+  Emission = 0,
+  Reflection = 1,
+  Planetary = 2,
+  Dark = 3,
+  Remnant = 4,
+}
 
 let bakeRenderer: THREE.WebGLRenderer | null = null;
 const stepUniform = { value: 48 };
@@ -30,48 +40,199 @@ let currentTier: NebulaTier = 'balanced';
 const drawingSize = new THREE.Vector2();
 const tmpMatrix = new THREE.Matrix4();
 
-function seeded(seed: number, salt = 0) { const n = Math.sin(seed * 127.1 + salt * 311.7) * 43758.5453123; return n - Math.floor(n) }
+function seeded(seed: number, salt = 0) {
+  const n = Math.sin(seed * 127.1 + salt * 311.7) * 43758.5453123;
+  return n - Math.floor(n);
+}
 
-export function setNebulaRenderer(renderer: THREE.WebGLRenderer, tier: NebulaTier) { bakeRenderer = renderer; currentTier = tier; setNebulaQuality(1) }
+export function setNebulaRenderer(renderer: THREE.WebGLRenderer, tier: NebulaTier) {
+  bakeRenderer = renderer;
+  currentTier = tier;
+  setNebulaQuality(1);
+}
 
 /** Scales raymarch step counts with the adaptive/user quality setting (shared by all nebulae). */
 export function setNebulaQuality(scale: number) {
   const base = currentTier === 'performance' ? 72 : currentTier === 'balanced' ? 52 : 28;
-  stepUniform.value = Math.max(20, Math.round(base * THREE.MathUtils.clamp(scale, .55, 1)));
+  stepUniform.value = Math.max(20, Math.round(base * THREE.MathUtils.clamp(scale, 0.55, 1)));
 }
 
 // Palettes (sRGB hex; THREE.Color converts to linear). core, A (H-alpha), B (OIII / reflection), C (SII / warm), rim, star tints
-interface Palette { core: number; a: number; b: number; c: number; rim: number; dust: number; stars: number[]; haze: string[] }
+interface Palette {
+  core: number;
+  a: number;
+  b: number;
+  c: number;
+  rim: number;
+  dust: number;
+  stars: number[];
+  haze: string[];
+}
 const PALETTES: Palette[][] = [
   // Emission: Trifid, Eagle/Pillars (Hubble palette), Orion
   [
-    { core: 0xfff1f4, a: 0xff3d78, b: 0x3a8cff, c: 0xff8a5c, rim: 0xffd2b8, dust: 0x05030a, stars: [0xffffff, 0xcfe2ff, 0xffe6c8], haze: ['#c2306f', '#2f63c9'] },
-    { core: 0xfff6d8, a: 0xe7b25a, b: 0x2fb7b0, c: 0xff7a3c, rim: 0xfff0c0, dust: 0x0a0604, stars: [0xffffff, 0xffe1b0, 0xbfefff], haze: ['#2a8a8f', '#9a6a2a'] },
-    { core: 0xfff4ee, a: 0xff4f7a, b: 0x6b7dff, c: 0xffa070, rim: 0xffe0d0, dust: 0x07040a, stars: [0xffffff, 0xd6e4ff, 0xffd8c0], haze: ['#b83a8a', '#3a4fc0'] },
+    {
+      core: 0xfff1f4,
+      a: 0xff3d78,
+      b: 0x3a8cff,
+      c: 0xff8a5c,
+      rim: 0xffd2b8,
+      dust: 0x05030a,
+      stars: [0xffffff, 0xcfe2ff, 0xffe6c8],
+      haze: ['#c2306f', '#2f63c9'],
+    },
+    {
+      core: 0xfff6d8,
+      a: 0xe7b25a,
+      b: 0x2fb7b0,
+      c: 0xff7a3c,
+      rim: 0xfff0c0,
+      dust: 0x0a0604,
+      stars: [0xffffff, 0xffe1b0, 0xbfefff],
+      haze: ['#2a8a8f', '#9a6a2a'],
+    },
+    {
+      core: 0xfff4ee,
+      a: 0xff4f7a,
+      b: 0x6b7dff,
+      c: 0xffa070,
+      rim: 0xffe0d0,
+      dust: 0x07040a,
+      stars: [0xffffff, 0xd6e4ff, 0xffd8c0],
+      haze: ['#b83a8a', '#3a4fc0'],
+    },
   ],
   // Reflection
   [
-    { core: 0xf4f9ff, a: 0x5aa8ff, b: 0x2d55d8, c: 0x9fd4ff, rim: 0xe6f2ff, dust: 0x030510, stars: [0xffffff, 0xcfe4ff, 0xa8ccff], haze: ['#2f6fd0', '#18307e'] },
-    { core: 0xf0fbff, a: 0x6fd0ff, b: 0x3a63e6, c: 0xc4a0ff, rim: 0xe0f6ff, dust: 0x030510, stars: [0xffffff, 0xd8f0ff, 0xb0d0ff], haze: ['#3c8ad8', '#2a2c8a'] },
-    { core: 0xf8fbff, a: 0x7fb4ff, b: 0x2448b8, c: 0xff9ec8, rim: 0xffffff, dust: 0x040510, stars: [0xffffff, 0xd8e8ff, 0xffd0e8], haze: ['#3a6ec8', '#6a3a9a'] },
+    {
+      core: 0xf4f9ff,
+      a: 0x5aa8ff,
+      b: 0x2d55d8,
+      c: 0x9fd4ff,
+      rim: 0xe6f2ff,
+      dust: 0x030510,
+      stars: [0xffffff, 0xcfe4ff, 0xa8ccff],
+      haze: ['#2f6fd0', '#18307e'],
+    },
+    {
+      core: 0xf0fbff,
+      a: 0x6fd0ff,
+      b: 0x3a63e6,
+      c: 0xc4a0ff,
+      rim: 0xe0f6ff,
+      dust: 0x030510,
+      stars: [0xffffff, 0xd8f0ff, 0xb0d0ff],
+      haze: ['#3c8ad8', '#2a2c8a'],
+    },
+    {
+      core: 0xf8fbff,
+      a: 0x7fb4ff,
+      b: 0x2448b8,
+      c: 0xff9ec8,
+      rim: 0xffffff,
+      dust: 0x040510,
+      stars: [0xffffff, 0xd8e8ff, 0xffd0e8],
+      haze: ['#3a6ec8', '#6a3a9a'],
+    },
   ],
   // Planetary: Helix, Cat's Eye, Butterfly
   [
-    { core: 0xeaffff, a: 0xff4a3a, b: 0x30d8c8, c: 0xffb04a, rim: 0xfff0d0, dust: 0x0a0406, stars: [0xffffff, 0xd8f8ff, 0xffe0c0], haze: ['#1f9a90', '#9a2a3a'] },
-    { core: 0xf4ffff, a: 0xff5aa0, b: 0x39e0d6, c: 0xffc070, rim: 0xffffff, dust: 0x05040a, stars: [0xffffff, 0xd0fff8, 0xffe4b0], haze: ['#2aa8a0', '#a0367a'] },
-    { core: 0xffffff, a: 0xff6a4a, b: 0x7ad0ff, c: 0xffd27a, rim: 0xffe8c8, dust: 0x0a0503, stars: [0xffffff, 0xe0f0ff, 0xffe0b8], haze: ['#4a80c0', '#a05030'] },
+    {
+      core: 0xeaffff,
+      a: 0xff4a3a,
+      b: 0x30d8c8,
+      c: 0xffb04a,
+      rim: 0xfff0d0,
+      dust: 0x0a0406,
+      stars: [0xffffff, 0xd8f8ff, 0xffe0c0],
+      haze: ['#1f9a90', '#9a2a3a'],
+    },
+    {
+      core: 0xf4ffff,
+      a: 0xff5aa0,
+      b: 0x39e0d6,
+      c: 0xffc070,
+      rim: 0xffffff,
+      dust: 0x05040a,
+      stars: [0xffffff, 0xd0fff8, 0xffe4b0],
+      haze: ['#2aa8a0', '#a0367a'],
+    },
+    {
+      core: 0xffffff,
+      a: 0xff6a4a,
+      b: 0x7ad0ff,
+      c: 0xffd27a,
+      rim: 0xffe8c8,
+      dust: 0x0a0503,
+      stars: [0xffffff, 0xe0f0ff, 0xffe0b8],
+      haze: ['#4a80c0', '#a05030'],
+    },
   ],
   // Dark molecular cloud silhouetted against glowing gas (Horsehead / Seagull edge)
   [
-    { core: 0xffe0e6, a: 0xd8344e, b: 0x4a6ad8, c: 0xff7a50, rim: 0xffb8a0, dust: 0x020102, stars: [0xffffff, 0xffd6c0, 0xc8d8ff], haze: ['#7a1f30', '#24204a'] },
-    { core: 0xfff0e0, a: 0xc44a38, b: 0x2c6a9a, c: 0xe8a060, rim: 0xffd0a0, dust: 0x020101, stars: [0xffffff, 0xffe0c0, 0xc0d8ff], haze: ['#6a2a20', '#1a2a44'] },
-    { core: 0xffe8f0, a: 0xe04a7a, b: 0x5a5ad8, c: 0xff8a6a, rim: 0xffc0c8, dust: 0x020102, stars: [0xffffff, 0xffd8e8, 0xd0d0ff], haze: ['#7a2048', '#262050'] },
+    {
+      core: 0xffe0e6,
+      a: 0xd8344e,
+      b: 0x4a6ad8,
+      c: 0xff7a50,
+      rim: 0xffb8a0,
+      dust: 0x020102,
+      stars: [0xffffff, 0xffd6c0, 0xc8d8ff],
+      haze: ['#7a1f30', '#24204a'],
+    },
+    {
+      core: 0xfff0e0,
+      a: 0xc44a38,
+      b: 0x2c6a9a,
+      c: 0xe8a060,
+      rim: 0xffd0a0,
+      dust: 0x020101,
+      stars: [0xffffff, 0xffe0c0, 0xc0d8ff],
+      haze: ['#6a2a20', '#1a2a44'],
+    },
+    {
+      core: 0xffe8f0,
+      a: 0xe04a7a,
+      b: 0x5a5ad8,
+      c: 0xff8a6a,
+      rim: 0xffc0c8,
+      dust: 0x020102,
+      stars: [0xffffff, 0xffd8e8, 0xd0d0ff],
+      haze: ['#7a2048', '#262050'],
+    },
   ],
   // Supernova remnant: Crab, Veil, Cassiopeia-like
   [
-    { core: 0xeaf6ff, a: 0xff5a2a, b: 0x5ab8ff, c: 0xffd060, rim: 0xfff0b0, dust: 0x060302, stars: [0xffffff, 0xd8ecff, 0xffe8c0], haze: ['#2a6ab8', '#a04020'] },
-    { core: 0xf0ffff, a: 0xff4a6a, b: 0x3ad0ff, c: 0x9affc0, rim: 0xffffff, dust: 0x040306, stars: [0xffffff, 0xd0f0ff, 0xffd0e0], haze: ['#2a8ac0', '#a02a5a'] },
-    { core: 0xfff8f0, a: 0xff6a3a, b: 0x8a7aff, c: 0x7affd0, rim: 0xfff4d0, dust: 0x050304, stars: [0xffffff, 0xe8e0ff, 0xd0ffe8], haze: ['#5a4ac0', '#b05028'] },
+    {
+      core: 0xeaf6ff,
+      a: 0xff5a2a,
+      b: 0x5ab8ff,
+      c: 0xffd060,
+      rim: 0xfff0b0,
+      dust: 0x060302,
+      stars: [0xffffff, 0xd8ecff, 0xffe8c0],
+      haze: ['#2a6ab8', '#a04020'],
+    },
+    {
+      core: 0xf0ffff,
+      a: 0xff4a6a,
+      b: 0x3ad0ff,
+      c: 0x9affc0,
+      rim: 0xffffff,
+      dust: 0x040306,
+      stars: [0xffffff, 0xd0f0ff, 0xffd0e0],
+      haze: ['#2a8ac0', '#a02a5a'],
+    },
+    {
+      core: 0xfff8f0,
+      a: 0xff6a3a,
+      b: 0x8a7aff,
+      c: 0x7affd0,
+      rim: 0xfff4d0,
+      dust: 0x050304,
+      stars: [0xffffff, 0xe8e0ff, 0xd0ffe8],
+      haze: ['#5a4ac0', '#b05028'],
+    },
   ],
 ];
 
@@ -270,29 +431,67 @@ void main(){
 function ensureBakePipeline() {
   if (bakeMaterial) return;
   bakeMaterial = new THREE.ShaderMaterial({
-    uniforms: { seed: { value: 0 }, kind: { value: 0 }, sub: { value: 0 }, layer: { value: 0 }, oct: { value: 7 }, cCore: { value: new THREE.Color() }, cA: { value: new THREE.Color() }, cB: { value: new THREE.Color() }, cC: { value: new THREE.Color() }, cRim: { value: new THREE.Color() } },
+    uniforms: {
+      seed: { value: 0 },
+      kind: { value: 0 },
+      sub: { value: 0 },
+      layer: { value: 0 },
+      oct: { value: 7 },
+      cCore: { value: new THREE.Color() },
+      cA: { value: new THREE.Color() },
+      cB: { value: new THREE.Color() },
+      cC: { value: new THREE.Color() },
+      cRim: { value: new THREE.Color() },
+    },
     vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}',
-    fragmentShader: BAKE_FRAG, depthTest: false, depthWrite: false, blending: THREE.NoBlending, toneMapped: false,
+    fragmentShader: BAKE_FRAG,
+    depthTest: false,
+    depthWrite: false,
+    blending: THREE.NoBlending,
+    toneMapped: false,
   });
   bakeScene = new THREE.Scene();
-  const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bakeMaterial); quad.frustumCulled = false; bakeScene.add(quad);
+  const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bakeMaterial);
+  quad.frustumCulled = false;
+  bakeScene.add(quad);
   bakeCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 }
 
 function bakedTexture(kind: number, sub: number, layer: number, size: number, palette: Palette): THREE.Texture | null {
   if (!bakeRenderer) return null;
   const key = `${kind}:${sub}:${layer}:${size}`;
-  const cached = bakeCache.get(key); if (cached) return cached;
+  const cached = bakeCache.get(key);
+  if (cached) return cached;
   ensureBakePipeline();
-  const target = new THREE.WebGLRenderTarget(size, size, { type: THREE.UnsignedByteType, format: THREE.RGBAFormat, generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter, magFilter: THREE.LinearFilter, depthBuffer: false, stencilBuffer: false });
+  const target = new THREE.WebGLRenderTarget(size, size, {
+    type: THREE.UnsignedByteType,
+    format: THREE.RGBAFormat,
+    generateMipmaps: true,
+    minFilter: THREE.LinearMipmapLinearFilter,
+    magFilter: THREE.LinearFilter,
+    depthBuffer: false,
+    stencilBuffer: false,
+  });
   target.texture.colorSpace = THREE.NoColorSpace;
   target.texture.anisotropy = Math.min(4, bakeRenderer.capabilities.getMaxAnisotropy());
   const u = bakeMaterial!.uniforms;
-  u.seed.value = 11.3 + kind * 7.1 + sub * 3.7 + layer * 1.9; u.kind.value = kind; u.sub.value = sub; u.layer.value = layer;
+  u.seed.value = 11.3 + kind * 7.1 + sub * 3.7 + layer * 1.9;
+  u.kind.value = kind;
+  u.sub.value = sub;
+  u.layer.value = layer;
   u.oct.value = Math.max(5, Math.min(9, Math.round(Math.log2(size) - 2)));
-  u.cCore.value.setHex(palette.core); u.cA.value.setHex(palette.a); u.cB.value.setHex(palette.b); u.cC.value.setHex(palette.c); u.cRim.value.setHex(palette.rim);
-  const previous = bakeRenderer.getRenderTarget(), autoClear = bakeRenderer.autoClear;
-  bakeRenderer.autoClear = true; bakeRenderer.setRenderTarget(target); bakeRenderer.render(bakeScene!, bakeCamera!); bakeRenderer.setRenderTarget(previous); bakeRenderer.autoClear = autoClear;
+  u.cCore.value.setHex(palette.core);
+  u.cA.value.setHex(palette.a);
+  u.cB.value.setHex(palette.b);
+  u.cC.value.setHex(palette.c);
+  u.cRim.value.setHex(palette.rim);
+  const previous = bakeRenderer.getRenderTarget(),
+    autoClear = bakeRenderer.autoClear;
+  bakeRenderer.autoClear = true;
+  bakeRenderer.setRenderTarget(target);
+  bakeRenderer.render(bakeScene!, bakeCamera!);
+  bakeRenderer.setRenderTarget(previous);
+  bakeRenderer.autoClear = autoClear;
   bakeCache.set(key, target.texture);
   return target.texture;
 }
@@ -300,27 +499,59 @@ function bakedTexture(kind: number, sub: number, layer: number, size: number, pa
 function ensureNoiseTexture() {
   if (noiseTexture) return noiseTexture;
   // Tileable smooth value-noise fbm (periods 4, 8, 16 lattice cells) in a 64^3 R8 volume.
-  const N = 64, data = new Uint8Array(N * N * N);
-  const lattice = (period: number, salt: number) => { const l = new Float32Array(period * period * period); for (let i = 0; i < l.length; i++) l[i] = seeded(i * 1.37 + salt, salt * 3.1); return l };
-  const octaves = [4, 8, 16].map((period, i) => ({ period, l: lattice(period, 17 + i * 31), amp: [.55, .3, .15][i] }));
+  const N = 64,
+    data = new Uint8Array(N * N * N);
+  const lattice = (period: number, salt: number) => {
+    const l = new Float32Array(period * period * period);
+    for (let i = 0; i < l.length; i++) l[i] = seeded(i * 1.37 + salt, salt * 3.1);
+    return l;
+  };
+  const octaves = [4, 8, 16].map((period, i) => ({
+    period,
+    l: lattice(period, 17 + i * 31),
+    amp: [0.55, 0.3, 0.15][i],
+  }));
   const fade = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
-  for (let z = 0; z < N; z++) for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
-    let v = 0;
-    for (const o of octaves) {
-      const P = o.period, fx = x / N * P, fy = y / N * P, fz = z / N * P, ix = Math.floor(fx), iy = Math.floor(fy), iz = Math.floor(fz), tx = fade(fx - ix), ty = fade(fy - iy), tz = fade(fz - iz);
-      const at = (a: number, b: number, c: number) => o.l[((a % P) * P + (b % P)) * P + (c % P)];
-      const x0 = ix, x1 = ix + 1, y0 = iy, y1 = iy + 1, z0 = iz, z1 = iz + 1;
-      const c00 = at(x0, y0, z0) + (at(x1, y0, z0) - at(x0, y0, z0)) * tx, c10 = at(x0, y1, z0) + (at(x1, y1, z0) - at(x0, y1, z0)) * tx;
-      const c01 = at(x0, y0, z1) + (at(x1, y0, z1) - at(x0, y0, z1)) * tx, c11 = at(x0, y1, z1) + (at(x1, y1, z1) - at(x0, y1, z1)) * tx;
-      const c0 = c00 + (c10 - c00) * ty, c1 = c01 + (c11 - c01) * ty;
-      v += (c0 + (c1 - c0) * tz) * o.amp;
-    }
-    data[(z * N + y) * N + x] = Math.round(THREE.MathUtils.clamp((v - .5) * 1.6 + .5, 0, 1) * 255);
-  }
+  for (let z = 0; z < N; z++)
+    for (let y = 0; y < N; y++)
+      for (let x = 0; x < N; x++) {
+        let v = 0;
+        for (const o of octaves) {
+          const P = o.period,
+            fx = (x / N) * P,
+            fy = (y / N) * P,
+            fz = (z / N) * P,
+            ix = Math.floor(fx),
+            iy = Math.floor(fy),
+            iz = Math.floor(fz),
+            tx = fade(fx - ix),
+            ty = fade(fy - iy),
+            tz = fade(fz - iz);
+          const at = (a: number, b: number, c: number) => o.l[((a % P) * P + (b % P)) * P + (c % P)];
+          const x0 = ix,
+            x1 = ix + 1,
+            y0 = iy,
+            y1 = iy + 1,
+            z0 = iz,
+            z1 = iz + 1;
+          const c00 = at(x0, y0, z0) + (at(x1, y0, z0) - at(x0, y0, z0)) * tx,
+            c10 = at(x0, y1, z0) + (at(x1, y1, z0) - at(x0, y1, z0)) * tx;
+          const c01 = at(x0, y0, z1) + (at(x1, y0, z1) - at(x0, y0, z1)) * tx,
+            c11 = at(x0, y1, z1) + (at(x1, y1, z1) - at(x0, y1, z1)) * tx;
+          const c0 = c00 + (c10 - c00) * ty,
+            c1 = c01 + (c11 - c01) * ty;
+          v += (c0 + (c1 - c0) * tz) * o.amp;
+        }
+        data[(z * N + y) * N + x] = Math.round(THREE.MathUtils.clamp((v - 0.5) * 1.6 + 0.5, 0, 1) * 255);
+      }
   const tex = new THREE.Data3DTexture(data, N, N, N);
-  tex.format = THREE.RedFormat; tex.type = THREE.UnsignedByteType;
-  tex.minFilter = THREE.LinearFilter; tex.magFilter = THREE.LinearFilter;
-  tex.wrapS = tex.wrapT = tex.wrapR = THREE.RepeatWrapping; tex.unpackAlignment = 1; tex.needsUpdate = true;
+  tex.format = THREE.RedFormat;
+  tex.type = THREE.UnsignedByteType;
+  tex.minFilter = THREE.LinearFilter;
+  tex.magFilter = THREE.LinearFilter;
+  tex.wrapS = tex.wrapT = tex.wrapR = THREE.RepeatWrapping;
+  tex.unpackAlignment = 1;
+  tex.needsUpdate = true;
   noiseTexture = tex;
   return tex;
 }
@@ -330,13 +561,32 @@ function raymarchMaterial(seed: number, kind: number, sub: number, palette: Pale
   // Note: textures live inside `uniforms`, so disposeObject() never frees the shared noise volume.
   return new THREE.ShaderMaterial({
     uniforms: {
-      time: { value: 0 }, seed: { value: seed * .31 }, density: { value: .82 }, compression: { value: 0 }, tidal: { value: 0 }, cameraLocal: { value: new THREE.Vector3() },
-      steps: stepUniform, noiseTex: { value: ensureNoiseTexture() }, kind: { value: kind }, sub: { value: sub },
-      cCore: { value: new THREE.Color(palette.core) }, cA: { value: new THREE.Color(palette.a) }, cB: { value: new THREE.Color(palette.b) }, cC: { value: new THREE.Color(palette.c) },
+      time: { value: 0 },
+      seed: { value: seed * 0.31 },
+      density: { value: 0.82 },
+      compression: { value: 0 },
+      tidal: { value: 0 },
+      cameraLocal: { value: new THREE.Vector3() },
+      steps: stepUniform,
+      noiseTex: { value: ensureNoiseTexture() },
+      kind: { value: kind },
+      sub: { value: sub },
+      cCore: { value: new THREE.Color(palette.core) },
+      cA: { value: new THREE.Color(palette.a) },
+      cB: { value: new THREE.Color(palette.b) },
+      cC: { value: new THREE.Color(palette.c) },
     },
-    transparent: true, side: THREE.BackSide, depthWrite: false, toneMapped: false,
-    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor, blendSrcAlpha: THREE.OneFactor, blendDstAlpha: THREE.OneMinusSrcAlphaFactor,
-    vertexShader: 'varying vec3 vLocal;void main(){vLocal=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+    transparent: true,
+    side: THREE.BackSide,
+    depthWrite: false,
+    toneMapped: false,
+    blending: THREE.CustomBlending,
+    blendSrc: THREE.OneFactor,
+    blendDst: THREE.OneMinusSrcAlphaFactor,
+    blendSrcAlpha: THREE.OneFactor,
+    blendDstAlpha: THREE.OneMinusSrcAlphaFactor,
+    vertexShader:
+      'varying vec3 vLocal;void main(){vLocal=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
     fragmentShader: `
 precision highp sampler3D;
 varying vec3 vLocal;
@@ -386,11 +636,37 @@ void main(){
   });
 }
 
-function sheetMaterial(map: THREE.Texture, size: number, rotation: number, drift: number, flip: number, opacity: number, gain: number) {
+function sheetMaterial(
+  map: THREE.Texture,
+  size: number,
+  rotation: number,
+  drift: number,
+  flip: number,
+  opacity: number,
+  gain: number,
+) {
   return new THREE.ShaderMaterial({
-    uniforms: { map: { value: map }, size: { value: size }, rot: { value: rotation }, drift: { value: drift }, flip: { value: flip }, opacity: { value: opacity }, gain: { value: gain }, time: { value: 0 }, compression: { value: 0 }, fade: { value: 1 } },
-    transparent: true, depthWrite: false, toneMapped: false, side: THREE.DoubleSide,
-    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor, blendSrcAlpha: THREE.OneFactor, blendDstAlpha: THREE.OneMinusSrcAlphaFactor,
+    uniforms: {
+      map: { value: map },
+      size: { value: size },
+      rot: { value: rotation },
+      drift: { value: drift },
+      flip: { value: flip },
+      opacity: { value: opacity },
+      gain: { value: gain },
+      time: { value: 0 },
+      compression: { value: 0 },
+      fade: { value: 1 },
+    },
+    transparent: true,
+    depthWrite: false,
+    toneMapped: false,
+    side: THREE.DoubleSide,
+    blending: THREE.CustomBlending,
+    blendSrc: THREE.OneFactor,
+    blendDst: THREE.OneMinusSrcAlphaFactor,
+    blendSrcAlpha: THREE.OneFactor,
+    blendDstAlpha: THREE.OneMinusSrcAlphaFactor,
     vertexShader: `uniform float size;uniform float rot;uniform float drift;uniform float time;uniform float flip;varying vec2 vUv;
 void main(){vUv=vec2(flip>0.?1.-uv.x:uv.x,uv.y);vec4 mv=modelViewMatrix*vec4(0.,0.,0.,1.);
  float sx=length(modelMatrix[0].xyz),sz=length(modelMatrix[2].xyz),sy=length(modelMatrix[1].xyz);
@@ -406,7 +682,10 @@ void main(){vec4 t=texture2D(map,vUv);vec3 c=t.rgb*t.rgb*gain*(1.+compression*.4
 function starPointsMaterial() {
   return new THREE.ShaderMaterial({
     uniforms: { pxScale: pointScaleUniform, time: { value: 0 }, opacity: { value: 1 } },
-    transparent: true, depthWrite: false, toneMapped: false, blending: THREE.AdditiveBlending,
+    transparent: true,
+    depthWrite: false,
+    toneMapped: false,
+    blending: THREE.AdditiveBlending,
     vertexShader: `attribute vec3 tint;attribute float starSize;uniform float pxScale;uniform float time;varying vec3 vTint;varying float vSize;
 void main(){vec4 mv=modelViewMatrix*vec4(position,1.);float tw=.85+.15*sin(time*1.7+position.x*13.+position.z*7.);
  gl_PointSize=clamp(starSize*pxScale/max(1.,-mv.z),1.5,28.);vSize=gl_PointSize;vTint=tint*tw;gl_Position=projectionMatrix*mv;}`,
@@ -419,34 +698,68 @@ void main(){vec2 d=gl_PointCoord-.5;float r=length(d)*2.;if(r>1.)discard;
 }
 
 function softGlowTexture(color: string) {
-  const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d')!;
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const x = c.getContext('2d')!;
   const g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
-  g.addColorStop(0, color); g.addColorStop(.25, `${color}aa`); g.addColorStop(.55, `${color}33`); g.addColorStop(.85, `${color}08`); g.addColorStop(1, `${color}00`);
-  x.fillStyle = g; x.fillRect(0, 0, 128, 128);
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  g.addColorStop(0, color);
+  g.addColorStop(0.25, `${color}aa`);
+  g.addColorStop(0.55, `${color}33`);
+  g.addColorStop(0.85, `${color}08`);
+  g.addColorStop(1, `${color}00`);
+  x.fillStyle = g;
+  x.fillRect(0, 0, 128, 128);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
 }
 
 function spikeStarTexture(size: number) {
-  const c = document.createElement('canvas'); c.width = c.height = size; const x = c.getContext('2d')!, h = size / 2;
+  const c = document.createElement('canvas');
+  c.width = c.height = size;
+  const x = c.getContext('2d')!,
+    h = size / 2;
   x.globalCompositeOperation = 'lighter';
-  const halo = x.createRadialGradient(h, h, 0, h, h, h * .5);
-  halo.addColorStop(0, 'rgba(255,255,255,1)'); halo.addColorStop(.08, 'rgba(255,255,255,.9)'); halo.addColorStop(.25, 'rgba(255,255,255,.25)'); halo.addColorStop(1, 'rgba(255,255,255,0)');
-  x.fillStyle = halo; x.fillRect(0, 0, size, size);
+  const halo = x.createRadialGradient(h, h, 0, h, h, h * 0.5);
+  halo.addColorStop(0, 'rgba(255,255,255,1)');
+  halo.addColorStop(0.08, 'rgba(255,255,255,.9)');
+  halo.addColorStop(0.25, 'rgba(255,255,255,.25)');
+  halo.addColorStop(1, 'rgba(255,255,255,0)');
+  x.fillStyle = halo;
+  x.fillRect(0, 0, size, size);
   // four diffraction spikes (plus two faint secondary ones) that fade out before the edge
   const spike = (angle: number, length: number, width: number, alpha: number) => {
-    x.save(); x.translate(h, h); x.rotate(angle);
+    x.save();
+    x.translate(h, h);
+    x.rotate(angle);
     const g = x.createLinearGradient(-length, 0, length, 0);
-    g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.5 - .5 * .12, `rgba(255,255,255,${alpha * .5})`); g.addColorStop(.5, `rgba(255,255,255,${alpha})`); g.addColorStop(.5 + .5 * .12, `rgba(255,255,255,${alpha * .5})`); g.addColorStop(1, 'rgba(255,255,255,0)');
-    x.fillStyle = g; x.beginPath(); x.moveTo(-length, 0); x.lineTo(0, -width); x.lineTo(length, 0); x.lineTo(0, width); x.closePath(); x.fill(); x.restore();
+    g.addColorStop(0, 'rgba(255,255,255,0)');
+    g.addColorStop(0.5 - 0.5 * 0.12, `rgba(255,255,255,${alpha * 0.5})`);
+    g.addColorStop(0.5, `rgba(255,255,255,${alpha})`);
+    g.addColorStop(0.5 + 0.5 * 0.12, `rgba(255,255,255,${alpha * 0.5})`);
+    g.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = g;
+    x.beginPath();
+    x.moveTo(-length, 0);
+    x.lineTo(0, -width);
+    x.lineTo(length, 0);
+    x.lineTo(0, width);
+    x.closePath();
+    x.fill();
+    x.restore();
   };
-  spike(0, h * .94, size * .012, .9); spike(Math.PI / 2, h * .94, size * .012, .9);
-  spike(Math.PI / 4, h * .45, size * .006, .22); spike(-Math.PI / 4, h * .45, size * .006, .22);
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  spike(0, h * 0.94, size * 0.012, 0.9);
+  spike(Math.PI / 2, h * 0.94, size * 0.012, 0.9);
+  spike(Math.PI / 4, h * 0.45, size * 0.006, 0.22);
+  spike(-Math.PI / 4, h * 0.45, size * 0.006, 0.22);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
 }
 
 /** Builds all nebula child parts into `group`. Part names match the update code in main.ts. */
 export function buildNebulaVisual(group: THREE.Group, seed: number, opts: NebulaBuildOptions) {
-  const kind = ((seed % 5) + 5) % 5 as NebulaLook;
+  const kind = (((seed % 5) + 5) % 5) as NebulaLook;
   const sub = Math.floor(seed / 60) % 3;
   const palette = PALETTES[kind][sub];
   const { tier, compact } = opts;
@@ -455,35 +768,82 @@ export function buildNebulaVisual(group: THREE.Group, seed: number, opts: Nebula
   // 1. Raymarched volume (desktop tiers). Same name/uniforms as before so gameplay updates still drive it.
   if (tier !== 'mobile') {
     const volume = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), raymarchMaterial(seed, kind, sub, palette, tier));
-    volume.scale.set(7.7, kind === 2 ? 4.2 : 3.05, 7.1); volume.rotation.y = seeded(seed, 89) * Math.PI;
-    volume.name = 'nebulaRaymarch'; volume.renderOrder = 2; volume.raycast = () => {};
+    volume.scale.set(7.7, kind === 2 ? 4.2 : 3.05, 7.1);
+    volume.rotation.y = seeded(seed, 89) * Math.PI;
+    volume.name = 'nebulaRaymarch';
+    volume.renderOrder = 2;
+    volume.raycast = () => {};
     const cameraLocal = (volume.material as THREE.ShaderMaterial).uniforms.cameraLocal.value as THREE.Vector3;
-    volume.onBeforeRender = (_r, _s, cam) => { cameraLocal.copy(cam.position).applyMatrix4(tmpMatrix.copy(volume.matrixWorld).invert()) };
+    volume.onBeforeRender = (_r, _s, cam) => {
+      cameraLocal.copy(cam.position).applyMatrix4(tmpMatrix.copy(volume.matrixWorld).invert());
+    };
     group.add(volume);
   }
 
   // 2. Soft outer haze (pickable sprites, also give the cloud a large clickable footprint).
   for (let i = 0; i < 2; i++) {
-    const haze = new THREE.Sprite(new THREE.SpriteMaterial({ map: softGlowTexture(palette.haze[i]), transparent: true, opacity: .05, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false }));
-    haze.scale.set(19 - i * 3, 14 + i * 2, 1); haze.position.set((i - .5) * 2.4, 0, (i - .5) * 2);
-    haze.userData.baseOpacity = .05; haze.name = 'nebulaHaze'; group.add(haze);
+    const haze = new THREE.Sprite(
+      new THREE.SpriteMaterial({
+        map: softGlowTexture(palette.haze[i]),
+        transparent: true,
+        opacity: 0.05,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        toneMapped: false,
+      }),
+    );
+    haze.scale.set(19 - i * 3, 14 + i * 2, 1);
+    haze.position.set((i - 0.5) * 2.4, 0, (i - 0.5) * 2);
+    haze.userData.baseOpacity = 0.05;
+    haze.name = 'nebulaHaze';
+    group.add(haze);
   }
 
   // 3. Baked high-resolution sheets.
   const mainSize = tier === 'performance' ? 2048 : tier === 'balanced' ? 1024 : 768;
   const haloSize = Math.max(512, mainSize / 2);
-  const halo = bakedTexture(kind, sub, 1, haloSize, palette), main = bakedTexture(kind, sub, 0, mainSize, palette);
-  const sheetScale = kind === 2 ? .82 : 1;
-  const addSheet = (map: THREE.Texture | null, size: number, opacity: number, gain: number, order: number, offset: THREE.Vector3, flip: number, rotation: number) => {
+  const halo = bakedTexture(kind, sub, 1, haloSize, palette),
+    main = bakedTexture(kind, sub, 0, mainSize, palette);
+  const sheetScale = kind === 2 ? 0.82 : 1;
+  const addSheet = (
+    map: THREE.Texture | null,
+    size: number,
+    opacity: number,
+    gain: number,
+    order: number,
+    offset: THREE.Vector3,
+    flip: number,
+    rotation: number,
+  ) => {
     if (!map) return;
-    const sheet = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), sheetMaterial(map, size, rotation, (seeded(seed, 300 + order) - .5) * .006, flip, opacity, gain));
-    sheet.position.copy(offset); sheet.frustumCulled = false; sheet.raycast = () => {}; sheet.renderOrder = order;
-    sheet.name = 'nebulaSheet'; sheet.userData.nebulaHD = 'sheet'; sheet.userData.baseOpacity = opacity; group.add(sheet);
+    const sheet = new THREE.Mesh(
+      new THREE.PlaneGeometry(1, 1),
+      sheetMaterial(map, size, rotation, (seeded(seed, 300 + order) - 0.5) * 0.006, flip, opacity, gain),
+    );
+    sheet.position.copy(offset);
+    sheet.frustumCulled = false;
+    sheet.raycast = () => {};
+    sheet.renderOrder = order;
+    sheet.name = 'nebulaSheet';
+    sheet.userData.nebulaHD = 'sheet';
+    sheet.userData.baseOpacity = opacity;
+    group.add(sheet);
   };
-  const flip = seeded(seed, 401) > .5 ? 1 : 0, baseRot = (seeded(seed, 402) - .5) * (kind === 0 && sub === 1 ? .5 : Math.PI * 2);
-  addSheet(halo, 27 * sheetScale, .85, 1, 1, new THREE.Vector3(0, -.4, 0), 1 - flip, baseRot + 1.3);
-  addSheet(main, 17.5 * sheetScale, 1, (tier === 'mobile' ? 1.1 : .9) * (kind === 1 ? .8 : 1), 3, new THREE.Vector3(0, .2, 0), flip, baseRot);
-  if (!compact && main && (kind === 0 || kind === 1 || kind === 3)) addSheet(main, 11 * sheetScale, .3, .8, 4, new THREE.Vector3(.6, .6, .4), 1 - flip, baseRot + 2.4);
+  const flip = seeded(seed, 401) > 0.5 ? 1 : 0,
+    baseRot = (seeded(seed, 402) - 0.5) * (kind === 0 && sub === 1 ? 0.5 : Math.PI * 2);
+  addSheet(halo, 27 * sheetScale, 0.85, 1, 1, new THREE.Vector3(0, -0.4, 0), 1 - flip, baseRot + 1.3);
+  addSheet(
+    main,
+    17.5 * sheetScale,
+    1,
+    (tier === 'mobile' ? 1.1 : 0.9) * (kind === 1 ? 0.8 : 1),
+    3,
+    new THREE.Vector3(0, 0.2, 0),
+    flip,
+    baseRot,
+  );
+  if (!compact && main && (kind === 0 || kind === 1 || kind === 3))
+    addSheet(main, 11 * sheetScale, 0.3, 0.8, 4, new THREE.Vector3(0.6, 0.6, 0.4), 1 - flip, baseRot + 2.4);
 
   // 4. Bright embedded stars with diffraction spikes.
   const star = spikeStarTexture(compact ? 128 : 256);
@@ -491,28 +851,57 @@ export function buildNebulaVisual(group: THREE.Group, seed: number, opts: Nebula
   for (let i = 0; i < knotCount; i++) {
     const tint = new THREE.Color(palette.stars[i % palette.stars.length]);
     const bright = i === 0 && kind !== 3;
-    const material = new THREE.SpriteMaterial({ map: star, color: tint, transparent: true, opacity: .75 + seeded(seed, i + 100) * .25, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false });
-    const knot = new THREE.Sprite(material), size = bright ? 2.2 : .9 + seeded(seed, i + 110) * 1.6;
+    const material = new THREE.SpriteMaterial({
+      map: star,
+      color: tint,
+      transparent: true,
+      opacity: 0.75 + seeded(seed, i + 100) * 0.25,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      toneMapped: false,
+    });
+    const knot = new THREE.Sprite(material),
+      size = bright ? 2.2 : 0.9 + seeded(seed, i + 110) * 1.6;
     knot.scale.setScalar(size);
-    const spread = kind === 2 ? .25 : 1;
-    if (bright) knot.position.set(0, .3, 0);
-    else knot.position.set((seeded(seed, i + 120) - .5) * 9 * spread, (seeded(seed, i + 130) - .5) * 5 * spread, (seeded(seed, i + 140) - .5) * 8 * spread);
-    knot.userData.baseOpacity = material.opacity; knot.name = 'nebulaKnot'; knot.renderOrder = 5; group.add(knot);
+    const spread = kind === 2 ? 0.25 : 1;
+    if (bright) knot.position.set(0, 0.3, 0);
+    else
+      knot.position.set(
+        (seeded(seed, i + 120) - 0.5) * 9 * spread,
+        (seeded(seed, i + 130) - 0.5) * 5 * spread,
+        (seeded(seed, i + 140) - 0.5) * 8 * spread,
+      );
+    knot.userData.baseOpacity = material.opacity;
+    knot.name = 'nebulaKnot';
+    knot.renderOrder = 5;
+    group.add(knot);
   }
 
   // 5. Embedded star field: round, soft, size-varied points (replaces the square point sprites).
-  const count = Math.round((compact ? 160 : 340) * THREE.MathUtils.clamp(opts.quality, .6, 1));
-  const pos = new Float32Array(count * 3), tints = new Float32Array(count * 3), sizes = new Float32Array(count);
+  const count = Math.round((compact ? 160 : 340) * THREE.MathUtils.clamp(opts.quality, 0.6, 1));
+  const pos = new Float32Array(count * 3),
+    tints = new Float32Array(count * 3),
+    sizes = new Float32Array(count);
   for (let i = 0; i < count; i++) {
-    const r = Math.pow(seeded(seed, i + 150), .55) * 7.2, a = seeded(seed, i + 500) * Math.PI * 2, y = (seeded(seed, i + 850) - .5) * 6.5 * (1 - r / 9);
-    pos.set([Math.cos(a) * r, y, Math.sin(a) * r * .9], i * 3);
-    const c = new THREE.Color(palette.stars[i % palette.stars.length]).multiplyScalar(.55 + seeded(seed, i + 1200) * .7);
+    const r = Math.pow(seeded(seed, i + 150), 0.55) * 7.2,
+      a = seeded(seed, i + 500) * Math.PI * 2,
+      y = (seeded(seed, i + 850) - 0.5) * 6.5 * (1 - r / 9);
+    pos.set([Math.cos(a) * r, y, Math.sin(a) * r * 0.9], i * 3);
+    const c = new THREE.Color(palette.stars[i % palette.stars.length]).multiplyScalar(
+      0.55 + seeded(seed, i + 1200) * 0.7,
+    );
     tints.set([c.r, c.g, c.b], i * 3);
-    sizes[i] = .06 + Math.pow(seeded(seed, i + 1500), 6) * .45;
+    sizes[i] = 0.06 + Math.pow(seeded(seed, i + 1500), 6) * 0.45;
   }
   const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setAttribute('tint', new THREE.BufferAttribute(tints, 3)); geo.setAttribute('starSize', new THREE.BufferAttribute(sizes, 1));
-  const points = new THREE.Points(geo, starPointsMaterial()); points.name = 'nebulaDust'; points.renderOrder = 6; points.userData.nebulaHD = 'stars'; group.add(points);
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('tint', new THREE.BufferAttribute(tints, 3));
+  geo.setAttribute('starSize', new THREE.BufferAttribute(sizes, 1));
+  const points = new THREE.Points(geo, starPointsMaterial());
+  points.name = 'nebulaDust';
+  points.renderOrder = 6;
+  points.userData.nebulaHD = 'stars';
+  group.add(points);
   return group;
 }
 
@@ -522,15 +911,14 @@ export function updateNebulaPart(object: THREE.Object3D, compression: number, ma
   if (!(material instanceof THREE.ShaderMaterial)) return;
   if (object.userData.nebulaHD === 'sheet') {
     material.uniforms.compression.value = compression;
-    material.uniforms.fade.value = .5 + .5 * Math.sqrt(massRatio);
+    material.uniforms.fade.value = 0.5 + 0.5 * Math.sqrt(massRatio);
   } else if (object.userData.nebulaHD === 'stars') {
-    material.uniforms.opacity.value = .6 + .4 * Math.sqrt(massRatio);
+    material.uniforms.opacity.value = 0.6 + 0.4 * Math.sqrt(massRatio);
   }
 }
 
 /** Call once per frame (cheap) so point-star sizes track the drawing buffer and camera FOV. */
 export function updateNebulaFrame(renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera) {
   renderer.getDrawingBufferSize(drawingSize);
-  pointScaleUniform.value = drawingSize.y / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) * .5));
+  pointScaleUniform.value = drawingSize.y / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) * 0.5));
 }
-

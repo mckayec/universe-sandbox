@@ -45,7 +45,9 @@ function armDensity(s: SpiralParams, r: number, theta: number) {
   const phase = armPhase(s, r, theta),
     main = Math.pow(0.5 + 0.5 * Math.cos(phase), 3),
     minor = s.minor * Math.pow(0.5 - 0.5 * Math.cos(phase), 4),
-    window = THREE.MathUtils.smoothstep(r, s.armStart * 0.75, s.armStart + 0.12) * (1 - THREE.MathUtils.smoothstep(r, 0.85, 1.15));
+    window =
+      THREE.MathUtils.smoothstep(r, s.armStart * 0.75, s.armStart + 0.12) *
+      (1 - THREE.MathUtils.smoothstep(r, 0.85, 1.15));
   return { arm: Math.max(main, minor) * window, dust: Math.pow(0.5 + 0.5 * Math.cos(phase - 0.62), 9) * window, phase };
 }
 
@@ -231,7 +233,17 @@ function starMaterial(soft: number, ref: number) {
 function glowMesh(
   name: string,
   size: number,
-  opts: { profile: number; axis: number; re: number; n?: number; intensity: number; stretch: number; inner: string; outer: string; angle?: number },
+  opts: {
+    profile: number;
+    axis: number;
+    re: number;
+    n?: number;
+    intensity: number;
+    stretch: number;
+    inner: string;
+    outer: string;
+    angle?: number;
+  },
 ) {
   const mesh = new THREE.Mesh(
     new THREE.PlaneGeometry(2, 2),
@@ -477,7 +489,7 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
       iy = Math.floor(y),
       fx = x - ix,
       fy = y - iy,
-      h = (a: number, b: number) => seeded(((a % 34) + 34) % 34 + seed * 0.013, b * 1.37 + 5),
+      h = (a: number, b: number) => seeded((((a % 34) + 34) % 34) + seed * 0.013, b * 1.37 + 5),
       u = fx * fx * (3 - 2 * fx),
       v = fy * fy * (3 - 2 * fy);
     return (h(ix, iy) * (1 - u) + h(ix + 1, iy) * u) * (1 - v) + (h(ix, iy + 1) * (1 - u) + h(ix + 1, iy + 1) * u) * v;
@@ -522,7 +534,14 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
     const [b, sz] = luminosity(rand, 0.85),
       t = rand(),
       col = t < 0.2 ? C.orange : t < 0.55 ? C.yellow : t < 0.85 ? C.white : C.blueWhite;
-    stars.push(Math.cos(th) * r * extent, gaussian(rand) * 0.012 * extent, Math.sin(th) * r * extent, col, b * dustDim(r, th), sz);
+    stars.push(
+      Math.cos(th) * r * extent,
+      gaussian(rand) * 0.012 * extent,
+      Math.sin(th) * r * extent,
+      col,
+      b * dustDim(r, th),
+      sz,
+    );
   }
   // young arm population: blue-white stars concentrated in the arms
   const armN = Math.floor(budget * 0.4);
@@ -531,7 +550,9 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
       th = rand() * Math.PI * 2;
     if (r > 1.15) continue;
     const a = armDensity(spiral, r, th),
-      accept = flocculent ? 0.08 + 0.92 * THREE.MathUtils.smoothstep(fragNoise(r, th), 0.42, 0.7) : Math.pow(a.arm, 1.6);
+      accept = flocculent
+        ? 0.08 + 0.92 * THREE.MathUtils.smoothstep(fragNoise(r, th), 0.42, 0.7)
+        : Math.pow(a.arm, 1.6);
     if (rand() > accept) continue;
     i++;
     if (rand() < 0.35) {
@@ -555,7 +576,14 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
     const [b, sz] = luminosity(rand, 1.05),
       t = rand(),
       col = t < 0.45 ? C.blueWhite : t < 0.75 ? C.blue : t < 0.92 ? C.white : C.yellow;
-    stars.push(Math.cos(th) * r * extent, gaussian(rand) * 0.008 * extent, Math.sin(th) * r * extent, col, b * dustDim(r, th), sz);
+    stars.push(
+      Math.cos(th) * r * extent,
+      gaussian(rand) * 0.008 * extent,
+      Math.sin(th) * r * extent,
+      col,
+      b * dustDim(r, th),
+      sz,
+    );
   }
   // star-forming knots along the arms: tight clusters of pink H-II gas and hot blue stars
   const knotCount = Math.floor(nursery.capacity / 9);
@@ -564,7 +592,9 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
       th = rand() * Math.PI * 2,
       a = armDensity(spiral, r, th),
       outerEdge = Math.pow(Math.max(0, 0.5 + 0.5 * Math.cos(a.phase + 0.5)), 5),
-      weight = flocculent ? THREE.MathUtils.smoothstep(fragNoise(r, th), 0.45, 0.7) * 0.6 : Math.min(1, outerEdge * a.arm * 2.5);
+      weight = flocculent
+        ? THREE.MathUtils.smoothstep(fragNoise(r, th), 0.45, 0.7) * 0.6
+        : Math.min(1, outerEdge * a.arm * 2.5);
     if (rand() > weight) continue;
     k++;
     const cx = Math.cos(th) * r,
@@ -701,13 +731,18 @@ function buildIrregular(root: THREE.Group, seed: number, extent: number, budget:
   for (let i = 1; i < 5; i++) {
     const a = bodyAngle + (seeded(seed, 30 + i) - 0.5) * 4.2,
       d = 0.22 + seeded(seed, 40 + i) * 0.45;
-    clumps.push([Math.cos(a) * d, Math.sin(a) * d, 0.1 + seeded(seed, 50 + i) * 0.18, 0.35 + seeded(seed, 60 + i) * 0.55]);
+    clumps.push([
+      Math.cos(a) * d,
+      Math.sin(a) * d,
+      0.1 + seeded(seed, 50 + i) * 0.18,
+      0.35 + seeded(seed, 60 + i) * 0.55,
+    ]);
   }
   const barAngle = seeded(seed, 22) * Math.PI,
     u = baseDiskUniforms(seed);
   Object.assign(u, {
     uStyle: { value: 2 },
-    uClumps: { value: clumps.map((c) => new THREE.Vector4(c[0], c[1], c[2], c[3])) },
+    uClumps: { value: clumps.map(c => new THREE.Vector4(c[0], c[1], c[2], c[3])) },
     uBarAngle: { value: barAngle },
     uBarLen: { value: 0.26 },
     uBarWidth: { value: 0.07 },
@@ -850,7 +885,7 @@ export function buildGalaxyVisual(style: GalaxyVisualStyle, seed: number, extent
  * Jets stay dormant unless matter streams feed the nucleus (they then light up as before).
  */
 export function tameGalaxyNucleus(mesh: THREE.Object3D, style: GalaxyVisualStyle) {
-  mesh.traverse((child) => {
+  mesh.traverse(child => {
     if (child.name === 'blackHoleJets') child.userData.baseline = 0;
     if (child.name === 'accretionDiskDust' || child.name === 'blackHoleWarmGlow') child.visible = false;
     if (child.name === 'accretionDiskMid') child.scale.setScalar(0.7);

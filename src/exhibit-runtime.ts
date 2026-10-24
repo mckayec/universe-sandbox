@@ -11,12 +11,18 @@ export type ExhibitPreferences = {
 const PREFERENCES_KEY = 'gravity-lab-preferences-v1';
 
 export function loadPreferences(reducedMotion = false): ExhibitPreferences {
-  const fallback: ExhibitPreferences = { realism: 'exhibit', effects: reducedMotion ? 'gentle' : 'full', narration: true };
+  const fallback: ExhibitPreferences = {
+    realism: 'exhibit',
+    effects: reducedMotion ? 'gentle' : 'full',
+    narration: true,
+  };
   if (typeof localStorage === 'undefined') return fallback;
   try {
     const parsed = JSON.parse(localStorage.getItem(PREFERENCES_KEY) ?? '') as Partial<ExhibitPreferences>;
     return {
-      realism: ['exhibit', 'educational', 'realistic'].includes(parsed.realism ?? '') ? parsed.realism! : fallback.realism,
+      realism: ['exhibit', 'educational', 'realistic'].includes(parsed.realism ?? '')
+        ? parsed.realism!
+        : fallback.realism,
       effects: ['full', 'gentle'].includes(parsed.effects ?? '') ? parsed.effects! : fallback.effects,
       narration: parsed.narration ?? fallback.narration,
     };
@@ -36,16 +42,17 @@ export function savePreferences(preferences: ExhibitPreferences) {
 }
 
 export function evolutionFactor(mode: RealismMode) {
-  return mode === 'exhibit' ? 1 : mode === 'educational' ? .42 : .12;
+  return mode === 'exhibit' ? 1 : mode === 'educational' ? 0.42 : 0.12;
 }
 
 export function transferFactor(mode: RealismMode) {
-  return mode === 'exhibit' ? 1 : mode === 'educational' ? .65 : .38;
+  return mode === 'exhibit' ? 1 : mode === 'educational' ? 0.65 : 0.38;
 }
 
 export function detectDeviceTier(compact: boolean): DeviceTier {
   const cores = typeof navigator === 'undefined' ? 4 : navigator.hardwareConcurrency || 4;
-  const memory = typeof navigator === 'undefined' ? 4 : (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
+  const memory =
+    typeof navigator === 'undefined' ? 4 : ((navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4);
   // Viewport width is a layout concern, not a reliable measure of GPU capability.
   // Only a genuinely mobile/coarse-pointer device is passed as compact; desktop
   // browsers can then let the adaptive monitor tune quality from observed FPS.
