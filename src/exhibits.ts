@@ -1,4 +1,13 @@
-export type ExhibitId = 'build-star' | 'habitable-world' | 'binary-stars' | 'feed-black-hole' | 'supernova-observatory' | 'collision-lab' | 'tidal-lab' | 'gododdin' | 'galaxy-tour';
+export type ExhibitId =
+  | 'build-star'
+  | 'habitable-world'
+  | 'binary-stars'
+  | 'feed-black-hole'
+  | 'supernova-observatory'
+  | 'collision-lab'
+  | 'tidal-lab'
+  | 'gododdin'
+  | 'galaxy-tour';
 
 export type ExhibitDefinition = {
   id: ExhibitId;
@@ -23,7 +32,8 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     title: 'Create a Living World',
     eyebrow: 'Habitability laboratory',
     description: 'A young ocean world begins inside the temperate zone of a Sun-like star.',
-    objective: 'Keep the planet in a calm orbit and watch its biosphere develop—or disrupt it with impacts and radiation.',
+    objective:
+      'Keep the planet in a calm orbit and watch its biosphere develop—or disrupt it with impacts and radiation.',
     accent: '#63e4ac',
   },
   {
@@ -31,7 +41,8 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     title: 'Dance of Two Suns',
     eyebrow: 'Binary-star laboratory',
     description: 'Two unequal stars orbit their shared barycenter while one approaches its Roche lobe.',
-    objective: 'Turn on scientific overlays, watch their barycentric motion, and accelerate time until mass transfer begins.',
+    objective:
+      'Turn on scientific overlays, watch their barycentric motion, and accelerate time until mass transfer begins.',
     accent: '#91bfff',
   },
   {
@@ -47,7 +58,8 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     title: 'Witness a Supernova',
     eyebrow: 'Stellar-death observatory',
     description: 'A massive hypergiant is seconds away from core collapse.',
-    objective: 'Watch the white flash, asymmetric ejecta, expanding shock front, lingering remnant, and pulsar birth at 1× speed.',
+    objective:
+      'Watch the white flash, asymmetric ejecta, expanding shock front, lingering remnant, and pulsar birth at 1× speed.',
     accent: '#f4a6ff',
   },
   {
@@ -63,7 +75,8 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     title: 'Tidal Disruption Lab',
     eyebrow: 'Roche-limit laboratory',
     description: 'A rogue black hole is falling through a quiet planetary system.',
-    objective: 'Watch worlds stretch as they cross the Roche limit, then shear into debris streams. Fling the black hole again or drop a new one to repeat it.',
+    objective:
+      'Watch worlds stretch as they cross the Roche limit, then shear into debris streams. Fling the black hole again or drop a new one to repeat it.',
     accent: '#ffb36b',
   },
   {
@@ -71,7 +84,8 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     title: 'The Fall of Gododdin',
     eyebrow: 'Sun Eater scenario · fiction',
     description: 'A Cielcin worldship tears past Gododdin at warp, its wake ripping the moon apart.',
-    objective: 'Keep time at 1×. As the worldship passes, time drops into slow motion so you can watch the moon stretch and shatter into a debris arc, while Gododdin holds together just outside the lethal zone. The warp-wake boost is fictional; the Roche-limit breakup is real physics.',
+    objective:
+      'Keep time at 1×. As the worldship passes, time drops into slow motion so you can watch the moon stretch and shatter into a debris arc, while Gododdin holds together just outside the lethal zone. The warp-wake boost is fictional; the Roche-limit breakup is real physics.',
     accent: '#b79bff',
   },
   {
@@ -79,7 +93,8 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     title: 'Build a Galaxy',
     eyebrow: 'Deep-space laboratory',
     description: 'A central black hole anchors stars, stellar nurseries, and distinct navigable structures.',
-    objective: 'Use the named-structure navigator to move between the galaxy and local systems, then save the universe.',
+    objective:
+      'Use the named-structure navigator to move between the galaxy and local systems, then save the universe.',
     accent: '#ae8cff',
   },
 ] as const;

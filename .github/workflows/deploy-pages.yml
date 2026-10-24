@@ -27,7 +27,11 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # Formatting is reported but never blocks a deploy; run `pnpm format` to fix.
+      - run: pnpm format:check
+        continue-on-error: true
       - run: pnpm build
+      - run: pnpm test
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

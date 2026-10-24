@@ -34,10 +34,46 @@ function childIndex(node: Node, particle: GravityParticle) {
 function subdivide(node: Node) {
   const half = node.half / 2;
   node.children = [
-    { cx: node.cx - half, cz: node.cz - half, half, sourceMass: 0, weightedX: 0, weightedZ: 0, maxSoftening: 0, items: [] },
-    { cx: node.cx + half, cz: node.cz - half, half, sourceMass: 0, weightedX: 0, weightedZ: 0, maxSoftening: 0, items: [] },
-    { cx: node.cx - half, cz: node.cz + half, half, sourceMass: 0, weightedX: 0, weightedZ: 0, maxSoftening: 0, items: [] },
-    { cx: node.cx + half, cz: node.cz + half, half, sourceMass: 0, weightedX: 0, weightedZ: 0, maxSoftening: 0, items: [] },
+    {
+      cx: node.cx - half,
+      cz: node.cz - half,
+      half,
+      sourceMass: 0,
+      weightedX: 0,
+      weightedZ: 0,
+      maxSoftening: 0,
+      items: [],
+    },
+    {
+      cx: node.cx + half,
+      cz: node.cz - half,
+      half,
+      sourceMass: 0,
+      weightedX: 0,
+      weightedZ: 0,
+      maxSoftening: 0,
+      items: [],
+    },
+    {
+      cx: node.cx - half,
+      cz: node.cz + half,
+      half,
+      sourceMass: 0,
+      weightedX: 0,
+      weightedZ: 0,
+      maxSoftening: 0,
+      items: [],
+    },
+    {
+      cx: node.cx + half,
+      cz: node.cz + half,
+      half,
+      sourceMass: 0,
+      weightedX: 0,
+      weightedZ: 0,
+      maxSoftening: 0,
+      items: [],
+    },
   ];
 }
 
@@ -64,14 +100,22 @@ function contains(node: Node, particle: GravityParticle) {
   return Math.abs(particle.x - node.cx) <= node.half && Math.abs(particle.z - node.cz) <= node.half;
 }
 
-function addForce(target: GravityParticle, sourceX: number, sourceZ: number, sourceMass: number, softening: number, scale: number, result: GravityAcceleration) {
+function addForce(
+  target: GravityParticle,
+  sourceX: number,
+  sourceZ: number,
+  sourceMass: number,
+  softening: number,
+  scale: number,
+  result: GravityAcceleration,
+) {
   const dx = sourceX - target.x;
   const dz = sourceZ - target.z;
   const rawDistanceSq = dx * dx + dz * dz;
   if (rawDistanceSq < 1e-10) return;
-  const distanceSq = Math.max(rawDistanceSq + softening * softening, (target.radius * target.radius) * 0.35, 1e-4);
+  const distanceSq = Math.max(rawDistanceSq + softening * softening, target.radius * target.radius * 0.35, 1e-4);
   const invDistance = 1 / Math.sqrt(rawDistanceSq);
-  const strength = scale * sourceMass * target.responseFactor / distanceSq;
+  const strength = (scale * sourceMass * target.responseFactor) / distanceSq;
   result.x += dx * invDistance * strength;
   result.z += dz * invDistance * strength;
 }
@@ -97,11 +141,18 @@ function accumulate(node: Node, target: GravityParticle, theta: number, scale: n
   for (const child of node.children) accumulate(child, target, theta, scale, result);
 }
 
-export function barnesHutAccelerations(particles: readonly GravityParticle[], gravitationalScale: number, theta = 0.72) {
+export function barnesHutAccelerations(
+  particles: readonly GravityParticle[],
+  gravitationalScale: number,
+  theta = 0.72,
+) {
   const active = particles.filter(particle => !particle.hosted);
   const result = new Map<number, GravityAcceleration>();
   if (!active.length) return result;
-  let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+  let minX = Infinity,
+    maxX = -Infinity,
+    minZ = Infinity,
+    maxZ = -Infinity;
   for (const particle of active) {
     minX = Math.min(minX, particle.x);
     maxX = Math.max(maxX, particle.x);
@@ -128,7 +179,10 @@ export function barnesHutAccelerations(particles: readonly GravityParticle[], gr
   return result;
 }
 
-export function spatialCandidatePairs(particles: readonly Pick<GravityParticle, 'id' | 'x' | 'z' | 'radius'>[], cellSize = 12) {
+export function spatialCandidatePairs(
+  particles: readonly Pick<GravityParticle, 'id' | 'x' | 'z' | 'radius'>[],
+  cellSize = 12,
+) {
   const cells = new Map<string, number[]>();
   for (const particle of particles) {
     const reach = Math.max(0.5, particle.radius);
@@ -136,18 +190,21 @@ export function spatialCandidatePairs(particles: readonly Pick<GravityParticle, 
     const maxX = Math.floor((particle.x + reach) / cellSize);
     const minZ = Math.floor((particle.z - reach) / cellSize);
     const maxZ = Math.floor((particle.z + reach) / cellSize);
-    for (let x = minX; x <= maxX; x++) for (let z = minZ; z <= maxZ; z++) {
-      const key = `${x},${z}`;
-      const bucket = cells.get(key) ?? [];
-      bucket.push(particle.id);
-      cells.set(key, bucket);
-    }
+    for (let x = minX; x <= maxX; x++)
+      for (let z = minZ; z <= maxZ; z++) {
+        const key = `${x},${z}`;
+        const bucket = cells.get(key) ?? [];
+        bucket.push(particle.id);
+        cells.set(key, bucket);
+      }
   }
   const pairs = new Set<string>();
-  for (const bucket of cells.values()) for (let i = 0; i < bucket.length; i++) for (let j = i + 1; j < bucket.length; j++) {
-    const a = Math.min(bucket[i], bucket[j]);
-    const b = Math.max(bucket[i], bucket[j]);
-    pairs.add(`${a}:${b}`);
-  }
+  for (const bucket of cells.values())
+    for (let i = 0; i < bucket.length; i++)
+      for (let j = i + 1; j < bucket.length; j++) {
+        const a = Math.min(bucket[i], bucket[j]);
+        const b = Math.max(bucket[i], bucket[j]);
+        pairs.add(`${a}:${b}`);
+      }
   return [...pairs].map(pair => pair.split(':').map(Number) as [number, number]);
 }

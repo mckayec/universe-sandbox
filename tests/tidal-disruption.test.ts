@@ -24,10 +24,23 @@ test('the effective Roche limit is where stress meets the threshold', () => {
 
 test('built-in Solar System orbits stay below the disruption threshold', () => {
   const sun = 1200;
-  for (const [kind, mass, orbit] of [['rocky', .55, 7], ['rocky', 5.2, 10], ['rocky', 6.2, 13.5], ['rocky', 1.4, 17.5], ['gas', 48, 25], ['dwarf', .42, 56]] as const) {
-    assert.ok(tidalStressRatio(sun, mass, radiusFor(kind, mass), orbit) < DISRUPTION_THRESHOLD * .5, `${kind} at ${orbit}`);
+  for (const [kind, mass, orbit] of [
+    ['rocky', 0.55, 7],
+    ['rocky', 5.2, 10],
+    ['rocky', 6.2, 13.5],
+    ['rocky', 1.4, 17.5],
+    ['gas', 48, 25],
+    ['dwarf', 0.42, 56],
+  ] as const) {
+    assert.ok(
+      tidalStressRatio(sun, mass, radiusFor(kind, mass), orbit) < DISRUPTION_THRESHOLD * 0.5,
+      `${kind} at ${orbit}`,
+    );
   }
-  assert.ok(tidalStressRatio(6.2, .74, radiusFor('moon', .74), 2.35) < DISRUPTION_THRESHOLD * .1, 'Moon around Earth');
+  assert.ok(
+    tidalStressRatio(6.2, 0.74, radiusFor('moon', 0.74), 2.35) < DISRUPTION_THRESHOLD * 0.1,
+    'Moon around Earth',
+  );
   assert.ok(G > 0);
 });
 
@@ -36,9 +49,9 @@ test('strain accumulates only beyond the threshold and relaxes afterwards', () =
   for (let i = 0; i < 60; i++) strain = advanceTidalStrain(strain, 1.5, DISRUPTION_THRESHOLD, 1 / 60);
   assert.equal(strain, 0);
   for (let i = 0; i < 30; i++) strain = advanceTidalStrain(strain, 6, DISRUPTION_THRESHOLD, 1 / 60);
-  assert.ok(strain > .5 && strain < 1);
+  assert.ok(strain > 0.5 && strain < 1);
   for (let i = 0; i < 30; i++) strain = advanceTidalStrain(strain, 12, DISRUPTION_THRESHOLD, 1 / 60);
   assert.equal(strain, 1);
-  const relaxed = advanceTidalStrain(.6, 0, DISRUPTION_THRESHOLD, 1);
-  assert.ok(relaxed < .6);
+  const relaxed = advanceTidalStrain(0.6, 0, DISRUPTION_THRESHOLD, 1);
+  assert.ok(relaxed < 0.6);
 });
