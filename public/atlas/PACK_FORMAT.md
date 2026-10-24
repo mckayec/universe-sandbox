@@ -386,6 +386,25 @@ Tip: with `sea:.6+`, the noise makes mostly ocean and your continents decide whe
 ### 11.3 Built-in Earth
 `gfx:{type:"terran", base:"earth", sea:.5}` draws Earth's real continents (sites at real lat/lon).
 
+### 11.5 `gfx.map` — a drawn map instead of noise continents (high detail)
+For worlds with a real map in the books, give the coastlines as vector data. The engine roughens each
+outline with fractal detail, rasterises it into an 8192×4096 land/mountain/water texture (4096 on
+phones) and uses that both for the baked globe and, up close, for crisp coastlines and rivers. Zoom
+goes much closer on mapped worlds. Mapped worlds should use `type:"terran"` (or `"desert"`).
+```js
+gfx:{type:"terran", sea:.5, pal:[…], map:{
+  rough:.5, mtn:.5, depth:3,                       // outline roughness, mountain height, ocean depth (all optional)
+  land:[ [[lat,lon],…], … ],                       // polygons that are land; everything else is sea
+  water:[ [[lat,lon],…] ],                         // lakes and inland seas cut out of the land
+  ranges:[{line:[[lat,lon],…], w:1.6, s:1}],       // mountain ridges: width in degrees, strength
+  rivers:[{line:[…], w:.12}, {line:[…], w:.05, c:"#9a3cff"}], // c = coloured line painted on the land, not water
+  regions:[{poly:[[lat,lon],…], c:"#4f9a3a", s:.9}] // nation or biome colours on the land
+}, feat:[]}
+```
+Points are `[lat, lon]` in degrees. Polygons should not cross ±180°; split them instead, or cover
+the whole globe with `[[89.5,-180],[89.5,0],[89.5,180],[-89.5,180],[-89.5,0],[-89.5,-180]]`.
+`feat` entries still apply on top (peaks, for example).
+
 ### 11.4 `sites` — named places on the surface
 ```js
 sites:[
@@ -402,6 +421,8 @@ sites:[
 | `books` | books where the place matters (badges, gating). Omit = always shown |
 | `sea` | true = may sit on water. Otherwise a site that falls in the sea is moved to the nearest land |
 | `aka` | optional alternative name (not displayed yet) |
+| `since`, `until` | book numbers: show the site only from book `since`, or only before book `until` (for worlds whose map changes in an era; with no book chosen, the first era shows) |
+| `realm` | `"cognitive"` or `"spiritual"`: shown only in that realm (19) |
 
 ---------------------------------------------------------------------------------------------------
 
@@ -565,3 +586,29 @@ Everything else falls back to defaults. Missing books colours get a default pale
 * Cite sources in comments (and `meta.sources`). Mark estimated placements with `est:true` and a
   comment `/* estimated */`; never invent facts.
 * Keep the pack self-contained (no network requests). Sizes: aim for 30–60 worlds, 40–80 events.
+
+---------------------------------------------------------------------------------------------------
+
+## 19. `realms` — Physical, Cognitive and Spiritual views of the same space (optional)
+Adds a three-way switch above the Chronicle. The realms are not separate places: each is a different
+view of the same worlds. Worlds move smoothly between their positions in each view.
+```js
+realms:{
+  center:{sol:[0,0,0]},                                // point the Cognitive view compresses toward
+  physical:{label:"Physical", tip:"…"},
+  cognitive:{label:"Cognitive", first:4, title:"…", text:"…", unknown:"…",
+    compress:.36, compressInner:.8, zoom:.6, emberSpread:9,   // how much empty space collapses
+    look:{style:"unsea", c1:"#1e1a2c", c2:"#5a5088", c3:"#0e0c14"},  // default subastral look
+    subastrals:[{world:"roshar", name:"Shadesmar", color:"rgba(…)", r:1.6, first:4}],
+    perps:[{world:"roshar", first:5, color:"rgba(…)"}]},      // beams where the realms touch
+  spiritual:{label:"Spiritual", first:7, title:"…", text:"…", radius:13, lift:1.5, pull:.6,
+    coreLabel:"…", coreFirst:7, color:"#f0d890",
+    shards:[{id:"honor", name:"Honor", color:"#9cc4ff", first:4, major:true}]}
+}
+```
+* Groups take `anchor` (the world they compress around) and `spirit:[shardId,…]` (threads in the
+  Spiritual view). A world can add its own `spirit`, or `realmAnchor` to sit by another world.
+* A world's `realms.cognitive` = `{name, style, c1, c2, c3, blurb}` sets its look and dossier card.
+  Styles: `beads` (bead ocean over the land, obsidian over the seas), `mist`, `plasma`, `paint`, `unsea`.
+* Worlds, sites, labels, glows and links accept `realm:"cognitive"` (only there) or
+  `realms:["physical","cognitive"]`. `first` gates each realm behind a book.
