@@ -30,6 +30,12 @@ export type SavedBody = {
   groupId?: number;
   artificial?: string;
   warpBoost?: number;
+  exhibitSystemId?: number;
+  holdStage?: boolean;
+  satelliteHostId?: number;
+  satelliteOrbit?: number;
+  satelliteAngle?: number;
+  satelliteRate?: number;
 };
 
 export type SavedCosmicGroup = {
