@@ -10,7 +10,8 @@
     "test:browser": "node tests/browser-smoke.mjs",
     "preview": "vite preview",
     "format": "prettier --write src tests",
-    "format:check": "prettier --check src tests"
+    "format:check": "prettier --check src tests",
+    "check": "pnpm format:check && pnpm build && pnpm test"
   },
   "dependencies": {
     "three": "^0.180.0"
