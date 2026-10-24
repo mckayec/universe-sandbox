@@ -46,6 +46,8 @@ export type SavedCosmicGroup = {
   style?: 'spiral' | 'lenticular' | 'elliptical' | 'irregular' | 'globular';
   anchorId?: number;
   haloMass?: number;
+  /** Seed for the procedural galaxy picture (arm pattern, bar, dust); absent in older saves. */
+  visualSeed?: number;
 };
 
 export type SandboxSnapshot = {
