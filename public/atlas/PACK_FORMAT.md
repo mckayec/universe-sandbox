@@ -227,6 +227,7 @@ and `spoilers.dimMarker` (0.2 / 0.15).
 | `homeAction` | `"Fly to " + homeButton` | primary button in the About panel |
 | `homeLink` | `homeButton` | secondary button in a world dossier |
 | `homeCrumb` | `homeButton` | breadcrumb label when no world is selected |
+| `galaxyCrumb` | `"Milky Way"` | first breadcrumb (the whole galaxy); change it when the series is not set in the Milky Way |
 | `crumbGroups` | `true` | breadcrumb shows the world's group name; `false` → always `homeCrumb` |
 | `go` | first major world | `{id:"delos", label:"Go to Delos"}` About-panel shortcut, or `false` |
 | `bookLabel` | `"Reading"` in cumulative, none in single | small label before the book buttons |
