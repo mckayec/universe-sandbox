@@ -102,21 +102,40 @@ void main(){
     float win=smoothstep(uArmStart*.75,uArmStart+.12,r)*(1.-smoothstep(.85,1.15,r));
     float mainA=pow(max(0.,.5+.5*cos(phase)),3.),minorA=uMinor*pow(max(0.,.5-.5*cos(phase)),4.);
     float arm=max(mainA,minorA)*win;
-    float floc=uFloc*smoothstep(.35,.75,patchN+fil*.25)*win;
-    arm=max(arm,floc);
+    // flocculent: break the arms into short curved fragments (spiral-aligned noise, short along the arm)
+    float frag=fbmP(vec2(sa*34.,lp*7.)+uSeed*.21,34.);
+    float fragMask=smoothstep(.46,.66,frag);
+    arm=mix(arm,max(arm*fragMask*.8,fragMask*smoothstep(.25,.6,patchN)*.85)*win,uFloc);
     disk=exp(-r/.27);
     emitArm=arm;
     float lane=(pow(max(0.,.5+.5*cos(phase-.55)),16.)+.2*pow(max(0.,.5+.5*cos(phase-.9)),24.))*win*(.25+.95*smoothstep(.3,.62,patchN))+uMinor*.45*pow(max(0.,.5-.5*cos(phase-.55)),18.)*win;
     float coreLanes=pow(max(0.,.5+.5*cos(phase-.62)),6.)*smoothstep(.03,.1,r)*(1.-win)*.55;
-    dust=uDust*((lane*1.6+coreLanes)*(.15+1.25*smoothstep(.2,.75,fil))+uFloc*smoothstep(.45,.85,fil)*.85*win)*(1.-smoothstep(.55,1.,r))*smoothstep(.05,.14,r+uFloc*.1);
-    knotsP=spots(p*46.+uSeed,.55,.11)*smoothstep(.25,.7,arm)*uKnots*(1.-smoothstep(.95,1.1,r))*smoothstep(.12,.25,r);
-    knotsB=(spots(p*30.+uSeed*2.,.35,.2)*.8+smoothstep(.55,.95,fil)*.35)*arm*uKnots;
+    // flocculent dust: many short brown filaments everywhere instead of continuous lanes
+    float shortFil=ridgedP(vec2(sa*72.,lp*13.)+frag*vec2(2.,.8),72.);
+    float flocDust=smoothstep(.55,.8,shortFil)*smoothstep(.35,.65,fbmP(vec2(sa*20.,lp*5.)+3.7,20.))*1.2*win;
+    dust=uDust*(mix((lane*1.6+coreLanes)*(.15+1.25*smoothstep(.2,.75,fil)),flocDust+coreLanes*.6,uFloc))*(1.-smoothstep(.55,1.,r))*smoothstep(.05,.14,r+uFloc*.1);
+    // H-II regions: dozens of small crisp pink knots hugging the OUTER (trailing) edge of the arms
+    float outer=pow(max(0.,.5+.5*cos(phase+.5)),5.)*win;
+    float hii=spots(p*95.+uSeed,.5,.075)+spots(p*61.+uSeed*1.3,.62,.08)*.8;
+    knotsP=1.6*hii*smoothstep(.12,.55,max(outer,uFloc*fragMask*.6))*uKnots*(1.-smoothstep(.95,1.1,r))*smoothstep(.1,.22,r);
+    // grainy, mottled arms: unresolved star clouds at several scales
+    float clouds=spots(p*30.+uSeed*2.,.35,.2)*.6+spots(p*72.+uSeed*3.,.3,.16)*.55;
+#if OCT>3
+    clouds+=spots(p*150.+uSeed*4.,.25,.14)*.45;
+#endif
+    knotsB=(clouds+smoothstep(.55,.95,fil)*.3)*arm*uKnots;
     if(uBarLen>0.){
       float c=cos(uBarAngle),s=sin(uBarAngle);vec2 pb=vec2(c*p.x+s*p.y,-s*p.x+c*p.y);
-      float bq=length(vec2(pb.x/uBarLen,pb.y/uBarWidth));
-      core+=exp(-pow(max(bq,1e-4),2.2)*2.6)*1.3;
-      // dust lanes along the leading edges of the bar
-      dust+=uDust*.8*exp(-sq((abs(pb.y)-uBarWidth*.55)/(uBarWidth*.22)))*(1.-smoothstep(.35,1.05,abs(pb.x)/uBarLen))*smoothstep(.02,.06,r)*(.5+.7*fil);
+      // boxy, clearly elongated stellar bar (super-ellipse profile) with a warm colour
+      float ax=abs(pb.x)/uBarLen,ay=abs(pb.y)/uBarWidth;
+      float bq=pow(pow(ax,3.)+pow(ay,2.2),.42);
+      float bar=exp(-pow(max(bq,1e-4),2.6)*2.2)*(.75+.25*exp(-ax*ax*3.));
+      core+=bar*1.15;
+      // the disk inside the bar radius is swept clear by the bar: dim it so the bar stands out
+      disk*=1.-.55*smoothstep(uBarLen*1.15,uBarLen*.35,r)*(1.-bar);
+      // offset dust lanes on the leading edges (opposite sides at each end of the bar)
+      float side=sign(pb.x);
+      dust+=uDust*1.1*exp(-sq((pb.y*side-uBarWidth*.85)/(uBarWidth*.28)))*(1.-smoothstep(.45,1.15,ax))*smoothstep(.03,.08,r)*(.45+.8*fil);
     }
   } else if(uStyle<1.5){
     // ---------------- lenticular ----------------
@@ -388,17 +407,17 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
     barred = variant === 1,
     flocculent = variant === 2,
     barAngle = seeded(seed, 8) * Math.PI,
-    barLen = barred ? 0.24 + seeded(seed, 9) * 0.06 : 0,
+    barLen = barred ? 0.36 + seeded(seed, 9) * 0.08 : 0,
     tanPitch = barred ? 0.24 : flocculent ? 0.36 : 0.3,
     arms = flocculent ? 3 : 2,
     spiral: SpiralParams = {
       arms,
       tanPitch,
       phase0: 0,
-      warp: flocculent ? 0.55 : 0.28,
+      warp: flocculent ? 0.7 : 0.28,
       minor: barred ? 0.55 : flocculent ? 0 : 0.25,
       barLen,
-      barWidth: 0.07,
+      barWidth: 0.08,
       barAngle,
       armStart: barred ? barLen : 0.1,
       seed: seeded(seed, 3) * 50,
@@ -419,28 +438,28 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
     uWarp: { value: spiral.warp },
     uMinor: { value: spiral.minor },
     uBarLen: { value: barLen },
-    uBarWidth: { value: 0.07 },
-    uBarAngle: { value: -barAngle },
+    uBarWidth: { value: 0.08 },
+    uBarAngle: { value: barAngle },
     uArmStart: { value: spiral.armStart },
-    uFloc: { value: flocculent ? 0.85 : 0 },
-    uDust: { value: flocculent ? 1.25 : 0.9 },
-    uKnots: { value: flocculent ? 0.6 : 1 },
+    uFloc: { value: flocculent ? 1 : 0 },
+    uDust: { value: flocculent ? 1.1 : 0.9 },
+    uKnots: { value: flocculent ? 0.75 : 1 },
     uInter: { value: barred ? 0.75 : flocculent ? 0.62 : 0.6 },
     uArmGain: { value: flocculent ? 0.75 : 1.05 },
     uBright: { value: barred ? 1.05 : 1.15 },
-    uCoreBoost: { value: barred ? 3.2 : 1 },
-    uCore: { value: new THREE.Color(1.0, 0.8, 0.52) },
+    uCoreBoost: { value: barred ? 0.9 : 1 },
+    uCore: { value: barred ? new THREE.Color(1.0, 0.78, 0.45) : new THREE.Color(1.0, 0.8, 0.52) },
     uDiskCol: { value: flocculent ? new THREE.Color(0.78, 0.74, 0.8) : new THREE.Color(0.5, 0.6, 0.88) },
     uArmCol: { value: flocculent ? new THREE.Color(0.85, 0.88, 1.0) : new THREE.Color(0.6, 0.74, 1.0) },
   });
   root.add(diskMesh(extent, u, octaves));
   root.add(
-    glowMesh('galaxyBulge', extent * (barred ? 0.32 : 0.5), {
+    glowMesh('galaxyBulge', extent * (barred ? 0.22 : 0.5), {
       profile: 0,
-      axis: barred ? 0.8 : 0.86,
-      re: barred ? 0.12 : 0.17,
+      axis: barred ? 1 : 0.86,
+      re: barred ? 0.14 : 0.17,
       n: 2.2,
-      intensity: barred ? 0.4 : 1.5,
+      intensity: barred ? 0.32 : 1.5,
       stretch: 60,
       inner: '#fff1d6',
       outer: '#ffb766',
@@ -450,17 +469,30 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
   const stars = new StarBuffer(budget),
     nursery = new StarBuffer(Math.floor(budget * 0.09)),
     h = 0.27;
+  const fragNoise = (r: number, th: number) => {
+    const sa = (th - Math.log(Math.max(r, 0.02)) / tanPitch) / (Math.PI * 2),
+      x = sa * 34,
+      y = (Math.log(Math.max(r, 0.02)) + spiral.seed * 0.37) * 7,
+      ix = Math.floor(x),
+      iy = Math.floor(y),
+      fx = x - ix,
+      fy = y - iy,
+      h = (a: number, b: number) => seeded(((a % 34) + 34) % 34 + seed * 0.013, b * 1.37 + 5),
+      u = fx * fx * (3 - 2 * fx),
+      v = fy * fy * (3 - 2 * fy);
+    return (h(ix, iy) * (1 - u) + h(ix + 1, iy) * u) * (1 - v) + (h(ix, iy + 1) * (1 - u) + h(ix + 1, iy + 1) * u) * v;
+  };
   const dustDim = (r: number, th: number) => {
     const a = armDensity(spiral, r, th);
     return Math.exp(-a.dust * 1.6 * (flocculent ? 1.4 : 1));
   };
   // bulge + bar population (old, warm)
-  const bulgeN = Math.floor(budget * 0.14);
+  const bulgeN = Math.floor(budget * (barred ? 0.18 : 0.14));
   for (let i = 0; i < bulgeN; i++) {
     let x: number, z: number, y: number;
-    if (barred && rand() < 0.55) {
-      const along = gaussian(rand) * barLen * 0.5,
-        across = gaussian(rand) * 0.035;
+    if (barred && rand() < 0.7) {
+      const along = (rand() * 2 - 1) * barLen * (0.55 + 0.45 * rand()),
+        across = gaussian(rand) * 0.03 * (1 - 0.4 * Math.abs(along / barLen));
       x = Math.cos(barAngle) * along - Math.sin(barAngle) * across;
       z = Math.sin(barAngle) * along + Math.cos(barAngle) * across;
       y = gaussian(rand) * 0.03;
@@ -499,27 +531,49 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
       th = rand() * Math.PI * 2;
     if (r > 1.15) continue;
     const a = armDensity(spiral, r, th),
-      accept = flocculent ? 0.15 + 0.85 * a.arm : Math.pow(a.arm, 1.6);
+      accept = flocculent ? 0.08 + 0.92 * THREE.MathUtils.smoothstep(fragNoise(r, th), 0.42, 0.7) : Math.pow(a.arm, 1.6);
     if (rand() > accept) continue;
     i++;
+    if (rand() < 0.35) {
+      // a small resolved star cloud: 6-14 stars packed together along the arm
+      const n = 6 + Math.floor(rand() * 9),
+        cs = 0.004 + rand() * 0.008;
+      for (let m = 0; m < n && i < armN; m++, i++) {
+        const [cb, csz] = luminosity(rand, 1.0),
+          t2 = rand();
+        stars.push(
+          (Math.cos(th) * r + gaussian(rand) * cs) * extent,
+          gaussian(rand) * 0.006 * extent,
+          (Math.sin(th) * r + gaussian(rand) * cs) * extent,
+          t2 < 0.55 ? C.blueWhite : t2 < 0.8 ? C.blue : C.white,
+          cb * dustDim(r, th),
+          csz,
+        );
+      }
+      continue;
+    }
     const [b, sz] = luminosity(rand, 1.05),
       t = rand(),
       col = t < 0.45 ? C.blueWhite : t < 0.75 ? C.blue : t < 0.92 ? C.white : C.yellow;
     stars.push(Math.cos(th) * r * extent, gaussian(rand) * 0.008 * extent, Math.sin(th) * r * extent, col, b * dustDim(r, th), sz);
   }
   // star-forming knots along the arms: tight clusters of pink H-II gas and hot blue stars
-  const knotCount = Math.floor(nursery.capacity / 18);
-  for (let k = 0, guard = 0; k < knotCount && guard < knotCount * 40; guard++) {
-    const r = 0.16 + rand() * 0.88,
+  const knotCount = Math.floor(nursery.capacity / 9);
+  for (let k = 0, guard = 0; k < knotCount && guard < knotCount * 60; guard++) {
+    const r = 0.14 + rand() * 0.9,
       th = rand() * Math.PI * 2,
-      a = armDensity(spiral, r, th);
-    if (rand() > Math.pow(a.arm, 2)) continue;
+      a = armDensity(spiral, r, th),
+      outerEdge = Math.pow(Math.max(0, 0.5 + 0.5 * Math.cos(a.phase + 0.5)), 5),
+      weight = flocculent ? THREE.MathUtils.smoothstep(fragNoise(r, th), 0.45, 0.7) * 0.6 : Math.min(1, outerEdge * a.arm * 2.5);
+    if (rand() > weight) continue;
     k++;
     const cx = Math.cos(th) * r,
       cz = Math.sin(th) * r,
-      spread = 0.003 + rand() * 0.006,
-      members = 4 + Math.floor(rand() * 12),
-      pinkness = rand();
+      spread = 0.0015 + rand() * 0.003,
+      members = 3 + Math.floor(rand() * 7),
+      pinkness = 0.5 + rand() * 0.5;
+    // bright compact H-II core so each knot reads as a crisp pink bead
+    nursery.push(cx * extent, 0.4, cz * extent, [1.0, 0.2, 0.42], 1.6 + rand() * 1.0, 3.4 + rand() * 2.2);
     for (let m = 0; m < members; m++) {
       const pink = rand() < 0.35 + pinkness * 0.45;
       nursery.push(
@@ -527,13 +581,13 @@ function buildSpiral(root: THREE.Group, seed: number, extent: number, budget: nu
         gaussian(rand) * 0.002 * extent,
         (cz + gaussian(rand) * spread) * extent,
         pink ? (rand() < 0.5 ? C.pink : C.hydrogen) : C.blueWhite,
-        pink ? 0.22 + rand() * 0.3 : 0.3 + rand() * 0.5,
-        pink ? 1.6 + rand() * 2 : 1.2 + rand() * 1.2,
+        pink ? 0.32 + rand() * 0.35 : 0.3 + rand() * 0.5,
+        pink ? 1.3 + rand() * 1.4 : 1.1 + rand() * 1.0,
       );
     }
   }
   root.add(stars.toPoints('galaxyStarField', 0, 260));
-  root.add(nursery.toPoints('galaxyNursery', 0.6, 260));
+  root.add(nursery.toPoints('galaxyNursery', 0.35, 260));
   root.userData.variant = variant;
   return 'spiral';
 }
@@ -654,7 +708,7 @@ function buildIrregular(root: THREE.Group, seed: number, extent: number, budget:
   Object.assign(u, {
     uStyle: { value: 2 },
     uClumps: { value: clumps.map((c) => new THREE.Vector4(c[0], c[1], c[2], c[3])) },
-    uBarAngle: { value: -barAngle },
+    uBarAngle: { value: barAngle },
     uBarLen: { value: 0.26 },
     uBarWidth: { value: 0.07 },
     uDust: { value: 0.9 },
