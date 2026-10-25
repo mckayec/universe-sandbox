@@ -21,13 +21,13 @@ const BODIES=[
  {id:"phobos",name:"Phobos",parent:"mars",kind:"phobos",a:1.9,size:.22,period:4.5,phase:.4,group:"Mars",moon:true,epithet:"Moon of Mars",control:"The Society",
   blurb:"An industrial moon of Mars.",sw:"#8d7d70"},
  {id:"jupiter",name:"Jupiter",parent:"sun",kind:"jupiter",a:50,size:2.6,period:150,phase:.55,group:"Jupiter",epithet:"Gas giant · gateway to the Rim",control:"Rim Golds · House Raa",
-  blurb:"Its moons hold the Raa family seat, Lorn’s retreat, and the great shipyards of Ganymede. The decisive fleet battle of Morning Star is fought in its space.",sw:"#d2a77a"},
+  blurb:"Its moons hold the Raa family seat and the great shipyards of Ganymede.",sw:"#d2a77a"},
  {id:"io",name:"Io",parent:"jupiter",kind:"io",a:4.2,size:.34,period:7,phase:.0,group:"Jupiter",moon:true,epithet:"Seat of House Raa",control:"Romulus au Raa",
-  blurb:"Volcanic moon ruled by House Raa. Romulus au Raa negotiates with Darrow here, and the Rim chooses its side.",sw:"#e0c45c"},
+  blurb:"Volcanic moon ruled by House Raa.",sw:"#e0c45c"},
  {id:"europa",name:"Europa",parent:"jupiter",kind:"europa",a:5.4,size:.31,period:10,phase:.3,group:"Jupiter",moon:true,epithet:"Ocean moon of the Rim",control:"House Arcos",
-  blurb:"The ice moon where Lorn au Arcos withdrew from war to raise his grandchildren. Darrow comes here to bring him back.",sw:"#ddd3c2"},
- {id:"ganymede",name:"Ganymede",parent:"jupiter",kind:"ganymede",a:6.9,size:.45,period:14,phase:.6,group:"Jupiter",moon:true,epithet:"Shipyard moon",control:"The Society, then the Rim",
-  blurb:"Home to the Society’s great dockyards. Pliny springs his trap here in Golden Son, and the yards burn in Morning Star.",sw:"#9d917f"},
+  blurb:"An ocean moon of Jupiter.",sw:"#ddd3c2"},
+ {id:"ganymede",name:"Ganymede",parent:"jupiter",kind:"ganymede",a:6.9,size:.45,period:14,phase:.6,group:"Jupiter",moon:true,epithet:"Shipyard moon",control:"The Society",
+  blurb:"Home to the Society’s great dockyards.",sw:"#9d917f"},
  {id:"callisto",name:"Callisto",parent:"jupiter",kind:"callisto",a:8.4,size:.4,period:20,phase:.85,group:"Jupiter",moon:true,epithet:"Outer Jovian moon",control:"Rim Golds",
   blurb:"Part of the Rim’s holdings around Jupiter. It stays in the background during the trilogy.",sw:"#5e554c"},
  {id:"saturn",name:"Saturn",parent:"sun",kind:"saturn",a:70,size:2.2,period:220,phase:.25,ring:true,group:"Saturn",epithet:"Gas giant · the far Rim",control:"Moon Lords of the Rim",
@@ -39,16 +39,16 @@ const POIS={
  mars:[
   {id:"lykos",name:"Lykos",lat:-34,lon:-14,site:"lykos",desc:"One of the first of Mars’s two dozen underground mining colonies. Reds here drill for helium-3 and compete for the Laurel, believing their work will make Mars habitable."},
   {id:"yorkton",name:"Yorkton",lat:-6,lon:24,site:"yorkton",desc:"Martian city whose dark, crowded Bazaar hides Mickey the Carver’s club and workshop, where the Sons of Ares bring Darrow to be remade as a Gold."},
-  {id:"agea",name:"Agea",lat:-8,lon:-71,site:"agea",desc:"Capital of Mars and seat of House Augustus, set in the heart of Valles Marineris. Its Citadel and the Field of Mars host the great Triumph."},
+  {id:"agea",name:"Agea",lat:-8,lon:-71,site:"agea",desc:{0:"Capital of Mars and seat of House Augustus, set in the heart of Valles Marineris.",2:"Capital of Mars and seat of House Augustus, set in the heart of Valles Marineris. Its Citadel and the Field of Mars host the great Triumph."}},
   {id:"institute",name:"The Institute",lat:-5,lon:-58,site:"institute",desc:"A terraformed valley in the upper arm of Valles Marineris, about 80 km east of Agea. Highlands, the Argos River, the Greatwoods and a southern sea, where young Golds are split into twelve Houses and fight for supremacy."},
   {id:"olympus",name:"Olympus",lat:-1.5,lon:-55,site:"institute",focus:"olympus",desc:"An artificial mountain floating about two kilometers above the Institute, crowned by a bone-pale marble citadel. The Proctors watch the games from here, and quietly rig them."},
-  {id:"attica",name:"Attica",lat:-32,lon:145,site:"attica",desc:"A city on seven mountain peaks in Cimmeria, crowned with jagged steel-and-glass towers linked by bridges. The Jackal’s stronghold from the end of the Iron Rain; after the Triumph, Darrow is held prisoner here for nearly a year."},
-  {id:"southpole",name:"South Pole · Asgard",lat:-78,lon:110,site:"asgard",desc:"The frozen southern continent of the Obsidian tribes, cut off by the South Sea. Above it hangs Asgard, a flying mountain from which Golds play the tribes’ gods."}
+  {id:"attica",name:"Attica",lat:-32,lon:145,site:"attica",desc:{0:"A city on seven mountain peaks in Cimmeria, crowned with jagged steel-and-glass towers linked by bridges.",3:"A city on seven mountain peaks in Cimmeria, crowned with jagged steel-and-glass towers linked by bridges. The Jackal’s stronghold from the end of the Iron Rain; after the Triumph, Darrow is held prisoner here for nearly a year."}},
+  {id:"southpole",name:"South Pole · Asgard",lat:-78,lon:110,site:"asgard",desc:{0:"The frozen southern continent of the Obsidian tribes, cut off by the South Sea.",3:"The frozen southern continent of the Obsidian tribes, cut off by the South Sea. Above it hangs Asgard, a flying mountain from which Golds play the tribes’ gods."}}
  ],
- luna:[{id:"hyperion",name:"Hyperion",lat:1,lon:32,site:"hyperion",desc:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge. Site of the Summit in Golden Son and the last stand in Morning Star."}],
- phobos:[{id:"phobosport",name:"The Hive & the Needles",lat:8,lon:0,site:"phobos",desc:"A jagged city built over six centuries into and above the rock, its luxury tower tips called the Needles. Quicksilver’s helium-3 fortune is based here."}],
+ luna:[{id:"hyperion",name:"Hyperion",lat:1,lon:32,site:"hyperion",desc:{0:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge.",2:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge. Site of the Summit in Golden Son.",3:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge. Site of the Summit in Golden Son and the last stand in Morning Star."}}],
+ phobos:[{id:"phobosport",name:"The Hive & the Needles",lat:8,lon:0,site:"phobos",desc:{0:"A jagged city built over six centuries into and above the rock, its luxury tower tips called the Needles.",3:"A jagged city built over six centuries into and above the rock, its luxury tower tips called the Needles. Quicksilver’s helium-3 fortune is based here."}}],
  io:[{id:"raaseat",name:"Nesos",lat:12,lon:20,site:"io",desc:"Io’s capital and the seat of House Raa, sheltered by pulse shields amid sulfur dunes and volcanoes. Romulus au Raa meets Darrow on Io."}],
- europa:[{id:"lornhome",name:"Lorn’s castle",lat:62,lon:-20,site:"europa",desc:"A white limestone castle on a far-northern island of Europa’s ocean, its walls ringing a private forest. Lorn au Arcos lives here with his family, far from his wars."}],
+ europa:[{id:"lornhome",name:"Lorn’s castle",lat:62,lon:-20,site:"europa",desc:{0:"A white limestone castle on a far-northern island of Europa’s ocean, its walls ringing a private forest.",2:"A white limestone castle on a far-northern island of Europa’s ocean, its walls ringing a private forest. Lorn au Arcos lives here with his family, far from his wars."}}],
  ganymede:[{id:"docks",name:"Ganymede Dockyards",lat:0,lon:6,site:"ganymede",desc:"A grey ring of shipyards around Ganymede’s equator, centuries in the building, where the Society’s greatest warships, Colossus among them, are made."}]
 };
 
@@ -129,9 +129,9 @@ Object.keys(ERAS).forEach(id=>{const b=BODIES.find(x=>x.id===id);if(b)b.eras=ERA
 /* ---- new bodies ---- */
 const _NEWB=[
  {id:"kalyke",name:"Kalyke",parent:"jupiter",kind:"callisto",a:10.2,size:.16,period:28,phase:.2,group:"Jupiter",moon:true,epithet:"Small outer moon of Jupiter",control:"The Rim",
-  blurb:"A small, distant moon of Jupiter. In Light Bringer it becomes a slaughterhouse: Atlas au Raa kills Dido and Helios here and wrecks much of the Rim fleet.",sw:"#7a7066"},
- {id:"asteroid",name:"Asteroid 12193",parent:"sun",kind:"phobos",a:40,size:.2,period:120,phase:.62,group:"Belt",epithet:"Quicksilver’s hidden base",control:"Quicksilver",
-  blurb:"A rock in the asteroid belt, hollowed out in secret. In Light Bringer, Darrow finds that Quicksilver has built no fleet here, but a generation ship, the Tabula Rasa, to carry children beyond the Solar System.",sw:"#8a7a6a"}
+  blurb:"A small, distant moon of Jupiter.",sw:"#7a7066"},
+ {id:"asteroid",name:"Asteroid 12193",parent:"sun",kind:"phobos",a:40,size:.2,period:120,phase:.62,group:"Belt",epithet:"An asteroid",control:"Unknown",
+  blurb:"A rock in the asteroid belt, hollowed out in secret.",sw:"#8a7a6a"}
 ];
 BODIES.splice(BODIES.findIndex(b=>b.id==="callisto")+1,0,_NEWB[0]);
 BODIES.splice(BODIES.findIndex(b=>b.id==="jupiter"),0,_NEWB[1]);
@@ -139,25 +139,25 @@ BODIES.splice(BODIES.findIndex(b=>b.id==="jupiter"),0,_NEWB[1]);
 /* ---- places ---- */
 const HL={"tyche":[24.33,-17.33],"heliopolis":[-3.86,-15.95],"bluereach":[29.54,-10.6],"pan":[33.67,-4.68],"kaikos":[41.34,12.53],"priapos":[40.8,32.46],"kydon":[30.2,30.45],"redreach":[22.58,4.73],"kylor":[20.54,-15.64],"angelia":[14.2,15.38],"naran":[9.38,-13.3],"erebos":[7.45,-16.35],"eleusis":[6.43,17.87],"caduceus":[26.58,9.88],"ladon":[12.46,-5.39],"hesperides":[2.44,-31.72],"sirens":[-14.67,-23.62],"caliban":[-26.4,-61.37],"keryx":[1.59,49.98],"polybos":[-17.83,33.41],"arabos":[33.53,45.36]};
 POIS.mercury=[
- {id:"heliopolis",name:"Heliopolis",lat:HL.heliopolis[0],lon:HL.heliopolis[1],site:"heliopolis",desc:"Second jewel of Mercury, south of the Hesperides and east of the Bay of Sirens: the Hippodrome, the Water Plaza, the Graveyard of Tyrants, and the Mound of Votum on the bay. It falls in Dark Age."},
- {id:"tyche",name:"Tyche",lat:HL.tyche[0],lon:HL.tyche[1],site:"tyche",desc:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands. Darrow’s headquarters, drowned in Dark Age."},
- {id:"ladon",name:"Waste of Ladon",lat:HL.ladon[0],lon:HL.ladon[1],site:"helios",focus:"ladon",desc:"The chalk desert along Helios’s equator, called the Waste and the Eater of Armies. In Dark Age the Storm Gods raise a sandstorm across it that swallows armies."},
- {id:"redreach",name:"Red Reach",lat:HL.redreach[0],lon:HL.redreach[1],site:"helios",focus:"redreach",desc:"A Republic military base east of Tyche, one of the few with its own power. In Dark Age an atomic strike destroys it, along with most of the Second Army."},
- {id:"caduceus",name:"Plains of Caduceus",lat:HL.caduceus[0],lon:HL.caduceus[1],site:"helios",focus:"caduceus",desc:"Grasslands between the north coast and the Ladon, where the Society’s landing waves are caught in Orion’s storms."},
- {id:"angelia",name:"Angelia",lat:HL.angelia[0],lon:HL.angelia[1],site:"helios",focus:"angelia",desc:"A small city north of Eleusis. The Fear Knight booby-traps it and sets its reactor to blow."},
- {id:"erebos",name:"Erebos",lat:HL.erebos[0],lon:HL.erebos[1],site:"helios",focus:"erebos",desc:"A town in the foothills of the Hesperides. Lysander is captured here by the Gorgons after the Ladon."},
+ {id:"heliopolis",name:"Heliopolis",lat:HL.heliopolis[0],lon:HL.heliopolis[1],site:"heliopolis",desc:{0:"Second jewel of Mercury, south of the Hesperides and east of the Bay of Sirens: the Hippodrome, the Water Plaza, the Graveyard of Tyrants, and the Mound of Votum on the bay.",5:"Second jewel of Mercury, south of the Hesperides and east of the Bay of Sirens: the Hippodrome, the Water Plaza, the Graveyard of Tyrants, and the Mound of Votum on the bay. It falls in Dark Age."}},
+ {id:"tyche",name:"Tyche",lat:HL.tyche[0],lon:HL.tyche[1],site:"tyche",desc:{0:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands.",5:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands. Darrow’s headquarters, drowned in Dark Age."}},
+ {id:"ladon",name:"Waste of Ladon",lat:HL.ladon[0],lon:HL.ladon[1],site:"helios",focus:"ladon",desc:{0:"The chalk desert along Helios’s equator, called the Waste and the Eater of Armies.",5:"The chalk desert along Helios’s equator, called the Waste and the Eater of Armies. In Dark Age the Storm Gods raise a sandstorm across it that swallows armies."}},
+ {id:"redreach",name:"Red Reach",lat:HL.redreach[0],lon:HL.redreach[1],site:"helios",focus:"redreach",from:4,desc:{0:"A Republic military base east of Tyche, one of the few with its own power.",5:"A Republic military base east of Tyche, one of the few with its own power. In Dark Age an atomic strike destroys it, along with most of the Second Army."}},
+ {id:"caduceus",name:"Plains of Caduceus",lat:HL.caduceus[0],lon:HL.caduceus[1],site:"helios",focus:"caduceus",desc:{0:"Grasslands between the north coast and the Ladon.",5:"Grasslands between the north coast and the Ladon, where the Society’s landing waves are caught in Orion’s storms."}},
+ {id:"angelia",name:"Angelia",lat:HL.angelia[0],lon:HL.angelia[1],site:"helios",focus:"angelia",desc:{0:"A small city north of Eleusis.",5:"A small city north of Eleusis. The Fear Knight booby-traps it and sets its reactor to blow."}},
+ {id:"erebos",name:"Erebos",lat:HL.erebos[0],lon:HL.erebos[1],site:"helios",focus:"erebos",desc:{0:"A town in the foothills of the Hesperides.",5:"A town in the foothills of the Hesperides. Lysander is captured here by the Gorgons after the Ladon."}},
  {id:"eleusis",name:"Eleusis",lat:HL.eleusis[0],lon:HL.eleusis[1],site:"helios",focus:"eleusis",desc:"A mining city on the eastern edge of the Ladon."},
- {id:"children",name:"The Children",lat:HL.kydon[0]+3,lon:HL.kydon[1]-14,site:"helios",focus:"kydon",desc:"The cities of the Petasos Peninsula on the northeast coast, among them Kydon, Pan, Kaikos and Priapos. Republic bases stand near Kydon and Pan."},
- {id:"caliban",name:"Caliban Sea",lat:-8,lon:-38,desc:"The sea west of Helios. Wrecks of the White Fleet fall into it after Atalantia’s ambush over Tyche."},
- {id:"polar",name:"Storm God vaults",lat:72,lon:-12,desc:"House Lune secretly buried seven Storm Gods, kilometer-wide weather machines, beneath Mercury’s polar ice as a check on House Votum. Darrow raises them in Dark Age."}
+ {id:"children",name:"The Children",lat:HL.kydon[0]+3,lon:HL.kydon[1]-14,site:"helios",focus:"kydon",desc:{0:"The cities of the Petasos Peninsula on the northeast coast, among them Kydon, Pan, Kaikos and Priapos.",4:"The cities of the Petasos Peninsula on the northeast coast, among them Kydon, Pan, Kaikos and Priapos. Republic bases stand near Kydon and Pan."}},
+ {id:"caliban",name:"Caliban Sea",lat:-8,lon:-38,desc:{0:"The sea west of Helios.",5:"The sea west of Helios. Wrecks of the White Fleet fall into it after Atalantia’s ambush over Tyche."}},
+ {id:"polar",name:"Storm God vaults",lat:72,lon:-12,from:5,desc:"House Lune secretly buried seven Storm Gods, kilometer-wide weather machines, beneath Mercury’s polar ice as a check on House Votum. Darrow raises them in Dark Age."}
 ];
 POIS.venus=[
- {id:"gorgon",name:"Gorgon Isle",lat:18,lon:-40,site:"gorgon",desc:"The Ash Lord’s fortress island. In Iron Gold, Darrow storms it to find Magnus au Grimmus dying of poison; he learns Atalantia leads the Society now, and Magnus burns."},
- {id:"vdocks",name:"Venus Dockyards",lat:0,lon:30,site:"venusdocks",desc:"The orbital shipyards of House Carthii and the Hanging Coliseum. In Light Bringer, Darrow loses a razor duel here before Sevro blows up the dockyards."},
- {id:"rath",name:"House Valii-Rath",lat:-22,lon:60,desc:"Where Apollonius au Valii-Rath takes back his house’s forces from his brother Tharsus in Iron Gold."}
+ {id:"gorgon",name:"Gorgon Isle",lat:18,lon:-40,site:"gorgon",desc:{0:"The Ash Lord’s fortress island.",4:"The Ash Lord’s fortress island. In Iron Gold, Darrow storms it to find Magnus au Grimmus dying of poison; he learns Atalantia leads the Society now, and Magnus burns."}},
+ {id:"vdocks",name:"Venus Dockyards",lat:0,lon:30,site:"venusdocks",desc:{0:"The orbital shipyards of House Carthii and the Hanging Coliseum.",6:"The orbital shipyards of House Carthii and the Hanging Coliseum. In Light Bringer, Darrow loses a razor duel here before Sevro blows up the dockyards."}},
+ {id:"rath",name:"House Valii-Rath",lat:-22,lon:60,from:4,desc:"Where Apollonius au Valii-Rath takes back his house’s forces from his brother Tharsus in Iron Gold."}
 ];
 POIS.earth=[
- {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:4,desc:"Atalantia’s African seat, where she pressures Lysander before the summit."},
+ {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:6,desc:"Atalantia’s African seat, where she pressures Lysander before the summit."},
  {id:"deepgrave",name:"Deepgrave",lat:38,lon:-38,from:4,desc:"A prison beneath the Atlantic. Darrow’s team raids it in Iron Gold and frees Apollonius au Valii-Rath."},
  {id:"greenland",name:"Greenland base",lat:72,lon:-42,from:4,desc:"Darrow’s hidden base on Earth in Iron Gold."},
  {id:"rome",name:"Rome",lat:41.9,lon:12.5,from:6,desc:"Atalantia convenes the Two Hundred in Rome’s Colosseum."}
@@ -168,17 +168,17 @@ POIS.luna.push(
 );
 POIS.mars.push(
  {id:"lagalos",name:"Lagalos & Camp 121",lat:-24,lon:-40,from:4,desc:"Lyria’s home mine, and the riverside assimilation camp where her family moved. The Red Hand massacres the camp in Iron Gold; Lyria pulls Kavax au Telemanus from the river."},
- {id:"olympia",name:"Olympia",lat:22,lon:-110,from:4,desc:"The old Bellona citadel on Eagle Rest, now Sefi’s seat. In Dark Age, Volsung Fá breaks the Alltribe here, kills Sefi in a duel, and Ephraim dies."},
+ {id:"olympia",name:"Olympia",lat:22,lon:-110,from:4,desc:{0:"The old Bellona citadel on Eagle Rest, now Sefi’s seat.",5:"The old Bellona citadel on Eagle Rest, now Sefi’s seat. In Dark Age, Volsung Fá breaks the Alltribe here, kills Sefi in a duel, and Ephraim dies."}},
  {id:"cimmeria",name:"Cimmeria mines",lat:-30,lon:130,from:5,desc:"Quicksilver’s helium mines. Victra’s escape craft crashes in Cimmeria after the Pandora is boarded."}
 );
-POIS.phobos.push({id:"nucleus",name:"The Nucleus",lat:-30,lon:90,from:4,site:"phobos",focus:"nucleus",desc:"Virginia’s command center inside Phobos, from which she directs its battle stations in Light Bringer."});
+POIS.phobos.push({id:"nucleus",name:"The Nucleus",lat:-30,lon:90,from:6,site:"phobos",focus:"nucleus",desc:"Virginia’s command center inside Phobos, from which she directs its battle stations in Light Bringer."});
 POIS.io.push(
  {id:"garter",name:"Demeter’s Garter",lat:0,lon:-60,site:"garter",desc:"The equatorial farm belt that grows most of the Rim’s food. In Light Bringer, Lysander bombards it."},
  {id:"sungrave",name:"Sungrave",lat:-18,lon:70,from:4,desc:"City of House Raa on Io, where Lysander and Cassius are brought as prisoners in Iron Gold."},
  {id:"bleeding",name:"The Bleeding Place",lat:26,lon:110,from:4,desc:"The dueling ground of the Raa. Cassius kills Bellerephon here in Iron Gold, and Lysander reveals who he is."}
 );
 POIS.europa.push({id:"athena",name:"Daughters of Athena",lat:-20,lon:60,from:6,site:"europa",focus:"athena",desc:"A base hidden beneath Europa’s ocean. In Light Bringer, Athena tries Darrow and Diomedes here, and Sevro talks her into sparing them."});
-POIS.asteroid=[{id:"base",name:"Tabula Rasa",lat:10,lon:0,site:"asteroid",desc:"Quicksilver’s secret base inside the asteroid, and the generation ship he has built in place of a fleet."}];
+POIS.asteroid=[{id:"base",name:"Tabula Rasa",lat:10,lon:0,from:6,site:"asteroid",desc:"Quicksilver’s secret base inside the asteroid, and the generation ship he has built in place of a fleet."}];
 /* places that belong to the first trilogy only */
 ["institute","olympus"].forEach(id=>{const p=POIS.mars.find(x=>x.id===id);if(p)p.until=6;});
 
@@ -250,8 +250,8 @@ Object.assign(FX_VIEW,{
 /* ===================== IO & EUROPA FROM THE LIGHT BRINGER MAPS, AND THE FAR RIM ===================== */
 /* Io: the Light Bringer map draws the moon tilted, with Demeter's Garter as its equator. */
 (function(){const io=POIS.io,set=(id,o)=>{const p=io.find(x=>x.id===id);if(p)Object.assign(p,o);};
-  set("raaseat",{lat:17,lon:59,desc:"North of the Garter, Io’s old capital and seat of House Raa during the Second Moon Lord Rebellion. Romulus au Raa meets Darrow on Io in Morning Star."});
-  set("garter",{lat:0,lon:20,desc:"The belt of farmland around Io’s equator, growing more than half of the Rim’s food. In Light Bringer, Lysander bombards it."});
+  set("raaseat",{lat:17,lon:59,desc:{0:"North of the Garter, Io’s old capital and seat of House Raa.",3:"North of the Garter, Io’s old capital and seat of House Raa during the Second Moon Lord Rebellion. Romulus au Raa meets Darrow on Io in Morning Star."}});
+  set("garter",{lat:0,lon:20,desc:{0:"The belt of farmland around Io’s equator, growing more than half of the Rim’s food.",6:"The belt of farmland around Io’s equator, growing more than half of the Rim’s food. In Light Bringer, Lysander bombards it."}});
   set("sungrave",{lat:-19,lon:3,desc:"Io’s most famous city, south-west of Plutus, and its capital by Iron Gold. Lysander and Cassius are brought here as prisoners."});
   set("bleeding",{lat:-15,lon:10,desc:"The dueling ground of the Raa. Cassius kills Bellerephon here in Iron Gold, and Lysander reveals who he is."});
   io.push(
@@ -279,17 +279,17 @@ Object.assign(FX_VIEW,{
 
 /* ---- the far Rim ---- */
 const _FAR=[
- {id:"rhea",name:"Rhea",parent:"saturn",kind:"callisto",a:6.2,size:.26,period:16,phase:.4,group:"Saturn",moon:true,epithet:"The burned moon",control:"Dead since 701 PCE",
-  blurb:"Once the seat of the Rim’s government. When the Moon Lords rose against Octavia au Lune, the Ash Lord’s fleet burned Rhea with atomics and some sixty million died. The Rim has remembered ever since.",sw:"#5a524c",
+ {id:"rhea",name:"Rhea",parent:"saturn",kind:"callisto",a:6.2,size:.26,period:16,phase:.4,group:"Saturn",moon:true,epithet:"A moon of Saturn",control:"Unknown",
+  blurb:"Once the seat of the Rim’s government.",sw:"#5a524c",
   facts:[["Burned","701 PCE, First Moon Lord Rebellion"],["Ordered by","Sovereign Octavia au Lune"],["Carried out by","Magnus au Grimmus, the Ash Lord"],["Dead","About 60 million"]]},
  {id:"uranus",name:"Uranus",parent:"sun",kind:"saturn",a:92,size:1.55,period:330,phase:.7,group:"Uranus",epithet:"Ice giant of the outer dark",control:"Unknown",
   blurb:"The ice giant beyond Saturn. The books barely mention it; it is shown here to complete the Solar System.",sw:"#9fd6dc"},
  {id:"neptune",name:"Neptune",parent:"sun",kind:"saturn",a:112,size:1.5,period:430,phase:.08,group:"Neptune",epithet:"Ice giant at the Society’s edge",control:"The Society",
-  blurb:"The last giant world. Its moon Triton is being terraformed by Lovelock Engines at its poles, and the Sons of Ares keep bases there by Golden Son.",sw:"#4f7cf0"},
+  blurb:"The last giant world. Its moon Triton is being terraformed by Lovelock Engines at its poles.",sw:"#4f7cf0"},
  {id:"triton",name:"Triton",parent:"neptune",kind:"callisto",a:3.6,size:.27,period:12,phase:.3,group:"Neptune",moon:true,epithet:"Lovelock moon",control:"The Society",
-  blurb:"Neptune’s great moon, warmed by Lovelock Engines at both poles. In the Sons of Ares comics, Fitchner au Barca governs it after a quake throws the northern engine into the sea. Its ArchGoverness is killed at the Gala Massacre in Golden Son.",sw:"#c9d4dc"},
+  blurb:"Neptune’s great moon, warmed by Lovelock Engines at both poles. In the Sons of Ares comics, Fitchner au Barca governs it after a quake throws the northern engine into the sea.",sw:"#c9d4dc"},
  {id:"pluto",name:"Pluto",parent:"sun",kind:"callisto",a:130,size:.3,period:560,phase:.5,group:"Kuiper",epithet:"A world under construction",control:"The Society’s frontier",
-  blurb:"Months from the Core and still being terraformed: domes and shield lattices creep across the great heart-shaped plain. In Golden Son, Sevro and the Howlers are posted out here, far from Darrow.",sw:"#d8c8b0"}
+  blurb:"Months from the Core and still being terraformed: domes and shield lattices creep across the great heart-shaped plain.",sw:"#d8c8b0"}
 ];
 BODIES.splice(BODIES.findIndex(b=>b.id==="saturn")+1,0,..._FAR);
 
@@ -367,7 +367,7 @@ BODIES.splice(BODIES.findIndex(b=>b.id==="saturn")+1,0,..._FAR);
   BODIES.find(b=>b.id==="triton").retro=true;
 })();
 
-POIS.rhea=[{id:"rheacities",name:"The burned cities",lat:8,lon:12,desc:"Glass craters where the Rim’s capital stood. The ArchGovernor of Rhea died in the burning, after striking the Ash Lord with his scepter for urging him to submit."}];
+POIS.rhea=[{id:"rheacities",name:"The burned cities",lat:8,lon:12,desc:{0:"Glass craters where the Rim’s capital stood.",2:"Glass craters where the Rim’s capital stood. The ArchGovernor of Rhea died in the burning, after striking the Ash Lord with his scepter for urging him to submit."}}];
 POIS.triton=[{id:"lovelockn",name:"North Lovelock Engine",lat:84,lon:0,desc:"One of the two pole engines warming Triton. In the Sons of Ares comics a geyser quake throws it into the sea."},
  {id:"lovelocks",name:"South Lovelock Engine",lat:-84,lon:0,desc:"The southern pole engine."},
  {id:"cryssos",name:"Cryssos",lat:28,lon:-60,desc:"A Red settlement on Triton, home of Bryn, in the Sons of Ares comics."}];
@@ -380,6 +380,9 @@ EVENTS.push(
 );
 
 /* ---- 09-index.js ---- */
+
+/* lore-corrections IR3: later-book text moved out of base blurbs (book-I-safe base) */
+[["jupiter",2,{"blurb": "Its moons hold the Raa family seat, Lorn’s retreat, and the great shipyards of Ganymede."}],["jupiter",3,{"blurb": "Its moons hold the Raa family seat, Lorn’s retreat, and the great shipyards of Ganymede. The decisive fleet battle of Morning Star is fought in its space."}],["io",3,{"blurb": "Volcanic moon ruled by House Raa. Romulus au Raa negotiates with Darrow here, and the Rim chooses its side."}],["europa",2,{"blurb": "The ice moon where Lorn au Arcos withdrew from war to raise his grandchildren. Darrow comes here to bring him back."}],["ganymede",2,{"blurb": "Home to the Society’s great dockyards. Pliny springs his trap here in Golden Son."}],["ganymede",3,{"blurb": "Home to the Society’s great dockyards. Pliny springs his trap here in Golden Son, and the yards burn in Morning Star.", "control": "The Society, then the Rim"}],["kalyke",6,{"blurb": "A small, distant moon of Jupiter. In Light Bringer it becomes a slaughterhouse: Atlas au Raa kills Dido and Helios here and wrecks much of the Rim fleet."}],["neptune",2,{"blurb": "The last giant world. Its moon Triton is being terraformed by Lovelock Engines at its poles, and the Sons of Ares keep bases there by Golden Son."}],["triton",2,{"blurb": "Neptune’s great moon, warmed by Lovelock Engines at both poles. In the Sons of Ares comics, Fitchner au Barca governs it after a quake throws the northern engine into the sea. Its ArchGoverness is killed at the Gala Massacre in Golden Son."}],["pluto",2,{"blurb": "Months from the Core and still being terraformed: domes and shield lattices creep across the great heart-shaped plain. In Golden Son, Sevro and the Howlers are posted out here, far from Darrow."}],["asteroid",6,{"blurb": "A rock in the asteroid belt, hollowed out in secret. In Light Bringer, Darrow finds that Quicksilver has built no fleet here, but a generation ship, the Tabula Rasa, to carry children beyond the Solar System.", "epithet": "Quicksilver’s hidden base", "control": "Quicksilver"}],["rhea",2,{"blurb": "Once the seat of the Rim’s government. When the Moon Lords rose against Octavia au Lune, the Ash Lord’s fleet burned Rhea with atomics and some sixty million died. The Rim has remembered ever since.", "epithet": "The burned moon", "control": "Dead since 701 PCE"}]].forEach(([id,k,o])=>{const b=BODIES.find(x=>x.id===id);if(!b)return;b.eras=b.eras||{};b.eras[k]=Object.assign({},b.eras[k]||{},o);});
 /* ===================== INDEXES & ERAS ===================== */
 const byId={}; BODIES.forEach(b=>byId[b.id]=b);
 const poiById={}; Object.keys(POIS).forEach(k=>POIS[k].forEach(p=>{p.body=k;poiById[k+":"+p.id]=p;}));
@@ -389,7 +392,13 @@ function eventsFor(bodyId,poiId){ return EVENTS.filter(e=>e.body===bodyId&&(poiI
 const SITES={}; /* filled by the site modules */
 
 /* the world state follows the selected book; "All" shows the latest */
-let ERA=6;
+/* spoiler-safe start: open on Book I unless the reader explicitly chose another book (or All) before.
+   The choice is remembered per atlas in this browser only; storage can be unavailable, so every access is guarded. */
+const BOOK_KEY="atlas-book:society";
+function storedBook(){try{const v=localStorage.getItem(BOOK_KEY);if(v!=null&&/^[0-6]$/.test(v))return +v;}catch(e){}return 1;}
+function saveBook(b){try{localStorage.setItem(BOOK_KEY,String(b));}catch(e){}}
+const START_BOOK=storedBook();
+let ERA=START_BOOK||6;
 function eraVal(v){if(v==null||typeof v!=="object"||Array.isArray(v))return v;let best=null,bk=-1;Object.keys(v).forEach(k=>{const n=+k;if(n<=ERA&&n>bk){bk=n;best=v[k];}});
   if(best==null){const ks=Object.keys(v).map(Number).sort((a,b)=>a-b);best=v[ks[0]];}return best;}
 function bodyF(b,f){return eraVal(b.eras?Object.fromEntries(Object.entries(b.eras).filter(([k,o])=>o[f]!=null).map(([k,o])=>[k,o[f]]).concat([[0,b[f]]])):b[f]);}
@@ -2979,7 +2988,7 @@ FXG.garter=g=>{const F=Flashes(g);globe.add(g);return {dur:8,update(dt,t){if(Mat
 
 /* ---- 60-ui.js ---- */
 /* ===================== STATE ===================== */
-let mode="system",cur=null,selPoi=null,selEvent=null,bookFilter=0,paused=false,simT=0,anim=null,hoverSel=null,curSiteKey=null,selLm=null;
+let mode="system",cur=null,selPoi=null,selEvent=null,bookFilter=START_BOOK,paused=false,simT=0,anim=null,hoverSel=null,curSiteKey=null,selLm=null;
 const SOC_PLANETS=new Set(["mercury","venus","earth","mars","jupiter","saturn","uranus","neptune"]);
 const labelsEl=$("#labels"),tip=$("#tip"),dossier=$("#dossier"),track=$("#track"),idx=$("#index"),fade=$("#fade"),crumbs=$("#crumbs"),sitehud=$("#sitehud");
 
@@ -3014,9 +3023,14 @@ track.addEventListener("mouseover",e=>{const el=e.target.closest(".ev");if(!el)r
 track.addEventListener("mouseout",e=>{const el=e.target.closest(".ev");if(el&&!el.contains(e.relatedTarget)){hoverSel=null;applyHL(false);hideTip();}});
 track.addEventListener("click",e=>{const el=e.target.closest(".ev");if(el)gotoEvent(EV[el.dataset.id],true);});
 track.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){track.scrollLeft+=e.deltaY;e.preventDefault();}},{passive:false});
-document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{bookFilter=+b.dataset.book;setEra(bookFilter||6);
-  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  track.querySelectorAll(".book").forEach(bk=>bk.hidden=!!bookFilter&&+bk.dataset.book!==bookFilter);renderDossier();applyHL(false);}));
+function syncBookUI(){document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.book===bookFilter));
+  track.querySelectorAll(".book").forEach(bk=>bk.hidden=!!bookFilter&&+bk.dataset.book!==bookFilter);
+  $("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books · spoilers";
+  $("#spoilNote").innerHTML=bookFilter?'<span class="lg">Spoilers are shown through the selected book.</span><span class="sm">Spoilers through Book '+BOOKS[bookFilter].n+'</span>':'<span class="lg">All six books · spoilers: everything through Light Bringer is shown.</span><span class="sm">All six books · spoilers</span>';
+  document.body.classList.toggle("all-books",!bookFilter);}
+function selectBook(b){bookFilter=b;saveBook(b);setEra(bookFilter||6);syncBookUI();renderDossier();applyHL(false);}
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>selectBook(+b.dataset.book)));
+syncBookUI();
 $("#pause").addEventListener("click",e=>{paused=!paused;e.currentTarget.textContent=paused?"Resume orbits":"Pause orbits";e.currentTarget.setAttribute("aria-pressed",paused);});
 
 /* ===================== HIGHLIGHT ===================== */
@@ -3048,7 +3062,7 @@ function showTipBody(b,ev){const ne=eventsFor(b.id).filter(e=>!bookFilter||e.boo
   tip.innerHTML='<p class="eyebrow">'+esc(bodyF(b,"epithet"))+'</p><h3>'+esc(b.name)+'</h3>'+(b.control!=="—"?'<div class="meta">Held by <b>'+esc(bodyF(b,"control"))+'</b></div>':'')+'<p>'+esc(bodyF(b,"blurb"))+'</p>'+
    (b.kind==="sun"?'':'<div class="meta">'+ne+' event'+(ne===1?'':'s')+' · '+np+' place'+(np===1?'':'s')+'</div><div class="cta">Click to descend</div>');
   tip.hidden=false;if(ev)placeTip(ev.clientX,ev.clientY);}
-function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books";
+function setEra(e){const changed=e!==ERA;ERA=e;
   if(!changed)return;applyEraTextures();renderIndex();if(mode==="globe"&&cur){buildGlobe(cur);buildPoiLabels();setModeLabels();}
   if(mode==="site"&&curSite&&curSite.onEra)curSite.onEra(ERA);}
 function evListMeta(evs){return evs.length?evs.map(e=>BOOKS[e.book].n+' · '+esc(e.title)).join('<br>'):'No events in this filter';}
@@ -3366,7 +3380,7 @@ function applyEraTextures(){Object.keys(ERA_TEX).forEach(id=>applySet(id));}
   ids.forEach(id=>applySet(id,tick));})();
 
 /* ===================== START ===================== */
-$("#chronHint").innerHTML="Spoilers are shown through the selected book. Hover a world to light up what happened there. <b>Click an event</b> to go to it; <b>▶</b> marks scenes you can watch.";
+$("#chronHint").innerHTML="Hover a world to light up what happened there. <b>Click an event</b> to go to it; <b>▶</b> marks scenes you can watch.";
 updateBodies();applyCam();applyHL(false);renderCrumbs();requestAnimationFrame(frame);
 const startHash=(location.hash||"").slice(1);
 if(byId[startHash]&&startHash!=="sun")setTimeout(()=>descend(startHash),600);

@@ -162,6 +162,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 .credits a:hover{color:var(--gold)}
 #track{display:flex;overflow-x:auto;padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));scrollbar-width:thin;scrollbar-color:var(--gold-lo) transparent}
 .book{display:flex;flex-direction:column;flex:none;padding-right:20px;margin-right:20px;border-right:1px solid var(--line)}
+.book[hidden]{display:none}
 .book:last-child{border-right:0}
 .book-t{font:500 10.5px var(--f-hud);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:9px}
 .book-t i{font:700 13px var(--f-display);font-style:normal;width:24px;height:24px;display:grid;place-items:center;border:1px solid currentColor;border-radius:50%;letter-spacing:0}
@@ -387,3 +388,13 @@ body.far-sys #labels .plbl{opacity:0!important;pointer-events:none!important}
 /* back link to the sandbox, and the fan-work line on the splash */
 .top .gl-home{align-self:center}
 #splash .fanwork{font:400 10px var(--f-hud);letter-spacing:.12em;color:var(--faint);text-transform:uppercase}
+/* spoiler notice and the explicit All-books opt-in (visible on every viewport) */
+.chron-head .spoil{font:500 11px var(--f-hud);letter-spacing:.08em;color:var(--red-hi)}
+.chron-head .spoil .sm{display:none}
+body.all-books .chron-head .spoil{color:var(--gold)}
+.seg button .sp{font:500 10px var(--f-hud);letter-spacing:.04em}
+body.mob .chron-head .spoil{font-size:10px;letter-spacing:.04em}
+body.mob .chron-head .spoil .lg{display:none}
+body.mob .chron-head .spoil .sm{display:inline}
+body.mob .seg button{padding:7px 8px}
+body.mob .seg button .sp{font-size:9px;letter-spacing:0}

@@ -493,7 +493,6 @@ const EVENTS=[
  /* VII · Shadows Upon Time */
  {id:"b7a",book:7,world:"vorgossos",title:"Master of the Demiurge",text:"Hadrian holds the Demiurge against Chantry and Vorgossene attacks and makes peace with the ship’s mind."},
  {id:"b7b",book:7,world:"annica",site:"mountain",title:"Exile on Annica",text:"A fugitive from Empire and Chantry, Hadrian waits beyond the core with Cassandra."},
- {id:"b7c",book:7,world:"forum",title:"Auctor",text:"William names Hadrian Auctor of the Imperium."},
  {id:"b7d",book:7,world:"earth",title:"Earth is green",text:"The Chantry’s great secret: Old Earth was never a ruin."},
  {id:"b7e",book:7,world:"tenba",site:"meridian",title:"The muster at Tenba",text:"The last fleets of humanity gather."},
  {id:"b7f",book:7,world:"danu",title:"Danu",text:"Cielcin worldships tear the world apart and Ushara destroys the Tavrosi fleet."},
@@ -556,7 +555,7 @@ const CHARACTERS=[
  {name:"Aranata Otiolo",role:"Cielcin prince",books:[2],desc:"Prince of Clan Otiolo, who comes to Vorgossos to bargain and beheads Hadrian; brought back by the Quiet, Hadrian kills it."},
  {name:"Otavia Corvo",role:"Captain",books:[2,3,4],desc:"A Norman captain who joins Hadrian and commands his ships.",more:[[4,"She dies at Akterumu."]]},
  {name:"Lorian Aristedes",role:"Tactical officer",books:[3,4,5,6,7],desc:"A brilliant, frail officer of the Red Company.",more:[[4,"He alone is spared at Akterumu, to carry the news."],[6,"He took Hadrian’s place on Belusha and returns as an Extrasolarian captain."]]},
- {name:"William XXIII",role:"Emperor",books:[3,5,6,7],desc:"Emperor of the Solar Throne for some seventeen centuries, and Hadrian’s patron.",more:[[5,"Hadrian breaks his nose."],[7,"He names Hadrian Auctor before he dies."]]},
+ {name:"William XXIII",role:"Emperor",books:[3,5,6,7],desc:"Emperor of the Solar Throne for some seventeen centuries, and Hadrian’s patron.",more:[[5,"Hadrian breaks his nose."],[7,"William names Hadrian Auctor of the Imperium."]]},
  {name:"Princess Selene",role:"Imperial princess",books:[3,6,7],desc:"The Emperor’s daughter, betrothed to Hadrian for political reasons."},
  {name:"Prince Alexander",role:"Squire",books:[3,5,6,7],desc:"A young prince who serves as Hadrian’s squire.",more:[[7,"He becomes Hadrian’s enemy and takes the throne."]]},
  {name:"Syriani Dorayaica",role:"Prince of Princes",books:[3,4,5,6,7],desc:"A Cielcin prophet-prince who serves the Watcher Miudanar and gathers the clans to war.",more:[[4,"Crowned at the Black Feast of Akterumu."],[7,"Destroyed in the final battle."]]},

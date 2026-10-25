@@ -39,14 +39,14 @@
     <a class="gl-home" href="../" title="Back to the Gravity Lab sandbox"><span aria-hidden="true">←</span> Gravity Lab</a>
     <div class="brand">
       <svg class="sigil" aria-hidden="true"><use href="#sigil"/></svg>
-      <div><h1 class="gild">The Society Atlas</h1><p>The Red Rising Saga · <b id="eraName">All six books</b></p></div>
+      <div><h1 class="gild">The Society Atlas</h1><p>The Red Rising Saga · <b id="eraName">Book I · Red Rising</b></p></div>
     </div>
     <div class="controls">
       <span id="loadmsg">Loading planetary maps</span>
       <button class="btn" id="indexToggle" aria-expanded="false">Worlds</button>
-      <div class="seg" role="group" aria-label="Filter the Chronicle by book">
-        <button data-book="0" aria-pressed="true">All</button>
-        <button data-book="1" aria-pressed="false" title="Red Rising">I</button>
+      <div class="seg" role="group" aria-label="The book you are reading (spoilers are shown through it)">
+        <button data-book="0" aria-pressed="false" class="allbooks" title="All six books · spoilers" aria-label="All six books · spoilers">All<span class="sp"> · spoilers</span></button>
+        <button data-book="1" aria-pressed="true" title="Red Rising">I</button>
         <button data-book="2" aria-pressed="false" title="Golden Son">II</button>
         <button data-book="3" aria-pressed="false" title="Morning Star">III</button>
         <button data-book="4" aria-pressed="false" title="Iron Gold">IV</button>
@@ -69,7 +69,7 @@
   <div id="tip" hidden></div>
 
   <section id="chron" aria-label="Timeline of the trilogy">
-    <div class="chron-head"><h2 class="gild">The Chronicle</h2><button class="chronmin" id="chronMin" aria-expanded="true" title="Collapse the timeline">▾ Hide</button><span class="hint" id="chronHint"></span>
+    <div class="chron-head"><h2 class="gild">The Chronicle</h2><span class="spoil" id="spoilNote" role="status">Spoilers are shown through the selected book.</span><button class="chronmin" id="chronMin" aria-expanded="true" title="Collapse the timeline">▾ Hide</button><span class="hint" id="chronHint"></span>
       <span class="credits">Surfaces generated procedurally for this atlas; Society cities, seas and stations drawn from the books. Unofficial fan project for personal, non-commercial use. Red Rising and related names are the property of Pierce Brown and his publishers. Maps and positions are schematic reconstructions.</span></div>
     <div id="track"></div>
   </section>
