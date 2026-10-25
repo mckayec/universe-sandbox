@@ -31,8 +31,15 @@ export const enum NebulaLook {
 let bakeRenderer: THREE.WebGLRenderer | null = null;
 const stepUniform = { value: 48 };
 const pointScaleUniform = { value: 600 };
-const bakeCache = new Map<string, THREE.Texture>();
+// Baked sheet textures are shared between nebulae of the same look and reference-counted; the render
+// target is freed (after the current task, so a synchronous rebuild can reuse it) once no nebula holds it.
+const bakeCache = new Map<string, { target: THREE.WebGLRenderTarget; refs: number }>();
 let noiseTexture: THREE.Data3DTexture | null = null;
+let noiseRefs = 0;
+// Raymarched volumes are the most expensive nebula pass; they are hidden below this quality scale.
+const RAYMARCH_MIN_QUALITY = 0.7;
+const raymarchVolumes = new Set<THREE.Object3D>();
+let raymarchEnabled = true;
 let bakeMaterial: THREE.ShaderMaterial | null = null;
 let bakeScene: THREE.Scene | null = null;
 let bakeCamera: THREE.OrthographicCamera | null = null;
@@ -54,7 +61,50 @@ export function setNebulaRenderer(renderer: THREE.WebGLRenderer, tier: NebulaTie
 /** Scales raymarch step counts with the adaptive/user quality setting (shared by all nebulae). */
 export function setNebulaQuality(scale: number) {
   const base = currentTier === 'performance' ? 72 : currentTier === 'balanced' ? 52 : 28;
-  stepUniform.value = Math.max(20, Math.round(base * THREE.MathUtils.clamp(scale, 0.55, 1)));
+  stepUniform.value = Math.max(16, Math.round(base * THREE.MathUtils.clamp(scale, 0.5, 1)));
+  raymarchEnabled = scale >= RAYMARCH_MIN_QUALITY;
+  for (const volume of raymarchVolumes) volume.visible = raymarchEnabled;
+}
+
+function scheduleRelease(check: () => void) {
+  // Deferred so that dispose-then-rebuild in one task (replaceVisual, undo, exhibit reload) keeps the cache warm.
+  queueMicrotask(check);
+}
+function releaseBake(key: string) {
+  const entry = bakeCache.get(key);
+  if (!entry) return;
+  entry.refs = Math.max(0, entry.refs - 1);
+  if (entry.refs === 0)
+    scheduleRelease(() => {
+      if (entry.refs > 0 || bakeCache.get(key) !== entry) return;
+      entry.target.dispose();
+      bakeCache.delete(key);
+    });
+}
+function releaseNoise() {
+  noiseRefs = Math.max(0, noiseRefs - 1);
+  if (noiseRefs === 0)
+    scheduleRelease(() => {
+      if (noiseRefs > 0 || !noiseTexture) return;
+      noiseTexture.dispose();
+      noiseTexture = null;
+    });
+}
+/** Drops the shared bake/noise references held by a nebula group built with buildNebulaVisual. */
+export function releaseNebulaVisual(group: THREE.Object3D) {
+  const keys = group.userData.nebulaBakeKeys as string[] | undefined;
+  if (!keys) return;
+  group.userData.nebulaBakeKeys = undefined;
+  for (const key of keys) releaseBake(key);
+  const volume = group.getObjectByName('nebulaRaymarch');
+  if (volume) {
+    raymarchVolumes.delete(volume);
+    releaseNoise();
+  }
+}
+/** Live shared nebula GPU resources (for diagnostics and tests). */
+export function nebulaCacheStats() {
+  return { bakes: bakeCache.size, noise: noiseTexture ? 1 : 0, volumes: raymarchVolumes.size };
 }
 
 // Palettes (sRGB hex; THREE.Color converts to linear). core, A (H-alpha), B (OIII / reflection), C (SII / warm), rim, star tints
@@ -461,7 +511,10 @@ function bakedTexture(kind: number, sub: number, layer: number, size: number, pa
   if (!bakeRenderer) return null;
   const key = `${kind}:${sub}:${layer}:${size}`;
   const cached = bakeCache.get(key);
-  if (cached) return cached;
+  if (cached) {
+    cached.refs++;
+    return cached.target.texture;
+  }
   ensureBakePipeline();
   const target = new THREE.WebGLRenderTarget(size, size, {
     type: THREE.UnsignedByteType,
@@ -492,7 +545,7 @@ function bakedTexture(kind: number, sub: number, layer: number, size: number, pa
   bakeRenderer.render(bakeScene!, bakeCamera!);
   bakeRenderer.setRenderTarget(previous);
   bakeRenderer.autoClear = autoClear;
-  bakeCache.set(key, target.texture);
+  bakeCache.set(key, { target, refs: 1 });
   return target.texture;
 }
 
@@ -558,7 +611,7 @@ function ensureNoiseTexture() {
 
 function raymarchMaterial(seed: number, kind: number, sub: number, palette: Palette, tier: NebulaTier) {
   const octaves = tier === 'performance' ? 5 : 4;
-  // Note: textures live inside `uniforms`, so disposeObject() never frees the shared noise volume.
+  // The shared noise volume lives in `uniforms`, so disposeObject() never frees it; releaseNebulaVisual() does.
   return new THREE.ShaderMaterial({
     uniforms: {
       time: { value: 0 },
@@ -764,6 +817,8 @@ export function buildNebulaVisual(group: THREE.Group, seed: number, opts: Nebula
   const palette = PALETTES[kind][sub];
   const { tier, compact } = opts;
   group.userData.nebulaLook = kind;
+  const bakeKeys: string[] = [];
+  group.userData.nebulaBakeKeys = bakeKeys;
 
   // 1. Raymarched volume (desktop tiers). Same name/uniforms as before so gameplay updates still drive it.
   if (tier !== 'mobile') {
@@ -777,6 +832,9 @@ export function buildNebulaVisual(group: THREE.Group, seed: number, opts: Nebula
     volume.onBeforeRender = (_r, _s, cam) => {
       cameraLocal.copy(cam.position).applyMatrix4(tmpMatrix.copy(volume.matrixWorld).invert());
     };
+    volume.visible = raymarchEnabled;
+    noiseRefs++;
+    raymarchVolumes.add(volume);
     group.add(volume);
   }
 
@@ -800,10 +858,12 @@ export function buildNebulaVisual(group: THREE.Group, seed: number, opts: Nebula
   }
 
   // 3. Baked high-resolution sheets.
-  const mainSize = tier === 'performance' ? 2048 : tier === 'balanced' ? 1024 : 768;
+  const mainSize = tier === 'performance' ? 1536 : tier === 'balanced' ? 1024 : 768;
   const haloSize = Math.max(512, mainSize / 2);
   const halo = bakedTexture(kind, sub, 1, haloSize, palette),
     main = bakedTexture(kind, sub, 0, mainSize, palette);
+  if (halo) bakeKeys.push(`${kind}:${sub}:1:${haloSize}`);
+  if (main) bakeKeys.push(`${kind}:${sub}:0:${mainSize}`);
   const sheetScale = kind === 2 ? 0.82 : 1;
   const addSheet = (
     map: THREE.Texture | null,

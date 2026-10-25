@@ -14,6 +14,7 @@ import {
 } from '../celestial-catalog.ts';
 import { seeded } from '../physics/body-math.ts';
 import { deviceTier, isCompact } from '../scene/setup.ts';
+import { app } from '../state/app-state.ts';
 import type { Stage } from '../state/types.ts';
 import { addRelativisticJets } from './jets.ts';
 import {
@@ -33,7 +34,7 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
     group = new THREE.Group();
   group.userData.kind = kind;
   if (kind === 'nebula')
-    return buildNebulaVisual(group, seed, { tier: deviceTier, compact: isCompact, quality: isCompact ? 0.78 : 1 });
+    return buildNebulaVisual(group, seed, { tier: deviceTier, compact: isCompact, quality: app.qualityScale });
   if (kind === 'blackhole') {
     const variant = seed % BLACK_HOLE_VARIANTS.length,
       spin = variant % 2 ? 1 : -1,
@@ -49,7 +50,9 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
         toneMapped: false,
         transparent: true,
         opacity: 1,
-        depthTest: false,
+        // Depth-tested so bodies in front of the black hole hide it; the high renderOrder still draws it over
+        // the additive disks (which never write depth), keeping the shadow-on-disk look.
+        depthTest: true,
         depthWrite: false,
       }),
     );
@@ -223,7 +226,7 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
     addGlow(group, stellar.css, haloSize, stellar.glowOpacity);
     const coronaRays = new THREE.Sprite(
       new THREE.SpriteMaterial({
-        map: coronaTexture(stellar.css, seed),
+        map: coronaTexture(stellar.css, Math.abs(Math.floor(seed)) % 3),
         transparent: true,
         opacity: 0.2 + stellar.glowOpacity * 0.34,
         depthWrite: false,

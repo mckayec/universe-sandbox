@@ -1,9 +1,70 @@
 // Procedural canvas textures (glow, corona, clouds).
+// Textures are memoised by their inputs and flagged `userData.shared`, so every star, impact and stream with
+// the same colour reuses one GPU upload and disposeObject() leaves them alone.
 import * as THREE from 'three';
 import { seeded } from '../physics/body-math.ts';
 import { isCompact } from '../scene/setup.ts';
 
+const textureCache = new Map<string, THREE.Texture>();
+function cached(key: string, build: () => THREE.Texture) {
+  let texture = textureCache.get(key);
+  if (!texture) {
+    texture = build();
+    texture.userData.shared = true;
+    textureCache.set(key, texture);
+  }
+  return texture;
+}
+/** Number of distinct cached procedural textures and their approximate GPU size with mipmaps (diagnostics). */
+export function sharedTextureStats() {
+  let bytes = 0;
+  for (const texture of textureCache.values()) {
+    const image = texture.image as { width?: number; height?: number } | undefined;
+    bytes += (image?.width ?? 0) * (image?.height ?? 0) * 4 * 1.34;
+  }
+  return { count: textureCache.size, megabytes: Math.round((bytes / 1048576) * 10) / 10 };
+}
+// Supernova remnants use a small fixed pool of seeds so the expensive per-pixel cloud bake is done ahead of time.
+export const SUPERNOVA_CLOUD_SEEDS = [3, 11, 19, 29];
+/**
+ * Builds the textures an impact or supernova needs during idle time, so the first explosion does not stall a
+ * frame generating canvases.
+ */
+export function prewarmEffectTextures() {
+  const jobs: Array<() => void> = [
+    () => coronaTexture('#fff1bb', 19),
+    () => coronaTexture('#f4f8ff', 91),
+    () => coronaTexture('#ffffff', 117),
+    () => coronaTexture('#ffffff', 71),
+    () => coronaTexture('#ffffff', 37),
+    () => glowTexture('#ff6f32'),
+    ...SUPERNOVA_CLOUD_SEEDS.flatMap(seed => [
+      () => cloudTexture('#ff673d', seed),
+      () => cloudTexture('#8eb8ff', seed + 7),
+    ]),
+  ];
+  const idle =
+    (window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number })
+      .requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 120));
+  const next = () => {
+    const job = jobs.shift();
+    if (!job) return;
+    job();
+    idle(next, { timeout: 2000 });
+  };
+  idle(next, { timeout: 2000 });
+}
+
 export function glowTexture(color: string) {
+  return cached(`glow:${color}`, () => buildGlowTexture(color));
+}
+export function coronaTexture(color: string, seed = 1) {
+  return cached(`corona:${color}:${seed}`, () => buildCoronaTexture(color, seed));
+}
+export function cloudTexture(color: string, seed = 1, dark = false) {
+  return cached(`cloud:${color}:${seed}:${dark ? 1 : 0}`, () => buildCloudTexture(color, seed, dark));
+}
+function buildGlowTexture(color: string) {
   const c = document.createElement('canvas');
   c.width = c.height = 256;
   const x = c.getContext('2d')!,
@@ -19,7 +80,7 @@ export function glowTexture(color: string) {
   texture.colorSpace = THREE.SRGBColorSpace;
   return texture;
 }
-export function coronaTexture(color: string, seed = 1) {
+function buildCoronaTexture(color: string, seed: number) {
   const c = document.createElement('canvas');
   c.width = c.height = 256;
   const x = c.getContext('2d')!;
@@ -53,7 +114,7 @@ export function coronaTexture(color: string, seed = 1) {
   texture.colorSpace = THREE.SRGBColorSpace;
   return texture;
 }
-export function cloudTexture(color: string, seed = 1, dark = false) {
+function buildCloudTexture(color: string, seed: number, dark: boolean) {
   const size = isCompact ? 256 : 384,
     c = document.createElement('canvas');
   c.width = c.height = size;
