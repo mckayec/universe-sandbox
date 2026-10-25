@@ -1,0 +1,420 @@
+{
+  "summary": "Hand-verified corrections applied on 2026-10-24 on top of the 2026-10-23 snapshot. The NASA Exoplanet Archive TAP service could not be reached from the build workspace, so values were read from the Archive's system overview pages, NASA Science catalogue pages and Wikipedia; each correction records its source URL in tools/data/corrections.json.",
+  "sources": {
+    "NASA-EA": "NASA Exoplanet Archive system overview pages (exoplanetarchive.ipac.caltech.edu/overview/...): distances (sy_dist), parameter solutions and mass type (Mp vs Mp sin i); read 2026-10-24",
+    "Rosenthal2021": "Rosenthal et al. 2021, ApJS 255, 8 - California Legacy Survey (51 Peg b M sin i = 147 Earth masses)",
+    "Mallorquin2024": "Mallorquín et al. 2024, A&A 685, A90 - AU Mic b and c masses (NASA default set)",
+    "ZapateroOsorio2026": "Zapatero Osorio et al. 2026 - TOI-198 b (NASA Exoplanet Archive solution)",
+    "Philipot2023": "Philipot et al. 2023, A&A 670, A65 - Gaia-Hipparcos astrometry + RV true masses (HIP 70849 b, BD-21 397 c, HD 75302 b)",
+    "Feng2022": "Feng et al. 2022, ApJS 262, 21 - 3D selection of 167 substellar companions (astrometric true masses)",
+    "Han2018": "Han et al. 2018, AJ 155, 26 (arXiv:1811.08625) - DE CVn eclipse-timing companion",
+    "Nowak2020": "Nowak et al. 2020, A&A 642, L2 - GRAVITY detection of beta Pic c",
+    "Maire2019": "Maire et al. 2019, A&A 624, A118 - 51 Eri b orbit",
+    "Brogi2012": "Brogi et al. 2012, Nature 486, 502 - tau Boo b true mass",
+    "Sozzetti2023": "Sozzetti et al. 2023, A&A 670, L17 - GJ 463 b dynamical mass",
+    "Giovinazzi2025": "Giovinazzi et al. 2025 - HD 154345 b true mass (NASA Exoplanet Archive solution)",
+    "Limbach2025": "Limbach et al. 2025, ApJL 984, L28 - JWST thermal emission of WD 1856+534 b (model mass)",
+    "Benedict2018": "Benedict et al. 2018, AJ 156, 152 - gamma Cep b astrometric mass",
+    "Ramm2016": "Ramm et al. 2016, MNRAS 460, 3706 - nu Oct A b"
+  },
+  "systems": {
+    "51-peg": {
+      "set": { "dist_pc": 15.4614, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/51%20Peg (15.4614 ± 0.0297 pc)"
+    },
+    "gj-1214": {
+      "set": { "dist_pc": 14.6427, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%201214 (14.6427 pc); https://en.wikipedia.org/wiki/GJ_1214 (14.64 pc, Gaia DR3)"
+    },
+    "hd-189733": {
+      "set": { "dist_pc": 19.7638, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%20189733 (19.7638 pc); https://en.wikipedia.org/wiki/HD_189733 (19.776 pc, Gaia DR3)"
+    },
+    "au-mic": {
+      "set": { "dist_pc": 9.7221, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/AU%20Mic (9.722100 pc)"
+    },
+    "hip-70849": {
+      "set": { "dist_pc": 24.0572, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HIP%2070849 (24.05720 pc)"
+    },
+    "wd-1856-534": {
+      "set": { "dist_pc": 24.7359, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/WD%201856+534 (24.7359 pc)"
+    },
+    "gliese-3470": {
+      "set": { "dist_pc": 29.4214, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ_3470 (29.4214 pc; atlas had 30.7 pc = 100.1 ly)"
+    },
+    "gj-9689": {
+      "set": { "dist_pc": 30.6203, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%209689 (30.62030 pc; atlas had 30.686 pc = 100.08 ly)"
+    },
+    "kappa-crb": {
+      "set": { "dist_pc": 30.0651, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/kap%20CrB (30.06510 pc)"
+    },
+    "lhs-1815": {
+      "set": { "dist_pc": 29.8424, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/LHS%201815 (29.8424 pc)"
+    },
+    "gj-9827": {
+      "set": { "dist_pc": 29.661, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%209827 (29.6610 pc)"
+    },
+    "hd-101930": {
+      "set": { "dist_pc": 29.96, "dist_src": "Gaia DR3 parallax (via Wikipedia)" },
+      "verified": "https://en.wikipedia.org/wiki/HD_101930 (parallax 33.3814 mas, 29.96 pc, Gaia DR3)"
+    },
+    "51-eri": {
+      "set": { "dist_pc": 29.7575, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/51%20Eri (29.7575 pc, parallax 33.577 mas)"
+    },
+    "nu-oct": {
+      "set": { "dist_pc": 21.1999, "dist_src": "NASA Exoplanet Archive sy_dist" },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/nu%20Oct%20A (21.19990 ± 1.30061 pc)"
+    }
+  },
+  "stars": {
+    "gj-1214/Gliese 1214": {
+      "set": { "mass_sun": 0.182 },
+      "verified": "https://en.wikipedia.org/wiki/GJ_1214 (0.1820 solar masses); makes a = 0.01505 AU consistent with P = 1.5804 d"
+    },
+    "toi-198/TOI-198": {
+      "set": { "mass_sun": 0.417 },
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/TOI-198 (Zapatero Osorio et al. 2026: M* = 0.417 ± 0.045)"
+    }
+  },
+  "planets": {
+    "51-peg-b": {
+      "set": {
+        "mass_earth": 147,
+        "mass_src": "min",
+        "mass_kind": "min",
+        "radius_src": "estimated",
+        "period_d": 4.2307969,
+        "a_au": 0.05235
+      },
+      "src": ["NASA-EA", "Rosenthal2021", "NASA-SCI"],
+      "notes": [
+        "Found by radial velocity and does not transit, so only its minimum mass (M sin i) is known and its radius is an estimate (NASA lists 1.26 Jupiter radii, estimate)."
+      ],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/51%20Peg (Mp sin i = 147 ± 4 Earth masses, a 0.05235 au, P 4.2307969 d); https://science.nasa.gov/exoplanet-catalog/51-pegasi-b/ (radius 1.26 RJ estimate)"
+    },
+    "ltt-1445-a-c": {
+      "set": { "a_au": 0.02661 },
+      "src": ["NASA-SCI"],
+      "notes": [
+        "The Open Exoplanet Catalogue gave a = 0.0396 AU, which does not fit the 3.12-day period; NASA's 0.02661 AU does."
+      ],
+      "verified": "https://science.nasa.gov/exoplanet-catalog/ltt-1445-a-c/ (orbital radius 0.02661 AU, mass 1.54, radius 1.147)"
+    },
+    "hip-12961-b": {
+      "set": { "a_au": 0.25 },
+      "src": ["NASA-SCI"],
+      "notes": [
+        "The Open Exoplanet Catalogue gave a = 0.13 AU, which does not fit the 57.4-day period; NASA gives 0.25 AU."
+      ],
+      "verified": "https://science.nasa.gov/exoplanet-catalog/hip-12961-b/ (orbital radius 0.25 AU, period 57.4 d, radius 1.18 RJ estimate)"
+    },
+    "toi-198-b": {
+      "set": { "a_au": 0.0675, "mass_earth": 3.17, "radius_earth": 1.36, "period_d": 10.215213 },
+      "src": ["NASA-EA", "ZapateroOsorio2026"],
+      "notes": [
+        "Orbit, mass and radius from Zapatero Osorio et al. 2026; the Open Exoplanet Catalogue's a = 0.10 AU did not fit the 10.2-day period."
+      ],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/TOI-198 (a 0.0675 au, P 10.215213 d, Mp 3.17, Rp 1.36, M* 0.417)"
+    },
+    "de-cvn-b": {
+      "set": {
+        "mass_earth": 3823.4,
+        "mass_src": "min",
+        "mass_kind": "min",
+        "orbit_mass_sun": 0.92
+      },
+      "src": ["NASA-SCI", "Han2018"],
+      "notes": [
+        "Circumbinary: it orbits both the white dwarf (0.51 solar masses) and the red dwarf (0.41). Eclipse timing gives only a minimum mass (M sin i, about 12 Jupiter masses).",
+        "Its orbit (5.75 ± 2.02 AU, 11.2 years) is around the combined 0.92 solar-mass binary, not the white dwarf alone; with that mass Kepler’s law gives about 4.9 AU, inside the quoted uncertainty."
+      ],
+      "verified": "https://science.nasa.gov/exoplanet-catalog/de-canum-venaticorum-b (12.03 MJ, 5.75 AU, 11.2 yr, eclipse timing); https://ar5iv.arxiv.org/html/1811.08625 (P 11.22 yr, a 5.75 ± 2.02 AU assuming i=90, M sin i 0.011 Msun, M1 0.51 + M2 0.41)"
+    },
+    "hip-70849-b": {
+      "set": {
+        "mass_earth": 1430,
+        "mass_src": "true",
+        "mass_kind": "true",
+        "mass_ref": "Philipot et al. 2023 (Gaia-Hipparcos astrometry + radial velocity)",
+        "period_d": 3649,
+        "a_au": 3.99,
+        "ecc": 0.65,
+        "incl_deg": 96
+      },
+      "src": ["NASA-EA", "Philipot2023"],
+      "notes": [
+        "The Open Exoplanet Catalogue had placeholder-looking values (P = 10,000 d, a = 10 AU, 9 Jupiter masses); replaced with Philipot et al. 2023 (4.5 Jupiter masses, 3.99 AU, 10 years)."
+      ],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HIP%2070849 (Philipot 2023: Mp 1430 Earth, a 3.99 au, P 3649 d, e 0.65, i 96; An 2025 agrees: 4.55 MJ, 4.037 au)"
+    },
+    "au-mic-b": {
+      "set": {
+        "mass_earth": 8.99,
+        "mass_src": "true",
+        "mass_kind": "true",
+        "radius_earth": 4.79,
+        "a_au": 0.07,
+        "period_d": 8.463446
+      },
+      "src": ["NASA-EA", "Mallorquin2024", "NASA-SCI"],
+      "notes": [
+        "The atlas previously showed 57 Earth masses, which is Plavchan et al. 2020's upper limit, not a measurement. Published radial-velocity masses range from about 6 to 20 Earth masses; the NASA default is 8.99 (Mallorquín et al. 2024)."
+      ],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/AU%20Mic (Plavchan 2020: Mp sin i < 57 upper limit; Mallorquin 2024: 8.99 Earth, 4.79 R, a 0.070, P 8.463446); https://science.nasa.gov/exoplanet-catalog/au-microscopii-b/ (8.99 Earth masses)"
+    },
+    "wd-1856-534-b": {
+      "set": {
+        "mass_earth": 1653,
+        "mass_src": "model",
+        "mass_kind": "estimate",
+        "radius_earth": 10.6,
+        "notes": []
+      },
+      "src": ["NASA-EA", "Limbach2025"],
+      "notes": [
+        "The atlas previously showed 13.8 Jupiter masses, which is Vanderburg et al. 2020's upper limit. JWST thermal emission (Limbach et al. 2025) gives about 5.2 Jupiter masses from cooling models."
+      ],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/WD%201856+534 (Vanderburg 2020: < 13.8 MJ upper limit; Limbach 2025: 1653 Earth, 10.6 R)"
+    },
+    "proxima-centauri-c": {
+      "set": { "mass_earth": 5.8, "mass_src": "min", "mass_kind": "min" },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/proxima%20Cen (Damasso et al. 2020: Mp sin i 5.8 ± 1.9 Earth, no true mass)"
+    },
+    "upsilon-andromedae-a-b": {
+      "set": { "mass_earth": 219.3, "mass_src": "min", "mass_kind": "min" },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/ups%20And%20c (b: only Mp sin i, about 0.69 MJ; the atlas had 0.69 / sin 23° = 1.78 MJ marked true)"
+    },
+    "upsilon-andromedae-a-c": {
+      "set": {
+        "mass_earth": 4443,
+        "mass_src": "true",
+        "mass_kind": "true",
+        "mass_ref": "NASA Exoplanet Archive true-mass solution (Rosenthal et al. 2021)"
+      },
+      "src": ["NASA-EA"],
+      "notes": [
+        "Its true mass (about 14 Jupiter masses, with large uncertainties: +2.3 / −5.3) is just above the 13 Jupiter-mass line, so the atlas lists it as a brown dwarf."
+      ],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/ups%20And%20c (c: Mp 13.98 +2.30/-5.30 MJ)"
+    },
+    "upsilon-andromedae-a-d": {
+      "set": {
+        "mass_earth": 3258,
+        "mass_src": "true",
+        "mass_kind": "true",
+        "mass_ref": "NASA Exoplanet Archive true-mass solution (Rosenthal et al. 2021)"
+      },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/ups%20And%20c (d: Mp 10.25 +0.70/-3.30 MJ)"
+    },
+    "gliese-876-b": {
+      "set": {
+        "mass_ref": "Dynamical (true) mass from planet-planet interactions; NASA Exoplanet Archive lists Mp (Nelson et al. 2016: 845 Earth masses)"
+      },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%20876"
+    },
+    "gliese-876-c": {
+      "set": {
+        "mass_ref": "Dynamical (true) mass; NASA Exoplanet Archive lists Mp (Nelson et al. 2016: 266 Earth masses)"
+      },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%20876"
+    },
+    "gliese-876-d": {
+      "set": {
+        "mass_ref": "Dynamical (true) mass; NASA Exoplanet Archive lists Mp (Rivera et al. 2010: 6.83 Earth masses)"
+      },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%20876"
+    },
+    "gliese-876-e": {
+      "set": {
+        "mass_ref": "Dynamical (true) mass; NASA Exoplanet Archive lists Mp (Nelson et al. 2016: 16.6 Earth masses)"
+      },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%20876"
+    },
+    "epsilon-eridani-b": {
+      "set": { "mass_ref": "Astrometry + radial velocity (see note); NASA lists 1 Jupiter mass" },
+      "src": [],
+      "notes": [],
+      "verified": "Existing cross-check (NASA-SCI, WIKI) recorded in SOURCES.cross_check_results; audit S5 marked OK"
+    },
+    "epsilon-indi-a-b": {
+      "set": { "mass_ref": "JWST direct imaging + astrometry (2024-2026 revision, see note)" },
+      "src": [],
+      "notes": [],
+      "verified": "Existing cross-check (WIKI, NASA-NEWS-2026) recorded in the planet notes"
+    },
+    "gamma-cephei-b": {
+      "set": { "mass_ref": "Benedict et al. 2018 (HST astrometry): 9.4 Jupiter masses" },
+      "src": ["NASA-EA", "Benedict2018"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/gam%20Cep (Benedict 2018: Mp 9.40 MJ)"
+    },
+    "hd-115404-a-c": {
+      "set": { "mass_earth": 3279.7, "mass_ref": "Feng et al. 2022 (Gaia-Hipparcos astrometry): 10.32 Jupiter masses" },
+      "src": ["NASA-EA", "Feng2022"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD-115404 (c: Mp 10.319 MJ, i 25.8)"
+    },
+    "hd-140901-c": {
+      "set": { "mass_earth": 1997.2, "mass_ref": "Feng et al. 2022 (astrometry): 6.28 Jupiter masses" },
+      "src": ["NASA-EA", "Feng2022"],
+      "notes": [
+        "Philipot et al. 2023 find a much lower true mass (1.8 ± 0.5 Jupiter masses); the inclination is poorly constrained."
+      ],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%20140901 (Feng 2022: Mp 6.284 MJ, i 169.4; Philipot 2023: 1.8 MJ)"
+    },
+    "tau-boo-a-b": {
+      "set": {
+        "mass_earth": 1891,
+        "mass_ref": "Brogi et al. 2012 (orbital motion of the planet's atmosphere): 5.95 Jupiter masses"
+      },
+      "src": ["NASA-EA", "Brogi2012"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/tau%20Boo%20b (Brogi 2012: Mp 5.95 ± 0.28 MJ, i 44.5)"
+    },
+    "hd-154345-b": {
+      "set": { "mass_earth": 376.9, "mass_ref": "Giovinazzi et al. 2025 (astrometry + RV): 1.19 Jupiter masses" },
+      "src": ["NASA-EA", "Giovinazzi2025"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%20154345 (Giovinazzi 2025: Mp 1.186 MJ)"
+    },
+    "gj-463-b": {
+      "set": { "mass_ref": "Sozzetti et al. 2023 (Gaia-Hipparcos astrometry): 3.6 Jupiter masses" },
+      "src": ["NASA-EA", "Sozzetti2023"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%20463 (Sozzetti 2023: Mp 3.6 ± 0.4 MJ, i 152)"
+    },
+    "beta-pic-c": {
+      "set": {
+        "mass_earth": 2606,
+        "a_au": 2.72,
+        "period_d": 1230,
+        "mass_ref": "Nowak et al. 2020 (GRAVITY interferometry + RV): 8.2 Jupiter masses"
+      },
+      "src": ["NASA-EA", "Nowak2020"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/beta%20pic (Nowak 2020: 2606 Earth, a 2.72 au, P 1230 d)"
+    },
+    "hd-149806-b": {
+      "set": { "mass_earth": 4003.7, "mass_ref": "Feng et al. 2022 (astrometry): 12.6 Jupiter masses" },
+      "src": ["NASA-EA", "Feng2022"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%20149806 (Feng 2022: Mp 12.597 MJ, i 13.6)"
+    },
+    "gj-9714-b": {
+      "set": { "mass_earth": 2988.5, "mass_ref": "Feng et al. 2022 (astrometry): 9.4 Jupiter masses" },
+      "src": ["NASA-EA", "Feng2022"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/GJ%209714 (Feng 2022: Mp 9.403 MJ)"
+    },
+    "nu-oct-a-b": {
+      "set": { "mass_ref": "Ramm et al. 2016 (retrograde orbit fit with inclination): 2.1 Jupiter masses" },
+      "src": ["NASA-EA", "Ramm2016"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/nu%20Oct%20A (Ramm 2016: Mp 2.11 MJ, i 112.5; Cheng 2025: 2.19 MJ)"
+    },
+    "hd-18143-c": {
+      "set": { "mass_earth": 3177.6, "mass_ref": "Feng et al. 2022 (astrometry): 10.0 Jupiter masses" },
+      "src": ["NASA-EA", "Feng2022"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%2018143 (Feng 2022: c Mp 9.998 MJ, i 36.0)"
+    },
+    "bd-210397-c": {
+      "set": { "mass_ref": "Philipot et al. 2023 (Gaia-Hipparcos astrometry): 4.8 Jupiter masses" },
+      "src": ["NASA-EA", "Philipot2023"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/BD-21%20397 (Philipot 2023: c Mp 4.8 ± 0.6 MJ)"
+    },
+    "hip-55507-b": {
+      "set": { "mass_earth": 2585.5, "mass_ref": "Feng et al. 2022 (astrometry): 8.1 Jupiter masses" },
+      "src": ["NASA-EA", "Feng2022"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HIP%2055507 (Feng 2022: Mp 8.135 MJ, i 135)"
+    },
+    "hd-155918-c": {
+      "set": { "mass_earth": 1878.0, "mass_ref": "Feng et al. 2022 (astrometry): 5.9 Jupiter masses" },
+      "src": ["NASA-EA", "Feng2022"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%20155918 (Feng 2022: c Mp 5.909 MJ, i 31.8)"
+    },
+    "hd-75302-b": {
+      "set": { "mass_ref": "Philipot et al. 2023 (Gaia-Hipparcos astrometry): 5.4 Jupiter masses" },
+      "src": ["NASA-EA", "Philipot2023"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%2075302 (Philipot 2023: Mp 5.4 MJ, i 29)"
+    },
+    "hd-128311-c": {
+      "set": { "mass_earth": 1204, "mass_ref": "McArthur et al. 2014 (HST astrometry + RV): 3.79 Jupiter masses" },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%20128311 (McArthur 2014: c Mp 3.789 MJ, i 56; b has only Mp sin i)"
+    },
+    "hd-60532-b": {
+      "set": { "mass_earth": 337, "mass_src": "min", "mass_kind": "min" },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%2060532 (only Mp sin i: 337 Earth, Borgniet 2017; the atlas had M sin i / sin 20°)"
+    },
+    "hd-60532-c": {
+      "set": { "mass_earth": 798, "mass_src": "min", "mass_kind": "min" },
+      "src": ["NASA-EA"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%2060532 (only Mp sin i: 798 Earth, Borgniet 2017)"
+    },
+    "51-eri-b": {
+      "set": { "a_au": 12, "period_d": 11688 },
+      "src": ["NASA-EA", "Maire2019"],
+      "notes": [],
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/51%20Eri (Maire 2019: a 12 +4/-2 au, P 11688 d; atlas had rounded 14 AU / 15000 d)"
+    }
+  },
+  "exclude_systems": [
+    {
+      "id": "hd-89307",
+      "reason": "Beyond 100 light-years: NASA Exoplanet Archive sy_dist 32.01 pc (104.4 ly).",
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%2089307 (32.0104 pc)"
+    },
+    {
+      "id": "toi-1693",
+      "reason": "Beyond 100 light-years: NASA Exoplanet Archive sy_dist 30.79 pc (100.4 ly).",
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/TOI-1693 (30.7947 pc)"
+    },
+    {
+      "id": "hd-8326",
+      "reason": "Beyond 100 light-years: NASA Exoplanet Archive sy_dist 30.69 pc (100.1 ly).",
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%208326 (30.6862 pc)"
+    },
+    {
+      "id": "hd-29021",
+      "reason": "Beyond 100 light-years: NASA Exoplanet Archive sy_dist 30.99 pc (101.1 ly).",
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%2029021 (30.9939 pc)"
+    },
+    {
+      "id": "hd-130322",
+      "reason": "Beyond 100 light-years: NASA Exoplanet Archive sy_dist 31.88 pc (104.0 ly).",
+      "verified": "https://exoplanetarchive.ipac.caltech.edu/overview/HD%20130322 (31.8766 pc)"
+    }
+  ]
+}
