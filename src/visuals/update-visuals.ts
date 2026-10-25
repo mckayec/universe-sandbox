@@ -4,7 +4,7 @@ import { updateNebulaPart } from '../nebula-hd.ts';
 import { STAGES, TYPES } from '../celestial-catalog.ts';
 import { galaxyUniforms } from '../galaxy-visuals.ts';
 import { bodyBaseScale } from '../bodies/lifecycle.ts';
-import { camera, composer, isCompact } from '../scene/setup.ts';
+import { composer, isCompact } from '../scene/setup.ts';
 import { app, bodies, galaxyVisuals, trails } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { animateRelativisticJets } from './jets.ts';
@@ -41,6 +41,54 @@ function setTidalVisualScale(b: Body, base: number) {
   surface.rotation.y = (b.artificial ? 0 : (b.spinAngle ?? 0)) - angle;
 }
 
+// Module-scope temporaries for per-frame work.
+const tmpAway = new THREE.Vector3(),
+  tmpQuat = new THREE.Quaternion(),
+  X_AXIS = new THREE.Vector3(1, 0, 0),
+  bodyById = new Map<number, Body>(),
+  visibleZoneStars = new Set<number>();
+// Names of parts that the per-frame update animates; anything else is skipped without a string compare chain.
+const ANIMATED_PARTS = new Set([
+  'nebulaVolume',
+  'nebulaRaymarch',
+  'protoDisk',
+  'protoGlow',
+  'protoJets',
+  'lensingArc',
+  'blackHoleJets',
+  'pulsarBeams',
+  'prominence',
+  'stellarCorona',
+  'stellarShell',
+  'nebulaDust',
+  'accretionDiskHot',
+  'accretionDiskMid',
+  'accretionDiskDust',
+]);
+type PartCache = { childCount: number; parts: THREE.Object3D[] };
+/**
+ * The descendants of a body visual that need per-frame work, collected once per visual and rebuilt only when
+ * its top-level structure changes (e.g. a worldship hull is attached).
+ */
+function animatedParts(b: Body) {
+  const cache = b.mesh.userData.partCache as PartCache | undefined;
+  if (cache && cache.childCount === b.mesh.children.length) return cache.parts;
+  const parts: THREE.Object3D[] = [];
+  b.mesh.traverse(o => {
+    if (o === b.mesh) return;
+    const material = (o as THREE.Mesh).material;
+    if (
+      ANIMATED_PARTS.has(o.name) ||
+      o.userData.nebulaHD ||
+      o instanceof THREE.Sprite ||
+      (material instanceof THREE.ShaderMaterial && (material.uniforms.time || material.uniforms.tidal))
+    )
+      parts.push(o);
+  });
+  b.mesh.userData.partCache = { childCount: b.mesh.children.length, parts } satisfies PartCache;
+  return parts;
+}
+
 function updateCometVisual(b: Body) {
   const tail = b.mesh.getObjectByName('cometTail') as THREE.Points | undefined,
     coma = b.mesh.getObjectByName('cometComa') as THREE.Sprite | undefined;
@@ -56,13 +104,13 @@ function updateCometVisual(b: Body) {
     }
   }
   const away = source
-    ? b.mesh.position.clone().sub(source.mesh.position)
+    ? tmpAway.copy(b.mesh.position).sub(source.mesh.position)
     : b.velocity.lengthSq() > 0.01
-      ? b.velocity.clone().multiplyScalar(-1)
-      : new THREE.Vector3(1, 0, 0);
+      ? tmpAway.copy(b.velocity).multiplyScalar(-1)
+      : tmpAway.set(1, 0, 0);
   if (away.lengthSq() < 0.001) away.set(1, 0, 0);
-  away.normalize().applyQuaternion(b.mesh.quaternion.clone().invert());
-  tail.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), away);
+  away.normalize().applyQuaternion(tmpQuat.copy(b.mesh.quaternion).invert());
+  tail.quaternion.setFromUnitVectors(X_AXIS, away);
   const activity = source ? THREE.MathUtils.clamp(1 - distance / 80, 0.18, 1) : 0.2;
   tail.scale.set(0.45 + activity * 0.95, 0.62 + activity * 0.5, 0.62 + activity * 0.5);
   const material = tail.material as THREE.PointsMaterial;
@@ -75,26 +123,40 @@ function updateCometVisual(b: Body) {
 }
 export function updateVisuals(dt: number) {
   galaxyUniforms.uViewportH.value = composer.renderTarget1.height;
+  if (galaxyVisuals.size) {
+    bodyById.clear();
+    for (const body of bodies) bodyById.set(body.id, body);
+  }
   for (const visual of galaxyVisuals.values()) {
-    const anchor = bodies.find(body => body.id === visual.anchorId);
+    const anchor = visual.anchorId === undefined ? undefined : bodyById.get(visual.anchorId);
     if (anchor) {
       visual.object.position.copy(anchor.mesh.position);
       visual.object.rotation.y += dt * (visual.style === 'globular' ? 0.003 : 0.008);
     }
   }
-  const planetDrag =
-      app.dragBody && ['rocky', 'dwarf', 'moon', 'gas'].includes(app.dragBody.kind) ? app.dragBody : null,
-    visibleZoneStars = new Set<number>();
-  if (app.habitabilityGuides && planetDrag)
-    for (const star of bodies
-      .filter(candidate => candidate.kind === 'star')
-      .sort(
-        (a, b) =>
-          a.mesh.position.distanceToSquared(planetDrag.mesh.position) -
-          b.mesh.position.distanceToSquared(planetDrag.mesh.position),
-      )
-      .slice(0, 3))
-      visibleZoneStars.add(star.id);
+  // Life zones show around the stars nearest a dragged planet, or (so touch visitors can find them without
+  // dragging) around the selected star / the stars nearest a selected world.
+  const isWorld = (kind: string) => kind === 'rocky' || kind === 'dwarf' || kind === 'moon' || kind === 'gas',
+    planetFocus =
+      app.dragBody && isWorld(app.dragBody.kind)
+        ? app.dragBody
+        : app.selectedBody && isWorld(app.selectedBody.kind)
+          ? app.selectedBody
+          : null;
+  visibleZoneStars.clear();
+  if (app.habitabilityGuides) {
+    if (planetFocus)
+      for (const star of bodies
+        .filter(candidate => candidate.kind === 'star')
+        .sort(
+          (a, b) =>
+            a.mesh.position.distanceToSquared(planetFocus.mesh.position) -
+            b.mesh.position.distanceToSquared(planetFocus.mesh.position),
+        )
+        .slice(0, 3))
+        visibleZoneStars.add(star.id);
+    else if (app.selectedBody?.kind === 'star') visibleZoneStars.add(app.selectedBody.id);
+  }
   for (const b of bodies) {
     if (b.kind === 'comet') updateCometVisual(b);
     if (b.kind === 'nebula') {
@@ -148,7 +210,7 @@ export function updateVisuals(dt: number) {
       habitableZoneLabel = b.mesh.getObjectByName('habitableZoneLabel');
     if (habitableZone) habitableZone.visible = showHabitableZone;
     if (habitableZoneLabel) habitableZoneLabel.visible = showHabitableZone;
-    b.mesh.traverse(o => {
+    for (const o of animatedParts(b)) {
       const material = (o as THREE.Mesh).material;
       if (material instanceof THREE.ShaderMaterial && material.uniforms.tidal)
         material.uniforms.tidal.value = b.tidalStretch;
@@ -175,8 +237,7 @@ export function updateVisuals(dt: number) {
         material.uniforms.density.value = 0.64 + 0.24 * Math.sqrt(THREE.MathUtils.clamp(b.mass / b.birthMass, 0.05, 1));
         material.uniforms.compression.value = b.nebulaCompression;
         material.uniforms.tidal.value = b.nebulaTidal;
-        const inverse = new THREE.Matrix4().copy(o.matrixWorld).invert();
-        material.uniforms.cameraLocal.value.copy(camera.position).applyMatrix4(inverse);
+        // cameraLocal is set in the volume's onBeforeRender (nebula-hd.ts) with the final matrices.
       }
       if (name.startsWith('accretionDisk') || name === 'protoDisk')
         o.rotation.z += dt * (name.startsWith('accretionDisk') ? (o.userData.spin ?? 1.8) : 1.2);
@@ -216,7 +277,7 @@ export function updateVisuals(dt: number) {
           m.opacity = baseOpacity * (0.58 + 0.42 * Math.sqrt(THREE.MathUtils.clamp(b.mass / b.birthMass, 0.06, 1)));
         if (name === 'nebulaCloud' || name === 'nebulaHaze') m.rotation += dt * (o.userData.drift ?? 0.012);
       }
-    });
+    }
     const inflow = b.mesh.getObjectByName('inflow') as THREE.Points | undefined;
     if (inflow) {
       const attr = inflow.geometry.getAttribute('position') as THREE.BufferAttribute;
