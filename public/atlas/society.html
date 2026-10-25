@@ -39,14 +39,14 @@
     <a class="gl-home" href="../" title="Back to the Gravity Lab sandbox"><span aria-hidden="true">←</span> Gravity Lab</a>
     <div class="brand">
       <svg class="sigil" aria-hidden="true"><use href="#sigil"/></svg>
-      <div><h1 class="gild">The Society Atlas</h1><p>The Red Rising Saga · <b id="eraName">All six books</b></p></div>
+      <div><h1 class="gild">The Society Atlas</h1><p>The Red Rising Saga · <b id="eraName">Book I · Red Rising</b></p></div>
     </div>
     <div class="controls">
       <span id="loadmsg">Loading planetary maps</span>
       <button class="btn" id="indexToggle" aria-expanded="false">Worlds</button>
       <div class="seg" role="group" aria-label="Filter the Chronicle by book">
-        <button data-book="0" aria-pressed="true">All</button>
-        <button data-book="1" aria-pressed="false" title="Red Rising">I</button>
+        <button data-book="0" aria-pressed="false" title="All six books · spoilers" aria-label="All six books · spoilers">All</button>
+        <button data-book="1" aria-pressed="true" title="Red Rising">I</button>
         <button data-book="2" aria-pressed="false" title="Golden Son">II</button>
         <button data-book="3" aria-pressed="false" title="Morning Star">III</button>
         <button data-book="4" aria-pressed="false" title="Iron Gold">IV</button>
@@ -57,6 +57,7 @@
       <button class="btn" id="pause" aria-pressed="false">Pause orbits</button>
     </div>
   </header>
+  <p class="spoil-note" id="spoilNote" role="status" hidden>Showing all six books: spoilers for the whole saga. Pick a book to hide later events.</p>
   <nav id="crumbs" aria-label="Where you are"></nav>
 
   <nav id="index" class="panel" aria-label="Worlds"></nav>

@@ -73,6 +73,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offse
 #crumbs button:hover{color:var(--gold-hi)}
 #crumbs .here{color:var(--gold)}
 #crumbs i{font-style:normal;color:var(--gold-lo)}
+.spoil-note{position:absolute;z-index:7;top:150px;left:50%;transform:translateX(-50%);margin:0;max-width:min(560px,calc(100vw - 32px));padding:6px 12px;border:1px solid var(--ember,#c0392b);background:rgba(13,10,11,.88);color:var(--ivory,#f3ead8);font:500 12px var(--f-hud);letter-spacing:.06em;text-align:center;pointer-events:none}
+.spoil-note[hidden]{display:none}
+body.mob .spoil-note{top:104px}
+body.map-only .spoil-note{display:none}
 
 /* ---------- index ---------- */
 #index{top:96px;left:max(16px,env(safe-area-inset-left,0px));width:212px;padding:16px 12px 14px;max-height:calc(100% - 96px - 252px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--gold-lo) transparent}

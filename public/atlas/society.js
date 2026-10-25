@@ -157,7 +157,7 @@ POIS.venus=[
  {id:"rath",name:"House Valii-Rath",lat:-22,lon:60,desc:"Where Apollonius au Valii-Rath takes back his house’s forces from his brother Tharsus in Iron Gold."}
 ];
 POIS.earth=[
- {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:4,desc:"Atalantia’s African seat, where she pressures Lysander before the summit."},
+ {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:6,desc:"Atalantia’s African seat, where she pressures Lysander before the summit."},
  {id:"deepgrave",name:"Deepgrave",lat:38,lon:-38,from:4,desc:"A prison beneath the Atlantic. Darrow’s team raids it in Iron Gold and frees Apollonius au Valii-Rath."},
  {id:"greenland",name:"Greenland base",lat:72,lon:-42,from:4,desc:"Darrow’s hidden base on Earth in Iron Gold."},
  {id:"rome",name:"Rome",lat:41.9,lon:12.5,from:6,desc:"Atalantia convenes the Two Hundred in Rome’s Colosseum."}
@@ -388,8 +388,8 @@ function placeName(ev){ if(ev.where)return ev.where; if(ev.poi){const p=poiById[
 function eventsFor(bodyId,poiId){ return EVENTS.filter(e=>e.body===bodyId&&(poiId===undefined||e.poi===poiId)); }
 const SITES={}; /* filled by the site modules */
 
-/* the world state follows the selected book; "All" shows the latest */
-let ERA=6;
+/* the world state follows the selected book; "All" shows the latest. Fresh loads start at Book I (spoiler-safe); "All" is an explicit opt-in */
+let ERA=1;
 function eraVal(v){if(v==null||typeof v!=="object"||Array.isArray(v))return v;let best=null,bk=-1;Object.keys(v).forEach(k=>{const n=+k;if(n<=ERA&&n>bk){bk=n;best=v[k];}});
   if(best==null){const ks=Object.keys(v).map(Number).sort((a,b)=>a-b);best=v[ks[0]];}return best;}
 function bodyF(b,f){return eraVal(b.eras?Object.fromEntries(Object.entries(b.eras).filter(([k,o])=>o[f]!=null).map(([k,o])=>[k,o[f]]).concat([[0,b[f]]])):b[f]);}
@@ -2979,7 +2979,7 @@ FXG.garter=g=>{const F=Flashes(g);globe.add(g);return {dur:8,update(dt,t){if(Mat
 
 /* ---- 60-ui.js ---- */
 /* ===================== STATE ===================== */
-let mode="system",cur=null,selPoi=null,selEvent=null,bookFilter=0,paused=false,simT=0,anim=null,hoverSel=null,curSiteKey=null,selLm=null;
+let mode="system",cur=null,selPoi=null,selEvent=null,bookFilter=1,paused=false,simT=0,anim=null,hoverSel=null,curSiteKey=null,selLm=null;
 const SOC_PLANETS=new Set(["mercury","venus","earth","mars","jupiter","saturn","uranus","neptune"]);
 const labelsEl=$("#labels"),tip=$("#tip"),dossier=$("#dossier"),track=$("#track"),idx=$("#index"),fade=$("#fade"),crumbs=$("#crumbs"),sitehud=$("#sitehud");
 
@@ -3014,9 +3014,13 @@ track.addEventListener("mouseover",e=>{const el=e.target.closest(".ev");if(!el)r
 track.addEventListener("mouseout",e=>{const el=e.target.closest(".ev");if(el&&!el.contains(e.relatedTarget)){hoverSel=null;applyHL(false);hideTip();}});
 track.addEventListener("click",e=>{const el=e.target.closest(".ev");if(el)gotoEvent(EV[el.dataset.id],true);});
 track.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){track.scrollLeft+=e.deltaY;e.preventDefault();}},{passive:false});
-document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{bookFilter=+b.dataset.book;setEra(bookFilter||6);
-  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  track.querySelectorAll(".book").forEach(bk=>bk.hidden=!!bookFilter&&+bk.dataset.book!==bookFilter);renderDossier();applyHL(false);}));
+/* book selection: Book I on load; "All six books · spoilers" only after an explicit click. Not persisted in the URL or storage. */
+function selectBook(k){bookFilter=k;setEra(bookFilter||6);
+  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.book===k));
+  track.querySelectorAll(".book").forEach(bk=>bk.hidden=!!bookFilter&&+bk.dataset.book!==bookFilter);
+  const sn=$("#spoilNote");if(sn)sn.hidden=!!bookFilter;
+  renderDossier();applyHL(false);}
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>selectBook(+b.dataset.book)));
 $("#pause").addEventListener("click",e=>{paused=!paused;e.currentTarget.textContent=paused?"Resume orbits":"Pause orbits";e.currentTarget.setAttribute("aria-pressed",paused);});
 
 /* ===================== HIGHLIGHT ===================== */
@@ -3048,7 +3052,7 @@ function showTipBody(b,ev){const ne=eventsFor(b.id).filter(e=>!bookFilter||e.boo
   tip.innerHTML='<p class="eyebrow">'+esc(bodyF(b,"epithet"))+'</p><h3>'+esc(b.name)+'</h3>'+(b.control!=="—"?'<div class="meta">Held by <b>'+esc(bodyF(b,"control"))+'</b></div>':'')+'<p>'+esc(bodyF(b,"blurb"))+'</p>'+
    (b.kind==="sun"?'':'<div class="meta">'+ne+' event'+(ne===1?'':'s')+' · '+np+' place'+(np===1?'':'s')+'</div><div class="cta">Click to descend</div>');
   tip.hidden=false;if(ev)placeTip(ev.clientX,ev.clientY);}
-function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books";
+function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books · spoilers";
   if(!changed)return;applyEraTextures();renderIndex();if(mode==="globe"&&cur){buildGlobe(cur);buildPoiLabels();setModeLabels();}
   if(mode==="site"&&curSite&&curSite.onEra)curSite.onEra(ERA);}
 function evListMeta(evs){return evs.length?evs.map(e=>BOOKS[e.book].n+' · '+esc(e.title)).join('<br>'):'No events in this filter';}
@@ -3367,7 +3371,7 @@ function applyEraTextures(){Object.keys(ERA_TEX).forEach(id=>applySet(id));}
 
 /* ===================== START ===================== */
 $("#chronHint").innerHTML="Spoilers are shown through the selected book. Hover a world to light up what happened there. <b>Click an event</b> to go to it; <b>▶</b> marks scenes you can watch.";
-updateBodies();applyCam();applyHL(false);renderCrumbs();requestAnimationFrame(frame);
+selectBook(1);updateBodies();applyCam();applyHL(false);renderCrumbs();requestAnimationFrame(frame);
 const startHash=(location.hash||"").slice(1);
 if(byId[startHash]&&startHash!=="sun")setTimeout(()=>descend(startHash),600);
 else if(SITES[startHash])setTimeout(()=>enterSite(startHash),600);

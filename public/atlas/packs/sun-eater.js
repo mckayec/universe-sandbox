@@ -493,7 +493,6 @@ const EVENTS=[
  /* VII · Shadows Upon Time */
  {id:"b7a",book:7,world:"vorgossos",title:"Master of the Demiurge",text:"Hadrian holds the Demiurge against Chantry and Vorgossene attacks and makes peace with the ship’s mind."},
  {id:"b7b",book:7,world:"annica",site:"mountain",title:"Exile on Annica",text:"A fugitive from Empire and Chantry, Hadrian waits beyond the core with Cassandra."},
- {id:"b7c",book:7,world:"forum",title:"Auctor",text:"William names Hadrian Auctor of the Imperium."},
  {id:"b7d",book:7,world:"earth",title:"Earth is green",text:"The Chantry’s great secret: Old Earth was never a ruin."},
  {id:"b7e",book:7,world:"tenba",site:"meridian",title:"The muster at Tenba",text:"The last fleets of humanity gather."},
  {id:"b7f",book:7,world:"danu",title:"Danu",text:"Cielcin worldships tear the world apart and Ushara destroys the Tavrosi fleet."},
