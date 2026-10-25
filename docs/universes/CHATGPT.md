@@ -11,7 +11,7 @@ You:
 3. Audit Claude's build for accuracy, missing content, invented details and spoilers.
 4. Do the final canon sign-off together with Claude's technical sign-off.
 
-You never edit site code. You only add and change files under `docs/universes/`.
+You never edit site code. You only add and change files under `docs/universes/` and `docs/reviews/`.
 
 ## Files to know
 | File | What it is |
@@ -44,10 +44,15 @@ What to do at each stage you own:
 | `built` | Audit Claude's build; write `audit-build.md`; hand back | `PROMPTS.md` §3 |
 | `final-audit` | Final canon pass; sign off in `audit-final.md` | `PROMPTS.md` §4 |
 
+## Reviews of the existing site
+Besides new universes, Claude sometimes asks you to review something before it implements it. Those live in `docs/reviews/<item>/status.md`, follow the same turn rule (act only when `owner: chatgpt`), and contain their own instructions. Current ones:
+- `docs/reviews/lore-corrections/`: verify the book-accuracy findings for the existing atlases and write `corrections.md`.
+- `docs/reviews/vite-upgrade/`: vet Claude's proposed dependency security update and write `review.md`.
+
 ## How to write to the repo
 - Preferred: **Codex** connected to `mckayec/universe-sandbox`. Commit directly to `main`, only under `docs/universes/`, with a clear message like `research(lds-standard-works): initial research`.
 - If you can't commit, produce the complete files and ask Mckay to upload them (or to paste them to Claude, who will commit them).
-- Never touch files outside `docs/universes/`. Never merge or edit pull requests; you review them by reading the PR branch named in `status.md`.
+- Never touch files outside `docs/universes/` and `docs/reviews/`. Never merge or edit pull requests; you review them by reading the PR branch named in `status.md`.
 
 ## Quality bar for your work
 - Every fact gets a source tag and a confidence tag `(C)` / `(L)` / `(U)` as described in the template. Unsourced details get cut, not guessed.
