@@ -5,13 +5,13 @@ Each audit writes its results to the universe's folder as a table: **ID · sever
 ## 1. Research self-audit and deep dive (ChatGPT → `research-audit.md`)
 Run while Claude builds. Purpose: prove the research went deep and is right, not just plausible.
 - [ ] **Coverage:** list every book/volume; for each, are its major places, events and journeys present? Name anything a dedicated fan would expect that is missing.
-- [ ] **Re-verify the riskiest 25%:** every `(L)` claim, every prominent claim (titles, journeys, main labels), and anything that "sounds right" but came from memory. Open a source for each.
+- [ ] **Re-verify every low-confidence and prominent claim:** every `(L)` claim, every prominent claim (titles, journeys, main labels), and anything that "sounds right" but came from memory, even if that's more than a quarter of the research. Open a source for each and report checked/total counts. If no independent second source exists, say so; don't manufacture one.
 - [ ] **Fabrication sweep:** search for each proper noun and distinctive claim; flag any that only appear in your own text.
 - [ ] **Chronology:** events in the right book and order; `first:` values never earlier than the reader learns the fact.
 - [ ] **Canon contamination:** film/TV/game details mixed into book canon.
 - [ ] **Cross-references:** every event/journey points at a place that exists in §3.
 - [ ] **Second-source check:** for the 10 most important facts, confirm with a second independent source.
-- [ ] Write corrections or additions to `research-addendum.md` and summarize the depth achieved (sources consulted, % of claims confirmed).
+- [ ] Write corrections or additions to `research-addendum.md` and summarize the depth achieved (sources consulted, checked/total claim counts, coverage per work or layer). Put the audited research commit SHA at the top.
 
 ## 2. Research review (Claude → `research-review.md`)
 - [ ] Template followed; every place/event has the fields the engine needs.
@@ -20,7 +20,7 @@ Run while Claude builds. Purpose: prove the research went deep and is right, not
 - [ ] Questions for ChatGPT, if any (ChatGPT answers them in `research-addendum.md`).
 
 ## 3. Content audit of the build (ChatGPT → `audit-build.md`)
-Inputs: the pack file in the PR branch (`public/atlas/packs/<id>.js`) and `build-report.md` with screenshots.
+Inputs: the pack file (`public/atlas/packs/<id>.js`) **at the exact commit SHA** named in `status.md` and `build-report.md`, and the build report with screenshots. Record that SHA at the top of the audit.
 - [ ] Every label, blurb, event, journey and codex entry matches the research and the source works.
 - [ ] Nothing in the pack is absent from the research (catches build-side invention).
 - [ ] Spoilers: base text safe for book 1; later facts only appear when their book is selected.
@@ -30,7 +30,9 @@ Inputs: the pack file in the PR branch (`public/atlas/packs/<id>.js`) and `build
 ## 4. Final joint audit (`audit-final.md`)
 **ChatGPT (canon):**
 - [ ] Re-check every High/Medium finding from §3 is resolved correctly.
-- [ ] Spot-check 20 random entries against sources.
+- [ ] Spot-check 20 random entries against sources (all entries if fewer than 20); record the selected IDs and how they were picked.
+- [ ] Every `(L)` claim is now verified, labelled as uncertain or as a model, or removed; no `(U)` claim ships.
+- [ ] Every `research-addendum.md` item has a recorded disposition from Claude.
 - [ ] Sign off: "Canon: approved" or list blockers.
 
 **Claude (technical and visual):**
@@ -42,4 +44,4 @@ Inputs: the pack file in the PR branch (`public/atlas/packs/<id>.js`) and `build
 - [ ] Back link to Gravity Lab, fan-work notice, credits accurate.
 - [ ] Sign off: "Technical: approved" or list blockers.
 
-Only when both sign-offs are present does the stage move to `ready-for-owner`.
+Both sign-offs name the commit SHA they approve. If content changes after a sign-off, the canon audit re-checks the changed content; if code changes, Claude re-runs the relevant technical checks. Only when both sign-offs for the same revision are present does the stage move to `ready-for-owner`; Mckay's approval is still required to go live.

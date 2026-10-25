@@ -40,7 +40,7 @@ What to do at each stage you own:
 | `stage` | Do this | Prompt |
 |---|---|---|
 | `research` | Research and write `research.md` + `sources.md`; hand to Claude | `PROMPTS.md` §1 |
-| `research-ready` (owner claude) | Not your turn, **but** run your self-audit and deep dive in parallel and write `research-audit.md` / `research-addendum.md`. Don't change the stage | `PROMPTS.md` §2 |
+| `research-ready` (owner claude) | Not your turn, **but** run your self-audit and deep dive in parallel and write `research-audit.md` / `research-addendum.md`. Don't edit `status.md` (Claude owns it and adds the History line); record the audited research SHA in `research-audit.md`. | `PROMPTS.md` §2 |
 | `built` | Audit Claude's build; write `audit-build.md`; hand back | `PROMPTS.md` §3 |
 | `final-audit` | Final canon pass; sign off in `audit-final.md` | `PROMPTS.md` §4 |
 
@@ -50,9 +50,12 @@ Besides new universes, Claude sometimes asks you to review something before it i
 - `docs/reviews/vite-upgrade/`: vet Claude's proposed dependency security update and write `review.md`.
 
 ## How to write to the repo
-- Preferred: **Codex** connected to `mckayec/universe-sandbox`. Commit directly to `main`, only under `docs/universes/`, with a clear message like `research(lds-standard-works): initial research`.
+- Preferred: your authenticated GitHub write tool, or **Codex**, connected to `mckayec/universe-sandbox`. Commit directly to `main`, only under `docs/universes/`, with a clear message like `research(lds-standard-works): initial research`.
 - If you can't commit, produce the complete files and ask Mckay to upload them (or to paste them to Claude, who will commit them).
 - Never touch files outside `docs/universes/` and `docs/reviews/`. Never merge or edit pull requests; you review them by reading the PR branch named in `status.md`.
+
+## Agreed working rules
+The signed agreement in `HANDOFF_PLAN.md` takes precedence over this file. In particular: name exact commit SHAs in every audit; large stages span several runs with checkpoints; for religious topics, a primary source establishes what the text says, not historical truth, so keep text / believers / scholarship / geography models separate and use official Church sources only for the Church's own positions.
 
 ## Quality bar for your work
 - Every fact gets a source tag and a confidence tag `(C)` / `(L)` / `(U)` as described in the template. Unsourced details get cut, not guessed.

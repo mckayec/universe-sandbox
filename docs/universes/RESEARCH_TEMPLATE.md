@@ -8,6 +8,9 @@ ChatGPT writes `docs/universes/packs/<id>/research.md` in exactly this order. Cl
 - **Spoiler order.** Give every place, event and character fact the earliest book/volume where a reader learns it (`first: <book number>`). Put later developments under that place's **eras** (book number → what changes).
 - **Paraphrase.** No quotations longer than one short phrase, except public-domain scripture.
 - **No invention.** If a detail can't be found, write "unknown" rather than filling the gap.
+- **Before canon approval,** every `(L)` claim is verified from opened evidence, explicitly labelled as uncertain or as a model, or removed. `(U)` claims never ship.
+- **Coverage and checkpoints:** large universes are researched over several runs. Keep a coverage table at the top of `research.md` (per work or layer: covered / in progress / not started, plus exclusions) and commit checkpoints. Hand off as `research-ready` only when the agreed scope is covered.
+- **Models aren't coordinates:** contested or unknown geography (e.g. Book of Mormon lands) is recorded as named models with their proposed locations, never as one asserted real-world coordinate.
 
 ## 1. Meta
 - Universe id (kebab-case), title, short description (one sentence)
