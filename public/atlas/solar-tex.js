@@ -437,7 +437,9 @@
         const n = N.fbm(p.x * 4 + swirl, p.y * 6, p.z * 4 - swirl, 6);
         const belt = 0.18 * (1 - sst(4, 12, alat)) + 0.16 * sst(40, 55, alat) * (1 - sst(70, 80, alat));
         const dry = 0.18 * sst(15, 22, alat) * (1 - sst(32, 38, alat));
-        const v = sst(0.56 - belt + dry, 0.8 - belt + dry, n) * 0.9;
+        // thin, streaky cover (about half the globe, mostly translucent) rather than solid blobs
+        const streak = N.fbm(p.x * 9 + swirl, p.y * 18, p.z * 9 - swirl, 4);
+        const v = sst(0.6 - belt + dry, 0.86 - belt + dry, n * 0.7 + streak * 0.3) * 0.75;
         return [v, v, v];
       }),
 
