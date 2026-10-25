@@ -1,4 +1,4 @@
-/* The Cosmere Atlas: data pack for the shared galactic atlas engine (schema: ../PACK_FORMAT.md, v1).
+/* The Cosmere Atlas: data pack for the shared galactic atlas engine (schema: docs/PACK_FORMAT.md in the repo, v1).
    Series: Brandon Sanderson's Cosmere, 2005–2026 (Elantris to The Fires of December).
 
    SOURCES (all text below is paraphrased in our own words):
@@ -291,7 +291,7 @@
        blurb: "A large white star, a little smaller than UTol’s. Thirteen planets circle it: three rocky worlds close in, then an asteroid belt, then ten gas giants named with the Vorin numerals.",
        short: "Large white star of the Rosharan system.",
        facts: [["Planets", "Ashyn, Roshar, Braize, then ten gas giants"], ["Colour", "White"]],
-       gfx: sun("#ffffff", HOTW)},
+       noSurface: true, gfx: sun("#ffffff", HOTW)},
 
       {id: "ashyn", name: "Ashyn", aka: ["Alaswha", "the Tranquiline Halls"], group: "rosharan", books: [8, 12], first: 8, status: "First planet · the Tranquiline Halls of legend",
        star: {name: "Roshar’s sun", col: "#f4f6ff"}, map: orb(C.roshar, .14, 200), distText: ORR,
@@ -349,7 +349,7 @@
        blurb: "Scadrial’s yellow sun. The planet has been moved toward it and back again: the Lord Ruler pushed Scadrial closer, and Harmony later restored it. The system chart shows both the old orbit and the new. Under the ash in the first trilogy the sun looks red.",
        short: "Yellow star of the Scadrian system.",
        facts: [["Planets", "Scadrial, Aagal Nod, Aagal Uch, two dwarf planets"]],
-       gfx: sun("#ffe8a0", HOTY)},
+       noSurface: true, gfx: sun("#ffe8a0", HOTY)},
 
       {id: "scadrial", name: "Scadrial", realms: {cognitive: {name: "Expanse of the Vapors", style: "mist", c1: "#7a808c", c2: "#eef2f6", c3: "#2e2b28", blurb: "Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly."}}, group: "scadrian", books: [2, 6, 7, 10, 12], first: 2, major: true, status: "First planet · the Final Empire",
        star: {name: "Scadrial’s sun", col: "#ffd8a0"}, map: orb(C.scadrial, .2, 40), distText: ORR, hero: "luthadel",
@@ -395,7 +395,7 @@
        star: {name: "Mashe", col: "#fff6e0"}, map: C.sel, distText: CHARTPOS,
        blurb: "Sel’s sun. Its name holds the Aon Ashe, light.",
        short: "Star of the Selish system.",
-       facts: [["Planets", "Donne, Sel, Ky, Ralen, a dwarf planet"]], gfx: sun("#fff0c0", HOTY)},
+       facts: [["Planets", "Donne, Sel, Ky, Ralen, a dwarf planet"]], noSurface: true, gfx: sun("#fff0c0", HOTY)},
       {id: "donne", name: "Donne", aka: ["Doo"], group: "selish", books: [7], first: 7, status: "1st from Mashe",
        star: {name: "Mashe", col: "#fff6e0"}, map: orb(C.sel, .13, 250), distText: ORR,
        blurb: "The innermost planet. It lies in the habitable zone but is barren, very hot and scoured by dust storms.",
@@ -456,7 +456,7 @@
       {id: "nalthsun", name: "Nalthis’s sun", group: "nalthian", books: [3], first: 3, major: true, status: "Star of the Nalthian system",
        star: {name: "Nalthis’s sun", col: "#fff2c8"}, map: C.nalthis, distText: CHARTPOS,
        blurb: "A yellow star much like Scadrial’s and Sel’s, in the constellation known as the Giver.",
-       short: "Yellow star of the Nalthian system.", facts: [["Planets", "Nalthis, Farkeeper the Bright, Nightstar the Hidden"]], gfx: sun("#ffe8a0", HOTY)},
+       short: "Yellow star of the Nalthian system.", facts: [["Planets", "Nalthis, Farkeeper the Bright, Nightstar the Hidden"]], noSurface: true, gfx: sun("#ffe8a0", HOTY)},
 
       {id: "nalthis", name: "Nalthis", realms: {cognitive: {name: "Expanse of Vibrance", style: "paint", c1: "#e04a8a", c2: "#3ac0e0", c3: "#e8c040", blurb: "Nalthis’s subastral is painted in colour and wet with pigment, with flowers that drip ink. Little else about it has been shown."}}, group: "nalthian", books: [3, 5, 7], first: 3, major: true, status: "Shardworld of Endowment",
        star: {name: "Nalthis’s sun", col: "#fff4dc"}, map: orb(C.nalthis, .2, 330), distText: ORR, hero: "ttelir",
@@ -493,7 +493,7 @@
       {id: "threnosun", name: "Threnody’s sun", group: "threnodite", books: [7], first: 7, major: true, status: "Red star of the Threnodite system",
        star: {name: "Threnody’s sun", col: "#ff9a70"}, map: C.threnody, distText: CHARTPOS,
        blurb: "A red star. In the empty space of this system the Shards Ambition, Odium and probably Mercy fought; Ambition was mortally wounded, and planets that once orbited here were destroyed. The twisted Investiture on Threnody is at least partly a scar of that battle.",
-       short: "Red star where Ambition was wounded.", facts: [["Planets", "Monody, Elegy, Threnody, Purity"]], gfx: sun("#ff8a50", HOTR)},
+       short: "Red star where Ambition was wounded.", facts: [["Planets", "Monody, Elegy, Threnody, Purity"]], noSurface: true, gfx: sun("#ff8a50", HOTR)},
       {id: "monody", name: "Monody", group: "threnodite", books: [7], first: 7, status: "1st from the sun",
        star: {name: "Threnody’s sun", col: "#ff9a70"}, map: orb(C.threnody, .12, 70), distText: ORR,
        blurb: "The planet closest to the sun, similar in size to Elegy and Threnody.", facts: [["Order", "1st from the sun"]],
@@ -521,12 +521,12 @@
       {id: "aisda", name: "AisDa", group: "taldain", books: [7], first: 7, major: true, status: "Blue-white supergiant",
        star: {name: "AisDa", col: "#dce8ff"}, map: C.taldain, distText: CHARTPOS,
        blurb: "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet.",
-       short: "Blue-white supergiant.", facts: [["Companion", "The Eye of Ridos"]], gfx: sun("#dce8ff", HOTW)},
+       short: "Blue-white supergiant.", facts: [["Companion", "The Eye of Ridos"]], noSurface: true, gfx: sun("#dce8ff", HOTW)},
       {id: "ridos", name: "The Eye of Ridos", aka: ["Ridos"], group: "taldain", books: [7], first: 7, status: "White dwarf behind a particle ring",
        star: {name: "The Eye of Ridos", col: "#f0f4ff"}, map: orb(C.taldain, .5, 90), distText: ORR,
        blurb: "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring.",
        short: "White dwarf behind the dust.", facts: [["Ring", "A dense particle cloud"]], ring: {inner: 1.6, outer: 3.2, c1: "#8a8070", c2: "#3a3430", tilt: .1},
-       gfx: sun("#f0f4ff", HOTW, {atmoK: .6})},
+       noSurface: true, gfx: sun("#f0f4ff", HOTW, {atmoK: .6})},
       {id: "taldain", name: "Taldain", group: "taldain", books: [7], first: 7, status: "Sole planet · Shardworld of Autonomy",
        star: {name: "AisDa", col: "#dce8ff"}, map: orb(C.taldain, .3, 90), distText: ORR, hero: "kerla",
        blurb: "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.",
@@ -541,7 +541,7 @@
       {id: "drominad", name: "Drominad", group: "drominad", books: [7, 12], first: 7, major: true, status: "Star of the Drominad system",
        star: {name: "Drominad", col: "#e8f0ff"}, map: C.drominad, distText: CHARTPOS,
        blurb: "The star of First of the Sun, painted pale blue-white on the system chart. Seven planets circle it, named simply by their order: four small worlds in the habitable zone, an asteroid belt, then three gas giants.",
-       short: "Star of the Drominad system.", facts: [["Planets", "First to Seventh of the Sun"]], gfx: sun("#e8f0ff", HOTW)},
+       short: "Star of the Drominad system.", facts: [["Planets", "First to Seventh of the Sun"]], noSurface: true, gfx: sun("#e8f0ff", HOTW)},
 
       {id: "firstsun", name: "First of the Sun", realms: {cognitive: {name: "Drominad’s subastral", style: "unsea", c1: "#06060c", c2: "#3a6ae0", c3: "#141418", blurb: "Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights."}}, group: "drominad", books: [7, 12], first: 7, status: "1st planet · archipelago world",
        star: {name: "Drominad", col: "#e8f0ff"}, map: orb(C.drominad, .14, 30), distText: ORR, hero: "patji",
@@ -589,7 +589,7 @@
       {id: "utolsun", name: "UTol’s sun", group: "utol", books: [11], first: 11, major: true, status: "Red-orange star",
        star: {name: "UTol’s sun", col: "#ffb070"}, map: U.utol, est: true, distText: SCHEM,
        blurb: "A large red-orange star, bigger than Roshar’s and comparatively close to its inhabited planets. UTol and Komashi orbit it together as a double planet.",
-       short: "Red-orange star of UTol and Komashi.", facts: [["Planets", "UTol and Komashi (a pair)"]], gfx: sun("#ffa060", HOTR)},
+       short: "Red-orange star of UTol and Komashi.", facts: [["Planets", "UTol and Komashi (a pair)"]], noSurface: true, gfx: sun("#ffa060", HOTR)},
       {id: "utol", name: "UTol", group: "utol", books: [11], first: 11, status: "Ocean world · Komashi’s twin",
        star: {name: "UTol’s sun", col: "#ffb070"}, map: orb(U.utol, .26, 50), est: true, distText: SCHEM,
        blurb: "An ocean world with very few landmasses, home to the Sho Del. From Komashi it shines as a pale blue star, the only light that reached through the shroud.",

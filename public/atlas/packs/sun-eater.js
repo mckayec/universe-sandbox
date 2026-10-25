@@ -1,4 +1,4 @@
-/* The Sun Eater Atlas — data pack for the shared galactic atlas engine (../engine.js). Schema: ../PACK_FORMAT.md */
+/* The Sun Eater Atlas — data pack for the shared galactic atlas engine (../engine.js). Schema: docs/PACK_FORMAT.md in the repo */
 (function(){
 "use strict";
 /* ===================== CONTENT =====================
@@ -431,7 +431,7 @@ const STRIKES=[
 
 const EVENTS=[
  /* I · Empire of Silence */
- {id:"b1a",book:1,world:"colchis",site:"belgaer",title:"The memoir begins",text:"From the Library on Colchis, Hadrian Marlowe sets out to tell the truth about the man history calls the Sun Eater, who burned a star and killed billions."},
+ {id:"b1a",book:1,world:"colchis",title:"The memoir begins",text:"From the Library on Colchis, Hadrian Marlowe sets out to tell the truth about the man history calls the Sun Eater, who burned a star and killed billions."},
  {id:"b1b",book:1,world:"delos",site:"devilsrest",title:"A boyhood at Devil’s Rest",text:"Heir to the Archon of Meidua, Hadrian is schooled by the scholiast Tor Gibson and dreams of joining the scholiasts rather than ruling."},
  {id:"b1c",book:1,world:"delos",site:"meidua",title:"Sent to the Chantry",text:"His father means to send him to the Chantry’s seminary on Vesperad. Gibson is caught helping him and is maimed and exiled."},
  {id:"b1d",book:1,world:"delos",site:"haspida",title:"Flight from Delos",text:"His mother arranges his escape. After a fight with his brother Crispin, he boards the Eurynasir at Karch, bound for Teukros."},
@@ -587,7 +587,7 @@ const CONCEPTS=[
 
 /* ===================== PACK =====================
    Everything above is the Sun Eater Atlas data block, moved here unchanged. Below it is mapped onto
-   the shared engine's pack format (see ../PACK_FORMAT.md). */
+   the shared engine's pack format (see docs/PACK_FORMAT.md in the repo). */
 const BOOK_COL={1:"#e0b85c",2:"#86a6ea",3:"#efe8da",4:"#d24a40",5:"#b2a898",6:"#7cc6a2",7:"#b88cec"};
 const BOOK_INK={4:"#fff"};
 const ORIGIN={map:[17.5,1.5]};   /* where the Cielcin first come from, past the Veil */

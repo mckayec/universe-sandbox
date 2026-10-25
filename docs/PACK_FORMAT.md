@@ -30,7 +30,11 @@ Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 
   letters, digits and `-` only.
 * The pack is ordinary JS, so you may compute values (helper functions, `map()` over arrays), but it
   must not touch the DOM or THREE. Everything must be inline: no fetches, no images, no external URLs.
-* Register it in `packs/registry.js` (order = order in the chooser):
+* Register it in `packs/registry.js` (order = order in the chooser) **and** add a matching `atlasPack(...)`
+  entry with `atlasPath: 'atlas/?pack=<id>'` to `src/universe-packs.ts`, so it shows in the sandbox's Universe
+  library. `tests/atlas-registry.test.ts` fails until both lists agree.
+* Files starting with `_` (such as `_template.js`) are templates and are never loaded.
+* This document lives in the repository (`docs/PACK_FORMAT.md`) and is not published with the site.
 
 ```js
 {id:"my-series", title:"The My Series Atlas", blurb:"One line for the chooser.", accent:"#9db8ff"},
@@ -124,6 +128,8 @@ features and `rel` offsets all use these.
 | `tagline` | HTML | "" | small line under the header title; `<b>` shows in the accent red |
 | `splash` | string | "" | one-sentence teaser on the loading screen |
 | `credits` | HTML | "" | fan-made / attribution note at the right of the Chronicle bar (wide screens) |
+| `publisher` | string | "the publishers" | used in the fan-work notice |
+| `notice` | string | auto | overrides the fan-work notice shown after `credits` and at the foot of the About panel ("Unofficial fan project for personal, non-commercial use. *series* and related names are the property of *author* and *publisher*. Maps and positions are schematic reconstructions.") |
 | `srcnote` | string | none | small source note at the bottom of the About panel |
 | `canvasLabel` | string | auto | aria-label of the 3D canvas |
 | `sources` | array of strings | — | not shown; put your citations here and in comments |
@@ -187,6 +193,9 @@ books: {
   buttons and badges, `y` = year (button tooltip), `c` = book colour (badges, timeline, routes),
   `ink` = optional text colour on the badge (default `theme.ink`; use `"#fff"` on dark colours).
 * Chooser "All" = book 0 = everything, with spoilers.
+* The chosen book is remembered per pack in the visitor's browser (so a reload never jumps back to "All"),
+  and the address keeps the view: `#book=3&world=arrakis&site=tabr&realm=cognitive&view=surface`. Such a
+  link opens straight onto that place; descending to a surface adds a history entry so Back ascends.
 * Any number of books works. On phones, packs with more than 7 books get the book buttons on their own
   full-width row so none are hidden.
 
@@ -238,7 +247,9 @@ and `spoilers.dimMarker` (0.2 / 0.15).
 | `galaxyButton` | `"Galaxy"` | |
 | `hints` | sensible text | `{galaxy, galaxyMob, world, worldMob}` one-line navigation hints |
 | `showCredits` | `true` | show `meta.credits` in the Chronicle bar on wide screens |
-| `wrapBooks` | auto | phones: `true` puts the book buttons on their own full-width row (automatic above 3 books); `false` never |
+| `wrapBooks` | auto | phones: `true` puts the book buttons on their own full-width row (automatic above 3 books); `false` never. On wider screens the engine moves the controls to a second header row by itself whenever they would not fit |
+| `backHref` | `"../"` | the "← Gravity Lab" link in the header (relative, so it works under any subpath) |
+| `backLabel` | `"Gravity Lab"` | its text |
 | `evCount` | `""` | suffix after an index world's event count (Hyperion `" ev"`) |
 
 ---------------------------------------------------------------------------------------------------
@@ -318,6 +329,7 @@ Worlds whose group is not listed get an extra section at the end, named after th
 | `moons` | array | no | `{name, size (planet radii, default .18), dist (radii, default 2.4+1.1i), speed (default .05), gfx}`. Decorative only: moons cannot be landed on and carry no sites. A moon that matters in the story should be its own world placed with `at:{of:"planet", spread:.3}` (and can also appear in the parent's `moons` for looks) |
 | `ring` | object | no | `{inner:1.4, outer:2.4, c1, c2, tilt (rad, default .35), seed}` radii in planet radii |
 | `craft` | bool | no | a ship/station: diamond marker and swatch |
+| `noSurface` | bool | no | a star or other body with nothing to land on: selectable in the galaxy, but no Descend button, no double-click descent and no surface bake. `gfx.type:"star"` implies it |
 | `swarm` | bool | no | a drifting cloud of red motes around it in the galaxy (fleets, swarms) |
 | any flag | | no | e.g. `web:true`, used by a link `network` (14.6) |
 
@@ -365,10 +377,11 @@ fractal coastlines and fine relief as you zoom in (always on, nothing to configu
 | `wall` | 0 | 1 = a single thin glowing line across one face (Hyperion's Wall); rarely needed |
 | `base` | none | `"earth"` = use the built-in real Earth landmask as the height base |
 | `sw` | `pal[3]` | swatch colour in the index |
-| `feat` | [] | hand-laid features, max **14** (11.2) |
+| `feat` | [] | hand-laid features, max **18** (11.2) |
 
 ### 11.2 `feat` — hand-laid continents and regions (optional)
-Use these to make a world match a described or published map. All angles in degrees.
+Use these to make a world match a described or published map. All angles in degrees. At most **18**
+entries are drawn; the engine warns in the console when a list is longer.
 
 | `k` | fields | effect |
 |---|---|---|
