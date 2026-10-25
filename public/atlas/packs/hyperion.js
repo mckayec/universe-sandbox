@@ -73,7 +73,7 @@ const WORLDS=[
  sites:[{id:"nandadevi",name:"Nanda Devi",lat:16,lon:40,books:[1],desc:"A town of about three hundred people."},{id:"lpoint",name:"Military farcaster",lat:-30,lon:-60,books:[2],desc:"Hidden at the Lagrange point between Madhya and its moon; the Hegemony fleets jump from here at the Fall."}]},
 {id:"garden",name:"Garden",group:"outback",books:[1],status:"Outback world",ly:640,dir:{l:66,b:16},
  star:{name:"Unnamed sun",col:"#fff0dc"},
- blurb:"A lush forest world near Hyperion whose centaur-like natives were hunted to extinction, the subject of Silenus’s poem ‘The Death of the Centaur’.",
+ blurb:"A forest world whose native centaurs were exterminated during human expansion.",
  gfx:{type:"forest",sea:.36,pal:["#082236","#1a5a6a","#1a4a1a","#2f7024","#4a6a32","#e8ece4"],clouds:.55,atmo:"#78b4ff"}},
 {id:"bressia",name:"Bressia",group:"outback",books:[1],status:"Outback client world",ly:900,dir:{l:86,b:18},
  star:{name:"Unnamed sun",col:"#fff2dc"},
@@ -326,12 +326,11 @@ const WORLDS=[
   {id:"tharsis",name:"Tharsis camps",lat:0,lon:-110,books:[1],desc:"Where Kassad grew up among the Palestinian refugees."}]},
 
 /* ---------------- The far reaches ---------------- */
-{id:"oldearth",name:"Old Earth",hero:"taliesin",aka:["Earth","Terra"],group:"far",books:[1,2,3,4],major:true,status:"Lost, believed destroyed",
- eras:{3:{status:"Hidden in the Lesser Magellanic Cloud"},4:{status:"Hidden; returns to Sol at the end"}},
+{id:"oldearth",name:"Old Earth",hero:"taliesin",aka:["Earth","Terra"],group:"far",books:[1,2,3,4],first:3,major:true,status:"Lost, believed destroyed",
+ eras:{3:{status:"Hidden in the Lesser Magellanic Cloud",short:"Humanity’s birthplace, carried off to the Magellanic Cloud.",blurb:"Humanity’s lost birthplace, believed destroyed in the Big Mistake. In fact powerful beings of the Void, the ‘Lions and Tigers and Bears’, carried it away from the Core to the Lesser Magellanic Cloud. The last Tethys portal brings Aenea’s party here; she trains at Taliesin West.",facts:[["Distance","Some 160,000 light-years from Pacem, by the books’ figure"],["Population","Almost none: no night lights"]]},4:{status:"Hidden; returns to Sol at the end",blurb:"Humanity’s lost birthplace, believed destroyed in the Big Mistake. In fact powerful beings of the Void, the ‘Lions and Tigers and Bears’, carried it away from the Core to the Lesser Magellanic Cloud. The last Tethys portal brings Aenea’s party here; she trains at Taliesin West, and at the end Earth returns to Sol."}},
  star:{name:"A new sun in the Lesser Magellanic Cloud",col:"#fff4e2"},gal:{l:302.8,b:-44.3,ly:160000},
- blurb:"Humanity’s birthplace, believed swallowed by the Big Mistake, a Kiev team’s black hole that fell into its core and forced the Hegira. In fact powerful beings of the Void, the ‘Lions and Tigers and Bears’, carried it away from the Core to the Lesser Magellanic Cloud. The last Tethys portal brings Aenea’s party here; she trains at Taliesin West, and at the end Earth returns to Sol.",
- short:"Humanity’s birthplace, carried off to the Magellanic Cloud.",
- facts:[["Distance","Some 160,000 light-years from Pacem, by the books’ figure"],["Population","Almost none: no night lights"]],
+ blurb:"Humanity’s lost birthplace, believed destroyed in the Big Mistake.",
+ short:"Humanity’s lost birthplace, believed destroyed in the Big Mistake.",
  gfx:{type:"terran",base:"earth",sea:.5,rough:.35,moist:-.05,pal:["#061a3c","#1a5a8a","#355e2a","#7d8a4e","#7a6a52","#f4f6f8"],clouds:.5,atmo:"#6fa8ff",atmoK:1.15,lights:0,ice:72,sw:"#3a7ad8",
   feat:[{k:"biome",style:"rock",at:[24,10],r:16,s:.85,c:"#c9a46a"},{k:"biome",style:"rock",at:[24,45],r:9,s:.8,c:"#c09a62"},{k:"biome",style:"rock",at:[-25,133],r:13,s:.8,c:"#b8824a"},{k:"biome",style:"rock",at:[33,-112],r:6,s:.75,c:"#b88a58"},{k:"biome",style:"forest",at:[-4,-62],r:15,s:.9,c:"#1f4a1c"},{k:"biome",style:"forest",at:[0,22],r:9,s:.8,c:"#21471c"},{k:"biome",style:"rock",at:[44,95],r:8,s:.7,c:"#a08a62"}]},
  moons:[{name:"The Moon",size:.27,dist:4.6,speed:.03}],
@@ -367,7 +366,7 @@ const EVENTS=[
  {id:"b1g",book:1,world:"heavensgate",title:"The Poet’s Tale",text:"Silenus recalls the dying Earth, his slavery on Heaven’s Gate, Sad King Billy’s City of Poets, and the Shrike as his muse."},
  {id:"b1h",book:1,world:"hyperion",site:"grass",title:"Across the Sea of Grass",text:"From Edge a windwagon carries them over the grass sea. Het Masteen disappears, leaving his erg behind."},
  {id:"b1i",book:1,world:"barnard",site:"crawford",title:"The Scholar’s Tale",text:"Sol tells how Rachel caught Merlin’s sickness studying the Tombs, and now grows younger every day."},
- {id:"b1j",book:1,world:"lusus",site:"hives",title:"The Detective’s Tale",text:"Lamia recounts her case for Johnny, the Keats cybrid: a chase through Lusus, TC² and Madhya to the Core’s Earth, and his murder."},
+ {id:"b1j",book:1,world:"lusus",site:"hives",title:"The Detective’s Tale",text:"Lamia recounts her case for Johnny, the Keats cybrid. Lamia and Johnny investigate his death and reach a replica of Old Earth."},
  {id:"b1k",book:1,world:"hyperion",site:"rest",title:"Over the Bridle Range",text:"The pilgrims restart the old cable car and cross the mountains."},
  {id:"b1l",book:1,world:"maui",title:"The Consul’s Tale",text:"Siri and Merin Aspic’s love story and the farcaster sabotage on Maui-Covenant, then the confession: the Consul set off the Ouster device that opened the Tombs."},
  {id:"b1m",book:1,world:"hyperion",site:"keep",title:"Night at Chronos Keep",text:"In the deserted Shrike Church fortress, the pilgrims choose to go on together."},
@@ -430,7 +429,7 @@ const FACTIONS=[
  {name:"The Holy Office",desc:"The Pax’s inquisition and security service, led by Cardinal Mustafa."},
  {name:"Templars",desc:"The Brotherhood of the Muir of God’s Grove, who revere nature, grow treeships and drive them with bound ergs. After their world burns they join the Ousters in growing the Startree."},
  {name:"The Bikura",desc:"Survivors of a lost colony in Hyperion’s Cleft, resurrected by cruciforms so many times they have become sexless, near-mindless and all alike."},
- {name:"Lions and Tigers and Bears",desc:"Unknown, godlike intelligences glimpsed in the Void, who moved Old Earth to the Magellanic Cloud and used A. Bettik as their observer."},
+ {name:"Lions and Tigers and Bears",first:3,desc:"Unknown, godlike intelligences glimpsed in the Void, who moved Old Earth to the Magellanic Cloud and used A. Bettik as their observer."},
  {name:"Amoiete Spectrum Helix",desc:"The colour-ordered faith of Vitus-Gray-Balianus B, which allows group marriages. Its people shelter Raul and become Aenea’s allies."},
  {name:"The Chitchatuk",desc:"Ice-adapted people of Sol Draconi Septem, who live as hunters and prey of the snow wraiths."},
  {name:"Akerataeli",desc:"Aliens who command the zeplin-like life of an Outback gas giant, and who also live on the Startree."},
@@ -439,18 +438,18 @@ const FACTIONS=[
 ];
 const CHARACTERS=[
  {name:"The Consul",role:"Diplomat, pilgrim",books:[1,2,3,4],desc:"The never-named former Consul to Hyperion and a double agent who opened the Tombs for the Ousters. After the Fall he tours the dead Web in his Ouster-modified ship, which later carries Aenea."},
- {name:"Father Lenar Hoyt",role:"Priest, pilgrim, Pope",books:[1,2,3,4],desc:"A young priest who carries Duré’s cruciform and his own. Resurrected again and again, he becomes Pope Julius and then Urban XVI of the Pax."},
+ {name:"Father Lenar Hoyt",role:"Priest, pilgrim",books:[1,2,3,4],desc:"A priest returning to Hyperion with the story of Paul Duré.",more:[[3,"He carries Duré’s cruciform and his own. Resurrected again and again, he becomes Pope Julius and then Urban XVI of the Pax."]]},
  {name:"Father Paul Duré",role:"Jesuit, Pope Teilhard I",books:[1,2,4],desc:"Exiled to Hyperion, he lives with the Bikura and is crucified on a Tesla tree. Reborn in Hoyt’s body, he becomes Pope Teilhard I, and lives again in Rise."},
  {name:"Colonel Fedmahn Kassad",role:"Soldier, pilgrim",books:[1,2,4],desc:"A Martian-Palestinian FORCE officer who loves the mysterious Moneta and dies fighting the Shrike legions in Hyperion’s future."},
  {name:"Martin Silenus",role:"Poet, pilgrim",books:[1,2,3,4],desc:"The foul-mouthed Earth-born poet who wrote the Hyperion Cantos and survived the Tree of Thorns. Centuries later, ancient, he sends Raul on his mission."},
  {name:"Sol Weintraub",role:"Scholar, pilgrim",books:[1,2],desc:"A Jewish scholar from Barnard’s World whose daughter Rachel ages backward. He gives her to the Shrike and follows her into the future."},
- {name:"Rachel Weintraub",role:"Sol’s daughter",books:[1,2],desc:"Struck by Merlin’s sickness at the Tombs; revealed to be Moneta, travelling back through time."},
- {name:"Brawne Lamia",role:"Detective, pilgrim",books:[1,2,3],desc:"A private detective from Lusus, lover of the Keats cybrid Johnny and mother of Aenea. She brings Silenus back from the Tree."},
+ {name:"Rachel Weintraub",role:"Sol’s daughter",books:[1,2],desc:"Sol’s daughter, afflicted by reverse aging.",more:[[2,"Struck by Merlin’s sickness at the Tombs; revealed to be Moneta, travelling back through time."]]},
+ {name:"Brawne Lamia",role:"Detective, pilgrim",books:[1,2,3],desc:"A private detective from Lusus, lover of the Keats cybrid Johnny. She brings Silenus back from the Tree.",more:[[3,"She is the mother of Aenea."]]},
  {name:"Het Masteen",role:"Templar, pilgrim",books:[1,2,4],desc:"True Voice of the Tree and captain of the Yggdrasill. He vanishes on the Sea of Grass and returns in Rise as a captain at the Startree."},
  {name:"Meina Gladstone",role:"CEO of the Hegemony",books:[1,2],desc:"Orders the farcasters destroyed to break the Core’s hold, and dies on TC² facing a mob."},
- {name:"Johnny",role:"First Keats cybrid",books:[1,2],desc:"A Core-made John Keats persona in a human body who hires Lamia, is murdered, and survives as data. Aenea’s father."},
+ {name:"Johnny",role:"First Keats cybrid",books:[1,2],desc:"A Keats cybrid who hires Brawne Lamia.",more:[[2,"A Core-made John Keats persona in a human body; murdered, he survives as data."],[3,"Aenea’s father."]]},
  {name:"Joseph Severn",role:"Second Keats cybrid",books:[2],desc:"A painter on Gladstone’s staff who dreams the pilgrims’ story, and dies in the Core’s Rome."},
- {name:"Moneta",role:"Time traveller",books:[1,2],desc:"The woman who travels backward in time beside the Shrike: the grown Rachel Weintraub."},
+ {name:"Moneta",role:"Time traveller",books:[1,2],desc:"A mysterious woman connected to Kassad and the Shrike.",more:[[2,"She travels backward in time beside the Shrike: the grown Rachel Weintraub."]]},
  {name:"The Shrike",role:"Lord of Pain",books:[1,2,3,4],desc:"A four-armed creature of chrome and blades that moves through time, impales its victims on the Tree of Thorns, and in the Endymion books becomes Aenea’s protector."},
  {name:"Ummon",role:"Core AI",books:[2],desc:"An ancient Core intelligence who explains the Core’s history and the war of the Ultimate Intelligences."},
  {name:"Councilor Albedo",role:"Core adviser",books:[1,2,4],desc:"The Core’s adviser to the Hegemony, who returns as a Core agent and murders Cardinal Mustafa."},
@@ -490,7 +489,7 @@ const CONCEPTS=[
  {name:"The Shared Moment",desc:"Aenea’s death on Pacem, felt through the Void by nearly every human being, which breaks the Pax and the Core."},
  {name:"Hawking mat",desc:"A flying carpet that rides a planet’s magnetic field, flown by the Consul and later by Raul."},
  {name:"The Hyperion Cantos",desc:"Martin Silenus’s unfinished epic, written on Hyperion; within the story it tells the events of the first two books."},
- {name:"Dating",desc:"The Fall comes around 2850 AD by the best estimate; Endymion opens 274 years later, around 3126, and Rise ends a few years after that. Simmons’ own dates are not fully consistent."}
+ {name:"Dating",first:3,desc:"Endymion begins 274 years after the Fall of the WorldWeb; The Rise of Endymion continues that story."}
 ];
 
 
@@ -540,9 +539,9 @@ const web={border:"rgba(157,200,255,.55)",color:"#bcd6ff"},out={border:"rgba(232
     splashSize:74
   },
   books,
-  spoilers:{mode:"single"},
+  spoilers:{mode:"cumulative"},
   ui:{indexTitle:"Worlds of the Cantos",homeButton:"Human Space",homeAction:"Fly to human space",homeLink:"Human space",homeCrumb:"Human space",crumbGroups:false,
-      go:{id:"hyperion",label:"Go to Hyperion"},bookLabel:"",allTitle:"All four books",booksAria:"Filter by book",evCount:" ev",showCredits:true},
+      go:{id:"hyperion",label:"Go to Hyperion"},bookLabel:"Reading",allTitle:"All four books, with spoilers",booksAria:"The book you are reading through",evCount:" ev",showCredits:true},
   intro:INTRO,
   groups:[
     {id:"protectorate",name:"Protectorate",chip:out},{id:"web",name:"The WorldWeb",chip:web},{id:"pax",name:"The Pax",chip:{border:"rgba(215,179,106,.6)",color:"#e9cf8f"}},
