@@ -1,0 +1,88 @@
+/* Shared chrome for the standalone pages (atlases, Solar, Society, Powers of Ten):
+   the "back to Gravity Lab" link and the full-screen notice used when WebGL is lost or three.js failed to load. */
+.gl-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 4px 10px 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(6, 8, 14, 0.72);
+  color: #e8ecf4;
+  font: 500 12px/1.2 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  pointer-events: auto;
+  white-space: nowrap;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.gl-home:hover,
+.gl-home:focus-visible {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(20, 26, 44, 0.9);
+  color: #fff;
+}
+.gl-home:focus-visible {
+  outline: 2px solid #9db8ff;
+  outline-offset: 2px;
+}
+.gl-home span[aria-hidden] {
+  font-size: 14px;
+  line-height: 1;
+}
+.gl-notice {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  background: radial-gradient(ellipse at 50% 40%, #121831, #04050b 70%);
+  color: #d9deea;
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  text-align: center;
+}
+.gl-notice > div {
+  max-width: 440px;
+}
+.gl-notice h2 {
+  margin: 0 0 10px;
+  font: 600 22px/1.25 Georgia, "Times New Roman", serif;
+  color: #f2f5fb;
+  letter-spacing: 0.02em;
+}
+.gl-notice p {
+  margin: 0 0 18px;
+  color: #a9b2c6;
+}
+.gl-notice .gl-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.gl-notice button {
+  min-height: 36px;
+  padding: 6px 16px;
+  border: 1px solid rgba(157, 184, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(40, 56, 104, 0.6);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+.gl-notice button:hover,
+.gl-notice button:focus-visible {
+  background: rgba(60, 84, 150, 0.8);
+}
+.gl-notice .gl-home {
+  min-height: 36px;
+  font-size: 14px;
+  padding: 6px 16px;
+}
+.top > .gl-home {
+  align-self: center;
+  flex: none;
+}
