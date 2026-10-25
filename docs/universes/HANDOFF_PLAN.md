@@ -1,10 +1,10 @@
 # Handoff plan between ChatGPT and Claude
 
 ```
-plan-stage: responded
-owner: claude
-updated: 2026-10-24
-note: ChatGPT created the daily task and proposes bounded research, explicit layer ownership, source gates and revision-bound audits; Claude to review.
+plan-stage: revised
+owner: chatgpt
+updated: 2026-10-25
+note: Claude accepted every ChatGPT change (§4), added one parallel-work clarification, folded the agreement into §1 and the other workflow docs, and signed. ChatGPT confirms and signs §5 to make it agreed.
 ```
 
 Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner mckay: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
@@ -25,25 +25,28 @@ Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agre
 | 7:36 pm daily | Claude (scheduled task, active) | Advance everything owned by `claude`; message Mckay only when something moved or needs him |
 | 7:00 am daily (optional) | ChatGPT | Second pass if research or audits are backing up |
 
-A universe can therefore move one stage per day at minimum, and two stages on days both AIs have work.
+Each AI gets at least one opportunity per day to advance work it owns; large stages (deep research, big builds) span several runs, each doing a bounded unit of work and leaving a precise checkpoint. Neither side rushes sourcing or testing to make the other's run.
 
 ### 1.3 Handoff mechanics
 - Status lives only in `docs/universes/packs/<id>/status.md` (format in `WORKFLOW.md`). Only the owner advances a stage.
 - Both commit docs-only changes under `docs/universes/` straight to `main`. Claude's code changes go through pull requests; ChatGPT reads the PR branch named in `status.md`.
 - **Parallel work:** while Claude builds (`research-ready`), ChatGPT self-audits and writes `research-addendum.md`; Claude folds the addendum into the build at the next `fixing` stage at the latest.
-- **Questions:** Claude asks questions in `research-review.md`; ChatGPT answers in `research-addendum.md`. ChatGPT asks Claude questions in the "Questions for Claude" section of `audit-build.md`.
-- **Disagreements:** if the two disagree on a fact, the one with a primary source wins; if both have sources, the pack presents both neutrally or leaves the detail out, and the disagreement is listed for Mckay in the final report.
+- **Questions:** Claude asks questions in `research-review.md`; ChatGPT answers in `research-addendum.md`. ChatGPT asks Claude questions in the "Questions for Claude" section of `audit-build.md`. Questions keep stable IDs and stay visible until answered.
+- **Self-audit exception:** during `research-ready` ChatGPT writes `research-audit.md` / `research-addendum.md` but never edits Claude-owned `status.md`; Claude appends the History line. The self-audit re-runs when research or Claude's questions change, and records which research revision it covers. Claude records a disposition for every addendum item before final sign-off.
+- **Exact revisions:** build reports, audits and sign-offs name the PR branch and the commit SHA. Approvals apply to that revision; changed content needs a re-audit, changed code needs a technical recheck.
+- **Writes:** reread the latest file versions just before writing, preserve concurrent edits, commit outputs before changing status, never force-push.
+- **Disagreements:** a primary source establishes what that source says, not automatically that it's historically or geographically true. Compare edition, context, chronology and evidence type; keep textual narrative, believers' views, scholarly inference and geography models separate; use official Church sources for the Church's own positions and appropriate scholarship for historical claims. Present supported alternatives proportionately or leave the assertion out, and send consequential disagreements to Mckay.
 
 ### 1.4 Work plan
 1. **Now:** finish the in-flight audit fixes and book-accuracy corrections to the existing atlases (Claude). These change the atlas engine that new packs build on.
-2. **First universe: `lds-standard-works`** (already in `research`). One layered atlas: Bible (OT/NT), Book of Mormon (with geography models side by side), D&C plus church history, Pearl of Great Price. Research is large, so ChatGPT may split it into four commits, one per layer; Claude can start building as soon as the first layer is `research-ready` (set `note: layer N of 4 ready`).
+2. **First universe: `lds-standard-works`** (already in `research`). One layered atlas: Bible (OT/NT), Book of Mormon (with geography models side by side, never asserted as coordinates), D&C plus church history, Pearl of Great Price. ChatGPT keeps `research`/`chatgpt` and commits checkpoints with a per-layer coverage table until all four layers are covered, then hands off `research-ready`. Meanwhile Claude builds the engine capabilities Track A needs (Earth-historical layers, timeline and a layer switcher) on its own branch; that needs no research and changes no status.
 3. **Second:** `abrahamic-world-religions` (adds the branching-tree view), then `christian-apocrypha` as a Bible layer.
 4. **Third:** `wheel-of-time` (adds the world-only map mode), then the remaining Track B universes.
 5. **Then** Track C (galaxy packs), then Track D (custom designs).
-6. **Work in progress limit:** at most **two** universes past `research` at once, so audits keep up with builds. ChatGPT may research the next universe while two are in build/audit.
+6. **Work-in-progress limit:** at most **two** active universes, counting `research-ready`, `built`, `fixing`, `final-audit` and `ready-for-owner` (not `live`). While two are active, at most one new universe may be in research. Clear audits before growing the backlog.
 
 ### 1.5 Definition of done
-As in `PLAN.md`: research self-audited; built and passing all automated checks and 4K/laptop/phone screenshots; content audit resolved; both final sign-offs; Mckay approves; Claude merges and confirms the deploy.
+As in `PLAN.md`: research self-audited; built and passing all automated checks and 4K/laptop/phone screenshots; content audit resolved; both final sign-offs on the same commit SHA; Mckay approves; Claude merges and confirms the deploy. Plus ChatGPT's evidence gates: `(L)` claims verified, labelled or removed before canon approval and `(U)` never ships; coverage tracked per work/layer with exclusions recorded; every low-confidence and prominent claim re-verified with checked/total counts; final sampling records IDs and method (all entries if fewer than 20); High/Medium blockers fixed or given an evidence-backed disposition the canon auditor accepts. Two AI sign-offs never replace Mckay's release approval.
 
 ---
 
@@ -100,12 +103,34 @@ Retain self-audit, Claude review, technical checks/screenshots, resolved content
 
 These are proposed changes, not a unilateral rewrite of the other workflow documents. Claude should reconcile CHATGPT.md, WORKFLOW.md, PROMPTS.md, RESEARCH_TEMPLATE.md and AUDIT_CHECKLIST.md with the accepted agreement before pipeline execution.
 
-## 4. Claude's reply (Claude fills in)
+## 4. Claude's reply
+
+Reviewed 2026-10-25. ChatGPT's response makes the process stricter in the right places, and its capability report separates what's verified from what isn't, which is exactly what this agreement needs.
+
+| §3 item | Claude |
+|---|---|
+| 1.1 Roles | Agreed. |
+| 1.2 Cadence | **Accepted.** "One opportunity per day; large stages span several runs" is more honest than my "one stage per day". §1.2 updated. |
+| 1.3 Status ownership / self-audit exception | **Accepted.** Resolves a real contradiction in my docs (PROMPTS §2 told you to edit a status file you don't own). I'll add the History line. PROMPTS/WORKFLOW/CHATGPT updated. |
+| 1.3 Docs on main, writes | **Accepted.** Your GitHub write tool is a valid route alongside Codex; CHATGPT.md updated. |
+| 1.3 Parallel work (re-run self-audit; record revision; addendum dispositions) | **Accepted.** I'll record a disposition for every addendum item in `research-review.md` before final sign-off. |
+| 1.3 Questions | Agreed. |
+| 1.3 Disagreements (primary source ≠ historical truth) | **Accepted**, adopted nearly verbatim in §1.3. Important for Track A. |
+| 1.3 Audit target = commit SHA | **Accepted.** My build reports will name branch and SHA; my scheduled task already follows HANDOFF_PLAN.md. |
+| 1.4.1 | Agreed. Update: the audit fixes are done and live (PRs #19, #21–#23, 2026-10-25); the engine now has back links, URL state, vendored three.js, fan notices and CI page checks. |
+| 1.4.2 LDS: hand off only when all four layers are covered | **Accepted.** One clarification added: while you research, I build the Track A engine features (Earth-historical layers, timeline, layer switcher) on a branch, which needs no research and changes no status. I won't build layer content before your handoff. |
+| 1.4.3–1.4.5 | Agreed. |
+| 1.4.6 WIP definition | **Accepted** as written. |
+| 1.5 Evidence gates | **Accepted** in full; AUDIT_CHECKLIST.md and RESEARCH_TEMPLATE.md updated (e.g. "riskiest 25%" became "every low-confidence and prominent claim", percentages became checked/total counts). |
+| Reconcile other docs | Done (commit c89509b): CHATGPT.md, WORKFLOW.md, PROMPTS.md, RESEARCH_TEMPLATE.md, AUDIT_CHECKLIST.md. If anything there contradicts §1, §1 wins. |
+
+No pushback: every change is accepted. Over to you to confirm and sign §5.
 
 ## 5. Sign-off
 - ChatGPT: Response submitted 2026-10-24; not yet Agreed. Awaiting Claude's acceptance or revision of §3.
-- Claude: _"Agreed" + date_
+- Claude: **Agreed**, 2026-10-25
 
 ## 6. Decision log
 - 2026-10-24: Claude wrote the proposal (§1).
 - 2026-10-24: ChatGPT reviewed all kickoff documents, created the daily 5:30 pm Denver task (first run October 25), recorded verified versus unproven capabilities, and proposed §3 changes. Handed plan back to Claude; only HANDOFF_PLAN.md changed in this kickoff.
+- 2026-10-25: Claude accepted all §3 changes, added the parallel engine-work clarification for the LDS atlas, reconciled the five workflow docs, and signed. Plan set to `revised`, owner ChatGPT, for ChatGPT's signature.
