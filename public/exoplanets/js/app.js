@@ -58,7 +58,7 @@ SYS.forEach(s=>{SYS_BY[s.id]=s;s.pos=new THREE.Vector3(s.xyz[0],s.xyz[1],s.xyz[2
   s.search=(s.name+" "+s.oec_name+" "+s.stars.map(x=>x.name).join(" ")+" "+s.planets.map(p=>p.name+" "+(p.aliases||[]).join(" ")).join(" ")).toLowerCase();});
 const TOUR_IDS=["proxima-centauri","trappist-1","55-cancri","tau-ceti","epsilon-eridani","hd-189733"];
 const MAJOR=new Set(TOUR_IDS.concat(["barnard-s-star","teegarden-s-star","lhs-1140","gj-1214","gliese-581","beta-pictoris","epsilon-indi","lalande-21185-gj-411","ross-128","51-peg","gliese-876","l-98-59","gliese-12","struve-2398-gj-725","au-mic","82-g-eridani-hd-20794"]));
-const CLASSES=[["rocky","Rocky","#c99a72"],["super-earth","Super-Earth","#e2c47c"],["mini-neptune","Mini-Neptune","#86d0e6"],["ice-giant","Ice giant","#5d8ff0"],["gas-giant","Gas giant","#eba56a"]];
+const CLASSES=[["rocky","Rocky","#c99a72"],["super-earth","Super-Earth","#e2c47c"],["mini-neptune","Mini-Neptune","#86d0e6"],["ice-giant","Ice giant","#5d8ff0"],["gas-giant","Gas giant","#eba56a"],["brown-dwarf","Brown dwarf","#b0705a"]];
 const CLASS_COL={};CLASSES.forEach(c=>CLASS_COL[c[0]]=c[2]);CLASS_COL.unknown="#9aa4b0";
 const METHODS=[["RV","Radial velocity"],["transit","Transit"],["imaging","Direct imaging"],["other","Astrometry & timing"]];
 const METHOD_LABEL={RV:"Radial velocity",transit:"Transit",imaging:"Direct imaging",astrometry:"Astrometry",timing:"Timing variations"};
@@ -70,7 +70,9 @@ function num(v,dp){if(v==null||isNaN(v))return "—";const a=Math.abs(v);
   if(a>=1000)return Math.round(v).toLocaleString("en-US");if(a>=100)return v.toFixed(0);if(a>=10)return v.toFixed(1);if(a>=1)return v.toFixed(2);
   if(a===0)return "0";return v.toPrecision(2).replace(/^0\.?0*e.*$/,"0");}
 const ly=s=>num(s.dist_ly)+" ly";
-function massText(p){const m=p.mass_earth;if(m==null)return "—";const pre=p.mass_src==="min"?"≥ ":p.mass_src==="upper"?"< ":(p.mass_src==="model"||p.mass_src==="estimated")?"≈ ":"";
+/* mass_kind: "min" (M sin i), "true", "upper" (upper limit) or "estimate"; older data only had mass_src */
+function massKind(p){if(p.mass_kind)return p.mass_kind;const s=p.mass_src;return s==="model"||s==="estimated"?"estimate":s||null;}
+function massText(p){const m=p.mass_earth;if(m==null)return "—";const k=massKind(p);const pre=k==="min"?"≥ ":k==="upper"?"< ":k==="estimate"?"≈ ":"";
   if(m>=50)return pre+num(m/MJ)+" Jupiter masses <small>("+num(m)+" Earth)</small>";return pre+num(m)+" Earth masses";}
 function radiusText(p){const r=p.radius_earth;if(r==null)return "—";const pre=p.radius_src==="estimated"?"≈ ":"";
   if(r>=6)return pre+num(r/RJ)+" Jupiter radii <small>("+num(r)+" Earth)</small>";return pre+num(r)+" Earth radii";}
@@ -231,7 +233,7 @@ function atmoMesh(g,r,sunDir){return new THREE.Mesh(new THREE.SphereGeometry(r,9
   uniforms:{uC:{value:CL(g.atmo||"#6fa8ff")},uSun:{value:sunDir.clone()},uK:{value:(g.atmoK==null?1:g.atmoK)*.62},uEdge:{value:1/Math.sqrt(1-1/(r*r))}}}));}
 /* light reaching a planet: the star's colour, a touch brighter so dim red light still reads on screen */
 function sunColFor(st){const c=starColor(st.teff||5000);return new THREE.Color(c.r,c.g,c.b).convertSRGBToLinear().multiplyScalar(1.15);}
-const gfxCache={};function gfxOf(p){return gfxCache[p.id]||(gfxCache[p.id]=window.LOOKS.gfxFor(p));}
+const gfxCache={};function gfxOf(p){return gfxCache[p.id]||(gfxCache[p.id]=window.LOOKS.gfxFor(p.class==="brown-dwarf"?Object.assign({},p,{class:"gas-giant"}):p));}
 
 /* ===================== STAR (system view) ===================== */
 function starMesh(st,r,seed){const col=starColor(st.teff||4000);const lc=new THREE.Color(col.r,col.g,col.b);const limb=lc.clone().multiply(new THREE.Color(1,.62,.42));
@@ -455,7 +457,7 @@ function renderDossier(){let h="";
       '<div class="tgrad"></div><div class="tscale"><span>2,500 K</span><span>Star colour = surface temperature</span><span>9,000 K</span></div>'+
       '<dl class="lgd"><i style="background:#3c6a90"></i><span>Rings at 10, 25, 50 and 100 light-years, in the plane of the Milky Way</span><i style="background:#5e86a8;opacity:.6"></i><span>Each star’s line drops to that plane, showing how far above or below it lies</span><i style="background:var(--warm)"></i><span>Named bright stars without known planets, for orientation</span></dl>'+
       '<div class="actions"><button class="btn primary" data-act="tour">Take the tour</button><button class="btn" data-act="go" data-id="proxima-centauri">Nearest planet</button><button class="btn" data-act="filters">Filters</button></div>'+
-      '<p class="srcnote">Data: Open Exoplanet Catalogue (commit '+esc(D.SOURCES.base_catalogue.commit.slice(0,10))+', '+esc(D.SOURCES.base_catalogue.commit_date.slice(0,10))+'), cross-checked on 23 October 2026 against the NASA Exoplanet Archive (via NASA’s exoplanet catalogue and Archive news), recent papers and announcements. '+c.disputed_planets+' disputed planets are drawn with dashed orbits; '+c.retracted_or_excluded+' retracted or out-of-scope entries are left out. Planet surfaces are artist’s interpretations generated from each planet’s size and temperature.</p>';}
+      '<p class="srcnote">Data: Open Exoplanet Catalogue (commit '+esc(D.SOURCES.base_catalogue.commit.slice(0,10))+', '+esc(D.SOURCES.base_catalogue.commit_date.slice(0,10))+'), cross-checked on 23–24 October 2026 against the NASA Exoplanet Archive (system overview pages, NASA’s exoplanet catalogue and Archive news), recent papers and announcements. Distances are Gaia-based NASA Exoplanet Archive values. Masses marked ≥ are minimum masses (M sin i) from radial velocities; radii marked ≈ are estimated from mass, because only transits and direct images measure a planet’s size. Objects of 13 Jupiter masses or more are listed as brown dwarfs. '+c.disputed_planets+' disputed planets are drawn with dashed orbits; '+c.retracted_or_excluded+' retracted or out-of-scope entries are left out. Planet surfaces are artist’s interpretations generated from each planet’s size and temperature.</p>';}
   else{const s=SYS_BY[S.sel];const inSys=S.view==="system";
     if(inSys&&S.planet){h=planetDossier(PL_BY[S.planet],false);}
     else{const st=inSys?s.stars.find(x=>x.name===S.host)||s.primary:s.primary;const nc=s.planets.filter(p=>p.status==="confirmed").length,nd=s.planets.length-nc,nh=s.planets.filter(p=>p.hz_candidate).length;
@@ -475,17 +477,18 @@ function renderDossier(){let h="";
 function planetDossier(p,close){const s=p.sys,st=p.star;const g=gfxOf(p);
   const meas=[],der=[];
   /* measured: values published in the catalogue or the literature */
-  if(p.mass_src&&p.mass_src!=="estimated"&&p.mass_src!=="model")meas.push(fact("mass",p.mass_src==="min"?"Minimum mass":p.mass_src==="upper"?"Mass (upper limit)":"Mass",massText(p),p.mass_earth));
+  const mk=massKind(p);
+  if(mk==="min"||mk==="true"||mk==="upper")meas.push(fact("mass",mk==="min"?"Minimum mass":mk==="upper"?"Mass (upper limit)":"Mass",massText(p)+(mk==="min"?' <small>(M sin i)</small>':''),p.mass_earth));
   if(p.radius_src==="measured")meas.push(fact("radius","Radius",radiusText(p),p.radius_earth));
   if(p.period_src==="catalogue")meas.push(fact("period","Orbital period",periodText(p.period_d),p.period_d));
-  if(p.a_src==="catalogue")meas.push(fact("a","Orbit size",auText(p.a_au)+" <small>(semi-major axis)</small>",p.a_au));
+  if(p.a_src==="catalogue")meas.push(fact("a","Orbit size",auText(p.a_au)+(p.kepler_flag!=null?" <small>(semi-major axis; does not fit the period, see notes)</small>":" <small>(semi-major axis)</small>"),p.a_au));
   if(p.ecc_src==="catalogue")meas.push(fact("ecc","Eccentricity",num(p.ecc,p.ecc<.1?3:2),p.ecc));
   if(p.teq_src==="catalogue")meas.push(fact("teq","Temperature",tempText(p.teq_k)+' <small>(published equilibrium value)</small>',p.teq_k));
   meas.push(fact("method","Discovered by",esc(METHOD_LABEL[p.method]||p.method||"—")+(p.year?", "+p.year:""),p.year));
   /* derived and estimated */
-  if(p.mass_src==="model")der.push(fact("mass","Mass",massText(p)+' <small>(model estimate from brightness and age)</small>',p.mass_earth));
-  if(p.mass_src==="estimated")der.push(fact("mass","Mass",massText(p)+' <small>(estimated from radius)</small>',p.mass_earth));
-  if(p.radius_src==="estimated")der.push(fact("radius","Radius",radiusText(p)+' <small>(estimated from '+(p.mass_src==="min"?"minimum ":"")+'mass)</small>',p.radius_earth));
+  if(mk==="estimate"&&p.mass_src==="model")der.push(fact("mass","Mass",massText(p)+' <small>(model estimate from brightness and age)</small>',p.mass_earth));
+  if(mk==="estimate"&&p.mass_src!=="model")der.push(fact("mass","Mass",massText(p)+' <small>(estimated from radius)</small>',p.mass_earth));
+  if(p.radius_src==="estimated")der.push(fact("radius","Radius",radiusText(p)+' <small>(estimated from '+(mk==="min"?"minimum ":"")+'mass)</small>',p.radius_earth));
   if(p.period_src==="derived")der.push(fact("period","Orbital period",periodText(p.period_d)+' <small>(from Kepler’s law)</small>',p.period_d));
   if(p.a_src==="derived")der.push(fact("a","Orbit size",auText(p.a_au)+' <small>(from period and star mass)</small>',p.a_au));
   if(p.a_src==="projected separation")der.push(fact("a","Separation",auText(p.a_au)+' <small>(projected; true orbit unknown)</small>',p.a_au));
@@ -586,7 +589,7 @@ const TOUR=[
  {view:"planet",planet:"55-cancri-e",sys:"55-cancri",title:"55 Cancri e",text:"55 Cancri A, a Sun-like star 41 light-years away, has five known planets, and its red-dwarf companion has two more found in 2025. The innermost, 55 Cancri e, is a super-Earth that orbits in under 18 hours. Its day side is hot enough to melt rock, and JWST observations in 2024 hinted at a thin atmosphere, possibly released by the magma."},
  {view:"system",sys:"tau-ceti",title:"Tau Ceti",text:"A Sun-like star 11.9 light-years away and a science-fiction favourite. Four planets were proposed from radial-velocity data in 2012 and 2017, but more precise measurements have not confirmed them. In April 2026 the NASA Exoplanet Archive reclassified tau Ceti e as a false positive. The remaining candidates are drawn dashed: planet lists change as the data improve."},
  {view:"system",sys:"epsilon-eridani",title:"Epsilon Eridani",text:"A young, active orange dwarf 10.5 light-years away, surrounded by dusty debris belts (not drawn). Its giant planet, Epsilon Eridani b, takes about seven years per orbit. Its existence was debated for nearly two decades until radial-velocity and astrometry data from Hipparcos and Gaia settled its orbit."},
- {view:"planet",planet:"hd-189733-b",sys:"hd-189733",title:"HD 189733 b",text:"The classic hot Jupiter, 63 light-years away. It races around its star in just over two days, with a day side above 1,000 K. In 2013 the Hubble Space Telescope measured its colour, a deep blue, so this is one of the few exoplanets whose true colour is known. Its atmosphere has been probed for water vapour, haze and very fast winds."},
+ {view:"planet",planet:"hd-189733-b",sys:"hd-189733",title:"HD 189733 b",text:"The classic hot Jupiter, 64 light-years away. It races around its star in just over two days, with a day side above 1,000 K. In 2013 the Hubble Space Telescope measured its colour, a deep blue, so this is one of the few exoplanets whose true colour is known. Its atmosphere has been probed for water vapour, haze and very fast winds."},
  {view:"map",title:"Explore",text:"That is the tour. Tap any star to enter its system, open a planet for a close-up and its data, or use Filters to find habitable-zone candidates, giants found by imaging, and more."}];
 const tourEl=$("#tour");
 function startTour(){S.tour=0;document.body.classList.add("touring");toggleFilters(false);toggleIndex(false);
