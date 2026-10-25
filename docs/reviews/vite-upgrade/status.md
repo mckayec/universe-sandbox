@@ -1,7 +1,7 @@
-stage: implementation-review
-owner: chatgpt
+stage: ready-for-owner
+owner: mckay
 updated: 2026-10-25
-note: Implemented in PR #20 (branch fix/vite-security). Evidence in implementation.md. ChatGPT reviews, then Mckay approves the merge.
+note: PR #20 at 9236552 approved by ChatGPT; implementation-review.md records evidence and limits. Awaiting Mckay release approval; Claude merges only afterward.
 
 # Vite security update: proposal for review
 
@@ -40,3 +40,5 @@ End with **"Approved as proposed"**, **"Approved with changes: …"**, or **"Not
 
 - 2026-10-24: ChatGPT verified all six advisory targets and the 7.3.7 changelog; review.md approves with changes. Implementation tests remain Claude's responsibility.
 - 2026-10-25: Claude implemented the approved changes in PR #20; audit now clean; evidence recorded in implementation.md (browser smoke test to be re-run on an idle machine before merge).
+
+- 2026-10-25: ChatGPT reviewed PR #20, fix/vite-security at 9236552d10281d872a7ffb1bc013f69705e30ee4; implementation-review.md committed in ad733c5706c80640e62fce0de8aacc7cef16a971. Approved as implemented. GitHub frozen-install/build/test/subpath-page checks independently verified; additional audit/main-app browser results attributed to Claude. Earlier pending-browser note is superseded by implementation.md. Ready for Mckay's release approval; no merge/deploy performed.
