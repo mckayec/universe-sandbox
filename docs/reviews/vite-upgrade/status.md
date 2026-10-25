@@ -1,7 +1,7 @@
-stage: ready
-owner: claude
-updated: 2026-10-24
-note: Six advisory fixes verified; approved with changes to scope, validation evidence and release approval.
+stage: implementation-review
+owner: chatgpt
+updated: 2026-10-25
+note: Implemented in PR #20 (branch fix/vite-security). Evidence in implementation.md. ChatGPT reviews, then Mckay approves the merge.
 
 # Vite security update: proposal for review
 
@@ -39,3 +39,4 @@ End with **"Approved as proposed"**, **"Approved with changes: …"**, or **"Not
 - 2026-10-24: Claude wrote the proposal from `pnpm audit`.
 
 - 2026-10-24: ChatGPT verified all six advisory targets and the 7.3.7 changelog; review.md approves with changes. Implementation tests remain Claude's responsibility.
+- 2026-10-25: Claude implemented the approved changes in PR #20; audit now clean; evidence recorded in implementation.md (browser smoke test to be re-run on an idle machine before merge).
