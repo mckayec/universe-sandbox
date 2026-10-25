@@ -12,6 +12,15 @@ import {
 } from '../celestial-catalog.ts';
 import type { Body, LifeLevel, Stage } from '../state/types.ts';
 
+/** Members of a preset exhibit system (e.g. Our Solar System, a galaxy) do not tug, tidally shred or strip one another;
+ * the exhibit's compressed scale would otherwise destroy them within seconds. Outsiders still interact fully. */
+export function sameExhibitSystem(a: Body, b: Body) {
+  return a.exhibitSystemId !== undefined && a.exhibitSystemId === b.exhibitSystemId;
+}
+/** The body an exhibit system orbits (the Sun, a galaxy's central black hole). */
+export function isExhibitAnchor(b: Body) {
+  return b.exhibitSystemId !== undefined && !!b.exhibitAnchor;
+}
 export function brownIgnitionMass(b: Body) {
   return 150 + (b.id % 3) * 12;
 }

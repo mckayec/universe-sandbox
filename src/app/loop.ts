@@ -6,7 +6,7 @@ import { runFixedSteps } from '../physics-continuity.ts';
 import { refreshGroupNavigator } from '../bodies/groups.ts';
 import { updateMatterStreams } from '../physics/matter-streams.ts';
 import { MAX_SIM_STEPS, SIM_STEP, simulate } from '../physics/simulate.ts';
-import { debrisIds, updateSlowMotion } from '../physics/tidal-disruption.ts';
+import { updateSlowMotion } from '../physics/tidal-disruption.ts';
 import { updateCameraTransition } from '../scene/camera.ts';
 import { updateScienceOverlays } from '../scene/overlays.ts';
 import { updateAdaptiveQuality, updateLensing } from '../scene/quality.ts';
@@ -91,7 +91,7 @@ export function animate() {
     const inFocusedStructure = app.selectedGroupId === null || bodyGroupIds.get(body.id) === app.selectedGroupId;
     body.label.visible =
       body === app.selectedBody ||
-      (!debrisIds.has(body.id) &&
+      (!body.debris &&
         inFocusedStructure &&
         (viewDistance < 170 || (viewDistance < 650 && ['blackhole', 'nebula'].includes(body.kind))));
   }

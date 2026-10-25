@@ -5,6 +5,7 @@ import { STAGES, TYPES, VARIANT_COUNTS, type Kind, type Placeable } from '../cel
 import { refreshGroupNavigator, removeGalaxyVisual } from './groups.ts';
 import { makeTrail, nameFor, updateBodyLabel } from './registry.ts';
 import { habitableRange } from '../physics/body-math.ts';
+import { galaxyGroupFor, galaxyOrbitVelocity } from '../physics/galaxy-dynamics.ts';
 import { disposeObject } from '../scene/dispose.ts';
 import { scene } from '../scene/setup.ts';
 import { app, bodies, bodyGroupIds, cosmicGroups, galaxyVisuals, matterStreams, trails } from '../state/app-state.ts';
@@ -30,15 +31,18 @@ export function transform(b: Body, kind: Kind, mass = b.mass) {
     b.mass = mass;
     return;
   }
+  // Keep custom names (Sun, Earth, Eris Hypergiant); only default catalog names follow the new kind.
+  const defaultName = b.name === nameFor(b.kind, b.id);
   b.kind = kind;
   b.variant = (b.id * 7 + kind.length) % (VARIANT_COUNTS[kind as Placeable] ?? 10);
   b.mass = mass;
   b.birthMass = TYPES[kind].mass;
   b.radius = TYPES[kind].radius;
-  b.name = nameFor(kind, b.id);
+  if (defaultName) b.name = nameFor(kind, b.id);
   b.age = 0;
   b.stageAge = 0;
   b.stage = kind === 'star' ? stellarBirthStage(mass) : undefined;
+  if (kind !== 'star') b.holdStage = undefined;
   b.stageTransition = undefined;
   b.nebulaTidal = 0;
   b.nebulaCompression = 0;
@@ -47,6 +51,8 @@ export function transform(b: Body, kind: Kind, mass = b.mass) {
   b.hostId = undefined;
   b.tidalStretch = 0;
   b.tidalPartnerId = undefined;
+  b.tidalStrain = undefined;
+  b.tidalWarned = undefined;
   b.collisionCooldown = 0.35;
   if (kind !== 'rocky') {
     b.lifeScore = 0;
@@ -78,14 +84,18 @@ function removeMatterStreamsFor(id: number) {
 }
 export function removeBody(b: Body) {
   if (b.kind === 'nebula') {
+    const group = galaxyGroupFor(b),
+      anchor = group?.anchorId === undefined ? undefined : bodies.find(body => body.id === group.anchorId);
     for (const child of bodies) {
       if (child.hostId !== b.id) continue;
       child.hostId = undefined;
-      child.velocity
-        .copy(b.velocity)
-        .add(new THREE.Vector3(Math.random() - 0.5, 0, Math.random() - 0.5).multiplyScalar(1.2));
+      // Seeds freed inside a galaxy continue on a circular orbit there instead of the cloud's slower drift.
+      if (group && anchor && anchor !== b) child.velocity.copy(galaxyOrbitVelocity(group, anchor, child.mesh.position));
+      else child.velocity.copy(b.velocity);
+      child.velocity.add(new THREE.Vector3(Math.random() - 0.5, 0, Math.random() - 0.5).multiplyScalar(1.2));
     }
   }
+  b.removed = true;
   removeMatterStreamsFor(b.id);
   if (app.menuBody === b) closeObjectMenu();
   b.label.element.remove();
@@ -106,7 +116,7 @@ export function removeBody(b: Body) {
     const group = cosmicGroups.find(candidate => candidate.id === groupId);
     if (group) {
       group.bodyIds = group.bodyIds.filter(id => id !== b.id);
-      if (group.anchorId === b.id) group.anchorId = group.bodyIds[0];
+      if (group.anchorId === b.id) group.anchorId = promoteAnchor(group.bodyIds, b);
       if (!group.bodyIds.length) {
         removeGalaxyVisual(group.id);
         cosmicGroups.splice(cosmicGroups.indexOf(group), 1);
@@ -119,6 +129,16 @@ export function removeBody(b: Body) {
   if (app.selectedBody === b) select(null);
   updateCount();
   if (!app.historySuspended) refreshGroupNavigator();
+}
+/** When a group's anchor is removed, the most massive remaining non-nebula member takes over its role. */
+function promoteAnchor(ids: number[], removed: Body) {
+  let best: Body | undefined;
+  for (const id of ids) {
+    const body = bodies.find(candidate => candidate.id === id);
+    if (body && body.kind !== 'nebula' && (!best || body.mass > best.mass)) best = body;
+  }
+  if (best && removed.exhibitAnchor && best.exhibitSystemId === removed.exhibitSystemId) best.exhibitAnchor = true;
+  return best?.id ?? ids[0];
 }
 export function bodyBaseScale(b: Body) {
   const m = Math.cbrt(Math.max(0.05, b.mass / b.birthMass)),

@@ -1,14 +1,14 @@
 // Collisions: separation, grazing, fragmentation, atmosphere stripping and consumption.
 import * as THREE from 'three';
-import { collisionRegime } from '../simulation-model.ts';
+import { collisionRegime, fragmentKicks, mergeSurvivorIndex } from '../simulation-model.ts';
 import { TYPES, type Kind } from '../celestial-catalog.ts';
 import { removeBody, updateScale } from '../bodies/lifecycle.ts';
-import { addBody } from '../bodies/registry.ts';
-import { seeded } from './body-math.ts';
+import { addBody, nameFor } from '../bodies/registry.ts';
+import { spatialCandidatePairs } from '../gravity-engine.ts';
+import { isExhibitAnchor, sameExhibitSystem, seeded } from './body-math.ts';
 import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts';
-import { debrisIds } from './tidal-disruption.ts';
 import { isCompact } from '../scene/setup.ts';
-import { bodies } from '../state/app-state.ts';
+import { bodies, bodyGroupIds, cosmicGroups } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { museumEvent, toast } from '../ui/feed.ts';
 import { impactEffect, particleBurst } from '../visuals/effects.ts';
@@ -41,39 +41,54 @@ function grazingCollision(a: Body, b: Body, relativeSpeed: number) {
     a,
   );
 }
+function joinGroupOf(source: Body, piece: Body) {
+  const groupId = bodyGroupIds.get(source.id);
+  if (groupId === undefined) return;
+  bodyGroupIds.set(piece.id, groupId);
+  cosmicGroups.find(group => group.id === groupId)?.bodyIds.push(piece.id);
+}
 function fragmentCollision(a: Body, b: Body, relativeSpeed: number) {
-  let remnant = a.mass >= b.mass ? a : b,
+  const remnant = a.mass >= b.mass ? a : b,
     food = remnant === a ? b : a;
   const point = a.mesh.position.clone().lerp(b.mesh.position, 0.5),
     combined = a.mass + b.mass,
     ejected = combined * THREE.MathUtils.clamp(0.18 + (relativeSpeed - 6.2) * 0.025, 0.18, 0.36),
-    debrisVelocity = a.velocity
+    centerOfMassVelocity = a.velocity
       .clone()
       .multiplyScalar(a.mass)
       .addScaledVector(b.velocity, b.mass)
-      .divideScalar(combined);
+      .divideScalar(combined),
+    foodName = food.name;
   remnant.mass = combined - ejected;
   remnant.habitabilityShock = 1;
   remnant.collisionCooldown = 0.8;
   removeBody(food);
   updateScale(remnant);
-  const pieces = ejected >= 10 && bodies.length < 80 ? 2 : 1;
-  for (let i = 0; i < pieces; i++) {
-    const angle = (i / pieces) * Math.PI * 2 + seeded(remnant.id, i) * 1.4,
-      direction = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)),
+  const pieces = ejected >= 10 && bodies.length < 80 ? 2 : 1,
+    pieceMass = ejected / pieces,
+    kickSpeed = 2.4 + relativeSpeed * 0.18,
+    // Kicks are balanced by recoil on the remnant, so the collision conserves total momentum.
+    kicks = fragmentKicks(pieces, pieceMass, remnant.mass, kickSpeed, seeded(remnant.id, 0) * Math.PI * 2);
+  if (!remnant.locked)
+    remnant.velocity.copy(centerOfMassVelocity).add(new THREE.Vector3(kicks.recoil[0], 0, kicks.recoil[1]));
+  remnant.velocity.y = 0;
+  for (const [kx, kz] of kicks.pieces) {
+    const direction = new THREE.Vector3(kx, 0, kz).normalize(),
       fragment = addBody(
         'rocky',
         point.clone().addScaledVector(direction, remnant.radius + 1.5),
-        debrisVelocity.clone().addScaledVector(direction, 2.4 + relativeSpeed * 0.18),
+        centerOfMassVelocity.clone().add(new THREE.Vector3(kx, 0, kz)),
         {
-          mass: ejected / pieces,
+          mass: pieceMass,
           birthMass: TYPES.rocky.mass,
           collisionCooldown: 0.9,
           habitabilityShock: 1,
-          lastEvent: `Fragmented from the collision involving ${remnant.name}`,
+          exhibitSystemId: remnant.exhibitSystemId,
+          lastEvent: `Fragmented from the collision between ${remnant.name} and ${foodName}`,
         },
       );
     fragment.velocity.y = 0;
+    joinGroupOf(remnant, fragment);
   }
   particleBurst(point, 0xff925c, isCompact ? 55 : 120, 4.2, 2.8);
   impactEffect(point, 0xffc17c, 1.45);
@@ -106,8 +121,7 @@ function stripAtmosphere(a: Body, b: Body, relativeSpeed: number) {
     gas,
   );
 }
-export function priority(k: Kind) {
-  return {
+const PRIORITY: Record<Kind, number> = {
     nebula: -1,
     protostar: 0,
     asteroid: 0,
@@ -120,7 +134,20 @@ export function priority(k: Kind) {
     star: 6,
     pulsar: 7,
     blackhole: 8,
-  }[k];
+  },
+  SMALL_BODIES: Kind[] = ['asteroid', 'comet', 'moon', 'dwarf'],
+  EDIBLE: Partial<Record<Kind, ReadonlySet<Kind>>> = {
+    star: new Set<Kind>([...SMALL_BODIES, 'rocky', 'gas', 'brown', 'star', 'protostar']),
+    brown: new Set<Kind>([...SMALL_BODIES, 'rocky', 'gas', 'brown', 'protostar']),
+    gas: new Set<Kind>([...SMALL_BODIES, 'rocky', 'gas', 'protostar']),
+    rocky: new Set<Kind>([...SMALL_BODIES, 'rocky']),
+    dwarf: new Set<Kind>(SMALL_BODIES),
+    moon: new Set<Kind>(SMALL_BODIES),
+    asteroid: new Set<Kind>(['asteroid', 'comet']),
+    comet: new Set<Kind>(['asteroid', 'comet']),
+  };
+export function priority(k: Kind) {
+  return PRIORITY[k];
 }
 export function canEat(a: Body, b: Body) {
   if (a.buildLocked) return true;
@@ -128,23 +155,53 @@ export function canEat(a: Body, b: Body) {
   if (b.kind === 'nebula') return a.kind !== 'protostar';
   if (a.kind === 'blackhole') return true;
   if (a.kind === 'pulsar') return b.kind !== 'blackhole';
-  if (a.kind === 'star')
-    return ['asteroid', 'comet', 'moon', 'dwarf', 'rocky', 'gas', 'brown', 'star', 'protostar'].includes(b.kind);
-  if (a.kind === 'brown')
-    return ['asteroid', 'comet', 'moon', 'dwarf', 'rocky', 'gas', 'brown', 'protostar'].includes(b.kind);
-  if (a.kind === 'gas') return ['asteroid', 'comet', 'moon', 'dwarf', 'rocky', 'gas', 'protostar'].includes(b.kind);
-  if (a.kind === 'rocky') return ['asteroid', 'comet', 'moon', 'dwarf', 'rocky'].includes(b.kind);
-  if (a.kind === 'dwarf' || a.kind === 'moon') return ['asteroid', 'comet', 'moon', 'dwarf'].includes(b.kind);
-  if (a.kind === 'asteroid' || a.kind === 'comet') return b.kind === 'asteroid' || b.kind === 'comet';
-  return false;
+  return EDIBLE[a.kind]?.has(b.kind) ?? false;
 }
-
+/** Order a merging pair: build locks first, then kind priority, then the heavier body, then the older id. */
+function chooseEater(a: Body, b: Body): [Body, Body] {
+  // An exhibit system's anchor always absorbs its own members (a galaxy core is never eaten by one of its stars).
+  if (sameExhibitSystem(a, b) && isExhibitAnchor(a) !== isExhibitAnchor(b)) return isExhibitAnchor(a) ? [a, b] : [b, a];
+  const first =
+    mergeSurvivorIndex(
+      { buildLocked: a.buildLocked, priority: PRIORITY[a.kind], mass: a.mass, id: a.id },
+      { buildLocked: b.buildLocked, priority: PRIORITY[b.kind], mass: b.mass, id: b.id },
+    ) === 0
+      ? a
+      : b;
+  let eater = first,
+    food = first === a ? b : a;
+  if (!canEat(eater, food) && canEat(food, eater)) [eater, food] = [food, eater];
+  return [eater, food];
+}
+/**
+ * The survivor of a merger keeps its own identity; when it swallows a larger body it inherits that body's
+ * exhibit role (lock, held stage, exhibit membership, satellites and galaxy anchor) and its custom name.
+ */
+function inheritIdentity(eater: Body, food: Body, foodWasDefaultName: boolean) {
+  if (food.mass <= eater.mass) return;
+  if (food.locked && !eater.locked) {
+    eater.locked = true;
+    eater.velocity.set(0, 0, 0);
+  }
+  if (food.holdStage && eater.kind === 'star') eater.holdStage = true;
+  if (food.exhibitSystemId !== undefined && eater.exhibitSystemId === undefined) {
+    eater.exhibitSystemId = food.exhibitSystemId;
+    eater.exhibitAnchor = food.exhibitAnchor;
+  }
+  if (!foodWasDefaultName && eater.name === nameFor(eater.kind, eater.id)) eater.name = food.name;
+  for (const body of bodies)
+    if (body.satelliteHostId === food.id && eater.kind === 'rocky') body.satelliteHostId = eater.id;
+  for (const group of cosmicGroups) if (group.anchorId === food.id) group.anchorId = eater.id;
+}
 function consume(a: Body, b: Body) {
+  const foodWasDefaultName = b.name === nameFor(b.kind, b.id);
+  inheritIdentity(a, b, foodWasDefaultName);
   const foodName = b.name,
     receiverMass = a.mass,
     total = receiverMass + b.mass,
     impact = b.mesh.position.clone().lerp(a.mesh.position, 0.45);
-  accreteMomentum(a, b.velocity, b.mass, receiverMass);
+  // An exhibit anchor isn't yanked around by its own system's members (same rule as gravity).
+  if (!(isExhibitAnchor(a) && sameExhibitSystem(a, b))) accreteMomentum(a, b.velocity, b.mass, receiverMass);
   if (a.buildLocked) a.velocity.set(0, 0, 0);
   a.mass = total;
   a.collisionCooldown = 0.32;
@@ -156,25 +213,38 @@ function consume(a: Body, b: Body) {
   removeBody(b);
   if (!applyGrowthProgression(a)) toast(`${a.name} accreted ${foodName}`);
 }
-export function collisions(candidatePairs?: [number, number][]) {
-  const byId = new Map(bodies.map(body => [body.id, body] as const)),
-    pairs = candidatePairs ?? bodies.flatMap((a, i) => bodies.slice(0, i).map(b => [a.id, b.id] as [number, number]));
-  for (const [aId, bId] of pairs) {
-    const a = byId.get(aId),
-      b = byId.get(bId);
+function candidatePairs(): Array<[Body, Body]> {
+  const pairs: Array<[Body, Body]> = [];
+  if (bodies.length > 50) {
+    const byId = new Map(bodies.map(body => [body.id, body] as const)),
+      particles = bodies.map(body => ({
+        id: body.id,
+        x: body.mesh.position.x,
+        z: body.mesh.position.z,
+        radius: body.radius,
+      }));
+    for (const [aId, bId] of spatialCandidatePairs(particles, 12)) pairs.push([byId.get(aId)!, byId.get(bId)!]);
+    return pairs;
+  }
+  for (let i = 1; i < bodies.length; i++) for (let j = 0; j < i; j++) pairs.push([bodies[i], bodies[j]]);
+  return pairs;
+}
+export function collisions() {
+  for (const [a, b] of candidatePairs()) {
     if (
-      !a ||
-      !b ||
-      !bodies.includes(a) ||
-      !bodies.includes(b) ||
+      a.removed ||
+      b.removed ||
       a.hostId === b.id ||
       b.hostId === a.id ||
       a.collisionCooldown > 0 ||
       b.collisionCooldown > 0
     )
       continue;
-    if (a.mesh.position.distanceTo(b.mesh.position) > (a.radius + b.radius) * 0.72) continue;
-    if (debrisIds.has(a.id) && debrisIds.has(b.id) && Math.min(a.age, b.age) < 30) continue;
+    const reach = (a.radius + b.radius) * 0.72;
+    if (a.mesh.position.distanceToSquared(b.mesh.position) > reach * reach) continue;
+    if (a.debris && b.debris && Math.min(a.age, b.age) < 30) continue;
+    // Exhibit-system members don't collide with one another; only the anchor can still absorb a member that falls in.
+    if (sameExhibitSystem(a, b) && !isExhibitAnchor(a) && !isExhibitAnchor(b)) continue;
     if ((a.kind === 'nebula' && b.kind === 'protostar') || (b.kind === 'nebula' && a.kind === 'protostar')) {
       const cloud = a.kind === 'nebula' ? a : b,
         seed = a.kind === 'protostar' ? a : b,
@@ -218,11 +288,7 @@ export function collisions(candidatePairs?: [number, number][]) {
         continue;
       }
     }
-    let eater: Body, food: Body;
-    if (a.buildLocked !== b.buildLocked) eater = a.buildLocked ? a : b;
-    else eater = priority(a.kind) >= priority(b.kind) ? a : b;
-    food = eater === a ? b : a;
-    if (!canEat(eater, food) && canEat(food, eater)) [eater, food] = [food, eater];
+    const [eater, food] = chooseEater(a, b);
     if (canEat(eater, food)) consume(eater, food);
   }
 }

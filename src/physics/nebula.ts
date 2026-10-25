@@ -11,7 +11,7 @@ import {
   type Kind,
 } from '../celestial-catalog.ts';
 import { removeBody, updateScale } from '../bodies/lifecycle.ts';
-import { brownIgnitionMass } from './body-math.ts';
+import { brownIgnitionMass, sameExhibitSystem } from './body-math.ts';
 import { ensureMatterStream } from './matter-streams.ts';
 import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts';
 import { isCompact } from '../scene/setup.ts';
@@ -45,7 +45,8 @@ export function updateNebulaInteractions(dt: number) {
         target === cloud ||
         target.kind === 'nebula' ||
         target.hostId === cloud.id ||
-        (target.kind === 'protostar' && target.hostId !== undefined)
+        (target.kind === 'protostar' && target.hostId !== undefined) ||
+        sameExhibitSystem(cloud, target)
       )
         continue;
       const delta = target.mesh.position.clone().sub(cloud.mesh.position),
