@@ -112,7 +112,13 @@ for (const file of files) {
     if (/fonts\.(googleapis|gstatic)\.com/.test(js)) problems.push(`${name}: references Google Fonts`);
     // bundled Vite chunks contain many library strings; only check our own hand-written files
     if (name.startsWith('assets/')) continue;
-    for (const m of js.matchAll(literalRe)) checkLocal(file, m[1], jsBases(file), 'path literal');
+    // block comments may name build tools (e.g. a generated-file header); only code can request files
+    const code = js.replace(/\/\*[\s\S]*?\*\//g, '');
+    for (const m of code.matchAll(literalRe)) {
+      // provenance strings naming repo-only folders (never shipped to visitors) are not requests
+      if (/^(tools|docs|scripts)\//.test(m[1])) continue;
+      checkLocal(file, m[1], jsBases(file), 'path literal');
+    }
     // the photographic texture folder that was never shipped: no code may request it again
     for (const m of js.matchAll(/["'`]tex\/[^"'`]*["'`]/g))
       problems.push(`${name}: requests ${m[0]} (atlas/tex/ is not shipped)`);
