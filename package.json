@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "format": "prettier --write src tests",
     "format:check": "prettier --check src tests",
-    "check": "pnpm format:check && pnpm build && pnpm test"
+    "check": "pnpm format:check && pnpm build && pnpm test",
+    "test:exhibits": "node tests/exhibit-stability.mjs"
   },
   "dependencies": {
     "three": "^0.180.0"
