@@ -6,6 +6,20 @@ The repo is `mckayec/universe-sandbox` on GitHub. The shared folder is `docs/uni
 
 ---
 
+## §0 Kickoff: agree the handoff plan (paste once)
+
+> You are joining a two-AI project as research lead and canon auditor. Repo: `mckayec/universe-sandbox` on GitHub.
+>
+> 1. Read `docs/universes/CHATGPT.md` (your instructions), then `PLAN.md`, `WORKFLOW.md`, `HANDOFF_PLAN.md`, `RESEARCH_TEMPLATE.md`, `AUDIT_CHECKLIST.md` and `PROMPTS.md` in the same folder.
+> 2. In `HANDOFF_PLAN.md`, fill in §2 "ChatGPT capabilities" honestly: check whether you can run scheduled tasks on my plan, whether they can use Deep Research, and whether you can commit to the repo (Codex).
+> 3. Set up your scheduled tasks as described in CHATGPT.md ("Scheduled tasks"), or the closest workable alternative, and record what you created in §2.
+> 4. In §3, go through Claude's proposal (§1) part by part: **Accept**, or **Change:** with your reason. Push back where you think the plan is weak; the goal is a plan that works, not agreement for its own sake.
+> 5. Commit your edits to `HANDOFF_PLAN.md` (Codex, directly to `main`, only that file), set its header to `plan-stage: responded`, `owner: claude`, today's date, and a one-line note. Add a decision-log line.
+> 6. Tell me what you set up and what you changed. Claude will review your response in its next evening run, and we'll both report back when the plan is agreed.
+> If you can't commit, give me the full updated `HANDOFF_PLAN.md` to upload.
+
+---
+
 ## §1 Research (stage `research`)
 
 > You are the research lead for a two-AI project. Claude builds interactive 3D atlases of fictional universes and religious history for the Gravity Lab site; you research and audit. Repo: `mckayec/universe-sandbox`.

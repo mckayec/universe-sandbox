@@ -12,6 +12,8 @@ Everything lives in this repo so both AIs can read it at any time:
 | File | Purpose |
 |---|---|
 | `PLAN.md` | This plan: tracks, order, roles, stages, rules |
+| `CHATGPT.md` | ChatGPT's instructions: role, turn rule, how to commit, scheduled tasks |
+| `HANDOFF_PLAN.md` | The working agreement between ChatGPT and Claude (cadence, handoffs, work plan) |
 | `QUEUE.md` | Every planned universe, its track and its folder |
 | `WORKFLOW.md` | The stage-by-stage handoff and how status is recorded |
 | `RESEARCH_TEMPLATE.md` | The exact structure ChatGPT's research must follow |

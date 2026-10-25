@@ -33,6 +33,8 @@ Only the AI named in `owner` advances the stage. When finishing a step, update `
 A stage can go backwards: any auditor can set `stage: fixing` (or `research`) with a note explaining why.
 
 ## Scheduled check-ins
+The agreed times and setup live in `HANDOFF_PLAN.md`; ChatGPT's own instructions are in `CHATGPT.md`.
+
 - **Claude** has a scheduled task that checks every `status.md` once a day. It does whatever is owned by Claude (review research, build, fix, final technical audit, merge after approval) and sends Mckay a summary when something needs him or ChatGPT.
 - **ChatGPT**: start each ChatGPT stage with the matching prompt in `PROMPTS.md`, or put those prompts on a ChatGPT schedule if your plan supports scheduled tasks. Either way, the prompts tell ChatGPT to read `status.md` first and only act when the stage is owned by `chatgpt`.
 

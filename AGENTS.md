@@ -63,4 +63,4 @@ For each meaningful change:
 
 ## New universes (two-AI pipeline)
 
-New atlases are researched by ChatGPT and built by Claude through `docs/universes/` (start with `PLAN.md`, `WORKFLOW.md` and `PROMPTS.md`). Each universe has `docs/universes/packs/<id>/status.md`; only act on a stage you own. Research/audit commits touch only `docs/universes/`.
+New atlases are researched by ChatGPT and built by Claude through `docs/universes/` (start with `PLAN.md`, `WORKFLOW.md` and `PROMPTS.md`; ChatGPT starts with `docs/universes/CHATGPT.md`). Each universe has `docs/universes/packs/<id>/status.md`; only act on a stage you own. Research/audit commits touch only `docs/universes/`.
