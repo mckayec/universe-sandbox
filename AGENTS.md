@@ -60,3 +60,7 @@ For each meaningful change:
 3. Exercise the changed interaction directly, including pause and accelerated time.
 4. Check at both desktop and compact/mobile viewport sizes when UI or rendering changes.
 
+
+## New universes (two-AI pipeline)
+
+New atlases are researched by ChatGPT and built by Claude through `docs/universes/` (start with `PLAN.md`, `WORKFLOW.md` and `PROMPTS.md`). Each universe has `docs/universes/packs/<id>/status.md`; only act on a stage you own. Research/audit commits touch only `docs/universes/`.

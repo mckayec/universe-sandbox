@@ -1,0 +1,11 @@
+stage: queued
+owner: mckay
+updated: 2026-10-24
+note: Waiting to be scheduled.
+
+# The Licanius Trilogy (James Islington)
+
+Track B · view: World-only
+
+## History
+- 2026-10-24: created by Claude (queued).
