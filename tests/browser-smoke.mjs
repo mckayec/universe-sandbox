@@ -28,8 +28,11 @@ async function waitForServer() {
 let browser;
 try {
   await waitForServer();
-  const chromePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-  browser = await chromium.launch({ headless: true, executablePath: existsSync(chromePath) ? chromePath : undefined });
+  // Prefer an explicit browser (CHROME_PATH), then local Chrome on macOS, then Playwright's bundled Chromium.
+  const chromePath = [process.env.CHROME_PATH, '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'].find(
+    candidate => candidate && existsSync(candidate),
+  );
+  browser = await chromium.launch({ headless: true, executablePath: chromePath });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   const failures = [];
   page.on('pageerror', error => failures.push(`pageerror: ${error.message}`));
@@ -43,7 +46,11 @@ try {
   assert.equal(await page.locator('#trail-mode').textContent(), 'Trails: off');
   await page.getByRole('button', { name: 'Universes' }).click();
   assert.equal(await page.getByRole('heading', { name: 'Choose a universe' }).isVisible(), true);
-  await page.getByRole('button', { name: /Cosmere/ }).click();
+  // Atlas packs (e.g. Cosmere) open their own page, so only check that the card is offered as an atlas.
+  assert.match(await page.locator('[data-universe="cosmere"]').textContent(), /OPEN ATLAS/);
+  // Packs still awaiting source material show the details panel instead.
+  await page.locator('[data-universe="star-wars"]').click();
+  assert.equal(await page.locator('#pack-details').isVisible(), true);
   assert.match(await page.locator('#pack-source').textContent(), /authorized source files/i);
   await page.getByRole('button', { name: 'Close universe library' }).click();
   await page.getByRole('button', { name: 'Exhibits' }).click();
