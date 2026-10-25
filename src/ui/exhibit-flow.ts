@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { exhibitById, type ExhibitId } from '../exhibits.ts';
 import { universePackById, type UniversePackId } from '../universe-packs.ts';
 import { saveRecoverySnapshot } from '../sandbox-state.ts';
+import { orbitalSpeed } from '../physics-continuity.ts';
 import { G } from '../celestial-catalog.ts';
 import { registerCosmicGroup, setBodyName } from '../bodies/groups.ts';
 import { addBody } from '../bodies/registry.ts';
@@ -60,23 +61,37 @@ export function loadExhibit(id: ExhibitId, asAttract = false) {
         mass: 210,
         stage: 'yellow star',
         locked: true,
+        holdStage: true,
         lastEvent: 'A calm Sun-like star anchors this guided system',
       }),
       radius = 12,
       planet = addBody(
         'rocky',
         new THREE.Vector3(radius, 0, 0),
-        new THREE.Vector3(0, 0, -Math.sqrt((G * star.mass) / radius)),
+        new THREE.Vector3(0, 0, -orbitalSpeed(G, app.gravity, star.mass, radius)),
         { variant: 3, mass: 10, lastEvent: 'Placed in the temperate zone with a stable atmosphere' },
       ),
-      moon = addBody(
-        'moon',
-        new THREE.Vector3(radius + 2.4, 0, 0),
-        new THREE.Vector3(0, 0, planet.velocity.z - Math.sqrt((G * planet.mass) / 2.4)),
-        { variant: 3, mass: 0.76, lastEvent: `Orbiting ${planet.name}` },
-      ),
-      giant = addBody('gas', new THREE.Vector3(-28, 0, 0), new THREE.Vector3(0, 0, 2.7), { variant: 1, mass: 34 });
-    registerCosmicGroup('system', [star, planet, moon, giant]);
+      // The moon rides a kinematic orbit (like Earth's Moon in Our Solar System), so it can't destabilize the planet.
+      moon = addBody('moon', new THREE.Vector3(radius + 2.4, 0, 0), planet.velocity.clone(), {
+        variant: 3,
+        mass: 0.76,
+        satelliteHostId: planet.id,
+        satelliteOrbit: 2.4,
+        satelliteAngle: 0,
+        satelliteRate: 1.1,
+        lastEvent: `Orbiting ${planet.name}`,
+      }),
+      giantRadius = 46,
+      giant = addBody(
+        'gas',
+        new THREE.Vector3(-giantRadius, 0, 0),
+        new THREE.Vector3(0, 0, orbitalSpeed(G, app.gravity, star.mass, giantRadius)),
+        { variant: 1, mass: 34, lastEvent: 'A distant gas giant well outside the temperate zone' },
+      );
+    const group = registerCosmicGroup('system', [star, planet, moon, giant]);
+    // Members orbit the star without perturbing one another; impacts and visitors still interact fully.
+    for (const member of [star, planet, moon, giant]) member.exhibitSystemId = group.id;
+    star.exhibitAnchor = true;
     focus = planet;
   } else if (id === 'binary-stars') {
     focus = createBinarySystem(new THREE.Vector3());

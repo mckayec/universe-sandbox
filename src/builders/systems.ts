@@ -1,10 +1,12 @@
 // Builders for Our Solar System, binary and triple star systems.
 import * as THREE from 'three';
+import { orbitalSpeed } from '../physics-continuity.ts';
 import { G } from '../celestial-catalog.ts';
 import { registerCosmicGroup, setBodyName } from '../bodies/groups.ts';
 import { addBody } from '../bodies/registry.ts';
 import { findOpenPlacement } from './placement.ts';
-import { cosmicGroups } from '../state/app-state.ts';
+import { bulkOrbitVelocity } from '../physics/galaxy-dynamics.ts';
+import { app, cosmicGroups } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { museumEvent } from '../ui/feed.ts';
 
@@ -12,12 +14,16 @@ import { museumEvent } from '../ui/feed.ts';
 // Within the preset, planets orbit the Sun without tugging on each other or yanking the Sun around (see sameExhibitSystem);
 // the exhibit's compressed scale exaggerates those pulls ~1000x. Outside objects still feel and exert full gravity.
 const SUN_MASS = 230;
+/** Circular orbital speed around `mass` at `radius`, honoring the gravity slider. */
+const circular = (mass: number, radius: number) => orbitalSpeed(G, app.gravity, mass, radius);
 export function createSolarSystem(origin: THREE.Vector3) {
   const members: Body[] = [],
     center = findOpenPlacement(origin, 64, 230),
+    // Placed inside a galaxy, the whole system orbits its core instead of falling straight in.
+    bulk = bulkOrbitVelocity(center),
     sequence = cosmicGroups.filter(group => group.name.startsWith('Solar System • Sol')).length + 1,
     sun = setBodyName(
-      addBody('star', center, new THREE.Vector3(), {
+      addBody('star', center, bulk.clone(), {
         mass: SUN_MASS,
         birthMass: SUN_MASS,
         stage: 'yellow star',
@@ -42,14 +48,13 @@ export function createSolarSystem(origin: THREE.Vector3) {
       { name: 'Saturn', kind: 'gas', radius: 32.5, mass: 6.9, variant: 1, angle: 5.08 },
       { name: 'Uranus', kind: 'gas', radius: 40.5, mass: 3.4, variant: 2, angle: 0.62 },
       { name: 'Neptune', kind: 'gas', radius: 48.5, mass: 3.8, variant: 3, angle: 2.75 },
-    ],
-    momentum = new THREE.Vector3();
+    ];
   members.push(sun);
   let earth: Body | undefined;
   for (const data of worlds) {
     const direction = new THREE.Vector3(Math.cos(data.angle), 0, Math.sin(data.angle)),
       tangent = new THREE.Vector3(-direction.z, 0, direction.x),
-      velocity = tangent.multiplyScalar(Math.sqrt((G * sun.mass) / data.radius)),
+      velocity = tangent.multiplyScalar(circular(sun.mass, data.radius)).add(bulk),
       planet = setBodyName(
         addBody(data.kind, center.clone().addScaledVector(direction, data.radius), velocity, {
           mass: data.mass,
@@ -61,7 +66,6 @@ export function createSolarSystem(origin: THREE.Vector3) {
       );
     if (data.name === 'Earth') earth = planet;
     members.push(planet);
-    momentum.addScaledVector(planet.velocity, planet.mass);
   }
   if (earth) {
     const radius = 2.35,
@@ -71,7 +75,7 @@ export function createSolarSystem(origin: THREE.Vector3) {
         addBody(
           'moon',
           earth.mesh.position.clone().addScaledVector(direction, radius),
-          earth.velocity.clone().addScaledVector(tangent, Math.sqrt((G * earth.mass) / radius)),
+          earth.velocity.clone().addScaledVector(tangent, circular(earth.mass, radius)),
           { mass: 0.14, variant: 1, collisionCooldown: 3, lastEvent: 'Orbiting Earth' },
         ),
         'Moon',
@@ -81,14 +85,13 @@ export function createSolarSystem(origin: THREE.Vector3) {
     moon.satelliteAngle = Math.atan2(direction.z, direction.x);
     moon.satelliteRate = 1.15;
     members.push(moon);
-    momentum.addScaledVector(moon.velocity, moon.mass);
   }
   const plutoDirection = new THREE.Vector3(-0.74, 0, 0.67).normalize(),
     pluto = setBodyName(
       addBody(
         'dwarf',
         center.clone().addScaledVector(plutoDirection, 56),
-        new THREE.Vector3(-plutoDirection.z, 0, plutoDirection.x).multiplyScalar(Math.sqrt((G * sun.mass) / 56)),
+        new THREE.Vector3(-plutoDirection.z, 0, plutoDirection.x).multiplyScalar(circular(sun.mass, 56)).add(bulk),
         {
           mass: 0.08,
           variant: 1,
@@ -99,9 +102,9 @@ export function createSolarSystem(origin: THREE.Vector3) {
       'Pluto',
     );
   members.push(pluto);
-  momentum.addScaledVector(pluto.velocity, pluto.mass);
   const group = registerCosmicGroup('system', members, `Solar System • Sol ${sequence}`);
   for (const member of members) member.exhibitSystemId = group.id;
+  sun.exhibitAnchor = true;
   sun.holdStage = true;
   museumEvent(
     'Our Solar System implanted',
@@ -114,13 +117,15 @@ export function createSolarSystem(origin: THREE.Vector3) {
 export function createBinarySystem(origin: THREE.Vector3) {
   const center = findOpenPlacement(origin, 42),
     members: Body[] = [],
-    separation = 12,
+    // Wide enough that neither main-sequence star fills its Roche lobe; transfer starts once the primary swells
+    // into a giant, as the exhibit describes.
+    separation = 15,
     massA = 270,
     massB = 185,
     total = massA + massB,
     radiusA = (separation * massB) / total,
     radiusB = (separation * massA) / total,
-    omega = Math.sqrt((G * total) / separation ** 3),
+    omega = circular(total, separation) / separation,
     starA = addBody(
       'star',
       center.clone().add(new THREE.Vector3(-radiusA, 0, 0)),
@@ -134,12 +139,13 @@ export function createBinarySystem(origin: THREE.Vector3) {
       { mass: massB, stage: 'yellow star', collisionCooldown: 3, lastEvent: 'Donor star approaching its Roche lobe' },
     );
   members.push(starA, starB);
-  const orbitRadius = 27,
+  // Circumbinary orbits need roughly 3× the binary separation to stay stable.
+  const orbitRadius = 46,
     direction = new THREE.Vector3(0.22, 0, 0.98).normalize(),
     planet = addBody(
       'rocky',
       center.clone().addScaledVector(direction, orbitRadius),
-      new THREE.Vector3(-direction.z, 0, direction.x).multiplyScalar(Math.sqrt((G * total) / orbitRadius)),
+      new THREE.Vector3(-direction.z, 0, direction.x).multiplyScalar(circular(total, orbitRadius)),
       { mass: 9, variant: 3, collisionCooldown: 3, lastEvent: 'Circumbinary ocean world' },
     );
   members.push(planet);
@@ -160,16 +166,16 @@ export function createTripleSystem(origin: THREE.Vector3) {
     innerTotal = massA + massB,
     massC = 155,
     total = innerTotal + massC,
-    outerSeparation = 36,
+    outerSeparation = 50,
     innerCenterOffset = (-outerSeparation * massC) / total,
     outerOffset = (outerSeparation * innerTotal) / total,
-    outerOmega = Math.sqrt((G * total) / outerSeparation ** 3),
+    outerOmega = circular(total, outerSeparation) / outerSeparation,
     innerCenter = center.clone().add(new THREE.Vector3(innerCenterOffset, 0, 0)),
     innerVelocity = new THREE.Vector3(0, 0, outerOmega * innerCenterOffset),
-    separation = 10,
+    separation = 14,
     radiusA = (separation * massB) / innerTotal,
     radiusB = (separation * massA) / innerTotal,
-    innerOmega = Math.sqrt((G * innerTotal) / separation ** 3),
+    innerOmega = circular(innerTotal, separation) / separation,
     primary = setBodyName(
       addBody(
         'star',
