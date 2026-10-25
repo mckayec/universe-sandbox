@@ -69,7 +69,7 @@ Claude checks the repo **every hour at :45 past, 7 am–11 pm, plus 3:45 am (Ame
 
 | Task | When (America/Denver) | What it does |
 |---|---|---|
-| **Pipeline research and audit** | Hourly at about **:15 past, 7 am–11 pm**, plus one overnight run, or as often as your scheduler allows (up to hourly) | Read every `docs/universes/packs/*/status.md` and `docs/reviews/*/status.md`; for each item owned by `chatgpt`, do the matching work (`PROMPTS.md` section, or the review's own instructions); for any universe in `research-ready`, run the self-audit (§2) if it isn't current. Commit results and update status. If nothing is owned by `chatgpt`, end quietly without committing. If a run may exceed an hour, use `docs/chatgpt-run.lock` (timestamp; skip if under 3 hours old; delete when done). |
+| **Pipeline research and audit** | Hourly at **:15 past, 24 hours a day**, including all overnight hours (America/Denver) | Read every `docs/universes/packs/*/status.md` and `docs/reviews/*/status.md`; for each item owned by `chatgpt`, do the matching work (`PROMPTS.md` section, or the review's own instructions); for any universe in `research-ready`, run the self-audit (§2) if it isn't current. Commit results and update status. If nothing is owned by `chatgpt`, end quietly without committing. If a run may exceed an hour, use `docs/chatgpt-run.lock` (timestamp; skip if under 3 hours old; delete when done). |
 
 Whether scheduled tasks are possible depends on your plan and on whether scheduled runs can use Deep Research and Codex. Check this, record what you found in `HANDOFF_PLAN.md` (Section "ChatGPT capabilities"), and choose the closest workable setup:
 - **Scheduled runs can research and commit:** create the tasks above.
