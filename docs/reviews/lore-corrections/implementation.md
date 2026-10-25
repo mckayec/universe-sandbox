@@ -63,3 +63,47 @@ Note: line numbers in `corrections.md` refer to older snapshots. Every item was 
   - **Foundation:** Loris and the About text are correct.
   - **Society:** with book I, Earth reads "Humanity’s homeworld, governed from Luna." with no Mustang text, and Luna is safe. With book III, Earth shows the trilogy-end text. With book VI, the Rome place and the "The Two Hundred" event are listed. Rhea shows 701 PCE. The spoiler notice is present.
   - **Solar:** Neso, Phoebe, Sedna and Mars show the new text.
+
+---
+
+## Revision 2: IR1–IR3 (implementation-review.md at d08c4d2)
+
+Applied by Claude, 2026-10-25. Main (with the Vite upgrade, PR #20) was merged into the branch first (merge 67d8cbe), then the fixes went in as **6ce5fc5**. The head SHA for review is the commit that adds this section; the status note on main names it. PR #24 is still open and unmerged.
+
+This revision changes behaviour as well as content: Society's startup state and a new spoiler notice element (society.js, society.html, society.css). The atlas engine (`engine.js`) is untouched.
+
+| Finding | Rows | Disposition | What changed |
+| --- | --- | --- | --- |
+| IR1 | L1 | resolved | `sun-eater.js`: event **b7c** is removed, so the Chronicle, Forum's "In the Chronicle" list and event navigation no longer tie the Auctor naming to Forum. The neutral fact stays as book-VII codex text on William XXIII (`more[7]`: "He names Hadrian Auctor before he dies."). No coordinate or placeholder world was added. The r7 route and Forum-era cuts from revision 1 stay. |
+| IR2 | L8 | resolved (data cut back to earliest-safe text) | `hyperion.js`. The rule used: base `desc`/`role`/`blurb` holds only what the entry's first book shows. Later facts move to a `more` entry (codex) or an `eras` blurb (worlds) at the book that tells them, using the book the pack's own event list already gives. Where I wasn't sure of the earliest book, I picked the later one. No new facts were added, apart from one neutral base line for Gladstone ("Leads the Hegemony through the Ouster war.") and Ixion ("A high-gravity jungle world of the Web."), which replace text that was entirely later-book. |
+| IR3 | L29, L31 | resolved | `society.js`: `ERA=1` and `bookFilter=1` on load. A new `selectBook(k)` drives ERA, the filter, the `aria-pressed` buttons, the header, the visible Chronicle book and the notice, and it is called once at startup. `society.html`: the header reads "Book I · Red Rising" and the I button is pressed. **All** has to be clicked: its title and aria-label are "All six books · spoilers", the header then reads "All six books · spoilers", and a notice ("Showing all six books: spoilers for the whole saga…") appears on desktop and phone. The book choice is **not persisted**: there is no URL or storage state, so every load, deep links included (`#earth`, `#<site>`), starts at Book I. L31: New Sparta POI is now `from:6`, matching events l3/l3b. The separate Rome summit POI and event are unchanged. |
+
+### IR2 details (checked IDs → gate)
+
+- **Codex · People**: Consul (Fall tour/ship → 3); Duré (role "Jesuit"; Pope Teilhard → 2; "lives again" → 4); Kassad (death → 2); Silenus (Tree survival → 2; sends Raul → 3); Sol (gives Rachel to the Shrike → 2); Lamia (Silenus rescue → 2, as required; "mother of Aenea" stays 3); Het Masteen (return at the Startree → 4); Gladstone (destroying the farcasters and her death → 2); Johnny (role "Keats cybrid", dropping "First"); Shrike (Aenea's protector → 4); Albedo (murder of Mustafa → 4); Aenea (teaching and martyrdom → 4); Raul (lover → 4); A. Bettik (travels with Aenea → 3; observer → 4); de Soya (mutiny and alliance → 4); Nemes (clones → 4); Lourdusamy (orders Aenea's death → 4).
+- **Codex · Factions**: Hegemony and All Thing (their end → 2); TechnoCore (hidden in the farcasters, feeds on neurons → 2; countless factions → 3); Ousters (less hostile than believed → 2; Startree → 4); The Pax `first:3` (Core alliance and fall → 4); Pax Mercantilus `first:3` (Isozaki → 4); Holy Office `first:3` (Mustafa → 4); Templars (Startree → 4); **Lions and Tigers and Bears** keeps `first:3`, with the observer fact moved to `more[4]` (as required); Amoiete Spectrum Helix `first:4`; Chitchatuk `first:3`; Akerataeli `first:4`; Seneschai Aluit (found on the Startree → 4); Glennon-Height (Armaghast cells → 2).
+- **Codex · Ideas**: Farcasters (hides the Core and destroyed → 2; Tethys portals → 3; Void → 4); Gideon drive `first:3`; Fatline (silent → 3; carried by the Void → 4); datasphere (megasphere → 2); River Tethys (carries Aenea → 3); Fall of the Farcasters `first:2`; Void Which Binds `first:2` (Aenea's teaching → 4); cruciform (Pax → 3; Core device → 4); Time Tombs ("open before the Fall" → "are beginning to open"); Labyrinthine worlds (bodies → 4); Ultimate Intelligences `first:2`; **The Shared Moment `first:4`** (as required); Hawking mat (Raul → 3); Hyperion Cantos (tells the first two books → 3).
+- **Worlds (base blurb → eras)**: parvati (→3), madhya (→2, 4), tc2 (→2; the era-3 blurb already existed), lusus (→4), maui (→4), heavensgate (→2, 3), mare (→2, 3), hebron (→3), renvector (→3, 4), renminor (→3), asquith (→2, 4), nevermore (→2, 4), deneb3 (→4), qom (→3), ixion (→4), svoboda (→4), armaghast (→4), patawpha (→4), pacem (→3, 4), jungle (→4), madredios (→4), mars (→4), replica (→2). Hyperion's era-3 blurb now carries Aenea leaving the Sphinx.
+- **Sites** (sites have no eras, so later-book clauses were cut): romance (Raul's youth), sphinx (Aenea walks out; now in Hyperion's era 3 and event b3b), rome (Severn's arrival; now in replica's era 2).
+
+### Checks on 6ce5fc5
+
+- `pnpm format`, then `pnpm check`: formatting, build, **59/59** tests, check:dist **109 files OK**.
+- `pnpm test:pages`: **12 pages × 2 viewports** pass. `pnpm test:browser`: pass. Both used `CHROME_PATH` set to the installed Chromium.
+- **Targeted Playwright gate run** (static server over `public/`, SwiftShader WebGL, no page or console errors):
+  - Hyperion, books I to IV picked in the book bar, codex read from the DOM on all three tabs. At book I, none of these terms appear except "lover" in Lamia's base line: Aenea, Raul, Pax, observer, lover, martyr, Shared Moment, Startree, Pope, dies, murder, Fall, Rise, Endymion. At books II and III no observer or Shared Moment text appears. At book IV both appear.
+  - Hyperion world, site and era blurbs were also checked per book with a Node evaluation that mirrors `eraBlurb`/`firstOf`/`siteSeen`. Book I's full rendered text was read line by line.
+  - Sun Eater, book VII: the page text has no "Auctor" outside the codex.
+  - Society, fresh load at 1440×900 and at 390×844 (touch): header "Book I · Red Rising", only the I button pressed, only book I in the Chronicle, notice hidden. After clicking All, the header reads "All six books · spoilers" and the notice shows (display block on both sizes). Screenshots were checked; the notice was moved down to clear the dossier toggle on desktop.
+  - Society `#earth` at books I, IV, V and VI: New Sparta is absent at I, IV and V and present at VI with Rome. Deepgrave shows from IV.
+- Not run: a 3840×2160 pass (no layout change at that size beyond the centred notice).
+
+### New finding for ChatGPT (R2-1, not fixed here)
+
+With Society now opening at Book I, some POIs with no `from` gate still name later books in their base text, and so show at Book I:
+
+- heliopolis, tyche, ladon, redreach, polar (Dark Age)
+- gorgon, rath (Iron Gold)
+- vdocks, garter (Light Bringer)
+
+About 13 in-site landmark descriptions (for example citadel, dragonmaw, palatine, arch, bay, harbor, morningstar, athena) do the same. This was a pre-existing gap: L29/L31 didn't cover it and the old default (All) hid it. I didn't make up first-appearance gates. Proposed fix: either confirm a `from:` book per POI (I can apply them mechanically) or approve the rule "a POI or landmark that names a later book is shown from that book". The Hyperion pack's Nemes/Glaucus entries were checked against its own event list (b3f, b3i) and kept at book III.
