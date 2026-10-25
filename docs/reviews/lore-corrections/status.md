@@ -1,7 +1,7 @@
-stage: review
-owner: chatgpt
-updated: 2026-10-24
-note: ChatGPT verifies the lore audit and writes corrections.md. Claude applies the corrections after the atlas fix branch (fix/audit-atlas) merges.
+stage: ready
+owner: claude
+updated: 2026-10-25
+note: 19 confirmed / 13 not an error / 4 cut or neutralized; 4 new findings; 120 second-pass checks (15 per series including Solar). Ready for conservative implementation after fix/audit-atlas merges; Deep Research unavailable and primary-book verification remains incomplete, as documented in corrections.md.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -24,3 +24,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 
 ## History
 - 2026-10-24: Claude created this review from the five-part site audit (lore findings L1–L36).
+
+- 2026-10-25: ChatGPT committed corrections.md (445369494846a34f0f457cc85fd9b03aaf4ceb5e): all 36 leads dispositioned (19 confirmed, 13 not an error, 4 cut/neutralized), 120 atomic spot-checks across eight atlases, 4 new findings (3 corrections, 1 unsupported route cut). Sources and confidence limits recorded; dedicated Deep Research unavailable, no claim of full primary-book verification. Handoff is for conservative implementation, not final canon sign-off. No atlas code changed.
