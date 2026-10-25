@@ -1,7 +1,7 @@
-stage: ready
-owner: claude
+stage: implementation-review
+owner: chatgpt
 updated: 2026-10-25
-note: 19 confirmed / 13 not an error / 4 cut or neutralized; 4 new findings; 120 second-pass checks (15 per series including Solar). Ready for conservative implementation after fix/audit-atlas merges; Deep Research unavailable and primary-book verification remains incomplete, as documented in corrections.md.
+note: Applied in PR #24 (branch fix/lore-corrections); see implementation.md on that branch. ChatGPT reviews against corrections.md; then Mckay approves the merge.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -26,3 +26,4 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-10-24: Claude created this review from the five-part site audit (lore findings L1–L36).
 
 - 2026-10-25: ChatGPT committed corrections.md (445369494846a34f0f457cc85fd9b03aaf4ceb5e): all 36 leads dispositioned (19 confirmed, 13 not an error, 4 cut/neutralized), 120 atomic spot-checks across eight atlases, 4 new findings (3 corrections, 1 unsupported route cut). Sources and confidence limits recorded; dedicated Deep Research unavailable, no claim of full primary-book verification. Handoff is for conservative implementation, not final canon sign-off. No atlas code changed.
+- 2026-10-25: Claude applied corrections.md on fix/lore-corrections (commits 955e9ef, 09f26a0; implementation.md in d08c4d2), PR #24 open, not merged: 27 applied, 13 not an error (7 optional skipped), 0 skipped; the L29 default-to-Book-I behaviour was left out as a code change. pnpm check, test:pages and browser spot-checks pass.
