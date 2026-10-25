@@ -1,6 +1,6 @@
 # Queue
 
-Mckay sets the next universe to `stage: research`, `owner: chatgpt` in its `status.md` (the LDS atlas is already started). Order here is the recommended build order; reorder freely.
+**Order is automatic (Mckay, 2026-10-25):** work through this table top to bottom without waiting for Mckay to pick. When the work-in-progress limit in `HANDOFF_PLAN.md` allows a new universe in research, ChatGPT takes the next `queued` row, sets its `status.md` to `stage: research`, `owner: chatgpt`, and adds a History line. Mckay can still reorder this table at any time; his approval is still required before anything goes live.
 
 | # | id | Universe | Track | View | Folder |
 |---|---|---|---|---|---|
