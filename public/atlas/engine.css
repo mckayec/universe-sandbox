@@ -309,3 +309,36 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   #navhint{top:166px}
   .manybooks #navhint{top:204px}
 }
+
+/* ---- header that never clips (A3) ----
+   The back link sits before the brand. When the controls do not fit beside the brand at any width, the engine adds
+   .wrapbooks: the buttons move to a second row with the book filter, and every panel below follows --hdr (the
+   header's real bottom edge, measured by the engine). */
+.top .gl-home{align-self:center;flex:none}
+.top.wrapbooks{flex-wrap:wrap;row-gap:8px}
+.top.wrapbooks .controls{flex:1 1 100%;margin-left:0;flex-wrap:wrap;justify-content:flex-end;row-gap:6px}
+#crumbs{top:calc(var(--hdr,62px) + 14px)}
+#index,#dossier{top:calc(var(--hdr,62px) + 38px);max-height:calc(100% - var(--hdr,62px) - 50px - var(--ch,200px))}
+#navhint{top:calc(var(--hdr,62px) + 42px)}
+/* A13: the credits never run under the dossier; long credits wrap within their own column */
+.chron-head .credits{max-width:min(62ch,calc(100% - 420px))}
+.srcnote.fan{margin-top:8px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* styled fatal panel (engine fail()) */
+.atlas-fail{position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:24px 16px;text-align:center;background:radial-gradient(ellipse at 50% 40%,#121831,#04050b 70%);color:#d9deea;font:15px/1.55 Georgia,serif}
+.atlas-fail .k{font:12px ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;color:#9db8ff}
+.atlas-fail .acts{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
+.atlas-fail a{color:#9db8ff}
+@media (max-width:820px){
+  .top .gl-home{align-self:flex-start}
+  #crumbs{top:calc(var(--hdr,96px) + 8px)}
+  #index{top:calc(var(--hdr,96px) + 40px)}
+  #dossier{top:auto;max-height:62%}
+  #navhint{top:calc(var(--hdr,96px) + 36px)}
+  .manybooks #crumbs,.manybooks #index,.manybooks #navhint{top:auto}
+  .manybooks #crumbs{top:calc(var(--hdr,130px) + 8px)}
+  .manybooks #index{top:calc(var(--hdr,130px) + 40px)}
+  .manybooks #navhint{top:calc(var(--hdr,130px) + 36px)}
+  #realms,.manybooks #realms{top:calc(var(--hdr,96px) + 36px)}
+  .seg button{min-height:36px}
+}
