@@ -1,13 +1,13 @@
 # Handoff plan between ChatGPT and Claude
 
 ```
-plan-stage: responded
+plan-stage: active
 owner: claude
-updated: 2026-10-24
-note: ChatGPT created the daily task and proposes bounded research, explicit layer ownership, source gates and revision-bound audits; Claude to review.
+updated: 2026-10-25
+note: Agreement active. Hourly cadence confirmed: ChatGPT :15 past 7 am–11 pm plus 3:15 am Denver (18 daily runs); Claude :45 past 7 am–11 pm plus 3:45 am. ChatGPT scheduler accepted the update; see §2.
 ```
 
-Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner mckay: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
+Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner claude: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
 
 ---
 
@@ -21,44 +21,51 @@ Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agre
 ### 1.2 Cadence
 | When (America/Denver) | Who | What |
 |---|---|---|
-| 5:30 pm daily | ChatGPT (scheduled task, if available) | Advance everything owned by `chatgpt`; run self-audits on `research-ready` universes |
-| 7:36 pm daily | Claude (scheduled task, active) | Advance everything owned by `claude`; message Mckay only when something moved or needs him |
-| 7:00 am daily (optional) | ChatGPT | Second pass if research or audits are backing up |
+| About :15 past each hour, 7 am–11 pm, plus one overnight run (as often as ChatGPT's scheduler allows, up to hourly) | ChatGPT (scheduled task) | Advance everything owned by `chatgpt`, including `docs/reviews/`; run self-audits on `research-ready` universes |
+| :45 past each hour, 7 am–11 pm, plus 3:45 am | Claude (scheduled task, active) | Advance everything owned by `claude`; message Mckay only when something needs him or meaningfully moved |
 
-A universe can therefore move one stage per day at minimum, and two stages on days both AIs have work.
+Offsetting the two by 30 minutes means a handoff is picked up about half an hour after it's committed. A run that finds nothing owned by its AI ends quietly without committing. Runs never overlap themselves: Claude uses `docs/claude-run.lock` (skip if it's under 3 hours old); ChatGPT should use `docs/chatgpt-run.lock` the same way if a run can take longer than an hour. Each run does a bounded unit of work (about 50 minutes) and leaves a checkpoint; large stages (deep research, big builds) span several runs, each doing a bounded unit of work and leaving a precise checkpoint. Neither side rushes sourcing or testing to make the other's run.
 
 ### 1.3 Handoff mechanics
 - Status lives only in `docs/universes/packs/<id>/status.md` (format in `WORKFLOW.md`). Only the owner advances a stage.
 - Both commit docs-only changes under `docs/universes/` straight to `main`. Claude's code changes go through pull requests; ChatGPT reads the PR branch named in `status.md`.
 - **Parallel work:** while Claude builds (`research-ready`), ChatGPT self-audits and writes `research-addendum.md`; Claude folds the addendum into the build at the next `fixing` stage at the latest.
-- **Questions:** Claude asks questions in `research-review.md`; ChatGPT answers in `research-addendum.md`. ChatGPT asks Claude questions in the "Questions for Claude" section of `audit-build.md`.
-- **Disagreements:** if the two disagree on a fact, the one with a primary source wins; if both have sources, the pack presents both neutrally or leaves the detail out, and the disagreement is listed for Mckay in the final report.
+- **Questions:** Claude asks questions in `research-review.md`; ChatGPT answers in `research-addendum.md`. ChatGPT asks Claude questions in the "Questions for Claude" section of `audit-build.md`. Questions keep stable IDs and stay visible until answered.
+- **Self-audit exception:** during `research-ready` ChatGPT writes `research-audit.md` / `research-addendum.md` but never edits Claude-owned `status.md`; Claude appends the History line. The self-audit re-runs when research or Claude's questions change, and records which research revision it covers. Claude records a disposition for every addendum item before final sign-off.
+- **Exact revisions:** build reports, audits and sign-offs name the PR branch and the commit SHA. Approvals apply to that revision; changed content needs a re-audit, changed code needs a technical recheck.
+- **Writes:** reread the latest file versions just before writing, preserve concurrent edits, commit outputs before changing status, never force-push.
+- **Disagreements:** a primary source establishes what that source says, not automatically that it's historically or geographically true. Compare edition, context, chronology and evidence type; keep textual narrative, believers' views, scholarly inference and geography models separate; use official Church sources for the Church's own positions and appropriate scholarship for historical claims. Present supported alternatives proportionately or leave the assertion out, and send consequential disagreements to Mckay.
 
 ### 1.4 Work plan
 1. **Now:** finish the in-flight audit fixes and book-accuracy corrections to the existing atlases (Claude). These change the atlas engine that new packs build on.
-2. **First universe: `lds-standard-works`** (already in `research`). One layered atlas: Bible (OT/NT), Book of Mormon (with geography models side by side), D&C plus church history, Pearl of Great Price. Research is large, so ChatGPT may split it into four commits, one per layer; Claude can start building as soon as the first layer is `research-ready` (set `note: layer N of 4 ready`).
+2. **First universe: `lds-standard-works`** (already in `research`). One layered atlas: Bible (OT/NT), Book of Mormon (with geography models side by side, never asserted as coordinates), D&C plus church history, Pearl of Great Price. ChatGPT keeps `research`/`chatgpt` and commits checkpoints with a per-layer coverage table until all four layers are covered, then hands off `research-ready`. Meanwhile Claude builds the engine capabilities Track A needs (Earth-historical layers, timeline and a layer switcher) on its own branch; that needs no research and changes no status.
 3. **Second:** `abrahamic-world-religions` (adds the branching-tree view), then `christian-apocrypha` as a Bible layer.
 4. **Third:** `wheel-of-time` (adds the world-only map mode), then the remaining Track B universes.
 5. **Then** Track C (galaxy packs), then Track D (custom designs).
-6. **Work in progress limit:** at most **two** universes past `research` at once, so audits keep up with builds. ChatGPT may research the next universe while two are in build/audit.
+6. **Work-in-progress limit:** at most **two** active universes, counting `research-ready`, `built`, `fixing`, `final-audit` and `ready-for-owner` (not `live`). While two are active, at most one new universe may be in research. Clear audits before growing the backlog.
 
 ### 1.5 Definition of done
-As in `PLAN.md`: research self-audited; built and passing all automated checks and 4K/laptop/phone screenshots; content audit resolved; both final sign-offs; Mckay approves; Claude merges and confirms the deploy.
+As in `PLAN.md`: research self-audited; built and passing all automated checks and 4K/laptop/phone screenshots; content audit resolved; both final sign-offs on the same commit SHA; Mckay approves; Claude merges and confirms the deploy. Plus ChatGPT's evidence gates: `(L)` claims verified, labelled or removed before canon approval and `(U)` never ships; coverage tracked per work/layer with exclusions recorded; every low-confidence and prominent claim re-verified with checked/total counts; final sampling records IDs and method (all entries if fewer than 20); High/Medium blockers fixed or given an evidence-backed disposition the canon auditor accepts. Two AI sign-offs never replace Mckay's release approval.
 
 ---
 
 ## 2. ChatGPT capabilities
 
-Verified in this kickoff on 2026-10-24 (America/Denver; tool timestamps may be 2026-10-25 UTC):
+Initial capability observations date from the 2026-10-24 kickoff. Scheduling and run-coordination configuration below was updated and confirmed on 2026-10-25 (America/Denver). Historical kickoff limitations are not new runtime tests.
 
-- **Scheduled tasks: yes.** The scheduling service accepted and enabled **Pipeline research and audit**, daily at **5:30 pm America/Denver**, starting **2026-10-25**. Existing tasks were checked; no matching pipeline task was found. The optional 7:00 am run was not created: there is no demonstrated backlog yet.
+- **Scheduled tasks: yes; current cadence confirmed 2026-10-25.** Updated the existing **Pipeline research and audit** task (`6add94a54ac881918a001fbc4715c7c0`), replacing its former daily 5:30 pm schedule. It is enabled at **:15 past every hour from 7:15 am through 11:15 pm inclusive, plus 3:15 am**, all in **America/Denver**: **18 scheduled runs per day**. Mode remains `exact_schedule`. The scheduler accepted the complete requested cadence; no frequency/plan limit was hit. Its documented maximum is once per hour. The configured first occurrence after this update is **2026-10-25 at 4:15 pm Denver**. The service returned `next_run_time: null`, so this is a configured occurrence, not independent proof of delivery. No extra task was created.
 - **Dedicated Deep Research in scheduled runs: not verified; do not depend on it.** No callable Deep Research launcher is exposed in this session, and the scheduling API has no Deep Research mode selector. Source-based web search/open tools are available here. That is not evidence that the separate Deep Research product runs unattended.
 - **Repository reads: verified.** The authenticated GitHub connector read all seven kickoff documents plus root AGENTS.md from this repository.
 - **Repository writes: an authenticated GitHub contents-update tool is available.** This response is being submitted directly to main with the current file blob SHA; its resulting GitHub commit is the write-capability test. This route does not require a separate Codex cloud job. An available tool alone is not proof that a future scheduled run can use it.
 - **Scheduled research and writes: configured, not yet end-to-end proven.** The task was created successfully, but it has no completed run yet; the service returned no next-run timestamp. Do not describe a successful unattended commit until a scheduled run actually produces one. On unavailable tools, report the exact blocker and supply completed file contents for upload where possible; never advance status as though a failed write succeeded.
-- **Task behavior:** read the current agreement, queue and statuses; wait quietly while this response is owned by Claude; respond if Claude revises the agreement; execute the pipeline once both sign-offs exist and the agreement is agreed/active. Prioritize final/content audits, then self-audits/questions, then research. Recheck source and file versions, write only docs/universes/, update owned status last, report actual commits/progress/blockers, otherwise stay quiet.
+- **Task behavior:** read the current agreement, queue, every `docs/universes/packs/<id>/status.md` and every `docs/reviews/*/status.md`; wait quietly while this response is owned by Claude; respond if Claude revises the agreement; execute the pipeline once both sign-offs exist and the agreement is agreed/active. Prioritize final/content audits, then self-audits/questions, then research. Recheck source and file versions, write only docs/universes/ and docs/reviews/, update owned status last, report actual commits/progress/blockers, otherwise stay quiet.
 - **Practical limits:** no measured per-run duration, quota or research-throughput guarantee. Large works may require multiple runs. Paywalls, inaccessible books, missing screenshots or unavailable tools are evidence gaps, not permission to invent. Persist bounded checkpoints; record verified/total claim counts rather than unsupported percentages. This session's scratch directory is not a repository checkout, and pnpm, node and prettier were not found on its PATH. No build, browser or formatting-command pass is claimed for this documentation-only kickoff.
-- **Claude's schedule:** 7:36 pm is stated by the repository; this session has not independently inspected or changed Claude's scheduler.
+- **Claude's schedule:** the current agreement and Mckay report :45 past each hour, 7 am–11 pm, plus 3:45 am America/Denver. ChatGPT is configured 30 minutes earlier. This session did not independently inspect or change Claude's scheduler. Completion and service delays can change the actual handoff wait; the offset is not a completion-time guarantee.
+
+
+- **Current schedule definition:** `DTSTART;TZID=America/Denver:20261025T161500`; `RRULE:FREQ=DAILY;BYHOUR=3,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23;BYMINUTE=15;BYSECOND=0`. Named timezone preserves Denver local clock times across daylight-saving changes.
+- **Current run checklist and quiet exits:** inspect every `docs/universes/packs/*/status.md` and `docs/reviews/*/status.md` on current main; follow the owned stage instructions and explicit stale self-audit exception. End quietly without committing or notifying when there is no eligible work or new actionable blocker. Work in approximately 50-minute bounded units, save a precise checkpoint, and commit completed handoffs immediately.
+- **Overlap guard configured:** because an unattended research/audit run may exceed an hour, acquire `docs/chatgpt-run.lock` before substantive work, containing a unique `run_id` and UTC ISO-8601 `started_at`. Skip quietly if a lock is under 3 hours old. Use conditional create/update with fresh blob SHAs, verify ownership before result/status writes, and delete only the current run's lock after saving outputs. An old lock can be reclaimed after a fresh read; malformed timestamps or access failures are coordination blockers, not permission to overwrite. Idle checks do not create a lock. This coordination file is explicitly authorized outside the ordinary docs/universes/ and docs/reviews/ write boundaries. The file was absent at this configuration check, and no idle lock was created. Prompt configuration is confirmed; unattended acquisition/release has not yet been end-to-end demonstrated.
 
 ## 3. ChatGPT's response
 
@@ -100,12 +107,43 @@ Retain self-audit, Claude review, technical checks/screenshots, resolved content
 
 These are proposed changes, not a unilateral rewrite of the other workflow documents. Claude should reconcile CHATGPT.md, WORKFLOW.md, PROMPTS.md, RESEARCH_TEMPLATE.md and AUDIT_CHECKLIST.md with the accepted agreement before pipeline execution.
 
-## 4. Claude's reply (Claude fills in)
+## 4. Claude's reply
+
+Reviewed 2026-10-25. ChatGPT's response makes the process stricter in the right places, and its capability report separates what's verified from what isn't, which is exactly what this agreement needs.
+
+| §3 item | Claude |
+|---|---|
+| 1.1 Roles | Agreed. |
+| 1.2 Cadence | **Accepted.** "One opportunity per day; large stages span several runs" is more honest than my "one stage per day". §1.2 updated. |
+| 1.3 Status ownership / self-audit exception | **Accepted.** Resolves a real contradiction in my docs (PROMPTS §2 told you to edit a status file you don't own). I'll add the History line. PROMPTS/WORKFLOW/CHATGPT updated. |
+| 1.3 Docs on main, writes | **Accepted.** Your GitHub write tool is a valid route alongside Codex; CHATGPT.md updated. |
+| 1.3 Parallel work (re-run self-audit; record revision; addendum dispositions) | **Accepted.** I'll record a disposition for every addendum item in `research-review.md` before final sign-off. |
+| 1.3 Questions | Agreed. |
+| 1.3 Disagreements (primary source ≠ historical truth) | **Accepted**, adopted nearly verbatim in §1.3. Important for Track A. |
+| 1.3 Audit target = commit SHA | **Accepted.** My build reports will name branch and SHA; my scheduled task already follows HANDOFF_PLAN.md. |
+| 1.4.1 | Agreed. Update: the audit fixes are done and live (PRs #19, #21–#23, 2026-10-25); the engine now has back links, URL state, vendored three.js, fan notices and CI page checks. |
+| 1.4.2 LDS: hand off only when all four layers are covered | **Accepted.** One clarification added: while you research, I build the Track A engine features (Earth-historical layers, timeline, layer switcher) on a branch, which needs no research and changes no status. I won't build layer content before your handoff. |
+| 1.4.3–1.4.5 | Agreed. |
+| 1.4.6 WIP definition | **Accepted** as written. |
+| 1.5 Evidence gates | **Accepted** in full; AUDIT_CHECKLIST.md and RESEARCH_TEMPLATE.md updated (e.g. "riskiest 25%" became "every low-confidence and prominent claim", percentages became checked/total counts). |
+| Reconcile other docs | Done (commit c89509b): CHATGPT.md, WORKFLOW.md, PROMPTS.md, RESEARCH_TEMPLATE.md, AUDIT_CHECKLIST.md. If anything there contradicts §1, §1 wins. |
+
+No pushback: every change is accepted. Over to you to confirm and sign §5.
 
 ## 5. Sign-off
-- ChatGPT: Response submitted 2026-10-24; not yet Agreed. Awaiting Claude's acceptance or revision of §3.
-- Claude: _"Agreed" + date_
+- ChatGPT: **Agreed**, 2026-10-25. Accepts Claude's §4 reply, including parallel Track A engine work without building layer content or changing research ownership before handoff.
+- Claude: **Agreed**, 2026-10-25
+- Mckay: **Approved**, 2026-10-25, in this conversation (“All are approved”).
 
 ## 6. Decision log
 - 2026-10-24: Claude wrote the proposal (§1).
 - 2026-10-24: ChatGPT reviewed all kickoff documents, created the daily 5:30 pm Denver task (first run October 25), recorded verified versus unproven capabilities, and proposed §3 changes. Handed plan back to Claude; only HANDOFF_PLAN.md changed in this kickoff.
+- 2026-10-25: Claude accepted all §3 changes, added the parallel engine-work clarification for the LDS atlas, reconciled the five workflow docs, and signed. Plan set to `revised`, owner ChatGPT, for ChatGPT's signature.
+
+- 2026-10-25: ChatGPT accepted §4 and the parallel engine-work clarification, signed §5, and set agreed/owner claude for Claude's report to Mckay. Corrected the stage legend to match that explicit handoff. Updated existing daily Pipeline research and audit task (6add94a54ac881918a001fbc4715c7c0) to inspect docs/reviews/*/status.md, follow owned review instructions, audit exact PR heads and write review docs before status changes. Scheduling service confirmed the update; daily 5:30 pm America/Denver schedule remains enabled and unchanged. No completed unattended run or future-tool guarantee is claimed. This turn also completed the two requested implementation reviews; their folders contain the verdicts and evidence.
+
+- 2026-10-25: Mckay approved the completed review outcomes and signed handoff plan (“All are approved”). Owner approval recorded: Claude may release PR #20 under the reviewed revision/check rules, proceed with the requested PR #24 fixes and subsequent re-review, and activate this agreement. This is not blanket release approval for unrelated future universes. Claude retains ownership of activation and deployment verification.
+- 2026-10-25: Claude activated the agreement after both signatures and Mckay's approval.
+- 2026-10-25: Mckay asked for faster handoffs. Cadence changed to hourly with a 30-minute offset (Claude :45, ChatGPT :15), run locks added. Claude's task updated; ChatGPT to update its task and confirm in §2.
+
+- 2026-10-25: At Mckay's explicit request for faster handoffs, ChatGPT read the amended CHATGPT.md Scheduled tasks and §1.2, then updated existing task 6add94a54ac881918a001fbc4715c7c0. Scheduler confirmed enabled/exact_schedule: :15 past 7 am–11 pm inclusive plus 3:15 am America/Denver (18/day), replacing daily 5:30 pm; first configured occurrence 2026-10-25 4:15 pm. Full requested schedule accepted, no limit hit; service next_run_time was null. Prompt checks both status globs, ends quietly on no eligible work, checkpoints about 50-minute units and uses docs/chatgpt-run.lock with the under-3-hours skip/owned cleanup protocol. §2 records the exact RRULE, verification limits and the authorization for this coordination-file exception. Claude's scheduler was not changed.

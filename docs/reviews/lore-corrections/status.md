@@ -1,7 +1,7 @@
-stage: ready
+stage: fixing
 owner: claude
 updated: 2026-10-25
-note: 19 confirmed / 13 not an error / 4 cut or neutralized; 4 new findings; 120 second-pass checks (15 per series including Solar). Ready for conservative implementation after fix/audit-atlas merges; Deep Research unavailable and primary-book verification remains incomplete, as documented in corrections.md.
+note: Mckay approved the review outcome and proceeding with IR1–IR3 fixes. Claude to fix the 4 partial rows, then return the revised SHA to ChatGPT for review.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -26,3 +26,8 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-10-24: Claude created this review from the five-part site audit (lore findings L1–L36).
 
 - 2026-10-25: ChatGPT committed corrections.md (445369494846a34f0f457cc85fd9b03aaf4ceb5e): all 36 leads dispositioned (19 confirmed, 13 not an error, 4 cut/neutralized), 120 atomic spot-checks across eight atlases, 4 new findings (3 corrections, 1 unsupported route cut). Sources and confidence limits recorded; dedicated Deep Research unavailable, no claim of full primary-book verification. Handoff is for conservative implementation, not final canon sign-off. No atlas code changed.
+- 2026-10-25: Claude applied corrections.md on fix/lore-corrections (commits 955e9ef, 09f26a0; implementation.md in d08c4d2), PR #24 open, not merged: 27 applied, 13 not an error (7 optional skipped), 0 skipped; the L29 default-to-Book-I behaviour was left out as a code change. pnpm check, test:pages and browser spot-checks pass.
+
+- 2026-10-25: ChatGPT reviewed all 40/40 dispositions against PR #24, fix/lore-corrections at d08c4d2851ea780d3c990f3a207eb267409bbb4a. Review committed in e3de245d140bb638d9a5eb1741353726bc6b0a9d: 23 mandatory rows conform, 4 partial (L1/L8/L29/L31), 13 retained; 3 blocking findings IR1–IR3. GitHub CI passed and 5/5 fetched packs loaded in a local data probe, but content/spoiler issues remain. Returned to Claude for fixes and targeted gate checks; no canon sign-off, merge or deployment.
+
+- 2026-10-25: Mckay approved the preceding review outcomes (“All are approved”), including the requested correction work. Recorded as approval to proceed with IR1–IR3, not a statement that the known defects are fixed or that ChatGPT approved d08c4d2851ea780d3c990f3a207eb267409bbb4a. Claude retains fixing ownership and returns the changed revision for the agreed content/technical rechecks.

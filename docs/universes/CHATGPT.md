@@ -40,7 +40,7 @@ What to do at each stage you own:
 | `stage` | Do this | Prompt |
 |---|---|---|
 | `research` | Research and write `research.md` + `sources.md`; hand to Claude | `PROMPTS.md` §1 |
-| `research-ready` (owner claude) | Not your turn, **but** run your self-audit and deep dive in parallel and write `research-audit.md` / `research-addendum.md`. Don't change the stage | `PROMPTS.md` §2 |
+| `research-ready` (owner claude) | Not your turn, **but** run your self-audit and deep dive in parallel and write `research-audit.md` / `research-addendum.md`. Don't edit `status.md` (Claude owns it and adds the History line); record the audited research SHA in `research-audit.md`. | `PROMPTS.md` §2 |
 | `built` | Audit Claude's build; write `audit-build.md`; hand back | `PROMPTS.md` §3 |
 | `final-audit` | Final canon pass; sign off in `audit-final.md` | `PROMPTS.md` §4 |
 
@@ -50,9 +50,12 @@ Besides new universes, Claude sometimes asks you to review something before it i
 - `docs/reviews/vite-upgrade/`: vet Claude's proposed dependency security update and write `review.md`.
 
 ## How to write to the repo
-- Preferred: **Codex** connected to `mckayec/universe-sandbox`. Commit directly to `main`, only under `docs/universes/`, with a clear message like `research(lds-standard-works): initial research`.
+- Preferred: your authenticated GitHub write tool, or **Codex**, connected to `mckayec/universe-sandbox`. Commit directly to `main`, only under `docs/universes/`, with a clear message like `research(lds-standard-works): initial research`.
 - If you can't commit, produce the complete files and ask Mckay to upload them (or to paste them to Claude, who will commit them).
 - Never touch files outside `docs/universes/` and `docs/reviews/`. Never merge or edit pull requests; you review them by reading the PR branch named in `status.md`.
+
+## Agreed working rules
+The signed agreement in `HANDOFF_PLAN.md` takes precedence over this file. In particular: name exact commit SHAs in every audit; large stages span several runs with checkpoints; for religious topics, a primary source establishes what the text says, not historical truth, so keep text / believers / scholarship / geography models separate and use official Church sources only for the Church's own positions.
 
 ## Quality bar for your work
 - Every fact gets a source tag and a confidence tag `(C)` / `(L)` / `(U)` as described in the template. Unsourced details get cut, not guessed.
@@ -62,16 +65,15 @@ Besides new universes, Claude sometimes asks you to review something before it i
 - Paraphrase; no long quotations (public-domain scripture excepted).
 
 ## Scheduled tasks (your side)
-Claude checks the repo every evening at **7:36 pm America/Denver** and does whatever is its turn. To keep handoffs moving, set up recurring ChatGPT scheduled tasks if your plan and tools allow it. Recommended schedule:
+Claude checks the repo **every hour at :45 past, 7 am–11 pm, plus 3:45 am (America/Denver)** and does whatever is its turn. Run yours **about 30 minutes offset** so each picks up the other's handoffs quickly:
 
 | Task | When (America/Denver) | What it does |
 |---|---|---|
-| **Pipeline research and audit** | Daily, **5:30 pm** (2 hours before Claude's run, so Claude picks up your output the same evening) | Read every `status.md`; for each universe owned by `chatgpt`, run the matching `PROMPTS.md` section; for any universe in `research-ready`, run the self-audit (§2) if `research-audit.md` doesn't exist yet. Commit results and update status. |
-| **Morning review** (optional, only if one daily run isn't keeping up) | Daily, **7:00 am** | Same as above, so a universe can move twice a day |
+| **Pipeline research and audit** | Hourly at about **:15 past, 7 am–11 pm**, plus one overnight run, or as often as your scheduler allows (up to hourly) | Read every `docs/universes/packs/*/status.md` and `docs/reviews/*/status.md`; for each item owned by `chatgpt`, do the matching work (`PROMPTS.md` section, or the review's own instructions); for any universe in `research-ready`, run the self-audit (§2) if it isn't current. Commit results and update status. If nothing is owned by `chatgpt`, end quietly without committing. If a run may exceed an hour, use `docs/chatgpt-run.lock` (timestamp; skip if under 3 hours old; delete when done). |
 
 Whether scheduled tasks are possible depends on your plan and on whether scheduled runs can use Deep Research and Codex. Check this, record what you found in `HANDOFF_PLAN.md` (Section "ChatGPT capabilities"), and choose the closest workable setup:
 - **Scheduled runs can research and commit:** create the tasks above.
 - **Scheduled runs can research but not commit:** create the tasks so they write the files and send Mckay a reminder to upload them.
 - **No scheduled runs:** create nothing. Mckay will paste the matching `PROMPTS.md` prompt when Claude's evening message tells him it's your turn.
 
-Do not create schedules more often than twice a day. If a scheduled run finds nothing owned by `chatgpt`, end quietly.
+Do not schedule more often than hourly. If a scheduled run finds nothing owned by `chatgpt`, end quietly.

@@ -28,7 +28,7 @@ The repo is `mckayec/universe-sandbox` on GitHub. The shared folder is `docs/uni
 > 2. Also skim `docs/atlas/PACK_FORMAT.md` so your research matches what the atlas engine can display.
 > 3. Do deep research on **<universe name>** and write `docs/universes/packs/<id>/research.md` following RESEARCH_TEMPLATE.md exactly, and `sources.md` listing every source (title, URL or book+chapter, what it supports). Cite every fact with a source tag and a confidence tag. Prefer the primary works; never invent details; flag film/TV differences separately; give every fact the earliest book where a reader learns it.
 > 4. Aim for completeness a dedicated fan (or, for religious topics, a careful scholar and a believing reader alike) would respect: all major places, events, journeys and concepts across every work in scope.
-> 5. Commit both files under `docs/universes/packs/<id>/` (via Codex, directly to `main`, only touching that folder), then update `status.md`: `stage: research-ready`, `owner: claude`, today's date, and a one-line note including how many places/events/journeys you documented. Append a History line.
+> 5. Commit both files under `docs/universes/packs/<id>/` (directly to `main` with your GitHub write tool or Codex, only touching that folder; reread the latest file versions just before writing), then update `status.md`: `stage: research-ready`, `owner: claude`, today's date, and a one-line note including how many places/events/journeys you documented. Append a History line.
 > If you can't commit, give me the complete files to upload.
 
 ---
@@ -40,7 +40,7 @@ The repo is `mckayec/universe-sandbox` on GitHub. The shared folder is `docs/uni
 > 1. Read `docs/universes/AUDIT_CHECKLIST.md` §1, then `docs/universes/packs/<id>/research.md`, `sources.md`, and (if present) `research-review.md` (Claude's questions to you).
 > 2. Do every item in checklist §1. Treat your earlier work skeptically: re-open sources for every `(L)` claim and every prominent claim, sweep for fabricated details, and look for important things you missed. Use fresh searches, not memory.
 > 3. Write `docs/universes/packs/<id>/research-audit.md` (findings table + depth summary: sources consulted, % confirmed, what you added). Put every correction or addition, and answers to Claude's questions, in `research-addendum.md` using the same structure as `research.md`.
-> 4. Commit those files (Codex, `main`, that folder only). Don't change `status.md` stage; add a History line: "Self-audit done: N corrections, M additions".
+> 4. Commit those files (Codex, `main`, that folder only). Don't edit `status.md` at all (Claude owns it during this stage): put the audited research commit SHA, the date, and "Self-audit done: N corrections, M additions" at the top of `research-audit.md`; Claude adds the History line. Re-run this self-audit whenever `research.md` or Claude's questions change.
 
 ---
 
@@ -49,7 +49,7 @@ The repo is `mckayec/universe-sandbox` on GitHub. The shared folder is `docs/uni
 > You are auditing Claude's build of the **<universe name>** atlas for accuracy. Repo: `mckayec/universe-sandbox`.
 >
 > 1. Read `docs/universes/packs/<id>/status.md`. Only continue if `stage: built` and `owner: chatgpt`. The note names the pull request branch.
-> 2. Read `docs/universes/AUDIT_CHECKLIST.md` §3, the build report `docs/universes/packs/<id>/build-report.md` (with screenshots in `shots/`), and the pack file `public/atlas/packs/<id>.js` **on the PR branch** named in status.md.
+> 2. Read `docs/universes/AUDIT_CHECKLIST.md` §3, the build report `docs/universes/packs/<id>/build-report.md` (with screenshots in `shots/`), and the pack file `public/atlas/packs/<id>.js` **at the exact commit SHA** named in status.md and build-report.md. Put that SHA at the top of your audit; your findings apply to that revision only.
 > 3. Check every label, description, event, journey and codex entry against your research and the source works. Flag anything wrong, anything missing, anything in the pack that isn't in the research (possible invention), spoiler leaks, and tone problems. Give file + line for each finding.
 > 4. Write `docs/universes/packs/<id>/audit-build.md` as the findings table from the checklist, commit it (Codex, `main`, that folder only), and update `status.md`: `stage: fixing`, `owner: claude`, note "N findings (H high / M medium / L low)". Append a History line.
 
@@ -60,5 +60,5 @@ The repo is `mckayec/universe-sandbox` on GitHub. The shared folder is `docs/uni
 > Final canon audit for the **<universe name>** atlas. Repo: `mckayec/universe-sandbox`.
 >
 > 1. Read `status.md` (continue only if `stage: final-audit` and `owner: chatgpt`), `AUDIT_CHECKLIST.md` §4, `audit-build.md` (with Claude's resolutions), and the pack file on the PR branch named in status.md.
-> 2. Verify every High/Medium finding was resolved correctly, and spot-check 20 random entries against sources.
+> 2. Verify every High/Medium finding was resolved correctly at the commit SHA named in status.md, and spot-check 20 random entries against sources (all entries if fewer than 20; record which IDs you picked and how). Confirm every `(L)` claim in the pack has been verified, labelled as uncertain/model, or removed; no `(U)` claim may ship.
 > 3. Add your section to `docs/universes/packs/<id>/audit-final.md` ending with **"Canon: approved"** or a list of blockers. Commit it. If approved, set `owner: claude` (keep `stage: final-audit`) so Claude runs the technical pass; if blocked, set `stage: fixing`, `owner: claude`. Append a History line.

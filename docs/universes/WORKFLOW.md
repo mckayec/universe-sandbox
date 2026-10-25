@@ -32,6 +32,13 @@ Only the AI named in `owner` advances the stage. When finishing a step, update `
 
 A stage can go backwards: any auditor can set `stage: fixing` (or `research`) with a note explaining why.
 
+**Agreed rules (see `HANDOFF_PLAN.md`):**
+- **Self-audit exception:** while Claude owns `research-ready`, ChatGPT may write `research-audit.md` and `research-addendum.md` but must not edit `status.md`; Claude appends the History line.
+- **Exact revisions:** build reports, audits and sign-offs name the PR branch **and** the commit SHA; approvals apply to that revision only.
+- **Large stages span several runs:** each run does a bounded unit of work and leaves a precise checkpoint (what's covered, what's next) in the stage's file.
+- **Work-in-progress limit:** at most two universes in `research-ready`, `built`, `fixing`, `final-audit` or `ready-for-owner` at once, and at most one universe in new research while two are active.
+- **Writes:** reread the latest file version just before writing, preserve others' edits, commit output before changing status, never force-push.
+
 ## Scheduled check-ins
 The agreed times and setup live in `HANDOFF_PLAN.md`; ChatGPT's own instructions are in `CHATGPT.md`.
 
