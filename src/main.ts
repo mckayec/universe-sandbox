@@ -10,8 +10,10 @@ import { addBody } from './bodies/registry.ts';
 import { applyExhibitPreferences, applyQualityScale, updateQualityModeButton } from './scene/quality.ts';
 import { camera, labelRenderer, lensingPass } from './scene/setup.ts';
 import { app, bodies } from './state/app-state.ts';
-import { snapshotUniverse, updateHistoryButtons } from './state/history.ts';
+import { updateHistoryButtons } from './state/history.ts';
 import { setInteractionMode, updateScienceModeButton } from './ui/controls.ts';
+import { recoverySnapshot } from './ui/feed.ts';
+import { prewarmEffectTextures } from './visuals/textures.ts';
 
 if (import.meta.env.PROD && 'serviceWorker' in navigator)
   addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => undefined));
@@ -30,8 +32,10 @@ updateQualityModeButton();
 applyExhibitPreferences();
 
 animate();
+prewarmEffectTextures();
 addEventListener('pagehide', () => {
-  if (bodies.length) saveRecoverySnapshot(snapshotUniverse());
+  const snapshot = recoverySnapshot();
+  if (snapshot && snapshot.bodies.length) saveRecoverySnapshot(snapshot);
 });
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight;
