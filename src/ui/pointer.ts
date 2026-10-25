@@ -25,6 +25,29 @@ import { recordHistory, snapshotUniverse } from '../state/history.ts';
 import { noteActivity, select, toast } from './feed.ts';
 import { closeObjectMenu, openObjectMenu } from './inspector.ts';
 
+// Reused per-event temporaries (pointermove fires at display rate during pans and pinches).
+const tmpCenter = new THREE.Vector2(),
+  tmpOffset = new THREE.Vector3(),
+  tmpForward = new THREE.Vector3(),
+  tmpRight = new THREE.Vector3(),
+  UP = new THREE.Vector3(0, 1, 0);
+/** Ground-plane forward/right axes for the current camera, written into tmpForward/tmpRight. */
+function groundAxes() {
+  camera.getWorldDirection(tmpForward);
+  tmpForward.y = 0;
+  if (tmpForward.lengthSq() < 0.01) tmpForward.set(0, 0, -1);
+  tmpForward.normalize();
+  tmpRight.crossVectors(tmpForward, UP).normalize();
+}
+/** The body being dragged, or null if it was removed (e.g. consumed in a collision) mid-drag. */
+function liveDragBody() {
+  if (app.dragBody && !bodies.includes(app.dragBody)) {
+    app.dragBody = null;
+    app.historyBeforeDrag = null;
+    clearGuides();
+  }
+  return app.dragBody;
+}
 function setPointer(e: MouseEvent | PointerEvent | WheelEvent) {
   const r = renderer.domElement.getBoundingClientRect();
   pointer.set(((e.clientX - r.left) / r.width) * 2 - 1, (-(e.clientY - r.top) / r.height) * 2 + 1);
@@ -156,20 +179,15 @@ export function bindPointerEvents() {
           dx = points[1].x - points[0].x,
           dy = points[1].y - points[0].y,
           distance = Math.max(1, Math.hypot(dx, dy)),
-          center = new THREE.Vector2((points[0].x + points[1].x) / 2, (points[0].y + points[1].y) / 2),
+          center = tmpCenter.set((points[0].x + points[1].x) / 2, (points[0].y + points[1].y) / 2),
           zoom = THREE.MathUtils.clamp(app.touchGesture.distance / distance, 0.22, 4.5),
-          offset = app.touchGesture.camera.clone().sub(app.touchGesture.target).multiplyScalar(zoom),
-          panScale = offset.length() * 0.0015,
-          forward = new THREE.Vector3();
-        camera.getWorldDirection(forward);
-        forward.y = 0;
-        if (forward.lengthSq() < 0.01) forward.set(0, 0, -1);
-        forward.normalize();
-        const right = new THREE.Vector3().crossVectors(forward, new THREE.Vector3(0, 1, 0)).normalize(),
-          shift = right
-            .multiplyScalar(-(center.x - app.touchGesture.center.x) * panScale)
-            .addScaledVector(forward, (center.y - app.touchGesture.center.y) * panScale);
-        viewTarget.copy(app.touchGesture.target).add(shift);
+          offset = tmpOffset.copy(app.touchGesture.camera).sub(app.touchGesture.target).multiplyScalar(zoom),
+          panScale = offset.length() * 0.0015;
+        groundAxes();
+        viewTarget
+          .copy(app.touchGesture.target)
+          .addScaledVector(tmpRight, -(center.x - app.touchGesture.center.x) * panScale)
+          .addScaledVector(tmpForward, (center.y - app.touchGesture.center.y) * panScale);
         camera.position
           .copy(viewTarget)
           .add(offset.setLength(THREE.MathUtils.clamp(offset.length(), MIN_CAMERA_DISTANCE, MAX_CAMERA_DISTANCE)));
@@ -197,14 +215,12 @@ export function bindPointerEvents() {
         dy = e.clientY - panStart.y;
       app.didPan ||= Math.hypot(dx, dy) > 4;
       if (app.didPan) {
-        const distance = camera.position.distanceTo(viewTarget),
-          forward = new THREE.Vector3();
-        camera.getWorldDirection(forward);
-        forward.y = 0;
-        if (forward.lengthSq() < 0.01) forward.set(0, 0, -1);
-        forward.normalize();
-        const right = new THREE.Vector3().crossVectors(forward, new THREE.Vector3(0, 1, 0)).normalize(),
-          shift = right.multiplyScalar(-dx * distance * 0.00145).addScaledVector(forward, dy * distance * 0.00145);
+        const distance = camera.position.distanceTo(viewTarget);
+        groundAxes();
+        const shift = tmpOffset
+          .copy(tmpRight)
+          .multiplyScalar(-dx * distance * 0.00145)
+          .addScaledVector(tmpForward, dy * distance * 0.00145);
         viewTarget.copy(targetStart).add(shift);
         camera.position.copy(camStart).add(shift);
         camera.lookAt(viewTarget);
@@ -216,7 +232,8 @@ export function bindPointerEvents() {
       app.longPressTimer = 0;
       app.longPressBody = null;
     }
-    if (!app.dragBody) return;
+    const dragBody = liveDragBody();
+    if (!dragBody) return;
     setPointer(e);
     dragPoint.copy(world);
     app.didDrag ||= dragPoint.distanceTo(dragStart) > 0.35;
@@ -225,8 +242,8 @@ export function bindPointerEvents() {
       app.longPressTimer = 0;
       app.longPressBody = null;
     }
-    app.dragBody.mesh.position.copy(world);
-    if (app.orbitMode) showGuides(app.dragBody);
+    dragBody.mesh.position.copy(world);
+    if (app.orbitMode) showGuides(dragBody);
   });
   renderer.domElement.addEventListener('pointerup', e => {
     if (e.pointerType === 'touch') activePointers.delete(e.pointerId);
@@ -260,13 +277,14 @@ export function bindPointerEvents() {
       app.longPressTriggered = false;
       app.dragBody = null;
       app.historyBeforeDrag = null;
-    } else if (app.dragBody) {
-      if (app.didDrag && app.historyBeforeDrag) recordHistory(app.historyBeforeDrag);
-      if (!(app.orbitMode && snapOrbit(app.dragBody)))
-        app.dragBody.velocity
-          .copy(dragStart)
-          .sub(dragPoint)
-          .multiplyScalar(app.didDrag ? 0.55 : 0);
+    } else if (liveDragBody()) {
+      const dragBody = app.dragBody!;
+      // A plain click only selects: velocity and history change only when the body was actually dragged.
+      if (app.didDrag) {
+        if (app.historyBeforeDrag) recordHistory(app.historyBeforeDrag);
+        if (!(app.orbitMode && snapOrbit(dragBody)))
+          dragBody.velocity.copy(dragStart).sub(dragPoint).multiplyScalar(0.55);
+      }
       app.dragBody = null;
       app.historyBeforeDrag = null;
     }
