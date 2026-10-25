@@ -2,7 +2,7 @@
 import { container, scienceOverlayGroup } from '../scene/setup.ts';
 import { app, audio, trails } from '../state/app-state.ts';
 import type { PlacementBuilder } from '../state/types.ts';
-import { toast } from './feed.ts';
+import { toast, updateLifeZoneButton } from './feed.ts';
 import { closeObjectMenu } from './inspector.ts';
 
 export function setSimulationSpeed(value: number) {
@@ -72,9 +72,12 @@ export function toggleHabitabilityGuides() {
   const button = document.querySelector('#habitability-mode')!;
   button.textContent = `Life zones: ${app.habitabilityGuides ? 'placement' : 'off'}`;
   button.classList.toggle('active', app.habitabilityGuides);
+  updateLifeZoneButton();
   audio.play('ui');
   toast(
-    app.habitabilityGuides ? 'Life zones will appear only while moving a planet' : 'Life-zone placement guides hidden',
+    app.habitabilityGuides
+      ? 'Life zones appear around the selected star or while moving a planet'
+      : 'Life-zone placement guides hidden',
   );
 }
 export function toggleTrails() {

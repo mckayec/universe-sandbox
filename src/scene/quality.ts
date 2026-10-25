@@ -2,29 +2,47 @@
 import * as THREE from 'three';
 import { setNebulaQuality } from '../nebula-hd.ts';
 import { savePreferences } from '../exhibit-runtime.ts';
-import { camera, composer, deviceTier, isCompact, lensingPass, preferences, renderer } from './setup.ts';
+import { bloom, camera, composer, deviceTier, isCompact, lensingPass, preferences, renderer } from './setup.ts';
 import { app, audio, bodies } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { toast } from '../ui/feed.ts';
+
+// Lowest scale the adaptive loop and the Low setting may reach, and the absolute pixel-ratio floors. Desktop
+// can now drop below 1× so Low quality really renders fewer pixels on DPR-1 displays.
+export const QUALITY_FLOOR = deviceTier === 'mobile' ? 0.6 : 0.62;
+const RENDERER_RATIO_FLOOR = deviceTier === 'mobile' ? 0.7 : 0.62,
+  COMPOSER_RATIO_FLOOR = deviceTier === 'mobile' ? 0.66 : 0.6;
+// Bloom is blurred anyway, so it runs at a further-reduced resolution as quality drops.
+const bloomResolution = new THREE.Vector2();
 
 export function applyQualityScale(scale: number) {
   app.qualityScale = scale;
   setNebulaQuality(scale);
   const rendererCap = deviceTier === 'performance' ? 2 : deviceTier === 'balanced' ? 1.75 : 1.35,
     composerCap = deviceTier === 'performance' ? 1.8 : deviceTier === 'balanced' ? 1.55 : 1.2,
-    rendererRatio = Math.min(devicePixelRatio, rendererCap) * scale,
-    composerRatio = Math.min(devicePixelRatio, composerCap) * scale;
-  renderer.setPixelRatio(Math.max(deviceTier === 'mobile' ? 0.72 : 1, rendererRatio));
-  composer.setPixelRatio(Math.max(deviceTier === 'mobile' ? 0.68 : 0.9, composerRatio));
+    rendererRatio = Math.max(RENDERER_RATIO_FLOOR, Math.min(devicePixelRatio, rendererCap) * scale),
+    composerRatio = Math.max(COMPOSER_RATIO_FLOOR, Math.min(devicePixelRatio, composerCap) * scale);
+  renderer.setPixelRatio(rendererRatio);
+  composer.setPixelRatio(composerRatio);
   renderer.setSize(innerWidth, innerHeight);
   composer.setSize(innerWidth, innerHeight);
+  // UnrealBloomPass sizes its mip chain from the composer; shrink it further with quality (its own
+  // setSize halves this again for the first mip).
+  const bloomScale = THREE.MathUtils.clamp(scale, 0.5, 1) * (scale < 0.75 ? 0.75 : 1);
+  bloomResolution.set(
+    Math.max(64, Math.round(innerWidth * composerRatio * bloomScale)),
+    Math.max(64, Math.round(innerHeight * composerRatio * bloomScale)),
+  );
+  bloom.setSize(bloomResolution.x, bloomResolution.y);
 }
 export function updateQualityModeButton() {
   document.querySelector('#quality-mode')!.textContent = `Quality: ${app.qualityMode}`;
 }
 export function cycleQualityMode() {
   app.qualityMode = app.qualityMode === 'auto' ? 'high' : app.qualityMode === 'high' ? 'low' : 'auto';
-  applyQualityScale(app.qualityMode === 'high' ? 1 : app.qualityMode === 'low' ? 0.62 : isCompact ? 0.78 : 1);
+  applyQualityScale(app.qualityMode === 'high' ? 1 : app.qualityMode === 'low' ? QUALITY_FLOOR : isCompact ? 0.78 : 1);
+  app.qualityTimer = 0;
+  app.qualityFrames = 0;
   updateQualityModeButton();
   audio.play('ui');
   toast(`${app.qualityMode} visual quality`);
@@ -61,13 +79,14 @@ export function updateAdaptiveQuality(dt: number) {
   app.qualityTimer += dt;
   app.qualityFrames++;
   if (app.qualityTimer < 2.5) return;
+  // Hysteresis: step down quickly when clearly slow, step up slowly and only when comfortably fast, so the
+  // scale does not oscillate around the threshold.
   const fps = app.qualityFrames / app.qualityTimer,
-    floor = deviceTier === 'mobile' ? 0.62 : 0.78,
     target =
       fps < 43
-        ? Math.max(floor, app.qualityScale - 0.08)
-        : fps > 57
-          ? Math.min(1, app.qualityScale + 0.05)
+        ? Math.max(QUALITY_FLOOR, app.qualityScale - 0.08)
+        : fps > 57.5
+          ? Math.min(1, app.qualityScale + 0.04)
           : app.qualityScale;
   if (Math.abs(target - app.qualityScale) > 0.02) applyQualityScale(target);
   app.qualityTimer = 0;

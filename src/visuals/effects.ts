@@ -7,7 +7,7 @@ import { app, transients } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { addRelativisticJets } from './jets.ts';
 import { NOISE_GLSL } from './materials.ts';
-import { cloudTexture, coronaTexture, glowTexture } from './textures.ts';
+import { SUPERNOVA_CLOUD_SEEDS, cloudTexture, coronaTexture, glowTexture } from './textures.ts';
 
 function transient(object: THREE.Object3D, duration: number, update: (life: number, dt: number) => void) {
   scene.add(object);
@@ -96,6 +96,7 @@ export function supernovaEffect(position: THREE.Vector3) {
   const root = new THREE.Group();
   root.position.copy(position);
   const seed = Math.random() * 20,
+    cloudSeed = SUPERNOVA_CLOUD_SEEDS[Math.floor(seed) % SUPERNOVA_CLOUD_SEEDS.length],
     coreMat = supernovaBlastMaterial(seed),
     shellMat = supernovaBlastMaterial(seed + 8, true);
   const core = new THREE.Mesh(new THREE.SphereGeometry(1, isCompact ? 28 : 48, isCompact ? 20 : 32), coreMat);
@@ -128,7 +129,7 @@ export function supernovaEffect(position: THREE.Vector3) {
   root.add(fireball);
   const remnant = new THREE.Sprite(
     new THREE.SpriteMaterial({
-      map: cloudTexture('#ff673d', Math.floor(seed * 17)),
+      map: cloudTexture('#ff673d', cloudSeed),
       transparent: true,
       opacity: 0,
       depthWrite: false,
@@ -141,7 +142,7 @@ export function supernovaEffect(position: THREE.Vector3) {
   root.add(remnant);
   const hotRemnant = new THREE.Sprite(
     new THREE.SpriteMaterial({
-      map: cloudTexture('#8eb8ff', Math.floor(seed * 31) + 7),
+      map: cloudTexture('#8eb8ff', cloudSeed + 7),
       transparent: true,
       opacity: 0,
       depthWrite: false,

@@ -195,7 +195,7 @@ function restoreBody(saved: SandboxSnapshot['bodies'][number]) {
  * Rebuilds the universe from a snapshot. Invalid bodies are skipped; if the rebuild still throws, the previous
  * universe is restored. History recording is always re-enabled afterwards.
  */
-function restoreUniverse(snapshot: SandboxSnapshot, fallback?: SandboxSnapshot) {
+export function restoreUniverse(snapshot: SandboxSnapshot, fallback?: SandboxSnapshot) {
   app.historySuspended = true;
   let ok = true;
   try {

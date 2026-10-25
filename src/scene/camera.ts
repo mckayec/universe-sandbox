@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { focusBodies } from '../bodies/groups.ts';
 import { MAX_CAMERA_DISTANCE, MIN_CAMERA_DISTANCE, camera, isCompact, viewTarget } from './setup.ts';
 import { app, bodies } from '../state/app-state.ts';
-import { toast } from '../ui/feed.ts';
+import { reducedMotion, toast } from '../ui/feed.ts';
 
 export function zoomCamera(factor: number, focus?: THREE.Vector3) {
   const offset = camera.position.clone().sub(viewTarget),
@@ -22,6 +22,14 @@ export function transitionCamera(target: THREE.Vector3, distance: number, durati
       .add(
         direction.normalize().multiplyScalar(THREE.MathUtils.clamp(distance, MIN_CAMERA_DISTANCE, MAX_CAMERA_DISTANCE)),
       );
+  if (reducedMotion.matches) {
+    // Reduced motion: jump straight to the destination instead of flying there.
+    app.cameraTransition = null;
+    camera.position.copy(toPosition);
+    viewTarget.copy(toTarget);
+    camera.lookAt(viewTarget);
+    return;
+  }
   app.cameraTransition = {
     fromPosition: camera.position.clone(),
     fromTarget: viewTarget.clone(),

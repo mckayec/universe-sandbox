@@ -1,8 +1,11 @@
 // Narration, idle attract mode, toasts, the event feed and selection.
+import type { ExhibitId } from '../exhibits.ts';
+import type { SandboxSnapshot } from '../sandbox-state.ts';
 import { updateScienceOverlays } from '../scene/overlays.ts';
 import { preferences, selectionRing } from '../scene/setup.ts';
-import { app, audio, exhibitEvents } from '../state/app-state.ts';
-import type { Body } from '../state/types.ts';
+import { app, audio, exhibitEvents, redoStack, undoStack } from '../state/app-state.ts';
+import { restoreUniverse, snapshotUniverse } from '../state/history.ts';
+import type { Body, ExhibitEvent } from '../state/types.ts';
 import { setSimulationSpeed } from './controls.ts';
 import { loadExhibit, showGuide } from './exhibit-flow.ts';
 import { updateInspector } from './inspector.ts';
@@ -21,19 +24,66 @@ export function showNarration() {
   document.querySelector('#narration-copy')!.textContent = narrationFacts[app.narrationIndex % narrationFacts.length];
   card.hidden = false;
 }
+export const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+/**
+ * Session bookkeeping for autosave. The recovery checkpoint is only overwritten once the visitor has changed
+ * something in this session (so a reload does not replace the previous build with the default scene), and
+ * the visitor's scene is parked here while the idle demonstration runs.
+ */
+export const session = {
+  userLoadedExhibit: false,
+  preAttract: null as null | {
+    snapshot: SandboxSnapshot;
+    exhibit: ExhibitId | null;
+    events: ExhibitEvent[];
+    speed: number;
+    paused: boolean;
+  },
+};
+/** True once the visitor has made a change worth checkpointing in this session. */
+export function sessionChanged() {
+  return session.userLoadedExhibit || undoStack.length > 0 || redoStack.length > 0;
+}
+/** The scene that should be checkpointed: the visitor's own scene, never the attract-mode demo. */
+export function recoverySnapshot(): SandboxSnapshot | null {
+  if (!sessionChanged()) return null;
+  return session.preAttract?.snapshot ?? (app.attractMode ? null : snapshotUniverse());
+}
+/** Records visitor activity. Returns true when this input ended the attract-mode demonstration. */
 export function noteActivity() {
   app.idleSeconds = 0;
   audio.ensure();
   document.querySelector<HTMLElement>('#narration-card')!.hidden = true;
-  if (!app.attractMode) return;
+  if (!app.attractMode) return false;
   app.attractMode = false;
   app.attractTimer = 0;
   document.querySelector<HTMLElement>('#attract-badge')!.hidden = true;
-  setSimulationSpeed(1);
+  const saved = session.preAttract;
+  session.preAttract = null;
+  if (saved) {
+    restoreUniverse(saved.snapshot);
+    exhibitEvents.splice(0, exhibitEvents.length, ...saved.events);
+    renderExhibitEvents();
+    app.currentExhibit = saved.exhibit;
+    app.paused = saved.paused;
+    document.querySelector<HTMLButtonElement>('#pause')!.textContent = app.paused ? 'Resume' : 'Pause';
+    setSimulationSpeed(saved.speed);
+  } else setSimulationSpeed(1);
   if (app.currentExhibit) showGuide(app.currentExhibit);
-  toast('Demonstration paused — the exhibit is yours');
+  toast('Welcome back — your universe has been restored');
+  return true;
 }
 function startAttractMode() {
+  // Park the visitor's scene once; the demo restarts every 48 s without replacing the parked copy.
+  if (!session.preAttract)
+    session.preAttract = {
+      snapshot: snapshotUniverse(),
+      exhibit: app.currentExhibit,
+      events: exhibitEvents.map(event => ({ ...event })),
+      speed: app.speed,
+      paused: app.paused,
+    };
   app.attractMode = true;
   app.attractTimer = 0;
   app.narrationTimer = 0;
@@ -52,7 +102,12 @@ export function updateAttractMode(dt: number) {
     return;
   }
   app.idleSeconds += dt;
-  if (app.idleSeconds > 120 && document.querySelector<HTMLElement>('#scenario-picker')!.hidden) startAttractMode();
+  if (reducedMotion.matches || app.idleSeconds <= 120) return;
+  const pickerOpen =
+    !document.querySelector<HTMLElement>('#scenario-picker')!.hidden ||
+    !document.querySelector<HTMLElement>('#universe-picker')!.hidden ||
+    !document.querySelector<HTMLElement>('#object-menu')!.hidden;
+  if (!pickerOpen) startAttractMode();
 }
 export function toast(msg: string) {
   const el = document.querySelector('#toast')!;
@@ -101,9 +156,30 @@ export function museumEvent(title: string, detail: string, color = '#9bb7ff', bo
     navigator.vibrate(sound === 'supernova' ? [35, 25, 80] : 22);
   if (app.selectedBody === body) updateInspector();
 }
+/** Matches the compact (phone / iPad portrait) layout breakpoint in style.css. */
+export function compactLayout() {
+  return matchMedia('(max-width: 800px)').matches;
+}
+export function setToolsCollapsed(collapsed: boolean) {
+  document.querySelector('.shell')!.classList.toggle('tools-collapsed', collapsed);
+  const toggle = document.querySelector<HTMLButtonElement>('#panel-toggle')!;
+  toggle.textContent = collapsed ? 'Show tools' : 'Hide tools';
+  toggle.setAttribute('aria-expanded', String(!collapsed));
+}
+/** Offers the life-zone guide from the inspector for stars and worlds (the toolbar button is easy to miss). */
+export function updateLifeZoneButton() {
+  const b = app.selectedBody,
+    button = document.querySelector<HTMLButtonElement>('#info-life-zones')!;
+  button.hidden = !b || !['star', 'rocky', 'dwarf', 'moon', 'gas'].includes(b.kind);
+  button.textContent = app.habitabilityGuides ? 'Hide life zones' : 'Show life zones';
+  button.classList.toggle('active', app.habitabilityGuides);
+}
 export function select(b: Body | null) {
   app.selectedBody = b;
-  document.querySelector('#info-panel')!.classList.toggle('empty', !b);
+  const panel = document.querySelector('#info-panel')!;
+  panel.classList.toggle('empty', !b);
+  if (!b) panel.classList.remove('expanded');
+  updateLifeZoneButton();
   selectionRing.visible = !!b;
   document.querySelector<HTMLButtonElement>('#zoom-selected')!.disabled = !b;
   updateInspector();
