@@ -289,7 +289,7 @@
        short: "Destroyed by the Tempest.",
        gfx: {type: "barren", sea: 0, pal: ["#26241e", "#36322a", "#524c42", "#645e52", "#767064", "#b4ae9e"], rough: .7, bump: 1.4, clouds: 0, atmoK: 0, lights: .5, sw: "#645e52"}},
 
-      {noSurface: true, id: "leuctra", name: "Point Leuctra", group: "belt", books: [7], first: 7, status: "Battle site · schematic marker",
+      {id: "leuctra", name: "Point Leuctra", group: "belt", books: [7], first: 7, status: "Battle site · schematic marker",
        star: {name: "Sol", col: "#fff2d8"}, map: P.leuctra, est: true,
        distText: "In the asteroid belt; marker position schematic · " + SCHEM,
        blurb: "At Point Leuctra in the asteroid belt, the combined fleet fails to stop the Tempest.",
