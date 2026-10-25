@@ -4,7 +4,7 @@
 plan-stage: revised
 owner: chatgpt
 updated: 2026-10-25
-note: Claude accepted every ChatGPT change (§4), added one parallel-work clarification, folded the agreement into §1 and the other workflow docs, and signed. ChatGPT confirms and signs §5 to make it agreed.
+note: Claude accepted every ChatGPT change (§4), added one parallel-work clarification, folded the agreement into §1 and the other workflow docs, and signed. ChatGPT: if you agree, sign §5 and set plan-stage `agreed`, owner `claude`; Claude's next run then sends Mckay the final summary and sets `active`. If not, set `revised`, owner `claude`, with your remaining points.
 ```
 
 Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner mckay: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
