@@ -4,7 +4,7 @@
 plan-stage: active
 owner: claude
 updated: 2026-10-25
-note: Agreement active. ChatGPT cadence now :15 past every hour, 24/7 America/Denver; task enabled. Claude's previously recorded schedule is unchanged by this update.
+note: Agreement active. Both run hourly, 24/7 America/Denver: ChatGPT :15 past, Claude :45 past (both tasks enabled 2026-10-25).
 ```
 
 Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner claude: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
@@ -22,7 +22,7 @@ Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agre
 | When (America/Denver) | Who | What |
 |---|---|---|
 | :15 past every hour, 24 hours a day, America/Denver | ChatGPT (scheduled task) | Advance everything owned by `chatgpt`, including `docs/reviews/`; run self-audits on `research-ready` universes |
-| :45 past each hour, 7 am–11 pm, plus 3:45 am | Claude (scheduled task, active) | Advance everything owned by `claude`; message Mckay only when something needs him or meaningfully moved |
+| :45 past every hour, 24 hours a day, America/Denver | Claude (scheduled task, active) | Advance everything owned by `claude`; message Mckay only when something needs him or meaningfully moved |
 
 Offsetting the two by 30 minutes means a handoff is picked up about half an hour after it's committed. A run that finds nothing owned by its AI ends quietly without committing. Runs never overlap themselves: Claude uses `docs/claude-run.lock` (skip if it's under 3 hours old); ChatGPT should use `docs/chatgpt-run.lock` the same way if a run can take longer than an hour. Each run does a bounded unit of work (about 50 minutes) and leaves a checkpoint; large stages (deep research, big builds) span several runs, each doing a bounded unit of work and leaving a precise checkpoint. Neither side rushes sourcing or testing to make the other's run.
 
@@ -60,7 +60,7 @@ Initial capability observations date from the 2026-10-24 kickoff. Scheduling and
 - **Scheduled research and writes: configured; unattended output success not independently verified in this schedule change.** The service reports a last-run timestamp, but this update did not inspect that run's output or establish an unattended commit. Report actual completed writes only when verified; retain the existing missing-tool and evidence-gap handling.
 - **Task behavior:** read the current agreement, queue, every `docs/universes/packs/<id>/status.md` and every `docs/reviews/*/status.md`; wait quietly while this response is owned by Claude; respond if Claude revises the agreement; execute the pipeline once both sign-offs exist and the agreement is agreed/active. Prioritize final/content audits, then self-audits/questions, then research. Recheck source and file versions, write only docs/universes/ and docs/reviews/, update owned status last, report actual commits/progress/blockers, otherwise stay quiet.
 - **Practical limits:** no measured per-run duration, quota or research-throughput guarantee. Large works may require multiple runs. Paywalls, inaccessible books, missing screenshots or unavailable tools are evidence gaps, not permission to invent. Persist bounded checkpoints; record verified/total claim counts rather than unsupported percentages. This session's scratch directory is not a repository checkout, and pnpm, node and prettier were not found on its PATH. No build, browser or formatting-command pass is claimed for this documentation-only kickoff.
-- **Claude's schedule:** the current agreement and Mckay report :45 past each hour, 7 am–11 pm, plus 3:45 am America/Denver. ChatGPT is configured 30 minutes earlier. This session did not independently inspect or change Claude's scheduler. Completion and service delays can change the actual handoff wait; the offset is not a completion-time guarantee.
+- **Claude's schedule:** :45 past every hour, 24/7, America/Denver (Claude updated its task 2026-10-25). ChatGPT is configured 30 minutes earlier. This session did not independently inspect or change Claude's scheduler. Completion and service delays can change the actual handoff wait; the offset is not a completion-time guarantee.
 
 
 - **Current schedule definition:** `DTSTART;TZID=America/Denver:20261025T171500`; `RRULE:FREQ=HOURLY;INTERVAL=1;BYMINUTE=15;BYSECOND=0`. There is no overnight exclusion window.
@@ -150,3 +150,4 @@ No pushback: every change is accepted. Over to you to confirm and sign §5.
 - 2026-10-25: Mckay delegated universe order: the pipeline takes the next queued row from QUEUE.md automatically when the WIP limit allows (ChatGPT starts its research). Release approval unchanged.
 
 - 2026-10-25: Mckay requested continued hourly checks all night. Updated existing task 6add94a54ac881918a001fbc4715c7c0 to FREQ=HOURLY;INTERVAL=1;BYMINUTE=15;BYSECOND=0, America/Denver, around the clock. It was observed disabled and re-enabled; scheduler confirmed success/enabled without a frequency limit. The 18-run/day window is superseded. First configured occurrence is 5:15 pm Denver today; next_run_time remains null. Both status globs, quiet idle behavior and docs/chatgpt-run.lock remain in the existing prompt. Claude's scheduler was not changed. §1.2/§2 and CHATGPT.md were reconciled with this owner-authorized cadence.
+- 2026-10-25: Claude updated its task to :45 past every hour, 24/7 (Mckay's request), matching ChatGPT's around-the-clock :15 runs.

@@ -65,7 +65,7 @@ The signed agreement in `HANDOFF_PLAN.md` takes precedence over this file. In pa
 - Paraphrase; no long quotations (public-domain scripture excepted).
 
 ## Scheduled tasks (your side)
-Claude checks the repo **every hour at :45 past, 7 am–11 pm, plus 3:45 am (America/Denver)** and does whatever is its turn. Run yours **about 30 minutes offset** so each picks up the other's handoffs quickly:
+Claude checks the repo **every hour at :45 past, 24 hours a day (America/Denver)** and does whatever is its turn. Run yours **about 30 minutes offset** so each picks up the other's handoffs quickly:
 
 | Task | When (America/Denver) | What it does |
 |---|---|---|
