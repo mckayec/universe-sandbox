@@ -626,22 +626,26 @@ scene({id:"ground",s:0,O:[0,0,0],build(S){
   add(cyl(V3(P.x,GY+1.4,P.z),V3(P.x,GY+1.52,P.z),.05,.05,10),skin);
   const head=add(ellipsoid(.095,.12,.105,24),skin);head.position.set(P.x,GY+1.62,P.z+.01);
   const hairC=add(ellipsoid(.1,.08,.11,20),hairM);hairC.position.set(P.x,GY+1.68,P.z-.01);
-  const shR=V3(P.x-.2,GY+1.42,P.z),shL=V3(P.x+.2,GY+1.42,P.z);
+  const shR=V3(P.x-.175,GY+1.41,P.z),shL=V3(P.x+.175,GY+1.41,P.z);
   const wrist=V3(0,-.012,-.07);const elbow=V3(-.08,.16,-.33);
-  add(mergeGeos([cyl(shR,elbow,.052,.045,12),cyl(elbow,wrist,.045,.033,12)]),shirt);
-  add(mergeGeos([cyl(V3(-.07,.13,-.29),wrist,.04,.03,10)]),skin);
+  /* ball joints close the gaps where the arm cylinders meet the torso and each other */
+  const ball=(c,r,seg)=>{const g=new T.SphereGeometry(r,seg||14,10);g.translate(c.x,c.y,c.z);return g;};
+  add(mergeGeos([ball(shR,.058),cyl(shR,elbow,.054,.045,14),ball(elbow,.046),cyl(elbow,wrist,.045,.033,14)]),shirt);
+  add(mergeGeos([cyl(V3(-.07,.13,-.29),wrist,.04,.03,10),ball(wrist,.031,12)]),skin);
   const elL=V3(shL.x+.06,GY+1.13,P.z+.02),wrL=V3(shL.x+.08,GY+.86,P.z+.06);
-  add(mergeGeos([cyl(shL,elL,.052,.045,12),cyl(elL,wrL,.045,.035,12)]),shirt);
+  add(mergeGeos([ball(shL,.058),cyl(shL,elL,.054,.045,14),ball(elL,.046),cyl(elL,wrL,.045,.035,14)]),shirt);
   const hL=add(ellipsoid(.04,.085,.025,12),skin);hL.position.set(wrL.x,wrL.y-.07,wrL.z);
   /* right hand: back of the hand faces +Y, top surface at y=0 through the origin; fingers to +Z */
   const pg=new T.SphereGeometry(1,40,24);{const P=pg.attributes.position;for(let i=0;i<P.count;i++){const x=P.getX(i),y=P.getY(i),z=P.getZ(i);
     const sp=(v,e)=>Math.sign(v)*Math.pow(Math.abs(v),e);P.setXYZ(i,sp(x,.55)*.043,(y>0?Math.pow(y,.5)*.012:y*.011)*(1-.25*z*z),sp(z,.6)*.05);}pg.computeVertexNormals();}
   const palm=add(pg,skin);palm.position.set(0,-.012,0);
   const fingers=[];[-.03,-.01,.01,.03].forEach((x,i)=>{const L0=[.072,.083,.078,.062][i];const k=V3(x,-.009,.044);const m=V3(x*1.06,-.014,.044+L0*.55),b=V3(x*1.1,-.024,.044+L0);
-    const kn=new T.SphereGeometry(.0112,12,8);kn.translate(k.x,k.y,k.z);fingers.push(kn);fingers.push(cyl(k,m,.0098,.009,10));
-    const j=new T.SphereGeometry(.009,10,8);j.translate(m.x,m.y,m.z);fingers.push(j);fingers.push(cyl(m,b,.009,.008,10));
-    const tip=new T.SphereGeometry(.008,10,8);tip.translate(b.x,b.y,b.z);fingers.push(tip);});
-  fingers.push(cyl(V3(.036,-.016,-.022),V3(.062,-.026,.018),.012,.011,10));fingers.push(cyl(V3(.062,-.026,.018),V3(.074,-.032,.05),.011,.0095,10));
+    const kn=new T.SphereGeometry(.0104,20,14);kn.translate(k.x,k.y,k.z);fingers.push(kn);fingers.push(cyl(k,m,.0098,.009,18));
+    const j=new T.SphereGeometry(.0091,18,12);j.translate(m.x,m.y,m.z);fingers.push(j);fingers.push(cyl(m,b,.009,.008,18));
+    const tip=new T.SphereGeometry(.008,18,12);tip.translate(b.x,b.y,b.z);fingers.push(tip);});
+  /* thumb: starts inside the palm edge with a joint ball so there is no visible seam */
+  {const tb=new T.SphereGeometry(.0135,12,10);tb.translate(.034,-.015,-.024);fingers.push(tb);}
+  fingers.push(cyl(V3(.03,-.014,-.03),V3(.062,-.026,.018),.0135,.011,12));fingers.push(cyl(V3(.062,-.026,.018),V3(.074,-.032,.05),.011,.0095,10));
   {const tp=new T.SphereGeometry(.0095,10,8);tp.translate(.074,-.032,.05);fingers.push(tp);const tj=new T.SphereGeometry(.011,10,8);tj.translate(.062,-.026,.018);fingers.push(tj);}
   fingers.push(cyl(V3(0,-.013,-.045),V3(0,-.014,-.075),.026,.024,16));
   add(mergeGeos(fingers),skin);
@@ -840,6 +844,14 @@ scene({id:"solar",s:9,O:P_SUN,build(S){
   /* interplanetary dust along the Earth–Sun path: a motion cue while the view travels to the Sun */
   const fl=PB(NQ(9000));for(let i=0;i<fl.max;i++){const t=R();const p=earthLocal.clone().multiplyScalar(t).add(V3(gauss(R),gauss(R),gauss(R)).multiplyScalar(2.5+t*4));const w=.5+.4*R();pa(fl,p.x,p.y,p.z,w,w*.9,w*.75,.01);}
   const flP=pObj(fl,{minPx:1.3,dim:1,maxPx:3});S.add(flP);
+  /* cue for the Earth-to-Sun jump (L 9 to 10.5): Earth's orbit brightens, a dashed line marks the 1 AU we cross,
+     and labels keep Earth (behind us) and the Sun (ahead) in mind while the view re-centres */
+  const orbHi=[];for(let k=0;k<=720;k++)orbHi.push(ecl(k/720*TAU,au));
+  const orbM=new T.LineBasicMaterial({color:0x8fbaff,transparent:true,opacity:.75});orbM.userData.op=.75;const orbL=new T.Line(new T.BufferGeometry().setFromPoints(orbHi),orbM);S.add(orbL);
+  const auG=new T.BufferGeometry().setFromPoints([earthLocal.clone(),V3(0,0,0)]);const auM=new T.LineDashedMaterial({color:0xffd58a,dashSize:1.2,gapSize:.9,transparent:true,opacity:.8});auM.userData.op=.8;
+  const auL=new T.Line(auG,auM);auL.computeLineDistances();S.add(auL);
+  S.label("Earth's orbit",ecl(186*DEG,au),9.2,11.4);S.label("1 AU · 150 million km to the Sun",earthLocal.clone().multiplyScalar(.5),9.25,10.6);
+  S.label("Earth",earthLocal,9.15,11.6);
   /* heliosphere: termination shock and heliopause (nose towards the interstellar wind, ecliptic lon ~255°, schematic tail) */
   const nose=ecl(255*DEG,1).normalize();
   const hg=new T.SphereGeometry(1,96,64);const P=hg.attributes.position;
@@ -850,7 +862,8 @@ scene({id:"solar",s:9,O:P_SUN,build(S){
   const vb=PB(2);pa(vb,v1.x,v1.y,v1.z,1,1,.8,1,0);pa(vb,v2.x,v2.y,v2.z,1,1,.8,1,0);S.add(pObj(vb,{minPx:3,dim:1,hard:.7}));
   S.label("Voyager 1",v1,13.3,15.2);S.label("Voyager 2",v2,13.3,15.2);S.label("heliopause",nose.clone().multiplyScalar(122*au),13.5,15);
   S.label("asteroid belt",ecl(1.2,2.8*au),11.7,13.2);S.label("Kuiper belt",ecl(2.4,42*au),12.9,14.2);S.label("Sun",V3(0,0,0),11.2,14.6,"here");
-  return{update(L){flP.material.userData.k=sstep(9.1,9.35,L)*(1-sstep(9.9,10.4,L));}};}});
+  return{update(L){flP.material.userData.k=sstep(9.1,9.35,L)*(1-sstep(9.9,10.4,L));
+    const cue=sstep(9.0,9.3,L)*(1-sstep(10.6,11.3,L));orbM.userData.k=cue;auM.userData.k=sstep(9.05,9.3,L)*(1-sstep(10.2,10.7,L));}};}});
 
 /* ======================================================================
    SCENE 13 — Oort cloud, nearest stars, Local Bubble, Orion Arm (unit Pm = 10^15 m). Origin at the Sun.
@@ -1195,11 +1208,14 @@ addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("#list"))re
 /* ===================== loop + adaptive quality ===================== */
 let tPrev=performance.now(),acc=0,frames=0,lastBuild=performance.now()+1500,buildQ=SCENES.slice();
 const t0=performance.now();
+/* the Earth-to-Sun re-centre (L 9.35 to 9.9) crosses 1 AU with nothing on screen: say what is happening */
+const travelEl=document.getElementById("travel");let travelOp=-1;
+function travelCue(L){if(!travelEl)return;const a=sstep(9.3,9.45,L)*(1-sstep(9.95,10.15,L));const op=a.toFixed(2);if(op!==travelOp){travelOp=op;travelEl.style.opacity=op;}}
 function frame(now){requestAnimationFrame(frame);
   const dt=Math.min(.1,(now-tPrev)/1000);tPrev=now;U.time.value=(now-t0)/1000;
   if(auto){const d=Math.abs(L-Math.round(L));const rate=.13+.55*sstep(.04,.32,d);Lt=clamp(L+auto*rate*dt,LMIN,LMAX);L=Lt;if(L<=LMIN+.01||L>=LMAX-.01)stopAuto();}
   else{const k=1-Math.exp(-dt*(fast?3.2:7));let step=(Lt-L)*k;const cap=(fast?9:20)*dt;step=clamp(step,-cap,cap);L+=step;if(Math.abs(Lt-L)<1e-4){L=Lt;fast=false;}}
-  render(L,U.time.value);updateUI(L);
+  render(L,U.time.value);updateUI(L);travelCue(L);
   /* build the rest of the scenes in the background, nearest first, a few per second */
   if(buildQ.length&&now-lastBuild>350&&!auto){buildQ.sort((a,b)=>Math.abs(mid(a)-L)-Math.abs(mid(b)-L));const d=buildQ.shift();if(!d.built){build(d);lastBuild=performance.now();}}
   else if(buildQ.length&&auto){const nx=SCENES.find(d=>!d.built&&Math.abs(mid(d)-L)<4);if(nx&&now-lastBuild>200){build(nx);lastBuild=performance.now();}}

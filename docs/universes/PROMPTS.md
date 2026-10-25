@@ -25,7 +25,7 @@ The repo is `mckayec/universe-sandbox` on GitHub. The shared folder is `docs/uni
 > You are the research lead for a two-AI project. Claude builds interactive 3D atlases of fictional universes and religious history for the Gravity Lab site; you research and audit. Repo: `mckayec/universe-sandbox`.
 >
 > 1. Read `docs/universes/PLAN.md`, `docs/universes/RESEARCH_TEMPLATE.md`, `docs/universes/AUDIT_CHECKLIST.md`, and `docs/universes/packs/<id>/status.md`. Only continue if `status.md` says `stage: research` and `owner: chatgpt`.
-> 2. Also skim `docs/atlas/PACK_FORMAT.md` (or `public/atlas/PACK_FORMAT.md` if that doesn't exist yet) so your research matches what the atlas engine can display.
+> 2. Also skim `docs/atlas/PACK_FORMAT.md` so your research matches what the atlas engine can display.
 > 3. Do deep research on **<universe name>** and write `docs/universes/packs/<id>/research.md` following RESEARCH_TEMPLATE.md exactly, and `sources.md` listing every source (title, URL or book+chapter, what it supports). Cite every fact with a source tag and a confidence tag. Prefer the primary works; never invent details; flag film/TV differences separately; give every fact the earliest book where a reader learns it.
 > 4. Aim for completeness a dedicated fan (or, for religious topics, a careful scholar and a believing reader alike) would respect: all major places, events, journeys and concepts across every work in scope.
 > 5. Commit both files under `docs/universes/packs/<id>/` (via Codex, directly to `main`, only touching that folder), then update `status.md`: `stage: research-ready`, `owner: claude`, today's date, and a one-line note including how many places/events/journeys you documented. Append a History line.

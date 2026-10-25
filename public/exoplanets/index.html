@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Nearby Worlds</title>
 <meta name="description" content="A 3D atlas of the confirmed planetary systems within about 100 light-years of the Sun.">
-<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../vendor/standalone.css">
 <style>
 /* Layout follows the Sun Eater / Hyperion atlases: full-bleed WebGL stage, header on top, system index left,
    dossier right (a bottom sheet on phones), and a tour card along the bottom.
@@ -250,6 +250,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   <div id="fade"></div>
 
   <header class="top">
+    <a class="gl-home" href="../" title="Back to the Gravity Lab sandbox"><span aria-hidden="true">←</span> Gravity Lab</a>
     <button class="brand" id="brand" aria-label="Back to the map">
       <svg class="sigil" viewBox="0 0 48 48" aria-hidden="true">
         <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#cfeaff"/><stop offset=".68" stop-color="#6fa6cc"/><stop offset="1" stop-color="#e8f6ff"/></linearGradient></defs>
@@ -299,7 +300,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     </div>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../vendor/three-r128/three.min.js"></script>
 <script src="data/nearby.js"></script>
 <script src="js/shaders.js"></script>
 <script src="js/looks.js"></script>

@@ -3,6 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -10,13 +11,16 @@ permissions:
   pages: write
   id-token: write
 
+# One deploy at a time; a newer push waits for the running deploy instead of cancelling it half-way
+# (GitHub's own Pages starter workflow does the same).
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -32,12 +36,34 @@ jobs:
         continue-on-error: true
       - run: pnpm build
       - run: pnpm test
+      # Every same-origin file referenced by the built pages exists, and nothing loads from another host.
+      - run: pnpm check:dist
+      - name: Install Chromium for the browser checks
+        run: pnpm exec playwright install --with-deps chromium
+      # Opens every standalone page (atlases, Society, Solar, Powers of Ten, Nearby Worlds) under the
+      # /universe-sandbox/ subpath, at desktop and phone sizes; fails on page errors, missing files,
+      # third-party requests, a missing back link or a clipped header.
+      - name: Standalone pages (subpath browser check)
+        run: pnpm test:pages
+        env:
+          SCREENSHOTS: page-shots
+      - name: Keep page screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: page-shots
+          path: page-shots
+          if-no-files-found: ignore
+          retention-days: 7
       - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: dist
 
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

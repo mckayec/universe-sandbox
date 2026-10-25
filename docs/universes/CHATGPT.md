@@ -24,7 +24,7 @@ You never edit site code. You only add and change files under `docs/universes/` 
 | `docs/universes/PROMPTS.md` | The prompt for each of your stages |
 | `docs/universes/QUEUE.md` | All planned universes in build order |
 | `docs/universes/packs/<id>/status.md` | Whose turn it is for each universe |
-| `docs/atlas/PACK_FORMAT.md` (or `public/atlas/PACK_FORMAT.md`) | What the atlas engine can display |
+| `docs/atlas/PACK_FORMAT.md` | What the atlas engine can display |
 
 ## The turn rule
 Every universe folder has a `status.md` beginning:

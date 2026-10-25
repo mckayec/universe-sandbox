@@ -2,9 +2,13 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Atlases</title>
-<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#04050b">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<title>Atlases · Gravity Lab</title>
+<style>body{background:#04050b;color:#d9deea}:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#04050b;color:#d9deea}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 <link rel="stylesheet" href="engine.css">
+<link rel="stylesheet" href="../vendor/standalone.css">
 <style>
 /* pack chooser (shown when no ?pack= is given) */
 #chooser{min-height:100%;display:grid;place-items:center;padding:40px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px));box-sizing:border-box;
@@ -20,6 +24,8 @@ body.choosing{overflow:auto;background:#04050b}
 #chooser a b{display:block;font:600 22px "Cormorant Garamond",Georgia,serif;color:#f2f5fb;letter-spacing:.02em}
 #chooser a span{display:block;margin-top:4px;font:400 11px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;color:#8f98b0}
 #chooser .empty{font:italic 15px Georgia,serif;color:#8f98b0}
+#chooser .home{margin:0 0 22px}
+#chooser .fan{margin:22px 0 0;font:400 11px/1.5 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em;color:#6f7890}
 </style>
 </head><body>
 <script src="packs/registry.js"></script>
@@ -33,16 +39,22 @@ body.choosing{overflow:auto;background:#04050b}
   if(!entry){
     document.body.className="choosing";
     var d=document.createElement("div");d.id="chooser";
-    d.innerHTML='<div class="wrap"><h1>ATLASES</h1><p class="sub">'+(id?'No atlas called “'+esc(id)+'” is installed. ':'')+'Interactive maps of the galaxies of the books. Pick one.</p>'+
-      (REG.length?'<ul>'+REG.map(function(r){return '<li><a href="?pack='+encodeURIComponent(r.id)+'" style="--a:'+esc(r.accent||"#9db8ff")+'"><b>'+esc(r.title||r.id)+'</b><span>'+esc(r.blurb||"")+'</span></a></li>';}).join("")+'</ul>':'<p class="empty">No packs are registered in packs/registry.js.</p>')+'</div>';
+    d.innerHTML='<div class="wrap"><p class="home"><a class="gl-home" href="../"><span aria-hidden="true">←</span> Gravity Lab</a></p><h1>ATLASES</h1><p class="sub">'+(id?'No atlas called “'+esc(id)+'” is installed. ':'')+'Interactive maps of the galaxies of the books. Pick one.</p>'+
+      (REG.length?'<ul>'+REG.map(function(r){return '<li><a href="?pack='+encodeURIComponent(r.id)+'" style="--a:'+esc(r.accent||"#9db8ff")+'"><b>'+esc(r.title||r.id)+'</b><span>'+esc(r.blurb||"")+'</span></a></li>';}).join("")+'</ul>':'<p class="empty">No packs are registered in packs/registry.js.</p>')+
+      '<p class="fan">Unofficial fan projects for personal, non-commercial use. Each series and its names belong to its author and publishers; maps and positions are schematic reconstructions.</p></div>';
     document.body.appendChild(d);return;
   }
   function load(src){return new Promise(function(res,rej){var s=document.createElement("script");s.src=src;s.onload=res;s.onerror=function(){rej(new Error("Could not load "+src));};document.body.appendChild(s);});}
-  load("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js")
+  load("../vendor/three-r128/three.min.js")
+    .then(function(){return load("../vendor/standalone.js");})
     .then(function(){return load("engine.js");})
     .then(function(){return load("packs/"+encodeURIComponent(entry.id)+".js");})
     .then(function(){var P=(window.ATLAS_PACKS||{})[entry.id];if(!P)throw new Error("packs/"+entry.id+".js did not register ATLAS_PACKS[\""+entry.id+"\"].");window.AtlasEngine.start(P);})
-    .catch(function(e){if(window.AtlasEngine)window.AtlasEngine.fail(e);else{console.error(e);document.body.innerHTML='<p style="font:15px Georgia,serif;padding:24px">'+esc(e.message)+'</p>';}});
+    .catch(function(e){if(window.AtlasEngine)window.AtlasEngine.fail(e);else{console.error(e);
+      /* the engine itself did not load: same styled panel, with a way back */
+      var f=document.createElement("div");f.className="gl-notice";f.setAttribute("role","alert");
+      f.innerHTML='<div><h2>This atlas could not start</h2><p>'+esc(e.message)+'. Check your connection and reload.</p><div class="gl-actions"><button type="button" onclick="location.reload()">Reload</button><a class="gl-home" href="../"><span aria-hidden="true">←</span> Gravity Lab</a></div></div>';
+      document.body.appendChild(f);}});
 })();
 </script>
 </body></html>

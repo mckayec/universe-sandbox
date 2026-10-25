@@ -5,13 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/stamp-sw.mjs",
     "test": "node --test tests/*.test.ts",
     "test:browser": "node tests/browser-smoke.mjs",
     "preview": "vite preview",
-    "format": "prettier --write src tests",
-    "format:check": "prettier --check src tests",
-    "check": "pnpm format:check && pnpm build && pnpm test",
+    "format": "prettier --write src tests scripts public/sw.js public/vendor/standalone.js public/vendor/standalone.css public/atlas/solar-tex.js",
+    "format:check": "prettier --check src tests scripts public/sw.js public/vendor/standalone.js public/vendor/standalone.css public/atlas/solar-tex.js",
+    "check": "pnpm format:check && pnpm build && pnpm test && pnpm check:dist",
+    "check:dist": "node tests/check-dist.mjs",
+    "test:pages": "node tests/standalone-pages.mjs",
     "test:exhibits": "node tests/exhibit-stability.mjs"
   },
   "dependencies": {

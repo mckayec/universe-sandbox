@@ -39,6 +39,11 @@ try {
   page.on('console', message => {
     if (message.type() === 'error') failures.push(`console: ${message.text()}`);
   });
+  // the sandbox must not contact any other host (fonts, CDNs, analytics)
+  page.on('request', request => {
+    const url = request.url();
+    if (!url.startsWith(baseURL) && !/^(data|blob):/.test(url)) failures.push(`third-party request: ${url}`);
+  });
   await page.goto(baseURL, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '4');
   assert.equal(await page.locator('#count').textContent(), '4');
@@ -48,6 +53,8 @@ try {
   assert.equal(await page.getByRole('heading', { name: 'Choose a universe' }).isVisible(), true);
   // Atlas packs (e.g. Cosmere) open their own page, so only check that the card is offered as an atlas.
   assert.match(await page.locator('[data-universe="cosmere"]').textContent(), /OPEN ATLAS/);
+  // planned packs must not claim a licence we do not have
+  assert.doesNotMatch(await page.locator('[data-universe="star-wars"]').textContent(), /licensed/i);
   // Packs still awaiting source material show the details panel instead.
   await page.locator('[data-universe="star-wars"]').click();
   assert.equal(await page.locator('#pack-details').isVisible(), true);

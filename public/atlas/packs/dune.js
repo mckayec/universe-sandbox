@@ -1,5 +1,5 @@
 /* =====================================================================================================
-   THE DUNE ATLAS: data pack for the shared galactic atlas engine (schema: atlas/PACK_FORMAT.md v1).
+   THE DUNE ATLAS: data pack for the shared galactic atlas engine (schema: docs/atlas/PACK_FORMAT.md in the repo v1).
    Scope: Frank Herbert's six novels only (Dune 1965, Dune Messiah 1969, Children of Dune 1976,
    God Emperor of Dune 1981, Heretics of Dune 1984, Chapterhouse: Dune 1985). Later prequels and
    sequels by other authors are not used, except for one clearly labelled codex note.

@@ -1,4 +1,4 @@
-/* The Expanse Atlas: data pack for the shared galactic atlas engine (schema: ../../atlas/PACK_FORMAT.md, v1).
+/* The Expanse Atlas: data pack for the shared galactic atlas engine (schema: docs/atlas/PACK_FORMAT.md in the repo, v1).
    Series: The Expanse, James S. A. Corey (Daniel Abraham and Ty Franck), nine novels, 2011-2021.
 
    SOURCES (all text below is paraphrased in our own words; see RESEARCH.md for the working notes):
@@ -147,7 +147,7 @@
 
     worlds: [
       /* ============================ THE INNER SYSTEM ============================ */
-      {id: "sun", name: "The Sun", aka: ["Sol"], group: "inner", books: [1, 2, 3, 4, 5, 6, 7, 8, 9], first: 1, status: "Sol",
+      {noSurface: true, id: "sun", name: "The Sun", aka: ["Sol"], group: "inner", books: [1, 2, 3, 4, 5, 6, 7, 8, 9], first: 1, status: "Sol",
        star: {name: "Sol", col: "#fff2d8"}, map: P.sun,
        distText: "Centre of the Sol system · " + SCHEM,
        blurb: "The star at the centre of human space, warming a system crowded with stations, colonies and warships.",
@@ -521,7 +521,7 @@
        eras: {9: {status: "The builders’ library", blurb: "In the last book Elvi’s team uses the protomolecule-changed girl Cara to dive into the diamond’s memory. It shows the builders’ history, from creatures in a frozen ocean to a single mind across the galaxy, and how they died."}},
        gfx: {type: "ice", sea: 0, pal: ["#0a3a2a", "#1a5a40", "#3a8a6a", "#5aa888", "#8ad0b0", "#d8fff0"], rough: .15, bump: .6, clouds: 0, atmo: "#7affc8", atmoK: .6, lights: 0, amb: .06, sw: "#5aa888"}},
 
-      {id: "tecoma", name: "Tecoma", group: "gates", gate: true, books: [8], first: 8, status: "Dead system · neutron star",
+      {noSurface: true, id: "tecoma", name: "Tecoma", group: "gates", gate: true, books: [8], first: 8, status: "Dead system · neutron star",
        star: {name: "A neutron star", col: "#c8e0ff"}, map: G.tecoma, est: true,
        distText: GATEPOS,
        blurb: "An empty system with nothing but an unstable neutron star and its gate. Laconia uses it to strike back at whatever has been eating ships in the gates: an antimatter-laden ship is sent through. The star collapses, and the burst of gamma rays it throws through the gate destroys the Tecoma gate and the one across from it in the ring space.",

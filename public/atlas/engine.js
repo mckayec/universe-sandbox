@@ -1,6 +1,6 @@
 /* Galactic Atlas engine (v1).
    One shared renderer and UI for galactic-scale book atlases (Sun Eater, Hyperion, ...). Everything
-   series-specific comes from a data pack: see PACK_FORMAT.md. Plain browser JavaScript, no build step.
+   series-specific comes from a data pack: see docs/atlas/PACK_FORMAT.md in the repo. Plain browser JavaScript, no build step.
    Needs THREE r128 as a global. Usage: AtlasEngine.start(window.ATLAS_PACKS[id]).
    Generalised from the Sun Eater Atlas and the Hyperion Atlas single-file pages. */
 (function(){
@@ -57,7 +57,7 @@ uniform vec3 uSeed;
 uniform float uFreq,uWarp,uRough,uSea,uIce,uLights,uBump,uCloud,uCloudScale,uBands,uDune,uMoist,uWall;
 uniform vec3 uP0,uP1,uP2,uP3,uP4,uP5;
 uniform float uEps;
-uniform int uNF;uniform vec4 uFA[14];uniform vec4 uFB[14];uniform vec4 uFC[14];uniform vec4 uFD[14];
+uniform int uNF;uniform vec4 uFA[18];uniform vec4 uFB[18];uniform vec4 uFC[18];uniform vec4 uFD[18];
 uniform sampler2D tBase;uniform float uBase;
 uniform sampler2D tMapHi,tMapLo,tMapReg;uniform float uMapOn,uMapMtn;
 ${GLSL_NOISE}
@@ -67,7 +67,7 @@ float arcDist(vec3 p,vec3 A,vec3 B){vec3 n=normalize(cross(A,B));float perp=abs(
   bool inside=dot(cross(A,p),n)>0.&&dot(cross(p,B),n)>0.;
   return inside?perp:min(acos(clamp(dot(p,A),-1.,1.)),acos(clamp(dot(p,B),-1.,1.)));}
 float featHeight(vec3 p,vec3 q){float add=0.;
-  for(int i=0;i<14;i++){if(i>=uNF)break;vec4 A=uFA[i],B=uFB[i],D=uFD[i];int k=int(B.x+.5);
+  for(int i=0;i<18;i++){if(i>=uNF)break;vec4 A=uFA[i],B=uFB[i],D=uFD[i];int k=int(B.x+.5);
     if(k==3)continue;
     if(k==1||k==4||k==5){float ang=acos(clamp(dot(p,A.xyz),-1.,1.));if(ang>A.w*1.6)continue;
       float en=fbm(p*5.+float(i)*3.1,3);
@@ -175,7 +175,7 @@ void main(){
       float e=clamp((h-sea)/.42,0.,1.);
       float temp=1.-alat/90.*1.05-e*.35+det*.05;float bw=0.;
       vec3 low=lerp3(uP2,uP3,smoothstep(.3,.75,m+det*.1));
-      for(int i=0;i<14;i++){if(i>=uNF)break;if(int(uFB[i].x+.5)!=3)continue;
+      for(int i=0;i<18;i++){if(i>=uNF)break;if(int(uFB[i].x+.5)!=3)continue;
         float ang=acos(clamp(dot(p,uFA[i].xyz),-1.,1.));if(ang>uFA[i].w*1.6)continue;float en=fbm(p*6.+float(i)*2.3,4);
         float w=1.-smoothstep(uFA[i].w*.5,uFA[i].w*1.1,ang+en*uFA[i].w*.45);
         low=mix(low,biomeStyle(int(uFB[i].z+.5),uFC[i].rgb,q,p),w*uFB[i].y);bw=max(bw,w*uFB[i].y*(int(uFB[i].z+.5)==2?.0:1.));}
@@ -404,7 +404,7 @@ function normalise(P){
   const ui=Object.assign({},P.ui||{});
   ui.homeButton=ui.homeButton||"Home";ui.homeAction=ui.homeAction||("Fly to "+ui.homeButton.toLowerCase());ui.homeLink=ui.homeLink||ui.homeButton;ui.homeCrumb=ui.homeCrumb||ui.homeButton;ui.galaxyCrumb=ui.galaxyCrumb||"Milky Way";
   ui.indexTitle=ui.indexTitle||("Worlds of "+meta.series);ui.crumbGroups=ui.crumbGroups!==false;ui.galaxyButton=ui.galaxyButton||"Galaxy";
-  ui.chronTitle=ui.chronTitle||"THE CHRONICLE";ui.codexTitle=ui.codexTitle||"CODEX";ui.showCredits=ui.showCredits!==false;ui.evCount=ui.evCount||"";
+  ui.chronTitle=ui.chronTitle||"THE CHRONICLE";ui.codexTitle=ui.codexTitle||"CODEX";ui.showCredits=ui.showCredits!==false;ui.backHref=ui.backHref||"../";ui.backLabel=ui.backLabel||"Gravity Lab";ui.evCount=ui.evCount||"";
   const nW=bookIds.length<=12?NUMW[bookIds.length]:String(bookIds.length);
   if(ui.bookLabel==null)ui.bookLabel=mode==="cumulative"?"Reading":"";
   ui.allTitle=ui.allTitle||(mode==="cumulative"?"All "+nW+" books, with spoilers":"All "+nW+" books");
@@ -435,7 +435,7 @@ function buildShell(K){
   app.innerHTML=
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
 '<div class="vignette"></div><div id="labels"></div><div id="fade"></div>'+
-'<header class="top"><div class="brand"><svg class="sigil" viewBox="0 0 48 48" aria-hidden="true">'+defs+sig+'</svg>'+
+'<header class="top"><a class="gl-home" href="'+esc(U.backHref)+'" title="Back to the Gravity Lab sandbox"><span aria-hidden="true">←</span> '+esc(U.backLabel)+'</a><div class="brand"><svg class="sigil" viewBox="0 0 48 48" aria-hidden="true">'+defs+sig+'</svg>'+
   '<div><h1 class="chrome">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
  '<div class="controls"><button class="btn" id="idxBtn" aria-expanded="false" aria-controls="index">Worlds</button>'+
   (U.bookLabel?'<span class="seglbl">'+esc(U.bookLabel)+'</span>':"")+
@@ -446,16 +446,23 @@ function buildShell(K){
 '<nav id="crumbs" aria-label="Location"></nav>'+
 (K.raw.realms?'<div class="seg" id="realms" role="group" aria-label="Realm">'+["physical","cognitive","spiritual"].filter(r=>r==="physical"||K.raw.realms[r]).map(r=>{const R=K.raw.realms[r]||{};
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
-'<aside class="panel" id="index" aria-label="Worlds"></aside><aside class="panel" id="dossier" aria-live="polite"></aside>'+
+'<aside class="panel" id="index" aria-label="Worlds"></aside><aside class="panel" id="dossier" aria-label="Details"></aside><div id="announce" class="sr-only" aria-live="polite"></div>'+
 '<div id="navhint"></div><div id="bake" hidden>Charting surface<b><i></i></b></div><div id="tip" hidden></div>'+
 '<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><span class="hint" id="legend"></span>'+
-  '<span class="credits">'+(M.credits||"")+'</span></div><div id="track"></div></section>'+
+  '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
   '<div class="cx-tabs" id="cxTabs"></div><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
 '<div id="splash"><div><svg width="'+(T.splashSize||78)+'" height="'+(T.splashSize||78)+'" viewBox="0 0 48 48" aria-hidden="true">'+ssig+'</svg><h1 class="chrome">'+esc(TT)+'</h1>'+
   (M.splash?'<p>'+esc(M.splash)+'</p>':"")+'<div class="ld" id="splashLd">Charting the galaxy</div></div></div>';
   document.body.appendChild(app);
 }
+
+/* Fan-work notice shown in the credits and the About panel of every pack (meta.notice overrides it). */
+function fanNotice(M){if(M.notice)return M.notice;
+  return "Unofficial fan project for personal, non-commercial use. "+(M.series||"This series")+" and related names are the property of "+(M.author||"their author")+
+    " and "+(M.publisher||"the publishers")+". Maps and positions are schematic reconstructions.";}
+/* A world with no solid surface (a star): drawn and selectable in the galaxy, but there is nothing to descend to. */
+function noSurface(w){return !!(w&&(w.noSurface||(w.gfx&&w.gfx.type==="star")));}
 
 /* ===================== ENGINE ===================== */
 let STARTED=false;
@@ -465,21 +472,26 @@ function start(pack){
   const BOOKS=K.books,BOOK_IDS=K.bookIds,WORLDS=K.worlds,EVENTS=K.events,G=K.G,UI=K.ui,CUM=K.mode==="cumulative";
   const GROUP_BY={};K.groups.forEach(g=>GROUP_BY[g.id]=g);
   const GROUP_NAME=g=>{const gr=GROUP_BY[g];if(!gr)return "";if(!gr.eras)return gr.name||"";let v=gr.name;const cur=S.book||99;Object.keys(gr.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(cur>=k&&gr.eras[k]&&gr.eras[k].name)v=gr.eras[k].name;});return v||"";};
-  const MOB=isMob();
+  let MOB=isMob();
+  /* budgets fixed at start-up: phones and coarse pointers get the light versions even if the window later grows */
+  const SMALL=MOB||matchMedia("(pointer:coarse)").matches;
+  const LOWMEM=(navigator.deviceMemory||8)<4;
   const C=h=>new THREE.Color(h);
   const CL=h=>new THREE.Color(h).convertSRGBToLinear();
 
 /* ===================== RENDERER ===================== */
 const canvas=$("#c");
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:"high-performance"});
-renderer.setPixelRatio(Math.min(devicePixelRatio||1,MOB?1.6:2));
+renderer.setPixelRatio(Math.min(devicePixelRatio||1,SMALL?1.6:2));
 renderer.outputEncoding=THREE.sRGBEncoding;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure=1.0;
 renderer.setClearColor(0x04050b,1);
 const MAXTEX=renderer.capabilities.maxTextureSize||4096;
 const ANISO=Math.min(8,renderer.capabilities.getMaxAnisotropy());
-const HD=window.__HD||Math.min(4096,MAXTEX);
+/* surface bake size: 4096 on desktop, 2048 on phones and tablets, 1024 on low-memory devices (each bake holds
+   albedo + normal targets, so 4096 costs ~90 MB of GPU memory, enough to get an iOS tab killed) */
+const HD=window.__HD||Math.min(LOWMEM?1024:SMALL?2048:4096,MAXTEX);
 
 /* ===================== SPACE COORDINATES =====================
    Scene units: 1 unit = 100 light-years. Galactic centre at the origin, the disc in the XZ plane.
@@ -718,9 +730,12 @@ function setBakeU(g,seedKey){const u=bakeMat.uniforms;const R=rng(hashStr(seedKe
   const pal=g.pal&&g.pal.length?g.pal:["#0b1e3d","#2a6f97","#4b6b3a","#7a8a4a","#8a7a62","#f2f2f2"];["uP0","uP1","uP2","uP3","uP4","uP5"].forEach((k,i)=>u[k].value.set(pal[i]||pal[pal.length-1]));}
 /* hand-laid terrain features: continents, ranges, biomes, basins, peaks, rivers */
 const FK={continent:1,range:2,biome:3,basin:4,peak:5,river:6};
+const FEAT_MAX=18; /* matches the uFA..uFD array size in BAKE_FS */
 const BS={grass:0,forest:1,rock:2,flame:3,farm:4,snow:5};
-for(let i=0;i<14;i++){["uFA","uFB","uFC","uFD"].forEach(k=>bakeMat.uniforms[k].value.push(new THREE.Vector4()));}
-function setFeatures(g){const u=bakeMat.uniforms;const F=ARR(g.feat).filter(f=>f&&FK[f.k]&&(f.at||f.from)).slice(0,14);u.uNF.value=F.length;
+for(let i=0;i<FEAT_MAX;i++){["uFA","uFB","uFC","uFD"].forEach(k=>bakeMat.uniforms[k].value.push(new THREE.Vector4()));}
+function setFeatures(g){const u=bakeMat.uniforms;const F0=ARR(g.feat).filter(f=>f&&FK[f.k]&&(f.at||f.from));
+  if(F0.length>FEAT_MAX&&!g._featWarned){g._featWarned=true;console.warn("Atlas: gfx.feat has "+F0.length+" entries; only the first "+FEAT_MAX+" are drawn (PACK_FORMAT 11.2).");}
+  const F=F0.slice(0,FEAT_MAX);u.uNF.value=F.length;
   F.forEach((f,i)=>{const a=latLonDir(...(f.at||f.from));const b=f.to?latLonDir(...f.to):a;
     u.uFA.value[i].set(a.x,a.y,a.z,(f.r||5)*DEG);u.uFB.value[i].set(FK[f.k],f.s==null?.3:f.s,BS[f.style]||0,0);
     const c=new THREE.Color(f.c||"#ffffff");u.uFC.value[i].set(c.r,c.g,c.b,0);u.uFD.value[i].set(b.x,b.y,b.z,(f.w||3)*DEG);});
@@ -734,7 +749,7 @@ if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
    [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
    equirectangular textures (8192x4096 on capable desktops). The bake reads them for the 4K surface,
    and the planet shader reads the full-size one again up close, so coastlines and rivers stay sharp. */
-const MAPW=(()=>{if(window.__MAPW)return window.__MAPW;if(MOB||MAXTEX<8192)return 4096;const dm=navigator.deviceMemory;return dm&&dm<8?4096:8192;})();
+const MAPW=(()=>{if(window.__MAPW)return window.__MAPW;if(SMALL||LOWMEM)return 2048;if(MAXTEX<8192)return 4096;const dm=navigator.deviceMemory;return dm&&dm<8?4096:8192;})();
 const MAP_CACHE={};
 function fractalLine(pts,closed,rough,depth,seed){const R=rng(seed);let P=ARR(pts).filter(q=>q&&q.length>1).map(q=>[+q[0],+q[1]]);if(P.length<2)return P;
   for(let i=1;i<P.length;i++){while(P[i][1]-P[i-1][1]>180)P[i][1]-=360;while(P[i][1]-P[i-1][1]<-180)P[i][1]+=360;}
@@ -786,7 +801,7 @@ function bakeNow(g,key,W){const H=W/2;const set={alb:makeRT(W,H,true),nrm:makeRT
   u.uPass.value=0;renderBake(set.alb);u.uPass.value=1;renderBake(set.nrm);u.uPass.value=2;u.uOct.value=7;renderBake(set.cld);return set;}
 /* incremental HD bake */
 const bakeJobs=[];
-function queueBake(g,key,W,done,progress){const H=W/2;const job={g,key,W,H,set:{alb:makeRT(W,H,true),nrm:makeRT(W,H,true),cld:makeRT(W/2,H/2,true),size:W},pass:0,row:0,done,progress,cancelled:false};bakeJobs.push(job);return job;}
+function queueBake(g,key,W,done,progress){const H=W/2;const job={g,key,W,H,set:{alb:makeRT(W,H,true),nrm:makeRT(W,H,!SMALL),cld:makeRT(W/2,H/2,true),size:W},pass:0,row:0,done,progress,cancelled:false};bakeJobs.push(job);return job;}
 let BAKE_SCALE=1;
 function bakeStep(){
   const job=bakeJobs[0];if(!job){bakeStep.last=0;return;}if(job.cancelled){disposeSet(job.set);bakeJobs.shift();return;}
@@ -827,7 +842,7 @@ const WSKY=wsc.children.filter(o=>o.isPoints);
 const sunSprite=glowSprite(GLOW_W,140,.95);sunSprite.position.copy(SUN_DIR).multiplyScalar(600);wsc.add(sunSprite);
 const sunHalo=glowSprite(GLOW_W,520,.18);sunHalo.position.copy(sunSprite.position);wsc.add(sunHalo);
 const planetGroup=new THREE.Group();wsc.add(planetGroup);
-const SPHERE=new THREE.SphereGeometry(1,MOB?160:256,MOB?110:176);
+const SPHERE=new THREE.SphereGeometry(1,SMALL?160:256,SMALL?110:176);
 const SPHERE_LO=new THREE.SphereGeometry(1,96,64);
 function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
     uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.12)},uAtmo:{value:CL(g.atmo||"#6fa8ff")},uAtmoK:{value:g.atmoK==null?1:g.atmoK},
@@ -865,7 +880,7 @@ function buildPlanet(w,book,onProgress){
   if(w.ring){P.ring=ringMesh(w.ring);P.root.add(P.ring);}
   /* moons */
   ARR(w.moons).forEach((m,i)=>{m=m||{};const mg=Object.assign({type:"barren",pal:["#2a2a2a","#3a3836","#5a5550","#7a736a","#9a9288","#c8c2b8"],rough:.9,sea:0,atmoK:0,bump:1.6},m.gfx||{});
-    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,MOB?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
+    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,SMALL?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
     const piv=new THREE.Object3D();piv.rotation.set((i%2?.25:-.18),i*2.1+.6,(i%2?-.1:.12));const d=m.dist||(2.4+i*1.1);mm.position.x=d;piv.add(mm);planetGroup.add(piv);
     P.moons.push({piv,mesh:mm,mo,speed:(m.speed||.05)/(1+i*.6),name:m.name});});
   /* sun colour */
@@ -923,9 +938,9 @@ buildGalaxy();buildMarkers();buildTerritories();localField();
 /* ===================== LABELS ===================== */
 const labelsEl=$("#labels");
 const GL_LBL={};
-WORLDS.forEach(w=>{const b=document.createElement("button");b.className="lbl"+(w.major?" major":"");b.textContent=w.name;b.dataset.id=w.id;labelsEl.appendChild(b);GL_LBL[w.id]=b;
-  b.addEventListener("click",ev=>{ev.stopPropagation();if(S.sel===w.id&&S.view==="galaxy")descend(w.id);else selectWorld(w.id,true);});
-  b.addEventListener("dblclick",ev=>{ev.stopPropagation();descend(w.id);});
+WORLDS.forEach(w=>{const b=document.createElement("button");b.className="lbl"+(w.major?" major":"");b.tabIndex=-1;b.setAttribute("aria-hidden","true");b.textContent=w.name;b.dataset.id=w.id;labelsEl.appendChild(b);GL_LBL[w.id]=b;
+  b.addEventListener("click",ev=>{ev.stopPropagation();if(S.sel===w.id&&S.view==="galaxy"&&!noSurface(w))descend(w.id);else selectWorld(w.id,true);});
+  b.addEventListener("dblclick",ev=>{ev.stopPropagation();if(!noSurface(w))descend(w.id);});
   b.addEventListener("mouseenter",ev=>{S.hover=w.id;showTipWorld(w,ev.clientX,ev.clientY);});b.addEventListener("mousemove",ev=>placeTip(ev.clientX,ev.clientY));
   b.addEventListener("mouseleave",()=>{S.hover=null;hideTip();});});
 const REGIONS=[];
@@ -952,7 +967,7 @@ function layoutGalaxyLabels(W,H){
     if(cd>far&&w.id!==S.sel)show=false;if(!seen(w))show=false;
     if(show){const bw=w.name.length*8+14,bh=20;const r={x:pr.x+8,y:pr.y-10,w:bw,h:bh};
       if(w.id!==S.sel&&placed.some(o=>r.x<o.x+o.w&&r.x+r.w>o.x&&r.y<o.y+o.h&&r.y+r.h>o.y))show=false;else placed.push(r);}
-    el.style.opacity=show?(inBook(w)?1:K.spoil.dimLabel):0;el.style.pointerEvents=show?"auto":"none";
+    el.style.opacity=show?(inBook(w)?1:K.spoil.dimLabel):0;el.style.pointerEvents=show?"auto":"none";if(el._tab!==show){el._tab=show;el.tabIndex=show?0:-1;el.setAttribute("aria-hidden",String(!show));}
     if(show)el.style.transform="translate("+(pr.x+7)+"px,"+(pr.y-11)+"px)";
     el.classList.toggle("sel",w.id===S.sel);});
   REGIONS.forEach(r=>{if(r.spec&&r.spec.world&&WORLD_BY[r.spec.world])r.pos=WORLD_BY[r.spec.world].pos.clone().add(r.off);
@@ -968,7 +983,7 @@ function buildSiteLabels(w){SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];
     if(s.rel&&(depth||0)<8){const a=place((w.sites||[]).find(x=>x.id===s.rel.to),(depth||0)+1);lat=a[0]+(s.rel.dlat||0)*.32;lon=a[1]+(s.rel.dlon||0)*.32;}else{lat=+s.lat||0;lon=+s.lon||0;}
     if(!s.sea&&land)[lat,lon]=snapToLand(PL.mask,lat,lon);return pos[s.id]=[lat,lon];};
   (w.sites||[]).filter(siteSeen).forEach(s=>{const [lat,lon]=place(s);
-    const el=document.createElement("button");el.className="plbl";el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';labelsEl.appendChild(el);
+    const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';labelsEl.appendChild(el);
     el.addEventListener("click",ev=>{ev.stopPropagation();selectSite(s.id);});
     SITE_EL.push({s,el,dir:latLonDir(lat,lon)});});}
 const _w=new THREE.Vector3(),_n=new THREE.Vector3();
@@ -977,14 +992,14 @@ function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
     const facing=_n.dot(camW.position.clone().sub(_w).normalize());const pr=project(_w,camW,W,H);let show=facing>.12&&pr.z<1;
     const r={x:pr.x,y:pr.y-12,w:String(o.s.name).length*8+30,h:24};
     if(show&&o.s.id!==S.site&&placed.some(q=>r.x<q.x+q.w&&r.x+r.w>q.x&&r.y<q.y+q.h&&r.y+r.h>q.y))show=false;if(show)placed.push(r);
-    o.el.style.opacity=show?clamp((facing-.12)*5,0,1):0;o.el.style.pointerEvents=show?"auto":"none";
+    o.el.style.opacity=show?clamp((facing-.12)*5,0,1):0;o.el.style.pointerEvents=show?"auto":"none";if(o.el._tab!==show){o.el._tab=show;o.el.tabIndex=show?0:-1;o.el.setAttribute("aria-hidden",String(!show));}
     if(show)o.el.style.transform="translate("+(pr.x-7)+"px,"+(pr.y-13)+"px)";o.el.classList.toggle("sel",o.s.id===S.site);});
 }
 
 /* ===================== TOOLTIP ===================== */
 const tip=$("#tip");
 function placeTip(x,y){const r=tip.getBoundingClientRect();let tx=x+18,ty=y+16;if(tx+r.width>innerWidth-12)tx=x-r.width-18;if(ty+r.height>innerHeight-12)ty=innerHeight-r.height-12;tip.style.left=tx+"px";tip.style.top=ty+"px";}
-function showTipWorld(w,x,y){if(MOB)return;tip.innerHTML='<p class="eyebrow">'+esc(GROUP_NAME(w.group))+'</p><h3>'+esc(w.name)+'</h3>'+bks(w.books)+'<p>'+esc(eraVal(w,"short")||(w.blurb?w.blurb.split(". ")[0]+".":""))+'</p><div class="cta">'+(S.sel===w.id?"Click to descend to the surface":"Click to select · double-click to descend")+'</div>';tip.hidden=false;placeTip(x,y);}
+function showTipWorld(w,x,y){if(MOB)return;tip.innerHTML='<p class="eyebrow">'+esc(GROUP_NAME(w.group))+'</p><h3>'+esc(w.name)+'</h3>'+bks(w.books)+'<p>'+esc(eraVal(w,"short")||(w.blurb?w.blurb.split(". ")[0]+".":""))+'</p><div class="cta">'+(noSurface(w)?"A star: click to select":S.sel===w.id?"Click to descend to the surface":"Click to select · double-click to descend")+'</div>';tip.hidden=false;placeTip(x,y);}
 function hideTip(){tip.hidden=true;}
 
 /* ===================== INDEX ===================== */
@@ -1013,15 +1028,17 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
       (ARR(IN.legend).length?'<div class="rule"><span class="eyebrow">How to read the map</span></div>'+
       '<dl class="facts">'+ARR(IN.legend).map(r=>'<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>').join("")+'</dl>':"")+
       '<div class="actions"><button class="btn primary" data-act="web">'+esc(UI.homeAction)+'</button>'+(UI.go?'<button class="btn" data-act="go" data-id="'+esc(UI.go.id)+'">'+esc(UI.go.label||("Go to "+WORLD_BY[UI.go.id].name))+'</button>':"")+'</div>'+
-      (M.srcnote?'<p class="srcnote">'+esc(M.srcnote)+'</p>':"");
+      (M.srcnote?'<p class="srcnote">'+esc(M.srcnote)+'</p>':"")+'<p class="srcnote fan">'+esc(fanNotice(M))+'</p>';
   } else {const w=WORLD_BY[S.sel];const status=statusFor(w);
-    h=grab(w.name,S.view==="world"?"On the surface":"Selected",S.view==="galaxy")+
+    const ns=noSurface(w);
+    h=grab(w.name,S.view==="world"?"On the surface":"Selected",S.view==="galaxy"&&!ns)+
       '<p class="eyebrow">'+esc(GROUP_NAME(w.group))+'</p><h2>'+esc(w.name)+'</h2>'+(w.aka&&w.aka.length?'<p class="aka">'+esc(ARR(w.aka).join(" · "))+'</p>':"")+
       '<div class="chips">'+(status?'<span class="chip"'+chipStyle(w)+'>'+esc(status)+'</span>':"")+bks(w.books)+'</div>'+
       realmCard(w)+(S.realm!=="physical"?'<div class="rule"><span class="eyebrow">In the Physical Realm</span></div>':"")+'<p class="blurb">'+esc(eraBlurb(w))+'</p>'+
       '<dl class="facts">'+(w.star&&w.star.name?'<dt>Star</dt><dd>'+esc(w.star.name)+'</dd>':"")+ARR(eraVal(w,"facts")).map(f=>'<dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>').join("")+
         '<dt>Distance</dt><dd>'+esc(distText(w))+'</dd></dl>'+
-      '<div class="actions">'+(S.view==="galaxy"?'<button class="btn primary" data-act="descend">Descend to the surface</button>':'<button class="btn primary" data-act="ascend">Return to the galaxy</button>')+
+      (ns?'<p class="srcnote">A star: there is no surface to land on.</p>':'')+
+      '<div class="actions">'+(S.view==="galaxy"?(ns?'':'<button class="btn primary" data-act="descend">Descend to the surface</button>'):'<button class="btn primary" data-act="ascend">Return to the galaxy</button>')+
         (S.view==="world"?'':'<button class="btn" data-act="web">'+esc(UI.homeLink)+'</button>')+'</div>';
     const all=(w.sites||[]).filter(siteEraOk);
     if(CUM){const sites=all.filter(siteSeen);
@@ -1091,10 +1108,19 @@ function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<
     (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"");
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
 $("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
-$("#cxBtn").addEventListener("click",()=>{renderCodex();$("#codex").hidden=false;$("#cxClose").focus();});
-$("#cxClose").addEventListener("click",()=>{$("#codex").hidden=true;});
-$("#codex").addEventListener("click",e=>{if(e.target.id==="codex")$("#codex").hidden=true;});
-addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("#codex").hidden)$("#codex").hidden=true;else if(S.view==="world")ascend();}});
+function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
+function closeCodex(){if($("#codex").hidden)return;$("#codex").hidden=true;$("#cxBtn").focus();}
+$("#cxBtn").addEventListener("click",openCodex);
+$("#cxClose").addEventListener("click",closeCodex);
+$("#codex").addEventListener("click",e=>{if(e.target.id==="codex")closeCodex();});
+/* keep Tab inside the Codex dialog while it is open */
+$("#codex").addEventListener("keydown",e=>{
+  if(e.key!=="Tab")return;
+  const f=[...$("#codex").querySelectorAll("button,[href],[tabindex]:not([tabindex='-1'])")].filter(x=>!x.disabled&&x.offsetParent!==null);
+  if(!f.length)return;const first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("#codex").hidden)closeCodex();else if(S.view==="world")ascend();}});
 
 /* ===================== CRUMBS & HINT ===================== */
 function renderCrumbs(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
@@ -1199,8 +1225,10 @@ if($("#realms"))$("#realms").addEventListener("click",e=>{const b=e.target.close
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderRealmBar();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();}
-function selectWorld(id,fly){if(!WORLD_BY[id])return;S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
+function refreshAll(){renderRealmBar();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();afterRefresh();}
+/* the realm a world (or one of its sites) is visible in, when the current realm hides it */
+function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
+function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
 function flyGalaxy(){if(S.view==="world"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
@@ -1208,8 +1236,13 @@ function flyHuman(){if(S.view==="world"){ascend(()=>flyHuman());return;}orbG.fly
 const fade=$("#fade");
 function transition(fn){fade.classList.add("on");setTimeout(()=>{fn();requestAnimationFrame(()=>fade.classList.remove("on"));},430);}
 function fitDist(r){const hf=2*Math.atan(Math.tan(camW.fov*DEG/2)*camW.aspect);return r/Math.sin(Math.min(hf,camW.fov*DEG)/2);}
-function descend(id){const w=WORLD_BY[id];if(!w)return;S.sel=id;S.site=null;if(MOB)dosCollapsed=true;
-  transition(()=>{S.view="world";hideTip();
+function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
+  if(noSurface(w)){if(S.view==="world")ascend(()=>selectWorld(id,true));else selectWorld(id,true);return;}
+  if(needRealm(w))setRealm(needRealm(w),true);
+  S.sel=id;S.site=null;if(MOB)dosCollapsed=true;
+  /* one history entry per visit to a surface, so Back returns to the galaxy */
+  if(!fromHistory&&urlReady){const st={atlasSurface:true};if(history.state&&history.state.atlasSurface)history.replaceState(st,"",urlFor({view:"world",sel:id}));else history.pushState(st,"",urlFor({view:"world",sel:id}));}
+  transition(()=>{S.view="world";hideTip();syncURL();
     const bk=$("#bake");bk.hidden=false;const bi=bk.querySelector("i");
     const go=()=>{buildPlanet(w,S.book,p=>{bi.style.width=(p*100).toFixed(0)+"%";if(p>=1)setTimeout(()=>bk.hidden=true,400);});buildSiteLabels(w);
       /* open with the world's best-known place turned toward the sun */
@@ -1221,9 +1254,13 @@ function descend(id){const w=WORLD_BY[id];if(!w)return;S.sel=id;S.site=null;if(M
     S.interacted=false;
     Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
     refreshAll();hint(MOB?UI.hints.worldMob:UI.hints.world);});}
-function ascend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
+/* Back from the surface. If descending pushed a history entry, go back through history so the browser's
+   Back button and this button stay in step; popstate then does the work. */
+let afterAscend=null;
+function ascend(after){if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
+function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
-function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();
+function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
     /* turn the world so the place sits in daylight, between the sun and the viewer */
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();
@@ -1231,8 +1268,9 @@ function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
     orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
 function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
-  if(travel&&e.site&&RL){const ew=WORLD_BY[e.world];const st=ew&&(ew.sites||[]).find(x=>x.id===e.site);const rr=st&&(st.realm||st.realms);if(rr&&!ARR(rr).includes(S.realm))setRealm(ARR(rr)[0]);}
-  if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
+  if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
+  if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
+  else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
     else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site)setTimeout(()=>selectSite(e.site),900);}
     else{S.sel=e.world;const w=WORLD_BY[e.world];orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}}
   if(MOB)dosCollapsed=false;refreshAll();S.ev=id;renderDossier();
@@ -1275,7 +1313,7 @@ function pickWorld(x,y){const W=innerWidth,H=innerHeight;let best=null,bd=MOB?26
   WORLDS.forEach(w=>{if(!seen(w))return;const pr=project(w.pos,camG,W,H);if(pr.z>=1)return;const d=Math.hypot(pr.x-x,pr.y-y);if(d<bd){bd=d;best=w;}});return best;}
 function hoverPick(x,y){const w=pickWorld(x,y);if((w&&w.id)!==S.hover){S.hover=w?w.id:null;if(w)showTipWorld(w,x,y);else hideTip();}else if(w)placeTip(x,y);canvas.classList.toggle("pointing",!!w);}
 function tapAt(x,y){const now=performance.now();const dbl=now-lastTap<320;lastTap=now;
-  if(S.view==="galaxy"){const w=pickWorld(x,y);if(w){if(dbl||S.sel===w.id)descend(w.id);else selectWorld(w.id,true);}}
+  if(S.view==="galaxy"){const w=pickWorld(x,y);if(w){if((dbl||S.sel===w.id)&&!noSurface(w))descend(w.id);else selectWorld(w.id,true);}}
   else if(MOB){dosCollapsed=true;dos.classList.add("collapsed");closeChron();}}
 
 /* ===================== RESIZE & LOOP ===================== */
@@ -1284,9 +1322,28 @@ function viewOffset(){const W=innerWidth,H=innerHeight;let ox=0,oy=0;
   if(MOB)oy=H*.07;
   [camG,camW].forEach(c=>{if(ox||oy)c.setViewOffset(W,H,ox,oy,W,H);else c.clearViewOffset();});}
 function chronH(){document.documentElement.style.setProperty('--ch',chron.offsetHeight+'px');}
-function resize(){chronH();const W=innerWidth,H=innerHeight;renderer.setSize(W,H,false);camG.aspect=camW.aspect=W/H;viewOffset();camG.updateProjectionMatrix();camW.updateProjectionMatrix();
+/* the header may wrap onto two rows: panels below it follow its real height */
+const topEl=document.querySelector(".top");
+function hdrH(){if(!topEl)return;
+  /* desktop: if any header control would run past the window edge, give the controls their own row */
+  if(!MOB){topEl.classList.remove("wrapbooks");const ctr=topEl.querySelector(".controls");
+    const over=[...ctr.children].some(c=>c.offsetParent!==null&&c.getBoundingClientRect().right>innerWidth-8);
+    const tooTall=ctr.getBoundingClientRect().height>60;
+    if(over||tooTall)topEl.classList.add("wrapbooks");}
+  else topEl.classList.remove("wrapbooks");
+  document.documentElement.style.setProperty('--hdr',Math.round(topEl.getBoundingClientRect().bottom)+'px');}
+if(typeof ResizeObserver!=="undefined"){const ro=new ResizeObserver(()=>{chronH();hdrH();viewOffset();});ro.observe(chron);if(topEl)ro.observe(topEl);}
+function resize(){
+  const m=isMob();
+  if(m!==MOB){MOB=m;
+    dosCollapsed=MOB;
+    if(MOB)chron.classList.add("closed");else chron.classList.remove("closed","open-c");
+    idx.classList.remove("open");$("#idxBtn").setAttribute("aria-expanded","false");
+    renderDossier();renderChron();}
+  chronH();hdrH();const W=innerWidth,H=innerHeight;renderer.setSize(W,H,false);camG.aspect=camW.aspect=W/H;viewOffset();camG.updateProjectionMatrix();camW.updateProjectionMatrix();
   galMat.uniforms.uScale.value=dustMat.uniforms.uScale.value=H*renderer.getPixelRatio()*1.1;markerMat.uniforms.uPx.value=renderer.getPixelRatio();}
 addEventListener("resize",resize);resize();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{hdrH();viewOffset();});
 let last=performance.now(),T=0;
 function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
   bakeStep();
@@ -1303,20 +1360,62 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
   else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
+/* ===================== URL STATE (deep links, reload, Back) =====================
+   #book=3&world=arrakis&site=tabr&realm=cognitive&view=surface mirrors what is on screen (replaceState), descending
+   pushes one entry so Back ascends, and the reading position (book) is remembered per pack so a reload never
+   falls back to "All" and its spoilers. */
+const BOOK_KEY="atlas-book:"+(K.raw.id||K.meta.title||"pack");
+function storeBook(b){try{localStorage.setItem(BOOK_KEY,String(b||0));}catch(e){}}
+function storedBook(){try{const v=parseInt(localStorage.getItem(BOOK_KEY),10);return BOOKS[v]?v:0;}catch(e){return 0;}}
+function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view},o||{});
+  const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&o.view==="world")q.set("site",o.site);
+  if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");
+  const h=q.toString();return location.pathname+location.search+(h?"#"+h:"");}
+function parseHash(){const q=new URLSearchParams((location.hash||"").replace(/^#/,""));const b=parseInt(q.get("book"),10);
+  return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface"};}
+/* replaceState right away (not debounced): a delayed write could land after descend() pushed its entry and
+   overwrite it with the galaxy view */
+function syncURL(){if(!urlReady)return;const u=urlFor();if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
+/* nothing is written to the address bar or storage until the start-up state has been restored from them */
+let urlReady=false,lastBook=null,lastAnn="";
+function afterRefresh(){
+  if(urlReady&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
+  /* short announcement for screen readers instead of re-reading the whole panel */
+  const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");
+  if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
+  syncURL();}
+addEventListener("popstate",()=>{const st=parseHash();
+  if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
+  else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
+function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
+  if(b&&b!==S.book)API.setBook(b);
+  if(st.realm&&st.realm!==S.realm)setRealm(st.realm,true);
+  if(st.world&&seen(WORLD_BY[st.world])){
+    if(st.surface&&!noSurface(WORLD_BY[st.world])){descend(st.world);if(st.site)setTimeout(()=>selectSite(st.site),1200);}
+    else selectWorld(st.world,true);
+    return true;}
+  return false;}
+
 /* ===================== START ===================== */
 refreshAll();
 requestAnimationFrame(frame);
-setTimeout(()=>{$("#splash").classList.add("out");hint(MOB?UI.hints.galaxyMob:UI.hints.galaxy);
-  setTimeout(()=>flyHuman(),900);},1400);
+let restored=false;
+setTimeout(()=>{$("#splash").classList.add("out");if(!restored)hint(MOB?UI.hints.galaxyMob:UI.hints.galaxy);
+  setTimeout(()=>{if(!restored)flyHuman();},900);},1400);
 $("#splash").addEventListener("click",()=>$("#splash").classList.add("out"));
 const API={pack:K.raw,LINKS,WORLD_BY,get PL(){return PL;},get SITE_EL(){return SITE_EL;},descend,ascend,selectWorld,flyHuman,flyGalaxy,selectSite,orbG,orbW,S,openEvent,
   setBook(b){const el=document.querySelector('#books [data-b="'+(b|0)+'"]');if(el)el.click();},setRealm};
-window.__atlas=API;return API;
+window.__atlas=API;
+try{restored=restoreFromURL();}catch(e){console.warn("Atlas: could not restore the link state",e);}
+urlReady=true;lastBook=S.book;syncURL();
+return API;
 }
 
 /* fatal error panel, so a broken pack never leaves a blank page */
-function fail(err){console.error(err);const d=document.createElement("div");d.style.cssText="position:fixed;inset:0;display:grid;place-items:center;background:#04050b;color:#d9deea;font:15px Georgia,serif;padding:24px;text-align:center;z-index:99";
-  d.innerHTML='<div><p style="font:12px monospace;letter-spacing:.2em;text-transform:uppercase;color:#9db8ff">Atlas could not start</p><p>'+esc(err&&err.message||err)+'</p><p><a href="?" style="color:#9db8ff">Back to the list of atlases</a></p></div>';document.body.appendChild(d);}
+function fail(err){console.error(err);const d=document.createElement("div");d.className="atlas-fail";d.setAttribute("role","alert");
+  d.innerHTML='<div><p class="k">Atlas could not start</p><p>'+esc(err&&err.message||err)+'</p>'+
+    '<p class="acts"><a href="?">Back to the list of atlases</a><a class="gl-home" href="../"><span aria-hidden="true">←</span> Gravity Lab</a></p></div>';
+  document.body.appendChild(d);}
 
 window.AtlasEngine={version:1,start(pack){try{return start(pack);}catch(e){fail(e);return null;}},fail};
 })();

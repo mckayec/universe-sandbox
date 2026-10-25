@@ -1,5 +1,5 @@
 /* The Foundation Atlas: data pack for Isaac Asimov's seven Foundation novels, in publication order.
-   Schema: atlas/PACK_FORMAT.md (galactic engine v1).
+   Schema: docs/atlas/PACK_FORMAT.md in the repo (galactic engine v1).
 
    Sources (consulted 2026-10-23; full notes in packs/foundation/RESEARCH.md):
    - Wikipedia articles on Foundation (1951), Foundation and Empire (1952), Second Foundation (1953),

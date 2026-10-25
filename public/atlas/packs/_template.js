@@ -1,5 +1,7 @@
-/* Template atlas pack. Copy to packs/<id>.js, rename the key and id, fill in, and add a line to
-   packs/registry.js. Full schema: ../PACK_FORMAT.md.
+/* Template atlas pack. Copy to packs/<id>.js (for example packs/my-series.js), change BOTH the
+   ATLAS_PACKS key and `id` below from "template" to that same <id>, fill in, and add
+   {id: "<id>", ...} to packs/registry.js and to src/universe-packs.ts (a test keeps the two in sync).
+   This file itself is never loaded: names starting with "_" are skipped. Full schema: docs/atlas/PACK_FORMAT.md.
    Sources: list every source here (wiki pages, appendices, maps, author statements).
    Coordinates: map:[x,y] in thousands of light-years, galactic core at [0,0], Sol at galaxy.sol.
    Mark any placement you estimated with est:true and an "estimated" comment. */
@@ -91,8 +93,9 @@
     labels: [{text: "The Rim", at: {map: [12, 31]}, off: [0, 4, 0], min: 60, max: 1500}],
     territories: [{name: "The Empire", at: [0, 25], r: 6, c: "#6f93ff", a: .12}],
     links: [
-      {id: "journey1", path: ["capital", "frontier"], book: 1},
-      {id: "journey2", path: ["frontier", "capital"], book: 2}
+      /* a link may only pass through worlds that have appeared by its book (frontier first appears in book 2) */
+      {id: "journey2", path: ["capital", "frontier"], book: 2},
+      {id: "journey2b", path: ["frontier", "capital"], book: 2}
     ]
   },
 
