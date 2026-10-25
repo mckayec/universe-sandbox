@@ -1,4 +1,4 @@
-/* The Cosmere Atlas: data pack for the shared galactic atlas engine (schema: docs/PACK_FORMAT.md in the repo, v1).
+/* The Cosmere Atlas: data pack for the shared galactic atlas engine (schema: docs/atlas/PACK_FORMAT.md in the repo, v1).
    Series: Brandon Sanderson's Cosmere, 2005–2026 (Elantris to The Fires of December).
 
    SOURCES (all text below is paraphrased in our own words):

@@ -1,4 +1,4 @@
-/* The Sun Eater Atlas — data pack for the shared galactic atlas engine (../engine.js). Schema: docs/PACK_FORMAT.md in the repo */
+/* The Sun Eater Atlas — data pack for the shared galactic atlas engine (../engine.js). Schema: docs/atlas/PACK_FORMAT.md in the repo */
 (function(){
 "use strict";
 /* ===================== CONTENT =====================
@@ -587,7 +587,7 @@ const CONCEPTS=[
 
 /* ===================== PACK =====================
    Everything above is the Sun Eater Atlas data block, moved here unchanged. Below it is mapped onto
-   the shared engine's pack format (see docs/PACK_FORMAT.md in the repo). */
+   the shared engine's pack format (see docs/atlas/PACK_FORMAT.md in the repo). */
 const BOOK_COL={1:"#e0b85c",2:"#86a6ea",3:"#efe8da",4:"#d24a40",5:"#b2a898",6:"#7cc6a2",7:"#b88cec"};
 const BOOK_INK={4:"#fff"};
 const ORIGIN={map:[17.5,1.5]};   /* where the Cielcin first come from, past the Veil */

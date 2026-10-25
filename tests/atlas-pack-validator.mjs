@@ -1,5 +1,5 @@
 // Atlas pack validator: loads every pack in public/atlas/packs/ in a Node vm sandbox and cross-checks it against
-// docs/PACK_FORMAT.md (ids, references, books, spoiler ordering, gfx, sites). Adapted from the 2026 audit's validate.js.
+// docs/atlas/PACK_FORMAT.md (ids, references, books, spoiler ordering, gfx, sites). Adapted from the 2026 audit's validate.js.
 // validatePacks() returns {file: {stats, issues, warn}}; tests/atlas-packs.test.ts fails on any issue.
 import fs from 'node:fs';
 import path from 'node:path';

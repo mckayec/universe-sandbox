@@ -1,4 +1,4 @@
-/* The Expanse Atlas: data pack for the shared galactic atlas engine (schema: docs/PACK_FORMAT.md in the repo, v1).
+/* The Expanse Atlas: data pack for the shared galactic atlas engine (schema: docs/atlas/PACK_FORMAT.md in the repo, v1).
    Series: The Expanse, James S. A. Corey (Daniel Abraham and Ty Franck), nine novels, 2011-2021.
 
    SOURCES (all text below is paraphrased in our own words; see RESEARCH.md for the working notes):

@@ -34,7 +34,7 @@ Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 
   entry with `atlasPath: 'atlas/?pack=<id>'` to `src/universe-packs.ts`, so it shows in the sandbox's Universe
   library. `tests/atlas-registry.test.ts` fails until both lists agree.
 * Files starting with `_` (such as `_template.js`) are templates and are never loaded.
-* This document lives in the repository (`docs/PACK_FORMAT.md`) and is not published with the site.
+* This document lives in the repository (`docs/atlas/PACK_FORMAT.md`) and is not published with the site.
 
 ```js
 {id:"my-series", title:"The My Series Atlas", blurb:"One line for the chooser.", accent:"#9db8ff"},

@@ -1,6 +1,6 @@
 /* Galactic Atlas engine (v1).
    One shared renderer and UI for galactic-scale book atlases (Sun Eater, Hyperion, ...). Everything
-   series-specific comes from a data pack: see docs/PACK_FORMAT.md in the repo. Plain browser JavaScript, no build step.
+   series-specific comes from a data pack: see docs/atlas/PACK_FORMAT.md in the repo. Plain browser JavaScript, no build step.
    Needs THREE r128 as a global. Usage: AtlasEngine.start(window.ATLAS_PACKS[id]).
    Generalised from the Sun Eater Atlas and the Hyperion Atlas single-file pages. */
 (function(){

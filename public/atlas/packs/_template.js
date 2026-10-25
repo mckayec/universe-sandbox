@@ -1,7 +1,7 @@
 /* Template atlas pack. Copy to packs/<id>.js (for example packs/my-series.js), change BOTH the
    ATLAS_PACKS key and `id` below from "template" to that same <id>, fill in, and add
    {id: "<id>", ...} to packs/registry.js and to src/universe-packs.ts (a test keeps the two in sync).
-   This file itself is never loaded: names starting with "_" are skipped. Full schema: docs/PACK_FORMAT.md.
+   This file itself is never loaded: names starting with "_" are skipped. Full schema: docs/atlas/PACK_FORMAT.md.
    Sources: list every source here (wiki pages, appendices, maps, author statements).
    Coordinates: map:[x,y] in thousands of light-years, galactic core at [0,0], Sol at galaxy.sol.
    Mark any placement you estimated with est:true and an "estimated" comment. */

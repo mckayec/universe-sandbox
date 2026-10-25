@@ -1,4 +1,4 @@
-/* The Hyperion Atlas — data pack for the shared galactic atlas engine (../engine.js). Schema: docs/PACK_FORMAT.md in the repo */
+/* The Hyperion Atlas — data pack for the shared galactic atlas engine (../engine.js). Schema: docs/atlas/PACK_FORMAT.md in the repo */
 (function(){
 "use strict";
 /* ===================== CONTENT =====================
@@ -496,7 +496,7 @@ const CONCEPTS=[
 
 /* ===================== PACK =====================
    Everything above is the Hyperion Atlas data block, moved here unchanged. Below it is mapped onto
-   the shared engine's pack format (see docs/PACK_FORMAT.md in the repo). */
+   the shared engine's pack format (see docs/atlas/PACK_FORMAT.md in the repo). */
 const ROUTE_STYLE={tethys:{c:"#4fd4ff",s:.6,d:2.5,k:.14,label:"River Tethys"},ship:{c:"#e9cf8f",s:.45,d:2,k:.2,label:"Raul & Aenea’s road"},teach:{c:"#b08ae6",s:.35,d:1.6,k:.24,label:"Aenea’s teaching years"}};
 /* rough galactic sectors for worlds the books never place */
 const SECTORS={web:{l:300,dl:200,b:0,db:70},protectorate:{l:75,dl:40,b:10,db:30},outback:{l:95,dl:50,b:15,db:40},ouster:{l:105,dl:30,b:18,db:20},pax:{l:200,dl:60,b:-5,db:40},old:{l:0,dl:0,b:0,db:0},far:{l:0,dl:0,b:0,db:0}};
