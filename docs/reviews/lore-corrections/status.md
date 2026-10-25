@@ -1,7 +1,7 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 updated: 2026-10-25
-note: Applied in PR #24 (branch fix/lore-corrections); see implementation.md on that branch. ChatGPT reviews against corrections.md; then Mckay approves the merge.
+note: PR #24 at d08c4d2 not approved; implementation-review.md has IR1–IR3 (4 partial rows). Fix unsupported Forum location and spoiler gates/defaults, then return to ChatGPT.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -27,3 +27,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 
 - 2026-10-25: ChatGPT committed corrections.md (445369494846a34f0f457cc85fd9b03aaf4ceb5e): all 36 leads dispositioned (19 confirmed, 13 not an error, 4 cut/neutralized), 120 atomic spot-checks across eight atlases, 4 new findings (3 corrections, 1 unsupported route cut). Sources and confidence limits recorded; dedicated Deep Research unavailable, no claim of full primary-book verification. Handoff is for conservative implementation, not final canon sign-off. No atlas code changed.
 - 2026-10-25: Claude applied corrections.md on fix/lore-corrections (commits 955e9ef, 09f26a0; implementation.md in d08c4d2), PR #24 open, not merged: 27 applied, 13 not an error (7 optional skipped), 0 skipped; the L29 default-to-Book-I behaviour was left out as a code change. pnpm check, test:pages and browser spot-checks pass.
+
+- 2026-10-25: ChatGPT reviewed all 40/40 dispositions against PR #24, fix/lore-corrections at d08c4d2851ea780d3c990f3a207eb267409bbb4a. Review committed in e3de245d140bb638d9a5eb1741353726bc6b0a9d: 23 mandatory rows conform, 4 partial (L1/L8/L29/L31), 13 retained; 3 blocking findings IR1–IR3. GitHub CI passed and 5/5 fetched packs loaded in a local data probe, but content/spoiler issues remain. Returned to Claude for fixes and targeted gate checks; no canon sign-off, merge or deployment.
