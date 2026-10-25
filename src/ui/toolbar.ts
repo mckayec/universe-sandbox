@@ -29,13 +29,31 @@ import {
   toggleHabitabilityGuides,
   toggleTrails,
 } from './controls.ts';
+import { hideDialog, openDialog, showDialog, trapFocus } from './dialogs.ts';
 import { exitGuide, loadExhibit, openUniversePack } from './exhibit-flow.ts';
-import { noteActivity, select, toast } from './feed.ts';
+import { compactLayout, noteActivity, select, session, setToolsCollapsed, toast } from './feed.ts';
 import { closeObjectMenu, orbitNearest, refreshObjectMenu, toggleBuildLock, togglePositionLock } from './inspector.ts';
 import { impactEffect } from '../visuals/effects.ts';
 
 export function bindToolbar() {
-  document.addEventListener('pointerdown', noteActivity, { capture: true, passive: true });
+  // The first touch after the idle demonstration only restores the visitor's universe; it must not also
+  // place an object or press a control on the restored scene.
+  const wake = (e: Event) => {
+    if (!noteActivity()) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === 'pointerdown') {
+      const swallowClick = (click: Event) => {
+        click.preventDefault();
+        click.stopPropagation();
+      };
+      document.addEventListener('click', swallowClick, { capture: true, once: true });
+      setTimeout(() => document.removeEventListener('click', swallowClick, { capture: true }), 600);
+    }
+  };
+  document.addEventListener('pointerdown', wake, { capture: true });
+  document.addEventListener('keydown', wake, { capture: true });
+  document.addEventListener('wheel', wake, { capture: true, passive: false });
   document.querySelectorAll<HTMLButtonElement>('.body-btn').forEach(
     button =>
       (button.onclick = () => {
@@ -81,33 +99,36 @@ export function bindToolbar() {
       ? 'ORBIT MODE · DRAG NEAR A BLUE RING TO ENTER ORBIT'
       : 'INSPECT MODE · CLICK OR DRAG OBJECTS · RIGHT-DRAG TO PAN';
   };
+  const universePicker = document.querySelector<HTMLElement>('#universe-picker')!,
+    scenarioPicker = document.querySelector<HTMLElement>('#scenario-picker')!;
   document.querySelector<HTMLButtonElement>('#universes-button')!.onclick = () => {
     noteActivity();
-    document.querySelector<HTMLElement>('#scenario-picker')!.hidden = true;
-    document.querySelector<HTMLElement>('#universe-picker')!.hidden = false;
+    showDialog(universePicker);
   };
-  document.querySelector<HTMLButtonElement>('#universe-close')!.onclick = () =>
-    (document.querySelector<HTMLElement>('#universe-picker')!.hidden = true);
+  document.querySelector<HTMLButtonElement>('#universe-close')!.onclick = () => hideDialog(universePicker);
   document.querySelectorAll<HTMLButtonElement>('[data-universe]').forEach(
     button =>
       (button.onclick = () => {
         noteActivity();
+        const wasOpen = !universePicker.hidden;
         openUniversePack(button.dataset.universe as UniversePackId);
+        // A "ready" pack switches to the exhibit picker; move focus along with it.
+        if (wasOpen && universePicker.hidden && !scenarioPicker.hidden) showDialog(scenarioPicker);
       }),
   );
   document.querySelector<HTMLButtonElement>('#exhibits-button')!.onclick = () => {
     noteActivity();
-    document.querySelector<HTMLElement>('#universe-picker')!.hidden = true;
-    document.querySelector<HTMLElement>('#scenario-picker')!.hidden = false;
+    showDialog(scenarioPicker);
   };
-  document.querySelector<HTMLButtonElement>('#scenario-close')!.onclick = () =>
-    (document.querySelector<HTMLElement>('#scenario-picker')!.hidden = true);
+  document.querySelector<HTMLButtonElement>('#scenario-close')!.onclick = () => hideDialog(scenarioPicker);
   document.querySelectorAll<HTMLButtonElement>('[data-exhibit]').forEach(
     button =>
       (button.onclick = () => {
         noteActivity();
         app.paused = false;
         document.querySelector<HTMLButtonElement>('#pause')!.textContent = 'Pause';
+        session.userLoadedExhibit = true;
+        hideDialog(scenarioPicker);
         loadExhibit(button.dataset.exhibit as ExhibitId);
       }),
   );
@@ -214,8 +235,21 @@ export function bindToolbar() {
     const menu = document.querySelector<HTMLElement>('#object-menu')!;
     if (!menu.hidden && !menu.contains(e.target as Node) && e.target !== renderer.domElement) closeObjectMenu();
   });
+  document.addEventListener('keydown', trapFocus);
   document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      // Escape closes whatever is open; it only changes the interaction mode when nothing was open.
+      const dialog = openDialog(),
+        menu = document.querySelector<HTMLElement>('#object-menu')!;
+      if (dialog || !menu.hidden) {
+        e.preventDefault();
+        if (dialog) hideDialog(dialog);
+        closeObjectMenu();
+        return;
+      }
+    }
     if ((e.target as HTMLElement).matches('input,select,textarea')) return;
+    if (openDialog()) return;
     noteActivity();
     const key = e.key.toLowerCase();
     if (app.navigationMode && ['arrowleft', 'arrowright', 'arrowup', 'arrowdown', 'w', 'a', 's', 'd'].includes(key)) {
@@ -230,12 +264,8 @@ export function bindToolbar() {
     } else if ((e.metaKey || e.ctrlKey) && key === 'y') {
       e.preventDefault();
       redoUniverse();
-    } else if (e.key === 'Escape') {
-      closeObjectMenu();
-      document.querySelector<HTMLElement>('#scenario-picker')!.hidden = true;
-      document.querySelector<HTMLElement>('#universe-picker')!.hidden = true;
-      setInteractionMode(false);
-    } else if (e.key === '+' || e.key === '=') zoomCamera(0.72);
+    } else if (e.key === 'Escape') setInteractionMode(false);
+    else if (e.key === '+' || e.key === '=') zoomCamera(0.72);
     else if (e.key === '-') zoomCamera(1.4);
     else if (e.key === '0') fitAllObjects();
     else if (key === 'b') setInteractionMode(true);
@@ -246,4 +276,34 @@ export function bindToolbar() {
   document
     .querySelectorAll<HTMLButtonElement>('[data-speed]')
     .forEach(b => (b.onclick = () => setSimulationSpeed(Number(b.dataset.speed))));
+  bindCompactPanels();
+  bindToolbarFade();
+}
+/** Collapsible tool panel and expandable selected-object sheet on compact layouts. */
+function bindCompactPanels() {
+  document.querySelector<HTMLButtonElement>('#panel-toggle')!.onclick = () =>
+    setToolsCollapsed(!document.querySelector('.shell')!.classList.contains('tools-collapsed'));
+  const infoPanel = document.querySelector<HTMLElement>('#info-panel')!,
+    expand = document.querySelector<HTMLButtonElement>('#info-expand')!;
+  expand.onclick = () => {
+    const expanded = infoPanel.classList.toggle('expanded');
+    expand.textContent = expanded ? 'Less' : 'Details';
+    expand.setAttribute('aria-expanded', String(expanded));
+  };
+  document.querySelector<HTMLButtonElement>('#info-close')!.onclick = () => select(null);
+  document.querySelector<HTMLButtonElement>('#info-life-zones')!.onclick = toggleHabitabilityGuides;
+  // Phones start with the body palette collapsed so the playfield stays visible.
+  if (compactLayout() && innerHeight < 900) setToolsCollapsed(true);
+}
+/** Fades the universe toolbar's edges when more buttons are scrolled out of view. */
+function bindToolbarFade() {
+  const bar = document.querySelector<HTMLElement>('.universe-toolbar')!;
+  const update = () => {
+    const max = bar.scrollWidth - bar.clientWidth;
+    bar.classList.toggle('fade-left', bar.scrollLeft > 2);
+    bar.classList.toggle('fade-right', max - bar.scrollLeft > 2);
+  };
+  bar.addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
 }

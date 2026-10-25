@@ -24,6 +24,14 @@ button:focus-visible {
 #viewport {
   width: 100vw;
   height: 100vh;
+  /* Dynamic viewport height: excludes the iOS Safari toolbar, so bottom controls stay on screen. */
+  height: 100dvh;
+}
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
 }
 .shell {
   position: relative;
@@ -1272,222 +1280,6 @@ dd {
     transform: none;
   }
 }
-@media (max-width: 800px) {
-  .hint {
-    display: none;
-  }
-  .info-panel {
-    display: none;
-  }
-  .tool-panel {
-    top: auto;
-    bottom: 58px;
-    width: calc(100% - 44px);
-  }
-  .palette {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    max-height: 176px;
-  }
-  .body-btn {
-    display: block;
-    padding: 6px 4px;
-    text-align: center;
-  }
-  .swatch {
-    margin: 0 auto 4px;
-  }
-  .selector-copy b {
-    font-size: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .selector-copy small {
-    display: none;
-  }
-  .row,
-  .actions,
-  .panel-title,
-  .mode-button small {
-    display: none;
-  }
-  .mode-button {
-    position: absolute;
-    left: 0;
-    bottom: -42px;
-    width: 112px;
-  }
-  .speed {
-    right: 22px;
-    bottom: 16px;
-  }
-  .readout {
-    display: none;
-  }
-  .object-label {
-    min-width: 52px;
-    padding: 2px 3px;
-  }
-  .object-label strong {
-    font-size: 6px;
-  }
-  .object-label span,
-  .object-label em {
-    font-size: 5px;
-  }
-}
-@media (max-width: 800px) {
-  .tool-panel {
-    padding-top: 42px;
-  }
-  .interaction-modes {
-    position: absolute;
-    left: 8px;
-    right: 112px;
-    top: 8px;
-    margin: 0;
-  }
-  .interaction-modes button {
-    min-height: 28px;
-    font-size: 7px;
-  }
-  .builder-tools {
-    margin-bottom: 6px;
-  }
-  .builder-tools button {
-    min-height: 40px;
-    padding: 4px;
-    grid-template-columns: 22px 1fr;
-  }
-  .builder-tools button > span {
-    width: 20px;
-    height: 20px;
-  }
-  .builder-tools small {
-    display: none;
-  }
-  .palette {
-    max-height: 152px;
-  }
-  .zoom-controls {
-    top: 84px;
-    right: 12px;
-    grid-template-columns: 30px 30px;
-  }
-  .zoom-controls button {
-    height: 30px;
-    background: #0a101bdf;
-  }
-  .zoom-controls #zoom-fit {
-    height: 23px;
-  }
-  .event-feed {
-    pointer-events: none;
-  }
-}
-@media (max-width: 800px) {
-  .event-feed {
-    top: 68px;
-    bottom: auto;
-    width: calc(100vw - 44px);
-  }
-  .event-feed > span {
-    display: none;
-  }
-  #event-items article {
-    padding: 7px 9px 7px 12px;
-    background: #0c1220bf;
-  }
-  #event-items article:nth-child(n + 2),
-  #event-items > p {
-    display: none;
-  }
-  #event-items strong {
-    font-size: 8px;
-  }
-  #event-items small {
-    font-size: 6.5px;
-  }
-  .tool-panel {
-    padding-top: 42px;
-  }
-  .actions {
-    display: flex;
-    position: absolute;
-    z-index: 9;
-    top: 8px;
-    right: 8px;
-    margin: 0;
-    gap: 4px;
-  }
-  .action {
-    flex: none;
-    padding: 6px 8px;
-    font-size: 7px;
-    background: #0d1320e6;
-  }
-  .toast {
-    display: none;
-  }
-}
-@media (max-width: 800px) {
-  .top-actions {
-    position: absolute;
-    top: 46px;
-    right: 0;
-  }
-  .top-actions button {
-    min-height: 26px;
-    padding: 0 8px;
-    font-size: 7px;
-  }
-  .scenario-picker {
-    top: 12px;
-    bottom: auto;
-    width: calc(100vw - 24px);
-    max-height: calc(100vh - 24px);
-    padding: 15px;
-    transform: translateX(-50%);
-    overflow: auto;
-  }
-  .scenario-heading {
-    margin-bottom: 10px;
-  }
-  .scenario-heading h2 {
-    font-size: 16px;
-  }
-  .scenario-grid {
-    grid-template-columns: 1fr;
-    gap: 7px;
-  }
-  .scenario-grid button {
-    min-height: 94px;
-    padding: 12px;
-  }
-  .scenario-grid span {
-    font-size: 8px;
-  }
-  .guide-card {
-    top: 78px;
-    width: calc(100vw - 44px);
-  }
-  .shell:has(.guide-card:not([hidden])) .top-actions {
-    display: none;
-  }
-  .guide-card:not([hidden]) ~ .event-feed {
-    display: none;
-  }
-  .attract-badge {
-    top: 80px;
-    width: max-content;
-    max-width: calc(100vw - 36px);
-    text-align: center;
-  }
-  .sim-state {
-    gap: 9px;
-  }
-}
 .swatch-asteroid {
   border-radius: 42% 58% 48% 39%;
   background:
@@ -1706,6 +1498,7 @@ dd {
 .tool-panel,
 .info-panel {
   max-height: calc(100vh - 180px);
+  max-height: calc(100dvh - 180px);
   overflow: auto;
   scrollbar-width: thin;
 }
@@ -1727,60 +1520,6 @@ dd {
   }
   .hint {
     display: none;
-  }
-}
-@media (max-width: 800px) {
-  .universe-toolbar {
-    top: 76px;
-    left: 12px;
-    right: 12px;
-    height: 34px;
-  }
-  .universe-toolbar button,
-  .universe-toolbar select {
-    height: 24px;
-    padding: 0 7px;
-    font-size: 6.5px;
-  }
-  .universe-toolbar select {
-    min-width: 112px;
-  }
-  .panel {
-    top: auto;
-  }
-  .science-legend {
-    top: 114px;
-    max-width: calc(100vw - 24px);
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .zoom-controls {
-    top: 118px;
-  }
-  .event-feed {
-    top: 158px;
-  }
-  .event-feed.expanded {
-    max-height: 34vh;
-  }
-  .tool-panel {
-    max-height: calc(100vh - 238px);
-    overflow: visible;
-  }
-  .builder-tools button:nth-child(3) {
-    grid-column: auto;
-  }
-  .builder-tools {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .builder-tools b {
-    font-size: 7px;
-  }
-  .binary-icon {
-    display: block;
-  }
-  .top-actions {
-    top: 42px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1855,23 +1594,6 @@ dd {
 .gentle-effects .toast {
   transition: none;
 }
-@media (max-width: 800px) {
-  .perf-badge {
-    display: none;
-  }
-  .narration-card {
-    top: 120px;
-    right: 12px;
-    width: calc(100vw - 24px);
-    padding: 9px 11px;
-  }
-  .narration-card p {
-    font-size: 7.5px;
-  }
-  .shell:has(.narration-card:not([hidden])) .event-feed {
-    top: 206px;
-  }
-}
 .interaction-modes {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -1943,28 +1665,10 @@ dd {
 .object-label:not(:has(em.show)) {
   backdrop-filter: blur(4px);
 }
-@media (max-width: 800px) {
-  .navigation-help {
-    top: 158px;
-    left: 12px;
-    max-width: calc(100vw - 100px);
-    transform: none;
-    text-align: left;
-  }
-  .interaction-modes {
-    right: 8px;
-  }
-  .zoom-controls #zoom-fit,
-  .zoom-controls #zoom-selected {
-    height: 23px;
-  }
-  .habitable-zone-label {
-    font-size: 5.5px;
-  }
-}
 .universe-picker {
   width: min(900px, calc(100vw - 40px));
   max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
   overflow: auto;
 }
 .universe-grid {
@@ -2038,15 +1742,535 @@ dd {
   border-color: #f2b25c66;
   background: #6a461a29;
 }
+
+/* ---------- Shared panel chrome (all layouts) ---------- */
+.dock {
+  display: contents;
+}
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.panel-head .panel-title {
+  margin-bottom: 12px;
+}
+.panel-toggle,
+.sheet-buttons {
+  display: none;
+}
+.life-zone-button {
+  grid-column: 1 / -1;
+}
+.life-zone-button[hidden] {
+  display: none;
+}
+/* Edge fades tell visitors the universe toolbar scrolls sideways. */
+.universe-toolbar.fade-right {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 42px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 42px), transparent);
+}
+.universe-toolbar.fade-left {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 42px);
+  mask-image: linear-gradient(90deg, transparent, #000 42px);
+}
+.universe-toolbar.fade-left.fade-right {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 42px, #000 calc(100% - 42px), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 42px, #000 calc(100% - 42px), transparent);
+}
+/* Desktop: the toast sits level with the time controls so it never covers the event timeline. */
+.toast {
+  bottom: max(20px, calc(var(--safe-bottom) + 8px));
+}
+/* Desktop and iPad landscape: keep fixed chrome clear of notches and the home indicator. */
+.topbar {
+  top: max(18px, var(--safe-top));
+  left: max(22px, var(--safe-left));
+  right: max(22px, var(--safe-right));
+}
+.speed,
+.readout {
+  bottom: max(20px, calc(var(--safe-bottom) + 8px));
+}
+
+/* ---------- Compact layout: phones and iPad portrait ---------- */
 @media (max-width: 800px) {
+  .hint,
+  .readout,
+  .perf-badge,
+  .brand-name {
+    display: none;
+  }
+  .topbar {
+    top: max(10px, var(--safe-top));
+    left: max(12px, var(--safe-left));
+    right: max(12px, var(--safe-right));
+    height: 44px;
+    gap: 10px;
+  }
+  .sim-state {
+    gap: 10px;
+    font-size: 11px;
+  }
+  .sim-state span {
+    font-size: 0;
+  }
+  .sim-state b {
+    font-size: 11px;
+  }
+  .sim-state span:first-child b:before {
+    content: 'OBJ ';
+    color: #8390ae;
+  }
+  .sim-state span:last-child b:before {
+    content: 'T ';
+    color: #8390ae;
+  }
+  /* Universes, Exhibits and Fullscreen stay in the top bar and reachable, including during guides. */
+  .top-actions {
+    margin-left: auto;
+    gap: 6px;
+  }
+  .top-actions button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+  #fullscreen-button {
+    font-size: 0;
+  }
+  #fullscreen-button:before {
+    content: '⛶';
+    font-size: 18px;
+  }
+  .universe-toolbar {
+    top: calc(max(10px, var(--safe-top)) + 50px);
+    left: max(12px, var(--safe-left));
+    right: max(12px, var(--safe-right));
+    height: 44px;
+    gap: 6px;
+    padding: 5px;
+  }
+  .universe-toolbar button,
+  .universe-toolbar select {
+    height: 34px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+  .universe-toolbar select {
+    min-width: 150px;
+    max-width: 190px;
+  }
+  .zoom-controls {
+    top: calc(max(10px, var(--safe-top)) + 102px);
+    right: max(12px, var(--safe-right));
+    grid-template-columns: 40px 40px;
+    gap: 6px;
+  }
+  .zoom-controls button {
+    height: 40px;
+    background: #0a101bdf;
+  }
+  .zoom-controls #zoom-fit,
+  .zoom-controls #zoom-selected {
+    height: 34px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .event-feed,
+  .guide-card,
+  .attract-badge,
+  .narration-card,
+  .science-legend,
+  .navigation-help {
+    left: max(12px, var(--safe-left));
+    right: calc(max(12px, var(--safe-right)) + 96px);
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+  .event-feed {
+    top: calc(max(10px, var(--safe-top)) + 102px);
+    bottom: auto;
+    pointer-events: none;
+  }
+  .event-feed > span,
+  #event-items > p,
+  #event-items article:nth-child(n + 2) {
+    display: none;
+  }
+  #event-items article {
+    padding: 8px 10px 8px 13px;
+    background: #0c1220d9;
+  }
+  #event-items strong {
+    font-size: 12px;
+  }
+  #event-items small {
+    font-size: 11px;
+  }
+  .guide-card {
+    top: calc(max(10px, var(--safe-top)) + 102px);
+    padding: 12px 14px;
+  }
+  .guide-card > span,
+  .guide-card button {
+    font-size: 11px;
+  }
+  .guide-card > strong {
+    font-size: 15px;
+  }
+  .guide-card > p {
+    font-size: 12px;
+  }
+  .guide-card button {
+    min-height: 40px;
+    padding: 0 12px;
+  }
+  .guide-card:not([hidden]) ~ .event-feed {
+    display: none;
+  }
+  .attract-badge {
+    top: calc(max(10px, var(--safe-top)) + 102px);
+    font-size: 11px;
+    text-align: center;
+  }
+  .narration-card {
+    top: calc(max(10px, var(--safe-top)) + 150px);
+  }
+  .narration-card span {
+    font-size: 11px;
+  }
+  .narration-card p {
+    font-size: 12px;
+  }
+  .science-legend {
+    top: calc(max(10px, var(--safe-top)) + 190px);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-size: 11px;
+  }
+  .navigation-help {
+    top: calc(max(10px, var(--safe-top)) + 190px);
+    font-size: 11px;
+    text-align: left;
+  }
+  /* The toast lives in the dock, so it stacks just above the panels instead of covering the guide card. */
+  .dock > .toast {
+    position: static;
+    align-self: center;
+    max-width: 100%;
+    font-size: 12px;
+    transform: none;
+    transition: none;
+  }
+  .dock > .toast:not(.show) {
+    display: none;
+  }
+  /* Bottom dock: the selected-object sheet stacks above the (collapsible) tool panel. */
+  .dock {
+    position: absolute;
+    z-index: 6;
+    left: max(12px, var(--safe-left));
+    right: max(12px, var(--safe-right));
+    bottom: calc(max(12px, var(--safe-bottom)) + 54px);
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100vh - 230px);
+    max-height: calc(100dvh - 230px - var(--safe-top) - var(--safe-bottom));
+    pointer-events: none;
+  }
+  .dock > .panel {
+    position: static;
+    width: auto;
+    max-height: none;
+    padding: 10px 12px;
+    pointer-events: auto;
+  }
+  .panel-title {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .panel-head .panel-title {
+    margin: 0;
+  }
+  /* Tool panel */
+  .tool-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'actions toggle' 'modes modes' 'body body';
+    gap: 8px;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .tool-panel > .panel-head {
+    display: contents;
+  }
+  .tool-panel .panel-title {
+    display: none;
+  }
+  .panel-toggle {
+    grid-area: toggle;
+    display: block;
+  }
+  .panel-toggle,
+  .sheet-buttons button {
+    min-height: 40px;
+    padding: 0 12px;
+    color: #c4cee6;
+    border: 1px solid #5d6d8f88;
+    border-radius: 8px;
+    background: #172036;
+    font:
+      11px DM Mono,
+      monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+  .actions {
+    grid-area: actions;
+    display: flex;
+    gap: 6px;
+    margin: 0;
+  }
+  .action {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+  .interaction-modes {
+    grid-area: modes;
+    margin: 0;
+  }
+  .interaction-modes button {
+    min-height: 40px;
+    font-size: 11px;
+  }
+  .tool-panel-body {
+    grid-area: body;
+    min-height: 0;
+    max-height: 36vh;
+    max-height: 36dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .tools-collapsed .tool-panel-body {
+    display: none;
+  }
+  .builder-tools {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .builder-tools button {
+    min-height: 44px;
+    padding: 4px 6px;
+    grid-template-columns: 22px 1fr;
+  }
+  .builder-tools button > span {
+    width: 20px;
+    height: 20px;
+  }
+  .builder-tools b {
+    font-size: 11px;
+  }
+  .builder-tools small,
+  .selector-copy small,
+  .mode-button small {
+    display: none;
+  }
+  .palette {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    max-height: none;
+    overflow: visible;
+  }
+  .body-btn {
+    display: block;
+    min-height: 58px;
+    padding: 7px 4px;
+    text-align: center;
+  }
+  .swatch {
+    margin: 0 auto 5px;
+  }
+  .selector-copy b {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mode-button {
+    min-height: 44px;
+    margin-top: 8px;
+  }
+  .mode-button b {
+    font-size: 12px;
+  }
+  .row {
+    font-size: 11px;
+  }
+  .row input {
+    width: 55%;
+  }
+  /* Selected-object sheet */
+  .info-panel.empty {
+    display: none;
+  }
+  .info-panel {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .info-panel .panel-head {
+    margin-bottom: 8px;
+  }
+  .sheet-buttons {
+    display: flex;
+    gap: 6px;
+  }
+  .sheet-buttons #info-close {
+    min-width: 40px;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .object-heading {
+    padding-bottom: 8px;
+  }
+  .object-heading h2 {
+    font-size: 15px;
+  }
+  .object-heading span,
+  dt,
+  dd,
+  .lifecycle > div:first-child,
+  .lock-button {
+    font-size: 11px;
+  }
+  .lock-button {
+    min-height: 40px;
+  }
+  #info-climate {
+    max-width: 60%;
+  }
+  dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 14px;
+    margin: 8px 0;
+  }
+  dl div {
+    margin: 4px 0;
+  }
+  /* Collapsed sheet: name, mass, velocity and the main actions; Details reveals the rest. */
+  .info-panel:not(.expanded) dl div:nth-child(n + 3),
+  .info-panel:not(.expanded) .lifecycle {
+    display: none !important;
+  }
+  .info-panel.expanded {
+    max-height: 48vh;
+    max-height: 48dvh;
+    flex: 0 1 auto;
+  }
+  .speed {
+    left: max(12px, var(--safe-left));
+    right: max(12px, var(--safe-right));
+    bottom: max(12px, var(--safe-bottom));
+    justify-content: flex-end;
+  }
+  .speed span {
+    font-size: 11px;
+  }
+  .speed button {
+    min-width: 46px;
+    height: 42px;
+    font-size: 13px;
+  }
+  .scenario-picker,
   .universe-picker {
+    top: max(12px, var(--safe-top));
+    bottom: auto;
     width: calc(100vw - 24px);
     max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px - var(--safe-top) - var(--safe-bottom));
+    padding: 15px;
+    transform: translateX(-50%);
+    overflow: auto;
   }
+  .scenario-heading span,
+  .scenario-grid small,
+  .scenario-picker > p,
+  .universe-grid em,
+  .pack-details small,
+  .pack-details span {
+    font-size: 11px;
+  }
+  .scenario-heading button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .scenario-heading h2 {
+    font-size: 18px;
+  }
+  .scenario-grid,
   .universe-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
-  .universe-grid button {
-    min-height: 104px;
+  .scenario-grid button {
+    min-height: 94px;
+    padding: 12px;
+  }
+  .scenario-grid strong {
+    font-size: 15px;
+  }
+  .scenario-grid span,
+  .pack-details p {
+    font-size: 12px;
+  }
+  .object-menu,
+  .menu-heading span,
+  .menu-stats,
+  .menu-actions button,
+  .change-grid button,
+  .menu-remove,
+  .object-menu > p,
+  .object-menu > small {
+    font-size: 11px;
+  }
+  .menu-actions button,
+  .change-grid button,
+  .menu-remove {
+    min-height: 38px;
+  }
+  .object-label {
+    min-width: 0;
+    padding: 2px 5px;
+  }
+  .object-label strong {
+    font-size: 11px;
+  }
+  .object-label span,
+  .object-label em {
+    font-size: 10px;
+  }
+  .habitable-zone-label {
+    font-size: 10px;
+  }
+}
+@media (max-width: 800px) and (min-width: 600px) {
+  .builder-tools {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .palette {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
