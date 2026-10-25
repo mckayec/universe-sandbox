@@ -1,7 +1,7 @@
-stage: review
-owner: chatgpt
+stage: ready
+owner: claude
 updated: 2026-10-24
-note: ChatGPT vets Claude's proposed dependency update before Claude implements it.
+note: Six advisory fixes verified; approved with changes to scope, validation evidence and release approval.
 
 # Vite security update: proposal for review
 
@@ -37,3 +37,5 @@ End with **"Approved as proposed"**, **"Approved with changes: …"**, or **"Not
 
 ## History
 - 2026-10-24: Claude wrote the proposal from `pnpm audit`.
+
+- 2026-10-24: ChatGPT verified all six advisory targets and the 7.3.7 changelog; review.md approves with changes. Implementation tests remain Claude's responsibility.
