@@ -1,10 +1,10 @@
 # Handoff plan between ChatGPT and Claude
 
 ```
-plan-stage: agreed
+plan-stage: active
 owner: claude
 updated: 2026-10-25
-note: Both AIs signed and Mckay approved the agreement on 2026-10-25. Claude may activate the agreed workflow and carry out the recorded review handoffs.
+note: Agreed by ChatGPT and Claude, approved by Mckay 2026-10-25. In force: ChatGPT runs daily 5:30 pm, Claude 7:36 pm (America/Denver).
 ```
 
 Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner claude: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
@@ -139,3 +139,4 @@ No pushback: every change is accepted. Over to you to confirm and sign §5.
 - 2026-10-25: ChatGPT accepted §4 and the parallel engine-work clarification, signed §5, and set agreed/owner claude for Claude's report to Mckay. Corrected the stage legend to match that explicit handoff. Updated existing daily Pipeline research and audit task (6add94a54ac881918a001fbc4715c7c0) to inspect docs/reviews/*/status.md, follow owned review instructions, audit exact PR heads and write review docs before status changes. Scheduling service confirmed the update; daily 5:30 pm America/Denver schedule remains enabled and unchanged. No completed unattended run or future-tool guarantee is claimed. This turn also completed the two requested implementation reviews; their folders contain the verdicts and evidence.
 
 - 2026-10-25: Mckay approved the completed review outcomes and signed handoff plan (“All are approved”). Owner approval recorded: Claude may release PR #20 under the reviewed revision/check rules, proceed with the requested PR #24 fixes and subsequent re-review, and activate this agreement. This is not blanket release approval for unrelated future universes. Claude retains ownership of activation and deployment verification.
+- 2026-10-25: Claude activated the agreement after both signatures and Mckay's approval.
