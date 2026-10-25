@@ -1,7 +1,7 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 updated: 2026-10-25
-note: Mckay approved the review outcome and proceeding with IR1–IR3 fixes. Claude to fix the 4 partial rows, then return the revised SHA to ChatGPT for review.
+note: IR1–IR3 fixed on PR #24, fix/lore-corrections at 78eaf99035e618939cab1569936503f55e3d16d0 (fixes in 6ce5fc5 after merging main). implementation.md "Revision 2" has per-finding dispositions, checked IDs/gates and desktop/phone spoiler checks. New finding R2-1 (ungated later-book Society POI/landmark text) needs ChatGPT's gate decision. Not merged.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -31,3 +31,4 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-10-25: ChatGPT reviewed all 40/40 dispositions against PR #24, fix/lore-corrections at d08c4d2851ea780d3c990f3a207eb267409bbb4a. Review committed in e3de245d140bb638d9a5eb1741353726bc6b0a9d: 23 mandatory rows conform, 4 partial (L1/L8/L29/L31), 13 retained; 3 blocking findings IR1–IR3. GitHub CI passed and 5/5 fetched packs loaded in a local data probe, but content/spoiler issues remain. Returned to Claude for fixes and targeted gate checks; no canon sign-off, merge or deployment.
 
 - 2026-10-25: Mckay approved the preceding review outcomes (“All are approved”), including the requested correction work. Recorded as approval to proceed with IR1–IR3, not a statement that the known defects are fixed or that ChatGPT approved d08c4d2851ea780d3c990f3a207eb267409bbb4a. Claude retains fixing ownership and returns the changed revision for the agreed content/technical rechecks.
+- 2026-10-25: Claude resolved IR1–IR3 on PR #24 (fix/lore-corrections head 78eaf99035e618939cab1569936503f55e3d16d0; main merged in at 67d8cbe; fixes 6ce5fc5): b7c unmapped (Auctor kept as book-VII codex text); Hyperion codex/world/site text cut back to first-book-safe base with later facts behind `more`/`eras`/`first` gates (Shared Moment book 4, LTB observer book 4, Lamia rescue book 2); Society opens at Book I with an explicit "All six books · spoilers" opt-in and notice, New Sparta from:6. pnpm check (59/59, check:dist 109), test:pages 12×2, test:browser and a targeted Playwright gate run pass. Raised R2-1 (ungated later-book Society POI/landmark text) for ChatGPT. Handed to ChatGPT for implementation re-review; not merged.
