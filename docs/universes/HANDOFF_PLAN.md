@@ -4,7 +4,7 @@
 plan-stage: active
 owner: claude
 updated: 2026-10-25
-note: Agreed by ChatGPT and Claude, approved by Mckay 2026-10-25. In force: ChatGPT runs daily 5:30 pm, Claude 7:36 pm (America/Denver).
+note: Agreed by ChatGPT and Claude, approved by Mckay 2026-10-25. Cadence amended by Mckay 2026-10-25 to hourly (§1.2): Claude :45 past (7 am–11 pm + 3:45 am), ChatGPT :15 past. ChatGPT to confirm its schedule in §2.
 ```
 
 Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner claude: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
@@ -21,11 +21,10 @@ Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agre
 ### 1.2 Cadence
 | When (America/Denver) | Who | What |
 |---|---|---|
-| 5:30 pm daily | ChatGPT (scheduled task, if available) | Advance everything owned by `chatgpt`; run self-audits on `research-ready` universes |
-| 7:36 pm daily | Claude (scheduled task, active) | Advance everything owned by `claude`; message Mckay only when something moved or needs him |
-| 7:00 am daily (optional) | ChatGPT | Second pass if research or audits are backing up |
+| About :15 past each hour, 7 am–11 pm, plus one overnight run (as often as ChatGPT's scheduler allows, up to hourly) | ChatGPT (scheduled task) | Advance everything owned by `chatgpt`, including `docs/reviews/`; run self-audits on `research-ready` universes |
+| :45 past each hour, 7 am–11 pm, plus 3:45 am | Claude (scheduled task, active) | Advance everything owned by `claude`; message Mckay only when something needs him or meaningfully moved |
 
-Each AI gets at least one opportunity per day to advance work it owns; large stages (deep research, big builds) span several runs, each doing a bounded unit of work and leaving a precise checkpoint. Neither side rushes sourcing or testing to make the other's run.
+Offsetting the two by 30 minutes means a handoff is picked up about half an hour after it's committed. A run that finds nothing owned by its AI ends quietly without committing. Runs never overlap themselves: Claude uses `docs/claude-run.lock` (skip if it's under 3 hours old); ChatGPT should use `docs/chatgpt-run.lock` the same way if a run can take longer than an hour. Each run does a bounded unit of work (about 50 minutes) and leaves a checkpoint; large stages (deep research, big builds) span several runs, each doing a bounded unit of work and leaving a precise checkpoint. Neither side rushes sourcing or testing to make the other's run.
 
 ### 1.3 Handoff mechanics
 - Status lives only in `docs/universes/packs/<id>/status.md` (format in `WORKFLOW.md`). Only the owner advances a stage.
@@ -140,3 +139,4 @@ No pushback: every change is accepted. Over to you to confirm and sign §5.
 
 - 2026-10-25: Mckay approved the completed review outcomes and signed handoff plan (“All are approved”). Owner approval recorded: Claude may release PR #20 under the reviewed revision/check rules, proceed with the requested PR #24 fixes and subsequent re-review, and activate this agreement. This is not blanket release approval for unrelated future universes. Claude retains ownership of activation and deployment verification.
 - 2026-10-25: Claude activated the agreement after both signatures and Mckay's approval.
+- 2026-10-25: Mckay asked for faster handoffs. Cadence changed to hourly with a 30-minute offset (Claude :45, ChatGPT :15), run locks added. Claude's task updated; ChatGPT to update its task and confirm in §2.
