@@ -137,10 +137,36 @@ export function ensureMatterStream(donor: Body, receiver: Body, kind: MatterStre
   stream.intensity = THREE.MathUtils.lerp(stream.intensity, THREE.MathUtils.clamp(intensity, 0.08, 1), 0.35);
   stream.lastActive = app.elapsed;
 }
+// Scratch vectors for the per-frame stream geometry; the Bézier is evaluated without allocating.
+const curveOut = new THREE.Vector3(),
+  curveAhead = new THREE.Vector3(),
+  curveBehind = new THREE.Vector3(),
+  ribbonSide = new THREE.Vector3();
+function bezier(
+  out: THREE.Vector3,
+  t: number,
+  p0: THREE.Vector3,
+  p1: THREE.Vector3,
+  p2: THREE.Vector3,
+  p3: THREE.Vector3,
+) {
+  const u = 1 - t,
+    a = u * u * u,
+    b = 3 * u * u * t,
+    c = 3 * u * t * t,
+    d = t * t * t;
+  return out.set(
+    p0.x * a + p1.x * b + p2.x * c + p3.x * d,
+    p0.y * a + p1.y * b + p2.y * c + p3.y * d,
+    p0.z * a + p1.z * b + p2.z * c + p3.z * d,
+  );
+}
 export function updateMatterStreams(dt: number) {
+  if (!matterStreams.size) return;
+  const byId = new Map(bodies.map(body => [body.id, body] as const));
   for (const stream of [...matterStreams.values()]) {
-    const donor = bodies.find(body => body.id === stream.donorId),
-      receiver = bodies.find(body => body.id === stream.receiverId);
+    const donor = byId.get(stream.donorId),
+      receiver = byId.get(stream.receiverId);
     if (!donor || !receiver) {
       removeMatterStream(stream);
       continue;
@@ -172,13 +198,7 @@ export function updateMatterStreams(dt: number) {
         .addScaledVector(perp, -Math.min(5, distance * 0.24) * bendSign)
         .setY(0.22 + Math.min(0.8, distance * 0.018)),
       intensity = stream.intensity;
-    const curvePoint = (t: number) =>
-      start
-        .clone()
-        .multiplyScalar((1 - t) ** 3)
-        .addScaledVector(controlA, 3 * (1 - t) * (1 - t) * t)
-        .addScaledVector(controlB, 3 * (1 - t) * t * t)
-        .addScaledVector(end, t ** 3);
+    const curvePoint = (t: number, out = curveOut) => bezier(out, t, start, controlA, controlB, end);
     const ribbonAttr = stream.ribbon.geometry.getAttribute('position') as THREE.BufferAttribute,
       ribbonSteps = ribbonAttr.count / 2 - 1;
     for (let i = 0; i <= ribbonSteps; i++) {
@@ -193,10 +213,10 @@ export function updateMatterStreams(dt: number) {
             (stream.kind === 'nebula' ? 0.76 : 0.58) *
             (0.58 + intensity * 1.62) +
           0.06,
-        tangent = curvePoint(Math.min(1, t + 0.02))
-          .sub(curvePoint(Math.max(0, t - 0.02)))
+        tangent = curvePoint(Math.min(1, t + 0.02), curveAhead)
+          .sub(curvePoint(Math.max(0, t - 0.02), curveBehind))
           .normalize(),
-        side = new THREE.Vector3(-tangent.z, 0, tangent.x).normalize().multiplyScalar(width);
+        side = ribbonSide.set(-tangent.z, 0, tangent.x).normalize().multiplyScalar(width);
       p.y += Math.sin(t * 21 - app.elapsed * 5) * width * 0.22;
       ribbonAttr.setXYZ(i * 2, p.x + side.x, p.y + side.y, p.z + side.z);
       ribbonAttr.setXYZ(i * 2 + 1, p.x - side.x, p.y - side.y, p.z - side.z);

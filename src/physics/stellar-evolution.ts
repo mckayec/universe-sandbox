@@ -22,7 +22,7 @@ import { addBody } from '../bodies/registry.ts';
 import { brownIgnitionMass, ignitionStage, protoIgnitionMass, stellarEvolutionRate } from './body-math.ts';
 import { ensureMatterStream } from './matter-streams.ts';
 import { isCompact } from '../scene/setup.ts';
-import { app, bodies } from '../state/app-state.ts';
+import { app, bodies, bodyGroupIds, cosmicGroups } from '../state/app-state.ts';
 import type { Body, Stage } from '../state/types.ts';
 import { museumEvent } from '../ui/feed.ts';
 import {
@@ -40,11 +40,8 @@ function igniteBody(b: Body, source: 'brown dwarf' | 'protostar') {
     stage = ignitionStage(mass),
     data = STAGES.find(s => s.stage === stage)!;
   stellarIgnitionEffect(b.mesh.position.clone(), data.color, mass);
+  // transform() already sets the birth stage for this mass and rebuilds the visual and scale.
   transform(b, 'star', mass);
-  b.stage = stage;
-  b.stageAge = 0;
-  replaceVisual(b);
-  updateScale(b);
   museumEvent(
     source === 'brown dwarf' ? 'Fusion ignition' : 'Protostar ignition',
     `${b.name} reached ${mass.toFixed(0)} M⊕ and entered the ${stellarTrackLabel(mass).toLowerCase()} as a ${stage}.`,
@@ -171,8 +168,15 @@ export function spawnProtostar(n: Body) {
     protoAngle: a,
     protoOrbit: o,
     mass: seedMass,
+    // Stars born in a galaxy's nursery join that galaxy (and its exhibit system) rather than wandering into its core.
+    exhibitSystemId: n.exhibitSystemId,
     lastEvent: `A dense core is gradually condensing inside ${n.name}`,
   });
+  const groupId = bodyGroupIds.get(n.id);
+  if (groupId !== undefined) {
+    bodyGroupIds.set(seed.id, groupId);
+    cosmicGroups.find(group => group.id === groupId)?.bodyIds.push(seed.id);
+  }
   particleBurst(p, TYPES.protostar.color, isCompact ? 16 : 30, 0.65, 2.4);
   museumEvent(
     'Dense core condensing',
@@ -222,6 +226,22 @@ export function updateProto(b: Body, dt: number) {
     igniteBody(b, 'protostar');
     b.velocity.copy(v);
   }
+}
+/** Below this mass a stripped star can no longer sustain fusion in the exhibit model and fades to a brown dwarf. */
+export const STAR_FUSION_FLOOR = 100;
+export function demoteStrippedStar(b: Body) {
+  if (b.kind !== 'star' || b.artificial || b.stage === 'white dwarf' || b.mass >= STAR_FUSION_FLOOR) return false;
+  const name = b.name;
+  impactEffect(b.mesh.position.clone(), TYPES.brown.color, 0.9);
+  transform(b, 'brown', b.mass);
+  b.lastEvent = 'Stripped below the fusion limit; now a brown dwarf';
+  museumEvent(
+    'Fusion fades',
+    `${name} lost so much mass that its core can no longer fuse hydrogen; it is now a brown dwarf.`,
+    '#e07447',
+    b,
+  );
+  return true;
 }
 function reclassifyAccretingStar(b: Body) {
   if (b.kind !== 'star' || b.stageTransition || ['giant', 'hypergiant', 'white dwarf'].includes(b.stage!)) return false;

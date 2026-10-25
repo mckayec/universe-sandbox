@@ -7,7 +7,7 @@ import { type Kind } from '../celestial-catalog.ts';
 
 export type Stage = StellarStage;
 export type LifeLevel = 'none' | 'habitable' | 'microbial' | 'simple' | 'complex' | 'technological';
-type StellarTransition = { from: Stage; to: Stage; age: number; duration: number };
+export type StellarTransition = { from: Stage; to: Stage; age: number; duration: number };
 export type Body = {
   id: number;
   name: string;
@@ -38,7 +38,10 @@ export type Body = {
   tidalStretch: number;
   tidalAngle: number;
   spinAngle?: number;
+  /** Preset exhibit system (Solar System, galaxy, guided exhibit) this body belongs to; see sameExhibitSystem. */
   exhibitSystemId?: number;
+  /** The body its exhibit system orbits (Sun, central black hole): members don't tug it. */
+  exhibitAnchor?: boolean;
   holdStage?: boolean;
   satelliteHostId?: number;
   satelliteOrbit?: number;
@@ -46,6 +49,16 @@ export type Body = {
   satelliteRate?: number;
   tidalVisualAngle?: number;
   tidalPartnerId?: number;
+  /** Accumulated Roche-limit strain in [0, 1] (tidal disruption). */
+  tidalStrain?: number;
+  /** The "Roche limit crossed" warning has been shown for the current strain episode. */
+  tidalWarned?: boolean;
+  /** Fragment of a tidal disruption: label hidden and brief immunity from merging with sibling debris. */
+  debris?: boolean;
+  /** Receiver id → app.elapsed when this donor's tidal transfer toward it was last announced (not saved). */
+  tidalAnnounced?: Map<number, number>;
+  /** Set by removeBody so loops over a stale copy of `bodies` can skip it. */
+  removed?: boolean;
   lifeScore: number;
   lifeLevel: LifeLevel;
   habitabilityShock: number;

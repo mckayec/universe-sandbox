@@ -1,106 +1,105 @@
 // One fixed physics step: gravity, halo gravity, evolution, interactions and collisions.
-import * as THREE from 'three';
-import { barnesHutAccelerations, spatialCandidatePairs, type GravityParticle } from '../gravity-engine.ts';
+import { barnesHutAccelerations, pairwiseAccelerations, type GravityParticle } from '../gravity-engine.ts';
 import { capPlanarVelocity } from '../physics-continuity.ts';
 import { G } from '../celestial-catalog.ts';
 import { removeBody } from '../bodies/lifecycle.ts';
-import { spinRate } from './body-math.ts';
+import { isExhibitAnchor, spinRate } from './body-math.ts';
 import { collisions } from './collisions.ts';
+import { applyGalaxyHaloGravity, galaxyGroupFor } from './galaxy-dynamics.ts';
 import { updateLife } from './life.ts';
 import { updateNebulaInteractions, updateNebulaMergers } from './nebula.ts';
 import { advanceStar, spawnProtostar, updateProto } from './stellar-evolution.ts';
-import { sameExhibitSystem, updateSatellite, updateTidalInteractions } from './tidal.ts';
+import { updateSatellite, updateTidalInteractions } from './tidal.ts';
 import { updateTidalDisruption } from './tidal-disruption.ts';
 import { isCompact } from '../scene/setup.ts';
-import { app, bodies, cosmicGroups } from '../state/app-state.ts';
+import { app, bodies } from '../state/app-state.ts';
+import type { Body } from '../state/types.ts';
 
 export const SIM_STEP = 1 / 60,
-  MAX_SIM_STEPS = isCompact ? 18 : 22;
-const physicsDelta = new THREE.Vector3();
-function gravityParticles(): GravityParticle[] {
-  return bodies.map(body => ({
-    id: body.id,
-    x: body.mesh.position.x,
-    z: body.mesh.position.z,
-    mass: body.mass,
-    radius: body.radius,
-    softening: body.kind === 'nebula' ? body.radius * 1.34 : body.radius * 0.42,
-    sourceFactor: body.kind === 'nebula' ? 0.22 : 1,
-    responseFactor: body.kind === 'nebula' ? 0.14 : 1,
-    locked: body.locked || body === app.dragBody,
-    hosted: body.hostId !== undefined || body.satelliteHostId !== undefined,
-  }));
+  MAX_SIM_STEPS = isCompact ? 18 : 22,
+  /** Above this many bodies gravity switches from exact pairs to Barnes–Hut; both follow the same rules. */
+  BARNES_HUT_THRESHOLD = 64,
+  /** Speed limit for a free nebula; nebulae orbiting inside a galaxy are limited relative to its anchor instead. */
+  NEBULA_SPEED_LIMIT = 1.35,
+  GALAXY_NEBULA_SPEED_LIMIT = 20;
+
+/** Nebulae are extended, weakly coupled media, except as galaxy members, where they orbit with the disk. */
+function galaxyNebulae() {
+  const ids = new Set<number>();
+  for (const body of bodies)
+    if (body.kind === 'nebula' && body.exhibitSystemId !== undefined && galaxyGroupFor(body)) ids.add(body.id);
+  return ids;
 }
-function applyGalaxyHaloGravity(dt: number) {
-  for (const group of cosmicGroups) {
-    if (group.kind !== 'galaxy' || !group.haloMass || group.anchorId === undefined) continue;
-    const anchor = bodies.find(body => body.id === group.anchorId);
-    if (!anchor) continue;
-    for (const id of group.bodyIds) {
-      if (id === anchor.id) continue;
-      const body = bodies.find(candidate => candidate.id === id);
-      if (!body || body.locked || body === app.dragBody || body.hostId !== undefined) continue;
-      const delta = anchor.mesh.position.clone().sub(body.mesh.position),
-        radius = Math.max(3, delta.length()),
-        enclosed = group.haloMass * Math.pow(radius / (radius + 52), 1.45),
-        response = body.kind === 'nebula' ? 0.22 : 1;
-      body.velocity.addScaledVector(
-        delta.normalize(),
-        ((G * app.gravity * enclosed) / (radius * radius)) * dt * response,
-      );
+function gravityParticles(byId: Map<number, Body>): GravityParticle[] {
+  const diskClouds = galaxyNebulae();
+  const anchors = new Map<number, Body>();
+  for (const body of bodies) if (isExhibitAnchor(body)) anchors.set(body.exhibitSystemId!, body);
+  return bodies.map(body => {
+    const nebula = body.kind === 'nebula',
+      frame = body.exhibitSystemId === undefined ? undefined : anchors.get(body.exhibitSystemId);
+    return {
+      id: body.id,
+      x: body.mesh.position.x,
+      z: body.mesh.position.z,
+      mass: body.mass,
+      radius: body.radius,
+      softening: nebula ? body.radius * body.radius * 1.8 : 0,
+      sourceFactor: nebula ? 0.22 : 1,
+      responseFactor: nebula && !diskClouds.has(body.id) ? 0.14 : 1,
+      locked: body.locked || body === app.dragBody,
+      hosted: body.hostId !== undefined || body.satelliteHostId !== undefined,
+      systemId: body.exhibitSystemId,
+      anchor: isExhibitAnchor(body),
+      frameX: frame && frame !== body && byId.has(frame.id) ? frame.mesh.position.x : undefined,
+      frameZ: frame && frame !== body && byId.has(frame.id) ? frame.mesh.position.z : undefined,
+    };
+  });
+}
+function applyGravity(dt: number, byId: Map<number, Body>) {
+  const particles = gravityParticles(byId),
+    accelerations =
+      bodies.length > BARNES_HUT_THRESHOLD
+        ? barnesHutAccelerations(particles, G * app.gravity)
+        : pairwiseAccelerations(particles, G * app.gravity);
+  for (const body of bodies) {
+    const acceleration = accelerations.get(body.id);
+    if (acceleration && !body.locked && body !== app.dragBody) {
+      body.velocity.x += acceleration.x * dt;
+      body.velocity.z += acceleration.z * dt;
     }
   }
 }
+function limitNebula(b: Body, byId: Map<number, Body>, dt: number) {
+  const group = galaxyGroupFor(b),
+    anchor = group?.anchorId === undefined ? undefined : byId.get(group.anchorId);
+  if (!anchor || anchor === b) {
+    capPlanarVelocity(b.velocity, NEBULA_SPEED_LIMIT);
+    if (!b.locked && b !== app.dragBody) b.velocity.multiplyScalar(Math.exp(-dt * 0.055));
+    return;
+  }
+  // Inside a galaxy the cloud orbits with the disk: limit only its speed relative to the anchor, without drag.
+  b.velocity.sub(anchor.velocity);
+  capPlanarVelocity(b.velocity, GALAXY_NEBULA_SPEED_LIMIT);
+  b.velocity.add(anchor.velocity);
+}
 export function simulate(dt: number) {
-  if (bodies.length > 64) {
-    const accelerations = barnesHutAccelerations(gravityParticles(), G * app.gravity);
-    for (const body of bodies) {
-      const acceleration = accelerations.get(body.id);
-      if (acceleration && !body.locked && body !== app.dragBody) {
-        body.velocity.x += acceleration.x * dt;
-        body.velocity.z += acceleration.z * dt;
-      }
-    }
-  } else
-    for (let i = 0; i < bodies.length; i++)
-      for (let j = i + 1; j < bodies.length; j++) {
-        const a = bodies[i],
-          b = bodies[j];
-        if (a.hostId || b.hostId || a.satelliteHostId !== undefined || b.satelliteHostId !== undefined) continue;
-        if (sameExhibitSystem(a, b) && a.kind !== 'star' && b.kind !== 'star') continue;
-        physicsDelta.copy(b.mesh.position).sub(a.mesh.position);
-        const extendedSoftening =
-            (a.kind === 'nebula' ? a.radius * a.radius * 1.8 : 0) +
-            (b.kind === 'nebula' ? b.radius * b.radius * 1.8 : 0),
-          d2 = Math.max(physicsDelta.lengthSq() + extendedSoftening, (a.radius + b.radius) ** 2 * 0.35);
-        if (d2 < 0.0001) continue;
-        physicsDelta.normalize();
-        const anchored = sameExhibitSystem(a, b),
-          aResponse = anchored && a.kind === 'star' ? 0 : a.kind === 'nebula' ? 0.14 : 1,
-          bResponse = anchored && b.kind === 'star' ? 0 : b.kind === 'nebula' ? 0.14 : 1,
-          aSource = a.kind === 'nebula' ? 0.22 : 1,
-          bSource = b.kind === 'nebula' ? 0.22 : 1;
-        if (!a.locked && a !== app.dragBody)
-          a.velocity.addScaledVector(physicsDelta, ((G * app.gravity * b.mass * bSource * aResponse) / d2) * dt);
-        if (!b.locked && b !== app.dragBody)
-          b.velocity.addScaledVector(physicsDelta, ((-G * app.gravity * a.mass * aSource * bResponse) / d2) * dt);
-      }
-  applyGalaxyHaloGravity(dt);
+  const byId = new Map(bodies.map(body => [body.id, body] as const));
+  applyGravity(dt, byId);
+  applyGalaxyHaloGravity(dt, byId);
   for (const b of [...bodies]) {
+    if (b.removed) continue;
     b.age += dt;
     b.collisionCooldown = Math.max(0, b.collisionCooldown - dt);
     b.habitabilityShock = Math.max(0, b.habitabilityShock - dt * 0.022);
     if (b.kind === 'star') advanceStar(b, dt);
-    capPlanarVelocity(b.velocity, b.artificial ? 140 : b.kind === 'nebula' ? 1.35 : b.kind === 'comet' ? 42 : 32);
+    if (b.kind === 'nebula') limitNebula(b, byId, dt);
+    else capPlanarVelocity(b.velocity, b.artificial ? 140 : b.kind === 'comet' ? 42 : 32);
     if (b.kind === 'nebula') {
-      if (!b.locked && b !== app.dragBody) {
-        b.velocity.multiplyScalar(Math.exp(-dt * 0.055));
-        b.mesh.position.addScaledVector(b.velocity, dt);
-      }
+      if (!b.locked && b !== app.dragBody) b.mesh.position.addScaledVector(b.velocity, dt);
       b.nebulaTimer += dt;
-      const hosted = bodies.filter(x => x.hostId === b.id).length,
-        maxSeeds = isCompact ? 2 : 3;
-      if (b.nebulaTimer >= 12 && hosted < maxSeeds) {
+      let hosted = 0;
+      for (const x of bodies) if (x.hostId === b.id) hosted++;
+      if (b.nebulaTimer >= 12 && hosted < (isCompact ? 2 : 3)) {
         b.nebulaTimer = 0;
         spawnProtostar(b);
       }
@@ -119,7 +118,6 @@ export function simulate(dt: number) {
   updateNebulaMergers(dt);
   updateTidalInteractions(dt);
   updateTidalDisruption(dt);
-  const collisionParticles = gravityParticles();
-  collisions(bodies.length > 50 ? spatialCandidatePairs(collisionParticles, 12) : undefined);
+  collisions();
   for (const b of [...bodies]) if (b.mesh.position.length() > 1700) removeBody(b);
 }

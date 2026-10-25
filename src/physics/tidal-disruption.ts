@@ -16,10 +16,9 @@ import { impactEffect, particleBurst } from '../visuals/effects.ts';
 
 // ── Tidal disruption: Roche-limit breakup into debris streams ──────────────
 export const TIDAL_DISRUPTION_THRESHOLD = 3,
-  DISRUPTABLE_KINDS: Kind[] = ['moon', 'dwarf', 'rocky', 'gas', 'comet'],
-  tidalStrain = new Map<number, number>(),
-  tidalWarned = new Set<number>(),
-  debrisIds = new Set<number>();
+  DISRUPTABLE_KINDS: Kind[] = ['moon', 'dwarf', 'rocky', 'gas', 'comet'];
+// Strain, warning and debris state live on each Body (tidalStrain, tidalWarned, debris), so they are cleared with the
+// body, survive undo/save/load and can never leak onto a later body that reuses the same id.
 
 function cinematicSlowMotion() {
   if (app.currentExhibit !== 'tidal-lab' && app.currentExhibit !== 'gododdin') return;
@@ -73,27 +72,27 @@ export function updateTidalDisruption(dt: number) {
       donor === app.dragBody ||
       donor.buildLocked
     ) {
-      tidalStrain.delete(donor.id);
+      donor.tidalStrain = undefined;
       continue;
     }
     const { ratio, perturber } = strongestTidalPerturber(donor),
-      previous = tidalStrain.get(donor.id) ?? 0,
+      previous = donor.tidalStrain ?? 0,
       strain = advanceTidalStrain(previous, ratio, TIDAL_DISRUPTION_THRESHOLD, dt);
     if (strain <= 0) {
       if (previous > 0) {
-        tidalStrain.delete(donor.id);
-        tidalWarned.delete(donor.id);
+        donor.tidalStrain = undefined;
+        donor.tidalWarned = undefined;
       }
       continue;
     }
-    tidalStrain.set(donor.id, strain);
+    donor.tidalStrain = strain;
     if (perturber && ratio > TIDAL_DISRUPTION_THRESHOLD) {
       const toward = perturber.mesh.position.clone().sub(donor.mesh.position);
       donor.tidalStretch = Math.max(donor.tidalStretch, Math.min(0.88, strain * 0.95));
       donor.tidalAngle = Math.atan2(toward.z, toward.x);
       donor.tidalPartnerId = perturber.id;
-      if (strain > 0.3 && !tidalWarned.has(donor.id)) {
-        tidalWarned.add(donor.id);
+      if (strain > 0.3 && !donor.tidalWarned) {
+        donor.tidalWarned = true;
         donor.lastEvent = `Being stretched inside ${perturber.name}'s Roche limit`;
         cinematicSlowMotion();
         museumEvent(
@@ -110,8 +109,8 @@ export function updateTidalDisruption(dt: number) {
 }
 function disruptBody(donor: Body, primary: Body) {
   if (!bodies.includes(donor) || !bodies.includes(primary)) return;
-  tidalStrain.delete(donor.id);
-  tidalWarned.delete(donor.id);
+  donor.tidalStrain = undefined;
+  donor.tidalWarned = undefined;
   const point = donor.mesh.position.clone(),
     velocity = donor.velocity.clone(),
     axis = primary.mesh.position.clone().sub(point).setY(0);
@@ -159,11 +158,11 @@ function disruptBody(donor: Body, primary: Body) {
         collisionCooldown: 2.4 + seeded(i, 7),
         habitabilityShock: 1,
         lastEvent: `Torn from ${name} by ${primary.name}'s tides`,
+        debris: true,
       }),
       `${name} debris ${i + 1}`,
     );
     piece.velocity.y = 0;
-    debrisIds.add(piece.id);
     created.push(piece);
     if (group) {
       group.bodyIds.push(piece.id);

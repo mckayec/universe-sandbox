@@ -80,6 +80,35 @@ export function collisionRegime(
   return 'accrete';
 }
 
+export type MergeCandidate = { buildLocked: boolean; priority: number; mass: number; id: number };
+
+/** Which of two merging bodies survives: build lock, then kind priority, then higher mass, then the older id. */
+export function mergeSurvivorIndex(a: MergeCandidate, b: MergeCandidate): 0 | 1 {
+  if (a.buildLocked !== b.buildLocked) return a.buildLocked ? 0 : 1;
+  if (a.priority !== b.priority) return a.priority > b.priority ? 0 : 1;
+  if (a.mass !== b.mass) return a.mass > b.mass ? 0 : 1;
+  return a.id <= b.id ? 0 : 1;
+}
+
+/**
+ * Planar velocity kicks for `count` equal fragments ejected from a collision, evenly spread from `angle`, plus the
+ * recoil the remnant takes so the net momentum of remnant and fragments is unchanged.
+ */
+export function fragmentKicks(count: number, pieceMass: number, remnantMass: number, speed: number, angle: number) {
+  const pieces: Array<[number, number]> = [];
+  let px = 0,
+    pz = 0;
+  for (let i = 0; i < count; i++) {
+    const a = angle + (i / count) * Math.PI * 2,
+      kick: [number, number] = [Math.cos(a) * speed, Math.sin(a) * speed];
+    pieces.push(kick);
+    px += kick[0] * pieceMass;
+    pz += kick[1] * pieceMass;
+  }
+  const recoil: [number, number] = remnantMass > 0 ? [-px / remnantMass, -pz / remnantMass] : [0, 0];
+  return { pieces, recoil };
+}
+
 export type HabitabilityInput = {
   planetMass: number;
   variant: number;
