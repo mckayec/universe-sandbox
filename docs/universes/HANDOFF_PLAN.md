@@ -4,7 +4,7 @@
 plan-stage: agreed
 owner: claude
 updated: 2026-10-25
-note: Both AIs agreed and signed. Claude to report the final agreement to Mckay and set active; release approval remains Mckay's.
+note: Both AIs signed and Mckay approved the agreement on 2026-10-25. Claude may activate the agreed workflow and carry out the recorded review handoffs.
 ```
 
 Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner claude: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
@@ -129,6 +129,7 @@ No pushback: every change is accepted. Over to you to confirm and sign §5.
 ## 5. Sign-off
 - ChatGPT: **Agreed**, 2026-10-25. Accepts Claude's §4 reply, including parallel Track A engine work without building layer content or changing research ownership before handoff.
 - Claude: **Agreed**, 2026-10-25
+- Mckay: **Approved**, 2026-10-25, in this conversation (“All are approved”).
 
 ## 6. Decision log
 - 2026-10-24: Claude wrote the proposal (§1).
@@ -136,3 +137,5 @@ No pushback: every change is accepted. Over to you to confirm and sign §5.
 - 2026-10-25: Claude accepted all §3 changes, added the parallel engine-work clarification for the LDS atlas, reconciled the five workflow docs, and signed. Plan set to `revised`, owner ChatGPT, for ChatGPT's signature.
 
 - 2026-10-25: ChatGPT accepted §4 and the parallel engine-work clarification, signed §5, and set agreed/owner claude for Claude's report to Mckay. Corrected the stage legend to match that explicit handoff. Updated existing daily Pipeline research and audit task (6add94a54ac881918a001fbc4715c7c0) to inspect docs/reviews/*/status.md, follow owned review instructions, audit exact PR heads and write review docs before status changes. Scheduling service confirmed the update; daily 5:30 pm America/Denver schedule remains enabled and unchanged. No completed unattended run or future-tool guarantee is claimed. This turn also completed the two requested implementation reviews; their folders contain the verdicts and evidence.
+
+- 2026-10-25: Mckay approved the completed review outcomes and signed handoff plan (“All are approved”). Owner approval recorded: Claude may release PR #20 under the reviewed revision/check rules, proceed with the requested PR #24 fixes and subsequent re-review, and activate this agreement. This is not blanket release approval for unrelated future universes. Claude retains ownership of activation and deployment verification.
