@@ -1,0 +1,40 @@
+first,work_key,title,ledger,ledger_work,witness_scope
+1,tobit,Tobit,deuterocanonical-coverage.csv,Tobit,Selected chapter editions; see edition field; additions retain section numbering
+2,judith,Judith,deuterocanonical-coverage.csv,Judith,Selected chapter editions; see edition field; additions retain section numbering
+3,wisdom,Wisdom,deuterocanonical-coverage.csv,Wisdom,Selected chapter editions; see edition field; additions retain section numbering
+4,sirach,Sirach,deuterocanonical-coverage.csv,Sirach,Selected chapter editions; see edition field; additions retain section numbering
+5,baruch,Baruch,deuterocanonical-coverage.csv,Baruch,Selected chapter editions; see edition field; additions retain section numbering
+6,1maccabees,1 Maccabees,deuterocanonical-coverage.csv,1 Maccabees,Selected chapter editions; see edition field; additions retain section numbering
+7,2maccabees,2 Maccabees,deuterocanonical-coverage.csv,2 Maccabees,Selected chapter editions; see edition field; additions retain section numbering
+8,esther-additions,Esther additions,deuterocanonical-coverage.csv,Esther additions,Selected chapter editions; see edition field; additions retain section numbering
+9,daniel-additions,Daniel additions,deuterocanonical-coverage.csv,Daniel additions,Selected chapter editions; see edition field; additions retain section numbering
+10,1esdras,English 1 Esdras,expanded-ot-coverage.csv,1esdras,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+11,2esdras,English 2 Esdras composite,expanded-ot-coverage.csv,2esdras,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+12,3maccabees,3 Maccabees,expanded-ot-coverage.csv,3maccabees,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+13,4maccabees,4 Maccabees,expanded-ot-coverage.csv,4maccabees,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+14,prayer-manasseh,Prayer of Manasseh,expanded-ot-coverage.csv,prayer-manasseh,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+15,psalm151,Psalm 151,expanded-ot-coverage.csv,psalm151,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+16,1enoch,1 Enoch,expanded-ot-coverage.csv,1enoch,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+17,jubilees,Jubilees,expanded-ot-coverage.csv,jubilees,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+18,1meqabyan,1 Meqabyan,expanded-ot-coverage.csv,1meqabyan,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+19,2meqabyan,2 Meqabyan,expanded-ot-coverage.csv,2meqabyan,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+20,3meqabyan,3 Meqabyan,expanded-ot-coverage.csv,3meqabyan,"Selected English witness; access status remains per unit, including unavailable Meqabyan"
+21,ascension-of-isaiah,Ascension of Isaiah,related-pseudepigrapha-coverage.csv,ascension-of-isaiah,"Selected translated body, not all recensions"
+22,4-baruch,4 Baruch,related-pseudepigrapha-coverage.csv,4-baruch,"Selected translated body, not all recensions"
+23,nta-pj,Protevangelium of James,nt-apocrypha-coverage.csv,pj,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+24,nta-it,Infancy Gospel of Thomas,nt-apocrypha-coverage.csv,it,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+25,nta-gp,Gospel of Peter,nt-apocrypha-coverage.csv,gp,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+26,nta-gt,Gospel of Thomas,nt-apocrypha-coverage.csv,gt,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+27,nta-gm,Gospel of Mary,nt-apocrypha-coverage.csv,gm,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+28,nta-gj,Gospel of Judas,nt-apocrypha-coverage.csv,gj,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+29,nta-pt,Acts of Paul including Thecla,nt-apocrypha-coverage.csv,pt,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+30,nta-ape,Acts of Peter,nt-apocrypha-coverage.csv,ape,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+31,nta-aj,Acts of John,nt-apocrypha-coverage.csv,aj,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+32,nta-aa,Acts of Andrew,nt-apocrypha-coverage.csv,aa,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+33,nta-at,Acts of Thomas,nt-apocrypha-coverage.csv,at,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+34,nta-ap,Apocalypse of Peter,nt-apocrypha-coverage.csv,ap,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+35,nta-apa,Apocalypse of Paul,nt-apocrypha-coverage.csv,apa,Selected witness/fragment/epitome status from ledger; multiple forms remain distinguished
+36,acts-pilate-greek-a,"Acts of Pilate, Greek form I",pilate-coverage.csv,acts-pilate-greek-a,Selected displayed witness only
+37,descensus-latin-a,"Descent, Latin form I",pilate-coverage.csv,descensus-latin-a,Selected displayed witness only
+38,dormition-pseudo-john-greek,"Dormition, Greek Pseudo-John",marian-research-coverage.csv,dormition-pseudo-john-greek,Selected displayed witness only
+39,pseudo-matthew-walker,"Pseudo-Matthew, expanded Walker witness",pseudo-matthew-coverage.csv,pseudo-matthew-walker,Selected displayed witness only

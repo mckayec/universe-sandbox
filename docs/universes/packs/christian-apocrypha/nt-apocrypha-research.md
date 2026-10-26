@@ -1,0 +1,130 @@
+# NT-related apocrypha — selected-witness research handoff
+
+**Status: selected-witness reading complete within the declared hosted editions; integration/audit remains open.** These thirteen work families are a selection from an open corpus, not a canon. All accessible bodies in the selected editions have now been read, including the long Acts and apocalypses. Andrew's epitome abstract is mediated evidence; surviving Andrew fragments are separately recorded. Ancient losses and explicit omissions by James remain exclusions, not reconstructed text. This is not a claim to every recension or the complete ancient works.
+
+## 1. Meta and coverage
+
+See [unit ledger](nt-apocrypha-coverage.csv) and [source/witness register](nt-apocrypha-sources.md). **859 rows: 847 read, 6 superseded scope rows, 3 lost-context rows, 3 edition-omission rows; zero unread accessible selected-body rows.** The read rows comprise 793 C-text-only, 50 C-mediated and 4 C-OCR-excerpt dispositions. Rows mix chapters, sayings, codex pages, excerpts and broad unnumbered witnesses: they are not comparable chapters. Counting a whole unnumbered Ethiopic translation once does not imply one paragraph; counting an epitome unit does not make it an original-Acts passage. Counts describe the access/read ledger, not independent certification or atomic-record integration.
+
+All source support below uses the work keys/URLs in the register and exact units in the ledger. **C-text-only** means the selected witness clearly supports a narrated claim; it does not certify the event historically occurred. **U** means unknown or unreviewed. No modern coordinates, historical execution dates, astronomical locations or reconstructed missing speeches are supplied. The CSV retains provisional local `first: 1`; [work-gates.csv](work-gates.csv) and [integration-contract.md](integration-contract.md) govern global gates 23–35 and supersede that placeholder. Work titles are descriptive modules. Ancient narrative order and source-relative ages remain separate from composition and manuscript dates.
+
+## 2. Structure and identity contracts
+
+Keep Gospel Thomas, Infancy Gospel Thomas and Acts Thomas as three distinct works. Keep Gospel Peter, Acts Peter and Apocalypse Peter distinct. Thecla is a selected episode of Acts Paul; Apocalypse Paul is a separate work, and the Latin-based apocalypse here is not the Nag Hammadi Coptic Apocalypse Paul. Namespaced story persons may link by `tradition-identifies-with` to a historical/biblical person but do not merge contradictory biographies. Use `narrates`, `travels-to`, `appears-in-vision`, `teaches`, `related-as-in-text`, `variant-of` and `preserved-by` instead of automatically treating every relation as historical genealogy.
+
+## 3–6. Places, events, journeys and codex extraction
+
+The [integration index](nt-apocrypha-integration.csv) contains 59 stable narrative clusters across13 work keys, with source passages, URLs, provisional local gates and rendering dispositions. These are deliberately clusters, not59 atomic events or847 events. Each cluster below is a candidate record, not an already integrated app record. Place bindings are source-relative contextual references. Named cities can later link to independently sourced gazetteer identities; all unnamed and otherworldly settings remain `coordinates: null`. Do not manufacture separate points for every descriptive room.
+
+### nta-pj-scene — James, chapters 1–25 [C-text-only]
+
+Joachim and Anna are Mary's parents; Joseph is selected as guardian/husband and already has children. Sequence: withdrawal → Mary's birth/dedication → veil work/annunciation → Elizabeth visit → accusation/ordeal → Bethlehem journey/birth cave → Magi → concealment → Zacharias's death and Simeon's succession. Bind the temple to Jerusalem; keep Joseph's home, Elizabeth's house, retreat desert and opened mountain contextual. Bethlehem's narrated cave is not automatically the modern Nativity shrine. The narrator's James identity is a literary claim. Salome's bodily test and miraculous healing remain attributed narrative. Ages and months are internal chronology, not calendar dates. Route edges: Mary visits Elizabeth (12); Joseph's household approaches Bethlehem (17–18); Magi depart another way (21). Do not invent stops along that road.
+
+### nta-it-scene — Infancy Thomas Greek A I–XIX [C-text-only]
+
+Childhood miracles include harmful curses and reversals, teachers, Zeno, water carrying, harvest, carpentry, James's healing and revivals. The village is unnamed in this selected body: do not silently bind it to Nazareth from another recension. Jerusalem is explicit in XIX, with the parents' departure and return. Ages five, six, eight and twelve are narrative markers. James is identified as Joseph's son, not proof of one harmonized family tree. Greek A's nineteen chapters are the actual selection; the source register identifies recension differences.
+
+### nta-gp-scene — Gospel Peter 1–14 [C-text-only]
+
+Execution, Joseph's garden tomb, guards under Petronius, an extraordinary resurrection vision and women's visit precede a broken ending at an unnamed sea. Jerusalem/Judaea are named, but this body does not name Golgotha or the sea. Peter and Andrew are brothers; Levi is called Alphaeus's son. Keep the narrative's collective anti-Jewish accusations attributed to its polemic, never the atlas's historical voice. Do not continue the fragment with canonical gospel endings or map the speaking cross literally.
+
+### nta-gt-scene — Gospel Thomas prologue, 1–114 [C-text-only]
+
+A saying collection, not a continuous travel biography. Units 12, 13 and 61 support teaching relationships involving James, Peter, Matthew, Thomas and Salome. Saying 60 references a Samaritan traveling to Judea; ethnicity does not supply a departure point. Paradise/light/kingdom language is nonspatial. Saying 114's gender language and saying 22 require separate treatment; no harmonizing rewrite. Host judgments about later additions are editorial. Most units warrant codex references without new event pins. The ledger's generic no-geolocated-event disposition includes these reference-only relationships, not a claim they contain no atlas-relevant thought.
+
+### nta-gm-scene — Gospel Mary extant 4:22–39;5:1–11;8:10–24;9:1–10 [C-text-only]
+
+Mary encourages disciples, reports a vision, and faces Andrew/Peter's objections; Levi defends her. The surviving ascent concerns a soul whose lost narrative context prevents secure identification. No surviving terrestrial setting, route or marriage claim is established. Catalogue identification with Magdalene is an interpretive identity link, not a surname present in every body passage. Missing codex leaves remain missing; do not supply them from overlapping Greek fragments.
+
+### nta-gj-scene — Gospel Judas, codex pages 33–58 [C-text-only]
+
+The frame names Judea and a pre-Passover interval. Disciple altar visions, Judas's house vision and the cosmic rulers belong to separate narrated levels. The mountain/Paradise, cloud and incorruptible realm are contextual non-Earth settings. Judas's privileged conversations do not settle whether the work presents him positively; the translator discusses contested readings. Jesus's sale/betrayal closes the damaged body. Preserve uncertain names and restorations, including the ruler list; no star positions or historical architecture follow from visionary descriptions.
+
+### nta-pt-scene — Paul/Thecla II.1–43 [C-text-only]
+
+Paul comes Antioch→Iconium; the Lystra road is a meeting setting, not a proved Lystra visit. Thecla leaves confinement to visit prison, survives the pyre, rejoins Paul near a roadside tomb, encounters Alexander at Antioch and faces beasts. Tryphaena protects her; Falconilla is Tryphaena's deceased daughter. Tryphaena faints, not dies. Thecla self-baptizes, later finds Paul at Myra, returns to Iconium and proceeds to Seleucia. Do not resolve which Antioch from this extraction alone. Paul commissions teaching, not a marriage. The later mountain/Rome endings printed after the episode are variants, not mandatory final legs. Host II.33 is misnumbered: see ledger.
+
+### nta-ape-scene — Acts Peter I–XLI and detached witnesses [C-text-only unless marked]
+
+Stable continuation records (source: ape; exact Roman-numbered units):
+
+| Record | Source units | Place/event/typed relation and limit |
+|---|---|---|
+| nta-ape-paul-departure | I–III | Paul departs Rome toward Spain; Tiber departure setting; Rufina episode. This is this witness's Pauline frame. |
+| nta-ape-peter-arrival | IV–VI | Simon comes Aricia→Rome; Peter comes Jerusalem→Caesarea→Puteoli→Rome. Theon is baptized during the voyage; Ariston hosts at Puteoli, Narcissus at Rome. Six days/nights are internal duration, not a reconstructed sailing calendar. |
+| nta-ape-marcellus | VII–XVI | Peter teaches/reconciles Marcellus; talking dog, repaired statue and revived fish are narrative wonders. Marcellus house contextual in Rome; Forum contest announcement distinct from performance. |
+| nta-ape-eubula | XVII | Embedded Judaean recollection: Eubula, Simon, Agrippinus/Pompeius; Neapolis gate and cave remain uncertain. Not a new leg of Peter's current Roman journey. |
+| nta-ape-contest | XVIII–XXXI | Marcellus household teaching/healing; Forum contest and revivals including Nicostratus. Freed servants' freedom retained; Chryse donation. Vision's racialized imagery is literary polemic, not ethnographic evidence. |
+| nta-ape-martyrdom | XXXII–XLI | Simon falls at Rome, moves via Aricia to Terracina; Peter's flight/Jesus vision/return, inverted crucifixion and Marcellus burial. Agrippa is narrative prefect, not automatically Herodian king. No exact Vatican site or historical date. XLI addition flagged by editor. |
+| nta-ape-daughter | Separate Coptic fragment | Peter's unnamed daughter, Ptolemaeus, healing/renewed disability and property for poor. Missing leaf reconstruction is editorial. Petronilla and Jerusalem are not secure body identifications. |
+| nta-ape-gardener | Titus/Augustine excerpt | Gardener's daughter story preserved by indirect testimony; no invented setting or merger with Peter's daughter. |
+
+The base changes from Latin Vercelli to Greek at XXX; do not label all I–XLI one Latin witness.
+
+### nta-aj-scene — Acts John selected Greek, Latin supplements and detached fragments
+
+| Record | Source units | Place/event/typed relation and limit |
+|---|---|---|
+| nta-aj-lycomedes | 18–29 | Miletus→Ephesus; spouses Lycomedes/Cleopatra restored; commissioned portrait not extant artifact. |
+| nta-aj-artemis | 30–47 | Ephesus theater healing and Artemis temple collapse/priest revival. Smyrna departure postponed; Q's four-year Smyrna/Bucolus/Polycarp sequence is a variant, not silently inserted. |
+| nta-aj-parricide | 48–55 | Father revived outside Ephesus; John's rejection of self-castration belongs in explanation. Smyrna invitation distinct from completed trip. |
+| nta-aj-inn | 58–62 | Laodicea→Ephesus; unnamed inn/obedient bugs; Andronicus household. Gap55–58 is not supplied. |
+| nta-aj-drusiana | 63–86 | Andronicus spouse Drusiana; Callimachus's attempted abuse of corpse, Fortunatus and serpent; revivals and Fortunatus's later death. Tomb contextual, no modern pin. |
+| nta-aj-christ-discourse | 87–105 | Polymorphic Christ, hymn/dance; Gennesaret reference and Mount Olives cave vision during Jerusalem crucifixion. Light-cross doctrine and wood-cross distinction remain this narrator's claims, not harmonized gospel history. |
+| nta-aj-latin-supplement | Latin XIV–XXI | Craton/gems; Ephesus→Pergamum; Atticus/Eugenius wealth; Stacteus; Aristodemus poison trial. Latin XIX is editor summary. Later church-foundation sentence is separately marked. |
+| nta-aj-oxyrhynchus | James264–265; P.Oxy850 recto/verso | Unnamed bridge/deep river, soldier apparition, Zeuxis and eucharist, imperial letter. Page order and restored emperor name uncertain; neither Rome trial nor Patmos exile established by these scraps. |
+| nta-aj-titus | James266 quotations b/c | Dyrus→Verus is editor emendation; demon speech and wedding chastity excerpt. Placement before Ephesus conjectural; 31 corrupt clauses omitted by James, not read here. |
+| nta-aj-death | 106–115 | Farewell, communion, trench/tomb outside gate, death; empty-tomb/manna/sandals endings are alternative witnesses. No merged ending. |
+
+Detached fragments were recovered from Wikisource's unproofread OCR pages302–304 (printed264–266), because the main chapter is a redlink and ECW omits them. Confidence is C-OCR-excerpt; no claim of manuscript collation. Partridge forms (priest versus hunter) remain variants.
+
+### nta-at-scene — Acts Thomas 1–170 [C-text-only]
+
+| Record | Source units | Place/event/typed relation and limit |
+|---|---|---|
+| nta-at-sale-wedding | 1–16 | Jerusalem mission allocation; Jesus sells Thomas to Abbanes, Gundaphorus's envoy; voyage to unresolved Andrapolis, royal wedding, ascetic conversion. Jesus called brother of Thomas is a literary identity claim. |
+| nta-at-palace | 17–29 | Gundaphorus commissions palace; alms instead; Gad is his brother and sees heavenly palace. Dius→Xanthicus names internal months, not converted Julian dates. |
+| nta-at-serpent-colt | 30–41 | Unnamed road, serpent/youth, speaking colt ride to city gate. Animal biblical ancestry is narrated myth, not historical genealogy. |
+| nta-at-woman | 42–50 | Woman freed from demon; initiation. River occurs in Syriac variant; no automatic main-text river node. |
+| nta-at-murder | 51–61 | Murder condemned, woman raised at inn, her visionary punishments. Hell journey non-Earth; §§55–56 differ/absent in Syriac. |
+| nta-at-siphor | 62–81 | Siphor asks help for wife/daughter; chariot journey, wild asses, arrival at captain's house and healing. City remains unnamed in India. |
+| nta-at-mygdonia | 82–107;114–133 | Charisius's wife Mygdonia hears teaching and resists coercion; arrest under Misdaeus, release, household initiation with nurse Narcia/Marcia, Siphor family baptism. Charisius is king's kinsman; do not infer exact degree. |
+| nta-at-hymn | 108–113 | Embedded Hymn of Soul: East→Maishan/Babylon→Egypt→return via Sarbug/Mesene. Symbolic prince's journey, **not Thomas traveling to Egypt**. Lexical/geographic alternatives remain uncertain. Syriac Song of Praise afterward omitted by James. |
+| nta-at-tertia | 134–143 | Tertia, Misdaeus's wife, learns from Mygdonia/Thomas; king strikes Thomas; Iuzanes, king's son, questions him; heated plates and flood. Unnamed court/prison. |
+| nta-at-initiation | 144–163 | Prayer has alternate manuscript position after167. Iuzanes/Mnesara spouses, stated age21/seven married years; healing and initiation at their house, prison return. Narcia is nurse, not biological mother inferred from address. |
+| nta-at-death-relics | 164–170 | One mile out of city, unnamed mountain, four soldiers spear Thomas, royal tomb. Siphor becomes presbyter, Iuzanes deacon; women persist; remains carried to Mesopotamia; Misdaeus's son healed with tomb dust, king converts. **No Mylapore, Chennai, Edessa or historical martyrdom year supplied by these passages.** |
+
+India is an ancient designation, not a modern national polygon. Greek U/P and Syriac readings differ; James follows different witnesses in different sections. Women/households/palaces/prisons remain contextual nodes without coordinates; teaching/prayer units can be codex entries without duplicate event pins.
+
+### nta-aa-scene — Andrew, abstract, actual fragments and composite martyrdom
+
+`nta-aa-epitome-route` (Gregory1–38, **C-mediated**): James's complete hosted abstract travels through Amasea/Sinope/Nicaea/Nicomedia/Hellespont/Byzantium/Thrace/Perinthus/Philippi/Thessalonica, then Patrae; Corinth, Lacedaemon and Megara occur in later episodes. These are epitome claims, not reconstructed original itinerary. Mermidona material derives from Andrew-and-Matthew tradition; no automatic original-Acts inclusion. Episodes12–20 cover Exoos, Medias/Philomedes, Nicolaus and Virinus;21 the voyage12days;22–24 Lesbius, Callisto/Trophima and Philopator/Sostratus;25–30 Corinth/Megara/Patrae transitions;31–38 healing, Stratocles/Alcman, martyrdom and tomb reception. All are textual, not verified historical cures.
+
+`nta-aa-prison` (Vatican Gr808 §§1–18, C-text-only): surviving translated discourse includes Maximilla, Iphidamia and Stratocles visiting Andrew, with Aegeates's pressure on his wife. Adam/Eve analogy is teaching, not biological descent or literal reincarnation. Fragment breaks before completing discourse.
+
+`nta-aa-detached` (Titus and Evodius quotations): cousin-marriage and Maximilla/Euclia material carry their own witness qualifiers. `nta-aa-martyrdom` (James's multi-witness mosaic, C-mediated): Patrae seashore cross, binding, refusal of release, Maximilla burial, Aegeates death. Crowd counts differ; no X-shaped cross asserted here. November30 is a reception/feast claim, not a recovered execution date. Full original Acts is lost; an abstract cannot fill that loss.
+
+### nta-pt-fragments — Acts Paul outside Thecla [C-text-only/mediated as ledger]
+
+`nta-pt-panchares` (I): fragmentary Panchares/Phila/son story; Antioch and son's proposed Barnabas name depend on external testimony/editor reconstruction. `nta-pt-myra` (III): Hermocrates/Nympha, Dion/Hermippus; departure toward Sidon. `nta-pt-sidon-tyre` (IV–V): Perga companions, Sidon temple episode and Tyre fragments; uncertain names remain uncertain. Do not force fragmented Jerusalem mention into an itinerary. `nta-pt-frontina` (VI): Longinus/Firmilla/Frontina and mines are unlocated; do not infer Philippi from following section. `nta-pt-correspondence` (VII): Corinthians' letter, transmission and Paul's reply (Third Corinthians), including resurrection/creation teaching; not an authenticated canonical Pauline letter. Threptus/Eutychus journey belongs to this frame. ReplyIII36 is misprinted86 on host. `nta-pt-ephesus` (VIII): Hippolytus/Nicephorus citations, lion and Eubula/Artemilla; mediated witness, not recovered complete episode. `nta-pt-prophecy` (IX): Cleobius/Myrte's Rome prediction, fragmentary. `nta-pt-martyrdom` (X1–7): Rome, Patroclus, Nero, Longus/Cestus, beheading/milk, appearance and Titus/Luke at grave; exact execution/tomb coordinates not supplied. `nta-pt-unplaced` (XI): Origen/Clement/Pseudo-Cyprian/Lactantius/Commodian/John of Salisbury testimony separately attributed; uncertain book assignments and conjectured Peter connections are not stitched into the main route.
+
+### nta-ap-scene — Apocalypse Peter distinct witnesses
+
+`nta-ap-akhmim` (B1–34): unnamed mountain, radiant figures, blessed and punished realms; conceptual nodes only. `nta-ap-ethiopic` (D opening through mountain descent): Mount Olives frame, resurrection/judgment/punishments, Acherusia/Elysium, paradise, Moses/Elijah and cloud ascent. Greek/Ethiopic order differs; do not unify scenes or rename Greek mountain silently. Westward commission does not by itself prove Rome. `nta-ap-excerpts` covers patristic citations/Bodleian leaf, and separately the selected later Ethiopic excerpts; latter are not full continuation. `nta-ap-sibylline-comparison` (appendixII190–338) is a separate work's parallel, not another Peter chapter. Universal-restoration interpretation belongs to editorial debate. Ancient punishment taxonomies are attributed, not endorsed contemporary judgments.
+
+### nta-apa-scene — Apocalypse Paul1–51 and labeled appendices
+
+`nta-apa-discovery` (1–2): Tarsus box and imperial/Jerusalem copy story, not authenticated excavation. `nta-apa-souls` (3–18): creation's appeals, angels' reports, soul-departure/judgment; Michael and Tartaruchus/Temeluchus variants. `nta-apa-promised-land` (19–24): third heaven/Paradise, descent through cosmic levels, Ocean, promised land, Acherusa and Christ's city. `nta-apa-city` (25–30): rivers named Phison/Euphrates/Geon/Tigris with honey/milk/oil/wine; visionary hydrology, no real-river overlay; David's altar/cityJerusalem non-Earth. `nta-apa-punishment` (31–44): western regions, clergy/usury and other punishment categories; confession/sexuality polemics witness-specific (Latin paragraph in39 absent other versions); Michael/Christ intercede and grant Sunday rest, not automatic final universal salvation. `nta-apa-paradise` (45–51): Adam/Eve, Mary, patriarchs/prophets, Noah/Elijah/Elisha; text ends abruptly. Syriac conclusion returns to Tarsus; Coptic continuation is editor synopsis/excerpts, not full-body reading. Mount Olives/June29 in that appendix must not become verified Paul biography. None of these conceptual realms receives terrestrial coordinates.
+
+## 7. Remaining evidence and integration limits
+
+All accessible **selected edition** body units are closed, including the formerly 82 unread ledger rows (76 individual sections and six broad scope placeholders). The following are precise limits:
+
+1. Ancient fragments/lacunae are unrecoverable from these editions. Andrew's full original is lost; Gregory's abstract has been fully read but is not the full Latin epitome. No claim to all manuscript recensions or a critical collation.
+2. Edition omissions remain explicit: James omits Thomas's Syriac Song of Praise after113; omits31 corrupt clauses from John/Titus c; gives excerpts/synopsis for later Ethiopic Peter continuation. These are excluded supplementary witnesses, not completed full bodies. John omitted ECW pages264–266 were recovered as unproofread page OCR, with that lower confidence preserved.
+3. Current composition dating and translator attribution remain partial; see source register. Unknown dates remain null instead of borrowing narrated apostolic dates. These do not prevent a textual narrative module but do prevent unqualified historical timelines.
+4. Stable candidate narrative records above supply source locators, places, people, events and typed relationships. They still require atomic serialization/deduplication and independent record-level QA under the integration contract; a ledger reading count does not certify those tasks. Exact historical/gazetteer sites are optional reference enrichment, never inferred from a namesake or modern shrine.
+
+## 8. Track A separation
+
+Display narrative assertions as claims of their named witness. Church reception, manuscript history, composition scholarship, modern pilgrimage sites and historical reconstruction require separate sourced records. No claim of universal Christian acceptance, one closed NT-apocrypha canon, apostolic authorship, or established historical miracle is made. This checkpoint supports a selected-witness research module; it does not authorize whole-pack completion.
