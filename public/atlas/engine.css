@@ -395,3 +395,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   #app:has(#filters:not(:empty)) #navhint{top:calc(var(--hdr,96px) + 136px)}
   #app:has(#filters:not(:empty)) #bake{bottom:120px}
 }
+
+/* ===== places you can enter (PACK_FORMAT 21) ===== */
+.place .enter{display:inline-flex;margin-top:10px;font-size:10.5px;padding:7px 12px}
+.evitem .goev{display:inline-flex;margin-top:8px;padding:5px 10px;font-size:10px}
+.evitem .fxm{margin-left:6px;font-size:9px;color:var(--ember);vertical-align:1px}
+.seg.tod{margin:14px 0 2px;width:max-content;max-width:100%}
+.seg.tod button{font:500 10.5px var(--f-hud);letter-spacing:.12em;text-transform:uppercase;padding:6px 11px}
+.hops{display:flex;flex-wrap:wrap;gap:6px}
+.hops .btn{padding:6px 10px;font-size:10px}
+.place.lmk .pd{font-size:14.5px}
+.plbl.lm .tx{font-size:12.5px;padding:2px 8px;background:rgba(var(--shade-rgb),.72)}
+.plbl.lm .pip{width:7px;height:7px}
+body.inplace #bake{display:none!important}

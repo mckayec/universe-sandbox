@@ -49,6 +49,9 @@ body.choosing{overflow:auto;background:#04050b}
     .then(function(){return load("../vendor/standalone.js");})
     .then(function(){return load("layers.js");})
     .then(function(){return load("engine.js");})
+    .then(function(){return load("places-lm.js");})
+    .then(function(){return load("places-fx.js");})
+    .then(function(){return load("places.js");})
     .then(function(){return load("packs/"+encodeURIComponent(entry.id)+".js");})
     .then(function(){var P=(window.ATLAS_PACKS||{})[entry.id];if(!P)throw new Error("packs/"+entry.id+".js did not register ATLAS_PACKS[\""+entry.id+"\"].");window.AtlasEngine.start(P);})
     .catch(function(e){if(window.AtlasEngine)window.AtlasEngine.fail(e);else{console.error(e);
