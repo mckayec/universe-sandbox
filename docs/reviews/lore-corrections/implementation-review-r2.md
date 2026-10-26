@@ -148,3 +148,8 @@ Primary implementation evidence, pinned to the reviewed revision:
 - [Original correction ledger](corrections.md) — retained source links and confidence limitations; [first implementation review](implementation-review.md) — previous counts and acceptance criteria.
 
 Proposed next state is `fixing`, owner `claude`, **only when the parent authorizes publication of these docs**. Keep PR #24 unmerged. Builder should implement the five groups, supply exact revised SHA and a per-object book-gate matrix, and demonstrate safe globe, Chronicle, scene, label, direct-entry and book-downgrade behavior at desktop/phone sizes. Any subsequent integration/content change requires a relevant review. No conflict-resolution operation was attempted; the final connector read reported `mergeable:true`, so an actual merge conflict is not claimed. No push, PR review publication, merge, deployment, automation change or message to Claude was performed.
+
+
+## Publication authorization update
+
+2026-10-26: Mckay authorized pushing the documentation branch and opening one draft PR covering this review and the LDS handoff. This authorizes publishing these findings and the fixing-status handoff; it does not authorize a separate formal GitHub review, merge, deployment or contacting Claude. The audited target and request-changes verdict above are unchanged.

@@ -158,6 +158,13 @@ Checked 2026-10-26. All S1–S26 pages opened through web search/open. `(C)` mea
 - Evidence/use: External historical-site overview and 1846 departures. Do not reuse its potentially stale property-management information.
 - Access: opened 2026-10-26; relevant passage read.
 
+## Supplementary source registers
+
+- `bible-inventory.md`: A sources, including official scripture and UNESCO.
+- `bom-inventory.md`: B sources, official scripture.
+- `restoration-inventory.md`: R sources, official scripture/Church history, JSP, NPS and Missouri State Archives.
+- `pgp-inventory.md`: PG sources, official scripture, official Church essay and a clearly limited scholarly publisher page.
+
 ## Supplementary geography evidence
 
 `geography-evidence.md` maintains its own G-prefixed source register, including model proponents, source limitations and the official geography policy. Do not interpret secondary descriptions as direct access to a proponent’s book.
@@ -167,3 +174,9 @@ Checked 2026-10-26. All S1–S26 pages opened through web search/open. `(C)` mea
 - Direct JSP place-page requests for Kirtland, Nauvoo and Independence failed through web access; no coordinates were taken from them. A shell request to JSP Fayette was blocked by the network proxy (403); no bypass attempted. The opened JSP documentary introduction above remains usable.
 - No independent archaeological verification of the supernatural/scriptural narratives is claimed. External sources here establish present heritage locations, not the events attributed to them.
 - Modern coordinates remain unverified for most places. Publication dates of the Bible and Book of Mormon are not assigned from memory. Full textual inventory and independent historical synthesis remain outside this checkpoint.
+
+
+## S27 — Book of Mormon, 1830
+
+- URL: [Joseph Smith Papers, first-edition bibliographic record](https://www.josephsmithpapers.org/paper-summary/book-of-mormon-1830/1)
+- Opened 2026-10-26. Supports first-edition publication year1830; not an ancient narrative date.

@@ -2,19 +2,16 @@
 
 Research date: 2026-10-26. Repository baseline: `main` at `cd85ea8dcb36d4d5b54afd5ec05bc03c2c173d79`.
 
-This is a completed, bounded **research handoff for review**, not the full atlas and not permission to start a content build. It supplies 20 place records, 13 event records, 3 journeys and 7 codex entries across the four requested layers. Status remains `research / chatgpt` under the agreed all-four-layers coverage rule. All factual text below is attributed to opened sources; implementation choices are labelled **Design**. `(C)` confirms what the source says, not the historical truth of a religious claim. Source keys resolve in `sources.md`.
+This is the template-ordered core of an expanded **research handoff for review**, not the full atlas and not permission to start a content build. See `build-handoff.md` for the completed supplemental inventories, exact existing-engine dispositions and remaining acceptance criteria. It supplies 20 place records, 13 event records, 3 journeys and 7 codex entries across the four requested layers. Status remains `research / chatgpt` under the agreed all-four-layers coverage rule. All factual text below is attributed to opened sources; implementation choices are labelled **Design**. `(C)` confirms what the source says, not the historical truth of a religious claim. Source keys resolve in `sources.md`.
 
-| Layer/work | Coverage now | Exclusions still required before full handoff |
+| Layer/work | Current completed selected coverage | Remaining broad-scope gate |
 |---|---|---|
-| Bible — Old Testament | Genesis 12 journey; Exodus 3 setting | Creation/Flood traditions; Exodus route and dating scholarship; conquest, kingdoms, exile, return; prophets; full place inventory |
-| Bible — New Testament | Luke 2 journey; Matthew 28 codex anchor | Ministry, Passion sites, Acts/Paul journeys, epistles, Revelation; historical dating and place scholarship |
-| Book of Mormon | Jerusalem opening; waters of Mormon; Bountiful temple; separate geography evidence memo | Full book-by-book places/events; Lehi/Jaredite journeys as structured records; Zarahemla/Nephi/Sidon internal topology; chronology reconciliation |
-| D&C + church history | Organization, Independence, Kirtland dedication, Nauvoo revelation, Carthage | Priesthood restoration; Missouri conflict; Liberty; migration and Utah; D&C 136–138; Official Declarations 1–2; fuller independent history |
-| Pearl of Great Price — Moses | Enoch’s Zion | Creation, Eden and Flood; full Moses coverage |
-| Pearl of Great Price — Abraham | Chapter 2 journey; Kolob concept | Abraham 1, 4–5; facsimiles and translation/history scholarship |
-| Pearl of Great Price — JS—Matthew | Mount of Olives setting | Prophecy distinctions and comparison with Matthew 24 |
-| Pearl of Great Price — JS—History | First Vision record and source-context caveat | Moroni, plates, translation and baptism narratives |
-| Pearl of Great Price — Articles of Faith | Basic principles and scripture/revelation entries | Full thirteen-article treatment |
+| Bible — OT/NT | Core plus bible-inventory.md: patriarchal journey, Exodus/Sinai, Jordan/Jericho, David/Jerusalem, exile/return, ministry/Passion, missionary and Italy route segments, Revelation frame | 10/66 books have selected anchors; 56 remain unsurveyed. Full major-content omission sweep still required |
+| Book of Mormon | Core plus geography-evidence.md and bom-inventory.md: all15 books ledgered, major internal places/journeys, selected theology, all10 Moroni chapters at overview level | Remaining overview themes distinguished from detailed campaign/kingdom sublocations in ledger; modern model geometry withheld |
+| D&C + church history | Core plus restoration-inventory.md: translation, priesthood reports, Missouri/Liberty, Kirtland/Nauvoo, segmented migration, D&C136–138 and Official Declarations1–2 | Major omissions in other D&C sections need survey; broader independent history still incomplete |
+| Pearl of Great Price — all five components | Core plus pgp-inventory.md:19 checked units, creation/Fall/Noah, Abraham journeys and cosmology, all3 facsimile caption treatments, JS—Matthew, JS—History, Articles of Faith | Cross-file integration and independent historical comparison remain; grouped unlocated regions and rivers are reference entries, not missing Earth pins |
+
+Current acceptance criteria and safe import decisions are specified in `build-handoff.md`. The core records below remain stable; supplements use distinct namespaces and cite actual passages. Counts refer to records, not exhaustive atomic claims or independent corroborations.
 
 ## 1. Meta
 
@@ -27,7 +24,7 @@ This is a completed, bounded **research handoff for review**, not the full atlas
 |---|---|---|
 | 1 | Bible: Old Testament | No single year assigned; compilation/translation/edition dates must be separate |
 | 2 | Bible: New Testament | Same; online KJV used here |
-| 3 | Book of Mormon | Publication metadata pending a dedicated bibliographic source |
+| 3 | Book of Mormon | First edition1830, supported by the Joseph Smith Papers bibliographic record. [S27] (C) |
 | 4 | Doctrine and Covenants + contextual history | Modern revelations, including material beyond Joseph Smith’s lifetime. [S21] (C) No single event year for the collection |
 | 5 | Pearl of Great Price: Moses, Abraham, JS—Matthew, JS—History, Articles of Faith | First collection 1851; canonized 1880; these are not dates of narrated ancient events. [S20] (C) |
 
@@ -58,7 +55,7 @@ Shared fields: `parent: earth`; `eras: none supplied` unless explicitly stated. 
 | P05 `horeb` — Horeb | mountain; bible; 1 | Unlocated in this research; no Sinai candidate adopted | “Exodus places Moses’ encounter at the burning bush at Horeb.” [S3] (C) E02 |
 | P06 `nazareth` — Nazareth | town; bible; 2 | Galilee in Luke; modern coordinate pending; birth/childhood narrative | “Luke names Nazareth as Joseph’s starting point before the journey to Bethlehem.” [S4] (C) E03 |
 | P07 `bethlehem` — Bethlehem | town / commemorative anchor; bible; 2 | Modern Bethlehem; map marker is Nativity heritage property, `31.704353,35.207500`, not a town boundary [S23] (C) | “Luke places Jesus’ birth in Bethlehem. The mapped church property commemorates the birthplace in Christian tradition.” [S4][S23] (C) E03 |
-| P08 `jerusalem` — Jerusalem | city; bible, bom; 2 | Modern Old City anchor `31.777778,35.231667` [S22] (C); earliest navigator here reflects this checkpoint’s Luke entry, not first biblical mention | “Luke describes Jesus being brought to Jerusalem for presentation.” [S4] (C) Separate BoM-only note: “1 Nephi places Lehi at Jerusalem during Zedekiah’s reign.” [S6] (C) E04, E05 |
+| P08 `jerusalem` — Jerusalem | city; bible, bom; 1 | Modern Old City anchor `31.777778,35.231667` [S22] (C); OT association now checked in bible-inventory.md A5 (2 Samuel5); minimum navigator1 | Base: “The marker locates Jerusalem’s Old City.” [S22] (C) Bible event: “Luke describes Jesus being brought to Jerusalem for presentation.” [S4] (C) Separate BoM-only note: “1 Nephi places Lehi at Jerusalem during Zedekiah’s reign.” [S6] (C) E04, E05 |
 | P09 `waters-mormon` — Waters of Mormon | waters / narrative place; bom; 3 | Unknown modern location; keep off Earth map | “Mosiah describes Alma teaching and baptizing at waters in the place called Mormon.” [S7] (C) E06 |
 | P10 `bountiful-temple` — Temple in Bountiful | temple / narrative place; bom; 3 | Unknown modern location; not the departure shore in 1 Nephi | “3 Nephi places a gathered multitude at the temple in Bountiful when Jesus appears.” [S8] (C) E07 |
 | P11 `smith-grove` — Woods near the Smith home | religious-history site; pgp, dc-history; 5 | Manchester, New York context; exact grove point not sourced here; spring 1820 is reported event date | “Joseph Smith’s canonized account describes a prayer in nearby woods and a vision of two personages.” [S14] (C) E08 |
@@ -70,7 +67,7 @@ Shared fields: `parent: earth`; `eras: none supplied` unless explicitly stated. 
 | P17 `zion-enoch` — Enoch’s Zion; City of Holiness | city / narrative place; pgp; 5 | Unknown location and absolute date; not Independence | “Moses describes Enoch’s community as united and without poverty, and its city as taken into heaven.” [S15] (C) No event card yet |
 | P18 `ur-abraham` — Ur of the Chaldees | place / narrative setting; pgp; 5 | Modern identification unresolved here; do not choose a proposed Ur | “Abraham describes leaving Ur with family members.” [S16] (C) E12 |
 | P19 `jershon-abraham` — Jershon (Abraham) | place / narrative setting; pgp; 5 | Unknown location; do not merge with Book of Mormon Jershon | “Abraham names Jershon on the way from Haran to Canaan.” [S16] (C) E12 |
-| P20 `mount-olives` — Mount of Olives | mountain / discourse setting; pgp; 5 | Near Jerusalem in the narrative context; precise map coordinate pending | “Joseph Smith—Matthew places Jesus’ conversation with his disciples on the Mount of Olives.” [S18] (C) No event card yet |
+| P20 `mount-olives` — Mount of Olives | mountain / discourse setting; bible, pgp; 2 | Near Jerusalem in the narrative context; precise map coordinate pending | Bible entry: “Matthew names the Mount of Olives in the Passion narrative.” [bible-inventory.md A9] (C) PGP entry: “Joseph Smith—Matthew places Jesus’ conversation with his disciples on the Mount of Olives.” [S18] (C) No event card yet |
 
 **Design cross-layer safeguard:** P08’s Book of Mormon paragraph must appear only with the BoM layer and navigator 3 or later. If `notes` cannot independently gate text, keep the shared base description limited to geography and put each scriptural assertion in a layer-specific event/codex entry. Likewise do not append PGP-only details to the shared Abraham-route base text.
 
@@ -122,8 +119,8 @@ Event **dates** for revelations establish the document’s stated setting, not i
 
 | ID | Finding / disposition |
 |---|---|
-| LDS-Q01 | Full canon coverage remains incomplete (table above). Keep `research / chatgpt`; do not transfer full content-build ownership. Next bounded content unit should inventory the remaining Book of Mormon books and internal places, then D&C history locations. |
-| LDS-Q02 | Only 2/20 place records have verified modern coordinate anchors. Eighteen remain nonspatial pending evidence; some may properly remain unlocated permanently. No `(L)` coordinates are offered for provisional building. |
+| LDS-Q01 | Full canon coverage remains incomplete (table above). Keep `research / chatgpt`; do not transfer full content-build ownership. The continuation supplies those inventories; the remaining broad-scope gaps are now listed in build-handoff.md and each supplement. |
+| LDS-Q02 | Only 2/20 core place records have verified modern coordinate anchors; the Bible/restoration supplements add four further anchors. Eighteen core places remain nonspatial pending evidence; some may properly remain unlocated permanently. No `(L)` coordinates are offered for provisional building. |
 | LDS-Q03 | Layer-specific paragraphs and coarse navigator gates need explicit engine behavior. The scripture order must not make a visitor enable all earlier religious texts just to view church history. No code change is included. |
 | LDS-Q04 | Genesis 12:4 gives 75 at departure from Haran; Abraham 2:14 gives 62. [S2][S16] (C) Preserve each account’s value if shown; do not average, silently correct, or assert a harmonization. |
 | LDS-Q05 | No harmonized BCE date for Lehi’s departure is approved. Narrative regnal dating and editorial approximation remain distinct. [S6] (C) |
@@ -131,7 +128,7 @@ Event **dates** for revelations establish the document’s stated setting, not i
 | LDS-Q07 | Directly sourced model maps, variant-specific landmarks and critical comparison remain incomplete; see `geography-evidence.md`. Models must never supply default real-world Book of Mormon pins. |
 | LDS-Q08 | Document date, narrated event date and canonization date are different fields. In particular, Moses 7’s December 1830 heading must not timestamp Enoch’s city. [S15] (C) |
 | LDS-Q09 | A full independent second-source self-audit has not occurred. Source attribution was checked, but no final canon sign-off is given. |
-| LDS-Q10 | Final rights notice, bibliography years, exact per-book navigation, later D&C declarations and independent historical context remain open. This is explicit scope debt, not “complete because every heading exists.” |
+| LDS-Q10 | Final rights notice, exact per-book navigation and expanded independent historical context remain open. Book of Mormon publication year and later D&C/declaration coverage have now been supplied. This is explicit scope debt, not “complete because every heading exists.” |
 
 ## 8. Track A additions (religion & history)
 
