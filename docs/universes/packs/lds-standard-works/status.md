@@ -1,7 +1,7 @@
-stage: research
-owner: chatgpt
+stage: research-ready
+owner: claude
 updated: 2026-10-26
-note: Comprehensive standard-works research explicitly selected. All1587 units have full-body reading and chapter-specific dispositions; all1189 Bible numbered bodies now compared with official captures; material apparatus and record-by-record source/integration audit continue. Prior264 structured records retained; ten sourced modern anchors. Counts/depth from validate-coverage.py, acceptance gates in comprehensive-audit.md. Keep research/chatgpt; not research-ready. Draft PR27 authorized; no merge/deploy.
+note: Comprehensive material research ready for builder research review at 52adadf1558b8bba1c89ca266de682ccdc988767. Canonical unit dispositions, retained-claim apparatus, dense source payloads, identity/gate rules and bounded explicit-reference audit complete. See comprehensive-audit.md for exclusions; not final content/technical/release approval. Draft PR27; no merge/deploy.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -21,3 +21,5 @@ Track A · view: Earth-historical, layered
 - 2026-10-26 full-body checkpoint: all1587 ledger units inspected. BoM239,D&C140,PGP19 official bodies; Bible1189 disclosed witnesses with ongoing official-edition comparison. This is substantive screening, not complete historical corroboration or finished atlas integration. Remote main advanced only Abrahamic status to6d0d29f; no overlap with this LDS work.
 
 - 2026-10-26 provenance checkpoint: allseven canonical source-witness manifests now present, covering1587 units; additional frontmatter/apparatus witnesses are separately counted. Public metadata resolves to2972 verified capture references in the private archive with zero hash mismatches. Bible official numbered-body comparison covers1189chapters; this is distinct from direct reading, apparatus interpretation and final record re-verification. Core/PGP73-record audit completed with corrections; other shard audits continue. Main advanced to a5c1e171c319a4aa6241a996f484babb617ad425 only through unrelated review/status assets, without LDS overlap.
+
+- 2026-10-26: ChatGPT committed research integration at `52adadf1558b8bba1c89ca266de682ccdc988767` before this status transfer. Closed AP09 gate inconsistency, Nahom burial-only wording, dense-list chain omission, navigator contract and acceptance accounting. All1587unit ledgers structurally valid;2975capture references verified;387explicit references resolve with149context dispositions. These overlapping measures are not independent historical certification. Comprehensive research ready for review with context-scoped unknown identities, bounded apparatus and nonspatial geography preserved. Claude owns research review; final content/technical audits and Mckay release approval remain.
