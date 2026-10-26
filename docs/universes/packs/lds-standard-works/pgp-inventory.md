@@ -77,7 +77,7 @@ No forced journey is generated for creation, prophecy, divine visions or facsimi
 
 | ID / subject | Exact copy |
 |---|---|
-| PC01 Facsimile 1 | “The published explanation identifies the central scene as Abraham threatened at an altar and delivered by an angel.” [PG11] (C) |
+| PC01 Facsimile 1 | “The published explanation identifies Abraham, an altar, a threatening priest and an angel; Abraham1:15–16 narrates his deliverance.” [PG11][PG8] (C) |
 | PC02 Facsimile 2 | “The published explanation connects figures with Kolob, heavenly order and sacred knowledge.” [PG12] (C) |
 | PC03 Facsimile 3 | “The published explanation portrays Abraham at Pharaoh’s court teaching astronomy.” [PG13] (C) |
 | PC04 Prophecy in Joseph Smith—Matthew | “The account distinguishes teachings about Jerusalem’s destruction from the future coming of the Son of Man. It gives no date for that coming.” [S18, vv.21–40] (C) |

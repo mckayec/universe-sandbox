@@ -7,13 +7,13 @@
 | Requirement | Authority | Current disposition |
 |---|---|---|
 | One atlas with Bible, Book of Mormon, D&C/history and Pearl of Great Price layers; no transfer after only one layer | HANDOFF_PLAN.md §1.4.2, line41 | All four now have substantial selected records. Coverage is still uneven; full stage transition is not justified solely by the presence of four files |
-| Major places, events, journeys and concepts across the works in scope | PROMPTS.md §1.4, line30 | This is a real breadth requirement, not a demand to index every verse. The Bible ledger still leaves 56 books unsurveyed, so an honest major-content omission sweep remains necessary |
+| Major places, events, journeys and concepts across the works in scope | PROMPTS.md §1.4, line30 | This is a real breadth requirement, not a demand to index every verse. The owner subsequently chose comprehensive standard-works coverage. The individual-unit CSV ledgers now govern the omission sweep; a row alone does not establish full reading or integration |
 | Citations, confidence, reading gates, structured entries and explicit exclusions | RESEARCH_TEMPLATE.md rules and §§1–8 | Each supplement supplies keyed records and sources. Cross-file integration and a final omission/gate pass remain; coarse work gates are an explicitly proposed navigation design |
 | Unknown/model geography must not become factual coordinates | HANDOFF_PLAN.md §1.3; RESEARCH_TEMPLATE.md line13 | Satisfied by withholding geometry and separating narrative/proposed locations. A site does **not** need a fabricated coordinate to count as researched |
 | Text / belief / scholarship distinguished | HANDOFF_PLAN.md §1.3; RESEARCH_TEMPLATE.md §8 | Narrative claims are attributed. Independent archaeology is not required to establish what scripture says; any historical/archaeological assertion still requires suitable evidence |
 | Self-audit, independent second-source checks, builder review, technical checks and final joint approval | AUDIT_CHECKLIST.md §§1–4; WORKFLOW.md stages2–6 | These are later evidence/release gates. They should not be falsely reported as completed, nor all misrepresented as prerequisites for the first research handoff |
 
-A finite overview could be built from the supplied records, but making it the **complete agreed atlas** would require an explicit scope decision or completion of the omission sweep. No such narrowing is presumed. Keep `stage:research / owner:chatgpt`.
+The owner explicitly selected **comprehensive** coverage on2026-10-26. A smaller overview is no longer an unresolved scope choice. Complete substantive screening, source qualification and integration before the research-ready transition. Keep `stage:research / owner:chatgpt`.
 
 ## Completed artifact manifest
 
@@ -27,7 +27,13 @@ A finite overview could be built from the supplied records, but making it the **
 | `restoration-inventory.md` | RP/RE/RJ/RC records; R sources; documents, reported experiences, Missouri/Liberty, migration and declarations |
 | `pgp-inventory.md` | PP/PE/PJ/PC records; PG sources; all five components, grouped unlocatable regions/rivers, facsimile attribution |
 | `checkpoint-validation.md` | Historical validation of checkpoint1 only; its hashes deliberately identify that earlier version |
-| `continuation-validation.md` | Validation and counts for the integrated continuation |
+| `continuation-validation.md` | Historical validation and counts for the earlier integrated continuation |
+| `coverage-*.md` / `coverage-*.csv` | Comprehensive per-chapter/section dispositions, witnesses, exclusions and unresolved work |
+| `validate-coverage.py` | Reproducible canonical coverage and ledger-integrity check; not a research-ready certificate |
+| `gazetteer-evidence.md` | Four additional scholarly representative settlement anchors, attribution and geometry limits |
+| `comprehensive-audit.md` | Current research acceptance gates and integration audit |
+| `identity-register.md` | Shared-place/person collisions and deliberate non-merges |
+| `prominent-claims-audit.md` | Ten prominent claims with honest second-source dispositions |
 
 The short uppercase IDs are research keys; the lowercase slug next to a place ID is its proposed engine ID. Never serialize `P08` as one site and `jerusalem` as a second site. Sources named in another file remain references to that file's register, not claims of a second independent source.
 
@@ -54,17 +60,18 @@ Inspected `public/atlas/engine.js` at the baseline above:
 ## Cross-file corrections and deduplication
 
 1. P08 Jerusalem now has an OT anchor from 2 Samuel5 (bible-inventory A5). Its minimum navigator is1. Keep Luke and Lehi passages separately labelled; do not expose the BoM paragraph through the Bible-only base.
-2. P20 Mount of Olives has an NT anchor in Matthew26 (A9), so its minimum navigator is2, with `bible` and `pgp` affiliations. Its PGP-specific discourse text remains identified as such.
+2. P20 Mount of Olives has an OT anchor in Zechariah14:4 (S30), so its minimum navigator is1, with `bible` and `pgp` affiliations. Its PGP-specific discourse text remains identified as such.
 3. Reuse P12 Fayette, P14 Kirtland Temple and P15 Nauvoo in restoration records. A modern mailing address does not rename a historical township or prove an exact event point.
 4. P10 American Bountiful is distinct from `bom-bountiful-arabia`; P19 Abraham's Jershon is distinct from the BoM Jershon; PP05 Cainan is not the similarly spelled biblical Canaan. New York's plates hill is not silently identified as the Book of Mormon battle hill.
 5. Retain separate Abraham/Genesis journey accounts and their differing ages at Haran. Do not construct one harmonized age/date from both.
-6. Reuse one conceptual Eden record with source-specific descriptions if the Bible inventory expands it; never choose a physical garden location from name matching alone.
+6. P17 Enoch’s city uses earliest navigator4 from D&C38:4; PGP-only name/detail labels remain navigator5.
+7. Reuse one conceptual Eden record with source-specific descriptions if the Bible inventory expands it; never choose a physical garden location from name matching alone.
 
 ## Remaining work, without inflated blockers
 
-**Needed for the existing broad research-ready scope:** review the unsurveyed Bible books for major geographic/concept omissions; finish the selected Book of Mormon omissions identified in its ledger; review D&C sections not represented in the restoration selection for major place/event/concept omissions; consolidate aliases, IDs and earliest work gates across the assembled records; update the template's top-level coverage table from an actual omission pass. This is unfinished accessible research, not an inaccessible-source claim.
+**Needed for the comprehensive research-ready scope:** retain completed full-body coverage and close the remaining per-row evidence qualifications; review edition-specific headings, superscriptions and relevant footnotes omitted by fallback transcriptions; integrate chapter findings into stable place/event/journey/people/concept records; consolidate aliases, IDs, relationships and earliest reading gates; resolve cross-source discrepancies by attribution rather than harmonization; audit support and rendering dispositions. `comprehensive-audit.md` tracks these gates. This is unfinished accessible work, not an inaccessible-source claim.
 
-**Needed for a smaller overview build using these records:** owner acceptance of the explicit inclusion list/exclusions, and a builder decision on global nonspatial reference entries versus an engine change. Already cited modern anchors can be mapped; all other places have a safe text-only disposition. Obtaining an exact coordinate for every uncertain ancient name is neither feasible nor an acceptance requirement.
+**Rendering decision:** supplied anchors can be mapped; other locations have safe nonspatial reference dispositions. A builder must implement the explicit global-reference notice or obtain a separately reviewed filtering change. Exact coordinates for uncertain ancient names are neither feasible nor an acceptance requirement.
 
 **Needed before final canon/release approval:** the agreed self-audit and independent corroboration of appropriate historical claims, resolution of unsupported `(L)`/`(U)` assertions, builder implementation review, exact-SHA technical and content sign-offs, then owner release approval. No draft PR, status note or research count substitutes for those steps.
 

@@ -180,3 +180,32 @@ Checked 2026-10-26. All S1–S26 pages opened through web search/open. `(C)` mea
 
 - URL: [Joseph Smith Papers, first-edition bibliographic record](https://www.josephsmithpapers.org/paper-summary/book-of-mormon-1830/1)
 - Opened 2026-10-26. Supports first-edition publication year1830; not an ancient narrative date.
+
+## S28 — Ruth 1
+
+- URL: [Ruth 1](https://www.churchofjesuschrist.org/study/scriptures/ot/ruth/1?lang=eng)
+- Opened2026-10-26. Verses1–22 read; Bethlehem as an OT place; Naomi/Ruth arrivals, separate from NT commemoration.
+
+## S29 — Genesis 11
+
+- URL: [Genesis 11](https://www.churchofjesuschrist.org/study/scriptures/ot/gen/11?lang=eng)
+- Opened2026-10-26. Verses1–32 read; Ur→Haran movement and family identities, no modern Ur identification.
+
+## S30 — Zechariah 14
+
+- URL: [Zechariah 14](https://www.churchofjesuschrist.org/study/scriptures/ot/zech/14?lang=eng)
+- Opened2026-10-26. Verses1–16 displayed; verse4 establishes Mount of Olives east of Jerusalem. This targeted check does not certify the entire chapter.
+
+## S31 — Doctrine and Covenants 7
+
+- URL: [Doctrine and Covenants 7](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/7?lang=eng)
+- Opened2026-10-26. Current heading and verses1–8 read; translated-record attribution is distinct from the collection-level genre description.
+
+## S32 — Doctrine and Covenants38 and45
+
+- URLs: [D&C38:4](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng&id=p4#p4), [D&C45:11–12](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/45?lang=eng&id=p11-p12#p11).
+- Official full sections read in the comprehensive D&C pass on2026-10-26;38:4 names Enoch’s city taken into God’s presence,45:11–12 describes Enoch’s community reserved for a future time. Supports navigator4 shared city reference, without importing PGP-specific names or geography.
+
+## Comprehensive continuation registers
+
+`coverage-*.md` and the corresponding CSV evidence fields identify exact witnesses and reading scope for every unit. `gazetteer-evidence.md` supplies four scholarly coordinate anchors. `prominent-claims-audit.md` distinguishes actual second-source support from derivative accounts and religious testimony; `identity-register.md` documents shared identities and deliberate non-merges. The earlier supplemental count is157 keyed register entries after S28–S32, excluding these expanded per-unit/inline sources; it is not a count of independent evidence.

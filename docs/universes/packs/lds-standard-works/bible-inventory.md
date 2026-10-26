@@ -4,7 +4,9 @@
 
 **Delivered:** 34 new place records, 14 event records, 6 journeys and 3 codex entries; two additions to existing place records; 21 opened source pages. Three new numeric anchors locate UNESCO heritage properties. Remaining entries are nonspatial until modern identifications and coordinates are sourced. All entries use `layer:bible`; `first:1` = OT navigator, `first:2` = NT navigator. These coarse work gates do not claim chapter-level spoiler protection.
 
-## Coverage ledger: all 66 books accounted for
+## Historical initial coverage ledger: all 66 books accounted for
+
+This table records the first selected inventory, before the owner requested comprehensive coverage. Current per-chapter progress and outstanding work are in `coverage-*.csv` and their companion research files; do not treat the historical56-book gap as a current count. The original record counts below remain valid. `gazetteer-evidence.md` adds three sourced settlement markers to this supplement’s original three anchors.
 
 “Anchor surveyed” means only the named passages/records have been checked. “Not surveyed” is not an exclusion authorized by the owner and does not mean a book lacks geography. No row claims a full verse-by-verse geographical inventory. Book names/order follow the official scripture navigation in the opened Church pages [A1–A16] (C).
 
@@ -48,7 +50,7 @@ Defaults: `parent:earth`, `aliases:[]`, no `when`, no `eras`. Only explicitly st
 | AP05 `jordan-crossing-joshua` — Jordan crossing in Joshua | river crossing; 1; Josh 3:16–17 | “Joshua’s narrative places Israel’s crossing opposite Jericho.” [A3] (C) | Specific crossing point unresolved; not a mid-river centroid |
 | AP06 `jericho` — Jericho | city; 1; Josh 6 | “Joshua narrates the capture and destruction of Jericho.” [A4] (C) | Heritage anchor is Tell es-Sultan, northwest of modern Jericho: `31.871306,35.444056` [A19] (C); the coordinate does not date or verify Joshua’s event |
 | AP07 `babylon` — Babylon | city; 1; 2 Kgs 25 / Ezra 1 | “Babylon is the departure point for returning exiles in Ezra.” [A7] (C) | Babylon archaeological property, Iraq: `32.541969,44.420833` [A18] (C); not a single captive’s house |
-| AP08 `capernaum` — Capernaum | town; 2; Matt 4:13 | “Matthew describes Jesus settling at Capernaum by the sea.” [A8] (C) | Modern site coordinate not sourced here |
+| AP08 `capernaum` — Capernaum | town; 2; Matt 4:13 | “Matthew describes Jesus settling at Capernaum by the sea.” [A8] (C) | Representative Capernaum anchor `32.880887,35.575891`; provenance and neutral base copy in `gazetteer-evidence.md`, not a healing location |
 | AP09 `sea-galilee` — Sea of Galilee | lake; 2; Matt 4:18 | “Matthew places the call of fishermen beside this sea.” [A8] (C) | No shoreline event point asserted |
 | AP10 `gethsemane` — Gethsemane | place; 2; Matt 26:36 | “Matthew describes Jesus praying here before his arrest.” [A9] (C) | No exact garden identification adopted |
 | AP11 `golgotha` — Golgotha; Place of a Skull | execution place; 2; Matt 27:33–35 | “Matthew names Golgotha as the place of crucifixion.” [A10] (C) | No modern candidate selected; do not equate a commemorative pin with certainty |
@@ -56,8 +58,8 @@ Defaults: `parent:earth`, `aliases:[]`, no `when`, no `eras`. Only explicitly st
 | AP13 `seleucia` — Seleucia | departure port; 2; Acts 13:4 | “The travelers sail from Seleucia toward Cyprus.” [A11] (C) | Modern identification/coordinate pending |
 | AP14 `salamis` — Salamis | city; 2; Acts 13:5 | “Barnabas and Saul preach at Salamis.” [A11] (C) | No synagogue point supplied |
 | AP15 `paphos` — Paphos | city; 2; Acts 13:6–13 | “The mission reaches Paphos before sailing to Perga.” [A11] (C) | Do not use an undifferentiated Palaepaphos/Nea Paphos heritage marker; coordinate pending |
-| AP16 `perga` — Perga | city; 2; Acts 13:13–14 | “The company reaches Perga before continuing inland.” [A11] (C) | Pamphylia in text; modern pin pending |
-| AP17 `antioch-pisidia` — Antioch in Pisidia | city; 2; Acts 13:14 | “Paul and Barnabas visit the synagogue here.” [A11] (C) | Distinct from AP12; coordinate pending |
+| AP16 `perga` — Perga | city; 2; Acts 13:13–14 | “The company reaches Perga before continuing inland.” [A11] (C) | Pamphylia in text; representative Perga anchor `36.964466,30.853259`, provenance in `gazetteer-evidence.md` |
+| AP17 `antioch-pisidia` — Antioch in Pisidia | city; 2; Acts 13:14 | “Paul and Barnabas visit the synagogue here.” [A11] (C) | Distinct from AP12; representative Antioch-in-Pisidia anchor `38.305374,31.189870`, provenance in `gazetteer-evidence.md` |
 | AP18 `iconium` — Iconium | city; 2; Acts 14:1 | “Paul and Barnabas preach in Iconium.” [A12] (C) | Modern pin pending |
 | AP19 `lystra` — Lystra | city; 2; Acts 14:6–10 | “Acts places a healing during the mission at Lystra.” [A12] (C) | Modern pin pending |
 | AP20 `derbe` — Derbe | city; 2; Acts 14:20–21 | “The missionaries reach Derbe before revisiting earlier communities.” [A12] (C) | Modern pin pending |
@@ -76,7 +78,7 @@ Defaults: `parent:earth`, `aliases:[]`, no `when`, no `eras`. Only explicitly st
 | AP33 `patmos` — Patmos | island; 2; Rev 1:9 | “John locates himself on Patmos when introducing the vision.” [A15] (C) | Island narrative setting; no cave identification supplied |
 | AP34 `new-jerusalem-revelation` — New Jerusalem (Revelation) | visionary city; 2; Rev 21:2 | “John sees a new Jerusalem descending from heaven.” [A16] (C) | Nonspatial visionary record; no present-day Earth pin |
 
-**Required integration corrections to existing records:** P08 Jerusalem can now use `first:1` for a neutral geographic base because its OT layer has an opened anchor (2 Samuel 5); keep Luke/BoM-specific descriptions gated separately. Add the OT event AE05 below rather than changing Luke’s description into a cross-work spoiler. P20 Mount of Olives can use `first:2`, `layers:["bible","pgp"]`; add a Bible-specific note: “Matthew describes Jesus and his disciples going to the Mount of Olives.” [A9] (C) The PGP account remains a separate note at navigator 5. Do not merge AP34 with P08 or P13 Independence solely because the names include Jerusalem/Zion.
+**Required integration corrections to existing records:** P08 Jerusalem can now use `first:1` for a neutral geographic base because its OT layer has an opened anchor (2 Samuel 5); keep Luke/BoM-specific descriptions gated separately. Add the OT event AE05 below rather than changing Luke’s description into a cross-work spoiler. P20 Mount of Olives now uses `first:1` after the comprehensive continuation checked Zechariah14:4 (`research.md` S30); its NT-specific claim retains gate2. Use `layers:["bible","pgp"]`; add a Bible-specific note: “Matthew describes Jesus and his disciples going to the Mount of Olives.” [A9] (C) The PGP account remains a separate note at navigator 5. Do not merge AP34 with P08 or P13 Independence solely because the names include Jerusalem/Zion.
 
 ## Events
 
@@ -127,8 +129,8 @@ These are ordered **textual sequences**, not surveyed routes. All numeric route 
 - **Historical synthesis:** UNESCO describes Philippi’s Roman and Christian remains and associates Paul’s visit with 49–50 CE. [A20] (C) A future historical-date overlay may cite that attribution; this does not supply a precise riverbank or prison cell.
 - **Church teaching cartography:** the Church’s Exodus map is an educational reconstruction explicitly marked possible, not a claim that every pin is established. [A17] (C)
 - **Tradition:** modern Gethsemane/Golgotha/Melita identification debates were not surveyed here. No specific tradition’s candidate is silently promoted. Existing Bethlehem tradition note remains in research.md.
-- **No fake blockers:** these scriptures were accessible. Unsurveyed books and missing modern gazetteer records are unfinished research, not inaccessible evidence. Three coordinate pairs are supplied now; the other 31 new place records remain without coordinates. AP34 should remain nonspatial regardless of gazetteer availability.
-- **Remaining build gate:** this is a strong set of core narrative records, but full agreed Bible coverage is not complete: 56 books unreviewed, several large narratives absent, current gating is only OT/NT, and scripture-versus-historical chronology needs a wider scholarly pass. These criteria cannot be waived merely by calling the supplement build-ready. A deliberately narrowed release would require explicit scope approval.
+- **No fake blockers:** these scriptures were accessible. Unsurveyed books and missing modern gazetteer records are unfinished research, not inaccessible evidence. Three coordinate pairs are supplied now; the original other31 lacked coordinates; `gazetteer-evidence.md` subsequently sources three more, leaving28 without coordinates. AP34 should remain nonspatial regardless of gazetteer availability.
+- **Remaining build gate:** this is a strong set of core narrative records, but full agreed Bible coverage was incomplete at this initial checkpoint; current precise gaps are in the chapter ledgers, current gating is only OT/NT, and scripture-versus-historical chronology needs a wider scholarly pass. These criteria cannot be waived merely by calling the supplement build-ready. A deliberately narrowed release would require explicit scope approval.
 
 ## Opened sources
 
