@@ -44,9 +44,14 @@ This2026-10-26 discovery supersedes “no accessible primary body” for2/3Meqab
 | Key | Source | Actual access |
 |---|---|---|
 | XO23 | [Iyaric translator introduction](https://pseudepigrapha.com/EtheopianBible/Meqabyan.html) | Introduction and glossary inspected; provenance limitations above. |
-| XO24 | [Iyaric1Meqabyan](https://pseudepigrapha.com/EtheopianBible/Meqabyan_Book1.html) | Supplied36-chapter witness;1–5 and36 fully read,6:1–9 partial. Remaining chapters not certified. |
-| XO25 | [Iyaric2Meqabyan](https://pseudepigrapha.com/EtheopianBible/Meqabyan_Book2.html) | Supplied21-chapter witness;1,20,21 full; other returned fragments not counted as completed reading. |
+| XO24 | [Iyaric1Meqabyan](https://pseudepigrapha.com/EtheopianBible/Meqabyan_Book1.html) | All36 supplied chapters read;15 skips verse11 in displayed numbering; no critical completeness claim. |
+| XO25 | [Iyaric2Meqabyan](https://pseudepigrapha.com/EtheopianBible/Meqabyan_Book2.html) | All21 supplied chapters read through closing colophon. Translation fidelity unverified. |
 | XO26 | [Iyaric3Meqabyan](https://pseudepigrapha.com/EtheopianBible/Meqabyan_Book3.html) | All10 supplied chapters read through closing colophon. Translation fidelity remains unverified. |
 | XO27 | [Wikisource collaborative1Meqabyan](https://en.wikisource.org/wiki/Translation:1_Meqabyan) | Seven chapter headings and1–3/4opening inspected; deletion flag. Not independent corroboration:2:2–3 uses Seleucid where XO24 retains Tseerutsaydan;2:26 uses Gibeon where XO24 has Gibts. No unsupported identification adopted. |
 
 The new bodies are evidence of what these modern web witnesses say. They are not authenticated representations of every Ethiopian recension. Canon-level content confidence remains U pending identified-edition or competent-language verification; this is a provenance blocker rather than continued total access failure.
+
+| XO28 | [Lulu: third Meqabyan, Feqade Selassie](https://www.lulu.com/shop/feqade-selassie/3rd-ethiopian-book-of-meqabyan-in-standard-english/paperback/product-1kdz87v.html) | Publisher page identifies Feqade Selassie/Ras Feqade I and Amharic-to-English standard-English translation;2007-12-24 edition,30pages, standard copyright. This supports a plausible expansion of RFI, not proof that the Iyaric mirror reproduces this edition or any specific base manuscript. Body not obtained. |
+| XO29 | [Curtin/Tesfaye second Meqabyan catalog](https://books.google.com/books/about/Second_Book_of_Ethiopian_Maccabees.html?id=cALaEAAAQBAJ) | Metadata identifies D.P.Curtin/BekeleTesfaye, Dalcassian2023,58pages, ISBN9798869211484. [Preview](https://books.google.com/books?id=cALaEAAAQBAJ&printsec=frontcover) returned front-cover shell only; no body available for independent comparison. Publisher dating assertions not adopted as established scholarship. |
+
+Final Iyaric access pass: all67 supplied chapters read on2026-10-26; no raw text copied. Reading completion resolves the finite access task, not the translation-fidelity blocker. No verified independent whole-text collation was possible from the catalog/preview above. No purchase, contact or account action was attempted.

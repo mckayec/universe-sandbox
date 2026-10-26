@@ -45,7 +45,7 @@ The repository requests a Bible layer, not a critical edition of the entire e-Cl
 
 | Corpus or witness | Current disposition | Consequence |
 |---|---|---|
-| Meqabyan | An initial chapter excerpt was supplemented by newly accessible Iyaric bodies; chapter-by-chapter reading is continuing in the expanded-OT ledger | Readable-body access does not resolve translation provenance. New witness claims remain U/audit-only pending validation; book numbering is not imported from Greek Maccabees. See expanded-OT sources. |
+| Meqabyan | All 67 supplied Iyaric chapters read (36/21/10); base edition/mirror fidelity remains unverified | Readable-body access does not resolve translation provenance. New witness claims remain U/audit-only pending validation; book numbering is not imported from Greek Maccabees. See expanded-OT sources. |
 | Broader Ethiopian church-order collection | Institutional list inspected; Sinodos, Covenant books, Ethiopic Clement and Didascalia not substantively read in this pass | Explicit unintegrated tradition. No content, dates or sites inferred from the titles. Lack of reading is not represented as proof of inaccessibility. |
 | Apostolic Fathers | Adjacent early Christian letters, church-order, homiletic and visionary literature outside the current named work inventory | Not collapsed into a single apocryphal canon. No claim to a complete early Christian library; a Shepherd/Didache/Clement extension would require primary reading and its own ledger. |
 | Other Jewish pseudepigrapha | The selected Enoch/Jubilees/4 Baruch/Ascension Isaiah witnesses do not encompass all pseudepigrapha | No invented exhaustive collection. Other Enoch books, Baruch apocalypses and testament collections remain unresearched here. |

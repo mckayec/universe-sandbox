@@ -39,6 +39,35 @@ for gate in gates:
     field = 'work_id' if 'work_id' in rows[0] else 'work'
     if not any(row[field] == gate['ledger_work'] for row in rows):
         errors.append(f"work-gates: unresolved {gate['work_key']}")
+
+# Index joins are exact references to heterogeneous registry rows, not facts.
+registry_ids = {}
+for path in ROOT.glob('*-integration.csv'):
+    for row in csv.DictReader(path.open()):
+        rid = row.get('id') or row.get('record_id') or row.get('stable_id')
+        if rid in registry_ids:
+            errors.append(f'duplicate cross-registry ID: {rid}')
+        registry_ids[rid] = path.name
+index = list(csv.DictReader((ROOT / 'record-work-index.csv').open()))
+if set(registry_ids) != {row['id'] for row in index}:
+    errors.append('record-work-index: missing or extra registry IDs')
+valid_gates = {row['work_key']: row['first'] for row in gates}
+for row in index:
+    if registry_ids.get(row['id']) != row['registry']:
+        errors.append(f"record-work-index: wrong registry for {row['id']}")
+    if valid_gates.get(row['work_key']) != row['first']:
+        errors.append(f"record-work-index: wrong global gate for {row['id']}")
+for row in csv.DictReader((ROOT / 'related-traditions-integration.csv').open()):
+    for key in json.loads(row['additional_work_gates']):
+        if key not in valid_gates:
+            errors.append(f"related-traditions: unmapped secondary work {key}")
+    for link in json.loads(row['typed_links']):
+        target = link['target']
+        if target.startswith(('http:', 'https:')) or target.endswith('.md'):
+            continue
+        if target not in registry_ids:
+            errors.append(f"related-traditions: unresolved link {target}")
+
 for path in ROOT.glob('*.md'):
     for target in re.findall(r'\]\(([^)]+)\)', path.read_text()):
         if target.startswith(('https://', 'http://', '#')):

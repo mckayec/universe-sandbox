@@ -23,3 +23,7 @@
 ## Validation boundaries
 
 `python docs/universes/packs/christian-apocrypha/validate-research.py` checks CSV shape, IDs, work lookup and local Markdown targets. Dossier integration audits add scoped source, gate and link checks. `git diff --check` checks whitespace. These tools cannot establish that a text was read, that a translation is critical, or that a narrative happened. No runtime code changed; app build/browser evidence is supplied by the exact-SHA CI checkpoint, not falsely reported as local research validation.
+
+## Follow-up closure after 0f527326
+
+All67 supplied Iyaric Meqabyan chapters have now been read;277 expanded-OT units have read dispositions. The remaining issue is translation fidelity, not unperformed reading. Eleven U records remain audit-only. The global1350-row join resolves every current registry ID and39 work gates; counts include references/edges and overlap. Independent NT sampling checked eight claims among59 clusters, finding one correction and two precision improvements; all three were applied to the dossier and CSV. See nt-independent-audit.md for exact baseline, passages and sample limits. Full independent certification of the other51 clusters is not claimed.

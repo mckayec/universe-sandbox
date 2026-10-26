@@ -51,7 +51,7 @@ Stable continuation records (source: ape; exact Roman-numbered units):
 | Record | Source units | Place/event/typed relation and limit |
 |---|---|---|
 | nta-ape-paul-departure | I–III | Paul departs Rome toward Spain; Tiber departure setting; Rufina episode. This is this witness's Pauline frame. |
-| nta-ape-peter-arrival | IV–VI | Simon comes Aricia→Rome; Peter comes Jerusalem→Caesarea→Puteoli→Rome. Theon is baptized during the voyage; Ariston hosts at Puteoli, Narcissus at Rome. Six days/nights are internal duration, not a reconstructed sailing calendar. |
+| nta-ape-peter-arrival | IV–VI | Simon comes Aricia→Rome; Peter comes Jerusalem→Caesarea→Puteoli→Rome. Theon is baptized during the voyage; Ariston meets Peter at Puteoli; Peter declines to stay and proceeds to Narcissus's abode in Rome. Six days/nights are internal duration, not a reconstructed sailing calendar. |
 | nta-ape-marcellus | VII–XVI | Peter teaches/reconciles Marcellus; talking dog, repaired statue and revived fish are narrative wonders. Marcellus house contextual in Rome; Forum contest announcement distinct from performance. |
 | nta-ape-eubula | XVII | Embedded Judaean recollection: Eubula, Simon, Agrippinus/Pompeius; Neapolis gate and cave remain uncertain. Not a new leg of Peter's current Roman journey. |
 | nta-ape-contest | XVIII–XXXI | Marcellus household teaching/healing; Forum contest and revivals including Nicostratus. Freed servants' freedom retained; Chryse donation. Vision's racialized imagery is literary polemic, not ethnographic evidence. |
@@ -68,7 +68,7 @@ The base changes from Latin Vercelli to Greek at XXX; do not label all I–XLI o
 | nta-aj-lycomedes | 18–29 | Miletus→Ephesus; spouses Lycomedes/Cleopatra restored; commissioned portrait not extant artifact. |
 | nta-aj-artemis | 30–47 | Ephesus theater healing and Artemis temple collapse/priest revival. Smyrna departure postponed; Q's four-year Smyrna/Bucolus/Polycarp sequence is a variant, not silently inserted. |
 | nta-aj-parricide | 48–55 | Father revived outside Ephesus; John's rejection of self-castration belongs in explanation. Smyrna invitation distinct from completed trip. |
-| nta-aj-inn | 58–62 | Laodicea→Ephesus; unnamed inn/obedient bugs; Andronicus household. Gap55–58 is not supplied. |
+| nta-aj-inn | 58–62 | A manuscript heading reported by James gives Laodicea→Ephesus; the body explicitly narrates departure toward Ephesus.  unnamed inn/obedient bugs; Andronicus household. Gap55–58 is not supplied. |
 | nta-aj-drusiana | 63–86 | Andronicus spouse Drusiana; Callimachus's attempted abuse of corpse, Fortunatus and serpent; revivals and Fortunatus's later death. Tomb contextual, no modern pin. |
 | nta-aj-christ-discourse | 87–105 | Polymorphic Christ, hymn/dance; Gennesaret reference and Mount Olives cave vision during Jerusalem crucifixion. Light-cross doctrine and wood-cross distinction remain this narrator's claims, not harmonized gospel history. |
 | nta-aj-latin-supplement | Latin XIV–XXI | Craton/gems; Ephesus→Pergamum; Atticus/Eugenius wealth; Stacteus; Aristodemus poison trial. Latin XIX is editor summary. Later church-foundation sentence is separately marked. |
@@ -92,7 +92,7 @@ Detached fragments were recovered from Wikisource's unproofread OCR pages302–3
 | nta-at-hymn | 108–113 | Embedded Hymn of Soul: East→Maishan/Babylon→Egypt→return via Sarbug/Mesene. Symbolic prince's journey, **not Thomas traveling to Egypt**. Lexical/geographic alternatives remain uncertain. Syriac Song of Praise afterward omitted by James. |
 | nta-at-tertia | 134–143 | Tertia, Misdaeus's wife, learns from Mygdonia/Thomas; king strikes Thomas; Iuzanes, king's son, questions him; heated plates and flood. Unnamed court/prison. |
 | nta-at-initiation | 144–163 | Prayer has alternate manuscript position after167. Iuzanes/Mnesara spouses, stated age21/seven married years; healing and initiation at their house, prison return. Narcia is nurse, not biological mother inferred from address. |
-| nta-at-death-relics | 164–170 | One mile out of city, unnamed mountain, four soldiers spear Thomas, royal tomb. Siphor becomes presbyter, Iuzanes deacon; women persist; remains carried to Mesopotamia; Misdaeus's son healed with tomb dust, king converts. **No Mylapore, Chennai, Edessa or historical martyrdom year supplied by these passages.** |
+| nta-at-death-relics | 164–170 | After walking one mile outside the city, the king hands Thomas to soldiers; they take him up an unnamed mountain, where four soldiers spear him. He is buried in a royal tomb. Siphor becomes presbyter, Iuzanes deacon; women persist; remains carried to Mesopotamia; Misdaeus's son healed with tomb dust, king converts. **No Mylapore, Chennai, Edessa or historical martyrdom year supplied by these passages.** |
 
 India is an ancient designation, not a modern national polygon. Greek U/P and Syriac readings differ; James follows different witnesses in different sections. Women/households/palaces/prisons remain contextual nodes without coordinates; teaching/prayer units can be codex entries without duplicate event pins.
 

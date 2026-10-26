@@ -4,19 +4,21 @@
 
 | Witness | Complete units read | Partial units | Remaining |
 |---|---|---|---|
-| English1Esdras | 1–9 | None | Atomic extraction and parallel-text comparison |
+| English1Esdras | 1–9 | None | Bounded record extraction complete; full parallel-text comparison outside selected-witness pass |
 | English2Esdras | 1–4 KJV;5–16 WEB Classic | None | See completed [supplement](2esdras-supplement.md); critical recension comparison remains |
-| 3Maccabees | 1–7; WEB collated | None | Record expansion |
+| 3Maccabees | 1–7; WEB collated | None | Bounded record extraction complete |
 | 4Maccabees | 1–18 supplied body | None | Supplied10/11 gaps checked in WEB PDF; remaining identified-edition collation limited |
 | PrayerManasseh | Entire15verse witness | None | Recensional comparison |
 | Psalm151 | Heading and7verses | None | Greek/Hebrew witness comparison |
-| 1Enoch, Charles division | 1–108 supplied body | None | Edition defects; full atomic extraction |
-| Jubilees, Charles division | 1–50 supplied body | None | Textual anomalies; atomic integration |
-| 1Meqabyan | 1 original excerpt;2–5,36 Iyaric | Iyaric6:1–9 | Iyaric6 remainder,7–35; provenance unresolved |
-| 2Meqabyan Iyaric | 1,20,21 | None counted | 2–19; provenance unresolved |
+| 1Enoch, Charles division | 1–108 supplied body | None | Edition defects retained; bounded record extraction complete |
+| Jubilees, Charles division | 1–50 supplied body | None | Textual anomalies retained; bounded integration complete |
+| 1Meqabyan Iyaric | 1–36 supplied | None | Verse-number gap15:11; provenance unresolved |
+| 2Meqabyan Iyaric | 1–21 supplied | None | Provenance unresolved |
 | 3Meqabyan Iyaric | 1–10 supplied | None | Provenance unresolved |
 
-**229 fully read supplied units,1 partially read,47 enumerated unread;277 total rows.** The18 newly completed units use a provisional Iyaric witness whose translation fidelity is unverified; these are reading counts, not canon-level certification. These are heterogeneous chapter/work units, not equivalent reading effort or completed atomic-record counts. The210 units excluding Meqabyan use the selected English chapter systems; they are not claimed to match Ethiopian liturgical numbering. No unread row is described as having no atlas material.
+**277 supplied-body units read;0 partial or unread units in the selected witnesses.** This includes67 Meqabyan chapters from a provisional Iyaric translation whose fidelity remains unverified; reading completion does not establish canon-level certification. These are heterogeneous chapter/work units, not equivalent reading effort or completed atomic-record counts. The210 units excluding Meqabyan use the selected English chapter systems; they are not claimed to match Ethiopian liturgical numbering. No unread row is described as having no atlas material.
+
+**Current acceptance:** selected-witness reading is finished, including all67 Iyaric Meqabyan chapters. Meqabyan translation fidelity remains U and its11 audit entries are excluded from build. Earlier dated supplements retain checkpoint history; their unread counts and total-access blockers are superseded by the final finite pass. Current integration:126rows, comprising115 selected and11 audit-only entries.
 
 ## 1. Meta and witness identity
 
@@ -265,3 +267,26 @@ The following four entries are **audit-only (U)** for canon-level use. Their lim
 | XO-U04 | Explanatory;3meqabyan:6 | XO26,6,9–10. Angels receive souls and resurrection is defended; unknown soul paths and figurative sailing are not mappable earthly journeys. |
 
 These four audit entries extend the integration CSV to119 rows but remain excluded from its115 publishable selected records. This distinction prevents a readable yet unauthenticated translation from silently satisfying the source-quality requirement. Confirm translator/base edition or compare an identified translation before promotion. The seven-chapter Wikisource rendering is not a substitute: unexplained names differ materially from the Iyaric witness.
+
+
+### Final finite Meqabyan reading pass
+
+All67 supplied Iyaric chapters are now read. The master ledger has277 unique fully read units; no selected-witness chapter remains unread. Earlier partial-reading counts are checkpoint history superseded here. Translation acceptance remains blocked: an identified independent text was not readable through the available preview, and the mirrored Iyaric text’s base edition has not been established. Lulu’s publisher attribution supports identifying a likely translator, but cannot certify the mirror’s fidelity. U records remain excluded from build.
+
+Additional audit entries, all U and reference-only:
+
+| ID | Kind; first gate | Source locator and proposed entry |
+|---|---|---|
+| XO-U05 | Narrative;1meqabyan:15 | XO24,15. Akrandis crosses Yordanos; three brothers defeat him. No historical king identification; numbering skips11. |
+| XO-U06 | Journey;1meqabyan:18 | XO24,18–19. Sethite descent and Cain’s westward Qiefaz movement; distinguish from Enoch’s Watchers. |
+| XO-U07 | Explanatory;1meqabyan:34 | XO24,34. Kingdom-conflict oracle; not verified political chronology. |
+| XO-U08 | Narrative;2meqabyan:2 | XO25,2–5. Reay counsels repentance; Meqabees reforms worship; his children are later captured. |
+| XO-U09 | Journey;2meqabyan:8 | XO25,8. Tseerutsaydan’s campaign catalog; preserve names without a reconstructed historical route. |
+| XO-U10 | Narrative;2meqabyan:12 | XO25,12:13–15. Thilimyakos strikes the king; enemy forces plunder his realm. |
+| XO-U11 | Explanatory;2meqabyan:14 | XO25,14. Resurrection polemic about named Jewish groups; not a neutral account of their historical beliefs. |
+
+The integration register now has126rows:115 selected records plus11 audit-only entries. The latter remain U. Allusion-heavy and exhortatory units are assessed in the chapter ledger; their rhetorical paths and anonymous landscapes are deliberately not added as terrestrial journeys. No additional canon-level claim is inferred from this modern witness alone.
+
+### Current acceptance reconciliation
+
+Earlier checkpoint paragraphs reporting partial Meqabyan access,119 rows, or missing4Maccabees verses are historical progress notes, superseded by this final finite pass and XO22. Current counts are277 read supplied units and126 registry rows (115 selected,11 U). The global record-work index now resolves all126 rows. Unknown dates, unknown locations and uncollated other recensions are disclosed research limits, not an instruction to manufacture missing data. The remaining mandatory source-quality blocker is fidelity/provenance for the11 Meqabyan U records; broader canon navigation is not offered by this work-based design.

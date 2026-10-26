@@ -5,7 +5,7 @@
 | Layer | Evidence artifact | Current scope |
 |---|---|---|
 | Catholic deuterocanonical core and shared receptions | deuterocanonical-research.md / coverage.csv / sources.md | 147 chapter/section units read in explicitly identified editions; material-record integration continuing |
-| Expanded OT collections and related pseudepigrapha | [expanded-ot-research.md](expanded-ot-research.md) | Selected non-Meqabyan bodies read; Meqabyan provisional translation leads under evaluation; edition limits disclosed |
+| Expanded OT collections and related pseudepigrapha | [expanded-ot-research.md](expanded-ot-research.md) | 277 selected supplied-body units read, including 67 Meqabyan chapters; Meqabyan translation fidelity unresolved and 11 U entries excluded |
 | NT-related narratives and sayings | nt-apocrypha-research.md / coverage.csv / sources.md | Selected-host reading complete: 847 read heterogeneous units; three lost and three edition-omitted scopes remain explicit |
 | Related Isaiah/Jeremiah traditions | related-pseudepigrapha.md / coverage.csv | 20 chapters read across separate 4Baruch and Ascension of Isaiah witnesses |
 | Pilate and descent | [pilate-research.md](pilate-research.md), [ledger](pilate-coverage.csv) | Selected Greek-formI prologue+16chapters and Latin-formI13chapters read; other recensions not silently included |
@@ -51,7 +51,7 @@ Typed relationships must distinguish kinship within a story, a character's testi
 
 ## 7. Open questions
 
-- Resolve the newly located Meqabyan translation leads and preserve fragmentary/edition-omitted portions without invented summaries.
+- Resolve Meqabyan translation fidelity through an identified readable witness/base edition; all 67 supplied Iyaric chapters were read, but 11 U entries remain excluded. Preserve fragmentary/edition-omitted portions without invented summaries.
 - Resolve source/edition identity where a host does not state its translation; do not mix recensions covertly. Full collation of every surviving manuscript is outside this atlas pass and is never implied.
 - Finish global work gates, source/record accounting, shared identity and typed-link closure, chronology and prominent-claim audits before research-ready transfer.
 - Give wider traditions explicit inclusion or scope/access dispositions: Meqabyan, broader Ethiopian church-order books, Apostolic Fathers and later cycles cannot disappear behind a generic “apocrypha complete” label.
