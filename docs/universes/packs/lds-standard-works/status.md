@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-26
-note: Claude builder review checkpoint 1 at 52adadf: research-review.md (RR01–RR08, Q01–Q04). Main gap RR01: only 10 of ~106 places have coordinates; anchor register requested. Build on pack/lds-standard-works starts next run with engine work (layer-gated notes/codex, surface journeys).
+note: Build checkpoint 1 on pack/lds-standard-works (draft PR #33) at af67111: generic engine work for layer-gated notes/codex (RR03) and surface journeys (RR04). Pack file next; Q01–Q04 in research-review.md still open for ChatGPT.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -24,3 +24,4 @@ Track A · view: Earth-historical, layered
 
 - 2026-10-26: ChatGPT committed research integration at `52adadf1558b8bba1c89ca266de682ccdc988767` before this status transfer. Closed AP09 gate inconsistency, Nahom burial-only wording, dense-list chain omission, navigator contract and acceptance accounting. All1587unit ledgers structurally valid;2975capture references verified;387explicit references resolve with149context dispositions. These overlapping measures are not independent historical certification. Comprehensive research ready for review with context-scoped unknown identities, bounded apparatus and nonspatial geography preserved. Claude owns research review; final content/technical audits and Mckay release approval remain.
 - 2026-10-26: Claude: builder research review checkpoint 1 of research 52adadf → research-review.md (RR01–RR08; questions Q01–Q04 for ChatGPT in research-addendum.md). Key asks: anchor-coordinate register for uncontested places (RR01), single-mode work layers (RR02), schematic BoM internal-geography view (RR05). No research-audit.md/addendum yet. Stage unchanged; build starts next run.
+- 2026-10-26: Claude: build checkpoint 1. Draft PR #33 on pack/lds-standard-works at af67111193523fec6c40f3d6c5a50e7d195ba132 adds layer-gated place notes/codex (PACK_FORMAT §20.5) and surface journeys (§20.6), with validator checks and tests. No pack content yet. Stage unchanged.

@@ -38,3 +38,11 @@ No `research-addendum.md` or `research-audit.md` exists yet for this research re
 
 - Done: review of the core and inventory records, engine-claim verification, this file.
 - Next: start `pack/lds-standard-works` with the generic engine work (RR03 note/codex layer gating, RR04 surface journeys) and the pack skeleton from `(C)` records with existing anchors; add anchors after Q01.
+
+## Build checkpoint 1 (2026-10-26)
+
+- Branch `pack/lds-standard-works`, draft PR #33, commit `af67111193523fec6c40f3d6c5a50e7d195ba132`.
+- RR03 done generically: place notes and codex entries take `layers`/`when`/`first` (PACK_FORMAT §20.5). Layer-specific paragraphs (e.g. the BoM paragraph on Jerusalem) can now be gated to their layer, so the global reference notice is no longer the only safeguard.
+- RR04 done generically: `world.routes` (PACK_FORMAT §20.6). Legs are drawn only between consecutive placed stops, and an unplaced stop breaks the line. This follows the research's route recipe: one route per traveller or party.
+- Checks: `pnpm check` 72/72, `test:pages` 12×2 pass, Playwright fixture run at 1440×900 and 390×844 with no console errors. `test:browser` times out in this container on unchanged `main` too (environmental).
+- Next: the pack file. Five works as books with `spoilers.mode:"single"` and five work layers plus an off-by-default `models` layer (pending Q02). `(C)` records with existing anchors go in first; more anchors follow after Q01, and the schematic BoM view after Q03.
