@@ -449,8 +449,9 @@ function buildShell(K){
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
 (K.raw.layers||K.raw.timeline?'<div id="filters"'+(K.raw.realms?' class="withrealms"':'')+'></div>':"")+
 '<aside class="panel" id="index" aria-label="Worlds"></aside><aside class="panel" id="dossier" aria-label="Details"></aside><div id="announce" class="sr-only" aria-live="polite"></div>'+
-'<div id="navhint"></div><div id="bake" hidden>Charting surface<b><i></i></b></div><div id="tip" hidden></div>'+
-'<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><span class="hint" id="legend"></span>'+
+'<div id="navhint"></div><div id="tourBox" class="panel" hidden role="region" aria-label="Tour of the Chronicle"><p class="eyebrow" id="tourE"></p><h3 id="tourT"></h3><p id="tourX"></p>'+
+  '<div class="tb"><button class="btn" data-tour="prev" aria-label="Previous event">‹</button><button class="btn" data-tour="pause">Pause</button><button class="btn" data-tour="next" aria-label="Next event">›</button><span id="tourN"></span><button class="btn" data-tour="stop">End tour</button></div></div><div id="bake" hidden>Charting surface<b><i></i></b></div><div id="tip" hidden></div>'+
+'<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><button class="btn" id="tourBtn" title="Play the Chronicle: travel to each event in turn">▶ Tour</button><span class="hint" id="legend"></span>'+
   '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
   '<div class="cx-tabs" id="cxTabs"></div><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
@@ -1150,7 +1151,7 @@ $("#codex").addEventListener("keydown",e=>{
   if(!f.length)return;const first=f[0],last=f[f.length-1];
   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
-addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("#codex").hidden)closeCodex();else if(S.view==="place"){if(S.lm)selectLandmark(null);else leavePlace();}else if(S.view==="world")ascend();}});
+addEventListener("keydown",e=>{if(e.key==="Escape"){if(TOUR.on)tourStop();else if(!$("#codex").hidden)closeCodex();else if(S.view==="place"){if(S.lm)selectLandmark(null);else leavePlace();}else if(S.view==="world")ascend();}});
 
 /* ===================== CRUMBS & HINT ===================== */
 function renderCrumbs(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
@@ -1337,18 +1338,23 @@ function lmOk(l){if(!realmOk(l)||!filterOk(l))return false;const b=S.book||0;if(
   if(!CUM||!b)return true;const f=l.first||(l.books&&l.books.length?Math.min(...l.books):null);return f==null||f<=b;}
 let afterLeave=null,placeThen=null;
 function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(w,id);if(!canEnter(w,s))return;
-  if(S.view==="galaxy"){descend(w.id);setTimeout(()=>{selectSite(id);enterPlace(id,false,then);},1300);return;}
+  /* straight from the galaxy: no planet is baked; leaving the place descends to the surface then */
+  const fromGal=S.view==="galaxy";if(needRealm(w,s))setRealm(needRealm(w,s),true);
   S.site=id;S.lm=null;S.ev=null;if(MOB)dosCollapsed=true;
   if(!fromHistory&&urlReady){const st={atlasSurface:true,atlasPlace:true};const u=urlFor({view:"place",site:id});
+    if(fromGal)history.pushState({atlasSurface:true},"",urlFor({view:"world",site:id}));
     if(history.state&&history.state.atlasPlace)history.replaceState(st,"",u);else history.pushState(st,"",u);}
   const fe=$("#fade");if(fe)fe.dataset.label=s.name;
   transition(()=>{S.view="place";hideTip();SITE_EL.forEach(o=>{o.el.style.opacity=0;o.el.style.pointerEvents="none";});
+    Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
     try{PLACES.enter(w,s,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});}
     catch(err){console.error("Atlas: could not build",s.id,err);S.view="world";refreshAll();return;}
     PLACES.setIdle(true);viewOffset();S.interacted=false;refreshAll();hint(MOB?UI.hints.placeMob:UI.hints.place);
     if(then)setTimeout(then,500);});}
 function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;history.back();return;}doLeavePlace(after);}
-function doLeavePlace(after){transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL)buildSiteLabels(WORLD_BY[S.sel]);refreshAll();if(after)setTimeout(after,60);});}
+function doLeavePlace(after){
+  if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)setTimeout(()=>selectSite(site),900);if(after)setTimeout(after,1000);return;}
+  transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL)buildSiteLabels(WORLD_BY[S.sel]);refreshAll();if(after)setTimeout(after,60);});}
 function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
   if(!quiet){renderDossier();renderCrumbs();syncURL();const it=dos.querySelector('[data-lm="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}}
 /* an event inside the place: fly to its landmark, then play its scene */
@@ -1374,6 +1380,33 @@ function placeDossier(){const w=WORLD_BY[S.sel];const s=siteOf(w,S.site)||{name:
   const others=(w.sites||[]).filter(x=>x.id!==s.id&&canEnter(w,x));
   if(others.length)h+='<div class="rule"><span class="eyebrow">Elsewhere on '+esc(w.name)+'</span></div><div class="hops">'+others.map(x=>'<button class="btn" data-act="hop" data-id="'+esc(x.id)+'">'+esc(x.name)+'</button>').join("")+'</div>';
   return h;}
+/* ===================== TOUR: the Chronicle played in order ===================== */
+const TOUR={on:false,list:[],i:0,paused:false,timer:0};
+function tourList(){return EVENTS.filter(e=>filterOk(e)&&WORLD_BY[e.world]&&seen(WORLD_BY[e.world])&&(!S.book||e.book===S.book));}
+/* travel to an event: into its place when it has one, otherwise to its world */
+function goEvent(e){const w=WORLD_BY[e.world];if(!w)return;
+  if(e.site&&canEnterEv(e)){
+    if(S.view==="place"&&S.sel===e.world){if(S.site===e.site)evInPlace(e);else enterPlace(e.site,false,()=>evInPlace(e));}
+    else if(S.view==="place"){leavePlace(()=>ascend(()=>{S.sel=e.world;enterPlace(e.site,false,()=>evInPlace(e));}));}
+    else if(S.view==="world"&&S.sel===e.world){selectSite(e.site);enterPlace(e.site,false,()=>evInPlace(e));}
+    else if(S.view==="world"){ascend(()=>{S.sel=e.world;enterPlace(e.site,false,()=>evInPlace(e));});}
+    else{S.sel=e.world;enterPlace(e.site,false,()=>evInPlace(e));}}
+  else if(S.view==="place")leavePlace(()=>{if(S.sel===e.world)openEvent(e.id,false);else ascend(()=>openEvent(e.id,true));});
+  else openEvent(e.id,true);}
+function tourShow(){const e=TOUR.list[TOUR.i];if(!e)return;const w=WORLD_BY[e.world];
+  $("#tourE").textContent=BOOKS[e.book].title+" · "+(e.site?siteName(w,e.site)+", ":"")+w.name;$("#tourT").textContent=e.title;$("#tourX").textContent=e.text;
+  $("#tourN").textContent=(TOUR.i+1)+" / "+TOUR.list.length;$("#tourBox").querySelector('[data-tour="pause"]').textContent=TOUR.paused?"Play":"Pause";}
+function tourStep(d){if(!TOUR.on)return;clearTimeout(TOUR.timer);TOUR.i=clamp(TOUR.i+d,0,TOUR.list.length-1);const e=TOUR.list[TOUR.i];tourShow();goEvent(e);tourArm();}
+function tourArm(){clearTimeout(TOUR.timer);if(TOUR.paused||!TOUR.on)return;const e=TOUR.list[TOUR.i];
+  TOUR.timer=setTimeout(()=>{if(TOUR.i>=TOUR.list.length-1){tourStop();return;}tourStep(1);},(e&&e.fx?15000:10000)+Math.min(6000,(e&&e.text||"").length*25));}
+function tourStart(){TOUR.list=tourList();if(!TOUR.list.length){hint("No events to tour in this selection.");return;}TOUR.on=true;TOUR.paused=false;TOUR.i=0;
+  $("#tourBox").hidden=false;document.body.classList.add("touring");$("#tourBtn").setAttribute("aria-pressed","true");if(MOB)closeChron();tourStep(0);}
+function tourStop(){TOUR.on=false;clearTimeout(TOUR.timer);$("#tourBox").hidden=true;document.body.classList.remove("touring");$("#tourBtn").setAttribute("aria-pressed","false");}
+$("#tourBtn").addEventListener("click",e=>{e.stopPropagation();if(TOUR.on)tourStop();else tourStart();});
+$("#tourBox").addEventListener("click",e=>{const b=e.target.closest("[data-tour]");if(!b)return;const k=b.dataset.tour;
+  if(k==="stop")tourStop();else if(k==="next")tourStep(1);else if(k==="prev")tourStep(-1);else if(k==="pause"){TOUR.paused=!TOUR.paused;tourShow();tourArm();}});
+/* any hand on the controls pauses the tour rather than fighting it */
+canvas.addEventListener("pointerdown",()=>{if(TOUR.on&&!TOUR.paused){TOUR.paused=true;tourShow();clearTimeout(TOUR.timer);}});
 function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
