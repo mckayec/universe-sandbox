@@ -1,19 +1,19 @@
 # LDS atlas — build contract and remaining acceptance criteria
 
-2026-10-26. Research baseline: main `cd85ea8dcb36d4d5b54afd5ec05bc03c2c173d79`. This document integrates completed research records and identifies the actual gates to `research-ready`. It does not change the agreed scope or authorize a content build. The user authorized publication of the documentation branch and one draft PR; merge, deployment and contacting Claude remain excluded.
+2026-10-26. Research baseline: main `cd85ea8dcb36d4d5b54afd5ec05bc03c2c173d79`. This document integrates completed research records and identifies the actual gates to `research-ready`. It does not change the agreed scope or approve a finished build. The completed research is ready for builder research review under the acceptance disposition below. The user authorized publication of the documentation branch and one draft PR; merge, deployment and contacting Claude remain excluded.
 
 ## What the agreement actually requires
 
 | Requirement | Authority | Current disposition |
 |---|---|---|
-| One atlas with Bible, Book of Mormon, D&C/history and Pearl of Great Price layers; no transfer after only one layer | HANDOFF_PLAN.md §1.4.2, line41 | All four now have substantial selected records. Coverage is still uneven; full stage transition is not justified solely by the presence of four files |
+| One atlas with Bible, Book of Mormon, D&C/history and Pearl of Great Price layers; no transfer after only one layer | HANDOFF_PLAN.md §1.4.2, line41 | All four have substantive per-unit dossiers and expanded registries. The remaining acceptance decision concerns their integration and traceable source support, not merely the presence of four files |
 | Major places, events, journeys and concepts across the works in scope | PROMPTS.md §1.4, line30 | This is a real breadth requirement, not a demand to index every verse. The owner subsequently chose comprehensive standard-works coverage. The individual-unit CSV ledgers now govern the omission sweep; a row alone does not establish full reading or integration |
-| Citations, confidence, reading gates, structured entries and explicit exclusions | RESEARCH_TEMPLATE.md rules and §§1–8 | Each supplement supplies keyed records and sources. Cross-file integration and a final omission/gate pass remain; coarse work gates are an explicitly proposed navigation design |
+| Citations, confidence, reading gates, structured entries and explicit exclusions | RESEARCH_TEMPLATE.md rules and §§1–8 | Each supplement supplies keyed records and sources. Research identity and gate dispositions are supplied; generated-object checks remain. Five-work navigation is the intended initial UI, with chapter-level provenance but no chapter-spoiler promise |
 | Unknown/model geography must not become factual coordinates | HANDOFF_PLAN.md §1.3; RESEARCH_TEMPLATE.md line13 | Satisfied by withholding geometry and separating narrative/proposed locations. A site does **not** need a fabricated coordinate to count as researched |
 | Text / belief / scholarship distinguished | HANDOFF_PLAN.md §1.3; RESEARCH_TEMPLATE.md §8 | Narrative claims are attributed. Independent archaeology is not required to establish what scripture says; any historical/archaeological assertion still requires suitable evidence |
 | Self-audit, independent second-source checks, builder review, technical checks and final joint approval | AUDIT_CHECKLIST.md §§1–4; WORKFLOW.md stages2–6 | These are later evidence/release gates. They should not be falsely reported as completed, nor all misrepresented as prerequisites for the first research handoff |
 
-The owner explicitly selected **comprehensive** coverage on2026-10-26. A smaller overview is no longer an unresolved scope choice. Complete substantive screening, source qualification and integration before the research-ready transition. Keep `stage:research / owner:chatgpt`.
+The owner explicitly selected **comprehensive** coverage on2026-10-26. A smaller overview is no longer an unresolved scope choice. Substantive screening, source qualification and the documented integration dispositions are complete for research review; see `comprehensive-audit.md` for exact scope and exclusions. No release approval follows from that handoff.
 
 ## Completed artifact manifest
 
@@ -40,6 +40,15 @@ The owner explicitly selected **comprehensive** coverage on2026-10-26. A smaller
 | `integration-reconciliation.md` | Shared canonical identities, aliases, typed links and earliest entity/source-card gates |
 | `core-pgp-audit.md` | Record-level core/PGP corrections and material omissions with exact copy |
 | `geography-source-audit.md` | Direct model-proponent and epigraphic source follow-up, actual access limits and nonspatial dispositions |
+| `joshua-allotment-register.md/.csv` | 602 contextual allotment/boundary records; exact local aliases and unresolved identities, no polygons |
+| `late-history-relationship-register.csv`, `late-history-relationship-contexts.csv`, `late-history-literal-relation-pairs.csv` | Dense Chronicles/Ezra/Nehemiah source contexts and literal relationships; context IDs are not global person identities |
+| `ot-history-relationship-payload.csv` | 156 early-OT family/clan/office/succession payloads from52chapters |
+| `nt-relationship-expansion.md/.csv`, `nt-people-roster-payload.md/.csv` | NT genealogy/greeting contexts and typed actor relationships; source differences retained |
+| `*-record-audit.*`, `*-record-support.*`, `*-record-verification.csv` | Defined-registry source checks with explicit denominators; overlapping families are not additive unique claims |
+| `whole-corpus-claims-audit.md` | Prominent/uncertain families and defined registry accounting |
+| `late-history-relationship-register.md`, `late-history-chain-payload.csv` | Dense-register method, full expressions and47source-qualified ascending-chain segments |
+| `reference-disposition.md/.csv`, `reference-disposition-contexts.csv` | Explicit target-existence ledger and nonspatial dispositions; bounded syntax, not all semantic aliases |
+| `recovery-checkpoint.md` | Historical saved-work recovery at d04d4c7, not the latest acceptance verdict |
 
 The short uppercase IDs are research keys; the lowercase slug next to a place ID is its proposed engine ID. Never serialize `P08` as one site and `jerusalem` as a second site. Sources named in another file remain references to that file's register, not claims of a second independent source.
 
@@ -75,7 +84,7 @@ Inspected `public/atlas/engine.js` at the baseline above:
 
 ## Remaining work, without inflated blockers
 
-**Needed for the comprehensive research-ready scope:** retain completed full-body coverage and close the remaining per-row evidence qualifications; review edition-specific headings, superscriptions and relevant footnotes omitted by fallback transcriptions; integrate chapter findings into stable place/event/journey/people/concept records; consolidate aliases, IDs, relationships and earliest reading gates; resolve cross-source discrepancies by attribution rather than harmonization; audit support and rendering dispositions. `comprehensive-audit.md` tracks these gates. This is unfinished accessible work, not an inaccessible-source claim.
+**Research-review handoff:** `comprehensive-audit.md` gives completed bounded dispositions for bodies, retained-claim apparatus, registry support, dense-list extraction and explicit references. Identity uncertainty is resolved by separate source contexts, not speculative unions. Follow the defined gates and nonspatial exclusions when importing; final generated-object checks remain to be performed on the actual build.
 
 **Rendering decision:** supplied anchors can be mapped; other locations have safe nonspatial reference dispositions. A builder must implement the explicit global-reference notice or obtain a separately reviewed filtering change. Exact coordinates for uncertain ancient names are neither feasible nor an acceptance requirement.
 

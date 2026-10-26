@@ -18,7 +18,7 @@ All rows below have **supported attributed copy** status. This does not independ
 | AP06 | Josh6:20–25; UNESCO1687 | Supported; Narrated destruction/Rahab distinct from Tell es-Sultan heritage anchor. |
 | AP07 | Ezra1:11; UNESCO278 | Supported; Babylon→Jerusalem return; archaeological property marker not a captive house. |
 | AP08 | Matt4:13; Pleiades678231 | Supported; Capernaum settlement and representative point; no healing site. |
-| AP09 | Matt4:18 | Supported; Sea-of-Galilee fishermen call; shoreline location absent. |
+| AP09 | Num34:11; Church BD Sea of Galilee; Matt4:18 | Corrected during resumed integration: lake entity first1, with edition-attributed Chinnereth identification; Matthew fishermen-call claim stays first2. Retained official captures in ot-history/num-34.txt and geography/alias-captures.json reread; no shoreline event coordinate. |
 | AP10 | Matt26:36–47 | Supported; Gethsemane prayer then arrest; no modern garden selected. |
 | AP11 | Matt27:33–35 | Supported; Golgotha/Skull and crucifixion; no excavated candidate selected. |
 | AP12 | Acts13:1–4 | Supported; Sending Antioch; distinguish Pisidian destination. |

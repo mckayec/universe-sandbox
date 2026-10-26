@@ -215,3 +215,7 @@ Checked 2026-10-26. All S1–S26 pages opened through web search/open. `(C)` mea
 ## Source-access continuation
 
 See [source-access-evidence.md](source-access-evidence.md) and the per-unit witness manifests for actual saved capture metadata, distinct from research artifact hashes. [geography-source-audit.md](geography-source-audit.md) adds four primary entries GA1–GA4 with explicit inspection depth; these are additional references, not silently included in the historical157-key inventory count. Source copies, quotations and repeated editions do not create independent corroboration.
+
+## Resumed integration evidence
+
+The recovered dense-list registers link exact canonical passages and retained captures: `joshua-allotment-register`, `late-history-relationship-register`, `ot-history-relationship-payload`, `nt-relationship-expansion` and `nt-people-roster-payload`. Their contextual records do not add independent sources. Record-support/audit ledgers and `whole-corpus-claims-audit.md` give defined verification scopes. The current capture validation has 2,975 references across ten manifests, including three NT relationship witnesses added after the historical provenance checkpoint. The private raw archive remains outside this repository.
