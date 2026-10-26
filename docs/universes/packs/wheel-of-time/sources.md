@@ -14,3 +14,5 @@
 No manuscript art, traced map, raw chapter or exhaustive sequential retelling is included. The publisher's public excerpt does not grant whole-book redistribution rights. Full-novel access remains missing; no purchase, account creation or external contact performed.
 
 Late-book source keys WOL0/WOL12/WOL13/WOL14A/WOL14B and actual access extents are in [late-book-excerpts.md](late-book-excerpts.md); five target dispositions are in [its ledger](late-book-excerpts-coverage.csv). Three samples were read; book12 and the longer book14 chapter1 target remain access failures.
+
+- **WOP4** — [The Dragon Reborn publisher excerpt](https://us.macmillan.com/books/9780765334350/thedragonreborn/), ISBN9780765334350; displayed ch1 and ch2 body read2026-10-26. Scope and footer caveat: [dossier](dragon-reborn-evidence.md). (C) selected primary text, not full-edition collation.

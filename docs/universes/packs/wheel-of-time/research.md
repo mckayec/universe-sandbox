@@ -44,4 +44,8 @@ Not applicable: this is a fictional Track B world. Literary narrative, publicati
 
 ## Checkpoint inventory and acceptance
 
-The current47 records comprise15 first-book,8 prequel and24 late-book candidates. [record-index.csv](record-index.csv) resolves IDs, source dossiers and disclosure gates. [Late-book findings](late-book-excerpts.md) preserve reported locations, allegations, cover stories and intended routes. Late gates are known-by limits, not certified earliest appearances. No research-ready transfer is appropriate while full-novel/source coverage, earlier gates, complete geography and independent claim audit remain open.
+The current59 records comprise15 first-book,8 prequel,24 late-book and12 book3 candidates. [record-index.csv](record-index.csv) resolves IDs, source dossiers and disclosure gates. [Late-book findings](late-book-excerpts.md) preserve reported locations, allegations, cover stories and intended routes. Late gates are known-by limits, not certified earliest appearances. No research-ready transfer is appropriate while full-novel/source coverage, earlier gates, complete geography and independent claim audit remain open.
+
+## Integration followup — 2026-10-26
+
+[Book3 publisher evidence](dragon-reborn-evidence.md) adds12 records, bringing the indexed total to59. [Coverage matrix](coverage-gap-matrix.csv) supersedes the older book3 “none” access state above. [Integration contract](integration-contract.md) and [identity decisions](identity-integration.csv) preserve temporal facts, aliases and distinct camps. [Access followup](access-followup.md) records new lawful-source checks. No full novel or earliest-gate pass is complete.

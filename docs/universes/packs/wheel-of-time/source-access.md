@@ -18,7 +18,7 @@ Titles and numbering follow WOP2. These are novel-level access states, not readi
 |---|---|---|
 | 1 — The Eye of the World | Displayed opening portion of chapter 1 only [WOP1] | Rest of chapter; prologue material; all later chapters unverified |
 | 2 — The Great Hunt | None | Authorized body not acquired/read |
-| 3 — The Dragon Reborn | None | Authorized body not acquired/read |
+| 3 — The Dragon Reborn | Displayed chapter1 and chapter2 excerpt WOP4 read | Prologue and later body unverified; see dragon-reborn-evidence.md |
 | 4 — The Shadow Rising | None | Authorized body not acquired/read |
 | 5 — The Fires of Heaven | None | Authorized body not acquired/read |
 | 6 — Lord of Chaos | None | Authorized body not acquired/read |
@@ -27,7 +27,7 @@ Titles and numbering follow WOP2. These are novel-level access states, not readi
 | 9 — Winter's Heart | None | Authorized body not acquired/read |
 | 10 — Crossroads of Twilight | None | Authorized body not acquired/read |
 | 11 — Knife of Dreams | None | Authorized body not acquired/read |
-| 12 — The Gathering Storm | None | Search exposed a Reactor chapter-one lead; body not opened or read |
+| 12 — The Gathering Storm | None | Reactor body retrieval failed; OverDrive catalogue only; no narrative body read |
 | 13 — Towers of Midnight | Author-hosted chapter8 sample read | Remaining novel and final-edition collation open; see late-book-excerpts.md |
 | 14 — A Memory of Light | Short chapter1 and chapter11 excerpts read | Remaining novel and final-edition collation open; see late-book-excerpts.md |
 | Prequel — New Spring | Displayed chapter1 opening read by root | Remaining chapter and novel unread; see prequel-evidence.md |
@@ -43,3 +43,7 @@ A lawful full-book copy or a longer publisher sample is needed to close the spec
 ## Rights and reuse
 
 These novels are modern copyrighted works. Publicly readable publisher excerpts do not grant permission to redistribute chapters, reconstruct the novel through detailed sequential summaries, reproduce map artwork, or trace illustrations. The companion evidence file uses minimal original factual paraphrase and chapter locators; no source body or art is saved. Fan-work notices do not replace rights clearance. Full-edition collation and broader reuse permissions are unresolved.
+
+## Integration followup — 2026-10-26
+
+[Book3 publisher evidence](dragon-reborn-evidence.md) adds12 records, bringing the indexed total to59. [Coverage matrix](coverage-gap-matrix.csv) supersedes the older book3 “none” access state above. [Integration contract](integration-contract.md) and [identity decisions](identity-integration.csv) preserve temporal facts, aliases and distinct camps. [Access followup](access-followup.md) records new lawful-source checks. No full novel or earliest-gate pass is complete.
