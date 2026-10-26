@@ -375,7 +375,7 @@ fractal coastlines and fine relief as you zoom in (always on, nothing to configu
 | `lava` | `#ff5a1a` | glow colour for `lava` and `dyson` |
 | `amb` | .018 | ambient light on the night side |
 | `wall` | 0 | 1 = a single thin glowing line across one face (Hyperion's Wall); rarely needed |
-| `base` | none | `"earth"` = use the built-in real Earth landmask as the height base |
+| `base` | none | `"earth"` = use the built-in real Earth landmask (Natural Earth 1:10m land and lakes, 8192×4096 on desktops, 4096×2048 on phones; `tools/build_earth_mask.py`) as the height base; coastlines stay sharp up close |
 | `sw` | `pal[3]` | swatch colour in the index |
 | `feat` | [] | hand-laid features, max **18** (11.2) |
 

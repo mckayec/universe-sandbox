@@ -229,8 +229,8 @@ const PLANET_VS=`
 varying vec3 vObj;varying vec3 vNW;varying vec3 vWP;
 void main(){vObj=normalize(position);vec4 wp=modelMatrix*vec4(position,1.);vWP=wp.xyz;vNW=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*wp;}`;
 const PLANET_FS=`
-uniform sampler2D tAlb,tNrm,tCld,tMapHi;
-uniform float uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;
+uniform sampler2D tAlb,tNrm,tCld,tMapHi,tBase;
+uniform float uBase,uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;
 uniform vec3 uSun,uSunCol,uAtmo,uLightCol,uLava,uSeed;
 uniform float uAtmoK,uCloudShift,uDetail,uAmb,uHasCld,uLavaOn,uTime,uHasSea;
 uniform vec3 uWaterCol,uLandCol;
@@ -256,6 +256,8 @@ void main(){
       if(w2>.5&&A.a<.5)alb=uWaterCol;if(w2<.5&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=w2;}
     if(uMapOn>.5){vec4 Hm=texture2D(tMapHi,uv);float lm=Hm.r+fine*.16*uDetail;bool wm=lm<.5||Hm.b>.55;
       if(wm&&A.a<.5)alb=uWaterCol;if(!wm&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=wm?1.:0.;}
+    if(uBase>.5){float lb=texture2D(tBase,uv).r+fine*.12*uDetail;bool wb=lb<.5;
+      if(wb&&A.a<.5)alb=uWaterCol;if(!wb&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=wb?1.:0.;}
     float land=1.-wat;
     alb*=1.+fine*.22*uDetail*land;
     vec3 g=vec3(snoise(dp*3.+1.),snoise(dp*3.+5.),snoise(dp*3.+9.))*.6+vec3(snoise(dp*9.+2.),snoise(dp*9.+6.),snoise(dp*9.+10.))*.4;
@@ -743,8 +745,12 @@ function setFeatures(g){const u=bakeMat.uniforms;const F0=ARR(g.feat).filter(f=>
   u.uBase.value=g.base==="earth"&&EARTH_TEX?1:0;u.tBase.value=EARTH_TEX;
   const MT=g.map?mapTextures(g.map):null;u.uMapOn.value=MT?1:0;u.tMapHi.value=MT?MT.hi:null;u.tMapLo.value=MT?MT.lo:null;u.tMapReg.value=MT?MT.reg:null;
   u.uMapMtn.value=g.map&&g.map.mtn!=null?g.map.mtn:.35;}
+/* built-in Earth (gfx.base:"earth"): a Natural Earth 1:10m land-and-lakes mask (tools/build_earth_mask.py),
+   8192x4096 on capable desktops and 4096x2048 elsewhere. The bake reads it for the surface map and the
+   planet shader reads it again up close, so coastlines stay sharp at 4K. Falls back to the small mask. */
+const EARTH_FILE=window.__EARTH_FILE||(SMALL||LOWMEM||MAXTEX<8192||(navigator.deviceMemory&&navigator.deviceMemory<8)?"earth-hi-4k.png":"earth-hi.png");
 let EARTH_TEX=null;let earthReady=null;
-function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+"earth-base.png";});return earthReady;}
+function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>{if(!im.src.endsWith("earth-base.png"))im.src=ENGINE_BASE+"earth-base.png";else res();};im.src=ENGINE_BASE+EARTH_FILE;});return earthReady;}
 if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
 /* vector maps (gfx.map): hand-laid coastlines, lakes, rivers, ranges and painted regions, given as
    [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
@@ -849,7 +855,7 @@ function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},tNrm:{val
     uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.12)},uAtmo:{value:CL(g.atmo||"#6fa8ff")},uAtmoK:{value:g.atmoK==null?1:g.atmoK},
     uLightCol:{value:CL(g.lightCol||"#ffc27a")},uLava:{value:CL(g.lava||"#ff5a1a")},uLavaOn:{value:(g.type==="lava"||g.type==="dyson")?1:0},uSeed:{value:new THREE.Vector3(hashStr(w.id)%97,3,7)},
     uCloudShift:{value:0},uDetail:{value:0},uHasSea:{value:(g.sea>0&&g.type!=="gas")?1:0},uWaterCol:{value:CL((g.pal||[])[1]||"#2a6f97")},uLandCol:{value:CL((g.pal||[])[2]||"#4b6b3a")},uAmb:{value:g.amb==null?.018:g.amb},uHasCld:{value:g.clouds?1:0},uTime:{value:0},uRot:{value:new THREE.Matrix3()},
-    tMapHi:{value:g.map?mapTextures(g.map).hi:null},uMapOn:{value:g.map?1:0},uRealm:{value:0},uRStyle:{value:0},uRC1:{value:new THREE.Color()},uRC2:{value:new THREE.Color()},uRC3:{value:new THREE.Color()}};
+    tMapHi:{value:g.map?mapTextures(g.map).hi:null},uMapOn:{value:g.map?1:0},tBase:{value:g.base==="earth"?EARTH_TEX:null},uBase:{value:g.base==="earth"&&EARTH_TEX?1:0},uRealm:{value:0},uRStyle:{value:0},uRC1:{value:new THREE.Color()},uRC2:{value:new THREE.Color()},uRC3:{value:new THREE.Color()}};
   return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:PLANET_FS,uniforms:u,extensions:{derivatives:true}});}
 function cloudMaterial(set,g,w){return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:CLOUD_FS,transparent:true,depthWrite:false,extensions:{derivatives:true},
   uniforms:{tCld:{value:set.cld.texture},uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.2)},uCloudCol:{value:CL(g.cloudCol||"#ffffff")},
