@@ -120,6 +120,8 @@ export function loadExhibit(id: ExhibitId, asAttract = false) {
       });
     registerCosmicGroup('system', [core, giant, star, planet]);
     focus = core;
+  } else if (id === 'slow-feast') {
+    focus = createSlowFeast();
   } else if (id === 'supernova-observatory') {
     const star = setBodyName(
         addBody('star', new THREE.Vector3(), new THREE.Vector3(), {
@@ -156,6 +158,11 @@ export function loadExhibit(id: ExhibitId, asAttract = false) {
     focus = createTidalLab();
   } else if (id === 'gododdin') {
     focus = createGododdin();
+  } else if (id === 'galaxy-collision') {
+    // The second galaxy is set on a bound, off-centre, prograde course toward the first (see createGalaxy).
+    focus = createGalaxy(new THREE.Vector3(-210, 0, 0));
+    createGalaxy(new THREE.Vector3(210, 0, 0));
+    fitAllObjects();
   } else if (id === 'galaxy-tour') {
     focus = createGalaxy(new THREE.Vector3(-90, 0, 0));
     createSolarSystem(new THREE.Vector3(125, 0, 45));
@@ -181,6 +188,54 @@ export function loadExhibit(id: ExhibitId, asAttract = false) {
   if (asAttract) document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
   else showGuide(id);
   museumEvent('Guided exhibit', `${exhibit.title}: ${exhibit.objective}`, exhibit.accent, focus ?? undefined);
+}
+/**
+ * A Slow Feast: the cloud drifts in first and is drained through the disk; the star starts near the far end of a
+ * very eccentric orbit (periapsis ≈ 2, inside the capture radius), so it arrives about 70 s later and is fed in
+ * gradually (see physics/infall.ts).
+ */
+function createSlowFeast() {
+  const core = setBodyName(
+      addBody('blackhole', new THREE.Vector3(), new THREE.Vector3(), {
+        mass: 900,
+        variant: 2,
+        locked: true,
+        lastEvent: 'Quiet: only a faint disk until something falls in',
+      }),
+      'Quiet Black Hole',
+    ),
+    cloud = setBodyName(
+      addBody('nebula', new THREE.Vector3(27, 0, -11), new THREE.Vector3(-0.92, 0, 0.42), {
+        mass: 220,
+        birthMass: 260,
+        lastEvent: 'Drifting toward the black hole',
+      }),
+      'Drifting Cloud',
+    ),
+    gm = G * app.gravity * core.mass,
+    periapsis = 2,
+    apoapsis = 150,
+    semiMajor = (periapsis + apoapsis) / 2,
+    apoapsisSpeed =
+      Math.sqrt(gm * semiMajor * (1 - Math.pow((apoapsis - periapsis) / (apoapsis + periapsis), 2))) / apoapsis,
+    angle = 2.55,
+    star = setBodyName(
+      addBody(
+        'star',
+        new THREE.Vector3(Math.cos(angle) * apoapsis, 0, Math.sin(angle) * apoapsis),
+        new THREE.Vector3(-Math.sin(angle), 0, Math.cos(angle)).multiplyScalar(apoapsisSpeed),
+        {
+          mass: 210,
+          stage: 'yellow star',
+          holdStage: true,
+          lastEvent: 'Falling inward on a plunging orbit',
+        },
+      ),
+      'Sun-like Star',
+    );
+  registerCosmicGroup('system', [core, cloud, star], 'Slow Feast');
+  fitAllObjects();
+  return core;
 }
 export function exitGuide() {
   app.currentExhibit = null;

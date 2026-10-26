@@ -9,7 +9,7 @@ import {
 } from '../sandbox-state.ts';
 import { EXHIBITS, type ExhibitId } from '../exhibits.ts';
 import { STAGES, TYPES, type Kind } from '../celestial-catalog.ts';
-import { rebuildGalaxyVisuals, refreshGroupNavigator, removeGalaxyVisual } from '../bodies/groups.ts';
+import { clearGalaxyVisuals, rebuildGalaxyVisuals, refreshGroupNavigator } from '../bodies/groups.ts';
 import { removeBody, removeMatterStream, updateCount } from '../bodies/lifecycle.ts';
 import { addBody, updateBodyLabel } from '../bodies/registry.ts';
 import { removeTransientObject } from '../scene/dispose.ts';
@@ -41,7 +41,7 @@ export function resetSimulation() {
   app.historySuspended = true;
   [...bodies].forEach(removeBody);
   app.historySuspended = false;
-  for (const id of [...galaxyVisuals.keys()]) removeGalaxyVisual(id);
+  clearGalaxyVisuals();
   cosmicGroups.length = 0;
   bodyGroupIds.clear();
   app.selectedGroupId = null;

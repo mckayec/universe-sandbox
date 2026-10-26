@@ -4,7 +4,11 @@ import { removeMatterStream } from '../bodies/lifecycle.ts';
 import { isCompact, scene } from '../scene/setup.ts';
 import { app, bodies, matterStreams } from '../state/app-state.ts';
 import type { Body, MatterStream } from '../state/types.ts';
+import { diskSpinFromOrbit, setDiskSpin } from '../visuals/disk-flow.ts';
 import { transferDiskMaterial } from '../visuals/materials.ts';
+
+/** Tilt of a transfer disk around a star, pulsar or white dwarf: close to the orbital plane, opened toward the camera. */
+const TRANSFER_TILT = Math.PI / 2.45;
 import { glowTexture } from '../visuals/textures.ts';
 
 export function ensureMatterStream(donor: Body, receiver: Body, kind: MatterStream['kind'], intensity: number) {
@@ -182,22 +186,48 @@ export function updateMatterStreams(dt: number) {
     if (distance < 0.05) continue;
     const direction = axis.clone().divideScalar(distance),
       perp = new THREE.Vector3(-direction.z, 0, direction.x),
+      // Gas keeps the angular momentum it had when it left the donor, so that sets the disk's orbit sense.
+      flowSign = (stream.flowSign ??= diskSpinFromOrbit(
+        donor.mesh.position.x - receiver.mesh.position.x,
+        donor.mesh.position.z - receiver.mesh.position.z,
+        donor.velocity.x - receiver.velocity.x,
+        donor.velocity.z - receiver.velocity.z,
+      )),
+      ownDisk = receiver.kind === 'blackhole' && receiver.mesh.userData.diskTilt !== undefined,
+      tilt = ownDisk ? Number(receiver.mesh.userData.diskTilt) : TRANSFER_TILT,
       donorOffset = donor.kind === 'nebula' ? Math.min(donor.radius * 0.62, distance * 0.42) : donor.radius * 0.76,
       diskRadius = receiver.radius * (receiver.kind === 'blackhole' ? 3.7 : receiver.kind === 'pulsar' ? 2.7 : 2.35),
       start = donor.mesh.position.clone().addScaledVector(direction, donorOffset),
-      end = receiver.mesh.position.clone().addScaledVector(direction, -diskRadius),
+      // The stream joins the rim a little downstream of the donor and arrives moving along the orbit, so it
+      // wraps into the disk instead of hitting it head-on.
+      landAngle = Math.atan2(-direction.z, -direction.x) + flowSign * 0.95,
+      cosT = Math.cos(tilt),
+      sinT = Math.sin(tilt),
+      end = receiver.mesh.position
+        .clone()
+        .add(
+          new THREE.Vector3(
+            Math.cos(landAngle) * diskRadius,
+            Math.sin(landAngle) * cosT * diskRadius + 0.12,
+            Math.sin(landAngle) * sinT * diskRadius,
+          ),
+        ),
+      along = new THREE.Vector3(-Math.sin(landAngle), Math.cos(landAngle) * cosT, Math.cos(landAngle) * sinT)
+        .multiplyScalar(flowSign)
+        .normalize(),
       curve = Math.min(6.8, distance * (stream.kind === 'nebula' ? 0.3 : 0.23)),
-      bendSign = donor.id % 2 ? 1 : -1,
+      bendSign = -flowSign,
       controlA = start
         .clone()
         .addScaledVector(direction, distance * 0.34)
         .addScaledVector(perp, curve * 0.52 * bendSign)
         .setY(0.35 + Math.min(1.4, distance * 0.03)),
-      controlB = end
-        .clone()
-        .addScaledVector(perp, -Math.min(5, distance * 0.24) * bendSign)
-        .setY(0.22 + Math.min(0.8, distance * 0.018)),
+      controlB = end.clone().addScaledVector(along, -Math.min(5, distance * 0.3)),
       intensity = stream.intensity;
+    if (!stream.spinApplied && intensity > 0.3) {
+      stream.spinApplied = true;
+      if (ownDisk) setDiskSpin(receiver.mesh, flowSign);
+    }
     const curvePoint = (t: number, out = curveOut) => bezier(out, t, start, controlA, controlB, end);
     const ribbonAttr = stream.ribbon.geometry.getAttribute('position') as THREE.BufferAttribute,
       ribbonSteps = ribbonAttr.count / 2 - 1;
@@ -249,23 +279,30 @@ export function updateMatterStreams(dt: number) {
     }
     pointAttr.needsUpdate = true;
     (stream.points.material as THREE.PointsMaterial).opacity = Math.min(1, intensity * 0.95);
-    const diskScale =
-      Math.max(
-        0.38,
-        receiver.radius * (receiver.kind === 'blackhole' ? 1.12 : receiver.kind === 'pulsar' ? 0.88 : 0.82),
-      ) *
-      (0.78 + intensity * 0.28);
-    for (const [layer, index] of [
-      [stream.disk, 0],
-      [stream.outerDisk, 1],
-    ] as const) {
+    const targetScale =
+        Math.max(
+          0.38,
+          receiver.radius * (receiver.kind === 'blackhole' ? 1.12 : receiver.kind === 'pulsar' ? 0.88 : 0.82),
+        ) *
+        (0.78 + intensity * 0.28),
+      // Disks grow and fade smoothly instead of breathing with every flicker in the transfer rate.
+      diskScale = (stream.diskScale = THREE.MathUtils.lerp(
+        stream.diskScale ?? targetScale,
+        targetScale,
+        1 - Math.exp(-dt * 1.4),
+      )),
+      diskDt = app.paused ? 0 : dt * Math.min(app.speed, 4);
+    for (const layer of [stream.disk, stream.outerDisk]) {
+      // A black hole already has its own disk: the stream feeds and brightens that one rather than adding a
+      // second disk at a slightly different angle.
+      layer.visible = !ownDisk;
+      if (ownDisk) continue;
       layer.position.copy(receiver.mesh.position).setY(receiver.mesh.position.y + 0.12);
-      layer.rotation.x = Math.PI / (receiver.kind === 'blackhole' ? 2.35 : 2.55);
-      layer.rotation.y = 0.08 * Math.sin(receiver.id);
-      layer.rotation.z += dt * (index ? -0.72 : 1.45) * (donor.id % 2 ? 1 : -1);
+      layer.rotation.set(tilt, 0, 0);
       layer.scale.setScalar(diskScale);
       const material = layer.material as THREE.ShaderMaterial;
-      material.uniforms.time.value += dt * (index ? 1.4 : 2.5);
+      material.uniforms.time.value += diskDt;
+      material.uniforms.spin.value = flowSign;
       material.uniforms.intensity.value = intensity * (receiver.kind === 'blackhole' ? 0.72 : 1);
     }
     stream.flare.position.copy(end);
