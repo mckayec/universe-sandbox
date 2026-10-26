@@ -187,70 +187,301 @@ return {
             clouds: .3, cloudCol: "#5a5048", atmo: "#8a5a3a", atmoK: .55, lights: 0, lava: "#ff6a2a", sw: "#3e2e24"}}
  },
  sites: [
+  /* Scenes (PACK_FORMAT 21): every landmark is a place or feature named or described in the novels; positions
+     inside each scene are schematic. Where a scene says layout schematic, the arrangement is ours. */
   {id: "arrakeen", name: "Arrakeen", lat: 72, lon: -6, books: [1, 2, 3],
-   desc: "The old seat of planetary government, a small walled city in the Imperial Basin under the Shield Wall. House Atreides lands here in the first book and holds the Residency until the Harkonnen night attack; Paul later makes it the capital of his empire."},
+   desc: "The old seat of planetary government, a small city in the Imperial Basin under the Shield Wall. House Atreides lands here in the first book and holds the Residency until the Harkonnen night attack; Paul later makes it the capital of his empire.",
+   scene: {kind: "city", arch: "desert", size: "medium", tod: "dusk", weather: "dust", sky: {moons: 2},
+    /* layout schematic */
+    landmarks: [
+     {id: "residency", name: "The Residency", kind: "palace", at: [0, .15], h: 1.5, books: [1],
+      desc: "The governor’s mansion that House Atreides takes over from the Harkonnens. Paul is attacked by a hunter-seeker in his bedroom here, and on the night of the attack Dr Yueh brings down its shields."},
+     {id: "conservatory", name: "The conservatory", kind: "garden", at: [-.25, .3], books: [1],
+      desc: "A sealed garden of wet-planet plants left by the last governor’s household, a costly show of water. Jessica finds a hidden warning from Lady Margot Fenring among its leaves."},
+     {id: "dining", name: "The dining hall", kind: "hall", at: [.3, .38], books: [1],
+      desc: "Where the old Duke’s portrait and the head of the bull that killed him are hung. Duke Leto gives a dinner here for the planet’s powers, smugglers and Guild bankers among them."},
+     {id: "greathall", name: "The great hall", kind: "hall", at: [.12, .5], h: 1.2, books: [1],
+      desc: "The Residency’s great hall. After the battle Paul receives the defeated Emperor here, and kills Feyd-Rautha in single combat in front of the court."},
+     {id: "palms", name: "The date palms", kind: "grove", at: [0, -.12], books: [1],
+      desc: "A row of palms before the Residency, each drinking more water every day than a person needs to live: wealth on display in a thirsty city."},
+     {id: "streets", name: "Water-sellers’ streets", kind: "market", at: [-.45, -.3], books: [1, 2],
+      desc: "The crowded lanes where water-sellers ring their bells and cry their trade, and where water is money."},
+     {id: "spaceport", name: "Arrakeen landing field", kind: "pad", at: [.6, -.5], books: [1, 2, 3],
+      desc: "The landing field outside the city. The Atreides come down here from the Guild heighliner; before the final battle the Emperor’s frigates and the Harkonnen ships crowd onto it, and the worm-riders break in among them."},
+     {id: "hut", name: "The Emperor’s hut", kind: "tent", at: [.78, -.28], books: [1],
+      desc: "Shaddam IV’s metal field shelter, set up among his ships on the landing field. The captive child Alia kills the Baron Harkonnen inside it."},
+     {id: "suburb", name: "Otheym’s quarter", kind: "house", at: [-.7, .05], books: [2],
+      desc: "A district at the city’s edge where Paul’s old Fedaykin Otheym lives. Paul walks here at night disguised as a Fremen to see him."},
+     {id: "wall", name: "The Shield Wall", kind: "cliff", at: [0, .9], h: 2.6, books: [1, 2, 3],
+      desc: "The great rock wall that rises behind the city and shelters it from the storms of the open desert."}
+    ]}},
   {id: "carthag", name: "Carthag", lat: 76, lon: 6, books: [1],
-   desc: "The Harkonnen-built city about 200 kilometres northeast of Arrakeen across the Broken Land, larger and harsher than the old capital."},
+   desc: "The Harkonnen-built city about 200 kilometres northeast of Arrakeen across the Broken Land, larger and harsher than the old capital.",
+   scene: {kind: "city", arch: "brutal", size: "large", tod: "day", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "city", name: "Carthag", kind: "tower", at: [0, 0], h: 1.6, books: [1],
+      desc: "The Harkonnens’ city on Arrakis. When the Atreides take over the planet they choose to govern from smaller Arrakeen instead."}
+    ]}},
   {id: "observatory", name: "Observatory Mountain", lat: 74, lon: 0, books: [1],
-   desc: "The highest point of the Broken Land; the book’s map runs its zero meridian through this peak."},
+   desc: "The highest point of the Broken Land; the book’s map runs its zero meridian through this peak.",
+   scene: {kind: "mountain", arch: "desert", size: "small", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "summit", name: "The summit", kind: "peak", at: [0, 0], h: 2.4, books: [1],
+      desc: "The highest point on the book’s map, from which its zero meridian is measured."}]}},
   {id: "shieldwall", name: "The Shield Wall", lat: 68.4, lon: -24, books: [1, 2, 3],
-   desc: "A great mountain wall around the northern lowlands that breaks the coriolis storms and shelters the cities. Beyond it lies the open desert of the Fremen."},
+   desc: "A great mountain wall around the northern lowlands that breaks the coriolis storms and shelters the cities. Beyond it lies the open desert of the Fremen.",
+   scene: {kind: "mountain", arch: "desert", size: "large", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "cliffs", name: "The Wall", kind: "cliff", at: [0, .2], h: 2.8, books: [1, 2, 3],
+      desc: "Sheer rock between the sheltered basin and the deep desert; the storms of the open sand break against it."},
+     {id: "bled", name: "The open desert beyond", kind: "stones", at: [0, -.7], books: [1, 2, 3],
+      desc: "South of the Wall the worms rule the sand, and only the Fremen live."}
+    ]}},
   {id: "oldgap", name: "Old Gap", lat: 67.8, lon: -3, books: [1],
-   desc: "A deep cleft through the Shield Wall that the map credits to Paul, who blasted the Wall open with the house atomics so that the Fremen and their worms could ride into the Imperial Basin."},
+   desc: "A deep cleft through the Shield Wall that the map credits to Paul, who blasted the Wall open with the house atomics so that the Fremen and their worms could ride into the Imperial Basin.",
+   scene: {kind: "mountain", arch: "desert", size: "medium", tod: "dusk", weather: "storm",
+    /* layout schematic */
+    landmarks: [{id: "breach", name: "The breach", kind: "cliff", at: [0, 0], h: 2.2, books: [1],
+      desc: "The cleft torn through the Shield Wall by the Atreides family atomics. Through it the Fremen ride their worms into the basin under cover of a great storm."}]}},
   {id: "rimwall", name: "Rimwall West", lat: 70, lon: -25, books: [1],
-   desc: "A sheer scarp rising out of the western Shield Wall, one of the highest walls on the map."},
+   desc: "A sheer scarp rising out of the western Shield Wall, one of the highest walls on the map.",
+   scene: {kind: "mountain", arch: "desert", size: "small", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "scarp", name: "Rimwall West", kind: "cliff", at: [0, 0], h: 2.6, books: [1],
+      desc: "A towering scarp of the western Shield Wall, named on the book’s map."}]}},
   {id: "harg", name: "Harg Pass", lat: 68.6, lon: 14, books: [1],
-   desc: "A pass through the Shield Wall. The map notes a shrine to Duke Leto’s skull overlooking it."},
+   desc: "A pass through the Shield Wall. The map notes a shrine to Duke Leto’s skull overlooking it.",
+   scene: {kind: "mountain", arch: "desert", size: "small", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "pass", name: "Harg Pass", kind: "gate", at: [0, -.1], books: [1], desc: "A way through the Shield Wall, named on the map."},
+     {id: "shrine", name: "Shrine of Duke Leto’s skull", kind: "shrine", at: [.3, .3], books: [1],
+      desc: "The map’s notes place a shrine to the dead Duke’s skull above the pass."}
+    ]}},
   {id: "windpass", name: "Wind Pass", lat: 66.6, lon: 24, books: [1],
-   desc: "A cliff-walled pass that opens onto the sink villages of the pyons."},
+   desc: "A cliff-walled pass that opens onto the sink villages of the pyons.",
+   scene: {kind: "mountain", arch: "desert", size: "small", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "pass", name: "Wind Pass", kind: "cliff", at: [0, .2], books: [1], desc: "A pass walled by cliffs, named on the map."},
+     {id: "sinks", name: "The pyon villages", kind: "house", at: [0, -.5], books: [1],
+      desc: "The sink villages of the pyons, the planet’s settled labourers, at the pass’s mouth."}
+    ]}},
   {id: "polarsink", name: "Polar Sink", lat: 87, lon: 40, books: [1],
-   desc: "The low ground around the north pole, some 500 metres below the level of the Bled, near the small polar cap that the cities mine for water."},
+   desc: "The low ground around the north pole, some 500 metres below the level of the Bled, near the small polar cap that the cities mine for water.",
+   scene: {kind: "ice", arch: "desert", size: "small", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "cap", name: "The polar cap", kind: "crater", at: [0, 0], books: [1],
+      desc: "The planet’s small cap of ice, mined to water the cities of the north."}]}},
   {id: "funeral", name: "Funeral Plain", lat: 64.4, lon: -10, books: [1],
-   desc: "An open erg of shifting sand south of the Shield Wall, named on the book’s map."},
+   desc: "An open erg of shifting sand south of the Shield Wall, named on the book’s map.",
+   scene: {kind: "desert", arch: "desert", size: "large", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "erg", name: "Funeral Plain", kind: "stones", at: [0, 0], books: [1],
+      desc: "An open sea of dunes where nothing stands still for long."}]}},
+  {id: "ecostation", name: "Ecological testing station", lat: 66.6, lon: -16, books: [1],   /* estimated */
+   desc: "One of the Imperial ecological testing stations, quietly used by Liet-Kynes and the Fremen. Kynes and Duncan Idaho bring Paul and Jessica here after their escape. Position estimated.",
+   scene: {kind: "desert", arch: "desert", size: "small", tod: "night", weather: "storm",
+    /* layout schematic */
+    landmarks: [
+     {id: "station", name: "The station", kind: "house", at: [0, .1], books: [1],
+      desc: "A hidden desert station where Kynes meets Paul. Sardaukar attack it, and Duncan Idaho dies fighting so that Paul and Jessica can get away."},
+     {id: "thopter", name: "Ornithopter", kind: "pad", at: [.5, -.4], books: [1],
+      desc: "Paul and Jessica escape in an ornithopter and fly it into the heart of a sandstorm to shake off pursuit."}
+    ]}},
   {id: "tabr", name: "Sietch Tabr", lat: 60, lon: 6, books: [1, 2, 3],
-   desc: "Stilgar’s sietch, a hidden cave-warren in the rock south of the Shield Wall. Paul and Jessica are taken in here; it becomes Paul’s base, Chani dies in childbirth here in the second book, and the twins grow up here."},
+   desc: "Stilgar’s sietch, a hidden cave-warren in the rock south of the Shield Wall. Paul and Jessica are taken in here; it becomes Paul’s base, Chani dies in childbirth here in the second book, and the twins grow up here.",
+   scene: {kind: "sietch", arch: "desert", size: "medium", under: true,
+    /* layout schematic */
+    landmarks: [
+     {id: "entrance", name: "The hidden entrance", kind: "cave", at: [0, -.8], books: [1, 2, 3],
+      desc: "A concealed way into the rock, sealed against moisture loss. In the second book Paul leaves the sietch from here to walk into the desert."},
+     {id: "hall", name: "The meeting chamber", kind: "hall", at: [0, 0], h: 1.3, books: [1, 3],
+      desc: "The great cavern where the tribe gathers. Jessica drinks the Water of Life here before the assembled sietch and becomes the Fremen’s Reverend Mother."},
+     {id: "cistern", name: "The hidden water", kind: "lake", at: [-.5, .45], books: [1],
+      desc: "Reservoirs of water the Fremen have hoarded for generations, saved toward Kynes’s dream of a green Arrakis. Paul is shown them in the first book."},
+     {id: "inner", name: "The inner chambers", kind: "house", at: [.5, .4], books: [2],
+      desc: "The family’s rooms deep in the rock. Chani dies giving birth to the twins here, and Paul kills Scytale here."},
+     {id: "cliffs", name: "The cliffs outside", kind: "cliff", at: [.7, -.6], books: [3],
+      desc: "The broken rock outside the sietch where the Corrinos’ tigers hunt Leto and Ghanima, who hide in a narrow crevice."}
+    ]}},
   {id: "greatflat", name: "The Great Flat", lat: 57, lon: -2, books: [1],
-   desc: "Open rock and sand south of the Wall. A line of outcrops runs from Sietch Tabr south towards the other sietch communities."},
+   desc: "Open rock and sand south of the Wall. A line of outcrops runs from Sietch Tabr south towards the other sietch communities.",
+   scene: {kind: "desert", arch: "desert", size: "large", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "outcrops", name: "The outcrop line", kind: "stones", at: [0, 0], books: [1],
+      desc: "Rock outcrops running south from Sietch Tabr across the open flat, named on the map."}]}},
   {id: "falsewallE", name: "False Wall East", lat: 62.6, lon: 26, books: [1],
-   desc: "One of the rock walls in the desert that travellers mistake for the true Shield Wall."},
+   desc: "One of the rock walls in the desert that travellers mistake for the true Shield Wall.",
+   scene: {kind: "mountain", arch: "desert", size: "small", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "wall", name: "False Wall East", kind: "cliff", at: [0, 0], h: 1.8, books: [1],
+      desc: "A ridge of rock that looks like the Shield Wall from the sand."}]}},
   {id: "falsewallW", name: "False Wall West", lat: 61.6, lon: -36, books: [1],
-   desc: "The western of the two false walls that edge the Minor Erg."},
+   desc: "The western of the two false walls that edge the Minor Erg.",
+   scene: {kind: "mountain", arch: "desert", size: "small", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "wall", name: "False Wall West", kind: "cliff", at: [0, 0], h: 1.8, books: [1],
+      desc: "The western false wall, at the edge of the Minor Erg."}]}},
   {id: "redchasm", name: "Red Chasm", lat: 62, lon: 30, books: [1],
-   desc: "The deepest place on the map, more than 1,500 metres below the level of the Bled."},
+   desc: "The deepest place on the map, more than 1,500 metres below the level of the Bled.",
+   scene: {kind: "crater", arch: "desert", size: "small", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "chasm", name: "Red Chasm", kind: "crater", at: [0, 0], books: [1],
+      desc: "A rift cut far below the level of the desert floor."}]}},
   {id: "cielago", name: "Cielago Depression", lat: 63, lon: -26, books: [1],
-   desc: "A broad low basin about 200 metres below the Bled."},
+   desc: "A broad low basin about 200 metres below the Bled.",
+   scene: {kind: "desert", arch: "desert", size: "medium", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "basin", name: "Cielago Depression", kind: "crater", at: [0, 0], books: [1],
+      desc: "A wide hollow in the desert floor, named on the map."}]}},
   {id: "sihaya", name: "Sihaya Ridge", lat: 56, lon: 22, books: [1],
-   desc: "A rock ridge in the desert south of the Wall, named on the map. Sihaya, the desert springtime, is also Paul’s private name for Chani."},
+   desc: "A rock ridge in the desert south of the Wall, named on the map. Sihaya, the desert springtime, is also Paul’s private name for Chani.",
+   scene: {kind: "desert", arch: "desert", size: "small", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "ridge", name: "Sihaya Ridge", kind: "cliff", at: [0, 0], books: [1],
+      desc: "A ridge of rock in the open desert, named on the map."}]}},
   {id: "habbanya", name: "Habbanya Ridge", lat: 52, lon: -22, books: [1],
-   desc: "A long ridge deep in Fremen country, south and west of Sietch Tabr."},
+   desc: "A long ridge deep in Fremen country, south and west of Sietch Tabr.",
+   scene: {kind: "mountain", arch: "desert", size: "medium", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "ridge", name: "Habbanya Ridge", kind: "cliff", at: [0, 0], books: [1],
+      desc: "A long rock ridge in the deep desert, named on the map."}]}},
   {id: "birds", name: "Cave of Birds", lat: 51.4, lon: -24, books: [1],
-   desc: "A cave in Habbanya Ridge, named on the map and used as a Fremen meeting place."},
+   desc: "A cave in Habbanya Ridge, named on the map and used as a Fremen meeting place.",
+   scene: {kind: "mountain", arch: "desert", size: "small", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "cave", name: "Cave of Birds", kind: "cave", at: [0, 0], books: [1],
+      desc: "A cave in the ridge, named on the map."}]}},
   {id: "palmaries", name: "Palmaries of the South", lat: -40, lon: 10, books: [1],
-   desc: "Fremen plantings far in the southern desert, around 40 degrees south, where the hidden work of changing Arrakis is furthest along. Paul spends the later years of his desert war in the south."},
+   desc: "Fremen plantings far in the southern desert, around 40 degrees south, where the hidden work of changing Arrakis is furthest along. Paul spends the later years of his desert war in the south.",
+   scene: {kind: "farm", arch: "desert", size: "medium", weather: "clear",
+    /* layout schematic */
+    landmarks: [
+     {id: "plantings", name: "The southern plantings", kind: "grove", at: [-.3, .2], books: [1],
+      desc: "Fremen plantings hidden far from Harkonnen eyes, where the long work of greening Arrakis has gone furthest."},
+     {id: "sietch", name: "The southern sietch", kind: "cave", at: [.4, -.2], books: [1],
+      desc: "Paul’s base in the later years of the desert war. He lies here for weeks in the trance of the Water of Life until Jessica and Chani wake him."}
+    ]}},
   {id: "keep", name: "Paul’s Keep", lat: 72.6, lon: -4.4, books: [2, 3],
-   desc: "The immense palace Paul builds in Arrakeen as emperor, said to be the largest building ever raised. It is the setting of most of the second book."},
+   desc: "The immense palace Paul builds in Arrakeen as emperor, said to be the largest building ever raised. It is the setting of most of the second book.",
+   scene: {kind: "palace", arch: "desert", size: "huge", tod: "day", weather: "dust", sky: {moons: 2},
+    /* layout schematic */
+    landmarks: [
+     {id: "hall", name: "The great reception hall", kind: "hall", at: [0, .2], h: 1.8, books: [2, 3],
+      desc: "Where the emperor receives embassies. The Guild Steersman Edric presents the ghola Hayt to Paul here; after Paul, Alia rules from the Keep."},
+     {id: "quarters", name: "The family quarters", kind: "house", at: [.4, .5], books: [2],
+      desc: "Paul’s private rooms, which he shares with Chani, while his wife Irulan is kept apart from him."}
+    ]}},
   {id: "fane", name: "Temple of Alia", lat: 71.4, lon: -7.4, books: [2, 3],
-   desc: "Alia’s Fane, the great temple raised for Paul’s sister. In Children of Dune the blind Preacher is killed on its steps."},
+   desc: "Alia’s Fane, the great temple raised for Paul’s sister. In Children of Dune the blind Preacher is killed on its steps.",
+   scene: {kind: "temple", arch: "desert", size: "large", tod: "day", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "plaza", name: "The temple plaza", kind: "plaza", at: [0, -.5], books: [2, 3],
+      desc: "The square before the Fane, crowded with pilgrims of the Hajj. In Children of Dune the blind Preacher speaks here against the priesthood."},
+     {id: "steps", name: "The temple steps", kind: "temple", at: [0, 0], h: 1.6, books: [3],
+      desc: "The steps of Alia’s temple, where the Preacher is killed in front of the crowd."},
+     {id: "sanctum", name: "Alia’s inner temple", kind: "throne", at: [0, .5], books: [2, 3],
+      desc: "The heart of Alia’s temple, where pilgrims come to the holy sister of Muad’Dib."}
+    ]}},
   {id: "jacurutu", name: "Jacurutu", lat: 34, lon: -58, books: [3],
-   desc: "A lost sietch of water-stealers in the deep desert, whose people were wiped out long ago and whose name the Fremen will not speak. Leto II flees here in Children of Dune and passes through the spice trance that sets him on the Golden Path. Position estimated."},
+   desc: "A lost sietch of water-stealers in the deep desert, whose people were wiped out long ago and whose name the Fremen will not speak. Leto II flees here in Children of Dune and passes through the spice trance that sets him on the Golden Path. Position estimated.",
+   scene: {kind: "sietch", arch: "desert", size: "small", under: true,
+    /* layout schematic */
+    landmarks: [
+     {id: "caves", name: "The forbidden caves", kind: "cave", at: [0, 0], books: [3],
+      desc: "The caves of the outcast sietch. Leto is taken captive here, and with Gurney Halleck watching he is forced into the spice trance and sees the Golden Path."}
+    ]}},
   {id: "shuloch", name: "Shuloch", lat: 30, lon: -64, books: [3],
-   desc: "The hidden settlement in the deep desert where Jacurutu’s secret survivors live. Position estimated."},
+   desc: "The hidden settlement in the deep desert where Jacurutu’s secret survivors live. Position estimated.",
+   scene: {kind: "sietch", arch: "desert", size: "small", under: true,
+    /* layout schematic */
+    landmarks: [{id: "warren", name: "Shuloch", kind: "cave", at: [0, 0], books: [3],
+      desc: "The secret warren of those who keep Jacurutu’s old ways alive."}]}},
   {id: "citadel", name: "The Citadel", lat: 65.4, lon: -2, books: [4],
-   desc: "Leto II’s tower in the Sareer, the last desert on a green world, where the God Emperor keeps his court, his Duncan Idahos and his hidden spice. Position estimated."},
+   desc: "Leto II’s tower in the Sareer, the last desert on a green world, where the God Emperor keeps his court, his Duncan Idahos and his hidden spice. Position estimated.",
+   scene: {kind: "fortress", arch: "imperial", size: "medium", tod: "day", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "tower", name: "The Citadel tower", kind: "tower", at: [0, .1], h: 2.6, books: [4],
+      desc: "The God Emperor’s seat in the middle of the Sareer. Leto dictates his journals here, talks for hours with his majordomo Moneo, and receives each new Duncan Idaho ghola."},
+     {id: "road", name: "The royal road", kind: "wall", at: [.6, -.6], books: [4],
+      desc: "The road along which the God Emperor’s great processions travel out to Onn and the villages."}
+    ]}},
   {id: "sareer", name: "The Sareer", lat: 62.5, lon: -6, books: [4],
-   desc: "The only desert left in Leto’s time, a long strip of sand kept around the Citadel. Leto tests Siona by walking her across it. Position estimated."},
+   desc: "The only desert left in Leto’s time, a long strip of sand kept around the Citadel. Leto tests Siona by walking her across it. Position estimated.",
+   scene: {kind: "desert", arch: "desert", size: "large", tod: "dawn", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "sand", name: "The open sand", kind: "stones", at: [0, 0], books: [4],
+      desc: "The last true desert on Arrakis. Leto walks Siona and Duncan across it, and Siona must drink his spice essence to live."}]}},
+  {id: "forbidden", name: "The Forbidden Forest", lat: 68.4, lon: -9, books: [4],   /* estimated */
+   desc: "The forest that walls off the Sareer from the green lands. Position estimated.",
+   scene: {kind: "forest", arch: "rustic", size: "large", tod: "night", weather: "mist",
+    /* layout schematic */
+    landmarks: [{id: "edge", name: "The forest edge", kind: "grove", at: [0, 0], books: [4],
+      desc: "Where Siona’s rebels, carrying papers stolen from the Citadel, are hunted down by the God Emperor’s wolves. Only Siona gets away."}]}},
   {id: "onn", name: "Onn", lat: 71.6, lon: -5.4, books: [4],
-   desc: "The festival city of the God Emperor, built where Arrakeen once stood. Leto comes here for the great festivals and audiences."},
+   desc: "The festival city of the God Emperor, built where Arrakeen once stood. Leto comes here for the great festivals and audiences.",
+   scene: {kind: "city", arch: "imperial", size: "large", tod: "dusk", weather: "clear",
+    /* layout schematic */
+    landmarks: [
+     {id: "plaza", name: "The festival grounds", kind: "plaza", at: [0, -.2], books: [4],
+      desc: "Where the crowds gather when the God Emperor comes to Onn for his great festival."},
+     {id: "embassies", name: "The embassy quarter", kind: "hall", at: [.5, .3], books: [4],
+      desc: "Where the powers of the empire keep their envoys to the God Emperor, the Ixian ambassador Hwi Noree among them."}
+    ]}},
   {id: "bridge", name: "Idaho River bridge", lat: 69, lon: -4.6, books: [4],
-   desc: "A high bridge over the Idaho River on the royal road. When Leto’s wedding procession crosses it, the supports are cut and he falls into the river. Position estimated."},
+   desc: "A high bridge over the Idaho River on the royal road. When Leto’s wedding procession crosses it, the supports are cut and he falls into the river. Position estimated.",
+   scene: {kind: "wilds", arch: "imperial", size: "small", tod: "day", weather: "clear", river: true,
+    /* layout schematic */
+    landmarks: [
+     {id: "bridge", name: "The high bridge", kind: "bridge", at: [0, 0], h: 1.4, books: [4],
+      desc: "The bridge the wedding procession crosses on the way to Tuono. The Fish Speaker Nayla cuts its supports with a lasgun and it falls."},
+     {id: "bank", name: "The riverbank", kind: "cliff", at: [.4, -.5], books: [4],
+      desc: "Where the dying God Emperor lies after the water has torn his body apart, telling Siona and Duncan the last secrets of the Golden Path."}
+    ]}},
   {id: "tuono", name: "Tuono", lat: 63.4, lon: -16, books: [1, 4],
-   desc: "Tuono Basin is named on the first book’s map. In God Emperor, Tuono is the village at the edge of the Sareer where Leto means to marry Hwi Noree. Position estimated."},
-  {id: "darbalat", name: "Dar-es-Balat", lat: 64, lon: -12, books: [4],
-   desc: "The site on Rakis where Leto II’s hidden journals are later found, the record the fourth book presents itself as drawn from. Position estimated."},
+   desc: "Tuono Basin is named on the first book’s map. In God Emperor, Tuono is the village at the edge of the Sareer where Leto means to marry Hwi Noree. Position estimated.",
+   scene: {kind: "village", arch: "desert", size: "small", tod: "day", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "basin", name: "Tuono Basin", kind: "crater", at: [-.5, .4], books: [1], desc: "A basin named on the first book’s map of the desert."},
+     {id: "village", name: "Tuono Village", kind: "house", at: [.2, -.1], books: [4],
+      desc: "A village of museum Fremen, who act out the old desert life for the God Emperor. Duncan and Siona are sent here for safety, and Leto chooses it for his wedding."}
+    ]}},
+  {id: "darbalat", name: "Dar-es-Balat", lat: 64, lon: -12, books: [4, 5],
+   desc: "The site on Rakis where Leto II’s hidden journals are later found, the record the fourth book presents itself as drawn from. Position estimated.",
+   scene: {kind: "ruins", arch: "ancient", size: "small", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "chamber", name: "The hidden chamber", kind: "cave", at: [-.2, .1], books: [4],
+      desc: "Where the God Emperor’s journals lay hidden until they were found, long after his death."},
+     {id: "message", name: "Leto’s message room", kind: "ruin", at: [.35, -.25], books: [5],
+      desc: "A sealed room in the ruins that Odrade, Sheeana and Waff reach by worm, holding words Leto II left for the far future."}
+    ]}},
   {id: "keen", name: "Keen", lat: 72.3, lon: -6.6, books: [5],
-   desc: "The city of the Priesthood of the Divided God on Rakis, on the ground of old Arrakeen and Onn. The Bene Gesserit keep a fortress here."},
+   desc: "The city of the Priesthood of the Divided God on Rakis, on the ground of old Arrakeen and Onn. The Bene Gesserit keep a fortress here.",
+   scene: {kind: "city", arch: "desert", size: "large", tod: "dusk", weather: "dust", sky: {moons: 2},
+    /* layout schematic */
+    landmarks: [
+     {id: "bgkeep", name: "The Bene Gesserit Keep", kind: "keep", at: [-.4, .2], h: 1.4, books: [5],
+      desc: "The Sisterhood’s fortress on Rakis, commanded by Darwi Odrade. Sheeana is brought here to be trained."},
+     {id: "temple", name: "The priests’ temple", kind: "temple", at: [.3, .3], h: 1.3, books: [5],
+      desc: "The seat of the Priesthood of the Divided God and its High Priest Hedley Tuek, who rule Rakis in the name of the worms."},
+     {id: "port", name: "Keen landing field", kind: "pad", at: [.6, -.5], books: [5],
+      desc: "Where visitors come down to Rakis. In Heretics the Tleilaxu Master Waff arrives here, and later the Mother Superior Taraza herself."},
+     {id: "city", name: "The streets of Keen", kind: "plaza", at: [0, -.2], books: [5],
+      desc: "The pilgrims’ city that the Honored Matres burn when they scorch Rakis."}
+    ]}},
   {id: "sheeana", name: "Sheeana’s village", lat: 58, lon: -14, books: [5],
-   desc: "A poor pan village in the open desert, destroyed by a sandworm that spared only one child, Sheeana, who can command the worms. Position estimated."}
+   desc: "A poor pan village in the open desert, destroyed by a sandworm that spared only one child, Sheeana, who can command the worms. Position estimated.",
+   scene: {kind: "village", arch: "desert", size: "small", tod: "day", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "village", name: "The pan village", kind: "house", at: [0, 0], books: [5],
+      desc: "A hamlet on the open sand. A worm destroys it and leaves only the girl Sheeana alive, and the priests see her walk unharmed before the worms."}]}}
  ]},
 
 /* ------------------------------------------------------------------ Caladan ------------------ */
@@ -272,9 +503,25 @@ return {
  },
  sites: [
   {id: "castle", name: "Castle Caladan", lat: 30, lon: 8, books: [1],
-   desc: "The Atreides castle on the sea cliffs, Paul’s childhood home. Here the Reverend Mother Mohiam tests him with the gom jabbar. Position estimated."},
+   desc: "The Atreides castle on the sea cliffs, Paul’s childhood home. Here the Reverend Mother Mohiam tests him with the gom jabbar. Position estimated.",
+   scene: {kind: "castle", arch: "classical", size: "medium", tod: "dawn", weather: "rain", coast: "s",
+    /* layout schematic */
+    landmarks: [
+     {id: "keep", name: "The castle", kind: "castle", at: [0, .2], h: 1.6, books: [1],
+      desc: "The ancient Atreides seat, home of the house for twenty-six generations. On the eve of the move, the Reverend Mother Mohiam tests Paul here with the box of pain and the gom jabbar."},
+     {id: "training", name: "The training hall", kind: "hall", at: [.4, .35], books: [1],
+      desc: "Where Gurney Halleck and Thufir Hawat drill Paul. Gurney teaches him to fight under a shield, where only the slow blade gets through."},
+     {id: "bullring", name: "The bullring", kind: "arena", at: [-.45, .1], books: [1],
+      desc: "Where Paul’s grandfather, the old Duke, was killed fighting a bull. The bull’s head and the old Duke’s portrait travel with the family to Arrakis."},
+     {id: "cliffs", name: "The sea cliffs", kind: "cliff", at: [0, -.55], h: 1.4, books: [1],
+      desc: "The castle stands on cliffs above Caladan’s sea, the world of water the Atreides give up for a desert."}
+    ]}},
   {id: "paddies", name: "Pundi rice paddies", lat: 24, lon: 13, books: [1],
-   desc: "Caladan’s lowland farms; pundi rice is its main export. Position estimated."}
+   desc: "Caladan’s lowland farms; pundi rice is its main export. Position estimated.",
+   scene: {kind: "farm", arch: "rustic", size: "medium", tod: "day", weather: "rain", river: true,
+    /* layout schematic */
+    landmarks: [{id: "paddies", name: "The paddies", kind: "farm", at: [0, 0], books: [1],
+      desc: "Flooded fields of pundi rice, the crop on which Caladan’s wealth rests."}]}}
  ]},
 
 /* ------------------------------------------------------------------ Giedi Prime / Gammu ------- */
@@ -296,15 +543,51 @@ return {
  },
  sites: [
   {id: "hkeep", name: "Harkonnen Keep", lat: 22, lon: 30, books: [1],
-   desc: "The Baron’s fortress, where he and Piter de Vries plan the trap for House Atreides. Position estimated."},
+   desc: "The Baron’s fortress, where he and Piter de Vries plan the trap for House Atreides. Position estimated.",
+   scene: {kind: "fortress", arch: "brutal", size: "large", tod: "night", weather: "ash",
+    /* layout schematic */
+    landmarks: [
+     {id: "chambers", name: "The Baron’s chambers", kind: "hall", at: [0, .2], h: 1.5, books: [1],
+      desc: "Where the Baron, buoyed on suspensors, lays out the plan against House Atreides with his Mentat Piter de Vries and his nephew Feyd-Rautha."},
+     {id: "feydwing", name: "Feyd-Rautha’s wing", kind: "house", at: [.5, -.1], books: [1],
+      desc: "The heir’s quarters. After Feyd’s plot against his uncle fails, the Baron makes him kill every woman of his pleasure wing."}
+    ]}},
   {id: "arena", name: "The arena", lat: 20, lon: 34, books: [1],
-   desc: "Where Feyd-Rautha fights a captive gladiator on his birthday. Position estimated."},
+   desc: "Where Feyd-Rautha fights a captive gladiator on his birthday. Position estimated.",
+   scene: {kind: "arena", arch: "brutal", size: "medium", tod: "day", weather: "ash",
+    /* layout schematic */
+    landmarks: [
+     {id: "arena", name: "The fighting floor", kind: "arena", at: [0, 0], h: 1.2, books: [1],
+      desc: "Feyd-Rautha fights a captured Atreides soldier here. The man is meant to be drugged but is not; Feyd wins with a hidden trick and is cheered by the crowd."},
+     {id: "box", name: "The Baron’s box", kind: "throne", at: [0, .6], books: [1],
+      desc: "Where the Baron watches the fight, with Count Fenring and Lady Margot as his guests."}
+    ]}},
   {id: "gammukeep", name: "Gammu Keep", lat: 34, lon: -20, books: [5],
-   desc: "The Bene Gesserit fortress where Miles Teg trains the boy ghola Duncan Idaho and Lucilla waits to imprint him. Position estimated."},
+   desc: "The Bene Gesserit fortress where Miles Teg trains the boy ghola Duncan Idaho and Lucilla waits to imprint him. Position estimated.",
+   scene: {kind: "fortress", arch: "classical", size: "medium", tod: "day", weather: "mist", walls: true,
+    /* layout schematic */
+    landmarks: [
+     {id: "yard", name: "The practice yard", kind: "plaza", at: [0, 0], books: [5],
+      desc: "Where the old Bashar teaches the boy Duncan to fight, while Lucilla watches and the Keep’s commander Schwangyu schemes against Taraza’s plan."},
+     {id: "walls", name: "The Keep walls", kind: "wall", at: [0, .7], h: 1.4, books: [5],
+      desc: "The fortress defences. Killers break in to murder the ghola, and Teg and Lucilla slip out with him into the wild country."}
+    ]}},
   {id: "ysai", name: "Ysai", lat: 26, lon: -8, books: [5, 6],
-   desc: "Gammu’s great city, once the Harkonnen capital Barony. Teg gathers old veterans in its bars here, and Murbella first meets Duncan here. Position estimated."},
+   desc: "Gammu’s great city, once the Harkonnen capital Barony. Teg gathers old veterans in its bars here, and Murbella first meets Duncan here. Position estimated.",
+   scene: {kind: "city", arch: "brutal", size: "huge", tod: "night", weather: "rain",
+    /* layout schematic */
+    landmarks: [
+     {id: "city", name: "The old Barony", kind: "skyscraper", at: [0, .2], h: 1.8, books: [5, 6],
+      desc: "The great city of Gammu, grown out of the Harkonnen capital. The Honored Matres hold it in force."},
+     {id: "bars", name: "Veterans’ haunts", kind: "house", at: [-.5, -.3], books: [5],
+      desc: "Where Teg finds the old soldiers who fought under him and gathers them for his escape."}
+    ]}},
   {id: "noglobe", name: "The Harkonnen no-globe", lat: 40, lon: -34, books: [5],
-   desc: "An ancient Harkonnen hiding place, invisible to prescience, where Teg restores Duncan’s original memories. Position estimated."}
+   desc: "An ancient Harkonnen hiding place, invisible to prescience, where Teg restores Duncan’s original memories. Position estimated.",
+   scene: {kind: "underground", arch: "brutal", size: "small", under: true,
+    /* layout schematic */
+    landmarks: [{id: "globe", name: "The no-globe", kind: "dome", at: [0, 0], h: 1.3, books: [5],
+      desc: "A Harkonnen shelter hidden from prescient sight. Teg hides Lucilla and Duncan here and wakes the boy’s memories of his first life before Lucilla can imprint him."}]}}
  ]},
 
 /* ------------------------------------------------------------------ Kaitain ------------------ */
@@ -312,12 +595,20 @@ return {
 {id: "kaitain", name: "Kaitain", group: "imperial", books: [1, 2], first: 1, major: true, est: true,
  status: "Seat of the Padishah Emperor", hero: "palace",
  star: {name: "Unnamed in the novels (Alpha Piscium in a fan gazetteer)", col: "#d8e2ff", ra: 30.512, dec: 2.764, ly: 151},
- blurb: "The throne world of House Corrino, where Shaddam IV holds court after the Imperial seat moved there from Salusa Secundus. The Emperor and his court leave it to come to Arrakis for the final confrontation of the first book.",
+ blurb: "The throne world of House Corrino, where Shaddam IV holds court after the Imperial seat moved there from Salusa Secundus. From here the Emperor lends his Sardaukar, disguised in Harkonnen uniform, to destroy House Atreides. His daughter Princess Irulan grows up at this court, and its Reverend Mother Mohiam serves him as Truthsayer. The Emperor and his court leave it to come to Arrakis for the final confrontation of the first book.",
  short: "Throne world of House Corrino.",
  facts: [["Ruler (Dune)", "Padishah Emperor Shaddam IV"], ["House", "Corrino"] ],
  gfx: {type: "city", sea: .45, pal: ["#0a1d3a", "#2a5f86", "#5a6a44", "#7a7a5a", "#8a8070", "#f0ece4"], clouds: .3, atmo: "#9ab8ff", lights: .9, sw: "#8a8070"},
  eras: {2: {status: "Former throne world", blurb: "With Paul on the throne the centre of power has moved to Arrakeen, and House Corrino has gone into exile on Salusa Secundus."}},
- sites: [{id: "palace", name: "The Imperial Palace", lat: 18, lon: 10, books: [1], desc: "Shaddam IV’s court, where Irulan grows up. Position estimated."}]},
+ sites: [{id: "palace", name: "The Imperial Palace", lat: 18, lon: 10, books: [1], desc: "Shaddam IV’s court, where Irulan grows up. Position estimated.",
+   scene: {kind: "palace", arch: "imperial", size: "huge", tod: "day", weather: "clear",
+    /* layout schematic */
+    landmarks: [
+     {id: "throne", name: "The Golden Lion Throne", kind: "throne", at: [0, .2], h: 1.5, books: [1],
+      desc: "The throne of the Padishah Emperors. From his court Shaddam IV lends his Sardaukar to the Harkonnens, and later sets out with them for Arrakis."},
+     {id: "court", name: "The imperial court", kind: "palace", at: [0, -.3], books: [1],
+      desc: "The court where Princess Irulan grows up, and where the Reverend Mother Mohiam serves her father as Truthsayer."}
+    ]}}]},
 
 /* ------------------------------------------------------------------ Salusa Secundus ---------- */
 /* [S1] third planet of Gamma Waiping; second stop of the Zensunni migration; prison planet.
@@ -332,44 +623,76 @@ return {
  eras: {3: {status: "Court of House Corrino in exile",
             blurb: "After Paul’s victory the deposed Shaddam IV and his house live in exile on Salusa Secundus. In Children of Dune his daughter Wensicia plots from here for her son Farad’n, and Jessica comes here to train Farad’n in the Bene Gesserit way."}},
  sites: [
-  {id: "prison", name: "Prison and training grounds", lat: -12, lon: 40, books: [1], desc: "The Emperor’s prison camps, where the survivors become Sardaukar. Position estimated."},
-  {id: "exile", name: "Corrino court in exile", lat: 10, lon: -20, books: [3], desc: "Farad’n’s household, where the plot against the Atreides twins is hatched. Position estimated."}
+  {id: "prison", name: "Prison and training grounds", lat: -12, lon: 40, books: [1], desc: "The Emperor’s prison camps, where the survivors become Sardaukar. Position estimated.",
+   scene: {kind: "camp", arch: "brutal", size: "large", tod: "dusk", weather: "dust",
+    /* layout schematic */
+    landmarks: [{id: "camps", name: "The prison camps", kind: "camp", at: [0, 0], books: [1],
+      desc: "A world so harsh that only the toughest prisoners live; from them the Emperor draws his Sardaukar."}]}},
+  {id: "exile", name: "Corrino court in exile", lat: 10, lon: -20, books: [3], desc: "Farad’n’s household, where the plot against the Atreides twins is hatched. Position estimated.",
+   scene: {kind: "palace", arch: "imperial", size: "medium", tod: "day", weather: "clear",
+    /* layout schematic */
+    landmarks: [
+     {id: "palace", name: "Farad’n’s household", kind: "palace", at: [0, .2], h: 1.3, books: [3],
+      desc: "The exiled Corrinos’ court. Jessica is brought here and teaches Farad’n the Bene Gesserit way, and he breaks with his mother."},
+     {id: "tigers", name: "The tiger pens", kind: "camp", at: [.5, -.4], books: [3],
+      desc: "Where Wensicia’s people train the Laza tigers sent to kill the Atreides twins."}
+    ]}}
  ]},
 
 /* ------------------------------------------------------------------ Wallach IX --------------- */
 /* [S1] ninth planet of Laoujin; Bene Gesserit Mother School. Laoujin not identified: estimated. */
 {id: "wallach", name: "Wallach IX", group: "imperial", books: [1, 2, 6], first: 1, est: true,
- status: "Bene Gesserit Mother School",
+ status: "Bene Gesserit Mother School", hero: "motherschool",
  star: {name: "Laoujin, ninth planet (glossary); star unidentified", col: "#fff0dc"}, dir: {l: 38, b: -22}, ly: 140,
- blurb: "Home of the Bene Gesserit Mother School, where the Sisterhood trains its acolytes and keeps its breeding records.",
+ blurb: "The ninth planet of Laoujin and home of the Bene Gesserit Mother School. Here the Sisterhood trains its acolytes in the control of body and mind; Jessica was schooled here under the Reverend Mother Gaius Helen Mohiam, now the Emperor’s Truthsayer. From here the Sisterhood places its daughters as wives, concubines and advisers in the great houses.",
  facts: [["Placement", "Estimated: Laoujin is not identified with a real star"]],
  gfx: {type: "terran", sea: .5, pal: ["#0e1e30", "#2a4a66", "#4a5a40", "#6a7050", "#7a6a5a", "#f0eeea"], clouds: .5, atmo: "#a8b8e8", lights: .2},
  eras: {
   2: {status: "Mother School · where the plot is hatched",
       blurb: "In Dune Messiah the Reverend Mother Mohiam, the Guild navigator Edric, the Tleilaxu Face Dancer Scytale and Princess Irulan meet on Wallach IX to plot against Emperor Paul."},
   6: {status: "Struck by the Honored Matres", blurb: "In Chapterhouse word reaches the Honored Matres that Wallach IX, the old Mother School, has been overrun or destroyed in their war on the Sisterhood."}
- }},
+ },
+ sites: [
+  {id: "motherschool", name: "The Mother School", lat: 24, lon: 12, books: [1, 2],   /* estimated */
+   desc: "The Bene Gesserit school that trains the Sisterhood’s acolytes. Position estimated.",
+   scene: {kind: "monastery", arch: "classical", size: "medium", tod: "dawn", weather: "mist",
+    /* layout schematic */
+    landmarks: [
+     {id: "halls", name: "The schools", kind: "hall", at: [0, .2], h: 1.3, books: [1],
+      desc: "Where acolytes are trained in the Sisterhood’s disciplines. Jessica learned her arts here under Mohiam."},
+     {id: "meeting", name: "The conspirators’ meeting", kind: "dome", at: [.4, -.3], books: [2],
+      desc: "In Dune Messiah the Reverend Mother Mohiam, the Steersman Edric, the Face Dancer Scytale and Princess Irulan meet on Wallach IX to plot against Paul, the navigator’s presence hiding them from his sight."}
+    ]}}
+ ]},
 
 /* ------------------------------------------------------------------ Ix ----------------------- */
 /* Messiah: ninth planet of its sun. Star from the non-canon Dune Encyclopedia (Alkalurops / mu Boo): estimated. */
 {id: "ix", name: "Ix", group: "machine", books: [1, 2, 4, 5, 6], first: 1, major: true, est: true,
  status: "World of the machine-makers",
  star: {name: "Unnamed; Alkalurops in the non-canon Dune Encyclopedia", col: "#f8f6ff", ra: 231.123, dec: 37.377, ly: 113},
- blurb: "With Richese, the leading machine culture of the Imperium, building devices that skirt the ban on thinking machines. Ixian goods turn up everywhere, from hunter-seekers to Guild equipment.",
+ blurb: "With Richese, the leading machine culture of the Imperium, building devices that skirt the ban on thinking machines. Ixian goods turn up everywhere, from hunter-seekers to Guild equipment. The Ixians keep to the letter of the Butlerian prohibition while testing its edges, and the other powers both rely on them and distrust them.",
  facts: [["Known for", "Machines at the edge of the Butlerian ban"] ],
  gfx: {type: "ice", sea: .15, pal: ["#1a2430", "#2a3a4a", "#5a646e", "#707a84", "#8a929a", "#e8eef4"], clouds: .25, atmo: "#a8c0e0", atmoK: .7, lights: .6, lightCol: "#9fd0ff"},
  eras: {
   2: {status: "World of the machine-makers", blurb: "Dune Messiah calls Ix the ninth planet of its sun. Ixian makers and their devices are part of the web of powers around Paul’s throne."},
   4: {status: "Ixian embassy to the God Emperor", blurb: "Ix sends Hwi Noree, a woman bred and shaped to be the perfect match for Leto II, as its ambassador to the God Emperor, along with her uncle Malky. Ix is also building machines that may let ships travel without Guild navigators."},
   5: {status: "Ixians and their no-ships", blurb: "In the far future the Ixians build no-ships and navigation machines, hidden from prescience, that break the Guild’s old monopoly on travel."}
- }},
+ },
+ sites: [
+  {id: "ixworks", name: "The Ixian works", lat: 10, lon: 30, books: [4, 5, 6],   /* estimated */
+   desc: "A marker for the makers’ world itself: the novels show what comes out of Ix far more than the planet. Position estimated.",
+   scene: {kind: "industrial", arch: "industrial", size: "medium", tod: "night", weather: "snow",
+    /* layout schematic */
+    landmarks: [{id: "works", name: "The makers", kind: "factory", at: [0, 0], h: 1.4, books: [4, 5, 6],
+      desc: "Source of the Ixian devices of the later books: the envoy Hwi Noree, made to be Leto II’s perfect match, the navigation machines that threaten the Guild, and the no-ships hidden from prescience."}]}}
+ ]},
 
 /* ------------------------------------------------------------------ Tleilax ------------------ */
 /* [S1] lone planet of Thalim. Acamar is the fan identification [S6]: estimated. */
 {id: "tleilax", name: "Tleilax", group: "machine", books: [1, 2, 4, 5, 6], first: 1, major: true, est: true,
  status: "World of the Bene Tleilax",
  star: {name: "Thalim, lone planet (glossary); shown at Acamar", col: "#e4eaff", ra: 44.565, dec: -40.305, ly: 161},
- blurb: "The lone planet of the star Thalim, home of the Tleilaxu, who sell twisted Mentats and other products of their flesh-craft. Piter de Vries, the Baron’s Mentat, is one of theirs.",
+ blurb: "The lone planet of the star Thalim, home of the Tleilaxu, who sell twisted Mentats and other products of their flesh-craft. Piter de Vries, the Baron’s Mentat, is one of theirs. The rest of the Imperium buys what they make and despises them for it, and few outsiders ever see their world.",
  facts: [["Known for", "Twisted Mentats; later gholas and Face Dancers"]],
  gfx: {type: "desert", sea: .12, pal: ["#2a2418", "#3a3424", "#7a6a4a", "#8a7a56", "#6a5a42", "#d8ccb4"], clouds: .2, atmo: "#c8b890", atmoK: .7, lights: .35},
  eras: {
@@ -377,7 +700,19 @@ return {
   4: {status: "Source of the Duncan Idahos", blurb: "For Leto II the Tleilaxu supply one Duncan Idaho ghola after another, each a copy of his grandfather’s swordmaster."},
   5: {status: "The Masters’ world", blurb: "In Heretics the Tleilaxu Masters, led by Tylwyth Waff, run a secret religion and plan to dominate the returning Scattering with Face Dancers who can copy minds. They supply the Bene Gesserit with a new Duncan ghola."},
   6: {status: "Overrun by the Honored Matres", blurb: "In Chapterhouse the Honored Matres crush the Tleilaxu worlds, and the Bene Gesserit hold Scytale, the last of the Masters, captive."}
- }},
+ },
+ sites: [
+  {id: "bandalong", name: "Bandalong", lat: 18, lon: -20, books: [5, 6],   /* estimated */
+   desc: "The city of the Tleilaxu Masters, closed to outsiders. Position estimated.",
+   scene: {kind: "city", arch: "eastern", size: "large", tod: "dusk", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "kehl", name: "The council of Masters", kind: "hall", at: [0, .2], h: 1.3, books: [5],
+      desc: "The Masters’ secret council, sealed against spies. Tylwyth Waff and the others meet here to lay their plans against the Bene Gesserit and the returning Scattering."},
+     {id: "tanks", name: "The axlotl tanks", kind: "factory", at: [.5, -.3], books: [5, 6],
+      desc: "Where the Tleilaxu grow their gholas and Face Dancers, the most jealously kept secret of their race."}
+    ]}}
+ ]},
 
 /* ------------------------------------------------------------------ Chapterhouse ------------- */
 /* No star or location in the books (it is secret): estimated. Surface estimated. */
@@ -397,33 +732,91 @@ return {
                   feat: [{k: "continent", at: [20, 20], r: 30, s: .2}, {k: "biome", style: "rock", at: [6, 10], r: 14, s: .95, c: "#d0a468"},
                          {k: "biome", style: "farm", at: [30, 22], r: 6, s: .8, c: "#8a9a42"}]}}},
  sites: [
-  {id: "central", name: "Central", lat: 26, lon: 18, books: [5, 6], desc: "The main Keep of the Sisterhood and seat of the Mother Superior. Position estimated."},
-  {id: "archives", name: "The Archives", lat: 25, lon: 20.5, books: [6], desc: "The Sisterhood’s records, kept under Bellonda. Position estimated."},
-  {id: "landing", name: "The landing field and no-ship", lat: 21, lon: 22, books: [6], desc: "Where the great no-ship rests, a prison for Duncan Idaho, Murbella and the Tleilaxu Master Scytale. Position estimated."},
-  {id: "desert", name: "The new desert", lat: 6, lon: 10, books: [6], desc: "The spreading belt of sand where Sheeana tends the sandtrout and the first young worms. Position estimated."}
+  {id: "central", name: "Central", lat: 26, lon: 18, books: [5, 6], desc: "The main Keep of the Sisterhood and seat of the Mother Superior. Position estimated.",
+   scene: {kind: "monastery", arch: "classical", size: "large", tod: "day", weather: "clear",
+    /* layout schematic */
+    landmarks: [
+     {id: "workroom", name: "Mother Superior’s workroom", kind: "tower", at: [0, .2], h: 1.6, books: [6],
+      desc: "Odrade’s rooms high in Central, looking out over the orchards, where she plans the Sisterhood’s war and argues with Bellonda."},
+     {id: "practice", name: "The practice floor", kind: "hall", at: [.45, -.15], books: [6],
+      desc: "Where Murbella trains and the child Teg ghola is schooled as the Sisterhood’s next Bashar."},
+     {id: "orchards", name: "The orchards", kind: "grove", at: [-.5, -.35], books: [6],
+      desc: "Chapterhouse’s orchards, which Odrade loves. In the last book they wither as the desert creeps in."}
+    ]}},
+  {id: "archives", name: "The Archives", lat: 25, lon: 20.5, books: [6], desc: "The Sisterhood’s records, kept under Bellonda. Position estimated.",
+   scene: {kind: "library", arch: "classical", size: "small", tod: "night", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "archives", name: "The Archives", kind: "library", at: [0, 0], books: [6],
+      desc: "The Sisterhood’s records and its Mentat-archivist Bellonda, Odrade’s sharpest critic."}]}},
+  {id: "landing", name: "The landing field and no-ship", lat: 21, lon: 22, books: [6], desc: "Where the great no-ship rests, a prison for Duncan Idaho, Murbella and the Tleilaxu Master Scytale. Position estimated.",
+   scene: {kind: "spaceport", arch: "modern", size: "medium", tod: "night", weather: "clear",
+    /* layout schematic */
+    landmarks: [
+     {id: "noship", name: "The great no-ship", kind: "ship", at: [0, .1], h: 2.4, books: [6],
+      desc: "The ship Teg seized on Gammu, now grounded and hidden from prescient sight. Duncan, Murbella and the Master Scytale live aboard it as prisoners, and at the end it flies out into the unknown."},
+     {id: "field", name: "The field", kind: "pad", at: [.5, -.5], books: [6],
+      desc: "The landing field of Chapterhouse, where the Sisterhood’s ships come and go."}
+    ]}},
+  {id: "desert", name: "The new desert", lat: 6, lon: 10, books: [6], desc: "The spreading belt of sand where Sheeana tends the sandtrout and the first young worms. Position estimated.",
+   scene: {kind: "desert", arch: "desert", size: "large", tod: "dusk", weather: "dust",
+    /* layout schematic */
+    landmarks: [
+     {id: "sand", name: "The spreading sand", kind: "stones", at: [0, 0], books: [6],
+      desc: "The belt of desert seeded by the sandtrout of the Rakis worm, where Sheeana watches for the first young worms."},
+     {id: "deadland", name: "The dying edge", kind: "grove", at: [-.5, .5], books: [6],
+      desc: "Where farmland and orchards give way to sand as the desert spreads."}
+    ]}}
  ]},
 
 /* ------------------------------------------------------------------ Later-era worlds --------- */
 {id: "junction", name: "Junction", group: "later", books: [6], first: 6, est: true,
  status: "Guild world · seat of the Honored Matres",
  star: {name: "Unnamed", col: "#ffe6c4"}, dir: {l: 300, b: 16}, ly: 220,      /* estimated */
- blurb: "An old Spacing Guild world that the Honored Matres have taken as the seat of their Great Honored Matre. The Bene Gesserit strike here at the climax of Chapterhouse, and it is here that the two orders are forcibly joined.",
+ blurb: "An old Spacing Guild world that the Honored Matres have taken as the seat of their Great Honored Matre. The Bene Gesserit strike here at the climax of Chapterhouse, led by the ghola Teg. It is here that Odrade dies, Murbella takes command of the Honored Matres, and the two orders are forcibly joined.",
  facts: [["Placement", "Not given in the books; estimated"]],
- gfx: {type: "city", sea: .35, pal: ["#101a26", "#2a3a4e", "#4a4a44", "#5e5a50", "#7a7264", "#e0dcd4"], clouds: .3, atmo: "#c8a8a0", lights: .85, lightCol: "#ffb08a"}},
+ gfx: {type: "city", sea: .35, pal: ["#101a26", "#2a3a4e", "#4a4a44", "#5e5a50", "#7a7264", "#e0dcd4"], clouds: .3, atmo: "#c8a8a0", lights: .85, lightCol: "#ffb08a"},
+ sites: [
+  {id: "jseat", name: "The Honored Matres’ seat", lat: 20, lon: 0, books: [6],   /* estimated */
+   desc: "The Great Honored Matre’s stronghold on the old Guild world. Position estimated.",
+   scene: {kind: "fortress", arch: "modern", size: "large", tod: "night", weather: "clear",
+    /* layout schematic */
+    landmarks: [
+     {id: "seat", name: "The Great Honored Matre’s chambers", kind: "throne", at: [0, .2], h: 1.4, books: [6],
+      desc: "Where Dama rules until her adviser Logno takes her place, and where Murbella kills Logno and is hailed by the Honored Matres."},
+     {id: "field", name: "The landing fields", kind: "pad", at: [.5, -.5], books: [6],
+      desc: "Where Teg’s forces strike when the Sisterhood attacks Junction."}
+    ]}}
+ ]},
 
 {id: "lampadas", name: "Lampadas", group: "later", books: [6], first: 6, est: true,
  status: "Bene Gesserit school world, destroyed",
  star: {name: "Unnamed", col: "#fff0dc"}, dir: {l: 72, b: -12}, ly: 400,      /* estimated */
  blurb: "A Bene Gesserit centre of learning, destroyed by the Honored Matres in Chapterhouse. The Chancellor Lucilla escapes carrying the shared memories of millions of its Reverend Mothers.",
  facts: [["Placement", "Not given in the books; estimated"]],
- gfx: {type: "barren", sea: .2, pal: ["#141010", "#241c18", "#3a2a22", "#4a3628", "#5a4434", "#8a7a6a"], clouds: .35, cloudCol: "#6a5a50", atmo: "#a87050", atmoK: .7, lights: 0}},
+ gfx: {type: "barren", sea: .2, pal: ["#141010", "#241c18", "#3a2a22", "#4a3628", "#5a4434", "#8a7a6a"], clouds: .35, cloudCol: "#6a5a50", atmo: "#a87050", atmoK: .7, lights: 0},
+ sites: [
+  {id: "school", name: "The Lampadas schools", lat: 10, lon: 20, books: [6],   /* estimated */
+   desc: "The Sisterhood’s centre of learning, burned by the Honored Matres. Position estimated.",
+   scene: {kind: "ruins", arch: "classical", size: "medium", tod: "dusk", weather: "ash",
+    /* layout schematic */
+    landmarks: [{id: "school", name: "The schools", kind: "library", at: [0, 0], h: 1.2, books: [6],
+      desc: "A great Bene Gesserit school, destroyed with its Reverend Mothers. Only Lucilla escapes, carrying their shared memories."}]}}
+ ]},
 
 {id: "buzzell", name: "Buzzell", group: "later", books: [6], first: 6, est: true,
  status: "Bene Gesserit punishment world",
  star: {name: "Unnamed", col: "#e8f0ff"}, dir: {l: 152, b: 18}, ly: 600,      /* estimated */
  blurb: "A sea world where the Bene Gesserit post disgraced sisters and gather soostones, which the Honored Matres covet.",
  facts: [["Placement", "Not given in the books; estimated"]],
- gfx: {type: "ocean", sea: .82, pal: ["#061a30", "#1a4a74", "#5a6a5a", "#7a826a", "#7a7466", "#eef0f2"], clouds: .5, atmo: "#88aaff"}},
+ gfx: {type: "ocean", sea: .82, pal: ["#061a30", "#1a4a74", "#5a6a5a", "#7a826a", "#7a7466", "#eef0f2"], clouds: .5, atmo: "#88aaff"},
+ sites: [
+  {id: "post", name: "The Sisterhood’s post", lat: 4, lon: -30, books: [6], sea: true,   /* estimated */
+   desc: "The small Bene Gesserit station on Buzzell. Position estimated.",
+   scene: {kind: "port", arch: "rustic", size: "small", tod: "day", weather: "rain", water: true,
+    /* layout schematic */
+    landmarks: [{id: "post", name: "The station", kind: "dock", at: [0, 0], books: [6],
+      desc: "Where sisters out of favour are sent, and where the soostones the Honored Matres want are gathered from the sea."}]}}
+ ]},
 
 {id: "lernaeus", name: "Lernaeus", group: "later", books: [5], first: 5, est: true,
  status: "Miles Teg’s home",
@@ -431,7 +824,15 @@ return {
  blurb: "The farm world where the retired Bashar Miles Teg lives at the start of Heretics, until Mother Superior Taraza calls him back to guard the new Duncan Idaho ghola.",
  facts: [["Placement", "Not given in the books; estimated"]],
  gfx: {type: "terran", sea: .45, pal: ["#0a2240", "#2a6088", "#5a8a3a", "#8a9a4a", "#7a6a50", "#f0f0ec"], clouds: .4, atmo: "#88aaff", lights: .15,
-   feat: [{k: "biome", style: "farm", at: [20, 0], r: 20, s: .85, c: "#8e9a3e"}]}},
+   feat: [{k: "biome", style: "farm", at: [20, 0], r: 20, s: .85, c: "#8e9a3e"}]},
+ sites: [
+  {id: "tegfarm", name: "Teg’s estate", lat: 22, lon: 4, books: [5],   /* estimated */
+   desc: "The farm where the old Bashar lives in retirement. Position estimated.",
+   scene: {kind: "farm", arch: "rustic", size: "small", tod: "dawn", weather: "clear",
+    /* layout schematic */
+    landmarks: [{id: "house", name: "The farmhouse", kind: "house", at: [0, 0], books: [5],
+      desc: "Teg’s home among his fields, where Taraza’s summons finds him and calls him back to service."}]}}
+ ]},
 
 /* ------------------------------------------------------------------ Landsraad & glossary worlds - */
 {id: "naraj", name: "Naraj", group: "landsraad", books: [2], first: 2, est: true,
@@ -440,7 +841,15 @@ return {
  blurb: "One of the few battles of Paul’s jihad the books name. The old Fedaykin Farok fought in the conquest of Naraj and its moons, where the defenders used a stone burner and his son lost his eyes.",
  facts: [["Source", "Dune Messiah"], ["Placement", "Not given in the books; estimated"]],
  gfx: {type: "terran", sea: .5, pal: ["#0a1e36", "#2a5a80", "#5a6a3a", "#7a7a4a", "#6a5a4a", "#e8e6e0"], clouds: .4, atmo: "#90b0ff", lights: .2},
- moons: [{name: "Moon", size: .15, dist: 3}, {name: "Moon", size: .1, dist: 3.8}]},
+ moons: [{name: "Moon", size: .15, dist: 3}, {name: "Moon", size: .1, dist: 3.8}],
+ sites: [
+  {id: "narajfield", name: "The Naraj battlefield", lat: 0, lon: 0, books: [2],   /* estimated */
+   desc: "Where the Fremen legions fought for Naraj. Position estimated.",
+   scene: {kind: "battlefield", arch: "modern", size: "medium", tod: "dusk", weather: "ash", sky: {moons: 2},
+    /* layout schematic */
+    landmarks: [{id: "field", name: "The battlefield", kind: "crater", at: [0, 0], books: [2],
+      desc: "The defenders used a stone burner here, and the old Fedaykin Farok’s son was among those it blinded."}]}}
+ ]},
 
 {id: "ecaz", name: "Ecaz", group: "landsraad", books: [1], first: 1,
  status: "Sculptors’ paradise",
@@ -542,65 +951,101 @@ return {
 /* ======================================================================== events (Chronicle) */
   events: [
 /* I Dune */
-{id: "d1", book: 1, world: "caladan", site: "castle", title: "The gom jabbar", text: "On the eve of the move to Arrakis, the Reverend Mother Mohiam tests the fifteen-year-old Paul with a box of pain and a poisoned needle, and he passes."},
-{id: "d2", book: 1, world: "giedi", site: "hkeep", title: "The Baron’s trap", text: "Baron Harkonnen and Piter de Vries lay their plan: let the Atreides take Arrakis, then destroy them with a traitor inside their house and Sardaukar in Harkonnen uniform."},
-{id: "d3", book: 1, world: "arrakis", site: "arrakeen", title: "House Atreides comes to Arrakis", text: "Duke Leto, Jessica and Paul take over Arrakeen. Leto courts the Fremen and the planetologist Liet-Kynes and wins respect by saving a spice crew from a worm at the cost of his harvester."},
-{id: "d4", book: 1, world: "arrakis", site: "arrakeen", title: "Yueh’s betrayal and the night attack", text: "Dr Yueh drops the house shields, and Harkonnen troops with disguised Sardaukar overrun Arrakeen. The captured Duke dies trying to kill the Baron with a poison tooth, killing Piter de Vries instead."},
-{id: "d5", book: 1, world: "arrakis", title: "Flight into the deep desert", text: "Paul and Jessica escape by ornithopter into a storm, hide in an ecological testing station where Duncan Idaho dies holding off their pursuers, and are taken in by Stilgar’s band. Paul kills Jamis in a ritual duel and becomes a Fremen."},
-{id: "d6", book: 1, world: "arrakis", site: "tabr", title: "Sietch Tabr", text: "Jessica drinks the Water of Life and becomes the Fremen’s Reverend Mother, awakening her unborn daughter Alia. Paul takes the name Muad’Dib and Chani as his partner."},
-{id: "d7", book: 1, world: "arrakis", title: "Paul rides the worm", text: "Paul calls and rides his first sandworm, and his Fedaykin raids begin to cripple Harkonnen spice production."},
-{id: "d8", book: 1, world: "giedi", site: "arena", title: "Feyd-Rautha’s hundredth fight", text: "On his birthday Feyd kills a captured Atreides fighter in the Harkonnen arena, while the Baron takes the captive Thufir Hawat into his service."},
-{id: "d9", book: 1, world: "arrakis", site: "palmaries", title: "The Water of Life", text: "Years later, in the south, Paul drinks the Water of Life, survives, and sees past and future at once: he is the Kwisatz Haderach."},
-{id: "d10", book: 1, world: "kaitain", site: "palace", title: "The Emperor moves", text: "With spice production collapsing, Shaddam IV, his Sardaukar and the Guild descend on Arrakis."},
-{id: "d11", book: 1, world: "arrakis", site: "oldgap", title: "Battle of Arrakeen", text: "Under cover of a great storm Paul blasts open the Shield Wall with the family atomics, and the Fremen ride worms into the Imperial Basin and overwhelm the Sardaukar."},
-{id: "d12", book: 1, world: "arrakis", site: "arrakeen", title: "Paul takes the throne", text: "Paul kills Feyd-Rautha in single combat, forces the Guild to submit by threatening the spice, and claims the throne by agreeing to marry Princess Irulan."},
+{id: "d1", book: 1, world: "caladan", site: "castle", lm: "keep", title: "The gom jabbar", text: "On the eve of the move to Arrakis, the Reverend Mother Mohiam tests the fifteen-year-old Paul with a box of pain and a poisoned needle, and he passes."},
+{id: "d13", book: 1, world: "caladan", site: "castle", lm: "training", title: "Gurney’s lesson", text: "Gurney Halleck spars with Paul in the castle’s training hall, teaching him that under a shield only the slow blade gets through."},
+{id: "d2", book: 1, world: "giedi", site: "hkeep", lm: "chambers", title: "The Baron’s trap", text: "Baron Harkonnen and Piter de Vries lay their plan: let the Atreides take Arrakis, then destroy them with a traitor inside their house and Sardaukar in Harkonnen uniform."},
+{id: "d3", book: 1, world: "arrakis", site: "arrakeen", lm: "spaceport", fx: "arrival", title: "House Atreides comes to Arrakis", text: "Duke Leto, Jessica and Paul come down at Arrakeen and take over the Residency. Leto sets out to win the Fremen and the planetologist Liet-Kynes."},
+{id: "d15", book: 1, world: "arrakis", site: "arrakeen", lm: "residency", title: "The hunter-seeker", text: "On the first night a hunter-seeker, a tiny flying poison needle, comes for Paul in his bedroom. He keeps still until it comes close, then snatches it from the air and crushes it."},
+{id: "d16", book: 1, world: "arrakis", site: "arrakeen", lm: "conservatory", title: "A hidden warning", text: "In the Residency’s water-wasting conservatory Jessica finds a coded message from Lady Margot Fenring warning of a traitor in the house."},
+{id: "d26", book: 1, world: "arrakis", site: "arrakeen", lm: "residency", title: "A false scent", text: "A Harkonnen plant points Thufir Hawat towards Jessica as the traitor in the house, hiding the real one, Dr Yueh."},
+{id: "d14", book: 1, world: "arrakis", fx: "worm", title: "The harvester and the worm", text: "Watching the spice harvest from the air with Kynes, Duke Leto sees a worm coming for a crawler and orders the crew lifted out. He saves the crew and loses the machine, and the Fremen take note."},
+{id: "d17", book: 1, world: "arrakis", site: "arrakeen", lm: "dining", title: "The Duke’s dinner", text: "Leto gives a dinner for the powers of Arrakis, from a water-shipper and a Guild banker to the smuggler Esmar Tuek and Kynes himself. Talk of water and the plight of the Fremen runs under the courtesies."},
+{id: "d4", book: 1, world: "arrakis", site: "arrakeen", lm: "residency", fx: "battle", title: "Yueh’s betrayal and the night attack", text: "Dr Yueh drops the house shields, and Harkonnen troops with disguised Sardaukar overrun Arrakeen. The captured Duke dies trying to kill the Baron with a poison tooth, killing Piter de Vries instead."},
+{id: "d29", book: 1, world: "arrakis", title: "In the stilltent", text: "Hidden in a stilltent in the desert, Paul feels his mind open to the future and learns that his mother is a daughter of the Baron Harkonnen."},
+{id: "d5", book: 1, world: "arrakis", site: "ecostation", lm: "station", fx: "battle", title: "Flight into the deep desert", text: "In the desert Duncan Idaho and Liet-Kynes find Paul and Jessica and bring them to a hidden ecological testing station. Sardaukar attack; Duncan dies holding them off while Paul flies into a great storm."},
+{id: "d19", book: 1, world: "arrakis", fx: "duel", title: "Usul", text: "Taken in by Stilgar’s band, Paul kills Jamis in a ritual knife fight and becomes a Fremen. He takes the name Muad’Dib, after the desert mouse, while the tribe calls him Usul among themselves."},
+{id: "d18", book: 1, world: "arrakis", fx: "eruption", title: "Kynes in the desert", text: "Left by the Harkonnens to die without a stillsuit in the open desert, Liet-Kynes dies dreaming of a green Arrakis as a spice blow erupts beneath him."},
+{id: "d6", book: 1, world: "arrakis", site: "tabr", lm: "hall", title: "Sietch Tabr", text: "Jessica drinks the Water of Life and becomes the Fremen’s Reverend Mother, awakening her unborn daughter Alia. Paul takes Chani as his partner."},
+{id: "d7", book: 1, world: "arrakis", fx: "worm", title: "Paul rides the worm", text: "Paul calls and rides his first sandworm, and his Fedaykin raids begin to cripple Harkonnen spice production."},
+{id: "d8", book: 1, world: "giedi", site: "arena", lm: "arena", fx: "duel", title: "Feyd-Rautha’s hundredth fight", text: "On his birthday Feyd kills a captured Atreides fighter in the Harkonnen arena, while the Baron takes the captive Thufir Hawat into his service."},
+{id: "d28", book: 1, world: "giedi", site: "hkeep", lm: "feydwing", title: "Feyd’s failed plot", text: "Feyd-Rautha’s attempt on his uncle’s life fails. The Baron punishes him by making him kill every woman of his pleasure wing."},
+{id: "d27", book: 1, world: "arrakis", title: "Rabban’s squeeze", text: "The Baron gives Arrakis to his brutal nephew Rabban to wring dry, meaning Feyd-Rautha to be welcomed later as the people’s deliverer."},
+{id: "d20", book: 1, world: "arrakis", title: "Gurney returns", text: "Gurney Halleck, hiding among the smugglers, meets Paul again in the desert. Believing Jessica the traitor, he nearly kills her before Paul stops him."},
+{id: "d9", book: 1, world: "arrakis", site: "palmaries", lm: "sietch", title: "The Water of Life", text: "Years later, in the south, Paul drinks the Water of Life, survives, and sees past and future at once: he is the Kwisatz Haderach."},
+{id: "d10", book: 1, world: "kaitain", site: "palace", lm: "throne", fx: "fleet", title: "The Emperor moves", text: "With spice production collapsing, Shaddam IV, his Sardaukar and the Guild descend on Arrakis."},
+{id: "d21", book: 1, world: "arrakis", site: "arrakeen", lm: "spaceport", fx: "fleet", title: "The fleet on the plain", text: "The Emperor’s ships and the Harkonnen forces crowd onto the plain below the Shield Wall, trusting the Wall to keep the desert out."},
+{id: "d22", book: 1, world: "arrakis", fx: "battle", title: "The raid on the sietch", text: "Sardaukar raid a Fremen sietch. Paul’s infant son Leto is killed and Alia is taken captive."},
+{id: "d11", book: 1, world: "arrakis", site: "oldgap", lm: "breach", fx: "blast", title: "Battle of Arrakeen", text: "Under cover of a great storm Paul blasts open the Shield Wall with the family atomics, and the Fremen ride worms into the Imperial Basin and overwhelm the Sardaukar."},
+{id: "d23", book: 1, world: "arrakis", site: "arrakeen", lm: "spaceport", fx: "worm", title: "Worms among the ships", text: "The worm-riders burst onto the landing field among the Imperial and Harkonnen ships, and the Emperor’s army is broken."},
+{id: "d24", book: 1, world: "arrakis", site: "arrakeen", lm: "hut", title: "Alia and the Baron", text: "Brought before the Emperor as a captive, the child Alia stabs the Baron Harkonnen with a poisoned needle and kills him."},
+{id: "d25", book: 1, world: "arrakis", site: "arrakeen", lm: "greathall", title: "Thufir’s last refusal", text: "Handed a poisoned needle and ordered to strike Paul, the old Mentat Thufir Hawat refuses and dies before the court."},
+{id: "d12", book: 1, world: "arrakis", site: "arrakeen", lm: "greathall", fx: "duel", title: "Paul takes the throne", text: "Paul kills Feyd-Rautha in single combat, forces the Guild to submit by threatening the spice, and claims the throne by agreeing to marry Princess Irulan."},
 /* II Dune Messiah */
 {id: "m1", book: 2, world: "naraj", title: "The jihad", text: "In twelve years the Fremen legions have carried Paul’s holy war across the known universe, killing billions. Paul foresaw it and could not stop it."},
-{id: "m2", book: 2, world: "wallach", title: "The conspiracy", text: "The Bene Gesserit, the Guild, the Tleilaxu and Princess Irulan join in a plot to bring down Emperor Paul."},
-{id: "m3", book: 2, world: "arrakis", site: "keep", title: "Hayt", text: "The Tleilaxu give Paul a ghola of Duncan Idaho, called Hayt, conditioned to kill him."},
-{id: "m4", book: 2, world: "arrakis", site: "arrakeen", title: "The stone burner", text: "A forbidden atomic stone burner goes off in Arrakeen. Paul is blinded but goes on seeing through his prescience."},
-{id: "m5", book: 2, world: "arrakis", site: "tabr", title: "Chani dies", text: "Chani dies giving birth to twins, Leto and Ghanima, which Paul had not foreseen. Hayt’s conditioning breaks and he becomes Duncan Idaho again."},
-{id: "m6", book: 2, world: "arrakis", site: "tabr", title: "Paul walks into the desert", text: "Blind and without his vision, Paul follows Fremen custom and walks alone into the desert. Alia rules as regent."},
+{id: "m7", book: 2, world: "naraj", site: "narajfield", lm: "field", fx: "battle", title: "The conquest of Naraj", text: "Among the jihad’s battles is the taking of Naraj and its moons, where the defenders used a stone burner. The old Fedaykin Farok’s son lost his eyes there."},
+{id: "m2", book: 2, world: "wallach", site: "motherschool", lm: "meeting", title: "The conspiracy", text: "The Bene Gesserit, the Guild, the Tleilaxu and Princess Irulan join in a plot to bring down Emperor Paul."},
+{id: "m3", book: 2, world: "arrakis", site: "keep", lm: "hall", title: "Hayt", text: "The Tleilaxu give Paul a ghola of Duncan Idaho, called Hayt, conditioned to kill him."},
+{id: "m12", book: 2, world: "arrakis", site: "keep", title: "The false Lichna", text: "The Face Dancer Scytale comes to Paul wearing the face of Otheym’s daughter Lichna, carrying a summons that draws the emperor into the conspirators’ trap."},
+{id: "m9", book: 2, world: "arrakis", site: "keep", title: "Chani and Irulan", text: "Irulan has been secretly dosing Chani with a contraceptive to keep her from bearing Paul’s heir. When Chani changes her diet she conceives, but her body has been weakened."},
+{id: "m8", book: 2, world: "arrakis", site: "arrakeen", lm: "suburb", title: "Otheym and the dwarf", text: "Disguised as a Fremen, Paul walks into the city to visit the dying Fedaykin Otheym, who gives him the dwarf Bijaz, a living record of the names of traitors."},
+{id: "m4", book: 2, world: "arrakis", site: "arrakeen", fx: "blast", title: "The stone burner", text: "A forbidden atomic stone burner goes off in Arrakeen. Paul is blinded but goes on seeing through his prescience."},
+{id: "m5", book: 2, world: "arrakis", site: "tabr", lm: "inner", title: "Chani dies", text: "Chani dies giving birth to twins, Leto and Ghanima, which Paul had not foreseen. Hayt’s conditioning breaks and he becomes Duncan Idaho again."},
+{id: "m10", book: 2, world: "arrakis", site: "tabr", lm: "inner", title: "Scytale’s bargain", text: "The Face Dancer Scytale offers to restore Chani as a ghola and threatens the newborn twins. Guided by his son’s eyes, Paul kills him."},
+{id: "m6", book: 2, world: "arrakis", site: "tabr", lm: "entrance", title: "Paul walks into the desert", text: "Blind and without his vision, Paul follows Fremen custom and walks alone into the desert. Alia rules as regent."},
+{id: "m11", book: 2, world: "arrakis", site: "keep", title: "Alia’s judgement", text: "Alia has the conspirators put to death against Paul’s wishes, but spares Irulan, who gives up the Sisterhood to raise Paul’s children."},
 /* III Children of Dune */
 {id: "c1", book: 3, world: "arrakis", site: "arrakeen", title: "Jessica returns", text: "Jessica comes from Caladan and finds Alia changed. Alia is losing herself to the voices of her ancestors, the Baron among them."},
-{id: "c2", book: 3, world: "salusa", site: "exile", title: "The Corrino plot", text: "On Salusa Secundus, Wensicia Corrino trains Laza tigers to kill the Atreides twins and clear the way for her son Farad’n."},
-{id: "c3", book: 3, world: "arrakis", site: "tabr", title: "The tigers", text: "The twins survive the tigers. Leto lets it be believed he is dead and slips into the desert."},
-{id: "c4", book: 3, world: "salusa", title: "Jessica among the Corrinos", text: "Duncan Idaho carries Jessica off to Salusa Secundus, where she trains Farad’n in the Bene Gesserit way."},
-{id: "c5", book: 3, world: "arrakis", site: "jacurutu", title: "Jacurutu and the Golden Path", text: "Captured at Jacurutu, Leto is forced into the spice trance, sees the Golden Path, and covers himself in sandtrout, becoming more than human."},
-{id: "c6", book: 3, world: "arrakis", site: "fane", title: "The Preacher’s death", text: "The blind Preacher, who is Paul, is killed on the temple steps. Alia, possessed by the Baron, takes her own life when Leto confronts her."},
+{id: "c8", book: 3, world: "arrakis", site: "fane", lm: "plaza", fx: "crowd", title: "The Preacher", text: "A blind preacher out of the deep desert speaks to the pilgrim crowds against the priesthood that rules in Muad’Dib’s name. Some whisper that he is Paul."},
+{id: "c2", book: 3, world: "salusa", site: "exile", lm: "tigers", title: "The Corrino plot", text: "On Salusa Secundus, Wensicia Corrino trains Laza tigers to kill the Atreides twins and clear the way for her son Farad’n."},
+{id: "c3", book: 3, world: "arrakis", site: "tabr", lm: "cliffs", title: "The tigers", text: "The twins survive the tigers. Leto lets it be believed he is dead and slips into the desert."},
+{id: "c12", book: 3, world: "arrakis", site: "tabr", title: "Ghanima’s self-hypnosis", text: "Ghanima puts herself into a trance so deep that she truly believes her brother was killed, so that no Truthsayer can uncover the lie."},
+{id: "c4", book: 3, world: "salusa", site: "exile", lm: "palace", title: "Jessica among the Corrinos", text: "Duncan Idaho carries Jessica off to Salusa Secundus, where she trains Farad’n in the Bene Gesserit way."},
+{id: "c13", book: 3, world: "salusa", site: "exile", lm: "palace", title: "Farad’n’s choice", text: "Farad’n turns against his mother’s schemes, denounces her, and casts his lot with the Bene Gesserit."},
+{id: "c5", book: 3, world: "arrakis", site: "jacurutu", lm: "caves", title: "Jacurutu and the Golden Path", text: "Captured at Jacurutu, Leto is forced into the spice trance, sees the Golden Path, and covers himself in sandtrout, becoming more than human."},
+{id: "c9", book: 3, world: "arrakis", title: "Leto breaks the qanats", text: "With the strength of his living skin, Leto runs across the desert and smashes the water channels of the terraforming to slow the death of the worms."},
+{id: "c10", book: 3, world: "arrakis", site: "tabr", title: "Duncan’s death", text: "Duncan Idaho goads Stilgar into killing him, so that Stilgar must take Ghanima and flee Alia’s rule."},
+{id: "c11", book: 3, world: "arrakis", title: "Leto and the Preacher", text: "In the deep desert Leto finds the Preacher and knows him for his father, Paul, who could not walk the path that Leto has chosen."},
+{id: "c6", book: 3, world: "arrakis", site: "fane", lm: "steps", title: "The Preacher’s death", text: "The blind Preacher, who is Paul, is killed on the temple steps. Alia, possessed by the Baron, takes her own life when Leto confronts her."},
 {id: "c7", book: 3, world: "arrakis", site: "keep", title: "Leto II takes the throne", text: "Leto II begins his reign, with Ghanima betrothed to Farad’n."},
 /* IV God Emperor of Dune */
-{id: "g1", book: 4, world: "arrakis", site: "citadel", title: "The God Emperor", text: "After three and a half thousand years Leto II has almost become a sandworm. He rules a peaceful, stagnant empire from his Citadel in the Sareer, guarded by his Fish Speakers."},
+{id: "g9", book: 4, world: "arrakis", site: "forbidden", lm: "edge", title: "Wolves in the Forbidden Forest", text: "Siona’s rebels flee through the Forbidden Forest with papers stolen from the Citadel. The God Emperor’s wolves run them down, and only Siona escapes."},
+{id: "g1", book: 4, world: "arrakis", site: "citadel", lm: "tower", title: "The God Emperor", text: "After three and a half thousand years Leto II has almost become a sandworm. He rules a peaceful, stagnant empire from his Citadel in the Sareer, guarded by his Fish Speakers."},
+{id: "g10", book: 4, world: "arrakis", site: "citadel", lm: "tower", title: "Another Duncan", text: "The Tleilaxu deliver the latest Duncan Idaho ghola to the Citadel. He wakes into a world thousands of years from his own, serving the grandson of the master he remembers."},
 {id: "g2", book: 4, world: "arrakis", site: "citadel", title: "Siona’s rebels", text: "Leto’s descendant Siona leads young rebels who steal some of his journals. Leto watches with interest rather than anger."},
-{id: "g3", book: 4, world: "ix", title: "Hwi Noree", text: "Ix sends Hwi Noree as its ambassador. Leto falls in love with her and decides to marry her."},
-{id: "g4", book: 4, world: "arrakis", site: "sareer", title: "The test in the Sareer", text: "Leto walks Siona and a Duncan ghola into the Sareer. To survive, Siona drinks his spice essence and sees the Golden Path, but keeps her resolve to kill him."},
-{id: "g5", book: 4, world: "arrakis", site: "onn", title: "Festival at Onn", text: "Leto holds his great festival in Onn, the city that rose on the ruins of Arrakeen."},
-{id: "g6", book: 4, world: "arrakis", site: "bridge", title: "The bridge over the Idaho River", text: "On the way to his wedding, the Fish Speaker Nayla cuts the bridge. Leto falls into the river, and the water tears his body apart into sandtrout."},
-{id: "g7", book: 4, world: "arrakis", site: "darbalat", title: "The hidden journals", text: "Leto’s own record of his reign survives in hidden chambers on Arrakis, later found at Dar-es-Balat."},
+{id: "g3", book: 4, world: "ix", site: "ixworks", lm: "works", title: "Hwi Noree", text: "Ix sends Hwi Noree as its ambassador. Leto falls in love with her and decides to marry her."},
+{id: "g4", book: 4, world: "arrakis", site: "sareer", lm: "sand", title: "The test in the Sareer", text: "Leto walks Siona and a Duncan ghola into the Sareer. To survive, Siona drinks his spice essence and sees the Golden Path, but keeps her resolve to kill him."},
+{id: "g5", book: 4, world: "arrakis", site: "onn", lm: "plaza", fx: "crowd", title: "Festival at Onn", text: "Leto holds his great festival in Onn, the city that rose on the ruins of Arrakeen."},
+{id: "g11", book: 4, world: "arrakis", site: "tuono", lm: "village", title: "Tuono", text: "Moneo sends Duncan and Siona to the museum Fremen village of Tuono for their safety, and Leto moves his wedding there. There the two set aside their hatred and plan his death."},
+{id: "g6", book: 4, world: "arrakis", site: "bridge", lm: "bridge", title: "The bridge over the Idaho River", text: "On the way to his wedding, the Fish Speaker Nayla cuts the bridge. Leto falls into the river, and the water tears his body apart into sandtrout."},
+{id: "g12", book: 4, world: "arrakis", site: "bridge", lm: "bank", title: "The last secret", text: "Dying on the riverbank, Leto tells Siona that she is hidden from prescience, the true goal of his breeding, and that her descendants will be too."},
+{id: "g7", book: 4, world: "arrakis", site: "darbalat", lm: "chamber", title: "The hidden journals", text: "Leto’s own record of his reign survives in hidden chambers on Arrakis, later found at Dar-es-Balat."},
 {id: "g8", book: 4, world: "arrakis", title: "The Scattering", text: "Leto’s death releases the pent-up energy of his long peace. Humans spread out into the universe beyond the Imperium, in numbers no power can track or control."},
 /* V Heretics of Dune */
-{id: "h1", book: 5, world: "lernaeus", title: "Teg is called back", text: "Mother Superior Taraza brings the old Bashar Miles Teg out of retirement to guard a new Duncan Idaho ghola."},
-{id: "h2", book: 5, world: "giedi", site: "gammukeep", title: "The ghola on Gammu", text: "Teg trains the young Duncan in the Bene Gesserit Keep, with the Imprinter Lucilla waiting to bind him to the Sisterhood."},
-{id: "h3", book: 5, world: "arrakis", site: "sheeana", title: "Sheeana", text: "A girl survives the worm that destroys her village on Rakis and is found to command the sandworms. The Bene Gesserit take her into their care."},
-{id: "h4", book: 5, world: "arrakis", site: "keen", title: "Odrade on Rakis", text: "Reverend Mother Darwi Odrade, Teg’s secret daughter, commands the Sisterhood’s keep at Keen and begins Sheeana’s training."},
-{id: "h5", book: 5, world: "tleilax", title: "The Tleilaxu Masters", text: "Tylwyth Waff and the Masters pursue their own plan against the Bene Gesserit and the returning Honored Matres."},
-{id: "h6", book: 5, world: "giedi", site: "noglobe", title: "The no-globe", text: "Attacked on Gammu, Teg and Lucilla hide Duncan in an old Harkonnen no-globe, where Teg wakes Duncan’s original memories."},
-{id: "h7", book: 5, world: "giedi", title: "Teg breaks", text: "Staying behind so Lucilla and Duncan can get away, Teg is taken by the Honored Matres and tortured with a T-probe. Something in him wakes: he moves faster than eyes can follow and fights his way out, then seizes a no-ship with veterans gathered in Ysai."},
-{id: "h8", book: 5, world: "giedi", site: "ysai", title: "Duncan and Murbella", text: "The Honored Matre Murbella tries to enslave Duncan sexually, but his Tleilaxu conditioning turns the bond on her, and all his past lives return to him."},
-{id: "h9", book: 5, world: "arrakis", site: "keen", title: "Taraza and Waff", text: "Taraza comes to Rakis to bargain with Waff, and plans for the planet’s destruction to serve the Sisterhood."},
-{id: "h10", book: 5, world: "arrakis", title: "The burning of Rakis", text: "The Honored Matres attack Rakis and scorch its surface. Taraza and Waff die, and Teg dies in a last stand that draws the Matres in."},
+{id: "h1", book: 5, world: "lernaeus", site: "tegfarm", lm: "house", title: "Teg is called back", text: "Mother Superior Taraza brings the old Bashar Miles Teg out of retirement to guard a new Duncan Idaho ghola."},
+{id: "h2", book: 5, world: "giedi", site: "gammukeep", lm: "yard", title: "The ghola on Gammu", text: "Teg trains the young Duncan in the Bene Gesserit Keep, with the Imprinter Lucilla waiting to bind him to the Sisterhood."},
+{id: "h3", book: 5, world: "arrakis", site: "sheeana", lm: "village", fx: "worm", title: "Sheeana", text: "A girl survives the worm that destroys her village on Rakis and is found to command the sandworms. The Bene Gesserit take her into their care."},
+{id: "h4", book: 5, world: "arrakis", site: "keen", lm: "bgkeep", title: "Odrade on Rakis", text: "Reverend Mother Darwi Odrade, Teg’s secret daughter, commands the Sisterhood’s keep at Keen and begins Sheeana’s training."},
+{id: "h5", book: 5, world: "tleilax", site: "bandalong", lm: "kehl", title: "The Tleilaxu Masters", text: "Tylwyth Waff and the Masters pursue their own plan against the Bene Gesserit and the returning Honored Matres."},
+{id: "h12", book: 5, world: "giedi", site: "gammukeep", lm: "walls", fx: "battle", title: "Attack on the Keep", text: "Killers strike at the ghola inside Gammu Keep. Teg and Lucilla slip away with Duncan into the wild country."},
+{id: "h6", book: 5, world: "giedi", site: "noglobe", lm: "globe", title: "The no-globe", text: "Attacked on Gammu, Teg and Lucilla hide Duncan in an old Harkonnen no-globe, where Teg wakes Duncan’s original memories."},
+{id: "h13", book: 5, world: "arrakis", site: "darbalat", lm: "message", title: "Leto’s message", text: "Riding a worm with Sheeana and the Tleilaxu Master Waff, Odrade reaches the ruins of Dar-es-Balat and finds a hidden room where Leto II left a message for those who would come after him."},
+{id: "h7", book: 5, world: "giedi", site: "ysai", lm: "bars", fx: "battle", title: "Teg breaks", text: "Staying behind so Lucilla and Duncan can get away, Teg is taken by the Honored Matres and tortured with a T-probe. Something in him wakes: he moves faster than eyes can follow and fights his way out, then seizes a no-ship with veterans gathered in Ysai."},
+{id: "h8", book: 5, world: "giedi", site: "ysai", lm: "city", title: "Duncan and Murbella", text: "The Honored Matre Murbella tries to enslave Duncan sexually, but his Tleilaxu conditioning turns the bond on her, and all his past lives return to him."},
+{id: "h9", book: 5, world: "arrakis", site: "keen", lm: "port", title: "Taraza and Waff", text: "Taraza comes to Rakis to bargain with Waff, and plans for the planet’s destruction to serve the Sisterhood."},
+{id: "h10", book: 5, world: "arrakis", site: "keen", lm: "city", fx: "bombard", title: "The burning of Rakis", text: "The Honored Matres attack Rakis and scorch its surface. Taraza and Waff die, and Teg dies in a last stand that draws the Matres in."},
 {id: "h11", book: 5, world: "chapterhouse", site: "central", title: "The last worm", text: "Odrade, now Mother Superior, escapes with Sheeana and a single sandworm, bound for Chapterhouse."},
 /* VI Chapterhouse: Dune */
-{id: "x1", book: 6, world: "lampadas", title: "Lampadas destroyed", text: "The Honored Matres destroy the Bene Gesserit school world. Lucilla escapes carrying the memories of millions of Reverend Mothers."},
+{id: "x1", book: 6, world: "lampadas", site: "school", lm: "school", fx: "fire", title: "Lampadas destroyed", text: "The Honored Matres destroy the Bene Gesserit school world. Lucilla escapes carrying the memories of millions of Reverend Mothers."},
 {id: "x2", book: 6, world: "giedi", title: "Rebecca", text: "Hidden among the Jews of Gammu, Lucilla shares her memories with the wild Reverend Mother Rebecca before she is handed to the Honored Matres and killed by the Great Honored Matre Dama."},
-{id: "x3", book: 6, world: "chapterhouse", site: "desert", title: "The desert grows", text: "The worm’s sandtrout spread across Chapterhouse, killing its orchards and building a desert where Sheeana waits for new worms."},
+{id: "x3", book: 6, world: "chapterhouse", site: "desert", lm: "sand", fx: "worm", title: "The desert grows", text: "The worm’s sandtrout spread across Chapterhouse, killing its orchards and building a desert where Sheeana waits for new worms."},
 {id: "x4", book: 6, world: "chapterhouse", site: "central", title: "Murbella’s agony", text: "Murbella, the captive Honored Matre, survives the spice agony and becomes a Reverend Mother."},
-{id: "x5", book: 6, world: "chapterhouse", title: "The child Bashar", text: "A Teg ghola is grown and his memories awakened; Odrade makes him Bashar of the Sisterhood’s forces again."},
+{id: "x5", book: 6, world: "chapterhouse", site: "central", lm: "practice", title: "The child Bashar", text: "A Teg ghola is grown and his memories awakened; Odrade makes him Bashar of the Sisterhood’s forces again."},
+{id: "x11", book: 6, world: "chapterhouse", site: "landing", lm: "noship", title: "Prisoners of the no-ship", text: "Duncan, Murbella and the Master Scytale live as prisoners aboard the grounded no-ship. Duncan keeps seeing an old man and woman in a shimmering net in his visions."},
 {id: "x6", book: 6, world: "tleilax", title: "The last Master", text: "With the Tleilaxu worlds overrun, the Bene Gesserit hold Scytale, the last Master, and bargain for his secrets."},
 {id: "x7", book: 6, world: "giedi", title: "Strike on Gammu", text: "The young Teg leads the Sisterhood’s forces against the Honored Matres on Gammu."},
-{id: "x8", book: 6, world: "junction", title: "Battle of Junction", text: "Teg seizes Junction, but the Honored Matres turn the victory with a new weapon and capture Odrade."},
-{id: "x9", book: 6, world: "junction", title: "The union", text: "Murbella goes in among the Honored Matres, kills their new leader Logno, and is acclaimed by them; Odrade dies in the fighting. Murbella now heads both orders."},
-{id: "x10", book: 6, world: "chapterhouse", site: "landing", title: "The no-ship’s escape", text: "Duncan, Sheeana, the Teg ghola, Scytale and the Jews fly the great no-ship out into the unknown with sandworms aboard, watched by a strange old couple, Daniel and Marty."}
+{id: "x8", book: 6, world: "junction", site: "jseat", lm: "field", fx: "battle", title: "Battle of Junction", text: "Teg seizes Junction, but the Honored Matres turn the victory with a new weapon and capture Odrade."},
+{id: "x9", book: 6, world: "junction", site: "jseat", lm: "seat", title: "The union", text: "Murbella goes in among the Honored Matres, kills their new leader Logno, and is acclaimed by them; Odrade dies in the fighting. Murbella now heads both orders."},
+{id: "x10", book: 6, world: "chapterhouse", site: "landing", lm: "noship", fx: "launch", title: "The no-ship’s escape", text: "Duncan, Sheeana, the Teg ghola, Scytale and the Jews fly the great no-ship out into the unknown with sandworms aboard, watched by a strange old couple, Daniel and Marty."}
   ],
 
 /* ======================================================================== codex */
@@ -661,11 +1106,16 @@ return {
      more: [[2, "Paul’s wife in name only, she joins the plot against him."]]},
     {name: "Gaius Helen Mohiam", role: "Reverend Mother", books: [1, 2], desc: "The Bene Gesserit who tests Paul with the gom jabbar and serves as the Emperor’s Truthsayer."},
     {name: "Count Hasimir Fenring", role: "The Emperor’s friend", books: [1], desc: "A deadly courtier and failed Kwisatz Haderach candidate, with his Bene Gesserit wife Margot."},
+    {name: "Lady Margot Fenring", role: "Bene Gesserit, the Count’s wife", books: [1], desc: "The Count’s wife, who leaves Jessica a hidden warning in the Residency at Arrakeen and later has a part in the Sisterhood’s designs on Feyd-Rautha."},
+    {name: "Esmar Tuek", role: "Smuggler", books: [1], desc: "A smuggler chief who sits at Duke Leto’s dinner in Arrakeen; his smugglers later shelter Gurney Halleck."},
     {name: "Jamis", role: "Fremen", books: [1], desc: "The Fremen who challenges Paul and dies in the duel that makes Paul one of the tribe."},
     {name: "Scytale", role: "Tleilaxu Face Dancer", books: [2], desc: "The shape-shifter at the heart of the plot against Paul."},
     {name: "Edric", role: "Guild Steersman", books: [2], desc: "A Guild navigator who joins the conspiracy, his presence clouding Paul’s vision."},
     {name: "Hayt", role: "Ghola of Duncan Idaho", books: [2], desc: "The Tleilaxu’s gift to Paul, the dead swordmaster grown again with a Mentat’s mind."},
     {name: "Korba", role: "Qizara", books: [2], desc: "A Fremen turned priest of the Qizarate who conspires against Paul."},
+    {name: "Otheym", role: "Fedaykin veteran", books: [2], desc: "One of Paul’s old desert commandos, now dying in Arrakeen, who hands Paul the dwarf Bijaz and his record of traitors."},
+    {name: "Bijaz", role: "Tleilaxu dwarf", books: [2], desc: "A dwarf who carries the names of conspirators in his memory, and who secretly plants a command in the ghola Hayt."},
+    {name: "Farok", role: "Old Fedaykin", books: [2], desc: "A veteran of the jihad who fought at Naraj, where his son was blinded by a stone burner."},
     {name: "Leto II", role: "Paul’s son", books: [3, 4], desc: "Ghanima’s twin, born with all his ancestors’ memories, who chooses the Golden Path.",
      more: [[4, "God Emperor for three and a half thousand years, slowly becoming a sandworm."]]},
     {name: "Ghanima", role: "Paul’s daughter", books: [3], desc: "Leto’s twin, his match in every way, who keeps her ancestors’ memories in check with the help of one, her mother Chani."},
@@ -676,6 +1126,7 @@ return {
     {name: "Siona Atreides", role: "Rebel", books: [4], desc: "Moneo’s daughter and leader of the rebels, the end product of Leto’s breeding plan."},
     {name: "Hwi Noree", role: "Ixian ambassador", books: [4], desc: "A woman made by Ix to be Leto’s perfect companion, whom he truly loves."},
     {name: "Nayla", role: "Fish Speaker", books: [4], desc: "A Fish Speaker who secretly serves Siona."},
+    {name: "Malky", role: "Ixian envoy", books: [4], desc: "Hwi Noree’s uncle, an Ixian envoy at the God Emperor’s court."},
     {name: "Miles Teg", role: "Bashar and Mentat", books: [5, 6], desc: "The Sisterhood’s greatest commander, an old soldier of Atreides blood called back to guard the Duncan ghola.",
      more: [[6, "Reborn as a ghola child and Bashar again."]]},
     {name: "Alma Mavis Taraza", role: "Mother Superior", books: [5], desc: "The head of the Bene Gesserit, whose plans no one sees whole."},
@@ -687,6 +1138,7 @@ return {
      more: [[6, "She becomes a Reverend Mother, then leader of both orders."]]},
     {name: "Tylwyth Waff", role: "Tleilaxu Master", books: [5], desc: "A Master of the Bene Tleilax sent to Rakis."},
     {name: "Schwangyu", role: "Reverend Mother", books: [5], desc: "Commander of the Gammu Keep, who opposes Taraza’s plan for the ghola."},
+    {name: "Hedley Tuek", role: "High Priest of Rakis", books: [5], desc: "High Priest of the Divided God in Keen, who must find a place for a girl the worms obey."},
     {name: "Dama", role: "Great Honored Matre", books: [6], desc: "The leader of the Honored Matres in the old empire."},
     {name: "Logno", role: "Honored Matre", books: [6], desc: "Dama’s chief adviser, who poisons her and takes her place."},
     {name: "Rebecca", role: "Wild Reverend Mother", books: [6], desc: "A Jewish woman of Gammu who took the spice agony outside the Sisterhood and carries the memories of Lampadas."},
@@ -705,12 +1157,16 @@ return {
     {name: "Kwisatz Haderach", first: 1, desc: "The male Bene Gesserit who would see past and future, goal of the Sisterhood’s breeding plan."},
     {name: "The Water of Life", first: 1, desc: "The poisonous bile of a drowned sandworm. A Reverend Mother changes it within her body, and so gains her ancestors’ memories."},
     {name: "Gom jabbar", first: 1, desc: "The poisoned needle of the Bene Gesserit test of humanity."},
+    {name: "Hunter-seeker", first: 1, desc: "A tiny flying needle of poison, steered by someone close by. One is sent against Paul on his first night in Arrakeen."},
+    {name: "Water of the dead", first: 1, desc: "Fremen take back the water of their dead for the tribe. Paul is given Jamis’s water after the duel and weeps for him, giving moisture to the dead."},
     {name: "Shields and lasguns", first: 1, desc: "Personal Holtzman shields stop fast objects, so fighters use blades. A lasgun beam hitting a shield causes a nuclear-scale blast."},
     {name: "The Great Convention", first: 1, desc: "The law that forbids using atomics against people. Paul turns the Atreides atomics on the Shield Wall instead."},
     {name: "Prescience", first: 1, desc: "Seeing the future through the spice. In Herbert, it binds whoever sees as much as it frees them."},
     {name: "The jihad", first: 1, desc: "The holy war in Paul’s name that he foresees and dreads.", more: [[2, "It costs some sixty billion lives."]]},
     {name: "Ghola", first: 2, desc: "A person regrown by the Tleilaxu from the cells of the dead."},
     {name: "Face Dancers", first: 2, desc: "Tleilaxu shape-shifters who can take on any person’s look."},
+    {name: "Stone burner", first: 2, desc: "A forbidden atomic weapon that burns out the eyes of those near it. One is used against Paul in Arrakeen."},
+    {name: "Museum Fremen", first: 4, desc: "In Leto II’s time, villagers who keep up the outward forms of the old desert life as a living display."},
     {name: "The Golden Path", first: 3, desc: "The future Leto II alone is willing to follow: a long tyranny that saves humanity from extinction.",
      more: [[4, "Its last part is humans hidden from prescience, of whom Siona is the first."]]},
     {name: "The Scattering", first: 4, desc: "The great outflow of humanity into the universe after Leto II’s death.", more: [[5, "Its descendants now return, the Honored Matres among them."]]},
