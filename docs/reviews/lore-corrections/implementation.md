@@ -107,3 +107,106 @@ With Society now opening at Book I, some POIs with no `from` gate still name lat
 - vdocks, garter (Light Bringer)
 
 About 13 in-site landmark descriptions (for example citadel, dragonmaw, palatine, arch, bay, harbor, morningstar, athena) do the same. This was a pre-existing gap: L29/L31 didn't cover it and the old default (All) hid it. I didn't make up first-appearance gates. Proposed fix: either confirm a `from:` book per POI (I can apply them mechanically) or approve the rule "a POI or landmark that names a later book is shown from that book". The Hyperion pack's Nemes/Glaucus entries were checked against its own event list (b3f, b3i) and kept at book III.
+
+## Revision 3 (ChatGPT re-review r2: R2-C1 … R2-C5)
+
+Applied by Claude, 2026-10-26, on `fix/lore-corrections`. Main (Track A engine and other merged work) was merged into the branch first (merge 7103730); the fixes follow it. The exact head SHA for review is named in the status note on main. PR #24 stays open and unmerged.
+
+All Society data changes sit in two clearly marked blocks in `society.js`, so they're easy to audit and later data modules can't undo them: `03-spoiler-gates.js` (globe places and body dossiers, applied once after every data module and its final overrides) and "scene spoiler gates" (bird's-eye scenes and landmarks, applied after every site module, including the extensions at the end of the site section). A `from` gate is a **conservative minimum display book** (the latest book its retained text names, or the book ChatGPT specified), not a claim about where a place first appears.
+
+| Finding | Disposition | What changed |
+| --- | --- | --- |
+| R2-C1 | resolved | `society.css`: `.book[hidden]{display:none}` right after `.book`. Book I defaults, the explicit All label and the notice are unchanged. |
+| R2-C2 | resolved | The final Io values are now set once after all data: `raaseat` `from:3`, desc "Io’s capital and the seat of House Raa."; `garter` `from:6`, desc "A belt of farmland around Io’s equator." (food-share claim removed). The Io **scene** (Nesos) is also withheld until III, since its Court landmark carries the book-III negotiation. |
+| R2-C3 | resolved | ChatGPT's minimum POI set applied exactly (table below), plus the same rule on the other places found by an exhaustive scan. The ten body dossiers use ChatGPT's exact neutral bases and the neutral control line; Rhea's destruction text, epithet and control move to book II. Existing era entries (Jupiter IV/VI, Io IV/VI, Europa VI, Ganymede IV) are kept; no deleted sentence was moved into a new era. |
+| R2-C4 | resolved | One visibility rule (`siteVisible` / `lmVisible`) now governs scene entry (`enterSite`, so also direct `#site` URLs, event navigation and nested **Enter** links), scene labels, the dossier's landmark list, landmark focus targets and tooltips, and the "Descend into" buttons, tooltips and label clicks on the globe. Lowering the book inside a scene leaves the scene if it is now withheld, or rebuilds its labels and dossier without the withheld landmarks. `eraVal` no longer falls back to the earliest value when every key is later than the selected book: it returns an empty string, so `{6:"secret"}` shows nothing before VI. Landmark tooltips now read era-keyed descriptions too. |
+| R2-C5 | resolved | All seven exact cuts applied (table below). |
+
+### Per-object book-gate matrix (Society)
+
+**Globe places (`from`)**
+
+| Body | Places | `from` | Basis |
+| --- | --- | --- | --- |
+| mercury | heliopolis, tyche, ladon, redreach, polar | 5 | ChatGPT C3 (names Dark Age) |
+| mercury | caduceus, angelia, erebos, caliban | 5 | Text describes Dark Age events (storms, booby-trap, Lysander's capture, White Fleet wrecks) |
+| mercury | eleusis, children | 5 | Same Dark Age map and battle; hidden with the rest of Helios (children names Republic bases) |
+| venus | gorgon, rath | 4 | ChatGPT C3 (Iron Gold) |
+| venus | vdocks | 6 | ChatGPT C3 |
+| io | raaseat | 3 | ChatGPT C2 |
+| io | garter | 6 | ChatGPT C2/C3 |
+| mars | olympia | 5 (was 4) | ChatGPT C3 |
+| phobos | nucleus | 6 (was 4) | ChatGPT C3 |
+| europa | nyad, nixian, harmonia, heraklion, oceanus, psychonas | 6 | Text names the Light Bringer map |
+| asteroid | base | 6 | ChatGPT C3 (hidden base until VI) |
+| rhea | rheacities | 2 | Rhea destruction text moves to II (L27/L28's earlier gate) |
+
+**Globe places with a safe base (desc keyed by book)**
+
+| Place | Base (books before) | Full original text from |
+| --- | --- | --- |
+| luna / hyperion | "…with the Citadel of Light on its western edge." (+ "Site of the Summit in Golden Son." at II) | III |
+| mars / attica | "A city on seven mountain peaks in Cimmeria, crowned with jagged steel-and-glass towers linked by bridges." | III |
+| io / karrack | "Plains of frozen sulfur crystal lit by Jupiter’s auroras, where Airdancers sail." | III |
+| europa / lornhome | "A white limestone castle on a far-northern island of Europa’s ocean, its walls ringing a private forest." | II |
+| ganymede / docks | "…where the Society’s greatest warships are made." (Colossus removed) | III |
+| triton / lovelockn, cryssos | "One of the two pole engines warming Triton." / "A Red settlement on Triton." (comics-only claims removed from the novel layer) | — (cut) |
+
+**Body dossiers (base, all with control "Not specified for this reading selection")**: jupiter, io, europa, ganymede, kalyke, neptune, triton, pluto, asteroid, rhea exactly as in implementation-review-r2 §R2-C3, including the epithets given there. Rhea's original epithet, control and blurb are now its book-II era.
+
+**Scenes (`from`)**: gala 2; io 3; gorgon 4; helios, heliopolis, tyche 5; venusdocks, garter, newsparta, asteroid 6. Scenes not listed open at Book I (agea, institute, lykos, lykosmine, yorkton, hyperion, attica, asgard, phobos, ganymede, europa) and the demiurge Easter egg.
+
+**Landmarks**
+
+| Scene / landmark | Treatment |
+| --- | --- |
+| agea / field | "A plaza at the Citadel entrance." |
+| agea / walls | Base "Defensive walls about two hundred meters high ring the city."; Ragnar/Iron Rain from II |
+| agea / river | withheld until II (Iron Rain) |
+| agea scene facts | "Jackal’s seat" fact deleted |
+| hyperion / citadel, dragonmaw, palatine, arch | ChatGPT's exact replacements |
+| hyperion / sovspire | Base without the duel; full text (Golden Son duel) from II |
+| hyperion / lostcity | Base without the Jackal meeting; full text from II |
+| hyperion / hysperia | "A Pink breeding facility on the Promenade."; Lilath crash from III |
+| lykos / common | Base without "when he returns in Golden Son"; full text from II |
+| attica scene | Epithet "City of seven peaks"; blurb without "The Jackal rules from here…" and facts without "Ruler" until II, then the original |
+| attica / citadel | Base without the imprisonment/escape; full text from III |
+| asgard / asgard, field | withheld until III |
+| phobos / docks | "Orbital docks serving Phobos." |
+| phobos / helix | "Quicksilver’s twin spiraling towers among the Needles."; peace-talks raid from III |
+| phobos / nucleus | withheld until VI (label, focus target, description) |
+| phobos scene era IV | "Iron Gold. The Republic’s fortress moon: its spires reach far beyond the rock and its ring docks build the fleet." (Nucleus clause and the "Light Bringer" label removed; "and and" typo gone) |
+| ganymede / ring, newtroy | ChatGPT's exact replacements |
+| ganymede / berth | withheld until III (Sword Armada) |
+| ganymede / platform | withheld until II (names Golden Son) |
+| ganymede scene | Blurb and "Made here" fact without Colossus |
+| europa scene | Blurb "An ocean world of islands under Jupiter."; note without the Daughters; Daughters' undersea base model already only at VI |
+| europa / athena | withheld until VI |
+| europa / villa, garden | Neutral bases; Tactus/Lorn and Aja's ambush from II |
+| europa / leviathan | Base without the Light Bringer sentence; full text from VI |
+| heliopolis / bay, via; tyche / morningstar | Inside a book-V scene: Light Bringer clauses (Lightbringer unveiled, Lysander's Triumph, rebuilt as the Lightbringer) from VI |
+
+### Hyperion and Sun Eater (R2-C5, exact)
+
+- bressia: "The Ouster attack here killed his wife and son, and Kassad fought in the Bressian campaign." (ChatGPT's exact sentence; note "his" now has the Consul only as an implied antecedent. Say if you'd prefer "the Consul’s".)
+- deneb3: "home of the Jamnu Republic" deleted from the base and the book-IV era blurb.
+- hebron era 3: "In Endymion, Aenea’s party finds it empty."
+- Glennon-Height rebels: the book-II `more` entry deleted.
+- Farcasters: `more` is now `[2] It is destroyed at the Fall.` and `[3] Tethys portals still wake for Aenea.` (hidden-Core clause and Void mechanism removed).
+- Fatline: the book-IV Void entry deleted.
+- Sun Eater William XXIII `more[7]`: "William names Hadrian Auctor of the Imperium."
+
+### Checks on revision 3
+
+- `pnpm format`, then `pnpm check`: formatting, build, **68/68** tests, check:dist **110 files OK**.
+- `pnpm test:pages`: **12 pages × 2 viewports** pass (`CHROME_PATH` set to the installed Chromium).
+- `pnpm test:browser`: times out in this sandbox at a main-app step unrelated to the atlas (`[data-universe="star-wars"]` navigation wait); it fails the same way on an untouched checkout of current main (at a later step), so it's environmental here. GitHub CI on the PR is the authority for that check.
+- **Spoiler-gate browser suite** (Playwright, Chromium with SwiftShader, static server over `public/`, run separately at **1440×900** and **390×844**; script: `society-gates.cjs` in this folder, run with `VP='{"width":1440,"height":900}'` and a static server on port 8811). **419/419 assertions pass at each size**:
+  - Chronicle: on fresh load only the Book I column has layout boxes; after clicking each of I–VI only that column has layout boxes; All shows all six. The All notice has layout only under All. Events in hidden columns can't take keyboard focus.
+  - Scenes: at each book I–VI, every one of the 22 scenes was entered through `enterSite`: withheld scenes don't open; open scenes show exactly the visible landmark labels, and their dossier and labels never name a later book title.
+  - Book downgrade: in All, entered Asteroid 12193 and Europa, then clicked I: the Asteroid scene is left; Europa drops the Daughters of Athena label and entry.
+  - Event navigation: at each book, the Chronicle's events for that book (up to 40 per book) were followed with `gotoEvent`; the resulting dossier and labels never name a later book title.
+  - Direct entry: `#asteroid` at a fresh load (Book I) doesn't open the scene; `#agea` does.
+  - No page errors.
+  - Node evaluation of the data at Book I (all final overrides applied): the 19 visible places and every body dossier were read in full; no later book is named and none of ChatGPT's listed leaks remain.
+- Limits: the "names a later book" test catches named titles; implicit later facts were handled by reading every Book-I-visible place, body and scene text listed above, not by a primary-source check. Gates are containment decisions, not certified first appearances. 3D models inside open scenes were not changed (for example Phobos's Nucleus dome and statues still render at every book, without a label).

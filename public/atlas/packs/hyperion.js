@@ -77,7 +77,7 @@ const WORLDS=[
  gfx:{type:"forest",sea:.36,pal:["#082236","#1a5a6a","#1a4a1a","#2f7024","#4a6a32","#e8ece4"],clouds:.55,atmo:"#78b4ff"}},
 {id:"bressia",name:"Bressia",group:"outback",books:[1],status:"Outback client world",ly:900,dir:{l:86,b:18},
  star:{name:"Unnamed sun",col:"#fff2dc"},
- blurb:"A militaristic Outback world that served the Hegemony for decades as its proxy against the Ousters. The Ouster attack here, provoked as the Consul later learns, killed his wife and son, and Kassad fought in the Bressian campaign.",
+ blurb:"A militaristic Outback world that served the Hegemony for decades as its proxy against the Ousters. The Ouster attack here killed his wife and son, and Kassad fought in the Bressian campaign.",
  gfx:{type:"terran",sea:.48,pal:["#0a2038","#2a5a7a","#4a5a32","#5e6236","#544436","#e8e8e8"],clouds:.42,atmo:"#7aaaff",lights:.25},
  sites:[{id:"buckminster",name:"Buckminster",lat:22,lon:30,books:[1],desc:"The capital."}]},
 {id:"whirl",name:"Whirl",group:"outback",books:[1],status:"Gas giant",ly:780,dir:{l:58,b:6},
@@ -144,7 +144,7 @@ const WORLDS=[
  sites:[{id:"platform",name:"Pax sea platform",lat:8,lon:30,sea:true,books:[3],desc:"A guard post over the Tethys portals, where Raul uses the hawking mat and explosives."},
   {id:"buoys",name:"Buoyed farcasters",lat:-12,lon:60,sea:true,books:[2,3],desc:"Tethys portals anchored in open ocean."}]},
 {id:"hebron",name:"Hebron",group:"web",web:true,books:[1,3],status:"Web world",
- eras:{3:{blurb:"A largely Jewish desert world, once home to the empathic Seneschai Aluit, where Sol Weintraub withdrew with Rachel. In Endymion, Aenea’s party finds it utterly empty: an early sign that the Core is making whole populations disappear.",status:"Mysteriously empty",gfx:{lights:0}}},
+ eras:{3:{blurb:"A largely Jewish desert world, once home to the empathic Seneschai Aluit, where Sol Weintraub withdrew with Rachel. In Endymion, Aenea’s party finds it empty.",status:"Mysteriously empty",gfx:{lights:0}}},
  star:{name:"Unnamed sun",col:"#fff0d8"},ly:75,
  blurb:"A largely Jewish desert world, once home to the empathic Seneschai Aluit, where Sol Weintraub withdrew with Rachel.",
  gfx:{type:"desert",sea:.14,dune:8,rough:1,pal:["#1a3a3a","#3a6a5a","#7a5434","#a87a4a","#c89a62","#e8d0a8"],clouds:.1,atmo:"#e8c090",atmoK:.8,lights:.1,
@@ -188,9 +188,9 @@ const WORLDS=[
  gfx:{type:"archipelago",sea:.64,freq:1.8,pal:["#033060","#16a8c0","#3a8a3a","#5a9a42","#6a6a4a","#f4f4f4"],clouds:.5,atmo:"#79c0ff",lights:.3},
  sites:[{id:"fujitemple",name:"Shrike temple",lat:10,lon:20,books:[1],desc:"Visited by Sol in his search."}]},
 {id:"deneb3",name:"Deneb Drei",group:"web",web:true,books:[1,3,4],status:"Web world on the Tethys",
- eras:{4:{blurb:"A temperate Tethys world under a brilliant white supergiant, home of the Jamnu Republic. After Aenea’s message spreads, its government makes wearing the cruciform a capital crime.",status:"Wearing the cruciform made a capital crime"}},
+ eras:{4:{blurb:"A temperate Tethys world under a brilliant white supergiant. After Aenea’s message spreads, its government makes wearing the cruciform a capital crime.",status:"Wearing the cruciform made a capital crime"}},
  star:{name:"Deneb (if the name is literal)",col:"#e4ecff",ra:310.36,dec:45.28,ly:2600},
- blurb:"A temperate Tethys world under a brilliant white supergiant, home of the Jamnu Republic.",
+ blurb:"A temperate Tethys world under a brilliant white supergiant.",
  gfx:{type:"terran",sea:.52,pal:["#0a2a4a","#2a7aa8","#4a7a4a","#6a8a5a","#7a7a6a","#ffffff"],clouds:.4,atmo:"#9ac8ff",atmoK:1.2,lights:.3},
  sites:[{id:"newlyons",name:"New Lyons",lat:20,lon:0,books:[1],desc:"The capital."}]},
 {id:"deneb4",name:"Deneb Vier",group:"web",web:true,books:[1],status:"Web world",at:{of:"deneb3",spread:1},ly:2600,
@@ -434,7 +434,7 @@ const FACTIONS=[
  {name:"The Chitchatuk",first:3,desc:"Ice-adapted people of Sol Draconi Septem, who live as hunters and prey of the snow wraiths."},
  {name:"Akerataeli",first:4,desc:"Aliens who command the zeplin-like life of an Outback gas giant, and who also live on the Startree."},
  {name:"Seneschai Aluit",desc:"Empathic aliens once native to Hebron, believed extinct.",more:[[4,"They are later found living on the Startree."]]},
- {name:"Glennon-Height rebels",desc:"Followers of the rebel general whose uprising drove Sad King Billy from Asquith.",more:[[2,"Loyalist cells resurface on Armaghast before the Fall."]]}
+ {name:"Glennon-Height rebels",desc:"Followers of the rebel general whose uprising drove Sad King Billy from Asquith."}
 ];
 const CHARACTERS=[
  {name:"The Consul",role:"Diplomat, pilgrim",books:[1,2,3,4],desc:"The never-named former Consul to Hyperion and a double agent who opened the Tombs for the Ousters.",more:[[3,"After the Fall he tours the dead Web in his Ouster-modified ship, which later carries Aenea."]]},
@@ -469,10 +469,10 @@ const CHARACTERS=[
  {name:"General Morpurgo",role:"FORCE",books:[2],desc:"Gives his life carrying the Core’s deathwand device into the dying farcaster network."}
 ];
 const CONCEPTS=[
- {name:"Farcasters",desc:"The Core’s portal network: step through a doorway on one world and out on another.",more:[[2,"It hides the Core itself, and is destroyed at the Fall."],[3,"Tethys portals still wake for Aenea."],[4,"It runs through the Void Which Binds."]]},
+ {name:"Farcasters",desc:"The Core’s portal network: step through a doorway on one world and out on another.",more:[[2,"It is destroyed at the Fall."],[3,"Tethys portals still wake for Aenea."]]},
  {name:"Hawking drive & time debt",desc:"The faster-than-light drive of the Hegira. Travellers age weeks while years pass at home: just over three years between Parvati and Hyperion."},
  {name:"Gideon drive",first:3,desc:"The Core-given drive of the Pax archangel ships: near-instant jumps that kill everyone aboard, who are then resurrected by cruciform over three painful days."},
- {name:"Fatline",desc:"Instant communication between the stars, believed to be tachyonic.",more:[[3,"Silent after the Fall."],[4,"It is really carried by the Void."]]},
+ {name:"Fatline",desc:"Instant communication between the stars, believed to be tachyonic.",more:[[3,"Silent after the Fall."]]},
  {name:"The datasphere",desc:"The Web’s shared information space, where the All Thing votes.",more:[[2,"Its deep, Core-run layer is the megasphere."]]},
  {name:"The WorldWeb",desc:"The two hundred-odd farcaster-linked worlds of the Hegemony. Protectorate and Outback worlds lie beyond it."},
  {name:"The River Tethys",desc:"A tourist river that flowed through farcaster portals across many Web worlds.",more:[[3,"Its sleeping portals carry Aenea and Raul from world to world."]]},

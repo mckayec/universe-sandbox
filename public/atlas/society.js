@@ -382,6 +382,60 @@ EVENTS.push(
 /* ---- 09-index.js ---- */
 /* ===================== INDEXES & ERAS ===================== */
 const byId={}; BODIES.forEach(b=>byId[b.id]=b);
+/* ---- 03-spoiler-gates.js ---- */
+/* Spoiler gates from the lore review (docs/reviews/lore-corrections, revision 3).
+   Applied once, after every data module above, so later overrides cannot undo them.
+   A `from` gate is a conservative minimum display book (the latest book its text names),
+   not a claim about where a place first appears. */
+(function(){
+  const NEUTRAL="Not specified for this reading selection";
+  const POI_FROM={
+    mercury:{heliopolis:5,tyche:5,ladon:5,redreach:5,polar:5,caduceus:5,angelia:5,erebos:5,eleusis:5,children:5,caliban:5},
+    venus:{gorgon:4,rath:4,vdocks:6},
+    io:{raaseat:3,garter:6},
+    mars:{olympia:5},
+    phobos:{nucleus:6},
+    europa:{nyad:6,nixian:6,harmonia:6,heraklion:6,oceanus:6,psychonas:6},
+    asteroid:{base:6},
+    rhea:{rheacities:2}
+  };
+  const POI_DESC={
+    io:{raaseat:"Io’s capital and the seat of House Raa.",garter:"A belt of farmland around Io’s equator."},
+    triton:{lovelockn:"One of the two pole engines warming Triton.",cryssos:"A Red settlement on Triton."}
+  };
+  /* places whose text runs ahead of Book I: a safe base, the full text from the book it names */
+  const POI_ERA_DESC={
+    luna:{hyperion:{1:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge.",
+      2:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge. Site of the Summit in Golden Son."}},
+    mars:{attica:{1:"A city on seven mountain peaks in Cimmeria, crowned with jagged steel-and-glass towers linked by bridges."}},
+    io:{karrack:{1:"Plains of frozen sulfur crystal lit by Jupiter’s auroras, where Airdancers sail."}},
+    europa:{lornhome:{1:"A white limestone castle on a far-northern island of Europa’s ocean, its walls ringing a private forest."}},
+    ganymede:{docks:{1:"A grey ring of shipyards around Ganymede’s equator, centuries in the building, where the Society’s greatest warships are made."}}
+  };
+  const POI_FULL_AT={luna:{hyperion:3},mars:{attica:3},io:{karrack:3},europa:{lornhome:2},ganymede:{docks:3}};
+  const find=(b,id)=>(POIS[b]||[]).find(p=>p.id===id);
+  Object.entries(POI_FROM).forEach(([b,m])=>Object.entries(m).forEach(([id,k])=>{const p=find(b,id);if(p)p.from=Math.max(p.from||1,k);}));
+  Object.entries(POI_DESC).forEach(([b,m])=>Object.entries(m).forEach(([id,d])=>{const p=find(b,id);if(p)p.desc=d;}));
+  Object.entries(POI_ERA_DESC).forEach(([b,m])=>Object.entries(m).forEach(([id,d])=>{const p=find(b,id);if(!p||typeof p.desc!=="string")return;
+    p.desc=Object.assign({},d,{[POI_FULL_AT[b][id]]:p.desc});}));
+  /* body dossiers: neutral Book I bases; plot text only through era entries that already exist */
+  const BASE={
+    jupiter:{blurb:"A gas giant of the outer Solar System."},
+    io:{blurb:"A moon of Jupiter.",epithet:"Moon of Jupiter"},
+    europa:{blurb:"A moon of Jupiter.",epithet:"Moon of Jupiter"},
+    ganymede:{blurb:"A moon of Jupiter."},
+    kalyke:{blurb:"A small moon of Jupiter."},
+    neptune:{blurb:"The outermost giant planet of the Solar System."},
+    triton:{blurb:"A moon of Neptune.",epithet:"Moon of Neptune"},
+    pluto:{blurb:"A distant world beyond Neptune.",epithet:"Distant world"},
+    asteroid:{blurb:"An asteroid in the belt.",epithet:"Asteroid belt"},
+    rhea:{blurb:"A moon of Saturn.",epithet:"Moon of Saturn"}
+  };
+  Object.entries(BASE).forEach(([id,o])=>{const b=BODIES.find(x=>x.id===id);if(!b)return;
+    if(id==="rhea")b.eras=Object.assign({},b.eras,{2:{epithet:b.epithet,control:b.control,blurb:b.blurb}});
+    Object.assign(b,o,{control:NEUTRAL});});
+})();
+
 const poiById={}; Object.keys(POIS).forEach(k=>POIS[k].forEach(p=>{p.body=k;poiById[k+":"+p.id]=p;}));
 const EV=Object.fromEntries(EVENTS.map(e=>[e.id,e]));
 function placeName(ev){ if(ev.where)return ev.where; if(ev.poi){const p=poiById[ev.body+":"+ev.poi]; return p?p.name:byId[ev.body].name;} return byId[ev.body].name; }
@@ -391,10 +445,15 @@ const SITES={}; /* filled by the site modules */
 /* the world state follows the selected book; "All" shows the latest. Fresh loads start at Book I (spoiler-safe); "All" is an explicit opt-in */
 let ERA=1;
 function eraVal(v){if(v==null||typeof v!=="object"||Array.isArray(v))return v;let best=null,bk=-1;Object.keys(v).forEach(k=>{const n=+k;if(n<=ERA&&n>bk){bk=n;best=v[k];}});
-  if(best==null){const ks=Object.keys(v).map(Number).sort((a,b)=>a-b);best=v[ks[0]];}return best;}
+  /* nothing at or before the selected book: show nothing rather than a later value */
+  return best==null?"":best;}
 function bodyF(b,f){return eraVal(b.eras?Object.fromEntries(Object.entries(b.eras).filter(([k,o])=>o[f]!=null).map(([k,o])=>[k,o[f]]).concat([[0,b[f]]])):b[f]);}
 function poiVisible(p){return (p.from==null||ERA>=p.from)&&(p.until==null||ERA<=p.until);}
 function poiDesc(p){return eraVal(p.desc);}
+/* one visibility rule for scenes and their landmarks (globe pins use poiVisible) */
+function siteVisible(key){const S=SITES[key];return !!S&&(S.from==null||ERA>=S.from);}
+function lmVisible(lm){return !!lm&&(lm.from==null||ERA>=lm.from);}
+function siteLms(S){return S?S.landmarks.filter(lmVisible):[];}
 function siteF(S,f){return S.eras?eraVal(Object.fromEntries(Object.entries(S.eras).filter(([k,o])=>o[f]!=null).map(([k,o])=>[k,o[f]]).concat([[0,S[f]]]))):S[f];}
 
 /* ---- 10-noise.js ---- */
@@ -2739,6 +2798,57 @@ if(SITES.hyperion)SITES.hyperion.eras={4:{blurb:"Iron Gold. Capital of the Repub
 if(SITES.lykos)SITES.lykos.eras={4:{blurb:"By Iron Gold, many Reds have left the mines for camps and towns on the surface, though the old colonies remain."}};
 })();
 
+/* ---------- scene spoiler gates (lore review, revision 3) ----------
+   One table for every bird's-eye scene: `from` on a scene or landmark withholds it (label,
+   dossier entry, focus target, tooltip, entry link and direct entry) before that book; a
+   desc keyed by book shows a safe base until the book its later text names. */
+(function(){
+  const SITE_FROM={gala:2,io:3,gorgon:4,helios:5,heliopolis:5,tyche:5,venusdocks:6,garter:6,newsparta:6,asteroid:6};
+  Object.entries(SITE_FROM).forEach(([k,b])=>{if(SITES[k])SITES[k].from=b;});
+  const LM={
+    agea:{field:{desc:"A plaza at the Citadel entrance."},
+      walls:{desc:{1:"Defensive walls about two hundred meters high ring the city."},full:2},
+      river:{from:2}},
+    hyperion:{citadel:{desc:"Seat of the Sovereign on the city’s western edge."},
+      dragonmaw:{desc:"A gravLift leading beneath the Citadel."},
+      palatine:{desc:"A quarter of the Citadel."},
+      arch:{desc:"The Citadel’s main gate."},
+      sovspire:{desc:{1:"The highest point of the Citadel, rising from its central gardens with a landing pad on its roof."},full:2},
+      lostcity:{desc:{1:"The lowColor slum at the bottom of Hyperion’s stacked layers, far below the sunlit towers."},full:2},
+      hysperia:{desc:{1:"A Pink breeding facility on the Promenade."},full:3}},
+    lykos:{common:{desc:{1:"The public square at the bottom of the township, where Reds gather for broadcasts, floggings and hangings while the homes of the clans climb the walls above."},full:2}},
+    attica:{citadel:{desc:{1:"A fortress of more than two dozen floors on the highest peak, with a prison for thousands."},full:3}},
+    asgard:{asgard:{from:3},field:{from:3}},
+    phobos:{docks:{desc:"Orbital docks serving Phobos."},nucleus:{from:6},
+      helix:{desc:{1:"Quicksilver’s twin spiraling towers among the Needles."},full:3}},
+    ganymede:{ring:{desc:"Shipyards around Ganymede’s equator."},
+      newtroy:{desc:"A city on Ganymede below the dock ring."},
+      berth:{from:3},platform:{from:2}},
+    europa:{athena:{from:6},
+      villa:{desc:{1:"White limestone walls and towers on the island’s height."},full:2},
+      garden:{desc:{1:"Lorn’s private forest within the castle walls."},full:2},
+      leviathan:{desc:{1:"Carved monsters of Europa’s Discordia Sea and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kalibar’s 300-year-old bull."},full:6}},
+    heliopolis:{bay:{desc:{5:"The bay west of the city. Glirastes’ floating home, the Lady Beatrice, hangs above the city."},full:6},
+      via:{desc:{5:"The triumphal avenue where the battle for the city is fought after the shield falls."},full:6}},
+    tyche:{morningstar:{desc:{5:"Darrow’s flagship, under repair at Tyche when the war turns."},full:6}}
+  };
+  Object.entries(LM).forEach(([k,m])=>{const S=SITES[k];if(!S)return;
+    Object.entries(m).forEach(([id,o])=>{const l=S.landmarks.find(x=>x.id===id);if(!l)return;
+      if(o.from)l.from=Math.max(l.from||1,o.from);
+      if(o.desc)l.desc=o.full?Object.assign({},o.desc,{[o.full]:l.desc}):o.desc;});});
+  /* scene containers: base blurbs and facts safe for the first book the scene is open */
+  const A=SITES.agea;if(A)A.facts=A.facts.filter(f=>f[0]!=="Jackal’s seat");
+  const T=SITES.attica;if(T){T.epithet="City of seven peaks";
+    T.eras=Object.assign({},T.eras,{2:{blurb:T.blurb,facts:T.facts}});
+    T.blurb="A city built across seven mountain peaks in Cimmeria. Each summit is crowned with jagged steel-and-glass towers like a crown of thorns, linked by bridges, with the lower wards running down the slopes.";
+    T.facts=T.facts.filter(f=>f[0]!=="Ruler");}
+  const E=SITES.europa;if(E){E.blurb="An ocean world of islands under Jupiter.";
+    E.note="The temple city and its statues are this atlas’s interpretation of Europa’s Roman-styled Rim culture; Lorn’s castle comes from the books.";}
+  const P=SITES.phobos;if(P&&P.eras&&P.eras[4])P.eras[4].blurb="Iron Gold. The Republic’s fortress moon: its spires reach far beyond the rock and its ring docks build the fleet.";
+  const G=SITES.ganymede;if(G){G.blurb="A dull grey ring of shipyards around Ganymede’s equator, roughly two hundred kilometers thick and two and a half centuries in the building. Freighters and warships are assembled here, above a moon that glows like a plum with its cities.";
+    G.facts=G.facts.map(f=>f[0]==="Made here"?["Made here","The Society’s warships"]:f);}
+})();
+
 /* ---- 50-fx.js ---- */
 /* ===================== ANIMATIONS (battles and set pieces) ===================== */
 let fxList=[];
@@ -3054,13 +3164,17 @@ function showTipBody(b,ev){const ne=eventsFor(b.id).filter(e=>!bookFilter||e.boo
   tip.hidden=false;if(ev)placeTip(ev.clientX,ev.clientY);}
 function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books · spoilers";
   if(!changed)return;applyEraTextures();renderIndex();if(mode==="globe"&&cur){buildGlobe(cur);buildPoiLabels();setModeLabels();}
-  if(mode==="site"&&curSite&&curSite.onEra)curSite.onEra(ERA);}
+  if(mode==="globe"&&cur&&selPoi&&!(POIS[cur.id]||[]).some(p=>p.id===selPoi&&poiVisible(p)))selPoi=null;
+  if(mode==="site"&&curSite){
+    if(!siteVisible(curSiteKey)){leaveSite();return;}
+    if(selLm&&!lmVisible(curSite.landmarks.find(l=>l.id===selLm)))selLm=null;
+    buildSiteLabels();if(curSite.onEra)curSite.onEra(ERA);}}
 function evListMeta(evs){return evs.length?evs.map(e=>BOOKS[e.book].n+' · '+esc(e.title)).join('<br>'):'No events in this filter';}
 function showTipPoi(p,x,y){const evs=eventsFor(p.body,p.id).filter(e=>!bookFilter||e.book===bookFilter);
-  tip.innerHTML='<p class="eyebrow">'+esc(byId[p.body].name)+'</p><h3>'+esc(p.name)+'</h3><p>'+esc(poiDesc(p))+'</p><div class="meta">'+evListMeta(evs)+'</div>'+(p.site&&SITES[p.site]?'<div class="cta">Click to descend into '+esc(p.name)+'</div>':'');
+  tip.innerHTML='<p class="eyebrow">'+esc(byId[p.body].name)+'</p><h3>'+esc(p.name)+'</h3><p>'+esc(poiDesc(p))+'</p><div class="meta">'+evListMeta(evs)+'</div>'+(p.site&&siteVisible(p.site)?'<div class="cta">Click to descend into '+esc(p.name)+'</div>':'');
   tip.hidden=false;placeTip(x,y);}
 function showTipLm(lm,x,y){const evs=siteEvents().filter(e=>e.lm===lm.id);
-  tip.innerHTML='<p class="eyebrow">'+esc(curSite.name)+'</p><h3>'+esc(lm.name)+'</h3><p>'+esc(lm.desc)+'</p>'+(evs.length?'<div class="meta">'+evListMeta(evs)+'</div>':'')+'<div class="cta">Click to fly there</div>';
+  tip.innerHTML='<p class="eyebrow">'+esc(curSite.name)+'</p><h3>'+esc(lm.name)+'</h3><p>'+esc(eraVal(lm.desc))+'</p>'+(evs.length?'<div class="meta">'+evListMeta(evs)+'</div>':'')+'<div class="cta">Click to fly there</div>';
   tip.hidden=false;placeTip(x,y);}
 function showTipEvent(e,el){const r=el.getBoundingClientRect();
   tip.innerHTML='<p class="eyebrow">Book '+BOOKS[e.book].n+' · '+BOOKS[e.book].title+'</p><h3>'+esc(e.title)+'</h3><div class="meta"><b>'+esc(placeName(e))+'</b>'+(e.poi?' · '+esc(byId[e.body].name):'')+'</div><p>'+esc(e.text)+'</p>'+(e.fx?'<div class="cta">▶ Click to watch</div>':'<div class="cta">Click to go there</div>');
@@ -3166,12 +3280,12 @@ function ascend(){if(mode!=="globe")return;stopFx();const id=cur.id;
     ctl.follow=null;const o=objs[id];ctl.target.copy(o.pos);renderer.toneMappingExposure=1.05;
     anim={t0:performance.now()+200,dur:1300,from:{tg:o.pos.clone(),r:byId[id].size*6,th:ctl.theta,ph:ctl.phi},to:{tg:new THREE.Vector3(),r:home.r,th:ctl.theta-.2,ph:home.phi},done:()=>{anim=null;}};
     applyHL(false);renderCrumbs();});}
-function enterSite(key,focus,after){const S=SITES[key];if(!S)return;hideTip();hoverSel=null;
+function enterSite(key,focus,after){const S=SITES[key];if(!S||!siteVisible(key))return;hideTip();hoverSel=null;
   if(S.preload&&!S._ready){$("#fadeE").textContent="Charting";$("#fadeN").textContent=S.name;fade.classList.add("on");S.preload().then(()=>{S._ready=true;enterSite(key,focus,after);});return;}
   fadeTo("Descending to",S.name,()=>{stopFx();if(mode==="globe")clearPoiLabels();
     if(!cur||cur.id!==S.body){cur=byId[S.body];}
     mode="site";curSiteKey=key;selLm=null;selEvent=null;if(S._tog)Object.keys(S._tog).forEach(k=>S._tog[k]=false);loadSite(key);buildSiteLabels();
-    if(focus){const lm=S.landmarks.find(l=>l.id===focus);if(lm){selLm=lm.id;sFly(lm.cam);}}
+    if(focus){const lm=siteLms(S).find(l=>l.id===focus);if(lm){selLm=lm.id;sFly(lm.cam);}}
     renderDossier();dossier.hidden=false;renderSiteHud();setModeLabels();showNavHint("site");applyHL(true);renderCrumbs();resize();if(after)after();},260);}
 function leaveSite(){if(mode!=="site")return;const b=byId[curSite.body];const poi=curSite.poi;
   switchGlobe(b,()=>{if(poi)selectPoi(poi,true);});}
@@ -3183,7 +3297,7 @@ function gotoEvent(ev,fromTimeline){hideTip();selEvent=ev.id;
   if(fx&&fx.view==="site"){if(mode==="site"&&curSiteKey===fx.site){renderDossier();applyHL(true);playFx(ev.fx);}else enterSite(fx.site,null,()=>{selEvent=ev.id;renderDossier();applyHL(true);playFx(ev.fx);});return;}
   if(fx&&fx.view==="globe"){const go=()=>{selEvent=ev.id;renderDossier();applyHL(true);playFx(ev.fx);};if(mode==="globe"&&cur.id===fx.body)go();else if(mode==="system"){descendThen(fx.body,go);}else switchGlobe(byId[fx.body],go);return;}
   const p=ev.poi&&poiById[ev.body+":"+ev.poi];
-  if(p&&p.site&&SITES[p.site]){const focus=ev.lm||p.focus;if(mode==="site"&&curSiteKey===p.site){const lm=curSite.landmarks.find(l=>l.id===focus);if(lm){selLm=lm.id;sFly(lm.cam);}renderDossier();applyHL(true);}
+  if(p&&p.site&&siteVisible(p.site)){const focus=ev.lm||p.focus;if(mode==="site"&&curSiteKey===p.site){const lm=siteLms(curSite).find(l=>l.id===focus);if(lm){selLm=lm.id;sFly(lm.cam);}renderDossier();applyHL(true);}
     else enterSite(p.site,focus,()=>{selEvent=ev.id;renderDossier();applyHL(true);});return;}
   const act=()=>{selEvent=ev.id;if(ev.poi)selectPoi(ev.poi,true);else{selPoi=null;renderDossier();}applyHL(true);
     const it=dossier.querySelector('.evitem[data-id="'+ev.id+'"]');if(it)it.scrollIntoView({block:"nearest",behavior:"smooth"});};
@@ -3212,7 +3326,7 @@ function renderDossier(){
     h+='<div class="rule"><span class="eyebrow">'+(S.tods.winter?"Hour & season":"Hour")+'</span></div><div class="tod" role="group" aria-label="Time of day">'+TOD_KEYS.filter(k=>S.tods[k]).map(k=>'<button data-tod="'+k+'" aria-pressed="'+(tod.cur===k)+'">'+((S.todLabel&&S.todLabel[k])||TOD_LABEL[k])+'</button>').join("")+'</div>';
     h+='<div class="rule"><span class="eyebrow">Landmarks</span></div>';
     if(S.toggles)h+='<div class="rule"><span class="eyebrow">Show</span></div><div class="tod">'+S.toggles.map(t=>'<button data-tog="'+t.id+'" aria-pressed="'+!!(S._tog&&S._tog[t.id])+'">'+esc(t.label)+'</button>').join("")+'</div>';
-    S.landmarks.forEach(l=>{const n=evs.filter(e=>e.lm===l.id).length;h+='<button class="place'+(selLm===l.id?" sel":"")+'" data-lm="'+l.id+'"><span class="pn"><span class="pip"></span>'+esc(l.name)+'<span class="pc">'+(n?n+" ev":"")+'</span></span><span class="pd">'+esc(eraVal(l.desc))+'</span>'+(l.enter&&SITES[l.enter]?'<span class="btn primary enter" data-site="'+l.enter+'">Enter '+esc(l.name)+' ›</span>':'')+'</button>';});
+    siteLms(S).forEach(l=>{const n=evs.filter(e=>e.lm===l.id).length;h+='<button class="place'+(selLm===l.id?" sel":"")+'" data-lm="'+l.id+'"><span class="pn"><span class="pip"></span>'+esc(l.name)+'<span class="pc">'+(n?n+" ev":"")+'</span></span><span class="pd">'+esc(eraVal(l.desc))+'</span>'+(l.enter&&siteVisible(l.enter)?'<span class="btn primary enter" data-site="'+l.enter+'">Enter '+esc(l.name)+' ›</span>':'')+'</button>';});
     h+='<div class="rule"><span class="eyebrow">Events here'+(bookFilter?' · Book '+BOOKS[bookFilter].n:'')+'</span></div>';
     if(!evs.length)h+='<p class="empty">'+(bookFilter?'Nothing happens here in this book.':'No pivotal events take place here.')+'</p>';
     evs.forEach(e=>h+=evItem(e));
@@ -3222,7 +3336,7 @@ function renderDossier(){
   let h='<button class="btn back" id="back">← Solar system</button><p class="eyebrow">'+esc(bodyF(b,"epithet"))+'</p><h2>'+esc(b.name)+'</h2><div class="held">'+(b.real?'<b>'+esc(b.cls)+'</b>':'Held by <b>'+esc(bodyF(b,"control"))+'</b>')+(bookFilter?' · Book '+BOOKS[bookFilter].n:'')+'</div><p class="blurb">'+esc(bodyF(b,"blurb"))+'</p>';
   if(pois.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
     pois.forEach(p=>{const n=eventsFor(b.id,p.id).filter(e=>!bookFilter||e.book===bookFilter).length;
-      h+='<button class="place'+(selPoi===p.id?" sel":"")+'" data-poi="'+p.id+'"><span class="pn"><span class="pip"></span>'+esc(p.name)+'<span class="pc">'+(n?n+" ev":"")+'</span></span><span class="pd">'+esc(poiDesc(p))+'</span>'+(p.site&&SITES[p.site]?'<span class="btn primary enter" data-site="'+p.site+'" data-focus="'+(p.focus||"")+'">Descend into '+esc(p.name)+' ›</span>':'')+'</button>';});}
+      h+='<button class="place'+(selPoi===p.id?" sel":"")+'" data-poi="'+p.id+'"><span class="pn"><span class="pip"></span>'+esc(p.name)+'<span class="pc">'+(n?n+" ev":"")+'</span></span><span class="pd">'+esc(poiDesc(p))+'</span>'+(p.site&&siteVisible(p.site)?'<span class="btn primary enter" data-site="'+p.site+'" data-focus="'+(p.focus||"")+'">Descend into '+esc(p.name)+' ›</span>':'')+'</button>';});}
   h+='<div class="rule"><span class="eyebrow">Events here'+(bookFilter?' · Book '+BOOKS[bookFilter].n:'')+'</span></div>';
   if(!evs.length)h+='<p class="empty">'+(bookFilter?'Nothing happens here in this book.':'No pivotal events take place here.')+'</p>';
   evs.forEach(e=>h+=evItem(e));
@@ -3250,7 +3364,7 @@ function selectPoi(pid,rotate){selPoi=pid;renderDossier();applyHL(true);poiLabel
   if(pid&&rotate){const m=markers.find(m=>m.p.id===pid);if(m){const v=m.local;const ry=Math.atan2(-v.x,v.z);const zp=Math.hypot(v.x,v.z);
     let rx=Math.atan2(v.y,zp);rx=Math.max(-1.35,Math.min(1.35,rx));let d=ry-gRot.ty;d=Math.atan2(Math.sin(d),Math.cos(d));gRot.ty+=d;gRot.tx=rx;gRot.auto=false;gZoom.tz=Math.min(gZoom.tz,9);}}
   const pe=dossier.querySelector(".place.sel");if(pe)pe.scrollIntoView({block:"nearest",behavior:"smooth"});}
-function selectLm(id,keepEvent){if(!keepEvent)selEvent=null;selLm=id;const lm=curSite.landmarks.find(l=>l.id===id);if(lm)sFly(lm.cam);renderDossier();applyHL(true);
+function selectLm(id,keepEvent){const lm=siteLms(curSite).find(l=>l.id===id);if(!lm)return;if(!keepEvent)selEvent=null;selLm=id;if(lm)sFly(lm.cam);renderDossier();applyHL(true);
   siteLabels.forEach(l=>l.el.classList.toggle("sel",l.lm.id===id));const pe=dossier.querySelector(".place.sel");if(pe)pe.scrollIntoView({block:"nearest",behavior:"smooth"});}
 
 /* ===================== LABELS ===================== */
@@ -3261,9 +3375,9 @@ function buildPoiLabels(){clearPoiLabels();markers.forEach(m=>{const el=document
   el.addEventListener("mouseenter",ev=>{hoverSel={body:cur.id,poi:m.p.id};applyHL(true);showTipPoi(m.p,ev.clientX,ev.clientY);});
   el.addEventListener("mousemove",ev=>placeTip(ev.clientX,ev.clientY));
   el.addEventListener("mouseleave",()=>{hoverSel=null;applyHL(false);hideTip();});
-  el.addEventListener("click",()=>{hideTip();selEvent=null;if(m.p.site&&SITES[m.p.site]){selectPoi(m.p.id,true);setTimeout(()=>enterSite(m.p.site,m.p.focus||null),500);}else selectPoi(m.p.id,true);});});}
+  el.addEventListener("click",()=>{hideTip();selEvent=null;if(m.p.site&&siteVisible(m.p.site)){selectPoi(m.p.id,true);setTimeout(()=>enterSite(m.p.site,m.p.focus||null),500);}else selectPoi(m.p.id,true);});});}
 function buildSiteLabels(){siteLabels.forEach(l=>l.el.remove());siteLabels=[];
-  curSite.landmarks.forEach(lm=>{const el=document.createElement("button");el.className="plbl lm";el.innerHTML='<span class="pip"></span><span>'+esc(lm.name)+'</span>';labelsEl.appendChild(el);
+  siteLms(curSite).forEach(lm=>{const el=document.createElement("button");el.className="plbl lm";el.innerHTML='<span class="pip"></span><span>'+esc(lm.name)+'</span>';labelsEl.appendChild(el);
     const l={el,lm,pos:new THREE.Vector3().fromArray(lm.pos)};siteLabels.push(l);
     el.addEventListener("mouseenter",ev=>{hoverSel={body:curSite.body,poi:null,lm:lm.id};applyHL(true);showTipLm(lm,ev.clientX,ev.clientY);});
     el.addEventListener("mousemove",ev=>placeTip(ev.clientX,ev.clientY));
@@ -3374,8 +3488,8 @@ $("#chronHint").innerHTML="Spoilers are shown through the selected book. Hover a
 selectBook(1);updateBodies();applyCam();applyHL(false);renderCrumbs();requestAnimationFrame(frame);
 const startHash=(location.hash||"").slice(1);
 if(byId[startHash]&&startHash!=="sun")setTimeout(()=>descend(startHash),600);
-else if(SITES[startHash])setTimeout(()=>enterSite(startHash),600);
-window.__atlas={makeShip,col,glowSprite,GLOW_WARM,get fx(){return fxList;},setTodNow:k=>{if(curSite&&curSite.tods[k]){tod.cur=k;tod.t=1;tod.from=null;applyTod(curSite.tods[k],curSite.tods[k],1);}},enterSite,gotoEvent,EV,playFx,renderer,site3,sSun,sHemi,camX,sctl,skyMat,WIN_U,tod,get curSite(){return curSite;},THREE};
+else if(siteVisible(startHash))setTimeout(()=>enterSite(startHash),600);
+window.__atlas={SITES,POIS,BODIES,get ERA(){return ERA;},selectBook,makeShip,col,glowSprite,GLOW_WARM,get fx(){return fxList;},setTodNow:k=>{if(curSite&&curSite.tods[k]){tod.cur=k;tod.t=1;tod.from=null;applyTod(curSite.tods[k],curSite.tods[k],1);}},enterSite,gotoEvent,EV,playFx,renderer,site3,sSun,sHemi,camX,sctl,skyMat,WIN_U,tod,get curSite(){return curSite;},THREE};
 
 /* ---- 69-war-sim.js ---- */
 /* ===================== WAR MODE · SIMULATION ===================== */
