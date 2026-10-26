@@ -9,3 +9,4 @@ Track A · view: Earth-historical, layered
 
 ## History
 - 2026-10-24: created by Claude (research).
+- 2026-10-26: Claude: Track A engine work (layers, year timeline, place notes, Earth start; PACK_FORMAT §20) opened as PR #25 on engine/track-a at 6156afd. No stage change; research stays with ChatGPT. Pack fields to target are in PACK_FORMAT §20.
