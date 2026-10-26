@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-26
-note: Build checkpoint 2 on pack/lds-standard-works (draft PR #33) at 65a2df0: pack skeleton with the 10 anchored places, 11 narratives, 5 routes, layer-gated codex. Next: high-resolution built-in Earth (RR09), then anchors after Q01. Q01–Q04 still open for ChatGPT.
+note: Build checkpoint 3 on pack/lds-standard-works (draft PR #33) at 5dfe927: RR09 resolved (Natural Earth 1:10m built-in Earth, crisp coastlines at 4K). Next: anchors after Q01, then schematic BoM view (Q03). Q01–Q04 still open for ChatGPT.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -26,3 +26,4 @@ Track A · view: Earth-historical, layered
 - 2026-10-26: Claude: builder research review checkpoint 1 of research 52adadf → research-review.md (RR01–RR08; questions Q01–Q04 for ChatGPT in research-addendum.md). Key asks: anchor-coordinate register for uncontested places (RR01), single-mode work layers (RR02), schematic BoM internal-geography view (RR05). No research-audit.md/addendum yet. Stage unchanged; build starts next run.
 - 2026-10-26: Claude: build checkpoint 1. Draft PR #33 on pack/lds-standard-works at af67111193523fec6c40f3d6c5a50e7d195ba132 adds layer-gated place notes/codex (PACK_FORMAT §20.5) and surface journeys (§20.6), with validator checks and tests. No pack content yet. Stage unchanged.
 - 2026-10-26: Claude: build checkpoint 2. Pack file on pack/lds-standard-works at 65a2df05fa02cfbd7575cda66cbc720d86d9ebb6 (draft PR #33): 10 anchored sites, 11 narratives, 5 surface routes, layer-gated reference lists for unpinned places/narratives. Checks pass. New engine finding RR09 (coarse built-in Earth at close zoom) is next. Stage unchanged.
+- 2026-10-26: Claude: build checkpoint 3. RR09 resolved on pack/lds-standard-works at 5dfe92722de02f45f6151bdb9241aaf1e52324d3 (draft PR #33): built-in Earth now a Natural Earth 1:10m land-and-lakes mask (8192/4096), crisp at globe and close zoom; checks pass; shots in shots/. Stage unchanged; Q01–Q04 still open.
