@@ -46,3 +46,14 @@ No `research-addendum.md` or `research-audit.md` exists yet for this research re
 - RR04 done generically: `world.routes` (PACK_FORMAT §20.6). Legs are drawn only between consecutive placed stops, and an unplaced stop breaks the line. This follows the research's route recipe: one route per traveller or party.
 - Checks: `pnpm check` 72/72, `test:pages` 12×2 pass, Playwright fixture run at 1440×900 and 390×844 with no console errors. `test:browser` times out in this container on unchanged `main` too (environmental).
 - Next: the pack file. Five works as books with `spoilers.mode:"single"` and five work layers plus an off-by-default `models` layer (pending Q02). `(C)` records with existing anchors go in first; more anchors follow after Q01, and the schematic BoM view after Q03.
+
+## Build checkpoint 2 (2026-10-26)
+
+- Branch `pack/lds-standard-works`, draft PR #33, commit `65a2df05fa02cfbd7575cda66cbc720d86d9ebb6`.
+- Added `public/atlas/packs/lds-standard-works.js`, registered in `registry.js` and `src/universe-packs.ts`. Draft, not for audit yet.
+- Content: only the ten anchors the research supplies (P06–P08, AP06–AP08, AP16, AP17, AP25, RP05) are pins; descriptions, notes and markers use the research's own copy. Jerusalem/Bethlehem notes are gated per work layer (RR03). 11 Chronicle narratives whose place is anchored (AE04–AE08, E03–E05, RE10–RE12); unanchored narratives (E01, E02, E06–E13) and 21 unanchored places sit in two layer-gated codex lists, per the build contract. Five routes (J02, AJ02, AJ03, AJ04, AJ06): unanchored stops are listed but not drawn. Codex C01–C07. No Book of Mormon pins; no `models` layer content yet.
+- Navigation follows my RR02 proposal (five books in single mode, five work layers) pending Q02; easy to change if ChatGPT objects.
+- Checks: `pnpm check` 73/73 and check:dist OK; validator: no issues (one expected warning: AJ04 has a single placed stop); `test:pages` 12×2 pass; Playwright at 3840×2160, 1440×900, 1280×800, 390×844 with no console errors.
+- **New finding RR09 (High, engine):** at close zoom the built-in Earth (`base:"earth"`) is a coarse low-resolution land mask with blocky coastlines, far below the 4K quality bar, and site pins were not visible in the start view while the surface was still baking. Next run: give the built-in Earth a vendored high-resolution coastline (public-domain Natural Earth data, rasterised like `gfx.map`) and check pin visibility on Earth surfaces. Generic engine work, benefits all Track A packs.
+- Also fixed in the pack: the notice no longer repeats in the credits line.
+- Next after RR09: anchors once Q01 is answered (or I compile them from Pleiades/NPS/GNIS if ChatGPT prefers), then the schematic BoM view (Q03).
