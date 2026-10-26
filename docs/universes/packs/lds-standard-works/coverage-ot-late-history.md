@@ -1,6 +1,6 @@
 # Old Testament late history — complete chapter reading ledger
 
-2026-10-26. Scope: 1–2 Chronicles, Ezra, Nehemiah and Esther: **98 chapters / 2,617 verses**. All verse bodies in the disclosed KJV transcription were read for atlas relevance, including genealogies and administrative lists. This is a substantive textual atlas pass, **not** a claim that all 98 official Church pages or all historical questions have been verified. No chapter is excluded as irrelevant merely because it is genealogical, legal or repetitive. The CSV records per-unit source, inspected extent, proposed record ID, exclusions and remaining work.
+2026-10-26. Scope: 1–2 Chronicles, Ezra, Nehemiah and Esther: **98 chapters / 2,617 verses**. All verse bodies in the disclosed KJV transcription were read for atlas relevance, including genealogies and administrative lists. A later complete official verse-body collation covers all 98 chapters; this is still **not** a claim that every heading, footnote or historical question has been verified. No chapter is excluded as irrelevant merely because it is genealogical, legal or repetitive. The CSV records per-unit source, inspected extent, proposed record ID, exclusions and remaining work.
 
 ## Evidence and implementation contract
 
@@ -159,7 +159,7 @@ These are index views into the chapter records, **not additional independent rec
 | `achmetha-archive` / palace archive setting | “Ezra places the discovered decree record at Achmetha in the province of the Medes.” | LHE-06 [O9] (C); modern identification needs separate historical source |
 | `ahava-camp` / river camp | “Ezra's company assembles and fasts by Ahava before departing for Jerusalem.” | LHE-08 [O5] (C); no exact river course supplied |
 | `casiphia` / delegation destination | “Ezra sends representatives to Iddo at Casiphia to obtain temple ministers.” | LHE-08 [O5] (C); do not route the entire caravan here |
-| `shushan-narrative` / city/palace setting | “Shushan is the royal setting of Esther and the setting of Nehemiah's opening report.” | LHS-01,02; LHN-01 [T4/T5/O12] (C-T); merge with Daniel only after its evidence is checked |
+| `shushan-narrative` / city/palace setting | “Shushan is the royal setting of Esther and the setting of Nehemiah's opening report.” | LHS-01,02; LHN-01 [T4/T5/O12] (C-T); reuse WP-P06 after its Daniel8 check; preserve vision mode |
 | `jerusalem-nehemiah-gates` / city landmark network | “Nehemiah describes gates, towers, pools and wall sections during inspection, repair and dedication.” | LHN-02,03,12 [T4/O6/O10] (C-T); text schematic allowed, modern geometry withheld |
 | `ono-invitation` / proposed meeting place | “Opponents invite Nehemiah to a village in the plain of Ono, but he refuses.” | LHN-06 [T4] (C-T); no completed visit |
 | `returnee-settlement-registers` / grouped towns | “Ezra and Nehemiah preserve overlapping lists of returnee families and towns, with differences in wording and totals.” | LHE-02; LHN-07,11 [T3/T4] (C-T); no merged census |
@@ -232,7 +232,7 @@ No BCE dates are calculated from summed reigns. Named regnal years and months ar
 
 ## Source register and access record
 
-All retrieved/read 2026-10-26. T sources are open transcriptions of public-domain scripture, **not Church publications, critical editions or independent historical scholarship**. Each chapter's `source_url` in the CSV points to the exact pinned file actually read. Official links in the chapter table are canonical navigation links; only the O-register pages below were opened in this subtask. The Church footnotes supply useful variant readings and cautious possible identifications, not automatic certainty.
+All retrieved/read 2026-10-26. T sources are open transcriptions of public-domain scripture, **not Church publications, critical editions or independent historical scholarship**. Each chapter's `source_url` in the CSV points to the exact pinned file actually read. The O-register records the initial selected human readings. The later complete official body collation and retained capture manifest cover every chapter, as documented in the final section. The Church footnotes supply useful variant readings and cautious possible identifications, not automatic certainty.
 
 | Key | Source and examined extent | SHA256 for exact transcription bytes |
 |---|---|---|
@@ -257,9 +257,254 @@ All retrieved/read 2026-10-26. T sources are open transcriptions of public-domai
 
 ## Audit and exact remaining work
 
-- The ledger covers29+36+10+13+10=98 chapters and942+822+280+406+167=2,617verse bodies. No chapter is heading-only, pending or auto-excluded; all were read in the explicitly disclosed transcription. Thirteen official chapter bodies were additionally read. The CSV keeps edition-comparison work visible for the other85 units.
-- Reading and reference extraction are complete for this assigned five-book textual pass. The **official-edition comparison is incomplete**, and the file must not be described as98 officially verified chapters. The transcription already shows spelling differences (e.g. Ezar in1Chr1:38 versus official Ezer); main-text facts are paraphrased, and minor spellings must be taken from the official source before serialization.
+- The ledger covers29+36+10+13+10=98 chapters and942+822+280+406+167=2,617verse bodies. No chapter is heading-only, pending or auto-excluded; all were read in the explicitly disclosed transcription. Thirteen official chapter bodies were additionally read. A later complete machine collation covers all 98 official verse bodies, with lexical differences manually reviewed; the CSV distinguishes these operations.
+- Reading and reference extraction are complete for this assigned five-book textual pass. The **official body collation is complete**, while exhaustive apparatus comparison and historical verification are not. The transcription already shows spelling differences (e.g. Ezar in1Chr1:38 versus official Ezer); main-text facts are paraphrased, and minor spellings must be taken from the official source before serialization.
 - No independent ancient chronology, modern coordinates, palace/wall reconstructions, excavated temple identifications or historical casualty figures were established. Those are separate evidence tasks, not concealed facts. The narrative can be represented safely as attributed nonspatial reference content.
 - Full scholarly histories and critical editions were not inspected. External evidence for Persian kings, Shishak, Assyrian campaigns, Gihon engineering and Esther's historicity needs proper primary/critical sources before any scholarly/historical claim is added. This file makes no such claim.
 - Integration still must deduplicate overlapping places/persons against the other Bible files, choose canonical slugs, preserve the explicit source differences, and test reading/layer gates. Do not inflate the count by adding this file's index views as duplicates of its98 chapter records.
-- Source access was temporarily limited by webHTTP429; all five fallback JSON files succeeded atHTTP200. No approval denial occurred. Most official pages were not individually retried; their status is **not yet compared**, not “inaccessible.”
+- Source access was temporarily limited by webHTTP429; all five fallback JSON files succeeded atHTTP200. No approval denial occurred. All 98 official chapter bodies were subsequently retrieved across complete windows and compared; no body-access gaps remain. Headings/footnotes are not all collated.
+
+## Expanded typed integration
+
+All rows here inherit `layer:bible`, `first:1`; exact visitor wording is quoted. These are reference/index views, not additional independent event counts. No numeric `when` or coordinates are supplied. Keep `has-setting`, `describes-movement`, `mentions-family` and `explains` as different relations. Reuse P02 Shechem, P07 Bethlehem, P08 Jerusalem, AP06 Jericho and AP07 Babylon. Shared slugs such as Samaria, Damascus, Lebanon, Bashan, Seir and Sheba resolve with the major-prophet registry before creation. New narrative features may remain children/reference facets of an existing city without becoming map markers. Citation links below identify textual support; official-edition comparison status remains in the source ledger.
+
+### Additional material places and aliases
+
+| Stable reference key | Type | Support | Exact visitor copy |
+|---|---|---|---|
+| `hebron` | city | [1 Chronicles11:1–3](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/11?lang=eng); [3:1–4](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/3?lang=eng) | “Chronicles places David's early royal household and Israel's acknowledgment of his kingship at Hebron; reuse the earlier patriarchal and royal city reference.” |
+| `shechem` | city | [2 Chronicles10:1](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/10?lang=eng) | “Rehoboam goes to Shechem for the assembly that precedes the division of the kingdom; reuse P02, not a new royal-era city.” |
+| `bethlehem` | city | [1 Chronicles11:15–19](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/11?lang=eng); [2 Chronicles11:6](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/11?lang=eng) | “Chronicles names Bethlehem in David's water episode and Rehoboam's defenses; reuse P07 while preserving separate episodes.” |
+| `samaria` | city | [2 Chronicles18:2](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/18?lang=eng); [28:8–15](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/28?lang=eng) | “Samaria is a royal meeting place and the setting for the release and care of Judah's captives; share the major-prophet city slug.” |
+| `damascus` | city | [2 Chronicles16:2](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/16?lang=eng); [28:5,23](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/28?lang=eng) | “Damascus is named in diplomatic and captive contexts; keep the city distinct from its rulers and from Judah's imitation of its cult.” |
+| `ramoth-gilead` | city | [2 Chronicles18:2–34](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/18?lang=eng) | “Ahab and Jehoshaphat's campaign at Ramoth-gilead ends with Ahab's death; link the Kings parallel before assigning a second event.” |
+| `tekoa` | city-region | [2 Chronicles20:20](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/20?lang=eng); [11:6](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/11?lang=eng) | “Jehoshaphat's company goes toward Tekoa's wilderness; the town also appears among fortified places.” |
+| `berachah-valley` | valley | [2 Chronicles20:26](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/20?lang=eng) | “The valley receives a blessing-related name after the reported victory; no exact modern valley is selected.” |
+| `en-gedi` | locality | [2 Chronicles20:2](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/20?lang=eng) | “The invading coalition is reported at Hazazon-tamar, identified in the verse as En-gedi; reconcile the major-prophet en-gedi key by this textual alias.” |
+| `gur-baal` | locality | [2 Chronicles26:7](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/26?lang=eng) | “Gur-baal is associated with Arabians in the account of Uzziah's campaigns; its position remains unresolved.” |
+| `ezem` | settlement | [1 Chronicles4:29](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/4?lang=eng) | “Ezem is named in the Simeonite settlement list; listing does not establish a travel stop or a modern identification.” |
+| `gedor-pasture` | locality | [1 Chronicles4:39–41](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/4?lang=eng) | “Simeonite groups seek pasture toward Gedor's entrance and occupy the described land; do not merge every Gedor name without evidence.” |
+| `seir` | mountain-region | [1 Chronicles4:42–43](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/4?lang=eng) | “A separate Simeonite group goes to Mount Seir and settles after conflict; share the major-prophet regional slug without merging distinct episodes.” |
+| `gilead` | region | [1 Chronicles5:9–16](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/5?lang=eng) | “Gilead belongs to the Transjordan settlement setting in Chronicles; no modern boundary polygon is supplied.” |
+| `bashan` | region | [1 Chronicles5:11–16](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/5?lang=eng) | “Gadite settlements and pasture are associated with Bashan; share the major-prophet region key.” |
+| `halah-habor-hara-gozan` | deportation-destination-list | [1 Chronicles5:26](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/5?lang=eng) | “The deportation account lists Halah, Habor, Hara and the river Gozan; the list is not an ordered itinerary or one combined town.” |
+| `ezion-geber` | port-setting | [2 Chronicles8:17–18](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/8?lang=eng); [20:35–37](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/20?lang=eng) | “Ezion-geber is connected with Solomon's shipping and Jehoshaphat's failed shipbuilding venture; do not animate the latter as a successful voyage.” |
+| `eloth` | coastal-city | [2 Chronicles8:17](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/8?lang=eng); [26:2](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/26?lang=eng) | “Eloth appears beside Ezion-geber in Solomon's activity and in Uzziah's rebuilding; the Elath spelling is an edition-supported alias (lh-a04).” |
+| `ophir` | trade-destination | [2 Chronicles8:18](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/8?lang=eng); [9:10](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/9?lang=eng) | “Ophir is a source of gold and other imported materials in the account; no modern candidate is selected.” |
+| `sheba` | region | [2 Chronicles9:1–12](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/9?lang=eng) | “The queen of Sheba visits Solomon at Jerusalem; reuse the major-prophet trade-region key while leaving its modern extent unresolved.” |
+| `lebanon` | mountain-region | [2 Chronicles2:8,16](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/2?lang=eng); [Ezra3:7](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/3?lang=eng) | “Lebanon supplies timber carried by sea for building at Jerusalem; share the major-prophet region reference.” |
+| `joppa` | port | [2 Chronicles2:16](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/2?lang=eng); [Ezra3:7](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/3?lang=eng) | “Joppa is the landing place for timber brought by sea from Lebanon; the narrative does not specify a surviving wharf.” |
+| `succoth-casting` | locality | [2 Chronicles4:17](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/4?lang=eng) | “The bronze casting ground lies between Succoth and Zeredathah in the Jordan plain; this is not automatically the Exodus camp AP01.” |
+| `zeredathah` | locality | [2 Chronicles4:17](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/4?lang=eng) | “Zeredathah is an endpoint used to describe the bronze casting ground; no exact furnace location follows.” |
+| `megiddo` | battle-region | [2 Chronicles35:22–24](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/35?lang=eng) | “Josiah is wounded in the valley of Megiddo and taken to Jerusalem, where he dies in Chronicles' account; retain differences from Kings' wording.” |
+| `lachish` | city | [2 Chronicles11:9](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/11?lang=eng); [32:9](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/32?lang=eng) | “Lachish appears among defenses and as Sennacherib's siege setting when his servants address Jerusalem; share the major-prophet city key.” |
+| `azekah` | city | [2 Chronicles11:9](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/11?lang=eng) | “Azekah belongs to Rehoboam's fortified-city list; no construction date is calculated.” |
+| `gerar` | city-region | [2 Chronicles14:13–14](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/14?lang=eng) | “Asa's army pursues the defeated force toward Gerar and attacks surrounding cities; a modern campaign path is not established.” |
+| `mareshah` | city-valley-setting | [2 Chronicles14:9–10](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/14?lang=eng) | “Asa's forces meet the opposing army by Mareshah in the valley of Zephathah; neither name supplies an exact battle coordinate.” |
+| `zephathah` | valley | [2 Chronicles14:10](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/14?lang=eng) | “The valley of Zephathah is named beside Mareshah as the army's position; do not replace it with a guessed modern valley.” |
+| `jericho` | city | [2 Chronicles28:15](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/28?lang=eng); [Ezra2:34](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/2?lang=eng) | “Jericho receives released captives and appears in the return register; reuse AP06 and keep those episodes distinct from Joshua's conquest.” |
+| `shushan-narrative` | royal-city | [Nehemiah1:1](https://www.churchofjesuschrist.org/study/scriptures/ot/neh/1?lang=eng); [Esther1:2](https://www.churchofjesuschrist.org/study/scriptures/ot/esth/1?lang=eng) | “Shushan frames Nehemiah's court service and Esther's palace narrative; shared setting does not establish the same reign or room.” |
+| `ahava` | watercourse-camp | [Ezra8:15,21,31](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/8?lang=eng) | “Ezra gathers the caravan by the water flowing to Ahava and departs from Ahava on the twelfth day of the first month.” |
+| `casiphia` | settlement | [Ezra8:17–20](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/8?lang=eng) | “Ezra sends envoys to Iddo at Casiphia to obtain ministers; the main caravan is not said to detour there.” |
+| `achmetha` | royal-archive-setting | [Ezra6:2](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/6?lang=eng) | “A memorandum concerning Cyrus's decree is found at Achmetha in the province of the Medes; no exact archive chamber is identified.” |
+| `ono` | plain-settlements | [Nehemiah6:2](https://www.churchofjesuschrist.org/study/scriptures/ot/neh/6?lang=eng) | “Nehemiah's opponents invite him to meet in Ono's plain; he refuses, so no completed journey is recorded.” |
+| `india-esther` | imperial-extent-region | [Esther1:1](https://www.churchofjesuschrist.org/study/scriptures/ot/esth/1?lang=eng); [8:9](https://www.churchofjesuschrist.org/study/scriptures/ot/esth/8?lang=eng) | “India is one endpoint of the realm's described extent in Esther; the narrative does not supply modern national borders.” |
+| `ethiopia-esther` | imperial-extent-region | [Esther1:1](https://www.churchofjesuschrist.org/study/scriptures/ot/esth/1?lang=eng); [8:9](https://www.churchofjesuschrist.org/study/scriptures/ot/esth/8?lang=eng) | “Ethiopia is the other named endpoint of Esther's described realm; no modern territorial polygon is implied.” |
+
+### Whole-chapter typed crosswalk
+
+The 98 chapter reference families above retain their exact copy and source-specific qualifications. These crosslinks add reusable destinations, movements and interpretive families without replacing source differences. Genealogical and municipal lists remain citation-backed grouped references rather than invented sequences of journeys. Named family members are not assumed to found a city merely because a text calls someone its father.
+
+| Chapter family | Reference and additional typed links |
+|---|---|
+| LH1-01 — 1 Chronicles 1 | chapter-reference `LH1-01` |
+| LH1-02 — 1 Chronicles 2 | chapter-reference `LH1-02`; explains `lh-c01-david-house` |
+| LH1-03 — 1 Chronicles 3 | chapter-reference `LH1-03`; explains `lh-c01-david-house` |
+| LH1-04 — 1 Chronicles 4 | chapter-reference `LH1-04`; has-setting `ezem`; has-setting `gedor-pasture`; has-setting `seir`; describes-movement `lh-j01-simeonite-expansion` |
+| LH1-05 — 1 Chronicles 5 | chapter-reference `LH1-05`; has-setting `gilead`; has-setting `bashan`; has-setting `halah-habor-hara-gozan`; describes-movement `lh-j02-assyrian-deportation` |
+| LH1-06 — 1 Chronicles 6 | chapter-reference `LH1-06`; explains `lh-c02-levites` |
+| LH1-07 — 1 Chronicles 7 | chapter-reference `LH1-07` |
+| LH1-08 — 1 Chronicles 8 | chapter-reference `LH1-08` |
+| LH1-09 — 1 Chronicles 9 | chapter-reference `LH1-09`; explains `lh-c02-levites` |
+| LH1-10 — 1 Chronicles 10 | chapter-reference `LH1-10` |
+| LH1-11 — 1 Chronicles 11 | chapter-reference `LH1-11`; has-setting `hebron`; has-setting `bethlehem`; describes-movement `lh-j03-david-accession` |
+| LH1-12 — 1 Chronicles 12 | chapter-reference `LH1-12` |
+| LH1-13 — 1 Chronicles 13 | chapter-reference `LH1-13`; describes-movement `lh-j04-ark` |
+| LH1-14 — 1 Chronicles 14 | chapter-reference `LH1-14` |
+| LH1-15 — 1 Chronicles 15 | chapter-reference `LH1-15`; describes-movement `lh-j04-ark`; explains `lh-c03-musical-service` |
+| LH1-16 — 1 Chronicles 16 | chapter-reference `LH1-16`; describes-movement `lh-j04-ark`; explains `lh-c03-musical-service` |
+| LH1-17 — 1 Chronicles 17 | chapter-reference `LH1-17`; explains `lh-c04-davidic-promise` |
+| LH1-18 — 1 Chronicles 18 | chapter-reference `LH1-18` |
+| LH1-19 — 1 Chronicles 19 | chapter-reference `LH1-19` |
+| LH1-20 — 1 Chronicles 20 | chapter-reference `LH1-20` |
+| LH1-21 — 1 Chronicles 21 | chapter-reference `LH1-21` |
+| LH1-22 — 1 Chronicles 22 | chapter-reference `LH1-22`; explains `lh-c04-davidic-promise` |
+| LH1-23 — 1 Chronicles 23 | chapter-reference `LH1-23`; explains `lh-c02-levites` |
+| LH1-24 — 1 Chronicles 24 | chapter-reference `LH1-24`; explains `lh-c02-levites` |
+| LH1-25 — 1 Chronicles 25 | chapter-reference `LH1-25`; explains `lh-c02-levites`; explains `lh-c03-musical-service` |
+| LH1-26 — 1 Chronicles 26 | chapter-reference `LH1-26`; explains `lh-c02-levites` |
+| LH1-27 — 1 Chronicles 27 | chapter-reference `LH1-27` |
+| LH1-28 — 1 Chronicles 28 | chapter-reference `LH1-28`; explains `lh-c04-davidic-promise` |
+| LH1-29 — 1 Chronicles 29 | chapter-reference `LH1-29`; explains `lh-c01-david-house` |
+| LH2-01 — 2 Chronicles 1 | chapter-reference `LH2-01` |
+| LH2-02 — 2 Chronicles 2 | chapter-reference `LH2-02`; has-setting `lebanon`; has-setting `joppa`; describes-movement `lh-j05-timber` |
+| LH2-03 — 2 Chronicles 3 | chapter-reference `LH2-03` |
+| LH2-04 — 2 Chronicles 4 | chapter-reference `LH2-04`; has-setting `succoth-casting`; has-setting `zeredathah` |
+| LH2-05 — 2 Chronicles 5 | chapter-reference `LH2-05`; describes-movement `lh-j04-ark` |
+| LH2-06 — 2 Chronicles 6 | chapter-reference `LH2-06` |
+| LH2-07 — 2 Chronicles 7 | chapter-reference `LH2-07` |
+| LH2-08 — 2 Chronicles 8 | chapter-reference `LH2-08`; has-setting `ezion-geber`; has-setting `eloth`; has-setting `ophir` |
+| LH2-09 — 2 Chronicles 9 | chapter-reference `LH2-09`; has-setting `sheba`; describes-movement `lh-j06-sheba` |
+| LH2-10 — 2 Chronicles 10 | chapter-reference `LH2-10`; has-setting `shechem`; explains `lh-c05-two-kingdoms` |
+| LH2-11 — 2 Chronicles 11 | chapter-reference `LH2-11`; has-setting `bethlehem`; has-setting `lachish`; has-setting `azekah`; explains `lh-c05-two-kingdoms` |
+| LH2-12 — 2 Chronicles 12 | chapter-reference `LH2-12` |
+| LH2-13 — 2 Chronicles 13 | chapter-reference `LH2-13` |
+| LH2-14 — 2 Chronicles 14 | chapter-reference `LH2-14`; has-setting `gerar`; has-setting `mareshah`; has-setting `zephathah` |
+| LH2-15 — 2 Chronicles 15 | chapter-reference `LH2-15` |
+| LH2-16 — 2 Chronicles 16 | chapter-reference `LH2-16`; has-setting `damascus` |
+| LH2-17 — 2 Chronicles 17 | chapter-reference `LH2-17` |
+| LH2-18 — 2 Chronicles 18 | chapter-reference `LH2-18`; has-setting `samaria`; has-setting `ramoth-gilead`; describes-movement `lh-j07-jehoshaphat`; explains `lh-c05-two-kingdoms` |
+| LH2-19 — 2 Chronicles 19 | chapter-reference `LH2-19`; describes-movement `lh-j07-jehoshaphat` |
+| LH2-20 — 2 Chronicles 20 | chapter-reference `LH2-20`; has-setting `tekoa`; has-setting `berachah-valley`; has-setting `en-gedi`; describes-movement `lh-j07-jehoshaphat` |
+| LH2-21 — 2 Chronicles 21 | chapter-reference `LH2-21` |
+| LH2-22 — 2 Chronicles 22 | chapter-reference `LH2-22`; explains `lh-c05-two-kingdoms`; explains `lh-c06-joash-rescue` |
+| LH2-23 — 2 Chronicles 23 | chapter-reference `LH2-23`; explains `lh-c06-joash-rescue` |
+| LH2-24 — 2 Chronicles 24 | chapter-reference `LH2-24` |
+| LH2-25 — 2 Chronicles 25 | chapter-reference `LH2-25`; explains `lh-c05-two-kingdoms` |
+| LH2-26 — 2 Chronicles 26 | chapter-reference `LH2-26`; has-setting `gur-baal` |
+| LH2-27 — 2 Chronicles 27 | chapter-reference `LH2-27` |
+| LH2-28 — 2 Chronicles 28 | chapter-reference `LH2-28`; has-setting `jericho`; describes-movement `lh-j08-captive-care` |
+| LH2-29 — 2 Chronicles 29 | chapter-reference `LH2-29` |
+| LH2-30 — 2 Chronicles 30 | chapter-reference `LH2-30` |
+| LH2-31 — 2 Chronicles 31 | chapter-reference `LH2-31` |
+| LH2-32 — 2 Chronicles 32 | chapter-reference `LH2-32` |
+| LH2-33 — 2 Chronicles 33 | chapter-reference `LH2-33`; describes-movement `lh-j09-manasseh` |
+| LH2-34 — 2 Chronicles 34 | chapter-reference `LH2-34`; explains `lh-c07-prophetic-women` |
+| LH2-35 — 2 Chronicles 35 | chapter-reference `LH2-35`; has-setting `megiddo` |
+| LH2-36 — 2 Chronicles 36 | chapter-reference `LH2-36`; describes-movement `lh-j10-exile-return` |
+| LHE-01 — Ezra 1 | chapter-reference `LHE-01`; describes-movement `lh-j10-exile-return` |
+| LHE-02 — Ezra 2 | chapter-reference `LHE-02`; has-setting `jericho`; describes-movement `lh-j10-exile-return`; explains `lh-c09-return-registers` |
+| LHE-03 — Ezra 3 | chapter-reference `LHE-03`; has-setting `lebanon`; has-setting `joppa`; describes-movement `lh-j05-timber`; explains `lh-c10-restoration-of-worship` |
+| LHE-04 — Ezra 4 | chapter-reference `LHE-04` |
+| LHE-05 — Ezra 5 | chapter-reference `LHE-05` |
+| LHE-06 — Ezra 6 | chapter-reference `LHE-06`; has-setting `achmetha`; explains `lh-c10-restoration-of-worship` |
+| LHE-07 — Ezra 7 | chapter-reference `LHE-07`; describes-movement `lh-j11-ezra`; explains `lh-c08-ezra-nehemiah` |
+| LHE-08 — Ezra 8 | chapter-reference `LHE-08`; has-setting `ahava`; has-setting `casiphia`; describes-movement `lh-j11-ezra` |
+| LHE-09 — Ezra 9 | chapter-reference `LHE-09`; explains `lh-c11-identity-and-coercion` |
+| LHE-10 — Ezra 10 | chapter-reference `LHE-10`; explains `lh-c11-identity-and-coercion` |
+| LHN-01 — Nehemiah 1 | chapter-reference `LHN-01`; has-setting `shushan-narrative`; describes-movement `lh-j12-nehemiah`; explains `lh-c08-ezra-nehemiah` |
+| LHN-02 — Nehemiah 2 | chapter-reference `LHN-02`; describes-movement `lh-j12-nehemiah`; describes-movement `lh-j13-night-inspection` |
+| LHN-03 — Nehemiah 3 | chapter-reference `LHN-03` |
+| LHN-04 — Nehemiah 4 | chapter-reference `LHN-04` |
+| LHN-05 — Nehemiah 5 | chapter-reference `LHN-05`; explains `lh-c08-ezra-nehemiah` |
+| LHN-06 — Nehemiah 6 | chapter-reference `LHN-06`; has-setting `ono`; explains `lh-c07-prophetic-women`; explains `lh-c10-restoration-of-worship` |
+| LHN-07 — Nehemiah 7 | chapter-reference `LHN-07`; explains `lh-c09-return-registers` |
+| LHN-08 — Nehemiah 8 | chapter-reference `LHN-08`; explains `lh-c08-ezra-nehemiah`; explains `lh-c10-restoration-of-worship` |
+| LHN-09 — Nehemiah 9 | chapter-reference `LHN-09`; explains `lh-c10-restoration-of-worship` |
+| LHN-10 — Nehemiah 10 | chapter-reference `LHN-10`; explains `lh-c10-restoration-of-worship` |
+| LHN-11 — Nehemiah 11 | chapter-reference `LHN-11` |
+| LHN-12 — Nehemiah 12 | chapter-reference `LHN-12`; describes-movement `lh-j14-dedication-a`; describes-movement `lh-j15-dedication-b`; explains `lh-c03-musical-service` |
+| LHN-13 — Nehemiah 13 | chapter-reference `LHN-13`; describes-movement `lh-j12-nehemiah`; explains `lh-c11-identity-and-coercion` |
+| LHS-01 — Esther 1 | chapter-reference `LHS-01`; has-setting `shushan-narrative`; has-setting `india-esther`; has-setting `ethiopia-esther`; explains `lh-c12-esther-household` |
+| LHS-02 — Esther 2 | chapter-reference `LHS-02`; explains `lh-c12-esther-household` |
+| LHS-03 — Esther 3 | chapter-reference `LHS-03`; explains `lh-c13-haman-mordecai` |
+| LHS-04 — Esther 4 | chapter-reference `LHS-04`; explains `lh-c13-haman-mordecai` |
+| LHS-05 — Esther 5 | chapter-reference `LHS-05`; explains `lh-c13-haman-mordecai` |
+| LHS-06 — Esther 6 | chapter-reference `LHS-06`; describes-movement `lh-j16-mordecai-honor`; explains `lh-c13-haman-mordecai` |
+| LHS-07 — Esther 7 | chapter-reference `LHS-07`; explains `lh-c13-haman-mordecai` |
+| LHS-08 — Esther 8 | chapter-reference `LHS-08`; explains `lh-c13-haman-mordecai` |
+| LHS-09 — Esther 9 | chapter-reference `LHS-09`; explains `lh-c14-purim` |
+| LHS-10 — Esther 10 | chapter-reference `LHS-10` |
+
+### Identity decisions needed before application serialization
+
+- `engedi-hazazon-tamar` is an explicit textual alias pair and should resolve to the major-prophet `en-gedi` place, with the Chronicles episode as an added view. `Eloth`/`Elath` and `Shushan`/`Susa` are now supported by the opened Bible Dictionary entries below; `Achmetha`/`Ecbatana` remains unadopted.
+- Judah's Succoth casting locality is distinct from AP01's Exodus camp unless a source supports identity. Gibeon and Gibeah remain distinct. Ornan's floor, Moriah, the temple and Jerusalem are related features, not four interchangeable city coordinates.
+- Existing 16 journey families preserve actor changes, intended journeys, invitation refusals and unordered destination lists. Each chapter also remains an explanatory/genealogical event-family view when no new movement is supported.
+- The expanded registry supplies material setting reuse, but does not assert that all incidental genealogical town names already have separate entities or that modern locations have been verified. Full name-level serialization and whole-pack alias validation remain explicit follow-up work.
+
+
+### Additional movement and source-view identity
+
+`lh-j17-josiah-return`, `layer:bible`, `first:1`, type `reported-transport`: “After being wounded in the valley of Megiddo, Josiah is transferred to another chariot and taken to Jerusalem, where Chronicles reports his death and burial.” [2Chronicles35:22–25](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/35?lang=eng), LH2-35. Link the Megiddo and Jerusalem records; compare Kings' distinct wording before merging event dates. No exact road or battle point is supplied.
+
+## Complete official body collation and durable witnesses
+
+On 2026-10-26, **98/98 official chapter verse bodies** were retrieved across recorded windows and compared against the already fully read pinned transcription. All expected verses are present: **zero missing body windows**. 72 chapters match after normalization of case, punctuation and spacing; 26 chapters contain the lexical differences listed below, which were manually inspected. This is full-body machine collation plus manual difference review, **not** a claim of exhaustive official heading, footnote, JST or linked-source review. The earlier selected official full-chapter readings remain separately recorded.
+
+The metadata-only [source witness manifest](ot-late-major-source-witnesses.csv) has one official and one fallback witness per chapter. Actual raw responses, pinned JSON files, unit bundles, extraction and comparison outputs are retained privately at `/workspace/lds-source-evidence/20261026/ot-late-major/`; no full raw scripture captures are published in this documentation branch. Bundle hashes attest to retained captures, not human reading or independent historical truth. Earlier temporary HTTP429 limits did not prevent this completed later capture.
+
+Use the **official spelling and pronoun** below in future name-level serialization; do not create two entities from an orthographic variant. The normalized comparison does not erase the existing substantive cross-canon tensions about ages, dates, census totals, ancestry or prophecy.
+
+| Passage | Fallback transcription → official body | Disposition |
+|---|---|---|
+| [1-chr/1:38](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/1?lang=eng) | ezar → ezer | Use official wording; no event/location change inferred. |
+| [1-chr/2:4](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/2?lang=eng) | bore → bare | Use official wording; no event/location change inferred. |
+| [1-chr/2:47](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/2?lang=eng) | gesham → geshan | Use official wording; no event/location change inferred. |
+| [1-chr/2:49](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/2?lang=eng) | achsa → achsah | Use official wording; no event/location change inferred. |
+| [1-chr/5:11](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/5?lang=eng) | salcah → salchah | Use official wording; no event/location change inferred. |
+| [1-chr/5:20](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/5?lang=eng) | intreated → entreated | Use official wording; no event/location change inferred. |
+| [1-chr/7:1](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/7?lang=eng) | shimrom → shimron | Use official wording; no event/location change inferred. |
+| [1-chr/7:19](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/7?lang=eng) | shemidah → shemida | Use official wording; no event/location change inferred. |
+| [1-chr/7:27](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/7?lang=eng) | jehoshuah → jehoshua | Use official wording; no event/location change inferred. |
+| [1-chr/10:13](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/10?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [1-chr/10:14](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/10?lang=eng) | enquired → inquired | Use official wording; no event/location change inferred. |
+| [1-chr/13:3](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/13?lang=eng) | enquired → inquired | Use official wording; no event/location change inferred. |
+| [1-chr/14:10](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/14?lang=eng) | enquired → inquired | Use official wording; no event/location change inferred. |
+| [1-chr/14:14](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/14?lang=eng) | enquired → inquired | Use official wording; no event/location change inferred. |
+| [1-chr/18:10](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/18?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [1-chr/21:30](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/21?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [1-chr/23:20](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/23?lang=eng) | micah → michah | Use official wording; no event/location change inferred. |
+| [1-chr/24:11](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/24?lang=eng) | jeshuah → jeshua | Use official wording; no event/location change inferred. |
+| [1-chr/28:17](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/28?lang=eng) | basons → basins; bason → basin; bason → basin | Use official wording; no event/location change inferred. |
+| [2-chr/3:5](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/3?lang=eng) | cieled → ceiled | Use official wording; no event/location change inferred. |
+| [2-chr/3:14](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/3?lang=eng) | vail → veil | Use official wording; no event/location change inferred. |
+| [2-chr/4:8](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/4?lang=eng) | basons → basins | Use official wording; no event/location change inferred. |
+| [2-chr/4:11](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/4?lang=eng) | basons → basins | Use official wording; no event/location change inferred. |
+| [2-chr/4:22](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/4?lang=eng) | basons → basins | Use official wording; no event/location change inferred. |
+| [2-chr/18:4](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/18?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [2-chr/18:6](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/18?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [2-chr/18:7](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/18?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [2-chr/20:36](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/20?lang=eng) | eziongaber → ezion geber | Use official wording; no event/location change inferred. |
+| [2-chr/32:31](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/32?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [2-chr/33:13](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/33?lang=eng) | intreated → entreated | Use official wording; no event/location change inferred. |
+| [2-chr/33:19](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/33?lang=eng) | intreated → entreated; sins → sin | Official uses singular “sin”; retain the account of Manasseh without treating this as a distinct event. |
+| [2-chr/34:21](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/34?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [2-chr/34:26](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/34?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [2-chr/35:20](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/35?lang=eng) | charchemish → carchemish | Use official wording; no event/location change inferred. |
+| [ezra/1:10](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/1?lang=eng) | basons → basins; basons → basins | Use official wording; no event/location change inferred. |
+| [ezra/2:2](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/2?lang=eng) | mizpar → mispar | Use official wording; no event/location change inferred. |
+| [ezra/4:10](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/4?lang=eng) | asnapper → asnappar | Use official wording; no event/location change inferred. |
+| [ezra/7:14](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/7?lang=eng) | enquire → inquire | Use official wording; no event/location change inferred. |
+| [ezra/8:23](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/8?lang=eng) | intreated → entreated | Use official wording; no event/location change inferred. |
+| [ezra/8:27](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/8?lang=eng) | basons → basins | Use official wording; no event/location change inferred. |
+| [neh/7:30](https://www.churchofjesuschrist.org/study/scriptures/ot/neh/7?lang=eng) | gaba → geba | Use official wording; no event/location change inferred. |
+| [neh/7:70](https://www.churchofjesuschrist.org/study/scriptures/ot/neh/7?lang=eng) | basons → basins | Use official wording; no event/location change inferred. |
+
+Remaining official-source work is **material heading/footnote/JST interpretation where a claim uses it**, not missing verse bodies. Independent historical identification, source-specific contradiction handling, final cross-shard entity deduplication and rendering validation remain required before research-ready status.
+
+## Targeted apparatus, aliases and gate audit
+
+The following checks close material interpretation/identity gaps while preserving the KJV verse body. All are source-labelled reference cards at `layer:bible`, `first:1`; they are not historical proof of an ancient event.
+
+| Key / affected family | Exact safe copy and required distinction | Opened evidence |
+|---|---|---|
+| `lh-a01-angel` / LH1-21 | “The KJV account describes the Lord halting the destroying angel at Ornan's floor. The JST version expands the scene with the angel's outstretched hand and the Lord beholding Israel before stopping the destruction.” Present the two texts separately; the JST does not supply a new Jerusalem site or an independent plague date. | [1Chronicles21:15](https://www.churchofjesuschrist.org/study/scriptures/ot/1-chr/21?lang=eng), [JST1Chronicles21:15](https://www.churchofjesuschrist.org/study/scriptures/jst/jst-1-chr/21?lang=eng); complete one-verse appendix and its heading read. |
+| `lh-a02-lying-spirit` / LH2-18 | “In Micaiah's KJV speech the Lord has put a lying spirit in the prophets' mouths. The JST reads that the Lord has found a lying spirit there.” Retain the difference in agency rather than silently rewriting the vision as either wording. Both belong to the same narrated confrontation, not two campaigns. | [2Chronicles18:22](https://www.churchofjesuschrist.org/study/scriptures/ot/2-chr/18?lang=eng), [JST2Chronicles18:22](https://www.churchofjesuschrist.org/study/scriptures/jst/jst-2-chr/18?lang=eng); complete appendix and heading read. |
+| `lh-a03-trans-river` / LHE-04,LHE-06 | “Ezra names the Syrian language in the letter; the Church note identifies it as Aramaic. Its notes locate the officials' side of the river west of Euphrates.” These are editorial explanations, not a newly dated survey. Ezra4's heading mentions both temple and walls; it does not resolve every royal chronology question. | [Ezra4:7,10–17 and notes](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/4?lang=eng), [Ezra6:6,13 and notes](https://www.churchofjesuschrist.org/study/scriptures/ot/ezra/6?lang=eng). |
+| `lh-a04-elath-eloth` / LH2-08,LH2-26 | “The Church's Bible Dictionary treats Elath and Eloth as names for the same Edomite town and naval station.” Store `elath` as an alias of the owned `eloth` textual place; this closes the spelling identity decision with an attributed study-help source. No coordinates are added. | [Bible Dictionary: Elath or Eloth](https://www.churchofjesuschrist.org/study/scriptures/bd/elath?lang=eng), complete short entry read. |
+| `lh-a05-shushan-susa` / LHN-01,LHS-01 | “The Church's Bible Dictionary identifies Shushan as also known as Susa.” Canonical owned key is `shushan-narrative`; `shushan` and `susa` are aliases, and WP-P06 is a reference alias. Daniel's vision, Nehemiah's court service and Esther's story retain distinct source cards and palace contexts. | [Bible Dictionary: Shushan](https://www.churchofjesuschrist.org/study/scriptures/bd/shushan?lang=eng), complete short entry read; WP-P06 independently supplies Daniel8's textual setting. This alias does not verify Esther's historicity or a particular palace chamber. |
+
+### Local alias cleanup and remaining global collisions
+
+- `shushan-narrative` is canonical locally; the expanded `shushan` view and WP-P06 refer to it. This closes a duplicate generated during registry expansion.
+- `en-gedi` is canonical; `engedi-hazazon-tamar` is a source-view alias, supported by 2Chronicles20:2. WP-P11's poetic vineyard and Ezekiel47's visionary fishery remain distinct associations.
+- `ahava-camp` is a camp associated with the `ahava` watercourse, not an identical geometry. `achmetha-archive` is a record-discovery setting associated with `achmetha`; `ono-invitation` is an uncompleted meeting associated with `ono`. Retain typed `located-at`/`proposed-at` edges instead of emitting duplicate cities.
+- The existing grouped entries `solomon-maritime-network`, `tekoa-berachah-campaign`, `judah-fortress-network`, `returnee-settlement-registers` and `levitical-settlement-network` are source networks, not places. Their named members refer to canonical place entries without inheriting an invented common coordinate.
+- `gihon-ophel` must split into watercourse/fortification associations if serialized as entities. It is not Eden's Gihon, and the river and hill cannot become one point. Likewise the Jordan casting-ground reference is a relation between places, not a synonym for Succoth or Zeredathah.
+- `casiphia` occurs in two index tables as one entity/reference view, not two separate locations. Shechem P02, Bethlehem P07, Jerusalem P08, Jericho AP06 and Babylon AP07 reuse remains mandatory.
+- The royal names Jehoram/Joram, Ahaziah, Joash/Jehoash and Jehoahaz require kingdom, parentage and source labels. No name-only unification; succession is an office relation unless parentage is explicitly supplied. Huldah and Noadiah are distinct; Zechariah son of Jehoiada in2Chronicles24 is not automatically the book prophet linked with Ezra5–6.
+
+**Precisely unresolved evidence:** the attempted Bible Dictionary path `/study/scriptures/bd/achmetha?lang=eng` returned an inaccessible-tool response. Ezra6's body and notes are accessible but do not state Ecbatana. Therefore the modern/historical alias Achmetha–Ecbatana remains unadopted here; this is not a missing primary chapter or an authorization denial. All 269 assigned chapter bodies remain fully captured and collated. The absence of this optional dictionary entry does not block safe nonspatial Achmetha copy.
+
+Targeted apparatus retrievals above are separately recorded in [ot-late-major-apparatus-witnesses.csv](ot-late-major-apparatus-witnesses.csv), including the failed optional Achmetha URL and initial dictionary navigation windows. Blank normalized-body hashes are deliberate: these are apparatus captures, not a second whole-chapter collation. Original 538 body witnesses and their captures are unchanged.

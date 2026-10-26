@@ -34,6 +34,12 @@ The owner explicitly selected **comprehensive** coverage on2026-10-26. A smaller
 | `comprehensive-audit.md` | Current research acceptance gates and integration audit |
 | `identity-register.md` | Shared-place/person collisions and deliberate non-merges |
 | `prominent-claims-audit.md` | Ten prominent claims with honest second-source dispositions |
+| `source-access-evidence.md`, `*-source-witnesses.csv` | Actual capture provenance, witness/edition distinctions, hashes and explicitly fresh verification retrievals |
+| `validate-source-witnesses.py` | Verifies public capture fingerprints against the private archive; does not certify mental reading or historical claims |
+| `frontmatter-inventory.md` | Nine complete official front-matter pages, witness identities, documentary chronology and edition boundaries |
+| `integration-reconciliation.md` | Shared canonical identities, aliases, typed links and earliest entity/source-card gates |
+| `core-pgp-audit.md` | Record-level core/PGP corrections and material omissions with exact copy |
+| `geography-source-audit.md` | Direct model-proponent and epigraphic source follow-up, actual access limits and nonspatial dispositions |
 
 The short uppercase IDs are research keys; the lowercase slug next to a place ID is its proposed engine ID. Never serialize `P08` as one site and `jerusalem` as a second site. Sources named in another file remain references to that file's register, not claims of a second independent source.
 
@@ -64,7 +70,7 @@ Inspected `public/atlas/engine.js` at the baseline above:
 3. Reuse P12 Fayette, P14 Kirtland Temple and P15 Nauvoo in restoration records. A modern mailing address does not rename a historical township or prove an exact event point.
 4. P10 American Bountiful is distinct from `bom-bountiful-arabia`; P19 Abraham's Jershon is distinct from the BoM Jershon; PP05 Cainan is not the similarly spelled biblical Canaan. New York's plates hill is not silently identified as the Book of Mormon battle hill.
 5. Retain separate Abraham/Genesis journey accounts and their differing ages at Haran. Do not construct one harmonized age/date from both.
-6. P17 Enoch’s city uses earliest navigator4 from D&C38:4; PGP-only name/detail labels remain navigator5.
+6. P17 Enoch’s city uses earliest navigator4 from D&C38:4; Zion of Enoch is already named at4, while City of Holiness and PGP-only detail labels remain navigator5.
 7. Reuse one conceptual Eden record with source-specific descriptions if the Bible inventory expands it; never choose a physical garden location from name matching alone.
 
 ## Remaining work, without inflated blockers
@@ -75,4 +81,4 @@ Inspected `public/atlas/engine.js` at the baseline above:
 
 **Needed before final canon/release approval:** the agreed self-audit and independent corroboration of appropriate historical claims, resolution of unsupported `(L)`/`(U)` assertions, builder implementation review, exact-SHA technical and content sign-offs, then owner release approval. No draft PR, status note or research count substitutes for those steps.
 
-**Genuine evidence/access limitations:** current Heartland primary pages returned503; a Maxwell Institute page returned403; independent excavation reports and the full Ritner scholarly edition have not been inspected. These constrain detailed modern model geometry and specific scholarly claims, not the ability to publish clearly attributed scriptural summaries. The date of the Peter/James/John priesthood appearance remains unknown in the documentary account; no additional search licenses guessing it. The NPS Winter Quarters sources differ on the month, so the researched copy uses autumn1846.
+**Genuine evidence/access limitations:** some current Heartland map pages returned503, but a directly attributed Meldrum essay was inspected; a Maxwell Institute page returned403. Nebes’s original inscription catalogue and Aston’s2024 article are now inspected to the depth stated in geography-source-audit.md. Full excavation sample/stratigraphy associations, complete model books and the full Ritner scholarly edition have not been inspected. These constrain detailed modern model geometry and specific scholarly claims, not the ability to publish clearly attributed scriptural summaries. The date of the Peter/James/John priesthood appearance remains unknown in the documentary account; no additional search licenses guessing it. The NPS Winter Quarters sources differ on the month, so the researched copy uses autumn1846.

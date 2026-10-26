@@ -98,6 +98,8 @@ Checked 2026-10-26. All S1–S26 pages opened through web search/open. `(C)` mea
 - Evidence/use: Text: Ur, Haran, Jershon, Sechem, Bethel/Hai, Egypt; age 62 at Haran departure.
 - Access: opened 2026-10-26; relevant passage read.
 
+- Comprehensive recheck2026-10-26: complete Abraham2:1–25 body read; fresh capture preserved in `pgp-source-witnesses.csv`. Verses21–25 establish intention/approach toward Egypt, not completed arrival.
+
 ## S17 — Abraham 3:2–9
 
 - URL: [Abraham 3:2–9](https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng)
@@ -209,3 +211,7 @@ Checked 2026-10-26. All S1–S26 pages opened through web search/open. `(C)` mea
 ## Comprehensive continuation registers
 
 `coverage-*.md` and the corresponding CSV evidence fields identify exact witnesses and reading scope for every unit. `gazetteer-evidence.md` supplies four scholarly coordinate anchors. `prominent-claims-audit.md` distinguishes actual second-source support from derivative accounts and religious testimony; `identity-register.md` documents shared identities and deliberate non-merges. The earlier supplemental count is157 keyed register entries after S28–S32, excluding these expanded per-unit/inline sources; it is not a count of independent evidence.
+
+## Source-access continuation
+
+See [source-access-evidence.md](source-access-evidence.md) and the per-unit witness manifests for actual saved capture metadata, distinct from research artifact hashes. [geography-source-audit.md](geography-source-audit.md) adds four primary entries GA1–GA4 with explicit inspection depth; these are additional references, not silently included in the historical157-key inventory count. Source copies, quotations and repeated editions do not create independent corroboration.

@@ -20,7 +20,7 @@
 | P14 Kirtland Temple / Kirtland town | Distinct containment levels; dedicationE11 and later visionary reports are separate events. | D&C109–110;137. Document dates do not merge into one appearance date. |
 | P15 Nauvoo / DP09 Nauvoo House | Town and proposed boarding house are distinct entities; temple is also distinct. Building instructionE13 is not completed construction. | D&C124. |
 | P16 Carthage Jail / DP27 | DP27 refers to P16; D&C135 supplies death context. E11 is **Kirtland dedication**, not Carthage. | D&C135; core event table. |
-| P17 Enoch's city / Zion in other contexts | Shared D&C/PGP reference, navigator4; PGP-specific Zion/City of Holiness labels at5. Do not merge with Jerusalem, Independence or general righteous-community usage of Zion. | D&C38:4;45:11–12; Moses7. |
+| P17 Enoch's city / Zion in other contexts | Shared D&C/PGP reference, navigator4; Zion of Enoch is named in D&C38:4 at4; City of Holiness label at5. Do not merge with Jerusalem, Independence or general righteous-community usage of Zion. | D&C38:4;45:11–12; Moses7. |
 | P18 Ur / uncertain modern proposals | Shared text reference across Genesis11 and Abraham2; preserve uncertain modern identification. | No archaeological anchor approved in current sources. |
 | P19 Abraham's Jershon / BP17 BoM Jershon | Deliberately separate locations and IDs. | Abraham2:16; Alma27:22. |
 | P20 Mount of Olives | One geographical reference, earliestOT gate1; source-specific prophecy/discourse/appearance claims get their own work gate. | Zechariah14:4; Matthew24/26; JS—Matthew1; D&C45. |
@@ -44,3 +44,10 @@
 | Saul/Paul | Reuse Paul's identity where Acts13:9 expressly supplies both names; do not invent a conversion-day renaming event. Distinguish Israel's KingSaul. | Acts9/13;1Samuel. |
 
 All place mentions in quotations, visions, prophecies, parables and accusations must retain that mode. A candidate relationship is typed as parent, spouse, sibling, companion, opponent, office holder, record custodian or source interpretation only when the cited passage supports that type. Shared names are not proof of kinship; succession is not proof of parentage; a missionary assignment is not proof of completed travel.
+
+
+## Cross-shard canonical resolution
+
+[integration-reconciliation.md](integration-reconciliation.md) supplies the canonical alias map, earliest entity gates, source-card gate rules and typed-link dispositions across all current shard registries. Its city/region distinction for Samaria, explicit En-gedi reuse, D&C event aliases and shared OT/NT place gates refine this registry without overriding the deliberate non-merges above. Uncertain identities remain scoped references, not guessed unions.
+
+The named Book of Mormon frontmatter witnesses and Joseph Smith Jr./Sr. have earliest entity gate3, as resolved in `frontmatter-inventory.md`; later event/card gates remain4 or5. The eight explicitly sourced alias resolutions in `integration-reconciliation.md` also supersede earlier pending lexical-alias notes, including AP09 lake earliest gate1.

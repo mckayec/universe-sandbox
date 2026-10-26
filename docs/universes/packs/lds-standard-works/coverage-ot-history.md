@@ -1,6 +1,6 @@
 # Old Testament coverage: Genesis–2 Kings
 
-2026-10-26. Supplement to the LDS standard-works research. Scope: 12 books, 338 chapters; 1 Chronicles–Esther are in `coverage-ot-late-history.md`. **Work in progress, not research-ready.** The companion CSV ledger distinguishes inspected chapter text from pending chapters. A page fetch alone is not a completed research pass.
+2026-10-26. Supplement to the LDS standard-works research. Scope: 12 books, 338 chapters; 1 Chronicles–Esther are in `coverage-ot-late-history.md`. **Work in progress, not research-ready.** The companion CSV ledger records all 338 inspected chapters and their actual source provenance. A page fetch alone is not a completed research pass.
 
 ## Evidence and rendering policy
 
@@ -451,12 +451,252 @@ All 24 chapters were read in full from the disclosed [unofficial KJV transcripti
 
 ## Open limitations and next pass
 
-All 338 assigned chapters have now been read in full with chapter dispositions; official-edition collation remains incomplete. Initial shell access to the Church domain failed with proxy-tunnel403; web access worked but intermittently returned429 rate limiting. These are retrieval-path failures, not proof that the scriptures are unavailable. All 12 assigned books are now retrieved from the disclosed third-party KJV transcription, but retrieval is not review. No source-access excuse is claimed for unread accessible chapters.
+All 338 assigned chapters have now been read in full with chapter dispositions; official-edition verse-body collation is now complete; see the later evidence section. Initial shell access to the Church domain failed with proxy-tunnel403; web access worked but intermittently returned429 rate limiting. These are retrieval-path failures, not proof that the scriptures are unavailable. All 12 assigned books are now retrieved from the disclosed third-party KJV transcription, but retrieval is not review. No source-access excuse is claimed for unread accessible chapters.
 
-All fallback-reviewed books still require official-edition collation for fallback portions, cross-file alias and record integration, source-specific chronology comparison, and appropriate historical corroboration before historical overlays. No invented coordinates or harmonized contradictions were added. The prior selected Bible inventory is not silently counted as full-book review.
+Cross-file integration, source-specific chronology comparison, and appropriate historical corroboration remain necessary before historical overlays. Official verse-body collation is completed in the later pass below. No invented coordinates or harmonized contradictions were added. The prior selected Bible inventory is not silently counted as full-book review.
 
 Fallback witness `1Kings.json`: https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/1Kings.json ; SHA256 `cbcfd9ffca4b29741ea999aac6c66d75f6e380763a174bd2402e4a04adb89bd5`. Full verse text read; no whole-file equivalence to the Church edition asserted.
 
 Fallback witness `2Kings.json`: https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/2Kings.json ; SHA256 `c37f44dffa656a52615fadcf26125be04c89e8ada9b590da297038d1383bdbc4`. Full verse text read; no whole-file equivalence to the Church edition asserted.
 
 Official full-text crosschecks additionally completed for [1 Kings 6:1–38](https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/6?lang=eng) and [2 Kings 25:1–30](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/25?lang=eng), including construction synchronism and destruction/captivity dates. This does not promote adjacent chapters to official-collated status.
+
+
+## Official-edition collation and evidence captures
+
+The later collation pass retrieved **all 338 official Church chapter pages, containing all 10,253 numbered verses**, and compared every verse with the previously read witness after removing citation markup, punctuation, spacing and case. All 338 headings and displayed JST notes were also reviewed. There are no missing numbered verses or missing page-line windows in the final preserved responses. This supersedes earlier pending-collation statements describing the initial fallback pass. It is a comparison against already-read text, not a claim that a hash proves human reading.
+
+[ot-history-source-witnesses.csv](ot-history-source-witnesses.csv) has 676 rows: one official capture and one fallback witness per chapter. Actual responses and book JSON files are preserved outside Git at `/workspace/lds-source-evidence/20261026/ot-history/`. Capture SHA256 hashes identify the retrieved response text or book file; normalized-body SHA256 hashes identify ordered `verse-number:lowercase-alphanumeric-verse-text` lines joined with LF. These are source-witness hashes, not research-document hashes. The fallback files were refetched at commit `a9aa4e55afbb3e095f57e4b14cd1f22c5ee8d7c9` and all 12 were byte-identical to the initially read files. Retrieval date is 2026-10-26; no historical publication timestamp is invented.
+
+There are 150 verses with lexical differences across 82 chapters. Most are spelling or inflection (inquire/enquire, entreat/intreat, veil/vail, basin/bason, jubilee/jubile, plaster/plaister, awl/aul, hasted/hastened). Use the Church witness for displayed copy. Name variants reviewed include Sabtecha/Sabtechah, Abida/Abidah, Zerah/Zarah, Adoni-zedek/Adonizedec, Jahazah/Jahaza, Hapharaim/Haphraim, Shion/Shihon, Malchi-shua/Melchishua, Shammua/Shammuah, Shimea/Shimeah and Naharai/Nahari. These are source-spelling aliases within the cited identity, not permission to merge every same-name occurrence.
+
+**Material correction:** [Joshua 19:2](https://www.churchofjesuschrist.org/study/scriptures/ot/josh/19?lang=eng) in the Church edition presents Beer-sheba **or** Sheba; the fallback has **and** Sheba. Exact proposed copy: “Joshua's Simeon allotment names Beer-sheba, also called Sheba in this verse.” Do not generate a second town from the fallback conjunction. Joshua 4:5 also differs in pronoun form without changing the crossing claim.
+
+### Heading and JST interpretation boundaries
+
+Headings are editorial interpretation; displayed JST footnotes are distinct textual witnesses. Neither silently replaces the KJV verse body. Linked JST Appendix pages have not all been independently read in this OT pass; a cross-reference alone does not establish their full contents.
+
+| Source location | Required source-specific treatment |
+|---|---|
+| Genesis 2–3 headings | Attribute spirit creation, marriage by the Lord, Lucifer and Christ identifications to the Church headings or separately cited PGP text; the KJV narrative's wording remains visible. |
+| Genesis 6 notes; 9 notes | Displayed JST places sorrow with Noah and adds Enoch-covenant context. The KJV Canaan curse does not itself identify skin color. Do not import a footnote's later wording into Genesis verse copy. |
+| Genesis 18–19 notes | JST describes holy men and changes the visitor count in 19:1; keep this separate from two angels in the KJV verse. No extra modern travel pin follows. |
+| Genesis 24 notes | JST substitutes hand in oath wording; retain source attribution rather than silently changing the KJV thigh wording. |
+| Genesis 49 heading | Identification of Joseph's branches with Nephites/Lamanites is editorial Church interpretation. Gate this interpretive card to the work that supports it; do not present those names as Genesis verse text. |
+| Exodus 3–14 notes | JST changes the bush messenger description, divine-name wording and agency of Pharaoh's hardening. Base-event geography is unchanged; theological agency must remain attributed. |
+| Exodus 18:1 note | JST calls Jethro a high priest; KJV priest of Midian should not be silently expanded without the note label. |
+| Exodus 21–23 notes | JST changes servant-death punishment, witch/murderer wording and poor/wicked-man wording. These are legal textual variants, not additional narrated executions. |
+| Exodus 32–34; Deuteronomy 10 notes | Divine regret/people's repentance, seeing God and replacement-tablet covenant content differ in the displayed notes or referenced Appendix. Distinguish quoted note excerpts from unread linked passages. |
+| Deuteronomy 14:21 notes | JST negates the permission to give or sell an animal that died of itself. Preserve KJV rule and JST variation separately. |
+| Deuteronomy 18/32/34 headings | Christ identification, premortal Israel interpretation and Moses being taken by the Lord are heading claims. Chapter 34 KJV death/burial language remains explicit. |
+| Numbers 16 heading and 26:11 | Heading's broad family-destruction wording must not erase the explicit survival of Korah's children in chapter 26. |
+| Judges 9/16/21 headings | Use verse-level survivor and casualty distinctions, not summary counts as exhaustive totals. “Wives provided” must not conceal coercion and abduction in chapter 21. |
+| 1 Samuel 15–19 notes | JST changes divine-regret language and attributes the troubling spirit as not from God; keep KJV and JST agency distinct. No retrospective psychiatric diagnosis. |
+| 2 Samuel 12:13 note | JST changes the sin-remission wording; do not describe the two witnesses as identical. Later doctrinal conclusions need their own cited source. |
+| 2 Samuel 24:16 note | Displayed JST links the angel's restraint to people's repentance; KJV wording differs. Census and plague remain a single source-specific event family. |
+| 1 Kings 7 heading | Baptismal-font identification of the bronze sea is a heading interpretation; verse dimensions do not independently narrate baptism there. |
+| 1 Kings 11/15 notes | JST changes David's exemplary comparison, repentance and division rationale. Preserve this separately from KJV royal evaluation. |
+| 1 Kings 13:18 note | KJV says the old prophet lied; displayed JST says he did not lie and introduces testing. Exact safe copy: “The KJV narrative and the Church's displayed JST note differ over the old prophet's message.” No harmonized factual assertion resolves the difference. |
+| 2 Kings 16 heading and verses 17–18 | Heading says the sea is destroyed; verse describes removing it from the bronze oxen and setting it on stone. Use the verse-level alteration in an architectural sequence. |
+
+## Stable entity and alias integration
+
+All following records use **`layer: bible`, `first: 1`, `coordinates: null`** unless an existing approved shared anchor is explicitly reused. This does not overwrite a later source's claim gate. IDs are research integration keys. The `OH-*` chapter references resolve to the official links and dispositions above; claims remain attributed scriptural narrative, not archaeological verification. Existing P/AP/AE/AJ/AC entities are reused, not duplicated. Distinct city, region, building and event-setting levels must not be collapsed.
+
+### Shared material places
+
+| Integration key / kind / aliases | Exact proposed copy | Source references and identity rule |
+|---|---|---|
+| P18 / region reference / Ur of Chaldees | “Genesis places Terah's departure at Ur of the Chaldees.” | OH-G11; reuse core, uncertain identification. |
+| P01 / town / Haran | “Terah's household settles in Haran before Abram continues toward Canaan.” | OH-G11–12; person Haran separate. |
+| P02 / town / Shechem, Sichem | “Shechem appears in patriarchal journeys and later covenant gatherings.” | OH-G12,33–35; OH-Q24; person Shechem separate. |
+| P03 / camp relation / Bethel–Hai | “Abram camps between Bethel and Hai.” | OH-G12–13; camp is neither town nor a computed midpoint. |
+| OHP-BETHEL / town / Bethel, Luz in Genesis 28 | “Jacob names his encounter setting Bethel; later narratives associate Bethel with worship and royal shrines.” | OH-G28,35; OH-K1-12; distinguish new Hittite Luz in OH-J01. |
+| OHP-AI / town / Ai, Hai | “Joshua narrates battles at Ai.” | OH-Q07–08; relation to patriarchal Hai may be cross-linked, modern site unresolved. |
+| P04 / region / Egypt | “Egypt is a setting for patriarchal migrations, Israel's bondage and later royal diplomacy.” | OH-G12,41–50; OH-X01–14; OH-K1-03; no single Pharaoh identity. |
+| P07 / town / Bethlehem of Judah, Ephrath context | “Ruth and Naomi arrive at Bethlehem, where Ruth's family story continues.” | OH-RU01–04; OH-G35; separate Joshua's Zebulun Bethlehem and unspecified Ibzan Bethlehem. |
+| P08 / city / Jerusalem; Zion and City of David in cited Davidic context | “David establishes his residence in Jerusalem; later kings build and alter its temple.” | OH-S2-05–06; OH-K1-06; OH-K2-25; Zion not every later Zion. |
+| OHP-HEBRON / town / Kirjath-arba | “Hebron appears in patriarchal residence, Caleb's allotment and David's early kingship.” | OH-G13,23; OH-Q14; OH-S2-02; Mamre setting and Machpelah burial cave remain contained references. |
+| OHP-MACHPELAH / burial setting | “Abraham purchases a burial place at Machpelah; later patriarchal burials return there.” | OH-G23,25,49–50; no identification of a surviving chamber asserted. |
+| OHP-BEERSHEBA / town / Beer-sheba; Sheba in Joshua 19:2 | “Beer-sheba recurs in patriarchal settlements and Judah's southern landscape.” | OH-G21,26,46; OH-Q19; OH-K1-19; official conjunction supports local alias only. |
+| OHP-GERAR / town | “Genesis locates Abraham's and Isaac's encounters with Abimelech at Gerar.” | OH-G20,26; do not assume every Abimelech is one king. |
+| OHP-SODOM / town | “Genesis narrates Lot's residence at Sodom and its destruction.” | OH-G13,18–19; no selected modern destruction site. |
+| OHP-GOMORRAH / town | “Gomorrah is named with Sodom in Genesis's judgment narrative.” | OH-G14,18–19; distinct town, not a synonym. |
+| OHP-ZOAR / town / Bela in Genesis 14 | “Lot flees first to Zoar before moving into the mountains.” | OH-G14,19; keep actual intermediate stop. |
+| OHP-BEERLAHAIROI / well-region setting | “Genesis names Beer-lahai-roi between Kadesh and Bered in Hagar's story.” | OH-G16,24–25; uncertain modern well. |
+| OHP-SEIR / region / Edom context | “Seir is associated with Esau's descendants and Israel's neighboring territory.” | OH-G32,36; OH-D02; person Esau/Edom separate from region. |
+| OHP-PENUEL / encounter setting / Peniel | “Jacob names the encounter place Peniel; later narratives use Penuel.” | OH-G32; OH-J08; OH-K1-12; shared textual reference, no coordinate inferred. |
+| OHP-SUCCOTH-JACOB / settlement | “Jacob builds shelters at Succoth after meeting Esau.” | OH-G33; distinct from AP01 Exodus Succoth; later Jordan Succoth cross-link needs context. |
+| OHP-DOTHAN / settlement | “Joseph finds his brothers at Dothan; Elisha later faces a surrounding force there.” | OH-G37; OH-K2-06; separate events. |
+| OHP-GOSHEN-EGYPT / region | “Jacob's household settles in Egypt's Goshen.” | OH-G45–47; distinguish Judah's Goshen in Joshua. |
+| OHP-MIDIAN / region reference | “Moses flees to Midian and marries Zipporah.” | OH-X02–04; Midian son of Abraham is a distinct person. |
+| P05 / mountain reference / Horeb | “Moses encounters God at Horeb; later texts recall covenant and prophetic encounters there.” | OH-X03; OH-D05; OH-K1-19; retain relation to Sinai without choosing a modern peak. |
+| AP01 / camp / Succoth of Exodus | “Israel departs Succoth toward Etham.” | OH-X12–13; reuse inventory. |
+| AP02 / camp / Etham | “Exodus places Etham at the wilderness edge.” | OH-X13; OH-N33; reuse. |
+| AP03 / camp / Rephidim | “Israel camps at Rephidim before arriving at Sinai.” | OH-X17–19; reuse. |
+| AP04 / mountain and camp / Sinai | “Israel camps before Sinai, the setting for covenant instructions.” | OH-X19–40; OH-L01–27; OH-N01–10; reuse. |
+| OHP-PIHAHIROTH / camp relation | “Exodus positions the pre-crossing camp near Pi-hahiroth, Migdol and Baal-zephon.” | OH-X14; OH-N33; relation does not determine a modern crossing. |
+| OHP-MARAH / water stop | “Exodus describes bitter water at Marah becoming drinkable.” | OH-X15; OH-N33; no surviving spring authenticated. |
+| OHP-ELIM / oasis stop | “Israel camps at Elim, described with springs and palms.” | OH-X15; OH-N33. |
+| OHP-KADESH / wilderness setting / Kadesh-barnea in scouting context | “Kadesh is a setting for scouting, conflict and wilderness journeys.” | OH-N13–14,20,33; OH-D01; do not flatten every similarly named Kedesh. |
+| OHP-HOR-AARON / mountain setting | “Numbers places Aaron's death on Mount Hor near Edom.” | OH-N20,33; distinct from northern boundary Hor in OH-N34. |
+| OHP-NEBO-MOAB / mountain setting / Pisgah relation | “Moses views the land from Moab's mountain setting before his death narrative.” | OH-D03,34; linked local terms do not establish every Nebo as identical. |
+| OHP-MOAB / region | “Moab appears in Israel's eastern-border narratives and Ruth's migration.” | OH-N22; OH-D02; OH-RU01; no modern political border imposed. |
+| OHP-JORDAN / river | “The Jordan marks several crossings and territorial relationships.” | OH-Q03; OH-S2-17; OH-K2-02,05; river distinct from event points. |
+| AP05 / crossing setting | “Joshua's account places Israel's crossing opposite Jericho.” | OH-Q03–04; reuse; no crossing coordinate. |
+| AP06 / city / Jericho | “Joshua recounts Jericho's capture; later books revisit the city.” | OH-Q06; OH-K1-16; OH-K2-02; approved heritage anchor is not event dating evidence. |
+| OHP-GILGAL-JOSHUA / camp | “Joshua establishes a camp at Gilgal after the Jordan crossing.” | OH-Q04–05; other Gilgal narratives remain context-scoped until linkage justified. |
+| OHP-GIBEON / town | “Gibeon makes a treaty with Joshua's community and later appears in royal narratives.” | OH-Q09–10; OH-S2-02,20; OH-K1-03; not Gibeah. |
+| OHP-SHILOH / sanctuary settlement | “Joshua places the tabernacle at Shiloh; Samuel's early ministry occurs there.” | OH-Q18; OH-S1-01–04; OH-K1-14. |
+| OHP-EBAL / mountain | “Joshua builds an altar at Ebal and reads the covenant law.” | OH-D27; OH-Q08. |
+| OHP-GERIZIM / mountain | “Gerizim is named in covenant blessing instructions and Jotham's speech setting.” | OH-D11,27; OH-J09; distinct from Ebal. |
+| OHP-HAZOR / city | “Joshua attacks Hazor; later narratives again identify it as a royal and fortified center.” | OH-Q11; OH-J04; OH-K1-09; do not merge the two Jabins automatically. |
+| OHP-DAN-NORTH / city / Laish, Leshem in conquest accounts | “Dan's migration account renames Laish after conquest.” | OH-J18; compare OH-Q19; OH-K1-12 shrine. Earlier Genesis Dan chronology remains unresolved. |
+| OHP-GAZA / city / Azzah context | “Gaza appears in Philistine narratives, including Samson's final imprisonment.” | OH-J16; OH-K1-04; no surviving gate or temple identified. |
+| OHP-ASHDOD / city | “The captured ark is taken to Ashdod's Dagon sanctuary.” | OH-S1-05; no sanctuary coordinate. |
+| OHP-GATH / city | “Gath appears in ark, Davidic and later military narratives.” | OH-S1-05,21,27; OH-K2-12; distinguish Gath-hepher. |
+| OHP-EKRON / city | “Ekron receives the captured ark and is later linked to Ahaziah's intended inquiry.” | OH-S1-05–06; OH-K2-01; intended inquiry is interrupted. |
+| OHP-BETHSHEMESH-JUDAH / city | “The ark reaches Beth-shemesh; a later battle there brings Judah's defeat.” | OH-S1-06; OH-K2-14; distinguish northern namesakes. |
+| OHP-KIRJATHJEARIM / ark settlement | “The ark is kept at Kirjath-jearim before David's transfer narrative.” | OH-S1-06–07; OH-S2-06; not the temple itself. |
+| OHP-JABESHGILEAD / city | “Saul relieves Jabesh-gilead; its inhabitants later recover Saul's body.” | OH-S1-11,31; OH-S2-21; remains later moved to Zelah. |
+| OHP-GILBOA / mountain region | “Saul and his sons fall during the battle at Gilboa.” | OH-S1-31; OH-S2-01. |
+| OHP-ZIKLAG / town | “David receives Ziklag and later recovers households taken from it.” | OH-S1-27,30; source does not provide exact raiding circuits. |
+| OHP-MAHANAIM / settlement | “Mahanaim hosts Ish-bosheth's rule and later David's refuge.” | OH-G32; OH-S2-02,17; compare origin story without pinning angel camp. |
+| OHP-KIDRON / watercourse | “David crosses Kidron during flight; later reforms use its valley for disposal.” | OH-S2-15; OH-K1-15; OH-K2-23. |
+| P20 / mountain / Olivet, Mount of Olives | “David ascends Olivet while fleeing Jerusalem.” | OH-S2-15; reuse global key; later gospel claims remain separately gated. |
+| OHP-SAMARIA / city | “Omri builds Samaria on land purchased from Shemer.” | OH-K1-16; OH-K2-17; city distinct from surrounding region. |
+| OHP-TIRZAH / royal settlement | “Tirzah serves as a northern royal setting before Omri establishes Samaria.” | OH-K1-14–16. |
+| OHP-JEZREEL / royal city | “Ahab's household and Naboth's vineyard are linked to Jezreel.” | OH-K1-21; OH-K2-09; distinguish southern namesake. |
+| OHP-CARMEL-NORTH / mountain | “Elijah's contest takes place on Mount Carmel.” | OH-K1-18; OH-K2-04; distinct from Nabal's southern Carmel. |
+| OHP-CARMEL-JUDAH / town-region | “Nabal's household is associated with Carmel in David's wilderness story.” | OH-S1-25; distinct from mountain contest. |
+| OHP-ZAREPHATH / town / Zarephath belonging to Zidon | “Elijah stays with an unnamed widow at Zarephath.” | OH-K1-17; reuse later Gospel reference without moving Jesus there. |
+| OHP-SHUNEM / settlement | “A Shunammite household provides Elisha a room.” | OH-K2-04,08; Abishag is another Shunammite person, not this woman. |
+| OHP-TYRE / city | “Tyre supplies timber and craftsmen for Solomon's projects.” | OH-K1-05,07,09; king and artisan Hiram remain separate. |
+| OHP-DAMASCUS / city | “Damascus is a royal and diplomatic setting in the Syrian narratives.” | OH-K1-11,15; OH-K2-08,16; later NT journeys independently gated. |
+| OHP-RAMOTHGILEAD / city | “Israel's kings contest Ramoth-gilead; Jehu is anointed there.” | OH-K1-22; OH-K2-08–09. |
+| OHP-EZIONGEBER / port setting / Ezion-geber | “Solomon builds a fleet at Ezion-geber beside Eloth.” | OH-K1-09,22; OH-N33; no exact harbor point approved. |
+| OHP-ELATH / town / Eloth | “Elath changes political control in the royal narratives.” | OH-K1-09; OH-K2-14,16; preserve textual Syria wording. |
+| OHP-OPHIR / destination region | “Solomon's fleet brings gold from Ophir.” | OH-K1-09–10; later Jehoshaphat fleet never reaches it; proposed locations remain unselected. |
+| OHP-SHEBA / kingdom reference | “An unnamed queen of Sheba visits Solomon.” | OH-K1-10; no automatic identity with Joshua's Sheba alias. |
+| OHP-LACHISH / city | “Lachish appears in Judah's royal conflict and Assyrian campaign accounts.” | OH-Q10; OH-K2-14,18–19. |
+| OHP-MEGIDDO / city | “Megiddo is named in royal building projects and death narratives.” | OH-K1-09; OH-K2-09,23; differing Josiah accounts remain separately cited. |
+| OHP-RIBLAH-HAMATH / judgment setting | “Riblah in Hamath is a setting for royal captivity and Babylonian judgments.” | OH-K2-23,25; no conflation with every boundary Riblah. |
+| AP07 / city / Babylon | “Babylon receives Judah's royal household and other captives.” | OH-K2-24–25; reuse approved city anchor without locating a particular prison. |
+| OHP-NINEVEH / city | “Sennacherib returns to Nineveh before his later assassination.” | OH-K2-19; no same-year inference. |
+
+### People, relationships and deliberate non-merges
+
+These identity keys refer to people; none becomes a map site. Family and office relations are typed exactly as the source supports. Unnamed participants retain role keys rather than invented names.
+
+| Key / aliases | Exact proposed copy | Source / relation and non-merge |
+|---|---|---|
+| OHR-ABRAHAM / Abram, Abraham | “Genesis identifies Abram, later Abraham, as Sarah's husband and father of Ishmael and Isaac.” | OH-G16–17,21; source-specific ages remain separate from Abraham PGP. |
+| OHR-SARAH / Sarai, Sarah | “Sarah is renamed in the covenant narrative and later bears Isaac.” | OH-G17,21; spouse Abraham. |
+| OHR-HAGAR | “Hagar, an Egyptian servant, becomes Ishmael's mother.” | OH-G16,21; distinguish her two departures. |
+| OHR-LOT | “Lot is Abram's nephew and travels separately after their households divide.” | OH-G11–14,19; daughters/wife remain unnamed role keys. |
+| OHR-ISAAC | “Isaac is Abraham and Sarah's son and Rebekah's husband.” | OH-G21,24–27. |
+| OHR-REBEKAH | “Rebekah leaves her household to marry Isaac and becomes mother of Esau and Jacob.” | OH-G24–27; Bethuel daughter, Laban sister. |
+| OHR-JACOB / Israel | “Jacob receives the name Israel and is father of the tribal ancestors.” | OH-G29–35; person separate from people/kingdom Israel. |
+| OHR-ESAU / Edom | “Esau is Jacob's brother and ancestor of the Edomite lineage in Genesis.” | OH-G25,32–36; no modern ethnic essentialism. |
+| OHR-LEAH; OHR-RACHEL; OHR-BILHAH; OHR-ZILPAH | “Genesis distinguishes four mothers in Jacob's household.” | OH-G29–30,35; four separate people, not one group-person ID. |
+| OHR-JOSEPH-JACOB | “Joseph, Jacob and Rachel's son, is sold into Egypt and later manages famine provisions.” | OH-G30,37–50; distinct from later Josephs. |
+| OHR-TAMAR-JUDAH | “Tamar bears Perez and Zerah after the encounter with Judah.” | OH-G38,46; distinct from David's daughter Tamar. |
+| OHR-MOSES | “Moses leads Israel out of Egypt and teaches covenant law.” | OH-X02–40; OH-N27; OH-D34; sibling Aaron/Miriam, spouse Zipporah. |
+| OHR-AARON | “Aaron ministers with Moses and is succeeded in priestly office by Eleazar.” | OH-X04,28; OH-N20; person distinct from BoM Aaron. |
+| OHR-MIRIAM | “Miriam leads women in song and later challenges Moses with Aaron.” | OH-X15; OH-N12,20; do not name Exodus 2's sister solely from that verse. |
+| OHR-ZIPPORAH | “Zipporah is Moses' wife in the Midian and reunion narratives.” | OH-X02,04,18; do not automatically identify Numbers12's Ethiopian wife. |
+| OHR-JETHRO / Reuel relationship question | “Moses' Midian household includes the priest named Reuel and the father-in-law named Jethro in successive accounts.” | OH-X02–03,18; Hobab relationship must retain Numbers10 wording rather than flattened identity. |
+| OHR-JOSHUA-NUN / Hoshea renamed Joshua | “Joshua son of Nun succeeds Moses in leadership.” | OH-N13,27; OH-D31; OH-Q01; distinct from Beth-shemite Joshua. |
+| OHR-CALEB-JEPHUNNEH | “Caleb son of Jephunneh receives Hebron in Joshua's allotment account.” | OH-N13–14; OH-Q14–15; other Caleb genealogies require scoped comparison. |
+| OHR-DEBORAH-JUDGE | “Deborah judges Israel and commissions Barak.” | OH-J04–05; distinct from Rebekah's nurse Deborah, OH-G35. |
+| OHR-JAEL | “Jael, wife of Heber, kills Sisera in the tent narrative.” | OH-J04–05; separate from Deborah. |
+| OHR-GIDEON / Jerubbaal | “Gideon defeats Midian and declines the offered hereditary rule.” | OH-J06–08; Abimelech his son is a different ruler. |
+| OHR-JEPHTHAH | “Jephthah leads Gilead and makes the vow involving his unnamed daughter.” | OH-J11–12; daughter's fate not rewritten as harmless certainty. |
+| OHR-SAMSON | “Samson is Manoah's son and a judge in Philistine-conflict narratives.” | OH-J13–16; mother unnamed, Timnite wife separate from Delilah. |
+| OHR-NAOMI; OHR-RUTH; OHR-ORPAH | “Naomi returns from Moab with Ruth; Orpah returns to her own people.” | OH-RU01; three separate people, traveler membership differs. |
+| OHR-BOAZ | “Boaz marries Ruth, and their son Obed belongs to David's genealogy.” | OH-RU02–04; no identification with Ibzan or literal brother-levirate claim. |
+| OHR-HANNAH | “Hannah prays for Samuel and brings him to serve at Shiloh.” | OH-S1-01–02; Elkanah spouse, Peninnah distinct spouse. |
+| OHR-SAMUEL | “Samuel judges Israel, anoints Saul and later anoints David.” | OH-S1-03,07–16; Samuel death precedes Endor story. |
+| OHR-SAUL-KISH | “Saul son of Kish becomes Israel's king and dies at Gilboa.” | OH-S1-09–31; distinct from Saul/Paul. |
+| OHR-JONATHAN-SAUL | “Jonathan, Saul's son, makes a covenant with David.” | OH-S1-14,18–20,31; distinct from David's nephew Jonathan and Danite priest Jonathan. |
+| OHR-DAVID | “David son of Jesse becomes king first in Hebron and later over Israel in Jerusalem.” | OH-S1-16; OH-S2-02,05; reign lengths retain source precision. |
+| OHR-MICHAL; OHR-MERAB | “Saul's daughters Michal and Merab appear in different marriage accounts.” | OH-S1-18; OH-S2-06,21; Michal/Adriel versus Merab wording unresolved. |
+| OHR-ABIGAIL-NABAL | “Abigail intervenes with David and marries him after Nabal's death.” | OH-S1-25; distinguish David's sister Abigail. |
+| OHR-BATHSHEBA / Bath-sheba | “Bath-sheba, Uriah's wife, later bears Solomon in David's household.” | OH-S2-11–12; do not invent consent or erase David's power. |
+| OHR-TAMAR-DAVID | “Tamar, David's daughter and Absalom's sister, is raped by Amnon.” | OH-S2-13; distinct from Judah's Tamar and Absalom's daughter Tamar. |
+| OHR-ABSALOM | “Absalom rebels against David and is killed during the ensuing battle.” | OH-S2-13–18; head caught, not explicitly hair. |
+| OHR-MEPHIBOSHETH-JONATHAN; OHR-MEPHIBOSHETH-RIZPAH | “Two men named Mephibosheth have different parents and different fates.” | OH-S2-09,19,21; Jonathan's son spared, Rizpah's son executed. |
+| OHR-SOLOMON / Jedidiah | “Solomon, David and Bath-sheba's son, succeeds David and builds the temple.” | OH-S2-12; OH-K1-01–11; source moral evaluation and JST layer separated. |
+| OHR-HIRAM-KING; OHR-HIRAM-ARTISAN | “Solomon's Tyrian ally and the temple metalworker are distinct men named Hiram.” | OH-K1-05,07; artisan's maternal lineage requires Chronicles comparison. |
+| OHR-JEROBOAM-NEBAT; OHR-JEROBOAM-JOASH | “The first northern dynasty founder and the later king named Jeroboam have different fathers.” | OH-K1-11–14; OH-K2-14. |
+| OHR-JEHU-PROPHET; OHR-JEHU-KING | “Jehu son of Hanani prophesies; Jehu son of Jehoshaphat and grandson of Nimshi later becomes king.” | OH-K1-16; OH-K2-09–10; Jehoshaphat father not assumed Judah's king. |
+| OHR-ELIJAH | “Elijah confronts Ahab's court and is later taken up in a whirlwind.” | OH-K1-17–19; OH-K2-01–02; Elisha distinct successor. |
+| OHR-ELISHA | “Elisha son of Shaphat follows Elijah and ministers in Israel and neighboring lands.” | OH-K1-19; OH-K2-02–13. |
+| OHR-AHAB; OHR-JEZEBEL | “Ahab and Jezebel rule from the northern royal household described in Kings.” | OH-K1-16,21; OH-K2-09; Jezebel daughter of Ethbaal. |
+| OHR-JORAM-ISRAEL; OHR-JEHORAM-JUDAH | “Israel's son of Ahab and Judah's son of Jehoshaphat are distinct kings with overlapping name forms.” | OH-K2-01,03,08–09; alias Joram scoped by kingdom. |
+| OHR-AHAZIAH-ISRAEL; OHR-AHAZIAH-JUDAH | “Kings names two rulers called Ahaziah, one in Israel and one in Judah.” | OH-K1-22; OH-K2-01,08–09; preserve separate fathers and accession ages. |
+| OHR-JOASH-JUDAH; OHR-JOASH-ISRAEL | “Judah's Joash and Israel's Joash belong to different dynasties.” | OH-K2-11–14; Jehoash spelling alias only within each scoped identity. |
+| OHR-AZARIAH-UZZIAH | “Judah's king Azariah is also called Uzziah in the succession account.” | OH-K2-15; do not merge every priest named Azariah. |
+| OHR-HULDAH | “Huldah answers Josiah's delegation after the law book is found.” | OH-K2-22; wife of Shallum, prophetess; not merely an unnamed adviser. |
+| OHR-JEHOIAKIM / Eliakim son of Josiah | “Pharaoh renames Eliakim son of Josiah as Jehoiakim.” | OH-K2-23; distinct from Hezekiah's official Eliakim. |
+| OHR-ZEDEKIAH / Mattaniah | “Nebuchadnezzar installs Mattaniah, renamed Zedekiah, as king in Jerusalem.” | OH-K2-24–25; distinct from prophet Zedekiah son of Chenaanah. |
+| OHR-JEHOIACHIN | “Jehoiachin is deported to Babylon and later released from prison.” | OH-K2-24–25; Jehoiakim father distinct; Chronicles age difference preserved. |
+
+### Journeys and event reuse
+
+Each route is a directed sequence of textual stops, with **no interpolated Earth polyline**. Explicit omitted intermediates are gaps. The associated chapter-composite record supplies further participants and chronology. A route ID is not another event ID.
+
+| Key / traveler / mode | Exact proposed copy and sequence | Source mapping |
+|---|---|---|
+| OHJ-01 / Terah household / migration | “Terah's household leaves Ur and settles in Haran.” P18→P01; intended Canaan not yet reached. | OH-G11; reuse core J01 where overlapping. |
+| OHJ-02 / Abram household / migration | “Abram continues through Canaan and enters Egypt during famine.” Haran→Shechem→Bethel–Hai camp→south→Egypt; return separately. | OH-G12–13. |
+| OHJ-03 / Hagar / flight | “Hagar flees toward Shur and is directed to return.” Household→wilderness spring; return instruction distinguished from narrated travel. | OH-G16; separate OHJ-04. |
+| OHJ-04 / Hagar and Ishmael / expulsion | “Hagar and Ishmael leave Abraham's household and wander near Beer-sheba.” | OH-G21; distinct later journey. |
+| OHJ-05 / servant then Rebekah / marriage journey | “Abraham's servant travels to obtain a wife for Isaac; Rebekah joins the return journey.” Canaan→Nahor's city→Isaac's setting. | OH-G24; unnamed servant not automatically Eliezer. |
+| OHJ-06 / Jacob / outbound flight and household return | “Jacob leaves for Laban's household and later returns with his growing family.” Beer-sheba→Bethel→eastern household; return via Gilead/Mahanaim/Peniel/Succoth/Shechem/Bethel. | OH-G28–35; outbound/return traveler sets separate. |
+| OHJ-07 / Joseph / coerced transfer | “Joseph is taken from his brothers' vicinity into Egypt.” Dothan setting→Egypt; exact caravan road absent. | OH-G37; sale-party wording preserved. |
+| OHJ-08 / Joseph's brothers / provision trips | “Joseph's brothers make separate grain journeys to Egypt.” Canaan↔Egypt; Simeon retained after first trip, Benjamin joins second. | OH-G42–45; do not animate identical traveler membership. |
+| OHJ-09 / Jacob household / migration | “Jacob's household travels through Beer-sheba to Egypt.” Canaan→Beer-sheba→Goshen. | OH-G46–47. |
+| OHJ-10 / Joseph and burial company / burial return | “Jacob's burial company carries him from Egypt to Machpelah and returns.” Egypt→Atad mourning setting→Machpelah→Egypt. | OH-G50; Atad description does not recover road. |
+| OHJ-11 / Moses / flight and return | “Moses flees Egypt for Midian and later returns in response to his call.” Egypt→Midian; Horeb call→Egypt. | OH-X02–04; Zipporah/family participation scoped. |
+| AJ01 extended / Israel / exodus | “Exodus names successive camps between Egypt and Sinai.” Rameses→Succoth→Etham→Pi-hahiroth/sea→Shur→Marah→Elim→Sin→Rephidim→Sinai. | OH-X12–19; extends existing AJ01 without recovered road. |
+| OHJ-12 / Israel / wilderness itinerary | “Numbers preserves a longer list of wilderness stages.” Use complete OH-N33 stage list; do not flatten Deuteronomy10's differing local order. | OH-N33; see itinerary section, unknown locations remain unknown. |
+| AE03 / Israel and priests / river crossing | “Joshua describes Israel crossing the Jordan opposite Jericho.” River crossing→Gilgal camp. | OH-Q03–04; existing event reused. |
+| OHJ-13 / Naomi, Ruth, Orpah / return with separation | “Naomi leaves Moab; Ruth continues to Bethlehem while Orpah turns back.” | OH-RU01; do not carry Orpah to Bethlehem. |
+| OHJ-14 / ark convoy / object transfer | “The captured ark passes through Philistine cities before returning to Israelite custody.” Ebenezer battle→Ashdod→Gath→Ekron→Beth-shemesh→Kirjath-jearim. | OH-S1-04–07; human participants change each leg. |
+| OHJ-15 / David's ark convoy / object transfer | “David brings the ark toward Jerusalem, pauses after Uzzah's death, and later completes the transfer.” Baale-Judah context→Obed-edom household→City of David. | OH-S2-06; house and city not one setting. |
+| OHJ-16 / David and followers / royal flight | “David flees Jerusalem during Absalom's revolt and later returns.” Jerusalem→Kidron/Olivet→Jordan→Mahanaim; return→Jordan→Gilgal→Jerusalem. | OH-S2-15–20; ark and Hushai return early, not full-route travelers. |
+| OHJ-17 / Elijah / refuge | “Elijah moves from Cherith to Zarephath during drought.” Cherith→Zarephath; later Carmel/Jezreel separate episode. | OH-K1-17–18. |
+| OHJ-18 / Elijah / flight | “Elijah flees to Beer-sheba and continues alone through wilderness to Horeb.” | OH-K1-19; servant remains Beer-sheba. |
+| OHJ-19 / Elijah and Elisha / succession | “Elijah and Elisha travel through Bethel and Jericho to the Jordan; Elisha returns alone.” Gilgal→Bethel→Jericho→Jordan; return→Jericho→Bethel→Carmel→Samaria. | OH-K2-02; translation not an Earth endpoint. |
+| OHJ-20 / Naaman / healing journey | “Naaman visits Israel, washes in the Jordan and returns to Elisha.” Syria→Israel royal court→Elisha→Jordan→Elisha. | OH-K2-05; Damascus rivers are rejected alternatives. |
+| OHJ-21 / Shunammite household / famine refuge | “The Shunammite household stays in Philistine land for seven years before returning.” | OH-K2-08; no named host town. |
+| OHJ-22 / northern captives / deportation | “Assyria deports northern inhabitants to named eastern regions.” Samaria/Israel→Halah/Habor-Gozan/Median cities. | OH-K2-17–18; arrivals from other regions are separate population movements. |
+| OHJ-23 / Jehoiachin household and captives / deportation | “Jehoiachin and other captives are taken from Jerusalem to Babylon.” | OH-K2-24; not merged with destruction deportation. |
+| AE06 + OHJ-24 / Zedekiah / capture and deportation | “Zedekiah flees Jerusalem, is captured near Jericho, judged at Riblah and carried to Babylon.” | OH-K2-25; AE06 destruction reused, royal journey distinct. |
+| OHJ-25 / remnant / flight | “After Gedaliah's assassination at Mizpah, the remnant flees to Egypt.” | OH-K2-25; different from Babylon deportation. |
+
+### Explanatory entry keys across legal and nonspatial chapters
+
+| Key / exact proposed copy | Chapter coverage and exclusions |
+|---|---|
+| OHC-CREATION / “Genesis describes creation, divine image and human stewardship.” | OH-G01–03; reuse OH-C01 and nonspatial Eden. No scientific chronology. |
+| OHC-GENEALOGIES / “Genealogies organize kinship, succession and textual ages.” | OH-G04–05,10–11,25,36,46; OH-X06; OH-N01,26; OH-S2-03,05; no biological-race map or automatic sum to BCE. |
+| OHC-COVENANT / “The narratives connect covenant promises with descendants, land and obligations.” | OH-G12,15,17; OH-X19–24; OH-D04–11,26–30; promises differ from surveyed possession. |
+| OHC-TABERNACLE / “Exodus distinguishes instructions for the sanctuary from its later construction.” | OH-X25–31,35–40; plans, object manufacture and dedication are separate modes. |
+| OHC-PRIESTHOOD / “The texts distinguish priestly duties, Levite service and household eligibility.” | OH-X28–29; OH-L08–10,21–22; OH-N03–04,08,18; Numbers service ages retain differences. |
+| OHC-OFFERINGS / “Offerings are described with different purposes, materials and restitution rules.” | OH-L01–07,16–17; OH-N15,28–29; prescriptions do not create repeated historical events. |
+| OHC-PURITY / “Purity instructions address foods, bodily conditions, garments, houses and ritual access.” | OH-L11–15; OH-N05,19; OH-D14; not modern diagnosis or moral blame for every condition. |
+| OHC-CALENDAR / “Sabbaths and festivals structure the ritual calendar.” | OH-X16,20,23,31; OH-L23,25; OH-N09,28–29; OH-D16; no invented modern dates. |
+| OHC-LAND-REDEMPTION / “Land, debt, servitude and inheritance rules use distinct legal categories.” | OH-L25,27; OH-N27,36; OH-D15,24–25; jubilee not universal emancipation. |
+| OHC-LAW-JUSTICE / “Covenant laws regulate injury, property, testimony and communal judgment.” | OH-X21–23; OH-L19–20,24; OH-D13,17–25; hypothetical cases are not reported incidents. |
+| OHC-REFUGE / “Cities of refuge distinguish accidental killing from murder within the text's legal framework.” | OH-N35; OH-D19; OH-Q20; six designated cities remain individually source-listed. |
+| OHC-ALLOTMENTS / “Joshua records tribal boundaries and settlement lists alongside incomplete possession.” | OH-Q13–22; legal allocation not a time-invariant national polygon. Local same-name towns are not automatically merged. |
+| OHC-JUDGES / “Judges presents recurring conflict and deliverance alongside local leadership.” | OH-J02–16; intervals may overlap and do not automatically yield an absolute chronology. |
+| OHC-REDEMPTION-RUTH / “Ruth's marriage and land transaction involve kinship, inheritance and community witness.” | OH-RU02–04; analogy to Deuteronomy25 does not make Boaz a deceased brother. |
+| OHC-MONARCHY / “Samuel and Kings describe royal authority, succession and competing evaluations of kingship.” | OH-S1-08–16; OH-S2-07; OH-K1-01–16; OH-K2-11–24; accession, anointing and public renewal differ. |
+| OHC-TEMPLE / “Kings describes building, dedication, repair, alteration and destruction of Jerusalem's temple.” | OH-K1-05–09; OH-K2-12,16,22–25; one building-history family, not a fresh temple at every mention. |
+| OHC-PROPHECY / “Prophetic speech, visions, disputed messages and later narrative fulfillments have distinct evidence roles.” | OH-N22–24; OH-D18; OH-S1-28; OH-K1-13,22; OH-K2-19–22; reported lies and opinions remain attributed. |
+| OHC-EXILE / “Kings distinguishes successive deportations, surviving populations, incoming settlers and flight to Egypt.” | OH-K2-15,17–19,24–25; no single universal removal event. |
+
+This integration pass supplies stable major identities, routes and explanatory families across every assigned book. It does **not** assert complete atomization of every settlement in Joshua's allotments, every genealogical name, every royal official or every temporary battlefield position. Those names remain explicitly available in chapter source/disposition records and must receive context-scoped keys before a builder emits individual entities. No unresolved same-name site is assigned a fabricated coordinate to make the inventory look complete.

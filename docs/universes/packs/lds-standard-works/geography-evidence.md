@@ -1,5 +1,8 @@
 # Book of Mormon geography: evidence and implementation handoff
 
+**Current follow-up:** [geography-source-audit.md](geography-source-audit.md) supersedes the access limits below where explicitly stated: Nebes’s original epigraphic catalogue was inspected in targeted passages; Aston2024’s full article was read; Meldrum’s short author-attributed argument was read; Potter2022 received targeted inspection including its conclusion. Earlier counts and access statements below remain a historical checkpoint, not the current access total. Use the follow-up’s exact model notes and limits during integration. No disputed modern coordinates or archaeological narrative identifications are authorized.
+
+
 Research checkpoint, 2026-10-26. Repository baseline: `cd85ea8dcb36d4d5b54afd5ec05bc03c2c173d79` on `main`. Supplement to `research.md`; not a complete Book of Mormon research pass or a release sign-off. Ordinary web search/open was used; no dedicated Deep Research capability is claimed.
 
 Here `(C)` means the cited source was opened and supports the attributed statement, **not** that a proposed identification or a scriptural event has been established historically. `G` source IDs are local to this supplement. All descriptions below are paraphrases. No coordinates are supplied for disputed places.
