@@ -47,6 +47,7 @@ body.choosing{overflow:auto;background:#04050b}
   function load(src){return new Promise(function(res,rej){var s=document.createElement("script");s.src=src;s.onload=res;s.onerror=function(){rej(new Error("Could not load "+src));};document.body.appendChild(s);});}
   load("../vendor/three-r128/three.min.js")
     .then(function(){return load("../vendor/standalone.js");})
+    .then(function(){return load("layers.js");})
     .then(function(){return load("engine.js");})
     .then(function(){return load("packs/"+encodeURIComponent(entry.id)+".js");})
     .then(function(){var P=(window.ATLAS_PACKS||{})[entry.id];if(!P)throw new Error("packs/"+entry.id+".js did not register ATLAS_PACKS[\""+entry.id+"\"].");window.AtlasEngine.start(P);})

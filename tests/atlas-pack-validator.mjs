@@ -22,7 +22,10 @@ export function validatePacks(dir = PACK_DIR) {
   const out = {};
   const TYPES = 'terran ocean archipelago desert forest ice gas city barren lava hive toxic dyson'.split(' ');
   const FK = 'continent range biome basin peak river'.split(' ');
-  const TOP = 'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms'.split(' ');
+  const TOP =
+    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start'.split(
+      ' ',
+    );
   const finite = v => typeof v === 'number' && isFinite(v);
   for (const f of files) {
     const issues = [],
@@ -321,6 +324,55 @@ export function validatePacks(dir = PACK_DIR) {
         if (!w) return;
         if (w.realm && w.realm !== 'physical') warn.push(`event ${e.id} on realm-only world ${w.id} (${w.realm})`);
       });
+    }
+    // layers, timeline and start view (PACK_FORMAT 20)
+    {
+      const lids = new Set();
+      (P.layers || []).forEach((l, i) => {
+        if (!l || l.id == null || !/^[a-z0-9_-]+$/.test(String(l.id)))
+          issues.push(`layers[${i}] needs an id of [a-z0-9_-]`);
+        else if (lids.has(String(l.id))) issues.push(`duplicate layer id "${l.id}"`);
+        else lids.add(String(l.id));
+      });
+      const items = [];
+      worlds.forEach(w => {
+        items.push([`world ${w.id}`, w]);
+        (w.sites || []).forEach(s => items.push([`world ${w.id} site ${s.id}`, s]));
+      });
+      (P.events || []).forEach(e => items.push([`event ${e.id}`, e]));
+      ((P.galaxy && P.galaxy.links) || []).forEach(l => items.push([`link ${l && l.id}`, l]));
+      items.forEach(([tag, it]) => {
+        if (!it) return;
+        const ls = it.layers != null ? it.layers : it.layer;
+        if (ls != null) {
+          if (!lids.size) issues.push(`${tag}: has layers but the pack declares no layers[]`);
+          [].concat(ls).forEach(id => {
+            if (lids.size && !lids.has(String(id))) issues.push(`${tag}: unknown layer "${id}"`);
+          });
+        }
+        if (it.when != null) {
+          const ys = [].concat(it.when);
+          if (!ys.length || ys.length > 2 || !ys.every(finite))
+            issues.push(`${tag}: when must be a year or [from, to]`);
+          else if (ys.includes(0)) issues.push(`${tag}: when uses year 0 (there is none: 1 BC is -1, AD 1 is 1)`);
+          if (!P.timeline) warn.push(`${tag}: has when but the pack has no timeline (no year filter is shown)`);
+        }
+        if (it.notes != null && !Array.isArray(it.notes)) issues.push(`${tag}: notes must be an array of {k, t, ref}`);
+      });
+      const T = P.timeline;
+      if (T) {
+        if ((T.min != null && !finite(T.min)) || (T.max != null && !finite(T.max)))
+          issues.push('timeline min/max not numeric');
+        (T.eras || []).forEach((e, i) => {
+          if (!e || !e.name || !finite(e.from) || !finite(e.to))
+            issues.push(`timeline.eras[${i}] needs name, from and to`);
+        });
+      }
+      if (P.start) {
+        if (!wid.has(P.start.world)) issues.push(`start.world -> missing world "${P.start.world}"`);
+        else if (P.start.site && !(wid.get(P.start.world).sites || []).find(x => x.id === P.start.site))
+          issues.push(`start.site -> missing site "${P.start.site}"`);
+      }
     }
     out[f] = { stats, issues, warn };
   }
