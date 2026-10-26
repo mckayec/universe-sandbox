@@ -1,0 +1,48 @@
+id,dossier,disclosure_gate,gate_kind,confidence,geometry
+wot-e1-p01,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-p02,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-p03,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-p04,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-p05,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-p06,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-p07,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-e01,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-e02,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-j01,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-c01,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-c02,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-c03,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-c04,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-e1-c05,first-book-evidence.md,1,first-book-opening,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-p01,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-p02,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-p03,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-e01,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-j01,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-c01,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-c02,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-ns-c03,prequel-evidence.md,15,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-p01,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-p02,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-p03,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-p04,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-p05,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-p06,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-e01,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-e02,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-j01,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-j02,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l13-c01,late-book-excerpts.md,13,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14a-p01,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14a-p02,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14a-p03,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14a-j01,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14a-e01,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-p01,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-p02,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-p03,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-e01,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-e02,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-j01,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-c01,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
+wot-l14b-c02,late-book-excerpts.md,14,conservative-known-by; earliest unverified,C-selected-excerpt,unmapped; no invented numeric position
