@@ -1,0 +1,329 @@
+row_id,record_kind,source_file,source_id,canonical_id,entity_type,relation,target_id,first,evidence,disposition,limits
+AI001,identity,judaism-research.md,jud-jerusalem,jerusalem,place,,,1,JU21;JU03;JU04,reuse-shared,"Preserve source-specific copy/date/type; no additional fact inherited from matching name. Reference-only unless independently mapped; Jerusalem retains JU21 representative Old City anchor, not an exact event point."
+AI002,identity,judaism-research.md,jud-babylon,jud-babylon,place,,,1,JU22;JU04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI003,identity,judaism-research.md,jud-babylonia,jud-babylonia,place,,,1,JU05;JU06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI004,identity,judaism-research.md,jud-canaan,jud-canaan,place,,,1,JU01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI005,identity,judaism-research.md,jud-haran,jud-haran,place,,,1,JU01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI006,identity,judaism-research.md,jud-shechem,jud-shechem,place,,,1,JU01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI007,identity,judaism-research.md,jud-bethel-ai,jud-bethel-ai,place,,,1,JU01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI008,identity,judaism-research.md,jud-egypt,jud-egypt,place,,,1,JU01;JU02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI009,identity,judaism-research.md,jud-sinai,jud-sinai,place,,,1,JU02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI010,identity,judaism-research.md,jud-rephidim,jud-rephidim,place,,,1,JU02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI011,identity,judaism-research.md,jud-alexandria,jud-alexandria,place,,,1,JU06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI012,identity,judaism-research.md,jud-land-israel,jud-land-israel,place,,,1,JU05;JU08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI013,identity,judaism-research.md,jud-seesen,jud-seesen,place,,,1,JU10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI014,identity,judaism-research.md,jud-hamburg,jud-hamburg,place,,,1,JU09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI015,identity,judaism-research.md,jud-new-york,jud-new-york,place,,,1,JU11;JU12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI016,identity,judaism-research.md,jud-philadelphia,jud-philadelphia,place,,,1,JU12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI017,identity,judaism-research.md,jud-detroit-region,jud-detroit-region,place,,,1,JU13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI018,identity,judaism-research.md,jud-london,london,place,,,1,JU15,reuse-shared,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI019,identity,judaism-research.md,jud-e00,jud-e00,event,,,1,JU01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI020,identity,judaism-research.md,jud-e00b,jud-e00b,event,,,1,JU02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI021,identity,judaism-research.md,jud-e01,jud-e01,event,,,1,JU04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI022,identity,judaism-research.md,jud-e02,jud-e02,event,,,1,JU04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI023,identity,judaism-research.md,jud-e03,jud-e03,event,,,1,JU03,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI024,identity,judaism-research.md,jud-e04,jud-e04,event,,,1,JU03;JU06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI025,identity,judaism-research.md,jud-e05,jud-e05,event,,,1,JU05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI026,identity,judaism-research.md,jud-e06,jud-e06,event,,,1,JU08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI027,identity,judaism-research.md,jud-e07,jud-e07,event,,,1,JU07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI028,identity,judaism-research.md,jud-e08,jud-e08,event,,,1,JU10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI029,identity,judaism-research.md,jud-e09,jud-e09,event,,,1,JU09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI030,identity,judaism-research.md,jud-e10,jud-e10,event,,,1,JU11,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI031,identity,judaism-research.md,jud-e11,jud-e11,event,,,1,JU12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI032,identity,judaism-research.md,jud-e12,jud-e12,event,,,1,JU12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI033,identity,judaism-research.md,jud-e13,jud-e13,event,,,1,JU13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI034,identity,judaism-research.md,jud-e14,jud-e14,event,,,1,JU14,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI035,identity,judaism-research.md,jud-e16,jud-e16,event,,,1,JU15,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI036,identity,judaism-research.md,jud-j01,jud-j01,journey-or-network,,,1,JU01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI037,identity,judaism-research.md,jud-j02,jud-j02,journey-or-network,,,1,JU02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI038,identity,judaism-research.md,jud-j03,jud-j03,journey-or-network,,,1,JU04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI039,identity,judaism-research.md,jud-j04,jud-j04,journey-or-network,,,1,JU10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI040,identity,judaism-research.md,jud-covenant-tradition,jud-covenant-tradition,tradition-or-concept,,,1,JU01;JU02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI041,identity,judaism-research.md,jud-israelite-judean-context,jud-israelite-judean-context,tradition-or-concept,,,1,JU04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI042,identity,judaism-research.md,jud-second-temple,jud-second-temple,tradition-or-concept,,,1,JU03;JU06;JU17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI043,identity,judaism-research.md,jud-pharisees,jud-pharisees,tradition-or-concept,,,1,JU17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI044,identity,judaism-research.md,jud-sadducees,jud-sadducees,tradition-or-concept,,,1,JU17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI045,identity,judaism-research.md,jud-essenes,jud-essenes,tradition-or-concept,,,1,JU17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI046,identity,judaism-research.md,jud-rabbinic,jud-rabbinic,tradition-or-concept,,,1,JU05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI047,identity,judaism-research.md,jud-karaite,jud-karaite,tradition-or-concept,,,1,JU08;JU24,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI048,identity,judaism-research.md,jud-hasidic,jud-hasidic,tradition-or-concept,,,1,JU07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI049,identity,judaism-research.md,jud-orthodox,jud-orthodox,tradition-or-concept,,,1,JU18,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI050,identity,judaism-research.md,jud-modern-orthodox,jud-modern-orthodox,tradition-or-concept,,,1,JU18,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI051,identity,judaism-research.md,jud-haredi,jud-haredi,tradition-or-concept,,,1,JU18,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI052,identity,judaism-research.md,jud-reform-progressive,jud-reform-progressive,tradition-or-concept,,,1,JU09;JU10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI053,identity,judaism-research.md,jud-conservative-masorti,jud-conservative-masorti,tradition-or-concept,,,1,JU19,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI054,identity,judaism-research.md,jud-reconstructionist,jud-reconstructionist,tradition-or-concept,,,1,JU12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI055,identity,judaism-research.md,jud-renewal,jud-renewal,tradition-or-concept,,,1,JU14,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI056,identity,judaism-research.md,jud-humanistic,jud-humanistic,tradition-or-concept,,,1,JU13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI057,identity,judaism-research.md,jud-progressive-uk,jud-progressive-uk,tradition-or-concept,,,1,JU15,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI058,identity,judaism-research.md,jud-diaspora-cultures,jud-diaspora-cultures,tradition-or-concept,,,1,JU06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI059,identity,judaism-research.md,jud-pluralism,jud-pluralism,tradition-or-concept,,,1,JU16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI060,identity,christianity-research.md,chp-jerusalem,jerusalem,place,,,1,CH02,reuse-shared,"Preserve source-specific copy/date/type; no additional fact inherited from matching name. Reference-only unless independently mapped; Jerusalem retains JU21 representative Old City anchor, not an exact event point."
+AI061,identity,christianity-research.md,chp-nicaea,chp-nicaea,place,,,1,CH02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI062,identity,christianity-research.md,chp-constantinople,chp-constantinople,place,,,1,CH03;CH05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI063,identity,christianity-research.md,chp-ephesus,chp-ephesus,place,,,1,CH03,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI064,identity,christianity-research.md,chp-chalcedon,chp-chalcedon,place,,,1,CH03,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI065,identity,christianity-research.md,chp-rome,chp-rome,place,,,1,CH05;CH07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI066,identity,christianity-research.md,chp-wittenberg,chp-wittenberg,place,,,1,CH08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI067,identity,christianity-research.md,chp-zurich,chp-zurich,place,,,1,CH10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI068,identity,christianity-research.md,chp-london,london,place,,,1,CH11,reuse-shared,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI069,identity,christianity-research.md,chp-azusa,chp-azusa,place,,,1,CH14,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI070,identity,christianity-research.md,chp-fayette,chp-fayette,place,,,1,CH16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI071,identity,christianity-research.md,chp-east-syriac-region,chp-east-syriac-region,place,,,1,CH17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI072,identity,christianity-research.md,che-origins,che-origins,event,,,1,CH01;CH02;CH18,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI073,identity,christianity-research.md,che-nicaea,che-nicaea,event,,,1,CH02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI074,identity,christianity-research.md,che-constantinople,che-constantinople,event,,,1,CH03,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI075,identity,christianity-research.md,che-ephesus,che-ephesus,event,,,1,CH03;CH17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI076,identity,christianity-research.md,che-chalcedon,che-chalcedon,event,,,1,CH03,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI077,identity,christianity-research.md,che-1054,che-1054,event,,,1,CH05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI078,identity,christianity-research.md,che-1965,che-1965,event,,,1,CH05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI079,identity,christianity-research.md,che-luther,che-luther,event,,,1,CH08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI080,identity,christianity-research.md,che-anabaptist,che-anabaptist,event,,,1,CH10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI081,identity,christianity-research.md,che-baptist-london,che-baptist-london,event,,,1,CH11,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI082,identity,christianity-research.md,che-methodist-us,che-methodist-us,event,,,1,CH12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI083,identity,christianity-research.md,che-stone-campbell,che-stone-campbell,event,,,1,CH15;CH20,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI084,identity,christianity-research.md,che-lds,che-lds,event,,,1,CH16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI085,identity,christianity-research.md,che-azusa,che-azusa,event,,,1,CH14,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI086,identity,christianity-research.md,ch-early-communities,ch-early-communities,tradition-or-concept,,,1,CH01;CH18,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI087,identity,christianity-research.md,ch-catholic,ch-catholic,tradition-or-concept,,,1,CH06;CH07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI088,identity,christianity-research.md,ch-eastern-catholic,ch-eastern-catholic,tradition-or-concept,,,1,CH06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI089,identity,christianity-research.md,ch-eastern-orthodox,ch-eastern-orthodox,tradition-or-concept,,,1,CH04;CH05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI090,identity,christianity-research.md,ch-oriental-orthodox,ch-oriental-orthodox,tradition-or-concept,,,1,CH03,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI091,identity,christianity-research.md,ch-east-syriac,ch-east-syriac,tradition-or-concept,,,1,CH17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI092,identity,christianity-research.md,ch-lutheran,ch-lutheran,tradition-or-concept,,,1,CH08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI093,identity,christianity-research.md,ch-reformed,ch-reformed,tradition-or-concept,,,1,CH19,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI094,identity,christianity-research.md,ch-anglican,ch-anglican,tradition-or-concept,,,1,CH09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI095,identity,christianity-research.md,ch-anabaptist,ch-anabaptist,tradition-or-concept,,,1,CH10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI096,identity,christianity-research.md,ch-baptist,ch-baptist,tradition-or-concept,,,1,CH11,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI097,identity,christianity-research.md,ch-methodist,ch-methodist,tradition-or-concept,,,1,CH12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI098,identity,christianity-research.md,ch-evangelical,ch-evangelical,tradition-or-concept,,,1,CH13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI099,identity,christianity-research.md,ch-pentecostal,ch-pentecostal,tradition-or-concept,,,1,CH14,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI100,identity,christianity-research.md,ch-stone-campbell,ch-stone-campbell,tradition-or-concept,,,1,CH15;CH20,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI101,identity,christianity-research.md,ch-latter-day-saint,ch-latter-day-saint,tradition-or-concept,,,1,CH16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI102,identity,christianity-research.md,ch-adventist,ch-adventist,tradition-or-concept,,,1,CH21;CH22,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI103,identity,christianity-research.md,ch-jehovahs-witnesses,ch-jehovahs-witnesses,tradition-or-concept,,,1,CH23;CH24,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI104,identity,christianity-research.md,ch-african-instituted,ch-african-instituted,tradition-or-concept,,,1,CH25,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI105,identity,christianity-research.md,ch-african-church,ch-african-church,tradition-or-concept,,,1,CH26,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI106,identity,christianity-research.md,ch-oaic,ch-oaic,tradition-or-concept,,,1,CH27,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI107,identity,christianity-research.md,ch-lds-utah,ch-lds-utah,tradition-or-concept,,,1,CH28,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI108,identity,christianity-research.md,ch-community-christ,ch-community-christ,tradition-or-concept,,,1,CH29;CH30,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI109,identity,christianity-research.md,ch-jesus-christ-bickerton,ch-jesus-christ-bickerton,tradition-or-concept,,,1,CH31,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI110,identity,christianity-research.md,ch-strang-movement,ch-strang-movement,tradition-or-concept,,,1,CH28,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI111,identity,christianity-research.md,ch-old-catholic,ch-old-catholic,tradition-or-concept,,,1,CH32,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI112,identity,christianity-research.md,ch-ukrainian-greek-catholic,ch-ukrainian-greek-catholic,tradition-or-concept,,,1,CH33,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI113,identity,christianity-research.md,chp-battle-creek,chp-battle-creek,place,,,1,CH22,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI114,identity,christianity-research.md,chp-pittsburgh,chp-pittsburgh,place,,,1,CH23,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI115,identity,christianity-research.md,chp-columbus,chp-columbus,place,,,1,CH24,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI116,identity,christianity-research.md,chp-cairo,cairo,place,,,1,CH27,reuse-shared,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI117,identity,christianity-research.md,chp-amboy,chp-amboy,place,,,1,CH29,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI118,identity,christianity-research.md,chp-green-oak,chp-green-oak,place,,,1,CH31,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI119,identity,christianity-research.md,chp-utrecht,chp-utrecht,place,,,1,CH32,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI120,identity,christianity-research.md,chp-brest,chp-brest,place,,,1,CH33,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI121,identity,christianity-research.md,che-adventist,che-adventist,event,,,1,CH22,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI122,identity,christianity-research.md,che-jw-name,che-jw-name,event,,,1,CH24,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI123,identity,christianity-research.md,che-african-church,che-african-church,event,,,1,CH26,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI124,identity,christianity-research.md,che-oaic,che-oaic,event,,,1,CH27,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI125,identity,christianity-research.md,che-rlds,che-rlds,event,,,1,CH29;CH30,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI126,identity,christianity-research.md,che-bickerton,che-bickerton,event,,,1,CH31,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI127,identity,christianity-research.md,che-utrecht,che-utrecht,event,,,1,CH32,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI128,identity,christianity-research.md,che-brest,che-brest,event,,,1,CH33,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI129,identity,islam-research.md,ISP01,ISP01,place,,,1,IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI130,identity,islam-research.md,ISP02,ISP02,place,,,1,IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI131,identity,islam-research.md,ISP03,ISP03,place,,,1,IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI132,identity,islam-research.md,ISP04,jerusalem,place,,,1,IS01,reuse-shared,"Preserve source-specific copy/date/type; no additional fact inherited from matching name. Reference-only unless independently mapped; Jerusalem retains JU21 representative Old City anchor, not an exact event point."
+AI133,identity,islam-research.md,ISP05,ISP05,place,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI134,identity,islam-research.md,ISP06,ISP06,place,,,1,IS10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI135,identity,islam-research.md,ISP07,ISP07,place,,,1,IS10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI136,identity,islam-research.md,ISP08,ISP08,place,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI137,identity,islam-research.md,ISP09,cairo,place,,,1,IS08,reuse-shared,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI138,identity,islam-research.md,ISP10,ISP10,place,,,1,IS12;IS13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI139,identity,islam-research.md,ISP11,ISP11,place,,,1,IS13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI140,identity,islam-research.md,ISP12,ISP12,place,,,1,IS12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI141,identity,islam-research.md,ISP13,ISP13,place,,,1,IS12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI142,identity,islam-research.md,ISP14,ISP14,place,,,1,IS12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI143,identity,islam-research.md,ISE01,ISE01,event,,,1,IS02,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI144,identity,islam-research.md,ISE02,ISE02,event,,,1,IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI145,identity,islam-research.md,ISE03,ISE03,event,,,1,IS07;IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI146,identity,islam-research.md,ISE04,ISE04,event,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI147,identity,islam-research.md,ISE05,ISE05,event,,,1,IS10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI148,identity,islam-research.md,ISE06,ISE06,event,,,1,IS09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI149,identity,islam-research.md,ISE07,ISE07,event,,,1,IS09;IS11,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI150,identity,islam-research.md,ISE08,ISE08,event,,,1,IS10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI151,identity,islam-research.md,ISE09,ISE09,event,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI152,identity,islam-research.md,ISE10,ISE10,event,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI153,identity,islam-research.md,ISE11,ISE11,event,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI154,identity,islam-research.md,ISE12,ISE12,event,,,1,IS12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI155,identity,islam-research.md,ISJ01,ISJ01,journey-or-network,,,1,IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI156,identity,islam-research.md,ISJ02,ISJ02,journey-or-network,,,1,IS05;IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI157,identity,islam-research.md,ISJ03,ISJ03,journey-or-network,,,1,IS13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI158,identity,islam-research.md,IST01,islam,tradition-or-concept,,,1,IS03;IS06,reuse-shared,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI159,identity,islam-research.md,IST02,IST02,tradition-or-concept,,,1,IS14,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI160,identity,islam-research.md,IST03,IST03,tradition-or-concept,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI161,identity,islam-research.md,IST04,IST04,tradition-or-concept,,,1,IS12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI162,identity,islam-research.md,IST05,IST05,tradition-or-concept,,,1,IS09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI163,identity,islam-research.md,IST06,IST06,tradition-or-concept,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI164,identity,islam-research.md,IST07,IST07,tradition-or-concept,,,1,IS10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI165,identity,islam-research.md,IST08,IST08,tradition-or-concept,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI166,identity,islam-research.md,IST09,IST09,tradition-or-concept,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI167,identity,islam-research.md,IST10,IST10,tradition-or-concept,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI168,identity,islam-research.md,IST11,IST11,tradition-or-concept,,,1,IS08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI169,identity,islam-research.md,ISL01,ISL01,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI170,identity,islam-research.md,ISL02,ISL02,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI171,identity,islam-research.md,ISL03,ISL03,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI172,identity,islam-research.md,ISL04,ISL04,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI173,identity,islam-research.md,ISL05,ISL05,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI174,identity,islam-research.md,ISL06,ISL06,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI175,identity,islam-research.md,ISL07,ISL07,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI176,identity,islam-research.md,ISL08,ISL08,legal-school,,,1,IS06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI177,identity,islam-research.md,ISC01,ISC01,concept,,,1,IS15,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI178,identity,islam-research.md,ISO01,ISO01,devotional-order,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI179,identity,islam-research.md,ISO02,ISO02,devotional-order,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI180,identity,islam-research.md,ISO03,ISO03,devotional-order,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI181,identity,islam-research.md,ISO04,ISO04,devotional-order,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI182,identity,islam-research.md,ISO05,ISO05,devotional-order,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI183,identity,islam-research.md,ISO06,ISO06,devotional-order,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI184,identity,islam-research.md,ISC02,ISC02,concept,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI185,identity,islam-research.md,ISC03,ISC03,concept,,,1,IS17,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI186,identity,islam-research.md,ISC04,ISC04,concept,,,1,IS04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI187,identity,islam-research.md,ISH01,ISH01,person,,,1,IS03,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI188,identity,islam-research.md,ISH02,ISH02,person,,,1,IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI189,identity,islam-research.md,ISH03,ISH03,person,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI190,identity,islam-research.md,ISH04,ISH04,person,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI191,identity,islam-research.md,ISH05,ISH05,person,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI192,identity,islam-research.md,ISH06,ISH06,person,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI193,identity,islam-research.md,ISH07,ISH07,person,,,1,IS10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI194,identity,islam-research.md,ISH08,ISH08,person,,,1,IS09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI195,identity,islam-research.md,ISH09,ISH09,person,,,1,IS09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI196,identity,islam-research.md,ISH10,ISH10,person,,,1,IS10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI197,identity,islam-research.md,ISH11,ISH11,person,,,1,IS16,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI198,identity,islam-research.md,ISM01,ISM01,movement,,,1,IS19,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI199,identity,islam-research.md,ISM02,ISM02,movement,,,1,IS20,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI200,identity,islam-research.md,ISM03,ISM03,movement,,,1,IS20,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI201,identity,islam-research.md,ISM04,ISM04,movement,,,1,IS21;IS22,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI202,identity,islam-research.md,ISM05,ISM05,movement,,,1,IS23,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI203,identity,islam-research.md,ISP15,ISP15,place,,,1,IS19,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI204,identity,islam-research.md,ISP16,ISP16,place,,,1,IS21;IS25,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI205,identity,islam-research.md,ISP17,ISP17,place,,,1,IS23,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI206,identity,islam-research.md,ISP18,ISP18,place,,,1,IS20,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI207,identity,islam-research.md,ISE13,ISE13,event,,,1,IS19,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI208,identity,islam-research.md,ISE14,ISE14,event,,,1,IS21;IS25,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI209,identity,islam-research.md,ISE15,ISE15,event,,,1,IS24,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI210,identity,comparative-evidence.md,XD01,XD01,demographic-reference,,,1,X01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI211,identity,comparative-evidence.md,XD02,XD02,demographic-reference,,,1,X03;X01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI212,identity,comparative-evidence.md,XD03,XD03,demographic-reference,,,1,X01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI213,identity,comparative-evidence.md,XD04,XD04,demographic-reference,,,1,X01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI214,identity,comparative-evidence.md,XD05,XD05,demographic-reference,,,1,X01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI215,identity,comparative-evidence.md,XD06,XD06,demographic-reference,,,1,X01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI216,identity,comparative-evidence.md,XD07,XD07,demographic-reference,,,1,X01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI217,identity,comparative-evidence.md,XE01,XE01,event,,,1,X04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI218,identity,comparative-evidence.md,XE02,XE02,event,,,1,X04,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI219,identity,comparative-evidence.md,XE03,XE03,event,,,1,X05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI220,identity,comparative-evidence.md,XE04,XE04,event,,,1,X05,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI221,identity,comparative-evidence.md,XC01,XC01,reference,,,1,X06,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI222,identity,comparative-evidence.md,XC02,XC02,reference,,,1,X07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI223,identity,comparative-evidence.md,XE05,XE05,event,,,1,X07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI224,identity,comparative-evidence.md,XJ01,XJ01,journey-or-network,,,1,X07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI225,identity,comparative-evidence.md,XE06,XE06,event,,,1,X07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI226,identity,comparative-evidence.md,XC03,XC03,reference,,,1,X08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI227,identity,comparative-evidence.md,XC04,XC04,reference,,,1,X09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI228,identity,judaism-research.md,judaism,judaism,overview-container,,,1,JU16,explicit-context-or-reuse,"Design overview, not a single ancient institution or all Jewish people."
+AI229,identity,christianity-research.md,ch-christianity,christianity,overview-container,,,1,CH01;CH18,explicit-context-or-reuse,Design overview; do not adjudicate disputed Christian identities.
+AI230,identity,christianity-research.md,ch-jewish-context,jud-second-temple,historical-context,,,1,CH01;CH18;JU03,explicit-context-or-reuse,Reuse period context only; not all Judaism treated as a superseded institution.
+AI231,identity,islam-research.md,islam,islam,tradition,,,1,IS03;IS06,explicit-context-or-reuse,Alias of IST01; no institutional-parent claim about Judaism or Christianity.
+AI232,identity,comparative-evidence.md,church-of-east,ch-east-syriac,historical-family,,,1,X04;CH17,explicit-context-or-reuse,Family context of reported635arrival; not proof the current Assyrian Church organized that voyage.
+AI233,identity,comparative-evidence.md,islamic-sufism,ISC01,devotional-stream,,,1,X05;IS15,explicit-context-or-reuse,Shared subject of comparison; preserve Dara Shikoh's perspective.
+AI234,identity,comparative-evidence.md,xian,xian,place,,,1,X04,explicit-context-or-reuse,Reference-only;635reportedarrival versus781inscription.
+AI235,identity,comparative-evidence.md,Lahore,lahore,place,,,1,X05,explicit-context-or-reuse,"Reference-only biographical/intellectual setting, not all translation collaboration at one point."
+AI236,identity,comparative-evidence.md,Talwandi,talwandi,place,,,1,X06,explicit-context-or-reuse,Reference-only; no modern alias or precise birthplace coordinate researched here.
+AI237,identity,comparative-evidence.md,Sultanpur,sultanpur,place,,,1,X06,explicit-context-or-reuse,Reference-only; no automatic union with every same-name settlement.
+AI238,identity,comparative-evidence.md,Shiraz,shiraz,place,,,1,X07,explicit-context-or-reuse,Reference-only1844setting.
+AI239,identity,comparative-evidence.md,Baghdad,baghdad,place,,,1,X07,explicit-context-or-reuse,Reference-only1863setting; distinct from Babylon.
+AI240,identity,comparative-evidence.md,Acre,acre,place,,,1,X07,explicit-context-or-reuse,Reference-only1868arrival; no compound footprint.
+AI241,identity,comparative-evidence.md,Nanjing,nanjing,place,,,1,X08,explicit-context-or-reuse,Reference-only biographical setting; distinct from Xi'an.
+AI242,identity,comparative-evidence.md,Iran,context-iran,region-context,,,1,X07,explicit-context-or-reuse,Regional exile origin; not a city or route.
+AI243,identity,comparative-evidence.md,dara-shikoh,dara-shikoh,person,,,1,X05,explicit-context-or-reuse,Author/translation patron; intellectual claims are attributed.
+AI244,identity,comparative-evidence.md,hindu-philosophy,hindu-philosophy,intellectual-context,,,1,X05,explicit-context-or-reuse,"Scope of comparison, not every Hindu tradition."
+AI245,identity,comparative-evidence.md,Sikh tradition,sikh-tradition,tradition-reference,,,1,X06,explicit-context-or-reuse,Distinct tradition; no Hindu-plus-Muslim institutional parentage.
+AI246,identity,comparative-evidence.md,Bahai faith,bahai-faith,tradition-reference,,,1,X07,explicit-context-or-reuse,Self-description retained; not present membership in an Islamic denomination.
+AI247,identity,comparative-evidence.md,Buddhism,buddhism-reference,tradition-reference,,,1,X04;X08;X09,explicit-context-or-reuse,Contact subject; no internal Buddhist genealogy researched here.
+AI248,identity,comparative-evidence.md,Daoism,daoism-reference,tradition-reference,,,1,X08;X09,explicit-context-or-reuse,Textual-contact subject; no internal Daoist genealogy.
+AI249,identity,comparative-evidence.md,Confucian tradition,confucian-reference,intellectual-context,,,1,X08;X09,explicit-context-or-reuse,"Intellectual-contact context, not an Abrahamic denomination."
+AI250,identity,comparative-evidence.md,Zoroastrianism,zoroastrian-reference,tradition-reference,,,1,X04,explicit-context-or-reuse,Shared-policy context only; no ancestry claim.
+AI251,identity,christianity-research.md,"Lexington, Kentucky",chp-lexington,place,,,1,CH15;CH20,explicit-context-or-reuse,"Reference-only setting for che-stone-campbell, not a second event."
+AI252,identity,christianity-research.md,North America,context-north-america,region-context,,,1,CH12,explicit-context-or-reuse,Broad setting for che-methodist-us; no unsupported Baltimore venue inferred.
+AI253,identity,christianity-research.md,Nigeria,context-nigeria,region-context,,,1,CH26,explicit-context-or-reuse,Jurisdiction/region for che-african-church; do not infer exact local venue.
+AI254,identity,judaism-research.md,Eastern Europe,context-eastern-europe,region-context,,,1,JU07,explicit-context-or-reuse,"Regional Hasidic origin context, not a uniform population."
+AI255,identity,islam-research.md,India,context-india,region-context,,,1,IS19,explicit-context-or-reuse,"ISE13broadsetting; Qadian is associated town, not automatically founding ceremony site."
+AI256,identity,islam-research.md,Pakistan,context-pakistan,jurisdiction-context,,,1,IS24,explicit-context-or-reuse,ISE15state classification; not a worldwide theological verdict.
+AI257,identity,islam-research.md,Yemen,context-yemen,region-context,,,1,IS08,explicit-context-or-reuse,ISE11broadsetting; no automatic union with a northern political polygon.
+AI258,identity,judaism-research.md,[Ananites],jud-ananites,historical-movement,,,1,JU08,explicit-context-or-reuse,Distinct from later Karaite appropriation; no single-founder shortcut.
+AI259,identity,judaism-research.md,[Jewish mystical traditions],jud-mystical-context,intellectual-context,,,1,JU07,explicit-context-or-reuse,Historical context; not a sole parent institution.
+AI260,identity,judaism-research.md,[Haskalah/modern European Jewish debates],jud-haskalah-context,intellectual-context,,,1,JU09,explicit-context-or-reuse,Not a denomination or single founding date.
+AI261,identity,judaism-research.md,[JTS],jud-jts,institution,,,1,JU11,explicit-context-or-reuse,"Institutional leadership relation, not identity with all Conservative Jews."
+AI262,identity,judaism-research.md,[P'nai Or],jud-pnai-or,organization,,,1,JU14,explicit-context-or-reuse,"Historical organization in merger, no additional founder details."
+AI263,identity,judaism-research.md,[Shalom Center],jud-shalom-center,organization,,,1,JU14,explicit-context-or-reuse,Merger context in source; no claim it ceased all later independent activity.
+AI264,identity,judaism-research.md,[ALEPH],jud-aleph,organization,,,1,JU14,explicit-context-or-reuse,"An organizational expression of Renewal, not every Renewal participant."
+AI265,identity,judaism-research.md,[Liberal JudaismUK],jud-liberal-uk-historical,organization,,,1,JU15,explicit-context-or-reuse,Historical organizational identity before2026merger.
+AI266,identity,judaism-research.md,[Movement for Reform JudaismUK],jud-reform-uk-historical,organization,,,1,JU15,explicit-context-or-reuse,"Historical Britishorganization, not worldReformJudaism."
+AI267,identity,christianity-research.md,Western Christianity,ch-western-context,historical-context,,,1,CH08;CH09;CH19,explicit-context-or-reuse,"Context for reforms, not identical to one modern Catholic organization."
+AI268,identity,christianity-research.md,Reformation context,ch-reformation-context,historical-context,,,1,CH10,explicit-context-or-reuse,"Context includes multiple movements, not a single institutional parent."
+AI269,identity,christianity-research.md,English Separatist context,ch-english-separatist-context,historical-context,,,1,CH11,explicit-context-or-reuse,"Named origin context for Baptist movement, not all Anabaptists."
+AI270,identity,christianity-research.md,Wesleyan-Holiness/Reformed revival contexts,ch-revival-contexts,historical-context,,,1,CH14,explicit-context-or-reuse,Multiple influences on Pentecostal movements; not a single denomination.
+AI271,identity,christianity-research.md,Stone movement,ch-stone-movement,historical-movement,,,1,CH15;CH20,explicit-context-or-reuse,Source-qualified merger participant.
+AI272,identity,christianity-research.md,Campbell movement,ch-campbell-movement,historical-movement,,,1,CH15;CH20,explicit-context-or-reuse,Source-qualified merger participant.
+AI273,identity,christianity-research.md,Revival/Millerite context,ch-millerite-context,historical-movement,,,1,CH21,explicit-context-or-reuse,Antecedent context; no automatic institutional linkage to every Adventist/Witness body.
+AI274,identity,christianity-research.md,Bible Student context,ch-bible-student-context,historical-movement,,,1,CH23,explicit-context-or-reuse,Antecedent context for modern Jehovah'sWitnesses.
+AI275,identity,christianity-research.md,Chalcedonian traditions,ch-chalcedonian-context,historical-context,,,1,CH03,explicit-context-or-reuse,"Council-reception category, not one present church."
+AI276,identity,christianity-research.md,Union-of-Utrecht context,ch-union-utrecht,communion-association,,,1,CH32,explicit-context-or-reuse,Not identical to all churches calling themselves OldCatholic.
+AI277,identity,christianity-research.md,Kyivan Byzantine context,ch-kyivan-byzantine-context,historical-context,,,1,CH33,explicit-context-or-reuse,"Brest-related historical context, not all Orthodox jurisdictions."
+AI278,identity,judaism-research.md,jud-abram,jud-abram,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI279,identity,judaism-research.md,jud-moses,jud-moses,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI280,identity,judaism-research.md,jud-anan,jud-anan,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI281,identity,judaism-research.md,jud-besht,jud-besht,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI282,identity,judaism-research.md,jud-jacobson,jud-jacobson,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI283,identity,judaism-research.md,jud-frankel,jud-frankel,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI284,identity,judaism-research.md,jud-kaplan,jud-kaplan,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI285,identity,judaism-research.md,jud-wine,jud-wine,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI286,identity,judaism-research.md,jud-schachter-shalomi,jud-schachter-shalomi,person,,,1,JU01;JU02;JU08;JU07;JU10;JU19;JU12;JU13;JU14,retain,Role and evidence resolved by the source-qualified people paragraph; do not merge names into movement nodes.
+AI287,identity,islam-research.md,ISH14,ISH14,person,,,1,IS19;IS20;IS23,retain,"Person, not homonymous legal school/tradition."
+AI288,identity,islam-research.md,ISH12,ISH12,person,,,1,IS19,retain,"Person, not homonymous legal school/tradition."
+AI289,identity,islam-research.md,ISH13,ISH13,person,,,1,IS19;IS20;IS23,retain,"Person, not homonymous legal school/tradition."
+AI290,edge,christianity-research.md,ch-early-communities,ch-early-communities,typed-relationship,historical-context,jud-second-temple,1,CH01;CH18,retain-qualified-edge,Do not render all living Judaism as an extinct parent.
+AI291,edge,christianity-research.md,ch-early-communities,ch-early-communities,typed-relationship,historical-development,christianity,1,CH01;CH18,retain-qualified-edge,"Long development, not one-day separation."
+AI292,edge,comparative-evidence.md,ch-east-syriac,ch-east-syriac,typed-relationship,commemorates-reported-arrival,xian,1,X04;CH17,retain-qualified-edge,XE01:781inscription reports635arrival; not precise road.
+AI293,edge,comparative-evidence.md,dara-shikoh,dara-shikoh,typed-relationship,authored-comparison,hindu-philosophy,1,X05,retain-qualified-edge,"XE03:author's interpretation, not universal doctrinal identity."
+AI294,edge,comparative-evidence.md,dara-shikoh,dara-shikoh,typed-relationship,authored-comparison,ISC01,1,X05;IS15,retain-qualified-edge,Compare IslamicSufism; no newSufi denomination.
+AI295,edge,comparative-evidence.md,sikh-tradition,sikh-tradition,typed-relationship,historical-setting,context-india,1,X06,retain-qualified-edge,GuruNanak's distinct tradition; no institutional parent inference.
+AI296,edge,comparative-evidence.md,bahai-faith,bahai-faith,typed-relationship,source-described-origin-context,shiraz,1,X07,retain-qualified-edge,"XC02:1844Babannouncement, not every laterinstitution."
+AI297,edge,comparative-evidence.md,bahai-faith,bahai-faith,typed-relationship,source-described-declaration,baghdad,1,X07,retain-qualified-edge,"XE05:1863Bahau'llah announcement, explicitly religiousclaim."
+AI298,edge,comparative-evidence.md,bahai-faith,bahai-faith,typed-relationship,source-described-exile-destination,acre,1,X07,retain-qualified-edge,"XJ01:1868arrival, not a verifiedcompletepolyline."
+AI299,edge,comparative-evidence.md,IST01,islam,typed-relationship,scholarly-textual-contact,daoism-reference,1,X08;X09,retain-qualified-edge,XC03/04:particular authors'engagement; neither religiondescendsfromtheother.
+AI300,edge,comparative-evidence.md,IST01,islam,typed-relationship,scholarly-textual-contact,buddhism-reference,1,X08;X09,retain-qualified-edge,Neither sharedterminology nor critique implies totalagreement.
+AI301,edge,comparative-evidence.md,IST01,islam,typed-relationship,scholarly-textual-contact,confucian-reference,1,X08;X09,retain-qualified-edge,"SinoIslamicintellectualcontext, not institutionalunion."
+AI302,edge,islam-research.md,ISC04,ISC04,typed-relationship,shared-named-figure-reference,jud-covenant-tradition,1,IS04;JU01,retain-qualified-edge,"Abrahamreference only; distinct scriptureclaims, nohistoricallyverifiedbiographyunion."
+AI303,edge,judaism-research.md,jud-aleph,jud-aleph,typed-relationship,organizational-expression,jud-renewal,1,JU14,retain-qualified-edge,Notsoleauthorityorallparticipants.
+AI304,edge,judaism-research.md,jud-liberal-uk-historical,jud-liberal-uk-historical,typed-relationship,institutional-merger,jud-progressive-uk,1,JU15,retain-qualified-edge,Effective1January2026; historicalnodepreserved.
+AI305,edge,judaism-research.md,jud-reform-uk-historical,jud-reform-uk-historical,typed-relationship,institutional-merger,jud-progressive-uk,1,JU15,retain-qualified-edge,Britishorganizationonly; notglobalReformmerger.
+AI306,nonmerge,cross-dossier,jud-babylon,jud-babylon,identity-constraint,do-not-merge,baghdad,1,JU04;JU22;X07,explicit-nonmerge,AncientBabylon is not Baghdad.
+AI307,nonmerge,cross-dossier,jud-babylon,jud-babylon,identity-constraint,do-not-merge,jud-babylonia,1,JU05;JU22,explicit-nonmerge,City and widerregion must remain distinct.
+AI308,nonmerge,cross-dossier,chp-east-syriac-region,chp-east-syriac-region,identity-constraint,do-not-merge,jud-babylonia,1,CH17;JU05,explicit-nonmerge,CombinedAssyria/Babylonia/Persia setting is broader than one region.
+AI309,nonmerge,cross-dossier,jud-egypt,jud-egypt,identity-constraint,do-not-merge,cairo,1,JU01;IS08;CH27,explicit-nonmerge,Country/region is notcity.
+AI310,nonmerge,cross-dossier,jud-land-israel,jud-land-israel,identity-constraint,do-not-merge,jerusalem,1,JU05;JU21,explicit-nonmerge,Regionalhistoricalterm is notcity or sovereignboundary.
+AI311,nonmerge,cross-dossier,jud-karaite,jud-karaite,identity-constraint,do-not-merge,jud-sadducees,1,JU08;JU17,explicit-nonmerge,No continuousinstitutionalancestry established.
+AI312,nonmerge,cross-dossier,jud-orthodox,jud-orthodox,identity-constraint,do-not-merge,ch-eastern-orthodox,1,JU18;CH04,explicit-nonmerge,SharedEnglishlabel doesnotidentify same religion.
+AI313,nonmerge,cross-dossier,ch-eastern-orthodox,ch-eastern-orthodox,identity-constraint,do-not-merge,ch-oriental-orthodox,1,CH03;CH04,explicit-nonmerge,Distinctcommunionfamilies andcouncilreception.
+AI314,nonmerge,cross-dossier,ch-east-syriac,ch-east-syriac,identity-constraint,do-not-merge,ch-oriental-orthodox,1,CH03;CH17,explicit-nonmerge,EastSyriacfamily is notsameasOrientalOrthodoxfamily.
+AI315,nonmerge,cross-dossier,ch-latter-day-saint,ch-latter-day-saint,identity-constraint,do-not-merge,ch-lds-utah,1,CH16;CH28;CH29,explicit-nonmerge,Movementhub isbroaderthanonecurrentinstitution.
+AI316,nonmerge,cross-dossier,ch-stone-campbell,ch-stone-campbell,identity-constraint,do-not-merge,ch-latter-day-saint,1,CH15;CH16,explicit-nonmerge,Restorationlanguage doesnotestablish commoninstitutionalparent.
+AI317,nonmerge,cross-dossier,IST07,IST07,identity-constraint,do-not-merge,ISL06,1,IS06;IS10,explicit-nonmerge,Zayditradition andZaydijurisprudentialschool aredifferenttypes.
+AI318,nonmerge,cross-dossier,IST04,IST04,identity-constraint,do-not-merge,ISL07,1,IS06;IS12,explicit-nonmerge,Ibadi tradition andlegal schooldifferenttypes.
+AI319,nonmerge,cross-dossier,ISC01,ISC01,identity-constraint,do-not-merge,IST02,1,IS15;IS16,explicit-nonmerge,Sufismisnot a synonym forSunni noranexclusivefourthbranch.
+AI320,nonmerge,cross-dossier,ISM02,ISM02,identity-constraint,do-not-merge,ISM03,1,IS20,explicit-nonmerge,Salafi/Wahhabi overlap isnot timelessidentity.
+AI321,nonmerge,cross-dossier,ISP11,ISP11,identity-constraint,do-not-merge,Zanzibarisland-versus-town,1,IS13,explicit-nonmerge,Sourcecompounddesignationmustnotbecomeoneprecisegeometry.
+AI322,nonmerge,cross-dossier,xian,xian,identity-constraint,do-not-merge,nanjing,1,X04;X08,explicit-nonmerge,Differenthistoricalsettings; donotmergeChinacontacts intoonecity.
+AI323,nonmerge,cross-dossier,ISM05,ISM05,identity-constraint,do-not-merge,Ahl-al-Sunna-general-label,1,IS23,explicit-nonmerge,RegionalBarelviselfdesignationnotallSunniMuslims.
+AI324,nonmerge,cross-dossier,ISH14,ISH14,identity-constraint,do-not-merge,Sayyid-Ahmad-Barelwi,1,IS23,explicit-nonmerge,Differentpeople/BareillyversusRaeBareli.
+AI325,identity,christianity-research.md,ch-spread-early,ch-spread-early,journey-or-network,,,1,CH02;CH18,retain-scoped,Regional source-qualified network; no precise road or single-trip itinerary.
+AI326,identity,christianity-research.md,ch-spread-east,ch-spread-east,journey-or-network,,,1,CH17,retain-scoped,Regional source-qualified network; no precise road or single-trip itinerary.
+AI327,identity,christianity-research.md,ch-spread-methodist,ch-spread-methodist,journey-or-network,,,1,CH12,retain-scoped,Regional source-qualified network; no precise road or single-trip itinerary.
+AI328,identity,christianity-research.md,ch-spread-anglican,ch-spread-anglican,journey-or-network,,,1,CH09,retain-scoped,Regional source-qualified network; no precise road or single-trip itinerary.
