@@ -290,6 +290,87 @@
     return h;
   }
 
+  /* ---------- notes and codex entries (PACK_FORMAT 20.5) ---------- */
+
+  /* reading gate for a note or codex entry: `first` (or `book`) hides it until that book in cumulative mode */
+  function readOk(it, cum, book) {
+    if (!cum || !book || !it) return true;
+    const f = it.first != null ? +it.first : it.book != null ? +it.book : null;
+    return f == null || !isFinite(f) || f <= book;
+  }
+
+  /* the place notes to show: each note obeys its own layers, `when` and reading gate */
+  function visibleNotes(notes, active, range, cum, book) {
+    return ARR(notes).filter(
+      (n) => n && n.t && layerOk(n, active) && timeOk(n, range) && readOk(n, cum, book),
+    );
+  }
+
+  /* split a codex list into entries to show and counts hidden by reading order and by the layer/year filter */
+  function codexSplit(list, active, range, cum, book, firstOf) {
+    const shown = [];
+    let locked = 0;
+    let filtered = 0;
+    ARR(list).forEach((x) => {
+      if (!x) return;
+      const f = firstOf ? firstOf(x) : x.first;
+      if (cum && book && f > book) locked++;
+      else if (!layerOk(x, active) || !timeOk(x, range)) filtered++;
+      else shown.push(x);
+    });
+    return { shown, locked, filtered };
+  }
+
+  /* ---------- surface journeys (PACK_FORMAT 20.6) ---------- */
+
+  /* a stop is a site id, {site:id}, or {name:"…"} for a stop with no known location */
+  function stopSite(st) {
+    if (typeof st === 'string') return st;
+    return st && typeof st === 'object' && st.site != null ? String(st.site) : null;
+  }
+
+  /* the legs to draw: consecutive stops that are both placed. An unplaced stop breaks the line, so the
+     map never implies a direct path across a place whose location is unknown. */
+  function routeLegs(route, placed) {
+    const stops = ARR(route && route.stops);
+    const legs = [];
+    for (let i = 1; i < stops.length; i++) {
+      const a = stopSite(stops[i - 1]);
+      const b = stopSite(stops[i]);
+      if (a && b && a !== b && placed(a) && placed(b)) legs.push([a, b]);
+    }
+    return legs;
+  }
+
+  /* points along the great circle from a to b ([lat, lon] in degrees), n segments */
+  function greatCircle(a, b, n) {
+    const R = Math.PI / 180;
+    const v = (p) => {
+      const la = p[0] * R;
+      const lo = p[1] * R;
+      return [Math.cos(la) * Math.cos(lo), Math.cos(la) * Math.sin(lo), Math.sin(la)];
+    };
+    const A = v(a);
+    const B = v(b);
+    const dot = Math.max(-1, Math.min(1, A[0] * B[0] + A[1] * B[1] + A[2] * B[2]));
+    const om = Math.acos(dot);
+    const out = [];
+    const k = Math.max(1, n | 0);
+    for (let i = 0; i <= k; i++) {
+      const t = i / k;
+      let x;
+      if (om < 1e-6) x = A;
+      else {
+        const s = Math.sin(om);
+        const p = Math.sin((1 - t) * om) / s;
+        const q = Math.sin(t * om) / s;
+        x = [p * A[0] + q * B[0], p * A[1] + q * B[1], p * A[2] + q * B[2]];
+      }
+      out.push([Math.asin(Math.max(-1, Math.min(1, x[2]))) / R, Math.atan2(x[1], x[0]) / R]);
+    }
+    return out;
+  }
+
   /* layer swatches and the date line for a place or event, for the details panel */
   function itemMeta(L, T, it) {
     const parts = [];
@@ -323,6 +404,12 @@
     decodeState,
     renderBar,
     itemMeta,
+    readOk,
+    visibleNotes,
+    codexSplit,
+    stopSite,
+    routeLegs,
+    greatCircle,
   };
   root.AtlasLayers = api;
 })(typeof window !== 'undefined' ? window : globalThis);

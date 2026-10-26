@@ -48,6 +48,7 @@
             { k: 'text', t: 'What the source text says.', ref: 'Vol. A 1:1' },
             { k: 'tradition', t: 'What tradition holds.' },
             { k: 'scholarship', t: 'What scholars say.' },
+            { k: 'text', t: 'What the western volume says about this place.', layers: ['west'], book: 2 },
           ],
         },
         {
@@ -89,6 +90,29 @@
           books: [1, 2],
           desc: 'Undated, unlayered: always shown.',
         },
+      ],
+      routes: [
+        {
+          id: 'r1',
+          name: 'Eastern journey',
+          books: [1],
+          layers: ['east'],
+          when: [-1000, -990],
+          desc: 'Placeholder route with an unplaced stop in the middle.',
+          stops: ['p2', { name: 'Unknown stop', note: 'no location' }, 'p1', { site: 'p5', note: 'last' }],
+        },
+        { id: 'r2', name: 'Western journey', books: [2], layers: ['west'], stops: ['p3', 'p4'] },
+      ],
+    },
+  ],
+  codex: [
+    {
+      id: 'ref',
+      title: 'Reference',
+      list: [
+        { name: 'Shared entry', desc: 'Unlayered: always listed.' },
+        { name: 'Eastern entry', desc: 'Eastern layer only.', layers: ['east'], when: -1500, books: [1] },
+        { name: 'Western entry', desc: 'Western layer only.', layers: ['west'], books: [2] },
       ],
     },
   ],

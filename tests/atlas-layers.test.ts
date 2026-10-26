@@ -109,6 +109,55 @@ test('the filter bar escapes pack text and marks pressed layers', () => {
   assert.ok(!L.renderBar(N, T, null, null).includes('data-tl="all"'));
 });
 
+test('place notes obey their own layers, years and reading gate', () => {
+  const notes = pack.worlds[0].sites[0].notes;
+  assert.equal(L.visibleNotes(notes, null, null, false, 0).length, 4);
+  assert.equal(L.visibleNotes(notes, new Set(['east']), null, false, 0).length, 3);
+  assert.equal(L.visibleNotes(notes, new Set(['west']), null, false, 0).length, 4);
+  assert.equal(L.visibleNotes(notes, null, null, true, 1).length, 3);
+  assert.equal(L.visibleNotes(notes, null, null, true, 2).length, 4);
+  assert.equal(L.visibleNotes([{ t: 'old', when: -900 }, { k: 'x' }, null], null, [1800, 1900], false, 0).length, 0);
+  assert.equal(L.readOk({ first: 3 }, true, 2), false);
+  assert.equal(L.readOk({ first: 3 }, false, 2), true);
+});
+
+test('codex entries split into shown, locked by reading order and hidden by filter', () => {
+  const list = pack.codex[0].list;
+  const first = (x: any) => (x.books ? Math.min(...x.books) : 1);
+  const all = L.codexSplit(list, null, null, false, 0, first);
+  assert.equal(all.shown.length, 3);
+  const east = L.codexSplit(list, new Set(['east']), null, false, 0, first);
+  assert.deepEqual(plain(east.shown.map((x: any) => x.name)), ['Shared entry', 'Eastern entry']);
+  assert.equal(east.filtered, 1);
+  const late = L.codexSplit(list, null, [1800, 1900], false, 0, first);
+  assert.equal(late.filtered, 1);
+  const cum = L.codexSplit(list, null, null, true, 1, first);
+  assert.equal(cum.locked, 1);
+  assert.equal(cum.shown.length, 2);
+});
+
+test('journeys draw only legs between consecutive placed stops', () => {
+  const r = pack.worlds[0].routes[0];
+  const all = (id: string) => ['p1', 'p2', 'p5'].includes(id);
+  assert.deepEqual(plain(L.routeLegs(r, all)), [['p1', 'p5']]);
+  assert.deepEqual(plain(L.routeLegs(r, (id: string) => id !== 'p5')), []);
+  assert.deepEqual(plain(L.routeLegs(pack.worlds[0].routes[1], () => true)), [['p3', 'p4']]);
+  assert.equal(L.stopSite({ name: 'x' }), null);
+  assert.equal(L.stopSite({ site: 'p1' }), 'p1');
+  assert.equal(L.stopSite('p2'), 'p2');
+  assert.deepEqual(plain(L.routeLegs({ stops: ['a'] }, () => true)), []);
+});
+
+test('great-circle points start and end at the stops and stay on the sphere path', () => {
+  const pts = L.greatCircle([31.8, 35.2], [41.9, 12.5], 20);
+  assert.equal(pts.length, 21);
+  assert.ok(Math.abs(pts[0][0] - 31.8) < 1e-9 && Math.abs(pts[0][1] - 35.2) < 1e-9);
+  assert.ok(Math.abs(pts[20][0] - 41.9) < 1e-9 && Math.abs(pts[20][1] - 12.5) < 1e-9);
+  // the midpoint of a great circle bulges poleward compared with a straight lat/lon line
+  assert.ok(pts[10][0] > (31.8 + 41.9) / 2);
+  assert.equal(L.greatCircle([10, 10], [10, 10], 4).length, 5);
+});
+
 test('the pack validator accepts the Track A fixture and catches bad layer and year data', async () => {
   // @ts-expect-error plain JS helper without type declarations
   const { validatePacks } = await import('./atlas-pack-validator.mjs');
@@ -124,7 +173,10 @@ test('the pack validator accepts the Track A fixture and catches bad layer and y
       `(window.ATLAS_PACKS=window.ATLAS_PACKS||{}).bad={id:"bad",meta:{title:"Bad"},books:{1:{}},
         layers:[{id:"a"}],timeline:{},start:{world:"nowhere"},
         worlds:[{id:"w",name:"W",group:"g",books:[1],map:[0,26],blurb:"x",gfx:{type:"terran"},
-          sites:[{id:"s",name:"S",lat:0,lon:0,desc:"d",layers:["zz"],when:[0,5]}]}]};`,
+          sites:[{id:"s",name:"S",lat:0,lon:0,desc:"d",layers:["zz"],when:[0,5],
+            notes:[{k:"text",t:"n",layers:["qq"],book:7}]}],
+          routes:[{id:"r",stops:["s","gone",{note:"x"}],layers:["rr"]},{id:"r",stops:["s"]}]}],
+        codex:[{id:"c",title:"C",list:[{name:"X",desc:"d",layer:"yy",when:0}]}]};`,
     );
     const r = validatePacks(dir);
     assert.deepEqual(plain(r['track-a-demo.js'].issues), []);
@@ -132,6 +184,15 @@ test('the pack validator accepts the Track A fixture and catches bad layer and y
     assert.match(bad, /unknown layer "zz"/);
     assert.match(bad, /year 0/);
     assert.match(bad, /start.world/);
+    assert.match(bad, /note 0: unknown layer "qq"/);
+    assert.match(bad, /note 0: unknown book 7/);
+    assert.match(bad, /codex c\/X: unknown layer "yy"/);
+    assert.match(bad, /codex c\/X: when uses year 0/);
+    assert.match(bad, /route r: stop 1 -> missing site "gone"/);
+    assert.match(bad, /route r: stop 2 needs a site id or a name/);
+    assert.match(bad, /route r: unknown layer "rr"/);
+    assert.match(bad, /route r: duplicate route id/);
+    assert.match(bad, /route r: needs at least two stops/);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

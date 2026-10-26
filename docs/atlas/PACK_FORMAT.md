@@ -676,3 +676,43 @@ layer (e.g. one layer per geography model, off by default) with a note saying it
 ### 20.4 `start` — open on a world instead of the galaxy
 `start:{world:"earth", view:"surface", site:"jerusalem"}` (`view` and `site` optional). Used only when the
 address names no world; a link with `#world=…` still wins.
+
+### 20.5 Layered notes and codex entries
+Place `notes` and codex entries follow the same filters as places and events, so text that belongs to one
+work disappears when its layer is off:
+
+```js
+notes:[
+  {k:"text", t:"Neutral shared description."},                       // no layers: always shown
+  {k:"text", t:"What the Book of Mormon says here.", layers:["bom"], ref:"1 Ne. 1:4"},
+  {k:"scholarship", t:"…", when:[-600,-586], first:3},               // year filter, and hidden before book 3 in cumulative mode
+]
+codex:[{id:"people", title:"People", list:[
+  {name:"Lehi", desc:"…", layers:["bom"], when:-600, approx:true},
+]}]
+```
+* `layers`/`layer` and `when` work as in 20.1–20.2. A note with its own layers shows their swatches.
+* `first` (or `book`) on a note hides it until that book in cumulative mode; in single mode it is ignored.
+* Codex entries hidden by the layer or year filter are counted under the list ("2 entries are hidden by the
+  layer or year filter"), separately from entries locked by reading order. Codex entries also show their
+  layer swatches and dates.
+* The validator checks note and codex layer ids, `when` values and note books.
+
+### 20.6 `routes` — journeys on one world's surface
+```js
+{id:"earth", …, sites:[…], routes:[
+  {id:"paul-1", name:"Paul's first journey", books:[2], layers:["nt"], when:[46,48], approx:true,
+   desc:"One or two sentences.", ref:"Acts 13–14",
+   stops:["antioch", "seleucia", {site:"salamis", note:"preached in synagogues"}, {name:"Unlocated stop"}, "perga"]},
+]}
+```
+* `stops` is the order the source gives. A stop is a site id, `{site, note}`, or `{name, note}` for a stop with
+  no known location.
+* The engine draws a dashed great-circle leg only between **consecutive** stops that are both placed and
+  visible. A `{name}` stop (or a site hidden by a filter) breaks the line, so the map never implies a direct
+  path across an unknown place. Legs are schematic: the default caption says so (`ui.routeNote`).
+* Routes take `layers`, `when`/`approx`, `books`/`first` like everything else (20.1–20.2, section 6).
+* On the surface the details panel lists the world's journeys (or, with a place open, the journeys through
+  it); opening one highlights its legs, lists its stops (placed ones are clickable) and turns the globe to the
+  first placed stop. Rename with `ui.routesTitle`, `ui.unplacedStop`, `ui.hiddenStop`.
+* Use one route per traveller or party; do not move a whole group along one member's trip.

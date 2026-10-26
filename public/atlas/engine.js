@@ -910,7 +910,7 @@ function updatePlanet(dt,t,spinOn){if(!PL)return;
 }
 
 /* ===================== STATE & SPOILER RULES (PACK_FORMAT 6) ===================== */
-const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null};
+const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null,route:null};
 /* layers and timeline (PACK_FORMAT 20; helpers in layers.js) */
 const LY=window.AtlasLayers||null;
 const LAY=LY?LY.normLayers(K.raw):null;
@@ -992,7 +992,8 @@ function buildSiteLabels(w){SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];
   (w.sites||[]).filter(siteSeen).forEach(s=>{const [lat,lon]=place(s);
     const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';labelsEl.appendChild(el);
     el.addEventListener("click",ev=>{ev.stopPropagation();selectSite(s.id);});
-    SITE_EL.push({s,el,dir:latLonDir(lat,lon)});});}
+    SITE_EL.push({s,el,ll:[lat,lon],dir:latLonDir(lat,lon)});});
+  buildRoutes(w);}
 const _w=new THREE.Vector3(),_n=new THREE.Vector3();
 function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
   SITE_EL.slice().sort((a,b)=>(b.s.id===S.site)-(a.s.id===S.site)).forEach(o=>{_n.copy(o.dir).applyQuaternion(PL.root.quaternion);_w.copy(_n).multiplyScalar(1.004);
@@ -1001,6 +1002,118 @@ function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
     if(show&&o.s.id!==S.site&&placed.some(q=>r.x<q.x+q.w&&r.x+r.w>q.x&&r.y<q.y+q.h&&r.y+r.h>q.y))show=false;if(show)placed.push(r);
     o.el.style.opacity=show?clamp((facing-.12)*5,0,1):0;o.el.style.pointerEvents=show?"auto":"none";if(o.el._tab!==show){o.el._tab=show;o.el.tabIndex=show?0:-1;o.el.setAttribute("aria-hidden",String(!show));}
     if(show)o.el.style.transform="translate("+(pr.x-7)+"px,"+(pr.y-13)+"px)";o.el.classList.toggle("sel",o.s.id===S.site);});
+}
+
+/* ===================== SURFACE JOURNEYS (PACK_FORMAT 20.6) ===================== */
+/* Ordered stops on one world, drawn as dashed great-circle legs between placed sites only. */
+let ROUTE_EL = [];
+let routeSvg = null;
+const routeFirst = (r) => (r.first != null ? r.first : r.books && r.books.length ? Math.min(...r.books) : 1);
+const routeSeen = (r) => !!r && filterOk(r) && (!CUM || !S.book || routeFirst(r) <= S.book);
+function worldRoutes(w) {
+  return ARR(w && w.routes).filter((r) => r && r.id && routeSeen(r));
+}
+function routeColor(r) {
+  const id = LY ? LY.itemLayers(r)[0] : null;
+  return LAY && id && LAY.by[id] ? LAY.by[id].c : "var(--lapis-hi)";
+}
+function clearRoutes() {
+  ROUTE_EL.forEach((o) => o.el.remove());
+  ROUTE_EL = [];
+}
+function buildRoutes(w) {
+  clearRoutes();
+  if (!LY || !w || !ARR(w.routes).length) return;
+  if (!routeSvg) {
+    routeSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    routeSvg.setAttribute("class", "routes");
+    routeSvg.setAttribute("aria-hidden", "true");
+    labelsEl.prepend(routeSvg);
+  }
+  const at = {};
+  SITE_EL.forEach((o) => (at[o.s.id] = o));
+  worldRoutes(w).forEach((r) => {
+    LY.routeLegs(r, (id) => !!at[id]).forEach(([a, b]) => {
+      const A = at[a].ll;
+      const B = at[b].ll;
+      const deg = latLonDir(A[0], A[1]).angleTo(latLonDir(B[0], B[1])) / DEG;
+      const dirs = LY.greatCircle(A, B, Math.min(96, Math.ceil(deg * 2) + 4)).map((p) => latLonDir(p[0], p[1]));
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      el.setAttribute("class", "rleg");
+      el.style.setProperty("--rc", routeColor(r));
+      routeSvg.appendChild(el);
+      ROUTE_EL.push({ r, el, dirs });
+    });
+  });
+}
+const _rp = new THREE.Vector3();
+const _rc = new THREE.Vector3();
+function layoutRoutes(W, H) {
+  if (!PL || !ROUTE_EL.length) return;
+  ROUTE_EL.forEach((o) => {
+    let d = "";
+    let pen = false;
+    o.dirs.forEach((dir) => {
+      _rp.copy(dir).applyQuaternion(PL.root.quaternion);
+      _rc.copy(camW.position).sub(_rp).normalize();
+      const front = _rp.dot(_rc) > 0.03;
+      if (!front) {
+        pen = false;
+        return;
+      }
+      const pr = project(_rp.multiplyScalar(1.003), camW, W, H);
+      d += (pen ? "L" : "M") + pr.x.toFixed(1) + " " + pr.y.toFixed(1);
+      pen = true;
+    });
+    o.el.setAttribute("d", d);
+    o.el.classList.toggle("sel", S.route === o.r.id);
+    o.el.classList.toggle("dim", !!S.route && S.route !== o.r.id);
+  });
+}
+/* the Journeys list in the details panel (world view only) */
+function routesHtml(w) {
+  if (S.view !== "world" || !LY) return "";
+  let rs = worldRoutes(w);
+  if (S.site) rs = rs.filter((r) => r.id === S.route || ARR(r.stops).some((st) => LY.stopSite(st) === S.site));
+  if (!rs.length) return "";
+  const placed = new Set(SITE_EL.map((o) => o.s.id));
+  const known = new Set((w.sites || []).map((x) => x.id));
+  let h = '<div class="rule"><span class="eyebrow">' + esc(UI.routesTitle || "Journeys") + "</span></div>";
+  h += '<p class="srcnote">' + esc(UI.routeNote || "Dashed lines join known places in the order the account gives. They are schematic, not recovered roads.") + "</p>";
+  rs.forEach((r) => {
+    const open = S.route === r.id;
+    h += '<div class="route' + (open ? " open" : "") + '" style="--rc:' + esc(routeColor(r)) + '">';
+    h += '<button class="rt" data-route="' + esc(r.id) + '" aria-expanded="' + open + '"><span class="rl"></span>' + esc(r.name || r.id);
+    h += '<span class="pc">' + bks(r.books || []) + LY.itemMeta(LAY, TL, r) + "</span></button>";
+    if (open) {
+      if (r.desc) h += '<p class="pd">' + esc(r.desc) + "</p>";
+      h += '<ol class="stops">' + ARR(r.stops).map((st) => stopHtml(w, st, placed, known)).join("") + "</ol>";
+      if (r.ref) h += '<p class="srcnote">' + esc(r.ref) + "</p>";
+    }
+    h += "</div>";
+  });
+  return h;
+}
+function stopHtml(w, st, placed, known) {
+  const id = LY.stopSite(st);
+  const nm = (id && siteName(w, id)) || (st && st.name) || id || "";
+  const note = st && typeof st === "object" && st.note ? " <i>" + esc(st.note) + "</i>" : "";
+  if (id && placed.has(id)) return '<li><button class="stop" data-site="' + esc(id) + '">' + esc(nm) + "</button>" + note + "</li>";
+  const why = id && known.has(id) ? UI.hiddenStop || "hidden by the current filter" : UI.unplacedStop || "location unknown, not drawn";
+  return '<li class="unplaced">' + esc(nm) + " <span>" + esc(why) + "</span>" + note + "</li>";
+}
+/* turn the open world so a route's first placed stop faces the viewer */
+function showRoute(id) {
+  S.route = id;
+  renderDossier();
+  const open = dos.querySelector(".route.open");
+  if (open) open.scrollIntoView({ block: "nearest" });
+  const w = WORLD_BY[S.sel];
+  const r = id && w && ARR(w.routes).find((x) => x.id === id);
+  if (!r || !PL) return;
+  const first = ARR(r.stops).map(LY.stopSite).find((sid) => SITE_EL.some((o) => o.s.id === sid));
+  const o = first && SITE_EL.find((x) => x.s.id === first);
+  if (o) turnToSite(o, Math.max(orbW.dist, 2.6));
 }
 
 /* ===================== TOOLTIP ===================== */
@@ -1054,6 +1167,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     else{const vis=all.filter(s=>!S.book||!s.book||s.book===S.book||(s.books||[]).includes(S.book));
       if(all.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
         all.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(vis.includes(s)?"":' style="opacity:.45"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||(s.book?[s.book]:[]))+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
+    h+=routesHtml(w);
     const evs=evFor(w.id);h+='<div class="rule"><span class="eyebrow">In the Chronicle</span></div>';
     h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+'</button>').join("")
       :'<p class="empty">'+(S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
@@ -1067,9 +1181,13 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
 function eraBlurb(w){let b=w.blurb;const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(cur>=k&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
 const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
+/* one labelled note; layer chips only when the note has its own layers */
+function noteHtml(n){const lm=LY&&(n.layers||n.layer)?' <span class="lmeta">'+LY.itemMeta(LAY,null,{layers:n.layers,layer:n.layer})+'</span>':"";
+  return '<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+lm+'</span>';}
 function placeMeta(s){return LY?LY.itemMeta(LAY,TL,s):"";}
 function siteExtra(s){let h="";if(s.modern)h+='<span class="pm">'+esc(UI.modernLabel||"Today")+': '+esc(s.modern)+'</span>';
-  if(S.site===s.id){const ns=ARR(s.notes).filter(n=>n&&n.t);if(ns.length)h+='<span class="pnotes">'+ns.map(n=>'<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+'</span>').join("")+'</span>';}
+  if(S.site===s.id){const ns=LY?LY.visibleNotes(s.notes,S.layers,S.range,CUM,S.book):ARR(s.notes).filter(n=>n&&n.t);
+    if(ns.length)h+='<span class="pnotes">'+ns.map(noteHtml).join("")+'</span>';}
   return h;}
 function siteName(w,id){const s=(w.sites||[]).find(x=>x.id===id);return s?s.name:"";}
 const HOOK_API={get worldBy(){return WORLD_BY;},sol:SOL,get state(){return {book:S.book,sel:S.sel,view:S.view};},books:BOOKS,worlds:WORLDS};
@@ -1084,7 +1202,8 @@ function distText(w){
   return "About "+ly.toLocaleString()+" light-years from Sol"+(w.est?" · position estimated":"");}
 dos.addEventListener("click",e=>{const a=e.target.closest("[data-act]");if(a){const k=a.dataset.act;
     if(k==="descend")descend(S.sel);else if(k==="ascend")ascend();else if(k==="web")flyHuman();else if(k==="go")selectWorld(a.dataset.id,true);return;}
-  const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site?null:p.dataset.site);return;}
+  const rt=e.target.closest("[data-route]");if(rt){showRoute(S.route===rt.dataset.route?null:rt.dataset.route);return;}
+  const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site&&!p.classList.contains("stop")?null:p.dataset.site);return;}
   const ev=e.target.closest("[data-ev]");if(ev){openEvent(ev.dataset.ev===S.ev?null:ev.dataset.ev,false);}});
 
 /* ===================== CHRONICLE ===================== */
@@ -1113,12 +1232,17 @@ function renderLegend(){const b=S.book;let L=[];
 /* ===================== CODEX ===================== */
 let cxTab=K.codex.length?K.codex[0].id:null;
 function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books):1);}
+/* one codex entry; Track A entries also show their layer chips and dates */
+function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
+  const lm=LY&&(x.layers||x.layer||x.when!=null)?'<span class="lmeta">'+LY.itemMeta(LAY,TL,x)+'</span>':"";
+  return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
   const tab=K.codex.find(t=>t.id===cxTab)||K.codex[0];
-  const list=tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=tab.list.length-list.length;
-  $("#cxBody").innerHTML=list.map(x=>{const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
-    return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}).join("")+
-    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"");
+  const sp=LY?LY.codexSplit(tab.list,S.layers,S.range,CUM,S.book,cxFirst):null;
+  const list=sp?sp.shown:tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=sp?sp.locked:tab.list.length-list.length;const flt=sp?sp.filtered:0;
+  $("#cxBody").innerHTML=list.map(cxItem).join("")+
+    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"")+
+    (flt?'<p class="cx-hid">'+flt+' entr'+(flt===1?"y is":"ies are")+' hidden by the layer or year filter.</p>':"");
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
 $("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
 function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
@@ -1261,7 +1385,8 @@ if(filtersEl&&LY){
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();afterRefresh();}
+function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();
+  if(!$("#codex").hidden)renderCodex();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
 function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
@@ -1275,7 +1400,7 @@ function fitDist(r){const hf=2*Math.atan(Math.tan(camW.fov*DEG/2)*camW.aspect);r
 function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
   if(noSurface(w)){if(S.view==="world")ascend(()=>selectWorld(id,true));else selectWorld(id,true);return;}
   if(needRealm(w))setRealm(needRealm(w),true);
-  S.sel=id;S.site=null;if(MOB)dosCollapsed=true;
+  S.sel=id;S.site=null;S.route=null;if(MOB)dosCollapsed=true;
   /* one history entry per visit to a surface, so Back returns to the galaxy */
   if(!fromHistory&&urlReady){const st={atlasSurface:true};if(history.state&&history.state.atlasSurface)history.replaceState(st,"",urlFor({view:"world",sel:id}));else history.pushState(st,"",urlFor({view:"world",sel:id}));}
   transition(()=>{S.view="world";hideTip();syncURL();
@@ -1294,15 +1419,16 @@ function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
    Back button and this button stay in step; popstate then does the work. */
 let afterAscend=null;
 function ascend(after){if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
-function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
+function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];clearRoutes();S.route=null;$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
 function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
-  if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
-    /* turn the world so the place sits in daylight, between the sun and the viewer */
+  if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o)turnToSite(o,Math.min(orbW.dist,2.4));}}
+/* turn the world so the place sits in daylight, between the sun and the viewer */
+function turnToSite(o,dist){S.interacted=true;
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();
     const vy=Math.atan2(V.x,V.z);const sy=Math.atan2(o.dir.x,o.dir.z);const r0=PL.root.rotation.y;PL.turn={t0:performance.now(),from:r0,to:r0+((((vy-sy)-r0+Math.PI)%TAU+TAU)%TAU-Math.PI)};
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
-    orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
+    orbW.flyTo(new THREE.Vector3(),dist,orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}
 function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
@@ -1393,7 +1519,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
     layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);renderer.render(wsc,camW);}
+  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
 /* ===================== URL STATE (deep links, reload, Back) =====================
