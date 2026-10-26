@@ -54,6 +54,7 @@ export function resetSimulation() {
   renderExhibitEvents();
   app.elapsed = 0;
   app.simAccumulator = 0;
+  app.warpScript = null;
   app.nextId = 1;
   app.gravity = 1;
   document.querySelector<HTMLInputElement>('#gravity')!.value = '1';
@@ -184,7 +185,7 @@ function restoreBody(saved: SandboxSnapshot['bodies'][number]) {
     magnetosphere: saved.magnetosphere ?? 0,
     lastEvent: saved.lastEvent,
     collisionCooldown: 0.35,
-    artificial: saved.artificial === 'worldship' ? 'worldship' : undefined,
+    artificial: saved.artificial === 'worldship' || saved.artificial === 'warship' ? saved.artificial : undefined,
     warpBoost: saved.warpBoost,
   });
   body.name = typeof saved.name === 'string' ? saved.name : body.name;

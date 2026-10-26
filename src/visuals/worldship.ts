@@ -91,3 +91,64 @@ export function dressWorldship(b: Body) {
   ship.scale.setScalar(TYPES[b.kind].radius * 1.05);
   b.mesh.add(ship);
 }
+
+/** A human warship: a long dark hull with cathedral-like spires, nose along +x and engines at -x. */
+export function dressWarship(b: Body) {
+  for (const child of [...b.mesh.children])
+    if (child !== b.label) {
+      b.mesh.remove(child);
+      disposeObject(child);
+    }
+  const ship = new THREE.Group();
+  ship.name = 'warshipModel';
+  const hull = new THREE.MeshStandardMaterial({ color: 0x5d636e, metalness: 0.7, roughness: 0.38, emissive: 0x0d1018 }),
+    trim = new THREE.MeshStandardMaterial({ color: 0xb9b2a2, metalness: 0.85, roughness: 0.28, emissive: 0x1a1812 });
+  const body = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.22, 0.34), hull);
+  ship.add(body);
+  const prow = new THREE.Mesh(new THREE.ConeGeometry(0.19, 0.7, 4), hull);
+  prow.rotation.z = -Math.PI / 2;
+  prow.rotation.x = Math.PI / 4;
+  prow.position.x = 1.18;
+  ship.add(prow);
+  const keel = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.12, 0.12), trim);
+  keel.position.set(-0.1, -0.16, 0);
+  ship.add(keel);
+  for (let i = 0; i < 6; i++) {
+    const height = 0.22 + ((i * 5 + b.id) % 4) * 0.08 + (i === 2 ? 0.22 : 0),
+      spire = new THREE.Mesh(new THREE.ConeGeometry(0.05, height, 6), trim);
+    spire.position.set(0.55 - i * 0.22, 0.11 + height / 2, 0);
+    ship.add(spire);
+  }
+  const lights = new Float32Array(60 * 3);
+  for (let i = 0; i < 60; i++) {
+    lights[i * 3] = (seeded(b.id + i, 11) - 0.5) * 1.6;
+    lights[i * 3 + 1] = (seeded(b.id + i, 13) - 0.5) * 0.2;
+    lights[i * 3 + 2] = seeded(b.id + i, 17) > 0.5 ? 0.175 : -0.175;
+  }
+  const lightGeometry = new THREE.BufferGeometry();
+  lightGeometry.setAttribute('position', new THREE.BufferAttribute(lights, 3));
+  ship.add(
+    new THREE.Points(
+      lightGeometry,
+      new THREE.PointsMaterial({
+        color: 0xfff0c8,
+        size: 0.03,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        toneMapped: false,
+      }),
+    ),
+  );
+  for (const z of [-0.1, 0.1]) {
+    const engine = new THREE.Mesh(
+      new THREE.SphereGeometry(0.08, 12, 8),
+      new THREE.MeshBasicMaterial({ color: 0x8fd0ff, toneMapped: false }),
+    );
+    engine.position.set(-0.88, 0, z);
+    ship.add(engine);
+  }
+  ship.scale.setScalar(TYPES[b.kind].radius);
+  b.mesh.add(ship);
+}

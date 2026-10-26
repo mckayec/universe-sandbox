@@ -83,9 +83,10 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     id: 'gododdin',
     title: 'The Fall of Gododdin',
     eyebrow: 'Sun Eater scenario · fiction',
-    description: 'A Cielcin worldship tears past Gododdin at warp, its wake ripping the moon apart.',
+    description:
+      'Cielcin worldships come out of warp on the fleet massed around Gododdin, and one drops into the planet itself.',
     objective:
-      'Keep time at 1×. As the worldship passes, time drops into slow motion so you can watch the moon stretch and shatter into a debris arc, while Gododdin holds together just outside the lethal zone. The warp-wake boost is fictional; the Roche-limit breakup is real physics.',
+      'Keep time at 1×. Worldships tear through the fleet at warp, then drop out of warp around the planet; the last arrives inside Gododdin and time slows as the world breaks apart. From Shadows Upon Time (Sun Eater #7); the warp shock is the book’s fiction; the breakup follows real Roche-limit physics.',
     accent: '#b79bff',
   },
   {

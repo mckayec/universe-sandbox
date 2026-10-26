@@ -92,6 +92,10 @@ function updateRecovery(dt: number) {
   if (snapshot && snapshot.bodies.length) saveRecoverySnapshot(snapshot);
   if (bodies.length) refreshGroupNavigator();
 }
+// Escort warships fly in swarms: label them only when selected. A flagship is built larger than birth size.
+function isEscortShip(body: (typeof bodies)[number]) {
+  return body.artificial === 'warship' && body.mass <= body.birthMass;
+}
 function updateLabels() {
   const viewDistance = camera.position.distanceTo(viewTarget);
   for (const body of bodies) {
@@ -99,6 +103,7 @@ function updateLabels() {
     body.label.visible =
       body === app.selectedBody ||
       (!body.debris &&
+        !isEscortShip(body) &&
         inFocusedStructure &&
         (viewDistance < 170 || (viewDistance < 650 && (body.kind === 'blackhole' || body.kind === 'nebula'))));
   }

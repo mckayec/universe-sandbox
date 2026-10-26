@@ -7,6 +7,7 @@ import { ExhibitAudio } from '../exhibit-audio.ts';
 import { type EffectsMode, type RealismMode } from '../exhibit-runtime.ts';
 import { preferences } from '../scene/setup.ts';
 import type {
+  WarpScript,
   Body,
   CameraTransition,
   CosmicGroup,
@@ -89,4 +90,5 @@ export const app = {
   cameraTransition: null as CameraTransition | null,
   slowMotionTimer: 0,
   slowMotionRestore: 1,
+  warpScript: null as WarpScript | null,
 };

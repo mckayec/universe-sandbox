@@ -69,7 +69,7 @@ export type Body = {
   magnetosphere: number;
   collisionCooldown: number;
   lastEvent: string;
-  artificial?: 'worldship';
+  artificial?: 'worldship' | 'warship';
   warpBoost?: number;
 };
 export type OrbitGuide = { mesh: THREE.LineLoop; center: Body; radius: number };
@@ -113,4 +113,14 @@ export type CameraTransition = {
   toTarget: THREE.Vector3;
   age: number;
   duration: number;
+};
+/** A scripted warp sequence (Fall of Gododdin): ships that arrive from warp on a timeline, and ships still to die. */
+export type WarpScript = {
+  time: number;
+  worldId: number;
+  stage: number;
+  strikeId?: number;
+  kills: Array<{ at: number; id: number }>;
+  /** Last position of the body the camera is riding along with (the planet, then the worldship inside it). */
+  focus?: { id: number; x: number; z: number };
 };

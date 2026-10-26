@@ -522,3 +522,79 @@ export function updateTransients(dt: number) {
     }
   }
 }
+
+/** A ship running at warp: a violet tear in space racing from `from` to `to` over `duration` seconds. */
+export function warpStreakEffect(from: THREE.Vector3, to: THREE.Vector3, duration = 1.1) {
+  const direction = to.clone().sub(from),
+    length = direction.length(),
+    angle = Math.atan2(-direction.z, direction.x),
+    streak = new THREE.Group();
+  const core = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.07, 0.07, 1, 10, 1, true),
+      new THREE.MeshBasicMaterial({
+        color: 0xe4dcff,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        toneMapped: false,
+      }),
+    ),
+    sheath = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.24, 0.24, 1, 18, 1, true),
+      new THREE.MeshBasicMaterial({
+        color: 0x8d6cff,
+        transparent: true,
+        opacity: 0.12,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        toneMapped: false,
+      }),
+    );
+  for (const part of [core, sheath]) part.rotation.z = Math.PI / 2;
+  streak.add(core, sheath);
+  streak.rotation.y = angle;
+  streak.position.copy(from);
+  const tail = Math.min(length, 26);
+  transient(streak, duration + 0.6, life => {
+    const t = life * (duration + 0.6),
+      head = Math.min(1, t / duration) * length,
+      fade = t > duration ? 1 - (t - duration) / 0.6 : 1,
+      start = Math.max(0, head - tail),
+      span = Math.max(0.01, head - start);
+    streak.position.copy(from).addScaledVector(direction, (start + span / 2) / length);
+    core.scale.y = sheath.scale.y = span;
+    (core.material as THREE.MeshBasicMaterial).opacity = 0.95 * fade;
+    (sheath.material as THREE.MeshBasicMaterial).opacity = 0.12 * fade;
+  });
+  triggerFlash(0.12);
+}
+/** A ship dropping out of warp: a white flash and a gravity-wave ring rippling outward. */
+export function warpEmergenceEffect(position: THREE.Vector3, reach: number, intensity = 1) {
+  triggerFlash(0.22 * intensity);
+  impactEffect(position, 0xc8b8ff, intensity);
+  for (let i = 0; i < 3; i++) {
+    const ring = new THREE.Mesh(
+      new THREE.RingGeometry(0.975, 1, 160),
+      new THREE.MeshBasicMaterial({
+        color: i === 0 ? 0xf2ecff : 0x9a7bff,
+        transparent: true,
+        opacity: 0,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        toneMapped: false,
+      }),
+    );
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.copy(position).setY(position.y + 0.05);
+    const delay = i * 0.18;
+    transient(ring, 1.6 + delay, life => {
+      const t = Math.max(0, life * (1.6 + delay) - delay) / 1.6,
+        radius = 0.5 + t * reach;
+      ring.scale.set(radius, radius, 1);
+      (ring.material as THREE.MeshBasicMaterial).opacity = t > 0 ? Math.pow(1 - t, 1.4) * 0.55 * intensity : 0;
+    });
+  }
+}

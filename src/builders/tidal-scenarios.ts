@@ -8,6 +8,7 @@ import { isCompact } from '../scene/setup.ts';
 import { app } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { updateScienceModeButton } from '../ui/controls.ts';
+import { startWarpSequence } from '../physics/warp-sequence.ts';
 
 // ── Tidal scenarios ───────────────────────────────────────────────────────
 // Predict where unperturbed bodies will be after `seconds`, so a perturber can be aimed at a moving target.
@@ -46,8 +47,7 @@ function orbitVelocity(center: Body, position: THREE.Vector3, clockwise = true) 
   if (!clockwise) tangent.multiplyScalar(-1);
   return center.velocity.clone().addScaledVector(tangent, Math.sqrt((G * app.gravity * center.mass) / r));
 }
-const tidalLabMiss = 3.4,
-  gododdinMiss = 3.6;
+const tidalLabMiss = 3.4;
 export function createTidalLab() {
   const star = setBodyName(
     addBody('star', new THREE.Vector3(), new THREE.Vector3(), {
@@ -125,46 +125,49 @@ export function createGododdin() {
     }),
     "Gododdin's Sun",
   );
-  const worldPos = new THREE.Vector3(18, 0, 0),
+  const worldPos = new THREE.Vector3(24, 0, 0),
     world = setBodyName(
       addBody('rocky', worldPos, orbitVelocity(sun, worldPos), {
         variant: 3,
         mass: 12,
-        lastEvent: 'An imperial world where the human fleet has massed',
+        lastEvent: 'The imperial world where humanity has massed its fleet',
       }),
       'Gododdin',
     );
-  const moonPos = worldPos.clone().add(new THREE.Vector3(6, 0, 0)),
-    moon = setBodyName(
-      addBody('moon', moonPos, orbitVelocity(world, moonPos), {
-        variant: 0,
-        mass: 0.74,
-        lastEvent: "Gododdin's moon, on the far side from the sun",
-      }),
-      "Gododdin's Moon",
+  // The fleet, already in orbit around the planet when the Cielcin arrive.
+  const members: Body[] = [sun, world],
+    count = isCompact ? 16 : 26;
+  for (let i = 0; i < count; i++) {
+    const inner = i % 2 === 0,
+      angle = (i / count) * Math.PI * 2 + (inner ? 0 : 0.12),
+      radius = inner ? 2.75 : 3.9,
+      position = worldPos.clone().add(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
+    members.push(
+      setBodyName(
+        addBody('asteroid', position, orbitVelocity(world, position), {
+          mass: 0.02,
+          birthMass: 0.02,
+          artificial: 'warship',
+          lastEvent: 'An Imperial warship holding orbit over Gododdin',
+        }),
+        `Imperial ship ${i + 1}`,
+      ),
     );
-  const lead = 5,
-    future = predictPositions([sun, world, moon], lead),
-    arrival = future.get(moon.id)!,
-    approach = flybyStart(arrival, arrival.clone().sub(future.get(world.id)!), gododdinMiss, 72, lead);
-  const ship = setBodyName(
-    addBody('brown', approach.position, approach.velocity, {
-      mass: 260,
-      artificial: 'worldship',
-      warpBoost: 40,
-      collisionCooldown: 2,
-      lastEvent:
-        'A Cielcin worldship running at warp; its wake distorts space around it (a fictional boost to tidal stress)',
-    }),
-    'Cielcin Worldship',
+  }
+  const flagPos = worldPos.clone().add(new THREE.Vector3(Math.cos(1.1) * 5.1, 0, Math.sin(1.1) * 5.1));
+  members.push(
+    setBodyName(
+      addBody('asteroid', flagPos, orbitVelocity(world, flagPos), {
+        mass: 0.2,
+        birthMass: 0.02,
+        artificial: 'warship',
+        lastEvent: "Hadrian's ship, watching from a high orbit",
+      }),
+      'Demiurge',
+    ),
   );
-  registerCosmicGroup('system', [sun, world, moon, ship], 'Gododdin System');
-  transitionCamera(
-    arrival
-      .clone()
-      .lerp(future.get(world.id)!, 0.35)
-      .add(new THREE.Vector3(0, 0, -7)),
-    isCompact ? 58 : 42,
-  );
-  return moon;
+  registerCosmicGroup('system', members, 'Gododdin System');
+  startWarpSequence(world);
+  transitionCamera(worldPos.clone(), isCompact ? 26 : 17);
+  return world;
 }
