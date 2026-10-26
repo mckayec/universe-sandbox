@@ -247,6 +247,9 @@ void main(){
   vec3 alb=pow(A.rgb,vec3(2.2));
   vec3 nO=normalize(B.rgb*2.-1.);
   float wat=A.a;
+  if(uBase>.5){ /* built-in Earth: the full-size coastline mask overrides the baked map's coarser shore */
+    bool wb=texture2D(tBase,uv).r<.5;
+    if(wb&&A.a<.5)alb=uWaterCol;if(!wb&&A.a>=.5)alb=uLandCol;wat=wb?1.:0.;A.a=wat;}
   if(uDetail>.001){ /* live procedural detail: resolves past the baked 4K map as you zoom in */
     vec3 dp=d*240.+uSeed;
     float n1=snoise(dp),n2=snoise(dp*2.7+7.),n3=snoise(dp*7.3+3.),n4=snoise(dp*19.+11.);
