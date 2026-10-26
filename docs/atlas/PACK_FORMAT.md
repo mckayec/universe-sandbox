@@ -12,7 +12,7 @@ and `packs/hyperion.js` are full working examples; `packs/_template.js` is a sma
 Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 6 books & spoilers ·
 7 ui strings · 8 intro · 9 groups · 10 worlds · 11 world surfaces (`gfx`, features, sites) ·
 12 events · 13 codex · 14 galaxy (layout, labels, territories, glows, links) · 15 legend ·
-16 hooks · 17 minimum pack · 18 content rules.
+16 hooks · 17 minimum pack · 18 content rules · 19 realms · 20 layers & timeline (Track A).
 
 ---------------------------------------------------------------------------------------------------
 
@@ -625,3 +625,54 @@ realms:{
   Styles: `beads` (bead ocean over the land, obsidian over the seas), `mist`, `plasma`, `paint`, `unsea`.
 * Worlds, sites, labels, glows and links accept `realm:"cognitive"` (only there) or
   `realms:["physical","cognitive"]`. `first` gates each realm behind a book.
+
+---------------------------------------------------------------------------------------------------
+
+## 20. Layers, timeline and Earth start (Track A: Earth-historical atlases, optional)
+
+Helpers live in `layers.js` (loaded by `index.html` before `engine.js`); `tests/fixtures/track-a-demo.js`
+is a small working example with placeholder data. None of this changes packs that do not use it.
+
+### 20.1 `layers` — switchable content layers
+```js
+layers:[
+  {id:"ot", name:"Old Testament", short:"OT", c:"#d9b45a", tip:"Hover text"},
+  {id:"bom", name:"Book of Mormon", short:"BoM", c:"#7fa8e8"},
+  {id:"models", name:"Geography models", c:"#8cc49a", on:false},   // starts switched off
+]
+```
+* A bar of toggle buttons appears above the Chronicle (top of the screen on phones). Every layer on =
+  "all combined". The last layer that is on cannot be switched off.
+* Worlds, sites, events and `galaxy.links` take `layers:["ot","nt"]` (or `layer:"ot"`). An item is shown
+  when **any** of its layers is on; an item with no layers is always shown.
+* Layers combine with book gating (section 6): an item must pass both.
+* The address keeps the choice: `#layers=ot,bom` (left out when every layer is on).
+
+### 20.2 `timeline` — a year-range filter
+```js
+timeline:{min:-2200, max:2000, step:10, style:"BC/AD", label:"Years",
+  eras:[{name:"Patriarchs", from:-2100, to:-1700}, {name:"Restoration", from:1820, to:1847}]}
+```
+* Years are historical: **negative = BC/BCE, positive = AD/CE, there is no year 0** (1 BC is `-1`,
+  AD 1 is `1`). The validator rejects `when` values of 0.
+* `min`/`max` default to the earliest and latest `when` in the pack; `step` (default 1) is the slider
+  step in years; `style` is `"BC/AD"` (default: "1446 BC", "AD 30", "1830") or `"BCE/CE"`.
+* `eras` names are shown beside the selected range (descriptive only).
+* Worlds, sites, events and links take `when:1830` or `when:[-1446,-1406]`, and `approx:true` to print
+  "c.". An item is shown when its span overlaps the selected range; items with no `when` always show.
+* The bar is a two-handle slider plus an "All years" reset. The address keeps it: `#yr=-1500_-1000`.
+* Dates appear next to places and events in the details panel, with the item's layer swatches.
+
+### 20.3 Place details for Earth-historical sites
+| field | notes |
+|---|---|
+| `modern` | modern name, shown as "Today: …" when the place is open (`ui.modernLabel` renames "Today") |
+| `notes` | `[{k:"text"|"tradition"|"scholarship"|…, t:"…", ref:"Gen. 12:1"}]`: labelled paragraphs shown when the place is open, so what the text says, what tradition holds and what scholars say stay visibly separate (RESEARCH_TEMPLATE §8). Labels: "The text", "Tradition", "Scholarship"; rename or add kinds with `ui.noteLabels:{text:"Scripture"}` |
+
+Use real `lat`/`lon` with `gfx:{type:"terran", base:"earth"}` (11.3). For places whose location is
+unknown or disputed, do not give coordinates as fact: leave them out, or put each proposal in its own
+layer (e.g. one layer per geography model, off by default) with a note saying it is a proposal.
+
+### 20.4 `start` — open on a world instead of the galaxy
+`start:{world:"earth", view:"surface", site:"jerusalem"}` (`view` and `site` optional). Used only when the
+address names no world; a link with `#world=…` still wins.

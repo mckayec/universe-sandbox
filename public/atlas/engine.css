@@ -342,3 +342,56 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   #realms,.manybooks #realms{top:calc(var(--hdr,96px) + 36px)}
   .seg button{min-height:36px}
 }
+
+/* ---- layers and timeline (PACK_FORMAT 20): Track A filter bar ---- */
+#filters{position:absolute;z-index:6;left:50%;transform:translateX(-50%);bottom:calc(var(--ch,150px) + 16px);display:flex;align-items:stretch;gap:10px;
+  max-width:min(980px,calc(100% - 760px));min-width:min(520px,calc(100% - 24px));pointer-events:auto}
+#filters.withrealms{bottom:calc(var(--ch,150px) + 64px)}
+#filters:empty{display:none}
+/* the surface-bake progress sits just above the filter bar instead of under it */
+#app:has(#filters:not(:empty)) #bake{bottom:calc(var(--ch,200px) + 84px)}
+#app:has(#filters.withrealms:not(:empty)) #bake{bottom:calc(var(--ch,200px) + 132px)}
+#filters .lyrs{box-shadow:0 6px 24px rgba(0,0,0,.45);overflow-x:auto;scrollbar-width:none}
+#filters .lyrs::-webkit-scrollbar{display:none}
+#filters .lyrs button{display:flex;align-items:center;gap:7px;white-space:nowrap;font:400 10.5px var(--f-hud);letter-spacing:.14em;text-transform:uppercase;padding:8px 12px}
+#filters .lyrs button[aria-pressed="false"]{opacity:.55}
+#filters .lyrs button[aria-pressed="true"]{color:var(--chrome);background:rgba(var(--hi-rgb),.14)}
+.lsw{width:9px;height:9px;border-radius:50%;flex:none;background:var(--lc);box-shadow:0 0 6px var(--lc)}
+#filters .lyrs button[aria-pressed="false"] .lsw{background:none;border:1px solid var(--lc);box-shadow:none}
+.tl{flex:1 1 auto;min-width:220px;padding:6px 12px 4px;border:1px solid var(--line);background:rgba(var(--btn-rgb),.85);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.45)}
+.tl-read{display:flex;align-items:baseline;gap:10px;min-height:18px;font:400 11px var(--f-hud);letter-spacing:.1em;color:var(--chrome)}
+.tl-y{white-space:nowrap;flex:none}
+.tl-era{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1 1 auto}
+.tl-all{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--muted);font:400 9.5px var(--f-hud);letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;cursor:pointer}
+.tl-all:hover{color:var(--chrome);border-color:var(--line-strong)}
+.tl-track{position:relative;height:26px}
+.tl-track::before{content:"";position:absolute;left:0;right:0;top:12px;height:2px;background:var(--line)}
+.tl-track::after{content:"";position:absolute;left:var(--a,0%);right:calc(100% - var(--b,100%));top:11px;height:4px;background:var(--lapis-hi)}
+.tl-track input{position:absolute;inset:0;width:100%;margin:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none;height:26px}
+.tl-track input::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:16px;height:16px;border-radius:50%;background:var(--chrome);border:2px solid var(--lapis);cursor:grab}
+.tl-track input::-moz-range-thumb{pointer-events:auto;width:13px;height:13px;border-radius:50%;background:var(--chrome);border:2px solid var(--lapis);cursor:grab}
+.tl-track input::-webkit-slider-runnable-track{background:none}
+.tl-track input::-moz-range-track{background:none}
+.tl-track input:focus-visible::-webkit-slider-thumb{outline:2px solid var(--lapis-hi);outline-offset:2px}
+.lchip{display:inline-flex;align-items:center;gap:4px;margin-left:5px;font:400 9.5px var(--f-hud);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lchip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lc)}
+.lwhen{margin-left:6px;font:400 10px var(--f-hud);letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+.place .pm{display:none;margin:2px 0 0;font:400 11px var(--f-hud);letter-spacing:.06em;color:var(--muted)}
+.place.sel .pm{display:block}
+.pnotes{display:block;margin:8px 0 2px}
+.pnote{display:block;margin:6px 0 0;padding-left:9px;border-left:2px solid var(--line-strong);font:300 14px/1.5 var(--f-body);color:var(--text)}
+.pnote b{display:block;font:400 9.5px var(--f-hud);letter-spacing:.16em;text-transform:uppercase;color:var(--lapis-hi);margin-bottom:1px}
+.pnote i{color:var(--muted);font-style:italic}
+.evitem .lmeta{display:block}
+/* between the Worlds index (left) and the details panel (right) */
+@media (max-width:1400px){#filters{width:max(360px,calc(100% - 880px));max-width:none;min-width:0;flex-direction:column;gap:6px}
+  #app:has(#filters:not(:empty)) #bake{bottom:calc(var(--ch,200px) + 136px)}}
+@media (max-width:1100px){#filters{left:16px;transform:none;width:calc(100% - 450px)}}
+@media (max-width:820px){
+  #filters,#filters.withrealms{bottom:auto;top:calc(var(--hdr,96px) + 36px);left:10px;right:10px;transform:none;min-width:0;max-width:none;flex-direction:column;gap:6px}
+  #filters .lyrs{box-shadow:none}
+  #filters .lyrs button{padding:6px 10px;font-size:9.5px;letter-spacing:.1em;min-height:34px}
+  .tl{min-width:0;box-shadow:none;padding:4px 10px 2px}
+  #app:has(#filters:not(:empty)) #navhint{top:calc(var(--hdr,96px) + 136px)}
+  #app:has(#filters:not(:empty)) #bake{bottom:120px}
+}
