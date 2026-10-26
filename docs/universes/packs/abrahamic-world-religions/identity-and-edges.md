@@ -37,7 +37,7 @@ All16selected edge rows have registered canonical endpoints; all328row IDs and29
 
 The current selected major-family coverage includes the previously added Adventist/Witness/AfricanInstituted/LatterDaySaint successor distinctions and the Islamic modern-movement additions. This integration pass identifies **no additional missing major branch required to render the selected overview honestly**. That conclusion is bounded by the published scope; it is not a census of every community. Regional Jewish histories, every Christian denomination, all Islamic theological/legal subdivisions and full internal histories of Buddhism/Hinduism/Daoism remain stated exclusions. These are not automatically acceptance blockers for a comparative overview with visible scope.
 
-Actual remaining acceptance work is the parent's consolidated prominent-claim/source-quality and chronology disposition, final scope notice and build contract. No source inaccessible in this integration task prevented reference closure. The existing dossiers retain their original access limits. Builder serialization must preserve the difference between overlapping affiliation, self-identification, historical development, institutional merger, intellectual contact and traditional succession; a single-parent layout cannot silently erase these relations. Final built-data link/rendering checks occur after implementation.
+The consolidated source-quality and chronology disposition is now recorded in acceptance-review.md. The affected SAJ location and ISJ03 network registrations were reconciled with the corrected dossiers; IDs, aliases and endpoints did not change. No source inaccessible in this integration task prevented reference closure. The existing dossiers retain their original access limits. Builder serialization must preserve the difference between overlapping affiliation, self-identification, historical development, institutional merger, intellectual contact and traditional succession; a single-parent layout cannot silently erase these relations. Final built-data link/rendering checks occur after implementation.
 
 ## Input snapshots
 
@@ -45,7 +45,7 @@ These hashes identify the working dossier inputs checked here, not their externa
 
 | File | SHA256 |
 |---|---|
-| `judaism-research.md` | `52953e9aaeaa94310d859ce0c7b11f6c4f4648b256c6bf1116d1ba26f8924284` |
-| `christianity-research.md` | `b67fd4ae76f74af348f94d0536626739405fcf05d61dba3900258576cf84a766` |
-| `islam-research.md` | `2c85d64c0fa1de314d8a188c1121a512ac0a807bf81906cf669e7d0afbef4511` |
+| `judaism-research.md` | `5fbfb21389b17f1afdd5c1432c2b9c643e6aba43647417f90f3b179cc3a4019a` |
+| `christianity-research.md` | `c25264fc9c3668483067a25f8bb414fabf2b2563ce156f74931eceea4ceea18f` |
+| `islam-research.md` | `ae61bcc17acad2425c8ac49979bf102c4fefcfb384099bef378eb5403230f150` |
 | `comparative-evidence.md` | `78f14aec6d036c82779f2ec9ae315ce85d4b234ec43cd07ea071caf5a4bc6ab2` |

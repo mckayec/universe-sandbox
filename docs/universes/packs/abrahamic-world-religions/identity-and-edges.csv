@@ -13,7 +13,7 @@ AI011,identity,judaism-research.md,jud-alexandria,jud-alexandria,place,,,1,JU06,
 AI012,identity,judaism-research.md,jud-land-israel,jud-land-israel,place,,,1,JU05;JU08,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
 AI013,identity,judaism-research.md,jud-seesen,jud-seesen,place,,,1,JU10,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
 AI014,identity,judaism-research.md,jud-hamburg,jud-hamburg,place,,,1,JU09,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
-AI015,identity,judaism-research.md,jud-new-york,jud-new-york,place,,,1,JU11;JU12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
+AI015,identity,judaism-research.md,jud-new-york,jud-new-york,place,,,1,JU11,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk. SAJ1922 location association withheld; retained New York association uses JTS evidence.
 AI016,identity,judaism-research.md,jud-philadelphia,jud-philadelphia,place,,,1,JU12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
 AI017,identity,judaism-research.md,jud-detroit-region,jud-detroit-region,place,,,1,JU13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
 AI018,identity,judaism-research.md,jud-london,london,place,,,1,JU15,reuse-shared,Preserve source-specific copy/date/type; no additional fact inherited from matching name.No geometry is added by this crosswalk.
@@ -155,7 +155,7 @@ AI153,identity,islam-research.md,ISE11,ISE11,event,,,1,IS08,retain-scoped,Preser
 AI154,identity,islam-research.md,ISE12,ISE12,event,,,1,IS12,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
 AI155,identity,islam-research.md,ISJ01,ISJ01,journey-or-network,,,1,IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
 AI156,identity,islam-research.md,ISJ02,ISJ02,journey-or-network,,,1,IS05;IS01,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
-AI157,identity,islam-research.md,ISJ03,ISJ03,journey-or-network,,,1,IS13,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
+AI157,identity,islam-research.md,ISJ03,ISJ03,scholarly-network,,,1,IS13,retain-scoped,Zanzibar scholarly interaction supported; Oman contextual association only. No evidenced Oman–Zanzibar route or itinerary geometry.
 AI158,identity,islam-research.md,IST01,islam,tradition-or-concept,,,1,IS03;IS06,reuse-shared,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
 AI159,identity,islam-research.md,IST02,IST02,tradition-or-concept,,,1,IS14,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.
 AI160,identity,islam-research.md,IST03,IST03,tradition-or-concept,,,1,IS07,retain-scoped,Preserve source-specific copy/date/type; no additional fact inherited from matching name.

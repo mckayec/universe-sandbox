@@ -38,7 +38,7 @@ All are contextual reference places under `earth`; coordinates are intentionally
 | ISP07 | Northern Yemen; region | Zaydi imamate setting; ISE08 [IS10] (C). No equivalence to modern political control. |
 | ISP08 | Ifriqiya; historical region | Fatimid establishment; ISE09 [IS08] (C). Not a modern national boundary. |
 | ISP09 | Cairo; city | Fatimid succession context; ISE10,ISE11 [IS08] (C) |
-| ISP10 | Oman; region/country context | Ibadi presence [IS12] (C); ISJ03 scholarly connection [IS13] (C) |
+| ISP10 | Oman; region/country context | Ibadi presence [IS12] (C); contextual association with ISJ03, not a documented travel endpoint [IS13,IS18] (C) |
 | ISP11 | Zanzibar; island/city context | Ibadi and Sunni scholarly interaction; ISJ03 [IS13] (C). Island and town are not automatically identical map geometries. |
 | ISP12 | M'zab Valley, Algeria; region | Ibadi community setting [IS12] (C) |
 | ISP13 | Djerba / Jerba, Tunisia; island | Ibadi community setting [IS12] (C) |
@@ -46,7 +46,7 @@ All are contextual reference places under `earth`; coordinates are intentionally
 
 ## 4. Events and chronology
 
-Dates are CE unless AH is explicitly shown. Use year precision only; `circa` is visible, and intervals stay intervals. Events with conceptual/nonlocal settings remain reference cards, not arbitrary city pins.
+Dates are CE unless AH is explicitly shown. Use the precision explicitly stated in each record; do not manufacture finer dates; `circa` is visible, and intervals stay intervals. Events with conceptual/nonlocal settings remain reference cards, not arbitrary city pins.
 
 | ID | Date precision; setting; people | Proposed copy / evidence type |
 |---|---|---|
@@ -69,7 +69,7 @@ Dates are CE unless AH is explicitly shown. Use year precision only; `circa` is 
 |---|---|---|
 | ISJ01 | Muhammad and migrating followers; ISP01→ISP02 | **Historical migration:** use ISE02's date and source. Endpoint sequence only; no reconstructed road, caravan timing or claim everyone traveled together [IS01] (C). |
 | ISJ02 | Muhammad in Muslim narrative; ISP01→ISP04 | **Religious narrative:** Qur'an17:1 describes a night journey from the Sacred Mosque to the Farthest Mosque [IS05] (C); the Jerusalem identification is separately attributed [IS01] (C). No date or physically measured flight path. |
-| ISJ03 | Scholars; ISP10↔ISP11 | **Scholarly network,19th–early20th centuries:** Omani Ibadi scholars and Sunni scholars interacted in Zanzibar [IS13] (C). This is a network edge, not one named traveler's itinerary or proof all residents changed affiliation. |
+| ISJ03 | Ibadi and Sunni scholars; ISP11; ISP10 contextual association only | **Scholarly network, 19th–early 20th centuries:** Ibadi and Sunni scholars interacted in Zanzibar [IS13] (C). Oman is an associated regional context [IS13,IS18] (C), not a verified travel endpoint. Render as a reference-network card with no route geometry; the opened abstract does not document individual journeys between Oman and Zanzibar or imply all residents changed affiliation. |
 
 ## 6. Tradition, people and concept nodes
 
@@ -102,7 +102,7 @@ These proposed descriptions are exact short display copy. In grouped ID ranges, 
 |---|---|---|
 | ISH01 Muhammad | Messenger in Qur'an33:40 [IS03] (C) | Religious title remains attributed |
 | ISH02 Khadija | Muhammad's wife and early supporter [IS01] (C) | Do not infer every commercial route as her own journey |
-| ISH03 Ali; ISH04 Fatima | Ali married Muhammad's daughter Fatima [IS07] (C) | `spouse-of`, `daughter-of` differ from `recognized-as-imam` |
+| ISH03 Ali; ISH04 Fatima | Ali married Muhammad's daughter Fatima [IS08] (C) | `spouse-of`, `daughter-of` differ from `recognized-as-imam` |
 | ISH05 Husayn | Muhammad's grandson; Karbala remembrance [IS07] (C) | ISE04, not a generic all-Shia military node |
 | ISH06 Abu Bakr | First caliph [IS07] (C) | Political succession is not prophetic succession |
 | ISH07 Zayd ibn Ali | Eponym of IST07; ISE05 [IS10] (C) | Not automatically numbered fifth in every Shia lineage |
@@ -142,7 +142,7 @@ All records below have `first:1`. A movement can intersect a legal school and a 
 |---|---|---|
 | ISP15 | Qadian; town | Mirza Ghulam Ahmad's association [IS19] (C); not asserted as the precise site of the first1889 initiation. |
 | ISP16 | Deoband; town/seminary setting | Institute-associated place [IS21,IS25] (C); town and campus are distinct geometries. |
-| ISP17 | Bareilly; town | Ahmad Riza Khan's setting [IS23] (C); not Rae Bareli, associated with the different Sayyid Ahmad Barelwi. |
+| ISP17 | Bareilly; town | Ahmad Riza Khan's setting [IS23] (C); do not merge with the different Sayyid Ahmad Barelwi named in the source; his town is not established by this extract. |
 | ISP18 | Najd; historical region | ISM03 context [IS20] (C); no fixed modern political polygon. |
 
 All four added places retain `parent:earth`, `coordinates:null`; source-backed setting does not itself supply a surveyed marker.
@@ -153,13 +153,13 @@ All four added places retain `parent:earth`, `coordinates:null`; source-backed s
 | ISE14 | Institution dates foundation to31May1866; ISP16 | “Darul Uloom Deoband dates its foundation to1866.” [IS21] (C). Display source attribution; IS25 instead gives1867. Retain the discrepancy; do not silently average dates or treat the difference as a year-long construction interval. |
 | ISE15 | 1974; Pakistan, jurisdiction-level reference | “Pakistan's constitutional amendment classified Ahmadis as non-Muslims.” [IS24] (C). State action, not a change in adherents' self-identification. |
 
-Added people: **ISH12 Mirza Ghulam Ahmad**, founder of ISM01 [IS19] (C); **ISH13 Muhammad ibn Abd al-Wahhab**, associated reformer for ISM03 [IS20] (C); **ISH14 Ahmad Riza Khan**, scholar associated with ISM05 [IS23] (C). Do not merge ISH14 with Sayyid Ahmad Barelwi of Rae Bareli, whom the scholarly source explicitly distinguishes [IS23] (C). No unresearched travel path or family genealogy is added.
+Added people: **ISH12 Mirza Ghulam Ahmad**, founder of ISM01 [IS19] (C); **ISH13 Muhammad ibn Abd al-Wahhab**, associated reformer for ISM03 [IS20] (C); **ISH14 Ahmad Riza Khan**, scholar associated with ISM05 [IS23] (C). Do not merge ISH14 with Sayyid Ahmad Barelwi, whom the scholarly source explicitly distinguishes [IS23] (C). No unresearched travel path or family genealogy is added.
 
 ## 7. Open questions and validation limits
 
 The selected branches and formative events have usable attributed copy; this is not an exhaustive Islam atlas. Full Sunni theological schools, Usuli/Akhbari distinctions, Dawudi/Sulaymani/Alavi subdivisions, Alevis/Alawis, Quranist/non-denominational identifications and complete Sufi order histories remain outside this bounded deliverable. The modern-movement section now covers Ahmadiyya and selected Salafi/Wahhabi, Deobandi and Barelvi records; it does not cover every political organization, local seminary or transnational network. Their omission is not a judgment about whether their adherents are Muslim. Current officeholders and demographics were deliberately not researched.
 
-No selected source independently proves revelation, imam infallibility, concealment or miraculous travel. IS09 and IS08 share author Farhad Daftary and are **not independent corroboration**. Some museum introductions simplify succession; the atlas retains the distinction between documented leadership and competing legitimacy traditions. IS11 describes contested formation of doctrine; it is presented as scholarship, not a replacement for adherent belief.
+No selected source independently proves revelation, imam infallibility, concealment or miraculous travel. IS09 (Farhad Daftary and Azim Nanji) and IS08 (Farhad Daftary) share an author and are **not independent corroboration**. Some museum introductions simplify succession; the atlas retains the distinction between documented leadership and competing legitimacy traditions. IS11 describes contested formation of doctrine; it is presented as scholarship, not a replacement for adherent belief.
 
 Source access was sufficient for the selected claims. The legacy UGA Ibadi introduction and Harvard Sunni/Shi'i essay failed to open through the web route; alternative opened academic/primary sources cover the limited claims used here. IS09 was inspected in selected pages, not read cover to cover. No entire Qur'an/hadith/sira corpus was read. The institutionally hosted Ibadi guide contains an unsourced contemporary percentage: it is explicitly **not adopted**.
 
@@ -177,7 +177,7 @@ All accessed2026-10-26. These are URLs and actual reading-depth notes, not inven
 | IS06 | [Amman Message, Three Points](https://ammanmessage.com/the-three-points-of-the-amman-message-v-1/) | Numbered declaration; primary inter-Muslim statement, not unanimous individual opinion or exhaustive taxonomy |
 | IS07 | [Harvard Pluralism Project, Shi'i remembrance of Husayn](https://pluralism.org/shi%E2%80%99i-remembrance-of-husayn) | Historical/commemorative paragraphs; educational synthesis |
 | IS08 | [Farhad Daftary, Ismaili Shiism, St Andrews](https://www.saet.ac.uk/Islam/IsmailiShiism) | Selected origins, Fatimid and Tayyibi sections; academic synthesis |
-| IS09 | [Daftary, What Is Shia Islam?, IIS](https://www.iis.ac.uk/wp-content/uploads/2024/10/whatis-shia-islam.pdf) | PDF selected printed pp8–10/32, covering succession, occultation and Zaydi context; text extraction, not visual manuscript inspection |
+| IS09 | [Farhad Daftary and Azim Nanji, What Is Shia Islam?, IIS](https://www.iis.ac.uk/wp-content/uploads/2024/10/whatis-shia-islam.pdf) | PDF selected printed pp8–10/32 (audit also inspected title-page authors and printed p9 succession passage), covering succession, occultation and Zaydi context; text extraction, not visual manuscript inspection |
 | IS10 | [Scott Lucas and Egbal Almahatwary, Zaydi Shiism, St Andrews](https://www.saet.ac.uk/Islam/ZaydiShiism) | Introduction, Zayd revolt and Yemen sections; academic synthesis |
 | IS11 | [Mohammad Ali Amir-Moezzi, Mahdi in Twelver Shiism, Iranica](https://www.iranicaonline.org/articles/islam-in-iran-vii-the-concept-of-mahdi-in-twelver-shiism/) | Opening doctrinal-formation discussion; scholarly interpretation |
 | IS12 | [University of Illinois Library, Ibadi history](https://guides.library.illinois.edu/c.php?g=348315&p=2347041) | Brief history and geographic sections; cites Hoffman; excludes unsupported percentage |

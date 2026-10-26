@@ -47,7 +47,7 @@ All entries: parent `earth`, layer `judaism`, local `first:1`. “Reference-only
 | jud-land-israel | Land of Israel / historical regional label | Reference-only; term used in sources, no modern boundary polygon | “Sources locate Palestinian rabbinic literature and an important medieval Karaite center in this region.” [JU05,JU08] (C) |
 | jud-seesen | Seesen / city | Reference-only;1810 | “Israel Jacobson's temple inauguration in Seesen is an early Reform milestone.” jud-e08. [JU10] (C) |
 | jud-hamburg | Hamburg / city | Reference-only;1818 | “The Hamburg Temple was another important early Reform institution.” jud-e09. [JU09] (C) |
-| jud-new-york | New York / city | Reference-only;1886–1887,1922 | “New York hosted the early JTS classes and Kaplan's Society for the Advancement of Judaism.” jud-e10/11. [JU11,JU12] (C) |
+| jud-new-york | New York / city | Reference-only;1886–1887 | “New York hosted the early JTS classes.” jud-e10. [JU11] (C) |
 | jud-philadelphia | Philadelphia / city | Reference-only;1968 | “The Reconstructionist Rabbinical College opened here in1968.” jud-e12. [JU12] (C) |
 | jud-detroit-region | Suburban Detroit / region | Reference-only;1960s | “Sherwin Wine and the Birmingham Temple helped develop congregational Humanistic Judaism here.” jud-e13. [JU13] (C) |
 | jud-london | London / city | Reference-only;2026 institutional location | “The Movement for Progressive Judaism's registered office is at the Sternberg Centre in London.” jud-e16; not a universal capital of Progressive Judaism. [JU15] (C) |
@@ -70,7 +70,7 @@ Every row has local `first:1`. Dates are display strings; do not substitute a pr
 | jud-e08 |17July1810; day in institutional history | jud-seesen; Israel Jacobson | **Institutional history:** Seesen temple inauguration; an early Reform milestone, not proof that all Reform communities share one founding act. [JU10] (C) |
 | jud-e09 |1818; year | jud-hamburg; temple community | **Historical overview:** Hamburg's Reform temple illustrates institutional change in German Jewish life. [JU09] (C) |
 | jud-e10 |1886 foundation;1887 first class | jud-new-york; Sabato Morais,H.Pereira Mendes,lay supporters | **Institutional history:** JTS was established and began teaching; do not back-project all later Conservative institutional boundaries onto its founding coalition. [JU11] (C) |
-| jud-e11 |1922; year | jud-new-york; Mordecai Kaplan | **Institutional history:** Society for the Advancement of Judaism founded. [JU12] (C) |
+| jud-e11 |1922; year | Location withheld pending direct supporting evidence; Mordecai Kaplan | **Institutional history:** Society for the Advancement of Judaism founded. JU12 establishes the year and founder but does not state the city; no location is inferred here. [JU12] (C) |
 | jud-e12 |13October1968 dedication;14October classes | jud-philadelphia; Kaplan,Ira Eisenstein | **Institutional history:** RRC dedication and opening are distinct from the earlier development of Reconstructionist thought. [JU12] (C) |
 | jud-e13 |1960s development;1969 organization | jud-detroit-region and otherUScommunities; Sherwin Wine | **Institutional history:** Humanistic Jewish congregational practice and the Society for Humanistic Judaism's formation are separate milestones. IISHJ's history uses1964 for the former; this file does not silently replace it with a commonly repeated1963 date. [JU13] (C) |
 | jud-e14 |1993; year | Reference-only network; Zalman Schachter-Shalomi,participating organizations | **Institutional history:** ALEPH describes its formation through P'nai Or and the Shalom Center's merger. This is not Jewish Renewal's sole origin date. [JU14] (C) |
@@ -187,3 +187,7 @@ All accessed2026-10-26. Links below are direct sources; institutional pages esta
 ### Validation / next integration
 
 All retained historical or traditional assertions have a source tag; all tags resolve above. Event and journey place IDs resolve to§3, except explicitly typed broad regions/network references, which must remain nonspatial. No unknown coordinates, dates or adherent counts were filled in. The two DMS conversions were calculated and rounded to six decimals; they identify representative heritage points, not greater historical precision. Source disputes, access limits and excluded coverage remain above. Parent integration must reconcile cross-shard identity IDs, global navigation, missing coordinate research and the broader pack's coverage before any `research-ready` decision.
+
+### Independent record audit
+
+See [judaism-record-audit.md](judaism-record-audit.md) and [the per-record CSV](judaism-record-audit.csv). The audit checked cited source passages, not merely citation tags. It removed an unsupported New York association for the SAJ founding while retaining the sourced1922 event; no IDs changed.

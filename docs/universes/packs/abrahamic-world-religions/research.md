@@ -50,7 +50,7 @@ Use only sourced actor-specific ordered movements in each dossier. Geographic sp
 
 ## 7. Open questions and exclusions
 
-- `identity-and-edges.md/.csv` now supplies328source-qualified registrations/selected edges/non-merges; all selected endpoints resolve. A complete defined-registry prominent-claim/source-quality and chronology disposition remains necessary beyond the ten-family integrator sample.
+- `identity-and-edges.md/.csv` now supplies328source-qualified registrations/selected edges/non-merges; all selected endpoints resolve. The defined-registry source-quality and chronology disposition is complete in [acceptance-review.md](acceptance-review.md), beyond the historical ten-family sample.
 - Ten representative heritage anchors are available; other places deliberately remain reference-only. Actual map/tree serialization and display checks remain later implementation gates.
 - The initial Daoist-contact abstract-only gap is closed for the bounded scholarly-attribution rows XC03–04. Full primary-text comparison remains outside this checkpoint; do not infer institutional descent or wholesale doctrinal agreement.
 - Wider Hindu/Buddhist/Daoist internal histories and all smaller Abrahamic-related communities are not comprehensively covered in this checkpoint. The intended focus is sourced connections to the central traditions, with additions required where material omissions are identified.
@@ -61,4 +61,4 @@ Use only sourced actor-specific ordered movements in each dossier. Geographic sp
 
 Every place/event/edge must distinguish textual/religious claim, community interpretation and historical evidence. An intellectual comparison is not parentage; an institutional merger is not theological unanimity; shared political persecution is not common doctrine. Differences between scholarly classifications and adherents' self-identification should be displayed as attributed perspectives.
 
-`comparative-evidence.md` supplies dated broad-population context and explicit inter-tradition encounter records. The tradition dossiers supply their own origins, people, major divisions and spread. The subsequent integration audit must preserve the source qualifications and deliberate non-edges rather than converting all rows to one hierarchy. Status remains `research / chatgpt` until that work is complete.
+`comparative-evidence.md` supplies dated broad-population context and explicit inter-tradition encounter records. The tradition dossiers supply their own origins, people, major divisions and spread. The completed integration audit preserves source qualifications and deliberate non-edges. Research is ready for builder review under [build-contract.md](build-contract.md); this does not approve implementation or release.
