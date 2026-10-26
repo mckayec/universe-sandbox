@@ -9,17 +9,17 @@ const BODIES=[
  {id:"sun",name:"Sol",kind:"sun",size:4.2,a:0,epithet:"The Sun",control:"—",
   blurb:"The star every Color works beneath. Helium-3 mined on Mars keeps the Society’s engines and cities burning across its reach.",sw:"#f2a94a"},
  {id:"mercury",name:"Mercury",parent:"sun",kind:"mercury",a:11,size:.72,period:30,phase:.15,group:"Core",epithet:"Core world",control:"The Society",
-  blurb:"Scorched innermost world of the Core. At the close of the trilogy it becomes a refuge for the Ash Lord’s retreating fleet.",sw:"#9a8a78"},
+  blurb:"A scorched world of the Core.",sw:"#9a8a78"},
  {id:"venus",name:"Venus",parent:"sun",kind:"venus",a:16,size:1.02,period:44,phase:.62,group:"Core",epithet:"Core world",control:"The Society",
-  blurb:"Cloud-wrapped Core world loyal to the Sovereign. After Luna falls, the Ash Lord pulls what remains of his forces back here and to Mercury.",sw:"#e3c584"},
- {id:"earth",name:"Earth",parent:"sun",kind:"earth",a:22,size:1.12,period:58,phase:.38,group:"Core",epithet:"Humanity’s homeworld",control:"The Society, then the Rising",
-  blurb:"Conquered long ago and governed from Luna. The Rising takes it at the end of Morning Star, and it is where Mustang finally tells Darrow her secret.",sw:"#4f86b8"},
+  blurb:"A cloud-covered Core world.",sw:"#e3c584"},
+ {id:"earth",name:"Earth",parent:"sun",kind:"earth",a:22,size:1.12,period:58,phase:.38,group:"Core",epithet:"Humanity’s homeworld",control:"The Society",
+  blurb:"Humanity’s homeworld, governed from Luna.",sw:"#4f86b8"},
  {id:"luna",name:"Luna",parent:"earth",kind:"luna",a:2.4,size:.42,period:7,phase:.1,group:"Core",moon:true,epithet:"Seat of the Society",control:"Sovereign Octavia au Lune",
-  blurb:"A moon paved over with cities from pole to pole, home of the Sovereign, the Senate, and the Society’s oldest Gold families. The trilogy’s final battle is fought here.",sw:"#bdb8ae"},
+  blurb:"The Society’s political center and home of its Sovereign.",sw:"#bdb8ae"},
  {id:"mars",name:"Mars",parent:"sun",kind:"mars",a:30,size:1,period:76,phase:.82,group:"Mars",epithet:"Darrow’s home",control:"House Augustus · ArchGovernor Nero",
   blurb:"A terraformed world where Reds mine helium-3 deep underground, told they are pioneers preparing the planet for others. Home to Lykos, the Institute, and the Augustus capital of Agea.",sw:"#c0583a"},
  {id:"phobos",name:"Phobos",parent:"mars",kind:"phobos",a:1.9,size:.22,period:4.5,phase:.4,group:"Mars",moon:true,epithet:"Moon of Mars",control:"The Society",
-  blurb:"Mars’s inner moon, built over until it is closer to a space station than a rock. An industrial hub tied to Quicksilver, scene of the Howlers’ raid on the peace talks, later seized by the Rising.",sw:"#8d7d70"},
+  blurb:"An industrial moon of Mars.",sw:"#8d7d70"},
  {id:"jupiter",name:"Jupiter",parent:"sun",kind:"jupiter",a:50,size:2.6,period:150,phase:.55,group:"Jupiter",epithet:"Gas giant · gateway to the Rim",control:"Rim Golds · House Raa",
   blurb:"Its moons hold the Raa family seat, Lorn’s retreat, and the great shipyards of Ganymede. The decisive fleet battle of Morning Star is fought in its space.",sw:"#d2a77a"},
  {id:"io",name:"Io",parent:"jupiter",kind:"io",a:4.2,size:.34,period:7,phase:.0,group:"Jupiter",moon:true,epithet:"Seat of House Raa",control:"Romulus au Raa",
@@ -95,21 +95,26 @@ const FX_VIEW={ironrain:{view:"site",site:"agea",title:"The Iron Rain",sub:"Star
 /* ---- worlds by era (a value applies from that book onward) ---- */
 const ERAS={
  mercury:{1:{epithet:"Innermost world of the Core",control:"House Votum · the Society",blurb:"A terraformed world under a fierce sun. Its great continent, Helios, runs from alpine north coasts through the chalk desert of the Waste of Ladon to southern jungles. Ancestral seat of House Votum."},
+   3:{blurb:"A terraformed world under a fierce sun. Its great continent, Helios, runs from alpine north coasts through the chalk desert of the Waste of Ladon to southern jungles. Ancestral seat of House Votum. At the close of the trilogy it becomes a refuge for the Ash Lord’s retreating fleet."},
    4:{epithet:"The Republic’s conquest",control:"The Republic · Darrow’s legions",blurb:"Ten years after Morning Star, Darrow’s Iron Rain tears Mercury from the Society against the Senate’s wishes. Tyche and Heliopolis fly Republic colors, but the Society Remnant has not let go."},
    5:{epithet:"The war for Helios",control:"Contested · Republic vs. Society Remnant",blurb:"Dark Age. Atalantia’s Remnant falls on Mercury. Darrow wakes the Storm Gods, Tyche drowns, the Ladon swallows armies, and Heliopolis is besieged until it falls."},
    6:{epithet:"Lysander’s world",control:"The Society · Lysander au Lune",blurb:"Light Bringer. Mercury belongs to the Society and hails Lysander as its hero. Above Heliopolis he unveils the Lightbringer, once Darrow’s Morning Star."}},
- venus:{4:{epithet:"Stronghold of the Society",control:"The Society · the Ash Lord",blurb:"A terraformed world of warm seas and islands. On Gorgon Isle stands the fortress of the Ash Lord, Magnus au Grimmus, until Darrow storms it in Iron Gold."},
+ venus:{3:{blurb:"Cloud-wrapped Core world loyal to the Sovereign. After Luna falls, the Ash Lord pulls what remains of his forces back here and to Mercury."},
+   4:{epithet:"Stronghold of the Society",control:"The Society · the Ash Lord",blurb:"A terraformed world of warm seas and islands. On Gorgon Isle stands the fortress of the Ash Lord, Magnus au Grimmus, until Darrow storms it in Iron Gold."},
    6:{epithet:"Shipyards of the Society",control:"Contested · House Carthii vs. Apollonius au Valii-Rath",blurb:"The great Venus dockyards of the Carthii build the Society’s fleets. In Light Bringer, Darrow loses a duel in the Hanging Coliseum before Sevro blows the dockyards apart."}},
- earth:{4:{control:"The Republic",blurb:"Republic territory a decade after the Rising. Beneath the Atlantic lies Deepgrave, the prison where Apollonius au Valii-Rath is held."},
+ earth:{3:{control:"The Society, then the Rising",blurb:"Conquered long ago and governed from Luna. The Rising takes it at the end of Morning Star, and it is where Mustang finally tells Darrow her secret."},
+   4:{control:"The Republic",blurb:"Republic territory a decade after the Rising. Beneath the Atlantic lies Deepgrave, the prison where Apollonius au Valii-Rath is held."},
    5:{control:"The Rim and the Society Remnant",blurb:"Dark Age. Diomedes au Raa and Ajax au Grimmus seize Earth for the Rim and the Society."},
    6:{control:"The Society · Atalantia au Grimmus",blurb:"Light Bringer. Atalantia rules the Society from New Sparta in Africa and summons Lysander there to humble him."}},
- luna:{4:{epithet:"Capital of the Republic",control:"The Republic · Sovereign Virginia",blurb:"Ten years on, Hyperion is the Republic’s capital: a Senate and a Sovereign, rebuilt with Quicksilver’s money, its scars from the Jackal’s bombs still visible. The Syndicate rules the underworld."},
+ luna:{3:{blurb:"A moon paved over with cities from pole to pole, home of the Sovereign, the Senate, and the Society’s oldest Gold families. The trilogy’s final battle is fought here."},
+   4:{epithet:"Capital of the Republic",control:"The Republic · Sovereign Virginia",blurb:"Ten years on, Hyperion is the Republic’s capital: a Senate and a Sovereign, rebuilt with Quicksilver’s money, its scars from the Jackal’s bombs still visible. The Syndicate rules the underworld."},
    5:{control:"The Republic, then the Vox Populi coup",blurb:"Dark Age. On the Day of Red Doves, Dancer is poisoned and Publius’s Vox Populi seize power. Lilath au Faran is unmasked as the Syndicate Queen, serving a child clone of the Jackal and ruling through Publius."},
    6:{control:"Besieged by Atalantia",blurb:"Light Bringer. Luna is under siege by Atalantia’s Society."}},
  mars:{4:{control:"The Republic",blurb:"A decade after the Rising, Reds have left the mines for camps and new towns, and the Red Hand wages a terror war. Lyria of Lagalos loses her family here."},
    5:{control:"The Republic, under attack",blurb:"Dark Age. Volsung Fá’s Ascomanni raid Mars, kill Sefi at Olympia, and leave with the Obsidian people. Virginia escapes Luna and is given emergency powers on Mars."},
    6:{control:"The Republic’s last bastion",blurb:"Light Bringer. Virginia holds Mars as the Society closes in, and Phobos falls above her, and she retreats to the planet."}},
- phobos:{4:{epithet:"The Republic’s fortress moon",control:"The Republic",blurb:"A hollowed moon wrapped in metal and grown over with spires that reach far beyond the rock: the Republic’s orbital defenses, docks and shipyards, watched over by statues of the Rising."},
+ phobos:{3:{blurb:"Mars’s inner moon, built over until it is closer to a space station than a rock. An industrial hub tied to Quicksilver, scene of the Howlers’ raid on the peace talks, later seized by the Rising."},
+   4:{epithet:"The Republic’s fortress moon",control:"The Republic",blurb:"A hollowed moon wrapped in metal and grown over with spires that reach far beyond the rock: the Republic’s orbital defenses, docks and shipyards, watched over by statues of the Rising."},
    6:{control:"The Republic, then Lysander",blurb:"Light Bringer. Mercury’s railguns and Lysander’s crewless destroyers break Phobos’s shield, and it falls. Victra and Thraxa kill Ajax in the fighting."}},
  jupiter:{4:{control:"The Rim Dominion · House Raa",blurb:"The independent Rim. Dido au Raa’s coup on Io topples Romulus and bends the Rim toward war with the Republic."},
    6:{control:"The Rim, then ruin",blurb:"Light Bringer. Volsung Fá razes Io, bombs Callisto and invades Europa. At Kalyke, Atlas kills Dido and Helios and wrecks the Rim fleet."}},
@@ -152,10 +157,10 @@ POIS.venus=[
  {id:"rath",name:"House Valii-Rath",lat:-22,lon:60,desc:"Where Apollonius au Valii-Rath takes back his house’s forces from his brother Tharsus in Iron Gold."}
 ];
 POIS.earth=[
- {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:4,desc:"Atalantia’s seat in Africa. In Light Bringer she summons Lysander here and coerces him, holding Glirastes hostage. At the summit of the Two Hundred he defies her and wins the vote to strike Mars first."},
+ {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:6,desc:"Atalantia’s African seat, where she pressures Lysander before the summit."},
  {id:"deepgrave",name:"Deepgrave",lat:38,lon:-38,from:4,desc:"A prison beneath the Atlantic. Darrow’s team raids it in Iron Gold and frees Apollonius au Valii-Rath."},
  {id:"greenland",name:"Greenland base",lat:72,lon:-42,from:4,desc:"Darrow’s hidden base on Earth in Iron Gold."},
- {id:"rome",name:"Rome",lat:41.9,lon:12.5,from:6,desc:"Said to host the Society’s summit of the two hundred in Light Bringer."}
+ {id:"rome",name:"Rome",lat:41.9,lon:12.5,from:6,desc:"Atalantia convenes the Two Hundred in Rome’s Colosseum."}
 ];
 POIS.luna.push(
  {id:"silene",name:"Lake Silene",lat:14,lon:34,from:4,desc:"Silene Manor stands here, where Darrow gives Pax his gravBike key and says goodbye before escaping."},
@@ -211,7 +216,8 @@ EVENTS.push(
  /* LIGHT BRINGER */
  {id:"l1",book:6,body:"mercury",poi:"heliopolis",lm:"bay",title:"The Lightbringer",text:"Eight months after Mercury falls, Lysander unveils the rebuilt Morning Star above Heliopolis, renamed the Lightbringer."},
  {id:"l2",book:6,body:"belt",where:"Marcher, a trash moon",title:"Marcher",text:"Darrow and barely two hundred survivors, later joined by Colloway’s two thousand, hide for months on a trash moon with the crippled Archimedes."},
- {id:"l3",book:6,body:"earth",poi:"newsparta",lm:"palace",title:"New Sparta",text:"Atalantia summons Lysander to New Sparta and coerces him with Glirastes as hostage. She wants her Iron Rain on Luna, but at the summit of the Two Hundred Lysander wins the vote for Mars. Glirastes is killed, and Ajax sides with Lysander."},
+ {id:"l3",book:6,body:"earth",poi:"newsparta",lm:"palace",title:"New Sparta",text:"Atalantia pressures Lysander at New Sparta, using Glirastes as leverage."},
+ {id:"l3b",book:6,body:"earth",poi:"rome",title:"The Two Hundred",text:"Lysander defies Atalantia at the summit and gathers support for attacking Mars."},
  {id:"l4",book:6,body:"venus",poi:"vdocks",lm:"coliseum",fx:"venusdocks",title:"The Hanging Coliseum",text:"Darrow and Cassius are caught at Venus. Darrow loses a razor duel in the Hanging Coliseum, then Sevro blows up the dockyards and they escape."},
  {id:"l5",book:6,body:"asteroid",poi:"base",lm:"tabula",title:"The Tabula Rasa",text:"In the asteroid belt, Darrow finds Quicksilver’s secret: not a fleet, but a generation ship to carry children beyond the Solar System."},
  {id:"l6",book:6,body:"phobos",poi:"phobosport",fx:"phobosfall",title:"Fall of Phobos",text:"Mercury’s railguns batter Phobos’s defenses and Lysander rams its shield with crewless destroyers. Phobos falls; Victra and Thraxa kill Ajax."},
@@ -273,9 +279,9 @@ Object.assign(FX_VIEW,{
 
 /* ---- the far Rim ---- */
 const _FAR=[
- {id:"rhea",name:"Rhea",parent:"saturn",kind:"callisto",a:6.2,size:.26,period:16,phase:.4,group:"Saturn",moon:true,epithet:"The burned moon",control:"Dead since 681 PCE",
+ {id:"rhea",name:"Rhea",parent:"saturn",kind:"callisto",a:6.2,size:.26,period:16,phase:.4,group:"Saturn",moon:true,epithet:"The burned moon",control:"Dead since 701 PCE",
   blurb:"Once the seat of the Rim’s government. When the Moon Lords rose against Octavia au Lune, the Ash Lord’s fleet burned Rhea with atomics and some sixty million died. The Rim has remembered ever since.",sw:"#5a524c",
-  facts:[["Burned","681 PCE, First Moon Lord Rebellion"],["Ordered by","Sovereign Octavia au Lune"],["Carried out by","Magnus au Grimmus, the Ash Lord"],["Dead","About 60 million"]]},
+  facts:[["Burned","701 PCE, First Moon Lord Rebellion"],["Ordered by","Sovereign Octavia au Lune"],["Carried out by","Magnus au Grimmus, the Ash Lord"],["Dead","About 60 million"]]},
  {id:"uranus",name:"Uranus",parent:"sun",kind:"saturn",a:92,size:1.55,period:330,phase:.7,group:"Uranus",epithet:"Ice giant of the outer dark",control:"Unknown",
   blurb:"The ice giant beyond Saturn. The books barely mention it; it is shown here to complete the Solar System.",sw:"#9fd6dc"},
  {id:"neptune",name:"Neptune",parent:"sun",kind:"saturn",a:112,size:1.5,period:430,phase:.08,group:"Neptune",epithet:"Ice giant at the Society’s edge",control:"The Society",
@@ -368,7 +374,7 @@ POIS.triton=[{id:"lovelockn",name:"North Lovelock Engine",lat:84,lon:0,desc:"One
 POIS.pluto=[{id:"heart",name:"The terraforming works",lat:22,lon:-178,desc:"The great plain where Pluto’s terraforming has begun: seas, domes and shield lattices, still under construction."}];
 POIS.neptune=[];POIS.uranus=[];
 EVENTS.push(
- {id:"r1",book:2,body:"rhea",poi:"rheacities",title:"Memory of Rhea",text:"Golden Son recalls how Rhea burned in 681 PCE: on Octavia’s order, the Ash Lord’s fleet ended the First Moon Lord Rebellion by killing some sixty million people. The Rim never forgets."},
+ {id:"r1",book:2,body:"rhea",poi:"rheacities",title:"Memory of Rhea",text:"Golden Son recalls how Rhea burned in 701 PCE: on Octavia’s order, the Ash Lord’s fleet ended the First Moon Lord Rebellion by killing some sixty million people. The Rim never forgets."},
  {id:"r2",book:3,body:"rhea",poi:"rheacities",title:"Never again",text:"Darrow reveals that Octavia has stockpiled warheads to burn the Rim again, and the memory of Rhea helps bring the Moon Lords into the fight against her."},
  {id:"r3",book:2,body:"pluto",poi:"heart",title:"Exiled to Pluto",text:"Sevro and the Howlers are posted to distant Pluto, keeping them from Darrow, before they return for the Summit on Luna."}
 );
@@ -382,8 +388,8 @@ function placeName(ev){ if(ev.where)return ev.where; if(ev.poi){const p=poiById[
 function eventsFor(bodyId,poiId){ return EVENTS.filter(e=>e.body===bodyId&&(poiId===undefined||e.poi===poiId)); }
 const SITES={}; /* filled by the site modules */
 
-/* the world state follows the selected book; "All" shows the latest */
-let ERA=6;
+/* the world state follows the selected book; "All" shows the latest. Fresh loads start at Book I (spoiler-safe); "All" is an explicit opt-in */
+let ERA=1;
 function eraVal(v){if(v==null||typeof v!=="object"||Array.isArray(v))return v;let best=null,bk=-1;Object.keys(v).forEach(k=>{const n=+k;if(n<=ERA&&n>bk){bk=n;best=v[k];}});
   if(best==null){const ks=Object.keys(v).map(Number).sort((a,b)=>a-b);best=v[ks[0]];}return best;}
 function bodyF(b,f){return eraVal(b.eras?Object.fromEntries(Object.entries(b.eras).filter(([k,o])=>o[f]!=null).map(([k,o])=>[k,o[f]]).concat([[0,b[f]]])):b[f]);}
@@ -2973,7 +2979,7 @@ FXG.garter=g=>{const F=Flashes(g);globe.add(g);return {dur:8,update(dt,t){if(Mat
 
 /* ---- 60-ui.js ---- */
 /* ===================== STATE ===================== */
-let mode="system",cur=null,selPoi=null,selEvent=null,bookFilter=0,paused=false,simT=0,anim=null,hoverSel=null,curSiteKey=null,selLm=null;
+let mode="system",cur=null,selPoi=null,selEvent=null,bookFilter=1,paused=false,simT=0,anim=null,hoverSel=null,curSiteKey=null,selLm=null;
 const SOC_PLANETS=new Set(["mercury","venus","earth","mars","jupiter","saturn","uranus","neptune"]);
 const labelsEl=$("#labels"),tip=$("#tip"),dossier=$("#dossier"),track=$("#track"),idx=$("#index"),fade=$("#fade"),crumbs=$("#crumbs"),sitehud=$("#sitehud");
 
@@ -3008,9 +3014,13 @@ track.addEventListener("mouseover",e=>{const el=e.target.closest(".ev");if(!el)r
 track.addEventListener("mouseout",e=>{const el=e.target.closest(".ev");if(el&&!el.contains(e.relatedTarget)){hoverSel=null;applyHL(false);hideTip();}});
 track.addEventListener("click",e=>{const el=e.target.closest(".ev");if(el)gotoEvent(EV[el.dataset.id],true);});
 track.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){track.scrollLeft+=e.deltaY;e.preventDefault();}},{passive:false});
-document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{bookFilter=+b.dataset.book;setEra(bookFilter||6);
-  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  track.querySelectorAll(".book").forEach(bk=>bk.hidden=!!bookFilter&&+bk.dataset.book!==bookFilter);renderDossier();applyHL(false);}));
+/* book selection: Book I on load; "All six books · spoilers" only after an explicit click. Not persisted in the URL or storage. */
+function selectBook(k){bookFilter=k;setEra(bookFilter||6);
+  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.book===k));
+  track.querySelectorAll(".book").forEach(bk=>bk.hidden=!!bookFilter&&+bk.dataset.book!==bookFilter);
+  const sn=$("#spoilNote");if(sn)sn.hidden=!!bookFilter;
+  renderDossier();applyHL(false);}
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>selectBook(+b.dataset.book)));
 $("#pause").addEventListener("click",e=>{paused=!paused;e.currentTarget.textContent=paused?"Resume orbits":"Pause orbits";e.currentTarget.setAttribute("aria-pressed",paused);});
 
 /* ===================== HIGHLIGHT ===================== */
@@ -3042,7 +3052,7 @@ function showTipBody(b,ev){const ne=eventsFor(b.id).filter(e=>!bookFilter||e.boo
   tip.innerHTML='<p class="eyebrow">'+esc(bodyF(b,"epithet"))+'</p><h3>'+esc(b.name)+'</h3>'+(b.control!=="—"?'<div class="meta">Held by <b>'+esc(bodyF(b,"control"))+'</b></div>':'')+'<p>'+esc(bodyF(b,"blurb"))+'</p>'+
    (b.kind==="sun"?'':'<div class="meta">'+ne+' event'+(ne===1?'':'s')+' · '+np+' place'+(np===1?'':'s')+'</div><div class="cta">Click to descend</div>');
   tip.hidden=false;if(ev)placeTip(ev.clientX,ev.clientY);}
-function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books";
+function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books · spoilers";
   if(!changed)return;applyEraTextures();renderIndex();if(mode==="globe"&&cur){buildGlobe(cur);buildPoiLabels();setModeLabels();}
   if(mode==="site"&&curSite&&curSite.onEra)curSite.onEra(ERA);}
 function evListMeta(evs){return evs.length?evs.map(e=>BOOKS[e.book].n+' · '+esc(e.title)).join('<br>'):'No events in this filter';}
@@ -3360,8 +3370,8 @@ function applyEraTextures(){Object.keys(ERA_TEX).forEach(id=>applySet(id));}
   ids.forEach(id=>applySet(id,tick));})();
 
 /* ===================== START ===================== */
-$("#chronHint").innerHTML="Hover a world to light up what happened there. <b>Click an event</b> to go to it; <b>▶</b> marks scenes you can watch.";
-updateBodies();applyCam();applyHL(false);renderCrumbs();requestAnimationFrame(frame);
+$("#chronHint").innerHTML="Spoilers are shown through the selected book. Hover a world to light up what happened there. <b>Click an event</b> to go to it; <b>▶</b> marks scenes you can watch.";
+selectBook(1);updateBodies();applyCam();applyHL(false);renderCrumbs();requestAnimationFrame(frame);
 const startHash=(location.hash||"").slice(1);
 if(byId[startHash]&&startHash!=="sun")setTimeout(()=>descend(startHash),600);
 else if(SITES[startHash])setTimeout(()=>enterSite(startHash),600);

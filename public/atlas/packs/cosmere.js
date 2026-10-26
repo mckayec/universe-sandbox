@@ -224,17 +224,17 @@
 
     books: {
       1: {n: "I", title: "Elantris", y: 2005, c: BOOKC[1]},
-      2: {n: "II", title: "Mistborn: the first trilogy", y: 2006, c: BOOKC[2]},
+      2: {n: "II", title: "Mistborn: the first trilogy", y: "2006–2008", c: BOOKC[2]},
       3: {n: "III", title: "Warbreaker", y: 2009, c: BOOKC[3]},
       4: {n: "IV", title: "The Way of Kings", y: 2010, c: BOOKC[4], ink: "#fff"},
       5: {n: "V", title: "Words of Radiance", y: 2014, c: BOOKC[5]},
-      6: {n: "VI", title: "Mistborn: Wax & Wayne I–III", y: 2011, c: BOOKC[6]},
+      6: {n: "VI", title: "Mistborn: Wax & Wayne I–III", y: "2011–2016", c: BOOKC[6]},
       7: {n: "VII", title: "Arcanum Unbounded (with White Sand)", y: 2016, c: BOOKC[7]},
-      8: {n: "VIII", title: "Oathbringer & Dawnshard", y: 2017, c: BOOKC[8]},
+      8: {n: "VIII", title: "Oathbringer & Dawnshard", y: "2017–2020", c: BOOKC[8]},
       9: {n: "IX", title: "Rhythm of War", y: 2020, c: BOOKC[9]},
       10: {n: "X", title: "The Lost Metal", y: 2022, c: BOOKC[10]},
       11: {n: "XI", title: "Tress, Yumi & The Sunlit Man", y: 2023, c: BOOKC[11]},
-      12: {n: "XII", title: "Wind and Truth, Isles of the Emberdark & The Fires of December", y: 2024, c: BOOKC[12]}
+      12: {n: "XII", title: "Wind and Truth, Isles of the Emberdark & The Fires of December", y: "2024–2026", c: BOOKC[12]}
     },
     spoilers: {mode: "cumulative"},
 
@@ -310,7 +310,7 @@
          5: {status: "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"},
          8: {blurb: "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."},
          12: {status: "Retribution’s world · cut off in slowed time",
-              blurb: "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Only Azir is spared the storm.",
+              blurb: "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule.",
               gfx: {clouds: .7, cloudCol: "#4a3540", atmo: "#c04a48", lights: .15}}
        },
        facts: [["Order", "2nd from the sun"], ["Shards", "Honor, Cultivation, Odium"], ["Moons", "Salas, Nomon, Mishim (a fourth broke up long ago)"], ["Gravity", "About 0.7 g; no axial tilt"], ["Day", "20 hours; about 500 days a year"]],
@@ -335,11 +335,11 @@
       ["betab", "Betab", "#2a8a9a", "#4ab0c0", "#8ad8e0"], ["kak", "Kak", "#5a2a8a", "#7a4ab0", "#a888d8"], ["tanat", "Tanat", "#a86a2a", "#d08a40", "#ecb878"],
       ["ishi", "Ishi", "#a8a02a", "#ccc44a", "#ece888"]
     ].map(function (g, i) {
-      return {id: g[0], name: g[1], group: "rosharan", books: [7], first: 7, status: "Gas giant · " + (i + 5) + "th from the sun",
+      return {id: g[0], name: g[1], group: "rosharan", books: [7], first: 7, status: "Gas giant · " + (i + 4) + "th from the sun",
         star: {name: "Roshar’s sun", col: "#f4f6ff"}, map: orb(C.roshar, .42 + i * .053, 60 + i * 37), distText: ORR,
         blurb: g[1] + " is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
         short: "Gas giant " + (i + 1) + " of 10 beyond the asteroid belt.",
-        facts: [["Order", (i + 5) + "th from the sun (" + (i + 1) + " of the ten gas giants)"], ["Moons", "None known"]],
+        facts: [["Order", (i + 4) + "th from the sun (" + (i + 1) + " of the ten gas giants)"], ["Moons", "None known"]],
         gfx: gas([g[2], g[3], g[4], g[3], g[2], g[4]], {atmo: g[4]})};
     })).concat([
 
@@ -700,7 +700,7 @@
       {id: "e9", book: 2, world: "scadrial", site: "luthadel", title: "Siege of Luthadel", text: "Elend Venture tries to rule a free city while three armies camp outside the walls."},
       {id: "e10", book: 2, world: "scadrial", site: "well", title: "The Well of Ascension", text: "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."},
       {id: "e11", book: 2, world: "scadrial", site: "fadrex", title: "Fadrex and the caches", text: "Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart."},
-      {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed takes up both Shards and remakes the world, ending the ash and the mists."},
+      {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed takes up both Shards and restores the world, clearing the ash."},
       /* III Warbreaker */
       {id: "e13", book: 3, world: "nalthis", site: "courtofgods", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
       {id: "e14", book: 3, world: "nalthis", site: "ttelir", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},
@@ -715,7 +715,7 @@
       /* V Words of Radiance */
       {id: "e22", book: 5, world: "roshar", site: "narak", title: "To the centre of the Plains", text: "Dalinar marches on the Parshendi city as they summon a new storm from the west."},
       {id: "e23", book: 5, world: "roshar", site: "urithiru", title: "Urithiru found", text: "Shallan opens the Oathgate and leads the armies to the lost tower city."},
-      {id: "e24", book: 5, world: "roshar", site: "narak", title: "Kaladin’s Third Ideal", text: "Kaladin swears to protect even those he hates, and flies."},
+      {id: "e24", book: 5, world: "roshar", title: "Kaladin’s Third Ideal", text: "At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar."},
       {id: "e25", book: 5, world: "braize", title: "Damnation named", text: "The Heralds’ torment between Desolations is laid bare, and the Everstorm brings the return of something long imprisoned."},
       /* VI Wax & Wayne */
       {id: "e26", book: 6, world: "scadrial", site: "elendel", title: "Home from the Roughs", text: "Waxillium Ladrian returns to Elendel to run his house, and is pulled back into lawkeeping by a run of train heists."},
@@ -757,7 +757,7 @@
       {id: "e56", book: 12, world: "roshar", site: "shinovar", title: "Kaladin and Szeth in Shinovar", text: "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."},
       {id: "e57", book: 12, world: "roshar", site: "thaylen", title: "Fronts falling", text: "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."},
       {id: "e58", book: 12, world: "roshar", site: "urithiru", title: "Retribution", text: "Dalinar renounces Honor’s power. Odium absorbs it, kills the Stormfather and becomes Retribution."},
-      {id: "e59", book: 12, world: "roshar", title: "The Night of Sorrows", text: "Stormlight is withdrawn, the Everstorm covers the world, and time on Roshar slows to a crawl."},
+      {id: "e59", book: 12, world: "roshar", title: "Stormfall", text: "Retribution’s ascension ends the old storms and leaves Roshar isolated in slowed time."},
       {id: "e60", book: 12, world: "scadrial", title: "Hoid seeks help", text: "In the epilogue Hoid travels to Scadrial to look for allies against Retribution."},
       {id: "e61", book: 12, world: "firstsun", site: "patjiseye", title: "Through Patji’s Eye", text: "Dusk leaves his world through the Eye, searching for help against the Ones Above."},
       {id: "e62", book: 12, world: "emberdark", site: "hiddengate", title: "Dusk and Starling", text: "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."},
@@ -910,7 +910,6 @@
         {id: "h-nal-ros", pairs: [["nalthis", "roshar"]], book: 5, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
         {id: "h-yol-silv", pairs: [["yolen", "silverlight"], ["taldain", "silverlight"]], book: 7, opacity: {all: .45, cur: .9, past: .3}, curve: .05},
         {id: "h-sel-lum", pairs: [["sel", "lumar"]], book: 11, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
-        {id: "h-nomad", path: ["canticle", "komashi"], book: 11, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
         {id: "h-scad-can", pairs: [["scadrial", "canticle"]], book: 11, opacity: {all: .45, cur: .9, past: .3}, curve: .1},
         {id: "h-nomad2", pairs: [["roshar", "canticle"]], book: 12, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
         {id: "h-hoid12", pairs: [["roshar", "scadrial"]], book: 12, opacity: {all: .5, cur: .95, past: .35}, curve: .14},

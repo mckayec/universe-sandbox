@@ -10,7 +10,7 @@
 const BOOKS={1:{n:"I",title:"Empire of Silence",y:2018},2:{n:"II",title:"Howling Dark",y:2019},3:{n:"III",title:"Demon in White",y:2020},4:{n:"IV",title:"Kingdoms of Death",y:2022},5:{n:"V",title:"Ashes of Man",y:2022},6:{n:"VI",title:"Disquiet Gods",y:2024},7:{n:"VII",title:"Shadows Upon Time",y:2025}};
 
 const INTRO={
- text:"Seventeen thousand years from now the Sollan Empire holds four arms of the Milky Way under a Solar Throne, and the Chantry keeps machines and Old Earth forbidden. Out of the Norma Arm come the Cielcin, the Pale, who live in moon-sized ships and eat the people they conquer. Hadrian Marlowe, the disowned son of a minor lord, writes his memoir in the Library of Colchis: a soldier and a heretic, called Halfmortal, Starbreaker, and the Sun Eater.",
+ text:"In humanity’s distant future, the Sollan Empire holds four arms of the Milky Way under a Solar Throne, and the Chantry keeps machines and Old Earth forbidden. Out of the Norma Arm come the Cielcin, the Pale, who live in moon-sized ships and eat the people they conquer. Hadrian Marlowe, the disowned son of a minor lord, writes his memoir in the Library of Colchis: a soldier and a heretic, called Halfmortal, Starbreaker, and the Sun Eater.",
  legend:[["Galaxy","Drawn from the official map in the later books: the core at centre, Old Earth 27,000 light-years out"],["Bright points","Worlds, coloured by their star. Diamonds are ships and worldships"],["Gold lines","Hadrian’s road, one colour per book"],["Red lines","Cielcin raids and invasions, as far as the selected book"],["Washes of colour","Sollan, Jaddian, Lothrian, Durantine and Tavrosi space, and the Veil of Marinus"],["Book buttons","Choose the book you are reading. Later worlds, events and routes stay hidden"],["Surfaces","Each world is generated on your graphics card when you descend"]]
 };
 
@@ -50,7 +50,7 @@ const WORLDS=[
  sites:[{id:"cenotaph",name:"The Cenotaph",lat:48,lon:4,books:[1],desc:"The memorial to the Foundation War, which keeps a copy of the Acts of Will."}]},
 
 {id:"forum",name:"Forum",group:"orion",books:[1,3,5,6,7],major:true,first:1,status:"Imperial capital",hero:"eternal",
- eras:{7:{status:"Fallen to the Cielcin",gfx:{pal:["#3a2418","#8a5a3a","#c8a07a","#d8c0a0","#9a4a2a","#5a1a10"],atmo:"#f0a070",lights:.15},blurb:"In Shadows Upon Time Hadrian returns to Forum to be named Auctor. Later he learns the capital has fallen to the Cielcin, and that the Chantry hid the news for nearly two years."}},
+ eras:{7:{status:"Fallen to the Cielcin",gfx:{pal:["#3a2418","#8a5a3a","#c8a07a","#d8c0a0","#9a4a2a","#5a1a10"],atmo:"#f0a070",lights:.15},blurb:"Hadrian learns the capital has fallen to the Cielcin, and that the Chantry hid the news for nearly two years."}},
  star:{name:"Forum’s sun",col:"#fff1d6"},map:[-5.187,27.041],
  blurb:"The throne world: a gas giant with a breathable upper atmosphere and sixty moons. The Eternal City floats in its cloud tops on thousands of barges, home to some thirty billion people and the Solar Throne.",
  short:"The Eternal City, a floating capital in a gas giant’s sky.",
@@ -146,7 +146,7 @@ const WORLDS=[
 
 /* ---------------- The Sullen Gulf & Centaurus ---------------- */
 {id:"gododdin",name:"Gododdin",group:"centaurus",books:[1,3,7],major:true,first:1,status:"Imperial garrison world",hero:"din",
- eras:{7:{status:"Destroyed: its sun murdered",gfx:{type:"lava",sea:.3,pal:["#08080a","#1a1414","#2a1c16","#3a2418","#4a3020","#8a6a5a"],lava:"#ffb04a",clouds:.3,cloudCol:"#6a4a3a",atmo:"#ff9a4a",atmoK:1.1,lights:0},blurb:"The last battle. Humanity masters its fleets at Gododdin, the Cielcin come with their worldships and Watchers, and Hadrian turns its star into a hypernova that destroys the system, the Cielcin host and the gods they serve. This is the murdered sun the first page of the series promised."}},
+ eras:{7:{status:"Destroyed: its sun murdered",gfx:{type:"lava",sea:.3,pal:["#08080a","#1a1414","#2a1c16","#3a2418","#4a3020","#8a6a5a"],lava:"#ffb04a",clouds:.3,cloudCol:"#6a4a3a",atmo:"#ff9a4a",atmoK:1.1,lights:0},blurb:"The last battle. Humanity masters its fleets at Gododdin, the Cielcin come with their worldships and Watchers, and Hadrian turns its star into a hypernova that destroys the system, the Cielcin host and the gods they serve. This is the murdered sun the first page of the series promised. Gododdin’s capital suffers a devastating explosion amid the final book’s unrest; Hadrian is blamed."}},
  star:{name:"Gododdin’s sun",col:"#fff2d0"},map:[5.635,20.664],
  blurb:"A grain world in the Sullen Gulf between the Sagittarius and Centaurus arms, a waypoint and fortress since the first push into Centaurus. Its grasslands feed the Legions. The opening lines of the series already name it.",
  short:"Fort Din and the Green Sea, in the Sullen Gulf.",
@@ -154,7 +154,7 @@ const WORLDS=[
  gfx:{type:"terran",sea:.4,freq:1.3,pal:["#0c2238","#2e6480","#7a8a3a","#a8a04a","#7a6a4a","#f0eee4"],clouds:.38,atmo:"#8eb2ff",lights:.4,
   feat:[{k:"biome",style:"grass",at:[18,30],r:22,s:1,c:"#b8b05a"},{k:"range",from:[22,8],to:[30,24],w:2.5,s:.25}]},
  sites:[
-  {id:"catraeth",name:"Catraeth",lat:24,lon:14,books:[3,7],desc:"The white-stone capital. In the last book it fills with refugees, riots, and is half destroyed by a Chantry antimatter bomb that is blamed on Hadrian."},
+  {id:"catraeth",name:"Catraeth",lat:24,lon:14,books:[3,7],desc:"The white-stone capital."},
   {id:"din",name:"Fort Din",lat:26,lon:16,books:[3,7],desc:"A bunker fortress in the mountain above Catraeth. Hadrian stops a decimation of Irchtani auxiliaries here, and later makes it his headquarters."},
   {id:"greensea",name:"The Green Sea",lat:18,lon:30,books:[3],desc:"Grasslands and buttes, and fields of bromos grain for the Legions."}]},
 
@@ -194,8 +194,8 @@ const WORLDS=[
   feat:[{k:"basin",at:[30,-40],r:5,s:.7},{k:"biome",style:"rock",at:[30,-40],r:3.5,s:1,c:"#1a1a1c"}]},
  sites:[{id:"camp",name:"The Emperor’s Camp",lat:24,lon:-30,books:[5],desc:"A moving city of grounded ships around the Emperor’s flagship, the Radiant Dawn."},{id:"rothsmoor",name:"Rothsmoor",lat:30,lon:-40,books:[5],desc:"The ruined old capital. In its ruins the Emperor tells Hadrian what his secret service knows about dead civilizations."}]},
 
-{id:"ganelon",name:"Ganelon",group:"centaurus",books:[5],first:5,status:"MINOS research base",map:[15.4,17.3],est:true,
- star:{name:"DB-639D",col:"#ffd8b0"},
+{id:"ganelon",name:"Ganelon",aka:["VA-639D"],group:"centaurus",books:[5],first:5,status:"MINOS research base",map:[15.4,17.3],est:true,
+ star:{name:"Unnamed sun",col:"#ffd8b0"},
  blurb:"A half-barren world where the machine cult MINOS breeds a plague for the Cielcin. Hadrian leads a strike that destroys its tower, and a Jaddian prince arrives who turns out to be an old friend from Emesh.",
  gfx:{type:"barren",sea:.2,pal:["#2a2420","#3a322a","#5a4e40","#6a5c4a","#7a6c5a","#d8d0c4"],rough:.7,clouds:.15,atmo:"#d0b898",atmoK:.4},
  sites:[{id:"darktower",name:"The Dark Tower",lat:-10,lon:40,books:[5],desc:"MINOS’s laboratory, where the Lethovirus is made. Hadrian’s strike team destroys it with atomics."}]},
@@ -420,7 +420,7 @@ const ROUTES=[
  {id:"r4",book:4,label:"Kingdoms of Death",path:["thermon","nessus","eikana","nessus","padmurak","dharantun","eue","colchis"]},
  {id:"r5",book:5,label:"Ashes of Man",path:["colchis","nessus","carteia","ganelon","fidchell","perfugium","jadd"]},
  {id:"r6",book:6,label:"Disquiet Gods",path:["jadd","sabratha","tiryns","forum","llesu","latarra","vorgossos"]},
- {id:"r7",book:7,label:"Shadows Upon Time",path:["vorgossos","annica","forum","tenba","danu","bracara","gododdin","dharantun"]}
+ {id:"r7",book:7,label:"Shadows Upon Time",path:["vorgossos","annica","tenba","danu","bracara","gododdin","dharantun"]}
 ];
 /* Cielcin raids and invasions [from, to, book in which the reader learns of it] */
 const CIELCIN_ORIGIN="veil";
@@ -493,12 +493,11 @@ const EVENTS=[
  /* VII · Shadows Upon Time */
  {id:"b7a",book:7,world:"vorgossos",title:"Master of the Demiurge",text:"Hadrian holds the Demiurge against Chantry and Vorgossene attacks and makes peace with the ship’s mind."},
  {id:"b7b",book:7,world:"annica",site:"mountain",title:"Exile on Annica",text:"A fugitive from Empire and Chantry, Hadrian waits beyond the core with Cassandra."},
- {id:"b7c",book:7,world:"forum",site:"eternal",title:"Auctor",text:"The dying Emperor names Hadrian Auctor of the Imperium. Later he learns Forum has fallen and that the Chantry hid it."},
  {id:"b7d",book:7,world:"earth",title:"Earth is green",text:"The Chantry’s great secret: Old Earth was never a ruin."},
  {id:"b7e",book:7,world:"tenba",site:"meridian",title:"The muster at Tenba",text:"The last fleets of humanity gather."},
  {id:"b7f",book:7,world:"danu",title:"Danu",text:"Cielcin worldships tear the world apart and Ushara destroys the Tavrosi fleet."},
  {id:"b7g",book:7,world:"bracara",title:"Waiting at Bracara",text:"The fleet waits months for an enemy that does not come."},
- {id:"b7h",book:7,world:"gododdin",site:"catraeth",title:"Catraeth burns",text:"Refugees riot, and a Chantry antimatter bomb destroys half the city. Hadrian is blamed."},
+ {id:"b7h",book:7,world:"gododdin",site:"catraeth",title:"Catraeth burns",text:"An explosion devastates Catraeth, and Hadrian is blamed."},
  {id:"b7i",book:7,world:"dharantun",title:"Into the worldship",text:"Hadrian and Cassandra go aboard the Dharan-Tun. Syriani Dorayaica and Ushara are destroyed."},
  {id:"b7j",book:7,world:"gododdin",site:"din",title:"The Sun Eater",text:"Miudanar rises over Ywain. Hadrian drives Gododdin’s star to hypernova, destroying the Cielcin host, the Watchers, and the system with billions of people in it."},
  {id:"b7k",book:7,world:"colchis",site:"belgaer",title:"After",text:"The Cielcin are broken and Alexander takes the throne. The old man in the Library finishes his account."}
@@ -567,7 +566,7 @@ const CHARACTERS=[
  {name:"Calen Harendotes",role:"The Monarch",books:[6],desc:"Ruler of Latarra, and another incarnation of Kharn Sagara."}
 ];
 const CONCEPTS=[
- {name:"Imperial Standard Date",first:1,desc:"Years since the Empire’s founding. Hadrian is born in ISD 16117. The books are set roughly twenty thousand years from now."},
+ {name:"Imperial Standard Date",first:1,desc:"Years since the Empire’s founding. Hadrian is born in ISD 16117. The books are set in humanity’s distant future."},
  {name:"Warp and fugue",first:1,desc:"Ships cross between stars in years or decades; passengers sleep in cryonic fugue. On the map that is very roughly a thousand light-years a year, so Hadrian lives a millennium and spends half of it asleep."},
  {name:"Quantum telegraph",first:1,desc:"Instant communication across the galaxy between paired stations, while people and goods still take years."},
  {name:"Highmatter",first:1,desc:"The exotic metal of the swords carried by knights, which can cut almost anything."},
