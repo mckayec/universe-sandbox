@@ -1,6 +1,6 @@
 # Selected-witness acceptance checkpoint
 
-2026-10-26. **Verdict: usable documented handoff, retained at research/chatgpt because Meqabyan translation acceptance remains blocked.** Not all Christian apocrypha, every community's complete scriptural collection, or original-language textual criticism. [Corpus boundaries](corpus-and-method.md) and [research](research.md) define what was actually covered.
+2026-10-26. **Verdict: research-ready for the owner-approved narrower selected-witness handoff. All eleven Meqabyan U records remain excluded; that portion is explicitly incomplete.** Not all Christian apocrypha, every community's complete scriptural collection, or original-language textual criticism. [Corpus boundaries](corpus-and-method.md) and [research](research.md) define what was actually covered.
 
 | Gate | Result | Concrete evidence / remaining action |
 |---|---|---|
@@ -19,3 +19,7 @@
 The blocked action is **promoting XO-U01–XO-U11 into buildable Meqabyan content**, not accessing the three mirror bodies. Reason: translation/base-edition fidelity is unverified; the independent catalog preview provided no readable comparison body. Status: evidence unavailable through the checked sources, **not an approval denial**. The rest of the selected-witness handoff is saved and reviewable. Unknown ancient geography does not itself block research completion.
 
 Next queue item is Wheel of Time under HANDOFF_PLAN §1.4. Its WIP rule permits at most one new research item while LDS and Abrahamic are active beyond research. Apocrypha currently occupies that slot; it is not relabeled complete to bypass source acceptance. PR27 remains held/frozen under the parent's separate merge/deploy process. No queue advancement is claimed in this checkpoint.
+
+## Owner-approved narrowed handoff
+
+On2026-10-26 the owner explicitly approved excluding the eleven uncertain Meqabyan records, marking that portion incomplete, and proceeding to Wheel of Time. This supersedes the earlier whole-inventory research hold and queue pause, not the evidence verdict. XO-U01–XO-U11 remain audit-only and must not be built; their source-fidelity checklist is preserved in meqabyan-fidelity-followup.md. The1350-row index contains1339 non-U research rows and11 excluded U rows, with overlaps/edges as described above. No claim of complete Meqabyan content, universal Christian canon, merge approval or deployment approval follows.

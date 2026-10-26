@@ -1,6 +1,6 @@
-# Biblical Apocrypha and Related Traditions — research in progress
+# Biblical Apocrypha and Related Traditions — narrowed research handoff
 
-2026-10-26. Baseline `a5c1e171c319a4aa6241a996f484babb617ad425`. Ordinary source browsing and bounded internal parallel research are being used; no dedicated Deep Research capability is claimed. The [corpus and method](corpus-and-method.md) defines reception labels and prevents a single invented canon. This document is an atlas research handoff in progress, not release approval.
+2026-10-26. Baseline `a5c1e171c319a4aa6241a996f484babb617ad425`. Ordinary source browsing and bounded internal parallel research are being used; no dedicated Deep Research capability is claimed. The [corpus and method](corpus-and-method.md) defines reception labels and prevents a single invented canon. The owner approved this narrower research handoff on2026-10-26, with all eleven Meqabyan U records excluded and that portion explicitly incomplete. This is not release approval.
 
 | Layer | Evidence artifact | Current scope |
 |---|---|---|
@@ -61,4 +61,4 @@ Typed relationships must distinguish kinship within a story, a character's testi
 
 The display must identify **text**, **community reception**, **scholarship** and **geographic evidence** separately. Canon lists are attributed to their issuing traditions. A late narrative's theological accusation is not a factual description of a population; preserve speaker attribution and avoid collective guilt. An ancient work's authoritative status for one community does not prove a proposed modern site, and a scholarly date does not adjudicate religious truth.
 
-No single harmonized canon, reconstructed exact ancient road, complete original-language collation or historical verification of visionary geography is claimed. Research remains owned by ChatGPT until the explicitly defined acceptance work is complete.
+No single harmonized canon, reconstructed exact ancient road, complete original-language collation or historical verification of visionary geography is claimed. The narrowed research handoff is ready for builder review; excluded Meqabyan material requires the preserved evidence checklist before any later promotion.
