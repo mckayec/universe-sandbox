@@ -156,3 +156,50 @@ Front-matter compatibility extension: actual FM06 Manchester-hill, September22,1
 
 
 First Vision gate refinement after front-matter comparison: D&C introduction explicitly reports spring1820 First Vision while Joseph lived in Manchester (preserved frontmatter/front_more.txt L168), so E08 now has a gate4 official-source view and a gate5 PGP woods/prayer view. The introduction does not itself identify a grove; P11 remains5 for that specific setting. Neither FM06 nor the BoM title/witnesses lowers this event to3.
+
+## Separate new-family and named-index denominator
+
+This closes the bookkeeping boundary left by the73 older-ID ledger above: **16/16 QG explanatory families** were checked during the earlier substantive source comparison and correction pass. They are not included in the43core/30PGPsupplement denominator. The unit is a compound proposed-copy family, not an atomic claim. The following row ledger records the source and exact retained scope; the corrected QG04/05/08/09/12/14 copy is the version checked. No additional independent full reading is claimed here.
+
+| Family | Checked source | Disposition |
+|---|---|---|
+| QG01 | Moses1:27–39; nonspatial concept. | Checked-qualified: Divine creation and immortality purpose; no physical site. |
+| QG02 | Moses3:1–25; nonspatial concept, shared Eden reference. | Checked-qualified: Spiritual creation, garden responsibilities and companionship; no unified chronology imposed. |
+| QG03 | Moses4:1–4,12–31; ordered narrative, no numeric date. | Checked-qualified: Premortal rebellion, agency and garden expulsion distinguished. |
+| QG04 | Moses5:41–53; relationship reference. The account says Lamech kills Irad after Irad begins revealing their secret; Lamech's wives then disclose it (49–53). Preserve Irad's position in the genealogy, without inventing a different victim to remove the chronological difficulty. Distinguish this Lamech from Noah's father. | Checked-qualified: Cainite genealogy, occupations and Lamech/Irad killing retained despite tension; no alternate victim invented. |
+| QG05 | Moses6:2–25; family and naming reference. Enoch's sea-east movement is textual itinerary without geometry (41–42). Within Enoch's discourse, Adam is described as being carried into water, baptized and born of the Spirit (64–68); this is embedded speech about Adam, not Enoch's baptism or a located river. | Checked-qualified: Sethite genealogy distinct; embedded Adam baptism correctly identified, not Enoch. |
+| QG06 | Moses7:18–21,62–69; separate ancient narrative and future expectation. | Checked-qualified: Community, city and future meeting distinct; Zion cross-layer source gates checked separately. |
+| QG07 | Moses8:5–13; preserve textual data, not harmonized dates. | Checked-qualified: Textual birth ages retained as source data, not harmonized numerical dates. |
+| QG08 | Abraham1:7–12,15–31; literary relationship, not established population history. Do not collapse every Pharaoh into one ruler or force the Egyptus statements in23/25 into a resolved family tree. | Checked-qualified: Onitah daughters, inherited records and ambiguous Egyptus/Pharaoh references retained. |
+| QG09 | Abraham2:1–11,14–25; reuse J03, do not move Terah through the entire path or narrate completed arrival in Egypt. The sister instruction is reported speech, not independent evidence of biological kinship. Do not name Lot’s wife. | Checked-qualified: Named kinship and source-specific journey end near Egyptian entry; intended continuation separate. |
+| QG10 | Abraham3:1–28; no scientific star map. | Checked-qualified: Cosmological discourse and intelligences treated as scripture claims, no star coordinates. |
+| QG11 | Abraham4–5; compare source-specific accounts without combining into one chronology. | Checked-qualified: Plural Gods and counsel/formation distinction preserved without forcing a Genesis chronology. |
+| QG12 | All three explanations; retain pgp-inventory.md's Egyptological evidence limit and the named figures/cosmological vocabulary dispositions below. Published glosses are not independent Egyptian translations or measured astronomical bodies. | Checked-qualified: All three published explanations attributed; named captions are not independent Egyptological verification. |
+| QG13 | JS—M1:2–4; two-node textual movement, no path geometry. | Checked-qualified: Actual temple-to-Olives movement distinguished from later predicted events. |
+| QG14 | JS—H1:3–4,55–75; birthplace and reported migration episodes, not a complete direct Sharon–Palmyra route. Reuse restoration locations, do not route Joseph along Harris's trip. | Checked-qualified: Family, employment, marriage, Harris trip and Cowdery baptism roles distinguished; retrospective testimony labelled. |
+| QG15 | [Race and the Priesthood, “The Church Today”](https://www.churchofjesuschrist.org/study/manual/gospel-topics-essays/race-and-the-priesthood?lang=eng) (C, official position). Pair with Moses7:8,22 and Abraham1:21–27; do not silently erase textual language or map it onto modern ethnic groups. | Checked-qualified: Official current essay disavowal paired with difficult canonical language, not erased or endorsed. |
+| QG16 | [Official PGP introduction](https://www.churchofjesuschrist.org/study/scriptures/pgp/introduction?lang=eng) (C, official publication history). Document dates, not narrated ancient dates. | Checked-qualified: 1851/1880/1976/1979 publication chronology distinguished from ancient narrative dates. |
+
+The named/material extension in coverage-pgp.md was also source-checked in the CP09–10 pass: **11/11 stable-key compound table rows**, plus **6/6 Joseph Smith—History index bullet groups**. These17groups are separately enumerated below; they are not17people, and do not add another17fully independent records to the73older-ID denominator. Their source-only spellings, explicit versus inferred kinship, unnamed collectives, instrument co-reference and witness levels remain as written. Counts were taken from the current definitions, not from the number of mentioned names or citations.
+
+| Named/material group | Checked source | Retained limitation |
+|---|---|---|
+| Cainite branch | Moses5:16–17,28,31–32,42–43,49–50 | Unnamed niece wife; Master Mahan title; not Sethite Enoch/Lamech. |
+| Adah/Zillah household and occupations | Moses5:44–46 | Do not infer every maternity edge from sibling language. |
+| Sethite branch and Mahijah | Moses6:2–25,40;8:5–12 | Mahijah person not automatically Mahujah place. |
+| Noah sons and ages | Moses8:12 | Different birth-age statements retained;492 is450+42calculation. |
+| Abraham family | Abraham2:1–4 | Lot's father not named in this passage; city Haran distinct from person. |
+| Onitah daughters/priest | Abraham1:7–12 | Three unnamed victims; descent does not mean immediate child of Ham. |
+| Egyptus/Pharaoh source views | Abraham1:21–27 | No forced co-reference or dynasty identification. |
+| Facsimile3 attendants | Explanation3:1–6 | Shulem/Olimlah roles attributed; Prince of Pharaoh not automatically biological son. |
+| Gods/idols and Rahleenos | Abraham1:6–14;Facsimile1 | Glosses not independent philology or human identities. |
+| Abraham celestial names/instrument | Abraham3:1–16 | No scientific star map or same-object assertion across eras. |
+| Facsimile cosmic vocabulary | Facsimile2:1–5;Facsimile1:12 | All listed printed terms retained as attributed interpretations. |
+| JS—H family/membership |1:3–4,7 | Mother/daughter Lucy distinct; church membership limited to named four. |
+| JS—H employment/boarding/marriage |1:56–58 | Josiah Stoal and Tarbill source forms; no invented first name or complete itinerary. |
+| JS—H Harris/Anthon/Mitchell |1:61–65 | Harris account relayed by Joseph, not verified statements from Anthon or Mitchell. |
+| JS—H plates/material episodes |1:30–54,59–60 |1823visits versus1827receipt;1838narration not return date. |
+| JS—H Cowdery/baptism |1:66–75 | Reciprocal baptisms explicit; Peter/James/John not physically present in this scene. |
+| JS—H quoted referents/Cowdery appendix |1:11,24,36–41,69–72;1834appendix | Textual referents not1820s travelers; appendix not verse76. |
+
+Evidence is the retained official PGP body/explanation captures, frontmatter introduction capture, and the successfully read official Race and the Priesthood essay also reverified as Restoration R20. No additional source-access blocker arose for these33compound QG/index families. This remains a defined-record/source-support audit, not a token-exhaustive entity census or independent historical corroboration.

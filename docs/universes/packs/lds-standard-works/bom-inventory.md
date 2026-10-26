@@ -82,7 +82,7 @@ All `book:3`, `first:3`, `layer:bom`; all dates are text strings. `places` resol
 | BE05 — Settlement of Nephi | BP03; Nephi's group; 2 Ne 5:5–8 | No absolute year. “Nephi and those who accompany him withdraw into the wilderness and name their settlement Nephi.” [B05] (C) |
 | BE06 — Mosiah reaches Zarahemla | BP03,BP04; Mosiah and communities; Omni 1:12–19 | No absolute year. “Mosiah leads a group out of Nephi; in Zarahemla the two communities unite.” [B09] (C) |
 | BE07 — Benjamin's assembly | BP30,BP04; Benjamin, families; Mosiah 2:1–8 | No absolute year assigned. “Benjamin addresses the assembled families from a tower near the temple.” [B11] (C) |
-| BE08 — Ammon finds Limhi | BP06,BP03; Ammon, three companions, Limhi; Mosiah 7:4–9 | After forty days wandering. “Ammon's search party reaches Limhi's domain and is detained before meeting the king.” [B12] (C) |
+| BE08 — Ammon finds Limhi | BP06,BP03; Ammon, three companions, Limhi; Mosiah 7:4–9 | After forty days wandering. “Ammon and three companions encounter Limhi, are imprisoned, and receive a formal audience two days later.” [B12] (C) |
 | BE09 — Limhi's escape | BP03,BP05,BP04; Limhi, Ammon, people; Mosiah 22:11–14 | No absolute year. “Limhi's people leave by night, skirt Shilom and join Mosiah's people at Zarahemla.” [B15] (C) |
 | BE10 — Helam established | P09,BP07; Alma's people; Mosiah 23:1–5,19–20 | Eight days' flight precede settlement. “Alma's community flees into the wilderness and builds Helam.” [B14,B16] (C) |
 | BE11 — Alma's deliverance | BP07,BP08,BP04; Alma's people; Mosiah 24:18–25 | One day's travel to valley, then twelve days after leaving it. “Alma's people escape bondage, pause in a valley and reach Zarahemla.” [B17] (C) |

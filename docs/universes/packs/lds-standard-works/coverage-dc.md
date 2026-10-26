@@ -233,7 +233,7 @@ Every row is `layer:dc-history`, `first:4`; historical events and predicted/comm
 
 ### Additional settings and explanatory copy
 
-The following place keys supply names only, with all coordinates withheld. Their source is the section heading or cited verse in the disposition table. DP13 Kirtland (town); DP14 Harmony (historical township/region); DP15 Manchester (town); DP16 Palmyra Smith log-home setting (residence, not printing shop); DP17 Thompson (settlement/farm context, exact farm boundary unverified); DP18 Missouri River/McIlwaine's Bend (river reach, historical geometry unverified); DP19 Chariton (river meeting region); DP20 St. Louis (city destination); DP21 Cincinnati (city destination); DP22 Wayne County, New York (county); DP23 New York City, DP24 Albany and DP25 Boston (named destinations); DP26 Freedom, New York (presiding district); DP27 → existing P16 Carthage Jail (reuse historical jail); DP28 Ramus, Illinois (historical settlement); DP29 Nashville, Iowa (textual gathering destination); DP30 Jackson County, Missouri (county, not Independence temple lot); DP31 Colesville, New York (community); DP32 Detroit (named mission waypoint); DP33 Warsaw, DP34 Carthage town, DP35 Burlington and DP36 Madison (named mission destinations; state-specific geographic resolution still pending). DP34 is not the DP27 jail. The current text names these places; external gazetteer confirmation is still necessary before plotting an event. DP11/DP12 remain unlocated ancient narrative places.
+The following place keys supply names only, with all coordinates withheld. Their source is the section heading or cited verse in the disposition table. DP13 Kirtland (town); DP14 Harmony (historical township/region); DP15 Manchester (town); DP16 Palmyra Smith log-home setting (residence, not printing shop); DP17 Thompson (settlement/farm context, exact farm boundary unverified); DP18 Missouri River/McIlwaine's Bend (river reach, historical geometry unverified); DP19 Chariton (river meeting region); DP20 St. Louis (city destination); DP21 Cincinnati (city destination); DP22 Wayne County, New York (county); DP23 New York City, DP24 Albany and DP25 Boston (named destinations); DP26 Freedom, New York (presiding district; New York from106:1footnote1a); DP27 → existing P16 Carthage Jail (reuse historical jail); DP28 Ramus, Illinois (historical settlement); DP29 Nashville, Iowa (textual gathering destination); DP30 Jackson County, Missouri (county, not Independence temple lot); DP31 Colesville, New York (community); DP32 Detroit (named mission waypoint); DP33 Warsaw, DP34 Carthage town, DP35 Burlington and DP36 Madison (named mission destinations; state-specific geographic resolution still pending). DP34 is not the DP27 jail. The current text names these places; external gazetteer confirmation is still necessary before plotting an event. DP11/DP12 remain unlocated ancient narrative places.
 
 | Key | Exact proposed explanatory copy | Sources / cross-links |
 |---|---|---|
@@ -273,7 +273,7 @@ Each arrow states its type explicitly; mutual roles use two participants rather 
 | DR20 | Hyrum Smith → Church: patriarch/seer; William Law → Presidency: counselor; Brigham Young → Twelve: president |124:91–96,127; full offices/rosters DD124; no implied permanent tenure |
 | DR21 | Benson/Snow, Pratt/Woodruff, Lyman/George A. Smith → companies: organizers |136:12–14; role instructions, not precise company manifests |
 | DR22 | Spencer W. Kimball, N. Eldon Tanner, Marion G. Romney → OD2 letter: signatories; Lorenzo Snow → OD1 conference: motion proposer |OD2 letter; OD1 acceptance; not authorship of every appended heading |
-| DR23 | Adam → Seth, Enos, Cainan, Mahalaleel, Jared, Enoch, Methuselah: ordainer; Seth → Lamech: ordainer; Methuselah → Noah: ordainer |107:41–52; authority edges are not the same as father-child edges; ages remain textual claims |
+| DR23 | Adam → Seth, Enos, Mahalaleel, Jared, Enoch, Methuselah: ordainer; Seth → Lamech: ordainer; Methuselah → Noah: ordainer; Cainan: ordainer unnamed in107:45 |107:41–52; authority edges are not the same as father-child edges; ages remain textual claims |
 | DR24 | Jethro → Moses; Caleb → Jethro; Elihu → Caleb; Jeremy → Elihu; Gad → Jeremy; Esaias → Gad: priesthood transmission |84:6–13; not assumed biological descent; Abraham/Melchizedek relationships retain distinct wording |
 
 ### Complete disposition matrix
@@ -441,7 +441,7 @@ This closes the **named Restoration-person research gap** in the140-unit pass. S
 | `dcp-algernon-sidney-gilbert` | Algernon Sidney Gilbert | 53heading/1–5;57:6–10;64:18;82:11 | 53heading full name; body “Sidney Gilbert”; do not merge Sidney Rigdon. |
 | `dcp-almon-babbitt` | Almon Babbitt | 124:84 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-alpheus-cutler` | Alpheus Cutler | 124:132 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
-| `dcp-alvin-smith` | Alvin Smith | 137:5–6 | 137vision identifies brother of Joseph Jr.; parents also seen are not thereby deceased. |
+| `dcp-alvin-smith` | Alvin Smith | 137:5–6 | 137vision names “Alvin” as brother of Joseph Jr.; family surname is resolved by JS—H1:3–4, not printed in137:5. Parents also seen are not thereby deceased. |
 | `dcp-amasa-lyman` | Amasa Lyman | 124:136;136:14 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-amos-davies` | Amos Davies | 124:111–114 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-ann-lee` | Ann Lee | 49heading | Heading49 contextual Shaker belief; not addressed/traveler, not an atlas assertion of Christ identity. |
@@ -455,7 +455,7 @@ This closes the **named Restoration-person research gap** in the140-unit pass. S
 | `dcp-david-dort` | David Dort | 124:132 | Printed124:132form retained; no unsupported spelling harmonization. |
 | `dcp-david-fullmer` | David Fullmer | 124:132 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-david-w-patten` | David W. Patten | 114:1;124:19/130 | 114fullform;124DavidPatten;1839mission commanded, not evidence completed. |
-| `dcp-david-whitmer` | David Whitmer | 14–16headings;17heading;30 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
+| `dcp-david-whitmer` | David Whitmer | 14heading;17heading;30:1–4 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-don-c-smith` | Don C. Smith | 124:133 | Initial retained; no expansion or sibling edge inferred. |
 | `dcp-dunbar-wilson` | Dunbar Wilson | 124:132 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-eden-smith` | Eden Smith | 75:36;80:2 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
@@ -500,7 +500,7 @@ This closes the **named Restoration-person research gap** in the140-unit pass. S
 | `dcp-john-smith` | John Smith | 102:3/34 | 102council member only here; no guessed kinship or later patriarch identification. |
 | `dcp-john-snider` | John Snider | 124:22/62 | Printed124form; no unverified Snyder alias. |
 | `dcp-john-taylor` | John Taylor | 118:6;124:129;135:2 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
-| `dcp-john-whitmer` | John Whitmer | 14–16headings;17heading;30 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
+| `dcp-john-whitmer` | John Whitmer | 15heading;30:9–11;47heading/1–4 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-joseph-coe` | Joseph Coe | 55:6;102:3 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-joseph-f-smith` | Joseph F. Smith | 138heading/53 | 1918vision recipient; body138:53 calls Hyrum his father; not Joseph Jr. |
 | `dcp-joseph-knight-sr` | Joseph Knight Sr. | 12heading;23:6 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
@@ -533,7 +533,7 @@ This closes the **named Restoration-person research gap** in the140-unit pass. S
 | `dcp-orson-pratt` | Orson Pratt | 34heading;52:26;75:14;124:129 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-parley-p-pratt` | Parley P. Pratt | 32heading;34heading;52:26 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-peter-haws` | Peter Haws | 124:62 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
-| `dcp-peter-whitmer-jr` | Peter Whitmer Jr. | 14–16headings;17heading;30 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
+| `dcp-peter-whitmer-jr` | Peter Whitmer Jr. | 16heading;30:5–8;32:2 | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-peter-whitmer-sr` | Peter Whitmer Sr. | 14heading;21heading | Same named participant across cited DD/DR records; initials retained; no uncited kinship. |
 | `dcp-philip-burroughs` | Philip Burroughs | 30:10 | Named destination host/householder30:10; religious “brother” not kinship. |
 | `dcp-polly-knight` | Polly Knight | 59heading | 59heading wife of Joseph Knight Sr.; not spouse of Newel/Vinson. |
@@ -640,14 +640,14 @@ These names are text/vision roles, not nineteenth-century travelers. Reuse exist
 | `dca-john-beloved`, `dca-peter-apostle`, `dca-james-apostle` | John/Peter dialogue; apostolic messengers in restoration narrative; John not John Baptist or John Whitmer |7:1–8;27:12;128:20 |
 | `dca-john-baptist`, `dca-zacharias` | John→Zacharias son; John→Smith/Cowdery reported ordainer |13heading;27:7–8;84:27–28 |
 | `dca-moroni-bom`, `dca-mormon-bom` | Moroni messenger/record custodian; Mormon abridger in editorial lost-pages context |2heading;10heading;27:5;128:20 |
-| `dca-elijah`, `dca-elias-dc110`, `dca-moses` | Elijah fathers/children keys; Elias Abrahamic-dispensation commission; Moses gathering commission |27:6/9;110:11–16; **do not collapse Elias and Elijah** merely from name translation |
+| `dca-elijah`, `dca-elias-dc110`, `dca-elias-dc27`, `dca-moses` | Elijah fathers/children keys; Elias of110 Abrahamic-dispensation commission; Elias of27 restoration keys and promise to Zacharias; Moses gathering commission |27:6–9;110:11–16; Elias27/110 co-reference remains unresolved; **do not collapse Elias and Elijah** merely from name translation |
 | `dca-adam-michael`, `dca-eve` | Michael explicitly Adam; Adam/Eve visionary first parents; Enoch assembly narrative |27:11;107:53–56;138:38–39; distinct from ordinary nineteenth-century gatherings |
 | `dca-gabriel`, `dca-raphael` | Named heavenly voices/messengers; Gabriel not automatically merged with Noah from an uncited teaching |128:21 |
 | `dca-abel`, `dca-cain`, `dca-seth`, `dca-enos`, `dca-cainan`, `dca-mahalaleel`, `dca-jared-genesis`, `dca-enoch`, `dca-methuselah`, `dca-lamech-genesis`, `dca-noah-genesis` | Named lineage/ordination/vision figures; DR23 explicitly distinguishes ordination from parenthood; Abel killed by his brother in84:16; brother unnamed there; ordination ages are textual claims |84:16;107:40–57;124:75;138:40–41; Enoch430vsGenesis365 preserved |
-| `dca-melchizedek`, `dca-abraham`, `dca-isaac`, `dca-jacob-israel`, `dca-joseph-egypt`, `dca-judah`, `dca-ephraim`, `dca-jesse` | Patriarchal examples/lineage or collective houses; distinguish personal ancestors from collective descendants; Abraham→Isaac son explicit132:36 |27:10;84:14–16;98:32;113:4–6;132:29–37;138:41 |
+| `dca-melchizedek`, `dca-abraham`, `dca-isaac`, `dca-jacob-israel`, `dca-joseph-egypt`, `dca-judah`, `dca-ephraim`, `dca-jesse` | Patriarchal examples/lineage or collective houses; distinguish personal ancestors from collective descendants; Abraham→Isaac son explicit132:36 |27:10;84:14–16;98:32;109:64;113:4–6;132:29–37;133:13,35;138:41 |
 | `dca-jethro`, `dca-caleb-dc84`, `dca-elihu-dc84`, `dca-jeremy-dc84`, `dca-gad-dc84`, `dca-esaias-dc84` | DR24 priesthood transmission; Jethro→Moses father-in-law84:6; Abraham→Esaias blessing84:13; no merging these chain names with similarly named biblical figures without evidence |84:6–13 |
-| `dca-aaron-moses-brother` | Aaronic-priesthood namesake and descendant-rights teaching; no modern recipient's ancestry inferred |68:16–21;84:18;107:16–17 |
-| `dca-david-king`, `dca-solomon`, `dca-uriah`, `dca-nathan-prophet`, `dca-sarah`, `dca-hagar` | Marriage examples: Sarah→Abraham wife; Hagar→Abraham wife as given by Sarah; David/Uriah wrongdoing distinguished from other marriage grants |132:1/34–39; no claim all participants consented |
+| `dca-aaron-moses-brother` | Aaronic-priesthood namesake and descendant-rights teaching; no modern recipient's ancestry inferred |68:16–21;84:18;107:16–17; “Moses-brother” key identity is separately supported by Exodus4:14, not an explicit kinship statement in these D&C verses |
+| `dca-david-king`, `dca-solomon`, `dca-uriah`, `dca-nathan-prophet`, `dca-sarah`, `dca-hagar` | Marriage examples: Sarah gives Hagar to Abraham as wife; Sarah/Abraham spousal identity and Sarai alias use separate Genesis17:15,19 and Abraham2:2 sources; David/Uriah wrongdoing distinguished from other marriage grants |132:1/34–39; no claim all participants consented |
 | `dca-isaiah`, `dca-ezekiel`, `dca-daniel`, `dca-malachi` | Named prophetic writings/vision participants; temple/stone imagery remains textual |65:2;113;128:17;138:42–46 |
 | `dca-shem`, `dca-elias-transfiguration` | Shem named high priest; Elias described as with Moses at the Transfiguration. Preserve this contextual identity separately from Elias of110 until a cited identity source supports merging. |138:41/45 |
 | `dca-nephi-bom`, `dca-lehi-bom`, `dca-laban-bom`, `dca-brother-of-jared`, `dca-benjamin-bom` | Manuscript/plates/artifact or ancestral-example cross-links; Jared's brother remains unnamed here; Benjamin reference defines translation extent |10:41;17:1;33:8;98:32 |

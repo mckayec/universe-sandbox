@@ -22,7 +22,7 @@ The scope is atlas relevance: material places, journeys, events, people/relation
 
 `coverage-ot-history.csv` enumerates all 338 chapters; its evidence field records exact inspected verse ranges and actual source provenance. **Genesis 50/50, Exodus 40/40, Leviticus 27/27, Numbers 36/36, Deuteronomy 34/34, Joshua 24/24, Judges 21/21, Ruth 4/4, 1 Samuel 31/31 2 Samuel 24/24, 1 Kings 22/22 and 2 Kings 25/25 chapters inspected: 338 inspected, 0 pending.** “Inspected” is an atlas-content text screen, not official-edition collation or historical verification. Full Genesis text was read using official Church displays for1–5,7 and an explicitly unofficial KJV transcription for6:22 and8–50 after web rate limits. The whole third-party file was retrieved successfully; its provenance is [aruljohn/Bible-kjv Genesis.json](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Genesis.json), SHA256 `5c1bf791d2bb98857982f92e7151c13886684e882e1728cf9e60ca197cdede0e`. This is not represented as an authorized Church publication or an exact match to it.
 
-Official pages1–7,9,11,16,22,24,31,33,35,36,46,50 were opened. Only the displayed portions were checked; the full fallback chapter cannot acquire official-source status merely because its opening verses matched. Chapter links below are the official reader destination; actual inspection provenance is in the CSV. All synthesis rows are `(C)` for the inspected textual witness; claims awaiting official collation retain that explicit limitation. The Genesis rows are50 chapter-level composite records, not50 new map sites.
+During the initial fallback stage, official pages1–7,9,11,16,22,24,31,33,35,36,46,50 were opened. Only the displayed portions were checked; the full fallback chapter cannot acquire official-source status merely because its opening verses matched. Chapter links below are the official reader destination; actual inspection provenance is in the CSV. All synthesis rows are `(C)` for the inspected textual witness; the subsequent complete collation resolves the initial official-edition access limitation. The Genesis rows are50 chapter-level composite records, not50 new map sites.
 
 | Record / chapter | Atlas synthesis and explicit exclusions |
 |---|---|
@@ -168,7 +168,7 @@ All24chapters read in full using the disclosed [third-party KJV transcription](h
 
 ## Leviticus synthesis
 
-All 27 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), SHA256 `bc2c76e1a4a3dce377c515480c245e319b3fd0ca46ace9644b22ab700d91e16c`. Official full Leviticus25:1–55 was subsequently read and crosschecked; remaining chapters require official-edition collation. These are chapter-level composites, primarily explanatory entries rather than map pins.
+All 27 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Leviticus.json), SHA256 `bc2c76e1a4a3dce377c515480c245e319b3fd0ca46ace9644b22ab700d91e16c`. Official full Leviticus25:1–55 was subsequently read and crosschecked; the subsequent pass completed official-edition collation for all chapters. These are chapter-level composites, primarily explanatory entries rather than map pins.
 
 | Record / chapter | Atlas synthesis and explicit exclusions |
 |---|---|
@@ -202,7 +202,7 @@ All 27 chapters were read in full from the disclosed [unofficial KJV transcripti
 
 ## Numbers synthesis
 
-All 36 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Numbers.json), SHA256 `03ac3a25f18cd740030baf185cfc7847e17d868397e11f20c174b4a065ddc9dc`. Official full Numbers33:1–56 was subsequently read and crosschecked; remaining chapters require official-edition collation. These composites distinguish commands, retrospective recitals and narrated events.
+All 36 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Numbers.json), SHA256 `03ac3a25f18cd740030baf185cfc7847e17d868397e11f20c174b4a065ddc9dc`. Official full Numbers33:1–56 was subsequently read and crosschecked; the subsequent pass completed official-edition collation for all chapters. These composites distinguish commands, retrospective recitals and narrated events.
 
 | Record / chapter | Atlas synthesis and explicit exclusions |
 |---|---|
@@ -243,11 +243,11 @@ All 36 chapters were read in full from the disclosed [unofficial KJV transcripti
 | OH-N35 / [Numbers 35](https://www.churchofjesuschrist.org/study/scriptures/ot/num/35?lang=eng) | Forty-eight Levitical towns including six refuges, three each side of Jordan; refuge available for inadvertent killing to native and stranger, trial and high-priest-death release. Unnamed cities here cross-link named Joshua20/21 entries;1,000/2,000-cubit descriptions require explicit interpretation before drawing scale. |
 | OH-N36 / [Numbers 36](https://www.churchofjesuschrist.org/study/scriptures/ot/num/36?lang=eng) | Zelophehad's daughters marry father's brothers' sons within Manasseh to retain inheritance; complements27's grant rather than cancelling it. Closing commands located Moab plains by Jordan near Jericho; no new journey. |
 
-**OH-N33 itinerary detail (Numbers 33:3–49):** Rameses → Succoth → Etham → Pi-hahiroth (before Baal-zephon; camp before Migdol) → sea crossing / wilderness of Etham → Marah → Elim → Red Sea camp → wilderness of Sin → Dophkah → Alush → Rephidim → Sinai → Kibroth-hattaavah → Hazeroth → Rithmah → Rimmon-parez → Libnah → Rissah → Kehelathah → Shapher → Haradah → Makheloth → Tahath → Tarah → Mithcah → Hashmonah → Moseroth → Bene-jaakan → Hor-hagidgad → Jotbathah → Ebronah → Ezion-gaber → Zin/Kadesh → Hor → Zalmonah → Punon → Oboth → Ije-abarim (subsequently Iim) → Dibon-gad → Almon-diblathaim → Abarim before Nebo → Moab plains by Jordan near Jericho. Final camp extent Beth-jesimoth to Abel-shittim. These are textual stop relations, not resolved modern coordinates; retain spelling aliases as source-specific candidates pending collation.
+**OH-N33 itinerary detail (Numbers 33:3–49):** Rameses → Succoth → Etham → Pi-hahiroth (before Baal-zephon; camp before Migdol) → sea crossing / wilderness of Etham → Marah → Elim → Red Sea camp → wilderness of Sin → Dophkah → Alush → Rephidim → Sinai → Kibroth-hattaavah → Hazeroth → Rithmah → Rimmon-parez → Libnah → Rissah → Kehelathah → Shapher → Haradah → Makheloth → Tahath → Tarah → Mithcah → Hashmonah → Moseroth → Bene-jaakan → Hor-hagidgad → Jotbathah → Ebronah → Ezion-gaber → Zin/Kadesh → Hor → Zalmonah → Punon → Oboth → Ije-abarim (subsequently Iim) → Dibon-gad → Almon-diblathaim → Abarim before Nebo → Moab plains by Jordan near Jericho. Final camp extent Beth-jesimoth to Abel-shittim. These are textual stop relations, not resolved modern coordinates; retain spelling aliases as source-specific textual forms; collation does not independently locate them.
 
 ## Deuteronomy synthesis
 
-All 34 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Deuteronomy.json), SHA256 `82116f948cbbec3e5bc893a9d3da9b04f91eb91e2037aadc786d2793363eb5fb`. Official Deuteronomy10:1–22 and34:1–12 subsequently displayed, read and crosschecked; remaining chapters require official-edition collation. Historical recitals, future commands and poetry do not become extra performed events.
+All 34 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Deuteronomy.json), SHA256 `82116f948cbbec3e5bc893a9d3da9b04f91eb91e2037aadc786d2793363eb5fb`. Official Deuteronomy10:1–22 and34:1–12 subsequently displayed, read and crosschecked; the subsequent pass completed official-edition collation for all chapters. Historical recitals, future commands and poetry do not become extra performed events.
 
 | Record / chapter | Atlas synthesis and explicit exclusions |
 |---|---|
@@ -288,7 +288,7 @@ All 34 chapters were read in full from the disclosed [unofficial KJV transcripti
 
 ## Judges synthesis
 
-All 21 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Judges.json), SHA256 `6fe6e671702a2654e87b9d779f8fca83231c12ffe185a0ae05c0c173763d1545`. Official-edition collation remains pending. Chapter sequence is not assumed to prove nonoverlapping chronological succession, particularly the closing narratives.
+All 21 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/Judges.json), SHA256 `6fe6e671702a2654e87b9d779f8fca83231c12ffe185a0ae05c0c173763d1545`. The subsequent official-edition collation is complete; see the final collation section. Chapter sequence is not assumed to prove nonoverlapping chronological succession, particularly the closing narratives.
 
 | Record / chapter | Atlas synthesis and explicit exclusions |
 |---|---|
@@ -316,7 +316,7 @@ All 21 chapters were read in full from the disclosed [unofficial KJV transcripti
 
 ## 1 Samuel synthesis
 
-All 31 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/1Samuel.json), SHA256 `aa99b351d90bbb4cc9a9007b7f8f3a3b50e3bb25a2d672e254d1d3c08a817b26`. Official-edition collation remains pending. Character reports, rejected plans and cover stories are distinguished from narrated journeys.
+All 31 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/1Samuel.json), SHA256 `aa99b351d90bbb4cc9a9007b7f8f3a3b50e3bb25a2d672e254d1d3c08a817b26`. The subsequent official-edition collation is complete; see the final collation section. Character reports, rejected plans and cover stories are distinguished from narrated journeys.
 
 | Record / chapter | Atlas synthesis and explicit exclusions |
 |---|---|
@@ -354,7 +354,7 @@ All 31 chapters were read in full from the disclosed [unofficial KJV transcripti
 
 ## 2 Samuel synthesis
 
-All 24 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/2Samuel.json), SHA256 `f006e63ff95d353a4f3b6a0ecd35be17098dd33d55a7465ef25e53151c852a35`. Official-edition collation remains pending. Appendix-style songs, rosters and recollections are not assigned dates solely from chapter order.
+All 24 chapters were read in full from the disclosed [unofficial KJV transcription](https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/2Samuel.json), SHA256 `f006e63ff95d353a4f3b6a0ecd35be17098dd33d55a7465ef25e53151c852a35`. The subsequent official-edition collation is complete; see the final collation section. Appendix-style songs, rosters and recollections are not assigned dates solely from chapter order.
 
 | Record / chapter | Atlas synthesis and explicit exclusions |
 |---|---|
@@ -459,7 +459,7 @@ Fallback witness `1Kings.json`: https://raw.githubusercontent.com/aruljohn/Bible
 
 Fallback witness `2Kings.json`: https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/2Kings.json ; SHA256 `c37f44dffa656a52615fadcf26125be04c89e8ada9b590da297038d1383bdbc4`. Full verse text read; no whole-file equivalence to the Church edition asserted.
 
-Official full-text crosschecks additionally completed for [1 Kings 6:1–38](https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/6?lang=eng) and [2 Kings 25:1–30](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/25?lang=eng), including construction synchronism and destruction/captivity dates. This does not promote adjacent chapters to official-collated status.
+Official full-text crosschecks additionally completed for [1 Kings 6:1–38](https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/6?lang=eng) and [2 Kings 25:1–30](https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/25?lang=eng), including construction synchronism and destruction/captivity dates. Those initial checks did not promote adjacent chapters; the later complete pass below separately covers them.
 
 
 ## Official-edition collation and evidence captures
@@ -551,13 +551,13 @@ All following records use **`layer: bible`, `first: 1`, `coordinates: null`** un
 | OHP-EBAL / mountain | “Joshua builds an altar at Ebal and reads the covenant law.” | OH-D27; OH-Q08. |
 | OHP-GERIZIM / mountain | “Gerizim is named in covenant blessing instructions and Jotham's speech setting.” | OH-D11,27; OH-J09; distinct from Ebal. |
 | OHP-HAZOR / city | “Joshua attacks Hazor; later narratives again identify it as a royal and fortified center.” | OH-Q11; OH-J04; OH-K1-09; do not merge the two Jabins automatically. |
-| OHP-DAN-NORTH / city / Laish, Leshem in conquest accounts | “Dan's migration account renames Laish after conquest.” | OH-J18; compare OH-Q19; OH-K1-12 shrine. Earlier Genesis Dan chronology remains unresolved. |
+| OHP-DAN-NORTH / city / Laish; compare Leshem in a parallel conquest account | “Dan's migration account renames Laish after conquest.” | OH-J18; OH-Q19 separately renames Leshem as Dan; their physical identity is a comparison, not independently established here. OH-K1-12 shrine. Earlier Genesis Dan chronology remains unresolved. |
 | OHP-GAZA / city / Azzah context | “Gaza appears in Philistine narratives, including Samson's final imprisonment.” | OH-J16; OH-K1-04; no surviving gate or temple identified. |
 | OHP-ASHDOD / city | “The captured ark is taken to Ashdod's Dagon sanctuary.” | OH-S1-05; no sanctuary coordinate. |
 | OHP-GATH / city | “Gath appears in ark, Davidic and later military narratives.” | OH-S1-05,21,27; OH-K2-12; distinguish Gath-hepher. |
 | OHP-EKRON / city | “Ekron receives the captured ark and is later linked to Ahaziah's intended inquiry.” | OH-S1-05–06; OH-K2-01; intended inquiry is interrupted. |
 | OHP-BETHSHEMESH-JUDAH / city | “The ark reaches Beth-shemesh; a later battle there brings Judah's defeat.” | OH-S1-06; OH-K2-14; distinguish northern namesakes. |
-| OHP-KIRJATHJEARIM / ark settlement | “The ark is kept at Kirjath-jearim before David's transfer narrative.” | OH-S1-06–07; OH-S2-06; not the temple itself. |
+| OHP-KIRJATHJEARIM / ark settlement | “The ark is kept at Kirjath-jearim before David's transfer narrative.” | OH-S1-06–07; OH-S2-06 names Baale-Judah, not Kirjath-jearim; a direct place-name equivalence requires separate support. Not the temple itself. |
 | OHP-JABESHGILEAD / city | “Saul relieves Jabesh-gilead; its inhabitants later recover Saul's body.” | OH-S1-11,31; OH-S2-21; remains later moved to Zelah. |
 | OHP-GILBOA / mountain region | “Saul and his sons fall during the battle at Gilboa.” | OH-S1-31; OH-S2-01. |
 | OHP-ZIKLAG / town | “David receives Ziklag and later recovers households taken from it.” | OH-S1-27,30; source does not provide exact raiding circuits. |
@@ -575,7 +575,7 @@ All following records use **`layer: bible`, `first: 1`, `coordinates: null`** un
 | OHP-DAMASCUS / city | “Damascus is a royal and diplomatic setting in the Syrian narratives.” | OH-K1-11,15; OH-K2-08,16; later NT journeys independently gated. |
 | OHP-RAMOTHGILEAD / city | “Israel's kings contest Ramoth-gilead; Jehu is anointed there.” | OH-K1-22; OH-K2-08–09. |
 | OHP-EZIONGEBER / port setting / Ezion-geber | “Solomon builds a fleet at Ezion-geber beside Eloth.” | OH-K1-09,22; OH-N33; no exact harbor point approved. |
-| OHP-ELATH / town / Eloth | “Elath changes political control in the royal narratives.” | OH-K1-09; OH-K2-14,16; preserve textual Syria wording. |
+| OHP-ELATH / town / compare Eloth spelling | “Elath changes political control in the royal narratives.” | OH-K1-09 Eloth and OH-K2-14,16 Elath are a spelling/setting comparison; no coordinate follows. Preserve textual Syria wording. |
 | OHP-OPHIR / destination region | “Solomon's fleet brings gold from Ophir.” | OH-K1-09–10; later Jehoshaphat fleet never reaches it; proposed locations remain unselected. |
 | OHP-SHEBA / kingdom reference | “An unnamed queen of Sheba visits Solomon.” | OH-K1-10; no automatic identity with Joshua's Sheba alias. |
 | OHP-LACHISH / city | “Lachish appears in Judah's royal conflict and Assyrian campaign accounts.” | OH-Q10; OH-K2-14,18–19. |
@@ -700,3 +700,23 @@ Each route is a directed sequence of textual stops, with **no interpolated Earth
 | OHC-EXILE / “Kings distinguishes successive deportations, surviving populations, incoming settlers and flight to Egypt.” | OH-K2-15,17–19,24–25; no single universal removal event. |
 
 This integration pass supplies stable major identities, routes and explanatory families across every assigned book. It does **not** assert complete atomization of every settlement in Joshua's allotments, every genealogical name, every royal official or every temporary battlefield position. Those names remain explicitly available in chapter source/disposition records and must receive context-scoped keys before a builder emits individual entities. No unresolved same-name site is assigned a fabricated coordinate to make the inventory look complete.
+
+
+## Per-record source-support re-verification
+
+[ot-history-record-verification.csv](ot-history-record-verification.csv) verifies **187 distinct stable IDs in the 172 integration families above**, including the shared IDs, all 25 OHJ routes and the reused event/journey records. The denominator is this explicit major-record registry, **not every possible entity in the 338 chapters**. Each row supplies exact proposed copy, verse anchors, official source links, preserved capture paths, gate 1 and identity/route limits. The source passages were checked against the completed chapter reading and preserved official bodies; a separate verse-existence check confirms that every cited verse is present. Capture hashes establish the available witness, not human comprehension or historical accuracy.
+
+All 187 records have checked textual support with the stated limits retained. Three place associations receive explicit caution: Laish/Leshem as parallel Dan conquest accounts, Kirjath-jearim/Baale-Judah as successive ark settings without direct name-equivalence in the cited verses, and Elath/Eloth as a spelling/setting comparison. AE06's destruction claim is independently anchored in 2 Kings 25:8–12; OHJ-24's royal capture/deportation route is anchored in 25:4–7. A shared row does not make those two records one event.
+
+This is a textual-support verdict only. It does not certify any archaeological coordinate, historical event date, later-canon claim or linked JST appendix not separately read. No source-access gap remains for the assigned 338 official chapter bodies. The later dense relationship payload and companion Joshua allotment register supply the named lists; remaining build work includes context-scoped serialization and global identity reconciliation; and separately sourced modern-geography evidence for any intended Earth marker. These cannot be counted as complete from the 187-record denominator.
+
+
+## Dense relationship and office payloads
+
+[ot-history-relationship-payload.csv](ot-history-relationship-payload.csv) adds **156 checked family, clan, office, warrior-roster and royal-succession payloads from 52 source chapters**. These rows contain the actual names and relationships, not instructions to reread a chapter. They are reference-family IDs (`OHF-*`), not 156 globally distinct people. Lists and chains are expanded within each row; unnamed family members remain unnamed. Every row has its own official verse reference, actual preserved capture, Bible gate 1, typed relation and limits. The source verses were checked; all cited verse numbers exist in the preserved official bodies.
+
+The payload covers the dense Genesis genealogies (4–5,10–11,22,25,36,46), Exodus6 and Numbers3 Levites, Numbers1 chiefs/13 scouts/26 clan census/34 land delegates, minor judges' households, Ruth's full Davidic chain, Samuel's priestly ancestry and Saul's household, David's sons/court/warrior roster, Solomon's court and all twelve provisioning officers, and the monarchy's family and reign entries through Zedekiah. Genealogical chains indicate the stated parent/begotten relation; ordered kings are expressly succession, not automatic descent. Clan names and people are not automatically interchangeable.
+
+Specific source differences remain visible: Genesis46 versus Numbers26 names and generations; two Korah positions in the Edom duke lists; Edomite king succession versus genealogy; Maachah called mother in successive Judah generations; Ahimelech/Abiathar order; distinct court officials and kings with shared names; Numbers26:46's Sarah versus Genesis46:17's Serah; and the KJV brother-of-Goliath rendering in 2Samuel21. Counts retain their population and age denominators. None of these lists supplies modern ethnic boundaries or proves every same-name identity across Chronicles or the New Testament.
+
+These concrete payloads close the dense genealogical/royal-roster omission in the major-record integration. They do not certify an exhaustive global index of every incidental proper name in narrative dialogue or every cross-canon alias. Remaining serialization must preserve the scoped IDs, explicitly supplied relationships, unknown identities and source-specific variants; global unions require separate evidence. Joshua's complete allotment-settlement expansion is maintained in the companion `joshua-allotment-register` artifacts rather than duplicated here.

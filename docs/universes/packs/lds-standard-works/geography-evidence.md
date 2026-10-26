@@ -11,7 +11,7 @@ Here `(C)` means the cited source was opened and supports the attributed stateme
 
 Use an unlocated textual view by default. Proposed real-world models belong in separately named, initially disabled layers. Do not make enabling all layers silently collapse different proposed places into one factual pin. This is an editorial implementation recommendation.
 
-**Church position — ready for a labelled tradition note:** “The Church of Jesus Christ of Latter-day Saints places the Book of Mormon narrative in the ancient Americas but takes no position on specific locations. These geography models are individual interpretations, not Church-endorsed maps.” [G1] (C)
+**Church position — ready for a labelled tradition note:** “For Book of Mormon events in the ancient Americas, the Church takes no position on specific geographic locations. These models are individual interpretations, not Church-endorsed maps.” [G1] (C)
 
 **Internal-map notice — ready for a map caption:** “This schematic shows proposed relationships between places in the narrative. It does not identify them with modern locations.” The Church's teaching map makes this distinction explicitly; it is an educational reconstruction, not a revealed or archaeological map. [G2] (C)
 
@@ -37,8 +37,8 @@ These records identify first scriptural references. Under research.md §1’s pr
 
 | ID | First reference | Exact proposed text | Position/date treatment |
 |---|---|---|---|
-| `bom-nahom` | 1 Nephi 16:34 | “In the narrative, Ishmael dies and is buried at a place called Nahom.” [G7] (C) | Unlocated in default view; no grave pin. |
-| `bom-bountiful-arabia` | 1 Nephi 17:5–8 | “Nephi describes a fertile coastal place that the travelers name Bountiful. Here he is commanded to build a ship.” [G8] (C) | Distinct ID from the later American Bountiful; do not merge by display name. |
+| `bom-nahom` | 1 Nephi 16:34 | “The narrative reports Ishmael’s death and says he was buried at a place called Nahom.” [G7] (C) | Unlocated in default view; no grave pin. |
+| `bom-bountiful-arabia` | 1 Nephi 17:5–8 | “Nephi describes a fertile coastal place that the travelers name Bountiful. After arriving, he goes up a mountain where he is commanded to build a ship.” [G8] (C) | Distinct ID from the later American Bountiful; do not merge by display name. |
 | `bom-irreantum` | 1 Nephi 17:5 | “The travelers call the sea Irreantum, which the text interprets as many waters.” [G8] (C) | No named modern ocean identification from this verse alone. |
 | `bom-first-landing` | 1 Nephi 18:23 | “After sailing for many days, the company reaches the land it calls the promised land.” [G9] (C) | No American landing port or transoceanic track asserted. |
 
