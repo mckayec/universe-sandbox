@@ -16,7 +16,7 @@ An interactive, museum-style astrophysics sandbox built with Vite, TypeScript, a
 - Grazing encounters, atmospheric stripping, rocky fragmentation, and persistent collision debris
 - Roche-limit tidal disruption: moons, planets, and gas giants that pass too close to a massive body stretch, then shear into debris streams (gas giants lose their envelopes and leave a bare core)
 - Habitability influenced by planet type, simulated surface temperature, atmosphere retention, water, magnetic shielding, stellar stability, radiation, and recent impacts
-- Guided “Build a Star,” “Create a Living World,” “Dance of Two Suns,” “Feed a Black Hole,” collision-laboratory, Tidal Disruption Lab, galaxy, and “The Fall of Gododdin” (a Sun Eater scenario with a fictional warp-wake boost) exhibits
+- Guided “Build a Star,” “Create a Living World,” “Dance of Two Suns,” “Feed a Black Hole,” collision-laboratory, Tidal Disruption Lab, galaxy, and “The Fall of Gododdin” (a Sun Eater scenario: worldships drop out of warp on the fleet and tear the planet apart) exhibits
 - Pinch zoom, two-finger pan, long-press object controls, fullscreen presentation, and an idle demonstration mode
 - Continuous nebula/plasma transfer streams tied to actual mass exchange
 - Bloom, procedural materials, particle effects, accretion disks, pulsar beams, and asymmetric supernova blast effects

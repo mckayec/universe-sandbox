@@ -64,7 +64,8 @@ try {
   assert.equal(await page.getByRole('button', { name: /Witness a Supernova/ }).isVisible(), true);
   assert.equal(await page.getByRole('button', { name: /Tidal Disruption Lab/ }).isVisible(), true);
   await page.getByRole('button', { name: /The Fall of Gododdin/ }).click();
-  await page.waitForFunction(() => document.querySelector('#count')?.textContent === '4');
+  // The sun, Gododdin, its fleet and the Demiurge.
+  await page.waitForFunction(() => Number(document.querySelector('#count')?.textContent) >= 18);
   await page.waitForTimeout(1500);
   await page.getByRole('button', { name: 'Exhibits' }).click();
   await page.getByRole('button', { name: 'Close guided exhibits' }).click();
@@ -79,11 +80,12 @@ try {
   assert.equal(await page.locator('#navigation-help').isHidden(), true);
 
   await page.getByRole('button', { name: 'Save' }).click();
+  const savedCount = await page.locator('#count').textContent();
   await page.getByRole('button', { name: 'Clear all' }).click();
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '0');
   assert.equal(await page.locator('#info-panel').evaluate(element => element.classList.contains('empty')), true);
   await page.getByRole('button', { name: 'Load' }).click();
-  await page.waitForFunction(() => document.querySelector('#count')?.textContent === '4');
+  await page.waitForFunction(count => document.querySelector('#count')?.textContent === count, savedCount);
 
   await page.getByRole('button', { name: /Binary stars/ }).click();
   const canvas = page.locator('#viewport canvas');
