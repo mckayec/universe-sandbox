@@ -1051,6 +1051,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
         '<dt>Distance</dt><dd>'+esc(distText(w))+'</dd></dl>'+
       (ns?'<p class="srcnote">A star: there is no surface to land on.</p>':'')+
       '<div class="actions">'+(S.view==="galaxy"?(ns?'':'<button class="btn primary" data-act="descend">Descend to the surface</button>'):'<button class="btn primary" data-act="ascend">Return to the galaxy</button>')+
+        (!ns&&PLACES&&!(w.sites||[]).some(siteSeen)?'<button class="btn" data-act="enter" data-id="__surface">Walk the surface ›</button>':"")+
         (S.view==="world"?'':'<button class="btn" data-act="web">'+esc(UI.homeLink)+'</button>')+'</div>';
     const all=(w.sites||[]).filter(siteEraOk);
     if(CUM){const sites=all.filter(siteSeen);
@@ -1077,7 +1078,7 @@ function siteExtra(s){let h="";if(s.modern)h+='<span class="pm">'+esc(UI.modernL
   if(S.site===s.id){const ns=ARR(s.notes).filter(n=>n&&n.t);if(ns.length)h+='<span class="pnotes">'+ns.map(n=>'<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+'</span>').join("")+'</span>';}
   return h;}
 function evItem(e){const w=WORLD_BY[e.world];return '<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+(e.fx&&PLACES?'<span class="fxm" title="Plays a scene inside the place">▶</span>':"")+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+(S.ev===e.id&&e.site&&S.view!=="place"&&canEnterEv(e)?'<span class="goev btn" role="button" tabindex="0" data-act="goev" data-id="'+esc(e.id)+'">Go there ›</span>':"")+(S.ev===e.id&&S.view==="place"&&e.fx?'<span class="goev btn" role="button" tabindex="0" data-act="replay" data-id="'+esc(e.id)+'">▶ Replay</span>':"")+'</button>';}
-function siteName(w,id){const s=(w.sites||[]).find(x=>x.id===id);return s?s.name:"";}
+function siteName(w,id){if(id==="__surface"&&w)return surfaceSite(w).name;const s=(w.sites||[]).find(x=>x.id===id);return s?s.name:"";}
 const HOOK_API={get worldBy(){return WORLD_BY;},sol:SOL,get state(){return {book:S.book,sel:S.sel,view:S.view};},books:BOOKS,worlds:WORLDS};
 function distText(w){
   if(w.distText)return w.distText;
@@ -1323,7 +1324,11 @@ function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
     orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
 /* ===================== PLACES: ENTERING A SITE (PACK_FORMAT 21) ===================== */
-const siteOf=(w,id)=>w&&(w.sites||[]).find(x=>x.id===id);
+/* a world the books give no named places still has a surface to stand on: an unnamed, schematic view */
+const SURF={};
+function surfaceSite(w){return SURF[w.id]||(SURF[w.id]={id:"__surface",name:w.name+" surface",surface:true,lat:0,lon:0,
+  desc:"An unnamed stretch of "+w.name+"’s surface. The books name no places here, so this view is schematic: the land, sky and light come from the world’s own map."});}
+const siteOf=(w,id)=>w&&(id==="__surface"?surfaceSite(w):(w.sites||[]).find(x=>x.id===id));
 function canEnter(w,s){return !!(PLACES&&w&&s&&!noSurface(w)&&siteSeen(s));}
 function canEnterEv(e){const w=WORLD_BY[e.world];return canEnter(w,siteOf(w,e.site));}
 function enterBtn(w,s){return canEnter(w,s)&&S.site===s.id?'<span class="enter btn primary" role="button" tabindex="0" data-act="enter" data-id="'+esc(s.id)+'">Enter '+esc(s.name)+' ›</span>':"";}
@@ -1355,7 +1360,7 @@ const PLACE_KIND={city:"City",capital:"Capital",town:"Town",village:"Village",pa
   underground:"Underground",sietch:"Sietch",desert:"Desert",ruins:"Ruins",battlefield:"Battlefield",wilds:"Wilds",forest:"Forest",mountain:"Mountains",ice:"Ice",sea:"Sea",temple:"Temple",
   monastery:"Monastery",library:"Library",arena:"Arena",camp:"Camp",crater:"Crater",tombs:"Tombs",farm:"Farmland",dome:"Domes",wreck:"Wreck",industrial:"Works"};
 function placeDossier(){const w=WORLD_BY[S.sel];const s=siteOf(w,S.site)||{name:"",desc:""};const P=PLACES.place;const lms=PLACES.landmarks();
-  const auto=lms.length===1&&lms[0].auto;const evs=evFor(w.id,s.id);
+  const auto=lms.length===1&&lms[0].auto;const evs=s.surface?evFor(w.id).filter(e=>!e.site):evFor(w.id,s.id);
   let h=grab(s.name,"Inside "+w.name)+'<p class="eyebrow">'+esc(w.name)+' · '+esc(PLACE_KIND[P.sc.kind]||"Place")+'</p><h2>'+esc(s.name)+'</h2>'+
     '<div class="chips">'+bks(s.books||[])+'</div><p class="blurb">'+esc(s.desc)+'</p>'+siteExtra(s);
   if(!P.sc.under&&!P.sc.space||P.sc.space)h+='<div class="seg tod" role="group" aria-label="Light">'+(P.sc.under?[]:["day","dusk","night","dawn"]).map(k=>'<button data-tod="'+k+'" aria-pressed="'+(PLACES.tod===k)+'">'+k.charAt(0).toUpperCase()+k.slice(1)+'</button>').join("")+'</div>';

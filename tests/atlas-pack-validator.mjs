@@ -34,7 +34,7 @@ export function validatePacks(dir = PACK_DIR) {
     );
   const FX = 'battle fire bombard blast fleet storm quake crowd duel flood launch arrival eruption worm'.split(' ');
   const TOP =
-    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start'.split(
+    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start places'.split(
       ' ',
     );
   const finite = v => typeof v === 'number' && isFinite(v);

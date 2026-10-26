@@ -4,7 +4,7 @@
    visitor is inside. Landmark builders live in places-lm.js; event effects at the end of this file.
    Everything is procedural: no textures or network requests. */
 (function () {
-  "use strict";
+  'use strict';
   const TAU = Math.PI * 2;
   const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -57,7 +57,11 @@
         bb = p[p[xi + 1] + yi + 1];
       const u = fade(xf),
         v = fade(yf);
-      return lerp(lerp(grad(aa, xf, yf), grad(ba, xf - 1, yf), u), lerp(grad(ab, xf, yf - 1), grad(bb, xf - 1, yf - 1), u), v);
+      return lerp(
+        lerp(grad(aa, xf, yf), grad(ba, xf - 1, yf), u),
+        lerp(grad(ab, xf, yf - 1), grad(bb, xf - 1, yf - 1), u),
+        v,
+      );
     }
     function fbm(x, y, oct) {
       let a = 0.5,
@@ -88,170 +92,308 @@
   const SIZE_EXT = { small: 450, medium: 800, large: 1250, huge: 1800 };
   /* bld = building density, hmax = height of the core, hero = landmark kind for the place itself */
   const KIND = {
-    city: { bld: 0.85, hmax: 1, hero: "tower" },
-    capital: { bld: 1, hmax: 1.7, hero: "palace", plaza: true },
-    town: { bld: 0.45, hmax: 0.3, hero: "hall" },
-    village: { bld: 0.2, hmax: 0.15, hero: "house", trees: 0.45 },
-    palace: { bld: 0.45, hmax: 0.5, hero: "palace", garden: true },
-    fortress: { bld: 0.35, hmax: 0.45, hero: "citadel", walls: true },
-    castle: { bld: 0.3, hmax: 0.25, hero: "castle", walls: true },
-    port: { bld: 0.7, hmax: 0.55, hero: "dock", coast: "s" },
-    spaceport: { bld: 0.35, hmax: 0.45, hero: "pad", pads: true, traffic: true },
-    station: { space: true, hero: "station", traffic: true },
-    habitat: { space: true, habitat: true, hero: "ring", traffic: true },
-    underground: { under: true, bld: 0.45, hmax: 0.22, hero: "cave" },
-    sietch: { under: true, bld: 0.07, hmax: 0.08, hero: "cave", arch: "desert", rockHouses: true },
-    desert: { bld: 0, hmax: 0, dunes: true, hero: "stones", rocks: 0.4 },
-    ruins: { bld: 0, hmax: 0, ruins: 0.8, hero: "ruin", rocks: 0.4 },
-    battlefield: { bld: 0, hmax: 0, craters: 1, wrecks: 1, smoke: true, hero: "wreck", ruins: 0.25 },
-    wilds: { bld: 0, hmax: 0, trees: 0.5, rocks: 0.6, hero: "stones" },
-    forest: { bld: 0, hmax: 0, trees: 1.1, hero: "tree" },
-    mountain: { bld: 0.04, hmax: 0.1, peaks: true, rocks: 0.8, hero: "peak" },
-    ice: { bld: 0.05, hmax: 0.12, snow: true, icespires: true, hero: "monolith" },
-    sea: { water: true, bld: 0.25, hmax: 0.35, platform: true, hero: "lighthouse" },
-    temple: { bld: 0.25, hmax: 0.2, hero: "temple", garden: true },
-    monastery: { bld: 0.12, hmax: 0.18, hero: "temple", peaks: true, trees: 0.3 },
-    library: { bld: 0.5, hmax: 0.45, hero: "library", plaza: true },
-    arena: { bld: 0.55, hmax: 0.45, hero: "arena" },
-    camp: { bld: 0, hmax: 0, tents: true, hero: "camp", rocks: 0.3 },
-    crater: { bld: 0.05, hmax: 0.1, crater: true, hero: "crater" },
-    tombs: { bld: 0, hmax: 0, hero: "tomb", rocks: 0.5, dunes: false },
-    farm: { bld: 0.06, hmax: 0.08, fields: true, hero: "farm", trees: 0.2 },
-    dome: { bld: 0.4, hmax: 0.28, domes: true, hero: "dome" },
-    wreck: { bld: 0, hmax: 0, hero: "wreck", craters: 0.4, rocks: 0.5 },
-    industrial: { bld: 0.6, hmax: 0.45, hero: "factory", arch: "industrial", stacks: true },
+    city: { bld: 0.85, hmax: 1, hero: 'tower' },
+    capital: { bld: 1, hmax: 1.7, hero: 'palace', plaza: true },
+    town: { bld: 0.45, hmax: 0.3, hero: 'hall' },
+    village: { bld: 0.2, hmax: 0.15, hero: 'house', trees: 0.45 },
+    palace: { bld: 0.45, hmax: 0.5, hero: 'palace', garden: true },
+    fortress: { bld: 0.35, hmax: 0.45, hero: 'citadel', walls: true },
+    castle: { bld: 0.3, hmax: 0.25, hero: 'castle', walls: true },
+    port: { bld: 0.7, hmax: 0.55, hero: 'dock', coast: 's' },
+    spaceport: { bld: 0.35, hmax: 0.45, hero: 'pad', pads: true, traffic: true },
+    station: { space: true, hero: 'station', traffic: true },
+    habitat: { space: true, habitat: true, hero: 'ring', traffic: true },
+    underground: { under: true, bld: 0.45, hmax: 0.22, hero: 'cave' },
+    sietch: { under: true, bld: 0.07, hmax: 0.08, hero: 'cave', arch: 'desert', rockHouses: true },
+    desert: { bld: 0, hmax: 0, dunes: true, hero: 'stones', rocks: 0.4 },
+    ruins: { bld: 0, hmax: 0, ruins: 0.8, hero: 'ruin', rocks: 0.4 },
+    battlefield: { bld: 0, hmax: 0, craters: 1, wrecks: 1, smoke: true, hero: 'wreck', ruins: 0.25 },
+    wilds: { bld: 0, hmax: 0, trees: 0.5, rocks: 0.6, hero: 'stones' },
+    forest: { bld: 0, hmax: 0, trees: 1.1, hero: 'tree' },
+    mountain: { bld: 0.04, hmax: 0.1, peaks: true, rocks: 0.8, hero: 'peak' },
+    ice: { bld: 0.05, hmax: 0.12, snow: true, icespires: true, hero: 'monolith' },
+    sea: { water: true, bld: 0.25, hmax: 0.35, platform: true, hero: 'lighthouse' },
+    temple: { bld: 0.25, hmax: 0.2, hero: 'temple', garden: true },
+    monastery: { bld: 0.12, hmax: 0.18, hero: 'temple', peaks: true, trees: 0.3 },
+    library: { bld: 0.5, hmax: 0.45, hero: 'library', plaza: true },
+    arena: { bld: 0.55, hmax: 0.45, hero: 'arena' },
+    camp: { bld: 0, hmax: 0, tents: true, hero: 'camp', rocks: 0.3 },
+    crater: { bld: 0.05, hmax: 0.1, crater: true, hero: 'crater' },
+    tombs: { bld: 0, hmax: 0, hero: 'tomb', rocks: 0.5, dunes: false },
+    farm: { bld: 0.06, hmax: 0.08, fields: true, hero: 'farm', trees: 0.2 },
+    dome: { bld: 0.4, hmax: 0.28, domes: true, hero: 'dome' },
+    wreck: { bld: 0, hmax: 0, hero: 'wreck', craters: 0.4, rocks: 0.5 },
+    industrial: { bld: 0.6, hmax: 0.45, hero: 'factory', arch: 'industrial', stacks: true },
   };
   /* architecture: body and roof colours, roof shapes, window share, height factor, block size */
   const ARCH = {
-    classical: { stone: "#d9cfbb", roof: "#a4583c", tops: ["pitched", "flat", "dome", "pitched"], win: 0.45, hmul: 0.55, cell: 26 },
-    gothic: { stone: "#5b5752", roof: "#2c2a2f", tops: ["spire", "pitched", "spire", "flat"], win: 0.7, hmul: 1.25, cell: 24, slim: true },
-    imperial: { stone: "#e6dec9", roof: "#c7a046", tops: ["flat", "dome", "spire", "tier"], win: 0.8, hmul: 1.6, cell: 34 },
-    modern: { stone: "#9aa7b4", roof: "#68727e", tops: ["flat", "flat", "slant", "tier"], win: 1, hmul: 1.4, cell: 32, glass: true },
-    brutal: { stone: "#7f7c76", roof: "#5c5953", tops: ["flat", "tier", "flat"], win: 0.5, hmul: 1.05, cell: 38, wide: true },
-    organic: { stone: "#9db28c", roof: "#6c8c5c", tops: ["dome", "round", "dome"], win: 0.4, hmul: 0.65, cell: 28, round: true },
-    crystal: { stone: "#b9d5ee", roof: "#e3f1ff", tops: ["prism", "spire", "prism"], win: 0.6, hmul: 1.3, cell: 30, glow: true },
-    rustic: { stone: "#8b7052", roof: "#5b3b2b", tops: ["pitched"], win: 0.3, hmul: 0.25, cell: 18 },
-    desert: { stone: "#d6bb8d", roof: "#c6a77b", tops: ["flat", "flat", "dome"], win: 0.3, hmul: 0.35, cell: 22 },
-    alien: { stone: "#6c5c7c", roof: "#9c7cb2", tops: ["prism", "round", "spire"], win: 0.5, hmul: 1.1, cell: 30, round: true },
-    industrial: { stone: "#6f6b63", roof: "#4f4b45", tops: ["flat", "tank", "stack", "flat"], win: 0.4, hmul: 0.7, cell: 34, wide: true },
-    eastern: { stone: "#cbbba2", roof: "#7c2f27", tops: ["pagoda", "pitched"], win: 0.4, hmul: 0.4, cell: 22 },
-    ancient: { stone: "#baa98a", roof: "#9b8b6b", tops: ["flat", "step", "flat"], win: 0.1, hmul: 0.4, cell: 26 },
+    classical: {
+      stone: '#d9cfbb',
+      roof: '#a4583c',
+      tops: ['pitched', 'flat', 'dome', 'pitched'],
+      win: 0.45,
+      hmul: 0.55,
+      cell: 26,
+    },
+    gothic: {
+      stone: '#5b5752',
+      roof: '#2c2a2f',
+      tops: ['spire', 'pitched', 'spire', 'flat'],
+      win: 0.7,
+      hmul: 1.25,
+      cell: 24,
+      slim: true,
+    },
+    imperial: {
+      stone: '#e6dec9',
+      roof: '#c7a046',
+      tops: ['flat', 'dome', 'spire', 'tier'],
+      win: 0.8,
+      hmul: 1.6,
+      cell: 34,
+    },
+    modern: {
+      stone: '#9aa7b4',
+      roof: '#68727e',
+      tops: ['flat', 'flat', 'slant', 'tier'],
+      win: 1,
+      hmul: 1.4,
+      cell: 32,
+      glass: true,
+    },
+    brutal: {
+      stone: '#7f7c76',
+      roof: '#5c5953',
+      tops: ['flat', 'tier', 'flat'],
+      win: 0.5,
+      hmul: 1.05,
+      cell: 38,
+      wide: true,
+    },
+    organic: {
+      stone: '#9db28c',
+      roof: '#6c8c5c',
+      tops: ['dome', 'round', 'dome'],
+      win: 0.4,
+      hmul: 0.65,
+      cell: 28,
+      round: true,
+    },
+    crystal: {
+      stone: '#b9d5ee',
+      roof: '#e3f1ff',
+      tops: ['prism', 'spire', 'prism'],
+      win: 0.6,
+      hmul: 1.3,
+      cell: 30,
+      glow: true,
+    },
+    rustic: { stone: '#8b7052', roof: '#5b3b2b', tops: ['pitched'], win: 0.3, hmul: 0.25, cell: 18 },
+    desert: { stone: '#d6bb8d', roof: '#c6a77b', tops: ['flat', 'flat', 'dome'], win: 0.3, hmul: 0.35, cell: 22 },
+    alien: {
+      stone: '#6c5c7c',
+      roof: '#9c7cb2',
+      tops: ['prism', 'round', 'spire'],
+      win: 0.5,
+      hmul: 1.1,
+      cell: 30,
+      round: true,
+    },
+    industrial: {
+      stone: '#6f6b63',
+      roof: '#4f4b45',
+      tops: ['flat', 'tank', 'stack', 'flat'],
+      win: 0.4,
+      hmul: 0.7,
+      cell: 34,
+      wide: true,
+    },
+    eastern: { stone: '#cbbba2', roof: '#7c2f27', tops: ['pagoda', 'pitched'], win: 0.4, hmul: 0.4, cell: 22 },
+    ancient: { stone: '#baa98a', roof: '#9b8b6b', tops: ['flat', 'step', 'flat'], win: 0.1, hmul: 0.4, cell: 26 },
   };
   /* time of day: sun elevation and azimuth, light, sky, windows, exposure */
   const TOD = {
-    day: { el: 52, az: 35, sun: "#fff2e2", si: 2.7, hemi: 0.95, zen: "#2f64b4", hor: "#adcaec", gnd: "#7a6d5d", win: 0.04, lamps: 0, stars: 0, exp: 0.95 },
-    dawn: { el: 7, az: -70, sun: "#ffb98a", si: 1.7, hemi: 0.55, zen: "#3d5590", hor: "#e8b394", gnd: "#4a3d36", win: 0.4, lamps: 0.35, stars: 0.15, exp: 1.12 },
-    dusk: { el: 5, az: 110, sun: "#ff9a62", si: 1.5, hemi: 0.45, zen: "#28305e", hor: "#d98d6c", gnd: "#3b2f2c", win: 0.75, lamps: 0.7, stars: 0.3, exp: 1.18 },
-    night: { el: 28, az: -140, sun: "#8ea4d6", si: 0.38, hemi: 0.16, zen: "#04060f", hor: "#121a2e", gnd: "#0b0d14", win: 1, lamps: 1, stars: 1, exp: 1.55 },
+    day: {
+      el: 52,
+      az: 35,
+      sun: '#fff2e2',
+      si: 2.7,
+      hemi: 0.95,
+      zen: '#2f64b4',
+      hor: '#adcaec',
+      gnd: '#7a6d5d',
+      win: 0.04,
+      lamps: 0,
+      stars: 0,
+      exp: 0.95,
+    },
+    dawn: {
+      el: 7,
+      az: -70,
+      sun: '#ffb98a',
+      si: 1.7,
+      hemi: 0.55,
+      zen: '#3d5590',
+      hor: '#e8b394',
+      gnd: '#4a3d36',
+      win: 0.4,
+      lamps: 0.35,
+      stars: 0.15,
+      exp: 1.12,
+    },
+    dusk: {
+      el: 5,
+      az: 110,
+      sun: '#ff9a62',
+      si: 1.5,
+      hemi: 0.45,
+      zen: '#28305e',
+      hor: '#d98d6c',
+      gnd: '#3b2f2c',
+      win: 0.75,
+      lamps: 0.7,
+      stars: 0.3,
+      exp: 1.18,
+    },
+    night: {
+      el: 28,
+      az: -140,
+      sun: '#8ea4d6',
+      si: 0.38,
+      hemi: 0.16,
+      zen: '#04060f',
+      hor: '#121a2e',
+      gnd: '#0b0d14',
+      win: 1,
+      lamps: 1,
+      stars: 1,
+      exp: 1.55,
+    },
   };
-  const TOD_ORDER = ["day", "dusk", "night", "dawn"];
+  const TOD_ORDER = ['day', 'dusk', 'night', 'dawn'];
   const LM_KINDS =
-    "tower spire skyscraper palace citadel castle keep wall gate arch bridge dome temple cathedral pyramid ziggurat obelisk statue monolith arena library hall house market plaza garden tree grove cave mine well crater lake dock pad ship wreck station ring tomb ruin camp tent farm lighthouse mast reactor factory beacon portal stones peak cliff throne shrine".split(
-      " ",
+    'tower spire skyscraper palace citadel castle keep wall gate arch bridge dome temple cathedral pyramid ziggurat obelisk statue monolith arena library hall house market plaza garden tree grove cave mine well crater lake dock pad ship wreck station ring tomb ruin camp tent farm lighthouse mast reactor factory beacon portal stones peak cliff throne shrine'.split(
+      ' ',
     );
 
   /* ---------- guessing a place from its name and description when the pack gives no scene ---------- */
   const GUESS = [
-    [/\bsietch\b/i, "sietch"],
-    [/\b(space ?station|orbital|habitat|station|ring station|the ring|platform in orbit)\b/i, "station"],
-    [/\b(spaceport|landing field|landing pad|starport|port of entry)\b/i, "spaceport"],
-    [/\b(shipyard|yards|foundry|forge|refinery|factory|factories|works|mill)\b/i, "industrial"],
-    [/\b(palace|residency)\b/i, "palace"],
-    [/\b(citadel|fortress|fort|stronghold|bastion|garrison)\b/i, "fortress"],
-    [/\b(castle|keep)\b/i, "castle"],
-    [/\b(library|archive|university|academy|school|college|institute)\b/i, "library"],
-    [/\b(temple|shrine|church|cathedral|monastery|abbey|sanctum|chapel|basilica)\b/i, "temple"],
-    [/\b(arena|colosseum|coliseum|stadium|amphitheat)/i, "arena"],
-    [/\b(tomb|tombs|grave|necropolis|crypt|mausoleum)\b/i, "tombs"],
-    [/\b(battle|battlefield|siege|front line|massacre)\b/i, "battlefield"],
-    [/\b(ruin|ruins|ruined|abandoned)\b/i, "ruins"],
-    [/\b(mine|mines|cavern|caves?|underground|tunnels?|warrens?|undercity|beneath)\b/i, "underground"],
-    [/\b(harbou?r|port|docks?|wharf|quay)\b/i, "port"],
-    [/\b(camp|encampment|outpost)\b/i, "camp"],
-    [/\b(crater)\b/i, "crater"],
-    [/\b(dome|domes)\b/i, "dome"],
-    [/\b(wreck|crash)/i, "wreck"],
-    [/\b(farm|farms|fields|plantation|ranch|orchard)\b/i, "farm"],
-    [/\b(forest|woods?|jungle|grove)\b/i, "forest"],
-    [/\b(mountains?|peak|range|pass|highlands|cliffs?|spire)\b/i, "mountain"],
-    [/\b(desert|dunes|waste|erg|sands)\b/i, "desert"],
-    [/\b(capital|imperial city|metropolis)\b/i, "capital"],
-    [/\b(city|hive)\b/i, "city"],
-    [/\b(village|hamlet)\b/i, "village"],
-    [/\b(town|settlement|colony)\b/i, "town"],
+    [/\bsietch\b/i, 'sietch'],
+    [/\b(space ?station|orbital|habitat|station|ring station|the ring|platform in orbit)\b/i, 'station'],
+    [/\b(spaceport|landing field|landing pad|starport|port of entry)\b/i, 'spaceport'],
+    [/\b(shipyard|yards|foundry|forge|refinery|factory|factories|works|mill)\b/i, 'industrial'],
+    [/\b(palace|residency)\b/i, 'palace'],
+    [/\b(citadel|fortress|fort|stronghold|bastion|garrison)\b/i, 'fortress'],
+    [/\b(castle|keep)\b/i, 'castle'],
+    [/\b(library|archive|university|academy|school|college|institute)\b/i, 'library'],
+    [/\b(temple|shrine|church|cathedral|monastery|abbey|sanctum|chapel|basilica)\b/i, 'temple'],
+    [/\b(arena|colosseum|coliseum|stadium|amphitheat)/i, 'arena'],
+    [/\b(tomb|tombs|grave|necropolis|crypt|mausoleum)\b/i, 'tombs'],
+    [/\b(battle|battlefield|siege|front line|massacre)\b/i, 'battlefield'],
+    [/\b(ruin|ruins|ruined|abandoned)\b/i, 'ruins'],
+    [/\b(mine|mines|cavern|caves?|underground|tunnels?|warrens?|undercity|beneath)\b/i, 'underground'],
+    [/\b(harbou?r|port|docks?|wharf|quay)\b/i, 'port'],
+    [/\b(camp|encampment|outpost)\b/i, 'camp'],
+    [/\b(crater)\b/i, 'crater'],
+    [/\b(dome|domes)\b/i, 'dome'],
+    [/\b(wreck|crash)/i, 'wreck'],
+    [/\b(farm|farms|fields|plantation|ranch|orchard)\b/i, 'farm'],
+    [/\b(forest|woods?|jungle|grove)\b/i, 'forest'],
+    [/\b(mountains?|peak|range|pass|highlands|cliffs?|spire)\b/i, 'mountain'],
+    [/\b(desert|dunes|waste|erg|sands)\b/i, 'desert'],
+    [/\b(capital|imperial city|metropolis)\b/i, 'capital'],
+    [/\b(city|hive)\b/i, 'city'],
+    [/\b(village|hamlet)\b/i, 'village'],
+    [/\b(town|settlement|colony)\b/i, 'town'],
   ];
   function guessKind(world, site) {
     const g = (world && world.gfx) || {};
-    const txt = (site.name || "") + " " + (site.desc || "");
-    const nm = site.name || "";
+    if (site.surface) {
+      const T = {
+        desert: 'desert',
+        ice: 'ice',
+        forest: 'forest',
+        barren: 'crater',
+        lava: 'crater',
+        ocean: 'sea',
+        archipelago: 'sea',
+        gas: 'station',
+        city: 'city',
+        hive: 'city',
+        dyson: 'station',
+      };
+      return T[g.type] || 'wilds';
+    }
+    const txt = (site.name || '') + ' ' + (site.desc || '');
+    const nm = site.name || '';
     for (const [re, k] of GUESS) if (re.test(nm)) return k;
-    if (g.type === "gas") return "station";
-    if (site.sea) return "sea";
+    if (g.type === 'gas') return 'station';
+    if (site.sea) return 'sea';
     for (const [re, k] of GUESS) if (re.test(txt)) return k;
-    if (g.type === "city" || g.type === "hive") return "city";
-    if (g.type === "desert") return "desert";
-    if (g.type === "ice") return "ice";
-    if (g.type === "forest") return "forest";
-    if (g.type === "barren" || g.type === "lava") return "crater";
-    if (g.type === "ocean" || g.type === "archipelago") return "port";
-    return "town";
+    if (g.type === 'city' || g.type === 'hive') return 'city';
+    if (g.type === 'desert') return 'desert';
+    if (g.type === 'ice') return 'ice';
+    if (g.type === 'forest') return 'forest';
+    if (g.type === 'barren' || g.type === 'lava') return 'crater';
+    if (g.type === 'ocean' || g.type === 'archipelago') return 'port';
+    return 'town';
   }
   function guessArch(kind, world, defaults) {
     if (defaults && defaults.arch) return defaults.arch;
     const t = ((world && world.gfx) || {}).type;
     if (KIND[kind] && KIND[kind].arch) return KIND[kind].arch;
-    if (t === "desert") return "desert";
-    if (kind === "palace" || kind === "capital") return "imperial";
-    if (kind === "fortress") return "brutal";
-    if (kind === "castle" || kind === "village" || kind === "farm") return "rustic";
-    if (kind === "temple" || kind === "library" || kind === "arena") return "classical";
-    if (kind === "station" || kind === "habitat" || kind === "spaceport" || kind === "industrial") return "industrial";
-    if (kind === "ruins" || kind === "tombs") return "ancient";
-    if (t === "city" || t === "hive") return "imperial";
-    if (t === "ice") return "brutal";
-    if (t === "forest") return "rustic";
-    return "modern";
+    if (t === 'desert') return 'desert';
+    if (kind === 'palace' || kind === 'capital') return 'imperial';
+    if (kind === 'fortress') return 'brutal';
+    if (kind === 'castle' || kind === 'village' || kind === 'farm') return 'rustic';
+    if (kind === 'temple' || kind === 'library' || kind === 'arena') return 'classical';
+    if (kind === 'station' || kind === 'habitat' || kind === 'spaceport' || kind === 'industrial') return 'industrial';
+    if (kind === 'ruins' || kind === 'tombs') return 'ancient';
+    if (t === 'city' || t === 'hive') return 'imperial';
+    if (t === 'ice') return 'brutal';
+    if (t === 'forest') return 'rustic';
+    return 'modern';
   }
   function guessLandmarkKind(site, sceneKind) {
     /* the landmark's own name decides; otherwise the place's signature structure */
-    const nm = site.name || "";
+    const nm = site.name || '';
     const T = [
-      [/\b(palace|residency|court)\b/i, "palace"],
-      [/\b(citadel|fortress|fort|stronghold)\b/i, "citadel"],
-      [/\b(castle|keep)\b/i, "castle"],
-      [/\b(cathedral|basilica)\b/i, "cathedral"],
-      [/\b(temple|shrine|chapel|church|monastery|abbey)\b/i, "temple"],
-      [/\b(library|archive|university|academy|school)\b/i, "library"],
-      [/\b(arena|colosseum|coliseum|stadium)\b/i, "arena"],
-      [/\b(tower|spire)s?\b/i, "spire"],
-      [/\b(tomb|tombs|grave|crypt|mausoleum)\b/i, "tomb"],
-      [/\b(mine|mines)\b/i, "mine"],
-      [/\b(cave|caves|cavern|sietch|tunnels?)\b/i, "cave"],
-      [/\b(dock|docks|harbou?r|port|wharf)\b/i, "dock"],
-      [/\b(spaceport|landing field|landing)\b/i, "pad"],
-      [/\b(station|habitat|orbital)\b/i, "station"],
-      [/\b(wreck|crash)/i, "wreck"],
-      [/\bruins?\b/i, "ruin"],
-      [/\bgate\b/i, "gate"],
-      [/\bbridge\b/i, "bridge"],
-      [/\bstatue\b/i, "statue"],
-      [/\b(monolith|obelisk)\b/i, "monolith"],
-      [/\bpyramid\b/i, "pyramid"],
-      [/\bdome\b/i, "dome"],
-      [/\bcamp\b/i, "camp"],
-      [/\btree\b/i, "tree"],
-      [/\b(forest|wood|woods|grove)\b/i, "grove"],
-      [/\bcrater\b/i, "crater"],
-      [/\b(lake|pool|pools)\b/i, "lake"],
-      [/\b(mountain|peak|mount)\b/i, "peak"],
-      [/\b(farm|fields?)\b/i, "farm"],
-      [/\b(factory|works|yards?|forge|foundry)\b/i, "factory"],
-      [/\b(market|bazaar)\b/i, "market"],
-      [/\b(garden|gardens|park)\b/i, "garden"],
-      [/\bwall\b/i, "wall"],
+      [/\b(palace|residency|court)\b/i, 'palace'],
+      [/\b(citadel|fortress|fort|stronghold)\b/i, 'citadel'],
+      [/\b(castle|keep)\b/i, 'castle'],
+      [/\b(cathedral|basilica)\b/i, 'cathedral'],
+      [/\b(temple|shrine|chapel|church|monastery|abbey)\b/i, 'temple'],
+      [/\b(library|archive|university|academy|school)\b/i, 'library'],
+      [/\b(arena|colosseum|coliseum|stadium)\b/i, 'arena'],
+      [/\b(tower|spire)s?\b/i, 'spire'],
+      [/\b(tomb|tombs|grave|crypt|mausoleum)\b/i, 'tomb'],
+      [/\b(mine|mines)\b/i, 'mine'],
+      [/\b(cave|caves|cavern|sietch|tunnels?)\b/i, 'cave'],
+      [/\b(dock|docks|harbou?r|port|wharf)\b/i, 'dock'],
+      [/\b(spaceport|landing field|landing)\b/i, 'pad'],
+      [/\b(station|habitat|orbital)\b/i, 'station'],
+      [/\b(wreck|crash)/i, 'wreck'],
+      [/\bruins?\b/i, 'ruin'],
+      [/\bgate\b/i, 'gate'],
+      [/\bbridge\b/i, 'bridge'],
+      [/\bstatue\b/i, 'statue'],
+      [/\b(monolith|obelisk)\b/i, 'monolith'],
+      [/\bpyramid\b/i, 'pyramid'],
+      [/\bdome\b/i, 'dome'],
+      [/\bcamp\b/i, 'camp'],
+      [/\btree\b/i, 'tree'],
+      [/\b(forest|wood|woods|grove)\b/i, 'grove'],
+      [/\bcrater\b/i, 'crater'],
+      [/\b(lake|pool|pools)\b/i, 'lake'],
+      [/\b(mountain|peak|mount)\b/i, 'peak'],
+      [/\b(farm|fields?)\b/i, 'farm'],
+      [/\b(factory|works|yards?|forge|foundry)\b/i, 'factory'],
+      [/\b(market|bazaar)\b/i, 'market'],
+      [/\b(garden|gardens|park)\b/i, 'garden'],
+      [/\bwall\b/i, 'wall'],
     ];
     for (const [re, k] of T) if (re.test(nm)) return k;
-    return (KIND[sceneKind] && KIND[sceneKind].hero) || "tower";
+    return (KIND[sceneKind] && KIND[sceneKind].hero) || 'tower';
   }
 
   /* ===================== CREATE ===================== */
@@ -282,8 +424,8 @@
       const U = {
         uNight: P ? P.U.uNight : { value: 0 },
         uWin: { value: opt.win == null ? 0.7 : opt.win },
-        uWinCol: { value: CL(opt.winCol || "#ffc27a") },
-        uGlass: { value: CL(opt.glass || "#24313f") },
+        uWinCol: { value: CL(opt.winCol || '#ffc27a') },
+        uGlass: { value: CL(opt.glass || '#24313f') },
         uFloor: { value: opt.floor || 4.2 },
         uBase: { value: opt.base || 0 },
       };
@@ -292,28 +434,28 @@
       m.onBeforeCompile = sh => {
         Object.assign(sh.uniforms, U);
         sh.vertexShader =
-          "varying vec3 vWP;varying vec3 vWN;\n" +
+          'varying vec3 vWP;varying vec3 vWN;\n' +
           sh.vertexShader.replace(
-            "#include <project_vertex>",
-            "#include <project_vertex>\n{vec4 pw=vec4(transformed,1.);vec3 nw=objectNormal;\n#ifdef USE_INSTANCING\npw=instanceMatrix*pw;nw=mat3(instanceMatrix)*nw;\n#endif\npw=modelMatrix*pw;vWP=pw.xyz;vWN=normalize(mat3(modelMatrix)*nw);}",
+            '#include <project_vertex>',
+            '#include <project_vertex>\n{vec4 pw=vec4(transformed,1.);vec3 nw=objectNormal;\n#ifdef USE_INSTANCING\npw=instanceMatrix*pw;nw=mat3(instanceMatrix)*nw;\n#endif\npw=modelMatrix*pw;vWP=pw.xyz;vWN=normalize(mat3(modelMatrix)*nw);}',
           );
         sh.fragmentShader =
-          "varying vec3 vWP;varying vec3 vWN;uniform float uNight,uWin,uFloor,uBase;uniform vec3 uWinCol,uGlass;\n" +
-          "float whash(vec3 p){return fract(sin(dot(p,vec3(12.9898,78.233,37.719)))*43758.5453);}\n" +
+          'varying vec3 vWP;varying vec3 vWN;uniform float uNight,uWin,uFloor,uBase;uniform vec3 uWinCol,uGlass;\n' +
+          'float whash(vec3 p){return fract(sin(dot(p,vec3(12.9898,78.233,37.719)))*43758.5453);}\n' +
           sh.fragmentShader
             .replace(
-              "#include <color_fragment>",
-              "#include <color_fragment>\nfloat wm=0.;float wfar=1.;vec3 wcell=vec3(0.);{vec3 N=normalize(vWN);if(abs(N.y)<.35&&vWP.y>uBase+2.){vec2 t=normalize(vec2(-N.z,N.x));float u=dot(vWP.xz,t)/2.9;float v=vWP.y/uFloor;\n" +
-                "vec2 f=fract(vec2(u,v));vec2 fw=max(fwidth(vec2(u,v)),vec2(1e-4));vec2 a=smoothstep(vec2(.18),vec2(.18)+fw*1.5,f)*(1.-smoothstep(vec2(.78)-fw*1.5,vec2(.78),f));\n" +
-                "float far=clamp(1.-max(fw.x,fw.y)*2.2,0.,1.);wfar=far;wm=mix(.45,a.x*a.y,far)*uWin;wcell=vec3(floor(u),floor(v),floor(dot(vWP.xz,N.xz)*.1));}\n" +
-                "diffuseColor.rgb=mix(diffuseColor.rgb,uGlass,wm*.55);}",
+              '#include <color_fragment>',
+              '#include <color_fragment>\nfloat wm=0.;float wfar=1.;vec3 wcell=vec3(0.);{vec3 N=normalize(vWN);if(abs(N.y)<.35&&vWP.y>uBase+2.){vec2 t=normalize(vec2(-N.z,N.x));float u=dot(vWP.xz,t)/2.9;float v=vWP.y/uFloor;\n' +
+                'vec2 f=fract(vec2(u,v));vec2 fw=max(fwidth(vec2(u,v)),vec2(1e-4));vec2 a=smoothstep(vec2(.18),vec2(.18)+fw*1.5,f)*(1.-smoothstep(vec2(.78)-fw*1.5,vec2(.78),f));\n' +
+                'float far=clamp(1.-max(fw.x,fw.y)*2.2,0.,1.);wfar=far;wm=mix(.45,a.x*a.y,far)*uWin;wcell=vec3(floor(u),floor(v),floor(dot(vWP.xz,N.xz)*.1));}\n' +
+                'diffuseColor.rgb=mix(diffuseColor.rgb,uGlass,wm*.55);}',
             )
             .replace(
-              "#include <emissivemap_fragment>",
-              "#include <emissivemap_fragment>\n{float lit=step(.55-uNight*.25,whash(wcell))*(.6+.4*whash(wcell+3.1));lit=mix(.32+uNight*.2,lit,wfar);totalEmissiveRadiance+=uWinCol*wm*lit*uNight*1.6;}",
+              '#include <emissivemap_fragment>',
+              '#include <emissivemap_fragment>\n{float lit=step(.55-uNight*.25,whash(wcell))*(.6+.4*whash(wcell+3.1));lit=mix(.32+uNight*.2,lit,wfar);totalEmissiveRadiance+=uWinCol*wm*lit*uNight*1.6;}',
             );
       };
-      m.customProgramCacheKey = () => "atlasWin";
+      m.customProgramCacheKey = () => 'atlasWin';
       return m;
     }
     const matCache = {};
@@ -325,7 +467,7 @@
         color: C(col),
         roughness: o.rough == null ? 0.82 : o.rough,
         metalness: o.metal || 0,
-        emissive: o.emis ? C(o.emis) : C("#000000"),
+        emissive: o.emis ? C(o.emis) : C('#000000'),
         emissiveIntensity: o.ei == null ? 1 : o.ei,
         transparent: !!o.op,
         opacity: o.op || 1,
@@ -334,7 +476,13 @@
       }));
     }
     function glowMat(col, op) {
-      return new THREE.MeshBasicMaterial({ color: C(col), transparent: true, opacity: op == null ? 1 : op, blending: THREE.AdditiveBlending, depthWrite: false });
+      return new THREE.MeshBasicMaterial({
+        color: C(col),
+        transparent: true,
+        opacity: op == null ? 1 : op,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      });
     }
     function freeMats() {
       Object.keys(matCache).forEach(k => {
@@ -343,32 +491,39 @@
       });
     }
     const dotTex = (() => {
-      const cv = document.createElement("canvas");
+      const cv = document.createElement('canvas');
       cv.width = cv.height = 64;
-      const g = cv.getContext("2d");
+      const g = cv.getContext('2d');
       const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gr.addColorStop(0, "rgba(255,255,255,1)");
-      gr.addColorStop(0.3, "rgba(255,255,255,.7)");
-      gr.addColorStop(1, "rgba(255,255,255,0)");
+      gr.addColorStop(0, 'rgba(255,255,255,1)');
+      gr.addColorStop(0.3, 'rgba(255,255,255,.7)');
+      gr.addColorStop(1, 'rgba(255,255,255,0)');
       g.fillStyle = gr;
       g.fillRect(0, 0, 64, 64);
       return new THREE.CanvasTexture(cv);
     })();
     const puffTex = (() => {
-      const cv = document.createElement("canvas");
+      const cv = document.createElement('canvas');
       cv.width = cv.height = 64;
-      const g = cv.getContext("2d");
+      const g = cv.getContext('2d');
       const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gr.addColorStop(0, "rgba(255,255,255,.9)");
-      gr.addColorStop(0.55, "rgba(255,255,255,.4)");
-      gr.addColorStop(1, "rgba(255,255,255,0)");
+      gr.addColorStop(0, 'rgba(255,255,255,.9)');
+      gr.addColorStop(0.55, 'rgba(255,255,255,.4)');
+      gr.addColorStop(1, 'rgba(255,255,255,0)');
       g.fillStyle = gr;
       g.fillRect(0, 0, 64, 64);
       return new THREE.CanvasTexture(cv);
     })();
     function sprite(col, scale, op, additive) {
       const s = new THREE.Sprite(
-        new THREE.SpriteMaterial({ map: dotTex, color: C(col), transparent: true, opacity: op == null ? 1 : op, depthWrite: false, blending: additive === false ? THREE.NormalBlending : THREE.AdditiveBlending }),
+        new THREE.SpriteMaterial({
+          map: dotTex,
+          color: C(col),
+          transparent: true,
+          opacity: op == null ? 1 : op,
+          depthWrite: false,
+          blending: additive === false ? THREE.NormalBlending : THREE.AdditiveBlending,
+        }),
       );
       s.scale.set(scale, scale, 1);
       return s;
@@ -380,14 +535,20 @@
       const pos = new Float32Array(n * 3),
         col = new Float32Array(n * 3),
         sz = new Float32Array(n);
-      g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-      g.setAttribute("color", new THREE.BufferAttribute(col, 3));
-      g.setAttribute("size", new THREE.BufferAttribute(sz, 1));
+      g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+      g.setAttribute('size', new THREE.BufferAttribute(sz, 1));
       const m = new THREE.ShaderMaterial({
-        uniforms: { uMap: { value: o.puff ? puffTex : dotTex }, uScale: { value: 600 }, uOp: { value: o.op == null ? 1 : o.op }, uMax: { value: o.max || 220 } },
+        uniforms: {
+          uMap: { value: o.puff ? puffTex : dotTex },
+          uScale: { value: 600 },
+          uOp: { value: o.op == null ? 1 : o.op },
+          uMax: { value: o.max || 220 },
+        },
         vertexShader:
-          "attribute float size;varying vec3 vC;uniform float uScale,uMax;void main(){vC=color;vec4 mv=modelViewMatrix*vec4(position,1.);gl_PointSize=min(size*uScale/max(1.,-mv.z),uMax);gl_Position=projectionMatrix*mv;}",
-        fragmentShader: "uniform sampler2D uMap;uniform float uOp;varying vec3 vC;void main(){vec4 t=texture2D(uMap,gl_PointCoord);gl_FragColor=vec4(vC,t.a*uOp);}",
+          'attribute float size;varying vec3 vC;uniform float uScale,uMax;void main(){vC=color;vec4 mv=modelViewMatrix*vec4(position,1.);gl_PointSize=min(size*uScale/max(1.,-mv.z),uMax);gl_Position=projectionMatrix*mv;}',
+        fragmentShader:
+          'uniform sampler2D uMap;uniform float uOp;varying vec3 vC;void main(){vec4 t=texture2D(uMap,gl_PointCoord);gl_FragColor=vec4(vC,t.a*uOp);}',
         vertexColors: true,
         transparent: true,
         depthWrite: false,
@@ -396,7 +557,17 @@
       const pts = new THREE.Points(g, m);
       pts.frustumCulled = false;
       const L = [];
-      for (let i = 0; i < n; i++) L.push({ p: new THREE.Vector3(), v: new THREE.Vector3(), life: 0, max: 1, s0: 1, s1: 1, c: new THREE.Color(), dead: true });
+      for (let i = 0; i < n; i++)
+        L.push({
+          p: new THREE.Vector3(),
+          v: new THREE.Vector3(),
+          life: 0,
+          max: 1,
+          s0: 1,
+          s1: 1,
+          c: new THREE.Color(),
+          dead: true,
+        });
       let next = 0;
       return {
         obj: pts,
@@ -458,16 +629,22 @@
       sc.kind = KIND[sc.kind] ? sc.kind : guessKind(world, site);
       const K0 = KIND[sc.kind];
       sc.arch = ARCH[sc.arch] ? sc.arch : guessArch(sc.kind, world, D);
-      sc.size = SIZE_EXT[sc.size] ? sc.size : D.size || (sc.kind === "capital" ? "large" : sc.kind === "village" || sc.kind === "camp" ? "small" : "medium");
-      sc.tod = TOD[sc.tod] ? sc.tod : D.tod || "day";
+      sc.size = SIZE_EXT[sc.size]
+        ? sc.size
+        : D.size ||
+          (sc.kind === 'capital' ? 'large' : sc.kind === 'village' || sc.kind === 'camp' ? 'small' : 'medium');
+      sc.tod = TOD[sc.tod] ? sc.tod : D.tod || 'day';
       sc.space = sc.space != null ? !!sc.space : !!K0.space;
       sc.under = sc.under != null ? !!sc.under : !!K0.under;
       sc.coast = sc.coast || K0.coast || null;
       sc.water = sc.water != null ? !!sc.water : !!K0.water;
       sc.walls = sc.walls != null ? !!sc.walls : !!K0.walls;
       const tr = sc.traffic != null ? sc.traffic : D.traffic;
-      sc.traffic = tr != null ? !!tr : !!K0.traffic || ["modern", "imperial", "crystal", "alien", "industrial", "brutal"].includes(sc.arch);
-      if (sc.under || (sc.space && !sc.weather)) sc.weather = "clear";
+      sc.traffic =
+        tr != null
+          ? !!tr
+          : !!K0.traffic || ['modern', 'imperial', 'crystal', 'alien', 'industrial', 'brutal'].includes(sc.arch);
+      if (sc.under || (sc.space && !sc.weather)) sc.weather = 'clear';
       return sc;
     }
 
@@ -475,35 +652,51 @@
     function makeTerrain(Pl) {
       const { N, ext, sc, gtype } = Pl;
       const K0 = KIND[sc.kind];
-      const amp = gtype === "barren" || gtype === "ice" ? 140 : 90;
-      const peaks = K0.peaks || sc.kind === "mountain";
-      const dunes = K0.dunes || (gtype === "desert" && sc.kind !== "city" && sc.kind !== "capital");
-      const flatR = ext * (sc.kind === "camp" || sc.kind === "tombs" || sc.kind === "battlefield" ? 0.6 : 1.05);
+      const amp = gtype === 'barren' || gtype === 'ice' ? 140 : 90;
+      const peaks = K0.peaks || sc.kind === 'mountain';
+      const dunes = K0.dunes || (gtype === 'desert' && sc.kind !== 'city' && sc.kind !== 'capital');
+      const flatR = ext * (sc.kind === 'camp' || sc.kind === 'tombs' || sc.kind === 'battlefield' ? 0.6 : 1.05);
       const coast = sc.coast;
       const riverOn = !!sc.river;
       const lakeAt = [];
       Pl.lms.forEach(l => {
-        if (l.kind === "lake") lakeAt.push([l.x, l.z, Pl.u * 4 * l.h]);
+        if (l.kind === 'lake') lakeAt.push([l.x, l.z, Pl.u * 4 * l.h]);
       });
       return function H(x, z) {
         const r = Math.hypot(x, z);
         const s = 1 / (ext * 1.4);
         let h = N.fbm(x * s, z * s, 5) * amp;
-        if (peaks) h += Math.pow(Math.max(0, N.ridge(x * s * 0.6 + 7, z * s * 0.6, 5) - 0.35), 1.6) * ext * 1.3 * clamp((r - ext * 0.5) / ext, 0, 1);
-        else h += Math.pow(Math.max(0, N.ridge(x * s * 0.5 + 3, z * s * 0.5 - 2, 4) - 0.55), 2) * ext * 0.9 * clamp((r - ext * 1.6) / ext, 0, 1);
-        if (dunes) h += (Math.sin(x * 0.012 + N.n2(x * 0.002, z * 0.002) * 4) * 0.5 + 0.5) * 22 + N.fbm(x * 0.004, z * 0.004, 3) * 30;
+        if (peaks)
+          h +=
+            Math.pow(Math.max(0, N.ridge(x * s * 0.6 + 7, z * s * 0.6, 5) - 0.35), 1.6) *
+            ext *
+            1.3 *
+            clamp((r - ext * 0.5) / ext, 0, 1);
+        else
+          h +=
+            Math.pow(Math.max(0, N.ridge(x * s * 0.5 + 3, z * s * 0.5 - 2, 4) - 0.55), 2) *
+            ext *
+            0.9 *
+            clamp((r - ext * 1.6) / ext, 0, 1);
+        if (dunes)
+          h +=
+            (Math.sin(x * 0.012 + N.n2(x * 0.002, z * 0.002) * 4) * 0.5 + 0.5) * 22 +
+            N.fbm(x * 0.004, z * 0.004, 3) * 30;
         /* dry land stays above the waterline; only coasts, rivers, lakes and open water go below it */
         if (h < 3) h = 3 - (3 - h) * 0.008;
         /* the built-up area is levelled */
         const flat = clamp((r - flatR) / (ext * 0.6), 0, 1);
         h = lerp(6, h, flat * flat * (3 - 2 * flat));
-        if (sc.kind === "crater" || K0.crater) {
+        if (sc.kind === 'crater' || K0.crater) {
           const cr = ext * 1.5;
           const k = r / cr;
-          h += k < 1 ? -ext * 0.18 * (1 - k * k) + Math.exp(-Math.pow((k - 0.98) / 0.08, 2)) * ext * 0.12 : Math.exp(-Math.pow((k - 1) / 0.1, 2)) * ext * 0.12;
+          h +=
+            k < 1
+              ? -ext * 0.18 * (1 - k * k) + Math.exp(-Math.pow((k - 0.98) / 0.08, 2)) * ext * 0.12
+              : Math.exp(-Math.pow((k - 1) / 0.1, 2)) * ext * 0.12;
         }
         if (coast) {
-          const d = coast === "s" ? z : coast === "n" ? -z : coast === "e" ? x : -x;
+          const d = coast === 's' ? z : coast === 'n' ? -z : coast === 'e' ? x : -x;
           const edge = ext * 0.75 + N.fbm(x * 0.002 + 5, z * 0.002, 3) * ext * 0.35;
           if (d > edge - ext * 0.4) h = lerp(h, -40, clamp((d - edge + ext * 0.4) / (ext * 0.4), 0, 1));
         }
@@ -537,7 +730,7 @@
         peak = C(pal.peak),
         pave = C(pal.pave),
         sand = C(pal.shore),
-        snow = C("#eef3f8");
+        snow = C('#eef3f8');
       const tmp = new THREE.Color();
       return (x, z, h, slope) => {
         const r = Math.hypot(x, z);
@@ -560,9 +753,9 @@
     /* fine grit over the ground: tiled noise, multiplied with the vertex colours */
     function detailTex(Pl) {
       const n = 256,
-        cv = document.createElement("canvas");
+        cv = document.createElement('canvas');
       cv.width = cv.height = n;
-      const cx = cv.getContext("2d"),
+      const cx = cv.getContext('2d'),
         img = cx.createImageData(n, n);
       const N2 = makeNoise(7);
       for (let y = 0; y < n; y++)
@@ -570,7 +763,9 @@
           const a = (x / n) * TAU,
             b = (y / n) * TAU;
           /* periodic: sample the noise on a torus so the tile repeats seamlessly */
-          const v = N2.fbm(Math.cos(a) * 2 + 9, Math.sin(a) * 2 + Math.cos(b) * 2.3, 4) * 0.6 + N2.n2(Math.sin(b) * 9 + Math.cos(a) * 3, Math.cos(b) * 9) * 0.25;
+          const v =
+            N2.fbm(Math.cos(a) * 2 + 9, Math.sin(a) * 2 + Math.cos(b) * 2.3, 4) * 0.6 +
+            N2.n2(Math.sin(b) * 9 + Math.cos(a) * 3, Math.cos(b) * 9) * 0.25;
           const k = clamp(0.86 + v * 0.32, 0.62, 1) * 255;
           const o = (y * n + x) * 4;
           img.data[o] = img.data[o + 1] = img.data[o + 2] = k;
@@ -606,9 +801,12 @@
         col[i * 3 + 1] = c.g;
         col[i * 3 + 2] = c.b;
       }
-      g.setAttribute("color", new THREE.BufferAttribute(col, 3));
+      g.setAttribute('color', new THREE.BufferAttribute(col, 3));
       g.computeVertexNormals();
-      const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, metalness: 0, map: detailTex(Pl) }));
+      const m = new THREE.Mesh(
+        g,
+        new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, metalness: 0, map: detailTex(Pl) }),
+      );
       m.receiveShadow = true;
       Pl.root.add(m);
       Pl.ground = m;
@@ -634,14 +832,15 @@
           fogColor: { value: new THREE.Color() },
           fogDensity: { value: 0 },
         },
-        vertexShader: "varying vec3 vW;void main(){vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}",
+        vertexShader:
+          'varying vec3 vW;void main(){vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}',
         fragmentShader:
-          "uniform vec3 uDeep,uShal,uSky,uSun,uSunC,uCam;uniform float uT;varying vec3 vW;uniform vec3 fogColor;uniform float fogDensity;\n" +
-          "float w(vec2 p){return sin(p.x*.021+uT*.9)*.5+sin(p.y*.017-uT*.7)*.5+sin((p.x+p.y)*.031+uT*1.3)*.3+sin((p.x-p.y)*.047-uT*1.7)*.2;}\n" +
-          "void main(){vec2 p=vW.xz;float e=.6;vec3 N=normalize(vec3(w(p+vec2(e,0.))-w(p-vec2(e,0.)),6.,w(p+vec2(0.,e))-w(p-vec2(0.,e))));\n" +
-          "vec3 V=normalize(uCam-vW);float fr=pow(1.-max(dot(N,V),0.),4.)*.85+.06;vec3 R=reflect(-V,N);float sp=pow(max(dot(R,normalize(uSun)),0.),220.)*2.5;\n" +
-          "vec3 c=mix(mix(uDeep,uShal,.35),uSky,fr)+uSunC*sp;float d=length(uCam-vW);float f=1.-exp(-fogDensity*fogDensity*d*d);c=mix(c,fogColor,f);\n" +
-          "gl_FragColor=vec4(c,.92);\n#include <tonemapping_fragment>\n#include <encodings_fragment>\n}",
+          'uniform vec3 uDeep,uShal,uSky,uSun,uSunC,uCam;uniform float uT;varying vec3 vW;uniform vec3 fogColor;uniform float fogDensity;\n' +
+          'float w(vec2 p){return sin(p.x*.021+uT*.9)*.5+sin(p.y*.017-uT*.7)*.5+sin((p.x+p.y)*.031+uT*1.3)*.3+sin((p.x-p.y)*.047-uT*1.7)*.2;}\n' +
+          'void main(){vec2 p=vW.xz;float e=.6;vec3 N=normalize(vec3(w(p+vec2(e,0.))-w(p-vec2(e,0.)),6.,w(p+vec2(0.,e))-w(p-vec2(0.,e))));\n' +
+          'vec3 V=normalize(uCam-vW);float fr=pow(1.-max(dot(N,V),0.),4.)*.85+.06;vec3 R=reflect(-V,N);float sp=pow(max(dot(R,normalize(uSun)),0.),220.)*2.5;\n' +
+          'vec3 c=mix(mix(uDeep,uShal,.35),uSky,fr)+uSunC*sp;float d=length(uCam-vW);float f=1.-exp(-fogDensity*fogDensity*d*d);c=mix(c,fogColor,f);\n' +
+          'gl_FragColor=vec4(c,.92);\n#include <tonemapping_fragment>\n#include <encodings_fragment>\n}',
         transparent: true,
       });
       const plane = new THREE.Mesh(new THREE.PlaneGeometry(Pl.ext * 60, Pl.ext * 60, 1, 1).rotateX(-Math.PI / 2), m);
@@ -655,14 +854,23 @@
     function buildSky(Pl) {
       const U = Pl.U;
       const m = new THREE.ShaderMaterial({
-        uniforms: { uZen: U.uZen, uHor: U.uHor, uGnd: U.uGnd, uSunDir: U.uSunDir, uSunCol: U.uSunCol, uStars: U.uStars, uSunSize: { value: Pl.sunSize } },
-        vertexShader: "varying vec3 vD;void main(){vD=position;vec4 p=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_Position=p.xyww;}",
+        uniforms: {
+          uZen: U.uZen,
+          uHor: U.uHor,
+          uGnd: U.uGnd,
+          uSunDir: U.uSunDir,
+          uSunCol: U.uSunCol,
+          uStars: U.uStars,
+          uSunSize: { value: Pl.sunSize },
+        },
+        vertexShader:
+          'varying vec3 vD;void main(){vD=position;vec4 p=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_Position=p.xyww;}',
         fragmentShader:
-          "uniform vec3 uZen,uHor,uGnd,uSunDir,uSunCol;uniform float uStars,uSunSize;varying vec3 vD;\n" +
-          "void main(){vec3 d=normalize(vD);float y=d.y;vec3 c=mix(uHor,uZen,pow(clamp(y,0.,1.),.5));if(y<0.)c=mix(uHor,uGnd,clamp(-y*4.,0.,1.));\n" +
-          "float s=max(dot(d,normalize(uSunDir)),0.);c+=uSunCol*(pow(s,6.)*.18+pow(s,90.)*.5);c+=uSunCol*smoothstep(1.-uSunSize*1.2e-4,1.-uSunSize*.9e-4,s)*6.;\n" +
-          "vec3 q=floor(d*520.);float h=fract(sin(dot(q,vec3(12.9898,78.233,45.164)))*43758.5453);c+=vec3(.9,.95,1.)*smoothstep(.9972,1.,h)*uStars*clamp(y*5.+.2,0.,1.)*1.6;\n" +
-          "gl_FragColor=vec4(c,1.);\n#include <tonemapping_fragment>\n#include <encodings_fragment>\n}",
+          'uniform vec3 uZen,uHor,uGnd,uSunDir,uSunCol;uniform float uStars,uSunSize;varying vec3 vD;\n' +
+          'void main(){vec3 d=normalize(vD);float y=d.y;vec3 c=mix(uHor,uZen,pow(clamp(y,0.,1.),.5));if(y<0.)c=mix(uHor,uGnd,clamp(-y*4.,0.,1.));\n' +
+          'float s=max(dot(d,normalize(uSunDir)),0.);c+=uSunCol*(pow(s,6.)*.18+pow(s,90.)*.5);c+=uSunCol*smoothstep(1.-uSunSize*1.2e-4,1.-uSunSize*.9e-4,s)*6.;\n' +
+          'vec3 q=floor(d*520.);float h=fract(sin(dot(q,vec3(12.9898,78.233,45.164)))*43758.5453);c+=vec3(.9,.95,1.)*smoothstep(.9972,1.,h)*uStars*clamp(y*5.+.2,0.,1.)*1.6;\n' +
+          'gl_FragColor=vec4(c,1.);\n#include <tonemapping_fragment>\n#include <encodings_fragment>\n}',
         side: THREE.BackSide,
         depthWrite: false,
       });
@@ -674,11 +882,25 @@
       const S = Pl.sc.sky || {};
       const add = (col, size, dir, rings) => {
         const g = new THREE.Group();
-        const pm = new THREE.MeshStandardMaterial({ color: C(col), roughness: 1, emissive: C(col), emissiveIntensity: 0.06 });
+        const pm = new THREE.MeshStandardMaterial({
+          color: C(col),
+          roughness: 1,
+          emissive: C(col),
+          emissiveIntensity: 0.06,
+        });
         const b = new THREE.Mesh(new THREE.SphereGeometry(1, 48, 32), pm);
         g.add(b);
         if (rings) {
-          const rg = new THREE.Mesh(new THREE.RingGeometry(1.4, 2.3, 96), new THREE.MeshBasicMaterial({ color: C(col).lerp(C("#ffffff"), 0.4), transparent: true, opacity: 0.55, side: THREE.DoubleSide, depthWrite: false }));
+          const rg = new THREE.Mesh(
+            new THREE.RingGeometry(1.4, 2.3, 96),
+            new THREE.MeshBasicMaterial({
+              color: C(col).lerp(C('#ffffff'), 0.4),
+              transparent: true,
+              opacity: 0.55,
+              side: THREE.DoubleSide,
+              depthWrite: false,
+            }),
+          );
           rg.rotation.x = Math.PI / 2 - 0.35;
           g.add(rg);
         }
@@ -688,13 +910,19 @@
         Pl.root.add(g);
         Pl.skyBodies.push(g);
       };
-      const R = rng(hashStr(Pl.site.id + "sky"));
+      const R = rng(hashStr(Pl.site.id + 'sky'));
       if (S.planet && !Pl.sc.space) {
-        const pc = typeof S.planet === "string" ? S.planet : S.planet.c || "#c9b08a";
-        const ps = (typeof S.planet === "object" && S.planet.size) || 1;
+        const pc = typeof S.planet === 'string' ? S.planet : S.planet.c || '#c9b08a';
+        const ps = (typeof S.planet === 'object' && S.planet.size) || 1;
         add(pc, 2600 * ps, new THREE.Vector3(-0.5, 0.42, -0.75).normalize(), !!S.rings);
       }
-      for (let i = 0; i < (S.moons | 0); i++) add(i % 2 ? "#c9c3b8" : "#a9b0bc", 380 + R() * 420, new THREE.Vector3(R() * 2 - 1, 0.25 + R() * 0.5, R() * 2 - 1).normalize(), false);
+      for (let i = 0; i < (S.moons | 0); i++)
+        add(
+          i % 2 ? '#c9c3b8' : '#a9b0bc',
+          380 + R() * 420,
+          new THREE.Vector3(R() * 2 - 1, 0.25 + R() * 0.5, R() * 2 - 1).normalize(),
+          false,
+        );
     }
 
     function lighting(Pl) {
@@ -717,16 +945,16 @@
       const T0 = TOD[key];
       const atmo = C(Pl.atmo);
       const star = C(Pl.star);
-      const zen = C(T0.zen).lerp(atmo.clone().multiplyScalar(key === "night" ? 0.15 : 0.6), Pl.atmoK * 0.35);
-      const hor = C(T0.hor).lerp(atmo, Pl.atmoK * (key === "day" ? 0.3 : 0.08));
-      const sunc = C(T0.sun).lerp(star, key === "night" ? 0 : 0.45);
+      const zen = C(T0.zen).lerp(atmo.clone().multiplyScalar(key === 'night' ? 0.15 : 0.6), Pl.atmoK * 0.35);
+      const hor = C(T0.hor).lerp(atmo, Pl.atmoK * (key === 'day' ? 0.3 : 0.08));
+      const sunc = C(T0.sun).lerp(star, key === 'night' ? 0 : 0.45);
       if (Pl.sc.space) {
-        zen.set("#000000");
-        hor.set("#02030a");
+        zen.set('#000000');
+        hor.set('#02030a');
       }
       if (Pl.sc.under) {
-        zen.set("#0b0806");
-        hor.set("#17110c");
+        zen.set('#0b0806');
+        hor.set('#17110c');
       }
       const el = (T0.el * Math.PI) / 180,
         az = ((T0.az + Pl.azOff) * Math.PI) / 180;
@@ -764,7 +992,7 @@
       Pl.sun.intensity = lerp(a.si, b.si, k);
       Pl.sun.position.copy(dir).multiplyScalar(Pl.ext * 5);
       Pl.hemi.intensity = lerp(a.hemi, b.hemi, k);
-      Pl.hemi.color.copy(zen).lerp(C("#ffffff"), 0.5);
+      Pl.hemi.color.copy(zen).lerp(C('#ffffff'), 0.5);
       Pl.hemi.groundColor.copy(gnd);
       Pl.fog.color.copy(U.uHor.value);
       Pl.exp = lerp(a.exp, b.exp, k);
@@ -793,7 +1021,7 @@
       const bld = (K0.bld || 0) * (sc.density == null ? 1 : sc.density);
       if (bld <= 0) return;
       const hmax = (K0.hmax || 0.3) * (sc.height == null ? 1 : sc.height);
-      const cell = A.cell * (sc.size === "small" ? 0.85 : 1);
+      const cell = A.cell * (sc.size === 'small' ? 0.85 : 1);
       const rot = R() * Math.PI;
       const cr = Math.cos(rot),
         sr = Math.sin(rot);
@@ -827,7 +1055,7 @@
           const fw = cell * (A.wide ? 0.88 : A.slim ? 0.6 : 0.78) * (0.8 + R() * 0.2);
           const fd = cell * (A.wide ? 0.88 : A.slim ? 0.66 : 0.78) * (0.8 + R() * 0.2);
           const tint = tmpC.copy(stone).multiplyScalar(0.78 + R() * 0.32);
-          if (sc.arch === "rustic" || sc.arch === "desert") tint.lerp(roofC, R() * 0.18);
+          if (sc.arch === 'rustic' || sc.arch === 'desert') tint.lerp(roofC, R() * 0.18);
           body.push({ x, y: y - 2, z, w: fw, h: h + 2, d: fd, ry: rot + (A.round ? R() * TAU : 0), c: tint.clone() });
           if (!A.round && h < 160 && R() < 0.55) {
             /* a lower wing beside the main block */
@@ -835,10 +1063,19 @@
               sz = (R() < 0.5 ? -1 : 1) * fd * 0.32;
             const ax = x + sx * cr - sz * sr,
               az = z + sx * sr + sz * cr;
-            body.push({ x: ax, y: y - 2, z: az, w: fw * 0.56, h: h * (0.35 + R() * 0.3) + 2, d: fd * 0.56, ry: rot, c: tint.clone().multiplyScalar(0.92) });
+            body.push({
+              x: ax,
+              y: y - 2,
+              z: az,
+              w: fw * 0.56,
+              h: h * (0.35 + R() * 0.3) + 2,
+              d: fd * 0.56,
+              ry: rot,
+              c: tint.clone().multiplyScalar(0.92),
+            });
           }
           let top = A.tops[(R() * A.tops.length) | 0];
-          if (h > 140 && top === "pitched") top = "spire";
+          if (h > 140 && top === 'pitched') top = 'spire';
           if (!tops[top]) tops[top] = [];
           tops[top].push({ x, y: y + h, z, w: fw, h, d: fd, ry: rot });
         }
@@ -847,9 +1084,16 @@
       if (!body.length) return;
       cityPlan(Pl, lim, cell, rot);
       /* bodies */
-      const bmat = windowMaterial("#ffffff", { win: A.win, glass: A.glass ? "#2a4256" : "#1b1a1e", winCol: Pl.pal.light, floor: sc.arch === "rustic" || sc.arch === "desert" ? 3.6 : 4.2 });
+      const bmat = windowMaterial('#ffffff', {
+        win: A.win,
+        glass: A.glass ? '#2a4256' : '#1b1a1e',
+        winCol: Pl.pal.light,
+        floor: sc.arch === 'rustic' || sc.arch === 'desert' ? 3.6 : 4.2,
+      });
       Pl.mats.push(bmat);
-      const geo = A.round ? new THREE.CylinderGeometry(0.5, 0.5, 1, 14, 1).translate(0, 0.5, 0) : new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0);
+      const geo = A.round
+        ? new THREE.CylinderGeometry(0.5, 0.5, 1, 14, 1).translate(0, 0.5, 0)
+        : new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0);
       const im = new THREE.InstancedMesh(geo, bmat, body.length);
       const M = new THREE.Matrix4(),
         Q = new THREE.Quaternion(),
@@ -865,7 +1109,7 @@
       im.castShadow = im.receiveShadow = true;
       Pl.root.add(im);
       /* roofs */
-      const roofMat = mat(Pl.pal.roof, { rough: 0.7, metal: sc.arch === "imperial" ? 0.5 : 0.05 });
+      const roofMat = mat(Pl.pal.roof, { rough: 0.7, metal: sc.arch === 'imperial' ? 0.5 : 0.05 });
       const TOPG = {
         pitched: () => new THREE.ConeGeometry(0.72, 1, 4, 1).rotateY(Math.PI / 4).translate(0, 0.5, 0),
         spire: () => new THREE.ConeGeometry(0.5, 1, 8, 1).translate(0, 0.5, 0),
@@ -897,7 +1141,12 @@
         if (!TOPS[k]) return;
         const L = tops[k];
         const g = TOPG[k]();
-        const m = k === "tier" || k === "slant" || k === "step" ? bmat : k === "prism" && sc.arch === "crystal" ? mat("#cfe6ff", { emis: "#3a6a9a", ei: 0.6, rough: 0.2, metal: 0.3 }) : roofMat;
+        const m =
+          k === 'tier' || k === 'slant' || k === 'step'
+            ? bmat
+            : k === 'prism' && sc.arch === 'crystal'
+              ? mat('#cfe6ff', { emis: '#3a6a9a', ei: 0.6, rough: 0.2, metal: 0.3 })
+              : roofMat;
         const im2 = new THREE.InstancedMesh(g, m, L.length);
         L.forEach((t, i) => {
           const s = TOPS[k](t);
@@ -933,17 +1182,23 @@
     function cityPlan(Pl, lim, cell, rot) {
       const n = SMALL ? 1024 : 2048,
         span = lim * 2.3;
-      const cv = document.createElement("canvas");
+      const cv = document.createElement('canvas');
       cv.width = cv.height = n;
-      const cx = cv.getContext("2d");
+      const cx = cv.getContext('2d');
       const k = n / span;
       cx.translate(n / 2, n / 2);
       const pave = new THREE.Color(Pl.pal.pave),
         road = pave.clone().multiplyScalar(0.62),
-        sq = pave.clone().lerp(new THREE.Color("#ffffff"), 0.18);
+        sq = pave.clone().lerp(new THREE.Color('#ffffff'), 0.18);
       const rg = cx.createRadialGradient(0, 0, lim * k * 0.6, 0, 0, lim * k * 1.12);
-      rg.addColorStop(0, "rgba(" + ((pave.r * 255) | 0) + "," + ((pave.g * 255) | 0) + "," + ((pave.b * 255) | 0) + ",0.8)");
-      rg.addColorStop(1, "rgba(" + ((pave.r * 255) | 0) + "," + ((pave.g * 255) | 0) + "," + ((pave.b * 255) | 0) + ",0)");
+      rg.addColorStop(
+        0,
+        'rgba(' + ((pave.r * 255) | 0) + ',' + ((pave.g * 255) | 0) + ',' + ((pave.b * 255) | 0) + ',0.8)',
+      );
+      rg.addColorStop(
+        1,
+        'rgba(' + ((pave.r * 255) | 0) + ',' + ((pave.g * 255) | 0) + ',' + ((pave.b * 255) | 0) + ',0)',
+      );
       cx.fillStyle = rg;
       cx.beginPath();
       cx.arc(0, 0, lim * k * 1.12, 0, TAU);
@@ -979,11 +1234,11 @@
         cx.fill();
       });
       /* a soft round mask so the plan fades into the land */
-      cx.globalCompositeOperation = "destination-in";
+      cx.globalCompositeOperation = 'destination-in';
       cx.globalAlpha = 1;
       const mg = cx.createRadialGradient(0, 0, lim * k * 0.85, 0, 0, lim * k * 1.14);
-      mg.addColorStop(0, "rgba(0,0,0,1)");
-      mg.addColorStop(1, "rgba(0,0,0,0)");
+      mg.addColorStop(0, 'rgba(0,0,0,1)');
+      mg.addColorStop(1, 'rgba(0,0,0,0)');
       cx.fillStyle = mg;
       cx.fillRect(-n / 2, -n / 2, n, n);
       const t = new THREE.CanvasTexture(cv);
@@ -991,7 +1246,14 @@
       t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
       const m = new THREE.Mesh(
         new THREE.PlaneGeometry(span, span).rotateX(-Math.PI / 2),
-        new THREE.MeshStandardMaterial({ map: t, transparent: true, roughness: 0.9, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -4 }),
+        new THREE.MeshStandardMaterial({
+          map: t,
+          transparent: true,
+          roughness: 0.9,
+          depthWrite: false,
+          polygonOffset: true,
+          polygonOffsetFactor: -4,
+        }),
       );
       m.position.y = 6.2;
       m.receiveShadow = true;
@@ -1039,22 +1301,38 @@
       const K0 = KIND[sc.kind];
       const gt = Pl.gtype;
       let trees = sc.trees != null ? sc.trees : K0.trees || 0;
-      if (trees === 0 && (gt === "forest" || gt === "terran" || gt === "archipelago") && !sc.under && !sc.space) trees = 0.25;
-      if (gt === "desert" || gt === "barren" || gt === "ice" || gt === "lava" || gt === "toxic" || Pl.snow) trees *= gt === "toxic" ? 0.6 : 0.08;
+      if (trees === 0 && (gt === 'forest' || gt === 'terran' || gt === 'archipelago') && !sc.under && !sc.space)
+        trees = 0.25;
+      if (gt === 'desert' || gt === 'barren' || gt === 'ice' || gt === 'lava' || gt === 'toxic' || Pl.snow)
+        trees *= gt === 'toxic' ? 0.6 : 0.08;
       const nT = Math.round(trees * (SMALL ? 1100 : 2600));
       if (nT > 0) {
         const fol = C(Pl.pal.foliage);
-        const L = scatter(Pl, nT, ext * (K0.bld ? 0.75 : 0.05), ext * (trees > 0.8 ? 2.2 : 3.2), (x, z, y) => y < 900).map(o => {
+        const L = scatter(
+          Pl,
+          nT,
+          ext * (K0.bld ? 0.75 : 0.05),
+          ext * (trees > 0.8 ? 2.2 : 3.2),
+          (x, z, y) => y < 900,
+        ).map(o => {
           const s = 12 + R() * 16;
-          return Object.assign(o, { sx: s, sy: s * (1.6 + R() * 1.4), sz: s, ry: R() * TAU, c: fol.clone().multiplyScalar(0.7 + R() * 0.45) });
+          return Object.assign(o, {
+            sx: s,
+            sy: s * (1.6 + R() * 1.4),
+            sz: s,
+            ry: R() * TAU,
+            c: fol.clone().multiplyScalar(0.7 + R() * 0.45),
+          });
         });
-        const conifer = Pl.snow || gt === "ice" || sc.arch === "gothic" || R() < 0.4;
-        const g = conifer ? new THREE.ConeGeometry(0.5, 1, 7).translate(0, 0.6, 0) : new THREE.IcosahedronGeometry(0.55, 0).scale(1, 0.75, 1).translate(0, 0.7, 0);
-        inst(Pl, g, mat("#ffffff", { rough: 0.9, flat: !conifer }), L);
+        const conifer = Pl.snow || gt === 'ice' || sc.arch === 'gothic' || R() < 0.4;
+        const g = conifer
+          ? new THREE.ConeGeometry(0.5, 1, 7).translate(0, 0.6, 0)
+          : new THREE.IcosahedronGeometry(0.55, 0).scale(1, 0.75, 1).translate(0, 0.7, 0);
+        inst(Pl, g, mat('#ffffff', { rough: 0.9, flat: !conifer }), L);
         inst(
           Pl,
           new THREE.CylinderGeometry(0.06, 0.09, 0.4, 5).translate(0, 0.2, 0),
-          mat("#4a3524"),
+          mat('#4a3524'),
           L.map(o => Object.assign({}, o, { c: null })),
           false,
         );
@@ -1065,56 +1343,114 @@
         const rc = C(Pl.pal.high);
         const L = scatter(Pl, nR, ext * 0.4, ext * 3).map(o => {
           const s = 3 + Math.pow(R(), 3) * 40;
-          return Object.assign(o, { y: o.y - s * 0.3, sx: s * (0.7 + R() * 0.6), sy: s * (0.5 + R() * 0.5), sz: s, rx: R(), ry: R() * TAU, c: rc.clone().multiplyScalar(0.6 + R() * 0.5) });
+          return Object.assign(o, {
+            y: o.y - s * 0.3,
+            sx: s * (0.7 + R() * 0.6),
+            sy: s * (0.5 + R() * 0.5),
+            sz: s,
+            rx: R(),
+            ry: R() * TAU,
+            c: rc.clone().multiplyScalar(0.6 + R() * 0.5),
+          });
         });
-        inst(Pl, new THREE.DodecahedronGeometry(1, 0), mat("#ffffff", { flat: true }), L);
+        inst(Pl, new THREE.DodecahedronGeometry(1, 0), mat('#ffffff', { flat: true }), L);
       }
-      if (K0.icespires || (Pl.snow && sc.kind === "wilds")) {
+      if (K0.icespires || (Pl.snow && sc.kind === 'wilds')) {
         const L = scatter(Pl, SMALL ? 60 : 160, ext * 0.6, ext * 3).map(o => {
           const s = 8 + R() * 22;
-          return Object.assign(o, { sx: s, sy: s * (2 + R() * 4), sz: s, rx: (R() - 0.5) * 0.3, rz: (R() - 0.5) * 0.3, ry: R() * TAU });
+          return Object.assign(o, {
+            sx: s,
+            sy: s * (2 + R() * 4),
+            sz: s,
+            rx: (R() - 0.5) * 0.3,
+            rz: (R() - 0.5) * 0.3,
+            ry: R() * TAU,
+          });
         });
-        inst(Pl, new THREE.ConeGeometry(0.5, 1, 5).translate(0, 0.5, 0), mat("#cfe6f5", { rough: 0.15, metal: 0.1, flat: true }), L);
+        inst(
+          Pl,
+          new THREE.ConeGeometry(0.5, 1, 5).translate(0, 0.5, 0),
+          mat('#cfe6f5', { rough: 0.15, metal: 0.1, flat: true }),
+          L,
+        );
       }
       if (K0.ruins) {
         const sCol = C(Pl.pal.stone).multiplyScalar(0.85);
         const L = scatter(Pl, Math.round(K0.ruins * (SMALL ? 160 : 380)), ext * 0.05, ext * 1.1).map(o => {
           const w = 6 + R() * 22;
-          return Object.assign(o, { y: o.y - 2, sx: w, sy: 4 + Math.pow(R(), 2) * 40, sz: 3 + R() * 6, ry: R() * TAU, rz: (R() - 0.5) * 0.2, c: sCol.clone().multiplyScalar(0.8 + R() * 0.3) });
+          return Object.assign(o, {
+            y: o.y - 2,
+            sx: w,
+            sy: 4 + Math.pow(R(), 2) * 40,
+            sz: 3 + R() * 6,
+            ry: R() * TAU,
+            rz: (R() - 0.5) * 0.2,
+            c: sCol.clone().multiplyScalar(0.8 + R() * 0.3),
+          });
         });
-        inst(Pl, new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0), mat("#ffffff", { rough: 1 }), L);
+        inst(Pl, new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0), mat('#ffffff', { rough: 1 }), L);
         const cols = scatter(Pl, SMALL ? 50 : 140, ext * 0.05, ext).map(o => {
           const s = 2.2 + R() * 1.4;
           return Object.assign(o, { sx: s, sy: 8 + R() * 26, sz: s, c: sCol });
         });
-        inst(Pl, new THREE.CylinderGeometry(0.5, 0.55, 1, 10).translate(0, 0.5, 0), mat("#ffffff"), cols);
+        inst(Pl, new THREE.CylinderGeometry(0.5, 0.55, 1, 10).translate(0, 0.5, 0), mat('#ffffff'), cols);
       }
-      if (K0.craters || sc.kind === "battlefield") {
+      if (K0.craters || sc.kind === 'battlefield') {
         const L = scatter(Pl, SMALL ? 40 : 90, 0, ext * 1.4).map(o => {
           const s = 12 + Math.pow(R(), 2) * 60;
           return Object.assign(o, { y: o.y + 0.6, sx: s, sy: 1, sz: s });
         });
-        inst(Pl, new THREE.CircleGeometry(1, 24).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: C("#1b1714"), roughness: 1, transparent: true, opacity: 0.75, depthWrite: false }), L, false);
+        inst(
+          Pl,
+          new THREE.CircleGeometry(1, 24).rotateX(-Math.PI / 2),
+          new THREE.MeshStandardMaterial({
+            color: C('#1b1714'),
+            roughness: 1,
+            transparent: true,
+            opacity: 0.75,
+            depthWrite: false,
+          }),
+          L,
+          false,
+        );
         const rim = L.map(o => Object.assign({}, o, { y: o.y - 0.5, sy: o.sx * 0.12 }));
-        inst(Pl, new THREE.TorusGeometry(1, 0.18, 6, 24).rotateX(Math.PI / 2), mat(Pl.pal.ground2, { rough: 1 }), rim, false);
+        inst(
+          Pl,
+          new THREE.TorusGeometry(1, 0.18, 6, 24).rotateX(Math.PI / 2),
+          mat(Pl.pal.ground2, { rough: 1 }),
+          rim,
+          false,
+        );
       }
       if (K0.wrecks) {
         const L = scatter(Pl, SMALL ? 14 : 30, ext * 0.1, ext * 1.2).map(o => {
           const s = 8 + R() * 30;
-          return Object.assign(o, { sx: s * 2.4, sy: s * 0.6, sz: s, ry: R() * TAU, rz: (R() - 0.5) * 0.8, rx: (R() - 0.5) * 0.5 });
+          return Object.assign(o, {
+            sx: s * 2.4,
+            sy: s * 0.6,
+            sz: s,
+            ry: R() * TAU,
+            rz: (R() - 0.5) * 0.8,
+            rx: (R() - 0.5) * 0.5,
+          });
         });
-        inst(Pl, new THREE.BoxGeometry(1, 1, 1), mat("#3b3a3c", { metal: 0.6, rough: 0.5 }), L);
+        inst(Pl, new THREE.BoxGeometry(1, 1, 1), mat('#3b3a3c', { metal: 0.6, rough: 0.5 }), L);
       }
       if (K0.tents) {
-        const tc = ["#c8b28a", "#8a6a4a", "#b84a3a", "#7a8a5a"];
+        const tc = ['#c8b28a', '#8a6a4a', '#b84a3a', '#7a8a5a'];
         const L = scatter(Pl, SMALL ? 50 : 120, ext * 0.08, ext * 0.8).map(o => {
           const s = 6 + R() * 8;
           return Object.assign(o, { sx: s, sy: s * 0.8, sz: s * 1.4, ry: R() * TAU, c: C(tc[(R() * 4) | 0]) });
         });
-        inst(Pl, new THREE.ConeGeometry(0.7, 1, 4).rotateY(Math.PI / 4).translate(0, 0.5, 0), mat("#ffffff", { rough: 1 }), L);
+        inst(
+          Pl,
+          new THREE.ConeGeometry(0.7, 1, 4).rotateY(Math.PI / 4).translate(0, 0.5, 0),
+          mat('#ffffff', { rough: 1 }),
+          L,
+        );
       }
       if (K0.fields) {
-        const fc = ["#9aa64a", "#c9b45a", "#6e8a3a", "#a87a3a", "#88a05a"];
+        const fc = ['#9aa64a', '#c9b45a', '#6e8a3a', '#a87a3a', '#88a05a'];
         const L = [];
         for (let i = 0; i < (SMALL ? 50 : 120); i++) {
           const a = R() * TAU,
@@ -1123,29 +1459,71 @@
             z = Math.sin(a) * r;
           const y = Pl.H(x, z);
           if (y < 2) continue;
-          L.push({ x, y: y + 0.5, z, sx: 60 + R() * 120, sy: 1, sz: 40 + R() * 90, ry: Pl.R() * 0.3, c: C(fc[(R() * fc.length) | 0]) });
+          L.push({
+            x,
+            y: y + 0.5,
+            z,
+            sx: 60 + R() * 120,
+            sy: 1,
+            sz: 40 + R() * 90,
+            ry: Pl.R() * 0.3,
+            c: C(fc[(R() * fc.length) | 0]),
+          });
         }
-        inst(Pl, new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 }), L, false);
+        inst(
+          Pl,
+          new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2),
+          new THREE.MeshStandardMaterial({ roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 }),
+          L,
+          false,
+        );
       }
       if (KIND[sc.kind].domes) {
         const L = scatter(Pl, SMALL ? 6 : 12, ext * 0.1, ext * 0.9).map(o => {
           const s = 40 + R() * 90;
           return Object.assign(o, { sx: s, sy: s * 0.8, sz: s });
         });
-        inst(Pl, new THREE.SphereGeometry(1, 32, 16, 0, TAU, 0, Math.PI / 2), mat("#bfe2ff", { op: 0.22, rough: 0.05, metal: 0.4, ds: true }), L, false);
+        inst(
+          Pl,
+          new THREE.SphereGeometry(1, 32, 16, 0, TAU, 0, Math.PI / 2),
+          mat('#bfe2ff', { op: 0.22, rough: 0.05, metal: 0.4, ds: true }),
+          L,
+          false,
+        );
       }
       if (KIND[sc.kind].smoke) Pl.smokeCols = scatter(Pl, 6, ext * 0.1, ext * 1.1);
       if (KIND[sc.kind].pads) {
-        const L = (Pl.padSpots || []).map(o => Object.assign(o, { y: o.y + 0.4, sx: Pl.u * 1.6, sy: 1, sz: Pl.u * 1.6 }));
-        inst(Pl, new THREE.CylinderGeometry(1, 1, 1.2, 28), mat("#3a3d42", { rough: 0.8 }), L, false);
-        inst(Pl, new THREE.RingGeometry(0.72, 0.8, 32).rotateX(-Math.PI / 2).translate(0, 0.65, 0), mat("#e8c24a", { emis: "#e8c24a", ei: 0.5 }), L, false);
-        const ships = L.filter(() => R() < 0.6).map(o => Object.assign({}, o, { y: o.y + Pl.u * 0.35, sx: Pl.u * 1.6, sy: Pl.u * 0.35, sz: Pl.u * 0.5, ry: R() * TAU }));
-        inst(Pl, new THREE.CylinderGeometry(0.5, 0.7, 1, 10).rotateZ(Math.PI / 2), mat("#9a9fa6", { metal: 0.6, rough: 0.4 }), ships);
+        const L = (Pl.padSpots || []).map(o =>
+          Object.assign(o, { y: o.y + 0.4, sx: Pl.u * 1.6, sy: 1, sz: Pl.u * 1.6 }),
+        );
+        inst(Pl, new THREE.CylinderGeometry(1, 1, 1.2, 28), mat('#3a3d42', { rough: 0.8 }), L, false);
+        inst(
+          Pl,
+          new THREE.RingGeometry(0.72, 0.8, 32).rotateX(-Math.PI / 2).translate(0, 0.65, 0),
+          mat('#e8c24a', { emis: '#e8c24a', ei: 0.5 }),
+          L,
+          false,
+        );
+        const ships = L.filter(() => R() < 0.6).map(o =>
+          Object.assign({}, o, {
+            y: o.y + Pl.u * 0.35,
+            sx: Pl.u * 1.6,
+            sy: Pl.u * 0.35,
+            sz: Pl.u * 0.5,
+            ry: R() * TAU,
+          }),
+        );
+        inst(
+          Pl,
+          new THREE.CylinderGeometry(0.5, 0.7, 1, 10).rotateZ(Math.PI / 2),
+          mat('#9a9fa6', { metal: 0.6, rough: 0.4 }),
+          ships,
+        );
       }
       if (Pl.water && (sc.coast || KIND[sc.kind].coast)) {
         /* piers out from the waterfront, and boats moored along them */
         const side = sc.coast || KIND[sc.kind].coast;
-        const nrm = side === "s" ? [0, 1] : side === "n" ? [0, -1] : side === "e" ? [1, 0] : [-1, 0];
+        const nrm = side === 's' ? [0, 1] : side === 'n' ? [0, -1] : side === 'e' ? [1, 0] : [-1, 0];
         const piers = [],
           boats = [];
         for (let i = -9; i <= 9; i++) {
@@ -1159,12 +1537,32 @@
           x += nrm[0] * d;
           z += nrm[1] * d;
           const len = Pl.u * (1.6 + R() * 1.4);
-          piers.push({ x: x + nrm[0] * len * 0.45, y: 1.2, z: z + nrm[1] * len * 0.45, sx: nrm[0] ? len : Pl.u * 0.3, sy: 1.4, sz: nrm[1] ? len : Pl.u * 0.3 });
+          piers.push({
+            x: x + nrm[0] * len * 0.45,
+            y: 1.2,
+            z: z + nrm[1] * len * 0.45,
+            sx: nrm[0] ? len : Pl.u * 0.3,
+            sy: 1.4,
+            sz: nrm[1] ? len : Pl.u * 0.3,
+          });
           if (R() < 0.75)
-            boats.push({ x: x + nrm[0] * len * 0.6 + (nrm[1] ? Pl.u * 0.5 : 0), y: 0.6, z: z + nrm[1] * len * 0.6 + (nrm[0] ? Pl.u * 0.5 : 0), sx: Pl.u * (0.9 + R() * 0.8), sy: Pl.u * 0.3, sz: Pl.u * 0.32, ry: nrm[0] ? 0 : Math.PI / 2 });
+            boats.push({
+              x: x + nrm[0] * len * 0.6 + (nrm[1] ? Pl.u * 0.5 : 0),
+              y: 0.6,
+              z: z + nrm[1] * len * 0.6 + (nrm[0] ? Pl.u * 0.5 : 0),
+              sx: Pl.u * (0.9 + R() * 0.8),
+              sy: Pl.u * 0.3,
+              sz: Pl.u * 0.32,
+              ry: nrm[0] ? 0 : Math.PI / 2,
+            });
         }
-        inst(Pl, new THREE.BoxGeometry(1, 1, 1), mat("#5a4a3a", { rough: 1 }), piers, false);
-        inst(Pl, new THREE.CylinderGeometry(0.42, 0.5, 1, 8, 1).rotateZ(Math.PI / 2).scale(1, 0.6, 1), mat(sc.arch === "modern" || sc.arch === "imperial" ? "#c9ccd2" : "#6a4e34", { rough: 0.7 }), boats);
+        inst(Pl, new THREE.BoxGeometry(1, 1, 1), mat('#5a4a3a', { rough: 1 }), piers, false);
+        inst(
+          Pl,
+          new THREE.CylinderGeometry(0.42, 0.5, 1, 8, 1).rotateZ(Math.PI / 2).scale(1, 0.6, 1),
+          mat(sc.arch === 'modern' || sc.arch === 'imperial' ? '#c9ccd2' : '#6a4e34', { rough: 0.7 }),
+          boats,
+        );
       }
     }
 
@@ -1201,7 +1599,15 @@
         p.setXYZ(i, _v.x, _v.y, _v.z);
       }
       g.computeVertexNormals();
-      const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: C(Pl.pal.high).multiplyScalar(0.55), roughness: 1, side: THREE.BackSide, flatShading: true }));
+      const m = new THREE.Mesh(
+        g,
+        new THREE.MeshStandardMaterial({
+          color: C(Pl.pal.high).multiplyScalar(0.55),
+          roughness: 1,
+          side: THREE.BackSide,
+          flatShading: true,
+        }),
+      );
       Pl.root.add(m);
       /* warm lamps and a few real lights */
       const lc = C(Pl.pal.light);
@@ -1221,23 +1627,32 @@
     function buildSpace(Pl) {
       const { ext, R } = Pl;
       const m = mat(Pl.pal.stone, { metal: 0.55, rough: 0.45 });
-      const dark = mat("#2a2c31", { metal: 0.6, rough: 0.5 });
-      const lit = windowMaterial(Pl.pal.stone, { win: 0.9, glass: "#1c2430", winCol: Pl.pal.light, floor: 5 });
+      const dark = mat('#2a2c31', { metal: 0.6, rough: 0.5 });
+      const lit = windowMaterial(Pl.pal.stone, { win: 0.9, glass: '#1c2430', winCol: Pl.pal.light, floor: 5 });
       Pl.mats.push(lit);
       const g = new THREE.Group();
       if (KIND[Pl.sc.kind].habitat || Pl.sc.habitat) {
-        const drum = new THREE.Mesh(new THREE.CylinderGeometry(ext * 0.45, ext * 0.45, ext * 1.8, 64, 1, true).rotateZ(Math.PI / 2), lit);
+        const drum = new THREE.Mesh(
+          new THREE.CylinderGeometry(ext * 0.45, ext * 0.45, ext * 1.8, 64, 1, true).rotateZ(Math.PI / 2),
+          lit,
+        );
         g.add(drum);
         [-1, 1].forEach(s => {
           const cap = new THREE.Mesh(new THREE.CylinderGeometry(ext * 0.45, ext * 0.45, 8, 64).rotateZ(Math.PI / 2), m);
           cap.position.x = (s * ext * 1.8) / 2;
           g.add(cap);
-          const hub = new THREE.Mesh(new THREE.CylinderGeometry(ext * 0.08, ext * 0.1, ext * 0.3, 24).rotateZ(Math.PI / 2), dark);
+          const hub = new THREE.Mesh(
+            new THREE.CylinderGeometry(ext * 0.08, ext * 0.1, ext * 0.3, 24).rotateZ(Math.PI / 2),
+            dark,
+          );
           hub.position.x = s * (ext * 0.9 + ext * 0.15);
           g.add(hub);
         });
         for (let i = 0; i < 6; i++) {
-          const fin = new THREE.Mesh(new THREE.BoxGeometry(ext * 1.7, 2, ext * 0.18), mat("#203a5c", { metal: 0.3, rough: 0.3, emis: "#0c1a30" }));
+          const fin = new THREE.Mesh(
+            new THREE.BoxGeometry(ext * 1.7, 2, ext * 0.18),
+            mat('#203a5c', { metal: 0.3, rough: 0.3, emis: '#0c1a30' }),
+          );
           fin.position.set(0, Math.cos((i / 6) * TAU) * ext * 0.62, Math.sin((i / 6) * TAU) * ext * 0.62);
           fin.rotation.x = (i / 6) * TAU;
           g.add(fin);
@@ -1255,12 +1670,18 @@
           g.add(sp);
         }
         for (let i = 0; i < 4; i++) {
-          const pn = new THREE.Mesh(new THREE.BoxGeometry(ext * 0.5, 2, ext * 0.16), mat("#1d3556", { metal: 0.4, rough: 0.3, emis: "#0a1628" }));
+          const pn = new THREE.Mesh(
+            new THREE.BoxGeometry(ext * 0.5, 2, ext * 0.16),
+            mat('#1d3556', { metal: 0.4, rough: 0.3, emis: '#0a1628' }),
+          );
           pn.position.set(0, (i < 2 ? 1 : -1) * ext * 0.36, (i % 2 ? 1 : -1) * ext * 0.2);
           g.add(pn);
         }
         for (let i = 0; i < 10; i++) {
-          const mod = new THREE.Mesh(new THREE.BoxGeometry(18 + R() * 30, 14 + R() * 20, 18 + R() * 30), R() < 0.5 ? lit : m);
+          const mod = new THREE.Mesh(
+            new THREE.BoxGeometry(18 + R() * 30, 14 + R() * 20, 18 + R() * 30),
+            R() < 0.5 ? lit : m,
+          );
           mod.position.set((R() - 0.5) * ext * 0.3, (R() - 0.5) * ext * 0.8, (R() - 0.5) * ext * 0.3);
           g.add(mod);
         }
@@ -1272,24 +1693,38 @@
       Pl.root.add(g);
       Pl.station = g;
       /* the world below */
-      const pc = Pl.sc.sky && Pl.sc.sky.planet ? (typeof Pl.sc.sky.planet === "string" ? Pl.sc.sky.planet : Pl.sc.sky.planet.c) : Pl.pal.ground;
+      const pc =
+        Pl.sc.sky && Pl.sc.sky.planet
+          ? typeof Pl.sc.sky.planet === 'string'
+            ? Pl.sc.sky.planet
+            : Pl.sc.sky.planet.c
+          : Pl.pal.ground;
       const pr = ext * 14;
-      const cv = document.createElement("canvas");
+      const cv = document.createElement('canvas');
       const TW = SMALL ? 512 : 1024,
         TH = TW / 2,
         TS = TW / 1024;
       cv.width = TW;
       cv.height = TH;
-      const cx = cv.getContext("2d");
+      const cx = cv.getContext('2d');
       const base = C(pc),
         alt = C(Pl.pal.water),
-        cl = C("#ffffff");
+        cl = C('#ffffff');
       const img = cx.createImageData(TW, TH);
       for (let y = 0; y < TH; y++)
         for (let x = 0; x < TW; x++) {
           const ang = (x / TW) * TAU;
-          const n = Pl.N.fbm(Math.cos(ang) * 1.2 * (TW / (140 * TS * TAU)) * 0.9 + 50, y / (140 * TS) + Math.sin(ang) * 1.1, 5);
-          const c = Pl.gtype === "gas" ? base.clone().lerp(alt, 0.5 + 0.5 * Math.sin(y / 18 + n * 3)) : n > -0.02 ? base.clone().multiplyScalar(0.8 + n) : alt.clone();
+          const n = Pl.N.fbm(
+            Math.cos(ang) * 1.2 * (TW / (140 * TS * TAU)) * 0.9 + 50,
+            y / (140 * TS) + Math.sin(ang) * 1.1,
+            5,
+          );
+          const c =
+            Pl.gtype === 'gas'
+              ? base.clone().lerp(alt, 0.5 + 0.5 * Math.sin(y / 18 + n * 3))
+              : n > -0.02
+                ? base.clone().multiplyScalar(0.8 + n)
+                : alt.clone();
           const k = Math.max(0, Pl.N.fbm(Math.cos(ang) * 3 + 9, y / (60 * TS) + Math.sin(ang) * 3, 4) - 0.1) * 1.4;
           c.lerp(cl, Math.min(0.8, k));
           const o = (y * TW + x) * 4;
@@ -1301,7 +1736,10 @@
       cx.putImageData(img, 0, 0);
       const tex = new THREE.CanvasTexture(cv);
       tex.encoding = THREE.sRGBEncoding;
-      const planet = new THREE.Mesh(new THREE.SphereGeometry(pr, 128, 64), new THREE.MeshStandardMaterial({ map: tex, roughness: 1 }));
+      const planet = new THREE.Mesh(
+        new THREE.SphereGeometry(pr, 128, 64),
+        new THREE.MeshStandardMaterial({ map: tex, roughness: 1 }),
+      );
       planet.rotation.set(Math.PI / 2 - 0.25, 0, 0.3);
       planet.position.set(0, -pr * 1.18, -pr * 0.55);
       Pl.root.add(planet);
@@ -1317,16 +1755,30 @@
       const n = SMALL ? 14 : 34,
         R = Pl.R;
       const g = new THREE.BoxGeometry(1, 0.35, 0.45);
-      const m = mat("#c9ccd2", { metal: 0.6, rough: 0.35 });
+      const m = mat('#c9ccd2', { metal: 0.6, rough: 0.35 });
       const im = new THREE.InstancedMesh(g, m, n);
       im.frustumCulled = false;
       const lanes = [];
       for (let i = 0; i < n; i++)
-        lanes.push({ r: Pl.ext * (0.2 + R() * 1.2), h: (Pl.sc.space ? (R() - 0.5) * Pl.ext * 1.2 : 70 + R() * 260), w: (0.04 + R() * 0.08) * (R() < 0.5 ? -1 : 1), a: R() * TAU, s: 6 + R() * 10, tilt: (R() - 0.5) * 0.5 });
+        lanes.push({
+          r: Pl.ext * (0.2 + R() * 1.2),
+          h: Pl.sc.space ? (R() - 0.5) * Pl.ext * 1.2 : 70 + R() * 260,
+          w: (0.04 + R() * 0.08) * (R() < 0.5 ? -1 : 1),
+          a: R() * TAU,
+          s: 6 + R() * 10,
+          tilt: (R() - 0.5) * 0.5,
+        });
       Pl.root.add(im);
       const lg = new THREE.BufferGeometry();
-      lg.setAttribute("position", new THREE.BufferAttribute(new Float32Array(n * 3), 3));
-      const lm = new THREE.PointsMaterial({ color: C("#ffd9a0"), size: 7, map: dotTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });
+      lg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(n * 3), 3));
+      const lm = new THREE.PointsMaterial({
+        color: C('#ffd9a0'),
+        size: 7,
+        map: dotTex,
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
       const lights = new THREE.Points(lg, lm);
       lights.frustumCulled = false;
       Pl.root.add(lights);
@@ -1355,13 +1807,13 @@
 
     /* ---------- weather ---------- */
     const WX = {
-      dust: { c: "#cdb089", n: 1400, s: 7, v: [26, -1, 8], fog: 2.2, normal: true, puff: true, op: 0.5, max: 26 },
-      snow: { c: "#ffffff", n: 2200, s: 4.5, v: [3, -12, 2], fog: 1.6, normal: true, op: 0.9, max: 18 },
-      rain: { c: "#b8c8dc", n: 2600, s: 2.6, v: [4, -140, 2], fog: 1.5, op: 0.6, max: 8 },
-      ash: { c: "#6f6962", n: 1600, s: 4, v: [2, -6, 1], fog: 1.8, normal: true, op: 0.75, max: 14 },
-      mist: { c: "#e8eef2", n: 500, s: 40, v: [2, 0, 1], fog: 2.6, normal: true, puff: true, op: 0.2 },
-      spores: { c: "#b8f08a", n: 900, s: 4, v: [1, 4, 1], fog: 1.3, max: 14 },
-      storm: { c: "#c2aa84", n: 2800, s: 6, v: [90, -18, 30], fog: 3, normal: true, puff: true, op: 0.55, max: 30 },
+      dust: { c: '#cdb089', n: 1400, s: 7, v: [26, -1, 8], fog: 2.2, normal: true, puff: true, op: 0.5, max: 26 },
+      snow: { c: '#ffffff', n: 2200, s: 4.5, v: [3, -12, 2], fog: 1.6, normal: true, op: 0.9, max: 18 },
+      rain: { c: '#b8c8dc', n: 2600, s: 2.6, v: [4, -140, 2], fog: 1.5, op: 0.6, max: 8 },
+      ash: { c: '#6f6962', n: 1600, s: 4, v: [2, -6, 1], fog: 1.8, normal: true, op: 0.75, max: 14 },
+      mist: { c: '#e8eef2', n: 500, s: 40, v: [2, 0, 1], fog: 2.6, normal: true, puff: true, op: 0.2 },
+      spores: { c: '#b8f08a', n: 900, s: 4, v: [1, 4, 1], fog: 1.3, max: 14 },
+      storm: { c: '#c2aa84', n: 2800, s: 6, v: [90, -18, 30], fog: 3, normal: true, puff: true, op: 0.55, max: 30 },
     };
     function buildWeather(Pl) {
       const w = WX[Pl.sc.weather];
@@ -1385,7 +1837,7 @@
         for (let i = 0; i < n; i++) {
           const o = off[i];
           o.addScaledVector(vel, dt);
-          if (Pl.sc.weather === "spores" || Pl.sc.weather === "mist") o.x += Math.sin(t * 0.7 + i) * dt * 4;
+          if (Pl.sc.weather === 'spores' || Pl.sc.weather === 'mist') o.x += Math.sin(t * 0.7 + i) * dt * 4;
           const x = ((((o.x - cp.x) % box) + box) % box) - box / 2 + cp.x;
           const y = ((((o.y - cp.y) % (box * 0.6)) + box * 0.6) % (box * 0.6)) - box * 0.3 + cp.y;
           const z = ((((o.z - cp.z) % box) + box) % box) - box / 2 + cp.z;
@@ -1398,7 +1850,7 @@
       for (let i = 0; i < n; i++) ca.setXYZ(i, c.r, c.g, c.b);
       ca.needsUpdate = true;
       Pl.weatherPts = pp;
-      if (Pl.sc.weather === "storm") Pl.lightning = true;
+      if (Pl.sc.weather === 'storm') Pl.lightning = true;
     }
 
     /* ---------- landmarks ---------- */
@@ -1406,7 +1858,20 @@
       const raw = ARR(sc.landmarks).filter(l => l && l.id != null && (!opts.landmarkOk || opts.landmarkOk(l)));
       const list = raw.length
         ? raw
-        : [{ id: "__site", name: site.name, desc: site.desc, kind: guessLandmarkKind(site, sc.kind), at: [0, 0], h: 1.2, books: site.books, auto: true }];
+        : site.surface
+          ? []
+          : [
+              {
+                id: '__site',
+                name: site.name,
+                desc: site.desc,
+                kind: guessLandmarkKind(site, sc.kind),
+                at: [0, 0],
+                h: 1.2,
+                books: site.books,
+                auto: true,
+              },
+            ];
       const n = list.length;
       return list.map((l, i) => {
         let at = Array.isArray(l.at) ? l.at : null;
@@ -1418,7 +1883,11 @@
             at = [Math.cos(a) * r, Math.sin(a) * r];
           }
         }
-        return Object.assign({}, l, { kind: LM_KINDS.includes(l.kind) ? l.kind : guessLandmarkKind(l, sc.kind), at, h: clamp(+l.h || 1, 0.3, 4) });
+        return Object.assign({}, l, {
+          kind: LM_KINDS.includes(l.kind) ? l.kind : guessLandmarkKind(l, sc.kind),
+          at,
+          h: clamp(+l.h || 1, 0.3, 4),
+        });
       });
     }
     function placeLandmarks(Pl) {
@@ -1448,7 +1917,7 @@
         try {
           g = LM && LM.build ? LM.build(l.kind, kit, l) : null;
         } catch (e) {
-          console.warn("Atlas places: landmark", l.id, e);
+          console.warn('Atlas places: landmark', l.id, e);
         }
         if (!g) {
           g = new THREE.Group();
@@ -1457,12 +1926,16 @@
           g.add(b);
         }
         const y = Pl.sc.space ? 0 : Pl.H(l.x, l.z);
-        g.position.set(l.x, l.kind === "lake" || l.kind === "crater" ? Math.max(y, 0) : y - 1, l.z);
+        g.position.set(l.x, l.kind === 'lake' || l.kind === 'crater' ? Math.max(y, 0) : y - 1, l.z);
         if (Pl.sc.space && !l.free) {
           /* moored to the station: the ring or the hull, facing out */
           const a = Math.atan2(l.z, l.x);
           const rr = Math.hypot(l.x, l.z);
-          g.position.set(Math.cos(a) * Math.max(rr, Pl.ext * 0.3), (l.at[1] || 0) * Pl.ext * 0.25, Math.sin(a) * Math.max(rr, Pl.ext * 0.3));
+          g.position.set(
+            Math.cos(a) * Math.max(rr, Pl.ext * 0.3),
+            (l.at[1] || 0) * Pl.ext * 0.25,
+            Math.sin(a) * Math.max(rr, Pl.ext * 0.3),
+          );
         }
         g.rotation.y = l.ry != null ? l.ry : Math.atan2(-l.x, -l.z) + (Pl.R() - 0.5) * 0.3;
         g.scale.setScalar(l.h);
@@ -1487,15 +1960,15 @@
     /* ---------- labels ---------- */
     function buildLabels(Pl) {
       Pl.lms.forEach(l => {
-        const el = document.createElement("button");
-        el.className = "plbl lm";
-        el.type = "button";
+        const el = document.createElement('button');
+        el.className = 'plbl lm';
+        el.type = 'button';
         el.tabIndex = -1;
         el.style.opacity = 0;
-        el.style.pointerEvents = "none";
+        el.style.pointerEvents = 'none';
         el.innerHTML = '<span class="pip"></span><span class="tx"></span>';
-        el.querySelector(".tx").textContent = l.name;
-        el.addEventListener("click", e => {
+        el.querySelector('.tx').textContent = l.name;
+        el.addEventListener('click', e => {
           e.stopPropagation();
           if (env.onPick) env.onPick(l.id);
         });
@@ -1519,17 +1992,22 @@
           y = (-_v.y * 0.5 + 0.5) * H;
         let show = _v.z < 1 && x > -40 && x < W + 40 && y > -20 && y < H + 20 && !P.hideLabels;
         const r = { x: x - 8, y: y - 14, w: String(l.name).length * 7.6 + 30, h: 24 };
-        if (show && l.id !== sel && placed.some(q => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y)) show = false;
+        if (
+          show &&
+          l.id !== sel &&
+          placed.some(q => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y)
+        )
+          show = false;
         if (show) placed.push(r);
         l.el.style.opacity = show ? (l.id === sel ? 1 : clamp(1.4 - l.dist / (P.ext * 5), 0.45, 1)) : 0;
-        l.el.style.pointerEvents = show ? "auto" : "none";
+        l.el.style.pointerEvents = show ? 'auto' : 'none';
         if (l.el._tab !== show) {
           l.el._tab = show;
           l.el.tabIndex = show ? 0 : -1;
-          l.el.setAttribute("aria-hidden", String(!show));
+          l.el.setAttribute('aria-hidden', String(!show));
         }
-        if (show) l.el.style.transform = "translate(" + (x - 7) + "px," + (y - 13) + "px)";
-        l.el.classList.toggle("sel", l.id === sel);
+        if (show) l.el.style.transform = 'translate(' + (x - 7) + 'px,' + (y - 13) + 'px)';
+        l.el.classList.toggle('sel', l.id === sel);
       });
     }
 
@@ -1551,7 +2029,18 @@
         pmax: Pl.sc.under ? 0.95 : 1.45,
       };
       o.flyTo = (t, d, yaw, pitch, dur) => {
-        o.fly = { t0: performance.now(), dur: dur || 1700, fT: o.t.clone(), fD: o.dist, fY: o.yaw, fP: o.pitch, tT: t.clone(), tD: d, tY: yaw == null ? o.yaw : yaw, tP: pitch == null ? o.pitch : pitch };
+        o.fly = {
+          t0: performance.now(),
+          dur: dur || 1700,
+          fT: o.t.clone(),
+          fD: o.dist,
+          fY: o.yaw,
+          fP: o.pitch,
+          tT: t.clone(),
+          tD: d,
+          tY: yaw == null ? o.yaw : yaw,
+          tP: pitch == null ? o.pitch : pitch,
+        };
       };
       o.update = dt => {
         if (o.fly) {
@@ -1575,7 +2064,11 @@
           o.t.lerp(o.gt, s);
         }
         const cp = Math.cos(o.pitch);
-        cam.position.set(o.t.x + Math.sin(o.yaw) * cp * o.dist, o.t.y + Math.sin(o.pitch) * o.dist, o.t.z + Math.cos(o.yaw) * cp * o.dist);
+        cam.position.set(
+          o.t.x + Math.sin(o.yaw) * cp * o.dist,
+          o.t.y + Math.sin(o.pitch) * o.dist,
+          o.t.z + Math.cos(o.yaw) * cp * o.dist,
+        );
         if (!Pl.sc.space) {
           const gy = Pl.H(cam.position.x, cam.position.z) + 6;
           if (cam.position.y < gy) cam.position.y = gy;
@@ -1619,8 +2112,14 @@
     /* ---------- selection marker ---------- */
     function buildMarker(Pl) {
       const g = new THREE.Group();
-      const ring = new THREE.Mesh(new THREE.RingGeometry(0.86, 1, 64).rotateX(-Math.PI / 2), glowMat(env.accent || "#e8cd8a", 0.8));
-      const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 1, 8, 1, true).translate(0, 0.5, 0), glowMat(env.accent || "#e8cd8a", 0.35));
+      const ring = new THREE.Mesh(
+        new THREE.RingGeometry(0.86, 1, 64).rotateX(-Math.PI / 2),
+        glowMat(env.accent || '#e8cd8a', 0.8),
+      );
+      const beam = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.02, 0.02, 1, 8, 1, true).translate(0, 0.5, 0),
+        glowMat(env.accent || '#e8cd8a', 0.35),
+      );
       g.add(ring, beam);
       g.visible = false;
       Pl.root.add(g);
@@ -1631,14 +2130,19 @@
     function enter(world, site, opts) {
       exit();
       opts = opts || {};
-      const seed = hashStr((world && world.id) + "/" + site.id);
+      const seed = hashStr((world && world.id) + '/' + site.id);
       const sc = resolveScene(world, site, opts);
       const gfx = opts.gfx || (world && world.gfx) || {};
-      const gp = Array.isArray(gfx.pal) && gfx.pal.length >= 6 ? gfx.pal : ["#1d3f5e", "#3f7fa0", "#6f8a4a", "#8a8a5a", "#8a7a66", "#e8e8e8"];
+      const gp =
+        Array.isArray(gfx.pal) && gfx.pal.length >= 6
+          ? gfx.pal
+          : ['#1d3f5e', '#3f7fa0', '#6f8a4a', '#8a8a5a', '#8a7a66', '#e8e8e8'];
       const A = ARCH[sc.arch];
       const sp = sc.pal || {};
       const ext = SIZE_EXT[sc.size];
-      const dryWorld = ["desert", "barren", "lava", "toxic", "city", "hive", "dyson"].includes(gfx.type) || (gfx.sea != null && gfx.sea < 0.08);
+      const dryWorld =
+        ['desert', 'barren', 'lava', 'toxic', 'city', 'hive', 'dyson'].includes(gfx.type) ||
+        (gfx.sea != null && gfx.sea < 0.08);
       const Pl = {
         world,
         site,
@@ -1647,7 +2151,7 @@
         u: ext / 18,
         R: rng(seed),
         N: makeNoise(seed),
-        gtype: gfx.type || "terran",
+        gtype: gfx.type || 'terran',
         root: new THREE.Scene(),
         mats: [],
         anims: [],
@@ -1658,28 +2162,28 @@
         lampK: 0,
         exp: 1,
         azOff: (rng(seed + 7)() - 0.5) * 80,
-        star: (world && world.star && world.star.col) || "#fff6e4",
-        atmo: gfx.atmo || "#6fa8ff",
+        star: (world && world.star && world.star.col) || '#fff6e4',
+        atmo: gfx.atmo || '#6fa8ff',
         atmoK: gfx.atmoK == null ? 1 : gfx.atmoK,
-        snow: sc.weather === "snow" || gfx.type === "ice" || !!KIND[sc.kind].snow,
+        snow: sc.weather === 'snow' || gfx.type === 'ice' || !!KIND[sc.kind].snow,
         sunSize: (opts.sunSize || 1) * 1,
         sel: null,
       };
       Pl.pal = {
-        deep: sp.deep || (dryWorld ? "#123447" : gp[0]),
-        water: sp.water || (dryWorld ? "#2f6f88" : gp[1]),
-        ground: sp.ground || (gfx.type === "desert" ? gp[3] : gp[2]),
+        deep: sp.deep || (dryWorld ? '#123447' : gp[0]),
+        water: sp.water || (dryWorld ? '#2f6f88' : gp[1]),
+        ground: sp.ground || (gfx.type === 'desert' ? gp[3] : gp[2]),
         ground2: sp.ground2 || gp[3],
         high: sp.high || gp[4],
         peak: sp.peak || gp[5],
-        shore: sp.shore || "#c9b58f",
+        shore: sp.shore || '#c9b58f',
         stone: sp.stone || A.stone,
         roof: sp.roof || A.roof,
-        light: sp.light || gfx.lightCol || "#ffc27a",
-        foliage: sp.foliage || (gfx.type === "toxic" ? "#7a9a3a" : gfx.type === "forest" ? gp[3] : "#4e7a3a"),
+        light: sp.light || gfx.lightCol || '#ffc27a',
+        foliage: sp.foliage || (gfx.type === 'toxic' ? '#7a9a3a' : gfx.type === 'forest' ? gp[3] : '#4e7a3a'),
         pave: sp.pave || new THREE.Color(A.stone).multiplyScalar(0.62).getStyle(),
       };
-      if (Pl.gtype === "gas" && !sc.space) sc.space = true;
+      if (Pl.gtype === 'gas' && !sc.space) sc.space = true;
       Pl.paveR = KIND[sc.kind].bld > 0.3 && !sc.space ? ext * 0.95 : KIND[sc.kind].bld > 0 ? ext * 0.4 : 0;
       Pl.U = {
         uZen: { value: new THREE.Color() },
@@ -1713,7 +2217,14 @@
           Pl.padSpots = scatter(Pl, SMALL ? 8 : 14, ext * 0.25, ext * 0.9);
           Pl.padSpots.forEach(o => Pl.avoid.push({ x: o.x, z: o.z, r: Pl.u * 2 }));
         }
-        if (sc.water || sc.coast || sc.river || Pl.lms.some(l => l.kind === "lake" || l.kind === "dock") || KIND[sc.kind].coast) buildWater(Pl);
+        if (
+          sc.water ||
+          sc.coast ||
+          sc.river ||
+          Pl.lms.some(l => l.kind === 'lake' || l.kind === 'dock') ||
+          KIND[sc.kind].coast
+        )
+          buildWater(Pl);
         if (sc.under) buildCavern(Pl);
         buildWalls(Pl);
         buildCity(Pl);
@@ -1725,7 +2236,7 @@
       buildMarker(Pl);
       buildLabels(Pl);
       if (Pl.smokeCols) Pl.smokeCols.forEach(s => ambientSmoke(Pl, s));
-      Pl.fog.density = (sc.space ? 0 : sc.under ? 1.2 : 0.7) / (ext * 4.2) * Pl.fogMul;
+      Pl.fog.density = ((sc.space ? 0 : sc.under ? 1.2 : 0.7) / (ext * 4.2)) * Pl.fogMul;
       Pl.cam = camCtl(Pl);
       setTod(sc.tod, true);
       overview(true);
@@ -1770,7 +2281,13 @@
       const t = l.mid.clone();
       t.y = Math.max(t.y * 0.75, (P.sc.space ? t.y : P.H(t.x, t.z)) + l.rad * 0.4);
       const yaw = Math.atan2(l.x, l.z) + 0.5;
-      P.cam.flyTo(t, d, P.sc.space ? P.cam.yaw : yaw, P.sc.space ? 0.25 : P.sc.under ? 0.22 : 0.36, (opt && opt.dur) || 1700);
+      P.cam.flyTo(
+        t,
+        d,
+        P.sc.space ? P.cam.yaw : yaw,
+        P.sc.space ? 0.25 : P.sc.under ? 0.22 : 0.36,
+        (opt && opt.dur) || 1700,
+      );
       const m = P.marker;
       m.g.visible = true;
       m.g.position.set(l.x, (P.sc.space ? l.obj.position.y : Math.max(P.H(l.x, l.z), 0)) + 1.5, l.z);
@@ -1787,7 +2304,7 @@
       let best = null,
         bd = SMALL ? 30 : 20;
       P.lms.forEach(l => {
-        if (!l.el || l.el.style.opacity === "0") return;
+        if (!l.el || l.el.style.opacity === '0') return;
         _v.copy(l.top).project(cam);
         if (_v.z >= 1) return;
         const sx = (_v.x * 0.5 + 0.5) * W,
@@ -1814,7 +2331,9 @@
     }
     function fxAt(id) {
       const l = P.lms.find(x => x.id === id) || P.lms[0];
-      const p = l ? new THREE.Vector3(l.x, P.sc.space ? l.obj.position.y : Math.max(P.H(l.x, l.z), 0), l.z) : new THREE.Vector3();
+      const p = l
+        ? new THREE.Vector3(l.x, P.sc.space ? l.obj.position.y : Math.max(P.H(l.x, l.z), 0), l.z)
+        : new THREE.Vector3();
       if (P.sc.space && l) p.copy(l.obj.position);
       return { l, p, s: Math.max(P.u * (l ? l.h : 1), 30) };
     }
@@ -1826,14 +2345,21 @@
     function ambientSmoke(Pl, at) {
       const pp = Particles(SMALL ? 90 : 180, { normal: true, puff: true, op: 0.55 });
       Pl.root.add(pp.obj);
-      const c = C("#4a4642"),
+      const c = C('#4a4642'),
         R = Pl.R;
       let acc = 0;
       Pl.anims.push(dt => {
         acc += dt;
         while (acc > 0.12) {
           acc -= 0.12;
-          pp.emit(_v.set(at.x + (R() - 0.5) * 10, at.y + 4, at.z + (R() - 0.5) * 10), _v2.set(6 + R() * 4, 14 + R() * 8, 2), 9, 14, 70, c);
+          pp.emit(
+            _v.set(at.x + (R() - 0.5) * 10, at.y + 4, at.z + (R() - 0.5) * 10),
+            _v2.set(6 + R() * 4, 14 + R() * 8, 2),
+            9,
+            14,
+            70,
+            c,
+          );
         }
         pp.update(dt, -0.4, 0.9);
       });
@@ -1878,7 +2404,7 @@
           if (env.onFxEnd) env.onFxEnd();
         }
       }
-      if (P.spin) P.spin.rotation[P.spin.geometry.type === "TorusGeometry" ? "y" : "x"] += dt * 0.03;
+      if (P.spin) P.spin.rotation[P.spin.geometry.type === 'TorusGeometry' ? 'y' : 'x'] += dt * 0.03;
       if (P.marker.g.visible) {
         const k = 1 + Math.sin(T * 3) * 0.06;
         P.marker.ring.scale.setScalar(P.marker.r * k);

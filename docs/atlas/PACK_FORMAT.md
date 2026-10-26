@@ -736,6 +736,14 @@ fx:"bombard", …}`. `lm` must be a landmark of that site. `fx` is one of `battl
 storm quake crowd duel flood launch arrival eruption worm`; it plays when the event is opened inside the
 place. Keep effects to events the books actually describe.
 
+**Pack defaults** (optional top-level `places`): `places:{arch:"gothic", traffic:true, tod:"dusk", size:"large"}`
+sets the architecture, air traffic, light and size used when a site's `scene` leaves them out (e.g. a gothic
+far-future empire, or `traffic:false` for a pre-industrial world).
+
+**Worlds with no named places**: the dossier offers *Walk the surface*, an unnamed schematic view built from
+the world's `gfx` with no landmarks; it lists the world's events that have no `site`. Nothing needs to be
+added to the pack for this.
+
 Content rules (section 18) apply with extra force here: landmark names and descriptions must come from
 the books (paraphrased), and positions inside a site are schematic. Mark guessed layouts in a comment
 `/* layout schematic */`; never invent a landmark to fill space.
