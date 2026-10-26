@@ -229,10 +229,16 @@ function check(reports) {
   const tidal = r['tidal-lab'];
   assert.ok(tidal.titles.includes('Tidal disruption'));
   assert.equal(body(tidal, 'Halcyon')?.stage, 'yellow star');
-  // Gododdin: the moon is shredded; Gododdin and its sun survive.
+  // Gododdin: worldships come out of warp, the planet itself breaks apart, most of the fleet dies, the Demiurge survives.
   const god = r.gododdin;
-  assert.ok(!has(god, "Gododdin's Moon") && god.bodies.some(b => b.name.startsWith("Gododdin's Moon debris")));
-  assert.ok(has(god, 'Gododdin'));
+  assert.ok(!has(god, 'Gododdin'), 'Gododdin should break apart');
+  assert.ok(god.bodies.filter(b => b.name.startsWith('Gododdin debris')).length >= 6);
+  assert.ok(god.bodies.filter(b => b.name === 'Cielcin Worldship').length >= 4);
+  assert.ok(god.bodies.filter(b => b.name.startsWith('Imperial ship')).length <= 6, 'most of the fleet is destroyed');
+  assert.ok(has(god, 'Demiurge'));
+  assert.ok(
+    ['Passage at warp', 'Out of warp', 'Into the world', 'Tidal disruption'].every(t => god.titles.includes(t)),
+  );
   assert.equal(body(god, "Gododdin's Sun")?.stage, 'yellow star');
   // Galaxy tour: the Solar System orbits the core instead of falling in, and keeps every orbit.
   const tour = r['galaxy-tour'];

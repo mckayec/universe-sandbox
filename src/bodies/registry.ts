@@ -9,7 +9,7 @@ import { isCompact, scene } from '../scene/setup.ts';
 import { app, bodies, trails } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { createVisual } from '../visuals/create-visual.ts';
-import { dressWorldship } from '../visuals/worldship.ts';
+import { dressWarship, dressWorldship } from '../visuals/worldship.ts';
 
 export function nameFor(kind: Kind, id: number) {
   return `${({ asteroid: 'Aster', comet: 'Comet', moon: 'Luna', dwarf: 'Nix', rocky: 'Terra', gas: 'Jovia', brown: 'Ember', star: 'Helios', protostar: 'Seed', pulsar: 'Beacon', blackhole: 'Void', nebula: 'Cloud' } as Record<Kind, string>)[kind]} ${String(id).padStart(2, '0')}`;
@@ -125,6 +125,7 @@ export function addBody(kind: Kind, pos: THREE.Vector3, vel = new THREE.Vector3(
   scene.add(b.mesh);
   bodies.push(b);
   if (b.artificial === 'worldship') dressWorldship(b);
+  else if (b.artificial === 'warship') dressWarship(b);
   updateScale(b);
   makeTrail(b);
   updateCount();

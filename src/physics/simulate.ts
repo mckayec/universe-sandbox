@@ -11,6 +11,7 @@ import { updateNebulaInteractions, updateNebulaMergers } from './nebula.ts';
 import { advanceStar, spawnProtostar, updateProto } from './stellar-evolution.ts';
 import { updateSatellite, updateTidalInteractions } from './tidal.ts';
 import { updateTidalDisruption } from './tidal-disruption.ts';
+import { updateWarpSequence } from './warp-sequence.ts';
 import { isCompact } from '../scene/setup.ts';
 import { app, bodies } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
@@ -118,6 +119,7 @@ export function simulate(dt: number) {
   updateNebulaMergers(dt);
   updateTidalInteractions(dt);
   updateTidalDisruption(dt);
+  updateWarpSequence(dt);
   collisions();
   for (const b of [...bodies]) if (b.mesh.position.length() > 1700) removeBody(b);
 }

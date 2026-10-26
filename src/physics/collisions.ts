@@ -237,7 +237,10 @@ export function collisions() {
       a.hostId === b.id ||
       b.hostId === a.id ||
       a.collisionCooldown > 0 ||
-      b.collisionCooldown > 0
+      b.collisionCooldown > 0 ||
+      // Ships are scripted props: they never merge with worlds or debris.
+      a.artificial ||
+      b.artificial
     )
       continue;
     const reach = (a.radius + b.radius) * 0.72;
