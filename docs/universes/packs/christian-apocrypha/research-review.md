@@ -65,3 +65,16 @@ Branch `pack/christian-apocrypha` at `aebe6d255888b604158d586e4098ce1e39030bbd` 
 - **Known layout items for later units:** Chronicle book markers show the short work label inside a small circle, which overflows for long labels (e.g. "Inf Thom"); the layer bar sits over the bottom of the details panel at 1440×900 (same as the LDS build).
 
 **Next:** unit 2 continued, works 3–9 (Wisdom, Sirach, Baruch, 1–2 Maccabees, Esther and Daniel additions), then units 3–6 as planned above.
+
+## Build checkpoint 3 (2026-10-27)
+
+Branch `pack/christian-apocrypha` at `84387a26656da934ebd0c17e4e75ba0c8ae104d1` (no PR yet).
+
+- **Wisdom (slot 3):** 19 Chronicle entries, one per `dc-wis-NN-card` (chapters 1, 5, 10 and 19 labelled RV 1895, since the NABRE page was unavailable per the rows' limits); new codex section "Themes and allusions" with one entry per `dc-wis-*` thematic card (19). Names the body does not give (Solomon, Adam, Noah, Abraham, Lot, Jacob, Joseph, Moses, Aaron) are attributed to notes or other books, never to the chapter.
+- **Baruch (slot 5):** 6 entries (`dc-bar-01…06-card`); ch. 6 shown as the Letter of Jeremiah with "seven generations" kept; ch. 1 attaches to the Babylon anchor and records the literary-frame caveat and the missing month. Journey `dc-route-baruch-dispatch` as object dispatch only.
+- **Esther additions (slot 8):** 6 entries A–F with each edition's own date (Douay 14 Adar in B, 13 Adar in E, not reconciled); Artaxerxes not renamed.
+- **Daniel additions (slot 9):** 3 entries (prayer/song, Susanna, Bel and the Dragon); Susanna and Bel attach to the Babylon anchor; `dc-route-habakkuk` as supernatural transport with an unnamed endpoint.
+- **Codex:** 7 unpinned places (Red Sea, Nile, Sud, Susa, Joakim's garden, temple of Bel, lions' den), 8 work-scoped people (Mordecai scoped to slot 8 here although `dc-mordecai` has `first` 7 from a 2 Maccabees mention; its slot-7 mention arrives with 2 Maccabees). Jerusalem badges now 1, 2, 5, 8, 9; Babylon 5, 8, 9.
+- **Checks:** `pnpm check` 87/87; `pnpm test:pages` 12 pages × 2; `pnpm test:browser` passed; screenshots at 1440×900 and 390×844 with `#book=9`, no console errors.
+
+**Next:** Sirach (slot 4: 52 concept cards, 29 thematic cards), then 1–2 Maccabees (slots 6–7), then units 3–6.
