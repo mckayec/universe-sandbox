@@ -72,6 +72,7 @@ test('codex text naming a work is gated at that work', () => {
     Sirach: 4,
     'Sirach, prologue': 4,
     Baruch: 5,
+    'First Maccabees': 6,
     'Esther additions': 8,
     Susanna: 9,
     'Bel and the Dragon': 9,

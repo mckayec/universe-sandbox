@@ -1,7 +1,7 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 4 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
-   Tobit, Judith, Wisdom, Sirach, Baruch and the Esther and Daniel additions (slots 1–5, 8, 9). The remaining works are added layer by layer in later checkpoints.
+   BUILD CHECKPOINT 5 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   Tobit, Judith, Wisdom, Sirach, Baruch, 1 Maccabees and the Esther and Daniel additions (slots 1–6, 8, 9). The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
    handoff): research.md, integration-contract.md, work-gates.csv, geography-reuse.md, the five
@@ -199,7 +199,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 4, 5, 8, 9],
+            books: [1, 2, 4, 5, 6, 8, 9],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -369,6 +369,25 @@
       ev('bar-05', 5, 'dc', 'Behold your children', 'Jerusalem is told to look and see her children coming home; the hills are leveled and trees give shade. A poem of restoration, not a road.', 'Baruch 5'),
       ev('bar-06', 5, 'dc', 'The Letter of Jeremiah', 'A letter attributed to Jeremiah tells the deportees to Babylon they will stay seven generations before returning, and mocks idols carried in procession, Bel, their priests and powerless images. Its picture of Babylonian religion is polemic. Some editions print it as a separate book.', 'Baruch 6'),
 
+      /* ---- 1 Maccabees (slot 6). dc-m1-c01-card … dc-m1-c16-card (event groups), all RV 1895. Years are the
+         book’s own Greek-kingdom era; the RV’s approximate BC annotations are not adopted. ---- */
+      ev('m1-01', 6, 'dc', 'Alexander’s heirs and Antiochus Epiphanes', 'After Alexander’s conquests his kingdom passes to his officers. Antiochus Epiphanes becomes king in year 137 of the Greek kingdom (the book’s own era). A gymnasium is built in Jerusalem; after a campaign in Egypt the king plunders the Temple (year 143), a citadel is set up, and the ancestral practices are banned. On 15 Chislev 145 the abomination is set up, with sacrifice following on the 25th. The casualty figures and the polemic are the narrator’s.', '1 Maccabees 1 (RV 1895)', 'jerusalem'),
+      ev('m1-02', 6, 'dc', 'Mattathias at Modin', 'Mattathias, a priest of the family of Joarib, moves from Jerusalem to Modin with his sons John Gaddis, Simon Thassi, Judas Maccabaeus, Eleazar Avaran and Jonathan Apphus. A killing at the altar there is followed by flight to the mountains. After a Sabbath massacre his group decides to fight even on the Sabbath, and the Hasidaeans join them. Dying in year 146, he names Simon as counselor and Judas as commander, and is buried at Modin.', '1 Maccabees 2 (RV 1895)'),
+      ev('m1-03', 6, 'dc', 'Judas’s first victories', 'Judas defeats Apollonius, then Seron at Bethhoron. Antiochus leaves Lysias in charge from the Euphrates to Egypt, with his son Antiochus, and goes to the upper countries in year 147. Ptolemy, Nicanor and Gorgias camp at Emmaus; Judas’s men pray at Mizpeh, opposite Jerusalem, and camp south of Emmaus.', '1 Maccabees 3 (RV 1895)'),
+      ev('m1-04', 6, 'dc', 'Emmaus, and the sanctuary rededicated', 'While Gorgias searches the mountains, Judas defeats the camp at Emmaus and pursues toward Gazara. The next year Lysias invades by way of Idumaea and Bethsura, then returns to Antioch. The sanctuary is cleansed; the defiled altar stones are stored until a prophet comes, and a new altar is dedicated on 25 Chislev 148 with eight days of celebration, to be kept every year. Mount Sion and Bethsura are fortified.', '1 Maccabees 4 (RV 1895)', 'jerusalem'),
+      ev('m1-05', 6, 'dc', 'Campaigns east and west', 'Judas fights in Idumaea and Ammon. Simon rescues the Jews of Galilee and Arbatta and brings them to Judaea. Judas and Jonathan cross the Jordan, meet the Nabathaeans, take Bosora, relieve a besieged stronghold in Gilead, defeat Timotheus, burn the temple at Carnaim, force a way through Ephron and return by the Jordan and Bethshan. Joseph son of Zacharias and Azarias, acting without orders, are defeated at Jamnia. Hebron and Azotus follow. This edition prints Samaria at 5:66, with Marisa as an alternative reading.', '1 Maccabees 5 (RV 1895)'),
+      ev('m1-06', 6, 'dc', 'The death of Antiochus; Bethzacharias', 'Antiochus fails to plunder Elymais in Persia, hears of losses in Judaea and dies in a foreign land in year 149, having entrusted the succession to Philip; Lysias makes Antiochus Eupator king. A siege of the Jerusalem citadel in year 150 brings a royal army; at Bethzacharias Eleazar kills an elephant and is crushed beneath it. A sabbatical-year famine, a treaty, and the pulling down of the Sion wall follow before the army turns back to Antioch against Philip.', '1 Maccabees 6 (RV 1895)'),
+      ev('m1-07', 6, 'dc', 'Demetrius, Alcimus and Nicanor', 'Demetrius son of Seleucus comes from Rome in year 151, and Antiochus and Lysias are killed. Bacchides installs Alcimus; sixty Hasidaeans are killed despite an oath, and there are killings at Bezeth. Nicanor threatens the Temple and is defeated and killed at Adasa on 13 Adar; his trophies are displayed in Jerusalem and the day is kept every year.', '1 Maccabees 7 (RV 1895)'),
+      ev('m1-08', 6, 'dc', 'A treaty with Rome', 'Judas hears reports of Roman power and sends Eupolemus son of John and Jason son of Eleazar to Rome. The treaty promises mutual military help, and a letter warns Demetrius. The reports of Roman rule are the narrator’s picture, not a verified map.', '1 Maccabees 8 (RV 1895)', 'rome'),
+      ev('m1-09', 6, 'dc', 'Judas falls; Jonathan leads', 'In the first month of year 152 Bacchides attacks; Judas dies at Elasa and is buried at Modin by Jonathan and Simon, and Jonathan takes command. A baggage mission led by their brother John is intercepted, and the brothers take revenge on a wedding party before escaping across the Jordan. Bacchides fortifies towns; Alcimus dies in year 153 during his wall project. Later Jonathan defends Bethbasi, a treaty returns captives, and Jonathan settles at Michmash.', '1 Maccabees 9 (RV 1895)'),
+      ev('m1-10', 6, 'dc', 'Jonathan made high priest', 'Alexander lands at Ptolemais in year 160, and Demetrius competes for Jonathan’s support. Jonathan puts on the high priest’s vestments at Tabernacles in the seventh month of year 160, by royal appointment. Alexander defeats Demetrius and marries Cleopatra, daughter of Ptolemy, at Ptolemais in year 162. When a younger Demetrius comes from Crete in year 165, Jonathan and Simon defeat Apollonius near Joppa and Azotus and burn the temple of Dagon.', '1 Maccabees 10 (RV 1895)'),
+      ev('m1-11', 6, 'dc', 'Ptolemy, Demetrius and Tryphon', 'Ptolemy invades, gives Cleopatra to Demetrius, and Alexander flees to Arabia, where Zabdiel beheads him; Ptolemy dies, and Demetrius reigns from year 167. Jonathan receives three districts and sends 3,000 men to rescue Demetrius in Antioch, but the king breaks his promises. Tryphon raises Alexander’s young son Antiochus. Jonathan campaigns along the coast, at Gaza and toward Damascus, while Simon takes Bethsura.', '1 Maccabees 11 (RV 1895)'),
+      ev('m1-12', 6, 'dc', 'Embassies, and Jonathan captured', 'Numenius son of Antiochus and Antipater son of Jason go to Rome and Sparta; a letter to the Spartans claims kinship through Abraham. Jonathan campaigns toward Hamath and Damascus. Tryphon meets him at Bethshan, lures him to Ptolemais, takes him prisoner and kills his escort. The survivors believe Jonathan dead; his death comes later.', '1 Maccabees 12 (RV 1895)'),
+      ev('m1-13', 6, 'dc', 'Simon succeeds', 'Simon is chosen leader. Tryphon takes a ransom and Jonathan’s two sons but kills Jonathan at Bascama; Simon buries the bones at Modin under a monument of seven pyramids. Tryphon kills the young Antiochus. Demetrius grants relief in year 170, Gazara is taken (a note says some authorities read Gaza), and the citadel surrenders on the 23rd of the second month, year 171.', '1 Maccabees 13 (RV 1895)'),
+      ev('m1-14', 6, 'dc', 'The decree for Simon', 'Demetrius is captured by Arsaces in year 172. A poem praises the peace of Simon’s time, and friendship with Rome and Sparta is renewed. A decree of 18 Elul 172, Simon’s third year, recognizes him as leader and high priest until a faithful prophet arises, and is set up on bronze. Asaramel, where it was proclaimed, may be a title or a place.', '1 Maccabees 14 (RV 1895)'),
+      ev('m1-15', 6, 'dc', 'Antiochus son of Demetrius', 'Antiochus son of Demetrius arrives in year 174 and besieges Tryphon at Dor; then he withdraws his favors from Simon and, through Athenobius, demands disputed towns. Tryphon escapes by ship to Orthosia, and Cendebaeus raids from Jamnia and Kidron. A Roman letter from Lucius is addressed to a long list of kings and cities; the list is of recipients, not a route.', '1 Maccabees 15 (RV 1895)'),
+      ev('m1-16', 6, 'dc', 'The murder of Simon', 'Simon’s sons Judas and John defeat Cendebaeus. Then Simon’s son-in-law Ptolemy son of Abubus murders Simon and his sons Mattathias and Judas at Dok, in the eleventh month, Sebat, of year 177. John, warned at Gazara, escapes the assassins; the book refers his later deeds to another chronicle.', '1 Maccabees 16 (RV 1895)'),
+
       /* ---- Esther additions (slot 8). dc-est-a-card … dc-est-f-card. The Greek king Artaxerxes is not
          renamed Ahasuerus; dates are given as each edition states them. ---- */
       ev('est-a', 8, 'dc', 'Mordecai’s dream', 'In Susa, Mardocheus (Mordecai), who was deported from Jerusalem to Babylon, dreams of two dragons, warring nations and a saving stream. He exposes a plot by Gabatha and Tharra against King Artaxerxes, and Aman (Haman) turns against him. The text dates this to the second year, on the first of Nisan.', 'Additions to Esther A (RV 11:2–12:6)'),
@@ -504,6 +523,12 @@
           ref('Achior handed over', 2, 'dc', 'From the Assyrian camp to the foot of Bethulia’s hill, then into the town.'),
           ref('Celebration at Jerusalem', 2, 'dc', 'Judith and the people go up to Jerusalem to give thanks, and Judith returns to Bethulia.'),
           ref('The money and the scroll', 5, 'dc', 'Babylon to Jerusalem: money and a scroll sent to the high priest. The carriers are not clearly named, so this is not a journey by Baruch himself.'),
+          /* dc-m1-j01…j05: stated order or destination only; no lines drawn. */
+          ref('Simon brings the Galileans home', 6, 'dc', 'First Maccabees: from Galilee to Judaea, a rescue separate from Judas and Jonathan’s expedition.'),
+          ref('Judas and Jonathan in Gilead', 6, 'dc', 'First Maccabees: across the Jordan, the wilderness, Bosora, Dathema and Mizpeh of Gilead, Ephron, back over the Jordan past Bethshan, through Judaea to Jerusalem. A rough outline, not the whole campaign.'),
+          ref('The embassy of Eupolemus and Jason', 6, 'dc', 'First Maccabees: to Rome. No stops are given.'),
+          ref('The embassy of Numenius and Antipater', 6, 'dc', 'First Maccabees: to Rome, then Sparta, attested by letters. No road is described.'),
+          ref('Jonathan’s capture', 6, 'dc', 'First Maccabees: Bethshan, where he meets Tryphon; Ptolemais, where he is seized; Bascama, where he is killed (13:23).'),
           ref('Habakkuk carried', 9, 'dc', 'Judea to the lions’ den in Babylon, then home (the place is not named), carried by an angel. Not a road.'),
         ],
       },
@@ -530,6 +555,26 @@
           ref('The translator', 4, 'dc', 'Unnamed in the prologue: the author’s grandson, who translated the Hebrew work into Greek in Egypt.', 'Sirach'),
           ref('Simeon son of Jochanan', 4, 'dc', 'The high priest praised in chapter 50 for repairing the Temple and city and for his worship. A note identifies him as Simeon II (about 219–196 BC) and suggests a Day of Atonement setting; both are editorial, not dates in the text.', 'Sirach'),
           ref('Baruch son of Nerias', 5, 'dc', 'Reads his book to the exiles in Babylon in the book’s opening frame.', 'Baruch'),
+          /* 1 Maccabees person-reference rows; dc-m1-r01…r08 relationships are stated on the entries. */
+          ref('Mattathias', 6, 'dc', 'A priest of the family of Joarib who leaves Jerusalem for Modin and starts the resistance; father of John, Simon, Judas, Eleazar and Jonathan.', '1 Maccabees'),
+          ref('John Gaddis', 6, 'dc', 'Eldest son of Mattathias. Not the later John son of Simon.', '1 Maccabees'),
+          ref('Simon Thassi', 6, 'dc', 'Son of Mattathias, named counselor by his father; leader after Jonathan’s capture, later recognized as leader and high priest by decree; murdered at Dok.', '1 Maccabees'),
+          ref('Judas Maccabaeus', 6, 'dc', 'Son of Mattathias and military commander after him; rededicates the sanctuary; dies at Elasa.', '1 Maccabees'),
+          ref('Eleazar Avaran', 6, 'dc', 'Son of Mattathias, killed at Bethzacharias beneath the elephant he struck.', '1 Maccabees'),
+          ref('Jonathan Apphus', 6, 'dc', 'Son of Mattathias; succeeds Judas, is made high priest by royal appointment, and is captured by Tryphon and later killed at Bascama.', '1 Maccabees'),
+          ref('John son of Simon', 6, 'dc', 'Simon’s son, commander at Gazara, who escapes his father’s murderers.', '1 Maccabees'),
+          ref('Ptolemy son of Abubus', 6, 'dc', 'Simon’s son-in-law, who murders Simon and two of his sons at Dok. Not the royal Ptolemy, Cleopatra’s father.', '1 Maccabees'),
+          ref('Antiochus Epiphanes', 6, 'dc', 'The king whose decrees ban the ancestral practices; dies in a foreign land after failing at Elymais.', '1 Maccabees'),
+          ref('Antiochus Eupator', 6, 'dc', 'Son of Antiochus Epiphanes, made king by Lysias. Not the young Antiochus son of Alexander, nor Antiochus son of Demetrius.', '1 Maccabees'),
+          ref('Cleopatra', 6, 'dc', 'Daughter of King Ptolemy, married first to Alexander and later given to Demetrius.', '1 Maccabees'),
+          ref('Ptolemy, Cleopatra’s father', 6, 'dc', 'The king who gives his daughter to Alexander, later invades and transfers her to Demetrius, and dies.', '1 Maccabees'),
+          ref('Alexander (the rival king)', 6, 'dc', 'Lands at Ptolemais, defeats Demetrius and marries Cleopatra; later flees to Arabia and is killed. Not Alexander the conqueror of chapter 1.', '1 Maccabees'),
+          ref('Demetrius (Cleopatra’s second husband)', 6, 'dc', 'The younger Demetrius, who comes from Crete and to whom Ptolemy gives Cleopatra. Kept separate from the earlier Demetrius son of Seleucus.', '1 Maccabees'),
+          ref('Tryphon', 6, 'dc', 'Raises Alexander’s young son as king, captures and kills Jonathan, then kills the young king; besieged at Dor, he escapes to Orthosia.', '1 Maccabees'),
+          ref('Eupolemus', 6, 'dc', 'Son of John son of Accos; one of the two envoys Judas sends to Rome.', '1 Maccabees'),
+          ref('Jason son of Eleazar', 6, 'dc', 'The second envoy sent to Rome with Eupolemus.', '1 Maccabees'),
+          ref('Numenius', 6, 'dc', 'Son of Antiochus; envoy to Rome and Sparta.', '1 Maccabees'),
+          ref('Antipater', 6, 'dc', 'Son of Jason; envoy to Rome and Sparta with Numenius.', '1 Maccabees'),
           ref('Esther', 8, 'dc', 'The queen who prays, then goes before the king and is heard.', 'Esther additions'),
           ref('Mordecai (Mardocheus)', 8, 'dc', 'Dreams of the dragons and the stream, urges Esther to plead with the king, and later explains the dream.', 'Esther additions'),
           ref('Aman (Haman)', 8, 'dc', 'Mordecai’s enemy, whose decree targets the Jews; the counter-decree calls him a Macedonian.', 'Esther additions'),
