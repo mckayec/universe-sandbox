@@ -229,3 +229,19 @@ test('NT-related gospels (slots 23–28): one Chronicle entry per narrative clus
   const judea = pack.codex.find((c: any) => c.id === 'places').list.find((e: any) => e.name === 'Judea (Judaea)');
   for (const s of [26, 28]) assert.ok(judea.books.includes(s), `Judea lacks its slot ${s} mention`);
 });
+
+test('Acts of Paul (slot 29): every cluster has a Chronicle entry; only the Roman martyrdom is pinned', () => {
+  const rows = readCsv('nt-apocrypha-integration.csv').filter(r => r.work === 'pt');
+  assert.equal(rows.length, 10);
+  for (const r of rows) {
+    const e = pack.events.find((x: any) => x.id === r.stable_id);
+    assert.ok(e, `no Chronicle entry for ${r.stable_id}`);
+    assert.equal(e.book, 29);
+    assert.equal(e.site, r.stable_id === 'nta-pt-martyrdom' ? 'rome' : undefined, `${r.stable_id} pin`);
+  }
+  const places = pack.codex.find((c: any) => c.id === 'places').list;
+  // which Antioch is meant is unresolved: the Acts of Paul entry is separate from the Seleucid royal city's
+  const antioch = places.find((e: any) => e.name === 'Antioch');
+  assert.ok(!antioch.books.includes(29), 'Acts of Paul must not be merged into the 1–2 Maccabees Antioch');
+  assert.ok(places.find((e: any) => e.name === 'Antioch (Acts of Paul)'));
+});

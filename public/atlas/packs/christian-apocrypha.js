@@ -1,8 +1,8 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 12 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   BUILD CHECKPOINT 13 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
    the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9);
-   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15); 1 Enoch and Jubilees (16–17); Ascension of Isaiah and 4 Baruch (21–22); the NT-related gospels (23–28).
+   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15); 1 Enoch and Jubilees (16–17); Ascension of Isaiah and 4 Baruch (21–22); the NT-related gospels (23–28); the Acts of Paul (29).
    The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
@@ -266,7 +266,7 @@
             name: 'Rome',
             lat: 41.890222,
             lon: 12.492306,
-            books: [6],
+            books: [6, 29],
             modern: 'Historic Centre of Rome (UNESCO component point)',
             desc: 'The marker locates a component of Rome’s historic centre, not the site of any martyrdom told in these texts.',
           },
@@ -557,6 +557,20 @@
       ev('nta-gt-scene', 26, 'nta', 'A collection of sayings', 'A prologue under Thomas’s name and 114 sayings, with no travel story. A few sayings name disciples: James, Peter, Matthew and Thomas (12–13) and Salome (61); saying 60 mentions a Samaritan going into Judea. Its language of kingdom, light and Paradise does not describe a place. The translation is under copyright, so nothing here is quoted.', 'Gospel of Thomas, prologue and sayings 1–114 (Scholars Version)'),
       ev('nta-gm-scene', 27, 'nta', 'Mary and the disciples', 'In what survives, Mary encourages the disciples and tells of a vision; Andrew and Peter object, and Levi defends her. A passage on a soul’s ascent survives without its beginning, so the soul is not identified. Codex pages 1–6 and 11–14 are lost and are not filled in from the Greek fragments. No place, route or marriage is stated.', 'Gospel of Mary 4:22–39; 5:1–11; 8:10–24; 9:1–10 (hosted translation)'),
       ev('nta-gj-scene', 28, 'nta', 'Conversations before Passover', 'Set in Judea in the days before Passover, Jesus speaks with the disciples and with Judas. The disciples’ vision of an altar, Judas’s vision of a house and the account of the cosmos and its rulers are separate levels of the story. The damaged text closes with Judas handing Jesus over for money. Whether the work presents Judas favourably is contested; gaps and restored names are kept as the translator marks them.', 'Gospel of Judas, Codex Tchacos 33–58 (Mattison)'),
+
+      /* ---- Acts of Paul, including Thecla (slot 29). nta-pt-panchares … nta-pt-unplaced, one entry per cluster, in the
+         work's section order. M. R. James 1924 (Coptic episodes fragmentary; VIII and XI known only from quotations).
+         Only the Roman martyrdom attaches to an anchor (Rome); which Antioch is meant is not settled. ---- */
+      ev('nta-pt-panchares', 29, 'nta', 'Panchares and Phila', 'A fragmentary story of Panchares, Phila and a son. Its setting at Antioch and the son’s suggested name, Barnabas, come from outside testimony and the editor’s reconstruction.', 'Acts of Paul I (M. R. James; fragmentary Coptic)'),
+      ev('nta-pt-scene', 29, 'nta', 'Paul and Thecla', 'Paul comes from Antioch to Iconium; the road toward Lystra is a meeting place, not a proven visit to Lystra. Thecla leaves confinement to visit the prison, survives the pyre and rejoins Paul near a roadside tomb. At Antioch (which Antioch is not settled) she encounters Alexander and faces the beasts; Tryphaena, whose daughter Falconilla has died, protects her, and faints but does not die. Thecla baptizes herself, later finds Paul at Myra, returns to Iconium and goes on to Seleucia. Paul sends her to teach; there is no marriage. Endings printed after the episode, on a mountain and at Rome, are later variants.', 'Acts of Paul II.1–43 (M. R. James)'),
+      ev('nta-pt-myra', 29, 'nta', 'At Myra', 'Episodes with Hermocrates and Nympha, and with Dion and Hermippus. Paul then leaves toward Sidon.', 'Acts of Paul III (M. R. James; fragmentary Coptic)'),
+      ev('nta-pt-sidon-tyre', 29, 'nta', 'Sidon and Tyre', 'Companions from Perga, an episode at a temple in Sidon, and fragments at Tyre. Uncertain names stay uncertain, and a broken mention of Jerusalem is not made into a journey.', 'Acts of Paul IV–V (M. R. James; fragmentary Coptic)'),
+      ev('nta-pt-frontina', 29, 'nta', 'Frontina and the mines', 'Longinus, Firmilla and Frontina, and the mines. None of it is located, and Philippi is not inferred from the section that follows.', 'Acts of Paul VI (M. R. James; fragmentary Coptic)'),
+      ev('nta-pt-correspondence', 29, 'nta', 'Letters with the Corinthians', 'A letter from the Corinthians, how it reached Paul, and his reply, known as Third Corinthians, with its teaching on resurrection and creation. It belongs to this work and is not one of the New Testament letters.', 'Acts of Paul VII (M. R. James)'),
+      ev('nta-pt-ephesus', 29, 'nta', 'Ephesus, in quotations', 'Known only from quotations by Hippolytus and Nicephorus: a lion, and Eubula and Artemilla. Quotations, not the recovered episode.', 'Acts of Paul VIII (M. R. James; quoted by later writers)'),
+      ev('nta-pt-prophecy', 29, 'nta', 'A prophecy about Rome', 'A fragmentary prophecy by Cleobius and Myrte about Rome.', 'Acts of Paul IX (M. R. James; fragmentary)'),
+      ev('nta-pt-martyrdom', 29, 'nta', 'Paul’s death at Rome', 'At Rome, with Patroclus, Nero, Longus and Cestus in the story, Paul is beheaded, and milk is said to flow. He appears afterward, and Titus and Luke are at his grave. No execution site or tomb is located.', 'Acts of Paul X.1–7 (M. R. James)', 'rome'),
+      ev('nta-pt-unplaced', 29, 'nta', 'Quotations by later writers', 'Short passages that Origen, Clement, Pseudo-Cyprian, Lactantius, Commodian and John of Salisbury connect with Paul’s acts. Each is attributed to its writer; which part of the work it belongs to is uncertain, and none is added to Paul’s route. Suggested links to Peter are conjecture.', 'Acts of Paul XI (M. R. James, Wikisource)'),
     ],
     codex: [
       {
@@ -901,6 +915,18 @@
           ref('The unnamed village (Infancy Thomas)', 24, 'nta', 'Infancy Gospel of Thomas: the village of the childhood stories, which Greek A does not name. Not tied to Nazareth from other versions.'),
           ref('Joseph’s garden', 25, 'nta', 'Gospel of Peter: the garden with the tomb where the body is laid (ch. 6). This text does not name Golgotha, and nothing is located.'),
           ref('The unnamed sea', 25, 'nta', 'Gospel of Peter: the fragment breaks off beside a sea it does not name (ch. 14).'),
+          /* ---- Acts of Paul places (nta-pt-*). Kept apart from same-named places in other works; coordinates null. ---- */
+          ref('Antioch (Acts of Paul)', 29, 'nta', 'Acts of Paul: where Paul comes from before Iconium, and where Thecla faces Alexander and the beasts (II). Which Antioch is meant is not settled, so this is not merged with the Seleucid royal city.'),
+          ref('Iconium', 29, 'nta', 'Acts of Paul: where Paul comes from Antioch, and where Thecla later returns (II).'),
+          ref('The road toward Lystra', 29, 'nta', 'Acts of Paul: where Paul is met on the way to Iconium (II). Not a proven visit to Lystra.'),
+          ref('The roadside tomb', 29, 'nta', 'Acts of Paul: where Thecla rejoins Paul after the pyre (II). Not located.'),
+          ref('Myra', 29, 'nta', 'Acts of Paul: where Thecla finds Paul (II), and the setting of episode III.'),
+          ref('Seleucia (Acts of Paul)', 29, 'nta', 'Acts of Paul: where Thecla goes at the end of her story (II).'),
+          ref('Perga', 29, 'nta', 'Acts of Paul: companions come from Perga (IV).'),
+          ref('Sidon (Acts of Paul)', 29, 'nta', 'Acts of Paul: an episode at a temple in Sidon (IV). Kept apart from the region of Tyre and Sidon in the Ascension of Isaiah.'),
+          ref('Tyre (Acts of Paul)', 29, 'nta', 'Acts of Paul: fragments set at Tyre (V).'),
+          ref('The mines', 29, 'nta', 'Acts of Paul: the mines of episode VI. Not located.'),
+          ref('Ephesus (Acts of Paul)', 29, 'nta', 'Acts of Paul: the setting of episode VIII, known only from quotations by later writers.'),
         ],
       },
       {
@@ -1032,6 +1058,11 @@
           ref('Toward Bethlehem', 23, 'nta', 'Protevangelium of James: Joseph’s household approaches Bethlehem (chs. 17–18). No stops are added.'),
           ref('The Magi leave another way', 23, 'nta', 'Protevangelium of James: the Magi depart by another way (ch. 21). Their route is not given.'),
           ref('To Jerusalem and back (Infancy Thomas)', 24, 'nta', 'Infancy Gospel of Thomas: the parents go up to Jerusalem and return (ch. XIX). The starting village is not named.'),
+          /* Acts of Paul journeys (nta-pt-scene, nta-pt-myra, nta-pt-correspondence): ordered as stated; no lines drawn. */
+          ref('Paul to Iconium', 29, 'nta', 'Acts of Paul: from Antioch to Iconium (II). The road toward Lystra is only where he is met.'),
+          ref('Thecla’s journeys', 29, 'nta', 'Acts of Paul: Iconium, the roadside tomb, Antioch, then Myra to find Paul, back to Iconium, and on to Seleucia (II). The mountain and Rome endings are variants and are not added.'),
+          ref('Paul leaves Myra', 29, 'nta', 'Acts of Paul: from Myra toward Sidon (III).'),
+          ref('The letter carriers', 29, 'nta', 'Acts of Paul: the journey of Threptus and Eutychus belongs to the letter exchange with the Corinthians (VII). No route is given.'),
         ],
       },
       {
@@ -1193,6 +1224,17 @@
           ref('Mary (Gospel of Mary)', 27, 'nta', 'Encourages the disciples and tells of a vision. Catalogues identify her with Mary Magdalene; that is an interpretation, not a name in every passage.', 'Gospel of Mary'),
           ref('Andrew, Peter and Levi (Gospel of Mary)', 27, 'nta', 'Andrew and Peter object to Mary’s words; Levi defends her.', 'Gospel of Mary'),
           ref('Judas (Gospel of Judas)', 28, 'nta', 'Speaks privately with Jesus and later hands him over. Whether the work presents him well is disputed by its readers.', 'Gospel of Judas'),
+          /* Acts of Paul people (nta-pt-*), scoped to slot 29. */
+          ref('Paul (Acts of Paul)', 29, 'nta', 'The apostle of this work’s stories, from Antioch and Iconium to his death at Rome. Kept apart from Paul in the Acts of Peter and the Apocalypse of Paul.', 'Acts of Paul'),
+          ref('Thecla', 29, 'nta', 'Leaves confinement to visit the prison, survives the pyre and the beasts, baptizes herself, and is sent by Paul to teach (II). No marriage.', 'Acts of Paul'),
+          ref('Tryphaena and Falconilla', 29, 'nta', 'Tryphaena protects Thecla at Antioch and faints, but does not die; Falconilla is her daughter, already dead (II).', 'Acts of Paul'),
+          ref('Alexander (Acts of Paul)', 29, 'nta', 'Encounters Thecla at Antioch (II).', 'Acts of Paul'),
+          ref('Panchares and Phila', 29, 'nta', 'Named in the fragmentary first episode, with a son (I). The son’s name, Barnabas, is the editor’s suggestion.', 'Acts of Paul'),
+          ref('People of the Myra episode', 29, 'nta', 'Hermocrates and Nympha, Dion and Hermippus (III).', 'Acts of Paul'),
+          ref('Longinus, Firmilla and Frontina', 29, 'nta', 'Named in episode VI.', 'Acts of Paul'),
+          ref('Eubula and Artemilla', 29, 'nta', 'Named in the Ephesus quotations (VIII).', 'Acts of Paul'),
+          ref('Cleobius and Myrte', 29, 'nta', 'Give the prophecy about Rome (IX).', 'Acts of Paul'),
+          ref('People of the Roman martyrdom', 29, 'nta', 'Patroclus, Nero, Longus and Cestus; Titus and Luke at the grave (X).', 'Acts of Paul'),
         ],
       },
     ],
