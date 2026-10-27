@@ -1,7 +1,7 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 3 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
-   Tobit, Judith, Wisdom, Baruch and the Esther and Daniel additions (slots 1–3, 5, 8, 9). The remaining works are added layer by layer in later checkpoints.
+   BUILD CHECKPOINT 4 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   Tobit, Judith, Wisdom, Sirach, Baruch and the Esther and Daniel additions (slots 1–5, 8, 9). The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
    handoff): research.md, integration-contract.md, work-gates.csv, geography-reuse.md, the five
@@ -86,9 +86,14 @@
     return e;
   }
   /* reference entry for a place with no approved map anchor, or a person, scoped to one work */
-  function ref(name, first, layer, desc, role) {
+  function ref(name, first, layer, desc, role, more) {
     const e = { name, first, books: [first], layers: [layer], desc };
     if (role) e.role = role;
+    /* later works' mentions: [[slot, text], …], each shown only once that work is chosen (PACK_FORMAT §13) */
+    if (more) {
+      e.more = more;
+      more.forEach(([b]) => e.books.indexOf(b) < 0 && e.books.push(b));
+    }
     return e;
   }
 
@@ -194,7 +199,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 5, 8, 9],
+            books: [1, 2, 4, 5, 8, 9],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -300,6 +305,62 @@
       ev('wis-18', 3, 'dc', 'Light, Passover and a plague stopped', 'A pillar guides the people; a rescued infant, the death of the firstborn and the Passover are recalled; and a priest stops a plague in the wilderness. The notes identify Moses and Aaron. No date is given.', 'Wisdom 18'),
       ev('wis-19', 3, 'dc', 'Through the Red Sea', 'The pursuit and the crossing of the Red Sea; the plagues and the quail are recalled, and the treatment of strangers is compared with Sodom. No crossing route is mapped.', 'Wisdom 19 (RV 1895)'),
 
+      /* ---- Sirach (slot 4). dc-sir-prologue-card, dc-sir-01-card … dc-sir-51-card (concept chapter cards).
+         Editions per deuterocanonical-coverage.csv: RV 1895 for the prologue and chapters 4, 22, 34, 37, 38,
+         44, 46 and 51, NABRE otherwise. Sirach 24 attaches to the Jerusalem anchor (Wisdom settles in Zion). ---- */
+      ev('sir-prologue', 4, 'dc', 'The translator’s prologue', 'The grandson of Jesus (Yeshua), the book’s author, explains that he came to Egypt in the thirty-eighth year of King Euergetes and translated his grandfather’s Hebrew work into Greek, warning that a translation cannot match the original exactly. Where he set out from is not said.', 'Sirach, prologue (RV 1895)'),
+      ev('sir-01', 4, 'dc', 'Wisdom comes from God', 'Wisdom has its origin with God; the chapter speaks of the fear of God and of discipline. A teaching, with no earthly setting.', 'Sirach 1'),
+      ev('sir-02', 4, 'dc', 'Trust in trials', 'The reader is told to trust God in hardship and to return when they fail. No person or place is named.', 'Sirach 2'),
+      ev('sir-03', 4, 'dc', 'Parents, humility and alms', 'Honoring father and mother, humility, a teachable spirit and almsgiving. Family duties in general, not a genealogy.', 'Sirach 3'),
+      ev('sir-04', 4, 'dc', 'The poor, the orphan and Wisdom’s discipline', 'Care for the poor and the orphan; Wisdom is pictured testing and training those who seek her.', 'Sirach 4'),
+      ev('sir-05', 4, 'dc', 'Presumption, wealth and speech', 'Warnings against presuming on mercy, trusting in wealth and careless speech. Its paths and winds are images, not an itinerary.', 'Sirach 5'),
+      ev('sir-06', 4, 'dc', 'Friendship tested', 'True and false friends, and the pursuit of Wisdom. The house and doorway are teaching images.', 'Sirach 6'),
+      ev('sir-07', 4, 'dc', 'Duties at home, to priests and to the needy', 'Counsel on household, priestly and charitable duties. Ophir appears only as a byword for the value of gold (7:18).', 'Sirach 7'),
+      ev('sir-08', 4, 'dc', 'Caution with the powerful', 'Prudence toward the powerful and toward travel companions; the warning about the desert is general.', 'Sirach 8'),
+      ev('sir-09', 4, 'dc', 'Counsel on women, friends and rulers', 'Counsel about women, friendship and rulers, written from the book’s own social standpoint. The city streets are unnamed.', 'Sirach 9'),
+      ev('sir-10', 4, 'dc', 'Rulers and pride', 'Rulers, pride and social honor. Kingdoms change hands in general terms, not as dated events.', 'Sirach 10'),
+      ev('sir-11', 4, 'dc', 'Reversals of fortune', 'Poverty, sudden changes of status, patience, and guests. No court or event is named.', 'Sirach 11'),
+      ev('sir-12', 4, 'dc', 'Doing good, and enemies', 'When and to whom to give, and wariness toward enemies.', 'Sirach 12'),
+      ev('sir-13', 4, 'dc', 'Rich and poor company', 'On keeping company with the rich and the poor; the animal comparisons are similes.', 'Sirach 13'),
+      ev('sir-14', 4, 'dc', 'Wealth, death and the search for Wisdom', 'Wealth in the face of death, and the search for Wisdom. Sheol and Wisdom’s house are ideas, not places.', 'Sirach 14'),
+      ev('sir-15', 4, 'dc', 'Wisdom as mother and bride; free choice', 'Wisdom meets the seeker like a mother and a young bride; people are free to choose. Personification, not a marriage or a route.', 'Sirach 15'),
+      ev('sir-16', 4, 'dc', 'Judgment recalled', 'The warning recalls rebels, Lot’s neighbors, dispossessed peoples and the wilderness generation (16:6–10). The notes identify Sodom, Gomorrah and the Canaanites; those are interpretations.', 'Sirach 16'),
+      ev('sir-17', 4, 'dc', 'Creation, covenant and repentance', 'Humanity’s creation, the covenant given to Israel, and the call to repent. The notes read 17:12–13 in light of Sinai; Sheol is an idea.', 'Sirach 17'),
+      ev('sir-18', 4, 'dc', 'Mercy, giving and restraint', 'God’s mercy; giving with kindness, keeping vows and self-control.', 'Sirach 18'),
+      ev('sir-19', 4, 'dc', 'Gossip and true wisdom', 'Gossip, correcting a neighbor, and the difference between cleverness and wisdom.', 'Sirach 19'),
+      ev('sir-20', 4, 'dc', 'Speech and its paradoxes', 'Silence and speech, gains that are losses, lying and gifts.', 'Sirach 20'),
+      ev('sir-21', 4, 'dc', 'Sin and folly', 'Sin and folly set against wisdom. The road to Sheol is a metaphor.', 'Sirach 21'),
+      ev('sir-22', 4, 'dc', 'Idleness, shame and friendship', 'Laziness, children who bring shame, mourning and keeping friends.', 'Sirach 22 (RV 1895)'),
+      ev('sir-23', 4, 'dc', 'A prayer against pride and lust', 'A prayer for help against pride and desire, followed by warnings about oaths and adultery. “Jacob’s inheritance” means the community, not a journey.', 'Sirach 23'),
+      ev('sir-24', 4, 'dc', 'Wisdom’s dwelling in Zion', 'Wisdom speaks: seeking a resting place, she is told to dwell in Jacob and is established in Zion and Jerusalem (24:8–12). She is compared with trees of Lebanon, Hermon, Engedi and Jericho, and the Law with rivers: Pishon, Tigris, Euphrates, Jordan, the Nile and Gihon. These are images, not travels.', 'Sirach 24', 'jerusalem'),
+      ev('sir-25', 4, 'dc', 'Social virtues; judgments about women', 'Social virtues, and harsh judgments about women from the book’s own standpoint. 25:24 alludes to the first sin; it is an allusion, not a separate claim.', 'Sirach 25'),
+      ev('sir-26', 4, 'dc', 'Good and bad wives', 'Good and bad wives and integrity. The sanctuary comparisons (26:17–18) do not locate a temple.', 'Sirach 26'),
+      ev('sir-27', 4, 'dc', 'Honest dealing and betrayed trust', 'Integrity in trade, speech that reveals character, betrayed confidences and vengeance.', 'Sirach 27'),
+      ev('sir-28', 4, 'dc', 'Forgiveness and the harm of the tongue', 'Forgiveness, and the damage done by the tongue. The refugees and cities are general.', 'Sirach 28'),
+      ev('sir-29', 4, 'dc', 'Loans, alms and surety', 'Lending, almsgiving, standing surety and hospitality. The exile in 29:18 is general, not a mapped journey.', 'Sirach 29'),
+      ev('sir-30', 4, 'dc', 'Discipline, health and joy', 'Disciplining children, the worth of health, and gladness of heart.', 'Sirach 30'),
+      ev('sir-31', 4, 'dc', 'Wealth and table manners', 'Wealth, and how to behave at a banquet.', 'Sirach 31'),
+      ev('sir-32', 4, 'dc', 'Leading a banquet; the Law', 'How to preside at a meal, keeping the Law, and prudence. The road warnings are general.', 'Sirach 32'),
+      ev('sir-33', 4, 'dc', 'Providence and differences among people', 'God’s ordering of differences, inheritance and the treatment of slaves. The teacher’s self-description (33:16–18) gives no address.', 'Sirach 33'),
+      ev('sir-34', 4, 'dc', 'Dreams, travel and unjust offerings', 'Dreams are unreliable; the speaker says he learned much through travel and faced danger (34:9–12), without saying where. Offerings from injustice are rejected.', 'Sirach 34 (RV 1895)'),
+      ev('sir-35', 4, 'dc', 'The Law, offerings and justice', 'The Law and offerings; justice, and God’s hearing of poor petitioners.', 'Sirach 35'),
+      ev('sir-36', 4, 'dc', 'A prayer for restoration', 'A prayer asks God to gather the tribes of Jacob and to glorify Jerusalem, Zion and the Temple (36:13–22). It is a petition, not a return that happens; family counsel follows.', 'Sirach 36'),
+      ev('sir-37', 4, 'dc', 'Friends and advisers', 'True and false friends and counselors, and moderation. Israel is spoken of as enduring (37:25).', 'Sirach 37 (RV 1895)'),
+      ev('sir-38', 4, 'dc', 'Physicians, mourning and trades', 'Physicians and remedies are placed within God’s care, alongside prayer; mourning the dead; skilled workers. 38:5 alludes to water made sweet by wood without naming a place.', 'Sirach 38 (RV 1895)'),
+      ev('sir-39', 4, 'dc', 'The scribe', 'The scribe studies and travels in foreign lands (39:4); creation is praised, its blessings likened to the Nile and the Euphrates. No endpoints are given.', 'Sirach 39'),
+      ev('sir-40', 4, 'dc', 'Mortality and relative goods', 'Human mortality, and which goods are better than others.', 'Sirach 40'),
+      ev('sir-41', 4, 'dc', 'Death, reputation and shame', 'Facing death, a good name that lasts, and what to be ashamed of. Sheol is an idea.', 'Sirach 41'),
+      ev('sir-42', 4, 'dc', 'Shame, daughters, and the works of God', 'Proper and improper shame, the book’s anxious counsel about daughters, and the beginning of praise of creation.', 'Sirach 42'),
+      ev('sir-43', 4, 'dc', 'Praise of sun, moon and weather', 'Sun, moon, stars and weather praise their maker; the moon marks feasts (43:6–8). No dated observation.', 'Sirach 43'),
+      ev('sir-44', 4, 'dc', 'Praise of the ancestors', 'The praise of the ancestors names Enoch, Noah, Abraham, Isaac, Jacob and the twelve tribes (44:16–23). The promised inheritance is an ideal, not a mapped territory.', 'Sirach 44 (RV 1895)'),
+      ev('sir-45', 4, 'dc', 'Moses, Aaron and Phinehas', 'Moses and his brother Aaron of the tribe of Levi; Aaron’s priesthood and descendants; the opposition of Dathan, Abiram and Korah; Phinehas son of Eleazar. The priestly inheritance is distinguished from David’s royal one.', 'Sirach 45'),
+      ev('sir-46', 4, 'dc', 'Joshua, Caleb, the judges and Samuel', 'Joshua son of Nun succeeds Moses, and he and Caleb son of Jephunneh survive to enter the inheritance; the judges are honored; Samuel judges, anoints rulers, and speaks after his death.', 'Sirach 46 (RV 1895)'),
+      ev('sir-47', 4, 'dc', 'Nathan, David and Solomon', 'Nathan in David’s time; David defeats Goliath and the Philistines and leads worship; his wise son Solomon builds the sanctuary, and the kingdom’s later division is tied to Solomon’s failings. Rehoboam and Jeroboam are named only in the notes.', 'Sirach 47'),
+      ev('sir-48', 4, 'dc', 'Elijah, Elisha and Hezekiah', 'Elijah is recalled at Sinai and Horeb and taken up in fire; Elisha succeeds him. Israel is scattered while Judah survives. Hezekiah brings water into the city; Sennacherib threatens Zion and deliverance comes through Isaiah. The notes identify the Siloam tunnel.', 'Sirach 48'),
+      ev('sir-49', 4, 'dc', 'Josiah, the prophets and the rebuilders', 'Josiah is faithful while other kings fail and the holy city is destroyed; Jeremiah, Ezekiel, Job and the Twelve Prophets are recalled. Zerubbabel and Jeshua son of Jozadak rebuild the altar and Temple; Nehemiah restores the walls. Enoch, Joseph, Shem, Seth, Enosh and Adam close the list.', 'Sirach 49'),
+      ev('sir-50', 4, 'dc', 'Simeon the high priest', 'Simeon son of Jochanan repairs the Temple and the city’s defenses and leads splendid worship. The author then voices hostility toward Seir, Philistia and the people at Shechem (50:25–26), and signs the book as Yeshua son of Eleazar son of Sira (50:27).', 'Sirach 50'),
+      ev('sir-51', 4, 'dc', 'Thanksgiving and an invitation to learn', 'A thanksgiving for rescue from unnamed dangers, then a poem of seeking Wisdom in youth, praying before the Temple, and an invitation to the house of instruction. No school is located.', 'Sirach 51 (RV 1895)'),
+
       /* ---- Baruch (slot 5). dc-bar-01-card … dc-bar-06-card. Chapter 6 is the Letter of Jeremiah. ---- */
       ev('bar-01', 5, 'dc', 'Baruch reads to the exiles', 'In Babylon, Baruch son of Nerias reads a book to Jechonias and the exiles by the river Sud. Money and the scroll are sent to Joakim the high priest in Jerusalem, the vessels are returned, and prayer is asked for Nabuchodonosor and his son Baltasar. The date names the fifth year and seventh day but no month. The edition’s introduction treats this setting as a literary frame.', 'Baruch 1', 'babylon'),
       ev('bar-02', 5, 'dc', 'A confession', 'The exiles’ prayer recalls the siege of Jerusalem, the ruined Temple, the deliverance from Egypt and subjection to Babylon, and looks to a promised return to the land and covenant.', 'Baruch 2'),
@@ -350,22 +411,31 @@
         title: 'Places without a map pin',
         list: [
           /* deuterocanonical-integration.csv dc-ref-* rows; identities not pinned (geography-reuse.md). */
-          ref('Nineveh', 1, 'dc', 'Tobit: the city where Tobit lives in exile and where the story begins and ends. Judith: Nebuchadnezzar’s capital in that book’s telling.'),
-          ref('Ecbatana, in Media', 1, 'dc', 'Tobit: the home of Raguel, Edna and Sarah, where Tobiah marries Sarah and later settles. Judith: the city of Arphaxad, captured by Nebuchadnezzar.'),
+          ref('Nineveh', 1, 'dc', 'Tobit: the city where Tobit lives in exile and where the story begins and ends.', '', [[2, 'Judith: Nebuchadnezzar’s capital in that book’s telling.']]),
+          ref('Ecbatana, in Media', 1, 'dc', 'Tobit: the home of Raguel, Edna and Sarah, where Tobiah marries Sarah and later settles.', '', [[2, 'Judith: the city of Arphaxad, captured by Nebuchadnezzar.']]),
           ref('Rages, in Media', 1, 'dc', 'Tobit: where Gabael keeps the money Tobit left in trust.'),
           ref('Thisbe', 1, 'dc', 'Tobit: Tobit’s home in Naphtali before his deportation.'),
-          ref('The Tigris', 1, 'dc', 'Tobit: the river where Tobiah catches the fish on the journey out.'),
+          ref('The Tigris', 1, 'dc', 'Tobit: the river where Tobiah catches the fish on the journey out.', '', [[4, 'Sirach: one of six rivers used as images of Wisdom’s abundance (24:25–27); a comparison, not a journey.']]),
           ref('Kaserin', 1, 'dc', 'Tobit: a place opposite Nineveh where Tobiah and Raphael go ahead of Sarah on the way home.'),
           ref('Upper Egypt', 1, 'dc', 'Tobit: where the demon Asmodeus flees and is bound. A destination in the story, not a mapped event.'),
           ref('Bethulia', 2, 'dc', 'Judith: Judith’s town, besieged by Holofernes. Its location is not identified, so it has no pin.'),
           ref('Betomesthaim', 2, 'dc', 'Judith: a town told, with Bethulia, to hold the mountain passes.'),
-          ref('The Red Sea', 2, 'dc', 'Judith: named in Achior’s account of Israel’s past. Wisdom: the sea the oppressed people pass through. No crossing point is mapped.'),
-          ref('The Nile', 3, 'dc', 'Wisdom: the notes give the Nile as the background of the river turned to blood. Not a mapped event.'),
+          ref('The Red Sea', 2, 'dc', 'Judith: named in Achior’s account of Israel’s past. No crossing point is mapped.', '', [[3, 'Wisdom: the sea the oppressed people pass through.']]),
+          ref('The Nile', 3, 'dc', 'Wisdom: the notes give the Nile as the background of the river turned to blood. Not a mapped event.', '', [[4, 'Sirach: a river image for abundance (24:27) and for blessing (39:22). Wisdom and Sirach are not linked into one river course.']]),
           ref('The river Sud', 5, 'dc', 'Baruch: where the exiles in Babylon hear Baruch read. Its location is unknown.'),
           ref('Susa', 8, 'dc', 'Esther additions: where Mordecai has his dream, and where the counter-decree says Aman was punished.'),
           ref('Joakim’s garden', 9, 'dc', 'Susanna: the garden of Susanna’s husband in Babylon, where the elders threaten her.'),
           ref('The temple of Bel', 9, 'dc', 'Bel and the Dragon: the temple whose priests Daniel exposes. A story setting, not an identified building.'),
           ref('The lions’ den', 9, 'dc', 'Bel and the Dragon: where Daniel is thrown and Habakkuk brings the meal. Not the same episode as the den in Daniel 6.'),
+          /* Sirach (slot 4): dc-ref-hermon, -engedi, -pishon, -gihon, -seir, -philistia; dc-sir-ophir. Ophir's
+             Tobit 13 mention (dc-ref-ophir first 1) is not yet written up, so the entry is scoped to Sirach. */
+          ref('Hermon', 4, 'dc', 'Sirach: one of four places whose trees and plants are images for Wisdom (24:13–14), with Lebanon, Engedi and Jericho. Not a journey stop.'),
+          ref('Engedi', 4, 'dc', 'Sirach: its palms are an image for Wisdom (24:14). A simile, not a scene.'),
+          ref('Pishon', 4, 'dc', 'Sirach: one of six rivers whose fullness is compared with the Law’s wisdom (24:25). Location unknown.'),
+          ref('Gihon', 4, 'dc', 'Sirach: one of the six river images (24:27). A note raises a possible link with the Nile; the two names are kept separate here.'),
+          ref('Seir', 4, 'dc', 'Sirach: one of three groups the author names with hostility (50:25–26). The polemic is the author’s, not this atlas’s judgment.'),
+          ref('Philistia', 4, 'dc', 'Sirach: named in the author’s closing polemic (50:26), with Seir and the people at Shechem.'),
+          ref('Ophir', 4, 'dc', 'Sirach: a byword for fine gold (7:18). The notes say the port is unidentified; no voyage is shown.'),
         ],
       },
       {
@@ -392,6 +462,32 @@
           ref('The night of the Passover', 3, 'dc', 'Wisdom: danger to infants, the death of the firstborn and the shared sacrifice recalled together (18:5–19). No date is given.'),
           ref('The priest who stopped the plague', 3, 'dc', 'Wisdom: a priestly intercessor stands in a wilderness plague with incense and prayer (18:20–25). A note identifies Aaron.'),
           ref('The treatment of strangers', 3, 'dc', 'Wisdom: the last chapter compares how strangers were treated in the Sodom and Egypt stories (19:13–17). The two are not one event.'),
+          /* dc-sir-* thematic-card rows (people cards are under People). Names given only by notes are marked. */
+          ref('Instruction in wisdom', 4, 'dc', 'Sirach: teaching on wisdom, reverence, speech, friendship, family conduct, wealth and duties to the community (chapters 1–43). Its paths, houses and roads are images, not travels.'),
+          ref('Arriving in Egypt', 4, 'dc', 'Sirach, prologue: the translator says he came to Egypt in the thirty-eighth year of Euergetes and stayed there. The date is the text’s own regnal date; no city is named.'),
+          ref('Judgment on the ancestors’ neighbors', 4, 'dc', 'Sirach: a warning recalls rebellion, Lot’s neighbors, dispossessed peoples and the wilderness generation (16:6–10). Naming them as Sodom, Gomorrah or Canaanites is the notes’ interpretation.'),
+          ref('Wisdom seeks a dwelling', 4, 'dc', 'Sirach: Wisdom looks for a resting place and is established among Jacob and Israel, in Zion and Jerusalem (24:3–12). A theological picture, not a migration.'),
+          ref('Trees of Wisdom', 4, 'dc', 'Sirach: Lebanon, Hermon, Engedi and Jericho supply plant images for Wisdom (24:13–14). Four comparisons, not four stops.'),
+          ref('Rivers of Wisdom', 4, 'dc', 'Sirach: Pishon, Tigris, Euphrates, Jordan, Nile and Gihon are images of abundance (24:25–27). No river course is drawn.'),
+          ref('Wisdom and the Law', 4, 'dc', 'Sirach: the speaker identifies this Wisdom with the book of the covenant, the law Moses commanded (24:23).'),
+          ref('Learning by travel', 4, 'dc', 'Sirach: the teacher says he learned through travel and danger (34:9–12), and the ideal scribe travels abroad (39:4). Neither gives a destination, and the scribe passage need not be autobiography.'),
+          ref('A prayer for gathering', 4, 'dc', 'Sirach: a prayer for the tribes of Jacob to be gathered and for Jerusalem, Zion and the Temple to be glorified (36:13–22). A hope, not a completed return. Two verses are missing from the numbering there, not from the text.'),
+          ref('Physicians', 4, 'dc', 'Sirach: physicians and remedies are placed within God’s care, alongside prayer (38:1–15). No medical advice is given here.'),
+          ref('Praise of creation', 4, 'dc', 'Sirach: sun, moon, seasons, the festival calendar and weather in praise of the creator (42:15–43:33). No dated observation.'),
+          ref('The early ancestors', 4, 'dc', 'Sirach: Enoch, Noah, Abraham, Isaac and Jacob carry the covenant memory; Isaac is named as Abraham’s son (44:16–23). The twelve-tribe division is not drawn as a map.'),
+          ref('Moses and the priests', 4, 'dc', 'Sirach: Moses and his brother Aaron, of Levi; Aaron’s priestly line; Phinehas son of Eleazar; the opponents Dathan, Abiram and Korah (45:1–24).'),
+          ref('Priest and king', 4, 'dc', 'Sirach: David’s royal inheritance, passed through one son, is set beside the priestly inheritance of Aaron’s descendants (45:25).'),
+          ref('Joshua and Caleb', 4, 'dc', 'Sirach: Joshua son of Nun succeeds Moses; he and Caleb son of Jephunneh are praised as the ones who entered the inheritance (46:1–10). No battles are located.'),
+          ref('The judges and Samuel', 4, 'dc', 'Sirach: the judges are honored; Samuel judges, anoints rulers and speaks after death (46:11–20). This edition (RV 1895) names the Tyrians in 46:18.'),
+          ref('David', 4, 'dc', 'Sirach: Nathan serves in David’s time; David defeats Goliath, fights the Philistines and is praised for his worship (47:1–11). An idealized memory, with no campaign map.'),
+          ref('Solomon', 4, 'dc', 'Sirach: David’s wise son builds the sanctuary; the later division of the kingdom is tied to his failings (47:12–24). Rehoboam and Jeroboam are named by the notes.'),
+          ref('Elijah and Elisha', 4, 'dc', 'Sirach: Elijah at Sinai and Horeb, taken up in fire, succeeded by Elisha (48:1–16). A prophetic succession, not a family line.'),
+          ref('Hezekiah and Isaiah', 4, 'dc', 'Sirach: Hezekiah brings water into the city; Sennacherib threatens Zion, and deliverance comes through Isaiah (48:17–25). The Siloam tunnel identification is a note.'),
+          ref('Josiah and the prophets', 4, 'dc', 'Sirach: Josiah’s faithfulness, and Jeremiah, Ezekiel, Job and the Twelve, against the failure of kings and the destruction of the holy city (49:1–10).'),
+          ref('The rebuilders', 4, 'dc', 'Sirach: Zerubbabel and Jeshua son of Jozadak restore the altar and Temple; Nehemiah restores the walls and gates (49:11–13). Separate works, not one project.'),
+          ref('The first generations', 4, 'dc', 'Sirach: Enoch, Joseph, Shem, Seth, Enosh and Adam close the list of ancestors (49:14–16); Joseph’s remains are honored.'),
+          ref('The closing polemic', 4, 'dc', 'Sirach: the author voices hostility toward Seir, Philistia and the people at Shechem (50:25–26). A note identifies the last as Samaritans. Recorded as the author’s polemic, not endorsed.'),
+          ref('The house of instruction', 4, 'dc', 'Sirach: the closing poem recalls seeking Wisdom in youth and praying before the Temple, and invites learners to a house of instruction (51:13–30). No school is located.'),
         ],
       },
       {
@@ -430,6 +526,9 @@
           ref('Uzziah', 2, 'dc', 'A leader of Bethulia who shelters Achior and sets the five-day deadline.', 'Judith'),
           ref('Bagoas', 2, 'dc', 'A member of Holofernes’ household who arranges the banquet and discovers his body.', 'Judith'),
           ref('Judith’s maid', 2, 'dc', 'Unnamed in the text; she goes with Judith into the camp and is freed at the end.', 'Judith'),
+          ref('Jesus (Yeshua) son of Eleazar son of Sira', 4, 'dc', 'The author named in the colophon (50:27) and, in the prologue, the translator’s grandfather. Not Jesus of Nazareth.', 'Sirach'),
+          ref('The translator', 4, 'dc', 'Unnamed in the prologue: the author’s grandson, who translated the Hebrew work into Greek in Egypt.', 'Sirach'),
+          ref('Simeon son of Jochanan', 4, 'dc', 'The high priest praised in chapter 50 for repairing the Temple and city and for his worship. A note identifies him as Simeon II (about 219–196 BC) and suggests a Day of Atonement setting; both are editorial, not dates in the text.', 'Sirach'),
           ref('Baruch son of Nerias', 5, 'dc', 'Reads his book to the exiles in Babylon in the book’s opening frame.', 'Baruch'),
           ref('Esther', 8, 'dc', 'The queen who prays, then goes before the king and is heard.', 'Esther additions'),
           ref('Mordecai (Mardocheus)', 8, 'dc', 'Dreams of the dragons and the stream, urges Esther to plead with the king, and later explains the dream.', 'Esther additions'),

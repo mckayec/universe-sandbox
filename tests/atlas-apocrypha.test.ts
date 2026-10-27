@@ -61,3 +61,33 @@ test('only the five reused anchors are pinned, all on Earth', () => {
   const sites = pack.worlds.flatMap((w: any) => w.sites || []).map((s: any) => s.id);
   assert.deepEqual([...sites].sort(), ['babylon', 'bethlehem', 'jerusalem', 'nazareth', 'rome']);
 });
+
+test('codex text naming a work is gated at that work', () => {
+  // "Work: …" prefixes in a codex description must belong to the entry's own `first` slot; later works'
+  // mentions go in `more` so they are not shown to a visitor who has chosen an earlier work.
+  const slotOf: Record<string, number> = {
+    Tobit: 1,
+    Judith: 2,
+    Wisdom: 3,
+    Sirach: 4,
+    'Sirach, prologue': 4,
+    Baruch: 5,
+    'Esther additions': 8,
+    Susanna: 9,
+    'Bel and the Dragon': 9,
+  };
+  const label = /(?:^|\. )([A-Z][A-Za-z ,]*?): /g;
+  for (const section of pack.codex) {
+    for (const e of section.list) {
+      for (const m of e.desc.matchAll(label)) {
+        const slot = slotOf[m[1]];
+        if (slot !== undefined) assert.equal(slot, e.first, `${e.name}: "${m[1]}:" text shown from slot ${e.first}`);
+      }
+      for (const [book, text] of e.more || []) {
+        assert.ok(book > e.first && e.books.includes(book), `${e.name}: bad more entry for ${book}`);
+        const m = /^([A-Z][A-Za-z ,]*?): /.exec(text);
+        if (m && slotOf[m[1]] !== undefined) assert.equal(slotOf[m[1]], book, `${e.name}: more text for ${book}`);
+      }
+    }
+  }
+});
