@@ -90,3 +90,15 @@ No `research-addendum.md` or `research-audit.md` exists yet for this research re
 - Seen in the screenshots: in the eastern Mediterranean at globe zoom some labels hide each other (Rome, Seleucia, Salamis, Lystra lose their labels next to bigger neighbours). Same issue as the US cluster in checkpoint 4; label collision is next.
 - Next: label collision at globe zoom; then the schematic Book of Mormon view (Q03, which also needs Mckay's view).
 - 2026-10-27 build checkpoint 6 (`5897523`): label collisions resolved generically (collapse to markers, `major` priority). Remaining before `built`: schematic BoM internal-geography view (RR05/Q03), build-report.md, full screenshot set. Q01–Q04 still awaiting answers in `research-addendum.md`.
+
+## Build checkpoint 7 (2026-10-27): pre-handoff check
+
+- Branch `pack/lds-standard-works`, draft PR #33, commit `89198c739f4915db867fd81df957e4ddb1b886f3`.
+- Pack at this commit: 36 Earth sites, 9 surface routes, 24 Chronicle events, codex lists of 7 (the works), 14 (places without a map pin) and 6 (narratives without a map pin). No Book of Mormon pins.
+- **Fixed (generic engine, found in this run's phone screenshot):** at 390 px wide the Track A filter bar collapsed to zero width (the ≤1100 px rule's `width: calc(100% - 450px)` went negative), hiding the layer toggles and squeezing the year slider into the left edge. The ≤820 px rule now resets `width: auto`. This bug is also on `main` but no live pack uses layers yet. Breadcrumbs get a text shadow so they stay readable over a bright globe.
+- Checks on `89198c7`: `pnpm format`/`pnpm check` 73/73 and check:dist OK; `test:pages` 12×2 pass; Playwright (SwiftShader) at 3840×2160, 1440×900, 1280×800 and 390×844 with no console errors or failed requests. `test:browser` times out in this container on both this branch and unchanged `main` (main sandbox page, not the atlas; environmental, as in checkpoint 1); CI runs it on the PR.
+- Screenshots: `shots/b7-all-1440.jpg`, `shots/b7-dc-1280.jpg` (D&C layer only), `shots/b7-bom-phone-390.jpg` (BoM layer, fixed filter bar), `shots/b7-asia-4k-crop.jpg`.
+- **Open before `built` (my items, next run):**
+  - BV1: at 1440×900 the fan notice runs over the bottom row of the details panel's place list. Needs a layout fix (panel bottom inset or notice placement).
+  - BV2: under SwiftShader the full-resolution surface bake had still not finished after 8 minutes, so every screenshot shows the 512 px preview stage, which has soft dark blobs over Central Asia/India and a pale Red Sea. Checkpoint 3's `rr09-*` shots show the finished bake, but I need a finished-bake 4K capture at this commit before claiming the 4K bar. Plan: capture with a reduced bake size flag or a longer background wait.
+- Still waiting: Q01–Q04 (no `research-addendum.md`). The schematic Book of Mormon view (RR05/Q03) is a design and canon question, so I've asked Mckay whether to build it now or hand off without it and add it later.
