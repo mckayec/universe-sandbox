@@ -463,3 +463,48 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .tr-grid line{stroke:rgba(var(--sw-rgb),.09);stroke-width:1}
 .tr-tickbg{fill:rgba(var(--panel-rgb),.94)}
 .tr-ticks text{font-size:10px;letter-spacing:.06em;fill:var(--muted)}
+
+/* compact work picker for packs with more than 12 books (PACK_FORMAT section 6) */
+.seg.picker > button[data-b] {
+  display: none;
+}
+.seg.picker {
+  align-items: stretch;
+}
+.seg.picker .bkpick {
+  min-width: 0;
+  max-width: 22rem;
+  flex: 1 1 auto;
+  font: inherit;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  padding: 4px 6px;
+  text-overflow: ellipsis;
+}
+.seg.picker .bkpick option,
+.seg.picker .bkpick optgroup {
+  color: #111;
+  background: #f4f1ea;
+}
+.seg.picker .bkstep {
+  flex: 0 0 auto;
+  min-width: 30px;
+}
+@media (max-width: 820px) {
+  .seg.picker {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .seg.picker .bkpick {
+    max-width: none;
+    flex: 1 1 0;
+    width: 0;
+  }
+}
+.bkgap {
+  font: 600 11px var(--f-hud);
+  color: var(--muted);
+  padding: 0 4px;
+  align-self: center;
+}
