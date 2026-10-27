@@ -78,3 +78,15 @@ Branch `pack/christian-apocrypha` at `84387a26656da934ebd0c17e4e75ba0c8ae104d1` 
 - **Checks:** `pnpm check` 87/87; `pnpm test:pages` 12 pages × 2; `pnpm test:browser` passed; screenshots at 1440×900 and 390×844 with `#book=9`, no console errors.
 
 **Next:** Sirach (slot 4: 52 concept cards, 29 thematic cards), then 1–2 Maccabees (slots 6–7), then units 3–6.
+
+## Build checkpoints 4–5 (2026-10-27)
+
+Branch `pack/christian-apocrypha` at `df6991869bd3ea6d007a55c7443bed9581c9bfd0` (checkpoint 4 at `0a42116`; no PR yet).
+
+- **Sirach (slot 4):** 52 Chronicle entries, one per `dc-sir-prologue-card` and `dc-sir-01…51-card`, editions per deuterocanonical-coverage.csv (RV 1895 for the prologue and chapters 4, 22, 34, 37, 38, 44, 46, 51; NABRE otherwise). Sirach 24 attaches to the Jerusalem anchor. Themes codex: 25 `dc-sir-*` thematic cards; People: the author (colophon name, "not Jesus of Nazareth"), the translator, Simeon son of Jochanan (Simeon II identification and Day of Atonement setting labelled editorial). Places: Hermon, Engedi, Pishon, Gihon, Seir, Philistia, Ophir. Ophir's Tobit 13 mention (`dc-ref-ophir` first 1) is not written up yet, so its entry is scoped to slot 4; Lebanon, Jericho, Jordan and Euphrates (first 2) appear only inside the Sirach plant/river theme entries for now.
+- **Gating fix (self-found):** checkpoint 3 showed later works' text at an earlier slot in three codex entries (Nineveh and Ecbatana carried Judith text at slot 1; the Red Sea carried Wisdom text at slot 2). `ref()` now takes PACK_FORMAT §13 `more` additions, those entries were split, and a new test asserts that any "Work:" text in a codex entry belongs to the entry's own slot or to a correctly gated `more`.
+- **1 Maccabees (slot 6), partial:** 16 Chronicle entries (`dc-m1-c01…c16-card`, all RV 1895; years in the book's own Greek-kingdom era, RV BC annotations not adopted; c01 and c04 attach to Jerusalem, c08 to Rome); 19 work-scoped people with the `dc-m1-r01…r08` relationships stated on them (the three Antiochi, two Ptolemies and two Demetrii kept apart); 5 journeys (`dc-m1-j01…j05`) as ordered text. **Not yet:** the 95 1 Maccabees place-reference rows (codex), which need per-place context from the chapter cards.
+- **Checks:** `pnpm check` 88/88; `pnpm test:pages` 12 pages × 2; `pnpm test:browser` passed (one intermittent timeout in this sandbox, passed on rerun; the atlas is not part of that test); screenshots at 1440×900 and 390×844 with `#book=4` and `#book=6`, no console errors.
+- **Layout item (known, for the polish unit):** the Chronicle book marker overflows for two-part labels ("1 Mc"), as noted at checkpoint 2.
+
+**Next:** 1 Maccabees places, then 2 Maccabees (slot 7, incl. Mordecai's slot-7 mention), then units 3–6.
