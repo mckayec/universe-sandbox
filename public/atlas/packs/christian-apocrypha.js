@@ -1,6 +1,6 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 7 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   BUILD CHECKPOINT 8 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
    the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9). The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
@@ -482,6 +482,128 @@
           ref('Bethulia', 2, 'dc', 'Judith: Judith’s town, besieged by Holofernes. Its location is not identified, so it has no pin.'),
           ref('Betomesthaim', 2, 'dc', 'Judith: a town told, with Bethulia, to hold the mountain passes.'),
           ref('The Red Sea', 2, 'dc', 'Judith: named in Achior’s account of Israel’s past. No crossing point is mapped.', '', [[3, 'Wisdom: the sea the oppressed people pass through.']]),
+          /* Tobit and Judith (slots 1–2): the remaining dc-ref-* place-reference rows with first = 1 or 2. Each entry
+             says only what the chapter cards dc-tob-01…14 and dc-jdt-01…16 state; names that appear only in a list
+             (Nebuchadnezzar’s summons, Holofernes’s campaign, the warned towns) are described as such, not given a
+             role. Later works’ mentions are gated `more` text. Similar names are kept apart (Kedesh, Kadesh and
+             Kadesh-barnea; Sur and Bethsura; Belmain and Belmaim; Choba and Chobai; Dothan and Dothaim). */
+          ref('Media', 1, 'dc', 'Tobit: where Tobit trades and leaves ten talents in trust with Gabael at Rages (ch. 1); Ecbatana, Sarah’s home, is in Media (ch. 3). Dying, Tobit urges Tobiah and his seven sons to go to Media, in light of Nahum’s prophecy (ch. 14).', '', [
+            [6, 'First Maccabees: named in chapter 1 (Alexander’s conquests), among the reports of Roman power (ch. 8), and in chapter 14, the chapter of Demetrius’s capture by Arsaces.'],
+          ]),
+          ref('Egypt', 1, 'dc', 'Tobit: the demon flees to upper Egypt (ch. 8; see Upper Egypt). No binding site is mapped.', '', [
+            [2, 'Judith: “the river of Egypt” and Egyptian towns are in the list of lands Nebuchadnezzar summons (ch. 1); Achior’s account of Israel’s past goes from Canaan to Egypt and out by the Red Sea (ch. 5).'],
+            [3, 'Wisdom: chapter 16 contrasts Egypt and Israel. A literary contrast, not a mapped event.'],
+            [4, 'Sirach: the translator says in the prologue that he came to Egypt in the thirty-eighth year of King Euergetes. Where he set out from is not stated.'],
+            [6, 'First Maccabees: Antiochus Epiphanes’ Egyptian campaign (ch. 1); recalled among ancestral memories (ch. 2); Lysias is left over the lands west of the Euphrates, Egypt included (ch. 3); named again in chapter 11, the chapter of Ptolemy’s invasion.'],
+            [7, 'Second Maccabees: the opening letters are addressed to Jews in Egypt (ch. 1); Antiochus’s second Egyptian campaign, and Jason’s flight, which passes through Egypt (ch. 5); Philip brings Antiochus’s body home, then flees to Ptolemy Philometor in Egypt (ch. 9). Also named in chapter 4.'],
+            [8, 'Esther additions: Mordecai’s prayer recalls Egypt (C).'],
+          ]),
+          ref('Elymais', 1, 'dc', 'Tobit: named in chapter 2. Editions differ on who goes there (the RV reads “until I went into Elymais”, with a “he went” variant), so no journey is assigned.', '', [
+            [6, 'First Maccabees: “Elymais in Persia”, which Antiochus Epiphanes fails to plunder before he dies in a foreign land (ch. 6). Kept separate from the death accounts in 2 Maccabees.'],
+          ]),
+          ref('Kedesh', 1, 'dc', 'Tobit: Thisbe, Tobit’s home, is described as near Kedesh of Naphtali (ch. 1). Kept separate from Kadesh and Kadesh-barnea in Judith.', '', [
+            [6, 'First Maccabees: named in chapter 11, in the wars of Ptolemy and Demetrius and Jonathan’s campaigns.'],
+          ]),
+          ref('Ararat', 1, 'dc', 'Tobit: where Sennacherib’s sons flee after his assassination (ch. 1).'),
+          ref('Dan', 1, 'dc', 'Tobit: in Tobit’s memory of his youth, his pilgrimages to Jerusalem are set against worship at Dan (ch. 1).'),
+          ref('Phogor', 1, 'dc', 'Tobit: named with Thisbe in Tobit’s home region (ch. 1). The notes leave both unidentified.'),
+          ref('Tobit’s remembered home region', 1, 'dc', 'Tobit: the Naphtali homeland Tobit recalls before his deportation to Nineveh (ch. 1). A remembered region, without a location.'),
+          ref('Sarah and Tobiah’s bridal chamber', 1, 'dc', 'Tobit: where the fish smoke drives the demon away and the couple pray (ch. 8). A story setting, not a located room.'),
+          ref('Persia', 2, 'dc', 'Judith: first in the list of lands Nebuchadnezzar summons to his war (ch. 1).', '', [
+            [6, 'First Maccabees: named in chapter 1 (Alexander’s conquests) and in chapter 6, where Elymais is “in Persia”.'],
+            [7, 'Second Maccabees: the opening letter’s story of the hidden fire recovered under Nehemiah ends with Persian recognition (ch. 1); named again in chapter 9, where Antiochus fails to plunder the temple at Persepolis.'],
+          ]),
+          ref('Cilicia', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1); Holofernes’s campaign passes Upper Cilicia and later Cilicia (ch. 2). A note calls the three-day march from Nineveh impossible: a narrative sequence, not a route.', '', [
+            [6, 'First Maccabees: named in chapter 11, in the wars of Ptolemy and Demetrius and Jonathan’s campaigns.'],
+            [7, 'Second Maccabees: named in chapter 4 with Tarsus and Mallus, whose revolt draws Antiochus away.'],
+          ]),
+          ref('Damascus', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1); Holofernes’s campaign sequence ends at Damascus (ch. 2); after his death the Israelites pursue the fleeing army beyond Damascus (ch. 15), a broad direction only.', '', [
+            [6, 'First Maccabees: Jonathan’s campaign reaches it (ch. 11), and after campaigning toward Hamath he returns by Damascus to Jerusalem (ch. 12).'],
+          ]),
+          ref('Gilead', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1); people of Gilead and Galilee join the pursuit (ch. 15).', '', [
+            [6, 'First Maccabees: Judas and Jonathan cross the Jordan to relieve the besieged in Gilead (ch. 5; see Mizpeh of Gilead and Bosora); named again in chapter 13, the chapter of Jonathan’s death.'],
+          ]),
+          ref('Galilee', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1); people of Galilee join the pursuit (ch. 15).', '', [
+            [6, 'First Maccabees: Simon brings the Jews of Galilee and Arbatta into Judaea (ch. 5).'],
+          ]),
+          ref('Samaria', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1), and the first of the places warned to prepare (ch. 4).', '', [
+            [6, 'First Maccabees: named in chapter 3, the chapter of Judas’s victories over Apollonius and Seron; in chapter 5 the RV prints “Samaria” with “Marisa” as an alternative reading; named again in chapter 11.'],
+            [7, 'Second Maccabees: the region of Samaria is named in the chapter of Nicanor’s planned Sabbath attack (ch. 15).'],
+          ]),
+          ref('The Jordan', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1); named in Achior’s account of Israel’s past (ch. 5).', '', [
+            [4, 'Sirach: one of six rivers whose fullness is compared with the Law’s wisdom (24:25–27).'],
+            [6, 'First Maccabees: Judas and Jonathan cross it for the Gilead campaign and come back over it by Bethshan (ch. 5); an escape across the Jordan in chapter 9, during the fighting with Bacchides.'],
+          ]),
+          ref('Jericho', 2, 'dc', 'Judith: one of the places warned to prepare for Holofernes (ch. 4).', '', [
+            [4, 'Sirach: one of four places whose plants are images for Wisdom (24:13–14).'],
+            [6, 'First Maccabees: named in chapter 9, in Bacchides’s campaign; the plain of Jericho is named in chapter 16, with Dok, where Simon and two of his sons are murdered.'],
+          ]),
+          ref('The Euphrates', 2, 'dc', 'Judith: one of the rivers named with the coalition (ch. 1); Holofernes’s campaign sequence passes the Euphrates and Mesopotamia (ch. 2).', '', [
+            [4, 'Sirach: one of the six river images for the Law’s wisdom (24:25–27).'],
+            [6, 'First Maccabees: Antiochus leaves Lysias in charge of the lands west of the Euphrates (ch. 3).'],
+          ]),
+          ref('Judea (Judaea)', 2, 'dc', 'Judith: Judith promises to lead Holofernes through Judea to Jerusalem (ch. 11). A deceptive promise; the route is never travelled.', '', [
+            [6, 'First Maccabees: Simon brings the Jews of Galilee and Arbatta into Judaea (ch. 5); named again in chapter 7, the chapter of Bacchides and Nicanor.'],
+            [7, 'Second Maccabees: named in the opening letter (ch. 1), in Eupator’s campaign (ch. 13) and in Nicanor’s commission (ch. 14).'],
+            [9, 'Bel and the Dragon: an angel carries Habakkuk from Judea to the lions’ den in Babylon and back.'],
+          ]),
+          ref('Lebanon', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1).', '', [[4, 'Sirach: one of four places whose plants are images for Wisdom (24:13–14).']]),
+          ref('Esdraelon', 2, 'dc', 'Judith: in the list of lands summoned (ch. 1); Holofernes approaches it near Dotaea (ch. 3); the passes Bethulia must hold are near it (ch. 4); the army camps between Belmaim and Cyamon by Esdraelon (ch. 7).'),
+          ...['Antilebanon', 'Carmel', 'Bethany', 'Chelous', 'The river of Egypt', 'Tahpanhes', 'Raamses', 'Goshen', 'Tanis', 'Memphis', 'Ethiopia'].map((n) =>
+            ref(n, 2, 'dc', 'Judith: named only in the list of lands Nebuchadnezzar summons to his war (ch. 1).'),
+          ),
+          ref('Kadesh', 2, 'dc', 'Judith: named only in the list of lands summoned (ch. 1). Kept separate from Kedesh in Tobit and from Kadesh-barnea.'),
+          ref('Hydaspes', 2, 'dc', 'Judith: one of the rivers named with Nebuchadnezzar’s opponents (ch. 1), with the Euphrates and the Tigris.'),
+          ref('Ragau', 2, 'dc', 'Judith: Nebuchadnezzar fights Arphaxad near Ragau (ch. 1). The notes call both kings, as portrayed, inventions of the story.'),
+          ...['Bectileth', 'Put', 'Lud', 'Mesopotamia', 'Wadi Abron', 'Japheth', 'Midian'].map((n) =>
+            ref(n, 2, 'dc', 'Judith: a name in Holofernes’s campaign sequence from Nineveh to Damascus (ch. 2). The note calls the sequence partly rhetorical; it is not a route.'),
+          ),
+          ref('Arabia', 2, 'dc', 'Judith: in Holofernes’s campaign sequence, with Japheth and Midian (ch. 2).', '', [
+            [6, 'First Maccabees: Alexander flees to Arabia, where Zabdiel beheads him (ch. 11).'],
+            [7, 'Second Maccabees: named in the account of Jason’s flight (ch. 5).'],
+          ]),
+          ...['Sidon', 'Ocina'].map((n) => ref(n, 2, 'dc', 'Judith: one of the coastal places struck with terror by Holofernes’s advance (ch. 2).')),
+          ref('Sur', 2, 'dc', 'Judith: one of the coastal places struck with terror (ch. 2). Kept separate from Bethsura.'),
+          ref('Tyre', 2, 'dc', 'Judith: one of the coastal places struck with terror (ch. 2).', '', [
+            [6, 'First Maccabees: the Ladder of Tyre is named in chapter 11 (its own entry).'],
+            [7, 'Second Maccabees: envoys are sent to the games at Tyre; later Jewish envoys are condemned there while Menelaus buys his acquittal (ch. 4).'],
+          ]),
+          ref('Jamnia', 2, 'dc', 'Judith: one of the coastal places struck with terror (ch. 2).', '', [
+            [6, 'First Maccabees: named in the pursuit after Emmaus (ch. 4); Joseph son of Zacharias and Azarias are defeated there after acting without orders (ch. 5); named in chapter 10; Cendebaeus raids from it (ch. 15).'],
+            [7, 'Second Maccabees: Judas burns its harbour (ch. 12).'],
+          ]),
+          ref('Azotus', 2, 'dc', 'Judith: one of the coastal places struck with terror (ch. 2).', '', [
+            [6, 'First Maccabees: named in the pursuit after Emmaus (ch. 4); a campaign after Hebron (ch. 5); Jonathan and Simon defeat Apollonius near Joppa and Azotus and burn the temple of Dagon (ch. 10); named again in chapter 16.'],
+          ]),
+          ref('Ascalon', 2, 'dc', 'Judith: one of the coastal places struck with terror (ch. 2).', '', [[6, 'First Maccabees: it receives Jonathan (ch. 10); named again in chapters 11 and 12.']]),
+          ref('Scythopolis', 2, 'dc', 'Judith: Holofernes camps between Geba and Scythopolis for a month (ch. 3).', '', [
+            [7, 'Second Maccabees: its friendship is noted before Judas returns to Jerusalem for the feast of Weeks (ch. 12).'],
+          ]),
+          ref('Geba', 2, 'dc', 'Judith: Holofernes camps between Geba and Scythopolis (ch. 3).'),
+          ref('Dotaea', 2, 'dc', 'Judith: Holofernes approaches Esdraelon near Dotaea (ch. 3). The RV spelling is kept; no modern identification is made.'),
+          ref('Bethhoron', 2, 'dc', 'Judith: one of the places warned to prepare (ch. 4). Also spelled Beth-horon.', '', [
+            [6, 'First Maccabees: Judas defeats Seron there after defeating Apollonius (ch. 3); named again in chapters 7 and 9.'],
+          ]),
+          ...['Kona', 'Belmain', 'Choba', 'Aesora', 'Salem'].map((n) => ref(n, 2, 'dc', 'Judith: one of the places warned to prepare for Holofernes (ch. 4). Spellings are not independently located.')),
+          ref('Dothan', 2, 'dc', 'Judith: the passes Bethulia and Betomesthaim must hold are near Esdraelon and Dothan (ch. 4). Kept separate from Dothaim.'),
+          ref('Canaan', 2, 'dc', 'Judith: in Achior’s account of Israel’s past, between the ancestors’ origins and Egypt (ch. 5).', '', [
+            [5, 'Baruch: named in the Wisdom poem as a rhetorical comparison (ch. 3), not a journey.'],
+          ]),
+          ref('Sinai', 2, 'dc', 'Judith: in Achior’s account of Israel’s past, with Kadesh-barnea (ch. 5). Also called Horeb.', '', [
+            [3, 'Wisdom: the notes give Horeb as background to the water from the rock (ch. 11).'],
+            [4, 'Sirach: the notes read 17:12–13 in light of Sinai; Elijah is recalled at Sinai and Horeb (ch. 48).'],
+          ]),
+          ref('Kadesh-barnea', 2, 'dc', 'Judith: in Achior’s account of Israel’s past, with Sinai (ch. 5). An embedded history, not a verified route.'),
+          ref('Holofernes’ camp', 2, 'dc', 'Judith: where Achior speaks before Holofernes (ch. 5); Judith enters it, returns to it each night, and leaves it with Holofernes’s head (chs. 10–13). No coordinates.'),
+          ref('The hillfoot below Bethulia', 2, 'dc', 'Judith: where Achior is left bound and is rescued into the town (ch. 6).'),
+          ref('The valley outside Bethulia', 2, 'dc', 'Judith: Judith and her maid cross it to reach the camp (ch. 10); she bathes and prays at its spring on three nights (ch. 12).'),
+          ...['Dothaim', 'Belmaim', 'Cyamon'].map((n) => ref(n, 2, 'dc', n === 'Dothaim' ? 'Judith: the army camps between Dothaim and Belmaim (ch. 7); Judith’s husband Manasseh is buried between Dothaim and Balamon (ch. 8). Kept separate from Dothan.' : 'Judith: named in the siege of Bethulia, where the army camps by the spring (ch. 7). The siege layout is literary.')),
+          ...['Ekrebel', 'Chusi', 'Mochmur'].map((n) => ref(n, 2, 'dc', 'Judith: named in the positions of the Edomite and Ammonite forces during the siege (ch. 7). The siege layout is literary.')),
+          ref('Balamon', 2, 'dc', 'Judith: Manasseh, Judith’s husband, is buried between Dothaim and Balamon (ch. 8). No tomb is mapped.'),
+          ...['Bebai', 'Chobai', 'Chola'].map((n) => ref(n, 2, 'dc', 'Judith: one of the places sent word after Holofernes’s death (ch. 15). Spelling variants are not independently located.')),
+          ref('Shechem', 2, 'dc', 'Judith: her prayer recalls Simeon’s violence at Shechem (ch. 9). An attributed prayer, not the narrator’s endorsement.', '', [
+            [4, 'Sirach: the people at Shechem are one of three groups the author names with hostility (50:25–26).'],
+          ]),
           ref('The Nile', 3, 'dc', 'Wisdom: the notes give the Nile as the background of the river turned to blood. Not a mapped event.', '', [[4, 'Sirach: a river image for abundance (24:27) and for blessing (39:22). Wisdom and Sirach are not linked into one river course.']]),
           ref('The river Sud', 5, 'dc', 'Baruch: where the exiles in Babylon hear Baruch read. Its location is unknown.'),
           ref('Susa', 8, 'dc', 'Esther additions: where Mordecai has his dream, and where the counter-decree says Aman was punished.'),
@@ -496,12 +618,12 @@
           ref('Gihon', 4, 'dc', 'Sirach: one of the six river images (24:27). A note raises a possible link with the Nile; the two names are kept separate here.'),
           ref('Seir', 4, 'dc', 'Sirach: one of three groups the author names with hostility (50:25–26). The polemic is the author’s, not this atlas’s judgment.'),
           ref('Philistia', 4, 'dc', 'Sirach: named in the author’s closing polemic (50:26), with Seir and the people at Shechem.'),
-          ref('Ophir', 4, 'dc', 'Sirach: a byword for fine gold (7:18). The notes say the port is unidentified; no voyage is shown.'),
+          ref('Ophir', 1, 'dc', 'Tobit: the hymn of chapter 13 pictures an ideal Jerusalem built with precious stones, among them stones of Ophir. Imagery, not a visit.', '', [[4, 'Sirach: a byword for fine gold (7:18). The notes say the port is unidentified; no voyage is shown.']]),
           /* 1 Maccabees (slot 6): the 94 dc-ref-* place-reference rows with first = 6, except Rome, which is a
              pinned anchor. Each entry says only what the chapter cards (dc-m1-c01…c16) state about the place;
              where a card only lists a name, the entry gives the chapter and its episode, not a role. Mentions in
              2 Maccabees (slot 7) are added with that work. Places first named in Tobit or Judith (Egypt, Media,
-             Jordan, Jericho, Azotus and others) get their 1 Maccabees text when their own entries are written. */
+             Jordan, Jericho, Azotus and others) carry their 1 Maccabees text as gated `more` on their own entries. */
           ref('Sparta', 6, 'dc', 'First Maccabees: Jonathan’s envoys carry a letter to the Spartans claiming kinship through Abraham (ch. 12); friendship is renewed under Simon (ch. 14), and Sparta is among the recipients of the Roman letter (ch. 15). Also called the Spartans or Lacedaemonians.'),
           ref('Chittim', 6, 'dc', 'First Maccabees: named in chapter 1, in the account of Alexander’s conquests, and again in the reports of Roman power (ch. 8).'),
           ref('The City of David', 6, 'dc', 'First Maccabees: named in chapter 1, among the events in Jerusalem under Antiochus Epiphanes.'),

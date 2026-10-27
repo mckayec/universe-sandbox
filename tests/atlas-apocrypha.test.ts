@@ -111,6 +111,26 @@ test('every 1 Maccabees place-reference row has its own codex entry', () => {
   assert.equal(entries.length, rows.length - 1, 'one entry per row; Rome is a pinned anchor');
 });
 
+test('every Tobit and Judith place-reference row has a codex entry scoped to its first work', () => {
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/^the /, '')
+      .replace(/[^a-z]/g, '');
+  const rows = readCsv('deuterocanonical-integration.csv').filter(
+    r => r.kind === 'place-reference' && (r.first === '1' || r.first === '2'),
+  );
+  const list = pack.codex.find((s: any) => s.id === 'places').list;
+  const anchors = pack.worlds.flatMap((w: any) => (w.sites || []).map((s: any) => norm(s.name)));
+  assert.ok(rows.length > 70);
+  for (const r of rows) {
+    const label = norm(r.label.split(';')[0]);
+    const found =
+      anchors.includes(label) || list.some((e: any) => e.first === Number(r.first) && norm(e.name).includes(label));
+    assert.ok(found, `${r.id} (${r.label}) has no codex entry scoped to slot ${r.first}`);
+  }
+});
+
 test('2 Maccabees place-reference rows each have one codex entry', () => {
   const rows = readCsv('deuterocanonical-integration.csv').filter(r => r.kind === 'place-reference' && r.first === '7');
   const entries = pack.codex.find((s: any) => s.id === 'places').list.filter((e: any) => e.first === 7);
