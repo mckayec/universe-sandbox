@@ -1,9 +1,9 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 14 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   BUILD CHECKPOINT 15 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
    the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9);
-   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15); 1 Enoch and Jubilees (16–17); Ascension of Isaiah and 4 Baruch (21–22); the NT-related gospels (23–28); the Acts of Paul, Peter, John, Andrew and Thomas and the Apocalypses of Peter and Paul (29–35).
-   The remaining works are added layer by layer in later checkpoints.
+   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15); 1 Enoch and Jubilees (16–17); Ascension of Isaiah and 4 Baruch (21–22); the NT-related gospels (23–28); the Acts of Paul, Peter, John, Andrew and Thomas and the Apocalypses of Peter and Paul (29–35); the Acts of Pilate, the Descent into Hades, the Greek Dormition and Pseudo-Matthew (36–39).
+   All 39 slots now have content except Meqabyan (18–20, coverage notices only).
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
    handoff): research.md, integration-contract.md, work-gates.csv, geography-reuse.md, the five
@@ -123,6 +123,23 @@
   /* Acts of Peter (slot 30) mention of Judea, whose entry is written with Judith */
   later(30, { 'Judea (Judaea)': 'Acts of Peter: Peter recalls an earlier episode there with Eubula (XVII). A memory, not a leg of his journey to Rome.' });
 
+  /* Acts of Pilate and Descent (slots 36–37) mentions of places first written up with earlier works (PG-J02, PL-J02) */
+  later(36, { Galilee: 'Acts of Pilate: witnesses travel between Galilee and Jerusalem (chs. 14, 16).' });
+  later(37, {
+    'The Jordan': 'Descent into Hades: the people raised from the dead cross the Jordan (ch. 11). No crossing point is given.',
+    Arimathea: 'Descent into Hades: the two brothers are told to wait at Arimathea before they give their testimony (ch. 11).',
+    'Pilate (Acts of Pilate)': 'Descent into Hades: the closing letter to Claudius is attributed to him (ch. 13).',
+  });
+
+  /* Pseudo-Matthew (slot 39) mentions of places first written up with earlier works (PMJ05, PMJ06, PMP10) */
+  later(39, {
+    Egypt: 'Pseudo-Matthew: the family flees there and finds shelter at Sotinen, in the regions of Hermopolis (chs. 17–24). No route is mapped.',
+    'Judea (Judaea)': 'Pseudo-Matthew: the family flees from it, and an angel later tells Joseph to return to Judah (chs. 17, 25).',
+    'The Jordan': 'Pseudo-Matthew: Jesus makes pools and channels beside it (ch. 26), and later crosses it, divided, with lions (ch. 36). No riverbank is located.',
+    Galilee: 'Pseudo-Matthew: the narrative setting of the pools by the Jordan (ch. 26).',
+    Jericho: 'Pseudo-Matthew: the family leaves Nazareth for Jericho (ch. 32); on the road from Jericho to the Jordan, Jesus enters a lions’ cave (ch. 35).',
+  });
+
   /* reference entry for a place with no approved map anchor, or a person, scoped to one work */
   function ref(name, first, layer, desc, role, more) {
     const e = { name, first, books: [first], layers: [layer], desc };
@@ -239,7 +256,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 21, 22, 23, 24, 25, 30, 31, 33],
+            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 21, 22, 23, 24, 25, 30, 31, 33, 36, 38, 39],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -259,7 +276,7 @@
             name: 'Bethlehem',
             lat: 31.704353,
             lon: 35.2075,
-            books: [21, 23],
+            books: [21, 23, 38, 39],
             modern: 'Nativity heritage property, Bethlehem (UNESCO)',
             desc: 'The marker locates the Nativity heritage property in Bethlehem. It is not evidence for any particular narrated cave.',
           },
@@ -269,7 +286,7 @@
             name: 'Rome',
             lat: 41.890222,
             lon: 12.492306,
-            books: [6, 29, 30],
+            books: [6, 29, 30, 38],
             modern: 'Historic Centre of Rome (UNESCO component point)',
             desc: 'The marker locates a component of Rome’s historic centre, not the site of any martyrdom told in these texts.',
           },
@@ -638,6 +655,84 @@
       ev('nta-apa-city', 35, 'nta', 'The city of Christ', 'Rivers named Phison, Euphrates, Geon and Tigris flow with honey, milk, oil and wine, and David’s altar stands in the city, here called Jerusalem. A vision: not the real rivers, and not the earthly city.', 'Apocalypse of Paul 25–30 (M. R. James)'),
       ev('nta-apa-punishment', 35, 'nta', 'The places of punishment', 'In the western regions Paul sees punishments by category, among them clergy and lenders at interest. The polemic on confession and sexuality differs by witness: a Latin paragraph in §39 is absent from the other versions. Michael and Christ intercede and a Sunday rest is granted; this is not a final salvation of all.', 'Apocalypse of Paul 31–44 (M. R. James)'),
       ev('nta-apa-paradise', 35, 'nta', 'Paradise', 'In paradise: Adam and Eve, Mary, the patriarchs and prophets, Noah, Elijah and Elisha. The text ends abruptly. A Syriac ending returns to Tarsus; the Coptic continuation is the editor’s summary and excerpts, and its Mount of Olives and 29 June are not facts about Paul.', 'Apocalypse of Paul 45–51; appendices kept separate (M. R. James)'),
+
+      /* ---- Acts of Pilate, Greek form I (slot 36). PG-E01–E03. Walker, ANF 8 (1886), New Advent revision: prologue
+         and chapters 1–16. The prologue's claim to be a translated record is the text's own; its dating is corrupt
+         (M. R. James) and is not turned into a year. No event is pinned: the anchor never marks a tribunal or tomb. ---- */
+      ev('PG-E01', 36, 'pm', 'The standards bow', 'The standards bow before Jesus, a sign in the narrative. The prologue presents the account as a translated record; that is the text’s claim, not verified authorship or a Roman archive, and its regnal dating is not converted to a year.', 'Acts of Pilate, Greek form I, prologue and ch. 1 (Walker, ANF 8)'),
+      ev('PG-E02', 36, 'pm', 'Sentence and burial', 'Pilate sentences Jesus, and Joseph of Arimathea buries him; the two prisoners condemned with him are named Dysmas and Gestas. The garden of this account and the later mention of the Cranium are not combined into an execution site. The narrator’s portrayal of the accusers is the text’s polemic, not a statement about Jews as a people.', 'Acts of Pilate, Greek form I, chs. 9–11 (Walker, ANF 8)'),
+      ev('PG-E03', 36, 'pm', 'Joseph confined and delivered', 'Joseph is confined, and later reports how he was delivered.', 'Acts of Pilate, Greek form I, chs. 12, 15 (Walker, ANF 8)'),
+
+      /* ---- Descent into Hades, Latin form I (slot 37). PL-E01, PL-C01, PL-C02. Walker, ANF 8: chapters 1–13, also
+         numbered 17–29, including the appended chronology and letter. A separate witness, not merged with the Greek
+         form. Hades and paradise are under Visionary settings. ---- */
+      ev('PL-E01', 37, 'pm', 'The sons of Simeon testify', 'Karinus and Leucius, sons of Simeon, are summoned to tell what they saw among the dead; they write their testimonies (ch. 11). Their names are not merged with any author named for another apocryphal work.', 'Descent into Hades, Latin form I, ch. 1 (Walker, ANF 8)'),
+      ev('PL-C01', 37, 'pm', 'The text’s count of years', 'The work sets these events in a scheme of 5,500 years. The intervals it lists in chapter 12 add up to 5,430 by the integrator’s arithmetic, 70 fewer; the difference is left as it stands, and no year of creation is derived.', 'Descent into Hades, Latin form I, chs. 3, 12 (Walker, ANF 8)'),
+      ev('PL-C02', 37, 'pm', 'Pilate’s letter to Claudius', 'The work closes with a letter attributed to Pilate and addressed to Claudius: a document inside the narrative, not an authenticated letter. It stays with this version and does not replace the Greek form’s frame.', 'Descent into Hades, Latin form I, ch. 13 (Walker, ANF 8)'),
+
+      /* ---- Dormition, Greek Pseudo-John (slot 38). ME01–ME12 = research units MU01–MU12 of marian-research.md (not
+         ancient chapter numbers); New Advent, first account only (Walker, ANF 8). Scenes in Mary’s Bethlehem house pin
+         Bethlehem and those in Jerusalem pin Jerusalem; the houses and the Gethsemane tomb are not located. The Latin
+         forms that follow on that page are other texts: no late Thomas, girdle, Antioch or named attendants here. ---- */
+      ev('ME01', 38, 'pm', 'Gabriel’s announcement', 'On a day of preparation Mary prays at Jesus’ tomb, and Gabriel announces that she will depart.', 'Dormition (Greek Pseudo-John), unit MU01 (Walker, ANF 8, first account)', 'jerusalem'),
+      ev('ME02', 38, 'pm', 'Back to Bethlehem', 'Mary returns to Bethlehem and asks to see the apostles. Her three attendants are not named in this account.', 'Dormition (Greek Pseudo-John), unit MU02 (Walker, ANF 8, first account)', 'bethlehem'),
+      ev('ME03', 38, 'pm', 'John from Ephesus', 'John arrives from Ephesus and prays beside Mary. The narrator presents himself as John; that is the work’s attribution, not verified authorship.', 'Dormition (Greek Pseudo-John), unit MU03 (Walker, ANF 8, first account)', 'bethlehem'),
+      ev('ME04', 38, 'pm', 'The apostles gathered', 'The apostles are brought together from the ends of the world, some of them raised from their tombs for a time; the text keeps this apart from the general resurrection. Thomas, summoned from the country of the Indians, is among them.', 'Dormition (Greek Pseudo-John), unit MU04 (Walker, ANF 8, first account)', 'bethlehem'),
+      ev('ME05', 38, 'pm', 'Where the apostles came from', 'The apostles tell where they were: Peter in Rome, Paul at Tiberia near Rome, Mark in Alexandria, James in Jerusalem, Bartholomew in the Thebais, and Matthew on an unnamed sea. They came on clouds, the story’s own means. Mary gives thanks.', 'Dormition (Greek Pseudo-John), unit MU05 (Walker, ANF 8, first account)', 'bethlehem'),
+      ev('ME06', 38, 'pm', 'Signs at the house', 'Heavenly sounds and healings draw visitors to Mary’s house. Portents of the story, not a reconstructed astronomical event.', 'Dormition (Greek Pseudo-John), unit MU06 (Walker, ANF 8, first account)', 'bethlehem'),
+      ev('ME07', 38, 'pm', 'Carried to Jerusalem', 'Hostility leads to Mary and the apostles being carried on a cloud, with her bed, to her house in Jerusalem, where they praise for five days. The account names Tiberius in this episode; that is not turned into a date.', 'Dormition (Greek Pseudo-John), unit MU07 (Walker, ANF 8, first account)', 'jerusalem'),
+      ev('ME08', 38, 'pm', 'The attack on the house', 'The narrative tells of an attack on the house, a destructive fire, and conversions. Its hostile generalizations about Jews are the text’s polemic, not the atlas’s view.', 'Dormition (Greek Pseudo-John), unit MU08 (Walker, ANF 8, first account)', 'jerusalem'),
+      ev('ME09', 38, 'pm', 'Jesus comes', 'On the Lord’s day Jesus comes, and Mary asks him to bless those who call on her name. A prayer in this text, not a statement of any church’s teaching.', 'Dormition (Greek Pseudo-John), unit MU09 (Walker, ANF 8, first account)', 'jerusalem'),
+      ev('ME10', 38, 'pm', 'Mary’s soul received', 'Peter begins a hymn; Jesus receives Mary’s soul, and the apostles prepare her body.', 'Dormition (Greek Pseudo-John), unit MU10 (Walker, ANF 8, first account)', 'jerusalem'),
+      ev('ME11', 38, 'pm', 'Jephonias', 'While the apostles carry the body, Jephonias attacks the funeral couch; after he appeals for mercy he is restored through Peter’s words. One man’s act in the story, not a claim about Jews.', 'Dormition (Greek Pseudo-John), unit MU11 (Walker, ANF 8, first account)', 'jerusalem'),
+      ev('ME12', 38, 'pm', 'Burial at Gethsemane', 'The apostles lay Mary in a new tomb at Gethsemane; an angelic sound is heard there for three days, and they perceive that her body has been taken to paradise. Her soul had been promised the heavens; the text keeps the two apart. No tomb is located.', 'Dormition (Greek Pseudo-John), unit MU12 (Walker, ANF 8, first account)'),
+
+      /* ---- Pseudo-Matthew, expanded Walker witness (slot 39). PME01–PME42, one per displayed chapter (New Advent,
+         Walker, ANF 8). A Latin work adapting the Protevangelium, with later additions (NASSCAL): the expanded display
+         is not one early core. Pins only where the chapter is set at an anchor: the Jerusalem temple (2, 3, 6),
+         Nazareth (32) and Bethlehem (41). Ages and intervals are the text’s own, not dates. ---- */
+      ev('PME01', 39, 'pm', 'Joachim and Anna', 'Joachim and Anna’s household, and their childlessness. The prefatory letters attribute the work to Matthew by way of Jerome; that is the preface’s claim, not evidence of authorship.', 'Pseudo-Matthew, ch. 1 (Walker, ANF 8)'),
+      ev('PME02', 39, 'pm', 'The rejected offering', 'Joachim’s offering is rejected, and he withdraws with his shepherds to distant mountains; Anna receives assurance.', 'Pseudo-Matthew, ch. 2 (Walker, ANF 8)', 'jerusalem'),
+      ev('PME03', 39, 'pm', 'At the Golden Gate', 'An angel’s instruction brings the couple together again at the gate called Golden. Joachim’s return takes thirty days by the story’s count. The gate is not identified with surviving masonry.', 'Pseudo-Matthew, ch. 3 (Walker, ANF 8)', 'jerusalem'),
+      ev('PME04', 39, 'pm', 'Mary born and brought to the temple', 'Mary is born, and at three, in this text, she is brought to the temple.', 'Pseudo-Matthew, ch. 4 (Walker, ANF 8)'),
+      ev('PME05', 39, 'pm', 'Anna’s thanks', 'Anna gives thanks for Mary.', 'Pseudo-Matthew, ch. 5 (Walker, ANF 8)'),
+      ev('PME06', 39, 'pm', 'Mary in the temple', 'Mary’s life in the temple: prayer, weaving, and food brought by angels.', 'Pseudo-Matthew, ch. 6 (Walker, ANF 8)', 'jerusalem'),
+      ev('PME07', 39, 'pm', 'Mary refuses marriage', 'Mary refuses marriage and explains her commitment to virginity.', 'Pseudo-Matthew, ch. 7 (Walker, ANF 8)'),
+      ev('PME08', 39, 'pm', 'The rod and the dove', 'Joseph is chosen by the sign of the rod and the dove, and Mary, fourteen in this text, passes into his care. He is portrayed as an elderly guardian with children of his own.', 'Pseudo-Matthew, ch. 8 (Walker, ANF 8)'),
+      ev('PME09', 39, 'pm', 'Annunciations', 'Mary receives announcements at a fountain and while weaving.', 'Pseudo-Matthew, ch. 9 (Walker, ANF 8)'),
+      ev('PME10', 39, 'pm', 'Joseph returns', 'Joseph comes back from building work on the coast and finds Mary pregnant.', 'Pseudo-Matthew, ch. 10 (Walker, ANF 8)'),
+      ev('PME11', 39, 'pm', 'Joseph’s dream', 'A dream reassures Joseph about Mary’s pregnancy.', 'Pseudo-Matthew, ch. 11 (Walker, ANF 8)'),
+      ev('PME12', 39, 'pm', 'The water ordeal', 'Mary and Joseph undergo the ordeal of the water, and no sign condemns them.', 'Pseudo-Matthew, ch. 12 (Walker, ANF 8)'),
+      ev('PME13', 39, 'pm', 'The cave on the way to Bethlehem', 'On the way toward Bethlehem, Jesus is born in a cave filled with light. The midwives are named Zelomi and Salome, as this edition spells them. Not the Protevangelium’s cave, and not the modern Nativity shrine.', 'Pseudo-Matthew, ch. 13 (Walker, ANF 8)'),
+      ev('PME14', 39, 'pm', 'The stable', 'On the third day Mary moves from the cave to a stable, where the ox and the ass adore the child. The cave and the stable are kept apart.', 'Pseudo-Matthew, ch. 14 (Walker, ANF 8)'),
+      ev('PME15', 39, 'pm', 'Bethlehem and the temple', 'On the sixth day the family enters Bethlehem; the child is circumcised and presented in the temple.', 'Pseudo-Matthew, ch. 15 (Walker, ANF 8)'),
+      ev('PME16', 39, 'pm', 'The magi', 'After the second year, magi come to Jerusalem and to the child’s house at Bethlehem, and go home by another road. Where they came from is not named.', 'Pseudo-Matthew, ch. 16 (Walker, ANF 8)'),
+      ev('PME17', 39, 'pm', 'Herod’s order', 'Herod orders the killings, and Joseph is warned to flee to Egypt.', 'Pseudo-Matthew, ch. 17 (Walker, ANF 8)'),
+      ev('PME18', 39, 'pm', 'The dragons', 'Dragons come out of a cave where the travellers stop, and submit to Jesus. Not the birth cave.', 'Pseudo-Matthew, ch. 18 (Walker, ANF 8)'),
+      ev('PME19', 39, 'pm', 'The animals’ escort', 'Wild animals go with the family on the road and do them no harm.', 'Pseudo-Matthew, ch. 19 (Walker, ANF 8)'),
+      ev('PME20', 39, 'pm', 'The palm and the spring', 'A palm bends to give its fruit, and water flows from its roots. No modern oasis is claimed.', 'Pseudo-Matthew, ch. 20 (Walker, ANF 8)'),
+      ev('PME21', 39, 'pm', 'The palm branch', 'An angel carries a branch of the palm to paradise.', 'Pseudo-Matthew, ch. 21 (Walker, ANF 8)'),
+      ev('PME22', 39, 'pm', 'Sotinen', 'Joseph proposes a coastal road, but Jesus shortens the journey instead, and no shoreline route is drawn. The family reaches Sotinen in the regions of Hermopolis and shelters in its temple. The spelling is the text’s; no modern identification.', 'Pseudo-Matthew, ch. 22 (Walker, ANF 8)'),
+      ev('PME23', 39, 'pm', 'The idols fall', 'The temple’s idols, 355 in this text, fall before Mary and Jesus. The number is not changed to 365.', 'Pseudo-Matthew, ch. 23 (Walker, ANF 8)'),
+      ev('PME24', 39, 'pm', 'Affrodosius', 'The governor Affrodosius sees the fallen idols and honours Jesus. The narrative’s judgment of the worshippers is its own, not the atlas’s.', 'Pseudo-Matthew, ch. 24 (Walker, ANF 8)'),
+      ev('PME25', 39, 'pm', 'The return ordered', 'An angel tells Joseph to return to Judah; the next chapter confirms the return.', 'Pseudo-Matthew, ch. 25 (Walker, ANF 8)'),
+      ev('PME26', 39, 'pm', 'The pools by the Jordan', 'In his fourth year Jesus makes pools beside the Jordan; a child who wrecks them dies and is restored.', 'Pseudo-Matthew, ch. 26 (Walker, ANF 8)'),
+      ev('PME27', 39, 'pm', 'The clay sparrows', 'Jesus gives life to twelve sparrows made of clay.', 'Pseudo-Matthew, ch. 27 (Walker, ANF 8)'),
+      ev('PME28', 39, 'pm', 'Annas’s son', 'The son of Annas destroys the channels and dies after Jesus’ rebuke; this chapter tells of no restoration.', 'Pseudo-Matthew, ch. 28 (Walker, ANF 8)'),
+      ev('PME29', 39, 'pm', 'The boy who strikes Jesus', 'A boy who strikes Jesus dies and is restored.', 'Pseudo-Matthew, ch. 29 (Walker, ANF 8)'),
+      ev('PME30', 39, 'pm', 'Zachyas', 'Zachyas offers to teach him; Jesus, scarcely five here, answers with claims to have existed before. The school is not located.', 'Pseudo-Matthew, ch. 30 (Walker, ANF 8)'),
+      ev('PME31', 39, 'pm', 'Levi’s lesson', 'A lesson with Levi turns into a dispute over the letters, followed by a healing.', 'Pseudo-Matthew, ch. 31 (Walker, ANF 8)'),
+      ev('PME32', 39, 'pm', 'Zeno', 'At an unnamed house in Nazareth Jesus revives Zeno after a fall, and the family leaves for Jericho.', 'Pseudo-Matthew, ch. 32 (Walker, ANF 8)', 'nazareth'),
+      ev('PME33', 39, 'pm', 'Water in his cloak', 'When a pitcher breaks, the six-year-old Jesus carries water in his cloak. The fountain’s town is not named; it comes after the move to Jericho.', 'Pseudo-Matthew, ch. 33 (Walker, ANF 8)'),
+      ev('PME34', 39, 'pm', 'The harvest', 'Jesus sows wheat and gives away an abundant harvest.', 'Pseudo-Matthew, ch. 34 (Walker, ANF 8)'),
+      ev('PME35', 39, 'pm', 'The lions’ cave', 'In his eighth year, on the road from Jericho to the Jordan, Jesus enters a cave of lions. Not either earlier cave.', 'Pseudo-Matthew, ch. 35 (Walker, ANF 8)'),
+      ev('PME36', 39, 'pm', 'Across the Jordan', 'Jesus crosses the divided Jordan with the lions and returns to his mother.', 'Pseudo-Matthew, ch. 36 (Walker, ANF 8)'),
+      ev('PME37', 39, 'pm', 'The lengthened wood', 'Jesus lengthens a piece of wood for Joseph’s carpentry.', 'Pseudo-Matthew, ch. 37 (Walker, ANF 8)'),
+      ev('PME38', 39, 'pm', 'Another teacher', 'Another teacher strikes Jesus and dies; this chapter tells of no restoration.', 'Pseudo-Matthew, ch. 38 (Walker, ANF 8)'),
+      ev('PME39', 39, 'pm', 'A teacher who recognizes him', 'A further teacher recognizes Jesus as a master.', 'Pseudo-Matthew, ch. 39 (Walker, ANF 8)'),
+      ev('PME40', 39, 'pm', 'The rich Joseph at Capernaum', 'At Capernaum, Joseph acts on Jesus’ instruction and revives a dead man of the same name, a different Joseph.', 'Pseudo-Matthew, ch. 40 (Walker, ANF 8)'),
+      ev('PME41', 39, 'pm', 'James and the snake', 'The family moves to Bethlehem; in the garden of the house Jesus heals James, called Joseph’s first-born son, from a snakebite.', 'Pseudo-Matthew, ch. 41 (Walker, ANF 8)', 'bethlehem'),
+      ev('PME42', 39, 'pm', 'The family meal', 'A family meal and closing praise of Jesus’ precedence. The chapter names Mary of Cleophas and gives a family line in wording different from the opening; the two are not reconciled.', 'Pseudo-Matthew, ch. 42 (Walker, ANF 8)'),
     ],
     codex: [
       {
@@ -1049,6 +1144,30 @@
              Visionary and otherworldly settings. ---- */
           ref('The Mount of Olives (Apocalypse of Peter)', 34, 'nta', 'Apocalypse of Peter, Ethiopic text: the setting of the revelation. Not merged with the Greek fragment’s unnamed mountain, or with the Mount of Olives of other works.'),
           ref('Tarsus (Apocalypse of Paul)', 35, 'nta', 'Apocalypse of Paul: where the work says it was found in a box (1–2); a Syriac ending returns there. Kept apart from the Tarsus of 2 Maccabees.'),
+          /* ---- Acts of Pilate (36), Dormition (38) and Pseudo-Matthew (39) places (PG-P01, MP01–MP04, MP06–MP07,
+             PMP01–PMP14). Coordinates null; a real city does not authenticate a miracle told there. ---- */
+          ref('Mamilch', 36, 'pm', 'Acts of Pilate, Greek form I: the mountain where witnesses report seeing the ascension (ch. 14). Its modern identity is not verified.'),
+          ref('Arimathea', 36, 'pm', 'Acts of Pilate, Greek form I: Joseph comes back from it to Jerusalem (ch. 15). Not located.'),
+          ref('Jesus’ tomb (Dormition)', 38, 'pm', 'Dormition: where Mary prays before Gabriel’s announcement (MU01). A shrine of the narrative, in Jerusalem; not located.'),
+          ref('Mary’s house in Bethlehem (Dormition)', 38, 'pm', 'Dormition: where the apostles gather around Mary (MU02–MU06). Not located.'),
+          ref('Mary’s house in Jerusalem (Dormition)', 38, 'pm', 'Dormition: where Mary and the apostles are carried (MU07). Not located.'),
+          ref('The tomb at Gethsemane', 38, 'pm', 'Dormition: the new tomb where the apostles lay Mary’s body (MU12). Gethsemane is named; the tomb is not located.'),
+          ref('Tiberia', 38, 'pm', 'Dormition: where Paul says he set out, near Rome (MU05). The text’s wording is kept; it is not taken to be Tiberias in Galilee.'),
+          ref('The country of the Indians (Dormition)', 38, 'pm', 'Dormition: where Thomas is ministering when he is summoned (MU04–MU05). A broad region of the story, with no city or modern border.'),
+          ref('The temple (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: Joachim’s offering is rejected there (ch. 2), and Mary grows up there (chs. 4–8). The Jerusalem marker is the city, not the building.'),
+          ref('The mountain pastures', 39, 'pm', 'Pseudo-Matthew: the distant mountains where Joachim withdraws with his shepherds (ch. 2). Not located.'),
+          ref('The Golden Gate (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: where Anna meets the returning Joachim (ch. 3). Not identified with any surviving gate.'),
+          ref('The birth cave (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: on the way toward Bethlehem, where Jesus is born (ch. 13). Kept apart from the Protevangelium’s cave and from the stable.'),
+          ref('The stable', 39, 'pm', 'Pseudo-Matthew: where Mary moves from the cave on the third day (ch. 14). Not located.'),
+          ref('The dragons’ cave', 39, 'pm', 'Pseudo-Matthew: a cave on the road to Egypt where the travellers stop (ch. 18). Not the birth cave.'),
+          ref('The palm and the spring', 39, 'pm', 'Pseudo-Matthew: on the road to Egypt (ch. 20). No modern oasis is claimed.'),
+          ref('Sotinen', 39, 'pm', 'Pseudo-Matthew: a city in the regions of Hermopolis where the family shelters in the temple (ch. 22). The text’s spelling; no modern identification.'),
+          ref('The temple at Sotinen', 39, 'pm', 'Pseudo-Matthew: the temple whose 355 idols fall (chs. 22–23).'),
+          ref('The pools by the Jordan', 39, 'pm', 'Pseudo-Matthew: where Jesus makes pools and channels, in a Galilean setting (ch. 26). No riverbank is located.'),
+          ref('The house in Nazareth (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: an unnamed house in Nazareth where Zeno falls and is revived (ch. 32). The Nazareth marker is the settlement, not the house.'),
+          ref('The lions’ cave', 39, 'pm', 'Pseudo-Matthew: near the Jordan on the road from Jericho (ch. 35). Not either earlier cave.'),
+          ref('Capernaum (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: where the rich Joseph lived and is revived (ch. 40). Not located.'),
+          ref('Joseph’s house and garden in Bethlehem', 39, 'pm', 'Pseudo-Matthew: where the family lives after Capernaum, and where James is healed in the garden (ch. 41). The Bethlehem marker is the heritage property, not the house.'),
         ],
       },
       {
@@ -1117,6 +1236,12 @@
           ref('The Hymn of the Soul (theme)', 33, 'nta', 'Acts of Thomas: a poem of a prince’s journey from the East to Egypt and back (108–113), read as symbol. What its place names refer to is uncertain.'),
           ref('A restoration of all?', 34, 'nta', 'Apocalypse of Peter: whether it teaches a final restoration of everyone is debated by editors. The Sibylline parallel James prints is a separate work.'),
           ref('Sunday rest', 35, 'nta', 'Apocalypse of Paul: after Michael and Christ intercede, a rest on Sunday is granted (31–44). Not a final salvation of all.'),
+          /* Dormition (MC01–MC04) and Pseudo-Matthew (PMC08) codex rows. */
+          ref('John as narrator (Dormition)', 38, 'pm', 'The narrator presents himself as John, summoned to Mary from Ephesus (MU03). A literary attribution, not verified eyewitness authorship.'),
+          ref('Apostles raised for the gathering', 38, 'pm', 'Dormition: some apostles are raised for a time to attend Mary; the text keeps this apart from the general resurrection (MU04).'),
+          ref('Mary’s prayer for mercy', 38, 'pm', 'Dormition: Mary asks her son to show mercy to those who call on her name (MU09). A prayer in this text, not a teaching of all Christians.'),
+          ref('Jephonias and the couch', 38, 'pm', 'Dormition: Jephonias attacks the funeral couch and is restored through Peter’s words (MU11). One character’s act; no general claim about Jews.'),
+          ref('Lethal rebukes in the childhood stories', 39, 'pm', 'Pseudo-Matthew: several childhood episodes tell of deaths after a rebuke. Some are restored (chs. 26, 29); chapters 28 and 38 tell of no restoration. The outcomes are kept separate.'),
         ],
       },
       {
@@ -1208,6 +1333,23 @@
           ref('The prince’s journey (Hymn of the Soul)', 33, 'nta', 'Acts of Thomas: a symbolic journey in the poem, from the East by Maishan and Babylon to Egypt, and back by Sarbug and Mesene (108–113). Not a journey of Thomas.'),
           ref('The ascent in the cloud', 34, 'nta', 'Apocalypse of Peter, Ethiopic text: the closing ascent in a cloud. A visionary journey.'),
           ref('Paul’s journey through the heavens', 35, 'nta', 'Apocalypse of Paul: to the third heaven and paradise, down through the cosmic levels to the Ocean, the promised land, the Acherusian lake and the city of Christ, then to the western places of punishment, and to paradise (19–51). A visionary journey.'),
+          /* Acts of Pilate and Descent (PG-J01–J02, PL-J01–J02), Dormition (MJ01–MJ04), Pseudo-Matthew (PMJ01–PMJ07).
+             Ordered stages as stated; no map lines. */
+          ref('Joseph’s return to Jerusalem', 36, 'pm', 'Acts of Pilate, Greek form I: Joseph comes back from Arimathea to Jerusalem (ch. 15). No route is given.'),
+          ref('Witnesses from Galilee', 36, 'pm', 'Acts of Pilate, Greek form I: witnesses travel between Galilee and Jerusalem (chs. 14, 16).'),
+          ref('Out of Hades', 37, 'pm', 'Descent into Hades: Adam and the saints leave the underworld for paradise (chs. 8–9). A visionary journey.'),
+          ref('Across the Jordan, and the wait at Arimathea', 37, 'pm', 'Descent into Hades: the people raised from the dead cross the Jordan, and the two brothers are told to wait at Arimathea before they testify (ch. 11).'),
+          ref('Mary returns to Bethlehem', 38, 'pm', 'Dormition: from Jesus’ tomb to her house in Bethlehem (MU01–MU02). No route is given.'),
+          ref('The apostles come to Bethlehem', 38, 'pm', 'Dormition: each from where he was: John from Ephesus, Peter from Rome, Paul from Tiberia, Thomas from India, Mark from Alexandria, James from Jerusalem, Matthew from an unnamed sea, Bartholomew from the Thebais (MU03–MU05). On clouds, the story’s own means; the tombs of those raised for it are not named.'),
+          ref('From Bethlehem to Jerusalem (Dormition)', 38, 'pm', 'Dormition: Mary and the apostles carried on a cloud with her bed, with no stops (MU07).'),
+          ref('Procession, burial and paradise', 38, 'pm', 'Dormition: the body carried in procession in Jerusalem to the tomb at Gethsemane, then perceived as taken to paradise (MU10–MU12). Her soul had already been received by Jesus.'),
+          ref('Joachim’s withdrawal and return', 39, 'pm', 'Pseudo-Matthew: from the temple to the mountains, back to the Golden Gate, and home; the return takes thirty days (chs. 2–3).'),
+          ref('Mary to the temple and to Joseph', 39, 'pm', 'Pseudo-Matthew: from her home to the temple at three, and into Joseph’s care at fourteen, by this text’s ages (chs. 4, 8).'),
+          ref('The road to Bethlehem (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: the road toward Bethlehem, the cave, the stable, Bethlehem, then the temple (chs. 13–15). Successive stages, not one structure.'),
+          ref('The magi’s journey (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: from the east to Jerusalem, to the child’s house at Bethlehem, and home by another road (ch. 16). The origin and the road home are not named.'),
+          ref('The flight to Egypt (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: from Judea to the dragons’ cave, the palm and spring, and Sotinen in the regions of Hermopolis; then the order to return to Judah (chs. 17–25), carried out by chapter 26. The animal escort and the shortened journey are the story’s miracles.'),
+          ref('From the Jordan to Jericho', 39, 'pm', 'Pseudo-Matthew: from the pools by the Jordan to Nazareth, then to Jericho; Jesus goes on to the lions’ cave, across the Jordan, and back to his mother (chs. 26, 32, 35–36). The legs in between are not given.'),
+          ref('Capernaum to Bethlehem', 39, 'pm', 'Pseudo-Matthew: from an earlier home not named, to Capernaum, then to Bethlehem (chs. 40–41). Not rewritten as the canonical gospels’ itinerary.'),
         ],
       },
       {
@@ -1249,6 +1391,11 @@
           ref('The city of Christ', 35, 'nta', 'Apocalypse of Paul: with four rivers of honey, milk, oil and wine bearing the names Phison, Euphrates, Geon and Tigris, and David’s altar; called Jerusalem (25–30). Not the earthly city or the real rivers.'),
           ref('The western places of punishment', 35, 'nta', 'Apocalypse of Paul: punishments by category (31–44).'),
           ref('Paradise (Apocalypse of Paul)', 35, 'nta', 'Apocalypse of Paul: where Paul sees Adam and Eve, Mary, the patriarchs and prophets (45–51).'),
+          /* Descent (PL-P01, PL-P02), Dormition (MP05) and Pseudo-Matthew (ch. 21). */
+          ref('Hades (Descent)', 37, 'pm', 'Descent into Hades: the underworld of the story, where light appears, the adversaries argue, the gates are broken and Adam is freed (chs. 2–8). A narrative underworld, not a place beneath the Earth.'),
+          ref('Paradise (Descent)', 37, 'pm', 'Descent into Hades: Enoch and Elijah are there, and the robber is admitted (chs. 9–10).'),
+          ref('Paradise (Dormition)', 38, 'pm', 'Dormition: where Mary’s body is said to be taken (promised at MU09; MU12).'),
+          ref('Paradise (Pseudo-Matthew)', 39, 'pm', 'Pseudo-Matthew: where an angel carries the palm branch (ch. 21).'),
         ],
       },
       {
@@ -1432,6 +1579,22 @@
           ref('Moses and Elijah (Apocalypse of Peter)', 34, 'nta', 'Appear in the Ethiopic text before the ascent in the cloud.', 'Apocalypse of Peter'),
           ref('Paul (Apocalypse of Paul)', 35, 'nta', 'The seer of this work, taken through the heavens and the places of punishment. Kept apart from Paul of the Acts; this is not the Coptic Apocalypse of Paul from Nag Hammadi.', 'Apocalypse of Paul'),
           ref('Michael and Tartaruchus', 35, 'nta', 'Michael appears and intercedes; the angel Tartaruchus is Temeluchus in other versions (3–44).', 'Apocalypse of Paul'),
+          /* Acts of Pilate and Descent (PG-C01, PG-C02, PL-E01), Dormition, and Pseudo-Matthew (PMC01–PMC07) people. */
+          ref('Pilate (Acts of Pilate)', 36, 'pm', 'The governor who sentences Jesus in this account (ch. 9). The work’s portrayal, not a historical record.', 'Acts of Pilate'),
+          ref('Joseph of Arimathea (Acts of Pilate)', 36, 'pm', 'Buries Jesus, is confined, and later reports his deliverance (chs. 11–15). Kept apart from Mary’s Joseph, whose parentage is disputed in chapter 2.', 'Acts of Pilate'),
+          ref('Dysmas and Gestas', 36, 'pm', 'The two prisoners condemned with Jesus, named in this text (chs. 9–10).', 'Acts of Pilate'),
+          ref('Longinus (Acts of Pilate)', 36, 'pm', 'Named in testimony looking back on the crucifixion (ch. 16).', 'Acts of Pilate'),
+          ref('Karinus and Leucius', 37, 'pm', 'The two sons of Simeon whose testimony the work records (chs. 1, 11).', 'Descent into Hades'),
+          ref('Mary (Dormition)', 38, 'pm', 'Mary of this account, from Gabriel’s announcement to her departure and burial (MU01–MU12). Kept apart from Mary in other works.', 'Dormition'),
+          ref('The apostles (Dormition)', 38, 'pm', 'Peter, Paul, John, Thomas, Mark, James, Matthew and Bartholomew are named among those gathered (MU03–MU05).', 'Dormition'),
+          ref('Joachim and Anna (Pseudo-Matthew)', 39, 'pm', 'Mary’s parents in the opening chapters (1–4).', 'Pseudo-Matthew'),
+          ref('Mary (Pseudo-Matthew)', 39, 'pm', 'Brought to the temple at three and into Joseph’s care at fourteen, by this text’s ages (chs. 4–8). Kept apart from Mary in other works.', 'Pseudo-Matthew'),
+          ref('Joseph (Pseudo-Matthew)', 39, 'pm', 'Portrayed as an elderly guardian with children of his own (chs. 8, 41–42).', 'Pseudo-Matthew'),
+          ref('Zelomi and Salome', 39, 'pm', 'The midwives of the birth, as this edition names them (ch. 13). Not normalized to other spellings, and not merged with the Protevangelium’s Salome.', 'Pseudo-Matthew'),
+          ref('Affrodosius', 39, 'pm', 'The governor in Egypt who honours the child (ch. 24). Afrodisius is a spelling of the same name, not a second person.', 'Pseudo-Matthew'),
+          ref('The rich Joseph', 39, 'pm', 'The man revived at Capernaum; not Jesus’ guardian Joseph (ch. 40).', 'Pseudo-Matthew'),
+          ref('James (Pseudo-Matthew)', 39, 'pm', 'Called Joseph’s first-born son and Jesus’ brother in this version (ch. 41). Its account of the family is not applied to other works.', 'Pseudo-Matthew'),
+          ref('Mary of Cleophas', 39, 'pm', 'Named in the final chapter, with a family line worded differently from the opening (ch. 42). Cleophas is not reconciled with Joachim, and no marriages are added.', 'Pseudo-Matthew'),
         ],
       },
     ],

@@ -281,3 +281,65 @@ test('Acts of Peter, John, Andrew and Thomas and the Apocalypses of Peter and Pa
     'Judea lacks its Acts of Peter mention',
   );
 });
+
+test('Pilate and Marian works (slots 36–39): every narrative row is used at its own work', () => {
+  const gates: Record<string, number> = {};
+  for (const g of readCsv('work-gates.csv')) gates[g.work_key] = Number(g.first);
+  const pilate = readCsv('pilate-esdras-integration.csv').filter(r => gates[r.work_key] >= 36);
+  const marian = readCsv('related-traditions-integration.csv').filter(r => gates[r.work_key] >= 38);
+  const eventIds = [
+    ...pilate.filter(r => r.type === 'event' || r.type === 'chronology' || r.type === 'document').map(r => r.id),
+    ...marian.filter(r => r.record_type === 'event-topic' || /^(ME|PME)\d/.test(r.id)).map(r => r.id),
+  ].filter(id => !/^(MP|MJ|MC|PMP|PMJ|PMC)/.test(id));
+  assert.equal(eventIds.length, 3 + 3 + 12 + 42);
+  const pins: Record<string, string> = {
+    ME01: 'jerusalem',
+    PME02: 'jerusalem',
+    PME03: 'jerusalem',
+    PME06: 'jerusalem',
+    PME32: 'nazareth',
+    PME41: 'bethlehem',
+  };
+  for (const id of ['ME02', 'ME03', 'ME04', 'ME05', 'ME06']) pins[id] = 'bethlehem';
+  for (const id of ['ME07', 'ME08', 'ME09', 'ME10', 'ME11']) pins[id] = 'jerusalem';
+  const slotOf = (id: string) => (/^PG/.test(id) ? 36 : /^PL/.test(id) ? 37 : /^ME/.test(id) ? 38 : 39);
+  for (const id of eventIds) {
+    const e = pack.events.find((x: any) => x.id === id);
+    assert.ok(e, `no Chronicle entry for ${id}`);
+    assert.equal(e.book, slotOf(id), `${id} is gated at the wrong work`);
+    assert.equal(e.site, pins[id], `${id} pin`);
+  }
+  const journeys = pack.codex.find((c: any) => c.id === 'journeys').list.filter((e: any) => e.first >= 36);
+  const journeyRows =
+    pilate.filter(r => r.type === 'journey').length + marian.filter(r => /^(MJ|PMJ)\d/.test(r.id)).length;
+  assert.equal(journeys.length, journeyRows);
+  // Hades and the paradises are visionary settings with no site
+  const visions = pack.codex.find((c: any) => c.id === 'visions').list.filter((e: any) => e.first >= 36);
+  assert.equal(visions.length, 4);
+  // the Greek Dormition is not merged with the Latin forms that follow it on the source page
+  const dormition = JSON.stringify([
+    ...pack.events.filter((e: any) => e.book === 38),
+    ...pack.codex.flatMap((c: any) => c.list).filter((e: any) => e.first === 38),
+  ]);
+  for (const w of ['girdle', 'Sepphora', 'Abigea', 'Antioch'])
+    assert.ok(!dormition.includes(w), `Dormition imports ${w}`);
+  // Pseudo-Matthew keeps its own figures
+  assert.ok(pack.events.find((e: any) => e.id === 'PME23').text.includes('355'));
+  const sites = pack.worlds.flatMap((w: any) => w.sites || []);
+  const badge = (id: string) => sites.find((x: any) => x.id === id).books;
+  for (const s of [36, 38, 39]) assert.ok(badge('jerusalem').includes(s), `Jerusalem badge lacks slot ${s}`);
+  assert.ok(!badge('jerusalem').includes(37), 'the Descent names no Jerusalem scene in its rows');
+  for (const s of [38, 39]) assert.ok(badge('bethlehem').includes(s), `Bethlehem badge lacks slot ${s}`);
+  assert.ok(badge('rome').includes(38) && badge('nazareth').includes(39));
+  assert.ok(!badge('rome').includes(36) && !badge('rome').includes(37), 'Pilate’s letter does not badge Rome');
+  const places = pack.codex.find((c: any) => c.id === 'places').list;
+  for (const [name, slot] of [
+    ['The Jordan', 37],
+    ['The Jordan', 39],
+    ['Galilee', 36],
+    ['Egypt', 39],
+    ['Jericho', 39],
+    ['Arimathea', 37],
+  ] as const)
+    assert.ok(places.find((e: any) => e.name === name).books.includes(slot), `${name} lacks slot ${slot}`);
+});
