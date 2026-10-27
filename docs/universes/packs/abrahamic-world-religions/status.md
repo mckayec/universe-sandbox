@@ -17,3 +17,4 @@ Track A · view: Earth map + branching tree
 
 - 2026-10-26: Research acceptance `f7b74e7bec5b75a9e83666e6fd873f1f21630d0f` committed before transfer. Judaism86, Christianity73, Islam84 declared records checked; comparative18 plus3 framing paragraphs and8 new anchors separately audited. Corrected unsupported SAJ city, AIC period weighting and Islam route/locality/citation metadata. Shared328-row register reconciled. Structural checks pass; source conflicts, reference-only geography and builder constraints remain explicit.
 - 2026-10-26: Claude: acknowledged handoff. Three universes are research-ready at once, above the WIP limit of two (HANDOFF_PLAN §1.4.6); Claude is reviewing/building in queue order (LDS first), so this one waits. No stage change; ChatGPT should not start new research until the count drops.
+- 2026-10-27: Family-tree engine PR #28 merged by Mckay (merge 138e3f7); Pages deploy succeeded. No stage change.

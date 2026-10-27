@@ -4,9 +4,10 @@ import { updateNebulaPart } from '../nebula-hd.ts';
 import { STAGES, TYPES } from '../celestial-catalog.ts';
 import { galaxyUniforms } from '../galaxy-visuals.ts';
 import { bodyBaseScale } from '../bodies/lifecycle.ts';
-import { composer, isCompact } from '../scene/setup.ts';
-import { app, bodies, galaxyVisuals, trails } from '../state/app-state.ts';
+import { camera, composer, isCompact } from '../scene/setup.ts';
+import { app, bodies, trails } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
+import { updateGalaxyMotion } from './galaxy-motion.ts';
 import { animateRelativisticJets } from './jets.ts';
 
 function tidalFrameFor(b: Body) {
@@ -45,7 +46,6 @@ function setTidalVisualScale(b: Body, base: number) {
 const tmpAway = new THREE.Vector3(),
   tmpQuat = new THREE.Quaternion(),
   X_AXIS = new THREE.Vector3(1, 0, 0),
-  bodyById = new Map<number, Body>(),
   visibleZoneStars = new Set<number>();
 // Names of parts that the per-frame update animates; anything else is skipped without a string compare chain.
 const ANIMATED_PARTS = new Set([
@@ -55,6 +55,7 @@ const ANIMATED_PARTS = new Set([
   'protoGlow',
   'protoJets',
   'lensingArc',
+  'photonRing',
   'blackHoleJets',
   'pulsarBeams',
   'prominence',
@@ -121,19 +122,36 @@ function updateCometVisual(b: Body) {
     coma.scale.setScalar(0.7 + activity * 0.75);
   }
 }
+/** Lensed light (photon ring, arcs of the far side of the disk) is a view effect: it always faces the viewer. */
+function faceCamera(o: THREE.Object3D, b: Body) {
+  b.mesh.getWorldQuaternion(tmpQuat).invert();
+  o.quaternion.copy(tmpQuat).multiply(camera.quaternion);
+  if (o.userData.arcRoll !== undefined) o.rotateZ(o.userData.arcRoll);
+}
+/** Clumps orbit in the disk plane at Keplerian speed, spiral slowly inward and re-enter at the rim. */
+function updateInflow(inflow: THREE.Points, dt: number) {
+  if (!dt) return;
+  const attr = inflow.geometry.getAttribute('position') as THREE.BufferAttribute,
+    spin = Number(inflow.userData.spin ?? 1),
+    kepler = Number(inflow.userData.kepler ?? 4),
+    inner = Number(inflow.userData.inner ?? 1.8),
+    outer = Number(inflow.userData.outer ?? 9);
+  for (let i = 0; i < attr.count; i++) {
+    const x = attr.getX(i),
+      y = attr.getY(i);
+    let r = Math.hypot(x, y);
+    const omega = kepler * Math.pow(Math.max(r, 0.3), -1.5),
+      a = Math.atan2(y, x) + spin * omega * dt;
+    r -= dt * 0.035 * omega * r;
+    if (r < inner) r = outer * (0.88 + 0.12 * ((i * 0.618034 + app.elapsed * 0.13) % 1));
+    attr.setXY(i, Math.cos(a) * r, Math.sin(a) * r);
+  }
+  attr.needsUpdate = true;
+}
 export function updateVisuals(dt: number) {
+  const diskDt = app.paused ? 0 : dt * Math.min(app.speed, 4);
   galaxyUniforms.uViewportH.value = composer.renderTarget1.height;
-  if (galaxyVisuals.size) {
-    bodyById.clear();
-    for (const body of bodies) bodyById.set(body.id, body);
-  }
-  for (const visual of galaxyVisuals.values()) {
-    const anchor = visual.anchorId === undefined ? undefined : bodyById.get(visual.anchorId);
-    if (anchor) {
-      visual.object.position.copy(anchor.mesh.position);
-      visual.object.rotation.y += dt * (visual.style === 'globular' ? 0.003 : 0.008);
-    }
-  }
+  updateGalaxyMotion(dt);
   // Life zones show around the stars nearest a dragged planet, or (so touch visitors can find them without
   // dragging) around the selected star / the stars nearest a selected world.
   const isWorld = (kind: string) => kind === 'rocky' || kind === 'dwarf' || kind === 'moon' || kind === 'gas',
@@ -220,7 +238,8 @@ export function updateVisuals(dt: number) {
         o.name !== 'jetSheath' &&
         o.name !== 'jetSpine'
       )
-        material.uniforms.time.value += dt;
+        // Disk gas orbits on simulated time, so it pauses with the simulation and speeds up with it.
+        material.uniforms.time.value += material.uniforms.kepler ? diskDt : dt;
       const name = o.name;
       if (name === 'nebulaVolume' && material instanceof THREE.ShaderMaterial) {
         material.uniforms.density.value =
@@ -239,8 +258,6 @@ export function updateVisuals(dt: number) {
         material.uniforms.tidal.value = b.nebulaTidal;
         // cameraLocal is set in the volume's onBeforeRender (nebula-hd.ts) with the final matrices.
       }
-      if (name.startsWith('accretionDisk') || name === 'protoDisk')
-        o.rotation.z += dt * (name.startsWith('accretionDisk') ? (o.userData.spin ?? 1.8) : 1.2);
       if (name === 'protoDisk' && b.kind === 'protostar') {
         const formation = THREE.MathUtils.smoothstep(b.age, 0.7, 9);
         if (material instanceof THREE.ShaderMaterial && material.uniforms.formation)
@@ -262,7 +279,7 @@ export function updateVisuals(dt: number) {
           if (m instanceof THREE.MeshBasicMaterial) m.opacity = formation * 0.16;
         });
       }
-      if (name === 'lensingArc') o.rotation.z += dt * 0.09;
+      if (name === 'lensingArc' || name === 'photonRing') faceCamera(o, b);
       if (name === 'blackHoleJets') animateRelativisticJets(o, b, dt);
       if (name === 'pulsarBeams') animateRelativisticJets(o, b, dt, true);
       if (name === 'prominence') o.rotation.z += dt * (o.userData.spin ?? 0.16);
@@ -279,19 +296,7 @@ export function updateVisuals(dt: number) {
       }
     }
     const inflow = b.mesh.getObjectByName('inflow') as THREE.Points | undefined;
-    if (inflow) {
-      const attr = inflow.geometry.getAttribute('position') as THREE.BufferAttribute;
-      for (let i = 0; i < attr.count; i++) {
-        let x = attr.getX(i),
-          z = attr.getZ(i),
-          r = Math.hypot(x, z),
-          a = Math.atan2(z, x) + dt * (1.6 + 4 / r);
-        r -= dt * 0.5;
-        if (r < TYPES.blackhole.radius * 1.5) r = TYPES.blackhole.radius * (3.8 + Math.random() * 0.7);
-        attr.setXYZ(i, Math.cos(a) * r, attr.getY(i) * 0.98, Math.sin(a) * r);
-      }
-      attr.needsUpdate = true;
-    }
+    if (inflow) updateInflow(inflow, diskDt);
     const trail = trails.get(b.id);
     if (trail) {
       trail.line.visible = app.trailsEnabled;

@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { stellarBirthStage } from '../simulation-model.ts';
 import { STAGES, TYPES, VARIANT_COUNTS, type Kind, type Placeable } from '../celestial-catalog.ts';
-import { refreshGroupNavigator, removeGalaxyVisual } from './groups.ts';
+import { refreshGroupNavigator, removeGalaxyVisualsOf } from './groups.ts';
 import { makeTrail, nameFor, updateBodyLabel } from './registry.ts';
 import { habitableRange } from '../physics/body-math.ts';
 import { galaxyGroupFor, galaxyOrbitVelocity } from '../physics/galaxy-dynamics.ts';
@@ -118,12 +118,10 @@ export function removeBody(b: Body) {
       group.bodyIds = group.bodyIds.filter(id => id !== b.id);
       if (group.anchorId === b.id) group.anchorId = promoteAnchor(group.bodyIds, b);
       if (!group.bodyIds.length) {
-        removeGalaxyVisual(group.id);
+        removeGalaxyVisualsOf(group.id);
         cosmicGroups.splice(cosmicGroups.indexOf(group), 1);
-      } else {
-        const visual = galaxyVisuals.get(group.id);
-        if (visual && group.anchorId !== undefined) visual.anchorId = group.anchorId;
-      }
+      } else if (group.anchorId !== undefined)
+        for (const visual of galaxyVisuals.values()) if (visual.groupId === group.id) visual.anchorId = group.anchorId;
     }
   }
   if (app.selectedBody === b) select(null);

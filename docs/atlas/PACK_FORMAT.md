@@ -12,7 +12,8 @@ and `packs/hyperion.js` are full working examples; `packs/_template.js` is a sma
 Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 6 books & spoilers ·
 7 ui strings · 8 intro · 9 groups · 10 worlds · 11 world surfaces (`gfx`, features, sites) ·
 12 events · 13 codex · 14 galaxy (layout, labels, territories, glows, links) · 15 legend ·
-16 hooks · 17 minimum pack · 18 content rules · 19 realms · 20 layers & timeline (Track A).
+16 hooks · 17 minimum pack · 18 content rules · 19 realms · 20 layers & timeline (Track A) ·
+21 family tree (Track A).
 
 ---------------------------------------------------------------------------------------------------
 
@@ -717,3 +718,58 @@ codex:[{id:"people", title:"People", list:[
   it); opening one highlights its legs, lists its stops (placed ones are clickable) and turns the globe to the
   first placed stop. Rename with `ui.routesTitle`, `ui.unplacedStop`, `ui.hiddenStop`.
 * Use one route per traveller or party; do not move a whole group along one member's trip.
+
+---------------------------------------------------------------------------------------------------
+
+## 21. `tree` — a branching "family tree" of traditions (Track A, optional)
+
+Adds a button to the header (label `tree.button`, default "Tree") that opens a full-window chart: years run
+left to right, each tradition is a bar from the year it began, and a curved branch joins it to the tradition
+it came from at that year. Built for the Abrahamic divergence atlas, usable by any pack. The code is in
+`tree.js` (loaded by `index.html` after `layers.js`); `tests/fixtures/track-a-demo.js` has a working example.
+
+```js
+tree:{
+  title:"Family tree",                 // dialog title (default "Family tree")
+  button:"Tree",                       // header button label
+  intro:"One or two sentences shown before anything is picked.",
+  nodes:[
+    {id:"judaism", name:"Judaism", when:-1200, ongoing:true, approx:true,
+     layers:["abr"], c:"#d9b45a", world:"earth", site:"jerusalem",
+     blurb:"Short description in your own words.",
+     notes:[{k:"tradition", t:"…"}, {k:"scholarship", t:"…", ref:"…"}]},
+    {id:"christianity", name:"Christianity", parent:"judaism", when:30, ongoing:true, approx:true,
+     sites:["jerusalem","antioch","rome"], world:"earth"},
+    {id:"islam", name:"Islam", parent:null, also:["judaism","christianity"], when:610, ongoing:true}
+  ],
+  links:[{from:"buddhism", to:"taoism", label:"Chan/Zen synthesis", when:500}]
+}
+```
+
+| node field | notes |
+|---|---|
+| `id`, `name` | required; id is `[a-z0-9_-]` |
+| `when` | required: the year it began, or `[from, to]` for a tradition that ended. Same year rules as 20.2 (no year 0) |
+| `ongoing` | `true` = still practised: the bar runs to the end of the axis and the details say "– today" |
+| `approx` | print "c." before the start year |
+| `parent` | the node it branched from (one). Leave it out for a root. The branch is drawn at the child's start year |
+| `also` | other nodes it drew on or shares roots with: drawn as dashed ties, listed under "Ties" |
+| `layers` | as 20.1; colour falls back to the parent's colour, then the first layer's |
+| `c` | bar colour |
+| `books` / `first` | spoiler gate, as for sites. A hidden node's branches attach to its nearest visible ancestor |
+| `blurb`, `notes` | details panel text; `notes` use the same labelled kinds as places (20.3) so what a tradition says about itself, what tradition holds and what scholars say stay separate |
+| `world`, `site`, `sites` | where it began and where it spread: shown as "On the map" buttons that close the tree and fly to the place. When a place is open, a "Show … in the family tree" link leads back |
+
+`links` (optional) are extra dashed ties between any two nodes, with a `label` (shown on hover and in the
+details) and an optional `when` (the year the tie is drawn at).
+
+Behaviour:
+* Rows are depth-first: every branch sits under the tradition it came from, oldest branch first.
+* The layer and year filters (20.1, 20.2) **fade** nodes rather than remove them, so the shape stays readable;
+  the dialog says how many are faded. The book spoiler gate removes nodes.
+* Picking a node highlights its lineage (ancestors and descendants) and its ties; arrow keys move between
+  rows, Enter or Space picks, Escape closes. Zoom buttons widen the years; the chart scrolls on phones.
+* The address keeps it: `#tree=1` (open) or `#tree=<nodeId>` (open with that node picked).
+* Content rules: describe each tradition in its own terms; when the date or the parentage is disputed, say so
+  in `notes` (`scholarship`) and mark `approx:true` rather than picking a side silently. A tree draws a
+  lineage, not a ranking: no ordering other than by date.

@@ -23,7 +23,7 @@ export function validatePacks(dir = PACK_DIR) {
   const TYPES = 'terran ocean archipelago desert forest ice gas city barren lava hive toxic dyson'.split(' ');
   const FK = 'continent range biome basin peak river'.split(' ');
   const TOP =
-    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start'.split(
+    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start tree'.split(
       ' ',
     );
   const finite = v => typeof v === 'number' && isFinite(v);
@@ -412,6 +412,75 @@ export function validatePacks(dir = PACK_DIR) {
         (T.eras || []).forEach((e, i) => {
           if (!e || !e.name || !finite(e.from) || !finite(e.to))
             issues.push(`timeline.eras[${i}] needs name, from and to`);
+        });
+      }
+      // family tree (PACK_FORMAT 21)
+      if (P.tree) {
+        const nodes = Array.isArray(P.tree.nodes) ? P.tree.nodes : [];
+        if (!nodes.length) issues.push('tree.nodes must be a non-empty array');
+        const nid = new Map();
+        nodes.forEach((n, i) => {
+          if (!n || n.id == null || !/^[a-z0-9_-]+$/.test(String(n.id)))
+            issues.push(`tree.nodes[${i}] needs an id of [a-z0-9_-]`);
+          else if (nid.has(String(n.id))) issues.push(`duplicate tree node "${n.id}"`);
+          else nid.set(String(n.id), n);
+        });
+        nid.forEach((n, id) => {
+          const tag = `tree node ${id}`;
+          if (!n.name) issues.push(`${tag}: needs a name`);
+          const ys = n.when == null ? [] : [].concat(n.when);
+          if (!ys.length || ys.length > 2 || !ys.every(finite))
+            issues.push(`${tag}: when must be a year or [from, to]`);
+          else if (ys.includes(0)) issues.push(`${tag}: when uses year 0 (there is none: 1 BC is -1, AD 1 is 1)`);
+          if (n.parent != null && !nid.has(String(n.parent)))
+            issues.push(`${tag}: parent -> missing node "${n.parent}"`);
+          [].concat(n.also || []).forEach(a => {
+            if (!nid.has(String(a))) issues.push(`${tag}: also -> missing node "${a}"`);
+          });
+          const ls = n.layers != null ? n.layers : n.layer;
+          [].concat(ls == null ? [] : ls).forEach(l => {
+            if (!lids.has(String(l))) issues.push(`${tag}: unknown layer "${l}"`);
+          });
+          if (n.notes != null && !Array.isArray(n.notes)) issues.push(`${tag}: notes must be an array of {k, t, ref}`);
+          const places = [].concat(n.site == null ? [] : n.site, n.sites || []);
+          if (places.length && n.world == null) issues.push(`${tag}: site/sites need a world`);
+          if (n.world != null) {
+            const w = wid.get(n.world);
+            if (!w) issues.push(`${tag}: world -> missing world "${n.world}"`);
+            else
+              places.forEach(sid => {
+                if (!(w.sites || []).find(x => x.id === sid))
+                  issues.push(`${tag}: site -> missing site "${sid}" on ${w.id}`);
+              });
+          }
+          // a branch should not begin before the tradition it came from
+          const p = n.parent != null && nid.get(String(n.parent));
+          if (
+            p &&
+            ys.length &&
+            p.when != null &&
+            [].concat(p.when).every(finite) &&
+            Math.min(...ys) < Math.min(...[].concat(p.when))
+          )
+            warn.push(`${tag}: begins before its parent ${p.id}`);
+        });
+        // no loops through parent
+        nid.forEach((n, id) => {
+          const seen = new Set([id]);
+          let p = n.parent != null ? String(n.parent) : null;
+          while (p && nid.has(p)) {
+            if (seen.has(p)) {
+              issues.push(`tree node ${id}: parent chain loops`);
+              break;
+            }
+            seen.add(p);
+            p = nid.get(p).parent != null ? String(nid.get(p).parent) : null;
+          }
+        });
+        (P.tree.links || []).forEach((l, i) => {
+          if (!l || !nid.has(String(l.from)) || !nid.has(String(l.to)))
+            issues.push(`tree.links[${i}] needs from and to node ids`);
+          if (l && l.when === 0) issues.push(`tree.links[${i}]: when uses year 0`);
         });
       }
       if (P.start) {

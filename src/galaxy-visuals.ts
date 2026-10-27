@@ -8,6 +8,8 @@ import * as THREE from 'three';
 //                       blending so dust actually absorbs light from things behind it).
 //   2. galaxyBulge    – a camera-facing Sersic / King profile glow with an astrophotography-style asinh stretch.
 //   3. galaxyStarField / galaxyNursery – a single Points draw each with per-star size, colour and brightness.
+//   4. galaxyHaze     – soft glow points that replace the painted disk once the stars move individually
+//                       (see visuals/galaxy-motion.ts).
 // Particle counts scale with the compact flag and the quality setting; nothing allocates per frame.
 
 export type GalaxyVisualStyle = 'spiral' | 'lenticular' | 'elliptical' | 'irregular' | 'globular';
@@ -79,7 +81,7 @@ const DISK_FRAGMENT = /* glsl */ `
 precision highp float;
 varying vec2 vP;
 uniform float uStyle,uSeed,uArms,uTanPitch,uPhase0,uWarp,uMinor,uBarLen,uBarWidth,uBarAngle,uArmStart;
-uniform float uFloc,uDust,uKnots,uRingR,uRingDust,uScale,uInter,uArmGain,uBright,uCoreBoost;
+uniform float uFloc,uDust,uKnots,uRingR,uRingDust,uScale,uInter,uArmGain,uBright,uCoreBoost,uFade;
 uniform vec3 uCore,uDiskCol,uArmCol,uHII,uYoung;
 uniform vec4 uClumps[5];
 ${NOISE_GLSL}
@@ -168,7 +170,7 @@ void main(){
   vec3 T=exp(-dust*vec3(1.05,1.45,2.2));
   vec3 col=light*T*uBright;
   float a=clamp((1.-(T.r+T.g+T.b)/3.)*edge*smoothstep(.0,.06,disk),0.,.92);
-  gl_FragColor=vec4(max(col,vec3(0.)),a);
+  gl_FragColor=vec4(max(col,vec3(0.)),a)*uFade;
 }`;
 
 const GLOW_VERTEX = /* glsl */ `
@@ -198,7 +200,7 @@ void main(){
 
 const STAR_VERTEX = /* glsl */ `
 attribute float aSize;attribute vec3 aColor;
-uniform float uViewportH,uRef,uSoft;
+uniform float uViewportH,uRef,uSoft,uGain;
 varying vec3 vColor;
 void main(){
   vec4 mv=modelViewMatrix*vec4(position,1.);gl_Position=projectionMatrix*mv;
@@ -206,7 +208,8 @@ void main(){
   float px=aSize*att*uViewportH/900.;
   float a=1.;if(px<1.6){a=px/1.6;px=1.6;}
   gl_PointSize=min(px,72.);
-  vColor=aColor*a;
+  vColor=aColor*a*uGain;
+  if(uGain<=0.){gl_PointSize=0.;gl_Position=vec4(2.,2.,2.,1.);}
 }`;
 
 const STAR_FRAGMENT = /* glsl */ `
@@ -218,9 +221,14 @@ void main(){
   gl_FragColor=vec4(vColor*(core+halo),1.);
 }`;
 
-function starMaterial(soft: number, ref: number) {
+function starMaterial(soft: number, ref: number, gain = 1) {
   return new THREE.ShaderMaterial({
-    uniforms: { uViewportH: galaxyUniforms.uViewportH, uRef: { value: ref }, uSoft: { value: soft } },
+    uniforms: {
+      uViewportH: galaxyUniforms.uViewportH,
+      uRef: { value: ref },
+      uSoft: { value: soft },
+      uGain: { value: gain },
+    },
     vertexShader: STAR_VERTEX,
     fragmentShader: STAR_FRAGMENT,
     transparent: true,
@@ -309,13 +317,13 @@ class StarBuffer {
     this.colors[i * 3 + 2] = col[2] * brightness;
     this.sizes[i] = size;
   }
-  toPoints(name: string, soft: number, ref: number) {
+  toPoints(name: string, soft: number, ref: number, gain = 1) {
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(this.positions.subarray(0, this.n * 3), 3));
     geometry.setAttribute('aColor', new THREE.BufferAttribute(this.colors.subarray(0, this.n * 3), 3));
     geometry.setAttribute('aSize', new THREE.BufferAttribute(this.sizes.subarray(0, this.n), 1));
     geometry.computeBoundingSphere();
-    const points = new THREE.Points(geometry, starMaterial(soft, ref));
+    const points = new THREE.Points(geometry, starMaterial(soft, ref, gain));
     points.name = name;
     points.renderOrder = 2;
     points.raycast = () => {};
@@ -353,7 +361,7 @@ function diskMesh(extent: number, uniforms: Record<string, THREE.IUniform>, octa
   geometry.rotateX(-Math.PI / 2);
   geometry.computeBoundingSphere();
   const material = new THREE.ShaderMaterial({
-    uniforms: { uExtent: { value: extent }, ...uniforms },
+    uniforms: { uExtent: { value: extent }, uFade: { value: 1 }, ...uniforms },
     vertexShader: DISK_VERTEX,
     fragmentShader: DISK_FRAGMENT,
     defines: { OCT: octaves },
@@ -854,7 +862,7 @@ function buildGlobular(root: THREE.Group, seed: number, extent: number, budget: 
 export function buildGalaxyVisual(style: GalaxyVisualStyle, seed: number, extent: number, options: GalaxyBuildOptions) {
   const root = new THREE.Group(),
     quality = THREE.MathUtils.clamp(options.quality, 0.5, 1),
-    base = options.compact ? 14000 : 52000,
+    base = options.compact ? 22000 : 90000,
     perStyle = { spiral: 1, lenticular: 0.75, elliptical: 0.8, irregular: 0.6, globular: 0.9 }[style],
     budget = Math.floor(base * perStyle * quality),
     octaves = options.compact || quality < 0.75 ? 3 : 5;
@@ -863,6 +871,7 @@ export function buildGalaxyVisual(style: GalaxyVisualStyle, seed: number, extent
   else if (style === 'elliptical') buildElliptical(root, seed, extent, budget);
   else if (style === 'irregular') buildIrregular(root, seed, extent, budget, octaves);
   else buildGlobular(root, seed, extent, budget);
+  addGasHaze(root, seed, Math.floor(budget * 0.14));
   if (style !== 'globular') {
     const halo = glowMesh('darkMatterHalo', extent * 1.9, {
       profile: 2,
@@ -879,6 +888,49 @@ export function buildGalaxyVisual(style: GalaxyVisualStyle, seed: number, extent
   return root;
 }
 
+/**
+ * Soft, faint, oversized points that follow the stars' own distribution: the unresolved glow of gas and faint
+ * stars. Invisible (gain 0) while the painted disk carries that light; when a galaxy is disturbed and its stars
+ * move individually, the painted disk fades and this haze takes over, so tidal tails glow like the real thing.
+ */
+function addGasHaze(root: THREE.Group, seed: number, count: number) {
+  const sources = root.children.filter(
+    (child): child is THREE.Points => child instanceof THREE.Points && child.name.startsWith('galaxy'),
+  );
+  const total = sources.reduce((sum, points) => sum + points.geometry.getAttribute('position').count, 0);
+  if (!total || count <= 0) return;
+  const rand = rng(seed * 23 + 9),
+    haze = new StarBuffer(count),
+    tint = [0.62, 0.66, 0.86];
+  for (let i = 0; i < count; i++) {
+    let pick = Math.floor(rand() * total),
+      layer = 0;
+    while (pick >= sources[layer].geometry.getAttribute('position').count) {
+      pick -= sources[layer].geometry.getAttribute('position').count;
+      layer++;
+    }
+    const position = sources[layer].geometry.getAttribute('position'),
+      color = sources[layer].geometry.getAttribute('aColor'),
+      c = [color.getX(pick), color.getY(pick), color.getZ(pick)],
+      peak = Math.max(0.001, c[0], c[1], c[2]),
+      hue = lerpColor(
+        [c[0] / peak, c[1] / peak, c[2] / peak],
+        tint,
+        sources[layer].name === 'galaxyNursery' ? 0.2 : 0.45,
+      );
+    haze.push(
+      position.getX(pick) + gaussian(rand) * 1.4,
+      position.getY(pick) * 0.5,
+      position.getZ(pick) + gaussian(rand) * 1.4,
+      hue,
+      0.08 + rand() * 0.1,
+      8 + rand() * 10,
+    );
+  }
+  const points = haze.toPoints('galaxyHaze', 1, 260, 0);
+  points.renderOrder = 1;
+  root.add(points);
+}
 /**
  * A supermassive black hole seen at galaxy scale is a point-like nucleus inside the bulge, not a stellar-mass accretion
  * disk 20% of the galaxy wide. Calm the anchor's oversized cosmetic parts (gameplay body, mass and labels untouched).
