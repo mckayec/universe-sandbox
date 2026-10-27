@@ -1,4 +1,4 @@
-/* Atlas places: optional ambient sound (PACK_FORMAT 21). Off until the visitor turns it on. Everything is
+/* Atlas places: optional ambient sound (PACK_FORMAT 22). Off until the visitor turns it on. Everything is
    synthesised with Web Audio: wind and surf from filtered noise, a low hum for cities and stations, and short
    bursts for event scenes. No files are loaded. */
 (function () {

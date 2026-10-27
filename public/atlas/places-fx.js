@@ -1,4 +1,4 @@
-/* Atlas places: event effects (PACK_FORMAT 21, event `fx`). Each effect is placed at a landmark (`a.p`,
+/* Atlas places: event effects (PACK_FORMAT 22, event `fx`). Each effect is placed at a landmark (`a.p`,
    size `a.s`) in the current place `P` and returns {dur, upd(dt, t), end()}; places.js runs and disposes it. */
 (function () {
   "use strict";

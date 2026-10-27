@@ -4,8 +4,9 @@ import { capPlanarVelocity } from '../physics-continuity.ts';
 import { G } from '../celestial-catalog.ts';
 import { removeBody } from '../bodies/lifecycle.ts';
 import { isExhibitAnchor, spinRate } from './body-math.ts';
-import { collisions } from './collisions.ts';
-import { applyGalaxyHaloGravity, galaxyGroupFor } from './galaxy-dynamics.ts';
+import { collisions, consume } from './collisions.ts';
+import { updateInfall } from './infall.ts';
+import { GALAXY_CORE_SOFTENING, applyGalaxyHaloGravity, galaxyGroupFor } from './galaxy-dynamics.ts';
 import { updateLife } from './life.ts';
 import { updateNebulaInteractions, updateNebulaMergers } from './nebula.ts';
 import { advanceStar, spawnProtostar, updateProto } from './stellar-evolution.ts';
@@ -13,7 +14,7 @@ import { updateSatellite, updateTidalInteractions } from './tidal.ts';
 import { updateTidalDisruption } from './tidal-disruption.ts';
 import { updateWarpSequence } from './warp-sequence.ts';
 import { isCompact } from '../scene/setup.ts';
-import { app, bodies } from '../state/app-state.ts';
+import { app, bodies, cosmicGroups } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 
 export const SIM_STEP = 1 / 60,
@@ -33,22 +34,35 @@ function galaxyNebulae() {
 }
 function gravityParticles(byId: Map<number, Body>): GravityParticle[] {
   const diskClouds = galaxyNebulae();
-  const anchors = new Map<number, Body>();
+  const anchors = new Map<number, Body>(),
+    galaxyCores = new Set<number>(),
+    galaxyIds = new Set<number>();
   for (const body of bodies) if (isExhibitAnchor(body)) anchors.set(body.exhibitSystemId!, body);
+  for (const group of cosmicGroups)
+    if (group.kind === 'galaxy') {
+      galaxyIds.add(group.id);
+      if (group.anchorId !== undefined) galaxyCores.add(group.anchorId);
+    }
   return bodies.map(body => {
     const nebula = body.kind === 'nebula',
-      frame = body.exhibitSystemId === undefined ? undefined : anchors.get(body.exhibitSystemId);
+      // Galaxy members feel other galaxies directly, so encounters raise tides; other preset systems (a Solar
+      // System inside a galaxy) still move as one unit through their surroundings.
+      frame =
+        body.exhibitSystemId === undefined || galaxyIds.has(body.exhibitSystemId)
+          ? undefined
+          : anchors.get(body.exhibitSystemId);
     return {
       id: body.id,
       x: body.mesh.position.x,
       z: body.mesh.position.z,
       mass: body.mass,
       radius: body.radius,
-      softening: nebula ? body.radius * body.radius * 1.8 : 0,
+      softening: nebula ? body.radius * body.radius * 1.8 : galaxyCores.has(body.id) ? GALAXY_CORE_SOFTENING : 0,
       sourceFactor: nebula ? 0.22 : 1,
       responseFactor: nebula && !diskClouds.has(body.id) ? 0.14 : 1,
       locked: body.locked || body === app.dragBody,
-      hosted: body.hostId !== undefined || body.satelliteHostId !== undefined,
+      // A captured body orbits inside its eater's disk on a scripted path; its momentum already belongs to the eater.
+      hosted: body.hostId !== undefined || body.satelliteHostId !== undefined || body.infall !== undefined,
       systemId: body.exhibitSystemId,
       anchor: isExhibitAnchor(body),
       frameX: frame && frame !== body && byId.has(frame.id) ? frame.mesh.position.x : undefined,
@@ -83,6 +97,16 @@ function limitNebula(b: Body, byId: Map<number, Body>, dt: number) {
   capPlanarVelocity(b.velocity, GALAXY_NEBULA_SPEED_LIMIT);
   b.velocity.add(anchor.velocity);
 }
+/** Tidal shear near a black hole or pulsar tears apart dense cores before they can collapse into protostars. */
+function shearedByCompactObject(cloud: Body) {
+  for (const body of bodies)
+    if (
+      (body.kind === 'blackhole' || body.kind === 'pulsar') &&
+      body.mesh.position.distanceTo(cloud.mesh.position) < cloud.radius * 1.4
+    )
+      return true;
+  return false;
+}
 export function simulate(dt: number) {
   const byId = new Map(bodies.map(body => [body.id, body] as const));
   applyGravity(dt, byId);
@@ -100,7 +124,7 @@ export function simulate(dt: number) {
       b.nebulaTimer += dt;
       let hosted = 0;
       for (const x of bodies) if (x.hostId === b.id) hosted++;
-      if (b.nebulaTimer >= 12 && hosted < (isCompact ? 2 : 3)) {
+      if (b.nebulaTimer >= 12 && hosted < (isCompact ? 2 : 3) && !shearedByCompactObject(b)) {
         b.nebulaTimer = 0;
         spawnProtostar(b);
       }
@@ -114,6 +138,7 @@ export function simulate(dt: number) {
       } else b.spinAngle = ((b.spinAngle ?? 0) + dt * spinRate(b)) % (Math.PI * 2);
     }
   }
+  for (const [eater, food] of updateInfall(dt)) if (!eater.removed && !food.removed) consume(eater, food);
   for (const b of bodies) updateLife(b, dt);
   updateNebulaInteractions(dt);
   updateNebulaMergers(dt);

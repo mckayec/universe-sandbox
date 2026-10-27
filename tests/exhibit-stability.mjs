@@ -27,13 +27,14 @@ async function waitForServer() {
 // Runs inside the page. Returns a plain report per scene; assertions happen in Node.
 async function runScenes() {
   const load = path => import(path);
-  const [state, history, exhibits, systems, galaxy, simulate] = await Promise.all([
+  const [state, history, exhibits, systems, galaxy, simulate, motion] = await Promise.all([
     load('/src/state/app-state.ts'),
     load('/src/state/history.ts'),
     load('/src/ui/exhibit-flow.ts'),
     load('/src/builders/systems.ts'),
     load('/src/builders/galaxy.ts'),
     load('/src/physics/simulate.ts'),
+    load('/src/visuals/galaxy-motion.ts'),
   ]);
   const { app, bodies, exhibitEvents, matterStreams } = state;
   // Use the page's own three.js Vector3 (from the startup scene) rather than importing a second copy.
@@ -45,10 +46,12 @@ async function runScenes() {
     return (seed - 1) / 2147483646;
   };
   const named = name => bodies.find(body => body.name === name);
+  const stepHooks = [];
   const step = (seconds, onStep) => {
     for (let i = 0, n = Math.round(seconds * 60); i < n; i++) {
       simulate.simulate(1 / 60);
       app.elapsed += 1 / 60;
+      for (const hook of stepHooks) hook();
       onStep?.(app.elapsed);
     }
   };
@@ -110,6 +113,63 @@ async function runScenes() {
   );
   reports.push(run('binary-stars', exhibit('binary-stars'), 180, {}));
   reports.push(run('feed-black-hole', exhibit('feed-black-hole'), 60, {}));
+  // A Slow Feast: the cloud and then the star are fed in gradually, not swallowed on contact.
+  let capturedAt = null;
+  const originalUnshift = exhibitEvents.unshift;
+  reports.push(
+    run('slow-feast', exhibit('slow-feast'), 120, {
+      track: () => {
+        exhibitEvents.unshift = function (...items) {
+          if (capturedAt === null && items.some(item => item.title === 'Slow accretion begins'))
+            capturedAt = app.elapsed;
+          return originalUnshift.apply(this, items);
+        };
+        return {};
+      },
+      extra: () => {
+        exhibitEvents.unshift = originalUnshift;
+        return { capturedAt, hole: named('Quiet Black Hole')?.mass ?? null };
+      },
+    }),
+  );
+  // Collide Two Galaxies: tracer stars are advanced as the frame loop would, every other physics step.
+  let tailFraction = null;
+  reports.push(
+    run(
+      'galaxy-collision',
+      () => {
+        exhibits.loadExhibit('galaxy-collision');
+        let steps = 0;
+        stepHooks.push(() => {
+          if (++steps % 2 === 0) motion.updateGalaxyMotion(1 / 30);
+        });
+      },
+      180,
+      {
+        extra: () => {
+          stepHooks.length = 0;
+          const visuals = [...state.galaxyVisuals.values()],
+            core = bodies.find(body => body.kind === 'blackhole');
+          let far = 0,
+            total = 0;
+          for (const visual of visuals) {
+            if (!visual.live || !core) continue;
+            for (let i = 0; i < visual.live.n; i++) {
+              total++;
+              if (Math.hypot(visual.live.x[i] - core.mesh.position.x, visual.live.z[i] - core.mesh.position.z) > 270)
+                far++;
+            }
+          }
+          tailFraction = total ? far / total : 0;
+          return {
+            tailFraction,
+            liveVisuals: visuals.filter(visual => visual.live).length,
+            galaxies: state.cosmicGroups.filter(group => group.kind === 'galaxy').length,
+          };
+        },
+      },
+    ),
+  );
   reports.push(run('supernova-observatory', exhibit('supernova-observatory'), 120, {}));
   reports.push(run('collision-lab', exhibit('collision-lab'), 30, {}));
   reports.push(run('tidal-lab', exhibit('tidal-lab'), 120, {}));
@@ -240,6 +300,17 @@ function check(reports) {
     ['Passage at warp', 'Out of warp', 'Into the world', 'Tidal disruption'].every(t => god.titles.includes(t)),
   );
   assert.equal(body(god, "Gododdin's Sun")?.stage, 'yellow star');
+  // A Slow Feast: the star is captured after the cloud has been feeding for a while, and both end up inside.
+  const feast = r['slow-feast'];
+  assert.ok(feast.capturedAt !== null && feast.capturedAt > 45, `star captured at ${feast.capturedAt}`);
+  assert.ok(!has(feast, 'Sun-like Star') && !has(feast, 'Drifting Cloud'), 'star and cloud are fully accreted');
+  assert.ok(feast.hole > 1250, `black hole grew to ${feast.hole}`);
+  // Collide Two Galaxies: the cores merge, every star is still drawn, and many are flung into tails and shells.
+  const collision = r['galaxy-collision'];
+  assert.ok(collision.titles.includes('Galaxies merge'), 'the galaxies merge');
+  assert.equal(collision.galaxies, 1, 'one merger remnant remains');
+  assert.equal(collision.liveVisuals, 2, 'both galaxies keep their stars');
+  assert.ok(collision.tailFraction > 0.05, `tidal debris fraction ${collision.tailFraction}`);
   // Galaxy tour: the Solar System orbits the core instead of falling in, and keeps every orbit.
   const tour = r['galaxy-tour'];
   within(tour.extremes.sunToHole, 250, 600, 'solar system distance to galaxy core');
@@ -273,7 +344,7 @@ function check(reports) {
   for (const style of ['spiral', 'lenticular', 'elliptical', 'irregular', 'globular']) {
     const report = r[`galaxy-${style}`],
       members = report.bodies.filter(b => / member \d+$/.test(b.name));
-    assert.equal(members.length, 11, `${style} keeps all 11 member stars`);
+    assert.equal(members.length, 18, `${style} keeps all 18 member stars`);
     for (const member of members)
       assert.ok(member.stage?.startsWith(member.name.split(' ')[0]), `${style} ${member.name} is ${member.stage}`);
     assert.ok(!report.titles.includes('Supernova'), `${style} has no supernova`);

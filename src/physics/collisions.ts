@@ -3,9 +3,11 @@ import * as THREE from 'three';
 import { collisionRegime, fragmentKicks, mergeSurvivorIndex } from '../simulation-model.ts';
 import { TYPES, type Kind } from '../celestial-catalog.ts';
 import { removeBody, updateScale } from '../bodies/lifecycle.ts';
+import { passesThroughInGalaxyCollision, transferGalaxyCore } from '../bodies/galaxy-merger.ts';
 import { addBody, nameFor } from '../bodies/registry.ts';
 import { spatialCandidatePairs } from '../gravity-engine.ts';
 import { isExhibitAnchor, sameExhibitSystem, seeded } from './body-math.ts';
+import { beginInfall, feedsSlowly } from './infall.ts';
 import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts';
 import { isCompact } from '../scene/setup.ts';
 import { bodies, bodyGroupIds, cosmicGroups } from '../state/app-state.ts';
@@ -193,8 +195,10 @@ function inheritIdentity(eater: Body, food: Body, foodWasDefaultName: boolean) {
     if (body.satelliteHostId === food.id && eater.kind === 'rocky') body.satelliteHostId = eater.id;
   for (const group of cosmicGroups) if (group.anchorId === food.id) group.anchorId = eater.id;
 }
-function consume(a: Body, b: Body) {
+export function consume(a: Body, b: Body) {
   const foodWasDefaultName = b.name === nameFor(b.kind, b.id);
+  // A swallowed galaxy core hands its stars, halo and picture on before anything else changes hands.
+  transferGalaxyCore(a, b);
   inheritIdentity(a, b, foodWasDefaultName);
   const foodName = b.name,
     receiverMass = a.mass,
@@ -240,7 +244,10 @@ export function collisions() {
       b.collisionCooldown > 0 ||
       // Ships are scripted props: they never merge with worlds or debris.
       a.artificial ||
-      b.artificial
+      b.artificial ||
+      // A body being fed slowly into a disk is finished by updateInfall, not by contact.
+      a.infall ||
+      b.infall
     )
       continue;
     const reach = (a.radius + b.radius) * 0.72;
@@ -291,7 +298,10 @@ export function collisions() {
         continue;
       }
     }
+    if (passesThroughInGalaxyCollision(a, b)) continue;
     const [eater, food] = chooseEater(a, b);
-    if (canEat(eater, food)) consume(eater, food);
+    if (!canEat(eater, food)) continue;
+    if (feedsSlowly(eater, food)) beginInfall(eater, food);
+    else consume(eater, food);
   }
 }

@@ -7,10 +7,15 @@ import { createGalaxyBackdrop, galaxyName, registerCosmicGroup, setBodyName } fr
 import { addBody } from '../bodies/registry.ts';
 import { findOpenPlacement } from './placement.ts';
 import { seeded } from '../physics/body-math.ts';
-import { enclosedHaloMass } from '../physics/galaxy-dynamics.ts';
+import {
+  GALAXY_CORE_SOFTENING,
+  enclosedHaloMass,
+  galaxyExtent,
+  galaxySpinTangent,
+} from '../physics/galaxy-dynamics.ts';
 import { isCompact } from '../scene/setup.ts';
-import { app, cosmicGroups } from '../state/app-state.ts';
-import type { Body, GalaxyStyle } from '../state/types.ts';
+import { app, bodies, cosmicGroups, galaxyVisuals } from '../state/app-state.ts';
+import type { Body, CosmicGroup, GalaxyStyle } from '../state/types.ts';
 import { museumEvent } from '../ui/feed.ts';
 
 /** Member masses chosen so each label sits on its stellar track: red 120, yellow 210, white 270, blue 360. */
@@ -32,24 +37,54 @@ const DISK_SEQUENCE = [
 export function galaxyMemberMass(style: GalaxyStyle, index: number) {
   return (style === 'globular' || style === 'elliptical' ? OLD_SEQUENCE : DISK_SEQUENCE)[index % 4];
 }
+/** Interactive member stars per galaxy (the rendered tracer stars number in the tens of thousands). */
+export const GALAXY_MEMBER_COUNT = { desktop: 18, compact: 10 } as const;
+/** Dark-matter halo mass and scale radius per style. */
+function haloFor(style: GalaxyStyle) {
+  return style === 'globular'
+    ? { mass: 5000, scale: 36 }
+    : style === 'irregular'
+      ? { mass: 9000, scale: 58 }
+      : { mass: 9000, scale: 66 };
+}
 /**
- * Circular speed at `radius` under the forces a galaxy member actually feels: its anchor plus the halo. Member
- * nebulae orbit with the disk too (see simulate.ts), but their extended softening slightly weakens the anchor's pull.
+ * Circular speed at `radius` under the forces a galaxy member actually feels: its softened core plus the halo.
+ * Member nebulae orbit with the disk too (see simulate.ts), but their extended softening slightly weakens the pull.
  */
-function memberOrbitSpeed(anchor: Body, haloMass: number, radius: number, memberRadius: number, nebula = false) {
+function memberOrbitSpeed(
+  anchor: Body,
+  halo: { mass: number; scale: number },
+  radius: number,
+  memberRadius: number,
+  nebula = false,
+) {
   const g = G * app.gravity,
-    softening = nebula ? memberRadius * memberRadius * 1.8 : 0,
+    softening = (nebula ? memberRadius * memberRadius * 1.8 : 0) + GALAXY_CORE_SOFTENING,
     anchorPull = (g * anchor.mass) / softenedDistanceSq(radius * radius, softening, 0, memberRadius, anchor.radius),
-    haloPull = (g * enclosedHaloMass(haloMass, radius)) / (radius * radius);
+    haloPull = (g * enclosedHaloMass(halo.mass, radius, halo.scale)) / (radius * radius);
   return Math.sqrt(Math.max(0, (anchorPull + haloPull) * radius));
+}
+/** The nearest existing galaxy core within reach, for setting a new galaxy on an encounter course. */
+function nearestGalaxy(center: THREE.Vector3) {
+  let best: { group: CosmicGroup; anchor: Body; distance: number } | undefined;
+  for (const group of cosmicGroups) {
+    if (group.kind !== 'galaxy' || group.anchorId === undefined) continue;
+    const anchor = bodies.find(body => body.id === group.anchorId);
+    if (!anchor) continue;
+    const distance = anchor.mesh.position.distanceTo(center);
+    if (distance > 40 && distance < 1100 && (!best || distance < best.distance)) best = { group, anchor, distance };
+  }
+  return best;
 }
 export function createGalaxy(origin: THREE.Vector3, style: GalaxyStyle = 'spiral') {
   const members: Body[] = [],
-    count = isCompact ? 7 : 11,
+    count = isCompact ? GALAXY_MEMBER_COUNT.compact : GALAXY_MEMBER_COUNT.desktop,
+    extent = galaxyExtent(style),
     center = findOpenPlacement(origin, 158),
     hasBlackHole = !['irregular', 'globular'].includes(style),
-    haloMass = style === 'globular' ? 4200 : style === 'irregular' ? 7600 : 5800,
+    halo = haloFor(style),
     coreMass = style === 'globular' ? 160 : 230,
+    neighbour = nearestGalaxy(center),
     anchor = setBodyName(
       hasBlackHole
         ? addBody('blackhole', center, new THREE.Vector3(), {
@@ -72,21 +107,44 @@ export function createGalaxy(origin: THREE.Vector3, style: GalaxyStyle = 'spiral
       hasBlackHole ? 'Central Black Hole' : style === 'globular' ? 'Globular Core' : 'Nuclear Star Cluster',
     );
   members.push(anchor);
+  // Near another galaxy, the pair is set on a bound, off-centre, prograde approach (0.6 × the circular speed):
+  // they pass once, throw out tidal tails, fall back together and merge.
+  const bulk = new THREE.Vector3();
+  if (neighbour) {
+    const otherMass = neighbour.anchor.mass + (neighbour.group.haloMass ?? 0),
+      ownMass = anchor.mass + halo.mass,
+      offset = center.clone().sub(neighbour.anchor.mesh.position),
+      approach = 0.6 * Math.sqrt((G * app.gravity * (ownMass + otherMass)) / neighbour.distance),
+      relative = galaxySpinTangent(offset.x, offset.z).multiplyScalar(approach),
+      ownShare = otherMass / (ownMass + otherMass),
+      otherKick = relative.clone().multiplyScalar(-(1 - ownShare));
+    bulk.copy(neighbour.anchor.velocity).addScaledVector(relative, ownShare);
+    for (const id of neighbour.group.bodyIds) bodies.find(body => body.id === id)?.velocity.add(otherKick);
+    // Stars of an already-disturbed neighbour move individually and need the same kick.
+    for (const visual of galaxyVisuals.values()) {
+      if (visual.groupId !== neighbour.group.id || !visual.live) continue;
+      for (let i = 0; i < visual.live.n; i++) {
+        visual.live.vx[i] += otherKick.x;
+        visual.live.vz[i] += otherKick.z;
+      }
+    }
+    anchor.velocity.copy(bulk);
+  }
   for (let i = 0; i < count; i++) {
     const fraction = (i + 1) / (count + 1),
       radius =
-        style === 'globular' ? 12 + fraction * 58 : style === 'irregular' ? 24 + fraction * 92 : 34 + fraction * 102,
+        style === 'globular' ? 12 + fraction * 70 : style === 'irregular' ? 26 + fraction * 112 : 40 + fraction * 135,
       angle = i * 2.399 + (style === 'irregular' ? seeded(i, 22) * 1.1 : 0),
       direction = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)),
-      tangent = new THREE.Vector3(-direction.z, 0, direction.x),
+      tangent = galaxySpinTangent(direction.x, direction.z),
       mass = galaxyMemberMass(style, i),
       stage = stellarBirthStage(mass),
-      speed = memberOrbitSpeed(anchor, haloMass, radius, TYPES.star.radius),
+      speed = memberOrbitSpeed(anchor, halo, radius, TYPES.star.radius),
       star = setBodyName(
         addBody(
           'star',
           center.clone().addScaledVector(direction, radius),
-          tangent.multiplyScalar(speed * (style === 'irregular' ? 0.86 + seeded(i, 33) * 0.2 : 1)),
+          tangent.multiplyScalar(speed * (style === 'irregular' ? 0.86 + seeded(i, 33) * 0.2 : 1)).add(bulk),
           {
             mass,
             stage,
@@ -99,19 +157,19 @@ export function createGalaxy(origin: THREE.Vector3, style: GalaxyStyle = 'spiral
       );
     members.push(star);
   }
-  const cloudCount = style === 'spiral' ? 2 : style === 'irregular' ? 2 : style === 'lenticular' ? 1 : 0;
+  const cloudCount = style === 'spiral' ? 3 : style === 'irregular' ? 3 : style === 'lenticular' ? 1 : 0;
   for (let i = 0; i < cloudCount; i++) {
-    const radius = 58 + i * 39,
-      angle = 0.9 + i * 2.8,
+    const radius = 70 + i * 42,
+      angle = 0.9 + i * 2.1,
       direction = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)),
       cloudRadius = TYPES.nebula.radius,
       cloud = setBodyName(
         addBody(
           'nebula',
           center.clone().addScaledVector(direction, radius),
-          new THREE.Vector3(-direction.z, 0, direction.x).multiplyScalar(
-            memberOrbitSpeed(anchor, haloMass, radius, cloudRadius, true),
-          ),
+          galaxySpinTangent(direction.x, direction.z)
+            .multiplyScalar(memberOrbitSpeed(anchor, halo, radius, cloudRadius, true))
+            .add(bulk),
           {
             mass: 260,
             collisionCooldown: 4,
@@ -123,7 +181,9 @@ export function createGalaxy(origin: THREE.Vector3, style: GalaxyStyle = 'spiral
     members.push(cloud);
   }
   const sequence = cosmicGroups.filter(group => group.kind === 'galaxy' && group.style === style).length + 1,
-    group = registerCosmicGroup('galaxy', members, `${galaxyName(style)} ${sequence}`, style, anchor.id, haloMass);
+    group = registerCosmicGroup('galaxy', members, `${galaxyName(style)} ${sequence}`, style, anchor.id, halo.mass);
+  group.haloScale = halo.scale;
+  group.extent = extent;
   // Members are tracers of the galaxy potential: they orbit the anchor and halo without tugging, feeding or
   // stripping one another (see sameExhibitSystem). Outside objects still interact with every member.
   for (const member of members) {
@@ -135,8 +195,8 @@ export function createGalaxy(origin: THREE.Vector3, style: GalaxyStyle = 'spiral
   museumEvent(
     `${galaxyName(style)} assembled`,
     hasBlackHole
-      ? `${group.name} combines a central black hole, a distributed dark-matter halo, ${count} interactive stars, and thousands of GPU-rendered background stars.`
-      : `${group.name} deliberately has no central black hole; a distributed halo and dense stellar core hold this simplified exhibit model together.`,
+      ? `${group.name} combines a central black hole, a dark-matter halo, ${count} interactive stars and tens of thousands of tracer stars that respond to nearby galaxies.${neighbour ? ` It is falling toward ${neighbour.group.name} on an off-centre path: expect a close pass, tidal tails, then a merger.` : ''}`
+      : `${group.name} deliberately has no central black hole; a distributed halo and dense stellar core hold this simplified exhibit model together.${neighbour ? ` It is falling toward ${neighbour.group.name}.` : ''}`,
     '#b39cff',
     anchor,
   );

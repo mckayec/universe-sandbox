@@ -1,4 +1,4 @@
-/* Atlas places: landmark builders (PACK_FORMAT 21). Each builder returns a THREE.Group standing on y=0,
+/* Atlas places: landmark builders (PACK_FORMAT 22). Each builder returns a THREE.Group standing on y=0,
    centred on x=z=0, roughly 2u to 6u across where u is the place's unit (1/18 of its radius). The kit
    passed in carries the palette, the architecture style and shared materials. Loaded before places.js. */
 (function () {

@@ -69,6 +69,7 @@ export function updateTidalDisruption(dt: number) {
     if (
       !DISRUPTABLE_KINDS.includes(donor.kind) ||
       donor.hostId !== undefined ||
+      donor.infall ||
       donor === app.dragBody ||
       donor.buildLocked
     ) {

@@ -4,7 +4,7 @@ Mckay's request (2026-10-26): bring the detail and abilities of the shared Socie
 every universe the same depth of narrative content, and let visitors drill down from a world into specific
 cities and areas to explore what happened there.
 
-## 1. Engine: places you can enter (PACK_FORMAT §21)
+## 1. Engine: places you can enter (PACK_FORMAT §22)
 
 - **`public/atlas/places.js`** builds a procedural ground-level view of any site: terrain coloured from the
   world's own palette, sky and sunlight from its star and atmosphere, a street plan and city blocks in one of

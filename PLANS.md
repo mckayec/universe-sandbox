@@ -50,3 +50,16 @@ Acceptance: the exhibit can run unattended, recover cleanly, and remain understa
 - [x] Add deterministic continuity/runtime tests and a desktop/mobile Playwright smoke test.
 
 Future production work: source-map-guided bundle splitting, real-device thermal profiling, calibrated multi-channel audio, and a dedicated kiosk deployment profile.
+
+## Phase 6 — Disks that orbit, slow accretion, and colliding galaxies
+
+- [x] Accretion and protoplanetary disks rotate differentially (Keplerian shear in the shader) in one plane and one sense; no surface flapping, no counter-rotating layer, and Doppler beaming fixed to the viewer.
+- [x] Jets leave along the disk axis; inflow clumps orbit in the disk plane; lensed rings face the viewer.
+- [x] Matter streams join the disk rim tangentially, and a black hole's own disk is fed and brightened instead of a second disk being drawn.
+- [x] Stars and giant planets that reach a black hole or pulsar are captured and stripped into the disk over tens of seconds (physics/infall.ts); clouds drain into compact objects over about a minute.
+- [x] New exhibit "A Slow Feast".
+- [x] Galaxies: denser star fields, more member stars, larger halos; every rendered star becomes a tracer once another galaxy or a loose black hole comes close (galaxy-field.ts, visuals/galaxy-motion.ts), so encounters raise tidal tails, bridges and shells.
+- [x] Halos pull on every galaxy, dynamical friction merges cores after a pass or two, and swallowed cores hand their stars and halo to the survivor (bodies/galaxy-merger.ts).
+- [x] New exhibit "Collide Two Galaxies"; a galaxy built near another is set on an off-centre, prograde encounter course.
+
+Acceptance: disks hold their plane and shear like orbiting gas at every time speed; nothing larger than a planet vanishes in one frame when it falls into a compact object; two galaxies that meet visibly tear each other apart and merge, with every star still on screen.

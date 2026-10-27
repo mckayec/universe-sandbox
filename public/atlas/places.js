@@ -1,4 +1,4 @@
-/* Atlas places: ground-level views of the sites on a world (PACK_FORMAT 21).
+/* Atlas places: ground-level views of the sites on a world (PACK_FORMAT 22).
    Loaded after engine.js. The engine calls AtlasPlaces.create(env) once, then enter(world, site) to build a
    procedural place (terrain, sky, city, landmarks, weather, traffic) and render(dt) every frame while the
    visitor is inside. Landmark builders live in places-lm.js; event effects at the end of this file.
