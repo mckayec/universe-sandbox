@@ -92,3 +92,20 @@ test('codex text naming a work is gated at that work', () => {
     }
   }
 });
+
+test('every 1 Maccabees place-reference row has its own codex entry', () => {
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/^the /, '')
+      .replace(/[^a-z]/g, '');
+  const rows = readCsv('deuterocanonical-integration.csv').filter(r => r.kind === 'place-reference' && r.first === '6');
+  const entries = pack.codex.find((s: any) => s.id === 'places').list.filter((e: any) => e.first === 6);
+  const anchors = pack.worlds.flatMap((w: any) => (w.sites || []).map((s: any) => norm(s.name)));
+  for (const r of rows) {
+    const label = norm(r.label);
+    const found = anchors.includes(label) || entries.some((e: any) => norm(e.name).includes(label));
+    assert.ok(found, `${r.id} (${r.label}) has no slot-6 codex entry`);
+  }
+  assert.equal(entries.length, rows.length - 1, 'one entry per row; Rome is a pinned anchor');
+});
