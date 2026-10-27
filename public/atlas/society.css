@@ -497,7 +497,11 @@ body.mob #warbrief h2,body.mob #warend h2{font-size:24px}
 /* the newer header controls ride in the sideways-scrolling tool row */
 body.mob #soundTog,body.mob #qualTog{display:inline-block}
 /* guided tour: its card rests above the info strip and steps aside when the sheet, the list or the Chronicle opens */
-body.mob #tourBtn{display:inline-block}
+body.mob #tourBtn{display:inline-block;margin-left:0;padding:6px 8px;letter-spacing:.08em;white-space:nowrap}
+/* one row for the resting Chronicle strip: title, tour, show (the credits come back when it opens) */
+body.mob .chron-head{flex-wrap:nowrap;gap:8px}
+body.mob .chron-head h2{font-size:12px;letter-spacing:.12em;white-space:nowrap}
+body.mob.hide-chron .credbtn{display:none}
 body.mob #tourBox{bottom:calc(var(--chronH) + var(--sheetMin) + 12px);width:calc(100% - 24px);padding:10px 14px}
 body.mob #tourBox .tt{font-size:16px}
 body.mob #tourBox .ts{font-size:14px;max-height:6em;overflow-y:auto}
