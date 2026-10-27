@@ -178,3 +178,35 @@ test('1 Enoch and Jubilees: every event row has an unpinned Chronicle entry at i
   assert.equal(at('visions', 16).length, 12, 'twelve schematic 1 Enoch settings');
   assert.equal(at('visions', 17).length, 0, 'Jubilees settings are reference places, not visions');
 });
+
+test('Ascension of Isaiah and 4 Baruch: every related-tradition row is used at its own work', () => {
+  const rows = readCsv('related-traditions-integration.csv').filter(
+    r => r.work_key === 'ascension-of-isaiah' || r.work_key === '4-baruch',
+  );
+  assert.equal(rows.length, 58);
+  const slot = (r: any) => (r.work_key === 'ascension-of-isaiah' ? 21 : 22);
+  for (const r of rows.filter(r => r.type === 'event-topic')) {
+    const e = pack.events.find((x: any) => x.id === r.id.toLowerCase());
+    assert.ok(e, `no Chronicle entry for ${r.id}`);
+    assert.equal(e.book, slot(r), `${r.id} is gated at the wrong work`);
+  }
+  const at = (id: string, s: number) => pack.codex.find((c: any) => c.id === id).list.filter((e: any) => e.first === s);
+  assert.equal(at('journeys', 21).length + at('journeys', 22).length, rows.filter(r => r.type === 'journey').length);
+  assert.equal(at('visions', 21).length, 4, 'firmament, seven heavens, Sheol, Gehenna');
+  const sites = pack.worlds.flatMap((w: any) => w.sites || []);
+  const badge = (id: string) => sites.find((x: any) => x.id === id).books;
+  for (const [id, s] of [
+    ['jerusalem', 21],
+    ['jerusalem', 22],
+    ['babylon', 22],
+    ['bethlehem', 21],
+    ['nazareth', 21],
+  ] as const)
+    assert.ok(badge(id).includes(s), `${id} badge lacks slot ${s}`);
+  const places = pack.codex.find((c: any) => c.id === 'places').list;
+  for (const n of ['The Jordan', 'Samaria'])
+    assert.ok(
+      places.find((e: any) => e.name === n).more.some(([b]: [number]) => b === 22),
+      `${n} lacks its 4 Baruch mention`,
+    );
+});

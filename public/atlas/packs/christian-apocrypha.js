@@ -109,6 +109,12 @@
     Cyprus: 'Second Maccabees: Ptolemy Macron had held office there (ch. 10).',
   });
 
+  /* 4 Baruch (slot 22) mentions of places first written up with earlier works (RPP16, RPP17) */
+  later(22, {
+    'The Jordan': '4 Baruch: the returning exiles come to the Jordan before going up to Jerusalem (8:1–6). The crossing point is not given.',
+    Samaria: '4 Baruch: the story says families turned away from Jerusalem and Babylon founded Samaria (8:7–12). The story’s account, not the history of the Samaritans.',
+  });
+
   /* reference entry for a place with no approved map anchor, or a person, scoped to one work */
   function ref(name, first, layer, desc, role, more) {
     const e = { name, first, books: [first], layers: [layer], desc };
@@ -225,7 +231,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12],
+            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 21, 22],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -235,17 +241,17 @@
             name: 'Babylon',
             lat: 32.541969,
             lon: 44.420833,
-            books: [5, 6, 7, 8, 9, 10, 11],
+            books: [5, 6, 7, 8, 9, 10, 11, 22],
             modern: 'Babylon (UNESCO World Heritage property)',
             desc: 'The marker locates the ancient city of Babylon, not the wider region of Babylonia or any exile route.',
           },
           {
-            /* Abrahamic gazetteer at e1082e3; UNESCO 1433. Protevangelium of James (slot 23). */
+            /* Abrahamic gazetteer at e1082e3; UNESCO 1433. Ascension of Isaiah RPP02 (slot 21); Protevangelium of James (slot 23). */
             id: 'bethlehem',
             name: 'Bethlehem',
             lat: 31.704353,
             lon: 35.2075,
-            books: [23],
+            books: [21, 23],
             modern: 'Nativity heritage property, Bethlehem (UNESCO)',
             desc: 'The marker locates the Nativity heritage property in Bethlehem. It is not evidence for any particular narrated cave.',
           },
@@ -260,13 +266,13 @@
             desc: 'The marker locates a component of Rome’s historic centre, not the site of any martyrdom told in these texts.',
           },
           {
-            /* LDS gazetteer at 689b495; Pleiades 678299 (CC BY 3.0). Pseudo-Matthew PMP11 (slot 39).
+            /* LDS gazetteer at 689b495; Pleiades 678299 (CC BY 3.0). Ascension of Isaiah RPP10 (slot 21); Pseudo-Matthew PMP11 (slot 39).
                Not bound to the unnamed village of the Infancy Gospel of Thomas (nta-it-scene). */
             id: 'nazareth',
             name: 'Nazareth',
             lat: 32.701029,
             lon: 35.300148,
-            books: [39],
+            books: [21, 39],
             modern: 'Nazareth settlement point (Pleiades 678299)',
             desc: 'The marker is a representative point for the settlement, not a house or the site of any childhood miracle.',
           },
@@ -507,6 +513,33 @@
       ev('xo-e21', 17, 'xot', 'Jacob and Esau', 'In this book Jacob kills Esau, and his sons’ pursuit ends with Seir paying tribute. This ending belongs to Jubilees and is not replaced with Genesis.', 'Jubilees 38 (Charles)'),
       ev('xo-e33', 17, 'xot', 'Joseph in Egypt', 'Joseph is enslaved and imprisoned, then appointed, before he runs the famine administration. The book’s reign-based chronology is literary, not established Egyptian history.', 'Jubilees 39–40 (Charles)'),
       ev('xo-e22', 17, 'xot', 'Passover and Sabbath laws', 'Laws for Passover and the Sabbath, framed as given at Sinai. The sanctuary instructions and the crossing of the Jordan look ahead; neither is a completed journey in this book.', 'Jubilees 49–50 (Charles)'),
+
+      /* ---- Ascension of Isaiah (slot 21). related-traditions-integration.csv RPE01–RPE11; copy from
+         related-pseudepigrapha.md. R. H. Charles translation (RP1). Chapters 6–11 look back to an earlier year of
+         Hezekiah (20th, against the 26th of chapter 1); both are the text’s own years, not historical dates. ---- */
+      ev('rpe01', 21, 'rp', 'Hezekiah’s instruction', 'Hezekiah hands on his instruction, and Isaiah foretells that Manasseh will turn away. The text sets this in Hezekiah’s twenty-sixth year.', 'Ascension of Isaiah 1:1–13 (Charles)', 'jerusalem'),
+      ev('rpe02', 21, 'rp', 'Isaiah withdraws', 'Isaiah leaves Jerusalem, goes through Bethlehem, and settles on a mountain in the wilderness.', 'Ascension of Isaiah 2:1–16 (Charles)', 'bethlehem'),
+      ev('rpe03', 21, 'rp', 'Belchira’s accusation', 'Belchira accuses Isaiah, and the narrative turns to the Beloved and to conflict in the future church.', 'Ascension of Isaiah 3:1–31 (Charles)'),
+      ev('rpe04', 21, 'rp', 'Beliar’s reign foretold', 'The reign of Beliar and the Beloved’s judgment are foretold. The periods of time given are part of the prophecy, not a modern prediction.', 'Ascension of Isaiah 4:1–22 (Charles)'),
+      ev('rpe05', 21, 'rp', 'Isaiah’s death', 'Isaiah refuses to recant and is killed; his companions are told to flee. The place of his death is not given.', 'Ascension of Isaiah 5:1–16 (Charles)'),
+      ev('rpe06', 21, 'rp', 'The vision at court', 'Earlier in Hezekiah’s reign, in his twentieth year, Isaiah falls into a vision at the king’s court.', 'Ascension of Isaiah 6:1–17 (Charles)', 'jerusalem'),
+      ev('rpe07', 21, 'rp', 'Through the firmament', 'An angel guides Isaiah through the firmament and the first five heavens.', 'Ascension of Isaiah 7:1–37 (Charles)'),
+      ev('rpe08', 21, 'rp', 'The sixth heaven', 'In the sixth heaven all praise together; the divisions of the lower heavens are gone.', 'Ascension of Isaiah 8:1–28 (Charles)'),
+      ev('rpe09', 21, 'rp', 'The seventh heaven', 'Isaiah enters the seventh heaven and sees the righteous and the divine glory.', 'Ascension of Isaiah 9:1–42 (Charles)'),
+      ev('rpe10', 21, 'rp', 'The Beloved descends', 'The Beloved comes down through the heavens one level at a time, with his identity hidden.', 'Ascension of Isaiah 10:1–31 (Charles)'),
+      ev('rpe11', 21, 'rp', 'The vision of Jesus’ life', 'The vision tells of Jesus’ birth, life on earth, death and exaltation, and Isaiah reports what he saw. This birth account is not harmonized with any gospel.', 'Ascension of Isaiah 11:1–43 (Charles)'),
+
+      /* ---- 4 Baruch (slot 22), the longer form. RPE12–RPE20. Kraft and Purintun translation (CATSS), cross-checked
+         in RP8. The 66 years, the nine days and the 477 years are the text’s own numbers. ---- */
+      ev('rpe12', 22, 'rp', 'The fall announced', 'God announces that Jerusalem will fall and tells Jeremiah and Baruch to leave.', '4 Baruch 1:1–12 (Kraft and Purintun)', 'jerusalem'),
+      ev('rpe13', 22, 'rp', 'Lament in the sanctuary', 'Jeremiah and Baruch lament in the sanctuary before the destruction they have been told of.', '4 Baruch 2:1–10 (Kraft and Purintun)', 'jerusalem'),
+      ev('rpe14', 22, 'rp', 'The vessels hidden', 'Angels approach the city; the sacred vessels are hidden; Abimelech is sent out for figs.', '4 Baruch 3:1–22 (Kraft and Purintun)'),
+      ev('rpe15', 22, 'rp', 'Captivity, and the tomb', 'Jeremiah goes with the captives to Babylon; Baruch stays near Jerusalem, in a tomb.', '4 Baruch 4:1–12 (Kraft and Purintun)', 'babylon'),
+      ev('rpe16', 22, 'rp', 'Abimelech wakes', 'Abimelech wakes after sixty-six years, in the month Nisan (Abib), and does not recognize Jerusalem; his figs are still fresh.', '4 Baruch 5:1–35 (Kraft and Purintun)', 'jerusalem'),
+      ev('rpe17', 22, 'rp', 'Abimelech and Baruch', 'An angel brings Abimelech to Baruch, and Baruch prepares a letter.', '4 Baruch 6:1–25 (Kraft and Purintun)'),
+      ev('rpe18', 22, 'rp', 'The eagle', 'An eagle carries the letters and figs; outside Babylon a dead person comes back to life.', '4 Baruch 7:1–37 (Kraft and Purintun)'),
+      ev('rpe19', 22, 'rp', 'The return, and Samaria', 'The returning exiles meet exclusion, and in the story the rejected group founds Samaria. This is the story’s own account, not the history of the Samaritans.', '4 Baruch 8:1–12 (Kraft and Purintun)'),
+      ev('rpe20', 22, 'rp', 'Jeremiah’s last days', 'After nine days of sacrifice, Jeremiah appears dead for three days, revives, prophesies Christ and is stoned. This Christian ending is the work’s own; the hostile crowd is not the atlas’s picture of any people.', '4 Baruch 9:1–32 (Kraft and Purintun)'),
     ],
     codex: [
       {
@@ -830,6 +863,17 @@
           ref('Robel and Tamnatares', 17, 'xot', 'Jubilees: towns the text says were founded, named in chapter 34. The seven Amorite rulers and places in the same chapter are not written up one by one yet.'),
           ref('The hill of Aduram', 17, 'xot', 'Jubilees: where Esau is buried in this book (ch. 38). No modern identification.'),
           ref('Goshen and Rameses', 17, 'xot', 'Jubilees: the regions given to Jacob’s household to live in (45:1–7). No boundaries are drawn.'),
+          /* ---- Ascension of Isaiah and 4 Baruch places (RPP02–RPP05, RPP11–RPP13, RPP15, RPP18). Coordinates withheld;
+             Jerusalem (RPP01), Babylon (RPP14), Bethlehem (RPP02) and Nazareth (RPP10) are the reused anchors;
+             the Jordan (RPP16) and Samaria (RPP17) are later() additions to their earlier entries. ---- */
+          ref('Isaiah’s wilderness mountain', 21, 'rp', 'Ascension of Isaiah: an unnamed mountain where Isaiah and other prophets live (2:8–11).'),
+          ref('The region of Tyre and Sidon', 21, 'rp', 'Ascension of Isaiah: where Isaiah tells his companions to go (5:13). The text does not say they arrived.'),
+          ref('Galgala', 21, 'rp', 'Ascension of Isaiah: where Isaiah and Josab set out from to go to Hezekiah in Jerusalem (6:1). Not tied to any one modern Gilgal.'),
+          ref('The sanctuary and altar (4 Baruch)', 22, 'rp', '4 Baruch: where Jeremiah and Baruch lament before the city falls (2:1–10), and where sacrifice is offered later (9:1–7). Not a separately located site.'),
+          ref('Agrippa’s estate', 22, 'rp', '4 Baruch: Abimelech is sent by the mountain road to bring figs from it (3:14, 21–22). Not identified with any historical Agrippa’s property.'),
+          ref('Baruch’s tomb', 22, 'rp', '4 Baruch: where Baruch stays after leaving Jerusalem (4:11–12). Not the place of Jeremiah’s later burial.'),
+          ref('The burial place outside Babylon', 22, 'rp', '4 Baruch: where the eagle meets Jeremiah (7:12–18). Unlocated.'),
+          ref('The Mount of Olives (4 Baruch)', 22, 'rp', '4 Baruch: named in Jeremiah’s last vision, in its announcement of the Messiah (9:20). Jeremiah does not go there.'),
         ],
       },
       {
@@ -885,6 +929,11 @@
           /* Jubilees sacred groupings (XO-P18, XO-P29): relations between named places, not a measured alignment. */
           ref('Four holy places', 17, 'xot', 'Jubilees: Eden, the mountain of the east, Sinai and Zion are grouped as four sacred places (4:26). Kept alongside the three-place grouping of chapter 8.'),
           ref('Eden, Sinai and Zion', 17, 'xot', 'Jubilees: three sacred places set in relation to one another (8:19). A theological pattern, not a line on a map.'),
+          /* 4 Baruch nonspatial references (related-pseudepigrapha.md, after RPP18) and RPC09. */
+          ref('The temple keys given to the sun', 22, 'rp', '4 Baruch: the keys of the temple are handed over to the sun (4:4). An image, not a place.'),
+          ref('The heavenly Jerusalem', 22, 'rp', '4 Baruch: named in chapter 5 (5:35). Not a stop on any journey.'),
+          ref('Paradise and the tree of life', 22, 'rp', '4 Baruch: named in Jeremiah’s last prophecy (9:16–19). Not a place on the map.'),
+          ref('The figs', 22, 'rp', '4 Baruch: the figs that stay fresh become a sign of hope for the body’s restoration (6:5–10).'),
         ],
       },
       {
@@ -938,6 +987,17 @@
           ref('Jacob goes down to Goshen', 17, 'xot', 'Jubilees: from Haran, as printed, to the Well of the Oath, then Goshen (44–45). The starting point is kept although the scene before is at Hebron. The text dates departure to the sixteenth of the third month and arrival to the first of the fourth; these are the book’s own calendar.'),
           ref('Burials at Hebron', 17, 'xot', 'Jubilees: Jacob is carried from Egypt to Hebron for burial, and later his sons’ bones; Joseph’s bones stay in Egypt for now. Amram stays in Hebron before going back (45–46).'),
           ref('Moses’ flight and the Exodus', 17, 'xot', 'Jubilees: Moses flees from Egypt to Midian and returns; then the crossing of the sea, Shur and the shore, and Sin between Elim and Sinai (47–50). The route is unknown, and the Jordan crossing is still to come.'),
+          /* Ascension of Isaiah and 4 Baruch journeys (RPJ01–RPJ10): ordered as stated; no lines drawn. */
+          ref('Isaiah’s withdrawal', 21, 'rp', 'Ascension of Isaiah: Jerusalem, Bethlehem, then the wilderness mountain (2:7–11). No road is reconstructed.'),
+          ref('The companions sent away', 21, 'rp', 'Ascension of Isaiah: from near the place of Isaiah’s death toward the region of Tyre and Sidon (5:13). An instruction; the journey is not narrated.'),
+          ref('Isaiah and Josab come to court', 21, 'rp', 'Ascension of Isaiah: from Galgala to Hezekiah in Jerusalem (6:1).'),
+          ref('Isaiah’s ascent', 21, 'rp', 'Ascension of Isaiah: from the vision at court, through the firmament, then up through the seven heavens in order (6–9). A vision, not a flight through space.'),
+          ref('The Beloved’s descent', 21, 'rp', 'Ascension of Isaiah: from the seventh heaven down through each heaven to the first, then the firmament and the air (10:17–31). His descent to Sheol is commanded in 10:8 and told in 11:19.'),
+          ref('Birth, death and exaltation', 21, 'rp', 'Ascension of Isaiah: the child is taken from Bethlehem to Nazareth; later, from Jerusalem, the Beloved goes down to Sheol and is exalted (11:12–33). The earthly moves are kept apart from the vision. On the way up the text names the firmament and then the second heaven; no stop in the first heaven is added.'),
+          ref('Abimelech and the figs', 22, 'rp', '4 Baruch: Jerusalem to Agrippa’s estate and the shade tree, back to Jerusalem, its outskirts, and Baruch’s tomb (3:21–22; 5:1–14; 6:1–3). How the tree relates to the estate is not stated.'),
+          ref('Into captivity; into hiding', 22, 'rp', '4 Baruch: Jeremiah goes with the exiles from Jerusalem to Babylon; Baruch goes from Jerusalem to the tomb (4:6, 11–12). Two travelers, two destinations.'),
+          ref('The eagle’s flight', 22, 'rp', '4 Baruch: from the tomb to the burial place outside Babylon, and back to Jerusalem (7:1–18, 35–36). Letters go out and come back; the figs go out. No stops between.'),
+          ref('The return from Babylon', 22, 'rp', '4 Baruch: the exiles go from Babylon to the Jordan and Jerusalem; the families turned away go back toward Babylon and then found Samaria (8:1–12). A story’s itinerary, not migration history.'),
         ],
       },
       {
@@ -960,6 +1020,11 @@
           ref('The house of crystal and fire', 16, 'xot', 'First Enoch: a house of crystal and fire, surrounded by guardian angels (71:5–9).'),
           ref('The old house and the new', 16, 'xot', 'First Enoch: in the animal vision the old house is taken away and a larger one gathers the flock (90:28–36). No dimensions are reconstructed.'),
           ref('The burning wilderness', 16, 'xot', 'First Enoch: a fiery, chaotic waste (108:3–6). Not a place on Earth.'),
+          /* Ascension of Isaiah realms (RPP06–RPP09): no Earth parent, no coordinates, no scale. */
+          ref('The firmament', 21, 'rp', 'Ascension of Isaiah: where Isaiah sees hostile powers in conflict (7:9–12).'),
+          ref('The seven heavens', 21, 'rp', 'Ascension of Isaiah: seven heavens of increasing glory, through which the guide leads Isaiah (7–9). In order only; no distances.'),
+          ref('Sheol', 21, 'rp', 'Ascension of Isaiah: the Beloved goes down to the angel of Sheol (10:8; 11:19). Haguel is excluded in 10:8 and is not merged with Sheol.'),
+          ref('Gehenna', 21, 'rp', 'Ascension of Isaiah: Isaiah foretells that Beliar will be defeated and taken to Gehenna (4:14).'),
         ],
       },
       {
@@ -1059,6 +1124,21 @@
           ref('Zebulon and Dinah', 17, 'xot', 'Twins, in this book (28:23).', 'Jubilees'),
           ref('Asenath', 17, 'xot', 'Daughter of Potiphar, priest of Heliopolis; her marriage is told in chapter 40 (also 44:24). The name Potiphar is kept as this witness gives it.', 'Jubilees'),
           ref('Levi (Jubilees)', 17, 'xot', 'Affirmed as priest (ch. 32); Jacob entrusts him with the ancestral books (45:16). Keeping books in the story is not evidence of surviving manuscripts.', 'Jubilees'),
+          /* Ascension of Isaiah people (RPC01–RPC06), scoped to slot 21. */
+          ref('Isaiah (Ascension of Isaiah)', 21, 'rp', 'The prophet and visionary at the center of the book. The attribution to Isaiah is the book’s literary voice, not proven authorship.', 'Ascension of Isaiah'),
+          ref('Josab', 21, 'rp', 'Isaiah’s son, who travels with him from Galgala (1:2; 6:1).', 'Ascension of Isaiah'),
+          ref('Hezekiah (Ascension of Isaiah)', 21, 'rp', 'Instructs his son Manasseh (ch. 1).', 'Ascension of Isaiah'),
+          ref('Manasseh (Ascension of Isaiah)', 21, 'rp', 'Hezekiah’s son, who later turns against Isaiah (1–3).', 'Ascension of Isaiah'),
+          ref('Belchira', 21, 'rp', 'Accuses Isaiah before Manasseh (3:1–12). A human accuser, not merged with Beliar.', 'Ascension of Isaiah'),
+          ref('Beliar', 21, 'rp', 'Shown as the hostile power behind the persecution (5:15). Spellings vary; demonic names are not merged with one another.', 'Ascension of Isaiah'),
+          ref('The guide', 21, 'rp', 'The unnamed angel who leads Isaiah (7:2–8). Kept apart from the angel of the Holy Spirit.', 'Ascension of Isaiah'),
+          ref('The Beloved', 21, 'rp', 'Identified as Christ, who will be called Jesus in the world (9:5; 10:7).', 'Ascension of Isaiah'),
+          ref('The angel of the Holy Spirit', 21, 'rp', 'Shown in the vision separately from the Beloved and from the guide (9:27–40).', 'Ascension of Isaiah'),
+          ref('Mary and Joseph (Ascension of Isaiah)', 21, 'rp', 'Appear in Isaiah’s vision of the child’s birth and life (11:2–17).', 'Ascension of Isaiah'),
+          /* 4 Baruch people (RPC07, RPC08, RPC10), scoped to slot 22. */
+          ref('Jeremiah (4 Baruch)', 22, 'rp', 'Intercedes and teaches during the captivity; writes to Baruch (1:4–7; 7:21–36). In the last chapter he sees a vision of Jesus, is killed, and a stone is miraculously put in his place (9:14–32).', '4 Baruch'),
+          ref('Baruch (4 Baruch)', 22, 'rp', 'Jeremiah’s correspondent, who stays in a tomb near Jerusalem. Scoped to this work; not merged with the entry for the book of Baruch.', '4 Baruch'),
+          ref('Abimelech the Ethiopian', 22, 'rp', 'Spared from seeing Jerusalem fall, he later meets Baruch again (3:12–14; 6:1–4). A character’s origin, not evidence of where the book was written.', '4 Baruch'),
         ],
       },
     ],
