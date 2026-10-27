@@ -114,3 +114,15 @@ Branch `pack/christian-apocrypha` at `16ac23f75ac497977b8bf7e162a560e279af15a3` 
 - **Checks:** `pnpm check` 91/91; `pnpm test:pages` 12 pages × 2; Chromium at 1440×900 (`#book=7`) and 390×844 (`#book=2`, `#book=7`): slot 7 text shown at 7, hidden at 2; Esther and Bel additions hidden at both; no console errors. `pnpm test:browser` not rerun (same sandbox limitation as checkpoint 7; CI runs it on the PR).
 
 **Next:** unit 3, expanded OT (works 10–17; 18–20 marked incomplete), then related pseudepigrapha (21–22).
+
+## Build checkpoint 9 (2026-10-27)
+
+Branch `pack/christian-apocrypha` at `4c5ecdbba1499cc6cdff8a35cad2095ea5644386` (no PR yet).
+
+- **Expanded OT, slots 10–15:** every `expanded-ot-integration.csv` row with `first` 10–15 (38) and every `XE2-*` row in `pilate-esdras-integration.csv` (10) is used, paraphrased from the row only. 24 Chronicle entries, ids = lowercased record ids: 1 Esdras `xo-p01`, `xo-p03`, `xo-e01`, `xo-e23…e26` (KJV transcription XO01); 2 Esdras `xo-p06`, `xo-e02` (KJV, chs. 1–4) and `xe2-c03`, `xe2-e01`, `xe2-c01`, `xe2-e02`, `xe2-c04` (WEB, chs. 5–16); 3 Maccabees `xo-p07`, `xo-e03`, `xo-e04` (WEB); 4 Maccabees `xo-e07`, `xo-e27…e30` (online translation XO04, edition named per entry; 10:4 and 11:7–8 from WEB XO22); Prayer of Manasseh `xo-e05` and Psalm 151 `xo-e06` (copyrighted translations: paraphrase only). Pins only at the reused anchors: Jerusalem (XO-P01, XO-P07) and Babylon (XO-P03, XO-P06); badges updated.
+- **Codex:** 8 unpinned settings (Magiddo, Darius’s court, Ecbatane, the river Theras, the field Ardat/Arphad, Schedia, the hippodrome, Ptolemais “rose-bearing”); same-spelled places are separate entries from the 1–2 Maccabees and Tobit ones, per the rows’ no-merge limits. New section **Visionary and otherworldly settings** (RR06) with XO-P05 and XE2-P02. 7 journeys (XO-J01–J04, J21, J22, XE2-J01 with XE2-C02’s “year and a half”). 14 people scoped to their work (XO-R01–R05, XE2-R01; the two Eleazars, the 4 Maccabees mother left unnamed). Edition-specific numbers are kept side by side (2 Esdras 14: WEB 94/70 vs KJV 204; 2 Esdras 7:36–105 restored in WEB, absent in the KJV transcription).
+- **Engine fix (self-found):** with ten book badges, the Jerusalem row’s badges ran over the place name at 1440×900. Place-row badge lists now wrap (`engine.css`, `.place .pc .bks`); no change for rows that fit.
+- **New tests:** each narrative row for slots 10–15 has a Chronicle entry at its own work, pinned only at Jerusalem or Babylon; visionary settings have no location and are not listed as places (93 tests).
+- **Checks:** `pnpm check` 93/93; `pnpm test:pages` 12 pages × 2; Chromium at 1440×900 (`#book=12`), 390×844 (`#book=12`), 1280×800 (`#book=10`) and 3840×2160 (`#book=15`): no console errors; 1 Esdras text absent at `#book=9` and present from 10. `pnpm test:browser` not rerun (sandbox limitation as at checkpoint 7; CI runs it on the PR).
+
+**Next:** 1 Enoch (slot 16, 31 rows) and Jubilees (slot 17, 45 rows), then related pseudepigrapha (21–22).
