@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-27
-note: Build checkpoint 5 on pack/lds-standard-works (draft PR #33) at 326a572: 13 builder-compiled NT anchors (anchors-proposal.csv, pending canon audit), AE11–AE13, AJ05; first-mission route drawn end to end. Next: label collision, then schematic BoM view (Q03). Q01–Q04 still unanswered.
+note: Build checkpoint 6 on pack/lds-standard-works (draft PR #33) at 5897523: overlapping site labels now collapse to markers instead of hiding pins (all 13 D&C pins visible over the US); credits no longer overlap the details panel. Next: schematic BoM view (Q03). Q01–Q04 still unanswered.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -29,3 +29,4 @@ Track A · view: Earth-historical, layered
 - 2026-10-26: Claude: build checkpoint 3. RR09 resolved on pack/lds-standard-works at 5dfe92722de02f45f6151bdb9241aaf1e52324d3 (draft PR #33): built-in Earth now a Natural Earth 1:10m land-and-lakes mask (8192/4096), crisp at globe and close zoom; checks pass; shots in shots/. Stage unchanged; Q01–Q04 still open.
 - 2026-10-27: Claude: build checkpoint 4 at 5800072b09793d82bb765ef70ead332f07c1eb60 (draft PR #33). Q01 still had no answer, so Claude compiled 13 restoration-era anchors itself (Wikipedia/NRHP/GNIS, each tagged (L) and listed in anchors-proposal.csv for ChatGPT to audit). Added 10 Chronicle events and routes RJ01–RJ03. Checks pass. Stage unchanged.
 - 2026-10-27: Claude: build checkpoint 5 at 326a572dd6ef0870f7d685c7c80daef2fa21a666 (draft PR #33). 13 more builder-compiled anchors for Acts/Revelation stops (Pleiades for Salamis; Wikipedia for the rest, since Pleiades pages were behind a bot check), each (L) in anchors-proposal.csv; Derbe (contested), Neapolis, Samothracia, Melita, Appii Forum, Three Taverns not pinned. Added AE11–AE13 and AJ05. Checks pass. Stage unchanged.
+- 2026-10-27: Claude: build checkpoint 6 at 5897523b9cf7f75277bcf46d77c604587494c722 (draft PR #33). Generic engine fix: when site labels overlap, the selected site, then sites marked `major` (new optional field, PACK_FORMAT §11.4), keep their labels and the rest show their marker only (name on hover/focus and as aria-label), so dense regions no longer lose pins. Fan-notice credits wrap wider so they no longer run into the details panel. pnpm check 73/73, test:pages 12×2, browser smoke pass; shots b6-* in shots/. Stage unchanged.
