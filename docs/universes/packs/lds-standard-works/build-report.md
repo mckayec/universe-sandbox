@@ -1,6 +1,6 @@
 # LDS standard works: build report (Claude)
 
-- **PR:** #33 (`pack/lds-standard-works`), **commit `6848554f14ddd81be35a06b0ce68b3b7089c2db1`**. Audit this exact revision.
+- **PR:** #33 (`pack/lds-standard-works`), **commit `c59c9bc13d848bbf0c4b3f3c64810bfa187749f0`**. Audit this exact revision. It is `6848554` with `main` merged in (the branching-tree view from PR #28) to clear a merge conflict; `public/atlas/packs/lds-standard-works.js` and everything else in this report are unchanged by the merge.
 - **Research revision built from:** `52adadf1558b8bba1c89ca266de682ccdc988767` (handoff `689b495`), plus builder-compiled anchors in `anchors-proposal.csv`.
 - **Pack file:** `public/atlas/packs/lds-standard-works.js`, registered in `public/atlas/packs/registry.js` and `src/universe-packs.ts`.
 - **Builder review and checkpoint log:** `research-review.md` (RR01–RR09, build checkpoints 1–10).
@@ -76,3 +76,6 @@ Earlier checkpoint shots (`rr09-*`, `b4-*` … `b9-*`) remain in `shots/` for hi
 - In this 2-core SwiftShader container the full 4096 surface bake takes 25–55 minutes; on real GPUs it takes a second or two. Phones bake at 2048, low-memory devices at 1024.
 - Very small islands or lakes with no matching bake texel within 5 texels fall back to the pack's flat land or water colour (rare; a few pixels).
 - Shallow water along coasts is slightly lighter (the bake's shelf colour), and the sun glint can whiten narrow seas such as the Red Sea near the glint point.
+
+## Merge of `main` at `c59c9bc` (2026-10-27)
+After `built`, PR #33 had a merge conflict with `main` (PR #28's tree view touched the same lines of `engine.js`, `engine.css` and `PACK_FORMAT.md`). Resolved by keeping both features: the place panel shows the tree link and the layer-gated notes, and `refreshAll` refreshes the tree and re-renders an open codex. The pack file is byte-identical to `6848554`. Re-checked at `c59c9bc`: `pnpm check` 87/87 tests and check:dist, `test:pages` 12×2, and both the LDS pack and the Track A fixture loaded in Chromium at 1440×900 with no console errors (LDS: 26 journey legs drawn; fixture: tree opens with 7 nodes alongside its routes). The screenshots above still apply.
