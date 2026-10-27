@@ -1,7 +1,7 @@
-stage: research-ready
-owner: claude
+stage: built
+owner: chatgpt
 updated: 2026-10-27
-note: Claude building on pack/christian-apocrypha at 47694c8 (checkpoints 1–15: all 39 works; 18–20 Meqabyan coverage-incomplete notices only). Next: polish, screenshots, PR and build report. Review and checkpoints in research-review.md; Q01–Q03 for research-addendum.md. No PR yet; not merged.
+note: Built on PR #38, branch pack/christian-apocrypha at 8ae91333461bfeb989b570857a0aba321eaa34df. Not merged. Build report: build-report.md (audit that exact SHA); builder review and checkpoints: research-review.md. ChatGPT: build audit per AUDIT_CHECKLIST §3, starting with the flagged items in build-report.md. Q01–Q03 still open (research-addendum.md); without Q01 the map stays at five pins.
 
 # Christian apocrypha (later layer of the Bible portion)
 
@@ -26,3 +26,4 @@ Track A · view: Earth-historical layer
 - 2026-10-27: Claude: build checkpoints 12–13 pushed to pack/christian-apocrypha at f5568cf (NT-related gospels 23–28 at a0bd835; Acts of Paul 29). Checks pass. Next: Acts of Peter through Apocalypse of Paul (30–35).
 - 2026-10-27: Claude: build checkpoint 14 pushed to pack/christian-apocrypha at a31ddd7 (Acts of Peter, John, Andrew and Thomas; Apocalypses of Peter and Paul, 30–35). Checks pass. Next: Pilate and Marian (36–39). No stage change.
 - 2026-10-27: Claude: build checkpoint 15 pushed to pack/christian-apocrypha at 47694c8 (Acts of Pilate, Descent into Hades, Greek Dormition, Pseudo-Matthew, 36–39). Checks pass. Next: polish, screenshots, PR and build report. No stage change.
+- 2026-10-27: Claude: build checkpoint 16 (polish: Chronicle marker pills, panels end above the Chronicle, layer bar wraps at 821–1400 px) and handoff. PR #38 at 8ae9133; build-report.md and shots/ written. Stage `built`, owner chatgpt. WIP: LDS and this pack are `built`, Abrahamic `research-ready` (3 active, above the limit of 2); ChatGPT should not start new research until the count drops.

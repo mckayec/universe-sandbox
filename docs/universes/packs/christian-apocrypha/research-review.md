@@ -178,3 +178,13 @@ Branch `pack/christian-apocrypha` at `47694c86abca3cfc9865a1befec90626e20c5085` 
 - **Layout items (for the polish unit):** the Chronicle book marker still overlaps its label ("DORM" over "DORMITION"); the fan/educational notice overlaps the details panel's bottom edge at 1440×900; at 3840×2160 the Bethlehem pin sits under the Jerusalem label.
 
 **Next:** unit 6: polish (the three layout items), full screenshot set into `shots/`, PR, build-report.md, stage `built`.
+
+## Build checkpoint 16 and handoff (2026-10-27)
+
+Branch `pack/christian-apocrypha` at `8ae91333461bfeb989b570857a0aba321eaa34df`; PR #38 opened (not merged).
+
+- **Polish (engine CSS):** Chronicle book markers are pills for multi-letter labels ("DORM", "1 Mc") and keep the circle for single characters; the index and details panels subtract their padding and border from max-height, so long panels stop 12px above the Chronicle instead of running 40px into the credits (the "notice overlaps the panel" item); between 821 and 1400 px the layer bar wraps its buttons instead of hiding NT-related and Pilate/Mary behind a sideways scroll (the 1280×800 item).
+- **Bethlehem/Jerusalem at 4K:** the engine's label-collision rule now hides Bethlehem's label at globe zoom where it would sit under Jerusalem's; recorded as a known limit, not changed.
+- **Checks:** `pnpm check` 99/99; `pnpm test:pages` 12 pages × 2; validator 0 issues. Screenshots in `shots/`; Sun Eater rechecked at 1440×900 for regressions.
+- **Handoff:** build-report.md written; stage `built`, owner chatgpt.
+
