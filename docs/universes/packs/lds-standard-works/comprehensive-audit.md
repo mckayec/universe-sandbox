@@ -1,0 +1,59 @@
+# Comprehensive research acceptance audit — integration disposition
+
+2026-10-26. Baseline main `cd85ea8dcb36d4d5b54afd5ec05bc03c2c173d79`; earlier published research checkpoint `f13e28a3fbe53bd2b57ef4b5799e628984251cb3`. This audit concerns the subsequent working-tree continuation, not a release sign-off. The owner chose comprehensive standard-works coverage. No Deep Research capability was available or claimed.
+
+## Evidence and coverage contract
+
+The coverage universe is1,587 units: Bible1,189 chapters, Book of Mormon239, D&C138 sections plus2Official Declarations, PGP16 chapters plus3published facsimile explanations. Each unit has a distinct ledger row with source, depth, substantive disposition/exclusion and remaining work. Articles of Faith's13 statements, JS—History's appended account, D&C declaration appendices and relevant front matter are handled inside the companion research files, not silently excluded by chapter arithmetic. Bible superscriptions and edition-specific apparatus require explicit review where the fallback witness omits them.
+
+`inspected` means the complete unit body was actually read in the disclosed witness. It does not imply an official-edition comparison, independent historical corroboration, all possible atomic claims extracted, or implementation approval. `text-partial`, `heading-only`, `pending` and `access-blocked` remain visibly incomplete. The CSV source URL can identify the target official page while the evidence column identifies the actual fallback witness. Read both. Source copies and repeated editions are not independent corroboration.
+
+Run `python docs/universes/packs/lds-standard-works/validate-coverage.py` for current counts and structural failures. Its unit check detects duplicates and omissions; it deliberately cannot certify research-ready. Chapter summaries and record families must not be added to the earlier264 structured content records as if they were unique entities.
+
+## Acceptance findings and current dispositions
+
+| ID | Severity | Location | Original finding and evidence | Required disposition | Resolution |
+|---|---|---|---|---|---|
+| CA01 | High | `coverage-*.csv`, companion MD | All1587 unit bodies are now fully read, with substantive chapter/section dispositions; explicit nonspatial and repeated-material exclusions are retained. | Complete actual body reading and substantive place/journey/event/chronology/people/concept screening; retain honest exclusions for nonspatial or repeated material. | Closed for canonical body screening; see bounded CA02–03 dispositions below |
+| CA02 | High | Bible coverage evidence/remaining columns | Disclosed third-party KJV bodies enabled systematic reading; all1189 numbered Bible bodies are now compared with official captures. Material headings/superscriptions/JST/footnotes have separate bounded audits; edition apparatus must not be inferred from body equality. | Review atlas-relevant omitted apparatus; cite official source for doctrinal/editorial interpretations; preserve witness distinction for each unit. | Closed with bounded scope: numbered bodies complete; inspected apparatus supporting retained claims documented per shard; unexpanded study-help links and original manuscripts excluded |
+| CA03 | High | `research.md`, inventories, new chapter families | New chapter findings are not yet fully reconciled with stable existing records, aliases, earliest reading gates and typed relationships. | Produce a deduplicated integration disposition for every material finding, including additions and deliberate reference-only exclusions; verify all cross-links. | Research disposition complete for supplied registries: identity/reconciliation contracts, dense contextual payloads and reference-disposition ledgers; unknown identities stay separate, not inferred unions. Generated pack-object validation remains a builder gate |
+| CA04 | High | Historical and proposed-geography assertions | Complete textual screening would establish textual claims, not archaeological or historical truth. The ten-claim source/independence matrix is in `prominent-claims-audit.md`; whole-corpus low-confidence/prominent-claim totals required by AUDIT_CHECKLIST remain incomplete. | Complete whole-corpus checks beyond the bounded ten-claim matrix; distinguish primary textual statements, Church teachings, scholarly interpretations and independent historical evidence; label inaccessible evidence. | Closed for the supplied claim scope: defined registry checks and32risk families in whole-corpus-claims-audit.md, plus dense-source validation. Ten-claim matrix retains independence limits; no exhaustive independent all-atom certification |
+| CA05 | Medium | `build-handoff.md`; baseline engine989–991,1071–1072,1118–1121 | Unlocated-site coordinate fallback and ungated notes/codex can misrepresent location or leak layer-specific content. | No unlocated `world.sites`; neutral shared base copy; global reference notice; no invented route geometry. Resolve navigator design and eventual builder implementation before content approval. | Safe documentation recipe supplied; implementation not performed |
+
+These five research findings are separate from the five PR24 re-review blocker groups in `docs/reviews/lore-corrections/implementation-review-r2.md`. That completed review remains unchanged and is not superseded by this research audit.
+
+## Corrections already incorporated
+
+- Bethlehem now has earliest OT navigator1 through Ruth1; its Nativity marker remains a modern commemorative anchor, not Ruth's arrival point.
+- Ur now has OT navigator1 through Genesis11; Abraham's PGP narrative stays separately attributed.
+- Mount of Olives now has OT navigator1 through Zechariah14:4; Matthew and JS—Matthew material retains its own work gates.
+- Enoch’s city now has D&C navigator4 through38:4; Zion is already named there at4; the PGP City of Holiness name and additional community details remain navigator5.
+- J03 now separates reached Abraham2 settings from the intended continuation toward Egypt; the chapter does not narrate a completed arrival in Egypt.
+- D&C collection description includes section7's translated-record attribution, not only modern revelation genres.
+- Facsimile1's deliverance narrative cites Abraham1 as well as the published explanation; an image caption alone is not substituted for narrative evidence.
+- Priesthood restriction wording now specifies the midnineteenth century–1978 rather than asserting an undifferentiated pre1978 rule.
+- Four representative scholarly settlement anchors are documented in `gazetteer-evidence.md`, bringing the researched anchor count to10. Their location supports a settlement marker, not an exact biblical event point. Eight coordinate components were checked for six-decimal rounding.
+
+## Tensions that must survive integration
+
+The companion ledgers preserve source differences rather than reconciling them by inference. Examples already identified include Genesis/Abraham departure ages; Genesis/Moses/D&C Enoch ages; Numbers/Deuteronomy Aaron death place and itinerary; Chronicles/Kings royal ages and chronology; Gospel genealogies, anointings and resurrection sequences; Acts conversion-account differences and speech-versus-narration; Alma's retrospective chronology and inconsistent city-capture notices. None authorizes fabricated dates, locations or merged travel episodes. Prophecy, parable, vision, intention, accusation and actual narrated travel must remain distinct record types.
+
+## Source limits versus unfinished work
+
+Official scripture access is generally available through the web tool; temporary rate limits are managed by pacing. Shell retrieval403 is a tooling route limitation, not evidence that the scripture is inaccessible. Full scholarly books/excavation reports and some model websites remain unavailable or uninspected as specified in existing source registers. They restrict those particular historical/model claims, not the rest of the canonical reading pass. Absence of independent corroboration is reported; it is not repaired with another copy of the same scripture.
+
+The research handoff acceptance disposition is recorded below. It is not canon, technical or release sign-off.
+
+## Resumed integration acceptance — 2026-10-26
+
+Reviewed against recovery baseline `d04d4c70b51ae3948f44675d2518b87a41a7f614` plus the successor integration artifacts committed with this document. The exact immutable successor revision is the commit containing this section; the subsequent status history records it. No full-corpus rereading was performed during this integration pass.
+
+AIR01–05 in `acceptance-integration-review.md` receive these dispositions: AP09 neutral entity corrected to gate1 with NT card2; Nahom limits burial rather than death location; recovered dense outputs validated and indexed; five-work UI explicitly distinguished from chapter-level provenance; current apparatus/source/integration accounting reconciled here. The reviewer assessed evidence contracts, not an independent second reading of every scripture.
+
+- **Substantive scope:** all standard-works bodies have unit-level dispositions and explicit material/reference/exclusion decisions; front matter, declarations, facsimile explanations and appended accounts have separate treatments. Expanded place/event/journey/people/concept registries and dense source-context payloads supply the material content beyond the initial264records.
+- **Dense-list closure:** Joshua602context records; earlyOT156family/office payloads; late-history829verse contexts/145list contexts with182short-pair views and47ascending-chain segments covering170qualified edges; NT50genealogy/greeting contexts and191typed assertions. These overlap and must not be summed as unique people or facts. The late-history chain supplement corrects the actual truncated-edge extraction found during this pass.
+- **Cross-links and identity:** 387explicit reference occurrences resolve (376place,6concept,5movement). Each of149matched no-key occurrences has a safe source-context/duplicate-view disposition;126distinct reference-only contexts are deliberately nonspatial. This is a bounded syntactic check, not proof of every prose alias. Explicit identity evidence controls shared reuse; other mentions remain context-scoped. A nonspatial source card is a completed research disposition, not a fictitious physical site.
+- **Source accounting:** defined registry support checks and32prominent/uncertain families are documented in the whole-corpus audit. The1587unit count,2975capture-reference count and registry denominators measure different things. Source bytes and authors' reading records do not independently prove comprehension or historical truth. No independent corroboration is fabricated.
+- **Retained limits:** uninspected model books/critical editions, original manuscripts and transitive study-help chains support no stronger claims; unknown geography/dates and conflicting accounts remain labelled. No exhaustive global index of incidental proper names or automatic family-tree union is promised. The comprehensive atlas scope is material places, movements, episodes, people/relationships and explanatory source content, with honest exclusions, not an assertion that every word is a unique node.
+
+**Verdict: the supplied comprehensive research is suitable for research-review handoff.** CA01–04 have evidence-backed research dispositions; CA05 has a conservative nonspatial/global-reference contract and remains a later technical implementation gate. This is approval to review the research, not approval to build undocumented claims, merge, deploy or publish a finished atlas. Builder review must validate transformed IDs, source-specific gates, actual rendering and any newly proposed geometry; final content and technical audits and owner approval remain required.
