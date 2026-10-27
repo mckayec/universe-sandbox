@@ -1,7 +1,7 @@
 // Static check of the built site (run after `pnpm build`): `node tests/check-dist.mjs [distDir]`.
 //  1. Every same-origin file referenced from HTML (src/href), CSS (url()), the web manifest (icons) and JS string
-//     literals that name a file (…/name.ext) exists in dist. This is how a missing folder such as atlas/tex/ would
-//     have been caught before deploy.
+//     literals that name a file (…/name.ext) exists in dist. This is how a missing folder (atlas/tex/ once) is caught
+//     before deploy.
 //  2. No page loads a script, stylesheet, font or image from another host (no CDNs, no Google Fonts): the site must
 //     work offline and must not send visitors' addresses to third parties. Plain <a href="https://…"> links are fine.
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
@@ -119,9 +119,22 @@ for (const file of files) {
       if (/^(tools|docs|scripts)\//.test(m[1])) continue;
       checkLocal(file, m[1], jsBases(file), 'path literal');
     }
-    // the photographic texture folder that was never shipped: no code may request it again
-    for (const m of js.matchAll(/["'`]tex\/[^"'`]*["'`]/g))
-      problems.push(`${name}: requests ${m[0]} (atlas/tex/ is not shipped)`);
+    // atlas/tex/ now ships (the Society Atlas maps): its fixed paths are checked above like any other literal, and every
+    // map named in Society's TEXSET/ERA_TEX tables (built at run time as "tex/" + name) must exist too
+    if (name === 'atlas/society.js') {
+      const names = new Set();
+      for (const start of ['const TEXSET=', 'const ERA_TEX=']) {
+        const at = js.indexOf(start);
+        if (at < 0) {
+          problems.push(`${name}: no ${start} table found`);
+          continue;
+        }
+        const end = js.indexOf('\nconst ', at + start.length);
+        for (const m of js.slice(at, end < 0 ? undefined : end).matchAll(/:"([a-z0-9_]+)"/g)) names.add(m[1]);
+      }
+      for (const n of names)
+        checkLocal(file, `tex/${n}${n.endsWith('ring') ? '.png' : '.jpg'}`, [dirname(file)], 'map name');
+    }
   }
 }
 

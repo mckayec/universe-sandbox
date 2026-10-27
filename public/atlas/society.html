@@ -53,6 +53,11 @@
         <button data-book="5" aria-pressed="false" title="Dark Age">V</button>
         <button data-book="6" aria-pressed="false" title="Light Bringer">VI</button>
       </div>
+      <button class="btn" id="namesTog" aria-pressed="true" title="Show or hide the names of places (T)">Names</button>
+      <button class="btn" id="soundTog" aria-pressed="false" title="Ambient sound on or off (M)">Sound off</button>
+      <button class="btn" id="capTog" aria-pressed="true" title="Show or hide the captions in the set pieces">CC On</button>
+      <button class="btn" id="paceTog" title="Playback speed of the set pieces">1×</button>
+      <button class="btn" id="qualTog" aria-pressed="true" title="High detail, or a lighter setting for laptops">Detail: High</button>
       <button class="btn" id="mapOnly" aria-pressed="false" title="Hide every panel and just look (H)">Map only</button>
       <button class="btn" id="pause" aria-pressed="false">Pause orbits</button>
     </div>
@@ -66,12 +71,13 @@
   <button class="coltab right" id="dosCol" aria-expanded="true" title="Hide the info panel" hidden><span class="t">Info</span><span class="a">›</span></button>
   <div id="navhint" hidden></div>
   <div id="sitehud" hidden></div>
+  <div id="cine" aria-hidden="true"><div class="cb cbt"></div><div class="cb cbb"></div><div id="cineTags"></div><div id="cineCap"><div class="ce" id="cineE"></div><div class="ct" id="cineT"></div></div></div>
   <div id="banner" hidden><div class="be" id="bannerE"></div><div class="bt gild" id="bannerT"></div><div class="bs" id="bannerS"></div></div>
   <div id="tip" hidden></div>
 
   <section id="chron" aria-label="Timeline of the trilogy">
     <div class="chron-head"><h2 class="gild">The Chronicle</h2><button class="chronmin" id="chronMin" aria-expanded="true" title="Collapse the timeline">▾ Hide</button><span class="hint" id="chronHint"></span>
-      <span class="credits">Surfaces generated procedurally for this atlas; Society cities, seas and stations drawn from the books. Unofficial fan project for personal, non-commercial use. Red Rising and related names are the property of Pierce Brown and his publishers. Maps and positions are schematic reconstructions.</span></div>
+      <button class="credbtn" type="button" title="Map credits">Credits</button><span class="credits" hidden>Maps: <a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener">Solar System Scope</a> (CC BY 4.0) · NASA Blue Marble via three.js · <a href="https://github.com/CelestiaProject/CelestiaContent" target="_blank" rel="noopener">Celestia</a> moon maps (NASA/JPL/USGS) · Other worlds’ surfaces generated procedurally · Society cities, seas and stations painted for this atlas. Unofficial fan project for personal, non-commercial use. Red Rising and related names are the property of Pierce Brown and his publishers. Maps and positions are schematic reconstructions.</span></div>
     <div id="track"></div>
   </section>
 

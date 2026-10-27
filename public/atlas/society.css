@@ -24,6 +24,9 @@
   color-scheme:dark;
 }
 html,body{height:100%}
+/* the page skeleton the artifact ran in: no body margin, and the hidden attribute always wins (the Chronicle's book filter relies on it) */
+body{margin:0}
+[hidden]{display:none!important}
 body{background:var(--obsidian);color:var(--text);font-family:var(--f-body);font-size:16px;overflow:hidden;-webkit-font-smoothing:antialiased}
 #app{position:relative;width:100%;height:100%;overflow:hidden;background:radial-gradient(ellipse at 50% 38%,#170f10 0%,var(--obsidian) 64%)}
 #c{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
@@ -32,7 +35,7 @@ body{background:var(--obsidian);color:var(--text);font-family:var(--f-body);font
 button{font:inherit;color:inherit}
 button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(0,0,0,.55) 100%)}
-#grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.07;mix-blend-mode:overlay}
+#grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.025;mix-blend-mode:overlay}
 
 /* ---------- shared ornaments ---------- */
 .gild{background:var(--gild);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -167,6 +170,7 @@ body.map-only .spoil-note{display:none}
 #track{display:flex;overflow-x:auto;padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));scrollbar-width:thin;scrollbar-color:var(--gold-lo) transparent}
 .book{display:flex;flex-direction:column;flex:none;padding-right:20px;margin-right:20px;border-right:1px solid var(--line)}
 .book:last-child{border-right:0}
+.book[hidden]{display:none}
 .book-t{font:500 10.5px var(--f-hud);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:9px}
 .book-t i{font:700 13px var(--f-display);font-style:normal;width:24px;height:24px;display:grid;place-items:center;border:1px solid currentColor;border-radius:50%;letter-spacing:0}
 .evs{display:flex;position:relative}
@@ -316,6 +320,107 @@ body.war-on #labels{opacity:.55}body.war-on #labels *{pointer-events:none!import
 #warend .wo{display:flex;gap:8px}
 @media (max-width:900px){#warhud{top:60px;flex-wrap:wrap;justify-content:center;width:calc(100% - 24px);gap:8px}#warhud .side{min-width:0}#warhud .meter,#warhud .ml{width:220px}#warcmd{width:calc(100% - 32px);max-height:32%}#warlog{display:none}}
 
+/* siege HUD */
+#warhud .stg{font:500 10px var(--f-hud);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}#warhud .stg b{font:700 14px var(--f-display);letter-spacing:.14em;color:var(--gold-hi)}
+#warhud .obj{font:400 13px var(--f-body);color:var(--ivory);max-width:420px;text-align:center}
+#warhud .gens{display:flex;gap:6px;align-items:center;font:500 10px var(--f-hud);letter-spacing:.12em;text-transform:uppercase}
+#warhud .gens .sh{padding:2px 8px;border:1px solid}#warhud .gens .sh.up{color:#ff8a70;border-color:rgba(255,90,70,.6);box-shadow:0 0 8px rgba(255,60,40,.35)}#warhud .gens .sh.down{color:var(--faint);border-color:var(--line)}
+#warhud .gp{display:block;width:36px;height:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,120,100,.5)}#warhud .gp b{display:block;height:100%;background:#ff5a40}#warhud .gp.dead{border-color:var(--line);opacity:.4}
+#warhud .gc{color:var(--muted)}#warhud .wctl #wclock{font:500 12px var(--f-hud);color:var(--ivory);align-self:center;margin-right:4px}
+#warcmd .wf.on{border-color:var(--gold)}#warcmd .safe{color:#8fd0ff}
+#warcmd .btn.air{position:relative;flex:1;text-align:left;padding:8px 12px;overflow:hidden}#warcmd .btn.air span{font:600 11px var(--f-hud);letter-spacing:.14em}
+#warcmd .btn.air i{position:absolute;left:0;bottom:0;height:2px;background:var(--gold)}#warcmd .btn.air.cool{opacity:.7}
+.wobj.gen.dead{opacity:.55;border-color:var(--line)}.wobj.gen .ow{color:#ff9a80}
+
+/* ---- compact siege HUD ---- */
+body.war-on header.top .seg,body.war-on #pause,body.war-on header.top .brand>div,body.war-on #crumbs{display:none!important}
+#warhud{top:10px;flex-direction:column;align-items:stretch;gap:6px;padding:7px 12px 8px;width:min(860px,calc(100% - 140px))}
+#warhud .r1{display:flex;align-items:center;gap:12px}
+#warhud .side{min-width:0;flex:1;display:flex;flex-wrap:wrap;gap:2px 9px;align-items:baseline;font:500 11px var(--f-hud);color:var(--ivory)}#warhud .side.S{justify-content:flex-end}
+#warhud .side .sn{font:700 11px var(--f-display);letter-spacing:.16em;text-transform:uppercase}#warhud .side.R .sn{color:#ff8a70}#warhud .side.S .sn{color:var(--gold-hi)}
+#warhud .side i{font-style:normal;color:var(--faint);margin-right:2px}#warhud .side .cas{color:var(--faint);font-size:10px}
+#warhud .mid{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:3px}
+#warhud .stg{font:500 9.5px var(--f-hud);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);white-space:nowrap}#warhud .stg b{font:700 12.5px var(--f-display);letter-spacing:.12em;color:var(--gold-hi)}
+#warhud #wclock{font:500 11px var(--f-hud);color:var(--muted)}
+#warhud .gens{gap:4px;font-size:9.5px}#warhud .gp{width:28px;height:6px}#warhud .gp.sm{width:14px}#warhud .gp.wide{width:120px}
+#warhud .r2{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:6px}
+#warhud .obj{font:400 12px var(--f-body);color:var(--muted);text-align:left;max-width:none}
+#warhud .wctl{gap:4px;flex-wrap:nowrap}#warhud .wctl .btn{padding:4px 8px;font-size:9.5px}
+#warhud .wcol,#warcmd .wcolp{background:none;border:1px solid var(--line);color:var(--gold);width:24px;height:22px;cursor:pointer;font-size:11px;flex:0 0 auto}
+#warhud .wcol:hover,#warcmd .wcolp:hover{border-color:var(--gold);color:var(--gold-hi)}
+#warhud.min{width:auto}#warhud.min .r2,#warhud.min .side{display:none}
+#warcmd{padding-top:10px}#warcmd .wcolp{position:absolute;right:10px;top:8px}#warcmd.min{width:260px}#warcmd.min .wh:first-of-type{margin-right:30px}
+#wartoast{top:auto;bottom:120px}
+@media (max-width:1100px){#warhud .r2{flex-wrap:wrap}#warhud .side .cas{display:none}}
+body.war-on #labels{display:none}
+
+#warflash{position:absolute;inset:0;z-index:11;background:#fff8ec;pointer-events:none}
+.wm.hero{border-width:2px;padding:3px 7px 3px 4px}.wm.hero .nm{display:inline;color:#fff}.wm.hero.R{border-color:#ff6a4a;box-shadow:0 0 10px rgba(255,80,50,.45)}.wm.hero.S{border-color:#ffd070;box-shadow:0 0 10px rgba(255,200,90,.45)}
+.wm.hero i{width:17px;height:17px;font-size:12px}
+.wobj.gen.far{padding:3px 7px 4px}.wobj.gen.far .on{font-size:10.5px}.wobj.gen.far b{width:60px}
+.wobj.k-wall,.wobj.k-barracks,.wobj.k-tower{padding:3px 7px 4px}.wobj.k-wall .on,.wobj.k-barracks .on,.wobj.k-tower .on{font-size:10.5px}.wobj.k-wall b,.wobj.k-tower b,.wobj.k-barracks b{width:60px}
+
+/* slim structure labels: a small bar, the name on hover */
+.wobj.k-wall,.wobj.k-tower,.wobj.k-barracks{padding:2px 3px;gap:0;background:rgba(8,7,10,.6)}
+.wobj.k-wall .on,.wobj.k-wall .ow,.wobj.k-tower .on,.wobj.k-tower .ow,.wobj.k-barracks .on,.wobj.k-barracks .ow{display:none}
+.wobj.k-wall b,.wobj.k-tower b,.wobj.k-barracks b,.wobj.k-wall.far b,.wobj.k-tower.far b,.wobj.k-barracks.far b{width:34px;height:4px}
+.wobj.k-wall:hover .on,.wobj.k-tower:hover .on,.wobj.k-barracks:hover .on,.wobj.k-wall:hover .ow,.wobj.k-tower:hover .ow,.wobj.k-barracks:hover .ow{display:block;font-size:10px}
+.wobj.k-gate{padding:2px 6px 3px}.wobj.k-gate .on{font-size:10px;letter-spacing:.1em}.wobj.k-gate .ow{display:none}.wobj.k-gate b{width:44px;height:4px}
+.wobj.k-gen{padding:3px 8px 4px}.wobj.k-gen .on{font-size:11px}.wobj.k-gen b{width:60px}
+.wobj.dead.k-wall,.wobj.dead.k-tower,.wobj.dead.k-barracks{opacity:.35}
+
+body.arena #grain{opacity:.025}
+
+/* war mode: hover card, quieter structure labels that never block clicks */
+#wartip{position:absolute;left:0;top:0;z-index:30;pointer-events:none;display:flex;flex-direction:column;gap:2px;min-width:150px;max-width:230px;padding:6px 9px 7px;background:rgba(10,9,12,.88);border:1px solid var(--line-strong);font:500 10.5px var(--f-hud);letter-spacing:.04em;color:var(--muted)}
+#wartip[hidden]{display:none}
+#wartip b{font:700 11.5px var(--f-hud);letter-spacing:.04em;color:var(--ivory)}#wartip b.R{color:#ff9a80}#wartip b.S{color:var(--gold-hi)}
+#wartip .hpb{display:block;height:4px;background:rgba(255,255,255,.12);margin:2px 0}#wartip .hpb i{display:block;height:100%;background:#7fd46a}
+body.war-on .wobj{pointer-events:none}
+canvas.pointing{cursor:pointer}
+
+/* names toggle: hide place labels everywhere; selected or hovered places still show their name */
+body.no-names #labels>*:not(.sel):not(.hot){visibility:hidden!important}
+#namesTog[aria-pressed="false"]{color:var(--muted)}
+
+.credbtn{background:none;border:0;padding:2px 6px;font:500 9.5px var(--f-hud);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:.55;cursor:pointer}.credbtn:hover{opacity:1}
+.credbtn+.credits:not([hidden]){display:inline}
+
+/* cinematic set pieces: letterbox, captions and floating name tags */
+#cine{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden}
+#cine .cb{position:absolute;left:0;right:0;height:0;background:#000;transition:height 1.2s cubic-bezier(.6,0,.2,1)}
+#cine .cbt{top:0}#cine .cbb{bottom:0}
+body.cine #cine .cb{height:7.5vh}
+body.cine #labels{visibility:hidden}
+#cineCap{position:absolute;left:50%;bottom:calc(7.5vh + 26px);transform:translate(-50%,8px);width:min(760px,88vw);text-align:center;opacity:0;transition:opacity .9s,transform .9s}
+#cineCap.on{opacity:1;transform:translate(-50%,0)}
+#cineCap .ce{font:500 11px var(--f-hud);letter-spacing:.34em;text-transform:uppercase;color:var(--red-hi);min-height:13px}
+#cineCap .ct{margin-top:8px;font-style:italic;font-size:19px;line-height:1.45;color:#ece4d6;text-shadow:0 1px 14px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.8)}
+#cineTags{position:absolute;inset:0}
+#cineTags .ctag{position:absolute;left:0;top:0;margin:-30px 0 0 12px;font:500 10px var(--f-hud);letter-spacing:.2em;text-transform:uppercase;color:#f3e6c8;white-space:nowrap;text-shadow:0 0 6px #000,0 0 2px #000;padding-left:10px;border-left:1px solid rgba(243,230,200,.55)}
+body:not(.cine) #cineTags{display:none}
+@media (max-width:720px){#cineCap .ct{font-size:15px}body.cine #cine .cb{height:5vh}#cineCap{bottom:calc(5vh + 14px)}}
+
+/* the place controls collapse to one small button (H hides them with the panels) */
+body.hud-min #sitehud>*:not(.hudmin){display:none}
+#sitehud .hudmin{min-width:34px}
+#soundTog[aria-pressed="false"]{color:var(--muted)}
+@media (max-width:1180px){#qualTog{display:none}}
+@media (max-width:960px){#soundTog{display:none}}
+#tourBox{position:absolute;z-index:8;left:50%;transform:translateX(-50%);bottom:250px;width:min(560px,90vw);padding:14px 18px 12px;background:rgba(14,10,8,.9);border:1px solid var(--line,rgba(217,170,82,.35));backdrop-filter:blur(6px)}
+#tourBox .te{font:500 10px var(--f-hud);letter-spacing:.3em;text-transform:uppercase;color:var(--red-hi)}
+#tourBox .tt{font:700 20px var(--f-display);letter-spacing:.12em;margin-top:4px}
+#tourBox .ts{font-style:italic;color:#e6dccb;margin-top:6px;line-height:1.45}
+#tourBox .tb{display:flex;gap:8px;align-items:center;margin-top:10px}#tourBox .tb #tourN{flex:1;text-align:center;font:500 11px var(--f-hud);letter-spacing:.2em;color:var(--muted)}
+#tourBox button[disabled]{opacity:.35}
+body.hide-chron #tourBox{bottom:120px}
+#tourBtn{margin-left:8px}
+@media (max-width:720px){#tourBox{bottom:90px}#tourBtn{display:none}}
+
+body.nocap #cineCap{display:none!important}
+
+body.prol #index,body.prol #dossier,body.prol #chron,body.prol #sitehud,body.prol #idxCol,body.prol #dosCol,body.prol header.top,body.prol #crumbs,body.prol #navhint,body.prol #tourBox,body.prol #banner,body.prol #cineCap{opacity:0!important;pointer-events:none!important}
+
 /* ================= PHONE LAYOUT =================
    Header stays a slim top bar; info becomes a bottom sheet that rests as a title strip;
    the Chronicle rests collapsed; hover pop-ups are off for touch. */
@@ -377,17 +482,38 @@ body.mob #sitehud::-webkit-scrollbar{display:none}
 body.mob #sitehud .btn{flex:none;padding:7px 11px}
 body.mob #sitehud .hudtxt{display:none}
 body.mob.idx-open #sitehud{display:none}
-/* war mode */
-body.mob #warhud{top:var(--hdrH);width:calc(100% - 24px);flex-wrap:wrap;justify-content:center;gap:6px;padding:8px 10px}
-body.mob #warhud .side{min-width:0}
-body.mob #warhud .meter,body.mob #warhud .ml{width:min(220px,70vw)}
+/* war mode: the siege HUD under the slim header, orders along the bottom */
+body.mob.war-on{--hdrH:calc(56px + env(safe-area-inset-top,0px))}
+body.mob #warhud{top:var(--hdrH);width:calc(100% - 24px);padding:6px 10px}
+body.mob #warhud .r1{gap:8px}
+body.mob #warhud .side{font-size:10px}
+body.mob #warhud .gp.wide{width:80px}
+body.mob #warhud .r2{flex-wrap:wrap}
+body.mob #warhud .obj{font-size:11px}
 body.mob #warcmd{left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));width:auto;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-height:30%}
 body.mob #warlog{display:none}
+body.mob #warbrief .wbx,body.mob #warend .wbx{padding:18px 16px}
+body.mob #warbrief h2,body.mob #warend h2{font-size:24px}
+/* the newer header controls ride in the sideways-scrolling tool row */
+body.mob #soundTog,body.mob #qualTog{display:inline-block}
+/* guided tour: its card rests above the info strip and steps aside when the sheet, the list or the Chronicle opens */
+body.mob #tourBtn{display:inline-block}
+body.mob #tourBox{bottom:calc(var(--chronH) + var(--sheetMin) + 12px);width:calc(100% - 24px);padding:10px 14px}
+body.mob #tourBox .tt{font-size:16px}
+body.mob #tourBox .ts{font-size:14px;max-height:6em;overflow-y:auto}
+body.mob.sheet-open #tourBox,body.mob.idx-open #tourBox,body.mob:not(.hide-chron) #tourBox,body.mob.cine #tourBox{opacity:0;pointer-events:none}
+/* set pieces: captions sit above the resting Chronicle, and the sheet stays down while one plays */
+body.mob #cineCap{bottom:calc(var(--chronH) + 12px);width:calc(100% - 32px)}
+body.mob.cine #dossier{transform:translateY(calc(100% + 60px));opacity:0;pointer-events:none}
+body.mob.cine #sitehud{display:none}
 
 .lbl.region{font:italic 500 12px var(--f-body);letter-spacing:.14em;text-transform:none;color:#9fb4c8;opacity:0}
 .lbl.region:hover{color:#d4e4f4}
 .lbl.msys{font-size:11px;letter-spacing:.2em;color:var(--muted);transition:opacity .3s}
 body.far-sys #labels .plbl{opacity:0!important;pointer-events:none!important}
+/* desktop: with the Gravity Lab link the tool row wraps under the title, so the breadcrumbs, hints, banner and the
+   spoiler notice sit below it instead of on top of it */
+@media (min-width:821px){#crumbs{top:122px}#navhint{top:152px}#banner{top:162px}.spoil-note{top:188px}}
 /* back link to the sandbox, and the fan-work line on the splash */
 .top .gl-home{align-self:center}
 #splash .fanwork{font:400 10px var(--f-hud);letter-spacing:.12em;color:var(--faint);text-transform:uppercase}
