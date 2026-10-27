@@ -73,6 +73,7 @@ test('codex text naming a work is gated at that work', () => {
     'Sirach, prologue': 4,
     Baruch: 5,
     'First Maccabees': 6,
+    'Second Maccabees': 7,
     'Esther additions': 8,
     Susanna: 9,
     'Bel and the Dragon': 9,
@@ -108,4 +109,10 @@ test('every 1 Maccabees place-reference row has its own codex entry', () => {
     assert.ok(found, `${r.id} (${r.label}) has no slot-6 codex entry`);
   }
   assert.equal(entries.length, rows.length - 1, 'one entry per row; Rome is a pinned anchor');
+});
+
+test('2 Maccabees place-reference rows each have one codex entry', () => {
+  const rows = readCsv('deuterocanonical-integration.csv').filter(r => r.kind === 'place-reference' && r.first === '7');
+  const entries = pack.codex.find((s: any) => s.id === 'places').list.filter((e: any) => e.first === 7);
+  assert.equal(entries.length, rows.length);
 });

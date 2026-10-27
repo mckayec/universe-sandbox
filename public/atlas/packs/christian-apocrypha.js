@@ -1,7 +1,7 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 6 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
-   Tobit, Judith, Wisdom, Sirach, Baruch, 1 Maccabees and the Esther and Daniel additions (slots 1–6, 8, 9). The remaining works are added layer by layer in later checkpoints.
+   BUILD CHECKPOINT 7 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9). The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
    handoff): research.md, integration-contract.md, work-gates.csv, geography-reuse.md, the five
@@ -85,10 +85,35 @@
     if (site) e.site = site;
     return e;
   }
+  /* Later works' mentions of a place or person whose entry is written with an earlier work, kept here by work
+     so each work's additions stay together: { entry name: [[slot, text], …] }. Merged into `more` by ref(). */
+  const LATER = {};
+  function later(slot, entries) {
+    Object.keys(entries).forEach((name) => (LATER[name] = (LATER[name] || []).concat([[slot, entries[name]]])));
+  }
+  /* 2 Maccabees (slot 7) mentions of places and people first written up with earlier works */
+  later(7, {
+    'Ecbatana, in Media': 'Second Maccabees: where Antiochus hears of his defeats before his last journey (ch. 9).',
+    Sparta: 'Second Maccabees: the deposed high priest Jason flees toward it (ch. 5).',
+    Ptolemais: 'Second Maccabees: Hegemonides is made governor from Ptolemais to the Gerrenians, and opposition there is calmed (ch. 13).',
+    Joppa: 'Second Maccabees: Antiochus visits it (ch. 4); after its people drown Jews, Judas burns its harbour (ch. 12).',
+    Ephron: 'Second Maccabees: a place of fighting in Judas’s campaign of chapter 12.',
+    Gazara: 'Second Maccabees: taken after a siege, and Timotheus killed there (ch. 10).',
+    Marisa: 'Second Maccabees: where Gorgias escapes after the battle (ch. 12).',
+    Cyrene: 'Second Maccabees: home of Jason, the author whose five books the epitomator condenses (ch. 2). An author’s label, not a journey.',
+    Modin: 'Second Maccabees: Judas attacks by night near it (ch. 13).',
+    Bethsura: 'Second Maccabees: resupplied during Eupator’s campaign (ch. 13).',
+    Antioch: 'Second Maccabees: the royal city in chapters 4, 5, 8, 11, 13 and 14; the sanctuary of Daphne is near it (ch. 4).',
+    Idumaea: 'Second Maccabees: the war on its strongholds (ch. 10), and named again in chapter 12.',
+    Cyprus: 'Second Maccabees: Ptolemy Macron had held office there (ch. 10).',
+  });
+
   /* reference entry for a place with no approved map anchor, or a person, scoped to one work */
   function ref(name, first, layer, desc, role, more) {
     const e = { name, first, books: [first], layers: [layer], desc };
     if (role) e.role = role;
+    more = (more || []).concat(LATER[name] || []).sort((a, b) => a[0] - b[0]);
+    if (!more.length) more = undefined;
     /* later works' mentions: [[slot, text], …], each shown only once that work is chosen (PACK_FORMAT §13) */
     if (more) {
       e.more = more;
@@ -199,7 +224,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 4, 5, 6, 8, 9],
+            books: [1, 2, 4, 5, 6, 7, 8, 9],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -209,7 +234,7 @@
             name: 'Babylon',
             lat: 32.541969,
             lon: 44.420833,
-            books: [5, 8, 9],
+            books: [5, 6, 7, 8, 9],
             modern: 'Babylon (UNESCO World Heritage property)',
             desc: 'The marker locates the ancient city of Babylon, not the wider region of Babylonia or any exile route.',
           },
@@ -387,6 +412,23 @@
       ev('m1-14', 6, 'dc', 'The decree for Simon', 'Demetrius is captured by Arsaces in year 172. A poem praises the peace of Simon’s time, and friendship with Rome and Sparta is renewed. A decree of 18 Elul 172, Simon’s third year, recognizes him as leader and high priest until a faithful prophet arises, and is set up on bronze. Asaramel, where it was proclaimed, may be a title or a place.', '1 Maccabees 14 (RV 1895)'),
       ev('m1-15', 6, 'dc', 'Antiochus son of Demetrius', 'Antiochus son of Demetrius arrives in year 174 and besieges Tryphon at Dor; then he withdraws his favors from Simon and, through Athenobius, demands disputed towns. Tryphon escapes by ship to Orthosia, and Cendebaeus raids from Jamnia and Kidron. A Roman letter from Lucius is addressed to a long list of kings and cities; the list is of recipients, not a route.', '1 Maccabees 15 (RV 1895)'),
       ev('m1-16', 6, 'dc', 'The murder of Simon', 'Simon’s sons Judas and John defeat Cendebaeus. Then Simon’s son-in-law Ptolemy son of Abubus murders Simon and his sons Mattathias and Judas at Dok, in the eleventh month, Sebat, of year 177. John, warned at Gazara, escapes the assassins; the book refers his later deeds to another chronicle.', '1 Maccabees 16 (RV 1895)'),
+      /* ---- 2 Maccabees (slot 7). dc-m2-c01-card … dc-m2-c15-card, all RV 1895. An abridgment that overlaps
+         1 Maccabees; its dates and death accounts are not harmonized with it. dc-m2-r01…r04 are stated in text. ---- */
+      ev('m2-01', 7, 'dc', 'Letters to the Jews of Egypt', 'Two letters urge the Jews of Egypt to keep the Chislev festival of the Temple’s purification; they recall earlier correspondence of year 169 and are dated year 188. The second, to Aristobulus, tells how Antiochus and his party were trapped and killed in the temple of Nanaea, and how in Nehemiah’s time the altar fire hidden at the deportation was found as a thick liquid that kindled the sacrifice, and the king of Persia recognized it. This death account is not harmonized with 1 Maccabees 6 or 2 Maccabees 9; the edition notes a variant in the wording of the trap.', '2 Maccabees 1 (RV 1895)'),
+      ev('m2-02', 7, 'dc', 'The hidden ark, and the epitomator’s preface', 'A tradition says Jeremiah hid the tabernacle, the ark and the altar of incense in a cave in the mountain from which Moses viewed the inheritance, the place to stay unknown until the restoration. The dedications of Moses and Solomon, Nehemiah’s library and Judas’s collection of books are recalled. The epitomator says he condenses five books by Jason of Cyrene about Judas and the reigns of Antiochus Epiphanes and Eupator. The book is an abridgment that overlaps 1 Maccabees, not a sequel to it.', '2 Maccabees 2 (RV 1895)'),
+      ev('m2-03', 7, 'dc', 'Heliodorus at the Temple', 'Simon, guardian of the Temple, quarrels with the high priest Onias and tells Apollonius of the Temple’s wealth, and King Seleucus sends Heliodorus (Coelesyria and Phoenicia are named on his inspection). Onias defends the deposits of widows and orphans and of Hyrcanus son of Tobias. A heavenly rider and two young men strike Heliodorus; Onias offers sacrifice for his recovery, and Heliodorus returns and testifies to the king. The apparition is the text’s miracle account.', '2 Maccabees 3 (RV 1895)', 'jerusalem'),
+      ev('m2-04', 7, 'dc', 'Jason, Menelaus and the murder of Onias', 'Jason, Onias’s brother, buys the high priesthood and builds a gymnasium; envoys go to the games at Tyre, and Antiochus visits Joppa, Jerusalem and Phoenicia. Menelaus, Simon’s brother, outbids Jason, with his brother Lysimachus as deputy. A revolt at Tarsus and Mallus draws the king away; Andronicus lures Onias out of the sanctuary at Daphne and murders him, and is executed. Lysimachus is killed, and Menelaus bribes his way to acquittal while the Jewish envoys are condemned at Tyre. The religious judgments are the narrator’s; this Jason is not Jason of Cyrene.', '2 Maccabees 4 (RV 1895)'),
+      ev('m2-05', 7, 'dc', 'Jason’s attack and the plunder of the Temple', 'During Antiochus’s second campaign in Egypt, armies are seen in the sky. A false rumour of the king’s death leads Jason to attack the city; he flees to the Ammonite country, to Aretas, to Egypt and toward Sparta, and dies abroad. Antiochus plunders the Temple with Menelaus as guide and returns to Antioch, leaving Philip as governor at Jerusalem and Andronicus at Gerizim. Apollonius carries out a Sabbath massacre, and Judas and his companions withdraw to the mountains. The sky vision is told as a portent; the casualty totals are the narrator’s.', '2 Maccabees 5 (RV 1895)', 'jerusalem'),
+      ev('m2-06', 7, 'dc', 'Compulsion, and the death of Eleazar', 'An agent from Athens enforces the decrees: the Jerusalem sanctuary is renamed for Zeus Olympius and the one on Gerizim for Zeus, Protector of strangers. A Dionysiac procession is forced; mothers who circumcised their sons are killed, and people keeping the Sabbath in caves are burned. Eleazar, an aged scribe, refuses pork and any pretence and dies under beating; he is not Eleazar Avaran of 1 Maccabees. The edition notes variant readings for the agent and for Gerizim, and the theology of chastisement is the narrator’s.', '2 Maccabees 6 (RV 1895)'),
+      ev('m2-07', 7, 'dc', 'A mother and seven sons', 'An unnamed mother and her seven sons are put to death before Antiochus. They declare their trust in creation, resurrection and restoration, and the mother dies last. The text names neither them nor the place; later traditional names are not used here, and its heaven and Hades are not places on the map.', '2 Maccabees 7 (RV 1895)'),
+      ev('m2-08', 7, 'dc', 'Judas’s first campaigns', 'Judas recruits from the villages. At Philip’s appeal, Ptolemy commissions Nicanor son of Patroclus and Gorgias; Nicanor’s plan to pay with the sale of captives as slaves fails, and Judas wins before the Sabbath. Simon, Joseph, Jonathan and Eleazar are named as leaders. Timotheus and Bacchides are defeated, Callisthenes is burned, and Nicanor flees to Antioch. A battle in Babylon is recalled from the past. The chapter does not name Emmaus.', '2 Maccabees 8 (RV 1895)'),
+      ev('m2-09', 7, 'dc', 'The death of Antiochus', 'Antiochus fails to plunder the temple at Persepolis and hears at Ecbatana of the defeats. Hurrying toward Jerusalem with threats, he falls ill and falls from his chariot. He promises to convert and to make amends, writes commending his son Antiochus, and dies in foreign mountains. Philip, his foster-brother, brings the body home and then flees to Ptolemy Philometor in Egypt. The divine judgment is the book’s; this account is kept separate from 1 Maccabees 6 and 2 Maccabees 1.', '2 Maccabees 9 (RV 1895)'),
+      ev('m2-10', 7, 'dc', 'The Temple cleansed; Idumaea and Gazara', 'The Temple is cleansed on 25 Chislev, with eight days of celebration like Tabernacles, to be kept every year. Eupator succeeds, and Ptolemy Macron, who had held office in Cyprus, poisons himself. The war on the Idumaean strongholds involves bribery and executions. Five heavenly riders appear at the battle with Timotheus; Gazara is taken after a siege, on the 25th day, and Timotheus, his brother Chaereas and Apollophanes are killed. The book places the dedication after the king’s death, and that order is kept. A Timotheus appears again in chapter 12.', '2 Maccabees 10 (RV 1895)', 'jerusalem'),
+      ev('m2-11', 7, 'dc', 'Lysias at Bethsuron; the letters', 'Lysias invades and besieges Bethsuron; a heavenly rider appears, Lysias is defeated and makes a treaty. Letters follow: from Jewish envoys John and Absalom, a royal restoration of rights, and the approval of the Roman envoys Memmius and Manius, who plan to go to Antioch. They are dated year 148, 24 Dioscorinthius, and 15 Xanthicus, with a return deadline of 30 Xanthicus. Dioscorinthius may be a corrupt month name and is not converted.', '2 Maccabees 11 (RV 1895)'),
+      ev('m2-12', 7, 'dc', 'Joppa, Jamnia and the eastern campaign', 'After the people of Joppa drown Jews, Judas burns its harbour, and then Jamnia’s. He fights nomads and makes a pact with them, takes Caspin, campaigns toward Charax against Timotheus, lets Timotheus go for the sake of hostages, and fights at Carnion and Ephron; Scythopolis is friendly, and the army returns to Jerusalem before the feast of Weeks. After Pentecost Gorgias is defeated and escapes to Marisa, and the army keeps the Sabbath at Adullam. Idol tokens are found on fallen soldiers; Judas has prayers made and sends a collection to Jerusalem for a sin offering, which the text links to resurrection.', '2 Maccabees 12 (RV 1895)'),
+      ev('m2-13', 7, 'dc', 'Eupator’s campaign', 'In year 149 Eupator and Lysias invade. Menelaus is executed in a tower of ashes at Beroea. Judas attacks by night near Modin; Bethsura is resupplied and the traitor Rhodocus arrested. Trouble with Philip at Antioch brings a withdrawal and a treaty; Hegemonides is made governor from Ptolemais to the Gerrenians, opposition at Ptolemais is calmed, and Lysias returns to Antioch. The book’s year 149 stands beside year 150 in 1 Maccabees 6, unreconciled.', '2 Maccabees 13 (RV 1895)'),
+      ev('m2-14', 7, 'dc', 'Demetrius, Nicanor and Razis', 'Demetrius son of Seleucus lands at Tripolis; about year 151 Alcimus accuses Judas, and Nicanor is commissioned. After an encounter at Lessau, Nicanor and Judas are reconciled and Judas marries; his wife is not named. Alcimus’s complaint forces Nicanor to break the agreement, and Judas escapes an order to send him to Antioch. Nicanor threatens the Temple with a temple to Dionysus; Razis, besieged, dies by his own hand. The text near Lessau is corrupt.', '2 Maccabees 14 (RV 1895)'),
+      ev('m2-15', 7, 'dc', 'The defeat of Nicanor', 'Nicanor plans to attack on the Sabbath. Judas dreams of Onias and Jeremiah, and Jeremiah gives him a sword. Nicanor is killed in the battle; his head and arm are displayed at Jerusalem, and 13 Adar, the day before Mordecai’s day, is to be kept every year. The epitomator ends his book with this victory. The dream is a vision, not a meeting.', '2 Maccabees 15 (RV 1895)'),
 
       /* ---- Esther additions (slot 8). dc-est-a-card … dc-est-f-card. The Greek king Artaxerxes is not
          renamed Ahasuerus; dates are given as each edition states them. ---- */
@@ -551,6 +593,32 @@
             'Sampsames',
           ].map((n) => ref(n, 6, 'dc', 'First Maccabees: one of the kings and cities the Roman letter from Lucius is addressed to (ch. 15). A list of recipients, not a route.')),
           ref('Dok', 6, 'dc', 'First Maccabees: where Ptolemy son of Abubus murders Simon and two of his sons in year 177 (ch. 16).'),
+          /* 2 Maccabees (slot 7): the 25 dc-ref-* rows with first = 7 (incl. five source-scoped unnamed sites). */
+          ref('Caspin', 7, 'dc', 'Second Maccabees: a city Judas takes (ch. 12). Its relation to Gephyrun is uncertain.'),
+          ref('Gephyrun', 7, 'dc', 'Second Maccabees: named with Caspin in chapter 12; the relation between the two names is uncertain.'),
+          ref('Charax', 7, 'dc', 'Second Maccabees: Judas campaigns toward it against Timotheus (ch. 12).'),
+          ref('Tubieni', 7, 'dc', 'Second Maccabees: named in the Charax campaign against Timotheus (ch. 12).'),
+          ref('Carnion', 7, 'dc', 'Second Maccabees: a place of fighting in Judas’s campaign, where a temple of Atergatis is also named (ch. 12).'),
+          ref('Adullam', 7, 'dc', 'Second Maccabees: where the army keeps the Sabbath after the battle with Gorgias (ch. 12).'),
+          ref('Persepolis', 7, 'dc', 'Second Maccabees: Antiochus fails to plunder its temple (ch. 9).'),
+          ref('Lessau', 7, 'dc', 'Second Maccabees: where Nicanor and Judas meet (ch. 14). The text of this passage is corrupt.'),
+          ref('Coelesyria', 7, 'dc', 'Second Maccabees: named in chapters 3, 8 and 10, together with Phoenicia.'),
+          ref('Phoenicia', 7, 'dc', 'Second Maccabees: Antiochus visits it after Joppa and Jerusalem (ch. 4); named also in chapters 3, 8 and 10.'),
+          ref('Tarsus', 7, 'dc', 'Second Maccabees: with Mallus, its revolt draws Antiochus away (ch. 4).'),
+          ref('Mallus', 7, 'dc', 'Second Maccabees: with Tarsus, its revolt draws Antiochus away (ch. 4).'),
+          ref('Daphne', 7, 'dc', 'Second Maccabees: a sanctuary near Antioch, from which Andronicus lures Onias and murders him (ch. 4).'),
+          ref('The Ammonite country', 7, 'dc', 'Second Maccabees: named in chapter 4; Jason flees there after his attack on Jerusalem (ch. 5).'),
+          ref('Gerizim', 7, 'dc', 'Second Maccabees: Andronicus is left as governor there (ch. 5), and its sanctuary is renamed for Zeus, Protector of strangers (ch. 6). The edition notes a variant reading.'),
+          ref('Athens', 7, 'dc', 'Second Maccabees: the agent who enforces the decrees comes from there (ch. 6). The edition notes a variant reading.'),
+          ref('Bethsuron', 7, 'dc', 'Second Maccabees: besieged by Lysias (ch. 11). The distance the Greek gives is uncertain. Kept separate from Bethsura.'),
+          ref('Beroea', 7, 'dc', 'Second Maccabees: where Menelaus is executed in a tower of ashes (ch. 13). Kept separate from Berea in 1 Maccabees.'),
+          ref('The Gerrenians', 7, 'dc', 'Second Maccabees: the far end of Hegemonides’ district, which begins at Ptolemais (ch. 13). A variant reads Gerarenes.'),
+          ref('Tripolis', 7, 'dc', 'Second Maccabees: where Demetrius son of Seleucus lands (ch. 14).'),
+          ref('The court of Aretas', 7, 'dc', 'Second Maccabees: one stop in Jason’s flight (ch. 5). Where it was is not stated.'),
+          ref('The foreign mountains where Antiochus dies', 7, 'dc', 'Second Maccabees: his place of death in chapter 9. No city is named.'),
+          ref('The temple of Nanaea', 7, 'dc', 'Second Maccabees: in the letter of chapter 1, where Antiochus and his party are trapped and killed. Kept apart from the death accounts of 1 Maccabees 6 and 2 Maccabees 9.'),
+          ref('The well of the hidden fire', 7, 'dc', 'Second Maccabees: in the letter of chapter 1, where the fire hidden at the deportation is found as a thick liquid. Its location is not given.'),
+          ref('Jeremiah’s cave', 7, 'dc', 'Second Maccabees: where Jeremiah hides the tabernacle, the ark and the altar of incense, in the mountain from which Moses viewed the inheritance (ch. 2). No site is pinned.'),
         ],
       },
       {
@@ -625,6 +693,10 @@
           ref('The embassy of Eupolemus and Jason', 6, 'dc', 'First Maccabees: to Rome. No stops are given.'),
           ref('The embassy of Numenius and Antipater', 6, 'dc', 'First Maccabees: to Rome, then Sparta, attested by letters. No road is described.'),
           ref('Jonathan’s capture', 6, 'dc', 'First Maccabees: Bethshan, where he meets Tryphon; Ptolemais, where he is seized; Bascama, where he is killed (13:23).'),
+          /* dc-m2-j01…j03: stated order only; no lines drawn. */
+          ref('Jason’s flight', 7, 'dc', 'Second Maccabees: the Ammonite country, the court of Aretas (place not stated), Egypt, then toward Sparta; he dies abroad. Not Jason of Cyrene.'),
+          ref('Antiochus’s last journey', 7, 'dc', 'Second Maccabees: Persepolis, Ecbatana, then foreign mountains where he dies. Jerusalem is threatened but not reached. Kept apart from 1 Maccabees 6 and 2 Maccabees 1.'),
+          ref('Judas’s campaign of chapter 12', 7, 'dc', 'Second Maccabees: Joppa, Jamnia, Caspin, Charax, Carnion, Ephron, Scythopolis, Jerusalem before Weeks, then Adullam after Pentecost. Selected stops, not every battle or a surveyed route.'),
           ref('Habakkuk carried', 9, 'dc', 'Judea to the lions’ den in Babylon, then home (the place is not named), carried by an angel. Not a road.'),
         ],
       },
@@ -671,8 +743,17 @@
           ref('Jason son of Eleazar', 6, 'dc', 'The second envoy sent to Rome with Eupolemus.', '1 Maccabees'),
           ref('Numenius', 6, 'dc', 'Son of Antiochus; envoy to Rome and Sparta.', '1 Maccabees'),
           ref('Antipater', 6, 'dc', 'Son of Jason; envoy to Rome and Sparta with Numenius.', '1 Maccabees'),
+          /* 2 Maccabees person-reference rows; dc-m2-r01 and r02 relationships are stated on the entries. */
+          ref('Jason, brother of Onias', 7, 'dc', 'Buys the high priesthood and builds a gymnasium; later attacks Jerusalem, flees and dies abroad. Not Jason of Cyrene.', '2 Maccabees'),
+          ref('Onias (2 Maccabees)', 7, 'dc', 'The high priest who defends the Temple deposits against Heliodorus and prays for his recovery; lured from the sanctuary at Daphne and murdered. He appears in Judas’s dream before the last battle.', '2 Maccabees'),
+          ref('Menelaus', 7, 'dc', 'Brother of Simon; outbids Jason for the high priesthood, guides the king’s plunder of the Temple, and is executed at Beroea.', '2 Maccabees'),
+          ref('Simon, brother of Menelaus', 7, 'dc', 'Guardian of the Temple who quarrels with Onias and reports the Temple’s wealth.', '2 Maccabees'),
+          ref('Lysimachus', 7, 'dc', 'Menelaus’s brother and deputy, who is killed.', '2 Maccabees'),
+          ref('Jason of Cyrene', 7, 'dc', 'Author of the five books the epitomator condenses. Named as a source, not as a traveler.', '2 Maccabees'),
+          ref('The mother of seven sons', 7, 'dc', 'Unnamed; she dies after her seven sons (ch. 7). Later traditional names are not used.', '2 Maccabees'),
+          ref('The seven sons', 7, 'dc', 'Unnamed brothers put to death one by one before Antiochus (ch. 7).', '2 Maccabees'),
           ref('Esther', 8, 'dc', 'The queen who prays, then goes before the king and is heard.', 'Esther additions'),
-          ref('Mordecai (Mardocheus)', 8, 'dc', 'Dreams of the dragons and the stream, urges Esther to plead with the king, and later explains the dream.', 'Esther additions'),
+          ref('Mordecai (Mardocheus)', 7, 'dc', 'Second Maccabees: 13 Adar, the day of Nicanor’s defeat, is fixed as the day before “Mordecai’s day” (15:36).', '', [[8, 'Esther additions: dreams of the dragons and the stream, urges Esther to plead with the king, and later explains the dream.']]),
           ref('Aman (Haman)', 8, 'dc', 'Mordecai’s enemy, whose decree targets the Jews; the counter-decree calls him a Macedonian.', 'Esther additions'),
           ref('Daniel', 9, 'dc', 'In the additions: the young man who clears Susanna and exposes Bel’s priests. Scoped to these additions.', 'Daniel additions'),
           ref('Susanna', 9, 'dc', 'Daughter of Helkias and wife of Joakim, falsely accused by two elders.', 'Daniel additions'),
