@@ -184,7 +184,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .book{display:flex;flex-direction:column;flex:none;padding-right:20px;margin-right:20px;border-right:1px solid var(--line)}
 .book:last-child{border-right:0}
 .book-t{font:400 10px var(--f-hud);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:9px}
-.book-t i{font:700 14px var(--f-title);font-style:normal;width:24px;height:24px;display:grid;place-items:center;border:1px solid currentColor;border-radius:50%;letter-spacing:0}
+.book-t i{font:700 14px var(--f-title);font-style:normal;box-sizing:border-box;min-width:24px;height:24px;padding:0 4px;flex:none;white-space:nowrap;display:grid;place-items:center;border:1px solid currentColor;border-radius:12px;letter-spacing:0}
 .evs{display:flex;position:relative}
 .evs::before{content:"";position:absolute;left:6px;right:6px;top:6px;height:1px;background:var(--line)}
 .ev{position:relative;flex:none;width:128px;background:none;border:0;padding:0 12px 0 0;text-align:left;cursor:pointer;transition:opacity .2s}
@@ -319,6 +319,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .top.wrapbooks .controls{flex:1 1 100%;margin-left:0;flex-wrap:wrap;justify-content:flex-end;row-gap:6px}
 #crumbs{top:calc(var(--hdr,62px) + 14px)}
 #index,#dossier{top:calc(var(--hdr,62px) + 38px);max-height:calc(100% - var(--hdr,62px) - 50px - var(--ch,200px))}
+/* max-height counts the content box only: subtract each panel's vertical padding and border so its bottom edge stays
+   12px above the Chronicle (long dossiers previously ran 40px into the credits) */
+#index{max-height:calc(100% - var(--hdr,62px) - 78px - var(--ch,200px))}
+#dossier{max-height:calc(100% - var(--hdr,62px) - 90px - var(--ch,200px))}
 #navhint{top:calc(var(--hdr,62px) + 42px)}
 /* A13: the credits never run under the dossier; long credits wrap within their own column */
 .chron-head .credits{max-width:min(62ch,calc(100% - 420px))}
@@ -385,11 +389,15 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .evitem .lmeta{display:block}
 /* between the Worlds index (left) and the details panel (right) */
 @media (max-width:1400px){#filters{width:max(360px,calc(100% - 880px));max-width:none;min-width:0;flex-direction:column;gap:6px}
-  #app:has(#filters:not(:empty)) #bake{bottom:calc(var(--ch,200px) + 136px)}}
+  #app:has(#filters:not(:empty)) #bake{bottom:calc(var(--ch,200px) + 136px)}
+  /* the narrower bar wraps its layer buttons instead of hiding some behind a sideways scroll */
+  #filters .lyrs{flex-wrap:wrap;overflow-x:visible}
+  #filters .lyrs button{flex:1 1 auto;justify-content:center}}
 @media (max-width:1100px){#filters{left:16px;transform:none;width:calc(100% - 450px)}}
 @media (max-width:820px){
   #filters,#filters.withrealms{bottom:auto;top:calc(var(--hdr,96px) + 36px);left:10px;right:10px;transform:none;min-width:0;max-width:none;flex-direction:column;gap:6px}
-  #filters .lyrs{box-shadow:none}
+  #filters .lyrs{box-shadow:none;flex-wrap:nowrap;overflow-x:auto}
+  #filters .lyrs button{flex:none}
   #filters .lyrs button{padding:6px 10px;font-size:9.5px;letter-spacing:.1em;min-height:34px}
   .tl{min-width:0;box-shadow:none;padding:4px 10px 2px}
   #app:has(#filters:not(:empty)) #navhint{top:calc(var(--hdr,96px) + 136px)}
