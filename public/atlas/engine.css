@@ -103,7 +103,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 #idxBtn{display:none}
 
 /* ---------- breadcrumb ---------- */
-#crumbs{position:absolute;z-index:6;top:76px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;font:400 10.5px var(--f-hud);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+#crumbs{position:absolute;z-index:6;top:76px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;font:400 10.5px var(--f-hud);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.8)}
 #crumbs button{background:none;border:0;padding:3px 0;color:var(--muted);cursor:pointer;letter-spacing:inherit;text-transform:inherit;font:inherit}
 #crumbs button:hover{color:var(--chrome)}
 #crumbs .here{color:var(--lapis-hi)}
@@ -392,7 +392,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   #app:has(#filters:not(:empty)) #bake{bottom:calc(var(--ch,200px) + 136px)}}
 @media (max-width:1100px){#filters{left:16px;transform:none;width:calc(100% - 450px)}}
 @media (max-width:820px){
-  #filters,#filters.withrealms{bottom:auto;top:calc(var(--hdr,96px) + 36px);left:10px;right:10px;transform:none;min-width:0;max-width:none;flex-direction:column;gap:6px}
+  #filters,#filters.withrealms{bottom:auto;top:calc(var(--hdr,96px) + 36px);left:10px;right:10px;width:auto;transform:none;min-width:0;max-width:none;flex-direction:column;gap:6px}
   #filters .lyrs{box-shadow:none}
   #filters .lyrs button{padding:6px 10px;font-size:9.5px;letter-spacing:.1em;min-height:34px}
   .tl{min-width:0;box-shadow:none;padding:4px 10px 2px}
