@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-27
-note: Claude building on pack/christian-apocrypha at df69918 (checkpoints 1–5: work picker, skeleton, Tobit, Judith, Wisdom, Sirach, Baruch, 1 Maccabees narratives/people/journeys, Esther and Daniel additions). Review and checkpoints in research-review.md; Q01–Q03 for research-addendum.md. No PR yet; not merged.
+note: Claude building on pack/christian-apocrypha at 66c2bff (checkpoints 1–7: work picker, skeleton, all nine deuterocanonical works incl. 1–2 Maccabees places, people and journeys). Next: remaining Tobit/Judith place rows, then expanded OT. Review and checkpoints in research-review.md; Q01–Q03 for research-addendum.md. No PR yet; not merged.
 
 # Christian apocrypha (later layer of the Bible portion)
 
@@ -20,3 +20,4 @@ Track A · view: Earth-historical layer
 - 2026-10-27: Claude: build checkpoints 1–2 pushed to pack/christian-apocrypha at aebe6d2 (compact work picker for 39 works, pack skeleton with the five anchors, Tobit and Judith). Checks pass. Next: works 3–9. No stage change.
 - 2026-10-27: Claude: build checkpoint 3 pushed to pack/christian-apocrypha at 84387a2 (Wisdom, Baruch, Esther and Daniel additions; themes codex). Checks pass. Next: Sirach, then 1–2 Maccabees. No stage change.
 - 2026-10-27: Claude: build checkpoints 4–5 pushed to pack/christian-apocrypha at df69918 (Sirach; 1 Maccabees narratives, people and journeys; fixed three codex entries that showed later works' text early, now covered by a test). Checks pass. Next: 1 Maccabees places, then 2 Maccabees. No stage change.
+- 2026-10-27: Claude: build checkpoints 6–7 pushed to pack/christian-apocrypha at 66c2bff (1 Maccabees places; 2 Maccabees chronicle, places, people and journeys; later-work mentions table; Babylon/Jerusalem badges fixed). Checks pass. Next: remaining Tobit/Judith place rows, then expanded OT. No stage change.
