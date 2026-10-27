@@ -67,7 +67,7 @@ plumes, moon view and Easter eggs. Lore corrections r1–r3 re-applied; the newe
 open only from their own book. One deviation from r3: Tyche opens at Book IV (the Iron Gold prologue is staged
 there), with its later-book landmark text gated.
 
-## 4. Checks at bb5eb23
+## 4. Checks at bb5eb23 (re-run at 14f7a52 after merging main: pnpm check 82/82, test:pages 12×2)
 
 `pnpm check` 68/68 and check-dist 172 files; `test:pages` 12 pages × 2 viewports; browser smoke passed;
 Society spoiler-gate suite 676/0 at 1440×900 and 390×844 (run with drawing off for speed); phone Tour and
