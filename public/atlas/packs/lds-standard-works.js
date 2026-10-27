@@ -1,7 +1,7 @@
 /* =====================================================================================================
    LATTER-DAY SAINT STANDARD WORKS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §20).
-   BUILD CHECKPOINT 4 (draft, not reviewed): anchored core plus 13 builder-compiled restoration-era anchors
-   (RR01/Q01, listed in docs/universes/packs/lds-standard-works/anchors-proposal.csv, pending canon audit).
+   BUILD CHECKPOINT 5 (draft, not reviewed): anchored core plus 13 builder-compiled restoration-era anchors and
+   13 builder-compiled New Testament anchors (RR01/Q01, listed in docs/universes/packs/lds-standard-works/anchors-proposal.csv, pending canon audit).
 
    Research: docs/universes/packs/lds-standard-works/ at research revision 52adadf
    (research.md, bible-inventory.md, restoration-inventory.md, gazetteer-evidence.md, build-handoff.md).
@@ -17,7 +17,8 @@
    * Narrated ancient episodes carry no numeric year; only sourced modern dates get `when`.
    Anchors: UNESCO (Jerusalem, Bethlehem, Jericho/Tell es-Sultan, Babylon, Philippi), Pleiades (Nazareth,
    Capernaum, Perga, Antioch in Pisidia), National Park Service (Winter Quarters / Mormon Trail Center),
-   and Wikipedia infobox coordinates (NRHP/GNIS-derived) for the builder-compiled restoration-era anchors.
+   and Wikipedia infobox coordinates (NRHP/GNIS-derived) for the builder-compiled restoration-era anchors;
+   Pleiades (Salamis) and Wikipedia coordinates for the builder-compiled New Testament anchors.
    ===================================================================================================== */
 (window.ATLAS_PACKS = window.ATLAS_PACKS || {})['lds-standard-works'] = (function () {
   const OT = 1;
@@ -296,6 +297,162 @@
             notes: [{ k: 'text', t: 'Acts places the meeting with Lydia near Philippi.', ref: 'Acts 16:12–15' }],
           },
           {
+            /* AP12. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Antioch" coordinates; ruins lie beneath modern Antakya. */
+            id: 'antioch-sending',
+            name: 'Antioch (sending church)',
+            lat: 36.20472,
+            lon: 36.18167,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Ancient Antioch, beneath modern Antakya, Turkey (city reference point)',
+            desc: 'City reference point for ancient Antioch, whose ruins lie beneath modern Antakya. Not Antioch in Pisidia.',
+            notes: [{ k: 'text', t: 'The church sends Barnabas and Saul from Antioch.', ref: 'Acts 13:1–4' }],
+          },
+          {
+            /* AP13. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Seleucia Pieria" infobox. */
+            id: 'seleucia',
+            name: 'Seleucia',
+            lat: 36.12389,
+            lon: 35.92194,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Seleucia Pieria ruins near Çevlik, Samandağ, Turkey',
+            desc: 'Representative point for the ruins of Seleucia Pieria, Antioch’s port. Not a harbor or embarkation point.',
+            notes: [{ k: 'text', t: 'The travelers sail from Seleucia toward Cyprus.', ref: 'Acts 13:4' }],
+          },
+          {
+            /* AP14. Builder-compiled anchor (RR01/Q01), pending canon audit: Pleiades 707617 (Salamis/Konstantia) representative point. */
+            id: 'salamis',
+            name: 'Salamis',
+            lat: 35.179581302,
+            lon: 33.9028569668,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Representative point, Pleiades gazetteer (Salamis, Cyprus)',
+            desc: 'Representative location of Salamis on Cyprus from the Pleiades gazetteer. No synagogue is located.',
+            notes: [{ k: 'text', t: 'Barnabas and Saul preach at Salamis.', ref: 'Acts 13:5' }],
+          },
+          {
+            /* AP15. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Nea Paphos (ancient city)" coordinates; Nea Paphos specifically, not Palaepaphos. */
+            id: 'paphos',
+            name: 'Paphos',
+            lat: 34.76,
+            lon: 32.407,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Nea Paphos archaeological site, Paphos, Cyprus',
+            desc: 'Locates the ancient city of Nea Paphos, capital of Cyprus in the Roman era. Not the older sanctuary town of Palaepaphos.',
+            notes: [{ k: 'text', t: 'The mission reaches Paphos before sailing to Perga.', ref: 'Acts 13:6–13' }],
+          },
+          {
+            /* AP18. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Konya" infobox; page states Konya was known in antiquity as Iconium. */
+            id: 'iconium',
+            name: 'Iconium',
+            lat: 37.87444,
+            lon: 32.49306,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Modern Konya, Turkey (city reference point)',
+            desc: 'City reference point for modern Konya, known in antiquity as Iconium.',
+            notes: [{ k: 'text', t: 'Paul and Barnabas preach in Iconium.', ref: 'Acts 14:1' }],
+          },
+          {
+            /* AP19. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Lystra" infobox; page says the site is "believed" to lie near Hatunsaray. */
+            id: 'lystra',
+            name: 'Lystra',
+            lat: 37.60194,
+            lon: 32.33833,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Site believed to be Lystra, near Hatunsaray, south of Konya',
+            desc: 'Marks the site believed to be Lystra, about 30 km south of Konya. The ruins are largely unexcavated.',
+            notes: [{ k: 'text', t: 'Acts places a healing during the mission at Lystra.', ref: 'Acts 14:6–10' }],
+          },
+          {
+            /* AP21. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Antalya" infobox; page states the city was formerly Attaleia. */
+            id: 'attalia',
+            name: 'Attalia',
+            lat: 36.88694,
+            lon: 30.70333,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Modern Antalya, Turkey (city reference point)',
+            desc: 'City reference point for modern Antalya, formerly Attaleia. Not a harbor point.',
+            notes: [{ k: 'text', t: 'The return voyage departs from Attalia.', ref: 'Acts 14:25–26' }],
+          },
+          {
+            /* AP22. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Alexandria Troas" infobox (point given for the site’s baths). */
+            id: 'troas',
+            name: 'Troas',
+            lat: 39.75167,
+            lon: 26.15861,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Alexandria Troas ruins near Dalyan, Çanakkale, Turkey',
+            desc: 'Representative point within the large ruined city of Alexandria Troas. Not a harbor or departure point.',
+            notes: [{ k: 'text', t: 'The company departs from Troas toward Macedonia.', ref: 'Acts 16:8–11' }],
+          },
+          {
+            /* AP27. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Syracuse, Sicily" infobox. */
+            id: 'syracuse',
+            name: 'Syracuse',
+            lat: 37.06917,
+            lon: 15.2875,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Modern Syracuse, Sicily (city reference point)',
+            desc: 'City reference point for Syracuse. The harbor where the ship stopped is not marked.',
+            notes: [{ k: 'text', t: 'The company stops at Syracuse.', ref: 'Acts 28:12' }],
+          },
+          {
+            /* AP28. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Reggio Calabria" infobox; page states the city was ancient Rhegion. */
+            id: 'rhegium',
+            name: 'Rhegium',
+            lat: 38.11139,
+            lon: 15.66194,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Modern Reggio Calabria, Italy (city reference point)',
+            desc: 'City reference point for Reggio Calabria, ancient Rhegion. The harbor is not marked.',
+            notes: [{ k: 'text', t: 'The voyage continues through Rhegium.', ref: 'Acts 28:13' }],
+          },
+          {
+            /* AP29. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Pozzuoli" infobox; page states Pozzuoli was known in antiquity as Puteoli. */
+            id: 'puteoli',
+            name: 'Puteoli',
+            lat: 40.84444,
+            lon: 14.09333,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Modern Pozzuoli, Italy (city reference point)',
+            desc: 'City reference point for Pozzuoli, ancient Puteoli. The harbor is not marked.',
+            notes: [{ k: 'text', t: 'The travelers stay with believers at Puteoli.', ref: 'Acts 28:13–14' }],
+          },
+          {
+            /* AP32. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Rome" infobox. */
+            id: 'rome',
+            name: 'Rome',
+            lat: 41.89333,
+            lon: 12.48278,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Rome, Italy (city reference point)',
+            desc: 'City reference point for Rome. Paul’s residence under guard is not located.',
+            notes: [{ k: 'text', t: 'Acts ends with Paul receiving visitors under guard in Rome.', ref: 'Acts 28:16, 30–31' }],
+          },
+          {
+            /* AP33. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Patmos" coordinates. */
+            id: 'patmos',
+            name: 'Patmos',
+            lat: 37.325,
+            lon: 26.5417,
+            books: [NT],
+            layers: ['nt'],
+            modern: 'Island of Patmos, Greece (island reference point)',
+            desc: 'Reference point for the island of Patmos. No cave or other site on the island is identified.',
+            notes: [{ k: 'text', t: 'John locates himself on Patmos when introducing the vision.', ref: 'Rev. 1:9' }],
+          },
+          {
             /* RP05. NPS: Mormon Trail Center, 3215 State Street, North Omaha [R13]. */
             id: 'winter-quarters',
             name: 'Winter Quarters',
@@ -509,21 +666,21 @@
             ref: 'Acts 13–14',
             desc: 'Named stops in Acts; roads and sea tracks schematic. John accompanies the outbound part and leaves at Perga. Stops without an approved location are listed but not drawn.',
             stops: [
-              { name: 'Antioch (sending church)' },
-              { name: 'Seleucia' },
-              { name: 'Salamis' },
-              { name: 'Paphos' },
+              'antioch-sending',
+              'seleucia',
+              'salamis',
+              'paphos',
               { site: 'perga', note: 'John leaves the company' },
               'antioch-pisidia',
-              { name: 'Iconium' },
-              { name: 'Lystra' },
-              { name: 'Derbe' },
-              { name: 'Lystra' },
-              { name: 'Iconium' },
+              'iconium',
+              'lystra',
+              { name: 'Derbe', note: 'site debated; not drawn' },
+              'lystra',
+              'iconium',
               'antioch-pisidia',
               'perga',
-              { name: 'Attalia' },
-              { name: 'Antioch (sending church)' },
+              'attalia',
+              'antioch-sending',
             ],
           },
           {
@@ -534,7 +691,24 @@
             layers: ['nt'],
             ref: 'Acts 16:11–12',
             desc: 'Crossing toward Macedonia in Acts; a selected segment, not the whole second mission.',
-            stops: [{ name: 'Troas' }, { name: 'Samothracia' }, { name: 'Neapolis' }, 'philippi'],
+            stops: ['troas', { name: 'Samothracia' }, { name: 'Neapolis' }, 'philippi'],
+          },
+          {
+            /* AJ05. Acts 28:11–16. Appii Forum and Three Taverns grouped (their order is not separately stated). */
+            id: 'italy-segment',
+            name: 'Paul’s company to Rome',
+            books: [NT],
+            layers: ['nt'],
+            ref: 'Acts 28:11–16',
+            desc: 'Final travel segment in Acts; intermediate meeting places grouped. Sea tracks schematic. Melita and the meeting places have no approved location and are listed but not drawn.',
+            stops: [
+              { name: 'Melita', note: 'winters on the island' },
+              'syracuse',
+              'rhegium',
+              'puteoli',
+              { name: 'Appii Forum and Three Taverns', note: 'believers meet the company' },
+              'rome',
+            ],
           },
           {
             /* RJ01. Builder anchors (Q01). JSP dates the move to May; the site describes June hosting. */
@@ -646,6 +820,33 @@
         title: 'Ministry in Galilee',
         text: 'Matthew describes Jesus settling at Capernaum and calling fishermen beside the sea.',
       } /* AE08 */,
+      {
+        id: 'mission-sending',
+        book: NT,
+        world: 'earth',
+        site: 'antioch-sending',
+        layers: ['nt'],
+        title: 'Barnabas and Saul sent',
+        text: 'The church commissions Barnabas and Saul for their mission.',
+      } /* AE11 */,
+      {
+        id: 'paul-rome',
+        book: NT,
+        world: 'earth',
+        site: 'rome',
+        layers: ['nt'],
+        title: 'Paul reaches Rome',
+        text: 'Acts describes Paul teaching visitors during his guarded residence in Rome.',
+      } /* AE12; two years stated in Acts 28:30, no start year inferred */,
+      {
+        id: 'patmos-vision',
+        book: NT,
+        world: 'earth',
+        site: 'patmos',
+        layers: ['nt'],
+        title: 'Vision introduced on Patmos',
+        text: 'John introduces his revelation from Patmos and addresses seven churches.',
+      } /* AE13 */,
       {
         id: 'lehi-jerusalem',
         book: BOM,
@@ -846,8 +1047,6 @@
           unmapped('Mount of Olives', OT, ['ot', 'nt', 'pgp'], 'Old Testament: Zechariah’s prophecy names the Mount of Olives east of Jerusalem. New Testament: Matthew names the Mount of Olives in the Passion narrative. Pearl of Great Price: Joseph Smith—Matthew places Jesus’ conversation with his disciples on the Mount of Olives.'), // P20
           unmapped('Gethsemane', NT, ['nt'], 'New Testament: Matthew describes Jesus praying here before his arrest. No exact garden identification is adopted.'), // AP10
           unmapped('Golgotha', NT, ['nt'], 'New Testament: Matthew names Golgotha as the place of crucifixion. No modern candidate is selected.'), // AP11
-          unmapped('Rome', NT, ['nt'], 'New Testament: Acts ends with Paul receiving visitors under guard in Rome. Map anchor pending.'), // AP32
-          unmapped('Patmos', NT, ['nt'], 'New Testament: John locates himself on Patmos when introducing the vision. Map anchor pending.'), // AP33
           unmapped('Waters of Mormon', BOM, ['bom'], 'Book of Mormon: Mosiah describes Alma teaching and baptizing at waters in the place called Mormon. Modern location unknown; not placed on the Earth map.'), // P09
           unmapped('Temple in Bountiful', BOM, ['bom'], 'Book of Mormon: 3 Nephi places a gathered multitude at the temple in Bountiful when Jesus appears. Modern location unknown; distinct from the Bountiful on the Arabian shore in 1 Nephi.'), // P10
           unmapped('Woods near the Smith home', PGP, ['pgp', 'dc'], 'Pearl of Great Price: Joseph Smith’s canonized account describes a prayer in nearby woods and a vision of two personages, reported for spring 1820, near Manchester, New York. No grove point is sourced.'), // P11
