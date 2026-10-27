@@ -124,7 +124,7 @@ export function animateRelativisticJets(jets: THREE.Object3D, body: Body, dt: nu
   if (pulsar) {
     jets.rotation.z = 0.35 + Math.sin(app.elapsed * 2.7 + body.id) * 0.19;
     jets.rotation.x = Math.sin(app.elapsed * 1.9 + body.id * 0.7) * 0.12;
-  } else jets.rotation.z += Math.sin(app.elapsed * 0.7 + body.id) * dt * 0.0025;
+  }
   if (!pulsar)
     body.mesh.traverse(child => {
       if (!child.name.startsWith('accretionDisk')) return;

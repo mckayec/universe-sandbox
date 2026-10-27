@@ -52,6 +52,9 @@ export type SavedCosmicGroup = {
   haloMass?: number;
   /** Seed for the procedural galaxy picture (arm pattern, bar, dust); absent in older saves. */
   visualSeed?: number;
+  /** Galaxy halo scale radius and visual radius; absent in older saves (style defaults apply). */
+  haloScale?: number;
+  extent?: number;
 };
 
 export type SandboxSnapshot = {

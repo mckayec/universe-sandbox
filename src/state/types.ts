@@ -57,6 +57,17 @@ export type Body = {
   debris?: boolean;
   /** Receiver id → app.elapsed when this donor's tidal transfer toward it was last announced (not saved). */
   tidalAnnounced?: Map<number, number>;
+  /** Being stripped and swallowed gradually by a black hole or pulsar (see physics/infall.ts; not saved). */
+  infall?: {
+    eaterId: number;
+    age: number;
+    duration: number;
+    startMass: number;
+    startRadius: number;
+    angle: number;
+    sense: number;
+    heldStage: boolean;
+  };
   /** Set by removeBody so loops over a stale copy of `bodies` can skip it. */
   removed?: boolean;
   lifeScore: number;
@@ -96,6 +107,10 @@ export type MatterStream = {
   phases: Float32Array;
   intensity: number;
   lastActive: number;
+  /** Orbit sense of the gas in the receiver's disk frame (+1 counter-clockwise), fixed when the stream forms. */
+  flowSign?: number;
+  spinApplied?: boolean;
+  diskScale?: number;
 };
 export type ExhibitEvent = { title: string; detail: string; color: string };
 export type PointerSample = { x: number; y: number; type: string };
@@ -103,7 +118,31 @@ export type TouchGesture = { distance: number; center: THREE.Vector2; camera: TH
 export type GalaxyStyle = 'spiral' | 'lenticular' | 'elliptical' | 'irregular' | 'globular';
 export type PlacementBuilder = 'body' | 'system' | 'binary' | 'triple' | `galaxy-${GalaxyStyle}`;
 export type CosmicGroup = SavedCosmicGroup;
-export type GalaxyVisual = { groupId: number; anchorId: number; style: GalaxyStyle; object: THREE.Group };
+/** Tracer stars of a galaxy that has been disturbed: they now move individually in world space. */
+export type GalaxyLive = {
+  n: number;
+  x: Float32Array;
+  z: Float32Array;
+  vx: Float32Array;
+  vz: Float32Array;
+  y: Float32Array;
+  layers: Array<{ points: THREE.Points; offset: number; count: number }>;
+  holder: THREE.Group;
+  age: number;
+  /** Rotating subset to advance next, and the simulated time each subset has waited (see galaxy-motion.ts). */
+  phase: number;
+  pending: number[];
+};
+export type GalaxyVisual = {
+  groupId: number;
+  anchorId: number;
+  /** The core the picture was built around; a different anchorId means the galaxy lost or swapped its core. */
+  originalAnchorId: number;
+  style: GalaxyStyle;
+  extent: number;
+  object: THREE.Group;
+  live?: GalaxyLive;
+};
 export type ScienceMode = 'off' | 'orbits' | 'full';
 export type QualityMode = 'auto' | 'high' | 'low';
 export type CameraTransition = {

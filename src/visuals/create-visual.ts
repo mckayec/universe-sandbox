@@ -27,6 +27,7 @@ import {
   rockyMaterial,
   stellarMaterial,
 } from './materials.ts';
+import { keplerConstant } from './disk-flow.ts';
 import { coronaTexture } from './textures.ts';
 
 export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
@@ -77,14 +78,14 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
     group.add(lens);
     const tilt = Math.PI / diskTilt,
       inner = t.radius * 0.86,
+      kepler = keplerConstant(inner, 2.6),
       hotOuter = t.radius * 4.9 * diskScale,
       disk = new THREE.Mesh(
         new THREE.RingGeometry(inner, hotOuter, segments, 18),
-        blackHoleDiskMaterial(inner, hotOuter, 0, variant),
+        blackHoleDiskMaterial(inner, hotOuter, 0, variant, kepler, spin),
       );
-    disk.rotation.set(tilt, 0, 0.1);
+    disk.rotation.set(tilt, 0, 0);
     disk.name = 'accretionDiskHot';
-    disk.userData.spin = spin * (0.88 + variant * 0.12);
     disk.userData.baseActivity = baseActivity;
     disk.renderOrder = 5;
     disk.raycast = () => {};
@@ -93,11 +94,12 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
       midOuter = t.radius * 7.4 * diskScale,
       midDisk = new THREE.Mesh(
         new THREE.RingGeometry(midInner, midOuter, segments, 16),
-        blackHoleDiskMaterial(midInner, midOuter, 1, variant),
+        blackHoleDiskMaterial(midInner, midOuter, 1, variant, kepler, spin),
       );
-    midDisk.rotation.set(tilt + 0.018, -0.012, -0.2);
+    // Every layer shares one plane and one rotation sense; only the shader's Keplerian flow moves the gas.
+    midDisk.rotation.set(tilt, 0, 0);
+    midDisk.position.y = -0.004;
     midDisk.name = 'accretionDiskMid';
-    midDisk.userData.spin = -spin * (0.31 + variant * 0.05);
     midDisk.userData.baseActivity = baseActivity;
     midDisk.renderOrder = 4;
     midDisk.raycast = () => {};
@@ -106,11 +108,11 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
       dustOuter = t.radius * 11.8 * diskScale,
       dustDisk = new THREE.Mesh(
         new THREE.RingGeometry(dustInner, dustOuter, segments, isCompact ? 12 : 20),
-        blackHoleDiskMaterial(dustInner, dustOuter, 2, variant),
+        blackHoleDiskMaterial(dustInner, dustOuter, 2, variant, kepler, spin),
       );
-    dustDisk.rotation.set(tilt - 0.025, 0.018, 0.34);
+    dustDisk.rotation.set(tilt, 0, 0);
+    dustDisk.position.y = -0.008;
     dustDisk.name = 'accretionDiskDust';
-    dustDisk.userData.spin = spin * (0.08 + variant * 0.018);
     dustDisk.userData.baseActivity = baseActivity;
     dustDisk.renderOrder = 2;
     dustDisk.raycast = () => {};
@@ -130,9 +132,11 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
     photon.name = 'photonRing';
     photon.raycast = () => {};
     group.add(photon);
-    for (const [tiltOffset, color, opacity] of [
-      [-0.36, 0xffa844, 0.25],
-      [0.36, 0xfff0bd, 0.38],
+    // Lensed images of the far side of the disk: a bright arc over the shadow and a fainter one beneath it.
+    // Both face the viewer (see faceCamera); arcRoll centres each arc's gap below or above the shadow.
+    for (const [arcRoll, color, opacity] of [
+      [2.419, 0xffa844, 0.25],
+      [-0.723, 0xfff0bd, 0.38],
     ] as const) {
       const arc = new THREE.Mesh(
         new THREE.TorusGeometry(t.radius * 1.35, 0.026, 7, 112, Math.PI * 1.46),
@@ -145,17 +149,20 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
           toneMapped: false,
         }),
       );
-      arc.rotation.set(tilt, tiltOffset, tiltOffset * 0.32);
+      arc.userData.arcRoll = arcRoll;
       arc.name = 'lensingArc';
       arc.raycast = () => {};
       group.add(arc);
     }
+    // Inflowing clumps live in the disk plane (local XY of a frame tilted like the disk) and orbit with it.
     const count = isCompact ? 52 : 108,
-      pos = new Float32Array(count * 3);
+      pos = new Float32Array(count * 3),
+      inflowInner = t.radius * 1.25,
+      inflowOuter = t.radius * (1.25 + 5.2 * diskScale);
     for (let i = 0; i < count; i++) {
       const a = Math.random() * Math.PI * 2,
-        r = t.radius * (1.25 + Math.random() * 5.2 * diskScale);
-      pos.set([Math.cos(a) * r, (Math.random() - 0.5) * 0.16, Math.sin(a) * r], i * 3);
+        r = inflowInner + Math.random() * (inflowOuter - inflowInner);
+      pos.set([Math.cos(a) * r, Math.sin(a) * r, (Math.random() - 0.5) * 0.05], i * 3);
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
@@ -172,10 +179,16 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
       }),
     );
     inflow.name = 'inflow';
-    inflow.userData.phase = Math.random() * 10;
+    inflow.userData.spin = spin;
+    inflow.userData.kepler = kepler;
+    inflow.userData.inner = inflowInner;
+    inflow.userData.outer = inflowOuter;
+    inflow.rotation.set(tilt, 0, 0);
     inflow.raycast = () => {};
     group.add(inflow);
-    addRelativisticJets(
+    group.userData.diskSpin = spin;
+    group.userData.diskTilt = tilt;
+    const jets = addRelativisticJets(
       group,
       'blackHoleJets',
       variant === 3 ? 0xf4f5ff : 0xd8efff,
@@ -183,6 +196,8 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
       seed,
       variant >= 2 ? 0.28 + variant * 0.08 : 0,
     );
+    // Jets leave along the disk's spin axis.
+    jets.rotation.set(tilt - Math.PI / 2, 0, 0);
     const warmGlow = addGlow(group, '#ff8a33', t.radius * (6.2 + variant * 0.7), 0.075),
       innerGlow = addGlow(group, '#fff6de', t.radius * 3.2, 0.16);
     warmGlow.name = 'blackHoleWarmGlow';
@@ -336,8 +351,13 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
     glow.userData.baseOpacity = 0.24;
     const inner = t.radius * 1.32,
       outer = t.radius * 5.1,
-      disk = new THREE.Mesh(new THREE.RingGeometry(inner, outer, 88, 10), protostarDiskMaterial(inner, outer));
+      disk = new THREE.Mesh(
+        new THREE.RingGeometry(inner, outer, 88, 10),
+        protostarDiskMaterial(inner, outer, keplerConstant(inner, 1.8), seed % 2 ? 1 : -1),
+      );
     disk.rotation.x = Math.PI / 2.38;
+    group.userData.diskSpin = seed % 2 ? 1 : -1;
+    group.userData.diskTilt = disk.rotation.x;
     disk.scale.setScalar(0.06);
     disk.name = 'protoDisk';
     group.add(disk);
@@ -360,6 +380,7 @@ export function createVisual(kind: Kind, stage: Stage = 'red dwarf', seed = 1) {
       jets.add(jet);
     }
     jets.name = 'protoJets';
+    jets.rotation.x = disk.rotation.x - Math.PI / 2;
     jets.scale.setScalar(0.05);
     group.add(jets);
   } else if (kind === 'pulsar') {
