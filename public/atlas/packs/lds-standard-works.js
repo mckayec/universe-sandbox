@@ -1,6 +1,7 @@
 /* =====================================================================================================
    LATTER-DAY SAINT STANDARD WORKS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §20).
-   BUILD CHECKPOINT 2 (draft, not reviewed): the anchored core only. More anchors follow RR01/Q01.
+   BUILD CHECKPOINT 4 (draft, not reviewed): anchored core plus 13 builder-compiled restoration-era anchors
+   (RR01/Q01, listed in docs/universes/packs/lds-standard-works/anchors-proposal.csv, pending canon audit).
 
    Research: docs/universes/packs/lds-standard-works/ at research revision 52adadf
    (research.md, bible-inventory.md, restoration-inventory.md, gazetteer-evidence.md, build-handoff.md).
@@ -15,7 +16,8 @@
    * Book of Mormon places have no Earth coordinates; geography models are not shown as pins.
    * Narrated ancient episodes carry no numeric year; only sourced modern dates get `when`.
    Anchors: UNESCO (Jerusalem, Bethlehem, Jericho/Tell es-Sultan, Babylon, Philippi), Pleiades (Nazareth,
-   Capernaum, Perga, Antioch in Pisidia), National Park Service (Winter Quarters / Mormon Trail Center).
+   Capernaum, Perga, Antioch in Pisidia), National Park Service (Winter Quarters / Mormon Trail Center),
+   and Wikipedia infobox coordinates (NRHP/GNIS-derived) for the builder-compiled restoration-era anchors.
    ===================================================================================================== */
 (window.ATLAS_PACKS = window.ATLAS_PACKS || {})['lds-standard-works'] = (function () {
   const OT = 1;
@@ -50,6 +52,7 @@
         'Pleiades gazetteer (pleiades.stoa.org): Nazareth 678299, Capernaum 678231, Perga 639048, Antioch in Pisidia 609307 (CC BY 3.0)',
         'National Park Service, Mormon Pioneer National Historic Trail: Mormon Trail Center at Historic Winter Quarters',
         'The Joseph Smith Papers',
+        'Wikipedia infobox coordinates (derived from NRHP/GNIS records) for restoration-era sites: Fayette, Independence, Kirtland Temple, Nauvoo, Carthage Jail, Harmony, Palmyra, Salt Lake Temple, Garden Grove, Mount Pisgah, Chimney Rock, South Pass, Fort Bridger',
       ],
     },
     theme: {
@@ -304,6 +307,162 @@
             modern: 'Mormon Trail Center, North Omaha, Nebraska (National Park Service)',
             desc: 'Winter Quarters sheltered emigrants before their westward journey. The marker identifies the modern Mormon Trail Center, not the precise revelation site.',
           },
+          {
+            /* P12. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Peter Whitmer log home). */
+            id: 'fayette',
+            name: 'Fayette (Whitmer home)',
+            lat: 42.865972,
+            lon: -76.869778,
+            books: [DC],
+            layers: ['dc'],
+            when: 1830,
+            modern: 'Peter Whitmer log home (1980 replica on the original site), Fayette, New York',
+            desc: 'The Joseph Smith Papers editors identify the Whitmer home in Fayette as the Church’s organization setting. The marker locates the replica log home on the farm site; the original house no longer stands.',
+          },
+          {
+            /* P13. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Independence, Missouri). */
+            id: 'independence',
+            name: 'Independence',
+            lat: 39.0925,
+            lon: -94.41389,
+            books: [DC],
+            layers: ['dc'],
+            when: 1831,
+            modern: 'City of Independence, Missouri (city reference point)',
+            desc: 'D&C 57 names Independence as the center place for Zion and describes a nearby temple lot. The marker is the city’s reference point, not the temple lot.',
+          },
+          {
+            /* P14. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Kirtland Temple). */
+            id: 'kirtland-temple',
+            name: 'Kirtland Temple',
+            lat: 41.62528,
+            lon: -81.36222,
+            books: [DC],
+            layers: ['dc'],
+            when: 1836,
+            modern: 'Kirtland Temple, Kirtland, Ohio (standing building, National Historic Landmark)',
+            desc: 'D&C 109 preserves the prayer associated with the Kirtland Temple dedication. The marker locates the standing temple.',
+          },
+          {
+            /* P15. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Nauvoo, Illinois). */
+            id: 'nauvoo',
+            name: 'Nauvoo',
+            lat: 40.54444,
+            lon: -91.375,
+            books: [DC],
+            layers: ['dc'],
+            when: [1839, 1846],
+            modern: 'City of Nauvoo, Illinois (city reference point)',
+            desc: 'The heading to D&C 124 places the revelation at Nauvoo. Its instructions include building a temple and lodging for visitors. The marker is the city’s reference point.',
+          },
+          {
+            /* P16. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Carthage Jail). */
+            id: 'carthage-jail',
+            name: 'Carthage Jail',
+            lat: 40.41572,
+            lon: -91.13884,
+            books: [DC],
+            layers: ['dc'],
+            when: 1844,
+            modern: 'Carthage Jail, Carthage, Illinois (standing building, NRHP)',
+            desc: 'D&C 135 reports Joseph and Hyrum Smith’s deaths at Carthage Jail. The marker locates the standing jail building.',
+          },
+          {
+            /* RP01. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Priesthood Restoration Site). */
+            id: 'harmony',
+            name: 'Harmony (Smith home site)',
+            lat: 41.9512,
+            lon: -75.6387,
+            books: [DC],
+            layers: ['dc'],
+            when: 1829,
+            modern: 'Priesthood Restoration Site, Oakland Township, Pennsylvania (historic Harmony)',
+            desc: 'The Church’s historic site commemorates the Smith home where much of the Book of Mormon dictation took place. Current houses are reconstructions, not original standing homes.',
+          },
+          {
+            /* RP03. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Palmyra (village), New York). */
+            id: 'palmyra',
+            name: 'Palmyra',
+            lat: 43.06417,
+            lon: -77.23361,
+            books: [DC],
+            layers: ['dc'],
+            when: 1830,
+            modern: 'Village of Palmyra, New York (village reference point)',
+            desc: 'Palmyra hosted publication of the Book of Mormon. The marker is the village’s reference point, not the print shop.',
+          },
+          {
+            /* RP07. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Salt Lake Temple). */
+            id: 'salt-lake-temple',
+            name: 'Salt Lake Temple',
+            lat: 40.77056,
+            lon: -111.89194,
+            books: [DC],
+            layers: ['dc'],
+            when: 1978,
+            modern: 'Salt Lake Temple, Temple Square, Salt Lake City, Utah',
+            desc: 'The official declaration’s heading identifies this temple as the setting for Church leaders’ reported confirmation in June 1978. The marker locates the temple.',
+          },
+          {
+            /* RP09. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Garden Grove, Iowa). */
+            id: 'garden-grove',
+            name: 'Garden Grove',
+            lat: 40.82667,
+            lon: -93.60694,
+            books: [DC],
+            layers: ['dc'],
+            when: 1846,
+            modern: 'City of Garden Grove, Iowa (city reference point)',
+            desc: 'Emigrants established a farming settlement to support travelers who followed. The marker is the modern town’s reference point, not the 1846 camp.',
+          },
+          {
+            /* RP10. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Mount Pisgah, Iowa). */
+            id: 'mount-pisgah',
+            name: 'Mount Pisgah (Iowa)',
+            lat: 41.038586,
+            lon: -94.113028,
+            books: [DC],
+            layers: ['dc'],
+            when: 1846,
+            modern: 'Mount Pisgah historic site and cemetery, near Thayer, Iowa',
+            desc: 'A second farming settlement supported the migration across Iowa. Not the biblical Pisgah.',
+          },
+          {
+            /* RP11. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Chimney Rock National Historic Site). */
+            id: 'chimney-rock',
+            name: 'Chimney Rock',
+            lat: 41.70361,
+            lon: -103.34833,
+            books: [DC],
+            layers: ['dc'],
+            when: 1847,
+            modern: 'Chimney Rock National Historic Site, near Bayard, Nebraska',
+            desc: 'The 1847 emigrant company passed this landmark on its journey west.',
+          },
+          {
+            /* RP12. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (South Pass (Wyoming)). */
+            id: 'south-pass',
+            name: 'South Pass',
+            lat: 42.3303,
+            lon: -108.9738,
+            books: [DC],
+            layers: ['dc'],
+            when: 1847,
+            modern: 'Historic South Pass crossing, Continental Divide, Wyoming (National Historic Landmark)',
+            desc: 'The company crossed the Continental Divide through South Pass. The marker is the historic crossing; the exact 1847 track is not plotted.',
+          },
+          {
+            /* RP13. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Fort Bridger). */
+            id: 'fort-bridger',
+            name: 'Fort Bridger',
+            lat: 41.31778,
+            lon: -110.39194,
+            books: [DC],
+            layers: ['dc'],
+            when: 1847,
+            modern: 'Fort Bridger State Historic Site, Wyoming',
+            desc: 'Near Fort Bridger, the company turned toward Utah on the Hastings Cutoff.',
+          },
         ],
         routes: [
           {
@@ -376,6 +535,47 @@
             ref: 'Acts 16:11–12',
             desc: 'Crossing toward Macedonia in Acts; a selected segment, not the whole second mission.',
             stops: [{ name: 'Troas' }, { name: 'Samothracia' }, { name: 'Neapolis' }, 'philippi'],
+          },
+          {
+            /* RJ01. Builder anchors (Q01). JSP dates the move to May; the site describes June hosting. */
+            id: 'dictation-move',
+            name: 'From Harmony to the Whitmer home',
+            books: [DC],
+            layers: ['dc'],
+            when: 1829,
+            desc: 'Work moved to the Whitmer household before dictation was completed (1829). Day and month are not reconciled between sources.',
+            stops: ['harmony', 'fayette'],
+          },
+          {
+            /* RJ02. Compressed sequence; east-bank camps and river-crossing stages are omitted. */
+            id: 'iowa-migration',
+            name: 'Nauvoo to the Missouri River camps',
+            books: [DC],
+            layers: ['dc'],
+            when: 1846,
+            desc: 'A compressed migration sequence across Iowa in 1846. East-bank camps and river-crossing stages are omitted, not conflated with Winter Quarters.',
+            stops: [
+              { site: 'nauvoo', note: 'Cross Iowa' },
+              { site: 'garden-grove', note: 'Support farms for later travelers' },
+              { site: 'mount-pisgah', note: 'Continue toward the Missouri River' },
+              'winter-quarters',
+            ],
+          },
+          {
+            /* RJ03. Abridged sequence. The Salt Lake Valley has no approved pin, so the last leg is listed, not drawn. */
+            id: 'valley-migration',
+            name: 'The 1847 journey',
+            books: [DC],
+            layers: ['dc'],
+            when: 1847,
+            desc: 'An abridged sequence for Brigham Young’s 1847 company.',
+            stops: [
+              { site: 'winter-quarters', note: 'Across the plains' },
+              { site: 'chimney-rock', note: 'Across the Divide' },
+              { site: 'south-pass', note: 'Toward Fort Bridger' },
+              { site: 'fort-bridger', note: 'Along the Hastings Cutoff' },
+              { name: 'Salt Lake Valley' },
+            ],
           },
         ],
       },
@@ -485,6 +685,106 @@
         title: 'Westward departure',
         text: 'The first group led by Brigham Young left Winter Quarters for the western journey on April 5, 1847. Later companies had separate departure dates.',
       } /* RE12 */,
+      {
+        id: 'aaronic-priesthood-account',
+        book: DC,
+        world: 'earth',
+        site: 'harmony',
+        layers: ['dc'],
+        when: 1829,
+        title: 'Aaronic Priesthood account',
+        text: 'Joseph Smith’s history reports that John the Baptist conferred priesthood authority near Harmony (D&C 13 heading; JS—H 1:68–72). No exact forest point is marked.',
+      } /* RE01 */,
+      {
+        id: 'translation-fayette',
+        book: DC,
+        world: 'earth',
+        site: 'fayette',
+        layers: ['dc'],
+        when: 1829,
+        title: 'Final dictation in Fayette',
+        text: 'The Whitmer home hosted the final phase of the Book of Mormon’s dictation, in June 1829.',
+      } /* RE03 */,
+      {
+        id: 'book-mormon-publication',
+        book: DC,
+        world: 'earth',
+        site: 'palmyra',
+        layers: ['dc'],
+        when: 1830,
+        title: 'First edition available',
+        text: 'Copies of the first Book of Mormon edition were available by the end of March 1830.',
+      } /* RE04 */,
+      {
+        id: 'organization',
+        book: DC,
+        world: 'earth',
+        site: 'fayette',
+        layers: ['dc'],
+        when: 1830,
+        title: 'Church organization',
+        text: 'The Church was organized on April 6, 1830; documentary editors locate the meeting in Fayette.',
+      } /* E09 */,
+      {
+        id: 'zion-designation',
+        book: DC,
+        world: 'earth',
+        site: 'independence',
+        layers: ['dc'],
+        when: 1831,
+        title: 'Independence designated',
+        text: 'The revelation of July 20, 1831 designates Independence as the center place for Zion (D&C 57).',
+      } /* E10 */,
+      {
+        id: 'vision-celestial-kingdom',
+        book: DC,
+        world: 'earth',
+        site: 'kirtland-temple',
+        layers: ['dc'],
+        when: 1836,
+        title: 'Vision recorded at Kirtland',
+        text: 'Joseph Smith reports seeing Alvin in the celestial kingdom and receiving teaching about those who died without gospel knowledge (D&C 137, January 21, 1836).',
+      } /* RE08 */,
+      {
+        id: 'kirtland-dedication',
+        book: DC,
+        world: 'earth',
+        site: 'kirtland-temple',
+        layers: ['dc'],
+        when: 1836,
+        title: 'Kirtland dedication prayer',
+        text: 'D&C 109 preserves the dedication prayer for the Kirtland Temple (March 27, 1836).',
+      } /* E11 */,
+      {
+        id: 'nauvoo-revelation',
+        book: DC,
+        world: 'earth',
+        site: 'nauvoo',
+        layers: ['dc'],
+        when: 1841,
+        title: 'Nauvoo building instructions',
+        text: 'The Nauvoo revelation of January 19, 1841 directs construction of a temple and a house for visitors (D&C 124).',
+      } /* E13 */,
+      {
+        id: 'departure-nauvoo',
+        book: DC,
+        world: 'earth',
+        site: 'nauvoo',
+        layers: ['dc'],
+        when: 1846,
+        title: 'Departure from Nauvoo',
+        text: 'The first wagons left Nauvoo and crossed the Mississippi River on February 4, 1846. This dates the first departures, not every family’s.',
+      } /* RE09 */,
+      {
+        id: '1978-temple-confirmation',
+        book: DC,
+        world: 'earth',
+        site: 'salt-lake-temple',
+        layers: ['dc'],
+        when: 1978,
+        title: 'Reported confirmation in the temple',
+        text: 'The heading to Official Declaration 2 reports that Church leaders affirmed, in the temple on June 1, 1978, the revelation ending racial priesthood restrictions. The later announcement and sustaining have their own dates.',
+      } /* RE17 */,
     ],
     codex: [
       {
@@ -551,11 +851,6 @@
           unmapped('Waters of Mormon', BOM, ['bom'], 'Book of Mormon: Mosiah describes Alma teaching and baptizing at waters in the place called Mormon. Modern location unknown; not placed on the Earth map.'), // P09
           unmapped('Temple in Bountiful', BOM, ['bom'], 'Book of Mormon: 3 Nephi places a gathered multitude at the temple in Bountiful when Jesus appears. Modern location unknown; distinct from the Bountiful on the Arabian shore in 1 Nephi.'), // P10
           unmapped('Woods near the Smith home', PGP, ['pgp', 'dc'], 'Pearl of Great Price: Joseph Smith’s canonized account describes a prayer in nearby woods and a vision of two personages, reported for spring 1820, near Manchester, New York. No grove point is sourced.'), // P11
-          unmapped('Fayette', DC, ['dc'], 'Church history: the Joseph Smith Papers editors identify the Whitmer home in Fayette, New York, as the setting of the Church’s organization on April 6, 1830. Map anchor pending.'), // P12
-          unmapped('Independence', DC, ['dc'], 'Doctrine and Covenants: D&C 57 names Independence as the center place for Zion and describes a nearby temple lot. Map anchor pending.'), // P13
-          unmapped('Kirtland Temple', DC, ['dc'], 'Doctrine and Covenants: D&C 109 preserves the prayer associated with the Kirtland Temple dedication, March 27, 1836. Map anchor pending.'), // P14
-          unmapped('Nauvoo', DC, ['dc'], 'Doctrine and Covenants: the heading to D&C 124 places the revelation at Nauvoo. Its instructions include building a temple and lodging for visitors. Map anchor pending.'), // P15
-          unmapped('Carthage Jail', DC, ['dc'], 'Doctrine and Covenants: D&C 135 reports Joseph and Hyrum Smith’s deaths at Carthage Jail. Map anchor pending.'), // P16
           unmapped('Enoch’s city (Zion)', DC, ['dc', 'pgp'], 'Doctrine and Covenants: D&C 38 describes Enoch’s city as taken into God’s presence. Pearl of Great Price: Moses describes Enoch’s community as Zion and says the city was taken up. No terrestrial location.'), // P17
           unmapped('Jershon (Abraham)', PGP, ['pgp'], 'Pearl of Great Price: Abraham names Jershon on the way from Haran to Canaan. Location unknown; not the Book of Mormon Jershon.'), // P19
         ],
@@ -569,10 +864,6 @@
           { name: 'Baptisms at Mormon', books: [BOM], layers: ['bom'], desc: 'Alma teaches baptismal commitments and baptizes at the waters of Mormon (Mosiah 18:7–17).' }, // E06
           { name: 'Jesus at Bountiful', books: [BOM], layers: ['bom'], desc: 'The narrative describes Jesus appearing to the multitude at the temple (3 Ne. 11:1–17).' }, // E07
           { name: 'First Vision account', books: [DC], layers: ['dc', 'pgp'], when: 1820, desc: 'The D&C introduction reports Joseph Smith’s First Vision in spring 1820 while he was living in Manchester. Joseph Smith’s canonized account in the Pearl of Great Price reports a vision following prayer in the woods.' }, // E08
-          { name: 'Church organization', books: [DC], layers: ['dc'], when: 1830, desc: 'The Church was organized on April 6, 1830; documentary editors locate the meeting in Fayette.' }, // E09
-          { name: 'Independence designated', books: [DC], layers: ['dc'], when: 1831, desc: 'The revelation of July 20, 1831 designates Independence as the center place for Zion (D&C 57).' }, // E10
-          { name: 'Kirtland dedication prayer', books: [DC], layers: ['dc'], when: 1836, desc: 'D&C 109 preserves the dedication prayer for the Kirtland Temple (March 27, 1836).' }, // E11
-          { name: 'Nauvoo building instructions', books: [DC], layers: ['dc'], when: 1841, desc: 'The Nauvoo revelation of January 19, 1841 directs construction of a temple and a house for visitors (D&C 124).' }, // E13
           { name: 'Abraham’s journey account', books: [PGP], layers: ['pgp'], desc: 'Abraham describes a journey from Ur through Haran and Canaan toward Egypt (Abr. 2:4–21). It gives Abraham’s age on leaving Haran as 62; Genesis 12:4 gives 75. Neither value is corrected or harmonized here.' }, // E12, LDS-Q04
         ],
       },
