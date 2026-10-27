@@ -245,3 +245,39 @@ test('Acts of Paul (slot 29): every cluster has a Chronicle entry; only the Roma
   assert.ok(!antioch.books.includes(29), 'Acts of Paul must not be merged into the 1–2 Maccabees Antioch');
   assert.ok(places.find((e: any) => e.name === 'Antioch (Acts of Paul)'));
 });
+
+test('Acts of Peter, John, Andrew and Thomas and the Apocalypses of Peter and Paul (slots 30–35): one entry per cluster', () => {
+  const gates = Object.fromEntries(readCsv('work-gates.csv').map(r => [r.ledger_work, Number(r.first)]));
+  const rows = readCsv('nt-apocrypha-integration.csv').filter(r => gates[r.work] >= 30 && gates[r.work] <= 35);
+  assert.equal(rows.length, 43);
+  // only Acts of Peter scenes set in Rome are pinned, to the Rome anchor; no other cluster in these works is pinned
+  const romeScenes = ['nta-ape-paul-departure', 'nta-ape-marcellus', 'nta-ape-contest', 'nta-ape-martyrdom'];
+  for (const r of rows) {
+    const e = pack.events.find((x: any) => x.id === r.stable_id);
+    assert.ok(e, `no Chronicle entry for ${r.stable_id}`);
+    assert.equal(e.book, gates[r.work], `${r.stable_id} is gated at the wrong work`);
+    assert.equal(e.site, romeScenes.includes(r.stable_id) ? 'rome' : undefined, `${r.stable_id} pin`);
+  }
+  const sites = pack.worlds.flatMap((w: any) => w.sites || []);
+  const badge = (id: string) => sites.find((x: any) => x.id === id).books;
+  for (const s of [30, 31, 33]) assert.ok(badge('jerusalem').includes(s), `Jerusalem badge lacks slot ${s}`);
+  assert.ok(badge('rome').includes(30), 'Rome badge lacks the Acts of Peter');
+  // the heavenly city called Jerusalem (Apocalypse of Paul) and the Mount of Olives frames are not the Jerusalem anchor
+  for (const s of [34, 35]) assert.ok(!badge('jerusalem').includes(s), `Jerusalem badge must not include slot ${s}`);
+  // the papyrus scraps establish no trial at Rome; the westward commission in the Apocalypse of Peter is not Rome
+  for (const s of [31, 34]) assert.ok(!badge('rome').includes(s), `Rome badge must not include slot ${s}`);
+  // the Hymn of the Soul is a symbolic journey: no Babylon badge, and Egypt gets no Acts of Thomas mention
+  assert.ok(!badge('babylon').includes(33), 'the Hymn of the Soul must not badge Babylon');
+  const places = pack.codex.find((c: any) => c.id === 'places').list;
+  assert.ok(
+    !places.find((e: any) => e.name === 'Egypt').books.includes(33),
+    'Egypt must not carry the Hymn of the Soul',
+  );
+  // namesakes stay apart: Tarsus (2 Maccabees) and Sparta are not extended to these works
+  assert.ok(!places.find((e: any) => e.name === 'Tarsus').books.includes(35));
+  assert.ok(!places.find((e: any) => e.name === 'Sparta').books.includes(32));
+  assert.ok(
+    places.find((e: any) => e.name === 'Judea (Judaea)').books.includes(30),
+    'Judea lacks its Acts of Peter mention',
+  );
+});

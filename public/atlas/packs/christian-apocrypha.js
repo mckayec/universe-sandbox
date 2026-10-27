@@ -1,8 +1,8 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 13 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   BUILD CHECKPOINT 14 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
    the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9);
-   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15); 1 Enoch and Jubilees (16–17); Ascension of Isaiah and 4 Baruch (21–22); the NT-related gospels (23–28); the Acts of Paul (29).
+   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15); 1 Enoch and Jubilees (16–17); Ascension of Isaiah and 4 Baruch (21–22); the NT-related gospels (23–28); the Acts of Paul, Peter, John, Andrew and Thomas and the Apocalypses of Peter and Paul (29–35).
    The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
@@ -120,6 +120,9 @@
   later(26, { 'Judea (Judaea)': 'Gospel of Thomas: saying 60 mentions a Samaritan going into Judea. No starting point is given.' });
   later(28, { 'Judea (Judaea)': 'Gospel of Judas: the frame sets the conversations in Judea before Passover (p. 33).' });
 
+  /* Acts of Peter (slot 30) mention of Judea, whose entry is written with Judith */
+  later(30, { 'Judea (Judaea)': 'Acts of Peter: Peter recalls an earlier episode there with Eubula (XVII). A memory, not a leg of his journey to Rome.' });
+
   /* reference entry for a place with no approved map anchor, or a person, scoped to one work */
   function ref(name, first, layer, desc, role, more) {
     const e = { name, first, books: [first], layers: [layer], desc };
@@ -236,7 +239,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 21, 22, 23, 24, 25],
+            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 21, 22, 23, 24, 25, 30, 31, 33],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -266,7 +269,7 @@
             name: 'Rome',
             lat: 41.890222,
             lon: 12.492306,
-            books: [6, 29],
+            books: [6, 29, 30],
             modern: 'Historic Centre of Rome (UNESCO component point)',
             desc: 'The marker locates a component of Rome’s historic centre, not the site of any martyrdom told in these texts.',
           },
@@ -571,6 +574,70 @@
       ev('nta-pt-prophecy', 29, 'nta', 'A prophecy about Rome', 'A fragmentary prophecy by Cleobius and Myrte about Rome.', 'Acts of Paul IX (M. R. James; fragmentary)'),
       ev('nta-pt-martyrdom', 29, 'nta', 'Paul’s death at Rome', 'At Rome, with Patroclus, Nero, Longus and Cestus in the story, Paul is beheaded, and milk is said to flow. He appears afterward, and Titus and Luke are at his grave. No execution site or tomb is located.', 'Acts of Paul X.1–7 (M. R. James)', 'rome'),
       ev('nta-pt-unplaced', 29, 'nta', 'Quotations by later writers', 'Short passages that Origen, Clement, Pseudo-Cyprian, Lactantius, Commodian and John of Salisbury connect with Paul’s acts. Each is attributed to its writer; which part of the work it belongs to is uncertain, and none is added to Paul’s route. Suggested links to Peter are conjecture.', 'Acts of Paul XI (M. R. James, Wikisource)'),
+
+      /* ---- Acts of Peter (slot 30). nta-ape-paul-departure … nta-ape-gardener, one entry per cluster. M. R. James 1924:
+         the Latin (Vercelli) text to XXIX and Greek from XXX, a separate Coptic fragment, and a story known only from
+         later testimony. Scenes set in Rome attach to the Rome anchor; no execution or burial site is located. ---- */
+      ev('nta-ape-paul-departure', 30, 'nta', 'Paul leaves Rome', 'Paul sets out from Rome toward Spain, with a departure scene by the Tiber, and the episode of Rufina. This is the Acts of Peter’s own account of Paul.', 'Acts of Peter I–III (M. R. James; Latin)', 'rome'),
+      ev('nta-ape-peter-arrival', 30, 'nta', 'Simon and Peter come to Rome', 'Simon comes to Rome from Aricia. Peter travels from Jerusalem by Caesarea and Puteoli to Rome; Theon is baptized during the voyage, and Ariston meets Peter at Puteoli. Peter declines to stay there and goes on to the house of Narcissus in Rome. The six days and nights of the voyage are the story’s own count, not a sailing calendar.', 'Acts of Peter IV–VI (M. R. James; Latin)'),
+      ev('nta-ape-marcellus', 30, 'nta', 'Peter and Marcellus', 'Peter teaches Marcellus and reconciles him. A dog speaks, a statue is repaired and a fish is revived: wonders of the story. Marcellus’s house is in Rome; the contest in the Forum is announced here and held later.', 'Acts of Peter VII–XVI (M. R. James; Latin)', 'rome'),
+      ev('nta-ape-eubula', 30, 'nta', 'Peter remembers Eubula', 'Peter recalls an earlier episode in Judaea, with Eubula, Simon, and Agrippinus or Pompeius. The gate at Neapolis and the cave are uncertain. A memory, not a new leg of Peter’s journey to Rome.', 'Acts of Peter XVII (M. R. James; Latin)'),
+      ev('nta-ape-contest', 30, 'nta', 'The contest in the Forum', 'Peter teaches and heals in Marcellus’s household. In the contest with Simon in the Forum, the dead are raised, Nicostratus among them. Servants who are freed keep their freedom, and Chryse makes a gift. A vision in this section uses racialized imagery: the work’s polemic, not a description of any people.', 'Acts of Peter XVIII–XXXI (M. R. James; Latin to XXIX, Greek from XXX)', 'rome'),
+      ev('nta-ape-martyrdom', 30, 'nta', 'Simon’s fall and Peter’s death', 'Simon falls at Rome and goes by Aricia to Terracina. Peter leaves the city, sees Jesus in a vision and returns; he is crucified head downward, and Marcellus buries him. Agrippa is the story’s prefect, not assumed to be a Herodian king. No site at the Vatican and no historical date are given, and the editor flags the addition in XLI.', 'Acts of Peter XXXII–XLI (M. R. James; Greek)', 'rome'),
+      ev('nta-ape-daughter', 30, 'nta', 'Peter’s daughter', 'In a separate Coptic fragment, Peter’s unnamed daughter is healed and then disabled again; Ptolemaeus is part of the story, and property goes to the poor. The missing leaf is the editor’s reconstruction. Naming her Petronilla, or setting the story in Jerusalem, is not secure.', 'Acts of Peter, Coptic fragment (M. R. James)'),
+      ev('nta-ape-gardener', 30, 'nta', 'The gardener’s daughter', 'A story of a gardener’s daughter, known only from later writers (Titus; Augustine). No setting is added, and she is not merged with Peter’s daughter.', 'Acts of Peter, later testimony (M. R. James)'),
+
+      /* ---- Acts of John (slot 31). nta-aj-lycomedes … nta-aj-death. M. R. James 1924: the Greek sequence, Latin
+         supplements, and two detached fragments read from unproofread Wikisource scans (printed pp. 264–266). None pinned. ---- */
+      ev('nta-aj-lycomedes', 31, 'nta', 'Lycomedes and Cleopatra', 'John comes from Miletus to Ephesus. Lycomedes and his wife Cleopatra are restored. The portrait Lycomedes commissions belongs to the story, not to any surviving object.', 'Acts of John 18–29 (M. R. James)'),
+      ev('nta-aj-artemis', 31, 'nta', 'The theatre and the temple of Artemis', 'At Ephesus, a healing in the theatre; the temple of Artemis collapses, and its priest is revived. John puts off leaving for Smyrna. One manuscript’s four years at Smyrna, with Bucolus and Polycarp, is a variant and is not added.', 'Acts of John 30–47 (M. R. James)'),
+      ev('nta-aj-parricide', 31, 'nta', 'The young man and his father', 'Outside Ephesus, a young man’s murdered father is revived. John’s rejection of the young man’s self-castration is part of the explanation. An invitation to Smyrna is not a completed journey.', 'Acts of John 48–55 (M. R. James)'),
+      ev('nta-aj-inn', 31, 'nta', 'The inn and the bugs', 'John sets out toward Ephesus; a manuscript heading reported by James names the route as Laodicea to Ephesus. At an unnamed inn the bugs obey, and the household of Andronicus appears. The gap at 55–58 is not filled.', 'Acts of John 58–62 (M. R. James)'),
+      ev('nta-aj-drusiana', 31, 'nta', 'Drusiana', 'Drusiana, wife of Andronicus, is in the tomb when Callimachus attempts to abuse her body; Fortunatus and a serpent are part of the scene. Revivals follow, and Fortunatus later dies. The tomb belongs to the story, with no modern location.', 'Acts of John 63–86 (M. R. James)'),
+      ev('nta-aj-christ-discourse', 31, 'nta', 'John’s account of Jesus', 'John tells of a Christ who appears in changing forms, of a hymn and dance, of Gennesaret, and of a vision in a cave on the Mount of Olives while the crucifixion takes place at Jerusalem. The cross of light, distinct from the wooden cross, is this narrator’s teaching, not harmonized with the gospels.', 'Acts of John 87–105 (M. R. James)'),
+      ev('nta-aj-latin-supplement', 31, 'nta', 'The Latin supplements', 'Craton and the gems; John goes from Ephesus to Pergamum; Atticus and Eugenius and their wealth; Stacteus; the poison trial with Aristodemus. Latin XIX is the editor’s summary, and a later sentence about founding churches is marked separately.', 'Acts of John, Latin XIV–XXI (M. R. James)'),
+      ev('nta-aj-oxyrhynchus', 31, 'nta', 'A papyrus fragment', 'Scraps of a papyrus: an unnamed bridge over a deep river, a soldier’s apparition, Zeuxis and the eucharist, and a letter from an emperor. The page order and the emperor’s restored name are uncertain. These scraps do not establish a trial at Rome or an exile on Patmos.', 'P. Oxy. 850 (M. R. James pp. 264–265; Wikisource scan, unproofread)'),
+      ev('nta-aj-titus', 31, 'nta', 'Quotations in Titus', 'Two quoted passages: a demon’s speech, and an excerpt on chastity at a wedding. The name Verus for Dyrus is the editor’s emendation, and placing these before Ephesus is conjecture. The 31 clauses James left out as corrupt are not read.', 'Quotations b–c (M. R. James p. 266; Wikisource scan, unproofread)'),
+      ev('nta-aj-death', 31, 'nta', 'John’s death', 'John says farewell and shares communion; a trench is dug for a tomb outside a gate, and he dies. Other witnesses end with an empty tomb, manna or sandals; they are alternatives and are not merged.', 'Acts of John 106–115 (M. R. James)'),
+
+      /* ---- Acts of Andrew (slot 32). nta-aa-epitome-route … nta-aa-martyrdom. M. R. James 1924: an abstract of Gregory's
+         epitome (mediated), the Vatican Gr. 808 fragment, quotations, and a martyrdom James assembles from several
+         witnesses. The original Acts is lost. None pinned. ---- */
+      ev('nta-aa-epitome-route', 32, 'nta', 'Andrew’s travels, in Gregory’s epitome', 'Known through Gregory’s epitome as James abstracts it: Andrew goes by Amasea, Sinope, Nicaea, Nicomedia, the Hellespont, Byzantium, Thrace, Perinthus, Philippi and Thessalonica, then to Patrae; Corinth, Lacedaemon and Megara come in later episodes. Episodes name Exoos, Medias and Philomedes, Nicolaus, Virinus, a voyage of twelve days, Lesbius, Callisto and Trophima, Philopator and Sostratus, and Stratocles and Alcman, and end with the martyrdom and the reception at his tomb. These are the epitome’s claims, not the original itinerary, and its cures are the story’s. The Mermidona story comes from the Andrew and Matthew tradition and is not counted as part of the original Acts.', 'Acts of Andrew, Gregory’s epitome 1–38 (M. R. James’s abstract)'),
+      ev('nta-aa-prison', 32, 'nta', 'Andrew in prison', 'In the surviving fragment, Maximilla, Iphidamia and Stratocles visit Andrew while Aegeates presses his wife. Andrew’s comparison with Adam and Eve is teaching, not descent or rebirth. The fragment breaks off before the discourse ends.', 'Acts of Andrew, Vatican Gr. 808 §§1–18 (M. R. James)'),
+      ev('nta-aa-detached', 32, 'nta', 'Quotations by Titus and Evodius', 'Passages on cousin marriage, and on Maximilla and Euclia, each with its own witness’s qualifications.', 'Acts of Andrew, quotations (M. R. James)'),
+      ev('nta-aa-martyrdom', 32, 'nta', 'Andrew’s death at Patrae', 'On the seashore at Patrae Andrew is bound to a cross and refuses release; Maximilla buries him, and Aegeates dies. The witnesses give different crowd sizes, and no X-shaped cross is stated here. The feast on 30 November is a later observance, not a recovered date. James assembles the account from several witnesses; the full original is lost.', 'Acts of Andrew, martyrdom (M. R. James, from several witnesses)'),
+
+      /* ---- Acts of Thomas (slot 33). nta-at-sale-wedding … nta-at-death-relics. M. R. James 1924; Greek and Syriac
+         readings differ section by section. India is an ancient name, not a modern country. None pinned. ---- */
+      ev('nta-at-sale-wedding', 33, 'nta', 'Thomas is sold', 'At Jerusalem the apostles’ fields of mission are allotted. Jesus sells Thomas to Abbanes, envoy of King Gundaphorus; they sail to Andrapolis, whose location is unresolved, where a royal wedding ends in an ascetic conversion. Calling Jesus Thomas’s brother is the work’s literary claim.', 'Acts of Thomas 1–16 (M. R. James)'),
+      ev('nta-at-palace', 33, 'nta', 'The palace in heaven', 'Gundaphorus commissions a palace; Thomas gives the money as alms. Gad, the king’s brother, sees a palace in heaven. The months from Dius to Xanthicus are the story’s own, not converted to dates.', 'Acts of Thomas 17–29 (M. R. James)'),
+      ev('nta-at-serpent-colt', 33, 'nta', 'The serpent and the colt', 'On an unnamed road, a serpent and a youth; a colt speaks and carries Thomas to the city gate. The animals’ descent from biblical animals is the story’s myth.', 'Acts of Thomas 30–41 (M. R. James)'),
+      ev('nta-at-woman', 33, 'nta', 'A woman freed', 'A woman is freed from a demon and initiated. A river appears only in a Syriac variant and is not added.', 'Acts of Thomas 42–50 (M. R. James)'),
+      ev('nta-at-murder', 33, 'nta', 'The murdered woman', 'A murder is condemned; the murdered woman is raised at the inn and tells of the punishments she saw. Her journey is a vision, not a place on Earth, and §§55–56 differ or are absent in the Syriac.', 'Acts of Thomas 51–61 (M. R. James)'),
+      ev('nta-at-siphor', 33, 'nta', 'Siphor the captain', 'Siphor asks help for his wife and daughter. A journey by chariot, wild asses, and the arrival at the captain’s house, where they are healed. The city in India is not named.', 'Acts of Thomas 62–81 (M. R. James)'),
+      ev('nta-at-mygdonia', 33, 'nta', 'Mygdonia', 'Mygdonia, wife of Charisius, hears the teaching and resists coercion. An arrest under King Misdaeus and a release follow; her household is initiated with her nurse Narcia (Marcia in some witnesses), and Siphor’s family is baptized. Charisius is the king’s kinsman; the exact relation is not inferred.', 'Acts of Thomas 82–107, 114–133 (M. R. James)'),
+      ev('nta-at-hymn', 33, 'nta', 'The Hymn of the Soul', 'A poem set into the work: a prince goes from the East by Maishan and Babylon to Egypt, and returns by Sarbug and Mesene. A symbolic journey, not Thomas travelling to Egypt; what the names refer to is uncertain. James leaves out the Syriac Song of Praise that follows.', 'Acts of Thomas 108–113 (M. R. James)'),
+      ev('nta-at-tertia', 33, 'nta', 'Tertia and the king', 'Tertia, wife of Misdaeus, learns from Mygdonia and Thomas. The king strikes Thomas, and Iuzanes, the king’s son, questions him; heated plates and a flood follow. The court and prison are not named.', 'Acts of Thomas 134–143 (M. R. James)'),
+      ev('nta-at-initiation', 33, 'nta', 'Iuzanes and Mnesara', 'Iuzanes and his wife Mnesara (he is 21 and seven years married, by the story’s count) are healed and initiated at their house, and Thomas returns to the prison. In some manuscripts the prayer stands after §167. Narcia is a nurse, not anyone’s mother.', 'Acts of Thomas 144–163 (M. R. James)'),
+      ev('nta-at-death-relics', 33, 'nta', 'Thomas’s death', 'A mile outside the city the king hands Thomas to soldiers, who take him up an unnamed mountain, where four of them spear him. He is buried in a royal tomb. Siphor becomes a presbyter and Iuzanes a deacon; the women persist. His remains are carried to Mesopotamia; Misdaeus’s son is healed with dust from the tomb, and the king converts. These passages name no Mylapore, Chennai or Edessa, and give no year.', 'Acts of Thomas 164–170 (M. R. James)'),
+
+      /* ---- Apocalypse of Peter (slot 34). nta-ap-akhmim … nta-ap-sibylline-comparison. M. R. James 1924. The Greek
+         (Akhmim) and Ethiopic witnesses differ in order and are not merged. None pinned; the westward commission is not Rome. ---- */
+      ev('nta-ap-akhmim', 34, 'nta', 'The Akhmim fragment', 'On an unnamed mountain, radiant figures appear, and the realms of the blessed and of the punished are shown. Settings of a vision, not places on Earth.', 'Apocalypse of Peter, Akhmim Greek B1–34 (M. R. James)'),
+      ev('nta-ap-ethiopic', 34, 'nta', 'The Ethiopic text', 'Set on the Mount of Olives: resurrection, judgment and punishments, Acherusia and Elysium, paradise, Moses and Elijah, and an ascent in a cloud. Its order differs from the Greek; the scenes are not merged, and the Greek fragment’s mountain is not renamed. A command to go west does not by itself mean Rome.', 'Apocalypse of Peter, Ethiopic D (M. R. James)'),
+      ev('nta-ap-excerpts', 34, 'nta', 'Quotations and excerpts', 'Quotations by early writers and a Bodleian leaf; separately, selected later Ethiopic excerpts, which are not a full continuation.', 'Apocalypse of Peter A, C and later Ethiopic excerpts (M. R. James)'),
+      ev('nta-ap-sibylline-comparison', 34, 'nta', 'A Sibylline parallel', 'A passage from a separate Sibylline work, printed by James for comparison; it is not another chapter of this apocalypse. Whether the apocalypse teaches a final restoration of all is an editors’ debate. Its lists of punishments are the work’s own, not judgments endorsed here.', 'M. R. James, appendix II, lines 190–338'),
+
+      /* ---- Apocalypse of Paul (slot 35). nta-apa-discovery … nta-apa-paradise. M. R. James 1924 on Wikisource, the
+         Latin-based text; not the Coptic Apocalypse of Paul from Nag Hammadi. Every realm is visionary; none pinned,
+         and the heavenly city called Jerusalem is not the Jerusalem anchor. ---- */
+      ev('nta-apa-discovery', 35, 'nta', 'The box at Tarsus', 'The work’s own story of being found in a box at Tarsus, with copies for the emperor and for Jerusalem. A framing story, not an authenticated discovery.', 'Apocalypse of Paul 1–2 (M. R. James)'),
+      ev('nta-apa-souls', 35, 'nta', 'Creation’s appeal and the souls', 'Creation makes its appeals, angels report, and souls leave their bodies and are judged. Michael appears, and an angel named Tartaruchus in some versions is Temeluchus in others.', 'Apocalypse of Paul 3–18 (M. R. James)'),
+      ev('nta-apa-promised-land', 35, 'nta', 'The third heaven and the promised land', 'Paul is taken to the third heaven and paradise, then down through the levels of the cosmos to the Ocean, the promised land, the Acherusian lake and the city of Christ.', 'Apocalypse of Paul 19–24 (M. R. James)'),
+      ev('nta-apa-city', 35, 'nta', 'The city of Christ', 'Rivers named Phison, Euphrates, Geon and Tigris flow with honey, milk, oil and wine, and David’s altar stands in the city, here called Jerusalem. A vision: not the real rivers, and not the earthly city.', 'Apocalypse of Paul 25–30 (M. R. James)'),
+      ev('nta-apa-punishment', 35, 'nta', 'The places of punishment', 'In the western regions Paul sees punishments by category, among them clergy and lenders at interest. The polemic on confession and sexuality differs by witness: a Latin paragraph in §39 is absent from the other versions. Michael and Christ intercede and a Sunday rest is granted; this is not a final salvation of all.', 'Apocalypse of Paul 31–44 (M. R. James)'),
+      ev('nta-apa-paradise', 35, 'nta', 'Paradise', 'In paradise: Adam and Eve, Mary, the patriarchs and prophets, Noah, Elijah and Elisha. The text ends abruptly. A Syriac ending returns to Tarsus; the Coptic continuation is the editor’s summary and excerpts, and its Mount of Olives and 29 June are not facts about Paul.', 'Apocalypse of Paul 45–51; appendices kept separate (M. R. James)'),
     ],
     codex: [
       {
@@ -927,6 +994,61 @@
           ref('Tyre (Acts of Paul)', 29, 'nta', 'Acts of Paul: fragments set at Tyre (V).'),
           ref('The mines', 29, 'nta', 'Acts of Paul: the mines of episode VI. Not located.'),
           ref('Ephesus (Acts of Paul)', 29, 'nta', 'Acts of Paul: the setting of episode VIII, known only from quotations by later writers.'),
+          /* ---- Acts of Peter places (nta-ape-*). Rome itself is the anchor; these settings have no coordinates. ---- */
+          ref('The Tiber (Acts of Peter)', 30, 'nta', 'Acts of Peter: the setting of Paul’s departure from Rome (I–III).'),
+          ref('Spain (Acts of Peter)', 30, 'nta', 'Acts of Peter: where Paul is going as he leaves Rome (I–III).'),
+          ref('Aricia', 30, 'nta', 'Acts of Peter: Simon comes from Aricia to Rome (IV), and after his fall goes by Aricia to Terracina (XXXII–XLI).'),
+          ref('Terracina', 30, 'nta', 'Acts of Peter: where Simon goes after his fall at Rome (XXXII–XLI).'),
+          ref('Caesarea (Acts of Peter)', 30, 'nta', 'Acts of Peter: on Peter’s route from Jerusalem to Puteoli (IV–VI). Which Caesarea is meant is not settled here.'),
+          ref('Puteoli', 30, 'nta', 'Acts of Peter: Ariston meets Peter here; Peter declines to stay (IV–VI).'),
+          ref('The house of Narcissus', 30, 'nta', 'Acts of Peter: where Peter goes in Rome (IV–VI). Not located.'),
+          ref('The house of Marcellus', 30, 'nta', 'Acts of Peter: Marcellus’s house in Rome, where Peter teaches and heals (VII–XXXI). Not located.'),
+          ref('The Forum (Acts of Peter)', 30, 'nta', 'Acts of Peter: the contest with Simon is announced (VII–XVI) and held there (XVIII–XXXI). No exact site.'),
+          ref('The gate at Neapolis and the cave', 30, 'nta', 'Acts of Peter: settings of Peter’s recollection of Eubula in Judaea (XVII). Both are uncertain.'),
+          /* ---- Acts of John places (nta-aj-*). Kept apart from same-named places in other works; coordinates null. ---- */
+          ref('Miletus', 31, 'nta', 'Acts of John: John comes from Miletus to Ephesus (18–29).'),
+          ref('Ephesus (Acts of John)', 31, 'nta', 'Acts of John: the main setting. The theatre and the temple of Artemis (30–47), the young man’s father revived outside the city (48–55) and the household of Andronicus and Drusiana’s tomb (58–86). Kept apart from the Acts of Paul entry.'),
+          ref('Smyrna', 31, 'nta', 'Acts of John: John puts off going (30–47) and is invited (48–55); neither is a completed journey. One manuscript’s four years at Smyrna is a variant and is not added.'),
+          ref('Laodicea (Acts of John)', 31, 'nta', 'Acts of John: named only in a manuscript heading reported by James, as the start of the journey to Ephesus (58–62).'),
+          ref('The inn (Acts of John)', 31, 'nta', 'Acts of John: the unnamed inn where the bugs obey (58–62).'),
+          ref('Drusiana’s tomb', 31, 'nta', 'Acts of John: the tomb of the Drusiana story (63–86). No modern location.'),
+          ref('Pergamum', 31, 'nta', 'Acts of John: John goes from Ephesus to Pergamum in the Latin supplements (Latin XIV–XXI).'),
+          ref('The bridge over a deep river', 31, 'nta', 'Acts of John: in a papyrus fragment (P. Oxy. 850). The river is not named, and nothing is located.'),
+          ref('Gennesaret (Acts of John)', 31, 'nta', 'Acts of John: named in John’s account of Jesus (87–105).'),
+          ref('The cave on the Mount of Olives (Acts of John)', 31, 'nta', 'Acts of John: where John has a vision while the crucifixion takes place at Jerusalem (87–105). Not merged with the Mount of Olives of other works.'),
+          ref('John’s grave outside the gate', 31, 'nta', 'Acts of John: the trench outside a gate where John dies (106–115). The empty-tomb, manna and sandals endings are alternatives.'),
+          /* ---- Acts of Andrew places (nta-aa-*): the stops are claims of Gregory’s epitome, not a reconstructed original
+             itinerary. Kept apart from same-named places in other works; coordinates null. ---- */
+          ref('Amasea', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Sinope', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Nicaea', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Nicomedia', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('The Hellespont', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Byzantium', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Thrace', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Perinthus', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Philippi', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route.'),
+          ref('Thessalonica', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: on Andrew’s route, before Patrae.'),
+          ref('Patrae', 32, 'nta', 'Acts of Andrew: where Andrew’s route in the epitome leads, and where he dies on the seashore, bound to a cross (martyrdom). No execution site is located.'),
+          ref('Corinth (Acts of Andrew)', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: a setting of later episodes (25–30).'),
+          ref('Megara', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: a setting of later episodes (25–30).'),
+          ref('Lacedaemon (Acts of Andrew)', 32, 'nta', 'Acts of Andrew, in Gregory’s epitome: named in later episodes. Kept apart from the Sparta entry of 1–2 Maccabees.'),
+          ref('Mermidona', 32, 'nta', 'The epitome’s Mermidona story comes from the Andrew and Matthew tradition; it is not counted as part of the original Acts of Andrew.'),
+          /* ---- Acts of Thomas places (nta-at-*). The Hymn of the Soul’s names belong to its symbolic journey and get no
+             place entries. Coordinates null. ---- */
+          ref('Andrapolis', 33, 'nta', 'Acts of Thomas: the city of the royal wedding, reached by sea (1–16). Its location is unresolved.'),
+          ref('India (Acts of Thomas)', 33, 'nta', 'Acts of Thomas: the land of Thomas’s mission. An ancient designation, not the borders of a modern country.'),
+          ref('The unnamed city, court and prison (Acts of Thomas)', 33, 'nta', 'Acts of Thomas: the city of the Siphor stories is not named (62–81), nor are King Misdaeus’s court and prison (82–170).'),
+          ref('The inn (Acts of Thomas)', 33, 'nta', 'Acts of Thomas: where the murdered woman is raised (51–61).'),
+          ref('The captain’s house', 33, 'nta', 'Acts of Thomas: Siphor’s house, where his wife and daughter are healed (62–81).'),
+          ref('The house of Iuzanes and Mnesara', 33, 'nta', 'Acts of Thomas: where they are healed and initiated (144–163).'),
+          ref('The mountain of Thomas’s death', 33, 'nta', 'Acts of Thomas: an unnamed mountain outside the city, where soldiers spear Thomas (164–170).'),
+          ref('The royal tomb (Acts of Thomas)', 33, 'nta', 'Acts of Thomas: where Thomas is buried; dust from it heals the king’s son (164–170). These passages name no modern site.'),
+          ref('Mesopotamia (Acts of Thomas)', 33, 'nta', 'Acts of Thomas: where his remains are carried (164–170). No city is named.'),
+          /* ---- Apocalypse of Peter and Apocalypse of Paul places (nta-ap-*, nta-apa-*). Their realms are under
+             Visionary and otherworldly settings. ---- */
+          ref('The Mount of Olives (Apocalypse of Peter)', 34, 'nta', 'Apocalypse of Peter, Ethiopic text: the setting of the revelation. Not merged with the Greek fragment’s unnamed mountain, or with the Mount of Olives of other works.'),
+          ref('Tarsus (Apocalypse of Paul)', 35, 'nta', 'Apocalypse of Paul: where the work says it was found in a box (1–2); a Syriac ending returns there. Kept apart from the Tarsus of 2 Maccabees.'),
         ],
       },
       {
@@ -989,6 +1111,12 @@
           ref('The figs', 22, 'rp', '4 Baruch: the figs that stay fresh become a sign of hope for the body’s restoration (6:5–10).'),
           ref('Sayings without places', 26, 'nta', 'Gospel of Thomas: its language of kingdom, light and Paradise does not describe places on a map. Sayings 22 and 114 speak of male and female in different ways; each is left as its own saying, not merged into one teaching.'),
           ref('The cosmos and its rulers', 28, 'nta', 'Gospel of Judas: a teaching on the spirit, the luminaries, Adamas, the cosmos and its rulers, Adam and Eve and the stars (pp. 47–55). Some names in the list of rulers are uncertain or restored. No star positions follow from it.'),
+          /* Acts of John, Acts of Thomas and the two apocalypses (slots 31–35). */
+          ref('The hymn and the dance', 31, 'nta', 'Acts of John: a hymn with a dance, in John’s account of Jesus (87–105).'),
+          ref('The cross of light', 31, 'nta', 'Acts of John: the narrator’s teaching of a cross of light, distinct from the wooden cross (87–105). His claim, not harmonized with the gospels.'),
+          ref('The Hymn of the Soul (theme)', 33, 'nta', 'Acts of Thomas: a poem of a prince’s journey from the East to Egypt and back (108–113), read as symbol. What its place names refer to is uncertain.'),
+          ref('A restoration of all?', 34, 'nta', 'Apocalypse of Peter: whether it teaches a final restoration of everyone is debated by editors. The Sibylline parallel James prints is a separate work.'),
+          ref('Sunday rest', 35, 'nta', 'Apocalypse of Paul: after Michael and Christ intercede, a rest on Sunday is granted (31–44). Not a final salvation of all.'),
         ],
       },
       {
@@ -1063,6 +1191,23 @@
           ref('Thecla’s journeys', 29, 'nta', 'Acts of Paul: Iconium, the roadside tomb, Antioch, then Myra to find Paul, back to Iconium, and on to Seleucia (II). The mountain and Rome endings are variants and are not added.'),
           ref('Paul leaves Myra', 29, 'nta', 'Acts of Paul: from Myra toward Sidon (III).'),
           ref('The letter carriers', 29, 'nta', 'Acts of Paul: the journey of Threptus and Eutychus belongs to the letter exchange with the Corinthians (VII). No route is given.'),
+          /* Acts of Peter, John, Andrew and Thomas, and the two apocalypses (slots 30–35): ordered as stated; no lines drawn. */
+          ref('Paul sets out for Spain', 30, 'nta', 'Acts of Peter: from Rome, by the Tiber, toward Spain (I–III).'),
+          ref('Simon comes to Rome', 30, 'nta', 'Acts of Peter: from Aricia to Rome (IV).'),
+          ref('Peter’s voyage to Rome', 30, 'nta', 'Acts of Peter: Jerusalem, Caesarea, Puteoli, Rome (IV–VI). The six days and nights are the story’s count.'),
+          ref('Simon after his fall', 30, 'nta', 'Acts of Peter: from Rome by Aricia to Terracina (XXXII–XLI).'),
+          ref('Peter leaves Rome and returns', 30, 'nta', 'Acts of Peter: Peter leaves the city, sees Jesus in a vision and returns (XXXII–XLI). No road is given.'),
+          ref('John comes to Ephesus', 31, 'nta', 'Acts of John: from Miletus to Ephesus (18–29).'),
+          ref('John sets out toward Ephesus', 31, 'nta', 'Acts of John: the text has John set out toward Ephesus; a manuscript heading gives Laodicea as the start (58–62).'),
+          ref('Ephesus to Pergamum', 31, 'nta', 'Acts of John, Latin supplements: from Ephesus to Pergamum.'),
+          ref('Andrew’s route in the epitome', 32, 'nta', 'Acts of Andrew, Gregory’s epitome: Amasea, Sinope, Nicaea, Nicomedia, the Hellespont, Byzantium, Thrace, Perinthus, Philippi, Thessalonica, then Patrae, with a voyage of twelve days (21) and later episodes at Corinth, Megara and Lacedaemon. The epitome’s claims, not the original itinerary.'),
+          ref('Thomas sails to Andrapolis', 33, 'nta', 'Acts of Thomas: from Jerusalem, sold to Abbanes, by sea to Andrapolis (1–16). Its location is unresolved.'),
+          ref('The chariot journey', 33, 'nta', 'Acts of Thomas: by chariot to the captain’s house, with the wild asses (62–81). The city is not named.'),
+          ref('Thomas’s last walk', 33, 'nta', 'Acts of Thomas: a mile out of the city, then up an unnamed mountain (164–170).'),
+          ref('Thomas’s remains carried away', 33, 'nta', 'Acts of Thomas: his remains are carried to Mesopotamia (164–170). No route or city is given.'),
+          ref('The prince’s journey (Hymn of the Soul)', 33, 'nta', 'Acts of Thomas: a symbolic journey in the poem, from the East by Maishan and Babylon to Egypt, and back by Sarbug and Mesene (108–113). Not a journey of Thomas.'),
+          ref('The ascent in the cloud', 34, 'nta', 'Apocalypse of Peter, Ethiopic text: the closing ascent in a cloud. A visionary journey.'),
+          ref('Paul’s journey through the heavens', 35, 'nta', 'Apocalypse of Paul: to the third heaven and paradise, down through the cosmic levels to the Ocean, the promised land, the Acherusian lake and the city of Christ, then to the western places of punishment, and to paradise (19–51). A visionary journey.'),
         ],
       },
       {
@@ -1092,6 +1237,18 @@
           ref('Gehenna', 21, 'rp', 'Ascension of Isaiah: Isaiah foretells that Beliar will be defeated and taken to Gehenna (4:14).'),
           ref('The soul’s ascent (Gospel of Mary)', 27, 'nta', 'Gospel of Mary: an account of a soul’s ascent, after the lost pages. Its beginning is lost, so the soul is not identified, and no place on Earth is meant.'),
           ref('The mountain, the cloud and the incorruptible realm', 28, 'nta', 'Gospel of Judas: settings of the visions and teaching, with no place on Earth. The house in Judas’s vision is a vision, not a building.'),
+          /* Acts of Thomas and the apocalypses of Peter and Paul (slots 33–35). */
+          ref('The palace in heaven', 33, 'nta', 'Acts of Thomas: the palace Gad, the king’s brother, sees in heaven (17–29).'),
+          ref('The punishments the woman saw', 33, 'nta', 'Acts of Thomas: the places of punishment the raised woman describes (51–61). §§55–56 differ or are absent in the Syriac.'),
+          ref('The mountain and the realms (Akhmim fragment)', 34, 'nta', 'Apocalypse of Peter, Greek: an unnamed mountain, and the realms of the blessed and of the punished (B1–34).'),
+          ref('Acherusia and Elysium', 34, 'nta', 'Apocalypse of Peter, Ethiopic text: named in the scenes after judgment. Not places on Earth.'),
+          ref('Paradise (Apocalypse of Peter)', 34, 'nta', 'Apocalypse of Peter, Ethiopic text: the paradise shown before the ascent.'),
+          ref('The third heaven (Apocalypse of Paul)', 35, 'nta', 'Apocalypse of Paul: where Paul is first taken (19–24).'),
+          ref('The Ocean and the promised land', 35, 'nta', 'Apocalypse of Paul: reached by descending through the levels of the cosmos (19–24).'),
+          ref('The Acherusian lake', 35, 'nta', 'Apocalypse of Paul: on the way to the city of Christ (19–24).'),
+          ref('The city of Christ', 35, 'nta', 'Apocalypse of Paul: with four rivers of honey, milk, oil and wine bearing the names Phison, Euphrates, Geon and Tigris, and David’s altar; called Jerusalem (25–30). Not the earthly city or the real rivers.'),
+          ref('The western places of punishment', 35, 'nta', 'Apocalypse of Paul: punishments by category (31–44).'),
+          ref('Paradise (Apocalypse of Paul)', 35, 'nta', 'Apocalypse of Paul: where Paul sees Adam and Eve, Mary, the patriarchs and prophets (45–51).'),
         ],
       },
       {
@@ -1235,6 +1392,46 @@
           ref('Eubula and Artemilla', 29, 'nta', 'Named in the Ephesus quotations (VIII).', 'Acts of Paul'),
           ref('Cleobius and Myrte', 29, 'nta', 'Give the prophecy about Rome (IX).', 'Acts of Paul'),
           ref('People of the Roman martyrdom', 29, 'nta', 'Patroclus, Nero, Longus and Cestus; Titus and Luke at the grave (X).', 'Acts of Paul'),
+          /* Acts of Peter people (nta-ape-*), scoped to slot 30. Namespaced; not merged across works. */
+          ref('Peter (Acts of Peter)', 30, 'nta', 'Comes to Rome from Jerusalem, contends with Simon, leaves the city and returns after a vision, and is crucified head downward (IV–XLI). Kept apart from Peter in other works.', 'Acts of Peter'),
+          ref('Simon (Acts of Peter)', 30, 'nta', 'Peter’s opponent: comes from Aricia to Rome, contends in the Forum, falls, and goes to Terracina.', 'Acts of Peter'),
+          ref('Paul (Acts of Peter)', 30, 'nta', 'Leaves Rome for Spain at the work’s opening (I–III). This work’s own account, kept apart from the Acts of Paul.', 'Acts of Peter'),
+          ref('Rufina', 30, 'nta', 'Named in the episode as Paul leaves Rome (I–III).', 'Acts of Peter'),
+          ref('Marcellus', 30, 'nta', 'Taught and reconciled by Peter (VII–XVI); Peter teaches and heals in his household; he buries Peter (XXXII–XLI).', 'Acts of Peter'),
+          ref('Theon and Ariston', 30, 'nta', 'Theon is baptized during the voyage; Ariston meets Peter at Puteoli (IV–VI).', 'Acts of Peter'),
+          ref('Narcissus', 30, 'nta', 'Peter goes to his house in Rome (IV–VI).', 'Acts of Peter'),
+          ref('Eubula', 30, 'nta', 'In Peter’s recollection of Judaea, with Simon, and Agrippinus or Pompeius (XVII).', 'Acts of Peter'),
+          ref('Nicostratus and Chryse', 30, 'nta', 'Nicostratus is among those raised in the Forum contest; Chryse makes a gift (XVIII–XXXI).', 'Acts of Peter'),
+          ref('Agrippa (Acts of Peter)', 30, 'nta', 'The story’s prefect at Peter’s death (XXXII–XLI). Not assumed to be a Herodian king.', 'Acts of Peter'),
+          ref('Peter’s daughter and Ptolemaeus', 30, 'nta', 'Coptic fragment: the daughter is unnamed; identifying her as Petronilla is not secure.', 'Acts of Peter'),
+          ref('The gardener’s daughter', 30, 'nta', 'Known from later testimony; not Peter’s daughter.', 'Acts of Peter'),
+          /* Acts of John people (nta-aj-*), scoped to slot 31. */
+          ref('John (Acts of John)', 31, 'nta', 'The apostle of these stories, from Miletus to Ephesus and to his death outside a gate. Kept apart from John in other works.', 'Acts of John'),
+          ref('Lycomedes and Cleopatra', 31, 'nta', 'A married couple at Ephesus, restored (18–29). Lycomedes commissions a portrait.', 'Acts of John'),
+          ref('Andronicus and Drusiana', 31, 'nta', 'Drusiana is Andronicus’s wife; the tomb story and revivals (58–86).', 'Acts of John'),
+          ref('Callimachus and Fortunatus', 31, 'nta', 'Callimachus attempts to abuse Drusiana’s body; Fortunatus is part of the scene and later dies (63–86).', 'Acts of John'),
+          ref('People of the Latin supplements', 31, 'nta', 'Craton; Atticus and Eugenius; Stacteus; Aristodemus, of the poison trial (Latin XIV–XXI).', 'Acts of John'),
+          ref('Zeuxis', 31, 'nta', 'In a papyrus fragment, with the eucharist (P. Oxy. 850).', 'Acts of John'),
+          ref('Verus (Dyrus)', 31, 'nta', 'Named in a quotation; Verus is the editor’s emendation of Dyrus.', 'Acts of John'),
+          /* Acts of Andrew people (nta-aa-*), scoped to slot 32. */
+          ref('Andrew (Acts of Andrew)', 32, 'nta', 'The apostle of the epitome’s travels and of the death at Patrae. Kept apart from Andrew in other works.', 'Acts of Andrew'),
+          ref('Maximilla', 32, 'nta', 'Visits Andrew in prison and buries him; named with Euclia in the quotations.', 'Acts of Andrew'),
+          ref('Aegeates', 32, 'nta', 'Presses his wife while Andrew is in prison; his death is told in the martyrdom account.', 'Acts of Andrew'),
+          ref('Iphidamia and Stratocles', 32, 'nta', 'Visit Andrew in prison with Maximilla; Stratocles also appears with Alcman in the epitome.', 'Acts of Andrew'),
+          ref('People of the epitome', 32, 'nta', 'Exoos; Medias and Philomedes; Nicolaus; Virinus; Lesbius; Callisto and Trophima; Philopator and Sostratus; Alcman (Gregory’s epitome).', 'Acts of Andrew'),
+          /* Acts of Thomas people (nta-at-*), scoped to slot 33. */
+          ref('Thomas (Acts of Thomas)', 33, 'nta', 'Sold by Jesus to Abbanes, teaches in India, and is speared on a mountain. Calling him Jesus’s brother is the work’s literary claim. Kept apart from the Thomas of the two gospels.', 'Acts of Thomas'),
+          ref('Abbanes', 33, 'nta', 'Envoy of King Gundaphorus, who buys Thomas (1–16).', 'Acts of Thomas'),
+          ref('Gundaphorus and Gad', 33, 'nta', 'The king who commissions the palace, and his brother, who sees the palace in heaven (17–29).', 'Acts of Thomas'),
+          ref('Siphor', 33, 'nta', 'A captain who asks help for his wife and daughter (62–81); his family is baptized, and he becomes a presbyter (164–170).', 'Acts of Thomas'),
+          ref('Mygdonia and Charisius', 33, 'nta', 'Mygdonia, Charisius’s wife, hears the teaching and resists coercion; Charisius is the king’s kinsman, degree not stated (82–133).', 'Acts of Thomas'),
+          ref('Narcia (Marcia)', 33, 'nta', 'Mygdonia’s nurse, initiated with her household. A nurse, not a mother.', 'Acts of Thomas'),
+          ref('Misdaeus and Tertia', 33, 'nta', 'The king and his wife; Tertia learns from Mygdonia and Thomas, and the king finally converts (134–170).', 'Acts of Thomas'),
+          ref('Iuzanes and Mnesara', 33, 'nta', 'The king’s son and his wife; healed and initiated, he becomes a deacon (144–170).', 'Acts of Thomas'),
+          /* Apocalypse of Peter and Apocalypse of Paul people (nta-ap-*, nta-apa-*). */
+          ref('Moses and Elijah (Apocalypse of Peter)', 34, 'nta', 'Appear in the Ethiopic text before the ascent in the cloud.', 'Apocalypse of Peter'),
+          ref('Paul (Apocalypse of Paul)', 35, 'nta', 'The seer of this work, taken through the heavens and the places of punishment. Kept apart from Paul of the Acts; this is not the Coptic Apocalypse of Paul from Nag Hammadi.', 'Apocalypse of Paul'),
+          ref('Michael and Tartaruchus', 35, 'nta', 'Michael appears and intercedes; the angel Tartaruchus is Temeluchus in other versions (3–44).', 'Apocalypse of Paul'),
         ],
       },
     ],
