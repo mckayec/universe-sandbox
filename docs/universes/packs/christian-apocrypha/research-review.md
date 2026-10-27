@@ -54,3 +54,14 @@ Planned units (one or two per run, each ending in a pushed checkpoint):
 6. Screenshots (3840×2160, 1440×900, 1280×800, 390×844), checks, PR, build-report.md, stage `built`.
 
 **Checkpoint 1 (2026-10-27):** research review written; no code yet. Next: unit 1 on branch `pack/christian-apocrypha`.
+
+## Build checkpoint 1–2 (2026-10-27)
+
+Branch `pack/christian-apocrypha` at `aebe6d255888b604158d586e4098ce1e39030bbd` (no PR yet; opened at handoff).
+
+- **Unit 1 done (RR01, RR05, RR10):** engine compact work picker for packs with more than 12 books (`layers.js` helpers `usePicker`/`pickerGroups`/`stepBook`/`renderBookPicker`, engine wiring, CSS; badge rows over 12 collapse to "first … last N"; PACK_FORMAT §6 documented; unit tests). Pack skeleton: 39 books from work-gates.csv grouped under five layers, cumulative gating, Earth start, the five geography-reuse anchors (location-only descriptions), coverage codex incl. Meqabyan "coverage incomplete". `tests/atlas-apocrypha.test.ts` asserts the 39 slots match work-gates.csv, that no XO-U01–U11 ID or claim text reaches the pack, and that only the five anchors are pinned.
+- **Unit 2 started:** Tobit (slot 1) and Judith (slot 2): 30 Chronicle entries (dc-tob-01…14, dc-jdt-01…16), 9 unpinned places, 8 journeys as ordered text (no lines: only Jerusalem is pinned among their stops), 14 work-scoped people. Copy is paraphrased from the registry rows and dossier rows; details not in those rows were removed on self-review (e.g. which fish organs, Achior's title).
+- **Checks:** `pnpm check` 87/87; `pnpm test:pages` 12 pages × 2 viewports; `pnpm test:browser` passed; validator: no issues or warnings for the pack. Picker exercised in Chromium at 1440×900 and 390×844 (select, next/prev, stored book), no console errors.
+- **Known layout items for later units:** Chronicle book markers show the short work label inside a small circle, which overflows for long labels (e.g. "Inf Thom"); the layer bar sits over the bottom of the details panel at 1440×900 (same as the LDS build).
+
+**Next:** unit 2 continued, works 3–9 (Wisdom, Sirach, Baruch, 1–2 Maccabees, Esther and Daniel additions), then units 3–6 as planned above.
