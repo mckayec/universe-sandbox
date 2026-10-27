@@ -7695,83 +7695,6 @@ FX.theduel=g=>{const S=SITES.duel&&SITES.duel._S;if(!S||curSite!==SITES.duel)ret
 if(SITES.gala){const l=SITES.gala.landmarks.find(x=>x.id==="duel");if(l){l.enter="duel";l.desc+=" Enter for a close-up of the fight itself, in armor.";}}
 })();
 
-/* ---- 54-book-gates.js ---- */
-/* ===================== SCENE SPOILER GATES =====================
-   One table for every bird's-eye scene, applied after every site module (lore review, revision 3, carried into
-   this merged atlas). `from` on a scene or landmark withholds it (label, dossier entry, focus target, tooltip,
-   entry link and direct entry) before that book; a desc keyed by book shows a safe base until the book its later
-   text names. Scenes that only exist in this merged atlas follow the same rule (marked "merge"). The full text
-   stays where it was written: lmGate(site,id,book,base) keeps it from `book` and shows `base` before it. */
-(function(){
-const SITE_FROM={gala:2,io:3,gorgon:4,helios:5,heliopolis:5,tyche:4,venusdocks:6,garter:6,newsparta:6,asteroid:6,
-  /* merge: Tyche opens at IV (not V) because the Iron Gold prologue (event g1) is staged there; its Dark Age and
-     Light Bringer landmark text is gated below. The newer atlas's other scenes open from the book each one stages */
-  vanguard:2,duel:2,silene:4,deepgrave:4,sungrave:4,prologue:4,ladon:5,whitefleet:5,atlasbase:5,pandora:5,olympia:5,siege:5,
-  marcher:6,rome:6,nixian:6,thedeep:6,heraklion:6};
-Object.entries(SITE_FROM).forEach(([k,b])=>{if(SITES[k])SITES[k].from=Math.max(SITES[k].from||1,b);});
-
-const lmOf=(site,id)=>{const S=SITES[site];return S&&S.landmarks&&S.landmarks.find(l=>l.id===id);};
-function lmGate(site,id,book,base){const l=lmOf(site,id);if(!l||typeof l.desc!=="string")return;const full=l.desc;
-  l.desc=typeof base==="string"?{1:base}:Object.assign({},base);l.desc[book]=full;}
-function lmSet(site,id,desc){const l=lmOf(site,id);if(l)l.desc=desc;}
-function lmHide(site,id,book){const l=lmOf(site,id);if(l)l.from=Math.max(l.from||1,book);}
-function siteGate(site,field,book,base){const S=SITES[site];if(!S||S[field]==null)return;S.eras=S.eras||{};
-  const e=S.eras[book]=Object.assign({},S.eras[book]);if(e[field]==null)e[field]=S[field];S[field]=base;}
-
-/* Mars */
-lmSet("agea","field","A plaza at the Citadel entrance.");
-lmGate("agea","walls",2,"Defensive walls about two hundred meters high ring the city.");
-lmHide("agea","river",2);
-{const A=SITES.agea;if(A)A.facts=A.facts.filter(f=>f[0]!=="Jackal’s seat");}
-lmGate("lykos","common",2,"The public square at the bottom of the township, where Reds gather for broadcasts, floggings and hangings while the homes of the clans climb the walls above.");
-{const T=SITES.attica;if(T){T.epithet="City of seven peaks";siteGate("attica","blurb",2,"A city built across seven mountain peaks in Cimmeria. Each summit is crowned with jagged steel-and-glass towers like a crown of thorns, linked by bridges, with the lower wards running down the slopes.");
-  siteGate("attica","facts",2,T.facts.filter(f=>f[0]!=="Ruler"));}}
-lmGate("attica","citadel",3,"A fortress of more than two dozen floors on the highest peak, with a prison for thousands.");
-lmHide("asgard","asgard",3);lmHide("asgard","field",3);
-
-/* Luna */
-lmSet("hyperion","citadel","Seat of the Sovereign on the city’s western edge.");
-lmSet("hyperion","dragonmaw","A gravLift leading beneath the Citadel.");
-lmSet("hyperion","palatine","A quarter of the Citadel.");
-lmSet("hyperion","arch","The Citadel’s main gate.");
-lmGate("hyperion","sovspire",2,"The highest point of the Citadel, rising from its central gardens with a landing pad on its roof.");
-lmGate("hyperion","lostcity",2,"The lowColor sprawl at the bottom of Hyperion, spreading for kilometers south of the gilded walls.");
-lmGate("hyperion","hysperia",3,"A Pink breeding facility on the Promenade.");
-
-/* Phobos */
-lmSet("phobos","docks","Orbital docks serving Phobos.");
-lmGate("phobos","helix",3,"Quicksilver’s twin spiraling towers among the Needles.");
-lmHide("phobos","nucleus",6);
-{const P=SITES.phobos;if(P&&P.eras&&P.eras[4])P.eras[4]=Object.assign({},P.eras[4],{blurb:"Iron Gold. The Republic’s fortress moon: its spires reach far beyond the rock and its ring docks build the fleet."});}
-
-/* Jupiter's moons */
-lmSet("ganymede","ring","Shipyards around Ganymede’s equator.");
-lmSet("ganymede","newtroy","A city on Ganymede below the dock ring.");
-lmHide("ganymede","berth",3);lmHide("ganymede","platform",2);
-{const G=SITES.ganymede;if(G){G.blurb="A dull grey ring of shipyards around Ganymede’s equator, roughly two hundred kilometers thick and two and a half centuries in the building. Freighters and warships are assembled here, above a moon that glows like a plum with its cities.";
-  G.facts=G.facts.map(f=>f[0]==="Made here"?["Made here","The Society’s warships"]:f);}}
-siteGate("newtroy","blurb",3,"A city of the Moon Lords on Ganymede’s forested coast, its towers under the great dock ring that arches across the sky.");
-lmGate("newtroy","ring",3,"Ganymede’s ring of shipyards arching across the sky.");
-lmHide("europa","athena",6);lmHide("europa","deep",6);
-lmGate("europa","villa",6,{1:"White limestone keep and walls on Harmonia’s heights, in the far-northern Discordia Sea.",
-  2:"White limestone keep and walls on Harmonia’s heights, in the far-northern Discordia Sea. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him."});
-lmGate("europa","garden",2,"Lorn’s private forest within the outer walls.");
-siteGate("garter","blurb",6,"A belt of fields and canals girdling Io’s equator under Jupiter’s face, with the sulfur wastes and volcanoes beyond.");
-siteGate("garter","facts",6,[["Beyond","Sulfur dunes and volcanoes"]]);
-
-/* Neptune */
-siteGate("triton","blurb",2,"Neptune’s frozen moon at the Society’s edge, being terraformed by Lovelock Engines that vent vapor into its thin sky.");
-lmHide("triton","base",2);
-
-/* Venus and Mercury: scenes open from Book IV and V; Light Bringer clauses inside them wait for Book VI */
-lmGate("gorgon","keep",4,"Magnus au Grimmus’s black fortress on the crater rim.");
-lmGate("venusdocks","coliseum",6,"An arena hung beneath the dockyards.");
-lmGate("heliopolis","bay",6,{5:"The bay west of the city. Glirastes’ floating home, the Lady Beatrice, hangs above the city."});
-lmGate("heliopolis","via",6,{5:"The triumphal avenue where the battle for the city is fought after the shield falls."});
-lmGate("tyche","morningstar",6,{4:"Darrow’s flagship.",5:"Darrow’s flagship, under repair at Tyche when the war turns."});
-lmGate("tyche","harbor",5,"Tyche’s waterfront on the Sycorax Sea.");
-lmGate("tyche","centralcmd",5,"The Republic’s headquarters on Mercury, from which Darrow runs the war.");
-})();
 /* ---- 59-post.js ---- */
 /* ===================== POST: the camera's lens =====================
    Every view is rendered into a high-precision, multisampled buffer, then finished like film:
@@ -9235,6 +9158,91 @@ function model(kind,side){const m=new THREE.Mesh(geo(kind,side),mat());m.castSha
 return {ground,geo,mat,model,COLS};
 })();
 
+/* ---- 79-book-gates.js ---- */
+/* ===================== SCENE SPOILER GATES =====================
+   One table for every bird's-eye scene, applied after every site module (lore review, revision 3, carried into
+   this merged atlas). `from` on a scene or landmark withholds it (label, dossier entry, focus target, tooltip,
+   entry link and direct entry) before that book; a desc keyed by book shows a safe base until the book its later
+   text names. Scenes that only exist in this merged atlas follow the same rule (marked "merge"). The full text
+   stays where it was written: lmGate(site,id,book,base) keeps it from `book` and shows `base` before it. Runs after
+   the last scene module (the Siege of Red Reach) so every scene is covered. */
+(function(){
+const SITE_FROM={gala:2,io:3,gorgon:4,helios:5,heliopolis:5,tyche:4,venusdocks:6,garter:6,newsparta:6,asteroid:6,
+  /* merge: Tyche opens at IV (not V) because the Iron Gold prologue (event g1) is staged there; its Dark Age and
+     Light Bringer landmark text is gated below. The newer atlas's other scenes open from the book each one stages */
+  vanguard:2,duel:2,silene:4,deepgrave:4,sungrave:4,prologue:4,ladon:5,whitefleet:5,atlasbase:5,pandora:5,olympia:5,siege:5,
+  marcher:6,rome:6,nixian:6,thedeep:6,heraklion:6};
+Object.entries(SITE_FROM).forEach(([k,b])=>{if(SITES[k])SITES[k].from=Math.max(SITES[k].from||1,b);});
+
+const lmOf=(site,id)=>{const S=SITES[site];return S&&S.landmarks&&S.landmarks.find(l=>l.id===id);};
+function lmGate(site,id,book,base){const l=lmOf(site,id);if(!l||typeof l.desc!=="string")return;const full=l.desc;
+  l.desc=typeof base==="string"?{1:base}:Object.assign({},base);l.desc[book]=full;}
+function lmSet(site,id,desc){const l=lmOf(site,id);if(l)l.desc=desc;}
+function lmHide(site,id,book){const l=lmOf(site,id);if(l)l.from=Math.max(l.from||1,book);}
+function siteGate(site,field,book,base){const S=SITES[site];if(!S||S[field]==null)return;S.eras=S.eras||{};
+  const e=S.eras[book]=Object.assign({},S.eras[book]);if(e[field]==null)e[field]=S[field];S[field]=base;}
+
+/* Mars */
+lmSet("agea","field","A plaza at the Citadel entrance.");
+lmGate("agea","walls",2,"Defensive walls about two hundred meters high ring the city.");
+lmHide("agea","river",2);
+{const A=SITES.agea;if(A)A.facts=A.facts.filter(f=>f[0]!=="Jackal’s seat");}
+lmGate("lykos","common",2,"The public square at the bottom of the township, where Reds gather for broadcasts, floggings and hangings while the homes of the clans climb the walls above.");
+{const T=SITES.attica;if(T){T.epithet="City of seven peaks";siteGate("attica","blurb",2,"A city built across seven mountain peaks in Cimmeria. Each summit is crowned with jagged steel-and-glass towers like a crown of thorns, linked by bridges, with the lower wards running down the slopes.");
+  siteGate("attica","facts",2,T.facts.filter(f=>f[0]!=="Ruler"));}}
+lmGate("attica","citadel",3,"A fortress of more than two dozen floors on the highest peak, with a prison for thousands.");
+lmHide("asgard","asgard",3);lmHide("asgard","field",3);
+
+/* Luna */
+lmSet("hyperion","citadel","Seat of the Sovereign on the city’s western edge.");
+lmSet("hyperion","dragonmaw","A gravLift leading beneath the Citadel.");
+lmSet("hyperion","palatine","A quarter of the Citadel.");
+lmSet("hyperion","arch","The Citadel’s main gate.");
+lmGate("hyperion","sovspire",2,"The highest point of the Citadel, rising from its central gardens with a landing pad on its roof.");
+lmGate("hyperion","lostcity",2,"The lowColor sprawl at the bottom of Hyperion, spreading for kilometers south of the gilded walls.");
+lmGate("hyperion","hysperia",3,"A Pink breeding facility on the Promenade.");
+
+/* Phobos */
+lmSet("phobos","docks","Orbital docks serving Phobos.");
+lmGate("phobos","helix",3,"Quicksilver’s twin spiraling towers among the Needles.");
+lmHide("phobos","nucleus",6);
+{const P=SITES.phobos;if(P&&P.eras&&P.eras[4])P.eras[4]=Object.assign({},P.eras[4],{blurb:"Iron Gold. The Republic’s fortress moon: its spires reach far beyond the rock and its ring docks build the fleet."});}
+
+/* Jupiter's moons */
+lmSet("ganymede","ring","Shipyards around Ganymede’s equator.");
+lmSet("ganymede","newtroy","A city on Ganymede below the dock ring.");
+lmHide("ganymede","berth",3);lmHide("ganymede","platform",2);
+{const G=SITES.ganymede;if(G){G.blurb="A dull grey ring of shipyards around Ganymede’s equator, roughly two hundred kilometers thick and two and a half centuries in the building. Freighters and warships are assembled here, above a moon that glows like a plum with its cities.";
+  G.facts=G.facts.map(f=>f[0]==="Made here"?["Made here","The Society’s warships"]:f);}}
+{const N=SITES.newtroy;if(N){N.note="An artistic reconstruction.";siteGate("newtroy","facts",3,N.facts.filter(f=>f[0]!=="Book"));}}
+siteGate("newtroy","blurb",3,"A city of the Moon Lords on Ganymede’s forested coast, its towers under the great dock ring that arches across the sky.");
+lmGate("newtroy","ring",3,"Ganymede’s ring of shipyards arching across the sky.");
+lmHide("europa","athena",6);lmHide("europa","deep",6);
+lmGate("europa","villa",6,{1:"White limestone keep and walls on Harmonia’s heights, in the far-northern Discordia Sea.",
+  2:"White limestone keep and walls on Harmonia’s heights, in the far-northern Discordia Sea. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him."});
+lmGate("europa","garden",2,"Lorn’s private forest within the outer walls.");
+{const E=SITES.europa;if(E){E.note="Layout is an artistic reconstruction from the books’ descriptions.";
+  const full=E.facts,base=full.filter(f=>f[0]!=="Books");siteGate("europa","facts",6,base);E.eras[2]=Object.assign({},E.eras[2],{facts:base.concat([["Book","Golden Son"]])});}}
+{const S=SITES.sungrave;if(S){S.note="An artistic reconstruction.";
+  siteGate("sungrave","blurb",6,"A city of House Raa on Io: a citadel cut into a mountain in the volcanic wastes, white and gold under its pulse shield, with Jupiter filling the sky. In Iron Gold, Lysander and Cassius are brought here as prisoners.");
+  siteGate("sungrave","facts",6,S.facts.filter(f=>f[0]==="House"||f[0]==="Iron Gold"));}}
+lmHide("sungrave","breach",6);
+siteGate("garter","blurb",6,"A belt of fields and canals girdling Io’s equator under Jupiter’s face, with the sulfur wastes and volcanoes beyond.");
+siteGate("garter","facts",6,[["Beyond","Sulfur dunes and volcanoes"]]);
+
+/* Neptune */
+siteGate("triton","blurb",2,"Neptune’s frozen moon at the Society’s edge, being terraformed by Lovelock Engines that vent vapor into its thin sky.");
+lmHide("triton","base",2);
+
+/* Venus and Mercury: scenes open from Book IV and V; Light Bringer clauses inside them wait for Book VI */
+lmGate("gorgon","keep",4,"Magnus au Grimmus’s black fortress on the crater rim.");
+lmGate("venusdocks","coliseum",6,"An arena hung beneath the dockyards.");
+lmGate("heliopolis","bay",6,{5:"The bay west of the city. Glirastes’ floating home, the Lady Beatrice, hangs above the city."});
+lmGate("heliopolis","via",6,{5:"The triumphal avenue where the battle for the city is fought after the shield falls."});
+lmGate("tyche","morningstar",6,{4:"Darrow’s flagship.",5:"Darrow’s flagship, under repair at Tyche when the war turns."});
+lmGate("tyche","harbor",5,"Tyche’s waterfront on the Sycorax Sea.");
+lmGate("tyche","centralcmd",5,"The Republic’s headquarters on Mercury, from which Darrow runs the war.");
+})();
 /* ---- 80-phone.js ---- */
 /* ===================== PHONE LAYOUT =====================
    Below 820 px (or a short touch screen) the info panel becomes a bottom sheet that rests as a title strip, the
