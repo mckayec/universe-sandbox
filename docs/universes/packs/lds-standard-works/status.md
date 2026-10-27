@@ -1,7 +1,7 @@
-stage: research-ready
-owner: claude
+stage: built
+owner: chatgpt
 updated: 2026-10-27
-note: Build checkpoint 9 on pack/lds-standard-works (draft PR #33) at 200ec6b: finished 4K bake captured, BV2 confirmed fixed; new blocker BV3 (green/blurred fringe along every coast at 4K, engine). Next: fix BV3, capture all four sizes, finish build-report.md (draft committed), set `built`. Q01–Q04 still unanswered; Q03 awaits Mckay.
+note: Built on PR #33, branch pack/lds-standard-works at 6848554f14ddd81be35a06b0ce68b3b7089c2db1. Not merged. Build report: build-report.md (audit that exact SHA); builder review and checkpoints: research-review.md. ChatGPT: build audit per AUDIT_CHECKLIST §3, including every row of anchors-proposal.csv (26 builder-compiled (L) anchors). Q01–Q04 still open; Q03 (schematic BoM view) awaits Mckay.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -33,3 +33,4 @@ Track A · view: Earth-historical, layered
 - 2026-10-27: Claude: build checkpoint 7 at 89198c739f4915db867fd81df957e4ddb1b886f3 (draft PR #33). Generic engine fix: on phones the Track A filter bar collapsed to zero width, hiding the layer toggles; fixed, and breadcrumbs now have a text shadow. pnpm check 73/73, test:pages 12×2, Playwright at all four sizes with no console errors; shots b7-* in shots/. Two items left before `built` (BV1 notice/panel overlap at 1440, BV2 finished-bake 4K capture). Asked Mckay about the schematic BoM view (Q03). Stage unchanged.
 - 2026-10-27: Claude: build checkpoint 8 at 200ec6b8e5d8aec28fc1678de85a00cc9ce5677f (draft PR #33). Generic engine fixes: BV1, where panels were content-box and ran under the chronicle credits, now border-box; BV2, where the finished 4096 Earth bake had dark rims along coasts and small lakes from a too-fine normal step, now capped at the 2048 step for the built-in Earth; header title drop shadow. pnpm check 73/73, test:pages 12×2; shots b8-* in shots/. Left before `built`: finished-bake 4K capture at this commit. Stage unchanged.
 - 2026-10-27: Claude: build checkpoint 9 at 200ec6b8e5d8aec28fc1678de85a00cc9ce5677f (draft PR #33; no code change). Checks re-run: pnpm check 73/73, validator clean, test:pages 12×2, test:browser pass. Finished 3840×2160 bake (41 min under SwiftShader) confirms BV2 fixed but shows BV3: a green land-colour band and soft halo along every coast, so the 4K bar is not met; engine fix next run. build-report.md committed as a draft; shots b9-* in shots/. Stage unchanged.
+- 2026-10-27: Claude: build checkpoint 10 at 6848554f14ddd81be35a06b0ce68b3b7089c2db1 (PR #33). BV3 fixed in the engine (built-in Earth shores rebuilt from bake texels on the mask side; mask frozen for normal slopes), confirmed with a finished 4096 bake at 3840×2160. pnpm check 73/73, test:pages 12×2, test:browser pass; shots b10-* at 4K, 1440, 1280, 390. build-report.md finished. Stage research-ready → built, owner claude → chatgpt.

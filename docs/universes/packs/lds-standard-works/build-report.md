@@ -1,11 +1,9 @@
-> **DRAFT, not handed off.** Written at build checkpoint 9; the stage is still `research-ready`, owned by Claude. Blocked on BV3 (see `research-review.md`, checkpoint 9). Do not audit until `status.md` says `built`.
-
 # LDS standard works: build report (Claude)
 
-- **PR:** #33 (`pack/lds-standard-works`), **commit `200ec6b8e5d8aec28fc1678de85a00cc9ce5677f`**. Audit this exact revision.
+- **PR:** #33 (`pack/lds-standard-works`), **commit `6848554f14ddd81be35a06b0ce68b3b7089c2db1`**. Audit this exact revision.
 - **Research revision built from:** `52adadf1558b8bba1c89ca266de682ccdc988767` (handoff `689b495`), plus builder-compiled anchors in `anchors-proposal.csv`.
 - **Pack file:** `public/atlas/packs/lds-standard-works.js`, registered in `public/atlas/packs/registry.js` and `src/universe-packs.ts`.
-- **Builder review and checkpoint log:** `research-review.md` (RR01–RR09, build checkpoints 1–8).
+- **Builder review and checkpoint log:** `research-review.md` (RR01–RR09, build checkpoints 1–10).
 - **Not merged.** Mckay's approval is still needed after both audits.
 
 ## What was built
@@ -35,6 +33,7 @@
 - Phone filter bar no longer collapses to zero width; breadcrumb and title text shadows.
 - Panels `border-box` so they stop above the chronicle credits (BV1).
 - Built-in Earth normal step capped at a 2048 bake's, removing dark coast/lake rims in 4096 bakes (BV2).
+- Built-in Earth shores rebuilt from the bake texels on the mask's side of the coast, and normal-pass slopes taken with the mask frozen, so coasts are crisp at 4K with no colour band or dark rim (BV3).
 
 ## Left out, and why
 
@@ -56,21 +55,24 @@
 - Possible research discrepancy: RP10 says Mount Pisgah is "near present Murray, Iowa"; the sources I opened put the site near Thayer, Union County.
 - AP15 Paphos is pinned at Nea Paphos per the research's Palaepaphos caution; please confirm.
 
-## Checks at `200ec6b`
+## Checks at `6848554`
 
 - `pnpm format` / `pnpm check`: 73/73 tests, build and check:dist OK (113 files, no third-party loads).
-- Atlas validator: `lds-standard-works.js` — 1 world, 36 sites, 24 events, no issues, no warnings.
+- Atlas validators: `tests/atlas-pack-validator.mjs` (in `pnpm test`) passes; the older site-audit validator reports 1 world, 36 sites, 24 events, 0 issues, and 3 warnings only because it predates PACK_FORMAT §20 (`layers`, `timeline`, `start`).
 - `pnpm test:pages`: 12 pages × 2 viewports pass. `pnpm test:browser`: pass. (Both with `CHROME_PATH` set to the installed Chromium.)
-- Playwright (SwiftShader: `--use-gl=swiftshader --enable-webgl --ignore-gpu-blocklist`): 3840×2160 finished 4096 bake after 41 min, no console errors or failed requests. 1440/1280/390 still to capture after BV3.
+- Playwright (SwiftShader: `--use-gl=swiftshader --enable-webgl --ignore-gpu-blocklist`), no console errors or page errors at any size: 3840×2160 with the finished 4096 bake; 1440×900, 1280×800 and 390×844 with a 2048 bake (`window.__HD=2048`; a full 4096 desktop bake takes most of an hour in this container).
 
 ## Screenshots (`shots/`)
 
-- `b9-4k-finished-bake-1920.jpg`: 3840×2160 finished bake, downscaled.
-- `b9-4k-coast-fringe-crop.jpg`: 1000×600 full-resolution crop (eastern Mediterranean) showing BV3.
+- `b10-4k-finished-bake-1920.jpg`: 3840×2160, finished 4096 bake, downscaled.
+- `b10-4k-coast-crop.jpg`: 1000×600 full-resolution crop (Mediterranean to the Gulf) showing crisp coasts after the BV3 fix.
+- `b10-1440x900.jpg`, `b10-1280x800.jpg`, `b10-390x844.jpg`: laptop and phone layouts at the start view (Jerusalem selected).
+- `b10-bv3-before-after-1024bake.jpg`: BV3 before (`200ec6b`) and after, enlarged, at a 1024 bake.
 
-Earlier checkpoint shots (`rr09-*`, `b4-*` … `b8-*`) remain in `shots/` for history.
+Earlier checkpoint shots (`rr09-*`, `b4-*` … `b9-*`) remain in `shots/` for history.
 
 ## Known limits
 
-- In this 2-core SwiftShader container the full 4096 surface bake takes 25–40 minutes; on real GPUs it takes a second or two. Phones bake at 2048, low-memory devices at 1024.
-- Shore pixels where the fine mask says land but the baked map says sea use the pack's land colour, which can read as a thin fringe on desert coasts at globe zoom (cosmetic, noted at checkpoint 3).
+- In this 2-core SwiftShader container the full 4096 surface bake takes 25–55 minutes; on real GPUs it takes a second or two. Phones bake at 2048, low-memory devices at 1024.
+- Very small islands or lakes with no matching bake texel within 5 texels fall back to the pack's flat land or water colour (rare; a few pixels).
+- Shallow water along coasts is slightly lighter (the bake's shelf colour), and the sun glint can whiten narrow seas such as the Red Sea near the glint point.
