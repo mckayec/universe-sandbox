@@ -136,3 +136,23 @@ test('2 Maccabees place-reference rows each have one codex entry', () => {
   const entries = pack.codex.find((s: any) => s.id === 'places').list.filter((e: any) => e.first === 7);
   assert.equal(entries.length, rows.length);
 });
+
+test('expanded OT narrative rows for slots 10–15 each have a Chronicle entry at their own work', () => {
+  const idx = readCsv('record-work-index.csv').filter(r => +r.first >= 10 && +r.first <= 15);
+  const narrative = idx.filter(r => /^XO-E\d+$|^XE2-E\d+$|^XE2-C0[134]$|^XO-P0[1367]$/.test(r.id));
+  assert.ok(narrative.length >= 20);
+  for (const r of narrative) {
+    const e = pack.events.find((x: any) => x.id === r.id.toLowerCase());
+    assert.ok(e, `no Chronicle entry for ${r.id}`);
+    assert.equal(e.book, +r.first, `${r.id} is gated at the wrong work`);
+    assert.ok(!e.site || ['jerusalem', 'babylon'].includes(e.site), `${r.id} pinned off-anchor`);
+  }
+});
+
+test('visionary settings carry no site and appear only in their own section', () => {
+  const vis = pack.codex.find((c: any) => c.id === 'visions');
+  assert.ok(vis && vis.list.length >= 2);
+  for (const e of vis.list) assert.ok(!('site' in e) && !('lat' in e), `${e.name} has a location`);
+  const places = pack.codex.find((c: any) => c.id === 'places').list.map((e: any) => e.name);
+  for (const e of vis.list) assert.ok(!places.includes(e.name), `${e.name} also listed as a place`);
+});

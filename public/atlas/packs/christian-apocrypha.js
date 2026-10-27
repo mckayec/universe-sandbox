@@ -1,7 +1,8 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 8 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
-   the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9). The remaining works are added layer by layer in later checkpoints.
+   BUILD CHECKPOINT 9 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9);
+   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15). The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
    handoff): research.md, integration-contract.md, work-gates.csv, geography-reuse.md, the five
@@ -224,7 +225,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 4, 5, 6, 7, 8, 9],
+            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -234,7 +235,7 @@
             name: 'Babylon',
             lat: 32.541969,
             lon: 44.420833,
-            books: [5, 6, 7, 8, 9],
+            books: [5, 6, 7, 8, 9, 10, 11],
             modern: 'Babylon (UNESCO World Heritage property)',
             desc: 'The marker locates the ancient city of Babylon, not the wider region of Babylonia or any exile route.',
           },
@@ -444,6 +445,45 @@
       ev('dan-song', 9, 'dc', 'The prayer and song in the furnace', 'In the furnace, Azarias prays, recalling Jerusalem, the covenant and the ancestors. An angel protects the three young men, and Ananias, Azarias and Misael call on all creation to bless God. Verse numbers differ between editions.', 'Prayer of Azarias and Song of the Three (RV), within Daniel 3'),
       ev('dan-sus', 9, 'dc', 'Susanna', 'In Babylon, Susanna, daughter of Helkias and wife of Joakim, is threatened in her garden by two elders, falsely accused and condemned. Young Daniel questions the elders separately; they name different trees, Susanna is cleared, and the elders are executed.', 'Susanna (RV), Daniel 13 in some editions', 'babylon'),
       ev('dan-bel', 9, 'dc', 'Bel and the Dragon', 'In this telling Cyrus succeeds Astyages. Daniel uses footprints to expose the priests’ secret entrance to Bel’s temple, and the idol and its temple are destroyed; he kills the dragon and is thrown to the lions. An angel carries Habakkuk from Judea to the den with a meal and back home, and Daniel is freed on the seventh day.', 'Bel and the Dragon (NABRE), Daniel 14 in some editions', 'babylon'),
+
+      /* ---- 1 Esdras (slot 10). expanded-ot-integration.csv XO-P01, XO-P03, XO-E01, XO-E23–E26. KJV
+         transcription (XO01). Narrated dates stay as the text gives them; no BC dates imported. ---- */
+      ev('xo-p01', 10, 'xot', 'Josiah’s Passover, and the city’s fall', 'First Esdras opens with Josiah’s Passover at Jerusalem and ends its first chapter with the city’s destruction. First Esdras is a distinct work, not the canonical book of Ezra or Nehemiah.', '1 Esdras 1:1–22, 54–56 (KJV)', 'jerusalem'),
+      ev('xo-p03', 10, 'xot', 'Exile to Babylon, and the way back', 'Babylon is where the captives are taken at the end of chapter 1, and where the first return sets out in chapter 2.', '1 Esdras 1:54–58; 2:15 (KJV)', 'babylon'),
+      ev('xo-e01', 10, 'xot', 'The debate at Darius’s court', 'At King Darius’s court, Zerubbabel wins a debate and asks for Jerusalem to be restored. The story gives no date beyond Darius’s reign.', '1 Esdras 4:13, 34–63 (KJV)'),
+      ev('xo-e23', 10, 'xot', 'Altar and foundations', 'The altar is restored and the Temple’s foundations are laid, then opponents stop the rebuilding. The text keeps these stages separate from the final dedication.', '1 Esdras 5 (KJV)'),
+      ev('xo-e24', 10, 'xot', 'The Temple completed', 'The Temple is finished and dedicated, and a Passover follows. The text dates the completion to the twenty-third of Adar in Darius’s sixth year; this is the book’s own date.', '1 Esdras 7:5–15 (KJV)'),
+      ev('xo-e25', 10, 'xot', 'Ezra and the mixed marriages', 'Ezra laments over marriages to foreign wives, and a process separates those marriages and families. The atlas reports this hard outcome as the text tells it, without endorsing it.', '1 Esdras 8:91–9:36 (KJV)'),
+      ev('xo-e26', 10, 'xot', 'The law read aloud', 'The law is read and explained before the gathered people.', '1 Esdras 9:37–55 (KJV)'),
+
+      /* ---- 2 Esdras (slot 11), the 16-chapter English composite. XO-P06, XO-E02 (chapters 1–4, KJV transcription
+         XO02) and the supplement rows XE2-* (chapters 5–16, WEB Classic). Chapters 3–14 are the core usually called
+         4 Ezra; 1–2 and 15–16 are Christian framing not found in every recension. Visions are not mapped. ---- */
+      ev('xo-p06', 11, 'xot', 'A lament in Babylon', 'The narrator speaks from Babylon in the thirtieth year after the city’s ruin, and laments.', '2 Esdras 3:1–2 (KJV)', 'babylon'),
+      ev('xo-e02', 11, 'xot', 'Uriel’s answers', 'The angel Uriel answers Ezra’s questions about suffering by comparing them with the limits of human understanding.', '2 Esdras 4 (KJV)'),
+      ev('xe2-c03', 11, 'xot', 'The fate of souls', 'The angel describes what souls experience after death and at the judgment. This passage is marked as restored in the WEB edition; the KJV transcription lacks it and jumps from 7:35 to the passage WEB numbers 7:106. The text gives no measured chambers, and traditions do not agree on its teaching.', '2 Esdras 7:75–105 (WEB)'),
+      ev('xe2-e01', 11, 'xot', 'The mourning woman becomes a city', 'Ezra sees a grieving woman who becomes a city, and the vision is interpreted as Zion. Her son and his thirty years belong to the interpretation, not to a historical family.', '2 Esdras 9:38–10:49 (WEB)'),
+      ev('xe2-c01', 11, 'xot', 'The eagle and the lion', 'In a dream vision an eagle stands for a kingdom, and a lion is interpreted as the anointed one. The atlas does not match the eagle’s wings to particular rulers.', '2 Esdras 11–12 (WEB)'),
+      ev('xe2-e02', 11, 'xot', 'Ezra and the five scribes', 'Over forty days, Ezra and five named scribes produce books, some for everyone and some kept back. In the WEB edition there are 94 books, 70 of them reserved, which leaves 24 by arithmetic; the KJV transcription has 204 books. Neither total is preferred here.', '2 Esdras 14:23–48 (WEB)'),
+      ev('xe2-c04', 11, 'xot', 'Oracles against the nations', 'The closing prophecies threaten Egypt, Libanus, Arabia, Assyria, Babylon, Asia and Syria. These are literary targets, not a record of real campaigns.', '2 Esdras 15:10–63; 16:1 (WEB)'),
+
+      /* ---- 3 Maccabees (slot 12). XO-P07, XO-E03, XO-E04. WEB Classic (XO18). Story chronology only. ---- */
+      ev('xo-p07', 12, 'xot', 'Philopator at the Temple', 'King Ptolemy Philopator tries to enter the Temple at Jerusalem, and his entry is contested.', '3 Maccabees 1:9–29 (WEB)', 'jerusalem'),
+      ev('xo-e03', 12, 'xot', 'Persecution and rescue in Egypt', 'The narrative tells of persecution in Egypt, a threat to have the Jews trampled by elephants, a rescue by angels, and the king’s change of heart.', '3 Maccabees 2–6 (WEB)'),
+      ev('xo-e04', 12, 'xot', 'The return, and the reprisals', 'The return home includes reprisals, authorized by the king, against fellow Jews who had abandoned the law. The book ends with this difficult episode alongside the deliverance.', '3 Maccabees 7:10–15 (WEB)'),
+
+      /* ---- 4 Maccabees (slot 13). XO-E07, XO-E27–E30. Online translation XO04 (edition not identified), with
+         chapters 1 and 18 checked against WEB Classic (XO19) and 10:4, 11:7–8 supplied from the WEB PDF (XO22). ---- */
+      ev('xo-e07', 13, 'xot', 'Devout reason', 'The book’s theme is devout reason, illustrated through Eleazar, the seven brothers and their mother. No date of death is given.', '4 Maccabees 1:1–12 (WEB)'),
+      ev('xo-e27', 13, 'xot', 'The Temple treasury', 'An accusation by Simon leads to Apollonius’s attempt on the Temple. Jason’s appointment and Antiochus’s attack follow in the story. Kinship between these figures is not assumed.', '4 Maccabees 4 (online translation)'),
+      ev('xo-e28', 13, 'xot', 'Eleazar', 'Eleazar refuses forbidden food and dies under torture. He is the elder of this book, not the Eleazar of 3 Maccabees.', '4 Maccabees 5–6 (online translation)'),
+      ev('xo-e29', 13, 'xot', 'The seven brothers', 'Seven brothers resist coercion and are killed one after another. Verses missing from the online text in chapters 10 and 11 were read in the WEB edition.', '4 Maccabees 8–12 (online translation; 10:4, 11:7–8 WEB)'),
+      ev('xo-e30', 13, 'xot', 'The mother', 'The mother exhorts her sons, and her death is then reported. The book proposes an epitaph for them; it is a text, not a monument that has been found.', '4 Maccabees 16–17 (online translation)'),
+
+      /* ---- Prayer of Manasseh (slot 14), XO-E05, and Psalm 151 (slot 15), XO-E06. Both translations are under
+         copyright (NRSV; Holy Transfiguration Monastery 1974): paraphrase only. ---- */
+      ev('xo-e05', 14, 'xot', 'A prayer of repentance', 'The prayer confesses wrongdoing and asks for mercy. It names no city and gives no date.', 'Prayer of Manasseh 1–15 (NRSV)'),
+      ev('xo-e06', 15, 'xot', 'David’s psalm', 'The speaker recalls being a shepherd, being anointed, and defeating his opponent. The heading attributes the psalm to David; a heading is not proof of authorship.', 'Psalm 151, heading and 1–7 (Holy Transfiguration Monastery 1974)'),
     ],
     codex: [
       {
@@ -741,6 +781,16 @@
           ref('The temple of Nanaea', 7, 'dc', 'Second Maccabees: in the letter of chapter 1, where Antiochus and his party are trapped and killed. Kept apart from the death accounts of 1 Maccabees 6 and 2 Maccabees 9.'),
           ref('The well of the hidden fire', 7, 'dc', 'Second Maccabees: in the letter of chapter 1, where the fire hidden at the deportation is found as a thick liquid. Its location is not given.'),
           ref('Jeremiah’s cave', 7, 'dc', 'Second Maccabees: where Jeremiah hides the tabernacle, the ark and the altar of incense, in the mountain from which Moses viewed the inheritance (ch. 2). No site is pinned.'),
+          /* ---- Expanded OT settings (expanded-ot-integration.csv XO-P*, pilate-esdras-integration.csv XE2-P01).
+             All coordinates null. Same-spelled places are not merged with earlier works' entries. ---- */
+          ref('Magiddo (Megiddo)', 10, 'xot', 'First Esdras: where Josiah fights his last battle; in this witness he dies after being carried to Jerusalem (1:29–31).'),
+          ref('Darius’s court', 10, 'xot', 'First Esdras: the setting of the debate in chapter 3. The text does not name the city.'),
+          ref('Ecbatane (1 Esdras)', 10, 'xot', 'First Esdras: the archive where the decree is found (6:23). Not merged with Tobit’s and Judith’s Ecbatana by spelling, and no building is located.'),
+          ref('The river Theras', 10, 'xot', 'First Esdras: Ezra’s staging point (8:41, 61). Not equated with a river named in another book.'),
+          ref('The field called Ardat', 11, 'xot', 'Second Esdras: where Ezra receives the vision of the woman who becomes a city (9:26; 10:51–54). Some witnesses read Arphad. Unlocated.'),
+          ref('Schedia', 12, 'xot', 'Third Maccabees: where the captives are landed (4:11). No precise modern location is given.'),
+          ref('The hippodrome outside the city', 12, 'xot', 'Third Maccabees: where the captives are confined and later delivered (4:11; 6:16–30).'),
+          ref('Ptolemais, “rose-bearing” (3 Maccabees)', 12, 'xot', 'Third Maccabees: a seven-day stop on the way home (7:17–20). Not automatically the Ptolemais of 1–2 Maccabees.'),
         ],
       },
       {
@@ -820,6 +870,23 @@
           ref('Antiochus’s last journey', 7, 'dc', 'Second Maccabees: Persepolis, Ecbatana, then foreign mountains where he dies. Jerusalem is threatened but not reached. Kept apart from 1 Maccabees 6 and 2 Maccabees 1.'),
           ref('Judas’s campaign of chapter 12', 7, 'dc', 'Second Maccabees: Joppa, Jamnia, Caspin, Charax, Carnion, Ephron, Scythopolis, Jerusalem before Weeks, then Adullam after Pentecost. Selected stops, not every battle or a surveyed route.'),
           ref('Habakkuk carried', 9, 'dc', 'Judea to the lions’ den in Babylon, then home (the place is not named), carried by an angel. Not a road.'),
+          /* Expanded OT journeys (XO-J*, XE2-J01): ordered stops as stated; no lines drawn. */
+          ref('Josiah carried from Magiddo', 10, 'xot', 'First Esdras: Magiddo to Jerusalem, after the battle (1:29–31). Not a surveyed road.'),
+          ref('The return with Sanabassar', 10, 'xot', 'First Esdras: Babylon to Jerusalem (2:15). The leaders’ names are kept as this book gives them, not merged with similar names elsewhere.'),
+          ref('Timber from Lebanon', 10, 'xot', 'First Esdras: timber brought by sea from Lebanon to Joppa (5:55). No shipping route is drawn.'),
+          ref('Ezra’s journey', 10, 'xot', 'First Esdras: Babylon, the river Theras, then Jerusalem (8:3–6, 41, 61).'),
+          ref('The ten tribes to Arzareth', 11, 'xot', 'Second Esdras: in the interpretation of a vision, the ten tribes cross the Euphrates toward a region called Arzareth, and their return is foretold; the journey takes a year and a half (13:40–47). No distance, date or modern destination follows from this.'),
+          ref('The captives brought to Schedia', 12, 'xot', 'Third Maccabees: from unnamed places in Egypt, by boat, to Schedia and the place of confinement (4:7–11).'),
+          ref('The journey home', 12, 'xot', 'Third Maccabees: the released people set out, stop at Ptolemais, and return to their homes (7:16–20).'),
+        ],
+      },
+      {
+        id: 'visions',
+        title: 'Visionary and otherworldly settings',
+        list: [
+          /* Settings inside visions, dreams and the afterlife. No coordinates; nothing here is a terrestrial place. */
+          ref('Visionary Zion (2 Esdras)', 11, 'xot', 'Second Esdras: a crowned assembly seen in a vision of Zion (2:42–47). A vision, not the plan of a city.'),
+          ref('The mountain of the man from the sea', 11, 'xot', 'Second Esdras: in the vision of chapter 13, a mountain interpreted as Zion (13:6–7, 35–36). The seer cannot tell where it came from, and it has no outline to map.'),
         ],
       },
       {
@@ -881,6 +948,21 @@
           ref('Susanna', 9, 'dc', 'Daughter of Helkias and wife of Joakim, falsely accused by two elders.', 'Daniel additions'),
           ref('Joakim', 9, 'dc', 'Susanna’s husband, in whose garden the story is set. Not the high priest Joakim of Judith or Baruch.', 'Daniel additions'),
           ref('Habakkuk', 9, 'dc', 'Carried by an angel from Judea to bring Daniel a meal in the den.', 'Daniel additions'),
+          /* Expanded OT people (XO-R*, XE2-R01 and persons named in the XO-E and XO-P rows), each scoped to its own work. */
+          ref('Josiah (1 Esdras)', 10, 'xot', 'The king whose Passover opens the book and who dies after the battle at Magiddo.', '1 Esdras'),
+          ref('Zerubbabel (1 Esdras)', 10, 'xot', 'Wins the debate at Darius’s court and petitions the king for Jerusalem. The court title “cousin” marks royal favour, not kinship.', '1 Esdras'),
+          ref('Darius (1 Esdras)', 10, 'xot', 'The king at whose court the debate takes place; the Temple’s completion is dated to his sixth year.', '1 Esdras'),
+          ref('Sanabassar', 10, 'xot', 'A leader of the return from Babylon. Not merged with similar names in other books.', '1 Esdras'),
+          ref('Ezra (1 Esdras)', 10, 'xot', 'Leads a party from Babylon to Jerusalem, and laments over the mixed marriages.', '1 Esdras'),
+          ref('Ezra (2 Esdras)', 11, 'xot', 'The seer of the visions, who questions the angel Uriel and later produces books with five scribes.', '2 Esdras'),
+          ref('Uriel', 11, 'xot', 'The angel who answers Ezra’s questions.', '2 Esdras'),
+          ref('Ezra’s five scribes', 11, 'xot', 'Sarea, Dabria, Selemia, Ethanus and Asiel, who help Ezra write the books (14:24, 37, 42). Helpers, not descendants.', '2 Esdras'),
+          ref('Ptolemy Philopator', 12, 'xot', 'The king whose entry into the Temple is contested; the persecution that follows ends in his change of heart.', '3 Maccabees'),
+          ref('Simon (3 Maccabees)', 12, 'xot', 'Intercedes for the community (2:1–20).', '3 Maccabees'),
+          ref('Eleazar (3 Maccabees)', 12, 'xot', 'Intercedes for the community (6:1–15). Not the martyr of 4 Maccabees.', '3 Maccabees'),
+          ref('Eleazar (4 Maccabees)', 13, 'xot', 'The martyr who refuses forbidden food. Not the Eleazar of 3 Maccabees.', '4 Maccabees'),
+          ref('The mother (4 Maccabees)', 13, 'xot', 'Mother of the seven brothers; unnamed in the text, and no later traditional name is used (18:6–10).', '4 Maccabees'),
+          ref('The seven brothers (4 Maccabees)', 13, 'xot', 'Brothers who resist coercion and are killed one after another.', '4 Maccabees'),
         ],
       },
     ],
