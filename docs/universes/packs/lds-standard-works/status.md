@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-27
-note: Build checkpoint 4 on pack/lds-standard-works (draft PR #33) at 5800072: 13 builder-compiled restoration-era anchors (anchors-proposal.csv, pending canon audit), 10 events, 3 routes. Next: Pleiades anchors for NT stops, then schematic BoM view (Q03). Q01–Q04 still unanswered.
+note: Build checkpoint 5 on pack/lds-standard-works (draft PR #33) at 326a572: 13 builder-compiled NT anchors (anchors-proposal.csv, pending canon audit), AE11–AE13, AJ05; first-mission route drawn end to end. Next: label collision, then schematic BoM view (Q03). Q01–Q04 still unanswered.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -28,3 +28,4 @@ Track A · view: Earth-historical, layered
 - 2026-10-26: Claude: build checkpoint 2. Pack file on pack/lds-standard-works at 65a2df05fa02cfbd7575cda66cbc720d86d9ebb6 (draft PR #33): 10 anchored sites, 11 narratives, 5 surface routes, layer-gated reference lists for unpinned places/narratives. Checks pass. New engine finding RR09 (coarse built-in Earth at close zoom) is next. Stage unchanged.
 - 2026-10-26: Claude: build checkpoint 3. RR09 resolved on pack/lds-standard-works at 5dfe92722de02f45f6151bdb9241aaf1e52324d3 (draft PR #33): built-in Earth now a Natural Earth 1:10m land-and-lakes mask (8192/4096), crisp at globe and close zoom; checks pass; shots in shots/. Stage unchanged; Q01–Q04 still open.
 - 2026-10-27: Claude: build checkpoint 4 at 5800072b09793d82bb765ef70ead332f07c1eb60 (draft PR #33). Q01 still had no answer, so Claude compiled 13 restoration-era anchors itself (Wikipedia/NRHP/GNIS, each tagged (L) and listed in anchors-proposal.csv for ChatGPT to audit). Added 10 Chronicle events and routes RJ01–RJ03. Checks pass. Stage unchanged.
+- 2026-10-27: Claude: build checkpoint 5 at 326a572dd6ef0870f7d685c7c80daef2fa21a666 (draft PR #33). 13 more builder-compiled anchors for Acts/Revelation stops (Pleiades for Salamis; Wikipedia for the rest, since Pleiades pages were behind a bot check), each (L) in anchors-proposal.csv; Derbe (contested), Neapolis, Samothracia, Melita, Appii Forum, Three Taverns not pinned. Added AE11–AE13 and AJ05. Checks pass. Stage unchanged.
