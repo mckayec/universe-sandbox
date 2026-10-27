@@ -156,3 +156,25 @@ test('visionary settings carry no site and appear only in their own section', ()
   const places = pack.codex.find((c: any) => c.id === 'places').list.map((e: any) => e.name);
   for (const e of vis.list) assert.ok(!places.includes(e.name), `${e.name} also listed as a place`);
 });
+
+test('1 Enoch and Jubilees: every event row has an unpinned Chronicle entry at its own work', () => {
+  const idx = readCsv('record-work-index.csv').filter(r => r.first === '16' || r.first === '17');
+  const events = idx.filter(r => /^XO-E\d+$/.test(r.id));
+  assert.equal(events.length, 17);
+  for (const r of events) {
+    const e = pack.events.find((x: any) => x.id === r.id.toLowerCase());
+    assert.ok(e, `no Chronicle entry for ${r.id}`);
+    assert.equal(e.book, +r.first, `${r.id} is gated at the wrong work`);
+    assert.ok(!e.site, `${r.id} is pinned; its coordinates are null`);
+  }
+  const at = (id: string, slot: number) =>
+    pack.codex.find((c: any) => c.id === id).list.filter((e: any) => e.first === slot);
+  const journeys = idx.filter(r => /^XO-J\d+$/.test(r.id));
+  assert.equal(
+    at('journeys', 16).length + at('journeys', 17).length,
+    journeys.length,
+    'one journey entry per XO-J row',
+  );
+  assert.equal(at('visions', 16).length, 12, 'twelve schematic 1 Enoch settings');
+  assert.equal(at('visions', 17).length, 0, 'Jubilees settings are reference places, not visions');
+});
