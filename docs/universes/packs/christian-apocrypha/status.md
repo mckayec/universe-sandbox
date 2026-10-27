@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-27
-note: Claude building on pack/christian-apocrypha at 66c2bff (checkpoints 1–7: work picker, skeleton, all nine deuterocanonical works incl. 1–2 Maccabees places, people and journeys). Next: remaining Tobit/Judith place rows, then expanded OT. Review and checkpoints in research-review.md; Q01–Q03 for research-addendum.md. No PR yet; not merged.
+note: Claude building on pack/christian-apocrypha at 16ac23f (checkpoints 1–8: work picker, skeleton, deuterocanonical core complete: works 1–9 with every place, person and journey row). Next: unit 3, expanded OT (works 10–17; 18–20 incomplete). Review and checkpoints in research-review.md; Q01–Q03 for research-addendum.md. No PR yet; not merged.
 
 # Christian apocrypha (later layer of the Bible portion)
 

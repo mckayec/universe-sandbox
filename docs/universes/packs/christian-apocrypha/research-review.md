@@ -103,3 +103,14 @@ Branch `pack/christian-apocrypha` at `66c2bff03504e6d0b033b5e33bc2eff2a905ccf5` 
 - **Checks:** `pnpm check` 90/90; `pnpm test:pages` 12 pages × 2; screenshots at 1440×900 and 390×844 with `#book=7`, no console errors. `pnpm test:browser` timed out at its save/load step (line 88) here, on the unchanged checkpoint-6 head too; it does not load the atlas, and this sandbox's software GL is slow. CI runs it on the PR.
 
 **Next:** remaining Tobit/Judith place rows (closes works 1–9), then unit 3 (expanded OT, works 10–17; 18–20 incomplete).
+
+## Build checkpoint 8 (2026-10-27)
+
+Branch `pack/christian-apocrypha` at `16ac23f75ac497977b8bf7e162a560e279af15a3` (no PR yet).
+
+- **Tobit and Judith places (closes works 1–9):** every `dc-ref-*` place-reference row with `first` 1 or 2 now has a codex entry scoped to that slot (about 80 rows, including the 21 named at checkpoint 7). Each says only what `dc-tob-01…14` / `dc-jdt-01…16` state; names that appear only in a list (Nebuchadnezzar's summons, ch. 1; Holofernes's campaign sequence, ch. 2; the coastal towns, ch. 2; the warned towns, ch. 4; the siege positions, ch. 7; the notified towns, ch. 15) are described as list members, not given roles. Later mentions are gated `more` text by slot (Wisdom, Sirach, Baruch, 1–2 Maccabees, Esther C, Bel and the Dragon); where a 1–2 Maccabees card only lists a name, the text gives the chapter and its episode, as at checkpoint 6. Kept apart: Kedesh / Kadesh / Kadesh-barnea, Sur / Bethsura, Dothan / Dothaim, Belmain / Belmaim, Choba / Chobai, Tyre / the Ladder of Tyre. Source-scoped sites added without locations: Tobit's remembered home region, the bridal chamber, Holofernes' camp, the hillfoot below Bethulia, the valley outside Bethulia. Ophir now starts at slot 1 (Tobit 13 imagery) with its Sirach text as a slot-4 `more`. Elymais keeps the RV "I went"/"he went" variant and assigns no journey.
+- **Engine fix (self-found):** with the long "Places without a map pin" tab, the codex panel was placed thousands of pixels below the viewport on phones (the overlay's grid track sized to the panel's content). `#codex` now has a bounded row, and the panel and `.cx-body` can shrink so the body scrolls. Checked at 390×844 and 1440×900; short tabs unchanged.
+- **New test:** every slot 1–2 place-reference row has an entry with the same `first` (91 tests).
+- **Checks:** `pnpm check` 91/91; `pnpm test:pages` 12 pages × 2; Chromium at 1440×900 (`#book=7`) and 390×844 (`#book=2`, `#book=7`): slot 7 text shown at 7, hidden at 2; Esther and Bel additions hidden at both; no console errors. `pnpm test:browser` not rerun (same sandbox limitation as checkpoint 7; CI runs it on the PR).
+
+**Next:** unit 3, expanded OT (works 10–17; 18–20 marked incomplete), then related pseudepigrapha (21–22).
