@@ -1,0 +1,17 @@
+record,site_id,name,lat,lon,what_the_point_marks,source,source_url,builder_confidence,research_note
+P12,fayette,Fayette (Whitmer home),42.865972,-76.869778,"Peter Whitmer log home, 1980 replica on the original farm site",Wikipedia infobox,https://en.wikipedia.org/wiki/Peter_Whitmer_log_home,L,"research: no coordinate; replica stated in pin text"
+P13,independence,Independence,39.09250,-94.41389,City reference point (not the temple lot),Wikipedia infobox (GNIS),https://en.wikipedia.org/wiki/Independence,_Missouri,L,research: coordinates pending
+P14,kirtland-temple,Kirtland Temple,41.62528,-81.36222,Standing temple building (NHL),Wikipedia infobox (NRHP),https://en.wikipedia.org/wiki/Kirtland_Temple,L,research: coordinates pending
+P15,nauvoo,Nauvoo,40.54444,-91.37500,City reference point,Wikipedia infobox (GNIS),"https://en.wikipedia.org/wiki/Nauvoo,_Illinois",L,research: coordinates pending
+P16,carthage-jail,Carthage Jail,40.41572,-91.13884,Standing jail building (NRHP 73000703),Wikipedia infobox (NRHP),https://en.wikipedia.org/wiki/Carthage_Jail,L,research: coordinates pending
+RP01,harmony,Harmony (Smith home site),41.9512,-75.6387,"Priesthood Restoration Site, Oakland Township (historic Harmony); houses are reconstructions",Wikipedia infobox,https://en.wikipedia.org/wiki/Priesthood_Restoration_Site,L,research gives address 27832 State Route 171 [R04]
+RP03,palmyra,Palmyra,43.06417,-77.23361,Village reference point (not the print shop),Wikipedia infobox (GNIS),"https://en.wikipedia.org/wiki/Palmyra_(village),_New_York",L,research: no printshop coordinate
+RP07,salt-lake-temple,Salt Lake Temple,40.77056,-111.89194,"Temple building, Temple Square",Wikipedia infobox,https://en.wikipedia.org/wiki/Salt_Lake_Temple,L,research: coordinate not yet approved
+RP09,garden-grove,Garden Grove,40.82667,-93.60694,Modern town reference point (not the 1846 camp),Wikipedia infobox (GNIS),"https://en.wikipedia.org/wiki/Garden_Grove,_Iowa",L,research: exact site pending
+RP10,mount-pisgah,Mount Pisgah (Iowa),41.038586,-94.113028,"Mount Pisgah historic site / cemetery state preserve, near Thayer",Wikipedia infobox,"https://en.wikipedia.org/wiki/Mount_Pisgah,_Iowa",L,"research says 'near present Murray'; Wikipedia and Church History say near Thayer, Union County: please check"
+RP11,chimney-rock,Chimney Rock,41.70361,-103.34833,"Chimney Rock National Historic Site, near Bayard",Wikipedia infobox,https://en.wikipedia.org/wiki/Chimney_Rock_National_Historic_Site,L,research: no coordinate sourced
+RP12,south-pass,South Pass,42.3303,-108.9738,Historic South Pass crossing (emigrant crossing; NHL),Wikipedia infobox,https://en.wikipedia.org/wiki/South_Pass_(Wyoming),L,research: exact crossing not supplied; 1847 track not plotted
+RP13,fort-bridger,Fort Bridger,41.31778,-110.39194,Fort Bridger State Historic Site,Wikipedia infobox,https://en.wikipedia.org/wiki/Fort_Bridger,L,research: no coordinate supplied
+RP04,(not pinned),Liberty Jail,39.248523,-94.420753,"Visitors' center on the original jail site (partial reconstruction inside)",latitude.to (weak),https://latitude.to/articles-by-country/us/united-states/39489/liberty-jail,U,NOT BUILT: only a weak aggregator source found; needs NRHP/Church History coordinate
+P11,(not pinned),Woods near the Smith home,,,,,,,"NOT BUILT: research and Wikipedia both say the grove point is not known"
+RP02/RP06/RP08,(not pinned),"Susquehanna reach, Salt Lake Valley, Missouri region",,,,,,,NOT BUILT: research explicitly declines a point
