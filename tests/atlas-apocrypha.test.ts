@@ -210,3 +210,22 @@ test('Ascension of Isaiah and 4 Baruch: every related-tradition row is used at i
       `${n} lacks its 4 Baruch mention`,
     );
 });
+
+test('NT-related gospels (slots 23–28): one Chronicle entry per narrative cluster, at its own work', () => {
+  const gates = Object.fromEntries(readCsv('work-gates.csv').map(r => [r.ledger_work, Number(r.first)]));
+  const rows = readCsv('nt-apocrypha-integration.csv').filter(r => gates[r.work] >= 23 && gates[r.work] <= 28);
+  assert.equal(rows.length, 6);
+  for (const r of rows) {
+    const e = pack.events.find((x: any) => x.id === r.stable_id);
+    assert.ok(e, `no Chronicle entry for ${r.stable_id}`);
+    assert.equal(e.book, gates[r.work], `${r.stable_id} is gated at the wrong work`);
+    // only the Protevangelium's temple is bound to an anchor (Jerusalem); every other cluster stays unpinned
+    assert.equal(e.site, r.stable_id === 'nta-pj-scene' ? 'jerusalem' : undefined, `${r.stable_id} pin`);
+  }
+  const sites = pack.worlds.flatMap((w: any) => w.sites || []);
+  const badge = (id: string) => sites.find((x: any) => x.id === id).books;
+  assert.ok(!badge('nazareth').includes(24), 'the Infancy Thomas village must not be bound to Nazareth');
+  for (const s of [23, 24, 25]) assert.ok(badge('jerusalem').includes(s), `Jerusalem badge lacks slot ${s}`);
+  const judea = pack.codex.find((c: any) => c.id === 'places').list.find((e: any) => e.name === 'Judea (Judaea)');
+  for (const s of [26, 28]) assert.ok(judea.books.includes(s), `Judea lacks its slot ${s} mention`);
+});

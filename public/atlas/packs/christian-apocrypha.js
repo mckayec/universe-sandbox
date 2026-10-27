@@ -1,8 +1,9 @@
 /* =====================================================================================================
    BIBLICAL APOCRYPHA AND RELATED TRADITIONS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §6, §20).
-   BUILD CHECKPOINT 9 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
+   BUILD CHECKPOINT 12 (draft, not reviewed): works, layers, the five reused Earth anchors, coverage notes, and
    the deuterocanonical core: Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and the Esther and Daniel additions (slots 1–9);
-   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15). The remaining works are added layer by layer in later checkpoints.
+   expanded OT works 1–2 Esdras, 3–4 Maccabees, Prayer of Manasseh and Psalm 151 (slots 10–15); 1 Enoch and Jubilees (16–17); Ascension of Isaiah and 4 Baruch (21–22); the NT-related gospels (23–28).
+   The remaining works are added layer by layer in later checkpoints.
 
    Research: docs/universes/packs/christian-apocrypha/ at research revision 4dc7f44 (owner-approved narrowed
    handoff): research.md, integration-contract.md, work-gates.csv, geography-reuse.md, the five
@@ -114,6 +115,10 @@
     'The Jordan': '4 Baruch: the returning exiles come to the Jordan before going up to Jerusalem (8:1–6). The crossing point is not given.',
     Samaria: '4 Baruch: the story says families turned away from Jerusalem and Babylon founded Samaria (8:7–12). The story’s account, not the history of the Samaritans.',
   });
+
+  /* NT-related gospel mentions (slots 26, 28) of Judea, whose entry is written with Judith */
+  later(26, { 'Judea (Judaea)': 'Gospel of Thomas: saying 60 mentions a Samaritan going into Judea. No starting point is given.' });
+  later(28, { 'Judea (Judaea)': 'Gospel of Judas: the frame sets the conversations in Judea before Passover (p. 33).' });
 
   /* reference entry for a place with no approved map anchor, or a person, scoped to one work */
   function ref(name, first, layer, desc, role, more) {
@@ -231,7 +236,7 @@
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
-            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 21, 22],
+            books: [1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 21, 22, 23, 24, 25],
             modern: 'Old City of Jerusalem (UNESCO World Heritage property)',
             desc: 'The marker locates Jerusalem’s Old City. It does not mark any tribunal, Temple chamber, tomb or execution site named in these texts.',
           },
@@ -540,6 +545,18 @@
       ev('rpe18', 22, 'rp', 'The eagle', 'An eagle carries the letters and figs; outside Babylon a dead person comes back to life.', '4 Baruch 7:1–37 (Kraft and Purintun)'),
       ev('rpe19', 22, 'rp', 'The return, and Samaria', 'The returning exiles meet exclusion, and in the story the rejected group founds Samaria. This is the story’s own account, not the history of the Samaritans.', '4 Baruch 8:1–12 (Kraft and Purintun)'),
       ev('rpe20', 22, 'rp', 'Jeremiah’s last days', 'After nine days of sacrifice, Jeremiah appears dead for three days, revives, prophesies Christ and is stoned. This Christian ending is the work’s own; the hostile crowd is not the atlas’s picture of any people.', '4 Baruch 9:1–32 (Kraft and Purintun)'),
+
+      /* ---- NT-related gospels (slots 23–28). nt-apocrypha-integration.csv nta-pj-scene … nta-gj-scene, one entry per
+         narrative cluster; chapter labels from nt-apocrypha-coverage.csv. Editions per nt-apocrypha-sources.md: Roberts–
+         Donaldson (Protevangelium), M. R. James 1924 (Infancy Thomas Greek A), the hosted Gospel of Peter and Gospel of Mary
+         translations (translators/licences not established: paraphrase only), Patterson and Meyer's Scholars Version
+         (Gospel of Thomas, copyright: paraphrase only), Mattison (Gospel of Judas, public domain). ---- */
+      ev('nta-pj-scene', 23, 'nta', 'Mary’s birth, and the birth in the cave', 'Joachim withdraws and Anna prays; Mary is born to them and dedicated at the temple, which the story places in Jerusalem. Joseph, who already has children, is chosen to take her into his care. She works on the temple veil, receives the annunciation and visits Elizabeth. Accused, she and Joseph undergo an ordeal; Joseph’s household then travels toward Bethlehem, and the birth takes place in a cave, with a midwife and Salome, whose test and healing are the story’s account. The Magi come and leave another way; there is a hiding, and Zacharias is killed and succeeded by Simeon. Ages and months are the story’s own chronology, and the narrator’s claim to be James is a literary one.', 'Protevangelium of James 1–25 (Roberts–Donaldson)', 'jerusalem'),
+      ev('nta-it-scene', 24, 'nta', 'The child’s wonders', 'Stories of the child Jesus, in Greek A’s nineteen chapters: wonders that harm and are then reversed, clashes with teachers, Zeno, carrying water, a harvest, carpentry, the healing of James, and people brought back to life. This witness does not name the village. The ages five, six, eight and twelve are the story’s markers. In the last chapter his parents go up to Jerusalem and return.', 'Infancy Gospel of Thomas, Greek A I–XIX (M. R. James)'),
+      ev('nta-gp-scene', 25, 'nta', 'The Gospel of Peter fragment', 'The surviving fragment runs from a judgment through the execution and darkness, the burial in Joseph’s garden tomb, guards under Petronius, a resurrection vision in which a cross speaks, and the women’s visit to the tomb. It breaks off beside a sea it does not name. Its collective accusations against the Jews are the narrative’s polemic, not this atlas’s history, and the missing ending is not supplied from the canonical gospels.', 'Gospel of Peter 1–14 (hosted translation; translator not identified)'),
+      ev('nta-gt-scene', 26, 'nta', 'A collection of sayings', 'A prologue under Thomas’s name and 114 sayings, with no travel story. A few sayings name disciples: James, Peter, Matthew and Thomas (12–13) and Salome (61); saying 60 mentions a Samaritan going into Judea. Its language of kingdom, light and Paradise does not describe a place. The translation is under copyright, so nothing here is quoted.', 'Gospel of Thomas, prologue and sayings 1–114 (Scholars Version)'),
+      ev('nta-gm-scene', 27, 'nta', 'Mary and the disciples', 'In what survives, Mary encourages the disciples and tells of a vision; Andrew and Peter object, and Levi defends her. A passage on a soul’s ascent survives without its beginning, so the soul is not identified. Codex pages 1–6 and 11–14 are lost and are not filled in from the Greek fragments. No place, route or marriage is stated.', 'Gospel of Mary 4:22–39; 5:1–11; 8:10–24; 9:1–10 (hosted translation)'),
+      ev('nta-gj-scene', 28, 'nta', 'Conversations before Passover', 'Set in Judea in the days before Passover, Jesus speaks with the disciples and with Judas. The disciples’ vision of an altar, Judas’s vision of a house and the account of the cosmos and its rulers are separate levels of the story. The damaged text closes with Judas handing Jesus over for money. Whether the work presents Judas favourably is contested; gaps and restored names are kept as the translator marks them.', 'Gospel of Judas, Codex Tchacos 33–58 (Mattison)'),
     ],
     codex: [
       {
@@ -874,6 +891,16 @@
           ref('Baruch’s tomb', 22, 'rp', '4 Baruch: where Baruch stays after leaving Jerusalem (4:11–12). Not the place of Jeremiah’s later burial.'),
           ref('The burial place outside Babylon', 22, 'rp', '4 Baruch: where the eagle meets Jeremiah (7:12–18). Unlocated.'),
           ref('The Mount of Olives (4 Baruch)', 22, 'rp', '4 Baruch: named in Jeremiah’s last vision, in its announcement of the Messiah (9:20). Jeremiah does not go there.'),
+          /* ---- NT-related gospels (slots 23–28): settings named in nta-pj-scene, nta-it-scene, nta-gp-scene. All coordinates
+             null; the temple (Jerusalem) uses the anchor; Judea mentions are later() additions. ---- */
+          ref('Joseph’s home (Protevangelium)', 23, 'nta', 'Protevangelium of James: Joseph’s home, a setting of the story. Not located.'),
+          ref('Elizabeth’s house', 23, 'nta', 'Protevangelium of James: where Mary visits Elizabeth (ch. 12). Not located.'),
+          ref('The desert of Joachim’s retreat', 23, 'nta', 'Protevangelium of James: where Joachim withdraws (ch. 1). Not located.'),
+          ref('The opened mountain', 23, 'nta', 'Protevangelium of James: a mountain that opens during the hiding (ch. 22). Not located.'),
+          ref('The birth cave', 23, 'nta', 'Protevangelium of James: the cave where the birth takes place, in the Bethlehem episode (ch. 18). The story’s cave is not identified with the modern Nativity shrine.'),
+          ref('The unnamed village (Infancy Thomas)', 24, 'nta', 'Infancy Gospel of Thomas: the village of the childhood stories, which Greek A does not name. Not tied to Nazareth from other versions.'),
+          ref('Joseph’s garden', 25, 'nta', 'Gospel of Peter: the garden with the tomb where the body is laid (ch. 6). This text does not name Golgotha, and nothing is located.'),
+          ref('The unnamed sea', 25, 'nta', 'Gospel of Peter: the fragment breaks off beside a sea it does not name (ch. 14).'),
         ],
       },
       {
@@ -934,6 +961,8 @@
           ref('The heavenly Jerusalem', 22, 'rp', '4 Baruch: named in chapter 5 (5:35). Not a stop on any journey.'),
           ref('Paradise and the tree of life', 22, 'rp', '4 Baruch: named in Jeremiah’s last prophecy (9:16–19). Not a place on the map.'),
           ref('The figs', 22, 'rp', '4 Baruch: the figs that stay fresh become a sign of hope for the body’s restoration (6:5–10).'),
+          ref('Sayings without places', 26, 'nta', 'Gospel of Thomas: its language of kingdom, light and Paradise does not describe places on a map. Sayings 22 and 114 speak of male and female in different ways; each is left as its own saying, not merged into one teaching.'),
+          ref('The cosmos and its rulers', 28, 'nta', 'Gospel of Judas: a teaching on the spirit, the luminaries, Adamas, the cosmos and its rulers, Adam and Eve and the stars (pp. 47–55). Some names in the list of rulers are uncertain or restored. No star positions follow from it.'),
         ],
       },
       {
@@ -998,6 +1027,11 @@
           ref('Into captivity; into hiding', 22, 'rp', '4 Baruch: Jeremiah goes with the exiles from Jerusalem to Babylon; Baruch goes from Jerusalem to the tomb (4:6, 11–12). Two travelers, two destinations.'),
           ref('The eagle’s flight', 22, 'rp', '4 Baruch: from the tomb to the burial place outside Babylon, and back to Jerusalem (7:1–18, 35–36). Letters go out and come back; the figs go out. No stops between.'),
           ref('The return from Babylon', 22, 'rp', '4 Baruch: the exiles go from Babylon to the Jordan and Jerusalem; the families turned away go back toward Babylon and then found Samaria (8:1–12). A story’s itinerary, not migration history.'),
+          /* NT-related gospel journeys (nta-pj-scene route edges; nta-it-scene XIX): ordered as stated; no lines drawn. */
+          ref('Mary visits Elizabeth', 23, 'nta', 'Protevangelium of James: Mary goes to Elizabeth (ch. 12). No road or stops are given.'),
+          ref('Toward Bethlehem', 23, 'nta', 'Protevangelium of James: Joseph’s household approaches Bethlehem (chs. 17–18). No stops are added.'),
+          ref('The Magi leave another way', 23, 'nta', 'Protevangelium of James: the Magi depart by another way (ch. 21). Their route is not given.'),
+          ref('To Jerusalem and back (Infancy Thomas)', 24, 'nta', 'Infancy Gospel of Thomas: the parents go up to Jerusalem and return (ch. XIX). The starting village is not named.'),
         ],
       },
       {
@@ -1025,6 +1059,8 @@
           ref('The seven heavens', 21, 'rp', 'Ascension of Isaiah: seven heavens of increasing glory, through which the guide leads Isaiah (7–9). In order only; no distances.'),
           ref('Sheol', 21, 'rp', 'Ascension of Isaiah: the Beloved goes down to the angel of Sheol (10:8; 11:19). Haguel is excluded in 10:8 and is not merged with Sheol.'),
           ref('Gehenna', 21, 'rp', 'Ascension of Isaiah: Isaiah foretells that Beliar will be defeated and taken to Gehenna (4:14).'),
+          ref('The soul’s ascent (Gospel of Mary)', 27, 'nta', 'Gospel of Mary: an account of a soul’s ascent, after the lost pages. Its beginning is lost, so the soul is not identified, and no place on Earth is meant.'),
+          ref('The mountain, the cloud and the incorruptible realm', 28, 'nta', 'Gospel of Judas: settings of the visions and teaching, with no place on Earth. The house in Judas’s vision is a vision, not a building.'),
         ],
       },
       {
@@ -1139,6 +1175,24 @@
           ref('Jeremiah (4 Baruch)', 22, 'rp', 'Intercedes and teaches during the captivity; writes to Baruch (1:4–7; 7:21–36). In the last chapter he sees a vision of Jesus, is killed, and a stone is miraculously put in his place (9:14–32).', '4 Baruch'),
           ref('Baruch (4 Baruch)', 22, 'rp', 'Jeremiah’s correspondent, who stays in a tomb near Jerusalem. Scoped to this work; not merged with the entry for the book of Baruch.', '4 Baruch'),
           ref('Abimelech the Ethiopian', 22, 'rp', 'Spared from seeing Jerusalem fall, he later meets Baruch again (3:12–14; 6:1–4). A character’s origin, not evidence of where the book was written.', '4 Baruch'),
+          /* NT-related gospel people, scoped to their work (nta-pj-scene … nta-gj-scene). Namespaced; not merged across works. */
+          ref('Joachim and Anna', 23, 'nta', 'Mary’s parents in this story (chs. 1–7).', 'Protevangelium of James'),
+          ref('Mary (Protevangelium)', 23, 'nta', 'Born to Joachim and Anna, dedicated at the temple, and given into Joseph’s care (chs. 5–9).', 'Protevangelium of James'),
+          ref('Joseph (Protevangelium)', 23, 'nta', 'Chosen as Mary’s guardian and husband; he already has children (chs. 8–9).', 'Protevangelium of James'),
+          ref('Elizabeth (Protevangelium)', 23, 'nta', 'Mary visits her (ch. 12).', 'Protevangelium of James'),
+          ref('Zacharias and Simeon', 23, 'nta', 'Zacharias is killed, and Simeon succeeds him (chs. 23–24).', 'Protevangelium of James'),
+          ref('Salome (Protevangelium)', 23, 'nta', 'Tests the birth and is healed (ch. 20). The story’s account. Not merged with the Salome of the Gospel of Thomas.', 'Protevangelium of James'),
+          ref('The narrator James', 23, 'nta', 'The narrator names himself James (ch. 25). A literary claim, not proven authorship.', 'Protevangelium of James'),
+          ref('Jesus as a child (Infancy Thomas)', 24, 'nta', 'The child of the stories, at five, six, eight and twelve: the story’s own ages.', 'Infancy Gospel of Thomas'),
+          ref('James, son of Joseph (Infancy Thomas)', 24, 'nta', 'Joseph’s son, healed by the child (ch. XVI). The text calls him Joseph’s son; it does not settle a family tree.', 'Infancy Gospel of Thomas'),
+          ref('Zeno', 24, 'nta', 'Named in the childhood stories (ch. IX).', 'Infancy Gospel of Thomas'),
+          ref('Petronius', 25, 'nta', 'In charge of the guards at the tomb (ch. 8).', 'Gospel of Peter'),
+          ref('Joseph (Gospel of Peter)', 25, 'nta', 'The garden tomb where the body is laid is his (ch. 6).', 'Gospel of Peter'),
+          ref('Peter, Andrew and Levi (Gospel of Peter)', 25, 'nta', 'Peter and Andrew are brothers; Levi is called the son of Alphaeus.', 'Gospel of Peter'),
+          ref('Disciples in the Gospel of Thomas', 26, 'nta', 'James, Peter, Matthew and Thomas appear in sayings 12–13, and Salome in saying 61. Thomas here is kept apart from the Infancy Gospel and the Acts of Thomas.', 'Gospel of Thomas'),
+          ref('Mary (Gospel of Mary)', 27, 'nta', 'Encourages the disciples and tells of a vision. Catalogues identify her with Mary Magdalene; that is an interpretation, not a name in every passage.', 'Gospel of Mary'),
+          ref('Andrew, Peter and Levi (Gospel of Mary)', 27, 'nta', 'Andrew and Peter object to Mary’s words; Levi defends her.', 'Gospel of Mary'),
+          ref('Judas (Gospel of Judas)', 28, 'nta', 'Speaks privately with Jesus and later hands him over. Whether the work presents him well is disputed by its readers.', 'Gospel of Judas'),
         ],
       },
     ],
