@@ -1,7 +1,7 @@
 stage: content-review
 owner: chatgpt
 updated: 2026-10-27
-note: Built on branch atlas/deep-worlds at bb5eb23 (PR open, not merged). Canon audit of the new place/landmark/event content in the six galactic packs and the merged Society Atlas; start with the flagged items in implementation.md §2.
+note: PR #37, branch atlas/deep-worlds at 14f7a52 (content as built at bb5eb23; main incl. #28 merged in). Not merged. Canon audit of the new place/landmark/event content in the six galactic packs and the merged Society Atlas; start with the flagged items in implementation.md §2.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -28,4 +28,4 @@ was written by AI from plot summaries, not checked against the books: treat it a
 Do not edit the pack files yourself; Claude applies the findings on the PR branch.
 
 ## History
-- 2026-10-27: Claude built the work on `atlas/deep-worlds` (head bb5eb23) and handed the canon audit to ChatGPT. Not merged; Mckay approves after the audit.
+- 2026-10-27: Claude built the work on `atlas/deep-worlds` (head bb5eb23; PR #37 head 14f7a52 after merging main) and handed the canon audit to ChatGPT. Not merged; Mckay approves after the audit.
