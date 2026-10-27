@@ -1,6 +1,6 @@
 /* =====================================================================================================
    LATTER-DAY SAINT STANDARD WORKS: Track A data pack (schema: docs/atlas/PACK_FORMAT.md §20).
-   BUILD CHECKPOINT 5 (draft, not reviewed): anchored core plus 13 builder-compiled restoration-era anchors and
+   BUILD CHECKPOINT 6 (draft, not reviewed): anchored core plus 13 builder-compiled restoration-era anchors and
    13 builder-compiled New Testament anchors (RR01/Q01, listed in docs/universes/packs/lds-standard-works/anchors-proposal.csv, pending canon audit).
 
    Research: docs/universes/packs/lds-standard-works/ at research revision 52adadf
@@ -143,6 +143,7 @@
           {
             /* P08. UNESCO Old City of Jerusalem [S22]; OT anchor 2 Sam 5 (AE05). */
             id: 'jerusalem',
+            major: true,
             name: 'Jerusalem',
             lat: 31.777778,
             lon: 35.231667,
@@ -243,6 +244,7 @@
           {
             /* AP07. UNESCO Babylon [A18]. */
             id: 'babylon',
+            major: true,
             name: 'Babylon',
             lat: 32.541969,
             lon: 44.420833,
@@ -431,6 +433,7 @@
           {
             /* AP32. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Rome" infobox. */
             id: 'rome',
+            major: true,
             name: 'Rome',
             lat: 41.89333,
             lon: 12.48278,
@@ -491,6 +494,7 @@
           {
             /* P14. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Kirtland Temple). */
             id: 'kirtland-temple',
+            major: true,
             name: 'Kirtland Temple',
             lat: 41.62528,
             lon: -81.36222,
@@ -503,6 +507,7 @@
           {
             /* P15. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Nauvoo, Illinois). */
             id: 'nauvoo',
+            major: true,
             name: 'Nauvoo',
             lat: 40.54444,
             lon: -91.375,
@@ -539,6 +544,7 @@
           {
             /* RP03. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Palmyra (village), New York). */
             id: 'palmyra',
+            major: true,
             name: 'Palmyra',
             lat: 43.06417,
             lon: -77.23361,
@@ -551,6 +557,7 @@
           {
             /* RP07. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Salt Lake Temple). */
             id: 'salt-lake-temple',
+            major: true,
             name: 'Salt Lake Temple',
             lat: 40.77056,
             lon: -111.89194,

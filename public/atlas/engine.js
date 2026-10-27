@@ -999,18 +999,41 @@ function buildSiteLabels(w){SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];
     if(s.rel&&(depth||0)<8){const a=place((w.sites||[]).find(x=>x.id===s.rel.to),(depth||0)+1);lat=a[0]+(s.rel.dlat||0)*.32;lon=a[1]+(s.rel.dlon||0)*.32;}else{lat=+s.lat||0;lon=+s.lon||0;}
     if(!s.sea&&land)[lat,lon]=snapToLand(PL.mask,lat,lon);return pos[s.id]=[lat,lon];};
   (w.sites||[]).filter(siteSeen).forEach(s=>{const [lat,lon]=place(s);
-    const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';labelsEl.appendChild(el);
+    const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';el.setAttribute("aria-label",s.name);labelsEl.appendChild(el);
     el.addEventListener("click",ev=>{ev.stopPropagation();selectSite(s.id);});
     SITE_EL.push({s,el,ll:[lat,lon],dir:latLonDir(lat,lon)});});
   buildRoutes(w);}
 const _w=new THREE.Vector3(),_n=new THREE.Vector3();
-function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
-  SITE_EL.slice().sort((a,b)=>(b.s.id===S.site)-(a.s.id===S.site)).forEach(o=>{_n.copy(o.dir).applyQuaternion(PL.root.quaternion);_w.copy(_n).multiplyScalar(1.004);
-    const facing=_n.dot(camW.position.clone().sub(_w).normalize());const pr=project(_w,camW,W,H);let show=facing>.12&&pr.z<1;
-    const r={x:pr.x,y:pr.y-12,w:String(o.s.name).length*8+30,h:24};
-    if(show&&o.s.id!==S.site&&placed.some(q=>r.x<q.x+q.w&&r.x+r.w>q.x&&r.y<q.y+q.h&&r.y+r.h>q.y))show=false;if(show)placed.push(r);
-    o.el.style.opacity=show?clamp((facing-.12)*5,0,1):0;o.el.style.pointerEvents=show?"auto":"none";if(o.el._tab!==show){o.el._tab=show;o.el.tabIndex=show?0:-1;o.el.setAttribute("aria-hidden",String(!show));}
-    if(show)o.el.style.transform="translate("+(pr.x-7)+"px,"+(pr.y-13)+"px)";o.el.classList.toggle("sel",o.s.id===S.site);});
+/* Site labels: the selected site wins, then `major` sites, then pack order. A label whose text would
+   overlap one already placed collapses to its marker (still clickable), so dense regions keep every pin. */
+const sitePri = (o) => (o.s.id === S.site ? 2 : 0) + (o.s.major ? 1 : 0);
+const hit = (r, q) => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y;
+function layoutSiteLabels(W, H) {
+  if (!PL) return;
+  const placed = [];
+  const order = SITE_EL.map((o, i) => [o, i]).sort((a, b) => sitePri(b[0]) - sitePri(a[0]) || a[1] - b[1]);
+  order.forEach(([o]) => {
+    _n.copy(o.dir).applyQuaternion(PL.root.quaternion);
+    _w.copy(_n).multiplyScalar(1.004);
+    const facing = _n.dot(camW.position.clone().sub(_w).normalize());
+    const pr = project(_w, camW, W, H);
+    const show = facing > 0.12 && pr.z < 1;
+    const sel = o.s.id === S.site;
+    const r = { x: pr.x, y: pr.y - 12, w: String(o.s.name).length * 8 + 30, h: 24 };
+    const dot = show && !sel && placed.some((q) => hit(r, q));
+    if (show) placed.push(dot ? { x: pr.x - 2, y: pr.y - 6, w: 12, h: 12 } : r);
+    o.el.style.opacity = show ? clamp((facing - 0.12) * 5, 0, 1) : 0;
+    o.el.style.pointerEvents = show ? "auto" : "none";
+    o.el.classList.toggle("dot", dot);
+    if (o.el.title !== (dot ? o.s.name : "")) o.el.title = dot ? o.s.name : "";
+    if (o.el._tab !== show) {
+      o.el._tab = show;
+      o.el.tabIndex = show ? 0 : -1;
+      o.el.setAttribute("aria-hidden", String(!show));
+    }
+    if (show) o.el.style.transform = "translate(" + (pr.x - 7) + "px," + (pr.y - 13) + "px)";
+    o.el.classList.toggle("sel", sel);
+  });
 }
 
 /* ===================== SURFACE JOURNEYS (PACK_FORMAT 20.6) ===================== */

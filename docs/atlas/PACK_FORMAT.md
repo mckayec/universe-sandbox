@@ -433,6 +433,7 @@ sites:[
 | `rel` | `{to:siteId, dlat, dlon}` place relative to another site; offsets are multiplied by 0.32 (so `dlat:3` ≈ 1°) |
 | `books` | books where the place matters (badges, gating). Omit = always shown |
 | `sea` | true = may sit on water. Otherwise a site that falls in the sea is moved to the nearest land |
+| `major` | true = label priority: when labels would overlap, `major` sites keep their label and the others collapse to a marker (hover or focus shows the name). The selected site always keeps its label |
 | `aka` | optional alternative name (not displayed yet) |
 | `since`, `until` | book numbers: show the site only from book `since`, or only before book `until` (for worlds whose map changes in an era; with no book chosen, the first era shows) |
 | `realm` | `"cognitive"` or `"spiritual"`: shown only in that realm (19) |
