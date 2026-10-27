@@ -804,10 +804,13 @@ function makeRT(w,h,mip){const rt=new THREE.WebGLRenderTarget(w,h,{depthBuffer:f
 function renderBake(rt,y0,rows){const W=rt.width;renderer.setRenderTarget(rt);
   if(rows!=null){renderer.setScissorTest(true);rt.scissor.set(0,y0,W,rows);rt.scissorTest=true;}
   renderer.render(bakeScene,bakeCam);rt.scissorTest=false;renderer.setScissorTest(false);renderer.setRenderTarget(null);}
+/* normal-pass step. The built-in Earth's mask lifts land in one texel at a 4096 bake, so a finer step
+   turned every coast and small lake into a steep, dark-shadowed rim (BV2); 2048-texel steps keep it smooth. */
+function epsFor(g,W){return TAU/(g&&g.base==="earth"?Math.min(W,2048):W)*.6;}
 function octFor(size){return size>=4096?10:size>=2048?9:size>=1024?8:6;}
 /* bake a full set synchronously (small sizes only) */
 function bakeNow(g,key,W){const H=W/2;const set={alb:makeRT(W,H,true),nrm:makeRT(W,H,true),cld:makeRT(W,H,true),size:W};
-  setBakeU(g,key);const u=bakeMat.uniforms;u.uOct.value=octFor(W);u.uEps.value=TAU/W*.6;
+  setBakeU(g,key);const u=bakeMat.uniforms;u.uOct.value=octFor(W);u.uEps.value=epsFor(g,W);
   u.uPass.value=0;renderBake(set.alb);u.uPass.value=1;renderBake(set.nrm);u.uPass.value=2;u.uOct.value=7;renderBake(set.cld);return set;}
 /* incremental HD bake */
 const bakeJobs=[];
@@ -821,7 +824,7 @@ function bakeStep(){
   if(bakeStep.last){const ft=performance.now()-bakeStep.last;BAKE_SCALE=clamp(BAKE_SCALE*(ft>34?.7:ft<20?1.15:1),.05,2.5);}bakeStep.last=performance.now();
   const budget=(MOB?520000:1900000)*BAKE_SCALE/(job.pass===1?3.2:1);
   const rows=Math.max(8,Math.floor(budget/rt.width/8)*8);
-  u.uPass.value=job.pass;u.uOct.value=job.pass===2?8:octFor(job.W);u.uEps.value=TAU/job.W*.6;
+  u.uPass.value=job.pass;u.uOct.value=job.pass===2?8:octFor(job.W);u.uEps.value=epsFor(job.g,job.W);
   renderBake(rt,job.row,Math.min(rows,rt.height-job.row));job.row+=rows;
   const tot=job.H*2+job.H/2;const doneRows=(job.pass>0?job.H:0)+(job.pass>1?job.H:0)+Math.min(job.row,rt.height)*(job.pass===2?2:1);
   if(job.progress)job.progress(clamp(doneRows/tot,0,1));
