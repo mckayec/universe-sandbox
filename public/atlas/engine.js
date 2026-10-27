@@ -87,6 +87,10 @@ vec3 biomeStyle(int st,vec3 c,vec3 q,vec3 p){
   return c;}
 vec3 dirFromUv(vec2 uv){float lon=(uv.x-.5)*6.28318530718;float lat=(uv.y-.5)*PI;return vec3(cos(lat)*cos(lon),sin(lat),-cos(lat)*sin(lon));}
 /* types: 0 terran 1 ocean 2 archipelago 3 desert 4 forest 5 ice 6 gas 7 city 8 barren 9 lava 10 hive 11 toxic 12 star-swamp/garden */
+/* built-in Earth mask at p. gB, when set (>=0), freezes it so the normal pass gets slopes from the
+   terrain noise only: the mask's coast step is a cliff that shaded a dark rim along every shore (BV3) */
+float gB=-1.;
+float baseAt(vec3 p){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));return texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;}
 float height(vec3 p){
   vec3 q=p*uFreq+uSeed;
   if(uType==6){return 0.;}
@@ -94,8 +98,7 @@ float height(vec3 p){
   q+=w*uWarp;
   float h=fbm(q,uOct)*.5+.5;
   h=pow(h,1.15)*1.08;
-  if(uBase>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));float b=texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;
-    h=uSea+(b-.5)*.3+(h-.5)*.12;}
+  if(uBase>.5){float b=gB>=0.?gB:baseAt(p);h=uSea+(b-.5)*.3+(h-.5)*.12;}
   if(uMapOn>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
     vec4 Hi=texture2D(tMapHi,muv);vec4 Lo=texture2D(tMapLo,muv);float ml=Hi.r;
     h=uSea+(ml-.5)*.05+Lo.r*.07*ml+(h-.5)*(.05+.1*ml);
@@ -203,6 +206,7 @@ void main(){
   /* pass 1: object-space normal + city lights */
   vec3 t1=normalize(cross(vec3(0.,1.,0.),p)+vec3(1e-4,0.,0.));vec3 t2=normalize(cross(p,t1));
   float e=uEps;
+  if(uBase>.5)gB=baseAt(p);
   float hx=height(normalize(p+t1*e)),hy=height(normalize(p+t2*e));
   float k=water?0.:uBump;
   if(uType==6)k=0.;
@@ -230,7 +234,7 @@ varying vec3 vObj;varying vec3 vNW;varying vec3 vWP;
 void main(){vObj=normalize(position);vec4 wp=modelMatrix*vec4(position,1.);vWP=wp.xyz;vNW=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*wp;}`;
 const PLANET_FS=`
 uniform sampler2D tAlb,tNrm,tCld,tMapHi,tBase;
-uniform float uBase,uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;
+uniform float uBase,uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;uniform vec2 uAlbN;
 uniform vec3 uSun,uSunCol,uAtmo,uLightCol,uLava,uSeed;
 uniform float uAtmoK,uCloudShift,uDetail,uAmb,uHasCld,uLavaOn,uTime,uHasSea;
 uniform vec3 uWaterCol,uLandCol;
@@ -247,9 +251,25 @@ void main(){
   vec3 alb=pow(A.rgb,vec3(2.2));
   vec3 nO=normalize(B.rgb*2.-1.);
   float wat=A.a;
-  if(uBase>.5){ /* built-in Earth: the full-size coastline mask overrides the baked map's coarser shore */
-    bool wb=texture2D(tBase,uv).r<.5;
-    if(wb&&A.a<.5)alb=uWaterCol;if(!wb&&A.a>=.5)alb=uLandCol;wat=wb?1.:0.;A.a=wat;}
+  if(uBase>.5){ /* built-in Earth: the full-size coastline mask is finer than the bake. Rebuild colour and
+     normal from the nearest bake texels on the mask's side of the shore (joint bilateral), so coasts
+     neither smear land into water nor fall back to a flat colour band (BV3) */
+    bool wb=texture2D(tBase,uv).r<.5;float ws=wb?1.:0.;
+    vec2 fp=uv*uAlbN-.5;vec2 ip=floor(fp);vec2 fr=fp-ip;
+    vec4 sa=vec4(0.),sb=vec4(0.);float sw=0.;
+    for(int k=0;k<4;k++){vec2 o=vec2(mod(float(k),2.),floor(float(k)*.5));vec2 tc=(ip+o+.5)/uAlbN;
+      vec4 a=texture2D(tAlb,tc);vec4 b=texture2D(tNrm,tc);
+      float wt=(mix(1.-fr.x,fr.x,o.x)*mix(1.-fr.y,fr.y,o.y)+1e-3)*(1.-abs(step(.5,a.a)-ws));
+      sa+=a*wt;sb+=b*wt;sw+=wt;}
+    vec4 ra=vec4(0.);float rw=0.;
+    for(int k=0;k<16;k++){float an=float(k)*.785398+(k<8?0.:.3927);vec2 tc=(ip+fr+.5+vec2(cos(an),sin(an))*(k<8?2.:5.))/uAlbN;
+      vec4 a=texture2D(tAlb,tc);float wt=(k<8?4.:1.)*(1.-abs(step(.5,a.a)-ws));ra+=a*wt;rw+=wt;}
+    float mag=1.-smoothstep(.8,1.6,max(length(dFdx(fp)),length(dFdy(fp))));
+    bool off=(A.a>=.5)!=wb;
+    if(sw>1e-4){A.rgb=mix(A.rgb,sa.rgb/sw,off?1.:mag);B=mix(B,sb/sw,mag);nO=normalize(B.rgb*2.-1.);}
+    else if(rw>.5)A.rgb=ra.rgb/rw;
+    else A.rgb=pow(wb?uWaterCol:uLandCol,vec3(1./2.2));
+    alb=pow(A.rgb,vec3(2.2));wat=ws;A.a=wat;}
   if(uDetail>.001){ /* live procedural detail: resolves past the baked 4K map as you zoom in */
     vec3 dp=d*240.+uSeed;
     float n1=snoise(dp),n2=snoise(dp*2.7+7.),n3=snoise(dp*7.3+3.),n4=snoise(dp*19.+11.);
@@ -857,7 +877,7 @@ const sunHalo=glowSprite(GLOW_W,520,.18);sunHalo.position.copy(sunSprite.positio
 const planetGroup=new THREE.Group();wsc.add(planetGroup);
 const SPHERE=new THREE.SphereGeometry(1,SMALL?160:256,SMALL?110:176);
 const SPHERE_LO=new THREE.SphereGeometry(1,96,64);
-function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
+function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},uAlbN:{value:new THREE.Vector2(set.alb.width,set.alb.height)},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
     uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.12)},uAtmo:{value:CL(g.atmo||"#6fa8ff")},uAtmoK:{value:g.atmoK==null?1:g.atmoK},
     uLightCol:{value:CL(g.lightCol||"#ffc27a")},uLava:{value:CL(g.lava||"#ff5a1a")},uLavaOn:{value:(g.type==="lava"||g.type==="dyson")?1:0},uSeed:{value:new THREE.Vector3(hashStr(w.id)%97,3,7)},
     uCloudShift:{value:0},uDetail:{value:0},uHasSea:{value:(g.sea>0&&g.type!=="gas")?1:0},uWaterCol:{value:CL((g.pal||[])[1]||"#2a6f97")},uLandCol:{value:CL((g.pal||[])[2]||"#4b6b3a")},uAmb:{value:g.amb==null?.018:g.amb},uHasCld:{value:g.clouds?1:0},uTime:{value:0},uRot:{value:new THREE.Matrix3()},
@@ -893,7 +913,7 @@ function buildPlanet(w,book,onProgress){
   if(w.ring){P.ring=ringMesh(w.ring);P.root.add(P.ring);}
   /* moons */
   ARR(w.moons).forEach((m,i)=>{m=m||{};const mg=Object.assign({type:"barren",pal:["#2a2a2a","#3a3836","#5a5550","#7a736a","#9a9288","#c8c2b8"],rough:.9,sea:0,atmoK:0,bump:1.6},m.gfx||{});
-    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,SMALL?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
+    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,SMALL?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.uAlbN.value.set(s.alb.width,s.alb.height);u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
     const piv=new THREE.Object3D();piv.rotation.set((i%2?.25:-.18),i*2.1+.6,(i%2?-.1:.12));const d=m.dist||(2.4+i*1.1);mm.position.x=d;piv.add(mm);planetGroup.add(piv);
     P.moons.push({piv,mesh:mm,mo,speed:(m.speed||.05)/(1+i*.6),name:m.name});});
   /* sun colour */
@@ -906,7 +926,7 @@ function buildPlanet(w,book,onProgress){
   Object.keys(setCache).forEach(k=>{if(k!==key){const s=setCache[k];if(s.hd)disposeSet(s.hd);if(s.pre)disposeSet(s.pre);delete setCache[k];}});
   PL=P;applyRealmToPlanet();return P;
 }
-function applySet(P,s){P.mat.uniforms.tAlb.value=s.alb.texture;P.mat.uniforms.tNrm.value=s.nrm.texture;P.mat.uniforms.tCld.value=s.cld.texture;if(P.cmat)P.cmat.uniforms.tCld.value=s.cld.texture;}
+function applySet(P,s){P.mat.uniforms.tAlb.value=s.alb.texture;P.mat.uniforms.uAlbN.value.set(s.alb.width,s.alb.height);P.mat.uniforms.tNrm.value=s.nrm.texture;P.mat.uniforms.tCld.value=s.cld.texture;if(P.cmat)P.cmat.uniforms.tCld.value=s.cld.texture;}
 function clearPlanet(){if(!PL)return;bakeJobs.forEach(j=>{if(PL.jobs.includes(j))j.cancelled=true;});
   PL.moons.forEach(m=>{planetGroup.remove(m.piv);disposeSet(m.mo.cur);m.mesh.material.dispose();});
   planetGroup.remove(PL.root);PL.root.traverse(o=>{if(o.material&&o.material.dispose)o.material.dispose();if(o.geometry&&o.geometry!==SPHERE&&o.geometry!==SPHERE_LO)o.geometry.dispose();});PL=null;}
