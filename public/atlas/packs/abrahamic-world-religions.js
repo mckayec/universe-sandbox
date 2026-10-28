@@ -1,9 +1,9 @@
 /* =====================================================================================================
    RELIGIOUS TRADITIONS: ORIGINS AND CONNECTIONS — Track A data pack (PACK_FORMAT §13.1, §20, §21).
-   BUILD CHECKPOINT 5 (draft, not reviewed): meta, notice, theme, layers, the ten map anchors and the
-   reference-only place cards here; the Judaism, Christianity and Islam trees, Chronicles, journeys and people
-   come from the data parts in abrahamic-world-religions/ (PACK_FORMAT §1.1, listed in registry.js). Encounters
-   follow in checkpoint 6.
+   BUILD CHECKPOINT 6 (draft, not reviewed): meta, notice, theme, layers, the ten map anchors and the
+   reference-only place cards here; the Judaism, Christianity, Islam and Encounters trees, Chronicles, journeys,
+   people, encounter cards and the 2020 population estimates come from the data parts in
+   abrahamic-world-religions/ (PACK_FORMAT §1.1, listed in registry.js).
 
    Research: docs/universes/packs/abrahamic-world-religions/ at research acceptance f7b74e7 — research.md,
    build-contract.md, gazetteer-evidence.md/.csv, identity-and-edges.csv and the three tradition dossiers.
@@ -293,7 +293,7 @@
     JOURNEY_NOTE: ' Shown as an ordered list, not a drawn route: no surveyed path or geocoded waypoint is supported.',
   };
   const PARTS = (window.ATLAS_PACK_PARTS || {})['abrahamic-world-religions'] || {};
-  const TRADITIONS = ['judaism', 'christianity', 'islam'].map((k) => {
+  const TRADITIONS = ['judaism', 'christianity', 'islam', 'encounters'].map((k) => {
     if (typeof PARTS[k] !== 'function') throw new Error('Missing data part abrahamic-world-religions/' + k + '.js');
     return PARTS[k](helpers);
   });
@@ -315,6 +315,7 @@
       sources: [
         'docs/universes/packs/abrahamic-world-religions/ (research acceptance f7b74e7)',
         'UNESCO World Heritage Centre geographical data: lists 91, 356, 783, 89, 188, 173, 496, 1433, and the Jerusalem and Babylon properties',
+        'Pew Research Center, How the Global Religious Landscape Changed From 2010 to 2020 (9 June 2025), with its methodology and Muslim population reports',
       ],
     },
     /* warm stone, ink blue, restrained gold (research.md §1) */
@@ -370,6 +371,7 @@
         ['Markers', 'Ten heritage references (UNESCO), not exact event sites'],
         ['Codex', 'Places without a map point, as reference cards'],
         ['Layers', 'Judaism, Christianity, Islam and Encounters: filters that may overlap'],
+        ['Estimates', '2020 population estimates (Pew, 2025): dated, rounded, never summed'],
       ],
     },
     layers: LAYERS,
@@ -413,6 +415,8 @@
       { id: 'places', title: 'Places without a map point', list: PLACES },
       { id: 'journeys', title: 'Journeys and spread', list: all('journeys') },
       { id: 'people', title: 'People', list: all('people') },
+      { id: 'encounters', title: 'Encounters', list: all('encounters') },
+      { id: 'population', title: 'Population estimates (2020, published 2025)', list: all('population') },
     ],
   };
 })();

@@ -11,7 +11,7 @@ import { validatePacks } from './atlas-pack-validator.mjs';
 const ctx: { window: Record<string, any> } = { window: {} };
 ctx.window.window = ctx.window;
 vm.createContext(ctx);
-const PARTS = ['judaism', 'christianity', 'islam'];
+const PARTS = ['judaism', 'christianity', 'islam', 'encounters'];
 for (const part of PARTS)
   vm.runInContext(
     readFileSync(new URL(`../public/atlas/packs/abrahamic-world-religions/${part}.js`, import.meta.url), 'utf8'),
@@ -310,4 +310,88 @@ test('Islam ties follow the ledger: within, succession, overlap, and attributed 
   );
   const isj3 = tab('journeys').find(c => c.id === 'ISJ03') as any;
   assert.match(isj3.desc, /no route geometry/);
+});
+
+// Checkpoint 6: Encounters and population estimates (comparative-evidence.md; AI210–AI250, AI292–AI301)
+const cmpRows = csv('identity-and-edges.csv').filter(r => r.source_file === 'comparative-evidence.md');
+const codexIds = new Set<string>(pack.codex.flatMap((t: { list: { id?: string }[] }) => t.list.map(c => c.id)));
+const evById = new Map<string, any>(pack.events.map((x: { id: string }) => [x.id, x]));
+
+test('every comparative record in the crosswalk is built', () => {
+  for (const r of cmpRows.filter(x => x.record_kind === 'identity')) {
+    const id = r.canonical_id;
+    if (r.entity_type === 'event') assert.ok(evById.has(id), `event ${id}`);
+    else if (r.entity_type === 'region-context')
+      continue; // Iran: named in XJ01's text, not a place card
+    else assert.ok(codexIds.has(id) || nodeBy.has(id) || nodeBy.has(id.toLowerCase()), `${r.entity_type} ${id}`);
+  }
+  assert.match((tab('journeys').find(c => c.id === 'XJ01') as any).desc, /Iran/);
+  assert.equal(pack.events.filter((e: { id: string }) => /^XE\d+$/.test(e.id)).length, 6);
+});
+
+test('every identity in the crosswalk resolves to one built record', () => {
+  const sites = new Set<string>(earth.sites.map((s: { id: string }) => s.id));
+  const textOnly = ['region-context', 'jurisdiction-context'];
+  for (const r of csv('identity-and-edges.csv').filter(x => x.record_kind === 'identity')) {
+    const id = r.canonical_id;
+    if (textOnly.includes(r.entity_type) || id === 'jud-pluralism') continue;
+    assert.ok(
+      evById.has(id) || codexIds.has(id) || sites.has(id) || nodeBy.has(id) || nodeBy.has(id.toLowerCase()),
+      `${r.row_id} ${id} (${r.entity_type})`,
+    );
+  }
+});
+
+test('encounters are contacts, never branches', () => {
+  const enc = pack.tree.nodes.filter((n: { layers: string[] }) => n.layers.includes('enc'));
+  assert.equal(enc.length, 7);
+  for (const n of enc) {
+    assert.equal(n.parent, undefined, `${n.id} has no parent`);
+    assert.equal(n.merge, undefined);
+    assert.ok(n.undated, `${n.id}: no invented year`);
+  }
+  const encIds = new Set(enc.map((n: { id: string }) => n.id));
+  for (const l of pack.tree.links.filter((x: any) => encIds.has(x.from) || encIds.has(x.to)))
+    assert.equal(l.type, 'contact', `${l.from} → ${l.to}`);
+  const has = (from: string, to: string) => pack.tree.links.some((l: any) => l.from === from && l.to === to);
+  for (const to of ['daoism-reference', 'buddhism-reference', 'confucian-reference']) assert.ok(has('islam', to));
+  assert.ok(has('hindu-philosophy', 'isc01'), 'Dara Shikoh’s comparison (AI293/AI294)');
+  for (const id of ['sikh-tradition', 'bahai-faith'])
+    assert.ok(!pack.tree.links.some((l: any) => l.from === id || l.to === id), `${id}: no tradition tie`);
+});
+
+test('encounter dates keep different kinds of evidence apart', () => {
+  assert.match(evById.get('XE01').whenText, /781/);
+  assert.match(evById.get('XE01').whenText, /635/);
+  assert.equal(evById.get('XE01').when, 781, 'the inscription is the dated event');
+  assert.equal(evById.get('XE03').when, 1655);
+  assert.equal(evById.get('XE04').when, 1657);
+  assert.equal(evById.get('XE05').when, 1863);
+  assert.equal(evById.get('XE06').when, 1963);
+  for (const id of ['XE01', 'XE02', 'XE03', 'XE04', 'XE05', 'XE06']) {
+    const x = evById.get(id);
+    assert.ok(x.site == null, `${id}: no coordinates`);
+    assert.ok(x.ref || x.side, `${id}: a card or a reason`);
+  }
+  const bahai = nodeBy.get('bahai-faith');
+  assert.ok(
+    bahai.notes.some((n: { k: string }) => n.k === 'self'),
+    'Bahá’í claims attributed',
+  );
+  assert.match(bahai.whenText, /1844/);
+});
+
+test('population estimates carry their year and measure and are never summed', () => {
+  const pop = tab('population') as any[];
+  assert.match(pack.codex.find((t: { id: string }) => t.id === 'population').title, /2020.*2025/);
+  const rows = pop.filter(c => /^XD0\d$/.test(c.id));
+  assert.equal(rows.length, 7);
+  for (const c of rows) {
+    assert.match(c.role, /2020/);
+    assert.match(c.role, /2025/);
+    assert.match(c.desc, /2020/);
+  }
+  assert.match(pop.find(c => c.id === 'XD07').desc, /not assigned to any one tradition/);
+  assert.match(pop.find(c => c.id === 'xd-about').desc, /not added together/);
+  assert.ok(!pop.some(c => /total|combined world/i.test(c.name) && c.id !== 'XD07'));
 });

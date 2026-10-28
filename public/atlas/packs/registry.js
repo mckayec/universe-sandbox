@@ -7,5 +7,5 @@ window.ATLAS_REGISTRY = [
   {id: "foundation", title: "The Foundation Atlas", blurb: "Isaac Asimov · the falling Empire, psychohistory and the two Foundations", accent: "#a8d4f0"},
   {id: "dune", title: "The Dune Atlas", blurb: "Frank Herbert · Arrakis, the spice and the sandworms", accent: "#f0c47e"},
   {id: "cosmere", title: "The Cosmere Atlas", blurb: "Brandon Sanderson · the shattered god, the Shards and the worlds they touched", accent: "#c9b8ff"},
-  {id: "abrahamic-world-religions", title: "Religious Traditions: Origins and Connections", blurb: "Judaism, Christianity and Islam: how communities developed, divided and met others", accent: "#dcc58e", parts: ["judaism", "christianity", "islam"]}
+  {id: "abrahamic-world-religions", title: "Religious Traditions: Origins and Connections", blurb: "Judaism, Christianity and Islam: how communities developed, divided and met others", accent: "#dcc58e", parts: ["judaism", "christianity", "islam", "encounters"]}
 ];
