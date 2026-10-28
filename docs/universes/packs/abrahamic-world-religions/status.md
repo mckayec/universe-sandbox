@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-28
-note: Claude building on branch pack/abrahamic-world-religions (no PR yet). Engine checkpoint 1 (E1–E3, E5 in tree-rel.js / tree.js / tree-view.js, PACK_FORMAT §21.1) pushed at f69a2b6; details in research-review.md §6. Next run: checkpoint 2 (pack skeleton, 10 anchors, reference places + E4). Questions Q01–Q07 still open for research-addendum.md.
+note: Claude building on branch pack/abrahamic-world-religions (no PR yet). Checkpoint 2 (pack skeleton, ten heritage anchors, 59 reference-only place cards, E4 reference cards in PACK_FORMAT §13.1) pushed at 9ab2c9b; details in research-review.md §6. Next run: checkpoint 3 (Judaism nodes, events, journeys). Questions Q01–Q07 still open for research-addendum.md.
 
 # Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others
 
@@ -20,3 +20,4 @@ Track A · view: Earth map + branching tree
 - 2026-10-27: Family-tree engine PR #28 merged by Mckay (merge 138e3f7); Pages deploy succeeded. No stage change.
 - 2026-10-28: Claude: research review written (research-review.md) for research at f7b74e7: accepted for building; findings R1–R7, engine work E1–E5 (emergence windows, typed relations, by-relationship view, reference-only places/events, nonmerge notes), questions Q01–Q07 (Q01: more map anchors, esp. Mecca/Medina). Gazetteer DMS conversions re-checked (16/16). Build starts on pack/abrahamic-world-religions. No stage change; WIP still 3 active.
 - 2026-10-28: Claude: engine checkpoint 1 pushed to pack/abrahamic-world-religions at f69a2b6883571d6c358c80608ab204d5d6821aa2 (uncertain emergence windows, undated nodes, typed relation families, mergers, by-relationship view, not-the-same notes; PACK_FORMAT §21.1). E4 moves to checkpoint 2. No stage change.
+- 2026-10-28: Claude: checkpoint 2 pushed to pack/abrahamic-world-religions at 9ab2c9b61ccdbb626821055324973f942bb1b8e0 (pack registered; ten anchors; reference-only places as codex cards; engine E4). No stage change.

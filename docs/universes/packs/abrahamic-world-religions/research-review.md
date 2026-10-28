@@ -73,3 +73,18 @@ Checks at that SHA: `pnpm check` (format, build, 92/92 tests, check:dist) pass; 
 Not yet built: **E4** (reference-only places list in the place index/codex, events that open a codex card without a site) is moved to checkpoint 2, where the pack's reference places first exist; the validator already rejects sites without numeric coordinates.
 
 Next: checkpoint 2 (pack skeleton, meta/notice/theme, 10 anchors, reference places with E4).
+
+### Checkpoint 2 (2026-10-28): pack skeleton, anchors, reference places, E4 — branch `pack/abrahamic-world-religions` at `9ab2c9b61ccdbb626821055324973f942bb1b8e0`
+
+Built:
+- **E4** (generic, PACK_FORMAT §13.1): codex entries take an `id`; a world's `refPlaces` names a codex tab and adds a "Places without a map point" section with a button to it; an event's `ref` names a codex entry (Chronicle shows "<name> · no map point"; the open event gets a "Reference card" button that opens the codex at that entry, highlighted; only the codex body scrolls). Validator rejects dangling `ref`/`refPlaces` and duplicate entry ids; sites without numeric lat/lon were already rejected.
+- **Pack** `public/atlas/packs/abrahamic-world-religions.js`, registered in `registry.js` and `src/universe-packs.ts`: title/description and the proposed notice from `research.md` §1 verbatim (Q06 still open), warm stone / ink blue / gold theme with an original non-religious sigil, one overview gate, layers Judaism / Christianity / Islam / Encounters (filters, said not to be population categories), Earth start at Jerusalem.
+- **Ten pins only**: the eight `gaz-*` components at the CSV decimals plus `jerusalem` and `jud-babylon`; each heritage marker carries a "Heritage reference … not the exact place of an event" note and the source's scope limit. Jerusalem is one city-level record with separate Christianity and Islam notes.
+- **59 reference cards** (codex tab "Places without a map point"), ids = canonical ids from `identity-and-edges.csv` (shared `london`, `cairo`); city records for Rome, Constantinople, Wittenberg, Cairo, M'zab and Zanzibar name their heritage marker without merging into it. Place non-merges (Babylon/Babylonia/Baghdad, Egypt/Cairo, Land of Israel/Jerusalem, Zanzibar island/town, Xi'an/Nanjing, East Syriac region/Babylonia, Bareilly/Rae Bareli) shown as "Not the same as" text.
+- `tests/atlas-abrahamic.test.ts`: pins equal the ten gazetteer coordinates; every `place` identity in the crosswalk is a pin or a card; cards have no coordinates; validator E4 rules.
+
+Checks at that SHA: `pnpm check` (format, build, 97/97 tests, check:dist) pass; `pnpm test:pages` 12 pages × 2 viewports pass. Screenshots at 3840×2160, 1440×900, 1280×800, 390×844 (start at Jerusalem, Earth details with the reference section, codex): no console errors, no horizontal scroll, 59 cards render; looked at.
+
+Seen, to fix in checkpoint 7 (polish), not blocking: the long title wraps to three lines at 390 px and surface labels can draw over the header there; at 1280 px the layer bar scrolls sideways ("Encounters" clipped) — PR #38 already carries a wrap fix for 821–1400 px; the codex dialog sits low in headless screenshots on main packs too (pre-existing); Earth texture is soft at 4K close zoom (PR #33's Earth bake should help once merged). Event `ref` is exercised by the validator test only until events exist (checkpoint 3). No timeline yet: added with the first dated events.
+
+Next: checkpoint 3 (Judaism tree nodes, events, journeys).
