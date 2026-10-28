@@ -385,6 +385,8 @@ export function validatePacks(dir = PACK_DIR) {
           if (!P.timeline) warn.push(`${tag}: has when but the pack has no timeline (no year filter is shown)`);
         }
         if (it.notes != null && !Array.isArray(it.notes)) issues.push(`${tag}: notes must be an array of {k, t, ref}`);
+        if (it.whenText != null && (typeof it.whenText !== 'string' || !it.whenText.trim()))
+          issues.push(`${tag}: whenText must be a non-empty string`);
       });
       const T = P.timeline;
       if (T) {

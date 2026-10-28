@@ -674,6 +674,9 @@ timeline:{min:-2200, max:2000, step:10, style:"BC/AD", label:"Years",
 * `eras` names are shown beside the selected range (descriptive only).
 * Worlds, sites, events and links take `when:1830` or `when:[-1446,-1406]`, and `approx:true` to print
   "c.". An item is shown when its span overlaps the selected range; items with no `when` always show.
+* `whenText:"eighteenth century"` (optional, sites and events) prints the source's own wording instead of the
+  formatted years; `when` then only drives the year filter. Use it whenever the source is less precise than a
+  year, and leave `when` out entirely when there is no defensible span (the item then always shows).
 * The bar is a two-handle slider plus an "All years" reset. The address keeps it: `#yr=-1500_-1000`.
 * Dates appear next to places and events in the details panel, with the item's layer swatches.
 

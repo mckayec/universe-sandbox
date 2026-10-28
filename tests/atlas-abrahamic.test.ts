@@ -99,3 +99,69 @@ test('reference cards and world links are checked by the pack validator', () => 
   assert.ok(r.issues.some((i: string) => /duplicate entry id a/.test(i)));
   assert.ok(!r.issues.some((i: string) => /e2/.test(i)));
 });
+
+// Checkpoint 3: Judaism (judaism-research.md §4–§6, §8)
+const judRows = csv('identity-and-edges.csv').filter(
+  r => r.record_kind === 'identity' && r.source_file === 'judaism-research.md',
+);
+const tab = (id: string) => pack.codex.find((t: { id: string }) => t.id === id).list as { id: string }[];
+const nodeBy = new Map<string, any>(pack.tree.nodes.map((n: { id: string }) => [n.id, n]));
+
+test('every Judaism record in the crosswalk is built as an event, node, journey or person', () => {
+  const evIds = new Set(pack.events.map((e: { id: string }) => e.id));
+  const journeys = new Set(tab('journeys').map(c => c.id));
+  const people = new Set(tab('people').map(c => c.id));
+  const nodeTypes = ['tradition-or-concept', 'historical-movement', 'intellectual-context', 'institution'];
+  for (const r of judRows) {
+    const id = r.canonical_id;
+    if (r.entity_type === 'event') assert.ok(evIds.has(id), `event ${id}`);
+    else if (r.entity_type === 'journey-or-network') assert.ok(journeys.has(id), `journey ${id}`);
+    else if (r.entity_type === 'person') assert.ok(people.has(id), `person ${id}`);
+    else if ([...nodeTypes, 'organization', 'overview-container'].includes(r.entity_type)) {
+      // jud-pluralism is an explanatory entry, folded into the Judaism hub's notes
+      if (id === 'jud-pluralism')
+        assert.ok(nodeBy.get('judaism').notes.some((n: { t: string }) => /no denominational label/.test(n.t)));
+      else assert.ok(nodeBy.has(id), `node ${id}`);
+    }
+  }
+});
+
+test('Judaism dates never claim more precision than the research', () => {
+  const e = new Map<string, any>(pack.events.map((x: { id: string }) => [x.id, x]));
+  for (const id of ['jud-e00', 'jud-e00b', 'jud-e05']) assert.equal(e.get(id).when, undefined, `${id} has a year`);
+  for (const x of pack.events.filter((v: { id: string }) => v.id.startsWith('jud-')))
+    assert.ok(x.whenText, `${x.id} lacks the source wording`);
+  assert.equal(e.get('jud-e11').site, undefined, 'SAJ location is withheld (JA01)');
+  assert.equal(e.get('jud-e11').ref, undefined, 'SAJ location is withheld (JA01)');
+  for (const id of ['judaism', 'jud-rabbinic', 'jud-orthodox', 'jud-renewal']) assert.ok(nodeBy.get(id).undated, id);
+  assert.deepEqual([...nodeBy.get('jud-hasidic').emerge], [1701, 1800]);
+});
+
+test('Judaism ties follow the typed ledger: no forbidden ancestry, mergers keep both predecessors', () => {
+  const parentOf = (id: string) => nodeBy.get(id).parent;
+  assert.notEqual(parentOf('jud-karaite'), 'jud-sadducees');
+  assert.notEqual(parentOf('jud-karaite'), 'jud-ananites');
+  assert.notEqual(parentOf('jud-rabbinic'), 'jud-pharisees');
+  assert.notEqual(parentOf('jud-haredi'), 'jud-hasidic');
+  assert.deepEqual([...nodeBy.get('jud-aleph').merge], ['jud-pnai-or', 'jud-shalom-center']);
+  assert.deepEqual(
+    [...nodeBy.get('jud-progressive-uk').merge],
+    ['jud-liberal-uk-historical', 'jud-reform-uk-historical'],
+  );
+  assert.ok(nodeBy.get('jud-karaite').notSame.some((n: { id?: string }) => n.id === 'jud-sadducees'));
+  const has = (from: string, to: string, type: string) =>
+    pack.tree.links.some((l: any) => l.from === from && l.to === to && l.type === type);
+  assert.ok(has('jud-aleph', 'jud-renewal', 'within'));
+  assert.ok(has('jud-ananites', 'jud-karaite', 'contact'));
+  assert.ok(has('jud-hasidic', 'jud-haredi', 'overlap'));
+});
+
+test('event whenText is shown instead of the year, and the validator checks it', () => {
+  const ly: { window: Record<string, any> } = { window: {} };
+  vm.runInNewContext(readFileSync(new URL('../public/atlas/layers.js', import.meta.url), 'utf8'), ly);
+  const LY = ly.window.AtlasLayers || ly.window.ATLAS_LAYERS;
+  assert.ok(LY, 'layers helper');
+  const html = LY.itemMeta(null, { style: 'BCE/CE' }, { when: [1701, 1800], whenText: 'Eighteenth century' });
+  assert.match(html, /Eighteenth century/);
+  assert.doesNotMatch(html, /1701/);
+});
