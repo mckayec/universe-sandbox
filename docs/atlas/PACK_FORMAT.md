@@ -719,7 +719,7 @@ tree:{
 | `blurb`, `notes` | details panel text; `notes` use the same labelled kinds as places (20.3) so what a tradition says about itself, what tradition holds and what scholars say stay separate |
 | `world`, `site`, `sites` | where it began and where it spread: shown as "On the map" buttons that close the tree and fly to the place. When a place is open, a "Show … in the family tree" link leads back |
 
-`links` (optional) are extra dashed ties between any two nodes, with a `label` (shown on hover and in the
+`links` (optional) are extra ties between any two nodes (dashed unless typed, 21.1), with a `label` (shown on hover and in the
 details) and an optional `when` (the year the tie is drawn at).
 
 Behaviour:
@@ -732,3 +732,54 @@ Behaviour:
 * Content rules: describe each tradition in its own terms; when the date or the parentage is disputed, say so
   in `notes` (`scholarship`) and mark `approx:true` rather than picking a side silently. A tree draws a
   lineage, not a ranking: no ordering other than by date.
+
+### 21.1 Typed relations, uncertain dates and the relationship view (optional)
+
+For traditions whose sources give a century, a period or no founding date, and whose ties are not all
+"branched from". The code is in `tree-rel.js` (loaded before `tree.js`); the DOM controller is `tree-view.js`
+(loaded after it). `tests/fixtures/tree-typed-demo.js` has a working example.
+
+```js
+tree:{
+  view:"date",                         // "date" (default) or "relationship": which arrangement opens first
+  nodes:[
+    {id:"hub", name:"Hub", undated:true, ongoing:true},                       // no defensible date at all
+    {id:"stream", name:"Stream", parent:"hub", parentType:"within", parentRel:"classified-within",
+     emerge:[1501,1600], whenText:"sixteenth century", ongoing:true, kind:"movement"},
+    {id:"merged", name:"Merged body", merge:["org-a","org-b"], parentRel:"institutional-merger", when:2026,
+     ongoing:true, notSame:[{id:"stream", t:"A shared label does not make them the same."}]}
+  ],
+  links:[{from:"stream", to:"other", type:"contact", rel:"authored-comparison", when:1650}]
+}
+```
+
+| field | notes |
+|---|---|
+| `emerge:[a, b]` | instead of `when`: an uncertain emergence window. Drawn as a ramp from `a` to `b`, then a solid bar. Ends at `until` (a year ≥ `b`), or runs on with `ongoing`. Give the source's own words in `whenText` (shown instead of the numbers); convert a century literally (sixteenth century = 1501–1600) and say nothing more precise than the source does |
+| `undated:true` | instead of `when`: no defensible date. Drawn as an open ring with a dotted line, placed where its earliest dated branch begins (or at the start of the axis) only so it can be drawn. Text and aria labels say "No single founding date" (or `whenText`); no year is ever printed, and the year filter never fades it |
+| `whenText` | the source's wording for the date ("sixteenth century", "early centuries CE") |
+| `kind` | a short type shown beside the date ("legal school", "Sufi order", "movement") |
+| `parentType` | the relation family of the `parent` tie (default `branch`); `parentRel` keeps the research's exact label, shown on hover and in the details |
+| `merge` | two or more predecessor node ids: a body formed by merger. Drawn from every predecessor; without a `parent`, it is placed under the first one for the row order only, and the details list all of them under "Formed by merging" |
+| `notSame` | `[{id, t}]`: "Not the same as …" notes for names or places that must not be merged (`id` optional, a node to link). Places use a note of kind `notsame` (20.3) for the same purpose |
+| `links[].type` / `rel` | the link's relation family and its exact research label. Untyped links (and `also`) are `overlap` |
+
+Relation families (fixed vocabulary; the validator rejects anything else). The key in the details panel lists
+only the families the pack uses.
+
+| family | drawn as | details say |
+|---|---|---|
+| `branch` | solid | Developed from / Developments |
+| `within` | thin solid | Within / Includes |
+| `division` | solid with a cross-stroke where it leaves | Divided from / Divisions |
+| `merger` | one solid from each predecessor | Formed by merging / Merged into |
+| `overlap` | dashed | Overlaps |
+| `contact` | dotted | Contact (comparison, translation, influence, encounter) |
+| `history` | dash-dot | History with (separation and reconciliation) |
+| `context` | faint dotted | Context / Context for |
+
+**By relationship.** The tree dialog has *By date* and *By relationship* buttons. The relationship view is an
+indented, collapsible outline of every visible node (dated, windowed or undated) under the node it is placed
+beneath, each with its typed ties; it needs no horizontal scrolling on phones. Spoiler gating, layer fading
+and selection work the same way in both views. Content rule: a tie says what the sources say and no more; use
+`contact` or `context` rather than a parent when one tradition did not branch from the other.

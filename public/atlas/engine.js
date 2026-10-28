@@ -1070,7 +1070,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
 }
 function eraBlurb(w){let b=w.blurb;const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(cur>=k&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
-const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
+const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",notsame:"Not the same as",note:"Note"},UI.noteLabels||{});
 function placeMeta(s){return LY?LY.itemMeta(LAY,TL,s):"";}
 function siteExtra(s){let h="";if(s.modern)h+='<span class="pm">'+esc(UI.modernLabel||"Today")+': '+esc(s.modern)+'</span>';
   if(S.site===s.id&&TRV&&S.sel){const tn=TRV.nodeFor(S.sel,s.id);if(tn&&treeNodeSeen(tn))h+='<span class="tr-from" data-tree-node="'+esc(tn.id)+'">Show '+esc(tn.name)+' in the '+esc(TRV.T.title.toLowerCase())+'</span>';}
