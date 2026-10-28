@@ -114,8 +114,21 @@
     const fmt = o.fmt || ((y) => String(y));
     /* a branch opens when the picked node is somewhere inside it */
     const holds = (n) => !!o.sel && (V.kids[n.id] || []).some((c) => c.id === o.sel || holds(c));
+    /* reading order, not date order: roots as the pack declares them (so layers keep their order);
+       under a node, siblings grouped by kind (in the order each kind first appears), then as declared */
+    const at = {};
+    T.nodes.forEach((n, i) => (at[n.id] = i));
+    const sorted = (list, root) => {
+      if (root) return list.slice().sort((a, b) => at[a.id] - at[b.id]);
+      const rank = {};
+      list.forEach((n) => {
+        const k = n.kind || '';
+        if (!(k in rank) || at[n.id] < rank[k]) rank[k] = at[n.id];
+      });
+      return list.slice().sort((a, b) => rank[a.kind || ''] - rank[b.kind || ''] || at[a.id] - at[b.id]);
+    };
     const item = (n, depth) => {
-      const kids = V.kids[n.id] || [];
+      const kids = sorted(V.kids[n.id] || [], false);
       const t = ties(T, V, n.id).filter((x) => !(x.dir === 'down' && kids.indexOf(x.n) >= 0) && !(x.dir === 'up' && x.n.id === V.parentOf[n.id] && x.fam === 'branch' && !x.rel));
       const dim = o.dim && o.dim(n);
       const head =
@@ -167,7 +180,7 @@
         '</ul></details></li>'
       );
     };
-    return '<ul class="tr-outline">' + (V.kids[''] || []).map((n) => item(n, 0)).join('') + '</ul>';
+    return '<ul class="tr-outline">' + sorted(V.kids[''] || [], true).map((n) => item(n, 0)).join('') + '</ul>';
   }
 
   root.AtlasTreeRel = { FAMILIES, ORDER, family, dateText, used, legend, ties, outline };

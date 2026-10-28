@@ -436,7 +436,7 @@ function buildShell(K){
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
 '<div class="vignette"></div><div id="labels"></div><div id="fade"></div>'+
 '<header class="top"><a class="gl-home" href="'+esc(U.backHref)+'" title="Back to the Gravity Lab sandbox"><span aria-hidden="true">←</span> '+esc(U.backLabel)+'</a><div class="brand"><svg class="sigil" viewBox="0 0 48 48" aria-hidden="true">'+defs+sig+'</svg>'+
-  '<div><h1 class="chrome">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
+  '<div><h1 class="chrome'+(String(TT).length>26?" long":"")+'">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
  '<div class="controls"><button class="btn" id="idxBtn" aria-expanded="false" aria-controls="index">Worlds</button>'+
   (U.bookLabel?'<span class="seglbl">'+esc(U.bookLabel)+'</span>':"")+
   '<div class="seg" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+

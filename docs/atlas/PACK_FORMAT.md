@@ -810,6 +810,9 @@ only the families the pack uses.
 
 **By relationship.** The tree dialog has *By date* and *By relationship* buttons. The relationship view is an
 indented, collapsible outline of every visible node (dated, windowed or undated) under the node it is placed
-beneath, each with its typed ties; it needs no horizontal scrolling on phones. Spoiler gating, layer fading
+beneath, each with its typed ties; it needs no horizontal scrolling on phones. It reads in pack order, not by
+date or name: roots appear as declared (so declare each layer's nodes together, in layer order), and under a
+node its children are grouped by `kind`, in the order each kind first appears, then as declared. A node with a
+`world` but no site gets an "Open the map" button marked "no single map point for this entry". Spoiler gating, layer fading
 and selection work the same way in both views. Content rule: a tie says what the sources say and no more; use
 `contact` or `context` rather than a parent when one tradition did not branch from the other.

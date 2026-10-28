@@ -197,6 +197,29 @@ test('the relationship outline lists every node with its typed ties and escapes 
   assert.ok(!out.includes('<img') && out.includes('&lt;img src=x&gt;') && out.includes('<em>&lt;b&gt;</em>'));
 });
 
+test('the relationship outline reads in pack order: roots as declared, siblings grouped by kind', () => {
+  const t = TR.normTree(
+    {
+      tree: {
+        nodes: [
+          { id: 'zeta', name: 'Zeta root', undated: true },
+          { id: 'alpha', name: 'Alpha root', undated: true },
+          { id: 'm1', name: 'Movement Z', parent: 'zeta', undated: true, kind: 'movement' },
+          { id: 't1', name: 'Tradition Y', parent: 'zeta', undated: true, kind: 'tradition' },
+          { id: 's1', name: 'School A', parent: 'zeta', undated: true, kind: 'school' },
+          { id: 't2', name: 'Tradition B', parent: 'zeta', undated: true, kind: 'tradition' },
+        ],
+      },
+    },
+    null,
+    null,
+  );
+  const html = REL.outline(t, TR.visibleTree(t, null), { fmt });
+  const order = [...html.matchAll(/data-go="([a-z0-9]+)"/g)].map(m => m[1]);
+  // not alphabetical: Zeta is declared first; movements were declared first, then traditions (Y, B), then schools
+  assert.deepEqual(order, ['zeta', 'm1', 't1', 't2', 's1', 'alpha']);
+});
+
 test('the legend lists only the families and date marks the pack uses', () => {
   const lg = REL.legend(T);
   assert.match(lg, /Succession or division/);

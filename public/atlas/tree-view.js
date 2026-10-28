@@ -190,7 +190,7 @@
             })
             .join('') +
           '</p>';
-      else if (n.world) h += '<p class="tr-rel"><button class="btn tr-map" data-site="">Show on the map</button></p>';
+      else if (n.world) h += '<p class="tr-rel"><button class="btn tr-map" data-site="">Open the map</button> <i class="tr-why">no single map point for this entry</i></p>';
       info.innerHTML = h;
     }
 
@@ -220,14 +220,18 @@
       return groups.map((g) => '<p class="tr-rel"><b>' + ESC(g.title) + '</b>' + g.items.join('') + '</p>').join('');
     }
 
-    function focusNode(id) {
+    function focusNode(id, instant) {
       const q = window.CSS && CSS.escape ? CSS.escape(id) : id;
       const g = scroll.querySelector('[data-node="' + q + '"],.tr-oi[data-go="' + q + '"]');
       if (!g) return;
       const r = g.getBoundingClientRect();
       const b = scroll.getBoundingClientRect();
       if (r.left < b.left + 20 || r.right > b.right - 20 || r.top < b.top || r.bottom > b.bottom)
-        scroll.scrollBy({ left: r.left - b.left - 60, top: r.top - b.top - b.height / 3, behavior: 'smooth' });
+        scroll.scrollBy({
+          left: r.left - b.left - 60,
+          top: r.top - b.top - b.height / 3,
+          behavior: instant ? 'auto' : 'smooth',
+        });
       try {
         g.focus({ preventScroll: true });
       } catch (e) {
@@ -325,7 +329,8 @@
         el.hidden = false;
         sel = id && T.by[id] ? id : sel;
         draw();
-        if (sel) focusNode(sel);
+        /* after the dialog has its size (a deep link opens it during start-up): jump, then focus */
+        if (sel) requestAnimationFrame(() => open && sel && focusNode(sel, true));
         else {
           const c = el.querySelector('[data-tr="close"]');
           if (c) c.focus();
