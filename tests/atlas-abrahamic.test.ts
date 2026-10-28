@@ -11,7 +11,7 @@ import { validatePacks } from './atlas-pack-validator.mjs';
 const ctx: { window: Record<string, any> } = { window: {} };
 ctx.window.window = ctx.window;
 vm.createContext(ctx);
-const PARTS = ['judaism', 'christianity'];
+const PARTS = ['judaism', 'christianity', 'islam'];
 for (const part of PARTS)
   vm.runInContext(
     readFileSync(new URL(`../public/atlas/packs/abrahamic-world-religions/${part}.js`, import.meta.url), 'utf8'),
@@ -238,4 +238,76 @@ test('Christianity ties follow the research: context not parentage, successors n
         notSame(r.canonical_id, r.target_id) || notSame(r.target_id, r.canonical_id),
         `${r.row_id}: ${r.canonical_id} / ${r.target_id}`,
       );
+});
+
+// Checkpoint 5: Islam (islam-research.md §2–§6, islam-record-audit.md)
+const islRows = csv('identity-and-edges.csv').filter(r => r.source_file === 'islam-research.md');
+
+test('every Islam record in the crosswalk is built as a node, event, journey, person or card', () => {
+  const evIds = new Set(pack.events.map((e: { id: string }) => e.id));
+  const journeys = new Set(tab('journeys').map(c => c.id));
+  const people = new Set(tab('people').map(c => c.id));
+  const places = new Set(tab('places').map(c => c.id));
+  const nodeTypes = ['tradition-or-concept', 'tradition', 'legal-school', 'concept', 'devotional-order', 'movement'];
+  for (const r of islRows.filter(x => x.record_kind === 'identity')) {
+    const id = r.canonical_id;
+    if (r.entity_type === 'event') assert.ok(evIds.has(id), `event ${id}`);
+    else if (['journey-or-network', 'scholarly-network'].includes(r.entity_type))
+      assert.ok(journeys.has(id), `journey ${id}`);
+    else if (r.entity_type === 'person') assert.ok(people.has(id), `person ${id}`);
+    else if (r.entity_type === 'place')
+      assert.ok(places.has(id) || earth.sites.some((s: { id: string }) => s.id === id), `place ${id}`);
+    else if (nodeTypes.includes(r.entity_type)) assert.ok(nodeBy.has(id.toLowerCase()), `node ${id}`);
+  }
+  assert.equal(pack.events.filter((e: { id: string }) => /^ISE\d+$/.test(e.id)).length, 15);
+  assert.equal(tab('people').filter(c => /^ISH\d+$/.test(c.id)).length, 14);
+});
+
+test('Islam is its own tradition, and no school, order or tradition gets an invented year', () => {
+  const islam = nodeBy.get('islam');
+  assert.equal(islam.parent, undefined, 'not a child of Judaism or Christianity');
+  assert.ok(islam.undated);
+  for (const id of ['ist02', 'ist03', 'ist05', 'ist06', 'ist07', 'isc01', 'ism02', 'ism04', 'ism05'])
+    assert.ok(nodeBy.get(id).undated, `${id} has no single founding date`);
+  for (let i = 1; i <= 8; i++) assert.ok(nodeBy.get('isl0' + i).undated, `isl0${i}`);
+  for (let i = 1; i <= 6; i++) assert.ok(nodeBy.get('iso0' + i).undated, `iso0${i}`);
+  assert.deepEqual([...nodeBy.get('ist04').emerge], [601, 700]);
+  assert.equal(nodeBy.get('ist08').when, 1094);
+  for (const x of pack.events.filter((v: { id: string }) => /^ISE/.test(v.id))) {
+    assert.ok(x.whenText, `${x.id} needs the source wording`);
+    assert.ok(x.site == null, `${x.id}: no coordinates in the Islam dossier`);
+    assert.ok(x.ref || x.side, `${x.id}: a reference card or a reason for no place`);
+  }
+  const e = new Map<string, any>(pack.events.map((x: { id: string }) => [x.id, x]));
+  assert.match(e.get('ISE14').whenText, /1866/);
+  assert.match(e.get('ISE14').whenText, /1867/, 'Deoband date discrepancy kept visible');
+  assert.match(e.get('ISE05').whenText, /January 740/, 'month precision kept');
+});
+
+test('Islam ties follow the ledger: within, succession, overlap, and attributed Ahmadi identity', () => {
+  const up = (id: string) => [nodeBy.get(id).parent, nodeBy.get(id).parentType];
+  for (const id of ['ist02', 'ist03', 'ist04']) assert.deepEqual(up(id), ['islam', 'within']);
+  for (const id of ['ist05', 'ist06', 'ist07']) assert.deepEqual(up(id), ['ist03', 'within']);
+  for (const id of ['ist08', 'ist09']) assert.deepEqual(up(id), ['ist06', 'division']);
+  for (const id of ['ist10', 'ist11']) assert.deepEqual(up(id), ['ist09', 'division']);
+  for (const id of ['isl01', 'isl02', 'isl03', 'isl04']) assert.deepEqual(up(id), ['ist02', 'within']);
+  for (let i = 1; i <= 6; i++) assert.equal(nodeBy.get('iso0' + i).parent, 'isc01');
+  assert.notEqual(nodeBy.get('isc01').parentType, 'branch', 'Sufism is not a fourth branch');
+  const has = (from: string, to: string, type: string) =>
+    pack.tree.links.some((l: any) => l.from === from && l.to === to && l.type === type);
+  assert.ok(has('ism02', 'ism03', 'overlap'));
+  assert.ok(has('ism04', 'isc01', 'overlap'));
+  assert.ok(has('ism05', 'isl01', 'overlap'));
+  assert.ok(has('isc04', 'jud-covenant-tradition', 'context'), 'AI302 is a textual reference, not descent');
+  const ahm = nodeBy.get('ism01');
+  assert.ok(
+    ahm.notes.some((n: { k: string }) => n.k === 'self'),
+    'self-description field',
+  );
+  assert.ok(
+    ahm.notes.some((n: { t: string }) => /1974/.test(n.t) && /not this atlas/.test(n.t)),
+    'external classification field',
+  );
+  const isj3 = tab('journeys').find(c => c.id === 'ISJ03') as any;
+  assert.match(isj3.desc, /no route geometry/);
 });

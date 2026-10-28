@@ -1,9 +1,9 @@
 /* =====================================================================================================
    RELIGIOUS TRADITIONS: ORIGINS AND CONNECTIONS — Track A data pack (PACK_FORMAT §13.1, §20, §21).
-   BUILD CHECKPOINT 4 (draft, not reviewed): meta, notice, theme, layers, the ten map anchors and the
-   reference-only place cards here; the Judaism and Christianity trees, Chronicles, journeys and people come from
-   the data parts in abrahamic-world-religions/ (PACK_FORMAT §1.1, listed in registry.js). Islam and Encounters
-   follow in checkpoints 5–6.
+   BUILD CHECKPOINT 5 (draft, not reviewed): meta, notice, theme, layers, the ten map anchors and the
+   reference-only place cards here; the Judaism, Christianity and Islam trees, Chronicles, journeys and people
+   come from the data parts in abrahamic-world-religions/ (PACK_FORMAT §1.1, listed in registry.js). Encounters
+   follow in checkpoint 6.
 
    Research: docs/universes/packs/abrahamic-world-religions/ at research acceptance f7b74e7 — research.md,
    build-contract.md, gazetteer-evidence.md/.csv, identity-and-edges.csv and the three tradition dossiers.
@@ -293,7 +293,7 @@
     JOURNEY_NOTE: ' Shown as an ordered list, not a drawn route: no surveyed path or geocoded waypoint is supported.',
   };
   const PARTS = (window.ATLAS_PACK_PARTS || {})['abrahamic-world-religions'] || {};
-  const TRADITIONS = ['judaism', 'christianity'].map((k) => {
+  const TRADITIONS = ['judaism', 'christianity', 'islam'].map((k) => {
     if (typeof PARTS[k] !== 'function') throw new Error('Missing data part abrahamic-world-religions/' + k + '.js');
     return PARTS[k](helpers);
   });
