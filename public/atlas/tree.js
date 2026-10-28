@@ -66,8 +66,9 @@
     return false;
   }
 
-  /* An undated node sits on the axis where its earliest dated branch begins (a leaf: where its parent does),
-     only so the chart can draw it; it is never given that year in text, aria labels or filters. */
+  /* An undated node is drawn only so the chart can show it; it is never given that year in text, aria labels or
+     filters. With a parent (or merge predecessor) it sits where that node is drawn, so it never looks as if it
+     began with a much later descendant; a root sits where its earliest dated branch begins, else at the axis start. */
   function placeUndated(nodes, by, min) {
     const kids = {};
     nodes.forEach((n) => {
@@ -83,18 +84,15 @@
       });
       return best;
     };
-    nodes.forEach((n) => {
-      if (!n.undated) return;
-      const e = earliest(n.id, new Set([n.id]));
-      n.from = n.to = isFinite(e) ? e : null;
-    });
-    /* an undated leaf sits where its (placed) parent or first predecessor begins, else at the axis start */
     const at = (n, seen) => {
       if (n.from != null) return n.from;
       const up = n.parent || n.merge[0];
-      if (!up || seen.has(up)) return min;
-      seen.add(up);
-      return at(by[up], seen);
+      if (up && by[up] && !seen.has(up)) {
+        seen.add(up);
+        return at(by[up], seen);
+      }
+      const e = earliest(n.id, new Set([n.id]));
+      return isFinite(e) ? e : min;
     };
     nodes.forEach((n) => {
       if (n.undated && n.from == null) n.from = n.to = at(n, new Set([n.id]));

@@ -42,6 +42,31 @@ export function validatePacks(dir = PACK_DIR) {
     const ctx = { window: {}, console };
     ctx.window.window = ctx.window;
     vm.createContext(ctx);
+    const fid = f.replace(/\.js$/, '');
+    const parts = (REG.find(r => r.id === fid) || {}).parts || [];
+    let partErr = null;
+    // optional data parts (PACK_FORMAT 1.1): packs/<id>/<part>.js, run in order before the pack file
+    for (const part of [].concat(parts)) {
+      if (!/^[a-z0-9-]+$/.test(String(part))) {
+        partErr = `registry part "${part}" must be [a-z0-9-]`;
+        break;
+      }
+      const pf = path.join(DIR, fid, part + '.js');
+      if (!fs.existsSync(pf)) {
+        partErr = `registry part ${fid}/${part}.js is missing`;
+        break;
+      }
+      try {
+        vm.runInContext(fs.readFileSync(pf, 'utf8'), ctx, { filename: `${fid}/${part}.js` });
+      } catch (e) {
+        partErr = `LOAD ERROR in ${fid}/${part}.js: ${e.message}`;
+        break;
+      }
+    }
+    if (partErr) {
+      out[f] = { error: partErr };
+      continue;
+    }
     try {
       vm.runInContext(fs.readFileSync(path.join(DIR, f), 'utf8'), ctx, { filename: f });
     } catch (e) {

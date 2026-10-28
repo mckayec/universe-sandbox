@@ -30,7 +30,7 @@ body.choosing{overflow:auto;background:#04050b}
 </head><body>
 <script src="packs/registry.js"></script>
 <script>
-/* Loads three.js r128, engine.js and packs/<id>.js for ?pack=<id>; with no pack, lists the registry. */
+/* Loads three.js r128, engine.js, any registry `parts` and packs/<id>.js for ?pack=<id>; with no pack, lists the registry. */
 (function(){
   var REG=window.ATLAS_REGISTRY||[];
   var id=new URLSearchParams(location.search).get("pack");
@@ -52,6 +52,8 @@ body.choosing{overflow:auto;background:#04050b}
     .then(function(){return load("tree.js");})
     .then(function(){return load("tree-view.js");})
     .then(function(){return load("engine.js");})
+    /* optional data parts (PACK_FORMAT 1.1): packs/<id>/<part>.js, loaded in order before the pack itself */
+    .then(function(){return (entry.parts||[]).reduce(function(p,n){return p.then(function(){return load("packs/"+encodeURIComponent(entry.id)+"/"+encodeURIComponent(n)+".js");});},Promise.resolve());})
     .then(function(){return load("packs/"+encodeURIComponent(entry.id)+".js");})
     .then(function(){var P=(window.ATLAS_PACKS||{})[entry.id];if(!P)throw new Error("packs/"+entry.id+".js did not register ATLAS_PACKS[\""+entry.id+"\"].");window.AtlasEngine.start(P);})
     .catch(function(e){if(window.AtlasEngine)window.AtlasEngine.fail(e);else{console.error(e);

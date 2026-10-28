@@ -41,6 +41,20 @@ Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 
 {id:"my-series", title:"The My Series Atlas", blurb:"One line for the chooser.", accent:"#9db8ff"},
 ```
 
+### 1.1 Data parts (optional)
+
+A large pack may split its data into part files so no file passes about 800 lines. List them in the registry
+entry as `parts:["judaism","christianity"]`; `index.html` (and the validator) run `packs/<id>/<part>.js` in that
+order before `packs/<id>.js`. A part only registers data for the pack file to read; it must not register the pack:
+
+```js
+/* packs/my-series/places.js */
+((window.ATLAS_PACK_PARTS = window.ATLAS_PACK_PARTS || {})["my-series"] =
+  window.ATLAS_PACK_PARTS["my-series"] || {}).places = function (helpers) { return { list: [ ... ] }; };
+```
+
+Part names use lowercase letters, digits and `-`. A missing part is a load error.
+
 Unknown fields are ignored. Every field marked *optional* may be left out; the engine falls back to
 the default shown. A pack with only `id`, `meta.title`, `books` and `worlds` loads (see section 17).
 
@@ -772,7 +786,7 @@ tree:{
 | field | notes |
 |---|---|
 | `emerge:[a, b]` | instead of `when`: an uncertain emergence window. Drawn as a ramp from `a` to `b`, then a solid bar. Ends at `until` (a year ≥ `b`), or runs on with `ongoing`. Give the source's own words in `whenText` (shown instead of the numbers); convert a century literally (sixteenth century = 1501–1600) and say nothing more precise than the source does |
-| `undated:true` | instead of `when`: no defensible date. Drawn as an open ring with a dotted line, placed where its earliest dated branch begins (or at the start of the axis) only so it can be drawn. Text and aria labels say "No single founding date" (or `whenText`); no year is ever printed, and the year filter never fades it |
+| `undated:true` | instead of `when`: no defensible date. Drawn as an open ring with a dotted line, placed where its parent (or first merge predecessor) is drawn, or for a root where its earliest dated branch begins (else at the start of the axis), only so it can be drawn. Text and aria labels say "No single founding date" (or `whenText`); no year is ever printed, and the year filter never fades it |
 | `whenText` | the source's wording for the date ("sixteenth century", "early centuries CE") |
 | `kind` | a short type shown beside the date ("legal school", "Sufi order", "movement") |
 | `parentType` | the relation family of the `parent` tie (default `branch`); `parentRel` keeps the research's exact label, shown on hover and in the details |

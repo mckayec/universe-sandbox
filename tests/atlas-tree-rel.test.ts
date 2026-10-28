@@ -49,6 +49,21 @@ test('uncertain windows, undated nodes and plain years normalise separately', ()
     null,
   );
   assert.equal(lone.by.b.from, lone.min);
+  // an undated node under a dated parent sits at that parent, not at a much later dated descendant
+  const nested = TR.normTree(
+    {
+      tree: {
+        nodes: [
+          { id: 'root', name: 'Root', when: 10 },
+          { id: 'mid', name: 'Mid', parent: 'root', undated: true },
+          { id: 'late', name: 'Late', parent: 'mid', when: 1500 },
+        ],
+      },
+    },
+    null,
+    null,
+  );
+  assert.equal(nested.by.mid.from, 10);
   // until ends a lifespan
   assert.deepEqual(plain(T.by['org-a'].when), [1840, 2025]);
 });
