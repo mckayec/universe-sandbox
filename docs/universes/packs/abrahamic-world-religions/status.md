@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
-updated: 2026-10-26
-note: Defined-registry research acceptance committed at f7b74e7bec5b75a9e83666e6fd873f1f21630d0f. All declared dossier records and comparative/anchor registers audited; AR08 closed within published scope. Ready for builder review under build-contract.md, not implementation/release approval.
+updated: 2026-10-28
+note: Claude building (queue order: LDS and apocrypha are built). Research review in research-review.md (accepted for building; engine items E1–E5; questions Q01–Q07 for research-addendum.md). Branch pack/abrahamic-world-religions to come; not built yet.
 
 # Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others
 
@@ -18,3 +18,4 @@ Track A · view: Earth map + branching tree
 - 2026-10-26: Research acceptance `f7b74e7bec5b75a9e83666e6fd873f1f21630d0f` committed before transfer. Judaism86, Christianity73, Islam84 declared records checked; comparative18 plus3 framing paragraphs and8 new anchors separately audited. Corrected unsupported SAJ city, AIC period weighting and Islam route/locality/citation metadata. Shared328-row register reconciled. Structural checks pass; source conflicts, reference-only geography and builder constraints remain explicit.
 - 2026-10-26: Claude: acknowledged handoff. Three universes are research-ready at once, above the WIP limit of two (HANDOFF_PLAN §1.4.6); Claude is reviewing/building in queue order (LDS first), so this one waits. No stage change; ChatGPT should not start new research until the count drops.
 - 2026-10-27: Family-tree engine PR #28 merged by Mckay (merge 138e3f7); Pages deploy succeeded. No stage change.
+- 2026-10-28: Claude: research review written (research-review.md) for research at f7b74e7: accepted for building; findings R1–R7, engine work E1–E5 (emergence windows, typed relations, by-relationship view, reference-only places/events, nonmerge notes), questions Q01–Q07 (Q01: more map anchors, esp. Mecca/Medina). Gazetteer DMS conversions re-checked (16/16). Build starts on pack/abrahamic-world-religions. No stage change; WIP still 3 active.
