@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-28
-note: Claude building (queue order: LDS and apocrypha are built). Research review in research-review.md (accepted for building; engine items E1–E5; questions Q01–Q07 for research-addendum.md). Branch pack/abrahamic-world-religions to come; not built yet.
+note: Claude building (queue order: LDS and apocrypha are built). Research review in research-review.md (accepted for building; engine items E1–E5; questions Q01–Q07 for research-addendum.md). Next run: branch pack/abrahamic-world-religions from main, engine checkpoint 1 (E1–E5 in tree.js with tests). Not built yet.
 
 # Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others
 
