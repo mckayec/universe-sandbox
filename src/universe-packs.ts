@@ -2,6 +2,7 @@ import { EXHIBITS, type ExhibitId } from './exhibits.ts';
 
 export type UniversePackId =
   | 'museum-sandbox'
+  | 'abrahamic-world-religions'
   | 'solar-system'
   | 'red-rising'
   | 'sun-eater'
@@ -221,6 +222,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#c9b8ff',
     'atlas/?pack=cosmere',
     'Reconstructed from the Cosmere books, the maps printed in them and cited Coppermind pages; star positions are schematic.',
+  ),
+  atlasPack(
+    'abrahamic-world-religions',
+    'Religious Traditions: Origins and Connections',
+    'Real history',
+    'How Jewish, Christian and Muslim communities developed, divided, met other traditions and spread, with traditions and historical evidence kept apart.',
+    '#dcc58e',
+    'atlas/?pack=abrahamic-world-religions',
+    'Built from cited research dossiers; map markers are UNESCO heritage references, and other places are listed without coordinates.',
   ),
   plannedPack(
     'star-wars',

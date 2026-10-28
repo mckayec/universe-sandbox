@@ -242,6 +242,8 @@ export function validatePacks(dir = PACK_DIR) {
     const U = P.ui || {};
     if (U.go && !wid.has(U.go.id)) issues.push(`ui.go.id -> missing world ${U.go.id}`);
     // codex
+    const cxIds = new Map();
+    const cxTabs = new Set((P.codex || []).map(t => t.id));
     (P.codex || []).forEach(t =>
       (t.list || []).forEach(x => {
         if (!x.name) issues.push(`codex ${t.id}: entry without name`);
@@ -249,8 +251,25 @@ export function validatePacks(dir = PACK_DIR) {
         (x.books || []).forEach(b => {
           if (!okBook(b)) issues.push(`codex ${t.id}/${x.name}: unknown book ${b}`);
         });
+        if (x.id != null) {
+          if (!/^[a-z0-9_-]+$/i.test(x.id)) issues.push(`codex ${t.id}/${x.name}: bad id "${x.id}"`);
+          if (cxIds.has(x.id)) issues.push(`codex: duplicate entry id ${x.id}`);
+          cxIds.set(x.id, x);
+        }
       }),
     );
+    // reference cards (PACK_FORMAT 13.1): events and worlds that point into the codex
+    (P.events || []).forEach(e => {
+      if (e.ref == null) return;
+      const x = cxIds.get(e.ref);
+      if (!x) issues.push(`event ${e.id}: ref -> missing codex entry "${e.ref}"`);
+      else if (okBook(e.book) && (x.first || 1) > e.book)
+        warn.push(`event ${e.id}: ref ${e.ref} first book ${x.first} > event book ${e.book} (spoiler line)`);
+    });
+    (P.worlds || []).forEach(w => {
+      if (w.refPlaces != null && !cxTabs.has(w.refPlaces))
+        issues.push(`world ${w.id}: refPlaces -> missing codex tab "${w.refPlaces}"`);
+    });
     // galaxy point specs
     const G = P.galaxy || {};
     const checkPoint = (p, where) => {

@@ -463,6 +463,19 @@ codex: [
 Entry fields: `name` (req), `desc` (req), `role`, `books` (badges), `first` (gating, default
 `min(books)` else 1), `more` (`[[book, text], …]` spoiler-gated additions).
 
+### 13.1 Reference cards: places without a map point (optional)
+For places with no sourced coordinates (Track A atlases), do not invent a pin: make each one a codex entry
+with an `id`, in a tab of its own.
+
+| field | notes |
+|---|---|
+| codex entry `id` | `[a-z0-9_-]`, unique across all tabs. Lets other items open this entry directly |
+| world `refPlaces` | a codex tab id. The world's details panel adds a "Places without a map point" section with a button that opens that tab (`ui.refPlacesTitle` / `ui.refPlacesNote` rename the heading and note) |
+| event `ref` | a codex entry id, for an event with no anchored `site`. The Chronicle shows the card's name with "no map point", and the open event gets a "Reference card" button that opens the codex at that entry, highlighted |
+
+The validator rejects a `ref` or `refPlaces` that points nowhere, duplicate entry ids, and (as before) any site
+without numeric `lat`/`lon`, so a missing coordinate can never fall back to 0,0.
+
 ---------------------------------------------------------------------------------------------------
 
 ## 14. `galaxy`

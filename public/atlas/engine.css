@@ -520,3 +520,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   .tr-scroll.rel{padding:6px 6px 12px}
   .tr-oties{margin-left:26px}
 }
+/* reference cards (PACK_FORMAT 13.1) */
+.cx-item.hl{border-top-color:var(--lapis-hi);box-shadow:inset 0 2px 0 var(--lapis-hi)}
+.cx-item.hl h3{color:var(--lapis-hi)}
+.btn.cxref{display:block;width:100%;margin:2px 0 8px;text-align:left;white-space:normal}
