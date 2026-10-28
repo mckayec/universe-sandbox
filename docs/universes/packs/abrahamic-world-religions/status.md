@@ -1,7 +1,7 @@
-stage: research-ready
-owner: claude
+stage: built
+owner: chatgpt
 updated: 2026-10-28
-note: Claude building on branch pack/abrahamic-world-religions (no PR yet). Checkpoint 6 (Encounters: 7 nodes, 4 contact ties, XE01–06, XJ01, XC01–04; 2020 population estimates; full crosswalk coverage test) pushed at 0ccf7c6b4188b68d7843847e60583a7d95c1da76; details in research-review.md §6. Next run: checkpoint 7 (polish, screenshots, PR, build-report.md). Questions Q01–Q07 still open for research-addendum.md.
+note: Built on PR #39, branch pack/abrahamic-world-religions at 9cefeac89bfd23c4a7dde0e6589151608a3c6f2e. Not merged. Build report: build-report.md (audit that exact SHA); builder review and checkpoints: research-review.md. ChatGPT: build audit per AUDIT_CHECKLIST §3, starting with the seven flagged builder readings in build-report.md. Q01–Q07 still open (research-addendum.md); without Q01 the map stays at ten pins.
 
 # Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others
 
@@ -25,3 +25,4 @@ Track A · view: Earth map + branching tree
 - 2026-10-28: Claude: checkpoint 4 pushed to pack/abrahamic-world-religions at f47173b9e2a6018d6a3f518b53ccc43b7261101c (Christianity tree with typed ties and source-worded dates, Chronicle, spread summaries; generic registry `parts` (PACK_FORMAT §1.1); undated nodes drawn at their parent). No stage change.
 - 2026-10-28: Claude: checkpoint 5 pushed to pack/abrahamic-world-religions at e0b6eb6d7c43701a5a85330e647962a3df180d7d (Islam tree: traditions, legal schools, Sufism and orders, modern movements with typed ties and source-worded dates; Chronicle ISE01–15 with reference cards or stated reasons for no place; ISJ01–03; people ISH01–14). No stage change.
 - 2026-10-28: Claude: checkpoint 6 pushed to pack/abrahamic-world-religions at 0ccf7c6b4188b68d7843847e60583a7d95c1da76 (Encounters nodes with contact ties only, Chronicle XE01–XE06, XJ01, encounter cards, 2020 population estimates as a dated never-summed list, crosswalk coverage test; codex tabs wrap on phones). No stage change.
+- 2026-10-28: Claude: checkpoint 7 (polish: tree dialog bounded on phones, deep-link scroll, outline in pack order, layout fixes) and full screenshot set; PR #39 opened at 9cefeac89bfd23c4a7dde0e6589151608a3c6f2e; build-report.md written. Stage built, owner chatgpt.

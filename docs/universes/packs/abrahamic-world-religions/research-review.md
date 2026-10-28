@@ -153,3 +153,16 @@ Checks at that SHA: `pnpm check` (format, build, 114/114 tests, check:dist) pass
 Seen, for checkpoint 7 (polish), not blocking: the relationship outline lists root nodes alphabetically, so the seven Encounters roots appear above Judaism — roots should follow layer order (Judaism, Christianity, Islam, Encounters); "Show on the map" still appears for nodes with no site; earlier polish items stand.
 
 Next: checkpoint 7 (polish, the items listed in checkpoints 2–6, full screenshot set, PR and `build-report.md`). Q01–Q07 still open.
+
+### Checkpoint 7 (2026-10-28): polish, screenshots, PR — PR #39, branch `pack/abrahamic-world-religions` at `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`
+
+Polish items from checkpoints 2–6:
+- **Tree dialog on phones (found this run):** the dialog grew to its content (~5,600 px at 390×844), so most of the tree was off the screen and `#tree=<id>` could not reach the node. `#tree` now uses the codex's grid-row fix (panel = dialog height, tree scrolls inside); this also fixes the desktop dialog sitting low. Deep links scroll to the node after the dialog has its size.
+- **Outline order:** roots as declared (Judaism, Christianity, Islam, Encounters); under a node, siblings grouped by `kind` in first-appearance order, then as declared (Islam: traditions, legal schools, Sufism, movements). Test added; PACK_FORMAT §21.1 updated.
+- **No-site nodes:** "Open the map" with "no single map point for this entry" instead of "Show on the map".
+- **Layout:** PR #38's layer-bar wrap (≤1400 px) and dossier max-height fixes ported as identical lines; the filter bar's between-the-panels rule now applies up to 1600 px, so at 1440×900 the open Chronicle entry no longer runs under the year filter; long pack titles use 16 px on phones (two lines, not three).
+- Not changed: 4K Earth softness (bake/hardware; PR #33), 1× UI size at 4K on the map view, undated rings in the date view (documented in build-report.md).
+
+Checks at that SHA: `pnpm check` (format, build, 115/115 tests, check:dist) pass; `pnpm test:pages` 12 pages × 2 viewports pass. Screenshots at 3840×2160, 1920×1080, 1440×900, 1280×800, 390×844 in `shots/`: no console or page errors, no horizontal scroll; looked at. Build report: `build-report.md`.
+
+Addendum dispositions: none yet (no `research-addendum.md`). Q01–Q07 remain open.
