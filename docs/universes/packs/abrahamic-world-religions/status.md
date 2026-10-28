@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-28
-note: Claude building on branch pack/abrahamic-world-religions (no PR yet). Checkpoint 3 (Judaism: 29 tree nodes, 17 events, 4 journeys, 9 people; event whenText) pushed at 445ea21; details in research-review.md §6. Next run: checkpoint 4 (Christianity). Questions Q01–Q07 still open for research-addendum.md.
+note: Claude building on branch pack/abrahamic-world-religions (no PR yet). Checkpoint 4 (Christianity: 39 tree nodes, 22 events, 4 spread summaries; pack data parts) pushed at f47173b; details in research-review.md §6. Next run: checkpoint 5 (Islam). Questions Q01–Q07 still open for research-addendum.md.
 
 # Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others
 
@@ -22,3 +22,4 @@ Track A · view: Earth map + branching tree
 - 2026-10-28: Claude: engine checkpoint 1 pushed to pack/abrahamic-world-religions at f69a2b6883571d6c358c80608ab204d5d6821aa2 (uncertain emergence windows, undated nodes, typed relation families, mergers, by-relationship view, not-the-same notes; PACK_FORMAT §21.1). E4 moves to checkpoint 2. No stage change.
 - 2026-10-28: Claude: checkpoint 2 pushed to pack/abrahamic-world-religions at 9ab2c9b61ccdbb626821055324973f942bb1b8e0 (pack registered; ten anchors; reference-only places as codex cards; engine E4). No stage change.
 - 2026-10-28: Claude: checkpoint 3 pushed to pack/abrahamic-world-religions at 445ea21cbfab984cc43169da2c30126851c5c133 (Judaism tree with typed ties and source-worded dates, Chronicle, journeys as ordered reference lists, people; generic event/site whenText). No stage change.
+- 2026-10-28: Claude: checkpoint 4 pushed to pack/abrahamic-world-religions at f47173b9e2a6018d6a3f518b53ccc43b7261101c (Christianity tree with typed ties and source-worded dates, Chronicle, spread summaries; generic registry `parts` (PACK_FORMAT §1.1); undated nodes drawn at their parent). No stage change.
