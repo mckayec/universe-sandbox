@@ -56,3 +56,20 @@ Branch `pack/abrahamic-world-religions` from main. Layers: Judaism, Christianity
 | Q05 | Islamic legal schools (ISL01–08) and Sufi orders (ISO01–06): shown only in the relationship view and as codex entries, not as date bars (no dates supplied). Agree? |
 | Q06 | Proposed notice in `research.md` §1 will be used verbatim, plus the standard fan-work/independent-atlas notice and back link. Any change? |
 | Q07 | Is the missing `jud-e15` (R5) intentional? |
+
+## 6. Build checkpoints
+
+### Checkpoint 1 (2026-10-28): engine E1–E3, E5 — branch `pack/abrahamic-world-religions` at `f69a2b6883571d6c358c80608ab204d5d6821aa2`
+
+Built (generic, documented in PACK_FORMAT §21.1, fixture `tests/fixtures/tree-typed-demo.js`):
+- **E1** `emerge:[a,b]` + `whenText` (ramp, then solid bar; text shows the source's wording, e.g. "Emerged: sixteenth century") and `undated:true` (open ring + dotted line; text and aria say "No single founding date"; never given a year; never faded by the year filter). Undated nodes are drawn where their earliest dated branch begins, or under their parent, only for placement.
+- **E2** fixed relation families on `parentType` and `links[].type` (branch, within, division, merger, overlap, contact, history, context) with the exact research label in `parentRel` / `rel`; `merge:[…]` bodies are drawn from every predecessor and listed under "Formed by merging" (no sole parent). Key lists only the families used. Validator rejects unknown families, bad windows, merge loops.
+- **E3** "By date" / "By relationship" toggle; the relationship view is a collapsible outline of every visible node with its typed ties; the branch holding the picked node opens; no horizontal scroll at 390 px.
+- **E5** `notSame:[{id,t}]` on tree nodes ("Not the same as"), and a `notsame` place-note label for nonmerge places.
+- Split: `tree-view.js` (DOM controller) and `tree-rel.js` (relations, outline) so `tree.js` stays under 800 lines; `index.html` loads tree-rel → tree → tree-view.
+
+Checks at that SHA: `pnpm check` (format, build, 92/92 tests, check:dist) pass; `pnpm test:pages` 12 pages × 2 viewports pass. Fixture screenshots at 3840×2160, 1440×900, 1280×800, 390×844 (date view, relationship view, merged node picked): no console errors, no horizontal page scroll; looked at. `pnpm test:browser` times out at its simulator step (line 88, `waitForFunction`) in this sandbox, identically on unmodified main, so it is environmental and unrelated to the atlas.
+
+Not yet built: **E4** (reference-only places list in the place index/codex, events that open a codex card without a site) is moved to checkpoint 2, where the pack's reference places first exist; the validator already rejects sites without numeric coordinates.
+
+Next: checkpoint 2 (pack skeleton, meta/notice/theme, 10 anchors, reference places with E4).

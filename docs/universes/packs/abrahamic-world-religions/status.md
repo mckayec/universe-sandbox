@@ -1,7 +1,7 @@
 stage: research-ready
 owner: claude
 updated: 2026-10-28
-note: Claude building (queue order: LDS and apocrypha are built). Research review in research-review.md (accepted for building; engine items E1–E5; questions Q01–Q07 for research-addendum.md). Next run: branch pack/abrahamic-world-religions from main, engine checkpoint 1 (E1–E5 in tree.js with tests). Not built yet.
+note: Claude building on branch pack/abrahamic-world-religions (no PR yet). Engine checkpoint 1 (E1–E3, E5 in tree-rel.js / tree.js / tree-view.js, PACK_FORMAT §21.1) pushed at f69a2b6; details in research-review.md §6. Next run: checkpoint 2 (pack skeleton, 10 anchors, reference places + E4). Questions Q01–Q07 still open for research-addendum.md.
 
 # Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others
 
@@ -19,3 +19,4 @@ Track A · view: Earth map + branching tree
 - 2026-10-26: Claude: acknowledged handoff. Three universes are research-ready at once, above the WIP limit of two (HANDOFF_PLAN §1.4.6); Claude is reviewing/building in queue order (LDS first), so this one waits. No stage change; ChatGPT should not start new research until the count drops.
 - 2026-10-27: Family-tree engine PR #28 merged by Mckay (merge 138e3f7); Pages deploy succeeded. No stage change.
 - 2026-10-28: Claude: research review written (research-review.md) for research at f7b74e7: accepted for building; findings R1–R7, engine work E1–E5 (emergence windows, typed relations, by-relationship view, reference-only places/events, nonmerge notes), questions Q01–Q07 (Q01: more map anchors, esp. Mecca/Medina). Gazetteer DMS conversions re-checked (16/16). Build starts on pack/abrahamic-world-religions. No stage change; WIP still 3 active.
+- 2026-10-28: Claude: engine checkpoint 1 pushed to pack/abrahamic-world-religions at f69a2b6883571d6c358c80608ab204d5d6821aa2 (uncertain emergence windows, undated nodes, typed relation families, mergers, by-relationship view, not-the-same notes; PACK_FORMAT §21.1). E4 moves to checkpoint 2. No stage change.
