@@ -1,5 +1,7 @@
 # Deep Worlds content review — bounded checkpoint 1
 
+**Historical checkpoint:** see [checkpoint 2](audit-continuation.md) for current 210-record coverage and DW07, and [builder handoff](builder-handoff.md) for parallel fixes. Counts below describe checkpoint 1 only.
+
 2026-10-29. **Changes required; content review incomplete. No canon, technical or release approval.**
 
 ## Exact revision and evidence boundaries

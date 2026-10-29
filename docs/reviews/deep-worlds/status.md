@@ -1,7 +1,7 @@
 stage: content-review
 owner: chatgpt
 updated: 2026-10-29
-note: Bounded checkpoint at PR37 head f778b6b6fbbeb173763f2a79cd2d8bc0ff0d6f49 (older 14f7a52 differs only in docs). See audit.md, sample-ledger.csv and validation.md. Five open finding groups DW02–DW06; DW01 narrowly source-fixed. 5/20 landmarks and 3/15 events per pack inspected; only 3 sampled records partially compared to primary excerpts. Not final approval; remaining source/rendered acceptance open.
+note: Checkpoint 2 at PR37 f778b6b; see audit-continuation.md and builder-handoff.md. 20 landmarks and 15 changed/repointed events inspected per pack (210 records); 8 primary comparisons, 202 uncompared. Seven additional Society samples. DW02–DW07 open; ready fixes may proceed with Claude while ChatGPT retains evidence review. Not final approval; rendered acceptance unperformed.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -31,3 +31,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-10-27: Claude built the work on `atlas/deep-worlds` (head bb5eb23; PR #37 head 14f7a52 after merging main) and handed the canon audit to ChatGPT. Not merged; Mckay approves after the audit.
 
 - 2026-10-29: ChatGPT published a bounded exact-head content-review checkpoint on a separate documentation branch. All six builder-flag groups dispositioned with open evidence needs; 48 sample records logged, not canon-certified. Two primary-supported copy corrections; prior delayed-transition/effect and Bressia defects remain; Europa VI clause now source-gated. 17 targeted unit tests pass, existing implementation CI passed. Browser/server work prohibited and not performed. Review remains content-review/chatgpt pending the uncompleted sampling and evidence gates.
+
+- 2026-10-29: Continued existing review to 120 landmark/90 event source-code samples, added DW07 Tabr spoiler leak and extended DW05 to Castle Caladan. Added four primary source access records, explicit omission options and seven Society scene/caption samples. Evidence gates remain open; parallel builder fixes authorized, no application changes.

@@ -20,3 +20,14 @@ Existing exact-head [CI40461916117](https://github.com/mckayec/universe-sandbox/
 ## Unperformed acceptance
 
 No desktop/mobile/keyboard/actual click/animation acceptance. No full canon or earliest-appearance certification. Most flagged late-book passages remain inaccessible in this checkpoint; no claims based on memory or secondary summaries are promoted. The initial suspected site-dossier era leak was not established and is not a finding. Full-book sampling and Society's expanded captions remain open as quantified in audit.md.
+
+## Checkpoint 2 — 2026-10-29
+
+- Exact implementation remains f778b6b6fbbeb173763f2a79cd2d8bc0ff0d6f49; review parent 5e4f3f3faa17a88b46672436b172f8424093c653; remote PR37/41 freshly fetched, open and unchanged before edits.
+- `python docs/reviews/deep-worlds/check-ledger.py /tmp/deep-packs.json`: PASS, 210 unique identities and exact application texts, each pack 20 landmarks/15 events; 202 uncompared, 6 partial/corrective, 2 supported opening narratives. Pack JSON was evaluated from the detached exact-head checkout, not a primary novel source.
+- Node comparison of all 90 sampled events to c91ea29: PASS, every record new or changed in world/site/lm/text/book.
+- `node docs/reviews/deep-worlds/source-checks.cjs /workspace/universe-deep-head`: PASS as **defect characterization**. Existing Europa checks and three known defects retained; new actual `lmOk` isolation confirms DW07 at book I with other filters eligible. Passing this script means the documented defects reproduce, not that implementation is safe.
+- `node --check docs/reviews/deep-worlds/source-checks.cjs`: PASS. `git diff --check`: PASS after normalizing CSV line endings.
+- No application changes; prior 17 targeted unit-test results remain valid for unchanged implementation, not rerun merely to generate activity. No new build or full-suite success claimed.
+- Formatting attempt `pnpm exec prettier --write` for changed Markdown/CJS failed before formatting: ENOENT creating `/home/agent/.local/share/pnpm` during pnpm's automatic dependency setup. `pnpm --version` alone succeeded (11.25.0). No dependency installation or alternate execution surface used to bypass a denial. Formatting remains unverified; whitespace and syntax checks above are actual results.
+- Browser/server/rendered/mobile/keyboard acceptance remains prohibited and unperformed. No screenshots, live previews, formal approval, merge or deployment.

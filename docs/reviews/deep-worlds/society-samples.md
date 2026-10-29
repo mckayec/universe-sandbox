@@ -1,0 +1,17 @@
+# Society scene and caption sample
+
+Implementation f778b6b6fbbeb173763f2a79cd2d8bc0ff0d6f49, 2026-10-29. **Seven additional source-level samples**, not all ~35 new scenes. These supplement checkpoint 1's Europa gate and delayed-transition probes. No rendered scene, mobile interaction or visual reconstruction was tested. All seven remain primary-incomplete: one has partial contextual support (S07), six have none for their detailed text.
+
+Paths below refer to `public/atlas/society.js`. Gate readings include the late mutation block at 9170–9253, not just initial site definitions. Gate presence is distinct from canon accuracy and downgrade cleanup.
+
+| Sample | Exact target / current claim | Source-level gate disposition | Primary evidence / safe disposition |
+|---|---|---|---|
+| SO01 | `tyche` landmark `morningstar`: flagship text with later-book clauses | `lmGate` at 9250 supplies IV base “Darrow’s flagship.”, V repair text and VI full text; site has minimum IV. Correct structural separation is present, but DW02 can retain stale effects. | No relevant IV/V/VI passages obtained for all clauses. Retain only as unapproved reconstruction pending passages; do not treat the era object as proof of first appearance. |
+| SO02 | `SITES.prologue` at 7353: “Aja waiting on a black islet off Tyche”, girl/window, bombing and Darrow's launch | `SITE_FROM.prologue=4`; Tyche also IV. Chained effect callback at 7347 has no independent era check; needs DW02 invalidation. | S07 establishes Mercury campaign context at IV, **not** this prologue. Requires Iron Gold prologue including whether “Aja” denotes a person/representation. Do not assert a correction from a secondary hint. Withhold detailed adaptation pending passage; optional neutral context: “Darrow returns from the campaign on Mercury.” |
+| SO03 | `nixian/altar` at 5344: leviathan, floating altar, Fá's killing and Darrow's emergence | `SITE_FROM.nixian=6`, kill toggle era VI. Source metadata appropriately separates it from I–V; stale effects remain DW02. | Light Bringer passage not obtained. Omit detailed scene until supplied; no invented canonical altar coordinates. |
+| SO04 | `FX.holykill`, CAPS at 5471, 0.3s: feast/proclamation at acropolis of Zeus | Parent site VI/toggle VI; caption array has no independent era field. Needs lifecycle cleanup, not only entry gate. | Light Bringer passage needed for speaker, location and order. Omit unsupported caption/scene pending evidence. |
+| SO05 | Same CAPS, 5s: gravskiffs lift leviathan from Discordia Sea onto floating altar | Same VI entry metadata; DW02 applies. | Passage needed for transport, sea and staging. Omit pending evidence. |
+| SO06 | Same CAPS, 20.5s: “Before the Ascomanni, Fá slays it.” | Same VI entry metadata; DW02 applies. | Passage needed for actor/action/sequence; not independently confirmed. Omit pending evidence. |
+| SO07 | Same CAPS, 30.5s: Darrow bursts from carcass | Same VI entry metadata; DW02 applies. | Passage needed for emergence timing and concealment; not independently confirmed. Omit pending evidence. |
+
+Required later acceptance: compare these passages, then source-check the corrected head; verify eligible entry, era downgrade during pending fade and during active captions, overlay disposal and the chained Tyche→orbit transition. A source-level pass cannot certify rendered timing. Other new scenes/captions (e.g. Ladon, Deepgrave, Rome, Pandora, Heraklion, Vanguard, duel and siege) remain outside this seven-record sample and must not be reported as reviewed here.
