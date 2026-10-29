@@ -5,7 +5,7 @@
 // not physical times; stellar disruption, disk viscosity and outflows are not resolved.
 import * as THREE from 'three';
 import { G, type Kind } from '../celestial-catalog.ts';
-import { infallDurationFor, infallRemainingMass } from '../infall-model.ts';
+import { infallDurationFor, infallRemainingMass, releaseCapture } from '../infall-model.ts';
 import { updateScale } from '../bodies/lifecycle.ts';
 import { ensureMatterStream } from './matter-streams.ts';
 import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts';
@@ -59,9 +59,7 @@ export function beginInfall(eater: Body, food: Body) {
   );
 }
 function endInfall(food: Body) {
-  if (!food.infall) return;
-  food.holdStage = food.infall.heldStage;
-  food.infall = undefined;
+  releaseCapture(food);
 }
 /**
  * Advance every captured body. Returns the bodies whose last layers have just been handed over so the caller

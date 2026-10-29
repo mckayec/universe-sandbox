@@ -16,3 +16,12 @@ export function infallRemainingMass(startMass: number, age: number, duration: nu
   const u = Math.min(1, Math.max(0, age / duration));
   return startMass * Math.pow(1 - u, 1.35);
 }
+/**
+ * Ends a capture without swallowing the body (eater gone, body dragged away): the hold flag goes back to what it
+ * was before capture, which `infall.heldStage` alone records while the capture runs.
+ */
+export function releaseCapture(food: { holdStage?: boolean; infall?: { heldStage: boolean } }) {
+  if (!food.infall) return;
+  food.holdStage = food.infall.heldStage;
+  food.infall = undefined;
+}

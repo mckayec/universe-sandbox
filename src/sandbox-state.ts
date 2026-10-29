@@ -195,18 +195,55 @@ export function validateSavedBodies(
 }
 
 /**
+ * Why a present capture record cannot be trusted, or `undefined` when it is absent or has the required shape.
+ * `undefined` and `null` both mean "no capture" (older saves); `null` is kept as absence for compatibility.
+ * Anything else must be a plain object with a boolean `heldStage`. Without that flag the body's hold state before
+ * capture is lost, and guessing it would silently freeze or unfreeze the star's evolution, so the whole snapshot
+ * is refused instead (see `assertSavedInfalls`).
+ */
+export function savedInfallProblem(saved: unknown): string | undefined {
+  if (saved == null) return undefined;
+  if (typeof saved !== 'object' || Array.isArray(saved)) return 'capture record is not an object';
+  if (typeof (saved as { heldStage?: unknown }).heldStage !== 'boolean')
+    return 'capture record has no original hold flag';
+  return undefined;
+}
+
+/** Thrown when a snapshot carries a capture record whose original hold flag cannot be recovered. */
+export class SavedInfallError extends Error {
+  constructor(bodyId: number, problem: string) {
+    super(`Saved object ${bodyId}: ${problem}`);
+    this.name = 'SavedInfallError';
+  }
+}
+
+/**
+ * Refuses a snapshot containing a malformed capture record. Callers restore inside `restoreUniverse`, whose
+ * fallback keeps the previous universe and reports that the save could not be restored.
+ */
+export function assertSavedInfalls(saved: readonly { id: number; infall?: unknown }[]) {
+  for (const entry of saved) {
+    const problem = savedInfallProblem(entry.infall);
+    if (problem) throw new SavedInfallError(entry.id, problem);
+  }
+}
+
+/**
  * Validates a saved slow-accretion capture once every restored body exists. Returns the capture to resume, or
  * `cancel` with the body's original hold flag when the record is unusable (eater missing or not a compact object,
- * non-finite or out-of-range numbers). `undefined` means there was no capture to restore (including older saves).
+ * non-finite or out-of-range numbers). `reject` means the record is malformed and its original hold flag is lost
+ * (see `savedInfallProblem`). `undefined` means there was no capture to restore (including older saves).
  */
 export function restoreSavedInfall(
   saved: unknown,
   selfId: number,
   eaterKind: (id: number) => string | undefined,
-): { resume: SavedInfall } | { cancel: boolean } | undefined {
-  if (saved == null || typeof saved !== 'object') return undefined;
+): { resume: SavedInfall } | { cancel: boolean } | { reject: string } | undefined {
+  if (saved == null) return undefined;
+  const problem = savedInfallProblem(saved);
+  if (problem) return { reject: problem };
   const raw = saved as Partial<SavedInfall>,
-    held = raw.heldStage === true,
+    held = raw.heldStage as boolean,
     kind = finite(raw.eaterId) ? eaterKind(raw.eaterId as number) : undefined;
   if (
     raw.eaterId === selfId ||
@@ -235,4 +272,27 @@ export function restoreSavedInfall(
       heldStage: held,
     },
   };
+}
+
+/**
+ * Applies a saved capture to a freshly restored body. A resumed capture always holds stellar evolution (the same
+ * invariant `beginInfall` establishes), whatever the separately saved top-level flag says; the original flag lives
+ * only in `infall.heldStage` and comes back when the capture ends. A cancelled capture restores that original
+ * flag now. A malformed record throws `SavedInfallError`; an absent record leaves the body untouched.
+ */
+export function applySavedInfall(
+  body: { id: number; holdStage?: boolean; infall?: SavedInfall },
+  saved: unknown,
+  eaterKind: (id: number) => string | undefined,
+) {
+  const result = restoreSavedInfall(saved, body.id, eaterKind);
+  if (!result) return;
+  if ('reject' in result) throw new SavedInfallError(body.id, result.reject);
+  if ('resume' in result) {
+    body.infall = { ...result.resume };
+    body.holdStage = true;
+  } else {
+    body.infall = undefined;
+    body.holdStage = result.cancel || undefined;
+  }
 }

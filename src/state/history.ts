@@ -5,7 +5,8 @@ import {
   loadUniverse,
   saveUniverse,
   validateSavedBodies,
-  restoreSavedInfall,
+  applySavedInfall,
+  assertSavedInfalls,
   type SavedBody,
   type SandboxSnapshot,
 } from '../sandbox-state.ts';
@@ -129,6 +130,9 @@ function rebuildUniverse(snapshot: SandboxSnapshot) {
   resetSimulation();
   app.historySuspended = true;
   const { bodies: saved, dropped } = validateSavedBodies(snapshot.bodies, KNOWN_KINDS, KNOWN_STAGES);
+  // A capture record whose original hold flag is lost cannot be restored honestly: refuse the whole snapshot so
+  // restoreUniverse falls back to the previous universe and the caller reports it.
+  assertSavedInfalls(saved);
   for (const entry of [...saved].sort((a, b) => a.id - b.id)) restoreBody(entry);
   restoreInfalls(saved);
   app.nextId = Math.max(snapshot.nextId, ...bodies.map(body => body.id + 1));
@@ -151,15 +155,15 @@ function rebuildUniverse(snapshot: SandboxSnapshot) {
   if (!app.currentExhibit) document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
   return dropped;
 }
-/** Resume slow-accretion captures once every body exists; an unusable record cancels and restores the original hold. */
+/**
+ * Resume slow-accretion captures once every body exists. A resumed capture always holds evolution; an unusable
+ * record cancels and restores the original hold; a malformed one throws (already refused by assertSavedInfalls).
+ */
 function restoreInfalls(saved: readonly SavedBody[]) {
   const byId = new Map(bodies.map(body => [body.id, body]));
   for (const entry of saved) {
     const body = byId.get(entry.id);
-    const result = body && restoreSavedInfall(entry.infall, entry.id, id => byId.get(id)?.kind);
-    if (!body || !result) continue;
-    if ('resume' in result) body.infall = { ...result.resume };
-    else body.holdStage = result.cancel || undefined;
+    if (body) applySavedInfall(body, entry.infall, id => byId.get(id)?.kind);
   }
 }
 function restoreBody(saved: SandboxSnapshot['bodies'][number]) {
