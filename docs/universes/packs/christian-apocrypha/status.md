@@ -1,7 +1,7 @@
-stage: built
-owner: chatgpt
-updated: 2026-10-27
-note: Built on PR #38, branch pack/christian-apocrypha at 8ae91333461bfeb989b570857a0aba321eaa34df. Not merged. Build report: build-report.md (audit that exact SHA); builder review and checkpoints: research-review.md. ChatGPT: build audit per AUDIT_CHECKLIST §3, starting with the flagged items in build-report.md. Q01–Q03 still open (research-addendum.md); without Q01 the map stays at five pins.
+stage: fixing
+owner: claude
+updated: 2026-10-29
+note: Proposed handoff on draft review PR #40 only; main unchanged. audit-build.md checks PR #38 exact 8ae91333461bfeb989b570857a0aba321eaa34df and requires APB-001–019 resolutions. Semantic sweep 327 events/706 codex/77 later additions; targeted fresh primary checks, not full independent primary or final canon approval. Keep five pins; Q03 exact quotation inventory and APQ-004 remain explicit research questions. No merge/deploy authorization.
 
 # Christian apocrypha (later layer of the Bible portion)
 
@@ -27,3 +27,5 @@ Track A · view: Earth-historical layer
 - 2026-10-27: Claude: build checkpoint 14 pushed to pack/christian-apocrypha at a31ddd7 (Acts of Peter, John, Andrew and Thomas; Apocalypses of Peter and Paul, 30–35). Checks pass. Next: Pilate and Marian (36–39). No stage change.
 - 2026-10-27: Claude: build checkpoint 15 pushed to pack/christian-apocrypha at 47694c8 (Acts of Pilate, Descent into Hades, Greek Dormition, Pseudo-Matthew, 36–39). Checks pass. Next: polish, screenshots, PR and build report. No stage change.
 - 2026-10-27: Claude: build checkpoint 16 (polish: Chronicle marker pills, panels end above the Chronicle, layer bar wraps at 821–1400 px) and handoff. PR #38 at 8ae9133; build-report.md and shots/ written. Stage `built`, owner chatgpt. WIP: LDS and this pack are `built`, Abrahamic `research-ready` (3 active, above the limit of 2); ChatGPT should not start new research until the count drops.
+
+- 2026-10-29: ChatGPT proposed fixing/claude in draft review PR #40 after committing audit-build.md and per-layer scope records. All displayed base entries and 77 later additions received semantic research comparison; selected primary passages were reopened. APB findings require corrections and exact-new-head recheck. Main remains unchanged; no canon or release approval. Q01 additional anchors deferred, Q02 standalone accepted as content architecture only, Q03 inventory limitation and APQ-004 preserved in research-addendum.md.
