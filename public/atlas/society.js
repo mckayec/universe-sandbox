@@ -2798,6 +2798,7 @@ if(SITES.hyperion)SITES.hyperion.eras={4:{blurb:"Iron Gold. Capital of the Repub
 if(SITES.lykos)SITES.lykos.eras={4:{blurb:"By Iron Gold, many Reds have left the mines for camps and towns on the surface, though the old colonies remain."}};
 })();
 
+let gateLandmarks=()=>{};
 /* ---------- scene spoiler gates (lore review, revision 3) ----------
    One table for every bird's-eye scene: `from` on a scene or landmark withholds it (label,
    dossier entry, focus target, tooltip, entry link and direct entry) before that book; a
@@ -2827,15 +2828,19 @@ if(SITES.lykos)SITES.lykos.eras={4:{blurb:"By Iron Gold, many Reds have left the
     europa:{athena:{from:6},
       villa:{desc:{1:"White limestone walls and towers on the island’s height."},full:2},
       garden:{desc:{1:"Lorn’s private forest within the castle walls."},full:2},
-      leviathan:{desc:{1:"Carved monsters of Europa’s Discordia Sea and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kalibar’s 300-year-old bull."},full:6}},
+      leviathan:{desc:{1:"A sea-creature illustration on Europa."},full:6}},
     heliopolis:{bay:{desc:{5:"The bay west of the city. Glirastes’ floating home, the Lady Beatrice, hangs above the city."},full:6},
       via:{desc:{5:"The triumphal avenue where the battle for the city is fought after the shield falls."},full:6}},
     tyche:{morningstar:{desc:{5:"Darrow’s flagship, under repair at Tyche when the war turns."},full:6}}
   };
-  Object.entries(LM).forEach(([k,m])=>{const S=SITES[k];if(!S)return;
+  /* Re-runnable: applied here and again once every later extension has registered its
+     landmarks (see the end of this file), so late additions can't bypass the table. A desc
+     already keyed by book is left alone. */
+  gateLandmarks=()=>Object.entries(LM).forEach(([k,m])=>{const S=SITES[k];if(!S)return;
     Object.entries(m).forEach(([id,o])=>{const l=S.landmarks.find(x=>x.id===id);if(!l)return;
       if(o.from)l.from=Math.max(l.from||1,o.from);
-      if(o.desc)l.desc=o.full?Object.assign({},o.desc,{[o.full]:l.desc}):o.desc;});});
+      if(o.desc&&(l.desc==null||typeof l.desc!=="object"))l.desc=o.full?Object.assign({},o.desc,{[o.full]:l.desc}):o.desc;});});
+  gateLandmarks();
   /* scene containers: base blurbs and facts safe for the first book the scene is open */
   const A=SITES.agea;if(A)A.facts=A.facts.filter(f=>f[0]!=="Jackal’s seat");
   const T=SITES.attica;if(T){T.epithet="City of seven peaks";
@@ -3162,8 +3167,15 @@ function showTipBody(b,ev){const ne=eventsFor(b.id).filter(e=>!bookFilter||e.boo
   tip.innerHTML='<p class="eyebrow">'+esc(bodyF(b,"epithet"))+'</p><h3>'+esc(b.name)+'</h3>'+(b.control!=="—"?'<div class="meta">Held by <b>'+esc(bodyF(b,"control"))+'</b></div>':'')+'<p>'+esc(bodyF(b,"blurb"))+'</p>'+
    (b.kind==="sun"?'':'<div class="meta">'+ne+' event'+(ne===1?'':'s')+' · '+np+' place'+(np===1?'':'s')+'</div><div class="cta">Click to descend</div>');
   tip.hidden=false;if(ev)placeTip(ev.clientX,ev.clientY);}
+/* Reading-selection generation: bumped on every book change so queued transitions and
+   event callbacks scheduled under an earlier selection never commit. */
+let navGen=0;
+function navGuard(fn){const g=navGen;return fn&&(function(){if(g===navGen)return fn.apply(this,arguments);});}
+function dismissBanner(){const b=$("#banner");if(!b)return;clearTimeout(showBanner._t);b.style.opacity=0;b.hidden=true;}
 function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books · spoilers";
-  if(!changed)return;applyEraTextures();renderIndex();if(mode==="globe"&&cur){buildGlobe(cur);buildPoiLabels();setModeLabels();}
+  if(!changed)return;navGen++;stopFx();dismissBanner();hideTip();
+  if(selEvent){const se=EVENTS.find(x=>x.id===selEvent);if(se&&bookFilter&&se.book!==bookFilter)selEvent=null;}
+  applyEraTextures();renderIndex();if(mode==="globe"&&cur){buildGlobe(cur);buildPoiLabels();setModeLabels();}
   if(mode==="globe"&&cur&&selPoi&&!(POIS[cur.id]||[]).some(p=>p.id===selPoi&&poiVisible(p)))selPoi=null;
   if(mode==="site"&&curSite){
     if(!siteVisible(curSiteKey)){leaveSite();return;}
@@ -3260,7 +3272,7 @@ let navT=null,navSeen={};function showNavHint(m){const h=$("#navhint");if(navSee
 /* ===================== TRANSITIONS ===================== */
 function flyHome(){ctl.follow=null;anim={t0:performance.now(),dur:1100,from:{tg:ctl.target.clone(),r:ctl.r,th:ctl.theta,ph:ctl.phi},to:{tg:new THREE.Vector3(),r:home.r,th:ctl.theta,ph:home.phi},done:()=>{anim=null;}};}
 function fadeTo(eyebrow,name,fn,hold){$("#fadeE").textContent=eyebrow;$("#fadeN").textContent=name;fade.classList.add("on");
-  setTimeout(()=>{fn();setTimeout(()=>fade.classList.remove("on"),hold||140);},400);}
+  setTimeout(()=>{if(fn()===false){fade.classList.remove("on");return;}setTimeout(()=>fade.classList.remove("on"),hold||140);},400);}
 function goBody(id){const b=byId[id];if(!b)return;if(mode==="system")descend(id);else switchGlobe(b);}
 function descend(id){if(anim)return;const b=byId[id];if(!b)return;hideTip();hoverSel=null;
   if(mode!=="system"){switchGlobe(b);return;}
@@ -3281,8 +3293,10 @@ function ascend(){if(mode!=="globe")return;stopFx();const id=cur.id;
     anim={t0:performance.now()+200,dur:1300,from:{tg:o.pos.clone(),r:byId[id].size*6,th:ctl.theta,ph:ctl.phi},to:{tg:new THREE.Vector3(),r:home.r,th:ctl.theta-.2,ph:home.phi},done:()=>{anim=null;}};
     applyHL(false);renderCrumbs();});}
 function enterSite(key,focus,after){const S=SITES[key];if(!S||!siteVisible(key))return;hideTip();hoverSel=null;
-  if(S.preload&&!S._ready){$("#fadeE").textContent="Charting";$("#fadeN").textContent=S.name;fade.classList.add("on");S.preload().then(()=>{S._ready=true;enterSite(key,focus,after);});return;}
-  fadeTo("Descending to",S.name,()=>{stopFx();if(mode==="globe")clearPoiLabels();
+  const g=navGen;
+  if(S.preload&&!S._ready){$("#fadeE").textContent="Charting";$("#fadeN").textContent=S.name;fade.classList.add("on");
+    S.preload().then(()=>{S._ready=true;if(g!==navGen||!siteVisible(key)){fade.classList.remove("on");return;}enterSite(key,focus,after);});return;}
+  fadeTo("Descending to",S.name,()=>{if(g!==navGen||!siteVisible(key))return false;stopFx();if(mode==="globe")clearPoiLabels();
     if(!cur||cur.id!==S.body){cur=byId[S.body];}
     mode="site";curSiteKey=key;selLm=null;selEvent=null;if(S._tog)Object.keys(S._tog).forEach(k=>S._tog[k]=false);loadSite(key);buildSiteLabels();
     if(focus){const lm=siteLms(S).find(l=>l.id===focus);if(lm){selLm=lm.id;sFly(lm.cam);}}
@@ -3291,16 +3305,16 @@ function leaveSite(){if(mode!=="site")return;const b=byId[curSite.body];const po
   switchGlobe(b,()=>{if(poi)selectPoi(poi,true);});}
 function toSystem(){if(mode==="site"){stopFx();clearSite();curSite=null;curSiteKey=null;mode="globe";}if(mode==="globe")ascend();}
 let beltPulse=0;
-function gotoEvent(ev,fromTimeline){hideTip();selEvent=ev.id;
+function gotoEvent(ev,fromTimeline){hideTip();selEvent=ev.id;const live=fn=>navGuard(fn);
   if(ev.body==="belt"){if(mode!=="system")toSystem();else flyHome();beltPulse=4;showBanner(ev.title,ev.where,"Book "+BOOKS[ev.book].n);applyHL(false);return;}
   const fx=ev.fx&&FX_VIEW[ev.fx];
-  if(fx&&fx.view==="site"){if(mode==="site"&&curSiteKey===fx.site){renderDossier();applyHL(true);playFx(ev.fx);}else enterSite(fx.site,null,()=>{selEvent=ev.id;renderDossier();applyHL(true);playFx(ev.fx);});return;}
-  if(fx&&fx.view==="globe"){const go=()=>{selEvent=ev.id;renderDossier();applyHL(true);playFx(ev.fx);};if(mode==="globe"&&cur.id===fx.body)go();else if(mode==="system"){descendThen(fx.body,go);}else switchGlobe(byId[fx.body],go);return;}
+  if(fx&&fx.view==="site"){if(mode==="site"&&curSiteKey===fx.site){renderDossier();applyHL(true);playFx(ev.fx);}else enterSite(fx.site,null,live(()=>{selEvent=ev.id;renderDossier();applyHL(true);playFx(ev.fx);}));return;}
+  if(fx&&fx.view==="globe"){const go=live(()=>{selEvent=ev.id;renderDossier();applyHL(true);playFx(ev.fx);});if(mode==="globe"&&cur.id===fx.body)go();else if(mode==="system"){descendThen(fx.body,go);}else switchGlobe(byId[fx.body],go);return;}
   const p=ev.poi&&poiById[ev.body+":"+ev.poi];
   if(p&&p.site&&siteVisible(p.site)){const focus=ev.lm||p.focus;if(mode==="site"&&curSiteKey===p.site){const lm=siteLms(curSite).find(l=>l.id===focus);if(lm){selLm=lm.id;sFly(lm.cam);}renderDossier();applyHL(true);}
-    else enterSite(p.site,focus,()=>{selEvent=ev.id;renderDossier();applyHL(true);});return;}
-  const act=()=>{selEvent=ev.id;if(ev.poi)selectPoi(ev.poi,true);else{selPoi=null;renderDossier();}applyHL(true);
-    const it=dossier.querySelector('.evitem[data-id="'+ev.id+'"]');if(it)it.scrollIntoView({block:"nearest",behavior:"smooth"});};
+    else enterSite(p.site,focus,live(()=>{selEvent=ev.id;renderDossier();applyHL(true);}));return;}
+  const act=live(()=>{selEvent=ev.id;if(ev.poi)selectPoi(ev.poi,true);else{selPoi=null;renderDossier();}applyHL(true);
+    const it=dossier.querySelector('.evitem[data-id="'+ev.id+'"]');if(it)it.scrollIntoView({block:"nearest",behavior:"smooth"});});
   if(mode==="globe"&&cur.id===ev.body){act();return;}
   if(mode==="system")descendThen(ev.body,act);else switchGlobe(byId[ev.body],act);}
 function descendThen(id,fn){const b=byId[id];if(anim)return;anim={t0:performance.now(),dur:1100,follow:id,from:{tg:ctl.target.clone(),r:ctl.r,th:ctl.theta,ph:ctl.phi},to:{r:b.size*(b.moon?7:5),th:ctl.theta+.35,ph:Math.min(ctl.phi,1.15)},done:()=>switchGlobe(b,fn)};}
@@ -3375,7 +3389,7 @@ function buildPoiLabels(){clearPoiLabels();markers.forEach(m=>{const el=document
   el.addEventListener("mouseenter",ev=>{hoverSel={body:cur.id,poi:m.p.id};applyHL(true);showTipPoi(m.p,ev.clientX,ev.clientY);});
   el.addEventListener("mousemove",ev=>placeTip(ev.clientX,ev.clientY));
   el.addEventListener("mouseleave",()=>{hoverSel=null;applyHL(false);hideTip();});
-  el.addEventListener("click",()=>{hideTip();selEvent=null;if(m.p.site&&siteVisible(m.p.site)){selectPoi(m.p.id,true);setTimeout(()=>enterSite(m.p.site,m.p.focus||null),500);}else selectPoi(m.p.id,true);});});}
+  el.addEventListener("click",()=>{hideTip();selEvent=null;if(m.p.site&&siteVisible(m.p.site)){selectPoi(m.p.id,true);setTimeout(navGuard(()=>enterSite(m.p.site,m.p.focus||null)),500);}else selectPoi(m.p.id,true);});});}
 function buildSiteLabels(){siteLabels.forEach(l=>l.el.remove());siteLabels=[];
   siteLms(curSite).forEach(lm=>{const el=document.createElement("button");el.className="plbl lm";el.innerHTML='<span class="pip"></span><span>'+esc(lm.name)+'</span>';labelsEl.appendChild(el);
     const l={el,lm,pos:new THREE.Vector3().fromArray(lm.pos)};siteLabels.push(l);
@@ -4349,9 +4363,11 @@ return W;})();
       const b=breacher(L,cyc,ph,gold,.5);frame.add(b);kids.push(b);});
     G.userData.fixed=true;G.userData.update=dt=>kids.forEach(k=>k.userData.update(dt));
     if(!levLbl){levLbl=document.createElement("button");levLbl.className="lbl region";levLbl.textContent="Leviathans";labelsEl.appendChild(levLbl);
-      levLbl.addEventListener("click",()=>showBanner("Leviathans",LEV_TEXT,"Easter egg · Europa"));}
+      levLbl.addEventListener("click",()=>showBanner("Leviathans",eraVal(LEV_DESC),"Easter egg · Europa"));}
     levAnchor=kids[0];return G;};
   const LEV_TEXT="Carved monsters of Europa’s Discordia Sea and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kalibar’s 300-year-old bull. In Light Bringer, the Ascomanni feed captives to leviathans at the Nixian Isles.";
+  /* one book-resolved description shared by the globe banner and the scene landmark */
+  const LEV_DESC={1:"A sea-creature illustration on Europa.",6:LEV_TEXT};
   let levLbl=null,levAnchor=null;
   function updLevLbl(){if(!levLbl)return;const on=mode==="globe"&&cur&&cur.id==="europa"&&levAnchor&&levAnchor.parent;let ok=false;
     if(on){const bst=levAnchor.children[0];bst.getWorldPosition(pw);const p=project(pw,camG);const front=pw.z>-.5;ok=p.front&&front&&bst.visible;
@@ -4359,7 +4375,7 @@ return W;})();
     levLbl.style.opacity=ok?.9:0;levLbl.style.pointerEvents=ok?"auto":"none";}
   /* city scene: full-size leviathans in the Discordia Sea off Lorn's island */
   if(SITES.europa){const S=SITES.europa;
-    S.landmarks.push({id:"leviathan",name:"Leviathans",pos:[300,160,-3300],desc:LEV_TEXT,cam:{target:[200,0,-3300],r:2600,theta:.35,phi:1.18}});
+    S.landmarks.push({id:"leviathan",name:"Leviathans",pos:[300,160,-3300],desc:LEV_DESC,cam:{target:[200,0,-3300],r:2600,theta:.35,phi:1.18}});
     const _b=S.build;S.build=function(ctx){_b.call(this,ctx);const G=new THREE.Group();const kids=[];
       [[200,-3300,560,20,0,1,.1],[-1400,-3900,420,17,.5,0,.8],[1500,-4300,380,19,.25,0,-.6]].forEach(([x,z,L,cyc,ph,gold,ry])=>{const f=new THREE.Group();f.position.set(x,0,z);f.rotation.y=ry;G.add(f);const b=breacher(L,cyc,ph,gold,.9);f.add(b);kids.push(b);});
       ctx.root.add(G);siteLev={G,kids};};}
@@ -4695,4 +4711,6 @@ float triS(sampler2D t,vec3 p,vec3 w,float s){return texture2D(t,p.zy*s).r*w.x+t
     requestAnimationFrame(loop);})(performance.now());
 })();
 
+/* final spoiler-gate pass, after every extension above has registered its content */
+gateLandmarks();
 })();
