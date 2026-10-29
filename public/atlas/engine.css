@@ -463,3 +463,28 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .tr-grid line{stroke:rgba(var(--sw-rgb),.09);stroke-width:1}
 .tr-tickbg{fill:rgba(var(--panel-rgb),.94)}
 .tr-ticks text{font-size:10px;letter-spacing:.06em;fill:var(--muted)}
+
+/* ===== places you can enter (PACK_FORMAT 22) ===== */
+.place .enter{display:inline-flex;margin-top:10px;font-size:10.5px;padding:7px 12px}
+.evitem .goev{display:inline-flex;margin-top:8px;padding:5px 10px;font-size:10px}
+.evitem .fxm{margin-left:6px;font-size:9px;color:var(--ember);vertical-align:1px}
+.seg.tod{margin:14px 0 2px;width:max-content;max-width:100%}
+.seg.tod button{font:500 10.5px var(--f-hud);letter-spacing:.12em;text-transform:uppercase;padding:6px 11px}
+.hops{display:flex;flex-wrap:wrap;gap:6px}
+.hops .btn{padding:6px 10px;font-size:10px}
+.place.lmk .pd{font-size:14.5px}
+.plbl.lm .tx{font-size:12.5px;padding:2px 8px;background:rgba(var(--shade-rgb),.72)}
+.plbl.lm .pip{width:7px;height:7px}
+body.inplace #bake{display:none!important}
+
+/* ===== tour of the Chronicle ===== */
+#tourBox{position:absolute;z-index:8;left:50%;transform:translateX(-50%);bottom:calc(var(--ch,180px) + 14px);width:min(580px,calc(100vw - 32px));padding:14px 18px 12px}
+#tourBox[hidden]{display:none}
+#tourBox h3{margin:4px 0 6px;font:600 22px var(--f-title);color:var(--title)}
+#tourBox p:not(.eyebrow){margin:0;font-size:15.5px;line-height:1.5;color:var(--text);font-weight:300}
+#tourBox .tb{display:flex;align-items:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+#tourBox .tb .btn{padding:6px 11px}
+#tourBox #tourN{flex:1;text-align:center;font:400 10.5px var(--f-hud);letter-spacing:.14em;color:var(--muted)}
+#tourBtn{margin-left:12px;padding:5px 10px;font-size:10px}
+body.touring #navhint{opacity:0!important}
+@media (max-width:820px){#tourBox{bottom:calc(var(--ch,60px) + 10px);padding:12px 14px}#tourBox h3{font-size:19px}#tourBox p:not(.eyebrow){font-size:14px}}

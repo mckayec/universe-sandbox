@@ -22,11 +22,60 @@ export function validatePacks(dir = PACK_DIR) {
   const out = {};
   const TYPES = 'terran ocean archipelago desert forest ice gas city barren lava hive toxic dyson'.split(' ');
   const FK = 'continent range biome basin peak river'.split(' ');
+  const SCENE_KINDS =
+    'city capital town village palace fortress castle port spaceport station habitat underground sietch desert ruins battlefield wilds forest mountain ice sea temple monastery library arena camp crater tombs farm dome wreck industrial'.split(
+      ' ',
+    );
+  const ARCHS =
+    'classical gothic imperial modern brutal organic crystal rustic desert alien industrial eastern ancient'.split(' ');
+  const LM_KINDS =
+    'tower spire skyscraper palace citadel castle keep wall gate arch bridge dome temple cathedral pyramid ziggurat obelisk statue monolith arena library hall house market plaza garden tree grove cave mine well crater lake dock pad ship wreck station ring tomb ruin camp tent farm lighthouse mast reactor factory beacon portal stones peak cliff throne shrine'.split(
+      ' ',
+    );
+  const FX = 'battle fire bombard blast fleet storm quake crowd duel flood launch arrival eruption worm'.split(' ');
   const TOP =
-    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start tree'.split(
+    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start tree places'.split(
       ' ',
     );
   const finite = v => typeof v === 'number' && isFinite(v);
+  // PACK_FORMAT 22: enterable places
+  function checkSceneInto(s, st, issues, warn, okBook) {
+    const sc = s.scene;
+    if (sc == null) return;
+    if (typeof sc !== 'object') return issues.push(`${st}: scene must be an object`);
+    if (sc.kind != null && !SCENE_KINDS.includes(sc.kind)) issues.push(`${st}: unknown scene.kind "${sc.kind}"`);
+    if (sc.arch != null && !ARCHS.includes(sc.arch)) issues.push(`${st}: unknown scene.arch "${sc.arch}"`);
+    if (sc.size != null && !['small', 'medium', 'large', 'huge'].includes(sc.size))
+      issues.push(`${st}: unknown scene.size "${sc.size}"`);
+    if (sc.tod != null && !['day', 'dawn', 'dusk', 'night'].includes(sc.tod))
+      issues.push(`${st}: unknown scene.tod "${sc.tod}"`);
+    if (sc.weather != null && !'clear dust snow rain ash mist spores storm'.split(' ').includes(sc.weather))
+      issues.push(`${st}: unknown scene.weather "${sc.weather}"`);
+    if (sc.coast != null && !['n', 's', 'e', 'w'].includes(sc.coast)) issues.push(`${st}: scene.coast must be n|s|e|w`);
+    const ids = new Set();
+    (sc.landmarks || []).forEach((l, j) => {
+      const lt = `${st} landmark ${l && l.id != null ? l.id : '#' + j}`;
+      if (!l || l.id == null) return issues.push(`${lt}: no id`);
+      if (ids.has(l.id)) issues.push(`${lt}: duplicate landmark id`);
+      ids.add(l.id);
+      if (!l.name) issues.push(`${lt}: missing name`);
+      if (!l.desc) issues.push(`${lt}: missing desc`);
+      if (l.kind != null && !LM_KINDS.includes(l.kind)) issues.push(`${lt}: unknown kind "${l.kind}"`);
+      if (
+        l.at != null &&
+        !(Array.isArray(l.at) && l.at.length === 2 && l.at.every(v => finite(v) && Math.abs(v) <= 1.2))
+      )
+        issues.push(`${lt}: at must be [east, north] within -1..1`);
+      if (l.h != null && !(finite(l.h) && l.h > 0 && l.h <= 4)) issues.push(`${lt}: h out of range`);
+      (l.books || []).forEach(b => {
+        if (!okBook(b)) issues.push(`${lt}: unknown book ${b}`);
+      });
+      if (l.first != null && !okBook(l.first)) issues.push(`${lt}: first=${l.first} unknown book`);
+      const sf = s.books && s.books.length ? Math.min(...s.books) : null;
+      const lf = l.first || (l.books && l.books.length ? Math.min(...l.books) : null);
+      if (sf != null && lf != null && lf < sf) warn.push(`${lt}: first ${lf} earlier than its site's first ${sf}`);
+    });
+  }
   for (const f of files) {
     const issues = [],
       warn = [],
@@ -57,6 +106,7 @@ export function validatePacks(dir = PACK_DIR) {
     const books = P.books || {};
     const bookIds = Object.keys(books).map(Number);
     const okBook = b => books[b] != null;
+    const checkScene = (site, st) => checkSceneInto(site, st, issues, warn, okBook);
     const worlds = P.worlds || [];
     stats.worlds = worlds.length;
     stats.events = (P.events || []).length;
@@ -183,6 +233,7 @@ export function validatePacks(dir = PACK_DIR) {
         });
         if (s.realm && !['physical', 'cognitive', 'spiritual'].includes(s.realm))
           issues.push(`${st}: bad realm ${s.realm}`);
+        checkScene(s, st);
       });
       siteTotal += (w.sites || []).length;
       if (!(w.sites || []).length) noSites.push(w.id);
@@ -218,6 +269,19 @@ export function validatePacks(dir = PACK_DIR) {
           issues.push(
             `${t}: book ${e.book} earlier than world ${w.id} first ${fo} (event on hidden world in cumulative mode)`,
           );
+      }
+      if (e.fx != null && !FX.includes(e.fx)) issues.push(`${t}: unknown fx "${e.fx}"`);
+      if (e.lm != null) {
+        const s0 = w && e.site ? (w.sites || []).find(x => x.id === e.site) : null;
+        if (!e.site) issues.push(`${t}: lm "${e.lm}" without site`);
+        else if (s0 && !((s0.scene && s0.scene.landmarks) || []).find(l => l.id === e.lm))
+          issues.push(`${t}: lm -> missing landmark "${e.lm}" in ${e.world}/${e.site}`);
+        else if (s0) {
+          const l = s0.scene.landmarks.find(x => x.id === e.lm);
+          const lf = l.first || (l.books && l.books.length ? Math.min(...l.books) : null);
+          if (lf != null && lf > e.book)
+            warn.push(`${t}: landmark ${e.lm} first book ${lf} > event book ${e.book} (pin hidden when event shown)`);
+        }
       }
       if (w && e.site) {
         const s = (w.sites || []).find(x => x.id === e.site);

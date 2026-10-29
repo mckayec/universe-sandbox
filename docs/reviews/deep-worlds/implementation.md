@@ -4,7 +4,7 @@ Mckay's request (2026-10-26): bring the detail and abilities of the shared Socie
 every universe the same depth of narrative content, and let visitors drill down from a world into specific
 cities and areas to explore what happened there.
 
-## 1. Engine: places you can enter (PACK_FORMAT §21)
+## 1. Engine: places you can enter (PACK_FORMAT §22)
 
 - **`public/atlas/places.js`** builds a procedural ground-level view of any site: terrain coloured from the
   world's own palette, sky and sunlight from its star and atmosphere, a street plan and city blocks in one of
@@ -79,3 +79,14 @@ Screenshots in `shots/`.
 PR #28 (family tree) and #33 (LDS) also edit `engine.js` / `engine.css` / `PACK_FORMAT.md` / the validator.
 A trial merge shows three one-line overlaps in `engine.js` (Escape handler, `refreshAll`, `parseHash`) and
 small ones elsewhere; whichever PR merges second takes both sides.
+
+## 6. Review fixes (PR #41 checkpoints 1–2, at f778b6b)
+
+- e05c2be: DW02 (book-change cancellation in `society.js`, tests in `tests/society-transitions.test.ts`),
+  DW03, DW04, DW05 and the conservative DW06 cuts (dungeons, Terminus Board, Yeddaw orphanage, Ceres
+  conference and Medina rooms untied or marked schematic; e35 narrowed; disputed given names dropped).
+- Follow-up: DW07 (Tabr entrance keeps only its book-I sentence), Trantor terminal narrowed to the S06 wording,
+  the Hyperion ship-landing return clause omitted at III, and the Iron Gold prologue blurb reduced to
+  supported context (the wordless cinematic itself is unchanged and still awaits the primary prologue).
+- DW01 (Europa) unchanged. Everything else in the DW06 evidence holds and the 202 uncompared sample records
+  stays open for ChatGPT.

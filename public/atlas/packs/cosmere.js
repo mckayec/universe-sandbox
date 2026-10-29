@@ -165,7 +165,7 @@
      the official world map (17th Shard ‘Roshar Distances’). The atlas stretches latitude: its +44° line is about
      canon’s equator. Places with no stated position inside their country are our guesses. */
   var MAP_ROSHAR = {"rough":0.55,"mtn":0.55,"land":[[[30,-104],[38,-98],[44,-88],[46,-75],[47,-66],[42,-60],[40,-54],[38,-48],[32,-47],[26,-46],[20,-45],[16,-42],[15,-32],[16,-22],[18,-12],[22,-5],[26,-2],[32,0],[38,2],[33,8],[40,12],[34,17],[39,22],[35,27],[39,33],[32,36],[27,38],[26,45],[24,52],[22,58],[26,62],[30,67],[24,70],[14,68],[6,70],[0,74],[-8,75],[-16,73],[-24,69],[-32,62],[-38,50],[-40,44],[-38,32],[-35,22],[-33,12],[-30,6],[-26,8],[-23,16],[-21,28],[-19,38],[-17,44],[-15,40],[-16,30],[-17,18],[-17,4],[-16,-4],[-17,-10],[-20,-14],[-26,-18],[-30,-22],[-33,-30],[-34,-45],[-35,-60],[-34,-75],[-31,-90],[-26,-99],[-22,-95],[-22,-80],[-22,-66],[-20,-61],[-18,-66],[-18,-78],[-19,-92],[-17,-104],[-12,-108],[-10,-100],[-6,-93],[-6,-100],[-2,-106],[4,-112],[14,-110],[22,-107]],[[-37,2],[-36,10],[-38,18],[-40,24],[-43,26],[-46,22],[-46,12],[-44,4],[-40,0]],[[-44,30],[-43,34],[-46,35],[-47,31]],[[-48,6],[-47,9],[-49,10],[-50,7]],[[2,-118],[-2,-114],[-8,-114],[-13,-117],[-14,-122],[-8,-126],[-2,-124]],[[6.6,-121.6],[7.6,-119],[5.4,-117.6],[3.6,-120.2]],[[34,-45],[35,-42],[31,-41],[30,-44]],[[36,38],[37,42],[34,44],[33,40]],[[-37,-56],[-36,-53],[-38,-53]],[[41,36],[42,39],[40,40]],[[38.0,-36.71],[39.02,-37.05],[39.5,-37.75],[39.07,-38.75],[38.42,-39.37],[37.58,-39.18],[36.74,-38.85],[36.75,-37.77],[36.99,-36.65]],[[36.0,-28.56],[37.15,-29.06],[37.69,-29.76],[37.11,-30.64],[36.47,-31.59],[35.55,-31.46],[34.63,-30.71],[34.49,-29.79],[35.21,-28.99]],[[30.0,-32.54],[30.89,-32.81],[31.45,-33.76],[31.45,-34.81],[30.46,-35.45],[29.48,-35.62],[28.58,-34.69],[28.24,-33.78],[29.07,-32.73]],[[34.0,-20.51],[34.79,-20.77],[35.63,-21.73],[35.49,-22.69],[34.55,-23.46],[33.47,-23.38],[32.52,-22.88],[32.54,-21.72],[33.21,-20.76]],[[26.0,-26.2],[27.09,-26.95],[27.41,-27.72],[27.05,-28.74],[26.44,-29.19],[25.58,-29.56],[24.89,-28.67],[24.59,-27.7],[25.2,-26.87]],[[32.0,-12.27],[33.09,-12.68],[33.35,-13.75],[33.23,-14.87],[32.61,-15.21],[31.55,-15.26],[30.84,-14.75],[30.47,-13.76],[31.23,-12.89]],[[-18.0,-113.08],[-17.17,-113.4],[-17.12,-114.21],[-17.58,-114.67],[-18.45,-114.9],[-19.01,-114.22],[-18.67,-113.46]],[[-21.0,-109.05],[-20.42,-109.54],[-20.22,-110.17],[-20.63,-110.67],[-21.31,-110.7],[-21.74,-110.19],[-21.57,-109.35]],[[-24.0,-105.23],[-23.37,-105.47],[-23.17,-106.17],[-23.56,-106.97],[-24.39,-106.81],[-24.73,-106.17],[-24.66,-105.49]]],"water":[[[12,-44],[14,-34],[13,-24],[8,-20],[2,-22],[0,-30],[1,-40],[6,-46]],[[2,50],[0,52],[-4,51],[-7,48],[-5,44],[-1,44],[2,47]],[[32,-64],[33,-60],[30,-58],[28,-61],[29,-64]],[[6.0,15.61],[6.4,15.58],[6.71,15.0],[6.5,14.6],[6.0,14.17],[5.43,14.47],[5.37,15.0],[5.57,15.55]],[[2.0,15.78],[2.46,15.44],[2.79,15.0],[2.56,14.44],[2.0,14.23],[1.56,14.5],[1.34,15.0],[1.6,15.45]],[[-2.0,14.75],[-1.41,14.48],[-1.18,14.0],[-1.41,13.53],[-2.0,13.38],[-2.43,13.56],[-2.73,14.0],[-2.56,14.49]]],"ranges":[{"line":[[31,-86],[24,-90],[15,-92],[5,-93],[-4,-93],[-9,-95]],"w":2.2,"s":1},{"line":[[30,-102],[20,-106],[10,-108],[0,-106]],"w":1.4,"s":0.7},{"line":[[44,-66],[38,-70],[34,-72]],"w":1.2,"s":0.7},{"line":[[37,-53],[33,-50]],"w":1.2,"s":0.6},{"line":[[-6,-2],[-7,-12],[-8,-22],[-8,-30]],"w":2.6,"s":1},{"line":[[-8,-30],[-5,-38],[-2,-46],[-1,-54],[-2,-62]],"w":2.2,"s":1},{"line":[[-8,-30],[-12,-36],[-17,-40],[-23,-40]],"w":2.0,"s":0.9},{"line":[[12,14],[6,15],[0,15],[-6,14]],"w":1.8,"s":0.9},{"line":[[6,22],[5,32],[4,42]],"w":1.6,"s":0.8},{"line":[[12,32],[5,32],[-2,33]],"w":1.5,"s":0.8},{"line":[[16,54],[9,51],[3,50]],"w":1.4,"s":0.7},{"line":[[-38,6],[-41,14],[-44,22]],"w":1.4,"s":0.8}],"rivers":[{"line":[[12,60],[15,54],[18,48],[22,42],[25,39],[27,38]],"w":0.16},{"line":[[6,32],[10,34],[14,36],[18,40],[21,42]],"w":0.12},{"line":[[4,60],[0,57],[-4,55],[-8,50],[-11,46],[-14,42],[-15,40]],"w":0.16},{"line":[[-5,48],[-9,49]],"w":0.1},{"line":[[-4,56],[-10,55],[-16,54]],"w":0.1},{"line":[[14,22],[6,20],[-4,19],[-12,18],[-17,17]],"w":0.12},{"line":[[-4,12],[-10,8],[-16,3]],"w":0.12},{"line":[[22,12],[30,14],[36,14]],"w":0.12},{"line":[[-6,-55],[-12,-56],[-17,-59],[-20,-61]],"w":0.12},{"line":[[-13,-80],[-13,-90],[-11,-99]],"w":0.12},{"line":[[-22,-45],[-30,-44]],"w":0.1},{"line":[[-8,0],[-16,0]],"w":0.1},{"line":[[43,-65],[47,-65]],"w":0.08},{"line":[[28,-100],[18,-102],[8,-100],[-1,-102]],"w":0.14},{"line":[[-9.82,61.7],[-9.47,62.07],[-9.02,62.3],[-8.51,62.39]],"w":0.06,"c":"#2a221c"},{"line":[[-11.74,56.11],[-11.64,55.77],[-11.73,55.42],[-11.78,55.07]],"w":0.06,"c":"#2a221c"},{"line":[[-12.58,63.02],[-12.31,62.95],[-12.04,62.99],[-11.77,62.9]],"w":0.06,"c":"#2a221c"},{"line":[[-8.13,55.82],[-7.9,55.2],[-7.56,54.63],[-7.26,54.05]],"w":0.06,"c":"#2a221c"},{"line":[[-15.56,54.63],[-15.53,54.13],[-15.75,53.68],[-15.94,53.21]],"w":0.06,"c":"#2a221c"},{"line":[[-7.41,61.94],[-7.28,62.23],[-7.25,62.54],[-7.18,62.85]],"w":0.06,"c":"#2a221c"},{"line":[[-14.15,58.27],[-14.0,58.88],[-13.89,59.49],[-13.71,60.09]],"w":0.06,"c":"#2a221c"},{"line":[[-7.05,58.29],[-6.96,57.86],[-6.88,57.44],[-6.57,57.12]],"w":0.06,"c":"#2a221c"},{"line":[[-12.16,56.15],[-12.37,56.68],[-12.6,57.2],[-12.68,57.77]],"w":0.06,"c":"#2a221c"},{"line":[[-10.88,57.43],[-10.46,57.26],[-10.0,57.29],[-9.54,57.29]],"w":0.06,"c":"#2a221c"},{"line":[[-14.27,56.99],[-14.01,56.64],[-13.86,56.23],[-13.94,55.8]],"w":0.06,"c":"#2a221c"},{"line":[[-12.12,60.01],[-11.7,59.9],[-11.27,59.82],[-10.84,59.72]],"w":0.06,"c":"#2a221c"},{"line":[[-11.74,62.97],[-11.5,62.42],[-11.1,61.95],[-10.74,61.46]],"w":0.06,"c":"#2a221c"},{"line":[[-6.62,62.06],[-6.53,62.3],[-6.57,62.55],[-6.69,62.78]],"w":0.06,"c":"#2a221c"},{"line":[[-16.2,60.53],[-15.65,60.24],[-15.19,59.83],[-14.82,59.33]],"w":0.06,"c":"#2a221c"},{"line":[[-15.43,62.45],[-15.56,62.17],[-15.65,61.88],[-15.74,61.6]],"w":0.06,"c":"#2a221c"},{"line":[[-6.11,61.99],[-5.91,62.34],[-5.78,62.72],[-5.79,63.12]],"w":0.06,"c":"#2a221c"},{"line":[[-13.5,61.0],[-13.5,61.46],[-13.76,61.84],[-14.08,62.16]],"w":0.06,"c":"#2a221c"},{"line":[[-10.14,59.11],[-9.79,59.67],[-9.2,59.96],[-8.81,60.49]],"w":0.06,"c":"#2a221c"},{"line":[[-14.08,54.86],[-13.78,54.72],[-13.47,54.61],[-13.26,54.37]],"w":0.06,"c":"#2a221c"},{"line":[[-7.99,56.83],[-7.66,57.36],[-7.21,57.8],[-7.02,58.4]],"w":0.06,"c":"#2a221c"},{"line":[[-16.37,60.69],[-16.14,60.63],[-15.93,60.52],[-15.77,60.35]],"w":0.06,"c":"#2a221c"},{"line":[[-16.08,62.21],[-15.99,62.8],[-16.01,63.4],[-16.0,64.01]],"w":0.06,"c":"#2a221c"},{"line":[[-6.81,56.91],[-6.77,57.35],[-6.93,57.77],[-7.24,58.09]],"w":0.06,"c":"#2a221c"},{"line":[[-16.45,56.32],[-16.12,56.41],[-15.82,56.58],[-15.53,56.76]],"w":0.06,"c":"#2a221c"},{"line":[[-15.04,57.62],[-15.2,57.9],[-15.28,58.2],[-15.34,58.52]],"w":0.06,"c":"#2a221c"},{"line":[[-14.92,58.77],[-14.96,58.53],[-14.98,58.28],[-15.01,58.03]],"w":0.06,"c":"#2a221c"},{"line":[[-7.82,58.04],[-7.39,57.74],[-6.91,57.54],[-6.55,57.16]],"w":0.06,"c":"#2a221c"},{"line":[[-9.23,60.22],[-8.98,60.49],[-8.88,60.84],[-8.96,61.19]],"w":0.06,"c":"#2a221c"},{"line":[[-8.85,56.8],[-8.66,56.94],[-8.42,56.99],[-8.19,56.99]],"w":0.06,"c":"#2a221c"},{"line":[[-13.9,56.68],[-13.7,57.04],[-13.52,57.42],[-13.45,57.82]],"w":0.06,"c":"#2a221c"},{"line":[[-6.42,63.25],[-6.18,63.05],[-5.9,62.91],[-5.6,62.81]],"w":0.06,"c":"#2a221c"},{"line":[[-16.99,57.93],[-16.59,58.12],[-16.2,58.3],[-15.98,58.67]],"w":0.06,"c":"#2a221c"},{"line":[[-14.09,55.31],[-13.96,55.48],[-13.86,55.68],[-13.83,55.89]],"w":0.06,"c":"#2a221c"},{"line":[[-10.56,59.26],[-10.3,58.82],[-10.27,58.32],[-10.17,57.82]],"w":0.06,"c":"#2a221c"},{"line":[[-13.41,63.36],[-13.09,63.79],[-13.04,64.33],[-12.78,64.8]],"w":0.06,"c":"#2a221c"},{"line":[[-7.19,60.15],[-6.64,59.97],[-6.09,59.79],[-5.54,59.6]],"w":0.06,"c":"#2a221c"},{"line":[[-7.82,61.74],[-7.78,61.27],[-7.85,60.8],[-8.02,60.36]],"w":0.06,"c":"#2a221c"},{"line":[[-14.47,54.78],[-14.49,55.15],[-14.37,55.49],[-14.22,55.83]],"w":0.06,"c":"#2a221c"},{"line":[[-10.09,60.14],[-9.67,60.15],[-9.26,60.01],[-8.91,59.76]],"w":0.06,"c":"#2a221c"},{"line":[[-11.47,59.32],[-11.3,59.15],[-11.1,59.05],[-10.87,59.05]],"w":0.06,"c":"#2a221c"},{"line":[[-14.08,61.06],[-13.57,61.25],[-13.06,61.45],[-12.58,61.71]],"w":0.06,"c":"#2a221c"},{"line":[[-11.73,60.65],[-11.47,60.24],[-11.04,60.0],[-10.56,59.97]],"w":0.06,"c":"#2a221c"},{"line":[[-14.21,61.19],[-14.04,61.62],[-14.11,62.08],[-14.31,62.5]],"w":0.06,"c":"#2a221c"},{"line":[[-9.61,60.73],[-9.33,60.55],[-9.04,60.38],[-8.74,60.22]],"w":0.06,"c":"#2a221c"},{"line":[[-15.7,62.54],[-15.1,62.81],[-14.74,63.36],[-14.42,63.93]],"w":0.06,"c":"#2a221c"},{"line":[[-7.98,63.21],[-7.7,63.37],[-7.37,63.36],[-7.06,63.46]],"w":0.06,"c":"#2a221c"},{"line":[[-10.6,55.78],[-10.0,56.01],[-9.36,55.99],[-8.71,55.97]],"w":0.06,"c":"#2a221c"},{"line":[[-7.24,60.83],[-6.84,61.3],[-6.75,61.91],[-7.03,62.47]],"w":0.06,"c":"#2a221c"},{"line":[[-11.59,58.56],[-11.41,58.75],[-11.27,58.98],[-11.06,59.13]],"w":0.06,"c":"#2a221c"},{"line":[[-16.98,61.26],[-16.98,61.0],[-17.05,60.75],[-17.22,60.56]],"w":0.06,"c":"#2a221c"},{"line":[[-13.81,57.85],[-13.16,58.0],[-12.55,58.26],[-11.96,58.57]],"w":0.06,"c":"#2a221c"},{"line":[[-13.97,54.93],[-13.94,55.52],[-13.61,56.01],[-13.45,56.58]],"w":0.06,"c":"#2a221c"},{"line":[[-14.08,59.1],[-13.74,59.25],[-13.36,59.24],[-13.02,59.09]],"w":0.06,"c":"#2a221c"},{"line":[[-10.06,62.72],[-10.1,62.27],[-9.89,61.86],[-9.81,61.41]],"w":0.06,"c":"#2a221c"},{"line":[[-12.04,61.27],[-11.71,61.3],[-11.4,61.17],[-11.07,61.17]],"w":0.06,"c":"#2a221c"},{"line":[[-11.81,57.59],[-11.26,57.63],[-10.75,57.82],[-10.21,57.9]],"w":0.06,"c":"#2a221c"},{"line":[[-13.69,59.52],[-13.49,59.7],[-13.36,59.95],[-13.13,60.11]],"w":0.06,"c":"#2a221c"},{"line":[[-11.53,56.48],[-11.3,55.86],[-10.83,55.39],[-10.22,55.12]],"w":0.06,"c":"#2a221c"},{"line":[[-16.0,57.58],[-16.0,57.89],[-15.98,58.2],[-15.82,58.47]],"w":0.06,"c":"#2a221c"}],"regions":[{"poly":[[30,-104],[31,-88],[15,-92],[-4,-93],[-2,-106],[4,-112],[22,-107]],"c":"#4f9a3a","s":1},{"poly":[[30,-104],[44,-88],[47,-66],[36,-62],[28,-64],[31,-88]],"c":"#8cbf5a","s":0.9},{"poly":[[42,-60],[38,-48],[22,-47],[22,-60],[28,-64]],"c":"#7fae6a","s":0.9},{"poly":[[22,-88],[22,-47],[16,-42],[6,-46],[2,-60],[4,-88]],"c":"#a3a46a","s":0.9},{"poly":[[16,-42],[15,-22],[13,-24],[14,-40]],"c":"#9aa77a","s":0.9},{"poly":[[1,-46],[0,-22],[-3,-22],[-3,-46]],"c":"#b0a070","s":0.9},{"poly":[[16,-22],[22,-5],[-5,-4],[-5,-22]],"c":"#9db47a","s":0.9},{"poly":[[32,0],[39,33],[32,36],[20,30],[20,0]],"c":"#6faa5a","s":0.9},{"poly":[[22,-5],[20,30],[-17,18],[-17,4],[-16,-4],[-6,-4]],"c":"#5f9150","s":0.9},{"poly":[[-4,-8],[-4,2],[-14,2],[-14,-8]],"c":"#b39b72","s":0.9},{"poly":[[27,38],[26,45],[22,58],[6,58],[-6,56],[-17,44],[-15,40],[-17,18],[20,30],[32,36]],"c":"#a58e6a","s":0.9},{"poly":[[6,46],[6,56],[-14,56],[-14,46]],"c":"#9c8a6b","s":0.9},{"poly":[[22,58],[30,67],[14,68],[0,74],[-8,66],[-6,58]],"c":"#8a7f72","s":0.9},{"poly":[[-6,54],[-6,64],[-18,64],[-18,54]],"c":"#7d6e62","s":1},{"poly":[[-8,66],[-16,73],[-24,69],[-32,62],[-40,44],[-33,12],[-30,6],[-23,16],[-17,44],[-6,56]],"c":"#c9d4dc","s":0.9},{"poly":[[-37,2],[-36,10],[-38,18],[-40,24],[-43,26],[-46,22],[-46,12],[-44,4],[-40,0]],"c":"#8fa6b5","s":0.9},{"poly":[[-6,-14],[-6,6],[-16,4],[-17,-14]],"c":"#6f9a5c","s":0.9},{"poly":[[-10,-32],[-10,-14],[-30,-22],[-28,-32]],"c":"#c4b08a","s":0.9},{"poly":[[2,-74],[0,-46],[-8,-38],[-14,-50],[-12,-74]],"c":"#d8b46a","s":0.9},{"poly":[[4,-88],[2,-74],[-12,-74],[-10,-93]],"c":"#ccb070","s":0.9},{"poly":[[-10,-100],[-10,-78],[-18,-78],[-19,-92],[-17,-104],[-12,-108]],"c":"#c2ad78","s":0.9},{"poly":[[-10,-78],[-12,-62],[-18,-62],[-18,-78]],"c":"#c8be7a","s":0.9},{"poly":[[-8,-60],[-8,-38],[-14,-34],[-26,-40],[-24,-50],[-20,-61]],"c":"#d4a95e","s":0.9},{"poly":[[-22,-95],[-22,-62],[-24,-45],[-34,-45],[-34,-75],[-26,-99]],"c":"#d6a35a","s":0.9},{"poly":[[-22,-45],[-26,-30],[-33,-30],[-34,-45]],"c":"#c99f63","s":0.9},{"poly":[[2,-118],[-2,-114],[-8,-114],[-13,-117],[-14,-122],[-8,-126],[-2,-124]],"c":"#9a9fa6","s":0.9},{"poly":[[-4,-2],[-5,-14],[-6,-24],[-4,-34],[0,-46],[1,-56],[-4,-62],[-4,-48],[-8,-36],[-12,-32],[-16,-38],[-24,-42],[-20,-38],[-13,-30],[-10,-22],[-9,-10],[-8,-2]],"c":"#e8eef2","s":0.8},{"poly":[[38.0,-36.46],[38.99,-36.76],[39.5,-37.74],[39.14,-38.73],[38.65,-39.28],[37.45,-39.58],[36.41,-38.71],[36.57,-37.75],[37.01,-36.8]],"c":"#3fae7a","s":1},{"poly":[[36.0,-28.18],[37.18,-29.01],[37.28,-29.7],[37.6,-30.79],[36.57,-31.2],[35.48,-31.76],[34.43,-30.91],[34.13,-29.75],[35.13,-28.94]],"c":"#3fae7a","s":1},{"poly":[[30.0,-32.28],[31.21,-32.67],[31.67,-33.69],[31.36,-34.82],[30.45,-35.67],[29.51,-35.76],[28.53,-34.74],[28.66,-33.75],[28.92,-32.68]],"c":"#3fae7a","s":1},{"poly":[[34.0,-20.67],[35.04,-20.73],[35.51,-21.75],[35.44,-22.64],[34.5,-23.48],[33.35,-23.59],[32.4,-22.79],[32.59,-21.75],[32.78,-20.67]],"c":"#3fae7a","s":1},{"poly":[[26.0,-26.71],[27.03,-26.69],[27.53,-27.75],[27.48,-28.94],[26.49,-29.22],[25.49,-29.46],[24.51,-28.7],[24.24,-27.7],[24.97,-26.92]],"c":"#3fae7a","s":1},{"poly":[[32.0,-12.52],[33.16,-12.91],[33.4,-13.69],[33.27,-14.94],[32.55,-15.32],[31.51,-15.45],[30.52,-14.94],[30.65,-13.73],[31.09,-12.54]],"c":"#3fae7a","s":1}]};
-  var SITES_ROSHAR = [{"id": "shatteredplains", "name": "The Shattered Plains", "lat": -12, "lon": 58, "books": [4, 5, 8, 9, 12], "desc": "Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave."}, {"id": "warcamps", "name": "The warcamps", "lat": -11.5, "lon": 55.5, "books": [4, 5, 8], "desc": "Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial."}, {"id": "narak", "name": "Narak (Stormseat)", "lat": -12, "lon": 59.5, "books": [5, 8, 12], "desc": "The old Natanatan capital at the centre of the Plains, the listeners’ stronghold, with an Oathgate on a plateau to its south-west."}, {"id": "tower", "name": "The Tower", "lat": -10.5, "lon": 61, "books": [4], "desc": "A huge plateau where Sadeas abandons Dalinar’s army and Bridge Four turns back to save it."}, {"id": "kholinar", "name": "Kholinar", "lat": 13, "lon": 35, "books": [4, 8, 9], "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat."}, {"id": "hearthstone", "name": "Hearthstone", "lat": 22, "lon": 40, "books": [4, 9], "desc": "Kaladin’s home town beside a breakwall hill, where his father was the surgeon."}, {"id": "revolar", "name": "Revolar", "lat": 6, "lon": 42, "books": [4, 8], "desc": "One of the largest cities of Highprince Vamah’s lands."}, {"id": "rathalas", "name": "Rathalas (the Rift)", "lat": 2, "lon": 51, "books": [8], "desc": "A canyon city at the north tip of the Sea of Spears, burned by Dalinar in his years as the Blackthorn."}, {"id": "seaofspears", "name": "The Sea of Spears", "lat": -2, "lon": 48, "books": [8, 9], "desc": "A wide, shallow lake bristling with rock spires.", "sea": true}, {"id": "karanak", "name": "Karanak", "lat": -15, "lon": 40, "books": [4], "desc": "A major Alethi city at the Deathbend delta on the Tarat Sea."}, {"id": "urithiru", "name": "Urithiru", "lat": -8, "lon": -30, "books": [5, 8, 9, 12], "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."}, {"id": "valley", "name": "The Valley", "lat": -12, "lon": -30, "books": [4, 7, 8, 9], "desc": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young."}, {"id": "kharbranth", "name": "Kharbranth", "lat": -27, "lon": 8, "books": [4, 5, 8], "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian."}, {"id": "thaylen", "name": "Thaylen City", "lat": -37.5, "lon": 4, "books": [8, 9, 12], "desc": "The terraced capital of Thaylenah on the main island’s north-west coast, with the Thalath Oathgate. The Battle of Thaylen Field ends Oathbringer."}, {"id": "vedenar", "name": "Vedenar", "lat": -17, "lon": 4, "books": [4, 5, 8], "desc": "Jah Keved’s clifftop capital on the Tarat Sea, torn by succession war. Its Oathgate platform became a palace garden."}, {"id": "horneaterpeaks", "name": "The Horneater Peaks", "lat": 3, "lon": 15, "books": [5, 8, 9, 12], "desc": "Crater-topped mountains holding warm emerald lakes, home of the Unkalaki. Rock comes from here."}, {"id": "pool", "name": "Cultivation’s Perpendicularity", "lat": 2, "lon": 15, "books": [9, 12], "desc": "A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth."}, {"id": "bavland", "name": "Bavland", "lat": -8, "lon": -2, "books": [4, 9], "desc": "A dusty mining region at the eastern end of the Mountains of Ur; Shallan’s family’s lands are near."}, {"id": "azimir", "name": "Azimir", "lat": -10, "lon": -47, "books": [7, 8, 12], "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."}, {"id": "yeddaw", "name": "Yeddaw", "lat": -14, "lon": -70, "books": [7], "desc": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer."}, {"id": "sesemalexdar", "name": "Sesemalex Dar", "lat": -21, "lon": -61, "books": [5], "desc": "A city sunk into drainage gashes in a stone plain, fought over by Emul and Tukar."}, {"id": "tukar", "name": "Tukar", "lat": -28, "lon": -72, "books": [5, 9, 12], "desc": "The theocracy of the god-priest Tezim, who is really the Herald Ishar."}, {"id": "shinovar", "name": "Shinovar", "lat": 12, "lon": -103, "books": [4, 8, 12], "desc": "Grass that stays still, soil and upright trees, sheltered from the highstorms behind the Misted Mountains. The Shin will not walk on stone. Szeth’s homeland."}, {"id": "mistedmountains", "name": "The Misted Mountains", "lat": 10, "lon": -91, "books": [4], "desc": "The range that breaks the highstorms before they reach Shinovar."}, {"id": "rallelorim", "name": "Rall Elorim", "lat": 44, "lon": -65, "books": [4, 12], "desc": "The City of Shadows in Iri, under a mountain overhang, with an Oathgate in a round reservoir."}, {"id": "kasitor", "name": "Kasitor", "lat": 35, "lon": -76, "books": [4], "desc": "An Iriali city on a bay where the great spren Cusicesh rises from the water each morning."}, {"id": "kurth", "name": "Kurth", "lat": 32.5, "lon": -44.5, "books": [8], "desc": "The City of Lightning on an island off Rira’s east coast, site of an Oathgate."}, {"id": "panatham", "name": "Panatham", "lat": 10, "lon": -54, "books": [8], "desc": "Babatharnam’s capital and the old Sela Tales Oathgate. Its position inside the country is our guess."}, {"id": "purelake", "name": "The Purelake", "lat": 7, "lon": -33, "books": [4, 8], "desc": "A warm, ankle-deep lake hundreds of miles across, with stilt villages of the Purelakers.", "sea": true}, {"id": "reshiisles", "name": "The Reshi Isles", "lat": 34, "lon": -26, "books": [4, 8, 9, 12], "desc": "Hot equatorial islands in the Reshi Sea, some of them living greatshells. Talik comes from here."}, {"id": "herdaz", "name": "Herdaz", "lat": 33, "lon": 18, "books": [5, 8, 9], "desc": "A humid land of long peninsulas north of Jah Keved; Lopen’s home, occupied by the singers."}, {"id": "akinah", "name": "Akinah", "lat": 5, "lon": -120, "books": [8], "desc": "The ancient Aimian capital ringed by Soulcast spikes, hiding the real Oathgate and a Dawnshard. The Dawnshard expedition sails here."}, {"id": "aimia", "name": "Aimia", "lat": -6, "lon": -120, "books": [4, 8, 9], "desc": "A barren island chain beyond the Aimian Sea, homeland of the Aimians."}, {"id": "frostlands", "name": "The Frostlands", "lat": -28, "lon": 40, "books": [4, 5], "desc": "Cold, lawless lands south of the Plains, scoured by the strongest storms."}, {"id": "shallowcrypts", "name": "The Shallow Crypts", "lat": -24, "lon": 68, "books": [4], "desc": "A slave-trading port linked to the warcamps by caravan."}, {"id": "newnatanan", "name": "New Natanan", "lat": -2, "lon": 74, "books": [8, 9], "desc": "The last remnant of the old Natanatan kingdom on the eastern coast."}, {"id": "origin", "name": "The Origin", "lat": -4, "lon": 115, "books": [4, 9, 12], "desc": "Far east across the Ocean of Origins, where the highstorms are born. No map shows it.", "sea": true}, {"id": "tarat", "name": "The Tarat Sea", "lat": -22, "lon": 18, "books": [4, 8], "desc": "The gulf between Alethkar, Jah Keved and the Frostlands; its outlet is Longbrow’s Straits.", "sea": true}, {"id": "reshisea", "name": "The Reshi Sea", "lat": 28, "lon": -26, "books": [4, 8], "desc": "Roshar’s largest sea, a bay cutting deep into the north coast.", "sea": true}, {"id": "seaoflostlights", "name": "Sea of Lost Lights", "lat": 5, "lon": 35, "books": [8], "desc": "The eastern bead sea, over Alethkar, Jah Keved, Herdaz and the Frostlands. Kaladin, Shallan and Adolin cross it from Kholinar.", "sea": true, "realm": "cognitive"}, {"id": "seaofsouls", "name": "Sea of Souls", "lat": -12, "lon": -40, "books": [9], "desc": "The central bead sea, over Azir, the Ur range and the southern kingdoms. The honorspren lands are on it.", "sea": true, "realm": "cognitive"}, {"id": "seaofregret", "name": "Sea of Regret", "lat": 15, "lon": -90, "books": [8], "desc": "The western bead sea, over Shinovar and Iri.", "sea": true, "realm": "cognitive"}, {"id": "nexustransition", "name": "Nexus of Transition", "lat": 28, "lon": -26, "books": [8], "desc": "Obsidian highlands where the Reshi Sea lies in the Physical Realm, between the three great seas.", "realm": "cognitive"}, {"id": "nexustruth", "name": "Nexus of Truth", "lat": 45, "lon": -110, "books": [8], "desc": "Obsidian ground over the north-western ocean, the road toward Sel’s subastral.", "realm": "cognitive"}, {"id": "nexusimagination", "name": "Nexus of Imagination", "lat": -45, "lon": -10, "books": [8, 9], "desc": "Obsidian ground over the Southern Depths; voidspren ships first appeared near it.", "realm": "cognitive"}, {"id": "celebrant", "name": "Celebrant", "lat": -2, "lon": 45, "books": [8], "desc": "A big spren trading port on the west side of the ‘island’ that mirrors the Sea of Spears. The travellers from Kholinar buy passage here.", "sea": true, "realm": "cognitive"}, {"id": "lastingintegrity", "name": "Lasting Integrity", "lat": -23, "lon": -68, "books": [9], "desc": "The honorspren capital, a tall roofless box of blue stone on a cliff over the Astral Banks, where each inner wall has its own gravity. Adolin stands trial here.", "sea": true, "realm": "cognitive"}, {"id": "unyieldingfidelity", "name": "Unyielding Fidelity", "lat": -26, "lon": 10, "books": [8], "desc": "An honorspren stronghold near where Kharbranth stands.", "realm": "cognitive"}, {"id": "nohadon", "name": "Nohadon’s Stairways", "lat": -8, "lon": -30, "books": [9, 12], "desc": "Urithiru in the Cognitive Realm: a glowing pillar of crystallised Investiture.", "realm": "cognitive"}, {"id": "riino", "name": "Riino’s lighthouse", "lat": 8, "lon": 42, "books": [8], "desc": "A stone tower with a heatless bonfire on a peninsula of obsidian that is a river in the Physical Realm. Its exact counterpart is our guess.", "realm": "cognitive"}, {"id": "thaylensea", "name": "The Thaylen Sea", "lat": -41, "lon": 14, "books": [8], "desc": "Thaylenah’s main island seen from Shadesmar: a ‘sea’ of obsidian ground, with the Oathgate dais just offshore on a single bridge.", "realm": "cognitive"}, {"id": "beadsea", "name": "The bead ocean", "lat": 20, "lon": -30, "books": [4, 8], "desc": "Where Roshar has land, Shadesmar has an ocean of glass beads, each the soul of an object. Sink in and you may not come back.", "sea": true, "realm": "cognitive"}];
+  var SITES_ROSHAR = [{"id": "shatteredplains", "name": "The Shattered Plains", "lat": -12, "lon": 58, "books": [4, 5, 8, 9, 12], "desc": "Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave."}, {"id": "warcamps", "name": "The warcamps", "lat": -11.5, "lon": 55.5, "books": [4, 5, 8], "desc": "Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial."}, {"id": "narak", "name": "Narak (Stormseat)", "lat": -12, "lon": 59.5, "books": [5, 8, 12], "desc": "The old Natanatan capital at the centre of the Plains, the listeners’ stronghold, with an Oathgate on a plateau to its south-west."}, {"id": "tower", "name": "The Tower", "lat": -10.5, "lon": 61, "books": [4], "desc": "A huge plateau where Sadeas abandons Dalinar’s army and Bridge Four turns back to save it."}, {"id": "kholinar", "name": "Kholinar", "lat": 13, "lon": 35, "books": [4, 8, 9], "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat."}, {"id": "hearthstone", "name": "Hearthstone", "lat": 22, "lon": 40, "books": [4, 9], "desc": "Kaladin’s home town beside a breakwall hill, where his father was the surgeon."}, {"id": "revolar", "name": "Revolar", "lat": 6, "lon": 42, "books": [4, 8], "desc": "One of the largest cities of Highprince Vamah’s lands."}, {"id": "rathalas", "name": "Rathalas (the Rift)", "lat": 2, "lon": 51, "books": [8], "desc": "A canyon city at the north tip of the Sea of Spears, burned by Dalinar in his years as the Blackthorn."}, {"id": "seaofspears", "name": "The Sea of Spears", "lat": -2, "lon": 48, "books": [8, 9], "desc": "A wide, shallow lake bristling with rock spires.", "sea": true}, {"id": "karanak", "name": "Karanak", "lat": -15, "lon": 40, "books": [4], "desc": "A major Alethi city at the Deathbend delta on the Tarat Sea."}, {"id": "urithiru", "name": "Urithiru", "lat": -8, "lon": -30, "books": [5, 8, 9, 12], "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."}, {"id": "valley", "name": "The Valley", "lat": -12, "lon": -30, "books": [4, 5, 7, 8, 9], "desc": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young."}, {"id": "kharbranth", "name": "Kharbranth", "lat": -27, "lon": 8, "books": [4, 5, 8], "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian."}, {"id": "thaylen", "name": "Thaylen City", "lat": -37.5, "lon": 4, "books": [8, 9, 12], "desc": "The terraced capital of Thaylenah on the main island’s north-west coast, with the Thalath Oathgate. The Battle of Thaylen Field ends Oathbringer."}, {"id": "vedenar", "name": "Vedenar", "lat": -17, "lon": 4, "books": [4, 5, 8], "desc": "Jah Keved’s clifftop capital on the Tarat Sea, torn by succession war. Its Oathgate platform became a palace garden."}, {"id": "horneaterpeaks", "name": "The Horneater Peaks", "lat": 3, "lon": 15, "books": [5, 8, 9, 12], "desc": "Crater-topped mountains holding warm emerald lakes, home of the Unkalaki. Rock comes from here."}, {"id": "pool", "name": "Cultivation’s Perpendicularity", "lat": 2, "lon": 15, "books": [9, 12], "desc": "A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth."}, {"id": "bavland", "name": "Bavland", "lat": -8, "lon": -2, "books": [4, 9], "desc": "A dusty mining region at the eastern end of the Mountains of Ur; Shallan’s family’s lands are near."}, {"id": "azimir", "name": "Azimir", "lat": -10, "lon": -47, "books": [5, 7, 8, 12], "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."}, {"id": "yeddaw", "name": "Yeddaw", "lat": -14, "lon": -70, "books": [7], "desc": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer."}, {"id": "sesemalexdar", "name": "Sesemalex Dar", "lat": -21, "lon": -61, "books": [5], "desc": "A city sunk into drainage gashes in a stone plain, fought over by Emul and Tukar."}, {"id": "tukar", "name": "Tukar", "lat": -28, "lon": -72, "books": [5, 9, 12], "desc": "The theocracy of the god-priest Tezim, who is really the Herald Ishar."}, {"id": "shinovar", "name": "Shinovar", "lat": 12, "lon": -103, "books": [4, 8, 12], "desc": "Grass that stays still, soil and upright trees, sheltered from the highstorms behind the Misted Mountains. The Shin will not walk on stone. Szeth’s homeland."}, {"id": "mistedmountains", "name": "The Misted Mountains", "lat": 10, "lon": -91, "books": [4], "desc": "The range that breaks the highstorms before they reach Shinovar."}, {"id": "rallelorim", "name": "Rall Elorim", "lat": 44, "lon": -65, "books": [4, 8, 12], "desc": "The City of Shadows in Iri, under a mountain overhang, with an Oathgate in a round reservoir."}, {"id": "kasitor", "name": "Kasitor", "lat": 35, "lon": -76, "books": [4, 12], "desc": "An Iriali city on a bay where the great spren Cusicesh rises from the water each morning."}, {"id": "kurth", "name": "Kurth", "lat": 32.5, "lon": -44.5, "books": [8], "desc": "The City of Lightning on an island off Rira’s east coast, site of an Oathgate."}, {"id": "panatham", "name": "Panatham", "lat": 10, "lon": -54, "books": [8], "desc": "Babatharnam’s capital and the old Sela Tales Oathgate. Its position inside the country is our guess."}, {"id": "purelake", "name": "The Purelake", "lat": 7, "lon": -33, "books": [4, 8], "desc": "A warm, ankle-deep lake hundreds of miles across, with stilt villages of the Purelakers.", "sea": true}, {"id": "reshiisles", "name": "The Reshi Isles", "lat": 34, "lon": -26, "books": [4, 5, 8, 9, 12], "desc": "Hot equatorial islands in the Reshi Sea, some of them living greatshells. Talik comes from here."}, {"id": "herdaz", "name": "Herdaz", "lat": 33, "lon": 18, "books": [5, 8, 9], "desc": "A humid land of long peninsulas north of Jah Keved; Lopen’s home, occupied by the singers."}, {"id": "akinah", "name": "Akinah", "lat": 5, "lon": -120, "books": [8], "desc": "The ancient Aimian capital ringed by Soulcast spikes, hiding the real Oathgate and a Dawnshard. The Dawnshard expedition sails here."}, {"id": "aimia", "name": "Aimia", "lat": -6, "lon": -120, "books": [4, 8, 9], "desc": "A barren island chain beyond the Aimian Sea, homeland of the Aimians."}, {"id": "frostlands", "name": "The Frostlands", "lat": -28, "lon": 40, "books": [4, 5], "desc": "Cold, lawless lands south of the Plains, scoured by the strongest storms."}, {"id": "shallowcrypts", "name": "The Shallow Crypts", "lat": -24, "lon": 68, "books": [4], "desc": "A slave-trading port linked to the warcamps by caravan."}, {"id": "newnatanan", "name": "New Natanan", "lat": -2, "lon": 74, "books": [8, 9], "desc": "The last remnant of the old Natanatan kingdom on the eastern coast."}, {"id": "origin", "name": "The Origin", "lat": -4, "lon": 115, "books": [4, 9, 12], "desc": "Far east across the Ocean of Origins, where the highstorms are born. No map shows it.", "sea": true}, {"id": "tarat", "name": "The Tarat Sea", "lat": -22, "lon": 18, "books": [4, 8], "desc": "The gulf between Alethkar, Jah Keved and the Frostlands; its outlet is Longbrow’s Straits.", "sea": true}, {"id": "reshisea", "name": "The Reshi Sea", "lat": 28, "lon": -26, "books": [4, 8], "desc": "Roshar’s largest sea, a bay cutting deep into the north coast.", "sea": true}, {"id": "seaoflostlights", "name": "Sea of Lost Lights", "lat": 5, "lon": 35, "books": [8], "desc": "The eastern bead sea, over Alethkar, Jah Keved, Herdaz and the Frostlands. Kaladin, Shallan and Adolin cross it from Kholinar.", "sea": true, "realm": "cognitive"}, {"id": "seaofsouls", "name": "Sea of Souls", "lat": -12, "lon": -40, "books": [9], "desc": "The central bead sea, over Azir, the Ur range and the southern kingdoms. The honorspren lands are on it.", "sea": true, "realm": "cognitive"}, {"id": "seaofregret", "name": "Sea of Regret", "lat": 15, "lon": -90, "books": [8], "desc": "The western bead sea, over Shinovar and Iri.", "sea": true, "realm": "cognitive"}, {"id": "nexustransition", "name": "Nexus of Transition", "lat": 28, "lon": -26, "books": [8], "desc": "Obsidian highlands where the Reshi Sea lies in the Physical Realm, between the three great seas.", "realm": "cognitive"}, {"id": "nexustruth", "name": "Nexus of Truth", "lat": 45, "lon": -110, "books": [8], "desc": "Obsidian ground over the north-western ocean, the road toward Sel’s subastral.", "realm": "cognitive"}, {"id": "nexusimagination", "name": "Nexus of Imagination", "lat": -45, "lon": -10, "books": [8, 9], "desc": "Obsidian ground over the Southern Depths; voidspren ships first appeared near it.", "realm": "cognitive"}, {"id": "celebrant", "name": "Celebrant", "lat": -2, "lon": 45, "books": [8], "desc": "A big spren trading port on the west side of the ‘island’ that mirrors the Sea of Spears. The travellers from Kholinar buy passage here.", "sea": true, "realm": "cognitive"}, {"id": "lastingintegrity", "name": "Lasting Integrity", "lat": -23, "lon": -68, "books": [9], "desc": "The honorspren capital, a tall roofless box of blue stone on a cliff over the Astral Banks, where each inner wall has its own gravity. Adolin stands trial here.", "sea": true, "realm": "cognitive"}, {"id": "unyieldingfidelity", "name": "Unyielding Fidelity", "lat": -26, "lon": 10, "books": [8], "desc": "An honorspren stronghold near where Kharbranth stands.", "realm": "cognitive"}, {"id": "nohadon", "name": "Nohadon’s Stairways", "lat": -8, "lon": -30, "books": [9, 12], "desc": "Urithiru in the Cognitive Realm: a glowing pillar of crystallised Investiture.", "realm": "cognitive"}, {"id": "riino", "name": "Riino’s lighthouse", "lat": 8, "lon": 42, "books": [8], "desc": "A stone tower with a heatless bonfire on a peninsula of obsidian that is a river in the Physical Realm. Its exact counterpart is our guess.", "realm": "cognitive"}, {"id": "thaylensea", "name": "The Thaylen Sea", "lat": -41, "lon": 14, "books": [8], "desc": "Thaylenah’s main island seen from Shadesmar: a ‘sea’ of obsidian ground, with the Oathgate dais just offshore on a single bridge.", "realm": "cognitive"}, {"id": "beadsea", "name": "The bead ocean", "lat": 20, "lon": -30, "books": [4, 8], "desc": "Where Roshar has land, Shadesmar has an ocean of glass beads, each the soul of an object. Sink in and you may not come back.", "sea": true, "realm": "cognitive"}];
   /* Smaller worlds: places and outlines from Coppermind descriptions; where no map exists the outline is a
      placeholder (Darkside, the Fallen World, Yolen, Ashyn, Komashi's continent, Miral's continent). */
   var MAP_TALDAIN = {"rough":0.5,"mtn":0.55,"land":[[[70.7,0.0],[70.7,26.8],[66.4,47.9],[56.0,49.2],[48.1,54.0],[39.8,56.4],[32.0,59.3],[24.6,64.2],[16.1,62.3],[8.0,62.8],[0.0,61.6],[-8.1,64.5],[-16.9,69.7],[-26.0,73.0],[-33.8,67.1],[-41.4,61.7],[-49.2,57.3],[-57.4,52.9],[-63.4,40.4],[-66.0,20.9],[-66.5,0.0],[-58.7,-15.1],[-58.5,-32.0],[-53.7,-44.0],[-48.5,-55.3],[-41.3,-61.6],[-33.3,-64.7],[-25.4,-68.4],[-16.8,-68.4],[-8.6,-72.8],[-0.0,-73.2],[8.4,-68.8],[16.3,-64.2],[23.3,-57.8],[31.1,-56.1],[39.7,-56.0],[48.6,-55.4],[54.8,-46.2],[59.9,-34.1],[66.5,-21.4]],[[65.2,-180.0],[66.9,-156.5],[62.5,-137.7],[51.0,-137.7],[39.7,-140.4],[33.8,-133.6],[26.8,-129.2],[19.1,-126.5],[10.8,-130.5],[3.5,-133.8],[-5.5,-124.4],[-14.2,-124.2],[-24.0,-122.0],[-31.9,-126.8],[-34.9,-140.3],[-42.2,-145.8],[-45.6,-156.4],[-50.6,-166.8],[-46.2,-180.0],[-39.4,170.8],[-40.6,160.1],[-38.9,149.5],[-38.1,135.1],[-30.4,130.2],[-22.0,127.9],[-14.1,124.5],[-6.8,116.5],[2.1,114.5],[11.1,123.2],[18.5,130.6],[23.8,139.7],[33.3,135.1],[42.0,135.6],[50.2,139.2],[54.2,151.7],[56.6,165.4]]],"ranges":[{"line":[[52,30],[42,38],[30,42]],"w":2.2,"s":1},{"line":[[18,44],[6,46],[-6,47],[-18,48],[-28,50],[-38,54],[-50,52]],"w":2.2,"s":1},{"line":[[-12,47],[-14,55],[-15,63]],"w":1.4,"s":0.8}],"rivers":[{"line":[[-2,0.3],[-10,1.5],[-20,2.5],[-28,2.8],[-33,3.0],[-42,3.6],[-52,4.2],[-60,4.4],[-64.5,4.5]],"w":0.35},{"line":[[-28,52],[-29,44],[-30,34],[-31,24],[-32,14],[-33,3.0]],"w":0.25}],"regions":[{"poly":[[45,-50],[30,-55],[10,-68],[-15,-68],[-35,-64],[-55,-48],[-59,-20],[-40,-8],[-20,-6],[-5,-8],[10,-20],[30,-30]],"c":"#d9cfa3","s":0.9},{"poly":[[25,-30],[22,-5],[18,15],[8,22],[-5,15],[-12,6],[-10,-6],[-5,-20],[10,-35]],"c":"#cfd8b0","s":0.9},{"poly":[[-4,-2],[-4,4],[-20,10],[-35,16],[-50,18],[-64,20],[-66,0],[-60,-12],[-45,-8],[-25,-5]],"c":"#e8dcb8","s":0.9},{"poly":[[-8,15],[-10,40],[-30,46],[-48,48],[-60,40],[-52,20],[-35,16],[-20,10]],"c":"#f4f1e8","s":1},{"poly":[[60,-10],[60,30],[45,38],[30,40],[20,25],[25,0],[40,-10]],"c":"#f4f1e8","s":1},{"poly":[[-14,47],[-14,64],[-30,70],[-45,62],[-56,52],[-48,50],[-34,52]],"c":"#c9b48c","s":0.9},{"poly":[[30,44],[28,60],[10,63],[-8,64],[-14,60],[-14,47],[6,46],[18,44]],"c":"#c4b08a","s":0.9},{"poly":[[64,30],[62,48],[48,54],[32,58],[30,44],[42,38],[52,30]],"c":"#bfae8e","s":0.9},{"poly":[[60,-175],[60,150],[-40,150],[-40,-175]],"c":"#3a2f4f","s":1}]};
@@ -184,6 +184,582 @@
   var SITES_MIRAL = [{"id":"kingseat","name":"Kingseat","lat":32.0,"lon":0.0,"books":[12],"desc":"The capital at the summit of Mountaincrest, grown up around the skeletal corpse of the Megalith, from whose heart the three blood rivers flow."},{"id":"smallport","name":"Smallport","lat":30.6,"lon":0.4,"books":[12],"desc":"The last sizeable city before the capital, about three days by barge."},{"id":"duckseat","name":"First Dukeseat (Duck Seat)","lat":24.6,"lon":1.2,"books":[12],"desc":"The colourful river port of the Violet Duke, about two weeks by barge from Kingseat."},{"id":"rivershore","name":"Rivershore","lat":20.5,"lon":0.6,"books":[12],"desc":"December’s home town on the River Violet, south of Duck Seat."},{"id":"riverviolet","name":"The River Violet","lat":27.0,"lon":1.0,"books":[12],"desc":"One of the three rivers of the Megalith’s glowing blood, which December follows up the mountain."},{"id":"monastery","name":"Monastery of the Final Word","lat":16.0,"lon":0.0,"books":[12],"desc":"A scholarly monastery about 800 years old where the Violet ends on the plains, with a great library on demons."},{"id":"southplains","name":"The southern plains","lat":8.0,"lon":0.0,"books":[12],"desc":"A huge, flat forest south of Mountaincrest, humanity’s first home here, with nomad clans and giant walking demons."},{"id":"lark","name":"The Lark Kingdom","lat":30.0,"lon":38.0,"books":[12],"desc":"A kingdom several months’ travel to the east."}];
   var SITES_YOLEN = [{"id":"greatstar","name":"The greatstar","lat":20,"lon":10,"books":[12],"desc":"A glowing hole high in Yolen’s atmosphere where the Silverlight Nexus comes through, with a flying city of dragons nearby. Its position on the globe is our placeholder."},{"id":"fainlife","name":"Fainlife lands","lat":-20,"lon":50,"books":[12],"desc":"Regions overrun by bone-white invasive life; about half the trees are white."},{"id":"shattering","name":"The Shattering (site unknown)","lat":12,"lon":20,"books":[7],"desc":"Somewhere on Yolen, eighteen conspirators struck down Adonalsium with a weapon made from the Dawnshards. The exact place has never been shown."}];
   var SITES_ASHYN = [{"id":"centralsea","name":"The Central Sea","lat":10,"lon":0,"sea":true,"books":[8],"desc":"The sea at the heart of Ashyn’s old world, across which the ancient empire held its conference."},{"id":"floating","name":"Floating cities","lat":25,"lon":-30,"books":[8],"desc":"Survivors live in cities held up in the air by people whose Surge-sickness lets them control gravity."}];
+
+  /* ---------- PACK_FORMAT 21: enterable places (site scenes and landmarks) ----------
+     Keyed by world id, then site id; attachScenes() below copies each scene onto its site.
+     Landmark names and descriptions are paraphrased from the books, checked against the Coppermind
+     summaries (Luthadel, Kredik Shaw, Fountain Square, Kandra Homeland, Kholinar, Urithiru, Sibling,
+     Thaylen City, Battle of Thaylen Field, Pinnacle, Feasting basin, Shattered Plains, Honor Chasm,
+     Kharbranth, Azimir, Vedenar, Revolar, Kasitor, Ishikk, Court of Gods, T'Telir, Edgedancer,
+     Elantris, Hrathen, and the book summaries for Rhythm of War, Wind and Truth, The Well of Ascension,
+     The Hero of Ages, Shadows of Self, Tress, Yumi, The Sunlit Man, Isles of the Emberdark and The Fires
+     of December) and the Wikipedia plot articles. Positions inside every scene are schematic.
+     Sites with nothing specific in the books get a scene but no invented landmarks. */
+  var SCENES = {
+    roshar: {
+      shatteredplains: {/* layout schematic */ kind: "battlefield", arch: "ancient", size: "huge", tod: "day", weather: "clear", sky: {moons: 3},
+        landmarks: [
+          {id: "plateau", name: "The contested plateaus", kind: "peak", at: [.3, .2], h: 1.2, books: [4], desc: "Chasmfiends climb up onto the plateaus to pupate, and the highprinces race each other across the chasms to cut out the gemhearts. Bridge crews run ahead under listener arrows, carrying the bridges."},
+          {id: "chasms", name: "The chasms", kind: "cliff", at: [0, -.2], h: 1.4, books: [4, 5], desc: "Deep cracks between the plateaus, flooded by every highstorm. Bridge Four is sent down to scavenge from the dead, and Kaladin secretly trains his men with spears here."},
+          {id: "honorchasm", name: "The Honor Chasm", kind: "cliff", at: [-.75, .35], h: .9, books: [4], desc: "A chasm a short walk from Sadeas’s warcamp, the one place bridgemen may go unwatched, and where despairing bridgemen jump. Kaladin comes here meaning to end it, and Syl talks him into trying once more."},
+          {id: "eastedge", name: "The eastern pillars", kind: "stones", at: [.85, -.1], h: 1.6, books: [4], desc: "Toward the east the chasms widen and the plateaus break into impassable pillars, the way the listeners came and went."}
+        ]},
+      warcamps: {/* layout schematic */ kind: "camp", arch: "brutal", size: "large", tod: "day", weather: "clear", sky: {moons: 3},
+        landmarks: [
+          {id: "kholin", name: "The Kholin warcamp", kind: "keep", at: [-.1, .05], h: 1.2, books: [4, 5], desc: "Orderly barracks in rings around Dalinar’s bunker-like complex. During highstorms he is tied down in his rooms while the visions take him."},
+          {id: "sadeas", name: "Sadeas’s warcamp", kind: "camp", at: [-.55, .45], books: [4, 5], desc: "The least ordered of the ten camps, where the slave bridge crews are kept and spent on the plateau runs."},
+          {id: "barrack", name: "Bridge Four’s barrack", kind: "hall", at: [-.65, .25], h: .6, books: [4], desc: "A plain stone barrack in Sadeas’s camp, home of the bridge crew given the worst duties. Kaladin is tied to its outside wall and left to a highstorm, and he lives."},
+          {id: "pinnacle", name: "The Pinnacle", kind: "palace", at: [.15, .7], h: 1.5, books: [4, 5, 8], desc: "King Elhokar’s Soulcast palace on a hill ringed by a sheer drop, the centre of Alethi government on the Plains. The king meets his highprinces in its conference chamber."},
+          {id: "basin", name: "The feasting basin", kind: "lake", at: [.35, .5], books: [4, 5], desc: "A shallow bowl at the foot of the Pinnacle that is flooded for feasts, so its five round platforms become islands joined by bridges. The king’s Wit sits by the entrance insulting guests, and the highprinces scheme over spiced food."},
+          {id: "arena", name: "The dueling arena", kind: "arena", at: [.5, .75], books: [5], desc: "Where Adolin duels for Shardblades to win his father’s cause. One match turns into four Shardbearers against him, until Kaladin jumps into the ring."},
+          {id: "sebarial", name: "Sebarial’s warcamp", kind: "farm", at: [.7, -.4], books: [5], desc: "The southernmost camp and the most practical, with farms, trade and running water. Shallan lodges here when she reaches the Plains."},
+          {id: "market", name: "The Outer Market", kind: "market", at: [.05, .35], books: [4], desc: "An unplanned sprawl of shops beside the palace hill, run largely by Thaylen merchants and patrolled by Kholin scribes."}
+        ]},
+      narak: {/* layout schematic */ kind: "ruins", arch: "ancient", size: "medium", tod: "dusk", weather: "storm", sky: {moons: 3},
+        landmarks: [
+          {id: "stormseat", name: "The listener city", kind: "ruin", at: [0, .1], h: 1.2, books: [5], desc: "Ruined Natanatan buildings at the heart of the Plains where the listeners make their stronghold. Here Eshonai’s people sing in the new forms that call the Everstorm."},
+          {id: "oathgate", name: "The Oathgate plateau", kind: "portal", at: [-.6, -.5], h: 1.1, books: [5, 8], desc: "A round plateau south-west of Narak, its gate hidden under centuries of crem. Shallan finds the mechanism and carries the trapped armies away to Urithiru."},
+          {id: "narakone", name: "Narak One", kind: "keep", at: [.6, .5], books: [12], desc: "One of four fortresses Sigzil and Bridge Four build on Narak to hold the Plains through the ten days of the contest. It is the first to fall."},
+          {id: "naraktwo", name: "Narak Two", kind: "keep", at: [-.5, .55], books: [12], desc: "The fortress Sigzil falls back to after Narak One is lost, and holds while Narak Three falls."},
+          {id: "narakthree", name: "Narak Three", kind: "keep", at: [.65, -.35], books: [12], desc: "The third fortress, lost on the seventh day."},
+          {id: "narakprime", name: "Narak Prime", kind: "citadel", at: [0, -.15], h: 1.3, books: [12], desc: "The central stronghold and the last line on the Plains, stormed by Venli’s chasmfiends at the end of the defence."}
+        ]},
+      tower: {/* layout schematic */ kind: "battlefield", arch: "ancient", size: "medium", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "plateau", name: "The Tower plateau", kind: "peak", at: [0, 0], h: 1.6, books: [4], desc: "An enormous plateau where chasmfiends like to pupate. Sadeas pulls his men back across the chasm here and leaves Dalinar’s army to die, and Bridge Four turns back to bring them out."}
+        ]},
+      kholinar: {/* layout schematic */ kind: "capital", arch: "imperial", size: "huge", tod: "day", weather: "clear", walls: true, sky: {moons: 3},
+        landmarks: [
+          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .7], h: 1.6, books: [4, 8, 9], desc: "The Kholin palace on a northern plateau. King Gavilar is murdered here on the night of the treaty feast."},
+          {id: "windblades", name: "The windblades", kind: "cliff", at: [-.7, .1], h: 1.8, books: [8], desc: "Giant fins of storm-carved rock that shelter the city from the highstorms. Tunnels are cut through them and people live along their tops."},
+          {id: "wall", name: "The city wall", kind: "wall", at: [.75, -.4], h: 1.3, books: [8], desc: "About sixty feet high, built into the windblades. Highmarshal Azure’s Wall Guard holds it against Fused raids until a thunderclast breaks through."},
+          {id: "oathgate", name: "The Monastery Dais (Oathgate)", kind: "portal", at: [.2, .35], h: 1.1, books: [8], desc: "The Oathgate platform, joined to the palace by the Sunwalk and used as the ardents’ monastery. Its spren has been corrupted by Sja-anat, and the Cult of Moments holds endless feasts on it."},
+          {id: "yokska", name: "Yokska’s shop", kind: "house", at: [-.3, -.3], h: .5, books: [8], desc: "A tailor’s house where Elhokar, Adolin, Kaladin and Shallan hide while they work out how to reach the Oathgate."},
+          {id: "guard", name: "Wall Guard barracks", kind: "hall", at: [.55, -.65], books: [8], desc: "Azure’s headquarters, where a hidden Soulcaster in an aluminium-lined room keeps soldiers and refugees fed. Kaladin joins the Guard here."}
+        ]},
+      hearthstone: {/* layout schematic */ kind: "town", arch: "rustic", size: "small", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "surgery", name: "Lirin’s surgery", kind: "house", at: [-.2, -.1], h: .6, books: [4, 9], desc: "The surgeon’s house where Kaladin grew up learning his father’s trade."},
+          {id: "manor", name: "Roshone’s manor", kind: "house", at: [.35, .4], books: [4, 9], desc: "The citylord’s manor. Roshone’s feud with Lirin shapes Kaladin’s childhood."}
+        ]},
+      revolar: {/* layout schematic */ kind: "city", arch: "brutal", size: "large", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "inner", name: "The old inner walls", kind: "wall", at: [0, .2], books: [8], desc: "Highprince Vamah’s seat sprawls up the slopes of a hollow; the original city walls now only mark its inner districts."},
+          {id: "bunkers", name: "The storm bunkers", kind: "hall", at: [-.4, -.3], books: [8], desc: "Where the singers keep their human captives and assign them labour. Moash is held here after his capture."},
+          {id: "east", name: "The eastern barracks", kind: "camp", at: [.6, 0], books: [8], desc: "Army barracks and parshman quarters on the east side, where tens of thousands of singers gather after the Everstorm."}
+        ]},
+      rathalas: {/* layout schematic */ kind: "city", arch: "ancient", size: "medium", tod: "dusk", weather: "ash",
+        landmarks: [
+          {id: "rift", name: "The Rift", kind: "cliff", at: [0, 0], h: 1.4, books: [8], desc: "The canyon city that rebels against Gavilar. In Dalinar’s memories he burns it to the ground, not knowing that his wife Evi is inside."}
+        ]},
+      seaofspears: {kind: "sea", size: "large", water: true, tod: "day", weather: "clear"},
+      karanak: {kind: "city", arch: "brutal", size: "medium", coast: "s", tod: "day", weather: "clear"},
+      urithiru: {/* layout schematic */ kind: "city", arch: "ancient", size: "large", tod: "day", weather: "snow",
+        landmarks: [
+          {id: "oathgates", name: "The Oathgate platforms", kind: "portal", at: [0, -.75], h: 1, books: [5, 8, 9, 12], desc: "Ten platforms on the plaza before the tower, each linked to an Oathgate across Roshar. Shallan’s gate from Narak brings the Alethi armies here at the end of Words of Radiance."},
+          {id: "gallery", name: "The Gallery of Maps", kind: "hall", at: [.1, .55], h: .8, books: [8, 9], desc: "A chamber near the top with a great map table, where Dalinar plans his coalition’s war."},
+          {id: "breakaway", name: "The Breakaway", kind: "market", at: [-.25, -.25], books: [8, 9], desc: "The cavernous central market hall on the lower levels, where merchants and refugees fill the once-empty tower."},
+          {id: "corridor", name: "The dark corridors", kind: "cave", at: [-.6, .1], h: .6, books: [8], desc: "Miles of lightless, half-explored passages. Sadeas’s body is found in a corridor, and more killings follow."},
+          {id: "reshephir", name: "Re-Shephir’s chamber", kind: "cave", at: [-.4, -.55], h: .7, books: [8], desc: "A hidden ground-floor chamber where the Unmade Re-Shephir lurks. Shallan confronts her here with Lightweaving and drives her off."},
+          {id: "archive", name: "The gem archive", kind: "library", at: [.4, -.45], books: [8, 9], desc: "A room where the ancient Radiants stored their records inside gemstones."},
+          {id: "pillar", name: "The crystal pillar", kind: "monolith", at: [0, 0], h: 1.6, books: [9, 12], desc: "A pillar of gemstones deep in the tower, the heart of the Sibling. Raboniel pours Voidlight into it to seize the tower; Navani later bonds the Sibling here and becomes a Bondsmith."},
+          {id: "mercy", name: "The Devotary of Mercy", kind: "temple", at: [.55, .2], books: [9], desc: "A fourth-floor hospital for the wounded in mind, where Kaladin, retired from fighting, works with the patients."},
+          {id: "cistern", name: "The cistern chamber", kind: "well", at: [.25, -.1], h: .6, books: [12], desc: "A water chamber in the tower where Dalinar opens a perpendicularity and goes with Navani into the Spiritual Realm."}
+        ]},
+      valley: {/* layout schematic */ kind: "forest", arch: "organic", size: "medium", tod: "dusk", weather: "mist",
+        landmarks: [
+          {id: "grove", name: "The Nightwatcher’s valley", kind: "grove", at: [0, 0], h: 1.2, books: [5], desc: "A warm, overgrown valley where people come to the Old Magic for a boon and a curse. Taravangian’s boon from her shapes everything he does."}
+        ]},
+      kharbranth: {/* layout schematic */ kind: "port", arch: "classical", size: "medium", tod: "day", weather: "clear", coast: "s",
+        landmarks: [
+          {id: "conclave", name: "The Conclave", kind: "palace", at: [0, .75], h: 1.4, books: [4, 5, 8], desc: "The king’s palace, dug into the mountain at the top of the city. Here Taravangian reveals to Szeth that he holds his oathstone and sends him after Dalinar."},
+          {id: "palanaeum", name: "The Palanaeum", kind: "library", at: [-.2, .6], h: 1.1, books: [4], desc: "The greatest library on Roshar, beneath the Conclave. Shallan finds Jasnah studying here and talks her way into becoming her ward."},
+          {id: "ralinsa", name: "The Ralinsa", kind: "bridge", at: [.1, .1], books: [4], desc: "The switchback road climbing from the harbour to the Conclave."},
+          {id: "harbour", name: "The harbour", kind: "dock", at: [0, -.75], books: [4], desc: "A natural wedge harbour on the Tarat Sea. Shallan arrives here on the Wind’s Pleasure, and leaves on it with Jasnah."},
+          {id: "alley", name: "The theatre-district alley", kind: "plaza", at: [.5, -.2], h: .5, books: [4], desc: "Jasnah walks into a dark alley knowing she will be attacked, and Soulcasts the four thugs who follow her while Shallan watches."},
+          {id: "hospital", name: "The hospitals", kind: "hall", at: [-.5, -.1], books: [4], desc: "Kharbranth’s hospitals are famous across Roshar, and its surgeons go wherever there is war."},
+          {id: "bells", name: "The bells", kind: "tower", at: [.45, .45], books: [4], desc: "The City of Bells: chimes all over the city ring the hours and warn of highstorms."}
+        ]},
+      thaylen: {/* layout schematic */ kind: "port", arch: "classical", size: "large", tod: "day", weather: "clear", coast: "w",
+        landmarks: [
+          {id: "oathgate", name: "The Oathgate", kind: "portal", at: [.6, .6], books: [8, 12], desc: "On the north-east edge beside the Royal Ward, long used as a sculpture garden, until it is cleared and reopened to Urithiru."},
+          {id: "temple", name: "Temple of Talenelat", kind: "temple", at: [.3, .45], books: [8], desc: "One of ten Herald temples in the Royal Ward. Dalinar finds his Bondsmith power when he mends a broken statue and this damaged temple, and Queen Fen joins his coalition."},
+          {id: "stele", name: "The Eila Stele", kind: "obelisk", at: [-.1, .3], books: [8], desc: "An ancient carved stone kept in the city. Its translation says humans came to Roshar as the invaders, and the coalition nearly breaks apart over it."},
+          {id: "reserve", name: "The Gemstone Reserve", kind: "hall", at: [0, .05], books: [8], desc: "The national bank, which holds the great gemstone called the King’s Drop. The thunderclast Yushah smashes it during the battle."},
+          {id: "wall", name: "The city wall", kind: "wall", at: [-.4, -.2], h: 1.1, books: [8], desc: "Runs north to south below the city. Breached in the battle; the gap is later sealed with Soulcast metal."},
+          {id: "field", name: "Thaylen Field", kind: "plaza", at: [-.7, -.6], books: [8], desc: "The docks and market district outside the wall, wrecked by the Everstorm. Odium’s armies and the possessed Sadeas troops fight here, and Dalinar faces Odium."},
+          {id: "palace", name: "The Royal Palace", kind: "palace", at: [.5, .2], books: [8, 12], desc: "Seat of the Thaylen monarchs and of Queen Fen."}
+        ]},
+      vedenar: {/* layout schematic */ kind: "capital", arch: "classical", size: "large", tod: "dusk", weather: "clear", coast: "s",
+        landmarks: [
+          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .3], h: 1.3, books: [4, 5, 8], desc: "King Hanavanar holds a feast meant as a trap for the Assassin in White, and Szeth kills him anyway."},
+          {id: "oathgate", name: "The Oathgate garden", kind: "portal", at: [-.5, .5], books: [8], desc: "The Oathgate dais had become a palace garden. Reopened by Malata, it links Vedenar to Urithiru again."},
+          {id: "center", name: "The hexagonal old city", kind: "plaza", at: [.1, -.05], books: [4], desc: "The ancient centre is laid out as a hexagon with matching streets, and it has a temple for every Vorin devotary."},
+          {id: "cliffs", name: "The cliffs and docks", kind: "cliff", at: [.2, -.75], h: 1.2, books: [5], desc: "The city stands above a ridge guarding its port. In the Battle of Vedenar one army is driven over the cliffs, and the docks are burned."},
+          {id: "fields", name: "The fields", kind: "farm", at: [-.3, .85], books: [8], desc: "Farmland north of the walls, where the war dead were burned."}
+        ]},
+      horneaterpeaks: {/* layout schematic */ kind: "mountain", arch: "rustic", size: "medium", tod: "day", weather: "mist",
+        landmarks: [
+          {id: "lakes", name: "The crater lakes", kind: "lake", at: [0, 0], books: [5, 8, 9], desc: "Warm lakes in the mountains’ crater tops where the Unkalaki live; Rock speaks of their spren and their peaks."}
+        ]},
+      pool: {/* layout schematic */ kind: "crater", arch: "organic", size: "small", tod: "day", weather: "mist",
+        landmarks: [
+          {id: "perp", name: "Cultivation’s Perpendicularity", kind: "lake", at: [0, 0], books: [9, 12], desc: "A crater lake that opens into Shadesmar, the usual way worldhoppers come to Roshar."}
+        ]},
+      bavland: {kind: "wilds", arch: "rustic", size: "medium", tod: "day", weather: "dust"},
+      azimir: {/* layout schematic */ kind: "capital", arch: "imperial", size: "huge", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "palace", name: "The Bronze Palace", kind: "palace", at: [.2, .5], h: 1.4, books: [5, 7, 8, 12], desc: "Seat of the Prime Aqasix. Lift breaks in to steal food, and the boy Gawx, whom she heals, is chosen as Prime."},
+          {id: "market", name: "The Grand Market", kind: "dome", at: [-.25, -.1], h: 1.5, books: [8, 12], desc: "An indoor market under a great bronze dome, built over the city’s Oathgate. The Azish fortify it once they learn what is underneath."},
+          {id: "oathgate", name: "The Makabakam Oathgate", kind: "portal", at: [-.25, -.3], books: [8, 12], desc: "The platform under the market dome, which Lift unlocks to open the way to Urithiru."}
+        ]},
+      yeddaw: {/* layout schematic */ kind: "city", arch: "desert", size: "medium", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "gate", name: "The refugee entrance", kind: "gate", at: [-.7, -.6], books: [7], desc: "A guarded way into the city with a long queue of refugees, which Lift skips."},
+          {id: "market", name: "The market", kind: "market", at: [-.2, -.1], books: [7], desc: "Lift watches the man she calls Darkness execute a girl here for stealing fruit."},
+          {id: "indicium", name: "The Grand Indicium", kind: "tower", at: [.2, .6], h: 1.6, books: [7], desc: "A huge records building towering over the city. Lift talks her way in as an envoy from Azir to find who Darkness is hunting."},
+          {id: "slots", name: "The slots", kind: "farm", at: [-.55, .4], books: [7], desc: "The city’s deep cut channels, where farmers grow crops out of season."}
+        ]},
+      sesemalexdar: {kind: "city", arch: "ancient", size: "medium", tod: "day", weather: "clear"},
+      tukar: {kind: "wilds", arch: "rustic", size: "medium", tod: "day", weather: "dust"},
+      shinovar: {/* layout schematic */ kind: "farm", arch: "rustic", size: "large", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "fields", name: "Shin farmland", kind: "farm", at: [0, -.2], books: [4], desc: "Soft soil, grass that does not hide and trees that stand straight, all sheltered by the mountains. The Shin hold stone sacred and will not walk on it."},
+          {id: "pass", name: "The mountain pass", kind: "gate", at: [.85, .1], books: [12], desc: "Kaladin and Szeth come through a pass in the Misted Mountains into the lush lands beyond."},
+          {id: "stoneward", name: "Stoneward", kind: "shrine", at: [.5, .45], books: [12], desc: "Szeth kills the corrupted stone shaman here and takes back Taln’s Honorblade."},
+          {id: "clearmount", name: "Clearmount", kind: "farm", at: [-.3, .5], h: .6, books: [12], desc: "Szeth’s family home, seen in his memories."},
+          {id: "lightweaver", name: "The Lightweaver monastery", kind: "temple", at: [.2, .75], books: [12], desc: "Where Szeth recovers Shalash’s Honorblade."},
+          {id: "dustbringer", name: "The Dustbringer monastery", kind: "temple", at: [-.6, .15], books: [12], desc: "Where Szeth finds that his sister Elid holds the Honorblade, and the two are reconciled."},
+          {id: "skybreaker", name: "The Skybreaker monastery", kind: "temple", at: [-.45, -.55], books: [12], desc: "Kaladin duels the Herald Nale here; Nale yields his Honorblade and admits what Ishar has done."},
+          {id: "bondsmith", name: "The Bondsmith monastery", kind: "temple", at: [-.85, -.2], h: 1.2, books: [12], desc: "The last stop. Ishar raises corrupted Honorbearers against them, Kaladin speaks the Fifth Ideal and frees Ishar, and Szeth fights with Nightblood."}
+        ]},
+      mistedmountains: {kind: "mountain", size: "large", tod: "day", weather: "mist"},
+      rallelorim: {/* layout schematic */ kind: "city", arch: "eastern", size: "medium", tod: "dusk", weather: "clear",
+        landmarks: [
+          {id: "oathgate", name: "The reservoir Oathgate", kind: "portal", at: [0, 0], books: [8], desc: "The City of Shadows lies under a mountain overhang; its Oathgate sits in a round reservoir."}
+        ]},
+      kasitor: {/* layout schematic */ kind: "port", arch: "eastern", size: "medium", tod: "dawn", weather: "clear", coast: "e",
+        landmarks: [
+          {id: "bay", name: "Cusicesh’s bay", kind: "lake", at: [.6, 0], h: 1.6, books: [4], desc: "Every morning the great spirit Cusicesh rises from the bay at the same minute, and the people come to watch."},
+          {id: "gateway", name: "The gateway", kind: "portal", at: [.3, -.5], books: [12], desc: "Just before Stormfall Cusicesh speaks to the Iriali for the first time and opens a perpendicularity, and they leave Roshar through it."},
+          {id: "jail", name: "The jail", kind: "hall", at: [-.4, .2], h: .5, books: [4], desc: "Axies the Collector, studying spren, ends up drunk, robbed and locked up here."}
+        ]},
+      kurth: {/* layout schematic */ kind: "city", arch: "classical", size: "medium", tod: "day", weather: "storm", coast: "e",
+        landmarks: [
+          {id: "oathgate", name: "The Kurth Oathgate", kind: "portal", at: [0, 0], books: [8], desc: "The City of Lightning on its island holds one of the ten Oathgates."}
+        ]},
+      panatham: {/* layout schematic */ kind: "capital", arch: "eastern", size: "medium", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "oathgate", name: "The Sela Tales Oathgate", kind: "portal", at: [0, 0], books: [8], desc: "Babatharnam’s capital holds the Oathgate of the old kingdom of Sela Tales."}
+        ]},
+      purelake: {/* layout schematic */ kind: "sea", arch: "rustic", size: "large", water: true, tod: "day", weather: "clear",
+        landmarks: [
+          {id: "stilts", name: "Stilt villages", kind: "house", at: [-.3, .2], books: [4], desc: "Purelakers live in villages raised above the warm, ankle-deep water and fish it from rafts."},
+          {id: "fuabra", name: "Fu Abra", kind: "house", at: [.35, -.25], h: .6, books: [4], desc: "Home of the fisherman Ishikk, who is paid by three strange foreigners to search the lake for a man who sounds very like Wit."}
+        ]},
+      reshiisles: {/* layout schematic */ kind: "sea", arch: "rustic", size: "large", water: true, tod: "day", weather: "clear",
+        landmarks: [
+          {id: "reluna", name: "Relu-na", kind: "peak", at: [0, 0], h: 1.6, books: [5], desc: "A living greatshell island. Rysn climbs down its head on a rope to plead with the island itself; the rope breaks and she falls, and the island gives her a live larkin."}
+        ]},
+      herdaz: {kind: "wilds", arch: "rustic", size: "medium", tod: "day", weather: "rain", coast: "n"},
+      akinah: {/* layout schematic */ kind: "ruins", arch: "ancient", size: "medium", tod: "day", weather: "mist", coast: "s",
+        landmarks: [
+          {id: "spikes", name: "The ring of spikes", kind: "stones", at: [0, -.6], h: 1.3, books: [8], desc: "Soulcast spikes ringing the forbidden old Aimian capital."},
+          {id: "oathgate", name: "The hidden Oathgate", kind: "portal", at: [0, .2], books: [8], desc: "The real Oathgate, hidden in the forbidden city, where the expedition finds something far older than the Radiants."}
+        ]},
+      aimia: {kind: "wilds", size: "medium", tod: "day", weather: "clear", coast: "s"},
+      frostlands: {kind: "wilds", size: "large", tod: "day", weather: "snow"},
+      shallowcrypts: {kind: "port", arch: "brutal", size: "small", tod: "day", weather: "clear", coast: "e"},
+      newnatanan: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "rain", coast: "e"},
+      origin: {kind: "sea", size: "huge", water: true, tod: "dawn", weather: "storm"},
+      tarat: {kind: "sea", size: "huge", water: true, tod: "day", weather: "clear"},
+      reshisea: {kind: "sea", size: "huge", water: true, tod: "day", weather: "clear"},
+      seaoflostlights: {kind: "sea", arch: "alien", size: "huge", water: true, tod: "night", weather: "clear"},
+      seaofsouls: {kind: "sea", arch: "alien", size: "huge", water: true, tod: "night", weather: "clear"},
+      seaofregret: {kind: "sea", arch: "alien", size: "huge", water: true, tod: "night", weather: "clear"},
+      nexustransition: {kind: "wilds", arch: "alien", size: "large", tod: "night", weather: "clear"},
+      nexustruth: {kind: "wilds", arch: "alien", size: "large", tod: "night", weather: "clear"},
+      nexusimagination: {kind: "wilds", arch: "alien", size: "large", tod: "night", weather: "clear"},
+      celebrant: {/* layout schematic */ kind: "port", arch: "alien", size: "medium", tod: "night", weather: "clear", coast: "w",
+        landmarks: [
+          {id: "docks", name: "The bead docks", kind: "dock", at: [-.5, 0], books: [8], desc: "A busy spren trading port on the bead sea. The travellers from Kholinar buy passage here on a ship bound toward Thaylen."}
+        ]},
+      lastingintegrity: {/* layout schematic */ kind: "fortress", arch: "alien", size: "medium", tod: "night", weather: "clear",
+        landmarks: [
+          {id: "walls", name: "The walls of the box", kind: "wall", at: [0, .3], h: 2, books: [9], desc: "A tall, roofless box of blue stone. Each inner wall has its own gravity, and the honorspren live on all four."},
+          {id: "door", name: "The door", kind: "gate", at: [0, -.7], books: [9], desc: "Adolin’s party camps outside the closed fortress, waiting for the honorspren to let him in."},
+          {id: "trial", name: "The trial ground", kind: "plaza", at: [0, 0], books: [9], desc: "Adolin stands trial here for the betrayal of the ancient Radiants, and calls on the dead spren of his Blade as a witness."}
+        ]},
+      unyieldingfidelity: {kind: "fortress", arch: "alien", size: "small", tod: "night", weather: "clear"},
+      nohadon: {/* layout schematic */ kind: "monastery", arch: "crystal", size: "medium", tod: "night", weather: "clear",
+        landmarks: [
+          {id: "pillar", name: "The pillar of light", kind: "monolith", at: [0, 0], h: 2.4, books: [9, 12], desc: "Urithiru’s reflection in Shadesmar: a glowing column of crystallised Investiture."}
+        ]},
+      riino: {/* layout schematic */ kind: "wilds", arch: "alien", size: "small", tod: "night", weather: "clear",
+        landmarks: [
+          {id: "lighthouse", name: "Riino’s lighthouse", kind: "lighthouse", at: [0, 0], h: 1.4, books: [8], desc: "A stone tower with a fire that gives no heat. Kaladin looks into it and sees Thaylen City overrun and Dalinar surrounded."}
+        ]},
+      thaylensea: {/* layout schematic */ kind: "sea", arch: "alien", size: "medium", water: true, tod: "night", weather: "clear",
+        landmarks: [
+          {id: "dais", name: "The Oathgate dais", kind: "portal", at: [.4, 0], books: [8], desc: "The Shadesmar side of Thaylen City’s Oathgate, reached by a single bridge. Its spren refuse to let the travellers through."}
+        ]},
+      beadsea: {kind: "sea", arch: "alien", size: "huge", water: true, tod: "night", weather: "clear"}
+    },
+
+    scadrial: {
+      luthadel: {/* layout schematic */ kind: "capital", arch: "gothic", size: "huge", tod: "dusk", weather: "ash", walls: true, river: true,
+        landmarks: [
+          {id: "fountain", name: "Fountain Square", kind: "plaza", at: [.1, .05], books: [2], desc: "A raised square with four fountains where the Lord Ruler stages executions and every man must watch. Kelsier dies in a courtyard beside it, and it becomes the Square of the Survivor."},
+          {id: "clubs", name: "Clubs’s shop", kind: "house", at: [-.15, -.2], h: .6, books: [2], desc: "A carpentry shop near the square that hides the crew’s base, where Kelsier lays out the plan to bring down the empire."},
+          {id: "venture", name: "Keep Venture", kind: "keep", at: [-.5, .35], h: 1.3, books: [2], desc: "A great noble keep where Vin, disguised as Valette Renoux, attends balls and meets Elend. In The Well of Ascension it is Elend’s palace."},
+          {id: "hasting", name: "Keep Hasting", kind: "keep", at: [.55, .45], h: 1.2, books: [2], desc: "Another noble keep. During the siege Vin and Zane spar across its heights, and Elend dines here with Lord Cett."},
+          {id: "assembly", name: "The Assembly hall", kind: "hall", at: [-.1, .55], books: [2], desc: "Where Elend’s new Assembly meets, and votes him off his own throne during the siege."},
+          {id: "walls", name: "The city walls", kind: "wall", at: [.8, -.5], h: 1.2, books: [2], desc: "High walls with eight gates named for metals. Three armies camp outside them in The Well of Ascension, and the koloss break in."},
+          {id: "channerel", name: "The Channerel", kind: "bridge", at: [-.35, -.65], books: [2], desc: "The river that runs through the city."}
+        ]},
+      kredikshaw: {/* layout schematic */ kind: "palace", arch: "gothic", size: "large", tod: "night", weather: "mist",
+        landmarks: [
+          {id: "spires", name: "The thousand spires", kind: "spire", at: [0, .4], h: 2.6, books: [2], desc: "Towers and iron rods of every thickness; the palace has no outer walls. At the end Vin, holding Preservation’s power, fights Ruin’s last Inquisitors here and the palace is crushed into the ground."},
+          {id: "throne", name: "The throne room", kind: "throne", at: [0, 0], h: 1.2, books: [2], desc: "Vin is questioned here after her capture. She comes back crashing through a stained-glass window and kills the Lord Ruler."},
+          {id: "murals", name: "The domed mural room", kind: "dome", at: [.5, -.35], books: [2], desc: "A dome painted with a mountain, a cavern, a pool of light and something dark, around a small old building with a carved door."}
+        ]},
+      well: {/* layout schematic */ kind: "underground", arch: "ancient", size: "small", tod: "night", weather: "mist", under: true,
+        landmarks: [
+          {id: "pool", name: "The Well of Ascension", kind: "well", at: [0, 0], h: 1.2, books: [2], desc: "A pool of liquid power in a cavern beneath the palace, behind a hidden door. Vin releases its power instead of using it, and something escapes."}
+        ]},
+      fellise: {/* layout schematic */ kind: "town", arch: "classical", size: "small", tod: "day", weather: "ash",
+        landmarks: [
+          {id: "renoux", name: "The Renoux mansion", kind: "house", at: [0, 0], books: [2], desc: "The crew’s front: a rented mansion where Vin learns to play the noblewoman Valette."}
+        ]},
+      hathsin: {/* layout schematic */ kind: "crater", arch: "ancient", size: "medium", tod: "dusk", weather: "ash",
+        landmarks: [
+          {id: "pits", name: "The atium cracks", kind: "crater", at: [0, 0], h: 1.2, books: [2], desc: "Prisoners crawl into the cracks to find atium geodes and seldom last a year. Kelsier survived here when his wife did not. At the end of the trilogy Elend makes his last stand here against the koloss."},
+          {id: "refuge", name: "The Terris refuge", kind: "camp", at: [.5, .4], books: [2], desc: "In The Hero of Ages the Terris people shelter here, and none of them die of the mist sickness."}
+        ]},
+      homeland: {/* layout schematic */ kind: "underground", arch: "ancient", size: "small", tod: "night", weather: "clear", under: true,
+        landmarks: [
+          {id: "trustwarren", name: "The Trustwarren", kind: "hall", at: [0, 0], h: 1, books: [2], desc: "A round, metal-walled chamber lit by oil lamps, the kandra’s court and holiest place. TenSoon is tried here; the Lord Ruler’s atium, the Trust, lies hidden beneath its platform."},
+          {id: "prison", name: "The kandra prison", kind: "cave", at: [.55, -.3], h: .6, books: [2], desc: "Where TenSoon is sentenced to starve, and from which he escapes."}
+        ]},
+      arguois: {/* layout schematic */ kind: "underground", size: "small", tod: "night", weather: "clear", under: true,
+        landmarks: [
+          {id: "caves", name: "The training caves", kind: "cave", at: [0, 0], books: [2], desc: "Where Kelsier’s skaa army hides and drills."}
+        ]},
+      tyrian: {kind: "mountain", size: "large", water: true, tod: "dusk", weather: "ash"},
+      urteau: {/* layout schematic */ kind: "city", arch: "gothic", size: "large", tod: "dusk", weather: "ash",
+        landmarks: [
+          {id: "canals", name: "The dry canals", kind: "bridge", at: [0, .1], books: [2], desc: "The city’s streets are drained canals; their water was diverted to an underground lake that hides the Lord Ruler’s cache."},
+          {id: "cache", name: "The cache", kind: "cave", at: [.4, -.4], books: [2], desc: "The storage cavern under the city, found by Spook and Sazed’s team."},
+          {id: "burnings", name: "Quellion’s burnings", kind: "plaza", at: [-.45, .35], books: [2], desc: "The Citizen executes nobles by locking them in buildings and burning them. Spook finds the hidden ways out."}
+        ]},
+      tremredare: {kind: "city", arch: "classical", size: "medium", tod: "dusk", weather: "ash"},
+      fadrex: {/* layout schematic */ kind: "city", arch: "ancient", size: "large", tod: "dusk", weather: "ash",
+        landmarks: [
+          {id: "rocks", name: "The red rock formations", kind: "cliff", at: [0, -.6], h: 1.4, books: [2], desc: "Rock walls and a canyon-like approach make the city hard to take. Elend’s army besieges it, and Yomen’s raid destroys half his koloss."},
+          {id: "orielle", name: "Keep Orielle", kind: "keep", at: [.2, .3], books: [2], desc: "At a ball here Elend gives King Yomen an ultimatum, and Yomen refuses."},
+          {id: "cache", name: "The cache", kind: "cave", at: [-.4, .1], books: [2], desc: "One of the Lord Ruler’s storage caverns, the reason the crew comes."}
+        ]},
+      statlin: {kind: "city", arch: "industrial", size: "medium", tod: "dusk", weather: "ash"},
+      conventical: {/* layout schematic */ kind: "fortress", arch: "brutal", size: "small", tod: "dusk", weather: "ash",
+        landmarks: [
+          {id: "plate", name: "Kwaan’s steel plate", kind: "monolith", at: [0, 0], books: [2], desc: "Sazed and Marsh find a massacre here, and a steel plate engraved with Kwaan’s words, which Sazed copies by rubbing."}
+        ]},
+      vetitan: {kind: "town", arch: "rustic", size: "small", tod: "dusk", weather: "ash"},
+      lekal: {kind: "ruins", arch: "gothic", size: "medium", tod: "dusk", weather: "ash", river: true},
+      tathingdwen: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "snow"},
+      islands: {kind: "sea", size: "large", water: true, tod: "day", weather: "ash"},
+      elendel: {/* layout schematic */ kind: "capital", arch: "industrial", size: "huge", tod: "dusk", weather: "mist", coast: "s",
+        landmarks: [
+          {id: "field", name: "The Field of Rebirth", kind: "garden", at: [0, 0], h: 1.2, books: [6], desc: "The park at the centre of the eight octants, with a museum and tomb. Wax gets in through a secret door in its atium chamber."},
+          {id: "ladrian", name: "Ladrian mansion", kind: "house", at: [-.4, .35], books: [6], desc: "The near-bankrupt house Wax inherits when he comes back from the Roughs."},
+          {id: "governor", name: "The governor’s mansion", kind: "palace", at: [.35, .4], books: [6], desc: "Bleeder breaks into the safe room here, and Wax later works out she has taken the governor’s place."},
+          {id: "eastbridge", name: "Eastbridge", kind: "bridge", at: [.7, -.2], h: 1.4, books: [6], desc: "On the suspension tower of this bridge Wax corners Bleeder, who wears Lessie’s face."},
+          {id: "village", name: "The Village", kind: "house", at: [-.6, -.4], books: [6], desc: "The Terris enclave where Wax’s grandmother lived."},
+          {id: "statue", name: "Wayne’s statue", kind: "statue", at: [.15, -.55], books: [10], desc: "Raised by the city after The Lost Metal."}
+        ]},
+      steinel: {kind: "city", arch: "industrial", size: "medium", tod: "day", weather: "clear"},
+      rashekin: {kind: "city", arch: "industrial", size: "medium", tod: "day", weather: "clear"},
+      tathingdwel: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "clear"},
+      drypost: {kind: "town", arch: "industrial", size: "small", tod: "day", weather: "dust"},
+      doriel: {kind: "city", arch: "industrial", size: "medium", tod: "day", weather: "clear"},
+      bilming: {/* layout schematic */ kind: "port", arch: "industrial", size: "large", tod: "dusk", weather: "clear", coast: "w",
+        landmarks: [
+          {id: "shaw", name: "The Shaw", kind: "skyscraper", at: [0, .2], h: 2.2, books: [10], desc: "The tower at the heart of Bilming, stronghold of the Set."},
+          {id: "harbour", name: "Bilming harbour", kind: "dock", at: [-.5, -.6], books: [10], desc: "The Basin’s other great port."}
+        ]},
+      newseran: {/* layout schematic */ kind: "city", arch: "classical", size: "medium", tod: "day", weather: "mist", river: true,
+        landmarks: [
+          {id: "falls", name: "The terraces and gondolas", kind: "bridge", at: [0, .2], books: [6], desc: "A city built down a waterfall, crossed by gondolas. At a party here Wax is framed for the murder of Lady Kelesina Shores."}
+        ]},
+      dulsing: {/* layout schematic */ kind: "village", arch: "rustic", size: "small", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "warehouse", name: "The Set’s warehouse", kind: "factory", at: [0, 0], books: [6], desc: "Hides a damaged flying ship from the south. Marasi frees its masked prisoner, Allik, and the team escapes in a smaller craft."}
+        ]},
+      bandstemple: {/* layout schematic */ kind: "temple", arch: "ancient", size: "small", tod: "day", weather: "snow",
+        landmarks: [
+          {id: "corridors", name: "The trapped corridors", kind: "temple", at: [0, .2], h: 1.2, books: [6], desc: "Passages full of traps that the team disarms, only for Wax’s uncle to open the last door for the Set. The vault is empty."},
+          {id: "statue", name: "The statue outside", kind: "statue", at: [.5, -.5], books: [6], desc: "Marasi realises the temple is a decoy: the real Bands were reforged as the spearhead of a statue."}
+        ]},
+      truemadil: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "dust", river: true},
+      weathering: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "dust"},
+      fardorest: {kind: "town", arch: "rustic", size: "medium", tod: "day", weather: "dust"},
+      tyriansea: {kind: "sea", size: "large", water: true, tod: "day", weather: "clear"},
+      luthruins: {kind: "ruins", arch: "gothic", size: "medium", tod: "day", weather: "clear"},
+      newtremredare: {kind: "city", arch: "classical", size: "medium", tod: "day", weather: "clear", coast: "s"},
+      bluepool: {kind: "mountain", size: "small", water: true, tod: "day", weather: "clear"},
+      southcontinent: {kind: "city", arch: "modern", size: "large", tod: "day", weather: "snow"}
+    },
+
+    sel: {
+      elantris: {/* layout schematic */ kind: "ruins", arch: "classical", size: "large", tod: "day", weather: "rain", walls: true, pal: {stone: "#8a8478", ground: "#5a5448"},
+        landmarks: [
+          {id: "gate", name: "The gates of Elantris", kind: "gate", at: [.7, 0], h: 1.2, books: [1], desc: "The newly taken are pushed through here and the gates shut behind them. Sarene later brings food in through them."},
+          {id: "newelantris", name: "New Elantris", kind: "plaza", at: [0, .2], books: [1], desc: "The community Raoden builds among the rot with Galladon, Karata and the others: work, gardens and repaired roofs instead of despair."},
+          {id: "walls", name: "The walls", kind: "wall", at: [-.6, -.5], h: 1.3, books: [1], desc: "Elantris’s high walls now serve to keep its people in."},
+          {id: "barrows", name: "The memorial barrows", kind: "tomb", at: [.85, -.7], h: .6, books: [1], desc: "Outside the city, where the heroes of the war are buried; Sarene asks that Hrathen lie here too."}
+        ]},
+      kae: {/* layout schematic */ kind: "capital", arch: "classical", size: "medium", tod: "day", weather: "rain", coast: "n",
+        landmarks: [
+          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .4], h: 1.3, books: [1], desc: "King Iadon’s court, where Sarene arrives to find Raoden declared dead. Raoden is crowned here near the end."},
+          {id: "kiin", name: "Kiin’s manor", kind: "house", at: [-.45, -.2], books: [1], desc: "Sarene’s uncle’s house, where the opposition meets. It is barricaded when the Dakhor monks attack."},
+          {id: "roial", name: "Roial’s mansion", kind: "house", at: [.5, .1], books: [1], desc: "Home of the old duke Roial, Sarene’s ally at court."},
+          {id: "market", name: "The market district", kind: "market", at: [.1, -.55], books: [1], desc: "Dakhor monks burst from tents here when the attack begins."}
+        ]},
+      pool: {/* layout schematic */ kind: "mountain", arch: "ancient", size: "small", tod: "dusk", weather: "mist",
+        landmarks: [
+          {id: "pool", name: "The pool", kind: "lake", at: [0, 0], books: [1], desc: "A deep pool of thick blue liquid where Elantrians who have given up walk in and vanish. Galladon and Karata carry the dying Raoden up toward it."}
+        ]},
+      kondeon: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "rain", river: true},
+      iald: {kind: "city", arch: "classical", size: "medium", tod: "day", weather: "clear"},
+      alonoe: {kind: "sea", size: "large", water: true, tod: "day", weather: "clear"},
+      chasm: {/* layout schematic */ kind: "wilds", size: "large", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "crack", name: "The great crack", kind: "cliff", at: [0, 0], h: 1.4, books: [1], desc: "Opened by the earthquake of the Reod. Raoden sees it in the shape of the land and in the Aons, and understands what broke the magic."}
+        ]},
+      kaltii: {kind: "town", arch: "classical", size: "small", tod: "day", weather: "clear"},
+      fellavoo: {kind: "capital", arch: "classical", size: "medium", tod: "day", weather: "clear"},
+      atad: {kind: "mountain", size: "large", tod: "day", weather: "snow"},
+      widor: {kind: "capital", arch: "gothic", size: "large", tod: "day", weather: "clear", coast: "n"},
+      dakhor: {kind: "monastery", arch: "brutal", size: "small", tod: "night", weather: "clear"},
+      jindo: {kind: "wilds", arch: "eastern", size: "large", tod: "day", weather: "clear"},
+      jaador: {kind: "wilds", size: "large", tod: "day", weather: "dust"},
+      hrovell: {kind: "village", arch: "rustic", size: "small", tod: "day", weather: "clear"},
+      velf: {kind: "city", arch: "classical", size: "medium", tod: "day", weather: "clear", river: true},
+      seraven: {kind: "port", arch: "classical", size: "medium", tod: "day", weather: "clear", coast: "n"},
+      teoras: {/* layout schematic */ kind: "port", arch: "classical", size: "medium", tod: "day", weather: "clear", coast: "s",
+        landmarks: [
+          {id: "harbour", name: "Teoras harbour", kind: "dock", at: [0, -.7], books: [1], desc: "Home of the Teo navy, which rules the Sea of Fjorden."},
+          {id: "streets", name: "The streets of Teoras", kind: "plaza", at: [0, .2], books: [1], desc: "Dilaf brings Sarene and Hrathen here to destroy Teod. Hrathen turns on him and is struck down in these streets, and the Elantrians arrive."}
+        ]},
+      roseempire: {/* layout schematic */ kind: "capital", arch: "eastern", size: "large", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "palace", name: "The Rose Palace", kind: "palace", at: [0, .2], h: 1.5, books: [7], desc: "On the central of the capital’s seven hills: the seat of the emperor and the arbiters."},
+          {id: "chamber", name: "Shai’s chamber", kind: "house", at: [.45, -.3], h: .6, books: [7], desc: "The guarded room where Shai spends her hundred days carving soulstamps to rebuild the emperor, with the arbiter Gaotona watching."}
+        ]},
+      mulladil: {kind: "mountain", size: "large", tod: "day", weather: "clear"},
+      dzhamar: {kind: "wilds", size: "large", tod: "day", weather: "mist"},
+      maipon: {kind: "wilds", arch: "eastern", size: "large", tod: "day", weather: "clear"},
+      desert: {kind: "desert", size: "huge", tod: "day", weather: "dust"}
+    },
+
+    nalthis: {
+      ttelir: {/* layout schematic */ kind: "capital", arch: "classical", size: "huge", tod: "day", weather: "clear", coast: "e", walls: true, pal: {roof: "#d04a8a", stone: "#e8d0a0"},
+        landmarks: [
+          {id: "markets", name: "The markets", kind: "market", at: [.1, .1], books: [3], desc: "Crowded, brightly dyed streets where Awakened objects and Lifeless servants are everywhere."},
+          {id: "highlands", name: "The Highlands", kind: "house", at: [-.5, .6], books: [3], desc: "The Idrian slum in the north of the city, run by three slumlords."},
+          {id: "docks", name: "The docks", kind: "dock", at: [.75, -.3], books: [3], desc: "Shipyards, warehouses and slums along the bay."},
+          {id: "wall", name: "The landward wall", kind: "wall", at: [-.8, -.2], h: 1.1, books: [3], desc: "The city wall, with gates carved as sea creatures."}
+        ]},
+      courtofgods: {/* layout schematic */ kind: "palace", arch: "classical", size: "large", tod: "day", weather: "clear", walls: true, pal: {roof: "#202020"},
+        landmarks: [
+          {id: "palace", name: "The God King’s palace", kind: "pyramid", at: [0, .7], h: 1.8, books: [3], desc: "A black, pyramid-shaped palace at the far end of the Court. Siri is brought here to marry Susebron and finds a gentle man the priests have kept silent."},
+          {id: "palaces", name: "The ring of palaces", kind: "palace", at: [-.5, .2], books: [3], desc: "One palace for each Returned god, Lightsong’s and Blushweaver’s among them, each with a hall for petitions."},
+          {id: "arena", name: "The arena", kind: "arena", at: [.6, .6], books: [3], desc: "A roofless sand arena behind the palaces, where priests debate before the gods and athletes compete."},
+          {id: "lawn", name: "The great lawn", kind: "garden", at: [0, -.1], books: [3], desc: "The Court is essentially one vast lawn inside its walls; gardeners lay out flowers when a god asks."},
+          {id: "enclave", name: "The Lifeless enclave", kind: "hall", at: [.3, -.6], books: [3], desc: "Barracks for Hallandren’s army of Lifeless soldiers, controlled by gods who know the command phrases."},
+          {id: "tunnels", name: "The tunnels", kind: "cave", at: [-.3, -.55], h: .6, books: [3], desc: "Passages under the Court, used by Bluefingers and his hidden forces."}
+        ]},
+      denir: {/* layout schematic */ kind: "ruins", arch: "classical", size: "small", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "statues", name: "The D’Denir statues", kind: "statue", at: [0, 0], books: [3], desc: "Hundreds of old warrior statues standing in a quiet field in the north of the city."}
+        ]},
+      brightsea: {kind: "sea", size: "huge", water: true, tod: "day", weather: "clear"},
+      edglipool: {kind: "underground", arch: "organic", size: "small", tod: "night", weather: "mist", under: true},
+      bevalis: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "clear"},
+      passes: {kind: "mountain", size: "large", tod: "day", weather: "snow"},
+      pahnkahl: {kind: "wilds", arch: "rustic", size: "large", tod: "day", weather: "clear"},
+      tedradel: {kind: "wilds", size: "large", tod: "day", weather: "clear", coast: "w"},
+      kuth: {kind: "ruins", size: "large", tod: "day", weather: "clear"}
+    },
+
+    threnody: {
+      waystop: {/* layout schematic */ kind: "town", arch: "rustic", size: "small", tod: "dusk", weather: "mist",
+        landmarks: [
+          {id: "inn", name: "Silence’s waystop", kind: "house", at: [0, 0], books: [7], desc: "The inn Silence keeps for travellers on the forest road, paid for by her secret bounty hunting."},
+          {id: "rings", name: "The silver rings", kind: "stones", at: [.5, .3], books: [7], desc: "Three circles of silver around the waystop keep the shades out."}
+        ]},
+      oldbridge: {/* layout schematic */ kind: "forest", size: "small", tod: "dusk", weather: "mist",
+        landmarks: [
+          {id: "bridge", name: "The Old Bridge", kind: "bridge", at: [0, 0], books: [7], desc: "A rickety span over a chasm; the wreck of the New Bridge lies below."}
+        ]},
+      lastport: {kind: "fortress", arch: "rustic", size: "medium", tod: "dusk", weather: "mist", walls: true},
+      bastion: {kind: "fortress", arch: "rustic", size: "small", tod: "dusk", weather: "mist", walls: true},
+      forests: {kind: "forest", size: "huge", tod: "dusk", weather: "mist"},
+      fallenworld: {kind: "wilds", size: "huge", tod: "night", weather: "mist"},
+      abyss: {kind: "sea", size: "huge", water: true, tod: "night", weather: "clear"}
+    },
+
+    taldain: {
+      kraeda: {kind: "mountain", arch: "desert", size: "large", tod: "day", weather: "clear"},
+      kerla: {kind: "desert", arch: "desert", size: "large", tod: "day", weather: "dust"},
+      kezare: {/* layout schematic */ kind: "capital", arch: "desert", size: "medium", tod: "day", weather: "clear", river: true,
+        landmarks: [
+          {id: "diem", name: "The Diem’s hall", kind: "hall", at: [0, .1], h: 1.2, books: [7], desc: "The home of the Sand Masters, carved from a single block of white sandstone."}
+        ]},
+      kerkedasha: {kind: "capital", arch: "desert", size: "large", tod: "day", weather: "dust"},
+      lraezare: {kind: "port", arch: "desert", size: "medium", tod: "dusk", weather: "clear", coast: "s"},
+      nortallon: {kind: "capital", arch: "desert", size: "medium", tod: "day", weather: "clear"},
+      deepsand: {kind: "desert", size: "huge", tod: "day", weather: "dust"},
+      borderocean: {kind: "sea", size: "huge", water: true, tod: "dusk", weather: "storm"},
+      darkside: {kind: "wilds", size: "huge", tod: "night", weather: "clear"}
+    },
+
+    firstsun: {
+      patji: {kind: "forest", arch: "organic", size: "large", tod: "day", weather: "rain", coast: "s"},
+      patjiseye: {/* layout schematic */ kind: "wilds", arch: "organic", size: "small", tod: "dusk", weather: "mist",
+        landmarks: [
+          {id: "pool", name: "The not-water lake", kind: "lake", at: [0, 0], books: [12], desc: "A green-tinted pool of not-water full of glowing worms. Their paste lets things float in the emberdark, and the Aviar gain their talents from them."}
+        ]},
+      fort: {/* layout schematic */ kind: "fortress", arch: "industrial", size: "small", tod: "day", weather: "rain", walls: true,
+        landmarks: [
+          {id: "machine", name: "The machine", kind: "factory", at: [0, 0], books: [7, 12], desc: "The Ones Above’s device inside the trading company’s fort."}
+        ]},
+      sori: {kind: "forest", size: "small", tod: "day", weather: "clear", coast: "n"},
+      homeisles: {kind: "town", arch: "rustic", size: "medium", tod: "day", weather: "clear", coast: "n"},
+      mainland: {kind: "ice", size: "huge", tod: "day", weather: "snow"}
+    },
+
+    lumar: {
+      rock: {/* layout schematic */ kind: "town", arch: "rustic", size: "small", tod: "day", weather: "spores", coast: "s", sky: {moons: 1},
+        landmarks: [
+          {id: "mansion", name: "The duke’s mansion", kind: "house", at: [0, .6], h: 1.1, books: [11], desc: "Near the top of the Rock: home of the duke and his son Charlie, Tress’s friend."},
+          {id: "home", name: "Tress’s house and cups", kind: "house", at: [-.4, 0], h: .5, books: [11], desc: "Tress’s family home, where she keeps the cups that sailors trade her."},
+          {id: "docks", name: "The docks", kind: "dock", at: [.3, -.7], books: [11], desc: "Where the ships of the Emerald Sea call. Tress leaves from here as a stowaway to rescue Charlie."}
+        ]},
+      emerald: {kind: "sea", size: "huge", water: true, tod: "day", weather: "spores", sky: {moons: 1}},
+      kingsport: {kind: "port", arch: "rustic", size: "medium", tod: "day", weather: "spores"},
+      crimson: {/* layout schematic */ kind: "sea", size: "huge", water: true, tod: "dusk", weather: "spores", pal: {ground: "#8a1a1a"},
+        landmarks: [
+          {id: "lair", name: "Xisis’s lair", kind: "cave", at: [0, .3], h: 1.4, books: [11], desc: "The dragon’s lair near the crimson lunagree. Tress bargains here, and the spore-eating captain Crow is left in the dragon’s service."}
+        ]},
+      midnight: {kind: "sea", size: "huge", water: true, tod: "night", weather: "spores"},
+      sorceress: {/* layout schematic */ kind: "ruins", arch: "alien", size: "small", tod: "night", weather: "spores",
+        landmarks: [
+          {id: "tower", name: "The silver tower", kind: "tower", at: [0, 0], h: 2, books: [11], desc: "The Sorceress’s tower, coated in silver, which turns out to be a starship."}
+        ]},
+      rosesea: {kind: "sea", size: "huge", water: true, tod: "day", weather: "spores"},
+      sapphire: {kind: "sea", size: "huge", water: true, tod: "day", weather: "spores"},
+      lobu: {kind: "wilds", arch: "rustic", size: "medium", tod: "day", weather: "clear"}
+    },
+
+    komashi: {
+      kilahito: {/* layout schematic */ kind: "city", arch: "eastern", size: "large", tod: "night", weather: "clear",
+        landmarks: [
+          {id: "shroud", name: "The shroud’s edge", kind: "wall", at: [-.85, 0], h: 1.8, books: [11], desc: "The black shroud along the city’s west side. Painters patrol it at night and paint away the nightmares that come out; at the end Nikaro gathers thirty-seven painters here against an army of them."},
+          {id: "noodle", name: "The Noodle Pupil", kind: "market", at: [.2, .1], h: .5, books: [11], desc: "Design’s noodle stand, where Nikaro’s friends gather. Later it becomes the Noodle Princess."},
+          {id: "hion", name: "The hion lines", kind: "mast", at: [0, .5], books: [11], desc: "Glowing lines of power that run through the city and light it."},
+          {id: "carnival", name: "The carnival", kind: "arch", at: [.55, -.4], books: [11], desc: "Yumi and Nikaro ride the Jotun Line here."}
+        ]},
+      torio: {/* layout schematic */ kind: "ruins", arch: "eastern", size: "medium", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "machine", name: "The father machine", kind: "factory", at: [0, .2], h: 1.4, books: [11], desc: "In Torio City’s grand exhibit hall: the machine switched on at a Festival of Reveals long ago, which consumed the Torish people and made the shroud. Yumi stacks hundreds of stone towers to draw the spirits away until it stops."}
+        ]},
+      steamwells: {/* layout schematic */ kind: "village", arch: "eastern", size: "small", tod: "day", weather: "mist",
+        landmarks: [
+          {id: "ritual", name: "The place of ritual", kind: "stones", at: [0, 0], books: [11], desc: "Where Yumi stacks stones to draw the hijo, once calling a record thirty-seven at a time."},
+          {id: "shrine", name: "The orchard shrine", kind: "shrine", at: [.5, .4], books: [11], desc: "The village shrine where Yumi prays each day before her stacking."}
+        ]},
+      futinoro: {kind: "ruins", arch: "eastern", size: "medium", tod: "night", weather: "clear"},
+      jito: {kind: "city", arch: "eastern", size: "medium", tod: "night", weather: "clear", coast: "e"}
+    },
+
+    yolen: {
+      greatstar: {kind: "wilds", arch: "crystal", size: "large", tod: "day", weather: "clear"},
+      fainlife: {kind: "forest", size: "large", tod: "day", weather: "mist", pal: {ground: "#d8d4c8"}},
+      shattering: {kind: "wilds", size: "large", tod: "dusk", weather: "clear"}
+    },
+
+    canticle: {
+      union: {/* layout schematic */ kind: "city", arch: "industrial", size: "large", tod: "dusk", weather: "ash", sky: {rings: true},
+        landmarks: [
+          {id: "arena", name: "The colosseum", kind: "arena", at: [0, 0], h: 1.2, books: [11], desc: "Union reshapes itself into an arena where captives fight the Charred. Nomad is chained and made to fight here."},
+          {id: "hall", name: "The Hall of Burning", kind: "hall", at: [-.5, .4], books: [11], desc: "Where the Cinder King makes the Charred, people with embers for hearts."},
+          {id: "deck", name: "The command deck", kind: "throne", at: [.5, .45], books: [11], desc: "The Cinder King controls the joined cities from here. Nomad faces him on Union’s deck and leaves him to the sunlight."}
+        ]},
+      beacon: {/* layout schematic */ kind: "city", arch: "industrial", size: "medium", tod: "dusk", weather: "ash", sky: {rings: true},
+        landmarks: [
+          {id: "reliquary", name: "The Reliquary", kind: "shrine", at: [0, .3], books: [11], desc: "Home of the Chorus, the shades of Beacon’s dead, who help build its new engines."},
+          {id: "engines", name: "The engines", kind: "reactor", at: [0, -.4], h: 1.2, books: [11], desc: "Steam engines that use water for thrust, powered by sunhearts, which let Beacon rise above the thin-air limit and outrun the dawn."}
+        ]},
+      scadrianlab: {/* layout schematic */ kind: "underground", arch: "modern", size: "small", tod: "night", weather: "clear", under: true,
+        landmarks: [
+          {id: "refuge", name: "The Refuge", kind: "ship", at: [0, 0], books: [11], desc: "A Scadrian research ship under the surface. Its scientists have worked with the Cinder King and keep a jar of Dor that Nomad needs to escape."}
+        ]}
+    },
+
+    miral: {
+      kingseat: {/* layout schematic */ kind: "capital", arch: "gothic", size: "large", tod: "dusk", weather: "clear", walls: true,
+        landmarks: [
+          {id: "palace", name: "The palace and the Ever-Slaying Sword", kind: "palace", at: [0, .4], h: 1.5, books: [12], desc: "King Beaudilog’s palace, which keeps the Prophet’s sword. December warns the court of plague here and is later caught and imprisoned."},
+          {id: "megalith", name: "The Megalith’s heart", kind: "monolith", at: [0, -.1], h: 2, books: [12], desc: "The skeletal corpse of the demon the Prophet slew eight hundred years ago, with the city grown around it. Its blood runs out in the rivers."},
+          {id: "hexers", name: "The hexers’ diggings", kind: "mine", at: [.55, -.45], books: [12], desc: "Hexers mine demonstone from the river here; December spies on them."}
+        ]},
+      smallport: {kind: "port", arch: "rustic", size: "small", tod: "day", weather: "clear", river: true},
+      duckseat: {kind: "port", arch: "rustic", size: "medium", tod: "day", weather: "clear", river: true},
+      rivershore: {/* layout schematic */ kind: "village", arch: "rustic", size: "small", tod: "day", weather: "clear", river: true,
+        landmarks: [
+          {id: "inn", name: "The inn", kind: "house", at: [0, 0], books: [12], desc: "Where the orphan December grows up with the innkeeper’s family, and where she first sees Hoid."}
+        ]},
+      riverviolet: {kind: "wilds", size: "large", tod: "day", weather: "clear", river: true},
+      monastery: {/* layout schematic */ kind: "monastery", arch: "ancient", size: "small", tod: "day", weather: "clear",
+        landmarks: [
+          {id: "library", name: "The library", kind: "library", at: [0, 0], books: [12], desc: "The monks’ great library on demons, where December spends years studying."}
+        ]},
+      southplains: {kind: "forest", size: "huge", tod: "day", weather: "clear"},
+      lark: {kind: "wilds", size: "large", tod: "day", weather: "clear"}
+    },
+
+    ashyn: {
+      centralsea: {kind: "sea", size: "huge", water: true, tod: "dusk", weather: "ash"},
+      floating: {kind: "city", arch: "ancient", size: "medium", tod: "day", weather: "clear"}
+    },
+
+    braize: {
+      damnation: {kind: "ice", size: "huge", tod: "dusk", weather: "storm"}
+    },
+
+    silverlight: {
+      slcity: {kind: "city", arch: "crystal", size: "large", tod: "night", weather: "clear"}
+    },
+
+    emberdark: {
+      hiddengate: {/* layout schematic */ kind: "sea", arch: "alien", size: "medium", water: true, tod: "night", weather: "clear",
+        landmarks: [
+          {id: "ring", name: "The ring island", kind: "lake", at: [0, 0], h: 1.2, books: [12], desc: "A ring-shaped island around a lake of not-water, guarded by Scadrian warships. The crew believes the small central island holds the hidden perpendicularity."},
+          {id: "dakwara", name: "The Dakwara", kind: "monolith", at: [.35, .3], books: [12], desc: "A giant serpent that guards the central island."},
+          {id: "cave", name: "The Cave of Death", kind: "cave", at: [-.6, -.3], books: [12], desc: "A tunnel that may be a way past the Dakwara."},
+          {id: "dynamic", name: "The Dynamic", kind: "ship", at: [.7, -.6], books: [12], desc: "Starling’s cargo starship and its crew of misfits from many worlds."}
+        ]}
+    }
+  };
+
+  /* copy each SCENES entry onto its site (sites are defined above, partly as JSON arrays) */
+  function attachScenes(worlds) {
+    worlds.forEach(function (w) {
+      var m = SCENES[w.id]; if (!m || !w.sites) return;
+      w.sites.forEach(function (st) { if (m[st.id]) st.scene = m[st.id]; });
+    });
+  }
   var PACK = {
     id: "cosmere",
     meta: {
@@ -224,17 +800,17 @@
 
     books: {
       1: {n: "I", title: "Elantris", y: 2005, c: BOOKC[1]},
-      2: {n: "II", title: "Mistborn: the first trilogy", y: 2006, c: BOOKC[2]},
+      2: {n: "II", title: "Mistborn: the first trilogy", y: "2006–2008", c: BOOKC[2]},
       3: {n: "III", title: "Warbreaker", y: 2009, c: BOOKC[3]},
       4: {n: "IV", title: "The Way of Kings", y: 2010, c: BOOKC[4], ink: "#fff"},
       5: {n: "V", title: "Words of Radiance", y: 2014, c: BOOKC[5]},
-      6: {n: "VI", title: "Mistborn: Wax & Wayne I–III", y: 2011, c: BOOKC[6]},
+      6: {n: "VI", title: "Mistborn: Wax & Wayne I–III", y: "2011–2016", c: BOOKC[6]},
       7: {n: "VII", title: "Arcanum Unbounded (with White Sand)", y: 2016, c: BOOKC[7]},
-      8: {n: "VIII", title: "Oathbringer & Dawnshard", y: 2017, c: BOOKC[8]},
+      8: {n: "VIII", title: "Oathbringer & Dawnshard", y: "2017–2020", c: BOOKC[8]},
       9: {n: "IX", title: "Rhythm of War", y: 2020, c: BOOKC[9]},
       10: {n: "X", title: "The Lost Metal", y: 2022, c: BOOKC[10]},
       11: {n: "XI", title: "Tress, Yumi & The Sunlit Man", y: 2023, c: BOOKC[11]},
-      12: {n: "XII", title: "Wind and Truth, Isles of the Emberdark & The Fires of December", y: 2024, c: BOOKC[12]}
+      12: {n: "XII", title: "Wind and Truth, Isles of the Emberdark & The Fires of December", y: "2024–2026", c: BOOKC[12]}
     },
     spoilers: {mode: "cumulative"},
 
@@ -310,7 +886,7 @@
          5: {status: "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"},
          8: {blurb: "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."},
          12: {status: "Retribution’s world · cut off in slowed time",
-              blurb: "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Only Azir is spared the storm.",
+              blurb: "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule.",
               gfx: {clouds: .7, cloudCol: "#4a3540", atmo: "#c04a48", lights: .15}}
        },
        facts: [["Order", "2nd from the sun"], ["Shards", "Honor, Cultivation, Odium"], ["Moons", "Salas, Nomon, Mishim (a fourth broke up long ago)"], ["Gravity", "About 0.7 g; no axial tilt"], ["Day", "20 hours; about 500 days a year"]],
@@ -327,7 +903,8 @@
        short: "Damnation: where the Heralds were tormented.",
        facts: [["Order", "3rd from the sun"], ["Rosharan name", "Damnation"], ["Bound here", "Odium and the Fused"]],
        gfx: {type: "ice", sea: .2, pal: ["#20242c", "#383e4a", "#5a6070", "#6a7080", "#8890a0", "#d8dce4"],
-             clouds: .1, atmo: "#a0a8c0", atmoK: .4, sw: "#6a7080"}},
+             clouds: .1, atmo: "#a0a8c0", atmoK: .4, sw: "#6a7080"},
+       sites: [{id: "damnation", name: "Damnation", lat: 10, lon: 0, books: [5, 8, 9], desc: "Braize’s cold, windswept surface, where the Heralds were tortured between Desolations and Odium and the Fused were bound. The books never show it closely; this marker is ours."}]},
     /* the ten gas giants beyond the asteroid belt: named by Vorin numerals; colours as painted on the system chart */
     ].concat([
       ["jes", "Jes", "#3a6ad8", "#6a94ee", "#a8c4f8"], ["nan", "Nan", "#5a5a64", "#7a7a86", "#a0a0aa"], ["chach", "Chach", "#a02a2a", "#c8503a", "#e88a6a"],
@@ -335,11 +912,11 @@
       ["betab", "Betab", "#2a8a9a", "#4ab0c0", "#8ad8e0"], ["kak", "Kak", "#5a2a8a", "#7a4ab0", "#a888d8"], ["tanat", "Tanat", "#a86a2a", "#d08a40", "#ecb878"],
       ["ishi", "Ishi", "#a8a02a", "#ccc44a", "#ece888"]
     ].map(function (g, i) {
-      return {id: g[0], name: g[1], group: "rosharan", books: [7], first: 7, status: "Gas giant · " + (i + 5) + "th from the sun",
+      return {id: g[0], name: g[1], group: "rosharan", books: [7], first: 7, status: "Gas giant · " + (i + 4) + "th from the sun",
         star: {name: "Roshar’s sun", col: "#f4f6ff"}, map: orb(C.roshar, .42 + i * .053, 60 + i * 37), distText: ORR,
         blurb: g[1] + " is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
         short: "Gas giant " + (i + 1) + " of 10 beyond the asteroid belt.",
-        facts: [["Order", (i + 5) + "th from the sun (" + (i + 1) + " of the ten gas giants)"], ["Moons", "None known"]],
+        facts: [["Order", (i + 4) + "th from the sun (" + (i + 1) + " of the ten gas giants)"], ["Moons", "None known"]],
         gfx: gas([g[2], g[3], g[4], g[3], g[2], g[4]], {atmo: g[4]})};
     })).concat([
 
@@ -615,7 +1192,6 @@
        facts: [["Known for", "The Shattering of Adonalsium"], ["Peoples", "Humans, dragons, Sho Del"], ["Where", "Hidden; not on the star chart"]],
        gfx: {type: "forest", sea: .5, freq: 1.4, pal: ["#0b1d3a", "#2a5f8a", "#2f5a2e", "#4d7a3a", "#7c7a64", "#eef0f2"],
              clouds: .4, atmo: "#9ec4ff", moist: .2, sw: "#9cc28a"},
-       sites: [{id: "shattering", name: "The Shattering (site unknown)", lat: 12, lon: 20, desc: "Somewhere on Yolen the conspirators struck down Adonalsium. The exact place has never been shown; this marker is ours."}],
        sites: SITES_YOLEN},
 
       {id: "canticle", name: "Canticle", group: "wider", books: [11, 12], first: 11, status: "Tiny world under a burning sun",
@@ -688,80 +1264,141 @@
 
     events: [
       /* I Elantris */
-      {id: "e1", book: 1, world: "sel", site: "elantris", title: "Raoden is taken", text: "The prince of Arelon wakes with the Shaod and is quietly thrown into Elantris, declared dead to the world."},
-      {id: "e2", book: 1, world: "sel", site: "kae", title: "A widow before the wedding", text: "Sarene of Teod arrives to marry Raoden and finds him already ‘dead’. She stays and goes to war in the court."},
+      {id: "e1", book: 1, world: "sel", site: "elantris", lm: "gate", title: "Raoden is taken", text: "The prince of Arelon wakes with the Shaod and is quietly thrown into Elantris, declared dead to the world."},
+      {id: "e2", book: 1, world: "sel", site: "kae", lm: "palace", title: "A widow before the wedding", text: "Sarene of Teod arrives to marry Raoden and finds him already ‘dead’. She stays and goes to war in the court."},
       {id: "e3", book: 1, world: "sel", site: "kae", title: "Hrathen’s three months", text: "A priest of Fjorden comes with a deadline: convert Arelon, or watch it destroyed."},
-      {id: "e4", book: 1, world: "sel", site: "chasm", title: "The land is part of the writing", text: "Raoden works out that the Aons echo the shape of the land. The Chasm broke them, and one more line fixes them."},
-      {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
+      {id: "e64", book: 1, world: "sel", site: "elantris", lm: "newelantris", title: "New Elantris", text: "Inside the walls Raoden befriends Galladon, wins over the gang leaders and builds a community that works instead of waiting to rot."},
+      {id: "e65", book: 1, world: "sel", site: "kae", lm: "palace", title: "The king’s secret", text: "Sarene exposes King Iadon’s hidden Jeskeri sacrifices. He is arrested and hangs himself, and a struggle for the throne follows."},
+      {id: "e4", book: 1, world: "sel", site: "chasm", lm: "crack", title: "The land is part of the writing", text: "Raoden works out that the Aons echo the shape of the land. The Chasm broke them, and one more line fixes them."},
+      {id: "e66", book: 1, world: "sel", site: "kae", lm: "market", fx: "battle", title: "The Dakhor strike", text: "Dakhor monks burst out of tents in Kae’s market district, and the slaughter Fjorden planned all along begins."},
+      {id: "e67", book: 1, world: "sel", site: "teoras", lm: "streets", fx: "battle", title: "Hrathen’s choice", text: "In Teoras Hrathen turns against Dilaf to save Sarene. Struck down in the streets, he still kills Dilaf before he dies."},
+      {id: "e5", book: 1, world: "sel", site: "elantris", lm: "gate", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
       /* II Mistborn */
-      {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "The crew", text: "Kelsier gathers thieves for an impossible job and finds Vin, a street girl who is secretly Mistborn."},
-      {id: "e7", book: 2, world: "scadrial", site: "hathsin", title: "The survivor of Hathsin", text: "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."},
-      {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", title: "The Lord Ruler falls", text: "Vin finds his weakness and kills the immortal emperor in his palace."},
-      {id: "e9", book: 2, world: "scadrial", site: "luthadel", title: "Siege of Luthadel", text: "Elend Venture tries to rule a free city while three armies camp outside the walls."},
-      {id: "e10", book: 2, world: "scadrial", site: "well", title: "The Well of Ascension", text: "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."},
-      {id: "e11", book: 2, world: "scadrial", site: "fadrex", title: "Fadrex and the caches", text: "Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart."},
-      {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed takes up both Shards and remakes the world, ending the ash and the mists."},
+      {id: "e6", book: 2, world: "scadrial", site: "luthadel", lm: "clubs", title: "The crew", text: "Kelsier gathers thieves for an impossible job and finds Vin, a street girl who is secretly Mistborn."},
+      {id: "e7", book: 2, world: "scadrial", site: "hathsin", lm: "pits", title: "The survivor of Hathsin", text: "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."},
+      {id: "e68", book: 2, world: "scadrial", site: "fellise", lm: "renoux", title: "Valette Renoux", text: "Vin learns to pass as a young noblewoman and goes to the balls in Luthadel’s keeps, where she meets Elend Venture."},
+      {id: "e69", book: 2, world: "scadrial", site: "luthadel", lm: "fountain", fx: "battle", title: "The Survivor falls", text: "Kelsier attacks the Inquisitors at an execution beside Fountain Square, and the Lord Ruler kills him in front of the skaa. His death makes him a legend."},
+      {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", lm: "throne", fx: "duel", title: "The Lord Ruler falls", text: "Vin finds his weakness and kills the immortal emperor in his palace."},
+      {id: "e9", book: 2, world: "scadrial", site: "luthadel", lm: "walls", title: "Siege of Luthadel", text: "Elend Venture tries to rule a free city while three armies camp outside the walls."},
+      {id: "e70", book: 2, world: "scadrial", site: "luthadel", lm: "assembly", title: "Voted out", text: "The Assembly Elend created votes him off the throne in the middle of the siege."},
+      {id: "e71", book: 2, world: "scadrial", site: "luthadel", lm: "walls", fx: "battle", title: "The koloss break in", text: "The koloss storm Luthadel and Clubs, Dockson and Tindwyl are among the dead. Vin returns, takes control of the koloss and turns them on Straff’s army."},
+      {id: "e10", book: 2, world: "scadrial", site: "well", lm: "pool", title: "The Well of Ascension", text: "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."},
+      {id: "e72", book: 2, world: "scadrial", site: "homeland", lm: "trustwarren", title: "TenSoon’s trial", text: "The kandra TenSoon is judged in the Trustwarren for breaking his Contract. Sentenced to starve, he speaks to the First Generation and later escapes."},
+      {id: "e73", book: 2, world: "scadrial", site: "urteau", lm: "burnings", title: "Spook in Urteau", text: "Spook, now burning pewter, works against the Citizen, who burns nobles alive, and the crew wins the city and its hidden cache."},
+      {id: "e11", book: 2, world: "scadrial", site: "fadrex", lm: "rocks", title: "Fadrex and the caches", text: "Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart."},
+      {id: "e74", book: 2, world: "scadrial", site: "hathsin", lm: "pits", fx: "battle", title: "Elend’s last stand", text: "Elend fights the koloss at the Pits of Hathsin, above the hidden atium, and dies there. His soldiers burn the atium so Ruin can never have it."},
+      {id: "e75", book: 2, world: "scadrial", site: "kredikshaw", lm: "spires", fx: "battle", title: "Vin and Ruin", text: "Holding Preservation’s power, Vin destroys Ruin’s last Inquisitors and the palace with them, then strikes at Ruin itself."},
+      {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed takes up both Shards and restores the world, clearing the ash."},
       /* III Warbreaker */
-      {id: "e13", book: 3, world: "nalthis", site: "courtofgods", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
-      {id: "e14", book: 3, world: "nalthis", site: "ttelir", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},
-      {id: "e15", book: 3, world: "nalthis", site: "courtofgods", title: "Lightsong’s last day", text: "A god who doesn’t believe in himself uncovers the plot to start a war and gives his Breath to heal the God King."},
+      {id: "e13", book: 3, world: "nalthis", site: "courtofgods", lm: "palace", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
+      {id: "e14", book: 3, world: "nalthis", site: "ttelir", lm: "markets", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},
+      {id: "e77", book: 3, world: "nalthis", site: "courtofgods", lm: "enclave", title: "The Lifeless march", text: "The plotters torture Lightsong and Blushweaver for the Lifeless command phrases, change them and send the army toward Idris."},
+      {id: "e15", book: 3, world: "nalthis", site: "courtofgods", lm: "palaces", title: "Lightsong’s last day", text: "A god who doesn’t believe in himself uncovers the plot to start a war and gives his Breath to heal the God King."},
+      {id: "e78", book: 3, world: "nalthis", site: "courtofgods", lm: "palace", fx: "battle", title: "Susebron speaks", text: "Healed, Susebron Awakens cloth to retake his palace from the plotters, and with Vasher’s help the war is stopped."},
       {id: "e16", book: 3, world: "nalthis", site: "ttelir", title: "Vasher and Nightblood", text: "A grim Awakener with a talking black sword works to stop the war he helped cause long ago."},
       /* IV The Way of Kings */
-      {id: "e17", book: 4, world: "roshar", site: "kholinar", title: "The assassin in white", text: "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge."},
-      {id: "e18", book: 4, world: "roshar", site: "shatteredplains", title: "Bridge Four", text: "Kaladin, a surgeon’s son turned soldier turned slave, carries bridges in the plateau runs and keeps his crew alive."},
-      {id: "e19", book: 4, world: "roshar", site: "kharbranth", title: "Jasnah’s ward", text: "Shallan Davar talks her way into Jasnah Kholin’s service, planning to steal her Soulcaster."},
-      {id: "e20", book: 4, world: "roshar", site: "tower", title: "Battle of the Tower", text: "Abandoned by Sadeas, Dalinar’s army is saved when Kaladin leads his bridgemen back."},
-      {id: "e21", book: 4, world: "roshar", site: "shatteredplains", title: "The visions", text: "In the storms Dalinar sees the past and hears a voice that admits it is dying."},
+      {id: "e17", book: 4, world: "roshar", site: "kholinar", lm: "palace", title: "The assassin in white", text: "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge."},
+      {id: "e79", book: 4, world: "roshar", site: "purelake", lm: "fuabra", title: "Three foreigners", text: "The fisherman Ishikk is paid by three odd outsiders to search the Purelake for a man who sounds very like Wit. They find nothing."},
+      {id: "e18", book: 4, world: "roshar", site: "shatteredplains", lm: "plateau", fx: "battle", title: "Bridge Four", text: "Kaladin, a surgeon’s son turned soldier turned slave, carries bridges in the plateau runs and keeps his crew alive."},
+      {id: "e82", book: 4, world: "roshar", site: "shatteredplains", lm: "honorchasm", title: "At the Honor Chasm", text: "Close to giving up, Kaladin goes to the chasm where bridgemen end their lives. Syl turns him back to try once more."},
+      {id: "e19", book: 4, world: "roshar", site: "kharbranth", lm: "palanaeum", title: "Jasnah’s ward", text: "Shallan Davar talks her way into Jasnah Kholin’s service, planning to steal her Soulcaster."},
+      {id: "e84", book: 4, world: "roshar", site: "kharbranth", lm: "alley", title: "Jasnah in the alley", text: "Jasnah lets thugs follow her into a dark alley and destroys them with her Soulcaster while Shallan watches."},
+      {id: "e80", book: 4, world: "roshar", site: "kasitor", lm: "jail", title: "Axies the Collector", text: "A scholar who collects sightings of spren gets drunk, robbed and jailed in Kasitor."},
+      {id: "e81", book: 4, world: "roshar", site: "vedenar", lm: "palace", title: "The trap at Vedenar", text: "The king of Jah Keved sets a trap for the Assassin in White at a feast. Szeth kills him anyway."},
+      {id: "e83", book: 4, world: "roshar", site: "warcamps", lm: "barrack", fx: "storm", title: "Strung up for the storm", text: "Kaladin is tied to the outside of the barrack and left to a highstorm. To everyone’s shock he is alive in the morning."},
+      {id: "e85", book: 4, world: "roshar", site: "shatteredplains", lm: "chasms", title: "Spears in the chasms", text: "Sent down to scavenge the dead, Kaladin secretly teaches Bridge Four to fight with spears."},
+      {id: "e20", book: 4, world: "roshar", site: "tower", lm: "plateau", fx: "battle", title: "Battle of the Tower", text: "Abandoned by Sadeas, Dalinar’s army is saved when Kaladin leads his bridgemen back."},
+      {id: "e21", book: 4, world: "roshar", site: "warcamps", lm: "kholin", fx: "storm", title: "The visions", text: "In the storms Dalinar sees the past and hears a voice that admits it is dying."},
+      {id: "e86", book: 4, world: "roshar", site: "kharbranth", lm: "conclave", title: "Szeth’s true master", text: "The gentle King Taravangian reveals that he holds Szeth’s oathstone, and sends him to kill Dalinar."},
       /* V Words of Radiance */
-      {id: "e22", book: 5, world: "roshar", site: "narak", title: "To the centre of the Plains", text: "Dalinar marches on the Parshendi city as they summon a new storm from the west."},
-      {id: "e23", book: 5, world: "roshar", site: "urithiru", title: "Urithiru found", text: "Shallan opens the Oathgate and leads the armies to the lost tower city."},
-      {id: "e24", book: 5, world: "roshar", site: "narak", title: "Kaladin’s Third Ideal", text: "Kaladin swears to protect even those he hates, and flies."},
-      {id: "e25", book: 5, world: "braize", title: "Damnation named", text: "The Heralds’ torment between Desolations is laid bare, and the Everstorm brings the return of something long imprisoned."},
+      {id: "e87", book: 5, world: "roshar", site: "reshiisles", lm: "reluna", title: "Rysn’s fall", text: "Trading with the Reshi, Rysn climbs down a living island to plead with it. She falls, and the island gives her a live larkin."},
+      {id: "e88", book: 5, world: "roshar", site: "vedenar", lm: "cliffs", fx: "battle", title: "The Battle of Vedenar", text: "The succession war ends in a brutal siege of the capital. Its dying winner passes the crown of Jah Keved to Taravangian."},
+      {id: "e89", book: 5, world: "roshar", site: "warcamps", lm: "arena", fx: "duel", title: "Four against one", text: "Adolin duels for Shardblades to help his father, until a match becomes four Shardbearers against him and Kaladin jumps into the ring."},
+      {id: "e90", book: 5, world: "roshar", site: "shatteredplains", lm: "chasms", title: "Lost in the chasms", text: "On the march across the Plains, Kaladin and Shallan fall into the chasms and have to find their way out together, past a chasmfiend."},
+      {id: "e22", book: 5, world: "roshar", site: "narak", lm: "stormseat", fx: "storm", title: "To the centre of the Plains", text: "Dalinar marches on the Parshendi city as they summon a new storm from the west."},
+      {id: "e23", book: 5, world: "roshar", site: "urithiru", lm: "oathgates", fx: "arrival", title: "Urithiru found", text: "Shallan opens the Oathgate and leads the armies to the lost tower city."},
+      {id: "e24", book: 5, world: "roshar", site: "warcamps", lm: "pinnacle", title: "Kaladin’s Third Ideal", text: "At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar."},
+      {id: "e25", book: 5, world: "braize", site: "damnation", title: "Damnation named", text: "The Heralds’ torment between Desolations is laid bare, and the Everstorm brings the return of something long imprisoned."},
       /* VI Wax & Wayne */
-      {id: "e26", book: 6, world: "scadrial", site: "elendel", title: "Home from the Roughs", text: "Waxillium Ladrian returns to Elendel to run his house, and is pulled back into lawkeeping by a run of train heists."},
-      {id: "e27", book: 6, world: "scadrial", site: "elendel", title: "Shadows of Self", text: "A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open."},
-      {id: "e28", book: 6, world: "scadrial", site: "newseran", title: "The Bands of Mourning", text: "Wax’s crew chases a legendary relic and finds proof of other peoples beyond the sea."},
+      {id: "e26", book: 6, world: "scadrial", site: "elendel", lm: "ladrian", title: "Home from the Roughs", text: "Waxillium Ladrian returns to Elendel to run his house, and is pulled back into lawkeeping by a run of train heists."},
+      {id: "e27", book: 6, world: "scadrial", site: "elendel", lm: "governor", title: "Shadows of Self", text: "A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open."},
+      {id: "e92", book: 6, world: "scadrial", site: "elendel", lm: "eastbridge", fx: "duel", title: "Lessie’s face", text: "Wax corners the kandra Bleeder on a tower of the Eastbridge. She wears the face of Lessie, his dead wife."},
+      {id: "e28", book: 6, world: "scadrial", site: "newseran", lm: "falls", title: "The Bands of Mourning", text: "Wax’s crew chases a legendary relic and finds proof of other peoples beyond the sea."},
+      {id: "e94", book: 6, world: "scadrial", site: "dulsing", lm: "warehouse", title: "The masked prisoner", text: "In a Set warehouse the team finds a broken flying ship. Marasi frees its pilot Allik, and they escape in a smaller craft."},
+      {id: "e95", book: 6, world: "scadrial", site: "bandstemple", lm: "statue", fx: "battle", title: "The real Bands", text: "In the temple Wax’s sister Telsin reveals she leads the Set and shoots him. Marasi finds the true Bands on the statue outside, and Wax uses them to beat the Set."},
       {id: "e29", book: 6, world: "scadrial", site: "southcontinent", title: "News from the south", text: "The southern Scadrians are real, and ahead of the Basin in some technologies."},
       /* VII Arcanum Unbounded */
-      {id: "e30", book: 7, world: "sel", site: "roseempire", title: "The Emperor’s Soul", text: "A condemned Forger is given a hundred days to rebuild the soul of a dying emperor."},
+      {id: "e30", book: 7, world: "sel", site: "roseempire", lm: "chamber", title: "The Emperor’s Soul", text: "A condemned Forger is given a hundred days to rebuild the soul of a dying emperor."},
       {id: "e31", book: 7, world: "firstsun", site: "patji", title: "Sixth of the Dusk", text: "Dusk the trapper meets Vathi, a scholar who has seen the ships of the Ones Above."},
-      {id: "e32", book: 7, world: "threnody", site: "waystop", title: "Shadows for Silence", text: "Silence goes after a dangerous bounty in the Forests of Hell with her daughter."},
+      {id: "e32", book: 7, world: "threnody", site: "waystop", lm: "inn", title: "Shadows for Silence", text: "Silence goes after a dangerous bounty in the Forests of Hell with her daughter."},
       {id: "e33", book: 7, world: "taldain", site: "kerla", title: "White Sand", text: "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."},
       {id: "e34", book: 7, world: "scadrial", title: "Mistborn: Secret History", text: "What Kelsier did after his death, and how he looked into the wider cosmere."},
-      {id: "e35", book: 7, world: "roshar", site: "yeddaw", title: "Edgedancer", text: "Lift crosses to Tashikk to protect a man the Herald Nale wants dead."},
+      {id: "e96", book: 7, world: "roshar", site: "yeddaw", lm: "indicium", title: "Into the Indicium", text: "Lift bluffs her way into the Grand Indicium as an envoy from Azir to find out whom Nale is hunting."},
+      {id: "e35", book: 7, world: "roshar", site: "yeddaw", title: "Edgedancer", text: "Lift travels to Yeddaw in Tashikk, where Darkness has been reported."},
       {id: "e36", book: 7, world: "silverlight", title: "The view from outside", text: "Essays and a star chart from a worldhopping scholar show the Shardworlds side by side for the first time."},
       /* VIII Oathbringer & Dawnshard */
-      {id: "e37", book: 8, world: "roshar", site: "urithiru", title: "A coalition", text: "Dalinar tries to unite the monarchs of Roshar against the Voidbringers, with his own past catching up with him."},
-      {id: "e38", book: 8, world: "roshar", site: "kholinar", title: "The fall of Kholinar", text: "Kaladin, Shallan, Adolin and Elhokar slip into the occupied capital. The city falls and the king dies."},
-      {id: "e39", book: 8, world: "roshar", site: "celebrant", title: "Across Shadesmar", text: "Pulled through the Oathgate into the Cognitive Realm, the survivors walk and sail toward Thaylen City."},
-      {id: "e40", book: 8, world: "roshar", site: "thaylen", title: "The Battle of Thaylen Field", text: "Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith."},
+      {id: "e97", book: 8, world: "roshar", site: "urithiru", lm: "corridor", title: "Sadeas found dead", text: "Highprince Sadeas is found murdered in one of the tower’s dark corridors, and Shallan takes up the search for the killer."},
+      {id: "e37", book: 8, world: "roshar", site: "urithiru", lm: "gallery", title: "A coalition", text: "Dalinar tries to unite the monarchs of Roshar against the Voidbringers, with his own past catching up with him."},
+      {id: "e99", book: 8, world: "roshar", site: "revolar", lm: "east", fx: "storm", title: "Kaladin among the singers", text: "Kaladin follows a band of freed parshmen to Revolar, learns how they see the world, and escapes the Fused on a highstorm."},
+      {id: "e100", book: 8, world: "roshar", site: "rathalas", lm: "rift", fx: "fire", title: "The Rift burns", text: "In Dalinar’s returning memories, the Blackthorn burns the rebel city, not knowing his wife Evi is inside."},
+      {id: "e98", book: 8, world: "roshar", site: "urithiru", lm: "reshephir", title: "Re-Shephir", text: "Shallan tracks the killings to an Unmade hiding in the tower and drives it off with her Lightweaving."},
+      {id: "e101", book: 8, world: "roshar", site: "azimir", lm: "oathgate", title: "Azir joins", text: "Lift unlocks Azimir’s Oathgate and Dalinar wins the Azish to his coalition, before talks with the singers collapse."},
+      {id: "e102", book: 8, world: "roshar", site: "kholinar", lm: "oathgate", title: "The Cult of Moments", text: "In the occupied capital Shallan joins the cultists feasting on the Oathgate dais and finds two Unmade at work in the city."},
+      {id: "e103", book: 8, world: "roshar", site: "kholinar", lm: "wall", fx: "battle", title: "The Wall Guard", text: "Kaladin fights beside Highmarshal Azure’s guard on the walls until a thunderclast breaks through."},
+      {id: "e38", book: 8, world: "roshar", site: "kholinar", lm: "palace", fx: "battle", title: "The fall of Kholinar", text: "Kaladin, Shallan, Adolin and Elhokar slip into the occupied capital. The city falls and the king dies."},
+      {id: "e39", book: 8, world: "roshar", site: "celebrant", lm: "docks", title: "Across Shadesmar", text: "Pulled through the Oathgate into the Cognitive Realm, the survivors walk and sail toward Thaylen City."},
+      {id: "e104", book: 8, world: "roshar", site: "riino", lm: "lighthouse", title: "Vision at the lighthouse", text: "Kaladin looks into a heatless fire and sees Thaylen City overrun and Dalinar surrounded."},
+      {id: "e105", book: 8, world: "roshar", site: "thaylen", lm: "temple", title: "The Bondsmith mends", text: "Dalinar finds he can mend what is broken, and Queen Fen joins his coalition."},
+      {id: "e108", book: 8, world: "roshar", site: "vedenar", lm: "palace", title: "Excommunicated", text: "On a visit to Vedenar, the Vorin church casts Dalinar out."},
+      {id: "e106", book: 8, world: "roshar", site: "thaylen", lm: "stele", title: "The Eila Stele", text: "A translated stone says humans came to Roshar as the invaders, and the coalition starts to come apart."},
+      {id: "e40", book: 8, world: "roshar", site: "thaylen", lm: "field", fx: "battle", title: "The Battle of Thaylen Field", text: "Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith."},
+      {id: "e107", book: 8, world: "roshar", site: "thaylen", lm: "reserve", title: "The King’s Drop", text: "A thunderclast smashes the Gemstone Reserve. Dalinar traps the Unmade Nergaoul in the great gem, and the possessed soldiers come back to themselves."},
       {id: "e41", book: 8, world: "ashyn", title: "The truth about humans", text: "The Alethi learn that their ancestors came from Ashyn as refugees and took the singers’ world."},
-      {id: "e42", book: 8, world: "roshar", site: "akinah", title: "Dawnshard", text: "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."},
+      {id: "e42", book: 8, world: "roshar", site: "akinah", lm: "oathgate", title: "Dawnshard", text: "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."},
       /* IX Rhythm of War */
-      {id: "e43", book: 9, world: "roshar", site: "urithiru", title: "The tower occupied", text: "The Fused take Urithiru. Navani, a prisoner, works out the science of Light."},
+      {id: "e109", book: 9, world: "roshar", site: "hearthstone", lm: "manor", fx: "duel", title: "Hearthstone", text: "Navani’s flying platform lifts the townsfolk out while Kaladin duels the Fused Leshwi. At the manor, Moash kills Roshone."},
+      {id: "e110", book: 9, world: "roshar", site: "urithiru", lm: "mercy", title: "The surgeon’s son", text: "Relieved of command, Kaladin works with his father among the tower’s wounded in mind."},
+      {id: "e43", book: 9, world: "roshar", site: "urithiru", lm: "pillar", title: "The tower occupied", text: "The Fused take Urithiru. Navani, a prisoner, works out the science of Light."},
       {id: "e44", book: 9, world: "roshar", site: "urithiru", title: "Kaladin’s Fourth Ideal", text: "Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway."},
-      {id: "e45", book: 9, world: "roshar", site: "lastingintegrity", title: "Adolin’s trial", text: "Adolin asks the honorspren to judge humanity, and stands up for the dead spren of his sword."},
+      {id: "e111", book: 9, world: "roshar", site: "urithiru", lm: "pillar", title: "A new Bondsmith", text: "Navani bonds the Sibling, and together they drive the corruption out of the tower."},
+      {id: "e45", book: 9, world: "roshar", site: "lastingintegrity", lm: "trial", title: "Adolin’s trial", text: "Adolin asks the honorspren to judge humanity, and stands up for the dead spren of his sword."},
       {id: "e46", book: 9, world: "roshar", title: "A new Odium", text: "Taravangian kills the vessel of Odium and takes up the Shard himself."},
       /* X The Lost Metal */
-      {id: "e47", book: 10, world: "scadrial", site: "bilming", title: "The Set in Bilming", text: "Wax finally confronts the secret society behind years of crimes, and its link to a power from off the world."},
+      {id: "e47", book: 10, world: "scadrial", site: "bilming", lm: "shaw", fx: "battle", title: "The Set in Bilming", text: "Wax finally confronts the secret society behind years of crimes, and its link to a power from off the world."},
       {id: "e48", book: 10, world: "scadrial", site: "elendel", title: "A weapon over Elendel", text: "A bomb that could destroy the city and a god’s scheme from beyond the planet bring the Wax and Wayne era to its end."},
       /* XI 2023 */
-      {id: "e49", book: 11, world: "lumar", site: "rock", title: "Tress sets sail", text: "When the duke’s son is sent off to the Sorceress, Tress leaves her island to get him back."},
-      {id: "e50", book: 11, world: "lumar", site: "sorceress", title: "The Sorceress’s island", text: "With a pirate crew and an unusual narrator, Tress reaches the Midnight Sea and forces the Sorceress to leave the world."},
-      {id: "e51", book: 11, world: "komashi", site: "kilahito", title: "Yumi and Nikaro", text: "A stone-stacker and a nightmare painter are bound together across time and must work out why."},
-      {id: "e52", book: 11, world: "komashi", site: "torio", title: "The shroud lifts", text: "They destroy the machine behind the shroud, and the sun shines on Komashi again."},
-      {id: "e53", book: 11, world: "canticle", site: "union", title: "Nomad lands", text: "Hunted by the Night Brigade, Nomad arrives on Canticle and is taken prisoner in Union."},
-      {id: "e54", book: 11, world: "canticle", site: "beacon", title: "Beacon stands", text: "Nomad joins Beacon’s rebellion against the Cinder King, racing the sunrise."},
+      {id: "e49", book: 11, world: "lumar", site: "rock", lm: "docks", title: "Tress sets sail", text: "When the duke’s son is sent off to the Sorceress, Tress leaves her island to get him back."},
+      {id: "e113", book: 11, world: "lumar", site: "crimson", lm: "lair", title: "The dragon’s bargain", text: "On the Crimson Sea Tress bargains with the dragon Xisis, and Captain Crow ends up in the dragon’s service."},
+      {id: "e50", book: 11, world: "lumar", site: "sorceress", lm: "tower", title: "The Sorceress’s island", text: "With a pirate crew and an unusual narrator, Tress reaches the Midnight Sea and forces the Sorceress to leave the world."},
+      {id: "e114", book: 11, world: "komashi", site: "steamwells", lm: "ritual", title: "The yoki-hijo", text: "Yumi spends her days in ritual, stacking stones to call the spirits that warm her people’s land."},
+      {id: "e51", book: 11, world: "komashi", site: "kilahito", lm: "noodle", title: "Yumi and Nikaro", text: "A stone-stacker and a nightmare painter are bound together across time and must work out why."},
+      {id: "e115", book: 11, world: "komashi", site: "kilahito", lm: "shroud", fx: "battle", title: "The painters’ stand", text: "Nikaro gathers painters at the edge of the shroud against an army of nightmares, and paints them back into people."},
+      {id: "e52", book: 11, world: "komashi", site: "torio", lm: "machine", title: "The shroud lifts", text: "They destroy the machine behind the shroud, and the sun shines on Komashi again."},
+      {id: "e53", book: 11, world: "canticle", site: "union", lm: "arena", fx: "duel", title: "Nomad lands", text: "Hunted by the Night Brigade, Nomad arrives on Canticle and is taken prisoner in Union."},
+      {id: "e54", book: 11, world: "canticle", site: "beacon", lm: "engines", title: "Beacon stands", text: "Nomad joins Beacon’s rebellion against the Cinder King, racing the sunrise."},
+      {id: "e116", book: 11, world: "canticle", site: "scadrianlab", lm: "refuge", title: "The Refuge", text: "Scadrian scientists hidden under the surface refuse to help Beacon and keep from Nomad the Dor he needs to leave."},
+      {id: "e117", book: 11, world: "canticle", site: "union", lm: "deck", fx: "duel", title: "The Cinder King falls", text: "Nomad faces the Cinder King on Union’s deck, drains his power and Skips away as the sunlight takes him."},
       /* XII 2024-26 */
       {id: "e55", book: 12, world: "roshar", site: "urithiru", title: "A contest of champions", text: "Dalinar and Odium agree on a contest, with ten days for both sides to prepare."},
-      {id: "e56", book: 12, world: "roshar", site: "shinovar", title: "Kaladin and Szeth in Shinovar", text: "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."},
+      {id: "e118", book: 12, world: "roshar", site: "urithiru", lm: "cistern", title: "Into the Spiritual Realm", text: "Dalinar opens a perpendicularity in the tower and goes with Navani into the Spiritual Realm to learn the truth about the past."},
+      {id: "e56", book: 12, world: "roshar", site: "shinovar", lm: "pass", title: "Kaladin and Szeth in Shinovar", text: "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."},
+      {id: "e119", book: 12, world: "roshar", site: "shinovar", lm: "stoneward", title: "Taln’s Honorblade", text: "At Stoneward Szeth kills a corrupted stone shaman and takes back the first of the stolen Honorblades."},
+      {id: "e122", book: 12, world: "roshar", site: "azimir", lm: "market", fx: "battle", title: "The defence of Azimir", text: "Adolin helps the Azish defend the Oathgate under the Grand Market dome against Odium’s armies and a thunderclast, at terrible cost to himself."},
+      {id: "e123", book: 12, world: "roshar", site: "narak", lm: "narakprime", fx: "battle", title: "Bridge Four on Narak", text: "Sigzil and Bridge Four hold four fortresses on Narak. They fall one by one, and Venli’s chasmfiends storm Narak Prime."},
       {id: "e57", book: 12, world: "roshar", site: "thaylen", title: "Fronts falling", text: "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."},
+      {id: "e124", book: 12, world: "roshar", site: "thaylen", lm: "palace", title: "Fen’s choice", text: "Odium out-argues Jasnah over the contest’s terms, and Queen Fen signs Thaylenah over to him without a battle."},
+      {id: "e120", book: 12, world: "roshar", site: "shinovar", lm: "skybreaker", fx: "duel", title: "Kaladin and Nale", text: "Kaladin duels the Herald Nale, who yields his Honorblade and reveals what Ishar has done to Shinovar."},
+      {id: "e121", book: 12, world: "roshar", site: "shinovar", lm: "bondsmith", fx: "battle", title: "The Fifth Ideal", text: "Ishar raises corrupted Honorbearers against them. Kaladin speaks the Fifth Ideal and frees Ishar, and Szeth fights with Nightblood."},
+      {id: "e125", book: 12, world: "roshar", site: "kasitor", lm: "gateway", title: "Cusicesh speaks", text: "For the first time, the great spirit of Kasitor speaks to the Iriali and opens a gateway for them to leave Roshar."},
       {id: "e58", book: 12, world: "roshar", site: "urithiru", title: "Retribution", text: "Dalinar renounces Honor’s power. Odium absorbs it, kills the Stormfather and becomes Retribution."},
-      {id: "e59", book: 12, world: "roshar", title: "The Night of Sorrows", text: "Stormlight is withdrawn, the Everstorm covers the world, and time on Roshar slows to a crawl."},
+      {id: "e59", book: 12, world: "roshar", title: "Stormfall", text: "Retribution’s ascension ends the old storms and leaves Roshar isolated in slowed time."},
       {id: "e60", book: 12, world: "scadrial", title: "Hoid seeks help", text: "In the epilogue Hoid travels to Scadrial to look for allies against Retribution."},
-      {id: "e61", book: 12, world: "firstsun", site: "patjiseye", title: "Through Patji’s Eye", text: "Dusk leaves his world through the Eye, searching for help against the Ones Above."},
-      {id: "e62", book: 12, world: "emberdark", site: "hiddengate", title: "Dusk and Starling", text: "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."},
-      {id: "e63", book: 12, world: "miral", site: "riverviolet", title: "Up the River Violet", text: "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)"}
+      {id: "e61", book: 12, world: "firstsun", site: "patjiseye", lm: "pool", title: "Through Patji’s Eye", text: "Dusk leaves his world through the Eye, searching for help against the Ones Above."},
+      {id: "e62", book: 12, world: "emberdark", site: "hiddengate", lm: "ring", title: "Dusk and Starling", text: "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."},
+      {id: "e126", book: 12, world: "miral", site: "rivershore", lm: "inn", title: "December of Rivershore", text: "An orphan raised at a riverside inn sees the river curdle and a plague take her town."},
+      {id: "e63", book: 12, world: "miral", site: "riverviolet", title: "Up the River Violet", text: "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)"},
+      {id: "e127", book: 12, world: "miral", site: "kingseat", lm: "palace", title: "Warning the king", text: "December warns King Beaudilog’s court of the plague and of the demon; the king’s ministers dismiss her."},
+      {id: "e128", book: 12, world: "miral", site: "kingseat", lm: "megalith", fx: "battle", title: "The Megalith wakes", text: "The city’s guards turn on each other, and plotters release the Megalith through the palace’s river of demon blood."}
     ],
 
     codex: [
@@ -802,7 +1439,19 @@
         {name: "Yumi and Nikaro", role: "Komashi", books: [11], desc: "A spirit-honouring stone-stacker and a nightmare painter."},
         {name: "Nomad", role: "Worldhopper", books: [11], desc: "A haunted traveller on the run from the Night Brigade.", more: [[12, "He is Sigzil of Bridge Four."]]},
         {name: "Dusk", role: "Trapper of Patji", books: [7, 12], first: 7, desc: "A trapper who survives Patji by knowing its rules and by his Aviar.", more: [[12, "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."]]},
-        {name: "December", role: "Miral", books: [12], desc: "An orphan who bonds with a demon and tries to warn a kingdom of plague."}
+        {name: "December", role: "Miral", books: [12], desc: "An orphan who bonds with a demon and tries to warn a kingdom of plague."},
+        {name: "Hrathen", role: "Gyorn of Fjorden", books: [1], desc: "A high priest of the Derethi church sent to convert Arelon within three months, and less certain of his faith than he looks."},
+        {name: "Elend Venture", role: "Nobleman, king", books: [2], desc: "A bookish young lord Vin meets at the balls, who wants to rule justly when the Lord Ruler is gone."},
+        {name: "Spook", role: "Tineye", books: [2], desc: "Clubs’s nephew and the youngest of Kelsier’s crew, an Allomancer whose senses are sharpened by tin."},
+        {name: "Lightsong", role: "Returned god", books: [3], desc: "A Hallandren god of bravery who doesn’t believe in his own divinity and hides behind jokes."},
+        {name: "Adolin Kholin", role: "Duelist", books: [4, 5, 8, 9, 12], desc: "Dalinar’s elder son, a fashionable Shardbearer and duelist.", more: [[9, "Stands trial before the honorspren at Lasting Integrity."], [12, "Helps defend Azimir through the ten days of the contest."]]},
+        {name: "Navani Kholin", role: "Scholar, engineer", books: [4, 5, 8, 9, 12], desc: "Gavilar’s widow and a brilliant designer of fabrials.", more: [[9, "Bonds the Sibling and becomes a Bondsmith."]]},
+        {name: "Moash", role: "Bridgeman", books: [4, 5, 8, 9, 12], desc: "One of the bridgemen of Bridge Four and Kaladin’s friend.", more: [[5, "His grudge against the king pulls him into a plot against Elhokar."], [8, "Kills King Elhokar in Kholinar and goes over to the Fused."]]},
+        {name: "Rysn", role: "Thaylen trader", books: [4, 5, 8], desc: "A young Thaylen merchant apprenticed to the trader Vstim.", more: [[8, "Leads the Dawnshard expedition to Akinah."]]},
+        {name: "Lift", role: "Thief", books: [5, 7, 8, 9, 12], desc: "A young Reshi thief who breaks into palaces for the food, with a power she calls her awesomeness.", more: [[7, "An Edgedancer, who stands up to the Herald Nale in Yeddaw."]]},
+        {name: "Venli", role: "Listener", books: [5, 8, 9, 12], desc: "Eshonai’s sister, who leads the listeners toward the forms that will bring back their old gods.", more: [[8, "Bonds a spren of her own and becomes the first singer Surgebinder."]]},
+        {name: "Marasi Colms", role: "Constable", books: [6, 10], desc: "Lord Harms’s daughter, a student of criminology and an Allomancer who slows time, who joins Wax in the constabulary.", more: [[10, "Works with Kelsier’s Ghostbloods to stop Autonomy’s invasion."]]},
+        {name: "Starling", role: "Dragon", books: [12], desc: "A young dragon exiled from Yolen and held in human form, who serves on a cargo starship with a crew from many worlds."}
       ]},
       {id: "ideas", title: "Ideas", list: [
         {name: "Investiture", first: 1, desc: "The power of the Shards, which can take many forms: Breath, Stormlight, metals burned, the Aons."},
@@ -810,7 +1459,13 @@
         {name: "Worldhoppers", first: 3, desc: "People who cross between worlds, usually through the Cognitive Realm.", more: [[7, "Silverlight is their crossroads, and its codes set rules for visitors."], [11, "By the 2023 books there are starships as well."]]},
         {name: "Perpendicularities", first: 7, desc: "Places where a Shard’s power touches all three Realms, used as gates between worlds. Patji’s Eye is one."},
         {name: "The Ghostbloods", first: 5, desc: "A secret society on Roshar with interests far beyond it."},
-        {name: "The Night Brigade", first: 11, desc: "A crew that hunts Nomad from world to world."}
+        {name: "The Night Brigade", first: 11, desc: "A crew that hunts Nomad from world to world."},
+        {name: "The metal arts", first: 2, desc: "Scadrial’s three magics. Allomancers burn metals for powers, Feruchemists store their own strength, speed or memories in metal to draw on later, and Hemalurgy steals powers with metal spikes."},
+        {name: "The Knights Radiant", first: 4, desc: "Ten orders of knights who bonded spren and fought in the Desolations, until they abandoned their oaths in the Recreance.", more: [[5, "New Radiants begin to appear, Kaladin and Shallan among them."]]},
+        {name: "Oathgates", first: 5, desc: "Ten ancient portals that join the great cities of Roshar to Urithiru."},
+        {name: "Singers and the Fused", first: 8, desc: "The singers are Roshar’s first people, kept as parshman slaves until the Everstorm woke them. The Fused are their ancient dead, reborn into living bodies in Odium’s service."},
+        {name: "The Unmade", first: 8, desc: "Ancient spren of Odium, such as Sja-anat, Re-Shephir and Nergaoul, which twist the minds and places around them."},
+        {name: "The Set", first: 6, desc: "A secret society behind the Vanishers and other crimes in the Basin, tied to Wax’s own family.", more: [[10, "It serves Trell, who is the Shard Autonomy."]]}
       ]}
     ],
 
@@ -910,7 +1565,6 @@
         {id: "h-nal-ros", pairs: [["nalthis", "roshar"]], book: 5, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
         {id: "h-yol-silv", pairs: [["yolen", "silverlight"], ["taldain", "silverlight"]], book: 7, opacity: {all: .45, cur: .9, past: .3}, curve: .05},
         {id: "h-sel-lum", pairs: [["sel", "lumar"]], book: 11, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
-        {id: "h-nomad", path: ["canticle", "komashi"], book: 11, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
         {id: "h-scad-can", pairs: [["scadrial", "canticle"]], book: 11, opacity: {all: .45, cur: .9, past: .3}, curve: .1},
         {id: "h-nomad2", pairs: [["roshar", "canticle"]], book: 12, opacity: {all: .5, cur: .95, past: .35}, curve: .12},
         {id: "h-hoid12", pairs: [["roshar", "scadrial"]], book: 12, opacity: {all: .5, cur: .95, past: .35}, curve: .14},
@@ -935,5 +1589,6 @@
     }
   };
 
+  attachScenes(PACK.worlds);
   (window.ATLAS_PACKS = window.ATLAS_PACKS || {})["cosmere"] = PACK;
 })();
