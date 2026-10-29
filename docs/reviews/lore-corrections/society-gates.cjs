@@ -4,7 +4,7 @@ const TITLES={2:"Golden Son",3:"Morning Star",4:"Iron Gold",5:"Dark Age",6:"Ligh
 let pass=0,fail=0;const fails=[];
 function ok(c,m){if(c)pass++;else{fail++;fails.push(m);}}
 const later=(txt,k)=>Object.entries(TITLES).filter(([b,t])=>+b>k&&txt.includes(t)).map(x=>x[1]);
-(async()=>{const br=await chromium.launch({args:["--use-gl=swiftshader","--enable-webgl","--ignore-gpu-blocklist"]});
+(async()=>{const br=await chromium.launch({executablePath:process.env.CHROME_PATH||undefined,args:["--use-gl=swiftshader","--enable-webgl","--ignore-gpu-blocklist"]});
 for(const vp of [JSON.parse(process.env.VP)]){
   const p=await br.newPage({viewport:vp});const errs=[];p.on('pageerror',e=>errs.push(e.message));
   await p.goto(URL);await p.waitForFunction(()=>window.__atlas&&window.__atlas.SITES);await p.waitForTimeout(800);
@@ -31,7 +31,7 @@ for(const vp of [JSON.parse(process.env.VP)]){
         const cs=A.curSite;const entered=cs===S;
         const dos=document.querySelector('#dossier').innerText;const labels=[...document.querySelectorAll('.plbl.lm')].map(x=>x.innerText).join('|');
         return {entered,expect:S.from==null||A.ERA>=S.from,dos,labels,lmVis:S.landmarks.filter(l=>l.from==null||A.ERA>=l.from).length,lmLabels:document.querySelectorAll('.plbl.lm').length};},key);
-      ok(r.entered===r.expect,tag+` book ${k} enter ${key}: entered=${r.entered} expect=${r.expect}`);
+      if(process.env.PROGRESS)console.error(tag,k,key,r.entered);ok(r.entered===r.expect,tag+` book ${k} enter ${key}: entered=${r.entered} expect=${r.expect}`);
       if(r.entered){ok(r.lmLabels===r.lmVis,tag+` book ${k} ${key} labels ${r.lmLabels}/${r.lmVis}`);
         const L=later(r.dos+" "+r.labels,k).filter(t=>!(key==="demiurge"));ok(L.length===0,tag+` book ${k} ${key} dossier names later book ${L}`);}
     }
