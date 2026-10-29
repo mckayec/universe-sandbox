@@ -183,7 +183,7 @@
      {id: "hotel", name: "Gaal’s arrival", rel: {to: "commission", dlat: 6, dlon: -9}, books: [1], /* estimated */ desc: "From the spaceport to his hotel: Gaal Dornick’s first day on Trantor, and his first meeting with Hari Seldon.",
       scene: {kind: "city", arch: "imperial", size: "huge", tod: "day", weather: "clear", /* layout schematic */
        landmarks: [
-        {id: "terminal", name: "The spaceport terminal", kind: "pad", at: [.6, -.55], books: [1], desc: "Gaal lands in an immense terminal and takes an air-taxi into the city, with an Imperial agent already on his trail."},
+        {id: "terminal", name: "The spaceport terminal", kind: "pad", at: [.6, -.55], books: [1], desc: "Gaal arrives at Trantor and takes a taxi to the Luxor; another figure follows."},
         {id: "tower", name: "The observation tower", kind: "tower", at: [0, .2], h: 2.2, books: [1], desc: "Gaal rides up to look at Trantor and sees metal to every horizon, and no green at all. A man named Jerril falls into talk with him and sneers at “Raven” Seldon."},
         {id: "room", name: "Gaal’s hotel room", kind: "house", at: [-.35, -.15], books: [1], desc: "Seldon is waiting here. He works the numbers in front of Gaal and puts the chance that Trantor will be destroyed at 92.5 percent."}
        ]}},

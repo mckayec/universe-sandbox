@@ -452,7 +452,7 @@ const WORLDS=[
  gfx:{type:"forest",sea:.4,pal:["#0a2a2a","#2a6a5a","#123a16","#245a1e","#3a5a2a","#e0e8e0"],clouds:.6,atmo:"#8ac0ff"},
  sites:[{id:"raft",name:"Raft launch",lat:-4,lon:30,books:[3,4],desc:"Where the raft voyage down the Tethys begins.",
    scene:{kind:"forest",size:"medium",tod:"day",weather:"rain",river:true, /* layout schematic */ landmarks:[
-    {id:"shiprest",name:"The ship’s landing",kind:"ship",at:[-0.4,0.2],books:[3,4],desc:"Where the damaged Consul’s ship sets down beside the river and is left behind. Raul finds it here again, repaired."},
+    {id:"shiprest",name:"The ship’s landing",kind:"ship",at:[-0.4,0.2],books:[3,4],desc:"Where the damaged Consul’s ship sets down beside the river and is left behind."},
     {id:"arches",name:"Ruined portal arches",kind:"portal",at:[0.4,-0.2],h:1.6,books:[3],desc:"Ruined arches of the River Tethys’s portals."}]}}]},
 
 /* ---------------- Ouster space ---------------- */

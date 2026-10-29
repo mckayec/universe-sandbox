@@ -297,7 +297,7 @@ return {
     /* layout schematic */
     landmarks: [
      {id: "entrance", name: "The hidden entrance", kind: "cave", at: [0, -.8], books: [1, 2, 3],
-      desc: "A concealed way into the rock, sealed against moisture loss. In the second book Paul leaves the sietch from here to walk into the desert."},
+      desc: "A concealed way into the rock, sealed against moisture loss."},
      {id: "hall", name: "The meeting chamber", kind: "hall", at: [0, 0], h: 1.3, books: [1, 3],
       desc: "The great cavern where the tribe gathers. Jessica drinks the Water of Life here before the assembled sietch and becomes the Fremen’s Reverend Mother."},
      {id: "cistern", name: "The hidden water", kind: "lake", at: [-.5, .45], books: [1],

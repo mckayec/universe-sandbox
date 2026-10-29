@@ -7351,7 +7351,7 @@ const RM=24000;
 const CAP=new THREE.Vector3(0,RM+9000,90000);
 const lm=[{id:"orbit",name:"Above Mercury",pos:[0,RM+7000,0],desc:"Virginia’s fleet in orbit over Mercury on the night of the Iron Rain.",cam:{target:[0,RM+6000,0],r:9000,theta:.6,phi:1.3}}];
 SITES.prologue={name:"Iron Gold · The Prologue",body:"mercury",poi:"tyche",epithet:"Mercury · the night of the Iron Rain",seed:291,
-  blurb:"The prologue of Iron Gold: Aja waiting on a black islet off Tyche, the city dark before the bombs, a girl tracing the curved blade on a fogged window, the bombs falling, and Darrow fired from the Morning Star into Mercury’s sky. Play it from Tyche or from the event.",
+  blurb:"A wordless cinematic for the opening of Iron Gold and the Rising’s assault on Mercury. The staging is the atlas’s own interpretation, not a scene-by-scene adaptation. Play it from Tyche or from the event.",
   facts:[["Book","Iron Gold, prologue"],["Where","Tyche, and the orbit above Mercury"],["When","The tenth year of the war"]],note:"A staged reconstruction of the prologue.",
   ground:noGround,targetLift:0,bounds:200000,minR:2,maxR:90000,shadow:3000,win:[3,2.4],cam:{target:[0,RM+6000,0],r:9000,theta:.6,phi:1.3},defaultTod:"space",
   toggles:[{id:"play",label:"▶ Play the Prologue",era:4}],onToggle(id,v){if(id==="play"&&v){enterSite("tyche",null,()=>playFx("irongoldprologue",true));}},
