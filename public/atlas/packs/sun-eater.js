@@ -28,7 +28,7 @@ const WORLDS=[
   {id:"devilsrest",name:"Devil’s Rest",lat:30,lon:-12,books:[1],desc:"The Marlowe castle, a black-stone citadel on a white limestone bluff above the Apollan Ocean. Hadrian grows up here under the scholiast Tor Gibson.",
    scene:{kind:"castle",arch:"gothic",size:"medium",tod:"dusk",weather:"mist",coast:"s",walls:true,pal:{stone:"#26242a",ground:"#d8d2c2"},   /* layout schematic */
     landmarks:[
-     {id:"castle",name:"Devil’s Rest",kind:"castle",at:[0,.15],h:1.7,desc:"The black-stone seat of House Marlowe, Archons of Meidua. Hadrian is born and raised inside its walls, the heir his father does not want."},
+     {id:"castle",name:"Devil’s Rest",kind:"castle",at:[0,.15],h:1.7,desc:"The dark-stone home of House Marlowe, whose lord is Archon of Meidua. Hadrian grows up under a father who wants an heir rather than a child."},
      {id:"bluff",name:"The limestone bluff",kind:"cliff",at:[0,-.5],h:1.2,desc:"The white bluff the castle crowns, dropping to the Apollan Ocean."},
      {id:"study",name:"The scholiast’s rooms",kind:"library",at:[-.4,.35],desc:"Where Tor Gibson tutors Hadrian in history, languages and the scholiasts’ discipline, and feeds his dream of leaving to join their order."}]}},
   {id:"meidua",name:"Meidua",lat:28.4,lon:-10,books:[1],desc:"An old fishing village grown into the prefecture capital, with a Colosso and the slums of Lowtown below the castle.",
@@ -438,13 +438,12 @@ const WORLDS=[
     landmarks:[
      {id:"belows",name:"The Belows",kind:"market",at:[-0.4,-0.4],desc:"The undercity where Hadrian lives as a beggar and thief, and where his friend Cat dies of plague."},
      {id:"colosso",name:"The Colosso",kind:"arena",at:[0.35,0.1],h:1.5,desc:"Borosevo’s arena, where Hadrian fights as a myrmidon beside Switch and Pallino."},
-     {id:"dungeons",name:"The Colosso dungeons",kind:"keep",at:[0.55,-0.2],desc:"Captured Cielcin are held beneath the arena. Hadrian slips down to speak with their captain, Uvanari."},
      {id:"canals",name:"The canals",kind:"bridge",at:[-0.1,0.1],desc:"The ring-atoll city stands on steel pilings and is crossed by canals."},
      {id:"castleview",name:"Castle Borosevo",kind:"ziggurat",at:[0,0.7],h:1.8,desc:"The count’s seat rises on its concrete ziggurat above the city."}]}},
   {id:"castle",name:"Castle Borosevo",lat:7,lon:11.5,books:[1],sea:true,desc:"Count Mataro’s seat on a concrete ziggurat. Hadrian lives here as a companion to the count’s daughter Anaïs.",
    scene:{kind:"palace",arch:"modern",size:"medium",tod:"day",weather:"clear",coast:"s",sky:{sun:"#ff8e6a",moons:2},   /* layout schematic */
     landmarks:[
-     {id:"ziggurat",name:"The ziggurat",kind:"ziggurat",at:[0,0.2],h:2,desc:"Count Balian Mataro’s seat. Hadrian lives here as a companion for the count’s daughter Anaïs, and meets the Tavrosi xenologist Valka Onderra."}]}},
+     {id:"ziggurat",name:"The ziggurat",kind:"ziggurat",at:[0,0.2],h:2,desc:"Count Mataro’s seat. Hadrian lives here as a companion for the count’s daughter Anaïs, and meets the Tavrosi xenologist Valka Onderra."}]}},
   {id:"calagah",name:"Calagah",lat:-30,lon:40,books:[1,5],desc:"Black ruins of the Quiet, reachable only at extreme tide. Here Hadrian has his first visions, and a Cielcin scout ship lands nearby.",
    scene:{kind:"ruins",arch:"alien",size:"medium",tod:"dusk",weather:"mist",coast:"s",sky:{sun:"#ff8e6a"},pal:{stone:"#141416"},   /* layout schematic */
     landmarks:[
@@ -722,8 +721,8 @@ const EVENTS=[
  {id:"b1g",book:1,world:"emesh",site:"castle",lm:"ziggurat",fx:"duel",title:"Count Mataro’s house",text:"The count takes Hadrian in as a companion for his daughter. He meets the Tavrosi xenologist Valka Onderra and kills the Chantry priest Gilliam Vas in a duel."},
  {id:"b1h",book:1,world:"emesh",site:"calagah",lm:"chamber",title:"The ruins of Calagah",text:"In the Quiet’s black ruins Hadrian has visions. A Cielcin ship of Clan Otiolo lands nearby."},
  {id:"b1i",book:1,world:"emesh",site:"calagah",lm:"landing",fx:"battle",title:"Battle of Emesh",text:"Imperial legions under Raine Smythe and a Jaddian knight, Olorin Milta, defeat the Cielcin. ISD 16172."},
- {id:"b1n",book:1,world:"emesh",site:"borosevo",lm:"dungeons",title:"Beneath the Colosso",text:"The captured Cielcin are held under the Colosso, where the Chantry tortures their captain. Hadrian slips down to speak with it and is caught."},
- {id:"b1j",book:1,world:"emesh",site:"borosevo",lm:"dungeons",title:"Uvanari",text:"Hadrian interprets for the captured Cielcin captain, then grants it a merciful death in exchange for the location of Vorgossos. His father disowns him, and the Meidua Red Company is founded to find it."},
+ {id:"b1n",book:1,world:"emesh",site:"borosevo",title:"The captive Cielcin",text:"Captured Cielcin are held and questioned in Borosevo. Hadrian secretly goes to speak with their captain and is caught."},
+ {id:"b1j",book:1,world:"emesh",site:"borosevo",title:"Uvanari",text:"Hadrian interprets for the captured Cielcin captain, then grants it a merciful death in exchange for the location of Vorgossos. His father disowns him, and the Meidua Red Company is founded to find it."},
  {id:"b1o",book:1,world:"delos",site:"redtine",lm:"village",side:"Novella",title:"The Lesser Devil",text:"Crispin and Sabine Marlowe crash in the Redtine Mountains and find a hidden village, in a novella set on Delos."},
  /* II · Howling Dark */
  {id:"b2p",book:2,world:"pharos",title:"The Guns of Pharos",side:"Tales of the Sun Eater",text:"The Red Company’s first battle, in ISD 16179, against a Norman dictator. Told in two short stories."},
@@ -841,9 +840,9 @@ const CHARACTERS=[
  {name:"Valka Onderra",role:"Xenologist",books:[1,2,3,4,5],desc:"A Tavrosi scholar of alien ruins, with machine lace in her mind, whom Hadrian meets on Emesh.",more:[[2,"She becomes Hadrian’s companion and lover."],[5,"She dies at Perfugium."]]},
  {name:"Tor Gibson",role:"Scholiast · tutor",books:[1,3,4,5],desc:"Hadrian’s teacher on Delos, maimed and exiled for helping him run.",more:[[3,"Hadrian finds him alive on Colchis."],[5,"He dies there, revealed as a former Bourbon prince."]]},
  {name:"Lord Alistair Marlowe",role:"Archon of Meidua",books:[1],desc:"Hadrian’s cold father, who disowns him."},
- {name:"Lady Liliana Marlowe",role:"Hadrian’s mother",books:[1],desc:"Hadrian’s mother, who arranges his escape from Delos."},
+ {name:"Hadrian’s mother",role:"House Marlowe",books:[1],desc:"Hadrian’s mother, who arranges his escape from Delos."},
  {name:"Cat",role:"Street child",books:[1],desc:"A girl of Borosevo’s streets who befriends Hadrian when he is a beggar there, and dies of plague.",more:[[2,"Aboard the Enigma of Hours an oracle speaks to Hadrian in her last words."]]},
- {name:"Count Balian Mataro",role:"Lord of Emesh",books:[1],desc:"The count of Emesh, who takes Hadrian into his household at Castle Borosevo."},
+ {name:"Count Mataro",role:"Lord of Emesh",books:[1],desc:"The count of Emesh, who takes Hadrian into his household at Castle Borosevo."},
  {name:"Anaïs Mataro",role:"The count’s daughter",books:[1],desc:"The daughter of Count Mataro, for whom Hadrian is brought in as a companion."},
  {name:"Gilliam Vas",role:"Chantry priest",books:[1],desc:"A Chantry priest on Emesh and Hadrian’s enemy, whom Hadrian kills in a duel."},
  {name:"Crispin Marlowe",role:"Hadrian’s brother",books:[1],desc:"The violent younger son who becomes heir."},

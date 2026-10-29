@@ -197,7 +197,7 @@
        landmarks: [
         {id: "hall", name: "The Library", kind: "library", at: [0, .15], h: 1.8, books: [2, 4, 7], desc: "The great Imperial Library. When Trantor is sacked it is spared, and its records still reach back across the whole history of the Empire."},
         {id: "mis", name: "Mis’s workroom", kind: "hall", at: [-.4, -.2], books: [2], desc: "Where Ebling Mis buries himself in the old records, working without rest or food, while Bayta, Toran and Magnifico look after him."},
-        {id: "zenow", name: "The Chief Librarian’s office", kind: "hall", at: [.45, .3], books: [7], desc: "Las Zenow, the Chief Librarian, gives Seldon the Library’s help with an encyclopedia, and his staff’s search of old astronomical records turns up an empty world at the rim: Terminus."},
+        {id: "zenow", name: "The Chief Librarian’s office", kind: "hall", at: [.45, .3], books: [7], desc: "The office of Las Zenow, the Chief Librarian; its layout here is schematic."},
         {id: "rooms", name: "The encyclopedia project", kind: "hall", at: [.35, -.35], books: [7], desc: "Seldon’s encyclopedia work in the Library, and the cover under which Wanda Seldon and Stettin Palver quietly gather other mentalics: the start of a second Foundation inside the Library."}
        ]}},
      {id: "speakers", name: "The Speakers’ university", rel: {to: "library", dlat: 6, dlon: 6}, books: [4], desc: "The old university buildings where the Second Foundation meets around the Speakers’ Table, hidden behind the Hamish farm country.",
@@ -307,7 +307,6 @@
         {id: "encyclopedia", name: "The Encyclopedia Building", kind: "library", at: [0, .25], h: 1.4, books: [1], desc: "Home of the Encyclopedia Foundation and its Board of Trustees under Lewis Pirenne, whose scholars spend fifty years preparing the first volume. Hardin shows Anacreon’s envoy round it."},
         {id: "spaceport", name: "The spaceport", kind: "pad", at: [.6, -.5], books: [3, 4], desc: "Terminus’s link to the rest of the Galaxy. Arkady Darell slips aboard Homir Munn’s ship here to follow him to Kalgan."},
         {id: "actionparty", name: "Action Party headquarters", kind: "hall", at: [-.5, -.2], books: [1], desc: "Where Sef Sermak and the young councilmen of the Action Party plot to replace Hardin, convinced that his religion of science is betraying the Foundation."},
-        {id: "board", name: "The Board of Trustees’ meeting", kind: "hall", at: [.3, .55], books: [1], desc: "Where the Encyclopedists’ Board meets. Hardin plays them the record of Lord Dorwin’s visit and shows, by symbolic logic, that the envoy promised nothing at all."},
         {id: "mallow", name: "Mallow’s mansion", kind: "house", at: [-.35, .5], books: [1], desc: "The rich Master Trader’s home. Mallow plans his run for office here with Ankor Jael, and Jorane Sutt comes to bargain with him."}
        ]}},
      {id: "vault", name: "The Time Vault", rel: {to: "termcity", dlat: 3, dlon: 4}, books: [1, 2, 4], desc: "A sealed room Seldon left behind. At each crisis it opens and his recorded image speaks to whoever is there.",
@@ -395,7 +394,7 @@
              landmarks: [
               {id: "palace", name: "The Commdor’s palace", kind: "palace", at: [0, .3], h: 1.2, books: [1], desc: "Seat of Commdor Asper Argo. Years after Mallow’s visit, Argo debates war with the Foundation here, and his wife cannot bear to lose her Foundation gadgets."},
               {id: "garden", name: "The palace garden", kind: "garden", at: [-.4, -.1], books: [1], desc: "Mallow shows the Commdor his wares here, jewelled trinkets for the Commdora among them, and wins her over."},
-              {id: "foundry", name: "The steel foundry", kind: "factory", at: [.45, -.35], books: [1], desc: "Mallow demonstrates Foundation tools and sees that the guards carry atomic blasters bearing the Empire’s emblem."}
+              {id: "foundry", name: "The steel foundry", kind: "factory", at: [.45, -.35], books: [1], desc: "Korell’s industry; its layout here is schematic."}
              ]}},
            {id: "korport", name: "The spaceport", rel: {to: "commdor", dlat: -5, dlon: -6}, books: [1], desc: "A man calling himself a Foundation missionary begs Mallow for sanctuary. Mallow hands him over to the crowd, suspecting a trap; he is right.",
             scene: {kind: "spaceport", arch: "brutal", size: "small", tod: "night", weather: "clear", /* layout schematic */
@@ -691,7 +690,7 @@
   {id: "f1c", book: 1, world: "terminus", site: "termcity", lm: "encyclopedia", title: "The Encyclopedia Foundation", text: "About 100,000 scientists settle the empty world of Terminus to write the Encyclopedia Galactica. Seldon dies on Trantor in 1 F.E."},
   {id: "f1c2", book: 1, world: "terminus", site: "termcity", lm: "encyclopedia", title: "Anacreon’s envoy", text: "In 50 F.E. Hardin shows Anacreon’s envoy, Anselm haut Rodric, round the Encyclopedia Building with every courtesy. Afterwards Rodric demands a military base on Terminus."},
   {id: "f1d0", book: 1, world: "gammaandromeda", site: "plant", lm: "reactor", fx: "blast", title: "A plant fails", text: "News comes of an atomic disaster at Gamma Andromeda: the Empire can no longer keep its own machines running."},
-  {id: "f1d", book: 1, world: "terminus", site: "termcity", lm: "board", title: "Lord Dorwin’s empty promises", text: "In 50 F.E. Anacreon demands bases on Terminus. An Imperial envoy visits; Salvor Hardin’s analysis shows his reassurances contain nothing at all."},
+  {id: "f1d", book: 1, world: "terminus", site: "termcity", title: "Lord Dorwin’s empty promises", text: "In 50 F.E. Anacreon demands bases on Terminus. An Imperial envoy visits; Salvor Hardin’s analysis shows his reassurances contain nothing at all."},
   {id: "f1e", book: 1, world: "terminus", site: "vault", lm: "cubicle", title: "The first Seldon crisis", text: "Hardin and Yohan Lee take power from the Encyclopedists. The Vault opens and Seldon reveals the Encyclopedia was a cover. Hardin sets the other kingdoms against Anacreon and Terminus stays free."},
   {id: "f1e2", book: 1, world: "terminus", site: "cityhall", lm: "council", title: "The Action Party", text: "Thirty years on, Councilman Sef Sermak’s Action Party wants Terminus to arm and strike first, and calls Hardin a traitor for propping up the kingdoms. Its move to impeach him fails by a narrow vote."},
   {id: "f1e3", book: 1, world: "anacreon", site: "royal", lm: "hunt", title: "A regent’s war", text: "Young King Lepold comes back from the hunt, and his uncle, Prince Regent Wienis, talks him into war as soon as an old Imperial cruiser, refitted by the Foundation, is ready."},
@@ -704,7 +703,7 @@
   {id: "f1g2", book: 1, world: "askone", site: "grandmaster", lm: "court", title: "Gorov released", text: "With Councillor Pherl now on his side, Ponyets gets Gorov released and a cargo of tin besides. Askone’s ban on Foundation technology begins to give way."},
   {id: "f1h", book: 1, world: "korell", site: "korport", lm: "farstar", title: "Mallow reaches Korell", text: "Around 155 F.E. Hober Mallow comes to find three lost ships. He refuses sanctuary to a false missionary, and sells to the Commdor."},
   {id: "f1h2", book: 1, world: "korell", site: "commdor", lm: "garden", title: "Selling to the Commdor", text: "Mallow wins Commdor Asper Argo over with Foundation gadgets, and his wife with jewelled trinkets."},
-  {id: "f1h3", book: 1, world: "korell", site: "commdor", lm: "foundry", title: "Imperial blasters", text: "At a foundry Mallow notices that Korell’s guards carry atomic blasters marked with the Empire’s emblem. Someone is arming Korell."},
+  {id: "f1h3", book: 1, world: "korell", site: "commdor", title: "Imperial blasters", text: "At a foundry Mallow notices that Korell’s guards carry atomic blasters marked with the Empire’s emblem. Someone is arming Korell."},
   {id: "f1i", book: 1, world: "siwenna", site: "barr", lm: "home", title: "The dying Empire", text: "Mallow travels on to Siwenna and hears from Onum Barr how the Empire’s provinces are decaying, and that it is arming Korell."},
   {id: "f1i2", book: 1, world: "siwenna", site: "barr", lm: "plant", title: "A plant nobody understands", text: "Mallow bribes his way into Siwenna’s atomic power plant and finds its tech-men keep it going without understanding it. The Empire is losing what it knows."},
   {id: "f1j", book: 1, world: "terminus", site: "cityhall", lm: "council", title: "Mallow’s trial", text: "Tried for murder over the missionary, Mallow proves he was a Korellian agent, and is elected mayor."},
@@ -813,7 +812,7 @@
   {id: "f7e2", book: 7, world: "trantor", title: "Yugo’s death", text: "Yugo Amaryl, Seldon’s first partner in psychohistory, dies, worn out by the work."},
   {id: "f7f0", book: 7, world: "trantor", site: "library", lm: "zenow", title: "An encyclopedia", text: "Seldon wins the Chief Librarian, Las Zenow, over to an encyclopedia project, and the Library opens its resources to the work."},
   {id: "f7f", book: 7, world: "trantor", site: "library", lm: "rooms", title: "Wanda and the mentalics", text: "Seldon’s granddaughter Wanda can read minds. With her and Stettin Palver he gathers mentalics, the hidden Second Foundation, inside the Galactic Library."},
-  {id: "f7g", book: 7, world: "trantor", site: "library", lm: "zenow", title: "Terminus chosen", text: "The Library’s search of old records turns up a remote, empty world at the edge of the Galaxy. The Encyclopedia project gives Seldon his public Foundation there, while the Commission rules behind a powerless Emperor."},
+  {id: "f7g", book: 7, world: "trantor", site: "library", title: "Terminus chosen", text: "The Library’s search of old records turns up a remote, empty world at the edge of the Galaxy. The Encyclopedia project gives Seldon his public Foundation there, while the Commission rules behind a powerless Emperor."},
   {id: "f7h", book: 7, world: "trantor", site: "streeling", lm: "office", title: "Seldon’s death", text: "In 12,069 G.E. (1 F.E.) Seldon dies at his desk, both Foundations set in motion."}
   ],
 

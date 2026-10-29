@@ -328,7 +328,6 @@
           scene: {kind: "underground", arch: "modern", size: "medium", tod: "night", weather: "clear", under: true, /* layout schematic */
            landmarks: [
              {id: "dawes", name: "Dawes’s office", kind: "hall", at: [0, .2], books: [6], desc: "Marco Inaros tells Governor Dawes he will strip Ceres of its reactors, defences and medical supplies and leave its millions to his enemies. When Filip shoots a Ceres security officer, Dawes confronts Marco."},
-             {id: "conference", name: "The peace conference", kind: "hall", at: [.4, -.3], h: 1.2, books: [6], desc: "Months after the war, the leaders of the system meet on Ceres to settle its future. Holden proposes a union of Belter shippers to run the gates, turns down its leadership, and names Michio Pa instead."}
            ]}}
        ]},
 
@@ -604,7 +603,7 @@
            landmarks: [
              {id: "gates", name: "The gates on the rim", kind: "portal", at: [0, .7], h: 2, books: [3], desc: "1,373 gates spaced around the edge of the million-kilometre sphere, each opening onto another star system once the station unlocks them."},
              {id: "flotilla", name: "The stalled flotilla", kind: "ship", at: [-.4, -.1], h: 1.2, books: [3], desc: "When a Martian marine fires a grenade near the station, the speed limit drops at a stroke, and every ship in the zone is slammed to a crawl. Hundreds are killed or hurt."},
-             {id: "railguns", name: "The Free Navy railguns", kind: "mast", at: [-.1, .3], h: 1.4, books: [6], desc: "Powerful railguns the Free Navy sets up to guard the slow zone. Pinned down by Duarte’s marines, Bobbie sends her landing craft into the reactor that powers them, and the guns fall silent."},
+             {id: "railguns", name: "The Free Navy railguns", kind: "mast", at: [-.1, .3], h: 1.4, books: [6], desc: "The railguns that guard the slow zone for the Free Navy; where they are mounted is schematic here."},
              {id: "tecomagate", name: "The Tecoma and Thanjavur gates", kind: "portal", at: [.6, .2], books: [8], desc: "Two gates on opposite sides of the rim. The gamma-ray burst from the Tecoma experiment crosses the slow zone and destroys both."},
              {id: "battle", name: "The last battle", kind: "ship", at: [.3, -.5], h: 1.2, books: [9], desc: "Laconian and Underground fleets hold off the ships whose crews Duarte has taken over, while the struggle goes on at the station."}
            ]}}
@@ -966,10 +965,10 @@
       {id: "b6d", book: 6, world: "sanesteban", site: "sanesteban-colony", lm: "colony", title: "Michio Pa breaks away", text: "Michio Pa, sickened by Marco’s methods, turns her ships to piracy for the Belt, seizing the colony ship Minsky on its way to San Esteban, and pays for it."},
       {id: "b6e", book: 6, world: "tycho", title: "Fred Johnson’s last flight", text: "On a hard burn to an OPA meeting at Tycho, under attack from Marco’s ships, Fred Johnson has a stroke and dies."},
       {id: "b6f", book: 6, world: "callisto", title: "Filip Nagata", text: "Filip breaks with his father and stays behind on Callisto under his mother’s name."},
-      {id: "b6l", book: 6, world: "ringstation", site: "slowzone", lm: "railguns", fx: "blast", title: "The guns fall", text: "Decoy drones draw the railguns’ fire while Bobbie’s team lands. Pinned down by Duarte’s marines, she sends her landing craft into the reactor that powers the guns and jumps clear."},
+      {id: "b6l", book: 6, world: "ringstation", site: "slowzone", lm: "railguns", fx: "blast", title: "The guns fall", text: "Bobbie leads the assault that silences the Free Navy’s slow-zone railguns."},
       {id: "b6g", book: 6, world: "medina", site: "drum", title: "Retaking Medina", text: "A combined fleet of Earth, Mars and the loyal Belt strikes for Medina. With its railguns silenced, Holden bluffs a full invasion, and the station surrenders to the Rocinante."},
       {id: "b6h", book: 6, world: "solring", site: "ringmouth", lm: "crossing", title: "Marco vanishes", text: "Naomi has worked out the rule of the vanishing ships. Mass sent through the Ring just ahead of Marco’s fleet makes the whole fleet disappear in the crossing."},
-      {id: "b6i", book: 6, world: "ceres", site: "govhall", lm: "conference", title: "The Transport Union", text: "At a conference on Ceres, Holden proposes a union of Belter shippers to run the gates. He turns down its leadership, and Michio Pa takes it."},
+      {id: "b6i", book: 6, world: "ceres", title: "The Transport Union", text: "After the war, Holden proposes a union of Belter shippers to run the ring gates."},
       {id: "b6j", book: 6, world: "laconia", title: "Silence from Laconia", text: "Earth blockades the Laconia gate. Duarte makes no move."},
       /* VII · Persepolis Rising */
       {id: "b7a", book: 7, world: "freehold", site: "township", lm: "assembly", title: "Freehold", text: "Some thirty years on, with Camina Drummer president of the Transport Union, the Rocinante is sent to make Freehold give up the governor who broke the Union’s rules."},

@@ -7816,7 +7816,20 @@ function showTipBody(b,ev){const ne=eventsFor(b.id).filter(e=>!bookFilter||e.boo
   tip.innerHTML='<p class="eyebrow">'+esc(bodyF(b,"epithet"))+'</p><h3>'+esc(b.name)+'</h3>'+(b.control!=="—"?'<div class="meta">Held by <b>'+esc(bodyF(b,"control"))+'</b></div>':'')+'<p>'+esc(bodyF(b,"blurb"))+'</p>'+
    (b.kind==="sun"?'':'<div class="meta">'+ne+' event'+(ne===1?'':'s')+' · '+np+' place'+(np===1?'':'s')+'</div><div class="cta">Click to descend</div>');
   tip.hidden=false;if(ev)placeTip(ev.clientX,ev.clientY);}
-function setEra(e){const changed=e!==ERA;ERA=e;$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books · spoilers";
+/* Book changes invalidate navigation still in flight (a fade, a fly-in, a scene still loading), so nothing from
+   the previous book can land after the switch; going back to an earlier book also stops what is playing. */
+let navGen=0;
+function eventSeen(id){const ev=id&&EV[id];return !ev||!bookFilter||ev.book<=bookFilter;}
+function clearForBook(earlier){navGen++;hideTip();hoverSel=null;
+  if(selEvent&&!eventSeen(selEvent))selEvent=null;
+  if(!earlier)return;
+  stopFx();
+  if(mode==="site"&&curSite&&curSite._tog){const S=curSite;Object.keys(S._tog).forEach(k=>{if(!S._tog[k])return;S._tog[k]=false;
+    document.querySelectorAll('[data-tog="'+k+'"]').forEach(b=>b.setAttribute("aria-pressed","false"));if(S.onToggle)S.onToggle(k,false);});}
+  if(window.__tour&&window.__tour.end)window.__tour.end();
+  const bn=$("#banner");if(bn){clearTimeout(showBanner._t);bn.style.opacity=0;bn.hidden=true;}
+  const cc=document.getElementById("cineCap");if(cc)cc.classList.remove("on");document.body.classList.remove("cine");}
+function setEra(e){const changed=e!==ERA;const earlier=e<ERA;ERA=e;if(changed)clearForBook(earlier);$("#eraName").textContent=bookFilter?"Book "+BOOKS[bookFilter].n+" · "+BOOKS[bookFilter].title:"All six books · spoilers";
   if(!changed)return;applyEraTextures();renderIndex();if(mode==="globe"&&cur){buildGlobe(cur);buildPoiLabels();setModeLabels();}
   if(mode==="globe"&&cur&&selPoi&&!(POIS[cur.id]||[]).some(p=>p.id===selPoi&&poiVisible(p)))selPoi=null;
   if(mode==="site"&&curSite){
@@ -7922,8 +7935,8 @@ let navT=null,navSeen={};function showNavHint(m){const h=$("#navhint");if(navSee
 
 /* ===================== TRANSITIONS ===================== */
 function flyHome(){ctl.follow=null;anim={t0:performance.now(),dur:1100,from:{tg:ctl.target.clone(),r:ctl.r,th:ctl.theta,ph:ctl.phi},to:{tg:new THREE.Vector3(),r:home.r,th:ctl.theta,ph:home.phi},done:()=>{anim=null;}};}
-function fadeTo(eyebrow,name,fn,hold){$("#fadeE").textContent=eyebrow;$("#fadeN").textContent=name;fade.classList.add("on");
-  setTimeout(()=>{fn();setTimeout(()=>fade.classList.remove("on"),hold||140);},400);}
+function fadeTo(eyebrow,name,fn,hold){$("#fadeE").textContent=eyebrow;$("#fadeN").textContent=name;fade.classList.add("on");const g=navGen;
+  setTimeout(()=>{if(g!==navGen){fade.classList.remove("on");return;}fn();setTimeout(()=>fade.classList.remove("on"),hold||140);},400);}
 function goBody(id){const b=byId[id];if(!b)return;if(mode==="system")descend(id);else switchGlobe(b);}
 function descend(id){if(anim)return;const b=byId[id];if(!b)return;hideTip();hoverSel=null;
   if(mode!=="system"){switchGlobe(b);return;}
@@ -7944,8 +7957,9 @@ function ascend(){if(mode!=="globe")return;stopFx();const id=cur.id;
     anim={t0:performance.now()+200,dur:1300,from:{tg:o.pos.clone(),r:byId[id].size*6,th:ctl.theta,ph:ctl.phi},to:{tg:new THREE.Vector3(),r:home.r,th:ctl.theta-.2,ph:home.phi},done:()=>{anim=null;}};
     applyHL(false);renderCrumbs();});}
 function enterSite(key,focus,after){const S=SITES[key];if(!S||!siteVisible(key))return;hideTip();hoverSel=null;
-  if(S.preload&&!S._ready){$("#fadeE").textContent="Charting";$("#fadeN").textContent=S.name;fade.classList.add("on");S.preload().then(()=>{S._ready=true;enterSite(key,focus,after);});return;}
-  fadeTo("Descending to",S.name,()=>{stopFx();if(mode==="globe")clearPoiLabels();
+  if(S.preload&&!S._ready){$("#fadeE").textContent="Charting";$("#fadeN").textContent=S.name;fade.classList.add("on");const g=navGen;
+    S.preload().then(()=>{S._ready=true;if(g!==navGen||!siteVisible(key)){fade.classList.remove("on");return;}enterSite(key,focus,after);});return;}
+  fadeTo("Descending to",S.name,()=>{if(!siteVisible(key))return;stopFx();if(mode==="globe")clearPoiLabels();
     if(!cur||cur.id!==S.body){cur=byId[S.body];}
     mode="site";curSiteKey=key;selLm=null;selEvent=null;if(S._tog)Object.keys(S._tog).forEach(k=>S._tog[k]=false);loadSite(key);buildSiteLabels();
     if(focus){const lm=siteLms(S).find(l=>l.id===focus);if(lm){selLm=lm.id;sFly(lm.cam);}}
@@ -7966,7 +7980,7 @@ function gotoEvent(ev,fromTimeline){hideTip();selEvent=ev.id;
     const it=dossier.querySelector('.evitem[data-id="'+ev.id+'"]');if(it)dosScroll(it);};
   if(mode==="globe"&&cur.id===ev.body){act();return;}
   if(mode==="system")descendThen(ev.body,act);else switchGlobe(byId[ev.body],act);}
-function descendThen(id,fn){const b=byId[id];if(anim)return;anim={t0:performance.now(),dur:1100,follow:id,from:{tg:ctl.target.clone(),r:ctl.r,th:ctl.theta,ph:ctl.phi},to:{r:b.size*(b.moon?7:5),th:ctl.theta+.35,ph:Math.min(ctl.phi,1.15)},done:()=>switchGlobe(b,fn)};}
+function descendThen(id,fn){const b=byId[id];if(anim)return;const g=navGen;anim={t0:performance.now(),dur:1100,follow:id,from:{tg:ctl.target.clone(),r:ctl.r,th:ctl.theta,ph:ctl.phi},to:{r:b.size*(b.moon?7:5),th:ctl.theta+.35,ph:Math.min(ctl.phi,1.15)},done:()=>switchGlobe(b,g===navGen?fn:null)};}
 
 /* ===================== CRUMBS ===================== */
 function renderCrumbs(){let h='<button data-c="sys">Solar System</button>';

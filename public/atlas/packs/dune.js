@@ -282,12 +282,12 @@ return {
     landmarks: [{id: "erg", name: "Funeral Plain", kind: "stones", at: [0, 0], books: [1],
       desc: "An open sea of dunes where nothing stands still for long."}]}},
   {id: "ecostation", name: "Ecological testing station", lat: 66.6, lon: -16, books: [1],   /* estimated */
-   desc: "One of the Imperial ecological testing stations, quietly used by Liet-Kynes and the Fremen. Kynes and Duncan Idaho bring Paul and Jessica here after their escape. Position estimated.",
+   desc: "One of the Imperial ecological testing stations, quietly used by Liet-Kynes and the Fremen. Paul and Jessica are brought here after their escape. Position estimated.",
    scene: {kind: "desert", arch: "desert", size: "small", tod: "night", weather: "storm",
     /* layout schematic */
     landmarks: [
      {id: "station", name: "The station", kind: "house", at: [0, .1], books: [1],
-      desc: "A hidden desert station where Kynes meets Paul. Sardaukar attack it, and Duncan Idaho dies fighting so that Paul and Jessica can get away."},
+      desc: "The hidden station itself; its layout here is schematic."},
      {id: "thopter", name: "Ornithopter", kind: "pad", at: [.5, -.4], books: [1],
       desc: "Paul and Jessica escape in an ornithopter and fly it into the heart of a sandstorm to shake off pursuit."}
     ]}},
@@ -508,7 +508,7 @@ return {
     /* layout schematic */
     landmarks: [
      {id: "keep", name: "The castle", kind: "castle", at: [0, .2], h: 1.6, books: [1],
-      desc: "The ancient Atreides seat, home of the house for twenty-six generations. On the eve of the move, the Reverend Mother Mohiam tests Paul here with the box of pain and the gom jabbar."},
+      desc: "The ancient Atreides seat, home of the house for twenty-six generations. Before the move, the Reverend Mother Mohiam tests Paul here with the box of pain and the gom jabbar."},
      {id: "training", name: "The training hall", kind: "hall", at: [.4, .35], books: [1],
       desc: "Where Gurney Halleck and Thufir Hawat drill Paul. Gurney teaches him to fight under a shield, where only the slow blade gets through."},
      {id: "bullring", name: "The bullring", kind: "arena", at: [-.45, .1], books: [1],
@@ -951,7 +951,7 @@ return {
 /* ======================================================================== events (Chronicle) */
   events: [
 /* I Dune */
-{id: "d1", book: 1, world: "caladan", site: "castle", lm: "keep", title: "The gom jabbar", text: "On the eve of the move to Arrakis, the Reverend Mother Mohiam tests the fifteen-year-old Paul with a box of pain and a poisoned needle, and he passes."},
+{id: "d1", book: 1, world: "caladan", site: "castle", lm: "keep", title: "The gom jabbar", text: "Before the move to Arrakis, the Reverend Mother Mohiam tests the fifteen-year-old Paul with a box of pain and a poisoned needle, and he passes."},
 {id: "d13", book: 1, world: "caladan", site: "castle", lm: "training", title: "Gurney’s lesson", text: "Gurney Halleck spars with Paul in the castle’s training hall, teaching him that under a shield only the slow blade gets through."},
 {id: "d2", book: 1, world: "giedi", site: "hkeep", lm: "chambers", title: "The Baron’s trap", text: "Baron Harkonnen and Piter de Vries lay their plan: let the Atreides take Arrakis, then destroy them with a traitor inside their house and Sardaukar in Harkonnen uniform."},
 {id: "d3", book: 1, world: "arrakis", site: "arrakeen", lm: "spaceport", fx: "arrival", title: "House Atreides comes to Arrakis", text: "Duke Leto, Jessica and Paul come down at Arrakeen and take over the Residency. Leto sets out to win the Fremen and the planetologist Liet-Kynes."},
@@ -962,7 +962,7 @@ return {
 {id: "d17", book: 1, world: "arrakis", site: "arrakeen", lm: "dining", title: "The Duke’s dinner", text: "Leto gives a dinner for the powers of Arrakis, from a water-shipper and a Guild banker to the smuggler Esmar Tuek and Kynes himself. Talk of water and the plight of the Fremen runs under the courtesies."},
 {id: "d4", book: 1, world: "arrakis", site: "arrakeen", lm: "residency", fx: "battle", title: "Yueh’s betrayal and the night attack", text: "Dr Yueh drops the house shields, and Harkonnen troops with disguised Sardaukar overrun Arrakeen. The captured Duke dies trying to kill the Baron with a poison tooth, killing Piter de Vries instead."},
 {id: "d29", book: 1, world: "arrakis", title: "In the stilltent", text: "Hidden in a stilltent in the desert, Paul feels his mind open to the future and learns that his mother is a daughter of the Baron Harkonnen."},
-{id: "d5", book: 1, world: "arrakis", site: "ecostation", lm: "station", fx: "battle", title: "Flight into the deep desert", text: "In the desert Duncan Idaho and Liet-Kynes find Paul and Jessica and bring them to a hidden ecological testing station. Sardaukar attack; Duncan dies holding them off while Paul flies into a great storm."},
+{id: "d5", book: 1, world: "arrakis", site: "ecostation", fx: "battle", title: "Flight into the deep desert", text: "In the desert Paul and Jessica are taken to a hidden ecological testing station. Sardaukar attack; Duncan dies holding them off while Paul flies into a great storm."},
 {id: "d19", book: 1, world: "arrakis", fx: "duel", title: "Usul", text: "Taken in by Stilgar’s band, Paul kills Jamis in a ritual knife fight and becomes a Fremen. He takes the name Muad’Dib, after the desert mouse, while the tribe calls him Usul among themselves."},
 {id: "d18", book: 1, world: "arrakis", fx: "eruption", title: "Kynes in the desert", text: "Left by the Harkonnens to die without a stillsuit in the open desert, Liet-Kynes dies dreaming of a green Arrakis as a spice blow erupts beneath him."},
 {id: "d6", book: 1, world: "arrakis", site: "tabr", lm: "hall", title: "Sietch Tabr", text: "Jessica drinks the Water of Life and becomes the Fremen’s Reverend Mother, awakening her unborn daughter Alia. Paul takes Chani as his partner."},

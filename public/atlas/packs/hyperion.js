@@ -136,7 +136,7 @@ const WORLDS=[
  gfx:{type:"forest",sea:.36,pal:["#082236","#1a5a6a","#1a4a1a","#2f7024","#4a6a32","#e8ece4"],clouds:.55,atmo:"#78b4ff"}},
 {id:"bressia",name:"Bressia",group:"outback",books:[1],status:"Outback client world",ly:900,dir:{l:86,b:18},
  star:{name:"Unnamed sun",col:"#fff2dc"},
- blurb:"A militaristic Outback world that served the Hegemony for decades as its proxy against the Ousters. The Ouster attack here killed his wife and son, and Kassad fought in the Bressian campaign.",
+ blurb:"A militaristic Outback world that served the Hegemony for decades as its proxy against the Ousters. Kassad fought in the Bressian campaign.",
  gfx:{type:"terran",sea:.48,pal:["#0a2038","#2a5a7a","#4a5a32","#5e6236","#544436","#e8e8e8"],clouds:.42,atmo:"#7aaaff",lights:.25},
  sites:[{id:"buckminster",name:"Buckminster",lat:22,lon:30,books:[1],desc:"The capital.",
    scene:{kind:"capital",arch:"brutal",size:"medium",tod:"day", /* layout schematic */ landmarks:[

@@ -318,7 +318,6 @@
           {id: "gate", name: "The refugee entrance", kind: "gate", at: [-.7, -.6], books: [7], desc: "A guarded way into the city with a long queue of refugees, which Lift skips."},
           {id: "market", name: "The market", kind: "market", at: [-.2, -.1], books: [7], desc: "Lift watches the man she calls Darkness execute a girl here for stealing fruit."},
           {id: "indicium", name: "The Grand Indicium", kind: "tower", at: [.2, .6], h: 1.6, books: [7], desc: "A huge records building towering over the city. Lift talks her way in as an envoy from Azir to find who Darkness is hunting."},
-          {id: "orphanage", name: "Tashi’s Light orphanage", kind: "house", at: [.45, -.35], h: .6, books: [7], desc: "Stump’s orphanage by a small amphitheatre. Stump is secretly healing the children with Stormlight, which makes her the Radiant Nale wants."},
           {id: "slots", name: "The slots", kind: "farm", at: [-.55, .4], books: [7], desc: "The city’s deep cut channels, where farmers grow crops out of season."}
         ]},
       sesemalexdar: {kind: "city", arch: "ancient", size: "medium", tod: "day", weather: "clear"},
@@ -1335,7 +1334,7 @@
       {id: "e33", book: 7, world: "taldain", site: "kerla", title: "White Sand", text: "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."},
       {id: "e34", book: 7, world: "scadrial", title: "Mistborn: Secret History", text: "What Kelsier did after his death, and how he looked into the wider cosmere."},
       {id: "e96", book: 7, world: "roshar", site: "yeddaw", lm: "indicium", title: "Into the Indicium", text: "Lift bluffs her way into the Grand Indicium as an envoy from Azir to find out whom Nale is hunting."},
-      {id: "e35", book: 7, world: "roshar", site: "yeddaw", lm: "orphanage", fx: "storm", title: "Edgedancer", text: "Lift crosses to Tashikk to protect the person the Herald Nale wants dead. In a storm at Stump’s orphanage she swears her Third Ideal."},
+      {id: "e35", book: 7, world: "roshar", site: "yeddaw", title: "Edgedancer", text: "Lift travels to Yeddaw in Tashikk, where Darkness has been reported."},
       {id: "e36", book: 7, world: "silverlight", title: "The view from outside", text: "Essays and a star chart from a worldhopping scholar show the Shardworlds side by side for the first time."},
       /* VIII Oathbringer & Dawnshard */
       {id: "e97", book: 8, world: "roshar", site: "urithiru", lm: "corridor", title: "Sadeas found dead", text: "Highprince Sadeas is found murdered in one of the tower’s dark corridors, and Shallan takes up the search for the killer."},
