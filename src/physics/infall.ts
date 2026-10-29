@@ -1,9 +1,11 @@
-// Slow accretion: a star or giant planet that reaches a black hole or pulsar is not swallowed in one frame.
-// It is captured into a shrinking orbit just outside the horizon and stripped layer by layer through a stream
-// into the disk, over tens of seconds, before the last of it falls in.
+// Slow accretion (a paced exhibit rule, not a disruption calculation): a star or giant planet that reaches a
+// black hole or pulsar is not swallowed in one frame. It is moved onto a prescribed shrinking orbit just outside
+// the compact object (the horizon of a black hole, the surface of a pulsar) and its mass is handed over through a
+// stream into a simplified disk over tens of seconds, before the remainder merges. Durations are display pacing,
+// not physical times; stellar disruption, disk viscosity and outflows are not resolved.
 import * as THREE from 'three';
 import { G, type Kind } from '../celestial-catalog.ts';
-import { transferFactor } from '../exhibit-runtime.ts';
+import { infallDurationFor, infallRemainingMass } from '../infall-model.ts';
 import { updateScale } from '../bodies/lifecycle.ts';
 import { ensureMatterStream } from './matter-streams.ts';
 import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts';
@@ -15,11 +17,7 @@ const FOOD = new Set<Kind>(['star', 'brown', 'gas']),
   EATERS = new Set<Kind>(['blackhole', 'pulsar']),
   tangent = new THREE.Vector3();
 
-/** Seconds a captured body takes to be stripped and swallowed, at exhibit pacing. */
-export function infallDuration(foodMass: number, foodKind: Kind) {
-  const base = foodKind === 'gas' ? 9 : 11;
-  return THREE.MathUtils.clamp(base + 14 * Math.sqrt(Math.max(0, foodMass) / 200), 8, 42);
-}
+export { infallDuration } from '../infall-model.ts';
 /** Whether `eater` should feed on `food` gradually instead of swallowing it on contact. */
 export function feedsSlowly(eater: Body, food: Body) {
   return (
@@ -36,7 +34,7 @@ export function beginInfall(eater: Body, food: Body) {
   const offset = food.mesh.position.clone().sub(eater.mesh.position).setY(0),
     relative = food.velocity.clone().sub(eater.velocity),
     angularMomentum = offset.z * relative.x - offset.x * relative.z,
-    duration = infallDuration(food.mass, food.kind) / transferFactor(app.realismMode);
+    duration = infallDurationFor(food.mass, food.kind, app.realismMode);
   accreteMomentum(eater, food.velocity, food.mass, eater.mass);
   food.infall = {
     eaterId: eater.id,
@@ -55,7 +53,7 @@ export function beginInfall(eater: Body, food: Body) {
   eater.lastEvent = `Slowly accreting ${food.name} through its disk`;
   museumEvent(
     'Slow accretion begins',
-    `${eater.name} has captured ${food.name}. Instead of vanishing at once, it will be stretched and fed into the disk over about ${Math.round(duration)} s.`,
+    `In this demonstration, ${eater.name} captures ${food.name} and transfers its mass through a simplified disk over about ${Math.round(duration)} simulation seconds.`,
     '#ffb36b',
     eater,
   );
@@ -66,7 +64,7 @@ function endInfall(food: Body) {
   food.infall = undefined;
 }
 /**
- * Advance every captured body. Returns the bodies whose last layers have just crossed the horizon so the caller
+ * Advance every captured body. Returns the bodies whose last layers have just been handed over so the caller
  * can swallow the remainder with the ordinary merger rules.
  */
 export function updateInfall(dt: number): Array<[Body, Body]> {
@@ -82,7 +80,7 @@ export function updateInfall(dt: number): Array<[Body, Body]> {
     state.age += dt;
     const u = THREE.MathUtils.clamp(state.age / state.duration, 0, 1),
       // Tides peel the outer layers first, so most of the mass goes early and the dense core lingers.
-      remaining = state.startMass * Math.pow(1 - u, 1.35),
+      remaining = infallRemainingMass(state.startMass, state.age, state.duration),
       transfer = Math.max(0, food.mass - remaining);
     if (transfer > 0) {
       food.mass -= transfer;

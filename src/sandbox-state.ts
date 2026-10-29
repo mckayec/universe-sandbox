@@ -40,6 +40,20 @@ export type SavedBody = {
   stageTransition?: { from: string; to: string; age: number; duration: number };
   debris?: boolean;
   tidalStrain?: number;
+  /** Slow-accretion capture in progress (physics/infall.ts); absent in older saves. */
+  infall?: SavedInfall;
+};
+
+/** A captured body's progress through slow accretion, as saved. `heldStage` is the body's own hold flag before capture. */
+export type SavedInfall = {
+  eaterId: number;
+  age: number;
+  duration: number;
+  startMass: number;
+  startRadius: number;
+  angle: number;
+  sense: number;
+  heldStage: boolean;
 };
 
 export type SavedCosmicGroup = {
@@ -178,4 +192,47 @@ export function validateSavedBodies(
     ids.add(body.id);
   }
   return { bodies: valid, dropped: saved.length - valid.length };
+}
+
+/**
+ * Validates a saved slow-accretion capture once every restored body exists. Returns the capture to resume, or
+ * `cancel` with the body's original hold flag when the record is unusable (eater missing or not a compact object,
+ * non-finite or out-of-range numbers). `undefined` means there was no capture to restore (including older saves).
+ */
+export function restoreSavedInfall(
+  saved: unknown,
+  selfId: number,
+  eaterKind: (id: number) => string | undefined,
+): { resume: SavedInfall } | { cancel: boolean } | undefined {
+  if (saved == null || typeof saved !== 'object') return undefined;
+  const raw = saved as Partial<SavedInfall>,
+    held = raw.heldStage === true,
+    kind = finite(raw.eaterId) ? eaterKind(raw.eaterId as number) : undefined;
+  if (
+    raw.eaterId === selfId ||
+    (kind !== 'blackhole' && kind !== 'pulsar') ||
+    !finite(raw.age) ||
+    !finite(raw.duration) ||
+    !finite(raw.startMass) ||
+    !finite(raw.startRadius) ||
+    !finite(raw.angle) ||
+    (raw.age as number) < 0 ||
+    (raw.duration as number) <= 0 ||
+    (raw.startMass as number) <= 0 ||
+    (raw.startRadius as number) <= 0 ||
+    (raw.sense !== 1 && raw.sense !== -1)
+  )
+    return { cancel: held };
+  return {
+    resume: {
+      eaterId: raw.eaterId as number,
+      age: Math.min(raw.age as number, raw.duration as number),
+      duration: raw.duration as number,
+      startMass: raw.startMass as number,
+      startRadius: raw.startRadius as number,
+      angle: raw.angle as number,
+      sense: raw.sense,
+      heldStage: held,
+    },
+  };
 }

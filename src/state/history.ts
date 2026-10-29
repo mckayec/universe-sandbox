@@ -5,6 +5,8 @@ import {
   loadUniverse,
   saveUniverse,
   validateSavedBodies,
+  restoreSavedInfall,
+  type SavedBody,
   type SandboxSnapshot,
 } from '../sandbox-state.ts';
 import { EXHIBITS, type ExhibitId } from '../exhibits.ts';
@@ -95,6 +97,7 @@ export function snapshotUniverse(): SandboxSnapshot {
       stageTransition: body.stageTransition ? { ...body.stageTransition } : undefined,
       debris: body.debris,
       tidalStrain: body.tidalStrain,
+      infall: body.infall ? { ...body.infall } : undefined,
       nebulaTimer: body.nebulaTimer,
       hostId: body.hostId,
       protoAngle: body.protoAngle,
@@ -127,6 +130,7 @@ function rebuildUniverse(snapshot: SandboxSnapshot) {
   app.historySuspended = true;
   const { bodies: saved, dropped } = validateSavedBodies(snapshot.bodies, KNOWN_KINDS, KNOWN_STAGES);
   for (const entry of [...saved].sort((a, b) => a.id - b.id)) restoreBody(entry);
+  restoreInfalls(saved);
   app.nextId = Math.max(snapshot.nextId, ...bodies.map(body => body.id + 1));
   app.nextGroupId = snapshot.nextGroupId;
   cosmicGroups.push(
@@ -146,6 +150,17 @@ function rebuildUniverse(snapshot: SandboxSnapshot) {
     snapshot.exhibit && KNOWN_EXHIBITS.has(snapshot.exhibit) ? (snapshot.exhibit as ExhibitId) : null;
   if (!app.currentExhibit) document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
   return dropped;
+}
+/** Resume slow-accretion captures once every body exists; an unusable record cancels and restores the original hold. */
+function restoreInfalls(saved: readonly SavedBody[]) {
+  const byId = new Map(bodies.map(body => [body.id, body]));
+  for (const entry of saved) {
+    const body = byId.get(entry.id);
+    const result = body && restoreSavedInfall(entry.infall, entry.id, id => byId.get(id)?.kind);
+    if (!body || !result) continue;
+    if ('resume' in result) body.infall = { ...result.resume };
+    else body.holdStage = result.cancel || undefined;
+  }
 }
 function restoreBody(saved: SandboxSnapshot['bodies'][number]) {
   app.nextId = saved.id;

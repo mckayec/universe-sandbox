@@ -1,0 +1,18 @@
+# PR29 post-merge remediation (DAG01–DAG04)
+
+Claude, 2026-10-29. Branch `fix/dag-remediation` (PR and exact head SHA in status.md). Responds to [implementation-review.md](implementation-review.md).
+
+| Finding | Resolution |
+|---|---|
+| **DAG01** capture state lost on save | The capture record is now saved (`SavedBody.infall`) and restored **after every body exists** (`restoreInfalls` in `state/history.ts`), so Save→Load, undo/redo and session recovery all resume it. `restoreSavedInfall` (pure, `sandbox-state.ts`) validates the record: a missing eater, an eater that is not a black hole or pulsar, a self-reference, non-finite numbers, negative age, non-positive duration/mass/radius or an invalid sense **cancel** the capture and restore the body's **original** hold flag (`heldStage`), never the forced capture hold. An overrun age is clamped. Saves made before this change carry no record and load exactly as before (a capture in progress in such a save cannot be recovered; its forced hold was already baked in). Eater removal mid-capture still cancels through `endInfall`, restoring the original flag. |
+| **DAG02** paced capture presented as physics | Slow Feast objective and the "Slow accretion begins" event use ChatGPT's exact replacement text. Module comment says paced exhibit rule, compact-object "horizon of a black hole, surface of a pulsar", durations are display pacing; nothing describes emission from inside a horizon. The protostar exclusion is labelled a proximity heuristic. Pacing is a pure module (`src/infall-model.ts`) with per-mode timing tested separately for Exhibit/Educational/Realistic. |
+| **DAG03** merger copy | Collide Two Galaxies objective, "Galaxies merge" and "A new galactic core" events use the exact replacement texts. The pass-through comment now calls it a collisionless approximation (rare stellar collisions, gas does collide), and the contact rule is a pure module (`src/galaxy-encounter-model.ts`) with tests for the fast-pass and slowed-core branches. |
+| **DAG04** momentum claim | Blanket conservation claim removed from `physics/galaxy-dynamics.ts`; replaced with the suggested model-limit statement plus the specific reasons (no halo recoil, members not counted, locked cores external). No conservation is claimed anywhere, so no conservation expectation is tested; no educational text discussed conservation. |
+
+Also disclosed (review §Persistence): saving a galaxy merger does not preserve its tidal-tail picture; reload rebuilds fresh backdrops.
+
+## Evidence (this branch)
+- `pnpm check`: format, build, **91/91 unit tests** (new `tests/infall-state.test.ts`: round trip at u = 0.1/0.5/0.9 for an unheld star, a held star and a gas giant; missing/wrong-kind/self eater; ten corrupt-field cases; legacy saves; age clamp; per-mode pacing — and `tests/galaxy-encounter.test.ts`), check:dist — pass.
+- `pnpm test:exhibits`: 20 scenes pass, including `slow-feast` and `galaxy-collision`.
+- [infall-roundtrip.mjs](infall-roundtrip.mjs) in a headless page on the real modules: for an unheld star (u≈0.3), a held star (u≈0.6) and a gas giant (u≈0.5): JSON save→restore keeps eater, age, duration, start mass/radius, angle, sense, original hold flag and current mass exactly; the capture then completes and the body is swallowed; removing the eater after restore cancels and restores the original hold; a save missing the eater restores the original hold. 42 assertions, no page errors. This exercises `snapshotUniverse`/`restoreUniverse`, which Save/Load, undo/redo and recovery all use; it does not click the toolbar buttons.
+- Not done here: rendered/mobile/performance acceptance of PR29's visuals (unchanged by this branch).
