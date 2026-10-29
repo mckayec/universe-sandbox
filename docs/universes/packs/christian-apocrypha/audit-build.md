@@ -1,6 +1,6 @@
-# Apocrypha build audit — bounded checkpoints 1–2
+# Apocrypha build audit — changes required
 
-Date: 2026-10-29. Auditor: ChatGPT. **Partial content audit; not canon or release approval.**
+Date: 2026-10-29. Auditor: ChatGPT. **Current result: changes required. Complete build-to-research semantic sweep; targeted fresh primary verification, not full independent primary-source or final canon approval. Checkpoint 3 and the final supplement below supersede earlier progress notes.**
 
 - Build: PR #38, `pack/christian-apocrypha`, exact SHA `8ae91333461bfeb989b570857a0aba321eaa34df`.
 - Research handoff: `4dc7f444246ab0c5afffe90ee3fb1838b92493aa`.
@@ -139,3 +139,21 @@ All line numbers are in the exact-head pack file. Findings are C-text unless an 
 **Changes required; not canon approved.** The complete semantic sweep has established the corrections above. Existing edition limitations and targeted-not-exhaustive fresh primary coverage remain explicit. All High/Medium findings need an accepted resolution and an exact-new-SHA recheck; the final audit still needs its recorded sample and Claude's independent technical acceptance.
 
 A fixing-stage proposal may be placed on this draft review branch after this output is committed. Main remains unchanged until an authorized owner handles the docs handoff. No code changes, merge or deploy are authorized by this report.
+
+### Final supplement to checkpoint 3
+
+All **77/77 later-work additions** were semantically inspected: 63 deuterocanonical, two Isaiah/Baruch, three NT-related and nine Pilate/Marian. The DC reviewer enumerated the 63 entries directly; this is not a count inferred from the aggregate.
+
+| ID | Severity | Location | Finding | Evidence/source | Suggested fix | Resolution |
+|---|---|---|---|---|---|---|
+| APB-019 | Medium | line 786, Egypt.more at slot 6 | Lysias's remit is extended into Egypt by “Egypt included”. | [1 Maccabees 3:32, selected RV](https://ebible.org/eng-rv/1MA03.htm): the remit reaches Egypt's borders. | Replace with “as far as Egypt's borders”. | Open |
+
+Edition correction to APB-008 evidence: the selected registry witness for Judith 7 is **RV**, also freshly checked at [RV Judith 7](https://ebible.org/eng-rv/JDT07.htm); the NABRE check confirms the same distinction but does not replace the selected witness. DC fresh-primary total is **10 distinct chapter units / 11 successful witness pages**, including RV Baruch 1 and 1 Maccabees 3. The remaining 137 of 147 chapter/unit bodies were not newly read in full; their displayed summaries received semantic registry/dossier review.
+
+**APQ-004, inherited research consistency:** the Tobit dossier names Babylon in the book-1 context (Tobit 14:4), while the integration registry and built Babylon badge begin at slot 5. Reconcile the research artifacts and intended mention-badge policy before changing the badge. This is not counted as a confirmed build-side invention or permission to add coordinates.
+
+## Handoff decision
+
+Propose **fixing / claude** on this review branch for the concrete defects, without main mutation or release approval. The audit is sufficient to require fixes; it is not an assertion that every original-language witness or every source body was independently reread. The final canon stage must recheck each accepted correction at the new exact head, preserve inherited source limitations, resolve APQ-004 and complete the recorded final sample. Claude must provide finished-surface evidence and precise technical-check dispositions.
+
+Source-level reviewer scope records are companion files `audit-build-dc.md`, `audit-build-nt.md` and `audit-build-xot.md`. They are evidence of inspected scope, not additional sign-offs.
