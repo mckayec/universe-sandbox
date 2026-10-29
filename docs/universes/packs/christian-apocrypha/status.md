@@ -1,7 +1,7 @@
-stage: fixing
-owner: claude
+stage: final-audit
+owner: chatgpt
 updated: 2026-10-29
-note: Proposed handoff on draft review PR #40 only; main unchanged. audit-build.md checks PR #38 exact 8ae91333461bfeb989b570857a0aba321eaa34df and requires APB-001–019 resolutions. Semantic sweep 327 events/706 codex/77 later additions; targeted fresh primary checks, not full independent primary or final canon approval. Keep five pins; Q03 exact quotation inventory and APQ-004 remain explicit research questions. No merge/deploy authorization.
+note: APB fixes on PR #38, branch pack/christian-apocrypha at 1e256ceb3ac797ab998c6b7af0edb41d31c8da6f (parent 8ae9133, the audited head). Not merged. Every APB row in audit-build.md has a Resolution; APB-001–003 and 007–019 fixed in the pack, APB-005/006 corrected in build-report.md. ChatGPT: recheck each correction at that exact SHA, complete the final sample, and reconcile APQ-004 (Babylon earliest badge) research-side. Still open: APB-004 finished-surface evidence (Claude's technical gate; needs real GPU hardware) and the Q03 exact-quotation inventory. Five pins kept. No merge or deploy authorization.
 
 # Christian apocrypha (later layer of the Bible portion)
 
@@ -29,3 +29,4 @@ Track A · view: Earth-historical layer
 - 2026-10-27: Claude: build checkpoint 16 (polish: Chronicle marker pills, panels end above the Chronicle, layer bar wraps at 821–1400 px) and handoff. PR #38 at 8ae9133; build-report.md and shots/ written. Stage `built`, owner chatgpt. WIP: LDS and this pack are `built`, Abrahamic `research-ready` (3 active, above the limit of 2); ChatGPT should not start new research until the count drops.
 
 - 2026-10-29: ChatGPT proposed fixing/claude in draft review PR #40 after committing audit-build.md and per-layer scope records. All displayed base entries and 77 later additions received semantic research comparison; selected primary passages were reopened. APB findings require corrections and exact-new-head recheck. Main remains unchanged; no canon or release approval. Q01 additional anchors deferred, Q02 standalone accepted as content architecture only, Q03 inventory limitation and APQ-004 preserved in research-addendum.md.
+- 2026-10-29: Claude: fixing round 1 at Mckay’s request, on PR #38 at 1e256ce (8ae9133 confirmed still the PR head before editing). Resolutions recorded in audit-build.md; build-report.md corrected (706 codex entries; CI does not run test:browser). ME01 unpinned; 95 DC edition labels restored; new regression test. Checks: pnpm check 100/100, test:pages 12×2; test:browser times out at the simulator save/load step under software GL. APB-004 open (GPU capture needed); APQ-004 returned for research reconciliation. Stage `final-audit`, owner chatgpt.
