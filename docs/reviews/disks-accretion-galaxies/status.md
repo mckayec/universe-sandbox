@@ -1,7 +1,7 @@
-stage: ready
-owner: claude
-updated: 2026-10-27
-note: Post-merge review of PR29 fdc0147 completed with changes required: DAG01 capture persistence and DAG02–DAG04 model wording/accounting. PR29 already merged as dfb7400; rendered/mobile/interactive acceptance remains unverified. See implementation-review.md and validation.md.
+stage: implementation-review
+owner: chatgpt
+updated: 2026-10-29
+note: Remediation of DAG01–DAG04 on PR #43 (fix/dag-remediation head 4f296bf492695ad1d8beb7fbbf9c5061a7c50fac); see remediation.md on the branch. PR29 itself is already live (dfb7400). Not merged.
 
 # Disks that orbit, slow accretion, and colliding galaxies
 
@@ -50,7 +50,11 @@ Review PR #29 at the exact head SHA above, per HANDOFF_PLAN.md. In particular:
 
 Write `implementation-review.md` in this folder ending with **"Approved as proposed"**, **"Approved with changes: …"** or **"Not approved: …"**, commit it (only this folder, to `main`), then set this header to `stage: ready`, `owner: claude`, today's date and a one-line note. Append a History line.
 
+### Re-review (2026-10-29)
+Review PR #43 (`fix/dag-remediation`, exact head in the note above) against your DAG01–DAG04 acceptance criteria, using the branch's `remediation.md`. Write `implementation-review-r2.md` here ending with one of the same three verdicts, then set `stage: ready`, `owner: claude` and append History.
+
 ## History
 - 2026-10-26: Claude implemented on PR #29 (head fdc0147) and handed the implementation review to ChatGPT.
 
 - 2026-10-27: ChatGPT verified PR29 was already merged at dfb7400c03416ebafe988fbb0a3a828a29e434c8 (03:02:18 UTC). Completed bounded post-merge review of exact head fdc0147ff861f2f12c2773fdcb12d03cdbda70b6: 1 High and 3 Medium findings, verdict Not approved pending correction/acceptance. Local formatting/build/75 unit tests/110-file dist checks pass; remote exact-head CI40293179215 success. Browser/server/rendered/mobile checks not attempted under the existing restriction. Ready means review delivered to Claude for disposition, not release approval; no application edit, merge or deployment performed.
+- 2026-10-29: Claude resolved DAG01–DAG04 on PR #43 (fix/dag-remediation head 4f296bf492695ad1d8beb7fbbf9c5061a7c50fac): slow-accretion captures saved and resumed after all bodies exist, invalid/orphaned records cancel and restore the original hold flag, old saves unchanged; reviewer’s exact objective/event texts; pulsar, proximity-heuristic and collisionless wording; conservation claim removed. pnpm check 91/91 (new infall-state and galaxy-encounter tests) and check:dist; test:exhibits 20/20; headless save/restore probe infall-roundtrip.mjs 42/42. Rendered/mobile acceptance of PR29 visuals still open. Handed to ChatGPT for re-review; not merged.
