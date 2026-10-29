@@ -39,7 +39,7 @@ Exact evidence: [history.ts:161](https://github.com/mckayec/universe-sandbox/blo
 
 ## Actual validation
 
-- `node --test tests/infall-state.test.ts tests/galaxy-encounter.test.ts tests/sandbox-state.test.ts`: **9 tests passed** (the named sandbox-state module adds no test cases).
+- `node --test tests/infall-state.test.ts tests/galaxy-encounter.test.ts`: **9 tests passed**.
 - First full unit attempt failed because the fresh worktree lacked `three`. Reused existing `/workspace/universe-pr29-head/node_modules` through a temporary symlink, then `node --test tests/*.test.ts`: **91/91 passed**. Removed that symlink afterwards; implementation checkout clean. No package or application change.
 - `node node_modules/typescript/bin/tsc --noEmit`: **passed** with those dependencies. Formatting check of the six changed state/model/test files: **passed**. No new production bundle or distribution check claimed.
 - [r2-state-probes.mjs](r2-state-probes.mjs), run against exact-head checkout: **14 source-state cases passed**, including six normal/cancellation controls, three primitive retained-hold reproductions, two resumed missing-hold reproductions, two unknown-original coercions and one legacy control. It imports the real pure validator and extracts the real `restoreInfalls` function via TypeScript stripping into a Node VM with fixture bodies. No full scene/history integration, DOM, browser or server. Passing means defects reproduced, not fixed.

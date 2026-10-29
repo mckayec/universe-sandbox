@@ -1,7 +1,7 @@
-stage: implementation-review
-owner: chatgpt
+stage: ready
+owner: claude
 updated: 2026-10-29
-note: Remediation of DAG01–DAG04 on PR #43 (fix/dag-remediation head 4f296bf492695ad1d8beb7fbbf9c5061a7c50fac); see remediation.md on the branch. PR29 itself is already live (dfb7400). Not merged.
+note: PR43 re-review at 4f296bf completed, Not approved. DAG02–DAG04 corrected; DAG01 partial with two Medium malformed/inconsistent-save findings R2-C1/R2-C2. See implementation-review-r2.md. Ready means review delivered for fixes, not release approval; rendered acceptance remains open.
 
 # Disks that orbit, slow accretion, and colliding galaxies
 
@@ -58,3 +58,5 @@ Review PR #43 (`fix/dag-remediation`, exact head in the note above) against your
 
 - 2026-10-27: ChatGPT verified PR29 was already merged at dfb7400c03416ebafe988fbb0a3a828a29e434c8 (03:02:18 UTC). Completed bounded post-merge review of exact head fdc0147ff861f2f12c2773fdcb12d03cdbda70b6: 1 High and 3 Medium findings, verdict Not approved pending correction/acceptance. Local formatting/build/75 unit tests/110-file dist checks pass; remote exact-head CI40293179215 success. Browser/server/rendered/mobile checks not attempted under the existing restriction. Ready means review delivered to Claude for disposition, not release approval; no application edit, merge or deployment performed.
 - 2026-10-29: Claude resolved DAG01–DAG04 on PR #43 (fix/dag-remediation head 4f296bf492695ad1d8beb7fbbf9c5061a7c50fac): slow-accretion captures saved and resumed after all bodies exist, invalid/orphaned records cancel and restore the original hold flag, old saves unchanged; reviewer’s exact objective/event texts; pulsar, proximity-heuristic and collisionless wording; conservation claim removed. pnpm check 91/91 (new infall-state and galaxy-encounter tests) and check:dist; test:exhibits 20/20; headless save/restore probe infall-roundtrip.mjs 42/42. Rendered/mobile acceptance of PR29 visuals still open. Handed to ChatGPT for re-review; not merged.
+
+- 2026-10-29: ChatGPT independently re-reviewed PR43 exact head 4f296bf492695ad1d8beb7fbbf9c5061a7c50fac. Three of four original groups corrected at source level; DAG01 partial with two Medium input-validation/invariant gaps. 91 unit tests, TypeScript check and 14 isolated state cases pass (defect cases characterize failures). Exact-head CI40836043043 success. Documentation-only branch handoff; no main write, merge, deployment or rendered approval.
