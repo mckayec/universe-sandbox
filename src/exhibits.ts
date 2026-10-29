@@ -3,11 +3,13 @@ export type ExhibitId =
   | 'habitable-world'
   | 'binary-stars'
   | 'feed-black-hole'
+  | 'slow-feast'
   | 'supernova-observatory'
   | 'collision-lab'
   | 'tidal-lab'
   | 'gododdin'
-  | 'galaxy-tour';
+  | 'galaxy-tour'
+  | 'galaxy-collision';
 
 export type ExhibitDefinition = {
   id: ExhibitId;
@@ -54,6 +56,15 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     accent: '#ff9c5f',
   },
   {
+    id: 'slow-feast',
+    title: 'A Slow Feast',
+    eyebrow: 'Slow-accretion laboratory',
+    description: 'A quiet black hole draws in a drifting gas cloud, then a Sun-like star on a plunging orbit.',
+    objective:
+      'Keep time at 1×. The cloud is stretched toward the black hole and drained through its disk over about a minute; about 70 s in, the star dives past the tidal radius and is stripped into the disk over roughly half a minute. Select the black hole to watch its mass climb.',
+    accent: '#ffc27a',
+  },
+  {
     id: 'supernova-observatory',
     title: 'Witness a Supernova',
     eyebrow: 'Stellar-death observatory',
@@ -97,6 +108,15 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     objective:
       'Use the named-structure navigator to move between the galaxy and local systems, then save the universe.',
     accent: '#ae8cff',
+  },
+  {
+    id: 'galaxy-collision',
+    title: 'Collide Two Galaxies',
+    eyebrow: 'Galaxy-merger laboratory',
+    description: 'Two spiral galaxies fall toward each other on an off-centre path.',
+    objective:
+      'Run at 5× or faster. On the first close pass each galaxy tears long tidal tails out of the other; friction in their dark-matter halos then pulls the cores back together until the black holes merge and the scattered stars settle into one larger galaxy.',
+    accent: '#c9a6ff',
   },
 ] as const;
 

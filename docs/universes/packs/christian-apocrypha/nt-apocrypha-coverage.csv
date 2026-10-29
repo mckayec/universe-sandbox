@@ -1,0 +1,860 @@
+id,work,section_or_page,status,source_url,access_date,disposition,confidence,first
+nta-pj-001,pj,1,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Joachim withdrawal,C-text-only,1
+nta-pj-002,pj,2,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Anna prayer,C-text-only,1
+nta-pj-003,pj,3,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Lament,C-text-only,1
+nta-pj-004,pj,4,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Announcements,C-text-only,1
+nta-pj-005,pj,5,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Birth,C-text-only,1
+nta-pj-006,pj,6,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Childhood,C-text-only,1
+nta-pj-007,pj,7,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Dedication,C-text-only,1
+nta-pj-008,pj,8,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Widowers summoned,C-text-only,1
+nta-pj-009,pj,9,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Joseph chosen,C-text-only,1
+nta-pj-010,pj,10,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Veil,C-text-only,1
+nta-pj-011,pj,11,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Annunciation,C-text-only,1
+nta-pj-012,pj,12,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Elizabeth visit,C-text-only,1
+nta-pj-013,pj,13,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Joseph returns,C-text-only,1
+nta-pj-014,pj,14,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Dream,C-text-only,1
+nta-pj-015,pj,15,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Accusation,C-text-only,1
+nta-pj-016,pj,16,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Ordeal,C-text-only,1
+nta-pj-017,pj,17,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Bethlehem road,C-text-only,1
+nta-pj-018,pj,18,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Cave,C-text-only,1
+nta-pj-019,pj,19,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Midwife,C-text-only,1
+nta-pj-020,pj,20,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Salome,C-text-only,1
+nta-pj-021,pj,21,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Magi,C-text-only,1
+nta-pj-022,pj,22,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Hiding,C-text-only,1
+nta-pj-023,pj,23,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Zacharias killed,C-text-only,1
+nta-pj-024,pj,24,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Simeon,C-text-only,1
+nta-pj-025,pj,25,read,https://www.earlychristianwritings.com/text/infancyjames-roberts.html,2026-10-26,Narrator claim,C-text-only,1
+nta-it-001,it,1,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Attribution,C-text-only,1
+nta-it-002,it,2,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Sparrows,C-text-only,1
+nta-it-003,it,3,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Water,C-text-only,1
+nta-it-004,it,4,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Collision,C-text-only,1
+nta-it-005,it,5,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Admonition,C-text-only,1
+nta-it-006,it,6,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Teacher,C-text-only,1
+nta-it-007,it,7,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Lament,C-text-only,1
+nta-it-008,it,8,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Restoration,C-text-only,1
+nta-it-009,it,9,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Zeno,C-text-only,1
+nta-it-010,it,10,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Woodcutter,C-text-only,1
+nta-it-011,it,11,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Water garment,C-text-only,1
+nta-it-012,it,12,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Harvest,C-text-only,1
+nta-it-013,it,13,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Beam,C-text-only,1
+nta-it-014,it,14,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Teacher collapse,C-text-only,1
+nta-it-015,it,15,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Teacher healed,C-text-only,1
+nta-it-016,it,16,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,James,C-text-only,1
+nta-it-017,it,17,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Infant,C-text-only,1
+nta-it-018,it,18,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Builder,C-text-only,1
+nta-it-019,it,19,read,https://www.earlychristianwritings.com/text/infancythomas-a-mrjames.html,2026-10-26,Jerusalem,C-text-only,1
+nta-gp-001,gp,1,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Judgment,C-text-only,1
+nta-gp-002,gp,2,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Body requested,C-text-only,1
+nta-gp-003,gp,3,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Mockery,C-text-only,1
+nta-gp-004,gp,4,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Crucifixion,C-text-only,1
+nta-gp-005,gp,5,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Darkness,C-text-only,1
+nta-gp-006,gp,6,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Tomb,C-text-only,1
+nta-gp-007,gp,7,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Hiding,C-text-only,1
+nta-gp-008,gp,8,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Guards,C-text-only,1
+nta-gp-009,gp,9,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Descent,C-text-only,1
+nta-gp-010,gp,10,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Cross,C-text-only,1
+nta-gp-011,gp,11,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Suppression,C-text-only,1
+nta-gp-012,gp,12,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Women,C-text-only,1
+nta-gp-013,gp,13,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Tomb message,C-text-only,1
+nta-gp-014,gp,14,read,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Sea,C-text-only,1
+nta-gt-001,gt,1,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-002,gt,2,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-003,gt,3,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-004,gt,4,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-005,gt,5,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-006,gt,6,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-007,gt,7,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-008,gt,8,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-009,gt,9,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-010,gt,10,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-011,gt,11,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-012,gt,12,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-013,gt,13,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-014,gt,14,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-015,gt,15,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-016,gt,16,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-017,gt,17,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-018,gt,18,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-019,gt,19,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-020,gt,20,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-021,gt,21,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-022,gt,22,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-023,gt,23,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-024,gt,24,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-025,gt,25,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-026,gt,26,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-027,gt,27,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-028,gt,28,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-029,gt,29,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-030,gt,30,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-031,gt,31,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-032,gt,32,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-033,gt,33,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-034,gt,34,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-035,gt,35,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-036,gt,36,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-037,gt,37,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-038,gt,38,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-039,gt,39,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-040,gt,40,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-041,gt,41,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-042,gt,42,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-043,gt,43,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-044,gt,44,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-045,gt,45,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-046,gt,46,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-047,gt,47,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-048,gt,48,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-049,gt,49,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-050,gt,50,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-051,gt,51,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-052,gt,52,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-053,gt,53,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-054,gt,54,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-055,gt,55,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-056,gt,56,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-057,gt,57,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-058,gt,58,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-059,gt,59,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-060,gt,60,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-061,gt,61,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-062,gt,62,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-063,gt,63,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-064,gt,64,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-065,gt,65,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-066,gt,66,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-067,gt,67,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-068,gt,68,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-069,gt,69,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-070,gt,70,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-071,gt,71,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-072,gt,72,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-073,gt,73,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-074,gt,74,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-075,gt,75,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-076,gt,76,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-077,gt,77,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-078,gt,78,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-079,gt,79,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-080,gt,80,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-081,gt,81,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-082,gt,82,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-083,gt,83,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-084,gt,84,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-085,gt,85,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-086,gt,86,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-087,gt,87,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-088,gt,88,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-089,gt,89,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-090,gt,90,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-091,gt,91,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-092,gt,92,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-093,gt,93,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-094,gt,94,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-095,gt,95,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-096,gt,96,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-097,gt,97,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-098,gt,98,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-099,gt,99,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-100,gt,100,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-101,gt,101,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-102,gt,102,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-103,gt,103,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-104,gt,104,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-105,gt,105,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-106,gt,106,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-107,gt,107,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-108,gt,108,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-109,gt,109,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-110,gt,110,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-111,gt,111,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-112,gt,112,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-113,gt,113,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gt-114,gt,114,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Nonspatial saying; no new geolocated event extracted,C-text-only,1
+nta-gj-033,gj,33,read,https://www.gospels.net/judas,2026-10-26,Introduction,C-text-only,1
+nta-gj-034,gj,34,read,https://www.gospels.net/judas,2026-10-26,Prayer,C-text-only,1
+nta-gj-035,gj,35,read,https://www.gospels.net/judas,2026-10-26,Judas,C-text-only,1
+nta-gj-036,gj,36,read,https://www.gospels.net/judas,2026-10-26,Warning,C-text-only,1
+nta-gj-037,gj,37,read,https://www.gospels.net/judas,2026-10-26,Generation,C-text-only,1
+nta-gj-038,gj,38,read,https://www.gospels.net/judas,2026-10-26,Altar vision,C-text-only,1
+nta-gj-039,gj,39,read,https://www.gospels.net/judas,2026-10-26,Interpretation,C-text-only,1
+nta-gj-040,gj,40,read,https://www.gospels.net/judas,2026-10-26,Sacrifice,C-text-only,1
+nta-gj-041,gj,41,read,https://www.gospels.net/judas,2026-10-26,Question,C-text-only,1
+nta-gj-042,gj,42,read,https://www.gospels.net/judas,2026-10-26,Generation,C-text-only,1
+nta-gj-043,gj,43,read,https://www.gospels.net/judas,2026-10-26,Souls,C-text-only,1
+nta-gj-044,gj,44,read,https://www.gospels.net/judas,2026-10-26,Vision,C-text-only,1
+nta-gj-045,gj,45,read,https://www.gospels.net/judas,2026-10-26,House,C-text-only,1
+nta-gj-046,gj,46,read,https://www.gospels.net/judas,2026-10-26,Exclusion,C-text-only,1
+nta-gj-047,gj,47,read,https://www.gospels.net/judas,2026-10-26,Spirit,C-text-only,1
+nta-gj-048,gj,48,read,https://www.gospels.net/judas,2026-10-26,Luminaries,C-text-only,1
+nta-gj-049,gj,49,read,https://www.gospels.net/judas,2026-10-26,Adamas,C-text-only,1
+nta-gj-050,gj,50,read,https://www.gospels.net/judas,2026-10-26,Cosmos,C-text-only,1
+nta-gj-051,gj,51,read,https://www.gospels.net/judas,2026-10-26,Rulers,C-text-only,1
+nta-gj-052,gj,52,read,https://www.gospels.net/judas,2026-10-26,Adam Eve,C-text-only,1
+nta-gj-053,gj,53,read,https://www.gospels.net/judas,2026-10-26,Lifespans,C-text-only,1
+nta-gj-054,gj,54,read,https://www.gospels.net/judas,2026-10-26,Knowledge,C-text-only,1
+nta-gj-055,gj,55,read,https://www.gospels.net/judas,2026-10-26,Stars,C-text-only,1
+nta-gj-056,gj,56,read,https://www.gospels.net/judas,2026-10-26,Sacrifice,C-text-only,1
+nta-gj-057,gj,57,read,https://www.gospels.net/judas,2026-10-26,Cloud,C-text-only,1
+nta-gj-058,gj,58,read,https://www.gospels.net/judas,2026-10-26,Betrayal,C-text-only,1
+nta-pt-001,pt,II.1,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-002,pt,II.2,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-003,pt,II.3,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-004,pt,II.4,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-005,pt,II.5,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-006,pt,II.6,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-007,pt,II.7,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-008,pt,II.8,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-009,pt,II.9,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-010,pt,II.10,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-011,pt,II.11,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-012,pt,II.12,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-013,pt,II.13,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-014,pt,II.14,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-015,pt,II.15,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-016,pt,II.16,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-017,pt,II.17,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-018,pt,II.18,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-019,pt,II.19,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-020,pt,II.20,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-021,pt,II.21,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-022,pt,II.22,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-023,pt,II.23,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-024,pt,II.24,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-025,pt,II.25,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-026,pt,II.26,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-027,pt,II.27,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-028,pt,II.28,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-029,pt,II.29,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-030,pt,II.30,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-031,pt,II.31,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-032,pt,II.32,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-033,pt,II.33 (host first 38 between 32 and 34),read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-034,pt,II.34,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-035,pt,II.35,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-036,pt,II.36,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-037,pt,II.37,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-038,pt,II.38,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-039,pt,II.39,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-040,pt,II.40,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-041,pt,II.41,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-042,pt,II.42,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-pt-043,pt,II.43,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-001,ap,Akhmim B.1,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-002,ap,Akhmim B.2,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-003,ap,Akhmim B.3,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-004,ap,Akhmim B.4,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-005,ap,Akhmim B.5,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-006,ap,Akhmim B.6,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-007,ap,Akhmim B.7,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-008,ap,Akhmim B.8,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-009,ap,Akhmim B.9,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-010,ap,Akhmim B.10,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-011,ap,Akhmim B.11,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-012,ap,Akhmim B.12,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-013,ap,Akhmim B.13,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-014,ap,Akhmim B.14,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-015,ap,Akhmim B.15,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-016,ap,Akhmim B.16,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-017,ap,Akhmim B.17,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-018,ap,Akhmim B.18,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-019,ap,Akhmim B.19,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-020,ap,Akhmim B.20,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-021,ap,Akhmim B.21,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-022,ap,Akhmim B.22,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-023,ap,Akhmim B.23,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-024,ap,Akhmim B.24,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-025,ap,Akhmim B.25,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-026,ap,Akhmim B.26,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-027,ap,Akhmim B.27,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-028,ap,Akhmim B.28,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-029,ap,Akhmim B.29,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-030,ap,Akhmim B.30,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-031,ap,Akhmim B.31,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-032,ap,Akhmim B.32,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-033,ap,Akhmim B.33,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ap-034,ap,Akhmim B.34,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-001,ape,1,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-002,ape,2,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-003,ape,3,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-004,ape,4,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-005,ape,5,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-006,ape,6,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-007,ape,7,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-008,ape,8,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-009,ape,9,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-010,ape,10,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-011,ape,11,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-012,ape,12,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-013,ape,13,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-014,ape,14,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-015,ape,15,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-016,ape,16,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-017,ape,17,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-018,ape,18,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-019,ape,19,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-020,ape,20,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-021,ape,21,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-022,ape,22,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-023,ape,23,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-024,ape,24,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-025,ape,25,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-026,ape,26,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-027,ape,27,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-028,ape,28,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-029,ape,29,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-030,ape,30,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-031,ape,31,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-ape-032,ape,32,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-033,ape,33,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-034,ape,34,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-035,ape,35,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-036,ape,36,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-037,ape,37,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-038,ape,38,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-039,ape,39,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-040,ape,40,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-ape-041,ape,41,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-018,aj,18,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-019,aj,19,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-020,aj,20,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-021,aj,21,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-022,aj,22,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-023,aj,23,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-024,aj,24,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-025,aj,25,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-026,aj,26,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-027,aj,27,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-028,aj,28,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aj-029,aj,29,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-001,at,1,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-002,at,2,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-003,at,3,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-004,at,4,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-005,at,5,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-006,at,6,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-007,at,7,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-008,at,8,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-009,at,9,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-010,at,10,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-011,at,11,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-at-012,at,12,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-aa-001,aa,1,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-002,aa,2,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-003,aa,3,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-004,aa,4,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-005,aa,5,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-006,aa,6,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-007,aa,7,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-008,aa,8,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-009,aa,9,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-010,aa,10,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-aa-011,aa,11,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,See work-level extraction; no independent chronology inferred,C-mediated,1
+nta-apa-001,apa,1,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-apa-002,apa,2,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-apa-003,apa,3,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-apa-004,apa,4,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-apa-005,apa,5,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-apa-006,apa,6,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,See work-level extraction; no independent chronology inferred,C-text-only,1
+nta-apa-007,apa,7,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-008,apa,8,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-009,apa,9,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-010,apa,10,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-011,apa,11,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-012,apa,12,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-013,apa,13,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-014,apa,14,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-015,apa,15,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-016,apa,16,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-017,apa,17,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-018,apa,18,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-019,apa,19,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-020,apa,20,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-021,apa,21,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-022,apa,22,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-023,apa,23,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-024,apa,24,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-025,apa,25,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-026,apa,26,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-027,apa,27,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-028,apa,28,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-029,apa,29,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-030,apa,30,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-031,apa,31,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-032,apa,32,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-033,apa,33,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-034,apa,34,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-035,apa,35,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-036,apa,36,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-037,apa,37,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-038,apa,38,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-039,apa,39,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-040,apa,40,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-041,apa,41,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-042,apa,42,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-043,apa,43,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-044,apa,44,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-045,apa,45,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-046,apa,46,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-047,apa,47,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-048,apa,48,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-049,apa,49,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-050,apa,50,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-apa-051,apa,51,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Apocalypses/The_Apocalypse_of_Paul,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-gm-4-22,gm,4:22,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-23,gm,4:23,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-24,gm,4:24,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-25,gm,4:25,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-26,gm,4:26,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-27,gm,4:27,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-28,gm,4:28,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-29,gm,4:29,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-30,gm,4:30,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-31,gm,4:31,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-32,gm,4:32,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-33,gm,4:33,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-34,gm,4:34,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-35,gm,4:35,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-36,gm,4:36,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-37,gm,4:37,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-38,gm,4:38,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-4-39,gm,4:39,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-1,gm,5:1,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-2,gm,5:2,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-3,gm,5:3,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-4,gm,5:4,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-5,gm,5:5,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-6,gm,5:6,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-7,gm,5:7,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-8,gm,5:8,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-9,gm,5:9,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-10,gm,5:10,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-5-11,gm,5:11,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-10,gm,8:10,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-11,gm,8:11,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-12,gm,8:12,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-13,gm,8:13,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-14,gm,8:14,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-15,gm,8:15,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-16,gm,8:16,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-17,gm,8:17,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-18,gm,8:18,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-19,gm,8:19,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-20,gm,8:20,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-21,gm,8:21,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-22,gm,8:22,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-23,gm,8:23,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-8-24,gm,8:24,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-1,gm,9:1,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-2,gm,9:2,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-3,gm,9:3,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-4,gm,9:4,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-5,gm,9:5,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-6,gm,9:6,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-7,gm,9:7,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-8,gm,9:8,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-9,gm,9:9,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gm-9-10,gm,9:10,read,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Extant host verse; chapter numbering is editorial,C-text-only,1
+nta-gt-scope,gt,prologue,read,https://www.earlychristianwritings.com/text/thomas-scholars.html,2026-10-26,Attribution,C-text-only,1
+nta-gm-scope,gm,codex pages 1–6;11–14,lost,https://www.earlychristianwritings.com/text/gospelmary.html,2026-10-26,Lost in surviving codex; not unread accessible pages,U,1
+nta-gp-scope,gp,before section 1; after section 14,lost,https://www.earlychristianwritings.com/text/gospelpeter.html,2026-10-26,Fragment boundaries; lost context,U,1
+nta-pt-scope,pt,other Acts Paul portions,scope-superseded,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Expanded into explicit witness units below; not an additional body unit,N/A,1
+nta-ap-scope,ap,Ethiopic extended witness after opening; other witnesses,scope-superseded,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,Expanded into explicit witness units below; not an additional body unit,N/A,1
+nta-aj-scope,aj,other extant episodes outside 18–29,scope-superseded,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Expanded into explicit witness units below; not an additional body unit,N/A,1
+nta-at-scope,at,after 12,scope-superseded,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Expanded into explicit reviewed witness units; not additional reading,N/A,1
+nta-aa-scope,aa,after epitome 11; other fragments,scope-superseded,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Expanded into explicit witness units below; not an additional body unit,N/A,1
+nta-ape-scope,ape,separate Coptic fragment,read,https://www.earlychristianwritings.com/text/actspeter.html,2026-10-26,Completed continuation body reading; see updated scene and witness notes,C-text-only,1
+nta-aa-012,aa,Gregory epitome 12,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-013,aa,Gregory epitome 13,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-014,aa,Gregory epitome 14,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-015,aa,Gregory epitome 15,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-016,aa,Gregory epitome 16,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-017,aa,Gregory epitome 17,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-018,aa,Gregory epitome 18,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-019,aa,Gregory epitome 19,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-020,aa,Gregory epitome 20,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-021,aa,Gregory epitome 21,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-022,aa,Gregory epitome 22,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-023,aa,Gregory epitome 23,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-024,aa,Gregory epitome 24,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-025,aa,Gregory epitome 25,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-026,aa,Gregory epitome 26,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-027,aa,Gregory epitome 27,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-028,aa,Gregory epitome 28,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-029,aa,Gregory epitome 29,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-030,aa,Gregory epitome 30,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-031,aa,Gregory epitome 31,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-032,aa,Gregory epitome 32,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-033,aa,Gregory epitome 33,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-034,aa,Gregory epitome 34,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-035,aa,Gregory epitome 35,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-036,aa,Gregory epitome 36,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-037,aa,Gregory epitome 37,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-038,aa,Gregory epitome 38,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,James abstract of epitome; mediated evidence,C-mediated,1
+nta-aa-vatican-01,aa,Vatican Gr808 fragment 1,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-02,aa,Vatican Gr808 fragment 2,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-03,aa,Vatican Gr808 fragment 3,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-04,aa,Vatican Gr808 fragment 4,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-05,aa,Vatican Gr808 fragment 5,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-06,aa,Vatican Gr808 fragment 6,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-07,aa,Vatican Gr808 fragment 7,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-08,aa,Vatican Gr808 fragment 8,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-09,aa,Vatican Gr808 fragment 9,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-10,aa,Vatican Gr808 fragment 10,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-11,aa,Vatican Gr808 fragment 11,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-12,aa,Vatican Gr808 fragment 12,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-13,aa,Vatican Gr808 fragment 13,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-14,aa,Vatican Gr808 fragment 14,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-15,aa,Vatican Gr808 fragment 15,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-16,aa,Vatican Gr808 fragment 16,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-17,aa,Vatican Gr808 fragment 17,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-vatican-18,aa,Vatican Gr808 fragment 18,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Translated surviving prison discourse; lacunae unreconstructed,C-text-only,1
+nta-aa-titus,aa,Titus quotation,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Witness boundaries retained; mosaic not a single manuscript,C-text-only,1
+nta-aa-evodius,aa,Evodius quotations b–c,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Witness boundaries retained; mosaic not a single manuscript,C-text-only,1
+nta-aa-martyrdom,aa,Martyrdom mosaic,read,https://www.earlychristianwritings.com/text/actsandrew.html,2026-10-26,Witness boundaries retained; mosaic not a single manuscript,C-mediated,1
+nta-aj-030,aj,30,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-031,aj,31,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-032,aj,32,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-033,aj,33,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-034,aj,34,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-035,aj,35,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-036,aj,36,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-037,aj,37,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-038,aj,38,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-039,aj,39,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-040,aj,40,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-041,aj,41,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-042,aj,42,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-043,aj,43,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-044,aj,44,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-045,aj,45,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-046,aj,46,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-047,aj,47,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-048,aj,48,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-049,aj,49,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-050,aj,50,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-051,aj,51,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-052,aj,52,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-053,aj,53,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-054,aj,54,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-055,aj,55,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-058,aj,58,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-059,aj,59,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-060,aj,60,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-061,aj,61,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-062,aj,62,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-063,aj,63,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-064,aj,64,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-065,aj,65,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-066,aj,66,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-067,aj,67,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-068,aj,68,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-069,aj,69,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-070,aj,70,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-071,aj,71,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-072,aj,72,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-073,aj,73,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-074,aj,74,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-075,aj,75,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-076,aj,76,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-077,aj,77,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-078,aj,78,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-079,aj,79,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-080,aj,80,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-081,aj,81,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-082,aj,82,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-083,aj,83,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-084,aj,84,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-085,aj,85,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-086,aj,86,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-087,aj,87,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-088,aj,88,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-089,aj,89,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-090,aj,90,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-091,aj,91,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-092,aj,92,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-093,aj,93,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-094,aj,94,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-095,aj,95,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-096,aj,96,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-097,aj,97,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-098,aj,98,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-099,aj,99,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-100,aj,100,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-101,aj,101,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-102,aj,102,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-103,aj,103,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-104,aj,104,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-105,aj,105,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-106,aj,106,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-107,aj,107,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-108,aj,108,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-109,aj,109,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-110,aj,110,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-111,aj,111,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-112,aj,112,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-113,aj,113,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-114,aj,114,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-115,aj,115,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,"Selected Greek sequence; narrative/teaching, not independently historical",C-text-only,1
+nta-aj-latin-14,aj,Latin 14,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-text-only,1
+nta-aj-latin-15,aj,Latin 15,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-text-only,1
+nta-aj-latin-16,aj,Latin 16,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-text-only,1
+nta-aj-latin-17,aj,Latin 17,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-text-only,1
+nta-aj-latin-18,aj,Latin 18,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-text-only,1
+nta-aj-latin-19,aj,Latin 19,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-mediated,1
+nta-aj-latin-20,aj,Latin 20,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-text-only,1
+nta-aj-latin-21,aj,Latin 21,read,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Latin supplement distinct from Greek body,C-text-only,1
+nta-aj-fragments-omitted,aj,James pp264–266,scope-superseded,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Expanded into explicit reviewed witness units; not additional reading,N/A,1
+nta-aj-gap,aj,before18;between55and58,lost,https://www.earlychristianwritings.com/text/actsjohn.html,2026-10-26,Ancient/textual gaps; do not reconstruct episodes,U,1
+nta-pt-fragment-1,pt,James episode 1,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Fragmentary Coptic body; restorations not treated as extant words,C-text-only,1
+nta-pt-fragment-3,pt,James episode 3,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Fragmentary Coptic body; restorations not treated as extant words,C-text-only,1
+nta-pt-fragment-4,pt,James episode 4,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Fragmentary Coptic body; restorations not treated as extant words,C-text-only,1
+nta-pt-fragment-5,pt,James episode 5,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Fragmentary Coptic body; restorations not treated as extant words,C-text-only,1
+nta-pt-fragment-6,pt,James episode 6,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Fragmentary Coptic body; restorations not treated as extant words,C-text-only,1
+nta-pt-fragment-9,pt,James episode 9,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Fragmentary Coptic body; restorations not treated as extant words,C-text-only,1
+nta-pt-VII.letter-I-1,pt,VII.letter-I.1,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-2,pt,VII.letter-I.2,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-3,pt,VII.letter-I.3,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-4,pt,VII.letter-I.4,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-5,pt,VII.letter-I.5,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-6,pt,VII.letter-I.6,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-7,pt,VII.letter-I.7,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-8,pt,VII.letter-I.8,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-9,pt,VII.letter-I.9,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-10,pt,VII.letter-I.10,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-11,pt,VII.letter-I.11,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-12,pt,VII.letter-I.12,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-13,pt,VII.letter-I.13,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-14,pt,VII.letter-I.14,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-15,pt,VII.letter-I.15,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.letter-I-16,pt,VII.letter-I.16,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.bridge-II-1,pt,VII.bridge-II.1,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.bridge-II-2,pt,VII.bridge-II.2,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.bridge-II-3,pt,VII.bridge-II.3,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.bridge-II-4,pt,VII.bridge-II.4,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.bridge-II-5,pt,VII.bridge-II.5,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-1,pt,VII.reply-III.1,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-2,pt,VII.reply-III.2,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-3,pt,VII.reply-III.3,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-4,pt,VII.reply-III.4,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-5,pt,VII.reply-III.5,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-6,pt,VII.reply-III.6,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-7,pt,VII.reply-III.7,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-8,pt,VII.reply-III.8,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-9,pt,VII.reply-III.9,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-10,pt,VII.reply-III.10,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-11,pt,VII.reply-III.11,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-12,pt,VII.reply-III.12,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-13,pt,VII.reply-III.13,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-14,pt,VII.reply-III.14,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-15,pt,VII.reply-III.15,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-16,pt,VII.reply-III.16,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-17,pt,VII.reply-III.17,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-18,pt,VII.reply-III.18,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-19,pt,VII.reply-III.19,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-20,pt,VII.reply-III.20,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-21,pt,VII.reply-III.21,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-22,pt,VII.reply-III.22,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-23,pt,VII.reply-III.23,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-24,pt,VII.reply-III.24,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-25,pt,VII.reply-III.25,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-26,pt,VII.reply-III.26,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-27,pt,VII.reply-III.27,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-28,pt,VII.reply-III.28,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-29,pt,VII.reply-III.29,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-30,pt,VII.reply-III.30,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-31,pt,VII.reply-III.31,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-32,pt,VII.reply-III.32,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-33,pt,VII.reply-III.33,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-34,pt,VII.reply-III.34,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-35,pt,VII.reply-III.35,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-36,pt,VII.reply-III.36,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Witness/variant markers preserved; III.36 misprinted86 in host,C-text-only,1
+nta-pt-VII.reply-III-37,pt,VII.reply-III.37,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-38,pt,VII.reply-III.38,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-39,pt,VII.reply-III.39,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-VII.reply-III-40,pt,VII.reply-III.40,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-X.martyrdom-1,pt,X.martyrdom.1,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-X.martyrdom-2,pt,X.martyrdom.2,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-X.martyrdom-3,pt,X.martyrdom.3,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-X.martyrdom-4,pt,X.martyrdom.4,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-X.martyrdom-5,pt,X.martyrdom.5,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-X.martyrdom-6,pt,X.martyrdom.6,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-X.martyrdom-7,pt,X.martyrdom.7,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,Translated section; textual not historical claim,C-text-only,1
+nta-pt-viii,pt,VIII Ephesus citations,read,https://www.earlychristianwritings.com/text/actspaul.html,2026-10-26,"Hippolytus and Nicephorus excerpted evidence, not reconstructed original episode",C-mediated,1
+nta-ap-682,ap,Ethiopic main body opening–mountain descent,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,Distinct witness; appendix summaries distinguished from full translation,C-text-only,1
+nta-ap-683,ap,Ethiopic appendix excerpts,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,Distinct witness; appendix summaries distinguished from full translation,C-mediated,1
+nta-ap-684,ap,A patristic excerpts1–6,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,Distinct witness; appendix summaries distinguished from full translation,C-text-only,1
+nta-ap-685,ap,Bodleian leaf,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,Distinct witness; appendix summaries distinguished from full translation,C-text-only,1
+nta-ap-686,ap,Sibylline appendixII190–338,read,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,Distinct witness; appendix summaries distinguished from full translation,C-mediated,1
+nta-at-013,at,13,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wedding aftermath; India departure,C-text-only,1
+nta-at-014,at,14,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wedding aftermath; India departure,C-text-only,1
+nta-at-015,at,15,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wedding aftermath; India departure,C-text-only,1
+nta-at-016,at,16,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wedding aftermath; India departure,C-text-only,1
+nta-at-017,at,17,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-018,at,18,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-019,at,19,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-020,at,20,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-021,at,21,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-022,at,22,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-023,at,23,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-024,at,24,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-025,at,25,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-026,at,26,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-027,at,27,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-028,at,28,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-029,at,29,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Gundaphorus/Gad heavenly palace; alms; initiation,C-text-only,1
+nta-at-030,at,30,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-031,at,31,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-032,at,32,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-033,at,33,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-034,at,34,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-035,at,35,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-036,at,36,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-037,at,37,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-038,at,38,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Serpent and youth; unnamed road,C-text-only,1
+nta-at-039,at,39,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Speaking colt to city gate,C-text-only,1
+nta-at-040,at,40,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Speaking colt to city gate,C-text-only,1
+nta-at-041,at,41,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Speaking colt to city gate,C-text-only,1
+nta-at-042,at,42,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-043,at,43,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-044,at,44,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-045,at,45,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-046,at,46,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-047,at,47,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-048,at,48,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-049,at,49,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-050,at,50,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Woman delivered; initiation; river in Syriac variant,C-text-only,1
+nta-at-051,at,51,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-052,at,52,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-053,at,53,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-054,at,54,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-055,at,55,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-056,at,56,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-057,at,57,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-058,at,58,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-059,at,59,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-060,at,60,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-061,at,61,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Murdered woman revived; visionary punishments,C-text-only,1
+nta-at-062,at,62,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor wife/daughter; mission request,C-text-only,1
+nta-at-063,at,63,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor wife/daughter; mission request,C-text-only,1
+nta-at-064,at,64,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor wife/daughter; mission request,C-text-only,1
+nta-at-065,at,65,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor wife/daughter; mission request,C-text-only,1
+nta-at-066,at,66,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor wife/daughter; mission request,C-text-only,1
+nta-at-067,at,67,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor wife/daughter; mission request,C-text-only,1
+nta-at-068,at,68,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-069,at,69,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-070,at,70,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-071,at,71,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-072,at,72,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-073,at,73,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-074,at,74,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-075,at,75,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-076,at,76,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-077,at,77,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-078,at,78,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-079,at,79,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-080,at,80,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-081,at,81,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Wild asses; return to captain house; healing,C-text-only,1
+nta-at-082,at,82,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-083,at,83,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-084,at,84,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-085,at,85,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-086,at,86,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-087,at,87,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-088,at,88,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-089,at,89,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-090,at,90,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-091,at,91,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-092,at,92,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-093,at,93,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-094,at,94,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-095,at,95,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-096,at,96,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-097,at,97,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-098,at,98,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-099,at,99,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-100,at,100,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia/Charisius; teaching; coercion resisted,C-text-only,1
+nta-at-101,at,101,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Misdaeus judgment; arrest and imprisonment,C-text-only,1
+nta-at-102,at,102,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Misdaeus judgment; arrest and imprisonment,C-text-only,1
+nta-at-103,at,103,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Misdaeus judgment; arrest and imprisonment,C-text-only,1
+nta-at-104,at,104,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Misdaeus judgment; arrest and imprisonment,C-text-only,1
+nta-at-105,at,105,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Misdaeus judgment; arrest and imprisonment,C-text-only,1
+nta-at-106,at,106,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Misdaeus judgment; arrest and imprisonment,C-text-only,1
+nta-at-107,at,107,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Misdaeus judgment; arrest and imprisonment,C-text-only,1
+nta-at-108,at,108,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Hymn of Soul; embedded symbolic journey distinct from apostle itinerary,C-text-only,1
+nta-at-109,at,109,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Hymn of Soul; embedded symbolic journey distinct from apostle itinerary,C-text-only,1
+nta-at-110,at,110,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Hymn of Soul; embedded symbolic journey distinct from apostle itinerary,C-text-only,1
+nta-at-111,at,111,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Hymn of Soul; embedded symbolic journey distinct from apostle itinerary,C-text-only,1
+nta-at-112,at,112,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Hymn of Soul; embedded symbolic journey distinct from apostle itinerary,C-text-only,1
+nta-at-113,at,113,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Hymn of Soul; embedded symbolic journey distinct from apostle itinerary,C-text-only,1
+nta-at-114,at,114,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Charisius/Mygdonia dispute; nocturnal departure,C-text-only,1
+nta-at-115,at,115,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Charisius/Mygdonia dispute; nocturnal departure,C-text-only,1
+nta-at-116,at,116,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Charisius/Mygdonia dispute; nocturnal departure,C-text-only,1
+nta-at-117,at,117,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Charisius/Mygdonia dispute; nocturnal departure,C-text-only,1
+nta-at-118,at,118,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Charisius/Mygdonia dispute; nocturnal departure,C-text-only,1
+nta-at-119,at,119,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia and nurse initiation; prison return,C-text-only,1
+nta-at-120,at,120,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia and nurse initiation; prison return,C-text-only,1
+nta-at-121,at,121,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia and nurse initiation; prison return,C-text-only,1
+nta-at-122,at,122,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia and nurse initiation; prison return,C-text-only,1
+nta-at-123,at,123,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia and nurse initiation; prison return,C-text-only,1
+nta-at-124,at,124,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Mygdonia and nurse initiation; prison return,C-text-only,1
+nta-at-125,at,125,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Release; Mygdonia refuses renewed submission,C-text-only,1
+nta-at-126,at,126,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Release; Mygdonia refuses renewed submission,C-text-only,1
+nta-at-127,at,127,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Release; Mygdonia refuses renewed submission,C-text-only,1
+nta-at-128,at,128,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Release; Mygdonia refuses renewed submission,C-text-only,1
+nta-at-129,at,129,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Release; Mygdonia refuses renewed submission,C-text-only,1
+nta-at-130,at,130,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Release; Mygdonia refuses renewed submission,C-text-only,1
+nta-at-131,at,131,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor household initiation,C-text-only,1
+nta-at-132,at,132,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor household initiation,C-text-only,1
+nta-at-133,at,133,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Siphor household initiation,C-text-only,1
+nta-at-134,at,134,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Tertia hears; king attacks apostle,C-text-only,1
+nta-at-135,at,135,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Tertia hears; king attacks apostle,C-text-only,1
+nta-at-136,at,136,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Tertia hears; king attacks apostle,C-text-only,1
+nta-at-137,at,137,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Tertia hears; king attacks apostle,C-text-only,1
+nta-at-138,at,138,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Tertia hears; king attacks apostle,C-text-only,1
+nta-at-139,at,139,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes; heated plates/flood; prison,C-text-only,1
+nta-at-140,at,140,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes; heated plates/flood; prison,C-text-only,1
+nta-at-141,at,141,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes; heated plates/flood; prison,C-text-only,1
+nta-at-142,at,142,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes; heated plates/flood; prison,C-text-only,1
+nta-at-143,at,143,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes; heated plates/flood; prison,C-text-only,1
+nta-at-144,at,144,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Prayer; alternate placement after167; no additional earth event,C-text-only,1
+nta-at-145,at,145,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Prayer; alternate placement after167; no additional earth event,C-text-only,1
+nta-at-146,at,146,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Prayer; alternate placement after167; no additional earth event,C-text-only,1
+nta-at-147,at,147,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Prayer; alternate placement after167; no additional earth event,C-text-only,1
+nta-at-148,at,148,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Prayer; alternate placement after167; no additional earth event,C-text-only,1
+nta-at-149,at,149,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Prayer; alternate placement after167; no additional earth event,C-text-only,1
+nta-at-150,at,150,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-151,at,151,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-152,at,152,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-153,at,153,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-154,at,154,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-155,at,155,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-156,at,156,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-157,at,157,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-158,at,158,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Iuzanes/Mnesara; prison release; household initiation,C-text-only,1
+nta-at-159,at,159,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Farewell; return to prison; judgment,C-text-only,1
+nta-at-160,at,160,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Farewell; return to prison; judgment,C-text-only,1
+nta-at-161,at,161,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Farewell; return to prison; judgment,C-text-only,1
+nta-at-162,at,162,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Farewell; return to prison; judgment,C-text-only,1
+nta-at-163,at,163,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Farewell; return to prison; judgment,C-text-only,1
+nta-at-164,at,164,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,One mile from city; unnamed mountain; four spears; royal tomb,C-text-only,1
+nta-at-165,at,165,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,One mile from city; unnamed mountain; four spears; royal tomb,C-text-only,1
+nta-at-166,at,166,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,One mile from city; unnamed mountain; four spears; royal tomb,C-text-only,1
+nta-at-167,at,167,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,One mile from city; unnamed mountain; four spears; royal tomb,C-text-only,1
+nta-at-168,at,168,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,One mile from city; unnamed mountain; four spears; royal tomb,C-text-only,1
+nta-at-169,at,169,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Appearances; women persist; Siphor/Iuzanes offices; relics Mesopotamia; Misdaeus conversion,C-text-only,1
+nta-at-170,at,170,read,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,Appearances; women persist; Siphor/Iuzanes offices; relics Mesopotamia; Misdaeus conversion,C-text-only,1
+nta-aj-frag-oxyrhynchus850-302,aj,Oxyrhynchus850 recto,read,https://en.wikisource.org/wiki/Page:The_Apocryphal_New_Testament_(1924).djvu/302,2026-10-26,Bridge/deep unnamed river; soldier apparition; fragmented departure; order uncertain,C-OCR-excerpt,1
+nta-aj-frag-oxyrhynchus850-303,aj,Oxyrhynchus850 verso,read,https://en.wikisource.org/wiki/Page:The_Apocryphal_New_Testament_(1924).djvu/303,2026-10-26,Zeuxis; eucharist; imperial letter fragment; Domitian restoration uncertain,C-OCR-excerpt,1
+nta-aj-frag-titus-b,aj,Titus quotation b,read,https://en.wikisource.org/wiki/Page:The_Apocryphal_New_Testament_(1924).djvu/304,2026-10-26,Dyrus emended Verus; demons speak; placement before Ephesus is editor inference,C-OCR-excerpt,1
+nta-aj-frag-titus-c,aj,Titus quotation c excerpts,read,https://en.wikisource.org/wiki/Page:The_Apocryphal_New_Testament_(1924).djvu/304,2026-10-26,Wedding chastity speech; James omits31 corrupt clauses; not full quotation,C-OCR-excerpt,1
+nta-pt-XI-Origen-a,pt,XI Origen-a,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Acts/The_Acts_of_Paul,2026-10-26,Living Word quotation; no new setting,C-mediated,1
+nta-pt-XI-Origen-b,pt,XI Origen-b,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Acts/The_Acts_of_Paul,2026-10-26,Crucified again quotation; Peter connection conjectural,C-mediated,1
+nta-pt-XI-Clement,pt,XI Clement,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Acts/The_Acts_of_Paul,2026-10-26,Sibyl/Hystaspes citation; attribution to Acts Paul uncertain,C-mediated,1
+nta-pt-XI-Pseudo-Cyprian,pt,XI Pseudo-Cyprian,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Acts/The_Acts_of_Paul,2026-10-26,Preaching Paul testimony; baptism/meetings; attribution uncertain,C-mediated,1
+nta-pt-XI-Lactantius,pt,XI Lactantius,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Acts/The_Acts_of_Paul,2026-10-26,Rome preaching testimony; anti-Jewish destruction polemic; attribution uncertain,C-mediated,1
+nta-pt-XI-Commodian,pt,XI Commodian,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Acts/The_Acts_of_Paul,2026-10-26,Speaking animals; lion connection possible; textual alternatives,C-mediated,1
+nta-pt-XI-John-Salisbury,pt,XI John-Salisbury,read,https://en.wikisource.org/wiki/The_Apocryphal_New_Testament_(1924)/Acts/The_Acts_of_Paul,2026-10-26,Athens speech reported medieval witness; original source unknown,C-mediated,1
+nta-at-edition-omission,at,Syriac Song of Praise after113,edition-omitted,https://www.earlychristianwritings.com/text/actsthomas.html,2026-10-26,James explicitly omits42 praise ascriptions and4 final clauses; not read; outside selected Greek-based body,U,1
+nta-aj-edition-omission,aj,Titus c31 clauses,edition-omitted,https://en.wikisource.org/wiki/Page:The_Apocryphal_New_Testament_(1924).djvu/304,2026-10-26,James omits31 corrupt clauses; excerpt only; not read,U,1
+nta-ap-edition-omission,ap,Later Ethiopic continuation full body,edition-omitted,https://www.earlychristianwritings.com/text/apocalypsepeter-mrjames.html,2026-10-26,James supplies selected excerpts and editorial synopsis only; full continuation not reviewed,U,1

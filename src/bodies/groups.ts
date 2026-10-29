@@ -4,6 +4,7 @@ import { hasRecoverySnapshot, hasSavedUniverse } from '../sandbox-state.ts';
 import { buildGalaxyVisual, tameGalaxyNucleus } from '../galaxy-visuals.ts';
 import { updateBodyLabel } from './registry.ts';
 import { seeded } from '../physics/body-math.ts';
+import { galaxyExtent } from '../physics/galaxy-dynamics.ts';
 import { fitAllObjects } from '../scene/camera.ts';
 import { disposeObject } from '../scene/dispose.ts';
 import { MAX_CAMERA_DISTANCE, camera, isCompact, scene, viewTarget } from '../scene/setup.ts';
@@ -78,16 +79,31 @@ export function galaxyName(style: GalaxyStyle) {
           ? 'Irregular Galaxy'
           : 'Globular Cluster';
 }
-export function removeGalaxyVisual(groupId: number) {
-  const visual = galaxyVisuals.get(groupId);
+/** Remove one galaxy picture (by its key in galaxyVisuals), including any tracer stars set loose in world space. */
+export function removeGalaxyVisual(key: number) {
+  const visual = galaxyVisuals.get(key);
   if (!visual) return;
   scene.remove(visual.object);
   disposeObject(visual.object);
-  galaxyVisuals.delete(groupId);
+  if (visual.live) {
+    scene.remove(visual.live.holder);
+    disposeObject(visual.live.holder);
+  }
+  galaxyVisuals.delete(key);
+}
+/** Remove every picture belonging to a galaxy group (a merger remnant can carry two). */
+export function removeGalaxyVisualsOf(groupId: number) {
+  for (const [key, visual] of [...galaxyVisuals]) if (visual.groupId === groupId) removeGalaxyVisual(key);
+}
+export function clearGalaxyVisuals() {
+  for (const key of [...galaxyVisuals.keys()]) removeGalaxyVisual(key);
+}
+export function galaxyVisualsOf(groupId: number) {
+  return [...galaxyVisuals.values()].filter(visual => visual.groupId === groupId);
 }
 export function createGalaxyBackdrop(record: CosmicGroup, anchor: Body, style: GalaxyStyle) {
-  removeGalaxyVisual(record.id);
-  const extent = style === 'globular' ? 72 : style === 'irregular' ? 118 : 142,
+  removeGalaxyVisualsOf(record.id);
+  const extent = record.extent ?? galaxyExtent(style),
     root = buildGalaxyVisual(style, record.visualSeed ?? record.id * 7 + anchor.id * 13, extent, {
       compact: isCompact,
       quality: app.qualityScale,
@@ -96,10 +112,17 @@ export function createGalaxyBackdrop(record: CosmicGroup, anchor: Body, style: G
   root.position.copy(anchor.mesh.position);
   root.rotation.y = seeded(record.id, 19) * Math.PI;
   scene.add(root);
-  galaxyVisuals.set(record.id, { groupId: record.id, anchorId: anchor.id, style, object: root });
+  galaxyVisuals.set(record.id, {
+    groupId: record.id,
+    anchorId: anchor.id,
+    originalAnchorId: anchor.id,
+    style,
+    extent,
+    object: root,
+  });
 }
 export function rebuildGalaxyVisuals() {
-  for (const id of [...galaxyVisuals.keys()]) removeGalaxyVisual(id);
+  clearGalaxyVisuals();
   for (const group of cosmicGroups) {
     if (group.kind !== 'galaxy' || !group.style) continue;
     const anchor = bodies.find(body => body.id === (group.anchorId ?? group.bodyIds[0]));

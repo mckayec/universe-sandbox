@@ -6,6 +6,7 @@ import { type Kind } from '../celestial-catalog.ts';
 import { updateScale } from '../bodies/lifecycle.ts';
 import { addBody } from '../bodies/registry.ts';
 import { sameExhibitSystem, seeded } from './body-math.ts';
+import { passesThroughInGalaxyCollision } from '../bodies/galaxy-merger.ts';
 import { canEat, priority } from './collisions.ts';
 import { ensureMatterStream } from './matter-streams.ts';
 import { accreteMomentum, applyGrowthProgression, demoteStrippedStar } from './stellar-evolution.ts';
@@ -64,14 +65,16 @@ const RECEIVER_KINDS = new Set<Kind>(['brown', 'star', 'pulsar', 'blackhole']),
   MAX_REACH_FACTOR = 4.15 * 1.55,
   tidalDelta = new THREE.Vector3();
 function tidalPair(a: Body, b: Body): [Body, Body] | null {
-  if (sameExhibitSystem(a, b)) return null;
+  if (sameExhibitSystem(a, b) || passesThroughInGalaxyCollision(a, b)) return null;
   if (
     a.artificial ||
     b.artificial ||
     a.kind === 'nebula' ||
     b.kind === 'nebula' ||
     a.hostId === b.id ||
-    b.hostId === a.id
+    b.hostId === a.id ||
+    a.infall ||
+    b.infall
   )
     return null;
   if (a.buildLocked !== b.buildLocked) {

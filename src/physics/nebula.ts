@@ -11,6 +11,7 @@ import {
   type Kind,
 } from '../celestial-catalog.ts';
 import { removeBody, updateScale } from '../bodies/lifecycle.ts';
+import { passesThroughInGalaxyCollision } from '../bodies/galaxy-merger.ts';
 import { brownIgnitionMass, sameExhibitSystem } from './body-math.ts';
 import { ensureMatterStream } from './matter-streams.ts';
 import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts';
@@ -30,8 +31,9 @@ export function updateNebulaInteractions(dt: number) {
       brown: 1.35,
       star: 1.7,
       protostar: 0,
-      pulsar: 2.4,
-      blackhole: 4.6,
+      // Compact objects drain a cloud through a stream and disk over a minute or two, not in a few seconds.
+      pulsar: 1.6,
+      blackhole: 2.2,
       nebula: 0,
     },
     activeContacts = new Set<number>();
@@ -45,6 +47,8 @@ export function updateNebulaInteractions(dt: number) {
         target === cloud ||
         target.kind === 'nebula' ||
         target.hostId === cloud.id ||
+        target.infall ||
+        passesThroughInGalaxyCollision(cloud, target) ||
         (target.kind === 'protostar' && target.hostId !== undefined) ||
         sameExhibitSystem(cloud, target)
       )
