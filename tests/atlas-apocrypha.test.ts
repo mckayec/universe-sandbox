@@ -293,7 +293,6 @@ test('Pilate and Marian works (slots 36–39): every narrative row is used at it
   ].filter(id => !/^(MP|MJ|MC|PMP|PMJ|PMC)/.test(id));
   assert.equal(eventIds.length, 3 + 3 + 12 + 42);
   const pins: Record<string, string> = {
-    ME01: 'jerusalem',
     PME02: 'jerusalem',
     PME03: 'jerusalem',
     PME06: 'jerusalem',
@@ -342,4 +341,28 @@ test('Pilate and Marian works (slots 36–39): every narrative row is used at it
     ['Arimathea', 37],
   ] as const)
     assert.ok(places.find((e: any) => e.name === name).books.includes(slot), `${name} lacks slot ${slot}`);
+});
+
+test('build-audit corrections APB-001–019 stay applied', () => {
+  // docs/universes/packs/christian-apocrypha/audit-build.md (PR #38 at 8ae9133).
+  const dc = pack.events.filter((e: any) => e.layers.includes('dc'));
+  assert.equal(dc.length, 147);
+  for (const e of dc) assert.match(e.side, /\((RV|NABRE|Douay)|\(RV\)/, `${e.id} names no edition`);
+  const ev = (id: string) => pack.events.find((e: any) => e.id === id);
+  assert.equal(ev('ME01').site, undefined, 'ME01 tomb is not located in its witness');
+  for (const phrase of [
+    'Agrippinus or Pompeius',
+    'copies for the emperor and for Jerusalem',
+    'thirty-four days without water',
+    'begins and ends',
+    'Egypt included',
+    'Known only from quotations',
+    'not anyone’s mother',
+    'A nurse, not a mother',
+    'are healed and initiated',
+    'healed and initiated, he',
+    'whose parentage is disputed',
+    'is killed, and a stone is miraculously put in his place',
+  ])
+    assert.ok(!data.includes(phrase), `audited wording returned: ${phrase}`);
 });
