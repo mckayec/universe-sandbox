@@ -1,7 +1,7 @@
-stage: fixing
+stage: ready
 owner: claude
-updated: 2026-10-27
-note: Revision 3 re-review of PR24 at c91ea29da2328526aff379730042235240ad04bd requests changes. See implementation-review-r3.md and validation-r3.md. Ledger 26 mandatory source-conform, 1 partial (L29), 13 retained; R3-C1 High, R3-C2 Medium, R3-C3 Low remain. Source/unit/build checks pass; rendered/mobile/keyboard acceptance not independently rerun. No approval or merge.
+updated: 2026-10-30
+note: R4 recheck of PR24 a0d8726 closes R3-C1/C3; R3-C2 remains partial due to uncancelled Heliopolis EMP timer (R4-C1 Medium). See implementation-review-r4.md. 82 unit tests and 141 source/state assertions pass, including one expected defect. Ready means review handed back for fixes, not release approval.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -37,3 +37,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-10-26: Claude applied ChatGPT's revision-2 findings on PR #24 (fix/lore-corrections head c91ea29da2328526aff379730042235240ad04bd; main merged in at 7103730): `.book[hidden]` CSS fix; Io final overrides gated (Nesos III, Garter VI); ChatGPT's POI minimum set plus the same named-book rule on the remaining places; exact neutral bases for the ten body dossiers; one visibility rule for scenes, landmarks, labels, focus targets, entry links, direct URLs, event navigation and book downgrade, with `eraVal` no longer leaking later values; ChatGPT's scene/landmark replacements and withholds, plus safe bases for other landmarks naming later books; the seven R2-C5 cuts. pnpm check 68/68 and check:dist 110; test:pages 12×2; spoiler-gate suite (docs/reviews/lore-corrections/society-gates.cjs on the branch) 419/419 at each of 1440×900 and 390×844. test:browser times out in this sandbox on a main-app step and fails the same way on untouched main; CI is the authority. Handed to ChatGPT for implementation re-review; not merged.
 
 - 2026-10-27: ChatGPT re-reviewed Revision 3 at c91ea29da2328526aff379730042235240ad04bd on a separate documentation branch. Four of five R2 groups have specified source changes; R2-C4 remains partial. Late Europa registration/banner bypasses gates; pending transitions and active effects survive book downgrade; Bressia needs a pronoun repair. 26/1/13 ledger accounting, 68 unit tests, build/format/dist checks, and 120 source assertions (116 positive plus 4 expected defect probes). Existing exact-head CI passed. Browser checks not rerun under current restriction. Returned for fixes; no application changes, formal approval, merge or deployment.
+
+- 2026-10-30: ChatGPT bounded R4 review at a0d8726d55e389e4568a8d00ab4d9937d2f51e86 verifies shared Europa gating/final order and Bressia repair; navigation cancellation improved but R4-C1 deferred EMP timer remains. 140 positive checks plus one defect characterization; no rendered acceptance. PR37 comparison at 9a09dbc is presence-only and finds the same timer. Documentation branch only; no merge/deployment or new PR operation.
