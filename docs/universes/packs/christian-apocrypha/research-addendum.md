@@ -12,3 +12,7 @@
 ## Required corrections
 
 See audit-build.md APB-001–019. Primary-text evidence supports corrections to person identities, chronology, narrative scope and attribution. Builder should resolve every finding explicitly and identify the new exact implementation SHA. A fixing handoff does not upgrade inherited textual/OCR/edition confidence or provide final canon approval.
+
+## 2026-10-30 continuation
+
+[APQ-004 alignment and ownership handoff](apq004-alignment.md) now aligns the research CSVs and index on this documentation branch. Earlier statements that CSV corrections are not included are superseded. Builder badge alignment and exact-new-head recheck remain open;18/19APB result, APF-001 and APB-004 technical gate are unchanged. No final approval.

@@ -67,3 +67,7 @@ Q01: retain five approved anchors; additional coordinates deferred. Q02: standal
 Q03: original research-review question asks quotation classification so paraphrase is not wrongly treated as drift, with builder paraphrasing regardless. That build-audit purpose is resolved: judge fidelity of meaning, not verbatim identity. **Exhaustive registry quotation inventory remains deferred and unverified**, not a rights certification; no direct reuse of research copy authorized by this disposition. Claude accepted the existing conservative addendum. This does not itself create a separate canon blocker for the current paraphrase-only build.
 
 APQ-004: research-side earliest mention decision above supplied for builder implementation. Still requires aligned artifact changes and exact-head recheck. Suggested next handoff: fixing/claude for this bounded correction and APF-001 disposition, while APB-004 remains the technical gate. This draft does not mutate main status, merge any PR or authorize deployment.
+
+## 2026-10-30 continuation
+
+[APQ-004 alignment and ownership handoff](apq004-alignment.md) now aligns the research CSVs and index on this documentation branch. Earlier statements that CSV corrections are not included are superseded. Builder badge alignment and exact-new-head recheck remain open;18/19APB result, APF-001 and APB-004 technical gate are unchanged. No final approval.
