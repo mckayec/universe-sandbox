@@ -1,0 +1,53 @@
+# LDS built-content and import-accounting audit
+
+2026-10-30. **Changes required; no final canon or release approval.** Extends, and does not replace, [the26-anchor audit](audit-build.md).
+
+Implementation PR33: **c59c9bc13d848bbf0c4b3f3c64810bfa187749f0**, freshly verified open/unmerged and unchanged. Review baseline PR34: **a208d9679bd7af78e1408ef043f59ffc0fe8dda4**. Fresh main: **bd24cbda5cf3d35457834f543aba49fd1a0d8bdb**. Built research revision is52adadf1558b8bba1c89ca266de682ccdc988767; accepted research handoff689b4959b520b5da57a6579e47877dd43726892b. Existing addendum corrections supersede older inventory wording, including Murray→Thayer. No full-canon rereading or new geography research was undertaken.
+
+## Coverage and evidence basis
+
+[Built inventory](content-audit/built-record-inventory.csv): **96/96 records** —36sites including their notes,24events,9routes including stops/actors and27codex entries. Each row supplies its research key, exact dossier row/source tags, payload hash, disposition and finding. All supplied text, attribution, dates, references and layer fields received accepted-research comparison. Hashes establish object identity, not reading. **57conformity dispositions and39correction dispositions**; the latter include previously reported anchor issues, related routes and overlapping filter issues, not39new independent errors.
+
+[Research import accounting](content-audit/research-import-accounting.csv): **256/256 named primary-inventory rows** from research.md43, bible-inventory.md57, bom-inventory.md84, restoration-inventory.md42, pgp-inventory.md30.96have represented records;11have only a partial entity/context appearance;149lack a represented record. These are research row counts, not deduplicated historical facts or a count of all comprehensive corpus payloads. Matching a reference does not mean every detail of its research row was imported. All omissions are explicit rather than inferred from a total of pins.
+
+The wider accepted corpus remains in per-unit ledgers, reference-disposition registers, genealogy/allotment/roster payloads and source-audit files. Those are **not** falsely counted as newly individually compared records here. Dense people/genealogy/allotment contexts were explicitly deferred by A04/Q04; that deferral does not cover the149 ordinary place/event/concept/journey rows automatically. The comprehensive screening and source evidence previously supplied remain available; no new missing-source prerequisite is invented for already supported nonspatial content.
+
+The two freshly reopened primary passages are [D&C38:4](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng) and [Moses7:18–21,69](https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng). They support the two attributed Enoch/Zion accounts, not a terrestrial identification. Other rows reuse accepted research and its stated access/edition limitations; none is presented as a fresh independent historical verification. The scope of this pass is all **built copy**, plus primary-inventory accounting, not a fresh certification of every verse, supplementary assertion or original language.
+
+## New findings
+
+### BA05 — Whole-entry codex filtering leaks other work text (medium)
+
+Pack lines1048–1060,1072; nine objects listed in the probe. `AtlasLayers.codexSplit` checks entry-level layer membership. With an OT-only selection, Haran, Ur and Mount of Olives retain their PGP or NT sentences. With D&C only, Enoch's city and First Vision account retain PGP sentences, and the woods entry exposes its PGP-only claim. With PGP only, Shechem, Bethel/Hai camp and Egypt expose only their OT-source wording. Attribution labels avoid silent harmonization, but do not fulfill the accepted promise that each source-specific claim follows its own layer. Single mode removes cumulative reading locks; it does not waive layer isolation.
+
+This is actual pure-helper output, not a rendered claim. The Jerusalem positive control correctly filters its separately layered notes; the defect is the combined codex data shape, not a claim that all layer filtering fails.
+
+**Concrete correction:** split shared codex descriptions into separate source-scoped entries, or add supported per-paragraph layer filtering in a separately tested implementation. Using current schema, split entries is simplest. Keep names/identity ties, but give each copy only its own layer and work badge. For Enoch, D&C entry: “D&C38:4 describes the Zion of Enoch as taken into God's presence. No terrestrial location is supplied.” PGP entry: “Moses7 describes Enoch's community as Zion and the city being taken up. No terrestrial location is supplied.” For P11 woods, retain only `layers:['pgp']`; D&C's introduction-based First Vision entry may remain separately at4. For the three OT-only descriptions, remove `pgp` until distinct Abraham-source text is supplied; do not merely relabel Genesis prose. Keep the intentional age comparison in E12 explicitly comparative; it is not another accidental mixed-source entry.
+
+**Acceptance:** all nine isolated-layer cases must cease displaying off-layer source prose; all-on retains both accounts; tests also preserve Jerusalem's already working note gate. Exact corrected head and rendered layer selection still need verification.
+
+### BA06 — Fayette date filter conflicts with its own1829 content (medium)
+
+Site `fayette` line473 has `when:1830`; event `translation-fayette` line907 and route `dictation-move` line722 have1829. Actual `timeOk` at range1829 returns false for the place and true for the event/route. The built data and RE03/RJ01 already attest the1829association; no external research is needed to establish this mismatch. Engine source combines filtering/fading with selection, so this report does **not** assert that the marker necessarily disappears or crashes in a browser.
+
+**Concrete correction:** remove `when` from the persistent modern Fayette reference point; keep separate sourced1829/1830event dates. Alternatively specify an explicit association-range policy and test it, without making a site existence date from an episode. Acceptance: the1829 event/route and associated reference point must not contradict one another under time filtering. Existing anchor confidence BA03 remains independently open.
+
+### BA07 — Current content is a small selection, not the agreed comprehensive handoff (high scope/acceptance finding)
+
+The256-row inventory supplies exact omissions. No BP/BE/BJ/BC row has a dedicated imported record, despite the core's few BoM entries. None of the30PGP supplemental rows is imported as a record. Examples are nonspatial-ready content, not requests for invented pins: BE07 Benjamin's assembly, BE16 Samuel's teaching, BC08–BC20 doctrinal/reference entries; PE01 Moses' vision, PE09 plate receipt, PC01–03 attributed facsimile explanations; RE14/RC05 Manifesto transition, RE18–19 letter/sustaining distinctions and RC06 racial restrictions context. The existing1978event carefully distinguishes later dates but does not actually supply those later records.
+
+149unrepresented rows and11partial-context rows require explicit individual import/defer/exclude decisions. A route mentioning Salt Lake Valley is not a substitute for its arrival/declaration/vision narratives. A location card mentioning Gethsemane is partial coverage of its narrative, not a complete event import. Some rows overlap identities or serve context and may safely be consolidated; the inventory does not demand256separate widgets. Lack of coordinates is not sufficient reason to exclude meaningful source-backed material when a nonspatial library already exists.
+
+**Acceptance:** builder fills these finite dispositions with target IDs and reasons; imports substantive ordinary material across all works in nonspatial form where needed; preserves previously approved dense-context deferral; reconciles remaining comprehensive coverage families without claiming a count of pins constitutes completeness. Any deliberate reduction from comprehensive coverage requires owner scope authorization, not an assumption that Q04 approved it. This is a known implementation/content-accounting gap, not a missing primary source blocker and not dependent on the three archaeology artifacts.
+
+## Retained findings and verified protections
+
+BA01–04 remain unchanged: two pin holds,11representative replacements,13visible secondary qualifications, and stale reporting/decision receipt. No repeat of26anchor source research. They remain0/26fully incorporated at the unchanged head; this is not26wrong coordinates. BA05–07 are additional findings, for **seven open findings total**, with the scope finding applying across omitted records rather than one object.
+
+Built copy preserves: no BoM Earth coordinates; separate Arabian/American Bountiful and Abraham/BoM Jershon; no proposed modern Ur; no invented astronomical Kolob; unequal Abraham/Genesis Haran ages not harmonized; ancient narrative years left unnumbered; reported visions attributed;1978confirmation differentiated from later dates; the uncertain month of Winter Quarters uses autumn; the Luke route excludes Jesus from its first leg; John leaves the mission at Perga; the Macedonia route is a selected segment; Appii Forum/Three Taverns grouped without invented order. Modern heritage points are generally distinguished from episode locations, subject to prior anchor corrections. These are conformity observations, not archaeological confirmation.
+
+## Validation and next handoff
+
+`content-audit/probe.cjs` executed against the exact head:96record counts, nine layer cases, the Fayette/event/route time mismatch and the Jerusalem positive control. Output saved in probe-result.json. Existing22/22targeted layer/pack tests rerun in this continuation; no browser/server/production build/GPU test. CSV counts/unique keys/source-row references/hash matching and whitespace checked before publication. Prior broad test setup failures are not silently converted to passes. PR42 documentation CI40999882886 atd9a05c198f54c838f8bba7076c07fe6a6b11af0b is now completed/success.
+
+Claude has actionable BA01–07 and can implement while ChatGPT preserves source support. ChatGPT then rechecks the changed head and final content/sample gates; Claude owns permitted rendered/technical evidence; owner owns eventual release. Current Earth atlas acceptance is blocked by implementation/content and technical gates, **not by renewed schematic preference or the missing comparison artifacts**. See [artifact dependencies](comparison-artifact-dependencies.md). No main/status mutation, application change, formal approval, merge or deployment.

@@ -57,3 +57,7 @@ No rendered/mobile/keyboard/label-collision/interactive acceptance was performed
 2. Verify missing-stop route breaks using actual final pack data; verify source attribution, point scope and displayed coordinate precision. Keep the prior source-access/confidence limits intact.
 3. Complete the **separate remaining build audit**: structured-record import/defer/unlocated accounting, all label/event/journey/codex content and cross-layer behavior. This document does not claim that work complete.
 4. Obtain permitted rendered/desktop/mobile/keyboard technical acceptance for the resulting head, then resolve remaining content findings and conduct the signed final audit. Both final sign-offs and owner release approval remain necessary. Schematic authorization is already recorded; it is not a release authorization.
+
+## 2026-10-30 broader content continuation
+
+[Content/accounting audit](content-audit.md) now compares96/96built records and accounts for256primary inventory rows. BA05–07 add layer-copy, Fayette date-filter and substantive coverage findings. BA01–04 and their26-anchor evidence remain unchanged. [Comparison-artifact dependencies](comparison-artifact-dependencies.md) explicitly separate the paired archaeology review from current Earth acceptance and the already-authorized schematic. No final approval.
