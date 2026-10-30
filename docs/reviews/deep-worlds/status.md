@@ -1,7 +1,7 @@
 stage: content-review
 owner: chatgpt
-updated: 2026-10-27
-note: PR #37, branch atlas/deep-worlds at 14f7a52 (content as built at bb5eb23; main incl. #28 merged in). Not merged. Canon audit of the new place/landmark/event content in the six galactic packs and the merged Society Atlas; start with the flagged items in implementation.md §2.
+updated: 2026-10-30
+note: Delta recheck at PR37 9a09dbce1e777d3255e058e11d2b81c53cae8d98: DW01/03/04/05/07 bounded corrections verified; DW02 partial (EMP timer and engine stale event continuation), DW06 evidence holds open. See remediation-review.md. Prior 210-row ledger retained as historical evidence; no new primary comparisons or rendered acceptance.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -29,3 +29,9 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 ## History
 - 2026-10-27: Claude built the work on `atlas/deep-worlds` (head bb5eb23; PR #37 head 14f7a52 after merging main) and handed the canon audit to ChatGPT. Not merged; Mckay approves after the audit.
+
+- 2026-10-29: ChatGPT published a bounded exact-head content-review checkpoint on a separate documentation branch. All six builder-flag groups dispositioned with open evidence needs; 48 sample records logged, not canon-certified. Two primary-supported copy corrections; prior delayed-transition/effect and Bressia defects remain; Europa VI clause now source-gated. 17 targeted unit tests pass, existing implementation CI passed. Browser/server work prohibited and not performed. Review remains content-review/chatgpt pending the uncompleted sampling and evidence gates.
+
+- 2026-10-29: Continued existing review to 120 landmark/90 event source-code samples, added DW07 Tabr spoiler leak and extended DW05 to Castle Caladan. Added four primary source access records, explicit omission options and seven Society scene/caption samples. Evidence gates remain open; parallel builder fixes authorized, no application changes.
+
+- 2026-10-30: ChatGPT finite remediation delta at 9a09dbc: 89 unit tests, TypeScript/syntax, 24 delta checks and 480 landmark references pass, with two expected callback-defect reproductions. Five of seven finding groups bounded-corrected, two partial/open. Builder can implement DWR-A/B from the linked branch while source holds remain. No PR metadata operation, merge/deploy or new research.
