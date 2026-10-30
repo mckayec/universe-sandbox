@@ -5,7 +5,7 @@
 - Implementation: PR39, `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e` (`pack/abrahamic-world-religions`), verified open and unchanged.
 - Accepted research: `f7b74e7bec5b75a9e83666e6fd873f1f21630d0f`. The three research dossiers, comparative evidence and identity register have no diff against that revision in the inspected build.
 - Review branch: `docs/abrahamic-build-audit-20261030`, based on main `13520d5`. Build report/status on main explicitly assigns this build to ChatGPT. Search of relevant GitHub PRs returned research PR30, engine PR28 and build PR39; no duplicate build audit found.
-- Scope: all seven flagged builder readings, Q01–Q07 dispositions, all four data parts' structural counts and cross-reference invariants, date-window inventory, and relevant generic engine source/unit tests. Full independent copy-by-copy conformity is **not** complete. Prior research acceptance is reused, not represented as fresh source reading.
+- Scope: all seven flagged builder readings, Q01–Q07 dispositions, all four data parts' structural counts and cross-reference invariants, date-window inventory, and relevant generic engine source/unit tests. The initial checkpoint left copy-by-copy conformity open; the continuation below now accounts for313/313 built records, with four findings and explicit source-access limits. Prior research acceptance is reused, not represented as fresh source reading.
 
 ## Findings ready for builder
 
@@ -47,3 +47,12 @@ Actual checks at implementation SHA: **115/115 unit tests passed**, TypeScript `
 5. Rendered acceptance remains separate and unperformed under current restrictions. No merge/deploy/formal approval. Status stays `built/chatgpt`; builder corrections and remaining audit can proceed in parallel.
 
 See [research-addendum.md](research-addendum.md), [probe](build-audit/probe.cjs), [actual output](build-audit/probe-result.json), and [validation](build-audit/validation.md).
+
+## 2026-10-30 continuation — completed bounded copy pass
+
+The implementation remains `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`; fresh PR metadata reports open/unmerged, unchanged. Previous sections describe the original5d8080b checkpoint. Their unfinished-copy and0/21Q01 statements are superseded by this continuation, not by a claim of final acceptance.
+
+- [Copy comparison](build-audit/copy-comparison.md) and [313-row inventory](build-audit/copy-inventory.csv):109nodes,27links,60events,10sites,107codex cards compared against accepted evidence.296supported conformity,12correction,5fresh-source-unavailable. Prior source limitations remain.
+- **ABR03 medium:** four formation/episode date fields become unsupported finite node filter spans. **ABR04 medium:** two Islamic event numeric filters narrow the displayed chronology. Exact IDs, source keys, remedies and acceptance tests are in the comparison. Actual pure engine functions reproduce all six cases. ABR01/02 remain open; now **four findings affecting12 records** (ten nodes,two events), not12 independent findings.
+- [Q01 dispositions](build-audit/q01-anchor-dispositions.md):21/21 considered;7supported reference-coordinate packages,6uncertain/conditional,8source-unavailable. None silently added. Fourteen packages still require evidence or explicit reference-only scope acceptance.
+- Builder can address ABR01–04 now. ChatGPT must recheck a changed implementation SHA. The copy-comparison task is complete to available accepted evidence, while fresh CH14/IS24 access and unresolvedQ01 coordinates remain explicit dependencies. No blanket historical certification, rendered acceptance, merge or deployment approval follows.

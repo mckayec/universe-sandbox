@@ -29,154 +29,97 @@
   "emergenceWindows": [
     {
       "id": "jud-ananites",
-      "emerge": [
-        701,
-        800
-      ],
+      "emerge": [701, 800],
       "whenText": "Eighth century"
     },
     {
       "id": "jud-karaite",
-      "emerge": [
-        801,
-        900
-      ],
+      "emerge": [801, 900],
       "whenText": "Apparently ninth century (consolidation)"
     },
     {
       "id": "jud-hasidic",
-      "emerge": [
-        1701,
-        1800
-      ],
+      "emerge": [1701, 1800],
       "whenText": "Eighteenth century; no single founding day"
     },
     {
       "id": "jud-reform-progressive",
-      "emerge": [
-        1801,
-        1900
-      ],
+      "emerge": [1801, 1900],
       "whenText": "Nineteenth-century Germany"
     },
     {
       "id": "jud-conservative-masorti",
-      "emerge": [
-        1801,
-        1900
-      ],
+      "emerge": [1801, 1900],
       "whenText": "Nineteenth century onward"
     },
     {
       "id": "jud-reconstructionist",
-      "emerge": [
-        1901,
-        2000
-      ],
+      "emerge": [1901, 2000],
       "whenText": "Twentieth-century US origins"
     },
     {
       "id": "jud-humanistic",
-      "emerge": [
-        1901,
-        2000
-      ],
+      "emerge": [1901, 2000],
       "whenText": "Twentieth century; congregational formation in the 1960s"
     },
     {
       "id": "ch-early-communities",
-      "emerge": [
-        1,
-        100
-      ],
+      "emerge": [1, 100],
       "whenText": "First century CE"
     },
     {
       "id": "ch-lutheran",
-      "emerge": [
-        1501,
-        1600
-      ],
+      "emerge": [1501, 1600],
       "whenText": "Sixteenth century"
     },
     {
       "id": "ch-reformed",
-      "emerge": [
-        1501,
-        1600
-      ],
+      "emerge": [1501, 1600],
       "whenText": "Sixteenth century"
     },
     {
       "id": "ch-anglican",
-      "emerge": [
-        1501,
-        1700
-      ],
+      "emerge": [1501, 1700],
       "whenText": "Sixteenth–seventeenth centuries"
     },
     {
       "id": "ch-methodist",
-      "emerge": [
-        1701,
-        1800
-      ],
+      "emerge": [1701, 1800],
       "whenText": "Eighteenth century"
     },
     {
       "id": "ch-anabaptist",
-      "emerge": [
-        1501,
-        1600
-      ],
+      "emerge": [1501, 1600],
       "whenText": "Sixteenth century; 1525 Zurich marker"
     },
     {
       "id": "ch-baptist",
-      "emerge": [
-        1601,
-        1630
-      ],
+      "emerge": [1601, 1630],
       "whenText": "Early 1600s"
     },
     {
       "id": "ch-pentecostal",
-      "emerge": [
-        1901,
-        1930
-      ],
+      "emerge": [1901, 1930],
       "whenText": "Early 1900s"
     },
     {
       "id": "ch-latter-day-saint",
-      "emerge": [
-        1801,
-        1900
-      ],
+      "emerge": [1801, 1900],
       "whenText": "Nineteenth century"
     },
     {
       "id": "ch-strang-movement",
-      "emerge": [
-        1844,
-        1847
-      ],
+      "emerge": [1844, 1847],
       "whenText": "1844–47 succession period"
     },
     {
       "id": "ist04",
-      "emerge": [
-        601,
-        700
-      ],
+      "emerge": [601, 700],
       "whenText": "Seventh century (a formation process, not one founding day)"
     },
     {
       "id": "ism03",
-      "emerge": [
-        1701,
-        1800
-      ],
+      "emerge": [1701, 1800],
       "whenText": "Eighteenth-century reform"
     }
   ],
@@ -199,5 +142,56 @@
       "id": "isl06",
       "misleadingSourceLabel": true
     }
-  ]
+  ],
+  "timelineCases": [
+    {
+      "id": "jud-ananites",
+      "normalizedFrom": 701,
+      "normalizedTo": 800,
+      "ongoing": false,
+      "laterFilterYear": 801,
+      "matches": false
+    },
+    {
+      "id": "ch-early-communities",
+      "normalizedFrom": 1,
+      "normalizedTo": 100,
+      "ongoing": false,
+      "laterFilterYear": 101,
+      "matches": false
+    },
+    {
+      "id": "ch-stone-campbell",
+      "normalizedFrom": 1832,
+      "normalizedTo": 1832,
+      "ongoing": false,
+      "laterFilterYear": 1833,
+      "matches": false
+    },
+    {
+      "id": "ch-strang-movement",
+      "normalizedFrom": 1844,
+      "normalizedTo": 1847,
+      "ongoing": false,
+      "laterFilterYear": 1848,
+      "matches": false
+    }
+  ],
+  "eventCases": [
+    {
+      "id": "ISE07",
+      "when": [874, 941],
+      "whenText": "Traditionally 874–941, then 941 onward",
+      "laterFilterYear": 942,
+      "matches": false
+    },
+    {
+      "id": "ISE11",
+      "when": 1130,
+      "whenText": "After 1130 / 524 AH",
+      "laterFilterYear": 1131,
+      "matches": false
+    }
+  ],
+  "interpretation": "Reproduces source/data semantic concerns; no assertion of rendered behavior"
 }

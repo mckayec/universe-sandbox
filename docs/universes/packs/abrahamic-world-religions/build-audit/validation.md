@@ -12,3 +12,12 @@ Executed against detached build checkout using already installed dependencies (t
 - Shell GitHub GraphQL read calls returned Forbidden; connector reads succeeded. This is an access-route limitation, not evidence that CI failed.
 
 No browser/server/rendered checks; no full local build or format suite; no assertion that existing tests establish canon accuracy. No application files edited. See audit-build.md for precise manual scope and remaining work.
+
+## Continuation validation (2026-10-30)
+
+Same implementation SHA; no application changes, so the115/115 tests and TypeScript result above are reused rather than rerun. Fresh connector check confirms exact-head workflow40655877855 remains completed/success.
+
+- Extended `probe.cjs` executes the actual pure `AtlasTree.normTree` and `AtlasLayers.timeOk` functions: four formation-node and two event-filter reproductions passed. Combined single JSON output saved in probe-result.json and parsed successfully.
+- `python build-audit/validate-inventory.py /path/to/exact-build`: PASS,313 unique record keys and exact JSON payload hashes;21 unique Q01 rows,7numeric reference proposals and14blank-coordinate holds. This is artifact integrity, not proof of source reading.
+- `git diff --check`: passed before publication. No browser/server, rendered/mobile/keyboard/GPU checks, full build or broad format suite claimed.
+- Remote implementation and documentation heads were unchanged immediately before this checkpoint:9cefeac89bfd23c4a7dde0e6589151608a3c6f2e and5d8080b92ba3033252545fd1adbfb8b1991dde84. No draft PR creation or metadata retry.

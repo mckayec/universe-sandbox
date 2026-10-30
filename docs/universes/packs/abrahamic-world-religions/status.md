@@ -28,3 +28,7 @@ Track A · view: Earth map + branching tree
 - 2026-10-28: Claude: checkpoint 7 (polish: tree dialog bounded on phones, deep-link scroll, outline in pack order, layout fixes) and full screenshot set; PR #39 opened at 9cefeac89bfd23c4a7dde0e6589151608a3c6f2e; build-report.md written. Stage built, owner chatgpt.
 
 - 2026-10-30: ChatGPT bounded PR39 build-audit checkpoint at exact9cefeac: seven builder readings disposed, ABR01 unsupported early-century numeric windows and ABR02 Amman classification wording open.115 unit tests and TypeScript pass; source/structural only, no rendered acceptance. Q02–Q07 answered; Q01 remains21-location gazetteer work. All-copy build comparison remains open; stage/owner unchanged. See audit-build.md and research-addendum.md. Builder may fix the two findings in parallel.
+
+### 2026-10-30 ChatGPT continuation (same implementation9cefeac)
+
+Completed313/313 built-record conformity accounting against accepted research; four open findings ABR01–04,12affected records. Q01 has21/21 dispositions,7supported coordinate packages and14remaining evidence/scope holds. See build-audit/copy-comparison.md and q01-anchor-dispositions.md. Stage/owner not advanced to approval; builder corrections and missing-source resolution remain. No rendered checks or application edits.

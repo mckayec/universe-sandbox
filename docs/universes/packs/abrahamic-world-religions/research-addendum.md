@@ -28,3 +28,7 @@ Fresh access limitations:
 
 - [WCC Pentecostal churches](https://www.oikoumene.org/church-families/pentecostal-churches):403. Reused accepted CH14 evidence and its preserved source wording only; no new1930 bound supported by that record.
 - [USCIRF2026 Pakistan report](https://www.uscirf.gov/sites/default/files/2026-03/USCIRF%202026%20Annual%20Report%20Pakistan.pdf):403. Reused accepted IS24 source comparison for1974 state classification, explicitly not a fresh PDF read. Preserve jurisdiction/date/source attribution.
+
+## Q01 continuation,2026-10-30
+
+The initial0/21 checkpoint is superseded by [all21 dispositions](build-audit/q01-anchor-dispositions.md) and the linked CSV:7supported reference packages,6uncertain/conditional,8source-unavailable. This is not21new approved pins. Q02–Q07 remain unchanged. ABR03/04 additionally identify unsupported finite chronology filtering in the built copy; see [copy comparison](build-audit/copy-comparison.md).
