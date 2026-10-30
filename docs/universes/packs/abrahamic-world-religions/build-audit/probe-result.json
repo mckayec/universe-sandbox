@@ -1,0 +1,203 @@
+{
+  "result": "structural assertions pass; not a source or rendered certification",
+  "nodes": 109,
+  "typedLinks": 27,
+  "events": 60,
+  "pins": 10,
+  "codex": [
+    {
+      "id": "places",
+      "count": 59
+    },
+    {
+      "id": "journeys",
+      "count": 12
+    },
+    {
+      "id": "people",
+      "count": 24
+    },
+    {
+      "id": "encounters",
+      "count": 4
+    },
+    {
+      "id": "population",
+      "count": 8
+    }
+  ],
+  "emergenceWindows": [
+    {
+      "id": "jud-ananites",
+      "emerge": [
+        701,
+        800
+      ],
+      "whenText": "Eighth century"
+    },
+    {
+      "id": "jud-karaite",
+      "emerge": [
+        801,
+        900
+      ],
+      "whenText": "Apparently ninth century (consolidation)"
+    },
+    {
+      "id": "jud-hasidic",
+      "emerge": [
+        1701,
+        1800
+      ],
+      "whenText": "Eighteenth century; no single founding day"
+    },
+    {
+      "id": "jud-reform-progressive",
+      "emerge": [
+        1801,
+        1900
+      ],
+      "whenText": "Nineteenth-century Germany"
+    },
+    {
+      "id": "jud-conservative-masorti",
+      "emerge": [
+        1801,
+        1900
+      ],
+      "whenText": "Nineteenth century onward"
+    },
+    {
+      "id": "jud-reconstructionist",
+      "emerge": [
+        1901,
+        2000
+      ],
+      "whenText": "Twentieth-century US origins"
+    },
+    {
+      "id": "jud-humanistic",
+      "emerge": [
+        1901,
+        2000
+      ],
+      "whenText": "Twentieth century; congregational formation in the 1960s"
+    },
+    {
+      "id": "ch-early-communities",
+      "emerge": [
+        1,
+        100
+      ],
+      "whenText": "First century CE"
+    },
+    {
+      "id": "ch-lutheran",
+      "emerge": [
+        1501,
+        1600
+      ],
+      "whenText": "Sixteenth century"
+    },
+    {
+      "id": "ch-reformed",
+      "emerge": [
+        1501,
+        1600
+      ],
+      "whenText": "Sixteenth century"
+    },
+    {
+      "id": "ch-anglican",
+      "emerge": [
+        1501,
+        1700
+      ],
+      "whenText": "Sixteenth–seventeenth centuries"
+    },
+    {
+      "id": "ch-methodist",
+      "emerge": [
+        1701,
+        1800
+      ],
+      "whenText": "Eighteenth century"
+    },
+    {
+      "id": "ch-anabaptist",
+      "emerge": [
+        1501,
+        1600
+      ],
+      "whenText": "Sixteenth century; 1525 Zurich marker"
+    },
+    {
+      "id": "ch-baptist",
+      "emerge": [
+        1601,
+        1630
+      ],
+      "whenText": "Early 1600s"
+    },
+    {
+      "id": "ch-pentecostal",
+      "emerge": [
+        1901,
+        1930
+      ],
+      "whenText": "Early 1900s"
+    },
+    {
+      "id": "ch-latter-day-saint",
+      "emerge": [
+        1801,
+        1900
+      ],
+      "whenText": "Nineteenth century"
+    },
+    {
+      "id": "ch-strang-movement",
+      "emerge": [
+        1844,
+        1847
+      ],
+      "whenText": "1844–47 succession period"
+    },
+    {
+      "id": "ist04",
+      "emerge": [
+        601,
+        700
+      ],
+      "whenText": "Seventh century (a formation process, not one founding day)"
+    },
+    {
+      "id": "ism03",
+      "emerge": [
+        1701,
+        1800
+      ],
+      "whenText": "Eighteenth-century reform"
+    }
+  ],
+  "defects": [
+    {
+      "id": "ch-baptist",
+      "unsupportedWindow": true
+    },
+    {
+      "id": "ch-pentecostal",
+      "unsupportedWindow": true
+    }
+  ],
+  "classification": [
+    {
+      "id": "isl05",
+      "misleadingSourceLabel": true
+    },
+    {
+      "id": "isl06",
+      "misleadingSourceLabel": true
+    }
+  ]
+}
