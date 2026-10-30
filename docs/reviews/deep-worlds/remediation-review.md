@@ -57,3 +57,7 @@ On exact implementation head: **89/89 unit tests**, TypeScript noEmit, engine/So
 **Builder can proceed now:** implement DWR-A/B and retain the explicit DW06 evidence/omission decisions. This file is on the existing readable documentation branch/PR41; a new PR or metadata update is not needed for access. PR43's remediation already cites our published review branch, demonstrating that branch artifacts can be consumed. No direct message to Claude was sent.
 
 Remaining ChatGPT/source work: unresolved primary passages and current-record reconciliation after future edits; remaining technical work: exact-new-head callback recheck and permitted rendered/interactive acceptance; release remains the owner's decision. No application/main edit, PR metadata action, merge or deployment.
+
+## 2026-10-30 ledger reconciliation
+
+[Historical-to-current mapping](ledger-reconciliation.md) now accounts for all210samples without altering the original ledger:188unchanged,18edited,4deleted;198surviving historically uncompared records retain evidence holds. Four additional six-pack content deltas are separately recorded. No new primary comparisons or callback review; existing finding-group verdict remains unchanged.
