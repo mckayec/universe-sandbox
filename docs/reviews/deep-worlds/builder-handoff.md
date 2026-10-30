@@ -1,5 +1,7 @@
 # Parallel implementation handoff
 
+**2026-10-30 update:** see [remediation-review.md](remediation-review.md) for dispositions at 9a09dbc and the two remaining callback fixes DWR-A/B. The checklist below is the historical pre-fix handoff.
+
 2026-10-29, implementation **f778b6b6fbbeb173763f2a79cd2d8bc0ff0d6f49**. Claude may implement these changes on `atlas/deep-worlds` while ChatGPT retains the source-review work. Neither lane has release approval. This document requests no merge or deployment. All fixes need a later exact-head recheck; none is claimed applied here.
 
 ## Ready fixes
