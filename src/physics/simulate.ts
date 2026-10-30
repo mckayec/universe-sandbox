@@ -97,7 +97,10 @@ function limitNebula(b: Body, byId: Map<number, Body>, dt: number) {
   capPlanarVelocity(b.velocity, GALAXY_NEBULA_SPEED_LIMIT);
   b.velocity.add(anchor.velocity);
 }
-/** Tidal shear near a black hole or pulsar tears apart dense cores before they can collapse into protostars. */
+/**
+ * Proximity heuristic: this model suppresses protostar formation in a cloud being sheared by a nearby black hole
+ * or pulsar, so the slow-accretion exhibit stays legible. Not a universal rule; stars can form near compact objects.
+ */
 function shearedByCompactObject(cloud: Body) {
   for (const body of bodies)
     if (
