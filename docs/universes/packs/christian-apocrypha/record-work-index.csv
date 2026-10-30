@@ -12,7 +12,7 @@ dc-ref-bethulia,deuterocanonical-integration.csv,place-reference,judith,2,Follow
 dc-ref-betomesthaim,deuterocanonical-integration.csv,place-reference,judith,2,Follow exact record row and its source passages; shared later-work content stays separately gated
 dc-ref-jdt-camp,deuterocanonical-integration.csv,place-reference,judith,2,Follow exact record row and its source passages; shared later-work content stays separately gated
 dc-ref-damascus,deuterocanonical-integration.csv,place-reference,judith,2,Follow exact record row and its source passages; shared later-work content stays separately gated
-dc-ref-babylon,deuterocanonical-integration.csv,place-reference,baruch,5,Follow exact record row and its source passages; shared later-work content stays separately gated
+dc-ref-babylon,deuterocanonical-integration.csv,place-reference,tobit,1,Follow exact record row and its source passages; shared later-work content stays separately gated
 dc-ref-sud,deuterocanonical-integration.csv,place-reference,baruch,5,Follow exact record row and its source passages; shared later-work content stays separately gated
 dc-ref-susa,deuterocanonical-integration.csv,place-reference,esther-additions,8,Follow exact record row and its source passages; shared later-work content stays separately gated
 dc-ref-susanna-garden,deuterocanonical-integration.csv,place-reference,daniel-additions,9,Follow exact record row and its source passages; shared later-work content stays separately gated
@@ -1349,3 +1349,4 @@ PMC05,related-traditions-integration.csv,codex,pseudo-matthew-walker,39,Follow e
 PMC06,related-traditions-integration.csv,codex,pseudo-matthew-walker,39,Follow exact record row and its source passages; shared later-work content stays separately gated
 PMC07,related-traditions-integration.csv,codex,pseudo-matthew-walker,39,Follow exact record row and its source passages; shared later-work content stays separately gated
 PMC08,related-traditions-integration.csv,codex,pseudo-matthew-walker,39,Follow exact record row and its source passages; shared later-work content stays separately gated
+dc-ref-babylon-mention-tob14,deuterocanonical-integration.csv,typed-edge,tobit,1,Follow exact record row and its source passages; shared later-work content stays separately gated
