@@ -32,3 +32,7 @@ See [validation-r3.md](validation-r3.md) and [r3-state-probes.mjs](r3-state-prob
 Remaining gates: permitted rendered/mobile/keyboard/performance and actual UI Save/Load/undo/recovery testing; technical sign-off and explicit owner release decision on the final SHA. Any subsequent code change needs the applicable exact-head recheck. No browser/server/alternate rendering route, formal GitHub approval, main write, merge or deployment performed. The twice-denied documentation PR creation is not retried; this result is published only to the existing documentation branch if allowed.
 
 **Approved with scope limits: R2-C1/R2-C2 remediation verified at 0a43a4f; rendered/interactive acceptance and release authorization remain open.**
+
+## Documentation-only successor,2026-10-30
+
+[Evidence reconciliation](evidence-reconciliation-r3.md) verifies current PR43 headc7c6be8ce393bfdd63db3357665500385000bdd8 changes only remediation.md. R3's code-level closure carries forward; new builder-reported browser evidence, the separate browser-suite timeout and remaining technical/release gates are distinguished explicitly. No new application review or rendered approval is implied.
