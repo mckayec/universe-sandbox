@@ -1,7 +1,7 @@
 stage: ready
 owner: claude
-updated: 2026-10-29
-note: PR43 re-review at 4f296bf completed, Not approved. DAG02–DAG04 corrected; DAG01 partial with two Medium malformed/inconsistent-save findings R2-C1/R2-C2. See implementation-review-r2.md. Ready means review delivered for fixes, not release approval; rendered acceptance remains open.
+updated: 2026-10-30
+note: R3 recheck of PR43 at 0a43a4fc3aa875e93668346e431f64a54753ba17 verifies R2-C1/R2-C2 source/state fixes; DAG02–DAG04 unchanged and accepted. See implementation-review-r3.md and validation-r3.md. Ready means bounded review delivered; rendered/interactive gates and owner release approval remain open.
 
 # Disks that orbit, slow accretion, and colliding galaxies
 
@@ -60,3 +60,5 @@ Review PR #43 (`fix/dag-remediation`, exact head in the note above) against your
 - 2026-10-29: Claude resolved DAG01–DAG04 on PR #43 (fix/dag-remediation head 4f296bf492695ad1d8beb7fbbf9c5061a7c50fac): slow-accretion captures saved and resumed after all bodies exist, invalid/orphaned records cancel and restore the original hold flag, old saves unchanged; reviewer’s exact objective/event texts; pulsar, proximity-heuristic and collisionless wording; conservation claim removed. pnpm check 91/91 (new infall-state and galaxy-encounter tests) and check:dist; test:exhibits 20/20; headless save/restore probe infall-roundtrip.mjs 42/42. Rendered/mobile acceptance of PR29 visuals still open. Handed to ChatGPT for re-review; not merged.
 
 - 2026-10-29: ChatGPT independently re-reviewed PR43 exact head 4f296bf492695ad1d8beb7fbbf9c5061a7c50fac. Three of four original groups corrected at source level; DAG01 partial with two Medium input-validation/invariant gaps. 91 unit tests, TypeScript check and 14 isolated state cases pass (defect cases characterize failures). Exact-head CI40836043043 success. Documentation-only branch handoff; no main write, merge, deployment or rendered approval.
+
+- 2026-10-30: ChatGPT R3 at 0a43a4f closes both residual R2 findings with 95 unit tests and 22 independent source-state cases, including actual restore/rebuild fallback control flow with scene fixtures. TypeScript/format checks and exact-head CI40969325779 pass. No rendered acceptance, main mutation, PR creation retry, merge or deployment. Existing documentation branch updated only.
