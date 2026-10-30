@@ -1,0 +1,6 @@
+source_id,known_by_book,chapter,url,reading_status,body_extent,limit,record_ids
+WOL12,12,1,https://reactormag.com/chapter-one-tears-from-steel/,unread-access-error,No primary body read,timeout; subsequent internal errors,none
+WOL13,13,8,https://www.brandonsanderson.com/blogs/blog/towers-of-midnight-chapter-eight,read-entire-displayed-sample,Opening tavern scene through final paragraph before More articles,Print chapter collation not performed,wot-l13-p01..p06;e01..e02;j01..j02;c01
+WOL14A,14,1,https://reactormag.com/read-an-excerpt-from-chapter-one-of-a-memory-of-light/,read-entire-displayed-portion,Chapter opening through copyright notice; exclude comments,Explicit short chapter portion,wot-l14a-p01..p03;j01;e01
+WOL14A-FULL-TARGET,14,1,https://reactormag.com/a-memory-of-light-chapter-1-qeastward-the-wind-blewq/,unread-access-error,No primary body read,HTTP429 then internal error,none
+WOL14B,14,11,https://reactormag.com/a-memory-of-light-chapter-11-excerpt/,read-entire-displayed-excerpt,Novel prose after introduction through copyright notice; exclude comments,Host labels excerpt; print chapter collation not performed,wot-l14b-p01..p03;e01..e02;j01;c01..c02
