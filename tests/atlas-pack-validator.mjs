@@ -7,6 +7,14 @@ import vm from 'node:vm';
 
 export const PACK_DIR = new URL('../public/atlas/packs/', import.meta.url).pathname;
 const FEAT_MAX = 18; // matches FEAT_MAX in public/atlas/engine.js
+// relation families for tree links and parent links; matches FAMILIES in public/atlas/tree-rel.js
+export const TREE_FAMILIES = ['branch', 'within', 'division', 'merger', 'overlap', 'contact', 'history', 'context'];
+// the years a tree node spans for ordering checks: when, or the emergence window; none when undated
+function treeYears(n) {
+  if (!n || n.undated) return [];
+  if (n.emerge != null) return [].concat(n.emerge);
+  return n.when == null ? [] : [].concat(n.when);
+}
 
 export function loadRegistry(dir = PACK_DIR) {
   const ctx = { window: {} };
@@ -34,6 +42,31 @@ export function validatePacks(dir = PACK_DIR) {
     const ctx = { window: {}, console };
     ctx.window.window = ctx.window;
     vm.createContext(ctx);
+    const fid = f.replace(/\.js$/, '');
+    const parts = (REG.find(r => r.id === fid) || {}).parts || [];
+    let partErr = null;
+    // optional data parts (PACK_FORMAT 1.1): packs/<id>/<part>.js, run in order before the pack file
+    for (const part of [].concat(parts)) {
+      if (!/^[a-z0-9-]+$/.test(String(part))) {
+        partErr = `registry part "${part}" must be [a-z0-9-]`;
+        break;
+      }
+      const pf = path.join(DIR, fid, part + '.js');
+      if (!fs.existsSync(pf)) {
+        partErr = `registry part ${fid}/${part}.js is missing`;
+        break;
+      }
+      try {
+        vm.runInContext(fs.readFileSync(pf, 'utf8'), ctx, { filename: `${fid}/${part}.js` });
+      } catch (e) {
+        partErr = `LOAD ERROR in ${fid}/${part}.js: ${e.message}`;
+        break;
+      }
+    }
+    if (partErr) {
+      out[f] = { error: partErr };
+      continue;
+    }
     try {
       vm.runInContext(fs.readFileSync(path.join(DIR, f), 'utf8'), ctx, { filename: f });
     } catch (e) {
@@ -234,6 +267,8 @@ export function validatePacks(dir = PACK_DIR) {
     const U = P.ui || {};
     if (U.go && !wid.has(U.go.id)) issues.push(`ui.go.id -> missing world ${U.go.id}`);
     // codex
+    const cxIds = new Map();
+    const cxTabs = new Set((P.codex || []).map(t => t.id));
     (P.codex || []).forEach(t =>
       (t.list || []).forEach(x => {
         if (!x.name) issues.push(`codex ${t.id}: entry without name`);
@@ -241,8 +276,25 @@ export function validatePacks(dir = PACK_DIR) {
         (x.books || []).forEach(b => {
           if (!okBook(b)) issues.push(`codex ${t.id}/${x.name}: unknown book ${b}`);
         });
+        if (x.id != null) {
+          if (!/^[a-z0-9_-]+$/i.test(x.id)) issues.push(`codex ${t.id}/${x.name}: bad id "${x.id}"`);
+          if (cxIds.has(x.id)) issues.push(`codex: duplicate entry id ${x.id}`);
+          cxIds.set(x.id, x);
+        }
       }),
     );
+    // reference cards (PACK_FORMAT 13.1): events and worlds that point into the codex
+    (P.events || []).forEach(e => {
+      if (e.ref == null) return;
+      const x = cxIds.get(e.ref);
+      if (!x) issues.push(`event ${e.id}: ref -> missing codex entry "${e.ref}"`);
+      else if (okBook(e.book) && (x.first || 1) > e.book)
+        warn.push(`event ${e.id}: ref ${e.ref} first book ${x.first} > event book ${e.book} (spoiler line)`);
+    });
+    (P.worlds || []).forEach(w => {
+      if (w.refPlaces != null && !cxTabs.has(w.refPlaces))
+        issues.push(`world ${w.id}: refPlaces -> missing codex tab "${w.refPlaces}"`);
+    });
     // galaxy point specs
     const G = P.galaxy || {};
     const checkPoint = (p, where) => {
@@ -358,6 +410,8 @@ export function validatePacks(dir = PACK_DIR) {
           if (!P.timeline) warn.push(`${tag}: has when but the pack has no timeline (no year filter is shown)`);
         }
         if (it.notes != null && !Array.isArray(it.notes)) issues.push(`${tag}: notes must be an array of {k, t, ref}`);
+        if (it.whenText != null && (typeof it.whenText !== 'string' || !it.whenText.trim()))
+          issues.push(`${tag}: whenText must be a non-empty string`);
       });
       const T = P.timeline;
       if (T) {
@@ -382,12 +436,41 @@ export function validatePacks(dir = PACK_DIR) {
         nid.forEach((n, id) => {
           const tag = `tree node ${id}`;
           if (!n.name) issues.push(`${tag}: needs a name`);
-          const ys = n.when == null ? [] : [].concat(n.when);
-          if (!ys.length || ys.length > 2 || !ys.every(finite))
-            issues.push(`${tag}: when must be a year or [from, to]`);
+          // dates: `when`, an uncertain `emerge:[a, b]` window, or `undated:true` (PACK_FORMAT 21.1)
+          const ys = treeYears(n);
+          const kinds = [n.when != null, n.emerge != null, !!n.undated].filter(Boolean).length;
+          if (kinds > 1) issues.push(`${tag}: use one of when, emerge or undated`);
+          if (n.undated) {
+            if (n.until != null) issues.push(`${tag}: an undated node cannot have until`);
+          } else if (n.emerge != null) {
+            const e = Array.isArray(n.emerge) ? n.emerge : [];
+            if (e.length !== 2 || !e.every(finite) || e[0] > e[1])
+              issues.push(`${tag}: emerge must be [earliest, latest] years`);
+            else if (e.includes(0) || n.until === 0) issues.push(`${tag}: emerge uses year 0`);
+            if (n.until != null && (!finite(n.until) || (e.length === 2 && n.until < e[1])))
+              issues.push(`${tag}: until must be a year after the emergence window`);
+            if (!n.whenText) warn.push(`${tag}: emerge without whenText (show the source's own wording)`);
+          } else if (!ys.length || ys.length > 2 || !ys.every(finite))
+            issues.push(`${tag}: when must be a year or [from, to] (or use emerge / undated)`);
           else if (ys.includes(0)) issues.push(`${tag}: when uses year 0 (there is none: 1 BC is -1, AD 1 is 1)`);
           if (n.parent != null && !nid.has(String(n.parent)))
             issues.push(`${tag}: parent -> missing node "${n.parent}"`);
+          if (n.parentType != null && !TREE_FAMILIES.includes(String(n.parentType)))
+            issues.push(`${tag}: parentType "${n.parentType}" is not one of ${TREE_FAMILIES.join(', ')}`);
+          if (n.parentType != null && n.parent == null) warn.push(`${tag}: parentType without a parent`);
+          [].concat(n.merge || []).forEach(m => {
+            if (!nid.has(String(m))) issues.push(`${tag}: merge -> missing node "${m}"`);
+            else if (String(m) === id) issues.push(`${tag}: merges with itself`);
+          });
+          if (n.merge != null && [].concat(n.merge).length < 2 && n.parent == null)
+            warn.push(`${tag}: merge lists fewer than two predecessors`);
+          if (n.notSame != null && !Array.isArray(n.notSame))
+            issues.push(`${tag}: notSame must be an array of {id, t}`);
+          (Array.isArray(n.notSame) ? n.notSame : []).forEach((x, j) => {
+            if (!x || (!x.t && x.id == null)) issues.push(`${tag}: notSame[${j}] needs t (and optionally id)`);
+            else if (x.id != null && !nid.has(String(x.id)))
+              issues.push(`${tag}: notSame[${j}] -> missing node "${x.id}"`);
+          });
           [].concat(n.also || []).forEach(a => {
             if (!nid.has(String(a))) issues.push(`${tag}: also -> missing node "${a}"`);
           });
@@ -409,13 +492,8 @@ export function validatePacks(dir = PACK_DIR) {
           }
           // a branch should not begin before the tradition it came from
           const p = n.parent != null && nid.get(String(n.parent));
-          if (
-            p &&
-            ys.length &&
-            p.when != null &&
-            [].concat(p.when).every(finite) &&
-            Math.min(...ys) < Math.min(...[].concat(p.when))
-          )
+          const py = p ? treeYears(p) : [];
+          if (p && ys.length && py.length && ys.every(finite) && py.every(finite) && Math.min(...ys) < Math.min(...py))
             warn.push(`${tag}: begins before its parent ${p.id}`);
         });
         // no loops through parent
@@ -431,9 +509,30 @@ export function validatePacks(dir = PACK_DIR) {
             p = nid.get(p).parent != null ? String(nid.get(p).parent) : null;
           }
         });
+        // merge chains must not loop either
+        nid.forEach((n, id) => {
+          const seen = new Set();
+          const stack = [].concat(n.merge || []).map(String);
+          while (stack.length) {
+            const m = stack.pop();
+            if (m === id) {
+              issues.push(`tree node ${id}: merge chain loops`);
+              break;
+            }
+            if (seen.has(m) || !nid.has(m)) continue;
+            seen.add(m);
+            const q = nid.get(m);
+            if (q.parent != null) stack.push(String(q.parent));
+            [].concat(q.merge || []).forEach(x => stack.push(String(x)));
+          }
+        });
+        if (P.tree.view != null && !['date', 'relationship'].includes(P.tree.view))
+          issues.push(`tree.view must be "date" or "relationship"`);
         (P.tree.links || []).forEach((l, i) => {
           if (!l || !nid.has(String(l.from)) || !nid.has(String(l.to)))
             issues.push(`tree.links[${i}] needs from and to node ids`);
+          if (l && l.type != null && !TREE_FAMILIES.includes(String(l.type)))
+            issues.push(`tree.links[${i}]: type "${l.type}" is not one of ${TREE_FAMILIES.join(', ')}`);
           if (l && l.when === 0) issues.push(`tree.links[${i}]: when uses year 0`);
         });
       }

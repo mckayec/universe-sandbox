@@ -41,6 +41,20 @@ Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 
 {id:"my-series", title:"The My Series Atlas", blurb:"One line for the chooser.", accent:"#9db8ff"},
 ```
 
+### 1.1 Data parts (optional)
+
+A large pack may split its data into part files so no file passes about 800 lines. List them in the registry
+entry as `parts:["judaism","christianity"]`; `index.html` (and the validator) run `packs/<id>/<part>.js` in that
+order before `packs/<id>.js`. A part only registers data for the pack file to read; it must not register the pack:
+
+```js
+/* packs/my-series/places.js */
+((window.ATLAS_PACK_PARTS = window.ATLAS_PACK_PARTS || {})["my-series"] =
+  window.ATLAS_PACK_PARTS["my-series"] || {}).places = function (helpers) { return { list: [ ... ] }; };
+```
+
+Part names use lowercase letters, digits and `-`. A missing part is a load error.
+
 Unknown fields are ignored. Every field marked *optional* may be left out; the engine falls back to
 the default shown. A pack with only `id`, `meta.title`, `books` and `worlds` loads (see section 17).
 
@@ -463,6 +477,19 @@ codex: [
 Entry fields: `name` (req), `desc` (req), `role`, `books` (badges), `first` (gating, default
 `min(books)` else 1), `more` (`[[book, text], …]` spoiler-gated additions).
 
+### 13.1 Reference cards: places without a map point (optional)
+For places with no sourced coordinates (Track A atlases), do not invent a pin: make each one a codex entry
+with an `id`, in a tab of its own.
+
+| field | notes |
+|---|---|
+| codex entry `id` | `[a-z0-9_-]`, unique across all tabs. Lets other items open this entry directly |
+| world `refPlaces` | a codex tab id. The world's details panel adds a "Places without a map point" section with a button that opens that tab (`ui.refPlacesTitle` / `ui.refPlacesNote` rename the heading and note) |
+| event `ref` | a codex entry id, for an event with no anchored `site`. The Chronicle shows the card's name with "no map point", and the open event gets a "Reference card" button that opens the codex at that entry, highlighted |
+
+The validator rejects a `ref` or `refPlaces` that points nowhere, duplicate entry ids, and (as before) any site
+without numeric `lat`/`lon`, so a missing coordinate can never fall back to 0,0.
+
 ---------------------------------------------------------------------------------------------------
 
 ## 14. `galaxy`
@@ -661,6 +688,9 @@ timeline:{min:-2200, max:2000, step:10, style:"BC/AD", label:"Years",
 * `eras` names are shown beside the selected range (descriptive only).
 * Worlds, sites, events and links take `when:1830` or `when:[-1446,-1406]`, and `approx:true` to print
   "c.". An item is shown when its span overlaps the selected range; items with no `when` always show.
+* `whenText:"eighteenth century"` (optional, sites and events) prints the source's own wording instead of the
+  formatted years; `when` then only drives the year filter. Use it whenever the source is less precise than a
+  year, and leave `when` out entirely when there is no defensible span (the item then always shows).
 * The bar is a two-handle slider plus an "All years" reset. The address keeps it: `#yr=-1500_-1000`.
 * Dates appear next to places and events in the details panel, with the item's layer swatches.
 
@@ -719,7 +749,7 @@ tree:{
 | `blurb`, `notes` | details panel text; `notes` use the same labelled kinds as places (20.3) so what a tradition says about itself, what tradition holds and what scholars say stay separate |
 | `world`, `site`, `sites` | where it began and where it spread: shown as "On the map" buttons that close the tree and fly to the place. When a place is open, a "Show … in the family tree" link leads back |
 
-`links` (optional) are extra dashed ties between any two nodes, with a `label` (shown on hover and in the
+`links` (optional) are extra ties between any two nodes (dashed unless typed, 21.1), with a `label` (shown on hover and in the
 details) and an optional `when` (the year the tie is drawn at).
 
 Behaviour:
@@ -732,3 +762,57 @@ Behaviour:
 * Content rules: describe each tradition in its own terms; when the date or the parentage is disputed, say so
   in `notes` (`scholarship`) and mark `approx:true` rather than picking a side silently. A tree draws a
   lineage, not a ranking: no ordering other than by date.
+
+### 21.1 Typed relations, uncertain dates and the relationship view (optional)
+
+For traditions whose sources give a century, a period or no founding date, and whose ties are not all
+"branched from". The code is in `tree-rel.js` (loaded before `tree.js`); the DOM controller is `tree-view.js`
+(loaded after it). `tests/fixtures/tree-typed-demo.js` has a working example.
+
+```js
+tree:{
+  view:"date",                         // "date" (default) or "relationship": which arrangement opens first
+  nodes:[
+    {id:"hub", name:"Hub", undated:true, ongoing:true},                       // no defensible date at all
+    {id:"stream", name:"Stream", parent:"hub", parentType:"within", parentRel:"classified-within",
+     emerge:[1501,1600], whenText:"sixteenth century", ongoing:true, kind:"movement"},
+    {id:"merged", name:"Merged body", merge:["org-a","org-b"], parentRel:"institutional-merger", when:2026,
+     ongoing:true, notSame:[{id:"stream", t:"A shared label does not make them the same."}]}
+  ],
+  links:[{from:"stream", to:"other", type:"contact", rel:"authored-comparison", when:1650}]
+}
+```
+
+| field | notes |
+|---|---|
+| `emerge:[a, b]` | instead of `when`: an uncertain emergence window. Drawn as a ramp from `a` to `b`, then a solid bar. Ends at `until` (a year ≥ `b`), or runs on with `ongoing`. Give the source's own words in `whenText` (shown instead of the numbers); convert a century literally (sixteenth century = 1501–1600) and say nothing more precise than the source does |
+| `undated:true` | instead of `when`: no defensible date. Drawn as an open ring with a dotted line, placed where its parent (or first merge predecessor) is drawn, or for a root where its earliest dated branch begins (else at the start of the axis), only so it can be drawn. Text and aria labels say "No single founding date" (or `whenText`); no year is ever printed, and the year filter never fades it |
+| `whenText` | the source's wording for the date ("sixteenth century", "early centuries CE") |
+| `kind` | a short type shown beside the date ("legal school", "Sufi order", "movement") |
+| `parentType` | the relation family of the `parent` tie (default `branch`); `parentRel` keeps the research's exact label, shown on hover and in the details |
+| `merge` | two or more predecessor node ids: a body formed by merger. Drawn from every predecessor; without a `parent`, it is placed under the first one for the row order only, and the details list all of them under "Formed by merging" |
+| `notSame` | `[{id, t}]`: "Not the same as …" notes for names or places that must not be merged (`id` optional, a node to link). Places use a note of kind `notsame` (20.3) for the same purpose |
+| `links[].type` / `rel` | the link's relation family and its exact research label. Untyped links (and `also`) are `overlap` |
+
+Relation families (fixed vocabulary; the validator rejects anything else). The key in the details panel lists
+only the families the pack uses.
+
+| family | drawn as | details say |
+|---|---|---|
+| `branch` | solid | Developed from / Developments |
+| `within` | thin solid | Within / Includes |
+| `division` | solid with a cross-stroke where it leaves | Divided from / Divisions |
+| `merger` | one solid from each predecessor | Formed by merging / Merged into |
+| `overlap` | dashed | Overlaps |
+| `contact` | dotted | Contact (comparison, translation, influence, encounter) |
+| `history` | dash-dot | History with (separation and reconciliation) |
+| `context` | faint dotted | Context / Context for |
+
+**By relationship.** The tree dialog has *By date* and *By relationship* buttons. The relationship view is an
+indented, collapsible outline of every visible node (dated, windowed or undated) under the node it is placed
+beneath, each with its typed ties; it needs no horizontal scrolling on phones. It reads in pack order, not by
+date or name: roots appear as declared (so declare each layer's nodes together, in layer order), and under a
+node its children are grouped by `kind`, in the order each kind first appears, then as declared. A node with a
+`world` but no site gets an "Open the map" button marked "no single map point for this entry". Spoiler gating, layer fading
+and selection work the same way in both views. Content rule: a tie says what the sources say and no more; use
+`contact` or `context` rather than a parent when one tradition did not branch from the other.

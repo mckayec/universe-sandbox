@@ -112,7 +112,7 @@ test('the SVG escapes pack text, marks the selection and fades filtered nodes', 
   assert.ok(!svg.includes('<b>A</b>'));
   assert.match(svg, /data-node="b" tabindex="0" role="button" aria-pressed="true"/);
   assert.match(svg, /class="tr-n kin dim go"/);
-  assert.match(svg, /class="tr-br on"/);
+  assert.match(svg, /class="tr-br f-branch on"/);
   assert.match(svg, /aria-label="B, AD 5"/);
 });
 

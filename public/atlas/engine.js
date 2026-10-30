@@ -436,7 +436,7 @@ function buildShell(K){
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
 '<div class="vignette"></div><div id="labels"></div><div id="fade"></div>'+
 '<header class="top"><a class="gl-home" href="'+esc(U.backHref)+'" title="Back to the Gravity Lab sandbox"><span aria-hidden="true">←</span> '+esc(U.backLabel)+'</a><div class="brand"><svg class="sigil" viewBox="0 0 48 48" aria-hidden="true">'+defs+sig+'</svg>'+
-  '<div><h1 class="chrome">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
+  '<div><h1 class="chrome'+(String(TT).length>26?" long":"")+'">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
  '<div class="controls"><button class="btn" id="idxBtn" aria-expanded="false" aria-controls="index">Worlds</button>'+
   (U.bookLabel?'<span class="seglbl">'+esc(U.bookLabel)+'</span>':"")+
   '<div class="seg" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+
@@ -1058,8 +1058,9 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     else{const vis=all.filter(s=>!S.book||!s.book||s.book===S.book||(s.books||[]).includes(S.book));
       if(all.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
         all.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(vis.includes(s)?"":' style="opacity:.45"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||(s.book?[s.book]:[]))+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
+    h+=refPlacesHtml(w);
     const evs=evFor(w.id);h+='<div class="rule"><span class="eyebrow">In the Chronicle</span></div>';
-    h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+'</button>').join("")
+    h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':e.ref?'<span class="ep">'+esc(cxName(e.ref))+' · no map point</span>':"")+'</button>'+refBtn(e)).join("")
       :'<p class="empty">'+(S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
   }
   dos.innerHTML=h;dos.classList.toggle("collapsed",MOB&&dosCollapsed);dos.scrollTop=0;
@@ -1068,9 +1069,22 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     gb.addEventListener("click",e=>{if(e.target.closest("[data-act]"))return;toggleSheet();});
     gb.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleSheet();}});}
 }
+/* E4: places without a map point live in a codex tab; the world lists how many and opens it */
+function refPlacesHtml(w){
+  const tab=w.refPlaces&&K.codex.find(t=>t.id===w.refPlaces);if(!tab)return "";
+  const n=tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book).length;
+  if(!n)return "";
+  return '<div class="rule"><span class="eyebrow">'+esc(UI.refPlacesTitle||"Places without a map point")+'</span></div>'+
+    '<p class="srcnote">'+esc(UI.refPlacesNote||"These places have no sourced coordinates yet, so they are listed as reference cards instead of pins.")+'</p>'+
+    '<div class="actions"><button class="btn" data-cxtab="'+esc(tab.id)+'">'+esc(tab.t)+' ('+n+')</button></div>';
+}
+function refBtn(e){
+  if(!e.ref||S.ev!==e.id||!CX_BY[e.ref])return "";
+  return '<button class="btn cxref" data-cx="'+esc(e.ref)+'">Reference card: '+esc(cxName(e.ref))+'</button>';
+}
 function eraBlurb(w){let b=w.blurb;const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(cur>=k&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
-const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
+const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",notsame:"Not the same as",note:"Note"},UI.noteLabels||{});
 function placeMeta(s){return LY?LY.itemMeta(LAY,TL,s):"";}
 function siteExtra(s){let h="";if(s.modern)h+='<span class="pm">'+esc(UI.modernLabel||"Today")+': '+esc(s.modern)+'</span>';
   if(S.site===s.id&&TRV&&S.sel){const tn=TRV.nodeFor(S.sel,s.id);if(tn&&treeNodeSeen(tn))h+='<span class="tr-from" data-tree-node="'+esc(tn.id)+'">Show '+esc(tn.name)+' in the '+esc(TRV.T.title.toLowerCase())+'</span>';}
@@ -1089,6 +1103,7 @@ function distText(w){
   return "About "+ly.toLocaleString()+" light-years from Sol"+(w.est?" · position estimated":"");}
 dos.addEventListener("click",e=>{const a=e.target.closest("[data-act]");if(a){const k=a.dataset.act;
     if(k==="descend")descend(S.sel);else if(k==="ascend")ascend();else if(k==="web")flyHuman();else if(k==="go")selectWorld(a.dataset.id,true);return;}
+  const cx=e.target.closest("[data-cx],[data-cxtab]");if(cx){openCodex(cx.dataset.cxtab,cx.dataset.cx);return;}
   const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site?null:p.dataset.site);return;}
   const ev=e.target.closest("[data-ev]");if(ev){openEvent(ev.dataset.ev===S.ev?null:ev.dataset.ev,false);}});
 
@@ -1117,18 +1132,31 @@ function renderLegend(){const b=S.book;let L=[];
 
 /* ===================== CODEX ===================== */
 let cxTab=K.codex.length?K.codex[0].id:null;
+/* reference cards (PACK_FORMAT 13.1): codex entries with an id can be opened directly */
+let cxHl=null;
+const CX_BY={};
+K.codex.forEach(t=>t.list.forEach(x=>{if(x.id)CX_BY[x.id]={tab:t.id,x};}));
+function cxName(id){return CX_BY[id]?CX_BY[id].x.name:id;}
 function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books):1);}
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
   const tab=K.codex.find(t=>t.id===cxTab)||K.codex[0];
   const list=tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=tab.list.length-list.length;
   $("#cxBody").innerHTML=list.map(x=>{const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
-    return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}).join("")+
+    return '<div class="cx-item'+(x.id&&x.id===cxHl?" hl":"")+'"'+(x.id?' id="cx-'+esc(x.id)+'"':"")+'><h3>'+esc(x.name)+'</h3>'+(x.role||x.books?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}).join("")+
     (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"");
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
 $("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
-function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
+function openCodex(tab,entry){
+  cxHl=null;
+  if(entry&&CX_BY[entry]){cxTab=CX_BY[entry].tab;cxHl=entry;}
+  else if(tab&&K.codex.some(t=>t.id===tab))cxTab=tab;
+  renderCodex();$("#codex").hidden=false;$("#cxClose").focus();
+  /* scroll only the codex body (scrollIntoView would also scroll the page) */
+  const it=cxHl&&document.getElementById("cx-"+cxHl);const body=$("#cxBody");
+  if(body)body.scrollTop=it?Math.max(0,it.offsetTop-body.offsetTop-12):0;
+}
 function closeCodex(){if($("#codex").hidden)return;$("#codex").hidden=true;$("#cxBtn").focus();}
-$("#cxBtn").addEventListener("click",openCodex);
+$("#cxBtn").addEventListener("click",()=>openCodex());
 $("#cxClose").addEventListener("click",closeCodex);
 $("#codex").addEventListener("click",e=>{if(e.target.id==="codex")closeCodex();});
 /* keep Tab inside the Codex dialog while it is open */
