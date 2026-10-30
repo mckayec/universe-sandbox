@@ -199,6 +199,10 @@ books: {
   link opens straight onto that place; descending to a surface adds a history entry so Back ascends.
 * Any number of books works. On phones, packs with more than 7 books get the book buttons on their own
   full-width row so none are hidden.
+* More than 12 books (e.g. a library of 39 works) no longer fit as buttons: the chooser becomes one
+  compact picker (a select with ‹ › step buttons), grouped under `books[k].group` headings in book order.
+  `ui.bookPicker:true|false` forces it on or off; `ui.pickerAll`, `ui.pickerPrev`, `ui.pickerNext` rename
+  its "All", previous and next labels. Badge rows longer than 12 collapse to "first … last  N".
 
 `spoilers.mode` decides what picking book *k* does:
 

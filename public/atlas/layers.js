@@ -303,6 +303,57 @@
     return parts.join('');
   }
 
+  /* ---------- compact work picker (packs with many books) ---------- */
+
+  /* More than 12 books do not fit as a row of buttons, so the chooser becomes one select. */
+  const PICKER_MIN = 13;
+  function usePicker(bookIds, ui) {
+    if (ui && ui.bookPicker === true) return true;
+    if (ui && ui.bookPicker === false) return false;
+    return ARR(bookIds).length >= PICKER_MIN;
+  }
+
+  /* consecutive runs of books sharing books[b].group → [{label, ids}] (label '' = ungrouped) */
+  function pickerGroups(books, bookIds) {
+    const out = [];
+    ARR(bookIds).forEach((b) => {
+      const g = (books[b] && books[b].group) || '';
+      const last = out[out.length - 1];
+      if (last && last.label === g) last.ids.push(b);
+      else out.push({ label: g, ids: [b] });
+    });
+    return out;
+  }
+
+  /* the next/previous book id from cur (0 = All); stays put at either end */
+  function stepBook(bookIds, cur, dir) {
+    const ids = [0].concat(ARR(bookIds));
+    const i = ids.indexOf(cur);
+    const j = Math.max(0, Math.min(ids.length - 1, (i < 0 ? 0 : i) + (dir < 0 ? -1 : 1)));
+    return ids[j];
+  }
+
+  function bookOption(books, b) {
+    const k = books[b] || {};
+    const label = (k.n && k.n !== k.title ? k.n + ' · ' : '') + (k.title || k.n || String(b));
+    return '<option value="' + b + '">' + ESC(label) + '</option>';
+  }
+
+  /* markup placed inside #books: step buttons and a select; the hidden data-b buttons stay for the engine */
+  function renderBookPicker(books, bookIds, opts) {
+    const o = opts || {};
+    let h = '<button type="button" class="bkstep" data-step="-1" aria-label="' + ESC(o.prevLabel || 'Previous') + '">‹</button>';
+    h += '<select class="bkpick" aria-label="' + ESC(o.label || 'Choose') + '">';
+    h += '<option value="0">' + ESC(o.allLabel || 'All') + '</option>';
+    pickerGroups(books, bookIds).forEach((g) => {
+      const opts2 = g.ids.map((b) => bookOption(books, b)).join('');
+      h += g.label ? '<optgroup label="' + ESC(g.label) + '">' + opts2 + '</optgroup>' : opts2;
+    });
+    h += '</select>';
+    h += '<button type="button" class="bkstep" data-step="1" aria-label="' + ESC(o.nextLabel || 'Next') + '">›</button>';
+    return h;
+  }
+
   const api = {
     normLayers,
     itemLayers,
@@ -322,6 +373,10 @@
     encodeState,
     decodeState,
     renderBar,
+    usePicker,
+    pickerGroups,
+    stepBook,
+    renderBookPicker,
     itemMeta,
   };
   root.AtlasLayers = api;

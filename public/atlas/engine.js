@@ -431,6 +431,7 @@ function buildShell(K){
   const stops=T.chromeStops||[[0,"#fff7e2"],[.45,"#e8cd8a"],[.68,"#9a7432"],[1,"#f4e2b2"]];
   const defs='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">'+stops.map(s=>'<stop offset="'+s[0]+'" stop-color="'+s[1]+'"/>').join("")+'</linearGradient></defs>';
   const sig=T.sigil||DEF_SIGIL,ssig=T.splashSigil||sig;const TT=M.title.toUpperCase();
+  const BOOK_PICK=!!(window.AtlasLayers&&window.AtlasLayers.usePicker(K.bookIds,U));
   const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");
   app.innerHTML=
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
@@ -439,8 +440,9 @@ function buildShell(K){
   '<div><h1 class="chrome">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
  '<div class="controls"><button class="btn" id="idxBtn" aria-expanded="false" aria-controls="index">Worlds</button>'+
   (U.bookLabel?'<span class="seglbl">'+esc(U.bookLabel)+'</span>':"")+
-  '<div class="seg" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+
-  K.bookIds.map(b=>'<button data-b="'+b+'" aria-pressed="false" title="'+esc(K.books[b].title+(K.books[b].y?" ("+K.books[b].y+")":""))+'">'+esc(K.books[b].n)+'</button>').join("")+'</div>'+
+  '<div class="seg'+(BOOK_PICK?" picker":"")+'" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+
+  K.bookIds.map(b=>'<button data-b="'+b+'" aria-pressed="false" title="'+esc(K.books[b].title+(K.books[b].y?" ("+K.books[b].y+")":""))+'">'+esc(K.books[b].n)+'</button>').join("")+
+  (BOOK_PICK?window.AtlasLayers.renderBookPicker(K.books,K.bookIds,{label:U.booksAria,allLabel:U.pickerAll||"All",prevLabel:U.pickerPrev,nextLabel:U.pickerNext}):"")+'</div>'+
   '<button class="btn" id="galBtn">'+esc(U.galaxyButton)+'</button><button class="btn" id="webBtn">'+esc(U.homeButton)+'</button>'+
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
   (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
@@ -939,7 +941,11 @@ function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(S.book>=k&&w.eras
     if(CUM){const ks=eraKeys(w).filter(k=>w.eras[k].status);if(ks.length){const k=Math.max(...ks);s=w.status+" → "+w.eras[k].status;}}
     else{const ks=eraKeys(w);if(ks.length){const k=Math.max(...ks);if(w.eras[k].status)s=w.status+" → "+w.eras[k].status;}}}
   return s;}
-const bks=arr=>'<span class="bks">'+(arr||[]).filter(b=>BOOKS[b]&&(!CUM||!S.book||b<=S.book)).map(b=>'<span class="bk bk'+b+'">'+esc(BOOKS[b].n)+'</span>').join("")+'</span>';
+const bk1=b=>'<span class="bk bk'+b+'">'+esc(BOOKS[b].n)+'</span>';
+/* more than 12 badges (packs with many books) collapse to "first … last · N" */
+const bks=arr=>{const l=(arr||[]).filter(b=>BOOKS[b]&&(!CUM||!S.book||b<=S.book));
+  if(l.length>12)return '<span class="bks">'+bk1(l[0])+'<span class="bkgap">…</span>'+bk1(l[l.length-1])+'<span class="bkgap">'+l.length+'</span></span>';
+  return '<span class="bks">'+l.map(bk1).join("")+'</span>';};
 const groupOpt=(w,k,def)=>{const g=GROUP_BY[w.group];return g&&g[k]!=null?g[k]:def;};
 const flyDistFor=w=>groupOpt(w,"flyDist",G.flyDist||24);
 const FLY_PITCH=G.flyPitch==null?.5:G.flyPitch;
@@ -1347,6 +1353,16 @@ $("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
+/* compact work picker (more than 12 books): the select and step buttons press the hidden data-b buttons */
+function bindBookPicker(){
+  const box=$("#books"),sel=box.querySelector(".bkpick");if(!sel)return;
+  const press=b=>{const el=box.querySelector('[data-b="'+b+'"]');if(el)el.click();};
+  sel.addEventListener("change",()=>press(+sel.value));
+  box.querySelectorAll(".bkstep").forEach(btn=>btn.addEventListener("click",()=>
+    press(window.AtlasLayers.stepBook(K.bookIds,S.book,+btn.dataset.step))));
+  box.addEventListener("click",()=>{sel.value=String(S.book);});
+  sel.value=String(S.book);}
+bindBookPicker();
 $("#galBtn").addEventListener("click",flyGalaxy);
 $("#webBtn").addEventListener("click",flyHuman);
 function applyBookToScene(){const b=S.book;
