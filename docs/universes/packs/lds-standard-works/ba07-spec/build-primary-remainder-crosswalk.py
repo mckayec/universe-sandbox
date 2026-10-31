@@ -1,0 +1,34 @@
+"""Close remaining primary specification gaps using accepted evidence, not new reading."""
+import csv,hashlib,io,re,sys
+from pathlib import Path
+P=Path(__file__).resolve().parent;B=P.parent
+prior={r['research_id'] for f in P.glob('*crosswalk.csv') if f.name!='primary-remainder-content-crosswalk.csv' for r in csv.DictReader(f.open())}
+assert len(prior)==156
+account={r['research_id']:r for r in csv.DictReader((B/'content-audit/research-import-accounting.csv').open())}
+U='https://www.churchofjesuschrist.org/study/scriptures/'
+data=[
+('J01','Abram’s household in Genesis',1,'ot','Genesis describes Abram’s household traveling from Haran into Canaan, reaching Shechem and the hill country between Bethel and Hai, and later going down to Egypt during famine.',U+'ot/gen/12?lang=eng','Genesis 12:5–10','P01→P02→P03→P04, with intermediate southward travel compressed. Do not draw a recovered road or copy Abraham 2 into this source view.'),
+('J03','Abraham’s narrated journey',5,'pgp','Abraham describes leaving Ur, reaching Haran and continuing through Jershon and the Shechem and Bethel/Hai settings. The account then describes an intended journey toward Egypt and an approach near entry, not a completed Egyptian arrival.',U+'pgp/abr/2?lang=eng','Abraham 2:4–25','Keep Terah’s stay at Haran separate from the continuing household. Reuse PJ02 passage view, but account for J03 separately; no arrived-in-Egypt event.'),
+('AP09','Sea of Galilee: separate source views',1,'ot','Numbers names the Sea of Chinnereth in its boundary description; the Church edition identifies it as the Sea of Galilee.',U+'ot/num/34?lang=eng;'+U+'bd/galilee-sea-of?lang=eng;'+U+'nt/matt/4?lang=eng','Numbers 34:11; Bible Dictionary, Galilee, Sea of; Matthew 4:18','One research ID, two separately gated views: OT [1]/ot base; NT [2]/nt copy: “Matthew places the call of fishermen beside this sea.” Do not put both clauses on one OR-layer card. No shoreline event coordinate; town Chinnereth and land Gennesaret are not lake aliases.'),
+('AP20','Derbe',2,'nt','Acts describes the missionaries reaching Derbe before revisiting earlier communities.',U+'nt/acts/14?lang=eng','Acts 14:20–21','Reuse named unplaced AJ03 stop; no modern candidate pin without separate evidence.'),
+('AP23','Samothracia',2,'nt','Acts describes the travelers sailing from Troas to Samothracia before reaching Neapolis the next day.',U+'nt/acts/16?lang=eng','Acts 16:11','Reuse AJ04 island stop; no precise landing or fabricated harbor.'),
+('AP24','Neapolis',2,'nt','Acts describes the travelers continuing from Neapolis to Philippi.',U+'nt/acts/16?lang=eng','Acts 16:11–12','Reuse AJ04; a known modern city does not identify the landing place. No unsourced pin.'),
+('AP26','Melita',2,'nt','Acts identifies the island as Melita and describes the company departing after three months on a ship that had wintered there.',U+'nt/acts/28?lang=eng','Acts 28:1,11','Reuse AJ05; distinguish the company’s stay from the ship’s wintering. No shipwreck, landing or departure harbor pin.'),
+('AP30','Appii Forum',2,'nt','Acts describes believers coming to meet Paul’s company at Appii Forum.',U+'nt/acts/28?lang=eng','Acts 28:15','Reuse grouped AJ05 meeting places with AP31; verse names both without separately proving the linearized visit order.'),
+('AP31','Three Taverns',2,'nt','Acts also names Three Taverns among the places where believers meet Paul’s company.',U+'nt/acts/28?lang=eng','Acts 28:15','Reuse grouped AJ05 meeting places with AP30; do not invent exact meeting coordinates or an independently attested ordered leg.'),
+('RP02','Susquehanna River baptism setting',4,'dc','The Church commemorates Joseph Smith and Oliver Cowdery’s reported baptisms in the Susquehanna River.','https://www.churchofjesuschrist.org/learn/locations/priesthood-restoration-site?lang=eng;'+U+'pgp/js-h/1?lang=eng','R04 official site description; JS—History 1:66–75','Reported experience/commemoration; near Harmony/Oakland Township, 1829 context. Reuse RE02 but no precise bank, reconstructed shoreline or Harmony pin as baptism position. PGP source relationship retains its own [5]/pgp view.'),
+('RP04','Liberty Jail',4,'dc','Joseph Smith and fellow prisoners were held at Liberty Jail while awaiting trial after the 1838 Missouri conflict.','https://www.josephsmithpapers.org/place/jail-liberty-missouri','R07 documentary place history','1838–1839 context; reuse RE06/RE07. Transfer on April 6 is not acquittal or ultimate escape. No modern reconstruction coordinate substituted for the historical cell.'),
+('RP06','Salt Lake Valley context',4,'dc','Brigham Young reached the emigrants’ Salt Lake Valley camp in July 1847, after members of the advance company.','https://www.nps.gov/articles/000/the-1847-trek-mormon-pioneer-trail.htm','R12 NPS historical synthesis','Reuse RE13 and valley-migration context. Broad valley/city region, not a temple or city-center pin identifying the arrival camp; not first human arrival.'),
+('RP08','Missouri conflict region',4,'dc','Violence and state action displaced Latter-day Saints from Missouri; the state archives preserve records from the conflict.','https://www.sos.mo.gov/archives/resources/mormon.asp','R08 Missouri State Archives overview and documentary collection','1833–1839 context. Reuse RE05; no statewide centroid, invented battle polygon or claim of fresh handwritten-document inspection.')]
+rows=[]
+for k,title,g,layer,copy,urls,locator,check in data:
+ a=account[k];f,line=a['research_location'].split(':');raw=(B/f).read_text().splitlines()[int(line)-1];assert raw==a['research_row'] and k not in prior
+ rows.append(dict(research_id=k,proposed_title=title,minimal_neutral_copy=copy,books=f'[{g}]',layers='["'+layer+'"]',numeric_when='omit; prose dates or source-relative intervals only',geometry='none; textual/nonspatial source view',source_urls=urls,source_locator=locator,source_location=a['research_location'],source_row_sha256=hashlib.sha256(raw.encode()).hexdigest(),accepted_context=raw,current_representation=a['disposition'],evidence_mode='accepted research and prior passage audit reused; no new source access claimed',consolidation_and_acceptance=check,deferral='no blanket dense-display deferral; retain per-ID disposition'))
+remaining={k for k,a in account.items() if a['disposition']!='represented' and k not in prior}
+assert remaining=={r['research_id'] for r in rows} and len(rows)==13
+assert len(prior|remaining)==169
+out=io.StringIO();w=csv.DictWriter(out,fieldnames=list(rows[0]),lineterminator='\n');w.writeheader();w.writerows(rows)
+p=P/'primary-remainder-content-crosswalk.csv'
+if '--write' in sys.argv:p.write_text(out.getvalue())
+else:assert p.read_text()==out.getvalue()
+print('PASS: 13 remaining primary specifications; 169 total proposed research views; all 160 originally omitted/partial primary IDs now specified; 96 originally represented rows preserved. AP09 is one ID with two source gates, not two new IDs.')
