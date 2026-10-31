@@ -96,6 +96,21 @@ const browser = await chromium.launch({
 });
 
 const failures = [];
+/* Pages that open straight onto a planet surface (the LDS atlas starts on Earth) leave software WebGL
+   (SwiftShader, as on CI) busy for a while after their context closes, and the browser's compositor then
+   refuses the next page's first capture with "Unable to capture screenshot". That is a property of the
+   shared software GPU process, not of the page being captured, so retry the capture briefly; any other
+   error, or a capture that keeps failing, still fails the check. */
+async function screenshot(tab, path) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await tab.screenshot({ path });
+    } catch (e) {
+      if (attempt >= 4 || !/Unable to capture screenshot/.test(e.message)) throw e;
+      await tab.waitForTimeout(3000);
+    }
+  }
+}
 async function visit(page, vp) {
   const context = await browser.newContext({
     viewport: { width: vp.width, height: vp.height },
@@ -141,8 +156,7 @@ async function visit(page, vp) {
     // no horizontal page scroll
     const sw = await tab.evaluate(() => document.documentElement.scrollWidth - innerWidth);
     if (sw > 1) errs.push(`page scrolls horizontally by ${sw}px`);
-    if (shotsDir)
-      await tab.screenshot({ path: join(shotsDir, `${page.path.replace(/[^\w-]+/g, '_')}-${vp.name}.png`) });
+    if (shotsDir) await screenshot(tab, join(shotsDir, `${page.path.replace(/[^\w-]+/g, '_')}-${vp.name}.png`));
     // header must never be clipped at laptop widths
     if (page.header && vp.name === 'desktop') {
       for (const w of [1440, 1280, 1024]) {
