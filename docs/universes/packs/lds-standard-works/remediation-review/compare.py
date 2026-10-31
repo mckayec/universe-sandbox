@@ -44,7 +44,7 @@ for r in anchors:
   assert s['lat']==float(r['recommended_lat']) and s['lon']==float(r['recommended_lon']),r['site_id']
   assert norm(r['anchor_copy']) in norm(s['modern']),r['site_id']
 assert len(sites)==34
-out=io.StringIO(); w=csv.DictWriter(out,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
+out=io.StringIO(); w=csv.DictWriter(out,fieldnames=rows[0],lineterminator="\n");w.writeheader();w.writerows(rows)
 (here/'119-view-disposition.csv').write_text(out.getvalue())
 evidence={'implementation':sha,'review_baseline':'f3b90e06be4d643d98da38fad1078d436f0d2daf','spec_views':119,'imported_conforming':62,'not_imported_by_key':57,'anchors_checked':26,'sites':len(sites),'events':len(p['events']),'routes':len(p['worlds'][0]['routes']),'codex_cards':len(cards),'salamis_desc':sites['salamis']['desc'],'salamis_modern':sites['salamis']['modern'],'palmyra_books':sites['palmyra']['books'],'palmyra_layers':sites['palmyra']['layers'],'limits':'Accepted research/spec reuse. Not fresh source reading, rendered testing or full BA07 accounting.'}
 (here/'comparison-result.json').write_text(json.dumps(evidence,indent=2,ensure_ascii=False)+'\n')
