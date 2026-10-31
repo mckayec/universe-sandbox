@@ -700,6 +700,9 @@ codex:[{id:"people", title:"People", list:[
 * Codex entries hidden by the layer or year filter are counted under the list ("2 entries are hidden by the
   layer or year filter"), separately from entries locked by reading order. Codex entries also show their
   layer swatches and dates.
+* A codex entry may carry `date:"May 15, 1829, as reported"`: an attributed date shown as text beside its layer
+  swatches. It never feeds the year filter; use it when the source's precision or wording should be kept rather than a
+  numeric `when`.
 * The validator checks note and codex layer ids, `when` values and note books.
 
 ### 20.6 `routes` — journeys on one world's surface

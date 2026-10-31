@@ -144,3 +144,185 @@ test('BA07: 62 specified source views resolve, one work layer each, no dates or 
   assert.equal(sites.has('palmyra'), true);
   assert.equal(earth.sites.filter((s: any) => /palmyra/i.test(s.id)).length, 1);
 });
+
+test('R1-C1: Salamis credits its active ToposText point', () => {
+  assert.equal(
+    sites.get('salamis').desc,
+    'Representative city-site point for Salamis/Konstantia on Cyprus from the ToposText gazetteer. No synagogue is located.',
+  );
+  assert.doesNotMatch(sites.get('salamis').desc, /Pleiades/);
+});
+
+test('R1 BA07: Palmyra has a neutral BoM facet; printing history stays with D&C', () => {
+  const pal = sites.get('palmyra');
+  assert.equal(L.layerOk(pal, new Set(['bom'])), true);
+  assert.equal(L.layerOk(pal, new Set(['dc'])), true);
+  assert.equal(L.layerOk(pal, new Set(['ot'])), false);
+  assert.equal(Math.min(...pal.books), 3);
+  assert.doesNotMatch(pal.desc, /March|Grandin|Restoration|Joseph Smith/);
+  const ev = P.events.find((e: any) => e.id === 'book-mormon-publication');
+  assert.equal(ev.book, 4);
+  assert.deepEqual(plain(ev.layers), ['dc']);
+});
+
+test('BA07 round 2: 108 further source views (107 research IDs) resolve with their own gates', () => {
+  const ids = [
+    'BP01',
+    'BP02',
+    'BP03',
+    'BP04',
+    'BP05',
+    'BP06',
+    'BP07',
+    'BP08',
+    'BP09',
+    'BP10',
+    'BP11',
+    'BP12',
+    'BP13',
+    'BP14',
+    'BP15',
+    'BP16',
+    'BP17',
+    'BP18',
+    'BP19',
+    'BP20',
+    'BP21',
+    'BP22',
+    'BP23',
+    'BP24',
+    'BP25',
+    'BP26',
+    'BP27',
+    'BP28',
+    'BP29',
+    'BP30',
+    'AP01',
+    'AP02',
+    'AP03',
+    'AP04',
+    'AP05',
+    'AP34',
+    'AJ01',
+    'BE01',
+    'BE02',
+    'BE03',
+    'BE04',
+    'BE05',
+    'BE06',
+    'BE07',
+    'BE08',
+    'BE09',
+    'BE10',
+    'BE11',
+    'BE12',
+    'BE13',
+    'BE14',
+    'BE15',
+    'BE16',
+    'BE17',
+    'BE18',
+    'BE19',
+    'BE20',
+    'BE21',
+    'BE22',
+    'BE23',
+    'BJ01',
+    'BJ02',
+    'BJ03',
+    'BJ04',
+    'BJ05',
+    'BJ06',
+    'BJ07',
+    'BJ08',
+    'BJ09',
+    'BJ10',
+    'BJ11',
+    'PP01',
+    'PP02',
+    'PP03',
+    'PP04',
+    'PP05',
+    'PP06',
+    'PP07',
+    'PP08',
+    'PP09',
+    'PE01',
+    'PE04',
+    'PE05',
+    'PE07',
+    'PE09',
+    'PJ01',
+    'PJ02',
+    'PC09',
+    'PC10',
+    'RE02',
+    'RE05',
+    'RE06',
+    'RE07',
+    'RE13',
+    'J01',
+    'J03',
+    'AP09',
+    'AP09.NT',
+    'AP20',
+    'AP23',
+    'AP24',
+    'AP26',
+    'AP30',
+    'AP31',
+    'RP02',
+    'RP04',
+    'RP06',
+    'RP08',
+  ];
+  assert.equal(ids.length, 108);
+  const all = P.codex.flatMap((t: any) => t.list);
+  const keys = all.filter((x: any) => x.key).map((x: any) => x.key);
+  assert.equal(new Set(keys).size, keys.length, 'keys are unique');
+  assert.equal(keys.length, 170);
+  const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
+  const work: Record<number, string> = { 1: 'ot', 2: 'nt', 3: 'bom', 4: 'dc', 5: 'pgp' };
+  for (const id of ids) {
+    const x = byKey.get(id);
+    assert.ok(x, id);
+    assert.equal(x.books.length, 1, id);
+    assert.equal(x.layers.length, 1, id);
+    assert.equal(x.when, undefined, id);
+    assert.equal(x.lat, undefined, id);
+    const [b] = x.books;
+    assert.equal(x.layers[0], work[b], id);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => /^https:\/\//.test(s.u) && s.t), id);
+    const one = (layer: string, cum: boolean, book: number) =>
+      L.codexSplit([x], new Set([layer]), null, cum, book, (y: any) => Math.min(...y.books)).shown.length;
+    assert.equal(one(work[b], true, b), 1, `${id} at its group`);
+    for (const other of Object.values(work))
+      if (other !== work[b]) assert.equal(one(other, false, 0), 0, `${id} via ${other}`);
+    if (b > 1) assert.equal(one(work[b], true, b - 1), 0, `${id} before its group`);
+  }
+  // BP/BE/BJ are Book of Mormon only, in their own tab
+  const bom = P.codex.find((t: any) => t.id === 'bom-geography').list;
+  assert.equal(bom.length, 64);
+  assert.ok(bom.every((x: any) => x.layers[0] === 'bom'));
+  // AP09: one identity, two separately gated source views (never one OR-layer card)
+  assert.deepEqual(plain(byKey.get('AP09').layers), ['ot']);
+  assert.deepEqual(plain(byKey.get('AP09.NT').layers), ['nt']);
+  assert.doesNotMatch(byKey.get('AP09').desc, /fishermen/);
+  assert.equal(byKey.get('AP09.NT').desc, 'Matthew places the call of fishermen beside this sea.');
+  // J03 does not claim arrival in Egypt; AJ01 labels its gap
+  assert.match(byKey.get('J03').desc, /not a completed Egyptian arrival/);
+  assert.match(byKey.get('AJ01').desc, /intervening itinerary is not supplied/);
+  // Restoration episodes keep their attributed dates as text, not as timeline years
+  const dated: Record<string, string> = {
+    RE02: 'May 15, 1829, as reported',
+    RE05: 'October 27, 1838',
+    RE06: 'December 1, 1838 to April 6, 1839',
+    RE07: 'March 20 and approximately March 22, 1839',
+    RE13: 'July 24, 1847',
+  };
+  for (const [id, d] of Object.entries(dated)) {
+    assert.equal(byKey.get(id).date, d, id);
+    assert.match(L.itemMeta(null, null, byKey.get(id)), new RegExp(d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), id);
+    assert.equal(L.timeOk(byKey.get(id), [1500, 1600]), true, `${id} has no year for the filter`);
+  }
+});

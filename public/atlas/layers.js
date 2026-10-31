@@ -379,7 +379,8 @@
         const l = L.by[id];
         if (l) parts.push('<span class="lchip" style="--lc:' + ESC(l.c) + '">' + ESC(l.short) + '</span>');
       });
-    const w = fmtWhen(it, T ? T.style : 'BC/AD');
+    // `date` is an attributed date as text ("May 15, 1829, as reported"); it never feeds the year filter
+    const w = fmtWhen(it, T ? T.style : 'BC/AD') || (typeof it.date === 'string' ? it.date : '');
     if (w) parts.push('<span class="lwhen">' + ESC(w) + '</span>');
     return parts.join('');
   }
