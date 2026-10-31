@@ -463,6 +463,8 @@ codex: [
 ```
 Entry fields: `name` (req), `desc` (req), `role`, `books` (badges), `first` (gating, default
 `min(books)` else 1), `more` (`[[book, text], …]` spoiler-gated additions).
+`src` (`[{t:"Moses 2", u:"https://…"}, …]`) shows a visible source line under the entry; each `t` is
+escaped text and only `https://` values of `u` become links. `key` is an unrendered research id for tests and crosswalks.
 
 ---------------------------------------------------------------------------------------------------
 

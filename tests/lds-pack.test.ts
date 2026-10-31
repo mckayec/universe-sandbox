@@ -99,3 +99,48 @@ test('BA02/BA03: register coordinates and visible qualifications are applied', (
   assert.equal(sites.get('harmony').name, 'Harmony / Priesthood Restoration Site');
   assert.match(sites.get('mount-pisgah').modern, /Thayer/);
 });
+
+test('BA07: 62 specified source views resolve, one work layer each, no dates or pins', () => {
+  const ids = [
+    ...'PE02 PE03 PE06 PE08 PC01 PC02 PC03 PC04 PC05 PC06 PC07 PC08'.split(' '),
+    ...Array.from({ length: 9 }, (_, i) => `FM0${i + 1}`),
+    ...'RE14 RE20 RC05 RE18 RE19 RC06 RE15 RE16 RC03 RC01 RC02 RC04'.split(' '),
+    ...Array.from({ length: 20 }, (_, i) => `BC${String(i + 1).padStart(2, '0')}`),
+    ...'AE01 AE02 AE03 AE09 AE10 AE14 AC01 AC02 AC03'.split(' '),
+  ];
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
+  assert.equal(ids.length, 62);
+  for (const id of ids) {
+    const x = byKey.get(id);
+    assert.ok(x, id);
+    assert.equal(x.layers.length, 1, id);
+    assert.equal(x.when, undefined, id);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => /^https:\/\//.test(s.u) && s.t), id);
+  }
+  const work: Record<number, string> = { 1: 'ot', 2: 'nt', 3: 'bom', 4: 'dc', 5: 'pgp' };
+  for (const id of ids) {
+    const x = byKey.get(id);
+    const [b] = x.books;
+    assert.equal(x.layers[0], work[b], id);
+    const one = (layer: string, cum: boolean, book: number) =>
+      L.codexSplit([x], new Set([layer]), null, cum, book, (y: any) => Math.min(...y.books)).shown.length;
+    assert.equal(one(work[b], true, b), 1, `${id} at its group`);
+    assert.equal(L.codexSplit([x], null, null, false, 0).shown.length, 1, `${id} all works`);
+    for (const other of Object.values(work))
+      if (other !== work[b]) assert.equal(one(other, false, 0), 0, `${id} via ${other}`);
+    if (b > 1) assert.equal(one(work[b], true, b - 1), 0, `${id} before its group`);
+  }
+  // FM01–07 at 3/bom, FM08 at 4/dc, FM09 and the PGP views at 5/pgp
+  for (let i = 1; i <= 7; i++) assert.deepEqual(plain(byKey.get(`FM0${i}`).books), [3]);
+  assert.deepEqual(plain(byKey.get('FM08').books), [4]);
+  assert.deepEqual(plain(byKey.get('FM09').books), [5]);
+  // content assertions from the specs
+  assert.doesNotMatch(byKey.get('PE06').desc, /flood (came|ended)|destroyed the earth/i);
+  assert.match(byKey.get('PC04').desc, /no date/);
+  assert.doesNotMatch(byKey.get('FM03').desc, /\b(only|sole|exclusive)\b/i);
+  assert.match(byKey.get('FM03').desc, /among the ancestors/);
+  assert.match(byKey.get('RC05').desc, /transition rather than instantly/);
+  assert.equal(sites.has('palmyra'), true);
+  assert.equal(earth.sites.filter((s: any) => /palmyra/i.test(s.id)).length, 1);
+});

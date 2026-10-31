@@ -1295,7 +1295,10 @@ function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books
 /* one codex entry; Track A entries also show their layer chips and dates */
 function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
   const lm=LY&&(x.layers||x.layer||x.when!=null)?'<span class="lmeta">'+LY.itemMeta(LAY,TL,x)+'</span>':"";
-  return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}
+  return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p>'+cxSrc(x)+'</div>';}
+/* optional source locators on a codex entry: src:[{t:"Moses 2",u:"https://…"}]; only https links are made */
+function cxSrc(x){const s=ARR(x.src).filter(r=>r&&r.t);if(!s.length)return"";
+  return '<p class="cx-src">Source: '+s.map(r=>/^https:\/\/[^\s"<>]+$/.test(String(r.u||""))?'<a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.t)+'</a>':esc(r.t)).join(" · ")+'</p>';}
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
   const tab=K.codex.find(t=>t.id===cxTab)||K.codex[0];
   const sp=LY?LY.codexSplit(tab.list,S.layers,S.range,CUM,S.book,cxFirst):null;
