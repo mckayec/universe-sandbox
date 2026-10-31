@@ -7,7 +7,7 @@ The [13-row crosswalk](ba07-spec/primary-remainder-content-crosswalk.csv) gives 
 | IDs | Required disposition |
 |---|---|
 | J01 | Genesis 12 household sequence, with intervening southward travel compressed; retain source attribution and no recovered road. |
-| J03 | Abraham 2 reached settings and intended continuation toward Egypt. Consolidate with PJ02 where appropriate; distinguish Terah remaining at Haran. Do not turn approach near entry into completed arrival. |
+| J03 | Abraham 2 reached settings and intended continuation toward Egypt. Keep separate from PJ02 (Enoch’s journey); distinguish Terah remaining at Haran. Do not turn approach near entry into completed arrival. |
 | AP09 | One lake identity/research ID with two source views: OT boundary/Church dictionary identification at group 1, NT call of fishermen at group 2. Never put both source clauses behind an OR-layer gate. Town Chinnereth and land Gennesaret are not lake aliases. |
 | AP20, AP23, AP24, AP26 | Nonspatial Derbe, Samothracia, Neapolis and Melita source facets of existing Acts journeys. Preserve uncertainty about specific sites/landings. Acts 28 distinguishes the company's three-month stay from the ship's wintering. |
 | AP30, AP31 | Distinct named meeting places, grouped within AJ05. Do not invent an independently stated ordered visit sequence or exact meeting coordinates. |

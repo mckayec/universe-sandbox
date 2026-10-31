@@ -1,0 +1,10 @@
+{
+  "routeSafety": "all actual route legs checked",
+  "splitIdentities": 5,
+  "sourceViewsGateChecked": 170,
+  "dateDisplay": "escaped text; no numeric filter; numeric when takes precedence",
+  "fayette1829": "site/event/route pass",
+  "palmyra": "neutral BoM gate present; RE04 stays DC 4",
+  "sourceFormatter": "unsafe schemes/quotes escaped or unlinked; https link retained",
+  "limit": "pure functions only; no DOM, rendered, mobile or keyboard claim"
+}
