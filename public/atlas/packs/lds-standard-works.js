@@ -18,7 +18,9 @@
    Anchors: UNESCO (Jerusalem, Bethlehem, Jericho/Tell es-Sultan, Babylon, Philippi), Pleiades (Nazareth,
    Capernaum, Perga, Antioch in Pisidia), National Park Service (Winter Quarters / Mormon Trail Center),
    and Wikipedia infobox coordinates (NRHP/GNIS-derived) for the builder-compiled restoration-era anchors;
-   Pleiades (Salamis) and Wikipedia coordinates for the builder-compiled New Testament anchors.
+   Pleiades (Salamis) and Wikipedia coordinates for the builder-compiled New Testament anchors; after the
+   2026-10-30 build audit (BA02/BA03) eleven of those use ToposText representative points and the secondary
+   restoration-era and Rome points carry a visible approximate qualification. Lystra and South Pass are held (BA01).
    ===================================================================================================== */
 (window.ATLAS_PACKS = window.ATLAS_PACKS || {})['lds-standard-works'] = (function () {
   const OT = 1;
@@ -53,7 +55,9 @@
         'Pleiades gazetteer (pleiades.stoa.org): Nazareth 678299, Capernaum 678231, Perga 639048, Antioch in Pisidia 609307 (CC BY 3.0)',
         'National Park Service, Mormon Pioneer National Historic Trail: Mormon Trail Center at Historic Winter Quarters',
         'The Joseph Smith Papers',
-        'Wikipedia infobox coordinates (derived from NRHP/GNIS records) for restoration-era sites: Fayette, Independence, Kirtland Temple, Nauvoo, Carthage Jail, Harmony, Palmyra, Salt Lake Temple, Garden Grove, Mount Pisgah, Chimney Rock, South Pass, Fort Bridger',
+        'Wikipedia infobox coordinates (derived from NRHP/GNIS records) for restoration-era sites: Fayette, Independence, Kirtland Temple, Nauvoo, Carthage Jail, Harmony, Palmyra, Salt Lake Temple, Garden Grove, Mount Pisgah, Chimney Rock, Fort Bridger',
+        'ToposText gazetteer (topostext.org) representative points: Antioch on the Orontes, Seleucia Pieria, Salamis, Nea Paphos, Iconium, Attalia, Alexandria Troas, Syracuse, Rhegium, Puteoli, Patmos',
+        'Wikipedia coordinates (secondary, approximate): Rome',
       ],
     },
     theme: {
@@ -300,138 +304,137 @@
           },
           {
             /* AP12. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Antioch" coordinates; ruins lie beneath modern Antakya. */
+            /* AP12. BA02 replace-representative: ToposText https://topostext.org/place/362362PAnt; original point 36.20472, 36.18167. */
             id: 'antioch-sending',
             name: 'Antioch (sending church)',
-            lat: 36.20472,
-            lon: 36.18167,
+            lat: 36.200000,
+            lon: 36.165000,
             books: [NT],
             layers: ['nt'],
-            modern: 'Ancient Antioch, beneath modern Antakya, Turkey (city reference point)',
+            modern: 'Antioch on the Orontes; representative ancient-city point at modern Antakya, not the sending church building. Coordinate: ToposText gazetteer point (representative).',
             desc: 'City reference point for ancient Antioch, whose ruins lie beneath modern Antakya. Not Antioch in Pisidia.',
             notes: [{ k: 'text', t: 'The church sends Barnabas and Saul from Antioch.', ref: 'Acts 13:1–4' }],
           },
           {
             /* AP13. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Seleucia Pieria" infobox. */
+            /* AP13. BA02 replace-representative: ToposText https://topostext.org/place/361359USel; original point 36.12389, 35.92194. */
             id: 'seleucia',
             name: 'Seleucia',
-            lat: 36.12389,
-            lon: 35.92194,
+            lat: 36.122200,
+            lon: 35.934700,
             books: [NT],
             layers: ['nt'],
-            modern: 'Seleucia Pieria ruins near Çevlik, Samandağ, Turkey',
+            modern: 'Seleucia Pieria; representative ruins point near Cevlik, not an embarkation berth. Coordinate: ToposText gazetteer point (representative).',
             desc: 'Representative point for the ruins of Seleucia Pieria, Antioch’s port. Not a harbor or embarkation point.',
             notes: [{ k: 'text', t: 'The travelers sail from Seleucia toward Cyprus.', ref: 'Acts 13:4' }],
           },
           {
             /* AP14. Builder-compiled anchor (RR01/Q01), pending canon audit: Pleiades 707617 (Salamis/Konstantia) representative point. */
+            /* AP14. BA02 replace-representative: ToposText https://topostext.org/place/352339PSal; original point 35.179581302, 33.9028569668. */
             id: 'salamis',
             name: 'Salamis',
-            lat: 35.179581302,
-            lon: 33.9028569668,
+            lat: 35.179951,
+            lon: 33.903053,
             books: [NT],
             layers: ['nt'],
-            modern: 'Representative point, Pleiades gazetteer (Salamis, Cyprus)',
+            modern: 'Salamis/Konstantia, Cyprus; representative city-site point, not a synagogue location. Coordinate: ToposText gazetteer point (representative).',
             desc: 'Representative location of Salamis on Cyprus from the Pleiades gazetteer. No synagogue is located.',
             notes: [{ k: 'text', t: 'Barnabas and Saul preach at Salamis.', ref: 'Acts 13:5' }],
           },
           {
             /* AP15. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Nea Paphos (ancient city)" coordinates; Nea Paphos specifically, not Palaepaphos. */
+            /* AP15. BA02 replace-representative: ToposText https://topostext.org/place/348324PPap; original point 34.760, 32.407. */
             id: 'paphos',
             name: 'Paphos',
-            lat: 34.76,
-            lon: 32.407,
+            lat: 34.757000,
+            lon: 32.407000,
             books: [NT],
             layers: ['nt'],
-            modern: 'Nea Paphos archaeological site, Paphos, Cyprus',
+            modern: 'Nea Paphos / Kato Paphos; representative ancient-city point, not Palaepaphos or the proconsul encounter location. Coordinate: ToposText gazetteer point (representative).',
             desc: 'Locates the ancient city of Nea Paphos, capital of Cyprus in the Roman era. Not the older sanctuary town of Palaepaphos.',
             notes: [{ k: 'text', t: 'The mission reaches Paphos before sailing to Perga.', ref: 'Acts 13:6–13' }],
           },
           {
             /* AP18. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Konya" infobox; page states Konya was known in antiquity as Iconium. */
+            /* AP18. BA02 replace-representative: ToposText https://topostext.org/place/379325PIko; original point 37.87444, 32.49306. */
             id: 'iconium',
             name: 'Iconium',
-            lat: 37.87444,
-            lon: 32.49306,
+            lat: 37.872800,
+            lon: 32.492100,
             books: [NT],
             layers: ['nt'],
-            modern: 'Modern Konya, Turkey (city reference point)',
+            modern: 'Iconium / modern Konya; representative city point, not a synagogue or episode location. Coordinate: ToposText gazetteer point (representative).',
             desc: 'City reference point for modern Konya, known in antiquity as Iconium.',
             notes: [{ k: 'text', t: 'Paul and Barnabas preach in Iconium.', ref: 'Acts 14:1' }],
           },
           {
-            /* AP19. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Lystra" infobox; page says the site is "believed" to lie near Hatunsaray. */
-            id: 'lystra',
-            name: 'Lystra',
-            lat: 37.60194,
-            lon: 32.33833,
-            books: [NT],
-            layers: ['nt'],
-            modern: 'Site believed to be Lystra, near Hatunsaray, south of Konya',
-            desc: 'Marks the site believed to be Lystra, about 30 km south of Konya. The ruins are largely unexcavated.',
-            notes: [{ k: 'text', t: 'Acts places a healing during the mission at Lystra.', ref: 'Acts 14:6–10' }],
-          },
-          {
             /* AP21. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Antalya" infobox; page states the city was formerly Attaleia. */
+            /* AP21. BA02 replace-representative: ToposText https://topostext.org/place/369307PAtt; original point 36.88694, 30.70333. */
             id: 'attalia',
             name: 'Attalia',
-            lat: 36.88694,
-            lon: 30.70333,
+            lat: 36.885300,
+            lon: 30.708600,
             books: [NT],
             layers: ['nt'],
-            modern: 'Modern Antalya, Turkey (city reference point)',
+            modern: 'Attalia / modern Antalya; representative city point, not an embarkation berth. Coordinate: ToposText gazetteer point (representative).',
             desc: 'City reference point for modern Antalya, formerly Attaleia. Not a harbor point.',
             notes: [{ k: 'text', t: 'The return voyage departs from Attalia.', ref: 'Acts 14:25–26' }],
           },
           {
             /* AP22. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Alexandria Troas" infobox (point given for the site’s baths). */
+            /* AP22. BA02 replace-representative: ToposText https://topostext.org/place/398262UAnt; original point 39.75167, 26.15861. */
             id: 'troas',
             name: 'Troas',
-            lat: 39.75167,
-            lon: 26.15861,
+            lat: 39.752000,
+            lon: 26.159000,
             books: [NT],
             layers: ['nt'],
-            modern: 'Alexandria Troas ruins near Dalyan, Çanakkale, Turkey',
+            modern: 'Alexandria Troas; representative ruins point, not the room, baths or harbor of a narrated episode. Coordinate: ToposText gazetteer point (representative).',
             desc: 'Representative point within the large ruined city of Alexandria Troas. Not a harbor or departure point.',
             notes: [{ k: 'text', t: 'The company departs from Troas toward Macedonia.', ref: 'Acts 16:8–11' }],
           },
           {
             /* AP27. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Syracuse, Sicily" infobox. */
+            /* AP27. BA02 replace-representative: ToposText https://topostext.org/place/371153PSyr; original point 37.06917, 15.28750. */
             id: 'syracuse',
             name: 'Syracuse',
-            lat: 37.06917,
-            lon: 15.2875,
+            lat: 37.063900,
+            lon: 15.293000,
             books: [NT],
             layers: ['nt'],
-            modern: 'Modern Syracuse, Sicily (city reference point)',
+            modern: 'Syracuse / Siracusa; representative city point, not the landing place in Acts. Coordinate: ToposText gazetteer point (representative).',
             desc: 'City reference point for Syracuse. The harbor where the ship stopped is not marked.',
             notes: [{ k: 'text', t: 'The company stops at Syracuse.', ref: 'Acts 28:12' }],
           },
           {
             /* AP28. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Reggio Calabria" infobox; page states the city was ancient Rhegion. */
+            /* AP28. BA02 replace-representative: ToposText https://topostext.org/place/381156PRhe; original point 38.11139, 15.66194. */
             id: 'rhegium',
             name: 'Rhegium',
-            lat: 38.11139,
-            lon: 15.66194,
+            lat: 38.109000,
+            lon: 15.644000,
             books: [NT],
             layers: ['nt'],
-            modern: 'Modern Reggio Calabria, Italy (city reference point)',
+            modern: 'Rhegium / Reggio Calabria; representative ancient-city point, not a verified port stop. Coordinate: ToposText gazetteer point (representative).',
             desc: 'City reference point for Reggio Calabria, ancient Rhegion. The harbor is not marked.',
             notes: [{ k: 'text', t: 'The voyage continues through Rhegium.', ref: 'Acts 28:13' }],
           },
           {
             /* AP29. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Pozzuoli" infobox; page states Pozzuoli was known in antiquity as Puteoli. */
+            /* AP29. BA02 replace-representative: ToposText https://topostext.org/place/408141PDik; original point 40.84444, 14.09333. */
             id: 'puteoli',
             name: 'Puteoli',
-            lat: 40.84444,
-            lon: 14.09333,
+            lat: 40.825900,
+            lon: 14.125300,
             books: [NT],
             layers: ['nt'],
-            modern: 'Modern Pozzuoli, Italy (city reference point)',
+            modern: 'Puteoli / Dikaiarcheia / Pozzuoli; representative ancient-city point, not the landing berth. Coordinate: ToposText gazetteer point (representative).',
             desc: 'City reference point for Pozzuoli, ancient Puteoli. The harbor is not marked.',
             notes: [{ k: 'text', t: 'The travelers stay with believers at Puteoli.', ref: 'Acts 28:13–14' }],
           },
           {
             /* AP32. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Rome" infobox. */
+            /* AP32. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Rome. */
             id: 'rome',
             major: true,
             name: 'Rome',
@@ -439,19 +442,20 @@
             lon: 12.48278,
             books: [NT],
             layers: ['nt'],
-            modern: 'Rome, Italy (city reference point)',
+            modern: 'Rome; approximate modern-city reference, not Paul’s lodging, prison or an ancient administrative center. Coordinate: secondary source (approximate).',
             desc: 'City reference point for Rome. Paul’s residence under guard is not located.',
             notes: [{ k: 'text', t: 'Acts ends with Paul receiving visitors under guard in Rome.', ref: 'Acts 28:16, 30–31' }],
           },
           {
             /* AP33. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia "Patmos" coordinates. */
+            /* AP33. BA02 replace-representative: ToposText https://topostext.org/place/373265IPat; original point 37.3250, 26.5417. */
             id: 'patmos',
             name: 'Patmos',
-            lat: 37.325,
-            lon: 26.5417,
+            lat: 37.326000,
+            lon: 26.535200,
             books: [NT],
             layers: ['nt'],
-            modern: 'Island of Patmos, Greece (island reference point)',
+            modern: 'Patmos; island reference using the gazetteer point associated with Kastelli, not the traditional cave or the place of a vision. Coordinate: ToposText gazetteer point (representative).',
             desc: 'Reference point for the island of Patmos. No cave or other site on the island is identified.',
             notes: [{ k: 'text', t: 'John locates himself on Patmos when introducing the vision.', ref: 'Rev. 1:9' }],
           },
@@ -469,18 +473,20 @@
           },
           {
             /* P12. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Peter Whitmer log home). */
+            /* P12. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Peter_Whitmer_log_home; identity https://www.churchofjesuschrist.org/learn/locations/whitmer-farm-church-organization-site?lang=eng. */
             id: 'fayette',
             name: 'Fayette (Whitmer home)',
             lat: 42.865972,
             lon: -76.869778,
             books: [DC],
             layers: ['dc'],
-            when: 1830,
-            modern: 'Peter Whitmer log home (1980 replica on the original site), Fayette, New York',
+            /* BA06: no `when` on this persistent reference point; its 1829 and 1830 episodes carry their own dates. */
+            modern: 'Whitmer farm near Fayette; approximate reference to the replica log home, not surviving 1830 fabric. Coordinate: secondary source (approximate).',
             desc: 'The Joseph Smith Papers editors identify the Whitmer home in Fayette as the Church’s organization setting. The marker locates the replica log home on the farm site; the original house no longer stands.',
           },
           {
             /* P13. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Independence, Missouri). */
+            /* P13. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Independence. */
             id: 'independence',
             name: 'Independence',
             lat: 39.0925,
@@ -488,11 +494,12 @@
             books: [DC],
             layers: ['dc'],
             when: 1831,
-            modern: 'City of Independence, Missouri (city reference point)',
+            modern: 'Independence, Missouri; approximate modern city reference, not the temple lot or a revelation location. Coordinate: secondary source (approximate).',
             desc: 'D&C 57 names Independence as the center place for Zion and describes a nearby temple lot. The marker is the city’s reference point, not the temple lot.',
           },
           {
             /* P14. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Kirtland Temple). */
+            /* P14. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Kirtland_Temple; identity https://www.churchofjesuschrist.org/learn/locations/kirtland-temple?lang=eng. */
             id: 'kirtland-temple',
             major: true,
             name: 'Kirtland Temple',
@@ -501,11 +508,12 @@
             books: [DC],
             layers: ['dc'],
             when: 1836,
-            modern: 'Kirtland Temple, Kirtland, Ohio (standing building, National Historic Landmark)',
+            modern: 'Kirtland Temple; approximate building reference, not a room or the physical location of a vision. Coordinate: secondary source (approximate).',
             desc: 'D&C 109 preserves the prayer associated with the Kirtland Temple dedication. The marker locates the standing temple.',
           },
           {
             /* P15. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Nauvoo, Illinois). */
+            /* P15. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Nauvoo,_Illinois. */
             id: 'nauvoo',
             major: true,
             name: 'Nauvoo',
@@ -514,11 +522,12 @@
             books: [DC],
             layers: ['dc'],
             when: [1839, 1846],
-            modern: 'City of Nauvoo, Illinois (city reference point)',
+            modern: 'Nauvoo, Illinois; approximate modern city reference, not a house, temple or departure landing. Coordinate: secondary source (approximate).',
             desc: 'The heading to D&C 124 places the revelation at Nauvoo. Its instructions include building a temple and lodging for visitors. The marker is the city’s reference point.',
           },
           {
             /* P16. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Carthage Jail). */
+            /* P16. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Carthage_Jail; identity https://www.nps.gov/places/carthage-jail.htm. */
             id: 'carthage-jail',
             name: 'Carthage Jail',
             lat: 40.41572,
@@ -526,23 +535,25 @@
             books: [DC],
             layers: ['dc'],
             when: 1844,
-            modern: 'Carthage Jail, Carthage, Illinois (standing building, NRHP)',
+            modern: 'Carthage Jail; approximate historic-building reference, not a room-level event coordinate. Coordinate: secondary source (approximate).',
             desc: 'D&C 135 reports Joseph and Hyrum Smith’s deaths at Carthage Jail. The marker locates the standing jail building.',
           },
           {
             /* RP01. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Priesthood Restoration Site). */
+            /* RP01. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Priesthood_Restoration_Site; identity https://www.churchofjesuschrist.org/learn/locations/priesthood-restoration-site?lang=eng. */
             id: 'harmony',
-            name: 'Harmony (Smith home site)',
+            name: 'Harmony / Priesthood Restoration Site',
             lat: 41.9512,
             lon: -75.6387,
             books: [DC],
             layers: ['dc'],
             when: 1829,
-            modern: 'Priesthood Restoration Site, Oakland Township, Pennsylvania (historic Harmony)',
+            modern: 'Historic Harmony / Priesthood Restoration Site in modern Oakland Township; approximate site-complex reference. Houses are reconstructions; this point does not locate the baptism or a specific house. Coordinate: secondary source (approximate).',
             desc: 'The Church’s historic site commemorates the Smith home where much of the Book of Mormon dictation took place. Current houses are reconstructions, not original standing homes.',
           },
           {
             /* RP03. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Palmyra (village), New York). */
+            /* RP03. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Palmyra_(village),_New_York. */
             id: 'palmyra',
             major: true,
             name: 'Palmyra',
@@ -551,11 +562,12 @@
             books: [DC],
             layers: ['dc'],
             when: 1830,
-            modern: 'Village of Palmyra, New York (village reference point)',
+            modern: 'Palmyra, New York; approximate village reference, not the Grandin print shop, Smith farm or Sacred Grove. Coordinate: secondary source (approximate).',
             desc: 'Palmyra hosted publication of the Book of Mormon. The marker is the village’s reference point, not the print shop.',
           },
           {
             /* RP07. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Salt Lake Temple). */
+            /* RP07. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Salt_Lake_Temple; identity https://www.churchofjesuschrist.org/temples/details/salt-lake-temple?lang=eng. */
             id: 'salt-lake-temple',
             major: true,
             name: 'Salt Lake Temple',
@@ -564,11 +576,12 @@
             books: [DC],
             layers: ['dc'],
             when: 1978,
-            modern: 'Salt Lake Temple, Temple Square, Salt Lake City, Utah',
+            modern: 'Salt Lake Temple; approximate temple-building reference, not a room or the exact place of the 1978 experience. Coordinate: secondary source (approximate).',
             desc: 'The official declaration’s heading identifies this temple as the setting for Church leaders’ reported confirmation in June 1978. The marker locates the temple.',
           },
           {
             /* RP09. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Garden Grove, Iowa). */
+            /* RP09. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Garden_Grove,_Iowa; identity https://www.nps.gov/mopi/planyourvisit/garden-grove.htm. */
             id: 'garden-grove',
             name: 'Garden Grove',
             lat: 40.82667,
@@ -576,11 +589,12 @@
             books: [DC],
             layers: ['dc'],
             when: 1846,
-            modern: 'City of Garden Grove, Iowa (city reference point)',
+            modern: 'Garden Grove, Iowa; approximate modern-town reference, not the 1846 camp location. Coordinate: secondary source (approximate).',
             desc: 'Emigrants established a farming settlement to support travelers who followed. The marker is the modern town’s reference point, not the 1846 camp.',
           },
           {
             /* RP10. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Mount Pisgah, Iowa). */
+            /* RP10. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Mount_Pisgah,_Iowa; identity https://www.nps.gov/mopi/planyourvisit/mount-pisgah.htm. */
             id: 'mount-pisgah',
             name: 'Mount Pisgah (Iowa)',
             lat: 41.038586,
@@ -588,11 +602,12 @@
             books: [DC],
             layers: ['dc'],
             when: 1846,
-            modern: 'Mount Pisgah historic site and cemetery, near Thayer, Iowa',
+            modern: 'Mount Pisgah way station and cemetery near Thayer, Union County, Iowa. Approximate historic-site reference, not a surveyed cemetery boundary or individual grave. Coordinate: secondary source (approximate).',
             desc: 'A second farming settlement supported the migration across Iowa. Not the biblical Pisgah.',
           },
           {
             /* RP11. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Chimney Rock National Historic Site). */
+            /* RP11. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Chimney_Rock_National_Historic_Site; identity https://www.nps.gov/places/000/chimney-rock-national-historic-site.htm. */
             id: 'chimney-rock',
             name: 'Chimney Rock',
             lat: 41.70361,
@@ -600,23 +615,12 @@
             books: [DC],
             layers: ['dc'],
             when: 1847,
-            modern: 'Chimney Rock National Historic Site, near Bayard, Nebraska',
+            modern: 'Chimney Rock, Nebraska; approximate landmark reference near Bayard, not the museum, campsite or an emigrant observation point. Coordinate: secondary source (approximate).',
             desc: 'The 1847 emigrant company passed this landmark on its journey west.',
           },
           {
-            /* RP12. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (South Pass (Wyoming)). */
-            id: 'south-pass',
-            name: 'South Pass',
-            lat: 42.3303,
-            lon: -108.9738,
-            books: [DC],
-            layers: ['dc'],
-            when: 1847,
-            modern: 'Historic South Pass crossing, Continental Divide, Wyoming (National Historic Landmark)',
-            desc: 'The company crossed the Continental Divide through South Pass. The marker is the historic crossing; the exact 1847 track is not plotted.',
-          },
-          {
             /* RP13. Builder-compiled anchor (RR01/Q01), pending canon audit: Wikipedia infobox coordinates (Fort Bridger). */
+            /* RP13. BA03 conditional-retain (L): secondary coordinate https://en.wikipedia.org/wiki/Fort_Bridger; identity https://www.nps.gov/places/000/fort-bridger-state-historic-site.htm. */
             id: 'fort-bridger',
             name: 'Fort Bridger',
             lat: 41.31778,
@@ -624,7 +628,7 @@
             books: [DC],
             layers: ['dc'],
             when: 1847,
-            modern: 'Fort Bridger State Historic Site, Wyoming',
+            modern: 'Fort Bridger State Historic Site; approximate grounds reference, not a particular 1847 camp or an assertion that every structure is original. Coordinate: secondary source (approximate).',
             desc: 'Near Fort Bridger, the company turned toward Utah on the Hastings Cutoff.',
           },
         ],
@@ -680,9 +684,9 @@
               { site: 'perga', note: 'John leaves the company' },
               'antioch-pisidia',
               'iconium',
-              'lystra',
+              { name: 'Lystra', note: 'healing (Acts 14:6–10); identification contested, not drawn' },
               { name: 'Derbe', note: 'site debated; not drawn' },
-              'lystra',
+              { name: 'Lystra', note: 'return visit; not drawn' },
               'iconium',
               'antioch-pisidia',
               'perga',
@@ -743,17 +747,17 @@
             ],
           },
           {
-            /* RJ03. Abridged sequence. The Salt Lake Valley has no approved pin, so the last leg is listed, not drawn. */
+            /* RJ03. Abridged sequence. South Pass (coordinate conflict, A01d/BA01) and the Salt Lake Valley have no approved pin, so their legs are listed, not drawn. */
             id: 'valley-migration',
             name: 'The 1847 journey',
             books: [DC],
             layers: ['dc'],
             when: 1847,
-            desc: 'An abridged sequence for Brigham Young’s 1847 company.',
+            desc: 'An abridged sequence for Brigham Young’s 1847 company. Stops without an approved location are listed but not drawn.',
             stops: [
               { site: 'winter-quarters', note: 'Across the plains' },
               { site: 'chimney-rock', note: 'Across the Divide' },
-              { site: 'south-pass', note: 'Toward Fort Bridger' },
+              { name: 'South Pass', note: 'Across the Continental Divide toward Fort Bridger; location held, not drawn' },
               { site: 'fort-bridger', note: 'Along the Hastings Cutoff' },
               { name: 'Salt Lake Valley' },
             ],
@@ -1045,19 +1049,25 @@
         id: 'unmapped-places',
         title: 'Places without a map pin',
         list: [
-          unmapped('Haran', OT, ['ot', 'pgp'], 'Old Testament: Genesis describes Abram departing from Haran. Pearl of Great Price: Abraham’s account also describes departure from Haran. Modern identification not adopted here.'), // P01
-          unmapped('Shechem (Sichem)', OT, ['ot', 'pgp'], 'Old Testament: the journey reaches the place called Sichem by the plain of Moreh. Modern archaeological identification pending.'), // P02
-          unmapped('Camp between Bethel and Hai', OT, ['ot', 'pgp'], 'Old Testament: Abram pitches his tent between Bethel and Hai and builds an altar. The text gives Bethel to the west and Hai to the east; no pin.'), // P03
-          unmapped('Egypt', OT, ['ot', 'pgp'], 'Old Testament: Genesis describes Abram travelling to Egypt during famine. No single city or point is asserted.'), // P04
+          /* BA05: each source's account is its own entry, so it follows only its own layer. */
+          unmapped('Haran', OT, ['ot'], 'Old Testament: Genesis describes Abram departing from Haran. Modern identification not adopted here.'), // P01
+          unmapped('Haran', PGP, ['pgp'], 'Pearl of Great Price: Abraham’s account describes departure from Haran. Modern identification not adopted here.'), // P01
+          unmapped('Shechem (Sichem)', OT, ['ot'], 'Old Testament: the journey reaches the place called Sichem by the plain of Moreh. Modern archaeological identification pending.'), // P02
+          unmapped('Camp between Bethel and Hai', OT, ['ot'], 'Old Testament: Abram pitches his tent between Bethel and Hai and builds an altar. The text gives Bethel to the west and Hai to the east; no pin.'), // P03
+          unmapped('Egypt', OT, ['ot'], 'Old Testament: Genesis describes Abram travelling to Egypt during famine. No single city or point is asserted.'), // P04
           unmapped('Horeb', OT, ['ot'], 'Old Testament: Exodus places Moses’ encounter at the burning bush at Horeb. No Sinai candidate is adopted.'), // P05
-          unmapped('Ur of the Chaldees', OT, ['ot', 'pgp'], 'Old Testament: Genesis describes Terah’s household leaving Ur for Canaan and settling in Haran. Pearl of Great Price: Abraham describes leaving Ur with family members. No proposed Ur is chosen.'), // P18
-          unmapped('Mount of Olives', OT, ['ot', 'nt', 'pgp'], 'Old Testament: Zechariah’s prophecy names the Mount of Olives east of Jerusalem. New Testament: Matthew names the Mount of Olives in the Passion narrative. Pearl of Great Price: Joseph Smith—Matthew places Jesus’ conversation with his disciples on the Mount of Olives.'), // P20
+          unmapped('Ur of the Chaldees', OT, ['ot'], 'Old Testament: Genesis describes Terah’s household leaving Ur for Canaan and settling in Haran. No proposed Ur is chosen.'), // P18
+          unmapped('Ur of the Chaldees', PGP, ['pgp'], 'Pearl of Great Price: Abraham describes leaving Ur with family members. No proposed Ur is chosen.'), // P18
+          unmapped('Mount of Olives', OT, ['ot'], 'Old Testament: Zechariah’s prophecy names the Mount of Olives east of Jerusalem.'), // P20
+          unmapped('Mount of Olives', NT, ['nt'], 'New Testament: Matthew names the Mount of Olives in the Passion narrative.'), // P20
+          unmapped('Mount of Olives', PGP, ['pgp'], 'Pearl of Great Price: Joseph Smith—Matthew places Jesus’ conversation with his disciples on the Mount of Olives.'), // P20
           unmapped('Gethsemane', NT, ['nt'], 'New Testament: Matthew describes Jesus praying here before his arrest. No exact garden identification is adopted.'), // AP10
           unmapped('Golgotha', NT, ['nt'], 'New Testament: Matthew names Golgotha as the place of crucifixion. No modern candidate is selected.'), // AP11
           unmapped('Waters of Mormon', BOM, ['bom'], 'Book of Mormon: Mosiah describes Alma teaching and baptizing at waters in the place called Mormon. Modern location unknown; not placed on the Earth map.'), // P09
           unmapped('Temple in Bountiful', BOM, ['bom'], 'Book of Mormon: 3 Nephi places a gathered multitude at the temple in Bountiful when Jesus appears. Modern location unknown; distinct from the Bountiful on the Arabian shore in 1 Nephi.'), // P10
-          unmapped('Woods near the Smith home', PGP, ['pgp', 'dc'], 'Pearl of Great Price: Joseph Smith’s canonized account describes a prayer in nearby woods and a vision of two personages, reported for spring 1820, near Manchester, New York. No grove point is sourced.'), // P11
-          unmapped('Enoch’s city (Zion)', DC, ['dc', 'pgp'], 'Doctrine and Covenants: D&C 38 describes Enoch’s city as taken into God’s presence. Pearl of Great Price: Moses describes Enoch’s community as Zion and says the city was taken up. No terrestrial location.'), // P17
+          unmapped('Woods near the Smith home', PGP, ['pgp'], 'Pearl of Great Price: Joseph Smith’s canonized account describes a prayer in nearby woods and a vision of two personages, reported for spring 1820, near Manchester, New York. No grove point is sourced.'), // P11
+          unmapped('Enoch’s city (Zion)', DC, ['dc'], 'Doctrine and Covenants: D&C 38:4 describes the Zion of Enoch as taken into God’s presence. No terrestrial location is supplied.'), // P17
+          unmapped('Enoch’s city (Zion)', PGP, ['pgp'], 'Pearl of Great Price: Moses 7 describes Enoch’s community as Zion and the city being taken up. No terrestrial location is supplied.'), // P17
           unmapped('Jershon (Abraham)', PGP, ['pgp'], 'Pearl of Great Price: Abraham names Jershon on the way from Haran to Canaan. Location unknown; not the Book of Mormon Jershon.'), // P19
         ],
       },
@@ -1069,7 +1079,8 @@
           { name: 'Moses’ commission', books: [OT], layers: ['ot'], desc: 'At Horeb, Moses is commissioned to bring Israel out of Egypt (Ex. 3:1–12).' }, // E02
           { name: 'Baptisms at Mormon', books: [BOM], layers: ['bom'], desc: 'Alma teaches baptismal commitments and baptizes at the waters of Mormon (Mosiah 18:7–17).' }, // E06
           { name: 'Jesus at Bountiful', books: [BOM], layers: ['bom'], desc: 'The narrative describes Jesus appearing to the multitude at the temple (3 Ne. 11:1–17).' }, // E07
-          { name: 'First Vision account', books: [DC], layers: ['dc', 'pgp'], when: 1820, desc: 'The D&C introduction reports Joseph Smith’s First Vision in spring 1820 while he was living in Manchester. Joseph Smith’s canonized account in the Pearl of Great Price reports a vision following prayer in the woods.' }, // E08
+          { name: 'First Vision account', books: [DC], layers: ['dc'], when: 1820, desc: 'The D&C introduction reports Joseph Smith’s First Vision in spring 1820 while he was living in Manchester.' }, // E08
+          { name: 'First Vision account', books: [PGP], layers: ['pgp'], when: 1820, desc: 'Joseph Smith’s canonized account in the Pearl of Great Price reports a vision following prayer in the woods.' }, // E08
           { name: 'Abraham’s journey account', books: [PGP], layers: ['pgp'], desc: 'Abraham describes a journey from Ur through Haran and Canaan toward Egypt (Abr. 2:4–21). It gives Abraham’s age on leaving Haran as 62; Genesis 12:4 gives 75. Neither value is corrected or harmonized here.' }, // E12, LDS-Q04
         ],
       },
