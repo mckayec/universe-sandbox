@@ -1,0 +1,21 @@
+{
+  "implementation": "5a9711eb2676e0b421fb093211fc0be97ae2b368",
+  "review_baseline": "f3b90e06be4d643d98da38fad1078d436f0d2daf",
+  "spec_views": 119,
+  "imported_conforming": 62,
+  "not_imported_by_key": 57,
+  "anchors_checked": 26,
+  "sites": 34,
+  "events": 24,
+  "routes": 9,
+  "codex_cards": 95,
+  "salamis_desc": "Representative location of Salamis on Cyprus from the Pleiades gazetteer. No synagogue is located.",
+  "salamis_modern": "Salamis/Konstantia, Cyprus; representative city-site point, not a synagogue location. Coordinate: ToposText gazetteer point (representative).",
+  "palmyra_books": [
+    4
+  ],
+  "palmyra_layers": [
+    "dc"
+  ],
+  "limits": "Accepted research/spec reuse. Not fresh source reading, rendered testing or full BA07 accounting."
+}
