@@ -12,6 +12,7 @@ export type UniversePackId =
   | 'exoplanets'
   | 'powers-of-ten'
   | 'cosmere'
+  | 'lds-standard-works'
   | 'star-wars';
 export type UniversePackStatus = 'ready' | 'atlas' | 'source-required';
 export type LocationScale = 'universe' | 'galaxy' | 'cluster' | 'system' | 'world' | 'surface';
@@ -221,6 +222,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#c9b8ff',
     'atlas/?pack=cosmere',
     'Reconstructed from the Cosmere books, the maps printed in them and cited Coppermind pages; star positions are schematic.',
+  ),
+  atlasPack(
+    'lds-standard-works',
+    'Latter-day Saint Standard Works',
+    'Scripture atlas',
+    'An Earth atlas of places in the Bible, Book of Mormon, Doctrine and Covenants and Pearl of Great Price, one layer per work.',
+    '#e4cf9a',
+    'atlas/?pack=lds-standard-works',
+    'Independent educational atlas. Pins use UNESCO, Pleiades and National Park Service locations; places without an approved location are not pinned.',
   ),
   plannedPack(
     'star-wars',

@@ -87,6 +87,10 @@ vec3 biomeStyle(int st,vec3 c,vec3 q,vec3 p){
   return c;}
 vec3 dirFromUv(vec2 uv){float lon=(uv.x-.5)*6.28318530718;float lat=(uv.y-.5)*PI;return vec3(cos(lat)*cos(lon),sin(lat),-cos(lat)*sin(lon));}
 /* types: 0 terran 1 ocean 2 archipelago 3 desert 4 forest 5 ice 6 gas 7 city 8 barren 9 lava 10 hive 11 toxic 12 star-swamp/garden */
+/* built-in Earth mask at p. gB, when set (>=0), freezes it so the normal pass gets slopes from the
+   terrain noise only: the mask's coast step is a cliff that shaded a dark rim along every shore (BV3) */
+float gB=-1.;
+float baseAt(vec3 p){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));return texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;}
 float height(vec3 p){
   vec3 q=p*uFreq+uSeed;
   if(uType==6){return 0.;}
@@ -94,8 +98,7 @@ float height(vec3 p){
   q+=w*uWarp;
   float h=fbm(q,uOct)*.5+.5;
   h=pow(h,1.15)*1.08;
-  if(uBase>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));float b=texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;
-    h=uSea+(b-.5)*.3+(h-.5)*.12;}
+  if(uBase>.5){float b=gB>=0.?gB:baseAt(p);h=uSea+(b-.5)*.3+(h-.5)*.12;}
   if(uMapOn>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
     vec4 Hi=texture2D(tMapHi,muv);vec4 Lo=texture2D(tMapLo,muv);float ml=Hi.r;
     h=uSea+(ml-.5)*.05+Lo.r*.07*ml+(h-.5)*(.05+.1*ml);
@@ -203,6 +206,7 @@ void main(){
   /* pass 1: object-space normal + city lights */
   vec3 t1=normalize(cross(vec3(0.,1.,0.),p)+vec3(1e-4,0.,0.));vec3 t2=normalize(cross(p,t1));
   float e=uEps;
+  if(uBase>.5)gB=baseAt(p);
   float hx=height(normalize(p+t1*e)),hy=height(normalize(p+t2*e));
   float k=water?0.:uBump;
   if(uType==6)k=0.;
@@ -229,8 +233,8 @@ const PLANET_VS=`
 varying vec3 vObj;varying vec3 vNW;varying vec3 vWP;
 void main(){vObj=normalize(position);vec4 wp=modelMatrix*vec4(position,1.);vWP=wp.xyz;vNW=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*wp;}`;
 const PLANET_FS=`
-uniform sampler2D tAlb,tNrm,tCld,tMapHi;
-uniform float uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;
+uniform sampler2D tAlb,tNrm,tCld,tMapHi,tBase;
+uniform float uBase,uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;uniform vec2 uAlbN;
 uniform vec3 uSun,uSunCol,uAtmo,uLightCol,uLava,uSeed;
 uniform float uAtmoK,uCloudShift,uDetail,uAmb,uHasCld,uLavaOn,uTime,uHasSea;
 uniform vec3 uWaterCol,uLandCol;
@@ -247,6 +251,25 @@ void main(){
   vec3 alb=pow(A.rgb,vec3(2.2));
   vec3 nO=normalize(B.rgb*2.-1.);
   float wat=A.a;
+  if(uBase>.5){ /* built-in Earth: the full-size coastline mask is finer than the bake. Rebuild colour and
+     normal from the nearest bake texels on the mask's side of the shore (joint bilateral), so coasts
+     neither smear land into water nor fall back to a flat colour band (BV3) */
+    bool wb=texture2D(tBase,uv).r<.5;float ws=wb?1.:0.;
+    vec2 fp=uv*uAlbN-.5;vec2 ip=floor(fp);vec2 fr=fp-ip;
+    vec4 sa=vec4(0.),sb=vec4(0.);float sw=0.;
+    for(int k=0;k<4;k++){vec2 o=vec2(mod(float(k),2.),floor(float(k)*.5));vec2 tc=(ip+o+.5)/uAlbN;
+      vec4 a=texture2D(tAlb,tc);vec4 b=texture2D(tNrm,tc);
+      float wt=(mix(1.-fr.x,fr.x,o.x)*mix(1.-fr.y,fr.y,o.y)+1e-3)*(1.-abs(step(.5,a.a)-ws));
+      sa+=a*wt;sb+=b*wt;sw+=wt;}
+    vec4 ra=vec4(0.);float rw=0.;
+    for(int k=0;k<16;k++){float an=float(k)*.785398+(k<8?0.:.3927);vec2 tc=(ip+fr+.5+vec2(cos(an),sin(an))*(k<8?2.:5.))/uAlbN;
+      vec4 a=texture2D(tAlb,tc);float wt=(k<8?4.:1.)*(1.-abs(step(.5,a.a)-ws));ra+=a*wt;rw+=wt;}
+    float mag=1.-smoothstep(.8,1.6,max(length(dFdx(fp)),length(dFdy(fp))));
+    bool off=(A.a>=.5)!=wb;
+    if(sw>1e-4){A.rgb=mix(A.rgb,sa.rgb/sw,off?1.:mag);B=mix(B,sb/sw,mag);nO=normalize(B.rgb*2.-1.);}
+    else if(rw>.5)A.rgb=ra.rgb/rw;
+    else A.rgb=pow(wb?uWaterCol:uLandCol,vec3(1./2.2));
+    alb=pow(A.rgb,vec3(2.2));wat=ws;A.a=wat;}
   if(uDetail>.001){ /* live procedural detail: resolves past the baked 4K map as you zoom in */
     vec3 dp=d*240.+uSeed;
     float n1=snoise(dp),n2=snoise(dp*2.7+7.),n3=snoise(dp*7.3+3.),n4=snoise(dp*19.+11.);
@@ -256,6 +279,8 @@ void main(){
       if(w2>.5&&A.a<.5)alb=uWaterCol;if(w2<.5&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=w2;}
     if(uMapOn>.5){vec4 Hm=texture2D(tMapHi,uv);float lm=Hm.r+fine*.16*uDetail;bool wm=lm<.5||Hm.b>.55;
       if(wm&&A.a<.5)alb=uWaterCol;if(!wm&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=wm?1.:0.;}
+    if(uBase>.5){float lb=texture2D(tBase,uv).r+fine*.12*uDetail;bool wb=lb<.5;
+      if(wb&&A.a<.5)alb=uWaterCol;if(!wb&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=wb?1.:0.;}
     float land=1.-wat;
     alb*=1.+fine*.22*uDetail*land;
     vec3 g=vec3(snoise(dp*3.+1.),snoise(dp*3.+5.),snoise(dp*3.+9.))*.6+vec3(snoise(dp*9.+2.),snoise(dp*9.+6.),snoise(dp*9.+10.))*.4;
@@ -745,8 +770,12 @@ function setFeatures(g){const u=bakeMat.uniforms;const F0=ARR(g.feat).filter(f=>
   u.uBase.value=g.base==="earth"&&EARTH_TEX?1:0;u.tBase.value=EARTH_TEX;
   const MT=g.map?mapTextures(g.map):null;u.uMapOn.value=MT?1:0;u.tMapHi.value=MT?MT.hi:null;u.tMapLo.value=MT?MT.lo:null;u.tMapReg.value=MT?MT.reg:null;
   u.uMapMtn.value=g.map&&g.map.mtn!=null?g.map.mtn:.35;}
+/* built-in Earth (gfx.base:"earth"): a Natural Earth 1:10m land-and-lakes mask (tools/build_earth_mask.py),
+   8192x4096 on capable desktops and 4096x2048 elsewhere. The bake reads it for the surface map and the
+   planet shader reads it again up close, so coastlines stay sharp at 4K. Falls back to the small mask. */
+const EARTH_FILE=window.__EARTH_FILE||(SMALL||LOWMEM||MAXTEX<8192||(navigator.deviceMemory&&navigator.deviceMemory<8)?"earth-hi-4k.png":"earth-hi.png");
 let EARTH_TEX=null;let earthReady=null;
-function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+"earth-base.png";});return earthReady;}
+function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>{if(!im.src.endsWith("earth-base.png"))im.src=ENGINE_BASE+"earth-base.png";else res();};im.src=ENGINE_BASE+EARTH_FILE;});return earthReady;}
 if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
 /* vector maps (gfx.map): hand-laid coastlines, lakes, rivers, ranges and painted regions, given as
    [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
@@ -797,10 +826,13 @@ function makeRT(w,h,mip){const rt=new THREE.WebGLRenderTarget(w,h,{depthBuffer:f
 function renderBake(rt,y0,rows){const W=rt.width;renderer.setRenderTarget(rt);
   if(rows!=null){renderer.setScissorTest(true);rt.scissor.set(0,y0,W,rows);rt.scissorTest=true;}
   renderer.render(bakeScene,bakeCam);rt.scissorTest=false;renderer.setScissorTest(false);renderer.setRenderTarget(null);}
+/* normal-pass step. The built-in Earth's mask lifts land in one texel at a 4096 bake, so a finer step
+   turned every coast and small lake into a steep, dark-shadowed rim (BV2); 2048-texel steps keep it smooth. */
+function epsFor(g,W){return TAU/(g&&g.base==="earth"?Math.min(W,2048):W)*.6;}
 function octFor(size){return size>=4096?10:size>=2048?9:size>=1024?8:6;}
 /* bake a full set synchronously (small sizes only) */
 function bakeNow(g,key,W){const H=W/2;const set={alb:makeRT(W,H,true),nrm:makeRT(W,H,true),cld:makeRT(W,H,true),size:W};
-  setBakeU(g,key);const u=bakeMat.uniforms;u.uOct.value=octFor(W);u.uEps.value=TAU/W*.6;
+  setBakeU(g,key);const u=bakeMat.uniforms;u.uOct.value=octFor(W);u.uEps.value=epsFor(g,W);
   u.uPass.value=0;renderBake(set.alb);u.uPass.value=1;renderBake(set.nrm);u.uPass.value=2;u.uOct.value=7;renderBake(set.cld);return set;}
 /* incremental HD bake */
 const bakeJobs=[];
@@ -814,7 +846,7 @@ function bakeStep(){
   if(bakeStep.last){const ft=performance.now()-bakeStep.last;BAKE_SCALE=clamp(BAKE_SCALE*(ft>34?.7:ft<20?1.15:1),.05,2.5);}bakeStep.last=performance.now();
   const budget=(MOB?520000:1900000)*BAKE_SCALE/(job.pass===1?3.2:1);
   const rows=Math.max(8,Math.floor(budget/rt.width/8)*8);
-  u.uPass.value=job.pass;u.uOct.value=job.pass===2?8:octFor(job.W);u.uEps.value=TAU/job.W*.6;
+  u.uPass.value=job.pass;u.uOct.value=job.pass===2?8:octFor(job.W);u.uEps.value=epsFor(job.g,job.W);
   renderBake(rt,job.row,Math.min(rows,rt.height-job.row));job.row+=rows;
   const tot=job.H*2+job.H/2;const doneRows=(job.pass>0?job.H:0)+(job.pass>1?job.H:0)+Math.min(job.row,rt.height)*(job.pass===2?2:1);
   if(job.progress)job.progress(clamp(doneRows/tot,0,1));
@@ -847,11 +879,11 @@ const sunHalo=glowSprite(GLOW_W,520,.18);sunHalo.position.copy(sunSprite.positio
 const planetGroup=new THREE.Group();wsc.add(planetGroup);
 const SPHERE=new THREE.SphereGeometry(1,SMALL?160:256,SMALL?110:176);
 const SPHERE_LO=new THREE.SphereGeometry(1,96,64);
-function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
+function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},uAlbN:{value:new THREE.Vector2(set.alb.width,set.alb.height)},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
     uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.12)},uAtmo:{value:CL(g.atmo||"#6fa8ff")},uAtmoK:{value:g.atmoK==null?1:g.atmoK},
     uLightCol:{value:CL(g.lightCol||"#ffc27a")},uLava:{value:CL(g.lava||"#ff5a1a")},uLavaOn:{value:(g.type==="lava"||g.type==="dyson")?1:0},uSeed:{value:new THREE.Vector3(hashStr(w.id)%97,3,7)},
     uCloudShift:{value:0},uDetail:{value:0},uHasSea:{value:(g.sea>0&&g.type!=="gas")?1:0},uWaterCol:{value:CL((g.pal||[])[1]||"#2a6f97")},uLandCol:{value:CL((g.pal||[])[2]||"#4b6b3a")},uAmb:{value:g.amb==null?.018:g.amb},uHasCld:{value:g.clouds?1:0},uTime:{value:0},uRot:{value:new THREE.Matrix3()},
-    tMapHi:{value:g.map?mapTextures(g.map).hi:null},uMapOn:{value:g.map?1:0},uRealm:{value:0},uRStyle:{value:0},uRC1:{value:new THREE.Color()},uRC2:{value:new THREE.Color()},uRC3:{value:new THREE.Color()}};
+    tMapHi:{value:g.map?mapTextures(g.map).hi:null},uMapOn:{value:g.map?1:0},tBase:{value:g.base==="earth"?EARTH_TEX:null},uBase:{value:g.base==="earth"&&EARTH_TEX?1:0},uRealm:{value:0},uRStyle:{value:0},uRC1:{value:new THREE.Color()},uRC2:{value:new THREE.Color()},uRC3:{value:new THREE.Color()}};
   return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:PLANET_FS,uniforms:u,extensions:{derivatives:true}});}
 function cloudMaterial(set,g,w){return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:CLOUD_FS,transparent:true,depthWrite:false,extensions:{derivatives:true},
   uniforms:{tCld:{value:set.cld.texture},uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.2)},uCloudCol:{value:CL(g.cloudCol||"#ffffff")},
@@ -883,7 +915,7 @@ function buildPlanet(w,book,onProgress){
   if(w.ring){P.ring=ringMesh(w.ring);P.root.add(P.ring);}
   /* moons */
   ARR(w.moons).forEach((m,i)=>{m=m||{};const mg=Object.assign({type:"barren",pal:["#2a2a2a","#3a3836","#5a5550","#7a736a","#9a9288","#c8c2b8"],rough:.9,sea:0,atmoK:0,bump:1.6},m.gfx||{});
-    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,SMALL?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
+    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,SMALL?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.uAlbN.value.set(s.alb.width,s.alb.height);u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
     const piv=new THREE.Object3D();piv.rotation.set((i%2?.25:-.18),i*2.1+.6,(i%2?-.1:.12));const d=m.dist||(2.4+i*1.1);mm.position.x=d;piv.add(mm);planetGroup.add(piv);
     P.moons.push({piv,mesh:mm,mo,speed:(m.speed||.05)/(1+i*.6),name:m.name});});
   /* sun colour */
@@ -896,7 +928,7 @@ function buildPlanet(w,book,onProgress){
   Object.keys(setCache).forEach(k=>{if(k!==key){const s=setCache[k];if(s.hd)disposeSet(s.hd);if(s.pre)disposeSet(s.pre);delete setCache[k];}});
   PL=P;applyRealmToPlanet();return P;
 }
-function applySet(P,s){P.mat.uniforms.tAlb.value=s.alb.texture;P.mat.uniforms.tNrm.value=s.nrm.texture;P.mat.uniforms.tCld.value=s.cld.texture;if(P.cmat)P.cmat.uniforms.tCld.value=s.cld.texture;}
+function applySet(P,s){P.mat.uniforms.tAlb.value=s.alb.texture;P.mat.uniforms.uAlbN.value.set(s.alb.width,s.alb.height);P.mat.uniforms.tNrm.value=s.nrm.texture;P.mat.uniforms.tCld.value=s.cld.texture;if(P.cmat)P.cmat.uniforms.tCld.value=s.cld.texture;}
 function clearPlanet(){if(!PL)return;bakeJobs.forEach(j=>{if(PL.jobs.includes(j))j.cancelled=true;});
   PL.moons.forEach(m=>{planetGroup.remove(m.piv);disposeSet(m.mo.cur);m.mesh.material.dispose();});
   planetGroup.remove(PL.root);PL.root.traverse(o=>{if(o.material&&o.material.dispose)o.material.dispose();if(o.geometry&&o.geometry!==SPHERE&&o.geometry!==SPHERE_LO)o.geometry.dispose();});PL=null;}
@@ -912,7 +944,7 @@ function updatePlanet(dt,t,spinOn){if(!PL)return;
 }
 
 /* ===================== STATE & SPOILER RULES (PACK_FORMAT 6) ===================== */
-const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null};
+const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null,route:null};
 /* layers and timeline (PACK_FORMAT 20; helpers in layers.js) */
 const LY=window.AtlasLayers||null;
 const LAY=LY?LY.normLayers(K.raw):null;
@@ -994,17 +1026,153 @@ function buildSiteLabels(w){SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];
     if(s.rel&&(depth||0)<8){const a=place((w.sites||[]).find(x=>x.id===s.rel.to),(depth||0)+1);lat=a[0]+(s.rel.dlat||0)*.32;lon=a[1]+(s.rel.dlon||0)*.32;}else{lat=+s.lat||0;lon=+s.lon||0;}
     if(!s.sea&&land)[lat,lon]=snapToLand(PL.mask,lat,lon);return pos[s.id]=[lat,lon];};
   (w.sites||[]).filter(siteSeen).forEach(s=>{const [lat,lon]=place(s);
-    const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';labelsEl.appendChild(el);
+    const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';el.setAttribute("aria-label",s.name);labelsEl.appendChild(el);
     el.addEventListener("click",ev=>{ev.stopPropagation();selectSite(s.id);});
-    SITE_EL.push({s,el,dir:latLonDir(lat,lon)});});}
+    SITE_EL.push({s,el,ll:[lat,lon],dir:latLonDir(lat,lon)});});
+  buildRoutes(w);}
 const _w=new THREE.Vector3(),_n=new THREE.Vector3();
-function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
-  SITE_EL.slice().sort((a,b)=>(b.s.id===S.site)-(a.s.id===S.site)).forEach(o=>{_n.copy(o.dir).applyQuaternion(PL.root.quaternion);_w.copy(_n).multiplyScalar(1.004);
-    const facing=_n.dot(camW.position.clone().sub(_w).normalize());const pr=project(_w,camW,W,H);let show=facing>.12&&pr.z<1;
-    const r={x:pr.x,y:pr.y-12,w:String(o.s.name).length*8+30,h:24};
-    if(show&&o.s.id!==S.site&&placed.some(q=>r.x<q.x+q.w&&r.x+r.w>q.x&&r.y<q.y+q.h&&r.y+r.h>q.y))show=false;if(show)placed.push(r);
-    o.el.style.opacity=show?clamp((facing-.12)*5,0,1):0;o.el.style.pointerEvents=show?"auto":"none";if(o.el._tab!==show){o.el._tab=show;o.el.tabIndex=show?0:-1;o.el.setAttribute("aria-hidden",String(!show));}
-    if(show)o.el.style.transform="translate("+(pr.x-7)+"px,"+(pr.y-13)+"px)";o.el.classList.toggle("sel",o.s.id===S.site);});
+/* Site labels: the selected site wins, then `major` sites, then pack order. A label whose text would
+   overlap one already placed collapses to its marker (still clickable), so dense regions keep every pin. */
+const sitePri = (o) => (o.s.id === S.site ? 2 : 0) + (o.s.major ? 1 : 0);
+const hit = (r, q) => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y;
+function layoutSiteLabels(W, H) {
+  if (!PL) return;
+  const placed = [];
+  const order = SITE_EL.map((o, i) => [o, i]).sort((a, b) => sitePri(b[0]) - sitePri(a[0]) || a[1] - b[1]);
+  order.forEach(([o]) => {
+    _n.copy(o.dir).applyQuaternion(PL.root.quaternion);
+    _w.copy(_n).multiplyScalar(1.004);
+    const facing = _n.dot(camW.position.clone().sub(_w).normalize());
+    const pr = project(_w, camW, W, H);
+    const show = facing > 0.12 && pr.z < 1;
+    const sel = o.s.id === S.site;
+    const r = { x: pr.x, y: pr.y - 12, w: String(o.s.name).length * 8 + 30, h: 24 };
+    const dot = show && !sel && placed.some((q) => hit(r, q));
+    if (show) placed.push(dot ? { x: pr.x - 2, y: pr.y - 6, w: 12, h: 12 } : r);
+    o.el.style.opacity = show ? clamp((facing - 0.12) * 5, 0, 1) : 0;
+    o.el.style.pointerEvents = show ? "auto" : "none";
+    o.el.classList.toggle("dot", dot);
+    if (o.el.title !== (dot ? o.s.name : "")) o.el.title = dot ? o.s.name : "";
+    if (o.el._tab !== show) {
+      o.el._tab = show;
+      o.el.tabIndex = show ? 0 : -1;
+      o.el.setAttribute("aria-hidden", String(!show));
+    }
+    if (show) o.el.style.transform = "translate(" + (pr.x - 7) + "px," + (pr.y - 13) + "px)";
+    o.el.classList.toggle("sel", sel);
+  });
+}
+
+/* ===================== SURFACE JOURNEYS (PACK_FORMAT 20.6) ===================== */
+/* Ordered stops on one world, drawn as dashed great-circle legs between placed sites only. */
+let ROUTE_EL = [];
+let routeSvg = null;
+const routeFirst = (r) => (r.first != null ? r.first : r.books && r.books.length ? Math.min(...r.books) : 1);
+const routeSeen = (r) => !!r && filterOk(r) && (!CUM || !S.book || routeFirst(r) <= S.book);
+function worldRoutes(w) {
+  return ARR(w && w.routes).filter((r) => r && r.id && routeSeen(r));
+}
+function routeColor(r) {
+  const id = LY ? LY.itemLayers(r)[0] : null;
+  return LAY && id && LAY.by[id] ? LAY.by[id].c : "var(--lapis-hi)";
+}
+function clearRoutes() {
+  ROUTE_EL.forEach((o) => o.el.remove());
+  ROUTE_EL = [];
+}
+function buildRoutes(w) {
+  clearRoutes();
+  if (!LY || !w || !ARR(w.routes).length) return;
+  if (!routeSvg) {
+    routeSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    routeSvg.setAttribute("class", "routes");
+    routeSvg.setAttribute("aria-hidden", "true");
+    labelsEl.prepend(routeSvg);
+  }
+  const at = {};
+  SITE_EL.forEach((o) => (at[o.s.id] = o));
+  worldRoutes(w).forEach((r) => {
+    LY.routeLegs(r, (id) => !!at[id]).forEach(([a, b]) => {
+      const A = at[a].ll;
+      const B = at[b].ll;
+      const deg = latLonDir(A[0], A[1]).angleTo(latLonDir(B[0], B[1])) / DEG;
+      const dirs = LY.greatCircle(A, B, Math.min(96, Math.ceil(deg * 2) + 4)).map((p) => latLonDir(p[0], p[1]));
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      el.setAttribute("class", "rleg");
+      el.style.setProperty("--rc", routeColor(r));
+      routeSvg.appendChild(el);
+      ROUTE_EL.push({ r, el, dirs });
+    });
+  });
+}
+const _rp = new THREE.Vector3();
+const _rc = new THREE.Vector3();
+function layoutRoutes(W, H) {
+  if (!PL || !ROUTE_EL.length) return;
+  ROUTE_EL.forEach((o) => {
+    let d = "";
+    let pen = false;
+    o.dirs.forEach((dir) => {
+      _rp.copy(dir).applyQuaternion(PL.root.quaternion);
+      _rc.copy(camW.position).sub(_rp).normalize();
+      const front = _rp.dot(_rc) > 0.03;
+      if (!front) {
+        pen = false;
+        return;
+      }
+      const pr = project(_rp.multiplyScalar(1.003), camW, W, H);
+      d += (pen ? "L" : "M") + pr.x.toFixed(1) + " " + pr.y.toFixed(1);
+      pen = true;
+    });
+    o.el.setAttribute("d", d);
+    o.el.classList.toggle("sel", S.route === o.r.id);
+    o.el.classList.toggle("dim", !!S.route && S.route !== o.r.id);
+  });
+}
+/* the Journeys list in the details panel (world view only) */
+function routesHtml(w) {
+  if (S.view !== "world" || !LY) return "";
+  let rs = worldRoutes(w);
+  if (S.site) rs = rs.filter((r) => r.id === S.route || ARR(r.stops).some((st) => LY.stopSite(st) === S.site));
+  if (!rs.length) return "";
+  const placed = new Set(SITE_EL.map((o) => o.s.id));
+  const known = new Set((w.sites || []).map((x) => x.id));
+  let h = '<div class="rule"><span class="eyebrow">' + esc(UI.routesTitle || "Journeys") + "</span></div>";
+  h += '<p class="srcnote">' + esc(UI.routeNote || "Dashed lines join known places in the order the account gives. They are schematic, not recovered roads.") + "</p>";
+  rs.forEach((r) => {
+    const open = S.route === r.id;
+    h += '<div class="route' + (open ? " open" : "") + '" style="--rc:' + esc(routeColor(r)) + '">';
+    h += '<button class="rt" data-route="' + esc(r.id) + '" aria-expanded="' + open + '"><span class="rl"></span>' + esc(r.name || r.id);
+    h += '<span class="pc">' + bks(r.books || []) + LY.itemMeta(LAY, TL, r) + "</span></button>";
+    if (open) {
+      if (r.desc) h += '<p class="pd">' + esc(r.desc) + "</p>";
+      h += '<ol class="stops">' + ARR(r.stops).map((st) => stopHtml(w, st, placed, known)).join("") + "</ol>";
+      if (r.ref) h += '<p class="srcnote">' + esc(r.ref) + "</p>";
+    }
+    h += "</div>";
+  });
+  return h;
+}
+function stopHtml(w, st, placed, known) {
+  const id = LY.stopSite(st);
+  const nm = (id && siteName(w, id)) || (st && st.name) || id || "";
+  const note = st && typeof st === "object" && st.note ? " <i>" + esc(st.note) + "</i>" : "";
+  if (id && placed.has(id)) return '<li><button class="stop" data-site="' + esc(id) + '">' + esc(nm) + "</button>" + note + "</li>";
+  const why = id && known.has(id) ? UI.hiddenStop || "hidden by the current filter" : UI.unplacedStop || "location unknown, not drawn";
+  return '<li class="unplaced">' + esc(nm) + " <span>" + esc(why) + "</span>" + note + "</li>";
+}
+/* turn the open world so a route's first placed stop faces the viewer */
+function showRoute(id) {
+  S.route = id;
+  renderDossier();
+  const open = dos.querySelector(".route.open");
+  if (open) open.scrollIntoView({ block: "nearest" });
+  const w = WORLD_BY[S.sel];
+  const r = id && w && ARR(w.routes).find((x) => x.id === id);
+  if (!r || !PL) return;
+  const first = ARR(r.stops).map(LY.stopSite).find((sid) => SITE_EL.some((o) => o.s.id === sid));
+  const o = first && SITE_EL.find((x) => x.s.id === first);
+  if (o) turnToSite(o, Math.max(orbW.dist, 2.6));
 }
 
 /* ===================== TOOLTIP ===================== */
@@ -1058,6 +1226,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     else{const vis=all.filter(s=>!S.book||!s.book||s.book===S.book||(s.books||[]).includes(S.book));
       if(all.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
         all.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(vis.includes(s)?"":' style="opacity:.45"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||(s.book?[s.book]:[]))+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
+    h+=routesHtml(w);
     const evs=evFor(w.id);h+='<div class="rule"><span class="eyebrow">In the Chronicle</span></div>';
     h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+'</button>').join("")
       :'<p class="empty">'+(S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
@@ -1071,10 +1240,14 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
 function eraBlurb(w){let b=w.blurb;const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(cur>=k&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
 const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
+/* one labelled note; layer chips only when the note has its own layers */
+function noteHtml(n){const lm=LY&&(n.layers||n.layer)?' <span class="lmeta">'+LY.itemMeta(LAY,null,{layers:n.layers,layer:n.layer})+'</span>':"";
+  return '<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+lm+'</span>';}
 function placeMeta(s){return LY?LY.itemMeta(LAY,TL,s):"";}
 function siteExtra(s){let h="";if(s.modern)h+='<span class="pm">'+esc(UI.modernLabel||"Today")+': '+esc(s.modern)+'</span>';
   if(S.site===s.id&&TRV&&S.sel){const tn=TRV.nodeFor(S.sel,s.id);if(tn&&treeNodeSeen(tn))h+='<span class="tr-from" data-tree-node="'+esc(tn.id)+'">Show '+esc(tn.name)+' in the '+esc(TRV.T.title.toLowerCase())+'</span>';}
-  if(S.site===s.id){const ns=ARR(s.notes).filter(n=>n&&n.t);if(ns.length)h+='<span class="pnotes">'+ns.map(n=>'<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+'</span>').join("")+'</span>';}
+  if(S.site===s.id){const ns=LY?LY.visibleNotes(s.notes,S.layers,S.range,CUM,S.book):ARR(s.notes).filter(n=>n&&n.t);
+    if(ns.length)h+='<span class="pnotes">'+ns.map(noteHtml).join("")+'</span>';}
   return h;}
 function siteName(w,id){const s=(w.sites||[]).find(x=>x.id===id);return s?s.name:"";}
 const HOOK_API={get worldBy(){return WORLD_BY;},sol:SOL,get state(){return {book:S.book,sel:S.sel,view:S.view};},books:BOOKS,worlds:WORLDS};
@@ -1089,7 +1262,8 @@ function distText(w){
   return "About "+ly.toLocaleString()+" light-years from Sol"+(w.est?" · position estimated":"");}
 dos.addEventListener("click",e=>{const a=e.target.closest("[data-act]");if(a){const k=a.dataset.act;
     if(k==="descend")descend(S.sel);else if(k==="ascend")ascend();else if(k==="web")flyHuman();else if(k==="go")selectWorld(a.dataset.id,true);return;}
-  const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site?null:p.dataset.site);return;}
+  const rt=e.target.closest("[data-route]");if(rt){showRoute(S.route===rt.dataset.route?null:rt.dataset.route);return;}
+  const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site&&!p.classList.contains("stop")?null:p.dataset.site);return;}
   const ev=e.target.closest("[data-ev]");if(ev){openEvent(ev.dataset.ev===S.ev?null:ev.dataset.ev,false);}});
 
 /* ===================== CHRONICLE ===================== */
@@ -1118,12 +1292,20 @@ function renderLegend(){const b=S.book;let L=[];
 /* ===================== CODEX ===================== */
 let cxTab=K.codex.length?K.codex[0].id:null;
 function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books):1);}
+/* one codex entry; Track A entries also show their layer chips and dates */
+function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
+  const lm=LY&&(x.layers||x.layer||x.when!=null)?'<span class="lmeta">'+LY.itemMeta(LAY,TL,x)+'</span>':"";
+  return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p>'+cxSrc(x)+'</div>';}
+/* optional source locators on a codex entry: src:[{t:"Moses 2",u:"https://…"}]; only https links are made */
+function cxSrc(x){const s=ARR(x.src).filter(r=>r&&r.t);if(!s.length)return"";
+  return '<p class="cx-src">Source: '+s.map(r=>/^https:\/\/[^\s"<>]+$/.test(String(r.u||""))?'<a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.t)+'</a>':esc(r.t)).join(" · ")+'</p>';}
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
   const tab=K.codex.find(t=>t.id===cxTab)||K.codex[0];
-  const list=tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=tab.list.length-list.length;
-  $("#cxBody").innerHTML=list.map(x=>{const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
-    return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}).join("")+
-    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"");
+  const sp=LY?LY.codexSplit(tab.list,S.layers,S.range,CUM,S.book,cxFirst):null;
+  const list=sp?sp.shown:tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=sp?sp.locked:tab.list.length-list.length;const flt=sp?sp.filtered:0;
+  $("#cxBody").innerHTML=list.map(cxItem).join("")+
+    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"")+
+    (flt?'<p class="cx-hid">'+flt+' entr'+(flt===1?"y is":"ies are")+' hidden by the layer or year filter.</p>':"");
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
 $("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
 function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
@@ -1291,7 +1473,8 @@ dos.addEventListener("click",e=>{const t=e.target.closest("[data-tree-node]");if
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();afterRefresh();}
+function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();
+  if(!$("#codex").hidden)renderCodex();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
 function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
@@ -1305,7 +1488,7 @@ function fitDist(r){const hf=2*Math.atan(Math.tan(camW.fov*DEG/2)*camW.aspect);r
 function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
   if(noSurface(w)){if(S.view==="world")ascend(()=>selectWorld(id,true));else selectWorld(id,true);return;}
   if(needRealm(w))setRealm(needRealm(w),true);
-  S.sel=id;S.site=null;if(MOB)dosCollapsed=true;
+  S.sel=id;S.site=null;S.route=null;if(MOB)dosCollapsed=true;
   /* one history entry per visit to a surface, so Back returns to the galaxy */
   if(!fromHistory&&urlReady){const st={atlasSurface:true};if(history.state&&history.state.atlasSurface)history.replaceState(st,"",urlFor({view:"world",sel:id}));else history.pushState(st,"",urlFor({view:"world",sel:id}));}
   transition(()=>{S.view="world";hideTip();syncURL();
@@ -1324,15 +1507,16 @@ function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
    Back button and this button stay in step; popstate then does the work. */
 let afterAscend=null;
 function ascend(after){if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
-function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
+function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];clearRoutes();S.route=null;$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
 function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
-  if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
-    /* turn the world so the place sits in daylight, between the sun and the viewer */
+  if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o)turnToSite(o,Math.min(orbW.dist,2.4));}}
+/* turn the world so the place sits in daylight, between the sun and the viewer */
+function turnToSite(o,dist){S.interacted=true;
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();
     const vy=Math.atan2(V.x,V.z);const sy=Math.atan2(o.dir.x,o.dir.z);const r0=PL.root.rotation.y;PL.turn={t0:performance.now(),from:r0,to:r0+((((vy-sy)-r0+Math.PI)%TAU+TAU)%TAU-Math.PI)};
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
-    orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
+    orbW.flyTo(new THREE.Vector3(),dist,orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}
 function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
@@ -1423,7 +1607,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
     layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);renderer.render(wsc,camW);}
+  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
 /* ===================== URL STATE (deep links, reload, Back) =====================
