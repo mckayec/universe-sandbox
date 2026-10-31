@@ -1,0 +1,14 @@
+✔ BA01: Lystra and South Pass are held as named unplaced stops, not pins (1.529129ms)
+✔ BA05: each codex account follows only its own layer (0.886723ms)
+✔ BA05 control: Jerusalem keeps its separately layered notes (0.247502ms)
+✔ BA06: the Fayette reference point agrees with its 1829 episodes under time filtering (0.310828ms)
+✔ BA02/BA03: register coordinates and visible qualifications are applied (0.474193ms)
+✔ BA07: 62 specified source views resolve, one work layer each, no dates or pins (2.596644ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 131.513851

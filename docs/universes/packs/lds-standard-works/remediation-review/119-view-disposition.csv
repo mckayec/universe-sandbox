@@ -1,0 +1,120 @@
+research_id,spec_csv,disposition,runtime_key,payload_sha256
+PE02,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PE02,78367234df0b8f74aa62ab0a7d29b6048c25667343c631a71219777ca264af58
+PE03,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PE03,e58480967b27e4d3bb2bad2242bbb2b8de78f1f4d36832f8b3c5e2235115f382
+PE06,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PE06,f0f0fddca25eb9be17e8d83a694fb79760f0e3bb14225166b8dd80efece6bd60
+PE08,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PE08,fb78d2d41fe320c84de3712b528152caaa3424b8549ab1158b99428365d74a93
+PC01,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC01,1fa9539a51cacfcc109dcd38cb20635353ac2b70cfd92609812950c1eeb9df28
+PC02,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC02,a41e7f0c547567e36ba7cbc3d17eaa9ed87799c4474bc466ae3fc277be867f37
+PC03,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC03,cbaefdc44ab39a487128055855ab5918a631df4dbee9ea76397021c11f1bc2e6
+PC04,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC04,e52f0b899e1e5421134a206a69c48c20f467873cd67267b535bc6f283609164a
+PC05,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC05,1e3b086ce641820fed8415ec426a17903f64b690967af80bddb164a597c22b94
+PC06,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC06,a13de8b48116d685ac57c95666b835de1526cfb7da814da1a56b8374f9e0a9d0
+PC07,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC07,ec498d4daa4119e7ff39e5c3bf46ddb2dabcb180941e052ebee5e1cbf9cd33b6
+PC08,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",PC08,02ea24457cfa5bee64586bb5b7e0923d43d3f514602f6043766d53e50297a4c4
+FM01,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM01,c3331d0629b070be72d08e3dd04e8b3ab75ce01e0989d0eaecbf08c2e8f89b41
+FM02,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM02,9a1267e194c89006ab4a2338beb5df6f9f764ddcf6d790dbf16f79b35bca8d97
+FM03,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM03,1c0a6e712cc1ea4ed54a2fecd7eca50e49b5dc4f78ea7ff4a6717b2323bc2d18
+FM04,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM04,b36f97c96fa0b3ff487178d701a6c0ee6be7be86e35f359bb60cf3716236782f
+FM05,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM05,7f7220303845881c2a2e95bc6c72d3bc07f817c92ccd3089f0d22ba03213f73b
+FM06,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM06,879ed9cc14c550998cdd2461f2ed43a2f547a13c1684c1dd3ab6386d34fa3ea4
+FM07,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM07,b4cdbf6bf095f33bc561b3116589d4574a6b653d60464e111410fffc970d82be
+FM08,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM08,8bb431fb1c56d6ef0694af005a76dc3ad3905ed150bf1273dd3fbc9d793549a3
+FM09,minimum-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",FM09,c449bade9851c4046edbee947d339a379c07548afbb58ef38cd117d0e6201d31
+RE14,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RE14,491e9f707ea9c878a6c1d9069825f0bff38d9fe20a24743b76994966569e0bd5
+RE20,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RE20,c65d367397d5b7a28a185b5076fbac2267652b1d721ea7731c3c323fb204e078
+RC05,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RC05,9d97f73c8a87c289fa6e6d44a3786d2be00ef234088ac22ae03c47bc4ab12ab5
+RE18,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RE18,acc8a7fbebe14e529c695ff90c30558aa98aaa7a28e7601a222d859595e59ba4
+RE19,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RE19,8aab16457ba8cfe7e2fb0c55a3559466047df8044c51abb4f55d53fc86a76a3e
+RC06,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RC06,9426fb399570ea5ff369f8381f5f7544d6d2e3e23d3c95730fd47b79df0889d4
+RE15,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RE15,2789014f208c9d1334656f0db04bfa2a13222fee82c8c3e49df6730b4e59e381
+RE16,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RE16,c1af94bcd60da17fcd3ba2054f05824daca29700e5a34190359ef4424951a7e9
+RC03,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RC03,472488cab07c3a86fd5f4fe731aa1e9029789fc3d5450ea2c44ab978888c0298
+RC01,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RC01,50c8e49310dec1e5163b6d382ca14207958dbbd53942b802fcb7038aac0a563e
+RC02,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RC02,7a452e7f55e3a5ede2a8c873c3d37085d25e9c1f2067e136ad74900e3350eac0
+RC04,restoration-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",RC04,ad8cd08bbcb0554cc0458300d69569be786d301b5b98fd447d01666610c2dcd9
+BC01,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC01,53e52d92f782527fdcd0418884b66b15204bb41f9424a3fd98185a0da59d889b
+BC02,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC02,71c1e742b58fbf428e530869a14d14ad49f65c220f67265ae42b170ae05022d8
+BC03,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC03,258e8cea1241d5c3c5c51b8a3fb009964f808da90b8873586050cd9fcc97a503
+BC04,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC04,d52d20ba0dbc22ea742e83f449f94ca35fdabe2c6934f55b5ed257ebac5015c0
+BC05,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC05,f19e2ca5af1c6cadfee493d76ca16c3196e85f3754a4eb538d4478836c7047b3
+BC06,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC06,097d1b3ec84e145fb14fdc7e3c686ae0430c69094c27a2630ccf72485d0f2005
+BC07,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC07,97b493ffb4c8b57eaea114b67152cccf93e4666f81491a0b96896b765eb3aec7
+BC08,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC08,11f40a42051a1b5e39c01bbe4638d6aad42093c3d5702c8b78ecd119c2818587
+BC09,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC09,0b566c89c8e3df410361f15e4e82409803700032cc7ec2ed75cfa808a0ad37ad
+BC10,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC10,feea35c69316062ea02d7cfa5baec33ea177737cfc5163f8126d3f8222b11e24
+BC11,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC11,4edfa5fc0a233114c154f6873ee1e1df42a2898261f31e5d37df5984e1dfdf41
+BC12,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC12,66f5cd47d7edc2a062883025c12e04922ded1a2a25e8f75fa14c2ad352cc9514
+BC13,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC13,6221a76fe7d64f9b97bd5f6fe79f69f3db1bfb89b9aa7c2a3ede4baeff106814
+BC14,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC14,a96245a201512dfa2a3482582afa4ee82ba6198c4990694971cedff36f6d7e3e
+BC15,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC15,9926c4053a0f9fdd923c1c4897600721a4341e65e65a35a0d39289566dd8b7a7
+BC16,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC16,4c80d3a454d09ea1b9359452811fe33a6aee3f204241d4ff7dd95f9d31e69cc0
+BC17,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC17,700d8745155ce78f82000e0e770d5e3f5f849825b239ac92282ca42404795789
+BC18,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC18,c13669c6a370f345763fd0414b606c159eac1a1150eb801af9d506197173195e
+BC19,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC19,8f6d4e89bdaf8453384e07418e8515589e3dc06878ab63e83520f98434f3ffd2
+BC20,bom-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",BC20,42e6cec9a3dbb86991d39c1ac0dd547fc9ba44440e682d8a9192d67ad7125e61
+AE01,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AE01,dcd17e4b638dd792d9bdbe671ceabce218c194274d0b2fb8e8f0930219d49da8
+AE02,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AE02,cfc4406a00c8fb5d1449b8af3ed2a5ebaa7fd575b19e0e6bdc3dcc8cbc7a7d88
+AE03,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AE03,d32b8ae02f80bd744dec1d98d15da88fc4e0d4e73a2abfd9d8e594c356363c03
+AE09,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AE09,99ca4440dd078248bd30da35978cbcda9b30dd8d533918e9bce760bcafb9d884
+AE10,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AE10,63ffd61c685128a75bfc85b47f4d8a9ba98b3383915d5cf29769ef5b0cee6ba5
+AE14,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AE14,9ee30791435bb95f41d7841ba12832439a5f7d9136792fd626220045493751fd
+AC01,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AC01,70a3f11ca6d4f0af77f943bd4a41bb4e41ac05a8bd68cd166a982ad086c3d979
+AC02,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AC02,8ccc281e51ddc0fff84ee73941829b421d06f0ef7d70a41273f9707493ffc17c
+AC03,bible-content-crosswalk.csv,"accepted-spec copy, source URLs and gate fields conform; not fresh source verification",AC03,0e39d59844029f058e2b985dd1020c50f68c22bd6aa1ae604fa3b7fc2b579408
+BE01,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE02,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE03,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE04,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE05,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE06,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE07,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE08,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE09,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE10,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE11,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE12,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE13,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE14,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE15,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE16,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE17,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE18,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE19,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE20,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE21,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE22,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BE23,bom-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP01,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP02,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP03,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP04,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP05,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP06,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP07,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP08,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PP09,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PE01,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PE04,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PE05,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PE07,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PE09,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PJ01,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PJ02,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PC09,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+PC10,pgp-remainder-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+RE02,restoration-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+RE05,restoration-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+RE06,restoration-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+RE07,restoration-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+RE13,restoration-events-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ01,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ02,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ03,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ04,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ05,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ06,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ07,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ08,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ09,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ10,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
+BJ11,bom-journeys-content-crosswalk.csv,not imported by research key; older contextual representation not reclassified,,
