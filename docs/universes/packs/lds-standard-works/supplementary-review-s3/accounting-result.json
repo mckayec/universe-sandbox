@@ -1,0 +1,30 @@
+{
+  "head": "7b7a3da6154aceb1e279775a5805e5e287df4194",
+  "base": "47debcfdb86a3e41a023a30e04c6fcd5bd7209b0",
+  "research": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRowsChecked": 1278,
+  "SDRowsCheckedAgainstResearch": 1271,
+  "newParentRowsCompared": 187,
+  "importedSD": 298,
+  "proseCards": 7,
+  "pendingSD": 973,
+  "newCategoryCounts": {
+    "SC08": 73,
+    "SC09": 26,
+    "SC10": 27,
+    "SC11": 33,
+    "SC12": 28
+  },
+  "manualComparisonDispositions": {
+    "no-additional-discrepancy-identified": 177,
+    "copy-ambiguity-S3-C2": 1,
+    "partial-S3-C4": 1,
+    "partial-S3-C1": 7,
+    "copy-overstatement-S3-C3": 1
+  },
+  "all187RowLinksRetained": true,
+  "NTSourceLabelChaptersMatchURLs": true,
+  "generatorPackAndMappingByteIdentical": true,
+  "fullPrimaryRereading": false,
+  "result": "structural checks pass; content exceptions recorded"
+}
