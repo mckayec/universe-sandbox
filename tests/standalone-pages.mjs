@@ -60,6 +60,11 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 const base = origin + SUB;
 
 const PACKS = ['sun-eater', 'hyperion', 'expanse', 'foundation', 'dune', 'cosmere', 'lds-standard-works'];
+/* Atlases whose pack opens straight onto a planet surface (PACK_FORMAT 20.4 `start`). Under software WebGL
+   (SwiftShader on CI) the first surface frames take tens of seconds of GPU work, and the page's main thread
+   waits on them before it can report the header, so these get a longer readiness budget. On a real GPU the
+   same frames take milliseconds. */
+const SURFACE_START = new Set(['lds-standard-works']);
 const PAGES = [
   { path: 'atlas/', ready: '#chooser', back: '#chooser .gl-home' },
   ...PACKS.map(id => ({
@@ -68,6 +73,7 @@ const PAGES = [
     back: '.top .gl-home',
     header: true,
     wait: 2500,
+    readyTimeout: SURFACE_START.has(id) ? 240000 : 60000,
   })),
   { path: 'atlas/?pack=nope', ready: '#chooser', back: '#chooser .gl-home' },
   { path: 'atlas/society.html', ready: '#app .top', back: '.top .gl-home', wait: 4000 },
@@ -142,7 +148,7 @@ async function visit(page, vp) {
   });
   try {
     await tab.goto(base + page.path, { waitUntil: 'load', timeout: 90000 });
-    await tab.waitForSelector(page.ready, { timeout: 60000 });
+    await tab.waitForSelector(page.ready, { timeout: page.readyTimeout || 60000 });
     await tab.waitForTimeout(page.wait || 1200);
     // back link: visible and resolving to the sandbox root under the subpath
     const href = await tab.$eval(page.back, a => a.href).catch(() => null);
