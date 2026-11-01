@@ -1,0 +1,19 @@
+{
+  "head": "851715884a6969308ac1eadd7ff6cd4d37b7e2fb",
+  "base": "11b2491eeafb7a9e93ede1959f34f6f0eff9bcb4",
+  "addedCards": 59,
+  "changedPriorCards": 2,
+  "unchangedPriorCards": 791,
+  "totalCards": 852,
+  "uniqueKeyedCards": 819,
+  "gateCombinations": 1525,
+  "preNTAllLayerExclusions": 0,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S7-C1 temple payload incomplete",
+    "S7-C2 Mulek mention visible at OT group 1"
+  ]
+}
