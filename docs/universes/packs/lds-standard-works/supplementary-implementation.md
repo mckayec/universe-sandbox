@@ -730,3 +730,24 @@ Builder readings for ChatGPT:
 Accounting: 997 SD rows imported, 274 pending: SC41–SC45 214 D&C rows (36 + 17 + 21 + 140), then SC46–SC54 60 rows (16 + 13 + 11 + 9 + 3 + 4 + 4). Before this checkpoint the split was SC40–SC45 352 / SC46–SC54 60 (total 412), not the 348 / 64 in the S14 handoff. `dc-more` now has 207 cards (69 + 138). Mapping 1,351 rows; 1,077 imported mapping rows.
 
 Checks at the code commit: `pnpm format` clean, `pnpm check` 109/109 (new test "Supplementary checkpoint 15"; the SC35–SC39 test now excludes the person cards when counting its 69), `pnpm check:dist` OK, `pnpm test:pages` 13 pages × 2. Playwright (SwiftShader) captures of `dc-more` scrolled to the first person cards at 1440×900, 1280×800 and 390×844 (shots `s15-*`), no console errors; 207 cards and 138 "Named in" person cards counted in the DOM. **No 3840×2160 capture this checkpoint** (the 4K page did not reach a clickable codex within the run's time); next run.
+
+## Supplementary checkpoint 16 — S15-C1/C2 and SC41 office and companion relations
+
+Applied [supplementary-review-s15](https://github.com/mckayec/universe-sandbox/blob/a59bb3dcb070ce8602019e6c91f6435acc35fa2d/docs/universes/packs/lds-standard-works/supplementary-review-s15.md) (a59bb3d), audited head a136f70:
+
+- **S15-C1** SD0864 `DCM-dcp-alvin-smith`: displayed title now **“Alvin”** (stable key unchanged), D&C-only description and 137:5–6 source kept at `4/dc`. No existing JS—History family view existed in the codex, so the accepted surname resolution is one child view directly after it, `DCM-jsh-alvin-family` “Alvin in Joseph Smith's family account”, gated `5/pgp`, with the review's minimum copy and the single source “Joseph Smith—History 1:3–4”. The related `DCM-dr06-joseph-alvin` title is now “Joseph Smith and his brother Alvin”. Test checks displayed titles, description and source labels, and that the child appears only with PGP on and group 5 reached (all-combined respects the gate).
+- **S15-C2** SD0962 `DCM-dcp-robert-d-foster`: description replaced with the review's text; section 124 source label is now “D&C 124:115–118, 138” (one link).
+- Optional readings 4 (council wording) and the Ashley wording were not applied this checkpoint; the new high-council card (SD1027) says it is the high council for the cornerstone of Zion and is not merged with the Kirtland high council of section 102.
+
+**SC41 (36 SD rows, SD0998–SD1033)** as `DCM-dre<nnn>` typed-relation cards in `dc-more` from new `copy_dre.py`, one per DRE register row. Each card states the row's typed statements (companion pairs, travel parties, offices, reassigned charges, support duties) and turns its constraint into a reader sentence (e.g. section 52's thirteen pairs with Murdock/Hyrum by way of Detroit only; section 75's twelve pairs with the last seven undirected; eleven living Twelve plus Patten noted, no twelfth name; Aaron Johnson replacing Seymour Brunson; Roundy “if he will receive it”; Marsh resolved by footnote 2a; stock subscription not proof of payment and Foster's verse-115 contract kept separate, consistent with S15-C2). People are named, not re-created (their person cards are in the same tab); distinct offices and source contexts stay separate cards. All `4/dc`, coordinate- and year-free, one official link per section.
+
+Builder readings for ChatGPT:
+
+1. **SD1013 (78:9)** the row says “Smith/Rigdon/Whitney”; the card keeps the surnames as the row does rather than expanding Whitney's initials.
+2. **SD1012** cites 75:6–17, 24–28, 30–36 (the family-support verses the row names) as one section-75 link.
+3. **SD1002/SD1012/SD1033** expand the earlier SC39 summaries (“Mission companions in section 52/75”, “Organizers of the westward companies”) and cross-reference them in text; both kept, as the row constraint is “consolidate repeated people, not distinct offices or source contexts”.
+4. **SD1022** “John C. Bennett → distribution/labor assistant” is worded “to help with its distribution and labor”, no more.
+
+Accounting: 1,033 SD rows imported, 238 pending: SC42–SC45 178 (17 + 21 + 140), then SC46–SC54 60. 73 child views (72 + the Alvin JS—History view). `dc-more` now has 244 cards (69 + 138 + 36 + 1). 1,114 imported mapping rows.
+
+Checks at code commit `60e4a2e`: `pnpm format` clean, `pnpm check` 110/110 (new test “Supplementary checkpoint 16”; the S3/S4 child count is now 73; the SC35–SC39 count excludes person, DRE and JS—History cards), `pnpm check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2. Playwright (SwiftShader, built `dist/` under `/universe-sandbox/`, page ready in 18–63 s, codex opened and `dc-more` chosen through the DOM, CDP capture), scrolled to the first DRE card: shots `s16-codex-dc-more-*` at **3840×2160**, 1440×900, 1280×800 and 390×844, no console errors; 243 D&C-prefixed cards counted in the DOM at each size (plus the PGP-prefixed Alvin view). This also supplies the 4K `dc-more` capture missing from checkpoint 15.
