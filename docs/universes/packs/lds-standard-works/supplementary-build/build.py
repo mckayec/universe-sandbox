@@ -24,6 +24,7 @@ import copy_wp
 import copy_dc
 import copy_dcp
 import copy_dre
+import copy_dca
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -42,8 +43,8 @@ BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 31)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
-BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 42)})
-COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre]
+BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 44)})
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}

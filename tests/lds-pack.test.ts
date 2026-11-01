@@ -706,7 +706,7 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 73); // 72 + the S15-C1 Alvin JS—History view
+  assert.equal(kids.length, 74); // 72 + the S15-C1 Alvin JS—History view + the SD1045 Sarai view
   const want: Record<string, number> = {
     SD0213: 1,
     SD0214: 12,
@@ -947,7 +947,14 @@ test('Supplementary SC35–SC39: D&C place, event, teaching and relationship row
     .split('\n')
     .filter(r => /^SD\d{4},SC3[5-9],/.test(r));
   assert.equal(rows.length, 69);
-  const dc = codex('dc-more').filter((x: any) => !/^DCM-(dcp-|dre\d|jsh-)/.test(x.key));
+  // later checkpoints' cards (SC40 people, SC41 relations, SC42 ancient participants, SC43 events) are excluded
+  const later = new Set(
+    csv
+      .split('\n')
+      .filter(r => /^SD\d{4},SC4[23],/.test(r))
+      .map(r => (r.match(/,imported,codex:dc-more,(DCM-[^,]+),/) || [])[1]),
+  );
+  const dc = codex('dc-more').filter((x: any) => !/^DCM-(dcp-|dre\d|jsh-|dca-)/.test(x.key) && !later.has(x.key));
   assert.equal(dc.length, 69);
   const keys = new Set(dc.map((x: any) => x.key));
   assert.equal(keys.size, dc.length);
@@ -1102,4 +1109,74 @@ test('Supplementary checkpoint 16: S15-C1/C2 and SC41 office and companion relat
   assert.match(by('DCM-dre124d-nauvoo-house-stock').desc, /not proof that payment was made/);
   assert.match(by('DCM-dre118-marsh-and-twelve').desc, /footnote 2a/);
   assert.equal(by('DCM-dre058-return-party').src.length, 3);
+});
+
+test('Supplementary checkpoint 17: SC42 ancient participants and SC43 dated events in dc-more', () => {
+  const dc = codex('dc-more');
+  const by = (k: string) => dc.find((x: any) => x.key === k);
+  const at = (list: any[], layers: string[], group: number) =>
+    L.codexSplit(list, new Set(layers), null, true, group, (y: any) => Math.min(...y.books)).shown.map(
+      (x: any) => x.key,
+    );
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const lines = csv.trim().split('\n');
+  for (const [sc, n] of [
+    ['SC42', 17],
+    ['SC43', 21],
+  ] as const) {
+    const rows = lines.filter(r => new RegExp(`^SD\\d{4},${sc},`).test(r));
+    assert.equal(rows.length, n, sc);
+    for (const r of rows) {
+      const m = r.match(/,imported,codex:dc-more,(DCM-[^,]+),/);
+      assert.ok(m && by(m[1]), r.slice(0, 40));
+      const x = by(m![1]);
+      assert.deepEqual([plain(x.books), plain(x.layers)], [[4], ['dc']], x.key);
+      assert.equal(x.lat, undefined, x.key);
+      assert.ok(x.desc.startsWith('Doctrine and Covenants — '), x.key);
+      assert.ok(x.src.length > 0 && x.src.every((s: any) => s.u.startsWith('https://') && s.t), x.key);
+      assert.ok(
+        x.src.every((s: any) => !s.u.includes('/pgp/')),
+        x.key,
+      );
+      assert.equal(new Set(x.src.map((s: any) => s.u)).size, x.src.length, `${x.key} repeats a source`);
+    }
+  }
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 200);
+  // SC42 identity distinctions
+  assert.match(by('DCM-dca-john-peter-james').desc, /not John the Baptist and not John Whitmer/);
+  assert.match(by('DCM-dca-elijah-elias-moses').desc, /left open, and Elias is not merged with Elijah/);
+  assert.match(by('DCM-dca-gabriel-raphael').desc, /Gabriel is not merged with Noah/);
+  assert.match(by('DCM-dca-abel-to-noah').desc, /who is not named there.*430 years.*365 years/);
+  assert.match(by('DCM-dca-aaron').desc, /rests on Exodus 4:14, not on these verses/);
+  assert.match(by('DCM-dca-shem-elias-transfiguration').desc, /kept separate from the Elias of section 110/);
+  // SD1045: the Sarai alias is a Pearl of Great Price child view, after its parent, shown only at group 5
+  const marr = by('DCM-dca-marriage-examples');
+  const sarai = by('DCM-dca-sarai-abraham');
+  assert.match(marr.desc, /No claim is made that every participant consented/);
+  assert.deepEqual([plain(sarai.books), plain(sarai.layers)], [[5], ['pgp']]);
+  assert.ok(sarai.src[0].u.includes('/pgp/abr/2'));
+  assert.equal(dc.indexOf(sarai), dc.indexOf(marr) + 1);
+  const all = ['ot', 'nt', 'bom', 'dc', 'pgp'];
+  assert.ok(at(dc, all, 4).includes(marr.key) && !at(dc, all, 4).includes(sarai.key));
+  assert.ok(at(dc, all, 5).includes(sarai.key));
+  // SC43 exact accepted display sentences and date/claim limits
+  assert.match(
+    by('DCM-de06b-kirtland-vision').desc,
+    /^Doctrine and Covenants — Smith and Cowdery report seeing Christ and receiving successive commissions from Moses, Elias and Elijah\. .*April 3, 1836.*separate from the March 27 dedication/,
+  );
+  assert.match(by('DCM-de11-lost-manuscript').desc, /July is not given as its day/);
+  assert.match(by('DCM-de22-far-west-temple').desc, /No completed temple is claimed/);
+  assert.match(by('DCM-de28-manifesto-statement').desc, /“Manifesto accepted”.*not a second Manifesto/);
+  assert.match(by('DCM-de26-government-declaration').desc, /not a dictated revelation/);
+  assert.equal(
+    at(
+      dc.filter((x: any) => x.key.startsWith('DCM-dca-') || /^DCM-de(06b|[12]\d)-/.test(x.key)),
+      ['dc'],
+      3,
+    ).length,
+    0,
+  );
 });

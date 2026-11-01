@@ -22,15 +22,15 @@ P = 'Doctrine and Covenants — '
 
 def S(label):
     """'D&C 65 heading' -> ('D&C 65 heading', 'dc-testament/dc/65'); 'Official Declaration 1' -> 'dc-testament/od/1';
-    'Genesis 5' -> 'ot/gen/5'; 'Jacob 2:23–30' -> 'bofm/jacob/2'."""
+    'Genesis 5' -> 'ot/gen/5'; 'Exodus 4:14' -> 'ot/ex/4'; 'Jacob 2:23–30' -> 'bofm/jacob/2'."""
     m = re.match(r'D&C (\d+)', label)
     if m:
         return (label, f'dc-testament/dc/{m.group(1)}')
     m = re.match(r'Official Declaration (\d)', label)
     if m:
         return (label, f'dc-testament/od/{m.group(1)}')
-    m = re.match(r'(Genesis|Jacob) (\d+)', label)
-    return (label, {'Genesis': 'ot/gen/', 'Jacob': 'bofm/jacob/'}[m.group(1)] + m.group(2))
+    m = re.match(r'(Genesis|Exodus|Jacob) (\d+)', label)
+    return (label, {'Genesis': 'ot/gen/', 'Exodus': 'ot/ex/', 'Jacob': 'bofm/jacob/'}[m.group(1)] + m.group(2))
 
 
 def secs(spec, suffix=''):
