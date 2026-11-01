@@ -16,6 +16,7 @@ BASE = 'https://www.churchofjesuschrist.org/study/scriptures/'
 sys.path.insert(0, str(HERE))
 import copy_bom
 import copy_nt
+import copy_ot
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -27,13 +28,32 @@ NT_BOOKS = {'matt': 'Matthew', 'mark': 'Mark', 'luke': 'Luke', 'john': 'John', '
             'james': 'James', '1-pet': '1 Peter', '2-pet': '2 Peter', '1-jn': '1 John', '2-jn': '2 John',
             '3-jn': '3 John', 'jude': 'Jude', 'rev': 'Revelation'}
 # family -> (tab id, gate books, gate layers, copy module)
-FAMILIES = {'bom': ('bom-more', [3], ['bom'], copy_bom), 'nt': ('nt-more', [2], ['nt'], copy_nt)}
+FAMILIES = {'bom': ('bom-more', [3], ['bom'], copy_bom), 'nt': ('nt-more', [2], ['nt'], copy_nt),
+            'ot': ('ot-more', [1], ['ot'], copy_ot)}
 BUILT = {f'SC0{i}': 'bom' for i in range(1, 8)}
 BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
+BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 18)})
+COPY_MODULES = [copy_bom, copy_nt, copy_ot]
+# OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
+# instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
+LEDGER = {}
+for _line in (HERE.parent / 'coverage-ot-history.md').read_text(encoding='utf-8').splitlines():
+    _m = re.match(r'\| (OH-[A-Z0-9-]+?) / \[([^\]]+)\]\((https://[^)]+)\)', _line)
+    if _m:
+        LEDGER[_m.group(1)] = (_m.group(2), _m.group(3))
+OT_BOOKS = {re.search(r'/scriptures/ot/([^/?]+)/', u).group(1): t.rsplit(' ', 1)[0] for t, u in LEDGER.values()}
+LEDGER_REF = re.compile(r'OH-(RU|S1-|S2-|K1-|K2-|[GXLNDQJ])(\d+(?:[–-]\d+)?(?:,\d+(?:[–-]\d+)?)*)')
 LINK = re.compile(r'\[([^\]]+)\]\((https://[^)\s]+)\)')
 
 
 def locator(text, url):
+    o = re.search(r'/scriptures/ot/([^/?]+)/(\d+)', url)
+    if o:
+        t = text.strip()
+        if re.fullmatch(r'\d+:[\d–,\-]+', t):
+            return f'{OT_BOOKS[o.group(1)]} {t}'
+        assert t.startswith(OT_BOOKS[o.group(1)] + ' '), (text, url)
+        return t
     n = re.search(r'/scriptures/nt/([^/?]+)/(\d+)', url)
     if n:
         t = text.strip()
@@ -62,9 +82,21 @@ def sources(row):
         if (t, u) not in seen:
             seen.add((t, u))
             out.append((t, u))
-    extra = {**copy_bom.EXTRA_SRC, **copy_nt.EXTRA_SRC}
+    if not out:
+        for pre, items in LEDGER_REF.findall(row['minimum_retained_source_context']):
+            for it in items.split(','):
+                a, *b = re.split('[–-]', it)
+                t, u = LEDGER[f'OH-{pre}{a}']
+                if b:
+                    t = t + '–' + LEDGER[f'OH-{pre}{b[0]}'][0].rsplit(' ', 1)[1]
+                if (t, u) not in seen:
+                    seen.add((t, u))
+                    out.append((t, u))
+    extra = {k: v for m in COPY_MODULES for k, v in m.EXTRA_SRC.items()}
     for t, path in extra.get(row['disposition_id'], []):
-        out.append((t, BASE + path + '?lang=eng'))
+        u = BASE + path + '?lang=eng'
+        assert all(u != v for _, v in out), (row['disposition_id'], t)
+        out.append((t, u))
     return out
 
 
@@ -82,8 +114,8 @@ def main(path):
     rows = list(csv.DictReader(open(path, encoding='utf-8')))
     assert len(rows) == 1271, len(rows)
     lines, mapping = {f: [] for f in FAMILIES}, []
-    copy = {**copy_bom.COPY, **copy_nt.COPY}
-    assert len(copy) == len(copy_bom.COPY) + len(copy_nt.COPY)
+    copy = {k: v for m in COPY_MODULES for k, v in m.COPY.items()}
+    assert len(copy) == sum(len(m.COPY) for m in COPY_MODULES)
     for r in rows:
         sd, cat = r['disposition_id'], r['category']
         fam = BUILT.get(cat)

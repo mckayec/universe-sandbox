@@ -281,7 +281,9 @@ test('BA07 round 2: 108 further source views (107 research IDs) resolve with the
   const keys = all.filter((x: any) => x.key).map((x: any) => x.key);
   assert.equal(new Set(keys).size, keys.length, 'keys are unique');
   // 170 primary source views plus the supplementary tab(s), counted separately
-  const supp = P.codex.filter((t: any) => t.id === 'bom-more' || t.id === 'nt-more').flatMap((t: any) => t.list).length;
+  const supp = P.codex
+    .filter((t: any) => ['bom-more', 'nt-more', 'ot-more'].includes(t.id))
+    .flatMap((t: any) => t.list).length;
   assert.equal(keys.length - supp, 170);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const work: Record<number, string> = { 1: 'ot', 2: 'nt', 3: 'bom', 4: 'dc', 5: 'pgp' };
@@ -390,4 +392,38 @@ test('Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer
   // shown at the New Testament group, not before it
   assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 187);
   assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 0);
+});
+
+test('Supplementary SC13–SC17: every Old Testament history SD row maps to one ot-layer card with sources', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const ot = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},SC1[3-7],/.test(r));
+  assert.equal(ot.length, 177);
+  const list = codex('ot-more');
+  assert.equal(list.length, 177);
+  const keys = new Set(list.map((x: any) => x.key));
+  assert.equal(keys.size, list.length);
+  for (const r of ot) {
+    const m = r.match(/,imported,codex:ot-more,([^,]+),/);
+    assert.ok(m && keys.has(m[1]), r.slice(0, 40));
+  }
+  for (const x of list) {
+    assert.deepEqual(plain(x.layers), ['ot']);
+    assert.deepEqual(plain(x.books), [1]);
+    assert.equal(x.lat, undefined, x.key);
+    assert.equal(x.when, undefined, x.key);
+    assert.ok(x.src.length > 0, x.key);
+    for (const s of x.src) {
+      assert.ok(s.t && /^https:\/\/www\.churchofjesuschrist\.org\/study\/scriptures\//.test(s.u), x.key);
+    }
+  }
+  for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
+    assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
+  }
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 177);
 });

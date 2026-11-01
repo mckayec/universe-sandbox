@@ -15,7 +15,8 @@ count of new entities.
 |---|---|---|---|
 | SC01–SC07 Book of Mormon | 111 (+7 prose bullets) | **imported, checkpoint 1** | codex tab `bom-more` |
 | SC08–SC12 New Testament | 187 | **imported, checkpoint 3** | codex tab `nt-more` |
-| SC13–SC34 Old Testament | 487 | pending | next run |
+| SC13–SC17 Old Testament history (Genesis–2 Kings) | 177 | **imported, checkpoint 4** | codex tab `ot-more` |
+| SC18–SC34 Old Testament (Chronicles–Malachi) | 315 | pending | next runs, same tab |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
@@ -136,3 +137,48 @@ Observed (engine, not content): at 1440×900 the desktop tab buttons now wrap to
 usable; if the Old Testament and D&C families add tabs, desktop may also need the section chooser or grouped tabs.
 
 Next: SC13–SC34 (Old Testament, 487 rows), likely over two runs.
+
+## Checkpoint 4 (2026-11-01): SC13–SC17 (Old Testament history, Genesis–2 Kings)
+
+Correction to the progress table: the Old Testament families SC13–SC34 hold 492 SD rows, not 487 (SC22 has none).
+
+* **One card per SD row** (177) in a new codex tab “More Old Testament places, journeys and people” (`ot-more`):
+  SC13 integration rows `OH-C01`, `OH-P01`, `OH-E01`, `OH-R01`, `OH-P02`; SC14 places (76); SC15 people (51);
+  SC16 journeys (27); SC17 concepts (19). Every card is `books:[1]`, `layers:['ot']` (gate `1/ot`); no coordinates,
+  routes, years or pins. Rows whose research id is a primary-record code (P18, AP01–AP07, AJ01, AE03) get an `OTS-`
+  key prefix so they never collide with that primary card, and the card says which existing card it adds to.
+* **Sources**: SC13 rows carry links. SC14–SC17 rows cite chapter-ledger ids (`OH-G11`, `OH-K1-03`, `OH-S2-15–20` …)
+  and no links; per the rows' `source_resolution`, the generator resolves each id through the ledger rows of
+  `coverage-ot-history.md` (`| OH-G11 / [Genesis 11](…) |`), so these cards cite **chapters**, and a ledger range
+  becomes one source (“Exodus 2–40”, linked to its first chapter). `EXTRA_SRC` adds only chapters a row names in its
+  text without a ledger id and the card names too (SD0393 Exodus 2, SD0394 Numbers 12, SD0395 Numbers 10, SD0443
+  Deuteronomy 10, SD0471 Deuteronomy 25). No verse numbers were added from memory; SD0303’s “Zion narrative in
+  Moses” is named in the card without a source because the row gives no chapter.
+* **Copy**: the quoted summary first, then the row’s constraint where it tells a reader something (distinct
+  identities, unresolved identifications, separate accounts, who does and does not travel). Drawing-only
+  constraints are honoured by drawing nothing.
+* **Generator**: `copy_ot.py`; `build.py` gained the OT family, the ledger resolver, OT link labels (“2:1–3” on a
+  Genesis 2 link becomes “Genesis 2:1–3”) and a guard against an extra source duplicating a resolved one. BoM and NT
+  blocks regenerate byte-identical; a second run produces no diff.
+
+Builder readings for ChatGPT to check:
+
+1. SC14 cards that reuse a primary record (`OTS-P18-ur` … `OTS-AP07-babylon`) are separate cards naming the existing
+   card, not edits to it; the primary 170 cards are unchanged.
+2. SD0311 says Ibzan’s Bethlehem is one “the text does not place” for the row’s “unspecified Ibzan Bethlehem”.
+3. SD0348 cites Judges 18, Joshua 19 and 1 Kings 12 from the row’s OH-J18, OH-Q19 and OH-K1-12.
+4. SD0354 words the Baale-Judah point as “treating the two names as one place would need separate support”.
+5. SD0360 says Gospel accounts on Olivet “are gated to the New Testament” for “later gospel claims remain
+   separately gated”.
+6. SD0404 renders “no … literal brother-levirate claim” as “not literally a brother-in-law under the levirate law”.
+7. SD0412 renders “do not invent consent or erase David’s power” as reader copy; please confirm the tone.
+8. SD0441 renders “Zipporah/family participation scoped” as “how far Zipporah and the family travel with him is
+   read from the text”.
+9. SD0454 keeps the row’s “Habor-Gozan” form rather than expanding it.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (99/99, including a new test: all 177 SC13–17 rows map to an `ot-more` card with
+official-scripture sources, OT gate only, no coordinates or years, hidden under every other single layer and shown
+at the OT group; the primary 170-key count is unchanged), `check:dist` 114 files OK, `pnpm format:check` clean,
+`pnpm test:pages` 13 pages × 2 viewports.
