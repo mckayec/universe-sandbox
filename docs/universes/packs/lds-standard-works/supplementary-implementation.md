@@ -634,3 +634,9 @@ genealogy views right after their parent at `2/nt` with no position or date, hid
 before the New Testament group, every Matthew and Luke occurrence in CSV order with no deduplication, Matthew's
 side branches and changed ending, Luke's “as was supposed”), `check:dist` 114 files OK, pack validator clean,
 `pnpm test:pages` 13 pages × 2 viewports.
+
+Rendered (SwiftShader, built `dist/` under `/universe-sandbox/`, page ready in 45–133 s, codex opened and `nt-more`
+chosen through the DOM, CDP capture) at code commit `517a24a`: shots `s12-codex-nt-genealogies-*` scrolled to the SD0238
+parent and its two lists, and `s12-codex-nt-parables-*` scrolled to the Mark 12 view (Matthew 25 to Luke 20 visible
+at 4K), at 3840×2160, 1440×900, 1280×800 and 390×844; 242 `nt-more` cards listed with all layers on; no console or
+page errors. Native select, keyboard and real-GPU gates remain open.
