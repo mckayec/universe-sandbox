@@ -1,0 +1,26 @@
+SD,distinct_research_person_ID,shared_card_key,card_name,relation
+SD0388,OHR-LEAH,OHR-JACOB-MOTHERS,"Leah, Rachel, Bilhah and Zilpah",member of shared reference card; not alias of another person
+SD0388,OHR-RACHEL,OHR-JACOB-MOTHERS,"Leah, Rachel, Bilhah and Zilpah",member of shared reference card; not alias of another person
+SD0388,OHR-BILHAH,OHR-JACOB-MOTHERS,"Leah, Rachel, Bilhah and Zilpah",member of shared reference card; not alias of another person
+SD0388,OHR-ZILPAH,OHR-JACOB-MOTHERS,"Leah, Rachel, Bilhah and Zilpah",member of shared reference card; not alias of another person
+SD0403,OHR-NAOMI,OHR-NAOMI-RUTH-ORPAH,"Naomi, Ruth and Orpah",member of shared reference card; not alias of another person
+SD0403,OHR-RUTH,OHR-NAOMI-RUTH-ORPAH,"Naomi, Ruth and Orpah",member of shared reference card; not alias of another person
+SD0403,OHR-ORPAH,OHR-NAOMI-RUTH-ORPAH,"Naomi, Ruth and Orpah",member of shared reference card; not alias of another person
+SD0410,OHR-MICHAL,OHR-MICHAL-MERAB,Michal and Merab,member of shared reference card; not alias of another person
+SD0410,OHR-MERAB,OHR-MICHAL-MERAB,Michal and Merab,member of shared reference card; not alias of another person
+SD0415,OHR-MEPHIBOSHETH-JONATHAN,OHR-MEPHIBOSHETH,Two men named Mephibosheth,member of shared reference card; not alias of another person
+SD0415,OHR-MEPHIBOSHETH-RIZPAH,OHR-MEPHIBOSHETH,Two men named Mephibosheth,member of shared reference card; not alias of another person
+SD0417,OHR-HIRAM-KING,OHR-HIRAM,King Hiram and Hiram the artisan,member of shared reference card; not alias of another person
+SD0417,OHR-HIRAM-ARTISAN,OHR-HIRAM,King Hiram and Hiram the artisan,member of shared reference card; not alias of another person
+SD0418,OHR-JEROBOAM-NEBAT,OHR-JEROBOAM,Two kings named Jeroboam,member of shared reference card; not alias of another person
+SD0418,OHR-JEROBOAM-JOASH,OHR-JEROBOAM,Two kings named Jeroboam,member of shared reference card; not alias of another person
+SD0419,OHR-JEHU-PROPHET,OHR-JEHU,Jehu the prophet and Jehu the king,member of shared reference card; not alias of another person
+SD0419,OHR-JEHU-KING,OHR-JEHU,Jehu the prophet and Jehu the king,member of shared reference card; not alias of another person
+SD0422,OHR-AHAB,OHR-AHAB-JEZEBEL,Ahab and Jezebel,member of shared reference card; not alias of another person
+SD0422,OHR-JEZEBEL,OHR-AHAB-JEZEBEL,Ahab and Jezebel,member of shared reference card; not alias of another person
+SD0423,OHR-JORAM-ISRAEL,OHR-JORAM-JEHORAM,Joram of Israel and Jehoram of Judah,member of shared reference card; not alias of another person
+SD0423,OHR-JEHORAM-JUDAH,OHR-JORAM-JEHORAM,Joram of Israel and Jehoram of Judah,member of shared reference card; not alias of another person
+SD0424,OHR-AHAZIAH-ISRAEL,OHR-AHAZIAH,Two kings named Ahaziah,member of shared reference card; not alias of another person
+SD0424,OHR-AHAZIAH-JUDAH,OHR-AHAZIAH,Two kings named Ahaziah,member of shared reference card; not alias of another person
+SD0425,OHR-JOASH-JUDAH,OHR-JOASH,Joash of Judah and Joash of Israel,member of shared reference card; not alias of another person
+SD0425,OHR-JOASH-ISRAEL,OHR-JOASH,Joash of Judah and Joash of Israel,member of shared reference card; not alias of another person

@@ -1,0 +1,33 @@
+{
+  "head": "665f82590881ee8664b70bb88543e71a0965b7d1",
+  "codeHead": "de94dffc3c4b7b6a7df2b40da11e069700e017e6",
+  "base": "7b7a3da6154aceb1e279775a5805e5e287df4194",
+  "research": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRowsChecked": 1278,
+  "SDRowsCheckedAgainstResearch": 1271,
+  "newParentsCompared": 177,
+  "importedSD": 475,
+  "proseCards": 7,
+  "pendingSD": 796,
+  "newCategoryCounts": {
+    "SC13": 5,
+    "SC14": 76,
+    "SC15": 51,
+    "SC16": 27,
+    "SC17": 18
+  },
+  "manualDispositions": {
+    "no-additional-discrepancy-identified": 170,
+    "S4-C1": 2,
+    "S4-C3": 2,
+    "S4-C4": 1,
+    "S4-C2": 2
+  },
+  "groupedReferenceCards": 11,
+  "distinctGroupedPersonIDs": 25,
+  "ledgerExpressionsResolved": 372,
+  "NTBlockAndCopyUnchanged": true,
+  "generatorPackAndMappingByteIdentical": true,
+  "fullPrimaryRereading": false,
+  "result": "structural checks pass; seven content exceptions recorded"
+}
