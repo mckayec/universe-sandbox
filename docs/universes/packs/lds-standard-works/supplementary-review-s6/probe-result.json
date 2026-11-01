@@ -1,0 +1,15 @@
+{
+  "head": "11b2491eeafb7a9e93ede1959f34f6f0eff9bcb4",
+  "base": "6067a78b1da53224026f7cd8ae0273a36c7f54b5",
+  "addedCards": 83,
+  "changedChildren": 1,
+  "unchangedPriorCards": 709,
+  "totalCards": 793,
+  "uniqueKeyedCards": 760,
+  "gateCombinations": 2100,
+  "preNTAllLayerExclusions": 1,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false
+}
