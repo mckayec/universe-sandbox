@@ -372,8 +372,8 @@ test('Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer
     .filter(r => /^SD\d{4},SC(0[89]|1[0-2]),/.test(r));
   assert.equal(nt.length, 187);
   const list = codex('nt-more');
-  // 187 parent cards + 24 child source views (SD0213 ×1, SD0226 ×3, SD0236 ×5, SD0270 ×15)
-  assert.equal(list.length, 211);
+  // 187 parent cards + 49 child source views (SD0213 ×1, SD0214 ×12, SD0226 ×3, SD0236 ×5, SD0240 ×13, SD0270 ×15)
+  assert.equal(list.length, 236);
   const keys = new Set(list.map((x: any) => x.key));
   assert.equal(keys.size, list.length);
   for (const r of nt) {
@@ -391,7 +391,7 @@ test('Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
   // shown at the New Testament group, not before it
-  assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 211);
+  assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 236);
   assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 0);
 });
 
@@ -410,7 +410,8 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   // + 59 SC25–SC28 major-prophet cards + 73 SC24 major-prophet place cards + 6 SD0663 chapter views (S7-C1)
   // + 5 SC29 cards (SD0705 consolidated) + 2 SC29 later-work children + 20 SC30 + 5 SC33 cards
   // + 59 SC31/SC32/SC34 cards + Heshbon identity and Psalm 85 heading children (checkpoint 10)
-  assert.equal(list.length, 492);
+  // + 6 SD0785 JST comparison views (S10-C3)
+  assert.equal(list.length, 498);
   const keys = new Set(list.map((x: any) => x.key));
   // the cards gated at a later work (SD0706, the SD0701/SD0702 children; the SD0753 child) are checked in their own tests
   const later = new Set([
@@ -433,14 +434,17 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
     assert.equal(x.when, undefined, x.key);
     assert.ok(x.src.length > 0, x.key);
     for (const s of x.src) {
-      assert.ok(s.t && /^https:\/\/www\.churchofjesuschrist\.org\/study\/scriptures\//.test(s.u), x.key);
+      // S10-C2: the one exception is SD0790's source, the accepted research decision at a pinned commit
+      const decision =
+        x.key === 'OTW-a28-lexical-notes' && /^https:\/\/github\.com\/mckayec\/universe-sandbox\/blob\//.test(s.u);
+      assert.ok(s.t && (decision || /^https:\/\/www\.churchofjesuschrist\.org\/study\/scriptures\//.test(s.u)), x.key);
     }
   }
   for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
-  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 488);
-  assert.equal(L.codexSplit(all, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 488);
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 494);
+  assert.equal(L.codexSplit(all, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 494);
 });
 
 test('Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card', () => {
@@ -652,7 +656,10 @@ test('Supplementary SC31, SC32, SC34 and S9-C1: wisdom and Twelve events, readin
     assert.deepEqual([plain(x.books), plain(x.layers)], [[1], ['ot']], x.key);
     assert.equal(x.lat, undefined, x.key);
     assert.equal(x.when, undefined, x.key);
-    assert.ok(x.src.length > 0 && x.src.every((s: any) => /\/scriptures\/ot\//.test(s.u)), x.key);
+    // S10-C2: SD0790 is a methodological exclusion whose source is the accepted research decision
+    const audit = /^https:\/\/github\.com\/mckayec\/universe-sandbox\/blob\/9cc874c[0-9a-f]+\/docs\/universes\//;
+    const okSrc = (s: any) => /\/scriptures\/ot\//.test(s.u) || (x.key === 'OTW-a28-lexical-notes' && audit.test(s.u));
+    assert.ok(x.src.length > 0 && x.src.every(okSrc), x.key);
     assert.ok(!/Book of Mormon|D&C|Doctrine and Covenants/.test(x.desc), x.key);
   }
   // S9-C1: the KJV side of Psalm 24 is supplied beside the JST selection
@@ -698,11 +705,13 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 35);
+  assert.equal(kids.length, 66);
   const want: Record<string, number> = {
     SD0213: 1,
+    SD0214: 12,
     SD0226: 3,
     SD0236: 5,
+    SD0240: 13,
     SD0270: 15,
     SD0443: 1,
     SD0663: 6,
@@ -710,6 +719,7 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
     SD0702: 1,
     SD0721: 1,
     SD0753: 1,
+    SD0785: 6,
   };
   for (const [sd, n] of Object.entries(want)) {
     assert.equal(kids.filter(r => r.includes(`child of ${sd},`)).length, n, sd);
@@ -748,4 +758,97 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   assert.ok(/Exodus 18:2–6/.test(moses.desc) && moses.src.some((s: any) => s.t === 'Exodus 18:2–6'));
   const ahaz = by(ot, 'OHR-AHAZIAH').desc;
   assert.ok(!/ages at accession/.test(ahaz) && /without stating his age/.test(ahaz));
+});
+
+test('Supplementary S10 and S3-C1 (SD0214, SD0240): Dura, chapter sources, JST comparisons, pericope views', () => {
+  const ot = codex('ot-more');
+  const nt = codex('nt-more');
+  const by = (list: any[], key: string) => list.find((x: any) => x.key === key);
+  // S10-C1: Dura is the image's site; the furnace is not separately located
+  const fur = by(ot, 'OTW-e04-furnace').desc;
+  assert.ok(
+    /The image is set on the plain of Dura in the province of Babylon; the furnace is not separately located\./.test(
+      fur,
+    ),
+  );
+  assert.ok(!/furnace, set on the plain/.test(fur));
+  // S10-C2: no book contents pages remain as sources
+  for (const k of ['OTW-r04-psalm-collections', 'OTW-a21-song-notes', 'OTW-a27-animal-instrument-notes']) {
+    const x = by(ot, k);
+    assert.ok(
+      x.src.every((s: any) => /\/scriptures\/ot\/[a-z]+\/\d+\?/.test(s.u)),
+      k,
+    );
+  }
+  const ps = by(ot, 'OTW-r04-psalm-collections').src.map((s: any) => s.u.match(/ps\/(\d+)/)[1]);
+  assert.deepEqual(plain(ps), ['3', '50', '42', '72', '90', '88', '89', '39']);
+  const song = by(ot, 'OTW-a21-song-notes').src.map((s: any) => s.u.match(/song\/(\d+)/)[1]);
+  assert.deepEqual(plain(song), ['1', '2', '4', '8']);
+  const ani = by(ot, 'OTW-a27-animal-instrument-notes');
+  assert.ok(ani.src.some((s: any) => /\/ot\/mal\/1\?/.test(s.u)) && /Malachi 1/.test(ani.desc));
+  const lex = by(ot, 'OTW-a28-lexical-notes');
+  assert.equal(lex.src.length, 1);
+  assert.ok(/bounded-inline-apparatus-audit$/.test(lex.src[0].u));
+  assert.ok(/does not display them one by one/.test(lex.desc));
+  // S10-C3: six JST comparisons follow their parent in verse order, each with its own verse source
+  const keys = ot.map((x: any) => x.key);
+  const at = keys.indexOf('OTW-a23-psalms-jst-notes');
+  const verses = ['30:5', '30:9', '32:1', '50:21', '138:8', '141:5'];
+  verses.forEach((v, i) => {
+    const x = ot[at + 1 + i];
+    assert.equal(x.key, `OTW-a23-jst-psalm-${v.replace(':', '-')}`);
+    assert.deepEqual(plain(x.src.map((s: any) => s.t)), [`Psalm ${v} (inline JST note)`]);
+    assert.ok(/KJV/.test(x.desc) && /inline JST/.test(x.desc), x.key);
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[1], ['ot']]);
+  });
+  assert.ok(/no sins to be covered/.test(ot[at + 3].desc));
+  assert.ok(/not read as approval of physical harm/.test(ot[at + 6].desc));
+  // S3-C1: SD0214 and SD0240 pericope views follow their parents in source order, 2/nt, nonspatial
+  const nk = nt.map((x: any) => x.key);
+  const calls = [
+    'matt-9',
+    'matt-12',
+    'mark-1',
+    'mark-2',
+    'mark-3',
+    'mark-4',
+    'mark-5',
+    'luke-4',
+    'luke-5',
+    'luke-6',
+    'luke-7',
+    'luke-8',
+  ];
+  const pars = [
+    'matt-18',
+    'matt-20',
+    'matt-22',
+    'matt-25',
+    'mark-4',
+    'luke-10',
+    'luke-12',
+    'luke-13',
+    'luke-14',
+    'luke-15',
+    'luke-16',
+    'luke-18',
+    'luke-19',
+  ];
+  for (const [parent, list] of [
+    ['NTE-calls-and-healings', calls],
+    ['NTC-parables', pars],
+  ] as const) {
+    const i0 = nk.indexOf(parent);
+    list.forEach((slug, i) => {
+      const x = nt[i0 + 1 + i];
+      assert.equal(x.key, `${parent}-${slug}`);
+      assert.deepEqual([plain(x.books), plain(x.layers)], [[2], ['nt']]);
+      assert.equal(x.lat, undefined, x.key);
+      assert.equal(x.src.length, 1, x.key);
+      assert.ok(new RegExp(`/nt/${slug.replace('-', '/')}\\?`).test(x.src[0].u), x.key);
+    });
+  }
+  assert.ok(!/Each Gospel’s order of these episodes is kept/.test(by(nt, 'NTE-calls-and-healings').desc));
+  assert.ok(/not assumed to be the Lazarus of John 11/.test(by(nt, 'NTC-parables-luke-16').desc));
+  assert.ok(/no route is drawn/.test(by(nt, 'NTC-parables-luke-10').desc));
 });

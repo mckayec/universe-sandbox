@@ -133,7 +133,8 @@ def sources(row):
     out = [(t, u) for t, u in out if not any(f in u for f in drop.get(row['disposition_id'], []))]
     extra = {k: v for m in COPY_MODULES for k, v in m.EXTRA_SRC.items()}
     for t, path in extra.get(row['disposition_id'], []):
-        u = BASE + path + '?lang=eng'
+        # a full URL (e.g. an accepted research decision on GitHub) is kept as given
+        u = path if path.startswith('https://') else BASE + path + '?lang=eng'
         assert all(u != v for _, v in out), (row['disposition_id'], t)
         out.append((t, u))
     return out

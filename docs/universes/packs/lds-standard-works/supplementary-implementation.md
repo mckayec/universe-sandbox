@@ -21,7 +21,8 @@ count of new entities.
 | SC25–SC28 Old Testament major prophets (movements, people, themes, extra movements) | 59 | **imported, checkpoint 7** | codex tab `ot-more` |
 | SC24 Old Testament major-prophet places; S7-C1/C2 | 73 (+6 SD0663 chapter views) | **imported, checkpoint 8** | codex tab `ot-more` |
 | SC29, SC30, SC33 (apparatus, poetic place views, JST selections); S8-C1/C2 | 31 | **imported, checkpoint 9** | codex tab `ot-more` |
-| SC31, SC32, SC34 (wisdom and Twelve events/journeys/relationships, reading limits, chapter notes); S9-C1 | 59 (+2 children) | **imported, checkpoint 10** | codex tab `ot-more` |
+| SC31, SC32, SC34 (wisdom and Twelve events/journeys/relationships, reading limits, chapter notes); S9-C1 | 59 (21 + 10 + 28; +2 children) | **imported, checkpoint 10** | codex tab `ot-more` |
+| S10-C1–C3; S3-C1 for SD0214 and SD0240 | 6 rows corrected; 31 child views | **checkpoint 11** (S3-C1 open for SD0238 only) | `ot-more`, `nt-more` |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
@@ -467,7 +468,7 @@ Review input: [supplementary-review-s9.md](https://github.com/mckayec/universe-s
   the card “Heshbon””. The codex has no typed-relation field, so the attachment is the card, its placement, the prose
   pointer and the mapping row (`child of SD0721`); if a machine-readable relation is required, that is an engine
   field to specify, not something this checkpoint claims.
-* **SC31, 17 SD rows** (`OTW-e01…e11`, `OTW-j01…j05`, `OTW-r01…r05`): one card each, `1/ot`, no coordinates, routes or
+* **SC31, 21 SD rows** (corrected from 17 per S10; 11 events, 5 journeys, 5 relationships) (`OTW-e01…e11`, `OTW-j01…j05`, `OTW-r01…r05`): one card each, `1/ot`, no coordinates, routes or
   years; text dates (Jehoiakim's third year; Darius's second year, months 6 and 9) stay as words. Journeys are
   described only (Jonah: Joppa, intended Tarshish not reached, unnamed landing, Nineveh; Daniel 1: Jerusalem to
   Babylon, way not described). Relationship cards keep Belteshazzar ≠ Belshazzar, Joshua the high priest ≠ Joshua son
@@ -506,3 +507,65 @@ copy), `check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2 viewports. Ren
 `s10-codex-ot-wisdom-*` at 3840×2160, 1440×900, 1280×800, 390×844, scrolled to “Job's losses”; 492 cards listed with
 all layers on, the Heshbon and Psalm 24 text present; no console or page errors. (Captured before one word of SD0763 changed from “gourd” to “plant”; that card is not in frame.) Native select, keyboard and real-GPU
 gates remain open.
+
+## Checkpoint 11: S10-C1–C3, SC31 count; S3-C1 for SD0214 and SD0240
+
+Review input: [supplementary-review-s10.md](https://github.com/mckayec/universe-sandbox/blob/6b272ba8344a45a12f6426eb5306db79eccebf40/docs/universes/packs/lds-standard-works/supplementary-review-s10.md) (PR34 `6b272ba`). Input register unchanged; the generator reproduced the checkpoint 10 pack and mapping byte-for-byte before any change.
+
+* **S10-C1 (SD0730)**: `OTW-e04-furnace` first sentence replaced with the review's two sentences verbatim (Dura names
+  the image's site; the furnace is not separately located). Final two sentences, Daniel 3 source and `1/ot` unchanged.
+* **S10-C2**: no book contents page remains as a source.
+  * SD0746 `OTW-r04-psalm-collections`: copy unchanged; sources are the eight chapters, labelled by heading —
+    Psalm 3 (superscription: David), 50 (Asaph), 42 (sons of Korah), 72 (Solomon), 90 (Moses), 88 (Heman),
+    89 (Ethan), 39 (Jeduthun direction).
+  * SD0783 `OTW-a21-song-notes`: copy unchanged; sources Song of Solomon 1, 2, 4 and 8, each “(study notes)”.
+  * SD0789 `OTW-a27-animal-instrument-notes`: rewritten as a bounded list of the review's examples (Job 21, 30, 39;
+    Psalms 22, 29, 92, 44, 63, 104, 148, 150; Proverbs 30; Malachi 1), saying it is not every such note; the earlier
+    “serpent” and “birds” were dropped because the review gives no exact note reference for them. Thirteen chapter
+    sources, each labelled with its note (e.g. “Psalm 104 (study note: rock badger)”). The fuller research
+    disposition is untouched.
+  * SD0790 `OTW-a28-lexical-notes`: single source “Accepted apparatus audit (chapter concept register)” linking the
+    pinned `9cc874c` bounded-audit anchor. The last sentence now says the notes remain in their chapters and the
+    research register and that the atlas does not display them one by one. `build.py` now keeps a full URL in a
+    copy module's extra sources as given (this is the only non-scripture source in `ot-more`; tests allow exactly it).
+* **S10-C3 (SD0785)**: parent `OTW-a23-psalms-jst-notes` now says six labelled variants follow, each compared with the
+  KJV, and that the notes do not replace the KJV; its five chapter sources stay. Six ordered children
+  `OTW-a23-jst-psalm-30-5`, `-30-9`, `-32-1`, `-50-21`, `-138-8`, `-141-5` carry the review's six comparisons
+  verbatim, each sourced “Psalm v (inline JST note)” at its chapter, `1/ot`, no date or position. The Psalm 141:5 view
+  adds “This is not read as approval of physical harm.”
+* **SC31 count**: 21 rows, not 17 (receipt typo; nothing missing). Totals in checkpoint 10 were already right.
+* **S3-C1, SD0214 `NTE-calls-and-healings`**: twelve children in source order, one per ledger chapter — Matthew 9, 12;
+  Mark 1, 2, 3, 4, 5; Luke 4, 5, 6, 7, 8 — keys `NTE-calls-and-healings-<book>-<chapter>`, titled “Calls, healings
+  and crossings (Book n)”, each with its own chapter source, `2/nt`, no position. Copy follows each `NT-*` ledger
+  record and keeps its distinctions (Matthew 9's ruler unnamed and 9:27–34; Mark's Abiathar beside 1 Samuel 21's
+  Ahimelech; Mark 5's death news after Jairus's request beside Matthew 9; Luke 7's mediated request beside Matthew 8;
+  Joanna as wife of Chuza; Jairus's daughter about twelve). Parent's last sentence now points to these views instead
+  of “Each Gospel's order … is kept”.
+* **S3-C1, SD0240 `NTC-parables`**: thirteen children from the ledger records that name parables — Matthew 18, 20,
+  22, 25; Mark 4; Luke 10, 12, 13, 14, 15, 16, 18, 19 — keys `NTC-parables-<book>-<chapter>`, titled “Parables (Book
+  n)”, `2/nt`, chapter source each. Story settings are not mapped (Luke 10's Jerusalem–Jericho road, Matthew 20's
+  vineyard); Luke 16's Lazarus is not assumed to be John 11's; Luke 19's nobleman is not identified with Archelaus.
+  Parent's last sentence now points to these views.
+* **S3-C1, SD0238 (genealogies) stays open.** The literal Matthew 1 and Luke 3 name lists are not in the chapter
+  ledger, and the official chapter pages could not be fetched from this run, so no list was written from memory.
+
+Builder readings for ChatGPT to check: (1) SD0214/SD0240 children are chapter-level, one per ledger record, because the
+ledger gives chapter records (verse locators only where the ledger gives them, Matthew 9:27–34); if pericope-level
+verse locators are required, say which. (2) SD0240 includes Luke 12 and 13 and the Synoptic chapters Matthew 18, 20,
+22, 25 and Mark 4, the ledger records that name parables beyond the required Luke 10/14–16/18–19; Matthew 21 and Luke 8, whose ledger records
+name no parable, are not included. (3) Mark 4 appears twice by design: the
+crossing in SD0214's view, the seed parables in SD0240's. (4) Mark 5's child says “a man possessed” (Mark's singular)
+without a cross-note to Matthew 8's two; the parent already names Matthew's two demoniacs. (5) SD0789 dropped
+serpent and birds (see above).
+
+Accounting: 790 SD rows imported, 481 pending (unchanged). Children 35 + 31 = 66 (SD0214 ×12, SD0240 ×13, SD0785 ×6).
+`ot-more` 492 + 6 = 498 (494 at `1/ot`); `nt-more` 211 + 25 = 236. Mapping 1,345 rows (864 imported).
+Next: SD0238 genealogies (S3-C1, needs the official chapter text), then SC35–SC45 (D&C, 417 rows), SC46–SC54.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (106/106; updated counts in the NT, OT and child tests; new test for S10-C1–C3 and the
+SD0214/SD0240 views: Dura sentence, chapter-only sources and their order, the SD0790 decision link, six JST views in
+verse order with their own sources, 25 NT views in source order after their parents at `2/nt` with no position),
+`check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2 viewports.
+

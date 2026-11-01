@@ -19,7 +19,7 @@ P = 'Old Testament — '
 SLUG = {'Job': 'job', 'Psalm': 'ps', 'Psalms': 'ps', 'Song of Solomon': 'song', 'Daniel': 'dan', 'Amos': 'amos',
         'Jonah': 'jonah', 'Micah': 'micah', 'Nahum': 'nahum', 'Zechariah': 'zech', 'Haggai': 'hag', 'Hosea': 'hosea',
         'Proverbs': 'prov', 'Ecclesiastes': 'eccl', 'Zephaniah': 'zeph', 'Joel': 'joel', 'Numbers': 'num',
-        'Joshua': 'josh'}
+        'Joshua': 'josh', 'Malachi': 'mal'}
 
 
 def S(label):
@@ -95,7 +95,7 @@ COPY.update({
     'SD0727': ('OTW-e01-job-losses', 'Job’s losses', P + 'Job’s narrative recounts the loss of his children and property, his bodily affliction, and the arrival of friends who sit with him in grief. No historical date is given. Job’s wife and his friends Eliphaz, Bildad and Zophar are separate relationships; none is made a villain from one speech.'),
     'SD0728': ('OTW-e02-job-restoration', 'Job’s closing restoration', P + 'The closing narrative rebukes Job’s friends, describes Job praying for them, and recounts renewed prosperity and children, including daughters receiving an inheritance. The turning of Job’s “captivity” is not an exile and return: no route is drawn.'),
     'SD0729': ('OTW-e03-daniel-court-education', 'Daniel’s court education', P + 'Daniel describes youths from Judah taken into Babylonian royal service, given new names and trained. The text dates this to the third year of Jehoiakim; no single siege date is fixed from it. Jerusalem and Babylon are the two ends; the way between is not described.'),
-    'SD0730': ('OTW-e04-furnace', 'The fiery furnace', P + 'Daniel narrates Shadrach, Meshach and Abednego refusing to worship the royal image and surviving the fiery furnace, set on the plain of Dura. The fourth figure is described through the king’s words. Daniel himself is not said to be present.'),
+    'SD0730': ('OTW-e04-furnace', 'The fiery furnace', P + 'Daniel narrates Shadrach, Meshach and Abednego refusing to worship the royal image and surviving the fiery furnace. The image is set on the plain of Dura in the province of Babylon; the furnace is not separately located. The fourth figure is described through the king’s words. Daniel himself is not said to be present.'),
     'SD0731': ('OTW-e05-belshazzar-feast', 'Belshazzar’s feast', P + 'Daniel describes a message of judgment appearing during Belshazzar’s feast, where the vessels taken from the temple at Jerusalem are used, and the king’s death that night. No excavated room is assigned to the feast. Darius the Mede is not equated with Darius I.'),
     'SD0732': ('OTW-e06-lions', 'Daniel and the lions', P + 'Daniel narrates Daniel’s continued prayer toward Jerusalem, his confinement with lions, and a deliverance he attributes to an angel. The thirty-day decree is a stated length of time, not a date, and the den is not pinned. The king’s punishment of the accusers and their families is told as narrative, not approved.'),
     'SD0733': ('OTW-e07-nineveh-response', 'Nineveh’s response', P + 'Jonah reports that Nineveh responds to his warning with fasting and repentance, and that the announced calamity is then withheld. The forty days are the warning’s terms, not a date of destruction.'),
@@ -149,12 +149,12 @@ COPY.update({
     'SD0782': ('OTW-a20-ecclesiastes-notes', 'Notes to Ecclesiastes 1, 3, 9 and 12', P + 'Notes on vanity and wind, eternity in the heart, covenant commitment and goads refine the speaker’s vocabulary. They add no person, place, journey or date.'),
     'SD0783': ('OTW-a21-song-notes', 'Notes to the Song of Solomon', P + 'The JST qualification in Song 1’s note, that the Songs are not inspired writings, stays visible. Glosses on henna, fragrant ointment, gazelles and fawns, and the turtledove are literary vocabulary; they do not establish animal migrations, plant sites or the lovers’ identities.'),
     'SD0784': ('OTW-a22-psalms-8-15-notes', 'Notes to Psalms 8 and 15', P + 'At Psalm 8 the Hebrew gloss “less than the gods” is shown as the edition’s alternative, not substituted for the KJV. The inline JST of Psalm 15:1 specifies the hill of Zion, the worship setting at Jerusalem; every Zion in scripture is not merged with it.'),
-    'SD0785': ('OTW-a23-psalms-jst-notes', 'JST notes to Psalms 30, 32, 50, 138 and 141', P + 'Inline JST notes in these psalms expand on repentance and divine favor, praise after death, forgiven transgressions, covenants set in order, knowledge of the kingdom, and righteous reproof by the word of God. Each is a labelled variant with its chapter and adds no place or date. Psalm 141’s reproof is not read as approval of physical harm.'),
+    'SD0785': ('OTW-a23-psalms-jst-notes', 'JST notes to Psalms 30, 32, 50, 138 and 141', P + 'Inline JST notes in these psalms give six labelled variants, each compared with the KJV in its own view after this one, with its verse. The JST notes do not replace the KJV text and add no place or date.'),
     'SD0786': ('OTW-a24-psalms-60-78-notes', 'Notes to Psalms 60, 66, 68, 74 and 78', P + 'Psalm 60’s alternative reading for Philistia agrees with the triumph language of Psalm 108; the repeated passage is not a second campaign. The glosses on the river (66), offspring and Benjamin leading (68), “assembly places” for synagogues (74) and “holy land” for sanctuary (78) refine the wording of scenes and roles. No river crossing or dated synagogue institution is drawn from them.'),
     'SD0787': ('OTW-a25-psalms-83-132-notes', 'Notes to Psalms 83, 87, 95, 106 and 132', P + 'Psalm 83’s gloss on pastures or the land of Israel clarifies the target of hostile speech; Psalm 87’s notes on cities and springs of joy are not mapped springs. Psalm 95:8 gives Meribah, Psalm 106 the Reed Sea, and Psalm 132:6 identifies Ya’ar as a place: textual alternative names. Their geography stays uncertain: no modern Red Sea crossing is chosen, and Ya’ar is not equated with Kirjath-jearim.'),
     'SD0788': ('OTW-a26-psalm-109-notes', 'Notes to Psalm 109', P + 'The Hebrew gloss allows “adversary” or “accuser”, and the JST note prays for the adversaries. Not every adversary is made a named Satan, and the KJV’s wishes against them are not erased.'),
-    'SD0789': ('OTW-a27-animal-instrument-notes', 'Animal and instrument notes', P + 'Across Job, Psalms, Proverbs and the prophets the notes offer alternatives such as bison, buffalo or wild ox, jackal, serpent, sea monster, rock badger and birds, and pipe or flute for instruments. They are the edition’s vocabulary for poetic imagery, not zoological evidence or locations of species.'),
-    'SD0790': ('OTW-a28-lexical-notes', 'Other wording notes', P + 'The remaining notes on grammar, synonyms, food and harvest, social and legal idioms, reverence, moral description and metaphor add no identifiable place, journey or event, so the atlas draws nothing new from them. They stay with their chapters; this is a mapping choice, not a judgment that the passages lack meaning.'),
+    'SD0789': ('OTW-a27-animal-instrument-notes', 'Animal and instrument notes', P + 'Examples of the edition’s notes: instrument glosses in Job 21 and 30 and buffalo or bison in Job 39; wild ox, bison or buffalo in Psalms 22, 29 and 92, jackal in Psalms 44 and 63, rock badger in Psalm 104, sea monsters in Psalm 148 and pipes or flutes in Psalm 150; rock badger in Proverbs 30; and jackals in Malachi 1. This is a bounded list of examples, not every such note. They are the edition’s vocabulary for poetic imagery, not zoological evidence or locations of species.'),
+    'SD0790': ('OTW-a28-lexical-notes', 'Other wording notes', P + 'The remaining notes on grammar, synonyms, food and harvest, social and legal idioms, reverence, moral description and metaphor add no identifiable place, journey or event, so the atlas draws nothing new from them. They remain in their chapters’ notes and in the research register, and the atlas does not display them one by one; this is a mapping choice, not a judgment that the passages lack meaning.'),
 })
 
 EXTRA_SRC.update({k: [S(t) for t in v] for k, v in {
@@ -177,7 +177,11 @@ EXTRA_SRC.update({k: [S(t) for t in v] for k, v in {
     'SD0743': ['Daniel 1:6–7'],
     'SD0744': ['Zechariah 3', 'Zechariah 4'],
     'SD0745': ['Hosea 1', 'Hosea 3'],
-    'SD0746': ['Psalms (chapter headings)'],
+    # S10-C2: the superscriptions themselves, from the accepted superscription register (not authorship)
+    'SD0746': ['Psalm 3 (superscription: David)', 'Psalm 50 (superscription: Asaph)',
+               'Psalm 42 (superscription: sons of Korah)', 'Psalm 72 (superscription: Solomon)',
+               'Psalm 90 (superscription: Moses)', 'Psalm 88 (superscription: Heman)',
+               'Psalm 89 (superscription: Ethan)', 'Psalm 39 (superscription: Jeduthun direction)'],
     'SD0747': ['Proverbs 1:1', 'Proverbs 25:1', 'Proverbs 30:1', 'Proverbs 31:1'],
     'SD0748': ['Job 42:7–8'],
     'SD0749': ['Song of Solomon 4', 'Song of Solomon 7', 'Psalm 29', 'Psalm 133'],
@@ -209,19 +213,37 @@ EXTRA_SRC.update({k: [S(t) for t in v] for k, v in {
     'SD0780': ['Job 6', 'Job 28', 'Job 40'],
     'SD0781': ['Proverbs 2', 'Proverbs 18', 'Proverbs 23', 'Proverbs 27'],
     'SD0782': ['Ecclesiastes 1', 'Ecclesiastes 3', 'Ecclesiastes 9', 'Ecclesiastes 12'],
-    'SD0783': ['Song of Solomon (chapter notes)'],
+    'SD0783': ['Song of Solomon 1 (study notes)', 'Song of Solomon 2 (study notes)', 'Song of Solomon 4 (study notes)',
+               'Song of Solomon 8 (study notes)'],
     'SD0784': ['Psalm 8', 'Psalm 15'],
     'SD0785': ['Psalm 30', 'Psalm 32', 'Psalm 50', 'Psalm 138', 'Psalm 141'],
     'SD0786': ['Psalm 60', 'Psalm 66', 'Psalm 68', 'Psalm 74', 'Psalm 78'],
     'SD0787': ['Psalm 83', 'Psalm 87', 'Psalm 95:8', 'Psalm 106', 'Psalm 132:6'],
     'SD0788': ['Psalm 109'],
-    # rows that name notes across whole books: each book's contents page
-    'SD0789': ['Job (chapter notes)', 'Psalms (chapter notes)', 'Proverbs (chapter notes)'],
-    'SD0790': ['Job (chapter notes)', 'Psalms (chapter notes)', 'Proverbs (chapter notes)',
-               'Ecclesiastes (chapter notes)', 'Song of Solomon (chapter notes)'],
+    # S10-C2: chapter examples of the notes, not book contents pages
+    'SD0789': ['Job 21 (study note: instruments)', 'Job 30 (study note: instruments)',
+               'Job 39 (study note: buffalo or bison)', 'Psalm 22 (study note: wild ox)',
+               'Psalm 29 (study note: wild ox)', 'Psalm 92 (study note: wild ox)', 'Psalm 44 (study note: jackal)',
+               'Psalm 63 (study note: jackal)', 'Psalm 104 (study note: rock badger)',
+               'Psalm 148 (study note: sea monsters)', 'Psalm 150 (study note: pipes or flutes)',
+               'Proverbs 30 (study note: rock badger)', 'Malachi 1 (study note: jackals)'],
 }.items()})
+# S10-C2: SD0790 is a methodological exclusion; its source is the accepted research decision, not book contents
+EXTRA_SRC['SD0790'] = [('Accepted apparatus audit (chapter concept register)',
+                        'https://github.com/mckayec/universe-sandbox/blob/9cc874c09a3686119ca6b4c17c7e16f214fd7ab6/'
+                        'docs/universes/packs/lds-standard-works/coverage-ot-wisdom-prophets.md'
+                        '#bounded-inline-apparatus-audit')]
 
 CHILDREN = {
+    # S10-C3: the six inline JST comparisons, one view each, in verse order (all 1/ot)
+    'SD0785': [
+        ('OTW-a23-jst-psalm-30-5', 'Psalm 30:5: KJV and inline JST', P + 'The KJV contrasts momentary anger with life in divine favor; the inline JST explicitly connects the turning away of anger with the wicked repenting.', [('Psalm 30:5 (inline JST note)', 'ot/ps/30')]),
+        ('OTW-a23-jst-psalm-30-9', 'Psalm 30:9: KJV and inline JST', P + 'The KJV asks whether dust will praise God; the inline JST says the speaker’s soul will praise God and declare truth after the body returns to dust.', [('Psalm 30:9 (inline JST note)', 'ot/ps/30')]),
+        ('OTW-a23-jst-psalm-32-1', 'Psalm 32:1: KJV and inline JST', P + 'The KJV blesses one whose sin is covered; the inline JST describes forgiven people as having no sins to be covered.', [('Psalm 32:1 (inline JST note)', 'ot/ps/32')]),
+        ('OTW-a23-jst-psalm-50-21', 'Psalm 50:21: KJV and inline JST', P + 'Where the KJV says things will be set in order, the inline JST specifies covenants.', [('Psalm 50:21 (inline JST note)', 'ot/ps/50')]),
+        ('OTW-a23-jst-psalm-138-8', 'Psalm 138:8: KJV and inline JST', P + 'The KJV speaks of the Lord perfecting what concerns the speaker; the inline JST explicitly describes perfection in knowledge concerning God’s kingdom.', [('Psalm 138:8 (inline JST note)', 'ot/ps/138')]),
+        ('OTW-a23-jst-psalm-141-5', 'Psalm 141:5: KJV and inline JST', P + 'The KJV speaks of righteous smiting and reproof; the inline JST specifies the word of the Lord, preserves faith and rejects delight in the reprovers’ calamities. This is not read as approval of physical harm.', [('Psalm 141:5 (inline JST note)', 'ot/ps/141')]),
+    ],
     # S9 reading 4: a nonspatial Heshbon identity the Song 7:4 view attaches to (no pool, gate or position)
     'SD0721': [
         ('OTW-heshbon', 'Heshbon', P + 'Heshbon is named as the city of Sihon, king of the Amorites, in Numbers and Joshua, and the Song of Solomon uses its pools in a poetic comparison. One place, not drawn: no position is given for the city, its pools or its gate.', [('Numbers 21', 'ot/num/21'), ('Joshua 12', 'ot/josh/12'), ('Song of Solomon 7:4', 'ot/song/7')]),
