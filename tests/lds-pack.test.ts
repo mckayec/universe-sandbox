@@ -407,8 +407,8 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   assert.equal(ot.length, 177);
   const list = codex('ot-more');
   // 177 parent cards + 1 child source view (SD0443 stage list) + 83 SC18–SC23 cards (93 rows, 10 consolidated)
-  // + 59 SC25–SC28 major-prophet cards
-  assert.equal(list.length, 320);
+  // + 59 SC25–SC28 major-prophet cards + 73 SC24 major-prophet place cards + 6 SD0663 chapter views (S7-C1)
+  assert.equal(list.length, 399);
   const keys = new Set(list.map((x: any) => x.key));
   assert.equal(keys.size, list.length);
   for (const r of ot) {
@@ -428,7 +428,7 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
-  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 320);
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 399);
 });
 
 test('Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card', () => {
@@ -505,6 +505,54 @@ test('Supplementary SC25–SC28 and S6-C1: major-prophet rows map to OTM cards; 
   assert.equal(ot.filter((x: any) => x.key === 'OTL-megiddo').length, 1);
 });
 
+test('Supplementary SC24 and S7-C1/C2: major-prophet places, temple chapter views, OT-only Zedekiah card', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const lines = csv.trim().split('\n');
+  const rows = lines.filter(r => /^SD\d{4},SC24,/.test(r));
+  assert.equal(rows.length, 73);
+  const ot = codex('ot-more');
+  const by = (key: string) => ot.find((x: any) => x.key === key);
+  const own = new Set<string>();
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:ot-more,(OTM-[^,]+),/);
+    assert.ok(m && by(m[1]), r.slice(0, 40));
+    assert.ok(!r.includes(',consolidated into SD'), r.slice(0, 40));
+    own.add(m![1]);
+  }
+  assert.equal(own.size, 73);
+  for (const k of own) {
+    const x = by(k);
+    assert.deepEqual(plain(x.layers), ['ot']);
+    assert.deepEqual(plain(x.books), [1]);
+    assert.equal(x.lat, undefined, k);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => /\/scriptures\/ot\/(isa|jer|lam|ezek)\//.test(s.u)), k);
+  }
+  // homonyms stay distinct from the same-named places elsewhere
+  assert.ok(/not the town of the same name in Judah/.test(by('OTM-beth-shemesh-egypt').desc));
+  assert.ok(/not the modern city of Tel Aviv/.test(by('OTM-tel-abib-exile').desc));
+  // S7-C1: the parent no longer claims retained detail; six chapter views follow it in order
+  const tour = by('OTM-j22-temple-tour');
+  assert.ok(/The cited chapters describe distinct measured spaces and gate functions/.test(tour.desc));
+  const keys = ot.map((x: any) => x.key);
+  const at = keys.indexOf('OTM-j22-temple-tour');
+  assert.deepEqual(
+    plain(keys.slice(at + 1, at + 7)),
+    ['40', '41', '42', '43', '44', '46'].map(n => `OTM-j22-temple-tour-${n}`),
+  );
+  assert.ok(/five hundred reeds/.test(by('OTM-j22-temple-tour-42').desc));
+  assert.ok(/not converted to cubits/.test(by('OTM-j22-temple-tour-42').desc));
+  assert.ok(/inner east gate/.test(by('OTM-j22-temple-tour-46').desc));
+  assert.deepEqual(plain(by('OTM-j22-temple-tour-44').src.map((s: any) => s.t)), ['Ezekiel 44:1–5']);
+  // S7-C2: no later-work name on the OT-only Zedekiah card
+  const z = by('OTM-r15-zedekiah-house');
+  assert.ok(!/Mulek/.test(z.desc));
+  assert.ok(/without harmonizing it with other accounts/.test(z.desc));
+  assert.ok(!ot.some((x: any) => /Mulek/.test(x.desc)));
+});
+
 test('Supplementary S3/S4 review fixes: child source views follow their parents and required details are present', () => {
   const csv = readFileSync(
     new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
@@ -512,8 +560,8 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 25);
-  const want: Record<string, number> = { SD0213: 1, SD0226: 3, SD0236: 5, SD0270: 15, SD0443: 1 };
+  assert.equal(kids.length, 31);
+  const want: Record<string, number> = { SD0213: 1, SD0226: 3, SD0236: 5, SD0270: 15, SD0443: 1, SD0663: 6 };
   for (const [sd, n] of Object.entries(want)) {
     assert.equal(kids.filter(r => r.includes(`child of ${sd},`)).length, n, sd);
   }

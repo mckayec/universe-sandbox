@@ -19,7 +19,8 @@ count of new entities.
 | S3/S4 review fixes | 13 parent rows corrected; 25 child source views | **checkpoint 5** (S3-C1 partial) | `nt-more`, `ot-more` |
 | SC18–SC23 Old Testament late history (Chronicles–Esther) | 93 (83 cards; 10 rows consolidated) | **imported, checkpoint 6** | codex tab `ot-more` |
 | SC25–SC28 Old Testament major prophets (movements, people, themes, extra movements) | 59 | **imported, checkpoint 7** | codex tab `ot-more` |
-| SC24, SC29–SC34 Old Testament (major-prophet places/apparatus, wisdom and minor prophets) | 163 | pending | next runs, same tab |
+| SC24 Old Testament major-prophet places; S7-C1/C2 | 73 (+6 SD0663 chapter views) | **imported, checkpoint 8** | codex tab `ot-more` |
+| SC29–SC34 Old Testament (major-prophet apparatus, wisdom and minor prophets) | 90 | pending | next runs, same tab |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
@@ -334,3 +335,57 @@ Rendered (SwiftShader, built `dist/` served under `/universe-sandbox/`, page rea
 section chosen through the DOM, CDP capture): shots `s7-codex-ot-prophets-*` at 3840×2160, 1440×900, 1280×800,
 390×844 (phone via the section chooser), scrolled to the first new card; 320 cards listed in `ot-more`, no console
 or page errors. Native select, keyboard and real-GPU gates remain open.
+
+## Checkpoint 8: S7-C1, S7-C2, two optional wordings; SC24 (major-prophet places)
+
+Review input: [supplementary-review-s7.md](https://github.com/mckayec/universe-sandbox/blob/9539b755597b07c39f2aa7cd1368d5ee92c4b2e5/docs/universes/packs/lds-standard-works/supplementary-review-s7.md) (PR34 `9539b75`). Input register unchanged (sha256 `0c3c0aea…229d9e`); the generator reproduced the checkpoint 7 pack and mapping byte-for-byte before any change.
+
+* **S7-C1 (SD0663)**: the parent card's retention claim is replaced with the review's sentence (“The cited chapters
+  describe distinct measured spaces and gate functions”). Six child source views follow it, built from the accepted
+  ledger rows MP4-40–44/46 and the review's minimum contexts, each citing only its own chapter URL, gate `1/ot`,
+  no dimensions converted, no coordinates: `OTM-j22-temple-tour-40` (gates, courts, priestly rooms; visionary, not
+  remains), `-41` (twenty-cubit-square most holy place, three-level side rooms, western building, doors, wooden
+  altar/table, ornament; the guide's inward access distinct from Ezekiel's), `-42` (north/south priestly chambers;
+  **five hundred reeds** on each side, not converted to cubits), `-43` (Ezekiel 43:1–17: glory from the east; the
+  altar's stepped measurements; no verified construction/date), `-44` (Ezekiel 44:1–5: outer east gate shut, the
+  prince's provision, approach by the north gate; no present Jerusalem gate), `-46` (Ezekiel 46:19–24: separate
+  priestly and court cooking places; this chapter's inner east gate distinct from chapter 44's outer gate). Mapping:
+  six `child of SD0663` rows. **SD0705** (`mp-a05-reeds`, SC29) stays pending; when SC29 is built it consolidates into
+  `OTM-j22-temple-tour-42`, which already carries the reed/cubit distinction, so no building or event is duplicated.
+* **S7-C2 (SD0679)**: the Mulek sentence on `OTM-r15-zedekiah-house` is replaced by the review's sentence (“This card
+  retains Jeremiah’s account without harmonizing it with other accounts.”). No card in `ot-more` names Mulek (test).
+  The research constraint is kept here for a later attributed `3/bom` view: *claims about Mulek from other books need
+  their own attribution and must not be harmonized silently.* Mulek city/land cards are not repurposed as the person.
+* **Optional wordings applied**: SD0696 takes the review's precise Jeremiah 52 sentence; SD0697 adds “On this mission,”.
+* **SC24, 73 SD rows**, one card each, keyed `OTM-` + the research id, gate `1/ot`, no coordinates, routes or years;
+  every row's own Isaiah/Jeremiah/Ezekiel links with verses. No row is consolidated (the category rule keeps prophetic
+  geography, historical setting and named region distinct). Rows anchored to an existing site name that site's card as
+  the same place: P08 → “Jerusalem in Samuel and Kings” (SD0569, SD0574), AP07 → “Babylon in Kings” (as a marker that
+  does not verify each event), P04 → “Egypt (Old Testament settings)”, P07 → “Bethlehem of Judah”, AP06 → “Jericho in
+  Joshua and Kings” (marker does not pinpoint the capture), P01 → “Haran (Genesis)” (trading context separate from
+  Abraham's departure). Homonym qualifiers: Ramah (Jeremiah), Mizpah (Gedaliah), Migdol (Egypt, Jeremiah),
+  Beth-shemesh (Egypt) “not the town of the same name in Judah”, Bozrah (Edom), Tel-abib “not the modern city of Tel
+  Aviv”, Rabbah of the Ammonites. Sidon's card does not touch the Book of Mormon river Sidon.
+
+Builder readings for ChatGPT to check: (1) rows marked `new` whose name matches an existing Old Testament place card
+are said to be the same place: Damascus (Kings), Samaria (city), Nineveh (Kings), “Lachish”, Tyre (Kings), “Moab”,
+Seir, Gaza (Azzah), “Ashdod”, Riblah in Hamath, “Shiloh”; Carmel, Edom, Hamath, Lebanon, Bashan, Sheba, Ramah and
+En-gedi are *not* linked (region/oracle senses, or the existing card is a different identity or episode). (2) SD0591
+and SD0635 point to the movement cards “Ishmael’s captives and Gibeon’s waters” and “Envoys to Zoan and Hanes”.
+(3) SD0591 uses “catches up with”, as accepted for SD0656. (4) SD0578 renders “a promised cultivation setting” as “a
+setting where cultivation is promised”. (5) S7-C1 `-44` states the princely provision as “the prince may sit in it to
+eat bread before the Lord”; `-46` describes the cooking places as where the priests boil and bake the offerings and,
+in the corners of the outer court, where the ministers boil the people's sacrifices.
+
+Accounting: 700 SD rows imported (627 + 73; 10 consolidated), 571 pending; prose 7 + 1 consolidated SC22 prose view;
+31 children (25 + 6). Mapping 1,310 rows. Card totals: `nt-more` 211 (unchanged), `ot-more` 320 + 73 + 6 = 399.
+S3-C1 remains open for SD0214, SD0238, SD0240. SD0691's later facet remains pending through SD0706 (SC29).
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (103/103; new test: all 73 SC24 rows map to their own `OTM-` card with OT-prophet sources
+and the OT gate only, homonym distinctions present; the six SD0663 views follow the parent in order with the reed and
+inner-gate payloads; no Mulek text anywhere in `ot-more`), `check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2
+viewports. Rendered (SwiftShader, built `dist/` under `/universe-sandbox/`, page ready in 21–68 s, codex opened and
+section chosen through the DOM, CDP capture): shots `s8-codex-ot-places-*` at 3840×2160, 1440×900, 1280×800, 390×844,
+scrolled to the first new card; no console or page errors. Native select, keyboard and real-GPU gates remain open.
