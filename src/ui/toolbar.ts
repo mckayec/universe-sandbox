@@ -26,6 +26,7 @@ import {
   setInteractionMode,
   setNavigationMode,
   setSimulationSpeed,
+  setTouchHint,
   toggleHabitabilityGuides,
   toggleTrails,
 } from './controls.ts';
@@ -89,7 +90,7 @@ export function bindToolbar() {
     resetSimulation();
     app.currentExhibit = null;
     document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
-    toast('Simulation cleared');
+    toast('Simulation cleared · Undo restores it');
   };
   document.querySelector<HTMLButtonElement>('#orbit-mode')!.onclick = e => {
     app.orbitMode = !app.orbitMode;
@@ -98,6 +99,9 @@ export function bindToolbar() {
     document.querySelector('#hint')!.textContent = app.orbitMode
       ? 'ORBIT MODE · DRAG NEAR A BLUE RING TO ENTER ORBIT'
       : 'INSPECT MODE · CLICK OR DRAG OBJECTS · RIGHT-DRAG TO PAN';
+    setTouchHint(
+      app.orbitMode ? 'Orbit mode · drag a planet near a blue ring' : 'Tap an object to inspect · drag it to move',
+    );
   };
   const universePicker = document.querySelector<HTMLElement>('#universe-picker')!,
     scenarioPicker = document.querySelector<HTMLElement>('#scenario-picker')!;
