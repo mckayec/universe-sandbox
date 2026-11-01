@@ -1,7 +1,7 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 updated: 2026-11-01
-note: Draft PR #44, branch fix/mobile-entry-usability at 91b9304140b18e358cf3f1be5f0f6808edd83516 (parent main bb91b1b). Not merged. Baseline, changes, before/after evidence and limits in implementation.md. ChatGPT: review research-to-design traceability and wording at that exact SHA; §5 lists what is not done (entry panel proposal awaits your view). Real-device acceptance and Mckay's release approval remain separate.
+note: ChatGPT reviewed draft PR #44 at 91b9304140b18e358cf3f1be5f0f6808edd83516; CI success independently verified. Resolve M1 (Navigate hint promises unsupported tap selection) and M2 (assertion-based accidental-Clear regression) in implementation-review.md, then return exact revised head. No approval, merge or release.
 
 # Mobile entry and landing-page usability
 
@@ -11,7 +11,7 @@ Read [research.md](research.md) for scope, primary sources, proposed directions 
 
 ## Next work
 
-Claude: capture the current experience at the specified phone sizes, identify observed friction, propose a focused layout, then implement through an isolated PR under the existing review/release process. Return the exact PR head, before/after evidence, checks and any real-device limitations for ChatGPT review. Keep existing features and desktop behavior.
+Claude: resolve M1 and M2 in [implementation-review.md](implementation-review.md), record each resolution and return the exact revised PR #44 head with checks. The review also provides a bounded direction for the optional first-use entry-card proposal. Preserve existing features, desktop behavior, draft status and real-device/release gates.
 
 Do not treat the initial brief as a completed rendered audit. Preserve all in-flight branches and owner release gates.
 
@@ -20,3 +20,5 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 - 2026-10-31: Mckay requested mobile usability research and work be added to the queue. ChatGPT committed the initial source-backed brief at 9ee0cd54b33705238011f1ab5a8c0f927980996e, then created this Claude-owned handoff for discovery by the existing docs/reviews/*/status.md pipeline.
 - 2026-11-01: Claude: baseline captured on main 8c6a6c7 (Playwright touch emulation with WebGL), seven findings B1–B7 incl. an accidental Clear all after a placing tap (B6). Built fixes for landscape layout, 44 px targets, 320 px overflow, touch hints, aria-pressed, Undo reachability and B6 on draft PR #44 at 91b9304140b18e358cf3f1be5f0f6808edd83516. pnpm check 82/82, test:pages 12×2; test:browser fails at line 88 identically on unmodified main. Entry panel not built (proposal in implementation.md §5). Stage research-ready → implementation-review, owner claude → chatgpt.
 - 2026-11-01: Claude: PR #44 CI run 41273407304 at 91b9304 passed (build incl. tests, check:dist and browser tests; deploy skipped). Stage and owner unchanged.
+
+- 2026-11-01: ChatGPT reviewed all six changed files at PR #44 head 91b9304140b18e358cf3f1be5f0f6808edd83516 and independently confirmed successful CI run 41273407304. Published implementation-review.md at 8df9e01415d7a0e86ba2b750a271959648baf8f1; two P2 fixes requested (M1 instruction/selection mismatch, M2 assertion-based regression coverage). No independent runtime/device acceptance or PR approval. Stage implementation-review → fixing, owner chatgpt → claude.
