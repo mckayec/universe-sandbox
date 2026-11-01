@@ -20,7 +20,8 @@ count of new entities.
 | SC18–SC23 Old Testament late history (Chronicles–Esther) | 93 (83 cards; 10 rows consolidated) | **imported, checkpoint 6** | codex tab `ot-more` |
 | SC25–SC28 Old Testament major prophets (movements, people, themes, extra movements) | 59 | **imported, checkpoint 7** | codex tab `ot-more` |
 | SC24 Old Testament major-prophet places; S7-C1/C2 | 73 (+6 SD0663 chapter views) | **imported, checkpoint 8** | codex tab `ot-more` |
-| SC29–SC34 Old Testament (major-prophet apparatus, wisdom and minor prophets) | 90 | pending | next runs, same tab |
+| SC29, SC30, SC33 (apparatus, poetic place views, JST selections); S8-C1/C2 | 31 | **imported, checkpoint 9** | codex tab `ot-more` |
+| SC31, SC32, SC34 (wisdom and Twelve events/journeys/relationships, reading limits, chapter notes); S9-C1 | 59 (+2 children) | **imported, checkpoint 10** | codex tab `ot-more` |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
@@ -450,3 +451,58 @@ cards OT-only with wisdom/Twelve or JST sources; S8-C1/S8-C2 assertions), `check
 opened and `ot-more` chosen through the DOM, CDP capture): shots `s9-codex-ot-apparatus-*` at 3840×2160, 1440×900,
 1280×800, 390×844, scrolled to the first SC29 card; 431 cards listed with all layers on; no console or page errors.
 Native select, keyboard and real-GPU gates remain open.
+
+## Checkpoint 10: S9-C1; SC31 (events, journeys, relationships), SC32 (reading limits), SC34 (chapter notes)
+
+Review input: [supplementary-review-s9.md](https://github.com/mckayec/universe-sandbox/blob/23fd7012ea7016702b77b2e0b9a3841210a3c83f/docs/universes/packs/lds-standard-works/supplementary-review-s9.md) (PR34 `23fd701`). Input register unchanged (sha256 `0c3c0aea…229d9e`); the generator reproduced the checkpoint 9 pack and mapping byte-for-byte before any change.
+
+* **S9-C1 (SD0760)**: `OTW-c13-jst-psalm-24` keeps its first sentence and takes the review's two replacement
+  sentences verbatim; sources are now “JST Psalm 24:7–10” (row link) and **“Psalm 24:7–10 (KJV)”** (Psalm 24 chapter
+  URL). Still `1/ot`, no geometry.
+* **S9 reading 3 (optional)**: SD0710's Tarshish sources are labelled Psalm 48:7 and Psalm 72:10.
+* **S9 reading 4 (SD0721, Heshbon)**: new nonspatial identity card `OTW-heshbon` (child of SD0721, `1/ot`, right after
+  the Song 7:4 card): Heshbon as Sihon's city in Numbers and Joshua, and the Song's poetic use of its pools; no
+  position for the city, pools or gate. Sources Numbers 21 and Joshua 12 at chapter level (the accepted ledger rows
+  OH-N21 and OH-Q12 name Heshbon as Sihon's city) and Song of Solomon 7:4. The Song card now says “The same Heshbon as
+  the card “Heshbon””. The codex has no typed-relation field, so the attachment is the card, its placement, the prose
+  pointer and the mapping row (`child of SD0721`); if a machine-readable relation is required, that is an engine
+  field to specify, not something this checkpoint claims.
+* **SC31, 17 SD rows** (`OTW-e01…e11`, `OTW-j01…j05`, `OTW-r01…r05`): one card each, `1/ot`, no coordinates, routes or
+  years; text dates (Jehoiakim's third year; Darius's second year, months 6 and 9) stay as words. Journeys are
+  described only (Jonah: Joppa, intended Tarshish not reached, unnamed landing, Nineveh; Daniel 1: Jerusalem to
+  Babylon, way not described). Relationship cards keep Belteshazzar ≠ Belshazzar, Joshua the high priest ≠ Joshua son
+  of Nun, Hosea 3's woman unnamed, Lemuel ≠ Solomon and his mother ≠ Bathsheba.
+* **SC32, 10 SD rows** (`OTW-c01…c10`): genre and reading-limit cards at `1/ot`. SD0753 (Psalm 85) is split like
+  SD0706: the `1/ot` card gives verse 11 and says it names no book; child `OTW-c06-psalm-85-heading` at **`3/bom`**
+  carries the Church heading's Book of Mormon reading, attributed as the edition's interpretation.
+* **SC34, 28 SD rows** (`OTW-a01…a28`): one chapter-note card each, `1/ot`, every alias attributed to the edition
+  (No-amon/Thebes, Lubim/Libyans, Hiddekel/Tigris, Tyrus/Tyre, Asshur/Assyria, Meribah, Reed Sea, Ya'ar) and every
+  inline JST reading shown beside, not instead of, the KJV. SD0771 uses the row's exact safe copy.
+
+Builder readings for ChatGPT to check: (1) SD0789 (animal/instrument notes) and SD0790 (remaining lexical notes)
+name no chapters, so their sources are the book contents pages (Job, Psalms, Proverbs; SD0790 adds Ecclesiastes and
+the Song), labelled “(chapter notes)”; SD0746 likewise cites the Psalms contents page as “(chapter headings)” and
+SD0783 the Song's. (2) SD0753's `1/ot` card quotes KJV Psalm 85:11 (“truth shall spring out of the earth …”); the
+row gives only “truth coming from the earth”. (3) SD0754 names Christ on a `1/ot` card as the Church heading does
+(same treatment as `OTM-a01-jesse`) and quotes Psalm 110:4's “a priest for ever after the order of Melchizedek” for
+the row's “cross-link Melchizedek themes”. (4) SD0730 places the furnace scene on the plain of Dura (the row's WP-P05
+pointer) and SD0739 names the land of Shinar (the row's Shinar constraint). (5) SD0736 and SD0740/0741 cite each
+psalm with the label “(superscription)” at chapter level. (6) SD0763's “shelter” and “castor-bean plant” are the
+row's alternatives for the booth and the plant; the KJV word for the plant is not quoted on the card.
+
+Accounting: 790 SD rows imported (731 + 59; 11 consolidated), 481 pending; prose 7 + 1 consolidated SC22 prose view;
+35 children (33 + 2). Mapping 1,314 rows (833 imported). `ot-more` 431 + 61 = 492 (488 at `1/ot`, one at `4/dc`,
+three at `3/bom`); `nt-more` 211 unchanged. All Old Testament supplementary families (SC13–SC34) are now imported.
+Next: S3-C1 for SD0214, SD0238, SD0240, then SC35–SC45 (D&C, 417 rows), SC46–SC54.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (105/105; new test: 59 SC31/SC32/SC34 rows map to `OTW-` cards, `1/ot`, no geometry or
+year, OT-only sources and no later-work name except the gated Psalm 85 heading child; S9-C1 copy and both Psalm 24
+sources; Tarshish verse labels; Heshbon card after the Song 7:4 card with its three sources and no coordinates;
+Psalm 85 child at `3/bom` hidden with only the OT layer through book 1; row-specific distinctions and the SD0771 safe
+copy), `check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2 viewports. Rendered (SwiftShader, built `dist/` under
+`/universe-sandbox/`, page ready in 22–101 s, codex opened and `ot-more` chosen through the DOM, CDP capture): shots
+`s10-codex-ot-wisdom-*` at 3840×2160, 1440×900, 1280×800, 390×844, scrolled to “Job's losses”; 492 cards listed with
+all layers on, the Heshbon and Psalm 24 text present; no console or page errors. (Captured before one word of SD0763 changed from “gourd” to “plant”; that card is not in frame.) Native select, keyboard and real-GPU
+gates remain open.

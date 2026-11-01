@@ -409,10 +409,16 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   // 177 parent cards + 1 child source view (SD0443 stage list) + 83 SC18–SC23 cards (93 rows, 10 consolidated)
   // + 59 SC25–SC28 major-prophet cards + 73 SC24 major-prophet place cards + 6 SD0663 chapter views (S7-C1)
   // + 5 SC29 cards (SD0705 consolidated) + 2 SC29 later-work children + 20 SC30 + 5 SC33 cards
-  assert.equal(list.length, 431);
+  // + 59 SC31/SC32/SC34 cards + Heshbon identity and Psalm 85 heading children (checkpoint 10)
+  assert.equal(list.length, 492);
   const keys = new Set(list.map((x: any) => x.key));
-  // the three cards gated at a later work (SD0706, and the SD0701/SD0702 children) are checked in the SC29 test
-  const later = new Set(['OTM-a06-ezekiel-37-heading', 'OTM-a01-jesse-dc113', 'OTM-a02-ariel-jst-introduction']);
+  // the cards gated at a later work (SD0706, the SD0701/SD0702 children; the SD0753 child) are checked in their own tests
+  const later = new Set([
+    'OTM-a06-ezekiel-37-heading',
+    'OTM-a01-jesse-dc113',
+    'OTM-a02-ariel-jst-introduction',
+    'OTW-c06-psalm-85-heading',
+  ]);
   const all = list;
   list = all.filter((x: any) => !later.has(x.key));
   assert.equal(keys.size, all.length);
@@ -433,8 +439,8 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
-  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 428);
-  assert.equal(L.codexSplit(all, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 428);
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 488);
+  assert.equal(L.codexSplit(all, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 488);
 });
 
 test('Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card', () => {
@@ -607,7 +613,7 @@ test('Supplementary SC29, SC30, SC33: apparatus rows, poetic place views and JST
   const otOnly = L.codexSplit(ot, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown;
   assert.ok(!otOnly.some((x: any) => later.includes(x.key)));
   // SC30/SC33: OT layer only, sources in the wisdom books and the Twelve (or their JST selections), no geometry
-  const wp = ot.filter((x: any) => x.key.startsWith('OTW-'));
+  const wp = ot.filter((x: any) => /^OTW-(p|c1[1-5]|ap07)/.test(x.key) && x.key !== 'OTW-heshbon');
   assert.equal(wp.length, 25);
   for (const x of wp) {
     assert.deepEqual([plain(x.books), plain(x.layers)], [[1], ['ot']], x.key);
@@ -627,6 +633,64 @@ test('Supplementary SC29, SC30, SC33: apparatus rows, poetic place views and JST
   assert.ok(/not the base text/.test(by('OTW-c11-jst-psalm-11').desc));
 });
 
+test('Supplementary SC31, SC32, SC34 and S9-C1: wisdom and Twelve events, reading limits and chapter notes', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const lines = csv.trim().split('\n');
+  const rows = lines.filter(r => /^SD\d{4},SC(31|32|34),/.test(r));
+  assert.equal(rows.length, 59);
+  const ot = codex('ot-more');
+  const by = (key: string) => ot.find((x: any) => x.key === key);
+  const keys = ot.map((x: any) => x.key);
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:ot-more,(OTW-[^,]+),/);
+    assert.ok(m && by(m[1]), r.slice(0, 40));
+    const x = by(m![1]);
+    if (m![1] === 'OTW-c06-psalm-85') continue;
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[1], ['ot']], x.key);
+    assert.equal(x.lat, undefined, x.key);
+    assert.equal(x.when, undefined, x.key);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => /\/scriptures\/ot\//.test(s.u)), x.key);
+    assert.ok(!/Book of Mormon|D&C|Doctrine and Covenants/.test(x.desc), x.key);
+  }
+  // S9-C1: the KJV side of Psalm 24 is supplied beside the JST selection
+  const ps24 = by('OTW-c13-jst-psalm-24');
+  assert.ok(/everlasting doors are called to lift up/.test(ps24.desc) && !/Shown alongside/.test(ps24.desc));
+  assert.deepEqual(plain(ps24.src.map((s: any) => s.t)), ['JST Psalm 24:7–10', 'Psalm 24:7–10 (KJV)']);
+  assert.ok(ps24.src.some((s: any) => /\/ot\/ps\/24\?/.test(s.u)) && ps24.src.some((s: any) => /jst-ps\/24/.test(s.u)));
+  assert.deepEqual(plain(by('OTW-p04-tarshish-intended').src.map((s: any) => s.t)), [
+    'Jonah 1:3',
+    'Psalm 48:7',
+    'Psalm 72:10',
+  ]);
+  // S9 reading 4: Song 7:4 attaches to a nonspatial Heshbon identity card that follows it
+  const hes = by('OTW-heshbon');
+  assert.equal(keys.indexOf('OTW-heshbon'), keys.indexOf('OTW-p15-bathrabbim') + 1);
+  assert.ok(/the card “Heshbon”/.test(by('OTW-p15-bathrabbim').desc));
+  assert.equal(hes.lat, undefined);
+  assert.deepEqual(plain(hes.src.map((s: any) => s.t)), ['Numbers 21', 'Joshua 12', 'Song of Solomon 7:4']);
+  // Psalm 85: the verse at 1/ot; the heading's Book of Mormon reading is a child gated at the Book of Mormon
+  const p85 = by('OTW-c06-psalm-85');
+  assert.deepEqual([plain(p85.books), plain(p85.layers)], [[1], ['ot']]);
+  assert.ok(!/Book of Mormon/.test(p85.desc));
+  const h85 = by('OTW-c06-psalm-85-heading');
+  assert.deepEqual([plain(h85.books), plain(h85.layers)], [[3], ['bom']]);
+  assert.equal(keys.indexOf('OTW-c06-psalm-85-heading'), keys.indexOf('OTW-c06-psalm-85') + 1);
+  const otOnly = L.codexSplit(ot, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown;
+  assert.ok(!otOnly.some((x: any) => x.key === 'OTW-c06-psalm-85-heading'));
+  // row-specific distinctions
+  assert.ok(/not the king Belshazzar/.test(by('OTW-r01-daniel-companions').desc));
+  assert.ok(/not Joshua the son of Nun/.test(by('OTW-r02-zechariah-joshua').desc));
+  assert.ok(/Tarshish is not reached/.test(by('OTW-j01-jonah-voyage').desc));
+  assert.equal(
+    by('OTW-a09-daniel-4-notes').desc.split(' — ')[1].split('. ')[0] + '.',
+    'Daniel’s text uses seven times; the Church edition’s notes explain the expression with years/seasons and a seven-years gloss.',
+  );
+  assert.ok(/not equated with Kirjath-jearim/.test(by('OTW-a25-psalms-83-132-notes').desc));
+});
+
 test('Supplementary S3/S4 review fixes: child source views follow their parents and required details are present', () => {
   const csv = readFileSync(
     new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
@@ -634,7 +698,7 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 33);
+  assert.equal(kids.length, 35);
   const want: Record<string, number> = {
     SD0213: 1,
     SD0226: 3,
@@ -644,6 +708,8 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
     SD0663: 6,
     SD0701: 1,
     SD0702: 1,
+    SD0721: 1,
+    SD0753: 1,
   };
   for (const [sd, n] of Object.entries(want)) {
     assert.equal(kids.filter(r => r.includes(`child of ${sd},`)).length, n, sd);

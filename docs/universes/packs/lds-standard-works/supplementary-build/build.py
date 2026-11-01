@@ -38,7 +38,7 @@ BUILT = {f'SC0{i}': 'bom' for i in range(1, 8)}
 BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 31)})
-BUILT['SC33'] = 'ot'
+BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
 COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
