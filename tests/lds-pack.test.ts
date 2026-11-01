@@ -954,7 +954,7 @@ test('Supplementary SC35–SC39: D&C place, event, teaching and relationship row
       .filter(r => /^SD\d{4},SC4[23],/.test(r))
       .map(r => (r.match(/,imported,codex:dc-more,(DCM-[^,]+),/) || [])[1]),
   );
-  const dc = codex('dc-more').filter((x: any) => !/^DCM-(dcp-|dre\d|jsh-|dca-)/.test(x.key) && !later.has(x.key));
+  const dc = codex('dc-more').filter((x: any) => !/^DCM-(dcp-|dre\d|jsh-|dca-|dd\d)/.test(x.key) && !later.has(x.key));
   assert.equal(dc.length, 69);
   const keys = new Set(dc.map((x: any) => x.key));
   assert.equal(keys.size, dc.length);
@@ -1144,7 +1144,8 @@ test('Supplementary checkpoint 17: SC42 ancient participants and SC43 dated even
       assert.equal(new Set(x.src.map((s: any) => s.u)).size, x.src.length, `${x.key} repeats a source`);
     }
   }
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 200);
+  // no SC42/SC43 row is pending (overall pending count is checked per checkpoint below)
+  assert.equal(lines.filter(r => /^SD\d{4},SC4[23],.*,pending,/.test(r)).length, 0);
   // SC42 identity distinctions
   assert.match(by('DCM-dca-john-peter-james').desc, /not John the Baptist and not John Whitmer/);
   assert.match(by('DCM-dca-elijah-elias-moses').desc, /left open, and Elias is not merged with Elijah/);
@@ -1178,5 +1179,74 @@ test('Supplementary checkpoint 17: SC42 ancient participants and SC43 dated even
       3,
     ).length,
     0,
+  );
+});
+
+test('Supplementary checkpoint 18: S17-C1/C2 and SC45 section dossiers DD001–DD070 in dc-more', () => {
+  const dc = codex('dc-more');
+  const by = (k: string) => dc.find((x: any) => x.key === k);
+  const at = (list: any[], layers: string[], group: number) =>
+    L.codexSplit(list, new Set(layers), null, true, group, (y: any) => Math.min(...y.books)).shown.map(
+      (x: any) => x.key,
+    );
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const lines = csv.trim().split('\n');
+  // S17-C1: the Lord addresses John and then Peter; no John–Peter dialogue
+  const jpj = by('DCM-dca-john-peter-james').desc;
+  assert.doesNotMatch(jpj, /dialogue between John/);
+  assert.match(jpj, /depicts the Lord speaking with John the Beloved and then addressing Peter/);
+  // S17-C2: Emma's concern attributed to the current heading
+  assert.match(
+    by('DCM-de20-word-of-wisdom').desc,
+    /current section heading links Joseph Smith’s inquiry to tobacco use at the meetings and the concern it caused his wife, Emma Smith\./,
+  );
+  // optional precision and the Sarai child's Genesis link
+  assert.match(by('DCM-dca-abel-to-noah').desc, /lineage, ordination, offering-comparison and vision contexts/);
+  assert.match(by('DCM-de19-school-of-the-prophets').desc, /The heading dates section 88 to December 27–28, 1832/);
+  assert.deepEqual(plain(by('DCM-dca-sarai-abraham').src.map((s: any) => s.t)), ['Abraham 2:2', 'Genesis 17:15']);
+  // SC45: DD001–DD070 imported as one dc-layer card per section, in section order, with that section's link
+  const sc45 = lines.filter(r => /^SD\d{4},SC45,/.test(r));
+  assert.equal(sc45.length, 140);
+  const imported = sc45.filter(r => /,imported,codex:dc-more,/.test(r));
+  assert.equal(imported.length, 70);
+  const keys = imported.map(r => r.match(/,imported,codex:dc-more,(DCM-[^,]+),/)![1]);
+  keys.forEach((k, i) => {
+    const n = i + 1;
+    assert.ok(k.startsWith(`DCM-dd${String(n).padStart(3, '0')}-`), k);
+    const x = by(k);
+    assert.ok(x, k);
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[4], ['dc']], k);
+    assert.equal(x.lat, undefined, k);
+    assert.ok(x.name.startsWith(`Section ${n}: `), k);
+    assert.ok(x.desc.startsWith(`Doctrine and Covenants — Section ${n}. `), k);
+    assert.deepEqual(
+      plain(x.src.map((s: any) => s.u)),
+      [`https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/${n}?lang=eng`],
+      k,
+    );
+  });
+  assert.deepEqual(plain(dc.filter((x: any) => /^DCM-dd\d/.test(x.key)).map((x: any) => x.key)), keys);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 130);
+  // the dossier for section 7 keeps the S17-C1 reading
+  assert.match(by('DCM-dd007-john-ministry').desc, /the Lord speaks with John and then addresses Peter/);
+  // not shown before the D&C layer
+  assert.equal(
+    at(
+      dc.filter((x: any) => /^DCM-dd\d/.test(x.key)),
+      ['ot', 'nt', 'bom', 'dc', 'pgp'],
+      3,
+    ).length,
+    0,
+  );
+  assert.equal(
+    at(
+      dc.filter((x: any) => /^DCM-dd\d/.test(x.key)),
+      ['dc'],
+      4,
+    ).length,
+    70,
   );
 });

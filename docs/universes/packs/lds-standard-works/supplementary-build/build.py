@@ -25,6 +25,7 @@ import copy_dc
 import copy_dcp
 import copy_dre
 import copy_dca
+import copy_dd
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -44,7 +45,10 @@ BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 31)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
 BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 44)})
-COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca]
+BUILT['SC45'] = 'dc'
+# families built over several checkpoints: rows without copy yet stay `pending`
+PARTIAL = {'SC45'}
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca, copy_dd]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}
@@ -234,7 +238,7 @@ def main(path):
                                 '; '.join(ct for ct, _ in csrc), cwg,
                                 'child source view required by its parent row', ''])
         else:
-            assert not fam, f'{sd} in built family {cat} has no copy'
+            assert not fam or cat in PARTIAL, f'{sd} in built family {cat} has no copy'
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'pending', '', '', '', '',
                             r['work_gate'], r['consolidation_rule'], r['row_sha256']])
     for cat, key, name, desc, src in copy_bom.PROSE:
@@ -247,6 +251,9 @@ def main(path):
     assert len(keys) == len(set(keys)), 'duplicate card keys'
     # write pack blocks
     text = PACK.read_text(encoding='utf-8')
+    for i, t in copy_dd.TITLES.items():
+        # the dossier cards' See-also titles must name existing cards
+        assert re.search(r"key: 'DCM-%s-[^']*', name: %s" % (i.lower(), re.escape(js(t))), text), (i, t)
     for fam, (tab, *_rest) in FAMILIES.items():
         a, b = f'/* SUPPLEMENT:{tab}:BEGIN */', f'/* SUPPLEMENT:{tab}:END */'
         i, j = text.index(a) + len(a), text.index(b)

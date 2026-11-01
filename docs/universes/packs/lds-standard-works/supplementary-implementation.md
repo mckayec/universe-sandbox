@@ -23,7 +23,8 @@ count of new entities.
 | SC29, SC30, SC33 (apparatus, poetic place views, JST selections); S8-C1/C2 | 31 | **imported, checkpoint 9** | codex tab `ot-more` |
 | SC31, SC32, SC34 (wisdom and Twelve events/journeys/relationships, reading limits, chapter notes); S9-C1 | 59 (21 + 10 + 28; +2 children) | **imported, checkpoint 10** | codex tab `ot-more` |
 | S10-C1–C3; S3-C1 for SD0214 and SD0240 | 6 rows corrected; 31 child views | **checkpoint 11** (S3-C1 open for SD0238 only) | `ot-more`, `nt-more` |
-| SC35–SC45 D&C | 417 | pending | |
+| SC35–SC43 D&C (places, events, teachings, relations, people, ancient participants, dated events) | 277 | **imported, checkpoints 14–17** | codex tab `dc-more` |
+| SC45 D&C section dossiers (DD001–DD138, DDO1–DDO2) | 140 | **DD001–DD070 imported, checkpoint 18**; DD071–DDO2 pending | codex tab `dc-more` |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
 | SC52–SC54 geography models | 11 | pending | |
@@ -771,3 +772,29 @@ Builder readings for ChatGPT:
 Accounting: 1,071 SD rows imported, 200 pending: SC45 140, then SC46–SC54 60 (16 + 13 + 11 + 9 + 3 + 4 + 4). 74 child views (+ the Sarai view). `dc-more` now has 283 cards (244 + 17 + 21 + 1). 1,153 imported mapping rows.
 
 Checks at the code commit: `pnpm format` clean, `pnpm check` 111/111 (new test “Supplementary checkpoint 17”; the S3/S4 child count is now 74; the SC35–SC39 count now also excludes the SC42/SC43 keys), `pnpm check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2. Playwright (SwiftShader, built `dist/` served under `/universe-sandbox/`, page ready in 30–115 s, codex opened and `dc-more` chosen through the DOM, CDP capture), scrolled to the first SC42 card: shots `s17-codex-dc-more-*` at **3840×2160**, 1440×900, 1280×800 and 390×844, no console errors; 283 cards in the DOM at each size, including “Vision in the Kirtland Temple” and the Sarai view (all books shown).
+
+## Supplementary checkpoint 18 — S17-C1/C2 and SC45 section dossiers DD001–DD070
+
+Reviewed [supplementary-review-s17](https://github.com/mckayec/universe-sandbox/blob/58328be138db4fa3ccf941048a7cd057ef5291c3/docs/universes/packs/lds-standard-works/supplementary-review-s17.md) (4696649, count fix 58328be), audited head 1b55cc8. Generation run with `PYTHONDONTWRITEBYTECODE=1`.
+
+- **S17-C1** SD1035 `DCM-dca-john-peter-james`: description replaced with the review's text (the Lord speaks with John the Beloved and then addresses Peter; no John–Peter dialogue). Key, title, sources and `4/dc` gate unchanged.
+- **S17-C2** SD1063 `DCM-de20-word-of-wisdom`: the review's sentence inserted after the Kirtland/date sentence (“The current section heading links Joseph Smith’s inquiry to tobacco use at the meetings and the concern it caused his wife, Emma Smith.”); heading citation, gate and the 1833/later-observance distinction unchanged.
+- **Optional, applied:** the Sarai child `DCM-dca-sarai-abraham` gains a second source “Genesis 17:15” (`ot/gen/17`); SD1041 now reads “lineage, ordination, offering-comparison and vision contexts”; SD1062 now reads “The heading dates section 88 to December 27–28, 1832, and January 3, 1833, at Kirtland; verses 117–141 give these instructions. The participants are not named.”
+
+**SC45 dossiers DD001–DD070 (SD1072–SD1141)** as `DCM-dd<nnn>-` cards in `dc-more` from new `copy_dd.py`, in section order after the SC43 cards. One card per dossier row, titled “Section N: …”, a cited reference for that section and not a new event, place or person. Its text is the section's coverage-ledger row (coverage-dc.md “Coverage ledger”) in reader sentences: the dated setting (with the ledger's precision: month only, “probably”, two dates, heading-supplied dates), every person the ledger row names, the atlas findings, and the row's exclusion or precision boundary as a plain sentence. “See also” names the existing cards the matrix row reuses (DX, DR, DE and DP01/DP03 by their displayed titles; build.py asserts each title against the pack). Source: the one official section link. All `4/dc`, coordinate-free, no date fields.
+
+Builder readings for ChatGPT:
+
+1. **Matrix place codes without their own card** (DP13–DP32, P12, RP01; DJ01, RE/RC/RJ/E09 restoration ids) are not given a See-also; the setting is named in the text as the ledger names it (Harmony, Fayette, Kirtland, Thompson, McIlwaine’s Bend, Chariton …). DD013 names the existing “Harmony / Priesthood Restoration Site” pin for its RE01–02/RC01 reuse.
+2. **Full names.** Where the ledger gives surnames only (e.g. DD052's pairs, “Copley”, “Corrill”, “Coe”), the full name is the one already displayed on accepted cards (SC40 person cards, DR16/DR17); every full name used was checked to occur in the pack before this checkpoint. No name was added that the ledger row does not name.
+3. **DD007** follows the S17-C1 reading (the Lord speaks with John and then addresses Peter), not the ledger's shorthand “John and Peter appear”.
+4. **DD057** keeps the matrix's “temple site distinct” as a sentence (the temple place is distinct from the town); **DD049** keeps the matrix's “exact site unresolved” for the Shaker community; **DD032** keeps “proposed western mission, endpoints unresolved”.
+5. **“Named roles retained in DD; see person-resolution gate”** is honoured by naming the people in the dossier text only; no dossier resolves an identity or creates a person card.
+6. S17's note on **SD1059 / DD072** stands: section 72's distinct content arrives with DD072 in the next tranche.
+
+Accounting: 1,141 SD rows imported, 130 pending: SC45 70 (DD071–DD138, DDO1, DDO2), then SC46–SC54 60 (16 + 13 + 11 + 9 + 3 + 4 + 4). 74 child views. `dc-more` now has 353 cards (283 + 70). 1,223 imported mapping rows.
+
+Checks at the code commit: `pnpm format` clean, `pnpm check` 112/112 (new test “Supplementary checkpoint 18”; the SC35–SC39 count also excludes `dd` keys; the checkpoint 17 test now asserts no SC42/SC43 row pending instead of the overall pending count), `pnpm check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2, coverage/source-witness/reference-disposition validators pass.
+
+
+Playwright (SwiftShader, built `dist/` served under `/universe-sandbox/`, page ready in 121–347 s, codex opened and `dc-more` chosen through the DOM, CDP capture), scrolled to the first dossier card: shots `s18-codex-dc-more-*` at **3840×2160**, 1440×900, 1280×800 and 390×844, no console errors; 353 cards in the DOM at each size, and the section 7 dossier carries the S17-C1 reading. Keyboard, native-select, real-GPU and final same-head rendered evidence remain open.
