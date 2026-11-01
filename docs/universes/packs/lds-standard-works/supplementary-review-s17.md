@@ -38,7 +38,7 @@ SD1059 says the section 72 revelations' distinct content is kept separately, but
 
 ## Source evidence and limits
 
-Targeted official passages/heading bodies were retrieved and inspected on 2026-11-01: D&C 7:1–8; 89 heading/1–3; 81 and 90 headings; 84:6–18; 107:40–57; 124:75; 138:38–46; 2 heading; 88 heading; 94 heading/13–15; Abraham 2:2; Genesis 17:15–19; Exodus 4:14. Thirteen page witnesses, not thirteen newly completed full-section readings. The current sources confirmed the two corrections above and the stated precision decisions. The remaining record comparisons reuse accepted research and earlier audits; they are not a fresh independent full-corpus reading. No raw source capture or invented capture hash is committed. Official scripture establishes textual and editorial claims, not independent historical occurrence. No required source access blocker remains for these two corrections.
+Targeted official passages/heading bodies were retrieved and inspected on 2026-11-01: D&C 7:1–8; 89 heading/1–3; 81 and 90 headings; 84:6–18; 107:40–57; 124:75; 138:38–46; 2 heading; 88 heading; 94 heading/13–15; Abraham 2:2; Genesis 17:15–19; Exodus 4:14. Fourteen page witnesses, not fourteen newly completed full-section readings. The current sources confirmed the two corrections above and the stated precision decisions. The remaining record comparisons reuse accepted research and earlier audits; they are not a fresh independent full-corpus reading. No raw source capture or invented capture hash is committed. Official scripture establishes textual and editorial claims, not independent historical occurrence. No required source access blocker remains for these two corrections.
 
 ## Reproducible checks and counts
 
