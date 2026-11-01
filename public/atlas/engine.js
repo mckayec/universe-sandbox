@@ -478,7 +478,7 @@ function buildShell(K){
 '<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><span class="hint" id="legend"></span>'+
   '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
-  '<div class="cx-tabs" id="cxTabs"></div><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
+  '<div class="cx-tabs" id="cxTabs"></div><select class="cx-pick" id="cxPick" aria-label="Codex section"></select><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
 (K.raw.tree?'<div id="tree" hidden></div>':"")+
 '<div id="splash"><div><svg width="'+(T.splashSize||78)+'" height="'+(T.splashSize||78)+'" viewBox="0 0 48 48" aria-hidden="true">'+ssig+'</svg><h1 class="chrome">'+esc(TT)+'</h1>'+
   (M.splash?'<p>'+esc(M.splash)+'</p>':"")+'<div class="ld" id="splashLd">Charting the galaxy</div></div></div>';
@@ -1300,6 +1300,8 @@ function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1])
 function cxSrc(x){const s=ARR(x.src).filter(r=>r&&r.t);if(!s.length)return"";
   return '<p class="cx-src">Source: '+s.map(r=>/^https:\/\/[^\s"<>]+$/.test(String(r.u||""))?'<a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.t)+'</a>':esc(r.t)).join(" · ")+'</p>';}
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
+  /* narrow screens show the same sections as one compact chooser instead of a wall of stacked tab buttons */
+  $("#cxPick").innerHTML=K.codex.map(t=>'<option value="'+esc(t.id)+'"'+(t.id===cxTab?" selected":"")+'>'+esc(t.t)+'</option>').join("");
   const tab=K.codex.find(t=>t.id===cxTab)||K.codex[0];
   const sp=LY?LY.codexSplit(tab.list,S.layers,S.range,CUM,S.book,cxFirst):null;
   const list=sp?sp.shown:tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=sp?sp.locked:tab.list.length-list.length;const flt=sp?sp.filtered:0;
@@ -1308,6 +1310,7 @@ function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<
     (flt?'<p class="cx-hid">'+flt+' entr'+(flt===1?"y is":"ies are")+' hidden by the layer or year filter.</p>':"");
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
 $("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
+$("#cxPick").addEventListener("change",e=>{cxTab=e.target.value;renderCodex();$("#cxBody").scrollTop=0;});
 function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
 function closeCodex(){if($("#codex").hidden)return;$("#codex").hidden=true;$("#cxBtn").focus();}
 $("#cxBtn").addEventListener("click",openCodex);
@@ -1316,7 +1319,7 @@ $("#codex").addEventListener("click",e=>{if(e.target.id==="codex")closeCodex();}
 /* keep Tab inside the Codex dialog while it is open */
 $("#codex").addEventListener("keydown",e=>{
   if(e.key!=="Tab")return;
-  const f=[...$("#codex").querySelectorAll("button,[href],[tabindex]:not([tabindex='-1'])")].filter(x=>!x.disabled&&x.offsetParent!==null);
+  const f=[...$("#codex").querySelectorAll("button,select,[href],[tabindex]:not([tabindex='-1'])")].filter(x=>!x.disabled&&x.offsetParent!==null);
   if(!f.length)return;const first=f[0],last=f[f.length-1];
   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});

@@ -63,3 +63,19 @@ Screenshots `shots/s1-codex-*`.
 Observed limit (engine, not content): on a 390 px phone the eight codex tab buttons take about half of the dialog
 before the list. Adding the remaining families as more tabs would make that worse; next checkpoint will either fold
 them into existing tabs or switch the tab row to a compact chooser on narrow screens.
+
+## Checkpoint 2 (2026-11-01) — supplementary-review-s1 corrections and phone codex navigation
+
+Applies ChatGPT's [supplementary-review-s1](https://github.com/mckayec/universe-sandbox/blob/e0840462c961181713a8c3fdb03a526ecff66e16/docs/universes/packs/lds-standard-works/supplementary-review-s1.md) at its parent fe24d33. No new SD rows yet (still 111 imported + 7 prose; 1,160 pending).
+
+| Item | Resolution |
+|---|---|
+| S1-C1 (BXJ12 / SD0086) | Edited in `supplementary-build/copy_bom.py` and regenerated, using the review's minimum replacement verbatim: the region “includes the land of Zarahemla and the land between Zarahemla and Bountiful, extending to the line between Bountiful and Desolation”. Sources, gate (`books:[3]`, `layers:['bom']`) and nonspatial form unchanged; mapping CSV display row unchanged apart from regeneration (only BXJ12's pack line and no CSV locator changed for it). |
+| SC04.4 sources | Added `Mosiah 17:1–3` (`bofm/mosiah/17`) between Mosiah 7:9 and Mosiah 27:8; copy unchanged. The CSV prose row's locators now list it. |
+| Mobile tab growth | Engine (`public/atlas/engine.js`, `engine.css`): at ≤600 px the codex tab buttons are replaced by one full-width section chooser (`<select id="cxPick">`, 44 px tall, ellipsis for long titles); wider screens keep the tab buttons unchanged. The chooser is in the dialog's Tab cycle; choosing a section re-renders the list and scrolls it to the top. Applies to every atlas with a codex. |
+
+Regeneration was first confirmed byte-identical at fe24d33 with the same PR34 input (`docs/lds-anchor-review-20261027:…/supplementary-dispositions/declaration-dispositions.csv`), then re-run with the two copy edits; the diff is exactly the BXJ12 and SC04.4 pack lines plus the SC04.4 CSV row.
+
+Checks: `pnpm format`, `pnpm check` (97/97, check:dist 114 files OK), `pnpm test:pages` 13 pages × 2 viewports. Playwright (SwiftShader) at 390×844 touch: chooser shown, tab row hidden, the list starts 105 px below the dialog top (was about half the dialog), all 8 sections offered, selecting “More Book of Mormon…” shows River Laman first and keeps the tab state in sync, Tab stays inside the dialog, Escape closes and returns focus to the Codex button, no console errors. At 1440×900 the tab buttons show as before. Screenshots `shots/s2-codex-390x844.png`, `shots/s2-codex-1440x900.png`. Reverse-Tab order, VoiceOver and real devices are not tested.
+
+Next: SC08 onward, using the chooser instead of adding more stacked tabs.
