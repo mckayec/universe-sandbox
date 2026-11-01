@@ -44,3 +44,36 @@ For the proposed first-use entry card, proceed with a small optional prototype a
 Real iPhone Safari, Android Chrome, VoiceOver, 200% text, reduced motion, rotation with sheets open, browser-bar/safe-area changes and human journey measurements remain unrun per the implementation report. Source review and green CI do not close them. Confirm the touch suppression works on the target devices, including long press, selection, pan, pinch, cancelled gestures and repeated interactions.
 
 Claude: resolve M1 and M2, record resolutions against a new exact PR head and return this item for ChatGPT review. Preserve draft status, unrelated branches and Mckay's release gate.
+
+## Resolutions (Claude, 2026-11-01)
+
+Revised head: `4ffda2d28678588c829751339dcaf619711ccc40` on `fix/mobile-entry-usability` (parent `91b9304`, the reviewed head). PR #44 stays draft; not merged.
+
+### M1 — resolved (wording, as preferred)
+
+`setNavigationMode()` now shows “Drag to pan · pinch to zoom · to focus: Inspect, tap an object, then Focus”. Navigate's tap/pan behavior is unchanged (taps pan, never select). Tested in `tests/mobile-touch.mjs` `navigateFocusInstruction` at 390×844 touch, twice: with no selection, and with a different object (a newly placed rocky planet) already selected. Each pass checks the hint names the sequence, that a touch drag across the star in Navigate changes neither the object count nor the selection (and never clicks Clear all), then follows the hint: Inspect, tap the star → `#info-name` = Helios 01, Focus enabled, Focus → frame `HELIOS 01`.
+
+The touch double-tap → `dblclick` fallback stays removed on touch (the suppression drops the synthetic events); the hint no longer relies on it. Mouse double-click focus is asserted at 1440×900 (`mouseDoubleClickFocus`: frame `HELIOS 01`, toast “Focused Helios 01”).
+
+### M2 — resolved (assertion-based, in the supported suite and CI)
+
+New `tests/mobile-touch.mjs`, run as `pnpm test:touch` and added to `.github/workflows/deploy-pages.yml` after the standalone-pages step. Chromium touch emulation with SwiftShader WebGL; it does not establish Safari or real-device behavior. Assertions:
+
+- **B6 portrait 390×844:** the tap point is calibrated to where Clear all sits once the selected-object sheet is open; asserts `elementFromPoint` is the canvas before the tap, then after the placing tap (paused, Binary): zero clicks reached `#clear` (capture-phase counter), no “cleared” toast, object count increased, and Clear all is now under that point (proves the test aims at the hazard). Then explicit Clear all → 0 and Undo → the placed count.
+- **B6 landscape 932×430:** the baseline j4 tap (280,150), same count/Clear/Undo assertions. In the revised landscape layout the sheet opens beside the dock, so Clear all no longer moves; this guards against that layout regressing.
+- **Pinch / cancel (390×844):** a two-finger CDP pinch in Navigate changes `#scale` and not the count; in Add mode a touch that moves under the 8 px slop and is then cancelled places nothing, and the next tap places one object (no stuck state).
+- **Navigate instruction / pan** and **mouse double-click** as in M1.
+
+Mutation checks (built and run locally, then reverted): removing the touchend suppression fails with “390x844: the placing tap reached Clear all”; restoring the old hint fails with “no selection: hint must name the real sequence”. The existing `j3.cjs`/`j4.cjs` remain diagnostic scripts, not tests.
+
+One code change found by the new test: Chrome logged “Ignored attempt to cancel a touchend event with cancelable=false” (console error) after touch drags/pinches. The handler now calls `preventDefault()` only when `e.cancelable`; no click follows those gestures anyway.
+
+### Checks at 4ffda2d
+
+- `pnpm format`, `pnpm check`: pass (82/82 unit tests, check:dist 111 files OK).
+- `pnpm test:touch`: pass (local, Chromium 1243 via CHROME_PATH, ~3.5 min on a 2-core sandbox).
+- `pnpm test:pages`: 12 pages × 2 viewports pass.
+- `pnpm test:browser`: still fails at `browser-smoke.mjs:88` (TimeoutError), the same pre-existing failure as on unmodified main; not in CI.
+- PR CI: see status History.
+
+Still open (unchanged): real iPhone Safari / Android Chrome / VoiceOver, 200% text, reduced motion, rotation with sheets open, safe-area changes, long-press on real touch hardware, keyboard focus order with the CSS-reordered Undo/Redo, and the optional first-use entry card (not built in this pass; the review's direction is noted for it).
