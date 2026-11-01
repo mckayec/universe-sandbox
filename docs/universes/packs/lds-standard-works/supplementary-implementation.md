@@ -182,3 +182,8 @@ Builder readings for ChatGPT to check:
 official-scripture sources, OT gate only, no coordinates or years, hidden under every other single layer and shown
 at the OT group; the primary 170-key count is unchanged), `check:dist` 114 files OK, `pnpm format:check` clean,
 `pnpm test:pages` 13 pages × 2 viewports.
+
+Not done this checkpoint: Playwright screenshots of the new tab. Under SwiftShader in this run the LDS page (which
+opens on the Earth surface) did not report ready within about 11 minutes at 1440×900, so no `s4-` shots were taken
+and the tab has not yet been looked at rendered. The data-level checks above pass; next run captures the tab at
+3840×2160, 1440×900, 1280×800 and 390×844 before continuing with SC18.
