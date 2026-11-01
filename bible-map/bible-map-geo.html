@@ -196,12 +196,14 @@
     font-size:13px;
     color:var(--ink);
     line-height:1.4;
-    max-width:200px;
+    width:max-content;
+    max-width:min(240px, 78vw);
     opacity:0;
     transform:translate(-50%,-100%);
     transition:opacity 0.12s ease;
     z-index:20;
-    white-space:nowrap;
+    white-space:normal;
+    overflow-wrap:anywhere;
   }
   .map-tooltip.show{ opacity:1; }
   .map-tooltip .tt-title{
@@ -503,7 +505,7 @@ const ERAS = [
   { id:'conquest',   name:'Conquest & Judges', range:'c. 1400–1050 BC', color:'#a6752c',
     blurb:'Joshua leads Israel into Canaan; the tribes settle the land under a series of judges.' },
   { id:'kingdom-united', name:'United Kingdom', range:'c. 1050–930 BC', color:'#c0932f',
-    blurb:'Saul, David, and Solomon rule a single kingdom from Jerusalem.' },
+    blurb:'Saul, David, and Solomon rule a united Israel; David reigns from Hebron, then makes Jerusalem his capital (2 Samuel 5).' },
   { id:'kingdom-divided', name:'Divided Kingdom', range:'c. 930–586 BC', color:'#9c5b2e',
     blurb:'The kingdom splits into Israel (north) and Judah (south); Assyria and Babylon rise.' },
   { id:'exile',      name:'Exile',             range:'586–538 BC', color:'#5b4636',
@@ -525,9 +527,9 @@ const PLACES = [
   { name:'Ur', x:907.4, y:286.6, lat:30.9626, lng:46.1088, eras:['patriarchs'],
     blurb:'The Mesopotamian city Abraham left behind at God\u2019s call to journey toward Canaan.' },
   { name:'Haran', x:738.8, y:146.2, lat:36.86, lng:39.03, eras:['patriarchs'],
-    blurb:'A way-station where Abraham\u2019s family settled for a time before he continued on alone.' },
-  { name:'Shechem', x:649.5, y:256.8, lat:32.2136, lng:35.2778, eras:['patriarchs','conquest'],
-    blurb:'Abraham\u2019s first stop in Canaan; centuries later, where Joshua renewed Israel\u2019s covenant.' },
+    blurb:'Where Terah\u2019s family settled on the way to Canaan; Abram later left with Sarai, Lot, and their household (Genesis 11:31\u201312:5).' },
+  { name:'Shechem', x:649.5, y:256.8, lat:32.2136, lng:35.2778, eras:['patriarchs','conquest','jesus'],
+    blurb:'Abraham\u2019s first stop in Canaan; centuries later, where Joshua renewed Israel\u2019s covenant. Nearby Sychar, in Samaria, is where Jesus spoke with a Samaritan woman at Jacob\u2019s well (John 4).' },
   { name:'Bethel', x:648.2, y:263.6, lat:31.9306, lng:35.2261, eras:['patriarchs'],
     blurb:'Where Jacob dreamed of a stairway reaching to heaven.' },
   { name:'Hebron', x:645.2, y:273.0, lat:31.5326, lng:35.0998, eras:['patriarchs','kingdom-united'],
@@ -565,11 +567,27 @@ const PLACES = [
   { name:'Caesarea', x:640.5, y:250.0, lat:32.5, lng:34.9, eras:['apostolic'],
     blurb:'A Roman administrative port city, and the place Paul was held before his voyage to Rome.' },
   { name:'Antioch', x:670.5, y:161.0, lat:36.2, lng:36.16, eras:['apostolic'],
-    blurb:'Where believers were first called Christians, and the launch point for Paul\u2019s missionary journeys.' },
+    blurb:'Syrian Antioch, where believers were first called Christians, and the launch point for Paul\u2019s missionary journeys.' },
   { name:'Salamis, Cyprus', x:616.7, y:185.2, lat:35.185, lng:33.9, eras:['apostolic'],
-    blurb:'The first stop of Paul\u2019s first missionary journey.' },
+    blurb:'The first stop on Cyprus during Paul\u2019s first missionary journey (Acts 13:5).' },
+  { name:'Paphos', x:581.2, y:196.3, lat:34.7556, lng:32.4106, eras:['apostolic'],
+    blurb:'Cyprus\u2019s Roman capital, where Paul met the proconsul Sergius Paulus (Acts 13:6\u201312).' },
+  { name:'Perga', x:544.1, y:143.8, lat:36.9608, lng:30.8539, eras:['apostolic'],
+    blurb:'A city in Pamphylia where John Mark left Paul and Barnabas (Acts 13:13).' },
+  { name:'Pisidian Antioch', x:552.1, y:111.7, lat:38.3097, lng:31.1892, eras:['apostolic'],
+    blurb:'An Asia Minor city (not Syrian Antioch) where Paul preached in the synagogue (Acts 13:14\u201350).' },
+  { name:'Iconium', x:583.2, y:122.0, lat:37.8746, lng:32.4932, eras:['apostolic'],
+    blurb:'Where Paul and Barnabas stayed a long time preaching before being driven out (Acts 14:1\u20137).' },
+  { name:'Lystra', x:582.1, y:129.0, lat:37.5833, lng:32.45, eras:['apostolic'],
+    blurb:'Where Paul healed a lame man and was later stoned (Acts 14:8\u201320).' },
+  { name:'Derbe', x:604.0, y:134.5, lat:37.35, lng:33.37, eras:['apostolic'],
+    blurb:'The farthest stop of the first journey, where many became disciples (Acts 14:20\u201321).' },
+  { name:'Attalia', x:540.6, y:145.6, lat:36.8841, lng:30.7056, eras:['apostolic'],
+    blurb:'The Pamphylian port from which Paul and Barnabas sailed back to Syrian Antioch (Acts 14:25\u201326).' },
+  { name:'Troas', x:431.9, y:77.2, lat:39.7575, lng:26.1394, eras:['apostolic'],
+    blurb:'The port where Paul saw the vision of a man of Macedonia and sailed for Europe (Acts 16:8\u201311).' },
   { name:'Ephesus', x:460.5, y:119.1, lat:37.9495, lng:27.3417, eras:['apostolic'],
-    blurb:'A major city of Paul\u2019s ministry, and recipient of one of his letters.' },
+    blurb:'A major city of Paul\u2019s ministry. He made a brief stop here on his second journey (Acts 18:19\u201321), and later stayed about two years and three months (Acts 19:8\u201310).' },
   { name:'Thessalonica', x:355.8, y:56.2, lat:40.6401, lng:22.9444, eras:['apostolic'],
     blurb:'A Macedonian city Paul visited on his journey through Greece, and recipient of two of his letters.' },
   { name:'Athens', x:374.5, y:118.3, lat:37.9838, lng:23.7275, eras:['apostolic'],
@@ -591,10 +609,10 @@ const PLACE_MAP = Object.fromEntries(PLACES.map(p => [p.name, p]));
    given instead (used when the gap represents years, not a march). */
 const JOURNEYS = [
   { id:'abraham', name:"Abraham's Journey to Canaan", color:'#8a6d3b',
-    note:'Abraham leaves Ur at God\u2019s call, pauses in Haran, then travels through the land of Canaan.',
+    note:'Abram\u2019s family leaves Ur with his father Terah and settles in Haran; Abram then travels on with Sarai, Lot, and their household into Canaan (Genesis 11:31\u201312:5).',
     stops:[
-      { name:'Ur', stay:null },
-      { name:'Haran', stay:'An extended stay before continuing on \u2014 Scripture doesn\u2019t give an exact duration.' },
+      { name:'Ur', stay:'Set out from here with Terah, Sarai, and Lot (Genesis 11:31).' },
+      { name:'Haran', stay:'The family settled here for a time; Scripture doesn\u2019t give an exact duration. Abram left with Sarai, Lot, and their household (Genesis 12:4\u20135).' },
       { name:'Shechem', stay:'A brief stop; Abraham built an altar here.' },
       { name:'Bethel', stay:'A brief camp before moving toward the Negev.' },
       { name:'Hebron', stay:'Settled here long-term in his later years.' },
@@ -627,10 +645,10 @@ const JOURNEYS = [
     stops:[
       { name:'Bethlehem', stay:'Born here; the family soon relocated to Nazareth.' },
       { name:'Nazareth', stay:'Grew up here roughly three decades before starting his public ministry (Luke 3:23).' },
-      { name:'Capernaum', stay:'Became his ministry base for about three years.' },
+      { name:'Capernaum', stay:'He moved here from Nazareth (Matthew 4:13) and it became a base for his ministry; Scripture doesn\u2019t give how long he lived there.' },
       { name:'Tyre', stay:'A brief withdrawal into the region (Mark 7:24).' },
-      { name:'Samaria', stay:'Passed through.' },
-      { name:'Jericho', stay:'Passed through on the final journey to Jerusalem.' },
+      { name:'Shechem', label:'Samaria (Sychar area)', stay:'Refers to the region of Samaria and the town of Sychar, not the city of Samaria. He passed through Samaria and met a woman at Jacob\u2019s well near Sychar (John 4:4\u20136). Shown at nearby Shechem.' },
+      { name:'Jericho', stay:'Passed through on the way up to Jerusalem.' },
       { name:'Jerusalem', stay:'The final week of his ministry \u2014 his death and resurrection.' },
     ],
     legs:[
@@ -646,25 +664,41 @@ const JOURNEYS = [
     ],
     legs:[ { mode:'land' } ]},
   { id:'paul-first', name:"Paul's First Missionary Journey", color:'#c0602c',
-    note:'Paul and Barnabas sail from Antioch to Cyprus and back.',
+    note:'Paul and Barnabas sail from Syrian Antioch to Cyprus, cross into Asia Minor, preach through Galatia, then retrace their steps and sail home from Attalia (Acts 13\u201314). Straight lines simplify the actual roads and sea lanes.',
     stops:[
       { name:'Antioch', stay:null },
-      { name:'Salamis, Cyprus', stay:'Preached across the island; Acts doesn\u2019t give an exact duration.' },
-      { name:'Antioch', stay:'Returned to report to the church that sent them.' },
+      { name:'Salamis, Cyprus', stay:'Preached in the synagogues (Acts 13:5); Acts doesn\u2019t give a duration.' },
+      { name:'Paphos', stay:'Met the proconsul Sergius Paulus (Acts 13:6\u201312).' },
+      { name:'Perga', stay:'John Mark left them here (Acts 13:13).' },
+      { name:'Pisidian Antioch', stay:'Preached in the synagogue until driven out (Acts 13:14\u201350).' },
+      { name:'Iconium', stay:'Stayed a long time before leaving under threat (Acts 14:3\u20136).' },
+      { name:'Lystra', stay:'Healed a lame man; Paul was stoned (Acts 14:8\u201320).' },
+      { name:'Derbe', stay:'Preached and made many disciples (Acts 14:20\u201321).' },
+      { name:'Lystra', stay:'Return visit: strengthened the disciples (Acts 14:21\u201322).' },
+      { name:'Iconium', stay:'Return visit: appointed elders in each church (Acts 14:21\u201323).' },
+      { name:'Pisidian Antioch', stay:'Return visit (Acts 14:21).' },
+      { name:'Perga', stay:'Preached the word here on the way back (Acts 14:25).' },
+      { name:'Attalia', stay:'Sailed from here for Syrian Antioch (Acts 14:25\u201326).' },
+      { name:'Antioch', stay:'Reported to the church that sent them, then stayed there some time (Acts 14:26\u201328).' },
     ],
-    legs:[ { mode:'sea' }, { mode:'sea' } ]},
+    legs:[
+      { mode:'sea' }, { mode:'land' }, { mode:'sea' }, { mode:'land' }, { mode:'land' }, { mode:'land' }, { mode:'land' },
+      { mode:'land' }, { mode:'land' }, { mode:'land' }, { mode:'land' }, { mode:'land' }, { mode:'sea' },
+    ]},
   { id:'paul-greece', name:'Paul in Macedonia & Greece', color:'#9c4a2e',
-    note:'Paul carries the gospel into Europe, from Antioch through Macedonia and into Greece.',
+    note:'Paul\u2019s second journey (Acts 15:40\u201318:22): overland through Asia Minor to Troas, by sea to Macedonia, then through Greece and back across the Aegean.',
     stops:[
       { name:'Antioch', stay:null },
-      { name:'Philippi', stay:'A short but eventful stay \u2014 imprisoned, then released (Acts 16).' },
+      { name:'Lystra', stay:'Passed through Derbe and Lystra, where Timothy joined him (Acts 16:1\u20133).' },
+      { name:'Troas', stay:'Saw the vision of a man of Macedonia and sailed for Europe (Acts 16:8\u201310).' },
+      { name:'Philippi', stay:'Sailed via Samothrace to Neapolis, then reached Philippi; remained \u201csome days\u201d (Acts 16:11\u201312). Imprisoned, then released.' },
       { name:'Thessalonica', stay:'Reasoned in the synagogue over three Sabbaths (Acts 17:2).' },
       { name:'Athens', stay:'A brief stay, addressing the Areopagus.' },
       { name:'Corinth', stay:'A year and six months (Acts 18:11).' },
-      { name:'Ephesus', stay:'About three years total across his visits (Acts 20:31).' },
+      { name:'Ephesus', stay:'Only a short visit on this journey: he reasoned in the synagogue, declined to stay longer, and promised to return (Acts 18:19\u201321). His long stay \u2014 three months in the synagogue and two years in the hall of Tyrannus \u2014 came on a later journey (Acts 19:8\u201310).' },
     ],
     legs:[
-      { mode:'sea' }, { mode:'land' }, { mode:'land' }, { mode:'land' }, { mode:'sea' },
+      { mode:'land' }, { mode:'land' }, { mode:'sea' }, { mode:'land' }, { mode:'land' }, { mode:'land' }, { mode:'sea' },
     ]},
   { id:'paul-rome', name:"Paul's Journey to Rome", color:'#6e2f2a',
     note:'As a prisoner, Paul is shipwrecked at Malta on his way to trial in Rome.',
@@ -713,20 +747,43 @@ function el(tag, attrs){
 
 // pan/zoom viewport
 let vb = { x:0, y:0, w:1000, h:500 };
-const pinScaleTargets = [];   // {x,y,group} pins, rescaled on zoom
-const badgeScaleTargets = []; // {x,y,group} journey stop badges, rescaled on zoom
-const arrowScaleTargets = []; // {x,y,angle,group} journey arrowheads, rescaled on zoom
-function applyViewBox(){
-  svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
-  rescaleUI();
+const pinScaleTargets = [];   // {x,y,group} pins
+const badgeScaleTargets = []; // {x,y,dx,group} journey stop badges
+const arrowScaleTargets = []; // {x,y,angle,group} journey arrowheads
+
+// The svg uses preserveAspectRatio "meet", so the viewBox is letterboxed inside
+// the element. All screen<->map math therefore goes through the real screen CTM.
+function screenScale(){
+  const m = svg.getScreenCTM();
+  return m && m.a > 0 ? m.a : 1;           // CSS px per map unit (uniform under "meet")
 }
+function clientToMap(cx, cy){
+  const m = svg.getScreenCTM();
+  if(!m) return { x: vb.x + vb.w/2, y: vb.y + vb.h/2 };
+  const p = new DOMPoint(cx, cy).matrixTransform(m.inverse());
+  return { x:p.x, y:p.y };
+}
+function mapToClient(x, y){
+  const m = svg.getScreenCTM();
+  if(!m) return { x:0, y:0 };
+  const p = new DOMPoint(x, y).matrixTransform(m);
+  return { x:p.x, y:p.y };
+}
+function setViewBoxAttr(){ svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`); }
+function applyViewBox(){ setViewBoxAttr(); rescaleUI(); }
+
+// Markers keep a constant on-screen size: counter-scale by the real screen scale.
 function rescaleUI(){
-  const scale = vb.w / 1000; // keeps markers/labels a constant screen size at any zoom
-  pinScaleTargets.forEach(t=> t.group.setAttribute('transform', `translate(${t.x},${t.y}) scale(${scale})`));
-  badgeScaleTargets.forEach(t=> t.group.setAttribute('transform', `translate(${t.x},${t.y}) scale(${scale}) translate(-13,-16)`));
-  arrowScaleTargets.forEach(t=> t.group.setAttribute('transform', `translate(${t.x},${t.y}) rotate(${t.angle}) scale(${scale})`));
+  const k = 1 / screenScale();
+  pinScaleTargets.forEach(t=> t.group.setAttribute('transform', `translate(${t.x},${t.y}) scale(${k})`));
+  badgeScaleTargets.forEach(t=> t.group.setAttribute('transform', `translate(${t.x},${t.y}) scale(${k}) translate(${t.dx-13},-16)`));
+  // arrowhead tip sits 8 screen px short of the stop so it doesn't hide under the pin
+  arrowScaleTargets.forEach(t=> t.group.setAttribute('transform', `translate(${t.x},${t.y}) rotate(${t.angle}) scale(${k}) translate(-8,0)`));
+  if(typeof positionTip === 'function') positionTip();
 }
 applyViewBox();
+if(window.ResizeObserver) new ResizeObserver(()=> rescaleUI()).observe(svg);
+window.addEventListener('resize', rescaleUI);
 
 // background (clicking empty water/land deselects the current place)
 const bgRect = el('rect', {x:-2000, y:-2000, width:6000, height:6000, fill:'#5c8079'});
@@ -785,7 +842,7 @@ function colorFor(p){
     ? 'var(--dot-nt)' : 'var(--dot-ot)';
 }
 PLACES.forEach(p=>{
-  const g = el('g', {class:'pin', 'data-name':p.name, transform:`translate(${p.x},${p.y}) scale(1)`});
+  const g = el('g', {class:'pin', 'data-name':p.name, transform:`translate(${p.x},${p.y})`});
   const halo = el('circle', {class:'halo', cx:0, cy:0, r:7});
   const ring = el('circle', {class:'ring', cx:0, cy:0, r:9.5});
   const dot = el('circle', {class:'dot', cx:0, cy:0, r:5.5, fill: colorFor(p)});
@@ -800,133 +857,176 @@ PLACES.forEach(p=>{
   pinEls[p.name] = g;
   pinScaleTargets.push({x:p.x, y:p.y, group:g});
 });
+rescaleUI();
 
 /* ---------------- Tooltip ---------------- */
+// One state object keeps identity (key), content, pin state and anchor together.
+// The anchor is stored in MAP coordinates so a pinned tooltip follows pan/zoom.
 
 const mapWrap = document.getElementById('mapWrap');
 const tooltip = document.getElementById('tooltip');
-let tooltipPinned = false;
+var tip = { key:null, pinned:false, title:'', html:'', anchor:null };
 
-function positionTooltip(clientX, clientY){
+function positionTip(){
+  if(!tip || !tip.key || !tip.anchor) return; // rescaleUI runs once before tip exists
+  const c = mapToClient(tip.anchor.x, tip.anchor.y);
   const rect = mapWrap.getBoundingClientRect();
-  tooltip.style.left = (clientX - rect.left) + 'px';
-  tooltip.style.top = (clientY - rect.top - 12) + 'px';
+  const w = tooltip.offsetWidth, h = tooltip.offsetHeight;
+  const left = Math.min(Math.max(c.x - rect.left, w/2 + 4), Math.max(w/2 + 4, rect.width - w/2 - 4));
+  const top = Math.max(c.y - rect.top - 12, h + 4);
+  tooltip.style.left = left + 'px';
+  tooltip.style.top = top + 'px';
 }
-function showTooltip(evt, titleText, bodyHtml){
-  tooltip.innerHTML = `<span class="tt-title">${titleText}</span>${bodyHtml}`;
-  positionTooltip(evt.clientX, evt.clientY);
+function renderTip(){
+  tooltip.innerHTML = `<span class="tt-title">${tip.title}</span>${tip.html}`;
   tooltip.classList.add('show');
+  positionTip();
 }
-function hideTooltip(){
-  if(tooltipPinned) return;
+function clearTip(){
+  tip.key = null; tip.pinned = false; tip.anchor = null;
   tooltip.classList.remove('show');
 }
+// mouse hover: shows a transient tip, but never replaces a pinned one
+function hoverTip(key, title, html, evt){
+  if(tip.pinned) return;
+  tip.key = key; tip.title = title; tip.html = html;
+  tip.anchor = clientToMap(evt.clientX, evt.clientY);
+  renderTip();
+}
+function hoverEnd(){ if(!tip.pinned) clearTip(); }
+// click / tap: pin this tip, or unpin if it is already the pinned one
+function toggleTip(key, title, html, evt){
+  if(tip.pinned && tip.key === key){ clearTip(); return; }
+  tip.key = key; tip.pinned = true; tip.title = title; tip.html = html;
+  tip.anchor = clientToMap(evt.clientX, evt.clientY);
+  renderTip();
+}
 mapWrap.addEventListener('click', (e)=>{
-  if(e.target === svg || e.target === bgRect || e.target.closest('.land-path')){
-    tooltipPinned = false;
-    tooltip.classList.remove('show');
-  }
+  if(e.target === svg || e.target === bgRect || e.target.closest('.land-path')) clearTip();
 });
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') clearTip(); });
 
 /* ---------------- Pan & zoom (pointer events: mouse, touch, pen) ---------------- */
 
 svg.style.touchAction = 'none';
 
-function zoomAt(factor, cx, cy){
+// Zoom by `factor` (<1 zooms in) keeping the map point under (cx,cy) fixed on screen.
+function zoomAtClient(factor, cx, cy){
+  const before = clientToMap(cx, cy);
   const nw = Math.max(6, Math.min(1400, vb.w * factor));
   const ratio = nw / vb.w;
-  vb.x = cx - (cx - vb.x) * ratio;
-  vb.y = cy - (cy - vb.y) * ratio;
-  vb.w = nw;
-  vb.h = vb.h * ratio;
+  vb.w *= ratio; vb.h *= ratio;
+  setViewBoxAttr();
+  const after = clientToMap(cx, cy);
+  vb.x += before.x - after.x;
+  vb.y += before.y - after.y;
+  applyViewBox();
+}
+function panByClient(dx, dy){
+  const s = screenScale();
+  vb.x -= dx / s; vb.y -= dy / s;
   applyViewBox();
 }
 
-const activePointers = new Map(); // id -> {x,y} in client coords
-let panLast = null;               // client {x,y} while single-pointer dragging
-let pinchDist = null;             // previous two-finger distance
-let pinchMid = null;              // previous two-finger midpoint (client)
+const DRAG_THRESHOLD = 6;           // px of movement before a press becomes a drag
+const pointers = new Map();         // id -> {sx,sy,x,y,dragging}
+let pinch = null;                   // {dist, mid}
+let suppressClick = false;
 
 function dist(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
 function mid(a,b){ return {x:(a.x+b.x)/2, y:(a.y+b.y)/2}; }
+function twoPoints(){ return [...pointers.values()].slice(0,2); }
 
+// Listens on the whole svg, so presses that start on pins, badges, or route lines
+// can also pan/pinch. A press that never moves past the threshold stays a tap.
 svg.addEventListener('pointerdown', (e)=>{
-  // let taps on pins, journey badges, and journey arrows fire their own
-  // click handlers untouched — only the empty map should pan/zoom
-  if(e.target.closest('.pin, .journey-badge, .journey-hit')) return;
-  svg.setPointerCapture(e.pointerId);
-  activePointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
-  if(activePointers.size === 1){
-    panLast = {x:e.clientX, y:e.clientY};
+  if(e.pointerType === 'mouse' && e.button !== 0) return;
+  suppressClick = false;
+  pointers.set(e.pointerId, {sx:e.clientX, sy:e.clientY, x:e.clientX, y:e.clientY, dragging:false});
+  if(pointers.size === 2){
+    const [a,b] = twoPoints();
+    pinch = { dist: dist(a,b), mid: mid(a,b) };
+    suppressClick = true;
+    pointers.forEach((_,id)=>{ try{ svg.setPointerCapture(id); }catch(_){} });
+    pointers.forEach(p=> p.dragging = true);
     svg.classList.add('grabbing');
-  } else if(activePointers.size === 2){
-    panLast = null;
-    const pts = [...activePointers.values()];
-    pinchDist = dist(pts[0], pts[1]);
-    pinchMid = mid(pts[0], pts[1]);
   }
 });
 
 svg.addEventListener('pointermove', (e)=>{
-  if(!activePointers.has(e.pointerId)) return;
-  activePointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
-  const rect = svg.getBoundingClientRect();
+  const p = pointers.get(e.pointerId);
+  if(!p) return;
+  const lastX = p.x, lastY = p.y;
+  p.x = e.clientX; p.y = e.clientY;
 
-  if(activePointers.size === 1 && panLast){
-    const scaleX = vb.w / rect.width, scaleY = vb.h / rect.height;
-    vb.x -= (e.clientX - panLast.x) * scaleX;
-    vb.y -= (e.clientY - panLast.y) * scaleY;
-    panLast = {x:e.clientX, y:e.clientY};
-    applyViewBox();
-  } else if(activePointers.size >= 2){
-    const pts = [...activePointers.values()].slice(0,2);
-    const newDist = dist(pts[0], pts[1]);
-    const newMid = mid(pts[0], pts[1]);
-    if(pinchDist){
-      const factor = pinchDist / newDist;
-      const px = vb.x + (newMid.x - rect.left)/rect.width * vb.w;
-      const py = vb.y + (newMid.y - rect.top)/rect.height * vb.h;
-      zoomAt(factor, px, py);
-    }
-    if(pinchMid){
-      const scaleX = vb.w / rect.width, scaleY = vb.h / rect.height;
-      vb.x -= (newMid.x - pinchMid.x) * scaleX;
-      vb.y -= (newMid.y - pinchMid.y) * scaleY;
+  if(pointers.size >= 2 && pinch){
+    const [a,b] = twoPoints();
+    const nd = dist(a,b), nm = mid(a,b);
+    if(nd > 0 && pinch.dist > 0){
+      // keep the map point that was under the OLD midpoint under the NEW midpoint
+      const before = clientToMap(pinch.mid.x, pinch.mid.y);
+      const nw = Math.max(6, Math.min(1400, vb.w * (pinch.dist / nd)));
+      const ratio = nw / vb.w;
+      vb.w *= ratio; vb.h *= ratio;
+      setViewBoxAttr();
+      const after = clientToMap(nm.x, nm.y);
+      vb.x += before.x - after.x;
+      vb.y += before.y - after.y;
       applyViewBox();
     }
-    pinchDist = newDist;
-    pinchMid = newMid;
+    pinch = { dist: nd, mid: nm };
+    return;
   }
+
+  if(!p.dragging){
+    if(Math.hypot(p.x - p.sx, p.y - p.sy) < DRAG_THRESHOLD) return;
+    p.dragging = true;
+    suppressClick = true;
+    try{ svg.setPointerCapture(e.pointerId); }catch(_){}
+    svg.classList.add('grabbing');
+    // pan from the point where the drag began, so there is no visible jump
+    panByClient(p.x - p.sx, p.y - p.sy);
+    return;
+  }
+  panByClient(p.x - lastX, p.y - lastY);
 });
 
 function endPointer(e){
-  activePointers.delete(e.pointerId);
-  if(activePointers.size >= 2){
-    const pts = [...activePointers.values()].slice(0,2);
-    pinchDist = dist(pts[0], pts[1]);
-    pinchMid = mid(pts[0], pts[1]);
-    panLast = null;
-  } else if(activePointers.size === 1){
-    panLast = [...activePointers.values()][0];
-    pinchDist = null; pinchMid = null;
+  if(!pointers.has(e.pointerId)) return;
+  pointers.delete(e.pointerId);
+  try{ svg.releasePointerCapture(e.pointerId); }catch(_){}
+  if(pointers.size >= 2){
+    const [a,b] = twoPoints();
+    pinch = { dist: dist(a,b), mid: mid(a,b) };
   } else {
-    panLast = null; pinchDist = null; pinchMid = null;
-    svg.classList.remove('grabbing');
+    pinch = null;
+    // the remaining finger continues as a pan from where it is now
+    pointers.forEach(p=>{ p.sx = p.x; p.sy = p.y; p.dragging = true; });
+    if(pointers.size === 0) svg.classList.remove('grabbing');
   }
+  // the click that follows a drag/pinch release fires right after pointerup
+  setTimeout(()=>{ suppressClick = false; }, 0);
 }
 svg.addEventListener('pointerup', endPointer);
 svg.addEventListener('pointercancel', endPointer);
+svg.addEventListener('lostpointercapture', endPointer);
+
+// swallow the click that ends a drag or pinch so it doesn't select a pin or toggle a tip
+svg.addEventListener('click', (e)=>{
+  if(suppressClick){ e.stopPropagation(); e.preventDefault(); }
+}, true);
 
 svg.addEventListener('wheel', (e)=>{
   e.preventDefault();
-  const rect = svg.getBoundingClientRect();
-  const px = vb.x + (e.clientX - rect.left)/rect.width * vb.w;
-  const py = vb.y + (e.clientY - rect.top)/rect.height * vb.h;
-  zoomAt(e.deltaY > 0 ? 1.12 : 0.89, px, py);
+  zoomAtClient(e.deltaY > 0 ? 1.12 : 0.89, e.clientX, e.clientY);
 }, { passive:false });
 
-document.getElementById('zoomIn').addEventListener('click', ()=> zoomAt(0.8, vb.x+vb.w/2, vb.y+vb.h/2));
-document.getElementById('zoomOut').addEventListener('click', ()=> zoomAt(1.25, vb.x+vb.w/2, vb.y+vb.h/2));
+function zoomCentre(factor){
+  const r = svg.getBoundingClientRect();
+  zoomAtClient(factor, r.left + r.width/2, r.top + r.height/2);
+}
+document.getElementById('zoomIn').addEventListener('click', ()=> zoomCentre(0.8));
+document.getElementById('zoomOut').addEventListener('click', ()=> zoomCentre(1.25));
 document.getElementById('zoomReset').addEventListener('click', ()=>{ vb = {x:0,y:0,w:1000,h:500}; applyViewBox(); });
 
 function flyTo(targetVb){
@@ -975,9 +1075,14 @@ ERAS.forEach(era=>{
   eraTabEls[era.id] = tab;
 });
 
+function syncSelection(){
+  Object.entries(pinEls).forEach(([name,g])=> g.classList.toggle('selected', name === state.place));
+}
+
 function setEra(eraId){
   state.era = eraId;
   state.place = null;
+  syncSelection();
   [...timelineInner.children].forEach(c=>c.classList.remove('active'));
   (eraId ? eraTabEls[eraId] : allTab).classList.add('active');
   applyDimming();
@@ -1007,11 +1112,11 @@ journeyClearBtn.addEventListener('click', ()=> setJourney(null));
 function setJourney(journeyId){
   state.journey = journeyId;
   state.place = null;
+  syncSelection();
   journeySelect.value = journeyId || '';
   journeyClearBtn.classList.toggle('show', !!journeyId);
   journeyHint.classList.toggle('show', !!journeyId);
-  tooltipPinned = false;
-  tooltip.classList.remove('show');
+  clearTip();
   drawJourney(journeyId);
   renderPanel();
   if(journeyId){
@@ -1024,7 +1129,7 @@ function setJourney(journeyId){
 
 // compute leg info (distance + estimate or override) once per journey
 function computeLegs(j){
-  const pts = j.stops.map(s => PLACE_MAP[s.name]).filter(Boolean);
+  const pts = j.stops.map(s => PLACE_MAP[s.name]);
   return j.legs.map((leg, i)=>{
     const a = pts[i], b = pts[i+1];
     if(!a || !b) return null;
@@ -1036,33 +1141,37 @@ function computeLegs(j){
   });
 }
 
+function stopLabel(j, i){ return j.stops[i].label || j.stops[i].name; }
+
 function drawJourney(journeyId){
   gJourney.innerHTML = '';
   badgeScaleTargets.length = 0;
   arrowScaleTargets.length = 0;
   if(!journeyId) return;
   const j = JOURNEY_MAP[journeyId];
-  const pts = j.stops.map(s => PLACE_MAP[s.name]).filter(Boolean);
+  const pts = j.stops.map(s => PLACE_MAP[s.name]);
   const legInfo = computeLegs(j);
-  const scale = vb.w / 1000;
+  const bendByPair = new Map(); // a route retraced in reverse bends the same way, so it lands on the other side
 
   for(let i=0; i<pts.length-1; i++){
     const a = pts[i], b = pts[i+1];
+    if(!a || !b) continue;
     const mx = (a.x+b.x)/2, my = (a.y+b.y)/2;
     const dx = b.x-a.x, dy = b.y-a.y;
     const len = Math.hypot(dx,dy) || 1;
-    const bend = Math.min(len*0.18, 40) * (i % 2 === 0 ? 1 : -1);
+    const pairKey = [a.name,b.name].sort().join('|');
+    const sign = bendByPair.has(pairKey) ? bendByPair.get(pairKey) : (i % 2 === 0 ? 1 : -1);
+    bendByPair.set(pairKey, sign);
+    const bend = Math.min(len*0.18, 40) * sign;
     const cx = mx + (-dy/len) * bend;
     const cy = my + (dx/len) * bend;
     const d = `M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`;
 
-    const path = el('path', { class:'journey-path', d, stroke:j.color });
-    gJourney.appendChild(path);
+    gJourney.appendChild(el('path', { class:'journey-path', d, stroke:j.color }));
 
-    // manually-drawn arrowhead, kept a constant screen size at any zoom
-    // (an SVG <marker> would scale with the path's local coordinate system)
+    // manually-drawn arrowhead, kept a constant screen size (rescaleUI sets its transform)
     const angle = Math.atan2(b.y - cy, b.x - cx) * 180 / Math.PI;
-    const arrow = el('g', { class:'journey-arrowhead', transform:`translate(${b.x},${b.y}) rotate(${angle}) scale(${scale})` });
+    const arrow = el('g', { class:'journey-arrowhead' });
     arrow.appendChild(el('path', { d:'M 0 0 L -11 -4.5 L -7.5 0 L -11 4.5 Z', fill:j.color }));
     gJourney.appendChild(arrow);
     arrowScaleTargets.push({x:b.x, y:b.y, angle, group:arrow});
@@ -1070,41 +1179,39 @@ function drawJourney(journeyId){
     // wide invisible hit-path for easy hover/tap, carries the tooltip
     const info = legInfo[i];
     const hit = el('path', { class:'journey-hit', d });
-    const legLabel = `${a.name} \u2192 ${b.name}`;
-    const showLegTip = (evt)=> showTooltip(evt, legLabel, `<div>${info.text}</div>`);
-    hit.addEventListener('pointerenter', showLegTip);
-    hit.addEventListener('pointermove', showLegTip);
-    hit.addEventListener('pointerleave', hideTooltip);
-    hit.addEventListener('click', (evt)=>{
-      evt.stopPropagation();
-      tooltipPinned = !tooltipPinned || tooltip.dataset.key !== `leg-${i}`;
-      tooltip.dataset.key = `leg-${i}`;
-      if(tooltipPinned) showLegTip(evt); else hideTooltip();
-    });
+    const key = `leg-${i}`;
+    const title = `${stopLabel(j,i)} \u2192 ${stopLabel(j,i+1)}`;
+    const html = `<div>${info.text}</div>`;
+    hit.addEventListener('pointerenter', (evt)=>{ if(evt.pointerType === 'mouse') hoverTip(key, title, html, evt); });
+    hit.addEventListener('pointermove',  (evt)=>{ if(evt.pointerType === 'mouse') hoverTip(key, title, html, evt); });
+    hit.addEventListener('pointerleave', (evt)=>{ if(evt.pointerType === 'mouse') hoverEnd(); });
+    hit.addEventListener('click', (evt)=>{ evt.stopPropagation(); toggleTip(key, title, html, evt); });
     gJourney.appendChild(hit);
   }
 
-  // numbered stop badges, carrying the "stay" tooltip
+  // numbered stop badges, carrying the "stay" tooltip; a revisited place gets a sideways offset
+  const seen = {};
   pts.forEach((p, i)=>{
-    const badge = el('g', {class:'journey-badge', transform:`translate(${p.x},${p.y}) scale(${scale}) translate(-13,-16)`});
+    if(!p) return;
+    const occ = seen[p.name] = (seen[p.name] ?? -1) + 1;
+    const dxOff = occ * 15;
+    const badge = el('g', {class:'journey-badge'});
     badge.appendChild(el('circle', {cx:0, cy:0, r:6.5, fill:j.color}));
     const t = el('text', {x:0, y:0.5});
     t.textContent = i+1;
     badge.appendChild(t);
-    badgeScaleTargets.push({x:p.x, y:p.y, group:badge});
+    badgeScaleTargets.push({x:p.x, y:p.y, dx:dxOff, group:badge});
     const stay = j.stops[i].stay;
-    const showStayTip = (evt)=> showTooltip(evt, p.name, `<div>${stay || 'Duration not recorded.'}</div>`);
-    badge.addEventListener('pointerenter', showStayTip);
-    badge.addEventListener('pointermove', showStayTip);
-    badge.addEventListener('pointerleave', hideTooltip);
-    badge.addEventListener('click', (evt)=>{
-      evt.stopPropagation();
-      tooltipPinned = !tooltipPinned || tooltip.dataset.key !== `stop-${i}`;
-      tooltip.dataset.key = `stop-${i}`;
-      if(tooltipPinned) showStayTip(evt); else hideTooltip();
-    });
+    const key = `stop-${i}`;
+    const title = stopLabel(j,i);
+    const html = `<div>${stay || 'Duration not recorded.'}</div>`;
+    badge.addEventListener('pointerenter', (evt)=>{ if(evt.pointerType === 'mouse') hoverTip(key, title, html, evt); });
+    badge.addEventListener('pointermove',  (evt)=>{ if(evt.pointerType === 'mouse') hoverTip(key, title, html, evt); });
+    badge.addEventListener('pointerleave', (evt)=>{ if(evt.pointerType === 'mouse') hoverEnd(); });
+    badge.addEventListener('click', (evt)=>{ evt.stopPropagation(); toggleTip(key, title, html, evt); });
     gJourney.appendChild(badge);
   });
+  rescaleUI();
 }
 
 /* ---------------- Dimming (era filter drives pin emphasis) ---------------- */
@@ -1153,7 +1260,7 @@ function renderPanel(){
     let totalMiles = 0;
     let rows = '';
     j.stops.forEach((s, i)=>{
-      rows += `<li class="stop"><span class="num">${i+1}</span><span><strong>${s.name}</strong>${s.stay ? `<span class="stay">${s.stay}</span>` : ''}</span></li>`;
+      rows += `<li class="stop"><span class="num">${i+1}</span><span><strong>${s.label || s.name}</strong>${s.stay ? `<span class="stay">${s.stay}</span>` : ''}</span></li>`;
       if(i < legInfo.length){
         const info = legInfo[i];
         if(info.mode !== 'override') totalMiles += info.miles;
@@ -1188,9 +1295,8 @@ function renderPanel(){
 }
 
 function selectPlace(p){
-  Object.values(pinEls).forEach(g=>g.classList.remove('selected'));
   state.place = p ? p.name : null;
-  if(p) pinEls[p.name].classList.add('selected');
+  syncSelection();
   renderPanel();
 }
 
