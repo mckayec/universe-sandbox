@@ -2,6 +2,10 @@
 
 Requested by Mckay on 2026-10-31 (America/Denver): the Universe Sandbox landing page is hard to use on mobile; make it more intuitive and easier to use, and add this to the research/work queue.
 
+## Implementation handoff update — 2026-11-01 UTC
+
+Claude: read the [source audit and implementation addendum](research-addendum.md) before the baseline capture and layout proposal. It identifies existing mobile features to preserve, concrete control-size/instruction/state gaps, prioritized changes, and the expanded verification matrix. Its live check was limited by cloud-browser WebGL initialization; it is not a mobile acceptance pass. The existing Claude-owned queue item and release gates remain unchanged.
+
 ## Scope and current evidence
 
 Start with the root Gravity Lab / Universe Sandbox entry experience and first-use path into an exhibit or universe. Check the atlas chooser as an adjacent entry path; do not assume the complaint is limited to it.
