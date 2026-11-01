@@ -8,11 +8,12 @@
 # cards), by their displayed titles. Place settings without their own card (DP13+, P12, RP01) are named in the text
 # as the ledger names them. "Named roles retained in DD" is honoured by naming every person the ledger row names.
 #
-# Built in checkpoints: DD001–DD070 (checkpoint 18); DD071–DD138, DDO1–DDO2 next.
+# Built in checkpoints: DD001–DD070 (checkpoint 18); DD071–DD138, DDO1–DDO2 (checkpoint 19, copy_dd2.py).
 
 import re
 
 from copy_dc import P, S
+from copy_dd2 import DOSSIERS_2
 
 # matrix id -> the existing card's displayed title (keys DCM-<id>-...), written out so the copy reads as text;
 # build.py checks each against the pack.
@@ -39,6 +40,67 @@ TITLES = {
     'DR15': 'The Knight and Murdock couples',
     'DR16': 'Mission companions in section 52',
     'DR17': 'Revised companion assignments',
+    'DP02': 'Amherst, Ohio',
+    'DP04': 'Far West',
+    'DP05': 'Adam-ondi-Ahman',
+    'DP06': 'Fishing River camp region',
+    'DP07': 'Salem, Massachusetts',
+    'DP08': 'Perrysburg, New York',
+    'DP09': 'Nauvoo House',
+    'DP10': 'Zarahemla, Iowa',
+    'DP11': 'Shedolamak',
+    'DP12': 'Olaha Shinehah',
+    'DE02': 'A shared vision of kingdoms of glory',
+    'DE03': 'The United Firm',
+    'DE04': 'High council rules for hearing disputes',
+    'DE05': 'Zion’s Camp organized; its objective deferred',
+    'DE06': 'Kirtland Temple: dedication and reported vision',
+    'DE06b': 'Vision in the Kirtland Temple',
+    'DE07': 'Nauvoo building and leadership instructions',
+    'DE08': 'Eternal and plural marriage teachings recorded',
+    'DE09': 'Deaths at Carthage',
+    'DE16': 'Whitney appointed bishop',
+    'DE17': 'Revelation publication assigned',
+    'DE18': 'Presidency counselor changed',
+    'DE19': 'School of the Prophets instructed',
+    'DE20': 'Word of Wisdom recorded',
+    'DE21': 'Kirtland building instructions',
+    'DE22': 'Far West temple directed',
+    'DE23': 'Kirtland obligations and new assignments',
+    'DE24': 'Tithing and its administration instructed',
+    'DE25': 'Ramus instructions',
+    'DE26': 'Government declaration adopted',
+    'DE27': 'Proxy-baptism records instructed',
+    'DE28': 'Manifesto issued and explained',
+    'DJ02': 'Whitney sent to warn eastern cities',
+    'DJ03': 'The Salem investigation',
+    'DJ04': 'Law’s regional preaching assignment',
+    'DJ05': 'Westward companies prepare mutual support',
+    'DX03': 'The Word of Wisdom (1833)',
+    'DX04': 'Consent and command in section 132',
+    'DX05': 'The Official Declarations: announcement and acceptance',
+    'DX13': 'Temple instructions',
+    'DX15': 'Persecution, redress and authority',
+    'DX16': 'Section 134 on civil government',
+    'DX17': 'Section 87: a prophecy of war',
+    'DX18': 'Proxy baptism, witnesses and records',
+    'DX19': 'Sections 130 and 131',
+    'DX20': 'Section 138: messengers to the dead',
+    'DR01': 'Joseph Smith and Sidney Rigdon: joint vision witnesses',
+    'DR02': 'Joseph Smith and Oliver Cowdery: joint Kirtland vision witnesses',
+    'DR04': 'Joseph and Hyrum Smith: brothers with distinct offices',
+    'DR05': 'Joseph F. Smith, son of Hyrum',
+    'DR06': 'Joseph Smith and his brother Alvin',
+    'DR07': 'John Murdock and Julia Clapp',
+    'DR08': 'The Presidency, Marsh and the Twelve (1837)',
+    'DR14': 'Jesse Gause and Frederick G. Williams',
+    'DR18': 'Mission companions in section 75',
+    'DR19': 'Members of the United Firm',
+    'DR20': 'Offices named in section 124',
+    'DR21': 'Organizers of the westward companies',
+    'DR22': 'Signatories and the motion to accept',
+    'DR23': 'Ordinations in section 107',
+    'DR24': 'The priesthood line in section 84',
 }
 
 # SD id: (section, slug, title, text, see-also ids)
@@ -194,8 +256,9 @@ DOSSIERS = [
      'of the Bible here is Joseph Smith’s revision project, not the discovery of an ancient manuscript.',
      ['DX08', 'DX12', 'DR10']),
     (36, 'edward-partridge', 'Edward Partridge called',
-     'Dated December 9, 1830, near Fayette. Edward Partridge is called and Sidney Rigdon lays hands on him; '
-     'instruction on priesthood and mission. No travel path is added, and the wording of ordination or confirmation '
+     'Dated December 9, 1830, near Fayette. Edward Partridge is called to preach; verse 2 promises that the Lord will '
+     'lay his hand on him through Sidney Rigdon and that he will receive the Holy Ghost. The section gives priesthood '
+     'and mission instructions. No travel path is added, and the wording of ordination or confirmation '
      'follows the text rather than an inferred office.', ['DX08']),
     (37, 'pause-translation', 'Translation paused; Ohio ahead',
      'Dated December 1830 near Fayette. Joseph Smith and Sidney Rigdon are to pause the translation, strengthen the '
@@ -260,9 +323,11 @@ DOSSIERS = [
      'a temporary gathering place. Stewardships are not plotted without deeds, and Ohio is not implied to be a '
      'permanent endpoint.', ['DX09', 'DR13']),
     (52, 'missouri-companions', 'Companions sent to Missouri',
-     'Dated June 6, 1831, at a conference in Kirtland, directing a gathering in Missouri. Pairs: Joseph Smith and '
+     'Dated June 6, 1831, at a conference in Kirtland, directing a gathering in Missouri. Assignments include: Joseph '
+     'Smith and '
      'Sidney Rigdon; Lyman Wight and John Corrill; John Murdock and Hyrum Smith, by way of Detroit; Thomas B. Marsh and '
-     'Ezra Thayre; Isaac Morley and Ezra Booth; Edward Partridge and Martin Harris to join Smith; David Whitmer and '
+     'Ezra Thayre; Isaac Morley and Ezra Booth; Edward Partridge and Martin Harris to travel with Joseph Smith and Sidney '
+     'Rigdon as one party; David Whitmer and '
      'Harvey Whitlock; the Pratt brothers; Solomon Hancock and Simeon Carter; Edson Fuller and Jacob Scott; Levi '
      'Hancock and Zebedee Coltrin; Reynolds Cahoon and Samuel H. Smith; Wheeler Baldwin and William Carter; Newel '
      'Knight and Selah J. Griffin. Joseph Wakefield and Solomon Humphrey are assigned east; Heman Basset is replaced by '
@@ -272,9 +337,11 @@ DOSSIERS = [
      'Dated June 8, 1831, at Kirtland. Algernon Sidney Gilbert is made an elder and the bishop’s agent, for temporal '
      'administration, and is to travel with Joseph Smith and Sidney Rigdon. He is not to be confused with Sidney '
      'Rigdon.', ['DX07', 'DX08', 'DR13']),
-    (54, 'colesville-onward', 'The Colesville migrants go on',
-     'Dated June 10, 1831, at Kirtland, addressed to the community at Thompson. Newel Knight leads the Colesville '
-     'migrants after the agreement for Leman Copley’s farm breaks down, and they leave for Missouri. This records a '
+    (54, 'colesville-onward', 'The Colesville migrants directed onward',
+     'Dated June 10, 1831, at Kirtland, addressed to the community at Thompson. The heading identifies Newel Knight as '
+     'leader of the community at Thompson after Leman Copley’s farm agreement broke down. The revelation commands that '
+     'community to leave the farm and journey to Missouri; it does not itself record their completed departure or '
+     'arrival. This records a '
      'failed settlement arrangement, not an assumed permanent inheritance at Thompson.', ['DX08']),
     (55, 'phelps-printer', 'William W. Phelps, printer',
      'Dated June 14, 1831, at Kirtland. William W. Phelps, a printer: education and publication work and an '
@@ -301,8 +368,8 @@ DOSSIERS = [
      'location or historic site boundary is inferred.', ['DX09', 'DX14', 'DR15']),
     (60, 'return-east', 'Directions for the return east',
      'Dated August 8, 1831, at Independence. The returning elders are directed to St. Louis; Joseph Smith, Sidney '
-     'Rigdon and Oliver Cowdery are to go on to Cincinnati; the others preach on their way home in pairs. Edward '
-     'Partridge supplies travel money, to be repaid as they are able. Permission for transport is not a confirmed '
+     'Rigdon and Oliver Cowdery are to go on to Cincinnati; the others are to preach on their way home in pairs. '
+     'Edward Partridge is directed to supply travel money, to be repaid as they are able. Permission for transport is not a confirmed '
      'route.', ['DP03', 'DX08', 'DX09']),
     (61, 'mcilwaines-bend', 'On the Missouri River at McIlwaine’s Bend',
      'Dated August 12, 1831, at McIlwaine’s Bend on the Missouri River. Joseph Smith and ten elders are returning by '
@@ -351,15 +418,25 @@ DOSSIERS = [
      'publisher and recorder.', ['DP01', 'DP03', 'DX08', 'DX12']),
     (70, 'publication-stewards', 'Stewards of the revelations',
      'Dated November 12, 1831, at Hiram. Stewards of publication are appointed; spiritual labor and temporal equality. '
-     'Stewardship is not merged with ownership of every manuscript.', ['DP01', 'DX12']),
+     'Section 70:1–5 names Joseph Smith Jr., Martin Harris, Oliver Cowdery, John Whitmer, Sidney Rigdon and William W. '
+     'Phelps as stewards of the revelations and their publication. Stewardship is not merged with ownership of every '
+     'manuscript.', ['DP01', 'DE17', 'DX12']),
 ]
 
 COPY, EXTRA_SRC, CHILDREN = {}, {}, {}
-for sec, slug, title, text, see in DOSSIERS:
-    sd = f'SD{1071 + sec:04d}'
+# Official Declarations follow section 138 in the register: OD1 is SD1210, OD2 is SD1211.
+OD_SD = {'OD1': 'SD1210', 'OD2': 'SD1211'}
+for sec, slug, title, text, see in DOSSIERS + DOSSIERS_2:
     also = ''
     if see:
         also = ' See also: ' + ', '.join(f'“{TITLES[i]}”' for i in see) + '.'
     assert not re.search(r'\s{2}', text), sec
+    if sec in OD_SD:
+        n = sec[2]
+        COPY[OD_SD[sec]] = (f'DCM-ddo{n}-{slug}', f'Official Declaration {n}: {title}',
+                            P + f'Official Declaration {n}. ' + text + also)
+        EXTRA_SRC[OD_SD[sec]] = [S(f'Official Declaration {n}')]
+        continue
+    sd = f'SD{1071 + sec:04d}'
     COPY[sd] = (f'DCM-dd{sec:03d}-{slug}', f'Section {sec}: {title}', P + f'Section {sec}. ' + text + also)
     EXTRA_SRC[sd] = [S(f'D&C {sec}')]

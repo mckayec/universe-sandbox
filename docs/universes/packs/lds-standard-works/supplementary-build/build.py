@@ -47,7 +47,7 @@ BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
 BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 44)})
 BUILT['SC45'] = 'dc'
 # families built over several checkpoints: rows without copy yet stay `pending`
-PARTIAL = {'SC45'}
+PARTIAL = set()
 COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca, copy_dd]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).

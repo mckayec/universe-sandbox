@@ -954,7 +954,9 @@ test('Supplementary SC35–SC39: D&C place, event, teaching and relationship row
       .filter(r => /^SD\d{4},SC4[23],/.test(r))
       .map(r => (r.match(/,imported,codex:dc-more,(DCM-[^,]+),/) || [])[1]),
   );
-  const dc = codex('dc-more').filter((x: any) => !/^DCM-(dcp-|dre\d|jsh-|dca-|dd\d)/.test(x.key) && !later.has(x.key));
+  const dc = codex('dc-more').filter(
+    (x: any) => !/^DCM-(dcp-|dre\d|jsh-|dca-|dd\d|ddo\d)/.test(x.key) && !later.has(x.key),
+  );
   assert.equal(dc.length, 69);
   const keys = new Set(dc.map((x: any) => x.key));
   assert.equal(keys.size, dc.length);
@@ -1182,7 +1184,7 @@ test('Supplementary checkpoint 17: SC42 ancient participants and SC43 dated even
   );
 });
 
-test('Supplementary checkpoint 18: S17-C1/C2 and SC45 section dossiers DD001–DD070 in dc-more', () => {
+test('Supplementary checkpoints 18–19: S17-C1/C2 and all 140 SC45 section dossiers in dc-more', () => {
   const dc = codex('dc-more');
   const by = (k: string) => dc.find((x: any) => x.key === k);
   const at = (list: any[], layers: string[], group: number) =>
@@ -1207,19 +1209,32 @@ test('Supplementary checkpoint 18: S17-C1/C2 and SC45 section dossiers DD001–D
   assert.match(by('DCM-dca-abel-to-noah').desc, /lineage, ordination, offering-comparison and vision contexts/);
   assert.match(by('DCM-de19-school-of-the-prophets').desc, /The heading dates section 88 to December 27–28, 1832/);
   assert.deepEqual(plain(by('DCM-dca-sarai-abraham').src.map((s: any) => s.t)), ['Abraham 2:2', 'Genesis 17:15']);
-  // SC45: DD001–DD070 imported as one dc-layer card per section, in section order, with that section's link
+  // SC45: all 140 dossiers (DD001–DD138, then DDO1–DDO2) imported as one dc-layer card each, in register order,
+  // with that unit's link (checkpoints 18 and 19)
   const sc45 = lines.filter(r => /^SD\d{4},SC45,/.test(r));
   assert.equal(sc45.length, 140);
   const imported = sc45.filter(r => /,imported,codex:dc-more,/.test(r));
-  assert.equal(imported.length, 70);
+  assert.equal(imported.length, 140);
   const keys = imported.map(r => r.match(/,imported,codex:dc-more,(DCM-[^,]+),/)![1]);
   keys.forEach((k, i) => {
+    const od = i >= 138 ? i - 137 : 0;
     const n = i + 1;
-    assert.ok(k.startsWith(`DCM-dd${String(n).padStart(3, '0')}-`), k);
     const x = by(k);
     assert.ok(x, k);
     assert.deepEqual([plain(x.books), plain(x.layers)], [[4], ['dc']], k);
     assert.equal(x.lat, undefined, k);
+    if (od) {
+      assert.ok(k.startsWith(`DCM-ddo${od}-`), k);
+      assert.ok(x.name.startsWith(`Official Declaration ${od}: `), k);
+      assert.ok(x.desc.startsWith(`Doctrine and Covenants — Official Declaration ${od}. `), k);
+      assert.deepEqual(
+        plain(x.src.map((s: any) => s.u)),
+        [`https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/${od}?lang=eng`],
+        k,
+      );
+      return;
+    }
+    assert.ok(k.startsWith(`DCM-dd${String(n).padStart(3, '0')}-`), k);
     assert.ok(x.name.startsWith(`Section ${n}: `), k);
     assert.ok(x.desc.startsWith(`Doctrine and Covenants — Section ${n}. `), k);
     assert.deepEqual(
@@ -1228,14 +1243,14 @@ test('Supplementary checkpoint 18: S17-C1/C2 and SC45 section dossiers DD001–D
       k,
     );
   });
-  assert.deepEqual(plain(dc.filter((x: any) => /^DCM-dd\d/.test(x.key)).map((x: any) => x.key)), keys);
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 130);
+  assert.deepEqual(plain(dc.filter((x: any) => /^DCM-ddo?\d/.test(x.key)).map((x: any) => x.key)), keys);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 60);
   // the dossier for section 7 keeps the S17-C1 reading
   assert.match(by('DCM-dd007-john-ministry').desc, /the Lord speaks with John and then addresses Peter/);
   // not shown before the D&C layer
   assert.equal(
     at(
-      dc.filter((x: any) => /^DCM-dd\d/.test(x.key)),
+      dc.filter((x: any) => /^DCM-ddo?\d/.test(x.key)),
       ['ot', 'nt', 'bom', 'dc', 'pgp'],
       3,
     ).length,
@@ -1243,10 +1258,55 @@ test('Supplementary checkpoint 18: S17-C1/C2 and SC45 section dossiers DD001–D
   );
   assert.equal(
     at(
-      dc.filter((x: any) => /^DCM-dd\d/.test(x.key)),
+      dc.filter((x: any) => /^DCM-ddo?\d/.test(x.key)),
       ['dc'],
       4,
     ).length,
-    70,
+    140,
   );
+});
+
+test('Supplementary checkpoint 19: S18-C1–C3 dossier corrections', () => {
+  const dc = codex('dc-more');
+  const by = (k: string) => dc.find((x: any) => x.key === k);
+  // S18-C1: section 52 assignments are not all pairs; Partridge and Harris travel with Smith and Rigdon as one party
+  const d52 = by('DCM-dd052-missouri-companions').desc;
+  assert.doesNotMatch(d52, /Pairs:/);
+  assert.match(d52, /Assignments include: Joseph Smith and Sidney Rigdon;/);
+  assert.match(
+    d52,
+    /Edward Partridge and Martin Harris to travel with Joseph Smith and Sidney Rigdon as one party; David Whitmer/,
+  );
+  assert.match(d52, /by way of Detroit/);
+  // S18-C2: promised and commanded acts are not presented as completed
+  const d36 = by('DCM-dd036-edward-partridge').desc;
+  assert.doesNotMatch(d36, /Sidney Rigdon lays hands on him/);
+  assert.match(
+    d36,
+    /Edward Partridge is called to preach; verse 2 promises that the Lord will lay his hand on him through Sidney Rigdon and that he will receive the Holy Ghost\. The section gives priesthood and mission instructions\./,
+  );
+  const d54 = by('DCM-dd054-colesville-onward');
+  assert.equal(d54.name, 'Section 54: The Colesville migrants directed onward');
+  assert.doesNotMatch(d54.desc, /they leave for Missouri/);
+  assert.match(d54.desc, /it does not itself record their completed departure or arrival\./);
+  assert.match(by('DCM-dd060-return-east').desc, /Edward Partridge is directed to supply travel money/);
+  // S18-C3: section 70 names all six stewards and points to the existing publication card
+  const d70 = by('DCM-dd070-publication-stewards').desc;
+  assert.match(
+    d70,
+    /names Joseph Smith Jr\., Martin Harris, Oliver Cowdery, John Whitmer, Sidney Rigdon and William W\. Phelps as stewards/,
+  );
+  assert.match(d70, /“Revelation publication assigned”/);
+  assert.ok(dc.find((x: any) => x.name === 'Revelation publication assigned'));
+  // DD072 carries its three-part content and keeps the offices regional
+  const d72 = by('DCM-dd072-whitney-bishop').desc;
+  assert.match(d72, /Three revelations/);
+  assert.match(d72, /the offices are regional/);
+  // every See-also title in the new dossiers names an existing card
+  const names = new Set(dc.map((x: any) => x.name));
+  for (const x of dc.filter((y: any) => /^DCM-ddo?\d/.test(y.key))) {
+    const also = x.desc.match(/See also: (.*)\.$/);
+    if (!also) continue;
+    for (const t of also[1].match(/“[^”]+”/g)) assert.ok(names.has(t.slice(1, -1)), `${x.key}: ${t}`);
+  }
 });
