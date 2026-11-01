@@ -44,3 +44,32 @@ This bounded pass does not settle every modern-versus-historical settlement exte
 Claude can incorporate the four new **labelled representative settlement references** while preserving reference-only records, attributed event narratives and existing chronology/spoiler gates. Keep source IDs, raw coordinates and coarse-feature wording visible in provenance; never turn a representative point into surveyed route geometry or an exact episode location. Return the changed implementation SHA and per-package disposition for ChatGPT recheck. Q01 overall remains open for the ten packages above.
 
 Validation performed: compared source names, type and country hierarchy against each requested entity; checked all numeric values within latitude/longitude ranges; independently calculated the four DMS pairs including the conditional cemetery; checked four recovered plus seven inherited plus ten unresolved equals all 21 requests. Nicaea stays as source decimals without fabricated conversion. No application, browser, GPU, build or test pass is claimed for this documentation-only work. Existing ABR01–04, technical/rendered, same-head signoff and owner-release gates remain unchanged. No merge, deployment or formal PR approval.
+
+
+## Second bounded continuation — Baghdad and Philadelphia recovered
+
+2026-11-01, after the four-package checkpoint above. **Two additional packages now have opened gazetteer bodies**, bringing the combined total to **13 supported references and eight unresolved packages**. Earlier 11/10 counts remain historical. This still counts research packages, not implemented pins.
+
+| Requested anchor | Opened source and verified identity | Raw coordinate | Decimal conversion | Required label / restriction |
+|---|---|---|---|---|
+| Baghdad | [Getty TGN 7002482](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7002482), Baghdad inhabited place, Iraq / Mayorality of Baghdad; body opened 2026-11-01 | N33 21 00; E044 25 00 | 33.350000, 44.416667 | **Baghdad — approximate city reference.** Not the administrative region, Egyptian namesake, Rusafa property or 1863 garden. Do not inherit historical assertions from the gazetteer's note. |
+| Philadelphia | [Getty TGN 7014406](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7014406), inhabited place under United States / Pennsylvania / Philadelphia county; body opened 2026-11-01 | N39 57 00; W075 09 00 | 39.950000, -75.150000 | **Philadelphia — approximate city reference.** Not Independence Hall, the county record TGN 1002782, or the Reconstructionist college's 1968 building. This replaces the need for an unrelated heritage-property proxy. |
+
+Both transcriptions are source-confirmed (C), with minute-scale geographic resolution; neither certifies an exact historical venue. Initial Baghdad access attempts failed, but the opened English-display body subsequently supplied the identity, hierarchy and numeric fields. This is a recovered read, not a source restriction bypass. No quoted narrative or theological claim is imported.
+
+### Useful leads retained without premature adoption
+
+- **Hamburg:** TGN 7005289 city coordinates appear in search results, but both attempted full-record opens returned cache misses. No numeric point adopted from those results. The official [Hamburg mapping agency's Kleine Hamburg Statistik](https://www.hamburg.de/resource/blob/245726/531bf39b81977f7f75100a3c967b9172/d-kleine-hamburg-statistik-data.pdf) opened and distinguishes municipal reference (Rathaus), bounding-box center and geometric centroid. Its extracted coordinate table labels the 53-degree value “Länge” and nine-degree value “Breite”, so do not silently reverse axis labels or use a center as the 1818 Temple. Visual/source-axis verification and deliberate feature selection remain needed.
+- **Zurich / Grossmunster:** [Warwick TowerCapsules CHZ0055](https://towercapsules.warwick.ac.uk/s/towercapsules/item/934) is a specific scholarly catalogue lead with church identity and numeric fields in search output. Both body opens failed. Keep the earlier official address evidence and the numeric hold; no search-only precision accepted.
+- **Seesen:** the [city's synagogue page](https://www.stadtverwaltung-seesen.de/B%C3%BCrger/Synagoge-Seesen.php?object=tx%2C3000.25408.1) was located but body access returned a redirect-loop error. An official municipal result giving coordinates belongs to Bilderlahe, a different locality within Seesen municipality, and is not substituted for the town or Jacobstempel. Existing numeric hold remains.
+- **Karbala:** direct TGN 7002537 body remained inaccessible. No governorate point or unverified shrine point substituted.
+- **Azusa Street:** results for the separate city of Azusa and other streets were rejected. The secondary marker lead is not an official numeric parcel record and was not adopted. No point assigned to the former 312 Azusa Street building.
+- **Xi'an / Beilin and Fayette / Whitmer:** no new adopted numeric source in this pass; their existing evidence limitations remain. A map-picker coordinate or a replica-home secondary point is not promoted.
+
+### Current next actions
+
+**Four conditional packages:** Zurich / Grossmunster, Fayette / Whitmer, Hamburg, Najaf. **Four without an adopted numeric source:** Karbala, Azusa Street, Xi'an / Beilin, Seesen. These eight remain open; this continuation does not request or imply owner approval to drop them.
+
+Claude can incorporate the now-six recovered packages under their exact representative-feature labels and preserve all previous restrictions, with per-package mapping and changed-head recheck. ABR01–04, same-head technical/rendered checks and owner release gates remain separate. No LDS files or routing were changed by this continuation.
+
+Validation: the two new DMS conversions independently calculated as 33.350000 / 44.416667 and 39.950000 / -75.150000; negative western longitude and coordinate ranges checked. Six recovered plus seven inherited plus eight unresolved equals 21. No application or browser tests were run or claimed.
