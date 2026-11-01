@@ -912,13 +912,18 @@ test('Supplementary S11 fixes: parable contexts, Psalm note labels and the two s
       .slice(desc.indexOf(a) + a.length, desc.indexOf(b))
       .split(' → ')
       .map(s => s.trim());
-  const m = chain(matt.desc, 'is left out): ', '. Verse 16');
+  const m = chain(matt.desc, 'no generation is omitted: ', '. Verse 16');
   const mn = csvNames('matt-genealogy-names.csv');
   assert.equal(m.length, 40);
   m.forEach((s, i) => assert.ok(s === mn[i] || s.startsWith(mn[i] + ' '), `${i} ${s}`));
-  assert.ok(m.includes('Judas and his brethren') && m.includes('Phares and Zara of Thamar'));
-  assert.ok(m.includes('Booz of Rachab') && m.includes('Obed of Ruth') && m.includes('David the king'));
-  assert.ok(m.some(s => /^Jechonias and his brethren, .*Babylon$/.test(s)));
+  assert.ok(m.includes('Judas (his brethren are also named)'));
+  assert.ok(m.includes('Phares (Zara is also named; both are of Thamar)'));
+  // S12-C1: the chain continues Phares → Esrom; Zara and the brethren are notes, not links
+  assert.equal(m[m.findIndex(s => s.startsWith('Phares')) + 1], 'Esrom');
+  assert.ok(m.every(s => !/^(Zara|his brethren)/.test(s)));
+  assert.ok(/parentheses give side branches or qualifications, not additional chain links/.test(matt.desc));
+  assert.ok(m.includes('Booz (of Rachab)') && m.includes('Obed (of Ruth)') && m.includes('David (the king)'));
+  assert.ok(m.some(s => /^Jechonias \(his brethren are also named, .*Babylon\)$/.test(s)));
   // Matthew's ending predicate differs from the chain; no Joseph-begat-Jesus edge, no Mary line
   assert.ok(/the text does not say that Joseph begat Jesus/.test(matt.desc));
   assert.ok(/the husband of Mary, of whom was born Jesus/.test(matt.desc));

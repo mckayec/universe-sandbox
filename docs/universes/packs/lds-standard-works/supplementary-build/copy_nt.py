@@ -377,15 +377,16 @@ def _names(f):
 GENEALOGY_MATT = _names('matt-genealogy-names.csv')
 GENEALOGY_LUKE = _names('luke-genealogy-names.csv')
 assert len(GENEALOGY_MATT) == 40 and len(GENEALOGY_LUKE) == 77
-# Matthew's side branches and qualified names, in the text's own words, attached to the occurrence they qualify
+# S12-C1: Matthew's side branches and qualifiers as parenthetical notes on the main-line occurrence they qualify, so
+# the arrows join only main-line names (Phares → Esrom)
 _MATT_NOTE = {
-    (2, 'Judas'): 'Judas and his brethren',
-    (3, 'Phares'): 'Phares and Zara of Thamar',
-    (5, 'Booz'): 'Booz of Rachab',
-    (5, 'Obed'): 'Obed of Ruth',
-    (6, 'David'): 'David the king',
-    (6, 'Solomon'): 'Solomon of her that had been the wife of Urias',
-    (11, 'Jechonias'): 'Jechonias and his brethren, about the time they were carried away to Babylon',
+    (2, 'Judas'): 'Judas (his brethren are also named)',
+    (3, 'Phares'): 'Phares (Zara is also named; both are of Thamar)',
+    (5, 'Booz'): 'Booz (of Rachab)',
+    (5, 'Obed'): 'Obed (of Ruth)',
+    (6, 'David'): 'David (the king)',
+    (6, 'Solomon'): 'Solomon (of her that had been the wife of Urias)',
+    (11, 'Jechonias'): 'Jechonias (his brethren are also named, about the carrying away to Babylon)',
 }
 assert all(k in GENEALOGY_MATT for k in _MATT_NOTE)
 
@@ -398,7 +399,7 @@ def _repeats(names):
 _matt_chain = ' → '.join(_MATT_NOTE.get(o, o[1]) for o in GENEALOGY_MATT)
 _luke_chain = ' → '.join(n for _, n in GENEALOGY_LUKE[2:-1])
 CHILDREN['SD0238'] = [
-    ('NTC-genealogies-matt-1', 'Genealogy in Matthew 1', P + 'Matthew 1:1–17, in the text’s order. Verse 1 calls Jesus Christ the son of David, the son of Abraham. In verses 2–16 each name “begat” the next (the text’s wording, not a claim that no generation is left out): ' + _matt_chain + '. Verse 16 changes the wording: Joseph is “the husband of Mary, of whom was born Jesus, who is called Christ”; the text does not say that Joseph begat Jesus. Verse 17 counts fourteen generations from Abraham to David, fourteen from David to the carrying away into Babylon, and fourteen from then to Christ; no names are added to fit those groups. A repeated name is listed at each place it occurs: ' + _repeats(GENEALOGY_MATT) + '.',
+    ('NTC-genealogies-matt-1', 'Genealogy in Matthew 1', P + 'Matthew 1:1–17, in the text’s order. Verse 1 calls Jesus Christ the son of David, the son of Abraham. Each arrow connects the main-line names using Matthew’s “begat” wording; parentheses give side branches or qualifications, not additional chain links. This follows the text’s wording, without claiming that no generation is omitted: ' + _matt_chain + '. Verse 16 changes the wording: Joseph is “the husband of Mary, of whom was born Jesus, who is called Christ”; the text does not say that Joseph begat Jesus. Verse 17 counts fourteen generations from Abraham to David, fourteen from David to the carrying away into Babylon, and fourteen from then to Christ; no names are added to fit those groups. A repeated name is listed at each place it occurs: ' + _repeats(GENEALOGY_MATT) + '.',
      [('Matthew 1:1–17', 'nt/matt/1')]),
     ('NTC-genealogies-luke-3', 'Genealogy in Luke 3', P + 'Luke 3:23–38, in Luke’s order and spelling. Jesus was “about thirty years of age, being (as was supposed) the son of Joseph, which was the son of Heli.” From Heli on, each name is called the son of the one after it: ' + _luke_chain + ', “which was the son of God.” That last link is Luke’s statement, not an ordinary line of descent. A repeated name is listed at each place it occurs (' + _repeats(GENEALOGY_LUKE) + '), and the list is not harmonized with Matthew’s.',
      [('Luke 3:23–38', 'nt/luke/3')]),

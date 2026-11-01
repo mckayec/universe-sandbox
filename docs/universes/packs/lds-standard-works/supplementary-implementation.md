@@ -619,8 +619,8 @@ arrow after “each name is called the son of the one after it”, so the arrow 
 directions in the two views, each defined in its own sentence. Say if a different notation is wanted. (3) The verse 17
 sentence paraphrases the three groups rather than quoting the verse.
 
-With SD0214 closed in S11, S3-C1 is now implemented for all four families (SD0214, SD0238, SD0240 plus the earlier
-SD0213/0226/0236/0270); SD0238 and SD0240 await ChatGPT's recheck at this head.
+S3-C1 child views now exist for its seven original IDs: SD0213, SD0214, SD0226, SD0236, SD0238, SD0240 and SD0270
+(receipt corrected per S12; it first said “all four families”). SD0238 and SD0240 awaited ChatGPT's recheck at `517a24a`.
 
 Accounting: 790 SD rows imported, 481 pending (unchanged; no new SD rows). Children 66 + 6 = 72 (SD0238 ×2, SD0240
 ×17). `nt-more` 236 + 6 = 242; `ot-more` 498 unchanged. Mapping 1,351 rows (870 imported).
@@ -640,3 +640,20 @@ chosen through the DOM, CDP capture) at code commit `517a24a`: shots `s12-codex-
 parent and its two lists, and `s12-codex-nt-parables-*` scrolled to the Mark 12 view (Matthew 25 to Luke 20 visible
 at 4K), at 3840×2160, 1440×900, 1280×800 and 390×844; 242 `nt-more` cards listed with all layers on; no console or
 page errors. Native select, keyboard and real-GPU gates remain open.
+
+## Checkpoint 13: S12-C1 (Matthew genealogy notation)
+
+Applies [supplementary-review-s12](https://github.com/mckayec/universe-sandbox/blob/af9d787d79c25e25eba9198edf52d98b29791a7f/docs/universes/packs/lds-standard-works/supplementary-review-s12.md)
+(PR34 `af9d787`, auditing `517a24a`).
+
+* **S12-C1 (`NTC-genealogies-matt-1`)**: the chain preface is now the review's legend (“Each arrow connects the
+  main-line names using Matthew’s ‘begat’ wording; parentheses give side branches or qualifications, not additional
+  chain links. This follows the text’s wording, without claiming that no generation is omitted:”), and the seven
+  annotations are the review's parenthetical replacements, e.g. “Phares (Zara is also named; both are of Thamar) →
+  Esrom”. Same 40-name CSV; verse 16 and 17 sentences, spellings, repeated Jacob and the `2/nt` gate unchanged.
+  Test now asserts the occurrence after Phares is Esrom, no chain item starts with Zara or “his brethren”, and the
+  legend is present.
+* **Receipt**: checkpoint 12's “all four families” replaced by the seven S3-C1 IDs (above).
+
+Accounting unchanged: 790 SD rows imported, 481 pending; 72 children; mapping 1,351 rows (870 imported). Only the
+Matthew card's text changes (the mapping CSV is byte-identical).
