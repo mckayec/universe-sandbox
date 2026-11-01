@@ -282,7 +282,7 @@ test('BA07 round 2: 108 further source views (107 research IDs) resolve with the
   assert.equal(new Set(keys).size, keys.length, 'keys are unique');
   // 170 primary source views plus the supplementary tab(s), counted separately
   const supp = P.codex
-    .filter((t: any) => ['bom-more', 'nt-more', 'ot-more'].includes(t.id))
+    .filter((t: any) => ['bom-more', 'nt-more', 'ot-more', 'dc-more'].includes(t.id))
     .flatMap((t: any) => t.list).length;
   assert.equal(keys.length - supp, 170);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
@@ -935,4 +935,56 @@ test('Supplementary S11 fixes: parable contexts, Psalm note labels and the two s
   assert.ok(/\(as was supposed\) the son of Joseph/.test(luke.desc));
   assert.equal(l.filter(n => n === 'Joseph').length, 3); // plus the supposed father in verse 23
   assert.ok(/not harmonized with Matthew/.test(luke.desc));
+});
+
+test('Supplementary SC35–SC39: D&C place, event, teaching and relationship rows map to dc-layer cards', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const rows = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},SC3[5-9],/.test(r));
+  assert.equal(rows.length, 69);
+  const dc = codex('dc-more');
+  assert.equal(dc.length, 69);
+  const keys = new Set(dc.map((x: any) => x.key));
+  assert.equal(keys.size, dc.length);
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:dc-more,(DCM-[^,]+),/);
+    assert.ok(m && keys.has(m[1]), r.slice(0, 40));
+  }
+  for (const x of dc) {
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[4], ['dc']], x.key);
+    assert.equal(x.lat, undefined, x.key);
+    assert.equal(x.when, undefined, x.key);
+    assert.ok(x.desc.startsWith('Doctrine and Covenants — '), x.key);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => s.u.startsWith('https://') && s.t), x.key);
+    assert.equal(new Set(x.src.map((s: any) => s.u)).size, x.src.length, `${x.key} repeats a source`);
+  }
+  for (const layer of ['ot', 'nt', 'bom', 'pgp']) {
+    assert.equal(L.codexSplit(dc, new Set([layer]), null, false, 0).shown.length, 0, layer);
+  }
+  // shown at the D&C group, not before it
+  assert.equal(L.codexSplit(dc, new Set(['dc']), null, true, 4, (y: any) => Math.min(...y.books)).shown.length, 69);
+  assert.equal(L.codexSplit(dc, new Set(['dc']), null, true, 3, (y: any) => Math.min(...y.books)).shown.length, 0);
+  const by = (k: string) => dc.find((x: any) => x.key === k);
+  // place views: Perrysburg is New York, not Ohio; Zarahemla, Iowa is not a verified Book of Mormon site
+  assert.match(by('DCM-dp08-perrysburg').desc, /Perrysburg, New York, not Perrysburg, Ohio/);
+  assert.match(by('DCM-dp10-zarahemla-iowa').desc, /not a verified Book of Mormon site/);
+  // DE06: two dated components, not one occurrence
+  assert.match(by('DCM-de06-kirtland-dedication-vision').desc, /March 27, 1836.*April 3, 1836.*Two events/);
+  // DX02: Enoch's two ages kept side by side
+  assert.match(by('DCM-dx02-priesthood-genealogies').desc, /430 years.*365 years.*not silently harmonized/);
+  // DX04: verses 61 and 65 both kept; Jacob 2 and OD1 cross-linked
+  const dx04 = by('DCM-dx04-section-132-consent');
+  assert.match(dx04.desc, /Verses 61 and 65 are both kept/);
+  assert.ok(
+    dx04.src.some((s: any) => s.u.includes('/bofm/jacob/2')) && dx04.src.some((s: any) => s.u.includes('/od/1')),
+  );
+  // DR23: ordination links are not father-child links
+  assert.match(by('DCM-dr23-ordinations-107').desc, /not father-child links/);
+  // section ranges expand to one link per section (DX09: 32 sections)
+  assert.equal(by('DCM-dx09-gathering').src.length, 32);
 });

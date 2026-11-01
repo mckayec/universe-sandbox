@@ -21,6 +21,7 @@ import copy_ot
 import copy_otl
 import copy_mp
 import copy_wp
+import copy_dc
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -33,13 +34,14 @@ NT_BOOKS = {'matt': 'Matthew', 'mark': 'Mark', 'luke': 'Luke', 'john': 'John', '
             '3-jn': '3 John', 'jude': 'Jude', 'rev': 'Revelation'}
 # family -> (tab id, gate books, gate layers, copy module)
 FAMILIES = {'bom': ('bom-more', [3], ['bom'], copy_bom), 'nt': ('nt-more', [2], ['nt'], copy_nt),
-            'ot': ('ot-more', [1], ['ot'], copy_ot)}
+            'ot': ('ot-more', [1], ['ot'], copy_ot), 'dc': ('dc-more', [4], ['dc'], copy_dc)}
 BUILT = {f'SC0{i}': 'bom' for i in range(1, 8)}
 BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 31)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
-COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp]
+BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 40)})
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}
