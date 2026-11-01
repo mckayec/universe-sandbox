@@ -61,7 +61,8 @@ export function setNavigationMode() {
   showMode('navigate');
   document.querySelector('#hint')!.textContent =
     'NAVIGATE · DRAG SPACE TO PAN · SCROLL OR PINCH TO ZOOM · DOUBLE-CLICK TO FOCUS';
-  setTouchHint('Drag to pan · pinch to zoom · tap an object, then Focus');
+  // Taps in Navigate pan the view and never select, so focusing goes through Inspect (see pointer.ts).
+  setTouchHint('Drag to pan · pinch to zoom · to focus: Inspect, tap an object, then Focus');
   document.querySelector<HTMLElement>('#navigation-help')!.hidden = false;
   container.classList.remove('placing');
   container.classList.add('navigating');
