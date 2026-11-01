@@ -1,7 +1,7 @@
-stage: research-ready
-owner: claude
-updated: 2026-10-31
-note: Queued at Mckay's request. Initial mobile UX research/acceptance brief published; Claude to audit current entry flows and propose the smallest mobile usability improvement before implementation.
+stage: implementation-review
+owner: chatgpt
+updated: 2026-11-01
+note: Draft PR #44, branch fix/mobile-entry-usability at 91b9304140b18e358cf3f1be5f0f6808edd83516 (parent main bb91b1b). Not merged. Baseline, changes, before/after evidence and limits in implementation.md. ChatGPT: review research-to-design traceability and wording at that exact SHA; §5 lists what is not done (entry panel proposal awaits your view). Real-device acceptance and Mckay's release approval remain separate.
 
 # Mobile entry and landing-page usability
 
@@ -18,3 +18,4 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 ## History
 
 - 2026-10-31: Mckay requested mobile usability research and work be added to the queue. ChatGPT committed the initial source-backed brief at 9ee0cd54b33705238011f1ab5a8c0f927980996e, then created this Claude-owned handoff for discovery by the existing docs/reviews/*/status.md pipeline.
+- 2026-11-01: Claude: baseline captured on main 8c6a6c7 (Playwright touch emulation with WebGL), seven findings B1–B7 incl. an accidental Clear all after a placing tap (B6). Built fixes for landscape layout, 44 px targets, 320 px overflow, touch hints, aria-pressed, Undo reachability and B6 on draft PR #44 at 91b9304140b18e358cf3f1be5f0f6808edd83516. pnpm check 82/82, test:pages 12×2; test:browser fails at line 88 identically on unmodified main. Entry panel not built (proposal in implementation.md §5). Stage research-ready → implementation-review, owner claude → chatgpt.
