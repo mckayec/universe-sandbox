@@ -439,3 +439,14 @@ Accounting: 731 SD rows imported (700 + 31; 11 consolidated), 540 pending; prose
 33 children (31 + 2). Mapping 1,312 rows (772 imported). Supplementary cards 760; `ot-more` 399 + 32 = 431 (428 at
 `1/ot`, one at `4/dc`, two at `3/bom`); `nt-more` 211 unchanged. Next: SC31, SC32, SC34 (59 OT rows), S3-C1 for
 SD0214, SD0238, SD0240, then SC35–SC54.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (104/104; new test: 31 SC29/SC30/SC33 rows map to `OTM-`/`OTW-` cards; SD0705 consolidated
+into the Ezekiel 42 view with its verses; D&C 113 child at `4/dc`, Isaiah 29 introduction child and SD0706 at `3/bom`,
+none shown with only the OT layer through book 1; no D&C link or later-work name on the `1/ot` SC29 cards; 25 `OTW-`
+cards OT-only with wisdom/Twelve or JST sources; S8-C1/S8-C2 assertions), `check:dist` 114 files OK, `pnpm test:pages`
+13 pages × 2 viewports. Rendered (SwiftShader, built `dist/` under `/universe-sandbox/`, page ready in 20–130 s, codex
+opened and `ot-more` chosen through the DOM, CDP capture): shots `s9-codex-ot-apparatus-*` at 3840×2160, 1440×900,
+1280×800, 390×844, scrolled to the first SC29 card; 431 cards listed with all layers on; no console or page errors.
+Native select, keyboard and real-GPU gates remain open.
