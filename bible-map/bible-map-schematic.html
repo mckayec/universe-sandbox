@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblical Lands & Times</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#e9dcbd;
+    --parchment-dark:#d8c69c;
+    --parchment-edge:#c7b183;
+    --ink:#2e2416;
+    --sepia:#6b4a2f;
+    --sepia-soft:#8a6a48;
+    --terracotta:#b5651d;
+    --crimson:#8b2e1f;
+    --water:#5c7d78;
+    --water-soft:#8fa8a0;
+    --gold:#c0932f;
+    --gold-bright:#e0b74f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    font-family:'EB Garamond', serif;
+    background:#1c140c;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    max-width:1400px;
+    margin:0 auto;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(255,250,230,0.18), transparent 60%),
+      var(--parchment);
+    box-shadow:0 0 80px rgba(0,0,0,0.6);
+    overflow:hidden;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding:18px 28px 10px;
+    text-align:center;
+    border-bottom:1px solid rgba(107,74,47,0.35);
+    background:linear-gradient(180deg, rgba(0,0,0,0.06), transparent);
+    flex-shrink:0;
+  }
+  header h1{
+    font-family:'Cinzel Decorative', 'Cinzel', serif;
+    font-weight:700;
+    font-size:clamp(20px, 3vw, 32px);
+    letter-spacing:2px;
+    margin:0;
+    color:var(--ink);
+    text-shadow:0 1px 0 rgba(255,255,255,0.3);
+  }
+  header p{
+    font-family:'Cinzel', serif;
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--sepia);
+    margin:4px 0 0;
+  }
+
+  /* ---------- Stage (map + panel) ---------- */
+  .stage{
+    flex:1;
+    display:flex;
+    min-height:0;
+    position:relative;
+  }
+  .map-wrap{
+    flex:1;
+    position:relative;
+    min-width:0;
+  }
+  svg#map{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  .sea-label{
+    font-family:'Cinzel', serif;
+    fill:var(--water);
+    opacity:0.55;
+    letter-spacing:3px;
+  }
+  .river-label{
+    font-family:'Cinzel', serif;
+    fill:var(--water);
+    opacity:0.6;
+    letter-spacing:2px;
+  }
+  .graticule{
+    stroke:var(--sepia);
+    stroke-opacity:0.12;
+    stroke-width:1;
+    stroke-dasharray:2 4;
+  }
+  .river{
+    fill:none;
+    stroke:var(--water);
+    stroke-opacity:0.55;
+    stroke-width:2.2;
+  }
+  .water-body{
+    fill:var(--water-soft);
+    fill-opacity:0.28;
+    stroke:var(--water);
+    stroke-opacity:0.4;
+    stroke-width:1;
+  }
+
+  .pin{ cursor:pointer; }
+  .pin circle.dot{
+    stroke:var(--parchment);
+    stroke-width:1.4;
+    transition:r 0.25s ease, opacity 0.35s ease, fill 0.35s ease;
+  }
+  .pin circle.ring{
+    fill:none;
+    stroke:var(--gold-bright);
+    stroke-width:0;
+    opacity:0;
+    transition:all 0.35s ease;
+  }
+  .pin.selected circle.ring{
+    stroke-width:2;
+    opacity:1;
+    r:11;
+  }
+  .pin text.label{
+    font-family:'Cinzel', serif;
+    font-size:9px;
+    fill:var(--ink);
+    opacity:0;
+    letter-spacing:0.5px;
+    transition:opacity 0.25s ease;
+    pointer-events:none;
+  }
+  .pin:hover text.label,
+  .pin.selected text.label{ opacity:0.92; }
+  .pin.dim circle.dot{ opacity:0.16; }
+  .pin.dim text.label{ opacity:0 !important; }
+  .pin.lit circle.dot{ opacity:1; }
+
+  /* compass rose */
+  .compass{ opacity:0.5; }
+  .compass text{
+    font-family:'Cinzel', serif;
+    font-size:9px;
+    fill:var(--sepia);
+    letter-spacing:1px;
+  }
+
+  /* ---------- Detail panel ---------- */
+  #panel{
+    width:280px;
+    flex-shrink:0;
+    border-left:1px solid rgba(107,74,47,0.35);
+    background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.03));
+    padding:22px 20px;
+    overflow-y:auto;
+  }
+  #panel .eyebrow{
+    font-family:'Cinzel', serif;
+    font-size:10px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 6px;
+  }
+  #panel h2{
+    font-family:'Cinzel', serif;
+    font-size:22px;
+    margin:0 0 10px;
+    color:var(--ink);
+    border-bottom:1px solid rgba(107,74,47,0.3);
+    padding-bottom:10px;
+  }
+  #panel p{
+    font-size:16px;
+    line-height:1.55;
+    color:var(--sepia);
+    margin:0 0 14px;
+  }
+  #panel .era-tag{
+    display:inline-block;
+    font-family:'Cinzel', serif;
+    font-size:10px;
+    letter-spacing:1px;
+    padding:4px 9px;
+    margin:2px 4px 2px 0;
+    border-radius:2px;
+    color:var(--parchment);
+    opacity:0.9;
+  }
+  #panel .empty{
+    color:var(--sepia-soft);
+    font-style:italic;
+    font-size:15px;
+    margin-top:40px;
+    text-align:center;
+  }
+  #panel .coords{
+    font-family:'Cinzel', serif;
+    font-size:10px;
+    color:var(--sepia-soft);
+    letter-spacing:1px;
+    margin-top:20px;
+  }
+
+  /* ---------- Timeline ribbon ---------- */
+  .timeline{
+    flex-shrink:0;
+    border-top:1px solid rgba(107,74,47,0.4);
+    background:linear-gradient(0deg, rgba(0,0,0,0.08), transparent);
+    padding:12px 16px 14px;
+  }
+  .timeline-inner{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    padding-bottom:4px;
+    scrollbar-width:thin;
+  }
+  .era-tab{
+    flex:0 0 auto;
+    cursor:pointer;
+    border:1px solid rgba(107,74,47,0.4);
+    background:rgba(255,255,255,0.15);
+    border-radius:3px;
+    padding:7px 12px 6px;
+    text-align:left;
+    min-width:108px;
+    transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+    position:relative;
+  }
+  .era-tab::before{
+    content:'';
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:3px;
+    background:var(--swatch, var(--sepia));
+    border-radius:3px 0 0 3px;
+  }
+  .era-tab .name{
+    display:block;
+    font-family:'Cinzel', serif;
+    font-size:11px;
+    letter-spacing:0.5px;
+    color:var(--ink);
+    margin-bottom:2px;
+  }
+  .era-tab .range{
+    display:block;
+    font-size:12px;
+    color:var(--sepia);
+    font-style:italic;
+  }
+  .era-tab:hover{ transform:translateY(-2px); }
+  .era-tab.active{
+    background:rgba(192,147,47,0.22);
+    box-shadow:0 0 0 1px var(--gold) inset, 0 3px 10px rgba(0,0,0,0.15);
+    transform:translateY(-2px);
+  }
+  .era-tab.all{ min-width:74px; text-align:center; }
+  .era-tab.all::before{ display:none; }
+
+  /* scrollbar aesthetics */
+  .timeline-inner::-webkit-scrollbar{ height:6px; }
+  .timeline-inner::-webkit-scrollbar-thumb{ background:var(--sepia-soft); border-radius:3px; }
+  #panel::-webkit-scrollbar{ width:6px; }
+  #panel::-webkit-scrollbar-thumb{ background:var(--sepia-soft); border-radius:3px; }
+
+  @media (max-width: 760px){
+    .stage{ flex-direction:column; }
+    #panel{
+      width:100%;
+      border-left:none;
+      border-top:1px solid rgba(107,74,47,0.35);
+      max-height:34vh;
+    }
+    .map-wrap{ flex:1 1 50%; }
+    header{ padding:12px 16px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Biblical Lands &amp; Times</h1>
+    <p>An atlas of scripture, from Ur to Rome</p>
+  </header>
+
+  <div class="stage">
+    <div class="map-wrap">
+      <svg id="map" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div id="panel">
+      <div class="empty">Select a place on the map, or choose an era below, to begin.</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-inner" id="timelineInner"></div>
+  </div>
+</div>
+
+<script>
+/* ---------------- Data ---------------- */
+
+const ERAS = [
+  { id:'origins',   name:'Origins',           range:'primeval history', color:'#4a3f2e',
+    blurb:'The primeval narratives of creation and the flood, set before any fixed chronology.' },
+  { id:'patriarchs', name:'Patriarchs',        range:'c. 2100–1800 BC', color:'#8a6d3b',
+    blurb:'Abraham, Isaac, and Jacob journey through Mesopotamia and Canaan; Joseph rises in Egypt.' },
+  { id:'exodus',     name:'Exodus',            range:'c. 1450–1400 BC', color:'#b5651d',
+    blurb:'Israel leaves slavery in Egypt, crosses the sea, and receives the Law at Sinai.' },
+  { id:'conquest',   name:'Conquest & Judges', range:'c. 1400–1050 BC', color:'#a6752c',
+    blurb:'Joshua leads Israel into Canaan; the tribes settle the land under a series of judges.' },
+  { id:'kingdom-united', name:'United Kingdom', range:'c. 1050–930 BC', color:'#c0932f',
+    blurb:'Saul, David, and Solomon rule a single kingdom from Jerusalem.' },
+  { id:'kingdom-divided', name:'Divided Kingdom', range:'c. 930–586 BC', color:'#9c5b2e',
+    blurb:'The kingdom splits into Israel (north) and Judah (south); Assyria and Babylon rise.' },
+  { id:'exile',      name:'Exile',             range:'586–538 BC', color:'#5b4636',
+    blurb:'Jerusalem falls to Babylon and Judah\u2019s people are carried into exile.' },
+  { id:'return',     name:'Return',            range:'538–4 BC', color:'#7a6a4f',
+    blurb:'Exiles return under Persian rule and rebuild Jerusalem and its Temple.' },
+  { id:'jesus',      name:'Life of Jesus',     range:'c. 4 BC–AD 30', color:'#8b2e1f',
+    blurb:'Jesus\u2019 birth, ministry in Galilee and Judea, death, and resurrection.' },
+  { id:'apostolic',  name:'Early Church',      range:'AD 30–95', color:'#a83a2c',
+    blurb:'The apostles and Paul carry the gospel from Jerusalem to Rome.' },
+];
+const ERA_MAP = Object.fromEntries(ERAS.map(e => [e.id, e]));
+
+// x,y already projected onto a 1000x500 viewBox
+const PLACES = [
+  { name:'Mount Ararat', x:883, y:83, eras:['origins'],
+    blurb:'Traditional resting place of Noah\u2019s ark after the flood waters receded.' },
+  { name:'Ur', x:928, y:303, eras:['patriarchs'],
+    blurb:'The Mesopotamian city Abraham left behind at God\u2019s call to journey toward Canaan.' },
+  { name:'Haran', x:751, y:161, eras:['patriarchs'],
+    blurb:'A way-station where Abraham\u2019s family settled for a time before he continued on alone.' },
+  { name:'Shechem', x:657, y:270, eras:['patriarchs','conquest'],
+    blurb:'Abraham\u2019s first stop in Canaan; centuries later, where Joshua renewed Israel\u2019s covenant.' },
+  { name:'Bethel', x:656, y:277, eras:['patriarchs'],
+    blurb:'Where Jacob dreamed of a stairway reaching to heaven.' },
+  { name:'Hebron', x:653, y:287, eras:['patriarchs','kingdom-united'],
+    blurb:'Burial place of Abraham, Isaac, and Jacob, and David\u2019s first capital before Jerusalem.' },
+  { name:'Memphis', x:556, y:329, eras:['patriarchs','exodus'],
+    blurb:'A major Egyptian center near where Joseph rose to power, and Israel later suffered bondage.' },
+  { name:'Goshen', x:568, y:305, eras:['patriarchs','exodus'],
+    blurb:'The fertile Nile-delta land Israel settled under Joseph, and left behind at the Exodus.' },
+  { name:'Sea of Reeds', x:590, y:331, eras:['exodus'],
+    blurb:'Traditional site of Israel\u2019s crossing out of slavery and into the wilderness.' },
+  { name:'Mount Sinai', x:624, y:364, eras:['exodus'],
+    blurb:'Where Moses received the Law after Israel\u2019s escape from Egypt.' },
+  { name:'Jericho', x:661, y:278, eras:['conquest','jesus'],
+    blurb:'The first Canaanite city to fall to Joshua; centuries later, a city Jesus passed through.' },
+  { name:'Samaria', x:655, y:268, eras:['kingdom-divided'],
+    blurb:'Capital of the northern kingdom of Israel after the split from Judah.' },
+  { name:'Jerusalem', x:655, y:281, eras:['kingdom-united','kingdom-divided','exile','return','jesus','apostolic'],
+    blurb:'City of David and Solomon\u2019s Temple; the center of worship through exile, return, and into the ministry of Jesus and the early church.' },
+  { name:'Damascus', x:682, y:237, eras:['kingdom-divided','apostolic'],
+    blurb:'Capital of ancient Aram, and the road where Paul\u2019s conversion took place.' },
+  { name:'Nineveh', x:854, y:166, eras:['kingdom-divided'],
+    blurb:'Capital of Assyria, the empire that conquered the northern kingdom \u2014 and the city Jonah was sent to warn.' },
+  { name:'Babylon', x:886, y:263, eras:['kingdom-divided','exile'],
+    blurb:'Capital of the empire that destroyed Jerusalem in 586 BC and carried Judah into exile.' },
+  { name:'Susa', x:962, y:270, eras:['return'],
+    blurb:'A Persian capital, and the setting of the book of Esther during Jewish life under Persian rule.' },
+  { name:'Nazareth', x:658, y:258, eras:['jesus'],
+    blurb:'The Galilean town where Jesus grew up.' },
+  { name:'Bethlehem', x:655, y:282, eras:['jesus'],
+    blurb:'Birthplace of Jesus, in the ancestral line of David.' },
+  { name:'Capernaum', x:664, y:253, eras:['jesus'],
+    blurb:'A Galilean fishing town that became the base of Jesus\u2019 public ministry.' },
+  { name:'Sea of Galilee', x:668, y:250, eras:['jesus'],
+    blurb:'The freshwater lake around which much of Jesus\u2019 ministry took place.' },
+  { name:'Tyre', x:655, y:243, eras:['jesus','apostolic'],
+    blurb:'A Phoenician port city Jesus visited, and later a stop on Paul\u2019s travels.' },
+  { name:'Antioch', x:679, y:170, eras:['apostolic'],
+    blurb:'Where believers were first called Christians, and the launch point for Paul\u2019s missionary journeys.' },
+  { name:'Cyprus', x:600, y:200, eras:['apostolic'],
+    blurb:'The first stop of Paul\u2019s first missionary journey.' },
+  { name:'Ephesus', x:459, y:126, eras:['apostolic'],
+    blurb:'A major city of Paul\u2019s ministry, and recipient of one of his letters.' },
+  { name:'Athens', x:368, y:125, eras:['apostolic'],
+    blurb:'Where Paul addressed the philosophers gathered at the Areopagus.' },
+  { name:'Corinth', x:348, y:127, eras:['apostolic'],
+    blurb:'A cosmopolitan trade city, and recipient of two of Paul\u2019s letters.' },
+  { name:'Philippi', x:382, y:50, eras:['apostolic'],
+    blurb:'The first city in Europe where Paul preached, and recipient of his letter of joy.' },
+  { name:'Rome', x:87, y:27, eras:['apostolic'],
+    blurb:'Capital of the empire, where the book of Acts leaves Paul under house arrest.' },
+  { name:'Malta', x:138, y:178, eras:['apostolic'],
+    blurb:'The island where Paul was shipwrecked on his way to Rome.' },
+];
+
+/* ---------------- Rendering ---------------- */
+
+const svg = document.getElementById('map');
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs){
+  const e = document.createElementNS(NS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+// graticule
+const gGrid = el('g', {});
+for(let x=0; x<=1000; x+=100) gGrid.appendChild(el('line', {class:'graticule', x1:x, y1:0, x2:x, y2:500}));
+for(let y=0; y<=500; y+=100) gGrid.appendChild(el('line', {class:'graticule', x1:0, y1:y, x2:1000, y2:y}));
+svg.appendChild(gGrid);
+
+// water bodies (schematic ellipses, not literal coastlines)
+const waters = [
+  {cx:330, cy:170, rx:260, ry:70, rot:-8},   // Great Sea / Mediterranean, west
+  {cx:600, cy:220, rx:70,  ry:36, rot:-20},  // eastern Mediterranean sliver near Levant
+  {cx:600, cy:345, rx:26,  ry:70, rot:12},   // Sea of Reeds / Red Sea
+  {cx:900, cy:300, rx:40,  ry:22, rot:10},   // Persian Gulf
+];
+waters.forEach(w=>{
+  svg.appendChild(el('ellipse', {
+    class:'water-body', cx:w.cx, cy:w.cy, rx:w.rx, ry:w.ry,
+    transform:`rotate(${w.rot} ${w.cx} ${w.cy})`
+  }));
+});
+
+// small named seas near Galilee/Dead Sea
+svg.appendChild(el('ellipse', {class:'water-body', cx:668, cy:249, rx:9, ry:7}));
+svg.appendChild(el('ellipse', {class:'water-body', cx:664, cy:296, rx:9, ry:14}));
+
+// sea labels
+function seaLabel(x,y,text,size){
+  const t = el('text', {class:'sea-label', x, y, 'font-size':size||13, 'text-anchor':'middle'});
+  t.textContent = text;
+  svg.appendChild(t);
+}
+seaLabel(300,175,'M A R E   I N T E R N U M',12);
+seaLabel(600,347,'SEA OF REEDS',8);
+seaLabel(900,296,'PERSIAN GULF',7);
+
+// rivers
+function river(pathD, label, lx, ly, rot){
+  svg.appendChild(el('path', {class:'river', d:pathD}));
+  const t = el('text', {class:'river-label', x:lx, y:ly, 'font-size':8, 'text-anchor':'middle',
+    transform: rot ? `rotate(${rot} ${lx} ${ly})` : null});
+  t.textContent = label;
+  svg.appendChild(t);
+}
+river('M 562 250 C 550 275, 558 300, 550 330 C 545 345, 552 355, 548 368', 'NILE', 528, 300, -80);
+river('M 800 150 C 830 190, 850 220, 878 262', 'EUPHRATES', 862, 200, 55);
+river('M 830 155 C 850 190, 858 220, 870 258', 'TIGRIS', 812, 205, 60);
+
+// compass rose (top-left corner)
+const compass = el('g', {class:'compass', transform:'translate(60,60)'});
+compass.appendChild(el('circle', {r:26, fill:'none', stroke:'#6b4a2f', 'stroke-width':1}));
+[[0,-30],[30,0],[0,30],[-30,0]].forEach(([dx,dy])=>{
+  compass.appendChild(el('line', {x1:0,y1:0,x2:dx,y2:dy, stroke:'#6b4a2f', 'stroke-width':1}));
+});
+const dirs = [['N',0,-36],['S',0,42],['E',38,4],['W',-40,4]];
+dirs.forEach(([t,x,y])=>{
+  const txt = el('text', {x,y,'text-anchor':'middle'});
+  txt.textContent = t;
+  compass.appendChild(txt);
+});
+svg.appendChild(compass);
+
+// pins group (rendered last, on top)
+const gPins = el('g', {});
+svg.appendChild(gPins);
+
+const pinEls = {};
+PLACES.forEach((p, i)=>{
+  const g = el('g', {class:'pin', 'data-name':p.name});
+  const ring = el('circle', {class:'ring', cx:p.x, cy:p.y, r:9});
+  const dot = el('circle', {class:'dot', cx:p.x, cy:p.y, r:5, fill: colorFor(p)});
+  const label = el('text', {class:'label', x:p.x+8, y:p.y+3});
+  label.textContent = p.name;
+  g.appendChild(ring);
+  g.appendChild(dot);
+  g.appendChild(label);
+  g.addEventListener('click', ()=> selectPlace(p));
+  gPins.appendChild(g);
+  pinEls[p.name] = g;
+});
+
+function colorFor(p){
+  // Old Testament vs New Testament base coloring when no era filter active
+  const ntEras = ['jesus','apostolic'];
+  return p.eras.some(e=>ntEras.includes(e)) && !p.eras.some(e=>!ntEras.includes(e))
+    ? '#8b2e1f' : '#8a6d3b';
+}
+
+/* ---------------- Timeline UI ---------------- */
+
+const timelineInner = document.getElementById('timelineInner');
+let activeEra = null;
+
+const allTab = document.createElement('button');
+allTab.className = 'era-tab all active';
+allTab.innerHTML = `<span class="name">All Eras</span>`;
+allTab.addEventListener('click', ()=> setEra(null));
+timelineInner.appendChild(allTab);
+
+ERAS.forEach(era=>{
+  const tab = document.createElement('button');
+  tab.className = 'era-tab';
+  tab.style.setProperty('--swatch', era.color);
+  tab.innerHTML = `<span class="name">${era.name}</span><span class="range">${era.range}</span>`;
+  tab.addEventListener('click', ()=> setEra(era.id, tab));
+  timelineInner.appendChild(tab);
+});
+
+function setEra(eraId, tabEl){
+  activeEra = eraId;
+  [...timelineInner.children].forEach(c=>c.classList.remove('active'));
+  (tabEl || allTab).classList.add('active');
+  applyFilter();
+  if(eraId){
+    showEraPanel(ERA_MAP[eraId]);
+  } else {
+    showEmptyPanel();
+  }
+}
+
+function applyFilter(){
+  PLACES.forEach(p=>{
+    const g = pinEls[p.name];
+    g.classList.remove('dim','lit');
+    if(!activeEra) return;
+    if(p.eras.includes(activeEra)){
+      g.classList.add('lit');
+      g.querySelector('.dot').setAttribute('fill', ERA_MAP[activeEra].color);
+    } else {
+      g.classList.add('dim');
+    }
+  });
+}
+
+/* ---------------- Detail panel ---------------- */
+
+const panel = document.getElementById('panel');
+
+function showEmptyPanel(){
+  panel.innerHTML = `<div class="empty">Select a place on the map, or choose an era below, to begin.</div>`;
+}
+
+function showEraPanel(era){
+  panel.innerHTML = `
+    <div class="eyebrow">Era</div>
+    <h2>${era.name}</h2>
+    <p style="font-style:italic; color:#8a6a48;">${era.range}</p>
+    <p>${era.blurb}</p>
+    <p class="coords">${PLACES.filter(p=>p.eras.includes(era.id)).length} places marked on the map</p>
+  `;
+}
+
+function selectPlace(p){
+  Object.values(pinEls).forEach(g=>g.classList.remove('selected'));
+  pinEls[p.name].classList.add('selected');
+  const tags = p.eras.map(id=>{
+    const e = ERA_MAP[id];
+    return `<span class="era-tag" style="background:${e.color}">${e.name}</span>`;
+  }).join('');
+  panel.innerHTML = `
+    <div class="eyebrow">Place</div>
+    <h2>${p.name}</h2>
+    <p>${p.blurb}</p>
+    <div>${tags}</div>
+  `;
+}
+
+applyFilter();
+</script>
+</body>
+</html>
