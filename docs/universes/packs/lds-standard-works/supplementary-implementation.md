@@ -24,8 +24,10 @@ count of new entities.
 | SC31, SC32, SC34 (wisdom and Twelve events/journeys/relationships, reading limits, chapter notes); S9-C1 | 59 (21 + 10 + 28; +2 children) | **imported, checkpoint 10** | codex tab `ot-more` |
 | S10-C1–C3; S3-C1 for SD0214 and SD0240 | 6 rows corrected; 31 child views | **checkpoint 11** (S3-C1 open for SD0238 only) | `ot-more`, `nt-more` |
 | SC35–SC43 D&C (places, events, teachings, relations, people, ancient participants, dated events) | 277 | **imported, checkpoints 14–17** | codex tab `dc-more` |
-| SC45 D&C section dossiers (DD001–DD138, DDO1–DDO2) | 140 | **DD001–DD070 imported, checkpoint 18**; DD071–DDO2 pending | codex tab `dc-more` |
-| SC46–SC49 Pearl of Great Price | 40 | pending | |
+| SC45 D&C section dossiers (DD001–DD138, DDO1–DDO2) | 140 | **imported, checkpoints 18–19** (S18/S19 fixes at 19–20) | codex tab `dc-more` |
+| SC46 PGP records and relationships (QG01–QG16) | 16 (+1 Cowdery 1834 child) | **imported, checkpoint 20** | codex tab `pgp-more` |
+| SC47 Articles of Faith 1–13 | 13 (1 card; 12 rows consolidated) | **imported, checkpoint 20** | codex tab `pgp-more` |
+| SC48 PGP identity constraints | 11 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
 | SC52–SC54 geography models | 11 | pending | |
 | SC55–SC62 dense payloads | 0 table rows | display deferral A04/Q04/RR06 unchanged | |
@@ -823,3 +825,57 @@ Accounting: **1,211 SD rows imported, 60 pending** (SC46 16, SC47 13, SC48 11, S
 Checks at the code commit: `pnpm format` clean, `pnpm check` 113/113 (new test “Supplementary checkpoint 19”; the checkpoint 18 test now covers all 140 dossiers and 60 pending; the SC35–SC39 count also excludes `ddo` keys), `pnpm check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2. `validate-coverage.py` and `validate-reference-disposition.py` pass; `validate-source-witnesses.py` reports the same missing private-archive capture files as the baseline (the archive is not in this environment), with manifest metadata unchanged.
 
 Playwright (SwiftShader, built `dist/` served under `/universe-sandbox/`, page ready in 25–83 s, codex opened and `dc-more` chosen through the DOM, CDP capture), scrolled to the Section 71 dossier: shots `s19-codex-dc-more-*` at **3840×2160**, 1440×900, 1280×800 and 390×844, no console errors, no card or page horizontal overflow; 423 cards in the DOM at each size, and “Section 71:”, “Section 138:”, “Official Declaration 2:” and the DD052 “Assignments include:” text all present. The 4K capture also shows the corrected DD070 with its six stewards. Keyboard, native-select, real-GPU and final same-head rendered evidence remain open.
+
+## Checkpoint 20: S19-C1–C4, DD104 wording, SC46 and SC47 (Pearl of Great Price)
+
+Code commit `be4c60eab72a4db26d81d18e4f977688016721ca`. Applies supplementary-review-s19 (379d9be) and its evidence
+follow-up (07eaa45), then starts the Pearl of Great Price families in a new codex tab `pgp-more` (“More Pearl of Great
+Price records and relationships”, gate `5/pgp`, no coordinates, routes or years).
+
+* **S19-C1** (SD1208, `copy_dd2.py` section 137): “A vision including Alvin Smith:” → “A vision including Joseph
+  Smith’s brother Alvin:”. Key, D&C 137 source and `4/dc` gate unchanged; `DCM-jsh-alvin-family` stays the only
+  surname view, at `5/pgp`, unchanged.
+* **S19-C2** (SD1195): “ward presidents are unnamed” → “the teachers’ and deacons’ presidents and the stake president,
+  with their counselors, are not named in verse 142”. The priests’ leader and Roundy’s conditional appointment kept.
+* **S19-C3** (SD1210): DDO1 keeps its wording and now cites Official Declaration 1 and “Church historical essay: The
+  Manifesto and the End of Plural Marriage — After the Manifesto” (the given URL), added in `copy_dd.py` for OD1 only.
+* **S19-C4** (SD1195): “Stock is set from $50 to $15,000” → “The instructions set a minimum of $50 per share and a
+  maximum total subscription of $15,000 from any one person”, followed by the unchanged semicolon and subscriber list.
+* **DD104 refinement** (SD1175): “Martin Harris, the lot John Johnson had obtained in exchange for his former
+  inheritance”, as supplied.
+* **SC46** (SD1212–SD1227): one `PGM-qgNN-` card per QG row via new `copy_pgp.py`; row text in reader sentences with
+  each row’s limit kept as a sentence (homonyms: Cain’s and Seth’s Enoch and Lamech, Cainan person/land, the two
+  Enoses; reported speech for the sister instruction; no numeric dates; the existing journey/place cards named in
+  “See also”, which build.py now checks against every card name in the pack). Sources are the row locators as
+  official chapter links; QG15/QG16 keep their own essay/introduction links, and QG15 adds Moses 7:8, 22 and Abraham
+  1:21–27 as paired. QG14 carries the JS—History subranges, the December-arrival and April 7, 1829 limits (audit
+  correction 4), and a child `PGM-qg14-cowdery-1834` for the appended 1834 Cowdery reminiscence (SC47 rule: separately
+  attributed, not verse 76).
+* **SC47** (SD1228–SD1240): consolidated per the row rule into one card, `PGM-aof-1-13` “Articles of Faith 1–13, article
+  by article”, keeping each article’s clause and naming the existing PC06 / C06 / PC07 / C07 / PC08 view for it. The
+  12 consolidated rows keep their own `Articles of Faith 1:N` locators in the mapping; the card cites 1:1–13 once
+  (new optional `MERGE_NO_SRC` in the copy module).
+
+Builder readings for ChatGPT:
+
+1. SC47 says “consolidate … under PC06”. PC06–PC08 are hand-written cards outside the generated blocks, so the 13
+   clauses sit in one generated card that points to them rather than being written into PC06 itself. If the
+   reviewer wants the clauses inside PC06, that is a hand edit next checkpoint.
+2. QG04 names the occupations (tents and cattle, music, metalworking) from SC48’s row SD1242, which assigns that
+   context to QG04; SC48’s typed relations themselves are not yet built.
+3. QG05 adds “Cainan the person is not the land of Cainan, and this Enos is not the Book of Mormon writer” from SD1243
+   and audit correction 2; QG04 adds “this Enoch is not the Enoch of Seth’s line” from the same correction.
+4. QG12 says “the evidence limit on the papyri still applies” and points to “Book of Abraham: Church account of
+   papyri” rather than restating pgp-inventory.md’s limit.
+
+Counts: 1,240 SD rows imported (1,211 + 29), **31 pending** (SC48 11, SC50 9, SC52 3, SC53 4, SC54 4); 75 child views;
+1,323 imported mapping rows. `pgp-more` has 18 cards.
+
+Checks at the code commit: `pnpm format` clean, `pnpm check` 115/115 (new tests “Supplementary checkpoint 20: S19-C1–C4”
+and “… SC46 QG01–QG16 and SC47”; child count 75; the OD1 source assertion allows the S19-C3 essay), `pnpm check:dist`
+OK, `pnpm test:pages` 13 pages × 2. Regeneration from the accepted register reproduces the pack byte-for-byte after
+Prettier. Playwright (SwiftShader, built `dist/` served under `/universe-sandbox/`, page ready in 28–112 s, codex
+opened and `pgp-more` chosen through the DOM, CDP capture): shots `s20-codex-pgp-more-*` at **3840×2160**, 1440×900,
+1280×800 and 390×844, no console errors, no card or page horizontal overflow, 18 cards in the DOM at each size with
+the Articles card and the Cowdery view present. Keyboard, native-select, real-GPU and final same-head rendered
+evidence remain open.
