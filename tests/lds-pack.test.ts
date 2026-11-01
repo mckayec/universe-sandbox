@@ -280,7 +280,9 @@ test('BA07 round 2: 108 further source views (107 research IDs) resolve with the
   const all = P.codex.flatMap((t: any) => t.list);
   const keys = all.filter((x: any) => x.key).map((x: any) => x.key);
   assert.equal(new Set(keys).size, keys.length, 'keys are unique');
-  assert.equal(keys.length, 170);
+  // 170 primary source views plus the supplementary tab(s), counted separately
+  const supp = P.codex.filter((t: any) => t.id === 'bom-more').flatMap((t: any) => t.list).length;
+  assert.equal(keys.length - supp, 170);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const work: Record<number, string> = { 1: 'ot', 2: 'nt', 3: 'bom', 4: 'dc', 5: 'pgp' };
   for (const id of ids) {
@@ -324,5 +326,35 @@ test('BA07 round 2: 108 further source views (107 research IDs) resolve with the
     assert.equal(byKey.get(id).date, d, id);
     assert.match(L.itemMeta(null, null, byKey.get(id)), new RegExp(d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), id);
     assert.equal(L.timeOk(byKey.get(id), [1500, 1600]), true, `${id} has no year for the filter`);
+  }
+});
+
+test('Supplementary SC01–SC07: every Book of Mormon SD row maps to one bom-layer card with sources', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const sd = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},/.test(r));
+  assert.equal(sd.length, 1271);
+  const bom = sd.filter(r => /^SD\d{4},SC0[1-7],/.test(r));
+  assert.equal(bom.length, 111);
+  const list = codex('bom-more');
+  const keys = new Set(list.map((x: any) => x.key));
+  assert.equal(keys.size, list.length);
+  for (const r of bom) {
+    const m = r.match(/,imported,codex:bom-more,([^,]+),/);
+    assert.ok(m && keys.has(m[1]), r.slice(0, 40));
+  }
+  for (const x of list) {
+    assert.deepEqual(plain(x.layers), ['bom']);
+    assert.deepEqual(plain(x.books), [3]);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => s.u.startsWith('https://')), x.key);
+  }
+  // hidden under every other single layer
+  for (const layer of ['ot', 'nt', 'dc', 'pgp']) {
+    assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
 });
