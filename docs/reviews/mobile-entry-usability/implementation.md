@@ -48,7 +48,7 @@ Screenshots (JPEG, half size): `shots/before-*` / `shots/after-*` for 320×640, 
 
 - `pnpm format`, `pnpm check`: pass (82/82 tests, check:dist 111 files OK).
 - `pnpm test:pages`: 12 pages × 2 viewports pass.
-- `pnpm test:browser`: times out at line 88 (Load after Save does not restore the saved count within 30 s) — **identical failure on unmodified main bb91b1b** in this environment, so not caused by this change. CI on the PR is the authority.
+- `pnpm test:browser`: times out at line 88 (Load after Save does not restore the saved count within 30 s) — **identical failure on unmodified main bb91b1b** in this environment, so not caused by this change. CI on the PR is the authority: run 41273407304 at 91b9304 passed (deploy skipped).
 
 ## 5. Not done / open
 
