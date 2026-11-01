@@ -19,6 +19,7 @@ import copy_bom
 import copy_nt
 import copy_ot
 import copy_otl
+import copy_mp
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -35,7 +36,8 @@ FAMILIES = {'bom': ('bom-more', [3], ['bom'], copy_bom), 'nt': ('nt-more', [2], 
 BUILT = {f'SC0{i}': 'bom' for i in range(1, 8)}
 BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
-COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl]
+BUILT.update({f'SC{i:02d}': 'ot' for i in range(25, 29)})
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}
@@ -51,6 +53,8 @@ for _line in (HERE.parent / 'coverage-ot-late-history.md').read_text(encoding='u
         LEDGER[_m.group(1)] = (_m.group(2), _m.group(3))
 LH_REF = re.compile(r'(LH[12ENS]-)(\d+)(?::([\d–,\-]+)|((?:[–-]\d+)?(?:,\d+(?:[–-]\d+)?)*))')
 OT_BOOKS = {re.search(r'/scriptures/ot/([^/?]+)/', u).group(1): t.rsplit(' ', 1)[0] for t, u in LEDGER.values()}
+# SC24–SC34 rows carry their own links to books outside those two ledgers
+OT_BOOKS.update({'isa': 'Isaiah', 'jer': 'Jeremiah', 'lam': 'Lamentations', 'ezek': 'Ezekiel'})
 LEDGER_REF = re.compile(r'OH-(RU|S1-|S2-|K1-|K2-|[GXLNDQJ])(\d+(?:[–-]\d+)?(?:,\d+(?:[–-]\d+)?)*)')
 LINK = re.compile(r'\[([^\]]+)\]\((https://[^)\s]+)\)')
 
@@ -150,6 +154,11 @@ def main(path):
     # rows consolidated into another row's card (copy value is that row's SD id): their sources join the card
     by_sd = {r['disposition_id']: r for r in rows}
     merged = {}
+    prose_into = {}
+    for m in COPY_MODULES:
+        for cat, loc, rid, tsd, (t, path) in getattr(m, 'PROSE_INTO', []):
+            assert tsd in copy and not isinstance(copy[tsd], str), (rid, tsd)
+            prose_into.setdefault(tsd, []).append((cat, loc, rid, t, BASE + path + '?lang=eng'))
     for sd, v in copy.items():
         if isinstance(v, str):
             assert v in copy and not isinstance(copy[v], str), (sd, v)
@@ -175,10 +184,19 @@ def main(path):
                 if (t, u) not in src and not (':' not in t and any(u == v for _, v in src)):
                     src.append((t, u))
             assert src, sd
+            for _c, _l, _r, pt, pu in prose_into.get(sd, []):
+                # the prose view's wider locator replaces the card's label for the same chapter URL
+                hit = [i for i, (_, u) in enumerate(src) if u == pu]
+                assert len(hit) == 1, (sd, pu)
+                src[hit[0]] = (pt, pu)
             lines[fam].append(entry(key, name, desc, src, books, layers))
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
                             f'codex:{tab}', key, name, '; '.join(t for t, _ in src), r['work_gate'],
                             r['consolidation_rule'], r['row_sha256']])
+            for pcat, ploc, prid, pt, _u in prose_into.get(sd, []):
+                mapping.append(['', pcat, ploc, prid, 'imported', f'codex:{tab}', key, name, pt, r['work_gate'],
+                                f'consolidated into {sd} card (prose-only source view); no additional event or card',
+                                ''])
             for ckey, cname, cdesc, csrc in children.get(sd, []):
                 csrc = [(ct, BASE + cp + '?lang=eng') for ct, cp in csrc]
                 lines[fam].append(entry(ckey, cname, cdesc, csrc, books, layers))
@@ -213,7 +231,8 @@ def main(path):
     n = sum(1 for m in mapping if m[4] == 'imported')
     print(f'{n} imported mapping rows ({sum(1 for m in mapping if m[0] and m[4]=="imported")} SD rows, '
           f'{sum(1 for m in mapping if m[2].startswith("child of"))} child views, '
-          f'{sum(1 for m in mapping if m[10].startswith("consolidated into"))} SD rows consolidated into another card); '
+          f'{sum(1 for m in mapping if m[0] and m[10].startswith("consolidated into"))} SD rows and '
+          f'{sum(1 for m in mapping if not m[0] and m[10].startswith("consolidated into"))} prose views consolidated into another card); '
           f'{sum(1 for m in mapping if m[4]=="pending")} pending')
 
 

@@ -407,7 +407,8 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   assert.equal(ot.length, 177);
   const list = codex('ot-more');
   // 177 parent cards + 1 child source view (SD0443 stage list) + 83 SC18–SC23 cards (93 rows, 10 consolidated)
-  assert.equal(list.length, 261);
+  // + 59 SC25–SC28 major-prophet cards
+  assert.equal(list.length, 320);
   const keys = new Set(list.map((x: any) => x.key));
   assert.equal(keys.size, list.length);
   for (const r of ot) {
@@ -427,7 +428,7 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
-  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 261);
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 320);
 });
 
 test('Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card', () => {
@@ -462,6 +463,46 @@ test('Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; 
   // SD0226 context requirement (supplementary-review-s5)
   const acts6 = codex('nt-more').find((x: any) => x.key === 'NTE-jerusalem-community-6').desc;
   assert.ok(/Nicolas as a proselyte of Antioch/.test(acts6) && /not a narrated journey by Stephen/.test(acts6));
+});
+
+test('Supplementary SC25–SC28 and S6-C1: major-prophet rows map to OTM cards; SC22 prose consolidated', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const lines = csv.trim().split('\n');
+  const rows = lines.filter(r => /^SD\d{4},SC2[5-8],/.test(r));
+  assert.equal(rows.length, 59);
+  const ot = codex('ot-more');
+  const by = (key: string) => ot.find((x: any) => x.key === key);
+  const own = new Set<string>();
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:ot-more,(OTM-[^,]+),/);
+    assert.ok(m && by(m[1]), r.slice(0, 40));
+    own.add(m![1]);
+  }
+  assert.equal(own.size, 59);
+  for (const k of own) {
+    const x = by(k);
+    assert.deepEqual(plain(x.layers), ['ot']);
+    assert.ok(
+      x.src.every((s: any) => /\/scriptures\/ot\/(isa|jer|lam|ezek)\//.test(s.u)),
+      k,
+    );
+  }
+  // verse-level locators from the rows' own links; the unlinked comparison passage is cited
+  assert.ok(by('OTM-j02-moab-refugees').src.some((s: any) => s.t === 'Isaiah 16:1–4'));
+  assert.ok(by('OTM-j26-fall-messenger').src.some((s: any) => s.t === 'Ezekiel 24:25–27'));
+  // SD0706 gate: the Bible/Book of Mormon reading of Ezekiel 37 is not on the 1/ot card
+  assert.ok(!/Book of Mormon/.test(by('OTM-c10-restoration-bones-sticks').desc));
+  // S6-C1: SC22 prose view consolidated into the Megiddo card, no extra card
+  const prose = lines.filter(r => r.includes(',lh-j17-josiah-return,'));
+  assert.equal(prose.length, 1);
+  assert.ok(/^,SC22,.*,OTL-megiddo,.*consolidated into SD0550 card \(prose-only/.test(prose[0]));
+  const meg = by('OTL-megiddo');
+  assert.ok(/second chariot/.test(meg.desc) && /death and burial/.test(meg.desc));
+  assert.deepEqual(plain(meg.src.map((s: any) => s.t)), ['2 Chronicles 35:22–25']);
+  assert.equal(ot.filter((x: any) => x.key === 'OTL-megiddo').length, 1);
 });
 
 test('Supplementary S3/S4 review fixes: child source views follow their parents and required details are present', () => {

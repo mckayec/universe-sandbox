@@ -76,7 +76,7 @@ COPY = {
     'SD0527': ('OTL-shechem', 'Shechem: Rehoboam’s assembly', P + 'Rehoboam goes to Shechem for the assembly that precedes the division of the kingdom. The same Shechem as Shechem (Sichem), not a new royal-era city.'),
     'SD0528': ('OTL-bethlehem', 'Bethlehem in Chronicles', P + 'Chronicles names Bethlehem in David’s water episode and in Rehoboam’s defenses; the episodes stay separate. The same city as Bethlehem of Judah.'),
     'SD0529': ('OTL-samaria', 'Samaria in Chronicles', P + 'Samaria is a royal meeting place and the setting for the release and care of Judah’s captives. The same city as Samaria (city).'),
-    'SD0530': ('OTL-damascus', 'Damascus in Chronicles', P + 'Damascus is named in diplomatic and captive contexts. The city is kept distinct from its rulers and from Judah’s imitation of its cult.'),
+    'SD0530': ('OTL-damascus', 'Damascus in Chronicles', P + 'Damascus is named in diplomatic and captive contexts. The city is kept distinct from its rulers and from Ahaz’s adoption of worship of its gods.'),
     'SD0531': ('OTL-ramoth-gilead', 'Ramoth-gilead in Chronicles', P + 'Ahab and Jehoshaphat’s campaign at Ramoth-gilead ends with Ahab’s death; it is the campaign Kings also tells, not a second event. In Micaiah’s speech before it, the KJV says the Lord has put a lying spirit in the prophets’ mouths, while the JST reads that the Lord has found a lying spirit there. Both wordings are kept; they belong to the same confrontation.'),
     'SD0532': ('OTL-tekoa', 'Tekoa', P + 'Jehoshaphat’s company goes toward the wilderness of Tekoa; the town also appears among Rehoboam’s fortified places.'),
     'SD0533': ('OTL-berachah-valley', 'Valley of Berachah', P + 'The valley receives a name of blessing after the reported victory. No modern valley is selected.'),
@@ -96,7 +96,7 @@ COPY = {
     'SD0547': ('OTL-joppa', 'Joppa (Chronicles and Ezra)', P + 'Joppa is the landing place for timber brought by sea from Lebanon. The narrative does not identify a surviving wharf.'),
     'SD0548': ('OTL-succoth-casting', 'Bronze casting between Succoth and Zeredathah', P + 'Solomon’s bronze casting is placed in the Jordan plain between Succoth and Zeredathah. This Succoth is not the Exodus camp, and no furnace site is located.'),
     'SD0549': ('OTL-zeredathah', 'Zeredathah', P + 'Zeredathah is an endpoint used to describe the bronze casting ground; no exact furnace location follows.'),
-    'SD0550': ('OTL-megiddo', 'Megiddo: Josiah wounded', P + 'Josiah is wounded in the valley of Megiddo and taken to Jerusalem, where he dies in Chronicles’ account. Its wording differs from Kings, and the difference is kept.'),
+    'SD0550': ('OTL-megiddo', 'Megiddo: Josiah wounded', P + 'After being wounded in the valley of Megiddo, Josiah is transferred to a second chariot and taken to Jerusalem, where Chronicles reports his death and burial. Its wording differs from Kings and remains separately attributed. No exact road or battle point is supplied.'),
     'SD0551': ('OTL-lachish', 'Lachish in Chronicles', P + 'Lachish appears among Rehoboam’s defenses and as Sennacherib’s siege setting when his servants address Jerusalem.'),
     'SD0552': ('OTL-azekah', 'Azekah', P + 'Azekah belongs to Rehoboam’s list of fortified cities. No construction date is calculated.'),
     'SD0553': ('OTL-gerar', 'Gerar: Asa’s pursuit', P + 'Asa’s army pursues the defeated force toward Gerar and attacks the surrounding cities. No campaign path is drawn.'),
@@ -120,3 +120,11 @@ COPY = {
 
 EXTRA_SRC = {}
 CHILDREN = {}
+
+# Prose-only source views (no SD row) consolidated into an existing card (supplementary-review-s6, S6-C1).
+# (category, source_location, research id, target SD row, (locator, path)): build.py writes a mapping row
+# `consolidated into SDnnnn card (prose)`, and the locator replaces the card's source label for the same
+# chapter URL. No additional card or event.
+PROSE_INTO = [
+    ('SC22', 'coverage-ot-late-history.md:429', 'lh-j17-josiah-return', 'SD0550', ('2 Chronicles 35:22–25', 'ot/2-chr/35')),
+]

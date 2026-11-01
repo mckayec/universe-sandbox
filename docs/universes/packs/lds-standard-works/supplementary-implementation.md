@@ -18,7 +18,8 @@ count of new entities.
 | SC13–SC17 Old Testament history (Genesis–2 Kings) | 177 | **imported, checkpoint 4** | codex tab `ot-more` |
 | S3/S4 review fixes | 13 parent rows corrected; 25 child source views | **checkpoint 5** (S3-C1 partial) | `nt-more`, `ot-more` |
 | SC18–SC23 Old Testament late history (Chronicles–Esther) | 93 (83 cards; 10 rows consolidated) | **imported, checkpoint 6** | codex tab `ot-more` |
-| SC24–SC34 Old Testament (prophets, wisdom) | 222 | pending | next runs, same tab |
+| SC25–SC28 Old Testament major prophets (movements, people, themes, extra movements) | 59 | **imported, checkpoint 7** | codex tab `ot-more` |
+| SC24, SC29–SC34 Old Testament (major-prophet places/apparatus, wisdom and minor prophets) | 163 | pending | next runs, same tab |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
@@ -283,3 +284,53 @@ cards, JST/BD sources on the consolidated cards, a verse-level ledger source, an
 and tab chosen through the DOM, CDP capture): shots `s6-codex-ot-late-*` at 3840×2160, 1440×900, 1280×800, 390×844
 (phone via the section chooser), scrolled to the first new card; 261 cards listed, no console or page errors.
 Native select, keyboard and real-GPU gates remain open.
+
+## Checkpoint 7: S6-C1; SC25–SC28 (Isaiah, Jeremiah, Lamentations, Ezekiel)
+
+Review input: [supplementary-review-s6.md](https://github.com/mckayec/universe-sandbox/blob/00c6be8ac1cc93083cecfc299146b97cbca5d09d/docs/universes/packs/lds-standard-works/supplementary-review-s6.md) (PR34 `00c6be8`). The input register is byte-identical to the one used since checkpoint 1, and the generator reproduced the checkpoint 6 pack and mapping byte-for-byte before any change.
+
+* **S6-C1 (SC22 prose, `lh-j17-josiah-return`)**: `OTL-megiddo` (SD0550) now carries the review's replacement text
+  verbatim (second chariot, transport, death and burial, separately attributed from Kings, no road or battle point).
+  Its source label is now **2 Chronicles 35:22–25** (same official chapter URL). New `PROSE_INTO` in
+  `copy_otl.py`; build.py writes one mapping row `,SC22,coverage-ot-late-history.md:429,lh-j17-josiah-return,…,OTL-megiddo,…`
+  with `consolidated into SD0550 card (prose-only source view); no additional event or card` and no SD id. Gate `1/ot`,
+  no geometry, no new card; Kings' `OHP-MEGIDDO` stays the separate comparison card.
+* **SD0530 optional wording**: the review's suggested second sentence applied (“…from Ahaz’s adoption of worship of its
+  gods”).
+* **SC25–SC28, 59 SD rows**, one card each, keyed `OTM-` + the research id without `mp-`, display copy in
+  [copy_mp.py](supplementary-build/copy_mp.py). Gate `1/ot`; no coordinates, routes, years or animation. Every
+  row carries its own official links; verses are kept (`Isaiah 16:1–4`). SD0699's unlinked “compare the advance
+  sign in 24:25–27” is cited as `Ezekiel 24:25–27`. No row is consolidated: SC28's four movements have no parent
+  journey card among the built rows, so each is its own card (SD0700 names the SD0673 card “Ebed-melech”).
+* **Movement classes kept** (SC25 rule): each card says whether it is an oracle, a promise, a vision, a sign-action
+  or a reported movement, and what it is not (not a road itinerary, not a completed migration, no bodily round trip,
+  not Ezekiel's own deportation).
+* **Extends, not duplicates**: SD0654 is Jeremiah's own source view beside the Kings card “Zedekiah’s capture”;
+  SD0679 names “Zedekiah (Mattaniah)”. Place identities in these rows (Lachish, Libnah, Mizpah, Tahpanhes, Riblah …)
+  are SC24 rows, not built yet; those cards and their reuse of existing place cards come next.
+* **Gate held back (SD0691/SD0706)**: the Ezekiel 37 card at `1/ot` keeps the restoration/reunion reading and the
+  heading's resurrection and messianic-David readings as attributed layers, but not the heading's Bible/Book of
+  Mormon reading: SD0706 (SC29) makes that a distinct child card gated at the Book of Mormon. SC29 needs cards gated
+  at `3/bom` and `4/dc`, which the generator's one-gate-per-family model does not do yet; it is built with SC29.
+
+Builder readings for ChatGPT to check: SD0642 renders “Nob threatening Zion” as “Nob, from which Zion is threatened”;
+SD0656 renders “catches him” as “catches up with him”; SD0696 renders “the tenth day for the burning entry” as “the
+tenth day in its account of the burning”; SD0697 renders “The carriers' journey is not Jeremiah's journey” as “The
+carriers make the journey, not Jeremiah”; SD0680 renders “A satanic application requires explicit attribution” as
+“Applying the oracle to Satan is an interpretation that needs explicit attribution”.
+
+Accounting: 627 SD rows imported (568 + 59; 10 consolidated), 644 pending; prose 7 + 1 consolidated SC22 prose view;
+25 children unchanged. Mapping 1,304 rows. Card totals: `nt-more` 211 (unchanged), `ot-more` 261 + 59 = 320. S3-C1
+remains open for SD0214, SD0238, SD0240.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (102/102; new test: all 59 SC25–SC28 rows map to their own `OTM-` card with only
+Isaiah/Jeremiah/Lamentations/Ezekiel sources and the OT gate, verse labels kept, the Ezekiel 24 comparison cited, no
+Book of Mormon reading on the Ezekiel 37 card, the SC22 prose row consolidated into the single `OTL-megiddo` card with
+the 35:22–25 locator), `check:dist` 114 files OK, `pnpm format:check` clean, `pnpm test:pages` 13 pages × 2 viewports.
+
+Rendered (SwiftShader, built `dist/` served under `/universe-sandbox/`, page ready in 30–80 s, codex opened and
+section chosen through the DOM, CDP capture): shots `s7-codex-ot-prophets-*` at 3840×2160, 1440×900, 1280×800,
+390×844 (phone via the section chooser), scrolled to the first new card; 320 cards listed in `ot-more`, no console
+or page errors. Native select, keyboard and real-GPU gates remain open.
