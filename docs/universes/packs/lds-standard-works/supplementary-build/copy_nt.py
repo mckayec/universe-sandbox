@@ -142,9 +142,9 @@ COPY = {
     'SD0236': ('NTE-arrest-hearings', 'Paul’s arrest and hearings', P + 'Acts describes Paul’s arrest in Jerusalem after accusations at the temple; Acts 22–26 go on to his defenses, escort, the hearings before Felix, Festus and Agrippa, and two years’ custody. No verdict and no conversion of Agrippa is inferred.'),
     'SD0237': ('NTE-shipwreck-survival', 'Shipwreck and survival', P + 'Acts narrates shipwreck and survival after a prolonged storm, on the island named Melita in Acts 28:1. No modern wreck site, snake species or weather reconstruction is offered.'),
     # SC11 Codex: teachings and themes, each attributed to its source
-    'SD0238': ('NTC-genealogies', 'Genealogies of Jesus', P + 'Matthew presents a genealogy through Joseph; Luke 3 supplies a different named lineage. They are kept as separate lists, with no inferred line through Mary.'),
+    'SD0238': ('NTC-genealogies', 'Genealogies of Jesus', P + 'Matthew presents a genealogy through Joseph; Luke 3 supplies a different named lineage. They are kept as separate lists, each in its own view, with no inferred line through Mary.'),
     'SD0239': ('NTC-sermon-mountain', 'Sermon on the mount', P + 'Matthew presents teaching on blessing, reconciliation, integrity and love of enemies; chapters 6–7 continue with prayer, almsgiving, trust, judgment and action. Luke 6 has its own setting on a plain.'),
-    'SD0240': ('NTC-parables', 'Kingdom parables', P + 'Matthew presents kingdom teaching through seed, treasure, pearl and net comparisons. Parables in Matthew 18–25, Mark 4 and Luke 10–19 follow as separate views with their passages; places and estates within parables are not mapped.'),
+    'SD0240': ('NTC-parables', 'Kingdom parables', P + 'Matthew presents kingdom teaching through seed, treasure, pearl and net comparisons. Additional attributed parable views follow in each Gospel’s order; story settings are not mapped.'),
     'SD0241': ('NTC-commission-keys', 'Peter’s confession and the keys', P + 'Matthew connects Peter’s confession with promises concerning keys and binding and loosing. The restricted first mission of Matthew 10 differs from the worldwide commission of Matthew 28; the stages are not merged.'),
     'SD0242': ('NTC-family-marriage', 'Marriage and divorce teaching', P + 'Matthew reports teaching on marriage, divorce and differing conditions of life. Mark 10, 1 Corinthians 7 and Ephesians 5 keep their own wording; no single harmonized rule is made.'),
     'SD0243': ('NTC-baptism-spirit', 'Born of water and Spirit', P + 'John presents Jesus’s teaching to Nicodemus about birth of water and Spirit. John 4:2 says the disciples baptize; Acts 8, 10 and 19 tell baptism and the Spirit in differing orders, each kept as told.'),
@@ -272,7 +272,7 @@ CHILDREN = {
         ('NTE-calls-and-healings-matt-9', 'Calls, healings and crossings (Matthew 9)', P + 'Matthew 9: Jesus returns to his own city; a paralytic is healed, Matthew is called, and a ruler’s daughter and a woman are healed. The ruler is unnamed here. Two blind men and a dumb man follow in 9:27–34.', [('Matthew 9', 'nt/matt/9')]),
         ('NTE-calls-and-healings-matt-12', 'Calls, healings and crossings (Matthew 12)', P + 'Matthew 12: Sabbath controversies, a healing and teaching on Jesus’s family; Jonah and Nineveh and the queen of the south are recalled as examples, not drawn as places.', [('Matthew 12', 'nt/matt/12')]),
         ('NTE-calls-and-healings-mark-1', 'Calls, healings and crossings (Mark 1)', P + 'Mark 1: John baptizes in the wilderness at the Jordan; Jesus comes from Nazareth, is tempted, calls fishermen, and teaches and heals at Capernaum before wider preaching in Galilee.', [('Mark 1', 'nt/mark/1')]),
-        ('NTE-calls-and-healings-mark-2', 'Calls, healings and crossings (Mark 2)', P + 'Mark 2: a healing in a house at Capernaum, Levi’s call, a meal and Sabbath disputes. Mark’s naming of Abiathar is kept beside 1 Samuel 21’s Ahimelech; the difference is not silently resolved.', [('Mark 2', 'nt/mark/2')]),
+        ('NTE-calls-and-healings-mark-2', 'Calls, healings and crossings (Mark 2)', P + 'Mark 2: a healing in a house at Capernaum, Levi’s call, a meal and Sabbath disputes. Mark’s naming of Abiathar is kept beside 1 Samuel 21’s Ahimelech; the difference is not silently resolved.', [('Mark 2', 'nt/mark/2'), ('1 Samuel 21', 'ot/1-sam/21')]),
         ('NTE-calls-and-healings-mark-3', 'Calls, healings and crossings (Mark 3)', P + 'Mark 3: crowds from several regions gather by the sea; Jesus appoints the Twelve on a mountain and defines his family. The mountain is not located.', [('Mark 3', 'nt/mark/3')]),
         ('NTE-calls-and-healings-mark-4', 'Calls, healings and crossings (Mark 4)', P + 'Mark 4: teaching from a boat beside the sea, including seed parables; a crossing ends with the calming of a storm. No storm track is drawn.', [('Mark 4', 'nt/mark/4')]),
         ('NTE-calls-and-healings-mark-5', 'Calls, healings and crossings (Mark 5)', P + 'Mark 5: across the sea in the country of the Gadarenes, Jesus frees a man possessed, who then proclaims in the Decapolis; after the return crossing come Jairus’s daughter and a woman’s healing. News of the daughter’s death arrives after Jairus’s request; this order is kept beside Matthew 9.', [('Mark 5', 'nt/mark/5')]),
@@ -286,9 +286,12 @@ CHILDREN = {
     'SD0240': [
         ('NTC-parables-matt-18', 'Parables (Matthew 18)', P + 'Matthew 18: teaching on humility, care for little ones, reconciliation and forgiveness includes a parable of a servant.', [('Matthew 18', 'nt/matt/18')]),
         ('NTC-parables-matt-20', 'Parables (Matthew 20)', P + 'Matthew 20: labourers in a vineyard illustrate reward. The vineyard is a story setting, not a mapped estate.', [('Matthew 20', 'nt/matt/20')]),
+        ('NTC-parables-matt-21', 'Parables (Matthew 21)', P + 'Matthew 21: two sons answer their father’s request differently; then vineyard tenants reject the owner’s servants and kill his son. These are separate parables, not mapped estates or additional historical killings.', [('Matthew 21:28–32, 33–46', 'nt/matt/21')]),
         ('NTC-parables-matt-22', 'Parables (Matthew 22)', P + 'Matthew 22: amid controversies at the temple, a parable of a wedding feast.', [('Matthew 22', 'nt/matt/22')]),
         ('NTC-parables-matt-25', 'Parables (Matthew 25)', P + 'Matthew 25: the ten virgins, the talents, and the sheep and the goats describe preparedness and judgment.', [('Matthew 25', 'nt/matt/25')]),
         ('NTC-parables-mark-4', 'Parables (Mark 4)', P + 'Mark 4: seed parables taught from a boat beside the sea.', [('Mark 4', 'nt/mark/4')]),
+        ('NTC-parables-mark-12', 'Parables (Mark 12)', P + 'Mark 12: vineyard tenants mistreat the owner’s servants and kill his beloved son. Mark places the killing before the son is cast out; each Gospel’s order is kept as written, not harmonized.', [('Mark 12:1–12', 'nt/mark/12')]),
+        ('NTC-parables-luke-8', 'Parables (Luke 8)', P + 'Luke 8: the sower and its interpretation, in terms of hearing and keeping God’s word. This teaching is separate from the chapter’s crossing and healings; no farm is located.', [('Luke 8:4–15', 'nt/luke/8')]),
         ('NTC-parables-luke-10', 'Parables (Luke 10)', P + 'Luke 10: the parable of the Samaritan is set on the road from Jerusalem to Jericho. It is a story setting, so no route is drawn.', [('Luke 10', 'nt/luke/10')]),
         ('NTC-parables-luke-12', 'Parables (Luke 12)', P + 'Luke 12: warnings about hypocrisy, possessions and readiness include the rich fool and parables of servants.', [('Luke 12', 'nt/luke/12')]),
         ('NTC-parables-luke-13', 'Parables (Luke 13)', P + 'Luke 13: the fig tree story is a parable, separate from the tower of Siloam and the healed woman in the same chapter.', [('Luke 13', 'nt/luke/13')]),
@@ -297,6 +300,7 @@ CHILDREN = {
         ('NTC-parables-luke-16', 'Parables (Luke 16)', P + 'Luke 16: the steward, and the rich man and Lazarus, teach about wealth and accountability. This beggar Lazarus is not assumed to be the Lazarus of John 11.', [('Luke 16', 'nt/luke/16')]),
         ('NTC-parables-luke-18', 'Parables (Luke 18)', P + 'Luke 18: the widow and the judge, and the Pharisee and the publican.', [('Luke 18', 'nt/luke/18')]),
         ('NTC-parables-luke-19', 'Parables (Luke 19)', P + 'Luke 19: the parable of the pounds. Its nobleman is not identified with Archelaus.', [('Luke 19', 'nt/luke/19')]),
+        ('NTC-parables-luke-20', 'Parables (Luke 20)', P + 'Luke 20: vineyard tenants reject the owner’s servants, cast out his beloved son and kill him; the hearers answer “God forbid.” Luke’s sequence is kept as written; the story is not a mapped event.', [('Luke 20:9–19', 'nt/luke/20')]),
     ],
     'SD0213': [
         ('NTE-temptations-luke', 'Temptations in Luke’s order', P + 'Luke 4:1–13 gives the temptations in the order wilderness, mountain, Jerusalem, so Luke’s account ends at Jerusalem. A separate source account beside Matthew’s; no merged journey is drawn, and no mountain is located.',
@@ -355,3 +359,48 @@ CHILDREN = {
          [('Revelation 21', 'nt/rev/21'), ('Revelation 22', 'nt/rev/22')]),
     ],
 }
+
+# S3-C1 / S11 genealogy-handoff: SD0238's two lineage lists as separate ordered reference views (2/nt). Names come
+# from ChatGPT's source-order transcriptions of Matthew 1:2–16 and Luke 3:23–38 (supplementary-review-s11 at
+# df275a8, copied to genealogy/). Every occurrence is kept, repeated names included; nothing is merged across the
+# two accounts, and no Mary line, dates or geometry are added.
+import csv as _csv
+import pathlib as _pl
+from collections import Counter as _Counter
+
+
+def _names(f):
+    rows = _csv.DictReader(open(_pl.Path(__file__).resolve().parent / 'genealogy' / f, encoding='utf-8'))
+    return [(int(r['verse']), n.strip()) for r in rows for n in r['names_in_source_order'].split(';')]
+
+
+GENEALOGY_MATT = _names('matt-genealogy-names.csv')
+GENEALOGY_LUKE = _names('luke-genealogy-names.csv')
+assert len(GENEALOGY_MATT) == 40 and len(GENEALOGY_LUKE) == 77
+# Matthew's side branches and qualified names, in the text's own words, attached to the occurrence they qualify
+_MATT_NOTE = {
+    (2, 'Judas'): 'Judas and his brethren',
+    (3, 'Phares'): 'Phares and Zara of Thamar',
+    (5, 'Booz'): 'Booz of Rachab',
+    (5, 'Obed'): 'Obed of Ruth',
+    (6, 'David'): 'David the king',
+    (6, 'Solomon'): 'Solomon of her that had been the wife of Urias',
+    (11, 'Jechonias'): 'Jechonias and his brethren, about the time they were carried away to Babylon',
+}
+assert all(k in GENEALOGY_MATT for k in _MATT_NOTE)
+
+
+def _repeats(names):
+    c = _Counter(n for _, n in names)
+    return ', '.join(f'{n} ×{c[n]}' for n in dict.fromkeys(n for _, n in names) if c[n] > 1)
+
+
+_matt_chain = ' → '.join(_MATT_NOTE.get(o, o[1]) for o in GENEALOGY_MATT)
+_luke_chain = ' → '.join(n for _, n in GENEALOGY_LUKE[2:-1])
+CHILDREN['SD0238'] = [
+    ('NTC-genealogies-matt-1', 'Genealogy in Matthew 1', P + 'Matthew 1:1–17, in the text’s order. Verse 1 calls Jesus Christ the son of David, the son of Abraham. In verses 2–16 each name “begat” the next (the text’s wording, not a claim that no generation is left out): ' + _matt_chain + '. Verse 16 changes the wording: Joseph is “the husband of Mary, of whom was born Jesus, who is called Christ”; the text does not say that Joseph begat Jesus. Verse 17 counts fourteen generations from Abraham to David, fourteen from David to the carrying away into Babylon, and fourteen from then to Christ; no names are added to fit those groups. A repeated name is listed at each place it occurs: ' + _repeats(GENEALOGY_MATT) + '.',
+     [('Matthew 1:1–17', 'nt/matt/1')]),
+    ('NTC-genealogies-luke-3', 'Genealogy in Luke 3', P + 'Luke 3:23–38, in Luke’s order and spelling. Jesus was “about thirty years of age, being (as was supposed) the son of Joseph, which was the son of Heli.” From Heli on, each name is called the son of the one after it: ' + _luke_chain + ', “which was the son of God.” That last link is Luke’s statement, not an ordinary line of descent. A repeated name is listed at each place it occurs (' + _repeats(GENEALOGY_LUKE) + '), and the list is not harmonized with Matthew’s.',
+     [('Luke 3:23–38', 'nt/luke/3')]),
+]
+assert [n for _, n in GENEALOGY_LUKE[:3]] == ['Jesus', 'Joseph', 'Heli'] and GENEALOGY_LUKE[-2:] == [(38, 'Adam'), (38, 'God')]

@@ -223,7 +223,7 @@ EXTRA_SRC.update({k: [S(t) for t in v] for k, v in {
     # S10-C2: chapter examples of the notes, not book contents pages
     'SD0789': ['Job 21 (study note: instruments)', 'Job 30 (study note: instruments)',
                'Job 39 (study note: buffalo or bison)', 'Psalm 22 (study note: wild ox)',
-               'Psalm 29 (study note: wild ox)', 'Psalm 92 (study note: wild ox)', 'Psalm 44 (study note: jackal)',
+               'Psalm 29 (study note: bison or buffalo)', 'Psalm 92 (study note: buffalo or bison)', 'Psalm 44 (study note: jackal)',
                'Psalm 63 (study note: jackal)', 'Psalm 104 (study note: rock badger)',
                'Psalm 148 (study note: sea monsters)', 'Psalm 150 (study note: pipes or flutes)',
                'Proverbs 30 (study note: rock badger)', 'Malachi 1 (study note: jackals)'],

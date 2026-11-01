@@ -574,3 +574,63 @@ chosen through the DOM, CDP capture) at code commit `620df82`: shots `s11-codex-
 parent and its JST views, and `s11-codex-nt-more-*` scrolled to the SD0214 parent and its first views, at 3840×2160,
 1440×900, 1280×800 and 390×844; 498 `ot-more` and 236 `nt-more` cards listed with all layers on; no console or page
 errors. Native select, keyboard and real-GPU gates remain open.
+
+## Checkpoint 12: S11-C1, S11-C2; S3-C1 for SD0238 (genealogies)
+
+Applies [supplementary-review-s11](https://github.com/mckayec/universe-sandbox/blob/df275a8516b2eb9c0b042d48d8523f05a8a24a24/docs/universes/packs/lds-standard-works/supplementary-review-s11.md)
+(PR34 `df275a8`, auditing `620df82`). Regeneration with the same PR34 input was first confirmed byte-identical at
+`684cec1`; the declaration register at `df275a8` is byte-identical to the `9cc874c` witness.
+
+* **S11-C1 (SD0240 `NTC-parables`)**: four children added in book/chapter order, `2/nt`, nonspatial, with the
+  review's exact passages as their only source: `NTC-parables-matt-21` (Matthew 21:28–32, 33–46: two sons; vineyard
+  tenants), `NTC-parables-mark-12` (Mark 12:1–12: Mark kills the son before casting him out), `NTC-parables-luke-8`
+  (Luke 8:4–15: the sower and its interpretation, separate from the chapter's crossing and healings) and
+  `NTC-parables-luke-20` (Luke 20:9–19: cast out, then killed; the hearers' “God forbid”). Each Gospel's tenant
+  sequence is stated as written, not harmonized. The thirteen earlier children are unchanged. Parent's last sentence
+  is now the review's “Additional attributed parable views follow in each Gospel’s order; story settings are not
+  mapped.” SD0240 children: 17, in the order Matthew 18, 20, 21, 22, 25; Mark 4, 12; Luke 8, 10, 12–16, 18–20.
+* **S11-C2 (SD0789)**: source labels are now “Psalm 29 (study note: bison or buffalo)” and “Psalm 92 (study note:
+  buffalo or bison)”; Psalm 22 keeps “wild ox”. Copy and URLs unchanged.
+* **Builder question 1, optional**: `NTE-calls-and-healings-mark-2` now also cites 1 Samuel 21, the comparison its copy
+  names.
+* **S3-C1 (SD0238 `NTC-genealogies`)**: the review's source-order transcriptions are copied unchanged to
+  `supplementary-build/genealogy/{matt,luke}-genealogy-names.csv`, and `copy_nt.py` builds two `2/nt` children from
+  them (no list typed by hand):
+  * `NTC-genealogies-matt-1` “Genealogy in Matthew 1” (source Matthew 1:1–17): verse 1's summary; then all 40
+    main-chain occurrences, Abraham → … → Joseph, under Matthew's “begat” (stated as the text's wording, not a claim
+    that no generation is omitted). The side branches and qualifiers are attached to the occurrence they qualify, in
+    the text's words: “Judas and his brethren”, “Phares and Zara of Thamar”, “Booz of Rachab”, “Obed of Ruth”, “David
+    the king”, “Solomon of her that had been the wife of Urias”, “Jechonias and his brethren, about the time they were
+    carried away to Babylon”. Verse 16's changed predicate is quoted (“the husband of Mary, of whom was born Jesus,
+    who is called Christ”) with “the text does not say that Joseph begat Jesus”; verse 17's three fourteens are
+    stated with “no names are added to fit those groups”; the repeated Jacob is listed at both places.
+  * `NTC-genealogies-luke-3` “Genealogy in Luke 3” (source Luke 3:23–38): verse 23 quoted with “about thirty years of
+    age, being (as was supposed) the son of Joseph”; then Heli → … → Adam, “which was the son of God”, all 77
+    occurrences counting Jesus, Joseph and God, in Luke's spelling; the last link is called Luke's statement, not an
+    ordinary line of descent; repeated names are listed at each place (Joseph ×4, Matthat ×2, Levi ×2, Melchi ×2,
+    Mattathias ×2, Juda ×3, Cainan ×2); “not harmonized with Matthew's”.
+  * Parent copy: “… kept as separate lists, each in its own view, with no inferred line through Mary.” No merged
+    tree, Mary line, dates or geometry. A plain ordered list, as the handoff allows; no graphical genealogy UI.
+
+Builder readings for ChatGPT to check: (1) Matthew's side branches are shown inline at the occurrence they qualify
+(“Phares and Zara of Thamar”), not as separate nodes; the chain test strips them back to the CSV names. (2) The
+Matthew chain is written with “→” after the sentence “each name ‘begat’ the next”; the Luke chain uses the same
+arrow after “each name is called the son of the one after it”, so the arrow reads in opposite genealogical
+directions in the two views, each defined in its own sentence. Say if a different notation is wanted. (3) The verse 17
+sentence paraphrases the three groups rather than quoting the verse.
+
+With SD0214 closed in S11, S3-C1 is now implemented for all four families (SD0214, SD0238, SD0240 plus the earlier
+SD0213/0226/0236/0270); SD0238 and SD0240 await ChatGPT's recheck at this head.
+
+Accounting: 790 SD rows imported, 481 pending (unchanged; no new SD rows). Children 66 + 6 = 72 (SD0238 ×2, SD0240
+×17). `nt-more` 236 + 6 = 242; `ot-more` 498 unchanged. Mapping 1,351 rows (870 imported).
+Next: SC35–SC45 (D&C, 417 rows), then SC46–SC54.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (107/107; NT and child counts updated; Mark 2 child now has two sources; new test for
+S11: the four parable views and their exact locators, both tenant orders, the Psalm 29/92/22 labels, the two
+genealogy views right after their parent at `2/nt` with no position or date, hidden with only the OT layer and
+before the New Testament group, every Matthew and Luke occurrence in CSV order with no deduplication, Matthew's
+side branches and changed ending, Luke's “as was supposed”), `check:dist` 114 files OK, pack validator clean,
+`pnpm test:pages` 13 pages × 2 viewports.

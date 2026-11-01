@@ -372,8 +372,9 @@ test('Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer
     .filter(r => /^SD\d{4},SC(0[89]|1[0-2]),/.test(r));
   assert.equal(nt.length, 187);
   const list = codex('nt-more');
-  // 187 parent cards + 49 child source views (SD0213 ×1, SD0214 ×12, SD0226 ×3, SD0236 ×5, SD0240 ×13, SD0270 ×15)
-  assert.equal(list.length, 236);
+  // 187 parent cards + 55 child source views (SD0213 ×1, SD0214 ×12, SD0226 ×3, SD0236 ×5, SD0238 ×2, SD0240 ×17,
+  // SD0270 ×15)
+  assert.equal(list.length, 242);
   const keys = new Set(list.map((x: any) => x.key));
   assert.equal(keys.size, list.length);
   for (const r of nt) {
@@ -391,7 +392,7 @@ test('Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
   // shown at the New Testament group, not before it
-  assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 236);
+  assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 242);
   assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 0);
 });
 
@@ -705,13 +706,14 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 66);
+  assert.equal(kids.length, 72);
   const want: Record<string, number> = {
     SD0213: 1,
     SD0214: 12,
     SD0226: 3,
     SD0236: 5,
-    SD0240: 13,
+    SD0238: 2,
+    SD0240: 17,
     SD0270: 15,
     SD0443: 1,
     SD0663: 6,
@@ -822,9 +824,12 @@ test('Supplementary S10 and S3-C1 (SD0214, SD0240): Dura, chapter sources, JST c
   const pars = [
     'matt-18',
     'matt-20',
+    'matt-21',
     'matt-22',
     'matt-25',
     'mark-4',
+    'mark-12',
+    'luke-8',
     'luke-10',
     'luke-12',
     'luke-13',
@@ -833,6 +838,7 @@ test('Supplementary S10 and S3-C1 (SD0214, SD0240): Dura, chapter sources, JST c
     'luke-16',
     'luke-18',
     'luke-19',
+    'luke-20',
   ];
   for (const [parent, list] of [
     ['NTE-calls-and-healings', calls],
@@ -844,11 +850,84 @@ test('Supplementary S10 and S3-C1 (SD0214, SD0240): Dura, chapter sources, JST c
       assert.equal(x.key, `${parent}-${slug}`);
       assert.deepEqual([plain(x.books), plain(x.layers)], [[2], ['nt']]);
       assert.equal(x.lat, undefined, x.key);
-      assert.equal(x.src.length, 1, x.key);
+      assert.equal(x.src.length, x.key === 'NTE-calls-and-healings-mark-2' ? 2 : 1, x.key);
       assert.ok(new RegExp(`/nt/${slug.replace('-', '/')}\\?`).test(x.src[0].u), x.key);
     });
   }
   assert.ok(!/Each Gospel’s order of these episodes is kept/.test(by(nt, 'NTE-calls-and-healings').desc));
   assert.ok(/not assumed to be the Lazarus of John 11/.test(by(nt, 'NTC-parables-luke-16').desc));
   assert.ok(/no route is drawn/.test(by(nt, 'NTC-parables-luke-10').desc));
+});
+
+test('Supplementary S11 fixes: parable contexts, Psalm note labels and the two separate genealogies', () => {
+  const nt = codex('nt-more');
+  const by = (list: any[], key: string) => list.find((x: any) => x.key === key);
+  assert.ok(/Additional attributed parable views follow in each Gospel’s order/.test(by(nt, 'NTC-parables').desc));
+  assert.ok(!/Matthew 18–25/.test(by(nt, 'NTC-parables').desc));
+  const loc: Record<string, string> = {
+    'matt-21': 'Matthew 21:28–32, 33–46',
+    'mark-12': 'Mark 12:1–12',
+    'luke-8': 'Luke 8:4–15',
+    'luke-20': 'Luke 20:9–19',
+  };
+  for (const [slug, t] of Object.entries(loc)) {
+    assert.deepEqual(plain(by(nt, `NTC-parables-${slug}`).src.map((s: any) => s.t)), [t]);
+  }
+  // the tenant stories keep each Gospel's order: Mark kills then casts out; Luke casts out then kills
+  assert.ok(/before the son is cast out/.test(by(nt, 'NTC-parables-mark-12').desc));
+  assert.ok(/cast out his beloved son and kill him/.test(by(nt, 'NTC-parables-luke-20').desc));
+  assert.deepEqual(plain(by(nt, 'NTE-calls-and-healings-mark-2').src.map((s: any) => s.t)), ['Mark 2', '1 Samuel 21']);
+  const ot = codex('ot-more');
+  const notes = by(ot, 'OTW-a27-animal-instrument-notes').src.map((s: any) => s.t);
+  assert.ok(notes.includes('Psalm 29 (study note: bison or buffalo)'));
+  assert.ok(notes.includes('Psalm 92 (study note: buffalo or bison)'));
+  assert.ok(notes.includes('Psalm 22 (study note: wild ox)'));
+  // SD0238: two separate ordered lists after their parent, gated to the New Testament
+  const nk = nt.map((x: any) => x.key);
+  const i0 = nk.indexOf('NTC-genealogies');
+  assert.deepEqual(plain(nk.slice(i0 + 1, i0 + 3)), ['NTC-genealogies-matt-1', 'NTC-genealogies-luke-3']);
+  const csvNames = (f: string) =>
+    readFileSync(
+      new URL(`../docs/universes/packs/lds-standard-works/supplementary-build/genealogy/${f}`, import.meta.url),
+      'utf8',
+    )
+      .trim()
+      .split('\n')
+      .slice(1)
+      .flatMap(r => r.split(',').slice(1).join(',').split(';'))
+      .map(n => n.trim());
+  const matt = by(nt, 'NTC-genealogies-matt-1');
+  const luke = by(nt, 'NTC-genealogies-luke-3');
+  for (const x of [matt, luke]) {
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[2], ['nt']]);
+    assert.equal(x.lat, undefined, x.key);
+    assert.equal(x.when, undefined, x.key);
+    assert.equal(L.codexSplit([x], new Set(['ot']), null, false, 0).shown.length, 0, x.key);
+    assert.equal(L.codexSplit([x], new Set(['nt']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 0);
+    assert.equal(L.codexSplit([x], new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 1);
+  }
+  // every occurrence survives in source order (no name deduplication within or across the accounts)
+  const chain = (desc: string, a: string, b: string) =>
+    desc
+      .slice(desc.indexOf(a) + a.length, desc.indexOf(b))
+      .split(' → ')
+      .map(s => s.trim());
+  const m = chain(matt.desc, 'is left out): ', '. Verse 16');
+  const mn = csvNames('matt-genealogy-names.csv');
+  assert.equal(m.length, 40);
+  m.forEach((s, i) => assert.ok(s === mn[i] || s.startsWith(mn[i] + ' '), `${i} ${s}`));
+  assert.ok(m.includes('Judas and his brethren') && m.includes('Phares and Zara of Thamar'));
+  assert.ok(m.includes('Booz of Rachab') && m.includes('Obed of Ruth') && m.includes('David the king'));
+  assert.ok(m.some(s => /^Jechonias and his brethren, .*Babylon$/.test(s)));
+  // Matthew's ending predicate differs from the chain; no Joseph-begat-Jesus edge, no Mary line
+  assert.ok(/the text does not say that Joseph begat Jesus/.test(matt.desc));
+  assert.ok(/the husband of Mary, of whom was born Jesus/.test(matt.desc));
+  assert.ok(/three|fourteen/.test(matt.desc));
+  const l = chain(luke.desc, 'the one after it: ', ', “which was the son of God.”');
+  const ln = csvNames('luke-genealogy-names.csv');
+  assert.deepEqual(ln.length, 77);
+  assert.deepEqual(l, ln.slice(2, -1));
+  assert.ok(/\(as was supposed\) the son of Joseph/.test(luke.desc));
+  assert.equal(l.filter(n => n === 'Joseph').length, 3); // plus the supposed father in verse 23
+  assert.ok(/not harmonized with Matthew/.test(luke.desc));
 });
