@@ -569,3 +569,8 @@ SD0214/SD0240 views: Dura sentence, chapter-only sources and their order, the SD
 verse order with their own sources, 25 NT views in source order after their parents at `2/nt` with no position),
 `check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2 viewports.
 
+Rendered (SwiftShader, built `dist/` under `/universe-sandbox/`, page ready in 18–73 s, codex opened and the tab
+chosen through the DOM, CDP capture) at code commit `620df82`: shots `s11-codex-ot-more-*` scrolled to the SD0785
+parent and its JST views, and `s11-codex-nt-more-*` scrolled to the SD0214 parent and its first views, at 3840×2160,
+1440×900, 1280×800 and 390×844; 498 `ot-more` and 236 `nt-more` cards listed with all layers on; no console or page
+errors. Native select, keyboard and real-GPU gates remain open.
