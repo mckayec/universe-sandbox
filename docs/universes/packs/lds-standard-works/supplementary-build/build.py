@@ -20,6 +20,7 @@ import copy_nt
 import copy_ot
 import copy_otl
 import copy_mp
+import copy_wp
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -36,8 +37,9 @@ FAMILIES = {'bom': ('bom-more', [3], ['bom'], copy_bom), 'nt': ('nt-more', [2], 
 BUILT = {f'SC0{i}': 'bom' for i in range(1, 8)}
 BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
-BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 29)})
-COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp]
+BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 31)})
+BUILT['SC33'] = 'ot'
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}
@@ -55,6 +57,8 @@ LH_REF = re.compile(r'(LH[12ENS]-)(\d+)(?::([\d–,\-]+)|((?:[–-]\d+)?(?:,\d+(
 OT_BOOKS = {re.search(r'/scriptures/ot/([^/?]+)/', u).group(1): t.rsplit(' ', 1)[0] for t, u in LEDGER.values()}
 # SC24–SC34 rows carry their own links to books outside those two ledgers
 OT_BOOKS.update({'isa': 'Isaiah', 'jer': 'Jeremiah', 'lam': 'Lamentations', 'ezek': 'Ezekiel'})
+# Rows may name a link a card must not cite (a later-work source that belongs on a gated child): DROP_SRC lists
+# url path fragments removed from that row's sources.
 LEDGER_REF = re.compile(r'OH-(RU|S1-|S2-|K1-|K2-|[GXLNDQJ])(\d+(?:[–-]\d+)?(?:,\d+(?:[–-]\d+)?)*)')
 LINK = re.compile(r'\[([^\]]+)\]\((https://[^)\s]+)\)')
 
@@ -125,6 +129,8 @@ def sources(row):
                 if (t, u) not in seen:
                     seen.add((t, u))
                     out.append((t, u))
+    drop = {k: v for m in COPY_MODULES for k, v in getattr(m, 'DROP_SRC', {}).items()}
+    out = [(t, u) for t, u in out if not any(f in u for f in drop.get(row['disposition_id'], []))]
     extra = {k: v for m in COPY_MODULES for k, v in m.EXTRA_SRC.items()}
     for t, path in extra.get(row['disposition_id'], []):
         u = BASE + path + '?lang=eng'
@@ -159,8 +165,13 @@ def main(path):
         for cat, loc, rid, tsd, (t, path) in getattr(m, 'PROSE_INTO', []):
             assert tsd in copy and not isinstance(copy[tsd], str), (rid, tsd)
             prose_into.setdefault(tsd, []).append((cat, loc, rid, t, BASE + path + '?lang=eng'))
+    child_keys = {c[0]: (psd, c) for psd, cs in children.items() for c in cs}
     for sd, v in copy.items():
-        if isinstance(v, str):
+        if isinstance(v, str) and v in child_keys:
+            # consolidated into a child source view of another row (e.g. SD0705 into the Ezekiel 42 view)
+            assert BUILT.get(by_sd[sd]['category']) == BUILT.get(by_sd[child_keys[v][0]]['category']), (sd, v)
+            merged.setdefault(v, []).extend(sources(by_sd[sd]))
+        elif isinstance(v, str):
             assert v in copy and not isinstance(copy[v], str), (sd, v)
             assert BUILT.get(by_sd[sd]['category']) == BUILT.get(by_sd[v]['category']), (sd, v)
             merged.setdefault(v, []).extend(sources(by_sd[sd]))
@@ -168,7 +179,11 @@ def main(path):
         sd, cat = r['disposition_id'], r['category']
         if sd in copy and isinstance(copy[sd], str):
             tsd = copy[sd]
-            key, name, _ = copy[tsd]
+            if tsd in child_keys:
+                key, name = child_keys[tsd][1][0], child_keys[tsd][1][1]
+                tsd = f'{key} child view of {child_keys[tsd][0]}'
+            else:
+                key, name, _ = copy[tsd]
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
                             f'codex:{FAMILIES[BUILT[cat]][0]}', key, name, '; '.join(t for t, _ in sources(r)),
                             r['work_gate'], f'consolidated into {tsd} card; ' + r['consolidation_rule'], r['row_sha256']])
@@ -178,6 +193,8 @@ def main(path):
         if fam and sd in copy:
             key, name, desc = copy[sd]
             tab, books, layers, _ = FAMILIES[fam]
+            gate = {k: v for m in COPY_MODULES for k, v in getattr(m, 'GATE', {}).items()}
+            books, layers = gate.get(sd, (books, layers))
             src = sources(r)
             for t, u in merged.get(sd, []):
                 # a consolidated row's chapter-level source is dropped when the card already cites that chapter
@@ -191,17 +208,24 @@ def main(path):
                 src[hit[0]] = (pt, pu)
             lines[fam].append(entry(key, name, desc, src, books, layers))
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
-                            f'codex:{tab}', key, name, '; '.join(t for t, _ in src), r['work_gate'],
+                            f'codex:{tab}', key, name, '; '.join(t for t, _ in src),
+                            (f'{books[0]}/{layers[0]} (row gate); ' if sd in gate else '') + r['work_gate'],
                             r['consolidation_rule'], r['row_sha256']])
             for pcat, ploc, prid, pt, _u in prose_into.get(sd, []):
                 mapping.append(['', pcat, ploc, prid, 'imported', f'codex:{tab}', key, name, pt, r['work_gate'],
                                 f'consolidated into {sd} card (prose-only source view); no additional event or card',
                                 ''])
-            for ckey, cname, cdesc, csrc in children.get(sd, []):
+            for ckey, cname, cdesc, csrc, *cgate in children.get(sd, []):
+                # an optional fifth element gives the child its own later-work gate: ([4], ['dc'])
+                cbooks, clayers = cgate[0] if cgate else (books, layers)
                 csrc = [(ct, BASE + cp + '?lang=eng') for ct, cp in csrc]
-                lines[fam].append(entry(ckey, cname, cdesc, csrc, books, layers))
+                for t, u in merged.get(ckey, []):
+                    if (t, u) not in csrc:
+                        csrc.append((t, u))
+                lines[fam].append(entry(ckey, cname, cdesc, csrc, cbooks, clayers))
+                cwg = r['work_gate'] if not cgate else f'{cbooks[0]}/{clayers[0]} (child gate)'
                 mapping.append(['', cat, f'child of {sd}', key, 'imported', f'codex:{tab}', ckey, cname,
-                                '; '.join(ct for ct, _ in csrc), r['work_gate'],
+                                '; '.join(ct for ct, _ in csrc), cwg,
                                 'child source view required by its parent row', ''])
         else:
             assert not fam, f'{sd} in built family {cat} has no copy'

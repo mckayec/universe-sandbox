@@ -2,7 +2,7 @@
 # Lamentations, Ezekiel; coverage-ot-major-prophets.md), one entry per SD row. Same rules as copy_ot.py:
 # the accepted row text becomes reader sentences, constraints that tell a reader something are kept as
 # plain distinctions, drawing-only constraints are honoured by drawing nothing, and nothing is added
-# from memory. Built in checkpoints: this file currently covers SC25–SC28 (checkpoint 7) and SC24 (checkpoint 8).
+# from memory. Built in checkpoints: SC25–SC28 (checkpoint 7), SC24 (checkpoint 8) and SC29 (checkpoint 9).
 #
 # Sources: every SC25–SC28 row carries its own official chapter links; build.py keeps their verses.
 # Where a row names a comparison passage without a link (SD0699: Ezekiel 24:25–27), it is in EXTRA_SRC.
@@ -12,7 +12,12 @@
 # same people or episode, the card names it as a separate source view instead of merging the accounts.
 #
 # SD0691 (Ezekiel 37): the chapter heading's Bible/Book of Mormon reading is not shown on this `1/ot`
-# card; SD0706 (SC29) makes it a distinct child card gated at the Book of Mormon. SC29 is not built yet.
+# card; SD0706 (SC29) is its own card gated at the Book of Mormon (GATE).
+#
+# SC29 apparatus rows (checkpoint 9): each keeps the KJV/JST or text/edition-note distinction it names. A later-work
+# interpretation a row names (D&C 113 for Isaiah 11, the JST introduction's Book of Mormon reading of Isaiah 29)
+# is a child card with its own gate; its source is dropped from the 1/ot parent (DROP_SRC). SD0705 consolidates
+# into the Ezekiel 42 child view of SD0663, which carries the reed/cubit distinction.
 #
 # Keys: `OTM-` + the row's research id without its `mp-` prefix.
 
@@ -31,7 +36,7 @@ COPY = {
     'SD0575': ('OTM-upper-pool-fullers-field', 'Upper pool by the fuller’s field', P + 'Isaiah meets Ahaz at the conduit of the upper pool, on the highway of the fuller’s field. Rabshakeh later appears at the same named setting.'),
     'SD0576': ('OTM-shiloah-water', 'Waters of Shiloah', P + 'The quiet waters of Shiloah contrast with an overflowing river in Isaiah’s account of foreign power.'),
     'SD0577': ('OTM-damascus', 'Damascus in the prophets', P + 'Damascus is named as the head of Syria and is addressed in judgment oracles. The same city as Damascus (Kings).'),
-    'SD0578': ('OTM-samaria', 'Samaria in the prophets', P + 'Samaria appears as the head of Ephraim, as a setting where cultivation is promised, and as the subject of Ezekiel’s personification Aholah. The same city as Samaria (city).'),
+    'SD0578': ('OTM-samaria', 'Samaria in the prophets', P + 'Isaiah calls Samaria the head of Ephraim, and Ezekiel identifies Aholah with Samaria. Jeremiah promises renewed vine planting on the mountains of Samaria. Reuse Samaria (city) for the city reference while keeping the cultivation setting regional; these passages do not locate a vineyard within the city.'),
     'SD0579': ('OTM-assyria-region', 'Assyria', P + 'Assyria is both a threatening imperial power and a participant in Isaiah’s vision of reconciliation.'),
     'SD0580': ('OTM-nineveh', 'Nineveh in Isaiah', P + 'Isaiah’s narrative sends Sennacherib back to Nineveh after the Jerusalem crisis. The same city as Nineveh (Kings).'),
     'SD0581': ('OTM-lachish', 'Lachish in the prophets', P + 'Lachish is Rabshakeh’s departure point and, later, one of Judah’s remaining fortified cities. The same city as the card “Lachish”.'),
@@ -158,19 +163,37 @@ COPY = {
     'SD0698': ('OTM-j25-urijah-flight', 'Urijah’s flight to Egypt', P + 'Urijah son of Shemaiah flees to Egypt under Jehoiakim’s threat. Elnathan son of Achbor and companions fetch him back, and the king has him killed. Distinct from Jeremiah’s later journey to Egypt with the refugees.'),
     'SD0699': ('OTM-j26-fall-messenger', 'News of Jerusalem’s fall reaches Ezekiel', P + 'A fugitive from Jerusalem reaches Ezekiel with news that the city is struck. The account gives a regnal date but not the messenger’s route. Ezekiel 24:25–27 gives the advance sign of this news.'),
     'SD0700': ('OTM-j27-cistern-rescue', 'Jeremiah drawn out of the cistern', P + 'Ebed-melech takes thirty men at the king’s command and uses worn cloths and ropes to bring Jeremiah out of the cistern; Jeremiah remains in the prison court. Ebed-melech himself is on the card “Ebed-melech”.'),
+    # SC29 apparatus and cross-work distinctions (checkpoint 9)
+    'SD0701': ('OTM-a01-jesse', 'Stem, rod and root of Jesse (Isaiah 11)', P + 'Isaiah uses stem, rod and root imagery associated with Jesse. The Church’s chapter heading identifies the stem with Christ; the three images are not all labelled as Jesus.'),
+    'SD0702': ('OTM-a02-ariel', 'Ariel, David’s city (Isaiah 29)', P + 'Isaiah calls Ariel David’s city; the Church’s note identifies it with Jerusalem and explains the name through hearth or altar language. The Joseph Smith Translation of verses 1–8, shown as a labelled comparison, keeps the siege imagery.'),
+    'SD0703': ('OTM-a03-servant', 'The blind servant: KJV and JST (Isaiah 42)', P + 'The KJV passage questions a blind and deaf servant. The Joseph Smith Translation instead describes a servant sent to people who are blind, with a promise tied to heeding the messenger. This shifts the roles, not the geography; neither version names a modern messenger.'),
+    'SD0704': ('OTM-a04-conditional-calamity', 'Repentance and the threatened evil: KJV and JST (Jeremiah 26)', P + 'Jeremiah’s KJV wording speaks of the Lord repenting of the threatened evil. The Joseph Smith Translation directs the people to repent and describes the Lord turning the threatened evil away. Neither says the destruction has already happened.'),
+    'SD0705': 'OTM-j22-temple-tour-42',
+    'SD0706': ('OTM-a06-ezekiel-37-heading', 'The two sticks in the Church heading (Ezekiel 37)', P + 'The Church’s heading to Ezekiel 37 reads the joined sticks as the Bible and the Book of Mormon. This is an attributed edition interpretation, shown apart from the chapter’s own explanation of Israel’s reunion; it creates no physical place.'),
 }
 
 EXTRA_SRC = {
     'SD0699': [('Ezekiel 24:25–27', 'ot/ezek/24')],
 }
+# later-work sources that belong on the gated child, not the 1/ot card
+DROP_SRC = {'SD0701': ['dc-testament/dc/113']}
+# a whole row gated at a later work
+GATE = {'SD0706': ([3], ['bom'])}
 CHILDREN = {
+    # SC29 later-work interpretations as gated children (fifth element: books, layers)
+    'SD0701': [
+        ('OTM-a01-jesse-dc113', 'Stem, rod and root in D&C 113', 'D&C 113 — Section 113 identifies the stem of Jesse as Christ and describes the rod and the root as servants or descendants with particular roles, without giving their personal names. No unnamed servant is assigned to a particular person here.', [('D&C 113:1–6', 'dc-testament/dc/113')], ([4], ['dc'])),
+    ],
+    'SD0702': [
+        ('OTM-a02-ariel-jst-introduction', 'Isaiah 29 and the Book of Mormon (JST introduction)', P + 'The editorial introduction to the Joseph Smith Translation of Isaiah 29 relates the chapter’s message to the Book of Mormon. It is an editorial introduction, not wording added to the KJV verses, and it creates no Ariel site in the Americas.', [('JST Isaiah 29 (introduction)', 'jst/jst-isa/29')], ([3], ['bom'])),
+    ],
     # S7-C1 (supplementary-review-s7): the chapter-specific contexts SD0663 requires, as child source views
     'SD0663': [
         ('OTM-j22-temple-tour-40', 'Ezekiel 40: gates, courts and priestly rooms', P + 'In the twenty-fifth year of the captivity, fourteen years after the city’s fall, Ezekiel is brought in vision to a high mountain in Israel. A measuring guide surveys the east, north and south gates, the courts, chambers, tables and priestly rooms. A visionary temple, not measured archaeological remains.', [('Ezekiel 40', 'ot/ezek/40')]),
         ('OTM-j22-temple-tour-41', 'Ezekiel 41: the house and the most holy place', P + 'The survey measures the temple, a most holy place twenty cubits square, side rooms on three levels, a building to the west, doors, a wooden altar or table, and palm and cherub ornament. The guide goes inward on his own; his access is kept distinct from Ezekiel’s. The source’s dimensions are kept and no exact reconstruction is drawn.', [('Ezekiel 41', 'ot/ezek/41')]),
-        ('OTM-j22-temple-tour-42', 'Ezekiel 42: priestly chambers and the outer measure', P + 'Chambers on the north and south hold the offerings and the priests’ changed garments. The outer boundary, separating the sanctuary from the profane place, is measured five hundred reeds on each side in this translation; the reeds are not converted to cubits.', [('Ezekiel 42', 'ot/ezek/42')]),
+        ('OTM-j22-temple-tour-42', 'Ezekiel 42: priestly chambers and the outer measure', P + 'Chambers on the north and south hold the offerings and the priests’ changed garments. The outer boundary, separating the sanctuary from the profane place, is measured five hundred reeds on each side in this translation; the reeds are not converted to cubits. The Church edition’s notes explain the outer and common terms; they keep the stated reeds and do not substitute cubits.', [('Ezekiel 42', 'ot/ezek/42')]),
         ('OTM-j22-temple-tour-43', 'Ezekiel 43:1–17: the glory returns; the altar', P + 'The glory of God returns from the east through the gate and fills the house; the altar’s stepped measurements follow. A visionary pattern, not a verified construction or date.', [('Ezekiel 43:1–17', 'ot/ezek/43')]),
         ('OTM-j22-temple-tour-44', 'Ezekiel 44:1–5: the shut outer east gate', P + 'The outer east gate stays shut because the Lord has entered by it; the prince may sit in it to eat bread before the Lord. Ezekiel is then brought by way of the north gate before the house. The gate is not identified with any present-day Jerusalem gate.', [('Ezekiel 44:1–5', 'ot/ezek/44')]),
-        ('OTM-j22-temple-tour-46', 'Ezekiel 46:19–24: the cooking places', P + 'Separate places are shown where the priests boil and bake the offerings, and, in the corners of the outer court, where the ministers of the house boil the people’s sacrifices. In this chapter the inner east gate opens on Sabbaths and new moons; it is distinct from chapter 44’s shut outer gate.', [('Ezekiel 46:19–24', 'ot/ezek/46')]),
+        ('OTM-j22-temple-tour-46', 'Ezekiel 46:1, 19–24: inner gate and cooking places', P + 'Separate places are shown where the priests boil and bake the offerings, and, in the corners of the outer court, where the ministers of the house boil the people’s sacrifices. In this chapter the inner east gate opens on Sabbaths and new moons; it is distinct from chapter 44’s shut outer gate.', [('Ezekiel 46:1, 19–24', 'ot/ezek/46'), ('Ezekiel 44:1–3', 'ot/ezek/44')]),
     ],
 }

@@ -389,3 +389,53 @@ inner-gate payloads; no Mulek text anywhere in `ot-more`), `check:dist` 114 file
 viewports. Rendered (SwiftShader, built `dist/` under `/universe-sandbox/`, page ready in 21–68 s, codex opened and
 section chosen through the DOM, CDP capture): shots `s8-codex-ot-places-*` at 3840×2160, 1440×900, 1280×800, 390×844,
 scrolled to the first new card; no console or page errors. Native select, keyboard and real-GPU gates remain open.
+
+## Checkpoint 9: S8-C1, S8-C2; SC29 (apparatus), SC30 (poetic place views), SC33 (JST selections)
+
+Review input: [supplementary-review-s8.md](https://github.com/mckayec/universe-sandbox/blob/60eaa5b85d9a2905214767c5b39c3c87eee43ff2/docs/universes/packs/lds-standard-works/supplementary-review-s8.md) (PR34 `60eaa5b`). Input register unchanged (sha256 `0c3c0aea…229d9e`); the generator reproduced the checkpoint 8 pack and mapping byte-for-byte before any change.
+
+* **S8-C1 (SD0578)**: `OTM-samaria` takes the review's replacement text verbatim (city reference kept; Jeremiah's
+  vine planting on the mountains of Samaria stays regional; no vineyard located in the city). Same three citations.
+* **S8-C2**: `OTM-j22-temple-tour-46` is now titled “Ezekiel 46:1, 19–24: inner gate and cooking places”, source
+  labels “Ezekiel 46:1, 19–24” (chapter 46 URL) and “Ezekiel 44:1–3” (chapter 44 URL). Copy unchanged; still `1/ot`,
+  still the last of the six SD0663 views.
+* **SC29, 6 SD rows** (`OTM-a0n-…`):
+  * SD0701 Isaiah 11 card at `1/ot` cites only Isaiah 11 (the row's D&C 113 link is dropped from it, new `DROP_SRC`);
+    child `OTM-a01-jesse-dc113` at **`4/dc`** carries D&C 113:1–6 (stem as Christ; rod and root as servants or
+    descendants, unnamed; no servant assigned to a person).
+  * SD0702 Isaiah 29 card at `1/ot` with Isaiah 29 notes and JST Isaiah 29:1–8 as a labelled comparison; child
+    `OTM-a02-ariel-jst-introduction` at **`3/bom`** carries the JST editorial introduction's Book of Mormon reading,
+    stated as an editorial introduction, not KJV wording, and no American Ariel site.
+  * SD0703, SD0704: KJV/JST comparisons at `1/ot`, each citing both witnesses.
+  * SD0705 **consolidates into the Ezekiel 42 child view** `OTM-j22-temple-tour-42` (as announced at checkpoint 8):
+    the view gains the source “Ezekiel 42:15–20 and notes” and one sentence (“The Church edition’s notes explain the
+    outer and common terms; they keep the stated reeds and do not substitute cubits.”). build.py now accepts a child
+    key as a consolidation target.
+  * SD0706 is its own card `OTM-a06-ezekiel-37-heading`, gated **`3/bom`** (new per-row `GATE`): the Church heading's
+    Bible/Book of Mormon reading of the two sticks, shown apart from the chapter's reunion explanation; the
+    resurrection/messianic-David readings stay on SD0691's `1/ot` card as before. Mapping `work_gate` records the
+    row gate. Children may now carry their own gate (fifth tuple element); mapping records `n/layer (child gate)`.
+  * The three later-gated cards sit in `ot-more` immediately after their parent (or in register order for SD0706);
+    with only the OT layer, or reading through book 1, they are locked/filtered, as the test checks.
+* **SC30, 20 SD rows** (`OTW-p…`, new copy_wp.py): one card each, `1/ot`, no coordinates/routes/years. The rows
+  carry no links, so each card's sources spell out the verses the row names (Job 1:1, Daniel 8:2, 16 …) as official
+  chapter links. Same-place pointers where the row says to reuse: Nineveh (Kings), Joppa (Chronicles and Ezra),
+  Shushan in Nehemiah and Esther, “Tekoa”, Jerusalem in Samuel and Kings, Bethlehem of Judah, Shechem (Sichem).
+  Babylon (Psalm 137) is explicitly not placed at the Babylon marker; Tarshish is intended, not reached.
+* **SC33, 5 SD rows** (`OTW-c11…c15`): JST Psalm 11, 14, 24, 109 and Amos 7 as selected translation comparisons at
+  `1/ot`, each with its own JST link; none replaces the KJV wording.
+
+Builder readings for ChatGPT to check: (1) SD0702's research says the JST introduction “relates the message to the
+Book of Mormon”; the child is gated `3/bom` (row: “separate BoM interpretive card `first:3`”) and cites the JST
+Isaiah 29 chapter URL labelled “(introduction)”. (2) SD0706 copy: “reads the joined sticks as the Bible and the Book
+of Mormon” from the row/O7 wording “Bible/Book of Mormon interpretation”. (3) SD0710 does not name Tarshish in the
+prophets as the same place (identity not stated by the row); Psalms 48 and 72 are cited at chapter level only.
+(4) SD0721: the register says attach to a shared Heshbon reference, but the pack has no Heshbon card yet; the card
+names Heshbon without a pointer. (5) SD0722 omits the row's “distinct NT/BoM gates” wording from reader copy (it is
+a gating rule, honoured by drawing nothing) to avoid naming a later work on a `1/ot` card. (6) SD0725 adds that the
+foretold splitting belongs to the prophecy (row constraint “keep future splitting in vision layer”).
+
+Accounting: 731 SD rows imported (700 + 31; 11 consolidated), 540 pending; prose 7 + 1 consolidated SC22 prose view;
+33 children (31 + 2). Mapping 1,312 rows (772 imported). Supplementary cards 760; `ot-more` 399 + 32 = 431 (428 at
+`1/ot`, one at `4/dc`, two at `3/bom`); `nt-more` 211 unchanged. Next: SC31, SC32, SC34 (59 OT rows), S3-C1 for
+SD0214, SD0238, SD0240, then SC35–SC54.

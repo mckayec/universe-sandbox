@@ -405,12 +405,17 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
     .split('\n')
     .filter(r => /^SD\d{4},SC1[3-7],/.test(r));
   assert.equal(ot.length, 177);
-  const list = codex('ot-more');
+  let list = codex('ot-more');
   // 177 parent cards + 1 child source view (SD0443 stage list) + 83 SC18–SC23 cards (93 rows, 10 consolidated)
   // + 59 SC25–SC28 major-prophet cards + 73 SC24 major-prophet place cards + 6 SD0663 chapter views (S7-C1)
-  assert.equal(list.length, 399);
+  // + 5 SC29 cards (SD0705 consolidated) + 2 SC29 later-work children + 20 SC30 + 5 SC33 cards
+  assert.equal(list.length, 431);
   const keys = new Set(list.map((x: any) => x.key));
-  assert.equal(keys.size, list.length);
+  // the three cards gated at a later work (SD0706, and the SD0701/SD0702 children) are checked in the SC29 test
+  const later = new Set(['OTM-a06-ezekiel-37-heading', 'OTM-a01-jesse-dc113', 'OTM-a02-ariel-jst-introduction']);
+  const all = list;
+  list = all.filter((x: any) => !later.has(x.key));
+  assert.equal(keys.size, all.length);
   for (const r of ot) {
     const m = r.match(/,imported,codex:ot-more,([^,]+),/);
     assert.ok(m && keys.has(m[1]), r.slice(0, 40));
@@ -428,7 +433,8 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
-  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 399);
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 428);
+  assert.equal(L.codexSplit(all, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 428);
 });
 
 test('Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card', () => {
@@ -546,11 +552,79 @@ test('Supplementary SC24 and S7-C1/C2: major-prophet places, temple chapter view
   assert.ok(/not converted to cubits/.test(by('OTM-j22-temple-tour-42').desc));
   assert.ok(/inner east gate/.test(by('OTM-j22-temple-tour-46').desc));
   assert.deepEqual(plain(by('OTM-j22-temple-tour-44').src.map((s: any) => s.t)), ['Ezekiel 44:1–5']);
+  // S8-C2: the gate verse and the chapter 44 comparison are in the locators
+  assert.equal(by('OTM-j22-temple-tour-46').name, 'Ezekiel 46:1, 19–24: inner gate and cooking places');
+  assert.deepEqual(plain(by('OTM-j22-temple-tour-46').src.map((s: any) => s.t)), [
+    'Ezekiel 46:1, 19–24',
+    'Ezekiel 44:1–3',
+  ]);
+  // S8-C1: Samaria's city sense and the regional cultivation setting are kept apart
+  assert.ok(/mountains of Samaria/.test(by('OTM-samaria').desc));
+  assert.ok(/do not locate a vineyard within the city/.test(by('OTM-samaria').desc));
   // S7-C2: no later-work name on the OT-only Zedekiah card
   const z = by('OTM-r15-zedekiah-house');
   assert.ok(!/Mulek/.test(z.desc));
   assert.ok(/without harmonizing it with other accounts/.test(z.desc));
   assert.ok(!ot.some((x: any) => /Mulek/.test(x.desc)));
+});
+
+test('Supplementary SC29, SC30, SC33: apparatus rows, poetic place views and JST selections', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const lines = csv.trim().split('\n');
+  const rows = lines.filter(r => /^SD\d{4},SC(29|30|33),/.test(r));
+  assert.equal(rows.length, 31);
+  const ot = codex('ot-more');
+  const by = (key: string) => ot.find((x: any) => x.key === key);
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:ot-more,(OT[MW]-[^,]+),/);
+    assert.ok(m && by(m[1]), r.slice(0, 40));
+  }
+  // SD0705 consolidates into the Ezekiel 42 child view, which keeps the reeds and cites the row's verses
+  const reeds = lines.find(r => r.startsWith('SD0705,'))!;
+  assert.ok(reeds.includes(',OTM-j22-temple-tour-42,') && reeds.includes('consolidated into OTM-j22-temple-tour-42'));
+  const c42 = by('OTM-j22-temple-tour-42');
+  assert.ok(/do not substitute cubits/.test(c42.desc));
+  assert.ok(c42.src.some((s: any) => s.t === 'Ezekiel 42:15–20 and notes'));
+  // later-work readings are gated at their own work and dropped from the 1/ot parent
+  const jesse = by('OTM-a01-jesse');
+  assert.deepEqual(plain(jesse.books), [1]);
+  assert.ok(!jesse.src.some((s: any) => /dc-testament/.test(s.u)) && !/D&C|Doctrine and Covenants/.test(jesse.desc));
+  const dc = by('OTM-a01-jesse-dc113');
+  assert.deepEqual([plain(dc.books), plain(dc.layers)], [[4], ['dc']]);
+  assert.ok(dc.src.every((s: any) => /dc-testament\/dc\/113/.test(s.u)));
+  const keys = ot.map((x: any) => x.key);
+  assert.equal(keys.indexOf('OTM-a01-jesse-dc113'), keys.indexOf('OTM-a01-jesse') + 1);
+  for (const k of ['OTM-a02-ariel-jst-introduction', 'OTM-a06-ezekiel-37-heading']) {
+    assert.deepEqual([plain(by(k).books), plain(by(k).layers)], [[3], ['bom']], k);
+  }
+  for (const k of ['OTM-a01-jesse', 'OTM-a02-ariel', 'OTM-a03-servant', 'OTM-a04-conditional-calamity']) {
+    assert.ok(!/Book of Mormon/.test(by(k).desc), k);
+  }
+  const later = ['OTM-a01-jesse-dc113', 'OTM-a02-ariel-jst-introduction', 'OTM-a06-ezekiel-37-heading'];
+  const otOnly = L.codexSplit(ot, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown;
+  assert.ok(!otOnly.some((x: any) => later.includes(x.key)));
+  // SC30/SC33: OT layer only, sources in the wisdom books and the Twelve (or their JST selections), no geometry
+  const wp = ot.filter((x: any) => x.key.startsWith('OTW-'));
+  assert.equal(wp.length, 25);
+  for (const x of wp) {
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[1], ['ot']], x.key);
+    assert.equal(x.lat, undefined, x.key);
+    assert.equal(x.when, undefined, x.key);
+    assert.ok(x.src.length > 0, x.key);
+    assert.ok(
+      x.src.every((s: any) =>
+        /\/scriptures\/(ot\/(job|ps|song|dan|amos|jonah|micah|nahum|zech)|jst\/jst-(ps|amos))\//.test(s.u),
+      ),
+      x.key,
+    );
+  }
+  assert.ok(/does not report him reaching it/.test(by('OTW-p04-tarshish-intended').desc));
+  assert.ok(/identifies it with the Tigris/.test(by('OTW-p08-hiddekel').desc));
+  assert.deepEqual(plain(by('OTW-p07-ulai').src.map((s: any) => s.t)), ['Daniel 8:2, 16']);
+  assert.ok(/not the base text/.test(by('OTW-c11-jst-psalm-11').desc));
 });
 
 test('Supplementary S3/S4 review fixes: child source views follow their parents and required details are present', () => {
@@ -560,8 +634,17 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 31);
-  const want: Record<string, number> = { SD0213: 1, SD0226: 3, SD0236: 5, SD0270: 15, SD0443: 1, SD0663: 6 };
+  assert.equal(kids.length, 33);
+  const want: Record<string, number> = {
+    SD0213: 1,
+    SD0226: 3,
+    SD0236: 5,
+    SD0270: 15,
+    SD0443: 1,
+    SD0663: 6,
+    SD0701: 1,
+    SD0702: 1,
+  };
   for (const [sd, n] of Object.entries(want)) {
     assert.equal(kids.filter(r => r.includes(`child of ${sd},`)).length, n, sd);
   }
