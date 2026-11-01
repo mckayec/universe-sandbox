@@ -26,6 +26,7 @@ import copy_dcp
 import copy_dre
 import copy_dca
 import copy_dd
+import copy_pgp
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -38,7 +39,8 @@ NT_BOOKS = {'matt': 'Matthew', 'mark': 'Mark', 'luke': 'Luke', 'john': 'John', '
             '3-jn': '3 John', 'jude': 'Jude', 'rev': 'Revelation'}
 # family -> (tab id, gate books, gate layers, copy module)
 FAMILIES = {'bom': ('bom-more', [3], ['bom'], copy_bom), 'nt': ('nt-more', [2], ['nt'], copy_nt),
-            'ot': ('ot-more', [1], ['ot'], copy_ot), 'dc': ('dc-more', [4], ['dc'], copy_dc)}
+            'ot': ('ot-more', [1], ['ot'], copy_ot), 'dc': ('dc-more', [4], ['dc'], copy_dc),
+            'pgp': ('pgp-more', [5], ['pgp'], copy_pgp)}
 BUILT = {f'SC0{i}': 'bom' for i in range(1, 8)}
 BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
@@ -46,9 +48,10 @@ BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 31)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
 BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 44)})
 BUILT['SC45'] = 'dc'
+BUILT.update({'SC46': 'pgp', 'SC47': 'pgp'})
 # families built over several checkpoints: rows without copy yet stay `pending`
 PARTIAL = set()
-COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca, copy_dd]
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca, copy_dd, copy_pgp]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}
@@ -206,7 +209,8 @@ def main(path):
             gate = {k: v for m in COPY_MODULES for k, v in getattr(m, 'GATE', {}).items()}
             books, layers = gate.get(sd, (books, layers))
             src = sources(r)
-            for t, u in merged.get(sd, []):
+            no_merge = {k for m in COPY_MODULES for k in getattr(m, 'MERGE_NO_SRC', set())}
+            for t, u in ([] if sd in no_merge else merged.get(sd, [])):
                 # a consolidated row's chapter-level source is dropped when the card already cites that chapter
                 if (t, u) not in src and not (':' not in t and any(u == v for _, v in src)):
                     src.append((t, u))
@@ -254,6 +258,12 @@ def main(path):
     for i, t in copy_dd.TITLES.items():
         # the dossier cards' See-also titles must name existing cards
         assert re.search(r"key: 'DCM-%s-[^']*', name: %s" % (i.lower(), re.escape(js(t))), text), (i, t)
+    names = set(re.findall(r"name: '((?:[^'\\]|\\.)*)'", text))
+    for line in lines['pgp']:
+        # the PGP cards' See-also titles must name existing cards (any tab)
+        also = re.search(r"See also: (.*?)\.'", line)
+        for t in re.findall('“([^”]+)”', also.group(1)) if also else []:
+            assert js(t)[1:-1] in names, t
     for fam, (tab, *_rest) in FAMILIES.items():
         a, b = f'/* SUPPLEMENT:{tab}:BEGIN */', f'/* SUPPLEMENT:{tab}:END */'
         i, j = text.index(a) + len(a), text.index(b)

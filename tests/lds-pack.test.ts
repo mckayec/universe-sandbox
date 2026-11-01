@@ -282,7 +282,7 @@ test('BA07 round 2: 108 further source views (107 research IDs) resolve with the
   assert.equal(new Set(keys).size, keys.length, 'keys are unique');
   // 170 primary source views plus the supplementary tab(s), counted separately
   const supp = P.codex
-    .filter((t: any) => ['bom-more', 'nt-more', 'ot-more', 'dc-more'].includes(t.id))
+    .filter((t: any) => ['bom-more', 'nt-more', 'ot-more', 'dc-more', 'pgp-more'].includes(t.id))
     .flatMap((t: any) => t.list).length;
   assert.equal(keys.length - supp, 170);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
@@ -706,7 +706,8 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 74); // 72 + the S15-C1 Alvin JS—History view + the SD1045 Sarai view
+  // 72 + the S15-C1 Alvin JS—History view + the SD1045 Sarai view + the QG14 Cowdery 1834 view
+  assert.equal(kids.length, 75);
   const want: Record<string, number> = {
     SD0213: 1,
     SD0214: 12,
@@ -1227,11 +1228,13 @@ test('Supplementary checkpoints 18–19: S17-C1/C2 and all 140 SC45 section doss
       assert.ok(k.startsWith(`DCM-ddo${od}-`), k);
       assert.ok(x.name.startsWith(`Official Declaration ${od}: `), k);
       assert.ok(x.desc.startsWith(`Doctrine and Covenants — Official Declaration ${od}. `), k);
-      assert.deepEqual(
-        plain(x.src.map((s: any) => s.u)),
-        [`https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/${od}?lang=eng`],
+      // S19-C3 adds the Church historical essay to OD1 only
+      assert.equal(
+        x.src[0].u,
+        `https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/${od}?lang=eng`,
         k,
       );
+      assert.equal(x.src.length, od === 1 ? 2 : 1, k);
       return;
     }
     assert.ok(k.startsWith(`DCM-dd${String(n).padStart(3, '0')}-`), k);
@@ -1244,7 +1247,7 @@ test('Supplementary checkpoints 18–19: S17-C1/C2 and all 140 SC45 section doss
     );
   });
   assert.deepEqual(plain(dc.filter((x: any) => /^DCM-ddo?\d/.test(x.key)).map((x: any) => x.key)), keys);
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 60);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 31);
   // the dossier for section 7 keeps the S17-C1 reading
   assert.match(by('DCM-dd007-john-ministry').desc, /the Lord speaks with John and then addresses Peter/);
   // not shown before the D&C layer
@@ -1309,4 +1312,85 @@ test('Supplementary checkpoint 19: S18-C1–C3 dossier corrections', () => {
     if (!also) continue;
     for (const t of also[1].match(/“[^”]+”/g)) assert.ok(names.has(t.slice(1, -1)), `${x.key}: ${t}`);
   }
+});
+
+test('Supplementary checkpoint 20: S19-C1–C4 dossier corrections', () => {
+  const dc = codex('dc-more');
+  const by = (k: string) => dc.find((x: any) => x.key === k);
+  // S19-C1: no surname for Alvin at the D&C gate; the PGP family child stays at 5/pgp
+  const d137 = by('DCM-dd137-alvin-vision');
+  assert.doesNotMatch(d137.desc, /Alvin Smith/);
+  assert.match(d137.desc, /A vision including Joseph Smith’s brother Alvin:/);
+  assert.deepEqual([plain(d137.books), plain(d137.layers)], [[4], ['dc']]);
+  const fam = by('DCM-jsh-alvin-family');
+  assert.deepEqual([plain(fam.books), plain(fam.layers)], [[5], ['pgp']]);
+  // S19-C2 and S19-C4: section 124 terminology and stock units
+  const d124 = by('DCM-dd124-nauvoo').desc;
+  assert.doesNotMatch(d124, /ward presidents/);
+  assert.match(
+    d124,
+    /the teachers’ and deacons’ presidents and the stake president, with their counselors, are not named in verse 142/,
+  );
+  assert.doesNotMatch(d124, /Stock is set from \$50 to \$15,000/);
+  assert.match(
+    d124,
+    /The instructions set a minimum of \$50 per share and a maximum total subscription of \$15,000 from any one person;/,
+  );
+  // S19-C3: the Manifesto card also cites the Church historical essay
+  assert.deepEqual(plain(by('DCM-ddo1-manifesto').src.map((s: any) => s.u)), [
+    'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/od/1?lang=eng',
+    'https://www.churchofjesuschrist.org/study/manual/gospel-topics-essays/the-manifesto-and-the-end-of-plural-marriage?lang=eng',
+  ]);
+  // DD104 refinement
+  assert.match(
+    by('DCM-dd104-stewardships').desc,
+    /Martin Harris, the lot John Johnson had obtained in exchange for his former inheritance;/,
+  );
+});
+
+test('Supplementary checkpoint 20: SC46 QG01–QG16 and SC47 Articles of Faith in pgp-more', () => {
+  const pg = codex('pgp-more');
+  const by = (k: string) => pg.find((x: any) => x.key === k);
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const lines = csv.trim().split('\n');
+  const sc46 = lines.filter(r => /^SD\d{4},SC46,/.test(r));
+  assert.equal(sc46.length, 16);
+  const keys = sc46.map(r => r.match(/,imported,codex:pgp-more,(PGM-qg[^,]+),/)![1]);
+  keys.forEach((k, i) => assert.ok(k.startsWith(`PGM-qg${String(i + 1).padStart(2, '0')}-`), k));
+  // SC47: thirteen rows, one card keeping every article
+  const sc47 = lines.filter(r => /^SD\d{4},SC47,/.test(r));
+  assert.equal(sc47.length, 13);
+  assert.ok(sc47.every(r => /,imported,codex:pgp-more,PGM-aof-1-13,/.test(r)));
+  assert.equal(sc47.filter(r => /consolidated into SD1228 card/.test(r)).length, 12);
+  const aof = by('PGM-aof-1-13');
+  for (let n = 2; n <= 13; n++) assert.match(aof.desc, new RegExp(` ${n}: `), String(n));
+  assert.deepEqual(plain(aof.src.map((s: any) => s.t)), ['Articles of Faith 1:1–13']);
+  // every card is PGP-only and nonspatial; See-also titles name existing cards
+  const names = new Set(P.codex.flatMap((t: any) => t.list).map((x: any) => x.name));
+  assert.equal(pg.length, 18);
+  for (const x of pg) {
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[5], ['pgp']], x.key);
+    assert.equal(x.lat, undefined, x.key);
+    assert.equal(x.when, undefined, x.key);
+    assert.ok(x.desc.startsWith('Pearl of Great Price — '), x.key);
+    const also = x.desc.match(/See also: (.*)\.$/);
+    for (const t of also ? also[1].match(/“[^”]+”/g) : []) assert.ok(names.has(t.slice(1, -1)), `${x.key}: ${t}`);
+  }
+  // homonym and attribution limits kept
+  assert.match(by('PGM-qg04-cain-line').desc, /This Lamech, of Cain’s line, is not Noah’s father/);
+  assert.match(by('PGM-qg05-seth-line').desc, /not Enoch’s baptism and not a located river/);
+  assert.match(
+    by('PGM-qg09-abraham-household').desc,
+    /reported speech, not independent evidence of biological kinship/,
+  );
+  assert.match(by('PGM-qg14-cowdery-1834').desc, /not verse 76/);
+  // not shown before the PGP layer
+  const at = (layers: string[], group: number) =>
+    L.codexSplit(pg, new Set(layers), null, true, group, (y: any) => Math.min(...y.books)).shown.length;
+  assert.equal(at(['ot', 'nt', 'bom', 'dc', 'pgp'], 4), 0);
+  assert.equal(at(['pgp'], 5), 18);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 31);
 });

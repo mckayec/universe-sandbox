@@ -424,6 +424,8 @@ DOSSIERS = [
 ]
 
 COPY, EXTRA_SRC, CHILDREN = {}, {}, {}
+ESSAY = ('Church historical essay: The Manifesto and the End of Plural Marriage — After the Manifesto',
+         'https://www.churchofjesuschrist.org/study/manual/gospel-topics-essays/the-manifesto-and-the-end-of-plural-marriage?lang=eng')
 # Official Declarations follow section 138 in the register: OD1 is SD1210, OD2 is SD1211.
 OD_SD = {'OD1': 'SD1210', 'OD2': 'SD1211'}
 for sec, slug, title, text, see in DOSSIERS + DOSSIERS_2:
@@ -436,6 +438,8 @@ for sec, slug, title, text, see in DOSSIERS + DOSSIERS_2:
         COPY[OD_SD[sec]] = (f'DCM-ddo{n}-{slug}', f'Official Declaration {n}: {title}',
                             P + f'Official Declaration {n}. ' + text + also)
         EXTRA_SRC[OD_SD[sec]] = [S(f'Official Declaration {n}')]
+        # S19-C3: the later historical account the OD1 qualification relies on, attributed as such
+        EXTRA_SRC[OD_SD[sec]] += [ESSAY] if sec == 'OD1' else []
         continue
     sd = f'SD{1071 + sec:04d}'
     COPY[sd] = (f'DCM-dd{sec:03d}-{slug}', f'Section {sec}: {title}', P + f'Section {sec}. ' + text + also)

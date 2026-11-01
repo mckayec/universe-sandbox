@@ -187,7 +187,7 @@ DOSSIERS_2 = [
     (104, 'stewardships', 'The firm divided into stewardships',
      'Dated April 23, 1834, at or near Kirtland. The United Firm is restructured into individual stewardships, with '
      'separate operations and treasuries in Ohio and Missouri. Stewardships: Sidney Rigdon, his residence and the '
-     'tannery; Martin Harris, a lot involved in an exchange with John Johnson; Frederick G. Williams and Oliver '
+     'tannery; Martin Harris, the lot John Johnson had obtained in exchange for his former inheritance; Frederick G. Williams and Oliver '
      'Cowdery, the printing; John Johnson, his inheritance less reserved lots; Newel K. Whitney, houses, the store '
      'and the ashery; Joseph Smith, the temple lot of 40 by 12 rods and his father’s home. The sacred and general '
      'treasuries are separate. The April 10 decision and the April 23 direction are distinct, and the physical '
@@ -294,7 +294,7 @@ DOSSIERS_2 = [
      'proxy baptism, and for the Nauvoo House, a boarding house. A proclamation is to be written with Robert B. '
      'Thompson’s help and John C. Bennett’s labor, with Sidney Rigdon and William Law as further assistants. Nauvoo '
      'House trustees: George Miller, Lyman Wight, John Snider and Peter Haws; the president to be chosen among them '
-     'is unnamed. Stock is set from $50 to $15,000; Joseph Smith Jr., Vinson Knight, Hyrum Smith, Isaac Galland, '
+     'is unnamed. The instructions set a minimum of $50 per share and a maximum total subscription of $15,000 from any one person; Joseph Smith Jr., Vinson Knight, Hyrum Smith, Isaac Galland, '
      'William Marks, Henry G. Sherwood, William Law, Amos Davies and Robert D. Foster are directed to subscribe, and '
      'Foster is instructed concerning building a house for Smith. Isaac Galland is to be ordained by William Marks '
      'and to go with Hyrum Smith, and a future mission of William Law with Hyrum is reserved; Law is to preach at '
@@ -311,7 +311,7 @@ DOSSIERS_2 = [
      'receive it”; Samuel Rolfe presides over the priests. The deaths of David W. Patten, Edward Partridge, Joseph '
      'Smith Sr. and Seymour Brunson are remembered, and the oppressed builders of the Jackson County temple are '
      'excused, not shown as having completed it. Commanded appointments and construction are kept apart from their '
-     'completion; ward presidents are unnamed, and household and property coordinates require historical sources.',
+     'completion; the teachers’ and deacons’ presidents and the stake president, with their counselors, are not named in verse 142, and household and property coordinates require historical sources.',
      ['DP09', 'DE07', 'DJ04', 'DX07', 'DX09', 'DX12', 'DX13', 'DX14', 'DR04', 'DR20']),
     (125, 'iowa-saints', 'The Saints in Iowa',
      'Dated March 1841 at Nauvoo, addressed to the Saints in Iowa. Instructions for settlement and gathering, naming '
@@ -376,7 +376,7 @@ DOSSIERS_2 = [
      'Lake as the destination. The section does not show the Omaha people’s consent or every wagon’s exact route, '
      'and the modern anchor is the visitor center.', ['DJ05', 'DX12', 'DX14', 'DR21']),
     (137, 'alvin-vision', 'A vision including Alvin',
-     'Dated January 21, 1836, at the Kirtland Temple. A vision including Alvin Smith: salvation beyond earthly '
+     'Dated January 21, 1836, at the Kirtland Temple. A vision including Joseph Smith’s brother Alvin: salvation beyond earthly '
      'knowledge, and children. Adam, Abraham, Joseph’s parents and Alvin are shown; those who would have received the '
      'gospel and children below the age of accountability are promised salvation. The vision includes parents then '
      'living; it is not a notice of deaths. It comes before section 109 in time, and the vision has no celestial or '
