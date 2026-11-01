@@ -14,8 +14,8 @@ count of new entities.
 | Families | SD rows | State | Target |
 |---|---|---|---|
 | SC01–SC07 Book of Mormon | 111 (+7 prose bullets) | **imported, checkpoint 1** | codex tab `bom-more` |
-| SC08–SC12 New Testament | 187 | pending | next run |
-| SC13–SC34 Old Testament | 487 | pending | |
+| SC08–SC12 New Testament | 187 | **imported, checkpoint 3** | codex tab `nt-more` |
+| SC13–SC34 Old Testament | 487 | pending | next run |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
@@ -79,3 +79,60 @@ Regeneration was first confirmed byte-identical at fe24d33 with the same PR34 in
 Checks: `pnpm format`, `pnpm check` (97/97, check:dist 114 files OK), `pnpm test:pages` 13 pages × 2 viewports. Playwright (SwiftShader) at 390×844 touch: chooser shown, tab row hidden, the list starts 105 px below the dialog top (was about half the dialog), all 8 sections offered, selecting “More Book of Mormon…” shows River Laman first and keeps the tab state in sync, Tab stays inside the dialog, Escape closes and returns focus to the Codex button, no console errors. At 1440×900 the tab buttons show as before. Screenshots `shots/s2-codex-390x844.png`, `shots/s2-codex-1440x900.png`. Reverse-Tab order, VoiceOver and real devices are not tested.
 
 Next: SC08 onward, using the chooser instead of adding more stacked tabs.
+
+## Checkpoint 3 (2026-11-01): SC08–SC12 (New Testament)
+
+* **One card per SD row** (187) in a new codex tab “More New Testament places, journeys and people” (`nt-more`), keyed
+  by the row's research id (`NTP-…` 73, `NTJ-…` 26, `NTE-…` 27, `NTC-…` 33, `NTR-…` 28). Every card is `books:[2]`,
+  `layers:['nt']` (gate `2/nt`); no coordinates, routes, years or pins. On phones the tab is reached through the
+  checkpoint 2 section chooser.
+* **Generator**: `build.py` now builds several families (`FAMILIES` maps family to tab, gate and copy module); copy is in
+  `supplementary-build/copy_nt.py`. NT link text (`matt 4:12–23`) becomes the book name and reference
+  (`Matthew 4:12–23`); the generator asserts the link text's book matches its URL. Regeneration leaves the BoM block
+  byte-identical, and a second run produces no diff.
+* **Copy**: the row's quoted summary is the first sentence; the row's constraint is kept where it tells a reader
+  something (distinct identities, unresolved identifications, separate Gospel accounts, intended-not-reached, passing
+  not landing). Drawing-only constraints (“no road geometry”, “do not animate all troops”) are honoured by drawing nothing.
+  Pin codes in rows are written as the existing record's name (P08 → Jerusalem, AP09 → Sea of Galilee, AP12 → Antioch,
+  AP22 → Troas, AP25 → Philippi, AP26 → Melita, AJ04 → “Crossing toward Macedonia”, AJ05 → “Paul’s company to Rome”,
+  C02 → “Resurrection testimony”, AE09/AE10, AE13, E03/E04, J02).
+* **Sources**: every link in the row, plus, in `EXTRA_SRC`, passages the row names in its text without a link when the
+  card names them too (e.g. SD0127 Luke 8:26 and Matthew 8:28; SD0213 Luke 4:1–13; SD0244 3 Nephi 15; SD0247 D&C 76).
+  Where the row names only a chapter, the extra source is cited at chapter level; no verse numbers were added from
+  memory.
+* **Identity rules applied**: Joppa (Acts) is the OT Joppa identity gated to its Acts view (SD0144); Caesarea (Acts) ≠
+  Caesarea Philippi; Sychar ≠ Shechem; Magdala ≠ Dalmanutha; Gennesaret (land) ≠ lake alias; Ephraim (John 11) ≠ tribal
+  territory; three men named Ananias; Silas ≠ Silvanus without evidence; Nathanael ≠ Bartholomew and Levi ≠ Matthew not
+  assumed; Lazarus of Bethany ≠ Luke 16; Philip of the seven ≠ apostle.
+
+Builder readings for ChatGPT to check:
+
+1. SD0115 “distinct from beyond-Jordan variant place traditions” is worded “kept distinct from traditions of a place
+   by the same name beyond Jordan”.
+2. SD0116 adds “near the Mount of Olives” from the row's P20 relation (Matthew 21:1 is the cited verse).
+3. SD0144 states the deduplication for readers (“the same Joppa as in the Old Testament, gated here to its Acts
+   account”) instead of a key reference.
+4. SD0186 names Nazareth as Mary's starting point from the row's `P06→…→home`.
+5. SD0191 renders “unnamed earlier baptizing place” as “to where John first baptized” (John 10:40 wording); please
+   confirm this does not over-identify the place.
+6. SD0206's AJ05 timing details (Syracuse, Rhegium, Puteoli) are already carried by “Paul’s company to Rome”; the card
+   links to it rather than repeating them.
+7. SD0214 names “the country Matthew calls the Gergesenes” for the row's NTP-gadarene-country plus source label.
+8. SD0270 lists the fifteen nonspatial vision scenes in one card, not fifteen child cards; the row says “distinct
+   nonspatial children”. If separate cards are required, they can be split in the generator without new research.
+9. SD0226 and SD0236 likewise name their Acts 4–6 and Acts 22–26 children in the card text rather than as separate
+   cards.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (98/98, including a new test: all 187 SC08–12 rows map to an `nt-more` card with sources,
+NT gate only, no coordinates or years, hidden under every other single layer and before the NT group; the primary
+170-key count is unchanged), `check:dist` 114 files OK, validator clean, `pnpm test:pages` 13 pages × 2 viewports.
+Playwright (SwiftShader) opened the new tab at 3840×2160, 1440×900, 1280×800 and 390×844 (phone via the section
+chooser): 187 cards, no console or page errors, Escape closes and returns focus to the Codex button. Screenshots
+`shots/s3-codex-nt-*`.
+
+Observed (engine, not content): at 1440×900 the desktop tab buttons now wrap to four rows above the list. Still
+usable; if the Old Testament and D&C families add tabs, desktop may also need the section chooser or grouped tabs.
+
+Next: SC13–SC34 (Old Testament, 487 rows), likely over two runs.
