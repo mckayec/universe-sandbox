@@ -657,3 +657,11 @@ Applies [supplementary-review-s12](https://github.com/mckayec/universe-sandbox/b
 
 Accounting unchanged: 790 SD rows imported, 481 pending; 72 children; mapping 1,351 rows (870 imported). Only the
 Matthew card's text changes (the mapping CSV is byte-identical).
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (107/107), `check:dist` 114 files OK, pack validator clean, `pnpm test:pages` 13 pages × 2
+viewports. Rendered (SwiftShader, same method as checkpoint 12, page ready in 46–116 s) at code commit `7f53ac4`:
+shots `s13-codex-nt-genealogies-*` at 3840×2160, 1440×900, 1280×800 and 390×844 show the new legend and “Phares (Zara
+is also named; both are of Thamar) → Esrom”; 242 `nt-more` cards; no console or page errors. Native select, keyboard
+and real-GPU gates remain open.
