@@ -707,3 +707,26 @@ validator (via the atlas-packs test) clean, `pnpm test:pages` 13 pages × 2 view
 `dist/` under `/universe-sandbox/`, page ready in 76–334 s, codex opened and `dc-more` chosen through the DOM) at code
 commit `0bc682c`: shots `s14-codex-dc-more-*` at 3840×2160, 1440×900, 1280×800 and 390×844; 69 cards listed with all
 layers on; no console or page errors. Native select, keyboard and real-GPU gates remain open.
+
+## Checkpoint 15: S14-C1–C3; SC40 (Doctrine and Covenants person roster)
+
+Applied [supplementary-review-s14](https://github.com/mckayec/universe-sandbox/blob/c02a5cac5e1685ca860ddec2126418bae300aae5/docs/universes/packs/lds-standard-works/supplementary-review-s14.md) (c02a5ca), audited head 0b8c8f8:
+
+- **S14-C1** SD0849 `DCM-dr14-gause-williams`: description replaced with the review's text (transferred appointment; March 15, 1832 / March 18, 1833; no "different documents").
+- **S14-C2** SD0813 `DCM-dj03-salem-journey`: replaced with the review's text naming the four travelers.
+- **S14-C3** SD0839 `DCM-dx16-civil-government`: replaced with the review's text stating the 134:12 clause and attributing it to the historical declaration.
+- Reading 2 (optional): SD0848 locators now sit next to each role (Partridge 41:9, Whitney 72:8, Gilbert 53:4).
+- Reading 3 (optional): SD0796 second sentence replaced with the review's "about four miles north of Fishing River in Clay County, Missouri; this does not establish an exact camp point." No coordinate.
+
+**SC40 (138 SD rows, SD0860–SD0997)** as `DCM-dcp-<key>` person cards in `dc-more`, one per stable `dcp-` identity, from new `copy_dcp.py` (generated once from the accepted rows, then static like the other copy modules). Each card says where the person is named (the row's locators spelled out: "the heading and verses 1–5 of section 53; 57:6–10 …") and cites one official link per section (verses merged, so no repeated URL). The 102 rows whose constraint is the shared rule ("same named participant across cited DD/DR records; initials retained; no uncited kinship") get no extra sentence: the rule is honoured by drawing no link and expanding no initial. The other 36 rows' identity constraints become reader sentences (spelling kept as printed, distinct namesakes, signatory vs author, heading vs body forms). All 138 are coordinate-free, year-free `4/dc`.
+
+Builder readings for ChatGPT:
+
+1. **SD0864 Alvin Smith.** The row resolves the surname through JS—H 1:3–4, a layer-5 source. A `4/dc` card cannot cite it without exposing a later work, so the card says the surname is not printed in 137:5 and cites only 137:5–6. If the JS—H resolution should be visible, it belongs on a child gated at 5/pgp.
+2. **Person cards are not a typed identity graph.** They are codex cards; cross-references to the DR/DE cards (e.g. "See “Jesse Gause and Frederick G. Williams”") are text, not clickable links, as in checkpoint 14 (reading 5).
+3. **Short cards are intentional.** For the 102 shared-rule rows the accepted register supplies a name and locators only; no role, office or biography is added from memory. Roles come with SC41's DRE relation sets.
+4. **SD0895/SD0919/SD0920 "council".** The rows say "124council"/"102council"; the cards say "named among the council in section 124" / "a member of the council in section 102" without naming which council, as the rows do.
+
+Accounting: 997 SD rows imported, 274 pending: SC41–SC45 214 D&C rows (36 + 17 + 21 + 140), then SC46–SC54 60 rows (16 + 13 + 11 + 9 + 3 + 4 + 4). Before this checkpoint the split was SC40–SC45 352 / SC46–SC54 60 (total 412), not the 348 / 64 in the S14 handoff. `dc-more` now has 207 cards (69 + 138). Mapping 1,351 rows; 1,077 imported mapping rows.
+
+Checks at the code commit: `pnpm format` clean, `pnpm check` 109/109 (new test "Supplementary checkpoint 15"; the SC35–SC39 test now excludes the person cards when counting its 69), `pnpm check:dist` OK, `pnpm test:pages` 13 pages × 2. Playwright (SwiftShader) captures of `dc-more` scrolled to the first person cards at 1440×900, 1280×800 and 390×844 (shots `s15-*`), no console errors; 207 cards and 138 "Named in" person cards counted in the DOM. **No 3840×2160 capture this checkpoint** (the 4K page did not reach a clickable codex within the run's time); next run.

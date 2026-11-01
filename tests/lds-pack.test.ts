@@ -947,7 +947,7 @@ test('Supplementary SC35–SC39: D&C place, event, teaching and relationship row
     .split('\n')
     .filter(r => /^SD\d{4},SC3[5-9],/.test(r));
   assert.equal(rows.length, 69);
-  const dc = codex('dc-more');
+  const dc = codex('dc-more').filter((x: any) => !x.key.startsWith('DCM-dcp-'));
   assert.equal(dc.length, 69);
   const keys = new Set(dc.map((x: any) => x.key));
   assert.equal(keys.size, dc.length);
@@ -987,4 +987,51 @@ test('Supplementary SC35–SC39: D&C place, event, teaching and relationship row
   assert.match(by('DCM-dr23-ordinations-107').desc, /not father-child links/);
   // section ranges expand to one link per section (DX09: 32 sections)
   assert.equal(by('DCM-dx09-gathering').src.length, 32);
+});
+
+test('Supplementary checkpoint 15: S14-C1–C3 copy and SC40 person cards in dc-more', () => {
+  const dc = codex('dc-more');
+  const by = (k: string) => dc.find((x: any) => x.key === k);
+  // S14-C1: a transferred appointment, not "different documents"
+  const gw = by('DCM-dr14-gause-williams').desc;
+  assert.doesNotMatch(gw, /different documents/);
+  assert.match(gw, /March 15, 1832.*Jesse Gause.*transferred to Frederick G\. Williams.*March 18, 1833/);
+  // S14-C2: the four Salem travelers named
+  assert.match(
+    by('DCM-dj03-salem-journey').desc,
+    /Joseph Smith, Sidney Rigdon, Hyrum Smith and Oliver Cowdery traveling from Kirtland to Salem in 1836/,
+  );
+  // S14-C3: the restrictive clause of 134:12 is stated, attributed to the historical declaration
+  const cg = by('DCM-dx16-civil-government').desc;
+  assert.match(cg, /verse 12 opposes preaching to or baptizing people held in servitude/);
+  assert.match(cg, /slavery-era position; no modern policy is inferred/);
+  // SC40: one card per dcp identity, coordinate-free, D&C-gated, sourced per section
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const rows = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},SC40,/.test(r));
+  assert.equal(rows.length, 138);
+  const people = dc.filter((x: any) => x.key.startsWith('DCM-dcp-'));
+  assert.equal(people.length, 138);
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:dc-more,(DCM-dcp-[^,]+),/);
+    assert.ok(m && by(m[1]), r.slice(0, 40));
+  }
+  for (const x of people) {
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[4], ['dc']], x.key);
+    assert.equal(x.lat, undefined, x.key);
+    assert.ok(x.desc.startsWith('Doctrine and Covenants — Named in '), x.key);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => s.u.startsWith('https://') && s.t), x.key);
+    assert.equal(new Set(x.src.map((s: any) => s.u)).size, x.src.length, `${x.key} repeats a source`);
+  }
+  assert.equal(L.codexSplit(people, new Set(['dc']), null, true, 3, (y: any) => Math.min(...y.books)).shown.length, 0);
+  // identity distinctions carried as sentences
+  assert.match(by('DCM-dcp-jesse-gause').desc, /not the same person/);
+  assert.match(by('DCM-dcp-joseph-f-smith').desc, /Not Joseph Smith Jr\./);
+  assert.match(by('DCM-dcp-major-n-ashley').desc, /not a military rank/);
+  assert.equal(by('DCM-dcp-oliver-cowdery').src.length, 5); // headings 6, 21; sections 8, 9; 20:3
 });
