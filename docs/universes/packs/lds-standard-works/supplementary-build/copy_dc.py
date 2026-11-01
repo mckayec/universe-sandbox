@@ -82,7 +82,7 @@ COPY = {
     'SD0823': ('DCM-dr03-joseph-emma', 'Joseph Smith and Emma: spouses', P + 'Sections 25:1–5 and 132:51–56 address Emma as Joseph Smith’s wife. The passages are not evidence of her consent to every marriage.'),
     'SD0824': ('DCM-dr04-joseph-hyrum', 'Joseph and Hyrum Smith: brothers with distinct offices', P + 'Sections 135:1–3 and 124:91–96 present Joseph and Hyrum as brothers holding distinct offices. Hyrum’s office as patriarch is not merged with Joseph’s as president.'),
     'SD0825': ('DCM-dr05-joseph-f-hyrum', 'Joseph F. Smith, son of Hyrum', P + 'Section 138:53 explicitly names Hyrum Smith as Joseph F. Smith’s father. Joseph F. Smith is a different person from Joseph Smith Jr.'),
-    'SD0826': ('DCM-dr06-joseph-alvin', 'Joseph and Alvin Smith: brothers', P + 'In the vision of section 137:5–6, Joseph sees his brother Alvin. The vision also shows his parents; that does not mean they had died when it was received.'),
+    'SD0826': ('DCM-dr06-joseph-alvin', 'Joseph Smith and his brother Alvin', P + 'In the vision of section 137:5–6, Joseph sees his brother Alvin. The vision also shows his parents; that does not mean they had died when it was received.'),
     'SD0827': ('DCM-dr07-murdock-clapp', 'John Murdock and Julia Clapp', P + 'The heading and verse 6 of section 99 name Murdock and Julia Clapp as spouses with dependent children. Where the children were placed is not guessed, and no foster-family links are drawn.'),
     'SD0828': ('DCM-dr08-presidency-marsh', 'The Presidency, Marsh and the Twelve (1837)', P + 'Section 112:16–21 and 30 set out the Presidency’s direction of Marsh and the Twelve. An office relationship dated to 1837, not a permanent biography.'),
     # SC38 setting and teaching views across the collection

@@ -706,7 +706,7 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  assert.equal(kids.length, 72);
+  assert.equal(kids.length, 73); // 72 + the S15-C1 Alvin JS—History view
   const want: Record<string, number> = {
     SD0213: 1,
     SD0214: 12,
@@ -947,7 +947,7 @@ test('Supplementary SC35–SC39: D&C place, event, teaching and relationship row
     .split('\n')
     .filter(r => /^SD\d{4},SC3[5-9],/.test(r));
   assert.equal(rows.length, 69);
-  const dc = codex('dc-more').filter((x: any) => !x.key.startsWith('DCM-dcp-'));
+  const dc = codex('dc-more').filter((x: any) => !/^DCM-(dcp-|dre\d|jsh-)/.test(x.key));
   assert.equal(dc.length, 69);
   const keys = new Set(dc.map((x: any) => x.key));
   assert.equal(keys.size, dc.length);
@@ -1034,4 +1034,72 @@ test('Supplementary checkpoint 15: S14-C1–C3 copy and SC40 person cards in dc-
   assert.match(by('DCM-dcp-joseph-f-smith').desc, /Not Joseph Smith Jr\./);
   assert.match(by('DCM-dcp-major-n-ashley').desc, /not a military rank/);
   assert.equal(by('DCM-dcp-oliver-cowdery').src.length, 5); // headings 6, 21; sections 8, 9; 20:3
+});
+
+test('Supplementary checkpoint 16: S15-C1/C2 and SC41 office and companion relations in dc-more', () => {
+  const dc = codex('dc-more');
+  const by = (k: string) => dc.find((x: any) => x.key === k);
+  const at = (list: any[], layers: string[], group: number) =>
+    L.codexSplit(list, new Set(layers), null, true, group, (y: any) => Math.min(...y.books)).shown.map(
+      (x: any) => x.key,
+    );
+  // S15-C1: the D&C card shows only the D&C name; the surname resolution is a PGP-gated child view
+  const alvin = by('DCM-dcp-alvin-smith');
+  assert.equal(alvin.name, 'Alvin');
+  assert.deepEqual([plain(alvin.books), plain(alvin.layers)], [[4], ['dc']]);
+  assert.ok(alvin.src.every((s: any) => !s.u.includes('/pgp/') && !/History/.test(s.t)));
+  assert.doesNotMatch(alvin.name + alvin.desc, /Alvin Smith/);
+  const jsh = by('DCM-jsh-alvin-family');
+  assert.equal(jsh.name, "Alvin in Joseph Smith's family account");
+  assert.deepEqual([plain(jsh.books), plain(jsh.layers)], [[5], ['pgp']]);
+  assert.match(jsh.desc, /^Pearl of Great Price — Joseph Smith—History 1:3–4 .*D&C 137:5 itself names only Alvin\.$/);
+  assert.deepEqual(plain(jsh.src.map((s: any) => s.t)), ['Joseph Smith—History 1:3–4']);
+  assert.ok(jsh.src[0].u.includes('/pgp/js-h/1'));
+  assert.equal(dc.indexOf(jsh), dc.indexOf(alvin) + 1);
+  assert.equal(by('DCM-dr06-joseph-alvin').name, 'Joseph Smith and his brother Alvin');
+  const all = ['ot', 'nt', 'bom', 'dc', 'pgp'];
+  assert.ok(at(dc, all, 4).includes('DCM-dcp-alvin-smith') && !at(dc, all, 4).includes('DCM-jsh-alvin-family'));
+  assert.ok(at(dc, all, 5).includes('DCM-jsh-alvin-family'));
+  assert.ok(!at(dc, ['dc'], 5).includes('DCM-jsh-alvin-family'));
+  // S15-C2: contract (115) and stock instruction (117) kept distinct; 138 added to the section 124 label
+  const foster = by('DCM-dcp-robert-d-foster');
+  assert.match(
+    foster.desc,
+    /Verse 115 directs .* contract; verse 117 separately directs .* stock into the Nauvoo House/,
+  );
+  assert.match(foster.desc, /not evidence here of completed construction or payment/);
+  assert.doesNotMatch(foster.desc, /stockholder|Nauvoo House contract/);
+  assert.deepEqual(plain(foster.src.map((s: any) => s.t)), ['D&C 124:115–118, 138']);
+  // SC41: one DCM-dre card per DRE row, D&C-gated, coordinate-free, sourced per section
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const rows = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},SC41,/.test(r));
+  assert.equal(rows.length, 36);
+  const rel = dc.filter((x: any) => /^DCM-dre\d/.test(x.key));
+  assert.equal(rel.length, 36);
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:dc-more,(DCM-dre[^,]+),/);
+    assert.ok(m && by(m[1]), r.slice(0, 40));
+  }
+  for (const x of rel) {
+    assert.deepEqual([plain(x.books), plain(x.layers)], [[4], ['dc']], x.key);
+    assert.equal(x.lat, undefined, x.key);
+    assert.ok(x.desc.startsWith('Doctrine and Covenants — '), x.key);
+    assert.ok(x.src.length > 0 && x.src.every((s: any) => s.u.includes('/dc-testament/dc/')), x.key);
+    assert.equal(new Set(x.src.map((s: any) => s.u)).size, x.src.length, `${x.key} repeats a source`);
+  }
+  assert.equal(at(rel, ['dc'], 3).length, 0);
+  // constraints carried as sentences
+  assert.equal((by('DCM-dre052a-companion-pairs').desc.match(/; /g) || []).length, 12); // 13 pairs
+  assert.equal((by('DCM-dre075-companion-pairs').desc.match(/; /g) || []).length, 12); // 12 pairs (11 separators) + the verses 24–28 clause
+  assert.match(by('DCM-dre124f-twelve').desc, /no twelfth living name is added/);
+  assert.match(by('DCM-dre124g-high-council').desc, /Aaron Johnson in place of the deceased Seymour Brunson/);
+  assert.match(by('DCM-dre124d-nauvoo-house-stock').desc, /not proof that payment was made/);
+  assert.match(by('DCM-dre118-marsh-and-twelve').desc, /footnote 2a/);
+  assert.equal(by('DCM-dre058-return-party').src.length, 3);
 });

@@ -12,7 +12,7 @@ COPY = {
     'SD0861': ('DCM-dcp-algernon-sidney-gilbert', 'Algernon Sidney Gilbert', P + 'Named in the heading and verses 1–5 of section 53; 57:6–10; 64:18; 82:11. The heading of section 53 gives the full name; the revelations themselves say “Sidney Gilbert”. Not Sidney Rigdon.'),
     'SD0862': ('DCM-dcp-almon-babbitt', 'Almon Babbitt', P + 'Named in 124:84.'),
     'SD0863': ('DCM-dcp-alpheus-cutler', 'Alpheus Cutler', P + 'Named in 124:132.'),
-    'SD0864': ('DCM-dcp-alvin-smith', 'Alvin Smith', P + 'Named in 137:5–6. In the vision of section 137 Joseph Smith Jr. sees his brother Alvin; the surname is not printed in verse 5. That his parents are also seen in the vision does not mean they had died.'),
+    'SD0864': ('DCM-dcp-alvin-smith', 'Alvin', P + 'Named in 137:5–6. In the vision of section 137 Joseph Smith Jr. sees his brother Alvin; the surname is not printed in verse 5. That his parents are also seen in the vision does not mean they had died.'),
     'SD0865': ('DCM-dcp-amasa-lyman', 'Amasa Lyman', P + 'Named in 124:136; 136:14.'),
     'SD0866': ('DCM-dcp-amos-davies', 'Amos Davies', P + 'Named in 124:111–114.'),
     'SD0867': ('DCM-dcp-ann-lee', 'Ann Lee', P + 'Named in the heading of section 49. The heading of section 49 mentions her in describing Shaker belief. She is not addressed by the revelation and is not a traveler, and the atlas makes no claim about the belief described.'),
@@ -110,7 +110,7 @@ COPY = {
     'SD0959': ('DCM-dcp-polly-knight', 'Polly Knight', P + 'Named in the heading of section 59. The heading of section 59 identifies her as the wife of Joseph Knight Sr.; not the spouse of Newel or Vinson Knight.'),
     'SD0960': ('DCM-dcp-reynolds-cahoon', 'Reynolds Cahoon', P + 'Named in 52:30; 75:32; 94:14.'),
     'SD0961': ('DCM-dcp-robert-b-thompson', 'Robert B. Thompson', P + 'Named in 124:12.'),
-    'SD0962': ('DCM-dcp-robert-d-foster', 'Robert D. Foster', P + 'Named in 124:115–118. Named in section 124 in the Nauvoo House contract and as a stockholder; distinct from James Foster of the Seventy.'),
+    'SD0962': ('DCM-dcp-robert-d-foster', 'Robert D. Foster', P + 'Named in 124:115–118. Verse 115 directs Robert D. Foster to build a house for Joseph according to their contract; verse 117 separately directs him to pay stock into the Nauvoo House. These are instructions, not evidence here of completed construction or payment. He is distinct from James Foster, named among the Seventy in verse 138.'),
     'SD0963': ('DCM-dcp-ruggles-eames', 'Ruggles Eames', P + 'Named in 75:35.'),
     'SD0964': ('DCM-dcp-samuel-bent', 'Samuel Bent', P + 'Named in 124:132.'),
     'SD0965': ('DCM-dcp-samuel-h-smith', 'Samuel H. Smith', P + 'Named in 23:4; 52:30; 124:141.'),
@@ -251,7 +251,7 @@ EXTRA_SRC = {k: [S(t) for t in v] for k, v in {
     'SD0959': ['D&C 59 heading'],
     'SD0960': ['D&C 52:30', 'D&C 75:32', 'D&C 94:14'],
     'SD0961': ['D&C 124:12'],
-    'SD0962': ['D&C 124:115–118'],
+    'SD0962': ['D&C 124:115–118, 138'],
     'SD0963': ['D&C 75:35'],
     'SD0964': ['D&C 124:132'],
     'SD0965': ['D&C 23:4', 'D&C 52:30', 'D&C 124:141'],
@@ -289,4 +289,11 @@ EXTRA_SRC = {k: [S(t) for t in v] for k, v in {
     'SD0997': ['D&C 32 heading, 3', 'D&C 58:60'],
 }.items()}
 
-CHILDREN = {}
+# S15-C1: the D&C card shows only the D&C name; the accepted surname resolution through JS—History 1:3–4 is kept
+# as a child view gated to the Pearl of Great Price (group 5).
+CHILDREN = {
+    'SD0864': [('DCM-jsh-alvin-family', "Alvin in Joseph Smith's family account",
+                "Pearl of Great Price — Joseph Smith—History 1:3–4 places Alvin in Joseph Smith's family account. This "
+                "supplies the family context for the roster identity Alvin Smith; D&C 137:5 itself names only Alvin.",
+                [('Joseph Smith—History 1:3–4', 'pgp/js-h/1')], ([5], ['pgp']))],
+}
