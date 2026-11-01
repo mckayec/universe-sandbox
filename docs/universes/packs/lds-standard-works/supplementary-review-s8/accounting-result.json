@@ -1,0 +1,27 @@
+{
+  "head": "0171db7e863b196a25993dec20999907bac43012",
+  "base": "851715884a6969308ac1eadd7ff6cd4d37b7e2fb",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1310,
+  "SDRowsReconciled": 1271,
+  "importedSD": 700,
+  "pendingSD": 571,
+  "standaloneProse": 7,
+  "consolidatedProse": 1,
+  "childRows": 31,
+  "newSDRows": 73,
+  "newChildRows": 6,
+  "newCards": 79,
+  "namedReferencesResolved": 19,
+  "newParentDispositions": {
+    "conforms": 72,
+    "qualification": 1
+  },
+  "newChildDispositions": {
+    "contentConforms": 6,
+    "locatorCorrectionWithinThose": 1
+  },
+  "generatorPackAndMappingByteIdentical": true,
+  "all73SourceURLSetsMatchAccepted": true,
+  "fullPrimaryRereading": false
+}
