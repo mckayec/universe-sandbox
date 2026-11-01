@@ -276,7 +276,7 @@ CHILDREN = {
          [('Acts 4', 'nt/acts/4')]),
         ('NTE-jerusalem-community-5', 'Ananias and Sapphira; apostles arrested and released (Acts 5)', P + 'Acts narrates the deaths of Ananias and Sapphira, healings, and the apostles’ arrest and release in Jerusalem. Gamaliel’s remarks on Theudas and Judas are his attributed speech, not a harmonized history, and this Ananias is not the Ananias of Acts 9. No house or prison is located.',
          [('Acts 5', 'nt/acts/5')]),
-        ('NTE-jerusalem-community-6', 'The seven chosen (Acts 6)', P + 'A dispute over the daily distribution leads to seven being selected, among them Stephen and Philip; Stephen is then accused before the council, and Acts presents the accusations as false witness. This Philip is not assumed to be the apostle Philip.',
+        ('NTE-jerusalem-community-6', 'The seven chosen (Acts 6)', P + 'A dispute over the daily distribution leads to seven being selected, among them Stephen and Philip; Stephen is then accused before the council, and Acts presents the accusations as false witness. This Philip is not assumed to be the apostle Philip. Acts 6:5 describes Nicolas as a proselyte of Antioch. The regional labels for participants in the dispute in Acts 6:9 are not a narrated journey by Stephen.',
          [('Acts 6', 'nt/acts/6')]),
     ],
     'SD0236': [

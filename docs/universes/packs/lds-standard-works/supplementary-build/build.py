@@ -18,6 +18,7 @@ sys.path.insert(0, str(HERE))
 import copy_bom
 import copy_nt
 import copy_ot
+import copy_otl
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -33,8 +34,8 @@ FAMILIES = {'bom': ('bom-more', [3], ['bom'], copy_bom), 'nt': ('nt-more', [2], 
             'ot': ('ot-more', [1], ['ot'], copy_ot)}
 BUILT = {f'SC0{i}': 'bom' for i in range(1, 8)}
 BUILT.update({f'SC{i:02d}': 'nt' for i in range(8, 13)})
-BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 18)})
-COPY_MODULES = [copy_bom, copy_nt, copy_ot]
+BUILT.update({f'SC{i:02d}': 'ot' for i in range(13, 24)})
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}
@@ -42,15 +43,29 @@ for _line in (HERE.parent / 'coverage-ot-history.md').read_text(encoding='utf-8'
     _m = re.match(r'\| (OH-[A-Z0-9-]+?) / \[([^\]]+)\]\((https://[^)]+)\)', _line)
     if _m:
         LEDGER[_m.group(1)] = (_m.group(2), _m.group(3))
+# Late-history chapter ledger: rows `| LH1-04 — [1 Chronicles 4:1–43](url) |` in coverage-ot-late-history.md.
+# SC18–SC20 rows cite these ids, sometimes with verses (LH2-11:5–12) or chapter lists (LH2-03,29,34,36).
+for _line in (HERE.parent / 'coverage-ot-late-history.md').read_text(encoding='utf-8').splitlines():
+    _m = re.match(r'\| (LH[12ENS]-\d+) — \[([^\]:]+)(?::[^\]]*)?\]\((https://[^)]+)\)', _line)
+    if _m:
+        LEDGER[_m.group(1)] = (_m.group(2), _m.group(3))
+LH_REF = re.compile(r'(LH[12ENS]-)(\d+)(?::([\d–,\-]+)|((?:[–-]\d+)?(?:,\d+(?:[–-]\d+)?)*))')
 OT_BOOKS = {re.search(r'/scriptures/ot/([^/?]+)/', u).group(1): t.rsplit(' ', 1)[0] for t, u in LEDGER.values()}
 LEDGER_REF = re.compile(r'OH-(RU|S1-|S2-|K1-|K2-|[GXLNDQJ])(\d+(?:[–-]\d+)?(?:,\d+(?:[–-]\d+)?)*)')
 LINK = re.compile(r'\[([^\]]+)\]\((https://[^)\s]+)\)')
 
 
+def spaced(t):
+    # '1 Chronicles11:1–3' / 'JST1Chronicles21:15' / 'Ezra4:7' -> '1 Chronicles 11:1–3' / 'JST 1 Chronicles 21:15' / 'Ezra 4:7'
+    return re.sub(r'(?<=[A-Za-z])(?=\d)|(?<=\d)(?=[A-Z])', ' ', t)
+
+
 def locator(text, url):
+    if '/scriptures/jst/' in url:
+        return spaced(text.strip())
     o = re.search(r'/scriptures/ot/([^/?]+)/(\d+)', url)
     if o:
-        t = text.strip()
+        t = spaced(text.strip())
         if re.fullmatch(r'\d+:[\d–,\-]+', t):
             return f'{OT_BOOKS[o.group(1)]} {t}'
         assert t.startswith(OT_BOOKS[o.group(1)] + ' '), (text, url)
@@ -93,6 +108,19 @@ def sources(row):
                 if (t, u) not in seen:
                     seen.add((t, u))
                     out.append((t, u))
+    if not out:
+        for pre, ch, verses, more in LH_REF.findall(row['minimum_retained_source_context']):
+            items = [ch] if verses else (ch + more).split(',')
+            for it in items:
+                a, *b = re.split('[–-]', it)
+                t, u = LEDGER[f'{pre}{int(a):02d}']
+                if verses:
+                    t = f'{t}:{verses}'.replace(',', ', ')
+                elif b:
+                    t = t + '–' + str(int(b[0]))
+                if (t, u) not in seen:
+                    seen.add((t, u))
+                    out.append((t, u))
     extra = {k: v for m in COPY_MODULES for k, v in m.EXTRA_SRC.items()}
     for t, path in extra.get(row['disposition_id'], []):
         u = BASE + path + '?lang=eng'
@@ -119,14 +147,33 @@ def main(path):
     assert len(copy) == sum(len(m.COPY) for m in COPY_MODULES)
     children = {k: v for m in COPY_MODULES for k, v in m.CHILDREN.items()}
     assert all(k in copy for k in children), 'child of an unbuilt row'
+    # rows consolidated into another row's card (copy value is that row's SD id): their sources join the card
+    by_sd = {r['disposition_id']: r for r in rows}
+    merged = {}
+    for sd, v in copy.items():
+        if isinstance(v, str):
+            assert v in copy and not isinstance(copy[v], str), (sd, v)
+            assert BUILT.get(by_sd[sd]['category']) == BUILT.get(by_sd[v]['category']), (sd, v)
+            merged.setdefault(v, []).extend(sources(by_sd[sd]))
     for r in rows:
         sd, cat = r['disposition_id'], r['category']
+        if sd in copy and isinstance(copy[sd], str):
+            tsd = copy[sd]
+            key, name, _ = copy[tsd]
+            mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
+                            f'codex:{FAMILIES[BUILT[cat]][0]}', key, name, '; '.join(t for t, _ in sources(r)),
+                            r['work_gate'], f'consolidated into {tsd} card; ' + r['consolidation_rule'], r['row_sha256']])
+            continue
         fam = BUILT.get(cat)
         h = hashlib.sha256(r['minimum_retained_source_context'].encode()).hexdigest()
         if fam and sd in copy:
             key, name, desc = copy[sd]
             tab, books, layers, _ = FAMILIES[fam]
             src = sources(r)
+            for t, u in merged.get(sd, []):
+                # a consolidated row's chapter-level source is dropped when the card already cites that chapter
+                if (t, u) not in src and not (':' not in t and any(u == v for _, v in src)):
+                    src.append((t, u))
             assert src, sd
             lines[fam].append(entry(key, name, desc, src, books, layers))
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
@@ -148,7 +195,7 @@ def main(path):
         mapping.append(['', cat, 'prose', key, 'imported', 'codex:bom-more', key, name, '; '.join(t for t, _ in src),
                         '3/bom', 'prose-only section bullet; mandatory bounded content', ''])
     assert all(k in {r['disposition_id'] for r in rows} for k in copy)
-    keys = [m[6] for m in mapping if m[4] == 'imported']
+    keys = [m[6] for m in mapping if m[4] == 'imported' and not m[10].startswith('consolidated into')]
     assert len(keys) == len(set(keys)), 'duplicate card keys'
     # write pack blocks
     text = PACK.read_text(encoding='utf-8')
@@ -165,7 +212,8 @@ def main(path):
         w.writerows(mapping)
     n = sum(1 for m in mapping if m[4] == 'imported')
     print(f'{n} imported mapping rows ({sum(1 for m in mapping if m[0] and m[4]=="imported")} SD rows, '
-          f'{sum(1 for m in mapping if m[2].startswith("child of"))} child views); '
+          f'{sum(1 for m in mapping if m[2].startswith("child of"))} child views, '
+          f'{sum(1 for m in mapping if m[10].startswith("consolidated into"))} SD rows consolidated into another card); '
           f'{sum(1 for m in mapping if m[4]=="pending")} pending')
 
 

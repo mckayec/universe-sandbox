@@ -17,7 +17,8 @@ count of new entities.
 | SC08–SC12 New Testament | 187 | **imported, checkpoint 3** | codex tab `nt-more` |
 | SC13–SC17 Old Testament history (Genesis–2 Kings) | 177 | **imported, checkpoint 4** | codex tab `ot-more` |
 | S3/S4 review fixes | 13 parent rows corrected; 25 child source views | **checkpoint 5** (S3-C1 partial) | `nt-more`, `ot-more` |
-| SC18–SC34 Old Testament (Chronicles–Malachi) | 315 | pending | next runs, same tab |
+| SC18–SC23 Old Testament late history (Chronicles–Esther) | 93 (83 cards; 10 rows consolidated) | **imported, checkpoint 6** | codex tab `ot-more` |
+| SC24–SC34 Old Testament (prophets, wisdom) | 222 | pending | next runs, same tab |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
@@ -226,3 +227,59 @@ pointer click waiting on a busy SwiftShader page, not the page failing to load; 
 shots `s5-codex-ot-*` at 3840×2160, 1440×900, 1280×800, 390×844 (178 cards listed, no console errors; captured before the SD0236 children were added, which touch only `nt-more`), plus
 `s5-ot-stages-390x844` (the Numbers 33 list) and `s5-nt-revelation-390x844` (Revelation children). Native select,
 keyboard and real-GPU gates remain open.
+
+## Checkpoint 6: SD0226 addition; SC18–SC23 (Chronicles, Ezra, Nehemiah, Esther)
+
+Review input: [supplementary-review-s5.md](https://github.com/mckayec/universe-sandbox/blob/7c3245b5c543d0c90542fadceffdaecc21cf940f/docs/universes/packs/lds-standard-works/supplementary-review-s5.md) (PR34 `7c3245b`).
+
+* **SD0226 (S3-C1 remainder)**: the review's exact two sentences appended to `NTE-jerusalem-community-6` (Nicolas as
+  a proselyte of Antioch; the Acts 6:9 regional labels are not a journey by Stephen). Acts 6 link unchanged, `2/nt`.
+  S3-C1 stays open only for SD0214, SD0238, SD0240.
+* **SC18–SC23, 93 SD rows** (SC22 has no rows) as `ot-more` cards keyed `OTL-` + the research id, display copy in
+  [copy_otl.py](supplementary-build/copy_otl.py). Gate `1/ot` on every card; no coordinates, routes or years.
+* **Sources**: SC21/SC23 rows carry links. SC18–SC20 rows cite late-history ledger ids; build.py now resolves those
+  through the `LH1-/LH2-/LHE-/LHN-/LHS-` rows of coverage-ot-late-history.md to the official chapter, keeping verses
+  where the row gives them (`LH2-11:5–12` → 2 Chronicles 11:5–12), chapter lists (`LH2-03,29,34,36`) and ranges
+  (`LHS-03–08` → Esther 3–8, linked to the first chapter). JST links show as “JST 1 Chronicles 21:15”; Bible Dictionary
+  links keep their row label. The generator still regenerates checkpoint 1–5 output byte-identically (checked before
+  any change this run).
+* **Consolidation (new in build.py)**: a copy entry may name another row's card instead of carrying its own; the row is
+  mapped `imported` to that card's key, its `consolidation_rule` column starts `consolidated into SDnnnn card;`, and its
+  sources join the card (a chapter link is dropped when the card already cites that chapter). Ten rows, all where the
+  research rows name the same identity or say to apply apparatus to the relevant card:
+
+  | Row | Into | Why |
+  |---|---|---|
+  | SD0485 `jordan-casting-ground` | SD0548 `OTL-succoth-casting` | same casting ground (2 Chronicles 4:17) |
+  | SD0489 `achmetha-archive` | SD0560 `OTL-achmetha` | same setting; card keeps “modern identification needs a separate source” |
+  | SD0490 `ahava-camp` | SD0558 `OTL-ahava` | same camp; card keeps the fast |
+  | SD0491 `casiphia` | SD0559 `OTL-casiphia` | same slug |
+  | SD0492 `shushan-narrative` | SD0557 `OTL-shushan-narrative` | same slug |
+  | SD0494 `ono-invitation` | SD0561 `OTL-ono` | same invitation and refusal |
+  | SD0564 `lh-a01-angel` | SD0477 `OTL-ornan-floor` | KJV/JST 1 Chronicles 21:15 given separately on the floor's card |
+  | SD0565 `lh-a02-lying-spirit` | SD0531 `OTL-ramoth-gilead` | same confrontation; both wordings kept |
+  | SD0567 `lh-a04-elath-eloth` | SD0543 `OTL-eloth` | Bible Dictionary alias on the place card (“Eloth (Elath)”) |
+  | SD0568 `lh-a05-shushan-susa` | SD0557 `OTL-shushan-narrative` | Bible Dictionary alias (“Shushan (Susa)”); Daniel's setting not merged |
+
+  SD0566 (Ezra 4/6 notes) has no single card to attach to and is its own card.
+* **Extends, not duplicates**: place cards that the rows say to reuse name the existing card (Hebron (Kirjath-arba),
+  Shechem (Sichem), Bethlehem of Judah, Samaria (city), Sheba (kingdom), Jerusalem in Samuel and Kings, Jericho in
+  Joshua and Kings, “David brings the ark to Jerusalem”). WP-P06 (Daniel) and the major-prophet keys the rows mention
+  are in SC24–SC34, not built yet; those links are made when they are.
+
+Builder readings for ChatGPT to check: SD0480 says Chronicles' name Chidon is kept “rather than replaced with the name
+in Samuel's account” (the row's instruction, without naming Samuel's form); SD0507 renders “trans-river” as
+“beyond-the-river”; SD0508 renders “explicitly reports a blockage for his mount” as “his mount could not pass at one
+point”; SD0530 keeps the row's word “cult”; SD0558 merges SD0490's fast into the Ahava card.
+
+Accounting: 568 SD rows imported (475 + 93, of which 10 consolidated), 703 pending; 7 prose, 25 children unchanged.
+Card totals: `nt-more` 211 (unchanged), `ot-more` 178 + 83 = 261.
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (101/101; new test: all 93 SC18–SC23 rows map to `OTL-` cards, 10 consolidated, 83 own
+cards, JST/BD sources on the consolidated cards, a verse-level ledger source, and the SD0226 sentences),
+`check:dist` OK, `pnpm test:pages` 13 pages × 2 viewports. Rendered (SwiftShader, page ready in 29–95 s, codex opened
+and tab chosen through the DOM, CDP capture): shots `s6-codex-ot-late-*` at 3840×2160, 1440×900, 1280×800, 390×844
+(phone via the section chooser), scrolled to the first new card; 261 cards listed, no console or page errors.
+Native select, keyboard and real-GPU gates remain open.

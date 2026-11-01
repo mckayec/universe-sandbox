@@ -406,8 +406,8 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
     .filter(r => /^SD\d{4},SC1[3-7],/.test(r));
   assert.equal(ot.length, 177);
   const list = codex('ot-more');
-  // 177 parent cards + 1 child source view (SD0443 stage list)
-  assert.equal(list.length, 178);
+  // 177 parent cards + 1 child source view (SD0443 stage list) + 83 SC18–SC23 cards (93 rows, 10 consolidated)
+  assert.equal(list.length, 261);
   const keys = new Set(list.map((x: any) => x.key));
   assert.equal(keys.size, list.length);
   for (const r of ot) {
@@ -427,7 +427,41 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
-  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 178);
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 261);
+});
+
+test('Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const rows = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},SC(1[89]|2[0-3]),/.test(r));
+  assert.equal(rows.length, 93);
+  const ot = codex('ot-more');
+  const keys = new Set(ot.map((x: any) => x.key));
+  const merged = rows.filter(r => r.includes(',consolidated into SD'));
+  assert.equal(merged.length, 10);
+  const own = new Set<string>();
+  for (const r of rows) {
+    const m = r.match(/,imported,codex:ot-more,(OTL-[^,]+),/);
+    assert.ok(m && keys.has(m[1]), r.slice(0, 40));
+    if (!r.includes(',consolidated into SD')) own.add(m![1]);
+  }
+  assert.equal(own.size, 83);
+  const by = (key: string) => ot.find((x: any) => x.key === key);
+  // apparatus applied to the cards they explain, with both witnesses cited
+  assert.ok(by('OTL-ornan-floor').src.some((s: any) => s.t === 'JST 1 Chronicles 21:15'));
+  assert.ok(by('OTL-ramoth-gilead').src.some((s: any) => s.t === 'JST 2 Chronicles 18:22'));
+  assert.ok(/Susa/.test(by('OTL-shushan-narrative').desc));
+  assert.ok(by('OTL-eloth').src.some((s: any) => /\/bd\/elath/.test(s.u)));
+  // ledger-id rows resolve to chapters (and verses where the row gives them)
+  assert.ok(by('OTL-judah-fortress-network').src.some((s: any) => s.t === '2 Chronicles 11:5–12'));
+  // SD0226 context requirement (supplementary-review-s5)
+  const acts6 = codex('nt-more').find((x: any) => x.key === 'NTE-jerusalem-community-6').desc;
+  assert.ok(/Nicolas as a proselyte of Antioch/.test(acts6) && /not a narrated journey by Stephen/.test(acts6));
 });
 
 test('Supplementary S3/S4 review fixes: child source views follow their parents and required details are present', () => {
