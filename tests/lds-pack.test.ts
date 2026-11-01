@@ -372,7 +372,8 @@ test('Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer
     .filter(r => /^SD\d{4},SC(0[89]|1[0-2]),/.test(r));
   assert.equal(nt.length, 187);
   const list = codex('nt-more');
-  assert.equal(list.length, 187);
+  // 187 parent cards + 24 child source views (SD0213 ×1, SD0226 ×3, SD0236 ×5, SD0270 ×15)
+  assert.equal(list.length, 211);
   const keys = new Set(list.map((x: any) => x.key));
   assert.equal(keys.size, list.length);
   for (const r of nt) {
@@ -390,7 +391,7 @@ test('Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
   // shown at the New Testament group, not before it
-  assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 187);
+  assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 2, (y: any) => Math.min(...y.books)).shown.length, 211);
   assert.equal(L.codexSplit(list, new Set(['nt']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 0);
 });
 
@@ -405,7 +406,8 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
     .filter(r => /^SD\d{4},SC1[3-7],/.test(r));
   assert.equal(ot.length, 177);
   const list = codex('ot-more');
-  assert.equal(list.length, 177);
+  // 177 parent cards + 1 child source view (SD0443 stage list)
+  assert.equal(list.length, 178);
   const keys = new Set(list.map((x: any) => x.key));
   assert.equal(keys.size, list.length);
   for (const r of ot) {
@@ -425,5 +427,53 @@ test('Supplementary SC13–SC17: every Old Testament history SD row maps to one 
   for (const layer of ['nt', 'bom', 'dc', 'pgp']) {
     assert.equal(L.codexSplit(list, new Set([layer]), null, false, 0).shown.length, 0, layer);
   }
-  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 177);
+  assert.equal(L.codexSplit(list, new Set(['ot']), null, true, 1, (y: any) => Math.min(...y.books)).shown.length, 178);
+});
+
+test('Supplementary S3/S4 review fixes: child source views follow their parents and required details are present', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const rows = csv.trim().split('\n');
+  const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
+  assert.equal(kids.length, 25);
+  const want: Record<string, number> = { SD0213: 1, SD0226: 3, SD0236: 5, SD0270: 15, SD0443: 1 };
+  for (const [sd, n] of Object.entries(want)) {
+    assert.equal(kids.filter(r => r.includes(`child of ${sd},`)).length, n, sd);
+  }
+  const nt = codex('nt-more');
+  const ot = codex('ot-more');
+  const by = (list: any[], key: string) => list.find((x: any) => x.key === key);
+  // each child sits right after its parent (or its previous sibling)
+  const ntKeys = nt.map((x: any) => x.key);
+  const seq = ntKeys.indexOf('NTC-vision-sequence');
+  for (let i = 1; i <= 15; i++) {
+    assert.equal(ntKeys[seq + i], `NTC-vision-sequence-${String(i).padStart(2, '0')}`);
+  }
+  assert.equal(ntKeys[ntKeys.indexOf('NTE-temptations') + 1], 'NTE-temptations-luke');
+  assert.equal(ntKeys[ntKeys.indexOf('NTE-jerusalem-community') + 3], 'NTE-jerusalem-community-6');
+  const otKeys = ot.map((x: any) => x.key);
+  assert.equal(otKeys[otKeys.indexOf('OHJ-12') + 1], 'OHJ-12-stages');
+  // S3-C2–C4
+  assert.ok(!/later returns to it/.test(by(nt, 'NTJ-luke-jerusalemward').desc));
+  assert.ok(/supplies no Earth coordinate/.test(by(nt, 'NTC-sanctuary-covenant').desc));
+  const voyage = by(nt, 'NTJ-voyage-to-melita');
+  assert.ok(/three days at Syracuse/.test(voyage.desc) && /seven days with believers at Puteoli/.test(voyage.desc));
+  assert.ok(voyage.src.some((s: any) => s.t === 'Acts 28:1, 12–14'));
+  // S4-C1–C4
+  assert.ok(!/The same Eden as the other accounts/.test(by(ot, 'OH-P01').desc));
+  const beth = by(ot, 'OTS-P07-bethlehem');
+  assert.ok(/does not specify its region/.test(beth.desc));
+  assert.ok(['Joshua 19:15', 'Judges 12:8–10'].every(t => beth.src.some((s: any) => s.t === t)));
+  const stages = by(ot, 'OHJ-12-stages').desc;
+  for (const stop of ['Rameses', 'Dophkah', 'Ije-abarim', 'Abel-shittim']) assert.ok(stages.includes(stop), stop);
+  assert.ok(stages.indexOf('Rameses') < stages.indexOf('Abel-shittim'));
+  const refuge = by(ot, 'OHC-REFUGE').desc;
+  for (const c of ['Kedesh', 'Shechem', 'Kirjath-arba', 'Bezer', 'Ramoth', 'Golan']) assert.ok(refuge.includes(c), c);
+  assert.ok(/son of Raguel the Midianite/.test(by(ot, 'OHR-JETHRO').desc));
+  const moses = by(ot, 'OHJ-11');
+  assert.ok(/Exodus 18:2–6/.test(moses.desc) && moses.src.some((s: any) => s.t === 'Exodus 18:2–6'));
+  const ahaz = by(ot, 'OHR-AHAZIAH').desc;
+  assert.ok(!/ages at accession/.test(ahaz) && /without stating his age/.test(ahaz));
 });

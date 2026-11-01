@@ -5,7 +5,8 @@ mapping docs/universes/packs/lds-standard-works/supplementary-implementation.csv
 Usage: python3 build.py <declaration-dispositions.csv>
 The input is PR34's supplementary-dispositions/declaration-dispositions.csv (ChatGPT's accepted register).
 Display copy lives in copy_*.py; sources come from each row's own markdown links. Rows whose family is not
-built yet are written to the mapping as `pending` so the CSV always covers all 1,271 SD rows."""
+built yet are written to the mapping as `pending` so the CSV always covers all 1,271 SD rows. Child source views a
+parent row requires (copy_*.CHILDREN) follow their parent, as cards and as `child of SDnnnn` mapping rows."""
 import csv, hashlib, re, sys, pathlib
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -116,6 +117,8 @@ def main(path):
     lines, mapping = {f: [] for f in FAMILIES}, []
     copy = {k: v for m in COPY_MODULES for k, v in m.COPY.items()}
     assert len(copy) == sum(len(m.COPY) for m in COPY_MODULES)
+    children = {k: v for m in COPY_MODULES for k, v in m.CHILDREN.items()}
+    assert all(k in copy for k in children), 'child of an unbuilt row'
     for r in rows:
         sd, cat = r['disposition_id'], r['category']
         fam = BUILT.get(cat)
@@ -129,6 +132,12 @@ def main(path):
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
                             f'codex:{tab}', key, name, '; '.join(t for t, _ in src), r['work_gate'],
                             r['consolidation_rule'], r['row_sha256']])
+            for ckey, cname, cdesc, csrc in children.get(sd, []):
+                csrc = [(ct, BASE + cp + '?lang=eng') for ct, cp in csrc]
+                lines[fam].append(entry(ckey, cname, cdesc, csrc, books, layers))
+                mapping.append(['', cat, f'child of {sd}', key, 'imported', f'codex:{tab}', ckey, cname,
+                                '; '.join(ct for ct, _ in csrc), r['work_gate'],
+                                'child source view required by its parent row', ''])
         else:
             assert not fam, f'{sd} in built family {cat} has no copy'
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'pending', '', '', '', '',
@@ -155,7 +164,8 @@ def main(path):
                     'target_key', 'display_name', 'locators', 'work_gate', 'consolidation_rule', 'row_sha256'])
         w.writerows(mapping)
     n = sum(1 for m in mapping if m[4] == 'imported')
-    print(f'{n} imported mapping rows ({sum(1 for m in mapping if m[0] and m[4]=="imported")} SD rows); '
+    print(f'{n} imported mapping rows ({sum(1 for m in mapping if m[0] and m[4]=="imported")} SD rows, '
+          f'{sum(1 for m in mapping if m[2].startswith("child of"))} child views); '
           f'{sum(1 for m in mapping if m[4]=="pending")} pending')
 
 

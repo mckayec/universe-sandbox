@@ -153,3 +153,6 @@ PROSE = [
 EXTRA_SRC = {
     'SD0060': [('Ether 9:3', 'bofm/ether/9')],
 }
+
+# No child source views in the Book of Mormon family.
+CHILDREN = {}

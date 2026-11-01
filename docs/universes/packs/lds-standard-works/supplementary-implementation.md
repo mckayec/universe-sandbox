@@ -16,6 +16,7 @@ count of new entities.
 | SC01–SC07 Book of Mormon | 111 (+7 prose bullets) | **imported, checkpoint 1** | codex tab `bom-more` |
 | SC08–SC12 New Testament | 187 | **imported, checkpoint 3** | codex tab `nt-more` |
 | SC13–SC17 Old Testament history (Genesis–2 Kings) | 177 | **imported, checkpoint 4** | codex tab `ot-more` |
+| S3/S4 review fixes | 13 parent rows corrected; 25 child source views | **checkpoint 5** (S3-C1 partial) | `nt-more`, `ot-more` |
 | SC18–SC34 Old Testament (Chronicles–Malachi) | 315 | pending | next runs, same tab |
 | SC35–SC45 D&C | 417 | pending | |
 | SC46–SC49 Pearl of Great Price | 40 | pending | |
@@ -144,7 +145,7 @@ Correction to the progress table: the Old Testament families SC13–SC34 hold 49
 
 * **One card per SD row** (177) in a new codex tab “More Old Testament places, journeys and people” (`ot-more`):
   SC13 integration rows `OH-C01`, `OH-P01`, `OH-E01`, `OH-R01`, `OH-P02`; SC14 places (76); SC15 people (51);
-  SC16 journeys (27); SC17 concepts (19). Every card is `books:[1]`, `layers:['ot']` (gate `1/ot`); no coordinates,
+  SC16 journeys (27); SC17 concepts (18; corrected from 19 per supplementary-review-s4). Every card is `books:[1]`, `layers:['ot']` (gate `1/ot`); no coordinates,
   routes, years or pins. Rows whose research id is a primary-record code (P18, AP01–AP07, AJ01, AE03) get an `OTS-`
   key prefix so they never collide with that primary card, and the card says which existing card it adds to.
 * **Sources**: SC13 rows carry links. SC14–SC17 rows cite chapter-ledger ids (`OH-G11`, `OH-K1-03`, `OH-S2-15–20` …)
@@ -187,3 +188,41 @@ Not done this checkpoint: Playwright screenshots of the new tab. Under SwiftShad
 opens on the Earth surface) did not report ready within about 11 minutes at 1440×900, so no `s4-` shots were taken
 and the tab has not yet been looked at rendered. The data-level checks above pass; next run captures the tab at
 3840×2160, 1440×900, 1280×800 and 390×844 before continuing with SC18.
+
+## Checkpoint 5 (2026-11-01): supplementary-review-s3 and -s4 corrections, OT tab rendered
+
+Applied ChatGPT's finite fixes from supplementary-review-s3.md (at `d321689`) and supplementary-review-s4.md (at
+`f571cb9`) in `copy_nt.py` / `copy_ot.py` and regenerated; no other card changed. New: **child source views**
+(`CHILDREN` in the copy modules). `build.py` places each child card right after its parent in the same tab and gate,
+and writes it to the mapping as a row with empty `disposition_id`, `source_location` `child of SDnnnn`,
+`research_declaration` = the parent's card key. Mapping now 1,303 rows: 1,271 SD rows (475 imported, 796 pending,
+unchanged), 7 prose rows, 25 child rows. Card totals: `nt-more` 187 + 24 = 211, `ot-more` 177 + 1 = 178.
+
+| Finding | Row / key | Resolution |
+|---|---|---|
+| S3-C1 (part) | SD0213 `NTE-temptations` | child `NTE-temptations-luke` (Luke 4:1–13 order: wilderness, mountain, Jerusalem) |
+| S3-C1 (part) | SD0226 `NTE-jerusalem-community` | children `-4`, `-5`, `-6` (Acts 4, 5, 6), wording from the NT-acts-4/5/6 ledger rows of coverage-nt.md |
+| S3-C1 (part) | SD0270 `NTC-vision-sequence` | 15 children `NTC-vision-sequence-01`…`-15` in the review's source order (Rev 5; 6; 7; 8–9; 10; 11; 12; 13; 14; 15; 16; 17–18; 19; 20; 21–22), each with its chapter link(s) and wording from the NT-rev-* ledger rows; -07 also cites JST Revelation 12 (ledger row NTX-revelation-woman-time); -15 names the existing “New Jerusalem (Revelation)” card (AP34) rather than a new place |
+| S3-C1 (part) | SD0236 `NTE-arrest-hearings` | children `-22` … `-26` (Acts 22, 23, 24, 25, 26), wording from the NT-acts-22…26 ledger rows (Felix/Festus/Agrippa kept apart, two-year custody, no verdict, Agrippa not converted) |
+| S3-C1 (open) | SD0214, SD0238, SD0240 | **not yet done**: these need per-pericope children (SD0214, SD0240) or the literal lineage names of Matthew 1 and Luke 3 (SD0238, not in the ledger rows, so they need the official text read); next run |
+| S3-C2 | SD0190 | review's replacement text applied |
+| S3-C3 | SD0260 | last sentence replaced as given |
+| S3-C4 | SD0206 | Acts 28:12–14 timings appended as given; source label now “Acts 28:1, 12–14”. Builder question 6 in checkpoint 3 was wrong: AJ05 itself carries no timings; they are retained on this card |
+| S4-C1 | SD0300, SD0311 | replacement text applied; SD0311 adds Joshua 19:15 and Judges 12:8–10 sources |
+| S4-C2 | SD0443 | child `OHJ-12-stages`: the review's full ordered Numbers 33:3–49 list, with Deuteronomy 10:6–7 kept as a different order; parent says the list is the next card |
+| S4-C2 | SD0468 | Joshua 20:7–8 six-city sentence applied (Joshua 20 already a source) |
+| S4-C3 | SD0395, SD0441 | replacement text applied; SD0441 adds Exodus 18:2–6 |
+| S4-C4 | SD0424 | replacement text applied |
+| S3 readings 1, 3 | SD0115, SD0144 | optional reader wording applied |
+| S4 readings 4–7, 9 | SD0354 (+1 Chronicles 13:5–6 source), SD0360, SD0404, SD0412, SD0454 | optional reader wording applied as given |
+| S4 count | checkpoint 4 text | SC17 is 18 rows, not 19 |
+
+### Checks at this checkpoint
+
+`pnpm format`, `pnpm check` (100/100, incl. a new test: 25 child rows by parent, each child directly after its parent,
+and the S3-C2–C4 / S4-C1–C4 details present), `check:dist` 114 files OK, `pnpm test:pages` 13 pages × 2 viewports. The generator is idempotent (second run, no
+diff). Rendered: the `ot-more` tab, captured this time by clicking through the DOM (the earlier stall was Playwright's
+pointer click waiting on a busy SwiftShader page, not the page failing to load; the page reports ready in 37–84 s):
+shots `s5-codex-ot-*` at 3840×2160, 1440×900, 1280×800, 390×844 (178 cards listed, no console errors; captured before the SD0236 children were added, which touch only `nt-more`), plus
+`s5-ot-stages-390x844` (the Numbers 33 list) and `s5-nt-revelation-390x844` (Revelation children). Native select,
+keyboard and real-GPU gates remain open.
