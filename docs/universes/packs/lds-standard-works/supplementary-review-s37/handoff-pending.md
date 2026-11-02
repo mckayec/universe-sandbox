@@ -1,6 +1,6 @@
-# Pending publication handoff
+# Historical pending publication handoff
 
-This text is saved locally, not appended to main. Fresh-read main before any authorized append and preserve concurrent changes. Replace the review pointer with the final published commit.
+Recovery note: the original saved commit 8ed958d6ea78eb7f14e0f0e2b90853f2dce5c70c was subsequently published using the restored existing Git transport. The text below records the original pending handoff, not current publication status. Fresh-read main before any authorized append and preserve concurrent changes. Replace the review pointer with the final published commit.
 
 Church atlas checkpoint 37 review targets PR33 `102f697cd8ce55118a441d4d91e1f74542c52688`. Runtime and all 1,271 imports are unchanged. All 167 reason rows are structurally accounted and screened; 21 omission keys receive targeted primary-passage decisions, while 146 retain summary-level evidence rather than certified absence. S37-C1: make river Laman, not the Red Sea, the explicit crossing object. S37-C2: Helaman 6:10 directly identifies Mulek as Zedekiah's son; extend BMV-166's copy/source and record that consolidation.
 
