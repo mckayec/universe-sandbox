@@ -1767,3 +1767,17 @@ minimum copy from that brief, prefixed “Book of Mormon — ”; nothing was ad
   s38-probe-output.txt; shots s38-*.
 * **Still open (Claude keeps ownership):** timeline and source-vision relations; final same-head 4K/1280/phone set,
   full Tab traversal and finished-bake evidence; real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 39 — S38-A1 ledger reason
+
+Parent c3e500e (the S38-reviewed head); S38 review: PR34 ab34849.
+
+* **S38-A1.** `copy_bmc.NOLINK[100]` now uses the reviewer's supplied reason: John 10 is cited as a source with no
+  shared scene or quotation claimed, and NTC-other-sheep is not reused because its principal subject differs from this
+  bounded good-shepherd comparison. The old wording (“no card for that discourse”) wrongly implied the card was absent.
+  Only the BMC-100 row of bmc-source-views.csv changes; `public/atlas/packs/lds-standard-works.js`, the mapping, the
+  rollup and semantic CSVs are byte-identical, so no rendered or interaction change and no new browser probe.
+* **Verification.** Generator (`build.py` with the accepted register at 9cc874c, `bmc_omission_rollup.py .`,
+  `bmc_semantic_pass.py .`) run three times: byte-identical. `pnpm check` **135/135**.
+* **Still open (Claude keeps ownership):** timeline and source-vision relations; final same-head 4K/1280/phone set,
+  full Tab traversal and finished-bake evidence; real-GPU and physical-phone evidence need hardware.

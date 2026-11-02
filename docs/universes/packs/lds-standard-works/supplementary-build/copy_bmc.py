@@ -380,7 +380,8 @@ NOLINK = {
     202: 'S37 decision: source view without a link; not the Patmos vision (ev:patmos-vision is not used); no later-work '
          '(4/dc) label or copy at this gate',
     100: 'S37 decision: comparison view without a link; John 10 is cited as a source, with no shared scene or quotation '
-         'claimed and no card for that discourse',
+         'claimed. NTC-other-sheep is not reused because its principal subject differs from this bounded '
+         'good-shepherd comparison',
     192: 'S37 decision: comparison view without a link; Matthew 26 is cited as a source; no Last Supper card is needed '
          'and the meal is not identified with that supper',
     13: 'S37 decision: relation without a card; the vision’s account of the record, with no fixed canon or edition '
