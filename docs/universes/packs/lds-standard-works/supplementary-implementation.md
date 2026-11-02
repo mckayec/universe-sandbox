@@ -31,7 +31,7 @@ count of new entities.
 | SC49 JS—History person/material prose | 0 SD table rows; mandatory prose (6 child views of QG14) | **imported, checkpoint 22**; crosswalk below | codex tab `pgp-more` |
 | SC50 front matter (FM01–FM09) | 9 (consolidated into the existing FM01–FM09 cards) | **imported, checkpoint 22** | `reference-views` (existing cards) |
 | SC51 front-matter integration constraints | 0 SD table rows; mandatory prose (2 person cards; 3 paragraph rows) | **imported, checkpoint 22**; crosswalk below | `reference-views`, `bom-more` |
-| SC52–SC54 geography models | 11 | pending | |
+| SC52–SC54 geography models and Arabian/Jaredite source views | 11 (3 cards; 8 rows consolidated) | **imported, checkpoint 23** | `bom-more` (SC52), `bom-geography` existing cards (SC53/SC54) |
 | SC55–SC62 dense payloads | 0 table rows | display deferral A04/Q04/RR06 unchanged | |
 
 ## Checkpoint 1: SC01–SC07 (Book of Mormon)
@@ -997,3 +997,50 @@ twice from the accepted register (9cc874c) is byte-identical. Playwright (SwiftS
 card, CDP capture): shots `s22-codex-{pgp-more,reference-views,bom-more}-*` at **3840×2160**, 1440×900, 1280×800
 and 390×844; every target card found, no page horizontal overflow, no console errors. Inspected 1440 pgp-more,
 390 and 4K reference-views. Keyboard, native-select, real-GPU and final same-head rendered evidence remain open.
+
+## Checkpoint 23: S22-C1, owner display naming, SC52–SC54
+
+Code commit `a440133576437028b88dd4d2888bf91e22eccf8d`. Applies supplementary-review-s22 (9dcd550) and the owner naming
+direction recorded in HANDOFF_PLAN.md (2026-11-02, commit 9ac99a1).
+
+* **S22-C1**: `copy_fm.ADDED_SOURCES` gives FM08 **D&C 7, historical heading**
+  (`…/dc-testament/dc/7?lang=eng`) and FM09 **D&C introduction, 1981 edition** (`…/dc-testament/introduction?lang=eng`).
+  `build.py` appends each to the card's `src` once (existing sources kept first; idempotent) and adds the labels to the
+  SD1259/SD1260 mapping locators. Gates unchanged (FM08 4/dc, FM09 5/pgp); no card duplicated.
+* **Owner display naming**: registry title, `meta.title` and `meta.series` are “The Church of Jesus Christ of Latter-day
+  Saints · Standard Works” (also the sandbox's `src/universe-packs.ts` label); splash, `canvasLabel` and the intro text
+  describe the scriptures / standard works of The Church of Jesus Christ of Latter-day Saints. Targeted edits only:
+  historical, quoted and descriptive uses (RP08 “displaced Latter-day Saints”, NTC-other-sheep, RC01, the disclaimer)
+  are unchanged; ids and the `lds-standard-works` pack id are unchanged. Wrapping checked: splash `h1` fits at 390
+  (six lines, 358 px of 390) and in one line at 1280/1440/3840; header fits at 1280; document title equals the label.
+* **SC52** (SD1261–SD1263, retain-attributed-model-comparison): three new `bom-more` cards at 3/bom, each opening
+  “Proposed geography model, attributed —”: Sorenson's limited Mesoamerican setting with Wunderli's criticism (G3, G4);
+  Heartland with Hedges/Meldrum, supporters' premises and critics, the FAIR-described Niagara variant and Hedges's later
+  Lake Michigan corridor reading kept separate (G5, G6); Orson Pratt's historical hemispheric model with the
+  interpretive disagreement (G5, G4). No geometry, pins, ranking or endorsement; sources are the G URLs only.
+* **SC53/SC54** (SD1264–SD1271): reuse of existing identities, no new cards. SD1264 → BE02 (burial is not death
+  location; unlocated, no grave pin); SD1265 → BE03 (coast, mountain, sea distinct; Arabian Bountiful ≠ Bountiful
+  (Americas), See also both); SD1266 → SD0002/BXP02 Irreantum (“many waters”; no modern ocean from the verse); SD1267 →
+  BJ01 (promised land reached; no landing port or ocean track); SD1268–SD1271 → BJ11 (great tower, no excavated tower
+  or date; Nimrod relative only; Moriancumer four-year camp is not the crossing; Shelem a separate excursion, no modern
+  mountain). New `copy_geo.py` rewrites only those descs (key, name, gate, sources unchanged; their sources already cite
+  the rows' chapters). SD0002's copy gained one clause.
+
+Counts: **1,271 SD rows imported, 0 pending**; 81 child views; 1,365 imported mapping rows (41 SD rows consolidated).
+`bom-more` 123 cards.
+
+**Not done in this checkpoint (still open, Claude keeps ownership):** the 12-person shared-identity / source-view
+crosswalk for the SC49/SC51 front-matter identities (S22 builder answer 1); live navigation/filter behavior or a
+documented limitation for See-also links across layers (answer 2); broader BA07 identity/typed-link/timeline/source
+integration. Zero pending imports does not close those. Keyboard, native-select, real-GPU and final same-head
+rendered evidence also remain open.
+
+Checks at the code commit: `pnpm format` clean; `pnpm check` 119/119 (new tests “Supplementary checkpoint 23” ×2;
+pending counts in two earlier tests now 0); `pnpm check:dist` OK; `pnpm test:pages` 13 pages × 2; coverage validator
+`errors: []`; reference-disposition validator `missing []`; regenerating twice from the accepted register (9cc874c) is
+byte-identical. The local browser smoke test (`pnpm test:browser`) did not finish within 10 minutes under SwiftShader in
+this sandbox; CI runs it. Playwright (SwiftShader, built `dist/` under `/universe-sandbox/`, codex tab chosen through
+`#cxPick`, list scrolled to the target card, CDP capture): `s23-codex-{bom-more,bom-geography,reference-views}-*` at
+3840×2160, 1440×900, 1280×800 and 390×844, plus `s23-splash-{390x844,1280x800}`; every target card found, no page
+horizontal overflow, no console errors at 1280/1440/390 (the 3840 run's report was cut off by the time limit after its
+shots were written). Inspected: 4K bom-more and splash, 390 splash and bom-geography, 1280 reference-views and header.
