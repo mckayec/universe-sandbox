@@ -1,0 +1,20 @@
+{
+  "head": "c3e500e0c21d619a96b296a2a4b1e23753cadca6",
+  "base": "102f697cd8ce55118a441d4d91e1f74542c52688",
+  "resolvedKeys": 21,
+  "newViews": 18,
+  "consolidations": 3,
+  "remainingSemanticKeys": 146,
+  "remainingReasonUpdates": [
+    "BMC-091",
+    "BMC-193"
+  ],
+  "remainingStates": {
+    "represented": 17,
+    "no-bible-relation": 63,
+    "practice-or-title": 4,
+    "namesake": 62
+  },
+  "removedRollupRows": 33,
+  "semanticAbsenceCertified": false
+}
