@@ -706,8 +706,8 @@ test('Supplementary S3/S4 review fixes: child source views follow their parents 
   );
   const rows = csv.trim().split('\n');
   const kids = rows.filter(r => /^,SC\d\d,child of SD\d{4},/.test(r));
-  // 72 + the S15-C1 Alvin JS—History view + the SD1045 Sarai view + the QG14 Cowdery 1834 view
-  assert.equal(kids.length, 75);
+  // 72 + the S15-C1 Alvin JS—History view + the SD1045 Sarai view + the QG14 Cowdery 1834 view + six SC49 views
+  assert.equal(kids.length, 81);
   const want: Record<string, number> = {
     SD0213: 1,
     SD0214: 12,
@@ -1247,7 +1247,8 @@ test('Supplementary checkpoints 18–19: S17-C1/C2 and all 140 SC45 section doss
     );
   });
   assert.deepEqual(plain(dc.filter((x: any) => /^DCM-ddo?\d/.test(x.key)).map((x: any) => x.key)), keys);
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 20);
+  // SC50 imported at checkpoint 22: SC52–SC54 remain
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 11);
   // the dossier for section 7 keeps the S17-C1 reading
   assert.match(by('DCM-dd007-john-ministry').desc, /the Lord speaks with John and then addresses Peter/);
   // not shown before the D&C layer
@@ -1370,7 +1371,8 @@ test('Supplementary checkpoint 20: SC46 QG01–QG16 and SC47 Articles of Faith i
   assert.deepEqual(plain(aof.src.map((s: any) => s.t)), ['Articles of Faith 1:1–13']);
   // every card is PGP-only and nonspatial; See-also titles name existing cards
   const names = new Set(P.codex.flatMap((t: any) => t.list).map((x: any) => x.name));
-  assert.equal(pg.length, 28);
+  // 28 + six SC49 Joseph Smith—History views (checkpoint 22)
+  assert.equal(pg.length, 34);
   for (const x of pg) {
     assert.deepEqual([plain(x.books), plain(x.layers)], [[5], ['pgp']], x.key);
     assert.equal(x.lat, undefined, x.key);
@@ -1391,8 +1393,8 @@ test('Supplementary checkpoint 20: SC46 QG01–QG16 and SC47 Articles of Faith i
   const at = (layers: string[], group: number) =>
     L.codexSplit(pg, new Set(layers), null, true, group, (y: any) => Math.min(...y.books)).shown.length;
   assert.equal(at(['ot', 'nt', 'bom', 'dc', 'pgp'], 4), 0);
-  assert.equal(at(['pgp'], 5), 28);
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 20);
+  assert.equal(at(['pgp'], 5), 34);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 11);
 });
 
 test('Supplementary checkpoint 21: S20-C1/C2, PC06 pointer and SC48 identity constraints', () => {
@@ -1441,4 +1443,97 @@ test('Supplementary checkpoint 21: S20-C1/C2, PC06 pointer and SC48 identity con
   assert.match(by('PGM-id07-facsimile3-court').desc, /not made Pharaoh’s son without another source/);
   assert.match(by('PGM-id08-abraham1-gods').desc, /this Libnah is not the biblical town/);
   assert.deepEqual(plain(by('PGM-qg07-lamech-noah').src.map((s: any) => s.t)), ['Moses 8:5–13']);
+});
+
+test('Supplementary checkpoint 22: S21-C1/C2, SC49 Joseph Smith—History views, SC50/SC51 front matter', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const card = (k: string) => all.find((x: any) => x.key === k);
+  // S21-C1: the nine parent→child ages, as reported
+  const id03 = card('PGM-id03-seth-line').desc;
+  for (const pair of [
+    'Adam 130 at Seth \\(6:10\\)',
+    'Seth 105 at Enos \\(6:13\\)',
+    'Enos 90 at Cainan \\(6:17\\)',
+    'Cainan 70 at Mahalaleel \\(6:19\\)',
+    'Mahalaleel 65 at Jared \\(6:20\\)',
+    'Jared 162 at Enoch \\(6:21\\)',
+    'Enoch 65 at Methuselah \\(6:25\\)',
+    'Methuselah 187 at Lamech \\(8:5\\)',
+    'Lamech 182 at Noah \\(8:8–9\\)',
+  ])
+    assert.match(id03, new RegExp(pair), pair);
+  assert.match(id03, /no calendar years are derived/);
+  // S21-C2 and the optional id10 glosses
+  assert.match(card('PGM-id04-abraham-family').desc, /Terah is Abraham’s father; Sarai is Abraham’s wife;/);
+  assert.match(card('PGM-id10-facsimile-vocabulary').desc, /Floeese denotes the Moon/);
+  assert.match(card('PGM-id10-facsimile-vocabulary').desc, /not a complete glossary/);
+  // SC49: six PGP-only views after QG14 in source order
+  const pg = codex('pgp-more');
+  const keys = pg.map((x: any) => x.key);
+  const i = keys.indexOf('PGM-qg14-js-history-moves');
+  assert.deepEqual(plain(keys.slice(i + 1, i + 8)), [
+    'PGM-qg14-cowdery-1834',
+    'PGM-jsh-family',
+    'PGM-jsh-harmony-marriage',
+    'PGM-jsh-harris-anthon',
+    'PGM-jsh-moroni-material',
+    'PGM-jsh-baptism',
+    'PGM-jsh-text-referents',
+  ]);
+  for (const k of keys.slice(i + 2, i + 8)) {
+    assert.deepEqual([plain(card(k).books), plain(card(k).layers)], [[5], ['pgp']], k);
+    assert.equal(card(k).lat, undefined, k);
+  }
+  assert.match(card('PGM-jsh-family').desc, /Lucy the mother and Lucy the daughter are two people/);
+  assert.match(card('PGM-jsh-harmony-marriage').desc, /Josiah Stoal \(the account’s spelling\)/);
+  assert.match(card('PGM-jsh-harmony-marriage').desc, /Tarbill is given no first name/);
+  assert.match(card('PGM-jsh-harris-anthon').desc, /not presented as an independently verified statement/);
+  assert.match(card('PGM-jsh-baptism').desc, /not as appearing in this baptism scene/);
+  assert.match(card('PGM-jsh-text-referents').desc, /No 1820s meeting with any of them is created/);
+  // SC50: the nine rows map to the existing FM cards, whose gates are unchanged
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const sc50 = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},SC50,/.test(r));
+  assert.equal(sc50.length, 9);
+  sc50.forEach((r, n) =>
+    assert.match(
+      r,
+      new RegExp(`,imported,codex:reference-views,FM0${n + 1},.*consolidated into existing primary card FM0${n + 1}`),
+    ),
+  );
+  const gates: Record<string, [number, string]> = {
+    FM01: [3, 'bom'],
+    FM02: [3, 'bom'],
+    FM03: [3, 'bom'],
+    FM04: [3, 'bom'],
+    FM05: [3, 'bom'],
+    FM06: [3, 'bom'],
+    FM07: [3, 'bom'],
+    FM08: [4, 'dc'],
+    FM09: [5, 'pgp'],
+  };
+  for (const [k, [b, l]] of Object.entries(gates)) {
+    assert.deepEqual([plain(card(k).books), plain(card(k).layers)], [[b], [l]], k);
+    if (b === 3)
+      assert.doesNotMatch(card(k).desc, /Joseph Smith—History|Doctrine and Covenants|Pearl of Great Price/, k);
+  }
+  assert.match(card('FM01').desc, /not the 1847 arrival/);
+  assert.match(card('FM03').desc, /not a DNA finding/);
+  assert.match(card('FM04').desc, /no surname alone shows kinship/);
+  assert.match(card('FM05').desc, /no independent metallurgical test/);
+  assert.match(card('FM06').desc, /not additional visits or a second plates event/);
+  assert.match(card('FM06').desc, /May 2, 1838 is the account’s stated reporting vantage/);
+  assert.match(card('FM08').desc, /Lectures on Faith/);
+  assert.match(card('FM09').desc, /transferred to the Doctrine and Covenants in 1979/);
+  // SC51: neutral person cards for the two Whitmers who had none
+  for (const k of ['fm-person-christian-whitmer', 'fm-person-jacob-whitmer']) {
+    assert.deepEqual([plain(card(k).books), plain(card(k).layers)], [[3], ['bom']], k);
+    assert.match(card(k).desc, /Only that signatory role is asserted/);
+  }
+  assert.equal(csv.split('\n').filter(r => /^,SC51,frontmatter-inventory\.md:/.test(r)).length, 3);
 });

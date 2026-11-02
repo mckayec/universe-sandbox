@@ -135,7 +135,11 @@ COPY = {
                'every sibling. The children’s occupations are in “Cain’s line: Enoch to Lamech”.'),
     'SD1243': ('PGM-id03-seth-line', 'Seth’s line to Noah: who is who',
                P + 'Moses 6:2–25 and 8:5–12 give the parent chain Seth, Enos, Cainan, Mahalaleel, Jared, Enoch, '
-               'Methuselah, Lamech and Noah; ages are the account’s own reported figures, not dates. Cainan the '
+               'Methuselah, Lamech and Noah. The account reports each father’s age when the named son is born: Adam 130 at '
+               'Seth (6:10), Seth 105 at Enos (6:13), Enos 90 at Cainan (6:17), Cainan 70 at Mahalaleel (6:19), '
+               'Mahalaleel 65 at Jared (6:20), Jared 162 at Enoch (6:21), Enoch 65 at Methuselah (6:25), Methuselah '
+               '187 at Lamech (8:5) and Lamech 182 at Noah (8:8–9). These are the account’s own reported ages, not '
+               'independently established dates, and no calendar years are derived from them. Cainan the '
                'person is distinct from the land of Cainan, and this Enos is not the Book of Mormon writer. Mahijah '
                'questions Enoch (Moses 6:40); Mahujah is a place (Moses 7:2). The two similar names are not '
                'identified with each other. See also: “Seth’s line: Adam to Methuselah”, “Lamech, Noah and Noah’s '
@@ -143,7 +147,7 @@ COPY = {
     'SD1244': 'SD1218',
     'SD1245': ('PGM-id04-abraham-family', 'Abraham’s family in Abraham 2',
                P + 'Abraham 2:1–4: Haran and Nahor are Abraham’s brothers; Milcah is Haran’s daughter and Nahor’s '
-               'wife; Terah is Abraham’s father and Sarai his wife; Lot is Abraham’s nephew, and Lot’s wife is not '
+               'wife; Terah is Abraham’s father; Sarai is Abraham’s wife; Lot is Abraham’s nephew, and Lot’s wife is not '
                'named. The passage calls Lot “my brother’s son” without naming that brother, so Abraham’s account '
                'alone does not make Haran Lot’s father. Haran the brother is not the city of Haran. See also: '
                '“Abraham’s covenant and household”, “Haran (Genesis)”.'),
@@ -184,8 +188,12 @@ COPY = {
     'SD1251': ('PGM-id10-facsimile-vocabulary', 'Facsimile vocabulary, as published',
                P + 'Facsimile 2, explanation, figures 1–5, names Oliblish, Enish-go-on-dosh, Jah-oh-eh, '
                'Kae-e-vanrash, Floeese, Kli-flos-is-es and Hah-ko-kau-beam; Facsimile 1, explanation, figure 12, '
-               'names Raukeeyang, Shaumau and Shaumahyeem. Each term’s role or gloss is the one its caption gives '
-               '(linked). All are attributed interpretation vocabulary, not coordinates, authenticated Egyptian '
+               'names Raukeeyang, Shaumau and Shaumahyeem. In the published explanations, Oliblish is a governing '
+               'creation next to Kolob; Jah-oh-eh names Earth. Enish-go-on-dosh is associated with the Sun. '
+               'Kae-e-vanrash is a governing power; Floeese denotes the Moon. Kli-flos-is-es and Hah-ko-kau-beam name '
+               'the stars represented by figures 22 and 23. Raukeeyang denotes expanse or firmament; the explanation '
+               'relates it here to Shaumau, height or heavens, and to Shaumahyeem. Each term’s role or gloss is the '
+               'one its caption gives (linked); this is not a complete glossary. All are attributed interpretation vocabulary, not coordinates, authenticated Egyptian '
                'translations or measured astronomical bodies. Where a shared sun or moon gloss relates two terms, '
                'such as Floeese and Olea or Enish-go-on-dosh and Shinehah, that gloss is the only basis for relating '
                'them; they are not otherwise merged. See also: “Facsimile explanations as attributed interpretation”, '
@@ -236,5 +244,56 @@ CHILDREN = {
     'SD1225': [('PGM-qg14-cowdery-1834', 'Oliver Cowdery’s 1834 account, appended',
                 P + 'The October 1834 reminiscence by Oliver Cowdery appended to Joseph Smith—History is a separate '
                 'retrospective witness, not verse 76 and not part of Joseph’s narration.',
-                [('Joseph Smith—History, appended Cowdery note', 'pgp/js-h/1')])],
+                [('Joseph Smith—History, appended Cowdery note', 'pgp/js-h/1')]),
+                # SC49 (coverage-pgp.md "Joseph Smith—History person and material index", zero SD rows): the whole
+                # bounded section as six source views after QG14; relationships are the retrospective narrator's,
+                # not corroborated civil records. Source spellings kept; unnamed or first-name-less people stay so.
+                ('PGM-jsh-family', 'Joseph Smith—History: the Smith family',
+                 P + 'Joseph Smith—History 1:3–4 and 7: Joseph names his father, Joseph Smith Sr., and his mother, Lucy '
+                 'Smith, formerly Mack, a daughter of Solomon Mack. The children named are Alvin, Hyrum, Joseph, Samuel '
+                 'Harrison, William, Don Carlos, Sophronia, Catherine and Lucy; Lucy the mother and Lucy the daughter '
+                 'are two people. Verse 7 reports Presbyterian membership for his mother, Hyrum, Samuel Harrison and '
+                 'Sophronia, not for the whole family. These are the narrator’s reported relationships, not '
+                 'corroborated civil records. See also: “Alvin in Joseph Smith\'s family account”, “Joseph Smith Sr.”, '
+                 '“Hyrum Smith”, “Samuel H. Smith”.',
+                 [('Joseph Smith—History 1:3–4, 7', 'pgp/js-h/1')]),
+                ('PGM-jsh-harmony-marriage', 'Joseph Smith—History: Stoal, Hale and Tarbill',
+                 P + 'Joseph Smith—History 1:56–58: Joseph works for Josiah Stoal (the account’s spelling), who '
+                 'employs him in a search for a silver mine in Harmony; the reported search fails. Joseph boards with '
+                 'Isaac Hale, whose daughter is Emma. Joseph and Emma are reported married on January 18, 1827, at the '
+                 'house of Squire Tarbill in South Bainbridge; Tarbill is given no first name here. The failed mine '
+                 'search is kept as reported. See also: “Emma Smith”, “Joseph Smith—History: family moves, marriage '
+                 'and translation”.',
+                 [('Joseph Smith—History 1:56–58', 'pgp/js-h/1')]),
+                ('PGM-jsh-harris-anthon', 'Joseph Smith—History: Harris’s trip, as relayed',
+                 P + 'Joseph Smith—History 1:61–65: Martin Harris gives Joseph financial help with his move, and '
+                 'separately carries copied characters to New York City. Professor Charles Anthon and Dr. Mitchell '
+                 '(no first name given) appear in Harris’s account as Joseph relays it; the reported certification is '
+                 'not presented as an independently verified statement by either man. Joseph is not routed along '
+                 'Harris’s trip. See also: “Martin Harris”.',
+                 [('Joseph Smith—History 1:61–65', 'pgp/js-h/1')]),
+                ('PGM-jsh-moroni-material', 'Joseph Smith—History: Moroni, the plates and the objects',
+                 P + 'Joseph Smith—History 1:30–54 and 59–60: Moroni is the named heavenly messenger in the account. '
+                 'The plates, the Urim and Thummim, the breastplate, the stone box, the annual visits to the hill and '
+                 'the eventual return of the plates to the messenger are distinct reported objects and episodes; none '
+                 'is drawn as a separate pin. Receiving the plates on September 22, 1827 is not the first, 1823 hill '
+                 'visit, and the account’s “until this day” 1838 narration date is not the date of the return. See '
+                 'also: “Receiving the plates”, “Hill near Manchester (PGP)”.',
+                 [('Joseph Smith—History 1:30–54, 59–60', 'pgp/js-h/1')]),
+                ('PGM-jsh-baptism', 'Joseph Smith—History: scribe, baptism and priesthood',
+                 P + 'Joseph Smith—History 1:66–75: Oliver Cowdery serves as Joseph’s scribe. Joseph baptizes Oliver '
+                 'and Oliver baptizes Joseph. In the account John the Baptist confers the Aaronic Priesthood on both; '
+                 'Peter, James and John are named as the authorities directing him, not as appearing in this baptism '
+                 'scene. Aaron, Levi and Melchizedek appear in priesthood terms, not as people present. Joseph’s '
+                 'promised office of first elder and Oliver’s of second elder are future offices, not a church already '
+                 'organized in May 1829. See also: “Reported baptisms”, “Susquehanna River baptism setting”, '
+                 '“Oliver Cowdery”.',
+                 [('Joseph Smith—History 1:66–75', 'pgp/js-h/1')]),
+                ('PGM-jsh-text-referents', 'Joseph Smith—History: people quoted or compared',
+                 P + 'Joseph Smith—History 1:11, 24, 36–41 and 69–72: James (the quoted epistle), Paul and King Agrippa '
+                 '(a comparison), Malachi, Isaiah, Joel and Elijah (quoted or anticipated prophecy), and Christ and '
+                 'divine titles are text references with the roles those verses give them. No 1820s meeting with any '
+                 'of them is created. The appended 1834 Cowdery reminiscence, which separately names Mormon, Moroni '
+                 'and the seed of Jacob, is its own card. See also: “Oliver Cowdery’s 1834 account, appended”.',
+                 [('Joseph Smith—History 1:11, 24, 36–41, 69–72', 'pgp/js-h/1')])],
 }

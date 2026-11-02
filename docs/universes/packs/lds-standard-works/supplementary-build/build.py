@@ -27,6 +27,7 @@ import copy_dre
 import copy_dca
 import copy_dd
 import copy_pgp
+import copy_fm
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -178,6 +179,12 @@ def main(path):
         for cat, loc, rid, tsd, (t, path) in getattr(m, 'PROSE_INTO', []):
             assert tsd in copy and not isinstance(copy[tsd], str), (rid, tsd)
             prose_into.setdefault(tsd, []).append((cat, loc, rid, t, BASE + path + '?lang=eng'))
+    text0 = PACK.read_text(encoding='utf-8')
+    primary_names = {}
+    for sd, (key, _d) in copy_fm.PRIMARY.items():
+        m = re.search(r"\{ key: '%s', name: '((?:[^'\\]|\\.)*)', books: \[(\d)\]" % key, text0)
+        assert m, key
+        primary_names[key] = m.group(1).replace("\\'", "'")
     child_keys = {c[0]: (psd, c) for psd, cs in children.items() for c in cs}
     for sd, v in copy.items():
         if isinstance(v, str) and v in child_keys:
@@ -190,6 +197,14 @@ def main(path):
             merged.setdefault(v, []).extend(sources(by_sd[sd]))
     for r in rows:
         sd, cat = r['disposition_id'], r['category']
+        if sd in copy_fm.PRIMARY:
+            # SC50: the row's source view is an existing primary FM card; only that card's desc is rewritten
+            key = copy_fm.PRIMARY[sd][0]
+            mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
+                            'codex:reference-views', key, primary_names[key], '; '.join(t for t, _ in sources(r)),
+                            r['work_gate'], f'consolidated into existing primary card {key}; ' + r['consolidation_rule'],
+                            r['row_sha256']])
+            continue
         if sd in copy and isinstance(copy[sd], str):
             tsd = copy[sd]
             if tsd in child_keys:
@@ -250,6 +265,10 @@ def main(path):
         lines['bom'].append(entry(key, name, desc, src, [3], ['bom']))
         mapping.append(['', cat, 'prose', key, 'imported', 'codex:bom-more', key, name, '; '.join(t for t, _ in src),
                         '3/bom', 'prose-only section bullet; mandatory bounded content', ''])
+    for cat, loc, rid, targets in copy_fm.PROSE_INTO_PRIMARY:
+        mapping.append(['', cat, loc, rid, 'imported', 'codex:reference-views; codex:bom-more', targets, '', '',
+                        '3/bom (FM04–07, person cards); FM08 4/dc; FM09 5/pgp',
+                        'zero-row integration constraint carried as sentences in the named cards; no new event', ''])
     assert all(k in {r['disposition_id'] for r in rows} for k in copy)
     keys = [m[6] for m in mapping if m[4] == 'imported' and not m[10].startswith('consolidated into')]
     assert len(keys) == len(set(keys)), 'duplicate card keys'
@@ -258,12 +277,21 @@ def main(path):
     for i, t in copy_dd.TITLES.items():
         # the dossier cards' See-also titles must name existing cards
         assert re.search(r"key: 'DCM-%s-[^']*', name: %s" % (i.lower(), re.escape(js(t))), text), (i, t)
+    for sd, (key, desc) in copy_fm.PRIMARY.items():
+        # rewrite only the desc of the existing primary FM card (idempotent)
+        pat = re.compile(r"(\{ key: '%s', name: '(?:[^'\\]|\\.)*', books: \[\d\], layers: \[[^\]]*\], desc: )"
+                         r"'(?:[^'\\]|\\.)*'" % key)
+        text, n = pat.subn(lambda m: m.group(1) + js(desc), text)
+        assert n == 1, key
     names = set(re.findall(r"name: '((?:[^'\\]|\\.)*)'", text))
-    for line in lines['pgp']:
+    fm_lines = [js(d) for _k, d in copy_fm.PRIMARY.values()]
+    for fam_lines in lines.values():
+        names |= {n for l in fam_lines for n in re.findall(r"name: '((?:[^'\\]|\\.)*)'", l)}
+    for line in lines['pgp'] + lines['bom'] + fm_lines:
         # the PGP cards' See-also titles must name existing cards (any tab)
         also = re.search(r"See also: (.*?)\.'", line)
         for t in re.findall('“([^”]+)”', also.group(1)) if also else []:
-            assert js(t)[1:-1] in names, t
+            assert js(t.replace("\\'", "'"))[1:-1] in names, t
     for fam, (tab, *_rest) in FAMILIES.items():
         a, b = f'/* SUPPLEMENT:{tab}:BEGIN */', f'/* SUPPLEMENT:{tab}:END */'
         i, j = text.index(a) + len(a), text.index(b)

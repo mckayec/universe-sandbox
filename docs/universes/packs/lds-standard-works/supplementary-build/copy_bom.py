@@ -148,6 +148,16 @@ PROSE = [
     # SC02 closing prose (coverage-bom.md:388)
     ('SC02', 'SC02.1', 'Narrow pass near Desolation', P + 'Alma names a narrow pass near Desolation. It is a feature of that passage; no modern location and no automatic identity with every neck or pass is supplied.',
      [('Alma 50:34', 'bofm/alma/50'), ('Alma 52:9', 'bofm/alma/52')]),
+    # SC51 (frontmatter-inventory.md "Binding integration adjustments"): separate neutral person keys for the two
+    # Eight Witnesses who have no other card; only the testimony-signatory role is asserted
+    ('SC51', 'fm-person-christian-whitmer', 'Christian Whitmer', P + 'Christian Whitmer is one of the eight '
+     'signatories of the Testimony of Eight Witnesses. Only that signatory role is asserted here; the shared surname '
+     'does not by itself make him kin to the other Whitmers. See also: “Testimony of Eight Witnesses”.',
+     [('Testimony of Eight Witnesses', 'bofm/eight')]),
+    ('SC51', 'fm-person-jacob-whitmer', 'Jacob Whitmer', P + 'Jacob Whitmer is one of the eight signatories of the '
+     'Testimony of Eight Witnesses. Only that signatory role is asserted here; the shared surname does not by itself '
+     'make him kin to the other Whitmers. See also: “Testimony of Eight Witnesses”.',
+     [('Testimony of Eight Witnesses', 'bofm/eight')]),
 ]
 
 EXTRA_SRC = {
