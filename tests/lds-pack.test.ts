@@ -1873,3 +1873,38 @@ test('Checkpoint 29: S28-V1 the completing frame of a jump keeps fades off; fade
   step2(false, false);
   assert.deepEqual(seen2, [true, true, false]);
 });
+
+test('Checkpoint 30: DRE office appointments and successions link office and person cards; no parent-of', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((c: any) => c.key).map((c: any) => [c.key, c]));
+  const rel = (from: string, to: string) =>
+    (byKey.get(from).see || []).find((v: any) => (typeof v === 'string' ? v : v.k) === to);
+  const r = (from: string, to: string) => {
+    const v = rel(from, to);
+    return v && typeof v !== 'string' ? v.r : v;
+  };
+  // appoints-to-office: both ways, same role, every end 4/dc
+  assert.equal(r('DCM-dre124e-presidency-patriarch', 'DCM-dcp-hyrum-smith'), 'patriarch and seer');
+  assert.equal(r('DCM-dcp-hyrum-smith', 'DCM-dre124e-presidency-patriarch'), 'patriarch and seer');
+  const twelve = (byKey.get('DCM-dre124f-twelve').see || []).filter((v: any) => v.k.startsWith('DCM-dcp-'));
+  assert.equal(twelve.length, 11);
+  assert.equal(twelve.filter((v: any) => v.r === 'president of the Twelve').length, 1);
+  assert.equal(rel('DCM-dre124f-twelve', 'DCM-dcp-david-w-patten'), undefined);
+  const council = (byKey.get('DCM-dre124g-high-council').see || []).filter((v: any) => v.r === 'high councilor');
+  assert.equal(council.length, 12);
+  // successions are the two the verses name, person to person
+  assert.equal(r('DCM-dcp-william-law', 'DCM-dcp-hyrum-smith'), 'succeeds as counselor');
+  assert.equal(r('DCM-dcp-hyrum-smith', 'DCM-dcp-william-law'), 'succeeded as counselor by');
+  assert.equal(r('DCM-dcp-aaron-johnson', 'DCM-dcp-seymour-brunson'), 'in the place of');
+  // successive cards and revisions
+  assert.equal(r('DCM-dre118-marsh-and-twelve', 'DCM-dre124f-twelve'), 'later list of the Twelve');
+  assert.equal(r('DCM-dre052a-companion-pairs', 'DCM-dre056-revisions'), 'revised in section 56');
+  assert.equal(r('DCM-dre066-mclellin-samuel-smith', 'DCM-dre075-companion-pairs'), 'revoked and revised in');
+  // assignments are not offices; no kinship or parent-of label on any DRE-derived link
+  assert.equal(rel('DCM-dre052a-companion-pairs', 'DCM-dcp-thomas-b-marsh'), undefined);
+  assert.equal(rel('DCM-dre124d-nauvoo-house-stock', 'DCM-dcp-vinson-knight'), undefined);
+  for (const c of all.filter((x: any) => x.key && /^DCM-dre|^DCM-dcp-/.test(x.key))) {
+    assert.deepEqual(plain(c.books), [4], c.key);
+    for (const v of c.see || []) if (typeof v !== 'string') assert.doesNotMatch(v.r, /parent|father|son of|kin/i);
+  }
+});
