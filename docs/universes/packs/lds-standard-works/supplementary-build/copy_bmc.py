@@ -254,6 +254,28 @@ VIEWS = [
      'Book of Mormon — Mormon’s editorial address joins lament for his people with covenant restoration and warnings '
      'to future readers. It does not establish modern ethnic identities or a physical voyage from its ship imagery.',
      None, [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    # Checkpoint 36: the five S35 answers (supplementary-review-s35.md at PR34 7e03f2b, “Returned builder questions”).
+    # Copy is the reviewer's minimum copy; verse locators are the passages that review opened.
+    (73, 'egypt-jerusalem-limhi', 'Egypt and Jerusalem recalled by Limhi (Mosiah 7)', 'teaching',
+     'Book of Mormon — Limhi recalls deliverance from Egypt through the Red Sea and the departure of his people’s '
+     'ancestors from Jerusalem. These are recollections in his address, not Limhi’s own travels.', '19–20',
+     [('OTS-P04-egypt', 'deliverance recalled by Limhi'), ('OTM-jerusalem', 'ancestral departure recalled')]),
+    (79, 'sinai-moses-comparison', 'Sinai in the comparison of Abinadi with Moses (Mosiah 13)', 'mention',
+     'Book of Mormon — The narrator compares Abinadi’s shining face with Moses at Sinai; Abinadi then continues the '
+     'commandments. Sinai is a biblical comparison, not another local mountain or a journey by Abinadi.', '5, 11–24',
+     [('OTS-AP04-sinai', 'Sinai in the Moses comparison')]),
+    (131, 'egypt-jerusalem-alma', 'Egypt and Jerusalem recalled by Alma (Alma 36)', 'teaching',
+     'Book of Mormon — Alma recalls ancestral deliverance from Egypt and from Jerusalem while addressing his son. The '
+     'memories are not new journeys undertaken by Alma.', '28–29',
+     [('OTS-P04-egypt', 'deliverance recalled by Alma'), ('OTM-jerusalem', 'ancestral departure recalled')]),
+    (141, 'joseph-garment-moroni', 'Joseph’s garment invoked by Moroni (Alma 46)', 'quotation',
+     'Book of Mormon — Moroni invokes Joseph’s torn garment and recounts words attributed to Jacob about a preserved '
+     'remnant. This quotation is presented in Alma’s narrative; it is not a quotation found in the Genesis text.',
+     '23–27', [('OHR-JOSEPH-JACOB', 'garment recalled by Moroni')]),
+    (69, 'mary-benjamin-angel', 'Mary named in the angel’s words reported by Benjamin (Mosiah 3)', 'prophecy',
+     'Book of Mormon — Benjamin reports an angel’s prophecy naming Mary as Jesus’s mother. This does not describe '
+     'Mary’s visit to Elisabeth.', '1–8',
+     [('NTE-annunciations', 'Mary, also named in Luke')]),
 ]
 
 # Views implemented without a See-also link: reason (recorded in bmc-source-views.csv).

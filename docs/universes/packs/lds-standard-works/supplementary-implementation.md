@@ -1610,3 +1610,49 @@ and its [builder decisions](https://github.com/mckayec/universe-sandbox/blob/5b9
   Browser (SwiftShader, 1440×900): [s35-probe.mjs](supplementary-build/s35-probe.mjs) **2/2** — all layers, keyboard: 53 views, BMV-048 has no link and the 2 Nephi 26:29–31 source, BMV-057's two labels, Enter on Solomon focuses OHR-SOLOMON whose card carries no Book of Mormon label back; Book of Mormon layer only: the Israel views' target is named but not navigable — no console errors, failed requests or HTTP≥400 ([output](supplementary-build/s35-probe-output.txt), [shot](shots/s35-bmv057-1440x900.jpg)). Still open: timeline and
   source-vision relations, final same-head 4K/1280/phone, Tab traversal and finished-bake evidence; real-GPU and
   physical-phone evidence need hardware.
+
+## Checkpoint 36 (the five S35 answers; S35-A1/A2 reasons corrected)
+
+Parent: a89df3e (the S35-reviewed head). Review: PR34 `supplementary-review-s35.md` at 7e03f2b.
+
+* **Five source views, reviewer's minimum copy verbatim** (`books:[3]`, `layers:['bom']`, no date/coordinate/route,
+  one-way links under the target's own gate, verse locators from the passages the review opened):
+  * BMV-073-egypt-jerusalem-limhi, Mosiah 7:19–20 (teaching): `OTS-P04-egypt` “deliverance recalled by Limhi”,
+    `OTM-jerusalem` “ancestral departure recalled”.
+  * BMV-079-sinai-moses-comparison, Mosiah 13:5, 11–24 (mention): `OTS-AP04-sinai` “Sinai in the Moses comparison”;
+    the copy keeps the narrator's comparison distinct from Abinadi's continued commandments.
+  * BMV-131-egypt-jerusalem-alma, Alma 36:28–29 (teaching): `OTS-P04-egypt` “deliverance recalled by Alma”,
+    `OTM-jerusalem` “ancestral departure recalled”.
+  * BMV-141-joseph-garment-moroni, Alma 46:23–27 (quotation): `OHR-JOSEPH-JACOB` “garment recalled by Moroni”; the
+    copy says the quotation is not found in the Genesis text and keeps Jacob (quoted), Joseph and Moroni distinct.
+  * BMV-069-mary-benjamin-angel, Mosiah 3:1–8 (prophecy): `NTE-annunciations` “Mary, also named in Luke”; not labelled
+    as the same announcement or the Visitation.
+* **S35-A1:** the BMC-131 Jerusalem hit is no longer proposed as a BXJ01 consolidation (BXJ01 is the return for the
+  plates); the view links `OTM-jerusalem` instead. **S35-A2:** the BMC-069 reason no longer says the Visitation is the
+  only Mary target. Both corrected reasons stay in `bmc_omission_rollup.py` as the record of what the corrected reader
+  exposed; the chapters are now implemented, so they leave the default-omission rollup.
+* **Counts at this head.** 58 views over 58 keys; **88 links, 91 implemented ledger rows** (three unlinked views
+  unchanged: BMV-011, BMV-022, BMV-048). Ledger 373 rows: 91 implemented, 181 omitted, 26 scan-accepted, 75
+  scan-rejected. Rollup: **167 default omissions — 88 no shared name, 79 hits dispositioned, 0 candidates, 0 reader**;
+  14 bespoke omissions. As S35 says, the 167 are indexing/disposition states over the committed research, not
+  certified absence. Mapping (1,365 rows, 1,271 SD imported, 0 pending) unchanged; no engine, CSS or non-codex data
+  change. Rollup reasons are stamped “checkpoint 36” (text otherwise unchanged).
+* **Tests.** New test “Checkpoint 36”: the five views' locators, labels and caveats, no BMV label on any target, and
+  no BXJ01 in the Alma 36 view. The checkpoint 32 test now counts 58; the checkpoint 35 rollup test keeps the Alma 36
+  regression by asserting BMC-131 is implemented from Alma 36:28–29 and that no candidate/reader chapter remains.
+* **Verification.** Generator (`build.py` with the accepted register at 9cc874c, then `bmc_omission_rollup.py`) run
+  three times, byte-identical. `pnpm check` **133/133** (59 LDS/layers tests); `pnpm check:dist` 114 files OK.
+  Browser (SwiftShader): [s36-probe.mjs](supplementary-build/s36-probe.mjs) — 1440×900 keyboard: 58 views, BMV-131's
+  two labels and Alma 36:28–29 source, Enter on Egypt focuses `OTS-P04-egypt` and Enter on Mary focuses
+  `NTE-annunciations`, neither carrying a Book of Mormon label back; 390×844 touch, Book of Mormon layer only: all five
+  views shown with their targets named but not navigable and no sideways page scroll; 3840×2160: BMV-141 renders its
+  Genesis caveat and label. Checks 1–2 ran in one run that was then cut off by a tool timeout before its final
+  error summary; check 3 ran alone and reported no console errors, failed requests or HTTP≥400
+  ([output](supplementary-build/s36-probe-output.txt); shots
+  [1440](shots/s36-bmv131-1440x900.jpg), [390](shots/s36-bmv079-390x844.jpg), [3840](shots/s36-bmv141-3840x2160.jpg)).
+  `pnpm test:pages` was not re-run locally this checkpoint (CPU-bound alongside the SwiftShader probe); CI covers it.
+  The 4K shot shows the Reference panel using only the centre ~1,100 px of a 3,840 px screen (readable, but small);
+  noted for the final rendered pass.
+* **Still open (Claude keeps ownership):** timeline and source-vision relations; semantic omission/consolidation
+  beyond name indexing; final same-head 4K/1280/phone set, full Tab traversal and finished-bake evidence; real-GPU
+  and physical-phone evidence need hardware.

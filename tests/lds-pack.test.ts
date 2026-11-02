@@ -1925,7 +1925,7 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
 
 test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
   const views = codex('bom-bible');
-  assert.equal(views.length, 53);
+  assert.equal(views.length, 58);
   const all = P.codex.flatMap((t: any) => t.list);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
@@ -1951,13 +1951,13 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
   // layer isolation and work downgrade
   const split = (layers: string[], cum: boolean, book: number) =>
     L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
-  assert.equal(split(['bom'], false, 0).shown.length, 53);
+  assert.equal(split(['bom'], false, 0).shown.length, 58);
   assert.equal(split(['ot'], false, 0).shown.length, 0);
   assert.equal(split(['nt'], false, 0).shown.length, 0);
   assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
-  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 53);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 58);
   assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
-  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 53);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 58);
   // the S31 minimum examples
   const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
   assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);
@@ -2019,7 +2019,7 @@ test('Checkpoint 35: every default BMC omission is reconciled in bmc-omission-ro
   const omittedRollup = views
     .trim()
     .split('\n')
-    .filter(r => /,omitted,"?rollup \(checkpoint 35\)/.test(r))
+    .filter(r => /,omitted,"?rollup \(checkpoint 36\)/.test(r))
     .map(r => r.slice(0, 7));
   const lines = rollup.trim().split('\n').slice(1);
   const chapters = new Map<string, string>();
@@ -2034,9 +2034,12 @@ test('Checkpoint 35: every default BMC omission is reconciled in bmc-omission-ro
   assert.ok(!rollup.includes('no disposition rule yet'));
   // S34-C1 regression: Alma 36's verse-qualified full-read row is scanned, so its Egypt recollection is not
   // reported as "no shared name"
-  assert.notEqual(chapters.get('BMC-131'), 'reconciled-no-shared-name');
-  assert.match(rollup, /^BMC-131,Alma 36,[a-z-]+,Egypt,/m);
-  assert.match(rollup, /^BMC-131,[^\n]*1 full-read row\(s\)/m);
+  // Since checkpoint 36 the chapter is implemented (S35 answer), so it has left the default-omission rollup
+  // rather than being reconciled as absent.
+  assert.equal(chapters.get('BMC-131'), undefined);
+  assert.match(views, /^BMC-131,Alma 36:28–29,OTS-P04-egypt,1\/ot,teaching,[^\n]*,implemented,/m);
+  // checkpoint 36: no candidate or reader chapter is left undecided at this head
+  for (const s of chapters.values()) assert.ok(s.startsWith('reconciled-'), s);
 });
 
 test('Checkpoint 35: every full-read table row in coverage-bom.md is ingested by the omission rollup', () => {
@@ -2121,4 +2124,43 @@ test('Checkpoint 35: S34 builder decisions are implemented as attributed 3/bom s
   assert.match(ledger, /^BMC-004,1 Nephi 4,[^\n]*,omitted,"S34 decision: [^\n]*BXJ01/m);
   assert.match(ledger, /^BMC-007,1 Nephi 7,[^\n]*,omitted,"S34 decision: [^\n]*BXJ02/m);
   assert.ok(byKey.get('BXJ01') && byKey.get('BXJ02'));
+});
+
+test('Checkpoint 36: the five S35 answers are one-way 3/bom views with the reviewer’s copy and bounded labels', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
+  const want: [string, string, string[][]][] = [
+    [
+      'BMV-073-egypt-jerusalem-limhi',
+      'Mosiah 7:19–20',
+      [
+        ['OTS-P04-egypt', 'deliverance recalled by Limhi'],
+        ['OTM-jerusalem', 'ancestral departure recalled'],
+      ],
+    ],
+    ['BMV-079-sinai-moses-comparison', 'Mosiah 13:5, 11–24', [['OTS-AP04-sinai', 'Sinai in the Moses comparison']]],
+    [
+      'BMV-131-egypt-jerusalem-alma',
+      'Alma 36:28–29',
+      [
+        ['OTS-P04-egypt', 'deliverance recalled by Alma'],
+        ['OTM-jerusalem', 'ancestral departure recalled'],
+      ],
+    ],
+    ['BMV-141-joseph-garment-moroni', 'Alma 46:23–27', [['OHR-JOSEPH-JACOB', 'garment recalled by Moroni']]],
+    ['BMV-069-mary-benjamin-angel', 'Mosiah 3:1–8', [['NTE-annunciations', 'Mary, also named in Luke']]],
+  ];
+  for (const [key, loc, see] of want) {
+    const v = byKey.get(key);
+    assert.ok(v, key);
+    assert.equal(v.src[0].t, loc, key);
+    assert.deepEqual(plain(v.see.map((s: any) => [s.k, s.r])), see, key);
+    // one way: the target carries no Book of Mormon label back
+    for (const [k] of see) assert.ok(!seeKeys(byKey.get(k)).some(x => x.startsWith('BMV-')), k);
+  }
+  // S35-A1: Alma 36:29 is not consolidated into BXJ01 (the return for the plates)
+  assert.ok(!byKey.get('BMV-131-egypt-jerusalem-alma').desc.includes('BXJ01'));
+  assert.match(byKey.get('BMV-141-joseph-garment-moroni').desc, /not a quotation found in the Genesis text/);
+  assert.match(byKey.get('BMV-069-mary-benjamin-angel').desc, /does not describe Mary’s visit to Elisabeth/);
+  assert.match(byKey.get('BMV-079-sinai-moses-comparison').desc, /not another local mountain or a journey by Abinadi/);
 });

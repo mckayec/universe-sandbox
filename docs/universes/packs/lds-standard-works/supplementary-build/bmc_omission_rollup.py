@@ -252,23 +252,28 @@ ROW = {
                                     'is a relation to “Israel as a prophetic community” (OTM-israel-prophetic-'
                                     'community) is a reading decision') for n in (179, 195, 203, 204, 208, 210)},
     # Checkpoint 35: hits exposed once the verse-qualified Mosiah/Alma 33–63/Helaman full-read rows were ingested.
-    ('BMC-069', 'Mary'): ('reader', 'the research records Benjamin reporting an angel’s prophecy naming Mary as '
-                                    'Jesus’ mother; the only Mary card is the Visitation event (NTJ-mary-elizabeth), '
-                                    'which the chapter does not describe: proposed reading is no link unless a Mary '
-                                    'person card is wanted'),
+    # Checkpoint 36: all five chapters below are implemented (S35 answers), so they leave the default-omission
+    # rollup; the reasons are kept, corrected per S35-A1/A2, as the record of what the reader exposed.
+    ('BMC-069', 'Mary'): ('candidate', 'S35-A2: Benjamin reports an angel’s prophecy naming Mary as Jesus’ mother; '
+                                       'the existing card NTE-annunciations (“Announcements to Zacharias and Mary”) '
+                                       'names her, so the view links there with the bounded label “Mary, also named '
+                                       'in Luke”, not as the same announcement or the Visitation (implemented, '
+                                       'BMV-069)'),
     ('BMC-073', 'Egypt'): ('candidate', 'the research records Limhi’s Egypt/Red Sea retrospective: a teaching that '
-                                        'recalls the exodus from Egypt (OTS-P04-egypt)'),
+                                        'recalls the exodus from Egypt (OTS-P04-egypt; implemented, BMV-073)'),
     ('BMC-079', 'Sinai'): ('candidate', 'the research records Abinadi’s Ten Commandments with a Sinai comparison, “not '
-                                        'another local mountain”: a quotation tied to the Sinai setting '
-                                        '(OTS-AP04-sinai)'),
+                                        'another local mountain”: the narrator’s Moses comparison tied to the Sinai '
+                                        'setting (OTS-AP04-sinai; implemented, BMV-079)'),
     ('BMC-131', 'Egypt'): ('candidate', 'the research records Alma’s remembered deliverance of the fathers from Egypt: '
-                                        'a teaching recalling the exodus (OTS-P04-egypt)'),
-    ('BMC-131', 'Jerusalem'): ('reader', 'the remembered deliverance of Lehi’s family from Jerusalem is a retrospective '
-                                         'of the departure the journey record BXJ01 carries; proposed reading is a '
-                                         'bounded mention under BXJ01, as decided for BMC-003/004, not a new view'),
+                                        'a teaching recalling the exodus (OTS-P04-egypt; implemented, BMV-131)'),
+    ('BMC-131', 'Jerusalem'): ('candidate', 'S35-A1: Alma 36:29 recalls the ancestral departure from Jerusalem; BXJ01 '
+                                            'is the return for the plates, not the departure, so this is not '
+                                            'consolidated there: the view links OTM-jerusalem with “ancestral '
+                                            'departure recalled” (implemented, BMV-131)'),
     ('BMC-141', 'Joseph'): ('candidate', 'the research records Moroni quoting a saying about Joseph’s garment and notes '
                                          'the quotation is not present in the Genesis text: an attributed quotation '
-                                         'naming Joseph son of Jacob (OHR-JOSEPH-JACOB), with that caveat'),
+                                         'naming Joseph son of Jacob (OHR-JOSEPH-JACOB), with that caveat '
+                                         '(implemented, BMV-141)'),
     ('BMC-207', 'David'): ('namesake', 'the land David on Mormon’s retreat, not King David'),
     ('BMC-207', 'Joshua'): ('namesake', 'the western-seashore land Joshua, not Joshua son of Nun'),
     ('BMC-207', 'Jordan'): ('namesake', 'the Book of Mormon city Jordan on the retreat, not the biblical river'),
