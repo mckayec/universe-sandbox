@@ -1,0 +1,4 @@
+[252s] check 1 passed (two cards, narrated label)
+[394s] check 2 passed (year filter still uses when)
+[463s] check 3 passed (phone, 1815–1825)
+S40 probe passed: checks 1–3; no console errors, failed requests or HTTP errors.

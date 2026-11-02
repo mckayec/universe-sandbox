@@ -2329,3 +2329,46 @@ test('Checkpoint 38: the S37 decisions are 3/bom source views with the reviewerâ
   assert.match(ledger, /^BMC-002,1 Nephi 2,[^\n]*,omitted,"S37 decision: [^\n]*BP01[^\n]*BXP01/m);
   assert.match(ledger, /^BMC-164,Helaman 6,[^\n]*,omitted,"?S37 decision \(S37-C2\): [^\n]*BXP37[^\n]*BMV-166/m);
 });
+
+test('Checkpoint 40: timeline/source-vision crosswalk covers every dated item; narrated First Vision year is labelled', () => {
+  // the two First Vision cards keep 1820 for the filter but show the narrated wording
+  const fv = P.codex.flatMap((t: any) => t.list).filter((x: any) => x.name === 'First Vision account');
+  assert.equal(fv.length, 2);
+  for (const x of fv) {
+    assert.equal(x.when, 1820);
+    assert.equal(x.date, 'spring 1820, as narrated');
+    assert.match(L.itemMeta(null, null, x), /spring 1820, as narrated/);
+    assert.doesNotMatch(L.itemMeta(null, null, x), />1820</);
+    assert.equal(L.timeOk(x, [1820, 1830]), true);
+    assert.equal(L.timeOk(x, [1830, 1840]), false);
+  }
+  // an item with only `when` still shows its formatted year
+  assert.match(L.itemMeta(null, null, { when: 1836 }), /1836/);
+  // the committed crosswalk matches a fresh run of the generator
+  const dir = new URL('../docs/universes/packs/lds-standard-works/', import.meta.url);
+  const csvUrl = new URL('timeline-source-vision.csv', dir);
+  const before = readFileSync(csvUrl, 'utf8');
+  execFileSync('node', [fileURLToPath(new URL('supplementary-build/timeline_vision.cjs', dir))]);
+  assert.equal(readFileSync(csvUrl, 'utf8'), before, 'timeline-source-vision.csv is current');
+  const rows = parseCsv(before);
+  const [head, ...body] = rows;
+  const col = (n: string) => head.indexOf(n);
+  // every numeric year in the pack is classified, and ancient events carry none
+  const dated = [
+    ...P.worlds.flatMap((w: any) => [...(w.sites || []), ...(w.routes || [])]),
+    ...P.events,
+    ...P.codex.flatMap((t: any) => t.list),
+  ].filter((x: any) => x.when != null || x.date);
+  assert.equal(body.filter(r => r[col('date_class')] !== 'no-year').length, dated.length);
+  for (const r of body) {
+    if (r[col('date_class')] === 'no-year') assert.equal(r[col('filter_years')], '', r[0]);
+    assert.ok(r[col('disposition')], r[0]);
+  }
+  // visionary records with a filter year are exactly the two First Vision cards and the D&C 137 event
+  const visYear = body.filter(r => r[col('visionary')] === 'yes' && r[col('filter_years')]).map(r => r[0]);
+  assert.deepEqual(visYear.sort(), [
+    'codex:First Vision account|dc',
+    'codex:First Vision account|pgp',
+    'event:vision-celestial-kingdom',
+  ]);
+});

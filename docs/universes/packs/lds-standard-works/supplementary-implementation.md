@@ -1781,3 +1781,45 @@ Parent c3e500e (the S38-reviewed head); S38 review: PR34 ab34849.
   `bmc_semantic_pass.py .`) run three times: byte-identical. `pnpm check` **135/135**.
 * **Still open (Claude keeps ownership):** timeline and source-vision relations; final same-head 4K/1280/phone set,
   full Tab traversal and finished-bake evidence; real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 40 — timeline / source-vision crosswalk
+
+Parent 180b337 (the S39-reviewed head); S39 review: PR34 5951442.
+
+* **Crosswalk.** New generator [timeline_vision.cjs](supplementary-build/timeline_vision.cjs) reads the pack and
+  writes [timeline-source-vision.csv](timeline-source-vision.csv) (137 rows): every site, route, event and codex card
+  that carries a numeric `when` (30, all 1820–1978; these are the only items that feed the year filter) or a text-only
+  `date` (5: RE02/05/06/07/13), each with its date class and the reason; every Chronicle event without a year (11
+  ancient/scriptural events: any dating stays in their text, e.g. the regnal year in `jerusalem-destruction`); and every
+  event or codex card whose own wording is visionary (96). Classes: **documentary** 8 (dated revelation, prayer or
+  record headings: D&C 57, 109, 124, 136, 137, OD 2 heading, the organization date, RE07's letter dates), **narrated**
+  4 (a year an account reports for what it describes: the two First Vision cards, the Aaronic Priesthood account,
+  RE02), **synthesis** 11 (documentary/archival/NPS history, including the three dated routes), **site-period** 12
+  (a place's filter years are those of the events or routes there, not a dated occurrence; e.g. Salt Lake Temple 1978
+  is the OD 2 event year, not construction). The generator fails if a dated item is unclassified or a classified item
+  disappears, so no year can enter the filter unexamined.
+* **Visions.** No visionary codex card has coordinates or a year. Three visionary events are pinned at the narrated
+  place of reception (Patmos, Lehi at Jerusalem, the D&C 137 vision recorded in the Kirtland Temple), not at the
+  vision's content; only the D&C 137 event and the two First Vision cards carry a filter year. Daniel's Shushan and
+  Hiddekel settings, the BMC "sees"/"quotes" source views and DD110/DE06b/DD137/RE08 keep the dispositions already in
+  typed-links.csv and bmc-source-views.csv; this crosswalk does not change them.
+* **One representation change (narrated date made visible).** The two First Vision cards had `when:1820` shown as a
+  bare "1820", indistinguishable from a documentary year. They now carry `date:'spring 1820, as narrated'` (D&C
+  introduction: "spring 1820"; JS—H 1:14: "early in the spring of eighteen hundred and twenty") and keep `when:1820`
+  for the filter. Generic engine change in `layers.js` `itemMeta`: when an item has both, the `date` text is shown and
+  `when` still filters (PACK_FORMAT §20.5 updated). No other pack uses `date`, so nothing else renders differently.
+  Canon check requested: the wording "as narrated" for both accounts.
+* **Tests.** New test “Checkpoint 40”: both First Vision cards show the label and not a bare year, are in the filter
+  for 1820–1830 and out for 1830–1840; a `when`-only item still shows its year; the committed CSV equals a fresh run;
+  every dated pack item has a classified row; no-year rows carry no filter years; the visionary rows with a year are
+  exactly the two First Vision cards and the D&C 137 event.
+* **Verification.** `build.py` (accepted register at PR34 5951442) re-run: the pack's only diff is the two `date`
+  fields, 1,271 SD rows, 0 pending. `pnpm check` **136/136**, check:dist OK. Browser (SwiftShader):
+  [s40-probe.mjs](supplementary-build/s40-probe.mjs) **3/3** — 1440×900 all years: two cards, each with exactly one
+  date label "spring 1820, as narrated"; `#yr=1830_1840`: both filtered out; 390×844 `#yr=1815_1825` via the native
+  section select: both shown with the label; no console errors, failed requests or HTTP ≥ 400
+  ([output](supplementary-build/s40-probe-output.txt); shots `s40-first-vision-1440x900`, `s40-first-vision-390x844`,
+  inspected: label sits on the layer line, no overlap or wrap at phone width).
+* **Still open (Claude keeps ownership):** source-grounded semantic omission/consolidation beyond the 146 summary-level
+  dispositions; final same-head 4K/1280/phone set, full Tab traversal and finished-bake evidence; real-GPU and
+  physical-phone evidence need hardware.

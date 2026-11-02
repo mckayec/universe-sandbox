@@ -1111,8 +1111,8 @@
           { name: 'Moses’ commission', books: [OT], layers: ['ot'], desc: 'At Horeb, Moses is commissioned to bring Israel out of Egypt (Ex. 3:1–12).' }, // E02
           { name: 'Baptisms at Mormon', books: [BOM], layers: ['bom'], desc: 'Alma teaches baptismal commitments and baptizes at the waters of Mormon (Mosiah 18:7–17).' }, // E06
           { name: 'Jesus at Bountiful', books: [BOM], layers: ['bom'], desc: 'The narrative describes Jesus appearing to the multitude at the temple (3 Ne. 11:1–17).' }, // E07
-          { name: 'First Vision account', books: [DC], layers: ['dc'], when: 1820, desc: 'The D&C introduction reports Joseph Smith’s First Vision in spring 1820 while he was living in Manchester.' }, // E08
-          { name: 'First Vision account', books: [PGP], layers: ['pgp'], when: 1820, desc: 'Joseph Smith’s canonized account in the Pearl of Great Price reports a vision following prayer in the woods.' }, // E08
+          { name: 'First Vision account', books: [DC], layers: ['dc'], when: 1820, date: 'spring 1820, as narrated', desc: 'The D&C introduction reports Joseph Smith’s First Vision in spring 1820 while he was living in Manchester.' }, // E08
+          { name: 'First Vision account', books: [PGP], layers: ['pgp'], when: 1820, date: 'spring 1820, as narrated', desc: 'Joseph Smith’s canonized account in the Pearl of Great Price reports a vision following prayer in the woods.' }, // E08
           { name: 'Abraham’s journey account', books: [PGP], layers: ['pgp'], desc: 'Abraham describes a journey from Ur through Haran and Canaan toward Egypt (Abr. 2:4–21). It gives Abraham’s age on leaving Haran as 62; Genesis 12:4 gives 75. Neither value is corrected or harmonized here.' }, // E12, LDS-Q04
           /* BA07 source views (ba07-remediation-spec / ba07-bible-spec): one work layer each, no `when`, no pins. */
           { key: 'PE02', name: 'Creation in Moses', books: [5], layers: ['pgp'], desc: 'Pearl of Great Price — The account presents God creating the heavens and earth.', src: [{ t: 'Moses 2', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng' }] },
