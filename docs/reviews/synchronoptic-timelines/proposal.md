@@ -9,11 +9,11 @@ built yet. Counts are from the pack branches' current heads (unmerged PRs #33, #
 | Pack (branch) | Dated records today | Relations today | Gaps for timelines |
 | --- | --- | --- | --- |
 | Religious Traditions / Abrahamic (`pack/abrahamic-world-religions`, PR #39) | 60 Chronicle events, 57 with `when` (year or `[from, to]`), every one with `whenText` keeping the source's precision; 1 `approx`. Range 597 BCE to 2026. Tree: 109 nodes, 15 with `when`, 19 with `emerge` ranges, 75 `undated`, 81 `ongoing` | Tree `parent` + `parentType` (within / branch / division / context / overlap) + `parentRel` text; 3 `merge` nodes; 16 `notSame` guards; 27 typed `links` (context, contact, history, overlap, within, branch, division) with relation text | Best starting material: already distinguishes undated, approximate, emergence windows and typed non-parent relations. No per-claim source locator on links (sources sit in node `notes`). |
-| LDS Standard Works (`pack/lds-standard-works`, PR #33) | 24 events, 13 with `when` (1829–1978, D&C/Church history); 12 of 34 sites and 3 of 9 routes have `when`; 2 of 1,523 codex cards have `when`; `timeline` eras defined | 127 codex cards with typed See-also links (same entity, within, describes, in another account); identity crosswalk for 12 people; routes as ordered stops | Scripture narrative is mostly undated or relatively ordered (correctly). Genealogies exist as text lists (e.g. Matthew 1, Luke 3, Moses 5–6), not as parent/child records. Institutional history (D&C dates) is the only dense numeric lane. |
+| The Church of Jesus Christ of Latter-day Saints · Standard Works (`pack/lds-standard-works`, PR #33) | 24 events, 13 with `when` (1829–1978, D&C/Church history); 12 of 34 sites and 3 of 9 routes have `when`; 2 of 1,523 codex cards have `when`; `timeline` eras defined | 127 codex cards with typed See-also links (same entity, within, describes, in another account); identity crosswalk for 12 people; routes as ordered stops | Scripture narrative is mostly undated or relatively ordered (correctly). Genealogies exist as text lists (e.g. Matthew 1, Luke 3, Moses 5–6), not as parent/child records. Institutional history (D&C dates) is the only dense numeric lane. |
 | Christian Apocrypha (`pack/christian-apocrypha`, PR #38) | 327 events, **0** with `when`; no `timeline` | None typed | Composition/transmission dates would need new accepted research rows; nothing can be plotted on a year axis yet. Usable only in the undated/relative-order panel at first. |
 | Fiction packs (sun-eater, hyperion, expanse, dune, foundation, cosmere, Red Rising) | Book/chapter gates; some in-world years in event text | Few structured relations | Need per-world calendars; never share the Earth axis. Later phase. |
 
-Conclusion: a timeline can be built honestly today from the Abrahamic tree and Chronicle and from LDS Church-history
+Conclusion: a timeline can be built honestly today from the Abrahamic tree and Chronicle and from Church-history
 events; most scripture narrative belongs in the relative-order panel. Missing dates are reported, not filled.
 
 ## 2. Shared schema (produced by adapters; packs are not rewritten)
@@ -46,7 +46,7 @@ Adapter mapping, first two packs:
   `undated` = undated panel); `parent`+`parentType` → `branch`/`division`/`context` edge (never `parent` kinship);
   `merge` → `merge` edges; `links` → typed edges with their `rel` text; Chronicle events → `event` records with
   `whenText`, `approx`, `ref`.
-- **LDS:** events with `when` → `institutional` records on a Church history lane; dated sites/routes → `travel` edges
+- **Standard Works (The Church of Jesus Christ of Latter-day Saints):** events with `when` → `institutional` records on a Church history lane; dated sites/routes → `travel` edges
   between stops on a region lane; codex `see` links → `same-entity`/`describes` edges; everything else scriptural →
   `narrative` records in the relative-order panel per work (Bible OT/NT, BoM, D&C, PGP), which keeps each work and any
   combination selectable as the brief requires.
@@ -79,14 +79,14 @@ Branch `engine/timelines`, new modules `public/atlas/timeline.js` (pure: adapter
 required example: a branch (Israelite/Judean context → Second Temple era), a duration band (Second Temple era, `approx`), a typed
 non-parent edge (Ananites → Karaites “influence; not an exact schism”), simultaneous lanes (Judaism / Christianity /
 Islam), a merge (ALEPH), a disputed or approximate date and undated records. The two items the Abrahamic data cannot
-supply honestly, **a succession edge and a migration**, come from LDS if its accepted records support them: a dated
+supply honestly, **a succession edge and a migration**, come from the Standard Works atlas if its accepted records support them: a dated
 route for the migration, and an office succession from the D&C records (DRE) only where the record states it. If either
 is not supported, the prototype reports it as missing rather than inventing it. The prototype will be checked record by record against the pack data, run under
 `pnpm check`, and screenshotted at 3840×2160, 1440×900 and 390×844 with keyboard and touch passes.
 
 ## 5. Open choices for Mckay / ChatGPT
 
-1. Prototype order: Abrahamic first, then LDS (proposed), or LDS first.
+1. Prototype order: Abrahamic first, then Standard Works (proposed), or Standard Works first.
 2. Illustrations: symbols drawn by Claude for now; licensed or commissioned art later if wanted.
 3. Gospel-harmony and circular views: after the linear view and list view are accepted.
 4. Christian Apocrypha needs research rows with composition/transmission dates before it can use the year axis;
