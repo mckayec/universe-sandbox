@@ -26,7 +26,7 @@ from collections import Counter
 counts=Counter(r['state'] for r in ledger);assert counts=={'implemented':61,'omitted':204,'scan-accepted':26,'scan-rejected':75}
 assert len({r['research_key'] for r in ledger})==239
 with (HERE/'relation-review.csv').open('w',newline='') as f:
- w=csv.DictWriter(f,fieldnames=list(ledger[0])+['target_name','target_copy','review']);w.writeheader()
+ w=csv.DictWriter(f,fieldnames=list(ledger[0])+['target_name','target_copy','review'],lineterminator='\n');w.writeheader()
  for row in ledger:
   if row['state']!='implemented':continue
   t=cards.get(row['target']) or events.get(row['target']) or {}
