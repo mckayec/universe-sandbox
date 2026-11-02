@@ -48,7 +48,7 @@ BUILT.update({f'SC{i:02d}': 'ot' for i in range(24, 31)})
 BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
 BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 44)})
 BUILT['SC45'] = 'dc'
-BUILT.update({'SC46': 'pgp', 'SC47': 'pgp'})
+BUILT.update({'SC46': 'pgp', 'SC47': 'pgp', 'SC48': 'pgp'})
 # families built over several checkpoints: rows without copy yet stay `pending`
 PARTIAL = set()
 COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca, copy_dd, copy_pgp]

@@ -1247,7 +1247,7 @@ test('Supplementary checkpoints 18–19: S17-C1/C2 and all 140 SC45 section doss
     );
   });
   assert.deepEqual(plain(dc.filter((x: any) => /^DCM-ddo?\d/.test(x.key)).map((x: any) => x.key)), keys);
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 31);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 20);
   // the dossier for section 7 keeps the S17-C1 reading
   assert.match(by('DCM-dd007-john-ministry').desc, /the Lord speaks with John and then addresses Peter/);
   // not shown before the D&C layer
@@ -1370,7 +1370,7 @@ test('Supplementary checkpoint 20: SC46 QG01–QG16 and SC47 Articles of Faith i
   assert.deepEqual(plain(aof.src.map((s: any) => s.t)), ['Articles of Faith 1:1–13']);
   // every card is PGP-only and nonspatial; See-also titles name existing cards
   const names = new Set(P.codex.flatMap((t: any) => t.list).map((x: any) => x.name));
-  assert.equal(pg.length, 18);
+  assert.equal(pg.length, 28);
   for (const x of pg) {
     assert.deepEqual([plain(x.books), plain(x.layers)], [[5], ['pgp']], x.key);
     assert.equal(x.lat, undefined, x.key);
@@ -1391,6 +1391,54 @@ test('Supplementary checkpoint 20: SC46 QG01–QG16 and SC47 Articles of Faith i
   const at = (layers: string[], group: number) =>
     L.codexSplit(pg, new Set(layers), null, true, group, (y: any) => Math.min(...y.books)).shown.length;
   assert.equal(at(['ot', 'nt', 'bom', 'dc', 'pgp'], 4), 0);
-  assert.equal(at(['pgp'], 5), 18);
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 31);
+  assert.equal(at(['pgp'], 5), 28);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 20);
+});
+
+test('Supplementary checkpoint 21: S20-C1/C2, PC06 pointer and SC48 identity constraints', () => {
+  const pg = codex('pgp-more');
+  const by = (k: string) => pg.find((x: any) => x.key === k);
+  const all = P.codex.flatMap((t: any) => t.list);
+  const card = (k: string) => all.find((x: any) => x.key === k);
+  // S20-C1: QG07 shows the three sons and Noah's reported ages
+  const qg07 = by('PGM-qg07-lamech-noah').desc;
+  assert.match(qg07, /Methuselah as Lamech’s father and Lamech as Noah’s father/);
+  assert.match(
+    qg07,
+    /Japheth’s birth when Noah is 450, Shem’s 42 years later \(492 by addition\), and Ham’s when Noah is 500/,
+  );
+  assert.doesNotMatch(qg07, /textual data are kept as given/);
+  // S20-C2: PC05 states the retained facsimile and fragment limits with its essay
+  assert.match(card('PC05').desc, /identifies the surviving fragments as funerary texts/);
+  assert.match(card('PC05').desc, /scholars do not agree on every vignette interpretation/);
+  assert.match(by('PGM-qg12-facsimile-interpretation').desc, /“Book of Abraham: Church account of papyri”/);
+  // PC06 points to the generated article overview, whose title exists
+  assert.match(card('PC06').desc, /see ‘Articles of Faith 1–13, article by article’/);
+  assert.ok(by('PGM-aof-1-13'));
+  // SC48: ten identity cards; SD1244 maps to QG07 rather than duplicating it
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const sc48 = csv
+    .trim()
+    .split('\n')
+    .filter(r => /^SD\d{4},SC48,/.test(r));
+  assert.equal(sc48.length, 11);
+  assert.ok(sc48.every(r => /,imported,codex:pgp-more,/.test(r)));
+  assert.match(
+    sc48.find(r => r.startsWith('SD1244,'))!,
+    /,PGM-qg07-lamech-noah,.*consolidated into SD1218 card/,
+  );
+  assert.equal(pg.filter((x: any) => x.key.startsWith('PGM-id')).length, 10);
+  assert.match(
+    by('PGM-id01-adam-cain-line').desc,
+    /“Master Mahan” \(verses 31 and 49\) is a title used of Cain and of Lamech/,
+  );
+  assert.match(by('PGM-id02-lamech-household').desc, /not read as naming the mother of every sibling/);
+  assert.match(by('PGM-id04-abraham-family').desc, /does not make Haran Lot’s father/);
+  assert.match(by('PGM-id06-egyptus-pharaoh').desc, /not assumed to be one person/);
+  assert.match(by('PGM-id07-facsimile3-court').desc, /not made Pharaoh’s son without another source/);
+  assert.match(by('PGM-id08-abraham1-gods').desc, /this Libnah is not the biblical town/);
+  assert.deepEqual(plain(by('PGM-qg07-lamech-noah').src.map((s: any) => s.t)), ['Moses 8:5–13']);
 });

@@ -47,9 +47,10 @@ COPY = {
                '62–69 promise a later gathering and a meeting with it. The ancient narrative and the future '
                'expectation are kept separate, and no place is drawn.'),
     'SD1218': ('PGM-qg07-lamech-noah', 'Lamech, Noah and Noah’s sons',
-               P + 'Moses 8:5–13: Methuselah’s son Lamech fathers Noah, and Noah’s sons are named with distinct '
-               'reported birth ages. The textual data are kept as given, not harmonized into dates. This Lamech is '
-               'of Seth’s line, not Cain’s. See also: “Noah’s warning in Moses”.'),
+               P + 'Moses 8:5–13 identifies Methuselah as Lamech’s father and Lamech as Noah’s father. Verse 12 '
+               'places Japheth’s birth when Noah is 450, Shem’s 42 years later (492 by addition), and Ham’s when Noah '
+               'is 500. These are the account’s reported ages, not calendar dates harmonized with other genealogies. '
+               'This Lamech is of Seth’s line, not Cain’s. See also: “Noah’s warning in Moses”.'),
     'SD1219': ('PGM-qg08-abraham-egypt', 'Abraham, the priesthood records and Egyptian origins',
                P + 'Abraham 1:7–12 and 15–31 link Abraham’s rescue and the priesthood records he inherited with an '
                'account of Egyptian origins. The three unnamed daughters of Onitah are killed after refusing idol '
@@ -117,6 +118,78 @@ COPY = {
                '12: civic obligations. 13: ethical aspirations. Articles 1–3 are also in “Articles of Faith 1–3”, '
                'article 4 in “Principles and ordinances”, 5–7 in “Articles of Faith 5–7”, 8–9 in “Scripture and '
                'revelation”, and 10–13 in “Articles of Faith 10–13”.'),
+    # SC48 identity constraints (SD1241–SD1251): one `PGM-id` card per row, except SD1244 (Noah's sons' ages),
+    # whose shared payload is QG07's (S20-C1 acceptance: map it to that view, do not duplicate it)
+    'SD1241': ('PGM-id01-adam-cain-line', 'Adam’s sons and Cain’s descendants: who is who',
+               P + 'Moses 5:16–17 makes Cain and Abel sons of Adam and Eve and brothers, and Cain kills Abel (verse '
+               '32). Cain is the father of Enoch, Enoch of Irad, Irad of Mahujael, Mahujael of Methusael and '
+               'Methusael of Lamech (verses 42–43); this Lamech kills Irad (verses 49–50). Cain’s wife is a niece '
+               'who is not named (verse 28), and no name is given to her here. “Master Mahan” (verses 31 and 49) is '
+               'a title used of Cain and of Lamech, not one more person. Cain’s descendants Enoch and Lamech are '
+               'different people from Enoch and Lamech of Seth’s line. See also: “Cain’s line: Enoch to Lamech”, '
+               '“Cain in Nod”.'),
+    'SD1242': ('PGM-id02-lamech-household', 'Lamech’s wives and children in Moses 5',
+               P + 'Moses 5:44–46: Adah and Zillah are the wives of Lamech of Cain’s line. Adah is the mother of '
+               'Jabal, and Jubal is named as Jabal’s brother; Zillah is the mother of Tubal Cain, and Naamah is Tubal '
+               'Cain’s sister. The family is described in compressed prose, which is not read as naming the mother of '
+               'every sibling. The children’s occupations are in “Cain’s line: Enoch to Lamech”.'),
+    'SD1243': ('PGM-id03-seth-line', 'Seth’s line to Noah: who is who',
+               P + 'Moses 6:2–25 and 8:5–12 give the parent chain Seth, Enos, Cainan, Mahalaleel, Jared, Enoch, '
+               'Methuselah, Lamech and Noah; ages are the account’s own reported figures, not dates. Cainan the '
+               'person is distinct from the land of Cainan, and this Enos is not the Book of Mormon writer. Mahijah '
+               'questions Enoch (Moses 6:40); Mahujah is a place (Moses 7:2). The two similar names are not '
+               'identified with each other. See also: “Seth’s line: Adam to Methuselah”, “Lamech, Noah and Noah’s '
+               'sons”, “Land of Cainan”, “Mahujah”.'),
+    'SD1244': 'SD1218',
+    'SD1245': ('PGM-id04-abraham-family', 'Abraham’s family in Abraham 2',
+               P + 'Abraham 2:1–4: Haran and Nahor are Abraham’s brothers; Milcah is Haran’s daughter and Nahor’s '
+               'wife; Terah is Abraham’s father and Sarai his wife; Lot is Abraham’s nephew, and Lot’s wife is not '
+               'named. The passage calls Lot “my brother’s son” without naming that brother, so Abraham’s account '
+               'alone does not make Haran Lot’s father. Haran the brother is not the city of Haran. See also: '
+               '“Abraham’s covenant and household”, “Haran (Genesis)”.'),
+    'SD1246': ('PGM-id05-onitah-daughters', 'The daughters of Onitah',
+               P + 'Abraham 1:7–12: a priest who serves Elkenah and Pharaoh kills three daughters of Onitah on the '
+               'altar after they refuse to worship the idols. The daughters and the priest are not named, and no '
+               'names are invented for them; the daughters are the narrative’s victims, not scenery. Onitah is '
+               'described as of Ham’s royal descent, not as Ham’s own child. See also: “Abraham, the priesthood '
+               'records and Egyptian origins”.'),
+    'SD1247': ('PGM-id06-egyptus-pharaoh', 'Egyptus and Pharaoh: two statements kept apart',
+               P + 'Abraham 1:21–27: verse 23 speaks of a woman as the daughter of Ham and the daughter of Egyptus; '
+               'verse 25 calls Egyptus the daughter of Ham and the mother of the first Pharaoh to govern. Both '
+               'statements are kept, and how they relate is left open rather than forced into one family tree. The '
+               'king in verse 21 and the first governing Pharaoh in verse 25 are given no named dynasty and are not '
+               'assumed to be one person. The text credits that Pharaoh with wisdom and righteous judgment (verse 26) '
+               'and also says he could not hold the priesthood (verse 27); both are kept. The Church’s present '
+               'position is a separate card and does not rewrite the narrative. See also: “The Church today on race '
+               'and the priesthood”.'),
+    'SD1248': ('PGM-id07-facsimile3-court', 'Facsimile 3: the court figures',
+               P + 'Facsimile 3, explanation, figures 1–6, as published: Shulem is one of the king’s principal '
+               'waiters, and Olimlah is a slave belonging to the prince. Figure 4 is called “Prince of Pharaoh”; he '
+               'is not made Pharaoh’s son without another source. Where the explanation says Pharaoh’s name is given '
+               'above his head, no personal name is transcribed. These identifications belong to the published '
+               'explanation and are attributed to it. See also: “Facsimile 3: published explanation”.'),
+    'SD1249': ('PGM-id08-abraham1-gods', 'The gods named in Abraham 1',
+               P + 'Abraham 1:6–14 and Facsimile 1: Elkenah, Libnah, Mahmackrah and Korash are named as gods the '
+               'idolaters worship, and Shagreel is described as the sun (verse 9). They are gods or idols, not human '
+               'people, and this Libnah is not the biblical town. Rahleenos is a term the narrative glosses as '
+               'hieroglyphics (verse 14); the gloss is the text’s, not independently validated philology. See also: '
+               '“Facsimile 1: published explanation”.'),
+    'SD1250': ('PGM-id09-abraham3-terms', 'Shinehah, Olea, Kokob and Kokaubeam',
+               P + 'Abraham 3:1–16: the narrative glosses Shinehah as the sun, Olea as the moon, Kokob as star and '
+               'Kokaubeam as stars, alongside Kolob and its ordering of time. These are the account’s cosmological '
+               'labels, not identified astronomical bodies, and this Shinehah is not merged with any place of that '
+               'name. The Urim and Thummim of verse 1 is a reported instrument; it is not identified with a modern '
+               'object or shown to be the same object as in Joseph Smith—History. See also: “Kolob”, “Olaha '
+               'Shinehah”.'),
+    'SD1251': ('PGM-id10-facsimile-vocabulary', 'Facsimile vocabulary, as published',
+               P + 'Facsimile 2, explanation, figures 1–5, names Oliblish, Enish-go-on-dosh, Jah-oh-eh, '
+               'Kae-e-vanrash, Floeese, Kli-flos-is-es and Hah-ko-kau-beam; Facsimile 1, explanation, figure 12, '
+               'names Raukeeyang, Shaumau and Shaumahyeem. Each term’s role or gloss is the one its caption gives '
+               '(linked). All are attributed interpretation vocabulary, not coordinates, authenticated Egyptian '
+               'translations or measured astronomical bodies. Where a shared sun or moon gloss relates two terms, '
+               'such as Floeese and Olea or Enish-go-on-dosh and Shinehah, that gloss is the only basis for relating '
+               'them; they are not otherwise merged. See also: “Facsimile explanations as attributed interpretation”, '
+               '“Facsimile 2: published explanation”.'),
 }
 for _n in range(2, 14):
     COPY[f'SD{1227 + _n}'] = 'SD1228'
@@ -141,11 +214,22 @@ EXTRA_SRC = {
     'SD1226': [S('Moses 7:8, 22', 'moses/7'), S('Abraham 1:21–27', 'abr/1')],
     'SD1227': [],
     'SD1228': [S('Articles of Faith 1:1–13', 'a-of-f/1')],
+    'SD1241': [S('Moses 5:16–53', 'moses/5')],
+    'SD1242': [S('Moses 5:44–46', 'moses/5')],
+    'SD1243': [S('Moses 6:2–25, 40', 'moses/6'), S('Moses 7:2', 'moses/7'), S('Moses 8:5–12', 'moses/8')],
+    'SD1244': [S('Moses 8:12', 'moses/8')],
+    'SD1245': [S('Abraham 2:1–4', 'abr/2')],
+    'SD1246': [S('Abraham 1:7–12', 'abr/1')],
+    'SD1247': [S('Abraham 1:21–27', 'abr/1')],
+    'SD1248': [S('Facsimile 3, explanation', 'abr/fac-3')],
+    'SD1249': [S('Abraham 1:6–14', 'abr/1'), S('Facsimile 1, explanation', 'abr/fac-1')],
+    'SD1250': [S('Abraham 3:1–16', 'abr/3')],
+    'SD1251': [S('Facsimile 2, explanation', 'abr/fac-2'), S('Facsimile 1, explanation', 'abr/fac-1')],
 }
 for _n in range(2, 14):
     EXTRA_SRC[f'SD{1227 + _n}'] = [S(f'Articles of Faith 1:{_n}', 'a-of-f/1')]
 # the consolidated article rows keep their own locators in the mapping; the card cites the whole chapter once
-MERGE_NO_SRC = {'SD1228'}
+MERGE_NO_SRC = {'SD1228', 'SD1218'}
 
 CHILDREN = {
     # SC47 rule: the appended 1834 Cowdery reminiscence remains separately attributed, not verse 76
