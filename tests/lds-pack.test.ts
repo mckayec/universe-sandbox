@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
 // Regression tests for the LDS build-audit findings BA01, BA05 and BA06 (docs/universes/packs/lds-standard-works).
@@ -1814,4 +1816,31 @@ test('Checkpoint 27: S26 PGM-qg06-zion is a 5/pgp source discussion of Enoch’s
     'utf8',
   );
   assert.match(csv, /PGM-qg06-zion \(5\/pgp\),P17-pgp-enoch-city \(5\/pgp\),linked both ways/);
+});
+
+test('Checkpoint 28: S27-C1 queued event focus is cancelled by any intervening codex or navigation change', () => {
+  // the isolated-function probe (reviewer method from S27) must pass all 13 cases, including reopen-then-close
+  const out = execFileSync(
+    process.execPath,
+    [
+      fileURLToPath(
+        new URL(
+          '../docs/universes/packs/lds-standard-works/supplementary-build/s28-callback-probe.cjs',
+          import.meta.url,
+        ),
+      ),
+    ],
+    { cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' },
+  );
+  const r = JSON.parse(out);
+  assert.equal(r.passed, 13);
+  assert.equal(r.cases.find((c: any) => c.name.startsWith('reopen then close')).observedFocus, '#cxBtn');
+  const en = readFileSync(new URL('../public/atlas/engine.js', import.meta.url), 'utf8');
+  for (const f of ['openCodex', 'closeCodex', 'applyFilters', 'selectWorld', 'selectSite', 'openEvent'])
+    assert.match(en, new RegExp('function ' + f + '\\([^)]*\\)\\{[^\\n]*cancelEvFocus\\(\\)'), f);
+  // labels leaving the view during a programmatic fly or globe turn disappear at once instead of fading in place
+  assert.match(en, /labelJump\(!!orbG\.fly\);orbG\.cam\.updateMatrixWorld\(\);layoutGalaxyLabels/);
+  assert.match(en, /labelJump\(!!\(PL&&PL\.turn\)\|\|!!orbW\.fly\);orbW\.cam\.updateMatrixWorld\(\);layoutSiteLabels/);
+  const css = readFileSync(new URL('../public/atlas/engine.css', import.meta.url), 'utf8');
+  assert.match(css, /#labels\.jump \.lbl,#labels\.jump \.plbl,#labels\.jump \.rleg\{transition:none\}/);
 });

@@ -1337,10 +1337,14 @@ function cxGo(key){const t=CXK.get(String(key));if(!t||cxReach(t.x)!=="ok")retur
   el.querySelector("h3").focus({preventScroll:true});}
 function cxGoEvent(id){const e=EV_BY[id];if(!e||evReach(e)!=="ok")return;
   $("#codex").hidden=true;openEvent(id,true);
-  /* focus the event only if nothing changed in the meantime: the codex is still closed, this event is still the open
-     one and still reachable under the current filters (no stale focus steal after a quick reopen or filter change) */
-  setTimeout(()=>{if(!$("#codex").hidden||S.ev!==id||evReach(e)!=="ok")return;
+  /* the queued focus belongs to this activation only: any codex open/close, event, world, site, book or filter change
+     in the meantime bumps the generation (cancelEvFocus) and the callback does nothing. The state checks stay as a
+     second guard. */
+  const gen=++cxFocusGen;
+  setTimeout(()=>{if(gen!==cxFocusGen||!$("#codex").hidden||S.ev!==id||evReach(e)!=="ok")return;
     const it=dos.querySelector('[data-ev="'+id+'"]');if(it)it.focus({preventScroll:true});},60);}
+let cxFocusGen=0;
+function cancelEvFocus(){cxFocusGen++;}
 $("#cxBody").addEventListener("click",e=>{const b=e.target.closest("[data-see],[data-see-ev]");if(!b)return;
   if(b.dataset.seeEv!=null)cxGoEvent(b.dataset.seeEv);else cxGo(b.dataset.see);});
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
@@ -1355,8 +1359,8 @@ function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
 $("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
 $("#cxPick").addEventListener("change",e=>{cxTab=e.target.value;renderCodex();$("#cxBody").scrollTop=0;});
-function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
-function closeCodex(){if($("#codex").hidden)return;$("#codex").hidden=true;$("#cxBtn").focus();}
+function openCodex(){cancelEvFocus();renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
+function closeCodex(){if($("#codex").hidden)return;cancelEvFocus();$("#codex").hidden=true;$("#cxBtn").focus();}
 $("#cxBtn").addEventListener("click",openCodex);
 $("#cxClose").addEventListener("click",closeCodex);
 $("#codex").addEventListener("click",e=>{if(e.target.id==="codex")closeCodex();});
@@ -1471,7 +1475,7 @@ if($("#realms"))$("#realms").addEventListener("click",e=>{const b=e.target.close
 /* ===================== LAYERS & TIMELINE (PACK_FORMAT 20) ===================== */
 const filtersEl=$("#filters");let fDrag=false,fPend=false;
 function renderFilters(){if(!filtersEl||!LY||fDrag)return;filtersEl.innerHTML=LY.renderBar(LAY,TL,S.layers,S.range);}
-function applyFilters(){
+function applyFilters(){cancelEvFocus();
   if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];if(S.site){const st=(w.sites||[]).find(x=>x.id===S.site);if(st&&!siteSeen(st))S.site=null;}buildSiteLabels(w);}
   if(S.ev&&EV_BY[S.ev]&&!filterOk(EV_BY[S.ev]))S.ev=null;
@@ -1524,7 +1528,7 @@ function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossi
   if(!$("#codex").hidden)renderCodex();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
-function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
+function selectWorld(id,fly){if(!WORLD_BY[id])return;cancelEvFocus();const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
 function flyGalaxy(){if(S.view==="world"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
@@ -1556,7 +1560,7 @@ let afterAscend=null;
 function ascend(after){if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
 function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];clearRoutes();S.route=null;$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
-function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
+function selectSite(id){cancelEvFocus();S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o)turnToSite(o,Math.min(orbW.dist,2.4));}}
 /* turn the world so the place sits in daylight, between the sun and the viewer */
 function turnToSite(o,dist){S.interacted=true;
@@ -1564,7 +1568,7 @@ function turnToSite(o,dist){S.interacted=true;
     const vy=Math.atan2(V.x,V.z);const sy=Math.atan2(o.dir.x,o.dir.z);const r0=PL.root.rotation.y;PL.turn={t0:performance.now(),from:r0,to:r0+((((vy-sy)-r0+Math.PI)%TAU+TAU)%TAU-Math.PI)};
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
     orbW.flyTo(new THREE.Vector3(),dist,orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}
-function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
+function openEvent(id,travel){cancelEvFocus();S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
   else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
@@ -1574,7 +1578,7 @@ function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();retu
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
-$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
+$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;cancelEvFocus();S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
@@ -1642,6 +1646,12 @@ function resize(){
 addEventListener("resize",resize);resize();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{hdrH();viewOffset();});
 let last=performance.now(),T=0;
+/* During a programmatic fly or globe turn the view can cover a whole hemisphere between two frames (a slow GPU may
+   draw only one or two frames of it). Labels leaving the view would then fade out at their old screen position, over
+   the wrong region, so the fade is switched off while the camera or globe is being moved for the user. Hand drags,
+   zoom and auto-rotation keep the fade. */
+let labelJumping=false;
+function labelJump(on){if(on!==labelJumping){labelJumping=on;labelsEl.classList.toggle("jump",on);}}
 function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
   bakeStep();
   linkMats.forEach(m=>m.uniforms.uTime.value=T);
@@ -1653,9 +1663,9 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     const hw=S.hover&&WORLD_BY[S.hover];hoverRing.material.opacity=hw&&hw.id!==S.sel?.7:0;if(hw)hoverRing.position.copy(hw.pos);
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
     /* labels are projected before render; refresh the camera matrices first so they never lag the view by a frame */
-    orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
+    labelJump(!!orbG.fly);orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
+  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);labelJump(!!(PL&&PL.turn)||!!orbW.fly);orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
 /* ===================== URL STATE (deep links, reload, Back) =====================
