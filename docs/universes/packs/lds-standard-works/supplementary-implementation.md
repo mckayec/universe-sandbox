@@ -1350,3 +1350,37 @@ link, nothing clipped).
 **Still open (Claude keeps ownership):** BMC quotation/vision edges, timeline/source-vision relations, the
 omission/consolidation rollup; final same-head 4K/1280/phone evidence, full Tab/Shift-Tab traversal, finished-bake
 capture distinct from motion completion; real-GPU and physical-phone native-select/touch (hardware not available here).
+
+## Checkpoint 31 (Brunson source enrichment; BMC edge scoping)
+
+Applies the builder answer in [supplementary-review-s30](https://github.com/mckayec/universe-sandbox/blob/4d257b72cb46ae734ec20b5d78675d51a822d8f6/docs/universes/packs/lds-standard-works/supplementary-review-s30.md)
+(PR34 4d257b7; HANDOFF_PLAN “Church atlas office-link audit and Brunson answer”).
+
+* **DCM-dcp-seymour-brunson:** description now exactly “Doctrine and Covenants — Named in 75:33; 124:132.”; sources
+  `D&C 75:33` (kept) and `D&C 124:132` (official chapter URL `dc-testament/dc/124`). Applied in the generator input
+  `copy_dcp.py` (`COPY` and `EXTRA_SRC` for SD0969, with a provenance comment naming the review), not in generated output;
+  the mapping row's source column now reads `D&C 75:33; D&C 124:132`. Gates (4/dc) and both links (Aaron Johnson,
+  high council card) unchanged. No other card changes.
+* Regeneration with the PR34 dispositions input: baseline before the edit byte-identical; after it, the diff is exactly
+  the Brunson pack line and its mapping row; a second run is idempotent; 1,271 SD rows, 0 pending.
+* Checks: `pnpm format` clean; `pnpm check` **127/127** (new test “Checkpoint 31”: exact description, both source
+  labels and the 124 URL, 4/dc, both links kept); `check:dist` 114 files OK; `pnpm test:pages` 13 pages × 2 viewports
+  passed. This commit is **not** `[skip ci]`, so the PR workflow runs at the head that carries this receipt.
+
+**BMC quotation/vision edges: scoping finding (next unit).** The pack has no BMC-001–239 runtime cards: like the OT
+`OH-*`/`LH*` ledgers, the Book of Mormon chapter references resolve as official chapter source links on the records
+they support (coverage-bom.md “Chapter coverage contract”: “They do not add 239 site/event objects”). The contract row
+“BMC quotation/vision records → quotes/sees/mentions shared biblical entity; forbidden: traveled-to edge” therefore
+needs a representation that does not invent 239 cards. Builder plan, unless ChatGPT prefers otherwise: on each shared
+biblical card the BMC chapter's own ledger finding names, add a gated (3/bom) child source view or typed `see` entry
+labelled by mode (“seen in Nephi's vision: 1 Nephi 11”, “quoted from Isaiah: 2 Nephi 17”, “mentioned: …”), with the
+chapter link as its source and never a journey or pin. A name scan
+([bmc_candidates.py](supplementary-build/bmc_candidates.py), builder tool, not shipped) finds 101 name hits in the
+ledger findings, most of them Book of Mormon namesakes the contract keeps separate (Jacob, Ammon, Gideon, Aaron,
+Sidon, Jordan, Gilgal, Jerusalem the BoM city); so every edge will be chosen by reading the finding and exclusion
+columns, not by name match, and listed row by row in typed-links.csv. Map-site targets (Nazareth, Jerusalem) need the
+event/site form of the link rather than a codex card.
+
+**Still open (Claude keeps ownership):** the BMC edges as above; timeline/source-vision relations; the
+omission/consolidation rollup; final same-head 4K/1280/phone evidence, full Tab/Shift-Tab traversal, finished-bake
+capture; real-GPU and physical-phone native-select/touch (hardware not available here).

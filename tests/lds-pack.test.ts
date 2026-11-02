@@ -1908,3 +1908,16 @@ test('Checkpoint 30: DRE office appointments and successions link office and per
     for (const v of c.see || []) if (typeof v !== 'string') assert.doesNotMatch(v.r, /parent|father|son of|kin/i);
   }
 });
+
+test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answer, review s30)', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const c = all.find((x: any) => x.key === 'DCM-dcp-seymour-brunson');
+  assert.equal(c.desc, 'Doctrine and Covenants — Named in 75:33; 124:132.');
+  assert.deepEqual(plain(c.src.map((s: any) => s.t)), ['D&C 75:33', 'D&C 124:132']);
+  assert.match(c.src[1].u, /\/dc-testament\/dc\/124\?lang=eng$/);
+  assert.deepEqual(plain(c.books), [4]);
+  assert.deepEqual(plain(c.layers), ['dc']);
+  const keys = (c.see || []).map((v: any) => (typeof v === 'string' ? v : v.k));
+  assert.ok(keys.includes('DCM-dcp-aaron-johnson'));
+  assert.ok(keys.includes('DCM-dre124g-high-council'));
+});

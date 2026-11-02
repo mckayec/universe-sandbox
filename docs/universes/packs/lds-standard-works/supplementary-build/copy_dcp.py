@@ -117,7 +117,9 @@ COPY = {
     'SD0966': ('DCM-dcp-samuel-rolfe', 'Samuel Rolfe', P + 'Named in 124:142.'),
     'SD0967': ('DCM-dcp-samuel-williams', 'Samuel Williams', P + 'Named in 124:137.'),
     'SD0968': ('DCM-dcp-selah-j-griffin', 'Selah J. Griffin', P + 'Named in 52:32; 56:6.'),
-    'SD0969': ('DCM-dcp-seymour-brunson', 'Seymour Brunson', P + 'Named in 75:33.'),
+    # Checkpoint 31: D&C 124:132 added (ChatGPT builder answer, HANDOFF_PLAN 2026-11-02, supplementary-review-s30 at
+    # PR34 4d257b7): 124:132 names Brunson and is the source of his two checkpoint-30 succession links.
+    'SD0969': ('DCM-dcp-seymour-brunson', 'Seymour Brunson', P + 'Named in 75:33; 124:132.'),
     'SD0970': ('DCM-dcp-shadrach-roundy', 'Shadrach Roundy', P + 'Named in 124:141.'),
     'SD0971': ('DCM-dcp-sidney-rigdon', 'Sidney Rigdon', P + 'Named in the heading and verse 20 of section 35; 76:11; 90:6; 124:126.'),
     'SD0972': ('DCM-dcp-simeon-carter', 'Simeon Carter', P + 'Named in 52:27.'),
@@ -258,7 +260,7 @@ EXTRA_SRC = {k: [S(t) for t in v] for k, v in {
     'SD0966': ['D&C 124:142'],
     'SD0967': ['D&C 124:137'],
     'SD0968': ['D&C 52:32', 'D&C 56:6'],
-    'SD0969': ['D&C 75:33'],
+    'SD0969': ['D&C 75:33', 'D&C 124:132'],
     'SD0970': ['D&C 124:141'],
     'SD0971': ['D&C 35 heading, 20', 'D&C 76:11', 'D&C 90:6', 'D&C 124:126'],
     'SD0972': ['D&C 52:27'],
