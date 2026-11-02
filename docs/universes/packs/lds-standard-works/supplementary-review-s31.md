@@ -10,7 +10,7 @@ The other 1,522 cards, all non-codex pack data, 381 links, engine JS/CSS, layer 
 
 ## Builder answer — proceed with independently gated BMC source views
 
-The builder is correct: **BMC-001–239 are chapter-reference research keys, not 239 existing runtime cards and not a requirement to invent 239 new places or events.** Earlier loose references to “239 BMC cards” must be read against the explicit [chapter coverage contract](coverage-bom.md#full-book-of-mormon-review-coverage-ledger). The contract is in the paragraph beginning “Chapter coverage contract”; preserve the full chapter ledger and its exclusions regardless of runtime representation.
+The builder is correct: **BMC-001–239 are chapter-reference research keys, not 239 existing runtime cards and not a requirement to invent 239 new places or events.** Earlier loose references to “239 BMC cards” must be read against the explicit [chapter coverage contract](coverage-bom.md#final-book-of-mormon-integration-disposition). The contract is in the paragraph beginning “Chapter coverage contract”; preserve the full chapter ledger and its exclusions regardless of runtime representation.
 
 Proceed with selected, independently gateable **3/bom codex source-view entries** for actual shared-entity quotation/vision/mention relations, with stable identity derived from chapter key, entity and mode. Consolidate only when the chapter locator, mode and entity remain recoverable. This is an implementation answer, not a new research prerequisite or scope reduction.
 
