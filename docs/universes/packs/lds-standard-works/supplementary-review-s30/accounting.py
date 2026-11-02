@@ -10,10 +10,10 @@ xw=rows(read(HEAD,P+'typed-links.csv'));assert len(xw)==121
 pack=json.loads(subprocess.check_output(['node',str(HERE/'probe.cjs'),'--pack']));cards={c['key']:c for t in pack['codex'] for c in t['list'] if c.get('key')};events={'ev:'+e['id']:e for e in pack['events']}
 import re
 with (HERE/'delta-dispositions.csv').open('w',newline='') as f:
- w=csv.writer(f,lineterminator='\n');w.writerow(['contract_row','kind','relation','state','review_disposition'])
+ w=csv.writer(f,lineterminator='\n');w.writerow(['contract_row','kind','relation','source_cards','target_cards','state','review_disposition'])
  prior=rows(read(BASE,P+'typed-links.csv'))
  for x in xw:
-  if x not in prior:w.writerow([x['contract_row'],x['kind'],x['relation_label'],x['state'],'Relation conforms to cited section and accepted DRE text; Brunson source enrichment specified in report'])
+  if x not in prior:w.writerow([x['contract_row'],x['kind'],x['relation_label'],x['cards'],x['target'],x['state'],'Relation conforms to cited section and accepted DRE text; Brunson source enrichment specified in report'])
 with tempfile.TemporaryDirectory(prefix='church-s30-generator-') as d:
  root=pathlib.Path(d)
  names=subprocess.check_output(['git','ls-tree','-r','--name-only',HEAD,P+'supplementary-build/']).decode().splitlines()
