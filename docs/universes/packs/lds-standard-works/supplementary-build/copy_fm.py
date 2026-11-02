@@ -71,6 +71,14 @@ PRIMARY = {
                'publication dates do not date Abraham’s narrated journey.'),
 }
 
+# S22-C1 (supplementary-review-s22): two retained assertions rest on a further official page, so the primary card
+# keeps its existing source and gains this one (label, path under BASE). build.py appends each once (idempotent) and
+# lists it in the SC50 row's mapping locators.
+ADDED_SOURCES = {
+    'FM08': [('D&C 7, historical heading', 'dc-testament/dc/7')],
+    'FM09': [('D&C introduction, 1981 edition', 'dc-testament/introduction')],
+}
+
 # SC51 paragraphs (frontmatter-inventory.md lines 19, 21 and 23) and the primary card that carries each constraint.
 PROSE_INTO_PRIMARY = [
     ('SC51', 'frontmatter-inventory.md:19', 'SC51 witness neutral-name gates; Christian and Jacob Whitmer keys',

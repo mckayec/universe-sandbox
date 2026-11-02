@@ -13,7 +13,7 @@ N = 'Book of Mormon narrative — '
 COPY = {
     # SC01 Place identities needing distinct records or explicit notes
     'SD0001': ('BXP01', 'River Laman', P + 'A river Lehi names Laman empties into the Red Sea; the valley of Lemuel lies near its mouth. A later departure crosses it. It is distinct from the river in Lehi’s dream.'),
-    'SD0002': ('BXP02', 'Irreantum', P + 'The name the travelers give the sea seen from coastal Bountiful in Arabia. The naming establishes no shoreline and no ocean crossing track.'),
+    'SD0002': ('BXP02', 'Irreantum', P + 'The name the travelers give the sea seen from coastal Bountiful in Arabia, which the text interprets as “many waters”. The naming establishes no shoreline and no ocean crossing track, and the verse alone names no modern ocean (SD1266 consolidated here).'),
     'SD0003': ('BXP03', 'Shemlon', P + 'A land seen from the tower king Noah builds near the temple and watched by Zeniff’s spies; later named among the lands taught by Amulon’s associates.'),
     'SD0004': ('BXP04', 'Amulon (land)', P + 'The settlement of Noah’s fugitive priests, sharing their leader’s name. Lamanite pursuers come upon it before finding Helam.'),
     'SD0005': ('BXP05', 'Hill Manti', P + 'The hill associated with Nehor’s execution. This account does not identify it with the later land of Manti.'),

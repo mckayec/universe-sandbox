@@ -1248,7 +1248,7 @@ test('Supplementary checkpoints 18–19: S17-C1/C2 and all 140 SC45 section doss
   });
   assert.deepEqual(plain(dc.filter((x: any) => /^DCM-ddo?\d/.test(x.key)).map((x: any) => x.key)), keys);
   // SC50 imported at checkpoint 22: SC52–SC54 remain
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 11);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 0);
   // the dossier for section 7 keeps the S17-C1 reading
   assert.match(by('DCM-dd007-john-ministry').desc, /the Lord speaks with John and then addresses Peter/);
   // not shown before the D&C layer
@@ -1394,7 +1394,7 @@ test('Supplementary checkpoint 20: SC46 QG01–QG16 and SC47 Articles of Faith i
     L.codexSplit(pg, new Set(layers), null, true, group, (y: any) => Math.min(...y.books)).shown.length;
   assert.equal(at(['ot', 'nt', 'bom', 'dc', 'pgp'], 4), 0);
   assert.equal(at(['pgp'], 5), 34);
-  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 11);
+  assert.equal(lines.filter(r => /,pending,/.test(r)).length, 0);
 });
 
 test('Supplementary checkpoint 21: S20-C1/C2, PC06 pointer and SC48 identity constraints', () => {
@@ -1536,4 +1536,78 @@ test('Supplementary checkpoint 22: S21-C1/C2, SC49 Joseph Smith—History views,
     assert.match(card(k).desc, /Only that signatory role is asserted/);
   }
   assert.equal(csv.split('\n').filter(r => /^,SC51,frontmatter-inventory\.md:/.test(r)).length, 3);
+});
+
+test('Supplementary checkpoint 23: S22-C1 FM08/FM09 added sources and owner display naming', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const card = (k: string) => all.find((c: any) => c.key === k);
+  const srcs = (k: string) => plain(card(k).src).map((s: any) => [s.t, s.u]);
+  const base = 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/';
+  assert.deepEqual(srcs('FM08'), [
+    ['D&C introduction', `${base}introduction?lang=eng`],
+    ['D&C 7, historical heading', `${base}dc/7?lang=eng`],
+  ]);
+  assert.deepEqual(srcs('FM09'), [
+    [
+      'Pearl of Great Price introduction',
+      'https://www.churchofjesuschrist.org/study/scriptures/pgp/introduction?lang=eng',
+    ],
+    ['D&C introduction, 1981 edition', `${base}introduction?lang=eng`],
+  ]);
+  assert.equal(all.filter((c: any) => c.key === 'FM08' || c.key === 'FM09').length, 2);
+  assert.deepEqual([plain(card('FM08').books), plain(card('FM09').books)], [[4], [5]]);
+  const name = 'The Church of Jesus Christ of Latter-day Saints · Standard Works';
+  assert.equal(P.meta.title, name);
+  assert.equal(P.meta.series, name);
+  assert.match(P.meta.canvasLabel, /standard works of The Church of Jesus Christ of Latter-day Saints/);
+  assert.match(readFileSync(new URL('../public/atlas/packs/registry.js', import.meta.url), 'utf8'), new RegExp(name));
+});
+
+test('Supplementary checkpoint 23: SC52 attributed models and SC53/SC54 consolidated geography source views', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const card = (k: string) => all.find((c: any) => c.key === k);
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/supplementary-implementation.csv', import.meta.url),
+    'utf8',
+  );
+  const rows = csv.split('\n');
+  assert.equal(rows.filter(r => /,pending,/.test(r)).length, 0);
+  // SC52: three attributed models in bom-more at 3/bom, never pinned; Heartland variants kept apart
+  const more = codex('bom-more');
+  for (const k of ['bom-model-mesoamerican-sorenson', 'bom-model-heartland', 'bom-model-hemispheric-historical']) {
+    const c = more.find((x: any) => x.key === k);
+    assert.ok(c, k);
+    assert.deepEqual([plain(c.books), plain(c.layers)], [[3], ['bom']], k);
+    assert.match(c.desc, /^Proposed geography model, attributed — /, k);
+    assert.ok(
+      plain(c.src).every((s: any) => !/churchofjesuschrist/.test(s.u)),
+      k,
+    );
+    assert.ok(!sites.has(k), k);
+  }
+  assert.match(card('bom-model-mesoamerican-sorenson').desc, /The interpretation is disputed/);
+  assert.match(card('bom-model-heartland').desc, /The two variants are kept separate/);
+  assert.match(card('bom-model-hemispheric-historical').desc, /not evidence that either map is established history/);
+  // SC53/SC54: no new identities; existing cards carry the source views
+  for (const [sd, key] of [
+    ['SD1264', 'BE02'],
+    ['SD1265', 'BE03'],
+    ['SD1266', 'BXP02'],
+    ['SD1267', 'BJ01'],
+    ['SD1268', 'BJ11'],
+    ['SD1269', 'BJ11'],
+    ['SD1270', 'BJ11'],
+    ['SD1271', 'BJ11'],
+  ])
+    assert.ok(
+      rows.some(r => r.startsWith(`${sd},`) && r.includes(`,${key},`) && r.includes('consolidated into')),
+      sd,
+    );
+  assert.equal(all.filter((c: any) => /Nahom|Moriancumer|Shelem/.test(c.name)).length, 1);
+  assert.match(card('BE02').desc, /not as the place of death/);
+  assert.match(card('BE03').desc, /different place from the later Bountiful in the Americas/);
+  assert.match(card('BXP02').desc, /names no modern ocean/);
+  assert.match(card('BJ01').desc, /no American landing port and no ocean track/);
+  assert.match(card('BJ11').desc, /that camp is not the sea crossing/);
+  assert.match(card('BJ11').desc, /no modern mountain is identified/);
 });

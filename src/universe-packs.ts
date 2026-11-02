@@ -225,7 +225,7 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
   ),
   atlasPack(
     'lds-standard-works',
-    'Latter-day Saint Standard Works',
+    'The Church of Jesus Christ of Latter-day Saints · Standard Works',
     'Scripture atlas',
     'An Earth atlas of places in the Bible, Book of Mormon, Doctrine and Covenants and Pearl of Great Price, one layer per work.',
     '#e4cf9a',

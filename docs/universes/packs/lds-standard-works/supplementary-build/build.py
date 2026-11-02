@@ -28,6 +28,7 @@ import copy_dca
 import copy_dd
 import copy_pgp
 import copy_fm
+import copy_geo
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -50,9 +51,11 @@ BUILT.update({f'SC{i:02d}': 'ot' for i in range(31, 35)})
 BUILT.update({f'SC{i:02d}': 'dc' for i in range(35, 44)})
 BUILT['SC45'] = 'dc'
 BUILT.update({'SC46': 'pgp', 'SC47': 'pgp', 'SC48': 'pgp'})
+BUILT.update({'SC52': 'bom', 'SC53': 'bom', 'SC54': 'bom'})
 # families built over several checkpoints: rows without copy yet stay `pending`
 PARTIAL = set()
-COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca, copy_dd, copy_pgp]
+COPY_MODULES = [copy_bom, copy_nt, copy_ot, copy_otl, copy_mp, copy_wp, copy_dc, copy_dcp, copy_dre, copy_dca, copy_dd, copy_pgp,
+                copy_geo]
 # OT chapter ledger: rows `| OH-G11 / [Genesis 11](url) |` in coverage-ot-history.md. SC14–SC17 rows cite these ids
 # instead of links (their source_resolution says they resolve through the accepted chapter ledgers).
 LEDGER = {}
@@ -185,6 +188,10 @@ def main(path):
         m = re.search(r"\{ key: '%s', name: '((?:[^'\\]|\\.)*)', books: \[(\d)\]" % key, text0)
         assert m, key
         primary_names[key] = m.group(1).replace("\\'", "'")
+    for key in copy_geo.DESC:
+        m = re.search(r"\{ key: '%s', name: '((?:[^'\\]|\\.)*)', books: \[3\], layers: \['bom'\]" % key, text0)
+        assert m, key
+        primary_names[key] = m.group(1).replace("\\'", "'")
     child_keys = {c[0]: (psd, c) for psd, cs in children.items() for c in cs}
     for sd, v in copy.items():
         if isinstance(v, str) and v in child_keys:
@@ -197,11 +204,20 @@ def main(path):
             merged.setdefault(v, []).extend(sources(by_sd[sd]))
     for r in rows:
         sd, cat = r['disposition_id'], r['category']
+        if sd in copy_geo.ROWS:
+            # SC53/SC54: the row's source view is an existing primary geography card; only its desc is rewritten
+            key = copy_geo.ROWS[sd]
+            mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
+                            f'codex:{copy_geo.TAB}', key, primary_names[key], '; '.join(t for t, _ in sources(r)),
+                            r['work_gate'], f'consolidated into existing primary card {key}; ' + r['consolidation_rule'],
+                            r['row_sha256']])
+            continue
         if sd in copy_fm.PRIMARY:
             # SC50: the row's source view is an existing primary FM card; only that card's desc is rewritten
             key = copy_fm.PRIMARY[sd][0]
+            locs = [t for t, _ in sources(r)] + [t for t, _ in copy_fm.ADDED_SOURCES.get(key, [])]
             mapping.append([sd, cat, r['source_location'], r['research_declaration'], 'imported',
-                            'codex:reference-views', key, primary_names[key], '; '.join(t for t, _ in sources(r)),
+                            'codex:reference-views', key, primary_names[key], '; '.join(locs),
                             r['work_gate'], f'consolidated into existing primary card {key}; ' + r['consolidation_rule'],
                             r['row_sha256']])
             continue
@@ -283,8 +299,22 @@ def main(path):
                          r"'(?:[^'\\]|\\.)*'" % key)
         text, n = pat.subn(lambda m: m.group(1) + js(desc), text)
         assert n == 1, key
+        for t, path in copy_fm.ADDED_SOURCES.get(key, []):
+            # S22-C1: append the added source to the card's src list once; existing sources are kept
+            add = '{ t: %s, u: %s }' % (js(t), js(BASE + path + '?lang=eng'))
+            spat = re.compile(r"(\{ key: '%s', name: [^\n]*?, src: \[)([^\n]*?)(\] \},)" % key)
+            m = spat.search(text)
+            assert m, key
+            if add not in m.group(2):
+                text = text[:m.start(2)] + m.group(2) + ', ' + add + text[m.end(2):]
+    for key, desc in copy_geo.DESC.items():
+        # rewrite only the desc of the existing primary geography card (idempotent)
+        pat = re.compile(r"(\{ key: '%s', name: '(?:[^'\\]|\\.)*', books: \[3\], layers: \['bom'\], desc: )"
+                         r"'(?:[^'\\]|\\.)*'" % key)
+        text, n = pat.subn(lambda m: m.group(1) + js(desc), text)
+        assert n == 1, key
     names = set(re.findall(r"name: '((?:[^'\\]|\\.)*)'", text))
-    fm_lines = [js(d) for _k, d in copy_fm.PRIMARY.values()]
+    fm_lines = [js(d) for _k, d in copy_fm.PRIMARY.values()] + [js(d) for d in copy_geo.DESC.values()]
     for fam_lines in lines.values():
         names |= {n for l in fam_lines for n in re.findall(r"name: '((?:[^'\\]|\\.)*)'", l)}
     for line in lines['pgp'] + lines['bom'] + fm_lines:
