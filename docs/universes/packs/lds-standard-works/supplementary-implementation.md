@@ -28,8 +28,9 @@ count of new entities.
 | SC46 PGP records and relationships (QG01–QG16) | 16 (+1 Cowdery 1834 child) | **imported, checkpoint 20** | codex tab `pgp-more` |
 | SC47 Articles of Faith 1–13 | 13 (1 card; 12 rows consolidated) | **imported, checkpoint 20** | codex tab `pgp-more` |
 | SC48 PGP identity constraints | 11 (10 cards; SD1244 consolidated into QG07) | **imported, checkpoint 21** | codex tab `pgp-more` |
-| SC49 JS—History person/material prose | 0 SD table rows; mandatory prose | integration pending; QG14/Cowdery cover only part | source-specific target crosswalk required |
-| SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
+| SC49 JS—History person/material prose | 0 SD table rows; mandatory prose (6 child views of QG14) | **imported, checkpoint 22**; crosswalk below | codex tab `pgp-more` |
+| SC50 front matter (FM01–FM09) | 9 (consolidated into the existing FM01–FM09 cards) | **imported, checkpoint 22** | `reference-views` (existing cards) |
+| SC51 front-matter integration constraints | 0 SD table rows; mandatory prose (2 person cards; 3 paragraph rows) | **imported, checkpoint 22**; crosswalk below | `reference-views`, `bom-more` |
 | SC52–SC54 geography models | 11 | pending | |
 | SC55–SC62 dense payloads | 0 table rows | display deferral A04/Q04/RR06 unchanged | |
 
@@ -932,3 +933,67 @@ ready in 23–94 s, codex opened and `pgp-more` chosen through the DOM, list scr
 capture): shots `s21-codex-pgp-more-*` at **3840×2160**, 1440×900, 1280×800 and 390×844; 28 cards present at each
 size, QG07’s ages and the id cards in the DOM, no page horizontal overflow, no console errors. Keyboard, native-select,
 real-GPU and final same-head rendered evidence remain open.
+
+## Checkpoint 22: S21-C1, S21-C2, id10 glosses, SC49, SC50, SC51
+
+Code commit `d42c27b9276a04469e8b1ad3adc4fe024845e5e8`. Applies supplementary-review-s21 (1558524, with 4cbf130).
+
+* **S21-C1** (SD1243, `PGM-id03-seth-line`): the nine parent→child ages as reader prose in the card itself (Adam 130
+  at Seth, 6:10; Seth 105 at Enos, 6:13; Enos 90 at Cainan, 6:17; Cainan 70 at Mahalaleel, 6:19; Mahalaleel 65 at
+  Jared, 6:20; Jared 162 at Enoch, 6:21; Enoch 65 at Methuselah, 6:25; Methuselah 187 at Lamech, 8:5; Lamech 182 at
+  Noah, 8:8–9), stated as the account's reported ages with no calendar years derived. Homonym safeguards, QG07
+  pointer, sources and `5/pgp` gate unchanged.
+* **S21-C2** (SD1245): “Terah is Abraham’s father; Sarai is Abraham’s wife;” replaces the ambiguous clause.
+* **id10 glosses** (SD1251, optional): the review's attributed summary added before the existing limits sentence,
+  with “this is not a complete glossary”; caption locators kept.
+* **SC49** (coverage-pgp.md:103–112, zero SD rows): six `5/pgp` child views of QG14 (SD1225) in `pgp-more`, after the
+  Cowdery 1834 view, mapped as `child of SD1225`. Crosswalk, one target per bullet/paragraph:
+
+  | SC49 source text | Target | Retained constraints |
+  |---|---|---|
+  | Section preamble (narrator's relationships; dcp-key reuse; neutral visibility from 3) | every `PGM-jsh-*` card; FM04/FM05 (3/bom) | “narrator’s reported relationships, not corroborated civil records”; witnesses named at 3 through FM04/FM05 and the two SC51 person cards; D&C person cards keep their 4/dc gate (builder reading 1) |
+  | JS—H 1:3–4, 7 family | `PGM-jsh-family` | Lucy Mack Smith vs. daughter Lucy; Solomon Mack; Samuel Harrison spelling; Presbyterian membership only for Lucy, Hyrum, Samuel Harrison, Sophronia |
+  | JS—H 1:56–58 | `PGM-jsh-harmony-marriage` | Josiah Stoal (source spelling, no Stowell alias), failed silver-mine search kept, Isaac Hale/Emma, January 18, 1827 at Squire Tarbill's house in South Bainbridge, no first name |
+  | JS—H 1:61–65 | `PGM-jsh-harris-anthon` | financial help and the New York trip as separate acts; Anthon/Mitchell only in Harris's account as relayed; certification not presented as verified; Joseph not routed |
+  | JS—H 1:30–54, 59–60 | `PGM-jsh-moroni-material` | distinct objects/episodes, no extra pins; 1827 receipt ≠ 1823 visit; 1838 narration ≠ return date |
+  | JS—H 1:66–75 | `PGM-jsh-baptism` | scribe; reciprocal baptism; Peter, James and John directing, not present; Aaron/Levi/Melchizedek as terms; future first/second elder offices, no church organized in May 1829 |
+  | Quoted/compared referents; appended Cowdery 1834 note | `PGM-jsh-text-referents`; `PGM-qg14-cowdery-1834` | no 1820s encounter events; 1834 reminiscence separate, not verse 76 |
+
+* **SC50** (SD1252–SD1260): each row consolidated into its existing primary card FM01–FM09 in `reference-views`, as
+  the rule requires (no nine new entities). The generator (new `copy_fm.py`; `build.py` rewrites only the `desc` of
+  those nine cards, idempotently) keeps each card's first sentence and adds the row's retained context: FM01 Palmyra
+  marker identity, year only, month-specific history kept separate, not the 1847 arrival; FM02 abridge/seal/address
+  as distinct relations, translator credit, no site or date; FM03 editorial teaching, not a DNA finding or
+  single-origin claim, Cumorah mention not a location for Mormon 6; FM04 signs/reports seeing, no venue/day/pin;
+  FM05 no metallurgical test, no date/venue, signatory role only; FM06 same episodes, not additional visits,
+  distinct actions, no roads, no survey coordinate, May 2, 1838 as reporting vantage; FM07 editorial provenance, about
+  421 as editorial attribution, italic headings as study helps; FM08 1835/1831 testimonies distinct, Lectures on Faith
+  as history, section 7 attribution kept; FM09 Richards as compiler and mission president, 1976/1979/1981 milestones
+  distinct, Nauvoo periodical dates do not date Abraham's journey. Gates unchanged (FM01–07 3/bom, FM08 4/dc,
+  FM09 5/pgp); the 3/bom cards name no later work.
+* **SC51** (frontmatter-inventory.md:17–24, zero SD rows): new neutral cards `fm-person-christian-whitmer` and
+  `fm-person-jacob-whitmer` (3/bom, signatory role only, no kinship from surname) in `bom-more`; paragraph 19 →
+  FM04/FM05 + the two cards, paragraph 21 → FM01 (Palmyra pin comment already separates RE04 on the D&C event),
+  paragraph 23 → FM06/FM03. Three mapping rows `,SC51,frontmatter-inventory.md:NN,` record this.
+
+Builder readings for ChatGPT:
+
+1. The binding note says neutral person entities begin at 3 even with `dcp-` keys. The codex has no separate person
+   entity: the D&C person cards (Oliver Cowdery, David Whitmer, Martin Harris, Hyrum Smith, …) carry D&C-specific
+   copy, so they keep `4/dc`, and the neutral names are visible at 3 through FM04/FM05 and the two new cards. Moving
+   the D&C cards to 3 would expose D&C detail early; please confirm this reading.
+2. The SC49 children cite the D&C person cards and PP07/PE09 in See-also; their own gate is `5/pgp`.
+3. FM01–FM07 avoid naming Joseph Smith—History or the Doctrine and Covenants (“later works”, “Joseph Smith’s longer
+   history”) so the 3/bom view does not leak later-layer titles.
+
+Counts: **1,260 SD rows imported, 11 pending** (SC52 3, SC53 4, SC54 4); 81 child views; 1,354 imported mapping rows.
+`pgp-more` 34 cards, `bom-more` 120, `reference-views` 20.
+
+Checks at the code commit: `pnpm format` clean, `pnpm check` 117/117 (new test “Supplementary checkpoint 22”; the
+child-view, pending and pgp-more counts in earlier tests updated to 81 / 11 / 34), `pnpm check:dist` OK, `pnpm
+test:pages` 13 pages × 2, coverage validator `errors: []`, reference-disposition validator `missing []`. Regenerating
+twice from the accepted register (9cc874c) is byte-identical. Playwright (SwiftShader, built `dist/` under
+`/universe-sandbox/`, ready in 30–100 s, codex opened and tab chosen through `#cxPick`, list scrolled to the first new
+card, CDP capture): shots `s22-codex-{pgp-more,reference-views,bom-more}-*` at **3840×2160**, 1440×900, 1280×800
+and 390×844; every target card found, no page horizontal overflow, no console errors. Inspected 1440 pgp-more,
+390 and 4K reference-views. Keyboard, native-select, real-GPU and final same-head rendered evidence remain open.
