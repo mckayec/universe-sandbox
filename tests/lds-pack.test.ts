@@ -2364,11 +2364,48 @@ test('Checkpoint 40: timeline/source-vision crosswalk covers every dated item; n
     if (r[col('date_class')] === 'no-year') assert.equal(r[col('filter_years')], '', r[0]);
     assert.ok(r[col('disposition')], r[0]);
   }
-  // visionary records with a filter year are exactly the two First Vision cards and the D&C 137 event
-  const visYear = body.filter(r => r[col('visionary')] === 'yes' && r[col('filter_years')]).map(r => r[0]);
+  // vision records with a filter year are exactly the two First Vision cards and the D&C 137 event
+  const isVision = (r: string[]) => r[col('vision_class')] !== '' && r[col('vision_class')] !== 'not-vision';
+  const visYear = body.filter(r => isVision(r) && r[col('filter_years')]).map(r => r[0]);
   assert.deepEqual(visYear.sort(), [
     'codex:First Vision account|dc',
     'codex:First Vision account|pgp',
     'event:vision-celestial-kingdom',
   ]);
+});
+
+test('S40-C1: keyword candidates are semantically classed; vision-family children are carried by inheritance', () => {
+  const dir = new URL('../docs/universes/packs/lds-standard-works/', import.meta.url);
+  const [head, ...body] = parseCsv(readFileSync(new URL('timeline-source-vision.csv', dir), 'utf8'));
+  const col = (n: string) => head.indexOf(n);
+  const by = new Map(body.map(r => [r[0], r]));
+  // every keyword candidate has a semantic class; the screen alone never decides it
+  for (const r of body) if (r[col('vision_keyword')] === 'yes') assert.ok(r[col('vision_class')], r[0]);
+  assert.equal(body.filter(r => r[col('vision_keyword')] === 'yes').length, 96);
+  // every child of the two vision families is present, inherited, undated and keeps its own locator and gate
+  const cards = P.codex.flatMap((t: any) => t.list);
+  for (const fam of ['NTC-vision-sequence', 'OTM-j22-temple-tour']) {
+    const kids = cards.filter((e: any) => new RegExp('^' + fam + '-\\d+$').test(e.key || ''));
+    assert.ok(kids.length >= 6, fam);
+    for (const e of kids) {
+      const r = by.get('codex:' + e.key);
+      assert.ok(r, e.key);
+      assert.equal(r[col('vision_class')], 'vision-content', e.key);
+      assert.match(r[col('vision_basis')], new RegExp('inherited:' + fam + '$'), e.key);
+      assert.equal(r[col('filter_years')], '', e.key);
+      assert.equal(r[col('source')], e.src[0].t, e.key);
+      assert.equal(r[col('gate')], e.books[0] + '/' + e.layers.join('/'), e.key);
+      assert.equal(e.lat, undefined, e.key);
+    }
+  }
+  // the 13 Revelation children the keyword screen missed (S40-C1) are carried
+  for (let i = 2; i <= 14; i++) {
+    const r = by.get('codex:NTC-vision-sequence-' + String(i).padStart(2, '0'))!;
+    assert.equal(r[col('vision_keyword')], '');
+    assert.equal(r[col('vision_basis')], 'inherited:NTC-vision-sequence');
+    assert.equal(r[col('gate')], '2/nt');
+  }
+  // keyword hits that are only a contrast or label are not counted as visions
+  for (const k of ['BXP01', 'BMV-202-three-disciples-john', 'AE09', 'AE10'])
+    assert.equal(by.get('codex:' + k)![col('vision_class')], 'not-vision', k);
 });

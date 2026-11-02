@@ -3,8 +3,12 @@
    - every item that carries a numeric `when` (feeds the year filter) or an attributed `date` (text only),
      with the kind of date it is, so documentary, narrated, synthesis and site-period years stay distinct;
    - every Chronicle event without a year, with the reason its date stays out of the filter;
-   - every event and codex card whose own wording is visionary, with how it is represented.
-   Fails if a dated item is not classified below, so a new year cannot enter the filter unexamined.
+   - every event and codex card whose own wording matches the vision keyword screen (candidate discovery only), each
+     with a semantic class from SEM below, plus every child of a vision family (a card whose key is a vision parent's
+     key plus a number) carried by inheritance even when its own wording lacks the keyword (S40-C1).
+   Fails if a dated item is not classified, if a keyword candidate has no semantic class, or if a vision family is
+   unreconciled, so a new year or vision card cannot enter unexamined. The keyword screen is not exhaustive: a
+   semantic class is a reading of the card's own built wording, not new evidence about the source.
    Usage: node supplementary-build/timeline_vision.cjs  (from docs/universes/packs/lds-standard-works) */
 const fs = require('fs');
 const path = require('path');
@@ -99,6 +103,107 @@ const CLASS = {
   'codex:RE13': ['synthesis', 'NPS historical synthesis; text only, not in the filter'],
 };
 
+/* Semantic classes for keyword candidates (S40-C1). The keyword screen only finds candidates; each is read here:
+   vision-content: the record is about a vision or a part of one. vision-reception: an event pinned at the narrated
+   place where a vision is received. vision-setting: a place named as a vision's setting or inside it.
+   vision-participant: a person or figure the card names in a vision among other roles. vision-record: the
+   recording or acceptance of a vision account. mixed: a vision is one part of a card about other things.
+   theme: a topical/method card about visions. not-vision: the keyword appears only in a contrast, a category
+   label or a See-also title; the card makes no vision claim of its own. */
+const SEM = {
+  'event:patmos-vision': 'vision-reception',
+  'event:lehi-jerusalem': 'vision-reception',
+  'event:vision-celestial-kingdom': 'vision-reception',
+  'codex:Woods near the Smith home|pgp': 'vision-setting',
+  'codex:PP09': 'vision-setting',
+  'codex:First Vision account|dc': 'vision-content',
+  'codex:First Vision account|pgp': 'vision-content',
+  'codex:AE09': ['not-vision', 'keyword only in the “narrative/vision” category label; Gethsemane narrative'],
+  'codex:AE10': ['not-vision', 'keyword only in the “narrative/vision” category label; crucifixion narrative'],
+  'codex:AE14': 'vision-content',
+  'codex:PE01': 'vision-content',
+  'codex:PC09': 'vision-setting',
+  'codex:BXP01': ['not-vision', 'contrast only: distinct from the river in Lehi’s dream'],
+  'codex:BMV-001-jerusalem-destruction-vision': 'vision-content',
+  'codex:BMV-011-nazareth-jerusalem-vision': 'vision-content',
+  'codex:BMV-014-john-revelation-vision': 'vision-content',
+  'codex:BMV-023-jerusalem-destruction-known': 'vision-content',
+  'codex:BMV-038-isaiah-throne-vision': 'vision-content',
+  'codex:BMV-202-three-disciples-john': ['not-vision', 'contrast only: “not John’s vision on Patmos”'],
+  'codex:BMV-013-record-jews-gentiles-vision': 'vision-content',
+  'codex:NTE-stephen': 'mixed',
+  'codex:NTE-cornelius': 'mixed',
+  'codex:NTC-love-discernment': ['not-vision', 'cross-reference to “vision texts”; the card is about 1 John 4'],
+  'codex:NTC-seven-churches': ['not-vision', 'recipients of the letters; names the Patmos event only as scene-setting'],
+  'codex:NTC-vision-sequence': 'vision-content',
+  'codex:NTC-vision-sequence-01': 'vision-content',
+  'codex:NTC-vision-sequence-15': 'vision-content',
+  'codex:OHC-PROPHECY': 'theme',
+  'codex:OTM-jerusalem': 'theme',
+  'codex:OTM-assyria-region': 'mixed',
+  'codex:OTM-chebar': 'vision-setting',
+  'codex:OTM-ezekiel-valley-vision': 'vision-content',
+  'codex:OTM-ezekiel-temple-vision': 'vision-content',
+  'codex:OTM-ezekiel-restored-land': 'vision-content',
+  'codex:OTM-temple-river-vision': 'vision-content',
+  'codex:OTM-en-gedi': 'vision-setting',
+  'codex:OTM-en-eglaim': 'vision-setting',
+  'codex:OTM-hamath': 'mixed',
+  'codex:OTM-j18-ezekiel-transport': 'vision-content',
+  'codex:OTM-j19-departing-glory': 'vision-content',
+  'codex:OTM-j22-temple-tour': 'vision-content',
+  'codex:OTM-j22-temple-tour-40': 'vision-content',
+  'codex:OTM-j22-temple-tour-43': 'vision-content',
+  'codex:OTM-j23-healing-water': 'vision-content',
+  'codex:OTM-r17-prince-vision': 'vision-content',
+  'codex:OTM-c12-future-sanctuary': 'vision-content',
+  'codex:OTW-p06-shushan-vision': 'vision-setting',
+  'codex:OTW-p07-ulai': 'vision-setting',
+  'codex:OTW-r02-zechariah-joshua': 'vision-participant',
+  'codex:OTW-c04-vision-settings': 'theme',
+  'codex:OTW-a12-daniel-10-11-notes': 'vision-content',
+  'codex:DCM-dp01-hiram': 'vision-setting',
+  'codex:DCM-de02-kingdoms-of-glory': 'vision-content',
+  'codex:DCM-de06-kirtland-dedication-vision': 'mixed',
+  'codex:DCM-dr01-smith-rigdon': 'vision-participant',
+  'codex:DCM-dr02-smith-cowdery': 'vision-participant',
+  'codex:DCM-dr06-joseph-alvin': 'vision-participant',
+  'codex:DCM-dx11-prophecy-vision-parable': 'theme',
+  'codex:DCM-dx20-section-138': 'vision-content',
+  'codex:DCM-dcp-alvin-smith': 'vision-participant',
+  'codex:DCM-dcp-joseph-f-smith': 'vision-participant',
+  'codex:DCM-dca-adam-eve': 'vision-participant',
+  'codex:DCM-dca-abel-to-noah': 'vision-participant',
+  'codex:DCM-dca-isaiah-ezekiel-daniel-malachi': 'vision-participant',
+  'codex:DCM-dca-lucifer': 'vision-participant',
+  'codex:DCM-de06b-kirtland-vision': 'vision-content',
+  'codex:DCM-dd061-mcilwaines-bend': 'mixed',
+  'codex:DCM-dd076-the-vision': 'vision-content',
+  'codex:DCM-dd110-temple-vision': 'vision-content',
+  'codex:DCM-dd137-alvin-vision': 'vision-content',
+  'codex:DCM-dd138-redemption-of-dead': 'vision-content',
+  'codex:PGM-qg01-moses-vision-purpose': 'vision-content',
+  'codex:PGM-qg10-heavenly-order': 'vision-content',
+  'codex:PGM-qg14-js-history-moves': 'mixed',
+  'codex:AC03': 'vision-setting',
+  'codex:RE15': 'vision-content',
+  'codex:RE16': 'vision-record',
+};
+// Section cards whose only keyword hit is the See-also title “Prophecy, vision and parable” (or “… reported vision”).
+for (const n of ['001-preface', '002-elijah', '007-john-ministry', '027-sacrament-gathering', '029-millennium',
+  '045-mount-of-olives', '065-stone-of-daniel', '077-revelation-questions', '086-wheat-tares', '087-prophecy-war',
+  '088-olive-leaf', '097-missouri-school', '098-renouncing-war', '101-jackson-expulsion', '107-priesthood-organization',
+  '109-dedication-prayer', '113-isaiah-questions', '116-spring-hill', '133-appendix'])
+  SEM['codex:DCM-dd' + n] = ['not-vision', 'keyword only in a See-also title; this card makes no vision claim (not a finding about the section)'];
+
+/* Vision families: every child (parent key + '-' + number) inherits the parent's vision membership. Families whose
+   parent is not a vision are listed so the reconciliation is explicit. */
+const VISION_FAMILIES = {
+  'NTC-vision-sequence': 'Revelation vision sequence',
+  'OTM-j22-temple-tour': 'Ezekiel 40–48 temple vision',
+};
+const NONVISION_FAMILIES = ['NTE-jerusalem-community', 'NTE-arrest-hearings'];
+
 const VISION = /\bvisions?\b|\bvisionary\b|\bdreams?\b|\bdreamed\b/i;
 const q = s => {
   const t = s == null ? '' : String(s);
@@ -111,79 +216,101 @@ const gate = it => {
 };
 const yr = w => (w == null ? '' : Array.isArray(w) ? w.join('–') : String(w));
 
+const src = it => ((it.src || [])[0] || {}).t || '';
+const semOf = id => {
+  const v = SEM[id];
+  return v == null ? null : Array.isArray(v) ? v : [v, ''];
+};
+
 function main() {
   const p = loadPack();
   if (!p) throw new Error('pack not found');
   const rows = [];
   const missing = [];
+  const unsem = [];
+  const row = (id, kind, name, it, when, dateText, dateClass, kw, basis, vclass, disp) =>
+    rows.push([id, kind, name, gate(it), src(it), when, dateText, dateClass, kw, basis, vclass, disp]);
+  const vis = (id, kw) => {
+    if (!kw) return ['', ''];
+    const s = semOf(id);
+    if (!s) unsem.push(id);
+    return s || ['', ''];
+  };
   const take = (id, kind, name, it) => {
     if (it.when == null && !it.date) return false;
     const c = CLASS[id];
     if (!c) missing.push(id);
-    rows.push([
-      id,
-      kind,
-      name,
-      gate(it),
-      yr(it.when),
-      it.date || '',
-      c ? c[0] : '',
-      VISION.test((it.title || it.name || '') + ' ' + (it.text || it.desc || '')) ? 'yes' : '',
-      c ? c[1] : '',
-    ]);
+    const kw = VISION.test((it.title || it.name || '') + ' ' + (it.text || it.desc || ''));
+    const [vc, vnote] = vis(id, kw);
+    row(id, kind, name, it, yr(it.when), it.date || '', c ? c[0] : '', kw ? 'yes' : '', kw ? 'keyword' : '', vc,
+      (c ? c[1] : '') + (vnote ? '; ' + vnote : ''));
     return true;
   };
   for (const w of p.worlds) for (const s of w.sites || []) take('site:' + s.id, 'site', s.name, s);
   for (const w of p.worlds) for (const r of w.routes || []) take('route:' + r.id, 'route', r.name || r.title, r);
   for (const e of p.events) {
     if (take('event:' + e.id, 'event', e.title, e)) continue;
-    const vis = VISION.test(e.title + ' ' + e.text);
-    rows.push([
-      'event:' + e.id,
-      'event',
-      e.title,
-      gate(e),
-      '',
-      '',
-      'no-year',
-      vis ? 'yes' : '',
-      vis
+    const kw = VISION.test(e.title + ' ' + e.text);
+    const [vc] = vis('event:' + e.id, kw);
+    row('event:' + e.id, 'event', e.title, e, '', '', 'no-year', kw ? 'yes' : '', kw ? 'keyword' : '', vc,
+      kw
         ? 'ancient/scriptural setting of reception at site ' +
           e.site +
           '; the text’s own dating stays in words, not in the filter; the vision’s content is not pinned'
-        : 'ancient/scriptural narrative; any dating stays in the event text (e.g. regnal years), not in the filter',
-    ]);
+        : 'ancient/scriptural narrative; any dating stays in the event text (e.g. regnal years), not in the filter');
   }
-  for (const sec of p.codex)
-    for (const e of sec.list) {
-      const lay = (e.layers || []).join('/');
-      const id = 'codex:' + (e.key || e.name + '|' + lay);
-      if (take(id, 'codex', e.name, e)) continue;
-      if (!VISION.test((e.name || '') + ' ' + (e.desc || ''))) continue;
-      rows.push([
-        id,
-        'codex:' + sec.id,
-        e.name,
-        gate(e),
-        '',
-        '',
-        'no-year',
-        'yes',
-        'visionary wording on a nonspatial card: no coordinates, no year; links follow the See-also gates',
-      ]);
+  const cards = p.codex.flatMap(sec => sec.list.map(e => [sec, e]));
+  const keys = new Set(cards.map(([, e]) => e.key).filter(Boolean));
+  const familyOf = k => {
+    const m = /^(.*)-(\d+[a-z]?)$/.exec(k || '');
+    return m && keys.has(m[1]) ? m[1] : null;
+  };
+  const famSeen = new Set();
+  for (const [sec, e] of cards) {
+    const lay = (e.layers || []).join('/');
+    const id = 'codex:' + (e.key || e.name + '|' + lay);
+    const fam = familyOf(e.key);
+    if (fam) famSeen.add(fam);
+    if (fam && !VISION_FAMILIES[fam] && !NONVISION_FAMILIES.includes(fam))
+      throw new Error('unreconciled codex family: ' + fam);
+    const inherited = fam && VISION_FAMILIES[fam];
+    if (take(id, 'codex', e.name, e)) continue;
+    const kw = VISION.test((e.name || '') + ' ' + (e.desc || ''));
+    if (!kw && !inherited) continue;
+    let [vc, vnote] = vis(id, kw);
+    if (inherited) {
+      if (kw && vc !== 'vision-content') throw new Error('family child not classed as vision content: ' + id);
+      vc = 'vision-content';
     }
+    const basis = (kw ? 'keyword' : '') + (inherited ? (kw ? '+' : '') + 'inherited:' + fam : '');
+    const disp = inherited
+      ? 'Part of the ' + inherited + '; scene content remains nonspatial and undated in the year filter; retain this' +
+        ' child’s cited passage (' + src(e) + ') and ' + gate(e) + ' gate'
+      : vc === 'not-vision'
+        ? vnote + '; no coordinates, no year'
+        : 'nonspatial card' + (vnote ? ' (' + vnote + ')' : '') + ': no coordinates, no year; links follow the See-also gates';
+    row(id, 'codex:' + sec.id, e.name, e, '', '', 'no-year', kw ? 'yes' : '', basis, vc, disp);
+  }
+  for (const f of Object.keys(VISION_FAMILIES).concat(NONVISION_FAMILIES))
+    if (!famSeen.has(f)) throw new Error('listed family not in the pack: ' + f);
   if (missing.length) throw new Error('unclassified dated items: ' + missing.join(', '));
+  if (unsem.length) throw new Error('keyword candidates without a semantic class: ' + unsem.join(', '));
   const unused = Object.keys(CLASS).filter(k => !rows.some(r => r[0] === k));
   if (unused.length) throw new Error('classified items not in the pack: ' + unused.join(', '));
+  const unusedSem = Object.keys(SEM).filter(k => !rows.some(r => r[0] === k && r[8] === 'yes'));
+  if (unusedSem.length) throw new Error('semantic classes for records that are not keyword candidates: ' + unusedSem.join(', '));
   const head = [
     'record',
     'kind',
     'name',
     'gate',
+    'source',
     'filter_years',
     'date_text',
     'date_class',
-    'visionary',
+    'vision_keyword',
+    'vision_basis',
+    'vision_class',
     'disposition',
   ];
   fs.writeFileSync(
@@ -194,16 +321,19 @@ function main() {
       .join('\n') + '\n',
   );
   const count = f => rows.filter(f).length;
+  const classes = [...new Set(rows.map(r => r[10]).filter(Boolean))].sort();
   console.log(
     JSON.stringify({
       rows: rows.length,
-      filterYears: count(r => r[4] !== ''),
-      textDates: count(r => r[4] === '' && r[5] !== ''),
+      filterYears: count(r => r[5] !== ''),
+      textDates: count(r => r[5] === '' && r[6] !== ''),
       byClass: ['documentary', 'narrated', 'synthesis', 'site-period', 'no-year']
-        .map(c => c + ':' + count(r => r[6] === c))
+        .map(c => c + ':' + count(r => r[7] === c))
         .join(' '),
-      visionary: count(r => r[7] === 'yes'),
-      visionaryWithYear: count(r => r[7] === 'yes' && r[4] !== ''),
+      keywordCandidates: count(r => r[8] === 'yes'),
+      inheritedOnly: count(r => r[8] !== 'yes' && r[9].startsWith('inherited:')),
+      visionClasses: classes.map(c => c + ':' + count(r => r[10] === c)).join(' '),
+      visionClassWithYear: count(r => r[10] && r[10] !== 'not-vision' && r[5] !== ''),
     }),
   );
 }

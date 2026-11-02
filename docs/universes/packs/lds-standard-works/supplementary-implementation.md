@@ -1798,7 +1798,9 @@ Parent 180b337 (the S39-reviewed head); S39 review: PR34 5951442.
   (a place's filter years are those of the events or routes there, not a dated occurrence; e.g. Salt Lake Temple 1978
   is the OD 2 event year, not construction). The generator fails if a dated item is unclassified or a classified item
   disappears, so no year can enter the filter unexamined.
-* **Visions.** No visionary codex card has coordinates or a year. Three visionary events are pinned at the narrated
+* **Visions.** No selected visionary codex card has coordinates. The two First Vision account cards retain the
+  narrated filter year 1820; the other selected visionary codex cards have no numeric filter year (wording corrected
+  in checkpoint 41, S40-A1). Three visionary events are pinned at the narrated
   place of reception (Patmos, Lehi at Jerusalem, the D&C 137 vision recorded in the Kirtland Temple), not at the
   vision's content; only the D&C 137 event and the two First Vision cards carry a filter year. Daniel's Shushan and
   Hiddekel settings, the BMC "sees"/"quotes" source views and DD110/DE06b/DD137/RE08 keep the dispositions already in
@@ -1823,3 +1825,51 @@ Parent 180b337 (the S39-reviewed head); S39 review: PR34 5951442.
 * **Still open (Claude keeps ownership):** source-grounded semantic omission/consolidation beyond the 146 summary-level
   dispositions; final same-head 4K/1280/phone set, full Tab traversal and finished-bake evidence; real-GPU and
   physical-phone evidence need hardware.
+
+## Checkpoint 41 — S40-C1 vision-family accounting; S40-A1 receipt wording
+
+Parent 66c8709 (the S40-reviewed head); S40 review: PR34 2ed94d4. No runtime change: the pack, engine and every
+card are byte-identical to 66c8709; only the crosswalk generator, its CSV, a test and this receipt change.
+
+* **S40-C1 — keyword screen vs semantic class.** [timeline_vision.cjs](supplementary-build/timeline_vision.cjs) keeps
+  the regex as candidate discovery only (column `vision_keyword`, still 96 hits) and gives every candidate an explicit
+  semantic class read from the card's own built wording (`vision_class`): vision-content 36 by keyword, vision-reception
+  3 (the three events pinned at the narrated place of reception), vision-setting 10, vision-participant 10,
+  vision-record 1 (RE16), mixed 7, theme 4, not-vision 25. The generator fails if a candidate has no class or a class
+  names a record that is not a candidate. not-vision covers keyword hits that are only a contrast (BXP01 “distinct from
+  the river in Lehi’s dream”; BMV-202 “not John’s vision on Patmos”), a category label (AE09/AE10 “New Testament
+  narrative/vision —” on the Gethsemane and crucifixion cards), a cross-reference (NTC-love-discernment,
+  NTC-seven-churches) or a See-also title (19 D&C section cards whose only hit is “Prophecy, vision and parable”; this
+  is a statement about those cards' wording, not a finding that the sections lack visionary content).
+* **Vision families carried by inheritance.** Every codex family (a key equal to another key plus `-NN`) is now
+  reconciled explicitly: two vision families — `NTC-vision-sequence` (Revelation, 15 children) and
+  `OTM-j22-temple-tour` (Ezekiel 40–48, 6 children) — and two non-vision families (`NTE-jerusalem-community`,
+  `NTE-arrest-hearings`). The generator fails on any unlisted family. All 21 vision-family children are rows with
+  `vision_basis` `inherited:<parent>` (or `keyword+inherited:` for the four whose own wording also matched), class
+  vision-content, their own first source locator (new `source` column), their own gate, no filter year, no
+  coordinates. That adds the 13 Revelation children S40 enumerated (`NTC-vision-sequence-02`…`-14`, all 2/nt) and four
+  Ezekiel children (`OTM-j22-temple-tour-41/42/44/46`, all 1/ot); disposition text: “Part of the Revelation vision
+  sequence [or Ezekiel 40–48 temple vision]; scene content remains nonspatial and undated in the year filter; retain
+  this child's cited passage (…) and … gate.” No year, pin, link or travel was added.
+* **Totals.** 154 rows (was 137): 30 filter-year items, 5 text-only dates, date classes unchanged (documentary 8,
+  narrated 4, synthesis 11, site-period 12; no-year 119). 113 vision-related rows = 96 keyword candidates + 17
+  inherited-only children; 88 are a vision class other than not-vision. Vision-class rows with a filter year remain
+  exactly the two First Vision cards and the D&C 137 event.
+* **Not claimed.** The semantic classes are readings of built card wording, not new source evidence and not an
+  exhaustive search for visionary content that uses neither the keywords nor a family key (for example angelic
+  visitations described only as appearances). That wider screen belongs to the still-open semantic
+  omission/consolidation work.
+* **S40-A1.** The checkpoint 40 “Visions” bullet now reads exactly as S40 supplied: “No selected visionary codex card
+  has coordinates. The two First Vision account cards retain the narrated filter year 1820; the other selected
+  visionary codex cards have no numeric filter year.” The following reception-vs-content distinction is preserved.
+* **Observation (no change made):** AE09/AE10 carry the source category label “New Testament narrative/vision” on
+  plainly narrative cards; flagged for the canon side, left as built.
+* **Tests.** Checkpoint 40 test now keys on `vision_class` instead of the keyword column; new test “S40-C1”: every
+  keyword candidate has a class, 96 candidates, every child of both vision families is present with inherited basis,
+  vision-content class, no year, its own locator and gate and no coordinates, the 13 Revelation children are
+  inherited-only 2/nt rows, and BXP01/BMV-202/AE09/AE10 are not-vision.
+* **Verification.** `pnpm format`; `pnpm check` **137/137**, check:dist 114 files OK. No browser run: nothing rendered
+  changed.
+* **Still open (Claude keeps ownership):** source-grounded semantic omission/consolidation beyond the 146 summary-level
+  dispositions (including the wider vision screen above); final same-head 4K/1280/phone set, full Tab traversal and
+  finished-bake evidence; real-GPU and physical-phone evidence need hardware.
