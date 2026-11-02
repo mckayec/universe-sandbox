@@ -1652,7 +1652,14 @@ let last=performance.now(),T=0;
    zoom and auto-rotation keep the fade. */
 let labelJumping=false;
 function labelJump(on){if(on!==labelJumping){labelJumping=on;labelsEl.classList.toggle("jump",on);}}
+/* S28-V1: the update that finishes a fly or turn clears its flag before labels are laid out, so the flag is sampled
+   on frame entry too. Motion seen at entry or after the update keeps the fade off through that frame's layout and
+   paint; ordinary fades come back only after two quiescent frames, once labels sit at their final positions. */
+let labelJumpHold=0;
+function labelJumpFrame(atEntry,afterUpdate){if(atEntry||afterUpdate)labelJumpHold=2;else if(labelJumpHold>0)labelJumpHold--;labelJump(labelJumpHold>0);}
+function viewMoving(){return S.view==="galaxy"?!!orbG.fly:!!(PL&&PL.turn)||!!orbW.fly;}
 function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
+  const movingAtEntry=viewMoving();
   bakeStep();
   linkMats.forEach(m=>m.uniforms.uTime.value=T);
   const W=innerWidth,H=innerHeight;
@@ -1663,9 +1670,9 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     const hw=S.hover&&WORLD_BY[S.hover];hoverRing.material.opacity=hw&&hw.id!==S.sel?.7:0;if(hw)hoverRing.position.copy(hw.pos);
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
     /* labels are projected before render; refresh the camera matrices first so they never lag the view by a frame */
-    labelJump(!!orbG.fly);orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
+    labelJumpFrame(movingAtEntry,!!orbG.fly);orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);labelJump(!!(PL&&PL.turn)||!!orbW.fly);orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
+  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);labelJumpFrame(movingAtEntry,viewMoving());orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
 /* ===================== URL STATE (deep links, reload, Back) =====================

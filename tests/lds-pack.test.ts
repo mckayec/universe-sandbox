@@ -1839,8 +1839,37 @@ test('Checkpoint 28: S27-C1 queued event focus is cancelled by any intervening c
   for (const f of ['openCodex', 'closeCodex', 'applyFilters', 'selectWorld', 'selectSite', 'openEvent'])
     assert.match(en, new RegExp('function ' + f + '\\([^)]*\\)\\{[^\\n]*cancelEvFocus\\(\\)'), f);
   // labels leaving the view during a programmatic fly or globe turn disappear at once instead of fading in place
-  assert.match(en, /labelJump\(!!orbG\.fly\);orbG\.cam\.updateMatrixWorld\(\);layoutGalaxyLabels/);
-  assert.match(en, /labelJump\(!!\(PL&&PL\.turn\)\|\|!!orbW\.fly\);orbW\.cam\.updateMatrixWorld\(\);layoutSiteLabels/);
+  // S28-V1: motion is sampled on frame entry, so the frame whose update completes the jump still lays out without fades
+  assert.match(en, /const movingAtEntry=viewMoving\(\);/);
+  assert.match(en, /labelJumpFrame\(movingAtEntry,!!orbG\.fly\);orbG\.cam\.updateMatrixWorld\(\);layoutGalaxyLabels/);
+  assert.match(en, /labelJumpFrame\(movingAtEntry,viewMoving\(\)\);orbW\.cam\.updateMatrixWorld\(\);layoutSiteLabels/);
   const css = readFileSync(new URL('../public/atlas/engine.css', import.meta.url), 'utf8');
   assert.match(css, /#labels\.jump \.lbl,#labels\.jump \.plbl,#labels\.jump \.rleg\{transition:none\}/);
+});
+
+test('Checkpoint 29: S28-V1 the completing frame of a jump keeps fades off; fades return after two quiescent frames', () => {
+  const en = readFileSync(new URL('../public/atlas/engine.js', import.meta.url), 'utf8');
+  const src = en.match(/let labelJumpHold=0;\nfunction labelJumpFrame\([^\n]*\n/)![0];
+  const run = new Function('labelJump', src + 'return (a,b)=>{labelJumpFrame(a,b);};');
+  const seen: boolean[] = [];
+  const step = run((on: boolean) => seen.push(on));
+  // quiescent, moving, moving, completing frame (moving at entry only), then quiescent frames
+  const frames: [boolean, boolean][] = [
+    [false, false],
+    [false, true],
+    [true, true],
+    [true, false],
+    [false, false],
+    [false, false],
+    [false, false],
+  ];
+  for (const [a, b] of frames) step(a, b);
+  assert.deepEqual(seen, [false, true, true, true, true, false, false]);
+  // a jump started and finished inside one delayed frame (moving at entry is false only if it started after entry)
+  const seen2: boolean[] = [];
+  const step2 = run((on: boolean) => seen2.push(on));
+  step2(true, false);
+  step2(false, false);
+  step2(false, false);
+  assert.deepEqual(seen2, [true, true, false]);
 });
