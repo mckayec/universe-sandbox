@@ -1,0 +1,43 @@
+[
+  {
+    "hash": "#world=earth&tl=bogus&tlc=bogus&tlsel=n:nope&tlt=-600,0",
+    "actual": {
+      "url": "#world=earth&tl=1",
+      "selected": 0,
+      "judMarks": 11,
+      "lanes": ["lane-jud", "lane-chr", "lane-isl", "lane-enc", "chron-jud", "chron-chr", "chron-isl", "chron-enc"],
+      "transition": "0s"
+    }
+  },
+  {
+    "touchCollapse": 1
+  },
+  {
+    "touchClose": {
+      "url": "http://127.0.0.1:4191/atlas/?pack=abrahamic-world-religions#world=earth",
+      "closed": true
+    }
+  },
+  {
+    "hash": "#world=earth&layers=chr&tl=lane-jud&tlsel=n:jud-karaite",
+    "actual": {
+      "url": "#world=earth&layers=chr&tl=1",
+      "selected": 0,
+      "judMarks": 0,
+      "lanes": ["lane-chr", "chron-chr", "chron-enc"],
+      "transition": "0s"
+    }
+  },
+  {
+    "touchCollapse": 1
+  },
+  {
+    "touchClose": {
+      "url": "http://127.0.0.1:4191/atlas/?pack=abrahamic-world-religions#world=earth&layers=chr",
+      "closed": true
+    }
+  },
+  {
+    "consoleAndPageErrors": []
+  }
+]
