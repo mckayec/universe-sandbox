@@ -2,6 +2,12 @@
 
 2026-11-02. Owner request relayed by parent: **Current / Satellite / Road-map** basemap choices for the LDS atlas. Documentation proposal only; no implementation or test pass is claimed. Claude retains PR33 code, lock and ownership. This does not approve, merge, deploy or release the atlas.
 
+## Release priority clarification
+
+The owner prioritizes a faster GitHub initial release with the existing best-practice workflow. **This basemap toggle is follow-on scope, not an initial-atlas release blocker**, unless the owner explicitly changes that priority. Preserve this specification and its requirements for the follow-on implementation; this is sequencing, not permission to substitute coarse roads or waive safeguards.
+
+Initial-release work remains: the final 11 supplementary imports at the last audited head, S22-C1 source links, required integration, and final content/technical/rendered evidence for the same implementation head, followed by specific-PR owner approval. Use exact-head delta reviews and explicitly inherited unchanged evidence rather than repeating full audits. Counts must be rechecked on any changed implementation. Claude retains ownership; this note grants no approval, merge or deployment.
+
 ## Verified baseline and implementation boundary
 
 PR33 remains **82a0053bf64e680554afe5a178576f9c017b1fc0**. `public/atlas/engine.js` blob **67a3d57460fe08d0b9b515ea18e64e5926d98285** was checked against the parent's read-only investigation. It is a custom Three.js r128 globe, not a conventional tiled-map widget. `loadEarth` loads local Natural Earth masks; `planetMaterial` binds textures; `applySet` replaces generated material textures. `S`, `urlFor`, `parseHash` and `syncURL` own relevant state/URL transitions.
