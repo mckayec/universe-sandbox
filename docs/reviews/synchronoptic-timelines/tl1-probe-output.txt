@@ -1,0 +1,8 @@
+[37s] loaded 1440x900
+[257s] 1440 checks passed
+[391s] URL checks passed
+[474s] 3840x2160 passed (smallest label 12.5px)
+[538s] 1280x800 passed (smallest label 12.5px)
+[569s] 390x844 passed (smallest label 12.5px)
+[569s] PASS (no console errors, no >=400 resources)
+EXIT 0

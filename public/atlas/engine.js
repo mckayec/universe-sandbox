@@ -443,7 +443,8 @@ function buildShell(K){
   K.bookIds.map(b=>'<button data-b="'+b+'" aria-pressed="false" title="'+esc(K.books[b].title+(K.books[b].y?" ("+K.books[b].y+")":""))+'">'+esc(K.books[b].n)+'</button>').join("")+'</div>'+
   '<button class="btn" id="galBtn">'+esc(U.galaxyButton)+'</button><button class="btn" id="webBtn">'+esc(U.homeButton)+'</button>'+
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
-  (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
+  (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+
+  (K.raw.tree&&window.AtlasTimelineView?'<button class="btn" id="tlBtn" aria-haspopup="dialog">Timeline</button>':"")+'</div></header>'+
 '<nav id="crumbs" aria-label="Location"></nav>'+
 (K.raw.realms?'<div class="seg" id="realms" role="group" aria-label="Realm">'+["physical","cognitive","spiritual"].filter(r=>r==="physical"||K.raw.realms[r]).map(r=>{const R=K.raw.realms[r]||{};
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
@@ -454,7 +455,7 @@ function buildShell(K){
   '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
   '<div class="cx-tabs" id="cxTabs"></div><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
-(K.raw.tree?'<div id="tree" hidden></div>':"")+
+(K.raw.tree?'<div id="tree" hidden></div>':"")+(K.raw.tree&&window.AtlasTimelineView?'<div id="timeline" hidden></div>':"")+
 '<div id="splash"><div><svg width="'+(T.splashSize||78)+'" height="'+(T.splashSize||78)+'" viewBox="0 0 48 48" aria-hidden="true">'+ssig+'</svg><h1 class="chrome">'+esc(TT)+'</h1>'+
   (M.splash?'<p>'+esc(M.splash)+'</p>':"")+'<div class="ld" id="splashLd">Charting the galaxy</div></div></div>';
   document.body.appendChild(app);
@@ -920,7 +921,7 @@ const TL=LY?LY.normTimeline(K.raw,[].concat(WORLDS,EVENTS,...WORLDS.map(w=>w.sit
 if(LAY)S.layers=LY.defaultActive(LAY);
 const filterOk=it=>!LY||(LY.layerOk(it,S.layers)&&LY.timeOk(it,S.range));
 /* the family-tree view (PACK_FORMAT 21), created further down once the panels exist */
-let TRV=null;
+let TRV=null,TLV=null;
 const EV_BY={};EVENTS.forEach((e,i)=>{e.ord=i;EV_BY[e.id]=e;});
 const EFF=()=>S.book||99;
 const firstOf=w=>w.first||(w.books&&w.books.length?Math.min(...w.books):1);
@@ -1311,6 +1312,15 @@ TRV=K.raw.tree&&window.AtlasTree?window.AtlasTree.createView({
   onShow:(n,sid)=>goPlace(n.world,sid),
   onChange:()=>syncURL()}):null;
 if(TRV)$("#trBtn").addEventListener("click",()=>TRV.show());
+/* synchronoptic timeline (timeline.js / timeline-view.js): same spoiler and layer gates as the atlas */
+TLV=$("#timeline")&&window.AtlasTimelineView?window.AtlasTimelineView.createView({
+  el:$("#timeline"),pack:K.raw,axis:TL,
+  ok:g=>treeNodeSeen(g)&&(!LY||LY.layerOk(g,S.layers)),
+  fmt:(y,ap)=>LY?LY.fmtYear(y,TL?TL.style:"BCE/CE",ap):String(y),
+  colorFor:id=>{const l=(K.raw.layers||[]).find(x=>x.id===id);return l&&l.c||"#9db8ff";},
+  onChange:()=>syncURL()}):null;
+if(TLV)$("#tlBtn").addEventListener("click",()=>TLV.show());
+else if($("#tlBtn"))$("#tlBtn").hidden=true;
 else if($("#trBtn"))$("#trBtn").hidden=true;
 /* "Show in the tree" from an open place */
 dos.addEventListener("click",e=>{const t=e.target.closest("[data-tree-node]");if(!t||!TRV)return;e.stopPropagation();TRV.show(t.dataset.treeNode);},true);
@@ -1319,7 +1329,7 @@ dos.addEventListener("click",e=>{const t=e.target.closest("[data-tree-node]");if
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();afterRefresh();}
+function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();if(TLV)TLV.refresh();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
 function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
@@ -1466,6 +1476,7 @@ function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.re
   if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");
   if(LY){const f=LY.encodeState(LAY,TL,S.layers,S.range);Object.keys(f).forEach(k=>q.set(k,f[k]));}
   if(TRV&&TRV.open)q.set("tree",TRV.sel||"1");
+  if(TLV&&TLV.open){q.set("tl","1");if(TLV.sel)q.set("tlsel",TLV.sel);}
   const h=q.toString();return location.pathname+location.search+(h?"#"+h:"");}
 function parseHash(){const q=new URLSearchParams((location.hash||"").replace(/^#/,""));const b=parseInt(q.get("book"),10);
   return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface",filters:LY?LY.decodeState(LAY,TL,q):null,tree:q.get("tree")};}
@@ -1487,6 +1498,7 @@ function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:sto
   if(b&&b!==S.book)API.setBook(b);
   if(st.realm&&st.realm!==S.realm)setRealm(st.realm,true);
   if(st.filters){const f=st.filters;if(f.active!==undefined)S.layers=f.active;if(f.range!==undefined)S.range=f.range;if(f.active!==undefined||f.range!==undefined)refreshAll();}
+  if(TLV)TLV.restore(location.hash);
   if(TRV&&st.tree){const tn=TRV.T.by[st.tree];TRV.show(tn&&treeNodeSeen(tn)?tn.id:null);}
   /* pack.start (PACK_FORMAT 20.4) opens straight onto a world when the link names none */
   const ps=K.raw.start;const t=st.world?st:(ps&&WORLD_BY[ps.world]?{world:ps.world,surface:ps.view==="surface",site:ps.site}:null);

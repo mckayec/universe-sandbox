@@ -82,14 +82,14 @@ test('gating filters endpoints and edges before counts, search, selection and UR
   assert.equal(TL.revalidate(noJud, 'n:jud-karaite'), null);
   assert.equal(TL.revalidate(full, 'n:jud-karaite'), 'n:jud-karaite');
   // a restored link cannot select a gated or unknown record
-  assert.equal(TL.parseState('#tl=1&sel=n%3Ajud-karaite', noJud, pack.timeline).sel, null);
-  assert.equal(TL.parseState('#tl=1&sel=n:nope', full, pack.timeline).sel, null);
-  const st = TL.parseState('#tl=1&t=-600,0', full, pack.timeline);
+  assert.equal(TL.parseState('#tl=1&tlsel=n%3Ajud-karaite', noJud, pack.timeline).sel, null);
+  assert.equal(TL.parseState('#tl=1&tlsel=n:nope', full, pack.timeline).sel, null);
+  const st = TL.parseState('#tl=1&tlt=-600,0', full, pack.timeline);
   assert.equal(st.range, null, 'year 0 rejected');
-  const st2 = TL.parseState('#tl=lane-jud,bogus&t=-900,100&sel=n:jud-karaite', full, pack.timeline);
+  const st2 = TL.parseState('#tl=lane-jud,bogus&tlt=-900,100&tlsel=n:jud-karaite', full, pack.timeline);
   assert.deepEqual([...st2.lanes], ['lane-jud']);
   assert.deepEqual([...st2.range], [-800, 100]);
-  assert.equal(TL.stateHash(st2), '#tl=lane-jud&t=-800,100&sel=n%3Ajud-karaite');
+  assert.equal(TL.stateHash(st2), '#tl=lane-jud&tlt=-800,100&tlsel=n%3Ajud-karaite');
 });
 
 test('coverage reports what the data cannot support instead of inventing it', () => {

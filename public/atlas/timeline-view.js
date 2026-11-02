@@ -1,0 +1,307 @@
+/* Atlas synchronoptic timeline: the DOM view (docs/reviews/synchronoptic-timelines/proposal.md §3).
+   Draws only what AtlasTimeline (timeline.js) returns after gating: a shared BCE/CE axis with era bands, one lane
+   per tradition plus a Chronicle lane per layer, an undated / relative-order strip, an equivalent list view, a
+   details panel and the coverage gaps. SVG and DOM (crisp at 4K, every mark focusable); no WebGL.
+   Loaded by atlas/index.html after timeline.js and before engine.js. The engine calls createView(env). */
+(function (root) {
+  'use strict';
+
+  const TLM = root.AtlasTimeline;
+  if (!TLM) return;
+  const ESC = (s) =>
+    String(s == null ? '' : s).replace(
+      /[&<>"]/g,
+      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+    );
+  const ZOOMS = [1, 1.6, 2.5, 4, 6.5];
+  const ROW = 26;
+  const LANE_HEAD = 30;
+  const AXIS_H = 34;
+  const PRECISION = {
+    window: 'Emergence window: the source gives a period, not a year',
+    range: 'A range or separate episodes, as the source gives them',
+    approx: 'Approximate date',
+    exact: 'Year given by the source',
+  };
+  /* presence after a window is stated only when the record gives an end year or says it is ongoing */
+  const presence = (w) =>
+    w.window
+      ? w.toOpen
+        ? '; continued presence after it, still ongoing'
+        : w.to != null
+          ? '; continued presence after it until the end year given'
+          : '; no continued presence is stated'
+      : w.toOpen
+        ? '; still ongoing'
+        : '';
+  const precisionOf = (w) => (w.window ? 'window' : w.range ? 'range' : w.approx ? 'approx' : 'exact');
+  const EDGE_WORD = {
+    branch: 'Developed from',
+    within: 'Within',
+    division: 'Divided from',
+    merge: 'Formed by merging',
+    overlap: 'Overlaps',
+    contact: 'Contact',
+    history: 'History with',
+    context: 'Context',
+  };
+
+  /* env: {el, pack, axis, ok(gate), fmt(year, approx), onChange(), colorFor(layerId)} */
+  function createView(env) {
+    const model = TLM.adaptTree(env.pack);
+    if (!model.records.length || !env.el) return null;
+    const el = env.el;
+    const axis = env.axis || {};
+    let open = false;
+    let mode = 'chart';
+    let zoom = 0;
+    let sel = null;
+    let V = null;
+    let lastFocus = null;
+    const fmt = (y, ap) => (env.fmt ? env.fmt(y, ap) : (ap ? 'c. ' : '') + TLM.yearLabel(y));
+    const whenText = (r) =>
+      r.whenText ||
+      (r.when ? fmt(r.when.from, r.when.approx) + (r.when.to != null ? ' – ' + fmt(r.when.to) : '') : 'No date');
+
+    el.innerHTML =
+      '<div class="panel" role="dialog" aria-modal="true" aria-labelledby="tlT"><div class="cx-head tl-head">' +
+      '<h2 id="tlT" class="chrome">Timeline</h2><span class="tl-note">Simplified view · dates only where the sources give them</span>' +
+      '<div class="tl-mode" role="group" aria-label="Arrangement">' +
+      '<button class="btn" data-mode="chart" aria-pressed="true">Chart</button>' +
+      '<button class="btn" data-mode="list" aria-pressed="false">List</button></div>' +
+      '<div class="tl-zoom" role="group" aria-label="Zoom">' +
+      '<button class="btn" data-z="-1" aria-label="Zoom out" title="Zoom out">−</button>' +
+      '<button class="btn" data-z="1" aria-label="Zoom in" title="Zoom in">+</button>' +
+      '<button class="btn" data-z="0" title="Reset zoom">Reset</button></div>' +
+      '<button class="btn" data-tl="close">Close</button></div>' +
+      '<div class="tl-main"><div class="tl-scroll" tabindex="-1"></div><aside class="tl-info" aria-live="polite"></aside></div></div>';
+    const scrollEl = el.querySelector('.tl-scroll');
+    const info = el.querySelector('.tl-info');
+
+    function compute() {
+      V = TLM.visible(model, env.ok);
+      sel = TLM.revalidate(V, sel);
+    }
+
+    /* ---------- chart ---------- */
+    function chart() {
+      const ext = TLM.extent(V, axis);
+      if (!ext) return '<p class="tl-empty">Nothing dated is visible with the current filters.</p>';
+      const lo = Math.max(axis.min != null ? axis.min : ext[0], ext[0] - 20);
+      const hi = Math.min(axis.max != null ? axis.max : ext[1], ext[1] + 10);
+      const a0 = TLM.astro(lo);
+      const a1 = TLM.astro(hi);
+      const avail = Math.max(320, scrollEl.clientWidth - 24);
+      const W = Math.round(avail * ZOOMS[zoom]);
+      const X = (y) => 12 + ((TLM.astro(y) - a0) / (a1 - a0)) * (W - 24);
+      const lanes = V.lanes
+        .map((l) => ({
+          l,
+          rows: V.dated
+            .filter((r) => r.lane === l.id)
+            .sort((p, q) => TLM.astro(p.when.window ? p.when.window[0] : p.when.from) - TLM.astro(q.when.window ? q.when.window[0] : q.when.from) || p.order - q.order),
+        }))
+        .filter((x) => x.rows.length);
+      let y = AXIS_H;
+      const rowY = {};
+      lanes.forEach((x) => {
+        x.y = y;
+        y += LANE_HEAD;
+        x.rows.forEach((r) => {
+          rowY[r.id] = y + ROW / 2;
+          y += ROW;
+        });
+        y += 8;
+      });
+      const H = y + 6;
+      let s =
+        '<svg class="tl-svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Timeline chart">' +
+        '<defs><pattern id="tlHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">' +
+        '<rect width="2.4" height="6" fill="currentColor"/></pattern>' +
+        '<linearGradient id="tlFade"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>' +
+        '<mask id="tlFadeMask" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#tlFade)"/></mask></defs>';
+      (axis.eras || []).forEach((e, i) => {
+        const x0 = X(Math.max(e.from, lo));
+        const x1 = X(Math.min(e.to, hi));
+        if (x1 > x0)
+          s += '<rect class="tl-era' + (i % 2 ? ' odd' : '') + '" x="' + x0 + '" y="' + AXIS_H + '" width="' + (x1 - x0) + '" height="' + (H - AXIS_H) + '"><title>' + ESC(e.name) + '</title></rect>' +
+            '<text class="tl-era-t" x="' + (x0 + 4) + '" y="' + (AXIS_H - 20) + '">' + ESC(e.name) + '</text>';
+      });
+      const span = hi - lo;
+      const step = [10, 25, 50, 100, 200, 250, 500].find((k) => (span / k) * 70 <= W) || 1000;
+      for (let t = Math.ceil(lo / step) * step; t <= hi; t += step) {
+        const yr = t === 0 ? 1 : t;
+        if (X(yr) < 34 || X(yr) > W - 34) continue;
+        s += '<line class="tl-tick" x1="' + X(yr) + '" x2="' + X(yr) + '" y1="' + (AXIS_H - 6) + '" y2="' + H + '"/>' +
+          '<text class="tl-tick-t" x="' + X(yr) + '" y="' + (AXIS_H - 9) + '">' + ESC(TLM.yearLabel(yr)) + '</text>';
+      }
+      lanes.forEach((x) => {
+        s += '<text class="tl-lane" x="12" y="' + (x.y + 20) + '">' + ESC(x.l.title) + ' · ' + x.rows.length + '</text>';
+        x.rows.forEach((r) => (s += mark(r, rowY[r.id], X, hi)));
+      });
+      V.drawnEdges.forEach((e) => {
+        const a = V.byId.get(e.from);
+        const b = V.byId.get(e.to);
+        if (!a || !b || rowY[a.id] == null || rowY[b.id] == null) return;
+        const bx = X(b.when.window ? b.when.window[0] : b.when.from);
+        s += '<path class="tl-edge t-' + e.type + '" d="M' + bx + ' ' + rowY[a.id] + ' C' + (bx - 30) + ' ' + rowY[a.id] + ' ' + (bx - 30) + ' ' + rowY[b.id] + ' ' + bx + ' ' + rowY[b.id] + '"/>';
+      });
+      return s + '</svg>';
+    }
+    function mark(r, cy, X, hi) {
+      const w = r.when;
+      const c = env.colorFor ? env.colorFor(r.gate.layers[0]) : '#9db8ff';
+      const end = w.to != null ? w.to : w.toOpen ? hi : null;
+      let g = '';
+      if (r.kind === 'event' && !w.range) {
+        const x = X(w.from);
+        g += '<path class="tl-pt' + (w.approx ? ' ap' : '') + '" d="M' + x + ' ' + (cy - 6) + 'l6 6l-6 6l-6 -6z"/>';
+      } else if (w.window) {
+        const x0 = X(w.window[0]);
+        const x1 = Math.max(X(w.window[1]), x0 + 3);
+        g += '<rect class="tl-win-bg" x="' + x0 + '" y="' + (cy - 6) + '" width="' + (x1 - x0) + '" height="12"/>' +
+          '<rect class="tl-win" x="' + x0 + '" y="' + (cy - 6) + '" width="' + (x1 - x0) + '" height="12" fill="url(#tlHatch)"/>';
+        if (end != null && X(end) > x1)
+          g += '<rect class="tl-bar' + (w.toOpen ? ' open' : '') + '" x="' + x1 + '" y="' + (cy - 4) + '" width="' + (X(end) - x1) + '" height="8"' + (w.toOpen ? ' mask="url(#tlFadeMask)"' : '') + '/>';
+      } else {
+        const x0 = X(w.from);
+        const x1 = end != null ? Math.max(X(end), x0 + 3) : x0 + 3;
+        g += '<rect class="tl-bar' + (w.range ? ' rng' : '') + (w.approx ? ' ap' : '') + (w.toOpen ? ' open' : '') + '" x="' + x0 + '" y="' + (cy - (w.range ? 2 : 4)) + '" width="' + (x1 - x0) + '" height="' + (w.range ? 4 : 8) + '"' + (w.toOpen ? ' mask="url(#tlFadeMask)"' : '') + '/>';
+      }
+      const lx = X(w.window ? w.window[0] : w.from);
+      const anchorEnd = lx > X(hi) - 260;
+      g += '<text class="tl-lbl" x="' + (anchorEnd ? lx - 10 : lx + 10) + '" y="' + (cy - 8) + '"' + (anchorEnd ? ' text-anchor="end"' : '') + '>' + ESC(r.label) + '</text>';
+      return '<g class="tl-m' + (sel === r.id ? ' sel' : '') + '" style="--tc:' + ESC(c) + '" tabindex="0" role="button" data-id="' + ESC(r.id) + '" aria-pressed="' + (sel === r.id) + '" aria-label="' + ESC(r.label + ', ' + whenText(r)) + '">' + g + '</g>';
+    }
+
+    /* ---------- undated strip, list, coverage ---------- */
+    function item(r) {
+      return '<li><button class="tl-it' + (sel === r.id ? ' sel' : '') + '" data-id="' + ESC(r.id) + '" aria-pressed="' + (sel === r.id) + '"><b>' + ESC(r.label) + '</b> <span>' + ESC(whenText(r)) + '</span></button></li>';
+    }
+    function undated() {
+      if (!V.undated.length) return '';
+      let h = '<section class="tl-und"><h3>Undated or in source order · ' + V.undated.length + '</h3><p class="tl-why">No calendar year in the source; kept off the axis, in the order the pack gives them.</p>';
+      V.lanes.forEach((l) => {
+        const rs = V.undated.filter((r) => r.lane === l.id);
+        if (rs.length) h += '<h4>' + ESC(l.title) + '</h4><ol>' + rs.map(item).join('') + '</ol>';
+      });
+      return h + '</section>';
+    }
+    function list() {
+      const dated = V.dated.slice().sort((p, q) => TLM.astro(p.when.window ? p.when.window[0] : p.when.from) - TLM.astro(q.when.window ? q.when.window[0] : q.when.from) || p.order - q.order);
+      let h = '<section class="tl-list"><h3>Dated · ' + dated.length + '</h3><ol>' + dated.map(item).join('') + '</ol></section>' + undated();
+      h += '<section class="tl-list"><h3>Relationships · ' + V.edges.length + '</h3><ul class="tl-edges">' +
+        V.edges.map((e) => {
+          const a = V.byId.get(e.from);
+          const b = V.byId.get(e.to);
+          return '<li>' + ESC(b.label) + ' — <i>' + ESC(EDGE_WORD[e.type] || e.type) + '</i> — ' + ESC(a.label) + (e.label ? ' <span class="tl-why">(' + ESC(e.label) + ')</span>' : '') + (e.src.length ? '' : ' <span class="tl-gap">no source locator on this relationship</span>') + '</li>';
+        }).join('') + '</ul></section>';
+      return h;
+    }
+    function coverageHtml() {
+      const c = TLM.coverage(V, model);
+      return '<div class="tl-cov"><b>Coverage</b><p>' + c.dated + ' dated (' + c.windows + ' as windows, ' + c.approx + ' approximate), ' + c.undated + ' undated, ' + c.edges + ' relationships.</p><b>Not shown, because the data does not support it yet</b><ul>' + c.gaps.map((g) => '<li>' + ESC(g.t) + '</li>').join('') + '</ul></div>';
+    }
+    function details() {
+      const r = sel && V.byId.get(sel);
+      if (!r)
+        return '<p class="tl-intro">Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Pick any mark or row for its source wording.</p>' + coverageHtml();
+      const w = r.when;
+      let h = '<h3 style="--tc:' + ESC(env.colorFor ? env.colorFor(r.gate.layers[0]) : '#9db8ff') + '">' + ESC(r.label) + '</h3>' +
+        '<p class="tl-meta">' + ESC(whenText(r)) + (r.nodeKind ? ' · ' + ESC(r.nodeKind) : '') + '</p>' +
+        '<p>' + ESC(w ? PRECISION[precisionOf(w)] + presence(w) : r.chron === 'narrative' ? 'Narrative chronology: no calendar year' : 'No defensible date in the source') + '</p>';
+      if (r.claim.length) h += '<p class="tl-why">Kinds of claim in the record: ' + ESC(r.claim.join(', ')) + '</p>';
+      if (r.src.length) h += '<p class="tl-why">Source: ' + r.src.map((s) => ESC(s.t)).join('; ') + '</p>';
+      const es = V.edges.filter((e) => e.from === r.id || e.to === r.id);
+      if (es.length)
+        h += '<b class="tl-k">Relationships</b><ul class="tl-edges">' + es.map((e) => {
+          const o = V.byId.get(e.from === r.id ? e.to : e.from);
+          return '<li><button class="tl-chip" data-id="' + ESC(o.id) + '">' + ESC(o.label) + '</button> <i>' + ESC(EDGE_WORD[e.type] || e.type) + (e.from === r.id ? ' (from this)' : '') + '</i>' + (e.label ? ' <span class="tl-why">' + ESC(e.label) + '</span>' : '') + (e.src.length ? '' : ' <span class="tl-gap">no source locator</span>') + '</li>';
+        }).join('') + '</ul>';
+      return h + '<p><button class="btn" data-tl="clear">Back to the overview</button></p>';
+    }
+
+    function render() {
+      compute();
+      el.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+      el.querySelectorAll('[data-z]').forEach((b) => (b.disabled = mode !== 'chart' || (b.dataset.z === '-1' && zoom === 0) || (b.dataset.z === '1' && zoom === ZOOMS.length - 1)));
+      const left = scrollEl.scrollLeft;
+      scrollEl.innerHTML = mode === 'chart' ? chart() + undated() : list();
+      scrollEl.scrollLeft = left;
+      info.innerHTML = details();
+    }
+    function pick(id) {
+      sel = sel === id ? null : id;
+      render();
+      const t = el.querySelector('[data-id="' + CSS.escape(id) + '"]');
+      if (t && sel) t.focus({ preventScroll: true });
+      if (env.onChange) env.onChange();
+    }
+    el.addEventListener('click', (e) => {
+      const m = e.target.closest('[data-mode]');
+      if (m) { mode = m.dataset.mode; render(); return; }
+      const z = e.target.closest('[data-z]');
+      if (z) { zoom = z.dataset.z === '0' ? 0 : Math.max(0, Math.min(ZOOMS.length - 1, zoom + +z.dataset.z)); render(); return; }
+      const a = e.target.closest('[data-tl]');
+      if (a) { if (a.dataset.tl === 'close') close(); else { sel = null; render(); if (env.onChange) env.onChange(); } return; }
+      const it = e.target.closest('[data-id]');
+      if (it) pick(it.dataset.id);
+      else if (e.target === el) close();
+    });
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { e.stopPropagation(); e.preventDefault(); close(); return; }
+      const it = e.target.closest && e.target.closest('.tl-m');
+      if (it && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(it.dataset.id); return; }
+      if (it && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+        e.preventDefault();
+        const all = [...el.querySelectorAll('.tl-m')];
+        const n = all[all.indexOf(it) + (e.key === 'ArrowDown' ? 1 : -1)];
+        if (n) n.focus();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const f = [...el.querySelectorAll('button,[tabindex="0"]')].filter((x) => !x.disabled && x.offsetParent !== null);
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+    addEventListener('resize', () => { if (open && mode === 'chart') render(); });
+
+    function show(id) {
+      if (!open) lastFocus = document.activeElement;
+      open = true;
+      el.hidden = false;
+      compute();
+      sel = TLM.revalidate(V, id || null);
+      render();
+      const t = sel && el.querySelector('[data-id="' + CSS.escape(sel) + '"]');
+      (t || el.querySelector('[data-tl="close"]')).focus({ preventScroll: !!t });
+      if (t) t.scrollIntoView({ block: 'center', inline: 'center' });
+      if (env.onChange) env.onChange();
+    }
+    function close() {
+      if (!open) return;
+      open = false;
+      el.hidden = true;
+      if (lastFocus && lastFocus.isConnected) lastFocus.focus();
+      lastFocus = null;
+      if (env.onChange) env.onChange();
+    }
+    return {
+      model,
+      show,
+      close,
+      refresh() { if (open) render(); },
+      get open() { return open; },
+      get sel() { return sel; },
+      restore(hash) {
+        compute();
+        const st = TLM.parseState(hash, V, axis);
+        if (st.open) show(st.sel);
+      },
+    };
+  }
+
+  root.AtlasTimelineView = { createView };
+})(typeof window !== 'undefined' ? window : globalThis);

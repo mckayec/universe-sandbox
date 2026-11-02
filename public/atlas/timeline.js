@@ -267,7 +267,8 @@
     };
   }
 
-  /* ---------- URL state: #tl=lane,lane&t=from,to&sel=id (validated, always re-gated) ---------- */
+  /* ---------- URL state: #tl=lane,lane&tlt=from,to&tlsel=id (validated, always re-gated; keys kept apart from the
+     atlas's own book/world/site/layers/yr keys) ---------- */
   function parseState(hash, view, axis) {
     const p = new URLSearchParams(String(hash || '').replace(/^#/, ''));
     const st = { open: p.has('tl'), lanes: null, range: null, sel: null };
@@ -275,19 +276,19 @@
     const laneIds = new Set(view.lanes.map((l) => l.id));
     const ls = (p.get('tl') || '').split(',').filter((x) => laneIds.has(x));
     st.lanes = ls.length ? ls : null;
-    const t = (p.get('t') || '').split(',').map(Number);
+    const t = (p.get('tlt') || '').split(',').map(Number);
     if (t.length === 2 && t.every((x) => Number.isInteger(x) && x !== 0) && t[0] < t[1]) {
       const lo = axis && axis.min != null ? axis.min : -Infinity;
       const hi = axis && axis.max != null ? axis.max : Infinity;
       if (t[1] > lo && t[0] < hi) st.range = [Math.max(t[0], lo), Math.min(t[1], hi)];
     }
-    st.sel = revalidate(view, p.get('sel'));
+    st.sel = revalidate(view, p.get('tlsel'));
     return st;
   }
   function stateHash(st) {
     const p = ['tl=' + (st.lanes ? st.lanes.join(',') : '1')];
-    if (st.range) p.push('t=' + st.range.join(','));
-    if (st.sel) p.push('sel=' + encodeURIComponent(st.sel));
+    if (st.range) p.push('tlt=' + st.range.join(','));
+    if (st.sel) p.push('tlsel=' + encodeURIComponent(st.sel));
     return '#' + p.join('&');
   }
 
