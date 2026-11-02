@@ -1153,3 +1153,52 @@ this change, which only calls the existing `openEvent`).
 **Still open (Claude keeps ownership):** BMC quotation/vision typed edges (239 cards), DRE office-succession links,
 timeline and source/vision relations, the omission/consolidation rollup; final same-head 4K/1280 rendered evidence;
 real-GPU and real-phone native-select evidence.
+
+## Checkpoint 26 (S25-C1 cross-account source views; S25-V1 settled frame)
+
+Applies [supplementary-review-s25](https://github.com/mckayec/universe-sandbox/blob/1bac545e59fdacbee3e6075c5cdf32d020d76e49/docs/universes/packs/lds-standard-works/supplementary-review-s25.md)
+(PR34 at 1bac545). Builder answer accepted: only DD121 → RC02 “explains” (unchanged).
+
+* **S25-C1 (fixed):** the bundled “one codex card each; nothing to link” row in `copy_links.py` is split. Three new
+  same-entity groups, labelled “in another account” so each card keeps its own source wording and no identical
+  landscape is implied: **OH-P01 (1/ot) ↔ PP02 (5/pgp)** “Eden in another account”; **OH-P02 (1/ot) ↔ PP03 (5/pgp)**
+  “Nod in another account”; the two previously unkeyed `unmapped-places` cards “Enoch’s city (Zion)” now carry stable,
+  distinct source-view keys **P17-dc-enoch-city (4/dc, D&C 38:4)** and **P17-pgp-enoch-city (5/pgp, Moses 7)** and link
+  as “Enoch’s city in another account”. Their name, gate and text are byte-identical; only the key and the link were
+  added (the `// P17` comment moved to its own line). Not linked, by design: Cain’s Enoch (OH-P02, PGM-qg04-cain-line)
+  to Enoch’s city; PGM-qg06-zion, DCM-dx01 or any other Zion usage to P17; the Genesis garden rivers to Daniel’s
+  Hiddekel. No coordinates, pins or routes.
+* **Remaining rows of the old bundle, each with its own reason in [typed-links.csv](typed-links.csv):** galilee-region
+  (NTP-galilee is the only region card; Isaiah 9/2 Kings 15 mentions are not cards; AP09 is the lake), tigris/Hiddekel
+  (OTW-p08-hiddekel is the only Daniel setting card; the A12 note card reports the edition note in its own text; garden
+  rivers not linked), bom-irreantum (BXP02 is the only Irreantum card; BE03 is the ship-command event).
+* **Builder reading for ChatGPT:** PGM-qg06-zion (“Zion in Moses 7”) also discusses Moses 7’s Zion community and city;
+  it is kept out of the P17 group because the review set a minimum of the two place views and warned against blanket
+  Zion identity. Say if it should join as a third view.
+
+Checks at code commit **22f6ca415454b2a2f9d31980eede33663d64295b**: `pnpm format` clean; `pnpm check` **122/122**
+(new test “Checkpoint 26”: unique keys, both directions and labels of the three groups, gates 1/ot·5/pgp, 1/ot·5/pgp,
+4/dc·5/pgp, both P17 texts kept and still two cards, no Cain/Zion or Hiddekel links, no coordinates, OT-only filter
+hides PP02, CSV has no “nothing to link”; the round-2 primary-view count moves 170 → 172 because the two P17 views are
+now keyed); `check:dist` 114 files OK; `test:pages` 13×2; coverage validator `errors: []`; baseline regeneration before
+the change byte-identical, after it idempotent; 1,271 SD imported, 0 pending (unchanged).
+
+Interaction evidence: [s26-probe.mjs](supplementary-build/s26-probe.mjs), built site, SwiftShader, **passed with no
+console errors** (18 min): (1) 1440×900 all layers, keyboard: OH-P01’s “Eden in another account: Garden in Eden”,
+focus + **Enter** switches to “Places without a map pin” and focuses PP02, which links back; (2) **click** from
+P17-dc-enoch-city focuses P17-pgp-enoch-city, two “Enoch’s city (Zion)” cards remain; (4) `#layers=ot`: OH-P01 names
+“Eden in another account: Garden in Eden (hidden by the layer or year filter)”, no link; (5) 390×844 **tap** on “Land of
+Nod” focuses PP03 (target ≥ 24 px, inside the viewport). Shots: `s26-eden-link-1440x900.png`, `s26-nod-390x844.png`.
+
+**S25-V1 (evidence, not closed):** step (3) reopens DD109’s Chronicle link and captures two frames.
+`s26-event-turning-1440x900.jpg` (first frame after the dossier opens) reproduces the anomaly: the globe already shows
+North America, but Old World site labels (Rome, Philippi, Jericho, Babylon…) are still drawn over it.
+`s26-event-settled-1440x900.jpg` (45 s later, same page) is aligned: Salt Lake Temple, Nauvoo, Palmyra and the
+highlighted Kirtland Temple sit on their pins and no Old World label is shown. So under SwiftShader the label layer
+lags the camera after an event jump and then settles; it is not a lasting misplacement. A real-GPU capture is still
+needed to show whether any lag is visible at normal frame rates; the event-focus race (rapid filter/modal changes after
+event navigation) is not yet tested.
+
+**Still open (Claude keeps ownership):** BMC quotation/vision typed edges, DRE office-succession links, timeline and
+source/vision relations, the omission/consolidation rollup; S25-V1 real-GPU alignment and the event-focus race case;
+final same-head 4K/1280/phone rendered evidence, full keyboard traversal, real-phone native-select and touch.
