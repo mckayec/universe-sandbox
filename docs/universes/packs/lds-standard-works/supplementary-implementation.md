@@ -1441,3 +1441,51 @@ views, not ignored edge metadata, not 239 runtime places.
 the other ledgers; final same-head 4K/1280/phone evidence, full Tab/Shift-Tab traversal, finished-bake capture;
 real-GPU and physical-phone native-select/touch (hardware not available here). ChatGPT may audit the selected
 relations row by row in bmc-source-views.csv and say which omissions it would turn into views.
+
+## Checkpoint 33 (S32 corrections)
+
+Applies [supplementary-review-s32](https://github.com/mckayec/universe-sandbox/blob/b37e308edd4c4522200f75ec35f9b3bb11f6e35e/docs/universes/packs/lds-standard-works/supplementary-review-s32.md)
+(PR34 b37e308) to checkpoint 32 (bd7bdee). All changes go through `copy_bmc.py` / `build.py`; the pack and
+[bmc-source-views.csv](bmc-source-views.csv) are regenerated.
+
+* **S32-C1, locators.** BMV-011 → 1 Nephi 11:1, 13, 32; BMV-014 → 1 Nephi 14:18–27; BMV-039 → 2 Nephi 17:1–14;
+  BMV-042 → 2 Nephi 20:5–19, 28–32. Copy, keys, modes and gates unchanged. `build.py` now accepts a verse string so a
+  locator can hold several ranges.
+* **S32-C2, three new views with the review's minimum copy and labels** (3/bom, one-way, no pin/route/date):
+  BMV-017-moses-exodus-recalled (1 Nephi 17:23–32, 40–42; teaching → OHR-MOSES “recalled by Nephi”);
+  BMV-166-witnesses-mulek-claim (Helaman 8:11–22; teaching → OHR-MOSES and OHR-ABRAHAM “recalled as a witness”,
+  OHR-ZEDEKIAH “Mulek survival claim concerning his sons”; the copy keeps survival and descent as the text's claims,
+  no genealogical edge); BMV-227-jerusalem-new-jerusalem-prophecy (Ether 13:4–11; prophecy → OTM-jerusalem
+  “Jerusalem of old in Ether’s prophecy”, OHR-JOSEPH-JACOB “Joseph recalled in the prophecy”; New Jerusalem stays
+  unpinned and distinct; the Ether 13 Gilgal scan hit stays rejected). The three false omission reasons are removed.
+* **BMC-022 consolidation.** Instead of claiming consolidation by adjacency, a visible view
+  BMV-022-scattering-gathering-reading (1 Nephi 22:1–31, teaching, no link) carries the accepted finding and the 22:4
+  safeguard (“the locations of the scattered tribes are unknown to his audience”); its ledger row records why it has
+  no link. No tribe, migration or place is located.
+* **Generated omission reasons.** The 189 remaining default reasons now say they are a generated default, **not a
+  certified absence finding**, to be reconciled against the fuller research in the omission rollup. The other 11
+  bespoke OMIT reasons (14 less BMC-022/166/227) are unchanged. No exhaustive absence is claimed.
+* **S32-A1, counts.** Checkpoint 32 had **35 views, 60 links, 61 implemented ledger rows** (one unlinked view,
+  BMV-011); links by mode were quotation 41, teaching 11, **vision 4**, mention 3, prophecy 1. This checkpoint:
+  **39 views, 67 links, 68 implemented ledger rows** (two unlinked views, BMV-011 and BMV-022); links by mode
+  quotation 41, teaching 15, vision 4, mention 3, prophecy 3. Ledger: 68 implemented + 200 omitted + 101 scan rows
+  (26 accepted / 75 rejected) = 369; all 239 keys covered.
+* **S32-A2.** SCAN_ROW override for (BMC-224, Aaron) with the review's exact reason (Jaredite Aaron, Ether 10:31);
+  still rejected.
+* Regeneration: the mapping, identity crosswalk and typed-links CSVs are byte-identical; second run idempotent;
+  1,271 SD rows, 0 pending; the only pack change is the `bom-bible` tab.
+* Tests: `pnpm check` **129/129** (Checkpoint 32 test updated to 39 views and the new locators; new assertions for
+  BMV-014/042 locators and the BMV-017/022/166/227 copy, targets and labels). One bound was relaxed by one character:
+  relation labels must be ≤ 40 characters (was < 40) because the review's exact label “Mulek survival claim
+  concerning his sons” is 40. `check:dist` 114 OK. s32-probe expectations updated to 39 entries and
+  “2 Nephi 17:1–14”.
+* Browser evidence (built site, SwiftShader): s32-probe all **6 checks passed**; the runs for 1–2, 4, 5 and 6 each
+  ended with no console errors, no `requestfailed` and no HTTP ≥ 400 (check 3 passed its assertions, but its run was
+  cut off during check 4, before the end-of-run console/request summary) ([output](supplementary-build/s33-probe-output.txt); split runs because software
+  WebGL is slow; check 4 was re-run alone after the first 3–6 run hit the shell time limit). `pnpm test:pages` 13 × 2
+  passed.
+
+**Still open (Claude keeps ownership):** timeline/source-vision relations; the omission/consolidation rollup (incl.
+reconciling the 189 generated BMC defaults against the fuller research); final same-head 4K/1280/phone evidence,
+full Tab/Shift-Tab traversal, finished-bake capture; real-GPU and physical-phone native-select/touch (hardware not
+available here).

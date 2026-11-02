@@ -1698,7 +1698,7 @@ test('Checkpoint 25: typed See-also links from the integration contract resolve 
   for (const c of all.filter((x: any) => x.see)) {
     for (const v of plain(c.see)) {
       const k = typeof v === 'string' ? v : v.k;
-      if (typeof v !== 'string') assert.ok(typeof v.r === 'string' && v.r.length > 0 && v.r.length < 40, c.key);
+      if (typeof v !== 'string') assert.ok(typeof v.r === 'string' && v.r.length > 0 && v.r.length <= 40, c.key);
       if (k.startsWith('ev:')) assert.ok(events.has(k.slice(3)), `${c.key} -> ${k}`);
       else assert.ok(byKey.has(k), `${c.key} -> ${k}`);
     }
@@ -1925,7 +1925,7 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
 
 test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
   const views = codex('bom-bible');
-  assert.equal(views.length, 35);
+  assert.equal(views.length, 39);
   const all = P.codex.flatMap((t: any) => t.list);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
@@ -1951,24 +1951,42 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
   // layer isolation and work downgrade
   const split = (layers: string[], cum: boolean, book: number) =>
     L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
-  assert.equal(split(['bom'], false, 0).shown.length, 35);
+  assert.equal(split(['bom'], false, 0).shown.length, 39);
   assert.equal(split(['ot'], false, 0).shown.length, 0);
   assert.equal(split(['nt'], false, 0).shown.length, 0);
   assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
-  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 35);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 39);
   assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
-  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 35);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 39);
   // the S31 minimum examples
   const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
   assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);
-  assert.equal(v011.src[0].t, '1 Nephi 11:13, 32');
+  assert.equal(v011.src[0].t, '1 Nephi 11:1, 13, 32');
   assert.equal((v011.see || []).length, 0);
   const v039 = byKey.get('BMV-039-judah-damascus-samaria');
   assert.match(v039.desc, /This chapter quotes Isaiah’s account concerning Judah, Damascus and Samaria/);
-  assert.equal(v039.src[0].t, '2 Nephi 17:1–9');
+  assert.equal(v039.src[0].t, '2 Nephi 17:1–14');
   const v108 = byKey.get('BMV-108-melchizedek-salem');
   assert.match(v108.desc, /Alma’s teaching recalls Melchizedek, king of Salem, and Abraham’s tithes/);
   assert.equal(v108.src[0].t, 'Alma 13:14–18');
+  // S32-C1 broadened locators and S32-C2 views (supplementary-review-s32)
+  assert.equal(byKey.get('BMV-014-john-revelation-vision').src[0].t, '1 Nephi 14:18–27');
+  assert.equal(byKey.get('BMV-042-assyrian-advance-oracle').src[0].t, '2 Nephi 20:5–19, 28–32');
+  const v017 = byKey.get('BMV-017-moses-exodus-recalled');
+  assert.equal(v017.src[0].t, '1 Nephi 17:23–32, 40–42');
+  assert.deepEqual(plain(v017.see), [{ k: 'OHR-MOSES', r: 'recalled by Nephi' }]);
+  const v022 = byKey.get('BMV-022-scattering-gathering-reading');
+  assert.equal(v022.src[0].t, '1 Nephi 22:1–31');
+  assert.match(v022.desc, /locations of the scattered tribes are unknown to his audience \(22:4\)/);
+  assert.equal((v022.see || []).length, 0);
+  const v166 = byKey.get('BMV-166-witnesses-mulek-claim');
+  assert.equal(v166.src[0].t, 'Helaman 8:11–22');
+  assert.match(v166.desc, /not an independently established genealogy or migration/);
+  assert.deepEqual(plain(seeKeys(v166)), ['OHR-MOSES', 'OHR-ABRAHAM', 'OHR-ZEDEKIAH']);
+  assert.equal(v166.see[2].r, 'Mulek survival claim concerning his sons');
+  const v227 = byKey.get('BMV-227-jerusalem-new-jerusalem-prophecy');
+  assert.equal(v227.src[0].t, 'Ether 13:4–11');
+  assert.deepEqual(plain(seeKeys(v227)), ['OTM-jerusalem', 'OHR-JOSEPH-JACOB']);
   // namesakes are never linked: Book of Mormon Jerusalem/Jordan/Gilgal views stay out of this tab
   for (const v of views) for (const k of seeKeys(v)) assert.ok(!/^(BXP|BP|BJ|BE)/.test(k), k);
 });

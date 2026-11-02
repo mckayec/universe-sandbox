@@ -454,6 +454,8 @@ def write_bmc(text):
         unit, url = chapters[n]
         if vs is None:
             loc = f'{unit}:1–{verses[unit]}'
+        elif isinstance(vs, str):
+            loc = f'{unit}:{vs}'
         elif len(vs) == 3 and vs[1] == '–':
             loc = f'{unit}:{vs[0]}–{vs[2]}'
         else:
@@ -472,8 +474,7 @@ def write_bmc(text):
             refs.append('{ k: %s, r: %s }' % (js(t), js(rel)))
             rows.append([f'BMC-{n:03d}', loc, t, gate, mode, rel, key, url, 'implemented', ''])
         if not see:
-            rows.append([f'BMC-{n:03d}', loc, '', '', mode, '', key, url, 'implemented',
-                         'nonspatial view without a link: its places are map pins, and See-also has no site: link'])
+            rows.append([f'BMC-{n:03d}', loc, '', '', mode, '', key, url, 'implemented', copy_bmc.NOLINK[n]])
         line = entry(key, name, desc, [(loc, url)], [3], ['bom'])
         if refs:
             line = line[:-3] + ', see: [' + ', '.join(refs) + '] },'
@@ -483,9 +484,11 @@ def write_bmc(text):
         unit, url = chapters[n]
         if n in views:
             continue
-        why = copy_bmc.OMIT.get(n, 'no view: the finding records no quotation, vision, teaching or mention of an '
-                                   'entity with a shared Bible card; the chapter stays a source link on the records '
-                                   'it supports (Chapter coverage contract)')
+        why = copy_bmc.OMIT.get(n, 'generated default, not a certified absence finding: the condensed ledger finding '
+                                   'names no quotation, vision, teaching or mention of an entity with a shared Bible '
+                                   'card; the chapter stays a source link on the records it supports (Chapter '
+                                   'coverage contract); to be reconciled against the fuller research in the omission '
+                                   'rollup')
         rows.append([f'BMC-{n:03d}', unit, '', '', '', '', '', url, 'omitted', why])
     # name-scan hits: every one accepted (implemented by a view) or rejected with a reason
     import subprocess

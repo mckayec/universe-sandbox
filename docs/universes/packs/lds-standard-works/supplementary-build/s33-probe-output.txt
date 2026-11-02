@@ -1,0 +1,16 @@
+# s32-probe.mjs at checkpoint 33 (expectations 39 views, 2 Nephi 17:1–14). Runs: FROM=1 TO=2; FROM=3 (check 3 passed, check 4 then hit the shell's 10-minute limit); then FROM=TO=4, 5 and 6 separately.
+[72s] desktop loaded
+[171s] check 1 passed (keyboard, one-way link, no reciprocal label)
+[287s] check 2 passed (click to a Chronicle event)
+S32 probe passed: checks 1–2; no console errors, failed requests or HTTP errors.
+run 1-2 exit 0
+[171s] check 3 passed (BoM-only: no navigation bypass)
+[565s] check 4 passed (OT-only: no BoM copy or label)
+S32 probe passed: checks 4–4; no console errors, failed requests or HTTP errors.
+exit 0
+[524s] check 5 passed (layer downgrade with the codex open)
+S32 probe passed: checks 5–5; no console errors, failed requests or HTTP errors.
+exit 0
+[310s] check 6 passed (touch on phone)
+S32 probe passed: checks 6–6; no console errors, failed requests or HTTP errors.
+exit 0

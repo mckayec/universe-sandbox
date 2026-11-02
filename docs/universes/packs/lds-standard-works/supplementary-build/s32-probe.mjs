@@ -74,7 +74,7 @@ try {
     log('desktop loaded');
     await tab.locator('#cxBtn').click({ noWaitAfter: true });
     await section(tab, 'bom-bible');
-    assert.equal(await tab.locator('#cxBody .cx-item').count(), 35);
+    assert.equal(await tab.locator('#cxBody .cx-item').count(), 39);
     const v39 = item(tab, 'BMV-039-judah-damascus-samaria');
     await v39.scrollIntoViewIfNeeded();
     assert.deepEqual(await rels(tab, 'BMV-039-judah-damascus-samaria'), [
@@ -83,7 +83,7 @@ try {
       'quoted from Isaiah:',
       'quoted from Isaiah:',
     ]);
-    assert.equal(await v39.locator('.cx-src a').textContent(), '2 Nephi 17:1–9');
+    assert.equal(await v39.locator('.cx-src a').textContent(), '2 Nephi 17:1–14');
     if (shots) await tab.screenshot({ path: `${shots}/s32-bmv039-1440x900.png` });
     await v39.locator('.cx-ref', { hasText: 'Damascus in the prophets' }).locator('.cx-see').focus();
     await tab.keyboard.press('Enter', { noWaitAfter: true });
@@ -113,7 +113,7 @@ try {
     ({ ctx, tab } = await open('#layers=bom', { width: 1440, height: 900 }));
     await tab.locator('#cxBtn').click({ noWaitAfter: true });
     await section(tab, 'bom-bible');
-    assert.equal(await tab.locator('#cxBody .cx-item').count(), 35);
+    assert.equal(await tab.locator('#cxBody .cx-item').count(), 39);
     const off = item(tab, 'BMV-039-judah-damascus-samaria');
     assert.equal(await off.locator('.cx-see').count(), 0);
     assert.equal(await off.locator('.cx-off', { hasText: 'hidden by the layer or year filter' }).count(), 4);
@@ -128,7 +128,7 @@ try {
     await tab.locator('#cxBtn').click({ noWaitAfter: true });
     await section(tab, 'bom-bible');
     assert.equal(await tab.locator('#cxBody .cx-item').count(), 0);
-    assert.match(await bodyText(tab), /35 entries are hidden by the layer or year filter\./);
+    assert.match(await bodyText(tab), /39 entries are hidden by the layer or year filter\./);
     await section(tab, 'ot-more');
     assert.ok(!/BMV-|quoted by Abinadi|in Lehi’s vision|Alma’s teaching/.test(await bodyText(tab)));
     log('check 4 passed (OT-only: no BoM copy or label)');
@@ -140,10 +140,10 @@ try {
     ({ ctx, tab } = await open('#layers=ot,nt,bom', { width: 1440, height: 900 }));
     await tab.locator('#cxBtn').click({ noWaitAfter: true });
     await section(tab, 'bom-bible');
-    assert.equal(await tab.locator('#cxBody .cx-item').count(), 35);
+    assert.equal(await tab.locator('#cxBody .cx-item').count(), 39);
     await tab.evaluate(() => document.querySelector('#filters [data-layer="bom"]').click());
     await tab.waitForFunction(() => document.querySelectorAll('#cxBody .cx-item').length === 0);
-    assert.match(await bodyText(tab), /35 entries are hidden by the layer or year filter\./);
+    assert.match(await bodyText(tab), /39 entries are hidden by the layer or year filter\./);
     assert.ok(!/Lehi’s vision|quoted from Isaiah/.test(await bodyText(tab)));
     log('check 5 passed (layer downgrade with the codex open)');
     await ctx.close();

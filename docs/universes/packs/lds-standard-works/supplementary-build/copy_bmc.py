@@ -34,10 +34,10 @@ VIEWS = [
      [('NTP-bethabara', 'foretold in Lehi’s prophecy')]),
     (11, 'nazareth-jerusalem-vision', 'Nephi’s vision of Nazareth and Jerusalem (1 Nephi 11)', 'vision',
      'Book of Mormon — In Nephi’s vision, he sees Nazareth and Jerusalem. The vision begins on an unnamed high '
-     'mountain; the cities are viewed, not visited, and no mountain or route is located.', [13, 32], []),
+     'mountain; the cities are viewed, not visited, and no mountain or route is located.', '1, 13, 32', []),
     (14, 'john-revelation-vision', 'John named in Nephi’s vision (1 Nephi 14)', 'vision',
      'Book of Mormon — The angel in Nephi’s vision identifies John as the writer of later revelations. John is '
-     'named, not met.', [27], [('ev:patmos-vision', 'John named as its writer')]),
+     'named, not met.', '18–27', [('ev:patmos-vision', 'John named as its writer')]),
     (20, 'babylon-quotation', 'Departure from Babylon, quoted from Isaiah (1 Nephi 20)', 'quotation',
      'Book of Mormon — The quoted Isaiah discourse addresses Israel and departure from Babylon, contrasting divine '
      'guidance with disobedience. It is a quotation, not a Lehite visit to Babylon.', None,
@@ -46,6 +46,15 @@ VIEWS = [
      'Book of Mormon — The Isaiah quotation portrays a servant, Zion’s restoration and gathering from afar, '
      'including the place-name Sinim, which stays unidentified. The prophecy contains no return routes.', None,
      [('OTM-zion-prophetic-jerusalem', 'Zion’s restoration, quoted from Isaiah')]),
+    (17, 'moses-exodus-recalled', 'Moses and the Exodus recalled by Nephi (1 Nephi 17)', 'teaching',
+     'Book of Mormon — Nephi recalls Moses leading Israel out of Egypt and Israel’s wilderness experiences while '
+     'addressing his brothers. These are scriptural recollections, not stops on Nephi’s voyage.', '23–32, 40–42',
+     [('OHR-MOSES', 'recalled by Nephi')]),
+    (22, 'scattering-gathering-reading', 'Scattering and gathering in Nephi’s reading of Isaiah (1 Nephi 22)',
+     'teaching',
+     'Book of Mormon — Nephi interprets the Isaiah chapters he has just quoted (1 Nephi 20–21): Israel’s scattering '
+     'and gathering involve actual peoples, and he says the locations of the scattered tribes are unknown to his '
+     'audience (22:4). No tribe, migration or place is located.', None, []),
     (23, 'jerusalem-destruction-known', 'Jerusalem’s destruction known in vision (2 Nephi 1)', 'vision',
      'Book of Mormon — Lehi reports that he has seen in vision that Jerusalem is destroyed. He knows it through '
      'vision, not a return journey.', None, [('ev:jerusalem-destruction', 'known to Lehi through vision')]),
@@ -88,7 +97,7 @@ VIEWS = [
     (39, 'judah-damascus-samaria', 'Judah, Damascus and Samaria, quoted from Isaiah (2 Nephi 17)', 'quotation',
      'Book of Mormon — This chapter quotes Isaiah’s account concerning Judah, Damascus and Samaria: Ahaz faces Rezin '
      'and Pekah, and the Immanuel sign is given. It is quoted Israelite material, not Nephite geography; no pool is '
-     'identified.', [1, '–', 9],
+     'identified.', '1–14',
      [('OTM-r02-ahaz-crisis', 'same crisis, quoted'), ('OTM-judah-region', 'quoted from Isaiah'),
       ('OTM-damascus', 'quoted from Isaiah'), ('OTM-samaria', 'quoted from Isaiah')]),
     (40, 'isaiah-children-signs', 'Isaiah’s children as signs, quoted (2 Nephi 18)', 'quotation',
@@ -103,7 +112,7 @@ VIEWS = [
     (42, 'assyrian-advance-oracle', 'Assyria’s advance toward Nob, quoted (2 Nephi 20)', 'quotation',
      'Book of Mormon — Assyria is portrayed as an instrument later judged; in verses 28–32 Aiath, Migron, Michmash, '
      'Geba and Nob form the oracle’s prophetic advance toward Zion. It is a quoted threat, not a military route.',
-     [28, '–', 32],
+     '5–19, 28–32',
      [('OTM-j01-assyrian-oracle-march', 'same oracle, quoted'), ('OTM-assyria-region', 'quoted from Isaiah'),
       ('OTM-zion-prophetic-jerusalem', 'the advance’s goal, quoted')]),
     (43, 'jesse-ruler', 'A ruler from Jesse, quoted (2 Nephi 21)', 'quotation',
@@ -154,6 +163,12 @@ VIEWS = [
      'Book of Mormon — Alma cites Zenos, Zenock and Moses to teach prayer beyond synagogues and faith in the Son of '
      'God, including the wilderness healing type. The quoted settings are not stops on Alma’s mission.', None,
      [('OHR-MOSES', 'wilderness healing type, cited by Alma')]),
+    (166, 'witnesses-mulek-claim', 'Moses, Abraham and Mulek’s survival in Nephi’s preaching (Helaman 8)', 'teaching',
+     'Book of Mormon — Nephi recalls Moses and Abraham as witnesses and says that Mulek survived the killing of '
+     'Zedekiah’s sons. The survival and descent are this text’s claims, not an independently established genealogy '
+     'or migration.', '11–22',
+     [('OHR-MOSES', 'recalled as a witness'), ('OHR-ABRAHAM', 'recalled as a witness'),
+      ('OHR-ZEDEKIAH', 'Mulek survival claim concerning his sons')]),
     (190, 'redeemed-jerusalem', 'Redeemed Jerusalem, quoted by Jesus (3 Nephi 16)', 'quotation',
      'Book of Mormon — Jesus speaks of other sheep beyond this land and Jerusalem and quotes Isaiah on redeemed '
      'Jerusalem. The unvisited sheep have no named destination.', None,
@@ -171,7 +186,21 @@ VIEWS = [
      'Book of Mormon — Moroni explains restricted revelation and invites readers to receive fuller revelation, '
      'including John’s writings. Moroni’s editorial time differs from the Jaredite scene.', None,
      [('ev:patmos-vision', 'John’s writings named by Moroni')]),
+    (227, 'jerusalem-new-jerusalem-prophecy', 'Jerusalem and a New Jerusalem in Ether’s prophecy (Ether 13)',
+     'prophecy',
+     'Book of Mormon — Ether’s prophecy distinguishes the Jerusalem from which Lehi would come from a New Jerusalem '
+     'promised on this land. It recalls Joseph and his father in Egypt; the promised cities are not presented as '
+     'completed Jaredite construction.', '4–11',
+     [('OTM-jerusalem', 'Jerusalem of old in Ether’s prophecy'),
+      ('OHR-JOSEPH-JACOB', 'Joseph recalled in the prophecy')]),
 ]
+
+# Views implemented without a See-also link: reason (recorded in bmc-source-views.csv).
+NOLINK = {
+    11: 'nonspatial view without a link: its places are map pins, and See-also has no site: link',
+    22: 'interpretation view without a link: it carries the 1 Nephi 22 locator and the 22:4 unknown-location '
+        'safeguard for the 1 Nephi 20–21 quotations; no Bible card is its subject and no tribe or place is located',
+}
 
 # BMC keys deliberately not given a view although their finding touches a Bible text or figure: reason.
 OMIT = {
@@ -179,15 +208,11 @@ OMIT = {
        'persons’ cards beyond the formula',
     19: 'Isaiah is introduced as a source and Zenos/Zenock are quoted prophets without cards; the Isaiah text itself is '
         'carried by the 1 Nephi 20–21 views',
-    22: 'interpretation of the preceding Isaiah chapters; 22:4 explicitly leaves the tribes’ locations unknown, so no '
-        'place is linked; consolidated into the 1 Nephi 20–21 views',
     29: 'quoted Isaiah servant passage with no named shared entity in the finding; no card for this Isaiah chapter',
     33: 'editorial bridge introducing Isaiah as a witness; no entity relation; the quoted chapters 2 Nephi 12–24 have '
         'their own views',
     60: 'Zenos’s allegory: Zenos has no shared Bible card and the vineyard is not mapped',
     61: 'interpretation of Jacob 5; no named shared entity',
-    166: 'Mulek’s survival is a Book of Mormon claim to compare with biblical accounts; a link to Zedekiah’s card would '
-         'imply a genealogy the ledger forbids harmonizing',
     184: 'the finding cites “Jacob” with Zenos and Zenock without saying which Jacob; the identity is not stated, so '
          'no person card is linked',
     189: 'the cross-link the ledger names (John 10’s other sheep) has no codex card or Chronicle event at this head; '
@@ -196,8 +221,6 @@ OMIT = {
     197: 'Samuel is the Lamanite prophet, not the Bible’s Samuel; the Isaiah study command names no entity',
     198: 'Malachi 3 is quoted, but no Old Testament card covers Malachi at this head; the only Malachi card is a '
          'Doctrine and Covenants source view (4/dc), a later work',
-    227: 'Ether’s renewed Jerusalem and New Jerusalem are future promises; Gilgal is a Jaredite valley/city, not '
-         'Joshua’s Gilgal',
 }
 
 # Name-scan hits (bmc_candidates.py): default disposition per scanned name, then per-row overrides.
@@ -242,6 +265,8 @@ SCAN_ROW = {
     ('BMC-040', 'Samaria'): 'accept (OTM-samaria, as for BMC-039)',
     ('BMC-021', 'Zion'): 'accept', ('BMC-030', 'Zion'): 'consolidated: the view links Jerusalem for the consolation '
                                                          'passage; Zion is named in its copy',
+    ('BMC-224', 'Aaron'): 'Jaredite Aaron, son of Heth and father of Amnigaddah, who lived in captivity; not Moses’ '
+                          'brother, Mosiah’s son or the city Aaron',
     ('BMC-102', 'Gideon'): 'Book of Mormon land Gideon (where Alma teaches), not the judge; the chapter’s Mary and '
                            'Jerusalem view is implemented',
 }
