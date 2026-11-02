@@ -510,7 +510,9 @@ def write_bmc(text):
             rows.append([f'BMC-{n:03d}', loc, t, gate, mode, rel, key, url, 'implemented', ''])
         if not see:
             rows.append([f'BMC-{n:03d}', loc, '', '', mode, '', key, url, 'implemented', copy_bmc.NOLINK[n]])
-        line = entry(key, name, desc, [(loc, url)], [3], ['bom'])
+        extra = copy_bmc.EXTRA_SOURCES.get(n, [])
+        assert all('/dc-testament/' not in u and '/pgp/' not in u for _t, u in extra), key  # no later work at 3/bom
+        line = entry(key, name, desc, [(loc, url)] + extra, [3], ['bom'])
         if refs:
             line = line[:-3] + ', see: [' + ', '.join(refs) + '] },'
         lines.append(line)

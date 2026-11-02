@@ -44,14 +44,11 @@ LIMIT = ('reading of the committed research (ledger row, full-read rows, crosswa
 SEMANTIC = {
     'BMC-193': ('represented', 'Israel’s gathering and the old/New Jerusalem promises in the BXC02 record belong '
                                'to the chapters that teach them (BMV-190, BMV-195; rollup range-spill); the record’s '
-                               'lost-tribes wording is the BMC-191 unstated parallel; Isaiah, Jeremiah and Zedekiah '
-                               'are Nephite disciples (rollup namesakes)'),
+                               'lost-tribes announcement is BMV-191 (S37: no tribe identity or destination); '
+                               'Isaiah, Jeremiah and Zedekiah are Nephite disciples (rollup namesakes)'),
     'BMC-015': ('represented', 'Nephi interprets the olive tree, gathering and rod for his brothers; the 1 Nephi '
                                '12–15 full-read row notes John is identified in 14:27, which is BMV-014 (John named in '
                                'Nephi’s vision)'),
-    'BMC-016': ('relation-no-card', 'the crosswalk record BXP01 says river Laman empties into the Red Sea and a later '
-                                    'departure crosses it: a narrative setting naming a Bible place with no card at '
-                                    'this head (as BMC-002); Joseph and Ishmael are namesakes (rollup)'),
     'BMC-026': ('represented', 'the 2 Nephi 1–6 full-read row keeps three Joseph identities distinct and ties the '
                                'Egyptian ancestor and future seer to 2 Nephi 3 (BMV-025) and Lehi’s knowledge of '
                                'Jerusalem’s destruction to 2 Nephi 1 (BMV-023); Solomon’s temple comparison is '
@@ -60,14 +57,8 @@ SEMANTIC = {
     'BMC-089': ('namesake', 'Noah is the Zeniff-line king whose fugitive priests settle Amulon (BXP04)'),
     'BMC-090': ('namesake', 'Noah is the Zeniff-line king (BXP03), not the patriarch'),
     'BMC-091': ('represented', 'the Mosiah 25 full-read row names Zarahemla as Mulek’s descendant; Mulek’s survival '
-                               'as Zedekiah’s son is carried by Nephi’s Helaman 8 teaching (BMV-166, OHR-ZEDEKIAH)'),
-    'BMC-094': ('relation-no-card', 'the Mosiah 28 full-read row says the translated 24 plates give a tower/creation '
-                                    'retrospective of their origins; the pack has no tower or Babel card at this head '
-                                    '(as BMC-215). Aaron is Mosiah’s son (rollup)'),
-    'BMC-124': ('candidate', 'the Alma 29 full-read row records an Egyptian-bondage retrospect in verses 11–12, “not '
-                             'Nephites traveling Egypt”: Alma recalls the deliverance from Egypt, as BMV-073 and '
-                             'BMV-131 do. Proposed: a gated 3/bom teaching view on Alma 29:11–12 linking OTS-P04-egypt '
-                             'with “deliverance recalled by Alma”, consistent with BMV-131'),
+                               'as Zedekiah’s son is carried by BMV-166 (Helaman 8:11–22 and, since S37, '
+                               'Helaman 6:10; OHR-ZEDEKIAH)'),
     'BMC-165': ('represented', 'Nephi prays on his garden tower in Zarahemla (BXP35, a Book of Mormon structure); the '
                                'city Mulek on the BXJ10 route is a namesake, and Mulek’s Zedekiah descent is BMV-166'),
     'BMC-217': ('namesake', 'the brother of Jared is the Jaredite founder’s brother; no Genesis Jared card exists and '
@@ -80,27 +71,9 @@ SEMANTIC = {
                             'content with no Bible text or place named'),
     'BMC-228': ('namesake', 'Jared, Noah and Nimrod appear in the Jaredite people record BXR05 as Jaredites; Gilead is '
                             'Shared’s brother (rollup); no Bible link is made'),
-    'BMC-002': ('relation-no-card', 'the household travels near the Red Sea (2:4–24): a narrative setting naming a '
-                                    'Bible place, but no Red Sea card exists at this head (the Exodus cards are '
-                                    'Succoth, Rephidim, Sinai and the camps); the departure from Jerusalem is carried '
-                                    'by BJ01, and the Joseph/Zedekiah hits belong to BMV-001/005 (range-spill)'),
     'BMC-012': ('no-bible-relation', 'the vision forecasts Christ’s appearance and twelve disciples among Nephi’s '
                                      'descendants, fulfilled in the Book of Mormon’s own 3 Nephi narrative (BXE03); '
                                      'no Gospel event or Bible place is named'),
-    'BMC-013': ('relation-no-card', 'the research describes the transmission and recovery of sacred writings in '
-                                    'Nephi’s vision without naming the Bible or any book of it; the pack has no card '
-                                    'for the Bible as a text, and John’s naming is the next chapter’s view (BMV-014)'),
-    'BMC-031': ('reader', 'Jacob teaches redemption from the Fall; the research names the Fall but not Eden or Adam. '
-                          'BMV-024/107/137 link Eden (OH-P01) where their research names Eden or Adam’s Fall; whether '
-                          'a Fall teaching without either name warrants that link is a reading decision. “The Holy One '
-                          'of Israel” is a divine title (rollup)'),
-    'BMC-051': ('relation-no-card', 'the discourse names Jews, Nephites and other tribes as peoples with sacred records; '
-                                    'the Jews’ record is not tied to a Bible book or place, and the pack has no card '
-                                    'for the Bible as a text or for Jews as a people'),
-    'BMC-053': ('candidate', 'the research says Nephi teaches Christ’s baptism as an example (2 Nephi 31): a teaching '
-                             'about a Gospel event with a card, NTE-baptism-matthew (2/nt). Proposed: a gated 3/bom '
-                             'teaching view, label “his baptism taught as an example”; BMV-010 already carries Lehi’s '
-                             'Bethabara prophecy, so this would not repeat the place'),
     'BMC-059': ('practice-or-title', 'Jacob teaches the law of Moses as pointing to Christ: a practice, not a relation '
                                      'to the Moses card (rollup). The rejected-foundation stone imagery is not tied by '
                                      'the research to any Bible text, and the ledger calls it a literary reference'),
@@ -108,18 +81,10 @@ SEMANTIC = {
                                      'relation to the Moses card (rollup)'),
     'BMC-077': ('namesake', 'Noah here is Zeniff’s son, king of the land; the pack’s Noah cards are Pearl of Great '
                             'Price records (5/pgp), and no Old Testament Noah card exists'),
-    'BMC-081': ('unstated-parallel', 'Abinadi explains “the image of messengers proclaiming peace”; the research does '
-                                     'not name a source for the image, so no quotation link is made. Research '
-                                     'question: does the official text quote a Bible passage here, and which?'),
     'BMC-083': ('namesake', 'Noah is the Zeniff-line king whose servants pursue Alma, not the patriarch'),
     'BMC-085': ('namesake', 'Noah is the Zeniff-line king who flees to the temple-side tower, not the patriarch'),
     'BMC-086': ('namesake', 'Noah’s priests are the Zeniff-line king’s, not the patriarch’s'),
-    'BMC-100': ('unstated-parallel', 'Alma calls hearers to “the Good Shepherd”; the research ties the image to no '
-                                     'Bible text (the ledger calls it metaphorical), so no link is made'),
     'BMC-111': ('namesake', 'Noah here is a Nephite land (BXP10) attacked with Ammonihah, not the patriarch'),
-    'BMC-113': ('reader', 'Ammon teaches Lamoni creation, ancestral journeys and redemption; the research names '
-                          'creation but no Bible text, figure or place. Whether a creation teaching links Creation in '
-                          'Genesis (OH-C01) is a reading decision, grouped with BMC-031 and BMC-214'),
     'BMC-120': ('practice-or-title', 'surviving Lamanites observe Moses’ law while looking to Christ: a practice, not a '
                                      'relation to the Moses card (rollup)'),
     'BMC-144': ('namesake', 'Noah is the fortified Nephite city Lehi commands, not the patriarch'),
@@ -128,46 +93,9 @@ SEMANTIC = {
     'BMC-148': ('namesake', 'Mulek is the city Lehi holds (BXP29); the Zedekiah lineage is carried by BMV-166'),
     'BMC-163': ('namesake', 'Mulek is a city on Nephi and Lehi’s mission route (BXP29); the Zedekiah lineage is '
                             'carried by BMV-166'),
-    'BMC-164': ('namesake', 'Mulek is the passage-specific land northward (BXP37); the Zedekiah lineage is carried by '
-                            'BMV-166'),
-    'BMC-172': ('candidate', 'the research says Samuel predicts darkness and upheaval at Christ’s death: a prophecy '
-                             'about the Crucifixion, which has a card, AE10 “Crucifixion in Matthew” (2/nt). Proposed: '
-                             'a gated 3/bom prophecy view, label “signs at his death foretold”, nonspatial for the '
-                             'signs themselves. The birth sign’s new star is not tied by the research to Matthew 2, so '
-                             'NTJ-matthew-infancy is not proposed'),
     'BMC-175': ('practice-or-title', 'the law of Moses remains in force (a practice); the new star is the Book of '
                                      'Mormon birth sign, which the research does not tie to Matthew 2’s star '
                                      '(unstated parallel, not linked); the Nephi here is a Nephite record keeper'),
-    'BMC-186': ('candidate', 'the research calls 3 Nephi 12 a “reference entry with Matthew 5 comparison; retain '
-                             'textual differences”: a stated comparison with a card, NTC-sermon-mountain (2/nt). '
-                             'Proposed: a gated 3/bom teaching view, label “taught again at Bountiful; wording '
-                             'differs”. Consistency: BMV-187 (Matthew 6 parallel per its research) links only '
-                             'Solomon and could add the same card'),
-    'BMC-188': ('reader', 'the research keeps 3 Nephi 14 as “sermon/concept coverage” and names no Matthew '
-                          'comparison in this row; if BMC-186/187 link NTC-sermon-mountain, whether 14 should too is a '
-                          'reading decision'),
-    'BMC-191': ('unstated-parallel', 'Jesus announces visiting the Father and the lost tribes; the research says the '
-                                     'destination is unnamed and ties the tribes to no Bible event. The nearest card, '
-                                     'OTL-lh-j02 “Transjordan tribes deported”, is narrower, so no link. Israel/'
-                                     'Jerusalem hits belong to BMV-190/195 (range-spill)'),
-    'BMC-192': ('unstated-parallel', 'Jesus institutes the bread/wine remembrance; the research ties it to 3 Nephi '
-                                     '18 and Moroni 2/4/5, not to a Gospel supper, and the pack has no Last Supper '
-                                     'card'),
-    'BMC-202': ('reader', 'three disciples desire continuing ministry “like John”: the research names John but not '
-                          'which card. The pack’s John relations are the Patmos vision (ev:patmos-vision, BMV-014/218) '
-                          'and Section 7, John’s desired ministry (DCM-dd007, 4/dc, a later work — cf. the BMC-198 '
-                          'Malachi precedent); whether either fits is a reading decision'),
-    'BMC-212': ('relation-no-card', 'Mormon asks the remnant to read this record alongside “the record coming from '
-                                    'Jews through Gentiles”: the research names no Bible book, and the pack has no card '
-                                    'for the Bible as a text; Christ, baptism and the Spirit are Book of Mormon '
-                                    'teaching'),
-    'BMC-214': ('reader', 'Moroni teaches creation/fall/redemption; “reformed Egyptian” and “altered Hebrew” are '
-                          'script names, not a relation to Egypt (practice-or-title). Whether the creation/fall '
-                          'teaching links OH-C01/OH-P01 is the BMC-031/113 reading decision'),
-    'BMC-215': ('relation-no-card', 'Moroni abridges the Jaredite record “from the tower onward” and omits creation '
-                                    'material available among the Jews; the ledger says the tower’s identification and '
-                                    'date need care, and the pack has no tower or Babel card at this head. Jared is a '
-                                    'Jaredite founder, not Genesis 5’s Jared'),
     'BMC-216': ('namesake', 'Nimrod valley is the Jaredite gathering place (and Ether 7’s Nimrod a ruler); the research '
                             'gives no Bible link and no Nimrod card exists'),
     'BMC-220': ('namesake', 'Jared and his brother are the Jaredite founders; no Genesis Jared card exists and the '

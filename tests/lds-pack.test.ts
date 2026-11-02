@@ -1956,7 +1956,7 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
 
 test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
   const views = codex('bom-bible');
-  assert.equal(views.length, 58);
+  assert.equal(views.length, 76); // 58 through checkpoint 37, 18 added by the S37 decisions (checkpoint 38)
   const all = P.codex.flatMap((t: any) => t.list);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
@@ -1965,9 +1965,11 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
     assert.deepEqual(plain(v.books), [3]);
     assert.deepEqual(plain(v.layers), ['bom']);
     assert.ok(v.desc.startsWith('Book of Mormon — '), v.key);
-    assert.equal(v.src.length, 1);
-    assert.match(v.src[0].t, /^[1-4A-Za-z ]+ \d+:\d+([–, ]+\d+)*$/, v.key);
+    // the view's own chapter first; checkpoint 38 adds compared Bible passages or a second Book of Mormon verse
+    for (const x of v.src) assert.match(x.t, /^[1-4A-Za-z ]+ \d+:\d+([–, ]+\d+)*$/, v.key);
     assert.match(v.src[0].u, /^https:\/\/www\.churchofjesuschrist\.org\/study\/scriptures\/bofm\//);
+    for (const x of v.src.slice(1))
+      assert.match(x.u, /^https:\/\/www\.churchofjesuschrist\.org\/study\/scriptures\/(ot|nt|bofm)\//, v.key);
     assert.equal(v.when, undefined);
     for (const s of v.see || []) {
       assert.ok(s.k && s.r, v.key);
@@ -1982,13 +1984,13 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
   // layer isolation and work downgrade
   const split = (layers: string[], cum: boolean, book: number) =>
     L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
-  assert.equal(split(['bom'], false, 0).shown.length, 58);
+  assert.equal(split(['bom'], false, 0).shown.length, 76);
   assert.equal(split(['ot'], false, 0).shown.length, 0);
   assert.equal(split(['nt'], false, 0).shown.length, 0);
   assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
-  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 58);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 76);
   assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
-  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 58);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 76);
   // the S31 minimum examples
   const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
   assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);
@@ -2113,16 +2115,13 @@ test('Checkpoint 37: every default BMC omission has a semantic disposition with 
     assert.ok(views.includes(`${key},`) && views.includes(reason.slice(0, 60)), key);
   }
   const by = new Map(rows.map(r => [r[0], r]));
-  // relations the card-name scan cannot see
-  assert.equal(by.get('BMC-002')![2], 'relation-no-card'); // the Red Sea
-  assert.equal(by.get('BMC-053')![2], 'candidate'); // Christ's baptism taught as an example
-  assert.match(by.get('BMC-053')![3], /NTE-baptism-matthew/);
-  assert.equal(by.get('BMC-124')![2], 'candidate'); // Egyptian-bondage retrospect, Alma 29:11–12
-  assert.equal(by.get('BMC-186')![2], 'candidate'); // stated Matthew 5 comparison
-  assert.equal(by.get('BMC-215')![2], 'relation-no-card'); // the tower
-  // proposals are not built: no BMV view exists for a candidate or reader chapter at this head
+  // checkpoint 38: the S37 decisions left no candidate, reader, unstated-parallel or relation-no-card row; the 146
+  // remaining rows are summary-level reason screens, not certified absences
+  assert.equal(rows.length, 146);
   for (const [key, , state] of rows)
-    if (state === 'candidate' || state === 'reader') assert.ok(!new RegExp(`BMV-${key.slice(4)}-`).test(views), key);
+    assert.ok(!['candidate', 'reader', 'unstated-parallel', 'relation-no-card'].includes(state), `${key} ${state}`);
+  for (const k of ['BMC-002', 'BMC-016', 'BMC-053', 'BMC-124', 'BMC-164', 'BMC-186', 'BMC-215'])
+    assert.equal(by.get(k), undefined, k);
 });
 
 test('Checkpoint 35: every full-read table row in coverage-bom.md is ingested by the omission rollup', () => {
@@ -2172,7 +2171,10 @@ test('Checkpoint 35: S34 builder decisions are implemented as attributed 3/bom s
   // Amulek's Manasseh is not King Manasseh
   assert.deepEqual(see('BMV-105-amulek-joseph-descent'), ['OHR-JOSEPH-JACOB|descent claimed by Amulek']);
   assert.deepEqual(see('BMV-137-eden-alma-teaching'), ['OH-P01|Eden in Alma’s teaching']);
-  assert.deepEqual(see('BMV-187-solomon-glory-illustration'), ['OHR-SOLOMON|illustrative reference in teaching']);
+  assert.deepEqual(see('BMV-187-solomon-glory-illustration'), [
+    'OHR-SOLOMON|illustrative reference in teaching',
+    'NTC-sermon-mountain|compare Matthew 6',
+  ]);
   assert.deepEqual(see('BMV-239-jerusalem-zion-exhortation'), [
     'OTM-jerusalem|invoked in covenant exhortation',
     'OTM-zion-prophetic-jerusalem|invoked in covenant exhortation',
@@ -2246,4 +2248,84 @@ test('Checkpoint 36: the five S35 answers are one-way 3/bom views with the revie
   assert.match(byKey.get('BMV-141-joseph-garment-moroni').desc, /not a quotation found in the Genesis text/);
   assert.match(byKey.get('BMV-069-mary-benjamin-angel').desc, /does not describe Mary’s visit to Elisabeth/);
   assert.match(byKey.get('BMV-079-sinai-moses-comparison').desc, /not another local mountain or a journey by Abinadi/);
+});
+
+test('Checkpoint 38: the S37 decisions are 3/bom source views with the reviewer’s copy, locators and bounded labels', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
+  // [key, sources in order, See-also [target, label]]
+  const want: [string, string[], string[][]][] = [
+    [
+      'BMV-053-baptism-example-nephi',
+      ['2 Nephi 31:4–12'],
+      [['NTE-baptism-matthew', 'his baptism taught as an example']],
+    ],
+    ['BMV-124-egypt-deliverance-alma-29', ['Alma 29:11–13'], [['OTS-P04-egypt', 'deliverance recalled by Alma']]],
+    ['BMV-172-death-signs-samuel', ['Helaman 14:14–25'], [['AE10', 'Christ’s death foretold']]],
+    [
+      'BMV-186-sermon-compare-matthew-5',
+      ['3 Nephi 12:1–12', 'Matthew 5:1–12'],
+      [['NTC-sermon-mountain', 'compare Matthew 5']],
+    ],
+    ['BMV-031-fall-redemption-jacob', ['2 Nephi 9:6–10'], []],
+    ['BMV-113-creation-ammon-lamoni', ['Alma 18:36'], [['OH-C01', 'creation in another account']]],
+    ['BMV-214-creation-moroni-teaching', ['Mormon 9:11–13'], [['OH-C01', 'creation in another account']]],
+    [
+      'BMV-188-sermon-compare-matthew-7',
+      ['3 Nephi 14:1–14', 'Matthew 7:1–14'],
+      [['NTC-sermon-mountain', 'compare Matthew 7']],
+    ],
+    ['BMV-202-three-disciples-john', ['3 Nephi 28:4–9', 'John 21:20–23'], []],
+    [
+      'BMV-081-peace-messengers-jerusalem',
+      ['Mosiah 15:13–18, 28–31', 'Isaiah 52:7–10'],
+      [['OTM-jerusalem', 'Jerusalem in the quoted language']],
+    ],
+    ['BMV-100-good-shepherd-alma', ['Alma 5:57–60', 'John 10:11–16'], []],
+    [
+      'BMV-191-healings-jerusalem-recalled',
+      ['3 Nephi 17:4, 7–9'],
+      [['OTM-jerusalem', 'healings at Jerusalem recalled']],
+    ],
+    ['BMV-192-bread-wine-remembrance', ['3 Nephi 18:1–11', 'Matthew 26:26–29'], []],
+    ['BMV-013-record-jews-gentiles-vision', ['1 Nephi 13:20–29'], []],
+    ['BMV-051-bible-records-discourse', ['2 Nephi 29:3–14'], []],
+    ['BMV-212-two-records-mormon', ['Mormon 7:8–10'], []],
+    ['BMV-094-tower-creation-retrospect', ['Mosiah 28:17–19'], []],
+    ['BMV-215-tower-abridgment-moroni', ['Ether 1:3–5, 33–37'], []],
+  ];
+  assert.equal(want.length, 18);
+  for (const [key, src, see] of want) {
+    const v = byKey.get(key);
+    assert.ok(v, key);
+    assert.deepEqual(plain(v.books), [3], key);
+    assert.deepEqual(plain(v.layers), ['bom'], key);
+    assert.ok(v.desc.startsWith('Book of Mormon — '), key);
+    assert.deepEqual(plain(v.src.map((s: any) => s.t)), src, key);
+    // no later work (D&C, Pearl of Great Price) is cited or named at this gate
+    assert.ok(!v.src.some((s: any) => /dc-testament|\/pgp\//.test(s.u)), key);
+    assert.ok(!/Doctrine and Covenants|D&C|Section 7/.test(v.desc), key);
+    assert.deepEqual(plain((v.see || []).map((s: any) => [s.k, s.r])), see, key);
+    for (const [k] of see) assert.ok(!seeKeys(byKey.get(k)).some(x => x.startsWith('BMV-')), k);
+  }
+  // BMC-202 is not the Patmos vision; BMC-031 does not link Eden; BMC-191 names no tribe destination
+  assert.ok(!seeKeys(byKey.get('BMV-202-three-disciples-john')).includes('ev:patmos-vision'));
+  assert.match(byKey.get('BMV-202-three-disciples-john').desc, /not John’s vision on Patmos/);
+  assert.match(byKey.get('BMV-031-fall-redemption-jacob').desc, /without locating Eden/);
+  assert.match(byKey.get('BMV-191-healings-jerusalem-recalled').desc, /without naming their destination/);
+  // S37-C2: BMV-166 carries Helaman 6:10 and its sentence; Helaman 8 wording and safeguard kept
+  const v166 = byKey.get('BMV-166-witnesses-mulek-claim');
+  assert.deepEqual(plain(v166.src.map((s: any) => s.t)), ['Helaman 8:11–22', 'Helaman 6:10']);
+  assert.match(v166.desc, /not an independently established genealogy/);
+  assert.match(v166.desc, /Helaman 6:10 separately says that the northern land was named after Mulek/);
+  assert.match(byKey.get('BMV-187-solomon-glory-illustration').desc, /comparison with Matthew 6/);
+  // S37-C1 and the two consolidations
+  const ledger = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/bmc-source-views.csv', import.meta.url),
+    'utf8',
+  );
+  assert.match(ledger, /^BMC-016,1 Nephi 16,[^\n]*,omitted,"S37 decision \(S37-C1\): [^\n]*crosses river Laman/m);
+  assert.ok(!/^BMC-016,[^\n]*Red Sea crossing(?! or)/m.test(ledger));
+  assert.match(ledger, /^BMC-002,1 Nephi 2,[^\n]*,omitted,"S37 decision: [^\n]*BP01[^\n]*BXP01/m);
+  assert.match(ledger, /^BMC-164,Helaman 6,[^\n]*,omitted,"?S37 decision \(S37-C2\): [^\n]*BXP37[^\n]*BMV-166/m);
 });

@@ -1718,3 +1718,52 @@ evidence-based retained/represented/omitted reasons with research locators and l
 * **Still open (Claude keeps ownership):** timeline and source-vision relations; building whatever S37 accepts; final
   same-head 4K/1280/phone set, full Tab traversal and finished-bake evidence; real-GPU and physical-phone evidence
   need hardware.
+
+## Checkpoint 38 (the S37 builder decisions: 18 source views, two enrichments, three consolidations)
+
+Parent: 102f697 (the S37-reviewed head). Review: PR34 `supplementary-review-s37.md` and
+`supplementary-review-s37/builder-decisions.md` at 5069414. Every copy, locator and label below is the reviewer's
+minimum copy from that brief, prefixed “Book of Mormon — ”; nothing was added from memory.
+
+* **18 new 3/bom views** in `bom-bible` ([copy_bmc.py](supplementary-build/copy_bmc.py), “Checkpoint 38”):
+  * Candidates: BMV-053 2 Nephi 31:4–12 → `NTE-baptism-matthew` “his baptism taught as an example”; BMV-124 Alma
+    29:11–13 → `OTS-P04-egypt` “deliverance recalled by Alma”; BMV-172 Helaman 14:14–25 → `AE10` “Christ’s death
+    foretold” (no three-day transfer to Matthew, no birth-star link); BMV-186 3 Nephi 12:1–12 + Matthew 5:1–12 →
+    `NTC-sermon-mountain` “compare Matthew 5” (the explicit comparison label, not “taught again”).
+  * Reader decisions: BMV-031 2 Nephi 9:6–10 unlinked (OH-P01 not linked for the Fall); BMV-113 Alma 18:36 and BMV-214
+    Mormon 9:11–13 → `OH-C01` “creation in another account” (no OH-P01); BMV-188 3 Nephi 14:1–14 + Matthew 7:1–14 →
+    `NTC-sermon-mountain` “compare Matthew 7”; BMV-202 3 Nephi 28:4–9 + John 21:20–23 unlinked, not
+    `ev:patmos-vision`, no D&C label or copy at 3/bom.
+  * Unstated parallels, now read: BMV-081 Mosiah 15:13–18, 28–31 + Isaiah 52:7–10 → `OTM-jerusalem` “Jerusalem in
+    the quoted language”; BMV-100 Alma 5:57–60 + John 10:11–16 unlinked; BMV-191 3 Nephi 17:4, 7–9 → `OTM-jerusalem`
+    “healings at Jerusalem recalled” (no lost-tribes card or destination); BMV-192 3 Nephi 18:1–11 + Matthew
+    26:26–29 unlinked.
+  * Relations without a card, unlinked: BMV-013 1 Nephi 13:20–29, BMV-051 2 Nephi 29:3–14, BMV-212 Mormon 7:8–10,
+    BMV-094 Mosiah 28:17–19, BMV-215 Ether 1:3–5, 33–37. Each NOLINK reason records the S37 decision.
+* **Compared passages as sources.** New `copy_bmc.EXTRA_SOURCES`: a view's own chapter locator stays first; the
+  compared Bible passages (Matthew 5/7/26, John 10/21, Isaiah 52) follow it. `build.py` asserts that no extra source
+  is a D&C or Pearl of Great Price URL (no later work at the 3/bom gate).
+* **Enrichments.** BMV-187 (3 Nephi 13) adds the Matthew 6 sentence and `NTC-sermon-mountain` “compare Matthew 6”;
+  Solomon link and source kept; the editorial heading is not cited as a verse. **S37-C2:** BMV-166 appends the
+  Helaman 6:10 sentence and cites Helaman 6:10 after Helaman 8:11–22; the genealogy safeguard and Helaman 8 wording
+  are kept.
+* **Consolidations (OMIT, “S37 decision”).** **S37-C1:** BMC-016's reason is the reviewer's replacement — the party
+  crosses river Laman (16:12), travel near the Red Sea is 16:14, no Red Sea crossing or mapped river mouth. BMC-002:
+  the Red Sea setting of 1 Nephi 2:5–8 is represented by BP01, BXP01 and BJ01 (bounded, not whole-chapter). BMC-164:
+  the reviewer's replacement reason (BXP37 for the land name, BMV-166 with Helaman 6:10 for the Mulek–Zedekiah
+  relation), written only now that the citation and sentence exist.
+* **Semantic pass.** The 21 resolved keys leave the default omissions, so `bmc_semantic_pass.py` drops their
+  dispositions (it asserts none is stale). **146** rows remain: no-bible-relation 63, namesake 62,
+  represented 17, practice-or-title 4; no candidate, reader, unstated-parallel or relation-no-card row. These 146 are
+  summary-level reason screens of the committed research, not certified textual absences (S37 says the same). BMC-193
+  and BMC-091 now name BMV-191 and the Helaman 6:10 source. The rollup CSV drops the same keys (33 rows).
+* **Tests.** New test “Checkpoint 38” (all 18 views: gate, layer, copy prefix, ordered sources, labels, no later-work
+  source or copy, one-way links; BMV-202 not Patmos; BMV-166 sources and sentence; BMC-002/016/164 reasons). The
+  checkpoint 32 test now expects 76 views and allows compared sources after the view's own chapter; the checkpoint 37
+  test asserts 146 rows with no open state; BMV-187's links updated.
+* **Verification.** Generator (`build.py` with the accepted register at 9cc874c, `bmc_omission_rollup.py`,
+  `bmc_semantic_pass.py`) run three times after the change: byte-identical. `pnpm check` **135/135**;
+  `pnpm check:dist` 114 files OK. Browser: [s38-probe.mjs](supplementary-build/s38-probe.mjs), output in
+  s38-probe-output.txt; shots s38-*.
+* **Still open (Claude keeps ownership):** timeline and source-vision relations; final same-head 4K/1280/phone set,
+  full Tab traversal and finished-bake evidence; real-GPU and physical-phone evidence need hardware.
