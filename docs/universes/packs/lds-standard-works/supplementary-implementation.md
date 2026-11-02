@@ -1251,3 +1251,41 @@ fade for ordinary motion), re-capture, and still obtain real-GPU evidence; S25-V
 timeline/source-vision relations, omission/consolidation rollup; final same-head 4K/1280/phone evidence, full Tab
 traversal/Escape/focus return, real-GPU and physical-phone native-select/touch (needs Mckay’s hardware; not available
 to this cloud runner).
+
+## Checkpoint 28 (S27-C1 pending event focus; S25-V1 label fade on programmatic jumps)
+
+Applies [supplementary-review-s27](https://github.com/mckayec/universe-sandbox/blob/3c0fe7118370ef4a1cada49e1713c8a3981c5af0/docs/universes/packs/lds-standard-works/supplementary-review-s27.md)
+and its evidence successor (PR34 at b350303). Code commit **70ad855aa32c8eda8fc67d4a14a7e413c9a6bab2**. No pack data, generator, mapping or crosswalk change.
+
+* **S27-C1 (engine, generic):** the queued focus now carries a generation number. `cancelEvFocus()` bumps it in
+  `openCodex`, `closeCodex`, `openEvent`, `selectWorld`, `selectSite`, `applyFilters` and the book filter, so any
+  intervening codex open/close, event, world, site, book or layer/year change invalidates an older callback; the
+  previous state checks stay as a second guard. Normal activation is unchanged.
+  * Reviewer probe [callback-probe.cjs](https://github.com/mckayec/universe-sandbox/blob/3c0fe7118370ef4a1cada49e1713c8a3981c5af0/docs/universes/packs/lds-standard-works/supplementary-review-s27/callback-probe.cjs),
+    unmodified except the head argument, run at 70ad855aa32c8eda8fc67d4a14a7e413c9a6bab2: the seven guard cases pass; its eighth assertion (which encoded the
+    reproduction, expecting `event`) now fails with actual `#cxBtn`, the required outcome.
+  * [s28-callback-probe.cjs](supplementary-build/s28-callback-probe.cjs) (same method, against the working tree or a rev):
+    **13/13** — the seven, reopen-then-close → `#cxBtn`, three reopen/close cycles, a bare navigation cancel, competing
+    links e→f (f focused), e→f→e (e focused), and link-then-reopen/close. Run by the new unit test “Checkpoint 28”.
+* **S25-V1 fade (engine, generic):** while a programmatic fly (`orbG.fly` / `orbW.fly`) or globe turn (`PL.turn`) is in
+  progress, `#labels` gets class `jump` and `.lbl` (galaxy and region labels), `.plbl` (site labels) and `.rleg`
+  (route legs) lose their opacity transition, so labels leaving the view vanish at once instead of fading at a stale
+  position. Hand drags, zoom and auto-rotation keep the fade. The camera-update order checked by the S27 probe is kept.
+
+Checks at 70ad855aa32c8eda8fc67d4a14a7e413c9a6bab2: `pnpm format` clean; `pnpm check` **124/124**, `check:dist` 114 files OK.
+
+[s28-probe.mjs](supplementary-build/s28-probe.mjs), built site, SwiftShader 1440×900, **passed** (22 min;
+[output](supplementary-build/s28-probe-output.txt)) with no console errors and no failed or ≥400 resources:
+(1) in the browser, event link then codex reopen and close in one task: after 1.5 s focus is still on `#cxBtn`;
+(2) DD109 → Kirtland dedication event: **every label with computed opacity > 0.05** (fading ones included, per the
+evidence review) compared with its pin's projection in 248 samples; the **moving** sample (nonzero, asserted) had
+`jump` on, 13 visible labels, 0 stale, worst 0 px; at the observed completed state (`#bake` hidden, no turn/fly,
+site kirtland-temple) `jump` off, 13 visible, 0 stale, 0 px; normal activation left focus on the event.
+Shots: `s28-event-moving-1440x900.jpg` (still “Charting surface”, no Old World labels over North America),
+`s28-event-completed-1440x900.jpg`.
+
+**Limits:** only one moving sample exists because SwiftShader draws the 1.5 s turn in about one frame; galaxy-label
+behaviour is covered by the same class/CSS and the unit test, not by a rendered galaxy fly in this probe. Real-GPU
+moving/settled alignment and physical-phone native-select/touch still need hardware this cloud runner lacks.
+**Next (Claude keeps ownership):** BMC quotation/vision edges, DRE office succession, timeline/source-vision relations,
+omission/consolidation rollup; final same-head 4K/1280/phone evidence and Tab/Shift-Tab traversal.
