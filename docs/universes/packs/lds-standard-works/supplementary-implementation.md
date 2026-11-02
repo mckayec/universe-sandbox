@@ -1202,3 +1202,52 @@ event navigation) is not yet tested.
 **Still open (Claude keeps ownership):** BMC quotation/vision typed edges, DRE office-succession links, timeline and
 source/vision relations, the omission/consolidation rollup; S25-V1 real-GPU alignment and the event-focus race case;
 final same-head 4K/1280/phone rendered evidence, full keyboard traversal, real-phone native-select and touch.
+
+## Checkpoint 27 (S26 Moses 7 link; S25-V1 measured alignment; event-focus race)
+
+Applies [supplementary-review-s26](https://github.com/mckayec/universe-sandbox/blob/bba65a29c53e776428b51a8e74669249ba0ce6de/docs/universes/packs/lds-standard-works/supplementary-review-s26.md)
+(PR34 at bba65a2). Code commit **6bf2812973995956e60cd3dc20472feb269cf916**.
+
+* **S26 builder answer (done):** `PGM-qg06-zion` (5/pgp) → `P17-pgp-enoch-city` (5/pgp) “describes Enoch’s community
+  and city”, inverse “Moses 7 teaching and promise”, as a TYPED row in `copy_links.py`. The existing cross-account
+  P17 link is kept; the D&C view gets no link to the Moses 7 card; DCM-dx01, Cain’s Enoch and modern New Jerusalem stay
+  unlinked. Description, locators, gate, absent coordinates/dates unchanged; the S25-C1 non-link row in
+  [typed-links.csv](typed-links.csv) now says the card is linked only to the 5/pgp view. Two cards gain one link each;
+  no card added. Regeneration from the accepted register (9cc874c): baseline byte-identical before the change,
+  idempotent after; 1,271 SD imported, 0 pending.
+* **S25-V1 (engine, generic):** site and galaxy labels were projected with the camera matrices of the previous frame
+  (three.js refreshes them only inside `render`, which ran after the label layout). The frame loop now calls
+  `cam.updateMatrixWorld()` before laying out labels. At 60 fps that lag was one frame; under SwiftShader a frame can
+  last seconds.
+* **Event-focus race (engine, generic):** the 60 ms focus callback after a codex event link now returns unless the
+  codex is still closed, that event is still the open one and still reachable under the current filters.
+* Test “Checkpoint 27” (link and inverse, 5/pgp gates, unchanged text/source, two P17 cards, D&C view unlinked,
+  D&C-only filter hides the card, CSV row). The Checkpoint 25 label-length bound moves 32 → 40 so the required S26 label
+  (36 characters) fits; it renders on one line at 1440 and wraps cleanly at 390 (shots).
+
+Checks at 6bf2812: `pnpm format` clean; `pnpm check` **123/123**, `check:dist` 114 files OK. Local `test:pages` did not
+finish within 10 min while the probe below shared the CPU (CI runs it on the pushed head).
+
+[s27-probe.mjs](supplementary-build/s27-probe.mjs), built site, SwiftShader, **passed** (48 min) with **no console
+errors and no failed or ≥400 resources** (unfiltered apart from SwiftShader driver notices):
+(1) 1440×900, keyboard Enter on the Moses 7 card focuses P17-pgp-enoch-city, which lists both labelled links; click
+back focuses PGM-qg06-zion; (2) DD109 → Chronicle event: every site label with target opacity ≥ 0.5 was compared with
+the projection of its pin using the live camera in **252 samples** (1 taken mid-turn) and at an **observed completed
+state** (`#bake` hidden — no “Charting surface” — `PL.turn` and `orbW.fly` finished, site = kirtland-temple, waited
+on, not timed): worst deviation **0.00 px**, 13 labels at completion; (3a) event link then immediate codex reopen in
+one task: codex open, focus not stolen; (3b) event link then immediate D&C layer switch-off: no focus on the hidden
+event; (4) `#layers=dc`: the Moses 7 card is absent from all 12 sections and the D&C P17 view names its PGP view as
+filtered, not linked; (5) 390×844 `#layers=pgp` tap on the Moses 7 link focuses P17-pgp (target ≥ 24 px, fits).
+
+Shots: `s27-zion-link-1440x900.jpg`, `s27-zion-390x844.jpg`, `s27-event-completed-1440x900.jpg` (aligned: Salt Lake
+Temple, Nauvoo, Palmyra, highlighted Kirtland Temple; no surface progress bar), `s27-event-moving-1440x900.jpg`.
+**The moving frame still shows Old World labels over North America.** The measurement explains it: those labels are
+not placed wrongly — their target opacity is already 0 and every label meant to be visible is at 0.00 px — they are
+labels fading out (CSS `opacity .25s`) at their last on-screen position after a turn that, at SwiftShader frame times,
+completes in a single frame. **Next unit:** hide labels instantly when the view jumps far between frames (keep the
+fade for ordinary motion), re-capture, and still obtain real-GPU evidence; S25-V1 stays open until then.
+
+**Still open (Claude keeps ownership):** that label fade fix; BMC quotation/vision edges, DRE office succession,
+timeline/source-vision relations, omission/consolidation rollup; final same-head 4K/1280/phone evidence, full Tab
+traversal/Escape/focus return, real-GPU and physical-phone native-select/touch (needs Mckay’s hardware; not available
+to this cloud runner).
