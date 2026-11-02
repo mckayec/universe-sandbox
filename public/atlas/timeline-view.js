@@ -8,11 +8,8 @@
 
   const TLM = root.AtlasTimeline;
   if (!TLM) return;
-  const ESC = (s) =>
-    String(s == null ? '' : s).replace(
-      /[&<>"]/g,
-      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
-    );
+  const ESC = s =>
+    String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   const ZOOMS = [1, 1.6, 2.5, 4, 6.5];
   const ROW = 26;
   const LANE_HEAD = 30;
@@ -25,7 +22,7 @@
     exact: 'Year given by the source',
   };
   /* presence after a window is stated only when the record gives an end year or says it is ongoing */
-  const presence = (w) =>
+  const presence = w =>
     w.window
       ? w.toOpen
         ? '; continued presence after it, still ongoing'
@@ -35,7 +32,7 @@
       : w.toOpen
         ? '; still ongoing'
         : '';
-  const precisionOf = (w) => (w.window ? 'window' : w.range ? 'range' : w.approx ? 'approx' : 'exact');
+  const precisionOf = w => (w.window ? 'window' : w.range ? 'range' : w.approx ? 'approx' : 'exact');
   const EDGE_WORD = {
     branch: 'Developed from',
     within: 'Within',
@@ -59,11 +56,11 @@
     let sel = null;
     let V = null;
     let lastFocus = null;
-    const defaultOrder = model.lanes.map((l) => l.id);
+    const defaultOrder = model.lanes.map(l => l.id);
     let order = defaultOrder.slice();
     const collapsed = new Set();
     const fmt = (y, ap) => (env.fmt ? env.fmt(y, ap) : (ap ? 'c. ' : '') + TLM.yearLabel(y));
-    const whenText = (r) =>
+    const whenText = r =>
       r.whenText ||
       (r.when ? fmt(r.when.from, r.when.approx) + (r.when.to != null ? ' – ' + fmt(r.when.to) : '') : 'No date');
 
@@ -100,18 +97,22 @@
       const a1 = TLM.astro(hi);
       const avail = Math.max(320, scrollEl.clientWidth - 24);
       const W = Math.round(avail * ZOOMS[zoom]);
-      const X = (y) => 12 + ((TLM.astro(y) - a0) / (a1 - a0)) * (W - 24);
+      const X = y => 12 + ((TLM.astro(y) - a0) / (a1 - a0)) * (W - 24);
       const lanes = arranged()
-        .map((l) => ({
+        .map(l => ({
           l,
           rows: V.dated
-            .filter((r) => r.lane === l.id)
-            .sort((p, q) => TLM.astro(p.when.window ? p.when.window[0] : p.when.from) - TLM.astro(q.when.window ? q.when.window[0] : q.when.from) || p.order - q.order),
+            .filter(r => r.lane === l.id)
+            .sort(
+              (p, q) =>
+                TLM.astro(p.when.window ? p.when.window[0] : p.when.from) -
+                  TLM.astro(q.when.window ? q.when.window[0] : q.when.from) || p.order - q.order,
+            ),
         }))
-        .filter((x) => x.rows.length);
+        .filter(x => x.rows.length);
       let y = AXIS_H;
       const rowY = {};
-      lanes.forEach((x) => {
+      lanes.forEach(x => {
         x.y = y;
         y += LANE_HEAD;
         if (collapsed.has(x.l.id)) {
@@ -119,7 +120,7 @@
           y += ROW + 8;
           return;
         }
-        x.rows.forEach((r) => {
+        x.rows.forEach(r => {
           rowY[r.id] = y + ROW / 2;
           y += ROW;
         });
@@ -127,7 +128,15 @@
       });
       const H = y + 6;
       let s =
-        '<svg class="tl-svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Timeline chart">' +
+        '<svg class="tl-svg" width="' +
+        W +
+        '" height="' +
+        H +
+        '" viewBox="0 0 ' +
+        W +
+        ' ' +
+        H +
+        '" role="group" aria-label="Timeline chart">' +
         '<defs><pattern id="tlHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">' +
         '<rect width="2.4" height="6" fill="currentColor"/></pattern>' +
         '<linearGradient id="tlFade"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>' +
@@ -136,29 +145,85 @@
         const x0 = X(Math.max(e.from, lo));
         const x1 = X(Math.min(e.to, hi));
         if (x1 > x0)
-          s += '<rect class="tl-era' + (i % 2 ? ' odd' : '') + '" x="' + x0 + '" y="' + AXIS_H + '" width="' + (x1 - x0) + '" height="' + (H - AXIS_H) + '"><title>' + ESC(e.name) + '</title></rect>' +
+          s +=
+            '<rect class="tl-era' +
+            (i % 2 ? ' odd' : '') +
+            '" x="' +
+            x0 +
+            '" y="' +
+            AXIS_H +
+            '" width="' +
+            (x1 - x0) +
+            '" height="' +
+            (H - AXIS_H) +
+            '"><title>' +
+            ESC(e.name) +
+            '</title></rect>' +
             eraLabel(e.name, x0, x1);
       });
       const span = hi - lo;
-      const step = [10, 25, 50, 100, 200, 250, 500].find((k) => (span / k) * 70 <= W) || 1000;
+      const step = [10, 25, 50, 100, 200, 250, 500].find(k => (span / k) * 70 <= W) || 1000;
       for (let t = Math.ceil(lo / step) * step; t <= hi; t += step) {
         const yr = t === 0 ? 1 : t;
         if (X(yr) < 34 || X(yr) > W - 34) continue;
-        s += '<line class="tl-tick" x1="' + X(yr) + '" x2="' + X(yr) + '" y1="' + (AXIS_H - 6) + '" y2="' + H + '"/>' +
-          '<text class="tl-tick-t" x="' + X(yr) + '" y="' + (AXIS_H - 9) + '">' + ESC(TLM.yearLabel(yr)) + '</text>';
+        s +=
+          '<line class="tl-tick" x1="' +
+          X(yr) +
+          '" x2="' +
+          X(yr) +
+          '" y1="' +
+          (AXIS_H - 6) +
+          '" y2="' +
+          H +
+          '"/>' +
+          '<text class="tl-tick-t" x="' +
+          X(yr) +
+          '" y="' +
+          (AXIS_H - 9) +
+          '">' +
+          ESC(TLM.yearLabel(yr)) +
+          '</text>';
       }
-      lanes.forEach((x) => {
+      lanes.forEach(x => {
         const c = collapsed.has(x.l.id);
-        s += '<text class="tl-lane" x="12" y="' + (x.y + 20) + '">' + ESC(x.l.title) + ' · ' + x.rows.length + ' dated' + (c ? ' · collapsed' : '') + '</text>';
+        s +=
+          '<text class="tl-lane" x="12" y="' +
+          (x.y + 20) +
+          '">' +
+          ESC(x.l.title) +
+          ' · ' +
+          x.rows.length +
+          ' dated' +
+          (c ? ' · collapsed' : '') +
+          '</text>';
         if (c) s += summary(x, X, hi);
-        else x.rows.forEach((r) => (s += mark(r, rowY[r.id], X, hi)));
+        else x.rows.forEach(r => (s += mark(r, rowY[r.id], X, hi)));
       });
-      V.drawnEdges.forEach((e) => {
+      V.drawnEdges.forEach(e => {
         const a = V.byId.get(e.from);
         const b = V.byId.get(e.to);
         if (!a || !b || rowY[a.id] == null || rowY[b.id] == null) return;
         const bx = X(b.when.window ? b.when.window[0] : b.when.from);
-        s += '<path class="tl-edge t-' + e.type + '" d="M' + bx + ' ' + rowY[a.id] + ' C' + (bx - 30) + ' ' + rowY[a.id] + ' ' + (bx - 30) + ' ' + rowY[b.id] + ' ' + bx + ' ' + rowY[b.id] + '"/>';
+        s +=
+          '<path class="tl-edge t-' +
+          e.type +
+          '" d="M' +
+          bx +
+          ' ' +
+          rowY[a.id] +
+          ' C' +
+          (bx - 30) +
+          ' ' +
+          rowY[a.id] +
+          ' ' +
+          (bx - 30) +
+          ' ' +
+          rowY[b.id] +
+          ' ' +
+          bx +
+          ' ' +
+          rowY[b.id] +
+          '"/>';
       });
       return s + '</svg>';
     }
@@ -176,7 +241,8 @@
       const cy = x.sumY;
       const x0 = X(sp.from);
       const x1 = Math.max(X(sp.toOpen ? hi : sp.to), x0 + 3);
-      const lbl = x.rows.length + ' dated records · ' + fmt(sp.from) + ' – ' + (sp.toOpen ? 'still ongoing' : fmt(sp.to));
+      const lbl =
+        x.rows.length + ' dated records · ' + fmt(sp.from) + ' – ' + (sp.toOpen ? 'still ongoing' : fmt(sp.to));
       /* keep the label inside the chart: left-aligned at the band start when it fits, else right-aligned at the edge */
       const right = X(hi);
       const fits = x0 + 10 + lbl.length * 7.4 <= right;
@@ -184,30 +250,78 @@
       const anchorEnd = !fits;
       const c = env.colorFor ? env.colorFor(x.rows[0].gate.layers[0]) : '#9db8ff';
       return (
-        '<g class="tl-sum" style="--tc:' + ESC(c) + '" tabindex="0" role="button" data-lane-t="' + ESC(x.l.id) + '" aria-expanded="false" aria-label="' + ESC('Expand ' + x.l.title + ': ' + lbl) + '">' +
-        '<rect class="tl-sum-bar" x="' + x0 + '" y="' + (cy - 5) + '" width="' + (x1 - x0) + '" height="10"' + (sp.toOpen ? ' mask="url(#tlFadeMask)"' : '') + '/>' +
-        '<text class="tl-lbl" x="' + lx + '" y="' + (cy - 9) + '"' + (anchorEnd ? ' text-anchor="end"' : '') + '>' + ESC(lbl) + '</text></g>'
+        '<g class="tl-sum" style="--tc:' +
+        ESC(c) +
+        '" tabindex="0" role="button" data-lane-t="' +
+        ESC(x.l.id) +
+        '" aria-expanded="false" aria-label="' +
+        ESC('Expand ' + x.l.title + ': ' + lbl) +
+        '">' +
+        '<rect class="tl-sum-bar" x="' +
+        x0 +
+        '" y="' +
+        (cy - 5) +
+        '" width="' +
+        (x1 - x0) +
+        '" height="10"' +
+        (sp.toOpen ? ' mask="url(#tlFadeMask)"' : '') +
+        '/>' +
+        '<text class="tl-lbl" x="' +
+        lx +
+        '" y="' +
+        (cy - 9) +
+        '"' +
+        (anchorEnd ? ' text-anchor="end"' : '') +
+        '>' +
+        ESC(lbl) +
+        '</text></g>'
       );
     }
     function laneControls() {
       const ls = arranged();
       if (ls.length < 2) return '';
-      const changed = collapsed.size || ls.map((l) => l.id).join(',') !== defaultOrder.filter((id) => ls.some((l) => l.id === id)).join(',');
+      const changed =
+        collapsed.size ||
+        ls.map(l => l.id).join(',') !== defaultOrder.filter(id => ls.some(l => l.id === id)).join(',');
       return (
         ls
           .map((l, i) => {
             const c = collapsed.has(l.id);
             return (
               '<span class="tl-lb">' +
-              '<button class="btn tl-lt" data-lane-t="' + ESC(l.id) + '" aria-expanded="' + !c + '" title="' + (c ? 'Expand' : 'Collapse') + ' this lane">' +
-              '<span aria-hidden="true">' + (c ? '▸' : '▾') + '</span> ' + ESC(l.title) + '</button>' +
-              '<button class="btn tl-mv" data-lane-mv="-1" data-lane="' + ESC(l.id) + '" aria-label="Move ' + ESC(l.title) + ' up"' + (i === 0 ? ' disabled' : '') + '>↑</button>' +
-              '<button class="btn tl-mv" data-lane-mv="1" data-lane="' + ESC(l.id) + '" aria-label="Move ' + ESC(l.title) + ' down"' + (i === ls.length - 1 ? ' disabled' : '') + '>↓</button>' +
+              '<button class="btn tl-lt" data-lane-t="' +
+              ESC(l.id) +
+              '" aria-expanded="' +
+              !c +
+              '" title="' +
+              (c ? 'Expand' : 'Collapse') +
+              ' this lane">' +
+              '<span aria-hidden="true">' +
+              (c ? '▸' : '▾') +
+              '</span> ' +
+              ESC(l.title) +
+              '</button>' +
+              '<button class="btn tl-mv" data-lane-mv="-1" data-lane="' +
+              ESC(l.id) +
+              '" aria-label="Move ' +
+              ESC(l.title) +
+              ' up"' +
+              (i === 0 ? ' disabled' : '') +
+              '>↑</button>' +
+              '<button class="btn tl-mv" data-lane-mv="1" data-lane="' +
+              ESC(l.id) +
+              '" aria-label="Move ' +
+              ESC(l.title) +
+              ' down"' +
+              (i === ls.length - 1 ? ' disabled' : '') +
+              '>↓</button>' +
               '</span>'
             );
           })
           .join('') +
-        '<button class="btn tl-lr" data-lanes="reset"' + (changed ? '' : ' disabled') + '>Reset lanes</button>'
+        '<button class="btn tl-lr" data-lanes="reset"' +
+        (changed ? '' : ' disabled') +
+        '>Reset lanes</button>'
       );
     }
     function mark(r, cy, X, hi) {
@@ -221,14 +335,53 @@
       } else if (w.window) {
         const x0 = X(w.window[0]);
         const x1 = Math.max(X(w.window[1]), x0 + 3);
-        g += '<rect class="tl-win-bg" x="' + x0 + '" y="' + (cy - 6) + '" width="' + (x1 - x0) + '" height="12"/>' +
-          '<rect class="tl-win" x="' + x0 + '" y="' + (cy - 6) + '" width="' + (x1 - x0) + '" height="12" fill="url(#tlHatch)"/>';
+        g +=
+          '<rect class="tl-win-bg" x="' +
+          x0 +
+          '" y="' +
+          (cy - 6) +
+          '" width="' +
+          (x1 - x0) +
+          '" height="12"/>' +
+          '<rect class="tl-win" x="' +
+          x0 +
+          '" y="' +
+          (cy - 6) +
+          '" width="' +
+          (x1 - x0) +
+          '" height="12" fill="url(#tlHatch)"/>';
         if (end != null && X(end) > x1)
-          g += '<rect class="tl-bar' + (w.toOpen ? ' open' : '') + '" x="' + x1 + '" y="' + (cy - 4) + '" width="' + (X(end) - x1) + '" height="8"' + (w.toOpen ? ' mask="url(#tlFadeMask)"' : '') + '/>';
+          g +=
+            '<rect class="tl-bar' +
+            (w.toOpen ? ' open' : '') +
+            '" x="' +
+            x1 +
+            '" y="' +
+            (cy - 4) +
+            '" width="' +
+            (X(end) - x1) +
+            '" height="8"' +
+            (w.toOpen ? ' mask="url(#tlFadeMask)"' : '') +
+            '/>';
       } else {
         const x0 = X(w.from);
         const x1 = end != null ? Math.max(X(end), x0 + 3) : x0 + 3;
-        g += '<rect class="tl-bar' + (w.range ? ' rng' : '') + (w.approx ? ' ap' : '') + (w.toOpen ? ' open' : '') + '" x="' + x0 + '" y="' + (cy - (w.range ? 2 : 4)) + '" width="' + (x1 - x0) + '" height="' + (w.range ? 4 : 8) + '"' + (w.toOpen ? ' mask="url(#tlFadeMask)"' : '') + '/>';
+        g +=
+          '<rect class="tl-bar' +
+          (w.range ? ' rng' : '') +
+          (w.approx ? ' ap' : '') +
+          (w.toOpen ? ' open' : '') +
+          '" x="' +
+          x0 +
+          '" y="' +
+          (cy - (w.range ? 2 : 4)) +
+          '" width="' +
+          (x1 - x0) +
+          '" height="' +
+          (w.range ? 4 : 8) +
+          '"' +
+          (w.toOpen ? ' mask="url(#tlFadeMask)"' : '') +
+          '/>';
       }
       const lx = X(w.window ? w.window[0] : w.from);
       /* labels stay inside the chart: after the mark when they fit, else before it, else from the left edge */
@@ -237,63 +390,284 @@
       const after = lx + 10 + tw <= right;
       const before = !after && lx - 10 - tw >= 4;
       const tx = after ? lx + 10 : before ? lx - 10 : 4;
-      g += '<text class="tl-lbl" x="' + tx + '" y="' + (cy - 8) + '"' + (before ? ' text-anchor="end"' : '') + '>' + ESC(r.label) + '</text>';
-      return '<g class="tl-m' + (sel === r.id ? ' sel' : '') + '" style="--tc:' + ESC(c) + '" tabindex="0" role="button" data-id="' + ESC(r.id) + '" aria-pressed="' + (sel === r.id) + '" aria-label="' + ESC(r.label + ', ' + whenText(r)) + '">' + g + '</g>';
+      g +=
+        '<text class="tl-lbl" x="' +
+        tx +
+        '" y="' +
+        (cy - 8) +
+        '"' +
+        (before ? ' text-anchor="end"' : '') +
+        '>' +
+        ESC(r.label) +
+        '</text>';
+      return (
+        '<g class="tl-m' +
+        (sel === r.id ? ' sel' : '') +
+        '" style="--tc:' +
+        ESC(c) +
+        '" tabindex="0" role="button" data-id="' +
+        ESC(r.id) +
+        '" aria-pressed="' +
+        (sel === r.id) +
+        '" aria-label="' +
+        ESC(r.label + ', ' + whenText(r)) +
+        '">' +
+        g +
+        '</g>'
+      );
     }
 
     /* ---------- undated strip, list, coverage ---------- */
     function item(r) {
-      return '<li><button class="tl-it' + (sel === r.id ? ' sel' : '') + '" data-id="' + ESC(r.id) + '" aria-pressed="' + (sel === r.id) + '"><b>' + ESC(r.label) + '</b> <span>' + ESC(whenText(r)) + '</span></button></li>';
+      return (
+        '<li><button class="tl-it' +
+        (sel === r.id ? ' sel' : '') +
+        '" data-id="' +
+        ESC(r.id) +
+        '" aria-pressed="' +
+        (sel === r.id) +
+        '"><b>' +
+        ESC(r.label) +
+        '</b> <span>' +
+        ESC(whenText(r)) +
+        '</span></button></li>'
+      );
     }
+    /* In the list arrangement every gated record is listed (TL-R02): lane collapse is a chart arrangement only.
+       In the chart, a collapsed lane's undated records are summarised with a button that expands the lane. */
     function undated() {
       if (!V.undated.length) return '';
-      let h = '<section class="tl-und"><h3>Undated or in source order · ' + V.undated.length + '</h3><p class="tl-why">No calendar year in the source; kept off the axis, in the order the pack gives them.</p>';
-      arranged().forEach((l) => {
-        const rs = V.undated.filter((r) => r.lane === l.id);
+      let h =
+        '<section class="tl-und"><h3>Undated or in source order · ' +
+        V.undated.length +
+        '</h3><p class="tl-why">No calendar year in the source; kept off the axis, in the order the pack gives them.</p>';
+      arranged().forEach(l => {
+        const rs = V.undated.filter(r => r.lane === l.id);
         if (!rs.length) return;
-        if (collapsed.has(l.id)) h += '<h4>' + ESC(l.title) + ' <span class="tl-why">· ' + rs.length + ' undated, lane collapsed</span></h4>';
+        if (mode === 'chart' && collapsed.has(l.id))
+          h +=
+            '<h4>' +
+            ESC(l.title) +
+            ' <button class="btn tl-ux" data-lane-t="' +
+            ESC(l.id) +
+            '" aria-expanded="false">Show ' +
+            rs.length +
+            ' undated · expand lane</button></h4>';
         else h += '<h4>' + ESC(l.title) + '</h4><ol>' + rs.map(item).join('') + '</ol>';
       });
       return h + '</section>';
     }
     function list() {
-      const dated = V.dated.slice().sort((p, q) => TLM.astro(p.when.window ? p.when.window[0] : p.when.from) - TLM.astro(q.when.window ? q.when.window[0] : q.when.from) || p.order - q.order);
-      let h = '<section class="tl-list"><h3>Dated · ' + dated.length + '</h3><ol>' + dated.map(item).join('') + '</ol></section>' + undated();
-      h += '<section class="tl-list"><h3>Relationships · ' + V.edges.length + '</h3><ul class="tl-edges">' +
-        V.edges.map((e) => {
-          const a = V.byId.get(e.from);
-          const b = V.byId.get(e.to);
-          return '<li>' + ESC(b.label) + ' — <i>' + ESC(EDGE_WORD[e.type] || e.type) + '</i> — ' + ESC(a.label) + (e.label ? ' <span class="tl-why">(' + ESC(e.label) + ')</span>' : '') + (e.src.length ? '' : ' <span class="tl-gap">no source locator on this relationship</span>') + '</li>';
-        }).join('') + '</ul></section>';
+      const dated = V.dated
+        .slice()
+        .sort(
+          (p, q) =>
+            TLM.astro(p.when.window ? p.when.window[0] : p.when.from) -
+              TLM.astro(q.when.window ? q.when.window[0] : q.when.from) || p.order - q.order,
+        );
+      let h =
+        '<section class="tl-list"><h3>Dated · ' +
+        dated.length +
+        '</h3><ol>' +
+        dated.map(item).join('') +
+        '</ol></section>' +
+        undated();
+      h +=
+        '<section class="tl-list"><h3>Relationships · ' +
+        V.edges.length +
+        '</h3><ul class="tl-edges">' +
+        V.edges
+          .map(e => {
+            const a = V.byId.get(e.from);
+            const b = V.byId.get(e.to);
+            return (
+              '<li>' +
+              ESC(b.label) +
+              ' — <i>' +
+              ESC(EDGE_WORD[e.type] || e.type) +
+              '</i> — ' +
+              ESC(a.label) +
+              (e.label ? ' <span class="tl-why">(' + ESC(e.label) + ')</span>' : '') +
+              (e.src.length ? '' : ' <span class="tl-gap">no source locator on this relationship</span>') +
+              '</li>'
+            );
+          })
+          .join('') +
+        '</ul></section>';
       return h;
     }
     function coverageHtml() {
       const c = TLM.coverage(V, model);
-      return '<div class="tl-cov"><b>Coverage</b><p>' + c.dated + ' dated (' + c.windows + ' as windows, ' + c.approx + ' approximate), ' + c.undated + ' undated, ' + c.edges + ' relationships.</p><b>Not shown, because the data does not support it yet</b><ul>' + c.gaps.map((g) => '<li>' + ESC(g.t) + '</li>').join('') + '</ul></div>';
+      return (
+        '<div class="tl-cov"><b>Coverage</b><p>' +
+        c.dated +
+        ' dated (' +
+        c.windows +
+        ' as windows, ' +
+        c.approx +
+        ' approximate), ' +
+        c.undated +
+        ' undated, ' +
+        c.edges +
+        ' relationships.</p><b>Not shown, because the data does not support it yet</b><ul>' +
+        c.gaps.map(g => '<li>' + ESC(g.t) + '</li>').join('') +
+        '</ul></div>'
+      );
     }
     function details() {
       const r = sel && V.byId.get(sel);
       if (!r)
-        return '<p class="tl-intro">Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Pick any mark or row for its source wording.</p>' + coverageHtml();
+        return (
+          '<h3 class="tl-ov" tabindex="-1">Overview</h3><p class="tl-intro">Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Pick any mark or row for its source wording.</p>' +
+          coverageHtml()
+        );
       const w = r.when;
-      let h = '<h3 style="--tc:' + ESC(env.colorFor ? env.colorFor(r.gate.layers[0]) : '#9db8ff') + '">' + ESC(r.label) + '</h3>' +
-        '<p class="tl-meta">' + ESC(whenText(r)) + (r.nodeKind ? ' · ' + ESC(r.nodeKind) : '') + '</p>' +
-        '<p>' + ESC(w ? PRECISION[precisionOf(w)] + presence(w) : r.chron === 'narrative' ? 'Narrative chronology: no calendar year' : 'No defensible date in the source') + '</p>';
-      if (r.claim.length) h += '<p class="tl-why">Kinds of claim in the record: ' + ESC(r.claim.join(', ')) + '</p>';
-      if (r.src.length) h += '<p class="tl-why">Source: ' + r.src.map((s) => ESC(s.t)).join('; ') + '</p>';
-      const es = V.edges.filter((e) => e.from === r.id || e.to === r.id);
+      let h =
+        '<h3 style="--tc:' +
+        ESC(env.colorFor ? env.colorFor(r.gate.layers[0]) : '#9db8ff') +
+        '">' +
+        ESC(r.label) +
+        '</h3>' +
+        '<p class="tl-meta">' +
+        ESC(whenText(r)) +
+        (r.nodeKind ? ' · ' + ESC(r.nodeKind) : '') +
+        '</p>' +
+        '<p>' +
+        ESC(
+          w
+            ? PRECISION[precisionOf(w)] + presence(w)
+            : r.chron === 'narrative'
+              ? 'Narrative chronology: no calendar year'
+              : 'No defensible date in the source',
+        ) +
+        '</p>';
+      h += evidence(r);
+      const es = V.edges.filter(e => e.from === r.id || e.to === r.id);
       if (es.length)
-        h += '<b class="tl-k">Relationships</b><ul class="tl-edges">' + es.map((e) => {
-          const o = V.byId.get(e.from === r.id ? e.to : e.from);
-          return '<li><button class="tl-chip" data-id="' + ESC(o.id) + '">' + ESC(o.label) + '</button> <i>' + ESC(EDGE_WORD[e.type] || e.type) + (e.from === r.id ? ' (from this)' : '') + '</i>' + (e.label ? ' <span class="tl-why">' + ESC(e.label) + '</span>' : '') + (e.src.length ? '' : ' <span class="tl-gap">no source locator</span>') + '</li>';
-        }).join('') + '</ul>';
+        h +=
+          '<b class="tl-k">Relationships</b><ul class="tl-edges">' +
+          es
+            .map(e => {
+              const o = V.byId.get(e.from === r.id ? e.to : e.from);
+              return (
+                '<li><button class="tl-chip" data-id="' +
+                ESC(o.id) +
+                '">' +
+                ESC(o.label) +
+                '</button> <i>' +
+                ESC(EDGE_WORD[e.type] || e.type) +
+                (e.from === r.id ? ' (from this)' : '') +
+                '</i>' +
+                (e.label ? ' <span class="tl-why">' + ESC(e.label) + '</span>' : '') +
+                (e.src.length ? '' : ' <span class="tl-gap">no source locator</span>') +
+                '</li>'
+              );
+            })
+            .join('') +
+          '</ul>';
       return h + '<p><button class="btn" data-tl="clear">Back to the overview</button></p>';
     }
 
+    /* The record's own wording and evidence (TL-R01): blurb/event text, each note with its claim kind and locator,
+       identity guards, explicit citations, and an internal atlas cross-reference shown as navigation, not as a
+       source. Missing locators are said plainly, never filled in. */
+    function evidence(r) {
+      let h = '';
+      if (r.text) h += '<p class="tl-text">' + ESC(r.text) + '</p>';
+      if (r.notes.length)
+        h +=
+          '<b class="tl-k">Notes in the record</b><ul class="tl-notes">' +
+          r.notes
+            .map(
+              n =>
+                '<li>' +
+                (n.k ? '<span class="tl-kind">' + ESC(n.k) + '</span> ' : '') +
+                ESC(n.t) +
+                (n.loc
+                  ? ' <span class="tl-loc">Locator: ' + ESC(n.loc) + '</span>'
+                  : ' <span class="tl-gap">no locator on this note</span>') +
+                '</li>',
+            )
+            .join('') +
+          '</ul>';
+      if (r.notSame.length)
+        h +=
+          '<b class="tl-k">Not the same as</b><ul class="tl-notes">' +
+          r.notSame
+            .map(n => {
+              const o = n.id && V.byId.get('n:' + n.id);
+              return (
+                '<li>' +
+                (o ? '<button class="tl-chip" data-id="' + ESC(o.id) + '">' + ESC(o.label) + '</button> ' : '') +
+                ESC(n.t) +
+                '</li>'
+              );
+            })
+            .join('') +
+          '</ul>';
+      if (r.src.length) h += '<p class="tl-why">Citation: ' + r.src.map(s => ESC(s.t)).join('; ') + '</p>';
+      const hasLoc = r.src.length || r.notes.some(n => n.loc);
+      if (!hasLoc) h += '<p class="tl-gap">No citation locator in this record.</p>';
+      if (r.atlasRef) {
+        const nm = env.refName ? env.refName(r.atlasRef) : null;
+        h +=
+          '<p class="tl-why">Atlas cross-reference (not a citation): ' +
+          (nm && env.openRef
+            ? '<button class="tl-chip" data-tl-ref="' + ESC(r.atlasRef) + '">Open ' + ESC(nm) + ' in the codex</button>'
+            : ESC(nm || r.atlasRef)) +
+          '</p>';
+      }
+      return h;
+    }
+
+    /* which control has focus, as a selector that survives a rerender */
+    function focusKey() {
+      const a = document.activeElement;
+      if (!a || !el.contains(a) || a === el) return null;
+      for (const k of ['data-id', 'data-mode', 'data-z', 'data-tl', 'data-lanes', 'data-tl-ref']) {
+        if (a.hasAttribute(k)) return '[' + k + '="' + CSS.escape(a.getAttribute(k)) + '"]';
+      }
+      if (a.hasAttribute('data-lane-mv'))
+        return '[data-lane="' + CSS.escape(a.dataset.lane) + '"][data-lane-mv="' + a.dataset.laneMv + '"]';
+      if (a.hasAttribute('data-lane-t')) return '.tl-lt[data-lane-t="' + CSS.escape(a.dataset.laneT) + '"]';
+      return null;
+    }
+    /* After a rerender, focus never falls out of the dialog (TL-R03): the same control if it survives (in the same
+       region where possible), else the selected record, else the overview heading, else Close. */
+    function restoreFocus(key, region) {
+      const a = document.activeElement;
+      if (a && a !== document.body && el.contains(a) && a.isConnected) return;
+      let t = null;
+      if (key) t = (region && region.querySelector(key)) || el.querySelector(key);
+      if (t && (t.disabled || (t.offsetParent === null && !(t instanceof SVGElement)))) t = null;
+      if (!t && sel) t = el.querySelector('[data-id="' + CSS.escape(sel) + '"]');
+      if (!t) t = info.querySelector('.tl-ov, h3');
+      if (!t) t = el.querySelector('[data-tl="close"]');
+      if (t) {
+        if (t.tagName === 'H3' && !t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
+        t.focus({ preventScroll: true });
+      }
+    }
+
     function render() {
+      const key = open ? focusKey() : null;
+      const a = document.activeElement;
+      const region =
+        a && (scrollEl.contains(a) ? scrollEl : info.contains(a) ? info : laneBar.contains(a) ? laneBar : null);
+      draw();
+      if (open && (key || (a && el.contains(a))))
+        restoreFocus(key, region && (region === scrollEl ? scrollEl : region === info ? info : laneBar));
+    }
+    function draw() {
       compute();
-      el.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
-      el.querySelectorAll('[data-z]').forEach((b) => (b.disabled = mode !== 'chart' || (b.dataset.z === '-1' && zoom === 0) || (b.dataset.z === '1' && zoom === ZOOMS.length - 1)));
+      el.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+      el.querySelectorAll('[data-z]').forEach(
+        b =>
+          (b.disabled =
+            mode !== 'chart' ||
+            (b.dataset.z === '-1' && zoom === 0) ||
+            (b.dataset.z === '1' && zoom === ZOOMS.length - 1)),
+      );
       laneBar.innerHTML = mode === 'chart' ? laneControls() : '';
       laneBar.hidden = !laneBar.innerHTML;
       const left = scrollEl.scrollLeft;
@@ -313,10 +687,10 @@
       if (env.onChange) env.onChange();
     }
     function moveLane(id, dir) {
-      const ids = arranged().map((l) => l.id);
+      const ids = arranged().map(l => l.id);
       const moved = TLM.moveLane(ids, id, dir);
       /* lanes hidden by the current gates keep their place after the visible ones */
-      order = TLM.arrangeLanes(model.lanes, moved.concat(order)).map((l) => l.id);
+      order = TLM.arrangeLanes(model.lanes, moved.concat(order)).map(l => l.id);
       render();
       const b = laneBar.querySelector('[data-lane="' + CSS.escape(id) + '"][data-lane-mv="' + dir + '"]');
       const alt = laneBar.querySelector('[data-lane="' + CSS.escape(id) + '"][data-lane-mv="' + -dir + '"]');
@@ -327,15 +701,26 @@
     function pick(id) {
       sel = sel === id ? null : id;
       render();
-      const t = el.querySelector('[data-id="' + CSS.escape(id) + '"]');
-      if (t && sel) t.focus({ preventScroll: true });
+      const t =
+        scrollEl.querySelector('[data-id="' + CSS.escape(id) + '"]') ||
+        el.querySelector('[data-id="' + CSS.escape(id) + '"]');
+      if (t) t.focus({ preventScroll: true });
+      else restoreFocus(null, null);
       if (env.onChange) env.onChange();
     }
-    el.addEventListener('click', (e) => {
+    el.addEventListener('click', e => {
       const m = e.target.closest('[data-mode]');
-      if (m) { mode = m.dataset.mode; render(); return; }
+      if (m) {
+        mode = m.dataset.mode;
+        render();
+        return;
+      }
       const z = e.target.closest('[data-z]');
-      if (z) { zoom = z.dataset.z === '0' ? 0 : Math.max(0, Math.min(ZOOMS.length - 1, zoom + +z.dataset.z)); render(); return; }
+      if (z) {
+        zoom = z.dataset.z === '0' ? 0 : Math.max(0, Math.min(ZOOMS.length - 1, zoom + +z.dataset.z));
+        render();
+        return;
+      }
       const lt = e.target.closest('[data-lane-t]');
       if (lt) {
         toggleLane(lt.dataset.laneT, lt.classList.contains('tl-sum'));
@@ -356,13 +741,38 @@
         return;
       }
       const a = e.target.closest('[data-tl]');
-      if (a) { if (a.dataset.tl === 'close') close(); else { sel = null; render(); if (env.onChange) env.onChange(); } return; }
+      if (a) {
+        if (a.dataset.tl === 'close') close();
+        else {
+          /* back to the overview: focus returns to the record that was selected, else the overview heading */
+          const was = sel;
+          sel = null;
+          render();
+          const t = was && scrollEl.querySelector('[data-id="' + CSS.escape(was) + '"]');
+          if (t) t.focus({ preventScroll: true });
+          else restoreFocus(null, null);
+          if (env.onChange) env.onChange();
+        }
+        return;
+      }
+      const rf = e.target.closest('[data-tl-ref]');
+      if (rf) {
+        const id = rf.dataset.tlRef;
+        close();
+        if (env.openRef) env.openRef(id);
+        return;
+      }
       const it = e.target.closest('[data-id]');
       if (it) pick(it.dataset.id);
       else if (e.target === el) close();
     });
-    el.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { e.stopPropagation(); e.preventDefault(); close(); return; }
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        e.preventDefault();
+        close();
+        return;
+      }
       const sm = e.target.closest && e.target.closest('.tl-sum');
       if (sm && (e.key === 'Enter' || e.key === ' ')) {
         e.preventDefault();
@@ -370,7 +780,11 @@
         return;
       }
       const it = e.target.closest && e.target.closest('.tl-m');
-      if (it && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(it.dataset.id); return; }
+      if (it && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        pick(it.dataset.id);
+        return;
+      }
       if (it && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
         e.preventDefault();
         const all = [...el.querySelectorAll('.tl-m')];
@@ -379,13 +793,20 @@
         return;
       }
       if (e.key === 'Tab') {
-        const f = [...el.querySelectorAll('button,[tabindex="0"]')].filter((x) => !x.disabled && x.offsetParent !== null);
+        const f = [...el.querySelectorAll('button,[tabindex="0"]')].filter(x => !x.disabled && x.offsetParent !== null);
         if (!f.length) return;
-        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
-        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+        if (e.shiftKey && document.activeElement === f[0]) {
+          e.preventDefault();
+          f[f.length - 1].focus();
+        } else if (!e.shiftKey && document.activeElement === f[f.length - 1]) {
+          e.preventDefault();
+          f[0].focus();
+        }
       }
     });
-    addEventListener('resize', () => { if (open && mode === 'chart') render(); });
+    addEventListener('resize', () => {
+      if (open && mode === 'chart') render();
+    });
 
     function show(id) {
       if (!open) lastFocus = document.activeElement;
@@ -412,9 +833,15 @@
       model,
       show,
       close,
-      refresh() { if (open) render(); },
-      get open() { return open; },
-      get sel() { return sel; },
+      refresh() {
+        if (open) render();
+      },
+      get open() {
+        return open;
+      },
+      get sel() {
+        return sel;
+      },
       /* URL params for the lane arrangement: tl=1 for the default order, else the order; tlc = collapsed lanes */
       get laneParams() {
         const o = order.join(',');
@@ -423,9 +850,10 @@
       restore(hash) {
         compute();
         const st = TLM.parseState(hash, V, axis);
-        if (st.lanes) order = TLM.arrangeLanes(model.lanes, st.lanes).map((l) => l.id);
+        /* tl=1 (or only unknown ids) means the default order, so a link always replaces the current order (TL-R05) */
+        order = st.lanes ? TLM.arrangeLanes(model.lanes, st.lanes).map(l => l.id) : defaultOrder.slice();
         collapsed.clear();
-        st.collapsed.forEach((x) => collapsed.add(x));
+        st.collapsed.forEach(x => collapsed.add(x));
         if (st.open) show(st.sel);
       },
     };

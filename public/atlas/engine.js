@@ -1318,6 +1318,9 @@ TLV=$("#timeline")&&window.AtlasTimelineView?window.AtlasTimelineView.createView
   ok:g=>treeNodeSeen(g)&&(!LY||LY.layerOk(g,S.layers)),
   fmt:(y,ap)=>LY?LY.fmtYear(y,TL?TL.style:"BCE/CE",ap):String(y),
   colorFor:id=>{const l=(K.raw.layers||[]).find(x=>x.id===id);return l&&l.c||"#9db8ff";},
+  /* internal codex references are navigation, never citations (timeline review TL-R01) */
+  refName:id=>CX_BY[id]?(CX_BY[id].x.name||CX_BY[id].x.title||id):null,
+  openRef:id=>{if(CX_BY[id])openCodex(null,id);},
   onChange:()=>tlChanged()}):null;
 /* Back/Forward: opening the timeline pushes a history entry, so Back closes it and Forward reopens it (with its
    selection); closing it with its own button or Escape steps back over that entry, keeping the two in step. */
@@ -1328,8 +1331,10 @@ function tlChanged(){const o=!!(TLV&&TLV.open);
       if(o){try{history.pushState({atlasTimeline:true},"",urlFor());}catch(e){}return;}
       if(history.state&&history.state.atlasTimeline){try{history.back();}catch(e){}return;}}}
   syncURL();}
-function tlFromURL(){if(!TLV)return;const tl=new URLSearchParams((location.hash||"").replace(/^#/,"")).has("tl");
-  if(TLV.open===tl)return;tlFromHistory=true;try{if(tl)TLV.restore(location.hash);else TLV.close();}finally{tlFromHistory=false;}}
+/* also restores between two open timeline states (different order/collapse/selection) — TL-R05 */
+function tlKey(q){return ["tl","tlc","tlsel"].map(k=>k+"="+(q.get(k)||"")).join("&");}
+function tlFromURL(){if(!TLV)return;const q=new URLSearchParams((location.hash||"").replace(/^#/,""));const tl=q.has("tl");
+  if(TLV.open===tl&&(!tl||tlKey(q)===tlKey(new URLSearchParams(urlFor().split("#")[1]||""))))return;tlFromHistory=true;try{if(tl)TLV.restore(location.hash);else TLV.close();}finally{tlFromHistory=false;}}
 if(TLV)$("#tlBtn").addEventListener("click",()=>TLV.show());
 else if($("#tlBtn"))$("#tlBtn").hidden=true;
 else if($("#trBtn"))$("#trBtn").hidden=true;

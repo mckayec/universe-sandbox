@@ -84,12 +84,54 @@ test('gating filters endpoints and edges before counts, search, selection and UR
   // a restored link cannot select a gated or unknown record
   assert.equal(TL.parseState('#tl=1&tlsel=n%3Ajud-karaite', noJud, pack.timeline).sel, null);
   assert.equal(TL.parseState('#tl=1&tlsel=n:nope', full, pack.timeline).sel, null);
-  const st = TL.parseState('#tl=1&tlt=-600,0', full, pack.timeline);
-  assert.equal(st.range, null, 'year 0 rejected');
+  // the URL contract is exactly tl / tlc / tlsel (TL-R05): an old tlt range key is ignored, never half-applied
   const st2 = TL.parseState('#tl=lane-jud,bogus&tlt=-900,100&tlsel=n:jud-karaite', full, pack.timeline);
   assert.deepEqual([...st2.lanes], ['lane-jud']);
-  assert.deepEqual([...st2.range], [-800, 100]);
-  assert.equal(TL.stateHash(st2), '#tl=lane-jud&tlt=-800,100&tlsel=n%3Ajud-karaite');
+  assert.equal('range' in st2, false);
+  assert.equal(TL.stateHash(st2), '#tl=lane-jud&tlsel=n%3Ajud-karaite');
+});
+
+test('event book gates are kept (TL-R04): a later-book event is a first-book gate, chapters are carried', () => {
+  const m = TL.adaptTree({
+    layers: [{ id: 'x', name: 'X' }],
+    tree: { nodes: [{ id: 'a', name: 'A', layers: ['x'], when: 10 }], links: [] },
+    events: [{ id: 'e5', book: 5, chapter: 9, layers: ['x'], title: 'Later', when: 20 }],
+  });
+  const g = m.records.find((r: any) => r.id === 'e:e5').gate;
+  assert.equal(g.first, 5);
+  assert.equal(g.chapter, 9);
+  // the atlas rule: shown iff first <= selected book
+  const atBook = (b: number) => TL.visible(m, (gt: any) => gt.first == null || b >= gt.first);
+  assert.equal(atBook(4).byId.has('e:e5'), false);
+  assert.equal(TL.search(atBook(4), 'Later').length, 0);
+  assert.equal(TL.revalidate(atBook(4), 'e:e5'), null);
+  assert.equal(atBook(5).byId.has('e:e5'), true);
+  for (const e of pack.events) assert.equal(byId('e:' + e.id).gate.first, e.book, e.id);
+});
+
+test('record wording and evidence are carried verbatim; internal refs are navigation, not citations (TL-R01)', () => {
+  for (const n of pack.tree.nodes) {
+    const r = byId('n:' + n.id);
+    assert.equal(r.text, n.blurb || null, n.id);
+    assert.equal(r.notes.length, (n.notes || []).length, n.id + ' notes kept');
+    (n.notes || []).forEach((x: any, i: number) => {
+      assert.equal(r.notes[i].t, x.t);
+      assert.equal(r.notes[i].loc, x.ref || null);
+    });
+    assert.equal(r.notSame.length, (n.notSame || []).length, n.id + ' identity guards kept');
+  }
+  for (const e of pack.events) {
+    const r = byId('e:' + e.id);
+    assert.equal(r.text, e.text || null);
+    assert.equal(r.atlasRef, e.ref || null);
+    assert.ok(
+      r.src.every((s: any) => s.t !== e.ref),
+      e.id + ' ref is not a citation',
+    );
+  }
+  const cov = byId('n:jud-covenant-tradition');
+  assert.equal(cov.chron, 'narrative', 'textual frame is not historical');
+  assert.equal(cov.notes[0].loc, 'Gen. 12; Exod. 19');
 });
 
 test('coverage reports what the data cannot support instead of inventing it', () => {

@@ -45,27 +45,44 @@
 
   /* ---------- calendar (gregorian-ce, BCE/CE, no year 0) ---------- */
   /* 1 BCE is -1 and 1 CE is 1. The axis runs on astronomical years (1 BCE = 0) so that 1 BCE → 1 CE is one year */
-  const astro = (y) => (y < 0 ? y + 1 : y);
-  const fromAstro = (a) => (a <= 0 ? a - 1 : a);
+  const astro = y => (y < 0 ? y + 1 : y);
+  const fromAstro = a => (a <= 0 ? a - 1 : a);
   const yearsBetween = (a, b) => astro(b) - astro(a);
-  const yearLabel = (y) => (y < 0 ? -y + ' BCE' : y + ' CE');
+  const yearLabel = y => (y < 0 ? -y + ' BCE' : y + ' CE');
 
   /* ---------- helpers ---------- */
-  const arr = (x) => (Array.isArray(x) ? x : x == null ? [] : [x]);
-  const claimsOf = (notes) => {
+  const arr = x => (Array.isArray(x) ? x : x == null ? [] : [x]);
+  const claimsOf = notes => {
     const k = [];
-    arr(notes).forEach((n) => {
+    arr(notes).forEach(n => {
       if (n && n.k && !k.includes(n.k)) k.push(n.k);
     });
     return k;
   };
-  const srcOf = (o) => {
+  /* Citation sources are only explicit `src` entries. An internal `ref` (a codex/place-card id) is NOT a citation:
+     it is kept separately as `atlasRef` for navigation (TL-R01). */
+  const srcOf = o => {
     const s = [];
-    arr(o && o.src).forEach((x) => s.push(typeof x === 'string' ? { t: x } : x));
-    if (o && o.ref) s.push({ t: o.ref, ref: true });
+    arr(o && o.src).forEach(x => s.push(typeof x === 'string' ? { t: x } : x));
     return s;
   };
-  const gateOf = (o) => ({ layers: arr(o.layers), books: o.books || null, first: o.first == null ? null : o.first });
+  /* the record's own wording, carried verbatim: each note keeps its claim kind, text and its locator (`ref` on a
+     note is a text/citation locator such as "Gen. 12; Exod. 19"); identity guards keep their wording and target */
+  const notesOf = notes =>
+    arr(notes)
+      .filter(n => n && n.t)
+      .map(n => ({ k: n.k || null, t: n.t, loc: n.ref || null }));
+  const notSameOf = ns =>
+    arr(ns)
+      .filter(n => n && n.t)
+      .map(n => ({ id: n.id || null, t: n.t }));
+  /* Gate fields the atlas understands (PACK_FORMAT §6): layers, a `books` list, a first book, and an event's single
+     `book` (shown iff event.book <= selected book, i.e. a first book). An optional `chapter` is carried so a
+     chapter-aware host can gate on it; the atlas host has no chapter selector, so nothing here is chapter-safe yet. */
+  const gateOf = o => {
+    const first = o.first != null ? o.first : o.book != null ? o.book : null;
+    return { layers: arr(o.layers), books: o.books || null, first, chapter: o.chapter == null ? null : o.chapter };
+  };
   const NARRATIVE = /narrative|no (modern|calendar|BCE)/i;
 
   /* ---------- adapter: tree (Religious Traditions, PACK_FORMAT §21/§21.1) + Chronicle events ---------- */
@@ -85,8 +102,8 @@
     const edges = [];
     const lanes = [];
     const layerName = {};
-    arr(pack.layers).forEach((l) => (layerName[l.id] = l.name || l.id));
-    const laneFor = (layers) => 'lane-' + (arr(layers)[0] || 'other');
+    arr(pack.layers).forEach(l => (layerName[l.id] = l.name || l.id));
+    const laneFor = layers => 'lane-' + (arr(layers)[0] || 'other');
     const seenLane = {};
     const addLane = (id, title, group, gate) => {
       if (seenLane[id]) return;
@@ -105,8 +122,13 @@
         label: n.name,
         lane,
         kind: when ? 'presence' : 'undated',
-        chron: 'historical',
+        chron:
+          !when && (NARRATIVE.test(n.whenText || '') || /textual/i.test(n.kind || '')) ? 'narrative' : 'historical',
         claim: claimsOf(n.notes),
+        text: n.blurb || null,
+        notes: notesOf(n.notes),
+        notSame: notSameOf(n.notSame),
+        atlasRef: null,
         calendar: 'gregorian-ce',
         when,
         order: i,
@@ -125,7 +147,7 @@
           src: arr(n.parentSrc).length ? srcOf({ src: n.parentSrc }) : [],
           gate: gateOf(n),
         });
-      arr(n.merge).forEach((m) =>
+      arr(n.merge).forEach(m =>
         edges.push({
           id: 'm:' + m + '>' + n.id,
           from: 'n:' + m,
@@ -168,6 +190,10 @@
         kind: when ? 'event' : 'undated',
         chron: narrative ? 'narrative' : 'historical',
         claim: claimsOf(e.notes),
+        text: e.text || null,
+        notes: notesOf(e.notes),
+        notSame: notSameOf(e.notSame),
+        atlasRef: e.ref || null,
         calendar: 'gregorian-ce',
         when,
         order: i,
@@ -180,8 +206,8 @@
   }
   function journeysOf(pack) {
     const out = [];
-    arr(pack.codex).forEach((c) => {
-      if (c.id === 'journeys') arr(c.list).forEach((j) => out.push(j));
+    arr(pack.codex).forEach(c => {
+      if (c.id === 'journeys') arr(c.list).forEach(j => out.push(j));
     });
     return out;
   }
@@ -190,51 +216,49 @@
   /* `ok(gate)` is the atlas's own filter (layers.js + book gate). Records first, then edges whose endpoints both
      survive and whose own gate passes; lanes that keep at least one record. Everything downstream uses this. */
   function visible(model, ok) {
-    const recs = model.records.filter((r) => ok(r.gate));
-    const ids = new Set(recs.map((r) => r.id));
-    const edges = model.edges.filter((e) => ids.has(e.from) && ids.has(e.to) && ok(e.gate));
-    const laneIds = new Set(recs.map((r) => r.lane));
-    const lanes = model.lanes.filter((l) => laneIds.has(l.id));
+    const recs = model.records.filter(r => ok(r.gate));
+    const ids = new Set(recs.map(r => r.id));
+    const edges = model.edges.filter(e => ids.has(e.from) && ids.has(e.to) && ok(e.gate));
+    const laneIds = new Set(recs.map(r => r.lane));
+    const lanes = model.lanes.filter(l => laneIds.has(l.id));
     return {
       calendar: model.calendar,
       records: recs,
       edges,
-      drawnEdges: edges.filter((e) => e.src.length > 0),
-      unsourcedEdges: edges.filter((e) => e.src.length === 0),
+      drawnEdges: edges.filter(e => e.src.length > 0),
+      unsourcedEdges: edges.filter(e => e.src.length === 0),
       lanes,
-      dated: recs.filter((r) => r.when),
-      undated: recs.filter((r) => !r.when).sort((a, b) => a.order - b.order),
-      byId: new Map(recs.map((r) => [r.id, r])),
+      dated: recs.filter(r => r.when),
+      undated: recs.filter(r => !r.when).sort((a, b) => a.order - b.order),
+      byId: new Map(recs.map(r => [r.id, r])),
     };
   }
   /* a pending or restored selection survives only if it is still visible */
-  const revalidate = (view, id) => (id && (view.byId.has(id) || view.edges.some((e) => e.id === id)) ? id : null);
+  const revalidate = (view, id) => (id && (view.byId.has(id) || view.edges.some(e => e.id === id)) ? id : null);
   /* search only ever sees the gated view */
   function search(view, q) {
     const s = String(q || '')
       .trim()
       .toLowerCase();
     if (!s) return [];
-    return view.records.filter(
-      (r) => r.label.toLowerCase().includes(s) || (r.whenText || '').toLowerCase().includes(s),
-    );
+    return view.records.filter(r => r.label.toLowerCase().includes(s) || (r.whenText || '').toLowerCase().includes(s));
   }
 
   /* ---------- extent and coverage ---------- */
   function extent(view, axis) {
     let lo = Infinity;
     let hi = -Infinity;
-    view.dated.forEach((r) => {
+    view.dated.forEach(r => {
       const w = r.when;
       lo = Math.min(lo, w.window ? w.window[0] : w.from);
       hi = Math.max(hi, w.to != null ? w.to : w.window ? w.window[1] : w.from);
     });
-    if (axis && axis.max != null && view.dated.some((r) => r.when.toOpen)) hi = Math.max(hi, axis.max);
+    if (axis && axis.max != null && view.dated.some(r => r.when.toOpen)) hi = Math.max(hi, axis.max);
     return lo === Infinity ? null : [lo, hi];
   }
   /* what the brief asks for that this data cannot support honestly; shown in the view, never filled in */
   function coverage(view, model) {
-    const has = (t) => view.drawnEdges.some((e) => e.type === t);
+    const has = t => view.drawnEdges.some(e => e.type === t);
     const gaps = [];
     if (!has('parent')) gaps.push({ id: 'family', t: 'Family genealogy: no accepted parent/child records yet.' });
     if (!has('succession')) gaps.push({ id: 'succession', t: 'Succession: no accepted succession records yet.' });
@@ -257,10 +281,10 @@
     return {
       records: view.records.length,
       dated: view.dated.length,
-      windows: view.dated.filter((r) => r.when.window).length,
-      approx: view.dated.filter((r) => r.when.approx).length,
+      windows: view.dated.filter(r => r.when.window).length,
+      approx: view.dated.filter(r => r.when.approx).length,
       undated: view.undated.length,
-      narrative: view.undated.filter((r) => r.chron === 'narrative').length,
+      narrative: view.undated.filter(r => r.chron === 'narrative').length,
       edges: view.edges.length,
       drawn: view.drawnEdges.length,
       gaps,
@@ -310,29 +334,24 @@
     return lo === Infinity ? null : { from: lo, to: hi, toOpen: open };
   }
 
-  /* ---------- URL state: #tl=lane,lane&tlc=lane,lane&tlt=from,to&tlsel=id (tl = lane order, tlc = collapsed lanes) (validated, always re-gated; keys kept apart from the
-     atlas's own book/world/site/layers/yr keys) ---------- */
+  /* ---------- URL state: #tl=lane,lane&tlc=lane,lane&tlsel=id ----------
+     tl = lane order (1 = default order), tlc = collapsed lanes, tlsel = selection. Validated and always re-gated;
+     keys kept apart from the atlas's own book/world/site/layers/yr keys. The published contract is exactly these
+     three keys (TL-R05): chart zoom and a time range are not URL state, and an old `tlt` key is ignored. */
   function parseState(hash, view, axis) {
     const p = new URLSearchParams(String(hash || '').replace(/^#/, ''));
-    const st = { open: p.has('tl'), lanes: null, collapsed: [], range: null, sel: null };
+    const st = { open: p.has('tl'), lanes: null, collapsed: [], sel: null };
     if (!st.open) return st;
-    const laneIds = new Set(view.lanes.map((l) => l.id));
-    const ls = (p.get('tl') || '').split(',').filter((x) => laneIds.has(x));
+    const laneIds = new Set(view.lanes.map(l => l.id));
+    const ls = (p.get('tl') || '').split(',').filter(x => laneIds.has(x));
     st.lanes = ls.length ? ls : null;
     st.collapsed = [...new Set((p.get('tlc') || '').split(',').filter(x => laneIds.has(x)))];
-    const t = (p.get('tlt') || '').split(',').map(Number);
-    if (t.length === 2 && t.every((x) => Number.isInteger(x) && x !== 0) && t[0] < t[1]) {
-      const lo = axis && axis.min != null ? axis.min : -Infinity;
-      const hi = axis && axis.max != null ? axis.max : Infinity;
-      if (t[1] > lo && t[0] < hi) st.range = [Math.max(t[0], lo), Math.min(t[1], hi)];
-    }
     st.sel = revalidate(view, p.get('tlsel'));
     return st;
   }
   function stateHash(st) {
     const p = ['tl=' + (st.lanes ? st.lanes.join(',') : '1')];
     if (st.collapsed && st.collapsed.length) p.push('tlc=' + st.collapsed.join(','));
-    if (st.range) p.push('tlt=' + st.range.join(','));
     if (st.sel) p.push('tlsel=' + encodeURIComponent(st.sel));
     return '#' + p.join('&');
   }
