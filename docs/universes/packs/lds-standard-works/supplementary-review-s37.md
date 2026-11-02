@@ -34,7 +34,7 @@ Together: **21 omission keys plus BMC-187**, comprising **18 proposed new views,
 - [Accounting/generator script](supplementary-review-s37/accounting.py), [result](supplementary-review-s37/accounting-result.json): two isolated rollup → semantic pass → build runs reproduce the semantic CSV, source ledger, pack, mapping and crosswalks byte-for-byte, using accepted register `9cc874c09a3686119ca6b4c17c7e16f214fd7ab6`. Existing mapping and runtime equality independently checked. Generator repeatability is not semantic truth.
 - Source-view count remains **58 / 88 links**; atlas remains **1,581 cards / 469 links**. Prior S35-A1/A2 and source/gate closures inherit unchanged. No repeat browser or gate sweep is claimed where the entire runtime is identical.
 - No new rendering/device evidence is supplied in this delta. S36's desktop/phone process lacked its terminal error summary; only its separate 4K check supplied one. Its images/emulation are not physical-phone/native-select, full keyboard traversal or real-GPU/finished-bake acceptance. The browser/server restriction was respected; no workaround executed.
-- Exact-head implementation and final review CI results are recorded in the main handoff after terminal verification. The workflow runs standalone-pages tests, not the separate full `test:browser` suite.
+- Exact-head implementation [CI 41498211557](https://github.com/mckayec/universe-sandbox/actions/runs/41498211557) completed successfully; build passed and deployment skipped. Review publication failed because Git could not obtain GitHub HTTPS credentials, so no review-head CI or updated main handoff is claimed. The workflow runs standalone-pages tests, not the separate full `test:browser` suite.
 
 ## Next action
 
