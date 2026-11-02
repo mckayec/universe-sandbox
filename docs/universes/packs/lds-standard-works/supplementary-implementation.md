@@ -1096,3 +1096,60 @@ target outlined), `s24-see-also-390x844` (target card in view under the chooser)
 **Still open (Claude keeps ownership):** broader BA07 primary/supplementary integration (typed links beyond the 12
 people, timeline, source/vision, omission/consolidation crosswalk); final same-head 4K/1280 rendered evidence of the
 S23-C1 notice; real-GPU evidence (not available in this sandbox); native-select acceptance on a real phone.
+
+## Checkpoint 25 (typed links from the integration contract; S23/S22 integration item “typed links”)
+
+First bounded unit of the broader BA07 integration: the shared-entity and typed-link rows of the accepted contract
+([integration-reconciliation.md](https://github.com/mckayec/universe-sandbox/blob/main/docs/universes/packs/lds-standard-works/integration-reconciliation.md)
+“Canonical keys and source gates”, “Exact-slug collision audit” and “Typed links: binding resolutions”) as navigable,
+labelled See-also links. Nothing is merged, no card or gate changes, no coordinates, pins, routes or dates are added.
+
+* **Engine (generic, PACK_FORMAT 20.5):** a `see` entry may be `{k, r}` (relation label shown before the link, e.g.
+  “same city: Jerusalem in Samuel and Kings”) or `"ev:<event id>"` (“In the Chronicle: <title>”; closes the codex and
+  opens that event, travelling to its site). Gate rules are unchanged and also apply to events (book, layer, year): a
+  later-work target is counted only, a filtered target is named, not linked, with its label. Plain string entries
+  behave as before.
+* **Pack (generated):** new `copy_links.py`, merged by `build.py` after the identity links (identity links first, a
+  target never twice). **21 same-entity groups** (the 15 collision-audit slugs that have more than one codex view plus
+  the canonical rows damascus, nineveh, joppa, tarshish, en-gedi, shushan-narrative, tekoa, jordan-river, P01/P02/P04/
+  P07/P08/AP06/AP07): each card links to every other view of the same place, labelled “same city/town/region/land/
+  port/river/place”. **17 typed relations**: plains of Jericho ↔ the city; Zion epithet → Jerusalem; Jeremiah's prison
+  court, Bethesda, Siloam and Gabbatha “within” Jerusalem (inverse “setting/feature within it”); NT Samaria (region)
+  ↔ Samaria (city) as “the city” / “the region” (the region is not grouped with the city cards); Daniel 1 WP-E03 ↔
+  WP-J02 “same Daniel 1 episode”; DD109 → Chronicle “Kirtland dedication prayer”, DD110 ↔ DE06b, DD137 → Chronicle
+  “Vision recorded at Kirtland” (the three Kirtland occasions are not linked to one another, per the contract's
+  forbidden conversion); DD121–DD123 ↔ RE07 “describes / described in”; DD121 ↔ RC02 “explains / explained in”;
+  DD136 → Chronicle “Instructions for the journey”, DD136 ↔ DJ05 “same instructions”. Every group was checked against
+  the cards' own text, which already states the identity (“The same city as …”); no identity comes from a name alone.
+  Result: 120 cards carry `see` (241 entries, 133 labelled, 3 to events).
+* **[typed-links.csv](typed-links.csv)** (generated): every contract row with its cards, gates and link state,
+  including the rows **not** made into codex links and why (RJ03 is a route; the Jerusalem/Independence/Carthage pins
+  are map objects; BMC quotation/vision edges and DRE office succession are still text, not links; WP-R01's name pairs
+  sit inside one card; single-view entities).
+* **Builder reading for ChatGPT:** the contract row “DD121–123 … explains RC02”: only section 121 contains the teaching
+  RC02 summarises (“Authority and persuasion”), so only DD121 carries “explains”; DD122/DD123 link to RE07 only. Say if
+  all three should link.
+
+Checks at the code commit: `pnpm format` clean; `pnpm check` 121/121 (new test “Checkpoint 25”: every `see` target
+resolves, event targets exist, labels short, sample groups/relations exact, region not grouped with city, Kirtland
+occasions not cross-linked; the checkpoint-24 test now reads `{k, r}` entries); `check:dist` 114 files OK; coverage
+validator `errors: []`; baseline regeneration (before the change) byte-identical, and regeneration after it is
+idempotent.
+
+Code commit **abd7f1a97d21180b4dd47fde730cee3a2f3bd061**. Interaction evidence (real input):
+[typed-links-probe.mjs](supplementary-build/typed-links-probe.mjs) against the built site, SwiftShader, **passed 4/4
+with no console errors** (14 min): (1) 1440×900, all layers: Siloam's link reads “within: Jerusalem in Samuel and
+Kings”; focus + **Enter** switches to `ot-more` and focuses that card, whose labels begin “same city / same city /
+called Zion” and which links back to Siloam; (2) DD109's “In the Chronicle: Kirtland dedication prayer” **click** closes
+the codex and opens that Chronicle entry; (3) `#layers=nt`: Siloam names “within: Jerusalem in Samuel and Kings (hidden
+by the layer or year filter)”, no link; (4) 390×844 **tap** on “same city: Damascus (Kings)” from NT Damascus focuses
+that card (target ≥ 24 px, inside the viewport). Shots inspected: `s25-typed-links-ot-1440x900` (labels readable; a
+long label such as “setting within it:” can wrap onto its own line above its link), `s25-typed-links-390x844`,
+`s25-typed-links-event-1440x900.jpg` (event open in the dossier; captured while the globe was still turning toward
+Kirtland under SwiftShader, and the Old World site labels are drawn over North America in that frame: a label lag
+during the turn, to be rechecked on a settled frame and on a real GPU in the final rendered evidence; not caused by
+this change, which only calls the existing `openEvent`).
+
+**Still open (Claude keeps ownership):** BMC quotation/vision typed edges (239 cards), DRE office-succession links,
+timeline and source/vision relations, the omission/consolidation rollup; final same-head 4K/1280 rendered evidence;
+real-GPU and real-phone native-select evidence.
