@@ -25,6 +25,12 @@ G6 = ('FAIR, Heartland model description',
       'https://www.fairlatterdaysaints.org/answers/'
       'Question:_What_is_the_Heartland_Model_of_Book_of_Mormon_geography')
 
+G1 = ('Church, Book of Mormon Geography',
+      'https://www.churchofjesuschrist.org/study/manual/gospel-topics/book-of-mormon-geography?lang=eng')
+# S23-C1: the accepted G1 Church-position notice, carried visibly on each model card (supplementary-review-s23).
+NOTICE = (' For Book of Mormon events in the ancient Americas, the Church takes no position on specific geographic '
+          'locations. These models are individual interpretations, not Church-endorsed maps.')
+
 COPY = {
     'SD1261': ('bom-model-mesoamerican-sorenson', 'Geography model: limited Mesoamerican setting (Sorenson)',
                M + 'John L. Sorenson places the land southward mainly in Guatemala, Chiapas and Tabasco, the narrow '
@@ -32,7 +38,7 @@ COPY = {
                'cultural patterns fit the narrative. Earl Wunderli challenges the need for a small setting and that '
                'reading of directions; his essay favors a hemispheric reading of the text, not archaeological '
                'confirmation of that alternative. The interpretation is disputed. The atlas draws no model and ranks '
-               'none.'),
+               'none.' + NOTICE),
     'SD1262': ('bom-model-heartland', 'Geography model: Heartland (North America)',
                M + 'Heartland proposals place the narrative in parts of North America, particularly the Mississippi '
                'and Ohio valleys; Andrew H. Hedges identifies Rod L. Meldrum with this model. Supporters cite early '
@@ -41,19 +47,19 @@ COPY = {
                'boundaries and site identifications vary. An older Meldrum variant, as described by FAIR, identifies '
                'Sidon with the Mississippi, Cumorah with New York and the narrow neck with Niagara; Hedges describes a '
                'later Lake Michigan corridor reading of the narrow neck. The two variants are kept separate, and no '
-               'Heartland pins are drawn.'),
+               'Heartland pins are drawn.' + NOTICE),
     'SD1263': ('bom-model-hemispheric-historical', 'Geography model: historical hemispheric (Orson Pratt)',
                M + 'A historical hemispheric interpretation associated with Orson Pratt spread the narrative across '
                'North and South America: the land of Nephi and Zarahemla in northern South America, the narrow neck '
                'at Darien (Panama) and the final battles at a New York Cumorah. Later interpreters proposed smaller '
                'settings. Broad continental readings have been defended from the text’s internal language; '
                'limited-model advocates contest the travel scale and distribution of events. These are disagreements '
-               'about interpretation, not evidence that either map is established history.'),
+               'about interpretation, not evidence that either map is established history.' + NOTICE),
     # SC53: Irreantum is the SD0002 card (its copy, in copy_bom, carries this row's retained context)
     'SD1266': 'SD0002',
 }
 CHILDREN = {}
-EXTRA_SRC = {'SD1261': [G3, G4], 'SD1262': [G5, G6], 'SD1263': [G5, G4]}
+EXTRA_SRC = {'SD1261': [G3, G4, G1], 'SD1262': [G5, G6, G1], 'SD1263': [G5, G4, G1]}
 
 # SD row -> existing primary card in `bom-geography`
 ROWS = {
@@ -64,7 +70,8 @@ TAB = 'bom-geography'
 
 # primary card -> rewritten desc (the first sentence or sentences are the card's existing copy)
 DESC = {
-    'BE02': ('Book of Mormon narrative — Ishmael dies and is buried at Nahom; his daughters mourn. The text names '
+    'BE02': ('Book of Mormon narrative — The narrative reports Ishmael’s death and says he was buried at Nahom; his '
+             'daughters mourn. The text names '
              'Nahom as the place of burial, not as the place of death. Nahom is unlocated in the default view, and '
              'no grave pin is drawn.'),
     'BE03': ('Book of Mormon narrative — At coastal Bountiful, Nephi receives a command to build a ship. Nephi '

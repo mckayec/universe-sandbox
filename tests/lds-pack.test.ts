@@ -1579,10 +1579,24 @@ test('Supplementary checkpoint 23: SC52 attributed models and SC53/SC54 consolid
     assert.ok(c, k);
     assert.deepEqual([plain(c.books), plain(c.layers)], [[3], ['bom']], k);
     assert.match(c.desc, /^Proposed geography model, attributed — /, k);
-    assert.ok(
-      plain(c.src).every((s: any) => !/churchofjesuschrist/.test(s.u)),
+    // S23-C1: the accepted Church-position notice and its source travel with every model card
+    assert.match(
+      c.desc,
+      /For Book of Mormon events in the ancient Americas, the Church takes no position on specific geographic locations\. These models are individual interpretations, not Church-endorsed maps\.$/,
       k,
     );
+    const church = plain(c.src).filter((s: any) => /churchofjesuschrist/.test(s.u));
+    assert.deepEqual(
+      church,
+      [
+        {
+          t: 'Church, Book of Mormon Geography',
+          u: 'https://www.churchofjesuschrist.org/study/manual/gospel-topics/book-of-mormon-geography?lang=eng',
+        },
+      ],
+      k,
+    );
+    assert.ok(plain(c.src).length >= 3, k);
     assert.ok(!sites.has(k), k);
   }
   assert.match(card('bom-model-mesoamerican-sorenson').desc, /The interpretation is disputed/);
@@ -1605,6 +1619,11 @@ test('Supplementary checkpoint 23: SC52 attributed models and SC53/SC54 consolid
     );
   assert.equal(all.filter((c: any) => /Nahom|Moriancumer|Shelem/.test(c.name)).length, 1);
   assert.match(card('BE02').desc, /not as the place of death/);
+  assert.match(
+    card('BE02').desc,
+    /The narrative reports Ishmael’s death and says he was buried at Nahom; his daughters mourn\./,
+  );
+  assert.doesNotMatch(card('BXP02').desc, /SD1266/);
   assert.match(card('BE03').desc, /different place from the later Bountiful in the Americas/);
   assert.match(card('BXP02').desc, /names no modern ocean/);
   assert.match(card('BJ01').desc, /no American landing port and no ocean track/);
