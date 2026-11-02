@@ -1039,7 +1039,9 @@ Checks at the code commit: `pnpm format` clean; `pnpm check` 119/119 (new tests 
 pending counts in two earlier tests now 0); `pnpm check:dist` OK; `pnpm test:pages` 13 pages × 2; coverage validator
 `errors: []`; reference-disposition validator `missing []`; regenerating twice from the accepted register (9cc874c) is
 byte-identical. The local browser smoke test (`pnpm test:browser`) did not finish within 10 minutes under SwiftShader in
-this sandbox; CI runs it. Playwright (SwiftShader, built `dist/` under `/universe-sandbox/`, codex tab chosen through
+this sandbox. *(Corrected at checkpoint 24, S23 technical correction: CI does **not** run it.
+`.github/workflows/deploy-pages.yml` runs `pnpm test:pages` (`tests/standalone-pages.mjs`), a separate script from
+`pnpm test:browser` (`tests/browser-smoke.mjs`). The smoke's terminal result is recorded under checkpoint 24.)* Playwright (SwiftShader, built `dist/` under `/universe-sandbox/`, codex tab chosen through
 `#cxPick`, list scrolled to the target card, CDP capture): `s23-codex-{bom-more,bom-geography,reference-views}-*` at
 3840×2160, 1440×900, 1280×800 and 390×844, plus `s23-splash-{390x844,1280x800}`; every target card found, no page
 horizontal overflow, no console errors at 1280/1440/390 (the 3840 run's report was cut off by the time limit after its

@@ -1630,3 +1630,55 @@ test('Supplementary checkpoint 23: SC52 attributed models and SC53/SC54 consolid
   assert.match(card('BJ11').desc, /that camp is not the sea crossing/);
   assert.match(card('BJ11').desc, /no modern mountain is identified/);
 });
+
+test('Checkpoint 24: shared-identity See-also links for the 12 front-matter people keep every gate', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((c: any) => c.key).map((c: any) => [c.key, c]));
+  const linked = all.filter((c: any) => c.see);
+  assert.ok(linked.length >= 40);
+  for (const c of linked) {
+    for (const k of plain(c.see)) {
+      const t = byKey.get(k);
+      assert.ok(t, `${c.key} -> ${k}`);
+      assert.notEqual(k, c.key);
+      // links are two-way, and neither end's work gate is changed by the link
+      assert.ok(plain(t.see || []).includes(c.key), `${k} <- ${c.key}`);
+      assert.equal(plain(t.books).length, 1, k);
+    }
+  }
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/identity-crosswalk.csv', import.meta.url),
+    'utf8',
+  )
+    .trim()
+    .split('\n');
+  assert.equal(csv.length, 13);
+  const people = [
+    'Joseph Smith Jr.',
+    'Oliver Cowdery',
+    'David Whitmer',
+    'Martin Harris',
+    'Christian Whitmer',
+    'Jacob Whitmer',
+    'Peter Whitmer Jr.',
+    'John Whitmer',
+    'Hiram Page',
+    'Joseph Smith Sr.',
+    'Hyrum Smith',
+    'Samuel H. Smith',
+  ];
+  assert.deepEqual(
+    csv.slice(1).map(r => r.split(',')[0]),
+    people,
+  );
+  // neutral views stay at 3/bom, identity cards at their own source gates
+  assert.deepEqual([plain(byKey.get('FM04').books), plain(byKey.get('FM05').books)], [[3], [3]]);
+  assert.deepEqual(plain(byKey.get('FM04').see), [
+    'DCM-dcp-oliver-cowdery',
+    'DCM-dcp-david-whitmer',
+    'DCM-dcp-martin-harris',
+  ]);
+  assert.deepEqual(plain(byKey.get('DCM-dcp-hiram-page').books), [4]);
+  assert.deepEqual(plain(byKey.get('PGM-jsh-family').books), [5]);
+  assert.deepEqual(plain(byKey.get('fm-person-christian-whitmer').see), ['FM05']);
+});

@@ -703,6 +703,11 @@ codex:[{id:"people", title:"People", list:[
 * A codex entry may carry `date:"May 15, 1829, as reported"`: an attributed date shown as text beside its layer
   swatches. It never feeds the year filter; use it when the source's precision or wording should be kept rather than a
   numeric `when`.
+* A codex entry with a `key` may carry `see:["otherKey", …]`: See-also links to other codex entries in any section.
+  Each target is a button that opens the target's section, scrolls to it, outlines it briefly and moves keyboard focus
+  to its heading. A link never lowers a gate: a target locked by reading order is left out and only counted ("1 more
+  unlocks in later books"); a target hidden by the layer or year filter is named but not linked ("… (hidden by the
+  layer or year filter)"). Unknown keys are ignored. Write links in both directions when both ends should navigate.
 * The validator checks note and codex layer ids, `when` values and note books.
 
 ### 20.6 `routes` — journeys on one world's surface

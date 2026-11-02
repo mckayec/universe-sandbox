@@ -1295,10 +1295,36 @@ function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books
 /* one codex entry; Track A entries also show their layer chips and dates */
 function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
   const lm=LY&&(x.layers||x.layer||x.when!=null)?'<span class="lmeta">'+LY.itemMeta(LAY,TL,x)+'</span>':"";
-  return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p>'+cxSrc(x)+'</div>';}
+  const dk=x.key!=null?' data-key="'+esc(x.key)+'"':"";
+  return '<div class="cx-item"'+dk+'><h3 tabindex="-1">'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p>'+cxSrc(x)+cxSee(x)+'</div>';}
 /* optional source locators on a codex entry: src:[{t:"Moses 2",u:"https://…"}]; only https links are made */
 function cxSrc(x){const s=ARR(x.src).filter(r=>r&&r.t);if(!s.length)return"";
   return '<p class="cx-src">Source: '+s.map(r=>/^https:\/\/[^\s"<>]+$/.test(String(r.u||""))?'<a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.t)+'</a>':esc(r.t)).join(" · ")+'</p>';}
+/* optional See-also links between codex entries: see:["key",…] (PACK_FORMAT 20.5). A link opens the target's
+   section and scrolls to it. A target the reader has not reached yet is left out (only counted); one hidden by the
+   layer or year filter is named but not linked. A link never lowers the target's own work gate. */
+const CXK=new Map();
+K.codex.forEach(t=>t.list.forEach(x=>{if(x.key!=null&&!CXK.has(String(x.key)))CXK.set(String(x.key),{tab:t.id,x});}));
+function cxReach(x){
+  if(!LY)return CUM&&S.book&&cxFirst(x)>S.book?"locked":"ok";
+  const sp=LY.codexSplit([x],S.layers,S.range,CUM,S.book,cxFirst);
+  return sp.shown.length?"ok":sp.locked?"locked":"filtered";}
+function cxSee(x){
+  const t=ARR(x.see).map(k=>CXK.get(String(k))).filter(Boolean);if(!t.length)return"";
+  let later=0;const parts=[];
+  t.forEach(({x:y})=>{const st=cxReach(y);
+    if(st==="locked")later++;
+    else if(st==="filtered")parts.push('<span class="cx-off">'+esc(y.name)+' (hidden by the layer or year filter)</span>');
+    else parts.push('<button type="button" class="cx-see" data-see="'+esc(y.key)+'">'+esc(y.name)+'</button>');});
+  if(!parts.length&&!later)return"";
+  const lt=later?'<span class="cx-off">'+later+' more unlock'+(later===1?"s":"")+' in later books</span>':"";
+  return '<p class="cx-also"><span>See also:</span>'+parts.concat(lt?[lt]:[]).join("")+'</p>';}
+function cxGo(key){const t=CXK.get(String(key));if(!t||cxReach(t.x)!=="ok")return;
+  cxTab=t.tab;renderCodex();
+  const el=[...$("#cxBody").querySelectorAll(".cx-item[data-key]")].find(e=>e.dataset.key===String(key));if(!el)return;
+  el.scrollIntoView({block:"start"});el.classList.add("cx-hit");setTimeout(()=>el.classList.remove("cx-hit"),1600);
+  el.querySelector("h3").focus({preventScroll:true});}
+$("#cxBody").addEventListener("click",e=>{const b=e.target.closest("[data-see]");if(b)cxGo(b.dataset.see);});
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
   /* narrow screens show the same sections as one compact chooser instead of a wall of stacked tab buttons */
   $("#cxPick").innerHTML=K.codex.map(t=>'<option value="'+esc(t.id)+'"'+(t.id===cxTab?" selected":"")+'>'+esc(t.t)+'</option>').join("");

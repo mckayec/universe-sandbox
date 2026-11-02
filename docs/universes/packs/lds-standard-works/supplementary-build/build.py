@@ -13,6 +13,7 @@ HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[4]
 PACK = ROOT / 'public/atlas/packs/lds-standard-works.js'
 MAP = HERE.parent / 'supplementary-implementation.csv'
+XWALK = HERE.parent / 'identity-crosswalk.csv'
 BASE = 'https://www.churchofjesuschrist.org/study/scriptures/'
 sys.path.insert(0, str(HERE))
 import copy_bom
@@ -29,6 +30,7 @@ import copy_dd
 import copy_pgp
 import copy_fm
 import copy_geo
+import copy_identity
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -327,6 +329,7 @@ def main(path):
         i, j = text.index(a) + len(a), text.index(b)
         block = '\n' + '\n'.join(lines[fam]) + '\n          '
         text = text[:i] + block + text[j:]
+    text = write_see(text)
     PACK.write_text(text, encoding='utf-8')
     with open(MAP, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
@@ -339,6 +342,54 @@ def main(path):
           f'{sum(1 for m in mapping if m[0] and m[10].startswith("consolidated into"))} SD rows and '
           f'{sum(1 for m in mapping if not m[0] and m[10].startswith("consolidated into"))} prose views consolidated into another card); '
           f'{sum(1 for m in mapping if m[4]=="pending")} pending')
+
+
+def card_line(text, key):
+    """(start, end) of the single pack line holding codex card `key`."""
+    m = list(re.finditer(r"^[ \t]*\{ key: '%s', [^\n]*$" % re.escape(key), text, re.M))
+    assert len(m) == 1, (key, len(m))
+    return m[0].start(), m[0].end()
+
+
+def card_gate(line):
+    b = re.search(r"books: \[(\d)\], layers: \['([a-z]+)'\]", line)
+    return f'{b.group(1)}/{b.group(2)}'
+
+
+def write_see(text):
+    """Write copy_identity's See-also links onto their cards (idempotent) and the identity crosswalk CSV."""
+    links = copy_identity.see_links()
+    for key, targets in links.items():
+        a, b = card_line(text, key)
+        line = re.sub(r", see: \[[^\]]*\]", '', text[a:b])
+        assert line.endswith(' },'), key
+        for t in targets:
+            card_line(text, t)
+        line = line[:-3] + ', see: [' + ', '.join(js(t) for t in targets) + '] },'
+        text = text[:a] + line + text[b:]
+    rows = []
+    for name, ident, hub, neutral, dc, pgp in copy_identity.PEOPLE:
+        def views(keys):
+            return '; '.join(f'{k} ({card_gate(text[slice(*card_line(text, k))])})' for k in keys)
+        aliases = []
+        for k in [hub] + neutral + dc + pgp:
+            line = text[slice(*card_line(text, k))]
+            for pat in copy_identity.ALIAS_PATTERNS[name]:
+                for hit in re.findall(pat, line):
+                    if hit not in aliases:
+                        aliases.append(hit)
+        rows.append([name, ident, f'{hub} ({card_gate(text[slice(*card_line(text, hub))])})', ' | '.join(aliases),
+                     views(neutral), views(dc) or ('(identity card only)' if hub.startswith('DCM-') else '(none: no D&C card names this person)'),
+                     views(pgp) or '(none)', len(links.get(hub, [])),
+                     'each card keeps its own gate; links to later-work cards stay hidden (counted) until that work'
+                     ' is reached; a filtered target is named, not linked; no surname-only kinship'])
+    with open(XWALK, 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['person', 'identity_key', 'identity_card', 'aliases_printed_on_linked_cards',
+                    'neutral_source_views_3_bom', 'later_dc_views', 'later_pgp_views', 'see_links_on_identity_card',
+                    'gate_and_navigation_rule'])
+        w.writerows(rows)
+    return text
 
 
 if __name__ == '__main__':
