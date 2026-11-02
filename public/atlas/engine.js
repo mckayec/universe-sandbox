@@ -1318,7 +1318,18 @@ TLV=$("#timeline")&&window.AtlasTimelineView?window.AtlasTimelineView.createView
   ok:g=>treeNodeSeen(g)&&(!LY||LY.layerOk(g,S.layers)),
   fmt:(y,ap)=>LY?LY.fmtYear(y,TL?TL.style:"BCE/CE",ap):String(y),
   colorFor:id=>{const l=(K.raw.layers||[]).find(x=>x.id===id);return l&&l.c||"#9db8ff";},
-  onChange:()=>syncURL()}):null;
+  onChange:()=>tlChanged()}):null;
+/* Back/Forward: opening the timeline pushes a history entry, so Back closes it and Forward reopens it (with its
+   selection); closing it with its own button or Escape steps back over that entry, keeping the two in step. */
+let tlWasOpen=false,tlFromHistory=false;
+function tlChanged(){const o=!!(TLV&&TLV.open);
+  if(o!==tlWasOpen){tlWasOpen=o;
+    if(urlReady&&!tlFromHistory){
+      if(o){try{history.pushState({atlasTimeline:true},"",urlFor());}catch(e){}return;}
+      if(history.state&&history.state.atlasTimeline){try{history.back();}catch(e){}return;}}}
+  syncURL();}
+function tlFromURL(){if(!TLV)return;const tl=new URLSearchParams((location.hash||"").replace(/^#/,"")).has("tl");
+  if(TLV.open===tl)return;tlFromHistory=true;try{if(tl)TLV.restore(location.hash);else TLV.close();}finally{tlFromHistory=false;}}
 if(TLV)$("#tlBtn").addEventListener("click",()=>TLV.show());
 else if($("#tlBtn"))$("#tlBtn").hidden=true;
 else if($("#trBtn"))$("#trBtn").hidden=true;
@@ -1491,7 +1502,7 @@ function afterRefresh(){
   const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");
   if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
   syncURL();}
-addEventListener("popstate",()=>{const st=parseHash();
+addEventListener("popstate",()=>{const st=parseHash();tlFromURL();
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
   else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
