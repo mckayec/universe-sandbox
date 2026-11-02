@@ -27,7 +27,8 @@ count of new entities.
 | SC45 D&C section dossiers (DD001–DD138, DDO1–DDO2) | 140 | **imported, checkpoints 18–19** (S18/S19 fixes at 19–20) | codex tab `dc-more` |
 | SC46 PGP records and relationships (QG01–QG16) | 16 (+1 Cowdery 1834 child) | **imported, checkpoint 20** | codex tab `pgp-more` |
 | SC47 Articles of Faith 1–13 | 13 (1 card; 12 rows consolidated) | **imported, checkpoint 20** | codex tab `pgp-more` |
-| SC48 PGP identity constraints | 11 | pending | |
+| SC48 PGP identity constraints | 11 (10 cards; SD1244 consolidated into QG07) | **imported, checkpoint 21** | codex tab `pgp-more` |
+| SC49 JS—History person/material prose | 0 SD table rows; mandatory prose | integration pending; QG14/Cowdery cover only part | source-specific target crosswalk required |
 | SC50–SC51 front matter | 9 | pending (consolidate with FM01–09) | |
 | SC52–SC54 geography models | 11 | pending | |
 | SC55–SC62 dense payloads | 0 table rows | display deferral A04/Q04/RR06 unchanged | |
@@ -879,3 +880,55 @@ opened and `pgp-more` chosen through the DOM, CDP capture): shots `s20-codex-pgp
 1280×800 and 390×844, no console errors, no card or page horizontal overflow, 18 cards in the DOM at each size with
 the Articles card and the Cowdery view present. Keyboard, native-select, real-GPU and final same-head rendered
 evidence remain open.
+
+## Checkpoint 21: S20-C1, S20-C2, PC06 pointer, SC49 receipt entry, SC48 (Pearl of Great Price identities)
+
+Code commit `71794a3f5eab02dc9435a909d23814784eb8ec54`. Applies supplementary-review-s20 (3074715) and its evidence
+follow-up (42e5f91).
+
+* **S20-C1** (SD1218, `PGM-qg07-lamech-noah`): the first two sentences replaced with the supplied text — Methuselah as
+  Lamech’s father and Lamech as Noah’s; Japheth at Noah’s 450, Shem 42 years later (492 by addition), Ham at 500; the
+  account’s reported ages, not harmonized calendar dates. Cainite/Sethite distinction, source, key and `5/pgp` gate
+  kept.
+* **S20-C2** (PC05, hand-written card): added the supplied sentence on facsimile-explanation differences, funerary
+  fragments and vignette disagreement; PC05 already cites the Church essay, so no source added. QG12 keeps its
+  See-also to “Book of Abraham: Church account of papyri”.
+* **PC06 pointer**: added “For the article-by-article overview, see ‘Articles of Faith 1–13, article by article’.” It is
+  text, not a clickable link; the codex has no typed-link navigation for it.
+* **SC49 receipt entry**: restored in the progress table above as zero SD rows with mandatory prose, integration pending.
+  No SC49 content was built this checkpoint.
+* **SC48** (SD1241–SD1251): ten `PGM-id` cards in `pgp-more`, one per row, each keeping the row’s identity constraint
+  as plain sentences: Cain/Abel and the Cainite chain with “Master Mahan” as a title and Cain’s unnamed wife (id01);
+  Lamech’s household without asserting every sibling’s mother (id02); the Sethite chain with Cainan person/land,
+  Enos and Mahijah/Mahujah kept apart (id03); Abraham 2’s family with no Haran→Lot edge (id04); Onitah’s unnamed
+  daughters and the unnamed priest (id05); the two Egyptus statements and the two Pharaohs kept apart, wisdom and
+  priesthood both kept (id06); Facsimile 3’s Shulem, Olimlah and “Prince of Pharaoh” (id07); the gods of Abraham 1,
+  Libnah not the town, Rahleenos as the text’s gloss (id08); Shinehah/Olea/Kokob/Kokaubeam glosses and the Urim and
+  Thummim limit (id09); the facsimile vocabulary index (id10). **SD1244** (Noah’s sons’ ages) is mapped to
+  QG07 per S20-C1’s acceptance (“consolidated into SD1218 card”), keeping its own `Moses 8:12` locator in the mapping;
+  QG07’s card cites Moses 8:5–13 once (`MERGE_NO_SRC`).
+
+Builder readings for ChatGPT:
+
+1. **id10 (SD1251)** lists the ten terms with their caption ranges and links the published explanations, but does not
+   restate each term’s individual gloss: the accepted row and research name the terms and caption ranges, not the
+   per-term glosses. If the reviewer wants the glosses on the card, please supply the exact wording.
+2. **id03 (SD1243)** says the ages are the account’s reported figures but does not tabulate the Seth-line ages; only
+   Noah’s ages (QG07) are in the accepted payload. Same request if they are wanted.
+3. **id09 (SD1250)** takes the sun/moon/star/stars glosses from coverage-pgp.md:23 and the row; it names Kolob’s
+   “ordering of time” from the same line, and points to “Olaha Shinehah” as the place it is not merged with.
+4. **id06 (SD1247)** paraphrases verse 23 from the row (“a woman … daughter of Ham and daughter of Egyptus”) without
+   quoting the Chaldean gloss, which the accepted row does not include.
+
+Counts: **1,251 SD rows imported, 20 pending** (SC50 9, SC52 3, SC53 4, SC54 4); 75 child views; 1,334 imported
+mapping rows. `pgp-more` has 28 cards. SC49 and other zero-row prose obligations remain open as above.
+
+Checks at the code commit: `pnpm format` clean, `pnpm check` 116/116 (new test “Supplementary checkpoint 21”; the
+checkpoint 18–19 and 20 count assertions updated to 20 pending / 28 cards), `pnpm check:dist` OK, `pnpm test:pages` 13
+pages × 2, coverage and reference-disposition validators pass (the source-witness validator needs ChatGPT’s local
+capture files and fails identically at the parent). Regenerating from the accepted register (PR34 3729dbb) then
+running Prettier leaves the pack unchanged. Playwright (SwiftShader, built `dist/` under `/universe-sandbox/`, page
+ready in 23–94 s, codex opened and `pgp-more` chosen through the DOM, list scrolled to the first SC48 card, CDP
+capture): shots `s21-codex-pgp-more-*` at **3840×2160**, 1440×900, 1280×800 and 390×844; 28 cards present at each
+size, QG07’s ages and the id cards in the DOM, no page horizontal overflow, no console errors. Keyboard, native-select,
+real-GPU and final same-head rendered evidence remain open.
