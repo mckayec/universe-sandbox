@@ -1337,7 +1337,10 @@ function cxGo(key){const t=CXK.get(String(key));if(!t||cxReach(t.x)!=="ok")retur
   el.querySelector("h3").focus({preventScroll:true});}
 function cxGoEvent(id){const e=EV_BY[id];if(!e||evReach(e)!=="ok")return;
   $("#codex").hidden=true;openEvent(id,true);
-  setTimeout(()=>{const it=dos.querySelector('[data-ev="'+id+'"]');if(it)it.focus({preventScroll:true});},60);}
+  /* focus the event only if nothing changed in the meantime: the codex is still closed, this event is still the open
+     one and still reachable under the current filters (no stale focus steal after a quick reopen or filter change) */
+  setTimeout(()=>{if(!$("#codex").hidden||S.ev!==id||evReach(e)!=="ok")return;
+    const it=dos.querySelector('[data-ev="'+id+'"]');if(it)it.focus({preventScroll:true});},60);}
 $("#cxBody").addEventListener("click",e=>{const b=e.target.closest("[data-see],[data-see-ev]");if(!b)return;
   if(b.dataset.seeEv!=null)cxGoEvent(b.dataset.seeEv);else cxGo(b.dataset.see);});
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
@@ -1649,9 +1652,10 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     const sw=S.sel&&WORLD_BY[S.sel];selRing.material.opacity=sw?.95:0;if(sw)selRing.position.copy(sw.pos);
     const hw=S.hover&&WORLD_BY[S.hover];hoverRing.material.opacity=hw&&hw.id!==S.sel?.7:0;if(hw)hoverRing.position.copy(hw.pos);
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
-    layoutGalaxyLabels(W,H);
+    /* labels are projected before render; refresh the camera matrices first so they never lag the view by a frame */
+    orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
+  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
 /* ===================== URL STATE (deep links, reload, Back) =====================

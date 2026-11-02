@@ -1695,7 +1695,7 @@ test('Checkpoint 25: typed See-also links from the integration contract resolve 
   for (const c of all.filter((x: any) => x.see)) {
     for (const v of plain(c.see)) {
       const k = typeof v === 'string' ? v : v.k;
-      if (typeof v !== 'string') assert.ok(typeof v.r === 'string' && v.r.length > 0 && v.r.length < 32, c.key);
+      if (typeof v !== 'string') assert.ok(typeof v.r === 'string' && v.r.length > 0 && v.r.length < 40, c.key);
       if (k.startsWith('ev:')) assert.ok(events.has(k.slice(3)), `${c.key} -> ${k}`);
       else assert.ok(byKey.has(k), `${c.key} -> ${k}`);
     }
@@ -1750,11 +1750,12 @@ test('Checkpoint 26: S25-C1 Eden, Nod and Enoch’s city source views link acros
   assert.match(byKey.get('P17-dc-enoch-city').desc, /D&C 38:4/);
   assert.match(byKey.get('P17-pgp-enoch-city').desc, /Moses 7/);
   assert.equal(all.filter((c: any) => c.name === 'Enoch’s city (Zion)').length, 2);
-  // no Cain/Zion Enoch conflation and no blanket Zion identity
+  // no Cain/Zion Enoch conflation and no blanket Zion identity (S26 adds only PGM-qg06-zion ↔ the 5/pgp view)
   for (const k of ['P17-dc-enoch-city', 'P17-pgp-enoch-city']) {
-    for (const not of ['OH-P02', 'PGM-qg04-cain-line', 'PGM-qg06-zion', 'DCM-dx01-meanings-of-zion'])
+    for (const not of ['OH-P02', 'PGM-qg04-cain-line', 'DCM-dx01-meanings-of-zion'])
       assert.equal(rel(k, not), undefined);
   }
+  assert.equal(rel('P17-dc-enoch-city', 'PGM-qg06-zion'), undefined);
   // Genesis garden rivers are not linked to Daniel's Hiddekel
   assert.equal(rel('OH-P01', 'OTW-p08-hiddekel'), undefined);
   assert.equal(rel('OTW-p08-hiddekel', 'OH-P01'), undefined);
@@ -1778,4 +1779,39 @@ test('Checkpoint 26: S25-C1 Eden, Nod and Enoch’s city source views link acros
   assert.match(csv, /eden-textual \(canonical row; S25-C1\)/);
   assert.match(csv, /^galilee-region,/m);
   assert.match(csv, /^bom-irreantum,/m);
+});
+
+test('Checkpoint 27: S26 PGM-qg06-zion is a 5/pgp source discussion of Enoch’s city, not another city', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((c: any) => c.key).map((c: any) => [c.key, c]));
+  const see = (k: string) => plain(byKey.get(k).see || []);
+  const z = byKey.get('PGM-qg06-zion');
+  const p = byKey.get('P17-pgp-enoch-city');
+  assert.deepEqual(see('PGM-qg06-zion'), [{ k: 'P17-pgp-enoch-city', r: 'describes Enoch’s community and city' }]);
+  assert.deepEqual(see('P17-pgp-enoch-city'), [
+    { k: 'P17-dc-enoch-city', r: 'Enoch’s city in another account' },
+    { k: 'PGM-qg06-zion', r: 'Moses 7 teaching and promise' },
+  ]);
+  // both ends stay 5/pgp; texts, sources and the absence of coordinates/dates unchanged
+  for (const c of [z, p]) {
+    assert.deepEqual([c.books, c.layers].map(plain), [[5], ['pgp']]);
+    assert.equal(c.lat, undefined);
+    assert.equal(c.year, undefined);
+  }
+  assert.match(z.desc, /ancient narrative and the future expectation are kept separate/);
+  assert.deepEqual(plain(z.src), [
+    { t: 'Moses 7:18–21, 62–69', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng' },
+  ]);
+  // still exactly two Enoch's city cards; the D&C view does not link to the Moses 7 discussion card
+  assert.equal(all.filter((c: any) => c.name === 'Enoch’s city (Zion)').length, 2);
+  assert.deepEqual(see('P17-dc-enoch-city'), [{ k: 'P17-pgp-enoch-city', r: 'Enoch’s city in another account' }]);
+  // D&C-only reading never shows the PGP discussion card
+  const tab = P.codex.find((t: any) => t.list.includes(z)).list;
+  assert.ok(!L.codexSplit(tab, new Set(['dc']), null, false, 0).shown.includes(z));
+  assert.ok(L.codexSplit(tab, new Set(['pgp']), null, false, 0).shown.includes(z));
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/typed-links.csv', import.meta.url),
+    'utf8',
+  );
+  assert.match(csv, /PGM-qg06-zion \(5\/pgp\),P17-pgp-enoch-city \(5\/pgp\),linked both ways/);
 });
