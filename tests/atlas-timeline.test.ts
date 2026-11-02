@@ -103,3 +103,28 @@ test('coverage reports what the data cannot support instead of inventing it', ()
   const [lo, hi] = TL.extent(v, pack.timeline);
   assert.ok(lo >= -800 && hi <= 2030, `${lo}..${hi}`);
 });
+
+test('lanes: reorder and collapse are arrangement only; stale links never invent or hide a lane', () => {
+  const v = TL.visible(model, all);
+  const ids: string[] = [...v.lanes.map((l: any) => l.id)];
+  assert.ok(ids.length >= 3);
+  const moved = TL.moveLane(ids, ids[1], -1);
+  assert.deepEqual([...moved.slice(0, 2)], [ids[1], ids[0]]);
+  assert.deepEqual([...TL.moveLane(ids, ids[0], -1)], ids, 'first lane cannot move up');
+  assert.deepEqual([...TL.moveLane(ids, ids[ids.length - 1], 1)], ids, 'last lane cannot move down');
+  const arranged = TL.arrangeLanes(v.lanes, ['nope', ids[2], ids[2]]).map((l: any) => l.id);
+  assert.equal(arranged.length, ids.length, 'every lane kept once');
+  assert.equal(arranged[0], ids[2]);
+  assert.deepEqual(new Set(arranged), new Set(ids));
+  const span = TL.laneSpan(v, ids[0]);
+  const rs = v.dated.filter((r: any) => r.lane === ids[0]);
+  assert.ok(span && rs.length);
+  for (const r of rs) assert.ok((r.when.window ? r.when.window[0] : r.when.from) >= span.from, r.id);
+  assert.equal(TL.laneSpan(v, 'no-such-lane'), null);
+  const h = TL.stateHash({ lanes: [ids[1], ids[0]], collapsed: [ids[0]], sel: null });
+  const st = TL.parseState(h + ',bogus', v, null);
+  assert.deepEqual([...st.lanes], [ids[1], ids[0]]);
+  const st2 = TL.parseState('#tl=1&tlc=' + ids[0] + ',bogus,' + ids[0], v, null);
+  assert.deepEqual([...st2.collapsed], [ids[0]], 'unknown and repeated collapsed ids dropped');
+  assert.equal(st2.lanes, null);
+});

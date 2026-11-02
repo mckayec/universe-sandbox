@@ -267,15 +267,59 @@
     };
   }
 
-  /* ---------- URL state: #tl=lane,lane&tlt=from,to&tlsel=id (validated, always re-gated; keys kept apart from the
+  /* ---------- lane arrangement ---------- */
+  /* Reorder lanes by a (possibly stale or partial) id list: known ids first in the given order, then every other
+     lane in its default order. Unknown ids are dropped, so a stale link never invents or hides a lane. */
+  function arrangeLanes(lanes, order) {
+    const byId = new Map(lanes.map(l => [l.id, l]));
+    const seen = new Set();
+    const out = [];
+    (order || []).forEach(id => {
+      if (byId.has(id) && !seen.has(id)) {
+        seen.add(id);
+        out.push(byId.get(id));
+      }
+    });
+    lanes.forEach(l => {
+      if (!seen.has(l.id)) out.push(l);
+    });
+    return out;
+  }
+  /* move one lane up (-1) or down (+1) within the full order; returns a new order array */
+  function moveLane(order, id, dir) {
+    const o = order.slice();
+    const i = o.indexOf(id);
+    const j = i + dir;
+    if (i < 0 || j < 0 || j >= o.length) return o;
+    o[i] = o[j];
+    o[j] = id;
+    return o;
+  }
+  /* the time span a collapsed lane summarises: earliest start to latest stated end (or start) of its dated records */
+  function laneSpan(view, laneId) {
+    let lo = Infinity;
+    let hi = -Infinity;
+    let open = false;
+    view.dated.forEach(r => {
+      if (r.lane !== laneId) return;
+      const w = r.when;
+      lo = Math.min(lo, w.window ? w.window[0] : w.from);
+      hi = Math.max(hi, w.to != null ? w.to : w.window ? w.window[1] : w.from);
+      if (w.toOpen) open = true;
+    });
+    return lo === Infinity ? null : { from: lo, to: hi, toOpen: open };
+  }
+
+  /* ---------- URL state: #tl=lane,lane&tlc=lane,lane&tlt=from,to&tlsel=id (tl = lane order, tlc = collapsed lanes) (validated, always re-gated; keys kept apart from the
      atlas's own book/world/site/layers/yr keys) ---------- */
   function parseState(hash, view, axis) {
     const p = new URLSearchParams(String(hash || '').replace(/^#/, ''));
-    const st = { open: p.has('tl'), lanes: null, range: null, sel: null };
+    const st = { open: p.has('tl'), lanes: null, collapsed: [], range: null, sel: null };
     if (!st.open) return st;
     const laneIds = new Set(view.lanes.map((l) => l.id));
     const ls = (p.get('tl') || '').split(',').filter((x) => laneIds.has(x));
     st.lanes = ls.length ? ls : null;
+    st.collapsed = [...new Set((p.get('tlc') || '').split(',').filter(x => laneIds.has(x)))];
     const t = (p.get('tlt') || '').split(',').map(Number);
     if (t.length === 2 && t.every((x) => Number.isInteger(x) && x !== 0) && t[0] < t[1]) {
       const lo = axis && axis.min != null ? axis.min : -Infinity;
@@ -287,6 +331,7 @@
   }
   function stateHash(st) {
     const p = ['tl=' + (st.lanes ? st.lanes.join(',') : '1')];
+    if (st.collapsed && st.collapsed.length) p.push('tlc=' + st.collapsed.join(','));
     if (st.range) p.push('tlt=' + st.range.join(','));
     if (st.sel) p.push('tlsel=' + encodeURIComponent(st.sel));
     return '#' + p.join('&');
@@ -304,6 +349,9 @@
     search,
     extent,
     coverage,
+    arrangeLanes,
+    moveLane,
+    laneSpan,
     parseState,
     stateHash,
   };

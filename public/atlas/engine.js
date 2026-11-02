@@ -1487,7 +1487,7 @@ function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.re
   if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");
   if(LY){const f=LY.encodeState(LAY,TL,S.layers,S.range);Object.keys(f).forEach(k=>q.set(k,f[k]));}
   if(TRV&&TRV.open)q.set("tree",TRV.sel||"1");
-  if(TLV&&TLV.open){q.set("tl","1");if(TLV.sel)q.set("tlsel",TLV.sel);}
+  if(TLV&&TLV.open){const lp=TLV.laneParams;q.set("tl",lp.tl);if(lp.tlc)q.set("tlc",lp.tlc);if(TLV.sel)q.set("tlsel",TLV.sel);}
   const h=q.toString();return location.pathname+location.search+(h?"#"+h:"");}
 function parseHash(){const q=new URLSearchParams((location.hash||"").replace(/^#/,""));const b=parseInt(q.get("book"),10);
   return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface",filters:LY?LY.decodeState(LAY,TL,q):null,tree:q.get("tree")};}

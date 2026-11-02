@@ -16,7 +16,8 @@
   const ZOOMS = [1, 1.6, 2.5, 4, 6.5];
   const ROW = 26;
   const LANE_HEAD = 30;
-  const AXIS_H = 34;
+  const AXIS_H = 48;
+  const ERA_Y = 14;
   const PRECISION = {
     window: 'Emergence window: the source gives a period, not a year',
     range: 'A range or separate episodes, as the source gives them',
@@ -58,6 +59,9 @@
     let sel = null;
     let V = null;
     let lastFocus = null;
+    const defaultOrder = model.lanes.map((l) => l.id);
+    let order = defaultOrder.slice();
+    const collapsed = new Set();
     const fmt = (y, ap) => (env.fmt ? env.fmt(y, ap) : (ap ? 'c. ' : '') + TLM.yearLabel(y));
     const whenText = (r) =>
       r.whenText ||
@@ -74,9 +78,12 @@
       '<button class="btn" data-z="1" aria-label="Zoom in" title="Zoom in">+</button>' +
       '<button class="btn" data-z="0" title="Reset zoom">Reset</button></div>' +
       '<button class="btn" data-tl="close">Close</button></div>' +
+      '<div class="tl-lanes" role="group" aria-label="Lanes: collapse, expand or reorder"></div>' +
       '<div class="tl-main"><div class="tl-scroll" tabindex="-1"></div><aside class="tl-info" aria-live="polite"></aside></div></div>';
     const scrollEl = el.querySelector('.tl-scroll');
     const info = el.querySelector('.tl-info');
+    const laneBar = el.querySelector('.tl-lanes');
+    const arranged = () => TLM.arrangeLanes(V.lanes, order);
 
     function compute() {
       V = TLM.visible(model, env.ok);
@@ -94,7 +101,7 @@
       const avail = Math.max(320, scrollEl.clientWidth - 24);
       const W = Math.round(avail * ZOOMS[zoom]);
       const X = (y) => 12 + ((TLM.astro(y) - a0) / (a1 - a0)) * (W - 24);
-      const lanes = V.lanes
+      const lanes = arranged()
         .map((l) => ({
           l,
           rows: V.dated
@@ -107,6 +114,11 @@
       lanes.forEach((x) => {
         x.y = y;
         y += LANE_HEAD;
+        if (collapsed.has(x.l.id)) {
+          x.sumY = y + ROW / 2;
+          y += ROW + 8;
+          return;
+        }
         x.rows.forEach((r) => {
           rowY[r.id] = y + ROW / 2;
           y += ROW;
@@ -125,7 +137,7 @@
         const x1 = X(Math.min(e.to, hi));
         if (x1 > x0)
           s += '<rect class="tl-era' + (i % 2 ? ' odd' : '') + '" x="' + x0 + '" y="' + AXIS_H + '" width="' + (x1 - x0) + '" height="' + (H - AXIS_H) + '"><title>' + ESC(e.name) + '</title></rect>' +
-            '<text class="tl-era-t" x="' + (x0 + 4) + '" y="' + (AXIS_H - 20) + '">' + ESC(e.name) + '</text>';
+            eraLabel(e.name, x0, x1);
       });
       const span = hi - lo;
       const step = [10, 25, 50, 100, 200, 250, 500].find((k) => (span / k) * 70 <= W) || 1000;
@@ -136,8 +148,10 @@
           '<text class="tl-tick-t" x="' + X(yr) + '" y="' + (AXIS_H - 9) + '">' + ESC(TLM.yearLabel(yr)) + '</text>';
       }
       lanes.forEach((x) => {
-        s += '<text class="tl-lane" x="12" y="' + (x.y + 20) + '">' + ESC(x.l.title) + ' · ' + x.rows.length + '</text>';
-        x.rows.forEach((r) => (s += mark(r, rowY[r.id], X, hi)));
+        const c = collapsed.has(x.l.id);
+        s += '<text class="tl-lane" x="12" y="' + (x.y + 20) + '">' + ESC(x.l.title) + ' · ' + x.rows.length + ' dated' + (c ? ' · collapsed' : '') + '</text>';
+        if (c) s += summary(x, X, hi);
+        else x.rows.forEach((r) => (s += mark(r, rowY[r.id], X, hi)));
       });
       V.drawnEdges.forEach((e) => {
         const a = V.byId.get(e.from);
@@ -147,6 +161,54 @@
         s += '<path class="tl-edge t-' + e.type + '" d="M' + bx + ' ' + rowY[a.id] + ' C' + (bx - 30) + ' ' + rowY[a.id] + ' ' + (bx - 30) + ' ' + rowY[b.id] + ' ' + bx + ' ' + rowY[b.id] + '"/>';
       });
       return s + '</svg>';
+    }
+    /* era names sit on their own row above the year ticks and are shortened to fit the era's width */
+    function eraLabel(name, x0, x1) {
+      const room = Math.floor((x1 - x0 - 8) / 6.9);
+      if (room < 4) return '';
+      const t = name.length > room ? name.slice(0, room - 1).trimEnd() + '…' : name;
+      return '<text class="tl-era-t" x="' + (x0 + 4) + '" y="' + ERA_Y + '">' + ESC(t) + '</text>';
+    }
+    /* a collapsed lane: one band from its earliest start to its latest stated end; activating it expands the lane */
+    function summary(x, X, hi) {
+      const sp = TLM.laneSpan(V, x.l.id);
+      if (!sp) return '';
+      const cy = x.sumY;
+      const x0 = X(sp.from);
+      const x1 = Math.max(X(sp.toOpen ? hi : sp.to), x0 + 3);
+      const lbl = x.rows.length + ' dated records · ' + fmt(sp.from) + ' – ' + (sp.toOpen ? 'still ongoing' : fmt(sp.to));
+      /* keep the label inside the chart: left-aligned at the band start when it fits, else right-aligned at the edge */
+      const right = X(hi);
+      const fits = x0 + 10 + lbl.length * 7.4 <= right;
+      const lx = fits ? x0 + 10 : Math.max(right, x0 + 10);
+      const anchorEnd = !fits;
+      const c = env.colorFor ? env.colorFor(x.rows[0].gate.layers[0]) : '#9db8ff';
+      return (
+        '<g class="tl-sum" style="--tc:' + ESC(c) + '" tabindex="0" role="button" data-lane-t="' + ESC(x.l.id) + '" aria-expanded="false" aria-label="' + ESC('Expand ' + x.l.title + ': ' + lbl) + '">' +
+        '<rect class="tl-sum-bar" x="' + x0 + '" y="' + (cy - 5) + '" width="' + (x1 - x0) + '" height="10"' + (sp.toOpen ? ' mask="url(#tlFadeMask)"' : '') + '/>' +
+        '<text class="tl-lbl" x="' + lx + '" y="' + (cy - 9) + '"' + (anchorEnd ? ' text-anchor="end"' : '') + '>' + ESC(lbl) + '</text></g>'
+      );
+    }
+    function laneControls() {
+      const ls = arranged();
+      if (ls.length < 2) return '';
+      const changed = collapsed.size || ls.map((l) => l.id).join(',') !== defaultOrder.filter((id) => ls.some((l) => l.id === id)).join(',');
+      return (
+        ls
+          .map((l, i) => {
+            const c = collapsed.has(l.id);
+            return (
+              '<span class="tl-lb">' +
+              '<button class="btn tl-lt" data-lane-t="' + ESC(l.id) + '" aria-expanded="' + !c + '" title="' + (c ? 'Expand' : 'Collapse') + ' this lane">' +
+              '<span aria-hidden="true">' + (c ? '▸' : '▾') + '</span> ' + ESC(l.title) + '</button>' +
+              '<button class="btn tl-mv" data-lane-mv="-1" data-lane="' + ESC(l.id) + '" aria-label="Move ' + ESC(l.title) + ' up"' + (i === 0 ? ' disabled' : '') + '>↑</button>' +
+              '<button class="btn tl-mv" data-lane-mv="1" data-lane="' + ESC(l.id) + '" aria-label="Move ' + ESC(l.title) + ' down"' + (i === ls.length - 1 ? ' disabled' : '') + '>↓</button>' +
+              '</span>'
+            );
+          })
+          .join('') +
+        '<button class="btn tl-lr" data-lanes="reset"' + (changed ? '' : ' disabled') + '>Reset lanes</button>'
+      );
     }
     function mark(r, cy, X, hi) {
       const w = r.when;
@@ -169,8 +231,13 @@
         g += '<rect class="tl-bar' + (w.range ? ' rng' : '') + (w.approx ? ' ap' : '') + (w.toOpen ? ' open' : '') + '" x="' + x0 + '" y="' + (cy - (w.range ? 2 : 4)) + '" width="' + (x1 - x0) + '" height="' + (w.range ? 4 : 8) + '"' + (w.toOpen ? ' mask="url(#tlFadeMask)"' : '') + '/>';
       }
       const lx = X(w.window ? w.window[0] : w.from);
-      const anchorEnd = lx > X(hi) - 260;
-      g += '<text class="tl-lbl" x="' + (anchorEnd ? lx - 10 : lx + 10) + '" y="' + (cy - 8) + '"' + (anchorEnd ? ' text-anchor="end"' : '') + '>' + ESC(r.label) + '</text>';
+      /* labels stay inside the chart: after the mark when they fit, else before it, else from the left edge */
+      const tw = r.label.length * 7.6;
+      const right = X(hi);
+      const after = lx + 10 + tw <= right;
+      const before = !after && lx - 10 - tw >= 4;
+      const tx = after ? lx + 10 : before ? lx - 10 : 4;
+      g += '<text class="tl-lbl" x="' + tx + '" y="' + (cy - 8) + '"' + (before ? ' text-anchor="end"' : '') + '>' + ESC(r.label) + '</text>';
       return '<g class="tl-m' + (sel === r.id ? ' sel' : '') + '" style="--tc:' + ESC(c) + '" tabindex="0" role="button" data-id="' + ESC(r.id) + '" aria-pressed="' + (sel === r.id) + '" aria-label="' + ESC(r.label + ', ' + whenText(r)) + '">' + g + '</g>';
     }
 
@@ -181,9 +248,11 @@
     function undated() {
       if (!V.undated.length) return '';
       let h = '<section class="tl-und"><h3>Undated or in source order · ' + V.undated.length + '</h3><p class="tl-why">No calendar year in the source; kept off the axis, in the order the pack gives them.</p>';
-      V.lanes.forEach((l) => {
+      arranged().forEach((l) => {
         const rs = V.undated.filter((r) => r.lane === l.id);
-        if (rs.length) h += '<h4>' + ESC(l.title) + '</h4><ol>' + rs.map(item).join('') + '</ol>';
+        if (!rs.length) return;
+        if (collapsed.has(l.id)) h += '<h4>' + ESC(l.title) + ' <span class="tl-why">· ' + rs.length + ' undated, lane collapsed</span></h4>';
+        else h += '<h4>' + ESC(l.title) + '</h4><ol>' + rs.map(item).join('') + '</ol>';
       });
       return h + '</section>';
     }
@@ -225,10 +294,35 @@
       compute();
       el.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
       el.querySelectorAll('[data-z]').forEach((b) => (b.disabled = mode !== 'chart' || (b.dataset.z === '-1' && zoom === 0) || (b.dataset.z === '1' && zoom === ZOOMS.length - 1)));
+      laneBar.innerHTML = mode === 'chart' ? laneControls() : '';
+      laneBar.hidden = !laneBar.innerHTML;
       const left = scrollEl.scrollLeft;
       scrollEl.innerHTML = mode === 'chart' ? chart() + undated() : list();
       scrollEl.scrollLeft = left;
       info.innerHTML = details();
+    }
+    /* collapse or expand a lane; focus goes to that lane's control in the lane bar (an expanded band no longer
+       exists). Collapsing the lane of the selected record clears the selection rather than hiding it. */
+    function toggleLane(id, fromBand) {
+      if (collapsed.has(id)) collapsed.delete(id);
+      else collapsed.add(id);
+      if (sel && collapsed.has(id) && V.byId.get(sel) && V.byId.get(sel).lane === id) sel = null;
+      render();
+      const b = laneBar.querySelector('.tl-lt[data-lane-t="' + CSS.escape(id) + '"]');
+      if (b) b.focus({ preventScroll: !fromBand });
+      if (env.onChange) env.onChange();
+    }
+    function moveLane(id, dir) {
+      const ids = arranged().map((l) => l.id);
+      const moved = TLM.moveLane(ids, id, dir);
+      /* lanes hidden by the current gates keep their place after the visible ones */
+      order = TLM.arrangeLanes(model.lanes, moved.concat(order)).map((l) => l.id);
+      render();
+      const b = laneBar.querySelector('[data-lane="' + CSS.escape(id) + '"][data-lane-mv="' + dir + '"]');
+      const alt = laneBar.querySelector('[data-lane="' + CSS.escape(id) + '"][data-lane-mv="' + -dir + '"]');
+      const f = b && !b.disabled ? b : alt;
+      if (f) f.focus();
+      if (env.onChange) env.onChange();
     }
     function pick(id) {
       sel = sel === id ? null : id;
@@ -242,6 +336,25 @@
       if (m) { mode = m.dataset.mode; render(); return; }
       const z = e.target.closest('[data-z]');
       if (z) { zoom = z.dataset.z === '0' ? 0 : Math.max(0, Math.min(ZOOMS.length - 1, zoom + +z.dataset.z)); render(); return; }
+      const lt = e.target.closest('[data-lane-t]');
+      if (lt) {
+        toggleLane(lt.dataset.laneT, lt.classList.contains('tl-sum'));
+        return;
+      }
+      const mv = e.target.closest('[data-lane-mv]');
+      if (mv) {
+        if (!mv.disabled) moveLane(mv.dataset.lane, +mv.dataset.laneMv);
+        return;
+      }
+      if (e.target.closest('[data-lanes="reset"]')) {
+        order = defaultOrder.slice();
+        collapsed.clear();
+        render();
+        const f = laneBar.querySelector('.tl-lt');
+        if (f) f.focus();
+        if (env.onChange) env.onChange();
+        return;
+      }
       const a = e.target.closest('[data-tl]');
       if (a) { if (a.dataset.tl === 'close') close(); else { sel = null; render(); if (env.onChange) env.onChange(); } return; }
       const it = e.target.closest('[data-id]');
@@ -250,6 +363,12 @@
     });
     el.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') { e.stopPropagation(); e.preventDefault(); close(); return; }
+      const sm = e.target.closest && e.target.closest('.tl-sum');
+      if (sm && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        toggleLane(sm.dataset.laneT, true);
+        return;
+      }
       const it = e.target.closest && e.target.closest('.tl-m');
       if (it && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(it.dataset.id); return; }
       if (it && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
@@ -274,6 +393,7 @@
       el.hidden = false;
       compute();
       sel = TLM.revalidate(V, id || null);
+      if (sel && V.byId.get(sel)) collapsed.delete(V.byId.get(sel).lane);
       render();
       const t = sel && el.querySelector('[data-id="' + CSS.escape(sel) + '"]');
       (t || el.querySelector('[data-tl="close"]')).focus({ preventScroll: !!t });
@@ -295,9 +415,17 @@
       refresh() { if (open) render(); },
       get open() { return open; },
       get sel() { return sel; },
+      /* URL params for the lane arrangement: tl=1 for the default order, else the order; tlc = collapsed lanes */
+      get laneParams() {
+        const o = order.join(',');
+        return { tl: o === defaultOrder.join(',') ? '1' : o, tlc: [...collapsed].join(',') };
+      },
       restore(hash) {
         compute();
         const st = TLM.parseState(hash, V, axis);
+        if (st.lanes) order = TLM.arrangeLanes(model.lanes, st.lanes).map((l) => l.id);
+        collapsed.clear();
+        st.collapsed.forEach((x) => collapsed.add(x));
         if (st.open) show(st.sel);
       },
     };
