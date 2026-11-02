@@ -435,6 +435,26 @@ def write_typed(text):
 BMC_CSV = HERE.parent / 'bmc-source-views.csv'
 
 
+ROLLUP_REASONS = {
+    'reconciled-no-shared-name': 'rollup (checkpoint 34): no name of an entity with a shared Bible card occurs in '
+                                 'this chapter’s ledger row, the full-read rows covering it or its record-support '
+                                 'rows; reconciled against the committed research, not a full-text absence check of '
+                                 'the chapter',
+    'reconciled-hits-dispositioned': 'rollup (checkpoint 34): every shared-card name in the committed research for '
+                                     'this chapter is dispositioned in bmc-omission-rollup.csv (namesake, '
+                                     'range-spill or title); not a full-text absence check of the chapter',
+    'candidate': 'rollup (checkpoint 34): a source view is proposed in bmc-omission-rollup.csv (candidate); still '
+                 'omitted at this head',
+    'reader': 'rollup (checkpoint 34): needs a reading decision recorded in bmc-omission-rollup.csv (reader); '
+              'omitted until decided',
+}
+
+
+def rollup_reason(rollup, n):
+    assert n in rollup, f'BMC-{n:03d} has no bespoke omission reason and no rollup row'
+    return ROLLUP_REASONS[rollup[n]]
+
+
 def write_bmc(text):
     """Checkpoint 32: copy_bmc's Book of Mormon source views into the bom-bible tab, and bmc-source-views.csv, which
     accounts for every BMC key and every bmc_candidates.py scan hit. Idempotent."""
@@ -448,6 +468,9 @@ def write_bmc(text):
     ev_ids = set(re.findall(r"^\s+id: '([^']+)',\n\s+book: ", text, re.M))
     ev_book = {i: {'OT': 1, 'NT': 2}.get(b, 9) for i, b in
                re.findall(r"^\s+id: '([^']+)',\n\s+book: ([A-Z]+),", text, re.M)}
+    rollup = {}
+    for r in csv.DictReader(open(HERE.parent / 'bmc-omission-rollup.csv', encoding='utf-8')):
+        rollup.setdefault(int(r['research_key'][4:]), r['state'])
     lines, rows, views = [], [], {}
     for n, suffix, name, mode, desc, vs, see in copy_bmc.VIEWS:
         assert n not in copy_bmc.OMIT, n
@@ -484,11 +507,7 @@ def write_bmc(text):
         unit, url = chapters[n]
         if n in views:
             continue
-        why = copy_bmc.OMIT.get(n, 'generated default, not a certified absence finding: the condensed ledger finding '
-                                   'names no quotation, vision, teaching or mention of an entity with a shared Bible '
-                                   'card; the chapter stays a source link on the records it supports (Chapter '
-                                   'coverage contract); to be reconciled against the fuller research in the omission '
-                                   'rollup')
+        why = copy_bmc.OMIT.get(n) or rollup_reason(rollup, n)
         rows.append([f'BMC-{n:03d}', unit, '', '', '', '', '', url, 'omitted', why])
     # name-scan hits: every one accepted (implemented by a view) or rejected with a reason
     import subprocess

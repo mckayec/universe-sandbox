@@ -1489,3 +1489,59 @@ Applies [supplementary-review-s32](https://github.com/mckayec/universe-sandbox/b
 reconciling the 189 generated BMC defaults against the fuller research); final same-head 4K/1280/phone evidence,
 full Tab/Shift-Tab traversal, finished-bake capture; real-GPU and physical-phone native-select/touch (hardware not
 available here).
+
+## Checkpoint 34 (BMC omission rollup; S33-A1 count correction)
+
+Follows [supplementary-review-s33](https://github.com/mckayec/universe-sandbox/blob/8cb157fe54a597595305ad755f3aa7c9fac81dca/docs/universes/packs/lds-standard-works/supplementary-review-s33.md)
+(PR34 8cb157f) on checkpoint 33 (bf86c53). Docs, generator and test only: **the pack file is byte-identical** to
+bf86c53; no runtime file changed.
+
+* **S33-A1, counts corrected.** Checkpoint 33 has **39 views, 66 links, 68 implemented ledger rows (two unlinked
+  views, BMV-011 and BMV-022)**, not 67 links: 60 prior links + 6 new (BMV-017 1, BMV-166 3, BMV-227 2). Links by
+  mode: quotation 41, teaching 15, vision 4, mention 3, prophecy 3 (= 66). The checkpoint 33 text above is left as
+  written; this line supersedes its link count.
+* **Omission rollup.** New [bmc_omission_rollup.py](supplementary-build/bmc_omission_rollup.py) writes
+  [bmc-omission-rollup.csv](bmc-omission-rollup.csv). For each of the 189 BMC keys that had the generated default
+  reason it gathers all committed research tied to that chapter — the coverage-bom.md ledger row (finding and
+  exclusion), every “Full-read omission checks” row whose chapter range covers it, and the bom-record-support.csv
+  rows of every record the chapter-to-record crosswalk lists — and scans it for the names of entities with a shared
+  Old or New Testament card (short card names as in bmc_candidates.py, plus the leading proper name of descriptive
+  card names such as “Jerusalem in the prophets”, ordinary words excluded). Each hit is given a disposition whose
+  reason restates the scanned research text (first excerpt kept in the CSV); nothing is added from memory of the
+  chapter. **This reconciles against the committed research; it is not a full-text absence check** (the chapter
+  bodies are not in the repository).
+  * **94** chapters: no shared-card name in any of that research → `reconciled-no-shared-name`.
+  * **78** chapters: every hit dispositioned as **namesake** (Book of Mormon/Jaredite Aaron, Ammon, Gideon, Sidon,
+    Ishmael, Jacob, Lehi's son Joseph, American Jerusalem, the cities Judaea/Jordan/David/Joshua, the Nephite
+    disciples Isaiah/Jeremiah/Zedekiah, Jaredite Gilead/Ephraim, …), **range-spill** (the hit sits in a
+    multi-chapter row that ties it to another chapter, mostly one already implemented: Zedekiah → BMV-001, Joseph
+    descent → BMV-005, Bethabara/Nazareth → BMV-010/011, Babylon → BMV-020, Isaiah 51 → BMV-030, …) or **title**
+    (“Holy One of Israel”, the law of Moses, years counted from the departure from Jerusalem) →
+    `reconciled-hits-dispositioned`.
+  * **7 candidates** (a source view is proposed; still omitted at this head): BMC-024 2 Nephi 2 and BMC-137 Alma 42
+    (Fall/judgment teaching touching Eden, OH-P01); BMC-027 2 Nephi 5 (temple resembling Solomon's, OHR-SOLOMON);
+    BMC-057 Jacob 2 (judgment on David's and Solomon's plural marriages, to stay beside D&C 132's differing
+    treatment); BMC-105 Alma 10 (Amulek's lineage through Manasseh to Joseph, a descent claim like BMV-005); BMC-187
+    3 Nephi 13 (Solomon as an illustrative reference in the Matthew 6 parallel); BMC-239 Moroni 10 (quoted
+    Jerusalem/Zion exhortation).
+  * **10 reader decisions** (omitted until decided): BMC-003/004/007 (Jerusalem as the narrative setting of the
+    plates and Ishmael journeys — is a narrative visit a “mention” for a source view?); BMC-048 2 Nephi 26 (Zion's
+    welfare in the priestcraft teaching — is it the card's prophetic-Jerusalem Zion?); BMC-179/195/203/204/208/210
+    (Israel as the covenant people gathered or addressed — a relation to “Israel as a prophetic community”?).
+  Builder's proposed readings, for the reviewer to accept or change: build the 7 candidates as one-way 3/bom views
+  like the others; treat the Jerusalem narrative settings and the six Israel-gathering rows as omitted (they are
+  setting or covenant-people language, not a relation to those cards); build BMC-048 only if the reviewer reads
+  Zion there as the card's Zion.
+* `build.py` now takes each default omission reason from the rollup state (four fixed reasons, each saying what
+  was checked and that it is not a full-text absence finding). The 11 bespoke OMIT reasons are unchanged. Ledger
+  still 68 implemented + 200 omitted + 101 scan rows = 369; all 239 keys covered.
+* Regeneration with the same PR34 input: pack, mapping, identity crosswalk and typed-links CSVs byte-identical;
+  only the 189 reason cells of bmc-source-views.csv change; rollup + build re-run is idempotent; 1,271 SD rows,
+  0 pending.
+* Tests: `pnpm check` **130/130** (new: every former default omission has a rollup row, state counts 94/78/7/10,
+  every hit has a disposition, no “generated default” text remains); `check:dist` 114 OK. Browser runs were not
+  repeated: no runtime file changed since the checkpoint 33 evidence.
+
+**Still open (Claude keeps ownership):** reviewer decisions on the 7 candidates and 10 reader rows, then the views;
+timeline/source-vision relations; final same-head 4K/1280/phone evidence, full Tab/Shift-Tab traversal,
+finished-bake capture; real-GPU and physical-phone native-select/touch (hardware not available here).

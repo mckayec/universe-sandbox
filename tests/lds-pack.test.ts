@@ -2010,3 +2010,29 @@ test('Checkpoint 32: bmc-source-views.csv accounts for every BMC key and every n
       r,
     );
 });
+
+test('Checkpoint 34: every default BMC omission is reconciled in bmc-omission-rollup.csv', () => {
+  const dir = '../docs/universes/packs/lds-standard-works/';
+  const views = readFileSync(new URL(dir + 'bmc-source-views.csv', import.meta.url), 'utf8');
+  const rollup = readFileSync(new URL(dir + 'bmc-omission-rollup.csv', import.meta.url), 'utf8');
+  assert.ok(!views.includes('generated default'));
+  const omittedRollup = views
+    .trim()
+    .split('\n')
+    .filter(r => /,omitted,"?rollup \(checkpoint 34\)/.test(r))
+    .map(r => r.slice(0, 7));
+  assert.equal(omittedRollup.length, 189);
+  const lines = rollup.trim().split('\n').slice(1);
+  const chapters = new Map<string, string>();
+  for (const l of lines) chapters.set(l.slice(0, 7), l.split(',')[2]);
+  assert.deepEqual([...chapters.keys()].sort(), [...omittedRollup].sort());
+  const states = [...chapters.values()];
+  assert.equal(states.filter(s => s === 'reconciled-no-shared-name').length, 94);
+  assert.equal(states.filter(s => s === 'reconciled-hits-dispositioned').length, 78);
+  assert.equal(states.filter(s => s === 'candidate').length, 7);
+  assert.equal(states.filter(s => s === 'reader').length, 10);
+  // every name hit carries a disposition and a reason
+  for (const l of lines.filter(x => !x.includes(',reconciled-no-shared-name,')))
+    assert.match(l, /,(namesake|range-spill|title|candidate|reader),/, l);
+  assert.ok(!rollup.includes('no disposition rule yet'));
+});
