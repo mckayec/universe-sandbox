@@ -20,6 +20,9 @@ en-gedi (canonical row; typed link alias-of),same-entity group,same place,OTL-en
 shushan-narrative (canonical row),same-entity group,same city,OTL-shushan-narrative (1/ot); OTW-p06-shushan-vision (1/ot),,linked both ways between every pair
 tekoa (canonical row),same-entity group,same town,OTL-tekoa (1/ot); OTW-p09-tekoa (1/ot),,linked both ways between every pair
 jordan-river (canonical row),same-entity group,same river,OHP-JORDAN (1/ot); NTP-jordan (2/nt),,linked both ways between every pair
+eden-textual (canonical row; S25-C1),same-entity group,Eden in another account,OH-P01 (1/ot); PP02 (5/pgp),,linked both ways between every pair
+nod-textual (canonical row; S25-C1),same-entity group,Nod in another account,OH-P02 (1/ot); PP03 (5/pgp),,linked both ways between every pair
+P17 Enoch’s city (canonical row; S25-C1),same-entity group,Enoch’s city in another account,P17-dc-enoch-city (4/dc); P17-pgp-enoch-city (5/pgp),,linked both ways between every pair
 AP06 jericho: city and plains are distinct settings,typed,the city / its plains,OTM-jericho (1/ot),OTS-AP06-jericho (1/ot),linked both ways
 MP zion-prophetic-jerusalem: epithet-of P08,typed,epithet of / called Zion,OTM-zion-prophetic-jerusalem (1/ot),OTS-P08-jerusalem (1/ot),linked both ways
 MP jeremiah-prison-court: contained-setting-of P08,typed,within / setting within it,OTM-jeremiah-prison-court (1/ot),OTS-P08-jerusalem (1/ot),linked both ways
@@ -46,4 +49,7 @@ BMC quotation/vision records quote/see/mention shared biblical entity,not a code
 DRE office sets: appoints-to-office / succeeds-in-office,not a codex link,,,,stated in each DCM-dre card’s text (one card per register row); no parent-of relation is drawn; not yet linked between successive office cards
 WP-R01 Daniel name pairs: alias-of within Daniel 1:6–7,not a codex link,,,,"within one card (OTW-r01-daniel-companions), which states the four name pairs; Belteshazzar is not merged with Belshazzar"
 samaria-region vs samaria city,not a codex link,,,,"linked with labels ""the city"" / ""the region""; the region card is not grouped with the city cards"
-"galilee-region, tigris/Hiddekel, eden-textual, nod-textual, P17 Enoch, bom-irreantum",not a codex link,,,,one codex card each in the pack (or a pin); nothing to link
+galilee-region,not a codex link,,,,"single codex view: NTP-galilee (2/nt) is the only Galilee region card; the Isaiah 9 and 2 Kings 15 mentions are not separate cards, and AP09 (the lake) is a separate entity, so not linked"
+tigris / Hiddekel (Daniel),not a codex link,,,,single setting card: OTW-p08-hiddekel (1/ot) is Daniel 10’s river setting; OTW-a12-daniel-10-11-notes reports the edition note inside its own text; the garden-river names in OH-P01 and PC10 are not linked to it (Eden hydrology is not reconstructed and shared names are not an identity)
+"eden-textual, nod-textual, P17 (S25-C1)",not a codex link,,,,"linked as same-entity groups labelled ""in another account"" (OH-P01 ↔ PP02, OH-P02 ↔ PP03, P17-dc-enoch-city ↔ P17-pgp-enoch-city); source wording and gates kept; Cain’s Enoch (OH-P02, PGM-qg04-cain-line) is not linked to Enoch’s city, PGM-qg06-zion and other Zion usages are not linked to P17; no location or pin"
+bom-irreantum,not a codex link,,,,"single codex view: BXP02 (3/bom) is the only Irreantum card; BE03 narrates the ship command at Bountiful and is an event, not a second view of the sea, so not linked"

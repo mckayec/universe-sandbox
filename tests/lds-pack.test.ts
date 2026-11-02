@@ -282,11 +282,12 @@ test('BA07 round 2: 108 further source views (107 research IDs) resolve with the
   const all = P.codex.flatMap((t: any) => t.list);
   const keys = all.filter((x: any) => x.key).map((x: any) => x.key);
   assert.equal(new Set(keys).size, keys.length, 'keys are unique');
-  // 170 primary source views plus the supplementary tab(s), counted separately
+  // 170 primary source views plus the two P17 views keyed at checkpoint 26 (S25-C1), and the supplementary
+  // tab(s), counted separately
   const supp = P.codex
     .filter((t: any) => ['bom-more', 'nt-more', 'ot-more', 'dc-more', 'pgp-more'].includes(t.id))
     .flatMap((t: any) => t.list).length;
-  assert.equal(keys.length - supp, 170);
+  assert.equal(keys.length - supp, 172);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const work: Record<number, string> = { 1: 'ot', 2: 'nt', 3: 'bom', 4: 'dc', 5: 'pgp' };
   for (const id of ids) {
@@ -1725,4 +1726,56 @@ test('Checkpoint 25: typed See-also links from the integration contract resolve 
     .trim()
     .split('\n');
   assert.ok(csv.length > 40);
+});
+
+test('Checkpoint 26: S25-C1 Eden, Nod and Enoch’s city source views link across accounts and keep their gates', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const keys = all.filter((c: any) => c.key).map((c: any) => c.key);
+  assert.equal(new Set(keys).size, keys.length);
+  const byKey = new Map<string, any>(all.filter((c: any) => c.key).map((c: any) => [c.key, c]));
+  const rel = (from: string, to: string) =>
+    (byKey.get(from).see || []).find((v: any) => (typeof v === 'string' ? v : v.k) === to);
+  const pairs: [string, string, string, string][] = [
+    ['OH-P01', 'PP02', 'Eden in another account', '1/ot 5/pgp'],
+    ['OH-P02', 'PP03', 'Nod in another account', '1/ot 5/pgp'],
+    ['P17-dc-enoch-city', 'P17-pgp-enoch-city', 'Enoch’s city in another account', '4/dc 5/pgp'],
+  ];
+  for (const [a, b, r, gates] of pairs) {
+    assert.deepEqual(plain(rel(a, b)), { k: b, r });
+    assert.deepEqual(plain(rel(b, a)), { k: a, r });
+    const g = [a, b].map(k => `${byKey.get(k).books[0]}/${byKey.get(k).layers[0]}`).join(' ');
+    assert.equal(g, gates);
+  }
+  // the two P17 views keep their own texts and stay two cards
+  assert.match(byKey.get('P17-dc-enoch-city').desc, /D&C 38:4/);
+  assert.match(byKey.get('P17-pgp-enoch-city').desc, /Moses 7/);
+  assert.equal(all.filter((c: any) => c.name === 'Enoch’s city (Zion)').length, 2);
+  // no Cain/Zion Enoch conflation and no blanket Zion identity
+  for (const k of ['P17-dc-enoch-city', 'P17-pgp-enoch-city']) {
+    for (const not of ['OH-P02', 'PGM-qg04-cain-line', 'PGM-qg06-zion', 'DCM-dx01-meanings-of-zion'])
+      assert.equal(rel(k, not), undefined);
+  }
+  // Genesis garden rivers are not linked to Daniel's Hiddekel
+  assert.equal(rel('OH-P01', 'OTW-p08-hiddekel'), undefined);
+  assert.equal(rel('OTW-p08-hiddekel', 'OH-P01'), undefined);
+  // no coordinates were added to these source views
+  for (const k of ['OH-P01', 'PP02', 'OH-P02', 'PP03', 'P17-dc-enoch-city', 'P17-pgp-enoch-city'])
+    assert.equal(byKey.get(k).lat, undefined);
+  // filtered-target behaviour: with only the Old Testament layer, PP02 is not shown
+  const shownOt = L.codexSplit(
+    P.codex.find((t: any) => t.list.includes(byKey.get('PP02'))).list,
+    new Set(['ot']),
+    null,
+    false,
+    0,
+  ).shown;
+  assert.ok(!shownOt.includes(byKey.get('PP02')));
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/typed-links.csv', import.meta.url),
+    'utf8',
+  );
+  assert.ok(!/nothing to link/.test(csv));
+  assert.match(csv, /eden-textual \(canonical row; S25-C1\)/);
+  assert.match(csv, /^galilee-region,/m);
+  assert.match(csv, /^bom-irreantum,/m);
 });

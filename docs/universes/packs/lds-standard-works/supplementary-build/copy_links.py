@@ -39,6 +39,12 @@ SAME = [
     ('shushan-narrative (canonical row)', 'same city', ['OTL-shushan-narrative', 'OTW-p06-shushan-vision']),
     ('tekoa (canonical row)', 'same town', ['OTL-tekoa', 'OTW-p09-tekoa']),
     ('jordan-river (canonical row)', 'same river', ['OHP-JORDAN', 'NTP-jordan']),
+    # S25-C1: source views of one accepted concept in different works. The label says "in another account": each
+    # card keeps its own wording and gate, and no identical landscape, modern location or pin is implied.
+    ('eden-textual (canonical row; S25-C1)', 'Eden in another account', ['OH-P01', 'PP02']),
+    ('nod-textual (canonical row; S25-C1)', 'Nod in another account', ['OH-P02', 'PP03']),
+    ('P17 Enoch’s city (canonical row; S25-C1)', 'Enoch’s city in another account',
+     ['P17-dc-enoch-city', 'P17-pgp-enoch-city']),
 ]
 
 # Directed typed relations: (contract row, from card, label, to target, inverse label or None). A target starting
@@ -91,8 +97,17 @@ UNLINKED = [
      'states the four name pairs; Belteshazzar is not merged with Belshazzar'),
     ('samaria-region vs samaria city', 'linked with labels "the city" / "the region"; the region card is not '
      'grouped with the city cards'),
-    ('galilee-region, tigris/Hiddekel, eden-textual, nod-textual, P17 Enoch, bom-irreantum',
-     'one codex card each in the pack (or a pin); nothing to link'),
+    ('galilee-region', 'single codex view: NTP-galilee (2/nt) is the only Galilee region card; the Isaiah 9 and '
+     '2 Kings 15 mentions are not separate cards, and AP09 (the lake) is a separate entity, so not linked'),
+    ('tigris / Hiddekel (Daniel)', 'single setting card: OTW-p08-hiddekel (1/ot) is Daniel 10’s river setting; '
+     'OTW-a12-daniel-10-11-notes reports the edition note inside its own text; the garden-river names in OH-P01 and '
+     'PC10 are not linked to it (Eden hydrology is not reconstructed and shared names are not an identity)'),
+    ('eden-textual, nod-textual, P17 (S25-C1)', 'linked as same-entity groups labelled "in another account" '
+     '(OH-P01 ↔ PP02, OH-P02 ↔ PP03, P17-dc-enoch-city ↔ P17-pgp-enoch-city); source wording and gates kept; Cain’s '
+     'Enoch (OH-P02, PGM-qg04-cain-line) is not linked to Enoch’s city, PGM-qg06-zion and other Zion usages are not '
+     'linked to P17; no location or pin'),
+    ('bom-irreantum', 'single codex view: BXP02 (3/bom) is the only Irreantum card; BE03 narrates the ship command at '
+     'Bountiful and is an event, not a second view of the sea, so not linked'),
 ]
 
 
