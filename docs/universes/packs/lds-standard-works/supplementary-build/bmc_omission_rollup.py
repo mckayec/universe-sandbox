@@ -137,7 +137,7 @@ def omitted_defaults():
     keys = []
     with open(PACK_DIR + '/bmc-source-views.csv', encoding='utf-8', newline='') as fh:
         for row in csv.DictReader(fh):
-            if row['state'] == 'omitted' and row['reason'].startswith(('generated default', 'rollup ')):
+            if row['state'] == 'omitted' and row['reason'].startswith(('generated default', 'rollup ', 'semantic pass ')):
                 keys.append((row['research_key'], row['locator']))
     return keys
 

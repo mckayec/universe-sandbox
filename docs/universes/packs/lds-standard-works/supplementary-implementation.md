@@ -1656,3 +1656,65 @@ Parent: a89df3e (the S35-reviewed head). Review: PR34 `supplementary-review-s35.
 * **Still open (Claude keeps ownership):** timeline and source-vision relations; semantic omission/consolidation
   beyond name indexing; final same-head 4K/1280/phone set, full Tab traversal and finished-bake evidence; real-GPU
   and physical-phone evidence need hardware.
+
+## Checkpoint 37 (semantic omission pass over the 167 default omissions; pack unchanged)
+
+Parent: 57486b2 (the S36-reviewed head). Review: PR34 `supplementary-review-s36.md` at 85abd53, which asked for
+evidence-based retained/represented/omitted reasons with research locators and limits rather than name-index states.
+
+* **New pass.** [bmc_semantic_pass.py](supplementary-build/bmc_semantic_pass.py) writes
+  [bmc-semantic-dispositions.csv](bmc-semantic-dispositions.csv): one row per default omission (167) with a semantic
+  state, a reason that restates the research, research locators (the chapter's ledger line in coverage-bom.md, every
+  full-read row covering it by line, its crosswalk records in bom-record-support.csv) and the limit. It reads the
+  same research text as the rollup but looks for Bible relations that are not card names: a Bible place with no
+  card, a Gospel event, a stated Matthew comparison, the Fall/creation, the tower, Bible-named Jaredites. Any such
+  cue in a chapter without an explicit disposition fails the generator, so nothing falls through to a default
+  silently; ordinary Christ/baptism/priest/temple/prophets/Jews/Gentiles wording is classed as Book of Mormon
+  teaching, ordinance, institution or audience, with that stated in the reason.
+* **States (167):** no-bible-relation **63**, namesake **63**, represented **17**, relation-no-card **7**,
+  practice-or-title **4**, unstated-parallel **4**, reader **5**, candidate **4**. `build.py` now shows the semantic
+  reason (with its state and limit) as each default omission's reason in bmc-source-views.csv; the rollup CSV is
+  unchanged and remains the name-scan record.
+* **Limit (in every row).** The chapter bodies are not in the repository, so each state is a reading of the
+  committed research, not a certified textual absence. For 3 Nephi through Moroni no full-read omission-check row
+  exists, so those rows say only the ledger row and crosswalk records were read.
+* **What the name scan missed** (now explicit):
+  * **Candidates (proposed, not built — reviewer decision):**
+    * BMC-053 2 Nephi 31: Christ's baptism taught as an example → `NTE-baptism-matthew` (2/nt), teaching,
+      “his baptism taught as an example”.
+    * BMC-124 Alma 29:11–12: the full-read row's Egyptian-bondage retrospect → `OTS-P04-egypt`, teaching,
+      “deliverance recalled by Alma” (as BMV-073/131).
+    * BMC-172 Helaman 14: Samuel's darkness and upheaval at Christ's death → `AE10` “Crucifixion in Matthew” (2/nt),
+      prophecy, “signs at his death foretold”; the birth-sign star is not tied by the research to Matthew 2.
+    * BMC-186 3 Nephi 12: the ledger's “Matthew 5 comparison; retain textual differences” → `NTC-sermon-mountain`
+      (2/nt), teaching, “taught again at Bountiful; wording differs”. Consistency: BMV-187 (3 Nephi 13, Matthew 6
+      parallel per its research) links only Solomon and could add the same card.
+  * **Reader decisions:** BMC-031 (Fall named, Eden/Adam not), BMC-113 (creation taught), BMC-214 (creation/fall
+    taught) — whether a Fall/creation teaching without Eden or Adam named warrants `OH-P01`/`OH-C01` as
+    BMV-024/107/137 do; BMC-188 (3 Nephi 14, no Matthew comparison stated in its row); BMC-202 (“like John”: the
+    Patmos vision event or Section 7, a later work — cf. the BMC-198 Malachi precedent).
+  * **Relation named, no card at this head:** the Red Sea (BMC-002, BMC-016 via BXP01), the tower (BMC-094 via the
+    Mosiah 28 full-read row, BMC-215), sacred writings / the Jews' record as the Bible (BMC-013, BMC-051, BMC-212).
+  * **Unstated parallels (research questions, not linked):** BMC-081 (the messengers image: no source named),
+    BMC-100 (Good Shepherd), BMC-191 (lost tribes), BMC-192 (bread/wine remembrance).
+  * **Represented** (17): the rollup's range-spills, now naming the implemented view (`see BMC-048/057` resolved to
+    BMV-048/057), plus BMC-015 (John → BMV-014), BMC-026 (Joseph identities → BMV-023/025), BMC-091 and BMC-165 (Mulek
+    → BMV-166), BMC-193 (gathering → BMV-190/195).
+  * **Namesakes** added by reading: King Noah and the land/city Noah (BMC-076/077/083/085/086/089/090/111/144),
+    Mulek the city/land (BMC-147/148/163/164), Nimrod, Jared, Heth, Levi, Kish, Seth among the Jaredites
+    (BMC-216/217/220–226/228).
+* **Tests.** New test “Checkpoint 37”: one semantic row per default omission, allowed states, each first locator is
+  that chapter's ledger line, each full-read locator is a full-read table row, the reason shown in
+  bmc-source-views.csv is the semantic one, regression rows (Red Sea, baptism, Alma 29, Matthew 5, tower), and no view
+  exists yet for a candidate or reader chapter. The checkpoint 35 test now selects the semantic omissions.
+* **Verification.** Generator (`build.py` with the accepted register at 9cc874c, then `bmc_omission_rollup.py`, then
+  `bmc_semantic_pass.py`) run three times: byte-identical. `public/atlas/packs/lds-standard-works.js`,
+  supplementary-implementation.csv and bmc-omission-rollup.csv are unchanged, so no rendered or interaction change
+  and no new browser probe. `pnpm check` **134/134**; `pnpm check:dist` 114 files OK.
+* **Builder questions for S37:** (1) build the four candidates with the proposed copy, and add
+  `NTC-sermon-mountain` to BMV-187? (2) the Fall/creation reading for BMC-031/113/214; (3) BMC-188 and BMC-202;
+  (4) do the four unstated parallels need research locators (official text) before any link? (5) should cards be
+  researched for the Red Sea, the tower or the Bible as a text, or do those stay omitted with these reasons?
+* **Still open (Claude keeps ownership):** timeline and source-vision relations; building whatever S37 accepts; final
+  same-head 4K/1280/phone set, full Tab traversal and finished-bake evidence; real-GPU and physical-phone evidence
+  need hardware.

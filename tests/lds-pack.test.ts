@@ -12,6 +12,37 @@ vm.runInNewContext(readFileSync(new URL('../public/atlas/packs/lds-standard-work
 const L = ctx.window.AtlasLayers;
 const P = ctx.window.ATLAS_PACKS['lds-standard-works'];
 const plain = (v: unknown) => (v === undefined ? v : JSON.parse(JSON.stringify(v)));
+// RFC 4180 CSV (quoted fields with commas, doubled quotes and newlines) -> rows of fields
+const parseCsv = (text: string): string[][] => {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let field = '';
+  let quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (quoted) {
+      if (ch === '"' && text[i + 1] === '"') {
+        field += '"';
+        i++;
+      } else if (ch === '"') quoted = false;
+      else field += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ',') {
+      row.push(field);
+      field = '';
+    } else if (ch === '\n') {
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = '';
+    } else if (ch !== '\r') field += ch;
+  }
+  if (field || row.length) {
+    row.push(field);
+    rows.push(row);
+  }
+  return rows;
+};
 /* See-also targets of a codex card (PACK_FORMAT 20.5: a key, {k, r} or "ev:<event id>") */
 const seeKeys = (c: any): string[] => (c.see || []).map((v: any) => (typeof v === 'string' ? v : v.k));
 const earth = P.worlds.find((w: any) => (w.sites || []).length);
@@ -2019,7 +2050,7 @@ test('Checkpoint 35: every default BMC omission is reconciled in bmc-omission-ro
   const omittedRollup = views
     .trim()
     .split('\n')
-    .filter(r => /,omitted,"?rollup \(checkpoint 36\)/.test(r))
+    .filter(r => /,omitted,"?semantic pass \(checkpoint 37\)/.test(r))
     .map(r => r.slice(0, 7));
   const lines = rollup.trim().split('\n').slice(1);
   const chapters = new Map<string, string>();
@@ -2040,6 +2071,58 @@ test('Checkpoint 35: every default BMC omission is reconciled in bmc-omission-ro
   assert.match(views, /^BMC-131,Alma 36:28–29,OTS-P04-egypt,1\/ot,teaching,[^\n]*,implemented,/m);
   // checkpoint 36: no candidate or reader chapter is left undecided at this head
   for (const s of chapters.values()) assert.ok(s.startsWith('reconciled-'), s);
+});
+
+test('Checkpoint 37: every default BMC omission has a semantic disposition with research locators', () => {
+  const dir = '../docs/universes/packs/lds-standard-works/';
+  const read = (f: string) => readFileSync(new URL(dir + f, import.meta.url), 'utf8');
+  const views = read('bmc-source-views.csv');
+  const md = read('coverage-bom.md').split('\n');
+  const rows = parseCsv(read('bmc-semantic-dispositions.csv'));
+  const header = rows.shift()!;
+  assert.deepEqual(header, ['research_key', 'unit', 'semantic_state', 'reason', 'research_locators', 'limit']);
+  const omitted = views
+    .trim()
+    .split('\n')
+    .filter(r => /,omitted,"?semantic pass \(checkpoint 37\)/.test(r))
+    .map(r => r.slice(0, 7));
+  // one semantic row per default omission, no more and no fewer
+  assert.deepEqual(rows.map(r => r[0]).sort(), [...omitted].sort());
+  const allowed = [
+    'no-bible-relation',
+    'namesake',
+    'practice-or-title',
+    'represented',
+    'relation-no-card',
+    'unstated-parallel',
+    'candidate',
+    'reader',
+  ];
+  for (const [key, , state, reason, loc, limit] of rows) {
+    assert.ok(allowed.includes(state), `${key} ${state}`);
+    assert.ok(reason.length > 40, key);
+    assert.match(limit, /not a certified textual absence/, key);
+    // the first locator is the chapter's own ledger row in coverage-bom.md
+    const m = /^coverage-bom\.md:(\d+)/.exec(loc);
+    assert.ok(m, key);
+    assert.ok(md[Number(m![1]) - 1].includes(`**${key};`), `${key} ledger line`);
+    // every full-read locator points at a full-read table row
+    for (const f of loc.matchAll(/coverage-bom\.md:(\d+) \(full-read\)/g))
+      assert.ok(md[Number(f[1]) - 1].startsWith('| ['), `${key} full-read line ${f[1]}`);
+    // the omission reason shown in bmc-source-views.csv is the semantic one
+    assert.ok(views.includes(`${key},`) && views.includes(reason.slice(0, 60)), key);
+  }
+  const by = new Map(rows.map(r => [r[0], r]));
+  // relations the card-name scan cannot see
+  assert.equal(by.get('BMC-002')![2], 'relation-no-card'); // the Red Sea
+  assert.equal(by.get('BMC-053')![2], 'candidate'); // Christ's baptism taught as an example
+  assert.match(by.get('BMC-053')![3], /NTE-baptism-matthew/);
+  assert.equal(by.get('BMC-124')![2], 'candidate'); // Egyptian-bondage retrospect, Alma 29:11–12
+  assert.equal(by.get('BMC-186')![2], 'candidate'); // stated Matthew 5 comparison
+  assert.equal(by.get('BMC-215')![2], 'relation-no-card'); // the tower
+  // proposals are not built: no BMV view exists for a candidate or reader chapter at this head
+  for (const [key, , state] of rows)
+    if (state === 'candidate' || state === 'reader') assert.ok(!new RegExp(`BMV-${key.slice(4)}-`).test(views), key);
 });
 
 test('Checkpoint 35: every full-read table row in coverage-bom.md is ingested by the omission rollup', () => {

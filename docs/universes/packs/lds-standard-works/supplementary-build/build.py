@@ -450,8 +450,15 @@ ROLLUP_REASONS = {
 }
 
 
-def rollup_reason(rollup, n):
+def rollup_reason(rollup, n, semantic=None):
+    """Checkpoint 37: the semantic pass (bmc-semantic-dispositions.csv) gives each default omission its reason; the
+    rollup state remains the name-scan record. A key missing from the semantic pass falls back to the rollup reason
+    (only before the semantic pass has first been run)."""
     assert n in rollup, f'BMC-{n:03d} has no bespoke omission reason and no rollup row'
+    if semantic and n in semantic:
+        state, reason = semantic[n]
+        return (f'semantic pass (checkpoint 37), {state}: {reason}. Limit: a reading of the committed research, not a '
+                'certified textual absence (locators in bmc-semantic-dispositions.csv)')
     return ROLLUP_REASONS[rollup[n]]
 
 
@@ -471,6 +478,11 @@ def write_bmc(text):
     rollup = {}
     for r in csv.DictReader(open(HERE.parent / 'bmc-omission-rollup.csv', encoding='utf-8')):
         rollup.setdefault(int(r['research_key'][4:]), r['state'])
+    semantic = {}
+    sem_path = HERE.parent / 'bmc-semantic-dispositions.csv'
+    if sem_path.exists():
+        for r in csv.DictReader(open(sem_path, encoding='utf-8')):
+            semantic[int(r['research_key'][4:])] = (r['semantic_state'], r['reason'])
     lines, rows, views = [], [], {}
     for n, suffix, name, mode, desc, vs, see in copy_bmc.VIEWS:
         assert n not in copy_bmc.OMIT, n
@@ -507,7 +519,7 @@ def write_bmc(text):
         unit, url = chapters[n]
         if n in views:
             continue
-        why = copy_bmc.OMIT.get(n) or rollup_reason(rollup, n)
+        why = copy_bmc.OMIT.get(n) or rollup_reason(rollup, n, semantic)
         rows.append([f'BMC-{n:03d}', unit, '', '', '', '', '', url, 'omitted', why])
     # name-scan hits: every one accepted (implemented by a view) or rejected with a reason
     import subprocess
