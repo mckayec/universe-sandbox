@@ -1,0 +1,5 @@
+[111s] tl4-3840 {"vw":3840,"panel":3782,"scroll":3180,"svg":3144,"info":600,"pageScroll":0}
+[207s] tl4-2560 {"vw":2560,"panel":2502,"scroll":1900,"svg":1864.5,"info":600,"pageScroll":0}
+[280s] tl4-1440 {"vw":1440,"panel":1410,"scroll":1068,"svg":1044,"info":340,"pageScroll":0}
+[309s] tl4-390 {"vw":390,"panel":392,"scroll":390,"svg":366,"info":390,"pageScroll":0}
+tl4-probe: 4/4 passed; errors: 0

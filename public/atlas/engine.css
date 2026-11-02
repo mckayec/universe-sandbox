@@ -542,8 +542,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   padding:20px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
 #timeline[hidden]{display:none}
-#timeline .panel{position:relative;width:min(1600px,100%);max-height:min(88vh,100%);height:100%;min-height:0;overflow:hidden;display:flex;flex-direction:column}
-@media (min-width:2400px) and (min-height:1300px){#timeline .panel{zoom:1.5;width:min(1900px,calc(100vw / 1.5 - 40px));max-height:calc(88vh / 1.5)}}
+#timeline .panel{position:relative;width:100%;max-height:min(88vh,100%);height:100%;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+@media (min-width:2400px) and (min-height:1300px){#timeline .panel{zoom:1.5;width:calc(100vw / 1.5 - 40px);max-height:calc(88vh / 1.5)}}
 .tl-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
 .tl-head h2{font-size:26px;margin:0}
 .tl-note{font:400 10px var(--f-hud);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -553,6 +553,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .tl-zoom .btn{min-width:44px;min-height:44px}
 .tl-zoom .btn:disabled{opacity:.35;cursor:default}
 .tl-main{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 340px;margin-top:12px;border-top:1px solid var(--line)}
+/* wide screens: the chart takes the width; the details column grows a little but stays readable */
+@media (min-width:1900px){.tl-main{grid-template-columns:minmax(0,1fr) clamp(340px,20vw,400px)}}
 .tl-scroll{overflow:auto;min-height:0;padding:0 0 16px;scrollbar-width:thin;overscroll-behavior:contain}
 .tl-info{overflow-y:auto;padding:14px 18px 18px;border-left:1px solid var(--line);font:300 14.5px/1.5 var(--f-body);color:var(--text)}
 .tl-info h3{margin:2px 0 4px;font:600 24px/1.15 var(--f-title);color:var(--title3);border-left:3px solid var(--tc);padding-left:9px}
