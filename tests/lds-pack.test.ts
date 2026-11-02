@@ -287,7 +287,7 @@ test('BA07 round 2: 108 further source views (107 research IDs) resolve with the
   // 170 primary source views plus the two P17 views keyed at checkpoint 26 (S25-C1), and the supplementary
   // tab(s), counted separately
   const supp = P.codex
-    .filter((t: any) => ['bom-more', 'nt-more', 'ot-more', 'dc-more', 'pgp-more'].includes(t.id))
+    .filter((t: any) => ['bom-more', 'bom-bible', 'nt-more', 'ot-more', 'dc-more', 'pgp-more'].includes(t.id))
     .flatMap((t: any) => t.list).length;
   assert.equal(keys.length - supp, 172);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
@@ -1646,8 +1646,9 @@ test('Checkpoint 24: shared-identity See-also links for the 12 front-matter peop
       const t = byKey.get(k);
       assert.ok(t, `${c.key} -> ${k}`);
       assert.notEqual(k, c.key);
-      // links are two-way, and neither end's work gate is changed by the link
-      assert.ok(seeKeys(t).includes(c.key), `${k} <- ${c.key}`);
+      // links are two-way (except the checkpoint 32 BMV views, one way by the S31 builder answer), and neither
+      // end's work gate is changed by the link
+      if (!String(c.key).startsWith('BMV-')) assert.ok(seeKeys(t).includes(c.key), `${k} <- ${c.key}`);
       assert.equal(plain(t.books).length, 1, k);
     }
   }
@@ -1920,4 +1921,74 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
   const keys = (c.see || []).map((v: any) => (typeof v === 'string' ? v : v.k));
   assert.ok(keys.includes('DCM-dcp-aaron-johnson'));
   assert.ok(keys.includes('DCM-dre124g-high-council'));
+});
+
+test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
+  const views = codex('bom-bible');
+  assert.equal(views.length, 35);
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
+  const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
+  for (const v of views) {
+    assert.match(v.key, /^BMV-\d{3}-[a-z0-9-]+$/);
+    assert.deepEqual(plain(v.books), [3]);
+    assert.deepEqual(plain(v.layers), ['bom']);
+    assert.ok(v.desc.startsWith('Book of Mormon — '), v.key);
+    assert.equal(v.src.length, 1);
+    assert.match(v.src[0].t, /^[1-4A-Za-z ]+ \d+:\d+([–, ]+\d+)*$/, v.key);
+    assert.match(v.src[0].u, /^https:\/\/www\.churchofjesuschrist\.org\/study\/scriptures\/bofm\//);
+    assert.equal(v.when, undefined);
+    for (const s of v.see || []) {
+      assert.ok(s.k && s.r, v.key);
+      assert.ok(!s.k.startsWith('site:'), v.key);
+      if (s.k.startsWith('ev:')) assert.ok(evs.get(s.k.slice(3)).book < 3, s.k);
+      else assert.ok(byKey.get(s.k).books[0] < 3, s.k);
+    }
+  }
+  // no Bible card links back to a view (no reciprocal Book of Mormon label on an earlier work)
+  for (const x of all)
+    if (!String(x.key).startsWith('BMV-')) assert.ok(!seeKeys(x).some(k => k.startsWith('BMV-')), x.key);
+  // layer isolation and work downgrade
+  const split = (layers: string[], cum: boolean, book: number) =>
+    L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
+  assert.equal(split(['bom'], false, 0).shown.length, 35);
+  assert.equal(split(['ot'], false, 0).shown.length, 0);
+  assert.equal(split(['nt'], false, 0).shown.length, 0);
+  assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 35);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 35);
+  // the S31 minimum examples
+  const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
+  assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);
+  assert.equal(v011.src[0].t, '1 Nephi 11:13, 32');
+  assert.equal((v011.see || []).length, 0);
+  const v039 = byKey.get('BMV-039-judah-damascus-samaria');
+  assert.match(v039.desc, /This chapter quotes Isaiah’s account concerning Judah, Damascus and Samaria/);
+  assert.equal(v039.src[0].t, '2 Nephi 17:1–9');
+  const v108 = byKey.get('BMV-108-melchizedek-salem');
+  assert.match(v108.desc, /Alma’s teaching recalls Melchizedek, king of Salem, and Abraham’s tithes/);
+  assert.equal(v108.src[0].t, 'Alma 13:14–18');
+  // namesakes are never linked: Book of Mormon Jerusalem/Jordan/Gilgal views stay out of this tab
+  for (const v of views) for (const k of seeKeys(v)) assert.ok(!/^(BXP|BP|BJ|BE)/.test(k), k);
+});
+
+test('Checkpoint 32: bmc-source-views.csv accounts for every BMC key and every name-scan hit', () => {
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/bmc-source-views.csv', import.meta.url),
+    'utf8',
+  );
+  const rows = csv.trim().split('\n').slice(1);
+  const keyOf = (r: string) => r.slice(0, 7);
+  const state = (r: string) => (r.match(/,(implemented|omitted|scan-accepted|scan-rejected),/) || [])[1];
+  const covered = new Set(rows.filter(r => ['implemented', 'omitted'].includes(state(r)!)).map(keyOf));
+  assert.equal(covered.size, 239);
+  assert.equal(rows.filter(r => state(r)?.startsWith('scan-')).length, 101);
+  for (const r of rows) assert.ok(state(r), r);
+  const views = new Set(codex('bom-bible').map((v: any) => v.key));
+  for (const r of rows.filter(x => state(x) === 'implemented'))
+    assert.ok(
+      [...views].some(k => r.includes(k as string)),
+      r,
+    );
 });

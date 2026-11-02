@@ -33,6 +33,7 @@ import copy_fm
 import copy_geo
 import copy_identity
 import copy_links
+import copy_bmc
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -332,6 +333,7 @@ def main(path):
         block = '\n' + '\n'.join(lines[fam]) + '\n          '
         text = text[:i] + block + text[j:]
     text = write_see(text)
+    text = write_bmc(text)
     PACK.write_text(text, encoding='utf-8')
     with open(MAP, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
@@ -428,6 +430,86 @@ def write_typed(text):
         w = csv.writer(f)
         w.writerow(['contract_row', 'kind', 'relation_label', 'cards', 'target', 'state'])
         w.writerows(rows)
+
+
+BMC_CSV = HERE.parent / 'bmc-source-views.csv'
+
+
+def write_bmc(text):
+    """Checkpoint 32: copy_bmc's Book of Mormon source views into the bom-bible tab, and bmc-source-views.csv, which
+    accounts for every BMC key and every bmc_candidates.py scan hit. Idempotent."""
+    chapters = {}
+    for r in csv.DictReader(open(HERE.parent / 'coverage-bom.csv', encoding='utf-8')):
+        m = re.search(r'BMC-(\d{3})', r['records'])
+        chapters[int(m.group(1))] = (r['unit'], r['source_url'])
+    assert sorted(chapters) == list(range(1, 240)), 'BMC-001..239 must each have one chapter row'
+    verses = {r['unit']: int(r['captured_numbered_verses'])
+              for r in csv.DictReader(open(HERE.parent / 'bom-source-witnesses.csv', encoding='utf-8'))}
+    ev_ids = set(re.findall(r"^\s+id: '([^']+)',\n\s+book: ", text, re.M))
+    ev_book = {i: {'OT': 1, 'NT': 2}.get(b, 9) for i, b in
+               re.findall(r"^\s+id: '([^']+)',\n\s+book: ([A-Z]+),", text, re.M)}
+    lines, rows, views = [], [], {}
+    for n, suffix, name, mode, desc, vs, see in copy_bmc.VIEWS:
+        assert n not in copy_bmc.OMIT, n
+        unit, url = chapters[n]
+        if vs is None:
+            loc = f'{unit}:1–{verses[unit]}'
+        elif len(vs) == 3 and vs[1] == '–':
+            loc = f'{unit}:{vs[0]}–{vs[2]}'
+        else:
+            loc = f'{unit}:' + ', '.join(str(v) for v in vs)
+        key = f'BMV-{n:03d}-{suffix}'
+        assert desc.startswith('Book of Mormon — ') and unit in name, key
+        refs = []
+        for t, rel in see:
+            if t.startswith('ev:'):
+                assert t[3:] in ev_ids and int(ev_book[t[3:]]) < 3, t
+                gate = f"{ev_book[t[3:]]}/event"
+            else:
+                a, b = card_line(text, t)
+                gate = card_gate(text[a:b])
+                assert int(gate[0]) < 3, (t, gate)
+            refs.append('{ k: %s, r: %s }' % (js(t), js(rel)))
+            rows.append([f'BMC-{n:03d}', loc, t, gate, mode, rel, key, url, 'implemented', ''])
+        if not see:
+            rows.append([f'BMC-{n:03d}', loc, '', '', mode, '', key, url, 'implemented',
+                         'nonspatial view without a link: its places are map pins, and See-also has no site: link'])
+        line = entry(key, name, desc, [(loc, url)], [3], ['bom'])
+        if refs:
+            line = line[:-3] + ', see: [' + ', '.join(refs) + '] },'
+        lines.append(line)
+        views.setdefault(n, []).append(key)
+    for n in range(1, 240):
+        unit, url = chapters[n]
+        if n in views:
+            continue
+        why = copy_bmc.OMIT.get(n, 'no view: the finding records no quotation, vision, teaching or mention of an '
+                                   'entity with a shared Bible card; the chapter stays a source link on the records '
+                                   'it supports (Chapter coverage contract)')
+        rows.append([f'BMC-{n:03d}', unit, '', '', '', '', '', url, 'omitted', why])
+    # name-scan hits: every one accepted (implemented by a view) or rejected with a reason
+    import subprocess
+    scan = subprocess.run([sys.executable, str(HERE / 'bmc_candidates.py'), str(ROOT)], capture_output=True,
+                          text=True, check=True).stdout
+    hits = list(csv.DictReader(scan.splitlines()))
+    for h in hits:
+        d = copy_bmc.SCAN_ROW.get((h['bmc'], h['name'])) or copy_bmc.SCAN_DEFAULT[h['name']]
+        n = int(h['bmc'][4:])
+        state = 'scan-accepted' if d.startswith('accept') else 'scan-rejected'
+        if state == 'scan-accepted':
+            assert n in views, (h['bmc'], h['name'])
+        rows.append([h['bmc'], chapters[n][0], h['candidate_cards'], '', '', h['name'],
+                     ';'.join(views.get(n, [])), chapters[n][1], state, d])
+    a, b = '/* SUPPLEMENT:bom-bible:BEGIN */', '/* SUPPLEMENT:bom-bible:END */'
+    i, j = text.index(a) + len(a), text.index(b)
+    text = text[:i] + '\n' + '\n'.join(lines) + '\n          ' + text[j:]
+    with open(BMC_CSV, 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['research_key', 'locator', 'target', 'target_gate', 'mode', 'relation_label_or_scan_name',
+                    'rendered_view', 'source', 'state', 'reason'])
+        w.writerows(rows)
+    print(f'BMC: {len(lines)} views over {len(views)} keys, {len(rows)} ledger rows, {len(hits)} scan hits')
+    return text
 
 
 if __name__ == '__main__':
