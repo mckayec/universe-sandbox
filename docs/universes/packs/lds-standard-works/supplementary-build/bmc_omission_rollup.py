@@ -22,7 +22,7 @@ SMALL = {'the', 'of', 'and', 'in', 'to', 'at', 'on', 'from', 'a', 'an', 'by'}
 # Leading capitalised words of descriptive card names that are ordinary words, not entity names.
 GENERIC = {'Land', 'Temple', 'Prophecy', 'Prophetic', 'Captive', 'Withdrawal', 'Withdrawals', 'Vision', 'River',
            'Resurrection', 'Water', 'Sabbath', 'Royal', 'Place', 'Other', 'Name', 'Kingship', 'Creation', 'Covenant',
-           'Baptism', 'Animal'}
+           'Baptism', 'Animal', 'Family', 'Repentance'}
 
 
 def card_names(pack):
@@ -47,22 +47,71 @@ def card_names(pack):
     return {n: sorted(k) for n, k in names.items()}
 
 
+SINGLE_CHAPTER = {'Enos', 'Jarom', 'Omni', 'Words of Mormon', '4 Nephi'}
+LINK = re.compile(r'\[([^\]]+)\]\((https://[^)]+)\)')
+
+
 def chapter_number_ranges(text):
-    """'1 Nephi 1–5' -> ('1 Nephi', 1, 5); '1 Nephi 7' -> ('1 Nephi', 7, 7)."""
-    m = re.match(r'(.+?) (\d+)(?:[–-](\d+))?$', text.strip())
+    """Chapter identity of a reference, ignoring any verse qualifier.
+
+    '1 Nephi 1–5' -> ('1 Nephi', 1, 5); '1 Nephi 7' -> ('1 Nephi', 7, 7); 'Alma 36:1–30' -> ('Alma', 36, 36)
+    (a verse range is never read as a chapter range); 'Alma 36:1–37:5' -> ('Alma', 36, 37); 'Enos' -> ('Enos', 1, 1).
+    Returns None for anything else, which the caller must account for explicitly."""
+    t = text.strip()
+    if t in SINGLE_CHAPTER:
+        return t, 1, 1
+    m = re.match(r'(.+?) (\d+)(?::\d+(?:[–-](\d+)(?::\d+)?)?|(?:[–-](\d+)))?$', t)
     if not m:
         return None
-    book, a, b = m.group(1), int(m.group(2)), int(m.group(3) or m.group(2))
+    book, a = m.group(1), int(m.group(2))
+    # group 3 is the second number after a verse ("36:1–30" -> 30 is a verse, "36:1–37:5" -> 37 is a chapter)
+    if m.group(3) and re.search(r':\d+[–-]\d+:\d+$', t):
+        b = int(m.group(3))
+    else:
+        b = int(m.group(4) or a)
     return book, a, b
 
 
+def parse_fullread_row(line):
+    """A full-read table row -> (cell text, [(link text, url, range or None)], disposition text) or None."""
+    if not line.startswith('| [') or line.count(' | ') < 1:
+        return None
+    first, _, rest = line[2:].partition(' | ')
+    rest = rest.rstrip()
+    if rest.endswith(' |'):
+        rest = rest[:-2]
+    links = [(t, u, chapter_number_ranges(t)) for t, u in LINK.findall(first)]
+    return first, links, rest
+
+
 def load_ledger():
+    """Ledger rows, full-read rows and the record crosswalk, plus an ingestion inventory of every full-read row.
+
+    Every table body row in a full-read section is either consumed (each linked reference parsed to a chapter
+    range) or recorded as unsupported with a reason; anything else fails."""
     lines = open(PACK_DIR + '/coverage-bom.md', encoding='utf-8').read().splitlines()
-    ledger, fullread, crosswalk = {}, [], {}
+    ledger, fullread, crosswalk, inventory = {}, [], {}, []
     section = ''
-    for line in lines:
+    for lineno, line in enumerate(lines, 1):
         if line.startswith('## '):
             section = line
+        if section.startswith('## Full-read omission checks') and line.startswith('|'):
+            if re.match(r'\|\s*-', line) or not line.startswith('| ['):
+                continue  # header or separator row
+            parsed = parse_fullread_row(line)
+            assert parsed and parsed[1], f'coverage-bom.md:{lineno}: full-read row has no reference link'
+            first, links, rest = parsed
+            bad = [t for t, _u, r in links if r is None]
+            if bad:
+                inventory.append([lineno, section[3:], first, '', '', '', 'unsupported',
+                                  'reference not parseable: ' + '; '.join(bad)])
+                continue
+            for t, _u, (book, a, b) in links:
+                fullread.append(((book, a, b), t, rest))
+                inventory.append([lineno, section[3:], t, book, a, b, 'consumed',
+                                  'verse-qualified' if ':' in t else ('multi-link row' if len(links) > 1
+                                                                       else 'chapter or chapter range')])
+            continue
         m = re.match(r'\| \[([^\]]+)\]\((https://[^)]+)\) \| (.*) \|$', line)
         if not m:
             continue
@@ -70,14 +119,10 @@ def load_ledger():
         bmc = re.match(r'\*\*(BMC-\d+);', rest)
         if section.startswith('## Chapter ledger') and bmc:
             ledger[bmc.group(1)] = (ref, rest)
-        elif section.startswith('## Full-read omission checks'):
-            rng = chapter_number_ranges(ref)
-            if rng:
-                fullread.append((rng, ref, rest))
         elif section.startswith('## Final Book of Mormon integration') and rest.startswith('BMC-'):
             ids = [x.strip() for x in rest.split(';')]
             crosswalk[ids[0]] = ids[1:]
-    return ledger, fullread, crosswalk
+    return ledger, fullread, crosswalk, inventory
 
 
 def load_support():
@@ -206,6 +251,24 @@ ROW = {
     **{(f'BMC-{n:03d}', 'Israel'): ('reader', 'Israel as the covenant people to be gathered or addressed: whether this '
                                     'is a relation to “Israel as a prophetic community” (OTM-israel-prophetic-'
                                     'community) is a reading decision') for n in (179, 195, 203, 204, 208, 210)},
+    # Checkpoint 35: hits exposed once the verse-qualified Mosiah/Alma 33–63/Helaman full-read rows were ingested.
+    ('BMC-069', 'Mary'): ('reader', 'the research records Benjamin reporting an angel’s prophecy naming Mary as '
+                                    'Jesus’ mother; the only Mary card is the Visitation event (NTJ-mary-elizabeth), '
+                                    'which the chapter does not describe: proposed reading is no link unless a Mary '
+                                    'person card is wanted'),
+    ('BMC-073', 'Egypt'): ('candidate', 'the research records Limhi’s Egypt/Red Sea retrospective: a teaching that '
+                                        'recalls the exodus from Egypt (OTS-P04-egypt)'),
+    ('BMC-079', 'Sinai'): ('candidate', 'the research records Abinadi’s Ten Commandments with a Sinai comparison, “not '
+                                        'another local mountain”: a quotation tied to the Sinai setting '
+                                        '(OTS-AP04-sinai)'),
+    ('BMC-131', 'Egypt'): ('candidate', 'the research records Alma’s remembered deliverance of the fathers from Egypt: '
+                                        'a teaching recalling the exodus (OTS-P04-egypt)'),
+    ('BMC-131', 'Jerusalem'): ('reader', 'the remembered deliverance of Lehi’s family from Jerusalem is a retrospective '
+                                         'of the departure the journey record BXJ01 carries; proposed reading is a '
+                                         'bounded mention under BXJ01, as decided for BMC-003/004, not a new view'),
+    ('BMC-141', 'Joseph'): ('candidate', 'the research records Moroni quoting a saying about Joseph’s garment and notes '
+                                         'the quotation is not present in the Genesis text: an attributed quotation '
+                                         'naming Joseph son of Jacob (OHR-JOSEPH-JACOB), with that caveat'),
     ('BMC-207', 'David'): ('namesake', 'the land David on Mormon’s retreat, not King David'),
     ('BMC-207', 'Joshua'): ('namesake', 'the western-seashore land Joshua, not Joshua son of Nun'),
     ('BMC-207', 'Jordan'): ('namesake', 'the Book of Mormon city Jordan on the retreat, not the biblical river'),
@@ -228,7 +291,14 @@ def dispose(bmc, name):
 def main():
     pack = open(ROOT + '/public/atlas/packs/lds-standard-works.js', encoding='utf-8').read()
     names = card_names(pack)
-    ledger, fullread, crosswalk = load_ledger()
+    ledger, fullread, crosswalk, inventory = load_ledger()
+    unsupported = [r for r in inventory if r[6] != 'consumed']
+    with open(PACK_DIR + '/bmc-fullread-ingestion.csv', 'w', encoding='utf-8', newline='') as fh:
+        w = csv.writer(fh, lineterminator='\n')
+        w.writerow(['coverage_bom_line', 'section', 'reference', 'book', 'chapter_from', 'chapter_to', 'state',
+                    'note'])
+        w.writerows(inventory)
+    assert not unsupported, f'unexplained full-read rows: {unsupported}'
     support = load_support()
     rows, counts = [], collections.Counter()
     for bmc, unit in omitted_defaults():
@@ -269,7 +339,8 @@ def main():
         w = csv.writer(fh, lineterminator='\n')
         w.writerow(['research_key', 'unit', 'state', 'scan_name', 'candidate_cards', 'hit_disposition', 'hit_reason', 'evidence_scanned', 'first_excerpt'])
         w.writerows(rows)
-    print(dict(counts), 'rows', len(rows))
+    print(dict(counts), 'rows', len(rows), 'full-read references consumed',
+          sum(1 for r in inventory if r[6] == 'consumed'), 'table rows', len({r[0] for r in inventory}))
 
 
 if __name__ == '__main__':

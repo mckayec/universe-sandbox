@@ -436,16 +436,16 @@ BMC_CSV = HERE.parent / 'bmc-source-views.csv'
 
 
 ROLLUP_REASONS = {
-    'reconciled-no-shared-name': 'rollup (checkpoint 34): no name of an entity with a shared Bible card occurs in '
+    'reconciled-no-shared-name': 'rollup (checkpoint 35): no name of an entity with a shared Bible card occurs in '
                                  'this chapter’s ledger row, the full-read rows covering it or its record-support '
                                  'rows; reconciled against the committed research, not a full-text absence check of '
                                  'the chapter',
-    'reconciled-hits-dispositioned': 'rollup (checkpoint 34): every shared-card name in the committed research for '
+    'reconciled-hits-dispositioned': 'rollup (checkpoint 35): every shared-card name in the committed research for '
                                      'this chapter is dispositioned in bmc-omission-rollup.csv (namesake, '
                                      'range-spill or title); not a full-text absence check of the chapter',
-    'candidate': 'rollup (checkpoint 34): a source view is proposed in bmc-omission-rollup.csv (candidate); still '
+    'candidate': 'rollup (checkpoint 35): a source view is proposed in bmc-omission-rollup.csv (candidate); still '
                  'omitted at this head',
-    'reader': 'rollup (checkpoint 34): needs a reading decision recorded in bmc-omission-rollup.csv (reader); '
+    'reader': 'rollup (checkpoint 35): needs a reading decision recorded in bmc-omission-rollup.csv (reader); '
               'omitted until decided',
 }
 

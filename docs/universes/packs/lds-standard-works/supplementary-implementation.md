@@ -1545,3 +1545,68 @@ bf86c53; no runtime file changed.
 **Still open (Claude keeps ownership):** reviewer decisions on the 7 candidates and 10 reader rows, then the views;
 timeline/source-vision relations; final same-head 4K/1280/phone evidence, full Tab/Shift-Tab traversal,
 finished-bake capture; real-GPU and physical-phone native-select/touch (hardware not available here).
+
+## Checkpoint 35 (S34-C1 parser repair; S34 builder decisions implemented)
+
+Follows [supplementary-review-s34](https://github.com/mckayec/universe-sandbox/blob/5b9aa4a8e63a5e9985a1e6492477657b987e8732/docs/universes/packs/lds-standard-works/supplementary-review-s34.md)
+and its [builder decisions](https://github.com/mckayec/universe-sandbox/blob/5b9aa4a8e63a5e9985a1e6492477657b987e8732/docs/universes/packs/lds-standard-works/supplementary-review-s34/builder-decisions.md)
+(PR34 5b9aa4a) on checkpoint 34 (29e8880). Runtime change: 14 new 3/bom source views in the `bom-bible` tab.
+
+* **S34-C1, parser repaired.** `chapter_number_ranges` now reads the chapter (or chapter range) separately from an
+  optional verse qualifier: `Alma 36:1–30` → Alma 36 (the verse range is never read as chapters), `Alma 36:1–37:5`
+  → Alma 36–37, `1 Nephi 1–5` → 1 Nephi 1–5, and a bare single-chapter book name (`Enos`, `Words of Mormon`) →
+  chapter 1. Each full-read table row is parsed link by link, so the combined Enos/Jarom/Omni/Words of Mormon row
+  contributes one reference per book. **Ingestion inventory:** new [bmc-fullread-ingestion.csv](bmc-fullread-ingestion.csv)
+  lists every table body row of the four “Full-read omission checks” sections by its coverage-bom.md line: **118
+  table rows, 121 references, all consumed** (76 verse-qualified, 41 chapter or chapter-range, 4 from the
+  multi-link row). A row with an unparseable reference is written as `unsupported` with the reference and the run
+  fails; nothing is dropped silently. Regression test: every full-read table line appears in the inventory and is
+  consumed; Alma 36:1–30, Helaman 1:1–34 and Mosiah 29:1–47 map to their own chapter; the four multi-link books are
+  present; 76 verse-qualified references; BMC-131 is no longer “no shared name” and its row records one full-read
+  row. The hard-coded 94/78/7/10 assertions are removed (the test now checks one rollup chapter per default
+  omission, an allowed state per chapter and a disposition per hit).
+* **What the corrected reader exposed** (10 chapters changed state before any decision was applied):
+  * BMC-131 Alma 36 (the reviewer's example): Egypt → **candidate** (remembered deliverance from Egypt, OTS-P04-egypt);
+    Jerusalem → **reader** (proposed: a retrospective of the departure BXJ01 carries, bounded as for BMC-003/004).
+  * BMC-073 Mosiah 7: Egypt → **candidate** (Limhi's Egypt/Red Sea retrospective). Ammon stays namesake.
+  * BMC-079 Mosiah 13: Sinai → **candidate** (Abinadi's Ten Commandments with the research's Sinai comparison,
+    OTS-AP04-sinai).
+  * BMC-141 Alma 46: Joseph → **candidate** (Moroni's saying about Joseph's garment; the research notes the
+    quotation is not in the Genesis text, so any view must say so).
+  * BMC-069 Mosiah 3: Mary → **reader** (Benjamin's angel names Mary as Jesus' mother; the only Mary card is the
+    Visitation event, which the chapter does not describe; proposed reading: no link unless a Mary person card is
+    wanted).
+  * BMC-093 Mosiah 27 and BMC-142 Alma 47: Aaron/Ammon hits → **namesake** (Mosiah's sons; the people of Ammon).
+  * BMC-068 Mosiah 2 and BMC-134 Alma 39 matched only the ordinary words “Family” and “Repentance” (headwords of the
+    cards “Family registers of the return” and “Repentance and the threatened evil”); both words were added to the
+    generic-headword list, so they stay `reconciled-no-shared-name`.
+  * BMC-157 Alma 62 gains full-read evidence; state unchanged.
+  Before the decisions below, the corrected rollup of the 189 default omissions read 88 no shared name / 79 hits
+  dispositioned / 11 candidates / 11 reader. As the review says, this is a candidate index over compressed research
+  prose, not a semantic absence certificate.
+* **S34 decisions implemented** (reviewer's minimum copy verbatim, full-chapter locators, `books:[3]`,
+  `layers:['bom']`, no date/coordinate/route, one-way links under the target's own gate):
+  * Seven candidates: BMV-024-eden-lehi-teaching (OH-P01), BMV-027-temple-solomon-comparison (OHR-SOLOMON),
+    BMV-057-david-solomon-rebuke (OHR-DAVID, OHR-SOLOMON; no D&C comparison inside the work-3 view),
+    BMV-105-amulek-joseph-descent (OHR-JOSEPH-JACOB only; Amulek's Manasseh is not linked to King Manasseh),
+    BMV-137-eden-alma-teaching (OH-P01), BMV-187-solomon-glory-illustration (OHR-SOLOMON),
+    BMV-239-jerusalem-zion-exhortation (OTM-jerusalem, OTM-zion-prophetic-jerusalem).
+  * Six Israel views, each its own chapter, speaker and copy, label “Israel as covenant people” to
+    OTM-israel-prophetic-community: BMV-179, 195, 203, 204, 208, 210.
+  * BMC-048: BMV-048-zion-welfare-teaching, **2 Nephi 26:29–31**, the reviewer's safe copy, **no link** (no
+    geographic identity with OTM-zion-prophetic-jerusalem); recorded in NOLINK.
+  * BMC-003/004 → BXJ01 and BMC-007 → BXJ02: bespoke omission reasons record a bounded consolidation of the
+    Jerusalem setting and return-trip payload into those journey entries, not complete chapter coverage and no new
+    view or `site:` link.
+* **Counts at this head.** 53 views over 53 keys; **81 links, 84 implemented ledger rows (three unlinked views:
+  BMV-011, BMV-022, BMV-048)**; links by mode: quotation 41, teaching 28, mention 5, vision 4, prophecy 3. Ledger
+  371 rows: 84 implemented, 186 omitted, 26 scan-accepted, 75 scan-rejected. Rollup: 172 default omissions —
+  88 no shared name, 79 hits dispositioned, **4 candidates (BMC-073, 079, 131, 141), 1 reader (BMC-069)**, plus the
+  BMC-131 Jerusalem hit; 14 bespoke omissions. Mapping (1,365 rows, 1,271 SD imported, 0 pending) unchanged.
+* **For the reviewer:** the four new candidates and the BMC-069/BMC-131-Jerusalem readings above (proposed copy
+  can follow the same pattern as the S34 decisions once accepted).
+* **Verification.** Generator run twice (build → rollup → build → rollup), byte-identical. `pnpm check` 132/132
+  (incl. 58 LDS/layers tests); `pnpm check:dist` 114 files OK; `pnpm test:pages` 13 pages × 2 viewports.
+  Browser (SwiftShader, 1440×900): [s35-probe.mjs](supplementary-build/s35-probe.mjs) **2/2** — all layers, keyboard: 53 views, BMV-048 has no link and the 2 Nephi 26:29–31 source, BMV-057's two labels, Enter on Solomon focuses OHR-SOLOMON whose card carries no Book of Mormon label back; Book of Mormon layer only: the Israel views' target is named but not navigable — no console errors, failed requests or HTTP≥400 ([output](supplementary-build/s35-probe-output.txt), [shot](shots/s35-bmv057-1440x900.jpg)). Still open: timeline and
+  source-vision relations, final same-head 4K/1280/phone, Tab traversal and finished-bake evidence; real-GPU and
+  physical-phone evidence need hardware.

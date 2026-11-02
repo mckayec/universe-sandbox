@@ -193,6 +193,67 @@ VIEWS = [
      'completed Jaredite construction.', '4–11',
      [('OTM-jerusalem', 'Jerusalem of old in Ether’s prophecy'),
       ('OHR-JOSEPH-JACOB', 'Joseph recalled in the prophecy')]),
+    # Checkpoint 35: the S34 builder decisions (supplementary-review-s34/builder-decisions.md at 5b9aa4a). Copy is the
+    # reviewer's minimum attributed copy; full-chapter locators, as that brief specifies.
+    (24, 'eden-lehi-teaching', 'Eden in Lehi’s teaching on the Fall (2 Nephi 2)', 'teaching',
+     'Book of Mormon — Lehi teaches Jacob about the Fall, opposition and moral agency. Eden belongs to this teaching; '
+     'no new physical location or dated creation event is supplied.', None,
+     [('OH-P01', 'Eden in Lehi’s teaching')]),
+    (27, 'temple-solomon-comparison', 'A temple after the manner of Solomon’s (2 Nephi 5)', 'mention',
+     'Book of Mormon — Nephi describes a temple constructed after the manner of Solomon’s temple while distinguishing '
+     'its materials. The comparison supplies neither a recovered building nor an exact plan.', None,
+     [('OHR-SOLOMON', 'his temple used as a comparison')]),
+    (57, 'david-solomon-rebuke', 'David and Solomon in Jacob’s rebuke (Jacob 2)', 'teaching',
+     'Book of Mormon — Jacob condemns his audience’s appeal to David and Solomon to justify plural marriages and '
+     'describes harm to wives and children. This is Jacob’s attributed teaching, not an independently established '
+     'biography.', None,
+     [('OHR-DAVID', 'named in Jacob’s rebuke'), ('OHR-SOLOMON', 'named in Jacob’s rebuke')]),
+    (105, 'amulek-joseph-descent', 'Amulek’s descent from Joseph (Alma 10)', 'mention',
+     'Book of Mormon — Amulek gives a lineage through Lehi and Manasseh to Joseph. The descent is the narrative’s '
+     'claim; unspecified intervening generations remain unspecified.', None,
+     [('OHR-JOSEPH-JACOB', 'descent claimed by Amulek')]),
+    (137, 'eden-alma-teaching', 'Eden in Alma’s teaching to Corianton (Alma 42)', 'teaching',
+     'Book of Mormon — Alma teaches Corianton about the Fall, mortal probation, justice and mercy, recalling the '
+     'garden and tree of life. No new Eden position or physical departure route is established.', None,
+     [('OH-P01', 'Eden in Alma’s teaching')]),
+    (187, 'solomon-glory-illustration', 'Solomon’s glory as an illustration (3 Nephi 13)', 'teaching',
+     'Book of Mormon — In the teaching addressed to the twelve from verse 25, Solomon’s glory is used as an '
+     'illustration about clothing and provision. Solomon is not a visitor to this scene.', None,
+     [('OHR-SOLOMON', 'illustrative reference in teaching')]),
+    (239, 'jerusalem-zion-exhortation', 'Jerusalem and Zion in Moroni’s closing exhortation (Moroni 10)', 'teaching',
+     'Book of Mormon — Moroni’s closing exhortation invokes Jerusalem and Zion in covenant imagery. It is not a '
+     'journey or a dated construction event.', None,
+     [('OTM-jerusalem', 'invoked in covenant exhortation'),
+      ('OTM-zion-prophetic-jerusalem', 'invoked in covenant exhortation')]),
+    (48, 'zion-welfare-teaching', 'Zion’s welfare and charity in Nephi’s teaching (2 Nephi 26)', 'teaching',
+     'Book of Mormon — Nephi condemns priestcraft that seeks gain and praise rather than Zion’s welfare, and teaches '
+     'charity. This passage does not identify Zion as a mapped city.', '29–31', []),
+    (179, 'israel-gathering-editorial', 'Israel’s gathering in Mormon’s editorial voice (3 Nephi 5)', 'teaching',
+     'Book of Mormon — Mormon’s editorial voice proclaims Israel’s future gathering. His editorial present is '
+     'distinct from the preceding year-25 narrative.', None,
+     [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (195, 'israel-gathering-new-jerusalem', 'Gathering and a New Jerusalem in Jesus’ teaching (3 Nephi 21)',
+     'teaching',
+     'Book of Mormon — Jesus teaches gathering and covenant inclusion, with repentant Gentiles assisting in a '
+     'promised New Jerusalem. Neither a completed migration nor a modern territorial identification is supplied.',
+     None, [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (203, 'israel-remnant-warning', 'Israel’s remnant in Mormon’s address to future readers (3 Nephi 29)',
+     'teaching',
+     'Book of Mormon — Mormon addresses future recipients about covenant restoration and warns against mocking Jews '
+     'or Israel’s remnant. This is not Jesus’s earlier Bountiful audience or a dated modern fulfillment.', None,
+     [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (204, 'gentiles-numbered-israel', 'Gentiles numbered with Israel (3 Nephi 30)', 'teaching',
+     'Book of Mormon — Mormon transmits Christ’s call to Gentiles to repent, receive baptism and the Spirit, and be '
+     'numbered with Israel. The inclusion is covenant language, not a mapped border.', None,
+     [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (208, 'israel-address-mormon', 'Mormon’s address to Gentiles and Israel (Mormon 3)', 'teaching',
+     'Book of Mormon — After refusing command amid vows of revenge, Mormon addresses future Gentiles and Israel about '
+     'repentance and judgment. The address is distinct from a completed journey or an endorsement of extermination.',
+     None, [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (210, 'israel-lament-restoration', 'Lament and covenant restoration in Mormon’s address (Mormon 5)', 'teaching',
+     'Book of Mormon — Mormon’s editorial address joins lament for his people with covenant restoration and warnings '
+     'to future readers. It does not establish modern ethnic identities or a physical voyage from its ship imagery.',
+     None, [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
 ]
 
 # Views implemented without a See-also link: reason (recorded in bmc-source-views.csv).
@@ -200,10 +261,20 @@ NOLINK = {
     11: 'nonspatial view without a link: its places are map pins, and See-also has no site: link',
     22: 'interpretation view without a link: it carries the 1 Nephi 22 locator and the 22:4 unknown-location '
         'safeguard for the 1 Nephi 20–21 quotations; no Bible card is its subject and no tribe or place is located',
+    48: 'S34 decision: explanatory view without a link; 2 Nephi 26:29–31 contrasts gain and praise with Zion’s welfare '
+        'but does not identify Zion with the mapped Jerusalem of OTM-zion-prophetic-jerusalem',
 }
 
 # BMC keys deliberately not given a view although their finding touches a Bible text or figure: reason.
+_BXJ01 = ('S34 decision: narrative Jerusalem setting consolidated into the journey entry BXJ01 “Return for the plates: '
+          'Lehi’s sons” (1 Nephi 3–5), which carries the trips to Jerusalem{0}; bounded consolidation of the setting '
+          'and return-trip payload only, not complete coverage of the chapter; no separate source view')
 OMIT = {
+    3: _BXJ01.format(''),
+    4: _BXJ01.format(' and Nephi’s night entry and return'),
+    7: 'S34 decision: narrative Jerusalem setting consolidated into the journey entry BXJ02 “Return for Ishmael’s '
+       'household” (1 Nephi 7:2–22), a separate trip from the one for the plates; bounded consolidation of the setting '
+       'and return-trip payload only, not complete coverage of the chapter; no separate source view',
     6: 'formulaic title “the God of Abraham, Isaac and Jacob” in a record-purpose chapter; no relation to the '
        'persons’ cards beyond the formula',
     19: 'Isaiah is introduced as a source and Zenos/Zenock are quoted prophets without cards; the Isaiah text itself is '

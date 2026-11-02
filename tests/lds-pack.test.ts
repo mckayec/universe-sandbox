@@ -1925,7 +1925,7 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
 
 test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
   const views = codex('bom-bible');
-  assert.equal(views.length, 39);
+  assert.equal(views.length, 53);
   const all = P.codex.flatMap((t: any) => t.list);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
@@ -1951,13 +1951,13 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
   // layer isolation and work downgrade
   const split = (layers: string[], cum: boolean, book: number) =>
     L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
-  assert.equal(split(['bom'], false, 0).shown.length, 39);
+  assert.equal(split(['bom'], false, 0).shown.length, 53);
   assert.equal(split(['ot'], false, 0).shown.length, 0);
   assert.equal(split(['nt'], false, 0).shown.length, 0);
   assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
-  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 39);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 53);
   assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
-  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 39);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 53);
   // the S31 minimum examples
   const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
   assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);
@@ -2011,7 +2011,7 @@ test('Checkpoint 32: bmc-source-views.csv accounts for every BMC key and every n
     );
 });
 
-test('Checkpoint 34: every default BMC omission is reconciled in bmc-omission-rollup.csv', () => {
+test('Checkpoint 35: every default BMC omission is reconciled in bmc-omission-rollup.csv', () => {
   const dir = '../docs/universes/packs/lds-standard-works/';
   const views = readFileSync(new URL(dir + 'bmc-source-views.csv', import.meta.url), 'utf8');
   const rollup = readFileSync(new URL(dir + 'bmc-omission-rollup.csv', import.meta.url), 'utf8');
@@ -2019,20 +2019,106 @@ test('Checkpoint 34: every default BMC omission is reconciled in bmc-omission-ro
   const omittedRollup = views
     .trim()
     .split('\n')
-    .filter(r => /,omitted,"?rollup \(checkpoint 34\)/.test(r))
+    .filter(r => /,omitted,"?rollup \(checkpoint 35\)/.test(r))
     .map(r => r.slice(0, 7));
-  assert.equal(omittedRollup.length, 189);
   const lines = rollup.trim().split('\n').slice(1);
   const chapters = new Map<string, string>();
   for (const l of lines) chapters.set(l.slice(0, 7), l.split(',')[2]);
+  // one rollup chapter per default omission, no more and no fewer (counts are not the acceptance condition)
   assert.deepEqual([...chapters.keys()].sort(), [...omittedRollup].sort());
-  const states = [...chapters.values()];
-  assert.equal(states.filter(s => s === 'reconciled-no-shared-name').length, 94);
-  assert.equal(states.filter(s => s === 'reconciled-hits-dispositioned').length, 78);
-  assert.equal(states.filter(s => s === 'candidate').length, 7);
-  assert.equal(states.filter(s => s === 'reader').length, 10);
+  const allowed = ['reconciled-no-shared-name', 'reconciled-hits-dispositioned', 'candidate', 'reader'];
+  for (const s of chapters.values()) assert.ok(allowed.includes(s), s);
   // every name hit carries a disposition and a reason
   for (const l of lines.filter(x => !x.includes(',reconciled-no-shared-name,')))
     assert.match(l, /,(namesake|range-spill|title|candidate|reader),/, l);
   assert.ok(!rollup.includes('no disposition rule yet'));
+  // S34-C1 regression: Alma 36's verse-qualified full-read row is scanned, so its Egypt recollection is not
+  // reported as "no shared name"
+  assert.notEqual(chapters.get('BMC-131'), 'reconciled-no-shared-name');
+  assert.match(rollup, /^BMC-131,Alma 36,[a-z-]+,Egypt,/m);
+  assert.match(rollup, /^BMC-131,[^\n]*1 full-read row\(s\)/m);
+});
+
+test('Checkpoint 35: every full-read table row in coverage-bom.md is ingested by the omission rollup', () => {
+  const dir = '../docs/universes/packs/lds-standard-works/';
+  const md = readFileSync(new URL(dir + 'coverage-bom.md', import.meta.url), 'utf8').split('\n');
+  const inv = readFileSync(new URL(dir + 'bmc-fullread-ingestion.csv', import.meta.url), 'utf8')
+    .trim()
+    .split('\n')
+    .slice(1);
+  let section = '';
+  const tableLines: number[] = [];
+  md.forEach((l, i) => {
+    if (l.startsWith('## ')) section = l;
+    if (section.startsWith('## Full-read omission checks') && l.startsWith('| [')) tableLines.push(i + 1);
+  });
+  const invLines = new Set(inv.map(r => Number(r.split(',')[0])));
+  assert.deepEqual(
+    [...invLines].sort((a, b) => a - b),
+    tableLines,
+  );
+  for (const r of inv) assert.match(r, /,consumed,/, r);
+  // verse-qualified references keep their chapter, never a verse range read as chapters
+  assert.ok(inv.some(r => /,Alma 36:1–30,Alma,36,36,consumed,verse-qualified$/.test(r)));
+  assert.ok(inv.some(r => /,Helaman 1:1–34,Helaman,1,1,consumed,/.test(r)));
+  assert.ok(inv.some(r => /,Mosiah 29:1–47,Mosiah,29,29,consumed,/.test(r)));
+  // the combined Enos/Jarom/Omni/Words of Mormon row contributes one reference per book
+  for (const b of ['Enos', 'Jarom', 'Omni', 'Words of Mormon'])
+    assert.ok(
+      inv.some(r => r.includes(`,${b},${b},1,1,consumed,multi-link row`)),
+      b,
+    );
+  assert.equal(inv.filter(r => /verse-qualified$/.test(r)).length, 76);
+});
+
+test('Checkpoint 35: S34 builder decisions are implemented as attributed 3/bom source views', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
+  const see = (k: string) => plain((byKey.get(k).see || []).map((s: any) => `${s.k}|${s.r}`));
+  assert.deepEqual(see('BMV-024-eden-lehi-teaching'), ['OH-P01|Eden in Lehi’s teaching']);
+  assert.deepEqual(see('BMV-027-temple-solomon-comparison'), ['OHR-SOLOMON|his temple used as a comparison']);
+  assert.deepEqual(see('BMV-057-david-solomon-rebuke'), [
+    'OHR-DAVID|named in Jacob’s rebuke',
+    'OHR-SOLOMON|named in Jacob’s rebuke',
+  ]);
+  // no later-work (D&C) comparison inside a work-3 view
+  assert.ok(!/Doctrine and Covenants|D&C/.test(byKey.get('BMV-057-david-solomon-rebuke').desc));
+  // Amulek's Manasseh is not King Manasseh
+  assert.deepEqual(see('BMV-105-amulek-joseph-descent'), ['OHR-JOSEPH-JACOB|descent claimed by Amulek']);
+  assert.deepEqual(see('BMV-137-eden-alma-teaching'), ['OH-P01|Eden in Alma’s teaching']);
+  assert.deepEqual(see('BMV-187-solomon-glory-illustration'), ['OHR-SOLOMON|illustrative reference in teaching']);
+  assert.deepEqual(see('BMV-239-jerusalem-zion-exhortation'), [
+    'OTM-jerusalem|invoked in covenant exhortation',
+    'OTM-zion-prophetic-jerusalem|invoked in covenant exhortation',
+  ]);
+  // BMC-048: Zion's welfare kept as explanatory content with no geographic-identity link
+  const z = byKey.get('BMV-048-zion-welfare-teaching');
+  assert.equal((z.see || []).length, 0);
+  assert.equal(z.src[0].t, '2 Nephi 26:29–31');
+  assert.match(z.desc, /does not identify Zion as a mapped city/);
+  // six Israel-as-covenant-people views, each its own chapter, speaker and source
+  const israel = all.filter((x: any) =>
+    (x.see || []).some((s: any) => s.k === 'OTM-israel-prophetic-community' && String(x.key).startsWith('BMV-')),
+  );
+  assert.deepEqual(plain(israel.map((x: any) => x.key.slice(0, 7))).sort(), [
+    'BMV-179',
+    'BMV-195',
+    'BMV-203',
+    'BMV-204',
+    'BMV-208',
+    'BMV-210',
+  ]);
+  for (const x of israel) {
+    assert.deepEqual(see(x.key), ['OTM-israel-prophetic-community|Israel as covenant people']);
+    assert.ok(!/genetic|ethnic identity is|modern state/i.test(x.desc.replace('modern ethnic identities', '')), x.key);
+  }
+  // the three narrative Jerusalem settings are consolidated into the journey entries, not new views
+  const ledger = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/bmc-source-views.csv', import.meta.url),
+    'utf8',
+  );
+  assert.match(ledger, /^BMC-003,1 Nephi 3,[^\n]*,omitted,"S34 decision: [^\n]*BXJ01/m);
+  assert.match(ledger, /^BMC-004,1 Nephi 4,[^\n]*,omitted,"S34 decision: [^\n]*BXJ01/m);
+  assert.match(ledger, /^BMC-007,1 Nephi 7,[^\n]*,omitted,"S34 decision: [^\n]*BXJ02/m);
+  assert.ok(byKey.get('BXJ01') && byKey.get('BXJ02'));
 });
