@@ -235,6 +235,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .cx-see{font:inherit;color:var(--lapis-hi);background:none;border:0;padding:2px 0;min-height:24px;cursor:pointer;text-decoration:underline;text-underline-offset:2px;text-align:left}
 .cx-see:focus-visible,.cx-item h3:focus-visible{outline:2px solid var(--lapis-hi);outline-offset:2px}
 .cx-off{color:var(--faint);font-style:italic}
+.cx-ref{display:inline-flex;align-items:baseline;gap:4px;flex-wrap:wrap}
+.cx-rel{color:var(--muted)}
 .cx-item.cx-hit{outline:1px solid var(--lapis-hi);outline-offset:4px}
 
 /* ---------- splash ---------- */

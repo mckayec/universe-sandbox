@@ -708,6 +708,10 @@ codex:[{id:"people", title:"People", list:[
   to its heading. A link never lowers a gate: a target locked by reading order is left out and only counted ("1 more
   unlocks in later books"); a target hidden by the layer or year filter is named but not linked ("… (hidden by the
   layer or year filter)"). Unknown keys are ignored. Write links in both directions when both ends should navigate.
+  An entry may also be `{k:"otherKey", r:"same city"}`: `r` is a short relation label shown before the link ("same
+  city: …"). An entry `"ev:eventId"` (or `{k:"ev:eventId", r:"describes"}`) links to a Chronicle event: it reads "In the
+  Chronicle: <title>", closes the codex and opens that event (travelling to its world and site). Events carry no links
+  themselves. Events follow the same gate rules (book, layer and year).
 * The validator checks note and codex layer ids, `when` values and note books.
 
 ### 20.6 `routes` — journeys on one world's surface

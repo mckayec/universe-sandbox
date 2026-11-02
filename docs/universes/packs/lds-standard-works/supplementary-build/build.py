@@ -14,6 +14,7 @@ ROOT = HERE.parents[4]
 PACK = ROOT / 'public/atlas/packs/lds-standard-works.js'
 MAP = HERE.parent / 'supplementary-implementation.csv'
 XWALK = HERE.parent / 'identity-crosswalk.csv'
+TYPED = HERE.parent / 'typed-links.csv'
 BASE = 'https://www.churchofjesuschrist.org/study/scriptures/'
 sys.path.insert(0, str(HERE))
 import copy_bom
@@ -31,6 +32,7 @@ import copy_pgp
 import copy_fm
 import copy_geo
 import copy_identity
+import copy_links
 
 BOOKS = {'1-ne': '1 Nephi', '2-ne': '2 Nephi', 'jacob': 'Jacob', 'enos': 'Enos', 'jarom': 'Jarom', 'omni': 'Omni',
          'w-of-m': 'Words of Mormon', 'mosiah': 'Mosiah', 'alma': 'Alma', 'hel': 'Helaman', '3-ne': '3 Nephi',
@@ -359,14 +361,28 @@ def card_gate(line):
 def write_see(text):
     """Write copy_identity's See-also links onto their cards (idempotent) and the identity crosswalk CSV."""
     links = copy_identity.see_links()
-    for key, targets in links.items():
+    merged = {k: [(t, None) for t in v] for k, v in links.items()}
+    for key, targets in copy_links.see_links().items():
+        lst = merged.setdefault(key, [])
+        for t, r in targets:
+            if all(x != t for x, _ in lst):
+                lst.append((t, r))
+    ev_ids = set(re.findall(r"^\s+id: '([^']+)',\n\s+book: ", text, re.M))
+
+    def ref(t, r):
+        if t.startswith('ev:'):
+            assert t[3:] in ev_ids, t
+        else:
+            card_line(text, t)
+        return js(t) if r is None else '{ k: %s, r: %s }' % (js(t), js(r))
+
+    for key, targets in merged.items():
         a, b = card_line(text, key)
         line = re.sub(r", see: \[[^\]]*\]", '', text[a:b])
         assert line.endswith(' },'), key
-        for t in targets:
-            card_line(text, t)
-        line = line[:-3] + ', see: [' + ', '.join(js(t) for t in targets) + '] },'
+        line = line[:-3] + ', see: [' + ', '.join(ref(t, r) for t, r in targets) + '] },'
         text = text[:a] + line + text[b:]
+    write_typed(text)
     rows = []
     for name, ident, hub, neutral, dc, pgp in copy_identity.PEOPLE:
         def views(keys):
@@ -390,6 +406,28 @@ def write_see(text):
                     'gate_and_navigation_rule'])
         w.writerows(rows)
     return text
+
+
+def write_typed(text):
+    """typed-links.csv: every contract row of copy_links with its cards, gates and link state."""
+    def gate(k):
+        if k.startswith('ev:'):
+            m = re.search(r"id: '%s',\n\s+book: (\w+),[\s\S]*?layers: \['([a-z]+)'\]" % re.escape(k[3:]), text)
+            return {'OT': '1', 'NT': '2', 'BOM': '3', 'DC': '4', 'PGP': '5'}[m.group(1)] + '/' + m.group(2) + ' (event)'
+        return card_gate(text[slice(*card_line(text, k))])
+    rows = []
+    for row, rel, keys in copy_links.SAME:
+        rows.append([row, 'same-entity group', rel, '; '.join(f'{k} ({gate(k)})' for k in keys), '',
+                     'linked both ways between every pair'])
+    for row, a, rel, b, inv in copy_links.TYPED:
+        rows.append([row, 'typed', rel + (' / ' + inv if inv else ''), f'{a} ({gate(a)})', f'{b} ({gate(b)})',
+                     'linked both ways' if inv else 'linked one way (events carry no links)'])
+    for row, why in copy_links.UNLINKED:
+        rows.append([row, 'not a codex link', '', '', '', why])
+    with open(TYPED, 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(['contract_row', 'kind', 'relation_label', 'cards', 'target', 'state'])
+        w.writerows(rows)
 
 
 if __name__ == '__main__':

@@ -10,6 +10,8 @@ vm.runInNewContext(readFileSync(new URL('../public/atlas/packs/lds-standard-work
 const L = ctx.window.AtlasLayers;
 const P = ctx.window.ATLAS_PACKS['lds-standard-works'];
 const plain = (v: unknown) => (v === undefined ? v : JSON.parse(JSON.stringify(v)));
+/* See-also targets of a codex card (PACK_FORMAT 20.5: a key, {k, r} or "ev:<event id>") */
+const seeKeys = (c: any): string[] => (c.see || []).map((v: any) => (typeof v === 'string' ? v : v.k));
 const earth = P.worlds.find((w: any) => (w.sites || []).length);
 const sites = new Map<string, any>(earth.sites.map((s: any) => [s.id, s]));
 const route = (id: string) => earth.routes.find((r: any) => r.id === id);
@@ -1637,12 +1639,12 @@ test('Checkpoint 24: shared-identity See-also links for the 12 front-matter peop
   const linked = all.filter((c: any) => c.see);
   assert.ok(linked.length >= 40);
   for (const c of linked) {
-    for (const k of plain(c.see)) {
+    for (const k of seeKeys(c).filter(k => !k.startsWith('ev:'))) {
       const t = byKey.get(k);
       assert.ok(t, `${c.key} -> ${k}`);
       assert.notEqual(k, c.key);
       // links are two-way, and neither end's work gate is changed by the link
-      assert.ok(plain(t.see || []).includes(c.key), `${k} <- ${c.key}`);
+      assert.ok(seeKeys(t).includes(c.key), `${k} <- ${c.key}`);
       assert.equal(plain(t.books).length, 1, k);
     }
   }
@@ -1681,4 +1683,46 @@ test('Checkpoint 24: shared-identity See-also links for the 12 front-matter peop
   assert.deepEqual(plain(byKey.get('DCM-dcp-hiram-page').books), [4]);
   assert.deepEqual(plain(byKey.get('PGM-jsh-family').books), [5]);
   assert.deepEqual(plain(byKey.get('fm-person-christian-whitmer').see), ['FM05']);
+});
+
+test('Checkpoint 25: typed See-also links from the integration contract resolve and keep every gate', () => {
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((c: any) => c.key).map((c: any) => [c.key, c]));
+  const events = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
+  const rel = (from: string, to: string) =>
+    (byKey.get(from).see || []).find((v: any) => (typeof v === 'string' ? v : v.k) === to);
+  for (const c of all.filter((x: any) => x.see)) {
+    for (const v of plain(c.see)) {
+      const k = typeof v === 'string' ? v : v.k;
+      if (typeof v !== 'string') assert.ok(typeof v.r === 'string' && v.r.length > 0 && v.r.length < 32, c.key);
+      if (k.startsWith('ev:')) assert.ok(events.has(k.slice(3)), `${c.key} -> ${k}`);
+      else assert.ok(byKey.has(k), `${c.key} -> ${k}`);
+    }
+  }
+  // same-entity source views link both ways, labelled; each keeps its own gate
+  assert.deepEqual(plain(rel('OTM-jerusalem', 'OTS-P08-jerusalem')), { k: 'OTS-P08-jerusalem', r: 'same city' });
+  assert.deepEqual(plain(rel('NTP-damascus', 'OHP-DAMASCUS')), { k: 'OHP-DAMASCUS', r: 'same city' });
+  assert.deepEqual(plain(byKey.get('NTP-damascus').books), [2]);
+  // contained settings and the region/city distinction are typed, not merged
+  assert.deepEqual(plain(rel('NTP-siloam', 'OTS-P08-jerusalem')), { k: 'OTS-P08-jerusalem', r: 'within' });
+  assert.deepEqual(plain(rel('NTP-samaria', 'OHP-SAMARIA')), { k: 'OHP-SAMARIA', r: 'the city' });
+  assert.equal(rel('NTP-samaria', 'OTL-samaria'), undefined);
+  assert.equal(rel('OTM-jericho', 'OTL-jericho'), undefined);
+  // dossiers describe events; the three Kirtland occasions are not linked to each other
+  assert.deepEqual(plain(rel('DCM-dd109-dedication-prayer', 'ev:kirtland-dedication')), {
+    k: 'ev:kirtland-dedication',
+    r: 'describes',
+  });
+  assert.deepEqual(plain(rel('DCM-dd137-alvin-vision', 'ev:vision-celestial-kingdom')).r, 'describes');
+  assert.deepEqual(plain(rel('DCM-de06b-kirtland-vision', 'DCM-dd110-temple-vision')).r, 'described in');
+  assert.equal(rel('DCM-dd110-temple-vision', 'ev:kirtland-dedication'), undefined);
+  assert.equal(rel('DCM-dd109-dedication-prayer', 'DCM-de06b-kirtland-vision'), undefined);
+  assert.equal(events.get('kirtland-dedication').book, 4);
+  const csv = readFileSync(
+    new URL('../docs/universes/packs/lds-standard-works/typed-links.csv', import.meta.url),
+    'utf8',
+  )
+    .trim()
+    .split('\n');
+  assert.ok(csv.length > 40);
 });

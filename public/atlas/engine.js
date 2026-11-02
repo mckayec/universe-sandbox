@@ -1300,22 +1300,33 @@ function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1])
 /* optional source locators on a codex entry: src:[{t:"Moses 2",u:"https://…"}]; only https links are made */
 function cxSrc(x){const s=ARR(x.src).filter(r=>r&&r.t);if(!s.length)return"";
   return '<p class="cx-src">Source: '+s.map(r=>/^https:\/\/[^\s"<>]+$/.test(String(r.u||""))?'<a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.t)+'</a>':esc(r.t)).join(" · ")+'</p>';}
-/* optional See-also links between codex entries: see:["key",…] (PACK_FORMAT 20.5). A link opens the target's
-   section and scrolls to it. A target the reader has not reached yet is left out (only counted); one hidden by the
-   layer or year filter is named but not linked. A link never lowers the target's own work gate. */
+/* optional See-also links between codex entries: see:["key", {k:"key",r:"same place"}, "ev:eventId", …]
+   (PACK_FORMAT 20.5). A link opens the target's section and scrolls to it; an "ev:" link closes the codex and opens
+   that Chronicle event. `r` is an optional relation label shown before the link. A target the reader has not reached
+   yet is left out (only counted); one hidden by the layer or year filter is named but not linked. A link never
+   lowers the target's own work gate. */
 const CXK=new Map();
 K.codex.forEach(t=>t.list.forEach(x=>{if(x.key!=null&&!CXK.has(String(x.key)))CXK.set(String(x.key),{tab:t.id,x});}));
 function cxReach(x){
   if(!LY)return CUM&&S.book&&cxFirst(x)>S.book?"locked":"ok";
   const sp=LY.codexSplit([x],S.layers,S.range,CUM,S.book,cxFirst);
   return sp.shown.length?"ok":sp.locked?"locked":"filtered";}
+function evReach(e){
+  if(CUM&&S.book&&e.book>S.book)return"locked";
+  return filterOk(e)&&(!S.book||CUM||e.book===S.book)?"ok":"filtered";}
+/* one See-also entry -> {kind,key,name,reach,rel} or null for an unknown key */
+function cxSeeRef(v){
+  const k=String(v&&typeof v==="object"?v.k:v);const rel=v&&typeof v==="object"&&v.r?String(v.r):"";
+  if(k.startsWith("ev:")){const e=EV_BY[k.slice(3)];return e?{kind:"ev",key:e.id,name:e.title,reach:evReach(e),rel}:null;}
+  const t=CXK.get(k);return t?{kind:"cx",key:String(t.x.key),name:t.x.name,reach:cxReach(t.x),rel}:null;}
 function cxSee(x){
-  const t=ARR(x.see).map(k=>CXK.get(String(k))).filter(Boolean);if(!t.length)return"";
+  const t=ARR(x.see).map(cxSeeRef).filter(Boolean);if(!t.length)return"";
   let later=0;const parts=[];
-  t.forEach(({x:y})=>{const st=cxReach(y);
-    if(st==="locked")later++;
-    else if(st==="filtered")parts.push('<span class="cx-off">'+esc(y.name)+' (hidden by the layer or year filter)</span>');
-    else parts.push('<button type="button" class="cx-see" data-see="'+esc(y.key)+'">'+esc(y.name)+'</button>');});
+  t.forEach(r=>{const rl=r.rel?'<span class="cx-rel">'+esc(r.rel)+':</span> ':"";
+    const nm=r.kind==="ev"?"In the Chronicle: "+r.name:r.name;
+    if(r.reach==="locked")later++;
+    else if(r.reach==="filtered")parts.push('<span class="cx-ref">'+rl+'<span class="cx-off">'+esc(nm)+' (hidden by the layer or year filter)</span></span>');
+    else parts.push('<span class="cx-ref">'+rl+'<button type="button" class="cx-see" '+(r.kind==="ev"?"data-see-ev":"data-see")+'="'+esc(r.key)+'">'+esc(nm)+'</button></span>');});
   if(!parts.length&&!later)return"";
   const lt=later?'<span class="cx-off">'+later+' more unlock'+(later===1?"s":"")+' in later books</span>':"";
   return '<p class="cx-also"><span>See also:</span>'+parts.concat(lt?[lt]:[]).join("")+'</p>';}
@@ -1324,7 +1335,11 @@ function cxGo(key){const t=CXK.get(String(key));if(!t||cxReach(t.x)!=="ok")retur
   const el=[...$("#cxBody").querySelectorAll(".cx-item[data-key]")].find(e=>e.dataset.key===String(key));if(!el)return;
   el.scrollIntoView({block:"start"});el.classList.add("cx-hit");setTimeout(()=>el.classList.remove("cx-hit"),1600);
   el.querySelector("h3").focus({preventScroll:true});}
-$("#cxBody").addEventListener("click",e=>{const b=e.target.closest("[data-see]");if(b)cxGo(b.dataset.see);});
+function cxGoEvent(id){const e=EV_BY[id];if(!e||evReach(e)!=="ok")return;
+  $("#codex").hidden=true;openEvent(id,true);
+  setTimeout(()=>{const it=dos.querySelector('[data-ev="'+id+'"]');if(it)it.focus({preventScroll:true});},60);}
+$("#cxBody").addEventListener("click",e=>{const b=e.target.closest("[data-see],[data-see-ev]");if(!b)return;
+  if(b.dataset.seeEv!=null)cxGoEvent(b.dataset.seeEv);else cxGo(b.dataset.see);});
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
   /* narrow screens show the same sections as one compact chooser instead of a wall of stacked tab buttons */
   $("#cxPick").innerHTML=K.codex.map(t=>'<option value="'+esc(t.id)+'"'+(t.id===cxTab?" selected":"")+'>'+esc(t.t)+'</option>').join("");

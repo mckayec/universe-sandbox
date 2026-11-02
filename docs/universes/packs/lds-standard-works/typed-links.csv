@@ -1,0 +1,49 @@
+contract_row,kind,relation_label,cards,target,state
+AP07 / babylon (collision audit),same-entity group,same city,OTS-AP07-babylon (1/ot); OTM-babylon (1/ot); OTW-ap07-babylon-psalm-137 (1/ot),,linked both ways between every pair
+bashan (collision audit),same-entity group,same region,OTL-bashan (1/ot); OTM-bashan (1/ot),,linked both ways between every pair
+P07 / bethlehem (collision audit),same-entity group,same town,OTS-P07-bethlehem (1/ot); OTL-bethlehem (1/ot); OTM-bethlehem (1/ot); OTW-p07-bethlehem-micah (1/ot),,linked both ways between every pair
+damascus (canonical row; collision audit),same-entity group,same city,OHP-DAMASCUS (1/ot); OTL-damascus (1/ot); OTM-damascus (1/ot); NTP-damascus (2/nt),,linked both ways between every pair
+P04 / egypt-region (canonical row; collision audit),same-entity group,same land,OTS-P04-egypt (1/ot); OTM-egypt-region (1/ot),,linked both ways between every pair
+P01 / haran (canonical row; collision audit),same-entity group,same city,OTS-P01-haran (1/ot); OTM-haran (1/ot),,linked both ways between every pair
+AP06 / jericho (canonical row; collision audit),same-entity group,same city,OTS-AP06-jericho (1/ot); OTL-jericho (1/ot),,linked both ways between every pair
+P08 / jerusalem (canonical row; collision audit),same-entity group,same city,OTS-P08-jerusalem (1/ot); OTM-jerusalem (1/ot); OTW-p08-jerusalem-psalms (1/ot),,linked both ways between every pair
+lachish (collision audit),same-entity group,same city,OHP-LACHISH (1/ot); OTL-lachish (1/ot); OTM-lachish (1/ot),,linked both ways between every pair
+lebanon (collision audit),same-entity group,same region,OTL-lebanon (1/ot); OTM-lebanon (1/ot),,linked both ways between every pair
+samaria city (canonical row; collision audit),same-entity group,same city,OHP-SAMARIA (1/ot); OTL-samaria (1/ot); OTM-samaria (1/ot),,linked both ways between every pair
+seir (collision audit),same-entity group,same region,OHP-SEIR (1/ot); OTL-seir (1/ot); OTM-seir (1/ot),,linked both ways between every pair
+sheba (collision audit),same-entity group,same region,OHP-SHEBA (1/ot); OTL-sheba (1/ot); OTM-sheba (1/ot),,linked both ways between every pair
+P02 / shechem (canonical row; collision audit),same-entity group,same city,OTS-P02-shechem (1/ot); OTL-shechem (1/ot); OTW-p02-shechem-psalms (1/ot),,linked both ways between every pair
+nineveh (canonical row),same-entity group,same city,OHP-NINEVEH (1/ot); OTM-nineveh (1/ot); OTW-p02-nineveh (1/ot),,linked both ways between every pair
+joppa (canonical row),same-entity group,same port,OTL-joppa (1/ot); OTW-p03-joppa (1/ot); NTP-joppa (2/nt),,linked both ways between every pair
+tarshish (canonical row),same-entity group,same place name,OTM-tarshish (1/ot); OTW-p04-tarshish-intended (1/ot),,linked both ways between every pair
+en-gedi (canonical row; typed link alias-of),same-entity group,same place,OTL-en-gedi (1/ot); OTM-en-gedi (1/ot); OTW-p11-en-gedi-song (1/ot),,linked both ways between every pair
+shushan-narrative (canonical row),same-entity group,same city,OTL-shushan-narrative (1/ot); OTW-p06-shushan-vision (1/ot),,linked both ways between every pair
+tekoa (canonical row),same-entity group,same town,OTL-tekoa (1/ot); OTW-p09-tekoa (1/ot),,linked both ways between every pair
+jordan-river (canonical row),same-entity group,same river,OHP-JORDAN (1/ot); NTP-jordan (2/nt),,linked both ways between every pair
+AP06 jericho: city and plains are distinct settings,typed,the city / its plains,OTM-jericho (1/ot),OTS-AP06-jericho (1/ot),linked both ways
+MP zion-prophetic-jerusalem: epithet-of P08,typed,epithet of / called Zion,OTM-zion-prophetic-jerusalem (1/ot),OTS-P08-jerusalem (1/ot),linked both ways
+MP jeremiah-prison-court: contained-setting-of P08,typed,within / setting within it,OTM-jeremiah-prison-court (1/ot),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-bethesda: contained-setting-of P08,typed,within / feature within it,NTP-bethesda (2/nt),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-siloam: contained-setting-of P08,typed,within / feature within it,NTP-siloam (2/nt),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-gabbatha: contained-setting-of P08,typed,within / feature within it,NTP-gabbatha (2/nt),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-samaria: region; city samaria related by context,typed,the city / the region,NTP-samaria (2/nt),OHP-SAMARIA (1/ot),linked both ways
+WP-E03 and WP-J02: same Daniel 1 source episode,typed,same Daniel 1 episode / same Daniel 1 episode,OTW-e03-daniel-court-education (1/ot),OTW-j02-captives-royal-service (1/ot),linked both ways
+DD109 describes E11,typed,describes,DCM-dd109-dedication-prayer (4/dc),ev:kirtland-dedication (4/dc (event)),linked one way (events carry no links)
+DD110 describes DE06b,typed,describes / described in,DCM-dd110-temple-vision (4/dc),DCM-de06b-kirtland-vision (4/dc),linked both ways
+DD137 describes RE08,typed,describes,DCM-dd137-alvin-vision (4/dc),ev:vision-celestial-kingdom (4/dc (event)),linked one way (events carry no links)
+DD121 describes RE07,typed,describes / described in,DCM-dd121-liberty-epistle (4/dc),RE07 (4/dc),linked both ways
+DD122 describes RE07,typed,describes / described in,DCM-dd122-liberty-adversity (4/dc),RE07 (4/dc),linked both ways
+DD123 describes RE07,typed,describes / described in,DCM-dd123-liberty-redress (4/dc),RE07 (4/dc),linked both ways
+DD121 explains RC02,typed,explains / explained in,DCM-dd121-liberty-epistle (4/dc),RC02 (4/dc),linked both ways
+DD136 describes RE11,typed,describes,DCM-dd136-winter-quarters (4/dc),ev:dc136-camp-instructions (4/dc (event)),linked one way (events carry no links)
+DD136 / DJ05: views of the same instructed migration sequence,typed,same instructions / same instructions,DCM-dd136-winter-quarters (4/dc),DCM-dj05-westward-companies (4/dc),linked both ways
+DD122 / DD123 explain RC02,not a codex link,,,,"not linked: the contract binds DD121–123 → RC02 as a group; only section 121 contains the teaching RC02 summarises, so only DD121 carries ""explains"""
+DD136 / RJ03 same migration sequence,not a codex link,,,,"not linked: RJ03 is a map route, not a codex card; DD136 and DJ05 name it in text and the route stays on the map"
+"P08 / site pin ""jerusalem""",not a codex link,,,,"map pin, not a codex card: the Jerusalem source views link to each other; the pin is reached from the map"
+P13 / DP03 Independence; P16 / DP27 Carthage Jail,not a codex link,,,,"map pins with one codex card each (DCM-dp03-independence; Carthage cards are the DE09 death event and DD135 dossier, kept distinct by the contract); no second codex view to link"
+E11 / DE06a Kirtland dedication; DE06b distinct; RE08 distinct,not a codex link,,,,"linked as DD109 → event, DD110 ↔ DE06b, DD137 → event; the three occasions are not linked to each other (contract: one temple appearance event is a forbidden conversion)"
+BMC quotation/vision records quote/see/mention shared biblical entity,not a codex link,,,,open: not yet linked; the 239 BMC cards name the biblical entity in text; no traveled-to edge exists
+DRE office sets: appoints-to-office / succeeds-in-office,not a codex link,,,,stated in each DCM-dre card’s text (one card per register row); no parent-of relation is drawn; not yet linked between successive office cards
+WP-R01 Daniel name pairs: alias-of within Daniel 1:6–7,not a codex link,,,,"within one card (OTW-r01-daniel-companions), which states the four name pairs; Belteshazzar is not merged with Belshazzar"
+samaria-region vs samaria city,not a codex link,,,,"linked with labels ""the city"" / ""the region""; the region card is not grouped with the city cards"
+"galilee-region, tigris/Hiddekel, eden-textual, nod-textual, P17 Enoch, bom-irreantum",not a codex link,,,,one codex card each in the pack (or a pin); nothing to link
