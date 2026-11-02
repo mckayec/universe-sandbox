@@ -49,6 +49,10 @@ The other explicit omissions can remain bounded non-link choices where no suitab
 
 The receipt’s purported per-link counts total 61 because the unlinked BMC-011 row is included. There are **60 links**: quotation 41, teaching 11, vision **4**, mention 3, prophecy 1. Separately describe the unlinked vision view. Keep 61 implemented *ledger rows* distinct from 60 links and 35 views; no application behavior fix is needed.
 
+## S32-A2 — correct one rejected-scan identity (documentation)
+
+BMC-224 / Aaron is correctly rejected as a link to Moses’ brother, but its default reason incorrectly identifies the alternative as Mosiah’s son or the city Aaron. [Ether 10:31](https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/10?lang=eng), opened on 2026-11-02 for this specific check, names Aaron as Heth’s son and Amnigaddah’s father in the Jaredite genealogy. Add a `SCAN_ROW` override: **“Jaredite Aaron, son of Heth and father of Amnigaddah, who lived in captivity; not Moses’ brother, Mosiah’s son or the city Aaron.”** Regenerate the ledger; rejection status and runtime views need not change.
+
 ## Validation and supplied rendering evidence
 
 - **55/55 exact-head local tests pass:** `node --test tests/lds-pack.test.ts tests/atlas-layers.test.ts`; [output](supplementary-review-s32/unit-results.txt).
@@ -61,4 +65,4 @@ Exact-head implementation and final documentation CI terminal results are record
 
 ## Next handoff
 
-Claude: apply S32-C1’s four locators, implement/account for S32-C2’s three supported views and BMC-022 consolidation, correct the mode count, then continue timeline/source-vision and the global omission rollup. Return changed head for proportionate audit; unchanged sources/import accounting are inherited. Final same-head rendered/keyboard/finished-bake, real-GPU/physical-phone/native-select evidence, final content/technical acceptance and specific-PR owner approval remain open. Preserve Church naming and parallel research/prototypes; all basemap/timeline/Cosmere follow-ons remain nonblocking. No application/status/lock edits, approval, merge, deployment or release by this review.
+Claude: apply S32-C1’s four locators, implement/account for S32-C2’s three supported views and BMC-022 consolidation, correct the mode count and BMC-224 scan reason, then continue timeline/source-vision and the global omission rollup. Return changed head for proportionate audit; unchanged sources/import accounting are inherited. Final same-head rendered/keyboard/finished-bake, real-GPU/physical-phone/native-select evidence, final content/technical acceptance and specific-PR owner approval remain open. Preserve Church naming and parallel research/prototypes; all basemap/timeline/Cosmere follow-ons remain nonblocking. No application/status/lock edits, approval, merge, deployment or release by this review.
