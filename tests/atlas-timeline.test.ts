@@ -9,7 +9,7 @@ const ctx: { window: Record<string, any>; URLSearchParams: typeof URLSearchParam
 ctx.window.window = ctx.window;
 vm.createContext(ctx);
 const run = (p: string) => vm.runInContext(readFileSync(new URL(p, import.meta.url), 'utf8'), ctx);
-for (const part of ['judaism', 'christianity', 'islam', 'encounters'])
+for (const part of ['judaism', 'christianity', 'islam', 'encounters', 'relationship-sources'])
   run(`../public/atlas/packs/abrahamic-world-religions/${part}.js`);
 run('../public/atlas/packs/abrahamic-world-religions.js');
 run('../public/atlas/timeline.js');
@@ -140,7 +140,8 @@ test('coverage reports what the data cannot support instead of inventing it', ()
   const gaps = c.gaps.map((g: any) => g.id);
   for (const g of ['family', 'succession', 'migration']) assert.ok(gaps.includes(g), g);
   assert.equal(c.dated + c.undated, c.records);
-  assert.equal(c.drawn + v.unsourcedEdges.length, c.edges);
+  assert.equal(c.drawn + v.unsourcedEdges.length + v.editorialEdges.length, c.edges);
+  assert.equal(c.sourced + c.editorial + c.unsourced, c.edges);
   // the extent never reaches past the data except to show an ongoing presence up to the axis end
   const [lo, hi] = TL.extent(v, pack.timeline);
   assert.ok(lo >= -800 && hi <= 2030, `${lo}..${hi}`);
@@ -169,4 +170,48 @@ test('lanes: reorder and collapse are arrangement only; stale links never invent
   const st2 = TL.parseState('#tl=1&tlc=' + ids[0] + ',bogus,' + ids[0], v, null);
   assert.deepEqual([...st2.collapsed], [ids[0]], 'unknown and repeated collapsed ids dropped');
   assert.equal(st2.lanes, null);
+});
+
+test('relationship locators: every relationship is sourced from the research ledger or marked editorial', () => {
+  const rs = ctx.window.ATLAS_PACK_PARTS['abrahamic-world-religions']['relationship-sources'];
+  const keys = new Set(model.edges.map((e: any) => e.key));
+  // the overlay names only relationships the pack has, once each
+  for (const k of Object.keys(rs.edges)) assert.ok(keys.has(k), 'overlay key without a pack relationship: ' + k);
+  assert.equal(keys.size, model.edges.length, 'relationship keys are unique');
+  for (const e of model.edges) {
+    assert.ok(e.src.length > 0 || e.editorial, e.key + ' has neither a locator nor an editorial mark');
+    assert.ok(!(e.src.length && e.editorial), e.key + ' is both');
+    if (e.editorial) {
+      // editorial only where the pack itself labels the tie as an overview grouping or a selection
+      assert.match(e.label || '', /grouped in this overview|selected modern movement/, e.key);
+      continue;
+    }
+    assert.ok(e.locator && /(research\.md|evidence\.md|edges\.csv) · /.test(e.locator), e.key + ' locator');
+    for (const s of e.src) {
+      assert.match(s.key, /^(JU|CH|IS|X)\d+$/, e.key);
+      assert.ok(s.t.startsWith(s.key + ' · ') && s.t.length > s.key.length + 4, e.key + ' ' + s.key + ' title');
+      assert.match(s.u, /^https:\/\//, e.key + ' ' + s.key + ' url');
+    }
+  }
+  const v = TL.visible(model, all);
+  assert.equal(v.unsourcedEdges.length, 0);
+  assert.ok(
+    v.editorialEdges.every((e: any) => !v.drawnEdges.includes(e)),
+    'editorial groupings are never drawn',
+  );
+  // a few rows checked by hand against the dossiers
+  const by = (k: string) => model.edges.find((e: any) => e.key === k);
+  assert.deepEqual([...by('p:jud-second-temple>jud-rabbinic').src.map((s: any) => s.key)], ['JU03', 'JU05']);
+  assert.match(by('p:jud-second-temple>jud-rabbinic').locator, /JU-R04/);
+  assert.deepEqual([...by('l:islam>daoism-reference').src.map((s: any) => s.key)], ['X08', 'X09']);
+  assert.ok(by('p:judaism>jud-karaite').editorial);
+});
+
+test('relationship locators: gates still filter located relationships, and a pack without the part is unchanged', () => {
+  const onlyJud = (g: any) => !g.layers.length || g.layers.includes('jud');
+  const v = TL.visible(model, onlyJud);
+  for (const e of v.edges) assert.ok(v.byId.has(e.from) && v.byId.has(e.to), e.key);
+  assert.ok(!v.edges.some((e: any) => e.key === 'l:jud-second-temple>ch-early-communities'), 'cross-layer tie gated');
+  const bare = TL.adaptTree(Object.assign({}, pack, { id: 'no-such-pack' }));
+  assert.ok(bare.edges.every((e: any) => e.src.length === 0 && !e.editorial && e.locator === null));
 });

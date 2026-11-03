@@ -178,7 +178,8 @@ test('the registry lists the data parts in the order the pack expects', () => {
   const reg: { window: Record<string, any> } = { window: {} };
   vm.runInNewContext(readFileSync(new URL('../public/atlas/packs/registry.js', import.meta.url), 'utf8'), reg);
   const entry = reg.window.ATLAS_REGISTRY.find((r: { id: string }) => r.id === 'abrahamic-world-religions');
-  assert.deepEqual([...entry.parts], PARTS);
+  // the four tradition parts, then the timeline's relationship-locator data part (not read by the pack itself)
+  assert.deepEqual([...entry.parts], [...PARTS, 'relationship-sources']);
 });
 
 test('the validator reports a missing or unloadable data part', () => {

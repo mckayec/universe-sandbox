@@ -33,6 +33,25 @@
         ? '; still ongoing'
         : '';
   const precisionOf = w => (w.window ? 'window' : w.range ? 'range' : w.approx ? 'approx' : 'exact');
+  /* a relationship's own citation line: the research ledger row, then each evidence source (linked when it has a
+     URL); overview groupings say so instead; anything else is flagged as missing a locator */
+  function edgeCite(e, short) {
+    if (e.editorial) return ' <span class="tl-why tl-ed">overview grouping, not a historical claim</span>';
+    if (!e.src.length)
+      return (
+        ' <span class="tl-gap">' + (short ? 'no source locator' : 'no source locator on this relationship') + '</span>'
+      );
+    return (
+      '<span class="tl-cite">Source: ' +
+      (e.locator ? ESC(e.locator) + ' — ' : '') +
+      e.src
+        .map(x =>
+          x.u ? '<a href="' + ESC(x.u) + '" target="_blank" rel="noopener noreferrer">' + ESC(x.t) + '</a>' : ESC(x.t),
+        )
+        .join('; ') +
+      '</span>'
+    );
+  }
   const EDGE_WORD = {
     branch: 'Developed from',
     within: 'Within',
@@ -223,7 +242,9 @@
           bx +
           ' ' +
           rowY[b.id] +
-          '"/>';
+          '"><title>' +
+          ESC(b.label + ' — ' + (EDGE_WORD[e.type] || e.type) + ' — ' + a.label) +
+          '</title></path>';
       });
       return s + '</svg>';
     }
@@ -488,7 +509,7 @@
               '</i> — ' +
               ESC(a.label) +
               (e.label ? ' <span class="tl-why">(' + ESC(e.label) + ')</span>' : '') +
-              (e.src.length ? '' : ' <span class="tl-gap">no source locator on this relationship</span>') +
+              edgeCite(e, false) +
               '</li>'
             );
           })
@@ -509,7 +530,13 @@
         c.undated +
         ' undated, ' +
         c.edges +
-        ' relationships.</p><b>Not shown, because the data does not support it yet</b><ul>' +
+        ' relationships: ' +
+        c.sourced +
+        ' with a source locator, ' +
+        c.editorial +
+        ' overview groupings (not historical claims), ' +
+        c.unsourced +
+        ' without a locator.</p><b>Not shown, because the data does not support it yet</b><ul>' +
         c.gaps.map(g => '<li>' + ESC(g.t) + '</li>').join('') +
         '</ul></div>'
       );
@@ -559,7 +586,7 @@
                 (e.from === r.id ? ' (from this)' : '') +
                 '</i>' +
                 (e.label ? ' <span class="tl-why">' + ESC(e.label) + '</span>' : '') +
-                (e.src.length ? '' : ' <span class="tl-gap">no source locator</span>') +
+                edgeCite(e, true) +
                 '</li>'
               );
             })

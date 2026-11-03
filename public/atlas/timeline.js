@@ -96,8 +96,36 @@
     return { from: n.when, to: null, toOpen: !!n.ongoing, approx: !!n.approx };
   }
 
+  /* Relationship source locators (an optional `relationship-sources` data part, PACK_FORMAT §1.1): keyed
+     `<p|m|l>:<from>><to>`. A sourced entry names the research ledger row (`loc`) and its evidence keys (`ev`), which
+     become the edge's citations; an `editorial` entry marks an overview grouping, which is never a historical claim
+     and is neither drawn nor counted as a missing source. A relationship's own `src` always wins. */
+  function relSourcesOf(pack) {
+    const parts = (root.ATLAS_PACK_PARTS || {})[pack.id] || {};
+    const rs = parts['relationship-sources'];
+    return rs && rs.edges ? rs : null;
+  }
+  function withLocator(edge, key, rs) {
+    const hit = rs && rs.edges[key];
+    edge.key = key;
+    edge.locator = null;
+    edge.editorial = false;
+    if (!hit || edge.src.length) return edge;
+    if (hit.editorial) {
+      edge.editorial = true;
+      edge.why = hit.why || null;
+      return edge;
+    }
+    edge.locator = hit.loc || null;
+    edge.src = arr(hit.ev)
+      .filter(k => rs.sources[k])
+      .map(k => ({ key: k, t: k + ' · ' + rs.sources[k].t, u: rs.sources[k].u || null }));
+    return edge;
+  }
+
   function adaptTree(pack) {
     const T = pack.tree || { nodes: [], links: [] };
+    const rs = relSourcesOf(pack);
     const records = [];
     const edges = [];
     const lanes = [];
@@ -138,38 +166,56 @@
         gate: gateOf(n),
       });
       if (n.parent)
-        edges.push({
-          id: 'p:' + n.id,
-          from: 'n:' + n.parent,
-          to: 'n:' + n.id,
-          type: edgeType(n.parentType, 'branch'),
-          label: n.parentRel || null,
-          src: arr(n.parentSrc).length ? srcOf({ src: n.parentSrc }) : [],
-          gate: gateOf(n),
-        });
+        edges.push(
+          withLocator(
+            {
+              id: 'p:' + n.id,
+              from: 'n:' + n.parent,
+              to: 'n:' + n.id,
+              type: edgeType(n.parentType, 'branch'),
+              label: n.parentRel || null,
+              src: arr(n.parentSrc).length ? srcOf({ src: n.parentSrc }) : [],
+              gate: gateOf(n),
+            },
+            'p:' + n.parent + '>' + n.id,
+            rs,
+          ),
+        );
       arr(n.merge).forEach(m =>
-        edges.push({
-          id: 'm:' + m + '>' + n.id,
-          from: 'n:' + m,
-          to: 'n:' + n.id,
-          type: 'merge',
-          label: n.parentRel || null,
-          src: arr(n.mergeSrc).length ? srcOf({ src: n.mergeSrc }) : [],
-          gate: gateOf(n),
-        }),
+        edges.push(
+          withLocator(
+            {
+              id: 'm:' + m + '>' + n.id,
+              from: 'n:' + m,
+              to: 'n:' + n.id,
+              type: 'merge',
+              label: n.parentRel || null,
+              src: arr(n.mergeSrc).length ? srcOf({ src: n.mergeSrc }) : [],
+              gate: gateOf(n),
+            },
+            'm:' + m + '>' + n.id,
+            rs,
+          ),
+        ),
       );
     });
     arr(T.links).forEach((l, i) =>
-      edges.push({
-        id: 'l:' + i + ':' + l.from + '>' + l.to,
-        from: 'n:' + l.from,
-        to: 'n:' + l.to,
-        type: edgeType(l.type, 'overlap'),
-        label: l.rel || l.label || null,
-        when: l.when == null ? null : l.when,
-        src: srcOf(l),
-        gate: gateOf(l),
-      }),
+      edges.push(
+        withLocator(
+          {
+            id: 'l:' + i + ':' + l.from + '>' + l.to,
+            from: 'n:' + l.from,
+            to: 'n:' + l.to,
+            type: edgeType(l.type, 'overlap'),
+            label: l.rel || l.label || null,
+            when: l.when == null ? null : l.when,
+            src: srcOf(l),
+            gate: gateOf(l),
+          },
+          'l:' + l.from + '>' + l.to,
+          rs,
+        ),
+      ),
     );
 
     arr(pack.events).forEach((e, i) => {
@@ -226,7 +272,8 @@
       records: recs,
       edges,
       drawnEdges: edges.filter(e => e.src.length > 0),
-      unsourcedEdges: edges.filter(e => e.src.length === 0),
+      unsourcedEdges: edges.filter(e => e.src.length === 0 && !e.editorial),
+      editorialEdges: edges.filter(e => e.editorial),
       lanes,
       dated: recs.filter(r => r.when),
       undated: recs.filter(r => !r.when).sort((a, b) => a.order - b.order),
@@ -287,6 +334,9 @@
       narrative: view.undated.filter(r => r.chron === 'narrative').length,
       edges: view.edges.length,
       drawn: view.drawnEdges.length,
+      sourced: view.drawnEdges.length,
+      editorial: view.editorialEdges.length,
+      unsourced: view.unsourcedEdges.length,
       gaps,
     };
   }
