@@ -2490,3 +2490,53 @@ reviewed threshold.
 allocation needed; capability blocker as reported at checkpoint 54); the 142 residual semantic dispositions (39 without
 a full-read omission-check row) and wider vision completeness; physical iOS/Android pickers, real-GPU and
 physical-phone evidence.
+
+## Checkpoint 56 — chapter-text screen of the 39 semantic rows without a full-read omission-check row
+
+Base: cd84203 (checkpoint 55). Pack, engine and every card unchanged; evidence and a proposed disposition list only.
+
+**Why.** The 142-row semantic ledger ([bmc-semantic-dispositions.csv](bmc-semantic-dispositions.csv)) is a reading of
+the committed research. For 39 rows (3 Nephi 1 through Moroni 9) no full-read omission-check row exists, so their
+states rest on the ledger row and crosswalk records alone. This unit screens the chapter text itself for those rows.
+
+**How.** New [bmc_textscan.py](supplementary-build/bmc_textscan.py) with an explicit, hand-written triage table
+[bmc_textscan_triage.py](supplementary-build/bmc_textscan_triage.py) writes [bmc-textscan.csv](bmc-textscan.csv): one
+row per (chapter, cue) with verse references, the Bible cards that share the name, the row's current semantic state, a
+builder triage and its reason. Cues: every scan name of a shared Old/New Testament card (the rollup's
+`card_names`), the semantic pass's `STRICT_CUES`, a short list of Bible-relation words, and five distinctive New
+Testament phrases screened as possible unstated parallels. The generator exits non-zero if any hit lacks a triage, so
+nothing falls to a default.
+
+**Text and its limit.** The chapter text is a third-party JSON mirror of the current Book of Mormon text
+(`bcbooks/scriptures-json`, `book-of-mormon.json`), passed in as a path and **not committed**; the CSV holds only
+references, cue words and short reasons. The official chapter links in coverage-bom.md remain the citations. The
+official site and Project Gutenberg were refused by this sandbox's egress proxy, so the mirror was not compared with
+the official text here. This is a word-and-phrase screen, not a reading: a chapter with no hit is screened, not
+certified absent, and a relation expressed without a Bible name or one of the screened phrases would be missed.
+
+**Result (39 chapters, 994 verses, 113 hit rows).** 92 consistent with the row's state (Jaredite and Nephite
+namesakes, “since Lehi left Jerusalem” as the dating epoch, “law of Moses” as practice, Samuel the Lamanite named as
+such, “cross” as crossing the sea, etc.), 7 chapters with no hit, **4 notes** and **10 reader items**:
+
+| Row | Verse(s) | Text shows | Proposed disposition (reviewer decides; nothing built) |
+|---|---|---|---|
+| BMC-178 3 Nephi 4 | 4:30 | “God of Abraham, Isaac and Jacob” | Reason → practice-or-title (divine title); no link |
+| BMC-226 Ether 12 | 12:11 | “by faith was the law of Moses given” | Reason names the law's giving as teaching; no link |
+| BMC-185 3 Nephi 11 | 11:39–40 | “gates of hell shall not prevail”; rock / sandy foundation | Unstated parallels to Matthew 16:18 and 7:24–27 (cf. BMC-188); no card |
+| BMC-201 3 Nephi 27 | 27:14 | Jesus “lifted up upon the cross” | Candidate AE10 (2/nt) “crucifixion recalled”, as BMV-032 links it |
+| BMC-205 4 Nephi 1 | 1:31 | “even as the Jews at Jerusalem sought to kill Jesus” | Stated Gospel comparison: candidate AE10 (2/nt) |
+| BMC-213 Mormon 8 | 8:23 | “Search the prophecies of Isaiah” | Isaiah named as a source; naming link only if wanted |
+| BMC-220 Ether 6 | 6:7 | barges “tight like unto the ark of Noah” | Stated comparison; no Genesis flood card (PE06 is 5/pgp): relation-no-card unless PE06 is chosen |
+| BMC-226 Ether 12 | 12:6 | “faith is things which are hoped for and not seen”, then examples of faith | Unstated parallel to Hebrews 11:1: candidate NTC-faith-exemplars (2/nt) |
+| BMC-236 Moroni 7 | 7:45–46 | charity “suffereth long, and is kind … never faileth” | Unstated parallel to 1 Corinthians 13:4–8; no card |
+| BMC-237 Moroni 8 | 8:8 | “the curse of Adam is taken from them” | Fall teaching naming Adam: the Fall/creation reader class (cf. BMV-031/107/214) |
+
+The semantic ledger itself is not edited: each item needs a reviewer decision (link, reason refinement or keep) before
+`bmc_semantic_pass.py` changes, as at checkpoints 37–38. If the reviewer accepts, the next builder unit applies the
+decisions in the pass and copy, with the probe and pnpm check, and records each as a semantic row with the
+`bmc-textscan.csv` verse locator.
+
+**Still open (Claude keeps ownership):** G55-O1 disposition; dispositions for the 10 reader items and 4 notes above;
+the other 103 residual semantic rows (which do have full-read rows) and wider vision completeness; finished 3840×2160
+capture and traversal (capability blocker unchanged); physical iOS/Android pickers, real-GPU and physical-phone
+evidence.

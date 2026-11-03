@@ -1,0 +1,114 @@
+research_key,unit,semantic_state,verses_screened,cue,bible_cards,verses,builder_triage,reason
+BMC-175,3 Nephi 1,practice-or-title,30,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,"3 Nephi 1:1, 3 Nephi 1:2",consistent,"the Book of Mormon dating epoch “since Lehi left Jerusalem” (a narrative anchor carried by the 1 Nephi views), not a Bible event in this chapter"
+BMC-175,3 Nephi 1,practice-or-title,30,Lehi,,"3 Nephi 1:1, 3 Nephi 1:2",consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
+BMC-175,3 Nephi 1,practice-or-title,30,Moses,OHR-MOSES,3 Nephi 1:24,consistent,only in “law of Moses” or a rhetorical name; no Moses event
+BMC-175,3 Nephi 1,practice-or-title,30,Samuel,OHR-SAMUEL,"3 Nephi 1:5, 3 Nephi 1:6, 3 Nephi 1:9",consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
+BMC-175,3 Nephi 1,practice-or-title,30,Satan,,3 Nephi 1:22,consistent,"teaching vocabulary, not a Bible event"
+BMC-175,3 Nephi 1,practice-or-title,30,law of Moses,,3 Nephi 1:24,consistent,the law as an observed or fulfilled practice (practice-or-title class)
+BMC-175,3 Nephi 1,practice-or-title,30,new star,,3 Nephi 1:21,consistent,the row already gives the birth-sign star as Book of Mormon content
+BMC-176,3 Nephi 2,no-bible-relation,19,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,3 Nephi 2:6,consistent,"the Book of Mormon dating epoch “since Lehi left Jerusalem” (a narrative anchor carried by the 1 Nephi views), not a Bible event in this chapter"
+BMC-176,3 Nephi 2,no-bible-relation,19,Lehi,,3 Nephi 2:6,consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
+BMC-176,3 Nephi 2,no-bible-relation,19,Satan,,"3 Nephi 2:2, 3 Nephi 2:3",consistent,"teaching vocabulary, not a Bible event"
+BMC-176,3 Nephi 2,no-bible-relation,19,devil,,3 Nephi 2:2,consistent,"teaching vocabulary, not a Bible event"
+BMC-177,3 Nephi 3,no-bible-relation,26,,,,no-hit,no card name or cue in the chapter text
+BMC-178,3 Nephi 4,no-bible-relation,33,Abraham,,3 Nephi 4:30,note,"“God of Abraham, Isaac and Jacob” (4:30) is a divine title: a practice-or-title reason, not no-bible-relation; no link proposed"
+BMC-178,3 Nephi 4,no-bible-relation,33,Isaac,OHR-ISAAC,3 Nephi 4:30,note,same divine title as Abraham (4:30)
+BMC-178,3 Nephi 4,no-bible-relation,33,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,3 Nephi 4:30,consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
+BMC-178,3 Nephi 4,no-bible-relation,33,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,3 Nephi 4:11,consistent,"the Book of Mormon dating epoch “since Lehi left Jerusalem” (a narrative anchor carried by the 1 Nephi views), not a Bible event in this chapter"
+BMC-178,3 Nephi 4,no-bible-relation,33,Lehi,,3 Nephi 4:11,consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
+BMC-180,3 Nephi 6,namesake,30,Satan,,"3 Nephi 6:15, 3 Nephi 6:16",consistent,"teaching vocabulary, not a Bible event"
+BMC-180,3 Nephi 6,namesake,30,devil,,"3 Nephi 6:17, 3 Nephi 6:28",consistent,"teaching vocabulary, not a Bible event"
+BMC-181,3 Nephi 7,namesake,26,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,"3 Nephi 7:9, 3 Nephi 7:12",consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
+BMC-181,3 Nephi 7,namesake,26,Satan,,3 Nephi 7:5,consistent,"teaching vocabulary, not a Bible event"
+BMC-181,3 Nephi 7,namesake,26,devil,,"3 Nephi 7:19, 3 Nephi 7:22",consistent,"teaching vocabulary, not a Bible event"
+BMC-182,3 Nephi 8,no-bible-relation,25,Samuel,OHR-SAMUEL,3 Nephi 8:3,consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
+BMC-183,3 Nephi 9,namesake,22,Gilgal,OHP-GILGAL-JOSHUA,3 Nephi 9:6,consistent,namesake: Book of Mormon city or Jaredite valley Gilgal
+BMC-183,3 Nephi 9,namesake,22,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,"3 Nephi 9:8, 3 Nephi 9:9",consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
+BMC-183,3 Nephi 9,namesake,22,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,3 Nephi 9:7,consistent,namesake: the Book of Mormon city Jerusalem destroyed by water (9:7)
+BMC-183,3 Nephi 9,namesake,22,Moses,OHR-MOSES,3 Nephi 9:17,consistent,only in “law of Moses” or a rhetorical name; no Moses event
+BMC-183,3 Nephi 9,namesake,22,devil,,3 Nephi 9:2,consistent,"teaching vocabulary, not a Bible event"
+BMC-183,3 Nephi 9,namesake,22,law of Moses,,3 Nephi 9:17,consistent,the law as an observed or fulfilled practice (practice-or-title class)
+BMC-185,3 Nephi 11,no-bible-relation,41,Israel,OTM-israel-prophetic-community,3 Nephi 11:14,consistent,the collective covenant people or “God of Israel” as a divine title (Book of Mormon audience/teaching class)
+BMC-185,3 Nephi 11,no-bible-relation,41,devil,,3 Nephi 11:29,consistent,"teaching vocabulary, not a Bible event"
+BMC-185,3 Nephi 11,no-bible-relation,41,flood,,3 Nephi 11:40,consistent,floods in the sandy-foundation image (11:40); see the parallel rows
+BMC-185,3 Nephi 11,no-bible-relation,41,parallel: Matthew 16:18,,3 Nephi 11:39,reader,"11:39 “the gates of hell shall not prevail” matches Matthew 16:18 wording; unstated parallel, no card"
+BMC-185,3 Nephi 11,no-bible-relation,41,parallel: Matthew 7:26-27,,3 Nephi 11:40,reader,"11:39–40 rock and sandy-foundation image parallels Matthew 7:24–27; no comparison is stated in the row (unstated-parallel class, cf. BMC-188); no card"
+BMC-193,3 Nephi 19,represented,36,Isaiah,OTM-a02-ariel-jst-introduction OTM-j01-assyrian-oracle-march OTM-r01-isaiah-family,3 Nephi 19:4,consistent,"namesake: Isaiah is a Nephite disciple (19:4), as the row says"
+BMC-193,3 Nephi 19,represented,36,Jeremiah,OTM-j08-jeremiah-girdle OTM-j12-jeremiah-arrest OTM-j14-jeremiah-release OTM-j24-exile-letter OTM-j27-cistern-rescue OTM-jeremiah-prison-court OTM-r06-jeremiah-family,3 Nephi 19:4,consistent,"namesake: Jeremiah is a Nephite disciple (19:4), as the row says"
+BMC-193,3 Nephi 19,represented,36,Zedekiah,OHJ-24 OHR-ZEDEKIAH OTM-j13-zedekiah-flight OTM-r15-zedekiah-house,3 Nephi 19:4,consistent,"namesake: Zedekiah is a Nephite disciple (19:4), as the row says"
+BMC-193,3 Nephi 19,represented,36,the twelve,,3 Nephi 19:6,consistent,the twelve Nephite disciples (a Book of Mormon institution)
+BMC-200,3 Nephi 26,no-bible-relation,21,,,,no-hit,no card name or cue in the chapter text
+BMC-201,3 Nephi 27,no-bible-relation,33,Moses,OHR-MOSES,3 Nephi 27:8,consistent,only in “law of Moses” or a rhetorical name; no Moses event
+BMC-201,3 Nephi 27,no-bible-relation,33,cross,,3 Nephi 27:14,reader,"27:14 Jesus says he was lifted up upon the cross: the crucifixion recalled (candidate AE10 “Crucifixion in Matthew”, 2/nt, as BMV-032 links it)"
+BMC-201,3 Nephi 27,no-bible-relation,33,devil,,3 Nephi 27:11,consistent,"teaching vocabulary, not a Bible event"
+BMC-205,4 Nephi 1,no-bible-relation,49,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,4 Nephi 1:49,consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
+BMC-205,4 Nephi 1,no-bible-relation,49,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,4 Nephi 1:31,reader,"1:31 compares persecution to “the Jews at Jerusalem [who] sought to kill Jesus”: a stated Gospel comparison (candidate AE10, 2/nt)"
+BMC-205,4 Nephi 1,no-bible-relation,49,Moses,OHR-MOSES,4 Nephi 1:12,consistent,only in “law of Moses” or a rhetorical name; no Moses event
+BMC-205,4 Nephi 1,no-bible-relation,49,Satan,,4 Nephi 1:28,consistent,"teaching vocabulary, not a Bible event"
+BMC-205,4 Nephi 1,no-bible-relation,49,law of Moses,,4 Nephi 1:12,consistent,the law as an observed or fulfilled practice (practice-or-title class)
+BMC-206,Mormon 1,namesake,19,Samuel,OHR-SAMUEL,Mormon 1:19,consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
+BMC-206,Mormon 1,namesake,19,Sidon,NTP-sidon OTM-sidon,Mormon 1:10,consistent,namesake: the river Sidon
+BMC-207,Mormon 2,namesake,29,Aaron,OHR-AARON,Mormon 2:9,consistent,namesake: Book of Mormon or Jaredite Aaron
+BMC-207,Mormon 2,namesake,29,David,OHJ-15 OHJ-16 OHR-DAVID OTL-lh-c01-david-house OTW-j03-david-gath OTW-j04-david-cave,Mormon 2:5,consistent,namesake: the Book of Mormon land of David (2:5)
+BMC-207,Mormon 2,namesake,29,Joshua,OHR-JOSHUA-NUN OTW-r02-zechariah-joshua,Mormon 2:6,consistent,namesake: the Book of Mormon land of Joshua (2:6)
+BMC-207,Mormon 2,namesake,29,Samuel,OHR-SAMUEL,Mormon 2:10,consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
+BMC-209,Mormon 4,namesake,23,Boaz,OHR-BOAZ,Mormon 4:20,consistent,namesake: the city Boaz
+BMC-209,Mormon 4,namesake,23,Israel,OTM-israel-prophetic-community,Mormon 4:12,consistent,the collective covenant people or “God of Israel” as a divine title (Book of Mormon audience/teaching class)
+BMC-209,Mormon 4,namesake,23,Lehi,,Mormon 4:12,consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
+BMC-211,Mormon 6,namesake,22,Gilgal,OHP-GILGAL-JOSHUA,Mormon 6:14,consistent,namesake: Book of Mormon city or Jaredite valley Gilgal
+BMC-213,Mormon 8,no-bible-relation,41,Isaiah,OTM-a02-ariel-jst-introduction OTM-j01-assyrian-oracle-march OTM-r01-isaiah-family,Mormon 8:23,reader,8:23 “Search the prophecies of Isaiah”: the prophet named as a source; a reviewer decides whether a naming link to an Isaiah card is wanted
+BMC-213,Mormon 8,no-bible-relation,41,Israel,OTM-israel-prophetic-community,Mormon 8:21,consistent,the collective covenant people or “God of Israel” as a divine title (Book of Mormon audience/teaching class)
+BMC-216,Ether 2,namesake,25,Jared,,"Ether 2:1, Ether 2:4, Ether 2:8, Ether 2:13, Ether 2:14, Ether 2:15, Ether 2:16, Ether 2:18, Ether 2:20, Ether 2:21, Ether 2:23",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-216,Ether 2,namesake,25,Nimrod,,"Ether 2:1, Ether 2:4",consistent,namesake: Jaredite valley or person Nimrod
+BMC-216,Ether 2,namesake,25,cross,,"Ether 2:6, Ether 2:22, Ether 2:25",consistent,"crossing the waters (2:6, 22, 25)"
+BMC-216,Ether 2,namesake,25,flood,,"Ether 2:20, Ether 2:24, Ether 2:25",consistent,storm floods of the Jaredite crossing or a general image; no Genesis flood named
+BMC-217,Ether 3,namesake,28,Jared,,"Ether 3:1, Ether 3:6, Ether 3:7, Ether 3:21, Ether 3:25",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-217,Ether 3,namesake,28,cross,,"Ether 3:3, Ether 3:4",consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
+BMC-217,Ether 3,namesake,28,flood,,Ether 3:2,consistent,storm floods of the Jaredite crossing or a general image; no Genesis flood named
+BMC-219,Ether 5,no-bible-relation,6,,,,no-hit,no card name or cue in the chapter text
+BMC-220,Ether 6,namesake,30,Jared,,"Ether 6:1, Ether 6:2, Ether 6:9, Ether 6:14, Ether 6:15, Ether 6:16, Ether 6:19, Ether 6:20, Ether 6:23, Ether 6:24, Ether 6:25, Ether 6:27, Ether 6:29",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-220,Ether 6,namesake,30,Noah,,Ether 6:7,reader,"6:7 the barges are “tight like unto the ark of Noah”: a stated comparison to the patriarch’s ark; no Genesis flood card exists (PE06 is 5/pgp), so relation-no-card unless a reviewer picks PE06"
+BMC-220,Ether 6,namesake,30,cross,,Ether 6:3,consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
+BMC-221,Ether 7,namesake,27,Ephraim,NTP-ephraim,Ether 7:9,consistent,"namesake: the Jaredite hill Ephraim (7:9), as the row says"
+BMC-221,Ether 7,namesake,27,Jared,,Ether 7:5,consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-221,Ether 7,namesake,27,Nimrod,,Ether 7:22,consistent,namesake: Jaredite valley or person Nimrod
+BMC-221,Ether 7,namesake,27,Noah,,"Ether 7:14, Ether 7:15, Ether 7:18, Ether 7:19, Ether 7:20, Ether 7:21",consistent,"namesake: Noah son of Corihor (7:14–18), as the row says"
+BMC-221,Ether 7,namesake,27,cross,,Ether 7:27,consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
+BMC-222,Ether 8,namesake,26,Heth,,Ether 8:2,consistent,namesake: Jaredite ruler Heth
+BMC-222,Ether 8,namesake,26,Jared,,"Ether 8:1, Ether 8:2, Ether 8:5, Ether 8:6, Ether 8:7, Ether 8:8, Ether 8:9, Ether 8:11, Ether 8:12, Ether 8:13, Ether 8:17",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-222,Ether 8,namesake,26,Satan,,Ether 8:26,consistent,"teaching vocabulary, not a Bible event"
+BMC-222,Ether 8,namesake,26,cross,,Ether 8:9,consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
+BMC-222,Ether 8,namesake,26,devil,,"Ether 8:16, Ether 8:25",consistent,"teaching vocabulary, not a Bible event"
+BMC-223,Ether 9,namesake,35,Heth,,"Ether 9:25, Ether 9:26, Ether 9:29",consistent,namesake: Jaredite ruler Heth
+BMC-223,Ether 9,namesake,35,Jared,,"Ether 9:3, Ether 9:4, Ether 9:6",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-224,Ether 10,namesake,34,Aaron,OHR-AARON,Ether 10:31,consistent,namesake: Book of Mormon or Jaredite Aaron
+BMC-224,Ether 10,namesake,34,Heth,,"Ether 10:1, Ether 10:31",consistent,namesake: Jaredite ruler Heth
+BMC-224,Ether 10,namesake,34,Jared,,Ether 10:2,consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-224,Ether 10,namesake,34,Kish,,"Ether 10:17, Ether 10:18",consistent,namesake: Jaredite king Kish
+BMC-224,Ether 10,namesake,34,Levi,,"Ether 10:14, Ether 10:15",consistent,namesake: Jaredite king Levi
+BMC-224,Ether 10,namesake,34,cross,,Ether 10:2,consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
+BMC-225,Ether 11,namesake,23,Jared,,Ether 11:17,consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-225,Ether 11,namesake,23,Seth,,Ether 11:9,consistent,namesake: Jaredite captive Seth
+BMC-226,Ether 12,namesake,41,Ammon,OTM-ammon,Ether 12:15,consistent,namesake: Book of Mormon Ammon or the people of Ammon
+BMC-226,Ether 12,namesake,41,Jared,,"Ether 12:20, Ether 12:21, Ether 12:24, Ether 12:30",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-226,Ether 12,namesake,41,Lehi,,Ether 12:14,consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
+BMC-226,Ether 12,namesake,41,Moses,OHR-MOSES,Ether 12:11,note,same verse as law of Moses (12:11)
+BMC-226,Ether 12,namesake,41,apostles,,Ether 12:41,consistent,the Nephite twelve or apostles in general teaching; no New Testament apostle named
+BMC-226,Ether 12,namesake,41,law of Moses,,Ether 12:11,note,"12:11 “by faith was the law of Moses given”: the giving of the law is recalled in Moroni’s faith teaching; reason could name it (practice/teaching), no link proposed"
+BMC-226,Ether 12,namesake,41,parallel: Hebrews 11:1,,Ether 12:6,reader,"12:6 “faith is things which are hoped for and not seen” matches Hebrews 11:1, and the chapter then lists examples of faith; unstated parallel (candidate NTC-faith-exemplars “Examples of faith (Hebrews 11)”, 2/nt)"
+BMC-228,Ether 14,namesake,31,Gilead,OTL-gilead,Ether 14:8,consistent,"namesake: Jaredite Gilead, Shared’s brother"
+BMC-229,Ether 15,namesake,34,Ramah,OTM-ramah-jeremiah,Ether 15:11,consistent,namesake: the Jaredite hill Ramah
+BMC-229,Ether 15,namesake,34,Satan,,Ether 15:19,consistent,"teaching vocabulary, not a Bible event"
+BMC-230,Moroni 1,no-bible-relation,4,Jared,,Moroni 1:1,consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-231,Moroni 2,no-bible-relation,3,apostles,,Moroni 2:2,consistent,the Nephite twelve or apostles in general teaching; no New Testament apostle named
+BMC-231,Moroni 2,no-bible-relation,3,the twelve,,Moroni 2:1,consistent,the twelve Nephite disciples (a Book of Mormon institution)
+BMC-232,Moroni 3,no-bible-relation,4,,,,no-hit,no card name or cue in the chapter text
+BMC-233,Moroni 4,no-bible-relation,3,,,,no-hit,no card name or cue in the chapter text
+BMC-234,Moroni 5,no-bible-relation,2,,,,no-hit,no card name or cue in the chapter text
+BMC-235,Moroni 6,no-bible-relation,9,,,,no-hit,no card name or cue in the chapter text
+BMC-236,Moroni 7,no-bible-relation,48,devil,,"Moroni 7:11, Moroni 7:12, Moroni 7:14, Moroni 7:17",consistent,"teaching vocabulary, not a Bible event"
+BMC-236,Moroni 7,no-bible-relation,48,parallel: 1 Corinthians 13:4-7,,Moroni 7:45,reader,7:45 charity wording matches 1 Corinthians 13:4–7; unstated parallel; no 1 Corinthians 13 card (BC12 and BXC05 are Book of Mormon cards)
+BMC-236,Moroni 7,no-bible-relation,48,parallel: 1 Corinthians 13:8,,Moroni 7:46,reader,7:46 “charity never faileth” matches 1 Corinthians 13:8; same disposition as 7:45
+BMC-237,Moroni 8,no-bible-relation,30,Adam,,Moroni 8:8,reader,8:8 “the curse of Adam is taken from them”: a Fall teaching naming Adam (the Fall/creation reader class; cf. BMV-031/107/214)
+BMC-238,Moroni 9,namesake,26,Aaron,OHR-AARON,Moroni 9:17,consistent,namesake: Book of Mormon or Jaredite Aaron
+BMC-238,Moroni 9,namesake,26,Satan,,Moroni 9:3,consistent,"teaching vocabulary, not a Bible event"
