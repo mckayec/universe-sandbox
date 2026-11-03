@@ -1037,8 +1037,49 @@ const _w=new THREE.Vector3(),_n=new THREE.Vector3();
    overlap one already placed collapses to its marker (still clickable), so dense regions keep every pin. */
 const sitePri = (o) => (o.s.id === S.site ? 2 : 0) + (o.s.major ? 1 : 0);
 const hit = (r, q) => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y;
+/* Compact layouts (S46-O1): the top chrome rows, an open worlds list and the bottom sheet / chronicle sit over the
+   globe edge to edge. A site label inside one of those horizontal bands would only peek out as a text fragment in the
+   gaps between controls, so it is hidden there (marker included) until the globe turns it into open view. */
+const CHROME_TOP = ["header.top", "#crumbs", "#realms", "#filters"];
+const CHROME_MID = ["#index"];
+const CHROME_BOTTOM = ["#dossier", "#chron"];
+function chromeRect(sel, W, H) {
+  const el = document.querySelector(sel);
+  if (!el || el.hidden || !el.getClientRects().length) return null;
+  const r = el.getBoundingClientRect();
+  if (r.width < 1 || r.height < 1 || r.right <= 0 || r.left >= W || r.bottom <= 0 || r.top >= H) return null;
+  return r;
+}
+/* The globe area left open on a compact layout: below the lowest top chrome row, above the sheet / chronicle. */
+function compactOpenArea(W, H) {
+  let top = 0;
+  CHROME_TOP.forEach((s) => {
+    const r = chromeRect(s, W, H);
+    if (r) top = Math.max(top, r.bottom);
+  });
+  let bottom = H;
+  CHROME_BOTTOM.forEach((s) => {
+    const r = chromeRect(s, W, H);
+    if (r) bottom = Math.min(bottom, r.top);
+  });
+  return [top, bottom];
+}
+function chromeBands(W, H) {
+  if (!MOB) return [];
+  const [top, bottom] = compactOpenArea(W, H);
+  const bands = [];
+  if (top > 0) bands.push([0, top]);
+  CHROME_MID.forEach((s) => {
+    const r = chromeRect(s, W, H);
+    if (r) bands.push([r.top, r.bottom]);
+  });
+  if (bottom < H) bands.push([bottom, H]);
+  return bands;
+}
+const underChrome = (r, bands) => bands.some(([a, b]) => r.y < b && r.y + r.h > a);
 function layoutSiteLabels(W, H) {
   if (!PL) return;
+  const bands = chromeBands(W, H);
   const placed = [];
   const order = SITE_EL.map((o, i) => [o, i]).sort((a, b) => sitePri(b[0]) - sitePri(a[0]) || a[1] - b[1]);
   order.forEach(([o]) => {
@@ -1046,10 +1087,14 @@ function layoutSiteLabels(W, H) {
     _w.copy(_n).multiplyScalar(1.004);
     const facing = _n.dot(camW.position.clone().sub(_w).normalize());
     const pr = project(_w, camW, W, H);
-    const show = facing > 0.12 && pr.z < 1;
     const sel = o.s.id === S.site;
     const r = { x: pr.x, y: pr.y - 12, w: String(o.s.name).length * 8 + 30, h: 24 };
-    const dot = show && !sel && placed.some((q) => hit(r, q));
+    /* compact layouts: a pin past the screen edge is hidden and a name that would run off the edge collapses to its
+       pin, so the edges never show a cut-off fragment either (S47) */
+    const edgeOut = MOB && (pr.x < 2 || pr.x > W - 2);
+    const edgeDot = MOB && !sel && r.x + r.w > W;
+    const show = facing > 0.12 && pr.z < 1 && !edgeOut && !underChrome(r, bands);
+    const dot = show && !sel && (edgeDot || placed.some((q) => hit(r, q)));
     if (show) placed.push(dot ? { x: pr.x - 2, y: pr.y - 6, w: 12, h: 12 } : r);
     o.el.style.opacity = show ? clamp((facing - 0.12) * 5, 0, 1) : 0;
     o.el.style.pointerEvents = show ? "auto" : "none";
@@ -1620,10 +1665,52 @@ function tapAt(x,y){const now=performance.now();const dbl=now-lastTap<320;lastTa
   else if(MOB){dosCollapsed=true;dos.classList.add("collapsed");closeChron();}}
 
 /* ===================== RESIZE & LOOP ===================== */
-function viewOffset(){const W=innerWidth,H=innerHeight;let ox=0,oy=0;
-  if(!MOB&&W>900){const L=idx.getBoundingClientRect().right||0,R=dos.getBoundingClientRect().left||W;ox=W/2-(L+R)/2;ox=clamp(ox,-W*.2,W*.2);}
-  if(MOB)oy=H*.07;
-  [camG,camW].forEach(c=>{if(ox||oy)c.setViewOffset(W,H,ox,oy,W,H);else c.clearViewOffset();});}
+/* View offset. Desktop centres the view between the side panels. Compact layouts (S47) centre it in the globe area
+   left open between the top chrome and the bottom sheet, so the selected place and its neighbours sit in open view
+   instead of under the controls; with the sheet up and no open area the old slight upward shift is kept. A change
+   caused by the sheet or chrome resizing eases over a few frames (unless reduced motion), so a sheet toggle glides. */
+const VO = { ox: 0, oy: 0, tx: 0, ty: 0 };
+function applyViewOffset() {
+  const W = innerWidth,
+    H = innerHeight;
+  [camG, camW].forEach((c) => {
+    if (VO.ox || VO.oy) c.setViewOffset(W, H, VO.ox, VO.oy, W, H);
+    else c.clearViewOffset();
+  });
+}
+function viewOffset(ease) {
+  const W = innerWidth,
+    H = innerHeight;
+  let ox = 0,
+    oy = 0;
+  if (!MOB && W > 900) {
+    const L = idx.getBoundingClientRect().right || 0,
+      R = dos.getBoundingClientRect().left || W;
+    ox = clamp(W / 2 - (L + R) / 2, -W * 0.2, W * 0.2);
+  }
+  if (MOB) {
+    const [a, b] = compactOpenArea(W, H);
+    oy = b - a >= 120 ? clamp(H / 2 - (a + b) / 2, -H * 0.3, H * 0.3) : H * 0.07;
+  }
+  VO.tx = ox;
+  VO.ty = oy;
+  if (!ease || !MOB || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    VO.ox = ox;
+    VO.oy = oy;
+  }
+  applyViewOffset();
+}
+function easeViewOffset(dt) {
+  if (VO.ox === VO.tx && VO.oy === VO.ty) return;
+  const k = 1 - Math.exp(-dt * 9);
+  VO.ox += (VO.tx - VO.ox) * k;
+  VO.oy += (VO.ty - VO.oy) * k;
+  if (Math.abs(VO.tx - VO.ox) < 0.5 && Math.abs(VO.ty - VO.oy) < 0.5) {
+    VO.ox = VO.tx;
+    VO.oy = VO.ty;
+  }
+  applyViewOffset();
+}
 function chronH(){document.documentElement.style.setProperty('--ch',chron.offsetHeight+'px');}
 /* the header may wrap onto two rows: panels below it follow its real height */
 const topEl=document.querySelector(".top");
@@ -1635,7 +1722,19 @@ function hdrH(){if(!topEl)return;
     if(over||tooTall)topEl.classList.add("wrapbooks");}
   else topEl.classList.remove("wrapbooks");
   document.documentElement.style.setProperty('--hdr',Math.round(topEl.getBoundingClientRect().bottom)+'px');}
-if(typeof ResizeObserver!=="undefined"){const ro=new ResizeObserver(()=>{chronH();hdrH();viewOffset();});ro.observe(chron);if(topEl)ro.observe(topEl);}
+if (typeof ResizeObserver !== "undefined") {
+  const ro = new ResizeObserver(() => {
+    chronH();
+    hdrH();
+    viewOffset(true);
+  });
+  ro.observe(chron);
+  if (topEl) ro.observe(topEl);
+  /* compact layouts: the sheet and the filter rows bound the open globe area (S47) */
+  ro.observe(dos);
+  const flt = $("#filters");
+  if (flt) ro.observe(flt);
+}
 function resize(){
   const m=isMob();
   if(m!==MOB){MOB=m;
@@ -1662,6 +1761,7 @@ function labelJumpFrame(atEntry,afterUpdate){if(atEntry||afterUpdate)labelJumpHo
 function viewMoving(){return S.view==="galaxy"?!!orbG.fly:!!(PL&&PL.turn)||!!orbW.fly;}
 function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
   const movingAtEntry=viewMoving();
+  easeViewOffset(dt);
   bakeStep();
   linkMats.forEach(m=>m.uniforms.uTime.value=T);
   const W=innerWidth,H=innerHeight;

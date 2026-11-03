@@ -2019,3 +2019,47 @@ captures.
 - **Still open (Claude keeps ownership):** 3840×2160 finished-bake capture (the SwiftShader bake did not finish in
   ~21 min at checkpoint 42; needs a run with a dedicated budget); S46-O1; wider semantic omission/vision screen;
   real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 47 — compact-layout label fragments (S46-O1) and open-area framing
+
+Parent: 421a5bc (checkpoint 46 head). Generic engine change in `public/atlas/engine.js` only; no pack data, canon or
+CSS change. Desktop behaviour is unchanged: every new branch is gated on the existing compact-layout flag (`MOB`,
+`isMob()`: width ≤ 820 px, or a short coarse-pointer screen).
+
+- **Labels under chrome are hidden (S46-O1).** On compact layouts the top chrome rows (`header.top`, `#crumbs`,
+  `#realms`, `#filters`), an open worlds list (`#index`) and the bottom sheet / chronicle (`#dossier`, `#chron`) are
+  treated as edge-to-edge horizontal bands. A globe site label whose box falls in a band is hidden with its pin
+  (opacity 0, no pointer events, out of the Tab order, `aria-hidden`), the same path a label on the far side of the
+  globe already takes. This removes the "…cuse" / "Phi…" fragments from the S46 390 capture.
+- **Screen edges.** On compact layouts a pin past the left/right screen edge is hidden, and a name that would run off
+  the right edge collapses to its pin (the existing dense-label "dot" state: still clickable, name on hover/focus),
+  so no cut-off fragment shows at the edges either. The selected site keeps its full name.
+- **Why the framing had to change too.** With only the hiding above, a 390×844 phone with the sheet collapsed showed
+  *no* site labels: measured at 421a5bc, every Mediterranean pin sat at y 166–351 px, under the top chrome that ends at
+  y 373 (`#filters`), because the compact view offset was a fixed `H × 0.07` upward shift. `viewOffset()` now centres
+  the view in the open globe area between the lowest top-chrome row and the top of the sheet/chronicle (clamped to
+  ±30 % of the height). When the sheet is up and leaves under 120 px of globe, the old `H × 0.07` shift is kept. The
+  shift eases over a few frames when it is caused by the sheet or chrome resizing (a `ResizeObserver` now also watches
+  `#dossier` and `#filters`), and jumps under `prefers-reduced-motion` and on window resize.
+- **Probe.** [s47-chrome-probe.mjs](supplementary-build/s47-chrome-probe.mjs) (server/error plumbing copied from
+  s46-finished-probe.mjs) measures the chrome rects and visible labels from the DOM, independently of engine.js, and
+  asserts on compact layouts that no visible site label lies in a chrome band or runs off a screen edge, and that a
+  sheet state with an open globe area (≥ 120 px) still shows labels there. Run at 390×844 after the finished bake,
+  768×1024 and 1440×900 (desktop, informational: side panels make the band measure meaningless there and no
+  assertion applies). [Output](supplementary-build/s47-chrome-probe-output.txt): 390 bake finished at 239 s; sheet up
+  0 labels (no open area: the sheet starts at y 269, above the chrome bottom at 373), sheet collapsed 16 visible / 0
+  in bands, worlds list open 17 / 0; 768 sheet collapsed 10 / 0, worlds list open 21 / 0; 1440 21 labels as before;
+  zero console errors, failed requests or HTTP ≥ 400; PASS, exit 0.
+- **Captures.** 390×844 [sheet up](shots/s47-start-390x844.jpg) (no fragments between chrome, compare
+  shots/s46-finished-390x844.jpg), [sheet collapsed](shots/s47-sheet-toggled-390x844.jpg) (Jerusalem, Perga, Troas
+  and neighbours in open view; Babylon at the right edge as a pin), [worlds list open](shots/s47-index-open-390x844.jpg);
+  768×1024 [sheet collapsed](shots/s47-sheet-toggled-768x1024.jpg).
+- **Checks at this commit.** `pnpm format`, `pnpm check` (137/137 tests, check:dist 114 OK), `pnpm test:pages` 13×2,
+  `pnpm test:browser` passed (system Chrome, SwiftShader).
+- **For the reviewer.** This is a UI framing change on every engine pack's compact layout (every pack on the shared
+  atlas engine, `public/atlas/index.html`), not only LDS; desktop is untouched. Reviewer
+  judgement wanted on (a) hiding the selected site's label when it is under chrome (it is covered there anyway), and
+  (b) the 120 px open-area threshold.
+- **Still open (Claude keeps ownership):** 3840×2160 finished-bake capture (needs a run with a dedicated budget);
+  cross-pack compact captures for this change; wider semantic omission/vision screen; real-GPU and physical-phone
+  evidence need hardware.
