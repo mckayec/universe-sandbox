@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "name": "390 overview shows the undated-bracket legend",
+      "pass": true,
+      "actual": {
+        "box": {
+          "x": 18,
+          "y": 684.5,
+          "width": 334.953125,
+          "height": 43.75
+        },
+        "legText": "Brackets in the left gutter join related traditions; they are not dated."
+      }
+    },
+    {
+      "name": "390 list: X08 proof route and page scope",
+      "pass": true,
+      "actual": {
+        "proof": true,
+        "scope": true
+      }
+    },
+    {
+      "name": "390 details: X08 proof route and page scope",
+      "pass": true,
+      "actual": {
+        "proof": true,
+        "scope": true
+      }
+    },
+    {
+      "name": "390 details: no citation/scope runs off screen",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390 details: proof link focusable inside the dialog",
+      "pass": true,
+      "actual": "chapter proof PDF|true"
+    },
+    {
+      "name": "1440 overview shows the undated-bracket legend",
+      "pass": true,
+      "actual": {
+        "box": {
+          "x": 1103,
+          "y": 346.84375,
+          "width": 283.78125,
+          "height": 43.75
+        },
+        "legText": "Brackets in the left gutter join related traditions; they are not dated."
+      }
+    },
+    {
+      "name": "1440 list: X08 proof route and page scope",
+      "pass": true,
+      "actual": {
+        "proof": true,
+        "scope": true
+      }
+    },
+    {
+      "name": "1440 details: X08 proof route and page scope",
+      "pass": true,
+      "actual": {
+        "proof": true,
+        "scope": true
+      }
+    },
+    {
+      "name": "1440 details: no citation/scope runs off screen",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440 details: proof link focusable inside the dialog",
+      "pass": true,
+      "actual": "chapter proof PDF|true"
+    },
+    {
+      "name": "3840 overview shows the undated-bracket legend",
+      "pass": true,
+      "actual": {
+        "box": {
+          "x": 3238,
+          "y": 461.234375,
+          "width": 502.421875,
+          "height": 65.625
+        },
+        "legText": "Brackets in the left gutter join related traditions; they are not dated."
+      }
+    },
+    {
+      "name": "3840 list: X08 proof route and page scope",
+      "pass": true,
+      "actual": {
+        "proof": true,
+        "scope": true
+      }
+    },
+    {
+      "name": "3840 details: X08 proof route and page scope",
+      "pass": true,
+      "actual": {
+        "proof": true,
+        "scope": true
+      }
+    },
+    {
+      "name": "3840 details: no citation/scope runs off screen",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "3840 details: proof link focusable inside the dialog",
+      "pass": true,
+      "actual": "chapter proof PDF|true"
+    },
+    {
+      "name": "zero console/page/request errors",
+      "pass": true,
+      "actual": []
+    }
+  ],
+  "errors": []
+}

@@ -560,7 +560,7 @@
       const r = sel && V.byId.get(sel);
       if (!r)
         return (
-          '<h3 class="tl-ov" tabindex="-1">Overview</h3><p class="tl-intro">Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Pick any mark or row for its source wording.</p>' +
+          '<h3 class="tl-ov" tabindex="-1">Overview</h3><p class="tl-intro">Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. <span class="tl-undated">Brackets in the left gutter join related traditions; they are not dated.</span> Pick any mark or row for its source wording.</p>' +
           coverageHtml()
         );
       const w = r.when;
@@ -601,7 +601,8 @@
                 (e.from === r.id ? ' (from this)' : '') +
                 '</i>' +
                 (e.label ? ' <span class="tl-why">' + ESC(e.label) + '</span>' : '') +
-                edgeCite(e, true) +
+                /* full citation in record details too (TL-R08): inspected alternate routes and page scope */
+                edgeCite(e, false) +
                 '</li>'
               );
             })
