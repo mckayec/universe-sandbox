@@ -290,7 +290,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   #navhint{top:132px;white-space:normal;width:84%;text-align:center}
   #dossier{top:auto;left:max(8px,env(safe-area-inset-left,0px));right:max(8px,env(safe-area-inset-right,0px));bottom:calc(52px + env(safe-area-inset-bottom,0px));width:auto;max-height:62%;padding:0 18px 16px;transition:transform .3s ease;z-index:8}
   #dossier.collapsed{overflow:hidden;padding-bottom:0}
-  #dossier .grab{display:block;position:sticky;top:0;background:linear-gradient(180deg,rgba(var(--panel-rgb),.98),rgba(var(--panel-rgb),.9));margin:0 -18px 8px;padding:9px 18px 9px;cursor:pointer;z-index:2;border:0;width:calc(100% + 36px);text-align:left}
+  #dossier .grab{display:block;position:sticky;top:0;background:linear-gradient(180deg,rgba(var(--panel-rgb),.98),rgba(var(--panel-rgb),.9));margin:0 -18px 8px;padding:9px 18px 9px;cursor:pointer;z-index:2;border:0;width:calc(100% + 36px);box-sizing:border-box;text-align:left}
+  #dossier .grab:focus-visible{outline:2px solid var(--lapis-hi);outline-offset:-3px}
   #dossier .grab::before{content:"";display:block;width:38px;height:4px;border-radius:2px;background:var(--line-strong);margin:0 auto 7px}
   #dossier .grab span{font:600 19px var(--f-title);color:var(--title)}
   #dossier .grab .go{float:right;margin-top:-2px;padding:6px 10px}

@@ -2189,3 +2189,62 @@ Runtime behaviour is unchanged; pack/canon data, citations, imports and CSS unto
   captures; 3840×2160 finished-bake capture; native-select keyboard path and final keyboard/focus evidence (incl. a
   fully contained grab-bar focus outline); wider semantic omission/vision screen; real-GPU and physical-phone evidence
   need hardware.
+
+## Checkpoint 51 — grouped acceptance: compact galaxy/Space labels, native select, grab-bar focus, 4K finished bake
+
+Parent: 390e3f9 (checkpoint 50). One grouped probe, [s51-acceptance-probe.mjs](supplementary-build/s51-acceptance-probe.mjs)
+(CfT Chromium 153, SwiftShader, Playwright emulation; real Tab/Shift-Tab/arrow keys and a real tap; nothing focused
+programmatically except where noted). This is emulated browser evidence only: no physical phone and no real GPU.
+
+**Two defects found and fixed (runtime change, engine only; pack/canon data untouched):**
+
+- **Galaxy/Space-view names under the phone chrome and past the edge.** The surface-label rules from checkpoints 46–49
+  never covered the galaxy view. First run at the parent's code: 25 failures across LDS (Space button), Expanse,
+  Sun Eater and Hyperion at 390×844 and rotated 844×390, e.g. Sun Eater with Delos selected showed Tenba, Gododdin,
+  Bracara, Marinus and Latarra over the header and filter rows, Durannos/Pacem/Nieuwestad cut at the left edge, and
+  in some states focusable world labels under the chrome. `layoutGalaxyLabels()` (`public/atlas/engine.js`) now, on
+  compact layouts only, measures each name (cached per label epoch like `labelBox`), flips a name that would run off
+  the right edge to the left of its point when it fits, and otherwise hides any name that is not wholly inside the
+  window or that overlaps the chrome bands (`chromeBands`/`underChrome`, the same as surface labels). Hidden names
+  leave the Tab order and are `aria-hidden`; a focused name that is hidden hands focus to a visible control through
+  the existing `recoverLabelFocus` (rows don't exist for worlds, so it goes to the grab bar / Worlds / header) — this
+  recovery applies on every layout. Decorative region names (arms, core, Magellanic Clouds) are hidden on compact
+  layouts while they overlap the chrome. Desktop placement is unchanged (same estimate, same offsets).
+- **Grab bar wider than the sheet, focus outline cut off.** `#dossier .grab` was `width: calc(100% + 36px)` with
+  content-box sizing plus 36 px padding, so it ran 36 px past the sheet's right edge and its default 1 px auto outline
+  was clipped on the right, left and top. Now `box-sizing: border-box` and a 2 px inset outline
+  (`outline-offset: -3px`) on `:focus-visible`: outline box 10,271–380,323 inside the clip box 9,270–381,791.
+
+**Evidence at the fixed tree:**
+
+- Compact galaxy/Space ([output](supplementary-build/s51-galaxy-output.txt), **PASS 75**): for each of LDS (via the
+  pack's own **Space** button, tapped), Expanse, Sun Eater, Hyperion at 390×844, with and without a selected world, plus
+  LDS and Sun Eater rotated to 844×390: view is galaxy; no horizontal overflow; no shown world name overlaps the
+  chrome or crosses the window edge; hidden names are out of the Tab order and aria-hidden; no shown region name
+  overlaps the chrome; real Tab through each page lands on world names only while they are shown (2/19/9/14 stops);
+  zero console/request/page errors. Screenshots: [LDS](shots/s51-galaxy-lds-standard-works-390x844.jpg),
+  [Expanse](shots/s51-galaxy-expanse-390x844.jpg), [Sun Eater](shots/s51-galaxy-sun-eater-390x844.jpg),
+  [Hyperion](shots/s51-galaxy-hyperion-390x844.jpg), [Sun Eater rotated](shots/s51-galaxy-sun-eater-844x390.jpg).
+  Observation, not changed here: when the sheet is expanded after tapping Space in LDS (open area 373–269, i.e. none),
+  and in every landscape-phone state tested (open area 96–193 → none), the chrome leaves no open sky, so every name is
+  hidden by rule and the world is reachable only through the sheet/Worlds list. The LDS header (four-line title,
+  filters, year slider) takes 373 px of an 844 px phone in the galaxy view; a compact-header pass would be a separate
+  design item.
+- Native select ([output](supplementary-build/s51-select-grab-4k-output.txt), parts C/D): at 390×844, Tab reaches the
+  Codex button, Enter opens the Codex, Tab reaches the section picker (`select#cxPick`, visible, named, focus
+  indicator); ArrowDown moves works → unmapped-places and the Codex body follows (change event); focus stays on the
+  picker; End → restoration-documents (13th of 13); Home → works; Escape closes the Codex and returns focus to the
+  Codex button. [Screenshot](shots/s51-codex-picker-390x844.jpg). The native option *popup* (Alt+Down / tap) is
+  OS-drawn and not exercised; keyboard changes on the closed select are.
+- Grab-bar focus (same output): reached by real Tab; `:focus-visible` outline 2 px solid, fully inside its clipping
+  box. [Screenshot](shots/s51-grab-focus-390x844.jpg).
+- 3840×2160 finished bake (part A, same probe): see the status note and the output file for where it stands at this
+  commit; the bake had not finished when this checkpoint was pushed (SwiftShader at 4K; page ready in 61.6 s).
+- Checks (run on a copy of this tree while the 4K probe used `dist/`): `pnpm check` 147/147, prettier clean,
+  check:dist 114 OK; `pnpm test:pages` 13×2; `pnpm test:browser` exited 1 on the first attempt under CPU contention with
+  the concurrent 4K bake (log not kept) and passed on the immediate rerun. The probe runs above used a build of this tree
+  that differs only by one source comment in `layoutGalaxyLabels` (comment rewritten after the build).
+
+**Still open (Claude keeps ownership):** finished 3840×2160 capture and 4K keyboard traversal if not completed below;
+browser-level 119/120/121 px chrome-gap case; wider semantic omission/vision screen; real-GPU and physical-phone
+evidence need hardware.

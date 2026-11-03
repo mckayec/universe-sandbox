@@ -1003,21 +1003,77 @@ function regionLabels(){
 regionLabels();
 const _v=new THREE.Vector3();
 function project(p,cam,W,H){_v.copy(p).project(cam);return {x:(_v.x*.5+.5)*W,y:(-_v.y*.5+.5)*H,z:_v.z};}
-function layoutGalaxyLabels(W,H){
-  const camPos=camG.position;const placed=[];
-  const order=WORLDS.slice().sort((a,b)=>(b.id===S.sel)-(a.id===S.sel)||(b.id===S.hover)-(a.id===S.hover)||(b.major?1:0)-(a.major?1:0)||camPos.distanceTo(a.pos)-camPos.distanceTo(b.pos));
-  order.forEach(w=>{const el=GL_LBL[w.id];const pr=project(w.pos,camG,W,H);const cd=camPos.distanceTo(w.pos);
-    let show=pr.z<1&&pr.x>-50&&pr.x<W+50&&pr.y>-20&&pr.y<H+20;
-    const far=groupOpt(w,"labelFar",w.major?LBL_FAR.major:LBL_FAR.minor);
-    if(cd>far&&w.id!==S.sel)show=false;if(!seen(w))show=false;
-    if(show){const bw=w.name.length*8+14,bh=20;const r={x:pr.x+8,y:pr.y-10,w:bw,h:bh};
-      if(w.id!==S.sel&&placed.some(o=>r.x<o.x+o.w&&r.x+r.w>o.x&&r.y<o.y+o.h&&r.y+r.h>o.y))show=false;else placed.push(r);}
-    el.style.opacity=show?(inBook(w)?1:K.spoil.dimLabel):0;el.style.pointerEvents=show?"auto":"none";if(el._tab!==show){el._tab=show;el.tabIndex=show?0:-1;el.setAttribute("aria-hidden",String(!show));}
-    if(show)el.style.transform="translate("+(pr.x+7)+"px,"+(pr.y-11)+"px)";
-    el.classList.toggle("sel",w.id===S.sel);});
+/* Galaxy-view world labels. On compact layouts (S51) a shown name must sit wholly inside the window and clear of the
+   phone chrome, like the surface labels: a name running off the right edge flips to the left of its point when it
+   fits there, otherwise it is hidden (the world stays selectable and listed). On every layout a focused label that is
+   hidden hands focus to a visible control (recoverLabelFocus); desktop placement is otherwise unchanged. */
+function galaxyLabelBox(el, name) {
+  if (el._ep !== labelEpoch) {
+    const w = el.offsetWidth,
+      h = el.offsetHeight;
+    if (w > 0) {
+      el._fw = w;
+      el._fh = h;
+      el._ep = labelEpoch;
+    }
+  }
+  return [el._fw || name.length * 8 + 14, el._fh || 22];
+}
+function layoutGalaxyLabels(W, H) {
+  const camPos = camG.position;
+  const placed = [];
+  const bands = chromeBands(W, H);
+  const m = LBL_RING;
+  const order = WORLDS.slice().sort(
+    (a, b) =>
+      (b.id === S.sel) - (a.id === S.sel) ||
+      (b.id === S.hover) - (a.id === S.hover) ||
+      (b.major ? 1 : 0) - (a.major ? 1 : 0) ||
+      camPos.distanceTo(a.pos) - camPos.distanceTo(b.pos),
+  );
+  order.forEach((w) => {
+    const el = GL_LBL[w.id];
+    const pr = project(w.pos, camG, W, H);
+    const cd = camPos.distanceTo(w.pos);
+    let show = pr.z < 1 && pr.x > -50 && pr.x < W + 50 && pr.y > -20 && pr.y < H + 20;
+    const far = groupOpt(w, "labelFar", w.major ? LBL_FAR.major : LBL_FAR.minor);
+    if (cd > far && w.id !== S.sel) show = false;
+    if (!seen(w)) show = false;
+    let x = pr.x + 7,
+      flip = false;
+    if (show && MOB) {
+      const [fw, fh] = galaxyLabelBox(el, w.name);
+      if (x + fw > W - m && pr.x - 7 - fw >= m) {
+        flip = true;
+        x = pr.x - 7 - fw;
+      }
+      const r = { x, y: pr.y - 11, w: fw, h: fh };
+      if (r.x < m || r.x + r.w > W - m || r.y < 0 || r.y + r.h > H || underChrome(r, bands)) show = false;
+    }
+    if (show) {
+      const bw = MOB ? el._fw || w.name.length * 8 + 14 : w.name.length * 8 + 14,
+        bh = 20;
+      const r = { x: MOB ? x : pr.x + 8, y: pr.y - 10, w: bw, h: bh };
+      if (w.id !== S.sel && placed.some((o) => r.x < o.x + o.w && r.x + r.w > o.x && r.y < o.y + o.h && r.y + r.h > o.y))
+        show = false;
+      else placed.push(r);
+    }
+    if (!show && document.activeElement === el) recoverLabelFocus({ s: { id: null }, el });
+    el.style.opacity = show ? (inBook(w) ? 1 : K.spoil.dimLabel) : 0;
+    el.style.pointerEvents = show ? "auto" : "none";
+    if (el._tab !== show) {
+      el._tab = show;
+      el.tabIndex = show ? 0 : -1;
+      el.setAttribute("aria-hidden", String(!show));
+    }
+    if (show) el.style.transform = "translate(" + x + "px," + (pr.y - 11) + "px)";
+    el.classList.toggle("sel", w.id === S.sel);
+    el.classList.toggle("flip", flip);
+  });
   REGIONS.forEach(r=>{if(r.spec&&r.spec.world&&WORLD_BY[r.spec.world])r.pos=WORLD_BY[r.spec.world].pos.clone().add(r.off);
     const pr=project(r.pos,camG,W,H);const cd=camPos.distanceTo(r.pos);const show=pr.z<1&&cd>r.minD&&cd<r.maxD&&gateOk(r.gate,S.book)&&realmOk(r.spec);
-    r.el.style.opacity=show?1:0;if(show)r.el.style.transform="translate(-50%,-50%) translate("+pr.x+"px,"+pr.y+"px)";});
+    let vis=show;if(vis&&MOB){if(r._ep!==labelEpoch||!r._w){r._w=r.el.offsetWidth;r._h=r.el.offsetHeight;r._ep=labelEpoch;}const rw=r._w,rh=r._h;vis=!underChrome({x:pr.x-rw/2,y:pr.y-rh/2,w:rw,h:rh},bands);}
+    r.el.style.opacity=vis?1:0;if(vis)r.el.style.transform="translate(-50%,-50%) translate("+pr.x+"px,"+pr.y+"px)";});
 }
 
 /* ===================== SITE MARKERS (world view) ===================== */
