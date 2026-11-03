@@ -1,0 +1,44 @@
+PASS 390 gate: focus inside
+PASS 390 gate: fallback is heading
+PASS 390 gate Tab x1
+PASS 390 gate Shift+Tab x1
+PASS 390 gate [heading] Tab x60
+PASS 390 gate [heading] Shift+Tab x60
+PASS 390 resize [heading] Tab x60
+PASS 390 resize [heading] Shift+Tab x60
+PASS 390 collapse: lane toggled lane-jud
+PASS 390 collapse [heading] Tab x60
+PASS 390 collapse [heading] Shift+Tab x60
+PASS 390 collapse [scroll] Tab x5
+PASS 390 collapse [scroll] Shift+Tab x5
+PASS 390 Escape closes
+PASS 1440 gate: focus inside
+PASS 1440 gate: fallback is heading
+PASS 1440 gate Tab x1
+PASS 1440 gate Shift+Tab x1
+PASS 1440 gate [heading] Tab x60
+PASS 1440 gate [heading] Shift+Tab x60
+PASS 1440 resize [heading] Tab x60
+PASS 1440 resize [heading] Shift+Tab x60
+PASS 1440 collapse: lane toggled lane-jud
+PASS 1440 collapse [heading] Tab x60
+PASS 1440 collapse [heading] Shift+Tab x60
+PASS 1440 collapse [scroll] Tab x5
+PASS 1440 collapse [scroll] Shift+Tab x5
+PASS 1440 Escape closes
+PASS 3840 gate: focus inside
+PASS 3840 gate: fallback is heading
+PASS 3840 gate Tab x1
+PASS 3840 gate Shift+Tab x1
+PASS 3840 gate [heading] Tab x60
+PASS 3840 gate [heading] Shift+Tab x60
+PASS 3840 resize [heading] Tab x60
+PASS 3840 resize [heading] Shift+Tab x60
+PASS 3840 collapse: lane toggled lane-jud
+PASS 3840 collapse [scroll] Tab x60
+PASS 3840 collapse [heading] Shift+Tab x60
+PASS 3840 collapse [scroll] Tab x5
+PASS 3840 collapse [scroll] Shift+Tab x5
+PASS 3840 Escape closes
+PASS no console/page errors []
+43/43 passed

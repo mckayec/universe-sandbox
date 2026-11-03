@@ -795,10 +795,21 @@
       if (e.key === 'Tab') {
         const f = [...el.querySelectorAll('button,[tabindex="0"]')].filter(x => !x.disabled && x.offsetParent !== null);
         if (!f.length) return;
-        if (e.shiftKey && document.activeElement === f[0]) {
+        const a = document.activeElement;
+        if (f.indexOf(a) < 0) {
+          /* focus is on a programmatic target (the tabindex=-1 Overview heading or scroll pane after a gate refresh):
+             move to the neighbouring tabbable control inside the dialog ourselves, so Tab never walks out (TL-R03) */
+          e.preventDefault();
+          const after = f.filter(x => a.compareDocumentPosition(x) & Node.DOCUMENT_POSITION_FOLLOWING);
+          const before = f.filter(x => a.compareDocumentPosition(x) & Node.DOCUMENT_POSITION_PRECEDING);
+          const t = e.shiftKey ? before[before.length - 1] || f[f.length - 1] : after[0] || f[0];
+          t.focus();
+          return;
+        }
+        if (e.shiftKey && a === f[0]) {
           e.preventDefault();
           f[f.length - 1].focus();
-        } else if (!e.shiftKey && document.activeElement === f[f.length - 1]) {
+        } else if (!e.shiftKey && a === f[f.length - 1]) {
           e.preventDefault();
           f[0].focus();
         }
