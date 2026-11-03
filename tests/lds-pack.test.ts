@@ -2381,7 +2381,7 @@ test('S40-C1: keyword candidates are semantically classed; vision-family childre
   const by = new Map(body.map(r => [r[0], r]));
   // every keyword candidate has a semantic class; the screen alone never decides it
   for (const r of body) if (r[col('vision_keyword')] === 'yes') assert.ok(r[col('vision_class')], r[0]);
-  assert.equal(body.filter(r => r[col('vision_keyword')] === 'yes').length, 96);
+  assert.equal(body.filter(r => r[col('vision_keyword')] === 'yes').length, 94);
   // every child of the two vision families is present, inherited, undated and keeps its own locator and gate
   const cards = P.codex.flatMap((t: any) => t.list);
   for (const fam of ['NTC-vision-sequence', 'OTM-j22-temple-tour']) {
@@ -2406,6 +2406,13 @@ test('S40-C1: keyword candidates are semantically classed; vision-family childre
     assert.equal(r[col('gate')], '2/nt');
   }
   // keyword hits that are only a contrast or label are not counted as visions
-  for (const k of ['BXP01', 'BMV-202-three-disciples-john', 'AE09', 'AE10'])
+  for (const k of ['BXP01', 'BMV-202-three-disciples-john'])
     assert.equal(by.get('codex:' + k)![col('vision_class')], 'not-vision', k);
+  // S41: AE09/AE10 lost the ambiguous "/vision" category suffix, so they are no longer keyword candidates
+  for (const k of ['AE09', 'AE10']) {
+    assert.equal(by.get('codex:' + k), undefined, k);
+    const e = cards.find((c: any) => c.key === k);
+    assert.match(e.desc, /^New Testament narrative — Matthew /, k);
+    assert.equal(JSON.stringify([e.books, e.layers]), '[[2],["nt"]]', k);
+  }
 });

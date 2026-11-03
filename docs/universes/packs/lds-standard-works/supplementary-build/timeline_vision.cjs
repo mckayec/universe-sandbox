@@ -118,8 +118,6 @@ const SEM = {
   'codex:PP09': 'vision-setting',
   'codex:First Vision account|dc': 'vision-content',
   'codex:First Vision account|pgp': 'vision-content',
-  'codex:AE09': ['not-vision', 'keyword only in the “narrative/vision” category label; Gethsemane narrative'],
-  'codex:AE10': ['not-vision', 'keyword only in the “narrative/vision” category label; crucifixion narrative'],
   'codex:AE14': 'vision-content',
   'codex:PE01': 'vision-content',
   'codex:PC09': 'vision-setting',

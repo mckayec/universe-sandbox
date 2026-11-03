@@ -1933,3 +1933,26 @@ canon-neutral; pack data unchanged.
   against its anchor); finished-bake captures at 3840/1280/390 (separate `VPS=` invocations of s42-probe with `BAKE`);
   source-grounded semantic omission/consolidation incl. wider vision screen; real-GPU and physical-phone evidence need
   hardware.
+
+## Checkpoint 44 — AE09/AE10 category wording (S41/S42 builder answer)
+
+Parent: b878e38 (checkpoint 43 head). Pack copy and the generated crosswalk only; no engine change.
+
+* **Change.** AE09 and AE10 now read exactly as S41 supplied: “New Testament narrative — Matthew narrates Jesus’ prayer
+  at Gethsemane before his arrest.” and “New Testament narrative — Matthew names Golgotha as the place where Jesus is
+  crucified.” Only the ambiguous `/vision` suffix was removed; names, sources (Matthew 26:30–57, 27:33–35), `2/nt`
+  gates and the BMV-172 See-also back-reference to AE10 are unchanged. AE14 keeps “narrative/vision” (it is a vision).
+* **Crosswalk.** The two `not-vision` SEM entries were removed from `supplementary-build/timeline_vision.cjs` (its
+  unused-SEM guard would otherwise fail) and `timeline-source-vision.csv` regenerated: 152 rows (was 154), keyword
+  candidates 94 (was 96), not-vision 23 (was 25), inherited-only 17 and the 35 date-bearing entries unchanged;
+  date classes documentary 8 / narrated 4 / synthesis 11 / site-period 12, no-year 117 (the two removed rows were
+  no-year). No artificial keyword was kept to hold a count.
+* **Tests.** The S40-C1 test now expects 94 candidates, keeps BXP01 / BMV-202 as not-vision, and asserts that AE09/AE10
+  are absent from the crosswalk, start with “New Testament narrative — Matthew ” and keep `2/nt`.
+* **Checks at this commit.** `pnpm format`, `pnpm check` (137/137 tests, check:dist 114 OK), `pnpm test:pages` 13×2,
+  `pnpm test:browser` passed (Chromium 1243, SwiftShader).
+* **CI gap explained.** b878e38 (and the earlier 52507fc docs head pattern) carried `[skip ci]` in the head commit
+  message, so GitHub ran no workflow for it; 29ada52 was never a PR head on its own. This commit deliberately omits
+  `[skip ci]` so the PR head gets a normal Pages-workflow run; its run id is recorded in status.md once it finishes.
+* **Still open (Claude keeps ownership):** S42 observation 2 (JERUSALEM label identity/anchor); finished-bake captures
+  at 3840/1280/390; wider semantic omission/vision screen; real-GPU and physical-phone evidence need hardware.
