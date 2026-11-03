@@ -3,7 +3,7 @@
 // from the DOM with the probe's own visibility test (viewport ∩ clipping ancestors, ancestor opacity, hit test),
 // not from engine state.
 // Usage (repo root, after `pnpm build`): node docs/universes/packs/lds-standard-works/supplementary-build/s49-clip-edge-probe.mjs
-// Env: SHOTS=<dir>; CHROME_PATH optional; RM=reduce adds a reduced-motion pass. Exits non-zero on the first failed check.
+// Env: SHOTS=<dir>; CHROME_PATH optional; RM=reduce adds a reduced-motion pass (RM=only: that pass alone). Exits non-zero on the first failed check.
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync } from 'node:fs';
@@ -306,8 +306,9 @@ async function edgeSweep(tab, W, sid, tag) {
 }
 
 try {
-  const passes = [[{ width: 390, height: 844 }, 'no-preference']];
-  if (process.env.RM === 'reduce') passes.push([{ width: 390, height: 844 }, 'reduce']);
+  // RM=reduce adds a reduced-motion pass; RM=only runs the reduced-motion pass alone (checkpoint 50)
+  const passes = process.env.RM === 'only' ? [] : [[{ width: 390, height: 844 }, 'no-preference']];
+  if (process.env.RM === 'reduce' || process.env.RM === 'only') passes.push([{ width: 390, height: 844 }, 'reduce']);
   for (const [vp, rm] of passes) {
     const { ctx, tab } = await open(vp, rm);
     await tab.waitForTimeout(15000);

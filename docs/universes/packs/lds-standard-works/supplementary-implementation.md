@@ -2160,3 +2160,32 @@ Answers [supplementary-review-s47.md](https://github.com/mckayec/universe-sandbo
 - **Still open (Claude keeps ownership):** reduced-motion pass of the s49 probe; 119/120/121 px threshold tests;
   non-Earth Space/galaxy compact captures; 3840×2160 finished-bake capture; wider semantic omission/vision screen;
   native-select keyboard path; real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 50 — reduced-motion rerun of the S49 probe and 119/120/121 px framing-threshold tests
+
+Parent: cf7fe2a (checkpoint 49, accepted within source/geometry scope in the 2026-11-03 HANDOFF_PLAN outcome).
+Runtime behaviour is unchanged; pack/canon data, citations, imports and CSS untouched.
+
+- **Framing threshold (checkpoint-47 open item).** The compact vertical framing rule was moved out of `viewOffset()`
+  into a pure helper `compactOffsetY(H, a, b)` with the threshold named `OPEN_MIN = 120` (`public/atlas/engine.js`,
+  next to `labelPlacement()`/`dotTip()`); `viewOffset()` now calls it. Same expression as before (centre the open
+  area when `b − a ≥ 120`, clamped to ±30 % of the height; otherwise `H × 0.07`). Four new unit tests in
+  [tests/atlas-label-geometry.test.ts](../../../../tests/atlas-label-geometry.test.ts): 119 px keeps the fixed
+  shift; 120 and 121 px centre the open area exactly on the screen centre; the clamp holds both ways; the boundary is a
+  step (119.999 → fixed shift, 120 → centred) and one more px of open area moves the view by half a px. These are
+  helper-level tests at H = 844; they do not drive the DOM chrome to a 119/120/121 px gap in a browser.
+- **Reduced-motion rerun (S47-A1 / checkpoint-49 open item).** The S49 probe gained `RM=only` (reduced-motion pass
+  alone; `RM=reduce` still adds it after the normal pass). Run at this head, 390×844, Playwright context
+  `reducedMotion: 'reduce'`, real Tab traversal and `:focus-visible`:
+  [output](supplementary-build/s50-reduced-motion-output.txt). Jerusalem reached in 24 presses; turned away, focus
+  went to the grab bar (91 % showing, on top, focus ring), Tab continued, selection unchanged; clipped-row case: row
+  27,−60–363,229 on the viewport but 0 % showing, the checkpoint-48 function would have accepted it, recovery went to
+  the visible header control 47,254–116,273 (100 %, focus ring), not the row; selection unchanged; zero
+  console/request/page errors. **PASS 15** (582 s). The edge sweeps and rotation run only in the normal-motion pass
+  (geometry is motion-independent); they were not repeated here.
+- **Checks at this commit.** `pnpm format`, `pnpm check` (147/147, check:dist 114 OK), `pnpm test:pages` 13×2,
+  `pnpm test:browser` passed (SwiftShader, Playwright bundled Chromium).
+- **Still open (Claude keeps ownership):** browser-level 119/120/121 px gap case; non-Earth Space/galaxy compact
+  captures; 3840×2160 finished-bake capture; native-select keyboard path and final keyboard/focus evidence (incl. a
+  fully contained grab-bar focus outline); wider semantic omission/vision screen; real-GPU and physical-phone evidence
+  need hardware.

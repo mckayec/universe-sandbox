@@ -1168,6 +1168,13 @@ function dotTip(px, W) {
   const left = bl + LBL_DOTW - 24 - m;
   return { left: left > right, room: Math.max(40, Math.floor(Math.max(left, right))) };
 }
+/* Compact vertical framing: centre the view in the open globe area [a, b] between the top chrome and the sheet when
+   at least OPEN_MIN px of globe is left (clamped to +/-30 % of the height); otherwise keep the slight upward shift. */
+const OPEN_MIN = 120;
+function compactOffsetY(H, a, b) {
+  if (b - a >= OPEN_MIN) return Math.max(-H * 0.3, Math.min(H * 0.3, H / 2 - (a + b) / 2));
+  return H * 0.07;
+}
 function layoutSiteLabels(W, H) {
   if (!PL) return;
   const bands = chromeBands(W, H);
@@ -1791,7 +1798,7 @@ function viewOffset(ease) {
   }
   if (MOB) {
     const [a, b] = compactOpenArea(W, H);
-    oy = b - a >= 120 ? clamp(H / 2 - (a + b) / 2, -H * 0.3, H * 0.3) : H * 0.07;
+    oy = compactOffsetY(H, a, b);
   }
   VO.tx = ox;
   VO.ty = oy;

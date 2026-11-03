@@ -11,10 +11,11 @@ assert.ok(start > 0 && end > start, 'label geometry helpers found in engine.js')
 const ctx: Record<string, any> = {};
 vm.runInNewContext(
   src.slice(start, end) +
-    '\nthis.labelPlacement = labelPlacement; this.dotTip = dotTip; this.RING = LBL_RING; this.DOTW = LBL_DOTW;',
+    '\nthis.labelPlacement = labelPlacement; this.dotTip = dotTip; this.RING = LBL_RING; this.DOTW = LBL_DOTW;' +
+    ' this.compactOffsetY = compactOffsetY; this.OPEN_MIN = OPEN_MIN;',
   ctx,
 );
-const { labelPlacement, dotTip, RING, DOTW } = ctx;
+const { labelPlacement, dotTip, RING, DOTW, compactOffsetY, OPEN_MIN } = ctx;
 const W = 390;
 
 // the box a shown label occupies on screen, focus ring included
@@ -79,4 +80,39 @@ test('desktop (not compact) keeps the previous behaviour: no edge hiding or flip
   assert.equal(p.edgeOut, false);
   assert.equal(p.flip, false);
   assert.equal(p.edgeDot, false);
+});
+
+// S47/S49 open item: the 120 px open-area threshold of the compact framing (checkpoint 47), tested at 119/120/121 px.
+test('compact framing: 119 px of open globe keeps the fixed upward shift', () => {
+  const H = 844;
+  assert.equal(OPEN_MIN, 120);
+  assert.equal(compactOffsetY(H, 373, 373 + 119), H * 0.07);
+});
+
+test('compact framing: 120 and 121 px of open globe centre the view in the open area', () => {
+  const H = 844;
+  for (const gap of [120, 121]) {
+    const a = 373;
+    const b = a + gap;
+    const oy = compactOffsetY(H, a, b);
+    assert.equal(oy, H / 2 - (a + b) / 2, `gap ${gap}`);
+    // with the offset applied the open area's centre lands on the screen centre
+    assert.equal((a + b) / 2 + oy, H / 2);
+  }
+});
+
+test('compact framing: the centring shift is clamped to 30 % of the height both ways', () => {
+  const H = 844;
+  assert.equal(compactOffsetY(H, 0, 130), H * 0.3);
+  assert.equal(compactOffsetY(H, 714, 844), -H * 0.3);
+  // a symmetric open area needs no shift
+  assert.equal(compactOffsetY(H, 100, 744), 0);
+});
+
+test('compact framing: the threshold is a step, not a ramp (no jump inside the open regime)', () => {
+  const H = 844;
+  const at = (gap: number) => compactOffsetY(H, 300, 300 + gap);
+  assert.equal(at(119.999), H * 0.07);
+  assert.notEqual(at(120), H * 0.07);
+  assert.ok(Math.abs(at(121) - at(120)) <= 0.5 + 1e-9, 'one px more open area moves the view by half a px');
 });
