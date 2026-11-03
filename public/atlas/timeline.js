@@ -264,6 +264,251 @@
     return out;
   }
 
+  /* ---------- adapter: Standard Works (places pack: events, sites, routes, codex; proposal §2) ----------
+     Isolated: no host is wired to it yet (the pack lives on its own branch). What it does, and does not, emit:
+     * events with `when` → `institutional` records on one Church-history lane; every other event, site, route and
+       codex card without a numeric `when` → an undated record on its work's lane (Bible OT/NT, BoM, D&C, PGP), in
+       pack order, so each work and any combination stays selectable. A card's `date` text is kept as `whenText`
+       and is never parsed into a year.
+     * a site's `when` (a year or [from, to] as given for the atlas year filter) is a dated `span`, not a lifespan
+       or a founding: no wording is added to it.
+     * a dated route yields `travel` edges only between consecutive stops that are mapped sites; the route itself
+       carries no source locator, so those edges are listed as unsourced, never drawn. Undated routes stay undated
+       journeys with no travel edges (proposal correction: no travel without ordered, dated stops).
+     * codex `see` links → typed edges with the link's own wording as label; reciprocal pairs are kept once and
+       links to a key that is not in the pack are counted, not invented. Office relations (“member of the Twelve”,
+       “appointed to …”) are `context`, never `succession`. A card's citation is the card's, not the link's, so the
+       link's `src` stays empty and it is reported as unsourced (kept for review as `cardSrc`). */
+  const SW_LANE_HISTORY = 'sw-history';
+  const SW_LANE_PLACES = 'sw-places';
+  const SW_LANE_JOURNEYS = 'sw-journeys';
+  function seeType(r) {
+    const t = String(r || '');
+    if (/in another account|^same\b/i.test(t)) return 'same-entity';
+    if (/^describes$|^described in$/i.test(t)) return 'describes';
+    if (/^within$|within it$/i.test(t)) return 'within';
+    if (/quot/i.test(t)) return 'quotation';
+    return 'context';
+  }
+  function swWhen(w, approx) {
+    if (w == null) return null;
+    if (Array.isArray(w)) return { from: w[0], to: w[1], range: true, approx: !!approx };
+    return { from: w, to: null, approx: !!approx };
+  }
+  function adaptStandardWorks(pack) {
+    const records = [];
+    const edges = [];
+    const lanes = [];
+    const layerName = {};
+    arr(pack.layers).forEach(l => (layerName[l.id] = l.name || l.id));
+    const seenLane = {};
+    const addLane = (id, title, group, gate) => {
+      if (seenLane[id]) return;
+      seenLane[id] = true;
+      lanes.push({ id, title, group, gate });
+    };
+    const workLane = layers => {
+      const l = arr(layers)[0] || 'other';
+      const id = 'work-' + l;
+      addLane(id, layerName[l] || 'Other', 'work', { layers: [l] });
+      return id;
+    };
+    let order = 0;
+    const base = (o, extra) =>
+      Object.assign(
+        {
+          claim: claimsOf(o.notes),
+          notes: notesOf(o.notes),
+          notSame: notSameOf(o.notSame),
+          atlasRef: null,
+          calendar: 'gregorian-ce',
+          order: order++,
+          src: srcOf(o),
+          gate: gateOf(o),
+        },
+        extra,
+      );
+    /* fixed lanes first so the default order reads history → dated places → dated journeys → works */
+    const dated = {
+      ev: arr(pack.events).some(e => e.when != null),
+      site: arr(pack.worlds).some(w => arr(w.sites).some(s => s.when != null)),
+      route: arr(pack.worlds).some(w => arr(w.routes).some(r => r.when != null)),
+    };
+    if (dated.ev) addLane(SW_LANE_HISTORY, 'Church history · dated events', 'institution', {});
+    if (dated.site) addLane(SW_LANE_PLACES, 'Places · years given', 'region', {});
+    if (dated.route) addLane(SW_LANE_JOURNEYS, 'Journeys · dated', 'region', {});
+
+    arr(pack.events).forEach(e => {
+      const when = swWhen(e.when, e.approx);
+      records.push(
+        base(e, {
+          id: 'e:' + e.id,
+          sourceId: e.id,
+          source: 'events',
+          label: e.title,
+          lane: when ? SW_LANE_HISTORY : workLane(e.layers),
+          kind: when ? 'event' : 'undated',
+          chron: when ? 'institutional' : 'narrative',
+          text: e.text || null,
+          place: e.site ? { world: e.world || null, site: e.site } : null,
+          when,
+          whenText: e.whenText || null,
+        }),
+      );
+    });
+    const siteIds = new Set();
+    arr(pack.worlds).forEach(w =>
+      arr(w.sites).forEach(s => {
+        siteIds.add(s.id);
+        const when = swWhen(s.when, s.approx);
+        records.push(
+          base(s, {
+            id: 's:' + s.id,
+            sourceId: s.id,
+            source: 'sites',
+            label: s.name,
+            lane: when ? SW_LANE_PLACES : workLane(s.layers),
+            kind: when ? 'span' : 'undated',
+            chron: when ? 'historical' : 'narrative',
+            text: s.desc || null,
+            place: { world: w.id, site: s.id },
+            when,
+            whenText: s.whenText || null,
+          }),
+        );
+      }),
+    );
+    let omittedLegs = 0;
+    arr(pack.worlds).forEach(w =>
+      arr(w.routes).forEach(r => {
+        const when = swWhen(r.when, r.approx);
+        const id = 'r:' + r.id;
+        records.push(
+          base(r, {
+            id,
+            sourceId: r.id,
+            source: 'routes',
+            label: r.name,
+            lane: when ? SW_LANE_JOURNEYS : workLane(r.layers),
+            kind: when ? 'event' : 'undated',
+            chron: when ? 'historical' : 'narrative',
+            text: r.desc || null,
+            textRef: r.ref || null,
+            place: null,
+            when,
+            whenText: r.whenText || null,
+          }),
+        );
+        if (!when) return;
+        const stops = arr(r.stops).map(st => (typeof st === 'string' ? { site: st } : st));
+        for (let k = 0; k + 1 < stops.length; k++) {
+          const a = stops[k];
+          const b = stops[k + 1];
+          if (!a.site || !b.site || !siteIds.has(a.site) || !siteIds.has(b.site)) {
+            omittedLegs++;
+            continue;
+          }
+          edges.push({
+            id: 't:' + r.id + ':' + k,
+            from: 's:' + a.site,
+            to: 's:' + b.site,
+            type: 'travel',
+            label: a.note || null,
+            route: id,
+            when: r.when,
+            src: [],
+            locator: null,
+            editorial: false,
+            gate: gateOf(r),
+          });
+        }
+      }),
+    );
+    const cardIds = new Map();
+    const cards = [];
+    arr(pack.codex).forEach(sec =>
+      arr(sec.list).forEach((c, i) => {
+        const id = 'c:' + (c.key || sec.id + '#' + i);
+        if (c.key) cardIds.set(c.key, id);
+        cards.push({ c, id });
+        const when = swWhen(c.when, c.approx);
+        records.push(
+          base(c, {
+            id,
+            sourceId: c.key || null,
+            source: 'codex',
+            section: sec.id,
+            label: c.name || c.title || '',
+            lane: workLane(c.layers),
+            kind: when ? 'event' : 'undated',
+            chron: when ? 'historical' : c.date ? 'historical' : 'narrative',
+            text: c.desc || null,
+            place: null,
+            when,
+            whenText: c.whenText || c.date || null,
+          }),
+        );
+      }),
+    );
+    let danglingLinks = 0;
+    const pair = new Set();
+    cards.forEach(({ c, id }) =>
+      arr(c.see).forEach(s => {
+        const k = typeof s === 'string' ? s : s && s.k;
+        const label = typeof s === 'string' ? null : (s && s.r) || null;
+        const to = cardIds.get(k);
+        if (!to) {
+          danglingLinks++;
+          return;
+        }
+        const type = seeType(label);
+        const key = [id, to].sort().join('|') + '|' + type + '|' + (label || '');
+        if (pair.has(key)) return;
+        pair.add(key);
+        edges.push({
+          id: 'x:' + id + '>' + to,
+          from: id,
+          to,
+          type,
+          label,
+          src: [],
+          cardSrc: srcOf(c),
+          locator: null,
+          editorial: false,
+          gate: gateOf(c),
+        });
+      }),
+    );
+    return {
+      calendar: 'gregorian-ce',
+      records,
+      edges,
+      lanes,
+      journeys: [],
+      omitted: { travelLegs: omittedLegs, danglingLinks },
+    };
+  }
+  /* which adapter a pack uses; null = the pack has no timeline adapter (the view is not offered) */
+  function adapterFor(pack) {
+    if (pack && pack.tree) return adaptTree;
+    if (pack && pack.id === 'lds-standard-works') return adaptStandardWorks;
+    return null;
+  }
+
+  /* ---------- chapter-aware spoiler gate ----------
+     A record may carry `chapter` with its first book. In a cumulative (“read up to book k”) host, a record first
+     seen in an earlier book is safe; one first seen in book k is safe only when the host knows the reader's chapter
+     and it has reached the record's chapter. A host with no chapter selector passes `chapter: null`, so such
+     records stay hidden until the next book (fail closed). No book selected, or a non-cumulative host, hides
+     nothing here (the host's own book gate still applies). pos: {book, chapter, cumulative}. */
+  function chapterOk(gate, pos) {
+    if (!gate || gate.chapter == null || gate.first == null) return true;
+    if (!pos || !pos.book || !pos.cumulative) return true;
+    if (gate.first < pos.book) return true;
+    if (gate.first > pos.book) return false;
+    return pos.chapter != null && pos.chapter >= gate.chapter;
+  }
+
   /* ---------- gating ---------- */
   /* `ok(gate)` is the atlas's own filter (layers.js + book gate). Records first, then edges whose endpoints both
      survive and whose own gate passes; lanes that keep at least one record. Everything downstream uses this. */
@@ -320,9 +565,12 @@
         id: 'migration',
         t:
           'Migration or travel: ' +
-          (model.journeys.length
-            ? model.journeys.length + ' journeys are described in text only, without ordered dated stops.'
-            : 'no routes with ordered, dated stops.'),
+          (view.unsourcedEdges.some(e => e.type === 'travel')
+            ? view.unsourcedEdges.filter(e => e.type === 'travel').length +
+              ' legs of dated routes have no source locator on the route; listed, not drawn.'
+            : model.journeys.length
+              ? model.journeys.length + ' journeys are described in text only, without ordered dated stops.'
+              : 'no routes with ordered, dated stops.'),
       });
     if (view.unsourcedEdges.length)
       gaps.push({
@@ -477,6 +725,9 @@
     yearsBetween,
     yearLabel,
     adaptTree,
+    adaptStandardWorks,
+    adapterFor,
+    chapterOk,
     visible,
     revalidate,
     search,
