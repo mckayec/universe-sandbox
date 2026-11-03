@@ -1954,5 +1954,21 @@ Parent: b878e38 (checkpoint 43 head). Pack copy and the generated crosswalk only
 * **CI gap explained.** b878e38 (and the earlier 52507fc docs head pattern) carried `[skip ci]` in the head commit
   message, so GitHub ran no workflow for it; 29ada52 was never a PR head on its own. This commit deliberately omits
   `[skip ci]` so the PR head gets a normal Pages-workflow run; its run id is recorded in status.md once it finishes.
-* **Still open (Claude keeps ownership):** S42 observation 2 (JERUSALEM label identity/anchor); finished-bake captures
-  at 3840/1280/390; wider semantic omission/vision screen; real-GPU and physical-phone evidence need hardware.
+* **S42 observation 2 identified (no data or layout change).** The spaced-capitals “JERUSALEM” is not a globe/site/
+  region label: it is the current-location crumb, `<span class="here">` inside `#crumbs` (`nav aria-label="Location"`,
+  engine.css `text-transform:uppercase; letter-spacing:.2em`), rendered by `renderCrumbs()` when a site is selected
+  (“Milky Way › Earth › Earth › Jerusalem”). [s44-crumbs-probe.mjs](supplementary-build/s44-crumbs-probe.mjs) selects
+  Jerusalem through its dossier place control and reads the DOM: at 1440×900 the span is at x 805–881, y 115–129
+  (S41's pixel read: x 805–875, y 123), `elementFromPoint` at its centre is inside `#crumbs`; the two Jerusalem site
+  label elements sit at x 631–738 / 654–732, y 437–474. At 390×844 the crumb is at x 274–342, y 254. PASS, exit 0
+  ([output](supplementary-build/s44-crumbs-probe-output.txt); [capture](shots/s44-crumbs-1440x900.jpg),
+  [crumb detail](shots/s44-crumbs-detail.jpg)). Jerusalem's coordinates and the site-label anchor are unchanged and
+  need no change. The probe uses a DOM `click()` (a Playwright pointer click stalls on SwiftShader frames here) and
+  clicks only when the place is not already selected (a second click deselects, engine.js).
+* **Two UI follow-ons this exposed (generic engine, not canon; not changed here):** (a) the non-current crumbs (`--muted`
+  / `--lapis-lo`) are nearly unreadable over bright land at this zoom — see the detail crop; a light backdrop or
+  stronger shadow on `#crumbs` would fix it but touches every pack, so it needs cross-pack captures; (b) the trail
+  repeats “Earth › Earth” because the pack's single group and its single world share a name. Proposed for review, not
+  built.
+* **Still open (Claude keeps ownership):** finished-bake captures at 3840/1280/390; wider semantic omission/vision
+  screen; real-GPU and physical-phone evidence need hardware; the two crumb follow-ons above if wanted.
