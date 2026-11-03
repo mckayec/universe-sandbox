@@ -1102,11 +1102,34 @@ function labelBox(o) {
 function visibleControl(el) {
   if (!el || el.disabled || el.closest("[hidden],[aria-hidden='true'],[inert]")) return false;
   if (!el.getClientRects().length) return false;
+  if (el.checkVisibility && !el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) return false;
   const r = el.getBoundingClientRect();
-  if (r.width < 1 || r.height < 1 || r.bottom <= 0 || r.top >= innerHeight || r.right <= 0 || r.left >= innerWidth)
-    return false;
-  const cs = getComputedStyle(el);
-  return cs.visibility !== "hidden" && cs.display !== "none" && parseFloat(cs.opacity) > 0.05;
+  if (r.width < 1 || r.height < 1) return false;
+  /* S47-C1: the visible part is the box cut by the viewport and by every clipping ancestor (a scrolled dossier
+     list can leave a row "on screen" but outside its own scroll window), and ancestors must not be faded out. */
+  let L = Math.max(r.left, 0),
+    T = Math.max(r.top, 0),
+    R = Math.min(r.right, innerWidth),
+    B = Math.min(r.bottom, innerHeight),
+    op = 1;
+  for (let a = el; a && a.nodeType === 1; a = a.parentElement) {
+    const cs = getComputedStyle(a);
+    op *= parseFloat(cs.opacity);
+    if (a === el && (cs.visibility === "hidden" || cs.display === "none")) return false;
+    if (a === el || a === document.body || a === document.documentElement) continue;
+    const cx = /hidden|scroll|auto|clip/.test(cs.overflowX),
+      cy = /hidden|scroll|auto|clip/.test(cs.overflowY);
+    if (!cx && !cy) continue;
+    const c = a.getBoundingClientRect();
+    if (cx) (L = Math.max(L, c.left)), (R = Math.min(R, c.right));
+    if (cy) (T = Math.max(T, c.top)), (B = Math.min(B, c.bottom));
+  }
+  if (op <= 0.05) return false;
+  /* most of the control must be showing, not a sliver at a scroll edge */
+  if (R - L < Math.min(r.width, 24) || B - T < Math.min(r.height, 20) * 0.8) return false;
+  /* and nothing opaque may sit on top of it */
+  const hitEl = document.elementFromPoint((L + R) / 2, (T + B) / 2);
+  return !hitEl || el.contains(hitEl) || hitEl.contains(el);
 }
 function recoverLabelFocus(o) {
   const id = o.s.id;
@@ -1117,6 +1140,33 @@ function recoverLabelFocus(o) {
   const target = rows.find(visibleControl) || nav.find(visibleControl);
   if (target) target.focus({ preventScroll: true });
   else o.el.blur();
+}
+/* Label geometry for compact layouts (S46-C2, S47-C2), pure so it can be tested on its own. px is the pin's screen x,
+   W the window width, fw the measured full-name button width. A button starts 7 px left of its pin; its focus ring
+   reaches LBL_RING px beyond the box, so every shown box, ring included, stays inside the window:
+   - a pin too near either edge for its collapsed (pin-only) button is hidden (edgeOut);
+   - a name that would run off the right edge collapses to its pin (edgeDot), except the selected name, which flips
+     to the left of its pin when it fits there; only when neither side fits does it collapse to a selected pin,
+     whose name stays in the sheet, the aria-label and a bounded tooltip. A few px of hysteresis keep a flip steady. */
+const LBL_RING = 4;
+const LBL_DOTW = 20;
+function labelPlacement(px, W, fw, wasFlip, sel, compact) {
+  const m = LBL_RING;
+  const edgeOut = compact && (px - 7 < m || px - 7 + LBL_DOTW > W - m);
+  const runsOff = px - 7 + fw > W - m - (wasFlip ? 8 : 0);
+  const fitsLeft = px + 7 - fw >= m;
+  const flip = compact && sel && runsOff && fitsLeft;
+  const edgeDot = compact && runsOff && !flip;
+  return { edgeOut, edgeDot, flip, x0: flip ? px + 7 - fw : px - 7 };
+}
+/* The tooltip of a collapsed pin: it sits 24 px from the button on the side with more room and may not be wider
+   than that room, so a long name wraps instead of leaving the window. */
+function dotTip(px, W) {
+  const m = LBL_RING;
+  const bl = px - 7;
+  const right = W - m - (bl + 24);
+  const left = bl + LBL_DOTW - 24 - m;
+  return { left: left > right, room: Math.max(40, Math.floor(Math.max(left, right))) };
 }
 function layoutSiteLabels(W, H) {
   if (!PL) return;
@@ -1130,17 +1180,9 @@ function layoutSiteLabels(W, H) {
     const pr = project(_w, camW, W, H);
     const sel = o.s.id === S.site;
     const [fw, fh] = labelBox(o);
-    /* compact layouts: a pin past the screen edge is hidden and a name that would run off the right edge collapses
-       to its pin (S47). The selected name is kept as text where it can be: it flips to the left of its pin, and only
-       when neither side fits does it collapse to a selected pin whose name stays in the sheet and the tooltip
-       (S46-C2). A few pixels of hysteresis stop it flickering while the view offset eases. */
-    const edgeOut = MOB && (pr.x < 2 || pr.x > W - 2);
-    const runsOff = pr.x - 7 + fw > W - (o._flip ? 10 : 2);
-    const fitsLeft = pr.x + 7 - fw >= 2;
-    const flip = MOB && sel && runsOff && fitsLeft;
-    o._flip = flip;
-    const edgeDot = MOB && runsOff && !flip;
-    const x0 = flip ? pr.x + 7 - fw : pr.x - 7;
+    const P = labelPlacement(pr.x, W, fw, o._flip, sel, MOB);
+    o._flip = P.flip;
+    const { edgeOut, edgeDot, flip, x0 } = P;
     const r = { x: x0, y: pr.y - fh / 2, w: fw, h: fh };
     const show = facing > 0.12 && pr.z < 1 && !edgeOut && !underChrome(r, bands);
     const dot = show && (edgeDot || (!sel && placed.some((q) => hit(r, q))));
@@ -1152,6 +1194,13 @@ function layoutSiteLabels(W, H) {
     o.el.classList.toggle("flip", flip && !dot);
     o.el.classList.toggle("edge", dot && edgeDot);
     if (o.el.title !== (dot ? o.s.name : "")) o.el.title = dot ? o.s.name : "";
+    if (dot) {
+      /* S47-C2: a collapsed pin's name opens on whichever side has more room, wrapped to fit inside the window */
+      const tip = dotTip(pr.x, W);
+      o.el.classList.toggle("tipl", tip.left);
+      const mw = tip.room + "px";
+      if (o.el._tipw !== mw) o.el.style.setProperty("--tipw", (o.el._tipw = mw));
+    }
     if (o.el._tab !== show) {
       o.el._tab = show;
       o.el.tabIndex = show ? 0 : -1;

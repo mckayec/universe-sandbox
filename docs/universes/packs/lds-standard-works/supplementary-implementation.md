@@ -2104,3 +2104,59 @@ CSS rules in `engine.css`); pack/canon data untouched.
 - **Still open (Claude keeps ownership):** 119/120/121 px threshold boundary tests; long-name selected sweep; Space
   view/galaxy compact framing captures for a non-Earth pack; 3840×2160 finished-bake capture; wider semantic
   omission/vision screen; real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 49 — S47-C1 clipped focus targets and S47-C2 both-edge / long-name pins
+
+Answers [supplementary-review-s47.md](https://github.com/mckayec/universe-sandbox/blob/32682d268b7d03bc90e985f955cf297ee1bee944/docs/universes/packs/lds-standard-works/supplementary-review-s47.md)
+(PR34 32682d2, auditing 6b86845). Runtime change is in the shared engine only (`public/atlas/engine.js`,
+`engine.css`); pack/canon data, citations and imports untouched.
+
+- **S47-C1 — Resolution.** `visibleControl()` now measures the part of a candidate that is actually showing: its box
+  is cut by the viewport **and by every ancestor that clips** (`overflow` hidden/scroll/auto/clip on either axis, e.g.
+  the scrolling sheet); ancestor opacity is multiplied through (and `checkVisibility({opacityProperty,
+  visibilityProperty})` is used where the browser has it); at least min(width, 24 px) × 0.8·min(height, 20 px) must
+  remain, and an `elementFromPoint` hit test at the centre of the visible part must land on the control itself (so a
+  covered control is refused). A row that merely intersects the viewport is no longer accepted; recovery then falls
+  through to the grab bar / worlds button / header controls with the same test. Selection and unrelated focus are
+  still never touched.
+- **S47-C2 — Resolution.** Label geometry moved into two pure helpers, `labelPlacement()` and `dotTip()`, unit-tested
+  in [tests/atlas-label-geometry.test.ts](../../../../tests/atlas-label-geometry.test.ts) (6 tests). On compact layouts
+  every shown box **including its 4 px focus ring** stays inside the window at both edges: a pin too close to either
+  edge for its pin-only button is hidden (the reviewer's x=2 / width 110 case is now hidden, not x0=−5); right-edge
+  flip and right-edge collapse use the same ring margin. A collapsed pin's tooltip (hover / `:focus-visible`) opens on
+  the side with more room (`.plbl.dot.tipl`, replacing the old fixed `.edge` rule) and is limited to that room
+  (`--tipw`, `box-sizing: border-box`, wraps with `overflow-wrap:anywhere`), so a name wider than the screen wraps
+  inside the window instead of running off it. The name also stays in the sheet row and the button's `aria-label` /
+  `title`. Desktop placement is unchanged apart from the bounded tooltip.
+- **Probe.** [s49-clip-edge-probe.mjs](supplementary-build/s49-clip-edge-probe.mjs), 390×844, Playwright Chromium
+  with SwiftShader. Its own visibility measure (viewport ∩ clipping ancestors, ancestor opacity, hit test) is
+  independent of the engine function. (a) **Real Tab traversal** from the page start reaches the Jerusalem label in
+  24 presses with `:focus-visible`; turning it away moves focus to the grab bar, which passes the visibility measure
+  (91 % showing, on top) and shows a focus ring; one more Tab moves on; selection unchanged. (b) **Clipped row:**
+  Jerusalem's row was scrolled out of the open sheet's scroll window (row rect 27,−60–363,229: on the viewport, 0 %
+  showing); the checkpoint-48 function (copied into the probe) would have accepted it; after hiding the
+  Tab-focused label, focus went to a visible header control (button at 47,254–116,273, 100 % showing, focus ring),
+  not the row; selection unchanged. (c) **Longest real name** "Harmony / Priesthood Restoration Site", selected,
+  61-step camera sweep across both edges, focused when collapsed: text 3, flipped 2, selected pin 7 (tooltip left 4,
+  right 3), worst edge −4.4 px (inside), box + ring + tooltip never past either edge. (d) **Synthetic over-wide name**
+  (test fixture: the label's visible text lengthened in the DOM; data and aria-label untouched): always a selected
+  pin (12 steps), tooltip on both sides (6/6), worst −4.1 px. (e) **Rotation** 390×844 → 844×390 with the selected pin
+  focused: focus lands on the visible header link with a ring. Zero console/request/page errors. **PASS 21.**
+  [Output](supplementary-build/s49-clip-edge-probe-output.txt) also keeps the first run's failure (tooltip left edge
+  −13.6 px: `max-width` applied to the content box only), which prompted the `box-sizing` fix; the PASS run is at
+  the committed code.
+- **Captures.** [selected pin with wrapped tooltip, 390](shots/s49-pin-tooltip-390x844.jpg),
+  [rotated 844×390](shots/s49-rotated-844x390.jpg) (loading/charting-surface state, not a finished bake).
+- **S47-A1.** Focus cases in this checkpoint use the real Tab key and `:focus-visible`, at this head. The
+  checkpoint-48 focus cases (sheet opening over a label, reduced motion, Expanse descent) were not rerun here and
+  stay inherited; the reduced-motion pass of this probe is available with `RM=reduce` but was not run (time budget).
+- **Checks at this commit.** `pnpm format`, `pnpm check` (143/143, check:dist 114 OK), `pnpm test:pages` 13×2,
+  `pnpm test:browser` passed (SwiftShader, Playwright's bundled Chromium).
+- **For the reviewer.** (1) In the clipped-row case the fallback chose a header control rather than the grab bar
+  because the grab bar sits inside the scrolled sheet and was itself scrolled out of view; is that acceptable, or
+  should recovery scroll the sheet back to its row (it currently never scrolls)? (2) Pins within ~11 px of the left or
+  ~17 px of the right edge on compact layouts are now hidden one step earlier than before; tell me if that reads as a
+  regression.
+- **Still open (Claude keeps ownership):** reduced-motion pass of the s49 probe; 119/120/121 px threshold tests;
+  non-Earth Space/galaxy compact captures; 3840×2160 finished-bake capture; wider semantic omission/vision screen;
+  native-select keyboard path; real-GPU and physical-phone evidence need hardware.

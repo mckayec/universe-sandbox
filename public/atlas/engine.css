@@ -168,10 +168,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .plbl:hover .tx,.plbl.hot .tx{border-color:var(--lapis-hi)}
 .plbl.dot .tx{display:none}
 .plbl.dot:hover,.plbl.dot:focus-visible{z-index:2}
-.plbl.dot:hover .tx,.plbl.dot:focus-visible .tx{display:block;position:absolute;left:24px}
+.plbl.dot:hover .tx,.plbl.dot:focus-visible .tx{display:block;position:absolute;left:24px;top:50%;transform:translateY(-50%);width:max-content;max-width:var(--tipw,60vw);box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;text-align:left}
 .plbl.dot .pip{opacity:.85}
 .plbl.flip{flex-direction:row-reverse}
-.plbl.dot.edge:hover .tx,.plbl.dot.edge:focus-visible .tx{left:auto;right:24px}
+.plbl.dot.tipl:hover .tx,.plbl.dot.tipl:focus-visible .tx{left:auto;right:24px;text-align:right}
 .plbl.sel .tx{background:var(--chromegrad);color:var(--ink);border-color:transparent}
 
 /* ---------- tooltip ---------- */
