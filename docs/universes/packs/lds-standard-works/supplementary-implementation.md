@@ -2438,3 +2438,55 @@ provide that (10-minute command limit, run reclaimed between hours), reported as
 handoff, not a quality waiver; the 142 residual semantic dispositions (39 without a full-read omission-check row) and
 wider vision completeness; browser-level 119/120/121 px gap; native OS select popup; real-GPU and physical-phone
 evidence.
+
+## Checkpoint 55 — grouped browser acceptance pass on a96de39 (rendered 119/120/121 px gap, native-select popup, full smoke)
+
+Pinned head: **a96de39ed56820754a6e3d468020404c89e20549** (checkpoint 54). Evidence only; no runtime, pack or canon
+change. Browser: Chrome for Testing 153.0.8010.12 (Playwright's installed Chromium), SwiftShader, Playwright phone
+emulation (`isMobile`, `hasTouch`); real Tab/Enter and real key presses throughout. No physical phone, no real GPU.
+
+**Probe** — [s55-gap-select-probe.mjs](supplementary-build/s55-gap-select-probe.mjs),
+[output](supplementary-build/s55-gap-select-output.txt): **PASS 199**, 0 failed, zero console/request/page errors
+(425 s). The file was run as committed apart from a later `prettier --write` (formatting only).
+
+- **G — rendered DOM gap, normal motion.** LDS at 390 px wide with the sheet collapsed (real Enter on the grab bar).
+  The probe measures the open area from the DOM itself (lowest of header/crumbs/realms/filters to the top of
+  sheet/chronicle) and searches integer viewport heights: **119 px at 390×608, 120 px at 390×609, 121 px at 390×610**
+  (a = 373, b = 492/493/494; exact integers, no injected style). At each gap it reads the live camera's applied
+  `view.offsetY` and compares it with an independently computed expectation: 119 → fixed H×0.07 = **42.56**; 120 and
+  121 → centred **−128.5** (the other rule would have given −128.5 / ≈42.6, so each check discriminates). Sequence run
+  twice: 121 → 120 → 119 → 120 → 121 → rotate to 608×390 (offset 27.3 = expected; landscape open area none) → back to
+  119. Every state: offset equal to expectation (< 0.6 px), shown place labels wholly inside the window and off every
+  chrome band, hidden labels `aria-hidden` and out of the Tab order, focus on an effectively visible control with
+  `:focus-visible`, and view/selection/reading `["world","earth","jerusalem",0]` unchanged. Sheet expand at 120 (real
+  Enter): gap none → fixed 42.63, no label under the sheet; collapse → centred again; the grab bar keeps visible focus
+  with its ring. Screenshots: [119](shots/s55-gap119-390x608.jpg), [120](shots/s55-gap120-390x609.jpg),
+  [121](shots/s55-gap121-390x610.jpg).
+- **R — same sequence in a `reducedMotion: 'reduce'` context.** All of G again, plus at each repeat resize the offset
+  equals the expectation **within two animation frames** (no easing) — 7 checks. PASS.
+- **S — native select popup path** (`#cxPick` in the Codex, 390×844, reached by real Tab from the page; Codex opened by
+  Enter). For each of **Alt+ArrowDown, Space, F4**: the popup opens (`select.matches(':open')` true), ArrowDown moves
+  inside the open popup without committing (index stays 0, popup still open), Enter commits index 0 → 1
+  ("unmapped-places") and closes the popup, focus returns to the picker and the Codex stays open; Escape then closes
+  the Codex and returns focus to the Codex button. This is Chromium's own select popup in headless Linux, actually
+  opened and driven by keyboard — distinct from the closed-control keyboard changes of checkpoint 51. The iOS/Android
+  system pickers are not represented by it and remain physical-device evidence.
+
+**Full browser smoke** at a96de39: `pnpm test:browser` with `CHROME_PATH` = the same CfT 153 —
+[log](supplementary-build/s55-browser-smoke-a96de39.txt): passed (2 m 10 s). `pnpm check` 148/148, check:dist 114 OK.
+No fixes were needed, so no rerun after fixes.
+
+**Finding raised for disposition, not changed here (G55-O1).** At the rendered 119 px gap the fixed H×0.07 shift
+moves the selected place (Jerusalem) up under the header (it would sit at ≈ y 262 with a = 373), so **all 8 place
+names hide** and a focused place label hands focus to the grab bar; one pixel more (120 px) centres the place in the
+open strip and all 8 names show (compare the 119 and 120 screenshots). The behaviour is exactly the reviewed rule and
+nothing is drawn under the chrome, but the selected place's own label leaves the open area at a gap where it would
+fit. Proposed builder fix for the next unit, if the reviewer agrees: below `OPEN_MIN` but with an open area at least
+one label-row tall (≈ 48 px), still centre on the open area (so the fixed shift is used only when there is effectively
+no open globe), with the 119/120/121 unit tests and this probe updated to the new boundary. Held because it changes a
+reviewed threshold.
+
+**Still open (Claude keeps ownership):** G55-O1 disposition; finished 3840×2160 capture and traversal (persistent
+allocation needed; capability blocker as reported at checkpoint 54); the 142 residual semantic dispositions (39 without
+a full-read omission-check row) and wider vision completeness; physical iOS/Android pickers, real-GPU and
+physical-phone evidence.
