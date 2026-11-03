@@ -1,0 +1,1365 @@
+{
+  "counts": {
+    "records": 169,
+    "dated": 91,
+    "windows": 19,
+    "approx": 2,
+    "undated": 78,
+    "narrative": 4,
+    "edges": 129,
+    "drawn": 95,
+    "sourced": 95,
+    "editorial": 34,
+    "unsourced": 0,
+    "gaps": [
+      {
+        "id": "family",
+        "t": "Family genealogy: no accepted parent/child records yet."
+      },
+      {
+        "id": "succession",
+        "t": "Succession: no accepted succession records yet."
+      },
+      {
+        "id": "migration",
+        "t": "Migration or travel: 12 journeys are described in text only, without ordered dated stops."
+      }
+    ]
+  },
+  "edgeOwnGate": {
+    "endpointsSurvive": true,
+    "edges": 128,
+    "sourced": 94,
+    "selection": null
+  },
+  "jts": {
+    "id": "n:jud-jts",
+    "sourceId": "jud-jts",
+    "source": "tree",
+    "label": "Jewish Theological Seminary",
+    "lane": "lane-jud",
+    "kind": "presence",
+    "chron": "historical",
+    "claim": [
+      "scholarship"
+    ],
+    "text": "Founded in 1886 in New York; classes began in 1887. Its institutional leadership shaped the Conservative movement.",
+    "notes": [
+      {
+        "k": "scholarship",
+        "t": "Later Conservative institutional boundaries are not projected back onto its founding coalition, and its founding is not every member’s origin.",
+        "loc": null
+      }
+    ],
+    "notSame": [],
+    "atlasRef": null,
+    "calendar": "gregorian-ce",
+    "when": {
+      "from": 1886,
+      "to": null,
+      "toOpen": true,
+      "approx": false
+    },
+    "order": 18,
+    "whenText": null,
+    "nodeKind": "institution",
+    "src": [],
+    "gate": {
+      "layers": [
+        "jud"
+      ],
+      "books": null,
+      "first": null,
+      "chapter": null
+    }
+  },
+  "masorti": {
+    "id": "n:jud-conservative-masorti",
+    "sourceId": "jud-conservative-masorti",
+    "source": "tree",
+    "label": "Conservative / Masorti Judaism",
+    "lane": "lane-jud",
+    "kind": "presence",
+    "chron": "historical",
+    "claim": [],
+    "text": "Conservative/Masorti Judaism connects inherited practice with historical development. Frankel’s positive-historical approach is an important antecedent; later institutions shaped the movement.",
+    "notes": [],
+    "notSame": [],
+    "atlasRef": null,
+    "calendar": "gregorian-ce",
+    "when": {
+      "window": [
+        1801,
+        1900
+      ],
+      "from": 1801,
+      "to": null,
+      "toOpen": true
+    },
+    "order": 17,
+    "whenText": "Nineteenth century onward",
+    "nodeKind": "movement",
+    "src": [],
+    "gate": {
+      "layers": [
+        "jud"
+      ],
+      "books": null,
+      "first": null,
+      "chapter": null
+    }
+  },
+  "allEdges": [
+    {
+      "key": "p:judaism>jud-covenant-tradition",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-israelite-judean-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:jud-israelite-judean-context>jud-second-temple",
+      "label": "historical-development",
+      "type": "branch",
+      "locator": "judaism-research.md · §8 JU-R02",
+      "keys": [
+        "JU03",
+        "JU04"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:jud-second-temple>jud-pharisees",
+      "label": "contains-attributed-groups",
+      "type": "within",
+      "locator": "judaism-research.md · §8 JU-R03",
+      "keys": [
+        "JU17"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:jud-second-temple>jud-sadducees",
+      "label": "contains-attributed-groups",
+      "type": "within",
+      "locator": "judaism-research.md · §8 JU-R03",
+      "keys": [
+        "JU17"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:jud-second-temple>jud-essenes",
+      "label": "contains-attributed-groups",
+      "type": "within",
+      "locator": "judaism-research.md · §8 JU-R03",
+      "keys": [
+        "JU17"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:jud-second-temple>jud-rabbinic",
+      "label": "historical-development",
+      "type": "branch",
+      "locator": "judaism-research.md · §8 JU-R04",
+      "keys": [
+        "JU03",
+        "JU05"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:judaism>jud-ananites",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-karaite",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-mystical-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-hasidic",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-orthodox",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:jud-orthodox>jud-modern-orthodox",
+      "label": "within (modern classification)",
+      "type": "within",
+      "locator": "judaism-research.md · §8 JU-R10",
+      "keys": [
+        "JU18"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:jud-orthodox>jud-haredi",
+      "label": "within (modern classification)",
+      "type": "within",
+      "locator": "judaism-research.md · §8 JU-R09",
+      "keys": [
+        "JU18"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:judaism>jud-haskalah-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-reform-progressive",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-conservative-masorti",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-jts",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-reconstructionist",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-humanistic",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-renewal",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-pnai-or",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-shalom-center",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "m:jud-pnai-or>jud-aleph",
+      "label": "institutional-merger",
+      "type": "merge",
+      "locator": "judaism-research.md · §8 JU-R17",
+      "keys": [
+        "JU14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "m:jud-shalom-center>jud-aleph",
+      "label": "institutional-merger",
+      "type": "merge",
+      "locator": "judaism-research.md · §8 JU-R17",
+      "keys": [
+        "JU14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:judaism>jud-liberal-uk-historical",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:judaism>jud-reform-uk-historical",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "m:jud-liberal-uk-historical>jud-progressive-uk",
+      "label": "institutional-merger",
+      "type": "merge",
+      "locator": "judaism-research.md · §8 JU-R18 (AI304)",
+      "keys": [
+        "JU15"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "m:jud-reform-uk-historical>jud-progressive-uk",
+      "label": "institutional-merger",
+      "type": "merge",
+      "locator": "judaism-research.md · §8 JU-R18 (AI305)",
+      "keys": [
+        "JU15"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:judaism>jud-diaspora-cultures",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:ch-early-communities>christianity",
+      "label": "historical-development (a long development)",
+      "type": "branch",
+      "locator": "identity-and-edges.csv · AI291 (§6 ch-early-communities)",
+      "keys": [
+        "CH01",
+        "CH18"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-catholic",
+      "label": "family-membership",
+      "type": "within",
+      "locator": "christianity-research.md · §6 ch-catholic",
+      "keys": [
+        "CH06",
+        "CH07"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-catholic>ch-eastern-catholic",
+      "label": "communion-membership",
+      "type": "within",
+      "locator": "christianity-research.md · §6 ch-catholic",
+      "keys": [
+        "CH06",
+        "CH07"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-eastern-catholic>ch-ukrainian-greek-catholic",
+      "label": "communion-membership",
+      "type": "within",
+      "locator": "christianity-research.md · §6a ch-ukrainian-greek-catholic",
+      "keys": [
+        "CH33"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-catholic>ch-old-catholic",
+      "label": "multiple institutional separations",
+      "type": "division",
+      "locator": "christianity-research.md · §6a ch-old-catholic",
+      "keys": [
+        "CH32"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-old-catholic>ch-union-utrecht",
+      "label": "communion-association",
+      "type": "within",
+      "locator": "christianity-research.md · §6a ch-old-catholic",
+      "keys": [
+        "CH32"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-eastern-orthodox",
+      "label": "family-membership",
+      "type": "within",
+      "locator": "christianity-research.md · §6 ch-eastern-orthodox",
+      "keys": [
+        "CH04",
+        "CH05"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-chalcedonian-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:christianity>ch-oriental-orthodox",
+      "label": "family-membership",
+      "type": "within",
+      "locator": "christianity-research.md · §6 ch-oriental-orthodox",
+      "keys": [
+        "CH03"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-east-syriac",
+      "label": "historical-family",
+      "type": "within",
+      "locator": "christianity-research.md · §6 ch-east-syriac",
+      "keys": [
+        "CH17"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-kyivan-byzantine-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:christianity>ch-western-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:ch-western-context>ch-lutheran",
+      "label": "reform / institutional development",
+      "type": "branch",
+      "locator": "christianity-research.md · §6 ch-lutheran",
+      "keys": [
+        "CH08"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-western-context>ch-reformed",
+      "label": "reform / institutional development",
+      "type": "branch",
+      "locator": "christianity-research.md · §6 ch-reformed",
+      "keys": [
+        "CH19"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-western-context>ch-anglican",
+      "label": "reform / institutional development",
+      "type": "branch",
+      "locator": "christianity-research.md · §6 ch-anglican",
+      "keys": [
+        "CH09"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-anglican>ch-methodist",
+      "label": "renewal, then institutional separation",
+      "type": "division",
+      "locator": "christianity-research.md · §6 ch-methodist",
+      "keys": [
+        "CH12"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-reformation-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:ch-reformation-context>ch-anabaptist",
+      "label": "movement-emergence",
+      "type": "branch",
+      "locator": "christianity-research.md · §6 ch-anabaptist",
+      "keys": [
+        "CH10"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-english-separatist-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:ch-english-separatist-context>ch-baptist",
+      "label": "movement-emergence",
+      "type": "branch",
+      "locator": "christianity-research.md · §6 ch-baptist",
+      "keys": [
+        "CH11"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-evangelical",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:christianity>ch-revival-contexts",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:ch-revival-contexts>ch-pentecostal",
+      "label": "multiple influences",
+      "type": "branch",
+      "locator": "christianity-research.md · §6 ch-pentecostal",
+      "keys": [
+        "CH14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-stone-movement",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:christianity>ch-campbell-movement",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "m:ch-stone-movement>ch-stone-campbell",
+      "label": "merger",
+      "type": "merge",
+      "locator": "christianity-research.md · §6 ch-stone-campbell",
+      "keys": [
+        "CH15",
+        "CH20"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "m:ch-campbell-movement>ch-stone-campbell",
+      "label": "merger",
+      "type": "merge",
+      "locator": "christianity-research.md · §6 ch-stone-campbell",
+      "keys": [
+        "CH15",
+        "CH20"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-millerite-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:ch-millerite-context>ch-adventist",
+      "label": "movement-development",
+      "type": "branch",
+      "locator": "christianity-research.md · §6a ch-adventist",
+      "keys": [
+        "CH21",
+        "CH22"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-bible-student-context",
+      "label": "grouped in this overview",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:ch-bible-student-context>ch-jehovahs-witnesses",
+      "label": "institutional development; name adoption",
+      "type": "branch",
+      "locator": "christianity-research.md · §6a ch-jehovahs-witnesses",
+      "keys": [
+        "CH23",
+        "CH24"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-latter-day-saint",
+      "label": "self-identified Christian / restoration movement",
+      "type": "within",
+      "locator": "christianity-research.md · §6 ch-latter-day-saint",
+      "keys": [
+        "CH16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-latter-day-saint>ch-lds-utah",
+      "label": "successor tradition",
+      "type": "division",
+      "locator": "christianity-research.md · §6a ch-lds-utah",
+      "keys": [
+        "CH28"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-latter-day-saint>ch-community-christ",
+      "label": "successor tradition",
+      "type": "division",
+      "locator": "christianity-research.md · §6a ch-community-christ",
+      "keys": [
+        "CH29",
+        "CH30"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-latter-day-saint>ch-jesus-christ-bickerton",
+      "label": "historical family",
+      "type": "within",
+      "locator": "christianity-research.md · §6a ch-jesus-christ-bickerton",
+      "keys": [
+        "CH31"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-latter-day-saint>ch-strang-movement",
+      "label": "successor claim / movement",
+      "type": "division",
+      "locator": "christianity-research.md · §6a ch-strang-movement",
+      "keys": [
+        "CH28"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:christianity>ch-african-instituted",
+      "label": "family category",
+      "type": "within",
+      "locator": "christianity-research.md · §6a ch-african-instituted",
+      "keys": [
+        "CH25"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-african-instituted>ch-african-church",
+      "label": "family classification",
+      "type": "within",
+      "locator": "christianity-research.md · §6a ch-african-church",
+      "keys": [
+        "CH26"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ch-african-instituted>ch-oaic",
+      "label": "representative association",
+      "type": "context",
+      "locator": "christianity-research.md · §6a ch-oaic",
+      "keys": [
+        "CH27"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>ist02",
+      "label": "tradition-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (IST02–04 tradition-within)",
+      "keys": [
+        "IS06",
+        "IS12",
+        "IS14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>ist03",
+      "label": "tradition-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (IST02–04 tradition-within)",
+      "keys": [
+        "IS06",
+        "IS12",
+        "IS14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>ist04",
+      "label": "tradition-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (IST02–04 tradition-within)",
+      "keys": [
+        "IS06",
+        "IS12",
+        "IS14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist03>ist05",
+      "label": "tradition-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (IST05–07 tradition-within)",
+      "keys": [
+        "IS09",
+        "IS10"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist03>ist06",
+      "label": "tradition-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (IST05–07 tradition-within)",
+      "keys": [
+        "IS09",
+        "IS10"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist03>ist07",
+      "label": "tradition-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (IST05–07 tradition-within)",
+      "keys": [
+        "IS09",
+        "IS10"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist06>ist08",
+      "label": "succession-division",
+      "type": "division",
+      "locator": "islam-research.md · Explicit graph edges (IST08/09 succession-division; ISE10)",
+      "keys": [
+        "IS08"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist06>ist09",
+      "label": "succession-division",
+      "type": "division",
+      "locator": "islam-research.md · Explicit graph edges (IST08/09 succession-division; ISE10)",
+      "keys": [
+        "IS08"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist09>ist10",
+      "label": "succession-division",
+      "type": "division",
+      "locator": "islam-research.md · Explicit graph edges (IST10/11 succession-division; ISE11)",
+      "keys": [
+        "IS08"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist09>ist11",
+      "label": "succession-division",
+      "type": "division",
+      "locator": "islam-research.md · Explicit graph edges (IST10/11 succession-division; ISE11)",
+      "keys": [
+        "IS08"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist02>isl01",
+      "label": "legal-school-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISL01–04 legal-school-within)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist02>isl02",
+      "label": "legal-school-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISL01–04 legal-school-within)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist02>isl03",
+      "label": "legal-school-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISL01–04 legal-school-within)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:ist02>isl04",
+      "label": "legal-school-within",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISL01–04 legal-school-within)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>isl05",
+      "label": "legal school named in the Amman Message (no further classification given)",
+      "type": "within",
+      "locator": "islam-research.md · ISL05–08 (schools named in the Amman Message)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>isl06",
+      "label": "legal school named in the Amman Message (no further classification given)",
+      "type": "within",
+      "locator": "islam-research.md · ISL05–08 (schools named in the Amman Message)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>isl07",
+      "label": "legal school named in the Amman Message (no further classification given)",
+      "type": "within",
+      "locator": "islam-research.md · ISL05–08 (schools named in the Amman Message)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>isl08",
+      "label": "legal school named in the Amman Message (no further classification given)",
+      "type": "within",
+      "locator": "islam-research.md · ISL05–08 (schools named in the Amman Message)",
+      "keys": [
+        "IS06"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>isc01",
+      "label": "devotional-stream-in (cross-cutting, not a fourth branch)",
+      "type": "overlap",
+      "locator": "islam-research.md · Explicit graph edges (ISC01 devotional-stream-in)",
+      "keys": [
+        "IS15"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>iso01",
+      "label": "order-associated-with",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISO01–06 order-associated-with)",
+      "keys": [
+        "IS16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>iso02",
+      "label": "order-associated-with",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISO01–06 order-associated-with)",
+      "keys": [
+        "IS16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>iso03",
+      "label": "order-associated-with",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISO01–06 order-associated-with)",
+      "keys": [
+        "IS16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>iso04",
+      "label": "order-associated-with",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISO01–06 order-associated-with)",
+      "keys": [
+        "IS16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>iso05",
+      "label": "order-associated-with",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISO01–06 order-associated-with)",
+      "keys": [
+        "IS16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>iso06",
+      "label": "order-associated-with",
+      "type": "within",
+      "locator": "islam-research.md · Explicit graph edges (ISO01–06 order-associated-with)",
+      "keys": [
+        "IS16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>isc02",
+      "label": "practice in Sufi communities",
+      "type": "context",
+      "locator": "islam-research.md · ISC02 (dhikr)",
+      "keys": [
+        "IS16"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:isc01>isc03",
+      "label": "teaching chain in Sufi traditions",
+      "type": "context",
+      "locator": "islam-research.md · ISC03 (silsila)",
+      "keys": [
+        "IS17"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>isc04",
+      "label": "textual reference",
+      "type": "context",
+      "locator": "islam-research.md · ISC04 (Qur'an 2:127)",
+      "keys": [
+        "IS04"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>ism01",
+      "label": "self-identifies-with (the Community’s own description)",
+      "type": "within",
+      "locator": "islam-research.md · ISM01 self-identifies-with",
+      "keys": [
+        "IS19"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "p:islam>ism02",
+      "label": "selected modern movement (overlapping)",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:islam>ism03",
+      "label": "selected modern movement (overlapping)",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:islam>ism04",
+      "label": "selected modern movement (overlapping)",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "p:islam>ism05",
+      "label": "selected modern movement (overlapping)",
+      "type": "within",
+      "locator": null,
+      "keys": [],
+      "editorial": true
+    },
+    {
+      "key": "l:jud-covenant-tradition>jud-rabbinic",
+      "label": "inherited text / traditional transmission; the religious account is kept apart from literary history",
+      "type": "context",
+      "locator": "judaism-research.md · §8 JU-R01",
+      "keys": [
+        "JU02",
+        "JU05"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-ananites>jud-karaite",
+      "label": "later appropriation / influence; not an exact schism",
+      "type": "contact",
+      "locator": "judaism-research.md · §8 JU-R06",
+      "keys": [
+        "JU08"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-karaite>jud-rabbinic",
+      "label": "interaction and differentiation; no claim of total social separation",
+      "type": "history",
+      "locator": "judaism-research.md · §8 JU-R07",
+      "keys": [
+        "JU08"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-mystical-context>jud-hasidic",
+      "label": "influenced-by",
+      "type": "contact",
+      "locator": "judaism-research.md · §8 JU-R08",
+      "keys": [
+        "JU07"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-hasidic>jud-haredi",
+      "label": "overlapping modern classification",
+      "type": "overlap",
+      "locator": "judaism-research.md · §8 JU-R11",
+      "keys": [
+        "JU18"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-haskalah-context>jud-reform-progressive",
+      "label": "historical influence",
+      "type": "context",
+      "locator": "judaism-research.md · §8 JU-R12",
+      "keys": [
+        "JU09"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-jts>jud-conservative-masorti",
+      "label": "institutional leadership",
+      "type": "context",
+      "locator": "judaism-research.md · §8 JU-R14",
+      "keys": [
+        "JU11"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-aleph>jud-renewal",
+      "label": "an organizational expression of Renewal",
+      "type": "within",
+      "locator": "identity-and-edges.csv · AI303",
+      "keys": [
+        "JU14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:jud-second-temple>ch-early-communities",
+      "label": "historical context: a Jewish setting; living Judaism is not a superseded parent",
+      "type": "context",
+      "locator": "identity-and-edges.csv · AI290",
+      "keys": [
+        "CH01",
+        "CH18"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-catholic>ch-eastern-orthodox",
+      "label": "estrangement and reconciliation history: prolonged, with 1054 as a marker",
+      "type": "history",
+      "locator": "christianity-research.md · §6 ch-eastern-orthodox",
+      "keys": [
+        "CH04",
+        "CH05"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-oriental-orthodox>ch-chalcedonian-context",
+      "label": "divergent council reception, 451 onward",
+      "type": "history",
+      "locator": "christianity-research.md · §6 ch-oriental-orthodox",
+      "keys": [
+        "CH03"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-kyivan-byzantine-context>ch-ukrainian-greek-catholic",
+      "label": "historical development",
+      "type": "branch",
+      "locator": "christianity-research.md · §6a ch-ukrainian-greek-catholic",
+      "keys": [
+        "CH33"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-anglican>ch-african-church",
+      "label": "institutional separation over indigenous leadership",
+      "type": "division",
+      "locator": "christianity-research.md · §6a ch-african-church",
+      "keys": [
+        "CH26"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-pentecostal>ch-evangelical",
+      "label": "overlapping affiliation",
+      "type": "overlap",
+      "locator": "christianity-research.md · §6 ch-pentecostal",
+      "keys": [
+        "CH14"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-evangelical>ch-anglican",
+      "label": "cross-cutting affiliation",
+      "type": "overlap",
+      "locator": "christianity-research.md · §6 ch-evangelical",
+      "keys": [
+        "CH13"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-evangelical>ch-lutheran",
+      "label": "cross-cutting affiliation",
+      "type": "overlap",
+      "locator": "christianity-research.md · §6 ch-evangelical",
+      "keys": [
+        "CH13"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-evangelical>ch-reformed",
+      "label": "cross-cutting affiliation",
+      "type": "overlap",
+      "locator": "christianity-research.md · §6 ch-evangelical",
+      "keys": [
+        "CH13"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-evangelical>ch-baptist",
+      "label": "cross-cutting affiliation",
+      "type": "overlap",
+      "locator": "christianity-research.md · §6 ch-evangelical",
+      "keys": [
+        "CH13"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ch-evangelical>ch-methodist",
+      "label": "cross-cutting affiliation",
+      "type": "overlap",
+      "locator": "christianity-research.md · §6 ch-evangelical",
+      "keys": [
+        "CH13"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:isc04>jud-covenant-tradition",
+      "label": "shared named figure (Abraham): distinct scriptural claims, not descent",
+      "type": "context",
+      "locator": "identity-and-edges.csv · AI302",
+      "keys": [
+        "IS04",
+        "JU01"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ism02>ism03",
+      "label": "overlaps-with: the labels’ meanings changed over time (Lauzière)",
+      "type": "overlap",
+      "locator": "islam-research.md · Salafi/Wahhabi relationship (overlaps-with)",
+      "keys": [
+        "IS20"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ism04>isc01",
+      "label": "engages-and-reforms: seminary and Sufi-lodge practice (Ingram)",
+      "type": "overlap",
+      "locator": "islam-research.md · Deobandi/Sufi relationship (engages-and-reforms)",
+      "keys": [
+        "IS22"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:ism05>isl01",
+      "label": "legal-affinity (Hanafi scholarship)",
+      "type": "overlap",
+      "locator": "islam-research.md · Barelvi connections (legal-affinity)",
+      "keys": [
+        "IS23"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:hindu-philosophy>isc01",
+      "label": "authored-comparison: Dara Shikoh’s Majmaʿ al-baḥrayn (1655). His interpretation, not doctrinal identity",
+      "type": "contact",
+      "locator": "identity-and-edges.csv · AI293/AI294 (XE03)",
+      "keys": [
+        "X05",
+        "IS15"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:islam>daoism-reference",
+      "label": "scholarly-textual-contact (Liu Zhi, Wang Daiyu): neither religion descends from the other",
+      "type": "contact",
+      "locator": "identity-and-edges.csv · AI299 (XC03/XC04)",
+      "keys": [
+        "X08",
+        "X09"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:islam>buddhism-reference",
+      "label": "scholarly-textual-contact (Liu Zhi, Wang Daiyu): shared terminology or critique is not total agreement",
+      "type": "contact",
+      "locator": "identity-and-edges.csv · AI300 (XC03/XC04)",
+      "keys": [
+        "X08",
+        "X09"
+      ],
+      "editorial": false
+    },
+    {
+      "key": "l:islam>confucian-reference",
+      "label": "scholarly-textual-contact: Sino-Islamic intellectual context, not institutional union",
+      "type": "contact",
+      "locator": "identity-and-edges.csv · AI301 (XC03/XC04)",
+      "keys": [
+        "X08",
+        "X09"
+      ],
+      "editorial": false
+    }
+  ],
+  "recordsWithoutExplicitCitation": 169
+}
