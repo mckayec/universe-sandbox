@@ -1998,3 +1998,24 @@ pack data, canon or layout-position change.
   `pnpm test:browser` passed (Chromium 1243 headless shell, SwiftShader).
 * **Still open (Claude keeps ownership):** finished-bake captures at 3840/1280/390 (SwiftShader still shows the
   charting surface); wider semantic omission/vision screen; real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 46 — finished-bake captures at 1280 and 390 (evidence only)
+
+Parent: 4aa6571 (checkpoint 45 head). No code, pack data or canon change; adds a probe copy, its output and two
+captures.
+
+- **Probe.** [s46-finished-probe.mjs](supplementary-build/s46-finished-probe.mjs) is s42-probe.mjs with only the header
+  comment and screenshot file names changed. Run against `pnpm build` of 4aa6571 with `VPS=390,1280` (Chromium
+  headless shell, SwiftShader, 2 CPUs). Finished-bake = `#bake` hidden, observed rather than timed.
+  ([output](supplementary-build/s46-finished-probe-output.txt)): 390×844 bake finished at 237 s, 1280×800 at 1704 s;
+  21 visible labels each; no horizontal overflow; zero console errors, failed requests or HTTP ≥ 400; PASS, exit 0.
+- **Captures.** [1280×800](shots/s46-finished-1280x800.jpg), [390×844](shots/s46-finished-390x844.jpg) (JPEG q85,
+  145 KB / 62 KB). At 1280 the baked globe, place pins, crumb strip, place list, filter legend and Narratives rail read
+  cleanly; the fan-work notice is present bottom right.
+- **Observation for the reviewer (S46-O1, not yet changed).** At 390×844 two globe site labels show as fragments in
+  the gaps between chrome ("…cuse" left of the crumb strip, "Phi…" under the canon tabs). They are occluded labels, not
+  overlapping text, but they read as clutter. Candidate generic fix: hide `.plbl` labels whose box intersects the top
+  chrome or the bottom sheet on compact layouts. Left for a decision rather than changed in an evidence-only checkpoint.
+- **Still open (Claude keeps ownership):** 3840×2160 finished-bake capture (the SwiftShader bake did not finish in
+  ~21 min at checkpoint 42; needs a run with a dedicated budget); S46-O1; wider semantic omission/vision screen;
+  real-GPU and physical-phone evidence need hardware.

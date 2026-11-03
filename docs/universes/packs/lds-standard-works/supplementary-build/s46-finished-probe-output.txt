@@ -1,0 +1,7 @@
+[24s] 390x844 ready
+[237s] 390x844 bake finished
+  390: {"bake":true,"overflow":false,"labels":21,"canvas":[390,844],"dpr":1}
+[326s] 1280x800 ready
+[1704s] 1280x800 bake finished
+  1280: {"bake":true,"overflow":false,"labels":21,"canvas":[1280,800],"dpr":1}
+[1731s] PASS
