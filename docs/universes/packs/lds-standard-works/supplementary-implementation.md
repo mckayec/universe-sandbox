@@ -2395,3 +2395,46 @@ checkpoint (run time went to the 4K attempt); branch CI on push is the gate for 
 **Still open (Claude keeps ownership):** finished 3840×2160 capture and 4K traversal (sandbox-limited, above); the
 other 142 semantic rows and wider vision completeness; browser-level 119/120/121 px gap; native OS select popup;
 real-GPU and physical-phone evidence.
+
+## Checkpoint 54 — S52-C1: Sky focus fallback never focuses an off-screen control
+
+Scope is only the S51-C2-partial / S52-C1 finding from the 2026-11-03 "Checkpoint 53 UI outcome" handoff. The five
+semantic items, S51-C1 Worlds behavior and the 4K route are not touched.
+
+**Cause.** `skyFocusFallback` (engine.js) tried crumbs/Worlds/Space/Codex with a viewport-box test, and when none
+passed it fell back to the first candidate that merely had a layout box, so an off-screen (or clipped/covered) control
+could be focused deliberately.
+
+**Fix (engine.js).** Every focus destination is now checked with the existing effective-visibility helper
+`visibleControl` (inside the window and inside every clipping ancestor, not hidden/inert/aria-hidden, not faded, hit at
+its centre) before it is chosen. Candidates, in order: crumbs from last to first, Worlds, Space, Codex, then the other
+header controls (the out-of-Tab-order paging arrows and the Sky button itself excluded). A header control that is only
+scrolled out of its own landscape controls row is scrolled wholly into the row and checked again. If nothing is
+visible, nothing off screen is focused: the hidden Sky button is blurred and one retry runs on the next frame, only
+while focus is still lost (body or the Sky button), so focus a user has moved meanwhile is left alone. Unrelated focus
+and selection are never changed.
+
+**Evidence** — [s54-sky-focus-probe.mjs](supplementary-build/s54-sky-focus-probe.mjs),
+[output](supplementary-build/s54-sky-focus-output.txt): **PASS 81**, zero console/request/page errors (Playwright
+Chromium 153, SwiftShader). The probe's own visibility check is independent of the engine helper. Sun Eater and LDS
+(reached through its Space button) at 390×844: R — two rounds each of Sky on and Sky off, Sky focused by real Tab
+(Enter to turn it on), resize to 1280×800 → focus on a visible crumb ("Sollan Empire" / "Earth"), selection
+unchanged, real Tab moves on; V — two rounds of a view change (descend) with Sky focused → visible crumb, real Tab
+moves on; A — test-only injected layouts: (1) all crumbs and Worlds off screen → visible Space/Galaxy button, no crumb;
+(2) 844×390 with the header controls row scrolled to its end and crumbs off screen, view change → visible Space/Galaxy
+button; (3) every candidate off screen → focus left on the page, no off-screen control focused, selection unchanged;
+U — Codex focus left alone by the resize and by the view change. **Baseline:** the same A part against the unfixed
+103710b engine ([baseline output](supplementary-build/s54-sky-focus-baseline-103710b.txt)) fails A3: it focused the
+off-screen "Delos" crumb at x = −3105, reproducing S52-C1; A1/A2 passed there too, so the fix's difference is the
+no-visible-candidate path.
+
+**Checks:** `pnpm format`, `pnpm check` **148/148**, check:dist OK. `pnpm test:pages` was started but exceeded this
+run's 10-minute command limit and was stopped; branch CI on push is the gate for the standalone pages, as at
+checkpoint 53. `pnpm test:browser` not run.
+
+**Still open (Claude keeps ownership):** finished 3840×2160 capture and traversal — needs a persistent allocation and
+an unchanged-quality budget for one isolated 90–120-minute attempt plus traversal; this hourly sandbox run cannot
+provide that (10-minute command limit, run reclaimed between hours), reported as the capability blocker per the
+handoff, not a quality waiver; the 142 residual semantic dispositions (39 without a full-read omission-check row) and
+wider vision completeness; browser-level 119/120/121 px gap; native OS select popup; real-GPU and physical-phone
+evidence.

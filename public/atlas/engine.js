@@ -1523,19 +1523,47 @@ function setSky(on) {
   skyAvail = avail;
   bumpLabelEpoch();
 }
-/* S51-C2: when leaving the compact galaxy view hides the focused Sky button, move focus to a visible control (the
-   last location crumb, then Worlds, the Space button or the Codex) instead of dropping it on the page. Focus that is
-   elsewhere is left alone. */
+/* S51-C2 / S52-C1: when leaving the compact galaxy view hides the focused Sky button, move focus to a control that
+   is effectively visible (visibleControl: on screen, not clipped by a scrolling ancestor, not faded or covered): the
+   last location crumb (then the earlier ones), Worlds, the Space button, the Codex, then any other header control.
+   A header control that is only scrolled out of its own controls row is scrolled wholly into view and checked again.
+   Nothing that is still off screen is ever focused; if no candidate is visible yet (a layout still settling), one
+   more try runs on the next frame, but only while focus is still lost. Focus that is elsewhere is left alone, and
+   selection is never changed. */
+function skyFocusCandidates() {
+  const crumbs = [...document.querySelectorAll("#crumbs a[href],#crumbs button")].reverse();
+  const head = [...document.querySelectorAll("header.top button, header.top a[href]")];
+  const all = [...crumbs, $("#idxBtn"), $("#galBtn"), $("#cxBtn"), ...head];
+  return all.filter(
+    (e, i) => e && e.id !== "skyBtn" && !e.hidden && e.getAttribute("tabindex") !== "-1" && all.indexOf(e) === i,
+  );
+}
+function revealInControls(e) {
+  const row = e.closest(".top .controls");
+  if (!row || row.scrollWidth <= row.clientWidth + 2 || !e.getClientRects().length) return false;
+  const r = e.getBoundingClientRect(),
+    c = row.getBoundingClientRect(),
+    pad = 28;
+  if (r.left < c.left + pad) row.scrollLeft -= c.left + pad - r.left;
+  else if (r.right > c.right - pad) row.scrollLeft += r.right - (c.right - pad);
+  else return false;
+  return visibleControl(e);
+}
+function skyFocusTarget() {
+  const pick = skyFocusCandidates();
+  return pick.find(visibleControl) || pick.find(revealInControls) || null;
+}
 function skyFocusFallback() {
-  const onScreen = e => {
-    if (!e || e.hidden || e.disabled || !e.getClientRects().length || e.closest("[hidden],[inert]")) return false;
-    const r = e.getBoundingClientRect();
-    return r.width > 0 && r.height > 0 && r.right > 0 && r.bottom > 0 && r.left < innerWidth && r.top < innerHeight;
-  };
-  const crumbs = [...document.querySelectorAll("#crumbs a,#crumbs button")];
-  const pick = [crumbs[crumbs.length - 1], $("#idxBtn"), $("#galBtn"), $("#cxBtn")];
-  const t = pick.find(onScreen) || pick.find(e => e && !e.hidden && e.getClientRects().length);
-  if (t) t.focus();
+  const t = skyFocusTarget();
+  if (t) return t.focus({ preventScroll: true });
+  const b = $("#skyBtn");
+  if (b && document.activeElement === b) b.blur();
+  requestAnimationFrame(() => {
+    const a = document.activeElement;
+    if (a && a !== document.body && a !== b) return;
+    const t2 = skyFocusTarget();
+    if (t2) t2.focus({ preventScroll: true });
+  });
 }
 /* Landscape phones (S51 header access): the desktop header row's controls scroll inside the header. When they
    overflow, the hidden side fades and an arrow button pages the row, so the off-screen controls are signposted and

@@ -1,0 +1,104 @@
+browser 153.0.8010.12
+[3s] sun-eater 390x844 ready in 2.4 s
+  ok 1 Sky button shown again in the compact galaxy view
+  ok 2 sun-eater 390x844 R1: Sky on with Sky focused by real Tab
+    sun-eater 390x844 R1 resize 390->1280 (Sky on): focus {"id":"button","label":"Sollan Empire","crumb":true,"vis":true,"wholeX":true,"box":[637,75,747,95]}
+  ok 3 sun-eater 390x844 R1: resize 390->1280 (Sky on) -> focus on visible button "Sollan Empire"
+  ok 4 sun-eater 390x844 R1: selection unchanged [null,null,null]
+  ok 5 sun-eater 390x844 R1: real Tab moves on from the recovered control (to button)
+  ok 6 Sky button shown again in the compact galaxy view
+  ok 7 sun-eater 390x844 R1: Sky off with Sky focused by real Tab
+    sun-eater 390x844 R1 resize 390->1280 (Sky off): focus {"id":"button","label":"Sollan Empire","crumb":true,"vis":true,"wholeX":true,"box":[637,75,747,95]}
+  ok 8 sun-eater 390x844 R1: resize 390->1280 (Sky off) -> focus on visible button "Sollan Empire"
+  ok 9 sun-eater 390x844 R1: selection unchanged [null,null,null]
+  ok 10 sun-eater 390x844 R1: real Tab moves on from the recovered control (to button)
+  ok 11 Sky button shown again in the compact galaxy view
+  ok 12 sun-eater 390x844 R2: Sky on with Sky focused by real Tab
+    sun-eater 390x844 R2 resize 390->1280 (Sky on): focus {"id":"button","label":"Sollan Empire","crumb":true,"vis":true,"wholeX":true,"box":[637,75,747,95]}
+  ok 13 sun-eater 390x844 R2: resize 390->1280 (Sky on) -> focus on visible button "Sollan Empire"
+  ok 14 sun-eater 390x844 R2: selection unchanged [null,null,null]
+  ok 15 sun-eater 390x844 R2: real Tab moves on from the recovered control (to button)
+  ok 16 Sky button shown again in the compact galaxy view
+  ok 17 sun-eater 390x844 R2: Sky off with Sky focused by real Tab
+    sun-eater 390x844 R2 resize 390->1280 (Sky off): focus {"id":"button","label":"Sollan Empire","crumb":true,"vis":true,"wholeX":true,"box":[637,75,747,95]}
+  ok 18 sun-eater 390x844 R2: resize 390->1280 (Sky off) -> focus on visible button "Sollan Empire"
+  ok 19 sun-eater 390x844 R2: selection unchanged [null,null,null]
+  ok 20 sun-eater 390x844 R2: real Tab moves on from the recovered control (to button)
+  ok 21 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 V1 view change to delos: focus {"id":"button","label":"Delos","crumb":true,"vis":true,"wholeX":true,"box":[287,194,325,213]}
+  ok 22 sun-eater 390x844 V1: view change to delos -> focus on visible button "Delos"
+  ok 23 sun-eater 390x844 V1: real Tab moves on from the recovered control (to div#grab)
+  ok 24 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 V2 view change to delos: focus {"id":"button","label":"Delos","crumb":true,"vis":true,"wholeX":true,"box":[287,194,325,213]}
+  ok 25 sun-eater 390x844 V2: view change to delos -> focus on visible button "Delos"
+  ok 26 sun-eater 390x844 V2: real Tab moves on from the recovered control (to div#grab)
+  ok 27 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 A1 crumbs+Worlds off screen, resize: focus {"id":"button#galBtn","label":"Galaxy","crumb":false,"vis":true,"wholeX":true,"box":[1035,14,1109,46]}
+  ok 28 sun-eater 390x844 A1: crumbs+Worlds off screen, resize -> focus on visible button#galBtn "Galaxy"
+  ok 29 sun-eater 390x844 A1: an off-screen crumb was not chosen
+  ok 30 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 A2 844x390, header row scrolled to end, crumbs off screen, view change to delos: focus {"id":"button#galBtn","label":"Galaxy","crumb":false,"vis":true,"wholeX":true,"box":[599,14,673,46]}
+  ok 31 sun-eater 390x844 A2: 844x390, header row scrolled to end, crumbs off screen, view change to delos -> focus on visible button#galBtn "Galaxy"
+  ok 32 sun-eater 390x844 A2: an off-screen crumb was not chosen
+  ok 33 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 A3 every candidate off screen, resize: focus {"id":"BODY","vis":false}
+  ok 34 sun-eater 390x844 A3: no off-screen control focused (focus BODY, visible=false)
+  ok 35 sun-eater 390x844 A3: selection unchanged
+  ok 36 Sky button shown again in the compact galaxy view
+  ok 37 sun-eater 390x844 U: unrelated focus (Codex) left alone by the resize
+  ok 38 Sky button shown again in the compact galaxy view
+  ok 39 sun-eater 390x844 U: unrelated focus (Codex) left alone by the view change
+  ok 40 Sky button shown again in the compact galaxy view
+[227s] lds-standard-works 390x844 ready in 21.1 s
+  ok 41 Sky button shown again in the compact galaxy view
+  ok 42 lds-standard-works 390x844 R1: Sky on with Sky focused by real Tab
+    lds-standard-works 390x844 R1 resize 390->1280 (Sky on): focus {"id":"button","label":"Earth","crumb":true,"vis":true,"wholeX":true,"box":[706,161,748,181]}
+  ok 43 lds-standard-works 390x844 R1: resize 390->1280 (Sky on) -> focus on visible button "Earth"
+  ok 44 lds-standard-works 390x844 R1: selection unchanged ["earth",null,null]
+  ok 45 lds-standard-works 390x844 R1: real Tab moves on from the recovered control (to button)
+  ok 46 Sky button shown again in the compact galaxy view
+  ok 47 lds-standard-works 390x844 R1: Sky off with Sky focused by real Tab
+    lds-standard-works 390x844 R1 resize 390->1280 (Sky off): focus {"id":"button","label":"Earth","crumb":true,"vis":true,"wholeX":true,"box":[706,161,748,181]}
+  ok 48 lds-standard-works 390x844 R1: resize 390->1280 (Sky off) -> focus on visible button "Earth"
+  ok 49 lds-standard-works 390x844 R1: selection unchanged ["earth",null,null]
+  ok 50 lds-standard-works 390x844 R1: real Tab moves on from the recovered control (to button)
+  ok 51 Sky button shown again in the compact galaxy view
+  ok 52 lds-standard-works 390x844 R2: Sky on with Sky focused by real Tab
+    lds-standard-works 390x844 R2 resize 390->1280 (Sky on): focus {"id":"button","label":"Earth","crumb":true,"vis":true,"wholeX":true,"box":[706,161,748,181]}
+  ok 53 lds-standard-works 390x844 R2: resize 390->1280 (Sky on) -> focus on visible button "Earth"
+  ok 54 lds-standard-works 390x844 R2: selection unchanged ["earth",null,null]
+  ok 55 lds-standard-works 390x844 R2: real Tab moves on from the recovered control (to button)
+  ok 56 Sky button shown again in the compact galaxy view
+  ok 57 lds-standard-works 390x844 R2: Sky off with Sky focused by real Tab
+    lds-standard-works 390x844 R2 resize 390->1280 (Sky off): focus {"id":"button","label":"Earth","crumb":true,"vis":true,"wholeX":true,"box":[706,161,748,181]}
+  ok 58 lds-standard-works 390x844 R2: resize 390->1280 (Sky off) -> focus on visible button "Earth"
+  ok 59 lds-standard-works 390x844 R2: selection unchanged ["earth",null,null]
+  ok 60 lds-standard-works 390x844 R2: real Tab moves on from the recovered control (to button)
+  ok 61 Sky button shown again in the compact galaxy view
+    lds-standard-works 390x844 V1 view change to earth: focus {"id":"button","label":"Earth","crumb":true,"vis":true,"wholeX":true,"box":[257,254,295,273]}
+  ok 62 lds-standard-works 390x844 V1: view change to earth -> focus on visible button "Earth"
+  ok 63 lds-standard-works 390x844 V1: real Tab moves on from the recovered control (to button)
+  ok 64 Sky button shown again in the compact galaxy view
+    lds-standard-works 390x844 V2 view change to earth: focus {"id":"button","label":"Earth","crumb":true,"vis":true,"wholeX":true,"box":[257,254,295,273]}
+  ok 65 lds-standard-works 390x844 V2: view change to earth -> focus on visible button "Earth"
+  ok 66 lds-standard-works 390x844 V2: real Tab moves on from the recovered control (to button)
+  ok 67 Sky button shown again in the compact galaxy view
+    lds-standard-works 390x844 A1 crumbs+Worlds off screen, resize: focus {"id":"button#galBtn","label":"Space","crumb":false,"vis":true,"wholeX":true,"box":[1051,112,1117,144]}
+  ok 68 lds-standard-works 390x844 A1: crumbs+Worlds off screen, resize -> focus on visible button#galBtn "Space"
+  ok 69 lds-standard-works 390x844 A1: an off-screen crumb was not chosen
+  ok 70 Sky button shown again in the compact galaxy view
+    lds-standard-works 390x844 A2 844x390, header row scrolled to end, crumbs off screen, view change to earth: focus {"id":"button#galBtn","label":"Space","crumb":false,"vis":true,"wholeX":true,"box":[615,14,681,46]}
+  ok 71 lds-standard-works 390x844 A2: 844x390, header row scrolled to end, crumbs off screen, view change to earth -> focus on visible button#galBtn "Space"
+  ok 72 lds-standard-works 390x844 A2: an off-screen crumb was not chosen
+  ok 73 Sky button shown again in the compact galaxy view
+    lds-standard-works 390x844 A3 every candidate off screen, resize: focus {"id":"BODY","vis":false}
+  ok 74 lds-standard-works 390x844 A3: no off-screen control focused (focus BODY, visible=false)
+  ok 75 lds-standard-works 390x844 A3: selection unchanged
+  ok 76 Sky button shown again in the compact galaxy view
+  ok 77 lds-standard-works 390x844 U: unrelated focus (Codex) left alone by the resize
+  ok 78 Sky button shown again in the compact galaxy view
+  ok 79 lds-standard-works 390x844 U: unrelated focus (Codex) left alone by the view change
+  ok 80 Sky button shown again in the compact galaxy view
+  ok 81 zero console/request/page errors
+PASS 81 checks
+[482s] done
