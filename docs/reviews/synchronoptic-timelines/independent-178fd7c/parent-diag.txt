@@ -1,0 +1,5 @@
+DIAG preSave 29 savedCount(DOM after click) 29 saveToast "Passage at warp" stored bodies 29 elapsed 2.4833333333333294
+DIAG count series after save (100ms) 29,29,29,29,29,29,29,29,25,22,22,22
+LOAD OK 29
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+exit=0

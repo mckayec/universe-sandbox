@@ -1,0 +1,11 @@
+
+> universe-sandbox@0.1.0 format:check
+> prettier --check src tests scripts public/sw.js public/vendor/standalone.js public/vendor/standalone.css public/atlas/solar-tex.js public/atlas/layers.js public/atlas/tree.js public/atlas/tree-rel.js public/atlas/tree-view.js
+
+Checking formatting...
+All matched files use Prettier code style!
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
