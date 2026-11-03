@@ -27,12 +27,24 @@ const spaced = t =>
 const sources = {};
 for (const f of DOSSIERS) {
   for (const line of readFileSync(DOCS + f, 'utf8').split('\n')) {
-    const m = /^\| ((?:JU|CH|IS|X)\d+) \| (.+?) \|/.exec(line);
+    const m = /^\| ((?:JU|CH|IS|X)\d+) \| (.+?) \|(?: (.*?) \|)?/.exec(line);
     if (!m) continue;
     const link = /\[([^\]]+)\]\((https?:[^)\s]+)\)/.exec(m[2]);
     if (!link) continue;
     const before = m[2].slice(0, link.index).replace(/[,\s]+$/, '');
-    sources[m[1]] = { t: spaced((before ? before + ', ' : '') + link[1]), u: link[2], f };
+    const src = { t: spaced((before ? before + ', ' : '') + link[1]), u: link[2], f };
+    /* TL-R07 follow-up (X08): the register's "use" column records which route was actually inspected and the
+       page/section scope. Keep both: every further link in the row becomes an alternative route (the "use"
+       column's links first, since those are the inspected copies), and the "use" text is kept as the scope. */
+    const linksIn = cell => [...cell.matchAll(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g)].map(x => ({ t: x[1], u: x[2] }));
+    const use = m[3] || '';
+    const alt = [...linksIn(use), ...linksIn(m[2]).slice(1)].filter(
+      (x, i, a) => x.u !== src.u && a.findIndex(y => y.u === x.u) === i,
+    );
+    if (alt.length) src.alt = alt.map(x => ({ t: spaced(x.t), u: x.u }));
+    const scope = use.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '$1').trim();
+    if (scope) src.scope = spaced(scope);
+    sources[m[1]] = src;
   }
 }
 
@@ -59,7 +71,10 @@ for (const row of rows) {
   edges[edge] = { loc: dossier + ' · ' + ledger, ev };
 }
 const usedSources = {};
-[...used].sort().forEach(k => (usedSources[k] = { t: sources[k].t, u: sources[k].u }));
+[...used].sort().forEach(k => {
+  const { f, ...rest } = sources[k];
+  usedSources[k] = rest;
+});
 
 const body =
   '/* Religious Traditions atlas — data part: relationship source locators for the synchronoptic timeline\n' +

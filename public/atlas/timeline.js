@@ -119,7 +119,13 @@
     edge.locator = hit.loc || null;
     edge.src = arr(hit.ev)
       .filter(k => rs.sources[k])
-      .map(k => ({ key: k, t: k + ' · ' + rs.sources[k].t, u: rs.sources[k].u || null }));
+      .map(k => ({
+        key: k,
+        t: k + ' · ' + rs.sources[k].t,
+        u: rs.sources[k].u || null,
+        alt: arr(rs.sources[k].alt).filter(x => x && x.u),
+        scope: rs.sources[k].scope || null,
+      }));
     return edge;
   }
 
@@ -333,12 +339,43 @@
       undated: view.undated.length,
       narrative: view.undated.filter(r => r.chron === 'narrative').length,
       edges: view.edges.length,
-      drawn: view.drawnEdges.length,
+      /* candidates for a connector (sourced relationships); how many are actually rendered depends on which
+         endpoints are dated and in expanded lanes, so the view counts rendered paths itself */
+      drawable: view.drawnEdges.length,
       sourced: view.drawnEdges.length,
       editorial: view.editorialEdges.length,
       unsourced: view.unsourcedEdges.length,
       gaps,
     };
+  }
+
+  /* ---------- relationship connectors ----------
+     Relationships carry no date of their own, so a connector must not be placed on the time axis (TL-R07: an end
+     drawn at the target's start year read as a dated event before its source existed). Connectors are brackets in
+     a non-temporal gutter left of the axis, joining the two rows' heights only. Columns are assigned greedily so
+     brackets whose row spans overlap never share a column. spans: [{id, y0, y1}] → {cols: {id: column}, count}. */
+  function bracketColumns(spans) {
+    const ends = [];
+    const cols = {};
+    spans
+      .map(s => ({ id: s.id, a: Math.min(s.y0, s.y1), b: Math.max(s.y0, s.y1) }))
+      .sort((p, q) => p.a - q.a || p.b - q.b || (p.id < q.id ? -1 : p.id > q.id ? 1 : 0))
+      .forEach(s => {
+        let c = ends.findIndex(e => e < s.a - 2);
+        if (c < 0) c = ends.push(0) - 1;
+        ends[c] = s.b;
+        cols[s.id] = c;
+      });
+    return { cols, count: ends.length };
+  }
+  const GUTTER_STEP = 6;
+  const GUTTER_PAD = 6;
+  const gutterWidth = count => (count ? GUTTER_PAD * 2 + count * GUTTER_STEP : 0);
+  /* bracket path for one connector: short nub at each row, vertical join; x never enters the time axis */
+  function bracketPath(col, count, ya, yb) {
+    const xr = GUTTER_PAD + (count - 1 - col) * GUTTER_STEP;
+    const nub = xr + 4;
+    return { d: 'M' + nub + ' ' + ya + ' H' + xr + ' V' + yb + ' H' + nub, x0: xr, x1: nub };
   }
 
   /* ---------- lane arrangement ---------- */
@@ -418,6 +455,9 @@
     search,
     extent,
     coverage,
+    bracketColumns,
+    gutterWidth,
+    bracketPath,
     arrangeLanes,
     moveLane,
     laneSpan,

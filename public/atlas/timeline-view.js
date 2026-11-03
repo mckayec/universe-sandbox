@@ -35,6 +35,7 @@
   const precisionOf = w => (w.window ? 'window' : w.range ? 'range' : w.approx ? 'approx' : 'exact');
   /* a relationship's own citation line: the research ledger row, then each evidence source (linked when it has a
      URL); overview groupings say so instead; anything else is flagged as missing a locator */
+  const link = (u, t) => '<a href="' + ESC(u) + '" target="_blank" rel="noopener noreferrer">' + ESC(t) + '</a>';
   function edgeCite(e, short) {
     if (e.editorial) return ' <span class="tl-why tl-ed">overview grouping, not a historical claim</span>';
     if (!e.src.length)
@@ -45,9 +46,13 @@
       '<span class="tl-cite">Source: ' +
       (e.locator ? ESC(e.locator) + ' — ' : '') +
       e.src
-        .map(x =>
-          x.u ? '<a href="' + ESC(x.u) + '" target="_blank" rel="noopener noreferrer">' + ESC(x.t) + '</a>' : ESC(x.t),
-        )
+        .map(x => {
+          let h = x.u ? link(x.u, x.t) : ESC(x.t);
+          /* other routes named in the research register (e.g. the copy actually inspected) and its page/section scope */
+          if (!short && x.alt && x.alt.length) h += ' (also: ' + x.alt.map(a => link(a.u, a.t)).join(', ') + ')';
+          if (!short && x.scope) h += ' <span class="tl-scope">Scope: ' + ESC(x.scope) + '</span>';
+          return h;
+        })
         .join('; ') +
       '</span>'
     );
@@ -75,6 +80,7 @@
     let sel = null;
     let V = null;
     let lastFocus = null;
+    let gut = 0;
     const defaultOrder = model.lanes.map(l => l.id);
     let order = defaultOrder.slice();
     const collapsed = new Set();
@@ -85,7 +91,7 @@
 
     el.innerHTML =
       '<div class="panel" role="dialog" aria-modal="true" aria-labelledby="tlT"><div class="cx-head tl-head">' +
-      '<h2 id="tlT" class="chrome">Timeline</h2><span class="tl-note">Simplified view · dates only where the sources give them</span>' +
+      '<h2 id="tlT" class="chrome">Timeline</h2><span class="tl-note">Simplified view · dates only where the sources give them · relationship brackets at the left are undated</span>' +
       '<div class="tl-mode" role="group" aria-label="Arrangement">' +
       '<button class="btn" data-mode="chart" aria-pressed="true">Chart</button>' +
       '<button class="btn" data-mode="list" aria-pressed="false">List</button></div>' +
@@ -116,7 +122,6 @@
       const a1 = TLM.astro(hi);
       const avail = Math.max(320, scrollEl.clientWidth - 24);
       const W = Math.round(avail * ZOOMS[zoom]);
-      const X = y => 12 + ((TLM.astro(y) - a0) / (a1 - a0)) * (W - 24);
       const lanes = arranged()
         .map(l => ({
           l,
@@ -146,6 +151,11 @@
         y += 8;
       });
       const H = y + 6;
+      /* relationships are undated: draw them as brackets in a gutter outside the time axis (TL-R07) */
+      const links = V.drawnEdges.filter(e => rowY[e.from] != null && rowY[e.to] != null && e.from !== e.to);
+      const cols = TLM.bracketColumns(links.map(e => ({ id: e.id, y0: rowY[e.from], y1: rowY[e.to] })));
+      gut = TLM.gutterWidth(cols.count);
+      const X = y => gut + 12 + ((TLM.astro(y) - a0) / (a1 - a0)) * (W - gut - 24);
       let s =
         '<svg class="tl-svg" width="' +
         W +
@@ -184,7 +194,7 @@
       const step = [10, 25, 50, 100, 200, 250, 500].find(k => (span / k) * 70 <= W) || 1000;
       for (let t = Math.ceil(lo / step) * step; t <= hi; t += step) {
         const yr = t === 0 ? 1 : t;
-        if (X(yr) < 34 || X(yr) > W - 34) continue;
+        if (X(yr) < gut + 34 || X(yr) > W - 34) continue;
         s +=
           '<line class="tl-tick" x1="' +
           X(yr) +
@@ -206,7 +216,9 @@
       lanes.forEach(x => {
         const c = collapsed.has(x.l.id);
         s +=
-          '<text class="tl-lane" x="12" y="' +
+          '<text class="tl-lane" x="' +
+          (gut + 12) +
+          '" y="' +
           (x.y + 20) +
           '">' +
           ESC(x.l.title) +
@@ -218,32 +230,35 @@
         if (c) s += summary(x, X, hi);
         else x.rows.forEach(r => (s += mark(r, rowY[r.id], X, hi)));
       });
-      V.drawnEdges.forEach(e => {
+      if (cols.count)
+        s +=
+          '<rect class="tl-gut" x="0" y="' +
+          AXIS_H +
+          '" width="' +
+          (gut - 2) +
+          '" height="' +
+          (H - AXIS_H) +
+          '"><title>Relationship links: undated, joined by row only</title></rect>';
+      links.forEach(e => {
         const a = V.byId.get(e.from);
         const b = V.byId.get(e.to);
-        if (!a || !b || rowY[a.id] == null || rowY[b.id] == null) return;
-        const bx = X(b.when.window ? b.when.window[0] : b.when.from);
+        const p = TLM.bracketPath(cols.cols[e.id], cols.count, rowY[a.id], rowY[b.id]);
         s +=
           '<path class="tl-edge t-' +
           e.type +
-          '" d="M' +
-          bx +
-          ' ' +
-          rowY[a.id] +
-          ' C' +
-          (bx - 30) +
-          ' ' +
-          rowY[a.id] +
-          ' ' +
-          (bx - 30) +
-          ' ' +
-          rowY[b.id] +
-          ' ' +
-          bx +
-          ' ' +
-          rowY[b.id] +
+          '" data-edge="' +
+          ESC(e.id) +
+          '" d="' +
+          p.d +
           '"><title>' +
-          ESC(b.label + ' — ' + (EDGE_WORD[e.type] || e.type) + ' — ' + a.label) +
+          ESC(
+            b.label +
+              ' — ' +
+              (EDGE_WORD[e.type] || e.type) +
+              ' — ' +
+              a.label +
+              ' (relationship not dated; the bracket joins the two rows, its position is not a year)',
+          ) +
           '</title></path>';
       });
       return s + '</svg>';
@@ -409,8 +424,8 @@
       const tw = r.label.length * 7.6;
       const right = X(hi);
       const after = lx + 10 + tw <= right;
-      const before = !after && lx - 10 - tw >= 4;
-      const tx = after ? lx + 10 : before ? lx - 10 : 4;
+      const before = !after && lx - 10 - tw >= gut + 4;
+      const tx = after ? lx + 10 : before ? lx - 10 : gut + 4;
       g +=
         '<text class="tl-lbl" x="' +
         tx +

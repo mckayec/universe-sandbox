@@ -140,7 +140,7 @@ test('coverage reports what the data cannot support instead of inventing it', ()
   const gaps = c.gaps.map((g: any) => g.id);
   for (const g of ['family', 'succession', 'migration']) assert.ok(gaps.includes(g), g);
   assert.equal(c.dated + c.undated, c.records);
-  assert.equal(c.drawn + v.unsourcedEdges.length + v.editorialEdges.length, c.edges);
+  assert.equal(c.drawable + v.unsourcedEdges.length + v.editorialEdges.length, c.edges);
   assert.equal(c.sourced + c.editorial + c.unsourced, c.edges);
   // the extent never reaches past the data except to show an ongoing presence up to the axis end
   const [lo, hi] = TL.extent(v, pack.timeline);
@@ -214,4 +214,40 @@ test('relationship locators: gates still filter located relationships, and a pac
   assert.ok(!v.edges.some((e: any) => e.key === 'l:jud-second-temple>ch-early-communities'), 'cross-layer tie gated');
   const bare = TL.adaptTree(Object.assign({}, pack, { id: 'no-such-pack' }));
   assert.ok(bare.edges.every((e: any) => e.src.length === 0 && !e.editorial && e.locator === null));
+});
+
+test('TL-R07: relationship connectors are undated brackets outside the time axis', () => {
+  const v = TL.visible(model, all);
+  // every drawable relationship whose two ends are dated, laid out on rows 26px apart in list order
+  const rows = new Map(v.dated.map((r: any, i: number) => [r.id, 60 + i * 26]));
+  const links = v.drawnEdges.filter((e: any) => rows.has(e.from) && rows.has(e.to));
+  assert.equal(links.length, 9, 'nine connectors have two dated endpoints');
+  const jts = links.find((e: any) => e.from === 'n:jud-jts' && e.to === 'n:jud-conservative-masorti');
+  assert.ok(jts, 'JTS → Conservative/Masorti is drawable');
+  assert.ok(jts.when == null, 'the relationship itself carries no date');
+  const cols = TL.bracketColumns(links.map((e: any) => ({ id: e.id, y0: rows.get(e.from), y1: rows.get(e.to) })));
+  const gut = TL.gutterWidth(cols.count);
+  assert.ok(gut > 0);
+  const spans: any[] = [];
+  links.forEach((e: any) => {
+    const ya = rows.get(e.from);
+    const yb = rows.get(e.to);
+    const p = TL.bracketPath(cols.cols[e.id], cols.count, ya, yb);
+    const xs = [...p.d.matchAll(/[MH]\s*([\d.]+)/g)].map(m => Number(m[1]));
+    // no x coordinate reaches the time axis, which starts at gut + 12
+    assert.ok(Math.max(...xs) < gut, e.id + ' stays in the gutter');
+    assert.ok(Math.min(...xs) > 0, e.id + ' stays inside the chart');
+    // the bracket touches exactly the two endpoint rows
+    const ys = [...p.d.matchAll(/(?:M\s*[\d.]+\s+|V)([\d.]+)/g)].map(m => Number(m[1]));
+    assert.deepEqual([...new Set(ys)].sort(), [ya, yb].sort());
+    spans.push({ c: cols.cols[e.id], a: Math.min(ya, yb), b: Math.max(ya, yb) });
+  });
+  // brackets in one column never overlap vertically
+  spans.forEach((p, i) =>
+    spans.forEach((q, j) => {
+      if (i < j && p.c === q.c) assert.ok(p.b < q.a || q.b < p.a, 'column ' + p.c + ' overlap');
+    }),
+  );
+  assert.equal(TL.gutterWidth(0), 0, 'no gutter without connectors');
+  assert.equal(TL.coverage(v, model).drawable, v.drawnEdges.length);
 });
