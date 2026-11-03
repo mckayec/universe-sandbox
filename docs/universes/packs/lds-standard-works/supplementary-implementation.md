@@ -2063,3 +2063,44 @@ CSS change. Desktop behaviour is unchanged: every new branch is gated on the exi
 - **Still open (Claude keeps ownership):** 3840×2160 finished-bake capture (needs a run with a dedicated budget);
   cross-pack compact captures for this change; wider semantic omission/vision screen; real-GPU and physical-phone
   evidence need hardware.
+
+## Checkpoint 48 — S46-C1 focus recovery and S46-C2 selected-label edges
+
+Answers [supplementary-review-s46.md](https://github.com/mckayec/universe-sandbox/blob/688b82334407c035a49644a5d01330e134d91242/docs/universes/packs/lds-standard-works/supplementary-review-s46.md)
+(PR34 688b823, auditing 5c7edcd). Runtime change is in the shared engine only (`public/atlas/engine.js`, plus two
+CSS rules in `engine.css`); pack/canon data untouched.
+
+- **S46-C1 — Resolution.** `layoutSiteLabels()` now checks, before hiding a label, whether that label owns keyboard
+  focus (`document.activeElement`). Only then is focus moved (`recoverLabelFocus`): first to that place's own row in
+  the place list (`#dossier .place[data-site]` / route `.stop[data-site]`, which renderDossier already gates), but
+  only if the row is actually visible (on screen, not hidden/aria-hidden/inert, opacity > 0.05); otherwise to the
+  sheet's grab bar, the worlds button, or the first visible header control; if none is visible the label is blurred.
+  Labels without focus are never touched, focus is never sent to a closed-sheet/offscreen row, and `S.site` is not
+  changed. This applies to every hide path (chrome band, edge, turned away), on desktop too, because a focused
+  aria-hidden control is wrong everywhere; desktop layout is otherwise unchanged.
+- **S46-C2 — Resolution.** Label boxes now use the measured full-name width/height (`offsetWidth/offsetHeight`, read
+  once and re-read after resize or web-font load; the old `len×8+30` estimate remains only as a pre-layout fallback).
+  On compact layouts a selected name that would run off the right edge flips to the left of its pin (`.plbl.flip`,
+  coordinates unchanged); only if neither side fits does it collapse to a selected pin (title = name; its focus/hover
+  tooltip opens leftwards via `.plbl.dot.edge`). Unselected names keep the S47 collapse-to-pin. A 8 px hysteresis on
+  the flip stops flicker during view-offset easing. Selection is never dropped.
+- **Probe.** [s48-focus-edge-probe.mjs](supplementary-build/s48-focus-edge-probe.mjs), DOM-measured, 390×844, normal
+  and `prefers-reduced-motion: reduce`: (a) focus on `#idxBtn` stays put while labels hide; (b) a focused label
+  covered by the opening sheet hands focus to its own visible list row (`place sel`, jerusalem); (c) a focused
+  selected label turned to the far side hands focus to the grab bar, selection kept; (d) 49-step camera sweep with
+  the selected pin crossing the edges: worst overflow 0.0 px, full text 8 steps, flipped 2–3, never off screen;
+  (e) rotation 390×844 → 844×390 with a focused label: focus lands on the visible header "Gravity Lab" control, not
+  aria-hidden; (f) cross-pack: Expanse 390 descends to Venus with labels built. Zero console/request/page errors.
+  [Output](supplementary-build/s48-focus-edge-probe-output.txt): full run PASS 28, rotation rerun at the committed
+  build PASS 4 (the first full run showed rotation leaving focus on `body`, which prompted the header fallback).
+- **Captures.** [sweep end 390](shots/s48-sweep-end-390x844.jpg), [rotated 844×390 with recovered focus ring](shots/s48-rotated-844x390.jpg),
+  [Expanse 390](shots/s48-expanse-390x844.jpg).
+- **Checks at this commit.** `pnpm format`, `pnpm check` (137/137, check:dist 114 OK), `pnpm test:pages` 13×2,
+  `pnpm test:browser` passed (SwiftShader).
+- **For the reviewer.** (1) Is the header home link an acceptable last-resort focus target in landscape-phone,
+  where the sheet and worlds button are not visible? It is visible and predictable but leads off the atlas if
+  activated. (2) The sweep did not reach the both-sides-too-narrow selected-pin case for Jerusalem; it is covered by
+  code path only. (3) Observed, not changed: at 844×390 the compact chrome leaves very little globe (PR #44 area).
+- **Still open (Claude keeps ownership):** 119/120/121 px threshold boundary tests; long-name selected sweep; Space
+  view/galaxy compact framing captures for a non-Earth pack; 3840×2160 finished-bake capture; wider semantic
+  omission/vision screen; real-GPU and physical-phone evidence need hardware.

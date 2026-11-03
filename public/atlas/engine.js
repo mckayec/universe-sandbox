@@ -1077,6 +1077,47 @@ function chromeBands(W, H) {
   return bands;
 }
 const underChrome = (r, bands) => bands.some(([a, b]) => r.y < b && r.y + r.h > a);
+/* Measured label boxes (S46-C2): the full name's width/height is read once from the DOM (the estimate is only a
+   fallback before layout) and re-read after a resize or web-font load, so edge and overlap decisions use real bounds. */
+let labelEpoch = 0;
+const bumpLabelEpoch = () => labelEpoch++;
+addEventListener("resize", bumpLabelEpoch);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(bumpLabelEpoch);
+function labelBox(o) {
+  if (o._ep !== labelEpoch && !o.el.classList.contains("dot")) {
+    const w = o.el.offsetWidth,
+      h = o.el.offsetHeight;
+    if (w > 0) {
+      o._fw = w;
+      o._fh = h;
+      o._ep = labelEpoch;
+    }
+  }
+  return [o._fw || String(o.s.name).length * 8 + 30, o._fh || 24];
+}
+/* Focus recovery (S46-C1): a label that is about to be hidden while it owns keyboard focus hands focus to its own
+   visible row in the place list, or failing that to the sheet's grab bar, the worlds button or the first visible
+   header control. Labels that are not
+   focused are never touched, and the selected place is left as it was. */
+function visibleControl(el) {
+  if (!el || el.disabled || el.closest("[hidden],[aria-hidden='true'],[inert]")) return false;
+  if (!el.getClientRects().length) return false;
+  const r = el.getBoundingClientRect();
+  if (r.width < 1 || r.height < 1 || r.bottom <= 0 || r.top >= innerHeight || r.right <= 0 || r.left >= innerWidth)
+    return false;
+  const cs = getComputedStyle(el);
+  return cs.visibility !== "hidden" && cs.display !== "none" && parseFloat(cs.opacity) > 0.05;
+}
+function recoverLabelFocus(o) {
+  const id = o.s.id;
+  const rows = [...document.querySelectorAll("#dossier .place[data-site], #dossier .stop[data-site]")].filter(
+    (b) => b.dataset.site === id,
+  );
+  const nav = [$("#grab"), $("#idxBtn"), ...document.querySelectorAll("header.top button, header.top a[href]")];
+  const target = rows.find(visibleControl) || nav.find(visibleControl);
+  if (target) target.focus({ preventScroll: true });
+  else o.el.blur();
+}
 function layoutSiteLabels(W, H) {
   if (!PL) return;
   const bands = chromeBands(W, H);
@@ -1088,24 +1129,35 @@ function layoutSiteLabels(W, H) {
     const facing = _n.dot(camW.position.clone().sub(_w).normalize());
     const pr = project(_w, camW, W, H);
     const sel = o.s.id === S.site;
-    const r = { x: pr.x, y: pr.y - 12, w: String(o.s.name).length * 8 + 30, h: 24 };
-    /* compact layouts: a pin past the screen edge is hidden and a name that would run off the edge collapses to its
-       pin, so the edges never show a cut-off fragment either (S47) */
+    const [fw, fh] = labelBox(o);
+    /* compact layouts: a pin past the screen edge is hidden and a name that would run off the right edge collapses
+       to its pin (S47). The selected name is kept as text where it can be: it flips to the left of its pin, and only
+       when neither side fits does it collapse to a selected pin whose name stays in the sheet and the tooltip
+       (S46-C2). A few pixels of hysteresis stop it flickering while the view offset eases. */
     const edgeOut = MOB && (pr.x < 2 || pr.x > W - 2);
-    const edgeDot = MOB && !sel && r.x + r.w > W;
+    const runsOff = pr.x - 7 + fw > W - (o._flip ? 10 : 2);
+    const fitsLeft = pr.x + 7 - fw >= 2;
+    const flip = MOB && sel && runsOff && fitsLeft;
+    o._flip = flip;
+    const edgeDot = MOB && runsOff && !flip;
+    const x0 = flip ? pr.x + 7 - fw : pr.x - 7;
+    const r = { x: x0, y: pr.y - fh / 2, w: fw, h: fh };
     const show = facing > 0.12 && pr.z < 1 && !edgeOut && !underChrome(r, bands);
-    const dot = show && !sel && (edgeDot || placed.some((q) => hit(r, q)));
-    if (show) placed.push(dot ? { x: pr.x - 2, y: pr.y - 6, w: 12, h: 12 } : r);
+    const dot = show && (edgeDot || (!sel && placed.some((q) => hit(r, q))));
+    if (show) placed.push(dot ? { x: pr.x - 6, y: pr.y - 6, w: 12, h: 12 } : r);
+    if (!show && document.activeElement === o.el) recoverLabelFocus(o);
     o.el.style.opacity = show ? clamp((facing - 0.12) * 5, 0, 1) : 0;
     o.el.style.pointerEvents = show ? "auto" : "none";
     o.el.classList.toggle("dot", dot);
+    o.el.classList.toggle("flip", flip && !dot);
+    o.el.classList.toggle("edge", dot && edgeDot);
     if (o.el.title !== (dot ? o.s.name : "")) o.el.title = dot ? o.s.name : "";
     if (o.el._tab !== show) {
       o.el._tab = show;
       o.el.tabIndex = show ? 0 : -1;
       o.el.setAttribute("aria-hidden", String(!show));
     }
-    if (show) o.el.style.transform = "translate(" + (pr.x - 7) + "px," + (pr.y - 13) + "px)";
+    if (show) o.el.style.transform = "translate(" + (flip && !dot ? x0 : pr.x - 7) + "px," + (pr.y - 13) + "px)";
     o.el.classList.toggle("sel", sel);
   });
 }

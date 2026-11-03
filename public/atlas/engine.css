@@ -170,6 +170,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .plbl.dot:hover,.plbl.dot:focus-visible{z-index:2}
 .plbl.dot:hover .tx,.plbl.dot:focus-visible .tx{display:block;position:absolute;left:24px}
 .plbl.dot .pip{opacity:.85}
+.plbl.flip{flex-direction:row-reverse}
+.plbl.dot.edge:hover .tx,.plbl.dot.edge:focus-visible .tx{left:auto;right:24px}
 .plbl.sel .tx{background:var(--chromegrad);color:var(--ink);border-color:transparent}
 
 /* ---------- tooltip ---------- */
