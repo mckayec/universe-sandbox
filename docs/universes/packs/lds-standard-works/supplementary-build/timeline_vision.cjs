@@ -5,7 +5,9 @@
    - every Chronicle event without a year, with the reason its date stays out of the filter;
    - every event and codex card whose own wording matches the vision keyword screen (candidate discovery only), each
      with a semantic class from SEM below, plus every child of a vision family (a card whose key is a vision parent's
-     key plus a number) carried by inheritance even when its own wording lacks the keyword (S40-C1).
+     key plus a number) carried by inheritance even when its own wording lacks the keyword (S40-C1);
+   - every card in EXPLICIT below, included from its cited source rather than its display wording (VIS-R1, checkpoint
+     53): lexical discovery is one input, not the whole membership rule, and no display keyword is added to a card.
    Fails if a dated item is not classified, if a keyword candidate has no semantic class, or if a vision family is
    unreconciled, so a new year or vision card cannot enter unexamined. The keyword screen is not exhaustive: a
    semantic class is a reading of the card's own built wording, not new evidence about the source.
@@ -123,6 +125,11 @@ const SEM = {
   'codex:PC09': 'vision-setting',
   'codex:BXP01': ['not-vision', 'contrast only: distinct from the river in Lehi’s dream'],
   'codex:BMV-001-jerusalem-destruction-vision': 'vision-content',
+  'codex:BMV-012-twelve-ministers-apostles-vision': 'vision-content',
+  'codex:BMV-049-isaiah-29-comparison': [
+    'not-vision',
+    'keyword only in a safeguard: the comparison does not locate the chapter’s dream imagery as a vision scene',
+  ],
   'codex:BMV-011-nazareth-jerusalem-vision': 'vision-content',
   'codex:BMV-014-john-revelation-vision': 'vision-content',
   'codex:BMV-023-jerusalem-destruction-known': 'vision-content',
@@ -200,6 +207,19 @@ const VISION_FAMILIES = {
   'NTC-vision-sequence': 'Revelation vision sequence',
   'OTM-j22-temple-tour': 'Ezekiel 40–48 temple vision',
 };
+// Source-grounded inclusions (VIS-R1, HANDOFF_PLAN 2026-11-03 bounded semantic dispositions): cards whose cited passage
+// explicitly introduces a vision although their display wording lacks the screen's keywords and they are not a numbered
+// family child. [class, source basis, note]. Each must exist, must not already be a keyword candidate (it would belong
+// in SEM) and is checked below.
+const EXPLICIT = {
+  'codex:NTC-heavenly-experience': [
+    'mixed',
+    '2 Corinthians 12:1',
+    'the cited passage opens with “visions and revelations of the Lord”; the card also carries the thorn, which is ' +
+      'not diagnosed. Paul’s uncertainty about the body is kept; the fourteen years are relative wording, not a ' +
+      'numeric year',
+  ],
+};
 const NONVISION_FAMILIES = ['NTE-jerusalem-community', 'NTE-arrest-hearings'];
 
 const VISION = /\bvisions?\b|\bvisionary\b|\bdreams?\b|\bdreamed\b/i;
@@ -264,6 +284,7 @@ function main() {
     return m && keys.has(m[1]) ? m[1] : null;
   };
   const famSeen = new Set();
+  const explicitSeen = new Set();
   for (const [sec, e] of cards) {
     const lay = (e.layers || []).join('/');
     const id = 'codex:' + (e.key || e.name + '|' + lay);
@@ -274,6 +295,17 @@ function main() {
     const inherited = fam && VISION_FAMILIES[fam];
     if (take(id, 'codex', e.name, e)) continue;
     const kw = VISION.test((e.name || '') + ' ' + (e.desc || ''));
+    const explicit = EXPLICIT[id];
+    if (explicit && kw) throw new Error('explicit inclusion is already a keyword candidate (move it to SEM): ' + id);
+    if (explicit && inherited) throw new Error('explicit inclusion is already a family child: ' + id);
+    if (explicit) {
+      if (!src(e).startsWith(explicit[1].replace(/:.*/, ''))) throw new Error('explicit source not cited: ' + id);
+      explicitSeen.add(id);
+      row(id, 'codex:' + sec.id, e.name, e, '', '', 'no-year', '', 'source:' + explicit[1], explicit[0],
+        'nonspatial card (' + explicit[2] + '): no coordinates, no year; retain ' + src(e) + ' and ' + gate(e) +
+          ' gate');
+      continue;
+    }
     if (!kw && !inherited) continue;
     let [vc, vnote] = vis(id, kw);
     if (inherited) {
@@ -291,6 +323,8 @@ function main() {
   }
   for (const f of Object.keys(VISION_FAMILIES).concat(NONVISION_FAMILIES))
     if (!famSeen.has(f)) throw new Error('listed family not in the pack: ' + f);
+  const unusedExplicit = Object.keys(EXPLICIT).filter(k => !explicitSeen.has(k));
+  if (unusedExplicit.length) throw new Error('explicit inclusions not in the pack: ' + unusedExplicit.join(', '));
   if (missing.length) throw new Error('unclassified dated items: ' + missing.join(', '));
   if (unsem.length) throw new Error('keyword candidates without a semantic class: ' + unsem.join(', '));
   const unused = Object.keys(CLASS).filter(k => !rows.some(r => r[0] === k));
@@ -330,6 +364,7 @@ function main() {
         .join(' '),
       keywordCandidates: count(r => r[8] === 'yes'),
       inheritedOnly: count(r => r[8] !== 'yes' && r[9].startsWith('inherited:')),
+      sourceOnly: count(r => r[9].startsWith('source:')),
       visionClasses: classes.map(c => c + ':' + count(r => r[10] === c)).join(' '),
       visionClassWithYear: count(r => r[10] && r[10] !== 'not-vision' && r[5] !== ''),
     }),

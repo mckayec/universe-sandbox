@@ -2315,3 +2315,83 @@ running.
 
 **Still open (Claude keeps ownership):** finished 3840×2160 capture and 4K traversal; landscape header (above, owner
 disposition); browser-level 119/120/121 px gap; semantic omission/vision screen; real-GPU and physical-phone evidence.
+
+## Checkpoint 53 — isolated finished-4K attempt; SEM-R1–R4 and VIS-R1; S51-C1/C2; landscape header path
+
+Parent: 6059cd2 (checkpoint 52). Evidence is CfT Chromium 153 + SwiftShader under Playwright (phone emulation, real
+taps and real Tab) on a 2-core sandbox; no physical phone and no real GPU.
+
+**1. Finished 3840×2160 bake, run alone first (not cleared).** [s53-4k-probe.mjs](supplementary-build/s53-4k-probe.mjs)
+is s51 part A unchanged except that it logs the bake bar's own progress width every ~60 s. It ran first, at the
+6059cd2 build, before any other browser work. Page ready in 67.4 s; bake bar 27 % at 133 s, 34 % at 369 s, 47 % at
+977 s, 57 % at 1573 s, 63 % at 1876 s ([output](supplementary-build/s53-4k-output.txt), 30 progress samples). The rate
+fell from ~1.7 to ~1 % per minute, so the run was stopped at 63 % (~31 min) rather than let it hit its 50-minute
+ceiling unfinished; unit tests ran at `nice 19` beside it for ~2 minutes, otherwise it was alone. Reading: the strip
+bake advances per rendered frame, and a 3840×2160 SwiftShader frame on two cores is the limit, so a finished 4K
+capture and 4K Tab traversal are not reachable in one bounded run on this sandbox (extrapolated ≥ 70 min). This
+needs real-GPU hardware or an owner decision to accept the existing desktop 1440/1280 finished captures plus real-GPU
+evidence later; no app change is implied by it.
+
+**2. Semantic dispositions (HANDOFF_PLAN 2026-11-03 “bounded semantic omission and vision dispositions”).** Generator
+edits only (`copy_bmc.py`, `bmc_semantic_pass.py`, `timeline_vision.cjs`); `build.py` with the accepted register
+(PR34 5951442), then `bmc_omission_rollup.py .`, `bmc_semantic_pass.py .` and `timeline_vision.cjs` regenerated the
+pack and CSVs. Before the edits the generator reproduced the committed pack byte-for-byte.
+* **SEM-R1 (BMC-012)** — new 3/bom view **BMV-012-twelve-ministers-apostles-vision**, 1 Nephi 12:8–10, with the minimum
+  copy verbatim plus “The two groups stay distinct; no member of either is matched to a name, and no place, route or
+  date is added.” One link: NTR-twelve (2/nt), “apostles recalled in the vision”. No pin, journey or date.
+* **SEM-R2 (BMC-026)** — BMV-025 gains a second source “2 Nephi 4:1–2” (bofm/2-ne/4) and the sentence “Nephi returns to
+  Joseph of Egypt’s prophecies in 2 Nephi 4:1–2.” BMC-026 is now a recorded bounded consolidation in
+  bmc-source-views.csv (“SEM-R2 decision (checkpoint 53) … represented by BMV-025 …”), like BMC-164/BMV-166. Joseph
+  identities stay distinct; 3/bom gate unchanged.
+* **SEM-R3 (BMC-032)** — new view **BMV-032-crucifixion-jerusalem-prophecy**, 2 Nephi 10:3–8, minimum copy plus “The
+  prophecy is Jacob’s, kept distinct from the later Gospel narrative; no travel, date or modern territory is added.”
+  Links AE10 (2/nt) “crucifixion foretold in prophecy” and OTM-jerusalem (1/ot) “named in the prophecy”. The Jacob
+  namesake scan rejection is kept.
+* **SEM-R4 (BMC-049)** — new view **BMV-049-isaiah-29-comparison**, sources 2 Nephi 27:25–35 then Isaiah 29:13–24,
+  minimum copy plus “The two texts differ in wording and are not harmonized; the house of Jacob is the collective
+  people, and the chapter’s dream imagery is not located as a vision scene.” Link OHR-ABRAHAM (1/ot) “named in the
+  compared passages” (Abraham is named in both passages; the card's subject is that person). The Ariel/JST card is
+  not used; the chapter-26 Zion range-spill disposition is gone with the rollup row.
+* Ledgers: 79 BMC views (was 76); semantic ledger **142** rows (62 namesake, 62 no-bible-relation, 4 practice/title, 14
+  represented); rollup 196 rows; scan hits 101 unchanged. The other 142 rows are not newly primary-audited.
+* **VIS-R1** — `timeline_vision.cjs` gains `EXPLICIT`, a source-grounded inclusion list (no display keyword added):
+  NTC-heavenly-experience enters as `mixed`, basis `source:2 Corinthians 12:1`, 2/nt, no year or coordinates, with the
+  embodiment uncertainty and relative fourteen-year wording in its disposition. The generator fails if an explicit
+  entry is missing, is already a keyword candidate or family child, or its card does not cite that source. The two new
+  BMV views are keyword candidates and are classed (BMV-012 vision-content; BMV-049 not-vision, keyword only in its
+  safeguard). Crosswalk: **155** rows (152 + 3), 96 keyword candidates, 17 inherited-only, 1 source-only, 35 dated
+  items unchanged (30 filter-year, 5 text-only).
+* New unit test “Checkpoint 53” pins all of the above; counts in the checkpoint 32/37/S40-C1 tests updated.
+
+**3. S51-C1 / S51-C2 (engine).** Worlds (`#idxBtn`) while Sky is on now turns Sky off and opens the visible list with
+`aria-expanded=true`. When leaving compact/galaxy hides the focused Sky button, focus moves to the last visible crumb,
+else Worlds/Space/Codex; focus elsewhere is left alone. In the landscape (desktop-row) layout there is no Worlds toggle:
+the list is the standing side panel that Sky hides and restores.
+
+**4. Landscape header control path (was the owner-disposition limitation).** On landscape phones the brand column may
+now shrink to 44 % and the title wraps in it (13 px, nothing truncated; tagline hidden there), so the controls row
+starts on screen (LDS: it began at x=1370 in an 844 px window). When the row still overflows, the hidden side fades and
+a ‹ / › arrow button (pointer aid, out of the Tab order, labelled) pages it; a focused control is scrolled wholly into
+view. This is a bounded fix inside the existing layout, not a redesign.
+
+**Evidence** — [s53-sky-probe.mjs](supplementary-build/s53-sky-probe.mjs),
+[output](supplementary-build/s53-sky-output.txt), **PASS 65**, zero console/request/page errors. Sun Eater and LDS (via
+its Space button): at 390×844 two rounds of Sky → Worlds (list visible, 52 / 1 worlds, expanded=true) → close, Sky over
+an open list, Enter on Worlds while Sky is on, Enter/Space on Sky with focus kept; at 844×390 two rounds of Sky on/off
+hiding and restoring the side list, Enter/Space; header overflow signposted (Sun Eater 606 > 490 px, LDS 522 > 315 px),
+right arrow on screen, no page-level horizontal scroll; arrow taps bring every header control (11 / 9) wholly on
+screen; the revealed Codex button opens the Codex by a real tap; the left arrow pages back to the start; real Tab from
+the back link reaches every header control wholly on screen; resize 390→1280 with Sky focused moves focus to the
+visible crumb (“Sollan Empire” / “Earth”); unrelated focus (Codex) is left alone; a view change (descend) with Sky
+focused moves focus to a visible crumb. Screenshots: [LDS header paged](shots/s53-header-end-lds-standard-works-844x390.jpg),
+[Sun Eater header paged](shots/s53-header-end-sun-eater-844x390.jpg),
+[LDS Sky landscape](shots/s53-sky-lds-standard-works-844x390.jpg),
+[Sun Eater Sky landscape](shots/s53-sky-sun-eater-844x390.jpg) — inspected: title wraps in three lines beside the
+controls, arrows sit at the row's ends without covering a whole control.
+
+**Checks:** `pnpm check` **148/148**, check:dist 114 OK. `pnpm test:pages` and `pnpm test:browser` not run this
+checkpoint (run time went to the 4K attempt); branch CI on push is the gate for the standalone pages.
+
+**Still open (Claude keeps ownership):** finished 3840×2160 capture and 4K traversal (sandbox-limited, above); the
+other 142 semantic rows and wider vision completeness; browser-level 119/120/121 px gap; native OS select popup;
+real-GPU and physical-phone evidence.

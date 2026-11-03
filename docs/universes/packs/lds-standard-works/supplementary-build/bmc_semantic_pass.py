@@ -49,10 +49,6 @@ SEMANTIC = {
     'BMC-015': ('represented', 'Nephi interprets the olive tree, gathering and rod for his brothers; the 1 Nephi '
                                '12–15 full-read row notes John is identified in 14:27, which is BMV-014 (John named in '
                                'Nephi’s vision)'),
-    'BMC-026': ('represented', 'the 2 Nephi 1–6 full-read row keeps three Joseph identities distinct and ties the '
-                               'Egyptian ancestor and future seer to 2 Nephi 3 (BMV-025) and Lehi’s knowledge of '
-                               'Jerusalem’s destruction to 2 Nephi 1 (BMV-023); Solomon’s temple comparison is '
-                               'BMC-027’s (rollup range-spill)'),
     'BMC-076': ('namesake', 'Noah is the Zeniff-line king (BXP03, land seen from Noah’s tower), not the patriarch'),
     'BMC-089': ('namesake', 'Noah is the Zeniff-line king whose fugitive priests settle Amulon (BXP04)'),
     'BMC-090': ('namesake', 'Noah is the Zeniff-line king (BXP03), not the patriarch'),
@@ -71,9 +67,6 @@ SEMANTIC = {
                             'content with no Bible text or place named'),
     'BMC-228': ('namesake', 'Jared, Noah and Nimrod appear in the Jaredite people record BXR05 as Jaredites; Gilead is '
                             'Shared’s brother (rollup); no Bible link is made'),
-    'BMC-012': ('no-bible-relation', 'the vision forecasts Christ’s appearance and twelve disciples among Nephi’s '
-                                     'descendants, fulfilled in the Book of Mormon’s own 3 Nephi narrative (BXE03); '
-                                     'no Gospel event or Bible place is named'),
     'BMC-059': ('practice-or-title', 'Jacob teaches the law of Moses as pointing to Christ: a practice, not a relation '
                                      'to the Moses card (rollup). The rejected-foundation stone imagery is not tied by '
                                      'the research to any Bible text, and the ledger calls it a literary reference'),

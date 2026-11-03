@@ -473,6 +473,8 @@ function buildShell(K){
   (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
 '<nav id="crumbs" aria-label="Location"></nav>'+
 '<button class="btn" id="skyBtn" aria-pressed="false" title="Hide the panels to see the sky" hidden>Sky</button>'+
+'<button class="btn ctl-more" id="ctlMoreL" tabindex="-1" aria-label="Scroll the header controls back" title="Scroll the header controls back">‹</button>'+
+'<button class="btn ctl-more" id="ctlMoreR" tabindex="-1" aria-label="Show more header controls" title="More header controls">›</button>'+
 (K.raw.realms?'<div class="seg" id="realms" role="group" aria-label="Realm">'+["physical","cognitive","spiritual"].filter(r=>r==="physical"||K.raw.realms[r]).map(r=>{const R=K.raw.realms[r]||{};
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
 (K.raw.layers||K.raw.timeline?'<div id="filters"'+(K.raw.realms?' class="withrealms"':'')+'></div>':"")+
@@ -1402,7 +1404,10 @@ function renderIndex(){let h='<h2 class="eyebrow">'+esc(UI.indexTitle)+'</h2>';
   idx.innerHTML=h;}
 idx.addEventListener("click",e=>{const b=e.target.closest(".world");if(!b)return;if(MOB){idx.classList.remove("open");$("#idxBtn").setAttribute("aria-expanded","false");}
   if(S.view==="world")descend(b.dataset.id);else selectWorld(b.dataset.id,true);});
-$("#idxBtn").addEventListener("click",()=>{const o=idx.classList.toggle("open");$("#idxBtn").setAttribute("aria-expanded",o);});
+$("#idxBtn").addEventListener("click",()=>{
+  /* S51-C1: Worlds leaves the Sky view and opens the (gated) list, rather than reporting it open while Sky hides it */
+  if(skyOn){setSky(false);idx.classList.add("open");$("#idxBtn").setAttribute("aria-expanded","true");return;}
+  const o=idx.classList.toggle("open");$("#idxBtn").setAttribute("aria-expanded",o);});
 
 /* ===================== DOSSIER ===================== */
 const dos=$("#dossier");let dosCollapsed=MOB;
@@ -1503,7 +1508,9 @@ function setSky(on) {
   if (app) app.classList.toggle("sky", skyOn);
   const b = $("#skyBtn");
   if (b) {
+    const hadFocus = document.activeElement === b;
     b.hidden = !avail;
+    if (hadFocus && !avail) skyFocusFallback();
     b.setAttribute("aria-pressed", String(skyOn));
   }
   if (skyOn) {
@@ -1516,11 +1523,59 @@ function setSky(on) {
   skyAvail = avail;
   bumpLabelEpoch();
 }
+/* S51-C2: when leaving the compact galaxy view hides the focused Sky button, move focus to a visible control (the
+   last location crumb, then Worlds, the Space button or the Codex) instead of dropping it on the page. Focus that is
+   elsewhere is left alone. */
+function skyFocusFallback() {
+  const onScreen = e => {
+    if (!e || e.hidden || e.disabled || !e.getClientRects().length || e.closest("[hidden],[inert]")) return false;
+    const r = e.getBoundingClientRect();
+    return r.width > 0 && r.height > 0 && r.right > 0 && r.bottom > 0 && r.left < innerWidth && r.top < innerHeight;
+  };
+  const crumbs = [...document.querySelectorAll("#crumbs a,#crumbs button")];
+  const pick = [crumbs[crumbs.length - 1], $("#idxBtn"), $("#galBtn"), $("#cxBtn")];
+  const t = pick.find(onScreen) || pick.find(e => e && !e.hidden && e.getClientRects().length);
+  if (t) t.focus();
+}
+/* Landscape phones (S51 header access): the desktop header row's controls scroll inside the header. When they
+   overflow, the hidden side fades and an arrow button pages the row, so the off-screen controls are signposted and
+   reachable by touch as well as by swiping; a focused control is scrolled wholly into view. The arrows are pointer
+   aids kept out of the Tab order, since every control they reveal is itself focusable. */
+function syncCtlMore() {
+  const c = document.querySelector(".top .controls");
+  const L = $("#ctlMoreL"), R = $("#ctlMoreR");
+  if (!c || !L || !R) return;
+  const scrolls = getComputedStyle(c).overflowX === "auto" && c.scrollWidth > c.clientWidth + 2;
+  const l = scrolls && c.scrollLeft > 2;
+  const r = scrolls && c.scrollLeft < c.scrollWidth - c.clientWidth - 2;
+  c.classList.toggle("more-l", l);
+  c.classList.toggle("more-r", r);
+  L.classList.toggle("on", l);
+  R.classList.toggle("on", r);
+  if (l) document.documentElement.style.setProperty("--ctl-l", Math.max(0, c.getBoundingClientRect().left - 4) + "px");
+}
+function bindCtlMore() {
+  const c = document.querySelector(".top .controls");
+  if (!c) return;
+  const page = d => c.scrollBy({ left: d * Math.max(120, c.clientWidth * 0.7), behavior: "smooth" });
+  $("#ctlMoreL").addEventListener("click", () => page(-1));
+  $("#ctlMoreR").addEventListener("click", () => page(1));
+  c.addEventListener("scroll", syncCtlMore, { passive: true });
+  /* a control that is only partly in view is not scrolled by focus alone; bring the focused one wholly into view */
+  c.addEventListener("focusin", e => {
+    if (c.scrollWidth > c.clientWidth + 2 && e.target.scrollIntoView)
+      e.target.scrollIntoView({ block: "nearest", inline: "nearest" });
+  });
+  addEventListener("resize", syncCtlMore);
+  if (window.ResizeObserver) new ResizeObserver(syncCtlMore).observe(c);
+  syncCtlMore();
+}
 function syncSky() {
   const avail = MOB && S.view === "galaxy";
   if (avail !== skyAvail || (skyOn && !avail)) setSky(skyOn && avail);
 }
 $("#skyBtn").addEventListener("click", () => setSky(!skyOn));
+bindCtlMore();
 $("#chronT").addEventListener("click",()=>{if(!MOB)return;const open=chron.classList.contains("closed");chron.classList.toggle("closed",!open);chron.classList.toggle("open-c",open);if(open){dosCollapsed=true;dos.classList.add("collapsed");}chronH();});
 if(MOB)chron.classList.add("closed");
 

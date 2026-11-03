@@ -1956,7 +1956,7 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
 
 test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
   const views = codex('bom-bible');
-  assert.equal(views.length, 76); // 58 through checkpoint 37, 18 added by the S37 decisions (checkpoint 38)
+  assert.equal(views.length, 79); // 58 through checkpoint 37, 18 added by the S37 decisions (checkpoint 38), 3 by SEM-R1/R3/R4 (checkpoint 53)
   const all = P.codex.flatMap((t: any) => t.list);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
@@ -1984,13 +1984,13 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
   // layer isolation and work downgrade
   const split = (layers: string[], cum: boolean, book: number) =>
     L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
-  assert.equal(split(['bom'], false, 0).shown.length, 76);
+  assert.equal(split(['bom'], false, 0).shown.length, 79);
   assert.equal(split(['ot'], false, 0).shown.length, 0);
   assert.equal(split(['nt'], false, 0).shown.length, 0);
   assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
-  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 76);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 79);
   assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
-  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 76);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 79);
   // the S31 minimum examples
   const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
   assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);
@@ -2117,7 +2117,8 @@ test('Checkpoint 37: every default BMC omission has a semantic disposition with 
   const by = new Map(rows.map(r => [r[0], r]));
   // checkpoint 38: the S37 decisions left no candidate, reader, unstated-parallel or relation-no-card row; the 146
   // remaining rows are summary-level reason screens, not certified absences
-  assert.equal(rows.length, 146);
+  // checkpoint 53: SEM-R1/R3/R4 gave BMC-012/032/049 views and SEM-R2 consolidated BMC-026 into BMV-025
+  assert.equal(rows.length, 142);
   for (const [key, , state] of rows)
     assert.ok(!['candidate', 'reader', 'unstated-parallel', 'relation-no-card'].includes(state), `${key} ${state}`);
   for (const k of ['BMC-002', 'BMC-016', 'BMC-053', 'BMC-124', 'BMC-164', 'BMC-186', 'BMC-215'])
@@ -2381,7 +2382,7 @@ test('S40-C1: keyword candidates are semantically classed; vision-family childre
   const by = new Map(body.map(r => [r[0], r]));
   // every keyword candidate has a semantic class; the screen alone never decides it
   for (const r of body) if (r[col('vision_keyword')] === 'yes') assert.ok(r[col('vision_class')], r[0]);
-  assert.equal(body.filter(r => r[col('vision_keyword')] === 'yes').length, 94);
+  assert.equal(body.filter(r => r[col('vision_keyword')] === 'yes').length, 96); // + BMV-012, BMV-049 (checkpoint 53)
   // every child of the two vision families is present, inherited, undated and keeps its own locator and gate
   const cards = P.codex.flatMap((t: any) => t.list);
   for (const fam of ['NTC-vision-sequence', 'OTM-j22-temple-tour']) {
@@ -2415,4 +2416,71 @@ test('S40-C1: keyword candidates are semantically classed; vision-family childre
     assert.match(e.desc, /^New Testament narrative — Matthew /, k);
     assert.equal(JSON.stringify([e.books, e.layers]), '[[2],["nt"]]', k);
   }
+});
+
+test('Checkpoint 53: SEM-R1–R4 semantic dispositions and VIS-R1 source-grounded vision inclusion', () => {
+  const dir = '../docs/universes/packs/lds-standard-works/';
+  const read = (f: string) => readFileSync(new URL(dir + f, import.meta.url), 'utf8');
+  const all = P.codex.flatMap((t: any) => t.list);
+  const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
+  const see = (k: string) => plain(byKey.get(k).see || []).map((s: any) => s.k + '|' + s.r);
+  // SEM-R1: the twelve ministers stay distinct from the Lamb's twelve apostles; one link to the Twelve, no pin or date
+  const v12 = byKey.get('BMV-012-twelve-ministers-apostles-vision');
+  assert.match(
+    v12.desc,
+    /In Nephi’s vision, the angel distinguishes twelve ministers among Nephi’s descendants from the Lamb’s twelve apostles, who are said to judge Israel\./,
+  );
+  assert.equal(v12.src[0].t, '1 Nephi 12:8–10');
+  assert.deepEqual(see('BMV-012-twelve-ministers-apostles-vision'), ['NTR-twelve|apostles recalled in the vision']);
+  assert.deepEqual(plain(byKey.get('NTR-twelve').books), [2]);
+  // SEM-R2: BMV-025 carries 2 Nephi 4:1–2 as a second source; BMC-026 is a recorded bounded consolidation
+  const v25 = byKey.get('BMV-025-joseph-egypt-prophecy');
+  assert.deepEqual(plain(v25.src.map((x: any) => x.t)), ['2 Nephi 3:1–25', '2 Nephi 4:1–2']);
+  assert.match(v25.src[1].u, /bofm\/2-ne\/4\?/);
+  assert.match(v25.desc, /Nephi returns to Joseph of Egypt’s prophecies in 2 Nephi 4:1–2\./);
+  assert.match(v25.desc, /The three Josephs stay distinct/);
+  const views = read('bmc-source-views.csv');
+  assert.match(views, /^BMC-026,2 Nephi 4,[^\n]*,omitted,"SEM-R2 decision \(checkpoint 53\)[^\n]*BMV-025/m);
+  // SEM-R3: prophecy kept distinct from the Gospel narrative; Crucifixion and Jerusalem targets keep their gates
+  const v32 = byKey.get('BMV-032-crucifixion-jerusalem-prophecy');
+  assert.match(v32.desc, /Jacob foretells Christ’s crucifixion and names Jerusalem in the prophecy\./);
+  assert.equal(v32.src[0].t, '2 Nephi 10:3–8');
+  assert.deepEqual(plain(v32.see.map((s: any) => s.k)), ['AE10', 'OTM-jerusalem']);
+  assert.match(views, /^BMC-032,2 Nephi 10,OHR-JACOB,[^\n]*,scan-rejected,"Book of Mormon namesake/m);
+  // SEM-R4: both passages cited in order; Abraham linked; the Ariel/JST card is not used
+  const v49 = byKey.get('BMV-049-isaiah-29-comparison');
+  assert.match(
+    v49.desc,
+    /Compare 2 Nephi 27:25–35 with Isaiah 29:13–24; their language includes Abraham and the house of Jacob\./,
+  );
+  assert.deepEqual(plain(v49.src.map((x: any) => x.t)), ['2 Nephi 27:25–35', 'Isaiah 29:13–24']);
+  assert.match(v49.src[1].u, /ot\/isa\/29\?/);
+  assert.deepEqual(plain(v49.see.map((s: any) => s.k)), ['OHR-ABRAHAM']);
+  for (const v of [v12, v32, v49]) {
+    assert.equal(v.when, undefined, v.key);
+    assert.equal(v.lat, undefined, v.key);
+  }
+  // the four keys left the default-omission rollup and the semantic ledger
+  const sem = read('bmc-semantic-dispositions.csv');
+  const rollup = read('bmc-omission-rollup.csv');
+  for (const k of ['BMC-012', 'BMC-026', 'BMC-032', 'BMC-049']) {
+    assert.ok(!sem.includes(k + ','), k);
+    assert.ok(!rollup.includes(k + ','), k);
+  }
+  // VIS-R1: the heavenly-experience card is included from its cited source, mixed, undated, 2/nt; no keyword added
+  const [head, ...body] = parseCsv(read('timeline-source-vision.csv'));
+  const col = (n: string) => head.indexOf(n);
+  const r = body.find(x => x[0] === 'codex:NTC-heavenly-experience')!;
+  assert.ok(r);
+  assert.equal(r[col('vision_keyword')], '');
+  assert.equal(r[col('vision_basis')], 'source:2 Corinthians 12:1');
+  assert.equal(r[col('vision_class')], 'mixed');
+  assert.equal(r[col('gate')], '2/nt');
+  assert.equal(r[col('filter_years')], '');
+  assert.match(r[col('disposition')], /uncertainty about the body/);
+  assert.match(r[col('disposition')], /fourteen years are relative/);
+  const h = byKey.get('NTC-heavenly-experience');
+  assert.ok(!/\bvisions?\b/i.test(h.name + ' ' + h.desc));
+  assert.equal(h.when, undefined);
+  assert.equal(body.length, 155);
 });

@@ -520,6 +520,23 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 @media (max-width:820px){#skyBtn{top:calc(var(--hdr,96px) + 4px)}}
 /* landscape phones use the desktop header row; its controls scroll inside the header instead of off the page */
 @media (max-height:520px) and (pointer:coarse){
-  .top .controls{flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+  .top .controls{flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none;scroll-padding-inline:28px}
+  /* the brand may not push the controls off the window: a long title wraps in a narrower column instead of
+     running past the edge (the full title stays readable; nothing is truncated) */
+  .top .brand{flex:0 1 auto;min-width:0;max-width:44%}
+  .top .brand>div{min-width:0}
+  .top .brand h1{font-size:13px;line-height:1.25;letter-spacing:.08em;white-space:normal;overflow-wrap:anywhere}
+  .top .brand p{display:none}
   .top .controls::-webkit-scrollbar{display:none}
+  /* S51: the overflow is signposted; the faded edge and its arrow button show that more controls lie that way */
+  .top .controls.more-r{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent)}
+  .top .controls.more-l{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 40px),transparent)}
+  .top .controls.more-l.more-r{-webkit-mask-image:linear-gradient(to right,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(to right,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
+}
+.ctl-more{display:none}
+@media (max-height:520px) and (pointer:coarse){
+  .ctl-more{position:absolute;z-index:7;top:14px;width:34px;min-height:34px;padding:0;font-size:14px;line-height:1;pointer-events:auto}
+  .ctl-more.on{display:block}
+  #ctlMoreR{right:max(10px,env(safe-area-inset-right,0px))}
+  #ctlMoreL{left:var(--ctl-l,auto)}
 }

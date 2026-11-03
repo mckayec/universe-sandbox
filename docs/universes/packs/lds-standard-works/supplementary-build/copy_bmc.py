@@ -35,6 +35,11 @@ VIEWS = [
     (11, 'nazareth-jerusalem-vision', 'Nephi’s vision of Nazareth and Jerusalem (1 Nephi 11)', 'vision',
      'Book of Mormon — In Nephi’s vision, he sees Nazareth and Jerusalem. The vision begins on an unnamed high '
      'mountain; the cities are viewed, not visited, and no mountain or route is located.', '1, 13, 32', []),
+    (12, 'twelve-ministers-apostles-vision', 'Twelve ministers and the Lamb’s twelve apostles (1 Nephi 12)', 'vision',
+     'Book of Mormon — In Nephi’s vision, the angel distinguishes twelve ministers among Nephi’s descendants from the '
+     'Lamb’s twelve apostles, who are said to judge Israel. The two groups stay distinct; no member of either is '
+     'matched to a name, and no place, route or date is added.', '8–10',
+     [('NTR-twelve', 'apostles recalled in the vision')]),
     (14, 'john-revelation-vision', 'John named in Nephi’s vision (1 Nephi 14)', 'vision',
      'Book of Mormon — The angel in Nephi’s vision identifies John as the writer of later revelations. John is '
      'named, not met.', '18–27', [('ev:patmos-vision', 'John named as its writer')]),
@@ -61,7 +66,7 @@ VIEWS = [
     (25, 'joseph-egypt-prophecy', 'Joseph of Egypt’s prophecy, quoted by Lehi (2 Nephi 3)', 'quotation',
      'Book of Mormon — Lehi addresses his youngest son Joseph and quotes Joseph-of-Egypt traditions about Moses, '
      'records and a future seer bearing Joseph’s name. The three Josephs stay distinct; identifying the seer is '
-     'interpretation.', None,
+     'interpretation. Nephi returns to Joseph of Egypt’s prophecies in 2 Nephi 4:1–2.', None,
      [('OHR-JOSEPH-JACOB', 'prophecy attributed to him'), ('OHR-MOSES', 'named in the quoted prophecy')]),
     (28, 'jerusalem-captivity-reading', 'Jerusalem’s captivity in Jacob’s reading of Isaiah (2 Nephi 6)', 'teaching',
      'Book of Mormon — Jacob interprets Isaiah concerning Jerusalem’s captivity, the Messiah and a future '
@@ -73,6 +78,11 @@ VIEWS = [
      'things; neither is harmonized.', None,
      [('OHR-ABRAHAM', 'recalled in quoted Isaiah'), ('OHR-SARAH', 'recalled in quoted Isaiah'),
       ('OTM-jerusalem', 'its affliction and release, quoted')]),
+    (32, 'crucifixion-jerusalem-prophecy', 'Christ’s crucifixion and Jerusalem in Jacob’s prophecy (2 Nephi 10)',
+     'prophecy',
+     'Book of Mormon — Jacob foretells Christ’s crucifixion and names Jerusalem in the prophecy. The prophecy is '
+     'Jacob’s, kept distinct from the later Gospel narrative; no travel, date or modern territory is added.', '3–8',
+     [('AE10', 'crucifixion foretold in prophecy'), ('OTM-jerusalem', 'named in the prophecy')]),
     (34, 'judah-jerusalem-oracle', 'Isaiah’s oracle on Judah and Jerusalem (2 Nephi 12)', 'quotation',
      'Book of Mormon — Isaiah’s oracle concerning Judah and Jerusalem, quoted, portrays the Lord’s mountain-house '
      'and nations seeking instruction, then judgment of pride. No pilgrim route is plotted.', None,
@@ -230,6 +240,11 @@ VIEWS = [
     (48, 'zion-welfare-teaching', 'Zion’s welfare and charity in Nephi’s teaching (2 Nephi 26)', 'teaching',
      'Book of Mormon — Nephi condemns priestcraft that seeks gain and praise rather than Zion’s welfare, and teaches '
      'charity. This passage does not identify Zion as a mapped city.', '29–31', []),
+    (49, 'isaiah-29-comparison', 'Isaiah 29 compared in Nephi’s prophecy (2 Nephi 27)', 'quotation',
+     'Book of Mormon — Compare 2 Nephi 27:25–35 with Isaiah 29:13–24; their language includes Abraham and the house of '
+     'Jacob. The two texts differ in wording and are not harmonized; the house of Jacob is the collective people, and '
+     'the chapter’s dream imagery is not located as a vision scene.', '25–35',
+     [('OHR-ABRAHAM', 'named in the compared passages')]),
     (179, 'israel-gathering-editorial', 'Israel’s gathering in Mormon’s editorial voice (3 Nephi 5)', 'teaching',
      'Book of Mormon — Mormon’s editorial voice proclaims Israel’s future gathering. His editorial present is '
      'distinct from the preceding year-25 narrative.', None,
@@ -366,6 +381,9 @@ EXTRA_SOURCES = {
     81: [('Isaiah 52:7–10', _S + 'ot/isa/52?lang=eng')],
     100: [('John 10:11–16', _S + 'nt/john/10?lang=eng')],
     192: [('Matthew 26:26–29', _S + 'nt/matt/26?lang=eng')],
+    # checkpoint 53 (HANDOFF_PLAN 2026-11-03 bounded semantic dispositions): SEM-R2, SEM-R4
+    25: [('2 Nephi 4:1–2', _S + 'bofm/2-ne/4?lang=eng')],
+    49: [('Isaiah 29:13–24', _S + 'ot/isa/29?lang=eng')],
 }
 
 # Views implemented without a See-also link: reason (recorded in bmc-source-views.csv).
@@ -405,6 +423,10 @@ OMIT = {
     16: 'S37 decision (S37-C1): BXP01 describes river Laman emptying into the Red Sea. In 1 Nephi 16:12 the party '
         'crosses river Laman; verse 14 describes travel near the Red Sea. These references are represented by the '
         'existing narrative cards, without a claimed Red Sea crossing or mapped river mouth',
+    26: 'SEM-R2 decision (checkpoint 53): 2 Nephi 4:1–2, where Nephi returns to Joseph of Egypt’s prophecies, is '
+        'represented by BMV-025 with its additional 2 Nephi 4:1–2 source and copy; bounded consolidation of that '
+        'relation, not complete coverage of the chapter. The three Joseph identities stay distinct and the 3/bom gate '
+        'is unchanged; Solomon’s temple comparison is BMC-027’s',
     164: 'S37 decision (S37-C2): the land-name distinction is represented by BXP37; the chapter’s attributed '
          'Mulek–Zedekiah relation is represented by BMV-166 with its additional Helaman 6:10 source. Neither relation '
          'proves a modern continental assignment or independent genealogy',
