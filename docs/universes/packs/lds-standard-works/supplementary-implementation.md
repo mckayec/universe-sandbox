@@ -1911,3 +1911,25 @@ This checkpoint adds only a probe, its output and one shot; no runtime change.
   as separate invocations, then the observation 1 fix with a re-run of the traversal.
 * **Still open (Claude keeps ownership):** the above; source-grounded semantic omission/consolidation (incl. the wider
   vision screen); real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 43 — Tab-order fix (S42 observation 1)
+
+Code head: **29ada5249e5924187f341c427611dbaeebb2c585** (parent 52507fc, the checkpoint 42 head). Generic engine change,
+canon-neutral; pack data unchanged.
+
+* **Change.** `public/atlas/engine.js` `buildShell`: `#labels` now follows `#index` / `#dossier` in the DOM instead of
+  sitting before the top bar. The visible globe site labels stay tabbable (keyboard path to the pins is kept), but focus
+  now reaches the back link, book filter, Space / Earth / Codex, crumbs, filters and side list first. `#labels` is the
+  only z-index-3 layer and no selector depends on its sibling position, so paint order is unchanged. Affects every
+  engine pack the same way.
+* **Probe.** [s43-probe.mjs](supplementary-build/s43-probe.mjs) (the S42 probe with a 120-stop cap, zone tagging and
+  order assertions; traversal only, no bake wait) at 1440×900, real keyboard input. [Output](supplementary-build/s43-probe-output.txt).
+  Stop 1 is “← Gravity Lab”; top-bar stops 1–10; crumbs/filters 11–20; side list 21–82; globe site labels 83–104
+  (all 22 still reachable); chronicle from 105. Every stop visible, on screen, focus-ringed and named; Shift-Tab
+  reverses all 120 exactly; Codex Enter/trap/wrap/Escape unchanged. PASS, no console/request errors.
+* **Checks at that SHA.** `pnpm format`, `pnpm check` (137/137 tests, check:dist 114 OK), `pnpm test:pages` 13×2,
+  `pnpm test:browser` passed.
+* **Still open (Claude keeps ownership):** S42 observation 2 (unidentified spaced-caps JERUSALEM label — measure
+  against its anchor); finished-bake captures at 3840/1280/390 (separate `VPS=` invocations of s42-probe with `BAKE`);
+  source-grounded semantic omission/consolidation incl. wider vision screen; real-GPU and physical-phone evidence need
+  hardware.
