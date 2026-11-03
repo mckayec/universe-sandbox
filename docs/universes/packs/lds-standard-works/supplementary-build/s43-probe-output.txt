@@ -1,0 +1,128 @@
+[72s] 1440x900 ready
+[1082s] forward Tab stops: 120
+  [top] a(1) "← Gravity Lab" visible=true onscreen=true ring=true
+  [top] button(2) "All" visible=true onscreen=true ring=true
+  [top] button(3) "OT" visible=true onscreen=true ring=true
+  [top] button(4) "NT" visible=true onscreen=true ring=true
+  [top] button(5) "BoM" visible=true onscreen=true ring=true
+  [top] button(6) "D&C" visible=true onscreen=true ring=true
+  [top] button(7) "PGP" visible=true onscreen=true ring=true
+  [top] button#galBtn "Space" visible=true onscreen=true ring=true
+  [top] button#webBtn "Earth" visible=true onscreen=true ring=true
+  [top] button#cxBtn "Codex" visible=true onscreen=true ring=true
+  [other] button(11) "Milky Way" visible=true onscreen=true ring=true
+  [other] button(12) "Earth" visible=true onscreen=true ring=true
+  [other] button(13) "Earth" visible=true onscreen=true ring=true
+  [other] button(14) "OT" visible=true onscreen=true ring=true
+  [other] button(15) "NT" visible=true onscreen=true ring=true
+  [other] button(16) "BoM" visible=true onscreen=true ring=true
+  [other] button(17) "D&C" visible=true onscreen=true ring=true
+  [other] button(18) "PGP" visible=true onscreen=true ring=true
+  [other] input(19) "From year" visible=true onscreen=true ring=true
+  [other] input(20) "To year" visible=true onscreen=true ring=true
+  [panel] button(21) "Earth24" visible=true onscreen=true ring=true
+  [panel] button(22) "Return to the galaxy" visible=true onscreen=true ring=true
+  [panel] button(23) "JerusalemOTNTBoMOTNTBoMThe marker locate" visible=true onscreen=true ring=true
+  [panel] button(24) "BethlehemOTNTOTNTThe marker locates the " visible=true onscreen=true ring=true
+  [panel] button(25) "NazarethNTNTRepresentative location of N" visible=true onscreen=true ring=true
+  [panel] button(26) "CapernaumNTNTRepresentative location of " visible=true onscreen=true ring=true
+  [panel] button(27) "JerichoOTOTThe marker locates Tell es-Su" visible=true onscreen=true ring=true
+  [panel] button(28) "BabylonOTOTThe marker locates the Babylo" visible=true onscreen=true ring=true
+  [panel] button(29) "PergaNTNTRepresentative location of Perg" visible=true onscreen=true ring=true
+  [panel] button(30) "Antioch in PisidiaNTNTRepresentative loc" visible=true onscreen=true ring=true
+  [panel] button(31) "PhilippiNTNTThe marker locates the archa" visible=true onscreen=true ring=true
+  [panel] button(32) "Antioch (sending church)NTNTCity referen" visible=true onscreen=true ring=true
+  [panel] button(33) "SeleuciaNTNTRepresentative point for the" visible=true onscreen=true ring=true
+  [panel] button(34) "SalamisNTNTRepresentative city-site poin" visible=true onscreen=true ring=true
+  [panel] button(35) "PaphosNTNTLocates the ancient city of Ne" visible=true onscreen=true ring=true
+  [panel] button(36) "IconiumNTNTCity reference point for mode" visible=true onscreen=true ring=true
+  [panel] button(37) "AttaliaNTNTCity reference point for mode" visible=true onscreen=true ring=true
+  [panel] button(38) "TroasNTNTRepresentative point within the" visible=true onscreen=true ring=true
+  [panel] button(39) "SyracuseNTNTCity reference point for Syr" visible=true onscreen=true ring=true
+  [panel] button(40) "RhegiumNTNTCity reference point for Regg" visible=true onscreen=true ring=true
+  [panel] button(41) "PuteoliNTNTCity reference point for Pozz" visible=true onscreen=true ring=true
+  [panel] button(42) "RomeNTNTCity reference point for Rome. P" visible=true onscreen=true ring=true
+  [panel] button(43) "PatmosNTNTReference point for the island" visible=true onscreen=true ring=true
+  [panel] button(44) "Winter QuartersD&CD&C1846–1848Winter Qua" visible=true onscreen=true ring=true
+  [panel] button(45) "Fayette (Whitmer home)D&CD&CThe Joseph S" visible=true onscreen=true ring=true
+  [panel] button(46) "IndependenceD&CD&C1831D&C 57 names Indep" visible=true onscreen=true ring=true
+  [panel] button(47) "Kirtland TempleD&CD&C1836D&C 109 preserv" visible=true onscreen=true ring=true
+  [panel] button(48) "NauvooD&CD&C1839–1846The heading to D&C " visible=true onscreen=true ring=true
+  [panel] button(49) "Carthage JailD&CD&C1844D&C 135 reports J" visible=true onscreen=true ring=true
+  [panel] button(50) "Harmony / Priesthood Restoration SiteD&C" visible=true onscreen=true ring=true
+  [panel] button(51) "PalmyraBoMD&CBoMD&C1830Palmyra hosted pu" visible=true onscreen=true ring=true
+  [panel] button(52) "Salt Lake TempleD&CD&C1978The official d" visible=true onscreen=true ring=true
+  [panel] button(53) "Garden GroveD&CD&C1846Emigrants establis" visible=true onscreen=true ring=true
+  [panel] button(54) "Mount Pisgah (Iowa)D&CD&C1846A second fa" visible=true onscreen=true ring=true
+  [panel] button(55) "Chimney RockD&CD&C1847The 1847 emigrant " visible=true onscreen=true ring=true
+  [panel] button(56) "Fort BridgerD&CD&C1847Near Fort Bridger," visible=true onscreen=true ring=true
+  [panel] button(57) "Joseph, Mary and Jesus in LukeNTNT" visible=true onscreen=true ring=true
+  [panel] button(58) "Return from BabylonOTOT" visible=true onscreen=true ring=true
+  [panel] button(59) "OTCapture of JerichoOTJoshua recounts Je" visible=true onscreen=true ring=true
+  [panel] button(60) "OTDavid takes JerusalemOT2 Samuel descri" visible=true onscreen=true ring=true
+  [panel] button(61) "OTJerusalem destroyedOT2 Kings describes" visible=true onscreen=true ring=true
+  [panel] button(62) "OTReturn authorizedOTEzra describes Cyru" visible=true onscreen=true ring=true
+  [panel] button(63) "NTBirth in LukeNTLuke describes Joseph a" visible=true onscreen=true ring=true
+  [panel] button(64) "NTPresentation in JerusalemNTJesus is br" visible=true onscreen=true ring=true
+  [panel] button(65) "NTMinistry in GalileeNTMatthew describes" visible=true onscreen=true ring=true
+  [panel] button(66) "NTBarnabas and Saul sentNTThe church com" visible=true onscreen=true ring=true
+  [panel] button(67) "NTPaul reaches RomeNTActs describes Paul" visible=true onscreen=true ring=true
+  [panel] button(68) "NTVision introduced on PatmosNTJohn intr" visible=true onscreen=true ring=true
+  [panel] button(69) "BoMLehi at JerusalemBoMNephi introduces " visible=true onscreen=true ring=true
+  [panel] button(70) "D&CWinter camp on the MissouriD&C1846Emi" visible=true onscreen=true ring=true
+  [panel] button(71) "D&CInstructions for the journeyD&C1847D&" visible=true onscreen=true ring=true
+  [panel] button(72) "D&CWestward departureD&C1847The first gr" visible=true onscreen=true ring=true
+  [panel] button(73) "D&CAaronic Priesthood accountD&C1829Jose" visible=true onscreen=true ring=true
+  [panel] button(74) "D&CFinal dictation in FayetteD&C1829The " visible=true onscreen=true ring=true
+  [panel] button(75) "D&CFirst edition availableD&C1830Copies " visible=true onscreen=true ring=true
+  [panel] button(76) "D&CChurch organizationD&C1830The Church " visible=true onscreen=true ring=true
+  [panel] button(77) "D&CIndependence designatedD&C1831The rev" visible=true onscreen=true ring=true
+  [panel] button(78) "D&CVision recorded at KirtlandD&C1836Jos" visible=true onscreen=true ring=true
+  [panel] button(79) "D&CKirtland dedication prayerD&C1836D&C " visible=true onscreen=true ring=true
+  [panel] button(80) "D&CNauvoo building instructionsD&C1841Th" visible=true onscreen=true ring=true
+  [panel] button(81) "D&CDeparture from NauvooD&C1846The first" visible=true onscreen=true ring=true
+  [panel] button(82) "D&CReported confirmation in the templeD&" visible=true onscreen=true ring=true
+  [globe] button(83) "Earth" visible=true onscreen=true ring=true
+  [globe] button(84) "Jerusalem" visible=true onscreen=true ring=true
+  [globe] button(85) "Bethlehem" visible=true onscreen=true ring=true
+  [globe] button(86) "Nazareth" visible=true onscreen=true ring=true
+  [globe] button(87) "Capernaum" visible=true onscreen=true ring=true
+  [globe] button(88) "Jericho" visible=true onscreen=true ring=true
+  [globe] button(89) "Babylon" visible=true onscreen=true ring=true
+  [globe] button(90) "Perga" visible=true onscreen=true ring=true
+  [globe] button(91) "Antioch in Pisidia" visible=true onscreen=true ring=true
+  [globe] button(92) "Philippi" visible=true onscreen=true ring=true
+  [globe] button(93) "Antioch (sending church)" visible=true onscreen=true ring=true
+  [globe] button(94) "Seleucia" visible=true onscreen=true ring=true
+  [globe] button(95) "Salamis" visible=true onscreen=true ring=true
+  [globe] button(96) "Paphos" visible=true onscreen=true ring=true
+  [globe] button(97) "Iconium" visible=true onscreen=true ring=true
+  [globe] button(98) "Attalia" visible=true onscreen=true ring=true
+  [globe] button(99) "Troas" visible=true onscreen=true ring=true
+  [globe] button(100) "Syracuse" visible=true onscreen=true ring=true
+  [globe] button(101) "Rhegium" visible=true onscreen=true ring=true
+  [globe] button(102) "Puteoli" visible=true onscreen=true ring=true
+  [globe] button(103) "Rome" visible=true onscreen=true ring=true
+  [globe] button(104) "Patmos" visible=true onscreen=true ring=true
+  [other] button(105) "Capture of JerichoEarth" visible=true onscreen=true ring=true
+  [other] button(106) "David takes JerusalemEarth" visible=true onscreen=true ring=true
+  [other] button(107) "Jerusalem destroyedEarth" visible=true onscreen=true ring=true
+  [other] button(108) "Return authorizedEarth" visible=true onscreen=true ring=true
+  [other] button(109) "Birth in LukeEarth" visible=true onscreen=true ring=true
+  [other] button(110) "Presentation in JerusalemEarth" visible=true onscreen=true ring=true
+  [other] button(111) "Ministry in GalileeEarth" visible=true onscreen=true ring=true
+  [other] button(112) "Barnabas and Saul sentEarth" visible=true onscreen=true ring=true
+  [other] button(113) "Paul reaches RomeEarth" visible=true onscreen=true ring=true
+  [other] button(114) "Vision introduced on PatmosEarth" visible=true onscreen=true ring=true
+  [other] button(115) "Lehi at JerusalemEarth" visible=true onscreen=true ring=true
+  [other] button(116) "Winter camp on the MissouriEarth" visible=true onscreen=true ring=true
+  [other] button(117) "Instructions for the journeyEarth" visible=true onscreen=true ring=true
+  [other] button(118) "Westward departureEarth" visible=true onscreen=true ring=true
+  [other] button(119) "Aaronic Priesthood accountEarth" visible=true onscreen=true ring=true
+  [other] button(120) "Final dictation in FayetteEarth" visible=true onscreen=true ring=true
+  last top-bar stop #10; first globe label #83; globe stops 22
+[2462s] Shift-Tab reverses the forward order
+[2561s] Codex: 25 Tab stops stayed inside; Escape closed it
+[2568s] Codex wrap both ways; Escape returns focus to #cxBtn
+[2568s] PASS
+exit=0
