@@ -70,7 +70,8 @@ executablePath })`; WebGL through SwiftShader (no GPU).
 ## Commands and results
 
 Isolated worktrees of each SHA, `GIT_LFS_SKIP_SMUDGE=1 pnpm install --frozen-lockfile` (exit 0), `pnpm build`
-(exit 0), then `CHROME_PATH=… pnpm test:browser`. Logs in `tl10/`.
+(exit 0), then `CHROME_PATH=… pnpm test:browser`. The original terminal logs of these runs were not retained (see
+"TL-E01 resolution" below); the counts in this table are reported history. Re-run logs are in `tl10/`.
 
 | Tree                                | Runs | Result                                                       |
 | ----------------------------------- | ---- | ------------------------------------------------------------ |
@@ -90,3 +91,27 @@ Fixed tree also: `pnpm format` clean, `pnpm check` 126/126, `pnpm check:dist` 12
 - `main` itself was not run; the race is the same code there.
 - All earlier timeline gates are unchanged (Standard Works adapter and chapter gates, 169 empty record `src`
   arrays, genealogy/succession/travel/Apocrypha/world calendars, drag reorder, devices/AT, CH13/X08 limits).
+
+## TL-E01 resolution (2026-11-03, follow-up run)
+
+Finding (PR46 at b1d0da0): the builder terminal logs promised above were absent from `tl10/` (only the diagnostic
+script was committed). Resolution: the original logs lived in a previous, now-reclaimed sandbox and were not
+committed, so they cannot be published; the line above is corrected to say so, and the 2/2, 2/2, 3/3 and 1/1 counts
+stay as reported history only. Fresh runs were made and their full, unedited terminal output (ANSI colour codes
+stripped) is committed as tracked text. Same container type, Node v22.23.4, pnpm 10.28.0, `CHROME_PATH` Chrome for
+Testing 153.0.8010.12 (SwiftShader); matched Chromium 1234/CfT 151 still not installed.
+
+| Log (in `tl10/`)                 | Tree                                                | Result                                     |
+| -------------------------------- | --------------------------------------------------- | ------------------------------------------ |
+| `rerun-20261103-fixed-run1.txt`  | 178fd7c (fix)                                       | exit 0, passed, 158 s                      |
+| `rerun-20261103-parent-run1.txt` | 178fd7c with `tests/browser-smoke.mjs` from 908bab4 | **exit 0, passed**, 143 s                  |
+| `rerun-20261103-diag-run1.txt`   | `smoke-save-diag.mjs` on 178fd7c build              | DOM after Save 29 = stored 29; exit 0      |
+| `rerun-20261103-diag-run2.txt`   | `smoke-save-diag.mjs` on 178fd7c build              | DOM after Save 22, stored 29; TimeoutError |
+
+The unmodified test passed once in this run, unlike the 2/2 failures reported earlier; one diagnostic run read
+a stale DOM count after Save (22 vs 29 stored, Load restoring 29, then timeout) and one did not. That is what a
+frame-rate-dependent race predicts, and it means the earlier "fails every time in this container" wording was too
+strong: it fails intermittently here. The fix is unchanged. The tree for the parent run differs from 908bab4 only
+in docs (`git diff --stat 908bab4 178fd7c` touches only `tests/browser-smoke.mjs` outside `docs/`).
+
+Still unverified: matched Chromium 151, real GPU, macOS Chrome, `main` itself.
