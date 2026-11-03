@@ -1972,3 +1972,29 @@ Parent: b878e38 (checkpoint 43 head). Pack copy and the generated crosswalk only
   built.
 * **Still open (Claude keeps ownership):** finished-bake captures at 3840/1280/390; wider semantic omission/vision
   screen; real-GPU and physical-phone evidence need hardware; the two crumb follow-ons above if wanted.
+
+## Checkpoint 45 — breadcrumb readability (S43-V1)
+
+Parent: d84599c (checkpoint 44 head, S43-reviewed). Generic engine CSS only (`public/atlas/engine.css`, `#crumbs`); no
+pack data, canon or layout-position change.
+
+* **Change.** `#crumbs` now sits on a stable contrasting surface: `background: rgba(var(--shade-rgb), .88)`, a 1px
+  `var(--line)` border, 2px×12px padding and an 8px backdrop blur (the same shade token every pack already uses for
+  `#navhint` and place labels, so each pack keeps its own tint). Separators changed from `--lapis-lo` (2.40:1 over
+  black) to `--muted` at 75% opacity. Link, hover, current-item and focus-ring colours are unchanged.
+* **Measured contrast.** [s45-crumbs-contrast-probe.mjs](supplementary-build/s45-crumbs-contrast-probe.mjs) loads all
+  seven engine packs at 1440×900 and 390×844, reads the computed surface and item colours, composites the translucent
+  surface over worst-case pure-white and pure-black backdrops, and asserts WCAG ≥ 4.5:1 for every label and ≥ 3:1 for
+  separators and the focus ring. Minimums across 7 packs × 2 viewports × 2 backdrops: links 5.31:1 (cosmere), current
+  item 7.85:1, separators 3.63:1; LDS focus ring (keyboard focus on the first crumb) 9.81:1, solid 2px; zero page
+  errors. PASS, exit 0 ([output](supplementary-build/s45-crumbs-contrast-probe-output.txt)). Before this change the
+  engine-default non-current crumb (`--muted` #a89e8a, no surface) measured 2.65:1 over white.
+* **Captures.** LDS with Jerusalem selected, crumb strip over bright terrain:
+  [1440](shots/s45-crumbs-1440.png), [390](shots/s45-crumbs-390.png). All four items read clearly.
+* **“Earth › Earth” left as is.** The two crumbs have different destinations (`data-c="web"` returns to the
+  group/web view; `data-c="world"` to the world view), so per S43 the distinct actions are preserved; deduplication
+  would need a separate label decision.
+* **Checks at this commit.** `pnpm format`, `pnpm check` (137/137 tests, check:dist 114 OK), `pnpm test:pages` 13×2,
+  `pnpm test:browser` passed (Chromium 1243 headless shell, SwiftShader).
+* **Still open (Claude keeps ownership):** finished-bake captures at 3840/1280/390 (SwiftShader still shows the
+  charting surface); wider semantic omission/vision screen; real-GPU and physical-phone evidence need hardware.
