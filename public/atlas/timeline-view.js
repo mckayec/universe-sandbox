@@ -324,7 +324,12 @@
           .map((l, i) => {
             const c = collapsed.has(l.id);
             return (
-              '<span class="tl-lb">' +
+              '<span class="tl-lb" data-lane-box="' +
+              ESC(l.id) +
+              '">' +
+              '<span class="tl-grip" data-lane-grip="' +
+              ESC(l.id) +
+              '" aria-hidden="true" title="Drag to reorder (or use the arrow buttons)">⠿</span>' +
               '<button class="btn tl-lt" data-lane-t="' +
               ESC(l.id) +
               '" aria-expanded="' +
@@ -741,6 +746,67 @@
       if (f) f.focus();
       if (env.onChange) env.onChange();
     }
+    /* pointer drag of a lane chip by its grip (mouse, pen or touch). Keyboard and switch users keep the ↑/↓
+       buttons, which do the same thing one step at a time. The drop lands in the slot nearest the pointer. */
+    let drag = null;
+    function dragBoxes() {
+      return [...laneBar.querySelectorAll('.tl-lb')];
+    }
+    function dragMark(to) {
+      dragBoxes().forEach((b, k) => b.classList.toggle('tl-drop', k === to && to !== drag.from));
+    }
+    function endDrag(commit) {
+      if (!drag) return;
+      const d = drag;
+      drag = null;
+      dragBoxes().forEach(b => b.classList.remove('tl-drop', 'tl-drag'));
+      laneBar.classList.remove('tl-dragging');
+      if (!commit || d.to < 0 || d.to === d.from) return;
+      const ids = arranged().map(l => l.id);
+      const moved = TLM.dropLane(ids, d.id, d.to);
+      order = TLM.arrangeLanes(model.lanes, moved.concat(order)).map(l => l.id);
+      render();
+      const b = laneBar.querySelector('.tl-lt[data-lane-t="' + CSS.escape(d.id) + '"]');
+      if (b) b.focus({ preventScroll: true });
+      if (env.onChange) env.onChange();
+    }
+    laneBar.addEventListener('pointerdown', e => {
+      const g = e.target.closest('[data-lane-grip]');
+      if (!g || drag || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      const boxes = dragBoxes();
+      const from = boxes.findIndex(b => b.dataset.laneBox === g.dataset.laneGrip);
+      if (from < 0) return;
+      e.preventDefault();
+      drag = { id: g.dataset.laneGrip, from, to: from, pid: e.pointerId };
+      try {
+        g.setPointerCapture(e.pointerId);
+      } catch (err) {
+        /* capture is best-effort; moves still arrive while the pointer is over the bar */
+      }
+      boxes[from].classList.add('tl-drag');
+      laneBar.classList.add('tl-dragging');
+    });
+    laneBar.addEventListener('pointermove', e => {
+      if (!drag || e.pointerId !== drag.pid) return;
+      /* the compact lane bar scrolls sideways: nudge it when the pointer nears either edge */
+      const r = laneBar.getBoundingClientRect();
+      if (laneBar.scrollWidth > laneBar.clientWidth) {
+        if (e.clientX < r.left + 28) laneBar.scrollLeft -= 12;
+        else if (e.clientX > r.right - 28) laneBar.scrollLeft += 12;
+      }
+      const boxes = dragBoxes().map(b => b.getBoundingClientRect());
+      drag.to = TLM.nearestSlot(boxes, e.clientX, e.clientY);
+      dragMark(drag.to);
+    });
+    laneBar.addEventListener('pointerup', e => {
+      if (drag && e.pointerId === drag.pid) endDrag(true);
+    });
+    laneBar.addEventListener('pointercancel', e => {
+      if (drag && e.pointerId === drag.pid) endDrag(false);
+    });
+    laneBar.addEventListener('lostpointercapture', e => {
+      if (drag && e.pointerId === drag.pid) endDrag(true);
+    });
     function pick(id) {
       sel = sel === id ? null : id;
       render();

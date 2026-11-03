@@ -155,6 +155,18 @@ test('lanes: reorder and collapse are arrangement only; stale links never invent
   assert.deepEqual([...moved.slice(0, 2)], [ids[1], ids[0]]);
   assert.deepEqual([...TL.moveLane(ids, ids[0], -1)], ids, 'first lane cannot move up');
   assert.deepEqual([...TL.moveLane(ids, ids[ids.length - 1], 1)], ids, 'last lane cannot move down');
+  const dropped = TL.dropLane(ids, ids[0], 2);
+  assert.deepEqual([...dropped.slice(0, 3)], [ids[1], ids[2], ids[0]], 'drag to slot 2');
+  assert.equal(dropped.length, ids.length);
+  assert.deepEqual([...TL.dropLane(ids, ids[1], 1)], ids, 'drop on its own place is a no-op');
+  assert.deepEqual([...TL.dropLane(ids, 'nope', 0)], ids, 'unknown lane unchanged');
+  assert.equal(TL.dropLane(ids, ids[0], 99)[ids.length - 1], ids[0], 'clamped to the end');
+  assert.equal(TL.dropLane(ids, ids[ids.length - 1], -5)[0], ids[ids.length - 1], 'clamped to the start');
+  const boxes = [0, 100, 200].map(left => ({ left, top: 0, width: 80, height: 40 }));
+  boxes.push({ left: 0, top: 50, width: 80, height: 40 });
+  assert.equal(TL.nearestSlot(boxes, 230, 18), 2);
+  assert.equal(TL.nearestSlot(boxes, 60, 72), 3, 'second row');
+  assert.equal(TL.nearestSlot([], 0, 0), -1);
   const arranged = TL.arrangeLanes(v.lanes, ['nope', ids[2], ids[2]]).map((l: any) => l.id);
   assert.equal(arranged.length, ids.length, 'every lane kept once');
   assert.equal(arranged[0], ids[2]);

@@ -406,6 +406,33 @@
     o[j] = id;
     return o;
   }
+  /* drag-and-drop: take one lane out and put it at position `to` of the resulting order (clamped); returns a new
+     order array. An unknown id or a drop on its own place returns the order unchanged. */
+  function dropLane(order, id, to) {
+    const o = order.slice();
+    const i = o.indexOf(id);
+    if (i < 0) return o;
+    o.splice(i, 1);
+    const j = Math.max(0, Math.min(o.length, Math.round(+to) || 0));
+    o.splice(j, 0, id);
+    return o;
+  }
+  /* which slot a dragged lane would land in: the index of the chip whose centre is nearest the pointer
+     (chips may wrap onto several rows, so both axes count; rows weigh more so a wrap is not crossed by accident) */
+  function nearestSlot(boxes, x, y) {
+    let best = -1;
+    let bd = Infinity;
+    (boxes || []).forEach((b, k) => {
+      const dx = x - (b.left + b.width / 2);
+      const dy = (y - (b.top + b.height / 2)) * 3;
+      const d = dx * dx + dy * dy;
+      if (d < bd) {
+        bd = d;
+        best = k;
+      }
+    });
+    return best;
+  }
   /* the time span a collapsed lane summarises: earliest start to latest stated end (or start) of its dated records */
   function laneSpan(view, laneId) {
     let lo = Infinity;
@@ -460,6 +487,8 @@
     bracketPath,
     arrangeLanes,
     moveLane,
+    dropLane,
+    nearestSlot,
     laneSpan,
     parseState,
     stateHash,
