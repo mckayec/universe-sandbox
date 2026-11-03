@@ -1873,3 +1873,41 @@ card are byte-identical to 66c8709; only the crosswalk generator, its CSV, a tes
 * **Still open (Claude keeps ownership):** source-grounded semantic omission/consolidation beyond the 146 summary-level
   dispositions (including the wider vision screen above); final same-head 4K/1280/phone set, full Tab traversal and
   finished-bake evidence; real-GPU and physical-phone evidence need hardware.
+
+## Checkpoint 42 — same-head keyboard traversal (1440) and first finished-bake capture
+
+Head under test: **0a853f68779b32c1ca4f41f45f6142a1d6cae445** (checkpoint 41; pack, engine and every card unchanged).
+This checkpoint adds only a probe, its output and one shot; no runtime change.
+
+* **Probe.** [s42-probe.mjs](supplementary-build/s42-probe.mjs) (built site, SwiftShader, real keyboard input, no
+  programmatic focus except one `focus()` on `#cxBtn` before the second Codex open). Element identity for id-less
+  controls is a probe-side WeakMap; the page is not modified.
+  [Output](supplementary-build/s42-probe-output.txt).
+* **1440×900 Tab / Shift-Tab — passed.** From the document start, 80 forward Tab stops were recorded (the probe's cap;
+  about 6 s per keypress under SwiftShader, so the cycle was not run to its wrap). Every stop was visible, on screen,
+  had a computed focus indicator (outline or box-shadow) and an accessible name; none was inside the closed Codex; the
+  Codex button is reachable. Shift-Tab from stop 80 walked exactly the same 80 stops in reverse.
+* **Codex by keyboard — passed.** Enter on `#cxBtn` opens it with focus on `#cxClose`; 25 further Tab presses all stayed
+  inside the dialog, each visible with a focus indicator; Escape closed it. Reopened: Shift-Tab from close wraps to the
+  last Codex stop, Tab from there wraps back to close; Escape returns focus to `#cxBtn`.
+* **Finished bake at 1440×900 — captured.** Waited on `#bake` hidden (observed, not timed; 1,492 s after load), then
+  1.5 s: no horizontal page overflow, 21 labels with opacity > 0.05, canvas 1440×900 at DPR 1, no console errors,
+  failed requests or HTTP ≥ 400 to that point. Shot [`s42-finished-1440x900.jpg`](shots/s42-finished-1440x900.jpg),
+  inspected.
+* **Observations for review (no change made):**
+  1. *Tab order.* The first 22 Tab stops are the globe's site-label buttons (Earth, Jerusalem … Patmos); the
+     “← Gravity Lab” link and the book / Space / Earth / Codex controls come only at stops 23–32, and each place is
+     reached twice (globe label, then its card in the side list, stops 45–78). Keyboard users must pass 22 map labels
+     before the top bar. Proposed generic engine fix for the next unit: place `#labels` after the top bar and panel in
+     focus order (or give the label buttons `tabindex=-1` with the side list as the keyboard path). Canon-neutral;
+     a reviewer view is welcome before I change it.
+  2. *Shot.* A small spaced-caps “JERUSALEM” label sits near the top of the globe (about x 805, y 122 in the shot),
+     well away from the Jerusalem pin, which carries its own highlighted label. It may be a region/route label for the
+     selected place; not yet identified. I will measure it against its anchor in the next unit before calling it a
+     defect.
+* **Not finished (carried):** the 3840×2160 finished-bake capture did not complete — the 4096 surface bake had not
+  finished ~21 min after the 4K page was ready on this 2-CPU runner, and I stopped the probe to keep this unit bounded.
+  1280×800 and 390×844 finished-bake captures were not reached. Next unit: run `VPS=3840`, `VPS=1280`, `VPS=390`
+  as separate invocations, then the observation 1 fix with a re-run of the traversal.
+* **Still open (Claude keeps ownership):** the above; source-grounded semantic omission/consolidation (incl. the wider
+  vision screen); real-GPU and physical-phone evidence need hardware.
