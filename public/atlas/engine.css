@@ -510,3 +510,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 .tr-grid line{stroke:rgba(var(--sw-rgb),.09);stroke-width:1}
 .tr-tickbg{fill:rgba(var(--panel-rgb),.94)}
 .tr-ticks text{font-size:10px;letter-spacing:.06em;fill:var(--muted)}
+/* compact sky view (S50-V1): the Sky button hides the galaxy view's panels on phones so the world names have sky */
+#app.sky #filters,#app.sky #index,#app.sky #dossier,#app.sky #chron,#app.sky #navhint{display:none!important}
+#app.sky .brand p{display:none}
+#skyBtn[aria-pressed="true"]{border-color:var(--lapis-hi);color:var(--title)}
+/* the Sky button floats at the right of the crumbs row, outside the header, so it is on screen in every compact
+   layout (the header controls can run past a landscape phone's edge) */
+#skyBtn{position:absolute;z-index:7;right:max(12px,env(safe-area-inset-right,0px));top:calc(var(--hdr,62px) + 10px);padding:6px 12px;font-size:9.5px;letter-spacing:.12em;min-height:34px}
+@media (max-width:820px){#skyBtn{top:calc(var(--hdr,96px) + 4px)}}
+/* landscape phones use the desktop header row; its controls scroll inside the header instead of off the page */
+@media (max-height:520px) and (pointer:coarse){
+  .top .controls{flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+  .top .controls::-webkit-scrollbar{display:none}
+}

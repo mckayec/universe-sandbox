@@ -472,6 +472,7 @@ function buildShell(K){
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
   (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
 '<nav id="crumbs" aria-label="Location"></nav>'+
+'<button class="btn" id="skyBtn" aria-pressed="false" title="Hide the panels to see the sky" hidden>Sky</button>'+
 (K.raw.realms?'<div class="seg" id="realms" role="group" aria-label="Realm">'+["physical","cognitive","spiritual"].filter(r=>r==="physical"||K.raw.realms[r]).map(r=>{const R=K.raw.realms[r]||{};
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
 (K.raw.layers||K.raw.timeline?'<div id="filters"'+(K.raw.realms?' class="withrealms"':'')+'></div>':"")+
@@ -1097,7 +1098,7 @@ const hit = (r, q) => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r
    globe edge to edge. A site label inside one of those horizontal bands would only peek out as a text fragment in the
    gaps between controls, so it is hidden there (marker included) until the globe turns it into open view. */
 const CHROME_TOP = ["header.top", "#crumbs", "#realms", "#filters"];
-const CHROME_MID = ["#index"];
+const CHROME_MID = ["#index", "#skyBtn"];
 const CHROME_BOTTOM = ["#dossier", "#chron"];
 function chromeRect(sel, W, H) {
   const el = document.querySelector(sel);
@@ -1488,6 +1489,38 @@ function renderChron(){let h="";BOOK_IDS.forEach(b=>{
   if(CUM&&S.book){const cur=track.querySelectorAll(".book")[BOOK_IDS.indexOf(S.book)];if(cur&&!MOB)track.scrollLeft=Math.max(0,cur.offsetLeft-40);}}
 track.addEventListener("click",e=>{const b=e.target.closest(".ev");if(b){openEvent(b.dataset.ev,true);if(MOB)closeChron();}});
 function closeChron(){if(MOB){chron.classList.add("closed");chron.classList.remove("open-c");chronH();}}
+/* Compact sky view (S50-V1). On phones the galaxy view's panels (filter rows, worlds list, sheet, chronicle) can
+   leave no open sky at all (an expanded sheet, or any landscape phone), so every world name is hidden by rule. The
+   Sky button, shown only in the compact galaxy view, hides those panels while pressed; the header (back link, book /
+   reading gate, view buttons) and the location crumbs stay, and the world names lay out in the freed sky. Selecting a
+   world, leaving the galaxy view or leaving the compact layout turns it off again; gates and filters are unchanged. */
+let skyOn = false;
+let skyAvail = null;
+function setSky(on) {
+  const avail = MOB && S.view === "galaxy";
+  skyOn = !!on && avail;
+  const app = document.getElementById("app");
+  if (app) app.classList.toggle("sky", skyOn);
+  const b = $("#skyBtn");
+  if (b) {
+    b.hidden = !avail;
+    b.setAttribute("aria-pressed", String(skyOn));
+  }
+  if (skyOn) {
+    idx.classList.remove("open");
+    $("#idxBtn").setAttribute("aria-expanded", "false");
+    dosCollapsed = true;
+    dos.classList.add("collapsed");
+    closeChron();
+  }
+  skyAvail = avail;
+  bumpLabelEpoch();
+}
+function syncSky() {
+  const avail = MOB && S.view === "galaxy";
+  if (avail !== skyAvail || (skyOn && !avail)) setSky(skyOn && avail);
+}
+$("#skyBtn").addEventListener("click", () => setSky(!skyOn));
 $("#chronT").addEventListener("click",()=>{if(!MOB)return;const open=chron.classList.contains("closed");chron.classList.toggle("closed",!open);chron.classList.toggle("open-c",open);if(open){dosCollapsed=true;dos.classList.add("collapsed");}chronH();});
 if(MOB)chron.classList.add("closed");
 
@@ -1739,7 +1772,7 @@ function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossi
   if(!$("#codex").hidden)renderCodex();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
-function selectWorld(id,fly){if(!WORLD_BY[id])return;cancelEvFocus();const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
+function selectWorld(id,fly){if(!WORLD_BY[id])return;cancelEvFocus();if(skyOn)setSky(false);const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
 function flyGalaxy(){if(S.view==="world"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
@@ -1936,9 +1969,10 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     const hw=S.hover&&WORLD_BY[S.hover];hoverRing.material.opacity=hw&&hw.id!==S.sel?.7:0;if(hw)hoverRing.position.copy(hw.pos);
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
     /* labels are projected before render; refresh the camera matrices first so they never lag the view by a frame */
+    syncSky();
     labelJumpFrame(movingAtEntry,!!orbG.fly);orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);labelJumpFrame(movingAtEntry,viewMoving());orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
+  else{syncSky();orbW.update(dt);updatePlanet(dt,T,!S.interacted);labelJumpFrame(movingAtEntry,viewMoving());orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
 /* ===================== URL STATE (deep links, reload, Back) =====================

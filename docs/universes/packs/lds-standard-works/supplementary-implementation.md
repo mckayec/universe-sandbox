@@ -2248,3 +2248,70 @@ programmatically except where noted). This is emulated browser evidence only: no
 **Still open (Claude keeps ownership):** finished 3840×2160 capture and 4K keyboard traversal if not completed below;
 browser-level 119/120/121 px chrome-gap case; wider semantic omission/vision screen; real-GPU and physical-phone
 evidence need hardware.
+
+## Checkpoint 52 — compact Sky view for the galaxy/Space view (S50-V1)
+
+Parent: bfa7ffa (checkpoint 51). Engine only (`public/atlas/engine.js`, `public/atlas/engine.css`); pack/canon data
+untouched. Evidence is CfT Chromium 153 + SwiftShader under Playwright phone emulation (real taps and real Tab); no
+physical phone and no real GPU.
+
+**What changed (response to S50-V1).** Checkpoint 51 hid every galaxy-view world name whenever the compact chrome left
+no open sky (LDS with the sheet expanded; every landscape phone), so the only world access was the list. There is now
+a **Sky** button (`#skyBtn`, `aria-pressed`), shown only on compact layouts in the galaxy/Space view. It floats at the
+right of the location-crumbs row, outside the header, so it is on screen in portrait and landscape. Pressing it hides
+the filter rows, worlds list, sheet, chronicle and nav hint (`#app.sky`) and the brand subtitle; the header (back link,
+book / reading-gate buttons, view buttons) and crumbs stay. World names then lay out in the freed sky under the
+unchanged checkpoint-51 rules (measured, flipped or hidden at the edge, never under chrome; the Sky button itself is
+added to the mid-chrome list). Selecting a world (tap on its name, or the list) turns Sky off so its sheet appears;
+leaving the galaxy view or the compact layout turns it off. Gates, filters and selection state are not changed by Sky.
+Landscape phones (desktop header row) now scroll the header controls inside the header (`overflow-x:auto`, as in
+portrait) instead of past the page edge: before this, Playwright's tap on a control there scrolled `#app` sideways by
+419 px, which shifted the whole label layer off the window.
+
+**Evidence** ([s52-sky-probe.mjs](supplementary-build/s52-sky-probe.mjs),
+[output](supplementary-build/s52-sky-output.txt), **PASS 127**, zero console/request/page errors). LDS (via its own
+Space button, tapped), Sun Eater, Expanse, Hyperion, each at 390×844 and rotated to 844×390:
+
+| State | Open sky before → with Sky | World names shown with Sky |
+|---|---|---|
+| LDS 390×844 | 373–728 → 259–844 | 1/1 (Earth) |
+| LDS 844×390 | none (193–96) → 98–390 | 1/1 |
+| Sun Eater 390×844 / 844×390 | 216–728 / none → 213–844 / 98–390 | 14/52 / 14/52 |
+| Expanse 390×844 / 844×390 | 227–728 / none → 213–844 / 98–390 | 12/34 / 11/34 |
+| Hyperion 390×844 / 844×390 | 216–728 / none → 213–844 / 98–390 | 16/46 / 9/46 |
+
+Per state: Sky visible and unpressed, then pressed by a real tap; the four panels hidden; back link, view buttons,
+crumbs and the same number of book buttons present; Sky button wholly on screen and `#app` not scrolled; no shown
+world name under chrome or past the window edge; hidden names out of the Tab order and `aria-hidden`; no region name
+under chrome; real Tab reaches shown world names only (portrait); Sky off restores the sheet; in landscape a real tap
+on a shown world name selects it and turns Sky off. Surface view (LDS) and desktop 1440×900: no Sky button.
+Screenshots: [LDS portrait](shots/s52-sky-lds-standard-works-390x844.jpg),
+[LDS landscape](shots/s52-sky-lds-standard-works-844x390.jpg),
+[Sun Eater landscape](shots/s52-sky-sun-eater-844x390.jpg), [Expanse landscape](shots/s52-sky-expanse-844x390.jpg),
+[Hyperion portrait](shots/s52-sky-hyperion-390x844.jpg).
+
+Probe notes, disclosed: (1) the checkpoint-51 "LDS sheet expanded" state did not reproduce in this sequence (the grab
+tap left the sheet collapsed; open area 373–728 before Sky), so the no-sky case is demonstrated by the four
+landscape states; (2) the s51 measurement counted the bottom window edge as chrome; s52 checks the window edge
+separately (all four sides for world names; regions only against real chrome).
+
+**Concrete layout limitation for owner disposition (found here, not fixed).** On a landscape phone the desktop header
+row does not fit: the view buttons' right edges measured 1745/1818/1892 px (LDS), 1006–1161 (Sun Eater), 1074–1205
+(Expanse) in an 844 px window, and in LDS the four-line-wide title itself runs past the edge, so the book filters and
+Space/Earth/Codex are off screen (now reachable by horizontal scroll inside the header, with the scrollbar hidden as in
+portrait; they were previously off the page). Worlds remain reachable through Sky and the world names. A compact
+landscape header (shorter title, controls on their own row or behind a menu) is a design decision, not made here. In
+Sun Eater landscape with Sky, decorative region names still draw behind world names (existing region styling).
+
+**Checks** (on an identical copy of this tree): `pnpm check` 147/147, check:dist 114 OK. `pnpm test:pages`: 24 of 26
+page visits reported ok (every atlas pack, society, solar, root, powers/exoplanets desktop) before the run was cut by
+the tool's 10-minute limit while the 4K bake below held the CPU; exoplanets/powers @mobile not reached. `pnpm
+test:browser` not run this checkpoint. Branch CI on push is the full gate.
+
+**3840×2160 finished bake (part A of s51, at the bfa7ffa build; desktop path, where Sky is hidden and nothing else
+changed):** page ready in 69.0 s; the bake bar had not cleared after ~30 min on a 2-core SwiftShader sandbox shared with
+the runs above, so no finished capture or 4K traversal yet. Next run: that probe alone, first, with nothing else
+running.
+
+**Still open (Claude keeps ownership):** finished 3840×2160 capture and 4K traversal; landscape header (above, owner
+disposition); browser-level 119/120/121 px gap; semantic omission/vision screen; real-GPU and physical-phone evidence.
