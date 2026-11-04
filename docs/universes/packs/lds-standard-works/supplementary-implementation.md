@@ -2540,3 +2540,63 @@ decisions in the pass and copy, with the probe and pnpm check, and records each 
 the other 103 residual semantic rows (which do have full-read rows) and wider vision completeness; finished 3840×2160
 capture and traversal (capability blocker unchanged); physical iOS/Android pickers, real-GPU and physical-phone
 evidence.
+
+## Checkpoint 57 — G55-O1 compact-framing correction (fit-based centring)
+
+Runtime head: **5ffa123816081bed254418521809c901f8cd2730** (parent 3b24180; code and tests changed only in
+`public/atlas/engine.js` `compactOffsetY` / new `compactFit`, `selectedLabelH`, and `tests/atlas-label-geometry.test.ts`).
+Responds to HANDOFF_PLAN 2026-11-04 "UI review assignment: … correct G55-O1". No pack, canon or ledger change.
+
+**Change.** The fixed `OPEN_MIN = 120` step is gone. Compact layouts now centre the view in the open strip [a, b]
+whenever `b − a ≥ fit`, where `fit = labelH + 2 × (LBL_RING 4 + LBL_MARGIN 8)` and `labelH` is the selected place
+label's **measured** height (the same `labelBox` measurement the overlap/edge logic already uses; 24 px fallback when
+no place is selected, e.g. the galaxy view, giving the proposed 48 px). Below the fit — no usable strip — the slight
+H×0.07 upward shift and the existing safe hiding are unchanged; the ±30 % clamp is unchanged. Within the open regime
+one more px of strip moves the view by at most half a px (unit-tested from fit to 400 px).
+
+**Rendered geometry.** In the LDS atlas at 390 px the selected label (Jerusalem) renders **33 px** tall, so the fit
+is **57 px**, not 48. The button is drawn from pin−13 to pin+20, so with the view centred on the pin at the fit the
+label plus ring has 11.5 px above and 4.5 px below inside the strip — both sides positive, which the probe checks
+directly against the rendered box rather than the engine's own symmetric box.
+
+**Unit checks** (`tests/atlas-label-geometry.test.ts`, 12 tests): fit formula (24→48, 30→54); the former 119/120/121
+boundary now centres on all three with ≤ 0.5 px steps (no 171 px jump); fit−1 keeps the fixed shift and fit / fit+1
+centre with the label, ring and margin inside the strip, for label heights 24/26/30; default fit 48; clamp both ways;
+half-px step throughout. `pnpm check` **150/150**, check:dist 114 OK.
+
+**Browser probe** — [s57-fit-framing-probe.mjs](supplementary-build/s57-fit-framing-probe.mjs),
+[output](supplementary-build/s57-fit-framing-output.txt): **PASS 377**, 0 failed, zero console/request/page errors
+(565 s; Chrome for Testing 153, SwiftShader, Playwright phone emulation, real Tab/Enter). Open area measured from the
+DOM independently of the engine; expected offset derived from the selected label's rendered height; compared with the
+live camera's `view.offsetY`. Sequence, twice, normal motion and `reducedMotion: 'reduce'` (offset within two frames):
+**121 → 120 → 119 → 58 → 57 → 56 → 57 → 58 → 119** (heights 610/609/608/547/546/545), then rotate to landscape and
+back to **56** and **57**. At 119/120/121 and 57/58 the offset is the centred −128.5 and the selected label is shown and
+wholly inside the strip with its ring; at 56 the fixed shift applies (38.15), the selected label hides and focus is
+recovered to the grab bar with its ring. Every state: shown labels inside the window and off every chrome band, hidden
+labels `aria-hidden`/out of the Tab order, focus on an effectively visible control, view/selection/reading
+`["world","earth","jerusalem",0]` unchanged. Sheet expand/collapse by real Enter at 119 and at 57: expanded → fixed
+shift, no label under the sheet; collapsed → centred again; grab bar keeps visible focus.
+
+**Captures.** During the probe: [119](shots/s57-gap119-390x608.jpg), [120](shots/s57-gap120-390x609.jpg),
+[121](shots/s57-gap121-390x610.jpg), [58](shots/s57-gap58-390x547.jpg), [57](shots/s57-gap57-390x546.jpg),
+[56](shots/s57-gap56-390x545.jpg). In these the transient "Charting surface" progress pill (`#bake`, pointer-events
+none) is still showing — under SwiftShader the Earth surface bake takes about three minutes (observed 17 % → 74 % over
+130 s) — and at 57 px it overlaps the Jerusalem label. It hides when the bake completes, so after-bake captures were
+taken with [s57-baked-captures.mjs](supplementary-build/s57-baked-captures.mjs)
+([output](supplementary-build/s57-baked-captures.txt)): [57 baked](shots/s57-baked-gap57-390x546.jpg) (Jerusalem shown
+inside the strip, 6 labels shown), [56 baked](shots/s57-baked-gap56-390x545.jpg) (fixed shift, labels hidden),
+[119 baked](shots/s57-baked-gap119-390x608.jpg) (8 shown). Whether the bake pill should yield to the selected label in a
+narrow strip is noted as an observation for the reviewer, not changed here (it is transient and pre-existing; the
+same pill is visible in the checkpoint-55 captures).
+
+**Full browser smoke** at 5ffa123: `pnpm test:browser` with `CHROME_PATH` set —
+[log](supplementary-build/s57-browser-smoke.txt): passed (3 m 05 s). `pnpm test` 150/150.
+
+**Not re-run (unaffected):** native select popup (S part of s55), focus/Worlds fixes, semantic implementations.
+`pnpm test:pages` is left to branch CI (exceeds this run's command limit, as at checkpoints 53–54).
+
+**Still open (Claude keeps ownership):** the HANDOFF_PLAN 2026-11-04 residual Book of Mormon semantic batch (13
+omission/consolidation gaps BMC-015 … BMC-222, seven further full-read dispositions, six targeted checks, Cain cue in
+the screen) — next unit, one coherent diff; the other residual semantic dispositions and wider vision completeness;
+finished 3840×2160 capture/traversal (capability blocker unchanged); physical iOS/Android pickers, real-GPU and
+physical-phone evidence. Not merged.
