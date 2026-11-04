@@ -2933,3 +2933,34 @@ full `pnpm test:browser` passed ([log](supplementary-build/s64-browser-smoke.txt
 captures of the new cards (data-only additions to the generic codex list, as at checkpoint 60). Still open: wider
 vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence. No chapter-wide,
 corpus or release acceptance is claimed. Not merged.
+
+## Checkpoint 64 rendered captures (docs-only evidence on top of 46029fb)
+
+Application, generator, data and test bytes are identical to **46029fbf76ea61bff8d18b3614c137cf314ce321**; this
+commit adds only the capture script, its output and screenshots. Built with `pnpm build`, captured with
+[s64-card-captures.mjs](supplementary-build/s64-card-captures.mjs) under SwiftShader
+([output](supplementary-build/s64-card-captures.txt), all checks passed).
+
+**Checked (real input):** bom-bible tab shows 124 views (desktop all layers; phone `#layers=bom`); for six RES96-C
+cards every source link is an official `?lang=eng` chapter URL with the locators in the checkpoint 64 table; See-also
+present on C01-choose (Joshua son of Nun), C02-early, C02-later and C10 (Jerusalem in the prophets) and absent on
+C01-Korihor and C07; no sideways scroll on the phone. With the Book of Mormon layer only, the Joshua target renders as
+"hidden by the layer or year filter", as designed.
+
+**Captures:** desktop 1440×900 — [C01 choose](shots/s64-c01-choose-1440x900.jpg),
+[C01 Korihor](shots/s64-c01-korihor-1440x900.jpg), [C02 early](shots/s64-c02-early-1440x900.jpg),
+[C02 later](shots/s64-c02-later-1440x900.jpg), [C10](shots/s64-c10-prison-fire-1440x900.jpg),
+[C07](shots/s64-c07-dream-tree-1440x900.jpg); phone 390×844 @2x — [C01 choose](shots/s64-c01-choose-phone-390x844.jpg).
+Copy in all seven matches the checkpoint 64 wording; the phone capture shows the full C01 card (title, badges, copy,
+sources, See-also).
+
+**Builder observation RC64-O1 (desktop Reference layout, not yet fixed).** At 1440×900 the Reference dialog's 13 tab
+buttons wrap to seven rows and stay sticky, taking about 330 px of the ~740 px dialog. The scrolling three-column card
+grid gets roughly 370 px, and a card scrolled to the centre still has its title under the sticky tab block (visible in
+every desktop capture above). The phone layout (tab select) is unaffected. Proposed bounded fix for a later unit: on
+desktop either let the tab block scroll away or collapse it to the same select used on phones when it wraps past two
+rows, and add `scroll-margin-top` to `.cx-item` so deep links land with the title visible. This is the desktop
+counterpart of the acknowledged tab crowding; no code changed in this commit.
+
+Still open: RC64-O1, wider vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone
+evidence. Not merged.
