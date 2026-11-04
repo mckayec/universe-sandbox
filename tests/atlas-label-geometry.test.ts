@@ -12,10 +12,10 @@ const ctx: Record<string, any> = {};
 vm.runInNewContext(
   src.slice(start, end) +
     '\nthis.labelPlacement = labelPlacement; this.dotTip = dotTip; this.RING = LBL_RING; this.DOTW = LBL_DOTW;' +
-    ' this.compactOffsetY = compactOffsetY; this.OPEN_MIN = OPEN_MIN;',
+    ' this.compactOffsetY = compactOffsetY; this.compactFit = compactFit; this.MARGIN = LBL_MARGIN;',
   ctx,
 );
-const { labelPlacement, dotTip, RING, DOTW, compactOffsetY, OPEN_MIN } = ctx;
+const { labelPlacement, dotTip, RING, DOTW, compactOffsetY, compactFit, MARGIN } = ctx;
 const W = 390;
 
 // the box a shown label occupies on screen, focus ring included
@@ -82,23 +82,46 @@ test('desktop (not compact) keeps the previous behaviour: no edge hiding or flip
   assert.equal(p.edgeDot, false);
 });
 
-// S47/S49 open item: the 120 px open-area threshold of the compact framing (checkpoint 47), tested at 119/120/121 px.
-test('compact framing: 119 px of open globe keeps the fixed upward shift', () => {
-  const H = 844;
-  assert.equal(OPEN_MIN, 120);
-  assert.equal(compactOffsetY(H, 373, 373 + 119), H * 0.07);
+// G55-O1: compact framing centres in any open strip that still holds the selected label (measured height), its focus
+// ring and a margin on both sides; the old 120 px step is gone.
+const centred = (H: number, a: number, b: number) => Math.max(-H * 0.3, Math.min(H * 0.3, H / 2 - (a + b) / 2));
+
+test('compact framing: the fit is the measured label height plus ring and margin on both sides', () => {
+  assert.equal(compactFit(24), 24 + 2 * (RING + MARGIN));
+  assert.equal(compactFit(24), 48);
+  assert.equal(compactFit(30), 54);
 });
 
-test('compact framing: 120 and 121 px of open globe centre the view in the open area', () => {
+test('compact framing: the former 119/120/121 px boundary now centres on all three (no 171 px jump)', () => {
+  const H = 608;
+  const a = 373;
+  const fit = compactFit(26);
+  const at = (gap: number) => compactOffsetY(H, a, a + gap, fit);
+  for (const gap of [119, 120, 121]) assert.equal(at(gap), centred(H, a, a + gap), `gap ${gap}`);
+  assert.ok(Math.abs(at(120) - at(119)) <= 0.5 + 1e-9);
+  assert.ok(Math.abs(at(121) - at(120)) <= 0.5 + 1e-9);
+});
+
+test('compact framing: below the fit keeps the fixed shift; at and above it centres', () => {
   const H = 844;
-  for (const gap of [120, 121]) {
-    const a = 373;
-    const b = a + gap;
-    const oy = compactOffsetY(H, a, b);
-    assert.equal(oy, H / 2 - (a + b) / 2, `gap ${gap}`);
-    // with the offset applied the open area's centre lands on the screen centre
-    assert.equal((a + b) / 2 + oy, H / 2);
+  const a = 380;
+  for (const lh of [24, 26, 30]) {
+    const fit = compactFit(lh);
+    assert.equal(compactOffsetY(H, a, a + fit - 1, fit), H * 0.07, `label ${lh}: fit-1`);
+    for (const gap of [fit, fit + 1]) {
+      const oy = compactOffsetY(H, a, a + gap, fit);
+      assert.equal(oy, centred(H, a, a + gap), `label ${lh}: gap ${gap}`);
+      // the selected label (at the view centre) with ring and margin lies inside the strip
+      const c = H / 2 - oy;
+      assert.ok(c - lh / 2 - RING - MARGIN >= a - 1e-9 && c + lh / 2 + RING + MARGIN <= a + gap + 1e-9);
+    }
   }
+});
+
+test('compact framing: the default fit (no label measured) is 48 px', () => {
+  const H = 844;
+  assert.equal(compactOffsetY(H, 400, 447), H * 0.07);
+  assert.equal(compactOffsetY(H, 400, 448), centred(H, 400, 448));
 });
 
 test('compact framing: the centring shift is clamped to 30 % of the height both ways', () => {
@@ -109,10 +132,11 @@ test('compact framing: the centring shift is clamped to 30 % of the height both 
   assert.equal(compactOffsetY(H, 100, 744), 0);
 });
 
-test('compact framing: the threshold is a step, not a ramp (no jump inside the open regime)', () => {
+test('compact framing: one px more open area moves the view by half a px throughout the open regime', () => {
   const H = 844;
-  const at = (gap: number) => compactOffsetY(H, 300, 300 + gap);
-  assert.equal(at(119.999), H * 0.07);
-  assert.notEqual(at(120), H * 0.07);
-  assert.ok(Math.abs(at(121) - at(120)) <= 0.5 + 1e-9, 'one px more open area moves the view by half a px');
+  const fit = compactFit(26);
+  for (let gap = fit; gap < 400; gap++) {
+    const d = compactOffsetY(H, 300, 301 + gap, fit) - compactOffsetY(H, 300, 300 + gap, fit);
+    assert.ok(Math.abs(d) <= 0.5 + 1e-9, `gap ${gap}: step ${d}`);
+  }
 });

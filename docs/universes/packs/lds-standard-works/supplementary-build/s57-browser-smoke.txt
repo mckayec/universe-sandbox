@@ -1,0 +1,9 @@
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+
+real	3m5.334s
+user	0m3.046s
+sys	0m0.762s

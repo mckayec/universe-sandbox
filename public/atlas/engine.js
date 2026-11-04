@@ -1227,12 +1227,21 @@ function dotTip(px, W) {
   const left = bl + LBL_DOTW - 24 - m;
   return { left: left > right, room: Math.max(40, Math.floor(Math.max(left, right))) };
 }
-/* Compact vertical framing: centre the view in the open globe area [a, b] between the top chrome and the sheet when
-   at least OPEN_MIN px of globe is left (clamped to +/-30 % of the height); otherwise keep the slight upward shift. */
-const OPEN_MIN = 120;
-function compactOffsetY(H, a, b) {
-  if (b - a >= OPEN_MIN) return Math.max(-H * 0.3, Math.min(H * 0.3, H / 2 - (a + b) / 2));
-  return H * 0.07;
+/* Compact vertical framing (S47, corrected for G55-O1): centre the view in the open globe area [a, b] between the top
+   chrome and the sheet whenever that strip can still hold the selected label with its focus ring and a margin on both
+   sides. The minimum is derived from the label's measured height (compactFit), not a fixed constant, so there is no
+   jump while usable space remains. The centring shift is clamped to +/-30 % of the height, as before. With no usable
+   strip the slight upward shift is kept, and labels under the chrome hide as before. */
+const LBL_MARGIN = 8;
+const compactFit = (labelH) => labelH + 2 * (LBL_RING + LBL_MARGIN);
+function compactOffsetY(H, a, b, fit) {
+  const need = fit == null ? compactFit(24) : fit;
+  if (b - a < need) return H * 0.07;
+  return Math.max(-H * 0.3, Math.min(H * 0.3, H / 2 - (a + b) / 2));
+}
+function selectedLabelH() {
+  const o = SITE_EL.find((q) => q.s.id === S.site);
+  return o ? labelBox(o)[1] : 24;
 }
 function layoutSiteLabels(W, H) {
   if (!PL) return;
@@ -1970,7 +1979,7 @@ function viewOffset(ease) {
   }
   if (MOB) {
     const [a, b] = compactOpenArea(W, H);
-    oy = compactOffsetY(H, a, b);
+    oy = compactOffsetY(H, a, b, compactFit(selectedLabelH()));
   }
   VO.tx = ox;
   VO.ty = oy;
