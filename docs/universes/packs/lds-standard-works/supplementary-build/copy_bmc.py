@@ -690,7 +690,8 @@ OMIT = {
     # checkpoint 60 (HANDOFF_PLAN 2026-11-04 next bounded semantic tranche; full primary reading of each chapter)
     238: 'checkpoint 60 decision: represented by BC14, whose existing Moroni 9:25 source now carries Mormon’s '
          'recollection of Christ’s sufferings and death and the showing of his body to their fathers (the Book of '
-         'Mormon appearance, not Luke 24). No new view, event or Bible edge. Aaron here is a Book of Mormon king',
+         'Mormon appearance, not Luke 24). No new view, event or Bible edge. Moroni 9:17 names the army of Aaron; '
+         'this does not identify him with Moses’ brother or establish a royal title',
     70: 'checkpoint 60 decision: Benjamin names the mankind his salvation teaching addresses as all who ever were '
         'since the fall of Adam, or who are, or ever shall be (Mosiah 4:7). That scope relation needs no further '
         'Fall card, event or Eden pin; the assembly’s forgiveness and care for the poor remain Book of Mormon content',

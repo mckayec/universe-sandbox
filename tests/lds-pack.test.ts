@@ -2484,5 +2484,5 @@ test('Checkpoint 53: SEM-R1–R4 semantic dispositions and VIS-R1 source-grounde
   const h = byKey.get('NTC-heavenly-experience');
   assert.ok(!/\bvisions?\b/i.test(h.name + ' ' + h.desc));
   assert.equal(h.when, undefined);
-  assert.equal(body.length, 156); // + BMV-161 (checkpoint 58)
+  assert.equal(body.length, 157); // + BMV-161 (checkpoint 58), + BMV-217 source-only (VIS60-C1)
 });

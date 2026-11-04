@@ -131,3 +131,42 @@ test('Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions 
   assert.equal(reader.length, 2);
   assert.ok(reader.every(r => r.startsWith('BMC-185,')));
 });
+
+test('VIS60-C1: BMV-217 is in the vision crosswalk from Ether 3, not its title; card unchanged', () => {
+  const lines = read('timeline-source-vision.csv').trim().split('\n');
+  assert.equal(lines.length - 1, 157);
+  const rows = lines.filter(l => l.startsWith('codex:BMV-217-fall-divine-image-spirit-body,'));
+  assert.equal(rows.length, 1);
+  const r = rows[0];
+  assert.ok(r.includes(',3/bom,"Ether 3:2, 9, 13–18",,,no-year,,"source:Ether 3:9, 13–18",mixed,'), r);
+  for (const cue of [
+    /prayer and teaching about the fall/,
+    /spirit body/,
+    /flesh and blood/,
+    /Moroni’s later comparison/,
+  ])
+    assert.match(r, cue);
+  assert.equal(lines.filter(l => /,"?source:/.test(l)).length, 2);
+  assert.equal(lines.filter(l => l.startsWith('codex:NTC-heavenly-experience,')).length, 1);
+  // the card itself: no vision keyword added, same source, gate and empty dates
+  const v = byKey.get('BMV-217-fall-divine-image-spirit-body');
+  assert.ok(!/\bvisions?\b|\bdreams?\b/i.test(v.name + ' ' + v.desc));
+  assert.deepEqual(srcOf('BMV-217-fall-divine-image-spirit-body'), ['Ether 3:2, 9, 13–18']);
+  for (const f of ['when', 'date', 'lat', 'lon']) assert.equal(v[f], undefined, f);
+  assert.ok(!P.events.some((e: any) => /BMV-217/.test(JSON.stringify(e))));
+});
+
+test('SEM60-C1: the BMC-238 decision names the army of Aaron without a royal title or identity', () => {
+  const row = read('bmc-source-views.csv')
+    .split('\n')
+    .find(l => l.startsWith('BMC-238,'))!;
+  assert.ok(row);
+  assert.match(
+    row,
+    /Moroni 9:17 names the army of Aaron; this does not identify him with Moses’ brother or establish a royal title"?\r?$/,
+  );
+  assert.ok(!/king/i.test(row), row);
+  assert.match(row, /represented by BC14/);
+  assert.ok(!seeOf('BC14').some((k: string) => k.startsWith('OT') || k.startsWith('OH')));
+  assert.match(d('BC14'), /the showing of his body unto their fathers/);
+});

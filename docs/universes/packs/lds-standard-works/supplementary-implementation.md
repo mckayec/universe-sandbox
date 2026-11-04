@@ -2746,3 +2746,31 @@ source unchanged, 20 keys out of ledger and rollup, ledger at 96, reader leads i
 ([log](supplementary-build/s60-browser-smoke.txt)). Not done this unit: rendered captures of the new cards (data-only
 change in the generic codex list); the 96 remaining residual rows, wider vision completeness, 4K, matched-browser,
 physical-device and real-GPU gates are unchanged. No chapter-wide, corpus or release acceptance is claimed. Not merged.
+
+## Checkpoint 61 — VIS60-C1 and SEM60-C1 finishing corrections (HANDOFF_PLAN 2026-11-04 “Checkpoint 60 accepted core”)
+
+Parent **74163b3** (checkpoint 60). Generator-only change: `public/` is byte-identical to runtime **81f310d**, so no
+card, event, date, pin or copy changed. Before the edits `build.py` (accepted register PR34 5951442),
+`bmc_omission_rollup.py .`, `bmc_semantic_pass.py .` and `timeline_vision.cjs` reproduced the committed pack and CSVs
+byte-for-byte; after the edits a second full regeneration reproduced the new outputs byte-for-byte.
+
+**VIS60-C1 (BMV-217 classified from its source).** Builder reading (3) at checkpoint 60 was wrong: the title is not the
+membership rule (VIS-R1). `timeline_vision.cjs` `EXPLICIT` now carries
+`codex:BMV-217-fall-divine-image-spirit-body` as class **mixed**, basis **Ether 3:9, 13–18** (context 6–20), with a
+note distinguishing the prayer and teaching about the fall, the spirit-body manifestation, the future taking of flesh
+and blood, and Moroni’s later Nephite comparison. Card source stays `Ether 3:2, 9, 13–18`, 3/bom, no dates; no event,
+title keyword, chronology, pin or PGP material. Crosswalk **156 → 157** rows (one added, all old rows unchanged),
+keyword candidates **97**, source-only **1 → 2**, mixed 8 → 9.
+
+**SEM60-C1 (BMC-238 Aaron rationale narrowed).** `copy_bmc.OMIT[238]`’s last sentence is now “Moroni 9:17 names the
+army of Aaron; this does not identify him with Moses’ brother or establish a royal title.” BC14 enrichment, source,
+namesake rejection and the absence of a Bible edge are unchanged; `bmc-source-views.csv` regenerated (one row). No
+textscan row asserted kingship; textscan untouched.
+
+**Regressions:** `tests/lds-semantic-c60.test.ts` adds the exact BMV-217 crosswalk row (basis, class, gate, empty
+years, distinctions, 2 source-only rows, card free of vision keywords, no event) and the BMC-238 wording (no “king”,
+still represented by BC14). `tests/lds-pack.test.ts` crosswalk count 156 → 157.
+
+**Checks:** `pnpm format`; `pnpm check` **158/158**; `pnpm test:pages` (13 pages × 2 viewports); full
+`pnpm test:browser` passed. Semantic ledger stays **96**, rollup 136/96, source views 107; the two 3 Nephi 11 Matthew
+reader leads, wider vision completeness and all rendering/device/release gates remain open. Not merged.

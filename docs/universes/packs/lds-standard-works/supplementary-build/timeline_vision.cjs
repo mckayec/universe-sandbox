@@ -223,6 +223,14 @@ const EXPLICIT = {
       'not diagnosed. Paul’s uncertainty about the body is kept; the fourteen years are relative wording, not a ' +
       'numeric year',
   ],
+  // VIS60-C1 (HANDOFF_PLAN 2026-11-04): classified from Ether 3, not from the card's title.
+  'codex:BMV-217-fall-divine-image-spirit-body': [
+    'mixed',
+    'Ether 3:9, 13–18',
+    'in context 6–20 the passage describes revealed sight of the Lord’s spirit body. The card keeps distinct the ' +
+      'prayer and teaching about the fall, the manifestation of the spirit body, the future taking of flesh and ' +
+      'blood, and Moroni’s later comparison with the showing to the Nephites; no event, pin or chronology',
+  ],
 };
 const NONVISION_FAMILIES = ['NTE-jerusalem-community', 'NTE-arrest-hearings'];
 
