@@ -2600,3 +2600,63 @@ omission/consolidation gaps BMC-015 … BMC-222, seven further full-read disposi
 the screen) — next unit, one coherent diff; the other residual semantic dispositions and wider vision completeness;
 finished 3840×2160 capture/traversal (capability blocker unchanged); physical iOS/Android pickers, real-GPU and
 physical-phone evidence. Not merged.
+
+## Checkpoint 58 — residual Book of Mormon semantic batch (HANDOFF_PLAN 2026-11-04)
+
+Runtime head **015f7588e07ca89d28599d9640744f1dc567260d** (parent 8496cac). One coherent generator diff
+(`copy_bmc.py`, `bmc_semantic_pass.py`, `timeline_vision.cjs`, `bmc_textscan.py`, `bmc_textscan_triage.py`);
+`build.py` with the accepted register (PR34 5951442), then `bmc_omission_rollup.py .`, `bmc_semantic_pass.py .`,
+`timeline_vision.cjs` and `bmc_textscan.py` regenerated the pack and CSVs. Before the edits the generator reproduced
+the committed pack and CSVs byte-for-byte. Every cited verse was read in the bcbooks/scriptures-json mirror
+(1981/2013 text) before writing copy; official chapter links remain the citations. Copy names the speaker or
+narrator and restates the cited verses only.
+
+**New 3/bom views (17).** All undated, unpinned, one-way to 1/ot or 2/nt targets; no 4/dc or 5/pgp source or target.
+
+| Key | Locator | Link(s) | Disposition notes |
+|---|---|---|---|
+| BMV-015 | 1 Nephi 15:18, 20 | OHR-ABRAHAM | Abraham covenant + Isaiah restoration, Nephi’s teaching; no Isaiah chapter matched |
+| BMV-052 | 2 Nephi 30:9, 11–15 + Isaiah 11:4–9 | OTM-c04-messianic-reception | separate view rather than broadening BMV-043 (its Jesse link is the 2 Nephi 21 quotation); distinct chapter framing, not harmonized |
+| BMV-059 | Jacob 4:5 | OHR-ABRAHAM, OHR-ISAAC | Jacob’s similitude kept distinct from Genesis 22 |
+| BMV-065 | Omni 1:15, 20–22 | OHR-ZEDEKIAH | Zedekiah synchronization + tower tradition; no Mulek, route or tower site. A view rather than a BE06 edit: BE06 is a register-generated narrative card for Omni 1:12–19 |
+| BMV-067 | Mosiah 1:6, 11 | OTM-jerusalem | corrects the no-Bible-place reason; verse 4 not used |
+| BMV-082 | Mosiah 16:3 | — (NOLINK) | Abinadi named separately from Jacob/BMV-031; vv. 6–8 future-as-accomplished noted |
+| BMV-104 | Alma 9:9, 22 | OTM-jerusalem | Alma’s recollection; no voyage or date |
+| BMV-117 | Alma 22:9–13 | OTM-jerusalem, OH-C01 | ancestral city, not Alma 21’s; Aaron, not Ammon (BMV-113); no Eden |
+| BMV-140 | Alma 45:18–19 | OHR-MOSES | explicitly suppositional; no death event |
+| BMV-161 | Helaman 3:29–30 | OHR-ABRAHAM, OHR-ISAAC, OHR-JACOB | hereafter teaching, not vision/journey/genealogy (vision crosswalk: not-vision, safeguard only) |
+| BMV-185 | 3 Nephi 11:11–15 | — (NOLINK) | prior death, wounds, ascension. View preferred over editing BXE03 (register-generated 3 Nephi 8–28 card); 11:39–40 Matthew parallels stay separate reader rows |
+| BMV-201 | 3 Nephi 27:14 | AE10 | recalled, not quoted |
+| BMV-205 | 4 Nephi 1:31 | — (NOLINK) | attempted killing; AE10 not selected |
+| BMV-220 | Ether 6:7 | — (NOLINK) | ark comparison; PE06 rejected (later 5/pgp warning card) |
+| BMV-222 | Ether 8:15–17, 25 | OH-R01 | Cain oaths + first-parents deceiver, as the text’s claims |
+| BMV-236 | Moroni 7:45–46 + 1 Corinthians 13:4–8 | — (NOLINK) | one passage-level comparison; clauses differ; BC12/BXC05 not endpoints |
+| BMV-237 | Moroni 8:8 | OH-E01 | Mormon’s later teaching kept distinct from Genesis |
+
+**Consolidations (4), recorded in bmc-source-views.csv as checkpoint-58 decisions:** BMC-056 → BMV-057 (+ Jacob 1:15
+source and sentence); BMC-129 → BMV-128 (+ Alma 34:7 and a separate Amulek sentence; OHR-MOSES kept); BMC-050 →
+BMV-048 (+ 2 Nephi 28:21, 24; still no Zion link); BMC-200 → BMV-199 (+ 3 Nephi 26:1–2; “that chapter does not name
+Malachi”).
+
+**Recorded decisions without a view (5):** BMC-116 retains BXP14 (no duplicate, no shared pin); BMC-178 one divine-title
+formula (as BMC-006); BMC-213 Isaiah-study instruction, no Isaiah/JST link. **Declined editorial comparisons:**
+BMC-056’s Jacob 1:7 / Psalm 95:8–11 (allusion naming no person; no Moses link or itinerary); BMC-093 Mosiah 27:37 /
+Isaiah 52:7 (BMV-081 already cites Isaiah 52:7–10 where Abinadi quotes it); BMC-226 Ether 12:32–34 / John 14:2–3
+(NTC-comforter is not that saying), with Ether 12:6 (Hebrews 11, unstated parallel) and 12:11 (law given by faith, a
+practice) kept as separate dispositions.
+
+**Screen correction.** `bmc_textscan.py` adds a controlled `Cain\b` cue (the card-name parser reads OH-R01 as the
+combined alias “Cain, Abel, Seth”), and its scope is frozen to the 39 checkpoint-56 chapters (`SCREEN_KEYS`), showing a
+row that has left the semantic ledger by its checkpoint-58 view or decision. Result: 39 chapters, 114 rows; the new row
+is BMC-222 Cain at Ether 8:15. A new `resolved` triage state replaces 13 reader/note rows decided here; the two 3 Nephi
+11:39–40 Matthew parallels remain `reader`.
+
+**Ledgers:** 96 BMC views (was 79); semantic ledger **116** rows (namesake 55, no-bible-relation 48, practice-or-title
+3, represented 10) — still reasoned from the committed research, not newly primary-audited; rollup 158 rows; scan hits
+101 unchanged; vision crosswalk 156 rows, 97 keyword candidates.
+
+**Checks at 015f758:** `pnpm check` (format, build, check:dist, **153/153** unit tests incl. new
+`tests/lds-semantic-c58.test.ts`: locators, gates, one-way targets, no dates/pins, attribution safeguards,
+consolidation sources, 26 keys out of semantic ledger and rollup, Cain regression); `pnpm test:pages` (13 pages × 2
+viewports); full `pnpm test:browser` passed (s58-browser-smoke.txt). Not done this unit: dedicated rendered captures
+of the new cards (data-only change in the generic codex list); 4K/hardware gates unchanged. Not merged.
