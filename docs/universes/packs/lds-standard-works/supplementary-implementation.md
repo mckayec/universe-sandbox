@@ -2660,3 +2660,31 @@ is BMC-222 Cain at Ether 8:15. A new `resolved` triage state replaces 13 reader/
 consolidation sources, 26 keys out of semantic ledger and rollup, Cain regression); `pnpm test:pages` (13 pages × 2
 viewports); full `pnpm test:browser` passed (s58-browser-smoke.txt). Not done this unit: dedicated rendered captures
 of the new cards (data-only change in the generic codex list); 4K/hardware gates unchanged. Not merged.
+
+## Checkpoint 59 — SEM58-C1–C3 finishing corrections (HANDOFF_PLAN 2026-11-04)
+
+Runtime head **72a573687fa3d38842c1da992c132783e94f488a** (parent dd62a45). One generator diff in `copy_bmc.py`
+plus the exact-locator test; no other card, link, gate or ledger row changed. Before the edits, `build.py` with the
+accepted register (PR34 5951442) reproduced the committed pack and CSVs byte-for-byte. Cited verses were re-read in
+the bcbooks/scriptures-json mirror (Mosiah 1:11; Mosiah 16:3, 6–8; Ether 1:3–5); official chapter links remain the
+citations.
+
+| Finding | Card | Change |
+|---|---|---|
+| SEM58-C1 | BMV-067 (tuple 67) | “he gives his people a name above all whom the Lord brought out of the land of Jerusalem” → “he announces that he will give his people a name so that they may be distinguished above all the people the Lord brought out of Jerusalem.” Jerusalem relation and Mosiah 1:6, 11 source unchanged. |
+| SEM58-C2 | BMV-082 (tuple 82) | Source label Mosiah 16:3 → **Mosiah 16:3, 6–8**; sentence kept. bmc-source-views.csv locator regenerated; exact-locator test updated. |
+| SEM58-C3 | BMV-065 (tuple 65) | Added **Ether 1:3–5** (official Ether 1 URL) through `EXTRA_SOURCES[65]`; Amaleki’s Omni account, its source and the Zedekiah link unchanged. Exact-source test updated. As with other `EXTRA_SOURCES`, the second source appears on the card, not as a CSV row. |
+
+**Regeneration:** `build.py`, `bmc_omission_rollup.py .`, `bmc_semantic_pass.py .`, `timeline_vision.cjs`,
+`bmc_textscan.py` (mirror). Only the pack (3 cards) and one bmc-source-views.csv row changed; rollup, semantic
+ledger (116 rows), vision crosswalk and text-scan outputs are byte-identical. Text screen unchanged: 114 rows — 92
+consistent, 7 no-hit, 13 resolved, **2 reader**.
+
+**Separate from C1–C3 (not decided this unit):** the two 3 Nephi 11:39–40 Matthew leads (Matthew 16:18; 7:24–27)
+stay explicitly tracked as reader leads; no view, link or decline is recorded for them yet.
+
+**Checks at 72a5736:** `pnpm format`; `pnpm check` (format, build, check:dist, **153/153** unit tests including the
+updated checkpoint 58 exact-locator/copy assertions); `pnpm test:pages` (13 pages × 2 viewports); full
+`pnpm test:browser` passed ([log](supplementary-build/s59-browser-smoke.txt), Playwright Chromium 1243 via
+`CHROME_PATH`). Not done: rendered captures of the three cards; matched-browser, physical-device, real-GPU and 4K
+gates remain as assigned. No chapter-wide or release acceptance is claimed.
