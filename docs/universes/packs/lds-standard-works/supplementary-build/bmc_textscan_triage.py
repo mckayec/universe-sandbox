@@ -60,6 +60,8 @@ TRIAGE = {
     ('BMC-207', 'Joshua'): ('consistent', NS + ': the Book of Mormon land of Joshua (2:6)'),
     ('BMC-213', 'Isaiah'): ('resolved', '8:23 Isaiah-study instruction: recorded checkpoint-58 decision, no Isaiah or JST link'),
     ('BMC-216', 'cross'): ('consistent', 'crossing the waters (2:6, 22, 25)'),
+    ('BMC-216', 'Nimrod'): ('resolved', '2:1 valley called after the mighty hunter: BMV-216 cites Genesis 10:8–9 as a '
+                                     'comparison (no Nimrod card); not Shinar or Babel'),
     ('BMC-220', 'Noah'): ('resolved', '6:7 ark comparison: BMV-220 relation without a card; PE06 rejected'),
     ('BMC-221', 'Ephraim'): ('consistent', NS + ': the Jaredite hill Ephraim (7:9), as the row says'),
     ('BMC-221', 'Noah'): ('consistent', NS + ': Noah son of Corihor (7:14–18), as the row says'),

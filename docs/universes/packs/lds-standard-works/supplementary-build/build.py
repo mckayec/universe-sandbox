@@ -483,6 +483,13 @@ def write_bmc(text):
     if sem_path.exists():
         for r in csv.DictReader(open(sem_path, encoding='utf-8')):
             semantic[int(r['research_key'][4:])] = (r['semantic_state'], r['reason'])
+    for key, desc in copy_bmc.PRIMARY_DESC.items():
+        # checkpoint 60: rewrite only the desc of an existing primary 3/bom card (idempotent; sources unchanged)
+        assert desc.startswith('Book of Mormon — '), key
+        pat = re.compile(r"(\{ key: '%s', name: '(?:[^'\\]|\\.)*', books: \[3\], layers: \['bom'\], desc: )"
+                         r"'(?:[^'\\]|\\.)*'" % key)
+        text, n = pat.subn(lambda m: m.group(1) + js(desc), text)
+        assert n == 1, key
     lines, rows, views = [], [], {}
     for n, suffix, name, mode, desc, vs, see in copy_bmc.VIEWS:
         assert n not in copy_bmc.OMIT, n

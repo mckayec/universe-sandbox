@@ -46,16 +46,8 @@ SEMANTIC = {
                                'to the chapters that teach them (BMV-190, BMV-195; rollup range-spill); the record’s '
                                'lost-tribes announcement is BMV-191 (S37: no tribe identity or destination); '
                                'Isaiah, Jeremiah and Zedekiah are Nephite disciples (rollup namesakes)'),
-    'BMC-076': ('namesake', 'Noah is the Zeniff-line king (BXP03, land seen from Noah’s tower), not the patriarch'),
     'BMC-089': ('namesake', 'Noah is the Zeniff-line king whose fugitive priests settle Amulon (BXP04)'),
     'BMC-090': ('namesake', 'Noah is the Zeniff-line king (BXP03), not the patriarch'),
-    'BMC-091': ('represented', 'the Mosiah 25 full-read row names Zarahemla as Mulek’s descendant; Mulek’s survival '
-                               'as Zedekiah’s son is carried by BMV-166 (Helaman 8:11–22 and, since S37, '
-                               'Helaman 6:10; OHR-ZEDEKIAH)'),
-    'BMC-165': ('represented', 'Nephi prays on his garden tower in Zarahemla (BXP35, a Book of Mormon structure); the '
-                               'city Mulek on the BXJ10 route is a namesake, and Mulek’s Zedekiah descent is BMV-166'),
-    'BMC-217': ('namesake', 'the brother of Jared is the Jaredite founder’s brother; no Genesis Jared card exists and '
-                            'the premortal appearance is a Book of Mormon theophany'),
     'BMC-223': ('namesake', 'Jared and Heth are Jaredite rulers; the serpents are a Jaredite famine episode, not tied by '
                             'the research to any Bible text'),
     'BMC-228': ('namesake', 'Jared, Noah and Nimrod appear in the Jaredite people record BXR05 as Jaredites; Gilead is '
@@ -79,8 +71,6 @@ SEMANTIC = {
     'BMC-175': ('practice-or-title', 'the law of Moses remains in force (a practice); the new star is the Book of '
                                      'Mormon birth sign, which the research does not tie to Matthew 2’s star '
                                      '(unstated parallel, not linked); the Nephi here is a Nephite record keeper'),
-    'BMC-216': ('namesake', 'Nimrod valley is the Jaredite gathering place (and Ether 7’s Nimrod a ruler); the research '
-                            'gives no Bible link and no Nimrod card exists'),
     'BMC-221': ('namesake', 'the research itself says Noah is distinct from biblical and Zeniff-line Noah; hill '
                             'Ephraim is Jaredite (rollup); Nimrod is a Jaredite ruler'),
     'BMC-224': ('namesake', 'Levi, Heth, Kish and Aaron are Jaredite kings and captives in the research; none is tied '

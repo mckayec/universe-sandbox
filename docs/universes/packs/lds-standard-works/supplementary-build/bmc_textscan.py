@@ -62,6 +62,9 @@ SCREEN_KEYS = ['BMC-%03d' % n for n in (175, 176, 177, 178, 180, 181, 182, 183, 
                                          209, 211, 213, 216, 217, 219, 220, 221, 222, 223, 224, 225, 226, 228, 229,
                                          230, 231, 232, 233, 234, 235, 236, 237, 238)]
 
+# Screened rows that left the semantic ledger in checkpoint 60 (HANDOFF_PLAN 2026-11-04 next bounded tranche).
+CHECKPOINT_60 = {'BMC-183', 'BMC-216', 'BMC-217', 'BMC-238'}
+
 
 def residual_rows():
     sem = {r['research_key']: r for r in csv.DictReader(open(PACK_DIR + '/bmc-semantic-dispositions.csv',
@@ -75,8 +78,9 @@ def residual_rows():
             continue
         mine = [v for v in views if v['research_key'] == k and v['state'] in ('implemented', 'omitted')]
         assert mine, k
-        state = ('checkpoint-58 view ' + mine[0]['rendered_view'] if mine[0]['state'] == 'implemented'
-                 else 'checkpoint-58 decision (omitted)')
+        cp = 'checkpoint-60' if k in CHECKPOINT_60 else 'checkpoint-58'
+        state = (cp + ' view ' + mine[0]['rendered_view'] if mine[0]['state'] == 'implemented'
+                 else cp + ' decision (omitted)')
         unit = mine[0]['locator'].split(':')[0]
         out.append({'research_key': k, 'unit': unit, 'semantic_state': state})
     return out

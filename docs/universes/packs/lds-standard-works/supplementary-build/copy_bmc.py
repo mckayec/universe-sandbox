@@ -468,6 +468,84 @@ VIEWS = [
      'Book of Mormon — Mormon’s letter gives words of Christ that little children are whole and that the curse of Adam '
      'is taken from them. This is Mormon’s later teaching about children, kept distinct from the Genesis narrative '
      'of the expulsion; no Eden is located.', '8', [('OH-E01', 'compare the Genesis account')]),
+    # Checkpoint 60 (HANDOFF_PLAN 2026-11-04 "next bounded semantic tranche", 20 full primary chapter reads): views
+    # for the ten coverage corrections that need one, BMC-135's qualified source view and the selected BMC-155
+    # comparison. Copy restates the cited verses; the speaker or narrator is named, and nothing is added from memory.
+    (68, 'jerusalem-thanksgiving-benjamin', 'Deliverance from Jerusalem in the assembly and Benjamin’s speech (Mosiah 2)',
+     'mention',
+     'Book of Mormon — The narrator says the people gathered at the temple to offer sacrifice according to the law of '
+     'Moses and to give thanks to the Lord their God, who had brought them out of the land of Jerusalem. In his speech '
+     'Benjamin later says they have been taught concerning the records of the holy prophets, even down to the time '
+     'their father Lehi left Jerusalem. The narrator’s description and Benjamin’s words are kept distinct; the '
+     'sacrifice is a practice, not a link to Moses, and no voyage or date is added.', '3–4, 34',
+     [('OTM-jerusalem', 'deliverance recalled at the assembly')]),
+    (76, 'jerusalem-tradition-zeniff-reports', 'Jerusalem in a tradition Zeniff reports (Mosiah 10)', 'mention',
+     'Book of Mormon — In his record Zeniff reports a tradition of the Lamanites’ fathers: that they were driven out '
+     'of the land of Jerusalem because of their fathers’ iniquities, were wronged in the wilderness, while crossing '
+     'the sea and in the land of first inheritance, because Nephi was favored of the Lord, and that Nephi robbed them '
+     'when he departed with the plates of brass. This is Zeniff’s report of another people’s tradition, not an '
+     'independently verified history, and his description of that people is his own. No route or date is added.',
+     '12–16', [('OTM-jerusalem', 'departure, in a tradition Zeniff reports')]),
+    (84, 'abinadi-words-taught-by-alma', 'Christ’s death, resurrection and ascension in Abinadi’s words (Mosiah 18)',
+     'teaching',
+     'Book of Mormon — Having fled from king Noah’s servants, Alma goes privately among the people and teaches the '
+     'words of Abinadi concerning that which was to come: the resurrection of the dead and the redemption of the '
+     'people through the power, sufferings and death of Christ, and his resurrection and ascension into heaven. This '
+     'is teaching about future events, not an eyewitness recollection, and it is distinct from the later Alma’s '
+     'counsel to Corianton in Alma 40. No Gospel episode or site is matched.', '1–2', []),
+    (106, 'nephite-reckoning-jews-jerusalem', 'Nephite reckoning contrasted with the Jews at Jerusalem (Alma 11)',
+     'mention',
+     'Book of Mormon — Introducing the pieces of gold and silver and the judges’ wages (verses 3–19), the narrator '
+     'says the names are given by the Nephites, for they did not reckon or measure after the manner of the Jews who '
+     'were at Jerusalem, but altered their reckoning and measure in every generation until the reign of the judges. '
+     'This is the narrator’s cultural comparison: the pieces are not presented as minted coins, no modern conversion '
+     'is given, and the biblical city is not said to have used the Nephite system.', '4',
+     [('OTM-jerusalem', 'its Jews, contrasted by the narrator')]),
+    (135, 'resurrection-ascension-alma-opinion', 'Christ’s resurrection and ascension in Alma’s reasoning (Alma 40)',
+     'teaching',
+     'Book of Mormon — Alma tells Corianton that the first resurrection spoken of means the reuniting of soul and body '
+     'of those from the days of Adam down to the resurrection of Christ. He gives it as his opinion that the souls and '
+     'bodies of the righteous are reunited at the resurrection of Christ and his ascension into heaven, but says he '
+     'does not say whether it is at his resurrection or after. Alma’s stated uncertainty is kept; Adam marks an '
+     'epoch, not a narrated Fall, and no Gospel account is matched as proof of the timing.', '16–21', []),
+    (149, 'zoram-jerusalem-ammoron-claim', 'Zoram and Jerusalem in Ammoron’s claim (Alma 54)', 'mention',
+     'Book of Mormon — In his letter to Moroni, Ammoron says he is a descendant of Zoram, whom Moroni’s fathers '
+     'pressed and brought out of Jerusalem. The descent and the charge of coercion are Ammoron’s claims in a hostile '
+     'letter, not established fact; Zoram’s departure is told in 1 Nephi and is not repeated here as a journey.', '23',
+     [('OTM-jerusalem', 'Zoram brought out, as Ammoron claims')]),
+    (155, 'inward-vessel-compare-matthew-23', 'The inward vessel cleansed first, in Moroni’s letter (Alma 60)',
+     'teaching',
+     'Book of Mormon — Moroni reminds Pahoran that God has said the inward vessel shall be cleansed first and then the '
+     'outer vessel, and applies it to their government: they will first cleanse the inward vessel, even the great '
+     'head of their government. Compare Matthew 23:25–26 on cleansing first within the cup and platter. Moroni applies '
+     'a saying he attributes to God; neither a quotation from Matthew nor a shared Gospel scene is established.',
+     '23–24', []),
+    (165, 'first-nephi-departure-recalled', 'The first Nephi’s departure from Jerusalem recalled (Helaman 7)', 'mention',
+     'Book of Mormon — Nephi, the son of Helaman, wishes he could have lived in the days when his father Nephi first '
+     'came out of the land of Jerusalem, when that people were easy to be entreated. The speaker is the later Nephi; '
+     'the Nephi he recalls is the founding ancestor. This is a recollection: no Jerusalem trip, genealogy, route or '
+     'date is added.', '7', [('OTM-jerusalem', 'the first Nephi’s departure, recalled')]),
+    (183, 'voice-creation-life-laid-down', 'Creation and a life laid down, declared by the voice (3 Nephi 9)',
+     'teaching',
+     'Book of Mormon — In the darkness after the destructions, a voice heard among the inhabitants declares: I am Jesus '
+     'Christ the Son of God; I created the heavens and the earth; in me is the law of Moses fulfilled; offerings by '
+     'the shedding of blood are done away; and for such as come unto me I have laid down my life and have taken it up '
+     'again. This is the voice scene, kept distinct from the bodily appearance at Bountiful in 3 Nephi 11; it is not '
+     'a quoted crucifixion account, and no creation or Moses card is linked.', '15–22', []),
+    (216, 'nimrod-valley-named', 'The valley named after the mighty hunter (Ether 2)', 'mention',
+     'Book of Mormon — Moroni’s abridgment says Jared, his brother and their families went down into the valley '
+     'northward, whose name was Nimrod, being called after the mighty hunter. Compare Genesis 10:8–9, which calls '
+     'Nimrod a mighty hunter before the Lord. The valley is not identified with Shinar or Babel, Nimrod is not said '
+     'to have built the tower, and the later Jaredite named Nimrod is a different person.', '1', []),
+    (217, 'fall-divine-image-spirit-body', 'The fall and the divine image as the Lord shows himself (Ether 3)',
+     'teaching',
+     'Book of Mormon — The brother of Jared prays that because of the fall their natures have become evil continually. '
+     'The Lord tells him that he shall take upon him flesh and blood, shows himself, and says that the brother is '
+     'redeemed from the fall, that all men were created in the beginning after his own image, and that the body seen '
+     'is the body of his spirit, after which man was created. Moroni then says Jesus showed himself in the likeness of '
+     'the same body as he showed himself to the Nephites. The prayer, the Lord’s words and Moroni’s comparison stay '
+     'distinct; Adam is not named, and the spirit-body teaching is Ether’s, not drawn from Genesis.', '2, 9, 13–18',
+     [('OHC-CREATION', 'compare the divine image in Genesis')]),
 ]
 
 # Checkpoint 38: further sources a view cites beside its own chapter locator (S37 decisions): (text, url).
@@ -490,6 +568,9 @@ EXTRA_SOURCES = {
     199: [('3 Nephi 26:1–2', _S + 'bofm/3-ne/26?lang=eng')],
     52: [('Isaiah 11:4–9', _S + 'ot/isa/11?lang=eng')],
     236: [('1 Corinthians 13:4–8', _S + 'nt/1-cor/13?lang=eng')],
+    # checkpoint 60 (HANDOFF_PLAN 2026-11-04 next bounded semantic tranche)
+    216: [('Genesis 10:8–9', _S + 'ot/gen/10?lang=eng')],
+    155: [('Matthew 23:25–26', _S + 'nt/matt/23?lang=eng')],
     # checkpoint 59 (HANDOFF_PLAN 2026-11-04 SEM58-C3): source for the Ether 1 abridgment sentence
     65: [('Ether 1:3–5', _S + 'bofm/ether/1?lang=eng')],
 }
@@ -528,6 +609,17 @@ NOLINK = {
          'later 5/pgp Moses 8 warning card) is not a matching ark account',
     236: 'checkpoint 58 decision: passage-level comparison without a link; 1 Corinthians 13:4–8 is cited as a source. '
          'No 1 Corinthians 13 card exists, and BC12/BXC05 are Book of Mormon cards, not Bible endpoints',
+    84: 'checkpoint 60 decision: future-event teaching without a link; a labelled Luke 24 comparison '
+        '(NTE-resurrection-accounts) is declined as editorial, and no AE10, Acts ascent or site is linked',
+    135: 'checkpoint 60 decision: qualified source-only view; NTE-resurrection-accounts is declined because a Gospel '
+         'account would read as proof of the timing Alma leaves open',
+    155: 'checkpoint 60 decision: optional comparison selected as source-only; Matthew 23:25–26 is cited beside the '
+         'chapter. The Sermon-on-the-Mount card is not the saying, and no Matthew 23 card exists',
+    183: 'checkpoint 60 decision: voice-scene view without a link; BXC01 keeps the visible law-fulfilled coverage and '
+         'this view supplies the direct 3 Nephi 9 source. An OH-C01 creation comparison is declined, and no Moses '
+         'person link is made for the law clause',
+    216: 'checkpoint 60 decision: no Old Testament Nimrod card exists; Genesis 10:8–9 is cited as the comparison '
+         'source. BJ11 (the 3/bom migration card) keeps the valley and tower tradition',
 }
 
 # BMC keys deliberately not given a view although their finding touches a Bible text or figure: reason.
@@ -595,6 +687,40 @@ OMIT = {
          'and mount Zerin (BXP64) are Book of Mormon content',
     198: 'Malachi 3 is quoted, but no Old Testament card covers Malachi at this head; the only Malachi card is a '
          'Doctrine and Covenants source view (4/dc), a later work',
+    # checkpoint 60 (HANDOFF_PLAN 2026-11-04 next bounded semantic tranche; full primary reading of each chapter)
+    238: 'checkpoint 60 decision: represented by BC14, whose existing Moroni 9:25 source now carries Mormon’s '
+         'recollection of Christ’s sufferings and death and the showing of his body to their fathers (the Book of '
+         'Mormon appearance, not Luke 24). No new view, event or Bible edge. Aaron here is a Book of Mormon king',
+    70: 'checkpoint 60 decision: Benjamin names the mankind his salvation teaching addresses as all who ever were '
+        'since the fall of Adam, or who are, or ever shall be (Mosiah 4:7). That scope relation needs no further '
+        'Fall card, event or Eden pin; the assembly’s forgiveness and care for the poor remain Book of Mormon content',
+    71: 'checkpoint 60 decision: covenant identity as children of Christ; no Bible event is required. A Mosiah 5:15 / '
+        '1 Corinthians 15:58 comparison (steadfast, immovable, abounding) is declined as editorial; no '
+        'resurrection-glory target',
+    91: 'checkpoint 60 decision: Mosiah 25:2 names Zarahemla as a descendant of Mulek but not Zedekiah or Jerusalem; '
+        'the Zedekiah relation stays with BMV-166 (Helaman 8:11–22 and 6:10). No duplicate relation',
+    92: 'checkpoint 60 decision: church judgment and forgiveness under Alma; no Gospel scene is required. A Mosiah '
+        '26:27 / Matthew 7:23 and 25:41 comparison is declined as editorial',
+    127: 'checkpoint 60 decision: the seed, word, faith and tree imagery is Alma’s own and is not an identified Bible '
+         'quotation or Eden. A Luke 8:4–15 sower comparison is declined as editorial',
+    132: 'checkpoint 60 decision: the Liahona is named as a type of Christ’s guidance within the Book of Mormon. Alma '
+         '37:46 says only that the fathers might look and live; Moses, the serpent, Israel and Egypt are not named, so '
+         'a Numbers 21:4–9 comparison is declined as editorial and no Moses edge or Exodus route is made',
+    134: 'checkpoint 60 decision: besides Corianton’s conduct, Alma teaches that Christ shall surely come to take away '
+         'the sins of the world and that his coming is made known beforehand (Alma 39:15–19). No Nativity or '
+         'Crucifixion setting is identified, so no Gospel event is linked',
+    170: 'checkpoint 60 decision: Helaman 12:14–15 is conditional rhetoric about God’s power over the earth, naming no '
+         'battle, Joshua or Lachish. A Helaman 12:25–26 / John 5:28–29 comparison is declined as editorial',
+}
+
+# Checkpoint 60: an existing primary 3/bom card whose description carries a BMC finding (desc rewritten in place by
+# build.write_bmc; its sources are unchanged). The first sentence is the card's existing copy.
+PRIMARY_DESC = {
+    'BC14': ('Book of Mormon — Mormon reports severe violence and suffering among both peoples, urges continued '
+             'service, and asks Moroni to find hope in Christ. He asks that Christ’s sufferings and death, the showing '
+             'of his body unto their fathers, his mercy and long-suffering, and the hope of his glory rest in Moroni’s '
+             'mind forever (verse 25). The showing of his body is the Book of Mormon appearance to their ancestors, '
+             'not a Gospel appearance.'),
 }
 
 # Name-scan hits (bmc_candidates.py): default disposition per scanned name, then per-row overrides.

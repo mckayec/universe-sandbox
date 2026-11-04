@@ -22,12 +22,12 @@ BMC-181,3 Nephi 7,namesake,26,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACO
 BMC-181,3 Nephi 7,namesake,26,Satan,,3 Nephi 7:5,consistent,"teaching vocabulary, not a Bible event"
 BMC-181,3 Nephi 7,namesake,26,devil,,"3 Nephi 7:19, 3 Nephi 7:22",consistent,"teaching vocabulary, not a Bible event"
 BMC-182,3 Nephi 8,no-bible-relation,25,Samuel,OHR-SAMUEL,3 Nephi 8:3,consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
-BMC-183,3 Nephi 9,namesake,22,Gilgal,OHP-GILGAL-JOSHUA,3 Nephi 9:6,consistent,namesake: Book of Mormon city or Jaredite valley Gilgal
-BMC-183,3 Nephi 9,namesake,22,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,"3 Nephi 9:8, 3 Nephi 9:9",consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
-BMC-183,3 Nephi 9,namesake,22,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,3 Nephi 9:7,consistent,namesake: the Book of Mormon city Jerusalem destroyed by water (9:7)
-BMC-183,3 Nephi 9,namesake,22,Moses,OHR-MOSES,3 Nephi 9:17,consistent,only in “law of Moses” or a rhetorical name; no Moses event
-BMC-183,3 Nephi 9,namesake,22,devil,,3 Nephi 9:2,consistent,"teaching vocabulary, not a Bible event"
-BMC-183,3 Nephi 9,namesake,22,law of Moses,,3 Nephi 9:17,consistent,the law as an observed or fulfilled practice (practice-or-title class)
+BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,Gilgal,OHP-GILGAL-JOSHUA,3 Nephi 9:6,consistent,namesake: Book of Mormon city or Jaredite valley Gilgal
+BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,"3 Nephi 9:8, 3 Nephi 9:9",consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
+BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,3 Nephi 9:7,consistent,namesake: the Book of Mormon city Jerusalem destroyed by water (9:7)
+BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,Moses,OHR-MOSES,3 Nephi 9:17,consistent,only in “law of Moses” or a rhetorical name; no Moses event
+BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,devil,,3 Nephi 9:2,consistent,"teaching vocabulary, not a Bible event"
+BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,law of Moses,,3 Nephi 9:17,consistent,the law as an observed or fulfilled practice (practice-or-title class)
 BMC-185,3 Nephi 11,checkpoint-58 view BMV-185-crucified-christ-wounds-bountiful,41,Israel,OTM-israel-prophetic-community,3 Nephi 11:14,consistent,the collective covenant people or “God of Israel” as a divine title (Book of Mormon audience/teaching class)
 BMC-185,3 Nephi 11,checkpoint-58 view BMV-185-crucified-christ-wounds-bountiful,41,devil,,3 Nephi 11:29,consistent,"teaching vocabulary, not a Bible event"
 BMC-185,3 Nephi 11,checkpoint-58 view BMV-185-crucified-christ-wounds-bountiful,41,flood,,3 Nephi 11:40,consistent,floods in the sandy-foundation image (11:40); see the parallel rows
@@ -58,13 +58,13 @@ BMC-209,Mormon 4,namesake,23,Lehi,,Mormon 4:12,consistent,"Book of Mormon Lehi (
 BMC-211,Mormon 6,namesake,22,Gilgal,OHP-GILGAL-JOSHUA,Mormon 6:14,consistent,namesake: Book of Mormon city or Jaredite valley Gilgal
 BMC-213,Mormon 8,checkpoint-58 decision (omitted),41,Isaiah,OTM-a02-ariel-jst-introduction OTM-j01-assyrian-oracle-march OTM-r01-isaiah-family,Mormon 8:23,resolved,"8:23 Isaiah-study instruction: recorded checkpoint-58 decision, no Isaiah or JST link"
 BMC-213,Mormon 8,checkpoint-58 decision (omitted),41,Israel,OTM-israel-prophetic-community,Mormon 8:21,consistent,the collective covenant people or “God of Israel” as a divine title (Book of Mormon audience/teaching class)
-BMC-216,Ether 2,namesake,25,Jared,,"Ether 2:1, Ether 2:4, Ether 2:8, Ether 2:13, Ether 2:14, Ether 2:15, Ether 2:16, Ether 2:18, Ether 2:20, Ether 2:21, Ether 2:23",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
-BMC-216,Ether 2,namesake,25,Nimrod,,"Ether 2:1, Ether 2:4",consistent,namesake: Jaredite valley or person Nimrod
-BMC-216,Ether 2,namesake,25,cross,,"Ether 2:6, Ether 2:22, Ether 2:25",consistent,"crossing the waters (2:6, 22, 25)"
-BMC-216,Ether 2,namesake,25,flood,,"Ether 2:20, Ether 2:24, Ether 2:25",consistent,storm floods of the Jaredite crossing or a general image; no Genesis flood named
-BMC-217,Ether 3,namesake,28,Jared,,"Ether 3:1, Ether 3:6, Ether 3:7, Ether 3:21, Ether 3:25",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
-BMC-217,Ether 3,namesake,28,cross,,"Ether 3:3, Ether 3:4",consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
-BMC-217,Ether 3,namesake,28,flood,,Ether 3:2,consistent,storm floods of the Jaredite crossing or a general image; no Genesis flood named
+BMC-216,Ether 2,checkpoint-60 view BMV-216-nimrod-valley-named,25,Jared,,"Ether 2:1, Ether 2:4, Ether 2:8, Ether 2:13, Ether 2:14, Ether 2:15, Ether 2:16, Ether 2:18, Ether 2:20, Ether 2:21, Ether 2:23",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-216,Ether 2,checkpoint-60 view BMV-216-nimrod-valley-named,25,Nimrod,,"Ether 2:1, Ether 2:4",resolved,2:1 valley called after the mighty hunter: BMV-216 cites Genesis 10:8–9 as a comparison (no Nimrod card); not Shinar or Babel
+BMC-216,Ether 2,checkpoint-60 view BMV-216-nimrod-valley-named,25,cross,,"Ether 2:6, Ether 2:22, Ether 2:25",consistent,"crossing the waters (2:6, 22, 25)"
+BMC-216,Ether 2,checkpoint-60 view BMV-216-nimrod-valley-named,25,flood,,"Ether 2:20, Ether 2:24, Ether 2:25",consistent,storm floods of the Jaredite crossing or a general image; no Genesis flood named
+BMC-217,Ether 3,checkpoint-60 view BMV-217-fall-divine-image-spirit-body,28,Jared,,"Ether 3:1, Ether 3:6, Ether 3:7, Ether 3:21, Ether 3:25",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-217,Ether 3,checkpoint-60 view BMV-217-fall-divine-image-spirit-body,28,cross,,"Ether 3:3, Ether 3:4",consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
+BMC-217,Ether 3,checkpoint-60 view BMV-217-fall-divine-image-spirit-body,28,flood,,Ether 3:2,consistent,storm floods of the Jaredite crossing or a general image; no Genesis flood named
 BMC-219,Ether 5,no-bible-relation,6,,,,no-hit,no card name or cue in the chapter text
 BMC-220,Ether 6,checkpoint-58 view BMV-220-barges-like-noahs-ark,30,Jared,,"Ether 6:1, Ether 6:2, Ether 6:9, Ether 6:14, Ether 6:15, Ether 6:16, Ether 6:19, Ether 6:20, Ether 6:23, Ether 6:24, Ether 6:25, Ether 6:27, Ether 6:29",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
 BMC-220,Ether 6,checkpoint-58 view BMV-220-barges-like-noahs-ark,30,Noah,,Ether 6:7,resolved,6:7 ark comparison: BMV-220 relation without a card; PE06 rejected
@@ -111,5 +111,5 @@ BMC-236,Moroni 7,checkpoint-58 view BMV-236-charity-compare-1-corinthians-13,48,
 BMC-236,Moroni 7,checkpoint-58 view BMV-236-charity-compare-1-corinthians-13,48,parallel: 1 Corinthians 13:4-7,,Moroni 7:45,resolved,"one passage-level comparison: BMV-236 cites Moroni 7:45–46 and 1 Corinthians 13:4–8, without a link"
 BMC-236,Moroni 7,checkpoint-58 view BMV-236-charity-compare-1-corinthians-13,48,parallel: 1 Corinthians 13:8,,Moroni 7:46,resolved,same passage-level comparison as 7:45 (BMV-236)
 BMC-237,Moroni 8,checkpoint-58 view BMV-237-curse-of-adam-children,30,Adam,,Moroni 8:8,resolved,8:8 curse of Adam: BMV-237 links OH-E01 as a comparison with the Genesis account
-BMC-238,Moroni 9,namesake,26,Aaron,OHR-AARON,Moroni 9:17,consistent,namesake: Book of Mormon or Jaredite Aaron
-BMC-238,Moroni 9,namesake,26,Satan,,Moroni 9:3,consistent,"teaching vocabulary, not a Bible event"
+BMC-238,Moroni 9,checkpoint-60 decision (omitted),26,Aaron,OHR-AARON,Moroni 9:17,consistent,namesake: Book of Mormon or Jaredite Aaron
+BMC-238,Moroni 9,checkpoint-60 decision (omitted),26,Satan,,Moroni 9:3,consistent,"teaching vocabulary, not a Bible event"

@@ -1956,7 +1956,7 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
 
 test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
   const views = codex('bom-bible');
-  assert.equal(views.length, 96); // 58 through checkpoint 37, 18 added by the S37 decisions (checkpoint 38), 3 by SEM-R1/R3/R4 (checkpoint 53), 17 by the checkpoint-58 residual dispositions
+  assert.equal(views.length, 107); // 58 through checkpoint 37, 18 added by the S37 decisions (checkpoint 38), 3 by SEM-R1/R3/R4 (checkpoint 53), 17 by the checkpoint-58 residual dispositions, 11 by the checkpoint-60 tranche
   const all = P.codex.flatMap((t: any) => t.list);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
@@ -1984,13 +1984,13 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
   // layer isolation and work downgrade
   const split = (layers: string[], cum: boolean, book: number) =>
     L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
-  assert.equal(split(['bom'], false, 0).shown.length, 96);
+  assert.equal(split(['bom'], false, 0).shown.length, 107);
   assert.equal(split(['ot'], false, 0).shown.length, 0);
   assert.equal(split(['nt'], false, 0).shown.length, 0);
   assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
-  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 96);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 107);
   assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
-  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 96);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 107);
   // the S31 minimum examples
   const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
   assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);
@@ -2119,7 +2119,8 @@ test('Checkpoint 37: every default BMC omission has a semantic disposition with 
   // remaining rows are summary-level reason screens, not certified absences
   // checkpoint 53: SEM-R1/R3/R4 gave BMC-012/032/049 views and SEM-R2 consolidated BMC-026 into BMV-025
   // checkpoint 58: 17 keys gained views and 9 became recorded decisions (tests/lds-semantic-c58.test.ts)
-  assert.equal(rows.length, 116);
+  // checkpoint 60: the 20-chapter tranche left the ledger (tests/lds-semantic-c60.test.ts)
+  assert.equal(rows.length, 96);
   for (const [key, , state] of rows)
     assert.ok(!['candidate', 'reader', 'unstated-parallel', 'relation-no-card'].includes(state), `${key} ${state}`);
   for (const k of ['BMC-002', 'BMC-016', 'BMC-053', 'BMC-124', 'BMC-164', 'BMC-186', 'BMC-215', 'BMC-222'])
