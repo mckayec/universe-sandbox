@@ -30,7 +30,10 @@ PACK_DIR = ROOT + '/docs/universes/packs/lds-standard-works'
 EXTRA_CUES = (r"Abraham|Isaac|Jacob|Israel|Isaiah|Malachi|Micah|Zenos|Zenock|Adam|Eve\b|Lamb of God|"
               r"Jerusalem|Zion|Babel|great tower|flood|Joseph|Lehi|Zedekiah|Elijah|Elias|Gospel|apostles|"
               r"the twelve|Peter|James|Sinai|Horeb|Pharaoh|Canaan|Sodom|Gomorrah|Bethlehem|Galilee|Calvary|"
-              r"Golgotha|Pilate|Herod|Mary|Nazareth|Satan|devil|cross|crucified|Sermon|Beatitude")
+              r"Golgotha|Pilate|Herod|Mary|Nazareth|Satan|devil|cross|crucified|Sermon|Beatitude|"
+              # checkpoint 58: the card-name parser reads OH-R01 “Cain, Abel, Seth and Enos” as the combined alias
+              # “Cain, Abel, Seth”, so Cain is screened as its own controlled cue (Ether 8:15 regression)
+              r"Cain\b")
 # Distinctive New Testament wording screened as possible unstated parallels (phrase -> cue label). A short,
 # hand-picked list, not an exhaustive parallel search.
 PARALLELS = {
@@ -52,9 +55,31 @@ def chapter_text(data, unit):
     raise KeyError(unit)
 
 
+# Checkpoint 58: the screen keeps its checkpoint-56 scope (the 39 rows that had no full-read omission-check row),
+# even where a row has since left the semantic ledger for a view or a recorded decision; such a row's state is
+# shown as that decision.
+SCREEN_KEYS = ['BMC-%03d' % n for n in (175, 176, 177, 178, 180, 181, 182, 183, 185, 193, 200, 201, 205, 206, 207,
+                                         209, 211, 213, 216, 217, 219, 220, 221, 222, 223, 224, 225, 226, 228, 229,
+                                         230, 231, 232, 233, 234, 235, 236, 237, 238)]
+
+
 def residual_rows():
-    rows = list(csv.DictReader(open(PACK_DIR + '/bmc-semantic-dispositions.csv', encoding='utf-8')))
-    return [r for r in rows if '(full-read)' not in r['research_locators']]
+    sem = {r['research_key']: r for r in csv.DictReader(open(PACK_DIR + '/bmc-semantic-dispositions.csv',
+                                                             encoding='utf-8'))}
+    views = list(csv.DictReader(open(PACK_DIR + '/bmc-source-views.csv', encoding='utf-8')))
+    out = []
+    for k in SCREEN_KEYS:
+        if k in sem:
+            assert '(full-read)' not in sem[k]['research_locators'], k
+            out.append(sem[k])
+            continue
+        mine = [v for v in views if v['research_key'] == k and v['state'] in ('implemented', 'omitted')]
+        assert mine, k
+        state = ('checkpoint-58 view ' + mine[0]['rendered_view'] if mine[0]['state'] == 'implemented'
+                 else 'checkpoint-58 decision (omitted)')
+        unit = mine[0]['locator'].split(':')[0]
+        out.append({'research_key': k, 'unit': unit, 'semantic_state': state})
+    return out
 
 
 def scan(verses, names):

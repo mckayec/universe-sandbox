@@ -46,9 +46,6 @@ SEMANTIC = {
                                'to the chapters that teach them (BMV-190, BMV-195; rollup range-spill); the record’s '
                                'lost-tribes announcement is BMV-191 (S37: no tribe identity or destination); '
                                'Isaiah, Jeremiah and Zedekiah are Nephite disciples (rollup namesakes)'),
-    'BMC-015': ('represented', 'Nephi interprets the olive tree, gathering and rod for his brothers; the 1 Nephi '
-                               '12–15 full-read row notes John is identified in 14:27, which is BMV-014 (John named in '
-                               'Nephi’s vision)'),
     'BMC-076': ('namesake', 'Noah is the Zeniff-line king (BXP03, land seen from Noah’s tower), not the patriarch'),
     'BMC-089': ('namesake', 'Noah is the Zeniff-line king whose fugitive priests settle Amulon (BXP04)'),
     'BMC-090': ('namesake', 'Noah is the Zeniff-line king (BXP03), not the patriarch'),
@@ -59,17 +56,10 @@ SEMANTIC = {
                                'city Mulek on the BXJ10 route is a namesake, and Mulek’s Zedekiah descent is BMV-166'),
     'BMC-217': ('namesake', 'the brother of Jared is the Jaredite founder’s brother; no Genesis Jared card exists and '
                             'the premortal appearance is a Book of Mormon theophany'),
-    'BMC-222': ('namesake', 'Jared, Heth and Coriantumr here are later Jaredites (the research says so); no Bible link '
-                            'is made and no card for those names exists'),
     'BMC-223': ('namesake', 'Jared and Heth are Jaredite rulers; the serpents are a Jaredite famine episode, not tied by '
                             'the research to any Bible text'),
-    'BMC-226': ('namesake', 'the brother of Jared moves mount Zerin (BXP64); Jesus appears to Moroni — Book of Mormon '
-                            'content with no Bible text or place named'),
     'BMC-228': ('namesake', 'Jared, Noah and Nimrod appear in the Jaredite people record BXR05 as Jaredites; Gilead is '
                             'Shared’s brother (rollup); no Bible link is made'),
-    'BMC-059': ('practice-or-title', 'Jacob teaches the law of Moses as pointing to Christ: a practice, not a relation '
-                                     'to the Moses card (rollup). The rejected-foundation stone imagery is not tied by '
-                                     'the research to any Bible text, and the ledger calls it a literary reference'),
     'BMC-064': ('practice-or-title', 'Jarom describes teachers keeping Moses’ law and the Sabbath: a practice, not a '
                                      'relation to the Moses card (rollup)'),
     'BMC-077': ('namesake', 'Noah here is Zeniff’s son, king of the land; the pack’s Noah cards are Pearl of Great '
@@ -91,8 +81,6 @@ SEMANTIC = {
                                      '(unstated parallel, not linked); the Nephi here is a Nephite record keeper'),
     'BMC-216': ('namesake', 'Nimrod valley is the Jaredite gathering place (and Ether 7’s Nimrod a ruler); the research '
                             'gives no Bible link and no Nimrod card exists'),
-    'BMC-220': ('namesake', 'Jared and his brother are the Jaredite founders; no Genesis Jared card exists and the '
-                            'research gives no Bible link'),
     'BMC-221': ('namesake', 'the research itself says Noah is distinct from biblical and Zeniff-line Noah; hill '
                             'Ephraim is Jaredite (rollup); Nimrod is a Jaredite ruler'),
     'BMC-224': ('namesake', 'Levi, Heth, Kish and Aaron are Jaredite kings and captives in the research; none is tied '

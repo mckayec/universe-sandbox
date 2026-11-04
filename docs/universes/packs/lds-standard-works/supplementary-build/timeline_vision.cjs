@@ -130,6 +130,10 @@ const SEM = {
     'not-vision',
     'keyword only in a safeguard: the comparison does not locate the chapter’s dream imagery as a vision scene',
   ],
+  'codex:BMV-161-abraham-isaac-jacob-fellowship': [
+    'not-vision',
+    'keyword only in a safeguard: teaching about the hereafter, “not a vision, journey or genealogy”',
+  ],
   'codex:BMV-011-nazareth-jerusalem-vision': 'vision-content',
   'codex:BMV-014-john-revelation-vision': 'vision-content',
   'codex:BMV-023-jerusalem-destruction-known': 'vision-content',
