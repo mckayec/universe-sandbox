@@ -43,7 +43,8 @@ Parent: b0baa1b (checkpoint 11). Branch `engine/timelines` (draft PR #45). Not m
 ## Findings for the reviewer (nothing changed for these)
 
 1. One card (the “Standard works” overview in the `works` section) has no `layers` and lands on an “Other” lane.
-2. 1,634 of 1,669 records would sit in the undated panel. Wiring the view to this pack needs a per-work list
+2. 1,639 of 1,669 records would sit in the undated panel (corrected at checkpoint 13, TL-E02: 1,634 is the
+   narrative subset; the five historical-but-undated cards are also undated). Wiring the view to this pack needs a per-work list
    (collapsed by default) rather than one flat panel; proposed for the wiring unit.
 3. Whether a card's own `src` may serve as a relationship locator for its `see` links is a review decision; until
    then all 313 relationships stay listed, not drawn.

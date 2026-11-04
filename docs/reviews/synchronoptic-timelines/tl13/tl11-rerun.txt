@@ -1,0 +1,41 @@
+PASS 390 every lane chip has a grip 8
+PASS 390 grip is at least 32x44 px {"x":0,"y":113,"width":34,"height":46}
+PASS 390 dragged first lane lands in slot 3 ["lane-chr","lane-isl","lane-jud","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 390 URL carries the new order "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+PASS 390 focus on the moved lane toggle null
+PASS 390 no drag marks left behind null
+PASS 390 ↑ button still moves the lane ["lane-chr","lane-jud","lane-isl","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 390 drop on own place is a no-op null
+PASS 390 reset restores default order null
+PASS 1280 every lane chip has a grip 8
+PASS 1280 grip is at least 32x44 px {"x":16,"y":158,"width":34,"height":46}
+PASS 1280 drop target is marked while dragging null
+PASS 1280 dragged first lane lands in slot 3 ["lane-chr","lane-isl","lane-jud","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 1280 URL carries the new order "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+PASS 1280 focus on the moved lane toggle null
+PASS 1280 no drag marks left behind null
+PASS 1280 ↑ button still moves the lane ["lane-chr","lane-jud","lane-isl","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 1280 drop on own place is a no-op null
+PASS 1280 reset restores default order null
+PASS 1440 every lane chip has a grip 8
+PASS 1440 grip is at least 32x44 px {"x":16,"y":124,"width":34,"height":46}
+PASS 1440 drop target is marked while dragging null
+PASS 1440 dragged first lane lands in slot 3 ["lane-chr","lane-isl","lane-jud","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 1440 URL carries the new order "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+PASS 1440 focus on the moved lane toggle null
+PASS 1440 no drag marks left behind null
+PASS 1440 ↑ button still moves the lane ["lane-chr","lane-jud","lane-isl","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 1440 drop on own place is a no-op null
+PASS 1440 reset restores default order null
+PASS 3840 every lane chip has a grip 8
+PASS 3840 grip is at least 32x44 px {"x":30,"y":234.59375,"width":50,"height":68}
+PASS 3840 drop target is marked while dragging null
+PASS 3840 dragged first lane lands in slot 3 ["lane-chr","lane-isl","lane-jud","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 3840 URL carries the new order "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+PASS 3840 focus on the moved lane toggle null
+PASS 3840 no drag marks left behind null
+PASS 3840 ↑ button still moves the lane ["lane-chr","lane-jud","lane-isl","lane-enc","chron-jud","chron-chr","chron-isl","chron-enc"]
+PASS 3840 drop on own place is a no-op null
+PASS 3840 reset restores default order null
+PASS no console/page errors []
+PASS 40
