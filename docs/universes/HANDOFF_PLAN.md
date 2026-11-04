@@ -1287,3 +1287,12 @@ applyEdgeSources(model, {
 Record accepted/rejected/deferred decisions and exact access blockers. No pilot source readings or approvals were performed in this review.
 
 Preserve the existing source/citation, host chapter-selector, chronology/genealogy/succession/travel, CH13/X08, physical-device/AT and release gates. Prior closures remain bounded; TL-R12/TL-R13 are not closed by this unchanged-UI checkpoint. Full review artifacts remain local. No remote review-branch publication, approval, merge or deployment.
+
+
+## 2026-11-04 — Timeline checkpoint 16: reveal accepted, one focus residual with the grounding unit
+
+Reviewed exact PR45 **c494aaa79e54dcc062df5a4c5ccab9d8bf49d864**. **TL-R12 closes:** repeated search, manually closed panels and collapsed-lane reveal work at 390/1440. Native-control Tab traversal and roving row navigation also pass. Independent validation passed **140 tests**, build, **122 distribution checks** and all **66 builder assertions**. [Exact-head CI 41789656431](https://github.com/mckayec/universe-sandbox/actions/runs/41789656431) passed; deployment skipped.
+
+**TL-R13 retains one reproduced residual:** select a Book of Mormon record, exclude that work and refresh, then restore the gate and refresh again. The first refresh recovers focus to Overview; the second drops focus to body at both widths. The renderer checks dialog containment after removing the old heading. Capture whether the dialog owned focus before drawing/replacing DOM, then recover to an appropriate visible target or Close. Return this two-refresh sequence with subsequent Tab/Shift+Tab checks at compact/wide sizes, preserving the already-passing reveal and roving behavior. Do not reopen TL-R12 or spend a separate unit only restating evidence.
+
+**Next builder unit remains the grouped TL-R14/TL-R15 grounding corrections and regression fixtures above; include this small TL-R13 focus fix in that same work window.** Keep real promotions at zero until per-row semantic acceptance, and the adapter unwired. The animation-frame pause preserves tested synchronous timeline interactions but suppresses host scheduling; it does not establish live-globe performance or host integration. Both screenshots were inspected; subtle selection styling adds no blocker. Preserve current ownership, locks and all source/chronology, chapter-selector, browser/device/AT and release gates. Full review artifacts remain local. No approval, merge, deployment or review-branch publication.
