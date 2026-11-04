@@ -34,7 +34,12 @@
 
    Checkpoint 18 (TL-R14 residual, TL-R16): Bible Dictionary titles must name the URL entry in full (slug or an
    explicit validated alias), chapter zero is rejected, the review mode must be stated and supported, and every row
-   must carry a current binding (see bindingFor) and, where it declares one, current supplementary support. */
+   must carry a current binding (see bindingFor) and, where it declares one, current supplementary support.
+
+   Checkpoint 19 (TL-R16 residual): the binding also covers the stated support requirement and the exact support
+   manifest, each reviewed citation's exact URL, label and language (unknown provenance defers), and each endpoint's
+   explanatory content (text, claim kinds, scoped notes, identity guards). `supportRequired` must be stated on every
+   row. The one validated dictionary alias is "Elath or Eloth" → bd/elath. */
 (function (root) {
   'use strict';
 
@@ -91,9 +96,10 @@
   };
 
   /* Bible Dictionary: a full title maps to its URL entry by slug ("Galilee, Sea of" → galilee-sea-of). A title whose
-     slug differs needs an explicit alias here, validated against the official entry by a reviewer first; none is
-     approved yet, so such a citation fails closed (e.g. "Elath or Eloth" → bd/elath). */
-  const BD_ALIASES = {};
+     slug differs needs an explicit alias here, validated against the official entry by a reviewer first. Each alias
+     is a complete heading, never a first word. Validated: "Elath or Eloth" is the full heading of the official English
+     entry bd/elath (ChatGPT, HANDOFF_PLAN 2026-11-04; current title/URL identity, not an immutable edition). */
+  const BD_ALIASES = { 'elath or eloth': 'elath' };
   const slug = s =>
     String(s)
       .toLowerCase()
@@ -346,8 +352,51 @@
     return ('00000000' + a.toString(16)).slice(-8) + ('00000000' + b.toString(16)).slice(-8);
   }
   const citesOf = src => arr(src).map(c => [String((c && c.t) || ''), String((c && c.u) || '')]);
+  /* an endpoint as the reviewer saw it: identity, citations and the explanatory content a claim rests on (its own
+     text, claim kinds, scoped notes with their locators, and identity guards). A stable id or label alone never
+     preserves a reviewed claim (TL-R16). */
+  const noteSnap = ns => arr(ns).map(n => [n && n.k != null ? n.k : null, String((n && n.t) || ''), n && n.loc != null ? n.loc : null]);
+  const guardSnap = ns => arr(ns).map(n => [n && n.id != null ? n.id : null, String((n && n.t) || '')]);
   const recordSnap = r =>
-    r ? { id: r.id, label: r.label || '', sourceId: r.sourceId || null, section: r.section || null, src: citesOf(r.src) } : null;
+    r
+      ? {
+          id: r.id,
+          label: r.label || '',
+          sourceId: r.sourceId || null,
+          section: r.section || null,
+          src: citesOf(r.src),
+          text: r.text == null ? null : String(r.text),
+          claim: r.claim == null ? null : r.claim,
+          notes: noteSnap(r.notes),
+          notSame: guardSnap(r.notSame),
+        }
+      : null;
+  /* provenance of a reviewed citation: the exact label and URL, and the page language. The URL's only query must be
+     one `lang` code; anything else is unknown provenance and defers the row (canonical components alone would let
+     ?lang=eng become ?lang=spa unnoticed). */
+  function provenanceOf(c) {
+    const u = String((c && c.u) || '');
+    const q = u.split('#')[0].split('?');
+    if (q.length !== 2) return null;
+    const m = q[1].match(/^lang=([a-z]{3})$/);
+    if (!m) return null;
+    return { t: String((c && c.t) || '').trim().replace(/\s+/g, ' '), u, lang: m[1] };
+  }
+  const provKey = src =>
+    arr(src).map(c => {
+      const p = provenanceOf(c);
+      return p ? [p.t, p.u, p.lang] : ['unknown', String((c && c.u) || '')];
+    });
+  /* the support the reviewer approved: requirement and the exact item manifest (ids, purposes, claims, citations
+     with provenance). Removing, substituting or weakening it changes the row binding. State and item fingerprints
+     are checked separately, so a revoked item reports itself. */
+  const supportManifest = en => ({
+    required: en.supportRequired === true ? true : en.supportRequired === false ? false : null,
+    items: arr(en.support).map(it => {
+      const x = it || {};
+      return [x.id || null, x.role || null, x.purpose || '', x.claim || '', partsKey(x.src), provKey(x.src)];
+    }),
+  });
   /* canonical components of locators: what they mean, not how they are spelled */
   const partsKey = src =>
     arr(src).map(c => {
@@ -381,8 +430,20 @@
         scope: en.scope || null,
         src: partsKey(en.src),
         evidence: { from: partsKey(ev.from), to: partsKey(ev.to) },
+        prov: { src: provKey(en.src), from: provKey(ev.from), to: provKey(ev.to) },
+        support: supportManifest(en),
       }),
     );
+  }
+
+  /* the first reviewed citation (primary, evidence or support) whose provenance is unknown, or null */
+  function unknownProvenance(entry) {
+    const ev = entry.evidence || {};
+    const all = arr(entry.src)
+      .concat(arr(ev.from), arr(ev.to))
+      .concat(...arr(entry.support).map(it => arr(it && it.src)));
+    const c = all.find(x => !provenanceOf(x));
+    return c ? 'unknown provenance for "' + String((c && c.t) || '') + '" (URL needs exactly one lang code)' : null;
   }
 
   /* ---------- supplementary support (pilot rows 3 and 9) ----------
@@ -406,6 +467,7 @@
         purpose: it.purpose || '',
         claim: it.claim || '',
         src: partsKey(it.src),
+        prov: provKey(it.src),
       }),
     );
   }
@@ -413,8 +475,8 @@
   function supportProblem(model, id, entry) {
     const items = entry.support == null ? [] : entry.support;
     if (!Array.isArray(items)) return 'support must be a list';
-    if (entry.supportRequired !== true && entry.supportRequired !== false && items.length)
-      return 'support is present but supportRequired is not stated';
+    if (entry.supportRequired !== true && entry.supportRequired !== false)
+      return items.length ? 'support is present but supportRequired is not stated' : 'supportRequired is not stated';
     for (const it of items) {
       const name = 'support ' + ((it && it.id) || '?');
       if (!it || it.role !== SUPPORT_ROLE) return name + ' has no support role';
@@ -446,6 +508,10 @@
     if (!model.sourceVersion) return 'the model declares no current source version';
     if (entry.sourceVersion !== model.sourceVersion) return 'review source version is not the current source version';
     if (entry.mode === 'independent' && !filled(entry.scope)) return 'independent evidence needs a scope caveat';
+    if (entry.supportRequired !== true && entry.supportRequired !== false)
+      return arr(entry.support).length ? 'support is present but supportRequired is not stated' : 'supportRequired is not stated';
+    const prov = unknownProvenance(entry);
+    if (prov) return prov;
     if (!filled(entry.binding) || entry.binding !== bindingFor(model, e.id, entry))
       return 'review binding is stale or missing (edge, endpoints or sources changed since review)';
     return supportProblem(model, e.id, entry);
@@ -541,6 +607,7 @@
     currentSnapshot,
     bindingFor,
     supportFingerprint,
+    provenanceOf,
     ledger,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

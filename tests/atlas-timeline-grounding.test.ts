@@ -115,6 +115,7 @@ const accept = (src: Loc[], extra: Record<string, unknown> = {}) => ({
   claim: 'fixture claim',
   basis: 'fixture rationale',
   sourceVersion: 'fixture',
+  supportRequired: false,
   src,
   ...extra,
 });
@@ -283,8 +284,13 @@ test('TL-R14: dictionary titles must name the URL entry in full; chapter zero is
   no(c('Bible Dictionary: Galilee', 'bd/galilee-sea-of'), /dictionary entry/);
   no(c('Bible Dictionary: Galilee, Lake of', 'bd/galilee-sea-of'), /dictionary entry/);
   no(c('Bible Dictionary: Shushan Palace', 'bd/shushan'), /dictionary entry/);
-  // a real pack title whose slug differs needs a validated alias; none is approved, so it fails closed
-  no(c('Bible Dictionary: Elath or Eloth', 'bd/elath'), /dictionary entry/);
+  // a title whose slug differs needs a validated full-heading alias: only "Elath or Eloth" → bd/elath is approved
+  assert.equal(G.parseLocator(c('Bible Dictionary: Elath or Eloth', 'bd/elath')).ok, true);
+  assert.equal(G.parseLocator(c('Bible Dictionary: Elath', 'bd/elath')).ok, true);
+  no(c('Bible Dictionary: Elath or', 'bd/elath'), /dictionary entry/);
+  no(c('Bible Dictionary: Eloth', 'bd/elath'), /dictionary entry/);
+  no(c('Bible Dictionary: Elath or Eloth', 'bd/eloth'), /dictionary entry/);
+  no(c('Bible Dictionary: Elath or Eloth', 'bd/galilee-sea-of'), /dictionary entry/);
   // a dictionary title never names a non-dictionary URL
   no(c('Bible Dictionary: Shushan', 'ot/neh/1'), /unknown book|chapter/);
   // chapter zero, in the URL or in the label
@@ -409,10 +415,16 @@ test('supplementary support is a separate, bound role that defers acceptance whe
     if (!('fingerprint' in extra)) it.fingerprint = G.supportFingerprint(m, 'a>b', entry, it);
     return it;
   };
+  // the reviewer binds the row with its support manifest, then fingerprints each item against that binding
   const build = (m: Model, extra: Record<string, unknown> = {}, itemExtra?: Record<string, unknown>) => {
-    const base = accept([loc], { supportRequired: true, ...extra });
-    const entry = bind(m, base);
-    if (itemExtra !== undefined) entry.support = [item(m, entry, itemExtra)];
+    const entry: Record<string, any> = accept([loc], { supportRequired: true, ...extra });
+    if (itemExtra !== undefined) {
+      const { fingerprint, ...rest } = itemExtra;
+      entry.support = [item(m, entry, { ...rest, fingerprint: null })];
+      entry.binding = G.bindingFor(m, 'a>b', entry);
+      entry.support[0].fingerprint =
+        'fingerprint' in itemExtra ? fingerprint : G.supportFingerprint(m, 'a>b', entry, entry.support[0]);
+    } else entry.binding = G.bindingFor(m, 'a>b', entry);
     return entry;
   };
   // heading is outside both endpoints' citations: it cannot be a primary locator
@@ -477,4 +489,242 @@ test('supplementary support is a separate, bound role that defers acceptance whe
   required(m, opt2, /not accepted/, 'optional but unaccepted');
   m = fresh();
   assert.equal(G.applyEdgeSources(m, { 'a>b': build(m, { supportRequired: false }) }).promoted.length, 1);
+});
+
+// ---------- checkpoint 19: TL-R16 residual binding gaps ----------
+const HEAD30 = c('D&C 30 heading', 'dc-testament/dc/30');
+const LOC30 = c('D&C 30:5–7', 'dc-testament/dc/30');
+const supportItem = (id: string, claim: string) => ({
+  id,
+  role: 'support',
+  state: 'accepted',
+  purpose: 'full names of the persons addressed',
+  claim,
+  src: [HEAD30],
+});
+// a synthetic accepted row with two required support items, bound and fingerprinted as a reviewer would
+function boundWithSupport(m: Model) {
+  const entry: Record<string, any> = accept([LOC30], {
+    supportRequired: true,
+    support: [supportItem('s1', 'the heading names Peter Whitmer Jr.'), supportItem('s2', 'and David Whitmer')],
+  });
+  entry.binding = G.bindingFor(m, 'a>b', entry);
+  entry.support = entry.support.map((it: Record<string, unknown>) => ({
+    ...it,
+    fingerprint: G.supportFingerprint(m, 'a>b', entry, it),
+  }));
+  return entry;
+}
+const fresh30 = () => pair([LOC30], [LOC30]);
+// promote first, then apply the mutated row: it must defer AND clear the earlier promotion
+function mutatedRejects(mutate: (e: Record<string, any>, m: Model) => Record<string, any>, why: RegExp, name: string) {
+  const m = fresh30();
+  const ok = boundWithSupport(m);
+  assert.deepEqual([...G.applyEdgeSources(m, { 'a>b': ok }).promoted], ['a>b'], name + ' (positive control)');
+  assert.equal(m.edges[0].src.length, 1, name);
+  const bad = mutate(structuredClone(ok), m);
+  const out = G.applyEdgeSources(m, { 'a>b': bad });
+  assert.equal(out.promoted.length, 0, name);
+  assert.deepEqual([...out.revoked], ['a>b'], name);
+  assert.match(out.rejected[0].why, why, name);
+  assert.equal(m.edges[0].src.length, 0, name);
+  assert.equal(m.edges[0].locator, null, name);
+  assert.equal(m.edges[0].grounding, undefined, name);
+}
+const STALE = /binding is stale/;
+
+test('TL-R16 gap 1: the support requirement and the exact required-item manifest are bound', () => {
+  // positive control: both items, as approved
+  const m = fresh30();
+  const ok = boundWithSupport(m);
+  assert.deepEqual([...G.applyEdgeSources(m, { 'a>b': ok }).promoted], ['a>b']);
+  assert.equal(m.edges[0].grounding.support.length, 2);
+  // idempotent
+  assert.equal(G.applyEdgeSources(m, { 'a>b': ok }).revoked.length, 0);
+
+  mutatedRejects(
+    e => {
+      e.supportRequired = false;
+      delete e.support;
+      return e;
+    },
+    STALE,
+    'requirement weakened to false and support removed',
+  );
+  mutatedRejects(
+    e => {
+      delete e.supportRequired;
+      delete e.support;
+      return e;
+    },
+    /supportRequired is not stated/,
+    'requirement deleted and support removed',
+  );
+  mutatedRejects(
+    e => {
+      delete e.supportRequired;
+      return e;
+    },
+    /supportRequired is not stated/,
+    'requirement deleted, support kept',
+  );
+  mutatedRejects(
+    e => {
+      e.support = e.support.slice(0, 1);
+      return e;
+    },
+    STALE,
+    'one of two required items removed',
+  );
+  mutatedRejects(
+    e => {
+      e.support = [];
+      return e;
+    },
+    STALE,
+    'all required items removed',
+  );
+  // substitution: a different item, freshly fingerprinted against the mutated row, still cannot pass the row binding
+  mutatedRejects(
+    (e, m) => {
+      const sub = supportItem('s3', 'a different supporting claim');
+      e.support[1] = {
+        ...sub,
+        fingerprint: G.supportFingerprint(m, 'a>b', { ...e, support: [e.support[0], sub] }, sub),
+      };
+      return e;
+    },
+    STALE,
+    'required item substituted',
+  );
+  mutatedRejects(
+    e => {
+      e.support[1].claim = 'and someone';
+      return e;
+    },
+    STALE,
+    'required item claim weakened',
+  );
+  mutatedRejects(
+    e => {
+      e.support[0].src = [{ ...HEAD30, u: HEAD30.u.replace('lang=eng', 'lang=spa') }];
+      return e;
+    },
+    STALE,
+    'support citation language changed',
+  );
+  // a row approved with optional support binds that choice too: it cannot be silently upgraded or emptied
+  const m2 = fresh30();
+  const opt: Record<string, any> = accept([LOC30]);
+  opt.binding = G.bindingFor(m2, 'a>b', opt);
+  assert.equal(G.applyEdgeSources(m2, { 'a>b': opt }).promoted.length, 1);
+  assert.match(G.applyEdgeSources(m2, { 'a>b': { ...opt, supportRequired: true } }).rejected[0].why, /stale|missing/);
+});
+
+test('TL-R16 gap 2: reviewed source URL, label and language are bound; unknown provenance defers', () => {
+  const lang = (l: string) => (x: Loc) => ({ ...x, u: x.u.replace('lang=eng', 'lang=' + l) });
+  mutatedRejects(
+    e => {
+      e.src = e.src.map(lang('spa'));
+      return e;
+    },
+    STALE,
+    'primary locator ?lang=eng → ?lang=spa',
+  );
+  mutatedRejects(
+    e => {
+      e.src = [{ ...e.src[0], t: 'D&C 30:5-7' }];
+      return e;
+    },
+    STALE,
+    'primary label respelled',
+  );
+  const unknown: [string, (x: Loc) => Loc][] = [
+    ['no query', x => ({ ...x, u: x.u.split('?')[0] })],
+    ['extra parameter', x => ({ ...x, u: x.u + '&id=p5' })],
+    ['two languages', x => ({ ...x, u: x.u + '&lang=spa' })],
+    ['not a language code', x => ({ ...x, u: x.u.replace('lang=eng', 'lang=english') })],
+  ];
+  for (const [name, f] of unknown) {
+    mutatedRejects(
+      e => {
+        e.src = e.src.map(f);
+        return e;
+      },
+      /unknown provenance/,
+      'primary ' + name,
+    );
+    mutatedRejects(
+      e => {
+        e.support[0].src = e.support[0].src.map(f);
+        return e;
+      },
+      /unknown provenance/,
+      'support ' + name,
+    );
+  }
+  // an unknown-provenance row cannot be made acceptable by re-binding it
+  const m = fresh30();
+  const e: Record<string, any> = accept([{ ...LOC30, u: LOC30.u.split('?')[0] }]);
+  e.binding = G.bindingFor(m, 'a>b', e);
+  assert.match(G.applyEdgeSources(m, { 'a>b': e }).rejected[0].why, /unknown provenance/);
+  // independent evidence carries provenance too
+  const mos = [c('Mosiah 14:1–12', 'bofm/mosiah/14')];
+  const isa = [c('Isaiah 53:1–12', 'ot/isa/53')];
+  const mi = pair(mos, isa);
+  const ind: Record<string, any> = accept([], {
+    mode: 'independent',
+    scope: 'paired passages, not one event',
+    evidence: { from: mos, to: isa },
+  });
+  ind.binding = G.bindingFor(mi, 'a>b', ind);
+  assert.equal(G.applyEdgeSources(mi, { 'a>b': ind }).promoted.length, 1);
+  const spa = { ...ind, evidence: { from: mos, to: isa.map(lang('spa')) } };
+  const out = G.applyEdgeSources(mi, { 'a>b': spa });
+  assert.deepEqual([...out.revoked], ['a>b']);
+  assert.match(out.rejected[0].why, STALE);
+  assert.equal(G.provenanceOf(LOC30).lang, 'eng');
+  assert.equal(G.provenanceOf({ t: 'x', u: LOC30.u.split('?')[0] }), null);
+});
+
+test('TL-R16 gap 3: endpoint explanatory content is bound under stable ids', () => {
+  const withContent = () => {
+    const m = fresh30();
+    Object.assign(m.records[0], {
+      text: 'Revelation to the Whitmer brothers.',
+      claim: ['text'],
+      notes: [{ k: 'text', t: 'Addressed to Peter Whitmer Jr.', loc: 'D&C 30:5' }],
+      notSame: [{ id: 'x', t: 'Not David Whitmer’s later role.' }],
+    });
+    return m;
+  };
+  const run = (change: (r: Record<string, any>) => void, name: string) => {
+    const m = withContent();
+    const ok = boundWithSupport(m);
+    assert.deepEqual([...G.applyEdgeSources(m, { 'a>b': ok }).promoted], ['a>b'], name + ' (positive control)');
+    change(m.records[0] as Record<string, any>);
+    const out = G.applyEdgeSources(m, { 'a>b': ok });
+    assert.equal(out.promoted.length, 0, name);
+    assert.deepEqual([...out.revoked], ['a>b'], name);
+    assert.match(out.rejected[0].why, STALE, name);
+    assert.equal(m.edges[0].src.length, 0, name);
+    // ids, label and citations were not touched
+    assert.equal(m.records[0].id, 'a', name);
+    assert.equal(m.records[0].label, 'A', name);
+  };
+  run(r => (r.text = 'Revelation to the Whitmer family.'), 'text');
+  run(r => (r.text = null), 'text removed');
+  run(r => (r.notes[0].t = 'Addressed to David Whitmer'), 'scoped note text');
+  run(r => (r.notes[0].loc = 'D&C 30:1'), 'scoped note locator');
+  run(r => (r.notes[0].k = 'tradition'), 'scoped note kind');
+  run(r => r.notes.push({ k: 'text', t: 'extra', loc: null }), 'note added');
+  run(r => (r.notSame[0].t = 'Same as David Whitmer’s later role.'), 'identity guard text');
+  run(r => (r.notSame = []), 'identity guard removed');
+  run(r => (r.claim = ['tradition']), 'claim kind');
+  // the other endpoint is bound as well
+  const m = withContent();
+  const ok = boundWithSupport(m);
+  G.applyEdgeSources(m, { 'a>b': ok });
+  (m.records[1] as Record<string, any>).text = 'new';
+  assert.match(G.applyEdgeSources(m, { 'a>b': ok }).rejected[0].why, STALE);
 });
