@@ -68,9 +68,10 @@
     context: 'Context',
   };
 
-  /* env: {el, pack, axis, ok(gate), fmt(year, approx), onChange(), colorFor(layerId)} */
+  /* env: {el, pack, axis, ok(gate), fmt(year, approx), onChange(), colorFor(layerId)}; `model` (optional) is an
+     already-adapted model, used only by probes until another adapter is wired to a host */
   function createView(env) {
-    const model = TLM.adaptTree(env.pack);
+    const model = env.model || TLM.adaptTree(env.pack);
     if (!model.records.length || !env.el) return null;
     const el = env.el;
     const axis = env.axis || {};
@@ -84,6 +85,9 @@
     const defaultOrder = model.lanes.map(l => l.id);
     let order = defaultOrder.slice();
     const collapsed = new Set();
+    /* folded undated panels the user opened, and the undated-search query; both survive rerenders */
+    const unfolded = new Set();
+    let uq = '';
     const fmt = (y, ap) => (env.fmt ? env.fmt(y, ap) : (ap ? 'c. ' : '') + TLM.yearLabel(y));
     const whenText = r =>
       r.whenText ||
@@ -483,10 +487,42 @@
         '<section class="tl-und"><h3>Undated or in source order · ' +
         V.undated.length +
         '</h3><p class="tl-why">No calendar year in the source; kept off the axis, in the order the pack gives them.</p>';
-      arranged().forEach(l => {
-        const rs = V.undated.filter(r => r.lane === l.id);
-        if (!rs.length) return;
-        if (mode === 'chart' && collapsed.has(l.id))
+      const lanes = arranged();
+      const groups = new Map(
+        TLM.foldUndated(
+          V,
+          lanes.map(l => l.id),
+          { opened: unfolded, sel },
+        ).map(g => [g.lane, g]),
+      );
+      const anyFold = mode === 'chart' && [...groups.values()].some(g => g.folded && !collapsed.has(g.lane));
+      if (anyFold)
+        h +=
+          '<div class="tl-usearch"><label>Find in undated records <input type="search" data-tl-uq="" value="' +
+          ESC(uq) +
+          '" autocomplete="off" spellcheck="false"></label><div class="tl-uhits" aria-live="polite">' +
+          undatedHits() +
+          '</div></div>';
+      lanes.forEach(l => {
+        const g = groups.get(l.id);
+        if (!g) return;
+        const rs = g.recs;
+        if (mode === 'chart' && g.folded && !collapsed.has(l.id))
+          h +=
+            '<details class="tl-fold" data-fold="' +
+            ESC(l.id) +
+            '"' +
+            (g.open ? ' open' : '') +
+            '><summary data-fold-s="' +
+            ESC(l.id) +
+            '"><b>' +
+            ESC(l.title) +
+            '</b> · ' +
+            g.count +
+            ' undated, in source order</summary><ol>' +
+            rs.map(item).join('') +
+            '</ol></details>';
+        else if (mode === 'chart' && collapsed.has(l.id))
           h +=
             '<h4>' +
             ESC(l.title) +
@@ -498,6 +534,37 @@
         else h += '<h4>' + ESC(l.title) + '</h4><ol>' + rs.map(item).join('') + '</ol>';
       });
       return h + '</section>';
+    }
+    /* matches for the undated search, across every panel whether open or not; each opens its record in place */
+    const HIT_MAX = 40;
+    function undatedHits() {
+      if (!uq.trim()) return '';
+      const hits = TLM.searchUndated(V, uq);
+      const name = id => (model.lanes.find(l => l.id === id) || { title: '' }).title;
+      return (
+        '<p class="tl-why">' +
+        hits.length +
+        (hits.length === 1 ? ' match' : ' matches') +
+        (hits.length > HIT_MAX ? ', first ' + HIT_MAX + ' shown' : '') +
+        '</p>' +
+        (hits.length
+          ? '<ol>' +
+            hits
+              .slice(0, HIT_MAX)
+              .map(
+                r =>
+                  '<li><button class="tl-it" data-uhit="' +
+                  ESC(r.id) +
+                  '"><b>' +
+                  ESC(r.label) +
+                  '</b> <span>' +
+                  ESC(name(r.lane)) +
+                  '</span></button></li>',
+              )
+              .join('') +
+            '</ol>'
+          : '')
+      );
     }
     function list() {
       const dated = V.dated
@@ -673,7 +740,7 @@
     function focusKey() {
       const a = document.activeElement;
       if (!a || !el.contains(a) || a === el) return null;
-      for (const k of ['data-id', 'data-mode', 'data-z', 'data-tl', 'data-lanes', 'data-tl-ref']) {
+      for (const k of ['data-id', 'data-mode', 'data-z', 'data-tl', 'data-lanes', 'data-tl-ref', 'data-tl-uq', 'data-fold-s']) {
         if (a.hasAttribute(k)) return '[' + k + '="' + CSS.escape(a.getAttribute(k)) + '"]';
       }
       if (a.hasAttribute('data-lane-mv'))
@@ -880,10 +947,39 @@
         if (env.openRef) env.openRef(id);
         return;
       }
+      const hit = e.target.closest('[data-uhit]');
+      if (hit) {
+        /* reveal: select the record, which opens its panel, and move focus to the row inside it */
+        const id = hit.dataset.uhit;
+        if (sel !== id) pick(id);
+        const t = scrollEl.querySelector('.tl-fold [data-id="' + CSS.escape(id) + '"]');
+        if (t) {
+          t.focus({ preventScroll: true });
+          t.scrollIntoView({ block: 'center' });
+        }
+        return;
+      }
       const it = e.target.closest('[data-id]');
       if (it) pick(it.dataset.id);
       else if (e.target === el) close();
     });
+    el.addEventListener('input', e => {
+      if (!e.target.matches || !e.target.matches('[data-tl-uq]')) return;
+      uq = e.target.value;
+      const box = el.querySelector('.tl-uhits');
+      if (box) box.innerHTML = undatedHits();
+    });
+    /* native disclosure: remember which panels the user opened (toggle does not bubble, so listen in capture) */
+    el.addEventListener(
+      'toggle',
+      e => {
+        const d = e.target;
+        if (!d.matches || !d.matches('details[data-fold]')) return;
+        if (d.open) unfolded.add(d.dataset.fold);
+        else unfolded.delete(d.dataset.fold);
+      },
+      true,
+    );
     el.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         e.stopPropagation();

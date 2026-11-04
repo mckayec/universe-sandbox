@@ -201,3 +201,63 @@ test('chapter gate through the adapter: books-only cards/sites carry first and a
   assert.ok(TL.visible(m, host(5, null)).records.some((r: any) => r.id === card.id));
   assert.ok(!TL.visible(m, host(3, 50)).records.some((r: any) => r.id === card.id));
 });
+
+test('wiring prerequisites: layerless overview cards sit on a "Standard Works overview" lane', () => {
+  const p = JSON.parse(JSON.stringify(pack));
+  p.codex[0].list.push({ key: 'OV', name: 'About these works', desc: 'overview', src: [] });
+  const model = TL.adapterFor(p)(p);
+  const rec = model.records.find((r: any) => r.label === 'About these works');
+  assert.ok(rec);
+  const lane = model.lanes.find((l: any) => l.id === rec.lane);
+  assert.equal(lane.title, 'Standard Works overview');
+  assert.ok(!model.lanes.some((l: any) => l.title === 'Other'));
+});
+
+test('folded undated panels keep every gated record in source order; search reaches closed panels', () => {
+  const p = JSON.parse(JSON.stringify(pack));
+  for (let i = 0; i < 20; i++)
+    p.codex[0].list.push({ key: 'F' + i, name: 'Fold ' + i, books: [i < 15 ? 1 : 4], layers: ['ot'], desc: 'x' });
+  const model = TL.adapterFor(p)(p);
+  const all = TL.visible(model, () => true);
+  const ids = model.lanes.map((l: any) => l.id);
+  const g = TL.foldUndated(all, ids, { max: 12 });
+  const ot = g.find((x: any) => x.lane === 'work-ot');
+  assert.ok(ot.folded);
+  assert.equal(ot.open, false);
+  assert.equal(ot.count, all.undated.filter((r: any) => r.lane === 'work-ot').length);
+  const ord = JSON.parse(JSON.stringify(ot.recs.map((r: any) => r.order)));
+  assert.deepEqual(
+    ord,
+    [...ord].sort((a: number, b: number) => a - b),
+  );
+  // a lane at or under the threshold is never folded; empty lanes are omitted
+  assert.ok(g.filter((x: any) => x.lane !== 'work-ot').every((x: any) => !x.folded && x.open && x.count > 0));
+  // opened by the user, or holding the selected / deep-linked record
+  assert.ok(
+    TL.foldUndated(all, ids, { max: 12, opened: new Set(['work-ot']) }).find((x: any) => x.lane === 'work-ot').open,
+  );
+  const f19 = model.records.find((r: any) => r.label === 'Fold 19').id;
+  assert.ok(TL.foldUndated(all, ids, { max: 12, sel: f19 }).find((x: any) => x.lane === 'work-ot').open);
+  // search across a closed panel, undated only, in source order
+  const hits = TL.searchUndated(all, 'fold 1');
+  assert.deepEqual(JSON.parse(JSON.stringify(hits.map((r: any) => r.label))), [
+    'Fold 1',
+    'Fold 10',
+    'Fold 11',
+    'Fold 12',
+    'Fold 13',
+    'Fold 14',
+    'Fold 15',
+    'Fold 16',
+    'Fold 17',
+    'Fold 18',
+    'Fold 19',
+  ]);
+  assert.ok(!TL.searchUndated(all, 'dated').some((r: any) => r.when));
+  // gate-filtered: a book-1 reader sees only the book-1 cards, counted and searched as such
+  const b1 = TL.visible(model, (gt: any) => !gt || TL.firstBook(gt) == null || TL.firstBook(gt) <= 1);
+  const ot1 = TL.foldUndated(b1, ids, { max: 12 }).find((x: any) => x.lane === 'work-ot');
+  assert.equal(ot1.recs.filter((r: any) => r.label.startsWith('Fold ')).length, 15);
+  assert.ok(!TL.searchUndated(b1, 'fold 19').length);
+  assert.equal(TL.FOLD_MAX, 12);
+});

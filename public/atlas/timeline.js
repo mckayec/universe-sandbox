@@ -319,7 +319,8 @@
     const workLane = layers => {
       const l = arr(layers)[0] || 'other';
       const id = 'work-' + l;
-      addLane(id, layerName[l] || 'Other', 'work', { layers: [l] });
+      /* cards with no layer are the pack's own overview pages, not another work */
+      addLane(id, layerName[l] || 'Standard Works overview', 'work', { layers: [l] });
       return id;
     };
     let order = 0;
@@ -555,6 +556,28 @@
     return view.records.filter(r => r.label.toLowerCase().includes(s) || (r.whenText || '').toLowerCase().includes(s));
   }
 
+  /* ---------- folded undated panels ----------
+     A lane with more than `max` undated records is shown as a collapsed per-work panel in the chart (the list
+     arrangement keeps every row, TL-R02). Every gated record stays in the panel, in pack order; the count is the
+     gated count; a panel opens when the user opened it or when it holds the selected (or deep-linked) record.
+     Search runs over the gated view, so entries inside a closed panel are still found. */
+  const FOLD_MAX = 12;
+  function foldUndated(view, laneIds, opts) {
+    const o = opts || {};
+    const max = o.max == null ? FOLD_MAX : o.max;
+    const opened = o.opened || new Set();
+    return laneIds
+      .map(id => {
+        const recs = view.undated.filter(r => r.lane === id);
+        const folded = recs.length > max;
+        const holdsSel = !!o.sel && recs.some(r => r.id === o.sel);
+        return { lane: id, recs, count: recs.length, folded, open: !folded || opened.has(id) || holdsSel };
+      })
+      .filter(g => g.count);
+  }
+  /* search restricted to undated records (the folded panels), in pack order */
+  const searchUndated = (view, q) => search(view, q).filter(r => !r.when).sort((a, b) => a.order - b.order);
+
   /* ---------- extent and coverage ---------- */
   function extent(view, axis) {
     let lo = Infinity;
@@ -745,6 +768,9 @@
     visible,
     revalidate,
     search,
+    searchUndated,
+    foldUndated,
+    FOLD_MAX,
     extent,
     coverage,
     bracketColumns,
