@@ -1693,9 +1693,16 @@ function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<
     (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"")+
     (flt?'<p class="cx-hid">'+flt+' entr'+(flt===1?"y is":"ies are")+' hidden by the layer or year filter.</p>':"");
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
-$("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
+/* RC64-O1: on wider screens, if the section buttons wrap past two rows, switch to the compact chooser. Measured with
+   the buttons shown, so it adapts to label length, section count and window size; phones always use the chooser. */
+function cxFit(){const panel=$("#codex .panel"),tabs=$("#cxTabs");if(!panel||$("#codex").hidden)return;
+  panel.classList.remove("cx-compact");if(tabs.offsetParent===null)return;
+  const rows=new Set([...tabs.querySelectorAll(".btn")].map(b=>b.offsetTop)).size;
+  if(rows>2)panel.classList.add("cx-compact");}
+addEventListener("resize",()=>{if(!$("#codex").hidden)cxFit();});
+$("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();cxFit();}});
 $("#cxPick").addEventListener("change",e=>{cxTab=e.target.value;renderCodex();$("#cxBody").scrollTop=0;});
-function openCodex(){cancelEvFocus();renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
+function openCodex(){cancelEvFocus();renderCodex();$("#codex").hidden=false;cxFit();$("#cxClose").focus();}
 function closeCodex(){if($("#codex").hidden)return;cancelEvFocus();$("#codex").hidden=true;$("#cxBtn").focus();}
 $("#cxBtn").addEventListener("click",openCodex);
 $("#cxClose").addEventListener("click",closeCodex);

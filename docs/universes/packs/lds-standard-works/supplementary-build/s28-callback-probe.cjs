@@ -26,6 +26,8 @@ function scenario(name, mutate, want) {
     EV_BY: { e: { id: 'e' }, f: { id: 'f' } },
     evReach: () => reach,
     renderCodex: () => {},
+    // RC64-O1 header fit is layout-only (no focus or callback effect); stubbed like renderCodex
+    cxFit: () => {},
     $: s => (s === '#codex' ? modal : { focus: () => (focus = s) }),
     // the real openEvent starts with cancelEvFocus(); mirror that so competing navigations are modelled faithfully
     openEvent: id => {

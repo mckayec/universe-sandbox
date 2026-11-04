@@ -2964,3 +2964,27 @@ counterpart of the acknowledged tab crowding; no code changed in this commit.
 
 Still open: RC64-O1, wider vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone
 evidence. Not merged.
+
+## Checkpoint 65: RC64-O1 Reference header fix
+
+Builder observation RC64-O1 (checkpoint 64) is fixed with the bounded change proposed there. Engine only; no pack,
+generator or data bytes change.
+
+- `public/atlas/engine.js`: new `cxFit()` measures the section buttons while the dialog is open (on open, tab change and
+  window resize). If they wrap past two rows on a screen wider than the phone breakpoint, the panel gets `cx-compact`
+  and the same section chooser phones already use replaces the buttons. Packs whose buttons fit in one or two rows are
+  unchanged (Dune keeps its buttons at 1440x900). Phones are unchanged (the 600 px media query still applies).
+- `public/atlas/engine.css`: `cx-compact` rules mirroring the phone chooser, and `scroll-margin-top:12px` on `.cx-item`
+  so a card scrolled to the top of the list (as See-also links do) keeps its title in view.
+- `supplementary-build/s28-callback-probe.cjs`: stubs `cxFit` alongside `renderCodex` (it is layout-only and has no
+  focus or callback effect); the probe's cases and expectations are unchanged.
+
+Evidence (`supplementary-build/s65-reference-fit.mjs`, log `s65-reference-fit.txt`): with the LDS pack the header is
+108 px at 3840x2160, 1440x900 and 1280x800 (was ~330 px at 1440x900) and 104 px on a 390x844 phone; no sideways scroll;
+the bom-bible section still lists 124 cards via the chooser; a card scrolled to `block:start` keeps its title at least
+8 px below the list top on every viewport; a resize re-measures. Captures: `shots/s65-reference-{3840x2160,1440x900,
+390x844}.jpg` (the 3840x2160 capture is downscaled to 1920x1080 to stay under 500 KB; it is a layout capture, not the
+finished 4K evidence, which stays open). `pnpm check` 171/171, `pnpm test:pages` and `pnpm test:browser` pass.
+
+Still open: wider vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence.
+Not merged.
