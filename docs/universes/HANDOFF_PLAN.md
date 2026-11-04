@@ -1210,3 +1210,80 @@ Reviewed exact PR45 **5c66abbe479efc28fafb0f4862876b378a4d6e01**, runtime **491b
 Return compact/wide tests for repeated activation of the same search result, manually closed panels, collapsed lanes, Tab/Shift+Tab traversal, Enter/Space, gate changes, repeated close/reopen and chart/list interruptions. Check query, selected record, actual focus, source order, gate-filtered counts and all List rows. Preserve accepted drag cancellation, chapter gates and earlier closures. Independent browser evidence uses fallback Chromium154, not matched-browser or physical-device acceptance; no blocked download was retried.
 
 The adapter remains **isolated and unwired**. Preserve separate host wiring/chapter-selector work, per-relationship citation review without blanket card-src promotion, record/travel provenance, chronology, device/AT and release gates. Claude retains implementation ownership. Full review artifacts stay local. No remote review-branch publication, PR metadata refresh, formal approval, merge or deployment follows from this handoff.
+
+
+## 2026-11-04 — Timeline checkpoint 15 grounding guard corrections and source-review contract
+
+Reviewed exact PR45 **85ccb8eac2df8e07284e60a62933e449a39f28fc**. The isolated 335-row ledger reproduces byte-for-byte, with zero real-edge promotions; **140 tests**, build and **122 distribution checks** pass. [Exact-head CI 41782364774](https://github.com/mckayec/universe-sandbox/actions/runs/41782364774) passed with deployment skipped. These successes do not clear the newly reproduced parser/containment defects. **TL-R14, Medium:** invalid/mismatched source identities or locators can become whole-chapter evidence. **TL-R15, Medium:** heading/verse components and complete intersections are handled incorrectly. Eight false acceptances and two false rejections are specified below.
+
+Claude: preserve the active **2026-11-04T05:47:09Z** run and existing source work. Complete the already-prioritized **TL-R12/TL-R13** interaction corrections, then group **TL-R14/TL-R15** and their regression cases in one source-guard unit. Keep the adapter unwired and real promotions at zero pending accepted per-row source decisions. Build a versioned review sidecar with exact URLs/locators, endpoint and claim/type/direction bindings, source version, rationale and accepted/rejected/deferred state; do not equate shared citation with semantic approval. The 73 shared-verse rows are a useful initial worklist, not approvals or the only potentially eligible class. Cross-text quotation/parallel/identity claims need precise paired evidence and scope caveats. After the mechanism is corrected, run the bounded 12-row pilot below rather than bulk-reading or promoting all 335 relationships. Evidence acceptance remains separate from actual rendered connectors between folded undated rows.
+
+Keep **TL-R12/TL-R13 prioritized and OPEN**, and **real promotions at zero**. The following fixtures reproduce TL-R14/TL-R15 at `85ccb8e`.
+
+For these fixtures, define:
+
+```js
+const U = 'https://www.churchofjesuschrist.org/study/scriptures/';
+const c = (t, path = 'dc-testament/dc/52') =>
+  ({ t, u: U + path + '?lang=eng' });
+```
+
+Create records `a` and `b` with the endpoint citations below, plus an unsourced context edge `a>b`. Call:
+
+```js
+applyEdgeSources(model, {
+  'a>b': { src: [proposedLocator] }
+});
+```
+
+**Eight false acceptances — all must reject:**
+
+| # | Endpoint citations | Proposed locator | Current error |
+|---|---|---|---|
+| 1 | A: `c('D&C 51:1')`; B: `c('D&C 52:37')` | `c('D&C 52:37')` | A’s chapter mismatch becomes whole-chapter52 evidence. |
+| 2 | Both: `c('D&C 52')` | `c('D&C 51:1')` | Mismatched proposed chapter is accepted against chapter52. |
+| 3 | Both: `c('D&C 52:37')` | `{t:'D&C 52:37', u:'https://unrelated.invalid/study/scriptures/dc-testament/dc/52?lang=eng'}` | Arbitrary origin passes by path resemblance. |
+| 4 | Both: `c('D&C 52:37')` | `c('Genesis 52:37')` | Label book and URL book disagree but pass. |
+| 5 | Both: `c('D&C 52 heading')` | `c('D&C 52:999')` | Heading-only evidence accepts a verse. |
+| 6 | Both: `c('D&C 52:37')` | `c('D&C 52 heading, 37')` | Proposal adds an uncited heading. |
+| 7 | Both: `c('D&C 52:36–37')` | `c('D&C 52:36–37 and 40')` | Parser drops “and 40”; stored citation still asserts it. |
+| 8 | A: `c('D&C 52:38–37')`; B: `c('D&C 52:1')` | `c('D&C 52:1')` | Descending range becomes whole-chapter evidence. |
+
+**Two false rejections — mechanically valid overlap must survive, without implying semantic approval:**
+
+1. **Secondary overlap discarded**
+   - A: `c('D&C 52:37')`, `c('D&C 8','dc-testament/dc/8')`
+   - B: `c('D&C 52:37')`, `c('D&C 8:1–4','dc-testament/dc/8')`
+   - Proposed: `c('D&C 8:1','dc-testament/dc/8')`
+   - Current result: rejected because finding the shared52:37 verse discards the valid chapter8 intersection.
+
+2. **Mixed citation loses its heading**
+   - A: `c('D&C 52 heading, 37')`
+   - B: `c('D&C 52 heading')`
+   - Proposed: `c('D&C 52 heading')`
+   - Current result: rejected despite both explicitly citing the heading.
+   - The same mechanism affects real ledger row `x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith`, whose endpoints both cite D&C11 heading.
+
+**Required parser/intersection contract:**
+
+- Distinguish valid explicit whole-chapter citations from invalid, ambiguous or unsupported input. Never convert parse failure into whole-chapter scope.
+- Fully consume supported syntax. Reject mismatched identities, unsupported residue, reversed/invalid ranges and silent truncation.
+- Resolve canonical source identity using approved origin/path/document/edition rules. Validate label and structured book/chapter identity. Front matter and dictionary entries need document/section identities—not invented chapter0.
+- Represent headings, verse intervals and document sections separately. Mixed citations are unions of components.
+- Preserve the **complete** intersection across all citation pairs. A summary classification must not discard intersections.
+- Every proposed component must lie within the matching shared component. Headings cannot contain verses, nor verses headings.
+- Passing containment establishes **mechanical eligibility only**. Promotion additionally requires an explicit, current per-row semantic acceptance tied to endpoints, claim/type/direction, exact sources and rationale.
+- Support a separately reviewed independent-evidence mode for cross-text relationships; do not force these through shared-endpoint containment.
+- Rebuild from a fresh model or reconcile revoked/rejected approvals so stale sources cannot survive silently.
+
+**Suggested 12-row pilot, after mechanism corrections:**
+
+- Six shared-verse rows covering office/charge, companion pairs, broad-to-narrow ranges and the two intertext comparisons.
+- Two shared-chapter rows: one heading, one front-matter case.
+- Two cross-text quotations with precise paired ranges.
+- One cross-text same-entity relation with identity/scope caveats.
+- One same-chapter row after corrected overlap classification.
+
+Record accepted/rejected/deferred decisions and exact access blockers. No pilot source readings or approvals were performed in this review.
+
+Preserve the existing source/citation, host chapter-selector, chronology/genealogy/succession/travel, CH13/X08, physical-device/AT and release gates. Prior closures remain bounded; TL-R12/TL-R13 are not closed by this unchanged-UI checkpoint. Full review artifacts remain local. No remote review-branch publication, approval, merge or deployment.
