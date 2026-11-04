@@ -1296,3 +1296,99 @@ Reviewed exact PR45 **c494aaa79e54dcc062df5a4c5ccab9d8bf49d864**. **TL-R12 close
 **TL-R13 retains one reproduced residual:** select a Book of Mormon record, exclude that work and refresh, then restore the gate and refresh again. The first refresh recovers focus to Overview; the second drops focus to body at both widths. The renderer checks dialog containment after removing the old heading. Capture whether the dialog owned focus before drawing/replacing DOM, then recover to an appropriate visible target or Close. Return this two-refresh sequence with subsequent Tab/Shift+Tab checks at compact/wide sizes, preserving the already-passing reveal and roving behavior. Do not reopen TL-R12 or spend a separate unit only restating evidence.
 
 **Next builder unit remains the grouped TL-R14/TL-R15 grounding corrections and regression fixtures above; include this small TL-R13 focus fix in that same work window.** Keep real promotions at zero until per-row semantic acceptance, and the adapter unwired. The animation-frame pause preserves tested synchronous timeline interactions but suppresses host scheduling; it does not establish live-globe performance or host integration. Both screenshots were inspected; subtle selection styling adds no blocker. Preserve current ownership, locks and all source/chronology, chapter-selector, browser/device/AT and release gates. Full review artifacts remain local. No approval, merge, deployment or review-branch publication.
+
+
+## 2026-11-04 — Twelve-row relationship-source pilot: recommendations for a proposed sidecar
+
+Preserve the active **2026-11-04T07:47:32Z** TL-R14/TL-R15 run and the grouped TL-R13 focus residual. The primary-source pilot is now prepared in parallel; do not repeat its discovery or interrupt those code corrections. After the mechanism is accepted, use the exact bindings below to prepare the proposed versioned sidecar and return it for bounded reconciliation. This handoff does not apply any row approval or authorize real-edge promotion.
+
+
+### Status, provenance and required gates
+
+The bounded primary-source pilot recommends **11 narrowly scoped acceptances and one deferment**. These are recommendations, **not applied semantic approvals**. No real edge was promoted, no model or pack was changed, and no connector-rendering acceptance follows.
+
+The exact ledger is [TL15 see-grounding.csv](https://github.com/mckayec/universe-sandbox/blob/85ccb8eac2df8e07284e60a62933e449a39f28fc/docs/reviews/synchronoptic-timelines/tl15/see-grounding.csv), PR45 commit **85ccb8eac2df8e07284e60a62933e449a39f28fc**, Git blob **b4b9f10630eee5ae1ec439e8caaece6819ba299d**. Endpoint cards come from [the Standard Works pack](https://github.com/mckayec/universe-sandbox/blob/4ea873875f73746a754bd537deaaebb1a58d586b/public/atlas/packs/lds-standard-works.js), PR33 commit **4ea873875f73746a754bd537deaaebb1a58d586b**, Git blob **6918d1bb10697cc026da6a007247d01519f533ca**. These blobs were verified. The sample contains six baseline shared-verse rows, two shared-chapter rows, two cross-text quotations, one cross-text same-entity row and one baseline same-chapter row. Classifications are discovery metadata, never approvals.
+
+All source readings use the **current official Church English online scriptures accessed 2026-11-04**. The retrieved pages expose no immutable edition identifier. Do not describe this as an original-manuscript, first-edition or historical-edition collation. Headings are identified editorial apparatus; front matter is a document, not a fabricated chapter. A durable sidecar must retain the language, version/access limitation, precise component and evidence provenance.
+
+**Before any promotion, TL-R14/TL-R15 corrections must be accepted, and current code/pack bindings must be reconciled with these pinned records.** Prepare the proposed versioned sidecar with stable edge ID, exact endpoint IDs and metadata, existing type, label, direction, bounded claim, sources, rationale and proposed state. Re-review changed bindings; do not silently carry decisions across revisions. Semantic approval, mechanism validity and rendered connectors remain separate gates. Preserve zero promotions until explicit current per-row acceptance and the mechanism contract are satisfied.
+
+### Exact proposed row bindings
+
+In every ID below, `x:c:A>c:B` specifies the existing directed edge **A → B**. Blank labels remain blank. “Accept” means a bounded pilot recommendation only, not permission to apply it.
+
+**1. Conditional bishopric assignment — accept.**
+
+`x:c:DCM-dcp-shadrach-roundy>c:DCM-dre124k-bishopric-priests`
+
+Existing type `context`; label **“bishopric, if he will receive it”**. Direction: Shadrach Roundy → The bishopric and the priests. [D&C 124:141](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng) explicitly names Roundy with the bishopric group and qualifies his participation. Bind only this conditional assignment. Do not infer acceptance, installation, an accomplished tenure or succession. Shared verse 141 supports the claim, not every assertion in the destination's 141–142 span.
+
+**2. Reassigned charge — accept.**
+
+`x:c:DCM-dcp-simonds-ryder>c:DCM-dcp-heman-basset`
+
+Existing type `context`; label **“receives the charge of”**. Direction: Simonds Ryder → Heman Basset. [D&C 52:37](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/52?lang=eng) removes what had been bestowed on Basset and places it on Ryder. This supports the existing direction. Do not identify an unnamed office, generalize to an unsupported succession, or infer kinship or same-person identity. The approved scope would be the expressly transferred charge only.
+
+**3. Companion participation — accept with separate identity evidence.**
+
+`x:c:DCM-dcp-peter-whitmer-jr>c:DCM-dre030-whitmer-cowdery`
+
+Existing type `context`; **blank label**. Direction: Peter Whitmer Jr. → Peter Whitmer Jr. and Oliver Cowdery: companions. Read [D&C 30:5–7 and section heading/verse-range summary](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/30?lang=eng). The body assigns Peter to accompany Oliver; the heading resolves the full names. The shared verse interval is 5–7, but full-name corroboration additionally uses editorial heading evidence, which is not contained in both card citations. Store those evidentiary roles separately. “Brother” does not establish biological kinship; no route completion or missing stop is inferred.
+
+**4. Narrow support within broad overlap — accept.**
+
+`x:c:DCM-dcp-william-law>c:DCM-dre124e-presidency-patriarch`
+
+Existing type `context`; label **“counselor in the Presidency”**. Direction: William Law → The Presidency and the patriarch in section 124. [D&C 124:126](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng) expressly names Law as a counselor. Use verse 126, rather than treating the broader overlap at 91–97 as blanket evidence. This selected edge does not assert succession or identity with Hyrum; those are different claims requiring their own bindings.
+
+**5. Distinct discourse comparison — accept.**
+
+`x:c:BMV-186-sermon-compare-matthew-5>c:NTC-sermon-mountain`
+
+Existing type `context`; label **“compare Matthew 5”**. Direction: Discourse to the multitude compared with Matthew 5 → Sermon on the mount. Pair [3 Nephi 12:1–12](https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/12?lang=eng) with [Matthew 5:1–12](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/5?lang=eng), a subset of the destination's 5:1–48. Ordered beatitudes support comparison, while wording, audiences and introductory settings differ. Keep comparison/context, not identical quotation, event or place. The shared Matthew citation alone cannot prove a two-text parallel; retain both bodies. Direction is navigational, not chronological causation.
+
+**6. Discontinuous prophetic parallel — accept.**
+
+`x:c:BMV-052-isaiah-11-righteous-judge>c:OTM-c04-messianic-reception`
+
+Existing type `context`; label **“compare Isaiah 11, in Nephi’s prophecy”**. Direction: A righteous judge and peace among creatures in Nephi’s prophecy → Royal and servant passages in Isaiah. Pair [2 Nephi 30:9, 11–15](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/30?lang=eng) with [Isaiah 11:4–9](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/11?lang=eng): 30:9 corresponds to 11:4; 30:11–15 to 11:5–9. Nephi's framing is in 30:1–3, 8, 10, 16–18. Do not include verse 10 in the parallel, harmonize wording, or substitute the separate quotation in 2 Nephi 21. Only the Isaiah 11 component of the composite target applies.
+
+**7. Named father in editorial heading — accept.**
+
+`x:c:DCM-dr09-smith-family>c:DCM-dcp-joseph-smith-sr`
+
+Existing type `context`; **blank label**. Direction: Joseph Smith Sr., Joseph Jr. and Hyrum → Joseph Smith Sr. [D&C 4 historical section heading](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/4?lang=eng) names the recipient as the Prophet's father. Accept this specific context/identity binding; do not extend approval to every family-card assertion. Sr./Sen. must remain distinct from Jr. and Joseph F. Smith. The heading is its own component, neither the entire chapter nor revelation-body wording.
+
+**8. Front-matter signatory — accept.**
+
+`x:c:fm-person-christian-whitmer>c:FM05`
+
+Existing type `context`; **blank label**. Direction: Christian Whitmer → Testimony of Eight Witnesses. [Testimony of Eight Witnesses, declaration paragraphs and Christian Whitmer entry in the signatory list](https://www.churchofjesuschrist.org/study/scriptures/bofm/eight?lang=eng) directly supports the named signatory role. Canonical identity is document `bofm/eight` plus its relevant sections, not chapter 0. This is printed testimonial attribution, not independent verification of the narrated event, metallurgical testing, a date/venue, or surname-based kinship.
+
+**9. Attributed quotation with variants — accept.**
+
+`x:c:BMV-080-suffering-servant>c:OTM-c04-messianic-reception`
+
+Existing type `quotation`; label **“Isaiah 53, quoted by Abinadi”**. Direction: The suffering servant, quoted by Abinadi → Royal and servant passages in Isaiah. Pair [Mosiah 14:1–12](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/14?lang=eng) with [Isaiah 53:1–12](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/53?lang=eng). Mosiah 14:1 supplies explicit Isaiah attribution; [Mosiah 13:1–6, 33–35](https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/13?lang=eng) supplies Abinadi/discourse continuity. Accept represented literary quotation, not byte-identical wording: variants remain. Only Isaiah 53 applies, not the target's Isaiah 9/11 material. This does not establish witnessed events or settle historical fulfillment.
+
+**10. Ambiguous quotation destination — defer unchanged.**
+
+`x:c:BMV-020-babylon-quotation>c:OTM-babylon`
+
+Existing type `quotation`; label **“quoted from Isaiah”**. Direction: Departure from Babylon, quoted from Isaiah → Babylon in the prophets. [1 Nephi 20:1–22, especially 20:20](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/20?lang=eng) parallels [Isaiah 48:1–22, especially 48:20](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/48?lang=eng); [1 Nephi 19:23–24](https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/19?lang=eng) supplies quotation framing. The destination instead cites [Isaiah 13:1](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/13?lang=eng), [Jeremiah 51:59–64](https://www.churchofjesuschrist.org/study/scriptures/ot/jer/51?lang=eng) and [Ezekiel 17:12](https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/17?lang=eng). These support Babylon context, not the quotation source. Independent evidence can support an entity mentioned in quotation; missing overlap is not rejection. Defer the exact current binding until that meaning is distinguished from quoting the destination passage. **No code, pack, endpoint or type change is requested here.** No Lehite visit is supported.
+
+**11. Same crisis referent, not card equality — accept narrowly.**
+
+`x:c:BMV-039-judah-damascus-samaria>c:OTM-r02-ahaz-crisis`
+
+Existing type `same-entity`; label **“same crisis, quoted”**. Direction: Judah, Damascus and Samaria, quoted from Isaiah → Ahaz, Rezin and Pekah. Pair [2 Nephi 17:1–9](https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/17?lang=eng) with [Isaiah 7:1–9](https://www.churchofjesuschrist.org/study/scriptures/ot/isa/7?lang=eng). Named participants, attack and centers support the same crisis referent. Do not merge entire records, extend the narrower target to the Immanuel sign in source verses 10–14, transfer editorial dates, or infer Nephite geography. This requires independently paired evidence, not shared containment.
+
+**12. Former same-chapter row with shared heading — accept narrowly.**
+
+`x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith`
+
+Existing type `context`; **blank label**. Direction: Joseph Smith Sr., Joseph Jr. and Hyrum → Hyrum Smith. [D&C 11 historical section heading](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/11?lang=eng) identifies Hyrum as the Prophet's brother. Both cards cite that heading; the baseline classifier lost the heading from a mixed heading-plus-verse citation. Correct component handling should retain shared-heading evidence. Verse 1 alone does not identify Hyrum. This recommendation neither tests corrected code nor licenses additional genealogy.
+
+### Implementation boundary
+
+All selected source reads succeeded. The proposed sidecar must distinguish shared-component evidence from independent paired/identity evidence, preserve conditions and scope, and invalidate stale or revoked bindings. No travel edge or missing travel bridge was reviewed. Keep host wiring, folded-row connector rendering, chapter-selector, chronology, physical-device/AT and release gates separate and open as applicable.
