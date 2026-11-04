@@ -30,7 +30,11 @@
      eligible. A cross-text entry may use `mode: 'independent'` with paired evidence: each side's locators must lie
      inside that endpoint's own citations, and a scope caveat is required. Every call reconciles: an edge promoted
      by an earlier call that is not accepted in this one loses its promoted source, so a revoked or rejected review
-     can never leave a stale source behind. */
+     can never leave a stale source behind.
+
+   Checkpoint 18 (TL-R14 residual, TL-R16): Bible Dictionary titles must name the URL entry in full (slug or an
+   explicit validated alias), chapter zero is rejected, the review mode must be stated and supported, and every row
+   must carry a current binding (see bindingFor) and, where it declares one, current supplementary support. */
 (function (root) {
   'use strict';
 
@@ -86,6 +90,16 @@
     'official pgp introduction': ['pgp/introduction'],
   };
 
+  /* Bible Dictionary: a full title maps to its URL entry by slug ("Galilee, Sea of" → galilee-sea-of). A title whose
+     slug differs needs an explicit alias here, validated against the official entry by a reviewer first; none is
+     approved yet, so such a citation fails closed (e.g. "Elath or Eloth" → bd/elath). */
+  const BD_ALIASES = {};
+  const slug = s =>
+    String(s)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
   const bad = why => ({ ok: false, why });
   const DASH = '[–-]';
   const RANGE = new RegExp('^(\\d+)(?:\\s*' + DASH + '\\s*(\\d+))?$');
@@ -114,6 +128,8 @@
     const pathname = s.slice(ORIGIN.length).split(/[?#]/)[0];
     const m = pathname.match(/^\/study\/scriptures\/([a-z0-9-]+)\/([a-z0-9-]+)(?:\/(\d+))?\/?$/);
     if (!m) return null;
+    /* chapter zero is never a chapter (TL-R14) */
+    if (m[3] != null && +m[3] < 1) return null;
     return { vol: m[1], book: m[2], path: m[1] + '/' + m[2], ch: m[3] ? +m[3] : null };
   }
 
@@ -133,8 +149,10 @@
       }
       const bd = t.match(/^Bible Dictionary:\s*(.+)$/i);
       if (bd && id.vol === 'bd') {
-        const first = bd[1].trim().toLowerCase().split(/[^a-z0-9]+/)[0];
-        if (!first || id.book.split('-')[0] !== first) return bad('dictionary entry does not match the URL');
+        /* the complete title must name the URL's entry: its own slug, or an explicit validated alias (TL-R14) */
+        const title = bd[1].trim().toLowerCase();
+        const alias = Object.prototype.hasOwnProperty.call(BD_ALIASES, title) ? BD_ALIASES[title] : null;
+        if (slug(title) !== id.book && alias !== id.book) return bad('dictionary entry does not match the URL');
         return { ok: true, id: id.path, parts: [{ key: id.path, kind: 'doc' }] };
       }
       return bad('unsupported document citation');
@@ -145,6 +163,7 @@
     if (!named) return bad('unknown book "' + m[1] + '"');
     if (named[0] + '/' + named[1] !== id.path) return bad('label book does not match the URL book');
     const ch = +m[2];
+    if (ch < 1) return bad('chapter zero is not a chapter');
     if (ch !== id.ch) return bad('label chapter does not match the URL chapter');
     const key = id.path + '#' + ch;
     const rest = m[3].trim();
@@ -304,17 +323,132 @@
   }
 
   const filled = v => typeof v === 'string' && v.trim().length > 0;
+  const MODES = ['shared', 'independent'];
+  const SUPPORT_ROLE = 'support';
+
+  /* ---------- current bindings (TL-R16) ----------
+     A review row is approved against what the reviewer saw. Stable IDs are not enough: the row carries `binding`, a
+     fingerprint the module recomputes from the CURRENT model on every call — the edge's endpoints, direction, type
+     and label; each endpoint's id, label, source id, section and citations; the model's declared source version —
+     together with the row's own claim, mode, scope and locators. Any change on either side makes the stored
+     fingerprint stale and the row is deferred. The comparison is against the live model, never against a copy of
+     the approval. A model without a declared `sourceVersion` cannot bind anything. */
+  function hash(str) {
+    /* two 32-bit FNV-1a lanes → 16 hex digits; deterministic, no platform crypto needed */
+    let a = 0x811c9dc5;
+    let b = 0x01000193 ^ 0x5bd1e995;
+    for (let i = 0; i < str.length; i++) {
+      const k = str.charCodeAt(i);
+      a = Math.imul(a ^ k, 0x01000193) >>> 0;
+      b = Math.imul(b ^ k, 0x5bd1e995) >>> 0;
+      b = (b ^ (b >>> 13)) >>> 0;
+    }
+    return ('00000000' + a.toString(16)).slice(-8) + ('00000000' + b.toString(16)).slice(-8);
+  }
+  const citesOf = src => arr(src).map(c => [String((c && c.t) || ''), String((c && c.u) || '')]);
+  const recordSnap = r =>
+    r ? { id: r.id, label: r.label || '', sourceId: r.sourceId || null, section: r.section || null, src: citesOf(r.src) } : null;
+  /* canonical components of locators: what they mean, not how they are spelled */
+  const partsKey = src =>
+    arr(src).map(c => {
+      const p = parseLocator(c);
+      return p.ok ? p.parts.map(x => x.kind + ' ' + x.key + (x.verses ? ':' + x.verses.join(',') : '')) : ['invalid'];
+    });
+
+  function currentSnapshot(model, id) {
+    const ep = endpoints(model, id);
+    if (!ep) return null;
+    return {
+      sourceVersion: model.sourceVersion || null,
+      edge: { id: ep.e.id, from: ep.e.from, to: ep.e.to, type: ep.e.type, label: ep.e.label || null },
+      from: recordSnap(ep.from),
+      to: recordSnap(ep.to),
+    };
+  }
+
+  /* the fingerprint a review row must carry to bind the edge as it is now */
+  function bindingFor(model, id, entry) {
+    const snap = currentSnapshot(model, id);
+    if (!snap || !snap.sourceVersion) return null;
+    const en = entry || {};
+    const ev = en.evidence || {};
+    return hash(
+      JSON.stringify({
+        v: REVIEW_VERSION,
+        snap,
+        claim: en.claim || '',
+        mode: en.mode || null,
+        scope: en.scope || null,
+        src: partsKey(en.src),
+        evidence: { from: partsKey(ev.from), to: partsKey(ev.to) },
+      }),
+    );
+  }
+
+  /* ---------- supplementary support (pilot rows 3 and 9) ----------
+     Context a bounded claim needs that lies outside the endpoints' own citations (e.g. a section heading that names
+     a person in full). Support is a separate role: it is never containment-checked against the endpoint cards, never
+     enters `edge.src` or `locator`, and never widens the primary locator. Each item names its purpose and claim, its
+     citations must parse to canonical identities, its state must be `accepted`, and its own fingerprint binds it to
+     the current edge binding, its citations and the model's source version. A row that declares
+     `supportRequired: true` is deferred unless every support item is current and at least one exists; any present
+     item that is stale, invalid or not accepted defers the row in either case. */
+  function supportFingerprint(model, id, entry, item) {
+    const edge = bindingFor(model, id, entry);
+    if (!edge) return null;
+    const it = item || {};
+    return hash(
+      JSON.stringify({
+        v: REVIEW_VERSION,
+        role: SUPPORT_ROLE,
+        edge,
+        sourceVersion: model.sourceVersion,
+        purpose: it.purpose || '',
+        claim: it.claim || '',
+        src: partsKey(it.src),
+      }),
+    );
+  }
+
+  function supportProblem(model, id, entry) {
+    const items = entry.support == null ? [] : entry.support;
+    if (!Array.isArray(items)) return 'support must be a list';
+    if (entry.supportRequired !== true && entry.supportRequired !== false && items.length)
+      return 'support is present but supportRequired is not stated';
+    for (const it of items) {
+      const name = 'support ' + ((it && it.id) || '?');
+      if (!it || it.role !== SUPPORT_ROLE) return name + ' has no support role';
+      if (it.state !== 'accepted') return name + ' state is ' + (it.state || 'missing') + ', not accepted';
+      if (!filled(it.purpose)) return name + ' has no purpose';
+      if (!filled(it.claim)) return name + ' has no claim';
+      const locs = arr(it.src);
+      if (!locs.length) return name + ' has no citation';
+      for (const c of locs) {
+        const p = parseLocator(c);
+        if (!p.ok) return name + ' citation invalid: ' + p.why;
+      }
+      if (it.fingerprint !== supportFingerprint(model, id, entry, it)) return name + ' binding is stale or missing';
+    }
+    if (entry.supportRequired === true && !items.length) return 'required support is missing';
+    return null;
+  }
+
   /* the per-row semantic acceptance a promotion requires (review sidecar row, version 1) */
-  function acceptance(entry, e) {
+  function acceptance(model, entry, e) {
     if (!entry || entry.v !== REVIEW_VERSION) return 'no version-' + REVIEW_VERSION + ' review entry';
     if (entry.state !== 'accepted') return 'review state is ' + (entry.state || 'missing') + ', not accepted';
+    if (!MODES.includes(entry.mode)) return 'review mode is not stated';
     if (entry.from !== e.from || entry.to !== e.to) return 'review endpoints/direction do not match the edge';
     if (entry.type !== e.type) return 'review type does not match the edge';
     if (!filled(entry.claim)) return 'review has no claim';
     if (!filled(entry.basis)) return 'review has no rationale';
     if (!filled(entry.sourceVersion)) return 'review has no source version';
+    if (!model.sourceVersion) return 'the model declares no current source version';
+    if (entry.sourceVersion !== model.sourceVersion) return 'review source version is not the current source version';
     if (entry.mode === 'independent' && !filled(entry.scope)) return 'independent evidence needs a scope caveat';
-    return null;
+    if (!filled(entry.binding) || entry.binding !== bindingFor(model, e.id, entry))
+      return 'review binding is stale or missing (edge, endpoints or sources changed since review)';
+    return supportProblem(model, e.id, entry);
   }
 
   function clearPromotion(e) {
@@ -324,7 +458,8 @@
     delete e.grounding;
   }
 
-  /* reviewed: { [edgeId]: review entry } — see the header. Returns { promoted, rejected, revoked }. */
+  /* reviewed: { [edgeId]: review entry } — see the header. Returns { promoted, rejected, revoked }.
+     `rejected[].eligible` is true when the locators pass mechanically and only the review blocks promotion. */
   function applyEdgeSources(model, reviewed) {
     const promoted = [];
     const rejected = [];
@@ -335,23 +470,27 @@
       const entry = reviewed[id];
       const e = byId.get(id);
       if (!e) return rejected.push({ id, why: 'no such edge' });
-      const independent = entry && entry.mode === 'independent';
+      const mode = entry && entry.mode;
+      if (mode != null && !MODES.includes(mode))
+        return rejected.push({ id, why: 'unsupported review mode "' + mode + '"', eligible: false });
+      const independent = mode === 'independent';
       const src = independent
         ? arr(entry.evidence && entry.evidence.from).concat(arr(entry.evidence && entry.evidence.to))
         : arr(entry && entry.src);
+      /* a row without a mode is checked as shared for the report only; acceptance() still refuses it */
       const mech = independent ? independentEligibility(model, id, entry.evidence) : eligibility(model, id, src);
       if (!mech.ok) return rejected.push({ id, why: mech.why, eligible: false });
-      const sem = acceptance(entry, e);
+      const sem = acceptance(model, entry, e);
       if (sem) return rejected.push({ id, why: sem, eligible: true });
       accepted.set(id, { entry, src });
     });
     model.edges.forEach(e => {
       const a = accepted.get(e.id);
+      /* every call starts from nothing: a promotion exists only if this call accepts it */
+      const was = !!e.grounding;
+      if (was) clearPromotion(e);
       if (!a) {
-        if (e.grounding) {
-          clearPromotion(e);
-          revoked.push(e.id);
-        }
+        if (was) revoked.push(e.id);
         return;
       }
       e.src = a.src.map(c => ({ t: c.t, u: c.u }));
@@ -359,10 +498,17 @@
       e.basis = a.entry.basis;
       e.grounding = {
         v: REVIEW_VERSION,
-        mode: a.entry.mode === 'independent' ? 'independent' : 'shared',
+        mode: a.entry.mode,
         claim: a.entry.claim,
         sourceVersion: a.entry.sourceVersion,
+        binding: a.entry.binding,
         scope: a.entry.scope || null,
+        support: arr(a.entry.support).map(it => ({
+          id: it.id || null,
+          purpose: it.purpose,
+          claim: it.claim,
+          src: arr(it.src).map(c => ({ t: c.t, u: c.u })),
+        })),
       };
       promoted.push(e.id);
     });
@@ -392,6 +538,9 @@
     eligibility,
     independentEligibility,
     applyEdgeSources,
+    currentSnapshot,
+    bindingFor,
+    supportFingerprint,
     ledger,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
