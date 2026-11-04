@@ -2870,3 +2870,66 @@ full `pnpm test:browser` passed.
 vision dispositions for the 20 keys above, per the handoff’s exact source boundaries. Still open: wider vision
 completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence. Not merged.
 
+
+## Checkpoint 64 — RES96 part 2: RES96-C01–C14 for the last 20 keys (HANDOFF_PLAN 2026-11-04 “Coherent corrections, with exact source boundaries”)
+
+Parent **82235c6c02cec3db7b0144be1be5bfed67166e3d** (checkpoint 63). This closes the residual-96 batch: all 20
+correction keys are now implemented as 3/bom source views or consolidated into one, so the semantic ledger is empty.
+
+**Baseline.** Before the edits `build.py` (accepted register PR34 5951442), `bmc_omission_rollup.py .`,
+`bmc_semantic_pass.py .`, `build.py` again, `bmc_textscan.py . <book-of-mormon.json>` and `timeline_vision.cjs`
+reproduced the committed pack and CSVs byte-for-byte. After the edits two full regenerations were identical (hash of
+the pack and every pack CSV compared). Every cited verse (and Joshua 24:15) was read in the bcbooks/scriptures-json
+mirror before the copy was written; official chapter links remain the citations. Copy names the speaker or narrator
+and restates only the cited verses.
+
+**New module** `supplementary-build/copy_bmc_res96c.py` (keeps `copy_bmc.py` near 800 lines): `RES96_VIEWS`
+(16 views), `RES96_EXTRA`, `RES96_NOLINK`, `RES96C_OMIT` (5 consolidations). `copy_bmc.py` merges them, asserting no
+key overrides an earlier decision. All views are undated and unpinned, with no event, route or 4/dc–5/pgp source;
+See-also links are one way to 1/ot cards.
+
+| Correction | View (locator + added source) | Link | Notes |
+|---|---|---|---|
+| C01 BMC-125 | BMV-125-choose-whom-serve-scripture (Alma 30:7–9 + Joshua 24:15) | OHR-JOSHUA-NUN “compare his words at Joshua 24:15” | wording differs slightly; no identity, Joshua encounter or Shechem |
+| C01 BMC-125 | BMV-125-korihor-reported-appearance (Alma 30:53) | — | separate card; Korihor’s retrospective account, not endorsed; speech loss not diagnosed; 2 Cor 11:14 declined |
+| C02 BMC-063 (+072, 095, 123) | BMV-063-departure-reckoning-early (Enos 1:25 + Mosiah 6:4, 29:46, Alma 28:2) | OTM-jerusalem | 179, ~476, 509 years; the battle is a severity comparison, not an epoch; no Enos date, BCE or census |
+| C02 BMC-175 (+176) | BMV-175-departure-reckoning-later (3 Nephi 1:1–2 + 2:5–9) | OTM-jerusalem | 600/609 years, the sign count and the records’ custody; clocks kept separate. Split in two cards for readability, as the handoff allowed |
+| C03 BMC-062 | BMV-062-jacob-closing-lament (Jacob 7:26) | OTM-jerusalem | dream as simile; no Jerusalem birth or journey |
+| C04 BMC-098 | BMV-098-records-from-jerusalem (Alma 3:11–12) | OTM-jerusalem | narrator’s community definition; mark/curse not an atlas judgment |
+| C05 BMC-111 | BMV-111-synagogues-coming-taught (Alma 16:13, 19–20) | — | future appearance to this people, not a Gospel scene; verse 17 not quoted |
+| C06 BMC-121 | BMV-121-branch-of-israel (Alma 26:36–37) | — | attributed collective metaphor; no pedigree or patriarch link |
+| C07 BMC-008 | BMV-008-lehi-dream-tree (1 Nephi 8:2–38) | — | source narrative; distinct from BMV-001 and 1 Nephi 11; dream river ≠ river Laman; no geometry or date |
+| C08 BMC-103 (+133) | BMV-103-angel-to-alma-and-amulek (Alma 8:14–21 + Alma 38:7–8) | — | three contributions kept distinct; no named angel, Aaron arrival or date |
+| C09 BMC-114 | BMV-114-lamoni-abish-angels (Alma 19:12–16, 29–34) | — | “remarkable vision of her father” kept ambiguous; Abish not the queen; birth foretold |
+| C10 BMC-163 | BMV-163-names-and-prison-fire (Helaman 5:6, 20–50) | OTM-jerusalem | 5:6 folded in; observed manifestation vs Aminadab’s explanation; no biblical Aminadab or prison site |
+| C11 BMC-174 | BMV-174-wise-men-angels-skeptics (Helaman 16:13–14, 18–20) | OTM-jerusalem “named in the skeptics’ argument” | skepticism attributed; no Matthew 2 identity |
+| C12 BMC-181 | BMV-181-nephi-saw-angels (3 Nephi 7:15, 18) | — | angels, voice and relapse distinct; brother unidentified; 2 Peter 2:22 declined |
+| C13 BMC-193 | BMV-193-angels-prayer-light (3 Nephi 19:13–15, 20–30, 35–36) | — | 19:22 context; the Jews comparison attributed to Jesus; John 17 declined; water unnamed |
+| C14 BMC-223 | BMV-223-omer-dream-emer-sight (Ether 9:3, 21–22) | — | warning-only dream; Emer’s sight undescribed; two men distinct; no Numbers link |
+
+Builder readings to check: (1) C02 is two cards, not one (six notices with separate clocks read as crowded in one).
+(2) C01/C03/C04/C10/C11 link OTM-jerusalem or OHR-JOSHUA-NUN with short labels (≤40 characters, the See-also
+contract); C05–C09, C12–C14 are source-only. (3) Every correction was a new view; no existing carrier (BC01, BXE03,
+BXJ14, …) was rewritten, so no accepted register copy changed. (4) The textscan screen labels the five screened keys
+(BMC-175, 176, 181, 193, 223) as `checkpoint-64`.
+
+**Vision crosswalk (VIS-R1, from the cited source).** `SEM`: BMV-008 vision-content; BMV-062 not-vision (simile);
+BMV-103, 114, 223 mixed. `EXPLICIT` (no display keyword): BMV-125-korihor (Alma 30:53), BMV-163 (Helaman 5:20–50),
+BMV-174 (Helaman 16:13–14), BMV-181 (3 Nephi 7:15, 18), BMV-193 (3 Nephi 19:13–15, 20–30), all mixed, each with its
+distinctions. Crosswalk **157 → 167** rows (old rows unchanged), keyword candidates 97 → 102, source-only 2 → 7,
+no year on any new row.
+
+**Ledgers.** BMC views **108 → 124** over 107 → 122 keys. Semantic ledger **20 → 0**; rollup 33 → 0 rows. The five
+`SEMANTIC` summary entries for BMC-111, 163, 175, 193 and 223 are removed. Text screen unchanged: 39 chapters / 114
+rows (91 consistent, 7 no-hit, 16 resolved, 0 reader).
+
+**Tests.** New `tests/lds-res96c.test.ts` (locators, gates, one-way targets, no dates/pins/events; all 20 keys
+implemented or consolidated with the consolidating view’s source named; safeguard wording; crosswalk rows and classes;
+screen labels). Count pins updated in `tests/lds-pack.test.ts`, `lds-semantic-c60.test.ts`, `lds-mat61.test.ts`,
+`lds-res96.test.ts`.
+
+**Checks.** `pnpm format`; `pnpm check` **171/171**, `check:dist` 114; `pnpm test:pages` (13 pages × 2 viewports);
+full `pnpm test:browser` passed ([log](supplementary-build/s64-browser-smoke.txt)). Not done this unit: rendered
+captures of the new cards (data-only additions to the generic codex list, as at checkpoint 60). Still open: wider
+vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence. No chapter-wide,
+corpus or release acceptance is claimed. Not merged.

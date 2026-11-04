@@ -196,6 +196,31 @@ const SEM = {
   'codex:PGM-qg14-js-history-moves': 'mixed',
   'codex:AC03': 'vision-setting',
   'codex:RE15': 'vision-content',
+  // checkpoint 64 (RES96-C03, C07, C08, C09, C14): classified from the cited source, not from the card titles.
+  'codex:BMV-062-jacob-closing-lament': [
+    'not-vision',
+    'Jacob 7:26 compares passing lives to a dream as a simile; no vision is narrated',
+  ],
+  'codex:BMV-008-lehi-dream-tree': [
+    'vision-content',
+    '1 Nephi 8:2–38: Lehi’s dream, which he also calls a vision; distinct from BMV-001 (1 Nephi 1) and Nephi’s ' +
+      'later vision (1 Nephi 11); nothing in it is mapped',
+  ],
+  'codex:BMV-103-angel-to-alma-and-amulek': [
+    'mixed',
+    'Alma 8:14–18 an angel appears to Alma; 8:20 Amulek reports an angel’s instruction in a vision; Alma 38:7–8 ' +
+      'Alma’s earlier encounter recounted. Three distinct contributions, two men',
+  ],
+  'codex:BMV-114-lamoni-abish-angels': [
+    'mixed',
+    'Alma 19:13 Lamoni says he has seen his Redeemer; 19:16 Abish’s conversion is tied to a “remarkable vision of ' +
+      'her father” (whose vision is not stated); 19:34 many report seeing angels. Attributions kept distinct',
+  ],
+  'codex:BMV-223-omer-dream-emer-sight': [
+    'mixed',
+    'Ether 9:3 a warning dream to Omer (its only content is the warning to depart); 9:22 Emer saw the Son of ' +
+      'Righteousness (form and place not described). Two men, two accounts',
+  ],
   'codex:RE16': 'vision-record',
 };
 // Section cards whose only keyword hit is the See-also title “Prophecy, vision and parable” (or “… reported vision”).
@@ -230,6 +255,37 @@ const EXPLICIT = {
     'in context 6–20 the passage describes revealed sight of the Lord’s spirit body. The card keeps distinct the ' +
       'prayer and teaching about the fall, the manifestation of the spirit body, the future taking of flesh and ' +
       'blood, and Moroni’s later comparison with the showing to the Nephites; no event, pin or chronology',
+  ],
+  // checkpoint 64 (RES96-C01, C10–C13): source-grounded appearances in cards without a vision keyword.
+  'codex:BMV-125-korihor-reported-appearance': [
+    'mixed',
+    'Alma 30:53',
+    'Korihor’s retrospective written report that the devil appeared to him in the form of an angel; attributed to ' +
+      'him, not presented as the atlas’s claim, and kept separate from the scripture cited at 30:8',
+  ],
+  'codex:BMV-163-names-and-prison-fire': [
+    'mixed',
+    'Helaman 5:20–50',
+    'the fire that does not burn, the shining faces, the opened heavens and descending angels seen by about three ' +
+      'hundred; what is seen is kept distinct from Aminadab’s explanation, and 5:6 (the names) is not a vision',
+  ],
+  'codex:BMV-174-wise-men-angels-skeptics': [
+    'mixed',
+    'Helaman 16:13–14',
+    'the narrator reports angels appearing to unnamed wise men; the skeptics’ argument (16:18–20) is quoted, not ' +
+      'endorsed, and no Matthew 2 identity is drawn',
+  ],
+  'codex:BMV-181-nephi-saw-angels': [
+    'mixed',
+    '3 Nephi 7:15, 18',
+    'the narrator says Nephi saw angels as an eyewitness and was ministered to daily; seeing angels, hearing the ' +
+      'Lord’s voice and witnessing the relapse are kept distinct',
+  ],
+  'codex:BMV-193-angels-prayer-light': [
+    'mixed',
+    '3 Nephi 19:13–15, 20–30',
+    'the multitude witnesses fire from heaven and descending angels, then Jesus’s presence, prayer and the light ' +
+      'upon the disciples; a witnessed ministry, not a dream',
   ],
 };
 const NONVISION_FAMILIES = ['NTE-jerusalem-community', 'NTE-arrest-hearings'];

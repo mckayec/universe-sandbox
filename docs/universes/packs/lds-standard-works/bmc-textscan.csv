@@ -1,15 +1,15 @@
 research_key,unit,semantic_state,verses_screened,cue,bible_cards,verses,builder_triage,reason
-BMC-175,3 Nephi 1,practice-or-title,30,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,"3 Nephi 1:1, 3 Nephi 1:2",consistent,"the Book of Mormon dating epoch “since Lehi left Jerusalem” (a narrative anchor carried by the 1 Nephi views), not a Bible event in this chapter"
-BMC-175,3 Nephi 1,practice-or-title,30,Lehi,,"3 Nephi 1:1, 3 Nephi 1:2",consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
-BMC-175,3 Nephi 1,practice-or-title,30,Moses,OHR-MOSES,3 Nephi 1:24,consistent,only in “law of Moses” or a rhetorical name; no Moses event
-BMC-175,3 Nephi 1,practice-or-title,30,Samuel,OHR-SAMUEL,"3 Nephi 1:5, 3 Nephi 1:6, 3 Nephi 1:9",consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
-BMC-175,3 Nephi 1,practice-or-title,30,Satan,,3 Nephi 1:22,consistent,"teaching vocabulary, not a Bible event"
-BMC-175,3 Nephi 1,practice-or-title,30,law of Moses,,3 Nephi 1:24,consistent,the law as an observed or fulfilled practice (practice-or-title class)
-BMC-175,3 Nephi 1,practice-or-title,30,new star,,3 Nephi 1:21,consistent,the row already gives the birth-sign star as Book of Mormon content
-BMC-176,3 Nephi 2,no-bible-relation,19,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,3 Nephi 2:6,consistent,"the Book of Mormon dating epoch “since Lehi left Jerusalem” (a narrative anchor carried by the 1 Nephi views), not a Bible event in this chapter"
-BMC-176,3 Nephi 2,no-bible-relation,19,Lehi,,3 Nephi 2:6,consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
-BMC-176,3 Nephi 2,no-bible-relation,19,Satan,,"3 Nephi 2:2, 3 Nephi 2:3",consistent,"teaching vocabulary, not a Bible event"
-BMC-176,3 Nephi 2,no-bible-relation,19,devil,,3 Nephi 2:2,consistent,"teaching vocabulary, not a Bible event"
+BMC-175,3 Nephi 1,checkpoint-64 view BMV-175-departure-reckoning-later,30,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,"3 Nephi 1:1, 3 Nephi 1:2",consistent,"the Book of Mormon dating epoch “since Lehi left Jerusalem” (a narrative anchor carried by the 1 Nephi views), not a Bible event in this chapter"
+BMC-175,3 Nephi 1,checkpoint-64 view BMV-175-departure-reckoning-later,30,Lehi,,"3 Nephi 1:1, 3 Nephi 1:2",consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
+BMC-175,3 Nephi 1,checkpoint-64 view BMV-175-departure-reckoning-later,30,Moses,OHR-MOSES,3 Nephi 1:24,consistent,only in “law of Moses” or a rhetorical name; no Moses event
+BMC-175,3 Nephi 1,checkpoint-64 view BMV-175-departure-reckoning-later,30,Samuel,OHR-SAMUEL,"3 Nephi 1:5, 3 Nephi 1:6, 3 Nephi 1:9",consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
+BMC-175,3 Nephi 1,checkpoint-64 view BMV-175-departure-reckoning-later,30,Satan,,3 Nephi 1:22,consistent,"teaching vocabulary, not a Bible event"
+BMC-175,3 Nephi 1,checkpoint-64 view BMV-175-departure-reckoning-later,30,law of Moses,,3 Nephi 1:24,consistent,the law as an observed or fulfilled practice (practice-or-title class)
+BMC-175,3 Nephi 1,checkpoint-64 view BMV-175-departure-reckoning-later,30,new star,,3 Nephi 1:21,consistent,the row already gives the birth-sign star as Book of Mormon content
+BMC-176,3 Nephi 2,checkpoint-64 decision (omitted),19,Jerusalem,OTL-jerusalem-chronicles-eras OTM-jerusalem OTS-P08-jerusalem OTW-p08-jerusalem-psalms,3 Nephi 2:6,consistent,"the Book of Mormon dating epoch “since Lehi left Jerusalem” (a narrative anchor carried by the 1 Nephi views), not a Bible event in this chapter"
+BMC-176,3 Nephi 2,checkpoint-64 decision (omitted),19,Lehi,,3 Nephi 2:6,consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
+BMC-176,3 Nephi 2,checkpoint-64 decision (omitted),19,Satan,,"3 Nephi 2:2, 3 Nephi 2:3",consistent,"teaching vocabulary, not a Bible event"
+BMC-176,3 Nephi 2,checkpoint-64 decision (omitted),19,devil,,3 Nephi 2:2,consistent,"teaching vocabulary, not a Bible event"
 BMC-177,3 Nephi 3,checkpoint-63 decision (omitted),26,,,,no-hit,no card name or cue in the chapter text
 BMC-178,3 Nephi 4,checkpoint-58 decision (omitted),33,Abraham,,3 Nephi 4:30,resolved,"one divine-title formula (4:30); recorded checkpoint-58 decision, no patriarch event link"
 BMC-178,3 Nephi 4,checkpoint-58 decision (omitted),33,Isaac,OHR-ISAAC,3 Nephi 4:30,resolved,same divine title (4:30); see the BMC-178 decision
@@ -18,9 +18,9 @@ BMC-178,3 Nephi 4,checkpoint-58 decision (omitted),33,Jerusalem,OTL-jerusalem-ch
 BMC-178,3 Nephi 4,checkpoint-58 decision (omitted),33,Lehi,,3 Nephi 4:11,consistent,"Book of Mormon Lehi (the dating epoch, the people of Lehi or the Nephite commander)"
 BMC-180,3 Nephi 6,checkpoint-63 decision (omitted),30,Satan,,"3 Nephi 6:15, 3 Nephi 6:16",consistent,"teaching vocabulary, not a Bible event"
 BMC-180,3 Nephi 6,checkpoint-63 decision (omitted),30,devil,,"3 Nephi 6:17, 3 Nephi 6:28",consistent,"teaching vocabulary, not a Bible event"
-BMC-181,3 Nephi 7,namesake,26,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,"3 Nephi 7:9, 3 Nephi 7:12",consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
-BMC-181,3 Nephi 7,namesake,26,Satan,,3 Nephi 7:5,consistent,"teaching vocabulary, not a Bible event"
-BMC-181,3 Nephi 7,namesake,26,devil,,"3 Nephi 7:19, 3 Nephi 7:22",consistent,"teaching vocabulary, not a Bible event"
+BMC-181,3 Nephi 7,checkpoint-64 view BMV-181-nephi-saw-angels,26,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,"3 Nephi 7:9, 3 Nephi 7:12",consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
+BMC-181,3 Nephi 7,checkpoint-64 view BMV-181-nephi-saw-angels,26,Satan,,3 Nephi 7:5,consistent,"teaching vocabulary, not a Bible event"
+BMC-181,3 Nephi 7,checkpoint-64 view BMV-181-nephi-saw-angels,26,devil,,"3 Nephi 7:19, 3 Nephi 7:22",consistent,"teaching vocabulary, not a Bible event"
 BMC-182,3 Nephi 8,checkpoint-63 decision (omitted),25,Samuel,OHR-SAMUEL,3 Nephi 8:3,consistent,"namesake: Samuel the Lamanite (named as such in the cited verses), not the Bible Samuel"
 BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,Gilgal,OHP-GILGAL-JOSHUA,3 Nephi 9:6,consistent,namesake: Book of Mormon city or Jaredite valley Gilgal
 BMC-183,3 Nephi 9,checkpoint-60 view BMV-183-voice-creation-life-laid-down,22,Jacob,NTP-jacob-well OHJ-06 OHJ-09 OHJ-10 OHR-JACOB,"3 Nephi 9:8, 3 Nephi 9:9",consistent,"namesake: Book of Mormon Jacob, or the patriarch in a divine title (see row)"
@@ -33,10 +33,10 @@ BMC-185,3 Nephi 11,checkpoint-58 view BMV-185-crucified-christ-wounds-bountiful,
 BMC-185,3 Nephi 11,checkpoint-58 view BMV-185-crucified-christ-wounds-bountiful,41,flood,,3 Nephi 11:40,consistent,floods in the sandy-foundation image (11:40); see the parallel rows
 BMC-185,3 Nephi 11,checkpoint-58 view BMV-185-crucified-christ-wounds-bountiful,41,parallel: Matthew 16:18,,3 Nephi 11:39,resolved,"11:39 gates-of-hell/rock wording compared with Matthew 16:18 in BMV-185-doctrine-foundations-matthew (3/bom, no link); the rock referent is not arbitrated"
 BMC-185,3 Nephi 11,checkpoint-58 view BMV-185-crucified-christ-wounds-bountiful,41,parallel: Matthew 7:26-27,,3 Nephi 11:40,resolved,"11:39–40 rock/sandy-foundation image compared with Matthew 7:24–27 in BMV-185-doctrine-foundations-matthew (3/bom, no link); wording and images, not one event"
-BMC-193,3 Nephi 19,represented,36,Isaiah,OTM-a02-ariel-jst-introduction OTM-j01-assyrian-oracle-march OTM-r01-isaiah-family,3 Nephi 19:4,consistent,"namesake: Isaiah is a Nephite disciple (19:4), as the row says"
-BMC-193,3 Nephi 19,represented,36,Jeremiah,OTM-j08-jeremiah-girdle OTM-j12-jeremiah-arrest OTM-j14-jeremiah-release OTM-j24-exile-letter OTM-j27-cistern-rescue OTM-jeremiah-prison-court OTM-r06-jeremiah-family,3 Nephi 19:4,consistent,"namesake: Jeremiah is a Nephite disciple (19:4), as the row says"
-BMC-193,3 Nephi 19,represented,36,Zedekiah,OHJ-24 OHR-ZEDEKIAH OTM-j13-zedekiah-flight OTM-r15-zedekiah-house,3 Nephi 19:4,consistent,"namesake: Zedekiah is a Nephite disciple (19:4), as the row says"
-BMC-193,3 Nephi 19,represented,36,the twelve,,3 Nephi 19:6,consistent,the twelve Nephite disciples (a Book of Mormon institution)
+BMC-193,3 Nephi 19,checkpoint-64 view BMV-193-angels-prayer-light,36,Isaiah,OTM-a02-ariel-jst-introduction OTM-j01-assyrian-oracle-march OTM-r01-isaiah-family,3 Nephi 19:4,consistent,"namesake: Isaiah is a Nephite disciple (19:4), as the row says"
+BMC-193,3 Nephi 19,checkpoint-64 view BMV-193-angels-prayer-light,36,Jeremiah,OTM-j08-jeremiah-girdle OTM-j12-jeremiah-arrest OTM-j14-jeremiah-release OTM-j24-exile-letter OTM-j27-cistern-rescue OTM-jeremiah-prison-court OTM-r06-jeremiah-family,3 Nephi 19:4,consistent,"namesake: Jeremiah is a Nephite disciple (19:4), as the row says"
+BMC-193,3 Nephi 19,checkpoint-64 view BMV-193-angels-prayer-light,36,Zedekiah,OHJ-24 OHR-ZEDEKIAH OTM-j13-zedekiah-flight OTM-r15-zedekiah-house,3 Nephi 19:4,consistent,"namesake: Zedekiah is a Nephite disciple (19:4), as the row says"
+BMC-193,3 Nephi 19,checkpoint-64 view BMV-193-angels-prayer-light,36,the twelve,,3 Nephi 19:6,consistent,the twelve Nephite disciples (a Book of Mormon institution)
 BMC-200,3 Nephi 26,checkpoint-58 decision (omitted),21,,,,no-hit,no card name or cue in the chapter text
 BMC-201,3 Nephi 27,checkpoint-58 view BMV-201-lifted-up-cross,33,Moses,OHR-MOSES,3 Nephi 27:8,consistent,only in “law of Moses” or a rhetorical name; no Moses event
 BMC-201,3 Nephi 27,checkpoint-58 view BMV-201-lifted-up-cross,33,cross,,3 Nephi 27:14,resolved,"27:14 crucifixion recollection: BMV-201 links AE10 as recalled, not quoted"
@@ -80,8 +80,8 @@ BMC-222,Ether 8,checkpoint-58 view BMV-222-cain-oaths-first-parents,26,Jared,,"E
 BMC-222,Ether 8,checkpoint-58 view BMV-222-cain-oaths-first-parents,26,Satan,,Ether 8:26,consistent,"teaching vocabulary, not a Bible event"
 BMC-222,Ether 8,checkpoint-58 view BMV-222-cain-oaths-first-parents,26,cross,,Ether 8:9,consistent,"the verb “cross/across” (crossing the sea or the deep), not the cross"
 BMC-222,Ether 8,checkpoint-58 view BMV-222-cain-oaths-first-parents,26,devil,,"Ether 8:16, Ether 8:25",consistent,"teaching vocabulary, not a Bible event"
-BMC-223,Ether 9,namesake,35,Heth,,"Ether 9:25, Ether 9:26, Ether 9:29",consistent,namesake: Jaredite ruler Heth
-BMC-223,Ether 9,namesake,35,Jared,,"Ether 9:3, Ether 9:4, Ether 9:6",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
+BMC-223,Ether 9,checkpoint-64 view BMV-223-omer-dream-emer-sight,35,Heth,,"Ether 9:25, Ether 9:26, Ether 9:29",consistent,namesake: Jaredite ruler Heth
+BMC-223,Ether 9,checkpoint-64 view BMV-223-omer-dream-emer-sight,35,Jared,,"Ether 9:3, Ether 9:4, Ether 9:6",consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"
 BMC-224,Ether 10,checkpoint-63 decision (omitted),34,Aaron,OHR-AARON,Ether 10:31,consistent,"namesake: Jaredite Aaron, son of Heth, who dwelt in captivity (10:31); not a king"
 BMC-224,Ether 10,checkpoint-63 decision (omitted),34,Heth,,"Ether 10:1, Ether 10:31",consistent,namesake: Jaredite ruler Heth
 BMC-224,Ether 10,checkpoint-63 decision (omitted),34,Jared,,Ether 10:2,consistent,"namesake: Jaredite founder, his brother or later Jaredite kings; no Genesis Jared card"

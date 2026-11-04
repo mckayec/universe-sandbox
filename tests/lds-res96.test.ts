@@ -5,7 +5,7 @@ import test from 'node:test';
 
 // Checkpoint 63: the 76 explicit full-read dispositions of the residual-96 batch (HANDOFF_PLAN 2026-11-04
 // "Full-source decisions for all 96 residual semantic chapters"). Data-only: the pack is unchanged; the 20
-// RES96-C01–C14 correction keys stay in the ledger for the next unit.
+// RES96-C01–C14 correction keys were implemented at checkpoint 64 (tests/lds-res96c.test.ts).
 const dir = '../docs/universes/packs/lds-standard-works/';
 const read = (f: string) => readFileSync(new URL(dir + f, import.meta.url), 'utf8');
 const lines = (f: string) => read(f).trim().split('\n');
@@ -20,11 +20,11 @@ const REMAINING = [8, 62, 63, 72, 95, 98, 103, 111, 114, 121, 123, 125, 133, 163
   n => 'BMC-' + String(n).padStart(3, '0'),
 );
 
-test('RES96: 76 decisions recorded, 20 correction keys remain in the ledger', () => {
+test('RES96: 76 decisions recorded; the 20 correction keys are not among them', () => {
   assert.equal(new Set(DECIDED).size, 76);
   assert.equal(new Set(REMAINING).size, 20);
-  const sem = lines('bmc-semantic-dispositions.csv').slice(1);
-  assert.deepEqual(sem.map(r => r.slice(0, 7)).sort(), [...REMAINING].sort());
+  // checkpoint 64: the 20 correction keys left the ledger as RES96-C01–C14 views (tests/lds-res96c.test.ts)
+  assert.deepEqual(lines('bmc-semantic-dispositions.csv').slice(1), []);
   const rollup = read('bmc-omission-rollup.csv');
   const views = lines('bmc-source-views.csv');
   for (const k of DECIDED) {
@@ -79,10 +79,10 @@ test('RES96: frozen word screen unchanged in size and state counts; screened rol
   assert.ok(rows.some(r => r.includes(',parallel: Matthew 16:18,,3 Nephi 11:39,') && r.includes(',resolved,')));
 });
 
-test('RES96: the pack itself is unchanged by the decisions (data in docs only)', () => {
+test('RES96: the checkpoint-63 decisions put nothing into the pack (data in docs only)', () => {
   const pack = readFileSync(new URL('../public/atlas/packs/lds-standard-works.js', import.meta.url), 'utf8');
   assert.doesNotMatch(pack, /checkpoint 63|RES96/);
-  // vision crosswalk unchanged: 157 rows
-  assert.equal(lines('timeline-source-vision.csv').length - 1, 157);
+  // vision crosswalk: 157 rows at checkpoint 63, + 10 RES96-C01–C14 rows at checkpoint 64
+  assert.equal(lines('timeline-source-vision.csv').length - 1, 167);
   assert.ok(createHash('sha256').update(pack).digest('hex').length === 64);
 });

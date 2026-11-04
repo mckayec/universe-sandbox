@@ -67,6 +67,8 @@ CHECKPOINT_60 = {'BMC-183', 'BMC-216', 'BMC-217', 'BMC-238'}
 
 
 def residual_rows():
+    from copy_bmc_res96c import RES96_VIEWS  # checkpoint 64
+    CHECKPOINT_64 = {f'BMC-{n:03d}' for n, *_ in RES96_VIEWS}
     sem = {r['research_key']: r for r in csv.DictReader(open(PACK_DIR + '/bmc-semantic-dispositions.csv',
                                                              encoding='utf-8'))}
     views = list(csv.DictReader(open(PACK_DIR + '/bmc-source-views.csv', encoding='utf-8')))
@@ -82,6 +84,9 @@ def residual_rows():
         # checkpoint 63: the RES96 full-read decisions are labelled by their own recorded reason
         if mine[0]['state'] == 'omitted' and mine[0]['reason'].startswith('checkpoint 63 decision'):
             cp = 'checkpoint-63'
+        # checkpoint 64: the RES96-C01–C14 views and consolidations
+        if k in CHECKPOINT_64 or mine[0]['reason'].startswith('checkpoint 64 decision'):
+            cp = 'checkpoint-64'
         state = (cp + ' view ' + mine[0]['rendered_view'] if mine[0]['state'] == 'implemented'
                  else cp + ' decision (omitted)')
         unit = mine[0]['locator'].split(':')[0]

@@ -123,7 +123,8 @@ test('Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions 
     assert.ok(!rollup.includes(`BMC-${n},`), n);
   }
   // checkpoint 63: 76 more keys left as RES96 decisions (tests/lds-res96.test.ts)
-  assert.equal(sem.trim().split('\n').length - 1, 20);
+  // checkpoint 64: the last 20 keys left as RES96-C01–C14 views (tests/lds-res96c.test.ts)
+  assert.equal(sem.trim().split('\n').length - 1, 0);
   // the two 3 Nephi 11 Matthew reader leads were closed by MAT61-C1 (checkpoint 62; tests/lds-mat61.test.ts)
   const reader = read('bmc-textscan.csv')
     .trim()
@@ -134,7 +135,7 @@ test('Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions 
 
 test('VIS60-C1: BMV-217 is in the vision crosswalk from Ether 3, not its title; card unchanged', () => {
   const lines = read('timeline-source-vision.csv').trim().split('\n');
-  assert.equal(lines.length - 1, 157);
+  assert.equal(lines.length - 1, 167); // checkpoint 64: + 10 RES96 rows
   const rows = lines.filter(l => l.startsWith('codex:BMV-217-fall-divine-image-spirit-body,'));
   assert.equal(rows.length, 1);
   const r = rows[0];
@@ -146,7 +147,7 @@ test('VIS60-C1: BMV-217 is in the vision crosswalk from Ether 3, not its title; 
     /Moroni’s later comparison/,
   ])
     assert.match(r, cue);
-  assert.equal(lines.filter(l => /,"?source:/.test(l)).length, 2);
+  assert.equal(lines.filter(l => /,"?source:/.test(l)).length, 7); // checkpoint 64: + 5 RES96 source-only rows
   assert.equal(lines.filter(l => l.startsWith('codex:NTC-heavenly-experience,')).length, 1);
   // the card itself: no vision keyword added, same source, gate and empty dates
   const v = byKey.get('BMV-217-fall-divine-image-spirit-body');

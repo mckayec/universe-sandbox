@@ -731,12 +731,14 @@ OMIT = {
          'battle, Joshua or Lachish. A Helaman 12:25–26 / John 5:28–29 comparison is declined as editorial',
 }
 
-# Checkpoint 63: the 76 full-read residual dispositions (RES96) live in their own module; none overrides an
-# earlier decision.
+# Checkpoint 63/64: the residual-96 decisions (RES96) and the RES96-C01–C14 views live in their own modules.
 from copy_bmc_res96 import RES96_OMIT, RES96_SCAN_ROW  # noqa: E402
+from copy_bmc_res96c import RES96_VIEWS, RES96_EXTRA, RES96_NOLINK, RES96C_OMIT  # noqa: E402
 
-assert not set(RES96_OMIT) & set(OMIT), sorted(set(RES96_OMIT) & set(OMIT))
-OMIT.update(RES96_OMIT)
+for new, old in ((RES96_OMIT, OMIT), (RES96C_OMIT, OMIT), (RES96_EXTRA, EXTRA_SOURCES), (RES96_NOLINK, NOLINK)):
+    assert not set(new) & set(old), sorted(set(new) & set(old))  # none overrides an earlier decision
+    old.update(new)
+VIEWS.extend(RES96_VIEWS)
 
 # Checkpoint 60: an existing primary 3/bom card whose description carries a BMC finding (desc rewritten in place by
 # build.write_bmc; its sources are unchanged). The first sentence is the card's existing copy.

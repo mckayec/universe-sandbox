@@ -72,8 +72,9 @@ test('MAT61-C1: exactly the two BMC-185 reader cues resolve; screen and ledger a
   // the other BMC-185 hits keep the wounds view as the chapter's first view
   for (const r of rows.filter(x => x.startsWith('BMC-185,') && !lead.includes(x)))
     assert.ok(r.includes('view BMV-185-crucified-christ-wounds-bountiful'), r);
-  // semantic ledger 96 at checkpoint 62, 20 after the checkpoint 63 RES96 decisions; source-view decision recorded
-  assert.equal(read('bmc-semantic-dispositions.csv').trim().split('\n').length - 1, 20);
+  // semantic ledger 96 at checkpoint 62, 20 after the checkpoint 63 RES96 decisions, 0 after
+  // RES96-C01–C14 (checkpoint 64); source-view decision recorded
+  assert.equal(read('bmc-semantic-dispositions.csv').trim().split('\n').length - 1, 0);
   const sv = read('bmc-source-views.csv')
     .split('\n')
     .filter(r => r.includes(',' + KEY + ','));

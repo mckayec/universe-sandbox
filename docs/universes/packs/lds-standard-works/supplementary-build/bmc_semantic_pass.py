@@ -44,18 +44,9 @@ LIMIT = ('reading of the committed research (ledger row, full-read rows, crosswa
 SEMANTIC = {
     # checkpoint 63: the entries for BMC-064, 077, 083, 085, 086, 089, 090, 120, 144, 147, 148, 221, 224, 225 and 228 are
     # removed; those keys now carry RES96 full-read decisions (copy_bmc_res96.py) and leave the default-omission ledger
-    'BMC-193': ('represented', 'Israel’s gathering and the old/New Jerusalem promises in the BXC02 record belong '
-                               'to the chapters that teach them (BMV-190, BMV-195; rollup range-spill); the record’s '
-                               'lost-tribes announcement is BMV-191 (S37: no tribe identity or destination); '
-                               'Isaiah, Jeremiah and Zedekiah are Nephite disciples (rollup namesakes)'),
-    'BMC-223': ('namesake', 'Jared and Heth are Jaredite rulers; the serpents are a Jaredite famine episode, not tied by '
-                            'the research to any Bible text'),
-    'BMC-111': ('namesake', 'Noah here is a Nephite land (BXP10) attacked with Ammonihah, not the patriarch'),
-    'BMC-163': ('namesake', 'Mulek is a city on Nephi and Lehi’s mission route (BXP29); the Zedekiah lineage is '
-                            'carried by BMV-166'),
-    'BMC-175': ('practice-or-title', 'the law of Moses remains in force (a practice); the new star is the Book of '
-                                     'Mormon birth sign, which the research does not tie to Matthew 2’s star '
-                                     '(unstated parallel, not linked); the Nephi here is a Nephite record keeper'),}
+    # checkpoint 64: the entries for BMC-111, 163, 175, 193 and 223 are removed; the RES96-C01–C14 views and
+    # consolidations (copy_bmc_res96c.py) now carry those keys, so the default-omission ledger is empty
+}
 
 
 def ledger_lines():
