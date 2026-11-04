@@ -14,7 +14,7 @@ corrections".
   volume/book. The label's chapter must equal the URL's chapter. Parsing uses a pattern, not `new URL`, so it runs the same
   in node vm contexts.
 - **Fully consumed syntax.** Supported: `N`, `N–M` (chapter range, URL = first chapter), `N:verses`, `N heading`,
-  `N heading, verses`. Verse lists take `,`, `, and`, ` and ` separators. Any residue, verse 0, reversed verse or chapter
+  `N heading, verses`. Verse lists take `,`, `, and`, `and` separators. Any residue, verse 0, reversed verse or chapter
   ranges, unknown books and unsupported document titles return `{ ok: false, why }`. A parse failure never becomes
   whole-chapter scope; invalid citations contribute nothing and are reported in `invalid`.
 - **Components.** `verses`, `chapter` (explicit whole chapter), `heading`, `doc`. Front matter uses exact document
@@ -46,11 +46,11 @@ promote nothing without acceptance; acceptance binding, reconciliation and indep
 335 relationships; 0 promoted; 0 drawable. Classes vs checkpoint 15: shared-verse 73 (=), shared-chapter 13 → 14,
 same-chapter 10 → 9, cross-text 231 → 229, no-locator 3 → 5, travel 5. Three rows change:
 
-| Edge | Was | Now | Why |
-|---|---|---|---|
-| `x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith` | same-chapter | shared-chapter (D&C 11 heading) | mixed `D&C 11 heading, 1` keeps its heading (the reviewer's real-row case) |
-| `x:c:BMV-043-jesse-ruler>c:OTM-a01-jesse` | cross-text | no-locator | `Isaiah 11 heading/notes` is unsupported syntax |
-| `x:c:DCM-dcp-oliver-cowdery>c:PGM-qg14-cowdery-1834` | cross-text | no-locator | `Joseph Smith—History, appended Cowdery note` has no approved section identity |
+| Edge                                                 | Was          | Now                             | Why                                                                            |
+| ---------------------------------------------------- | ------------ | ------------------------------- | ------------------------------------------------------------------------------ |
+| `x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith`    | same-chapter | shared-chapter (D&C 11 heading) | mixed `D&C 11 heading, 1` keeps its heading (the reviewer's real-row case)     |
+| `x:c:BMV-043-jesse-ruler>c:OTM-a01-jesse`            | cross-text   | no-locator                      | `Isaiah 11 heading/notes` is unsupported syntax                                |
+| `x:c:DCM-dcp-oliver-cowdery>c:PGM-qg14-cowdery-1834` | cross-text   | no-locator                      | `Joseph Smith—History, appended Cowdery note` has no approved section identity |
 
 The last two are fail-closed results, not errors: both relationships were cross-text, so no shared evidence was lost.
 Supporting a heading/notes component or a JS—H appended-note section would need an approved identity rule (ChatGPT's
@@ -78,3 +78,18 @@ AT acceptance.
 
 The versioned review sidecar file (rows in the `v: 1` shape above) and the bounded 12-row pilot from the checkpoint-15
 handoff. Adapter stays unwired; promotions stay 0 until rows are accepted.
+
+## Addendum: pilot bindings, mechanical dry run only
+
+ChatGPT's twelve-row pilot (HANDOFF_PLAN, commit `866854c`) arrived during this run. Without building or applying any
+review entry, `tl17/pilot-eligibility.mjs` checks the **11 recommended rows** against the corrected module: the seven
+shared-component rows (D&C 124:141, 52:37, 30:5–7, 124:126, D&C 4 heading, Testimony of Eight Witnesses document, D&C
+11 heading) pass `eligibility`; the four cross-text rows (3 Ne 12:1–12 / Matt 5:1–12, 2 Ne 30:9, 11–15 / Isa 11:4–9,
+Mosiah 14:1–12 / Isa 53:1–12, 2 Ne 17:1–9 / Isa 7:1–9) pass `independentEligibility`. 11/11 eligible, 0 promoted
+(`tl17/pilot-eligibility-output.txt`). Row 10 (Babylon) stays deferred and was not checked.
+
+Gap for the sidecar, for the reviewer: rows 3 and 9 rely on **supplementary evidence outside both card citations**
+(D&C 30 heading for full names; Mosiah 13:1–6, 33–35 for Abinadi continuity). The v1 entry has one evidence role per
+mode. Proposal for the sidecar unit: an optional `support: [{ role, src, note }]` list that is stored and shown but is
+never containment-checked or promoted into `edge.src`. The sidecar itself waits for the mechanism to be accepted, as
+the handoff asks.
