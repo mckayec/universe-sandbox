@@ -2688,3 +2688,61 @@ updated checkpoint 58 exact-locator/copy assertions); `pnpm test:pages` (13 page
 `pnpm test:browser` passed ([log](supplementary-build/s59-browser-smoke.txt), Playwright Chromium 1243 via
 `CHROME_PATH`). Not done: rendered captures of the three cards; matched-browser, physical-device, real-GPU and 4K
 gates remain as assigned. No chapter-wide or release acceptance is claimed.
+
+## Checkpoint 60 — 20-chapter semantic tranche (HANDOFF_PLAN 2026-11-04 “Next bounded semantic tranche”)
+
+Runtime head **81f310dcac2fde4bd05535829a2057cfbffc3c06** (parent 739eeae). One generator diff (`copy_bmc.py`,
+`build.py` `PRIMARY_DESC`, `bmc_semantic_pass.py`, `bmc_textscan.py`, `bmc_textscan_triage.py`); `build.py` with the
+accepted register (PR34 5951442), then `bmc_omission_rollup.py .`, `bmc_semantic_pass.py .`, `timeline_vision.cjs`
+and `bmc_textscan.py` regenerated the pack and CSVs. Before the edits the generator reproduced the committed pack and
+CSVs byte-for-byte. Every cited verse (and Genesis 10:8–9, Matthew 23:25–26) was read in the bcbooks/scriptures-json
+mirror before writing copy; official chapter links remain the citations. Copy names the speaker or narrator and
+restates the cited verses only. ChatGPT's tranche dispositions were used as given; no discovery pass was repeated.
+
+**New 3/bom views (11).** All undated, unpinned, one-way to 1/ot targets; no 4/dc or 5/pgp source or target.
+
+| Key | Locator (+ added source) | Link | Disposition notes |
+|---|---|---|---|
+| BMV-068 | Mosiah 2:3–4, 34 | OTM-jerusalem | narrator’s assembly and Benjamin’s speech kept distinct; 2:3 sacrifice a practice, no OHR-MOSES |
+| BMV-076 | Mosiah 10:12–16 | OTM-jerusalem | Zeniff’s report of a Lamanite tradition, explicitly not verified history; his description stays his; Noah-king reason dropped |
+| BMV-084 | Mosiah 18:1–2 | — | future-event teaching, distinct from Alma 40; Luke 24 comparison declined (NOLINK) |
+| BMV-106 | Alma 11:4 (copy names 11:3–19 as context) | OTM-jerusalem | cultural comparison; no minted coins, conversions or shared system |
+| BMV-135 | Alma 40:16–21 | — | qualified source-only view: Alma’s opinion and refusal to fix the timing kept; Adam an epoch; NTE-resurrection-accounts declined |
+| BMV-149 | Alma 54:23 | OTM-jerusalem | Ammoron’s pedigree and coercion charge attributed, not established; no repeated journey |
+| BMV-155 | Alma 60:23–24 + Matthew 23:25–26 | — | optional comparison **selected** as source-only; no quotation or shared scene claimed; Sermon card not the target |
+| BMV-165 | Helaman 7:7 | OTM-jerusalem | later speaker vs. founding Nephi kept distinct; no trip, genealogy, route or date |
+| BMV-183 | 3 Nephi 9:15–22 | — | voice scene, distinct from 3 Nephi 11 Bountiful; not a quoted crucifixion; BXC01 retained; OH-C01 declined |
+| BMV-216 | Ether 2:1 + Genesis 10:8–9 | — | naming explanation only; not Shinar/Babel, not tower-builder, not the later Jaredite Nimrod; no Nimrod card |
+| BMV-217 | Ether 3:2, 9, 13–18 | OHC-CREATION | prayer, the Lord’s words and Moroni’s comparison distinct; Adam not named; OH-E01 declined |
+
+**Builder readings to check.** (1) BMC-165: the handoff allowed BJ01 to carry the sentence; a separate view was used
+instead, following BMV-104/BMV-067, because BJ01’s sources are the 1 Nephi migration chapters and its desc is a route
+summary — a later speaker’s Helaman recollection there would mix speaker and route. (2) BMC-149: a separate view rather
+than a BXJ01/SC04.6 edit, for the same reason. (3) BMV-217 is titled “as the Lord shows himself” rather than
+“vision”, so the vision crosswalk does not need a new class row; the crosswalk is unchanged. (4) BMV-106 cites 11:4
+only, the verse that makes the comparison.
+
+**BC14 enrichment (BMC-238).** New `copy_bmc.PRIMARY_DESC` rewrites only BC14’s desc in place (first sentence
+unchanged): Mormon’s verse-25 recollection of Christ’s sufferings and death and the showing of his body unto their
+fathers, “the Book of Mormon appearance to their ancestors, not a Gospel appearance”. Sources unchanged (Moroni
+9:1–6,7–19,25–26); no new view, event or Bible edge; the Aaron namesake rejection stays in the BMC-238 decision.
+
+**Recorded decisions (bmc-source-views.csv, “checkpoint 60 decision”):** BMC-070 rationale repair (Mosiah 4:7 fall of
+Adam as the scope of mankind addressed; no Fall card, event or Eden pin); retentions BMC-071, 091, 092, 127, 132, 134,
+170, each with the optional comparison **declined** as editorial and named (1 Cor 15:58; BMV-166 for Mulek/Zedekiah;
+Matthew 7:23/25:41; Luke 8:4–15; Numbers 21:4–9; Alma 39:15–19 coming-Christ teaching, no Nativity/Crucifixion
+setting; John 5:28–29). BMC-238 represented by BC14.
+
+**Ledgers:** 107 BMC views (was 96); semantic ledger **96** rows (namesake 50, no-bible-relation 35,
+practice-or-title 3, represented 8), matching the handoff’s 96 rows outside the tranche; rollup reconciled 96;
+vision crosswalk unchanged (156 rows, 97 keyword candidates). Text screen: still 39 chapters, 114 rows; checkpoint-60
+rows are labelled as such; the Ether 2:1 Nimrod hit is now `resolved` (BMV-216) — 91 consistent, 7 no-hit,
+14 resolved, **2 reader** (the two 3 Nephi 11:39–40 Matthew leads, unchanged and still undecided).
+
+**Checks at 81f310d:** `pnpm format`; `pnpm check` (format, build, check:dist, **156/156** unit tests incl. new
+`tests/lds-semantic-c60.test.ts`: locators, gates, one-way targets, no dates/pins, attribution/scene safeguards, BC14
+source unchanged, 20 keys out of ledger and rollup, ledger at 96, reader leads intact; view/ledger counts updated in
+`tests/lds-pack.test.ts`); `pnpm test:pages` (13 pages × 2 viewports); full `pnpm test:browser` passed
+([log](supplementary-build/s60-browser-smoke.txt)). Not done this unit: rendered captures of the new cards (data-only
+change in the generic codex list); the 96 remaining residual rows, wider vision completeness, 4K, matched-browser,
+physical-device and real-GPU gates are unchanged. No chapter-wide, corpus or release acceptance is claimed. Not merged.
