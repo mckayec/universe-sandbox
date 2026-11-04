@@ -13,7 +13,7 @@ Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 
 7 ui strings · 8 intro · 9 groups · 10 worlds · 11 world surfaces (`gfx`, features, sites) ·
 12 events · 13 codex · 14 galaxy (layout, labels, territories, glows, links) · 15 legend ·
 16 hooks · 17 minimum pack · 18 content rules · 19 realms · 20 layers & timeline (Track A) ·
-21 family tree (Track A).
+21 family tree (Track A) · 22 places you can enter.
 
 ---------------------------------------------------------------------------------------------------
 
@@ -732,3 +732,72 @@ Behaviour:
 * Content rules: describe each tradition in its own terms; when the date or the parentage is disputed, say so
   in `notes` (`scholarship`) and mark `approx:true` rather than picking a side silently. A tree draws a
   lineage, not a ranking: no ordering other than by date.
+
+## 22. Places you can enter (`site.scene`, landmarks, event `lm` and `fx`)
+
+Every site on a landable world can be **entered**: the camera drops from the globe to a ground-level 3D
+view of that city, region or station, drawn procedurally by `places.js` (loaded by `index.html` after
+`engine.js`). The view has named **landmarks** you can click to fly to, a day / dusk / night switch, and
+lists the Chronicle events that happened there; clicking an event flies to its landmark and plays its
+effect. A site with no `scene` still opens: the engine guesses the kind of place from the world's
+`gfx.type` and the site's name and description, and shows the site itself as the one landmark. Give
+`scene` to make the place match the books.
+
+```js
+sites:[{id:"arrakeen", name:"Arrakeen", lat:12, lon:-30, books:[1,2,3], desc:"…",
+  scene:{
+    kind:"city",                 // archetype, below
+    arch:"desert",               // architecture style, below (default from kind and world)
+    size:"large",                // small | medium | large | huge   (default medium)
+    tod:"dusk",                  // day | dawn | dusk | night        (default day)
+    weather:"dust",              // clear | dust | snow | rain | ash | mist | spores | storm
+    coast:"s",                   // optional sea on one side: n | s | e | w ; or water:true for open water
+    river:false, walls:true,     // optional: a river through the middle; a ring wall
+    sky:{planet:"#c9a96e", moons:2, rings:false},   // optional bodies in the sky (stations: the world below)
+    pal:{ground:"#c8a878", stone:"#d9c49a", roof:"#8a5a3a", glass:"#9fc4d8", light:"#ffb070"},  // optional colours
+    landmarks:[
+      {id:"residency", name:"The Residency", kind:"palace", at:[0,.1], h:1.4, books:[1],
+       desc:"One to three sentences: what it is and what happens here."},
+      {id:"spaceport", name:"Arrakeen Spaceport", kind:"pad", at:[.7,-.5], books:[1], desc:"…"}
+    ]}}]
+```
+
+| field | notes |
+|---|---|
+| `kind` | `city capital town village palace fortress castle port spaceport station habitat underground sietch desert ruins battlefield wilds forest mountain ice sea temple monastery library arena camp crater tombs farm dome wreck industrial` |
+| `arch` | `classical gothic imperial modern brutal organic crystal rustic desert alien industrial eastern ancient` |
+| `size` | how far the built-up area spreads and how dense it is |
+| `tod` | the light the place opens in; the visitor can switch it |
+| `weather` | particles and haze |
+| `coast` / `water` / `river` / `walls` | optional terrain features; `port` and `sea` imply water |
+| `under` | `true`: an underground cavern (rock ceiling, lamps, no sky). `sietch`, `underground` and `mine`-type places set it |
+| `space` | `true`: a station or ship in space (no ground, stars, `sky.planet` below). `station` and `habitat` set it |
+| `sky` | `{planet: colour or {c, size}, moons: n, rings: bool, sun: colour}` |
+| `pal` | colour overrides; anything left out comes from the world's `gfx.pal` and the `arch` style |
+| `landmarks` | the named places inside the site (aim for 4–12 at major sites) |
+
+**Landmarks**: `id` (unique in the site), `name`, `desc` (required), `kind`, `at:[east, north]` with each
+axis −1..1 across the site (default: arranged around the centre), `h` (size, 0.3–3, default 1), `col`
+(colour override), `books` / `first` (gating, same rules as sites: in cumulative mode a landmark first met
+in a later book is hidden), `since` / `until` (as for sites). Kinds:
+`tower spire skyscraper palace citadel castle keep wall gate arch bridge dome temple cathedral pyramid
+ziggurat obelisk statue monolith arena library hall house market plaza garden tree grove cave mine well
+crater lake dock pad ship wreck station ring tomb ruin camp tent farm lighthouse mast reactor factory
+beacon portal stones peak cliff throne shrine`.
+
+**Events** may name a landmark and an effect: `{id, book, world, site:"arrakeen", lm:"residency",
+fx:"bombard", …}`. `lm` must be a landmark of that site. `fx` is one of `battle fire bombard blast fleet
+storm quake crowd duel flood launch arrival eruption worm`; it plays when the event is opened inside the
+place. Keep effects to events the books actually describe.
+
+**Pack defaults** (optional top-level `places`): `places:{arch:"gothic", traffic:true, tod:"dusk", size:"large"}`
+sets the architecture, air traffic, light and size used when a site's `scene` leaves them out (e.g. a gothic
+far-future empire, or `traffic:false` for a pre-industrial world).
+
+**Worlds with no named places**: the dossier offers *Walk the surface*, an unnamed schematic view built from
+the world's `gfx` with no landmarks; it lists the world's events that have no `site`. Nothing needs to be
+added to the pack for this.
+
+Content rules (section 18) apply with extra force here: landmark names and descriptions must come from
+the books (paraphrased), and positions inside a site are schematic. Mark guessed layouts in a comment
+`/* layout schematic */`; never invent a landmark to fill space.
