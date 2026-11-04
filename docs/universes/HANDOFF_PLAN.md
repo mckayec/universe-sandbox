@@ -1069,3 +1069,32 @@ The 26-record handoff is substantively accounted for: **17 real new 3/bom views,
 **Remaining limits:** The 26 removals leave **116 unchanged residual semantic rows**, not 116 newly source-certified chapters. The screen has 114 rows: 92 consistent, seven no-hit, 13 resolved and **two still-reader leads at 3 Nephi 11:39–40 (Matthew 16:18 / 7:24–27)**. BMC-185's new 11:11–15 view closes only its death/wounds/ascension finding; removal of the chapter key from the semantic rollup does not close those two separate leads. Keep them explicitly tracked or return an explicit selected/declined editorial disposition. The whole third-party mirror was not independently certified or rerun, the full pack build/full CI remain with the progress lane, and dedicated rendered captures of the new cards were not performed in this semantic review. Wider semantic/vision completeness, UI, 4K and hardware gates remain open as already assigned.
 
 For the return, regenerate affected pack/ledger evidence and rerun updated exact-locator, gate and semantic tests on one resulting head. Report SEM58-C1–C3 separately from any optional Matthew decision; do not claim chapter-wide or release acceptance.
+
+
+## 2026-11-04 — Timeline checkpoints 11–12: fix drag cancellation and chapter gates
+
+Claude: take TL-R10/TL-R11 and the small TL-E02 correction together, after the already-prioritized PR33 SEM58-C1–C3 return or in parallel without overlapping writers. Do not stall either lane for another proposal cycle. [Exact PR45-head CI 41743457985](https://github.com/mckayec/universe-sandbox/actions/runs/41743457985) passed with deployment skipped. Keep PR33 unchanged in the timeline unit. Independent primary-source review is separately covering Mosiah 2/4/5/10/18/25/26, Alma 11/32/37/39/40/54/60, Helaman 7/12, 3 Nephi 9, Ether 2/3 and Moroni 9; do not duplicate that source tranche while these concrete fixes are available.
+
+Review scope: PR45 **`df67a6ec987cd9b2585f1830b697b79f1f6bbedc`**, including checkpoint11 parent `b0baa1b`. Claude remains implementation owner. Keep TL-R01–09 and TL-E01 boundedly closed; PR33 semantic corrections remain a separate queue.
+
+- **TL-R10 — Medium: cancel active drags without committing.** At 390px and 1440px, dragging Judaism toward Christianity, pressing Escape while holding the pointer, then releasing and reopening commits the reorder. `close()` leaves the drag active; unexpected `lostpointercapture` also commits. Cancel the transaction before closing or replacing drag DOM and on unexpected capture loss. **Only deliberate pointerup should commit.** Cancellation must preserve pre-drag order and URL, clear drag markings, and preserve appropriate focus. Keep keyboard ↑/↓ controls working.
+
+  Return targeted compact/wide tests for Escape, Close, explicit pointercancel, unexpected capture loss, and resize/filter rerender during a drag. Check order, URL, classes and focus. Retain normal mouse/touch drop, moved-toggle focus, keyboard reorder, own-slot no-op, Reset and URL reload checks.
+
+- **TL-R11 — Medium, latent: honor books-derived chapter gates.** A card `{books:[4], chapter:9}` adapts with `first:null`; `chapterOk` therefore allows it in cumulative book 4 with either unknown chapter or chapter 1. Resolve the effective first book using supported `first`/`book`/`books` schema defaults, or withhold ambiguous chapter-bearing records. **In cumulative mode, a record first encountered in the current book must remain hidden until the known chapter reaches its threshold.** Earlier-book records may pass; later-book records must remain hidden. Preserve the intentional All/single-book contract.
+
+  Return tests for books-only cards/sites and explicit `first`/`book`, covering unknown, earlier, equal and later chapters plus earlier/later selected books. Verify host integration filters records and relationship endpoints before counts, search, layout and URL selection. Neither audited real pack currently contains chapter fields; this is not a demonstrated current-content leak.
+
+- **TL-E02 — Low: correct the count.** Checkpoint12’s `3b24180` fixture has **1,639 undated records**, not 1,634; 1,634 is its narrative subset. Include the five historical-but-undated cards. Keep historical fixture counts labeled separately from current PR33 `dd62a45`: **1,686 records, 1,656 undated, 1,651 narrative, 329 relationships, zero drawable**.
+
+The three builder dispositions are:
+
+1. **Overview on Other:** acceptable as an isolated, lossless fallback. Before wiring, label it “Standard Works overview” or “Cross-work overview.” Do not invent work membership, a date, or a sixth work.
+2. **Collapsed per-work undated panel:** implement before wiring. Include every undated record, accessible expanded state, gate-filtered counts, source ordering, search across collapsed entries, and reveal of selected/deep-linked records. Verify individual/combined works, multi-layer records and chart/list completeness.
+3. **Card `src` grounding a `see` relation:** permitted only after checking that the particular locator supports the endpoints, relation kind/direction and identity/scope caveats. Attach reviewed evidence explicitly to that relationship. Do not promote all links from a cited card; retain empty edge `src` and separate `cardSrc` meanwhile.
+
+Return exact-head tests and targeted browser evidence. Existing independent validation passed **131 tests, 121 distribution files and 40 normal drag checks**, using fallback Chromium154; it does not establish matched-browser, physical-device, real-GPU or assistive-technology acceptance.
+
+The adapter remains **isolated and unwired**. Preserve separate wiring/chapter-selector work and existing record-citation, relationship/travel-source, chronology, genealogy/succession, CH13/X08, device and release gates. Route-wide years are not independently dated stops. Do not reopen checkpoint10’s closed smoke investigation.
+
+This main handoff records reviewed findings and current assignments. Full review artifacts remain local; no remote review-branch publication, PR metadata refresh, formal approval, merge or deployment is authorized by it.
