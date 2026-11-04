@@ -1,0 +1,40 @@
+PASS 390: no "Other" lane
+PASS 390: one folded panel per lane over 12 undated (5/5)
+PASS 390: panels closed by default
+PASS 390: work-ot keeps all 525 rows and counts them
+PASS 390: work-nt keeps all 286 rows and counts them
+PASS 390: work-bom keeps all 330 rows and counts them
+PASS 390: work-dc keeps all 447 rows and counts them
+PASS 390: work-pgp keeps all 78 rows and counts them
+PASS 390: every undated record is in the DOM (1667/1667)
+PASS 390: BoM panel in source order
+PASS 390: search "Church practice in" finds records in a closed panel (1)
+PASS 390: search keeps focus while typing
+PASS 390: hit opens its panel, selects and focuses the row (work-bom)
+PASS 390: query survives the rerender
+PASS 390: list arrangement lists every row unfolded (TL-R02)
+PASS 390: user-opened panel stays open
+PASS 390: deep-linked record opens its panel and takes focus
+PASS 390: Enter toggles a panel
+PASS 390: panel summary target 44px high
+PASS 390: no console/page errors 
+PASS 1440: no "Other" lane
+PASS 1440: one folded panel per lane over 12 undated (5/5)
+PASS 1440: panels closed by default
+PASS 1440: work-ot keeps all 525 rows and counts them
+PASS 1440: work-nt keeps all 286 rows and counts them
+PASS 1440: work-bom keeps all 330 rows and counts them
+PASS 1440: work-dc keeps all 447 rows and counts them
+PASS 1440: work-pgp keeps all 78 rows and counts them
+PASS 1440: every undated record is in the DOM (1667/1667)
+PASS 1440: BoM panel in source order
+PASS 1440: search "Church practice in" finds records in a closed panel (1)
+PASS 1440: search keeps focus while typing
+PASS 1440: hit opens its panel, selects and focuses the row (work-bom)
+PASS 1440: query survives the rerender
+PASS 1440: list arrangement lists every row unfolded (TL-R02)
+PASS 1440: user-opened panel stays open
+PASS 1440: deep-linked record opens its panel and takes focus
+PASS 1440: Enter toggles a panel
+PASS 1440: panel summary target 44px high
+PASS 1440: no console/page errors 
