@@ -486,7 +486,7 @@
       let h =
         '<section class="tl-und"><h3>Undated or in source order · ' +
         V.undated.length +
-        '</h3><p class="tl-why">No calendar year in the source; kept off the axis, in the order the pack gives them.</p>';
+        '</h3><p class="tl-why">No calendar year in the source; kept off the axis, in the order the pack gives them. Each list is one Tab stop; arrow keys move within it.</p>';
       const lanes = arranged();
       const groups = new Map(
         TLM.foldUndated(
@@ -782,7 +782,18 @@
       return true;
     }
     function tabbables() {
-      return [...el.querySelectorAll(TABBABLE)].filter(shown);
+      return [...el.querySelectorAll(TABBABLE)].filter(x => x.getAttribute('tabindex') !== '-1' && shown(x));
+    }
+    /* TL-R13: each undated list is one Tab stop (roving tabindex), so an open panel of hundreds of rows does not
+       bury Close and the other panels. The stop is the selected row when it is in that list, otherwise the first;
+       ArrowUp/ArrowDown/Home/End move inside the list and carry the stop with them. */
+    function rove(stop) {
+      el.querySelectorAll('.tl-und ol').forEach(ol => {
+        const rows = ol.querySelectorAll('.tl-it');
+        if (!rows.length) return;
+        let t = stop && ol.contains(stop) ? stop : ol.querySelector('.tl-it.sel') || rows[0];
+        rows.forEach(r => r.setAttribute('tabindex', r === t ? '0' : '-1'));
+      });
     }
     /* the visible element for a record: its row or mark, never a copy hidden in a closed panel */
     function rowFor(id) {
@@ -795,6 +806,7 @@
       const region =
         a && (scrollEl.contains(a) ? scrollEl : info.contains(a) ? info : laneBar.contains(a) ? laneBar : null);
       draw();
+      rove();
       if (open && (key || (a && el.contains(a))))
         restoreFocus(key, region && (region === scrollEl ? scrollEl : region === info ? info : laneBar));
     }
@@ -1017,6 +1029,10 @@
       },
       true,
     );
+    el.addEventListener('focusin', e => {
+      const r = e.target.closest && e.target.closest('.tl-und ol .tl-it');
+      if (r && r.getAttribute('tabindex') !== '0') rove(r);
+    });
     el.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         e.stopPropagation();
@@ -1041,6 +1057,19 @@
         const all = [...el.querySelectorAll('.tl-m')].filter(shown);
         const n = all[all.indexOf(it) + (e.key === 'ArrowDown' ? 1 : -1)];
         if (n) n.focus();
+        return;
+      }
+      const row = e.target.closest && e.target.closest('.tl-und ol .tl-it');
+      if (row && ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) {
+        e.preventDefault();
+        const rows = [...row.closest('ol').querySelectorAll('.tl-it')];
+        const i = rows.indexOf(row);
+        const n =
+          e.key === 'Home' ? rows[0] : e.key === 'End' ? rows[rows.length - 1] : rows[i + (e.key === 'ArrowDown' ? 1 : -1)];
+        if (n) {
+          rove(n);
+          n.focus();
+        }
         return;
       }
       if (e.key === 'Tab') {
