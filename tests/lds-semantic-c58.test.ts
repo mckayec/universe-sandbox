@@ -22,9 +22,9 @@ const VIEWS: [string, string[], string[]][] = [
   ['BMV-015-abraham-covenant-isaiah-restoration', ['1 Nephi 15:18, 20'], ['OHR-ABRAHAM']],
   ['BMV-052-isaiah-11-righteous-judge', ['2 Nephi 30:9, 11–15', 'Isaiah 11:4–9'], ['OTM-c04-messianic-reception']],
   ['BMV-059-abraham-isaac-similitude', ['Jacob 4:5'], ['OHR-ABRAHAM', 'OHR-ISAAC']],
-  ['BMV-065-zedekiah-captivity-tower-stone', ['Omni 1:15, 20–22'], ['OHR-ZEDEKIAH']],
+  ['BMV-065-zedekiah-captivity-tower-stone', ['Omni 1:15, 20–22', 'Ether 1:3–5'], ['OHR-ZEDEKIAH']],
   ['BMV-067-jerusalem-ancestral-benjamin', ['Mosiah 1:6, 11'], ['OTM-jerusalem']],
-  ['BMV-082-first-parents-fall-abinadi', ['Mosiah 16:3'], []],
+  ['BMV-082-first-parents-fall-abinadi', ['Mosiah 16:3, 6–8'], []],
   ['BMV-104-jerusalem-deliverance-alma', ['Alma 9:9, 22'], ['OTM-jerusalem']],
   ['BMV-117-creation-fall-aaron', ['Alma 22:9–13'], ['OTM-jerusalem', 'OH-C01']],
   ['BMV-140-moses-comparison-alma-departure', ['Alma 45:18–19'], ['OHR-MOSES']],
@@ -58,6 +58,17 @@ test('Checkpoint 58: residual semantic views carry exact locators, 3/bom gates a
   assert.match(d('BMV-065-zedekiah-captivity-tower-stone'), /no route, tower site or date/);
   assert.ok(!/Mulek/.test(d('BMV-065-zedekiah-captivity-tower-stone')));
   assert.match(d('BMV-082-first-parents-fall-abinadi'), /distinct from Jacob’s teaching in 2 Nephi 9/);
+  // checkpoint 59 (SEM58-C1–C3): prospective naming in Mosiah 1:11; Abinadi's future-as-accomplished sourced to 16:6–8;
+  // Moroni's Ether 1 abridgment sentence sourced to Ether 1:3–5
+  const benjamin = d('BMV-067-jerusalem-ancestral-benjamin');
+  assert.match(
+    benjamin,
+    /announces that he will give his people a name so that they may be distinguished above all the people the Lord brought out of Jerusalem/,
+  );
+  assert.ok(!/gives his people a name above all whom/.test(benjamin));
+  assert.match(d('BMV-082-first-parents-fall-abinadi'), /future events as though already accomplished/);
+  assert.match(d('BMV-065-zedekiah-captivity-tower-stone'), /Moroni’s abridgment in Ether 1/);
+  assert.match(byKey.get('BMV-065-zedekiah-captivity-tower-stone').src[1].u, /bofm\/ether\/1\?lang=eng$/);
   assert.match(d('BMV-117-creation-fall-aaron'), /not the Book of Mormon city of Alma 21; this is Aaron’s teaching/);
   assert.match(d('BMV-140-moses-comparison-alma-departure'), /explicitly uncertain; no death event/);
   assert.match(d('BMV-161-abraham-isaac-jacob-fellowship'), /not a vision, journey or genealogy/);

@@ -406,14 +406,15 @@ VIEWS = [
      'also begins from the tower.', '15, 20–22', [('OHR-ZEDEKIAH', 'his captivity, named by Amaleki')]),
     (67, 'jerusalem-ancestral-benjamin', 'Ancestral Jerusalem in Benjamin’s charge (Mosiah 1)', 'mention',
      'Book of Mormon — Benjamin tells his sons that the plates of Nephi hold their fathers’ records from the time they '
-     'left Jerusalem, and he gives his people a name above all whom the Lord brought out of the land of Jerusalem. '
+     'left Jerusalem, and he announces that he will give his people a name so that they may be distinguished above all '
+     'the people the Lord brought out of Jerusalem. '
      'Jerusalem is the ancestral city recalled, not a destination; no voyage or date is added.', '6, 11',
      [('OTM-jerusalem', 'fathers’ departure, recalled by Benjamin')]),
     (82, 'first-parents-fall-abinadi', 'The first parents and the Fall in Abinadi’s teaching (Mosiah 16)',
      'teaching',
      'Book of Mormon — Abinadi teaches that the old serpent beguiled the first parents, which was the cause of their '
      'fall and of all mankind becoming carnal. This is Abinadi’s sermon, distinct from Jacob’s teaching in 2 Nephi 9; '
-     'later in the chapter he speaks of future events as though already accomplished. No Eden is located.', '3', []),
+     'later in the chapter he speaks of future events as though already accomplished. No Eden is located.', '3, 6–8', []),
     (104, 'jerusalem-deliverance-alma', 'Deliverance from Jerusalem recalled by Alma at Ammonihah (Alma 9)', 'mention',
      'Book of Mormon — Alma asks the people of Ammonihah whether they remember that their father Lehi was brought out '
      'of Jerusalem by the hand of God, and recalls their deliverance from the land of Jerusalem. The recollection is '
@@ -489,6 +490,8 @@ EXTRA_SOURCES = {
     199: [('3 Nephi 26:1–2', _S + 'bofm/3-ne/26?lang=eng')],
     52: [('Isaiah 11:4–9', _S + 'ot/isa/11?lang=eng')],
     236: [('1 Corinthians 13:4–8', _S + 'nt/1-cor/13?lang=eng')],
+    # checkpoint 59 (HANDOFF_PLAN 2026-11-04 SEM58-C3): source for the Ether 1 abridgment sentence
+    65: [('Ether 1:3–5', _S + 'bofm/ether/1?lang=eng')],
 }
 
 # Views implemented without a See-also link: reason (recorded in bmc-source-views.csv).
