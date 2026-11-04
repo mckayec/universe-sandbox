@@ -1274,7 +1274,7 @@
       {id: "e67", book: 1, world: "sel", site: "teoras", lm: "streets", fx: "battle", title: "Hrathen’s choice", text: "In Teoras Hrathen turns against Dilaf to save Sarene. Struck down in the streets, he still kills Dilaf before he dies."},
       {id: "e5", book: 1, world: "sel", site: "elantris", lm: "gate", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
       /* II Mistborn */
-      {id: "e6", book: 2, world: "scadrial", site: "luthadel", lm: "clubs", title: "The crew", text: "Kelsier gathers thieves for an impossible job and finds Vin, a street girl who is secretly Mistborn."},
+      {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn."},
       {id: "e7", book: 2, world: "scadrial", site: "hathsin", lm: "pits", title: "The survivor of Hathsin", text: "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."},
       {id: "e68", book: 2, world: "scadrial", site: "fellise", lm: "renoux", title: "Valette Renoux", text: "Vin learns to pass as a young noblewoman and goes to the balls in Luthadel’s keeps, where she meets Elend Venture."},
       {id: "e69", book: 2, world: "scadrial", site: "luthadel", lm: "fountain", fx: "battle", title: "The Survivor falls", text: "Kelsier attacks the Inquisitors at an execution beside Fountain Square, and the Lord Ruler kills him in front of the skaa. His death makes him a legend."},
@@ -1292,9 +1292,9 @@
       /* III Warbreaker */
       {id: "e13", book: 3, world: "nalthis", site: "courtofgods", lm: "palace", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
       {id: "e14", book: 3, world: "nalthis", site: "ttelir", lm: "markets", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},
-      {id: "e77", book: 3, world: "nalthis", site: "courtofgods", lm: "enclave", title: "The Lifeless march", text: "The plotters torture Lightsong and Blushweaver for the Lifeless command phrases, change them and send the army toward Idris."},
-      {id: "e15", book: 3, world: "nalthis", site: "courtofgods", lm: "palaces", title: "Lightsong’s last day", text: "A god who doesn’t believe in himself uncovers the plot to start a war and gives his Breath to heal the God King."},
-      {id: "e78", book: 3, world: "nalthis", site: "courtofgods", lm: "palace", fx: "battle", title: "Susebron speaks", text: "Healed, Susebron Awakens cloth to retake his palace from the plotters, and with Vasher’s help the war is stopped."},
+      {id: "e77", book: 3, world: "nalthis", site: "courtofgods", title: "The Lifeless march", text: "After killing Blushweaver and threatening Llarimar, the plotters obtain Lightsong’s command phrase, change it, and order the Lifeless to march on Idris."},
+      {id: "e15", book: 3, world: "nalthis", site: "courtofgods", title: "Lightsong’s last day", text: "In captivity, Lightsong gives his Breath to heal Susebron, sacrificing himself to restore the God King’s tongue."},
+      {id: "e78", book: 3, world: "nalthis", site: "courtofgods", fx: "battle", title: "Susebron speaks", text: "Susebron uses Awakened cloth to rescue Siri. Vasher entrusts him with the D’Denir army, which is sent after the Lifeless marching on Idris."},
       {id: "e16", book: 3, world: "nalthis", site: "ttelir", title: "Vasher and Nightblood", text: "A grim Awakener with a talking black sword works to stop the war he helped cause long ago."},
       /* IV The Way of Kings */
       {id: "e17", book: 4, world: "roshar", site: "kholinar", lm: "palace", title: "The assassin in white", text: "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge."},
