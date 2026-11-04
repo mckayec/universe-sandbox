@@ -42,42 +42,20 @@ LIMIT = ('reading of the committed research (ledger row, full-read rows, crosswa
          'in the repository, so this is not a certified textual absence')
 
 SEMANTIC = {
+    # checkpoint 63: the entries for BMC-064, 077, 083, 085, 086, 089, 090, 120, 144, 147, 148, 221, 224, 225 and 228 are
+    # removed; those keys now carry RES96 full-read decisions (copy_bmc_res96.py) and leave the default-omission ledger
     'BMC-193': ('represented', 'Israel’s gathering and the old/New Jerusalem promises in the BXC02 record belong '
                                'to the chapters that teach them (BMV-190, BMV-195; rollup range-spill); the record’s '
                                'lost-tribes announcement is BMV-191 (S37: no tribe identity or destination); '
                                'Isaiah, Jeremiah and Zedekiah are Nephite disciples (rollup namesakes)'),
-    'BMC-089': ('namesake', 'Noah is the Zeniff-line king whose fugitive priests settle Amulon (BXP04)'),
-    'BMC-090': ('namesake', 'Noah is the Zeniff-line king (BXP03), not the patriarch'),
     'BMC-223': ('namesake', 'Jared and Heth are Jaredite rulers; the serpents are a Jaredite famine episode, not tied by '
                             'the research to any Bible text'),
-    'BMC-228': ('namesake', 'Jared, Noah and Nimrod appear in the Jaredite people record BXR05 as Jaredites; Gilead is '
-                            'Shared’s brother (rollup); no Bible link is made'),
-    'BMC-064': ('practice-or-title', 'Jarom describes teachers keeping Moses’ law and the Sabbath: a practice, not a '
-                                     'relation to the Moses card (rollup)'),
-    'BMC-077': ('namesake', 'Noah here is Zeniff’s son, king of the land; the pack’s Noah cards are Pearl of Great '
-                            'Price records (5/pgp), and no Old Testament Noah card exists'),
-    'BMC-083': ('namesake', 'Noah is the Zeniff-line king whose servants pursue Alma, not the patriarch'),
-    'BMC-085': ('namesake', 'Noah is the Zeniff-line king who flees to the temple-side tower, not the patriarch'),
-    'BMC-086': ('namesake', 'Noah’s priests are the Zeniff-line king’s, not the patriarch’s'),
     'BMC-111': ('namesake', 'Noah here is a Nephite land (BXP10) attacked with Ammonihah, not the patriarch'),
-    'BMC-120': ('practice-or-title', 'surviving Lamanites observe Moses’ law while looking to Christ: a practice, not a '
-                                     'relation to the Moses card (rollup)'),
-    'BMC-144': ('namesake', 'Noah is the fortified Nephite city Lehi commands, not the patriarch'),
-    'BMC-147': ('namesake', 'Mulek here is the city retaken near Bountiful (BXP29); Mulek’s descent from Zedekiah is '
-                            'carried by Nephi’s Helaman 8 teaching (BMV-166)'),
-    'BMC-148': ('namesake', 'Mulek is the city Lehi holds (BXP29); the Zedekiah lineage is carried by BMV-166'),
     'BMC-163': ('namesake', 'Mulek is a city on Nephi and Lehi’s mission route (BXP29); the Zedekiah lineage is '
                             'carried by BMV-166'),
     'BMC-175': ('practice-or-title', 'the law of Moses remains in force (a practice); the new star is the Book of '
                                      'Mormon birth sign, which the research does not tie to Matthew 2’s star '
-                                     '(unstated parallel, not linked); the Nephi here is a Nephite record keeper'),
-    'BMC-221': ('namesake', 'the research itself says Noah is distinct from biblical and Zeniff-line Noah; hill '
-                            'Ephraim is Jaredite (rollup); Nimrod is a Jaredite ruler'),
-    'BMC-224': ('namesake', 'Levi, Heth, Kish and Aaron are Jaredite kings and captives in the research; none is tied '
-                            'to a Bible person, and King Aaron is dispositioned in the rollup'),
-    'BMC-225': ('namesake', 'Seth is a Jaredite captive; the pack’s Seth card is a Pearl of Great Price lineage record '
-                            '(5/pgp) and the research gives no Bible link'),
-}
+                                     '(unstated parallel, not linked); the Nephi here is a Nephite record keeper'),}
 
 
 def ledger_lines():

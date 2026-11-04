@@ -731,6 +731,13 @@ OMIT = {
          'battle, Joshua or Lachish. A Helaman 12:25–26 / John 5:28–29 comparison is declined as editorial',
 }
 
+# Checkpoint 63: the 76 full-read residual dispositions (RES96) live in their own module; none overrides an
+# earlier decision.
+from copy_bmc_res96 import RES96_OMIT, RES96_SCAN_ROW  # noqa: E402
+
+assert not set(RES96_OMIT) & set(OMIT), sorted(set(RES96_OMIT) & set(OMIT))
+OMIT.update(RES96_OMIT)
+
 # Checkpoint 60: an existing primary 3/bom card whose description carries a BMC finding (desc rewritten in place by
 # build.write_bmc; its sources are unchanged). The first sentence is the card's existing copy.
 PRIMARY_DESC = {
@@ -788,3 +795,5 @@ SCAN_ROW = {
     ('BMC-102', 'Gideon'): 'Book of Mormon land Gideon (where Alma teaches), not the judge; the chapter’s Mary and '
                            'Jerusalem view is implemented',
 }
+assert not set(RES96_SCAN_ROW) & set(SCAN_ROW)
+SCAN_ROW.update(RES96_SCAN_ROW)

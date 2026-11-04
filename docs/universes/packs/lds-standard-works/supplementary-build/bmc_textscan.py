@@ -79,6 +79,9 @@ def residual_rows():
         mine = [v for v in views if v['research_key'] == k and v['state'] in ('implemented', 'omitted')]
         assert mine, k
         cp = 'checkpoint-60' if k in CHECKPOINT_60 else 'checkpoint-58'
+        # checkpoint 63: the RES96 full-read decisions are labelled by their own recorded reason
+        if mine[0]['state'] == 'omitted' and mine[0]['reason'].startswith('checkpoint 63 decision'):
+            cp = 'checkpoint-63'
         state = (cp + ' view ' + mine[0]['rendered_view'] if mine[0]['state'] == 'implemented'
                  else cp + ' decision (omitted)')
         unit = mine[0]['locator'].split(':')[0]

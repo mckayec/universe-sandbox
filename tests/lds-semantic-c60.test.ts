@@ -96,7 +96,7 @@ test('Checkpoint 60: speaker, scene and claim distinctions are visible in the co
   assert.match(d('BXC01'), /law of Moses fulfilled/);
 });
 
-test('Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions recorded; ledger at 96', () => {
+test('Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions recorded; ledger shrinks', () => {
   assert.deepEqual(srcOf('BC14'), ['Moroni 9:1–6,7–19,25–26']);
   assert.match(d('BC14'), /^Book of Mormon — Mormon reports severe violence/);
   assert.match(d('BC14'), /the showing of his body unto their fathers/);
@@ -122,7 +122,8 @@ test('Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions 
     assert.ok(!sem.includes(`BMC-${n},`), n);
     assert.ok(!rollup.includes(`BMC-${n},`), n);
   }
-  assert.equal(sem.trim().split('\n').length - 1, 96);
+  // checkpoint 63: 76 more keys left as RES96 decisions (tests/lds-res96.test.ts)
+  assert.equal(sem.trim().split('\n').length - 1, 20);
   // the two 3 Nephi 11 Matthew reader leads were closed by MAT61-C1 (checkpoint 62; tests/lds-mat61.test.ts)
   const reader = read('bmc-textscan.csv')
     .trim()

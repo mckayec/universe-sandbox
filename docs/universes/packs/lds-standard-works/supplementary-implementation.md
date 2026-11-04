@@ -2821,3 +2821,52 @@ for cards, so “search/deep links” here means the codex tab, its layer-gated 
 
 Still open: the residual-96 batch (next PR33 unit), wider vision completeness, finished 4K capture, physical
 iOS/Android, real-GPU and physical-phone evidence. Not merged.
+
+## Checkpoint 63 — RES96 part 1: the 76 explicit full-read dispositions (HANDOFF_PLAN 2026-11-04 “Full-source decisions for all 96 residual semantic chapters”)
+
+Parent **f459a55dafa7f7e2d7b8dcf4670f20c3e5150d10** (checkpoint 62). The residual-96 batch spans two checkpoints:
+this one records the 76 “Explicit dispositions” keys; the 14 coherent corrections RES96-C01–C14 (20 chapter keys) are
+**not started** and all 20 stay in the ledger.
+
+**Baseline.** Before the edits `build.py` (accepted register PR34 5951442), `bmc_omission_rollup.py .`,
+`bmc_semantic_pass.py .`, `bmc_textscan.py . <book-of-mormon.json>` and `timeline_vision.cjs` reproduced the committed
+pack and CSVs byte-for-byte. After the edits two full regenerations were identical (hash of the pack and every pack
+CSV compared).
+
+**Decisions.** New module `supplementary-build/copy_bmc_res96.py` (keeps `copy_bmc.py` under 800 lines) holds
+`RES96_OMIT`, one entry per key, each “checkpoint 63 decision (RES96 full read of <chapter>): …”. The text is ChatGPT’s
+full-read disposition as given; the sixteen imperative entries (BMC-018, 054, 074, 089, 099, 101, 119, 126, 168, 171,
+180, 206, 207, 209, 211, 224) are restated as the resulting decision (e.g. “Repair Aaron to captive at 10:31” →
+“Aaron is a captive at 10:31 (son of Heth, who lived in captivity), not an unsupported king”). `copy_bmc.OMIT` is
+updated with them (asserting no overlap with an earlier decision), so the keys leave the default-omission ledger and
+their reasons appear in `bmc-source-views.csv`. The fifteen superseded summary-level `SEMANTIC` entries in
+`bmc_semantic_pass.py` (BMC-064, 077, 083, 085, 086, 089, 090, 120, 144, 147, 148, 221, 224, 225, 228) are removed, as
+that pass requires. Repaired facts were spot-checked in the bcbooks/scriptures-json mirror: Mormon 6:14 (Gilgal falls
+with his ten thousand), Ether 10:31 (Aaron dwelt in captivity), Mormon 2:5, 6, 9, 10, 20–21 (David, Joshua, king Aaron,
+Samuel, Shem; no Boaz or Jordan), Ether 14:8 (Gilead; no Jared, Noah or Nimrod), Alma 6 (no Aaron), 3 Nephi 6 (no
+Jacob), Alma 24:1, Mormon 1:15, Mormon 4:12, Mosiah 8:8, 23:23, 24:5, Alma 4:13–14, 1 Nephi 18:24.
+
+**Screen and scan rows.** The frozen 39-chapter / 114-row word screen is not expanded; screened rows that left the
+ledger are labelled `checkpoint-63 decision (omitted)` (`bmc_textscan.py`). Three screen reasons now state the exact
+role (`bmc_textscan_triage.py`, states unchanged): BMC-211 Gilgal the Nephite commander (6:14), BMC-224 Jaredite Aaron
+in captivity (10:31), BMC-207 Aaron the Lamanite king (2:9). The BMC-207 Aaron name-scan row gets the same correction
+(`RES96_SCAN_ROW`). Counts stay **91 consistent, 7 no-hit, 16 resolved, 0 reader**; Cain regression unchanged.
+
+**Ledgers.** Semantic ledger **96 → 20** (namesake 10, no-bible-relation 6, practice-or-title 1, represented 3): exactly
+BMC-008, 062, 063, 072, 095, 098, 103, 111, 114, 121, 123, 125, 133, 163, 174, 175, 176, 181, 193, 223 (the RES96-C01–C14
+keys). Rollup 33 rows / 20 keys. Source views 108 (unchanged), vision crosswalk 157 rows (97 keyword, 2 source-only),
+unchanged. The pack (`public/atlas/packs/lds-standard-works.js`) is byte-identical: this unit is data/decision only, so
+no new rendered capture applies.
+
+**Tests.** New `tests/lds-res96.test.ts` (76 decided keys each have one checkpoint-63 omitted row and left the
+rollup; the remaining ledger is exactly the 20 correction keys; repaired readings stated; screen size/counts and the
+three role reasons; pack has no checkpoint-63 content; crosswalk 157). Ledger pins 96 → 20 in `tests/lds-pack.test.ts`,
+`tests/lds-semantic-c60.test.ts`, `tests/lds-mat61.test.ts`.
+
+**Checks.** `pnpm format`; `pnpm check` **166/166**, `check:dist` 114; `pnpm test:pages` (13 pages × 2 viewports);
+full `pnpm test:browser` passed.
+
+**Next unit (checkpoint 64): RES96-C01–C14** — new 3/bom source accounts / carrier enrichments and source-driven
+vision dispositions for the 20 keys above, per the handoff’s exact source boundaries. Still open: wider vision
+completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence. Not merged.
+

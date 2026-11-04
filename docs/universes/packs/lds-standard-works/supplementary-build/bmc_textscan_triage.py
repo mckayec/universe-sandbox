@@ -38,6 +38,12 @@ TRIAGE = {
     'law of Moses': ('consistent', 'the law as an observed or fulfilled practice (practice-or-title class)'),
     'Moses': ('consistent', 'only in “law of Moses” or a rhetorical name; no Moses event'),
     # Row-specific readings.
+    # checkpoint 63 (RES96 full-read dispositions): exact roles in three screened rows; states unchanged
+    ('BMC-211', 'Gilgal'): ('consistent', NS + ': Gilgal the Nephite commander who falls with his ten thousand (6:14), '
+                                           'not a city or valley'),
+    ('BMC-224', 'Aaron'): ('consistent', NS + ': Jaredite Aaron, son of Heth, who dwelt in captivity (10:31); not a '
+                                          'king'),
+    ('BMC-207', 'Aaron'): ('consistent', NS + ': Aaron the Lamanite king Mormon withstands (2:9)'),
     ('BMC-175', 'new star'): ('consistent', 'the row already gives the birth-sign star as Book of Mormon content'),
     ('BMC-178', 'Abraham'): ('resolved', 'one divine-title formula (4:30); recorded checkpoint-58 decision, no patriarch event link'),
     ('BMC-178', 'Isaac'): ('resolved', 'same divine title (4:30); see the BMC-178 decision'),

@@ -2120,7 +2120,8 @@ test('Checkpoint 37: every default BMC omission has a semantic disposition with 
   // checkpoint 53: SEM-R1/R3/R4 gave BMC-012/032/049 views and SEM-R2 consolidated BMC-026 into BMV-025
   // checkpoint 58: 17 keys gained views and 9 became recorded decisions (tests/lds-semantic-c58.test.ts)
   // checkpoint 60: the 20-chapter tranche left the ledger (tests/lds-semantic-c60.test.ts)
-  assert.equal(rows.length, 96);
+  // checkpoint 63: 76 RES96 full-read decisions left the ledger (tests/lds-res96.test.ts); 20 correction keys remain
+  assert.equal(rows.length, 20);
   for (const [key, , state] of rows)
     assert.ok(!['candidate', 'reader', 'unstated-parallel', 'relation-no-card'].includes(state), `${key} ${state}`);
   for (const k of ['BMC-002', 'BMC-016', 'BMC-053', 'BMC-124', 'BMC-164', 'BMC-186', 'BMC-215', 'BMC-222'])
