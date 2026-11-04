@@ -80,9 +80,18 @@
      `book` (shown iff event.book <= selected book, i.e. a first book). An optional `chapter` is carried so a
      chapter-aware host can gate on it; the atlas host has no chapter selector, so nothing here is chapter-safe yet. */
   const gateOf = o => {
-    const first = o.first != null ? o.first : o.book != null ? o.book : null;
+    const first = firstBook(o);
     return { layers: arr(o.layers), books: o.books || null, first, chapter: o.chapter == null ? null : o.chapter };
   };
+  /* The first book a record is seen in, per PACK_FORMAT §6 schema defaults: explicit `first`, else an event's
+     `book`, else the smallest entry of `books`; null when none is given (TL-R11). */
+  function firstBook(o) {
+    if (!o) return null;
+    if (o.first != null) return o.first;
+    if (o.book != null) return o.book;
+    const bs = Array.isArray(o.books) ? o.books.filter(b => typeof b === 'number' && isFinite(b)) : [];
+    return bs.length ? Math.min(...bs) : null;
+  }
   const NARRATIVE = /narrative|no (modern|calendar|BCE)/i;
 
   /* ---------- adapter: tree (Religious Traditions, PACK_FORMAT §21/§21.1) + Chronicle events ---------- */
@@ -502,10 +511,14 @@
      records stay hidden until the next book (fail closed). No book selected, or a non-cumulative host, hides
      nothing here (the host's own book gate still applies). pos: {book, chapter, cumulative}. */
   function chapterOk(gate, pos) {
-    if (!gate || gate.chapter == null || gate.first == null) return true;
+    if (!gate || gate.chapter == null) return true;
     if (!pos || !pos.book || !pos.cumulative) return true;
-    if (gate.first < pos.book) return true;
-    if (gate.first > pos.book) return false;
+    /* resolve the first book from `first`/`book`/`books` (TL-R11); a chapter with no book at all is ambiguous:
+       withhold it rather than guess */
+    const first = firstBook(gate);
+    if (first == null) return false;
+    if (first < pos.book) return true;
+    if (first > pos.book) return false;
     return pos.chapter != null && pos.chapter >= gate.chapter;
   }
 
@@ -728,6 +741,7 @@
     adaptStandardWorks,
     adapterFor,
     chapterOk,
+    firstBook,
     visible,
     revalidate,
     search,

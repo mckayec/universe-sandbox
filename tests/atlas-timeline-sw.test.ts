@@ -136,3 +136,68 @@ test('chapterOk: fail closed in the current book without a chapter selector', ()
   assert.equal(TL.chapterOk(g, { book: 5, chapter: null, cumulative: false }), true);
   assert.equal(TL.chapterOk({ first: 5, chapter: null }, { book: 5, chapter: null, cumulative: true }), true);
 });
+
+// TL-R11: the chapter gate resolves the first book from `first`/`book`/`books` (PACK_FORMAT §6 defaults).
+test('chapterOk: books-derived and explicit first books honour the chapter threshold (TL-R11)', () => {
+  const cum = (book: number, chapter: number | null) => ({ book, chapter, cumulative: true });
+  const gates: [string, any][] = [
+    ['books only', { books: [4], chapter: 9 }],
+    ['books, several', { books: [6, 4, 5], chapter: 9 }],
+    ['explicit first', { first: 4, books: [5], chapter: 9 }],
+    ['event book', { book: 4, chapter: 9 }],
+  ];
+  for (const [name, g] of gates) {
+    assert.equal(TL.firstBook(g), 4, name);
+    // earlier selected book: later-book record stays hidden
+    assert.equal(TL.chapterOk(g, cum(3, null)), false, name);
+    assert.equal(TL.chapterOk(g, cum(3, 20)), false, name);
+    // same book: unknown, earlier and equal/later chapters
+    assert.equal(TL.chapterOk(g, cum(4, null)), false, name);
+    assert.equal(TL.chapterOk(g, cum(4, 1)), false, name);
+    assert.equal(TL.chapterOk(g, cum(4, 8)), false, name);
+    assert.equal(TL.chapterOk(g, cum(4, 9)), true, name);
+    assert.equal(TL.chapterOk(g, cum(4, 12)), true, name);
+    // later selected book: earlier-book record passes
+    assert.equal(TL.chapterOk(g, cum(5, null)), true, name);
+    // the All / single-book contract is unchanged
+    assert.equal(TL.chapterOk(g, cum(0, null)), true, name);
+    assert.equal(TL.chapterOk(g, { book: 4, chapter: null, cumulative: false }), true, name);
+  }
+  // the explicit first wins over `books`
+  assert.equal(TL.chapterOk({ first: 3, books: [4], chapter: 9 }, cum(4, null)), true);
+  // a chapter with no book at all is ambiguous: withheld in cumulative mode, untouched otherwise
+  assert.equal(TL.chapterOk({ chapter: 9 }, cum(4, 20)), false);
+  assert.equal(TL.chapterOk({ books: [], chapter: 9 }, cum(4, 20)), false);
+  assert.equal(TL.chapterOk({ chapter: 9 }, cum(0, null)), true);
+  assert.equal(TL.firstBook({ books: [] }), null);
+});
+
+test('chapter gate through the adapter: books-only cards/sites carry first and are filtered before counts and search', () => {
+  const p = JSON.parse(JSON.stringify(pack));
+  p.codex[0].list.push({ key: 'KC', name: 'Chaptered card', books: [4], layers: ['dc'], chapter: 9, desc: 'dc' });
+  p.codex[0].list[1].see.push({ k: 'KC', r: 'same city' });
+  p.worlds[0].sites.push({ id: 'sc', name: 'Chaptered site', books: [4], layers: ['dc'], chapter: 9, desc: 'ds' });
+  const m = TL.adaptStandardWorks(p);
+  const card = m.records.find((r: any) => r.label === 'Chaptered card');
+  const site = m.records.find((r: any) => r.label === 'Chaptered site');
+  assert.equal(card.gate.first, 4);
+  assert.equal(site.gate.first, 4);
+  const host = (book: number, chapter: number | null) => (g: any) =>
+    (!g.books || !book || Math.min(...g.books) <= book) && TL.chapterOk(g, { book, chapter, cumulative: true });
+  for (const [chapter, shown] of [
+    [null, false],
+    [1, false],
+    [9, true],
+  ] as [number | null, boolean][]) {
+    const v = TL.visible(m, host(4, chapter));
+    const ids = new Set(v.records.map((r: any) => r.id));
+    assert.equal(ids.has(card.id), shown, `card at chapter ${chapter}`);
+    assert.equal(ids.has(site.id), shown, `site at chapter ${chapter}`);
+    // no edge survives with a withheld endpoint, and search never finds a withheld record
+    assert.ok(v.edges.every((e: any) => ids.has(e.from) && ids.has(e.to)));
+    assert.equal(TL.search(v, 'Chaptered').length > 0, shown, `search at chapter ${chapter}`);
+  }
+  // a later selected book shows both; an earlier one hides both
+  assert.ok(TL.visible(m, host(5, null)).records.some((r: any) => r.id === card.id));
+  assert.ok(!TL.visible(m, host(3, 50)).records.some((r: any) => r.id === card.id));
+});

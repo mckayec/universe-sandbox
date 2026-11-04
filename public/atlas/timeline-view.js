@@ -105,6 +105,7 @@
     const scrollEl = el.querySelector('.tl-scroll');
     const info = el.querySelector('.tl-info');
     const laneBar = el.querySelector('.tl-lanes');
+    let drag = null; /* an active lane drag (see endDrag) */
     const arranged = () => TLM.arrangeLanes(V.lanes, order);
 
     function compute() {
@@ -707,6 +708,7 @@
         restoreFocus(key, region && (region === scrollEl ? scrollEl : region === info ? info : laneBar));
     }
     function draw() {
+      endDrag(false); /* a rerender replaces the lane bar: never leave a drag pointing at stale chips */
       compute();
       el.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
       el.querySelectorAll('[data-z]').forEach(
@@ -748,17 +750,23 @@
     }
     /* pointer drag of a lane chip by its grip (mouse, pen or touch). Keyboard and switch users keep the ↑/↓
        buttons, which do the same thing one step at a time. The drop lands in the slot nearest the pointer. */
-    let drag = null;
     function dragBoxes() {
       return [...laneBar.querySelectorAll('.tl-lb')];
     }
     function dragMark(to) {
       dragBoxes().forEach((b, k) => b.classList.toggle('tl-drop', k === to && to !== drag.from));
     }
+    /* Only a deliberate pointerup commits (TL-R10). Escape, Close, pointercancel, an unexpected loss of pointer
+       capture and any rerender that replaces the lane bar cancel the drag, keeping the pre-drag order and URL. */
     function endDrag(commit) {
       if (!drag) return;
       const d = drag;
       drag = null;
+      try {
+        if (d.grip && d.grip.hasPointerCapture && d.grip.hasPointerCapture(d.pid)) d.grip.releasePointerCapture(d.pid);
+      } catch (err) {
+        /* the grip may already be gone */
+      }
       dragBoxes().forEach(b => b.classList.remove('tl-drop', 'tl-drag'));
       laneBar.classList.remove('tl-dragging');
       if (!commit || d.to < 0 || d.to === d.from) return;
@@ -777,7 +785,7 @@
       const from = boxes.findIndex(b => b.dataset.laneBox === g.dataset.laneGrip);
       if (from < 0) return;
       e.preventDefault();
-      drag = { id: g.dataset.laneGrip, from, to: from, pid: e.pointerId };
+      drag = { id: g.dataset.laneGrip, from, to: from, pid: e.pointerId, grip: g };
       try {
         g.setPointerCapture(e.pointerId);
       } catch (err) {
@@ -805,7 +813,8 @@
       if (drag && e.pointerId === drag.pid) endDrag(false);
     });
     laneBar.addEventListener('lostpointercapture', e => {
-      if (drag && e.pointerId === drag.pid) endDrag(true);
+      /* pointerup has already committed and cleared the drag; any other capture loss is unexpected: cancel */
+      if (drag && e.pointerId === drag.pid) endDrag(false);
     });
     function pick(id) {
       sel = sel === id ? null : id;
@@ -942,6 +951,7 @@
       if (env.onChange) env.onChange();
     }
     function close() {
+      endDrag(false);
       if (!open) return;
       open = false;
       el.hidden = true;
