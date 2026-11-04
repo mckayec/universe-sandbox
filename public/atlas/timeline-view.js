@@ -800,15 +800,25 @@
       return [...el.querySelectorAll('[data-id="' + CSS.escape(id) + '"]')].find(shown) || null;
     }
 
+    /* TL-R13 (checkpoint 17): whether the dialog owns focus is decided BEFORE draw() replaces its DOM. Checking
+       afterwards missed a focused control that draw() had just removed (the Overview heading on a second gate
+       refresh), so focus fell to body. */
     function render() {
-      const key = open ? focusKey() : null;
       const a = document.activeElement;
-      const region =
-        a && (scrollEl.contains(a) ? scrollEl : info.contains(a) ? info : laneBar.contains(a) ? laneBar : null);
+      const owned = open && !!a && a !== document.body && el.contains(a);
+      const key = owned ? focusKey() : null;
+      const region = owned
+        ? scrollEl.contains(a)
+          ? scrollEl
+          : info.contains(a)
+            ? info
+            : laneBar.contains(a)
+              ? laneBar
+              : null
+        : null;
       draw();
       rove();
-      if (open && (key || (a && el.contains(a))))
-        restoreFocus(key, region && (region === scrollEl ? scrollEl : region === info ? info : laneBar));
+      if (owned) restoreFocus(key, region);
     }
     function draw() {
       endDrag(false); /* a rerender replaces the lane bar: never leave a drag pointing at stale chips */

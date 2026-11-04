@@ -1,150 +1,372 @@
-/* Relationship grounding for timeline edges (timeline checkpoint 15).
+/* Relationship grounding for timeline edges (timeline checkpoints 15 and 17).
 
    A codex card's `src` cites the card, not each of its `see` links, so the Standard Works adapter leaves every
-   link's `src` empty and keeps the card's citation as `cardSrc`. This module reviews each relationship on its own:
+   link's `src` empty and keeps the card's citation as `cardSrc`. This module reviews each relationship on its own.
 
-   * `parseLocator({t, u})` reads one citation into { book, chapters, verses } from the official URL (volume/book)
-     and the label ("Mosiah 12:1–37", "Genesis 16–17", "D&C 52 heading"). Unparseable citations return null.
-   * `groundLink(fromSrc, toSrc)` compares the two endpoint cards' citations and classes the relationship:
-       shared-verse     both cards cite at least one identical verse (the overlap is returned as a candidate);
-       shared-chapter   both cite the same chapter and one of them cites it whole (candidate, weaker);
-       same-chapter     both cite the same chapter but different verses (no candidate);
-       cross-text       both cite something, but no common chapter (no candidate: the link joins two texts);
-       no-locator       one card or both have no citation.
+   Checkpoint 17 (TL-R14/TL-R15) makes the parser and the containment test fail closed:
+
+   * `parseLocator({t, u})` reads one citation into components, or returns { ok: false, why }. The URL must be an
+     official scripture URL (exact origin and /study/scriptures/ path); the label's book must name the URL's book
+     and the label's chapter must equal the URL's chapter. The whole label must be consumed: unsupported residue,
+     reversed ranges, verse 0 and unknown books are rejected, never widened to the whole chapter. Components:
+       verses   explicit verses of one chapter               ("Alma 34:7", "D&C 52:36–37 and 40")
+       chapter  an explicit whole chapter or chapter range   ("Moses 3", "Genesis 11–12")
+       heading  a chapter's heading, its own passage         ("D&C 52 heading"; "D&C 11 heading, 1" = heading ∪ 1)
+       doc      a front-matter or dictionary document        ("Testimony of Eight Witnesses", "Bible Dictionary: X")
+   * `groundLink(fromSrc, toSrc)` keeps the COMPLETE intersection of the two endpoints' components (every citation
+     pair, unioned per chapter or document) and classes the relationship:
+       shared-verse    both cards cite at least one identical verse explicitly;
+       shared-chapter  the intersection is non-empty, but only through a whole chapter, a heading or a document;
+       same-chapter    both cite the same chapter or document, with no common passage;
+       cross-text      both cite something valid, but no common chapter or document;
+       no-locator      one card or both have no valid citation (invalid citations are listed in `invalid`).
      A class is evidence for a reviewer, never a source by itself.
-   * `applyEdgeSources(model, reviewed)` promotes an edge only when a reviewed entry names it AND every locator in
-     that entry lies inside the shared passage of both endpoints. Anything else is reported as rejected, so a
-     card-only citation can never be promoted into a relationship source. Nothing is invented: the promoted `src`
-     is the reviewed entry's own citation. */
+   * `eligibility(model, edgeId, src)` is the mechanical test: every component of every proposed locator lies inside
+     the matching shared component (verses within verses or a whole chapter; a heading only within a heading; a
+     whole chapter only within a whole chapter; a document only within that document). Passing it is mechanical
+     eligibility only.
+   * `applyEdgeSources(model, reviewed)` promotes an edge only when a version-1 review entry for it is `accepted`,
+     binds the edge's own endpoints, type and claim, names its source version and rationale, and its locators are
+     eligible. A cross-text entry may use `mode: 'independent'` with paired evidence: each side's locators must lie
+     inside that endpoint's own citations, and a scope caveat is required. Every call reconciles: an edge promoted
+     by an earlier call that is not accepted in this one loses its promoted source, so a revoked or rejected review
+     can never leave a stale source behind. */
 (function (root) {
   'use strict';
 
   const arr = v => (Array.isArray(v) ? v : v == null ? [] : [v]);
+  const ORIGIN = 'https://www.churchofjesuschrist.org';
+  const REVIEW_VERSION = 1;
 
-  /* "1–3, 5" → [1,2,3,5]; returns null when the text holds no verse numbers */
+  /* label book name → [volume, URL book]. Approved identities only; anything else is unsupported. */
+  const BOOKS = {};
+  function add(vol, list) {
+    list.split(';').forEach(pair => {
+      const [names, slug] = pair.split('=');
+      names.split('|').forEach(n => (BOOKS[n.trim().toLowerCase()] = [vol, slug.trim()]));
+    });
+  }
+  add(
+    'ot',
+    'Genesis=gen;Exodus=ex;Leviticus=lev;Numbers=num;Deuteronomy=deut;Joshua=josh;Judges=judg;Ruth=ruth;' +
+      '1 Samuel=1-sam;2 Samuel=2-sam;1 Kings=1-kgs;2 Kings=2-kgs;1 Chronicles=1-chr;2 Chronicles=2-chr;Ezra=ezra;' +
+      'Nehemiah=neh;Esther=esth;Job=job;Psalm|Psalms=ps;Proverbs=prov;Ecclesiastes=eccl;Song of Solomon=song;' +
+      'Isaiah=isa;Jeremiah=jer;Lamentations=lam;Ezekiel=ezek;Daniel=dan;Hosea=hosea;Joel=joel;Amos=amos;' +
+      'Obadiah=obad;Jonah=jonah;Micah=micah;Nahum=nahum;Habakkuk=hab;Zephaniah=zeph;Haggai=hag;Zechariah=zech;' +
+      'Malachi=mal',
+  );
+  add(
+    'nt',
+    'Matthew=matt;Mark=mark;Luke=luke;John=john;Acts=acts;Romans=rom;1 Corinthians=1-cor;2 Corinthians=2-cor;' +
+      'Galatians=gal;Ephesians=eph;Philippians=philip;Colossians=col;1 Thessalonians=1-thes;2 Thessalonians=2-thes;' +
+      '1 Timothy=1-tim;2 Timothy=2-tim;Titus=titus;Philemon=philem;Hebrews=heb;James=james;1 Peter=1-pet;' +
+      '2 Peter=2-pet;1 John=1-jn;2 John=2-jn;3 John=3-jn;Jude=jude;Revelation=rev',
+  );
+  add(
+    'bofm',
+    '1 Nephi=1-ne;2 Nephi=2-ne;3 Nephi=3-ne;4 Nephi=4-ne;Jacob=jacob;Enos=enos;Jarom=jarom;Omni=omni;' +
+      'Words of Mormon=w-of-m;Mosiah=mosiah;Alma=alma;Helaman=hel;Mormon=morm;Ether=ether;Moroni=moro',
+  );
+  add('dc-testament', 'D&C|Doctrine and Covenants=dc;Official Declaration=od');
+  add(
+    'pgp',
+    'Moses=moses;Abraham=abr;Joseph Smith—Matthew|Joseph Smith-Matthew=js-m;' +
+      'Joseph Smith—History|Joseph Smith-History=js-h;Articles of Faith=a-of-f',
+  );
+  /* front matter: exact document titles → URL document paths */
+  const DOCS = {
+    'book of mormon title page': ['bofm/bofm-title', 'bofm/title-page'],
+    'book of mormon introduction': ['bofm/introduction'],
+    'brief explanation about the book of mormon': ['bofm/explanation'],
+    'testimony of three witnesses': ['bofm/three'],
+    'testimony of eight witnesses': ['bofm/eight'],
+    'testimony of the prophet joseph smith': ['bofm/js'],
+    'd&c introduction': ['dc-testament/introduction'],
+    'pearl of great price introduction': ['pgp/introduction'],
+    'official pgp introduction': ['pgp/introduction'],
+  };
+
+  const bad = why => ({ ok: false, why });
+  const DASH = '[–-]';
+  const RANGE = new RegExp('^(\\d+)(?:\\s*' + DASH + '\\s*(\\d+))?$');
+
+  /* "1–3, 5 and 7" → [1,2,3,5,7]; null when anything is unsupported (residue, reversed range, verse 0) */
   function verseList(s) {
+    const text = String(s == null ? '' : s).trim();
+    if (!text) return null;
     const out = [];
-    String(s || '')
-      .split(/[,;]/)
-      .forEach(part => {
-        const m = part.trim().match(/^(\d+)(?:\s*[–-]\s*(\d+))?/);
-        if (!m) return;
-        const a = +m[1];
-        const b = m[2] ? +m[2] : a;
-        for (let v = a; v <= b && v - a < 500; v++) out.push(v);
-      });
-    return out.length ? out : null;
+    for (const raw of text.split(/\s*,\s*(?:and\s+)?|\s+and\s+/)) {
+      const m = raw.trim().match(RANGE);
+      if (!m) return null;
+      const a = +m[1];
+      const b = m[2] ? +m[2] : a;
+      if (a < 1 || b < a || b - a > 500) return null;
+      for (let v = a; v <= b; v++) if (!out.includes(v)) out.push(v);
+    }
+    return out.sort((x, y) => x - y);
+  }
+
+  /* the URL's identity: { path: 'bofm/alma', ch: 34 } or { path: 'bofm/eight', ch: null }; null if not official */
+  function urlIdentity(u) {
+    /* parsed by pattern, not `new URL`, so the module runs unchanged in node vm contexts without a URL global */
+    const s = String(u || '');
+    if (s.slice(0, ORIGIN.length + 1) !== ORIGIN + '/') return null;
+    const pathname = s.slice(ORIGIN.length).split(/[?#]/)[0];
+    const m = pathname.match(/^\/study\/scriptures\/([a-z0-9-]+)\/([a-z0-9-]+)(?:\/(\d+))?\/?$/);
+    if (!m) return null;
+    return { vol: m[1], book: m[2], path: m[1] + '/' + m[2], ch: m[3] ? +m[3] : null };
   }
 
   function parseLocator(c) {
-    if (!c) return null;
-    const t = String(c.t || '').trim();
-    const um = String(c.u || '').match(/\/study\/scriptures\/([^/]+)\/([^/?#]+)(?:\/(\d+))?/);
-    if (!um) return null;
-    const book = um[1] + '/' + um[2];
-    const heading = /\bheading\b/i.test(t);
-    const urlCh = um[3] ? +um[3] : 0;
-    const colon = t.indexOf(':');
-    let chapters = [urlCh];
-    let verses = null;
-    if (colon > 0) {
-      const cm = t.slice(0, colon).match(/(\d+)\s*$/);
-      if (!cm || +cm[1] !== urlCh) return { book, chapters, verses: null, heading, loose: true };
-      verses = verseList(t.slice(colon + 1).replace(/heading/gi, ''));
-    } else {
-      const hv = heading && t.match(/heading\s*,\s*([\d,\s–-]+)$/i);
-      if (hv) return { book, chapters, verses: verseList(hv[1]), heading, loose: false };
-      const rm = t.replace(/\s*heading\s*$/i, '').match(/(\d+)(?:\s*[–-]\s*(\d+))?\s*$/);
-      if (rm && +rm[1] === urlCh && rm[2]) {
-        chapters = [];
-        for (let ch = +rm[1]; ch <= +rm[2]; ch++) chapters.push(ch);
+    if (!c) return bad('empty citation');
+    const t = String(c.t || '')
+      .trim()
+      .replace(/\s+/g, ' ');
+    const id = urlIdentity(c.u);
+    if (!id) return bad('not an official scripture URL');
+    /* front matter and dictionary entries: a document identity, never an invented chapter */
+    if (id.ch == null) {
+      const docs = DOCS[t.toLowerCase()];
+      if (docs) {
+        if (!docs.includes(id.path)) return bad('document title does not match the URL');
+        return { ok: true, id: id.path, parts: [{ key: id.path, kind: 'doc' }] };
       }
+      const bd = t.match(/^Bible Dictionary:\s*(.+)$/i);
+      if (bd && id.vol === 'bd') {
+        const first = bd[1].trim().toLowerCase().split(/[^a-z0-9]+/)[0];
+        if (!first || id.book.split('-')[0] !== first) return bad('dictionary entry does not match the URL');
+        return { ok: true, id: id.path, parts: [{ key: id.path, kind: 'doc' }] };
+      }
+      return bad('unsupported document citation');
     }
-    return { book, chapters, verses, heading, loose: false };
+    const m = t.match(/^(.+?)\s+(\d+)(.*)$/);
+    if (!m) return bad('no chapter in the label');
+    const named = BOOKS[m[1].toLowerCase()];
+    if (!named) return bad('unknown book "' + m[1] + '"');
+    if (named[0] + '/' + named[1] !== id.path) return bad('label book does not match the URL book');
+    const ch = +m[2];
+    if (ch !== id.ch) return bad('label chapter does not match the URL chapter');
+    const key = id.path + '#' + ch;
+    const rest = m[3].trim();
+    if (!rest) return { ok: true, id: id.path, parts: [{ key, kind: 'chapter' }] };
+    /* chapter range: "Genesis 11–12" (the URL names the first chapter) */
+    const cr = rest.match(new RegExp('^' + DASH + '\\s*(\\d+)$'));
+    if (cr) {
+      const last = +cr[1];
+      if (last <= ch || last - ch > 200) return bad('invalid chapter range');
+      const parts = [];
+      for (let k = ch; k <= last; k++) parts.push({ key: id.path + '#' + k, kind: 'chapter' });
+      return { ok: true, id: id.path, parts };
+    }
+    /* verses: "34:7", "52:36–37 and 40" */
+    if (rest[0] === ':') {
+      const vs = verseList(rest.slice(1));
+      if (!vs) return bad('unsupported verse list "' + rest.slice(1).trim() + '"');
+      return { ok: true, id: id.path, parts: [{ key, kind: 'verses', verses: vs }] };
+    }
+    /* heading, optionally with verses: "52 heading", "11 heading, 1", "110 heading, 11–16" */
+    const hm = rest.match(/^heading(?:\s*,\s*(.+))?$/i);
+    if (hm) {
+      const parts = [{ key, kind: 'heading' }];
+      if (hm[1] != null) {
+        const vs = verseList(hm[1]);
+        if (!vs) return bad('unsupported verse list after heading "' + hm[1] + '"');
+        parts.push({ key, kind: 'verses', verses: vs });
+      }
+      return { ok: true, id: id.path, parts };
+    }
+    return bad('unsupported locator text "' + rest + '"');
   }
 
-  /* one citation's verses within one chapter; null = the whole chapter (or the heading only, see `heading`) */
-  function spans(src) {
-    const out = [];
+  /* union of components per chapter or document */
+  function unionOf(parts) {
+    const map = new Map();
+    parts.forEach(p => {
+      let u = map.get(p.key);
+      if (!u) map.set(p.key, (u = { key: p.key, chapter: false, heading: false, doc: false, verses: new Set() }));
+      if (p.kind === 'chapter') u.chapter = true;
+      else if (p.kind === 'heading') u.heading = true;
+      else if (p.kind === 'doc') u.doc = true;
+      else p.verses.forEach(v => u.verses.add(v));
+    });
+    return map;
+  }
+
+  function partsOf(src, side, invalid) {
+    const parts = [];
     arr(src).forEach(c => {
       const p = parseLocator(c);
-      if (!p) return;
-      p.chapters.forEach(ch =>
-        out.push({ key: p.book + '#' + ch, verses: p.chapters.length > 1 ? null : p.verses, heading: p.heading, c }),
-      );
+      if (p.ok) p.parts.forEach(x => parts.push(Object.assign({ c }, x)));
+      else if (invalid) invalid.push({ side, t: c && c.t, why: p.why });
     });
-    return out;
+    return parts;
+  }
+
+  /* intersection of two components of the same key, or null. `exact` marks a verse cited explicitly by both. */
+  function meet(x, y) {
+    if (x.kind === 'doc' || y.kind === 'doc')
+      return x.kind === y.kind ? { kind: 'doc', exact: false } : null;
+    if (x.kind === 'heading' || y.kind === 'heading')
+      return x.kind === y.kind ? { kind: 'heading', exact: false } : null;
+    if (x.kind === 'chapter' && y.kind === 'chapter') return { kind: 'chapter', exact: false };
+    if (x.kind === 'chapter') return { kind: 'verses', verses: y.verses, exact: false };
+    if (y.kind === 'chapter') return { kind: 'verses', verses: x.verses, exact: false };
+    const vs = x.verses.filter(v => y.verses.includes(v));
+    return vs.length ? { kind: 'verses', verses: vs, exact: true } : null;
   }
 
   function groundLink(fromSrc, toSrc) {
-    const a = spans(fromSrc);
-    const b = spans(toSrc);
-    if (!a.length || !b.length) return { cls: 'no-locator', shared: [] };
-    const shared = [];
-    let sameChapter = false;
-    let wholeChapter = false;
+    const invalid = [];
+    const a = partsOf(fromSrc, 'from', invalid);
+    const b = partsOf(toSrc, 'to', invalid);
+    if (!a.length || !b.length) return { cls: 'no-locator', shared: [], invalid };
+    const pieces = [];
+    let sameKey = false;
+    let exact = false;
     a.forEach(x =>
       b.forEach(y => {
         if (x.key !== y.key) return;
-        sameChapter = true;
-        const xh = x.heading && !x.verses;
-        const yh = y.heading && !y.verses;
-        if (xh || yh) {
-          /* a chapter heading is its own passage: it grounds only against another citation of that heading */
-          if (xh && yh) {
-            wholeChapter = true;
-            shared.push({ key: x.key, verses: null, heading: true, whole: true, from: x.c, to: y.c });
-          }
-        } else if (x.verses && y.verses) {
-          const vs = x.verses.filter(v => y.verses.includes(v));
-          if (vs.length) shared.push({ key: x.key, verses: vs, from: x.c, to: y.c });
-        } else {
-          wholeChapter = true;
-          shared.push({ key: x.key, verses: x.verses || y.verses, whole: true, from: x.c, to: y.c });
-        }
+        sameKey = true;
+        const r = meet(x, y);
+        if (!r) return;
+        if (r.exact) exact = true;
+        pieces.push(Object.assign({ key: x.key }, r));
       }),
     );
-    if (shared.some(s => !s.whole)) return { cls: 'shared-verse', shared: shared.filter(s => !s.whole) };
-    if (wholeChapter) return { cls: 'shared-chapter', shared };
-    if (sameChapter) return { cls: 'same-chapter', shared: [] };
-    return { cls: 'cross-text', shared: [] };
+    /* the complete intersection, unioned per key; a summary class never discards any of it */
+    const shared = [...unionOf(pieces).values()].map(u => ({
+      key: u.key,
+      chapter: u.chapter,
+      heading: u.heading,
+      doc: u.doc,
+      verses: u.chapter ? null : [...u.verses].sort((p, q) => p - q),
+    }));
+    const cls = exact ? 'shared-verse' : shared.length ? 'shared-chapter' : sameKey ? 'same-chapter' : 'cross-text';
+    return { cls, shared, invalid };
   }
 
-  /* true when every verse of `loc` is inside one of the endpoints' shared spans */
+  /* every component of `loc` lies inside the matching component of `shared` (array from groundLink, or a Map) */
   function insideShared(loc, shared) {
     const p = parseLocator(loc);
-    if (!p || p.chapters.length !== 1) return false;
-    const key = p.book + '#' + p.chapters[0];
-    return shared.some(s => {
-      if (s.key !== key) return false;
-      if (!p.verses) return !!s.whole && !s.verses && !!s.heading === !!p.heading;
-      return p.verses.every(v => (s.verses ? s.verses.includes(v) : true));
+    if (!p.ok) return false;
+    const map = shared instanceof Map ? shared : new Map(arr(shared).map(s => [s.key, s]));
+    return p.parts.every(x => {
+      const s = map.get(x.key);
+      if (!s) return false;
+      if (x.kind === 'doc') return !!s.doc;
+      if (x.kind === 'heading') return !!s.heading;
+      if (x.kind === 'chapter') return !!s.chapter;
+      if (s.chapter) return true;
+      const vs = s.verses instanceof Set ? [...s.verses] : arr(s.verses);
+      return x.verses.every(v => vs.includes(v));
     });
   }
 
-  /* reviewed: { [edgeId]: { src: [{t, u}], basis: '…' } } — promotes only entries inside the shared passage */
-  function applyEdgeSources(model, reviewed) {
+  function endpoints(model, id) {
+    const e = model.edges.find(x => x.id === id);
+    if (!e) return null;
     const recs = new Map(model.records.map(r => [r.id, r]));
+    return { e, from: recs.get(e.from), to: recs.get(e.to) };
+  }
+
+  /* mechanical eligibility only: proposed locators inside the endpoints' complete shared passage */
+  function eligibility(model, id, src) {
+    const ep = endpoints(model, id);
+    if (!ep) return { ok: false, why: 'no such edge' };
+    const g = groundLink(ep.from && ep.from.src, ep.to && ep.to.src);
+    const locs = arr(src);
+    if (!locs.length) return { ok: false, why: 'no locator in the reviewed entry', cls: g.cls };
+    for (const c of locs) {
+      const p = parseLocator(c);
+      if (!p.ok) return { ok: false, why: 'proposed locator invalid: ' + p.why, cls: g.cls };
+      if (!insideShared(c, g.shared))
+        return { ok: false, why: 'locator is not cited by both cards (' + g.cls + ')', cls: g.cls };
+    }
+    return { ok: true, why: null, cls: g.cls };
+  }
+
+  /* independent evidence for a cross-text relationship: each side inside that endpoint's own citations */
+  function independentEligibility(model, id, evidence) {
+    const ep = endpoints(model, id);
+    if (!ep) return { ok: false, why: 'no such edge' };
+    const ev = evidence || {};
+    for (const side of ['from', 'to']) {
+      const locs = arr(ev[side]);
+      if (!locs.length) return { ok: false, why: 'independent evidence needs a ' + side + ' locator' };
+      const own = unionOf(partsOf(ep[side] && ep[side].src));
+      for (const c of locs) {
+        const p = parseLocator(c);
+        if (!p.ok) return { ok: false, why: side + ' evidence invalid: ' + p.why };
+        if (!insideShared(c, own)) return { ok: false, why: side + ' evidence is not cited by that card' };
+      }
+    }
+    return { ok: true, why: null };
+  }
+
+  const filled = v => typeof v === 'string' && v.trim().length > 0;
+  /* the per-row semantic acceptance a promotion requires (review sidecar row, version 1) */
+  function acceptance(entry, e) {
+    if (!entry || entry.v !== REVIEW_VERSION) return 'no version-' + REVIEW_VERSION + ' review entry';
+    if (entry.state !== 'accepted') return 'review state is ' + (entry.state || 'missing') + ', not accepted';
+    if (entry.from !== e.from || entry.to !== e.to) return 'review endpoints/direction do not match the edge';
+    if (entry.type !== e.type) return 'review type does not match the edge';
+    if (!filled(entry.claim)) return 'review has no claim';
+    if (!filled(entry.basis)) return 'review has no rationale';
+    if (!filled(entry.sourceVersion)) return 'review has no source version';
+    if (entry.mode === 'independent' && !filled(entry.scope)) return 'independent evidence needs a scope caveat';
+    return null;
+  }
+
+  function clearPromotion(e) {
+    e.src = [];
+    e.locator = null;
+    e.basis = null;
+    delete e.grounding;
+  }
+
+  /* reviewed: { [edgeId]: review entry } — see the header. Returns { promoted, rejected, revoked }. */
+  function applyEdgeSources(model, reviewed) {
     const promoted = [];
     const rejected = [];
+    const revoked = [];
     const byId = new Map(model.edges.map(e => [e.id, e]));
+    const accepted = new Map();
     Object.keys(reviewed || {}).forEach(id => {
       const entry = reviewed[id];
       const e = byId.get(id);
       if (!e) return rejected.push({ id, why: 'no such edge' });
-      const from = recs.get(e.from);
-      const to = recs.get(e.to);
-      const g = groundLink(from && from.src, to && to.src);
-      const src = arr(entry && entry.src);
-      if (!src.length) return rejected.push({ id, why: 'no locator in the reviewed entry' });
-      if (!src.every(c => insideShared(c, g.shared)))
-        return rejected.push({ id, why: 'locator is not cited by both cards (' + g.cls + ')' });
-      e.src = src.map(c => ({ t: c.t, u: c.u }));
-      e.locator = src.map(c => c.t).join('; ');
-      e.basis = (entry && entry.basis) || null;
-      promoted.push(id);
+      const independent = entry && entry.mode === 'independent';
+      const src = independent
+        ? arr(entry.evidence && entry.evidence.from).concat(arr(entry.evidence && entry.evidence.to))
+        : arr(entry && entry.src);
+      const mech = independent ? independentEligibility(model, id, entry.evidence) : eligibility(model, id, src);
+      if (!mech.ok) return rejected.push({ id, why: mech.why, eligible: false });
+      const sem = acceptance(entry, e);
+      if (sem) return rejected.push({ id, why: sem, eligible: true });
+      accepted.set(id, { entry, src });
     });
-    return { promoted, rejected };
+    model.edges.forEach(e => {
+      const a = accepted.get(e.id);
+      if (!a) {
+        if (e.grounding) {
+          clearPromotion(e);
+          revoked.push(e.id);
+        }
+        return;
+      }
+      e.src = a.src.map(c => ({ t: c.t, u: c.u }));
+      e.locator = a.src.map(c => c.t).join('; ');
+      e.basis = a.entry.basis;
+      e.grounding = {
+        v: REVIEW_VERSION,
+        mode: a.entry.mode === 'independent' ? 'independent' : 'shared',
+        claim: a.entry.claim,
+        sourceVersion: a.entry.sourceVersion,
+        scope: a.entry.scope || null,
+      };
+      promoted.push(e.id);
+    });
+    return { promoted, rejected, revoked };
   }
 
   /* every relationship with its class, for the review ledger */
@@ -153,10 +375,23 @@
     return model.edges.map(e => {
       const from = recs.get(e.from);
       const to = recs.get(e.to);
-      const g = e.type === 'travel' ? { cls: 'travel', shared: [] } : groundLink(from && from.src, to && to.src);
-      return { edge: e, from, to, cls: g.cls, shared: g.shared };
+      const g =
+        e.type === 'travel'
+          ? { cls: 'travel', shared: [], invalid: [] }
+          : groundLink(from && from.src, to && to.src);
+      return { edge: e, from, to, cls: g.cls, shared: g.shared, invalid: g.invalid };
     });
   }
 
-  root.AtlasTimelineGrounding = { parseLocator, verseList, groundLink, insideShared, applyEdgeSources, ledger };
+  root.AtlasTimelineGrounding = {
+    REVIEW_VERSION,
+    parseLocator,
+    verseList,
+    groundLink,
+    insideShared,
+    eligibility,
+    independentEligibility,
+    applyEdgeSources,
+    ledger,
+  };
 })(typeof window !== 'undefined' ? window : globalThis);
