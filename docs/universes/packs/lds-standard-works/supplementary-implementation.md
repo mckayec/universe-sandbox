@@ -2774,3 +2774,50 @@ still represented by BC14). `tests/lds-pack.test.ts` crosswalk count 156 → 157
 **Checks:** `pnpm format`; `pnpm check` **158/158**; `pnpm test:pages` (13 pages × 2 viewports); full
 `pnpm test:browser` passed. Semantic ledger stays **96**, rollup 136/96, source views 107; the two 3 Nephi 11 Matthew
 reader leads, wider vision completeness and all rendering/device/release gates remain open. Not merged.
+
+## Checkpoint 62 — MAT61-C1: the two 3 Nephi 11 Matthew reader leads (HANDOFF_PLAN 2026-11-04 “Separate bounded closure”)
+
+Parent **4ea873875f73746a754bd537deaaebb1a58d586b** (checkpoint 61). A separately labelled unit; the residual-96
+batch (RES96-C01–C14 and the 76 dispositions) is **not started** in this checkpoint, so its 96-key accounting is
+unchanged and every one of the 96 keys remains.
+
+**Baseline.** Before the edits `build.py` (accepted register PR34 5951442), `bmc_omission_rollup.py .`,
+`bmc_semantic_pass.py .`, `bmc_textscan.py . <book-of-mormon.json>` and `timeline_vision.cjs` reproduced the committed
+pack and CSVs byte-for-byte. After the edits two full regenerations produced identical outputs (hash of the pack and
+every pack CSV compared).
+
+**New card.** `BMV-185-doctrine-foundations-matthew`, “Rock and sand compared with Matthew (3 Nephi 11)”, 3/bom, the
+reviewer’s suggested copy verbatim (it keeps “and establishing it as his doctrine”, Matthew 16’s address to Peter and
+Matthew 7’s hearing-and-doing contrast, and “not one setting, audience or event”). Sources in order: 3 Nephi 11:31–40,
+Matthew 16:13–20, Matthew 7:21–29, each with its official `?lang=eng` URL. No `see` target, no year, pin, journey,
+vision membership or Bible identity link; nothing links back to it. 3 Nephi 11:31–40 was read in the
+bcbooks/scriptures-json mirror before building (11:39 “buildeth upon my rock … gates of hell shall not prevail”; 11:40
+“declare more or less than this, and establish it for my doctrine … sandy foundation … floods come and the winds beat”).
+
+**Generator.** `copy_bmc.VIEWS` gains the tuple directly after the wounds view, so BMV-185-crucified-christ-wounds-
+bountiful (3 Nephi 11:11–15) stays the chapter’s first view and is unchanged. `EXTRA_SOURCES` and `NOLINK` may now be
+keyed by the view key, which overrides the chapter number (`build.py`: two lines), so the wounds view keeps its own
+sources and NOLINK reason. The new `bmc-source-views.csv` row records the MAT61-C1 decision (source-only comparison
+without a link; no Peter, flood or Matthew-as-source claim; the Matthew 16:18 rock referent is not arbitrated).
+BMV-188 (3 Nephi 14 / Matthew 7:1–14) is unchanged.
+
+**Screen.** In `bmc_textscan_triage.py` exactly the two BMC-185 `reader` entries become `resolved`, each naming the new
+view; cue names `parallel: Matthew 16:18` and `parallel: Matthew 7:26-27`, their verse references and every other row
+are unchanged (`bmc-textscan.csv`: two lines differ, state and reason only). The frozen 39-chapter / 114-row screen is
+not expanded: **91 consistent, 7 no-hit, 16 resolved, 0 reader**. Cain behaviour unchanged. Semantic ledger 96,
+rollup 136/96, crosswalk 157 (keyword candidates 97, source-only 2), source views 107 → 108.
+
+**Tests.** New `tests/lds-mat61.test.ts` (card gate, exact sources and URLs, no target, no back-links, copy safeguards,
+neighbouring BMV-185 and BMV-188 unchanged, triage counts, the two resolved cues naming the view, the other BMC-185
+hits still naming the wounds view, ledger 96, the source-view row). `tests/lds-pack.test.ts` view counts 107 → 108;
+`tests/lds-semantic-c60.test.ts` now expects 0 reader leads.
+
+**Checks.** `pnpm format`; `pnpm check` **162/162**, `check:dist` 114; `pnpm test:pages` (13 pages × 2 viewports);
+full `pnpm test:browser` passed. Browser probe `supplementary-build/s62-probe.mjs` (SwiftShader, real click/tap input)
+passed: desktop 1440×900 all layers, bom-bible tab has 108 views, the card shows the three sources with the exact
+official links and no See-also, and the wounds view keeps 3 Nephi 11:11–15; phone 390×844 `#layers=bom` shows 108
+views with no sideways scroll; `#layers=ot,nt` does not show the card. The atlas has no codex deep link or text search
+for cards, so “search/deep links” here means the codex tab, its layer-gated list and the source links.
+
+Still open: the residual-96 batch (next PR33 unit), wider vision completeness, finished 4K capture, physical
+iOS/Android, real-GPU and physical-phone evidence. Not merged.

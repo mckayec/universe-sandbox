@@ -123,13 +123,12 @@ test('Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions 
     assert.ok(!rollup.includes(`BMC-${n},`), n);
   }
   assert.equal(sem.trim().split('\n').length - 1, 96);
-  // the two 3 Nephi 11 Matthew reader leads stay open
+  // the two 3 Nephi 11 Matthew reader leads were closed by MAT61-C1 (checkpoint 62; tests/lds-mat61.test.ts)
   const reader = read('bmc-textscan.csv')
     .trim()
     .split('\n')
     .filter(r => r.includes(',reader,'));
-  assert.equal(reader.length, 2);
-  assert.ok(reader.every(r => r.startsWith('BMC-185,')));
+  assert.equal(reader.length, 0);
 });
 
 test('VIS60-C1: BMV-217 is in the vision crosswalk from Ether 3, not its title; card unchanged', () => {

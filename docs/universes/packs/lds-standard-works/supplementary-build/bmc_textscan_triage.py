@@ -43,11 +43,13 @@ TRIAGE = {
     ('BMC-178', 'Isaac'): ('resolved', 'same divine title (4:30); see the BMC-178 decision'),
     ('BMC-183', 'Jerusalem'): ('consistent', NS + ': the Book of Mormon city Jerusalem destroyed by water (9:7)'),
     ('BMC-185', 'flood'): ('consistent', 'floods in the sandy-foundation image (11:40); see the parallel rows'),
-    ('BMC-185', 'parallel: Matthew 7:26-27'): ('reader', '11:39–40 rock and sandy-foundation image parallels '
-                                                         'Matthew 7:24–27; no comparison is stated in the row '
-                                                         '(unstated-parallel class, cf. BMC-188); no card'),
-    ('BMC-185', 'parallel: Matthew 16:18'): ('reader', '11:39 “the gates of hell shall not prevail” matches '
-                                                       'Matthew 16:18 wording; unstated parallel, no card'),
+    # checkpoint 62 (HANDOFF_PLAN 2026-11-04 MAT61-C1): both leads closed by one source-only comparison view
+    ('BMC-185', 'parallel: Matthew 7:26-27'): ('resolved', '11:39–40 rock/sandy-foundation image compared with '
+                                                           'Matthew 7:24–27 in BMV-185-doctrine-foundations-matthew '
+                                                           '(3/bom, no link); wording and images, not one event'),
+    ('BMC-185', 'parallel: Matthew 16:18'): ('resolved', '11:39 gates-of-hell/rock wording compared with Matthew '
+                                                         '16:18 in BMV-185-doctrine-foundations-matthew (3/bom, no '
+                                                         'link); the rock referent is not arbitrated'),
     ('BMC-226', 'parallel: Hebrews 11:1'): ('resolved', '12:6 wording matches Hebrews 11:1; kept as an unstated parallel without a link in the checkpoint-58 BMC-226 decision'),
     ('BMC-236', 'parallel: 1 Corinthians 13:4-7'): ('resolved', 'one passage-level comparison: BMV-236 cites Moroni 7:45–46 and 1 Corinthians 13:4–8, without a link'),
     ('BMC-236', 'parallel: 1 Corinthians 13:8'): ('resolved', 'same passage-level comparison as 7:45 (BMV-236)'),

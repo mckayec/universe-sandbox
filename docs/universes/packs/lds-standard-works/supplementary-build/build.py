@@ -516,8 +516,10 @@ def write_bmc(text):
             refs.append('{ k: %s, r: %s }' % (js(t), js(rel)))
             rows.append([f'BMC-{n:03d}', loc, t, gate, mode, rel, key, url, 'implemented', ''])
         if not see:
-            rows.append([f'BMC-{n:03d}', loc, '', '', mode, '', key, url, 'implemented', copy_bmc.NOLINK[n]])
-        extra = copy_bmc.EXTRA_SOURCES.get(n, [])
+            why = copy_bmc.NOLINK[key] if key in copy_bmc.NOLINK else copy_bmc.NOLINK[n]
+            rows.append([f'BMC-{n:03d}', loc, '', '', mode, '', key, url, 'implemented', why])
+        # checkpoint 62: a view key overrides its chapter number (two views in one chapter)
+        extra = copy_bmc.EXTRA_SOURCES[key] if key in copy_bmc.EXTRA_SOURCES else copy_bmc.EXTRA_SOURCES.get(n, [])
         assert all('/dc-testament/' not in u and '/pgp/' not in u for _t, u in extra), key  # no later work at 3/bom
         line = entry(key, name, desc, [(loc, url)] + extra, [3], ['bom'])
         if refs:

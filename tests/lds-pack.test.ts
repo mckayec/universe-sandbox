@@ -1956,7 +1956,7 @@ test('Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answe
 
 test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon', () => {
   const views = codex('bom-bible');
-  assert.equal(views.length, 107); // 58 through checkpoint 37, 18 added by the S37 decisions (checkpoint 38), 3 by SEM-R1/R3/R4 (checkpoint 53), 17 by the checkpoint-58 residual dispositions, 11 by the checkpoint-60 tranche
+  assert.equal(views.length, 108); // 58 through checkpoint 37, 18 added by the S37 decisions (checkpoint 38), 3 by SEM-R1/R3/R4 (checkpoint 53), 17 by the checkpoint-58 residual dispositions, 11 by the checkpoint-60 tranche, 1 by MAT61-C1 (checkpoint 62)
   const all = P.codex.flatMap((t: any) => t.list);
   const byKey = new Map<string, any>(all.filter((x: any) => x.key).map((x: any) => [x.key, x]));
   const evs = new Map<string, any>(P.events.map((e: any) => [e.id, e]));
@@ -1984,13 +1984,13 @@ test('Checkpoint 32: BMC source views are 3/bom, link one way and are hidden out
   // layer isolation and work downgrade
   const split = (layers: string[], cum: boolean, book: number) =>
     L.codexSplit(views, new Set(layers), null, cum, book, (x: any) => x.books[0]);
-  assert.equal(split(['bom'], false, 0).shown.length, 107);
+  assert.equal(split(['bom'], false, 0).shown.length, 108);
   assert.equal(split(['ot'], false, 0).shown.length, 0);
   assert.equal(split(['nt'], false, 0).shown.length, 0);
   assert.equal(split(['ot', 'nt'], false, 0).shown.length, 0);
-  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 107);
+  assert.equal(split(['ot', 'bom'], false, 0).shown.length, 108);
   assert.equal(split(['ot', 'nt', 'bom'], true, 2).shown.length, 0);
-  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 107);
+  assert.equal(split(['ot', 'nt', 'bom'], true, 3).shown.length, 108);
   // the S31 minimum examples
   const v011 = byKey.get('BMV-011-nazareth-jerusalem-vision');
   assert.match(v011.desc, /In Nephi’s vision, he sees Nazareth and Jerusalem\./);

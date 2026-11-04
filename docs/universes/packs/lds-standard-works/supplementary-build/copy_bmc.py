@@ -443,6 +443,15 @@ VIEWS = [
      'the multitude remember the prophecy that Christ would show himself after his ascension, and one by one feel the '
      'prints of the nails in his hands and feet. Bountiful is kept distinct from the Gospel appearances; no Gospel '
      'episode is matched.', '11–15', []),
+    # checkpoint 62 (HANDOFF_PLAN 2026-11-04 MAT61-C1): a second 3 Nephi 11 view, the rock/sand comparison; the
+    # wounds view BMV-185-crucified-christ-wounds-bountiful (11:11–15) is unchanged
+    (185, 'doctrine-foundations-matthew', 'Rock and sand compared with Matthew (3 Nephi 11)', 'teaching',
+     'Book of Mormon — Jesus describes his doctrine in terms of faith, repentance, baptism, and witness from the '
+     'Father, Son and Holy Ghost. He calls building on that doctrine building on his rock; declaring more or less and '
+     'establishing it as his doctrine is a sandy foundation. Compare Matthew 16:18’s rock/church/gates saying and '
+     'Matthew 7:24–27’s storm-tested houses. Matthew 16 addresses Peter; Matthew 7 contrasts hearing and doing '
+     'Jesus’s words with hearing without doing them. These are comparisons of wording and images, not one setting, '
+     'audience or event.', '31–40', []),
     (201, 'lifted-up-cross', 'Lifted up upon the cross, in Jesus’ words (3 Nephi 27)', 'teaching',
      'Book of Mormon — Jesus tells the disciples that the Father sent him to be lifted up upon the cross, that he might '
      'draw all men to him to be judged. The crucifixion is recalled; Matthew’s account is not quoted, and no place or '
@@ -573,10 +582,18 @@ EXTRA_SOURCES = {
     155: [('Matthew 23:25–26', _S + 'nt/matt/23?lang=eng')],
     # checkpoint 59 (HANDOFF_PLAN 2026-11-04 SEM58-C3): source for the Ether 1 abridgment sentence
     65: [('Ether 1:3–5', _S + 'bofm/ether/1?lang=eng')],
+    # checkpoint 62 (MAT61-C1): keyed by view so the other 3 Nephi 11 view keeps its own sources
+    'BMV-185-doctrine-foundations-matthew': [('Matthew 16:13–20', _S + 'nt/matt/16?lang=eng'),
+                                             ('Matthew 7:21–29', _S + 'nt/matt/7?lang=eng')],
 }
 
-# Views implemented without a See-also link: reason (recorded in bmc-source-views.csv).
+# Views implemented without a See-also link: reason (recorded in bmc-source-views.csv). A view key overrides its
+# chapter number when one chapter has two views (checkpoint 62).
 NOLINK = {
+    'BMV-185-doctrine-foundations-matthew':
+        'checkpoint 62 decision (MAT61-C1): source-only comparison without a link; 3 Nephi 11:31–40 is compared with '
+        'Matthew 16:13–20 and Matthew 7:21–29 as wording and images, not one setting, audience or event. No Peter, '
+        'flood or Matthew-as-source claim; the Matthew 16:18 rock referent is not arbitrated',
     11: 'nonspatial view without a link: its places are map pins, and See-also has no site: link',
     22: 'interpretation view without a link: it carries the 1 Nephi 22 locator and the 22:4 unknown-location '
         'safeguard for the 1 Nephi 20–21 quotations; no Bible card is its subject and no tribe or place is located',
