@@ -1183,3 +1183,30 @@ Reviewed PR33 **74163b3b13a1a23968e6914557e71d6ce2c32b78** / runtime **81f310dca
 Independent checks: **27 Git-blob-verified files**, **6 focused tests**, **4,480 gate assertions**; actual scoped BMC/BC14 generation plus source-view, rollup, full-read, semantic and vision outputs reproduce byte-for-byte twice. Exactly 20 keys leave **116 → 96** residual semantic records; remaining rows are unchanged. Rollup is **136 rows / 96 keys**, source views **107**. The frozen screen remains **39 chapters / 114 rows**, with **2 unchanged Matthew reader leads**; 15 current cue rows match official chapter captures and the Cain regression still passes.
 
 Address these two bounded fixes together, then return the exact head for recheck. Do not repeat the original chapter discovery or reopen SEM58-C1–C3. The 96 residual records, wider vision completeness, two Matthew leads and existing rendering/device/release gates remain open. This review did not rerun the full build, full test suite or browser/hardware gates and is not release acceptance. Preserve current ownership and lock; no approval, merge or deployment.
+
+
+## 2026-11-04 — Checkpoint 61 source fixes closed; timeline checkpoint 14 interaction fixes
+
+[PR33 CI 41776638400](https://github.com/mckayec/universe-sandbox/actions/runs/41776638400) and [PR45 CI 41780179302](https://github.com/mckayec/universe-sandbox/actions/runs/41780179302) passed with deployment skipped. Preserve the active **2026-11-04T05:47:09Z** Claude run for residual semantic research and relationship-source grounding; do not discard or duplicate that work. The two concrete timeline corrections below are the next prioritized implementation unit, together. They need actual interaction changes, not another proposal or documentation-only cycle.
+
+### Checkpoint 61: VIS60-C1 and SEM60-C1 closed
+
+Independently rechecked PR33 **4ea873875f73746a754bd537deaaebb1a58d586b**, direct parent **74163b3**, against the two requested finishing fixes.
+
+- **VIS60-C1 closes:** BMV-217 now has a source-driven `EXPLICIT` / `mixed` row, retaining **Ether 3:2, 9, 13–18**, basis **Ether 3:9, 13–18**, **3/bom** and blank dates. The note correctly distinguishes prayer/teaching, the spirit manifestation, future flesh and blood, and Moroni’s later Nephite comparison. The crosswalk adds exactly one row (**156 → 157**); all old rows are unchanged, source-only entries **1 → 2**, keyword candidates **97**.
+- **SEM60-C1 closes:** The source and generated BMC-238 rationale now refer to Aaron’s army without asserting kingship or identity with Moses’ brother. BC14’s valid enrichment, source and namesake safeguard remain intact.
+
+Verified **27 Git blobs**, **8 focused tests**, and byte-identical regeneration twice for the actual scoped BMC/BC14 and vision outputs. The entire public subtree equals runtime **81f310d**, so no card, event, copy, gate or target changed. Only BMC-238’s reason changes in the source-view CSV. The **96 residual records**, rollup, full-read ingestion, textscan and **two Matthew reader leads** are unchanged.
+
+No further implementation is required for these two corrections. Preserve the accepted twenty-chapter batch and prior closures. Wider source-vision completeness, the 96 residual records, Matthew leads and existing rendering/device/release gates remain open. This bounded review did not repeat full build, full test-suite or browser/hardware checks and does not grant PR approval, merge, deployment or release acceptance. Keep current ownership and lock intact.
+
+### Timeline checkpoint 14: TL-R12 and TL-R13
+
+Reviewed exact PR45 **5c66abbe479efc28fafb0f4862876b378a4d6e01**, runtime **491b71c74320f7f201791c01406e7d6017c9667c**. The overview label, initial search/deep-link reveal and List completeness are supported. Independent validation passed **135 tests**, build, **121 distribution checks** and all **40 builder assertions**; both 390 px and 1440 px retain all **1,667 undated List rows**. Additional interrupted/repeated-flow probes expose two bounded findings:
+
+- **TL-R12, Medium:** Search fails to reveal an already-selected result after its panel is manually closed, and a record whose lane is collapsed. Make reveal idempotent: validate the gated record, expand its lane and undated panel even when selection is unchanged, preserve query/selection, then focus its actual visible row. Do not unhide a gate-excluded record.
+- **TL-R13, Medium:** Tab stalls on the new search input and closed summaries. The focus trap omits those native controls and attempts to focus rows inside closed details. Include visible native controls and exclude hidden descendants; preserve access to a closed details element's visible summary. Also recover focus to an appropriate visible control when a gate change removes the focused record, rather than leaving focus on body.
+
+Return compact/wide tests for repeated activation of the same search result, manually closed panels, collapsed lanes, Tab/Shift+Tab traversal, Enter/Space, gate changes, repeated close/reopen and chart/list interruptions. Check query, selected record, actual focus, source order, gate-filtered counts and all List rows. Preserve accepted drag cancellation, chapter gates and earlier closures. Independent browser evidence uses fallback Chromium154, not matched-browser or physical-device acceptance; no blocked download was retried.
+
+The adapter remains **isolated and unwired**. Preserve separate host wiring/chapter-selector work, per-relationship citation review without blanket card-src promotion, record/travel provenance, chronology, device/AT and release gates. Claude retains implementation ownership. Full review artifacts stay local. No remote review-branch publication, PR metadata refresh, formal approval, merge or deployment follows from this handoff.
