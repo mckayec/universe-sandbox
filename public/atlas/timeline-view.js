@@ -755,14 +755,38 @@
       if (a && a !== document.body && el.contains(a) && a.isConnected) return;
       let t = null;
       if (key) t = (region && region.querySelector(key)) || el.querySelector(key);
-      if (t && (t.disabled || (t.offsetParent === null && !(t instanceof SVGElement)))) t = null;
-      if (!t && sel) t = el.querySelector('[data-id="' + CSS.escape(sel) + '"]');
+      if (t && !shown(t)) t = null;
+      if (!t && sel) t = rowFor(sel);
       if (!t) t = info.querySelector('.tl-ov, h3');
       if (!t) t = el.querySelector('[data-tl="close"]');
       if (t) {
         if (t.tagName === 'H3' && !t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
         t.focus({ preventScroll: true });
       }
+      /* TL-R13: never leave focus on body (a target that could not take focus): fall back to Close */
+      if (!el.contains(document.activeElement)) {
+        const c = el.querySelector('[data-tl="close"]');
+        if (c) c.focus({ preventScroll: true });
+      }
+    }
+    /* TL-R13: what Tab, arrows and focus recovery may land on. Native controls (the search field, a panel's own
+       summary) count; anything hidden, disabled or inside a closed panel (other than that panel's summary) does not. */
+    const TABBABLE = 'button,[tabindex="0"],input:not([type="hidden"]),select,textarea,summary,a[href]';
+    function shown(x) {
+      if (!x || !x.isConnected || x.disabled) return false;
+      if (!(x instanceof SVGElement) && x.offsetParent === null) return false;
+      for (let d = x.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) {
+        if (!d.open && !(x.tagName === 'SUMMARY' && x.parentElement === d)) return false;
+        if (x === d) break;
+      }
+      return true;
+    }
+    function tabbables() {
+      return [...el.querySelectorAll(TABBABLE)].filter(shown);
+    }
+    /* the visible element for a record: its row or mark, never a copy hidden in a closed panel */
+    function rowFor(id) {
+      return [...el.querySelectorAll('[data-id="' + CSS.escape(id) + '"]')].find(shown) || null;
     }
 
     function render() {
@@ -886,12 +910,32 @@
     function pick(id) {
       sel = sel === id ? null : id;
       render();
-      const t =
-        scrollEl.querySelector('[data-id="' + CSS.escape(id) + '"]') ||
-        el.querySelector('[data-id="' + CSS.escape(id) + '"]');
+      const t = rowFor(id);
       if (t) t.focus({ preventScroll: true });
       else restoreFocus(null, null);
       if (env.onChange) env.onChange();
+    }
+    /* TL-R12: reveal a search result, idempotently. The record must still pass the gate (a gate-excluded record is
+       never unhidden); its lane is expanded and its panel opened even when it is already selected, the query and the
+       selection are kept, and focus moves to the record's actual visible row. */
+    function reveal(id) {
+      compute();
+      if (TLM.revalidate(V, id) !== id || !V.byId.get(id)) {
+        render();
+        return;
+      }
+      const lane = V.byId.get(id).lane;
+      const laneChanged = collapsed.delete(lane);
+      unfolded.add(lane);
+      sel = id;
+      render();
+      const t = rowFor(id);
+      if (t) {
+        t.focus({ preventScroll: true });
+        t.scrollIntoView({ block: 'center' });
+      } else restoreFocus(null, null);
+      if (env.onChange) env.onChange();
+      return laneChanged;
     }
     el.addEventListener('click', e => {
       const m = e.target.closest('[data-mode]');
@@ -949,14 +993,7 @@
       }
       const hit = e.target.closest('[data-uhit]');
       if (hit) {
-        /* reveal: select the record, which opens its panel, and move focus to the row inside it */
-        const id = hit.dataset.uhit;
-        if (sel !== id) pick(id);
-        const t = scrollEl.querySelector('.tl-fold [data-id="' + CSS.escape(id) + '"]');
-        if (t) {
-          t.focus({ preventScroll: true });
-          t.scrollIntoView({ block: 'center' });
-        }
+        reveal(hit.dataset.uhit);
         return;
       }
       const it = e.target.closest('[data-id]');
@@ -1001,13 +1038,13 @@
       }
       if (it && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
         e.preventDefault();
-        const all = [...el.querySelectorAll('.tl-m')];
+        const all = [...el.querySelectorAll('.tl-m')].filter(shown);
         const n = all[all.indexOf(it) + (e.key === 'ArrowDown' ? 1 : -1)];
         if (n) n.focus();
         return;
       }
       if (e.key === 'Tab') {
-        const f = [...el.querySelectorAll('button,[tabindex="0"]')].filter(x => !x.disabled && x.offsetParent !== null);
+        const f = tabbables();
         if (!f.length) return;
         const a = document.activeElement;
         if (f.indexOf(a) < 0) {
