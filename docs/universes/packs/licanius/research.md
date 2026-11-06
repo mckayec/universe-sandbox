@@ -23,7 +23,7 @@ All numeric coordinates and distances remain unknown. “setting” is an editor
 
 ## 3. Places
 Aliases: none asserted. Coordinates unknown. No era additions researched beyond separately gated events.
-Gate means **read through this book**, not safe at its opening. A conservative gate is an eligibility ceiling, not a verified earliest mention.
+Gate means **read through this book**, not safe at its opening. A conservative gate is a minimum read-through threshold chosen conservatively, not a verified earliest mention.
 
 | id | name | parent | type | gate | description / source | events |
 |---|---|---|---|---:|---|---|
