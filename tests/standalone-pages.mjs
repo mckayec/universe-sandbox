@@ -59,7 +59,16 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const origin = `http://127.0.0.1:${server.address().port}`;
 const base = origin + SUB;
 
-const PACKS = ['sun-eater', 'hyperion', 'expanse', 'foundation', 'dune', 'cosmere', 'abrahamic-world-religions'];
+const PACKS = [
+  'sun-eater',
+  'hyperion',
+  'expanse',
+  'foundation',
+  'dune',
+  'cosmere',
+  'abrahamic-world-religions',
+  'christian-apocrypha',
+];
 const PAGES = [
   { path: 'atlas/', ready: '#chooser', back: '#chooser .gl-home' },
   ...PACKS.map(id => ({

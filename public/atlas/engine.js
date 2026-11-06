@@ -496,7 +496,17 @@ const MAXTEX=renderer.capabilities.maxTextureSize||4096;
 const ANISO=Math.min(8,renderer.capabilities.getMaxAnisotropy());
 /* surface bake size: 4096 on desktop, 2048 on phones and tablets, 1024 on low-memory devices (each bake holds
    albedo + normal targets, so 4096 costs ~90 MB of GPU memory, enough to get an iOS tab killed) */
-const HD=window.__HD||Math.min(LOWMEM?1024:SMALL?2048:4096,MAXTEX);
+/* T5-1: a software rasteriser (SwiftShader, llvmpipe, Microsoft Basic Render) shades the bake roughly a
+   thousand times slower than a GPU, so it gets the light 1024 surface and 2048 maps instead of a minute-long bake */
+const SOFTGL=(()=>{
+  try{
+    const gl=renderer.getContext();const ext=gl.getExtension("WEBGL_debug_renderer_info");
+    const name=ext?String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)):"";
+    return /swiftshader|llvmpipe|softpipe|software|basic render/i.test(name);
+  }catch(e){return false;}
+})();
+const LIGHT=LOWMEM||SOFTGL;
+const HD=window.__HD||Math.min(LIGHT?1024:SMALL?2048:4096,MAXTEX);
 
 /* ===================== SPACE COORDINATES =====================
    Scene units: 1 unit = 100 light-years. Galactic centre at the origin, the disc in the XZ plane.
@@ -748,14 +758,14 @@ function setFeatures(g){const u=bakeMat.uniforms;const F0=ARR(g.feat).filter(f=>
   const MT=g.map?mapTextures(g.map):null;u.uMapOn.value=MT?1:0;u.tMapHi.value=MT?MT.hi:null;u.tMapLo.value=MT?MT.lo:null;u.tMapReg.value=MT?MT.reg:null;
   u.uMapMtn.value=g.map&&g.map.mtn!=null?g.map.mtn:.35;}
 let EARTH_TEX=null;let earthReady=null;
-/* TA-01: 4096x2048 land mask (Natural Earth 1:10m, scripts/make-earth-mask.py); phones and low-memory devices get the 2048x1024 copy. */
-function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+(SMALL||LOWMEM||MAXTEX<4096?"earth-base-2048.png":"earth-base.png");});return earthReady;}
+/* TA-01: 4096x2048 land mask (Natural Earth 1:10m, scripts/make-earth-mask.py); any bake below 4096 (phones, low-memory devices, software GL) gets the 2048x1024 copy. */
+function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+(HD<4096?"earth-base-2048.png":"earth-base.png");});return earthReady;}
 if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
 /* vector maps (gfx.map): hand-laid coastlines, lakes, rivers, ranges and painted regions, given as
    [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
    equirectangular textures (8192x4096 on capable desktops). The bake reads them for the 4K surface,
    and the planet shader reads the full-size one again up close, so coastlines and rivers stay sharp. */
-const MAPW=(()=>{if(window.__MAPW)return window.__MAPW;if(SMALL||LOWMEM)return 2048;if(MAXTEX<8192)return 4096;const dm=navigator.deviceMemory;return dm&&dm<8?4096:8192;})();
+const MAPW=(()=>{if(window.__MAPW)return window.__MAPW;if(SMALL||LIGHT)return 2048;if(MAXTEX<8192)return 4096;const dm=navigator.deviceMemory;return dm&&dm<8?4096:8192;})();
 const MAP_CACHE={};
 function fractalLine(pts,closed,rough,depth,seed){const R=rng(seed);let P=ARR(pts).filter(q=>q&&q.length>1).map(q=>[+q[0],+q[1]]);if(P.length<2)return P;
   for(let i=1;i<P.length;i++){while(P[i][1]-P[i-1][1]>180)P[i][1]-=360;while(P[i][1]-P[i-1][1]<-180)P[i][1]+=360;}
@@ -807,14 +817,22 @@ function bakeNow(g,key,W){const H=W/2;const set={alb:makeRT(W,H,true),nrm:makeRT
   u.uPass.value=0;renderBake(set.alb);u.uPass.value=1;renderBake(set.nrm);u.uPass.value=2;u.uOct.value=7;renderBake(set.cld);return set;}
 /* incremental HD bake */
 const bakeJobs=[];
-function queueBake(g,key,W,done,progress){const H=W/2;const job={g,key,W,H,set:{alb:makeRT(W,H,true),nrm:makeRT(W,H,!SMALL),cld:makeRT(W/2,H/2,true),size:W},pass:0,row:0,done,progress,cancelled:false};bakeJobs.push(job);return job;}
+/* each job starts with a small probe strip and grows only while frames stay fast (T5-1) */
+const BAKE_PROBE=.06;
+function queueBake(g,key,W,done,progress){const H=W/2;if(!bakeJobs.length)BAKE_SCALE=Math.min(BAKE_SCALE,BAKE_PROBE);const job={g,key,W,H,set:{alb:makeRT(W,H,true),nrm:makeRT(W,H,!SMALL),cld:makeRT(W/2,H/2,true),size:W},pass:0,row:0,done,progress,cancelled:false};bakeJobs.push(job);return job;}
 let BAKE_SCALE=1;
 function bakeStep(){
   const job=bakeJobs[0];if(!job){bakeStep.last=0;return;}if(job.cancelled){disposeSet(job.set);bakeJobs.shift();return;}
   setBakeU(job.g,job.key);const u=bakeMat.uniforms;
   const rt=job.pass===0?job.set.alb:job.pass===1?job.set.nrm:job.set.cld;
   /* adapt the strip size to how long frames are taking, so baking never stalls the view */
-  if(bakeStep.last){const ft=performance.now()-bakeStep.last;BAKE_SCALE=clamp(BAKE_SCALE*(ft>34?.7:ft<20?1.15:1),.05,2.5);}bakeStep.last=performance.now();
+  /* frame time is the cost of the last strip: scale the next one toward a ~20 ms frame in proportion,
+     so one slow strip on a weak GPU is corrected at once instead of by 30% a frame */
+  if(bakeStep.last){
+    const ft=performance.now()-bakeStep.last;
+    BAKE_SCALE=clamp(BAKE_SCALE*clamp(20/Math.max(ft,1),.1,1.15),.002,2.5);
+  }
+  bakeStep.last=performance.now();
   const budget=(MOB?520000:1900000)*BAKE_SCALE/(job.pass===1?3.2:1);
   const rows=Math.max(8,Math.floor(budget/rt.width/8)*8);
   u.uPass.value=job.pass;u.uOct.value=job.pass===2?8:octFor(job.W);u.uEps.value=TAU/job.W*.6;
