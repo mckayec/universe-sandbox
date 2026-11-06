@@ -1,6 +1,6 @@
 # Final audit checkpoint — Abrahamic world religions
 
-> Current checkpoint: round-5 return at `a97eb0dd566584e9b2ec3fec1a43d6320cf20271`; Canon approved for the bounded D02 scope. See the final appended section; technical and owner release gates remain separate.
+> Current checkpoint: round-6 return at `813061f482c729429dd8ee9f194ca406a931cde9`; Canon approved for the bounded D02 scope. See the final appended section; technical and owner release gates remain separate.
 
 2026-11-06 · ChatGPT · PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, reviewed implementation **`ee700d153e91d854e583eb867dd40d0cc21ecfec`**, parent `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`.
 
@@ -372,3 +372,30 @@ This run inspected **25/25 status files** (18 universe, 7 review). Licanius/Hier
 Other §4 items carried from fixing-round4/5 (4K finished-surface captures at d95eaf2, back link, fan/notice and credits, reference markers open real places) remain valid for unchanged content; they will be re-confirmed at the fixed head.
 
 **Technical: not approved — T5-1.** Stage returns to fixing / claude. Mckay's release approval is not requested yet.
+
+
+## 2026-11-06 — Round-6 same-head canon recheck
+
+**Revision:** PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, **813061f482c729429dd8ee9f194ca406a931cde9**. PR independently read open/unmerged at this head. Canon baseline: **a97eb0dd566584e9b2ec3fec1a43d6320cf20271**; intervening main-merge revision: **33dffd0c9e4b367c02ba234fe650e2c447f1255a**.
+
+### Independent delta and data checks
+
+Compared complete, non-truncated baseline/head Git trees. **5/5 pack-data blobs are identical**, including assembler `8c44ed3c3849e26f953055b93c4c387927ee8617` and the entire four-part subtree `70eadbbb49f8a1dc5bd4106eadde2cca6624cb62`. Fetched all five actual files at the head and evaluated them together in an isolated JavaScript object. **314/314 inventory records remain unchanged:** 109 tree nodes, 27 links, 60 events, 25 sites, 93 codex cards (including 45 nonspatial place cards).
+
+**5/5 explicit checks passed:** five pack blobs match the approved baseline; all five D02 card IDs exist; Antioch has no site/pin; Antioch retains first=1; the actual head's AtlasLayers.usePicker returns false for this pack's single Overview book. These are independent structural checks, not execution of the repository TypeScript/browser suites.
+
+Read the cumulative shared-engine/layer-helper/CSS/registry deltas, and fetched the actual head engine and layer helper. The merged compact picker activates only for more than twelve books unless explicitly overridden; this pack does not override it. Badge compaction is likewise inactive for one book. The retained book buttons and filtering flow are not replaced by new historical assertions or gates. Registry still loads all four Abrahamic parts. No new canon/spoiler issue identified.
+
+Round 6 itself changes **3/3 paths** relative to 33dffd0: engine.js, earth-mask.test.ts, standalone-pages.mjs. Inspected the actual tests and delta: software-renderer detection, smaller bake/map resolution and proportional strip budgeting; Christian apocrypha added to the page matrix. No pack record, location coordinate, event association, source text, layer or chronology field changes. Reduced raster resolution is a technical/visual limitation, not evidence of more precise geography.
+
+### Evidence boundaries and handoff
+
+Prior ABR01–04, Q01-R3-L1 and D02-C1 closures remain accepted. The earlier **20/20 source sample** and source-backed bounded review carry forward for byte-identical assertions; no fresh source openings, new random sample or exhaustive religion research are claimed. D02 still retains **5/5 unpinned cards**, defers Najaf's mapped feature and preserves all six spatial Known gaps. Coordinate accounting remains 16/21 supported packages, 15 implemented, Antioch supported but held, 5 unresolved.
+
+Independently queried Actions: [run 42309460502](https://github.com/mckayec/universe-sandbox/actions/runs/42309460502), associated with this PR head, reports completed/success. This is workflow-metadata verification only; this pass did not inspect its checkout/logs or establish the tested synthetic merge tree. It is not proof of deployment. The fixing-round6 statement that PR branches do not run the Pages workflow is too broad: this successful pull_request run exists; workflow execution and actual deployment are distinct.
+
+Claude's **158/158 unit tests**, **28/28 page/viewport checks**, 11–22 second software-GL shell timings and four captures remain builder-attributed here. No independent browser/visual/device/performance run was performed. Claude must formally close T5-1 and sign Technical at this exact head, preserving software-GL resolution and physical-device limitations plus the separately reported pre-existing simulator Save/Load timeout. This canon review does not certify those technical claims.
+
+Inspected **25/25 status files** (18 packs, 7 reviews). Other chats' research assignments and Cosmere book-by-book work were left intact. No site code, PR branch, release decision, merge or deployment changed.
+
+**Canon: approved** at **813061f482c729429dd8ee9f194ca406a931cde9**, for the previously approved bounded D02 scope. Zero new canon findings. Return **final-audit / claude** for formal same-head technical sign-off; Mckay's separate release approval remains required.
