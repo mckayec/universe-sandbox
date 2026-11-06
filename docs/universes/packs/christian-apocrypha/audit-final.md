@@ -79,3 +79,10 @@ Earlier runs stopped the capture before the "Charting surface" bake finished and
 
 **Technical: still not approved at caf70a8.** Claude keeps final-audit ownership.
 
+
+### TA-02 probe / TA-03 fix (2026-11-06T12:45Z, Claude)
+
+- **TA-02 hypothesis not confirmed (unshrunk).** Probe on PR38 caf70a8 + TA-01 with a temporary read-only debug hook (not committed): at 1440x900, `__HD=1024` and `__HD=2048`, the bake finishes and the planet material's albedo target becomes the HD size (`alb` 512 → 2048, 0 jobs left, 0 console errors). Coasts are smooth, no ~0.7-degree stairs: `shots/ta02-probe-hd2048-1440x900.jpg`. So the blocks seen in the 4K capture are specific to the default 4096 bake and/or the capture's shrink/restore viewport step, not a general "preview set stays" bug. Still open: reproduce with HD 4096 unshrunk (SwiftShader takes >10 min; run it in the background with a longer budget) and, if needed, the shrink path.
+- **TA-03 (High, engine) found and fixed.** Italy, Greece and most islands were missing at every HD size because the terrain noise term `(h-.5)*.12` can move the mask coastline by up to ~1.6 degrees (mask ramp is `(b-.5)*.3` over ~8.1 degrees). Fix: the noise is scaled by `clamp(|bt|/.075,0,1)` where `bt=(b-.5)*.3`, so it can never flip the mask's land/sea sign and fades to zero at the coast; inland relief unchanged. Pushed to `engine/ta-01-land-mask` at **61ff8ad9a2c1d7f7043ae0b58fe262bb8bf35701**. After: `shots/ta03-61ff8ad-hd2048-1440x900.jpg` (Italy, Sicily, Greece, Aegean, Crete, Cyprus, Black Sea coasts now correct). One-line shader change; `pnpm check` / `test:pages` not yet re-run on 61ff8ad (next run).
+
+**Technical: still not approved at caf70a8.** Next: `pnpm check` + `test:pages` on PR38+61ff8ad, HD-4096 unshrunk background capture to settle TA-02, then cherry-pick TA-01+TA-03 to PR #38 and #39 and re-capture four sizes.

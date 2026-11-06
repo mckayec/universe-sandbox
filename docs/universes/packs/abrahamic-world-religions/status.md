@@ -1,8 +1,8 @@
 stage: fixing
 owner: claude
-updated: 2026-11-06T11:13Z
+updated: 2026-11-06T12:45Z
 blocked-on: none
-next-action: Claude: finish the shared Earth-surface fix (TA-01 mask done on engine/ta-01-land-mask @46d2548; TA-02 preview-set display issue open, see christian-apocrypha audit-final.md), cherry-pick to PR #39, then R4-T2 phone/chrome fixes and return the exact head with finished-surface evidence; Mckay D02 pending independently.
+next-action: Claude: finish the shared Earth-surface fix (engine/ta-01-land-mask @61ff8ad: TA-01 mask + TA-03 coast-noise fix done; TA-02 4096/shrink stairs open, see christian-apocrypha audit-final.md), cherry-pick to PR #39, then R4-T2 phone/chrome fixes and return the exact head with finished-surface evidence; Mckay D02 pending independently.
 idle-runs: 0
 note: Round-4 metadata accepted at PR39 d4185ed6f15d47e9e268a87fbd59f818237ffc9e: Q01-R3-L1 closed (1/1; 2/2 strings), all 313 records unchanged, independent 26/26 focused tests. CI tested merge 2509bb0 confirms 120/120 unit and 26/26 page cases including this pack's 2/2 desktop/mobile cases; relevant atlas code matches head. Audit 52c939e, clarified D02 4c32bc4 saved/read back. Canon withheld only for pending scope disposition; technical/rendered and Mckay release gates remain separate. No repeat metadata or broad coordinate research; not merged.
 
@@ -49,3 +49,4 @@ Track A · view: Earth map + branching tree
 
 - 2026-11-06T10:14Z: ChatGPT completed round-4 recheck at PR39 d4185ed6f15d47e9e268a87fbd59f818237ffc9e, parent 9e3ce7ed4219d5f3004020de6b6339950bba502f. Audit-final.md saved/read back at 52c939e34b5dc3eadd09fe232c1c428bba265981 before status. Q01-R3-L1 closed (1/1 finding; 2/2 verbatim strings), zero new pack-content findings; independent evaluated comparison confirms all 313 records unchanged; 26/26 focused tests pass. CI42199472611 tested merge2509bb0 has identical relevant atlas/test code: 120/120 unit,26/26 page cases including2/2 for this pack; no simulator-smoke or independent rendered acceptance claimed. Clarified D02 at 4c32bc4ca77457e3ec4de206e0a9f90aedee79f6: five existing cards plus deferred Najaf, supported-held Antioch, later pins require review; no answer entered. Canon not finally approved pending scope answer. Final-audit/chatgpt → fixing/claude for TA-01/R4-T1 and R4-T2 technical work while D02 is pending; move to Mckay only when the remaining action is exclusively his. Do not repeat accepted metadata or broaden research. No PR approval, merge or deployment.
 - 2026-11-06T11:13Z: Claude: shared TA-01 work (R4-T1): 4096x2048 Natural Earth mask on engine/ta-01-land-mask @46d2548; cherry-picked locally onto PR39 d4185ed, pnpm check 123/123 + check:dist pass (not pushed: the 4K render is still blocky for another reason, TA-02, tracked in christian-apocrypha audit-final.md). Stage/owner unchanged.
+- 2026-11-06T12:45Z: Claude — shared engine fix advanced (TA-03 at 61ff8ad, see christian-apocrypha audit-final.md). Stage unchanged; idle-runs 0.

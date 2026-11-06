@@ -1,10 +1,10 @@
 stage: final-audit
 owner: claude
-updated: 2026-11-06T11:13Z
+updated: 2026-11-06T12:45Z
 blocked-on: none
-next-action: Claude: find why the finished 4K view still shows ~0.7-degree blocks (TA-02 hypothesis: the 512 preview set stays on screen, HD set not applied/kept after capture resize), fix on engine/ta-01-land-mask, then cherry-pick to PR #38, re-capture four sizes and finish the technical pass
+next-action: Claude: run pnpm check + test:pages on PR38+engine/ta-01-land-mask 61ff8ad, run an unshrunk HD-4096 4K capture in the background to settle TA-02, then cherry-pick TA-01+TA-03 to PR #38, re-capture four sizes and finish the technical pass
 idle-runs: 0
-note: Canon approved at PR #38 head caf70a87b574da1073c2147e73d909eb2a9193ed. TA-01 checkpoint 2: engine branch engine/ta-01-land-mask at 46d2548b9d82e02fd0e3cc0cdf0a18bf58a74688 (no PR yet) replaces earth-base.png with a 4096x2048 Natural Earth 1:10m mask (same coast ramp; 2048 copy for phones; solar bake downsampled; generator script + tests). pnpm check passes on main+fix (85/85) and on PR38+fix (105/105), test:pages 12x2 pass. BUT the finished-bake 4K capture with the fix still shows the same blocky coasts as before, so the mask was not the visible cause; see audit-final.md "TA-01 checkpoint 2". Fix not yet pushed to PR #38. Technical: not approved.
+note: Canon approved at PR #38 head caf70a87b574da1073c2147e73d909eb2a9193ed. Engine branch engine/ta-01-land-mask now at 61ff8ad9a2c1d7f7043ae0b58fe262bb8bf35701: TA-01 4096 Natural Earth mask + TA-03 fix (terrain noise no longer moves the coastline; Italy/Greece/islands restored, see audit-final.md). TA-02 probe: HD set IS applied after the bake at 1024/2048 unshrunk (smooth coasts), so the 4K stairs are 4096- or shrink-capture-specific; still open. Not yet on PR #38. Technical: not approved.
 
 
 # Christian apocrypha (later layer of the Bible portion)
@@ -42,3 +42,4 @@ Track A · view: Earth-historical layer
 - 2026-11-06: Claude: technical pass checkpoint 1 at caf70a8: validator 0 issues, pnpm check 102/102, test:pages pass, test:browser timeout reproduced on main 9f4ce77 (pre-existing). Finished 4K bake captured (shots/tech-caf70a8-*); APB-004 → TA-01: the 1024x512 Earth land mask makes coastlines blocky at 4K on any hardware. Technical not approved; engine fix next. Stage/owner unchanged (final-audit / claude).
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
 - 2026-11-06T11:13Z: Claude: TA-01 checkpoint 2. Built 4096x2048 Natural Earth land mask on engine/ta-01-land-mask @46d2548 (checks pass on main and PR38 heads). Finished 4K bake capture with the fix (441 s, 0 console errors, 0 third-party) is unchanged vs caf70a8: blocks match the 512 preview bake, not the mask. New hypothesis TA-02 recorded in audit-final.md; stage/owner unchanged (final-audit / claude).
+- 2026-11-06T12:45Z: Claude — TA-02 probe (HD applied at 1024/2048; stairs not reproduced unshrunk); TA-03 coast-noise fix at engine/ta-01-land-mask 61ff8ad. Stage unchanged (final-audit, claude); idle-runs 0.
