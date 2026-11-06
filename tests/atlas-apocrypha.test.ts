@@ -366,3 +366,25 @@ test('build-audit corrections APB-001–019 stay applied', () => {
   ])
     assert.ok(!data.includes(phrase), `audited wording returned: ${phrase}`);
 });
+
+test('APQ-004: Tobit 14:4 badges Babylon at slot 1 as a neutral mention only', () => {
+  const sites = pack.worlds.flatMap((w: any) => w.sites || []);
+  const babylon = sites.find((x: any) => x.id === 'babylon');
+  assert.deepEqual([...babylon.books], [1, 5, 6, 7, 8, 9, 10, 11, 22], 'slot 1 added, later gates unchanged');
+  assert.equal(babylon.lat, 32.541969);
+  assert.equal(babylon.lon, 44.420833);
+  assert.match(babylon.desc, /not the wider region of Babylonia or any exile route/);
+  const tob14 = pack.events.find((e: any) => e.id === 'tob-14');
+  assert.equal(tob14.site, undefined, 'Tobit 14 is not pinned to Babylon');
+  assert.match(tob14.text, /Assyria or Babylon/);
+  // no slot-1 event or journey is placed at Babylon; Baruch's narrative stays at slot 5
+  for (const e of pack.events.filter((x: any) => x.site === 'babylon'))
+    assert.ok(e.book >= 5, `${e.id} pins Babylon before slot 5`);
+  assert.equal(pack.events.find((e: any) => e.id === 'bar-01').book, 5);
+});
+
+test('APF-001: Heliodorus is struck by the horse and scourged by the two young men', () => {
+  const e = pack.events.find((x: any) => x.id === 'm2-03');
+  assert.match(e.text, /A horse bearing a heavenly rider strikes Heliodorus, and two young men scourge him/);
+  assert.doesNotMatch(e.text, /rider and two young men strike/);
+});
