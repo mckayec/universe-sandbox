@@ -1,6 +1,6 @@
 # Final audit checkpoint — Abrahamic world religions
 
-> Current checkpoint: final return at `d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3`; D02-C1 remains open. See the final appended section; earlier evidence retains its original revisions and counts.
+> Current checkpoint: round-5 return at `a97eb0dd566584e9b2ec3fec1a43d6320cf20271`; Canon approved for the bounded D02 scope. See the final appended section; technical and owner release gates remain separate.
 
 2026-11-06 · ChatGPT · PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, reviewed implementation **`ee700d153e91d854e583eb867dd40d0cc21ecfec`**, parent `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`.
 
@@ -312,3 +312,35 @@ Claude's finished-surface four-size report is recorded in fixing-round4.md; it r
 Return **fixing / claude** for D02-C1 only, preserving prior closures. After the bounded correction, ChatGPT rechecks changed content and source/gate evidence; Claude supplies the same-head technical sign-off; Mckay's separate release approval is still required. No site code, PR branch, merge or deployment changed by this review.
 
 **Canon: not approved — D02-C1 (missing Antioch card).**
+
+
+## 2026-11-06 — Round-5 final canon return: D02-C1 closed
+
+**Exact audited revision:** PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, **a97eb0dd566584e9b2ec3fec1a43d6320cf20271**, parent **d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3**. PR read open at this head.
+
+**D02-C1 resolved: 1/1 finding; 5/5 promised nonspatial cards now present; zero new findings.** Mckay's recorded D02 scope approval applies without alteration. Earlier canon withholding for the absent Antioch card is superseded by this section.
+
+### Independent source and implementation review
+
+Read the full two-file diff and both actual changed files at the exact head. Compared complete non-truncated parent/head trees: only the assembler and its targeted test changed; four data parts, engine and prior tests/helpers otherwise retain their blobs.
+
+Freshly opened [ToposText 362362PAnt](https://topostext.org/place/362362PAnt), its heading, modern-name fields and Orontes description: supports the limited Antioch/Antakya identity. Opened [ToposText 383312UAnt](https://topostext.org/place/383312UAnt), heading and modern location: establishes the distinct Pisidian city near Yalvaç. The new card preserves that distinction and explicitly avoids interpreting the historical Syria label as a modern border. No new coordinate, church-founding story, council, patriarchate, sending-church narrative or route is asserted. Pleiades 658381 returned an anti-bot page; it was not treated as opened evidence or bypassed. These are gazetteer checks, not original-manuscript verification or two independent scholarly sources.
+
+Independently evaluated all four fetched data parts and the assembler in an isolated JavaScript object for both parent and head. **9/9 explicit structural checks passed:** card exists; Christianity layer; first=1 Overview gate; source locator retained; Pisidian distinction retained; no site/pin; no event target; all five D02 card IDs present; removing the single new card makes the entire JSON-serialized assembled pack identical to the parent. Parent negative check independently confirms the Antioch card was absent. This is an independent data evaluation, not execution of the repository's TypeScript test suite.
+
+The new record is `chp-antioch`, under “Places without a map point”, with no coordinate. Counts now: **45 nonspatial place cards, 93 total codex cards, 60 events, 25 map sites**; unchanged 109 nodes and 27 explicit links yield **314 inventory records**. Thus **313/313 previous records** retain all values. The accepted ABR01–04 resolutions across 12 affected records and Q01-R3-L1 metadata fix remain intact. The earlier deterministic **20/20 source sample** and bounded conformity review are inherited evidence for unchanged assertions; this return does not claim a new sample or a fresh whole-atlas primary-source audit.
+
+### Known gaps and approval boundary
+
+- D02 keeps Antioch, Fayette/Whitmer, Karbala, Azusa Street and Seesen as **five unpinned cards**. Najaf's mapped feature stays deferred. All six spatial omissions remain Known gaps, not completed coordinate research.
+- Q01 remains **16/21 supported coordinate packages, 15 implemented, Antioch supported but held, 5 unresolved**; 25 markers comprise 10 heritage references and 15 Q01 references. Future pins need their own evidence and revision review.
+- Existing religious-text, tradition, institutional-account and scholarship distinctions remain unchanged. No new provisional or unsupported historical claim is promoted to certainty. Q02–Q07 dispositions and prior source-access recovery remain as documented in earlier audits.
+- Approval covers the agreed bounded atlas and D02 treatment, not exhaustive coverage of every religion or original text.
+
+Claude reports **124/124 unit tests**, **26/26 page/viewport checks**, and **2/2 expected negative-control failures** in fixing-round5.md. These test-suite counts remain **builder-attributed**: the Actions query by this head returned no workflow runs during this review, and the suite was not rerun here. The independent 9-check assembled-data evaluation above is separate. Prior CI for d95eaf2 and earlier source evidence retain their original revision limits.
+
+The new phone card capture and inherited finished-surface four-size captures remain builder evidence, not newly inspected images here. Claude still needs the formal same-head technical sign-off, including disposition of the known simulator Save/Load timeout and physical-device/performance limitations. No technical approval, PR approval, merge, deployment or Mckay release approval is implied.
+
+**Canon: approved** at **a97eb0dd566584e9b2ec3fec1a43d6320cf20271**, for the previously agreed bounded scope with D02's six spatial Known gaps. Hand to **final-audit / claude** for the exact-head technical sign-off, then Mckay's separate release decision.
+
+This run inspected **25/25 status files** (18 universe, 7 review). Licanius/Hierarchy/Narnia research and the newly established Cosmere book-by-book review remain with their originating chats; no concurrent research artifacts or statuses were altered. No separate Deep Research product used.
