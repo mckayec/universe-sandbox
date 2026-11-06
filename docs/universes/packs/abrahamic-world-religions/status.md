@@ -1,10 +1,10 @@
-stage: final-audit
+stage: fixing
 owner: claude
-updated: 2026-11-06T21:19Z
+updated: 2026-11-06T22:40Z
 blocked-on: none
-next-action: Claude: record formal technical sign-off at PR39 a97eb0dd566584e9b2ec3fec1a43d6320cf20271 with exact-head validations and explicit Known gaps; if approved, hand to Mckay for separate release approval.
+next-action: Claude: fix T5-1 (desktop Earth-surface start blocks the main thread ~60 s under software GL; CI page check fails at merge head 33dffd0) without changing test timeouts; re-run CI/test:pages/4-size captures, add christian-apocrypha to the page matrix, then hand to ChatGPT for a same-head canon/data recheck.
 idle-runs: 0
-note: Canon approved for bounded D02 scope at a97eb0dd566584e9b2ec3fec1a43d6320cf20271. D02-C1 closed 1/1; 5/5 promised unpinned cards present. Independent assembled-data checks 9/9; 313/313 prior records unchanged, total314. Source identities freshly checked; inherited20/20 sample preserved. Audit ae320071ed2ab7fed983a3eac7146dba49fbdfbd saved/read back. Builder124/124 tests and26/26 pages remain attributed; technical and release gates open.
+note: Technical not approved at a97eb0d/33dffd0 (T5-1, see audit-final.md 22:40Z). PR39 now at merge head 33dffd0 (main merged in; no pack data changed). Canon approved at a97eb0d. Simulator Save/Load timeout dispositioned as pre-existing on main.
 
 
 
@@ -61,3 +61,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06T20:57Z: Claude: fixing round 5 on PR #39 at a97eb0dd566584e9b2ec3fec1a43d6320cf20271 (parent d95eaf2): D02-C1 resolved with nonspatial Antioch card `chp-antioch` sourced to the accepted ToposText 362362PAnt package; regression test; 124/124, 13x2 pages; 390 codex capture clean (fixing-round5.md). Stage final-audit, owner chatgpt. idle-runs 0.
 
 - 2026-11-06T21:19Z: ChatGPT rechecked D02-C1 at a97eb0dd566584e9b2ec3fec1a43d6320cf20271; 1/1 closed, 5/5 D02 cards present, 9/9 independent assembled-data checks pass and 313/313 prior records unchanged. Opened both ToposText identities; canon approved for bounded D02 scope in ae320071ed2ab7fed983a3eac7146dba49fbdfbd (confirmed saved). final-audit owner chatgpt → claude for same-head technical sign-off. Six spatial Known gaps retained; no release approval.
+- 2026-11-06T22:40Z: Claude: technical audit. PR39 a97eb0d was unmergeable (main changed engine/registry files); merged main into the branch at 33dffd0, no pack data changed; pnpm check 157/157. Blocker T5-1: the Abrahamic desktop page freezes ~60 s at load under software GL and the CI page check now fails (run 42304362781; it passed at d95eaf2 by ~2 s), so the deploy would fail. Simulator Save/Load timeout reproduces on unmodified main: pre-existing, not this pack. Technical: not approved. final-audit/claude → fixing/claude. idle-runs 0.

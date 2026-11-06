@@ -344,3 +344,31 @@ The new phone card capture and inherited finished-surface four-size captures rem
 **Canon: approved** at **a97eb0dd566584e9b2ec3fec1a43d6320cf20271**, for the previously agreed bounded scope with D02's six spatial Known gaps. Hand to **final-audit / claude** for the exact-head technical sign-off, then Mckay's separate release decision.
 
 This run inspected **25/25 status files** (18 universe, 7 review). Licanius/Hierarchy/Narnia research and the newly established Cosmere book-by-book review remain with their originating chats; no concurrent research artifacts or statuses were altered. No separate Deep Research product used.
+
+## 2026-11-06T22:40Z — Claude technical audit (AUDIT_CHECKLIST §4) at a97eb0d and merge head 33dffd0
+
+**Audited:** PR [#39](https://github.com/mckayec/universe-sandbox/pull/39) canon-approved head **a97eb0dd566584e9b2ec3fec1a43d6320cf20271**, then merge head **33dffd0c9e4b367c02ba234fe650e2c447f1255a** (parents a97eb0d and main 5921ee1).
+
+**Why a merge head:** GitHub reported PR39 at a97eb0d as `mergeable=false` (dirty). Main gained non-docs changes after the branch point 236bee5 (PR38 Christian apocrypha, PR43 DAG remediation, shared atlas engine work), conflicting in `public/atlas/engine.js`, `engine.css`, `packs/registry.js` and `src/universe-packs.ts`. Claude merged main into the PR branch (no force push, no history rewrite) keeping both sides: both registry and `UNIVERSE_PACKS` entries; `engine.js` keeps main's `BOOK_PICK` picker plus PR39's `onebook` class; `engine.css` keeps PR39's codex-tab wrap, 1600px filter breakpoint and phone `width:auto`, plus main's `cx-body` flex sizing and picker styles. **No pack data file changed** (`git diff a97eb0d 33dffd0 -- public/atlas/packs/abrahamic-world-religions*` is empty). ChatGPT's canon approval at a97eb0d therefore covers the same pack content, but ChatGPT should still confirm it at the final head per the both-sign-offs-same-revision rule.
+
+### Results
+
+| Check | a97eb0d | 33dffd0 (merge) |
+| --- | --- | --- |
+| `pnpm check` (format, build, unit, check:dist) | pass, 124/124 | pass, 157/157 |
+| `pnpm test:pages` local (SwiftShader, 2-core) | pass, 13×2 | **fail ×2**: Abrahamic @desktop `waitForSelector('#app .top')` 60 s timeout; other 25 pass |
+| `pnpm test:pages` in CI | last CI at d95eaf2 passed; Abrahamic desktop took ~62 s (17:45:52→17:46:54) | **fail**: [run 42304362781](https://github.com/mckayec/universe-sandbox/actions/runs/42304362781), Abrahamic @desktop timeout; Abrahamic @mobile passed but took ~39 s |
+| `pnpm test:browser` | times out at `browser-smoke.mjs:88` (Save→Clear→Load count wait) | same |
+| Phone 390×844 / 1440×900 captures (merge build) | — | 0 console/page errors, no horizontal overflow, codex grid and phone filter bar intact |
+
+**Simulator Save/Load timeout — disposition: pre-existing, not caused by PR39.** The same timeout at the same line reproduces on unmodified main 5921ee1 in this sandbox. PR39 touches no simulator code (`src/` diff vs base is only the `UNIVERSE_PACKS` entry). It is a separate main-branch/environment issue and does not block this pack; it should become its own review item if it also fails on real hardware.
+
+### Blocker
+
+- **T5-1 (High, technical): the Abrahamic desktop page blocks the main thread for ~60 s at load under software GL, so the deploy workflow's page check fails.** Measured on the merge build: `AtlasEngine.start()` returns at ~0.5 s, but the shell is not observable until ~62 s (cosmere: 1.5 s), i.e. the page is unresponsive for about a minute after start, almost certainly in the first Earth-surface work (4096 desktop bake / `MAPW` map textures / TA-01 land-mask path) rather than in data. This is **not a merge regression**: a97eb0d measured 55–60 s on the same machine and d95eaf2 passed CI by about 2 s; the merge only pushed a borderline case over the 60 s limit. Because `deploy-pages.yml` runs this page check, merging PR39 as-is would fail the Pages deploy. Real GPUs are likely much faster, but no physical-device timing exists to prove it, and a minute-long freeze on any slower device is a release defect regardless.
+  - **Fix direction (next Claude unit):** profile the first second after `start()`; make the desktop surface path non-blocking (show the 512 px preview and the shell first, then build hi-res map textures/bake in yielded strips, or start from the 2048 path and upgrade). Do not change the test timeout to get green. Re-run CI, test:pages, captures at 4 sizes, then hand to ChatGPT for a same-head recheck.
+- **Observation (shared engine, live):** the Christian apocrypha pack on main uses the same Earth-surface path but is not in the `test:pages` matrix; T5-1's fix should be checked against it and the pack added to the matrix in the same change.
+
+Other §4 items carried from fixing-round4/5 (4K finished-surface captures at d95eaf2, back link, fan/notice and credits, reference markers open real places) remain valid for unchanged content; they will be re-confirmed at the fixed head.
+
+**Technical: not approved — T5-1.** Stage returns to fixing / claude. Mckay's release approval is not requested yet.
