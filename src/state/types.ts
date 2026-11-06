@@ -57,7 +57,7 @@ export type Body = {
   debris?: boolean;
   /** Receiver id → app.elapsed when this donor's tidal transfer toward it was last announced (not saved). */
   tidalAnnounced?: Map<number, number>;
-  /** Being stripped and swallowed gradually by a black hole or pulsar (see physics/infall.ts; not saved). */
+  /** Being stripped and swallowed gradually by a black hole or pulsar (see physics/infall.ts; saved and resumed on load). */
   infall?: {
     eaterId: number;
     age: number;

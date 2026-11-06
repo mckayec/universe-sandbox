@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book of Mormon — Real Geography Overlay</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0a07;
+    font-family: 'EB Garamond', Georgia, serif;
+    color: #e8dfc4;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  header {
+    text-align: center;
+    padding: 12px 20px 8px;
+    background: linear-gradient(180deg, #0d0a07 0%, #1a1208 100%);
+    border-bottom: 1px solid #b8860b;
+    flex-shrink: 0;
+    z-index: 1000;
+  }
+
+  header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.95rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: #d4a017;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 20px rgba(212,160,23,0.4);
+  }
+
+  header p {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: #d4c89a;
+    margin-top: 3px;
+    opacity: 0.75;
+  }
+
+  .map-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Layer toggle buttons */
+  .layer-controls {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .layer-btn {
+    background: rgba(13,10,7,0.88);
+    border: 1px solid rgba(184,134,11,0.5);
+    color: #d4c89a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .layer-btn.active {
+    border-color: #d4a017;
+    color: #d4a017;
+  }
+
+  .layer-btn:hover { background: rgba(26,18,8,0.95); }
+
+  .dot-legend {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Info panel */
+  .info-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(13,10,7,0.94);
+    border-top: 1px solid rgba(184,134,11,0.4);
+    padding: 14px 18px;
+    max-height: 38vh;
+    overflow-y: auto;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease;
+  }
+
+  .info-panel.hidden {
+    transform: translateY(100%);
+  }
+
+  .info-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: 1px solid rgba(184,134,11,0.4);
+    color: #d4a017;
+    font-size: 0.8rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+  }
+
+  .info-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
+  }
+
+  .info-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    color: #d4a017;
+    margin-bottom: 4px;
+  }
+
+  .info-loc {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: #d4c89a;
+    margin-bottom: 8px;
+  }
+
+  .info-body {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #e8dfc4;
+    margin-bottom: 8px;
+  }
+
+  .info-scripture {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #d4a017;
+    margin-bottom: 8px;
+  }
+
+  .info-lidar-match {
+    font-size: 0.82rem;
+    color: #90d8e8;
+    border-left: 2px solid #00b4d8;
+    padding-left: 10px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .info-lidar-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #00b4d8;
+    margin-top: 6px;
+    background: rgba(0,180,216,0.1);
+    padding: 4px 8px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .tap-hint {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    background: rgba(13,10,7,0.82);
+    border: 1px solid rgba(184,134,11,0.35);
+    color: #d4c89a;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    padding: 6px 16px;
+    border-radius: 2px;
+    pointer-events: none;
+    opacity: 0.85;
+    transition: opacity 0.5s;
+  }
+
+  /* Leaflet popup override */
+  .leaflet-popup-content-wrapper {
+    background: rgba(13,10,7,0.95);
+    border: 1px solid rgba(184,134,11,0.5);
+    border-radius: 3px;
+    color: #e8dfc4;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
+  .leaflet-popup-tip { background: rgba(13,10,7,0.95); }
+  .leaflet-popup-content { margin: 10px 14px; font-family: 'EB Garamond', serif; }
+
+  /* Map tile dark filter */
+  .leaflet-tile { filter: brightness(0.45) saturate(0.6) hue-rotate(10deg); }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0d0a07; }
+  ::-webkit-scrollbar-thumb { background: rgba(184,134,11,0.4); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Book of Mormon — Real Geography Overlay</h1>
+  <p>Proposed city locations on modern Mesoamerica · Tap any marker to explore</p>
+</header>
+
+<div class="map-container">
+  <div id="map"></div>
+
+  <div class="layer-controls" id="layerControls">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#b8860b;letter-spacing:0.1em;text-align:center;margin-bottom:2px;">LAYERS</div>
+    <button class="layer-btn active" id="btn-nephite" onclick="toggleLayer('nephite')">
+      <span class="dot-legend" style="background:#4a90d4"></span>Nephite Cities
+    </button>
+    <button class="layer-btn active" id="btn-lamanite" onclick="toggleLayer('lamanite')">
+      <span class="dot-legend" style="background:#c0392b"></span>Lamanite Cities
+    </button>
+    <button class="layer-btn active" id="btn-jaredite" onclick="toggleLayer('jaredite')">
+      <span class="dot-legend" style="background:#5a8a4a"></span>Jaredite Territory
+    </button>
+    <button class="layer-btn active" id="btn-landmark" onclick="toggleLayer('landmark')">
+      <span class="dot-legend" style="background:#d4a017"></span>Landmarks
+    </button>
+    <button class="layer-btn active" id="btn-lidar" onclick="toggleLayer('lidar')">
+      <span class="dot-legend" style="background:#00b4d8"></span>LiDAR Discoveries
+    </button>
+    <button class="layer-btn active" id="btn-regions" onclick="toggleLayer('regions')">
+      <span class="dot-legend" style="background:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.4)"></span>Region Overlays
+    </button>
+  </div>
+
+  <div class="info-panel hidden" id="infoPanel">
+    <button class="info-close" onclick="closePanel()">✕</button>
+    <div id="infoPanelContent"></div>
+  </div>
+
+  <div class="tap-hint" id="tapHint">Tap any marker to learn more</div>
+</div>
+
+<script>
+// Initialize map centered on Mesoamerica
+const map = L.map('map', {
+  center: [16.5, -90.5],
+  zoom: 6,
+  zoomControl: true,
+  attributionControl: true
+});
+
+// OpenStreetMap tiles
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors',
+  maxZoom: 12,
+  minZoom: 4
+}).addTo(map);
+
+// ============================================================
+// DATA
+// ============================================================
+const typeColors = {
+  nephite:  { fill: '#4a90d4', stroke: '#7ab4e0', pulse: 'rgba(74,144,212,0.25)' },
+  lamanite: { fill: '#c0392b', stroke: '#e07060', pulse: 'rgba(192,57,43,0.25)' },
+  jaredite: { fill: '#5a8a4a', stroke: '#90c080', pulse: 'rgba(90,138,74,0.25)' },
+  landmark: { fill: '#d4a017', stroke: '#f0c040', pulse: 'rgba(212,160,23,0.25)' },
+  lidar:    { fill: '#00b4d8', stroke: '#40d0f0', pulse: 'rgba(0,180,216,0.2)' }
+};
+
+const locations = [
+  // ---- NEPHITE ----
+  {
+    id: 'zarahemla', type: 'nephite',
+    lat: 17.0, lng: -92.5,
+    name: 'Zarahemla', typeLabel: 'Nephite Capital',
+    modernLocation: 'Chiapas lowlands / Usumacinta River basin, Mexico',
+    description: 'The central Nephite governmental seat for most of the Book of Mormon narrative. Most scholars place it along the Usumacinta River in the Chiapas/Tabasco lowlands — the River Sidon flowing northward matches the Usumacinta perfectly. The site Palenque or nearby lowland areas are common proposals.',
+    scripture: 'Omni 1:14, Alma 22:27',
+    lidarMatch: 'Exactly where LiDAR found 478 Olmec/Maya sites in 2021 across eastern Tabasco — civilization density the text requires, now confirmed by modern science.'
+  },
+  {
+    id: 'bountiful', type: 'nephite',
+    lat: 18.1, lng: -94.8,
+    name: 'Land of Bountiful', typeLabel: 'Nephite — Northern Border',
+    modernLocation: 'Veracruz / Gulf Coast near Coatzacoalcos, Mexico',
+    description: 'A fertile, heavily fortified land on the northern edge of Nephite territory, directly south of the Narrow Neck. Christ\'s post-resurrection appearance to the Nephites occurred at the temple in Bountiful (3 Nephi 11). Placed near the east sea (Gulf of Mexico) just south of Tehuantepec.',
+    scripture: 'Alma 22:29–33, 3 Nephi 11:1',
+    lidarMatch: 'The Veracruz/Gulf Coast region shows extensive pre-Columbian settlement now being mapped by LiDAR, including connections to the Olmec heartland directly north.'
+  },
+  {
+    id: 'mulek', type: 'nephite',
+    lat: 18.8, lng: -90.5,
+    name: 'City of Mulek', typeLabel: 'Mulekite Settlement',
+    modernLocation: 'Campeche / Yucatán border region, Mexico',
+    description: 'Named after Mulek, son of King Zedekiah, who escaped Jerusalem\'s fall ~587 BC. The Mulekites first landed in the Land Northward before migrating south. Their city became a key Nephite military outpost near the east sea (Gulf/Caribbean). The Yucatán peninsula\'s western shore is the primary candidate.',
+    scripture: 'Helaman 6:10, Omni 1:16',
+    lidarMatch: 'Valeriana — a Maya city of 6,500 structures — was discovered in Campeche in 2024, hidden next to a highway. This is precisely the proposed Mulek territory.'
+  },
+
+  // ---- LAMANITE ----
+  {
+    id: 'nephi', type: 'lamanite',
+    lat: 14.8, lng: -90.5,
+    name: 'City of Nephi', typeLabel: 'Original Colony / Lamanite Capital',
+    modernLocation: 'Guatemalan Highlands — near modern Guatemala City',
+    description: 'The original settlement founded by Nephi after separating from Laman and Lemuel. Later became a Lamanite capital. Located in mountainous terrain — the Guatemalan Highlands match perfectly, approximately 22 days\' march from Zarahemla through the Sierra Madre mountains.',
+    scripture: '2 Nephi 5:8, Alma 47:20',
+    lidarMatch: 'Los Abuelos (May 2025) — a 3,000-year-old ceremonial city with 33-meter pyramids — was found by LiDAR in Petén, just north of the Guatemalan Highlands. Dating: 800–500 BCE, squarely within early Nephite/Lamanite timeframes.'
+  },
+  {
+    id: 'firstinheritance', type: 'lamanite',
+    lat: 14.2, lng: -92.1,
+    name: 'Land of First Inheritance', typeLabel: 'Lehi\'s Landing Site',
+    modernLocation: 'Pacific Coast — Chiapas / Guatemala border',
+    description: 'Where Lehi\'s family first arrived in the promised land, approximately 589 BC. Located on the western coast (Pacific) — to the west of the Land of Nephi. Lamanites retained control of this coastal area. The fertile Pacific coast of southern Mexico/Guatemala fits the text\'s description.',
+    scripture: 'Alma 22:28, 1 Nephi 18:23',
+    lidarMatch: 'Pre-Classic settlements (600–400 BCE) along this coastline are now being revealed through LiDAR surveys, consistent with initial Lehite habitation dates.'
+  },
+
+  // ---- JAREDITE ----
+  {
+    id: 'desolation', type: 'jaredite',
+    lat: 19.5, lng: -96.5,
+    name: 'Land of Desolation', typeLabel: 'Jaredite Territory',
+    modernLocation: 'Veracruz / Olmec heartland, Gulf Coast Mexico',
+    description: 'The Land Northward — former home of the Jaredites, who arrived from the Tower of Babel. Called "Desolation" because their entire civilization was destroyed in civil war, leaving the land strewn with bones and ruins. The Olmec heartland (1500–400 BC) along the Gulf Coast is the most compelling candidate.',
+    scripture: 'Ether 1:1, Alma 22:30–31',
+    lidarMatch: 'San Lorenzo — the great Olmec center — is in this exact region. LiDAR revealed San Lorenzo\'s layout was the architectural template copied by hundreds of later Maya sites, confirming the Olmec as a foundational "mother civilization."'
+  },
+  {
+    id: 'moronihah', type: 'jaredite',
+    lat: 18.3, lng: -93.5,
+    name: 'City of Moronihah', typeLabel: 'Jaredite-Era / Late Nephite',
+    modernLocation: 'Tabasco lowlands, Mexico',
+    description: 'One of the cities destroyed in the great cataclysm at Christ\'s death (3 Nephi 8–9) — specifically buried under a mountain of earth. The Tabasco lowlands, prone to volcanic and seismic activity related to the Trans-Mexican Volcanic Belt, are a plausible candidate for cities buried by catastrophic land events.',
+    scripture: '3 Nephi 9:5',
+    lidarMatch: 'The Tabasco LiDAR survey (2021) found 478 sites in this region — many still completely buried. Some may literally be sites submerged or buried by geological events consistent with 3 Nephi\'s catastrophic descriptions.'
+  },
+
+  // ---- LANDMARKS ----
+  {
+    id: 'narrow-neck', type: 'landmark',
+    lat: 16.5, lng: -95.1,
+    name: 'Narrow Neck of Land', typeLabel: 'Geographic Landmark',
+    modernLocation: 'Isthmus of Tehuantepec, Oaxaca/Veracruz, Mexico',
+    description: 'The most precisely described geographic feature in the Book of Mormon — a narrow land passage traversable in "a day and a half\'s journey for a Nephite" from sea to sea. The Isthmus of Tehuantepec is ~200 km (124 miles) wide at its narrowest, and is the only isthmus in all of Mesoamerica fitting this description.',
+    scripture: 'Alma 22:32, Ether 10:20',
+    lidarMatch: 'The Tehuantepec region is now being actively surveyed by LiDAR. Its role as a land bridge between Gulf and Pacific coasts makes it a natural strategic chokepoint — exactly as described in the military campaigns of Alma 50–63.'
+  },
+  {
+    id: 'cumorah', type: 'landmark',
+    lat: 18.6, lng: -95.2,
+    name: 'Hill Cumorah / Ramah', typeLabel: 'Final Battlefield',
+    modernLocation: 'Disputed — Veracruz hills (Mesoamerican model) or Upstate New York',
+    description: 'Site of the final destruction of the Nephite nation and where Mormon hid the plates. Called "Ramah" by the Jaredites — suggesting both civilizations used this same hill. The Mesoamerican model places it in the Veracruz hill country near the Gulf Coast. The traditional New York site (Hill Cumorah near Palmyra) is the alternate view.',
+    scripture: 'Mormon 6:2, Ether 15:11',
+    lidarMatch: 'If in Veracruz, it falls within the LiDAR-surveyed Olmec/Gulf Coast zone. Elevated terrain features in this area have not been fully archaeologically surveyed — an open question LiDAR may eventually answer.'
+  },
+
+  // ---- LIDAR DISCOVERIES ----
+  {
+    id: 'lidar-tabasco', type: 'lidar',
+    lat: 17.6, lng: -92.0,
+    name: '478-Site LiDAR Survey', typeLabel: 'LiDAR Discovery 2021',
+    modernLocation: 'Eastern Tabasco, Mexico',
+    description: '478 previously unknown Olmec and Maya ceremonial sites found across 84,500 km² using Mexican government LiDAR data. All share rectangular/square complex layouts suggesting a unified cultural tradition spanning 1400 BC – 1000 AD. This is the single largest archaeological discovery by site count in Mesoamerican history.',
+    scripture: 'Proposed Zarahemla heartland',
+    lidarSource: 'Nature Human Behaviour, Oct 2021 | Inomata et al., U of Arizona',
+    lidarMatch: 'Sits directly over the proposed Zarahemla region. The civilization density, timeframe (1400 BC–1000 AD), and shared cultural patterns all align with what the Book of Mormon describes for the Nephite heartland.'
+  },
+  {
+    id: 'lidar-guatemala', type: 'lidar',
+    lat: 16.9, lng: -89.8,
+    name: 'PACUNAM — 60,000 Structures', typeLabel: 'LiDAR Discovery 2018',
+    modernLocation: 'Petén Basin, Guatemala',
+    description: 'The largest Maya LiDAR survey in history — 60,000+ unknown structures including fortresses, raised highways, canals, and cities across 2,100+ km² of Guatemalan jungle. Revealed Maya civilization was far more interconnected, militarized, and densely populated than previously believed. Population estimates revised upward dramatically.',
+    scripture: 'Proposed Land Southward / Land of Nephi',
+    lidarSource: 'PACUNAM LiDAR Initiative | National Geographic 2018',
+    lidarMatch: 'The interconnected fortresses and military roads found here match the Alma war chapters\' descriptions of Lamanite and Nephite military campaigns across the Land Southward with striking precision.'
+  },
+  {
+    id: 'lidar-valeriana', type: 'lidar',
+    lat: 18.65, lng: -90.2,
+    name: 'Valeriana — Lost Maya City', typeLabel: 'LiDAR Discovery 2024',
+    modernLocation: 'Campeche, Mexico',
+    description: 'Discovered in 2024 from a decade-old forestry LiDAR dataset found on page 16 of a Google search. Contains 6,500+ structures including pyramids, plazas, and a ball court — 15 minutes from a major highway. Estimated 30,000–50,000 inhabitants at peak. Proves major cities in this region are still being found.',
+    scripture: 'Proposed Mulek / northern Land Southward territory',
+    lidarSource: 'Antiquity Journal 2024 | Auld-Thomas, Northern Arizona University',
+    lidarMatch: 'Hidden in plain sight next to a modern road — exactly like how so many proposed Book of Mormon cities may be waiting beneath Mesoamerican jungle. This city sits precisely where Mulekite settlements are theorized.'
+  },
+  {
+    id: 'lidar-abuelos', type: 'lidar',
+    lat: 16.3, lng: -89.5,
+    name: 'Los Abuelos — 3,000yr City', typeLabel: 'LiDAR Discovery May 2025',
+    modernLocation: 'Petén, Guatemala',
+    description: 'Announced May 2025 via drone LiDAR — a 16 km² ceremonial hub with pyramids up to 33 meters tall and a unique canal system. Dating: 800–500 BCE, making it one of the earliest monumental complexes in the Maya world. Entirely hidden under jungle canopy until 2025.',
+    scripture: 'Proposed early Lamanite / Land of Nephi region',
+    lidarSource: 'The Guardian/AFP, May 30 2025',
+    lidarMatch: '800–500 BCE perfectly overlaps the early Nephite-Lamanite separation period. A monumental city with 33-meter pyramids in Guatemala dating to exactly this era is one of the most remarkable correlations yet.'
+  },
+  {
+    id: 'lidar-teotihuacan', type: 'lidar',
+    lat: 19.69, lng: -98.84,
+    name: 'Teotihuacán Mapped by LiDAR', typeLabel: 'LiDAR Ongoing',
+    modernLocation: '~40 km NE of Mexico City',
+    description: 'Largest pre-Columbian city in the Americas — 125,000 people at peak, 22 km² footprint. LiDAR mapping revealed the full extent of the site and confirmed its cultural reach extended to Tikal, Guatemala (1,000+ miles). Dominated Mesoamerica 250–550 CE. LiDAR also found a buried replica of Teotihuacán\'s citadel inside Tikal (April 2025).',
+    scripture: 'Proposed major Land Northward / late Jaredite or early Nephite-era city',
+    lidarSource: 'U of Houston NCALM 2015 | Brown University April 2025',
+    lidarMatch: 'Teotihuacán\'s documented dominance over a vast inter-connected region mirrors the Jaredite kingdom\'s described control of the Land Northward. Its cultural fingerprints in Guatemala demonstrate the precise geographic reach the Book of Mormon describes.'
+  }
+];
+
+// ============================================================
+// REGION POLYGONS
+// ============================================================
+const regions = [
+  {
+    id: 'land-northward',
+    name: 'Land Northward',
+    coords: [[22,  -98],[22, -86],[19.5,-86],[18.5,-92],[17.5,-95],[18,-97.5],[19,-98],[22,-98]],
+    color: '#5a8a4a', opacity: 0.08, strokeColor: '#5a8a4a', strokeOpacity: 0.35
+  },
+  {
+    id: 'land-southward',
+    name: 'Land Southward (Nephite core)',
+    coords: [[18,-95],[18,-88],[15,-88],[14,-90],[13.5,-92],[14,-94],[15.5,-95],[17,-95.5],[18,-95]],
+    color: '#4a90d4', opacity: 0.07, strokeColor: '#4a90d4', strokeOpacity: 0.3
+  },
+  {
+    id: 'land-nephi',
+    name: 'Land of Nephi (Lamanite)',
+    coords: [[15,-92],[15,-88],[13,-88],[12.5,-90],[13,-92],[14,-93],[15,-92]],
+    color: '#c0392b', opacity: 0.07, strokeColor: '#c0392b', strokeOpacity: 0.3
+  },
+  {
+    id: 'narrow-neck-zone',
+    name: 'Narrow Neck Zone',
+    coords: [[17.5,-95.5],[17.5,-93.5],[16,-93.5],[16,-95.5],[17.5,-95.5]],
+    color: '#d4a017', opacity: 0.12, strokeColor: '#d4a017', strokeOpacity: 0.6
+  }
+];
+
+// ============================================================
+// BUILD LAYERS
+// ============================================================
+const layers = { nephite: [], lamanite: [], jaredite: [], landmark: [], lidar: [], regions: [] };
+
+function makeMarkerIcon(type, isLidar) {
+  const c = typeColors[type];
+  const size = isLidar ? 16 : 14;
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${size*2}' height='${size*2}' viewBox='0 0 ${size*2} ${size*2}'>
+    <circle cx='${size}' cy='${size}' r='${size-1}' fill='${c.pulse}' stroke='${c.stroke}' stroke-width='1' stroke-dasharray='${isLidar?"3,2":"none"}'/>
+    <circle cx='${size}' cy='${size}' r='${size/2}' fill='${c.fill}' stroke='${c.stroke}' stroke-width='1.5'/>
+    <circle cx='${size}' cy='${size}' r='${size/4.5}' fill='white' opacity='0.7'/>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [size*2, size*2],
+    iconAnchor: [size, size],
+    popupAnchor: [0, -size]
+  });
+}
+
+// Add region polygons
+regions.forEach(r => {
+  const poly = L.polygon(r.coords, {
+    color: r.strokeColor,
+    weight: 1.5,
+    opacity: r.strokeOpacity,
+    fillColor: r.color,
+    fillOpacity: r.opacity,
+    dashArray: '5,4',
+    interactive: true
+  });
+
+  poly.bindTooltip(`<span style="font-family:'Cinzel',serif;font-size:0.75rem;color:#d4a017;letter-spacing:0.08em">${r.name}</span>`, {
+    permanent: false, direction: 'center',
+    className: 'bom-tooltip'
+  });
+
+  layers.regions.push(poly);
+  poly.addTo(map);
+});
+
+// River Sidon (Usumacinta)
+const sidon = L.polyline([
+  [17.6,-91.6],[17.2,-91.4],[16.8,-91.0],[16.3,-90.8],[15.8,-90.5],[15.2,-90.3],[14.9,-90.1]
+], { color: '#7bb8d4', weight: 2.5, opacity: 0.55, dashArray: '8,4' });
+sidon.bindTooltip('<span style="font-family:serif;font-style:italic;color:#7bb8d4;font-size:0.75rem">River Sidon (Usumacinta R.)</span>', {sticky: true});
+layers.regions.push(sidon);
+sidon.addTo(map);
+
+// Add city markers
+locations.forEach(loc => {
+  const isLidar = loc.type === 'lidar';
+  const icon = makeMarkerIcon(loc.type, isLidar);
+  const marker = L.marker([loc.lat, loc.lng], { icon });
+
+  marker.on('click', () => showInfo(loc));
+  marker.bindTooltip(`<span style="font-family:'Cinzel',serif;font-size:0.75rem;color:${typeColors[loc.type].stroke}">${loc.name}</span>`, {
+    direction: 'top', offset: [0, -10]
+  });
+
+  layers[loc.type].push(marker);
+  marker.addTo(map);
+});
+
+// ============================================================
+// INFO PANEL
+// ============================================================
+function showInfo(loc) {
+  document.getElementById('tapHint').style.opacity = '0';
+  const c = typeColors[loc.type];
+  document.getElementById('infoPanelContent').innerHTML = `
+    <div class="info-type" style="color:${c.stroke}">${loc.typeLabel}</div>
+    <div class="info-name">${loc.name}</div>
+    <div class="info-loc">📍 ${loc.modernLocation}</div>
+    <div class="info-body">${loc.description}</div>
+    ${loc.scripture ? `<div class="info-scripture">Scripture: ${loc.scripture}</div>` : ''}
+    <div class="info-lidar-match">${loc.lidarMatch}</div>
+    ${loc.lidarSource ? `<div class="info-lidar-source">🔬 ${loc.lidarSource}</div>` : ''}
+  `;
+  document.getElementById('infoPanel').classList.remove('hidden');
+}
+
+function closePanel() {
+  document.getElementById('infoPanel').classList.add('hidden');
+}
+
+// ============================================================
+// LAYER TOGGLES
+// ============================================================
+const layerVisible = { nephite: true, lamanite: true, jaredite: true, landmark: true, lidar: true, regions: true };
+
+function toggleLayer(type) {
+  layerVisible[type] = !layerVisible[type];
+  const btn = document.getElementById('btn-' + type);
+  btn.classList.toggle('active', layerVisible[type]);
+  layers[type].forEach(m => {
+    if (layerVisible[type]) m.addTo(map);
+    else map.removeLayer(m);
+  });
+}
+
+// Add custom tooltip style
+const style = document.createElement('style');
+style.textContent = `.bom-tooltip { background:rgba(13,10,7,0.88)!important; border:1px solid rgba(184,134,11,0.4)!important; border-radius:2px!important; box-shadow:none!important; } .bom-tooltip::before{display:none}`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>

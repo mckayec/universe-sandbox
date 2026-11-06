@@ -1,0 +1,148 @@
+# Parallel timeline handoff and proposal review
+
+ChatGPT, 2026-11-02. Reviewed proposal.md blob `209523b96385e9797b2d116e54f0e68615a362de` and status.md blob `ea6b61430345ffa3863fa68f1c021c95841a8430`.
+
+## Immediate assignment to Claude
+
+Mckay asked: “Claude seems to be 'sitting' a lot while you work. Can you hand anything off to Claude to get it to work simultaneously?”
+
+**Start the bounded timeline prototype on `engine/timelines` now, independently of the PR33 review.** This reinforces the parallel implementation decision already recorded in HANDOFF_PLAN.md; it is not a new requirement for the initial Standard Works release. The existing status remains implementation / claude. The branch was not present at this review, so implementation is not claimed started.
+
+Use the proposed Abrahamic-first order, followed by Standard Works. Original symbols are a suitable first implementation. Keep Gospel-harmony and circular views later. The first deliverable is a working linear chart plus equivalent list view on a separate draft PR, with its exact commit and test/screenshot evidence. Do not wait for Apocrypha date research, a second design approval, or PR33's review to complete before implementing that bounded unit. Do not merge or deploy without the applicable owner approval.
+
+Prefer an isolated module/adapter change and branch/worktree. Do not mix prototype code into PR33 or alter its handoff, release gates, accepted content, or pending fixes. If the same builder cannot execute both at once, finish the small current PR33 correction batch first, then build this prototype during its review. No idle wait is needed while ChatGPT owns a review.
+
+## Concrete proposal corrections to include in implementation
+
+1. **Source and chronology fields:** make edge source locators required for displayed factual relationships. Add the missing `describes` edge type or preserve the existing typed relation without coercing it into same-entity. Preserve claim type, date basis/precision and provenance through every adapter and aggregate.
+2. **Presence is not a dated lifespan:** keep uncertain emergence windows distinct from a known start followed by continued presence. Do not extend a tentative emergence range into an unqualified continuous history. Retain the existing ongoing/undated distinctions and visibly mark uncertainty.
+3. **Sites are not journeys:** a dated site alone cannot create a travel edge. Map routes to travel only where the accepted route's ordered stops and source support it; a route-level date range does not establish dates for individual legs. Unsupported legs stay undated.
+4. **Narrative ordering:** source reading order, narrated chronology and manuscript/composition dates differ. Label which ordering is used. Unknown or mutually incompatible chronology stays outside the numeric axis; no invented alignment between scripture and civil history.
+5. **Family branch still required:** a tradition's branch/division is not the family genealogy requested in the brief. The Abrahamic-first slice can demonstrate institutional branching, but it must report family genealogy as a remaining requirement until accepted parent/child data exists. Do the same for unsupported succession or migration examples; do not call the prototype full coverage.
+6. **Gating and UI:** filter both endpoints and the edge's own gate before layout, counts, search, selected details, list/export or URL restoration. Revalidate pending selections after work/chapter downgrade. Avoid a chronological leak through a later death/succession. Test BCE/CE boundary behavior explicitly; store calendar semantics without assuming that simple integer subtraction matches an axis with no year zero.
+7. **Interaction tests:** include repeated open/close, Escape/focus restoration, browser back/forward, unknown URL IDs, zoom/reset, collapsed lanes, reduced motion and keyboard-accessible alternatives to lane dragging. Verify the 390px presentation without shrinking dense labels into illegibility.
+
+These are bounded implementation requirements, not a demand for another proposal round. Build the supported slice and make any unsupported data visible as coverage gaps.
+
+## Research split
+
+Yes, Christian Apocrypha composition/transmission chronology needs a separate source-checked research pass before numeric plotting. ChatGPT owns that research when scheduled; it is **not complete**, and the proposal's inventory counts were not independently reproduced in this document. Claude can implement the adapter/undated view now using existing records, with distinct optional composition/transmission fields that accept future reviewed data. No fabricated dates or placeholders presented as historical claims.
+
+ChatGPT continues the PR33 exact-head review independently and reviews this prototype once its draft PR is supplied. A working branch and evidence, rather than another broad planning document, are the next timeline handoff.
+
+## Verification limits
+
+This was a documentation/proposal review, not execution of the prototype or a content sign-off on the pack inventories. No timeline code, browser test, release, merge or deployment is claimed by this handoff.
+
+## Independent implementation review — 2026-11-02, 708f26c
+
+This dated update supersedes the earlier proposal-only verification limits above. Independently reviewed PR45 (`engine/timelines`) at **708f26c689a6ae58120040a1c7a1b5aa344720ac**, stacked on PR39; [full review and reproducible evidence](https://github.com/mckayec/universe-sandbox/blob/4cc983f7a1cef5ce9269f51333f9123c08f5c763/docs/reviews/synchronoptic-timelines/independent-review-708f26c.md) on `review/timelines-708f26c`, docs commit `4cc983f7a1cef5ce9269f51333f9123c08f5c763`. Remote review-file readback verified. **Keep stage implementation / owner claude; fix and research now, without another proposal review.** No approval, merge or deployment. PR33 code, review branch and release gates remain unchanged.
+
+Concrete next steps for Claude:
+
+1. **TL-R01:** preserve source-qualified note/event wording and identity guards. All 42 adapted source-bearing records currently expose internal record references as “Source”; none is a citation locator. Render real locators and atlas navigation, retaining missing evidence explicitly.
+2. **TL-R02/R03:** fix collapsed-list completeness (Judaism collapse hides 18 undated entries with no list expansion control) and focus loss after clear/deselect/gate refresh.
+3. **TL-R04/R05:** preserve event book/work/chapter gates before multi-work rollout; complete or explicitly narrow time-range and default-order URL restoration. This is not a claim of a current-pack spoiler leak.
+4. **TL-R06:** fix phone filter layout in the appropriate builder branch. At 390 pixels the filter container is zero-width and the canvas intercepts click/tap. Relevant CSS is unchanged from PR39 base; it is an inherited integration issue, not a claimed new PR45 regression.
+5. Continue claim-specific relationship locator research and accessible connector details. The current slice has 169 records (91 dated / 78 undated), 19 emergence windows and 129 unsourced relationships, with zero drawn connectors. Preserve genealogy, succession, travel and missing adapters as gaps. Standard Works work may proceed independently without altering PR33. Supply a new exact head plus regression evidence when ready.
+
+Independent validation: npm package-script equivalents for format/build/tests/dist passed (121 tests, 120 files); pnpm itself failed environment initialization, recorded in the review. Model and DOM probes verified calendar/representation/gates and reproduced the findings. Inspected screenshots at 1440, 390 and 3840 pixels; zoom/reset, Back/Forward, repeated Escape, lane controls and cold invalid/gated URLs exercised. The full phone sequence failed at TL-R06; a separate 4K run completed. Chromium/SwiftShader and emulated touch are not physical-device or final canon acceptance. Existing PR45 CI run 41514500369 succeeded with deploy skipped.
+
+Publication status: review branch is pushed and verified. Creating its draft PR was **denied by automatic approval review**, which stated it lacked trusted explicit authorization; no PR was created and the denied action was not retried. The review remains available through the immutable link above. This does not block Claude from acting on the findings.
+
+Publication follow-up (2026-11-02): after the parent supplied authorization addressing the denial, the permitted retry succeeded. **[Draft review PR #46](https://github.com/mckayec/universe-sandbox/pull/46)** is open against main at review head `4cc983f7a1cef5ce9269f51333f9123c08f5c763`; remote readback confirms draft/open/unmerged. The earlier PR-creation blocker is resolved. No approval, merge or deployment; Claude ownership and PR33 gates remain unchanged.
+
+## Independent checkpoint 5 re-review — 2026-11-03
+
+Reviewed exact PR45 head **312d2dde5f3824e16a1317c5293ac1b61f3bd287** against the original six findings. [Latest report and reproducible evidence](https://github.com/mckayec/universe-sandbox/blob/eda30c8357f61361e31de8c58300fb9ed6061be6/docs/reviews/synchronoptic-timelines/independent-review-312d2dd.md) are on draft PR46, review commit `eda30c8357f61361e31de8c58300fb9ed6061be6`. Five findings are resolved within the narrowed prototype contract. **TL-R03 remains partially open (Medium):** after the actual host filter handler removes selected `n:jud-karaite`, focus falls back to Overview (`tabindex=-1`); Tab then reaches the underlying Earth button outside the still-open modal. This reproduces at 390, 1440 and 3840 pixels. Clear/deselect focus is fixed.
+
+Claude: fix Tab containment from the fallback heading (or choose a surviving tabbable fallback), and test both directions after gate refresh, resize and collapse. Return a new exact head and focused regression evidence. Keep implementation ownership and continue locator/adapter research now; no additional proposal gate. PR33 code/reviewer/release gates remain unchanged.
+
+Independent evidence: 123 tests and 120 distribution files pass through npm scripts, direct formatting of both timeline modules passes; all 169 texts/date wordings, 101 notes and 22 identity guards compared with the pack. Browser 56/59 checks pass; all three failures are TL-R03 at the three viewport sizes. No console/page/request/HTTP errors. Real phone-emulated filter taps now work (370px filter width). Collapsed list contains all 169 records; source-qualified text and codex navigation preserved; open-to-open Back/Forward/default lane order restored. URL contract explicitly excludes time range/zoom; chapter is carried but not enforced by this host. Source-locator research (129 unsourced relationships, zero drawn connectors), Standard Works adapter and physical-device acceptance remain open. No approval, merge or deployment.
+
+PR46 refresh: connector readback and local merge-tree showed no conflict. Current main updates were preserved through a clean review-branch refresh; PR diff remains timeline review docs/evidence only. PR46 is draft/open/unmerged and reported mergeable. Updating its title/body was denied by automatic approval review because it did not recognize authorization for those metadata changes; not retried. The latest report link above and PR files are current even though the PR description still refers to the prior audit.
+
+## Independent checkpoint 6 review — 2026-11-03
+
+Exact PR45 head **24655ebda5b1c6b98803f4283fbd1e7b5a063069** independently reviewed against 312d2dd. **TL-R03's residual focus escape is resolved.** [Latest report and evidence](https://github.com/mckayec/universe-sandbox/blob/69878c925f2d90b7467440d7fd1f94171135d131/docs/reviews/synchronoptic-timelines/independent-review-24655eb.md) are published in draft PR46, review commit `69878c925f2d90b7467440d7fd1f94171135d131`. The original six findings are closed only within the previously documented bounded prototype contract; this is not canon/release approval.
+
+Independent verification: the prior reviewer-owned regression probe passes **59/59**; new focused testing across phone/desktop/4K widths exercised **36 sequences / 2,160 Tab and Shift+Tab keypresses** from Overview and the scroll pane after gate refresh, resize and lane collapse, with zero escapes. Escape closes at all three sizes. Ordinary SVG Tab/Shift+Tab/ArrowDown traversal matches the parent. 123 tests and 120 distribution files pass; direct formatting of the changed module passes. Actual phone and 4K screenshots inspected. Chromium/SwiftShader/emulated touch remains distinct from physical-device and assistive-technology acceptance. Only the Tab handler changed in implementation; pack/model/source/gate/URL behavior is unchanged.
+
+Claude keeps implementation ownership. Next: continue claim-specific relationship locators (129 unsourced relationships; zero drawn connectors) and accessible connector details, plus the isolated Standard Works adapter with chapter-aware host gates. Keep missing genealogy/succession/travel/Apocrypha chronology/world-calendar data as explicit gaps. Drag reorder and physical-device acceptance remain pending. Supply the next exact head when source/adapter changes are ready; no new proposal-review wait. PR33 code, separate reviewer and release gates remain unchanged.
+
+Publication follow-up: PR46 files **and title/description** now reflect checkpoint 6; metadata update succeeded, resolving the previously recorded metadata blocker. PR remains draft/open/unmerged; local merge-tree finds no conflict and PR diff remains timeline-review docs/evidence only. No PR approval, merge or deployment.
+
+
+## Independent checkpoint 7 review — 2026-11-03
+
+Exact implementation head **eaa2e9c303883b88b3f239898c32181d5575e3c8** reviewed; [report and reproducible evidence](https://github.com/mckayec/universe-sandbox/blob/aa9fcfcc206a31505804238b86e8b78c9889ed6c/docs/reviews/synchronoptic-timelines/independent-review-eaa2e9c.md) published on existing draft PR46 at `aa9fcfcc206a31505804238b86e8b78c9889ed6c`. The 129 CSV mappings resolve to 95 cited relationships and 34 editorial groupings; nine paths render. Complete CSV/dossier comparison plus bounded external inspection of 13 of 62 source keys preserves essential scoped claims. This is not complete source certification. X08's generated publisher link returned only “Loading…”; retain the dossier's inspected fallback and page/section scope. CH13 returned 403 in this pass.
+
+**New Medium TL-R07:** the chart uses the target emergence start for both ends of every connector. JTS → Conservative/Masorti therefore floats at 1801, before JTS's 1886 bar. The source supports institutional leadership, not that date. Claude: correct undated-relationship geometry/qualification without inventing a relationship year; test all nine connectors, later-starting source cases, windows, zoom and lane arrangements. Avoid routing through row labels. The list/details source copy is preserved. No additional proposal-review wait; Claude keeps implementation ownership.
+
+Independent checks: npm equivalents of format/build/tests/dist pass (**125 tests, 121 files**), both timeline modules pass direct formatting. Prior reviewer probe **59/59**; new connector/list/gating probe at **390/1440/3840** verifies nine titled paths, 129 relationship rows, 123 citation links, Islam-filter reduction to 88 relationships, removed hidden selection, 180 additional Tab/Shift+Tab presses without escape, and Escape/focus return. Own-edge gate injection removes the relationship from counts/drawing candidates/selection while both endpoints survive. Actual phone/desktop/4K screenshots inspected; zero observed browser errors. Exact-head CI run 41601894828 succeeded. Chromium/SwiftShader/emulated touch is not physical-device or screen-reader acceptance; full standalone/browser suites were not independently rerun in this bounded pass.
+
+Original TL-R01–R06 remain closed within the narrowed contract. All 169 record-level explicit citation arrays remain empty; relationship citation completeness does not resolve record provenance. Preserve Standard Works adapter and chapter-aware host enforcement as open; genealogy, succession, ordered dated travel, Apocrypha composition and world-calendar chronology remain explicit gaps. Drag reorder and physical-device acceptance are still pending. Do not change PR33 implementation, separate reviewer or release gates. No approval, PR merge or deployment.
+
+Publication: review branch was refreshed from current main without conflicts, preserving concurrent documents. PR46 files are current. Updating its title/body was **denied by automatic approval review**, which stated there was no trusted authorization for this exact publication; not retried. Its metadata still describes checkpoint 6. This does not block Claude from acting on the published report.
+
+
+## Independent checkpoint 8 review — 2026-11-03
+
+Exact PR45 head **35ca9a2439299b7e99069de07f5e563a3416de90** reviewed against eaa2e9c. [Report and independent evidence](https://github.com/mckayec/universe-sandbox/blob/4c5e4444fea796a38f7d24b49aaf492015e2777d/docs/reviews/synchronoptic-timelines/independent-review-35ca9a2.md) published in existing draft PR46 at `4c5e4444fea796a38f7d24b49aaf492015e2777d`.
+
+**TL-R07 resolved within scope:** all nine undated relationships now use brackets outside the time axis; JTS no longer implies 1801 or an invented relationship date. `drawable` distinguishes 95 sourced candidates from nine rendered paths. Two follow-ups: **TL-R08 Medium**, Daoism record details still suppress X08's inspected proof/DOI alternatives and page scope (`edgeCite(e, true)`), while the list shows them; **TL-R09 Low**, phone CSS hides the new undated-bracket explanation, leaving touch users without the visible legend. Claude: show full source routes/scope in details and a compact visible phone legend; test both at phone/desktop sizes. Continue implementation now without another proposal gate.
+
+Independent verification: 126 tests, 121 distribution files, direct timeline formatting and prior reviewer browser probe 59/59 pass. New probes at 390/1440/3840 exercise zoom/reset/collapse/expand/reorder: nine brackets, six when Judaism collapsed, all inside gutter with no page overflow. List source links are keyboard accessible; Escape closes; screenshots inspected. The complete 129 mappings and 62 primary source titles/URLs are unchanged; 52 scopes added. Exact-head CI 41615904659 succeeded (reported standalone checks passed/deploy skipped). This does not certify all external sources, full runtime, hardware or assistive technology. Full standalone/browser suites were not independently rerun in this bounded pass.
+
+Preserve Standard Works adapter/chapter enforcement, all 169 empty record-level citation arrays, genealogy/succession/ordered travel/Apocrypha composition/world-calendar chronology, drag reorder and physical-device/AT gates. Prior external-source sample/access limits still apply. Claude remains owner; PR33's separate review and release gates untouched. No approval, merge or deployment.
+
+Publication: review files are pushed. Automatic approval review denied the PR46 title/body refresh, stating no trusted authorization for this specific checkpoint-8 metadata publication. It did not execute and was not retried; PR46 metadata remains checkpoint 7. Earlier checkpoint-7 metadata denial was resolved by its authorized retry; this is a separate checkpoint-8 blocker.
+
+
+## Independent checkpoint 9 review — 2026-11-03
+
+Exact PR45 head **908bab4aba3fe09da740395f8a9da332e316927e** independently reviewed. [Report and evidence](https://github.com/mckayec/universe-sandbox/blob/17f5137c333efc784f25d134fb9da9b0a39d404c/docs/reviews/synchronoptic-timelines/independent-review-908bab4.md) published in PR46 at `17f5137c333efc784f25d134fb9da9b0a39d404c`. **TL-R08 and TL-R09 resolved within scope:** X08 inspected routes/scope now appear in record details and list; the undated-bracket explanation is visible in the phone Overview. No new patch-specific finding. Only the two intended view paths changed; no source/data/gate changes and no repeated external-source certification.
+
+Independent validation: 126 tests, 121 distribution files, formatting/build and 59/59 prior reviewer browser regressions pass. Reviewer-owned probes at 390/1440/3840 verify full citations in both locations, details proof-link focus, visible legend, gutter geometry through zoom/reset/collapse/expand/reorder, Escape and no page overflow. Actual phone/desktop/4K screenshots inspected. Chromium/SwiftShader and emulated touch remain distinct from physical-device/AT acceptance.
+
+**Unresolved validation limitation:** builder reports Save/Load timeout at browser-smoke.mjs:88 on both this head and unchanged parent. This reviewer neither independently reproduced nor cleared the full-suite timeout. Parent reproduction does not establish an environment-only cause. Exact-head CI 41624744977 build/unit/dist/standalone-page steps succeed and deploy is skipped, but the workflow does not run test:browser. Do not treat that CI success as full-smoke acceptance. Investigate with the intended Playwright/browser version and retain this limitation until a reproducible result explains or clears it.
+
+Claude continues implementation without another proposal-review wait. TL-R01–TL-R09 are closed only within their bounded contracts. Preserve Standard Works adapter, chapter enforcement, 169 empty record-level citation arrays, genealogy/succession/ordered travel/Apocrypha composition/world calendars, drag reorder, hardware/browser/AT and release gates, plus prior CH13/X08 source limits. PR33's separate review and release gates unchanged. No approval, merge or deployment. PR46 metadata remains checkpoint7 intentionally; prior denied metadata write was not retried and no approval is requested for it. Published review files and this handoff are current.
+
+
+## Bounded Claude assignment: full browser-smoke Save/Load timeout — 2026-11-03
+
+**Owner: Claude; stage remains implementation.** Investigate the unresolved `pnpm test:browser` Save/Load timeout at `tests/browser-smoke.mjs:88`. This is an explicit next investigation, not another proposal-review wait and not a request for the reviewer to duplicate it.
+
+1. Reproduce on exact PR45 checkpoint 9 head `908bab4aba3fe09da740395f8a9da332e316927e` and its **unmodified parent** `35ca9a2439299b7e99069de07f5e563a3416de90`, using isolated checkouts and the repository-matched Playwright/Chromium build if available. Record dependency installation, build/serve/test commands and browser selection; preserve the baseline before any fix. If the matching browser cannot be installed or accessed, identify the exact access/environment blocker and distinguish any fallback run.
+2. Determine whether evidence identifies a test, environment or application problem (or leaves the cause unresolved). Capture the actual Save/Load state and failure evidence needed to support that conclusion. A timeout on both revisions alone does not establish an environment-only cause. Do not make the suite pass by dropping assertions or merely increasing timeouts without a demonstrated reason.
+3. Fix only within the already authorized implementation scope. If diagnosis requires changes beyond that scope, return the concrete finding and required action as a blocker. Leave PR33 implementation untouched; its S47 corrections remain a **separate Claude queue item**, not part of this investigation.
+4. Return exact tested commit SHAs, commands, OS/container context, Node/package-manager/Playwright versions, expected and actual Chromium build/version/path, relevant launch/rendering configuration, terminal output and exit status for both baseline runs and any fixed run. Include a focused diff and regression evidence for any authorized fix, or the exact failed action/target/error and access/environment blocker if execution cannot complete. State explicitly what remains unverified.
+
+Completion means a reproducible result that explains or clears the timeout, or a precise blocker with evidence; it does not mean automatically waiving the suite. Passing `test:pages`/standalone-page CI is **not** evidence that `test:browser` passed. Current CI does not run the latter. Preserve the unresolved limitation until supported by the returned evidence.
+
+TL-R08/TL-R09 remain closed within their bounded contracts. Preserve all adapter, source/record-citation, chapter-enforcement, genealogy/succession/travel/Apocrypha/world-calendar chronology, real-device/AT and release gates. Claude ownership and concurrent handoffs remain unchanged. No PR metadata refresh, approval, merge or deployment.
+
+
+## Independent checkpoint 10 review — 2026-11-03
+
+Exact PR45 head **178fd7c2edd53334dedb6961d92cbbd78fdb81b9** reviewed. [Review and terminal evidence](https://github.com/mckayec/universe-sandbox/blob/b1d0da06cea470d5c6223da645750b4b118d8527/docs/reviews/synchronoptic-timelines/independent-review-178fd7c.md) on PR46 commit `b1d0da06cea470d5c6223da645750b4b118d8527`. The test fix is sound within the bounded persistence-smoke contract: pause stabilizes the expected saved count; added pause/toast/resume assertions supplement all existing checks and unchanged timeouts. App source is unchanged. It is not exhaustive persistence or running-simulation acceptance.
+
+Independent reviewer execution: exact-head unmodified `CHROME_PATH=/usr/bin/chromium npm run test:browser` **passes once, exit0**, including downstream construction/control/mobile checks. Reviewer scratch negative control deletes the saved localStorage snapshot before Load and **fails at the retained 30-second Load wait, exit1**, without changing app code. The parent908bab4 diagnostic (published script, isolated port) independently stores/samples29, then observes live25/22, restores29 and finishes successfully. This supports the race mechanism but does not independently reproduce the builder's specific25-versus29 timeout. Runs overlapped on isolated ports; no performance conclusions. Format/build,126 tests and121 distribution checks pass.
+
+**TL-E01 Low, evidence follow-up for Claude:** checkpoint-10.md promises terminal logs in tl10, but this commit contains only the diagnostic script there. Publish the original2/2 old-head,2/2 earlier-parent,3/3 fixed, mutation and blocked-download logs as tracked text or correct the artifact links. If unavailable, state that and distinguish fresh evidence. Do not repeat denied downloads. Builder repeat counts remain reported evidence; reviewer logs do not certify them.
+
+Environment limits remain exact: repository Playwright1.62.1 expects Chromium1234/CfT151.0.7922.34; builder download was proxy403 and its runs used CHROME_PATH CfT153.0.8010.12/SwiftShader. Reviewer instead used Node24.19.0, Playwright1.62.1, system Chromium154.0.8037.57/Linux6.18.57. No matched-browser, macOS, real-GPU or main-branch execution claimed. No denied network retry. Exact-head CI41634513506 succeeds but does not run test:browser. The prior smoke timeout now has a supported test-race explanation and a bounded fallback-browser pass, not unconditional release clearance.
+
+Claude retains implementation ownership. Keep TL-R01–TL-R09 closed within their bounded contracts, and all source/record-citation, Standard Works adapter, chapter, genealogy/succession/travel/Apocrypha/world-calendar, drag reorder, physical-device/AT and release gates explicit. PR33 remains separate. PR46 metadata unchanged; no metadata retry or approval request. No approval, merge or deployment.
+
+
+## Bounded TL-E01 correction review — 2026-11-03
+
+Reviewed exact PR45 docs-only head **cc173073299c43527d56ca71237111f45d43b2f1**, parent178fd7c. [Concise evidence review](https://github.com/mckayec/universe-sandbox/blob/3c06509230e73c9204275426405d5a5b8290291d/docs/reviews/synchronoptic-timelines/independent-review-cc17307.md) published in PR46 at `3c06509230e73c9204275426405d5a5b8290291d`. **TL-E01 closes within evidence-disclosure scope.** All four committed rerun text logs were read; the corrected checkpoint explicitly separates lost original logs/reported counts from fresh evidence.
+
+Fixed suite passes once; original908bab4 test passes once on the executable-equivalent178fd7c tree (not a clean parent checkout); diagnostic1 stores/samples/restores29 and passes; diagnostic2 stores29, samples22, restores29 and times out at its8-second diagnostic wait. These support an intermittent race, not an every-run failure rate or retrospective verification of original2/2,2/2,3/3,1/1 claims. The final correction explicitly supersedes the older opening wording; optional future cleanup should mark that opening historical or replace stale sentences inline. No further runtime investigation was repeated for this docs-only review.
+
+Browser limits persist: builder CfT153/SwiftShader is not repository-matched Chromium1234/CfT151; prior proxy403 remains, with no denied retry. No real-GPU, macOS, main-branch or physical-device/AT acceptance. Original mutation/download logs remain lost; existing reviewer negative-control evidence is separate. Standalone-page CI is not full-smoke evidence.
+
+Claude remains implementation owner. Prior TL-R01–TL-R09 closures stay bounded. Preserve all source/169 record-citation, Standard Works adapter, chapter, genealogy/succession/travel/Apocrypha/world-calendar chronology, drag reorder, hardware/AT and release gates. PR33 separate. No metadata retry, runtime fix, approval, merge or deployment.
