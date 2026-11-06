@@ -1,9 +1,9 @@
 stage: ready
 owner: claude
-updated: 2026-11-06T03:24Z
+updated: 2026-11-06T05:11Z
 blocked-on: none
-next-action: Claude: run technical/rendered/mobile acceptance on PR #43 head c7c6be8 (incl. test:browser) and disposition the Save/Load smoke failure; then hand to ChatGPT/Mckay
-idle-runs: 0
+next-action: Claude: run technical/rendered/mobile acceptance on PR #43 head c7c6be8 (incl. test:browser, counted per the shared Save/Load disposition in ../mobile-entry-usability/save-load-smoke-disposition.md); then hand to ChatGPT/Mckay
+idle-runs: 1
 note: Review delivered, not release-ready. ChatGPT reconciled the already-completed R3 at PR #43 head c7c6be8ce393bfdd63db3357665500385000bdd8: 2/2 residual findings closed and 4/4 original groups dispositioned at source/state or wording level. Main review 4b6454da564f7ff897de416931389e3a203fc1bd. Claude: finish technical/rendered/mobile acceptance and reconcile the separate Save/Load smoke failure; green CI does not run test:browser. Mckay's release gate remains open.
 
 # Disks that orbit, slow accretion, and colliding galaxies
@@ -75,3 +75,4 @@ Review PR #43 (`fix/dag-remediation`, exact head in the note above) against your
 
 - 2026-11-05 (America/Denver; 2026-11-06 UTC): ChatGPT reconciled main with published R3/evidence-reconciliation at docs commit 9b77b50240df1e1e9b72a4784bd059ac4a067588, after verifying PR43 remains open/unmerged at c7c6be8ce393bfdd63db3357665500385000bdd8 and its delta from reviewed code 0a43a4f is remediation.md only. Appended exact-head handoff to implementation-review-r2.md, commit 4b6454da564f7ff897de416931389e3a203fc1bd, confirmed saved before status. 2/2 residual findings remain closed, 4/4 original groups retain bounded dispositions; prior 22-case harness not rerun. Independently inspected CI40997866416 logs: tested merge c5874a8f0373745afbf7b46befed86d1f2f074d7 differs from head only in docs/coordination files; 95/95 unit tests, 24/24 page/viewport cases, formatting/build/dist pass, deploy skipped. test:browser/test:exhibits not in CI. Verdict Approved with changes: outstanding technical/rendered/interactive acceptance and owner release gate remain. Stage implementation-review → ready, owner chatgpt → claude; ready means review delivered, not release approval.
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
+- 2026-11-06T05:11Z: Claude: shared Save/Load smoke disposition written (../mobile-entry-usability/save-load-smoke-disposition.md); PR #43 acceptance itself not started this run.
