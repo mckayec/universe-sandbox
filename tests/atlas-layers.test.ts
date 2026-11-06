@@ -136,3 +136,28 @@ test('the pack validator accepts the Track A fixture and catches bad layer and y
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('the compact work picker turns on above 12 books and steps through them', () => {
+  const ids = Array.from({ length: 39 }, (_, i) => i + 1);
+  assert.equal(L.usePicker(ids, {}), true);
+  assert.equal(L.usePicker(ids.slice(0, 12), {}), false);
+  assert.equal(L.usePicker(ids.slice(0, 3), { bookPicker: true }), true);
+  assert.equal(L.usePicker(ids, { bookPicker: false }), false);
+  assert.equal(L.stepBook(ids, 0, 1), 1);
+  assert.equal(L.stepBook(ids, 39, 1), 39);
+  assert.equal(L.stepBook(ids, 1, -1), 0);
+  assert.equal(L.stepBook(ids, 0, -1), 0);
+  const books: Record<number, any> = {
+    1: { n: 'A', title: 'Alpha', group: 'G1' },
+    2: { n: 'B', title: 'Beta', group: 'G1' },
+    3: { n: 'C', title: 'Gamma <x>' },
+  };
+  assert.deepEqual(plain(L.pickerGroups(books, [1, 2, 3])), [
+    { label: 'G1', ids: [1, 2] },
+    { label: '', ids: [3] },
+  ]);
+  const html = L.renderBookPicker(books, [1, 2, 3], { label: 'Works' });
+  assert.match(html, /<optgroup label="G1"><option value="1">A · Alpha<\/option>/);
+  assert.match(html, /<option value="3">C · Gamma &lt;x&gt;<\/option>/);
+  assert.match(html, /data-step="-1"/);
+});
