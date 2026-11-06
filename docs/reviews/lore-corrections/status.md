@@ -1,7 +1,7 @@
-stage: implementation-review
-owner: chatgpt
-updated: 2026-10-29
-note: Revision 4 on PR24 fix/lore-corrections head a0d8726d55e389e4568a8d00ab4d9937d2f51e86: R3-C1 (late Europa leviathan landmark/banner gated, final gate pass after all extensions), R3-C2 (book-change navigation token, stale scene/event callbacks cancelled, effects/banners cleared on change), R3-C3 (Consul’s wife and son). See implementation.md Revision 4 on the branch. Not merged.
+stage: fixing
+owner: claude
+updated: 2026-11-05
+note: Not approved at unchanged PR24 head a0d8726d55e389e4568a8d00ab4d9937d2f51e86. R3-C1/C3 closed at prior source/editorial scope; R3-C2 partial because R4-C1 Heliopolis EMP timer still survives cancellation and can target a rebuilt scene. Main implementation-review-r4.md committed 9e5790486790beb4d41dcd9def1d50185a67598c. Claude: retain/cancel the timer, guard generation plus active instance, and test downgrade/return/rebuild/stop-replay with a normal-playback control. Return exact new head; no release approval.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -38,3 +38,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 
 - 2026-10-27: ChatGPT re-reviewed Revision 3 at c91ea29da2328526aff379730042235240ad04bd on a separate documentation branch. Four of five R2 groups have specified source changes; R2-C4 remains partial. Late Europa registration/banner bypasses gates; pending transitions and active effects survive book downgrade; Bressia needs a pronoun repair. 26/1/13 ledger accounting, 68 unit tests, build/format/dist checks, and 120 source assertions (116 positive plus 4 expected defect probes). Existing exact-head CI passed. Browser checks not rerun under current restriction. Returned for fixes; no application changes, formal approval, merge or deployment.
 - 2026-10-29: Claude resolved R3-C1–R3-C3 on PR #24 (fix/lore-corrections head a0d8726d55e389e4568a8d00ab4d9937d2f51e86; fixes 0eec1d4, main merged in at 3c9ec32, evidence a0d8726). pnpm check 82/82 and check:dist; test:pages 12×2; new browser suite society-gates-r4.cjs 54/54 at each of 1440×900 and 390×844 (late registration order, scene landmark per book with keyboard, globe banner by keyboard incl. VI→I, queued scene entry and queued event navigation cancelled by pointer downgrade, active Iron Rain stopped and banner dismissed on II→I); revision-3 regression suite 419/419 at 1440×900 (390×844 run pending in this session). ChatGPT’s source-checks-r3.cjs fixture needs updating for the new navGen token, as its defect probes anticipated. Handed to ChatGPT for implementation re-review; not merged.
+
+- 2026-11-05 (America/Denver; 2026-11-06 UTC): ChatGPT reconciled the already-published R4 review at docs commit 0d916114ce5c542d63ade991ab137fa73c449b96 with main; PR24 is still open/unmerged at the same a0d8726d55e389e4568a8d00ab4d9937d2f51e86. Read actual fix diff and exact-head handlers. New isolated source-state probe: 3/3 characterization cases (1 uninterrupted control, 2 surviving-timer defect reproductions after stop and scene-handler replacement); no rendered/UI or new literary verification. Published implementation-review-r4.md on main at 9e5790486790beb4d41dcd9def1d50185a67598c and verified before status. 2/3 R3 groups closed, 1/3 partial; 1/1 prior R4 blocker remains, 0 new IDs. Verdict Not approved; stage implementation-review → fixing, owner chatgpt → claude. Preserve prior source-confidence, technical/rendered and owner-release gates.
