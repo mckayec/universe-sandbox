@@ -1,10 +1,11 @@
-stage: final-audit
-owner: chatgpt
-updated: 2026-11-06T10:15Z
+stage: fixing
+owner: claude
+updated: 2026-11-06T10:14Z
 blocked-on: none
-next-action: ChatGPT: recheck Q01-R3-L1 at PR39 d4185ed6f15d47e9e268a87fbd59f818237ffc9e (two verbatim strings, one regression test, pack added to page matrix) and record canon decision; Claude separately lands shared TA-01 land-mask fix (PR #38) before Technical: approved here; Mckay answers D02 on held features.
+next-action: Claude: complete TA-01/R4-T1 land-mask and R4-T2 phone/chrome technical fixes, then return the exact head and finished-surface evidence; Mckay's D02 scope answer remains independently pending.
 idle-runs: 0
-note: PR39 d4185ed (parent 9e3ce7e): Q01-R3-L1 fixed verbatim; pnpm check 120/120; test:pages 13x2 now includes this pack; 4-size SwiftShader captures with no console/page errors and no page overflow. Rendered findings R4-T1 (coarse 4K land mask = shared TA-01), R4-T2 (390 label/header overlap, likely shared chrome), R4-T3 (small UI at 4K). Release scope for six held features asked as D02. See fixing-round4.md. Canon, technical and Mckay release gates remain open; not merged.
+note: Round-4 metadata accepted at PR39 d4185ed6f15d47e9e268a87fbd59f818237ffc9e: Q01-R3-L1 closed (1/1; 2/2 strings), all 313 records unchanged, independent 26/26 focused tests. CI tested merge 2509bb0 confirms 120/120 unit and 26/26 page cases including this pack's 2/2 desktop/mobile cases; relevant atlas code matches head. Audit 52c939e, clarified D02 4c32bc4 saved/read back. Canon withheld only for pending scope disposition; technical/rendered and Mckay release gates remain separate. No repeat metadata or broad coordinate research; not merged.
+
 
 
 
@@ -45,3 +46,5 @@ Track A · view: Earth map + branching tree
 
 - 2026-11-06T09:26Z: ChatGPT completed Q01 round-3 return review at PR39 head 9e3ce7ed4219d5f3004020de6b6339950bba502f (parent 01df0f2ec7f007a2b37a5712b279a9b5e930e299). Saved and read back audit-final.md at e6019e56346d5fca13301e2f88ca1b975a245598 before this status update. Accepted 3/3 new city markers, 3/3 changed event links and 5/5 temporary evidence holds; all 22 prior sites and 92 remaining codex cards unchanged. Source bodies for Zurich, Hamburg and Xi'an freshly opened; independent focused tests 25/25 pass. One Low finding Q01-R3-L1: two source-summary strings still say twelve instead of fifteen; exact replacements supplied. Exact-head CI confirms 119/119 unit tests and 24/24 page checks, with this pack absent from the page matrix; builder screenshots are not independent rendered acceptance. Q01 remains 16/21 supported (15 built, Antioch held), 5/21 unresolved. Stage fixing/claude for metadata alignment combined with technical/rendered work and an explicit final scope proposal for held features under R3-R4; no new open-ended research loop. Canon not finally approved; no permanent scope reduction, PR approval, merge or deployment.
 - 2026-11-06T10:15Z: Claude: fixing round 4 on PR #39 at d4185ed6f15d47e9e268a87fbd59f818237ffc9e (parent 9e3ce7e): Q01-R3-L1 two strings replaced verbatim + regression test; pack added to the standalone page matrix (13x2 pass); pnpm check 120/120; 4-size captures (shots/r4-d4185ed-*.jpg), no console/page errors. Rendered findings R4-T1..T3 recorded (R4-T1 is shared engine TA-01). Release-scope proposal for six held features → DECISIONS D02. Stage final-audit, owner chatgpt.
+
+- 2026-11-06T10:14Z: ChatGPT completed round-4 recheck at PR39 d4185ed6f15d47e9e268a87fbd59f818237ffc9e, parent 9e3ce7ed4219d5f3004020de6b6339950bba502f. Audit-final.md saved/read back at 52c939e34b5dc3eadd09fe232c1c428bba265981 before status. Q01-R3-L1 closed (1/1 finding; 2/2 verbatim strings), zero new pack-content findings; independent evaluated comparison confirms all 313 records unchanged; 26/26 focused tests pass. CI42199472611 tested merge2509bb0 has identical relevant atlas/test code: 120/120 unit,26/26 page cases including2/2 for this pack; no simulator-smoke or independent rendered acceptance claimed. Clarified D02 at 4c32bc4ca77457e3ec4de206e0a9f90aedee79f6: five existing cards plus deferred Najaf, supported-held Antioch, later pins require review; no answer entered. Canon not finally approved pending scope answer. Final-audit/chatgpt → fixing/claude for TA-01/R4-T1 and R4-T2 technical work while D02 is pending; move to Mckay only when the remaining action is exclusively his. Do not repeat accepted metadata or broaden research. No PR approval, merge or deployment.
