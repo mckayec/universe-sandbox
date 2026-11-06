@@ -1,5 +1,5 @@
-# Narnia research — checkpoint 1
-Date: 2026-11-06. Research in progress; this is not final canon clearance or a complete atlas handoff.
+# Narnia research — checkpoint 2
+Date: 2026-11-06. Bounded checkpoint 2 and partial self-audit complete; independent review pending. Unsupported breadth is deferred. This is not final canon clearance or a complete atlas handoff.
 
 | Work | Coverage | Deliberate checkpoint boundary |
 |---|---|---|
@@ -33,6 +33,8 @@ Publication order is the spoiler axis; chronology is a separate sorting field. T
 | 6 | The Magician's Nephew | 1955 | 1 |
 | 7 | The Last Battle | 1956 | 7 |
 
+Checkpoint 2 corrected five early labels/concepts and retains later descriptions in eras. Book selectors mean read-through-book eligibility, not safety for a reader beginning that book. Every event link, journey, search alias and era must enforce its own gate even when its parent place appears earlier.
+
 Do not reinterpret numeric gates as chronological book numbers. A chronological display must retain publication-based eligibility. “first” below gates this record's described information; exact earliest bare-name mentions require the second-pass sweep. Thus some labels may be conservatively delayed, never deliberately exposed early.
 
 ## 2. Structure
@@ -52,17 +54,17 @@ Shared fields: aliases = none asserted unless shown; coordinates = unknown; eras
 | P03 | Cair Paravel | N00/castle | 1 | Royal castle at the river mouth on the eastern sea. [S1 VIII] (C) | — |
 | P04 | Dancing Lawn | N00/clearing | 2 | Council gathering place; precise position held. [S2 VI–VII] (C) | E03 |
 | P05 | Aslan's How | N00/mound | 2 | Hollow mound over the older Stone Table site. [S2 VII–VIII] (C) | — |
-| P06 | Beruna | N00/crossing | 2 | River crossing with a Telmarine bridge and town. [S2 IX] (C) | E04 |
-| P07 | Lone Islands | N00/island group | 3 | Eastern-voyage island group under Narnian sovereignty. [S3 III–IV] (C) | E05 |
+| P06 | Beruna | N00/crossing | 1 | Broad, shallow river fords. [S1 XIV] (C) | E04 (book 2 only) |
+| P07 | Lone Islands | N00/island group | 1 | Named in the Witch's claimed titles; this is not proof of effective rule. [S1 VI] (C) | E05 (book 3 only) |
 | P08 | Dragon Island | N00/island | 3 | Voyage stop beyond the Lone Islands. [S3 V–VII] (C) | E06 |
 | P09 | Ramandu's Island | N00/island | 3 | Later eastern-voyage stop associated with the sleeping lords. [S3 XIII–XIV] (C) | — |
 | P10 | Experiment House | E00/school | 4 | Jill and Eustace's school; real-world site unidentified. [S4 I] (C) | E07 |
 | P11 | Harfang | N00/giant residence | 4 | High-crag house north of the travellers' tableland. [S4 VII–VIII] (C) | — |
 | P12 | Underland | N00/subterranean region | 4 | Underground setting of the captive knight's chamber. [S4 XI–XII] (C) | E08 |
-| P13 | Calormen | N00/country container | 5 | Shasta's starting country; northward escape setting. [S5 I] (C) | — |
+| P13 | Calormen | N00/country container | 2 | Its king sent ambassadors to Cair Paravel. [S2 II] (C) | — |
 | P14 | Tashbaan | P13/city | 5 | Walled city on a river island. [S5 IV] (C) | E09 |
 | P15 | Anvard | N00/castle | 5 | King Lune's castle in Archenland. [S5 VIII, XV] (C) | E10 |
-| P16 | London | E00/city | 6 | Digory and Polly's home-world setting. [S6 III] (C) | — |
+| P16 | London | E00/city | 1 | The Pevensies leave during wartime air raids. [S1 I] (C) | — |
 | P17 | Wood between the Worlds | root/inter-world place | 6 | Pools provide connections to different worlds. [S6 III] (C) | — |
 | P18 | Charn | root/city in another world | 6 | Ruined city identified by Jadis. [S6 IV–V] (C) | E11 |
 | P19 | Caldron Pool | N00/pool | 7 | Below the western waterfall, feeding Narnia's river. [S7 I] (C) | E13 |
@@ -71,7 +73,10 @@ Shared fields: aliases = none asserted unless shown; coordinates = unknown; eras
 
 Later eras (append behind their own gates, not to earlier base descriptions):
 - P03, book 2: the returning children find their former castle ruined. [S2 II–III] (C)
-- P06, book 2: the bridge is destroyed and the ford restored. [S2 XIV] (C)
+- P06, book 2: a Telmarine bridge spans the crossing; later it is destroyed. [S2 IX, XIV] (C)
+- P07, book 3: eastern-voyage destination under Narnian sovereignty. [S3 III–IV] (C)
+- P13, book 5: Shasta's starting country. [S5 I] (C)
+- P16, book 6: Digory and Polly's home-world setting. [S6 VI] (C)
 - N00, book 6: its beginning is witnessed. [S6 VIII–IX] (C)
 - N00, book 7: its ending is witnessed through the doorway. [S7 XIV] (C)
 
@@ -113,7 +118,7 @@ These are partial ordered waypoints, not complete routes. Each listed leg is tex
 | id | first | entry |
 |---|---:|---|
 | C01 | 1 | Aslan: the lion central to the Table episode. [S1 XIV–XV] (C) |
-| C02 | 2 | Narnian time: elapsed time need not match England's. [S2 III] (C) |
+| C02 | 1 | Narnian time: the children return at their departure's day and hour. [S1 XVII] (C) |
 | C03 | 3 | Seven-lord quest: Caspian seeks his father's exiled friends. [S3 II] (C) |
 | C04 | 4 | Rilian: Caspian's missing son, released from enchantment. [S4 IV, XI] (C) |
 | C05 | 5 | Bree: a Talking Horse seeking freedom in Narnia. [S5 I] (C) |
@@ -122,11 +127,11 @@ These are partial ordered waypoints, not complete routes. Each listed leg is tex
 
 ## 7. Open questions
 - NQ01: Reconcile any recovered narnia-maas-pilot; current search is negative, not conclusive.
-- NQ02: Verify earliest bare-name occurrences, especially Lone Islands/Calormen, independently of when their detailed records become eligible. Current gates are conservative content gates.
-- NQ03: Finish edition metadata/variant comparison. The opened Wardrobe is an American text; do not silently mix names from other editions.
+- NQ02: Five early gates corrected in checkpoint 2 (P06, P07, P13, P16, C02). Remaining first-mention sweep is incomplete; see research-audit.md.
+- NQ03: All seven transcription editions identified; one name variant corroborated. Full edition collation remains open; see sources.md and research-addendum.md.
 - NQ04: Establish independent corroboration for ten prominent claims; one transcription per work is not two independent sources.
 - NQ05: Complete chapter-by-chapter coverage and distinguish witnessed events, dialogue reports, retrospective chronology and future predictions.
-- NQ06: Resolve whether Stone Table/How should be one place with book-gated names or linked era records; never show duplicate simultaneous sites.
+- NQ06: P05 is a later mound containing P02, not a second Table. Use a containment/era link visible from book 2; spatial rendering still needs independent review. [S2 VII–VIII] (C)
 - NQ07: Replace broad N00 parent containers with researched regions before detailed rendering; current container does not mean every country is politically Narnia.
 - NQ08: Verify fan-work rights-holder wording; no licensed map/art or film source imported.
 
@@ -143,4 +148,4 @@ Not applicable. Religious interpretation is outside this fictional-geography che
 | Prior pilot unrecovered | Duplication/provenance reconciliation outstanding | No, current bounded checkpoint |
 | Schematic design and rights notice unresolved | Builder needs explicit disposition | Yes, final release |
 
-Next bounded checkpoint: expand the missing major-place/event inventory from opened primary passages, finish first-mention/variant checks, then hand off a clearly bounded buildable tranche with residual gaps under R3. Do not extend active research indefinitely. Audit chat should inspect the resulting exact research revision before final canon approval.
+Bounded checkpoint 2 is closed. Next action belongs to the independent audit chat: inspect this revision and research-audit.md before authorizing any buildable tranche. Broader coverage, remaining first mentions, complete routes, edition collation and ten-fact independent corroboration are deferred with the Known gaps above. No automatic third research run or Claude build handoff is implied.
