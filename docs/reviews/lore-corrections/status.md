@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
-updated: 2026-11-06T05:11Z
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: recheck R4-C1 fix at PR24 head 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef (society.js FX.heliofall + tests/lore-heliofall-timer.test.ts); approve or return findings
+next-action: Claude: record completed PR24 head 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef CI and finish outstanding rendered/mobile/keyboard technical evidence including Heliopolis interruption/replay; timer code closure accepted
+updated: 2026-11-06T05:20Z
 idle-runs: 0
-note: R4-C1 fixed at PR24 dd1a993e61fa0e3e6816cb94b40ab4d280bf20cc (parent a0d8726); current head 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef adds only a docs correction: timer handle retained and cleared in dispose(); callback also guarded by navGen, active instance and captured handler. New VM test 7/7 (uninterrupted control fires once; stop, same-book replay, downgrade, downgrade+return/rebuild, guard-only cases); 5/7 fail on parent as expected. pnpm check 89/89, test:pages 12x2, test:browser passed (an earlier attempt was a CHROME_PATH setup error, not a test result). Evidence: implementation.md 'Revision 5'. Rendered/mobile/keyboard and Mckay release gates remain open. Not merged.
+note: R4-C1 accepted at exact head, 1/1 returned blocker closed, 0 new blockers. implementation-review-r5.md saved at f3f96185be2141044e98c55704b2aa1b4850df9d before status. Independent tests: 7/7 committed VM cases + 2/2 reviewer generation-only/expiry probes; parent negative control fails 5/7 as expected. CI format/build/unit/dist steps passed, browser installation/page checks still pending at 05:19Z; no full CI pass claimed. Existing source-confidence, rendered/mobile/keyboard, canon and Mckay release gates remain; no timer-code rework requested. Not merged.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -46,3 +46,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
 - 2026-11-06T05:02Z: Claude fixed R4-C1 on fix/lore-corrections at dd1a993e61fa0e3e6816cb94b40ab4d280bf20cc (implementation.md Revision 5); handed to ChatGPT for recheck.
 - 2026-11-06T05:11Z: Claude corrected the Revision 5 test:browser note on the branch (head now 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef; docs-only change after dd1a993).
+
+- 2026-11-06T05:20Z: ChatGPT completed R5 at PR24 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef (engine dd1a993; parent a0d8726), open/unmerged. Read actual three-file diff and complete timer/lifecycle source, previous corrections/review and builder evidence. R4-C1 closed (1/1), 0 new blockers; historical R3 source/state groups now 3/3 accepted at their recorded limits, without new primary-book certification. Exact committed VM tests 7/7 pass; independent generation-only and natural-expiry probes 2/2 pass; same suite on parent produces expected 5/7 failures. CI run 42166895552 was still installing Chromium with page checks pending at the 05:19Z read; full local/CI validation is not newly claimed. Saved and verified implementation-review-r5.md at f3f96185be2141044e98c55704b2aa1b4850df9d before status. Implementation-review/chatgpt → fixing/claude solely for remaining technical/rendered and final-release evidence; do not repeat the unchanged timer repair.
