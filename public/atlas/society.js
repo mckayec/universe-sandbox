@@ -3031,17 +3031,23 @@ FX.storms=g=>{const S=SITES.helios;S._tog=S._tog||{};S._tog.storms=true;document
   sFly({target:[0,0,400],r:16000,theta:.1,phi:.95});return {dur:1,update(){return true;}};};
 FX.flood=g=>{if(SITES.tyche._flood)SITES.tyche._flood();sFly({target:[200,200,400],r:7400,theta:Math.PI-.15,phi:1.18});return {dur:1,update(){return true;}};};
 /* ---------- Heliopolis falls ---------- */
-FX.heliofall=g=>{setTod("dusk");sFly({target:[600,300,0],r:8200,theta:.7,phi:1.12});SITES.heliopolis._emp&&setTimeout(()=>SITES.heliopolis._emp(),2500);
+FX.heliofall=g=>{setTod("dusk");sFly({target:[600,300,0],r:8200,theta:.7,phi:1.12});
+  /* R4-C1: the shield EMP fires 2.5 s in. Capture the handler, reading generation and this instance now; the timer
+     is cleared on dispose (stopFx), and the callback still checks all three so it can never reach a rebuilt scene. */
+  const empFn=SITES.heliopolis._emp,empGen=navGen;let inst=null;
+  const empTimer=empFn?setTimeout(()=>{if(empGen===navGen&&inst&&fxList.includes(inst)&&SITES.heliopolis._emp===empFn)empFn();},2500):0;
   const F=Flashes(g);const ring=new THREE.Mesh(new THREE.RingGeometry(.96,1,128).rotateX(-Math.PI/2),new THREE.MeshBasicMaterial({color:col(0x9fd0ff),transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));ring.position.y=200;g.add(ring);
   const P0=new THREE.Vector3(600,10,-300);const riders=[];for(let i=0;i<160;i++){const s=glowSprite(GLOW_WARM,40,0);g.add(s);riders.push({s,d:i*.04+Math.random()*.2,lane:(Math.random()-.5)*60});}
   const R=rng(4);const falling=[];
-  return {dur:22,update(dt,t){const te=t-2.5;
+  inst={dur:22,update(dt,t){const te=t-2.5;
     if(te>0&&te<3){ring.scale.setScalar(200+te*2800);ring.material.opacity=Math.max(0,.9-te*.3);}else ring.material.opacity=0;
     if(te>.4&&falling.length<10){for(let i=0;i<4;i++){const s=makeShip("torch",420);s.position.set((R()-.5)*7000,3800+R()*800,-2400-R()*2400);s.rotation.set(R()*.4,Math.PI/2,R()*.6);g.add(s);falling.push({s,v:0,spin:(R()-.5)*.3});}}
     falling.forEach(f=>{f.v+=dt*120;f.s.position.y-=f.v*dt;f.s.rotation.z+=f.spin*dt;if(f.s.userData.glow)f.s.userData.glow.visible=false;if(f.s.position.y<0&&!f.done){f.done=true;F.add(GLOW_WARM,f.s.position.clone().setY(60),1400,2.2);f.s.visible=false;}});
     riders.forEach(r=>{const k=(t-6-r.d)/7;if(k<0||k>1){r.s.material.opacity=0;return;}r.s.material.opacity=.9;r.s.position.set(P0.x+k*1900,ground0(P0.x+k*1900,500)+12,500+r.lane);});
     if(t>8&&Math.random()<dt*5){const x=300+Math.random()*1800;F.add(GLOW_WARM,new THREE.Vector3(x,40,500+(Math.random()-.5)*200),300,.6);}
-    F.update(dt);}};};
+    F.update(dt);},
+    dispose(){clearTimeout(empTimer);}};
+  return inst;};
 /* ---------- globe battles ---------- */
 FX.caliban=g=>{gRot.auto=false;selectPoi("tyche",true);gZoom.tz=11;const F=Flashes(g),B=Beams(g);const R=rng(81);
   const tyche=()=>globe.localToWorld(latLonVec(HL.tyche[0],HL.tyche[1],GR*1.35));

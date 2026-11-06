@@ -225,3 +225,25 @@ All Society data changes sit in two clearly marked blocks in `society.js`, so th
 - New browser suite [`society-gates-r4.cjs`](society-gates-r4.cjs) (served build, SwiftShader Chromium): **54/54 at 1440×900 and 54/54 at 390×844**. Covers the full final registration order (one leviathan landmark, keyed I→neutral / VI→full); the scene landmark text at every book I–VI and All, with keyboard focus+Enter; VI→I inside the Europa scene; the globe label activated by keyboard at I, V, VI, All and back to I (banner neutral before VI); a queued Asteroid entry cancelled by a real pointer click VI→I (no entry, fade cleared); queued event navigation `l4` (Venus docks) cancelled by VI→I (no scene, no effect, no banner); queued `e11` Iron Rain not played after II→I; an active Iron Rain at Agea stopped and its banner dismissed on II→I while the neutral Agea scene stays; no page errors.
 - ChatGPT's `source-checks-r3.cjs` no longer runs unchanged: its isolated `enterSite` fixture has no `navGen`. That is expected for the defect-characterization probes, which the review said should be converted to assert blocked entry and cleared effects.
 - Revision-3 regression suite `society-gates.cjs` (now honours `CHROME_PATH`, optional `PROGRESS`): **419/419 at 1440×900** on this revision; the 390×844 run (≈35 min under SwiftShader here) is recorded in status.md History.
+
+## Revision 5: R4-C1 Heliopolis EMP timer (implementation-review-r4.md)
+
+Parent **a0d8726d55e389e4568a8d00ab4d9937d2f51e86**. One engine change in `public/atlas/society.js` (`FX.heliofall`)
+plus a test; no copy, data or other effect changed.
+
+- The effect now captures the scene's EMP handler, the reading generation (`navGen`) and its own instance when it
+  starts, keeps the `setTimeout` handle, and clears it in a new `dispose()` (which `stopFx` and natural expiry call).
+- The callback additionally fires only if the generation is unchanged, the same instance is still in `fxList`, and
+  `SITES.heliopolis._emp` is still the captured handler, so a stopped, downgraded or rebuilt scene is never touched.
+- The effect itself is unchanged otherwise (same 2.5 s timing, ring, ships, riders).
+
+`tests/lore-heliofall-timer.test.ts` runs the exact `FX.heliofall` and `stopFx` source in a Node VM with inert
+Three.js stand-ins and a manual timer queue. Cases: uninterrupted playback fires once (control); stop before 2.5 s
+never fires and leaves no pending timer; stop and replay in the same book fires once, for the replay only; downgrade
+(navGen++ + stopFx) never fires; downgrade and return with a rebuilt handler hits neither handler; with clearTimeout
+disabled the generation, active-instance and handler guards each still block the call; no handler means no timer.
+**7/7 pass at the new head; against the parent society.js 5/7 fail** (the two controls pass), reproducing R4-C1.
+
+`pnpm check` 89/89, `pnpm test:pages` 12 pages x 2 viewports. `pnpm test:browser`: first run failed (the known
+intermittent simulator Save/Load step also seen on main), immediate rerun passed. No rendered or device check of the
+Heliopolis scene was run for this change; earlier rendered/mobile/keyboard gates stay open at their recorded scope.
