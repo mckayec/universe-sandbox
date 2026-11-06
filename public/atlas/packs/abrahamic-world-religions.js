@@ -187,7 +187,7 @@
 
   /* ---------- Q01 reference markers (build-audit/q01-coordinate-continuation-20261101.md and the
      q01-anchor-dispositions.csv baseline at bc7efce). Fifteen of the 16 supported packages; Antioch is held
-     because no built record names it. Each keeps the place card's id, so its Chronicle entries open the marker.
+     as an unpinned reference card (chp-antioch, D02) because no event names it. Each keeps the place card's id, so its Chronicle entries open the marker.
      Raw source coordinates are kept in the provenance note; decimals are conversions, not added accuracy. ---------- */
   const APPROX =
     'Approximate reference: a representative gazetteer point for the named place, not the exact place of an event.';
@@ -320,6 +320,7 @@
     place('chp-rome', 'Rome', 'City', ['chr'], 'The central episcopal reference of the Catholic communion; the 1965 joint declaration was read in Rome.', 'Rome: historic centre'),
     place('chp-wittenberg', 'Wittenberg', 'City', ['chr'], 'Luther’s public opposition to the sale of indulgences, 1517.', 'Wittenberg: Luther Hall'),
     place('chp-azusa', 'Azusa Street mission, Los Angeles', 'Historical mission address', ['chr'], 'The revival under William J. Seymour at 312 Azusa Street began in April 1906. The address is a historical association, not a verified surviving building.'),
+    place('chp-antioch', 'Antioch on the Orontes (Antakya)', 'Ancient city · reference card', ['chr'], 'The ancient city of Antioch on the Orontes, at modern Antakya. A gazetteer reference exists (ToposText place 362362PAnt), but no event in this atlas is tied to the city, so it has no map point.', null, 'Pisidian Antioch, a different ancient city. The ancient regional label Syria is not a modern border.'),
     place('chp-fayette', 'Fayette, New York', 'Founding setting (institution’s account)', ['chr'], 'The Church of Jesus Christ of Latter-day Saints dates its organization here to 6 April 1830 in its official account.'),
     place('chp-east-syriac-region', 'Assyria, Babylonia and Persia', 'Broad historical context', ['chr'], 'The Church of the East developed east of the Roman-Byzantine world. There is no single point of origin.', null, 'Babylonia alone: the combined setting is broader than one region.'),
     place('chp-battle-creek', 'Battle Creek, Michigan', 'City', ['chr'], 'Seventh-day Adventist General Conference organization, May 1863.'),

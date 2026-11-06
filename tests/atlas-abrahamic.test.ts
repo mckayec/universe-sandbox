@@ -114,7 +114,7 @@ test('Q01 markers carry a reference caveat, their source id and no exact-event c
   const cards = new Set(
     pack.codex.find((t: { id: string }) => t.id === 'places').list.map((c: { id: string }) => c.id),
   );
-  for (const id of ['ISP05', 'chp-fayette', 'chp-azusa', 'jud-seesen'])
+  for (const id of ['ISP05', 'chp-fayette', 'chp-azusa', 'jud-seesen', 'chp-antioch'])
     assert.ok(cards.has(id) && !earth.sites.some((x: { id: string }) => x.id === id), `${id} stays a card`);
   assert.ok(!earth.sites.some((x: { name: string }) => /Antioch|Najaf|Karbala/.test(x.name)));
   for (const e of pack.events.filter((x: { site?: string }) => x.site && Q01[x.site]))
@@ -521,4 +521,20 @@ test('Q01-R3-L1: the source note counts match the built markers', () => {
   assert.match(pack.meta.srcnote, /6 November 2026/);
   assert.ok(pack.meta.sources.some((s: string) => s.includes('for the fifteen additional')));
   assert.ok(!/twelve/.test(pack.meta.srcnote + pack.meta.sources.join(' ')));
+});
+
+test('D02-C1: Antioch is a visible nonspatial Christianity card with its source and identity caveat', () => {
+  const c = pack.codex
+    .find((t: { id: string }) => t.id === 'places')
+    .list.find((x: { id: string }) => x.id === 'chp-antioch');
+  assert.ok(c, 'card exists');
+  assert.equal(c.layers.join(','), 'chr');
+  assert.equal(c.first, 1);
+  assert.match(c.role, /no map point/);
+  assert.ok(c.desc.includes('362362PAnt'), 'source locator');
+  assert.match(c.desc, /Pisidian Antioch/);
+  assert.ok(!earth.sites.some((x: { id: string }) => x.id === 'chp-antioch'));
+  assert.ok(
+    !pack.events.some((e: { ref?: string; site?: string }) => e.ref === 'chp-antioch' || e.site === 'chp-antioch'),
+  );
 });
