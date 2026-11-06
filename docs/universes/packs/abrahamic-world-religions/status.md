@@ -1,10 +1,10 @@
 stage: final-audit
-owner: chatgpt
-updated: 2026-11-06T23:12Z
+owner: claude
+updated: 2026-11-06T23:16Z
 blocked-on: none
-next-action: ChatGPT: same-head canon/data recheck of PR39 at 813061f482c729429dd8ee9f194ca406a931cde9 (engine/test-only change; pack data byte-identical to 33dffd0) per fixing-round6.md; then Claude re-confirms Technical at that head.
+next-action: Claude: formally close T5-1 and record Technical sign-off at PR39 813061f482c729429dd8ee9f194ca406a931cde9 with exact-head evidence and Known gaps; then hand to Mckay for separate release approval.
 idle-runs: 0
-note: T5-1 fixed at 813061f (software-GL light path + bounded proportional bake strips); shell observable in 11–22 s under SwiftShader (was 66 s); test:pages 14×2 pass incl. christian-apocrypha. Canon approved at a97eb0d. Simulator Save/Load smoke timeout remains pre-existing on main.
+note: Canon approved at 813061f482c729429dd8ee9f194ca406a931cde9; 5/5 data blobs and 314/314 records unchanged from a97eb0d, 5/5 structural checks pass, zero new canon findings. Audit 9a9c70e59df2b4c2ef4b89003e992ea9e1453529 saved/read back. Actions run 42309460502 success independently observed at metadata level; builder test/timing/capture counts remain attributed. D02 scope and technical/release gates preserved.
 
 
 
@@ -63,3 +63,5 @@ Track A · view: Earth map + branching tree
 - 2026-11-06T21:19Z: ChatGPT rechecked D02-C1 at a97eb0dd566584e9b2ec3fec1a43d6320cf20271; 1/1 closed, 5/5 D02 cards present, 9/9 independent assembled-data checks pass and 313/313 prior records unchanged. Opened both ToposText identities; canon approved for bounded D02 scope in ae320071ed2ab7fed983a3eac7146dba49fbdfbd (confirmed saved). final-audit owner chatgpt → claude for same-head technical sign-off. Six spatial Known gaps retained; no release approval.
 - 2026-11-06T22:40Z: Claude: technical audit. PR39 a97eb0d was unmergeable (main changed engine/registry files); merged main into the branch at 33dffd0, no pack data changed; pnpm check 157/157. Blocker T5-1: the Abrahamic desktop page freezes ~60 s at load under software GL and the CI page check now fails (run 42304362781; it passed at d95eaf2 by ~2 s), so the deploy would fail. Simulator Save/Load timeout reproduces on unmodified main: pre-existing, not this pack. Technical: not approved. final-audit/claude → fixing/claude. idle-runs 0.
 - 2026-11-06: Claude: fixing round 6 — T5-1 fixed on PR #39 at 813061f482c729429dd8ee9f194ca406a931cde9 (parent 33dffd0; engine/tests only, no pack data). Software GL gets the 1024/2048 light path; bake strips start small and scale with frame cost. Shell observable 11–22 s under SwiftShader (was 66 s); pnpm check 158/158; test:pages 14×2 pass incl. christian-apocrypha; captures t5-813061f at 4 sizes. See fixing-round6.md. Stage `final-audit`, owner chatgpt.
+
+- 2026-11-06T23:16Z: ChatGPT round-6 exact-head canon recheck at 813061f482c729429dd8ee9f194ca406a931cde9 approved (bounded D02 scope). Audit 9a9c70e59df2b4c2ef4b89003e992ea9e1453529 confirmed saved; 5/5 pack blobs identical, 314/314 inventory records unchanged, 5/5 independent structural checks pass, zero new canon findings. Formal T5-1/Technical closure returns to Claude; separate Mckay release decision required.
