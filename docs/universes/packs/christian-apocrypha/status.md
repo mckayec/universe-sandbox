@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
-updated: 2026-11-06T16:25Z
-blocked-on: none
-next-action: ChatGPT: confirm Canon carries over from caf70a8 to PR #38 head c9193cc3f261898ac246f403c5fa91c593494dbb (diff is engine-only: Earth land mask + coast-safe terrain noise, no pack text/data); if yes, set ready-for-owner, owner mckay, blocked-on mckay, and add a DECISIONS.md release entry
+stage: ready-for-owner
+owner: mckay
+updated: 2026-11-06T17:15Z
+blocked-on: mckay
+next-action: Mckay: answer D03 in docs/universes/DECISIONS.md for release of PR #38 at c9193cc3f261898ac246f403c5fa91c593494dbb
 idle-runs: 0
-note: Technical: approved at c9193cc (audit-final.md checkpoint 2): 3840x2160, 1440x900, 1280x800, 390x844 all show the HD surface, 0 console errors, 0 third-party; TA-04 dropped (breakpoint crossing does not leave the preview). pnpm check 105/105, test:pages 12x2, validator 0 issues. Known gaps: real-GPU/phone timing not measurable here; one unreproduced harness-only 480x270 case; pre-existing test:browser Save/Load timeout. Not merged.
+note: Canon carry-forward approved (3390808) and Claude Technical approved at the same c9193cc head. Independent tree/diff check: 6/6 changed paths, unchanged pack blob, 20/20 inherited sample entries unchanged, 0 new canon findings; CI build/page steps succeeded, deployment skipped. D03 saved at 402cbb2. Known gaps retained: unmeasured physical-device timing/memory, unreproduced 480x270 harness case, pre-existing Save/Load browser-smoke timeout. Not merged or released.
 
 
 # Christian apocrypha (later layer of the Bible portion)
@@ -47,3 +47,5 @@ Track A · view: Earth-historical layer
 - 2026-11-06: Claude: TA-02 withdrawn (4096 bake verified by texture readback and native-pixel crop; earlier blockiness was a downscaled-preview artefact). TA-01 + TA-03 pushed to PR #38, new head c9193cc; pnpm check 105/105, test:pages 12x2. Stage unchanged (final-audit, owner claude); four-size captures next.
 - 2026-11-06T15:30Z: Claude: four-size captures checkpoint 1 at c9193cc (1440x900 crisp, 390x844 OK, 4K blocky only after a viewport crossing the 820 px breakpoint mid-bake → TA-04 hypothesis; 4K no-cross and 1280 pending). audit-final.md updated. Stage/owner unchanged (final-audit, claude); idle-runs 0.
 - 2026-11-06T16:25Z: Claude: four-size captures checkpoint 2 at c9193cc; TA-04 dropped; Technical: approved at c9193cc (audit-final.md). Handed to ChatGPT (stage final-audit, owner chatgpt) to confirm canon carries over from caf70a8; idle-runs 0.
+
+- 2026-11-06T17:15Z: ChatGPT verified the two-commit caf70a8..c9193cc delta and identical pack blob 98884fd9291961c5c4bc0270d221516a5f0f5c7d; 6/6 changed paths accounted for, 20/20 prior sample entries unchanged, 0 new canon findings. Canon approved at c9193cc3f261898ac246f403c5fa91c593494dbb in audit-final.md (3390808bc5539b583ffb3cb33aeeda5076bf42e2), saved/read back before this transition. Claude's technical sign-off names the same head, with three Known gaps preserved and builder-attributed rendered evidence. Remote Actions run 42235193308 build and page steps succeeded; deployment skipped. D03 release question saved/read back (402cbb21543a04ca0a5e08789f9932c35e3e05ba). Stage ready-for-owner, owner mckay; no release approval, merge or deployment.
