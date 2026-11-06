@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
-updated: 2026-11-06T08:28Z
+stage: final-audit
+owner: chatgpt
+updated: 2026-11-06T09:00Z
 blocked-on: none
-next-action: Claude: incorporate the three Q01 city packages (chp-zurich, jud-hamburg, xian) from the 2026-11-06 continuation; preserve five explicit nonspatial gaps and return per-ID dispositions, exact PR39 head and focused/full checks
+next-action: ChatGPT: recheck the three Q01 city markers at PR39 9e3ce7ed4219d5f3004020de6b6339950bba502f and accept or reject the five Known-gap hold dispositions in fixing-round3.md
 idle-runs: 0
-note: Q01 round-2 accepted at 01df0f2ec7f007a2b37a5712b279a9b5e930e299: 12/12 markers and 7/7 event links checked; 25/25 independent focused tests pass; ABR01-04 remain closed. Eight source questions answered, three new city packages supported: 16/21 supported, 5/21 unresolved. Twelve supported packages built, Antioch held, three pending. Canon not finally approved; rendered/technical and Mckay release gates remain.
+note: Fixing round 3 at 9e3ce7e (parent 01df0f2): chp-zurich, jud-hamburg, xian built as Getty TGN approximate city references keeping card ids; che-anabaptist, jud-e09, XE01 now link to markers. 25 markers (10 heritage + 15 Q01); Q01 16/21 supported, 15 built, Antioch held, 5 unresolved proposed as explicit holds (Known gaps). pnpm check 119/119, test:pages 12x2, browser clean. Canon, technical/rendered and Mckay release gates open; not merged.
 
 
 
@@ -40,3 +40,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06: Claude: fixing round 2 on PR #39 at 01df0f2ec7f007a2b37a5712b279a9b5e930e299 (parent ee700d1): Q01 12/13 supported packages built as reference markers, Antioch held, 8 unresolved kept nonspatial with source questions; per-package mapping in fixing-round2.md. pnpm check 119/119, test:pages 12x2. Stage final-audit, owner chatgpt.
 
 - 2026-11-06T08:28Z: ChatGPT completed Q01 round-2 return review at PR39 head 01df0f2ec7f007a2b37a5712b279a9b5e930e299 (parent ee700d153e91d854e583eb867dd40d0cc21ecfec). Source answers committed at 45451c54ba15ea495785d74d2e861ba841be968e; audit-final.md at 1dedc8efac87d675b8f0466c6c13c47284cf33fd, both read back before status. Accepted 12/12 implemented markers, 7/7 event links, Antioch hold and Chalcedon copy change; 0 new High/Medium findings. Independent 25/25 focused tests pass; same-head CI 119/119 and 24/24 page checks pass, but the page matrix omits this pack. Prior 20-item source sample preserved: 17 unchanged, three changed spatial associations rechecked; not twenty new source openings. All 8 source questions answered; Zurich, Hamburg and Xi'an city packages now supported (16/21 total, 5/21 unresolved). Five gaps remain explicit: Fayette/Whitmer, Najaf, Karbala, Azusa Street and Seesen. Stage fixing/claude for the three supported additions and finite gap dispositions under R3-R4; preserve nonspatial content and do not silently reduce scope. Canon/technical/rendered/release gates remain open; no merge or deployment.
+- 2026-11-06T09:00Z: Claude: fixing round 3 on PR #39 at 9e3ce7ed4219d5f3004020de6b6339950bba502f (parent 01df0f2): three supported Q01 city packages (Zurich, Hamburg, Xi'an) built per the 2026-11-06 continuation; five unresolved packages packaged as Known gaps with proposed hold dispositions (fixing-round3.md). pnpm check 119/119, test:pages 12x2. Stage final-audit, owner chatgpt.
