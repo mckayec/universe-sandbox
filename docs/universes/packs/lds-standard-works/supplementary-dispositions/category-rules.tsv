@@ -1,0 +1,63 @@
+category	action	work_gate	builder_requirement
+SC01	retain-nonspatial-places	3/bom	Reuse Irreantum geography identity; distinguish Laman river from dream river and place names from people; retain every cited place facet.
+SC02	retain-nonspatial-places	3/bom	Distinguish Lemuel city from valley and BoM Midian from biblical Midian; preserve relative positions without Earth geometry.
+SC03	retain-textual-journeys	3/bom	Separate brass-plates and Ishmael trips, search/settlement parties and captors; preserve changing travelers and omitted legs.
+SC04	retain-prose-identity-constraints	3/bom	Expose essential household and record-custody relationships in cited reference text; distinguish Mosiahs, Ammons, Almas and Zorams; do not infer unnamed spouses or uniform parentage.
+SC05	retain-nonspatial-places	3/bom	Reuse great tower, Nimrod, Moriancumer and Shelem identities; prophetic New Jerusalem is not a plotted ancient settlement.
+SC06	retain-journey-event-views	3/bom	Separate participant groups and source-relative chronology; extend matching BJ/BE views without duplicate events; no numeric engine timeline.
+SC07	retain-people-and-teaching-views	3/bom	Keep two Jonas names and ambiguous son antecedents, two Amos generations and typed Ether descent; preserve source tensions rather than harmonizing genealogy.
+SC08	retain-nonspatial-places	2/nt	Reuse supported OT base identities with NT source facets; distinguish city/region senses, lake/land aliases and unnamed settings; no automatic map pins.
+SC09	retain-textual-journeys	2/nt	Extend AJ source views rather than duplicate histories; preserve traveler changes, separate Gospel orders and unstated intermediary paths.
+SC10	retain-source-specific-events	2/nt	Use parent event families with Gospel-specific children; no harmonized chronology or fabricated shared venue from parallels.
+SC11	retain-explanatory-views	2/nt	Keep epistolary, visionary and interpretive content as attributed references even when no new Earth point results.
+SC12	retain-people-relationship-views	2/nt	Preserve exact relationship predicates, homonym separation and audience/author attribution limits; no inferred kinship from shared names.
+SC13	retain-registry-contract	1/ot	Apply structured family and reusable-key rules to SC14–17; these five rows are integration constraints, not five physical entities.
+SC14	retain-shared-place-views	1/ot	Reuse the 16 directly repeated primary IDs; add missing source facets to shared places; retain uncertain places as references without geocoding.
+SC15	retain-people-relationship-views	1/ot	Honor deliberate non-merges and qualified identity assertions; typed role/custody/parentage edges remain distinct.
+SC16	retain-textual-journeys	1/ot	Reuse three repeated primary journey IDs and existing events; separate command, intended movement and narrated arrival; no gap bridging.
+SC17	retain-explanatory-views	1/ot	Keep legal and nonspatial chapter material in source-labelled references; no invented journey for a law or instruction.
+SC18	retain-place-region-views	1/ot	Keep place and broad-region kinds; use shared source facets rather than new city centroids; no historical confirmation inferred from narrative.
+SC19	retain-movement-nonmovement-views	1/ot	Preserve explicit non-movements, instructions and reported travel separately; source sequences do not authorize recovered routes.
+SC20	retain-people-teaching-views	1/ot	Retain explanatory and relationship content with source identities; do not promote every mention into an independent event.
+SC21	retain-place-alias-views	1/ot	Consolidate only supported aliases, retain source-specific senses and uncertain alternatives; no geometry inferred from name matching.
+SC22	retain-prose-source-view-rules	1/ot	Retain all movement/source-identity prose as import constraints; zero table rows does not mean no content or approved omission.
+SC23	retain-apparatus-constraints	source-specific 1/ot; later commentary separately gated	Apply aliases and apparatus distinctions to relevant cards; source apparatus is not another event. Do not expose a later-work claim through an earlier entity.
+SC24	retain-place-region-views	1/ot	Keep prophetic geography, historical setting and named region distinct; uncertain/visionary places remain nonspatial.
+SC25	retain-movement-type-views	1/ot	Preserve literal, reported, visionary and intentionally nonliteral movement classes; no route animation for an oracle by default.
+SC26	retain-typed-relationship-views	1/ot	Keep speakers, audiences, historical people and visionary roles distinct; source-sensitive identities cannot be flattened into a genealogy.
+SC27	retain-explanatory-views	1/ot	Attribute interpretation and textual imagery; no dated historical event fabricated from a symbolic image.
+SC28	retain-reported-movements	1/ot	Keep the four additional movement statements and their reporting modes; consolidate with parent journeys only preserving each source.
+SC29	retain-apparatus-constraints	source-specific 1/ot; later claims separately gated	Retain six apparatus/cross-work distinctions as constraints on source copy; no separate map objects or premature later-work unlock.
+SC30	retain-poetic-place-views	1/ot	Distinguish named poetic setting, author location and historical allusion; no travel inference from a place in a poem.
+SC31	retain-source-specific-views	1/ot	Preserve narrative versus poetic events, journeys and relationship labels; no harmonized biography from separate speakers.
+SC32	retain-explanatory-views	1/ot	Show genre and rendering limits with the cited content; no default Earth pin or physical event for metaphor.
+SC33	retain-JST-comparison-reference	explicit edition/JST reference; no automatic later-work unlock	Keep five bounded JST selections labelled as translation/apparatus comparison, not the base biblical text or a claim to cover all JST material.
+SC34	retain-apparatus-constraints	source-specific OT claim at 1/ot; commentary separately labelled	Retain all 28 apparatus distinctions; footnote associations do not create identity equivalence or new event dates.
+SC35	retain-DC-place-views	4/dc	Reuse restoration place identities; distinguish revelation setting from commanded destination and religiously designated landscape; no new centroid.
+SC36	retain-DC-event-journey-views	4/dc	Separate document date, narrated experience and historical action; DE06 has two dated components, not one combined occurrence.
+SC37	retain-DC-teaching-relationship-views	4/dc	Keep doctrinal claims attributed to D&C and relation predicates source-bound; not external historical certification.
+SC38	retain-DC-setting-teaching-views	4/dc	Preserve additional settings and document contexts, including prose-defined DP keys; no omission because a setting is not mappable.
+SC39	retain-typed-DC-relations	4/dc	Retain office, instruction, kinship and witness predicates separately; commands are not completed travel or offices necessarily exercised.
+SC40	retain-resolved-person-roster	neutral identity at earliest supported source; DC facts 4/dc	Reuse dcp identities with front-matter names from group 3 where supported; retain all resolved roles and unresolved names in source dossiers, not guessed biographies.
+SC41	retain-expanded-office-companion-relations	4/dc	Keep the 36 expanded relation rows as typed statements; consolidate repeated people, not distinct offices or source contexts.
+SC42	retain-ancient-visionary-identities	4/dc source view; earlier source identities reused	Separate ancient/visionary participants from modern recipients; D&C document date is not an ancient event date.
+SC43	retain-document-event-decisions	4/dc	Implement exact reuse/split decisions, including DE06 dates; no document automatically becomes a new journey or event.
+SC44	retain-prose-dossier-decisions	4/dc	Keep all prose disposition mappings; commands, conditional temples and proposed missions remain unfulfilled unless evidence records completion.
+SC45	retain-all-document-dossiers	4/dc	Keep all 140 dossiers discoverable as cited references; dash means no extra specialized record, not delete the dossier. Preserve relationship-resolution holds.
+SC46	retain-PGP-family-views	5/pgp	Implement 16 conceptual/relationship families by reusing PC/PE/PP where appropriate; not 16 new physical sites.
+SC47	consolidate-component-source-views	5/pgp	Consolidate 13 Articles of Faith subviews under PC06 preserving all clauses; JS–History subranges and 1834 Cowdery reminiscence remain separately attributed, not verse 76.
+SC48	retain-PGP-identity-constraints	neutral identity earliest supported; PGP facts 5/pgp	Distinguish Cainite/Sethite homonyms, titles versus people and explicit versus inferred parentage; reuse supported dcp identities only.
+SC49	retain-JSH-prose-person-material-views	neutral witness identity from 3; JSH claims 5/pgp	Retain family, employment, failed silver-mine, marriage, relayed Harris testimony and material episodes; source spellings and unnamed identities remain explicit.
+SC50	consolidate-FM01-09	FM01–07 3/bom; FM08 4/dc; FM09 5/pgp	Reuse the nine already specified FM IDs; verify card import and identity gates, not nine additional entities. Palmyra pin gate remains separate.
+SC51	apply-front-matter-integration-constraints	neutral identities 3/bom; DC/PGP facts 4/5	Enforce witness neutral-name gates and separate Palmyra publication/history facets; FM06 is not another plates event. Do not invent Cumorah equivalence.
+SC52	retain-attributed-model-comparison	3/bom; clearly separate proposed models	Keep the three attributed short model summaries and cited criticism; no endorsement, model ranking, blended Heartland variant, geometry or archaeological identity claim.
+SC53	consolidate-Arabian-source-views	3/bom	Reuse Nahom, Arabian Bountiful and related existing geography identities; burial is not death location, and coast/mountain/sea remain distinct textual settings.
+SC54	consolidate-Jaredite-source-views	3/bom	Reuse great tower, Nimrod, Moriancumer and Shelem from BJ11/BP context; four-year camp is not sea crossing, Shelem is a separate excursion.
+SC55	approved-dense-display-deferral	1/ot	Defer default map/codex expansion of allotment payload; retain cited research, essential place boundary distinctions and discoverable reference access.
+SC56	approved-dense-display-deferral	1/ot	Defer dense relationship UI payload, not essential typed identities or cited reference retention; no uniform parentage inferred.
+SC57	approved-dense-display-deferral	1/ot	Retain overlapping relationship contexts as references; defer default expansion, not source context or unresolved predicate warnings.
+SC58	approved-dense-display-deferral	1/ot	Do not turn 829 overlapping rows into independent people; retain register and essential relationships, defer dense display only.
+SC59	approved-dense-display-deferral	1/ot	Retain chain direction and mixed predicates; no automatic genealogy graph or new map objects required in v1.
+SC60	approved-dense-display-deferral	1/ot	Preserve literal relation pairs and overlap with prior families; defer display only, not textual contradictions or identity safeguards.
+SC61	approved-dense-display-deferral	2/nt	Retain expanded NT relations as cited reference payload; preserve source-specific ties and essential people while deferring dense UI.
+SC62	approved-dense-display-deferral	2/nt	Retain roster source context; overlapping rows are not new biographies; defer default dense display without deleting essential named people.

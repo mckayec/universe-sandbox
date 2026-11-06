@@ -1,0 +1,40 @@
+{
+  "head": "e58e9a16c46b7216b055b9817a8dea464713a90e",
+  "cases": [
+    {
+      "name": "normal event activation",
+      "observedFocus": "event"
+    },
+    {
+      "name": "codex reopened",
+      "observedFocus": "#cxClose"
+    },
+    {
+      "name": "event replaced",
+      "observedFocus": "source"
+    },
+    {
+      "name": "event cleared",
+      "observedFocus": "source"
+    },
+    {
+      "name": "layer or year filters reject target",
+      "observedFocus": "source"
+    },
+    {
+      "name": "work gate locks target",
+      "observedFocus": "source"
+    },
+    {
+      "name": "target removed",
+      "observedFocus": "source"
+    },
+    {
+      "name": "reopen then close preserves restored Codex button",
+      "observedFocus": "#cxBtn"
+    }
+  ],
+  "passingGuardCases": 8,
+  "S27C1": "closed for reproduced case",
+  "browserExecuted": false
+}

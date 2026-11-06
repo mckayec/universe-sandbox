@@ -1,0 +1,18 @@
+{
+  "head": "1b55cc853c11a86340a3baf21913bc311ddfbadc",
+  "base": "1a6b94eea246a39a795d79c22204226e2d8f001e",
+  "addedCards": 39,
+  "changedPriorCards": 0,
+  "unchangedPriorCards": 1305,
+  "totalCards": 1344,
+  "uniqueKeyedCards": 1311,
+  "gateCombinations": 975,
+  "preDCAllLayerExclusions": 117,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S17-C1 dialogue correction and S17-C2 Emma heading context remain content findings"
+  ]
+}

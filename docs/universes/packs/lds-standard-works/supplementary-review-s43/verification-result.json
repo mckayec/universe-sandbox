@@ -1,0 +1,18 @@
+{
+  "head": "d84599cd2e67abc9265cc00873bd9eb482a0ce14",
+  "base": "b878e38a49ba76394f5e5d144e0cf09ae8e40b1e",
+  "onlyRuntimeChanges": "AE09/AE10 category suffix removed",
+  "remainingCrosswalkRowsUnchanged": 152,
+  "removedRows": [
+    "codex:AE09",
+    "codex:AE10"
+  ],
+  "keywordCandidates": 94,
+  "generatorReproductions": 2,
+  "mergeTreeMain": "934b95e729a3439fad39a98fe7ca8cbc4c8362a7",
+  "mergeTreeExit": 0,
+  "mergeTreeOutput": "b2f8c57f49a98765e8b31d1e1b7c06757355fd9b",
+  "noBranchMergePerformed": true,
+  "browserExecuted": false,
+  "result": "pass"
+}

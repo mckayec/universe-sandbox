@@ -1,0 +1,19 @@
+{
+  "head": "0b8c8f8c5419712ac096fb7c72fd1dc96758361b",
+  "base": "bccae39d5e191d81b59a8bd31c740ce9bc4cdb51",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1351,
+  "SDRowsReconciled": 1271,
+  "importedSD": 859,
+  "pendingSD": 412,
+  "standaloneProse": 7,
+  "consolidatedProse": 1,
+  "childRows": 72,
+  "newSDRows": 69,
+  "newChildRows": 0,
+  "newCards": 69,
+  "importedMappingRows": 939,
+  "supplementaryCards": 927,
+  "generatorPackAndMappingByteIdentical": true,
+  "freshFullPrimaryReading": false
+}

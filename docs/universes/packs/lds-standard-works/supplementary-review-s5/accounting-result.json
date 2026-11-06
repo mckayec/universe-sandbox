@@ -1,0 +1,33 @@
+{
+  "head": "6067a78b1da53224026f7cd8ae0273a36c7f54b5",
+  "base": "665f82590881ee8664b70bb88543e71a0965b7d1",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "priorReview": "f571cb96d3aa06a947a98aeec8e52348574d6c0c",
+  "mappingRows": 1303,
+  "SDRowsReconciled": 1271,
+  "importedSD": 475,
+  "pendingSD": 796,
+  "proseRows": 7,
+  "childRows": 25,
+  "childParentCounts": {
+    "SD0213": 1,
+    "SD0226": 3,
+    "SD0236": 5,
+    "SD0270": 15,
+    "SD0443": 1
+  },
+  "parentLocatorChanges": [
+    "SD0206",
+    "SD0311",
+    "SD0354",
+    "SD0441"
+  ],
+  "changedParentsCompared": 17,
+  "childrenCompared": 25,
+  "childrenConform": 24,
+  "childrenPartial": 1,
+  "fullNumbers33SequenceEqualToAccepted": true,
+  "allChildOrderGateMappingSourceChecks": true,
+  "generatorPackAndMappingByteIdentical": true,
+  "fullPrimaryRereading": false
+}

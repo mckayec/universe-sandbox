@@ -1,0 +1,60 @@
+{
+  "implementation": "f877f76f295fc09bd80b28d455ce59a093f31271",
+  "baseline": "dcc793c6036f9dc26ec4286d8c132c272638fd40",
+  "changedFiles": [
+    "tests/standalone-pages.mjs"
+  ],
+  "function_sha256": "961cbb48c1757de2cdd85d812b60262b9e3de53fbea31141417fd97a288c3fcd",
+  "cases": 6,
+  "results": [
+    {
+      "name": "first-attempt success",
+      "attempts": 1,
+      "waits": [],
+      "throws": false
+    },
+    {
+      "name": "one transient error then success",
+      "attempts": 2,
+      "waits": [
+        3000
+      ],
+      "throws": false
+    },
+    {
+      "name": "success on fourth attempt",
+      "attempts": 4,
+      "waits": [
+        3000,
+        3000,
+        3000
+      ],
+      "throws": false
+    },
+    {
+      "name": "persistent matching error fails at fourth",
+      "attempts": 4,
+      "waits": [
+        3000,
+        3000,
+        3000
+      ],
+      "throws": true
+    },
+    {
+      "name": "different error fails immediately",
+      "attempts": 1,
+      "waits": [],
+      "throws": true
+    },
+    {
+      "name": "different error after transient fails immediately",
+      "attempts": 2,
+      "waits": [
+        3000
+      ],
+      "throws": true
+    }
+  ],
+  "limits": "Mocked page methods validate retry control flow only; no GPU/compositor causal proof, no screenshot/rendered/browser execution. All application bytes unchanged."
+}

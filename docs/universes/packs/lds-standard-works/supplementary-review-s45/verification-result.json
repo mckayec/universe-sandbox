@@ -1,0 +1,26 @@
+{
+  "head": "421a5bc0a65323a06bafd8c694f106823b71f1ff",
+  "baseAndTestedRuntime": "4aa6571c45bd6cc9063e77c57f7a40156e0a4c26",
+  "changedFiles": [
+    "docs/universes/packs/lds-standard-works/shots/s46-finished-1280x800.jpg",
+    "docs/universes/packs/lds-standard-works/shots/s46-finished-390x844.jpg",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s46-finished-probe-output.txt",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s46-finished-probe.mjs",
+    "docs/universes/packs/lds-standard-works/supplementary-implementation.md"
+  ],
+  "allRuntimeAndTestsUnchanged": true,
+  "probeDelta": "header comment and screenshot filename only",
+  "finishedViewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1280,
+      800
+    ]
+  ],
+  "terminalBuilderLog": "PASS",
+  "independentBrowserExecuted": false,
+  "result": "pass"
+}
