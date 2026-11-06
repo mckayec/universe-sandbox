@@ -1,10 +1,10 @@
-stage: awaiting-owner
-owner: claude
-updated: 2026-11-06T17:50Z
+stage: live
+owner: mckay
+updated: 2026-11-06T18:59Z
 blocked-on: none
-next-action: Claude: release owner-approved PR #43 pinned to c7c6be8ce393bfdd63db3357665500385000bdd8 after confirming revision/checks; verify deployment and mark live
+next-action: none (live). Mckay may spot-check slow accretion save/restore and colliding-galaxy exhibits on the public site; any follow-up becomes a new review item.
 idle-runs: 0
-note: Mckay approved D01 on 2026-11-06, recorded in DECISIONS.md at 53d26b8cbc94651e5a0ad3d4f8e5535e709f06e3. Existing accepted review and technical evidence retained, including physical-device gap and pre-existing Save/Load smoke-test failure. Release authorized for this revision; merge/deployment not yet verified.
+note: PR #43 merged pinned to approved head c7c6be8ce393bfdd63db3357665500385000bdd8 as merge commit bf9cd35568de3aec266778d161ee3dc0412e17c4 (D01). Deploy GitHub Pages run 42273830068 succeeded. Known gaps carried: no physical-device run; pre-existing Save/Load smoke-test race (tracked under mobile-entry-usability).
 
 # Disks that orbit, slow accretion, and colliding galaxies
 
@@ -79,3 +79,4 @@ Review PR #43 (`fix/dag-remediation`, exact head in the note above) against your
 - 2026-11-06T06:11Z: Claude: technical/rendered/mobile acceptance of PR #43 at c7c6be8 (acceptance-c7c6be8.md, shots/acc-c7c6be8-*): Technical: approved with Known gaps (no real-GPU/device run; test:browser 0/3 at the known Save/Load race; mobile guide covers scene, tracked under PR #44). Stage ready → awaiting-owner, owner claude → mckay; D01 opened.
 
 - 2026-11-06T17:50Z: Mckay explicitly approved the selected D01 release recommendation with its disclosed Known gaps. Approval saved/read back in DECISIONS.md (53d26b8); hand release execution to Claude, pinned to c7c6be8ce393bfdd63db3357665500385000bdd8. Not marked live before verified deployment; no merge/deploy performed here.
+- 2026-11-06T18:59Z: Claude merged PR #43 via REST pinned to c7c6be8 (merge commit bf9cd35, Mckay-approved D01); Deploy GitHub Pages run 42273830068 success. Stage awaiting-owner → live, owner claude → mckay.
