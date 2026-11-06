@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
-updated: 2026-11-06T20:07Z
+stage: fixing
+owner: claude
+updated: 2026-11-06T20:14Z
 blocked-on: none
-next-action: ChatGPT: final canon return check at PR39 d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 (pack data unchanged since accepted d4185ed; apply Mckay's D02 answer), then 'Canon: approved' or findings in audit-final.md; Claude then runs AUDIT_CHECKLIST §4 technical sign-off on the same SHA.
+next-action: Claude: resolve D02-C1 by adding the source-backed nonspatial Antioch reference card promised by D02; return exact head with text/source mapping and gate regression evidence, preserving existing fixes and unpinned scope.
 idle-runs: 0
-note: PR39 head d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 = d4185ed + TA-01 (dc1694b) + TA-03 (5de9ed0) + R4-T2 shared phone-chrome fix (d95eaf2); pack text/data unchanged since accepted d4185ed. pnpm check 123/123, test:pages 13x2 pass; finished-surface captures at all four sizes (shots/r4t2-d95eaf2-{390,1280,1440,3840}.jpg), 0 console/page errors; R4-T1 resolved at 4K (Low residual coast stepping noted in fixing-round4.md). D02 approved by Mckay. Not release-approved or merged.
+note: Final canon return at PR39 d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 found 1 Medium scope mismatch: 4/5 promised retained place cards exist; Antioch appears only in a code comment. Earlier auditor assumption corrected in audit-final.md commit 774172a3097e1af0531776b8bfb2c580d5df2736. All 5/5 pack blobs unchanged from d4185ed; prior 313-record review, 20/20 sample and ABR/Q01 closures preserved. D02 approval unchanged; no new coordinates or broad research requested. Canon withheld pending D02-C1; technical and separate release gates remain.
 
 
 
@@ -56,3 +56,5 @@ Track A · view: Earth map + branching tree
 - 2026-11-06T17:50Z: Mckay explicitly approved D02: retain Antioch, Fayette/Whitmer, Karbala, Azusa Street and Seesen as unpinned cards and defer Najaf's mapped feature, with all six Known-gap dispositions. Answer saved/read back in DECISIONS.md at 53d26b8cbc94651e5a0ad3d4f8e5535e709f06e3. This resolves the owner scope decision only; it does not itself sign final canon at the new head, authorize release, waive technical checks or take Claude's current fixing ownership. Existing next-action preserved apart from the resolved D02 dependency.
 - 2026-11-06T19:38Z: Claude: desktop/4K finished-surface captures at d95eaf2 attempted, none finished. Measured: the desktop 4096 surface bake under SwiftShader on this 2-core runner advances ~2% per 20 s at 1280x800 when run alone (48% after 200 s; its adaptive strip size shrinks when frames are slow), so ~15-17 min per size; three sizes in parallel all hit a 25-min timeout. Not a product defect (bake throttles to keep frame rate; real GPUs bake in seconds). Next: one size per unit, sequential. idle-runs 1.
 - 2026-11-06T20:07Z: Claude: finished-surface captures at d95eaf2 done — one 4096 bake (702 s) at 1280x800, then 1440x900 and 3840x2160 on the same page (bake size is load-time, not viewport-dependent); 0 console/page errors, no overflow; R4-T1 resolved at 4K, Low residual coast stepping noted. Round-4 technical/rendered work complete (fixing-round4.md). Stage final-audit, owner chatgpt, naming d95eaf2. idle-runs 0.
+
+- 2026-11-06T20:14Z: ChatGPT final return at d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3: D02-C1 Medium, Antioch missing as a visible reference card (4/5 promised cards present; Najaf separately deferred). Prior assumption corrected; seven-path delta and five unchanged pack blobs independently checked; CI job logs 123/123 unit and Abrahamic desktop/mobile cases passed at synthetic merge 63c1c6c. Audit saved/read back at 774172a3097e1af0531776b8bfb2c580d5df2736. final-audit/chatgpt → fixing/claude for bounded card/source/gate correction. No release approval.
