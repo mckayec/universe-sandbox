@@ -1,10 +1,11 @@
-stage: final-audit
-owner: chatgpt
-updated: 2026-11-06T08:05Z
+stage: fixing
+owner: claude
+updated: 2026-11-06T08:28Z
 blocked-on: none
-next-action: ChatGPT: recheck Q01 incorporation at PR #39 head 01df0f2ec7f007a2b37a5712b279a9b5e930e299 against fixing-round2.md (12 markers built, Antioch held, Chalcedon copy change, 8 unresolved with source questions)
+next-action: Claude: incorporate the three Q01 city packages (chp-zurich, jud-hamburg, xian) from the 2026-11-06 continuation; preserve five explicit nonspatial gaps and return per-ID dispositions, exact PR39 head and focused/full checks
 idle-runs: 0
-note: Fixing round 2 at 01df0f2 (parent ee700d1): 12 of 13 supported Q01 packages built as labelled approximate/heritage reference markers keeping their card ids, raw source coordinates in provenance notes; Antioch held (no built record names it); 8 unresolved stay nonspatial with one source question each. pnpm check 119/119, test:pages 12x2, browser load clean at 1440 and 390. Rendered/4K/device gates and Mckay's release approval remain open. Not merged.
+note: Q01 round-2 accepted at 01df0f2ec7f007a2b37a5712b279a9b5e930e299: 12/12 markers and 7/7 event links checked; 25/25 independent focused tests pass; ABR01-04 remain closed. Eight source questions answered, three new city packages supported: 16/21 supported, 5/21 unresolved. Twelve supported packages built, Antioch held, three pending. Canon not finally approved; rendered/technical and Mckay release gates remain.
+
 
 
 # Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others
@@ -37,3 +38,5 @@ Track A · view: Earth map + branching tree
 - 2026-11-06: ChatGPT rechecked ee700d153e91d854e583eb867dd40d0cc21ecfec against parent 9cefeac89bfd23c4a7dde0e6589151608a3c6f2e. Saved audit-final.md at 94ee108fc41983c11d04645e3b44737036233134 after deterministic sample 01446cb945ade8e49d22657a7eec5c7bb7b766ec, before this status update. ABR01–04 resolved (4/4, 12/12 records: six nodes lose numeric dates, four school nodes change wording, two events become text-dated). Targeted tests 24/24 pass; three parent-data negative controls fail as expected. Final seeded source sample 20/20 supported, no new content finding; five prior access-limited records now have opened supporting passages. Q01 remains 13 supported/8 unresolved out of 21 and is not a completed map. Stage fixing, owner claude for supported-package incorporation/disposition, with unresolved features held nonspatial and source questions returned for continuation. Canon not finally approved; technical and release gates remain. No merge or deployment.
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
 - 2026-11-06: Claude: fixing round 2 on PR #39 at 01df0f2ec7f007a2b37a5712b279a9b5e930e299 (parent ee700d1): Q01 12/13 supported packages built as reference markers, Antioch held, 8 unresolved kept nonspatial with source questions; per-package mapping in fixing-round2.md. pnpm check 119/119, test:pages 12x2. Stage final-audit, owner chatgpt.
+
+- 2026-11-06T08:28Z: ChatGPT completed Q01 round-2 return review at PR39 head 01df0f2ec7f007a2b37a5712b279a9b5e930e299 (parent ee700d153e91d854e583eb867dd40d0cc21ecfec). Source answers committed at 45451c54ba15ea495785d74d2e861ba841be968e; audit-final.md at 1dedc8efac87d675b8f0466c6c13c47284cf33fd, both read back before status. Accepted 12/12 implemented markers, 7/7 event links, Antioch hold and Chalcedon copy change; 0 new High/Medium findings. Independent 25/25 focused tests pass; same-head CI 119/119 and 24/24 page checks pass, but the page matrix omits this pack. Prior 20-item source sample preserved: 17 unchanged, three changed spatial associations rechecked; not twenty new source openings. All 8 source questions answered; Zurich, Hamburg and Xi'an city packages now supported (16/21 total, 5/21 unresolved). Five gaps remain explicit: Fayette/Whitmer, Najaf, Karbala, Azusa Street and Seesen. Stage fixing/claude for the three supported additions and finite gap dispositions under R3-R4; preserve nonspatial content and do not silently reduce scope. Canon/technical/rendered/release gates remain open; no merge or deployment.
