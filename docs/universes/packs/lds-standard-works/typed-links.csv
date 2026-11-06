@@ -1,0 +1,122 @@
+contract_row,kind,relation_label,cards,target,state
+AP07 / babylon (collision audit),same-entity group,same city,OTS-AP07-babylon (1/ot); OTM-babylon (1/ot); OTW-ap07-babylon-psalm-137 (1/ot),,linked both ways between every pair
+bashan (collision audit),same-entity group,same region,OTL-bashan (1/ot); OTM-bashan (1/ot),,linked both ways between every pair
+P07 / bethlehem (collision audit),same-entity group,same town,OTS-P07-bethlehem (1/ot); OTL-bethlehem (1/ot); OTM-bethlehem (1/ot); OTW-p07-bethlehem-micah (1/ot),,linked both ways between every pair
+damascus (canonical row; collision audit),same-entity group,same city,OHP-DAMASCUS (1/ot); OTL-damascus (1/ot); OTM-damascus (1/ot); NTP-damascus (2/nt),,linked both ways between every pair
+P04 / egypt-region (canonical row; collision audit),same-entity group,same land,OTS-P04-egypt (1/ot); OTM-egypt-region (1/ot),,linked both ways between every pair
+P01 / haran (canonical row; collision audit),same-entity group,same city,OTS-P01-haran (1/ot); OTM-haran (1/ot),,linked both ways between every pair
+AP06 / jericho (canonical row; collision audit),same-entity group,same city,OTS-AP06-jericho (1/ot); OTL-jericho (1/ot),,linked both ways between every pair
+P08 / jerusalem (canonical row; collision audit),same-entity group,same city,OTS-P08-jerusalem (1/ot); OTM-jerusalem (1/ot); OTW-p08-jerusalem-psalms (1/ot),,linked both ways between every pair
+lachish (collision audit),same-entity group,same city,OHP-LACHISH (1/ot); OTL-lachish (1/ot); OTM-lachish (1/ot),,linked both ways between every pair
+lebanon (collision audit),same-entity group,same region,OTL-lebanon (1/ot); OTM-lebanon (1/ot),,linked both ways between every pair
+samaria city (canonical row; collision audit),same-entity group,same city,OHP-SAMARIA (1/ot); OTL-samaria (1/ot); OTM-samaria (1/ot),,linked both ways between every pair
+seir (collision audit),same-entity group,same region,OHP-SEIR (1/ot); OTL-seir (1/ot); OTM-seir (1/ot),,linked both ways between every pair
+sheba (collision audit),same-entity group,same region,OHP-SHEBA (1/ot); OTL-sheba (1/ot); OTM-sheba (1/ot),,linked both ways between every pair
+P02 / shechem (canonical row; collision audit),same-entity group,same city,OTS-P02-shechem (1/ot); OTL-shechem (1/ot); OTW-p02-shechem-psalms (1/ot),,linked both ways between every pair
+nineveh (canonical row),same-entity group,same city,OHP-NINEVEH (1/ot); OTM-nineveh (1/ot); OTW-p02-nineveh (1/ot),,linked both ways between every pair
+joppa (canonical row),same-entity group,same port,OTL-joppa (1/ot); OTW-p03-joppa (1/ot); NTP-joppa (2/nt),,linked both ways between every pair
+tarshish (canonical row),same-entity group,same place name,OTM-tarshish (1/ot); OTW-p04-tarshish-intended (1/ot),,linked both ways between every pair
+en-gedi (canonical row; typed link alias-of),same-entity group,same place,OTL-en-gedi (1/ot); OTM-en-gedi (1/ot); OTW-p11-en-gedi-song (1/ot),,linked both ways between every pair
+shushan-narrative (canonical row),same-entity group,same city,OTL-shushan-narrative (1/ot); OTW-p06-shushan-vision (1/ot),,linked both ways between every pair
+tekoa (canonical row),same-entity group,same town,OTL-tekoa (1/ot); OTW-p09-tekoa (1/ot),,linked both ways between every pair
+jordan-river (canonical row),same-entity group,same river,OHP-JORDAN (1/ot); NTP-jordan (2/nt),,linked both ways between every pair
+eden-textual (canonical row; S25-C1),same-entity group,Eden in another account,OH-P01 (1/ot); PP02 (5/pgp),,linked both ways between every pair
+nod-textual (canonical row; S25-C1),same-entity group,Nod in another account,OH-P02 (1/ot); PP03 (5/pgp),,linked both ways between every pair
+P17 Enoch’s city (canonical row; S25-C1),same-entity group,Enoch’s city in another account,P17-dc-enoch-city (4/dc); P17-pgp-enoch-city (5/pgp),,linked both ways between every pair
+AP06 jericho: city and plains are distinct settings,typed,the city / its plains,OTM-jericho (1/ot),OTS-AP06-jericho (1/ot),linked both ways
+MP zion-prophetic-jerusalem: epithet-of P08,typed,epithet of / called Zion,OTM-zion-prophetic-jerusalem (1/ot),OTS-P08-jerusalem (1/ot),linked both ways
+MP jeremiah-prison-court: contained-setting-of P08,typed,within / setting within it,OTM-jeremiah-prison-court (1/ot),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-bethesda: contained-setting-of P08,typed,within / feature within it,NTP-bethesda (2/nt),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-siloam: contained-setting-of P08,typed,within / feature within it,NTP-siloam (2/nt),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-gabbatha: contained-setting-of P08,typed,within / feature within it,NTP-gabbatha (2/nt),OTS-P08-jerusalem (1/ot),linked both ways
+NTP-samaria: region; city samaria related by context,typed,the city / the region,NTP-samaria (2/nt),OHP-SAMARIA (1/ot),linked both ways
+WP-E03 and WP-J02: same Daniel 1 source episode,typed,same Daniel 1 episode / same Daniel 1 episode,OTW-e03-daniel-court-education (1/ot),OTW-j02-captives-royal-service (1/ot),linked both ways
+DD109 describes E11,typed,describes,DCM-dd109-dedication-prayer (4/dc),ev:kirtland-dedication (4/dc (event)),linked one way (events carry no links)
+DD110 describes DE06b,typed,describes / described in,DCM-dd110-temple-vision (4/dc),DCM-de06b-kirtland-vision (4/dc),linked both ways
+DD137 describes RE08,typed,describes,DCM-dd137-alvin-vision (4/dc),ev:vision-celestial-kingdom (4/dc (event)),linked one way (events carry no links)
+DD121 describes RE07,typed,describes / described in,DCM-dd121-liberty-epistle (4/dc),RE07 (4/dc),linked both ways
+DD122 describes RE07,typed,describes / described in,DCM-dd122-liberty-adversity (4/dc),RE07 (4/dc),linked both ways
+DD123 describes RE07,typed,describes / described in,DCM-dd123-liberty-redress (4/dc),RE07 (4/dc),linked both ways
+DD121 explains RC02,typed,explains / explained in,DCM-dd121-liberty-epistle (4/dc),RC02 (4/dc),linked both ways
+DD136 describes RE11,typed,describes,DCM-dd136-winter-quarters (4/dc),ev:dc136-camp-instructions (4/dc (event)),linked one way (events carry no links)
+DD136 / DJ05: views of the same instructed migration sequence,typed,same instructions / same instructions,DCM-dd136-winter-quarters (4/dc),DCM-dj05-westward-companies (4/dc),linked both ways
+"S26: PGM-qg06-zion discusses P17 (Moses 7:18–21, 62–69)",typed,describes Enoch’s community and city / Moses 7 teaching and promise,PGM-qg06-zion (5/pgp),P17-pgp-enoch-city (5/pgp),linked both ways
+"DRE appoints-to-office (D&C 117:1, 10–15)",typed,to preside at Far West / to preside at Far West,DCM-dre117-marks-whitney-granger (4/dc),DCM-dcp-william-marks (4/dc),linked both ways
+"DRE appoints-to-office (D&C 117:1, 10–15)",typed,bishop at Adam-ondi-Ahman / bishop at Adam-ondi-Ahman,DCM-dre117-marks-whitney-granger (4/dc),DCM-dcp-newel-k-whitney (4/dc),linked both ways
+DRE appoints-to-office (D&C 118:6),typed,appointed to the Twelve / appointed to the Twelve,DCM-dre118-marsh-and-twelve (4/dc),DCM-dcp-john-taylor (4/dc),linked both ways
+DRE appoints-to-office (D&C 118:6),typed,appointed to the Twelve / appointed to the Twelve,DCM-dre118-marsh-and-twelve (4/dc),DCM-dcp-john-e-page (4/dc),linked both ways
+DRE appoints-to-office (D&C 118:6),typed,appointed to the Twelve / appointed to the Twelve,DCM-dre118-marsh-and-twelve (4/dc),DCM-dcp-wilford-woodruff (4/dc),linked both ways
+DRE appoints-to-office (D&C 118:6),typed,appointed to the Twelve / appointed to the Twelve,DCM-dre118-marsh-and-twelve (4/dc),DCM-dcp-willard-richards (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:62–71),typed,Nauvoo House trustee / Nauvoo House trustee,DCM-dre124c-nauvoo-house-quorum (4/dc),DCM-dcp-george-miller (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:62–71),typed,Nauvoo House trustee / Nauvoo House trustee,DCM-dre124c-nauvoo-house-quorum (4/dc),DCM-dcp-lyman-wight (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:62–71),typed,Nauvoo House trustee / Nauvoo House trustee,DCM-dre124c-nauvoo-house-quorum (4/dc),DCM-dcp-john-snider (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:62–71),typed,Nauvoo House trustee / Nauvoo House trustee,DCM-dre124c-nauvoo-house-quorum (4/dc),DCM-dcp-peter-haws (4/dc),linked both ways
+"DRE appoints-to-office (D&C 124:91–97, 124–126)",typed,patriarch and seer / patriarch and seer,DCM-dre124e-presidency-patriarch (4/dc),DCM-dcp-hyrum-smith (4/dc),linked both ways
+"DRE appoints-to-office (D&C 124:91–97, 124–126)",typed,"presiding elder, seer and prophet / presiding elder, seer and prophet",DCM-dre124e-presidency-patriarch (4/dc),DCM-dcp-joseph-smith-jr (4/dc),linked both ways
+"DRE appoints-to-office (D&C 124:91–97, 124–126)",typed,counselor in the Presidency / counselor in the Presidency,DCM-dre124e-presidency-patriarch (4/dc),DCM-dcp-sidney-rigdon (4/dc),linked both ways
+"DRE appoints-to-office (D&C 124:91–97, 124–126)",typed,counselor in the Presidency / counselor in the Presidency,DCM-dre124e-presidency-patriarch (4/dc),DCM-dcp-william-law (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,president of the Twelve / president of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-brigham-young (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-heber-c-kimball (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-parley-p-pratt (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-orson-pratt (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-orson-hyde (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-william-smith (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-john-taylor (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-john-e-page (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-wilford-woodruff (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-willard-richards (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:127–130),typed,member of the Twelve / member of the Twelve,DCM-dre124f-twelve (4/dc),DCM-dcp-george-a-smith (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-samuel-bent (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-henry-g-sherwood (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-george-w-harris (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-charles-c-rich (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-thomas-grover (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-newel-knight (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-david-dort (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-dunbar-wilson (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-aaron-johnson (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-david-fullmer (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-alpheus-cutler (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:131–132),typed,high councilor / high councilor,DCM-dre124g-high-council (4/dc),DCM-dcp-william-huntington (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:133–136),typed,"president, high priests quorum / president, high priests quorum",DCM-dre124h-high-priests (4/dc),DCM-dcp-don-c-smith (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:133–136),typed,"counselor, high priests quorum / counselor, high priests quorum",DCM-dre124h-high-priests (4/dc),DCM-dcp-amasa-lyman (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:133–136),typed,"counselor, high priests quorum / counselor, high priests quorum",DCM-dre124h-high-priests (4/dc),DCM-dcp-noah-packard (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:137),typed,elders quorum presidency / elders quorum presidency,DCM-dre124i-elders-quorum (4/dc),DCM-dcp-john-a-hicks (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:137),typed,elders quorum presidency / elders quorum presidency,DCM-dre124i-elders-quorum (4/dc),DCM-dcp-samuel-williams (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:137),typed,elders quorum presidency / elders quorum presidency,DCM-dre124i-elders-quorum (4/dc),DCM-dcp-jesse-baker (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:138),typed,to preside over the Seventy / to preside over the Seventy,DCM-dre124j-seventy (4/dc),DCM-dcp-joseph-young (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:138),typed,to preside over the Seventy / to preside over the Seventy,DCM-dre124j-seventy (4/dc),DCM-dcp-josiah-butterfield (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:138),typed,to preside over the Seventy / to preside over the Seventy,DCM-dre124j-seventy (4/dc),DCM-dcp-daniel-miles (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:138),typed,to preside over the Seventy / to preside over the Seventy,DCM-dre124j-seventy (4/dc),DCM-dcp-henry-herriman (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:138),typed,to preside over the Seventy / to preside over the Seventy,DCM-dre124j-seventy (4/dc),DCM-dcp-zera-pulsipher (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:138),typed,to preside over the Seventy / to preside over the Seventy,DCM-dre124j-seventy (4/dc),DCM-dcp-levi-w-hancock (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:138),typed,to preside over the Seventy / to preside over the Seventy,DCM-dre124j-seventy (4/dc),DCM-dcp-james-foster (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:141–142),typed,bishopric presidency / bishopric presidency,DCM-dre124k-bishopric-priests (4/dc),DCM-dcp-vinson-knight (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:141–142),typed,bishopric presidency / bishopric presidency,DCM-dre124k-bishopric-priests (4/dc),DCM-dcp-samuel-h-smith (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:141–142),typed,"bishopric, if he will receive it / bishopric, if he will receive it",DCM-dre124k-bishopric-priests (4/dc),DCM-dcp-shadrach-roundy (4/dc),linked both ways
+DRE appoints-to-office (D&C 124:141–142),typed,president of the priests / president of the priests,DCM-dre124k-bishopric-priests (4/dc),DCM-dcp-samuel-rolfe (4/dc),linked both ways
+DRE appoints-to-office (D&C 52:37–38),typed,to be ordained a priest / to be ordained a priest,DCM-dre052c-eastern-charges (4/dc),DCM-dcp-jared-carter (4/dc),linked both ways
+DRE appoints-to-office (D&C 52:37–38),typed,to be ordained a priest / to be ordained a priest,DCM-dre052c-eastern-charges (4/dc),DCM-dcp-george-james (4/dc),linked both ways
+DRE succeeds-in-office (D&C 124:91; card DRE124e: Law takes the counselor role Hyrum held),typed,succeeds as counselor / succeeded as counselor by,DCM-dcp-william-law (4/dc),DCM-dcp-hyrum-smith (4/dc),linked both ways
+DRE succeeds-in-office (D&C 124:132; card DRE124g: Aaron Johnson in place of Seymour Brunson),typed,in the place of / succeeded in his calling by,DCM-dcp-aaron-johnson (4/dc),DCM-dcp-seymour-brunson (4/dc),linked both ways
+DRE succeeds-in-office (D&C 124:132): the high council card names the deceased Seymour Brunson,typed,"replaced, deceased / replaced on the high council",DCM-dre124g-high-council (4/dc),DCM-dcp-seymour-brunson (4/dc),linked both ways
+DRE reassigned charge (D&C 52:37; card DRE052c),typed,receives the charge of / his charge given to,DCM-dcp-simonds-ryder (4/dc),DCM-dcp-heman-basset (4/dc),linked both ways
+DRE reassigned charge (D&C 52:37): both people on the card,typed,charge taken from / charge taken (52:37),DCM-dre052c-eastern-charges (4/dc),DCM-dcp-heman-basset (4/dc),linked both ways
+DRE reassigned charge (D&C 52:37): both people on the card,typed,charge given to / given the charge (52:37),DCM-dre052c-eastern-charges (4/dc),DCM-dcp-simonds-ryder (4/dc),linked both ways
+DRE successive office lists: 118:6 appointees are named members in 124:128–129,typed,later list of the Twelve / earlier appointments to it,DCM-dre118-marsh-and-twelve (4/dc),DCM-dre124f-twelve (4/dc),linked both ways
+DRE revision: section 56 replaces section 52 pairings from its date,typed,revises the section 52 pairs / revised in section 56,DCM-dre056-revisions (4/dc),DCM-dre052a-companion-pairs (4/dc),linked both ways
+DRE revision: section 75:6–9 revokes the section 66 pairing,typed,revokes the section 66 pairing / revoked and revised in,DCM-dre075-companion-pairs (4/dc),DCM-dre066-mclellin-samuel-smith (4/dc),linked both ways
+DRE revision: section 80 supersedes Burnett and Eden Smith’s section 75 pairings,typed,supersedes their section 75 pairs / superseded for two by,DCM-dre080-burnett-eden-smith (4/dc),DCM-dre075-companion-pairs (4/dc),linked both ways
+DD122 / DD123 explain RC02,not a codex link,,,,"not linked: the contract binds DD121–123 → RC02 as a group; only section 121 contains the teaching RC02 summarises, so only DD121 carries ""explains"""
+DD136 / RJ03 same migration sequence,not a codex link,,,,"not linked: RJ03 is a map route, not a codex card; DD136 and DJ05 name it in text and the route stays on the map"
+"P08 / site pin ""jerusalem""",not a codex link,,,,"map pin, not a codex card: the Jerusalem source views link to each other; the pin is reached from the map"
+P13 / DP03 Independence; P16 / DP27 Carthage Jail,not a codex link,,,,"map pins with one codex card each (DCM-dp03-independence; Carthage cards are the DE09 death event and DD135 dossier, kept distinct by the contract); no second codex view to link"
+E11 / DE06a Kirtland dedication; DE06b distinct; RE08 distinct,not a codex link,,,,"linked as DD109 → event, DD110 ↔ DE06b, DD137 → event; the three occasions are not linked to each other (contract: one temple appearance event is a forbidden conversion)"
+BMC quotation/vision records quote/see/mention shared biblical entity,not a codex link,,,,open: not yet linked; the 239 BMC cards name the biblical entity in text; no traveled-to edge exists
+DRE office sets: no parent-of,not a codex link,,,,"office appointments, the two named successions (Law for Hyrum Smith as counselor, Aaron Johnson for Seymour Brunson), the Basset-to-Ryder charge and the section 56/75/80 revisions are linked (rows above); companion pairs, travel parties, stock subscriptions and proclamation helpers are assignments, not offices, so get no office links; the 118:6 vacancies name no predecessors, so no succession is drawn; David W. Patten’s death (124:130) is stated, not linked; no parent-of or kinship relation is drawn"
+WP-R01 Daniel name pairs: alias-of within Daniel 1:6–7,not a codex link,,,,"within one card (OTW-r01-daniel-companions), which states the four name pairs; Belteshazzar is not merged with Belshazzar"
+samaria-region vs samaria city,not a codex link,,,,"linked with labels ""the city"" / ""the region""; the region card is not grouped with the city cards"
+galilee-region,not a codex link,,,,"single codex view: NTP-galilee (2/nt) is the only Galilee region card; the Isaiah 9 and 2 Kings 15 mentions are not separate cards, and AP09 (the lake) is a separate entity, so not linked"
+tigris / Hiddekel (Daniel),not a codex link,,,,single setting card: OTW-p08-hiddekel (1/ot) is Daniel 10’s river setting; OTW-a12-daniel-10-11-notes reports the edition note inside its own text; the garden-river names in OH-P01 and PC10 are not linked to it (Eden hydrology is not reconstructed and shared names are not an identity)
+"eden-textual, nod-textual, P17 (S25-C1)",not a codex link,,,,"linked as same-entity groups labelled ""in another account"" (OH-P01 ↔ PP02, OH-P02 ↔ PP03, P17-dc-enoch-city ↔ P17-pgp-enoch-city); source wording and gates kept; Cain’s Enoch (OH-P02, PGM-qg04-cain-line) is not linked to Enoch’s city; PGM-qg06-zion is linked only to the 5/pgp P17 view as a source discussion (S26), and other Zion usages (DCM-dx01, modern New Jerusalem) are not linked to P17; no location or pin"
+bom-irreantum,not a codex link,,,,"single codex view: BXP02 (3/bom) is the only Irreantum card; BE03 narrates the ship command at Bountiful and is an event, not a second view of the sea, so not linked"

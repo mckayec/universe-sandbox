@@ -1,0 +1,94 @@
+[56s] 1440x900 ready
+[527s] forward Tab stops: 80
+  button(1) "Earth" visible=true onscreen=true ring=true
+  button(2) "Jerusalem" visible=true onscreen=true ring=true
+  button(3) "Bethlehem" visible=true onscreen=true ring=true
+  button(4) "Nazareth" visible=true onscreen=true ring=true
+  button(5) "Capernaum" visible=true onscreen=true ring=true
+  button(6) "Jericho" visible=true onscreen=true ring=true
+  button(7) "Babylon" visible=true onscreen=true ring=true
+  button(8) "Perga" visible=true onscreen=true ring=true
+  button(9) "Antioch in Pisidia" visible=true onscreen=true ring=true
+  button(10) "Philippi" visible=true onscreen=true ring=true
+  button(11) "Antioch (sending church)" visible=true onscreen=true ring=true
+  button(12) "Seleucia" visible=true onscreen=true ring=true
+  button(13) "Salamis" visible=true onscreen=true ring=true
+  button(14) "Paphos" visible=true onscreen=true ring=true
+  button(15) "Iconium" visible=true onscreen=true ring=true
+  button(16) "Attalia" visible=true onscreen=true ring=true
+  button(17) "Troas" visible=true onscreen=true ring=true
+  button(18) "Syracuse" visible=true onscreen=true ring=true
+  button(19) "Rhegium" visible=true onscreen=true ring=true
+  button(20) "Puteoli" visible=true onscreen=true ring=true
+  button(21) "Rome" visible=true onscreen=true ring=true
+  button(22) "Patmos" visible=true onscreen=true ring=true
+  a(23) "← Gravity Lab" visible=true onscreen=true ring=true
+  button(24) "All" visible=true onscreen=true ring=true
+  button(25) "OT" visible=true onscreen=true ring=true
+  button(26) "NT" visible=true onscreen=true ring=true
+  button(27) "BoM" visible=true onscreen=true ring=true
+  button(28) "D&C" visible=true onscreen=true ring=true
+  button(29) "PGP" visible=true onscreen=true ring=true
+  button#galBtn "Space" visible=true onscreen=true ring=true
+  button#webBtn "Earth" visible=true onscreen=true ring=true
+  button#cxBtn "Codex" visible=true onscreen=true ring=true
+  button(33) "Milky Way" visible=true onscreen=true ring=true
+  button(34) "Earth" visible=true onscreen=true ring=true
+  button(35) "Earth" visible=true onscreen=true ring=true
+  button(36) "OT" visible=true onscreen=true ring=true
+  button(37) "NT" visible=true onscreen=true ring=true
+  button(38) "BoM" visible=true onscreen=true ring=true
+  button(39) "D&C" visible=true onscreen=true ring=true
+  button(40) "PGP" visible=true onscreen=true ring=true
+  input(41) "From year" visible=true onscreen=true ring=true
+  input(42) "To year" visible=true onscreen=true ring=true
+  button(43) "Earth24" visible=true onscreen=true ring=true
+  button(44) "Return to the galaxy" visible=true onscreen=true ring=true
+  button(45) "JerusalemOTNTBoMOTNTBoMThe marker locate" visible=true onscreen=true ring=true
+  button(46) "BethlehemOTNTOTNTThe marker locates the " visible=true onscreen=true ring=true
+  button(47) "NazarethNTNTRepresentative location of N" visible=true onscreen=true ring=true
+  button(48) "CapernaumNTNTRepresentative location of " visible=true onscreen=true ring=true
+  button(49) "JerichoOTOTThe marker locates Tell es-Su" visible=true onscreen=true ring=true
+  button(50) "BabylonOTOTThe marker locates the Babylo" visible=true onscreen=true ring=true
+  button(51) "PergaNTNTRepresentative location of Perg" visible=true onscreen=true ring=true
+  button(52) "Antioch in PisidiaNTNTRepresentative loc" visible=true onscreen=true ring=true
+  button(53) "PhilippiNTNTThe marker locates the archa" visible=true onscreen=true ring=true
+  button(54) "Antioch (sending church)NTNTCity referen" visible=true onscreen=true ring=true
+  button(55) "SeleuciaNTNTRepresentative point for the" visible=true onscreen=true ring=true
+  button(56) "SalamisNTNTRepresentative city-site poin" visible=true onscreen=true ring=true
+  button(57) "PaphosNTNTLocates the ancient city of Ne" visible=true onscreen=true ring=true
+  button(58) "IconiumNTNTCity reference point for mode" visible=true onscreen=true ring=true
+  button(59) "AttaliaNTNTCity reference point for mode" visible=true onscreen=true ring=true
+  button(60) "TroasNTNTRepresentative point within the" visible=true onscreen=true ring=true
+  button(61) "SyracuseNTNTCity reference point for Syr" visible=true onscreen=true ring=true
+  button(62) "RhegiumNTNTCity reference point for Regg" visible=true onscreen=true ring=true
+  button(63) "PuteoliNTNTCity reference point for Pozz" visible=true onscreen=true ring=true
+  button(64) "RomeNTNTCity reference point for Rome. P" visible=true onscreen=true ring=true
+  button(65) "PatmosNTNTReference point for the island" visible=true onscreen=true ring=true
+  button(66) "Winter QuartersD&CD&C1846–1848Winter Qua" visible=true onscreen=true ring=true
+  button(67) "Fayette (Whitmer home)D&CD&CThe Joseph S" visible=true onscreen=true ring=true
+  button(68) "IndependenceD&CD&C1831D&C 57 names Indep" visible=true onscreen=true ring=true
+  button(69) "Kirtland TempleD&CD&C1836D&C 109 preserv" visible=true onscreen=true ring=true
+  button(70) "NauvooD&CD&C1839–1846The heading to D&C " visible=true onscreen=true ring=true
+  button(71) "Carthage JailD&CD&C1844D&C 135 reports J" visible=true onscreen=true ring=true
+  button(72) "Harmony / Priesthood Restoration SiteD&C" visible=true onscreen=true ring=true
+  button(73) "PalmyraBoMD&CBoMD&C1830Palmyra hosted pu" visible=true onscreen=true ring=true
+  button(74) "Salt Lake TempleD&CD&C1978The official d" visible=true onscreen=true ring=true
+  button(75) "Garden GroveD&CD&C1846Emigrants establis" visible=true onscreen=true ring=true
+  button(76) "Mount Pisgah (Iowa)D&CD&C1846A second fa" visible=true onscreen=true ring=true
+  button(77) "Chimney RockD&CD&C1847The 1847 emigrant " visible=true onscreen=true ring=true
+  button(78) "Fort BridgerD&CD&C1847Near Fort Bridger," visible=true onscreen=true ring=true
+  button(79) "Joseph, Mary and Jesus in LukeNTNT" visible=true onscreen=true ring=true
+  button(80) "Return from BabylonOTOT" visible=true onscreen=true ring=true
+[1303s] Shift-Tab reverses the forward order
+[1486s] Codex: 25 Tab stops stayed inside; Escape closed it
+[1492s] Codex wrap both ways; Escape returns focus to #cxBtn
+[1492s] 1440x900 bake finished
+  1440: {"bake":true,"overflow":false,"labels":21,"canvas":[1440,900],"dpr":1}
+[1579s] 3840x2160 ready
+page.waitForFunction: Target page, context or browser has been closed
+    at finished (/home/claude/universe-sandbox/docs/universes/packs/lds-standard-works/supplementary-build/s42-probe.mjs:156:13)
+    at /home/claude/universe-sandbox/docs/universes/packs/lds-standard-works/supplementary-build/s42-probe.mjs:182:11 {
+  log: []
+}
+[stopped by Claude at ~2870s: 3840x2160 surface bake not finished after ~21 min under SwiftShader on 2 CPUs; 4K/1280/390 finished-bake carried to the next unit]

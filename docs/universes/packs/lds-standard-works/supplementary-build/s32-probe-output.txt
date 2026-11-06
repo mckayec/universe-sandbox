@@ -1,0 +1,13 @@
+[122s] desktop loaded
+[342s] check 1 passed (keyboard, one-way link, no reciprocal label)
+[583s] check 2 passed (click to a Chronicle event)
+S32 probe passed: checks 1–2; no console errors, failed requests or HTTP errors.
+exit 0
+[261s] check 3 passed (BoM-only: no navigation bypass)
+[543s] check 4 passed (OT-only: no BoM copy or label)
+S32 probe passed: checks 3–4; no console errors, failed requests or HTTP errors.
+exit 0
+[127s] check 5 passed (layer downgrade with the codex open)
+[196s] check 6 passed (touch on phone)
+S32 probe passed: 6 checks; no console errors, failed requests or HTTP errors.
+exit 0

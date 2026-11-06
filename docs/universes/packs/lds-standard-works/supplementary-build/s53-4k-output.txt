@@ -1,0 +1,41 @@
+browser 153.0.8010.12
+[68s] lds-standard-works 3840x2160 ready in 67.4 s
+[133s] 3840 bake progress {"hidden":false,"width":"27%","view":"world"}
+[195s] 3840 bake progress {"hidden":false,"width":"29%","view":"world"}
+[260s] 3840 bake progress {"hidden":false,"width":"31%","view":"world"}
+[310s] 3840 bake progress {"hidden":false,"width":"32%","view":"world"}
+[369s] 3840 bake progress {"hidden":false,"width":"34%","view":"world"}
+[439s] 3840 bake progress {"hidden":false,"width":"36%","view":"world"}
+[493s] 3840 bake progress {"hidden":false,"width":"38%","view":"world"}
+[549s] 3840 bake progress {"hidden":false,"width":"40%","view":"world"}
+[612s] 3840 bake progress {"hidden":false,"width":"40%","view":"world"}
+[673s] 3840 bake progress {"hidden":false,"width":"42%","view":"world"}
+[734s] 3840 bake progress {"hidden":false,"width":"43%","view":"world"}
+[795s] 3840 bake progress {"hidden":false,"width":"44%","view":"world"}
+[849s] 3840 bake progress {"hidden":false,"width":"45%","view":"world"}
+[914s] 3840 bake progress {"hidden":false,"width":"46%","view":"world"}
+[977s] 3840 bake progress {"hidden":false,"width":"47%","view":"world"}
+[1032s] 3840 bake progress {"hidden":false,"width":"48%","view":"world"}
+[1097s] 3840 bake progress {"hidden":false,"width":"49%","view":"world"}
+[1152s] 3840 bake progress {"hidden":false,"width":"50%","view":"world"}
+[1214s] 3840 bake progress {"hidden":false,"width":"51%","view":"world"}
+[1269s] 3840 bake progress {"hidden":false,"width":"52%","view":"world"}
+[1332s] 3840 bake progress {"hidden":false,"width":"53%","view":"world"}
+[1393s] 3840 bake progress {"hidden":false,"width":"54%","view":"world"}
+[1451s] 3840 bake progress {"hidden":false,"width":"55%","view":"world"}
+[1512s] 3840 bake progress {"hidden":false,"width":"56%","view":"world"}
+[1573s] 3840 bake progress {"hidden":false,"width":"57%","view":"world"}
+[1635s] 3840 bake progress {"hidden":false,"width":"58%","view":"world"}
+[1690s] 3840 bake progress {"hidden":false,"width":"59%","view":"world"}
+[1756s] 3840 bake progress {"hidden":false,"width":"60%","view":"world"}
+[1811s] 3840 bake progress {"hidden":false,"width":"61%","view":"world"}
+[1876s] 3840 bake progress {"hidden":false,"width":"63%","view":"world"}
+page.waitForFunction: Target page, context or browser has been closed
+    at partA (/home/claude/lds/docs/universes/packs/lds-standard-works/supplementary-build/s53-4k-probe.mjs:120:6)
+    at async file:///home/claude/lds/docs/universes/packs/lds-standard-works/supplementary-build/s53-4k-probe.mjs:423:28 {
+  log: []
+}
+  ok 1 zero console/request/page errors
+FAILED 1: exception: page.waitForFunction: Target page, context or browser has been closed
+[1917s] done
+[run stopped by the builder at 18:19:50 UTC, ~1880 s after launch, with the bake bar at 63%; not a finished bake. See supplementary-implementation.md checkpoint 53.]

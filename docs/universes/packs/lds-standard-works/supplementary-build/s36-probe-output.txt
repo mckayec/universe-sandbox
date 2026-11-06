@@ -1,0 +1,9 @@
+# run 1 (checks 1–3 started; killed by a 10-minute tool timeout after check 2 passed)
+[93s] desktop loaded
+[419s] check 1 passed (58 views, keyboard, one-way Egypt and Mary links)
+[445s] phone loaded
+[509s] check 2 passed (phone, BoM-only: targets not navigable, no sideways scroll)
+# run 2 (FROM=3 TO=3)
+[173s] 4K loaded
+[780s] check 3 passed (4K)
+S36 probe passed: checks 3–3; no console errors, failed requests or HTTP errors.

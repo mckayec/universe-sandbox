@@ -1,0 +1,444 @@
+browser 153.0.8010.12
+[20s] 390x640 ready in 19.8 s
+  ok 1 NM: sheet collapsed by real Enter on the grab bar
+  ok 2 NM: a shown place label reached by real Tab (Jerusalem)
+    NM state ["world","earth","jerusalem",0], focus {"id":"button","label":"Jerusalem","vis":true,"ring":true}
+    NM selected label height 33 px -> fit 57 px
+    NM r1 gap 121: {"W":390,"H":610,"a":373,"b":494,"gap":121,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420.5,453.5],"other":42.7,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 3 NM r1 gap 121: rendered DOM gap is 121 px (a=373, b=494, H=610)
+  ok 4 NM r1 gap 121: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.7)
+  ok 5 NM r1 gap 121: selected place label shown and wholly inside the open strip with its ring (box [188,420.5,453.5])
+  ok 6 NM r1 gap 121: 8 shown labels all inside the window and off the chrome
+  ok 7 NM r1 gap 121: hidden labels aria-hidden / out of Tab order
+  ok 8 NM r1 gap 121: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 9 NM r1 gap 121: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 120: {"W":390,"H":609,"a":373,"b":493,"gap":120,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420,453],"other":42.63,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 10 NM r1 gap 120: rendered DOM gap is 120 px (a=373, b=493, H=609)
+  ok 11 NM r1 gap 120: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.63)
+  ok 12 NM r1 gap 120: selected place label shown and wholly inside the open strip with its ring (box [188,420,453])
+  ok 13 NM r1 gap 120: 8 shown labels all inside the window and off the chrome
+  ok 14 NM r1 gap 120: hidden labels aria-hidden / out of Tab order
+  ok 15 NM r1 gap 120: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 16 NM r1 gap 120: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 17 NM r1 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 18 NM r1 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 19 NM r1 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 20 NM r1 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 21 NM r1 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 22 NM r1 gap 119: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 23 NM r1 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 24 NM r1 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 25 NM r1 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 26 NM r1 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 27 NM r1 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 28 NM r1 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 29 NM r1 gap 58: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 30 NM r1 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 31 NM r1 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 32 NM r1 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 33 NM r1 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 34 NM r1 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 35 NM r1 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 36 NM r1 gap 57: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 37 NM r1 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,388.5,421.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 38 NM r1 gap 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 39 NM r1 gap 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 40 NM r1 gap 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 41 NM r1 gap 56: 0 shown labels all inside the window and off the chrome
+  ok 42 NM r1 gap 56: hidden labels aria-hidden / out of Tab order
+  ok 43 NM r1 gap 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 44 NM r1 gap 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 45 NM r1 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 46 NM r1 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 47 NM r1 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 48 NM r1 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 49 NM r1 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 50 NM r1 gap 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 51 NM r1 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 52 NM r1 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 53 NM r1 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 54 NM r1 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 55 NM r1 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 56 NM r1 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 57 NM r1 gap 58: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 58 NM r1 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 59 NM r1 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 60 NM r1 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 61 NM r1 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 62 NM r1 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 63 NM r1 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 64 NM r1 gap 119: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 65 NM r1 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 rotate landscape: {"W":608,"H":390,"a":341,"b":274,"gap":-67,"oy":27.3,"exp":27.3,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-112.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 66 NM r1 rotate: landscape 608x390 offset 27.3 = expected 27.3 (gap -67, fit 57)
+  ok 67 NM r1 rotate: landscape shown labels inside window, off chrome 
+  ok 68 NM r1 rotate landscape: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 69 NM r1 rotate landscape: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 rotate back to 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 70 NM r1 rotate back to 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 71 NM r1 rotate back to 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 72 NM r1 rotate back to 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 73 NM r1 rotate back to 56: 0 shown labels all inside the window and off the chrome
+  ok 74 NM r1 rotate back to 56: hidden labels aria-hidden / out of Tab order
+  ok 75 NM r1 rotate back 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 76 NM r1 rotate back 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r1 rotate back to 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 77 NM r1 rotate back to 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 78 NM r1 rotate back to 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 79 NM r1 rotate back to 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 80 NM r1 rotate back to 57: 6 shown labels all inside the window and off the chrome
+  ok 81 NM r1 rotate back to 57: hidden labels aria-hidden / out of Tab order
+  ok 82 NM r1 rotate back 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 83 NM r1 rotate back 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 84 NM r2: place label re-focused by real Tab (Jerusalem)
+    NM r2 gap 121: {"W":390,"H":610,"a":373,"b":494,"gap":121,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420.5,453.5],"other":42.7,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 85 NM r2 gap 121: rendered DOM gap is 121 px (a=373, b=494, H=610)
+  ok 86 NM r2 gap 121: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.7)
+  ok 87 NM r2 gap 121: selected place label shown and wholly inside the open strip with its ring (box [188,420.5,453.5])
+  ok 88 NM r2 gap 121: 8 shown labels all inside the window and off the chrome
+  ok 89 NM r2 gap 121: hidden labels aria-hidden / out of Tab order
+  ok 90 NM r2 gap 121: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 91 NM r2 gap 121: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 120: {"W":390,"H":609,"a":373,"b":493,"gap":120,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420,453],"other":42.63,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 92 NM r2 gap 120: rendered DOM gap is 120 px (a=373, b=493, H=609)
+  ok 93 NM r2 gap 120: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.63)
+  ok 94 NM r2 gap 120: selected place label shown and wholly inside the open strip with its ring (box [188,420,453])
+  ok 95 NM r2 gap 120: 8 shown labels all inside the window and off the chrome
+  ok 96 NM r2 gap 120: hidden labels aria-hidden / out of Tab order
+  ok 97 NM r2 gap 120: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 98 NM r2 gap 120: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 99 NM r2 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 100 NM r2 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 101 NM r2 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 102 NM r2 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 103 NM r2 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 104 NM r2 gap 119: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 105 NM r2 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 106 NM r2 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 107 NM r2 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 108 NM r2 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 109 NM r2 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 110 NM r2 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 111 NM r2 gap 58: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 112 NM r2 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 113 NM r2 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 114 NM r2 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 115 NM r2 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 116 NM r2 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 117 NM r2 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 118 NM r2 gap 57: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 119 NM r2 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,388.5,421.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 120 NM r2 gap 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 121 NM r2 gap 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 122 NM r2 gap 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 123 NM r2 gap 56: 0 shown labels all inside the window and off the chrome
+  ok 124 NM r2 gap 56: hidden labels aria-hidden / out of Tab order
+  ok 125 NM r2 gap 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 126 NM r2 gap 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 127 NM r2 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 128 NM r2 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 129 NM r2 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 130 NM r2 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 131 NM r2 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 132 NM r2 gap 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 133 NM r2 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 134 NM r2 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 135 NM r2 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 136 NM r2 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 137 NM r2 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 138 NM r2 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 139 NM r2 gap 58: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 140 NM r2 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 141 NM r2 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 142 NM r2 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 143 NM r2 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 144 NM r2 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 145 NM r2 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 146 NM r2 gap 119: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 147 NM r2 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 rotate landscape: {"W":608,"H":390,"a":341,"b":274,"gap":-67,"oy":27.3,"exp":27.3,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-112.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 148 NM r2 rotate: landscape 608x390 offset 27.3 = expected 27.3 (gap -67, fit 57)
+  ok 149 NM r2 rotate: landscape shown labels inside window, off chrome 
+  ok 150 NM r2 rotate landscape: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 151 NM r2 rotate landscape: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 rotate back to 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 152 NM r2 rotate back to 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 153 NM r2 rotate back to 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 154 NM r2 rotate back to 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 155 NM r2 rotate back to 56: 0 shown labels all inside the window and off the chrome
+  ok 156 NM r2 rotate back to 56: hidden labels aria-hidden / out of Tab order
+  ok 157 NM r2 rotate back 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 158 NM r2 rotate back 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM r2 rotate back to 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 159 NM r2 rotate back to 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 160 NM r2 rotate back to 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 161 NM r2 rotate back to 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 162 NM r2 rotate back to 57: 6 shown labels all inside the window and off the chrome
+  ok 163 NM r2 rotate back to 57: hidden labels aria-hidden / out of Tab order
+  ok 164 NM r2 rotate back 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 165 NM r2 rotate back 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    NM sheet expanded @119: {"W":390,"H":608,"a":373,"b":179.05,"gap":-193.95,"oy":42.56,"exp":42.56,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":27.98,"collapsed":false,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 166 NM: sheet expanded @119 -> gap -193.95, offset 42.56 = 42.56
+  ok 167 NM: sheet expanded @119 -> no shown label under the sheet 
+    NM sheet collapsed again @119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 168 NM sheet collapsed again @119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 169 NM sheet collapsed again @119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 170 NM sheet collapsed again @119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 171 NM sheet collapsed again @119: 8 shown labels all inside the window and off the chrome
+  ok 172 NM sheet collapsed again @119: hidden labels aria-hidden / out of Tab order
+  ok 173 NM: grab bar keeps visible focus with ring through the toggle @119 ({"id":"div#grab","label":"Show or hide details","vis":true,"ring":true})
+    NM sheet expanded @57: {"W":390,"H":546,"a":373,"b":155.48,"gap":-217.52,"oy":38.22,"exp":38.22,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,388.5,421.5],"other":8.76,"collapsed":false,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 174 NM: sheet expanded @57 -> gap -217.52, offset 38.22 = 38.22
+  ok 175 NM: sheet expanded @57 -> no shown label under the sheet 
+    NM sheet collapsed again @57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 176 NM sheet collapsed again @57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 177 NM sheet collapsed again @57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 178 NM sheet collapsed again @57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 179 NM sheet collapsed again @57: 6 shown labels all inside the window and off the chrome
+  ok 180 NM sheet collapsed again @57: hidden labels aria-hidden / out of Tab order
+  ok 181 NM: grab bar keeps visible focus with ring through the toggle @57 ({"id":"div#grab","label":"Show or hide details","vis":true,"ring":true})
+  ok 182 NM: selection/reading unchanged through the sequence
+    NM heights used: {"56":545,"57":546,"58":547,"119":608,"120":609,"121":610}; focus kind place label
+[326s] 390x640 reduced-motion ready in 20.4 s
+  ok 183 RM: sheet collapsed by real Enter on the grab bar
+  ok 184 RM: a shown place label reached by real Tab (Jerusalem)
+    RM state ["world","earth","jerusalem",0], focus {"id":"button","label":"Jerusalem","vis":true,"ring":true}
+    RM selected label height 33 px -> fit 57 px
+    RM r1 gap 121: {"W":390,"H":610,"a":373,"b":494,"gap":121,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420.5,453.5],"other":42.7,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 185 RM r1 gap 121: rendered DOM gap is 121 px (a=373, b=494, H=610)
+  ok 186 RM r1 gap 121: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.7)
+  ok 187 RM r1 gap 121: selected place label shown and wholly inside the open strip with its ring (box [188,420.5,453.5])
+  ok 188 RM r1 gap 121: 8 shown labels all inside the window and off the chrome
+  ok 189 RM r1 gap 121: hidden labels aria-hidden / out of Tab order
+  ok 190 RM r1 gap 121: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 191 RM r1 gap 121: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 gap 120: {"W":390,"H":609,"a":373,"b":493,"gap":120,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420,453],"other":42.63,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 192 RM r1 gap 120: rendered DOM gap is 120 px (a=373, b=493, H=609)
+  ok 193 RM r1 gap 120: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.63)
+  ok 194 RM r1 gap 120: selected place label shown and wholly inside the open strip with its ring (box [188,420,453])
+  ok 195 RM r1 gap 120: 8 shown labels all inside the window and off the chrome
+  ok 196 RM r1 gap 120: hidden labels aria-hidden / out of Tab order
+  ok 197 RM r1 gap 120: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 198 RM r1 gap 120: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 199 RM r1 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 200 RM r1 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 201 RM r1 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 202 RM r1 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 203 RM r1 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 204 RM r1 gap 119: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 205 RM r1 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 206 RM r1 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 207 RM r1 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 208 RM r1 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 209 RM r1 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 210 RM r1 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 211 RM r1 gap 58: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 212 RM r1 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 213 RM r1 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 214 RM r1 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 215 RM r1 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 216 RM r1 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 217 RM r1 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 218 RM r1 gap 57: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 219 RM r1 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 gap 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,388.5,421.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 220 RM r1 gap 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 221 RM r1 gap 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 222 RM r1 gap 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 223 RM r1 gap 56: 0 shown labels all inside the window and off the chrome
+  ok 224 RM r1 gap 56: hidden labels aria-hidden / out of Tab order
+  ok 225 RM r1 gap 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 226 RM r1 gap 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 227 RM r1 gap 57: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r1 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 228 RM r1 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 229 RM r1 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 230 RM r1 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 231 RM r1 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 232 RM r1 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 233 RM r1 gap 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 234 RM r1 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 235 RM r1 gap 58: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r1 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 236 RM r1 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 237 RM r1 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 238 RM r1 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 239 RM r1 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 240 RM r1 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 241 RM r1 gap 58: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 242 RM r1 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 243 RM r1 gap 119: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r1 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 244 RM r1 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 245 RM r1 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 246 RM r1 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 247 RM r1 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 248 RM r1 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 249 RM r1 gap 119: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 250 RM r1 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 rotate landscape: {"W":608,"H":390,"a":341,"b":274,"gap":-67,"oy":27.3,"exp":27.3,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-112.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 251 RM r1 rotate: landscape 608x390 offset 27.3 = expected 27.3 (gap -67, fit 57)
+  ok 252 RM r1 rotate: landscape shown labels inside window, off chrome 
+  ok 253 RM r1 rotate landscape: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 254 RM r1 rotate landscape: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 rotate back to 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 255 RM r1 rotate back to 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 256 RM r1 rotate back to 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 257 RM r1 rotate back to 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 258 RM r1 rotate back to 56: 0 shown labels all inside the window and off the chrome
+  ok 259 RM r1 rotate back to 56: hidden labels aria-hidden / out of Tab order
+  ok 260 RM r1 rotate back 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 261 RM r1 rotate back 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r1 rotate back to 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 262 RM r1 rotate back to 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 263 RM r1 rotate back to 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 264 RM r1 rotate back to 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 265 RM r1 rotate back to 57: 6 shown labels all inside the window and off the chrome
+  ok 266 RM r1 rotate back to 57: hidden labels aria-hidden / out of Tab order
+  ok 267 RM r1 rotate back 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 268 RM r1 rotate back 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 269 RM r2: place label re-focused by real Tab (Jerusalem)
+  ok 270 RM r2 gap 121: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 121: {"W":390,"H":610,"a":373,"b":494,"gap":121,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420.5,453.5],"other":42.7,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 271 RM r2 gap 121: rendered DOM gap is 121 px (a=373, b=494, H=610)
+  ok 272 RM r2 gap 121: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.7)
+  ok 273 RM r2 gap 121: selected place label shown and wholly inside the open strip with its ring (box [188,420.5,453.5])
+  ok 274 RM r2 gap 121: 8 shown labels all inside the window and off the chrome
+  ok 275 RM r2 gap 121: hidden labels aria-hidden / out of Tab order
+  ok 276 RM r2 gap 121: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 277 RM r2 gap 121: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 278 RM r2 gap 120: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 120: {"W":390,"H":609,"a":373,"b":493,"gap":120,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,420,453],"other":42.63,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 279 RM r2 gap 120: rendered DOM gap is 120 px (a=373, b=493, H=609)
+  ok 280 RM r2 gap 120: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.63)
+  ok 281 RM r2 gap 120: selected place label shown and wholly inside the open strip with its ring (box [188,420,453])
+  ok 282 RM r2 gap 120: 8 shown labels all inside the window and off the chrome
+  ok 283 RM r2 gap 120: hidden labels aria-hidden / out of Tab order
+  ok 284 RM r2 gap 120: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 285 RM r2 gap 120: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 286 RM r2 gap 119: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 287 RM r2 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 288 RM r2 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 289 RM r2 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 290 RM r2 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 291 RM r2 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 292 RM r2 gap 119: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 293 RM r2 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 294 RM r2 gap 58: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 295 RM r2 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 296 RM r2 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 297 RM r2 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 298 RM r2 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 299 RM r2 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 300 RM r2 gap 58: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 301 RM r2 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 302 RM r2 gap 57: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 303 RM r2 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 304 RM r2 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 305 RM r2 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 306 RM r2 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 307 RM r2 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 308 RM r2 gap 57: focus on an effectively visible control (button "Jerusalem", ring true)
+  ok 309 RM r2 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 310 RM r2 gap 56: reduced motion applies 38.15 within two frames (got 38.15)
+    RM r2 gap 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,388.5,421.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 311 RM r2 gap 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 312 RM r2 gap 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 313 RM r2 gap 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 314 RM r2 gap 56: 0 shown labels all inside the window and off the chrome
+  ok 315 RM r2 gap 56: hidden labels aria-hidden / out of Tab order
+  ok 316 RM r2 gap 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 317 RM r2 gap 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 318 RM r2 gap 57: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 319 RM r2 gap 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 320 RM r2 gap 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 321 RM r2 gap 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 322 RM r2 gap 57: 6 shown labels all inside the window and off the chrome
+  ok 323 RM r2 gap 57: hidden labels aria-hidden / out of Tab order
+  ok 324 RM r2 gap 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 325 RM r2 gap 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 326 RM r2 gap 58: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 58: {"W":390,"H":547,"a":373,"b":431,"gap":58,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,389,422],"other":38.29,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 327 RM r2 gap 58: rendered DOM gap is 58 px (a=373, b=431, H=547)
+  ok 328 RM r2 gap 58: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.29)
+  ok 329 RM r2 gap 58: selected place label shown and wholly inside the open strip with its ring (box [188,389,422])
+  ok 330 RM r2 gap 58: 6 shown labels all inside the window and off the chrome
+  ok 331 RM r2 gap 58: hidden labels aria-hidden / out of Tab order
+  ok 332 RM r2 gap 58: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 333 RM r2 gap 58: view/selection/reading unchanged ["world","earth","jerusalem",0]
+  ok 334 RM r2 gap 119: reduced motion applies -128.5 within two frames (got -128.5)
+    RM r2 gap 119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 335 RM r2 gap 119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 336 RM r2 gap 119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 337 RM r2 gap 119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 338 RM r2 gap 119: 8 shown labels all inside the window and off the chrome
+  ok 339 RM r2 gap 119: hidden labels aria-hidden / out of Tab order
+  ok 340 RM r2 gap 119: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 341 RM r2 gap 119: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r2 rotate landscape: {"W":608,"H":390,"a":341,"b":274,"gap":-67,"oy":27.3,"exp":27.3,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-112.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 342 RM r2 rotate: landscape 608x390 offset 27.3 = expected 27.3 (gap -67, fit 57)
+  ok 343 RM r2 rotate: landscape shown labels inside window, off chrome 
+  ok 344 RM r2 rotate landscape: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 345 RM r2 rotate landscape: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r2 rotate back to 56: {"W":390,"H":545,"a":373,"b":429,"gap":56,"oy":38.15,"exp":38.15,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":-128.5,"collapsed":true,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 346 RM r2 rotate back to 56: rendered DOM gap is 56 px (a=373, b=429, H=545)
+  ok 347 RM r2 rotate back to 56: applied camera offset 38.15 = expected 38.15 (fixed H*0.07, fit 57 from label 33 px; other rule would give -128.5)
+  ok 348 RM r2 rotate back to 56: below the fit the selected label is hidden safely (no usable strip)
+  ok 349 RM r2 rotate back to 56: 0 shown labels all inside the window and off the chrome
+  ok 350 RM r2 rotate back to 56: hidden labels aria-hidden / out of Tab order
+  ok 351 RM r2 rotate back 56: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 352 RM r2 rotate back 56: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM r2 rotate back to 57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 353 RM r2 rotate back to 57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 354 RM r2 rotate back to 57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 355 RM r2 rotate back to 57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 356 RM r2 rotate back to 57: 6 shown labels all inside the window and off the chrome
+  ok 357 RM r2 rotate back to 57: hidden labels aria-hidden / out of Tab order
+  ok 358 RM r2 rotate back 57: focus on an effectively visible control (div#grab "Show or hide details", ring true)
+  ok 359 RM r2 rotate back 57: view/selection/reading unchanged ["world","earth","jerusalem",0]
+    RM sheet expanded @119: {"W":390,"H":608,"a":373,"b":179.05,"gap":-193.95,"oy":42.56,"exp":42.56,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,419.5,452.5],"other":27.98,"collapsed":false,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 360 RM: sheet expanded @119 -> gap -193.95, offset 42.56 = 42.56
+  ok 361 RM: sheet expanded @119 -> no shown label under the sheet 
+    RM sheet collapsed again @119: {"W":390,"H":608,"a":373,"b":492,"gap":119,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,419.5,452.5],"other":42.56,"collapsed":true,"shown":8,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 362 RM sheet collapsed again @119: rendered DOM gap is 119 px (a=373, b=492, H=608)
+  ok 363 RM sheet collapsed again @119: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 42.56)
+  ok 364 RM sheet collapsed again @119: selected place label shown and wholly inside the open strip with its ring (box [188,419.5,452.5])
+  ok 365 RM sheet collapsed again @119: 8 shown labels all inside the window and off the chrome
+  ok 366 RM sheet collapsed again @119: hidden labels aria-hidden / out of Tab order
+  ok 367 RM: grab bar keeps visible focus with ring through the toggle @119 ({"id":"div#grab","label":"Show or hide details","vis":true,"ring":true})
+    RM sheet expanded @57: {"W":390,"H":546,"a":373,"b":155.48,"gap":-217.52,"oy":38.22,"exp":38.22,"labelH":33,"fit":57,"selShown":false,"selInStrip":false,"selBox":[188,388.5,421.5],"other":8.76,"collapsed":false,"shown":0,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 368 RM: sheet expanded @57 -> gap -217.52, offset 38.22 = 38.22
+  ok 369 RM: sheet expanded @57 -> no shown label under the sheet 
+    RM sheet collapsed again @57: {"W":390,"H":546,"a":373,"b":430,"gap":57,"oy":-128.5,"exp":-128.5,"labelH":33,"fit":57,"selShown":true,"selInStrip":true,"selBox":[188,388.5,421.5],"other":38.22,"collapsed":true,"shown":6,"badShown":[],"badHidden":[],"state":"[\"world\",\"earth\",\"jerusalem\",0]"}
+  ok 370 RM sheet collapsed again @57: rendered DOM gap is 57 px (a=373, b=430, H=546)
+  ok 371 RM sheet collapsed again @57: applied camera offset -128.5 = expected -128.5 (centred in open area, fit 57 from label 33 px; other rule would give 38.22)
+  ok 372 RM sheet collapsed again @57: selected place label shown and wholly inside the open strip with its ring (box [188,388.5,421.5])
+  ok 373 RM sheet collapsed again @57: 6 shown labels all inside the window and off the chrome
+  ok 374 RM sheet collapsed again @57: hidden labels aria-hidden / out of Tab order
+  ok 375 RM: grab bar keeps visible focus with ring through the toggle @57 ({"id":"div#grab","label":"Show or hide details","vis":true,"ring":true})
+  ok 376 RM: selection/reading unchanged through the sequence
+    RM heights used: {"56":545,"57":546,"58":547,"119":608,"120":609,"121":610}; focus kind place label
+  ok 377 no console/request/page errors
+
+PASS 377 passed, 0 failed (565 s)

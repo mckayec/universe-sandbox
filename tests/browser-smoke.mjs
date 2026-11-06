@@ -80,7 +80,11 @@ try {
   assert.equal(await page.locator('#navigation-help').isHidden(), true);
 
   await page.getByRole('button', { name: 'Save' }).click();
-  const savedCount = await page.locator('#count').textContent();
+  // The Gododdin sequence keeps removing bodies after the snapshot is taken, so the live #count can already be
+  // lower by the time it is read. Compare against the number the save itself reports.
+  const savedToast = await page.locator('#toast').textContent();
+  const savedCount = /Saved (\d+) objects/.exec(savedToast ?? '')?.[1];
+  assert.ok(savedCount, `save toast: ${savedToast}`);
   await page.getByRole('button', { name: 'Clear all' }).click();
   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '0');
   assert.equal(await page.locator('#info-panel').evaluate(element => element.classList.contains('empty')), true);

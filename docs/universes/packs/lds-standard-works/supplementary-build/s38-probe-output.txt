@@ -1,0 +1,10 @@
+# run (checks 1–3 in parallel, one process each, PORT 4181–4183)
+[193s] desktop loaded
+[532s] check 1 passed (76 views, keyboard, two-source comparison, one-way sermon link, unlinked John 21 view)
+S38 probe passed: checks 1–1; no console errors, failed requests or HTTP errors.
+[57s] phone loaded
+[132s] check 2 passed (phone, BoM-only: targets not navigable, no sideways scroll)
+S38 probe passed: checks 2–2; no console errors, failed requests or HTTP errors.
+[194s] 4K loaded
+[610s] check 3 passed (4K)
+S38 probe passed: checks 3–3; no console errors, failed requests or HTTP errors.

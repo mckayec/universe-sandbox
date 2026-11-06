@@ -87,6 +87,10 @@ vec3 biomeStyle(int st,vec3 c,vec3 q,vec3 p){
   return c;}
 vec3 dirFromUv(vec2 uv){float lon=(uv.x-.5)*6.28318530718;float lat=(uv.y-.5)*PI;return vec3(cos(lat)*cos(lon),sin(lat),-cos(lat)*sin(lon));}
 /* types: 0 terran 1 ocean 2 archipelago 3 desert 4 forest 5 ice 6 gas 7 city 8 barren 9 lava 10 hive 11 toxic 12 star-swamp/garden */
+/* built-in Earth mask at p. gB, when set (>=0), freezes it so the normal pass gets slopes from the
+   terrain noise only: the mask's coast step is a cliff that shaded a dark rim along every shore (BV3) */
+float gB=-1.;
+float baseAt(vec3 p){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));return texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;}
 float height(vec3 p){
   vec3 q=p*uFreq+uSeed;
   if(uType==6){return 0.;}
@@ -94,8 +98,7 @@ float height(vec3 p){
   q+=w*uWarp;
   float h=fbm(q,uOct)*.5+.5;
   h=pow(h,1.15)*1.08;
-  if(uBase>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));float b=texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;
-    h=uSea+(b-.5)*.3+(h-.5)*.12;}
+  if(uBase>.5){float b=gB>=0.?gB:baseAt(p);h=uSea+(b-.5)*.3+(h-.5)*.12;}
   if(uMapOn>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
     vec4 Hi=texture2D(tMapHi,muv);vec4 Lo=texture2D(tMapLo,muv);float ml=Hi.r;
     h=uSea+(ml-.5)*.05+Lo.r*.07*ml+(h-.5)*(.05+.1*ml);
@@ -203,6 +206,7 @@ void main(){
   /* pass 1: object-space normal + city lights */
   vec3 t1=normalize(cross(vec3(0.,1.,0.),p)+vec3(1e-4,0.,0.));vec3 t2=normalize(cross(p,t1));
   float e=uEps;
+  if(uBase>.5)gB=baseAt(p);
   float hx=height(normalize(p+t1*e)),hy=height(normalize(p+t2*e));
   float k=water?0.:uBump;
   if(uType==6)k=0.;
@@ -229,8 +233,8 @@ const PLANET_VS=`
 varying vec3 vObj;varying vec3 vNW;varying vec3 vWP;
 void main(){vObj=normalize(position);vec4 wp=modelMatrix*vec4(position,1.);vWP=wp.xyz;vNW=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*wp;}`;
 const PLANET_FS=`
-uniform sampler2D tAlb,tNrm,tCld,tMapHi;
-uniform float uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;
+uniform sampler2D tAlb,tNrm,tCld,tMapHi,tBase;
+uniform float uBase,uMapOn,uRealm,uRStyle;uniform vec3 uRC1,uRC2,uRC3;uniform vec2 uAlbN;
 uniform vec3 uSun,uSunCol,uAtmo,uLightCol,uLava,uSeed;
 uniform float uAtmoK,uCloudShift,uDetail,uAmb,uHasCld,uLavaOn,uTime,uHasSea;
 uniform vec3 uWaterCol,uLandCol;
@@ -247,6 +251,25 @@ void main(){
   vec3 alb=pow(A.rgb,vec3(2.2));
   vec3 nO=normalize(B.rgb*2.-1.);
   float wat=A.a;
+  if(uBase>.5){ /* built-in Earth: the full-size coastline mask is finer than the bake. Rebuild colour and
+     normal from the nearest bake texels on the mask's side of the shore (joint bilateral), so coasts
+     neither smear land into water nor fall back to a flat colour band (BV3) */
+    bool wb=texture2D(tBase,uv).r<.5;float ws=wb?1.:0.;
+    vec2 fp=uv*uAlbN-.5;vec2 ip=floor(fp);vec2 fr=fp-ip;
+    vec4 sa=vec4(0.),sb=vec4(0.);float sw=0.;
+    for(int k=0;k<4;k++){vec2 o=vec2(mod(float(k),2.),floor(float(k)*.5));vec2 tc=(ip+o+.5)/uAlbN;
+      vec4 a=texture2D(tAlb,tc);vec4 b=texture2D(tNrm,tc);
+      float wt=(mix(1.-fr.x,fr.x,o.x)*mix(1.-fr.y,fr.y,o.y)+1e-3)*(1.-abs(step(.5,a.a)-ws));
+      sa+=a*wt;sb+=b*wt;sw+=wt;}
+    vec4 ra=vec4(0.);float rw=0.;
+    for(int k=0;k<16;k++){float an=float(k)*.785398+(k<8?0.:.3927);vec2 tc=(ip+fr+.5+vec2(cos(an),sin(an))*(k<8?2.:5.))/uAlbN;
+      vec4 a=texture2D(tAlb,tc);float wt=(k<8?4.:1.)*(1.-abs(step(.5,a.a)-ws));ra+=a*wt;rw+=wt;}
+    float mag=1.-smoothstep(.8,1.6,max(length(dFdx(fp)),length(dFdy(fp))));
+    bool off=(A.a>=.5)!=wb;
+    if(sw>1e-4){A.rgb=mix(A.rgb,sa.rgb/sw,off?1.:mag);B=mix(B,sb/sw,mag);nO=normalize(B.rgb*2.-1.);}
+    else if(rw>.5)A.rgb=ra.rgb/rw;
+    else A.rgb=pow(wb?uWaterCol:uLandCol,vec3(1./2.2));
+    alb=pow(A.rgb,vec3(2.2));wat=ws;A.a=wat;}
   if(uDetail>.001){ /* live procedural detail: resolves past the baked 4K map as you zoom in */
     vec3 dp=d*240.+uSeed;
     float n1=snoise(dp),n2=snoise(dp*2.7+7.),n3=snoise(dp*7.3+3.),n4=snoise(dp*19.+11.);
@@ -256,6 +279,8 @@ void main(){
       if(w2>.5&&A.a<.5)alb=uWaterCol;if(w2<.5&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=w2;}
     if(uMapOn>.5){vec4 Hm=texture2D(tMapHi,uv);float lm=Hm.r+fine*.16*uDetail;bool wm=lm<.5||Hm.b>.55;
       if(wm&&A.a<.5)alb=uWaterCol;if(!wm&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=wm?1.:0.;}
+    if(uBase>.5){float lb=texture2D(tBase,uv).r+fine*.12*uDetail;bool wb=lb<.5;
+      if(wb&&A.a<.5)alb=uWaterCol;if(!wb&&A.a>=.5)alb=uLandCol*(.85+.3*n2);wat=wb?1.:0.;}
     float land=1.-wat;
     alb*=1.+fine*.22*uDetail*land;
     vec3 g=vec3(snoise(dp*3.+1.),snoise(dp*3.+5.),snoise(dp*3.+9.))*.6+vec3(snoise(dp*9.+2.),snoise(dp*9.+6.),snoise(dp*9.+10.))*.4;
@@ -432,9 +457,11 @@ function buildShell(K){
   const defs='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">'+stops.map(s=>'<stop offset="'+s[0]+'" stop-color="'+s[1]+'"/>').join("")+'</linearGradient></defs>';
   const sig=T.sigil||DEF_SIGIL,ssig=T.splashSigil||sig;const TT=M.title.toUpperCase();
   const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");
+  /* #labels follows the top bar and side panels in the DOM so keyboard focus reaches those controls before the
+     tabbable on-globe site labels. Stacking is by z-index (#labels is 3), so paint order is unchanged. */
   app.innerHTML=
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
-'<div class="vignette"></div><div id="labels"></div><div id="fade"></div>'+
+'<div class="vignette"></div><div id="fade"></div>'+
 '<header class="top"><a class="gl-home" href="'+esc(U.backHref)+'" title="Back to the Gravity Lab sandbox"><span aria-hidden="true">←</span> '+esc(U.backLabel)+'</a><div class="brand"><svg class="sigil" viewBox="0 0 48 48" aria-hidden="true">'+defs+sig+'</svg>'+
   '<div><h1 class="chrome">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
  '<div class="controls"><button class="btn" id="idxBtn" aria-expanded="false" aria-controls="index">Worlds</button>'+
@@ -445,15 +472,18 @@ function buildShell(K){
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
   (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
 '<nav id="crumbs" aria-label="Location"></nav>'+
+'<button class="btn" id="skyBtn" aria-pressed="false" title="Hide the panels to see the sky" hidden>Sky</button>'+
+'<button class="btn ctl-more" id="ctlMoreL" tabindex="-1" aria-label="Scroll the header controls back" title="Scroll the header controls back">‹</button>'+
+'<button class="btn ctl-more" id="ctlMoreR" tabindex="-1" aria-label="Show more header controls" title="More header controls">›</button>'+
 (K.raw.realms?'<div class="seg" id="realms" role="group" aria-label="Realm">'+["physical","cognitive","spiritual"].filter(r=>r==="physical"||K.raw.realms[r]).map(r=>{const R=K.raw.realms[r]||{};
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
 (K.raw.layers||K.raw.timeline?'<div id="filters"'+(K.raw.realms?' class="withrealms"':'')+'></div>':"")+
-'<aside class="panel" id="index" aria-label="Worlds"></aside><aside class="panel" id="dossier" aria-label="Details"></aside><div id="announce" class="sr-only" aria-live="polite"></div>'+
+'<aside class="panel" id="index" aria-label="Worlds"></aside><aside class="panel" id="dossier" aria-label="Details"></aside><div id="labels"></div><div id="announce" class="sr-only" aria-live="polite"></div>'+
 '<div id="navhint"></div><div id="bake" hidden>Charting surface<b><i></i></b></div><div id="tip" hidden></div>'+
 '<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><span class="hint" id="legend"></span>'+
   '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
-  '<div class="cx-tabs" id="cxTabs"></div><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
+  '<div class="cx-tabs" id="cxTabs"></div><select class="cx-pick" id="cxPick" aria-label="Codex section"></select><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
 (K.raw.tree?'<div id="tree" hidden></div>':"")+
 '<div id="splash"><div><svg width="'+(T.splashSize||78)+'" height="'+(T.splashSize||78)+'" viewBox="0 0 48 48" aria-hidden="true">'+ssig+'</svg><h1 class="chrome">'+esc(TT)+'</h1>'+
   (M.splash?'<p>'+esc(M.splash)+'</p>':"")+'<div class="ld" id="splashLd">Charting the galaxy</div></div></div>';
@@ -745,8 +775,12 @@ function setFeatures(g){const u=bakeMat.uniforms;const F0=ARR(g.feat).filter(f=>
   u.uBase.value=g.base==="earth"&&EARTH_TEX?1:0;u.tBase.value=EARTH_TEX;
   const MT=g.map?mapTextures(g.map):null;u.uMapOn.value=MT?1:0;u.tMapHi.value=MT?MT.hi:null;u.tMapLo.value=MT?MT.lo:null;u.tMapReg.value=MT?MT.reg:null;
   u.uMapMtn.value=g.map&&g.map.mtn!=null?g.map.mtn:.35;}
+/* built-in Earth (gfx.base:"earth"): a Natural Earth 1:10m land-and-lakes mask (tools/build_earth_mask.py),
+   8192x4096 on capable desktops and 4096x2048 elsewhere. The bake reads it for the surface map and the
+   planet shader reads it again up close, so coastlines stay sharp at 4K. Falls back to the small mask. */
+const EARTH_FILE=window.__EARTH_FILE||(SMALL||LOWMEM||MAXTEX<8192||(navigator.deviceMemory&&navigator.deviceMemory<8)?"earth-hi-4k.png":"earth-hi.png");
 let EARTH_TEX=null;let earthReady=null;
-function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+"earth-base.png";});return earthReady;}
+function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>{if(!im.src.endsWith("earth-base.png"))im.src=ENGINE_BASE+"earth-base.png";else res();};im.src=ENGINE_BASE+EARTH_FILE;});return earthReady;}
 if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
 /* vector maps (gfx.map): hand-laid coastlines, lakes, rivers, ranges and painted regions, given as
    [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
@@ -797,10 +831,13 @@ function makeRT(w,h,mip){const rt=new THREE.WebGLRenderTarget(w,h,{depthBuffer:f
 function renderBake(rt,y0,rows){const W=rt.width;renderer.setRenderTarget(rt);
   if(rows!=null){renderer.setScissorTest(true);rt.scissor.set(0,y0,W,rows);rt.scissorTest=true;}
   renderer.render(bakeScene,bakeCam);rt.scissorTest=false;renderer.setScissorTest(false);renderer.setRenderTarget(null);}
+/* normal-pass step. The built-in Earth's mask lifts land in one texel at a 4096 bake, so a finer step
+   turned every coast and small lake into a steep, dark-shadowed rim (BV2); 2048-texel steps keep it smooth. */
+function epsFor(g,W){return TAU/(g&&g.base==="earth"?Math.min(W,2048):W)*.6;}
 function octFor(size){return size>=4096?10:size>=2048?9:size>=1024?8:6;}
 /* bake a full set synchronously (small sizes only) */
 function bakeNow(g,key,W){const H=W/2;const set={alb:makeRT(W,H,true),nrm:makeRT(W,H,true),cld:makeRT(W,H,true),size:W};
-  setBakeU(g,key);const u=bakeMat.uniforms;u.uOct.value=octFor(W);u.uEps.value=TAU/W*.6;
+  setBakeU(g,key);const u=bakeMat.uniforms;u.uOct.value=octFor(W);u.uEps.value=epsFor(g,W);
   u.uPass.value=0;renderBake(set.alb);u.uPass.value=1;renderBake(set.nrm);u.uPass.value=2;u.uOct.value=7;renderBake(set.cld);return set;}
 /* incremental HD bake */
 const bakeJobs=[];
@@ -814,7 +851,7 @@ function bakeStep(){
   if(bakeStep.last){const ft=performance.now()-bakeStep.last;BAKE_SCALE=clamp(BAKE_SCALE*(ft>34?.7:ft<20?1.15:1),.05,2.5);}bakeStep.last=performance.now();
   const budget=(MOB?520000:1900000)*BAKE_SCALE/(job.pass===1?3.2:1);
   const rows=Math.max(8,Math.floor(budget/rt.width/8)*8);
-  u.uPass.value=job.pass;u.uOct.value=job.pass===2?8:octFor(job.W);u.uEps.value=TAU/job.W*.6;
+  u.uPass.value=job.pass;u.uOct.value=job.pass===2?8:octFor(job.W);u.uEps.value=epsFor(job.g,job.W);
   renderBake(rt,job.row,Math.min(rows,rt.height-job.row));job.row+=rows;
   const tot=job.H*2+job.H/2;const doneRows=(job.pass>0?job.H:0)+(job.pass>1?job.H:0)+Math.min(job.row,rt.height)*(job.pass===2?2:1);
   if(job.progress)job.progress(clamp(doneRows/tot,0,1));
@@ -847,11 +884,11 @@ const sunHalo=glowSprite(GLOW_W,520,.18);sunHalo.position.copy(sunSprite.positio
 const planetGroup=new THREE.Group();wsc.add(planetGroup);
 const SPHERE=new THREE.SphereGeometry(1,SMALL?160:256,SMALL?110:176);
 const SPHERE_LO=new THREE.SphereGeometry(1,96,64);
-function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
+function planetMaterial(set,g,w){const u={tAlb:{value:set.alb.texture},uAlbN:{value:new THREE.Vector2(set.alb.width,set.alb.height)},tNrm:{value:set.nrm.texture},tCld:{value:set.cld.texture},
     uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.12)},uAtmo:{value:CL(g.atmo||"#6fa8ff")},uAtmoK:{value:g.atmoK==null?1:g.atmoK},
     uLightCol:{value:CL(g.lightCol||"#ffc27a")},uLava:{value:CL(g.lava||"#ff5a1a")},uLavaOn:{value:(g.type==="lava"||g.type==="dyson")?1:0},uSeed:{value:new THREE.Vector3(hashStr(w.id)%97,3,7)},
     uCloudShift:{value:0},uDetail:{value:0},uHasSea:{value:(g.sea>0&&g.type!=="gas")?1:0},uWaterCol:{value:CL((g.pal||[])[1]||"#2a6f97")},uLandCol:{value:CL((g.pal||[])[2]||"#4b6b3a")},uAmb:{value:g.amb==null?.018:g.amb},uHasCld:{value:g.clouds?1:0},uTime:{value:0},uRot:{value:new THREE.Matrix3()},
-    tMapHi:{value:g.map?mapTextures(g.map).hi:null},uMapOn:{value:g.map?1:0},uRealm:{value:0},uRStyle:{value:0},uRC1:{value:new THREE.Color()},uRC2:{value:new THREE.Color()},uRC3:{value:new THREE.Color()}};
+    tMapHi:{value:g.map?mapTextures(g.map).hi:null},uMapOn:{value:g.map?1:0},tBase:{value:g.base==="earth"?EARTH_TEX:null},uBase:{value:g.base==="earth"&&EARTH_TEX?1:0},uRealm:{value:0},uRStyle:{value:0},uRC1:{value:new THREE.Color()},uRC2:{value:new THREE.Color()},uRC3:{value:new THREE.Color()}};
   return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:PLANET_FS,uniforms:u,extensions:{derivatives:true}});}
 function cloudMaterial(set,g,w){return new THREE.ShaderMaterial({vertexShader:PLANET_VS,fragmentShader:CLOUD_FS,transparent:true,depthWrite:false,extensions:{derivatives:true},
   uniforms:{tCld:{value:set.cld.texture},uSun:{value:SUN_DIR.clone()},uSunCol:{value:CL((w.star&&w.star.col)||"#fff4e0").multiplyScalar(1.2)},uCloudCol:{value:CL(g.cloudCol||"#ffffff")},
@@ -883,7 +920,7 @@ function buildPlanet(w,book,onProgress){
   if(w.ring){P.ring=ringMesh(w.ring);P.root.add(P.ring);}
   /* moons */
   ARR(w.moons).forEach((m,i)=>{m=m||{};const mg=Object.assign({type:"barren",pal:["#2a2a2a","#3a3836","#5a5550","#7a736a","#9a9288","#c8c2b8"],rough:.9,sea:0,atmoK:0,bump:1.6},m.gfx||{});
-    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,SMALL?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
+    const ms=bakeNow(mg,w.id+"_m"+i,256);const mm=new THREE.Mesh(SPHERE_LO,planetMaterial(ms,mg,w));const mo={};mo.job=()=>queueBake(mg,w.id+"_m"+i,SMALL?1024:2048,s=>{const u=mm.material.uniforms;u.tAlb.value=s.alb.texture;u.uAlbN.value.set(s.alb.width,s.alb.height);u.tNrm.value=s.nrm.texture;u.tCld.value=s.cld.texture;disposeSet(mo.cur);mo.cur=s;});mo.cur=ms;const r=m.size||.18;mm.scale.setScalar(r);
     const piv=new THREE.Object3D();piv.rotation.set((i%2?.25:-.18),i*2.1+.6,(i%2?-.1:.12));const d=m.dist||(2.4+i*1.1);mm.position.x=d;piv.add(mm);planetGroup.add(piv);
     P.moons.push({piv,mesh:mm,mo,speed:(m.speed||.05)/(1+i*.6),name:m.name});});
   /* sun colour */
@@ -896,7 +933,7 @@ function buildPlanet(w,book,onProgress){
   Object.keys(setCache).forEach(k=>{if(k!==key){const s=setCache[k];if(s.hd)disposeSet(s.hd);if(s.pre)disposeSet(s.pre);delete setCache[k];}});
   PL=P;applyRealmToPlanet();return P;
 }
-function applySet(P,s){P.mat.uniforms.tAlb.value=s.alb.texture;P.mat.uniforms.tNrm.value=s.nrm.texture;P.mat.uniforms.tCld.value=s.cld.texture;if(P.cmat)P.cmat.uniforms.tCld.value=s.cld.texture;}
+function applySet(P,s){P.mat.uniforms.tAlb.value=s.alb.texture;P.mat.uniforms.uAlbN.value.set(s.alb.width,s.alb.height);P.mat.uniforms.tNrm.value=s.nrm.texture;P.mat.uniforms.tCld.value=s.cld.texture;if(P.cmat)P.cmat.uniforms.tCld.value=s.cld.texture;}
 function clearPlanet(){if(!PL)return;bakeJobs.forEach(j=>{if(PL.jobs.includes(j))j.cancelled=true;});
   PL.moons.forEach(m=>{planetGroup.remove(m.piv);disposeSet(m.mo.cur);m.mesh.material.dispose();});
   planetGroup.remove(PL.root);PL.root.traverse(o=>{if(o.material&&o.material.dispose)o.material.dispose();if(o.geometry&&o.geometry!==SPHERE&&o.geometry!==SPHERE_LO)o.geometry.dispose();});PL=null;}
@@ -912,7 +949,7 @@ function updatePlanet(dt,t,spinOn){if(!PL)return;
 }
 
 /* ===================== STATE & SPOILER RULES (PACK_FORMAT 6) ===================== */
-const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null};
+const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null,route:null};
 /* layers and timeline (PACK_FORMAT 20; helpers in layers.js) */
 const LY=window.AtlasLayers||null;
 const LAY=LY?LY.normLayers(K.raw):null;
@@ -969,21 +1006,77 @@ function regionLabels(){
 regionLabels();
 const _v=new THREE.Vector3();
 function project(p,cam,W,H){_v.copy(p).project(cam);return {x:(_v.x*.5+.5)*W,y:(-_v.y*.5+.5)*H,z:_v.z};}
-function layoutGalaxyLabels(W,H){
-  const camPos=camG.position;const placed=[];
-  const order=WORLDS.slice().sort((a,b)=>(b.id===S.sel)-(a.id===S.sel)||(b.id===S.hover)-(a.id===S.hover)||(b.major?1:0)-(a.major?1:0)||camPos.distanceTo(a.pos)-camPos.distanceTo(b.pos));
-  order.forEach(w=>{const el=GL_LBL[w.id];const pr=project(w.pos,camG,W,H);const cd=camPos.distanceTo(w.pos);
-    let show=pr.z<1&&pr.x>-50&&pr.x<W+50&&pr.y>-20&&pr.y<H+20;
-    const far=groupOpt(w,"labelFar",w.major?LBL_FAR.major:LBL_FAR.minor);
-    if(cd>far&&w.id!==S.sel)show=false;if(!seen(w))show=false;
-    if(show){const bw=w.name.length*8+14,bh=20;const r={x:pr.x+8,y:pr.y-10,w:bw,h:bh};
-      if(w.id!==S.sel&&placed.some(o=>r.x<o.x+o.w&&r.x+r.w>o.x&&r.y<o.y+o.h&&r.y+r.h>o.y))show=false;else placed.push(r);}
-    el.style.opacity=show?(inBook(w)?1:K.spoil.dimLabel):0;el.style.pointerEvents=show?"auto":"none";if(el._tab!==show){el._tab=show;el.tabIndex=show?0:-1;el.setAttribute("aria-hidden",String(!show));}
-    if(show)el.style.transform="translate("+(pr.x+7)+"px,"+(pr.y-11)+"px)";
-    el.classList.toggle("sel",w.id===S.sel);});
+/* Galaxy-view world labels. On compact layouts (S51) a shown name must sit wholly inside the window and clear of the
+   phone chrome, like the surface labels: a name running off the right edge flips to the left of its point when it
+   fits there, otherwise it is hidden (the world stays selectable and listed). On every layout a focused label that is
+   hidden hands focus to a visible control (recoverLabelFocus); desktop placement is otherwise unchanged. */
+function galaxyLabelBox(el, name) {
+  if (el._ep !== labelEpoch) {
+    const w = el.offsetWidth,
+      h = el.offsetHeight;
+    if (w > 0) {
+      el._fw = w;
+      el._fh = h;
+      el._ep = labelEpoch;
+    }
+  }
+  return [el._fw || name.length * 8 + 14, el._fh || 22];
+}
+function layoutGalaxyLabels(W, H) {
+  const camPos = camG.position;
+  const placed = [];
+  const bands = chromeBands(W, H);
+  const m = LBL_RING;
+  const order = WORLDS.slice().sort(
+    (a, b) =>
+      (b.id === S.sel) - (a.id === S.sel) ||
+      (b.id === S.hover) - (a.id === S.hover) ||
+      (b.major ? 1 : 0) - (a.major ? 1 : 0) ||
+      camPos.distanceTo(a.pos) - camPos.distanceTo(b.pos),
+  );
+  order.forEach((w) => {
+    const el = GL_LBL[w.id];
+    const pr = project(w.pos, camG, W, H);
+    const cd = camPos.distanceTo(w.pos);
+    let show = pr.z < 1 && pr.x > -50 && pr.x < W + 50 && pr.y > -20 && pr.y < H + 20;
+    const far = groupOpt(w, "labelFar", w.major ? LBL_FAR.major : LBL_FAR.minor);
+    if (cd > far && w.id !== S.sel) show = false;
+    if (!seen(w)) show = false;
+    let x = pr.x + 7,
+      flip = false;
+    if (show && MOB) {
+      const [fw, fh] = galaxyLabelBox(el, w.name);
+      if (x + fw > W - m && pr.x - 7 - fw >= m) {
+        flip = true;
+        x = pr.x - 7 - fw;
+      }
+      const r = { x, y: pr.y - 11, w: fw, h: fh };
+      if (r.x < m || r.x + r.w > W - m || r.y < 0 || r.y + r.h > H || underChrome(r, bands)) show = false;
+    }
+    if (show) {
+      const bw = MOB ? el._fw || w.name.length * 8 + 14 : w.name.length * 8 + 14,
+        bh = 20;
+      const r = { x: MOB ? x : pr.x + 8, y: pr.y - 10, w: bw, h: bh };
+      if (w.id !== S.sel && placed.some((o) => r.x < o.x + o.w && r.x + r.w > o.x && r.y < o.y + o.h && r.y + r.h > o.y))
+        show = false;
+      else placed.push(r);
+    }
+    if (!show && document.activeElement === el) recoverLabelFocus({ s: { id: null }, el });
+    el.style.opacity = show ? (inBook(w) ? 1 : K.spoil.dimLabel) : 0;
+    el.style.pointerEvents = show ? "auto" : "none";
+    if (el._tab !== show) {
+      el._tab = show;
+      el.tabIndex = show ? 0 : -1;
+      el.setAttribute("aria-hidden", String(!show));
+    }
+    if (show) el.style.transform = "translate(" + x + "px," + (pr.y - 11) + "px)";
+    el.classList.toggle("sel", w.id === S.sel);
+    el.classList.toggle("flip", flip);
+  });
   REGIONS.forEach(r=>{if(r.spec&&r.spec.world&&WORLD_BY[r.spec.world])r.pos=WORLD_BY[r.spec.world].pos.clone().add(r.off);
     const pr=project(r.pos,camG,W,H);const cd=camPos.distanceTo(r.pos);const show=pr.z<1&&cd>r.minD&&cd<r.maxD&&gateOk(r.gate,S.book)&&realmOk(r.spec);
-    r.el.style.opacity=show?1:0;if(show)r.el.style.transform="translate(-50%,-50%) translate("+pr.x+"px,"+pr.y+"px)";});
+    let vis=show;if(vis&&MOB){if(r._ep!==labelEpoch||!r._w){r._w=r.el.offsetWidth;r._h=r.el.offsetHeight;r._ep=labelEpoch;}const rw=r._w,rh=r._h;vis=!underChrome({x:pr.x-rw/2,y:pr.y-rh/2,w:rw,h:rh},bands);}
+    r.el.style.opacity=vis?1:0;if(vis)r.el.style.transform="translate(-50%,-50%) translate("+pr.x+"px,"+pr.y+"px)";});
 }
 
 /* ===================== SITE MARKERS (world view) ===================== */
@@ -994,17 +1087,315 @@ function buildSiteLabels(w){SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];
     if(s.rel&&(depth||0)<8){const a=place((w.sites||[]).find(x=>x.id===s.rel.to),(depth||0)+1);lat=a[0]+(s.rel.dlat||0)*.32;lon=a[1]+(s.rel.dlon||0)*.32;}else{lat=+s.lat||0;lon=+s.lon||0;}
     if(!s.sea&&land)[lat,lon]=snapToLand(PL.mask,lat,lon);return pos[s.id]=[lat,lon];};
   (w.sites||[]).filter(siteSeen).forEach(s=>{const [lat,lon]=place(s);
-    const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';labelsEl.appendChild(el);
+    const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';el.setAttribute("aria-label",s.name);labelsEl.appendChild(el);
     el.addEventListener("click",ev=>{ev.stopPropagation();selectSite(s.id);});
-    SITE_EL.push({s,el,dir:latLonDir(lat,lon)});});}
+    SITE_EL.push({s,el,ll:[lat,lon],dir:latLonDir(lat,lon)});});
+  buildRoutes(w);}
 const _w=new THREE.Vector3(),_n=new THREE.Vector3();
-function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
-  SITE_EL.slice().sort((a,b)=>(b.s.id===S.site)-(a.s.id===S.site)).forEach(o=>{_n.copy(o.dir).applyQuaternion(PL.root.quaternion);_w.copy(_n).multiplyScalar(1.004);
-    const facing=_n.dot(camW.position.clone().sub(_w).normalize());const pr=project(_w,camW,W,H);let show=facing>.12&&pr.z<1;
-    const r={x:pr.x,y:pr.y-12,w:String(o.s.name).length*8+30,h:24};
-    if(show&&o.s.id!==S.site&&placed.some(q=>r.x<q.x+q.w&&r.x+r.w>q.x&&r.y<q.y+q.h&&r.y+r.h>q.y))show=false;if(show)placed.push(r);
-    o.el.style.opacity=show?clamp((facing-.12)*5,0,1):0;o.el.style.pointerEvents=show?"auto":"none";if(o.el._tab!==show){o.el._tab=show;o.el.tabIndex=show?0:-1;o.el.setAttribute("aria-hidden",String(!show));}
-    if(show)o.el.style.transform="translate("+(pr.x-7)+"px,"+(pr.y-13)+"px)";o.el.classList.toggle("sel",o.s.id===S.site);});
+/* Site labels: the selected site wins, then `major` sites, then pack order. A label whose text would
+   overlap one already placed collapses to its marker (still clickable), so dense regions keep every pin. */
+const sitePri = (o) => (o.s.id === S.site ? 2 : 0) + (o.s.major ? 1 : 0);
+const hit = (r, q) => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y;
+/* Compact layouts (S46-O1): the top chrome rows, an open worlds list and the bottom sheet / chronicle sit over the
+   globe edge to edge. A site label inside one of those horizontal bands would only peek out as a text fragment in the
+   gaps between controls, so it is hidden there (marker included) until the globe turns it into open view. */
+const CHROME_TOP = ["header.top", "#crumbs", "#realms", "#filters"];
+const CHROME_MID = ["#index", "#skyBtn"];
+const CHROME_BOTTOM = ["#dossier", "#chron"];
+function chromeRect(sel, W, H) {
+  const el = document.querySelector(sel);
+  if (!el || el.hidden || !el.getClientRects().length) return null;
+  const r = el.getBoundingClientRect();
+  if (r.width < 1 || r.height < 1 || r.right <= 0 || r.left >= W || r.bottom <= 0 || r.top >= H) return null;
+  return r;
+}
+/* The globe area left open on a compact layout: below the lowest top chrome row, above the sheet / chronicle. */
+function compactOpenArea(W, H) {
+  let top = 0;
+  CHROME_TOP.forEach((s) => {
+    const r = chromeRect(s, W, H);
+    if (r) top = Math.max(top, r.bottom);
+  });
+  let bottom = H;
+  CHROME_BOTTOM.forEach((s) => {
+    const r = chromeRect(s, W, H);
+    if (r) bottom = Math.min(bottom, r.top);
+  });
+  return [top, bottom];
+}
+function chromeBands(W, H) {
+  if (!MOB) return [];
+  const [top, bottom] = compactOpenArea(W, H);
+  const bands = [];
+  if (top > 0) bands.push([0, top]);
+  CHROME_MID.forEach((s) => {
+    const r = chromeRect(s, W, H);
+    if (r) bands.push([r.top, r.bottom]);
+  });
+  if (bottom < H) bands.push([bottom, H]);
+  return bands;
+}
+const underChrome = (r, bands) => bands.some(([a, b]) => r.y < b && r.y + r.h > a);
+/* Measured label boxes (S46-C2): the full name's width/height is read once from the DOM (the estimate is only a
+   fallback before layout) and re-read after a resize or web-font load, so edge and overlap decisions use real bounds. */
+let labelEpoch = 0;
+const bumpLabelEpoch = () => labelEpoch++;
+addEventListener("resize", bumpLabelEpoch);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(bumpLabelEpoch);
+function labelBox(o) {
+  if (o._ep !== labelEpoch && !o.el.classList.contains("dot")) {
+    const w = o.el.offsetWidth,
+      h = o.el.offsetHeight;
+    if (w > 0) {
+      o._fw = w;
+      o._fh = h;
+      o._ep = labelEpoch;
+    }
+  }
+  return [o._fw || String(o.s.name).length * 8 + 30, o._fh || 24];
+}
+/* Focus recovery (S46-C1): a label that is about to be hidden while it owns keyboard focus hands focus to its own
+   visible row in the place list, or failing that to the sheet's grab bar, the worlds button or the first visible
+   header control. Labels that are not
+   focused are never touched, and the selected place is left as it was. */
+function visibleControl(el) {
+  if (!el || el.disabled || el.closest("[hidden],[aria-hidden='true'],[inert]")) return false;
+  if (!el.getClientRects().length) return false;
+  if (el.checkVisibility && !el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) return false;
+  const r = el.getBoundingClientRect();
+  if (r.width < 1 || r.height < 1) return false;
+  /* S47-C1: the visible part is the box cut by the viewport and by every clipping ancestor (a scrolled dossier
+     list can leave a row "on screen" but outside its own scroll window), and ancestors must not be faded out. */
+  let L = Math.max(r.left, 0),
+    T = Math.max(r.top, 0),
+    R = Math.min(r.right, innerWidth),
+    B = Math.min(r.bottom, innerHeight),
+    op = 1;
+  for (let a = el; a && a.nodeType === 1; a = a.parentElement) {
+    const cs = getComputedStyle(a);
+    op *= parseFloat(cs.opacity);
+    if (a === el && (cs.visibility === "hidden" || cs.display === "none")) return false;
+    if (a === el || a === document.body || a === document.documentElement) continue;
+    const cx = /hidden|scroll|auto|clip/.test(cs.overflowX),
+      cy = /hidden|scroll|auto|clip/.test(cs.overflowY);
+    if (!cx && !cy) continue;
+    const c = a.getBoundingClientRect();
+    if (cx) (L = Math.max(L, c.left)), (R = Math.min(R, c.right));
+    if (cy) (T = Math.max(T, c.top)), (B = Math.min(B, c.bottom));
+  }
+  if (op <= 0.05) return false;
+  /* most of the control must be showing, not a sliver at a scroll edge */
+  if (R - L < Math.min(r.width, 24) || B - T < Math.min(r.height, 20) * 0.8) return false;
+  /* and nothing opaque may sit on top of it */
+  const hitEl = document.elementFromPoint((L + R) / 2, (T + B) / 2);
+  return !hitEl || el.contains(hitEl) || hitEl.contains(el);
+}
+function recoverLabelFocus(o) {
+  const id = o.s.id;
+  const rows = [...document.querySelectorAll("#dossier .place[data-site], #dossier .stop[data-site]")].filter(
+    (b) => b.dataset.site === id,
+  );
+  const nav = [$("#grab"), $("#idxBtn"), ...document.querySelectorAll("header.top button, header.top a[href]")];
+  const target = rows.find(visibleControl) || nav.find(visibleControl);
+  if (target) target.focus({ preventScroll: true });
+  else o.el.blur();
+}
+/* Label geometry for compact layouts (S46-C2, S47-C2), pure so it can be tested on its own. px is the pin's screen x,
+   W the window width, fw the measured full-name button width. A button starts 7 px left of its pin; its focus ring
+   reaches LBL_RING px beyond the box, so every shown box, ring included, stays inside the window:
+   - a pin too near either edge for its collapsed (pin-only) button is hidden (edgeOut);
+   - a name that would run off the right edge collapses to its pin (edgeDot), except the selected name, which flips
+     to the left of its pin when it fits there; only when neither side fits does it collapse to a selected pin,
+     whose name stays in the sheet, the aria-label and a bounded tooltip. A few px of hysteresis keep a flip steady. */
+const LBL_RING = 4;
+const LBL_DOTW = 20;
+function labelPlacement(px, W, fw, wasFlip, sel, compact) {
+  const m = LBL_RING;
+  const edgeOut = compact && (px - 7 < m || px - 7 + LBL_DOTW > W - m);
+  const runsOff = px - 7 + fw > W - m - (wasFlip ? 8 : 0);
+  const fitsLeft = px + 7 - fw >= m;
+  const flip = compact && sel && runsOff && fitsLeft;
+  const edgeDot = compact && runsOff && !flip;
+  return { edgeOut, edgeDot, flip, x0: flip ? px + 7 - fw : px - 7 };
+}
+/* The tooltip of a collapsed pin: it sits 24 px from the button on the side with more room and may not be wider
+   than that room, so a long name wraps instead of leaving the window. */
+function dotTip(px, W) {
+  const m = LBL_RING;
+  const bl = px - 7;
+  const right = W - m - (bl + 24);
+  const left = bl + LBL_DOTW - 24 - m;
+  return { left: left > right, room: Math.max(40, Math.floor(Math.max(left, right))) };
+}
+/* Compact vertical framing (S47, corrected for G55-O1): centre the view in the open globe area [a, b] between the top
+   chrome and the sheet whenever that strip can still hold the selected label with its focus ring and a margin on both
+   sides. The minimum is derived from the label's measured height (compactFit), not a fixed constant, so there is no
+   jump while usable space remains. The centring shift is clamped to +/-30 % of the height, as before. With no usable
+   strip the slight upward shift is kept, and labels under the chrome hide as before. */
+const LBL_MARGIN = 8;
+const compactFit = (labelH) => labelH + 2 * (LBL_RING + LBL_MARGIN);
+function compactOffsetY(H, a, b, fit) {
+  const need = fit == null ? compactFit(24) : fit;
+  if (b - a < need) return H * 0.07;
+  return Math.max(-H * 0.3, Math.min(H * 0.3, H / 2 - (a + b) / 2));
+}
+function selectedLabelH() {
+  const o = SITE_EL.find((q) => q.s.id === S.site);
+  return o ? labelBox(o)[1] : 24;
+}
+function layoutSiteLabels(W, H) {
+  if (!PL) return;
+  const bands = chromeBands(W, H);
+  const placed = [];
+  const order = SITE_EL.map((o, i) => [o, i]).sort((a, b) => sitePri(b[0]) - sitePri(a[0]) || a[1] - b[1]);
+  order.forEach(([o]) => {
+    _n.copy(o.dir).applyQuaternion(PL.root.quaternion);
+    _w.copy(_n).multiplyScalar(1.004);
+    const facing = _n.dot(camW.position.clone().sub(_w).normalize());
+    const pr = project(_w, camW, W, H);
+    const sel = o.s.id === S.site;
+    const [fw, fh] = labelBox(o);
+    const P = labelPlacement(pr.x, W, fw, o._flip, sel, MOB);
+    o._flip = P.flip;
+    const { edgeOut, edgeDot, flip, x0 } = P;
+    const r = { x: x0, y: pr.y - fh / 2, w: fw, h: fh };
+    const show = facing > 0.12 && pr.z < 1 && !edgeOut && !underChrome(r, bands);
+    const dot = show && (edgeDot || (!sel && placed.some((q) => hit(r, q))));
+    if (show) placed.push(dot ? { x: pr.x - 6, y: pr.y - 6, w: 12, h: 12 } : r);
+    if (!show && document.activeElement === o.el) recoverLabelFocus(o);
+    o.el.style.opacity = show ? clamp((facing - 0.12) * 5, 0, 1) : 0;
+    o.el.style.pointerEvents = show ? "auto" : "none";
+    o.el.classList.toggle("dot", dot);
+    o.el.classList.toggle("flip", flip && !dot);
+    o.el.classList.toggle("edge", dot && edgeDot);
+    if (o.el.title !== (dot ? o.s.name : "")) o.el.title = dot ? o.s.name : "";
+    if (dot) {
+      /* S47-C2: a collapsed pin's name opens on whichever side has more room, wrapped to fit inside the window */
+      const tip = dotTip(pr.x, W);
+      o.el.classList.toggle("tipl", tip.left);
+      const mw = tip.room + "px";
+      if (o.el._tipw !== mw) o.el.style.setProperty("--tipw", (o.el._tipw = mw));
+    }
+    if (o.el._tab !== show) {
+      o.el._tab = show;
+      o.el.tabIndex = show ? 0 : -1;
+      o.el.setAttribute("aria-hidden", String(!show));
+    }
+    if (show) o.el.style.transform = "translate(" + (flip && !dot ? x0 : pr.x - 7) + "px," + (pr.y - 13) + "px)";
+    o.el.classList.toggle("sel", sel);
+  });
+}
+
+/* ===================== SURFACE JOURNEYS (PACK_FORMAT 20.6) ===================== */
+/* Ordered stops on one world, drawn as dashed great-circle legs between placed sites only. */
+let ROUTE_EL = [];
+let routeSvg = null;
+const routeFirst = (r) => (r.first != null ? r.first : r.books && r.books.length ? Math.min(...r.books) : 1);
+const routeSeen = (r) => !!r && filterOk(r) && (!CUM || !S.book || routeFirst(r) <= S.book);
+function worldRoutes(w) {
+  return ARR(w && w.routes).filter((r) => r && r.id && routeSeen(r));
+}
+function routeColor(r) {
+  const id = LY ? LY.itemLayers(r)[0] : null;
+  return LAY && id && LAY.by[id] ? LAY.by[id].c : "var(--lapis-hi)";
+}
+function clearRoutes() {
+  ROUTE_EL.forEach((o) => o.el.remove());
+  ROUTE_EL = [];
+}
+function buildRoutes(w) {
+  clearRoutes();
+  if (!LY || !w || !ARR(w.routes).length) return;
+  if (!routeSvg) {
+    routeSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    routeSvg.setAttribute("class", "routes");
+    routeSvg.setAttribute("aria-hidden", "true");
+    labelsEl.prepend(routeSvg);
+  }
+  const at = {};
+  SITE_EL.forEach((o) => (at[o.s.id] = o));
+  worldRoutes(w).forEach((r) => {
+    LY.routeLegs(r, (id) => !!at[id]).forEach(([a, b]) => {
+      const A = at[a].ll;
+      const B = at[b].ll;
+      const deg = latLonDir(A[0], A[1]).angleTo(latLonDir(B[0], B[1])) / DEG;
+      const dirs = LY.greatCircle(A, B, Math.min(96, Math.ceil(deg * 2) + 4)).map((p) => latLonDir(p[0], p[1]));
+      const el = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      el.setAttribute("class", "rleg");
+      el.style.setProperty("--rc", routeColor(r));
+      routeSvg.appendChild(el);
+      ROUTE_EL.push({ r, el, dirs });
+    });
+  });
+}
+const _rp = new THREE.Vector3();
+const _rc = new THREE.Vector3();
+function layoutRoutes(W, H) {
+  if (!PL || !ROUTE_EL.length) return;
+  ROUTE_EL.forEach((o) => {
+    let d = "";
+    let pen = false;
+    o.dirs.forEach((dir) => {
+      _rp.copy(dir).applyQuaternion(PL.root.quaternion);
+      _rc.copy(camW.position).sub(_rp).normalize();
+      const front = _rp.dot(_rc) > 0.03;
+      if (!front) {
+        pen = false;
+        return;
+      }
+      const pr = project(_rp.multiplyScalar(1.003), camW, W, H);
+      d += (pen ? "L" : "M") + pr.x.toFixed(1) + " " + pr.y.toFixed(1);
+      pen = true;
+    });
+    o.el.setAttribute("d", d);
+    o.el.classList.toggle("sel", S.route === o.r.id);
+    o.el.classList.toggle("dim", !!S.route && S.route !== o.r.id);
+  });
+}
+/* the Journeys list in the details panel (world view only) */
+function routesHtml(w) {
+  if (S.view !== "world" || !LY) return "";
+  let rs = worldRoutes(w);
+  if (S.site) rs = rs.filter((r) => r.id === S.route || ARR(r.stops).some((st) => LY.stopSite(st) === S.site));
+  if (!rs.length) return "";
+  const placed = new Set(SITE_EL.map((o) => o.s.id));
+  const known = new Set((w.sites || []).map((x) => x.id));
+  let h = '<div class="rule"><span class="eyebrow">' + esc(UI.routesTitle || "Journeys") + "</span></div>";
+  h += '<p class="srcnote">' + esc(UI.routeNote || "Dashed lines join known places in the order the account gives. They are schematic, not recovered roads.") + "</p>";
+  rs.forEach((r) => {
+    const open = S.route === r.id;
+    h += '<div class="route' + (open ? " open" : "") + '" style="--rc:' + esc(routeColor(r)) + '">';
+    h += '<button class="rt" data-route="' + esc(r.id) + '" aria-expanded="' + open + '"><span class="rl"></span>' + esc(r.name || r.id);
+    h += '<span class="pc">' + bks(r.books || []) + LY.itemMeta(LAY, TL, r) + "</span></button>";
+    if (open) {
+      if (r.desc) h += '<p class="pd">' + esc(r.desc) + "</p>";
+      h += '<ol class="stops">' + ARR(r.stops).map((st) => stopHtml(w, st, placed, known)).join("") + "</ol>";
+      if (r.ref) h += '<p class="srcnote">' + esc(r.ref) + "</p>";
+    }
+    h += "</div>";
+  });
+  return h;
+}
+function stopHtml(w, st, placed, known) {
+  const id = LY.stopSite(st);
+  const nm = (id && siteName(w, id)) || (st && st.name) || id || "";
+  const note = st && typeof st === "object" && st.note ? " <i>" + esc(st.note) + "</i>" : "";
+  if (id && placed.has(id)) return '<li><button class="stop" data-site="' + esc(id) + '">' + esc(nm) + "</button>" + note + "</li>";
+  const why = id && known.has(id) ? UI.hiddenStop || "hidden by the current filter" : UI.unplacedStop || "location unknown, not drawn";
+  return '<li class="unplaced">' + esc(nm) + " <span>" + esc(why) + "</span>" + note + "</li>";
+}
+/* turn the open world so a route's first placed stop faces the viewer */
+function showRoute(id) {
+  S.route = id;
+  renderDossier();
+  const open = dos.querySelector(".route.open");
+  if (open) open.scrollIntoView({ block: "nearest" });
+  const w = WORLD_BY[S.sel];
+  const r = id && w && ARR(w.routes).find((x) => x.id === id);
+  if (!r || !PL) return;
+  const first = ARR(r.stops).map(LY.stopSite).find((sid) => SITE_EL.some((o) => o.s.id === sid));
+  const o = first && SITE_EL.find((x) => x.s.id === first);
+  if (o) turnToSite(o, Math.max(orbW.dist, 2.6));
 }
 
 /* ===================== TOOLTIP ===================== */
@@ -1022,7 +1413,10 @@ function renderIndex(){let h='<h2 class="eyebrow">'+esc(UI.indexTitle)+'</h2>';
   idx.innerHTML=h;}
 idx.addEventListener("click",e=>{const b=e.target.closest(".world");if(!b)return;if(MOB){idx.classList.remove("open");$("#idxBtn").setAttribute("aria-expanded","false");}
   if(S.view==="world")descend(b.dataset.id);else selectWorld(b.dataset.id,true);});
-$("#idxBtn").addEventListener("click",()=>{const o=idx.classList.toggle("open");$("#idxBtn").setAttribute("aria-expanded",o);});
+$("#idxBtn").addEventListener("click",()=>{
+  /* S51-C1: Worlds leaves the Sky view and opens the (gated) list, rather than reporting it open while Sky hides it */
+  if(skyOn){setSky(false);idx.classList.add("open");$("#idxBtn").setAttribute("aria-expanded","true");return;}
+  const o=idx.classList.toggle("open");$("#idxBtn").setAttribute("aria-expanded",o);});
 
 /* ===================== DOSSIER ===================== */
 const dos=$("#dossier");let dosCollapsed=MOB;
@@ -1058,6 +1452,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     else{const vis=all.filter(s=>!S.book||!s.book||s.book===S.book||(s.books||[]).includes(S.book));
       if(all.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
         all.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(vis.includes(s)?"":' style="opacity:.45"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||(s.book?[s.book]:[]))+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
+    h+=routesHtml(w);
     const evs=evFor(w.id);h+='<div class="rule"><span class="eyebrow">In the Chronicle</span></div>';
     h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+'</button>').join("")
       :'<p class="empty">'+(S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
@@ -1071,10 +1466,14 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
 function eraBlurb(w){let b=w.blurb;const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(cur>=k&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
 const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
+/* one labelled note; layer chips only when the note has its own layers */
+function noteHtml(n){const lm=LY&&(n.layers||n.layer)?' <span class="lmeta">'+LY.itemMeta(LAY,null,{layers:n.layers,layer:n.layer})+'</span>':"";
+  return '<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+lm+'</span>';}
 function placeMeta(s){return LY?LY.itemMeta(LAY,TL,s):"";}
 function siteExtra(s){let h="";if(s.modern)h+='<span class="pm">'+esc(UI.modernLabel||"Today")+': '+esc(s.modern)+'</span>';
   if(S.site===s.id&&TRV&&S.sel){const tn=TRV.nodeFor(S.sel,s.id);if(tn&&treeNodeSeen(tn))h+='<span class="tr-from" data-tree-node="'+esc(tn.id)+'">Show '+esc(tn.name)+' in the '+esc(TRV.T.title.toLowerCase())+'</span>';}
-  if(S.site===s.id){const ns=ARR(s.notes).filter(n=>n&&n.t);if(ns.length)h+='<span class="pnotes">'+ns.map(n=>'<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+'</span>').join("")+'</span>';}
+  if(S.site===s.id){const ns=LY?LY.visibleNotes(s.notes,S.layers,S.range,CUM,S.book):ARR(s.notes).filter(n=>n&&n.t);
+    if(ns.length)h+='<span class="pnotes">'+ns.map(noteHtml).join("")+'</span>';}
   return h;}
 function siteName(w,id){const s=(w.sites||[]).find(x=>x.id===id);return s?s.name:"";}
 const HOOK_API={get worldBy(){return WORLD_BY;},sol:SOL,get state(){return {book:S.book,sel:S.sel,view:S.view};},books:BOOKS,worlds:WORLDS};
@@ -1089,7 +1488,8 @@ function distText(w){
   return "About "+ly.toLocaleString()+" light-years from Sol"+(w.est?" · position estimated":"");}
 dos.addEventListener("click",e=>{const a=e.target.closest("[data-act]");if(a){const k=a.dataset.act;
     if(k==="descend")descend(S.sel);else if(k==="ascend")ascend();else if(k==="web")flyHuman();else if(k==="go")selectWorld(a.dataset.id,true);return;}
-  const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site?null:p.dataset.site);return;}
+  const rt=e.target.closest("[data-route]");if(rt){showRoute(S.route===rt.dataset.route?null:rt.dataset.route);return;}
+  const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site&&!p.classList.contains("stop")?null:p.dataset.site);return;}
   const ev=e.target.closest("[data-ev]");if(ev){openEvent(ev.dataset.ev===S.ev?null:ev.dataset.ev,false);}});
 
 /* ===================== CHRONICLE ===================== */
@@ -1103,6 +1503,116 @@ function renderChron(){let h="";BOOK_IDS.forEach(b=>{
   if(CUM&&S.book){const cur=track.querySelectorAll(".book")[BOOK_IDS.indexOf(S.book)];if(cur&&!MOB)track.scrollLeft=Math.max(0,cur.offsetLeft-40);}}
 track.addEventListener("click",e=>{const b=e.target.closest(".ev");if(b){openEvent(b.dataset.ev,true);if(MOB)closeChron();}});
 function closeChron(){if(MOB){chron.classList.add("closed");chron.classList.remove("open-c");chronH();}}
+/* Compact sky view (S50-V1). On phones the galaxy view's panels (filter rows, worlds list, sheet, chronicle) can
+   leave no open sky at all (an expanded sheet, or any landscape phone), so every world name is hidden by rule. The
+   Sky button, shown only in the compact galaxy view, hides those panels while pressed; the header (back link, book /
+   reading gate, view buttons) and the location crumbs stay, and the world names lay out in the freed sky. Selecting a
+   world, leaving the galaxy view or leaving the compact layout turns it off again; gates and filters are unchanged. */
+let skyOn = false;
+let skyAvail = null;
+function setSky(on) {
+  const avail = MOB && S.view === "galaxy";
+  skyOn = !!on && avail;
+  const app = document.getElementById("app");
+  if (app) app.classList.toggle("sky", skyOn);
+  const b = $("#skyBtn");
+  if (b) {
+    const hadFocus = document.activeElement === b;
+    b.hidden = !avail;
+    if (hadFocus && !avail) skyFocusFallback();
+    b.setAttribute("aria-pressed", String(skyOn));
+  }
+  if (skyOn) {
+    idx.classList.remove("open");
+    $("#idxBtn").setAttribute("aria-expanded", "false");
+    dosCollapsed = true;
+    dos.classList.add("collapsed");
+    closeChron();
+  }
+  skyAvail = avail;
+  bumpLabelEpoch();
+}
+/* S51-C2 / S52-C1: when leaving the compact galaxy view hides the focused Sky button, move focus to a control that
+   is effectively visible (visibleControl: on screen, not clipped by a scrolling ancestor, not faded or covered): the
+   last location crumb (then the earlier ones), Worlds, the Space button, the Codex, then any other header control.
+   A header control that is only scrolled out of its own controls row is scrolled wholly into view and checked again.
+   Nothing that is still off screen is ever focused; if no candidate is visible yet (a layout still settling), one
+   more try runs on the next frame, but only while focus is still lost. Focus that is elsewhere is left alone, and
+   selection is never changed. */
+function skyFocusCandidates() {
+  const crumbs = [...document.querySelectorAll("#crumbs a[href],#crumbs button")].reverse();
+  const head = [...document.querySelectorAll("header.top button, header.top a[href]")];
+  const all = [...crumbs, $("#idxBtn"), $("#galBtn"), $("#cxBtn"), ...head];
+  return all.filter(
+    (e, i) => e && e.id !== "skyBtn" && !e.hidden && e.getAttribute("tabindex") !== "-1" && all.indexOf(e) === i,
+  );
+}
+function revealInControls(e) {
+  const row = e.closest(".top .controls");
+  if (!row || row.scrollWidth <= row.clientWidth + 2 || !e.getClientRects().length) return false;
+  const r = e.getBoundingClientRect(),
+    c = row.getBoundingClientRect(),
+    pad = 28;
+  if (r.left < c.left + pad) row.scrollLeft -= c.left + pad - r.left;
+  else if (r.right > c.right - pad) row.scrollLeft += r.right - (c.right - pad);
+  else return false;
+  return visibleControl(e);
+}
+function skyFocusTarget() {
+  const pick = skyFocusCandidates();
+  return pick.find(visibleControl) || pick.find(revealInControls) || null;
+}
+function skyFocusFallback() {
+  const t = skyFocusTarget();
+  if (t) return t.focus({ preventScroll: true });
+  const b = $("#skyBtn");
+  if (b && document.activeElement === b) b.blur();
+  requestAnimationFrame(() => {
+    const a = document.activeElement;
+    if (a && a !== document.body && a !== b) return;
+    const t2 = skyFocusTarget();
+    if (t2) t2.focus({ preventScroll: true });
+  });
+}
+/* Landscape phones (S51 header access): the desktop header row's controls scroll inside the header. When they
+   overflow, the hidden side fades and an arrow button pages the row, so the off-screen controls are signposted and
+   reachable by touch as well as by swiping; a focused control is scrolled wholly into view. The arrows are pointer
+   aids kept out of the Tab order, since every control they reveal is itself focusable. */
+function syncCtlMore() {
+  const c = document.querySelector(".top .controls");
+  const L = $("#ctlMoreL"), R = $("#ctlMoreR");
+  if (!c || !L || !R) return;
+  const scrolls = getComputedStyle(c).overflowX === "auto" && c.scrollWidth > c.clientWidth + 2;
+  const l = scrolls && c.scrollLeft > 2;
+  const r = scrolls && c.scrollLeft < c.scrollWidth - c.clientWidth - 2;
+  c.classList.toggle("more-l", l);
+  c.classList.toggle("more-r", r);
+  L.classList.toggle("on", l);
+  R.classList.toggle("on", r);
+  if (l) document.documentElement.style.setProperty("--ctl-l", Math.max(0, c.getBoundingClientRect().left - 4) + "px");
+}
+function bindCtlMore() {
+  const c = document.querySelector(".top .controls");
+  if (!c) return;
+  const page = d => c.scrollBy({ left: d * Math.max(120, c.clientWidth * 0.7), behavior: "smooth" });
+  $("#ctlMoreL").addEventListener("click", () => page(-1));
+  $("#ctlMoreR").addEventListener("click", () => page(1));
+  c.addEventListener("scroll", syncCtlMore, { passive: true });
+  /* a control that is only partly in view is not scrolled by focus alone; bring the focused one wholly into view */
+  c.addEventListener("focusin", e => {
+    if (c.scrollWidth > c.clientWidth + 2 && e.target.scrollIntoView)
+      e.target.scrollIntoView({ block: "nearest", inline: "nearest" });
+  });
+  addEventListener("resize", syncCtlMore);
+  if (window.ResizeObserver) new ResizeObserver(syncCtlMore).observe(c);
+  syncCtlMore();
+}
+function syncSky() {
+  const avail = MOB && S.view === "galaxy";
+  if (avail !== skyAvail || (skyOn && !avail)) setSky(skyOn && avail);
+}
+$("#skyBtn").addEventListener("click", () => setSky(!skyOn));
+bindCtlMore();
 $("#chronT").addEventListener("click",()=>{if(!MOB)return;const open=chron.classList.contains("closed");chron.classList.toggle("closed",!open);chron.classList.toggle("open-c",open);if(open){dosCollapsed=true;dos.classList.add("collapsed");}chronH();});
 if(MOB)chron.classList.add("closed");
 
@@ -1118,23 +1628,89 @@ function renderLegend(){const b=S.book;let L=[];
 /* ===================== CODEX ===================== */
 let cxTab=K.codex.length?K.codex[0].id:null;
 function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books):1);}
+/* one codex entry; Track A entries also show their layer chips and dates */
+function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
+  const lm=LY&&(x.layers||x.layer||x.when!=null)?'<span class="lmeta">'+LY.itemMeta(LAY,TL,x)+'</span>':"";
+  const dk=x.key!=null?' data-key="'+esc(x.key)+'"':"";
+  return '<div class="cx-item"'+dk+'><h3 tabindex="-1">'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p>'+cxSrc(x)+cxSee(x)+'</div>';}
+/* optional source locators on a codex entry: src:[{t:"Moses 2",u:"https://…"}]; only https links are made */
+function cxSrc(x){const s=ARR(x.src).filter(r=>r&&r.t);if(!s.length)return"";
+  return '<p class="cx-src">Source: '+s.map(r=>/^https:\/\/[^\s"<>]+$/.test(String(r.u||""))?'<a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.t)+'</a>':esc(r.t)).join(" · ")+'</p>';}
+/* optional See-also links between codex entries: see:["key", {k:"key",r:"same place"}, "ev:eventId", …]
+   (PACK_FORMAT 20.5). A link opens the target's section and scrolls to it; an "ev:" link closes the codex and opens
+   that Chronicle event. `r` is an optional relation label shown before the link. A target the reader has not reached
+   yet is left out (only counted); one hidden by the layer or year filter is named but not linked. A link never
+   lowers the target's own work gate. */
+const CXK=new Map();
+K.codex.forEach(t=>t.list.forEach(x=>{if(x.key!=null&&!CXK.has(String(x.key)))CXK.set(String(x.key),{tab:t.id,x});}));
+function cxReach(x){
+  if(!LY)return CUM&&S.book&&cxFirst(x)>S.book?"locked":"ok";
+  const sp=LY.codexSplit([x],S.layers,S.range,CUM,S.book,cxFirst);
+  return sp.shown.length?"ok":sp.locked?"locked":"filtered";}
+function evReach(e){
+  if(CUM&&S.book&&e.book>S.book)return"locked";
+  return filterOk(e)&&(!S.book||CUM||e.book===S.book)?"ok":"filtered";}
+/* one See-also entry -> {kind,key,name,reach,rel} or null for an unknown key */
+function cxSeeRef(v){
+  const k=String(v&&typeof v==="object"?v.k:v);const rel=v&&typeof v==="object"&&v.r?String(v.r):"";
+  if(k.startsWith("ev:")){const e=EV_BY[k.slice(3)];return e?{kind:"ev",key:e.id,name:e.title,reach:evReach(e),rel}:null;}
+  const t=CXK.get(k);return t?{kind:"cx",key:String(t.x.key),name:t.x.name,reach:cxReach(t.x),rel}:null;}
+function cxSee(x){
+  const t=ARR(x.see).map(cxSeeRef).filter(Boolean);if(!t.length)return"";
+  let later=0;const parts=[];
+  t.forEach(r=>{const rl=r.rel?'<span class="cx-rel">'+esc(r.rel)+':</span> ':"";
+    const nm=r.kind==="ev"?"In the Chronicle: "+r.name:r.name;
+    if(r.reach==="locked")later++;
+    else if(r.reach==="filtered")parts.push('<span class="cx-ref">'+rl+'<span class="cx-off">'+esc(nm)+' (hidden by the layer or year filter)</span></span>');
+    else parts.push('<span class="cx-ref">'+rl+'<button type="button" class="cx-see" '+(r.kind==="ev"?"data-see-ev":"data-see")+'="'+esc(r.key)+'">'+esc(nm)+'</button></span>');});
+  if(!parts.length&&!later)return"";
+  const lt=later?'<span class="cx-off">'+later+' more unlock'+(later===1?"s":"")+' in later books</span>':"";
+  return '<p class="cx-also"><span>See also:</span>'+parts.concat(lt?[lt]:[]).join("")+'</p>';}
+function cxGo(key){const t=CXK.get(String(key));if(!t||cxReach(t.x)!=="ok")return;
+  cxTab=t.tab;renderCodex();
+  const el=[...$("#cxBody").querySelectorAll(".cx-item[data-key]")].find(e=>e.dataset.key===String(key));if(!el)return;
+  el.scrollIntoView({block:"start"});el.classList.add("cx-hit");setTimeout(()=>el.classList.remove("cx-hit"),1600);
+  el.querySelector("h3").focus({preventScroll:true});}
+function cxGoEvent(id){const e=EV_BY[id];if(!e||evReach(e)!=="ok")return;
+  $("#codex").hidden=true;openEvent(id,true);
+  /* the queued focus belongs to this activation only: any codex open/close, event, world, site, book or filter change
+     in the meantime bumps the generation (cancelEvFocus) and the callback does nothing. The state checks stay as a
+     second guard. */
+  const gen=++cxFocusGen;
+  setTimeout(()=>{if(gen!==cxFocusGen||!$("#codex").hidden||S.ev!==id||evReach(e)!=="ok")return;
+    const it=dos.querySelector('[data-ev="'+id+'"]');if(it)it.focus({preventScroll:true});},60);}
+let cxFocusGen=0;
+function cancelEvFocus(){cxFocusGen++;}
+$("#cxBody").addEventListener("click",e=>{const b=e.target.closest("[data-see],[data-see-ev]");if(!b)return;
+  if(b.dataset.seeEv!=null)cxGoEvent(b.dataset.seeEv);else cxGo(b.dataset.see);});
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
+  /* narrow screens show the same sections as one compact chooser instead of a wall of stacked tab buttons */
+  $("#cxPick").innerHTML=K.codex.map(t=>'<option value="'+esc(t.id)+'"'+(t.id===cxTab?" selected":"")+'>'+esc(t.t)+'</option>').join("");
   const tab=K.codex.find(t=>t.id===cxTab)||K.codex[0];
-  const list=tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=tab.list.length-list.length;
-  $("#cxBody").innerHTML=list.map(x=>{const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
-    return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}).join("")+
-    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"");
+  const sp=LY?LY.codexSplit(tab.list,S.layers,S.range,CUM,S.book,cxFirst):null;
+  const list=sp?sp.shown:tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=sp?sp.locked:tab.list.length-list.length;const flt=sp?sp.filtered:0;
+  $("#cxBody").innerHTML=list.map(cxItem).join("")+
+    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"")+
+    (flt?'<p class="cx-hid">'+flt+' entr'+(flt===1?"y is":"ies are")+' hidden by the layer or year filter.</p>':"");
   $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
-$("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
-function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
-function closeCodex(){if($("#codex").hidden)return;$("#codex").hidden=true;$("#cxBtn").focus();}
+/* RC64-O1: on wider screens, if the section buttons wrap past two rows, switch to the compact chooser. Measured with
+   the buttons shown, so it adapts to label length, section count and window size; phones always use the chooser. */
+function cxFit(){const panel=$("#codex .panel"),tabs=$("#cxTabs");if(!panel||$("#codex").hidden)return;
+  panel.classList.remove("cx-compact");if(tabs.offsetParent===null)return;
+  const rows=new Set([...tabs.querySelectorAll(".btn")].map(b=>b.offsetTop)).size;
+  if(rows>2)panel.classList.add("cx-compact");}
+addEventListener("resize",()=>{if(!$("#codex").hidden)cxFit();});
+$("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();cxFit();}});
+$("#cxPick").addEventListener("change",e=>{cxTab=e.target.value;renderCodex();$("#cxBody").scrollTop=0;});
+function openCodex(){cancelEvFocus();renderCodex();$("#codex").hidden=false;cxFit();$("#cxClose").focus();}
+function closeCodex(){if($("#codex").hidden)return;cancelEvFocus();$("#codex").hidden=true;$("#cxBtn").focus();}
 $("#cxBtn").addEventListener("click",openCodex);
 $("#cxClose").addEventListener("click",closeCodex);
 $("#codex").addEventListener("click",e=>{if(e.target.id==="codex")closeCodex();});
 /* keep Tab inside the Codex dialog while it is open */
 $("#codex").addEventListener("keydown",e=>{
   if(e.key!=="Tab")return;
-  const f=[...$("#codex").querySelectorAll("button,[href],[tabindex]:not([tabindex='-1'])")].filter(x=>!x.disabled&&x.offsetParent!==null);
+  const f=[...$("#codex").querySelectorAll("button,select,[href],[tabindex]:not([tabindex='-1'])")].filter(x=>!x.disabled&&x.offsetParent!==null);
   if(!f.length)return;const first=f[0],last=f[f.length-1];
   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
@@ -1242,7 +1818,7 @@ if($("#realms"))$("#realms").addEventListener("click",e=>{const b=e.target.close
 /* ===================== LAYERS & TIMELINE (PACK_FORMAT 20) ===================== */
 const filtersEl=$("#filters");let fDrag=false,fPend=false;
 function renderFilters(){if(!filtersEl||!LY||fDrag)return;filtersEl.innerHTML=LY.renderBar(LAY,TL,S.layers,S.range);}
-function applyFilters(){
+function applyFilters(){cancelEvFocus();
   if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];if(S.site){const st=(w.sites||[]).find(x=>x.id===S.site);if(st&&!siteSeen(st))S.site=null;}buildSiteLabels(w);}
   if(S.ev&&EV_BY[S.ev]&&!filterOk(EV_BY[S.ev]))S.ev=null;
@@ -1291,10 +1867,11 @@ dos.addEventListener("click",e=>{const t=e.target.closest("[data-tree-node]");if
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();afterRefresh();}
+function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();
+  if(!$("#codex").hidden)renderCodex();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
-function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
+function selectWorld(id,fly){if(!WORLD_BY[id])return;cancelEvFocus();if(skyOn)setSky(false);const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
 function flyGalaxy(){if(S.view==="world"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
@@ -1305,7 +1882,7 @@ function fitDist(r){const hf=2*Math.atan(Math.tan(camW.fov*DEG/2)*camW.aspect);r
 function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
   if(noSurface(w)){if(S.view==="world")ascend(()=>selectWorld(id,true));else selectWorld(id,true);return;}
   if(needRealm(w))setRealm(needRealm(w),true);
-  S.sel=id;S.site=null;if(MOB)dosCollapsed=true;
+  S.sel=id;S.site=null;S.route=null;if(MOB)dosCollapsed=true;
   /* one history entry per visit to a surface, so Back returns to the galaxy */
   if(!fromHistory&&urlReady){const st={atlasSurface:true};if(history.state&&history.state.atlasSurface)history.replaceState(st,"",urlFor({view:"world",sel:id}));else history.pushState(st,"",urlFor({view:"world",sel:id}));}
   transition(()=>{S.view="world";hideTip();syncURL();
@@ -1324,16 +1901,17 @@ function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
    Back button and this button stay in step; popstate then does the work. */
 let afterAscend=null;
 function ascend(after){if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
-function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
+function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];clearRoutes();S.route=null;$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
-function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
-  if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
-    /* turn the world so the place sits in daylight, between the sun and the viewer */
+function selectSite(id){cancelEvFocus();S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
+  if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o)turnToSite(o,Math.min(orbW.dist,2.4));}}
+/* turn the world so the place sits in daylight, between the sun and the viewer */
+function turnToSite(o,dist){S.interacted=true;
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();
     const vy=Math.atan2(V.x,V.z);const sy=Math.atan2(o.dir.x,o.dir.z);const r0=PL.root.rotation.y;PL.turn={t0:performance.now(),from:r0,to:r0+((((vy-sy)-r0+Math.PI)%TAU+TAU)%TAU-Math.PI)};
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
-    orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
-function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
+    orbW.flyTo(new THREE.Vector3(),dist,orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}
+function openEvent(id,travel){cancelEvFocus();S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
   else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
@@ -1343,7 +1921,7 @@ function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();retu
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
-$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
+$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;cancelEvFocus();S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
@@ -1383,10 +1961,52 @@ function tapAt(x,y){const now=performance.now();const dbl=now-lastTap<320;lastTa
   else if(MOB){dosCollapsed=true;dos.classList.add("collapsed");closeChron();}}
 
 /* ===================== RESIZE & LOOP ===================== */
-function viewOffset(){const W=innerWidth,H=innerHeight;let ox=0,oy=0;
-  if(!MOB&&W>900){const L=idx.getBoundingClientRect().right||0,R=dos.getBoundingClientRect().left||W;ox=W/2-(L+R)/2;ox=clamp(ox,-W*.2,W*.2);}
-  if(MOB)oy=H*.07;
-  [camG,camW].forEach(c=>{if(ox||oy)c.setViewOffset(W,H,ox,oy,W,H);else c.clearViewOffset();});}
+/* View offset. Desktop centres the view between the side panels. Compact layouts (S47) centre it in the globe area
+   left open between the top chrome and the bottom sheet, so the selected place and its neighbours sit in open view
+   instead of under the controls; with the sheet up and no open area the old slight upward shift is kept. A change
+   caused by the sheet or chrome resizing eases over a few frames (unless reduced motion), so a sheet toggle glides. */
+const VO = { ox: 0, oy: 0, tx: 0, ty: 0 };
+function applyViewOffset() {
+  const W = innerWidth,
+    H = innerHeight;
+  [camG, camW].forEach((c) => {
+    if (VO.ox || VO.oy) c.setViewOffset(W, H, VO.ox, VO.oy, W, H);
+    else c.clearViewOffset();
+  });
+}
+function viewOffset(ease) {
+  const W = innerWidth,
+    H = innerHeight;
+  let ox = 0,
+    oy = 0;
+  if (!MOB && W > 900) {
+    const L = idx.getBoundingClientRect().right || 0,
+      R = dos.getBoundingClientRect().left || W;
+    ox = clamp(W / 2 - (L + R) / 2, -W * 0.2, W * 0.2);
+  }
+  if (MOB) {
+    const [a, b] = compactOpenArea(W, H);
+    oy = compactOffsetY(H, a, b, compactFit(selectedLabelH()));
+  }
+  VO.tx = ox;
+  VO.ty = oy;
+  if (!ease || !MOB || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    VO.ox = ox;
+    VO.oy = oy;
+  }
+  applyViewOffset();
+}
+function easeViewOffset(dt) {
+  if (VO.ox === VO.tx && VO.oy === VO.ty) return;
+  const k = 1 - Math.exp(-dt * 9);
+  VO.ox += (VO.tx - VO.ox) * k;
+  VO.oy += (VO.ty - VO.oy) * k;
+  if (Math.abs(VO.tx - VO.ox) < 0.5 && Math.abs(VO.ty - VO.oy) < 0.5) {
+    VO.ox = VO.tx;
+    VO.oy = VO.ty;
+  }
+  applyViewOffset();
+}
 function chronH(){document.documentElement.style.setProperty('--ch',chron.offsetHeight+'px');}
 /* the header may wrap onto two rows: panels below it follow its real height */
 const topEl=document.querySelector(".top");
@@ -1398,7 +2018,19 @@ function hdrH(){if(!topEl)return;
     if(over||tooTall)topEl.classList.add("wrapbooks");}
   else topEl.classList.remove("wrapbooks");
   document.documentElement.style.setProperty('--hdr',Math.round(topEl.getBoundingClientRect().bottom)+'px');}
-if(typeof ResizeObserver!=="undefined"){const ro=new ResizeObserver(()=>{chronH();hdrH();viewOffset();});ro.observe(chron);if(topEl)ro.observe(topEl);}
+if (typeof ResizeObserver !== "undefined") {
+  const ro = new ResizeObserver(() => {
+    chronH();
+    hdrH();
+    viewOffset(true);
+  });
+  ro.observe(chron);
+  if (topEl) ro.observe(topEl);
+  /* compact layouts: the sheet and the filter rows bound the open globe area (S47) */
+  ro.observe(dos);
+  const flt = $("#filters");
+  if (flt) ro.observe(flt);
+}
 function resize(){
   const m=isMob();
   if(m!==MOB){MOB=m;
@@ -1411,7 +2043,21 @@ function resize(){
 addEventListener("resize",resize);resize();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{hdrH();viewOffset();});
 let last=performance.now(),T=0;
+/* During a programmatic fly or globe turn the view can cover a whole hemisphere between two frames (a slow GPU may
+   draw only one or two frames of it). Labels leaving the view would then fade out at their old screen position, over
+   the wrong region, so the fade is switched off while the camera or globe is being moved for the user. Hand drags,
+   zoom and auto-rotation keep the fade. */
+let labelJumping=false;
+function labelJump(on){if(on!==labelJumping){labelJumping=on;labelsEl.classList.toggle("jump",on);}}
+/* S28-V1: the update that finishes a fly or turn clears its flag before labels are laid out, so the flag is sampled
+   on frame entry too. Motion seen at entry or after the update keeps the fade off through that frame's layout and
+   paint; ordinary fades come back only after two quiescent frames, once labels sit at their final positions. */
+let labelJumpHold=0;
+function labelJumpFrame(atEntry,afterUpdate){if(atEntry||afterUpdate)labelJumpHold=2;else if(labelJumpHold>0)labelJumpHold--;labelJump(labelJumpHold>0);}
+function viewMoving(){return S.view==="galaxy"?!!orbG.fly:!!(PL&&PL.turn)||!!orbW.fly;}
 function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
+  const movingAtEntry=viewMoving();
+  easeViewOffset(dt);
   bakeStep();
   linkMats.forEach(m=>m.uniforms.uTime.value=T);
   const W=innerWidth,H=innerHeight;
@@ -1421,9 +2067,11 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     const sw=S.sel&&WORLD_BY[S.sel];selRing.material.opacity=sw?.95:0;if(sw)selRing.position.copy(sw.pos);
     const hw=S.hover&&WORLD_BY[S.hover];hoverRing.material.opacity=hw&&hw.id!==S.sel?.7:0;if(hw)hoverRing.position.copy(hw.pos);
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
-    layoutGalaxyLabels(W,H);
+    /* labels are projected before render; refresh the camera matrices first so they never lag the view by a frame */
+    syncSky();
+    labelJumpFrame(movingAtEntry,!!orbG.fly);orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);renderer.render(wsc,camW);}
+  else{syncSky();orbW.update(dt);updatePlanet(dt,T,!S.interacted);labelJumpFrame(movingAtEntry,viewMoving());orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
 /* ===================== URL STATE (deep links, reload, Back) =====================

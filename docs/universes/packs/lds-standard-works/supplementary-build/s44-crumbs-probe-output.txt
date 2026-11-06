@@ -1,0 +1,4 @@
+1440x900 {"crumbs":["button:Milky Way","i:›","button:Earth","i:›","button:Earth","i:›","span.here:Jerusalem"],"hereText":"Jerusalem","hereRect":[805,115,76,14],"hereColor":"rgb(228, 207, 154)","hereTransform":"uppercase","crumbsRect":[560,112,320,20],"crumbsAria":"Location","hitIsCrumbs":true,"siteLabels":[[631,437,107,33],[654,441,78,25]]}
+390x844 {"crumbs":["button:Milky Way","i:›","button:Earth","i:›","button:Earth","i:›","span.here:Jerusalem"],"hereText":"Jerusalem","hereRect":[274,254,68,13],"hereColor":"rgb(228, 207, 154)","hereTransform":"uppercase","crumbsRect":[47,251,296,19],"crumbsAria":"Location","hitIsCrumbs":true,"siteLabels":[[188,350,107,33],[211,354,78,25]]}
+PASS
+exit=0

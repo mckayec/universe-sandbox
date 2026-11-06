@@ -1,0 +1,18 @@
+browser 153.0.8010.12
+[22s] lds-standard-works 390x844 ready in 22.3 s
+  ok 1 390: Codex button reached by Tab
+  ok 2 390: Tab inside the Codex reaches the section picker (native select)
+  ok 3 390: picker visible, on screen, named, focus indicator ({"id":"select#cxPick","label":"Codex section","visible":true,"onscreen":true,"ring":true,"hidden":false,"inCodex":true,"name":true})
+    picker: {"v":"works","i":0,"n":13,"head":"Standard works","tab":null} -> ArrowDown -> {"v":"unmapped-places","i":1,"n":13,"head":"Haran","tab":null}
+  ok 4 390: ArrowDown moves the picker to the next section
+  ok 5 390: the Codex body follows the picker (change event fired)
+  ok 6 390: focus stays on the picker after a keyboard change
+  ok 7 390: End selects the last section (restoration-documents)
+  ok 8 390: Home selects the first section (works)
+  ok 9 390: Escape closes the Codex and returns focus to its button
+[108s] lds-standard-works 390x844 ready in 22.0 s
+  ok 10 390: grab bar reached by real Tab
+    grab outline {"fv":true,"style":"solid 2px offset -3px","outline":{"l":10,"t":270.734375,"r":380,"b":322.734375},"clip":{"l":9,"t":269.734375,"r":381,"b":790.734375}}
+  ok 11 390: grab bar shows a :focus-visible outline
+  ok 12 390: the grab-bar outline lies fully inside its clipping box (not cut off)
+[232s] lds-standard-works 3840x2160 ready in 61.6 s
