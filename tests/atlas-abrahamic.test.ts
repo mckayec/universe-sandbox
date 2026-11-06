@@ -56,7 +56,25 @@ function csv(file: string): Record<string, string>[] {
   return rows.map(r => Object.fromEntries(head.map((h, i) => [h, r[i] ?? ''])));
 }
 
-test('only the ten approved anchors are map pins, at their source coordinates', () => {
+// Q01 supported reference packages (build-audit/q01-coordinate-continuation-20261101.md, baseline
+// q01-anchor-dispositions.csv at bc7efce): pack id -> [lat, lon, source id]. Antioch is supported but held
+// (no built record names it); the eight unresolved packages stay reference cards.
+const Q01: Record<string, [number, number, string]> = {
+  ISP01: [21.45, 39.816667, 'TGN 7003870'],
+  ISP02: [24.5, 39.583333, 'TGN 7003869'],
+  ISP06: [32.016667, 44.383333, 'TGN 7018612'],
+  shiraz: [29.633333, 52.566667, 'TGN 7002148'],
+  baghdad: [33.35, 44.416667, 'TGN 7002482'],
+  acre: [32.923611, 35.068889, '1220-007'],
+  'chp-nicaea': [40.4266, 29.7168, '404297PNic'],
+  'chp-ephesus': [37.941389, 27.340556, '1018rev-002'],
+  'chp-chalcedon': [40.9834, 29.0258, '410290PCha'],
+  'jud-alexandria': [31.182, 29.897, '312299PAle'],
+  'jud-new-york': [40.7, -74, 'TGN 7007567'],
+  'jud-philadelphia': [39.95, -75.15, 'TGN 7014406'],
+};
+
+test('only the approved anchors are map pins, at their source coordinates', () => {
   const gaz = csv('gazetteer-evidence.csv');
   const expected: Record<string, [number, number]> = {
     jerusalem: [31.777778, 35.231667],
@@ -64,6 +82,8 @@ test('only the ten approved anchors are map pins, at their source coordinates', 
   };
   for (const g of gaz) expected[g.id] = [Number(g.latitude), Number(g.longitude)];
   assert.equal(Object.keys(expected).length, 10);
+  for (const [id, [lat, lon]] of Object.entries(Q01)) expected[id] = [lat, lon];
+  assert.equal(Object.keys(expected).length, 22);
   assert.deepEqual([...earth.sites.map((s: { id: string }) => s.id)].sort(), Object.keys(expected).sort());
   for (const s of earth.sites) {
     assert.ok(Math.abs(s.lat - expected[s.id][0]) < 1e-6, `${s.id} lat`);
@@ -77,6 +97,25 @@ test('heritage markers say they are heritage references, not event sites', () =>
       s.notes.some((n: { t: string }) => /Heritage reference/.test(n.t)),
       `${s.id} lacks the heritage note`,
     );
+});
+
+test('Q01 markers carry a reference caveat, their source id and no exact-event claim', () => {
+  for (const [id, [, , srcId]] of Object.entries(Q01)) {
+    const s = earth.sites.find((x: { id: string }) => x.id === id);
+    assert.ok(s, id);
+    const text = s.notes.map((n: { t: string }) => n.t).join(' ');
+    assert.match(text, /(Approximate|Heritage) reference/, `${id} caveat`);
+    assert.ok(text.includes('Coordinate source: ') && text.includes(srcId), `${id} source`);
+    assert.ok(s.modern.includes(srcId), `${id} label names its source`);
+  }
+  const cards = new Set(
+    pack.codex.find((t: { id: string }) => t.id === 'places').list.map((c: { id: string }) => c.id),
+  );
+  for (const id of ['ISP05', 'chp-zurich', 'chp-fayette', 'chp-azusa', 'xian', 'jud-seesen', 'jud-hamburg'])
+    assert.ok(cards.has(id) && !earth.sites.some((x: { id: string }) => x.id === id), `${id} stays a card`);
+  assert.ok(!earth.sites.some((x: { name: string }) => /Antioch|Najaf|Karbala/.test(x.name)));
+  for (const e of pack.events.filter((x: { site?: string }) => x.site && Q01[x.site]))
+    assert.ok(!('ref' in e), `${e.id} has both site and ref`);
 });
 
 test('every researched place is either a pin or a reference card without coordinates', () => {
@@ -275,8 +314,9 @@ test('Islam is its own tradition, and no school, order or tradition gets an inve
   assert.equal(nodeBy.get('ist08').when, 1094);
   for (const x of pack.events.filter((v: { id: string }) => /^ISE/.test(v.id))) {
     assert.ok(x.whenText, `${x.id} needs the source wording`);
-    assert.ok(x.site == null, `${x.id}: no coordinates in the Islam dossier`);
-    assert.ok(x.ref || x.side, `${x.id}: a reference card or a reason for no place`);
+    // Islam dossier gives no event coordinates; only Q01 city reference markers may be attached
+    assert.ok(x.site == null || Q01[x.site] != null, `${x.id}: no coordinates in the Islam dossier`);
+    assert.ok(x.site || x.ref || x.side, `${x.id}: a marker, a reference card or a reason for no place`);
   }
   const e = new Map<string, any>(pack.events.map((x: { id: string }) => [x.id, x]));
   assert.match(e.get('ISE14').whenText, /1866/);
@@ -323,7 +363,11 @@ test('every comparative record in the crosswalk is built', () => {
     if (r.entity_type === 'event') assert.ok(evById.has(id), `event ${id}`);
     else if (r.entity_type === 'region-context')
       continue; // Iran: named in XJ01's text, not a place card
-    else assert.ok(codexIds.has(id) || nodeBy.has(id) || nodeBy.has(id.toLowerCase()), `${r.entity_type} ${id}`);
+    else
+      assert.ok(
+        codexIds.has(id) || nodeBy.has(id) || nodeBy.has(id.toLowerCase()) || Q01[id] != null,
+        `${r.entity_type} ${id}`,
+      );
   }
   assert.match((tab('journeys').find(c => c.id === 'XJ01') as any).desc, /Iran/);
   assert.equal(pack.events.filter((e: { id: string }) => /^XE\d+$/.test(e.id)).length, 6);
@@ -370,8 +414,8 @@ test('encounter dates keep different kinds of evidence apart', () => {
   assert.equal(evById.get('XE06').when, 1963);
   for (const id of ['XE01', 'XE02', 'XE03', 'XE04', 'XE05', 'XE06']) {
     const x = evById.get(id);
-    assert.ok(x.site == null, `${id}: no coordinates`);
-    assert.ok(x.ref || x.side, `${id}: a card or a reason`);
+    assert.ok(x.site == null || Q01[x.site] != null, `${id}: no coordinates`);
+    assert.ok(x.site || x.ref || x.side, `${id}: a marker, a card or a reason`);
   }
   const bahai = nodeBy.get('bahai-faith');
   assert.ok(

@@ -157,7 +157,7 @@
       'XE05',
       'Bahá’u’lláh’s announcement',
       'The official Bahá’í history places Bahá’u’lláh’s announcement in Baghdad in 1863. A declared religious claim, not independently certified revelation.',
-      { when: 1863, whenText: '1863 (official Bahá’í history)', ref: 'baghdad' },
+      { when: 1863, whenText: '1863 (official Bahá’í history)', site: 'baghdad' },
     ),
     ev(
       'XE06',

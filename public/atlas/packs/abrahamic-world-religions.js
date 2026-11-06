@@ -10,8 +10,8 @@
    Builder review: research-review.md.
 
    Rules followed here (build-contract.md, gazetteer-evidence.md):
-   * Only ten places are pins: eight UNESCO heritage components (gaz-*) plus Jerusalem and Babylon from the
-     Judaism dossier. Each is a heritage reference, never the exact point of an event.
+   * Pins: eight UNESCO heritage components (gaz-*) plus Jerusalem and Babylon from the Judaism dossier, and
+     twelve Q01 reference markers (approximate city or heritage points). None is the exact point of an event.
    * Every other place is a reference card in the Codex ("Places without a map point"), never a guessed pin.
    * Card ids are the canonical ids of identity-and-edges.csv; shared cities (Jerusalem, London, Cairo) are
      one record with each tradition's association kept separately.
@@ -184,6 +184,84 @@
       ],
     },
   ];
+
+  /* ---------- Q01 reference markers (build-audit/q01-coordinate-continuation-20261101.md and the
+     q01-anchor-dispositions.csv baseline at bc7efce). Twelve of the 13 supported packages; Antioch is held
+     because no built record names it. Each keeps the place card's id, so its Chronicle entries open the marker.
+     Raw source coordinates are kept in the provenance note; decimals are conversions, not added accuracy. ---------- */
+  const APPROX =
+    'Approximate reference: a representative gazetteer point for the named place, not the exact place of an event.';
+  function src(t) {
+    return { k: 'note', t: 'Coordinate source: ' + t };
+  }
+  function refSite(id, name, lat, lon, layers, modern, desc, notes) {
+    return { id, name, lat, lon, layers, modern, desc, notes };
+  }
+
+  SITES.push(
+    refSite('ISP01', 'Mecca (Makkah)', 21.45, 39.816667, ['isl'], 'Mecca: approximate city reference (Getty TGN 7003870)', 'Muhammad’s early setting and his point of departure for Medina.', [
+      note(APPROX),
+      note('Not the Makkah province, the Kaaba, a birthplace, or an exact pilgrimage or event venue.'),
+      notSame('Mecca, California.'),
+      src('Getty TGN 7003870, N21 27 00, E039 49 00 (minute resolution).'),
+    ]),
+    refSite('ISP02', 'Medina (Madinah)', 24.5, 39.583333, ['isl'], 'Medina: approximate city reference (Getty TGN 7003869)', 'The destination of the Hijra.', [
+      note(APPROX),
+      note('Not the Prophet’s Mosque or the point where the Hijra arrived.'),
+      src('Getty TGN 7003869, N24 30 00, E39 35 00 (minute resolution).'),
+    ]),
+    refSite('ISP06', 'Kufa', 32.016667, 44.383333, ['isl'], 'Kufa: approximate gazetteer town reference (Getty TGN 7018612)', 'The setting of Zayd’s revolt.', [
+      note(APPROX),
+      note('Not the Najaf governorate or the Great Mosque, not a modern city centre, and not the place of the revolt.'),
+      src('Getty TGN 7018612, N32 01 00, E044 23 00 (minute resolution).'),
+    ]),
+    refSite('shiraz', 'Shiraz', 29.633333, 52.566667, ['enc'], 'Shiraz: approximate city reference (Getty TGN 7002148)', 'Bahá’í sources trace the faith’s origins to the Báb’s announcement here in 1844.', [
+      note(APPROX),
+      note('Not the Báb’s house or the place of the 1844 announcement.'),
+      src('Getty TGN 7002148, N29 38 00, E052 34 00 (minute resolution).'),
+    ]),
+    refSite('baghdad', 'Baghdad', 33.35, 44.416667, ['enc'], 'Baghdad: approximate city reference (Getty TGN 7002482)', 'The official Bahá’í history places Bahá’u’lláh’s announcement here in 1863.', [
+      note(APPROX),
+      note('Not the administrative region, the Rusafa heritage area, or the 1863 garden. Not Baghdad in Egypt.'),
+      notSame('ancient Babylon, which has its own marker.'),
+      src('Getty TGN 7002482, N33 21 00, E044 25 00 (minute resolution).'),
+    ]),
+    refSite('acre', 'Acre', 32.923611, 35.068889, ['enc'], 'Prison at Acre (UNESCO component 1220-007)', 'The official Bahá’í history describes exile from Iran through Baghdad to confinement at Acre, reached in 1868. No route between them is drawn.', [
+      note(HERITAGE),
+      note('This marker is the named prison component. It is not the extent of the city, the exile route, a Haifa site, or proof of any religious claim.'),
+      src('UNESCO World Heritage Centre, component 1220-007, N32 55 25, E35 4 8.'),
+    ]),
+    refSite('chp-nicaea', 'Nicaea', 40.4266, 29.7168, ['chr'], 'Nicaea / İznik: representative ancient-city point (ToposText 404297PNic)', 'The council convened by Constantine met here in 325. No building footprint is supplied.', [
+      note(APPROX),
+      note('Not Nicomedia, not Nice in France, and not a council building.'),
+      src('ToposText 404297PNic, 40.426600, 29.716800. The decimal places are the source’s formatting, not a survey accuracy.'),
+    ]),
+    refSite('chp-ephesus', 'Ephesus', 37.941389, 27.340556, ['chr'], 'Ancient City of Ephesus (UNESCO component 1018rev-002)', 'The council of 431, kept distinct from the later Chalcedonian controversy.', [
+      note(HERITAGE),
+      note('Not the venue of the 431 council, the Artemis component, or the House of Mary.'),
+      src('UNESCO World Heritage Centre, component 1018rev-002, N37 56 29, E27 20 26.'),
+    ]),
+    refSite('chp-chalcedon', 'Chalcedon', 40.9834, 29.0258, ['chr'], 'Chalcedon, ancient city near Kadıköy: representative point (ToposText 410290PCha)', 'The council of 451 and its contested reception. No boundary is assumed.', [
+      note(APPROX),
+      note('Not the venue of the 451 council.'),
+      src('ToposText 410290PCha, 40.983400, 29.025800. The decimal places are the source’s formatting, not measured building precision.'),
+    ]),
+    refSite('jud-alexandria', 'Alexandria', 31.182, 29.897, ['jud'], 'Alexandria: representative ancient and modern city point (ToposText 312299PAle)', 'Alexandria was a major setting of Greek-speaking Jewish life in the Hellenistic and Roman periods. No single migration route is supplied.', [
+      note(APPROX),
+      note('Not an exact community, teaching or patriarchal venue.'),
+      src('ToposText 312299PAle, 31.182000, 29.897000. Precision is not survey-certified.'),
+    ]),
+    refSite('jud-new-york', 'New York', 40.7, -74, ['jud'], 'New York City: approximate city reference (Getty TGN 7007567)', 'New York hosted the early classes of the Jewish Theological Seminary (1886–1887).', [
+      note(APPROX),
+      note('Not New York State, and not the seminary buildings of 1886–1887.'),
+      src('Getty TGN 7007567, N40 42 00, W74 00 00 (minute resolution).'),
+    ]),
+    refSite('jud-philadelphia', 'Philadelphia', 39.95, -75.15, ['jud'], 'Philadelphia: approximate city reference (Getty TGN 7014406)', 'The Reconstructionist Rabbinical College opened here in 1968.', [
+      note(APPROX),
+      note('Not Independence Hall, Philadelphia County, or the college’s 1968 building.'),
+      src('Getty TGN 7014406, N39 57 00, W075 09 00 (minute resolution).'),
+    ]),
+  );
   SITES.forEach((s) => (s.books = [1]));
 
   /* ---------- reference-only places (codex tab "places"; PACK_FORMAT §13.1) ---------- */
@@ -209,12 +287,9 @@
     place('jud-egypt', 'Egypt', 'Regional reference', ['jud'], 'Egypt appears in two distinct narrative contexts, whose chronologies are kept apart.', null, 'Cairo: a country or region is not a city.'),
     place('jud-sinai', 'Sinai', 'Narrative setting', ['jud'], 'Exodus 19 describes Israel’s camp and covenant response at Sinai. No coordinate, and no BCE date, is given.'),
     place('jud-rephidim', 'Rephidim', 'Narrative setting', ['jud'], 'Exodus 19 names Rephidim as the departure point immediately before the Sinai camp.'),
-    place('jud-alexandria', 'Alexandria', 'Diaspora city', ['jud'], 'Alexandria was a major setting of Greek-speaking Jewish life in the Hellenistic and Roman periods. No single migration route is supplied.'),
     place('jud-land-israel', 'Land of Israel', 'Historical regional label', ['jud'], 'Sources locate Palestinian rabbinic literature and an important medieval Karaite centre in this region. The term is used without a modern boundary.', null, 'Jerusalem, and not a sovereign boundary.'),
     place('jud-seesen', 'Seesen', 'City', ['jud'], 'Israel Jacobson’s temple inauguration in Seesen (1810) is an early Reform milestone.'),
     place('jud-hamburg', 'Hamburg', 'City', ['jud'], 'The Hamburg Temple (1818) was another important early Reform institution.'),
-    place('jud-new-york', 'New York', 'City', ['jud'], 'New York hosted the early classes of the Jewish Theological Seminary (1886–1887).'),
-    place('jud-philadelphia', 'Philadelphia', 'City', ['jud'], 'The Reconstructionist Rabbinical College opened here in 1968.'),
     place('jud-detroit-region', 'Suburban Detroit', 'Region', ['jud'], 'Sherwin Wine and the Birmingham Temple helped develop congregational Humanistic Judaism here in the 1960s.'),
     {
       id: 'london',
@@ -226,10 +301,7 @@
     },
 
     /* Christianity (christianity-research.md §3 and "Additional places") */
-    place('chp-nicaea', 'Nicaea', 'Council city', ['chr'], 'The council convened by Constantine met here in 325. No building footprint is supplied.'),
     place('chp-constantinople', 'Constantinople', 'Historical city', ['chr'], 'The council of 381 and the Rome–Constantinople censures of 1054. Istanbul is the name used for the 1965 ceremony.', 'Istanbul: Sultanahmet'),
-    place('chp-ephesus', 'Ephesus', 'Council city', ['chr'], 'The council of 431, kept distinct from the later Chalcedonian controversy.'),
-    place('chp-chalcedon', 'Chalcedon', 'Council reference', ['chr'], 'The council of 451 and its contested reception. No boundary or modern alias is assumed.'),
     place('chp-rome', 'Rome', 'City', ['chr'], 'The central episcopal reference of the Catholic communion; the 1965 joint declaration was read in Rome.', 'Rome: historic centre'),
     place('chp-wittenberg', 'Wittenberg', 'City', ['chr'], 'Luther’s public opposition to the sale of indulgences, 1517.', 'Wittenberg: Luther Hall'),
     place('chp-zurich', 'Zurich', 'City', ['chr'], 'The Swiss believers’ baptism episode of 1525, a symbolic beginning of Anabaptism.'),
@@ -254,11 +326,8 @@
     place('chp-lexington', 'Lexington, Kentucky', 'City', ['chr'], 'The setting of the Stone–Campbell union of 31 December 1831 and 1 January 1832.'),
 
     /* Islam (islam-research.md §3 and added place keys) */
-    place('ISP01', 'Mecca (Makkah)', 'City', ['isl'], 'Muhammad’s early setting and his point of departure for Medina.'),
-    place('ISP02', 'Medina (Madinah)', 'City', ['isl'], 'The destination of the Hijra.'),
     place('ISP03', 'Hira', 'Mountain setting near Mecca', ['isl'], 'The setting of the first-revelation tradition. No cave coordinate is supplied.'),
     place('ISP05', 'Karbala', 'Battlefield and city, Iraq', ['isl'], 'Associated with the remembrance of Husayn.'),
-    place('ISP06', 'Kufa', 'City', ['isl'], 'The setting of Zayd’s revolt.'),
     place('ISP07', 'Northern Yemen', 'Region', ['isl'], 'The setting of the Zaydi imamate. No equivalence to modern political control is implied.'),
     place('ISP08', 'Ifriqiya', 'Historical region', ['isl'], 'Where the Fatimid state was established. Not a modern national boundary.'),
     place('ISP10', 'Oman', 'Region', ['isl'], 'A setting of Ibadi presence.'),
@@ -277,9 +346,6 @@
     place('lahore', 'Lahore', 'City', ['enc', 'isl'], 'A biographical and intellectual setting of Dara Shikoh’s comparison of Hindu thought and Islamic Sufism. Not every part of the translation work happened at one place.'),
     place('talwandi', 'Talwandi', 'Town', ['enc'], 'A sourced setting in the life of Guru Nanak (1469–1539). No precise birthplace coordinate is given.'),
     place('sultanpur', 'Sultanpur', 'Town', ['enc'], 'A sourced setting in the life of Guru Nanak. Not merged with other places of the same name.'),
-    place('shiraz', 'Shiraz', 'City', ['enc'], 'Bahá’í sources trace the faith’s origins to the Báb’s announcement here in 1844.'),
-    place('baghdad', 'Baghdad', 'City', ['enc'], 'The official Bahá’í history places Bahá’u’lláh’s announcement here in 1863.', null, 'ancient Babylon.'),
-    place('acre', 'Acre', 'City', ['enc'], 'The official Bahá’í history describes exile from Iran through Baghdad to confinement at Acre, reached in 1868. No route between them is drawn.'),
   ];
 
   /* ---------- tradition data parts (packs/abrahamic-world-religions/*.js) ---------- */
@@ -310,11 +376,12 @@
       notice:
         'Independent educational atlas. Religious self-descriptions, historical interpretations and demographic estimates are identified by source. Connections do not imply agreement, biological ancestry or institutional authority.',
       srcnote:
-        'Map markers are ten heritage references (UNESCO World Heritage Centre geographical data, accessed 26 October 2026). Other places are listed without coordinates rather than guessed.',
-      canvasLabel: 'Globe of Earth with heritage reference markers for religious history',
+        'Map markers are ten heritage references (UNESCO World Heritage Centre geographical data, accessed 26 October 2026) and twelve approximate reference points (Getty TGN, ToposText and UNESCO, opened 30 October and 1 November 2026). Other places are listed without coordinates rather than guessed.',
+      canvasLabel: 'Globe of Earth with heritage and approximate reference markers for religious history',
       sources: [
         'docs/universes/packs/abrahamic-world-religions/ (research acceptance f7b74e7)',
         'UNESCO World Heritage Centre geographical data: lists 91, 356, 783, 89, 188, 173, 496, 1433, and the Jerusalem and Babylon properties',
+        'Getty Thesaurus of Geographic Names and ToposText place records, and UNESCO components 1018rev-002 and 1220-007, for the twelve approximate reference markers',
         'Pew Research Center, How the Global Religious Landscape Changed From 2010 to 2020 (9 June 2025), with its methodology and Muslim population reports',
       ],
     },
@@ -363,12 +430,12 @@
       noteLabels: { christianity: 'Christianity', islam: 'Islam', judaism: 'Judaism', self: 'Self-description' },
       refPlacesTitle: 'Places without a map point',
       refPlacesNote:
-        'Most places in this atlas have no sourced coordinates yet. They are listed as reference cards instead of guessed pins.',
+        'Many places in this atlas have no sourced coordinates yet. They are listed as reference cards instead of guessed pins.',
     },
     intro: {
-      text: 'Explore how religious communities developed, divided, interacted and spread, with traditions and historical evidence clearly distinguished. Map markers are heritage references, not exact event sites. Layers are filters, not population categories: one person or community can belong to more than one.',
+      text: 'Explore how religious communities developed, divided, interacted and spread, with traditions and historical evidence clearly distinguished. Map markers are heritage or approximate references, not exact event sites. Layers are filters, not population categories: one person or community can belong to more than one.',
       legend: [
-        ['Markers', 'Ten heritage references (UNESCO), not exact event sites'],
+        ['Markers', 'Heritage and approximate city references, not exact event sites'],
         ['Codex', 'Places without a map point, as reference cards'],
         ['Layers', 'Judaism, Christianity, Islam and Encounters: filters that may overlap'],
         ['Estimates', '2020 population estimates (Pew, 2025): dated, rounded, never summed'],
@@ -385,8 +452,8 @@
         books: [1],
         major: true,
         map: [0, 27.14],
-        status: 'Ten heritage references',
-        blurb: 'Ten heritage reference markers. Every other place in the research is a reference card without coordinates.',
+        status: '22 reference markers',
+        blurb: 'Ten heritage markers and twelve approximate city or site references. Every other place in the research is a reference card without coordinates.',
         refPlaces: 'places',
         hero: 'jerusalem',
         gfx: { type: 'terran', base: 'earth', sea: 0.5, clouds: 0.25 },
