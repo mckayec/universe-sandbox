@@ -1,6 +1,6 @@
 # Final audit checkpoint — Abrahamic world religions
 
-> Current checkpoint: Q01 round-3 return review at `9e3ce7ed4219d5f3004020de6b6339950bba502f`; see the final appended section. Earlier sections retain their original revision and counts.
+> Current checkpoint: round-4 recheck at `d4185ed6f15d47e9e268a87fbd59f818237ffc9e`; see the final appended section. Earlier sections retain their original revision and counts.
 
 2026-11-06 · ChatGPT · PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, reviewed implementation **`ee700d153e91d854e583eb867dd40d0cc21ecfec`**, parent `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`.
 
@@ -242,3 +242,29 @@ The finite next unit is metadata correction plus the same-head technical/rendere
 Independently inspected [Actions build job 127803591530](https://github.com/mckayec/universe-sandbox/actions/runs/42191268189/job/127803591530) and its logs for this exact head: successful job, **119/119 unit tests**, **24/24 page/viewport checks**, deployment skipped. The page matrix still omits `?pack=abrahamic-world-religions`; those passes do not establish rendering of this atlas. Claude’s 1440/390 Chromium/SwiftShader captures in fixing-round3.md remain builder evidence. No independent rendered, physical-device, 4K or performance acceptance was performed here. Separate Deep Research was not invoked.
 
 **Canon: not approved for final acceptance.** The three-marker unit and five temporary holds are accepted at **9e3ce7ed4219d5f3004020de6b6339950bba502f**. Remaining work: Q01-R3-L1’s two metadata strings; explicit final scope disposition for held features; same-head technical/rendered sign-off; Mckay’s release approval. Return **fixing / claude** to complete these together, not another open-ended research cycle. No code edit, PR approval, merge or deployment by ChatGPT.
+
+
+## 2026-11-06 — Round-4 metadata and page-matrix recheck
+
+**Exact audited head:** PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, **d4185ed6f15d47e9e268a87fbd59f818237ffc9e**, parent **9e3ce7ed4219d5f3004020de6b6339950bba502f**.
+
+**Q01-R3-L1 closed (1/1 finding; 2/2 exact replacement strings). Zero new pack-content findings.** Inspected the complete three-file parent-to-head diff and fetched all three actual files at the head: assembler, targeted test, and standalone-page matrix. Independently verified 3/3 fetched Git blob hashes. The only data changes are `meta.srcnote` and `meta.sources[2]`, verbatim as requested. Evaluated-parent comparison confirms every other pack value is identical, including **313/313 inventory records** (109 nodes, 27 links, 60 events, 25 sites, 92 codex cards). Raw coordinate notes, five held cards and all attribution/layer fields are unchanged.
+
+### Independent checks and evidence boundaries
+
+- Executed `node --test q01-r4/tests/atlas-abrahamic.test.ts`: **26/26 pass**, including the new count/source-note regression. The isolated fixture uses the three freshly fetched head files and unchanged dependencies from the previously verified exact-parent fixture. No production source was edited.
+- Inspected [CI job 127830894206](https://github.com/mckayec/universe-sandbox/actions/runs/42199472611/job/127830894206) and its logs: **120/120 unit tests**, **26/26 page/viewport checks**, including **2/2 Abrahamic desktop/mobile cases**. The earlier page-matrix omission is closed.
+- CI actually checked out synthetic merge **2509bb0b9184c5eec54e0bc157de9ec757090219**. Inspected its delta from the audited head: documentation/coordination changes plus root `bom-geography-map.html` and `bom-real-map.html`; no atlas runtime/data or test-file difference. Accordingly these are CI results for that tested merge, with the relevant atlas code identical, not a claim that the entire repository tree was identical. Deployment skipped.
+- CI does not establish that `test:browser` passes. Claude reports a simulator-Load timeout; the successful page suite is a different test. Do not interpret fixing-round4.md's “CI is the reference for this script” as a passed simulator smoke run.
+- Claude's four-size SwiftShader captures and R4-T1/R4-T2/R4-T3 observations remain builder evidence. No new independent screenshot, finished-surface, physical-device, GPU or performance acceptance was performed. TA-01/R4-T1 land-mask remediation and R4-T2 phone/chrome checks remain Claude's work. A four-second capture with “Charting surface” still visible cannot certify a finished surface; recapture after baking finishes.
+- The prior 20/20 source sample and full bounded conformity review are preserved evidence for unchanged historical assertions, not 20 fresh source openings in this metadata-only return. No separate Deep Research invocation or new historical-source research is claimed.
+
+### Scope disposition and next owner
+
+The five unresolved Q01 packages retain their accepted temporary evidence holds; **16/21 supported, 15 built, Antioch supported but held, 5/21 unresolved**. No additional research or removal is requested here.
+
+D02 is a real, still-unanswered scope question. Clarified its wording in [DECISIONS.md](../../DECISIONS.md) without answering it: there are **five existing nonspatial cards plus deferred Najaf**, not six existing cards. Antioch is supported but held, so “only exact points are missing” was not an accurate blanket explanation. Future pins are new spatial assertions and still require source/feature-identity review; this decision must not preapprove them. The recommendation to accept the bounded scope is not Mckay's answer or release consent.
+
+**Canon: not approved for final acceptance pending D02's scope disposition.** All returned pack corrections are now accepted at **d4185ed6f15d47e9e268a87fbd59f818237ffc9e**; no further copy fix is requested. Technical approval and Mckay release approval remain separate gates. Return **fixing / claude** for the concrete TA-01/R4-T1 and R4-T2 technical unit while D02 is pending; this is not an item that only Mckay can currently move. After technical work is complete, route to Mckay if D02 is still the sole outstanding action. Do not repeat the accepted metadata or reopen broad coordinate research.
+
+Run inspected **24/24 status files** (18 universe, six review); one ChatGPT-owned item, zero research-ready self-audit candidates. No agreement changes, site edits, PR approval, merge or deployment.
