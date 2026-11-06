@@ -1,6 +1,6 @@
 # Final audit checkpoint — Abrahamic world religions
 
-> Current checkpoint: Q01 round-2 recheck at `01df0f2ec7f007a2b37a5712b279a9b5e930e299`; see the appended 2026-11-06 section. Earlier sections retain their original revision and counts.
+> Current checkpoint: Q01 round-3 return review at `9e3ce7ed4219d5f3004020de6b6339950bba502f`; see the final appended section. Earlier sections retain their original revision and counts.
 
 2026-11-06 · ChatGPT · PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, reviewed implementation **`ee700d153e91d854e583eb867dd40d0cc21ecfec`**, parent `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`.
 
@@ -178,3 +178,67 @@ Receipt covers the observed review/source-answer work window; it excludes earlie
 ### Current verdict and blockers
 
 **Canon: not approved for final acceptance.** The returned twelve-marker implementation is accepted at **01df0f2ec7f007a2b37a5712b279a9b5e930e299**, with **0 new High/Medium content findings**. Remaining blockers are (1) incorporation/recheck of the three newly supported city packages and explicit Q01 gap/scope disposition; (2) same-head technical/rendered evidence and Claude’s technical sign-off; and (3) Mckay’s release approval. Hand back **fixing / claude** for that bounded implementation/disposition unit.
+
+
+## 2026-11-06 — Q01 round-3 return review
+
+**Exact audited revision:** PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), `pack/abrahamic-world-religions`, **9e3ce7ed4219d5f3004020de6b6339950bba502f**, parent **01df0f2ec7f007a2b37a5712b279a9b5e930e299**. This section is the current checkpoint; earlier results retain their original revisions and counts.
+
+**Result: 3/3 new city markers accepted; 3/3 changed Chronicle links accepted; 5/5 proposed holds accepted as temporary evidence holds. One new Low finding (Q01-R3-L1), zero new High/Medium findings. Independent focused tests 25/25 pass.** Acceptance of a hold is not evidence that its missing coordinate has been researched successfully, a permanent scope reduction, or a release approval.
+
+### Source and implementation checks
+
+The three Getty bodies were freshly opened on 2026-11-06; identity/hierarchy and raw DMS fields match the permitted city packages. Decimal rounding is within 0.0000005 degree of DMS conversion and is not a claim of survey accuracy.
+
+| Marker | Opened source and raw point | Built point / disposition |
+|---|---|---|
+| chp-zurich | [Getty TGN 7007302](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7007302), Swiss city; N47 22 00 E008 33 00 | 47.366667, 8.55. Pass: city reference, explicitly not Grossmünster, Manz’s house, canton or Dutch namesake. |
+| jud-hamburg | [Getty TGN 7005289](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7005289), German inhabited place; N53 33 00 E010 00 00 | 53.55, 10. Pass: not the 1818 Temple, warehouse property or state extent. |
+| xian | [Getty TGN 7001810](https://www.getty.edu/vow/TGNFullDisplay?english=N&find=&nation=Togo&place=&subjectid=7001810), inhabited place under China/Shaanxi; N34 15 30 E108 55 43 | 34.258333, 108.928611. Pass: not museum, original stele point or 635 arrival site. Nanjing distinction and historical/modern extent caution retained; URL search parameter is not the source hierarchy. |
+
+Read the complete five-file [parent-to-head diff](https://github.com/mckayec/universe-sandbox/compare/01df0f2ec7f007a2b37a5712b279a9b5e930e299...9e3ce7ed4219d5f3004020de6b6339950bba502f), actual data files and exact-head test dependencies. Git blob hashes match for **18/18 fetched local files** (13 target/dependency files and five parent data files). Independent evaluated-pack comparison confirms:
+
+- **109/109 nodes, 27/27 tree links, 22/22 prior sites and 92/92 remaining codex cards unchanged.** ABR01–04 and all twelve previously accepted Q01 markers remain intact.
+- Exactly three place IDs move from codex to sites with names/layers retained and `first:1` converted to `books:[1]`. Zurich and Hamburg descriptions are identical. Xi’an’s Nanjing distinction moves from the flattened description to an explicit note; its historical assertion is unchanged.
+- Exactly **3/60 events** change only `ref` → `site`: `che-anabaptist`, `jud-e09`, `XE01`; **57/60** are identical. Targets exist; event dates, texts and attribution remain unchanged.
+- Inventory stays **313 records**: 109 nodes + 27 explicit links + 60 events + 25 sites + 92 codex cards. There are **44 nonspatial place cards**. Q01 accounting is **16/21 supported packages, 15 implemented, Antioch held; 5/21 requested features unresolved**. Do not count 25 total markers as 25 Q01 resolutions.
+
+Executed `node --test q01-r3/tests/atlas-abrahamic.test.ts` in the isolated exact-head fixture with Node 24.22.1: **25/25 pass**, including marker inventory/provenance, unresolved cards, reference validation and prior ABR regressions. These tests do not cover correctness of the source-summary count strings identified below.
+
+The earlier deterministic 20-entry source sample and 313-record conformity review remain inherited evidence, within their documented limits. This delta does not change those selected historical assertions; the three new spatial associations are checked above. No new random 20-item draw, full primary-source reread, or completed missing-coordinate research is claimed.
+
+### New finding and exact replacement text
+
+| ID | Severity | Location at audited head | Finding | Required correction |
+|---|---|---|---|---|
+| Q01-R3-L1 | Low | `public/atlas/packs/abrahamic-world-religions.js:392` and `:397` | `meta.srcnote` and the coordinate-source entry still describe twelve approximate references and omit the new November 6 source opening, while the actual inventory/Earth status has fifteen Q01 references and 25 total markers. | Replace the two strings below. Include this metadata alignment in the technical-pass preparation; do not redo the accepted three-marker research. |
+
+Replacement for `meta.srcnote`:
+
+> Map markers are ten heritage references (UNESCO World Heritage Centre geographical data, accessed 26 October 2026) and fifteen additional city or heritage reference points (Getty TGN, ToposText and UNESCO, opened 30 October, 1 November and 6 November 2026). Other places are listed without coordinates rather than guessed.
+
+Replacement for the Getty/ToposText entry in `meta.sources`:
+
+> Getty Thesaurus of Geographic Names and ToposText place records, and UNESCO components 1018rev-002 and 1220-007, for the fifteen additional city or heritage reference markers
+
+These are count/provenance corrections, not new historical content. Preserve the original source-specific raw coordinate notes.
+
+### Five hold dispositions
+
+| Package | Decision | Boundary |
+|---|---|---|
+| Fayette / Whitmer | Accept hold. Existing `chp-fayette` card stays nonspatial. | No promotion of replica/map-picker coordinates; identified numeric evidence or an explicit uncertainty disposition is still required for a point. |
+| Najaf | Accept deferred feature selection. No new narrative card merely to consume a coordinate. | Wadi al-Salam cemetery is not interchangeable with Najaf city or Imam Ali tomb. This is a retained gap, not completed coverage. |
+| Karbala | Accept hold. `ISP05` remains a card. | GeoNames candidate remains recorded but unadopted; do not silently upgrade its evidence status. |
+| Azusa Street | Accept hold and the choice not to add an optional Los Angeles city-context marker. `chp-azusa` is preserved. | City context would not resolve the mission parcel. The existing card already names Los Angeles; the reason for the hold is feature mismatch, not absence of the city name from the atlas. |
+| Seesen | Accept hold. `jud-seesen` remains a card. | Exact readable town/selected-site evidence with a stated CRS remains necessary before a marker. |
+
+All **4/4 existing affected cards** remain unchanged/nonspatial; Najaf has no narrative card. Accept Claude’s statement that these gaps do not block **building or technically checking** the supported content. Do **not** read “none blocks the rest of the atlas” as final canon or release clearance. A permanent release-scope disposition remains separate. Antioch is likewise a held supported package, not an implemented marker.
+
+The finite next unit is metadata correction plus the same-head technical/rendered package and an explicit proposed release-scope treatment for the held features. No further broad coordinate research is requested under R3. If releasing with those features nonspatial/deferred requires Mckay’s scope decision, present one concrete combined question in DECISIONS.md before treating it as approved; do not silently reduce scope or reopen indefinite research.
+
+### Validation limits and current verdict
+
+Independently inspected [Actions build job 127803591530](https://github.com/mckayec/universe-sandbox/actions/runs/42191268189/job/127803591530) and its logs for this exact head: successful job, **119/119 unit tests**, **24/24 page/viewport checks**, deployment skipped. The page matrix still omits `?pack=abrahamic-world-religions`; those passes do not establish rendering of this atlas. Claude’s 1440/390 Chromium/SwiftShader captures in fixing-round3.md remain builder evidence. No independent rendered, physical-device, 4K or performance acceptance was performed here. Separate Deep Research was not invoked.
+
+**Canon: not approved for final acceptance.** The three-marker unit and five temporary holds are accepted at **9e3ce7ed4219d5f3004020de6b6339950bba502f**. Remaining work: Q01-R3-L1’s two metadata strings; explicit final scope disposition for held features; same-head technical/rendered sign-off; Mckay’s release approval. Return **fixing / claude** to complete these together, not another open-ended research cycle. No code edit, PR approval, merge or deployment by ChatGPT.
