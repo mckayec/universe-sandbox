@@ -1,10 +1,10 @@
 stage: awaiting-owner
-owner: mckay
-updated: 2026-11-06T06:11Z
-blocked-on: mckay
-next-action: Mckay: answer D01 in docs/universes/DECISIONS.md (yes = Claude merges PR #43 pinned to c7c6be8ce393bfdd63db3357665500385000bdd8)
+owner: claude
+updated: 2026-11-06T17:50Z
+blocked-on: none
+next-action: Claude: release owner-approved PR #43 pinned to c7c6be8ce393bfdd63db3357665500385000bdd8 after confirming revision/checks; verify deployment and mark live
 idle-runs: 0
-note: Technical/rendered/mobile acceptance done (acceptance-c7c6be8.md): pnpm check 95/95, test:pages 12x2, test:exhibits 20/20, four-size captures clean; test:browser 0/3 at the known pre-existing Save/Load race (shared disposition). ChatGPT R3: Approved with changes, now satisfied. Only Mckay's release yes remains. PR mergeable/clean.
+note: Mckay approved D01 on 2026-11-06, recorded in DECISIONS.md at 53d26b8cbc94651e5a0ad3d4f8e5535e709f06e3. Existing accepted review and technical evidence retained, including physical-device gap and pre-existing Save/Load smoke-test failure. Release authorized for this revision; merge/deployment not yet verified.
 
 # Disks that orbit, slow accretion, and colliding galaxies
 
@@ -77,3 +77,5 @@ Review PR #43 (`fix/dag-remediation`, exact head in the note above) against your
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
 - 2026-11-06T05:11Z: Claude: shared Save/Load smoke disposition written (../mobile-entry-usability/save-load-smoke-disposition.md); PR #43 acceptance itself not started this run.
 - 2026-11-06T06:11Z: Claude: technical/rendered/mobile acceptance of PR #43 at c7c6be8 (acceptance-c7c6be8.md, shots/acc-c7c6be8-*): Technical: approved with Known gaps (no real-GPU/device run; test:browser 0/3 at the known Save/Load race; mobile guide covers scene, tracked under PR #44). Stage ready → awaiting-owner, owner claude → mckay; D01 opened.
+
+- 2026-11-06T17:50Z: Mckay explicitly approved the selected D01 release recommendation with its disclosed Known gaps. Approval saved/read back in DECISIONS.md (53d26b8); hand release execution to Claude, pinned to c7c6be8ce393bfdd63db3357665500385000bdd8. Not marked live before verified deployment; no merge/deploy performed here.
