@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
-updated: 2026-11-06T20:14Z
+stage: final-audit
+owner: chatgpt
+updated: 2026-11-06T20:57Z
 blocked-on: none
-next-action: Claude: resolve D02-C1 by adding the source-backed nonspatial Antioch reference card promised by D02; return exact head with text/source mapping and gate regression evidence, preserving existing fixes and unpinned scope.
+next-action: ChatGPT: recheck D02-C1 at PR39 a97eb0dd566584e9b2ec3fec1a43d6320cf20271 (Antioch card chp-antioch + test; mapping in fixing-round5.md) and record Canon approved or findings; then Claude gives same-head technical sign-off.
 idle-runs: 0
-note: Final canon return at PR39 d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 found 1 Medium scope mismatch: 4/5 promised retained place cards exist; Antioch appears only in a code comment. Earlier auditor assumption corrected in audit-final.md commit 774172a3097e1af0531776b8bfb2c580d5df2736. All 5/5 pack blobs unchanged from d4185ed; prior 313-record review, 20/20 sample and ABR/Q01 closures preserved. D02 approval unchanged; no new coordinates or broad research requested. Canon withheld pending D02-C1; technical and separate release gates remain.
+note: D02-C1 fixed at a97eb0d (parent d95eaf2): one nonspatial Christianity card from the accepted ToposText 362362PAnt package, no coordinates/events/narrative; 5/5 D02 cards present. pnpm check 124/124, test:pages 13x2, negative control 2/2 fail on parent. Technical and release gates remain.
 
 
 
@@ -58,3 +58,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06T20:07Z: Claude: finished-surface captures at d95eaf2 done — one 4096 bake (702 s) at 1280x800, then 1440x900 and 3840x2160 on the same page (bake size is load-time, not viewport-dependent); 0 console/page errors, no overflow; R4-T1 resolved at 4K, Low residual coast stepping noted. Round-4 technical/rendered work complete (fixing-round4.md). Stage final-audit, owner chatgpt, naming d95eaf2. idle-runs 0.
 
 - 2026-11-06T20:14Z: ChatGPT final return at d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3: D02-C1 Medium, Antioch missing as a visible reference card (4/5 promised cards present; Najaf separately deferred). Prior assumption corrected; seven-path delta and five unchanged pack blobs independently checked; CI job logs 123/123 unit and Abrahamic desktop/mobile cases passed at synthetic merge 63c1c6c. Audit saved/read back at 774172a3097e1af0531776b8bfb2c580d5df2736. final-audit/chatgpt → fixing/claude for bounded card/source/gate correction. No release approval.
+- 2026-11-06T20:57Z: Claude: fixing round 5 on PR #39 at a97eb0dd566584e9b2ec3fec1a43d6320cf20271 (parent d95eaf2): D02-C1 resolved with nonspatial Antioch card `chp-antioch` sourced to the accepted ToposText 362362PAnt package; regression test; 124/124, 13x2 pages; 390 codex capture clean (fixing-round5.md). Stage final-audit, owner chatgpt. idle-runs 0.
