@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
-updated: 2026-11-06T09:26Z
+stage: final-audit
+owner: chatgpt
+updated: 2026-11-06T10:15Z
 blocked-on: none
-next-action: Claude: apply Q01-R3-L1's two exact metadata replacements from audit-final.md with remaining technical/rendered work; present the finite release-scope disposition for held features, then return the exact head and evidence for recheck.
+next-action: ChatGPT: recheck Q01-R3-L1 at PR39 d4185ed6f15d47e9e268a87fbd59f818237ffc9e (two verbatim strings, one regression test, pack added to page matrix) and record canon decision; Claude separately lands shared TA-01 land-mask fix (PR #38) before Technical: approved here; Mckay answers D02 on held features.
 idle-runs: 0
-note: PR39 9e3ce7ed4219d5f3004020de6b6339950bba502f reviewed: 3/3 new markers and 3/3 event links accepted; 5/5 holds accepted as temporary evidence holds, not completed research or permanent scope approval. One new Low source-summary count finding, zero new High/Medium. Independent focused tests 25/25; exact-head CI 119/119 and page checks 24/24, but page matrix omits this pack. Q01 16/21 supported, 15 built, Antioch held, 5 unresolved. Canon, technical/rendered and Mckay release gates remain open; not merged. No broad coordinate research requested.
+note: PR39 d4185ed (parent 9e3ce7e): Q01-R3-L1 fixed verbatim; pnpm check 120/120; test:pages 13x2 now includes this pack; 4-size SwiftShader captures with no console/page errors and no page overflow. Rendered findings R4-T1 (coarse 4K land mask = shared TA-01), R4-T2 (390 label/header overlap, likely shared chrome), R4-T3 (small UI at 4K). Release scope for six held features asked as D02. See fixing-round4.md. Canon, technical and Mckay release gates remain open; not merged.
 
 
 
@@ -44,3 +44,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06T09:00Z: Claude: fixing round 3 on PR #39 at 9e3ce7ed4219d5f3004020de6b6339950bba502f (parent 01df0f2): three supported Q01 city packages (Zurich, Hamburg, Xi'an) built per the 2026-11-06 continuation; five unresolved packages packaged as Known gaps with proposed hold dispositions (fixing-round3.md). pnpm check 119/119, test:pages 12x2. Stage final-audit, owner chatgpt.
 
 - 2026-11-06T09:26Z: ChatGPT completed Q01 round-3 return review at PR39 head 9e3ce7ed4219d5f3004020de6b6339950bba502f (parent 01df0f2ec7f007a2b37a5712b279a9b5e930e299). Saved and read back audit-final.md at e6019e56346d5fca13301e2f88ca1b975a245598 before this status update. Accepted 3/3 new city markers, 3/3 changed event links and 5/5 temporary evidence holds; all 22 prior sites and 92 remaining codex cards unchanged. Source bodies for Zurich, Hamburg and Xi'an freshly opened; independent focused tests 25/25 pass. One Low finding Q01-R3-L1: two source-summary strings still say twelve instead of fifteen; exact replacements supplied. Exact-head CI confirms 119/119 unit tests and 24/24 page checks, with this pack absent from the page matrix; builder screenshots are not independent rendered acceptance. Q01 remains 16/21 supported (15 built, Antioch held), 5/21 unresolved. Stage fixing/claude for metadata alignment combined with technical/rendered work and an explicit final scope proposal for held features under R3-R4; no new open-ended research loop. Canon not finally approved; no permanent scope reduction, PR approval, merge or deployment.
+- 2026-11-06T10:15Z: Claude: fixing round 4 on PR #39 at d4185ed6f15d47e9e268a87fbd59f818237ffc9e (parent 9e3ce7e): Q01-R3-L1 two strings replaced verbatim + regression test; pack added to the standalone page matrix (13x2 pass); pnpm check 120/120; 4-size captures (shots/r4-d4185ed-*.jpg), no console/page errors. Rendered findings R4-T1..T3 recorded (R4-T1 is shared engine TA-01). Release-scope proposal for six held features → DECISIONS D02. Stage final-audit, owner chatgpt.
