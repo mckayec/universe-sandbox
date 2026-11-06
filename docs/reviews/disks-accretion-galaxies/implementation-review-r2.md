@@ -47,3 +47,38 @@ Exact evidence: [history.ts:161](https://github.com/mckayec/universe-sandbox/blo
 - Documentation probe formatting and syntax plus `git diff --check` pass. Browser/server restriction honored; no alternate preview, rendered/mobile/keyboard/timing/performance acceptance. Prior physics sources remain cited in the first review; this pass checks implementation against those accepted corrections rather than restarting research.
 
 **Not approved: resolve R2-C1 and R2-C2, rerun their exact-new-head state tests, and keep rendered/interactive acceptance and owner release approval separate. No application edit, formal approval, merge, deployment or scheduler change performed.**
+
+## Main handoff reconciliation — 2026-11-05 America/Denver (2026-11-06 UTC)
+
+Current target: PR [43](https://github.com/mckayec/universe-sandbox/pull/43), `fix/dag-remediation`, **c7c6be8ce393bfdd63db3357665500385000bdd8**, open/unmerged. This section supersedes the older R2 open-finding disposition above for this exact target; the original review and history are preserved.
+
+### Completed review already published
+
+Read the existing [R3 implementation review](https://github.com/mckayec/universe-sandbox/blob/9b77b50240df1e1e9b72a4784bd059ac4a067588/docs/reviews/disks-accretion-galaxies/implementation-review-r3.md), [R3 validation](https://github.com/mckayec/universe-sandbox/blob/9b77b50240df1e1e9b72a4784bd059ac4a067588/docs/reviews/disks-accretion-galaxies/validation-r3.md), and [successor evidence reconciliation](https://github.com/mckayec/universe-sandbox/blob/9b77b50240df1e1e9b72a4784bd059ac4a067588/docs/reviews/disks-accretion-galaxies/evidence-reconciliation-r3.md). Those artifacts already closed R2-C1 and R2-C2 at source/state level. Main's owner/stage had not caught up. This is a verified carry-forward and handoff reconciliation, not another claimed execution of the earlier 22-case harness.
+
+Fresh GitHub checks confirm [0a43a4f → c7c6be8](https://github.com/mckayec/universe-sandbox/compare/0a43a4fc3aa875e93668346e431f64a54753ba17...c7c6be8ce393bfdd63db3357665500385000bdd8) changes only `docs/reviews/disks-accretion-galaxies/remediation.md`. No application, tests, dependencies or workflow changed after the R3 code target. Read the return fix diff and exact-head validator, capture restore/release, history fallback and test files, plus the earlier DAG02–04 objective/event/model-limit changes. The documented fixes are present:
+
+| Finding | Current disposition |
+| --- | --- |
+| R2-C1 | Closed within the JSON-save contract: absent/null captures remain legacy; other malformed shapes or unknown original hold flags reject through the existing fallback, without guessing the original flag. |
+| R2-C2 | Closed at source/state level: resuming forces active hold true; the original remains in the capture record and release restores it. |
+| DAG01 | Source/state correction accepted with the prior valid-fallback, legacy-save and UI-acceptance limits retained. |
+| DAG02–04 | Prior wording/model-limit remedies retained unchanged; no physical-time, black-hole-binary or global momentum-conservation certification. |
+
+**Accounting: 2/2 residual findings remain closed; 4/4 original groups have accepted bounded source/state or wording dispositions. Zero new material findings in this reconciliation.** Rendered/mobile/performance and complete UI acceptance are not included in that denominator.
+
+### Fresh CI evidence, with its actual checkout
+
+Independently retrieved [CI 40997866416](https://github.com/mckayec/universe-sandbox/actions/runs/40997866416), job metadata and [build logs](https://github.com/mckayec/universe-sandbox/actions/runs/40997866416/job/123875125779). The run is successful and associated with PR head c7c6be8. Logs show actual tested merge **c5874a8f0373745afbf7b46befed86d1f2f074d7**, merging that head into **13520d56bf5c1e23af2e3329ab88ea79c0bd579c**. The [head-to-tested-merge comparison](https://github.com/mckayec/universe-sandbox/compare/c7c6be8ce393bfdd63db3357665500385000bdd8...c5874a8f0373745afbf7b46befed86d1f2f074d7) changes only documentation/coordination files, so code, tests, dependencies and workflow match the reviewed target.
+
+Logs confirm formatting and build success, **95/95 unit tests**, **111-file distribution check**, and **24/24 standalone page/viewport cases**. Deploy skipped. The workflow does **not** run `test:browser` or `test:exhibits`; green CI is not proof those suites passed. No new local test, browser/server/device or rendered session was run for this reconciliation. The prior independent 22 state cases and Claude's reported 20 exhibit scenes/48 browser-probe cases are historical evidence at their stated scope, not new executions or combined test totals.
+
+### Precise continuation for Claude
+
+The remaining task is technical acceptance, not another R2-C1/C2 source patch. Reconcile the contradictory separate Save/Load smoke results with reproducible exact-revision evidence; the suggested stale-count/timing cause remains Claude's reported diagnosis, not independently established here. Keep the failure visible until dispositioned; do not weaken assertions to turn it green.
+
+Record which actual Save/Load, undo/redo, recovery, keyboard/mobile and sustained-performance journeys have passed. Complete the permitted visual/technical checks on the intended release revision, preserving the original visual questions and the disclosed nonpersistent tracer/tidal-tail picture. New code requires an applicable exact-head recheck. Preserve Mckay's release gate.
+
+Per this folder's instructions, `ready / claude` means **review delivered for Claude's remaining work**, not ready for owner release. No GitHub approval, application edit, merge or deployment was performed.
+
+**Approved with changes: retain the verified R2-C1/R2-C2 source/state fixes and DAG01–04 bounded dispositions; complete and reconcile the outstanding technical/rendered/interactive acceptance before requesting release approval.**
