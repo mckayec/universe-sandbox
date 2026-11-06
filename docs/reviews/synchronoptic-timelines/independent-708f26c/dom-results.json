@@ -1,0 +1,65 @@
+[
+  {
+    "name": "deselect focus",
+    "actual": {
+      "tag": "BODY",
+      "inside": false
+    }
+  },
+  {
+    "name": "overview focus",
+    "actual": {
+      "tag": "BODY",
+      "inside": false
+    }
+  },
+  {
+    "name": "Tab after overview",
+    "actual": {
+      "id": "outside",
+      "inside": false
+    }
+  },
+  {
+    "name": "before downgrade",
+    "actual": {
+      "sel": "n:jud-karaite",
+      "count": 91
+    }
+  },
+  {
+    "name": "after downgrade",
+    "actual": {
+      "sel": null,
+      "count": 66,
+      "focus": "BODY",
+      "containsKaraite": false
+    }
+  },
+  {
+    "name": "reordered restore",
+    "actual": "lane-chr"
+  },
+  {
+    "name": "default restore after reorder",
+    "actual": "lane-chr"
+  },
+  {
+    "name": "Seesen provenance",
+    "actual": {
+      "text": "Seesen temple inaugurated17 July 1810Year given by the sourceSource: jud-seesenBack to the overview",
+      "links": 0
+    }
+  },
+  {
+    "name": "covenant chronology",
+    "actual": "Covenant traditionNarrative time · textual frameNo defensible date in the sourceKinds of claim in the record: textRelationshipsJudaism Within grouped in this overview no source locatorRabbinic Judaism Context (from this) inherited text / traditional transmission; the religious account is kept apart from literary history no source locatorAbraham and Ishmael (Qur’an 2:127) Context shared named figure (Abraham): distinct scriptural claims, not descent no source locatorBack to the overview"
+  },
+  {
+    "name": "range restore",
+    "actual": {
+      "width": "776",
+      "ticks": ["500 BCE", "250 BCE", "1 CE", "250 CE", "500 CE", "750 CE", "1000 CE", "1250 CE", "1500 CE", "1750 CE"]
+    }
+  }
+]

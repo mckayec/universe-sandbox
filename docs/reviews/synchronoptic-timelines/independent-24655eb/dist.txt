@@ -1,0 +1,5 @@
+
+> universe-sandbox@0.1.0 check:dist
+> node tests/check-dist.mjs
+
+check-dist: 120 files OK (all same-origin references resolve; no third-party loads).

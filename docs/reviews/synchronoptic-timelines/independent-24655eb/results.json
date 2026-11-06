@@ -1,0 +1,406 @@
+[
+  {
+    "name": "phone filter width",
+    "pass": true,
+    "actual": 370,
+    "expected": 370
+  },
+  {
+    "name": "phone jud hidden",
+    "pass": true,
+    "actual": 0,
+    "expected": 0
+  },
+  {
+    "name": "390 initial marks",
+    "pass": true,
+    "actual": 91,
+    "expected": 91
+  },
+  {
+    "name": "390 collapsed list IDs",
+    "pass": true,
+    "actual": 169,
+    "expected": 169
+  },
+  {
+    "name": "390 Seesen wording/ref separation",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 clear focus",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 Tab after clear",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 ShiftTab after clear",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 covenant notes",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 identity guards",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 gated selection removed",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 downgrade focus inside",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 before downgrade Tab focus",
+    "actual": "<h3 class=\"tl-ov\" tabindex=\"-1\">Overview</h3>"
+  },
+  {
+    "name": "390 after downgrade Tab focus",
+    "actual": "<button class=\"btn\" data-mode=\"chart\" aria-pressed=\"false\">Chart</button>"
+  },
+  {
+    "name": "390 Tab after downgrade",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 deselect focus",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 reordered URL",
+    "pass": true,
+    "actual": "lane-chr",
+    "expected": "lane-chr"
+  },
+  {
+    "name": "390 default URL",
+    "pass": true,
+    "actual": "lane-jud",
+    "expected": "lane-jud"
+  },
+  {
+    "name": "390 unsupported range removed",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "390 Back open-to-open",
+    "pass": true,
+    "actual": "lane-chr",
+    "expected": "lane-chr"
+  },
+  {
+    "name": "390 Forward open-to-open",
+    "pass": true,
+    "actual": "lane-jud",
+    "expected": "lane-jud"
+  },
+  {
+    "name": "390 no page overflow",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 initial marks",
+    "pass": true,
+    "actual": 91,
+    "expected": 91
+  },
+  {
+    "name": "1440 collapsed list IDs",
+    "pass": true,
+    "actual": 169,
+    "expected": 169
+  },
+  {
+    "name": "1440 Seesen wording/ref separation",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 clear focus",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 Tab after clear",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 ShiftTab after clear",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 covenant notes",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 identity guards",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 gated selection removed",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 downgrade focus inside",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 before downgrade Tab focus",
+    "actual": "<h3 class=\"tl-ov\" tabindex=\"-1\">Overview</h3>"
+  },
+  {
+    "name": "1440 after downgrade Tab focus",
+    "actual": "<button class=\"btn\" data-mode=\"chart\" aria-pressed=\"false\">Chart</button>"
+  },
+  {
+    "name": "1440 Tab after downgrade",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 deselect focus",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 reordered URL",
+    "pass": true,
+    "actual": "lane-chr",
+    "expected": "lane-chr"
+  },
+  {
+    "name": "1440 default URL",
+    "pass": true,
+    "actual": "lane-jud",
+    "expected": "lane-jud"
+  },
+  {
+    "name": "1440 unsupported range removed",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "1440 Back open-to-open",
+    "pass": true,
+    "actual": "lane-chr",
+    "expected": "lane-chr"
+  },
+  {
+    "name": "1440 Forward open-to-open",
+    "pass": true,
+    "actual": "lane-jud",
+    "expected": "lane-jud"
+  },
+  {
+    "name": "1440 no page overflow",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "model evidence",
+    "actual": {
+      "records": 169,
+      "textEqual": true,
+      "notes": 81,
+      "guards": 16,
+      "src": 0,
+      "fixture": {
+        "layers": ["x"],
+        "books": null,
+        "first": 5,
+        "chapter": 9
+      }
+    }
+  },
+  {
+    "name": "event gate preservation",
+    "pass": true,
+    "actual": {
+      "records": 0,
+      "search": 0,
+      "sel": null,
+      "chapter": 9
+    },
+    "expected": {
+      "records": 0,
+      "search": 0,
+      "sel": null,
+      "chapter": 9
+    }
+  },
+  {
+    "name": "Seesen codex navigation",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 initial marks",
+    "pass": true,
+    "actual": 91,
+    "expected": 91
+  },
+  {
+    "name": "3840 collapsed list IDs",
+    "pass": true,
+    "actual": 169,
+    "expected": 169
+  },
+  {
+    "name": "3840 Seesen wording/ref separation",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 clear focus",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 Tab after clear",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 ShiftTab after clear",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 covenant notes",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 identity guards",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 gated selection removed",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 downgrade focus inside",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 before downgrade Tab focus",
+    "actual": "<h3 class=\"tl-ov\" tabindex=\"-1\">Overview</h3>"
+  },
+  {
+    "name": "3840 after downgrade Tab focus",
+    "actual": "<button class=\"btn\" data-mode=\"chart\" aria-pressed=\"false\">Chart</button>"
+  },
+  {
+    "name": "3840 Tab after downgrade",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 deselect focus",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 reordered URL",
+    "pass": true,
+    "actual": "lane-chr",
+    "expected": "lane-chr"
+  },
+  {
+    "name": "3840 default URL",
+    "pass": true,
+    "actual": "lane-jud",
+    "expected": "lane-jud"
+  },
+  {
+    "name": "3840 unsupported range removed",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "3840 Back open-to-open",
+    "pass": true,
+    "actual": "lane-chr",
+    "expected": "lane-chr"
+  },
+  {
+    "name": "3840 Forward open-to-open",
+    "pass": true,
+    "actual": "lane-jud",
+    "expected": "lane-jud"
+  },
+  {
+    "name": "3840 no page overflow",
+    "pass": true,
+    "actual": true,
+    "expected": true
+  },
+  {
+    "name": "browser errors",
+    "pass": true,
+    "actual": [],
+    "expected": []
+  }
+]

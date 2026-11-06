@@ -1,0 +1,35 @@
+{
+  "checkedRecords": 169,
+  "checkedNotes": 101,
+  "checkedGuards": 22,
+  "narrativeCovenant": "narrative",
+  "explicitSourceRecords": 0,
+  "coverage": {
+    "records": 169,
+    "dated": 91,
+    "windows": 19,
+    "approx": 2,
+    "undated": 78,
+    "narrative": 4,
+    "edges": 129,
+    "drawn": 0,
+    "gaps": [
+      {
+        "id": "family",
+        "t": "Family genealogy: no accepted parent/child records yet."
+      },
+      {
+        "id": "succession",
+        "t": "Succession: no accepted succession records yet."
+      },
+      {
+        "id": "migration",
+        "t": "Migration or travel: 12 journeys are described in text only, without ordered dated stops."
+      },
+      {
+        "id": "edge-sources",
+        "t": "129 relationships have no source locator on the relationship itself; listed, not drawn as fact."
+      }
+    ]
+  }
+}

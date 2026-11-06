@@ -1,0 +1,27 @@
+diff --git a/tests/browser-smoke.mjs b/tests/browser-smoke.mjs
+index 2822174..10db048 100644
+--- a/tests/browser-smoke.mjs
++++ b/tests/browser-smoke.mjs
+@@ -79,13 +79,21 @@ try {
+   await page.getByRole('button', { name: /Inspect/ }).click();
+   assert.equal(await page.locator('#navigation-help').isHidden(), true);
+ 
+-  await page.getByRole('button', { name: 'Save' }).click();
++  // The Gododdin exhibit keeps simulating and removes bodies as it plays out, so #count can drop between the
++  // snapshot Save stores and a later read (29 saved, 25 read, on slow software GL). Pause first so the count
++  // compared after Load is the count Save stored, and check Save's own report of that number.
++  await page.locator('#pause').click();
++  assert.equal(await page.locator('#pause').textContent(), 'Resume');
+   const savedCount = await page.locator('#count').textContent();
++  await page.getByRole('button', { name: 'Save' }).click();
++  assert.match(await page.locator('#toast').textContent(), new RegExp(`^Saved ${savedCount} objects`));
+   await page.getByRole('button', { name: 'Clear all' }).click();
+   await page.waitForFunction(() => document.querySelector('#count')?.textContent === '0');
+   assert.equal(await page.locator('#info-panel').evaluate(element => element.classList.contains('empty')), true);
+   await page.getByRole('button', { name: 'Load' }).click();
+   await page.waitForFunction(count => document.querySelector('#count')?.textContent === count, savedCount);
++  await page.locator('#pause').click();
++  assert.equal(await page.locator('#pause').textContent(), 'Pause');
+ 
+   await page.getByRole('button', { name: /Binary stars/ }).click();
+   const canvas = page.locator('#viewport canvas');
