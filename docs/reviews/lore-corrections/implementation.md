@@ -244,6 +244,6 @@ never fires and leaves no pending timer; stop and replay in the same book fires 
 disabled the generation, active-instance and handler guards each still block the call; no handler means no timer.
 **7/7 pass at the new head; against the parent society.js 5/7 fail** (the two controls pass), reproducing R4-C1.
 
-`pnpm check` 89/89, `pnpm test:pages` 12 pages x 2 viewports. `pnpm test:browser`: first run failed (the known
-intermittent simulator Save/Load step also seen on main), immediate rerun passed. No rendered or device check of the
+`pnpm check` 89/89, `pnpm test:pages` 12 pages x 2 viewports. `pnpm test:browser` passed (one earlier attempt
+did not start because CHROME_PATH pointed at a browser that is not installed; that was a setup error, not a test result). No rendered or device check of the
 Heliopolis scene was run for this change; earlier rendered/mobile/keyboard gates stay open at their recorded scope.
