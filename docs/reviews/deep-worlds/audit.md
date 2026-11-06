@@ -1,5 +1,7 @@
 # Deep Worlds — current audit checkpoint and Cosmere return review
 
+> **Current routing update — 2026-11-06:** The 23-record crosswalk and [supplement review](supplement-review-60176e7.md) are saved on main at 07879199d1848fd8b4229172273c739a02865e8f and c8d0b5d162494ecd064ef42e5b2a0381b0e4eca6. The completed bounded packet is handed to **fixing / claude**; remaining open-ended source research is **deferred**, with Known gaps below. This supersedes this historical checkpoint's “content-review / chatgpt” next-step routing only. Its narrow CB closures, evidence limits and lack of full canon/release approval remain intact.
+
 2026-11-05 America/Denver (2026-11-06 UTC), ChatGPT.
 
 **CB01–CB04 accepted at source/content-data level for PR37 head 60176e78f1272816a0869a5abe8018e884d704f7. The full Deep Worlds audit remains incomplete and is not approved for release.**
@@ -55,3 +57,20 @@ Stage remains **content-review / chatgpt**, because the requested full source au
 5. Finish exact-head rendered/tour/deep-link/downgrade and technical/device evidence after fixes. None of this authorizes merge, deploy or owner release approval.
 
 **Verdict: accept CB01–CB04 at the stated source/content-data scope; retain Deep Worlds' incomplete canon audit, DWR-A/B blockers and all technical/owner-release gates.**
+
+## Known gaps — 2026-11-06 packaging handoff
+
+The [23-row supplement crosswalk](cosmere-supplement-crosswalk.csv) resolves all six historical IDs plus all eleven Nalthis landmarks and six events: **23/23 identities, no duplicates, seventeen additions to the old sample**. Current classes are **6 supported-text, 10 partial-primary, 1 not-reverified, 1 commentary-assisted, 4 accepted-return-carried, 1 clarification-carried**. These are not a reconstructed November 4 verdict table or twenty-three newly verified records. Detailed findings, exact conservative wording, source URLs and limits are in [supplement-review-60176e7.md](supplement-review-60176e7.md).
+
+| Gap | Impact | Blocks build/fix? |
+| --- | --- | --- |
+| DWR-A/B pending callbacks | Existing stale-effect/event restoration defects remain. Exact engine/Society blobs are unchanged from the reviewed baseline. | No; Claude repairs them next. Blocks spoiler/technical acceptance. |
+| Partial supplement claims and CS06 missing passage | Retained detail is not fully canon-supported; source or conservatively omit/narrow as documented. | No for unrelated fixes. Blocks affected content acceptance. |
+| Remaining DW06 and Society primary evidence | Whole six-pack audit remains incomplete. | No for bounded fixes; blocks full canon approval. Open-ended research is deferred under R3 pending a specific evidence/cut return. |
+| Current sample coverage | Eleven Nalthis landmarks can replace the Cosmere code-sample deficit if explicitly selected; Sun Eater, Expanse and Foundation each still need a replacement landmark sample. | No for fixes. Source comparison and geometry requirements remain separate from sample quantity. |
+| Geometry, integrated browser/tour/deep-link/downgrade and device evidence | Text-only and isolated checks cannot certify rendering, spatial precision or lifecycle acceptance. | No for fixes; blocks corresponding final acceptance. |
+| Mckay release approval | No merge or deployment is authorized. | No for docs/PR repair; required for release. |
+
+**Next bounded unit: Claude repairs DWR-A/B and returns explicit per-ID source/cut dispositions from the supplement with a new exact SHA and positive/negative controls.** The source/cut packet is ready to use; its incomplete claims are not research-certified. Stage becomes fixing for this already-built review, with the open-ended research portion deferred, rather than cycling an unbounded source-coverage checkpoint. No Mckay-only decision is currently needed to perform those repairs.
+
+**Current verdict: changes required; full canon and release approval withheld.**
