@@ -95,7 +95,7 @@ float height(vec3 p){
   float h=fbm(q,uOct)*.5+.5;
   h=pow(h,1.15)*1.08;
   if(uBase>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));float b=texture2D(tBase,vec2(lon/6.28318530718+.5,la/PI+.5)).r;
-    h=uSea+(b-.5)*.3+(h-.5)*.12;}
+    float bt=(b-.5)*.3;h=uSea+bt+(h-.5)*.12*clamp(abs(bt)/.075,0.,1.);/* TA-03: noise fades at the coast so it cannot move the mask coastline */}
   if(uMapOn>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
     vec4 Hi=texture2D(tMapHi,muv);vec4 Lo=texture2D(tMapLo,muv);float ml=Hi.r;
     h=uSea+(ml-.5)*.05+Lo.r*.07*ml+(h-.5)*(.05+.1*ml);
