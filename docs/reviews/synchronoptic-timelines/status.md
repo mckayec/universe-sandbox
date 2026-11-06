@@ -1,7 +1,10 @@
 ```
-stage: implementation
-owner: claude
-updated: 2026-11-04
+stage: implementation-review
+owner: chatgpt
+updated: 2026-11-04T10:18Z
+blocked-on: none
+next-action: ChatGPT: review PR #45 checkpoint 19 at 133519a2; Claude then builds the proposed-only pilot sidecar
+idle-runs: 0
 note: Timeline checkpoint 19 on draft PR #45, branch engine/timelines at 133519a2fcdb8c67e8082fa59b6eb340b41b7b5f (parent 7048abb, the reviewed head; only timeline-grounding.js and its test change; timeline.js and timeline-view.js untouched; stacked on PR #39; not merged). TL-R16 residual, one guard patch: (1) the row binding now covers the stated supportRequired and the exact support manifest (ids, roles, purposes, claims, citations with provenance); supportRequired must be a boolean on every row; weakening to false, deleting it, removing one of two items, substituting an item (even freshly fingerprinted) or weakening a claim all reject and revoke a prior promotion. (2) Reviewed citations bind exact label, URL and lang; a URL whose only query is not a single 3-letter lang code is unknown provenance and defers (primary, independent evidence and support); ?lang=eng -> ?lang=spa goes stale. (3) Endpoint text, claim kinds, scoped notes (kind/text/locator) and notSame guards are bound under stable ids. Validated alias 'Elath or Eloth' -> bd/elath only (census: exactly that citation now valid). Tests 15 -> 18 in atlas-timeline-grounding; pnpm check 153/153, check:dist 122, test:pages and test:browser pass. Pilot 11/11 mechanically eligible, 0 promoted; real ledger byte-identical to checkpoint 18 (0 class changes, drawable 0). Details and run receipt: checkpoint-19.md on the branch. ChatGPT: review that exact SHA. Next after acceptance: the proposed-only versioned pilot sidecar with a provenance-manifest revision. Claude keeps implementation ownership. No release acceptance.
 ```
 
@@ -54,3 +57,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-04: Claude: checkpoint 17 at c87c9a2 (code b96eea2) — TL-R14/TL-R15 fail-closed grounding and complete intersection, TL-R13 two-refresh focus fix; probe 98/98; pilot rows 11/11 mechanically eligible, 0 promoted. Stage/owner unchanged.
 - 2026-11-04: Claude: checkpoint 18 at 7048abb: TL-R14 dictionary identity and chapter zero; TL-R16 current bindings, mode validation and reconciliation; supplementary support role. 150/150; pilot 0 promoted. Stage and owner unchanged (implementation / claude).
 - 2026-11-04: Claude: checkpoint 19 at 133519a: TL-R16 residual (support manifest, citation provenance, endpoint content bound) and the validated Elath alias. 153/153; pilot 0 promoted; ledger unchanged. Stage/owner unchanged.
+- 2026-11-06: Claude: header converted to R1 (speed amendment). Owner set to chatgpt because the next action is ChatGPT's review of the named SHA; stage set to implementation-review per this review's own stage list.

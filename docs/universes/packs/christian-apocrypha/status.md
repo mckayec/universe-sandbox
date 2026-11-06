@@ -1,6 +1,9 @@
 stage: final-audit
 owner: claude
-updated: 2026-11-06
+updated: 2026-11-06T03:10Z
+blocked-on: none
+next-action: Claude: TA-01 engine fix (higher-resolution public-domain land mask, smooth sampling) on PR #38, then re-capture four sizes and finish technical pass
+idle-runs: 0
 note: Canon approved at PR #38 head caf70a87b574da1073c2147e73d909eb2a9193ed. Claude technical pass checkpoint 1 at that SHA (audit-final.md 'Technical pass'): validator 0 issues, pnpm check 102/102, test:pages pass; test:browser times out at the simulator Load step on current main too (environmental, not this PR). APB-004 re-diagnosed as TA-01: with the bake allowed to finish (497 s), the 4K Earth surface is still stair-stepped because earth-base.png is a 1024x512 land mask; real GPU hardware would not fix it. Technical: not approved. Next: engine fix (higher-resolution public-domain land mask, smooth sampling), then re-capture at four sizes and phone checks. Claude keeps ownership. Not merged.
 
 
@@ -37,3 +40,4 @@ Track A · view: Earth-historical layer
 
 - 2026-11-06: ChatGPT completed the bounded round-2 final canon return check at caf70a87b574da1073c2147e73d909eb2a9193ed, saved in audit-final.md at 606c9826dfc5d505cd35bc907b28b38631a249d7 before this status change. APQ-004/APF-001 resolved (2/2), two primary passages reopened, exact-head targeted tests 18/18 passed; full evaluated-pack comparison found only the intended badge array and two event texts changed. Prior 20-item sample retained (19 unchanged, m2-03 freshly rechecked). Canon approved for the owner-narrowed implemented scope at this SHA only; technical remains unapproved. Stage final-audit, owner claude for APB-004 and remaining technical checks/sign-off. No merge, deployment or release approval.
 - 2026-11-06: Claude: technical pass checkpoint 1 at caf70a8: validator 0 issues, pnpm check 102/102, test:pages pass, test:browser timeout reproduced on main 9f4ce77 (pre-existing). Finished 4K bake captured (shots/tech-caf70a8-*); APB-004 → TA-01: the 1024x512 Earth land mask makes coastlines blocky at 4K on any hardware. Technical not approved; engine fix next. Stage/owner unchanged (final-audit / claude).
+- 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.

@@ -1,6 +1,9 @@
 stage: fixing
-owner: claude
-updated: 2026-11-04
+owner: chatgpt
+updated: 2026-11-04T15:20Z
+blocked-on: none
+next-action: ChatGPT: review PR #33 46029fb content + 82235c6 recheck and a3d5cc4 layout change; Claude then closes remaining capture/device evidence or records them as Known gaps
+idle-runs: 0
 note: Checkpoint 65 on PR #33 (pack/lds-standard-works) at a3d5cc4de273be0590567cde45461b5ebc30fc53 (parent 6dec86b): RC64-O1 fixed. On wider screens the Reference header switches to the phone section chooser when the tab buttons would wrap past two rows (cxFit in engine.js, cx-compact in engine.css) and cards get scroll-margin-top; header 108 px at 3840x2160/1440x900/1280x800 (was ~330 px), packs with few sections (Dune) keep their buttons, phones unchanged. Pack, generator and data bytes unchanged. Evidence: s65-reference-fit.mjs/.txt, shots/s65-*, supplementary-implementation.md 'Checkpoint 65'. pnpm check 171/171, test:pages and test:browser pass. ChatGPT: review 46029fb's content (82235c6 recheck still pending) and the a3d5cc4 layout change. Still open: wider vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence. Claude keeps ownership. Not merged.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
@@ -102,3 +105,4 @@ Track A · view: Earth-historical, layered
 - 2026-11-04: Claude: checkpoint 64 on PR #33 at 46029fb: RES96-C01–C14, 16 source views + 5 consolidations; semantic ledger 20 -> 0; crosswalk 167; pnpm check 171/171, test:pages and test:browser pass. Stage/owner unchanged.
 - 2026-11-04: Claude: docs-only commit 6dec86b on PR #33: rendered captures of six checkpoint-64 cards + phone, all checks passed; RC64-O1 desktop Reference tab crowding recorded (fix proposed, not made). Stage/owner unchanged.
 - 2026-11-04: Claude: checkpoint 65 on PR #33 at a3d5cc4: RC64-O1 fixed (compact Reference chooser when tabs wrap past two rows; scroll-margin-top on cards); s65 checks pass at 3840x2160, 1440x900, 1280x800, 390x844; pnpm check 171/171, test:pages, test:browser pass. Stage/owner unchanged.
+- 2026-11-06: Claude: header converted to R1 (speed amendment). Owner set to chatgpt because the next action is ChatGPT's review of the named SHA; stage unchanged.

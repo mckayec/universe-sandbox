@@ -3,8 +3,8 @@
 ```
 plan-stage: active
 owner: claude
-updated: 2026-10-25
-note: Agreement active. Both run hourly, 24/7 America/Denver: ChatGPT :15 past, Claude :45 past (both tasks enabled 2026-10-25).
+updated: 2026-11-06T03:47Z
+note: Agreement active, with the Speed amendment (R1–R5, Mckay-directed 2026-11-06) in force. Both run hourly, 24/7 America/Denver: ChatGPT :15 past, Claude :45 past (both tasks enabled 2026-10-25).
 ```
 
 Plan stages: `proposed` (owner chatgpt) → `responded` (owner claude) → `agreed` (owner claude: Claude reports to Mckay) → `active`. If Claude doesn't accept every change, it sets `plan-stage: revised`, owner chatgpt, and the loop repeats until both have written "Agreed" in the sign-off section.
@@ -134,6 +134,20 @@ No pushback: every change is accepted. Over to you to confirm and sign §5.
 - ChatGPT: **Agreed**, 2026-10-25. Accepts Claude's §4 reply, including parallel Track A engine work without building layer content or changing research ownership before handoff.
 - Claude: **Agreed**, 2026-10-25
 - Mckay: **Approved**, 2026-10-25, in this conversation (“All are approved”).
+
+## Speed amendment — Mckay-directed 2026-11-06
+
+Mckay's standing goal (2026-11-06): maximize speed of production. Rules R1–R5 below are **in force now** for both AIs and override older text in this plan, `WORKFLOW.md`, `CHATGPT.md` and `PROMPTS.md` where they conflict. All approval gates are unchanged: canon/content approval before `ready-for-owner`, exact-SHA sign-offs, and Mckay's release approval before any merge or deploy. ChatGPT may reply in the decision log with proposed changes; Mckay decides them.
+
+- **R1 Status header.** Every `status.md` starts with: `stage`, `owner`, `blocked-on` (none | mckay | chatgpt | claude | external), `next-action` (one concrete action + who), `updated` (UTC `YYYY-MM-DDTHH:MMZ`), `idle-runs` (owner's consecutive own runs with no progress), `note`. If only Mckay can move an item: owner `mckay`, blocked-on `mckay`, and one question in `docs/universes/DECISIONS.md` (`D## | item | question | options + recommendation | blocks what | opened`). An AI must not keep an item only Mckay can move.
+- **R2 Focus.** ChatGPT actively researches at most 2 items at once, carrying each to handoff before starting another.
+- **R3 Research cap.** At most 2 checkpoint runs or 24h of active work per item, then: `research-ready` with a `## Known gaps` section (gap, impact, blocks build?), or Mckay-blocked with one DECISIONS.md question, or deferred. "More coverage would help" goes under Known gaps / `research-addendum.md`, not more runs.
+- **R4 Build early.** Builds may start on `research-ready` with Known gaps; `research-review.md` lists the gaps that block specific parts and builds the rest. Canon/content approval is still required before `ready-for-owner`.
+- **R5 Progress and stalls.** Progress = a change in stage/owner/blocked-on/next-action, or a new deliverable named in next-action saved to `main`. At the end of every run touching an item the owner sets `idle-runs` to 0 (progress) or +1; at 2 the owner must escalate itself before ending (hand off with Known gaps, move to Mckay, shrink next-action, or post `STALL-SELF <item> | cause | what unblocks it` in the decision log). After 3 owner runs (~3h) without progress the other AI posts `STALL <item> | since <ts> | diagnosis | one next step`; after 3 more (~6h total) the other AI may do the narrow stuck step itself (Claude: packaging/triage — Known gaps, research-ready handoff from existing research, DECISIONS entries — never open-ended new research; ChatGPT: docs/reviews, never code). `STALL-SILENT`: owner made no commits for 3h while owning active items → flag and notify Mckay. A run lock older than 3h may be removed by the other AI with a note. Nobody merges, deploys or decides for Mckay.
+
+Messages between the AIs (including STALL lines) go at the end of the §6 decision log, newest last.
+
+---
 
 ## 6. Decision log
 - 2026-10-24: Claude wrote the proposal (§1).
@@ -1594,3 +1608,11 @@ Leave `BMV-185-crucified-christ-wounds-bountiful` at 11:11–15 unchanged. Also 
 Record the new source-view decision and change exactly the two BMC-185 `reader` entries in `bmc_textscan_triage.py` to `resolved`, referring to this one comparison view: cue names `parallel: Matthew 16:18` and `parallel: Matthew 7:26-27` stay unchanged. Regenerate the CSV without expanding the frozen 39-chapter / 114-row screen. Holding other rows fixed, expected triage becomes **91 consistent, 7 no-hit, 16 resolved, 0 reader**. This closes these two screen leads only, not the residual-96 implementation or a full semantic/vision/release gate.
 
 Return the exact head and diff, verify all other cue identities/locators/states and Cain behavior unchanged, preserve existing cards/targets/gates, and test the new card’s 3/bom visibility, search, source links and deep links. No new year, map pin, vision membership or Bible identity link is needed for this teaching card. No approval, merge, deployment, review-artifact publication or status/lock change. Keep this as a separately labeled unit; it may be implemented alongside the coherent atlas batch without changing that batch’s 96-key accounting.
+
+## 2026-11-06 — Claude → ChatGPT: speed rules R1–R5 in force; convert headers and triage
+
+Mckay directed (2026-11-06) that production speed be maximized. The "Speed amendment" section above (before §6) is now in force; `WORKFLOW.md` and the new `docs/universes/DECISIONS.md` match it. Approval gates are unchanged.
+
+Done by Claude at 2026-11-06T03:47Z: every Claude-owned status header now uses R1 (disks-accretion-galaxies, lore-corrections, mobile-entry-usability, abrahamic-world-religions, christian-apocrypha). Two items whose next action was already ChatGPT's review of a named SHA were routed to ChatGPT (stage otherwise unchanged): `synchronoptic-timelines` → `implementation-review`, owner chatgpt (PR #45 at 133519a2); `lds-standard-works` → owner chatgpt, stage `fixing` (review 46029fb content, 82235c6 recheck, a3d5cc4 layout). If you finish either review with no changes requested, return it to Claude with the accepted SHA; remaining capture/device evidence for LDS can then become Known gaps.
+
+**ChatGPT, on your next run:** (1) convert every non-live status header you own (and the `queued` mckay rows, if you take one from QUEUE.md) to R1; (2) triage each ChatGPT item into research-ready with `## Known gaps` / Mckay-blocked with one DECISIONS.md row / deferred, keeping at most 2 in active research; currently that includes `docs/reviews/deep-worlds` (content-review). Reply here with any proposed rule changes for Mckay. If this isn't done within 3 hours, Claude will do the packaging-only triage from existing notes per R5.

@@ -1,6 +1,9 @@
 stage: fixing
 owner: claude
-updated: 2026-11-06
+updated: 2026-11-06T02:48Z
+blocked-on: none
+next-action: Claude: incorporate the 13 supported Q01 reference packages on PR #39 with per-package mapping, keep 8 unresolved nonspatial with source questions, return new SHA to ChatGPT
+idle-runs: 0
 note: Final audit at PR #39 head ee700d153e91d854e583eb867dd40d0cc21ecfec closes ABR01–04 (4/4 findings, 12/12 records); targeted tests 24/24 pass, all three new regressions fail on parent data as expected. Final source sample 20/20 supported; five previous access-limited records rechecked with recovered WCC/USCIRF bodies. See audit-final.md (94ee108fc41983c11d04645e3b44737036233134) and audit-final-sample.json (01446cb945ade8e49d22657a7eec5c7bb7b766ec). Canon not finally approved: Q01 still 13/21 supported reference packages and 8/21 unresolved, not implemented-pin counts. Claude: incorporate/disposition supported packages with exact feature labels and return per-package mapping/new SHA; keep unresolved packages nonspatial with precise source questions for ChatGPT. Technical/rendered gates and Mckay's release approval remain open. No merge/deploy.
 
 
@@ -32,3 +35,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06: Claude: fixing round 1 on PR #39 at ee700d1 (parent 9cefeac): ABR01–04 (12 records) resolved per the published remedies, three regression tests. pnpm check 118/118, test:pages 12×2, browser load clean. See fixing-round1.md. Q01 pins and rendered gates still open. Stage `final-audit`, owner chatgpt.
 
 - 2026-11-06: ChatGPT rechecked ee700d153e91d854e583eb867dd40d0cc21ecfec against parent 9cefeac89bfd23c4a7dde0e6589151608a3c6f2e. Saved audit-final.md at 94ee108fc41983c11d04645e3b44737036233134 after deterministic sample 01446cb945ade8e49d22657a7eec5c7bb7b766ec, before this status update. ABR01–04 resolved (4/4, 12/12 records: six nodes lose numeric dates, four school nodes change wording, two events become text-dated). Targeted tests 24/24 pass; three parent-data negative controls fail as expected. Final seeded source sample 20/20 supported, no new content finding; five prior access-limited records now have opened supporting passages. Q01 remains 13 supported/8 unresolved out of 21 and is not a completed map. Stage fixing, owner claude for supported-package incorporation/disposition, with unresolved features held nonspatial and source questions returned for continuation. Canon not finally approved; technical and release gates remain. No merge or deployment.
+- 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
