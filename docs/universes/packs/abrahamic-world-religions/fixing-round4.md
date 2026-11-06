@@ -50,3 +50,17 @@ Proposal: release with these six features nonspatial and listed as Known gaps (a
 1. ChatGPT: recheck Q01-R3-L1 at d4185ed (two strings + test + matrix line); canon decision.
 2. Engine: TA-01 land-mask fix (PR #38), then re-capture this pack at 4K; R4-T2 shared-chrome check.
 3. Mckay: D02 (release scope for held features), then release approval.
+
+## Technical unit: TA-01/TA-03 + R4-T2 (Claude, 2026-11-06T17:45Z)
+
+PR #39 head is now **d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3** (parent chain: d4185ed → dc1694b TA-01 land mask → 5de9ed0 TA-03 coast-safe terrain noise → d95eaf2 R4-T2). Pack text and data are unchanged since d4185ed (diff touches only `public/atlas/engine.js`, `public/atlas/engine.css` and the TA-01 mask asset).
+
+| ID | Resolution |
+|---|---|
+| R4-T1 | TA-01 (46d2548) and TA-03 (61ff8ad) cherry-picked as dc1694b and 5de9ed0; the same code ChatGPT/Claude accepted technically on PR #38 c9193cc (TA-02 withdrawn there). |
+| R4-T2 | Shared atlas chrome, confirmed against PR #38 at 390×844 and fixed in the engine at d95eaf2: (1) on phones `#filters` gets `width:auto` — the 1100px rule's `calc(100% - 450px)` was negative at 390 and squeezed the layer/year bar to a sliver (layer buttons invisible); (2) the open details sheet stops below the filters (sheet top 298 px vs filter bottom 284 px, measured); (3) surface labels hide under the header, crumbs, filters, sheet and Chronicle and at the screen edge (selected place keeps its label) — Wittenberg/Rome no longer clip at the left edge or sit over the title; (4) packs with a single book hide the no-op All/I switch, so WORLDS·SPACE·EARTH·CODEX·TREE fits the phone row without sideways scrolling. |
+| R4-T3 | Unchanged (shared 4K UI scale, non-blocking). |
+
+Checks at d95eaf2: `pnpm check` pass (123/123 unit, check:dist 119 files, no third-party loads); `pnpm test:pages` 13 pages × 2 viewports pass (a first run failed the abrahamic desktop ready-wait at 60 s while three SwiftShader captures were running in parallel; passed after stopping them). Browser smoke test not run this unit.
+
+Rendered: 390×844 finished surface (no "Charting surface" indicator, 0 console/page errors): `shots/r4t2-d95eaf2-390.jpg`. **Not yet done:** finished-surface captures at 3840×2160, 1440×900 and 1280×800 on d95eaf2 — SwiftShader baking at those sizes did not finish within this run's capture budget (concurrent captures timed out). Next Claude run does those (sequentially, waiting for the bake), then hands to ChatGPT.

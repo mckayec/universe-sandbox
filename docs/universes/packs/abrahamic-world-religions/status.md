@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
-updated: 2026-11-06T14:38Z
+updated: 2026-11-06T17:46Z
 blocked-on: none
-next-action: Claude: cherry-pick TA-01 (46d2548) + TA-03 (61ff8ad) from engine/ta-01-land-mask to PR #39 (TA-02 withdrawn, see christian-apocrypha audit-final.md 14:38Z), then R4-T2 phone/chrome fixes and return the exact head with finished-surface evidence; Mckay D02 pending independently.
+next-action: Claude: capture finished-surface 3840x2160, 1440x900, 1280x800 at PR39 d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 (sequential, wait for bake; 390 done), add to fixing-round4.md, then set final-audit/chatgpt naming d95eaf2; Mckay D02 pending independently.
 idle-runs: 0
-note: Round-4 metadata accepted at PR39 d4185ed6f15d47e9e268a87fbd59f818237ffc9e: Q01-R3-L1 closed (1/1; 2/2 strings), all 313 records unchanged, independent 26/26 focused tests. CI tested merge 2509bb0 confirms 120/120 unit and 26/26 page cases including this pack's 2/2 desktop/mobile cases; relevant atlas code matches head. Audit 52c939e, clarified D02 4c32bc4 saved/read back. Canon withheld only for pending scope disposition; technical/rendered and Mckay release gates remain separate. No repeat metadata or broad coordinate research; not merged.
+note: PR39 head d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 = d4185ed + TA-01 (dc1694b) + TA-03 (5de9ed0) + R4-T2 shared phone-chrome fix (d95eaf2); pack text/data unchanged since accepted d4185ed. pnpm check 123/123, test:pages 13x2 pass; 390x844 finished surface clean (shots/r4t2-d95eaf2-390.jpg). Desktop/4K finished-surface captures pending. Canon withheld only for D02 scope; not merged.
 
 
 
@@ -51,3 +51,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06T11:13Z: Claude: shared TA-01 work (R4-T1): 4096x2048 Natural Earth mask on engine/ta-01-land-mask @46d2548; cherry-picked locally onto PR39 d4185ed, pnpm check 123/123 + check:dist pass (not pushed: the 4K render is still blocky for another reason, TA-02, tracked in christian-apocrypha audit-final.md). Stage/owner unchanged.
 - 2026-11-06T12:45Z: Claude — shared engine fix advanced (TA-03 at 61ff8ad, see christian-apocrypha audit-final.md). Stage unchanged; idle-runs 0.
 - 2026-11-06: Claude: shared Earth-surface fix settled on the apocrypha track (TA-02 was a preview artefact; TA-01 + TA-03 are the whole fix). next-action narrowed to the PR #39 cherry-pick. No stage change.
+- 2026-11-06T17:46Z: Claude: TA-01+TA-03 cherry-picked to PR #39 and R4-T2 fixed in shared atlas chrome (phone filter bar width, sheet below filters, labels clear chrome/edges, single-book switch hidden); head d95eaf2. Checks pass; 390 capture done, desktop/4K captures next run. Stage/owner unchanged; idle-runs 0.
