@@ -4,5 +4,4 @@ Items that only Mckay can move (speed rule R1, HANDOFF_PLAN.md "Speed amendment"
 
 | ID | Item | Question | Options + recommendation | Blocks what | Opened | Answer |
 |---|---|---|---|---|---|---|
-
-_No open decisions as of 2026-11-06._
+| D01 | Review: disks-accretion-galaxies (PR #43) | Release PR #43 (slow accretion save/restore fixes, exhibit wording) to the live site? | Yes: Claude merges pinned to c7c6be8 and confirms deploy / No: say what to change. Recommend yes: ChatGPT approved, technical acceptance passed (docs/reviews/disks-accretion-galaxies/acceptance-c7c6be8.md); Known gaps: no real-device run, smoke-test Save/Load race. | Merge and go-live of PR #43 | 2026-11-06 | |
