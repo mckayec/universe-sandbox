@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: record final canon/source-confidence disposition for PR24 at 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef (technical evidence in technical-r5-4a13b1b.md); if approved, hand to Mckay with a DECISIONS.md release question
-updated: 2026-11-06T06:21Z
+next-action: Claude: write source-confidence-dispositions.md mapping the 21 provisional lead IDs and inherited Bressia remainder to current fields and evidence/visible qualification/removal; preserve accepted cuts and return an exact implementation SHA if copy changes
+updated: 2026-11-06T07:21Z
 idle-runs: 0
-note: Claude technical pass done at 4a13b1b: CI 42166895552 success; pnpm check 89/89; Heliopolis rendered/keyboard probe at 1440x900 and 390x844 (fires once uninterrupted, once on replay, not after downgrade; no errors). Technical: approved. Canon/source-confidence and Mckay release gates remain. Not merged.
+note: Final source disposition a6df690e61e46d1cb98af4eb5a5204a49e0a6fbf saved/read back. Canon withheld at PR24 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef: 40/40 historical lead tags reconciled (14 C,21 L,5 U), not 40 new source confirmations. 21 L rows are a finite disposition worklist, not 21 proven errors. Timer R4-C1 remains closed; CI89/89 unit and24/24 pages independently confirmed. Claude technical sign-off recorded; new rendered evidence remains builder-attributed. Broad research deferred under R3; no release question until canon disposition accepted.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -49,3 +49,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 
 - 2026-11-06T05:20Z: ChatGPT completed R5 at PR24 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef (engine dd1a993; parent a0d8726), open/unmerged. Read actual three-file diff and complete timer/lifecycle source, previous corrections/review and builder evidence. R4-C1 closed (1/1), 0 new blockers; historical R3 source/state groups now 3/3 accepted at their recorded limits, without new primary-book certification. Exact committed VM tests 7/7 pass; independent generation-only and natural-expiry probes 2/2 pass; same suite on parent produces expected 5/7 failures. CI run 42166895552 was still installing Chromium with page checks pending at the 05:19Z read; full local/CI validation is not newly claimed. Saved and verified implementation-review-r5.md at f3f96185be2141044e98c55704b2aa1b4850df9d before status. Implementation-review/chatgpt → fixing/claude solely for remaining technical/rendered and final-release evidence; do not repeat the unchanged timer repair.
 - 2026-11-06T06:21Z: Claude: recorded CI 42166895552 success at 4a13b1b; Heliopolis interruption/replay/downgrade rendered + keyboard probe at two sizes (technical-r5-4a13b1b.md, heliopolis-r5-probe.cjs, two shots). Technical: approved. fixing/claude → implementation-review/chatgpt for final canon/source-confidence disposition.
+
+- 2026-11-06T07:21Z: ChatGPT recorded final-source-disposition.md at a6df690e61e46d1cb98af4eb5a5204a49e0a6fbf and verified before this handoff. Exact PR24 head remains 4a13b1b; timer closure preserved. Independently inspected completed CI42166895552 logs (89/89 unit,24/24 page cases) and tested-merge delta; read Claude's diagnostic rendered probe without relabeling it independent assertion evidence. Historical 40-row confidence inventory =14 C/21 L/5 U; 21 candidate L leads and inherited Bressia remainder need a current-field evidence/qualification/removal disposition. Three exact-head source-file spot-inspections demonstrate retained provisional copy; no new primary-book claims certified. Canon not approved; implementation-review/chatgpt → fixing/claude for source-confidence-dispositions.md using existing evidence, not open-ended research or repeated timer repair. Receipt11339e9aef2891611b0b19411997388f2cbeefcc records both bounded review units and unavailable usage counters. No site changes, formal approval, merge or deploy.
