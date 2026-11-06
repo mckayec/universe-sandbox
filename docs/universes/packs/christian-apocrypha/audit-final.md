@@ -140,3 +140,30 @@ Same setup as checkpoint 1: exact PR #38 head **c9193cc3f261898ac246f403c5fa91c5
 **Known gaps (non-blocking):** (1) frame time and memory on a real GPU and a physical phone cannot be measured in this sandbox (software GL; frame times here are relative only); (2) the 480x270-during-bake harness case above is unreproduced; (3) `test:browser` pre-existing Save/Load timeout (shared disposition with other reviews).
 
 **Technical: approved at c9193cc3f261898ac246f403c5fa91c593494dbb.** Canon was approved at caf70a8; ChatGPT to confirm it carries over to c9193cc (engine-only diff above) before the pack goes to Mckay.
+
+---
+
+## Canon carry-forward — engine-only return, 2026-11-06 (ChatGPT)
+
+**PR #38, branch `pack/christian-apocrypha`, exact audited head `c9193cc3f261898ac246f403c5fa91c593494dbb`.** Previous canon-approved head: `caf70a87b574da1073c2147e73d909eb2a9193ed`. This section supersedes the earlier revision-specific handoff and technical-pending statements for the current head, without rewriting their history.
+
+### Independently checked revision evidence
+
+- Re-read the current handoff, build audit, build report and final audit. GitHub reports PR #38 open and unmerged at the head above.
+- Inspected the complete [two-commit comparison](https://github.com/mckayec/universe-sandbox/compare/caf70a87b574da1073c2147e73d909eb2a9193ed...c9193cc3f261898ac246f403c5fa91c593494dbb) and both non-truncated recursive Git trees. **6/6 changed blob paths accounted for:** two Earth-mask PNGs, `public/atlas/engine.js`, `public/atlas/solar-tex.js`, `scripts/make-earth-mask.py`, and `tests/earth-mask.test.ts`. No other blob changed or was removed.
+- Fetched the actual current pack and all four changed text files at the exact head. The pack blob is **`98884fd9291961c5c4bc0270d221516a5f0f5c7d` at both revisions**. Its labels, chronology, spoiler gates, source/confidence qualifications, coordinates and content therefore remain identical. The inherited inventory is **327 events / 706 base codex entries / 77 later additions / 5 anchors**, not newly researched counts.
+- The engine delta selects a smaller mask for constrained devices and fades procedural relief at the coastline; the solar delta limits its mask working copy. Neither changes event-to-place associations, source claims, layer gating or narrative geography. This is a change to modern-Earth rendering, not evidence for exact ancient locations.
+- The **20/20 previously selected sample entries** are unchanged by whole-pack blob identity. Their existing source checks, the two resolved APQ-004/APF-001 corrections, accepted addendum dispositions, excluded Meqabyan U records and visible coverage/model notices carry forward. **0 new canon findings.** No new source sampling, full primary-text rereading or separate Deep Research invocation is claimed.
+- Independently inspected [Actions run 42235193308](https://github.com/mckayec/universe-sandbox/actions/runs/42235193308), associated with this head, and build job 127950858697: format, build, unit tests, distribution checks and standalone-page steps succeeded; deployment was skipped. This is remote job evidence, not a fresh local test run or a browser-smoke pass. The reported **105/105 unit tests and 24/24 page cases** remain Claude's counts; this pass verified step outcomes, not log-level counts.
+
+### Technical evidence and retained limits
+
+Claude's 16:25Z section explicitly signs **Technical: approved at c9193cc3f261898ac246f403c5fa91c593494dbb**, reports completed HD captures at **4/4 required viewport sizes**, and dispositions TA-01/TA-03 as fixed and TA-02/TA-04 as withdrawn. The referenced capture files exist on main. Their visual judgments, performance measurements and reproduction results remain builder-attributed; this canon carry-forward did not independently execute or visually reproduce them.
+
+Keep the three disclosed technical Known gaps visible to Mckay: physical-phone/real-GPU timing and memory are unmeasured; the extreme temporary 480x270 capture case is unreproduced; the pre-existing simulator Save/Load browser-smoke timeout remains a failure, not a pass. Claude has classified these as non-blocking for its technical sign-off. Canon approval does not certify those tests or erase those limits.
+
+### Verdict and next owner
+
+Both role-specific sign-offs now name the same implementation revision. Move to **ready-for-owner / mckay**, with a release question in DECISIONS.md. Approval covers only the previously narrowed implemented scope and this exact head; subsequent content or code changes require the appropriate recheck. Mckay has not approved this release, and no merge or deployment was performed.
+
+**Canon: approved at c9193cc3f261898ac246f403c5fa91c593494dbb.**
