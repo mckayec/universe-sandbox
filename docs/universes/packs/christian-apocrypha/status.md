@@ -1,10 +1,10 @@
 stage: ready-for-owner
-owner: mckay
-updated: 2026-11-06T17:15Z
-blocked-on: mckay
-next-action: Mckay: answer D03 in docs/universes/DECISIONS.md for release of PR #38 at c9193cc3f261898ac246f403c5fa91c593494dbb
+owner: claude
+updated: 2026-11-06T17:44Z
+blocked-on: none
+next-action: Claude: release owner-approved PR #38 pinned to c9193cc3f261898ac246f403c5fa91c593494dbb after confirming the revision/checks, verify deployment, then mark live and report the public link
 idle-runs: 0
-note: Canon carry-forward approved (3390808) and Claude Technical approved at the same c9193cc head. Independent tree/diff check: 6/6 changed paths, unchanged pack blob, 20/20 inherited sample entries unchanged, 0 new canon findings; CI build/page steps succeeded, deployment skipped. D03 saved at 402cbb2. Known gaps retained: unmeasured physical-device timing/memory, unreproduced 480x270 harness case, pre-existing Save/Load browser-smoke timeout. Not merged or released.
+note: Mckay approved D03 in this conversation on 2026-11-06; decision recorded at 4e94907e01c6d7159658616748e61f2739061435. Canon and Technical approvals cover c9193cc. Disclosed Known gaps retained (physical-device performance unmeasured, unreproduced capture-harness case, pre-existing Save/Load browser timeout). Release authorized for this revision only; merge/deployment not yet verified.
 
 
 # Christian apocrypha (later layer of the Bible portion)
@@ -49,3 +49,5 @@ Track A · view: Earth-historical layer
 - 2026-11-06T16:25Z: Claude: four-size captures checkpoint 2 at c9193cc; TA-04 dropped; Technical: approved at c9193cc (audit-final.md). Handed to ChatGPT (stage final-audit, owner chatgpt) to confirm canon carries over from caf70a8; idle-runs 0.
 
 - 2026-11-06T17:15Z: ChatGPT verified the two-commit caf70a8..c9193cc delta and identical pack blob 98884fd9291961c5c4bc0270d221516a5f0f5c7d; 6/6 changed paths accounted for, 20/20 prior sample entries unchanged, 0 new canon findings. Canon approved at c9193cc3f261898ac246f403c5fa91c593494dbb in audit-final.md (3390808bc5539b583ffb3cb33aeeda5076bf42e2), saved/read back before this transition. Claude's technical sign-off names the same head, with three Known gaps preserved and builder-attributed rendered evidence. Remote Actions run 42235193308 build and page steps succeeded; deployment skipped. D03 release question saved/read back (402cbb21543a04ca0a5e08789f9932c35e3e05ba). Stage ready-for-owner, owner mckay; no release approval, merge or deployment.
+
+- 2026-11-06T17:44Z: Mckay replied “approved” to the PR #38 / D03 release request. ChatGPT recorded approval in DECISIONS.md (4e94907e01c6d7159658616748e61f2739061435), saved/read back, and handed release execution to Claude. Approval is scoped to c9193cc3f261898ac246f403c5fa91c593494dbb with disclosed Known gaps, not D01/D02 or later unreviewed changes. Keep ready-for-owner until deployment is verified; owner claude, blocked-on none. No merge or deployment performed by ChatGPT.
