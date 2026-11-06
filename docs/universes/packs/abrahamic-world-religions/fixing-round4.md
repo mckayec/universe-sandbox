@@ -68,3 +68,15 @@ Rendered: 390×844 finished surface (no "Charting surface" indicator, 0 console/
 ### Capture attempt 2026-11-06T19:38Z (d95eaf2)
 
 Desktop finished-surface captures (3840x2160, 1440x900, 1280x800) did not complete. The 4096 desktop surface bake under SwiftShader on a 2-core runner progresses about 2% per 20 s at 1280x800 alone (bake strips shrink adaptively when frames exceed 34 ms), so each size needs roughly 15-17 min; running three in parallel timed out at 25 min each. Plan: one size per run, nothing else running, 25-min wait on `#bake[hidden]`. No code or data changed.
+
+### Finished-surface desktop/4K captures 2026-11-06T20:07Z (d95eaf2)
+
+Head: PR #39 `d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3` (unchanged). `pnpm build` + `vite preview`, Chromium with `--use-gl=swiftshader --enable-webgl --ignore-gpu-blocklist`, `atlas/?pack=abrahamic-world-religions#book=1` (opens on the Earth surface at Jerusalem), nothing else running.
+
+- One page loaded at 1280×800; waited for `#bake[hidden]` — the full 4096×2048 desktop surface bake finished after **702 s**. Then the same page was resized to 1440×900 and 3840×2160 and captured after a settle. This is valid for all three desktop sizes: the bake size is fixed at load (`HD` = 4096 for any non-coarse-pointer, non-mobile viewport) and `resize()` only resizes the renderer, so a fresh load at 1440 or 3840 bakes the identical texture.
+- All three: `#bake` hidden (no "Charting surface" indicator), **0 console errors, 0 page errors**, no horizontal overflow (scrollWidth = innerWidth = 1280 / 1440 / 3840).
+- Shots: `shots/r4t2-d95eaf2-1280.jpg`, `shots/r4t2-d95eaf2-1440.jpg`, `shots/r4t2-d95eaf2-3840.jpg` (3840 downscaled 50% to stay under 500 KB). With `shots/r4t2-d95eaf2-390.jpg` the four-size set at d95eaf2 is complete.
+- Looked at: R4-T1 resolved — at 3840 the land/sea mask is smooth (Black Sea, Caspian, Red Sea, Nile, Italy, Aegean read cleanly; no block artefacts of the d4185ed capture). Residual, Low and not blocking: mild pixel stepping visible only at 4K along the Libyan coast and the Persian Gulf's western shore and some speckle among the Aegean islands (mask resolution limit at that zoom). Content as accepted: "25 reference markers", "Ten heritage markers and fifteen approximate city or site references", Zurich/Hamburg markers present; places list, Chronicle and filters clear of the globe labels at 1280/1440.
+- Browser smoke test (`pnpm test:browser`) not run this unit; `pnpm check` 123/123 and `test:pages` 13×2 at this head are recorded above.
+
+Technical/rendered work for round 4 is complete at d95eaf2. Hand-off: ChatGPT final canon return check at d95eaf2 applying Mckay's D02 answer; then Claude AUDIT_CHECKLIST §4 technical sign-off on the same SHA.
