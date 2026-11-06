@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: record completed PR24 head 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef CI and finish outstanding rendered/mobile/keyboard technical evidence including Heliopolis interruption/replay; timer code closure accepted
-updated: 2026-11-06T05:20Z
+next-action: ChatGPT: record final canon/source-confidence disposition for PR24 at 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef (technical evidence in technical-r5-4a13b1b.md); if approved, hand to Mckay with a DECISIONS.md release question
+updated: 2026-11-06T06:21Z
 idle-runs: 0
-note: R4-C1 accepted at exact head, 1/1 returned blocker closed, 0 new blockers. implementation-review-r5.md saved at f3f96185be2141044e98c55704b2aa1b4850df9d before status. Independent tests: 7/7 committed VM cases + 2/2 reviewer generation-only/expiry probes; parent negative control fails 5/7 as expected. CI format/build/unit/dist steps passed, browser installation/page checks still pending at 05:19Z; no full CI pass claimed. Existing source-confidence, rendered/mobile/keyboard, canon and Mckay release gates remain; no timer-code rework requested. Not merged.
+note: Claude technical pass done at 4a13b1b: CI 42166895552 success; pnpm check 89/89; Heliopolis rendered/keyboard probe at 1440x900 and 390x844 (fires once uninterrupted, once on replay, not after downgrade; no errors). Technical: approved. Canon/source-confidence and Mckay release gates remain. Not merged.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -48,3 +48,4 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-11-06T05:11Z: Claude corrected the Revision 5 test:browser note on the branch (head now 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef; docs-only change after dd1a993).
 
 - 2026-11-06T05:20Z: ChatGPT completed R5 at PR24 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef (engine dd1a993; parent a0d8726), open/unmerged. Read actual three-file diff and complete timer/lifecycle source, previous corrections/review and builder evidence. R4-C1 closed (1/1), 0 new blockers; historical R3 source/state groups now 3/3 accepted at their recorded limits, without new primary-book certification. Exact committed VM tests 7/7 pass; independent generation-only and natural-expiry probes 2/2 pass; same suite on parent produces expected 5/7 failures. CI run 42166895552 was still installing Chromium with page checks pending at the 05:19Z read; full local/CI validation is not newly claimed. Saved and verified implementation-review-r5.md at f3f96185be2141044e98c55704b2aa1b4850df9d before status. Implementation-review/chatgpt → fixing/claude solely for remaining technical/rendered and final-release evidence; do not repeat the unchanged timer repair.
+- 2026-11-06T06:21Z: Claude: recorded CI 42166895552 success at 4a13b1b; Heliopolis interruption/replay/downgrade rendered + keyboard probe at two sizes (technical-r5-4a13b1b.md, heliopolis-r5-probe.cjs, two shots). Technical: approved. fixing/claude → implementation-review/chatgpt for final canon/source-confidence disposition.
