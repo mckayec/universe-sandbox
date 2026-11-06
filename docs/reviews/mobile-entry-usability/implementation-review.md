@@ -77,3 +77,44 @@ One code change found by the new test: Chrome logged “Ignored attempt to cance
 - PR CI: see status History.
 
 Still open (unchanged): real iPhone Safari / Android Chrome / VoiceOver, 200% text, reduced motion, rotation with sheets open, safe-area changes, long-press on real touch hardware, keyboard focus order with the CSS-reordered Undo/Redo, and the optional first-use entry card (not built in this pass; the review's direction is noted for it).
+
+## Return review — 2026-11-05 America/Denver (2026-11-06 UTC)
+
+Reviewer: ChatGPT. Reviewed PR #44, branch `fix/mobile-entry-usability`, exact head `4ffda2d28678588c829751339dcaf619711ccc40`, parent `91b9304140b18e358cf3f1be5f0f6808edd83516`. PR is open, draft and unmerged.
+
+### Scope and independently checked evidence
+
+Read the existing research, addendum, implementation report, original findings and Claude's resolutions. Inspected all 9/9 files in the complete PR diff and all 5/5 files in the return commit, including the full new `tests/mobile-touch.mjs`, pointer handlers, mode/selection logic, package script and workflow. This is a bounded M1/M2 return review, not a fresh rendered acceptance pass for every B1–B7 claim.
+
+Independently fetched [run 41280511228](https://github.com/mckayec/universe-sandbox/actions/runs/41280511228), its job metadata and the full [build-job log](https://github.com/mckayec/universe-sandbox/actions/runs/41280511228/job/124771298817). Run head_sha identifies the reviewed PR head; checkout actually tested synthetic merge commit `43abdc6fb857f064759a205b0b5bf37370be54b7` (merging the head into `48e7ca851474b34b811a13ce1106385eff215320`). The [head-to-tested-merge comparison](https://github.com/mckayec/universe-sandbox/compare/4ffda2d28678588c829751339dcaf619711ccc40...43abdc6fb857f064759a205b0b5bf37370be54b7) contains only documentation/coordination-file differences: application, tests, dependencies and workflow match the reviewed head.
+
+Confirmed results in those logs:
+
+- Formatting check, production build and distribution check passed; distribution check covered 111 files.
+- Unit tests: 82/82 passed, zero failed.
+- Standalone pages: 12 pages × 2 viewports = 24/24 page/viewport cases passed.
+- Mobile touch step executed `pnpm test:touch`, with all four sequential completion markers present: `B6 ok`, `M1 ok`, `pinch ok`, and `mobile touch checks passed (Chromium touch emulation)`. Reading the test confirms these markers follow awaited assertions, including the final mouse double-click case.
+- Deployment was skipped. **The workflow does not run `pnpm test:browser`.** Its green outcome does not resolve the separately reported Save/Load smoke failure. Earlier wording that CI “will run it” or broadly passed “browser tests” must be read as standalone-page/touch tests only.
+
+I did not launch an independent browser/device session or rerun mutation experiments in this review. Claude's mutation and local Save/Load baseline reports remain attributed evidence; they are not relabeled independent reproductions.
+
+### Finding dispositions
+
+| ID | Disposition at this head | Basis and boundary |
+| --- | --- | --- |
+| M1 | Closed at source + recorded Chromium-CI level | The hint now explicitly says “to focus: Inspect, tap an object, then Focus.” Navigate still returns through the pan path before selection; Inspect selects the hit body, and selection enables Focus. The assertion suite follows the corrected sequence with no initial selection and with a different object placed first, checks Helios selection and focused frame, and checks that Navigate dragging preserves count/selection. This resolves the misleading instruction without changing Navigate semantics. |
+| M2 | Closed at test-implementation + recorded Chromium-CI level | The supported package command and workflow now run assertions. Portrait calibration verifies canvas before placement and Clear all beneath the same point after placement; portrait and landscape cases require zero accidental Clear clicks, increased paused object count, explicit Clear to zero and Undo restoration. Additional assertions cover pinch scale/count, cancelled-touch no-placement plus subsequent placement, console/page errors, and desktop mouse double-click focus. These replace logging-only evidence with failing checks. Claude's two negative mutation runs were not independently repeated. |
+
+**Count: 2/2 requested return findings closed at the stated evidence level; 0 new blocking code findings in this bounded return diff.** This does not certify the complete mobile acceptance matrix.
+
+The additional `e.cancelable` guard limits `preventDefault()` to cancelable touchend events. It preserves the intended synthetic-click suppression on the tested placing path while avoiding attempts to cancel noncancelable events. The source comment's statement about drag/pinch clicks is not evidence for all browsers; actual Safari and hardware behavior remains a separate check.
+
+### Acceptance still owned by Claude
+
+Keep the existing real-device and accessibility gates open: iPhone Safari, Android Chrome, VoiceOver, enlarged text, reduced motion, rotation with sheets open, safe-area/browser-bar changes, repeated/long-press gestures, and keyboard focus order after visual Undo/Redo reordering. Record each result against an exact revision, distinguishing passed, failed and unavailable. Retain a precise disposition of the separate `test:browser` Save/Load failure; successful page/touch CI is not its substitute.
+
+Reopened the primary [W3C target-size guidance](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced), [reflow guidance](https://www.w3.org/WAI/WCAG22/Understanding/reflow), and [pointer-gesture guidance](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html) on 2026-11-06 UTC. They continue to support the brief's 44-CSS-pixel project target, relevant non-excepted reflow checks, and single-pointer alternatives to nonessential complex gestures. They do not establish that this implementation meets those criteria.
+
+The optional first-use entry card, no-WebGL resilience investigation and human journey comparison are still open scoped follow-up work; nothing in this review represents those as built or measured. Preserve the earlier prototype direction and saved-session behavior. Do not restart M1/M2 unchanged; return materially changed implementation or new acceptance failures for review.
+
+**Verdict: M1 and M2 accepted for this exact revision at source/test/CI level; hand back to Claude for the remaining implementation and acceptance evidence. Not ready for release; Mckay's release approval remains required.**
