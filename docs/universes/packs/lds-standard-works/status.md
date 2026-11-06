@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: narrow two-replacement recheck of RES64-C1/C2 at PR33 head e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 (do not restart the residual batch); then canon verdict or findings
-updated: 2026-11-06T04:55Z
+next-action: Claude: package exact-head final technical/rendered evidence and explicit remaining completeness-scope dispositions for PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25; do not repeat the accepted two-copy recheck
+updated: 2026-11-06T05:18Z
 idle-runs: 0
-note: Checkpoint 66 at PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 (parent a3d5cc4): RES64-C1 (BMV-008 river wording) and RES64-C2 (BMV-223 Emer sentence) applied verbatim in copy_bmc_res96c.py and regenerated; pack diff is exactly the 2 desc lines, regen idempotent, CSVs unchanged. Targeted tests 18/18 (res96c fails 1/5 on parent as expected), pnpm check 171/171, test:pages 13x2. Known gaps unchanged: independent RC64-O1 rendered acceptance, wider vision completeness, finished 4K, physical iOS/Android/GPU; technical and Mckay release gates open. Not merged.
+note: ChatGPT accepted RES64-C1/C2, 2/2 closed, 0 new findings; audit-final.md at 0061dcb553f068b17554305c3ef826c963383ebb. Exactly 2 desc leaves changed; independent targeted 18/18, parent negative control fails 1/5 as expected. Inspected CI 171/171 and 26/26 page cases. Full canon remains withheld pending whole-atlas completeness/confidence disposition and final §4 coverage; independent RC64-O1 rendered, finished 4K, physical device/GPU and Mckay release gates remain open. No merge.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -109,3 +109,5 @@ Track A · view: Earth-historical, layered
 
 - 2026-11-06T04:26Z: ChatGPT completed the bounded checkpoint-62–65 review at exact PR33 head a3d5cc4de273be0590567cde45461b5ebc30fc53; report return-review-a3d5cc4.md committed at 4aac8178004be6469596cb705476da88c9ec196a and read back before this status update. Reconciled 76/76 prior editorial keys, compared all 16 new cards across 14 groups/20 keys, found two Low precision fixes (RES64-C1 river identity; RES64-C2 Emer chronology), and independently passed 18/18 targeted tests. Structural/editorial return accepted with those corrections; source-only layout review does not close independent rendered/device gates. Stage remains fixing; owner chatgpt → claude for the concrete two-description generator correction. Known gaps are retained under the speed amendment, not certified or silently dropped.
 - 2026-11-06T04:55Z: Claude applied RES64-C1/C2 (checkpoint 66) on pack/lds-standard-works at e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25; two-description-only pack diff, targeted tests 18/18, pnpm check 171/171, test:pages pass. Evidence in supplementary-implementation.md 'Checkpoint 66'. Stage final-audit, owner chatgpt for the narrow recheck.
+
+- 2026-11-06T05:18Z: ChatGPT completed the requested narrow checkpoint-66 return at PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25: RES64-C1/C2 closed (2/2), 0 new findings. Reopened both official chapter bodies; exact generator and generated replacements accepted. Whole-pack comparison found only the two desc leaves changed. Local targeted tests 18/18; new RES96-C suite against parent failed the expected 1/5. Independently inspected CI run 42165272882: 171/171 unit and 26/26 page/viewport cases on identified synthetic merge. Saved and verified audit-final.md at 0061dcb553f068b17554305c3ef826c963383ebb before this status handoff. Full canon is not yet approved: remaining completeness/confidence disposition and final §4 coverage stay open; rendered/device/owner gates separate. Final-audit/chatgpt → fixing/claude for a concrete final evidence package, not a repeat of accepted copy or residual research.
