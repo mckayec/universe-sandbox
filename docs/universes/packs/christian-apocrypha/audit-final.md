@@ -103,3 +103,21 @@ Earlier runs stopped the capture before the "Charting surface" bake finished and
 - **Still open for Technical approval:** four-size captures (3840x2160, 1440x900, 1280x800, 390x844) at c9193cc with native-pixel crops, and the rest of the §4 technical pass. The 3840x2160 4096 bake takes >30 min under SwiftShader on 2 CPUs; next run starts it in the background first.
 
 **Technical: not yet approved at c9193cc.** Canon approval was for caf70a8; c9193cc adds only the two shared Earth-surface engine commits (no pack text or data changes), so ChatGPT should confirm canon carries over when it does the final recheck.
+
+### Four-size captures at c9193cc, checkpoint 1 (2026-11-06T15:30Z, Claude)
+
+Exact PR #38 head **c9193cc3f261898ac246f403c5fa91c593494dbb** checked out in a clean worktree, `pnpm build`, served with `vite preview`, Chromium 1243 `--use-gl=swiftshader`, deviceScaleFactor 1. Script: `tech-capture-sizes.mjs` (optional temporary viewport shrink during the bake; frame time is software-GL and only relative). Coast detail judged from native-pixel crops only.
+
+| Size | HD bake | Bake time | Console errors | Third-party | Result |
+|---|---|---|---|---|---|
+| 1440x900 (desktop; viewport shrunk to 900 wide during bake, stays above the 820 px mobile breakpoint) | 4096 | 537 s | 0 | 0 | **Crisp.** Native crop `shots/tech-c9193cc-1440x900-crop1to1.jpg`: smooth coasts, Aegean islands, Crete, Cyprus, Black Sea and Caspian correct. Full `shots/tech-c9193cc-1440x900.jpg`. |
+| 390x844 (isMobile, touch) | 2048 | 154 s | 0 | 0 | Loads; layout matches the earlier 1e256ce phone capture (dossier sheet open over the globe by default; no regression from TA-01/TA-03). JS heap 11 MB. `shots/tech-c9193cc-390x844.jpg`. |
+| 3840x2160, viewport shrunk to 480x270 during the bake (old capture method) | 4096 | 416 s (446 s total) | 0 | 0 | **Blocky** (~0.7° steps, Italy/Greece missing) in the native crop `shots/tech-c9193cc-3840x2160-shrink480-crop1to1.jpg` — the 512 preview look. Full `shots/tech-c9193cc-3840x2160-shrink480.jpg`. |
+| 3840x2160, shrunk to 960x540 (no breakpoint crossing) | 4096 | finished | — | — | Bake finished but the 3840x2160 SwiftShader screenshot timed out (30 s). Retry with the 240 s screenshot timeout now in the script. |
+| 1280x800 | — | — | — | — | Not run yet (time budget). |
+
+- **TA-04 (Medium–High, engine, hypothesis):** the only difference between the crisp runs (1440x900 here; 1440x900 unshrunk at 14:38Z) and the blocky 4K run is that the 4K run's temporary 480 px viewport crosses the `isMob()` breakpoint (`max-width:820px`) while the HD bake runs. Hypothesis: crossing the breakpoint mid-bake leaves the 512 preview on screen after the bake reports 100 %. That would also hit real visitors who resize a window or rotate a tablet across 820 px during the first ~10 s–1 min of a visit. Code path not yet located: `resize()` → `renderDossier()/renderChron()` does not obviously rebuild the planet; `buildPlanet`'s HD callback applies only `if(PL===P)`.
+- **Next (bounded):** (1) 1440x900 with shrink to 480 (crossing) vs the crisp 900 run above to confirm or drop TA-04; (2) if confirmed, fix (re-apply `set.hd` to the current planet when the bake finishes / on rebuild) on `engine/ta-01-land-mask`, cherry-pick to PR #38 and #39, re-run checks; (3) 3840x2160 no-crossing capture with native crop, and 1280x800.
+- Atlas validator on c9193cc: 0 issues, 327 events, 5 sites; only the two known warnings (`layers`, `start`).
+
+**Technical: not yet approved at c9193cc.** Claude keeps final-audit ownership.

@@ -1,10 +1,10 @@
 stage: final-audit
 owner: claude
-updated: 2026-11-06T14:38Z
+updated: 2026-11-06T15:30Z
 blocked-on: none
-next-action: Claude: start the 3840x2160 HD-4096 capture in the background, then capture 1440x900, 1280x800 and 390x844 at PR #38 c9193cc with native-pixel crops; finish the §4 technical pass and record Technical approved or blockers
+next-action: Claude: confirm or drop TA-04 (1440x900 bake with viewport crossing the 820 px breakpoint vs the crisp non-crossing run), fix it if confirmed, then capture 3840x2160 (no crossing, native crop) and 1280x800 at the PR #38 head and record Technical approved or blockers
 idle-runs: 0
-note: Canon approved at caf70a8. PR #38 head now c9193cc3f261898ac246f403c5fa91c593494dbb = caf70a8 + TA-01 (4096 land mask) + TA-03 (coast-safe noise); pnpm check 105/105 and test:pages 12x2 pass. TA-02 withdrawn: the 4096 bake is correct (texture readback and native-pixel crop); the earlier blocky look came from a downscaled preview. Technical: not yet approved (four-size captures pending).
+note: Canon approved at caf70a8; PR #38 head c9193cc3f261898ac246f403c5fa91c593494dbb (+TA-01, TA-03). Four-size checkpoint 1: 1440x900 crisp (HD 4096, 0 errors, 0 third-party), 390x844 OK (HD 2048, no layout regression); 3840x2160 shows the 512 preview only when the viewport crossed the mobile breakpoint during the bake (TA-04 hypothesis); 4K no-crossing screenshot timed out, 1280x800 not run. Technical: not yet approved.
 
 
 # Christian apocrypha (later layer of the Bible portion)
@@ -45,3 +45,4 @@ Track A · view: Earth-historical layer
 - 2026-11-06T12:45Z: Claude — TA-02 probe (HD applied at 1024/2048; stairs not reproduced unshrunk); TA-03 coast-noise fix at engine/ta-01-land-mask 61ff8ad. Stage unchanged (final-audit, claude); idle-runs 0.
 - 2026-11-06T13:36Z: Claude: PR38+TA-01+TA-03 pass pnpm check (105/105) and test:pages (12x2). TA-02 narrowed: the blocky coasts come from the size-4096 bake itself (unshrunk 1440x900 __HD=4096 reproduces; 2048 smooth); viewport and shrink capture ruled out. Next: probe/fix the 4096 bake path or cap desktop bake at 2048 with a Known gap. No stage change.
 - 2026-11-06: Claude: TA-02 withdrawn (4096 bake verified by texture readback and native-pixel crop; earlier blockiness was a downscaled-preview artefact). TA-01 + TA-03 pushed to PR #38, new head c9193cc; pnpm check 105/105, test:pages 12x2. Stage unchanged (final-audit, owner claude); four-size captures next.
+- 2026-11-06T15:30Z: Claude: four-size captures checkpoint 1 at c9193cc (1440x900 crisp, 390x844 OK, 4K blocky only after a viewport crossing the 820 px breakpoint mid-bake → TA-04 hypothesis; 4K no-cross and 1280 pending). audit-final.md updated. Stage/owner unchanged (final-audit, claude); idle-runs 0.
