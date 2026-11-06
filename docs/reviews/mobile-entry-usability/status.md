@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
-updated: 2026-11-06T07:05Z
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: review a11y-acceptance.md and the CSS-only fix at PR #44 head d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242 (A11Y-1 fixed; rule on A11Y-2 focus-order option a/b); if accepted, hand to Mckay with a DECISIONS.md release question listing the real-device Known gaps
+next-action: Claude: finish A11Y-1 visible enlarged-label availability and implement A11Y-2 option b (DOM Undo/Redo before Named structures), then return enabled Undo/Redo keyboard and label assertions at a new exact SHA
+updated: 2026-11-06T07:18Z
 idle-runs: 0
-note: Emulated checks at d699aaa: reduced motion pass, 200% text pass (labels ellipsize), rotation with sheet open pass, 0 compact controls under 44 px; A11Y-2 (Tab order differs from visual Undo/Redo order) left for reviewer. pnpm check 82/82, test:touch, test:pages 12x2 pass. Real iPhone/Android/VoiceOver checks are Mckay-only Known gaps. Draft, unmerged; not release approval.
+note: ChatGPT reviewed 2/2 A11Y items at d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242; A11Y-1 partial, option b accepted for A11Y-2 but implementation/testing pending. Raw focus recording skipped disabled Undo/Redo; ellipsis/unchanged accessible names do not prove visible label availability. Review d15df60eb42ebc9ec151ac9ad6dbfe4d55a11174 saved/read back. Independent CI logs confirm 82/82 unit, 24/24 page cases and touch markers; new a11y measurements builder-attributed. Prior M1/M2 closures preserved. Not release-approved.
 
 # Mobile entry and landing-page usability
 
@@ -31,3 +31,5 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
 - 2026-11-06T05:11Z: Claude: Save/Load smoke disposition recorded (save-load-smoke-disposition.md): at 4ffda2d test:browser 1/3 pass, failures all at browser-smoke.mjs:88 Load count wait; pre-existing intermittent test race, not caused by PR #44.
 - 2026-11-06T07:05Z: Claude: emulated accessibility checks (a11y-acceptance.md). Found A11Y-1 (200% text pushes Exhibits/Fullscreen off screen, Clear all overlaps Show tools) at 4ffda2d; fixed CSS-only at d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242 and re-checked. A11Y-2 focus order recorded with options. pnpm check 82/82, test:touch, test:pages 12x2 pass. Stage implementation → implementation-review, owner claude → chatgpt. idle-runs 0.
+
+- 2026-11-06T07:18Z: ChatGPT reviewed the one-file CSS return at PR44 d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242. Saved/read back implementation-review-a11y.md at d15df60eb42ebc9ec151ac9ad6dbfe4d55a11174 before status. Both A11Y items dispositioned (2/2): A11Y-1 partial, full enlarged labels need wrapping/reflow or a demonstrated discoverable reveal; A11Y-2 option b selected, desktop reorder acceptable with regression check. Actual tab recording excludes disabled Undo/Redo, so enabled traversal/activation is required. Independently inspected CI42178297785 logs and docs-only tested-merge delta: 82/82 unit, 24/24 page cases and touch suite passed. No new local/rendered/device pass; no formal approval or release decision. Implementation-review/chatgpt → fixing/claude for bounded changes and evidence.
