@@ -121,3 +121,22 @@ Exact PR #38 head **c9193cc3f261898ac246f403c5fa91c593494dbb** checked out in a 
 - Atlas validator on c9193cc: 0 issues, 327 events, 5 sites; only the two known warnings (`layers`, `start`).
 
 **Technical: not yet approved at c9193cc.** Claude keeps final-audit ownership.
+
+### Four-size captures at c9193cc, checkpoint 2 — Technical: approved (2026-11-06T16:25Z, Claude)
+
+Same setup as checkpoint 1: exact PR #38 head **c9193cc3f261898ac246f403c5fa91c593494dbb** (re-confirmed as the PR head this run), clean worktree, `pnpm build`, `vite preview`, Chromium 1243 `--use-gl=swiftshader`, deviceScaleFactor 1, `tech-capture-sizes.mjs`. Coast detail judged from native-pixel crops only.
+
+| Size | Viewport during bake | HD bake | Bake time | Console errors | Third-party | Result |
+|---|---|---|---|---|---|---|
+| 1440x900 | 480x300 (crosses the 820 px breakpoint) | 4096 | 433 s | 0 | 0 | **Crisp.** Italy, Sicily, Greece, Aegean islands, Crete, Cyprus correct. `shots/tech-c9193cc-1440x900-shrink480.jpg`, crop `-crop1to1.jpg`. |
+| 3840x2160 | 960x540 (no crossing) | 4096 | 515 s | 0 | 0 | **Crisp** in the native crop `shots/tech-c9193cc-3840x2160-crop1to1.jpg` (Mediterranean, Black Sea, Caspian, Red Sea, Persian Gulf; peninsulas and islands present). Full frame downscaled: `shots/tech-c9193cc-3840x2160.jpg`. The faint wavy light/dark boundary between the Black Sea and the Caspian is the procedural terrain tint, not a seam. |
+| 1280x800 | 900x563 (no crossing) | 4096 | 552 s | 0 | 0 | HD set shown (Aegean islands present); layout clean, layer bar wraps to two rows above the Chronicle. `shots/tech-c9193cc-1280x800.jpg`, crop `-crop1to1.jpg`. |
+| 390x844 | — | 2048 | 154 s | 0 | 0 | From checkpoint 1: loads, no layout regression, JS heap 11 MB. |
+
+- **TA-04 dropped.** Crossing the 820 px breakpoint mid-bake does not leave the preview on screen (1440x900 run above is crisp). The single blocky checkpoint-1 run (4K viewport shrunk to 480x270 during the bake) was not reproduced; it only occurs in the review harness's extreme temporary viewport and is recorded as a Known gap, not a blocker.
+- Checks on this exact tree (from 14:38Z, no code change since): `pnpm check` pass (format, build, 105/105 unit tests, check:dist 113 files, no third-party loads); `pnpm test:pages` 12 pages x 2 viewports pass; atlas validator 0 issues (327 events, 5 sites; only the two known warnings). `pnpm test:browser` times out at the pre-existing simulator Save/Load step, same on main; not atlas-related and not run by CI.
+- Diff caf70a8..c9193cc (canon-approved head to current head): `public/atlas/earth-base.png` (1024 to 4096 mask), new `earth-base-2048.png`, `engine.js` (5 lines), `solar-tex.js` (10 lines), `scripts/make-earth-mask.py`, `tests/earth-mask.test.ts`. No pack text or data changed.
+
+**Known gaps (non-blocking):** (1) frame time and memory on a real GPU and a physical phone cannot be measured in this sandbox (software GL; frame times here are relative only); (2) the 480x270-during-bake harness case above is unreproduced; (3) `test:browser` pre-existing Save/Load timeout (shared disposition with other reviews).
+
+**Technical: approved at c9193cc3f261898ac246f403c5fa91c593494dbb.** Canon was approved at caf70a8; ChatGPT to confirm it carries over to c9193cc (engine-only diff above) before the pack goes to Mckay.
