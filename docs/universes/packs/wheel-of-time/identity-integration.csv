@@ -1,0 +1,9 @@
+entity_id,kind,evidence_records,decision,disclosure_rule
+wot-place-caemlyn,place,wot-l13-p01;wot-l14a-p02,same named city; retain separate time-dependent facts,city gate13; burning fact gate14; earliest unresolved
+wot-person-mat,person,wot-l13-c01;wot-l14b-c01,same traveler; Lord Crimson and claimed Mandevwin remain source-specific aliases,alias gates13 and14; do not globally expose at earliest entity gate
+wot-person-rand,person,wot-e1-c01;wot-l14a-e01;wot-d3-c02,reuse named character; attach only gated claims,opening gate1; later claims3 or14
+wot-person-perrin,person,wot-d3-c02;wot-l14a-e01,reuse named character; preserve later scene gate,known-by3 and14; earliest unresolved
+wot-camp-ns,contextual-place,wot-ns-p01,distinct camp outside Tar Valon,prequel gate15
+wot-camp-d3,contextual-place,wot-d3-p01,distinct mountain camp,known-by3
+wot-camp-l13,contextual-place,wot-l13-p05,distinct Band camp near Caemlyn,known-by13
+wot-camp-l14,contextual-place,wot-l14a-p03,distinct unnamed northern camp; no inferred name,known-by14
