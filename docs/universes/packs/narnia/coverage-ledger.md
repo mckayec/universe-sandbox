@@ -1,26 +1,34 @@
-# Narnia coverage ledger — checkpoint 1
-Research commit: 7be2f4f0cbe74c69823995264b08f3492b2b2324
-Date: 2026-11-06
-This is inventory accounting, not a canon audit. Six primary URLs opened directly; the seventh (Horse) opened through the catalogue's HTML link. Selected passages from all seven works inspected; zero complete-book audits claimed.
+# Narnia coverage ledger — checkpoint 2
+Date: 2026-11-06.
+Research commit: `5396b0c20832366a0a52f979cb704595bc14f17d`.
+Sources commit: `7352da2ea826beca39f02ee00c0a874a686e5075`.
+Self-audit commit: `d34021efb353b48cfdf7293659a1c9f57edc3941`.
+Addendum commit: `dc159bdcd353cc9f27a730feaac6f393651dcec2`.
 
-| Work | New place/container rows | Event rows | Journey rows | Codex rows |
+Inventory remains **51 records: 23 places/containers, 14 events, 7 partial journeys, 7 codex**. No new record IDs. Five gate corrections, three edition-metadata completions, one containment clarification and one documented edition-variant case are not inventory growth.
+
+| Eligible by publication book | Place/container IDs by corrected base gate | Events | Journeys | Codex |
 |---|---|---|---|---|
-| Wardrobe | N00, E00, P01–P03 | E01–E02 | J01 | C01 |
-| Caspian | P04–P06 | E03–E04 | J02 | C02 |
-| Dawn Treader | P07–P09 | E05–E06 | J03 | C03 |
-| Silver Chair | P10–P12 | E07–E08 | J04 | C04 |
-| Horse | P13–P15 | E09–E10 | J05 | C05 |
-| Nephew | P16–P18 | E11–E12 | J06 | C06 |
-| Last Battle | P19–P21 | E13–E14 | J07 | C07 |
+| 1 Wardrobe | N00, E00, P01–P03, P06–P07, P16 | E01–E02 | J01 | C01–C02 |
+| 2 Caspian | P04–P05, P13 | E03–E04 | J02 | — |
+| 3 Dawn Treader | P08–P09 | E05–E06 | J03 | C03 |
+| 4 Silver Chair | P10–P12 | E07–E08 | J04 | C04 |
+| 5 Horse | P14–P15 | E09–E10 | J05 | C05 |
+| 6 Nephew | P17–P18 | E11–E12 | J06 | C06 |
+| 7 Last Battle | P19–P21 | E13–E14 | J07 | C07 |
 | Total | 23 | 14 | 7 | 7 |
 
-All event place IDs and journey waypoints resolve to the 23-row place inventory. First gates are conservative content eligibility, pending earliest-name sweep. No geographic coordinates or exact in-world dates are asserted. Partial routes exclude unresearched intermediate stops.
+Later eras remain separately gated. This table is not a complete first-occurrence concordance; uncorrected gates retain their stated conservative limits.
 
-## Next bounded checkpoint acceptance
-1. Complete first-mention and edition-variant checks for current rows.
-2. Add sourced missing major anchors, retaining separate surface/inter-world and chronology/gate models.
-3. Document unresolved breadth as Known gaps and hand a clearly bounded tranche to Claude; do not mark the entire series complete.
-4. Preserve and reconcile any recovered prior pilot with provenance.
-5. Old audit chat conducts independent canon review on the exact committed revision.
+## Checked counts
+- 51/51 rows counted; unique IDs and all event/journey place references checked.
+- 13/51 unique records freshly sampled against source passages; 38 not freshly reverified.
+- 7/7 transcription metadata records checked; 7/7 works have a fresh narrative anchor.
+- 5/5 selected earlier-gate leads resolved.
+- 0/7 complete-book audits; 0/7 paired-primary-edition collations; 0/10 required independent prominent-fact corroborations.
+- 0 new map coordinates; 0 complete-route claims.
 
-No build/browser tests were run for these research-only files. Structural inventory review is not rendered acceptance. No schedule, application code, PR, merge or release action is part of this checkpoint.
+## Bounded handoff
+The second checkpoint is complete. Unsupported breadth, remaining first mentions, edition collation and corroboration are deferred, not silently accepted. The independent audit chat reviews the exact revisions above before Claude builds. Ownership stays chatgpt; no automatic new research run, builder handoff or approval is asserted.
+
+No build/browser tests were run for these documentation-only changes. Structural accounting is not canon or rendered acceptance.
