@@ -748,7 +748,8 @@ function setFeatures(g){const u=bakeMat.uniforms;const F0=ARR(g.feat).filter(f=>
   const MT=g.map?mapTextures(g.map):null;u.uMapOn.value=MT?1:0;u.tMapHi.value=MT?MT.hi:null;u.tMapLo.value=MT?MT.lo:null;u.tMapReg.value=MT?MT.reg:null;
   u.uMapMtn.value=g.map&&g.map.mtn!=null?g.map.mtn:.35;}
 let EARTH_TEX=null;let earthReady=null;
-function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+"earth-base.png";});return earthReady;}
+/* TA-01: 4096x2048 land mask (Natural Earth 1:10m, scripts/make-earth-mask.py); phones and low-memory devices get the 2048x1024 copy. */
+function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>res();im.src=ENGINE_BASE+(SMALL||LOWMEM||MAXTEX<4096?"earth-base-2048.png":"earth-base.png");});return earthReady;}
 if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
 /* vector maps (gfx.map): hand-laid coastlines, lakes, rivers, ranges and painted regions, given as
    [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
