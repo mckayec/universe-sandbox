@@ -58,7 +58,7 @@ function csv(file: string): Record<string, string>[] {
 
 // Q01 supported reference packages (build-audit/q01-coordinate-continuation-20261101.md, baseline
 // q01-anchor-dispositions.csv at bc7efce): pack id -> [lat, lon, source id]. Antioch is supported but held
-// (no built record names it); the eight unresolved packages stay reference cards.
+// (no built record names it); the five unresolved packages stay reference cards (Najaf has no card).
 const Q01: Record<string, [number, number, string]> = {
   ISP01: [21.45, 39.816667, 'TGN 7003870'],
   ISP02: [24.5, 39.583333, 'TGN 7003869'],
@@ -72,6 +72,9 @@ const Q01: Record<string, [number, number, string]> = {
   'jud-alexandria': [31.182, 29.897, '312299PAle'],
   'jud-new-york': [40.7, -74, 'TGN 7007567'],
   'jud-philadelphia': [39.95, -75.15, 'TGN 7014406'],
+  'chp-zurich': [47.366667, 8.55, 'TGN 7007302'],
+  'jud-hamburg': [53.55, 10, 'TGN 7005289'],
+  xian: [34.258333, 108.928611, 'TGN 7001810'],
 };
 
 test('only the approved anchors are map pins, at their source coordinates', () => {
@@ -83,7 +86,7 @@ test('only the approved anchors are map pins, at their source coordinates', () =
   for (const g of gaz) expected[g.id] = [Number(g.latitude), Number(g.longitude)];
   assert.equal(Object.keys(expected).length, 10);
   for (const [id, [lat, lon]] of Object.entries(Q01)) expected[id] = [lat, lon];
-  assert.equal(Object.keys(expected).length, 22);
+  assert.equal(Object.keys(expected).length, 25);
   assert.deepEqual([...earth.sites.map((s: { id: string }) => s.id)].sort(), Object.keys(expected).sort());
   for (const s of earth.sites) {
     assert.ok(Math.abs(s.lat - expected[s.id][0]) < 1e-6, `${s.id} lat`);
@@ -111,7 +114,7 @@ test('Q01 markers carry a reference caveat, their source id and no exact-event c
   const cards = new Set(
     pack.codex.find((t: { id: string }) => t.id === 'places').list.map((c: { id: string }) => c.id),
   );
-  for (const id of ['ISP05', 'chp-zurich', 'chp-fayette', 'chp-azusa', 'xian', 'jud-seesen', 'jud-hamburg'])
+  for (const id of ['ISP05', 'chp-fayette', 'chp-azusa', 'jud-seesen'])
     assert.ok(cards.has(id) && !earth.sites.some((x: { id: string }) => x.id === id), `${id} stays a card`);
   assert.ok(!earth.sites.some((x: { name: string }) => /Antioch|Najaf|Karbala/.test(x.name)));
   for (const e of pack.events.filter((x: { site?: string }) => x.site && Q01[x.site]))

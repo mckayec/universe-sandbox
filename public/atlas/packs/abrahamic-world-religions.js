@@ -11,7 +11,7 @@
 
    Rules followed here (build-contract.md, gazetteer-evidence.md):
    * Pins: eight UNESCO heritage components (gaz-*) plus Jerusalem and Babylon from the Judaism dossier, and
-     twelve Q01 reference markers (approximate city or heritage points). None is the exact point of an event.
+     fifteen Q01 reference markers (approximate city or heritage points). None is the exact point of an event.
    * Every other place is a reference card in the Codex ("Places without a map point"), never a guessed pin.
    * Card ids are the canonical ids of identity-and-edges.csv; shared cities (Jerusalem, London, Cairo) are
      one record with each tradition's association kept separately.
@@ -186,7 +186,7 @@
   ];
 
   /* ---------- Q01 reference markers (build-audit/q01-coordinate-continuation-20261101.md and the
-     q01-anchor-dispositions.csv baseline at bc7efce). Twelve of the 13 supported packages; Antioch is held
+     q01-anchor-dispositions.csv baseline at bc7efce). Fifteen of the 16 supported packages; Antioch is held
      because no built record names it. Each keeps the place card's id, so its Chronicle entries open the marker.
      Raw source coordinates are kept in the provenance note; decimals are conversions, not added accuracy. ---------- */
   const APPROX =
@@ -261,6 +261,22 @@
       note('Not Independence Hall, Philadelphia County, or the college’s 1968 building.'),
       src('Getty TGN 7014406, N39 57 00, W075 09 00 (minute resolution).'),
     ]),
+    refSite('chp-zurich', 'Zurich', 47.366667, 8.55, ['chr'], 'Zurich: approximate city reference (Getty TGN 7007302)', 'The Swiss believers’ baptism episode of 1525, a symbolic beginning of Anabaptism.', [
+      note(APPROX),
+      note('Not the Grossmünster, Felix Manz’s house, or the exact place of the 1525 baptism. Not Zürich canton, and not Zurich in the Netherlands.'),
+      src('Getty TGN 7007302, N47 22 00, E008 33 00 (minute resolution).'),
+    ]),
+    refSite('jud-hamburg', 'Hamburg', 53.55, 10, ['jud'], 'Hamburg: approximate city reference (Getty TGN 7005289)', 'The Hamburg Temple (1818) was another important early Reform institution.', [
+      note(APPROX),
+      note('Not the 1818 Temple, a warehouse heritage component, or the extent of Hamburg state.'),
+      src('Getty TGN 7005289, N53 33 00, E010 00 00 (minute resolution).'),
+    ]),
+    refSite('xian', 'Xi’an', 34.258333, 108.928611, ['enc', 'chr'], 'Xi’an: approximate city reference (Getty TGN 7001810)', 'A stele erected in 781 records a Christian arrival at Xi’an in 635: the inscription’s date and the date of the arrival it reports are kept apart.', [
+      note(APPROX),
+      note('Not the Beilin museum building, the stele’s original erection point in 781, or a surveyed arrival location in 635. Historical and modern city extents are not equated.'),
+      notSame('Nanjing: the contacts in China happened in different settings.'),
+      src('Getty TGN 7001810, N34 15 30, E108 55 43 (second resolution).'),
+    ]),
   );
   SITES.forEach((s) => (s.books = [1]));
 
@@ -289,7 +305,6 @@
     place('jud-rephidim', 'Rephidim', 'Narrative setting', ['jud'], 'Exodus 19 names Rephidim as the departure point immediately before the Sinai camp.'),
     place('jud-land-israel', 'Land of Israel', 'Historical regional label', ['jud'], 'Sources locate Palestinian rabbinic literature and an important medieval Karaite centre in this region. The term is used without a modern boundary.', null, 'Jerusalem, and not a sovereign boundary.'),
     place('jud-seesen', 'Seesen', 'City', ['jud'], 'Israel Jacobson’s temple inauguration in Seesen (1810) is an early Reform milestone.'),
-    place('jud-hamburg', 'Hamburg', 'City', ['jud'], 'The Hamburg Temple (1818) was another important early Reform institution.'),
     place('jud-detroit-region', 'Suburban Detroit', 'Region', ['jud'], 'Sherwin Wine and the Birmingham Temple helped develop congregational Humanistic Judaism here in the 1960s.'),
     {
       id: 'london',
@@ -304,7 +319,6 @@
     place('chp-constantinople', 'Constantinople', 'Historical city', ['chr'], 'The council of 381 and the Rome–Constantinople censures of 1054. Istanbul is the name used for the 1965 ceremony.', 'Istanbul: Sultanahmet'),
     place('chp-rome', 'Rome', 'City', ['chr'], 'The central episcopal reference of the Catholic communion; the 1965 joint declaration was read in Rome.', 'Rome: historic centre'),
     place('chp-wittenberg', 'Wittenberg', 'City', ['chr'], 'Luther’s public opposition to the sale of indulgences, 1517.', 'Wittenberg: Luther Hall'),
-    place('chp-zurich', 'Zurich', 'City', ['chr'], 'The Swiss believers’ baptism episode of 1525, a symbolic beginning of Anabaptism.'),
     place('chp-azusa', 'Azusa Street mission, Los Angeles', 'Historical mission address', ['chr'], 'The revival under William J. Seymour at 312 Azusa Street began in April 1906. The address is a historical association, not a verified surviving building.'),
     place('chp-fayette', 'Fayette, New York', 'Founding setting (institution’s account)', ['chr'], 'The Church of Jesus Christ of Latter-day Saints dates its organization here to 6 April 1830 in its official account.'),
     place('chp-east-syriac-region', 'Assyria, Babylonia and Persia', 'Broad historical context', ['chr'], 'The Church of the East developed east of the Roman-Byzantine world. There is no single point of origin.', null, 'Babylonia alone: the combined setting is broader than one region.'),
@@ -341,7 +355,6 @@
     place('ISP18', 'Najd', 'Historical region', ['isl'], 'Historical context for the Wahhabi movement. No fixed modern boundary.'),
 
     /* Encounters (comparative-evidence.md) */
-    place('xian', 'Xi’an', 'City', ['enc', 'chr'], 'A stele erected in 781 records a Christian arrival at Xi’an in 635: the inscription’s date and the date of the arrival it reports are kept apart.', null, 'Nanjing: the contacts in China happened in different settings.'),
     place('nanjing', 'Nanjing', 'City', ['enc', 'isl'], 'The biographical setting of Liu Zhi, who used Daoist and Buddhist writings within an Islamic and Confucian intellectual project.', null, 'Xi’an.'),
     place('lahore', 'Lahore', 'City', ['enc', 'isl'], 'A biographical and intellectual setting of Dara Shikoh’s comparison of Hindu thought and Islamic Sufism. Not every part of the translation work happened at one place.'),
     place('talwandi', 'Talwandi', 'Town', ['enc'], 'A sourced setting in the life of Guru Nanak (1469–1539). No precise birthplace coordinate is given.'),
@@ -452,8 +465,8 @@
         books: [1],
         major: true,
         map: [0, 27.14],
-        status: '22 reference markers',
-        blurb: 'Ten heritage markers and twelve approximate city or site references. Every other place in the research is a reference card without coordinates.',
+        status: '25 reference markers',
+        blurb: 'Ten heritage markers and fifteen approximate city or site references. Every other place in the research is a reference card without coordinates.',
         refPlaces: 'places',
         hero: 'jerusalem',
         gfx: { type: 'terran', base: 'earth', sea: 0.5, clouds: 0.25 },
