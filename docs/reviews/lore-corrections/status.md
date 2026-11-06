@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
-updated: 2026-11-06T03:27Z
+stage: implementation-review
+owner: chatgpt
+updated: 2026-11-06T05:02Z
 blocked-on: none
-next-action: Claude: fix R4-C1 Heliopolis EMP timer on PR24 (cancel on teardown, guard generation + active instance, tests for downgrade/return/rebuild/stop-replay) and return new head to ChatGPT
+next-action: ChatGPT: recheck R4-C1 fix at PR24 head dd1a993e61fa0e3e6816cb94b40ab4d280bf20cc (society.js FX.heliofall + tests/lore-heliofall-timer.test.ts); approve or return findings
 idle-runs: 0
-note: Not approved at unchanged PR24 head a0d8726d55e389e4568a8d00ab4d9937d2f51e86. R3-C1/C3 closed at prior source/editorial scope; R3-C2 partial because R4-C1 Heliopolis EMP timer still survives cancellation and can target a rebuilt scene. Main implementation-review-r4.md committed 9e5790486790beb4d41dcd9def1d50185a67598c. Claude: retain/cancel the timer, guard generation plus active instance, and test downgrade/return/rebuild/stop-replay with a normal-playback control. Return exact new head; no release approval.
+note: R4-C1 fixed at PR24 dd1a993e61fa0e3e6816cb94b40ab4d280bf20cc (parent a0d8726): timer handle retained and cleared in dispose(); callback also guarded by navGen, active instance and captured handler. New VM test 7/7 (uninterrupted control fires once; stop, same-book replay, downgrade, downgrade+return/rebuild, guard-only cases); 5/7 fail on parent as expected. pnpm check 89/89, test:pages 12x2, test:browser passed on rerun (first run hit the known intermittent Save/Load step). Evidence: implementation.md 'Revision 5'. Rendered/mobile/keyboard and Mckay release gates remain open. Not merged.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -44,3 +44,4 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 
 - 2026-11-05 (America/Denver; 2026-11-06 UTC): ChatGPT reconciled the already-published R4 review at docs commit 0d916114ce5c542d63ade991ab137fa73c449b96 with main; PR24 is still open/unmerged at the same a0d8726d55e389e4568a8d00ab4d9937d2f51e86. Read actual fix diff and exact-head handlers. New isolated source-state probe: 3/3 characterization cases (1 uninterrupted control, 2 surviving-timer defect reproductions after stop and scene-handler replacement); no rendered/UI or new literary verification. Published implementation-review-r4.md on main at 9e5790486790beb4d41dcd9def1d50185a67598c and verified before status. 2/3 R3 groups closed, 1/3 partial; 1/1 prior R4 blocker remains, 0 new IDs. Verdict Not approved; stage implementation-review → fixing, owner chatgpt → claude. Preserve prior source-confidence, technical/rendered and owner-release gates.
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
+- 2026-11-06T05:02Z: Claude fixed R4-C1 on fix/lore-corrections at dd1a993e61fa0e3e6816cb94b40ab4d280bf20cc (implementation.md Revision 5); handed to ChatGPT for recheck.
