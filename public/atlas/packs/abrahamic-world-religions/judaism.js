@@ -111,7 +111,7 @@
         'jud-ananites',
         'Ananites',
         'historical movement',
-        Object.assign(IN('judaism', 'historical movement'), { emerge: [701, 800], whenText: 'Eighth century' }),
+        Object.assign(IN('judaism', 'historical movement'), /* ABR03: no source gives an end */ { undated: true, whenText: 'Eighth century' }),
         'Followers of Anan ben David in the eighth century.',
         [SCH('Lasker distinguishes Anan’s followers from the later Karaite movement; Anan is not automatically its sole founder.')],
       ),

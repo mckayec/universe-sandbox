@@ -395,3 +395,72 @@ test('population estimates carry their year and measure and are never summed', (
   assert.match(pop.find(c => c.id === 'xd-about').desc, /not added together/);
   assert.ok(!pop.some(c => /total|combined world/i.test(c.name) && c.id !== 'XD07'));
 });
+
+// ABR01–ABR04 (build audit at bc7efce, copy-comparison.md): no invented numeric bounds behind vague dates.
+const engine: { window: Record<string, any> } = { window: {} };
+for (const f of ['layers.js', 'tree-rel.js', 'tree.js'])
+  vm.runInNewContext(readFileSync(new URL('../public/atlas/' + f, import.meta.url), 'utf8'), engine);
+const ELY = engine.window.AtlasLayers;
+const ETR = engine.window.AtlasTree;
+const ELAY = ELY.normLayers(pack);
+const ETL = ELY.normTimeline(pack, []);
+const ET = ETR.normTree(pack, ETL, ELAY);
+const normBy = new Map<string, any>(ET.nodes.map((n: { id: string }) => [n.id, n]));
+
+test('ABR01/ABR03: vague formation dates carry no numeric span and are never filtered out', () => {
+  const cases: [string, string, boolean][] = [
+    ['ch-baptist', 'Early 1600s', true],
+    ['ch-pentecostal', 'Early 1900s', true],
+    ['jud-ananites', 'Eighth century', false],
+    ['ch-early-communities', 'First century CE', false],
+    ['ch-stone-campbell', '31 December 1831 handshake; 1 January 1832 union', false],
+    ['ch-strang-movement', '1844–47 succession period', false],
+  ];
+  for (const [id, text, ongoing] of cases) {
+    const n = nodeBy.get(id);
+    assert.equal(n.emerge, undefined, `${id} has emerge`);
+    assert.equal(n.when, undefined, `${id} has when`);
+    assert.equal(n.undated, true, `${id} is not undated`);
+    assert.equal(n.whenText, text, `${id} lost its source-worded date`);
+    assert.equal(!!n.ongoing, ongoing, `${id} ongoing changed`);
+    const t = normBy.get(id);
+    assert.ok(t, `${id} dropped from the tree`);
+    assert.equal(t.when, null, `${id} has a filter year`);
+    for (const y of [101, 801, 1631, 1833, 1848, 1931, 2000])
+      assert.ok(ELY.timeOk(t, [y, y]), `${id} filtered out at ${y}`);
+  }
+  // the merger structure and the dated Second Temple period are untouched
+  assert.deepEqual([...nodeBy.get('ch-stone-campbell').merge], ['ch-stone-movement', 'ch-campbell-movement']);
+  assert.equal(nodeBy.get('ch-early-communities').site, 'jerusalem');
+});
+
+test('ABR02: the Amman Message relation and the two Shi’i schools are worded as the source gives them', () => {
+  for (const id of ['isl05', 'isl06', 'isl07', 'isl08']) {
+    const n = nodeBy.get(id);
+    assert.equal(n.parentRel, 'legal school named in the Amman Message');
+    assert.equal(n.parent, 'islam');
+    assert.equal(n.undated, true);
+  }
+  assert.equal(
+    nodeBy.get('isl05').blurb,
+    'The Amman Message names the Ja’fari school among its two Shi’i schools of jurisprudence.',
+  );
+  assert.equal(
+    nodeBy.get('isl06').blurb,
+    'The Amman Message names the Zaydi school among its two Shi’i schools of jurisprudence.',
+  );
+  assert.doesNotMatch(JSON.stringify(pack), /no further classification given/);
+  assert.equal(nodeBy.get('isl06').notSame[0].id, 'ist07');
+  assert.equal(nodeBy.get('isl07').notSame[0].id, 'ist04');
+});
+
+test('ABR04: ISE07 and ISE11 keep their qualified wording and have no narrowing filter year', () => {
+  const ev = (id: string) => pack.events.find((e: { id: string }) => e.id === id);
+  assert.equal(ev('ISE07').whenText, 'Traditionally 874–941, then 941 onward');
+  assert.equal(ev('ISE11').whenText, 'After 1130 / 524 AH');
+  for (const id of ['ISE07', 'ISE11']) {
+    assert.equal(ev(id).when, undefined, `${id} has a numeric when`);
+    for (const y of [942, 1131, 1500]) assert.ok(ELY.timeOk(ev(id), [y, y]), `${id} filtered out at ${y}`);
+  }
+  assert.equal(ev('ISE11').ref, 'cairo');
+});

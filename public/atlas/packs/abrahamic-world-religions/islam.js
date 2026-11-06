@@ -149,21 +149,23 @@
       name + ': one of four separately named Sunni schools of jurisprudence in the Amman Message.',
       [SCH('Legal-school ties, not four mutually exclusive genealogical religions. No polity or ethnicity ties are implied.')],
     );
-  const OTHER_SCHOOL = (id, name, extra) =>
+  /* ABR02: the Amman Message (point 1) names Ja'fari and Zaydi as its two Shi'i schools; the shared relation no
+     longer says it gives no further classification. Not a complete classification or a ruling on legitimacy. */
+  const OTHER_SCHOOL = (id, name, extra, blurb) =>
     isl(
       id,
       name,
       'legal school',
-      Object.assign(IN('islam', 'legal school named in the Amman Message (no further classification given)'), NODATE('No founding date given by the source', extra)),
-      name + ': one of the other schools of jurisprudence named in the Amman Message.',
+      Object.assign(IN('islam', 'legal school named in the Amman Message'), NODATE('No founding date given by the source', extra)),
+      blurb || name + ': one of the other schools of jurisprudence named in the Amman Message.',
     );
   const SCHOOLS = [
     SUNNI_SCHOOL('isl01', 'Hanafi school'),
     SUNNI_SCHOOL('isl02', 'Maliki school'),
     SUNNI_SCHOOL('isl03', 'Shafi’i school'),
     SUNNI_SCHOOL('isl04', 'Hanbali school'),
-    OTHER_SCHOOL('isl05', 'Ja’fari school', { notSame: [{ t: 'Ja’far al-Sadiq the person (see People).' }] }),
-    OTHER_SCHOOL('isl06', 'Zaydi school', { notSame: [NOT('ist07', 'Zaydi Shi’ism, the tradition.')] }),
+    OTHER_SCHOOL('isl05', 'Ja’fari school', { notSame: [{ t: 'Ja’far al-Sadiq the person (see People).' }] }, 'The Amman Message names the Ja’fari school among its two Shi’i schools of jurisprudence.'),
+    OTHER_SCHOOL('isl06', 'Zaydi school', { notSame: [NOT('ist07', 'Zaydi Shi’ism, the tradition.')] }, 'The Amman Message names the Zaydi school among its two Shi’i schools of jurisprudence.'),
     OTHER_SCHOOL('isl07', 'Ibadi school', { notSame: [NOT('ist04', 'Ibadi Islam, the tradition.')] }),
     OTHER_SCHOOL('isl08', 'Zahiri school'),
   ];
@@ -296,11 +298,11 @@
     ev('ISE12', 'Ibadi formation', 'Ibadi Islam developed in early Islamic disputes and is neither Sunni nor Shia: a formation process, not one founding day.', { when: [601, 700], whenText: 'Seventh century', side: 'A formation process · no single site' }),
     ev('ISE05', 'Zayd’s revolt', 'Zayd’s unsuccessful revolt is a formative event in Zaydi history.', { when: 740, whenText: 'January 740 (Safar 122 AH)', ref: 'ISP06' }),
     ev('ISE06', 'After Ja’far al-Sadiq', 'Disputes after Ja’far’s death contributed to the eventual formation of Twelver and Ismaili communities. Not every faction of the time bore its later name.', { when: 765, whenText: '765', side: 'Succession controversy · no site asserted' }),
-    ev('ISE07', 'The concealment of the twelfth Imam (Twelver belief)', 'The twelfth Imam’s concealment is understood in lesser and greater phases. Historical scholarship describes gradual doctrinal consolidation, not proof of a concealed person’s present location.', { when: [874, 941], whenText: 'Traditionally 874–941, then 941 onward', side: 'A belief · no place' }),
+    ev('ISE07', 'The concealment of the twelfth Imam (Twelver belief)', 'The twelfth Imam’s concealment is understood in lesser and greater phases. Historical scholarship describes gradual doctrinal consolidation, not proof of a concealed person’s present location.', /* ABR04: text-dated only; a numeric span would hide the 941-onward phase */ { whenText: 'Traditionally 874–941, then 941 onward', side: 'A belief · no place' }),
     ev('ISE08', 'A Zaydi imamate in Yemen', 'Al-Hadi ila’l-Haqq Yahya established a Zaydi imamate in Yemen. Later rule was intermittent.', { when: 897, whenText: '897 / 284 AH', ref: 'ISP07' }),
     ev('ISE09', 'The Fatimid caliphate', 'The Fatimid caliphate was established in Ifriqiya.', { when: 909, whenText: '909 / 297 AH', ref: 'ISP08' }),
     ev('ISE10', 'Nizari and Musta’li', 'A Fatimid succession dispute divided Nizari and Musta’li allegiances.', { when: 1094, whenText: '1094 / 487 AH', ref: 'cairo' }),
-    ev('ISE11', 'Tayyibi and Hafizi', 'A further succession division produced Tayyibi and Hafizi communities. Settings named by the source: Cairo and Yemen.', { when: 1130, whenText: 'After 1130 / 524 AH', ref: 'cairo' }),
+    ev('ISE11', 'Tayyibi and Hafizi', 'A further succession division produced Tayyibi and Hafizi communities. Settings named by the source: Cairo and Yemen.', /* ABR04: “after 1130” is not a point year */ { whenText: 'After 1130 / 524 AH', ref: 'cairo' }),
     ev('ISE13', 'The Ahmadiyya Muslim Community founded', 'Mirza Ghulam Ahmad founded the Ahmadiyya Muslim Community. Qadian is his associated town, not asserted as the founding site.', { when: 1889, whenText: '1889', side: 'India · precise founding site not adopted' }),
     ev('ISE14', 'Darul Uloom Deoband', 'Darul Uloom Deoband dates its foundation to 31 May 1866; Metcalf (Iranica) gives 1867. The two dates are both shown, not averaged.', { when: 1866, whenText: '31 May 1866 (the institution’s dating; 1867 in Metcalf)', ref: 'ISP16' }),
     ev('ISE15', 'Pakistan’s 1974 classification', 'Pakistan’s constitutional amendment classified Ahmadis as non-Muslims. A state action, not a change in adherents’ self-identification.', { when: 1974, whenText: '1974', side: 'Pakistan · jurisdiction-level reference' }),
