@@ -1,7 +1,7 @@
 # Licanius research self-audit — checkpoint 2
 Date: 2026-11-06.
-Audited checkpoint-2 research commit: f384d8932b167f116c09832bc2f646ed69623f4a
-Research blob: 9c9b136326a0f928e9faa2d869357b17fdd3434c
+Audited checkpoint-2 research commit: 9f6ea35f792017e2a99c4703cb3f9ebd23e73a6c
+Research blob: 213d9ca6ae56ef843c925747a4c78855f441a5a3
 Sources commit: 9b3468ebd8df98b1020bff0c056658260b705c8f
 Sources blob: d8a25cd20e812d151a737f7be55d1d530ea47ab8
 
@@ -65,3 +65,6 @@ All three works are explicitly partial. Record labels and distinctive claims wer
 S5's Read Excerpt link returned the same product page, with no novel passage. Exact route and outcome are in sources.md. This was missing content rather than an approval rejection; no denied action was retried and no access bypass used.
 
 This bounded second checkpoint is complete. Further unsupported research is deferred. Owner remains chatgpt for independent review before any Claude build. Build readiness, independent canon approval and release approval have not been granted.
+
+## Coordinator terminology correction
+Rechecked the one-sentence gate correction against prior checkpoint2 f384d8932b167f116c09832bc2f646ed69623f4a: a conservative gate is a minimum read-through threshold, not a ceiling. The 29 record contents, IDs, evidence and counts are unchanged. lj01 already cites S1 pp3–6; p6 supplies the actual arrival, while p5 describes the plan. No journey mutation was required. Independent canon approval remains pending.
