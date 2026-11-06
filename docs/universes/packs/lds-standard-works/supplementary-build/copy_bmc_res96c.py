@@ -80,8 +80,8 @@ RES96_VIEWS = [
      'Laman and Lemuel will not. He sees a river, a rod of iron and a strait and narrow path, a mist of darkness, and '
      'a great and spacious building whose people mock those eating the fruit. Nephi says he does not give all his '
      'father’s words; Lehi then fears for Laman and Lemuel and exhorts them. This is a dream account, distinct from '
-     'Lehi’s Jerusalem vision (1 Nephi 1) and Nephi’s later vision (1 Nephi 11); the dream’s river is not the river '
-     'Laman, nothing in it is mapped or dated, and no Genesis or Revelation identity is claimed.', '2–38', []),
+     'Lehi’s Jerusalem vision (1 Nephi 1) and Nephi’s later vision (1 Nephi 11); the text does not identify the '
+     'dream’s river as the river Laman, nothing in it is mapped or dated, and no Genesis or Revelation identity is claimed.', '2–38', []),
     # RES96-C08 (BMC-103 with Alma 38:7–8; BMC-133 consolidated): three distinct angelic accounts.
     (103, 'angel-to-alma-and-amulek', 'An angel’s message to Alma, and Amulek’s report (Alma 8; Alma 38)', 'mention',
      'Book of Mormon — Weighed down with sorrow on his way from Ammonihah, Alma is met by an angel of the Lord, who '
@@ -137,8 +137,9 @@ RES96_VIEWS = [
     # RES96-C14 (BMC-223): Omer's warning dream and Emer's sight, two men and two accounts.
     (223, 'omer-dream-emer-sight', 'Omer warned in a dream; Emer sees the Son of Righteousness (Ether 9)', 'mention',
      'Book of Mormon — The Lord warns Omer in a dream to depart out of the land, and he leaves with his family and '
-     'pitches his tent at Ablom by the seashore (9:3). Later king Emer, four years after anointing his son Coriantum, '
-     'sees peace in the land, “yea, and he even saw the Son of Righteousness,” and dies in peace (9:21–22). The dream '
+     'pitches his tent at Ablom by the seashore (9:3). Later, Emer anoints his son Coriantum to reign in his '
+     'place and lives four more years. The record says that he sees peace in the land, sees the Son of '
+     'Righteousness, rejoices, and dies in peace (9:21–22). The dream '
      'is given only as a warning to depart, and the form and place of Emer’s sight are not described; the two men and '
      'the two accounts stay distinct, and no date is added.', '3, 21–22', []),
 ]

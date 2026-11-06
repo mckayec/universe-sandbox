@@ -109,9 +109,11 @@ test('RES96-C: attribution, scene and identity safeguards are visible in the cop
   assert.match(d('BMV-098-records-from-jerusalem'), /not atlas judgments about ethnicity, archaeology, genetics/);
   assert.match(d('BMV-111-synagogues-coming-taught'), /future one to this people[\s\S]*not a Gospel scene/);
   assert.match(d('BMV-121-branch-of-israel'), /no pedigree, modern ethnic\s+mapping, branch route or patriarch link/);
-  // C07: a dream account, distinct from the other two visions; the river is not river Laman
+  // C07: a dream account, distinct from the other two visions; the text does not identify its river (RES64-C1:
+  // no identification, which is not a claim of definite nonidentity)
   assert.match(d('BMV-008-lehi-dream-tree'), /distinct from\s+Lehi’s Jerusalem vision \(1 Nephi 1\)/);
-  assert.match(d('BMV-008-lehi-dream-tree'), /river is not the river\s+Laman/);
+  assert.match(d('BMV-008-lehi-dream-tree'), /the text does not identify the\s+dream’s river as the river Laman/);
+  assert.doesNotMatch(d('BMV-008-lehi-dream-tree'), /river is not the river/);
   // C08–C14
   assert.match(d('BMV-103-angel-to-alma-and-amulek'), /no angel is named[\s\S]*Amulek’s experience is his own/);
   assert.match(d('BMV-114-lamoni-abish-angels'), /does not say\s+whose vision it was/);
@@ -124,6 +126,14 @@ test('RES96-C: attribution, scene and identity safeguards are visible in the cop
   assert.match(d('BMV-193-angels-prayer-light'), /“because I am with them” \(19:22\)/);
   assert.match(d('BMV-193-angels-prayer-light'), /the comparison is his/);
   assert.match(d('BMV-223-omer-dream-emer-sight'), /form and place of Emer’s sight are not described/);
+  // RES64-C2: Ether 9:21–22 gives his remaining four years, then peace, sight and death; the sight is not dated
+  assert.ok(
+    d('BMV-223-omer-dream-emer-sight').includes(
+      'Later, Emer anoints his son Coriantum to reign in his place and lives four more years. The record says that ' +
+        'he sees peace in the land, sees the Son of Righteousness, rejoices, and dies in peace (9:21–22).',
+    ),
+  );
+  assert.doesNotMatch(d('BMV-223-omer-dream-emer-sight'), /four years after anointing/);
   assert.match(d('BMV-223-omer-dream-emer-sight'), /two men and\s+the two accounts stay distinct/);
 });
 

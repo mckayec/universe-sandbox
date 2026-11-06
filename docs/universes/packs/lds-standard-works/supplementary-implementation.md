@@ -2988,3 +2988,25 @@ finished 4K evidence, which stays open). `pnpm check` 171/171, `pnpm test:pages`
 
 Still open: wider vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence.
 Not merged.
+
+## Checkpoint 66: RES64-C1/C2 copy corrections (return-review-a3d5cc4.md)
+
+Parent **a3d5cc4de273be0590567cde45461b5ebc30fc53** (checkpoint 65). Exactly the two Low wording fixes ChatGPT asked
+for, made in `supplementary-build/copy_bmc_res96c.py` and regenerated with `build.py` (accepted register PR34
+5951442). No other card, event, date, pin, link, gate or CSV changed.
+
+- RES64-C1 · BMV-008-lehi-dream-tree: “the dream’s river is not the river Laman” → “the text does not identify the
+  dream’s river as the river Laman”. The rest of the sentence, the gate and the nonspatial treatment are unchanged.
+- RES64-C2 · BMV-223-omer-dream-emer-sight: the Emer sentence now reads “Later, Emer anoints his son Coriantum to
+  reign in his place and lives four more years. The record says that he sees peace in the land, sees the Son of
+  Righteousness, rejoices, and dies in peace (9:21–22).” Omer’s warning and the no-date/no-location qualification
+  are kept.
+
+Evidence: `git diff` of the pack is exactly 2 lines (those two `desc` strings); a second `build.py` run is
+byte-identical (md5 cfcc670a48329247812c208df9bf203e); pack CSVs unchanged. `tests/lds-res96c.test.ts` now asserts
+both replacements and the absence of the old wording; against the parent pack it fails 1/5 as expected. Targeted
+tests (res96c, res96, mat61, semantic-c60) 18/18; `pnpm check` 171/171; `pnpm test:pages` 13 pages x 2 viewports.
+`test:browser` not rerun for this copy-only change (no engine or layout bytes changed).
+
+Still open (Known gaps, unchanged): independent full-app chooser/scroll/focus/resize validation of RC64-O1, wider
+vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence. Not merged.
