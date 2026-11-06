@@ -1,10 +1,10 @@
 stage: final-audit
 owner: claude
-updated: 2026-11-06T03:10Z
+updated: 2026-11-06T11:13Z
 blocked-on: none
-next-action: Claude: TA-01 engine fix (higher-resolution public-domain land mask, smooth sampling) on PR #38, then re-capture four sizes and finish technical pass
+next-action: Claude: find why the finished 4K view still shows ~0.7-degree blocks (TA-02 hypothesis: the 512 preview set stays on screen, HD set not applied/kept after capture resize), fix on engine/ta-01-land-mask, then cherry-pick to PR #38, re-capture four sizes and finish the technical pass
 idle-runs: 0
-note: Canon approved at PR #38 head caf70a87b574da1073c2147e73d909eb2a9193ed. Claude technical pass checkpoint 1 at that SHA (audit-final.md 'Technical pass'): validator 0 issues, pnpm check 102/102, test:pages pass; test:browser times out at the simulator Load step on current main too (environmental, not this PR). APB-004 re-diagnosed as TA-01: with the bake allowed to finish (497 s), the 4K Earth surface is still stair-stepped because earth-base.png is a 1024x512 land mask; real GPU hardware would not fix it. Technical: not approved. Next: engine fix (higher-resolution public-domain land mask, smooth sampling), then re-capture at four sizes and phone checks. Claude keeps ownership. Not merged.
+note: Canon approved at PR #38 head caf70a87b574da1073c2147e73d909eb2a9193ed. TA-01 checkpoint 2: engine branch engine/ta-01-land-mask at 46d2548b9d82e02fd0e3cc0cdf0a18bf58a74688 (no PR yet) replaces earth-base.png with a 4096x2048 Natural Earth 1:10m mask (same coast ramp; 2048 copy for phones; solar bake downsampled; generator script + tests). pnpm check passes on main+fix (85/85) and on PR38+fix (105/105), test:pages 12x2 pass. BUT the finished-bake 4K capture with the fix still shows the same blocky coasts as before, so the mask was not the visible cause; see audit-final.md "TA-01 checkpoint 2". Fix not yet pushed to PR #38. Technical: not approved.
 
 
 # Christian apocrypha (later layer of the Bible portion)
@@ -41,3 +41,4 @@ Track A · view: Earth-historical layer
 - 2026-11-06: ChatGPT completed the bounded round-2 final canon return check at caf70a87b574da1073c2147e73d909eb2a9193ed, saved in audit-final.md at 606c9826dfc5d505cd35bc907b28b38631a249d7 before this status change. APQ-004/APF-001 resolved (2/2), two primary passages reopened, exact-head targeted tests 18/18 passed; full evaluated-pack comparison found only the intended badge array and two event texts changed. Prior 20-item sample retained (19 unchanged, m2-03 freshly rechecked). Canon approved for the owner-narrowed implemented scope at this SHA only; technical remains unapproved. Stage final-audit, owner claude for APB-004 and remaining technical checks/sign-off. No merge, deployment or release approval.
 - 2026-11-06: Claude: technical pass checkpoint 1 at caf70a8: validator 0 issues, pnpm check 102/102, test:pages pass, test:browser timeout reproduced on main 9f4ce77 (pre-existing). Finished 4K bake captured (shots/tech-caf70a8-*); APB-004 → TA-01: the 1024x512 Earth land mask makes coastlines blocky at 4K on any hardware. Technical not approved; engine fix next. Stage/owner unchanged (final-audit / claude).
 - 2026-11-06: Claude: header converted to R1 (speed amendment); stage and owner unchanged.
+- 2026-11-06T11:13Z: Claude: TA-01 checkpoint 2. Built 4096x2048 Natural Earth land mask on engine/ta-01-land-mask @46d2548 (checks pass on main and PR38 heads). Finished 4K bake capture with the fix (441 s, 0 console errors, 0 third-party) is unchanged vs caf70a8: blocks match the 512 preview bake, not the mask. New hypothesis TA-02 recorded in audit-final.md; stage/owner unchanged (final-audit / claude).
