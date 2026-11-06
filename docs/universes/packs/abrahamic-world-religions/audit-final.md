@@ -1,5 +1,7 @@
 # Final audit checkpoint — Abrahamic world religions
 
+> Current checkpoint: Q01 round-2 recheck at `01df0f2ec7f007a2b37a5712b279a9b5e930e299`; see the appended 2026-11-06 section. Earlier sections retain their original revision and counts.
+
 2026-11-06 · ChatGPT · PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, reviewed implementation **`ee700d153e91d854e583eb867dd40d0cc21ecfec`**, parent `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`.
 
 ## Result
@@ -78,3 +80,101 @@ The full evaluated comparison shows no newly imported uncertain coordinates, gue
 3. **Technical/visual and release gates remain open:** exact-head validator/checks, successful required browser-smoke evidence, finished rendered surfaces and viewport/performance evidence, Claude's technical sign-off, then Mckay's release approval. Successful CI steps alone are not that sign-off.
 
 Under PROMPTS §4, hand back **fixing / claude** for the remaining Q01 implementation/disposition unit; do not repeat the closed ABR01–04 unit or this unchanged-head 20-item sample. No new content finding was added, and no merge, deployment or release approval is given.
+
+
+## 2026-11-06 — Q01 round-2 implementation recheck and source answers
+
+**Audited head: `01df0f2ec7f007a2b37a5712b279a9b5e930e299`**, PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`; parent `ee700d153e91d854e583eb867dd40d0cc21ecfec`. This section supersedes the earlier “ten implemented pins / 13 supported packages” checkpoint for current accounting, preserving the earlier audit and source sample as history.
+
+**Returned incorporation accepted: 12/12 markers; 7/7 changed event links; no new High/Medium content finding in this delta.** All twelve numeric source bodies were reopened. ABR01–04 remain closed (4/4 findings, 12/12 affected records). Independent exact-head focused tests: **25/25 pass**. This is a completed return-review unit, not final canon approval.
+
+### Every implemented package checked
+
+Coordinates are latitude, longitude. DMS conversions agree within the implementation’s six-decimal rounding; source-decimal values are copied without invented accuracy. Each marker has the source ID, raw coordinate string, reference caveat and feature-specific limits in its notes.
+
+| Pack ID | Implemented coordinates | Reopened source / identity | Disposition |
+|---|---|---|---|
+| ISP01 | 21.450000, 39.816667 | [Getty 7003870](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7003870), Mecca city, N21 27 00 E039 49 00 | Pass; not province, Kaaba, birthplace or exact episode. |
+| ISP02 | 24.500000, 39.583333 | [Getty 7003869](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7003869), Medina city, N24 30 00 E039 35 00 | Pass; not mosque or Hijra arrival point; no gazetteer calendar claims imported. |
+| ISP06 | 32.016667, 44.383333 | [Getty 7018612](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=Lithuania&place=&subjectid=7018612), Al-Kūfah town under Iraq / Najaf, N32 01 00 E044 23 00 | Pass; coarse gazetteer reference, explicitly not revolt site, mosque or modern city centre. Clean-parameter URL failed; the previously recorded search URL opened the correct Iraqi record. |
+| shiraz | 29.633333, 52.566667 | [Getty 7002148](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7002148), Shiraz city, N29 38 00 E052 34 00 | Pass; not Báb’s house or 1844 location. |
+| baghdad | 33.350000, 44.416667 | [Getty 7002482](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7002482), Baghdad city, N33 21 00 E044 25 00 | Pass; not region, Rusafa, 1863 garden, Egyptian namesake or Babylon. |
+| acre | 32.923611, 35.068889 | [UNESCO 1220-007](https://whc.unesco.org/en/list/1220/maps/), Prison, N32 55 25 E35 4 8 | Pass; “Prison at Acre” in modern label, not city extent, route or Haifa. |
+| chp-nicaea | 40.426600, 29.716800 | [ToposText 404297PNic](https://topostext.org/place/404297PNic), Bithynian Nicaea / Iznik | Pass; representative city, not council building, Nicomedia or Nice. |
+| chp-ephesus | 37.941389, 27.340556 | [UNESCO 1018rev-002](https://whc.unesco.org/en/list/1018/maps/), Ancient City, N37 56 29 E27 20 26 | Pass; not council venue, Artemis component or House of Mary. |
+| chp-chalcedon | 40.983400, 29.025800 | [ToposText 410290PCha](https://topostext.org/place/410290PCha), Chalcedon near Kadikoy | Pass; **accept copy change** to “No boundary is assumed.” The opened source supplies Kadikoy locality; the marker does not assert identical ancient/modern boundaries or the 451 venue. |
+| jud-alexandria | 31.182000, 29.897000 | [ToposText 312299PAle](https://topostext.org/place/312299PAle), Alexandria, Egypt | Pass; not a surveyed community, teaching or patriarchal venue. |
+| jud-new-york | 40.700000, -74.000000 | [Getty 7007567](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7007567), New York city, N40 42 00 W074 00 00 | Pass; western sign correct; not state or JTS building. |
+| jud-philadelphia | 39.950000, -75.150000 | [Getty 7014406](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7014406), Philadelphia city, N39 57 00 W075 09 00 | Pass; not county, Independence Hall or 1968 college building. |
+
+**Antioch hold accepted as a documented hold, not a completed marker.** Evaluated pack has no corresponding narrative record. An implementation comment names Antioch; that does not constitute narrative content. A coordinate package does not justify inventing an association.
+
+### Independent comparison and testing
+
+Read the complete six-file [parent-to-head diff](https://github.com/mckayec/universe-sandbox/compare/ee700d153e91d854e583eb867dd40d0cc21ecfec...01df0f2ec7f007a2b37a5712b279a9b5e930e299), actual assembler/four data parts, tests, validator, registry and layer/tree helpers at the exact head. Retrieved 13 target/dependency blobs and five parent data blobs; local Git blob SHA checks match **18/18**.
+
+Evaluated JSON comparison establishes:
+
+- All **109/109 nodes**, **27/27 explicit tree links**, **10/10 old sites**, and **95/95 remaining codex cards** are identical to the parent. ABR01–04 fixes are preserved.
+- Exactly **12/12** place-card IDs move to sites. Names and layers remain; card `first:1` becomes site `books:[1]`. Ten description strings are identical. Baghdad moves its Babylon distinction from the flattened card description into an explicit note; the historical assertion is unchanged. Chalcedon’s one substantive copy change is accepted above. Thus the builder’s “unchanged except Chalcedon” is semantically correct but not a literal description-string identity claim.
+- Exactly **7/60** events change, solely `ref` → `site`: jud-e10, jud-e12, che-nicaea, che-ephesus, che-chalcedon, ISE05, XE05. Each target exists; no date, text, layer or religious attribution changes. **53/60** events are identical.
+- Inventory remains **313** records: 109 nodes + 27 links + 60 events + 22 sites + 95 codex cards. Nonspatial place cards decrease from 59 to 47. Seven cards for the eight unresolved packages remain nonspatial; Najaf has no narrative card. No unresolved numeric point was imported.
+
+Independent Node 24.22.1 execution of `node --test tests/atlas-abrahamic.test.ts` on the exact-head fixture: **25/25 pass**, including marker inventory/coordinates, caveats, crosswalk coverage, unresolved-card holds and all three ABR regressions. Initial local fixture attempts failed because helper files had not yet been loaded and because of an incorrect working directory; after fetching the missing exact-head helpers and using the correct directory, the above run completed. These were harness setup failures, not product failures. No application code was edited.
+
+**Prior final sample continuity:** compared the preserved deterministic 20-item sample at `ee700d1:AUDIT_CHECKLIST-4` to the evaluated new head. **17/20 records are identical**; Mecca and Baghdad moved from cards to sites, and che-nicaea changed its target field. Their historical assertions are preserved; the three changed spatial associations are covered by the reopened source table above. The earlier **20/20 source checks** remain prior evidence, not twenty newly opened sources or a new random draw in this return review. The historical 313-record conformity pass is likewise carried only within its documented limits.
+
+### CI, rendered evidence and limits
+
+Inspected exact-head [Actions build job 127782234547](https://github.com/mckayec/universe-sandbox/actions/runs/42184724555/job/127782234547) and logs: build/check job succeeds, **119/119 tests**, **24/24 page/viewport checks** (12 pages × 2); deploy skipped. Crucially, the enumerated page-smoke matrix **does not include `?pack=abrahamic-world-religions`**. Those 24 passes do not independently prove the changed pack renders.
+
+Claude separately reports Chromium/SwiftShader inspection at 1440×900 and 390×844 for this pack and three screenshots in fixing-round2.md. That remains builder evidence; no independent rendered-browser, 4K, physical-device or performance pass was performed here. No separate Deep Research product was invoked, no inaccessible source body was certified, and no formal PR approval, merge or deployment was performed.
+
+### Source-question handoff and acceptance limits
+
+The appended [Q01 continuation](build-audit/q01-coordinate-continuation-20261101.md#2026-11-06-return-questions--three-city-packages-recovered) answers **8/8 returned questions** and adopts **3/8 new packages**: Zurich city (not Grossmünster/Manz house), Hamburg city (not Temple), Xi’an city (not museum/stele point). Total now **16/21 supported packages and 5/21 unresolved requested features**; **12/16** supported packages are currently built, one held Antioch, three awaiting incorporation. Los Angeles city context and Grossmünster church evidence are separately labelled options, not extra implemented markers or exact-feature resolutions.
+
+Claude’s next bounded unit is the three adopted city references and an explicit Known gaps disposition for Fayette/Whitmer, Najaf, Karbala, Azusa Street and Seesen. Preserve existing nonspatial content, do not silently drop requested scope, and do not repeat the closed twelve-marker incorporation or ABR01–04 work. A permanent scope reduction or lower-confidence replacement needs explicit disposition; known gaps do not certify complete research.
+
+### Run receipt
+
+Receipt covers the observed review/source-answer work window; it excludes earlier triage and publication/lock-release overhead. It is elapsed wall time, not metered compute or billing. Usage fields are unavailable, not zero.
+
+```json
+{
+  "project_id": "universe-sandbox",
+  "item_ids": [
+    "abrahamic-world-religions",
+    "Q01"
+  ],
+  "actor": "chatgpt",
+  "run_id": "chatgpt-20261106-081550",
+  "attempt_id": "q01-return-01df0f2-1",
+  "observed_start": "2026-11-06T08:15:50Z",
+  "observed_end": "2026-11-06T08:27:09Z",
+  "duration_seconds": 679,
+  "duration_type": "elapsed_run_window",
+  "timestamp_source": "clock.curr_time UTC observations",
+  "outputs": [
+    "docs/universes/packs/abrahamic-world-religions/audit-final.md",
+    "docs/universes/packs/abrahamic-world-religions/build-audit/q01-coordinate-continuation-20261101.md"
+  ],
+  "evidence_urls": [
+    "https://github.com/mckayec/universe-sandbox/pull/39",
+    "https://github.com/mckayec/universe-sandbox/actions/runs/42184724555/job/127782234547"
+  ],
+  "measured_usage": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "cached_tokens": null,
+    "compute_seconds": null,
+    "cost_usd": null
+  },
+  "coverage_notes": "Bounded Q01 return review and eight source-question answers; excludes earlier triage and publication/lock-release overhead. No metered usage exposed. No full new 20-source sample or rendered acceptance claimed.",
+  "recorded_at": "2026-11-06T08:27:09Z"
+}
+```
+
+### Current verdict and blockers
+
+**Canon: not approved for final acceptance.** The returned twelve-marker implementation is accepted at **01df0f2ec7f007a2b37a5712b279a9b5e930e299**, with **0 new High/Medium content findings**. Remaining blockers are (1) incorporation/recheck of the three newly supported city packages and explicit Q01 gap/scope disposition; (2) same-head technical/rendered evidence and Claude’s technical sign-off; and (3) Mckay’s release approval. Hand back **fixing / claude** for that bounded implementation/disposition unit.
