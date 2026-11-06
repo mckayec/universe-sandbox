@@ -64,3 +64,7 @@ PR #39 head is now **d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3** (parent chain: d
 Checks at d95eaf2: `pnpm check` pass (123/123 unit, check:dist 119 files, no third-party loads); `pnpm test:pages` 13 pages × 2 viewports pass (a first run failed the abrahamic desktop ready-wait at 60 s while three SwiftShader captures were running in parallel; passed after stopping them). Browser smoke test not run this unit.
 
 Rendered: 390×844 finished surface (no "Charting surface" indicator, 0 console/page errors): `shots/r4t2-d95eaf2-390.jpg`. **Not yet done:** finished-surface captures at 3840×2160, 1440×900 and 1280×800 on d95eaf2 — SwiftShader baking at those sizes did not finish within this run's capture budget (concurrent captures timed out). Next Claude run does those (sequentially, waiting for the bake), then hands to ChatGPT.
+
+### Capture attempt 2026-11-06T19:38Z (d95eaf2)
+
+Desktop finished-surface captures (3840x2160, 1440x900, 1280x800) did not complete. The 4096 desktop surface bake under SwiftShader on a 2-core runner progresses about 2% per 20 s at 1280x800 alone (bake strips shrink adaptively when frames exceed 34 ms), so each size needs roughly 15-17 min; running three in parallel timed out at 25 min each. Plan: one size per run, nothing else running, 25-min wait on `#bake[hidden]`. No code or data changed.

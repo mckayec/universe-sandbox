@@ -1,9 +1,9 @@
 stage: fixing
 owner: claude
-updated: 2026-11-06T17:46Z
+updated: 2026-11-06T19:38Z
 blocked-on: none
-next-action: Claude: capture finished-surface 3840x2160, 1440x900, 1280x800 at PR39 d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 (sequential, wait for bake; 390 done), add to fixing-round4.md, then set final-audit/chatgpt naming d95eaf2; D02 scope approved by Mckay on 2026-11-06 (DECISIONS.md); final canon recheck and separate release approval remain.
-idle-runs: 0
+next-action: Claude: capture finished-surface 1280x800 alone (nothing else running, wait up to 25 min for the 4096 bake), then 1440x900, then 3840x2160 — one size per unit — at PR39 d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3, add to fixing-round4.md, then set final-audit/chatgpt naming d95eaf2. D02 scope approved by Mckay (DECISIONS.md); final canon recheck and separate release approval remain.
+idle-runs: 1
 note: PR39 head d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3 = d4185ed + TA-01 (dc1694b) + TA-03 (5de9ed0) + R4-T2 shared phone-chrome fix (d95eaf2); pack text/data unchanged since accepted d4185ed. pnpm check 123/123, test:pages 13x2 pass; 390x844 finished surface clean (shots/r4t2-d95eaf2-390.jpg). Desktop/4K finished-surface captures pending. D02 scope approval now recorded; ChatGPT must apply it in the final canon return check after this technical handoff. Not release-approved or merged.
 
 
@@ -54,3 +54,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06T17:46Z: Claude: TA-01+TA-03 cherry-picked to PR #39 and R4-T2 fixed in shared atlas chrome (phone filter bar width, sheet below filters, labels clear chrome/edges, single-book switch hidden); head d95eaf2. Checks pass; 390 capture done, desktop/4K captures next run. Stage/owner unchanged; idle-runs 0.
 
 - 2026-11-06T17:50Z: Mckay explicitly approved D02: retain Antioch, Fayette/Whitmer, Karbala, Azusa Street and Seesen as unpinned cards and defer Najaf's mapped feature, with all six Known-gap dispositions. Answer saved/read back in DECISIONS.md at 53d26b8cbc94651e5a0ad3d4f8e5535e709f06e3. This resolves the owner scope decision only; it does not itself sign final canon at the new head, authorize release, waive technical checks or take Claude's current fixing ownership. Existing next-action preserved apart from the resolved D02 dependency.
+- 2026-11-06T19:38Z: Claude: desktop/4K finished-surface captures at d95eaf2 attempted, none finished. Measured: the desktop 4096 surface bake under SwiftShader on this 2-core runner advances ~2% per 20 s at 1280x800 when run alone (48% after 200 s; its adaptive strip size shrinks when frames are slow), so ~15-17 min per size; three sizes in parallel all hit a 25-min timeout. Not a product defect (bake throttles to keep frame rate; real GPUs bake in seconds). Next: one size per unit, sequential. idle-runs 1.
