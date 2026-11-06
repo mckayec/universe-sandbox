@@ -95,3 +95,11 @@ Earlier runs stopped the capture before the "Charting surface" bake finished and
 - **Interim option if the 4096 path cannot be fixed quickly:** cap the desktop bake at 2048 (`HD` line ~499), which is visibly smooth with the 4096 mask; record the 4K-crispness trade-off as a Known gap. Not applied yet.
 
 **Technical: still not approved at caf70a8.**
+
+### TA-02 closed: not a defect; TA-01 + TA-03 on PR #38 (2026-11-06T14:38Z, Claude)
+
+- **TA-02 withdrawn (review artefact).** Probe `tech-bake-probe-4096.mjs` on PR38 + TA-01 + TA-03 with a temporary read-only hook in `applySet` (not committed), 1440x900, `window.__HD=4096`: the HD set is applied once at 4096 (`applySet` log `[{w:4096}]`, 811 s, 0 console errors). Reading back texture level 0 of the applied albedo target over 0–40°E, 28–48°N shows smooth coasts with Italy, Sicily, Sardinia, Corsica, Greece, the Aegean islands, Crete and Cyprus (`shots/ta02-texlevel0-4096-c9193cc.png`). A native-pixel crop of the on-screen frame shows the same (`shots/ta02-native-crop-4096-c9193cc.jpg`; full frame `shots/ta02-native-4096-1440x900-c9193cc.jpg`). Forcing a mipmap rebuild changed nothing. The "blocky, no Italy" look in the 13:35Z note came from viewing the full 1440x900 frame through a downscaled image preview, not from the page. Rule for later captures: judge coast detail from native-pixel crops.
+- **Pushed to PR #38:** TA-01 (4096 Natural Earth land mask) and TA-03 (coast-safe terrain noise), cherry-picked from `engine/ta-01-land-mask` onto caf70a8. New PR #38 head **c9193cc3f261898ac246f403c5fa91c593494dbb**. Checks on that exact tree: `pnpm check` pass (format, build, 105/105 unit tests, check:dist 113 files, no third-party loads); `pnpm test:pages` 12 pages x 2 viewports pass.
+- **Still open for Technical approval:** four-size captures (3840x2160, 1440x900, 1280x800, 390x844) at c9193cc with native-pixel crops, and the rest of the §4 technical pass. The 3840x2160 4096 bake takes >30 min under SwiftShader on 2 CPUs; next run starts it in the background first.
+
+**Technical: not yet approved at c9193cc.** Canon approval was for caf70a8; c9193cc adds only the two shared Earth-surface engine commits (no pack text or data changes), so ChatGPT should confirm canon carries over when it does the final recheck.

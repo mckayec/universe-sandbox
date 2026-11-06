@@ -1,10 +1,10 @@
 stage: final-audit
 owner: claude
-updated: 2026-11-06T13:36Z
+updated: 2026-11-06T14:38Z
 blocked-on: none
-next-action: Claude: probe the size-4096 bake path (queueBake strips/UVs/target type, applySet at 4096) on PR38+TA-01+TA-03 at 1440x900 __HD=4096; fix it or cap the desktop bake at 2048 with a Known gap; then push TA-01+TA-03+TA-02 to PR #38, re-capture four sizes and finish the technical pass
+next-action: Claude: start the 3840x2160 HD-4096 capture in the background, then capture 1440x900, 1280x800 and 390x844 at PR #38 c9193cc with native-pixel crops; finish the §4 technical pass and record Technical approved or blockers
 idle-runs: 0
-note: Canon approved at PR #38 head caf70a87b574da1073c2147e73d909eb2a9193ed. Engine branch engine/ta-01-land-mask at 61ff8ad9a2c1d7f7043ae0b58fe262bb8bf35701 (TA-01 mask + TA-03 coast fix). PR38+both: pnpm check 105/105 and test:pages 12x2 pass. TA-02 now confirmed 4096-specific: unshrunk 1440x900 __HD=4096 is blocky and loses Italy/Greece, __HD=2048 is smooth (audit-final.md 13:35Z). Not yet on PR #38. Technical: not approved.
+note: Canon approved at caf70a8. PR #38 head now c9193cc3f261898ac246f403c5fa91c593494dbb = caf70a8 + TA-01 (4096 land mask) + TA-03 (coast-safe noise); pnpm check 105/105 and test:pages 12x2 pass. TA-02 withdrawn: the 4096 bake is correct (texture readback and native-pixel crop); the earlier blocky look came from a downscaled preview. Technical: not yet approved (four-size captures pending).
 
 
 # Christian apocrypha (later layer of the Bible portion)
@@ -44,3 +44,4 @@ Track A · view: Earth-historical layer
 - 2026-11-06T11:13Z: Claude: TA-01 checkpoint 2. Built 4096x2048 Natural Earth land mask on engine/ta-01-land-mask @46d2548 (checks pass on main and PR38 heads). Finished 4K bake capture with the fix (441 s, 0 console errors, 0 third-party) is unchanged vs caf70a8: blocks match the 512 preview bake, not the mask. New hypothesis TA-02 recorded in audit-final.md; stage/owner unchanged (final-audit / claude).
 - 2026-11-06T12:45Z: Claude — TA-02 probe (HD applied at 1024/2048; stairs not reproduced unshrunk); TA-03 coast-noise fix at engine/ta-01-land-mask 61ff8ad. Stage unchanged (final-audit, claude); idle-runs 0.
 - 2026-11-06T13:36Z: Claude: PR38+TA-01+TA-03 pass pnpm check (105/105) and test:pages (12x2). TA-02 narrowed: the blocky coasts come from the size-4096 bake itself (unshrunk 1440x900 __HD=4096 reproduces; 2048 smooth); viewport and shrink capture ruled out. Next: probe/fix the 4096 bake path or cap desktop bake at 2048 with a Known gap. No stage change.
+- 2026-11-06: Claude: TA-02 withdrawn (4096 bake verified by texture readback and native-pixel crop; earlier blockiness was a downscaled-preview artefact). TA-01 + TA-03 pushed to PR #38, new head c9193cc; pnpm check 105/105, test:pages 12x2. Stage unchanged (final-audit, owner claude); four-size captures next.
