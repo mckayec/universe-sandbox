@@ -1,0 +1,280 @@
+[
+  {
+    "key": "codex:places:103:Modin",
+    "entry": {
+      "name": "Modin",
+      "first": 6,
+      "books": [
+        6,
+        7
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "First Maccabees: the town Mattathias moves to from Jerusalem, where the resistance begins and where he is buried (ch. 2). Judas is buried there (ch. 9), and Simon raises a monument of seven pyramids over Jonathan’s bones (ch. 13). Named again in chapter 16.",
+      "more": [
+        [
+          7,
+          "Second Maccabees: Judas attacks by night near it (ch. 13)."
+        ]
+      ]
+    }
+  },
+  {
+    "key": "codex:places:140:Bethbasi",
+    "entry": {
+      "name": "Bethbasi",
+      "first": 6,
+      "books": [
+        6
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "First Maccabees: the place Jonathan defends against Bacchides (ch. 9)."
+    }
+  },
+  {
+    "key": "codex:places:85:Chola",
+    "entry": {
+      "name": "Chola",
+      "first": 2,
+      "books": [
+        2
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Judith: one of the places sent word after Holofernes’s death (ch. 15). Spelling variants are not independently located."
+    }
+  },
+  {
+    "key": "codex:places:228:The waters of Dan",
+    "entry": {
+      "name": "The waters of Dan",
+      "first": 16,
+      "books": [
+        16
+      ],
+      "layers": [
+        "xot"
+      ],
+      "desc": "First Enoch: where Enoch reads the petition and has his dream (13:7–8). Unlocated."
+    }
+  },
+  {
+    "key": "codex:places:313:The royal tomb (Acts of Thomas)",
+    "entry": {
+      "name": "The royal tomb (Acts of Thomas)",
+      "first": 33,
+      "books": [
+        33
+      ],
+      "layers": [
+        "nta"
+      ],
+      "desc": "Acts of Thomas: where Thomas is buried; dust from it heals the king’s son (164–170). These passages name no modern site."
+    }
+  },
+  {
+    "key": "event:PME13",
+    "entry": {
+      "id": "PME13",
+      "book": 39,
+      "world": "earth",
+      "layers": [
+        "pm"
+      ],
+      "title": "The cave on the way to Bethlehem",
+      "text": "On the way toward Bethlehem, Jesus is born in a cave filled with light. The midwives are named Zelomi and Salome, as this edition spells them. Not the Protevangelium’s cave, and not the modern Nativity shrine.",
+      "side": "Pseudo-Matthew, ch. 13 (Walker, ANF 8)"
+    }
+  },
+  {
+    "key": "event:m2-03",
+    "entry": {
+      "id": "m2-03",
+      "book": 7,
+      "world": "earth",
+      "layers": [
+        "dc"
+      ],
+      "title": "Heliodorus at the Temple",
+      "text": "Simon, guardian of the Temple, quarrels with the high priest Onias and tells Apollonius of the Temple’s wealth, and King Seleucus sends Heliodorus (Coelesyria and Phoenicia are named on his inspection). Onias defends the deposits of widows and orphans and of Hyrcanus son of Tobias. A heavenly rider and two young men strike Heliodorus; Onias offers sacrifice for his recovery, and Heliodorus returns and testifies to the king. The apparition is the text’s miracle account.",
+      "side": "2 Maccabees 3 (RV 1895)",
+      "site": "jerusalem"
+    }
+  },
+  {
+    "key": "codex:places:11:Egypt:more:5",
+    "entry": [
+      8,
+      "Esther additions: Mordecai’s prayer recalls Egypt (C)."
+    ],
+    "base": "Egypt"
+  },
+  {
+    "key": "codex:journeys:11:The embassy of Eupolemus and Jason",
+    "entry": {
+      "name": "The embassy of Eupolemus and Jason",
+      "first": 6,
+      "books": [
+        6
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "First Maccabees: to Rome. No stops are given."
+    }
+  },
+  {
+    "key": "codex:visions:14:The firmament",
+    "entry": {
+      "name": "The firmament",
+      "first": 21,
+      "books": [
+        21
+      ],
+      "layers": [
+        "rp"
+      ],
+      "desc": "Ascension of Isaiah: where Isaiah sees hostile powers in conflict (7:9–12)."
+    }
+  },
+  {
+    "key": "event:m2-14",
+    "entry": {
+      "id": "m2-14",
+      "book": 7,
+      "world": "earth",
+      "layers": [
+        "dc"
+      ],
+      "title": "Demetrius, Nicanor and Razis",
+      "text": "Demetrius son of Seleucus lands at Tripolis; about year 151 Alcimus accuses Judas, and Nicanor is commissioned. After an encounter at Lessau, Nicanor and Judas are reconciled and Judas marries; his wife is not named. Alcimus’s complaint forces Nicanor to break the agreement, and Judas escapes an order to send him to Antioch. Nicanor threatens the Temple with a temple to Dionysus; Razis, besieged, dies by his own hand. The text near Lessau is corrupt.",
+      "side": "2 Maccabees 14 (RV 1895)"
+    }
+  },
+  {
+    "key": "codex:places:30:Esdraelon",
+    "entry": {
+      "name": "Esdraelon",
+      "first": 2,
+      "books": [
+        2
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Judith: in the list of lands summoned (ch. 1); Holofernes approaches it near Dotaea (ch. 3); the passes Bethulia must hold are near it (ch. 4); the army camps between Belmaim and Cyamon by Esdraelon (ch. 7)."
+    }
+  },
+  {
+    "key": "codex:people:149:Iphidamia and Stratocles",
+    "entry": {
+      "name": "Iphidamia and Stratocles",
+      "first": 32,
+      "books": [
+        32
+      ],
+      "layers": [
+        "nta"
+      ],
+      "desc": "Visit Andrew in prison with Maximilla; Stratocles also appears with Alcman in the epitome.",
+      "role": "Acts of Andrew"
+    }
+  },
+  {
+    "key": "event:wis-09",
+    "entry": {
+      "id": "wis-09",
+      "book": 3,
+      "world": "earth",
+      "layers": [
+        "dc"
+      ],
+      "title": "A prayer for Wisdom",
+      "text": "A prayer modeled on Solomon’s, according to the notes, asks for Wisdom and recalls a commission to build a Temple on God’s holy mountain, in God’s city. The city is not named.",
+      "side": "Wisdom 9 (NABRE)"
+    }
+  },
+  {
+    "key": "codex:people:78:Edna daughter of Danel",
+    "entry": {
+      "name": "Edna daughter of Danel",
+      "first": 17,
+      "books": [
+        17
+      ],
+      "layers": [
+        "xot"
+      ],
+      "desc": "Enoch’s wife (ch. 4). A different person from Edna daughter of Azrial.",
+      "role": "Jubilees"
+    }
+  },
+  {
+    "key": "codex:places:47:Lud",
+    "entry": {
+      "name": "Lud",
+      "first": 2,
+      "books": [
+        2
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Judith: a name in Holofernes’s campaign sequence from Nineveh to Damascus (ch. 2). The note calls the sequence partly rhetorical; it is not a route."
+    }
+  },
+  {
+    "key": "codex:places:137:Lydia",
+    "entry": {
+      "name": "Lydia",
+      "first": 6,
+      "books": [
+        6
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "First Maccabees: named in the reports of Roman power that Judas hears (ch. 8). The narrator’s picture, not a verified map."
+    }
+  },
+  {
+    "key": "event:sir-25",
+    "entry": {
+      "id": "sir-25",
+      "book": 4,
+      "world": "earth",
+      "layers": [
+        "dc"
+      ],
+      "title": "Social virtues; judgments about women",
+      "text": "Social virtues, and harsh judgments about women from the book’s own standpoint. 25:24 alludes to the first sin; it is an allusion, not a separate claim.",
+      "side": "Sirach 25 (NABRE)"
+    }
+  },
+  {
+    "key": "codex:places:109:Bethsura:more:0",
+    "entry": [
+      7,
+      "Second Maccabees: resupplied during Eupator’s campaign (ch. 13)."
+    ],
+    "base": "Bethsura"
+  },
+  {
+    "key": "event:m1-05",
+    "entry": {
+      "id": "m1-05",
+      "book": 6,
+      "world": "earth",
+      "layers": [
+        "dc"
+      ],
+      "title": "Campaigns east and west",
+      "text": "Judas fights in Idumaea and Ammon. Simon rescues the Jews of Galilee and Arbatta and brings them to Judaea. Judas and Jonathan cross the Jordan, meet the Nabathaeans, take Bosora, relieve a besieged stronghold in Gilead, defeat Timotheus, burn the temple at Carnaim, force a way through Ephron and return by the Jordan and Bethshan. Joseph son of Zacharias and Azarias, acting without orders, are defeated at Jamnia. Hebron and Azotus follow. This edition prints Samaria at 5:66, with Marisa as an alternative reading.",
+      "side": "1 Maccabees 5 (RV 1895)"
+    }
+  }
+]
