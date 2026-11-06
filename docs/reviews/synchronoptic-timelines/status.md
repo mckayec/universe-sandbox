@@ -1,12 +1,10 @@
-```
-stage: implementation-review
-owner: chatgpt
-updated: 2026-11-04T10:18Z
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT: review PR #45 checkpoint 19 at 133519a2; Claude then builds the proposed-only pilot sidecar
+next-action: Claude: prepare the proposed-only twelve-row pilot sidecar with a provenance-manifest revision on PR45; retain zero real promotions and return the exact SHA
+updated: 2026-11-06T04:16Z
 idle-runs: 0
-note: Timeline checkpoint 19 on draft PR #45, branch engine/timelines at 133519a2fcdb8c67e8082fa59b6eb340b41b7b5f (parent 7048abb, the reviewed head; only timeline-grounding.js and its test change; timeline.js and timeline-view.js untouched; stacked on PR #39; not merged). TL-R16 residual, one guard patch: (1) the row binding now covers the stated supportRequired and the exact support manifest (ids, roles, purposes, claims, citations with provenance); supportRequired must be a boolean on every row; weakening to false, deleting it, removing one of two items, substituting an item (even freshly fingerprinted) or weakening a claim all reject and revoke a prior promotion. (2) Reviewed citations bind exact label, URL and lang; a URL whose only query is not a single 3-letter lang code is unknown provenance and defers (primary, independent evidence and support); ?lang=eng -> ?lang=spa goes stale. (3) Endpoint text, claim kinds, scoped notes (kind/text/locator) and notSame guards are bound under stable ids. Validated alias 'Elath or Eloth' -> bd/elath only (census: exactly that citation now valid). Tests 15 -> 18 in atlas-timeline-grounding; pnpm check 153/153, check:dist 122, test:pages and test:browser pass. Pilot 11/11 mechanically eligible, 0 promoted; real ledger byte-identical to checkpoint 18 (0 class changes, drawable 0). Details and run receipt: checkpoint-19.md on the branch. ChatGPT: review that exact SHA. Next after acceptance: the proposed-only versioned pilot sidecar with a provenance-manifest revision. Claude keeps implementation ownership. No release acceptance.
-```
+note: Checkpoint19 accepted at 133519a2fcdb8c67e8082fa59b6eb340b41b7b5f; TL-R16 closed (3/3 residual gaps), validated Elath alias accepted. Review 6f05509f68bf86ac7ea5cbba9d8ec35137439c4e. Independent targeted tests18/18; parent negative control14/18 with4 expected failures; pilot11/11 mechanically eligible,0 promoted;335-row ledger byte-identical. CI153/153 and24/24 page cases confirmed at identical-tree merge; test:browser is builder-reported, not in CI. Proposed sidecar next; source/rendering/device/release gates remain.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -58,3 +56,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-04: Claude: checkpoint 18 at 7048abb: TL-R14 dictionary identity and chapter zero; TL-R16 current bindings, mode validation and reconciliation; supplementary support role. 150/150; pilot 0 promoted. Stage and owner unchanged (implementation / claude).
 - 2026-11-04: Claude: checkpoint 19 at 133519a: TL-R16 residual (support manifest, citation provenance, endpoint content bound) and the validated Elath alias. 153/153; pilot 0 promoted; ledger unchanged. Stage/owner unchanged.
 - 2026-11-06: Claude: header converted to R1 (speed amendment). Owner set to chatgpt because the next action is ChatGPT's review of the named SHA; stage set to implementation-review per this review's own stage list.
+
+- 2026-11-06T04:16:42Z: ChatGPT completed the bounded checkpoint19 return at exact head 133519a2fcdb8c67e8082fa59b6eb340b41b7b5f; report saved/read back at 6f05509f68bf86ac7ea5cbba9d8ec35137439c4e. TL-R16's3/3 residual groups closed;18/18 targeted tests,4 expected parent-control failures,11/11 mechanical pilot cases and byte-identical335-row ledger independently reproduced.0 real promotions; no fresh substantive pilot source approval. R1 header normalized and stage implementation-review → implementation, owner chatgpt → claude for the proposed-only provenance-bound sidecar. Canon/technical/release acceptance remains open.
