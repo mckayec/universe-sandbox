@@ -1,10 +1,11 @@
-stage: final-audit
-owner: chatgpt
-updated: 2026-11-06T09:00Z
+stage: fixing
+owner: claude
+updated: 2026-11-06T09:26Z
 blocked-on: none
-next-action: ChatGPT: recheck the three Q01 city markers at PR39 9e3ce7ed4219d5f3004020de6b6339950bba502f and accept or reject the five Known-gap hold dispositions in fixing-round3.md
+next-action: Claude: apply Q01-R3-L1's two exact metadata replacements from audit-final.md with remaining technical/rendered work; present the finite release-scope disposition for held features, then return the exact head and evidence for recheck.
 idle-runs: 0
-note: Fixing round 3 at 9e3ce7e (parent 01df0f2): chp-zurich, jud-hamburg, xian built as Getty TGN approximate city references keeping card ids; che-anabaptist, jud-e09, XE01 now link to markers. 25 markers (10 heritage + 15 Q01); Q01 16/21 supported, 15 built, Antioch held, 5 unresolved proposed as explicit holds (Known gaps). pnpm check 119/119, test:pages 12x2, browser clean. Canon, technical/rendered and Mckay release gates open; not merged.
+note: PR39 9e3ce7ed4219d5f3004020de6b6339950bba502f reviewed: 3/3 new markers and 3/3 event links accepted; 5/5 holds accepted as temporary evidence holds, not completed research or permanent scope approval. One new Low source-summary count finding, zero new High/Medium. Independent focused tests 25/25; exact-head CI 119/119 and page checks 24/24, but page matrix omits this pack. Q01 16/21 supported, 15 built, Antioch held, 5 unresolved. Canon, technical/rendered and Mckay release gates remain open; not merged. No broad coordinate research requested.
+
 
 
 
@@ -41,3 +42,5 @@ Track A · view: Earth map + branching tree
 
 - 2026-11-06T08:28Z: ChatGPT completed Q01 round-2 return review at PR39 head 01df0f2ec7f007a2b37a5712b279a9b5e930e299 (parent ee700d153e91d854e583eb867dd40d0cc21ecfec). Source answers committed at 45451c54ba15ea495785d74d2e861ba841be968e; audit-final.md at 1dedc8efac87d675b8f0466c6c13c47284cf33fd, both read back before status. Accepted 12/12 implemented markers, 7/7 event links, Antioch hold and Chalcedon copy change; 0 new High/Medium findings. Independent 25/25 focused tests pass; same-head CI 119/119 and 24/24 page checks pass, but the page matrix omits this pack. Prior 20-item source sample preserved: 17 unchanged, three changed spatial associations rechecked; not twenty new source openings. All 8 source questions answered; Zurich, Hamburg and Xi'an city packages now supported (16/21 total, 5/21 unresolved). Five gaps remain explicit: Fayette/Whitmer, Najaf, Karbala, Azusa Street and Seesen. Stage fixing/claude for the three supported additions and finite gap dispositions under R3-R4; preserve nonspatial content and do not silently reduce scope. Canon/technical/rendered/release gates remain open; no merge or deployment.
 - 2026-11-06T09:00Z: Claude: fixing round 3 on PR #39 at 9e3ce7ed4219d5f3004020de6b6339950bba502f (parent 01df0f2): three supported Q01 city packages (Zurich, Hamburg, Xi'an) built per the 2026-11-06 continuation; five unresolved packages packaged as Known gaps with proposed hold dispositions (fixing-round3.md). pnpm check 119/119, test:pages 12x2. Stage final-audit, owner chatgpt.
+
+- 2026-11-06T09:26Z: ChatGPT completed Q01 round-3 return review at PR39 head 9e3ce7ed4219d5f3004020de6b6339950bba502f (parent 01df0f2ec7f007a2b37a5712b279a9b5e930e299). Saved and read back audit-final.md at e6019e56346d5fca13301e2f88ca1b975a245598 before this status update. Accepted 3/3 new city markers, 3/3 changed event links and 5/5 temporary evidence holds; all 22 prior sites and 92 remaining codex cards unchanged. Source bodies for Zurich, Hamburg and Xi'an freshly opened; independent focused tests 25/25 pass. One Low finding Q01-R3-L1: two source-summary strings still say twelve instead of fifteen; exact replacements supplied. Exact-head CI confirms 119/119 unit tests and 24/24 page checks, with this pack absent from the page matrix; builder screenshots are not independent rendered acceptance. Q01 remains 16/21 supported (15 built, Antioch held), 5/21 unresolved. Stage fixing/claude for metadata alignment combined with technical/rendered work and an explicit final scope proposal for held features under R3-R4; no new open-ended research loop. Canon not finally approved; no permanent scope reduction, PR approval, merge or deployment.
