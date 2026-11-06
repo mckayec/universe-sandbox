@@ -1,10 +1,10 @@
 stage: fixing
-owner: chatgpt
-updated: 2026-11-04T15:20Z
+owner: claude
 blocked-on: none
-next-action: ChatGPT: review PR #33 46029fb content + 82235c6 recheck and a3d5cc4 layout change; Claude then closes remaining capture/device evidence or records them as Known gaps
+next-action: Apply RES64-C1/C2 from return-review-a3d5cc4.md in the generator, regenerate, and return the exact SHA with a two-description-only diff and relevant tests; retain rendered/device/completeness Known gaps
+updated: 2026-11-06T04:26Z
 idle-runs: 0
-note: Checkpoint 65 on PR #33 (pack/lds-standard-works) at a3d5cc4de273be0590567cde45461b5ebc30fc53 (parent 6dec86b): RC64-O1 fixed. On wider screens the Reference header switches to the phone section chooser when the tab buttons would wrap past two rows (cxFit in engine.js, cx-compact in engine.css) and cards get scroll-margin-top; header 108 px at 3840x2160/1440x900/1280x800 (was ~330 px), packs with few sections (Dune) keep their buttons, phones unchanged. Pack, generator and data bytes unchanged. Evidence: s65-reference-fit.mjs/.txt, shots/s65-*, supplementary-implementation.md 'Checkpoint 65'. pnpm check 171/171, test:pages and test:browser pass. ChatGPT: review 46029fb's content (82235c6 recheck still pending) and the a3d5cc4 layout change. Still open: wider vision completeness, finished 4K capture, physical iOS/Android, real-GPU and physical-phone evidence. Claude keeps ownership. Not merged.
+note: PR33 a3d5cc4de273be0590567cde45461b5ebc30fc53 reviewed. 76/76 prior disposition keys reconciled; 16/16 new cards compared across 14/14 groups (20 chapter keys), with two Low wording fixes. Independent targeted tests 18/18; CI 171/171 and 26/26 page cases. RC64-O1 source review accepted, independent rendered check unavailable (Chromium failed before page execution). Wider vision completeness, finished 4K, physical iOS/Android/GPU and release gates remain open. Report 4aac8178004be6469596cb705476da88c9ec196a; no release approval.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -106,3 +106,5 @@ Track A · view: Earth-historical, layered
 - 2026-11-04: Claude: docs-only commit 6dec86b on PR #33: rendered captures of six checkpoint-64 cards + phone, all checks passed; RC64-O1 desktop Reference tab crowding recorded (fix proposed, not made). Stage/owner unchanged.
 - 2026-11-04: Claude: checkpoint 65 on PR #33 at a3d5cc4: RC64-O1 fixed (compact Reference chooser when tabs wrap past two rows; scroll-margin-top on cards); s65 checks pass at 3840x2160, 1440x900, 1280x800, 390x844; pnpm check 171/171, test:pages, test:browser pass. Stage/owner unchanged.
 - 2026-11-06: Claude: header converted to R1 (speed amendment). Owner set to chatgpt because the next action is ChatGPT's review of the named SHA; stage unchanged.
+
+- 2026-11-06T04:26Z: ChatGPT completed the bounded checkpoint-62–65 review at exact PR33 head a3d5cc4de273be0590567cde45461b5ebc30fc53; report return-review-a3d5cc4.md committed at 4aac8178004be6469596cb705476da88c9ec196a and read back before this status update. Reconciled 76/76 prior editorial keys, compared all 16 new cards across 14 groups/20 keys, found two Low precision fixes (RES64-C1 river identity; RES64-C2 Emer chronology), and independently passed 18/18 targeted tests. Structural/editorial return accepted with those corrections; source-only layout review does not close independent rendered/device gates. Stage remains fixing; owner chatgpt → claude for the concrete two-description generator correction. Known gaps are retained under the speed amendment, not certified or silently dropped.
