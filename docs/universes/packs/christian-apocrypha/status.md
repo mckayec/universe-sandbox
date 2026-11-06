@@ -1,7 +1,8 @@
-stage: final-audit
-owner: chatgpt
-updated: 2026-10-29
-note: APB fixes on PR #38, branch pack/christian-apocrypha at 1e256ceb3ac797ab998c6b7af0edb41d31c8da6f (parent 8ae9133, the audited head). Not merged. Every APB row in audit-build.md has a Resolution; APB-001–003 and 007–019 fixed in the pack, APB-005/006 corrected in build-report.md. ChatGPT: recheck each correction at that exact SHA, complete the final sample, and reconcile APQ-004 (Babylon earliest badge) research-side. Still open: APB-004 finished-surface evidence (Claude's technical gate; needs real GPU hardware) and the Q03 exact-quotation inventory. Five pins kept. No merge or deploy authorization.
+stage: fixing
+owner: claude
+updated: 2026-11-06
+note: Return the already-published PR42 final review at d9a05c198f54c838f8bba7076c07fe6a6b11af0b to the builder. PR38 remains 1e256ceb3ac797ab998c6b7af0edb41d31c8da6f. Next bounded unit: APQ-004 neutral Babylon badge/comment/test alignment and APF-001 Heliodorus wording; preserve the completed 18/19 APB recheck, deferred quotation-inventory disposition and APB-004 rendered/technical hold. Follow existing queue priority; return exact changed head and evidence for independent recheck. No merge or deployment.
+
 
 # Christian apocrypha (later layer of the Bible portion)
 
@@ -30,3 +31,5 @@ Track A · view: Earth-historical layer
 
 - 2026-10-29: ChatGPT proposed fixing/claude in draft review PR #40 after committing audit-build.md and per-layer scope records. All displayed base entries and 77 later additions received semantic research comparison; selected primary passages were reopened. APB findings require corrections and exact-new-head recheck. Main remains unchanged; no canon or release approval. Q01 additional anchors deferred, Q02 standalone accepted as content architecture only, Q03 inventory limitation and APQ-004 preserved in research-addendum.md.
 - 2026-10-29: Claude: fixing round 1 at Mckay’s request, on PR #38 at 1e256ce (8ae9133 confirmed still the PR head before editing). Resolutions recorded in audit-build.md; build-report.md corrected (706 codex entries; CI does not run test:browser). ME01 unpinned; 95 DC edition labels restored; new regression test. Checks: pnpm check 100/100, test:pages 12×2; test:browser times out at the simulator save/load step under software GL. APB-004 open (GPU capture needed); APQ-004 returned for research reconciliation. Stage `final-audit`, owner chatgpt.
+
+- 2026-11-06: ChatGPT reconciled the stale final-audit pointer with already-published outputs: [final recheck](https://github.com/mckayec/universe-sandbox/blob/d9a05c198f54c838f8bba7076c07fe6a6b11af0b/docs/universes/packs/christian-apocrypha/audit-final.md) and [APQ-004 research alignment / exact builder acceptance](https://github.com/mckayec/universe-sandbox/blob/d9a05c198f54c838f8bba7076c07fe6a6b11af0b/docs/universes/packs/christian-apocrypha/apq004-alignment.md). PR38 remains 1e256ceb3ac797ab998c6b7af0edb41d31c8da6f, open/unmerged. The prior review closed 18/19 APB findings within scope; do not repeat that unchanged-head audit. Stage fixing, owner claude: apply APQ-004 and disposition APF-001 as one bounded content/test unit, preserving all later narrative gates and existing five pins. APB-004 finished-surface evidence, remaining technical checks and same-head final signoffs remain open; no new hardware decision or source scope reduction is implied. Do not preempt an already claimed run or change established queue priority. Return the implementation SHA, per-finding resolutions and actual checks. This status reconciliation introduces no new findings and does not publish any withheld review or change HANDOFF_PLAN.md. No approval, merge or deployment.
