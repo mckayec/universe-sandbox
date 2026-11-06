@@ -511,3 +511,14 @@ test('ABR04: ISE07 and ISE11 keep their qualified wording and have no narrowing 
   }
   assert.equal(ev('ISE11').ref, 'cairo');
 });
+
+test('Q01-R3-L1: the source note counts match the built markers', () => {
+  const q01 = earth.sites.filter((s: { notes: { t: string }[] }) => s.notes.some(n => /^Coordinate source:/.test(n.t)));
+  assert.equal(earth.sites.length - q01.length, 10);
+  assert.equal(q01.length, 15);
+  assert.match(pack.meta.srcnote, /ten heritage references/);
+  assert.match(pack.meta.srcnote, /fifteen additional city or heritage reference points/);
+  assert.match(pack.meta.srcnote, /6 November 2026/);
+  assert.ok(pack.meta.sources.some((s: string) => s.includes('for the fifteen additional')));
+  assert.ok(!/twelve/.test(pack.meta.srcnote + pack.meta.sources.join(' ')));
+});

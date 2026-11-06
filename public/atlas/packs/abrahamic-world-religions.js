@@ -389,12 +389,12 @@
       notice:
         'Independent educational atlas. Religious self-descriptions, historical interpretations and demographic estimates are identified by source. Connections do not imply agreement, biological ancestry or institutional authority.',
       srcnote:
-        'Map markers are ten heritage references (UNESCO World Heritage Centre geographical data, accessed 26 October 2026) and twelve approximate reference points (Getty TGN, ToposText and UNESCO, opened 30 October and 1 November 2026). Other places are listed without coordinates rather than guessed.',
+        'Map markers are ten heritage references (UNESCO World Heritage Centre geographical data, accessed 26 October 2026) and fifteen additional city or heritage reference points (Getty TGN, ToposText and UNESCO, opened 30 October, 1 November and 6 November 2026). Other places are listed without coordinates rather than guessed.',
       canvasLabel: 'Globe of Earth with heritage and approximate reference markers for religious history',
       sources: [
         'docs/universes/packs/abrahamic-world-religions/ (research acceptance f7b74e7)',
         'UNESCO World Heritage Centre geographical data: lists 91, 356, 783, 89, 188, 173, 496, 1433, and the Jerusalem and Babylon properties',
-        'Getty Thesaurus of Geographic Names and ToposText place records, and UNESCO components 1018rev-002 and 1220-007, for the twelve approximate reference markers',
+        'Getty Thesaurus of Geographic Names and ToposText place records, and UNESCO components 1018rev-002 and 1220-007, for the fifteen additional city or heritage reference markers',
         'Pew Research Center, How the Global Religious Landscape Changed From 2010 to 2020 (9 June 2025), with its methodology and Muslim population reports',
       ],
     },
