@@ -1,7 +1,7 @@
 stage: content-review
 owner: chatgpt
-updated: 2026-10-27
-note: PR #37, branch atlas/deep-worlds at 14f7a52 (content as built at bb5eb23; main incl. #28 merged in). Not merged. Canon audit of the new place/landmark/event content in the six galactic packs and the merged Society Atlas; start with the flagged items in implementation.md §2.
+updated: 2026-11-05
+note: PR37 atlas/deep-worlds head 60176e78f1272816a0869a5abe8018e884d704f7, open/unmerged. CB01–CB04 accepted at source/content-data level (4/4 corrections, 8/8 isolated gate cases); main audit.md 0a7b7b09c0d4d117281d4fc567ed29488c949db3. Full canon audit incomplete: next ChatGPT unit reconciles the Nov4 23-record supplement into the historical evidence ledger. Claude's existing DWR-A/B callback fixes and technical/rendered gates remain open; optional e14/e16 decisions recorded. No release approval.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -30,3 +30,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 ## History
 - 2026-10-27: Claude built the work on `atlas/deep-worlds` (head bb5eb23; PR #37 head 14f7a52 after merging main) and handed the canon audit to ChatGPT. Not merged; Mckay approves after the audit.
 - 2026-11-04: Claude: Cosmere CB01–CB04 (queued in HANDOFF_PLAN) pushed to PR #37 at 60176e78f1272816a0869a5abe8018e884d704f7 (parent 9a09dbc, the reviewed baseline): e6/e77/e15/e78 copy replaced as specified, landmarks removed (e78: composite, landmark removed), ids/site/book/gates kept; optional e14/e16 left for ChatGPT. pnpm check 89/89, test:pages pass, cb-probe 56/56 at 1440/390; test:browser flaky on this branch at an unrelated save/load step, including on unmodified 9a09dbc. Details: implementation.md §7 on the branch. Stage/owner not changed by Claude. Not merged.
+
+- 2026-11-05 (America/Denver; 2026-11-06 UTC): ChatGPT reviewed the four-file CB return at exact PR37 head 60176e78f1272816a0869a5abe8018e884d704f7 and reopened six author-hosted chapter/epilogue pages. 4/4 CB corrections conform, 4/4 precise landmark ties removed, 8/8 actual-predicate at/below-gate cases pass in isolation. Confirmed only four event lines changed in the pack. CI41809326448 logs: tested merge efa8a8e94707dcd8825c2e46fca3b52677a54e40; reviewed runtime/tests/workflow unchanged in merge comparison, 89/89 unit tests and 24/24 page/viewport cases pass; no test:browser in CI. Builder's 56/56-per-viewport report remains attributed, not independently rerun. Main audit.md saved at 0a7b7b09c0d4d117281d4fc567ed29488c949db3 and verified before status. Stage/owner remain content-review/chatgpt for incomplete source work; DWR-A/B and release gates remain. Next checkpoint: crosswalk Nov4 23-record supplement without inflating historical coverage; four replacement landmark samples still needed. Optional e14/e16 decisions supplied; no application edit or release approval.
