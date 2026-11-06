@@ -431,7 +431,7 @@ function buildShell(K){
   const stops=T.chromeStops||[[0,"#fff7e2"],[.45,"#e8cd8a"],[.68,"#9a7432"],[1,"#f4e2b2"]];
   const defs='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">'+stops.map(s=>'<stop offset="'+s[0]+'" stop-color="'+s[1]+'"/>').join("")+'</linearGradient></defs>';
   const sig=T.sigil||DEF_SIGIL,ssig=T.splashSigil||sig;const TT=M.title.toUpperCase();
-  const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");
+  const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");if(K.bookIds.length<=1)app.classList.add("onebook");
   app.innerHTML=
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
 '<div class="vignette"></div><div id="labels"></div><div id="fade"></div>'+
@@ -999,11 +999,15 @@ function buildSiteLabels(w){SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];
     el.addEventListener("click",ev=>{ev.stopPropagation();selectSite(s.id);});
     SITE_EL.push({s,el,dir:latLonDir(lat,lon)});});}
 const _w=new THREE.Vector3(),_n=new THREE.Vector3();
-function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
+/* screen areas covered by the page chrome; surface labels that would sit under them (or run off the edge) are hidden */
+const CHROME_SEL=[".gl-home",".brand",".controls","#crumbs","#filters","#dossier","#chron","#index.open"];
+function chromeRects(){const out=[];CHROME_SEL.forEach(q=>{const el=document.querySelector(q);if(!el||el.hidden)return;const b=el.getBoundingClientRect();if(b.width>0&&b.height>0)out.push({x:b.left,y:b.top,w:b.width,h:b.height});});return out;}
+const hitsAny=(r,list)=>list.some(q=>r.x<q.x+q.w&&r.x+r.w>q.x&&r.y<q.y+q.h&&r.y+r.h>q.y);
+function layoutSiteLabels(W,H){if(!PL)return;const placed=[];const chrome=chromeRects();
   SITE_EL.slice().sort((a,b)=>(b.s.id===S.site)-(a.s.id===S.site)).forEach(o=>{_n.copy(o.dir).applyQuaternion(PL.root.quaternion);_w.copy(_n).multiplyScalar(1.004);
     const facing=_n.dot(camW.position.clone().sub(_w).normalize());const pr=project(_w,camW,W,H);let show=facing>.12&&pr.z<1;
     const r={x:pr.x,y:pr.y-12,w:String(o.s.name).length*8+30,h:24};
-    if(show&&o.s.id!==S.site&&placed.some(q=>r.x<q.x+q.w&&r.x+r.w>q.x&&r.y<q.y+q.h&&r.y+r.h>q.y))show=false;if(show)placed.push(r);
+    if(show&&o.s.id!==S.site&&(r.x<2||r.x+r.w>W-2||hitsAny(r,chrome)||hitsAny(r,placed)))show=false;if(show)placed.push(r);
     o.el.style.opacity=show?clamp((facing-.12)*5,0,1):0;o.el.style.pointerEvents=show?"auto":"none";if(o.el._tab!==show){o.el._tab=show;o.el.tabIndex=show?0:-1;o.el.setAttribute("aria-hidden",String(!show));}
     if(show)o.el.style.transform="translate("+(pr.x-7)+"px,"+(pr.y-13)+"px)";o.el.classList.toggle("sel",o.s.id===S.site);});
 }
