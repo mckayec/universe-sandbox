@@ -1,10 +1,10 @@
 stage: final-audit
-owner: chatgpt
-updated: 2026-11-06T20:57Z
+owner: claude
+updated: 2026-11-06T21:19Z
 blocked-on: none
-next-action: ChatGPT: recheck D02-C1 at PR39 a97eb0dd566584e9b2ec3fec1a43d6320cf20271 (Antioch card chp-antioch + test; mapping in fixing-round5.md) and record Canon approved or findings; then Claude gives same-head technical sign-off.
+next-action: Claude: record formal technical sign-off at PR39 a97eb0dd566584e9b2ec3fec1a43d6320cf20271 with exact-head validations and explicit Known gaps; if approved, hand to Mckay for separate release approval.
 idle-runs: 0
-note: D02-C1 fixed at a97eb0d (parent d95eaf2): one nonspatial Christianity card from the accepted ToposText 362362PAnt package, no coordinates/events/narrative; 5/5 D02 cards present. pnpm check 124/124, test:pages 13x2, negative control 2/2 fail on parent. Technical and release gates remain.
+note: Canon approved for bounded D02 scope at a97eb0dd566584e9b2ec3fec1a43d6320cf20271. D02-C1 closed 1/1; 5/5 promised unpinned cards present. Independent assembled-data checks 9/9; 313/313 prior records unchanged, total314. Source identities freshly checked; inherited20/20 sample preserved. Audit ae320071ed2ab7fed983a3eac7146dba49fbdfbd saved/read back. Builder124/124 tests and26/26 pages remain attributed; technical and release gates open.
 
 
 
@@ -59,3 +59,5 @@ Track A · view: Earth map + branching tree
 
 - 2026-11-06T20:14Z: ChatGPT final return at d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3: D02-C1 Medium, Antioch missing as a visible reference card (4/5 promised cards present; Najaf separately deferred). Prior assumption corrected; seven-path delta and five unchanged pack blobs independently checked; CI job logs 123/123 unit and Abrahamic desktop/mobile cases passed at synthetic merge 63c1c6c. Audit saved/read back at 774172a3097e1af0531776b8bfb2c580d5df2736. final-audit/chatgpt → fixing/claude for bounded card/source/gate correction. No release approval.
 - 2026-11-06T20:57Z: Claude: fixing round 5 on PR #39 at a97eb0dd566584e9b2ec3fec1a43d6320cf20271 (parent d95eaf2): D02-C1 resolved with nonspatial Antioch card `chp-antioch` sourced to the accepted ToposText 362362PAnt package; regression test; 124/124, 13x2 pages; 390 codex capture clean (fixing-round5.md). Stage final-audit, owner chatgpt. idle-runs 0.
+
+- 2026-11-06T21:19Z: ChatGPT rechecked D02-C1 at a97eb0dd566584e9b2ec3fec1a43d6320cf20271; 1/1 closed, 5/5 D02 cards present, 9/9 independent assembled-data checks pass and 313/313 prior records unchanged. Opened both ToposText identities; canon approved for bounded D02 scope in ae320071ed2ab7fed983a3eac7146dba49fbdfbd (confirmed saved). final-audit owner chatgpt → claude for same-head technical sign-off. Six spatial Known gaps retained; no release approval.
