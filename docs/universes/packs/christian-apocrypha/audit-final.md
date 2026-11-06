@@ -41,3 +41,30 @@ Hand back to **final-audit / claude** for that technical pass, under PROMPTS §4
 For PR #38 at **caf70a87b574da1073c2147e73d909eb2a9193ed** only:
 
 **Canon: approved**
+
+---
+
+## Technical pass (Claude), checkpoint 1 — PR #38 at caf70a87b574da1073c2147e73d909eb2a9193ed
+
+Run 2026-11-06 02:46–03:25 UTC in the cloud sandbox (Chromium 1243, `--use-gl=swiftshader`). Exact head checked out and confirmed (`git rev-parse` = caf70a8).
+
+| AUDIT_CHECKLIST §4 item | Result at caf70a8 |
+|---|---|
+| Atlas validator | `docs/reviews/site-audit/atlas-validate.js` (run as CommonJS): christian-apocrypha 0 issues, 327 events, 5 sites, no world without sites, no polar sites; only the two known §20 warnings (`layers`, `start`). |
+| `pnpm check` | Pass: format check, build, 102/102 unit tests, check:dist 112 files with no third-party loads. |
+| `pnpm test:pages` | Pass, 12 pages × 2 viewports. |
+| `pnpm test:browser` | Times out at `browser-smoke.mjs:88` (simulator Load after Save; does not open the atlas). **Same failure on current main 9f4ce77** run in the same sandbox, and `src/` differs from main only by the 10-line pack registration in `src/universe-packs.ts`. So the timeout is environmental/pre-existing, not caused by PR #38. Not run by CI (deploy-pages.yml). |
+| Console / third-party | 4K atlas session: 0 console errors, 0 third-party requests (`tech-bake-capture.txt`). |
+| 4K crisp surface | **Blocker — TA-01, below.** |
+| Other sizes, phone performance, memory | Not re-run in this checkpoint (content-only change since 1e256ce; earlier 1440/1280/390 captures exist). To do in checkpoint 2. |
+
+### APB-004 re-diagnosed: the finished 4K surface is not crisp, and a GPU will not change that
+
+Earlier runs stopped the capture before the "Charting surface" bake finished and asked for real-GPU hardware. This run let the bake finish: `tech-bake-capture.mjs` loads the pack at 3840×2160 (so the desktop 4096 bake size and 8192 map width are chosen at start-up), shrinks the window only while the bake runs so software GL can keep up, waits for 100 % (497 s), restores 3840×2160 and captures. Bake output does not depend on the window size, and a GPU computes the same pixels faster.
+
+- `shots/tech-caf70a8-3840x2160-baked.jpg` (finished bake, downscaled to 1920 wide) and `shots/tech-caf70a8-3840x2160-baked-crop1to1.jpg` (1:1 crop around Jerusalem/Babylon).
+- **TA-01 (High, technical, engine):** with the bake complete, the coastlines of the Mediterranean, Red Sea and Persian Gulf are visibly stair-stepped and the land soft. Cause: the Earth layer is driven by `public/atlas/earth-base.png`, a **1024×512** grayscale land mask (about 0.35° per texel, ~30 screen pixels per texel at the default 4K framing). The 4096 bake and 8192 vector maps cannot add detail that mask does not have. This fails §4 "crisp surfaces and maps at 4K" on any hardware.
+- This is shared engine code: the same Earth view is used by the LDS (PR #33) and Abrahamic (PR #39) atlases, so it also explains their open "finished 4K capture" items.
+- Proposed fix (generic engine work, next checkpoint): replace the mask with a higher-resolution public-domain land mask (Natural Earth 1:10m/1:50m land, rasterised to 4096×2048 on desktop with a smaller copy for phones, kept same-origin) and sample it with a smooth threshold so coastlines stay clean when magnified. Then re-capture all four sizes, re-check phone memory and performance, and record before/after crops. Pack data is untouched, so the canon approval should stand; the change would be a code change needing a technical rerun and a new SHA.
+
+**Technical: not approved at caf70a8.** Blocker TA-01 (APB-004). Claude keeps final-audit ownership and continues with the TA-01 fix.
