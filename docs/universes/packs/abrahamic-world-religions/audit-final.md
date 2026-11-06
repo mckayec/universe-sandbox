@@ -1,6 +1,6 @@
 # Final audit checkpoint — Abrahamic world religions
 
-> Current checkpoint: round-4 recheck at `d4185ed6f15d47e9e268a87fbd59f818237ffc9e`; see the final appended section. Earlier sections retain their original revision and counts.
+> Current checkpoint: final return at `d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3`; D02-C1 remains open. See the final appended section; earlier evidence retains its original revisions and counts.
 
 2026-11-06 · ChatGPT · PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, reviewed implementation **`ee700d153e91d854e583eb867dd40d0cc21ecfec`**, parent `9cefeac89bfd23c4a7dde0e6589151608a3c6f2e`.
 
@@ -268,3 +268,47 @@ D02 is a real, still-unanswered scope question. Clarified its wording in [DECISI
 **Canon: not approved for final acceptance pending D02's scope disposition.** All returned pack corrections are now accepted at **d4185ed6f15d47e9e268a87fbd59f818237ffc9e**; no further copy fix is requested. Technical approval and Mckay release approval remain separate gates. Return **fixing / claude** for the concrete TA-01/R4-T1 and R4-T2 technical unit while D02 is pending; this is not an item that only Mckay can currently move. After technical work is complete, route to Mckay if D02 is still the sole outstanding action. Do not repeat the accepted metadata or reopen broad coordinate research.
 
 Run inspected **24/24 status files** (18 universe, six review); one ChatGPT-owned item, zero research-ready self-audit candidates. No agreement changes, site edits, PR approval, merge or deployment.
+
+
+## 2026-11-06 — Final canon return at d95eaf2: D02 implementation mismatch
+
+**Audited revision:** PR [#39](https://github.com/mckayec/universe-sandbox/pull/39), branch `pack/abrahamic-world-religions`, **d95eaf28e50f6fe005e99b4b3e289d8b906b1fc3**. PR independently read open/unmerged at that head. Baseline: **d4185ed6f15d47e9e268a87fbd59f818237ffc9e**.
+
+**Result: one new Medium scope/content finding, D02-C1; 4/5 promised retained cards present. Canon: not approved.** This corrects our earlier assumption that Antioch already had a card. It is not a new request for broad coordinate research, and does not undo Mckay's D02 answer.
+
+### Exact-revision evidence
+
+Compared both complete, non-truncated Git trees and the three-commit comparison. Exactly **7/7 changed paths**: two Earth-mask PNGs, engine.js, engine.css, solar-tex.js, mask generator and mask tests; no removed paths. Read all five changed text files at the exact head. **5/5 pack-data blobs are identical to the accepted baseline**, including assembler blob `aca46d13b989249e61441c4e66f45dd2c688b0aa`. Therefore prior 313-record conformity evidence, ABR01–04 closures across 12 records, Q01-R3-L1's two corrected strings, and the recorded **20/20 source sample** carry forward for unchanged assertions. These are inherited checks, not fresh source openings or a new random sample.
+
+The one-book control change leaves book data and setBook controls in the DOM; this pack has only book 1 (Overview). Label-collision suppression changes visibility under chrome, not the place data, source attribution, layer/year predicates or book restrictions. No new canon/spoiler finding in that delta. Rendered accessibility and geography appearance remain Claude's technical checks.
+
+### Finding and bounded correction
+
+| ID | Severity | Location | Finding/evidence | Required disposition |
+|---|---|---|---|---|
+| D02-C1 | Medium | `public/atlas/packs/abrahamic-world-religions.js`, reference-place inventory; fixing-round4.md release-scope table; DECISIONS.md D02 | D02 approves retention of five named existing unpinned cards, but only four exist. Across the assembler and all four data parts, the only Antioch/Antakya occurrence is the assembler comment saying Antioch is held. It is not a visible place, event or codex card. Earlier auditor prose incorrectly counted it as an existing card. | Claude: add a minimal source-backed **nonspatial Antioch reference card** from the accepted Q01/source package, with stable ID, source locator, correct tradition/layer and Overview gate. Preserve ancient-city versus modern-city/venue distinctions; do not add coordinates, an invented event, or route. Return exact head, actual text/source mapping and regression evidence. If existing evidence does not support a bounded card, explicitly document that limitation and propose a revised scope decision; do not silently reinterpret D02 as approving Antioch's absence. |
+
+| D02 feature | Actual disposition at reviewed head |
+|---|---|
+| Antioch | **Missing visible card**; comment-only mention. Supported-but-held coordinate package is not itself a visitor-facing record. |
+| Fayette/Whitmer | `chp-fayette` nonspatial card retained. |
+| Karbala | `ISP05` nonspatial card retained. |
+| Azusa Street | `chp-azusa` nonspatial card retained. |
+| Seesen | `jud-seesen` nonspatial card retained. |
+| Najaf | Deferred mapped feature; no new standalone narrative card required by D02. |
+
+### Known gaps and preserved decisions
+
+D02's owner-approved boundaries remain: the five named places are to remain unpinned, and Najaf's mapped feature is deferred. All six spatial omissions remain Known gaps. Coordinate accounting stays **16/21 supported packages, 15 implemented, Antioch supported but held, 5 unresolved**; total implemented map markers remain 25 (10 heritage + 15 Q01). D02 does not confirm an uncertain coordinate, approve a later pin, establish exhaustive world-religions coverage, or authorize release.
+
+Historical audit-build.md and research-addendum.md are absent from current main; their exact `bc7efce6fb75e5233a461fa7e41be0f1baf6fcfa` versions were successfully read for this return. Q02–Q07 dispositions remain as documented there; Q01 is addressed by the subsequent source/implementation rounds plus D02, subject to D02-C1. No lost historical evidence was invented or silently treated as a current-main file.
+
+### Validation and handoff
+
+Independently read [Actions job 128046341440](https://github.com/mckayec/universe-sandbox/actions/runs/42262660864/job/128046341440) and its logs: **123/123 unit tests passed**, and both Abrahamic desktop/mobile page checks passed; overall build job succeeded, deployment skipped. The job checked out synthetic merge **63c1c6c0269c505e53513740750552b8f623a950**, not the PR head itself; no new local test execution or whole-tree equivalence claim is made. These checks do not prove retention of a card they never assert.
+
+Claude's finished-surface four-size report is recorded in fixing-round4.md; it remains builder evidence, not an independent visual inspection here. Physical-device/GPU/performance evidence remains limited, the separate simulator Save/Load smoke issue remains unresolved, and minor coast stepping/shared 4K type size remain disclosed technical observations. No Deep Research product invoked; this was a revision/scope audit with no new historical assertions.
+
+Return **fixing / claude** for D02-C1 only, preserving prior closures. After the bounded correction, ChatGPT rechecks changed content and source/gate evidence; Claude supplies the same-head technical sign-off; Mckay's separate release approval is still required. No site code, PR branch, merge or deployment changed by this review.
+
+**Canon: not approved — D02-C1 (missing Antioch card).**
