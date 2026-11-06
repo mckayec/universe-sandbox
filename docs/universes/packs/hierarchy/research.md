@@ -54,7 +54,6 @@ All rows have `aliases: []`, `position: unknown` unless stated, and no numerical
 | HP11 — Seawall | HP08; landmark | 2 | Waves strike this barrier. | None supplied; none | [S3] (C), chapter I |
 | HP12 — Obsidian archway site | HP08; device site | 2 | Caeror activates an arch from a circular installation. Name is an editorial label. | None supplied; HE04 | [S3] (C), chapter I |
 
-
 | HP13 — Deditia | hierarchy-setting; region | 1 | Surrounds Caten. | None supplied; none | [S1] (C), Locations |
 | HP14 — Tensia | hierarchy-setting; country | 1 | Southernmost populated country. | None supplied; none | [S1] (C), Locations |
 | HP15 — Sytrece | hierarchy-setting; country | 1 | East of Deditia. | None supplied; none | [S1] (C), Locations |
@@ -78,7 +77,6 @@ No absolute setting dates are supplied. Use narrative order within each book, wi
 | HE02 — Leaving work | 1, chapter I, final paragraph | HP06 | Vis, Hrolf | Vis leaves for the Theatre. | [S2] (C) |
 | HE03 — Leaving the hall | 2, chapter I, opening | HP08 | Vis, Caeror | They escape through a hall and ascend. | [S3] (C) |
 | HE04 — Archway activation | 2, chapter I, closing | HP12 | Vis, Caeror | Both stand at the activated device as light envelops them. | [S3] (C) |
-
 | HE05 — Names questioned | 1, chapter I, interrogation | HP07 | Hospius, Nateo, Vis | Two unexplained names enter the inquiry. | [S2] (C) |
 | HE06 — Descent completed | 2, chapter I, before the westward walk | HP20, HP21 | Vis, Caeror | They reach the crater floor. | [S3] (C) |
 
@@ -105,7 +103,6 @@ Recommendation: show these as ordered narrative cards until map geometry is rese
 | HC06 — Senatorial pyramids | 1 | Governance, Military and Religion divide institutional responsibilities. | [S2] (C), chapter I |
 | HC07 — Replication | 2 | The publisher describes three versions of Vis across three worlds. | [S3] (C), synopsis |
 | HC08 — Caeror's account | 2 | His explanation of the worlds includes acknowledged uncertainty about which was original. | [S3] (C), chapter I |
-
 | HC09 — Sapper | 1 | Prison device draining Will. | [S2] (C), chapter I |
 | HC10 — Aurora Columnae | 1 | Artifacts enabling ceding. | [S2] (C), chapter I |
 
