@@ -1,0 +1,27 @@
+{
+  "relationships": 335,
+  "classes": {
+    "travel": 5,
+    "no-locator": 3,
+    "cross-text": 231,
+    "shared-chapter": 13,
+    "shared-verse": 73,
+    "same-chapter": 10
+  },
+  "byClassAndType": {
+    "travel / travel": 5,
+    "no-locator / same-entity": 1,
+    "no-locator / context": 2,
+    "cross-text / same-entity": 60,
+    "shared-chapter / describes": 4,
+    "cross-text / describes": 4,
+    "shared-chapter / context": 7,
+    "cross-text / context": 121,
+    "cross-text / quotation": 38,
+    "shared-verse / context": 73,
+    "cross-text / within": 8,
+    "shared-chapter / same-entity": 2,
+    "same-chapter / context": 10
+  },
+  "drawable": 0
+}

@@ -1,0 +1,83 @@
+PASS 390 escape: drag in progress before the cancel null
+FAIL 390 escape: drag marks cleared at once 3
+PASS 390 escape: focus returned to the opener "tlBtn"
+FAIL 390 escape: pre-drag order kept ["lane-chr","lane-isl","lane-jud"]
+FAIL 390 escape: URL lane order unchanged "lane-chr,lane-isl,lane-jud,lane-enc,chron-jud,chron-chr,chron-isl,chron-enc"
+PASS 390 escape: no drag marks after release null
+FAIL 390 escape: a normal drop still commits ["lane-isl","lane-jud","lane-chr"]
+FAIL 390 escape: ↑ button still moves the lane null
+PASS 390 close: drag in progress before the cancel null
+FAIL 390 close: drag marks cleared at once 3
+PASS 390 close: focus returned to the opener "tlBtn"
+FAIL 390 close: pre-drag order kept ["lane-chr","lane-isl","lane-jud"]
+FAIL 390 close: URL lane order unchanged "lane-chr,lane-isl,lane-jud,lane-enc,chron-jud,chron-chr,chron-isl,chron-enc"
+PASS 390 close: no drag marks after release null
+FAIL 390 close: a normal drop still commits ["lane-isl","lane-jud","lane-chr"]
+FAIL 390 close: ↑ button still moves the lane null
+PASS 390 pointercancel: drag in progress before the cancel null
+PASS 390 pointercancel: drag marks cleared at once 0
+PASS 390 pointercancel: focus stays inside the timeline null
+PASS 390 pointercancel: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 pointercancel: URL lane order unchanged "1"
+PASS 390 pointercancel: no drag marks after release null
+PASS 390 pointercancel: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 390 pointercancel: ↑ button still moves the lane null
+PASS 390 captureloss: drag in progress before the cancel null
+PASS 390 captureloss: drag marks cleared at once 0
+PASS 390 captureloss: focus stays inside the timeline null
+FAIL 390 captureloss: pre-drag order kept ["lane-chr","lane-isl","lane-jud"]
+FAIL 390 captureloss: URL lane order unchanged "lane-chr,lane-isl,lane-jud,lane-enc,chron-jud,chron-chr,chron-isl,chron-enc"
+PASS 390 captureloss: no drag marks after release null
+FAIL 390 captureloss: a normal drop still commits ["lane-isl","lane-jud","lane-chr"]
+FAIL 390 captureloss: ↑ button still moves the lane null
+PASS 390 resize: drag in progress before the cancel null
+FAIL 390 resize: drag marks cleared at once 1
+PASS 390 resize: focus stays inside the timeline null
+PASS 390 resize: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 resize: URL lane order unchanged "1"
+FAIL 390 resize: no drag marks after release null
+FAIL 390 resize: a normal drop still commits ["lane-jud","lane-chr","lane-isl"]
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 60000ms exceeded.
+Call log:
+[2m  - waiting for locator('.tl-mv[data-lane="lane-jud"][data-lane-mv="-1"]')[22m
+[2m    - locator resolved to <button disabled class="btn tl-mv" data-lane-mv="-1" data-lane="lane-jud" aria-label="Move Judaism up">↑</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    75 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /home/claude/universe-sandbox/docs/reviews/synchronoptic-timelines/tl13/tl13-cancel-probe.mjs:125:83 {
+  log: [
+    `  - waiting for locator('.tl-mv[data-lane="lane-jud"][data-lane-mv="-1"]')`,
+    '    - locator resolved to <button disabled class="btn tl-mv" data-lane-mv="-1" data-lane="lane-jud" aria-label="Move Judaism up">↑</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    75 × waiting for element to be visible, enabled and stable',
+    '       - element is not enabled',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4

@@ -1,0 +1,7 @@
+[46s] loaded 1440x900
+[97s] check 1 passed (open pushes one entry; Back closes, focus restored)
+[102s] check 2 passed (Forward reopens with the selection)
+[251s] check 3 passed (close button and Escape step back; no history growth)
+[290s] check 4 passed (direct link at 390x844: close by tap stays on the atlas, replaces the URL)
+tl2 probe passed: 4 checks; no console errors, failed requests or HTTP errors.
+EXIT 0

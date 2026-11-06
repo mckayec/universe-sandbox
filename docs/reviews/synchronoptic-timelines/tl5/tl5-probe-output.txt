@@ -1,0 +1,29 @@
+PASS R06 390: #filters width 370px (was 0)
+PASS R06 390: Judaism filter button is the hit target
+PASS R06 390: tap toggles Judaism off
+PASS R06 390: tap toggles Judaism back on
+PASS R06 390: 91 dated marks with all layers
+PASS R06 390: timeline re-gated after phone filter tap (66 marks)
+PASS R02: 78 undated entries before collapse
+PASS R02 chart: collapsed lane shows an expand button for its 18 undated
+PASS R02 list: all 169 gated records listed (91 dated + 78 undated) with Judaism collapsed in the chart
+PASS R02: expand button restores 78 undated
+PASS R03: select keeps focus on the mark
+PASS R03: deselecting the same mark keeps focus on it (was BODY)
+PASS R03: Back to the overview returns focus to the record
+PASS R03: Tab after clear stays in the dialog
+PASS R03: Shift+Tab after clear stays in the dialog
+PASS R01: covenant tradition shows narrative chronology, blurb, note text and its locator
+PASS R01: Karaite identity guards shown
+PASS R01: Seesen shows event text, missing locator stated, ref only as atlas cross-reference
+PASS R01: cross-reference opens the codex entry
+PASS R05: #tl=lane-chr puts Christianity first
+PASS R05: then #tl=1 restores the default order (was: Christianity stayed first)
+PASS R05: a stale tlt key is ignored (chart unchanged; not part of the URL contract)
+PASS 3840: keyboard select keeps focus
+PASS 3840: 91 marks
+PASS 3840: no page sideways scroll
+PASS 1280: keyboard select keeps focus
+PASS 1280: 91 marks
+PASS 1280: no page sideways scroll
+PASS no console errors, page errors, failed requests or HTTP>=400

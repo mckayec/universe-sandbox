@@ -1,0 +1,130 @@
+edge,kind,dossier,ledger,evidence
+p:judaism>jud-covenant-tradition,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-israelite-judean-context,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-ananites,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-karaite,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-mystical-context,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-hasidic,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-orthodox,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-haskalah-context,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-reform-progressive,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-conservative-masorti,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-jts,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-reconstructionist,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-humanistic,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-renewal,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-pnai-or,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-shalom-center,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-liberal-uk-historical,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-reform-uk-historical,editorial,judaism-research.md,overview grouping,
+p:judaism>jud-diaspora-cultures,editorial,judaism-research.md,overview grouping,
+p:jud-israelite-judean-context>jud-second-temple,sourced,judaism-research.md,§8 JU-R02,JU03;JU04
+p:jud-second-temple>jud-pharisees,sourced,judaism-research.md,§8 JU-R03,JU17
+p:jud-second-temple>jud-sadducees,sourced,judaism-research.md,§8 JU-R03,JU17
+p:jud-second-temple>jud-essenes,sourced,judaism-research.md,§8 JU-R03,JU17
+p:jud-second-temple>jud-rabbinic,sourced,judaism-research.md,§8 JU-R04,JU03;JU05
+p:jud-orthodox>jud-modern-orthodox,sourced,judaism-research.md,§8 JU-R10,JU18
+p:jud-orthodox>jud-haredi,sourced,judaism-research.md,§8 JU-R09,JU18
+m:jud-pnai-or>jud-aleph,sourced,judaism-research.md,§8 JU-R17,JU14
+m:jud-shalom-center>jud-aleph,sourced,judaism-research.md,§8 JU-R17,JU14
+m:jud-liberal-uk-historical>jud-progressive-uk,sourced,judaism-research.md,§8 JU-R18 (AI304),JU15
+m:jud-reform-uk-historical>jud-progressive-uk,sourced,judaism-research.md,§8 JU-R18 (AI305),JU15
+l:jud-covenant-tradition>jud-rabbinic,sourced,judaism-research.md,§8 JU-R01,JU02;JU05
+l:jud-ananites>jud-karaite,sourced,judaism-research.md,§8 JU-R06,JU08
+l:jud-karaite>jud-rabbinic,sourced,judaism-research.md,§8 JU-R07,JU08
+l:jud-mystical-context>jud-hasidic,sourced,judaism-research.md,§8 JU-R08,JU07
+l:jud-hasidic>jud-haredi,sourced,judaism-research.md,§8 JU-R11,JU18
+l:jud-haskalah-context>jud-reform-progressive,sourced,judaism-research.md,§8 JU-R12,JU09
+l:jud-jts>jud-conservative-masorti,sourced,judaism-research.md,§8 JU-R14,JU11
+l:jud-aleph>jud-renewal,sourced,identity-and-edges.csv,AI303,JU14
+l:jud-second-temple>ch-early-communities,sourced,identity-and-edges.csv,AI290,CH01;CH18
+p:ch-early-communities>christianity,sourced,identity-and-edges.csv,AI291 (§6 ch-early-communities),CH01;CH18
+p:christianity>ch-catholic,sourced,christianity-research.md,§6 ch-catholic,CH06;CH07
+p:ch-catholic>ch-eastern-catholic,sourced,christianity-research.md,§6 ch-catholic,CH06;CH07
+p:ch-eastern-catholic>ch-ukrainian-greek-catholic,sourced,christianity-research.md,§6a ch-ukrainian-greek-catholic,CH33
+p:ch-catholic>ch-old-catholic,sourced,christianity-research.md,§6a ch-old-catholic,CH32
+p:ch-old-catholic>ch-union-utrecht,sourced,christianity-research.md,§6a ch-old-catholic,CH32
+p:christianity>ch-eastern-orthodox,sourced,christianity-research.md,§6 ch-eastern-orthodox,CH04;CH05
+p:christianity>ch-oriental-orthodox,sourced,christianity-research.md,§6 ch-oriental-orthodox,CH03
+p:christianity>ch-east-syriac,sourced,christianity-research.md,§6 ch-east-syriac,CH17
+p:ch-western-context>ch-lutheran,sourced,christianity-research.md,§6 ch-lutheran,CH08
+p:ch-western-context>ch-reformed,sourced,christianity-research.md,§6 ch-reformed,CH19
+p:ch-western-context>ch-anglican,sourced,christianity-research.md,§6 ch-anglican,CH09
+p:ch-anglican>ch-methodist,sourced,christianity-research.md,§6 ch-methodist,CH12
+p:ch-reformation-context>ch-anabaptist,sourced,christianity-research.md,§6 ch-anabaptist,CH10
+p:ch-english-separatist-context>ch-baptist,sourced,christianity-research.md,§6 ch-baptist,CH11
+p:ch-revival-contexts>ch-pentecostal,sourced,christianity-research.md,§6 ch-pentecostal,CH14
+m:ch-stone-movement>ch-stone-campbell,sourced,christianity-research.md,§6 ch-stone-campbell,CH15;CH20
+m:ch-campbell-movement>ch-stone-campbell,sourced,christianity-research.md,§6 ch-stone-campbell,CH15;CH20
+p:ch-millerite-context>ch-adventist,sourced,christianity-research.md,§6a ch-adventist,CH21;CH22
+p:ch-bible-student-context>ch-jehovahs-witnesses,sourced,christianity-research.md,§6a ch-jehovahs-witnesses,CH23;CH24
+p:christianity>ch-latter-day-saint,sourced,christianity-research.md,§6 ch-latter-day-saint,CH16
+p:ch-latter-day-saint>ch-lds-utah,sourced,christianity-research.md,§6a ch-lds-utah,CH28
+p:ch-latter-day-saint>ch-community-christ,sourced,christianity-research.md,§6a ch-community-christ,CH29;CH30
+p:ch-latter-day-saint>ch-jesus-christ-bickerton,sourced,christianity-research.md,§6a ch-jesus-christ-bickerton,CH31
+p:ch-latter-day-saint>ch-strang-movement,sourced,christianity-research.md,§6a ch-strang-movement,CH28
+p:christianity>ch-african-instituted,sourced,christianity-research.md,§6a ch-african-instituted,CH25
+p:ch-african-instituted>ch-african-church,sourced,christianity-research.md,§6a ch-african-church,CH26
+p:ch-african-instituted>ch-oaic,sourced,christianity-research.md,§6a ch-oaic,CH27
+l:ch-catholic>ch-eastern-orthodox,sourced,christianity-research.md,§6 ch-eastern-orthodox,CH04;CH05
+l:ch-oriental-orthodox>ch-chalcedonian-context,sourced,christianity-research.md,§6 ch-oriental-orthodox,CH03
+l:ch-kyivan-byzantine-context>ch-ukrainian-greek-catholic,sourced,christianity-research.md,§6a ch-ukrainian-greek-catholic,CH33
+l:ch-anglican>ch-african-church,sourced,christianity-research.md,§6a ch-african-church,CH26
+l:ch-pentecostal>ch-evangelical,sourced,christianity-research.md,§6 ch-pentecostal,CH14
+p:christianity>ch-chalcedonian-context,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-kyivan-byzantine-context,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-western-context,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-reformation-context,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-english-separatist-context,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-evangelical,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-revival-contexts,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-stone-movement,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-campbell-movement,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-millerite-context,editorial,christianity-research.md,overview grouping,
+p:christianity>ch-bible-student-context,editorial,christianity-research.md,overview grouping,
+l:ch-evangelical>ch-anglican,sourced,christianity-research.md,§6 ch-evangelical,CH13
+l:ch-evangelical>ch-lutheran,sourced,christianity-research.md,§6 ch-evangelical,CH13
+l:ch-evangelical>ch-reformed,sourced,christianity-research.md,§6 ch-evangelical,CH13
+l:ch-evangelical>ch-baptist,sourced,christianity-research.md,§6 ch-evangelical,CH13
+l:ch-evangelical>ch-methodist,sourced,christianity-research.md,§6 ch-evangelical,CH13
+p:islam>ist02,sourced,islam-research.md,Explicit graph edges (IST02–04 tradition-within),IS06;IS12;IS14
+p:islam>ist03,sourced,islam-research.md,Explicit graph edges (IST02–04 tradition-within),IS06;IS12;IS14
+p:islam>ist04,sourced,islam-research.md,Explicit graph edges (IST02–04 tradition-within),IS06;IS12;IS14
+p:ist03>ist05,sourced,islam-research.md,Explicit graph edges (IST05–07 tradition-within),IS09;IS10
+p:ist03>ist06,sourced,islam-research.md,Explicit graph edges (IST05–07 tradition-within),IS09;IS10
+p:ist03>ist07,sourced,islam-research.md,Explicit graph edges (IST05–07 tradition-within),IS09;IS10
+p:ist06>ist08,sourced,islam-research.md,Explicit graph edges (IST08/09 succession-division; ISE10),IS08
+p:ist06>ist09,sourced,islam-research.md,Explicit graph edges (IST08/09 succession-division; ISE10),IS08
+p:ist09>ist10,sourced,islam-research.md,Explicit graph edges (IST10/11 succession-division; ISE11),IS08
+p:ist09>ist11,sourced,islam-research.md,Explicit graph edges (IST10/11 succession-division; ISE11),IS08
+p:ist02>isl01,sourced,islam-research.md,Explicit graph edges (ISL01–04 legal-school-within),IS06
+p:ist02>isl02,sourced,islam-research.md,Explicit graph edges (ISL01–04 legal-school-within),IS06
+p:ist02>isl03,sourced,islam-research.md,Explicit graph edges (ISL01–04 legal-school-within),IS06
+p:ist02>isl04,sourced,islam-research.md,Explicit graph edges (ISL01–04 legal-school-within),IS06
+p:islam>isl05,sourced,islam-research.md,ISL05–08 (schools named in the Amman Message),IS06
+p:islam>isl06,sourced,islam-research.md,ISL05–08 (schools named in the Amman Message),IS06
+p:islam>isl07,sourced,islam-research.md,ISL05–08 (schools named in the Amman Message),IS06
+p:islam>isl08,sourced,islam-research.md,ISL05–08 (schools named in the Amman Message),IS06
+p:islam>isc01,sourced,islam-research.md,Explicit graph edges (ISC01 devotional-stream-in),IS15
+p:isc01>iso01,sourced,islam-research.md,Explicit graph edges (ISO01–06 order-associated-with),IS16
+p:isc01>iso02,sourced,islam-research.md,Explicit graph edges (ISO01–06 order-associated-with),IS16
+p:isc01>iso03,sourced,islam-research.md,Explicit graph edges (ISO01–06 order-associated-with),IS16
+p:isc01>iso04,sourced,islam-research.md,Explicit graph edges (ISO01–06 order-associated-with),IS16
+p:isc01>iso05,sourced,islam-research.md,Explicit graph edges (ISO01–06 order-associated-with),IS16
+p:isc01>iso06,sourced,islam-research.md,Explicit graph edges (ISO01–06 order-associated-with),IS16
+p:isc01>isc02,sourced,islam-research.md,ISC02 (dhikr),IS16
+p:isc01>isc03,sourced,islam-research.md,ISC03 (silsila),IS17
+p:islam>isc04,sourced,islam-research.md,ISC04 (Qur'an 2:127),IS04
+p:islam>ism01,sourced,islam-research.md,ISM01 self-identifies-with,IS19
+p:islam>ism02,editorial,islam-research.md,overview grouping (selected modern movements),
+p:islam>ism03,editorial,islam-research.md,overview grouping (selected modern movements),
+p:islam>ism04,editorial,islam-research.md,overview grouping (selected modern movements),
+p:islam>ism05,editorial,islam-research.md,overview grouping (selected modern movements),
+l:isc04>jud-covenant-tradition,sourced,identity-and-edges.csv,AI302,IS04;JU01
+l:ism02>ism03,sourced,islam-research.md,Salafi/Wahhabi relationship (overlaps-with),IS20
+l:ism04>isc01,sourced,islam-research.md,Deobandi/Sufi relationship (engages-and-reforms),IS22
+l:ism05>isl01,sourced,islam-research.md,Barelvi connections (legal-affinity),IS23
+l:hindu-philosophy>isc01,sourced,identity-and-edges.csv,AI293/AI294 (XE03),X05;IS15
+l:islam>daoism-reference,sourced,identity-and-edges.csv,AI299 (XC03/XC04),X08;X09
+l:islam>buddhism-reference,sourced,identity-and-edges.csv,AI300 (XC03/XC04),X08;X09
+l:islam>confucian-reference,sourced,identity-and-edges.csv,AI301 (XC03/XC04),X08;X09

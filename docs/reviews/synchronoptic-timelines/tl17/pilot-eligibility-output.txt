@@ -1,0 +1,12 @@
+ELIGIBLE s x:c:DCM-dcp-shadrach-roundy>c:DCM-dre124k-bishopric-priests
+ELIGIBLE s x:c:DCM-dcp-simonds-ryder>c:DCM-dcp-heman-basset
+ELIGIBLE s x:c:DCM-dcp-peter-whitmer-jr>c:DCM-dre030-whitmer-cowdery
+ELIGIBLE s x:c:DCM-dcp-william-law>c:DCM-dre124e-presidency-patriarch
+ELIGIBLE i x:c:BMV-186-sermon-compare-matthew-5>c:NTC-sermon-mountain
+ELIGIBLE i x:c:BMV-052-isaiah-11-righteous-judge>c:OTM-c04-messianic-reception
+ELIGIBLE s x:c:DCM-dr09-smith-family>c:DCM-dcp-joseph-smith-sr
+ELIGIBLE s x:c:fm-person-christian-whitmer>c:FM05
+ELIGIBLE i x:c:BMV-080-suffering-servant>c:OTM-c04-messianic-reception
+ELIGIBLE i x:c:BMV-039-judah-damascus-samaria>c:OTM-r02-ahaz-crisis
+ELIGIBLE s x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith
+promoted 0
