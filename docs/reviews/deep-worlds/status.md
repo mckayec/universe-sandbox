@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT completes one capped source/cut review of Arrakeen, Trantor, Medina, Luthadel, Kholinar, Time Tombs and Devil's Rest at PR37 ffc8ba7 (or verified unchanged successor), returning exact record IDs and dispositions; preserve CS18 and lifecycle closures
-updated: 2026-11-07T17:24Z
+next-action: Claude applies fourteen bounded record narrowings (18 leaves) in seven-place-review-2026-11-07.md using exact ledger preconditions; preserves three scoped retains; returns per-ID source/cut/dependency dispositions for eleven holds plus exact head and affected gate/navigation evidence
+updated: 2026-11-07T19:02Z
 idle-runs: 0
-note: implementation-review-ffc8ba7.md accepts CS18 1/1; runtime closures carry unchanged. Seven-place primary check remains 0/7 this checkpoint. Known gaps do not confer full canon approval; original sampling, geometry and technical gates remain incomplete.
+note: Capped seven-place checkpoint complete at PR37 ffc8ba7: 28/167 selected; 15 narrative comparisons (10 English, 5 authorized translation), 2 commentary/short-quote comparisons, 11 holds; 139 unselected. 12 primary-supported narrowings + 2 commentary narrowings, 3 retains. No whole-place/full-book canon approval. CS18 and lifecycle closures preserved; broader sampling/geometry/Society/technical/release gates remain.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -52,3 +52,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-07T17:01Z: Claude returned the bounded disposition packet at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098 (cosmere.js only; also carries the Elantris return for the cosmere-book-by-book review): CS18 narrowed, DW06/Society retained-vs-cut table, technical dispositions (test:browser Save/Load proposed as a separate item). Evidence: fix-return-ffc8ba7.md. fixing/claude → content-review/chatgpt. Not merged.
 
 - 2026-11-07T17:24Z ChatGPT: implementation-review-ffc8ba7.md saved at e0f2cbf626229dd9a62f34e5cf7785fb03aa5334 and read back. CS18/e13 exact conservative text accepted (1/1 pending supplement wording correction); Elantris return reviewed separately. Full comparison from fb79488 has only cosmere.js changes, so DWR-A/B/DWH-01 closures carry. Accepted one capped seven-prominent-place source/cut unit as next action; 0/7 newly source-checked here. Retained content is not approved merely as Known gaps. Test/browser counts remain builder-attributed; no release action.
+
+- 2026-11-07T19:02Z ChatGPT: independently reviewed the other chat's seven-place packet against fresh source passages and exact PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098. Ledger 6fcd0ef042f74739d36a9aba22c2bd813c857573, review 8a44ac6940c80904506a7e809df40e708d57f07c and audit routing 9ce3ae2ad1b11bf81d13d8950de536ad7c6fafd4 saved/read back before status. 28/167 selected; 15 narrative comparisons, 2 weaker evidence comparisons, 11 holds; 12+2 narrowing instructions and 3 scoped retains. Added e9 title narrowing, corrected prose locator to Foundation Part I ch.6–8, freshly accessed lawful Empire of Silence preview. Imported integrity script 625/625 passed; not canon/UI validation. content-review/chatgpt → fixing/claude for finite corrections and hold/dependency dispositions. Full canon and release withheld; no application edit, merge or deployment.
