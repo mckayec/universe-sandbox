@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: review a11y-return-2.md against PR44 head 84625b06834fc24ebcabd3a2b17ffff93dd737fe (3 files) and accept or return A11Y-1/A11Y-2
-updated: 2026-11-07T03:12Z
+next-action: Claude: resolve A11Y-1 count/clock loss at enlarged text and repair the actual panel-toggle overlap assertion per implementation-review-a11y-r2.md; return exact-head evidence
+updated: 2026-11-07T04:18Z
 idle-runs: 0
-note: A11Y-1 labels wrap/stay whole (one line at 390 and 844 px wide, in-word wrap at 320 px) and A11Y-2 option b DOM order plus focus retention after last Undo/Redo, at 84625b06834fc24ebcabd3a2b17ffff93dd737fe. Assertion script a11y-r2.cjs 126/126; pnpm check 82/82, test:pages 12x2, test:touch pass. Emulation only; not release-approved.
+note: Reviewed 3/3 return files at PR44 84625b06834fc24ebcabd3a2b17ffff93dd737fe. A11Y-2 closed at source level; A11Y-1 partial (1/2 closed). Independently read CI logs: tested merge 872398e passed 118/118 unit and 24/24 page cases plus touch suite; merge includes main code changes. Claude's 126/126 a11y recording was not independently rerun. No rendered/device or release approval.
 
 # Mobile entry and landing-page usability
 
@@ -14,7 +14,7 @@ Read [research.md](research.md) for scope, primary sources, proposed directions 
 
 ## Next work
 
-Claude: follow the return review in [implementation-review.md](implementation-review.md). M1/M2 are closed for the stated head at source/test/CI level; do not redo unchanged fixes. Complete or explicitly checkpoint remaining device/accessibility and rendered acceptance, disposition the separate test:browser Save/Load failure, and continue the bounded optional entry-card/resilience work as appropriate. Record exact revision and passed/failed/unavailable checks; return new implementation changes or failures for review. Preserve existing features, desktop behavior, draft status and Mckay's release gate.
+Claude: follow [implementation-review-a11y-r2.md](implementation-review-a11y-r2.md): fix the enlarged-text loss of count/clock information and repair the tools-toggle overlap assertion; return exact-head evidence. A11Y-2 is closed at source-review level; preserve the corrected DOM order and focus behavior. Then continue the remaining work in [implementation-review.md](implementation-review.md). M1/M2 are closed for the stated head at source/test/CI level; do not redo unchanged fixes. Complete or explicitly checkpoint remaining device/accessibility and rendered acceptance, disposition the separate test:browser Save/Load failure, and continue the bounded optional entry-card/resilience work as appropriate. Record exact revision and passed/failed/unavailable checks; return new implementation changes or failures for review. Preserve existing features, desktop behavior, draft status and Mckay's release gate.
 
 Do not treat the initial brief as a completed rendered audit. Preserve all in-flight branches and owner release gates.
 
@@ -34,3 +34,5 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 
 - 2026-11-06T07:18Z: ChatGPT reviewed the one-file CSS return at PR44 d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242. Saved/read back implementation-review-a11y.md at d15df60eb42ebc9ec151ac9ad6dbfe4d55a11174 before status. Both A11Y items dispositioned (2/2): A11Y-1 partial, full enlarged labels need wrapping/reflow or a demonstrated discoverable reveal; A11Y-2 option b selected, desktop reorder acceptable with regression check. Actual tab recording excludes disabled Undo/Redo, so enabled traversal/activation is required. Independently inspected CI42178297785 logs and docs-only tested-merge delta: 82/82 unit, 24/24 page cases and touch suite passed. No new local/rendered/device pass; no formal approval or release decision. Implementation-review/chatgpt → fixing/claude for bounded changes and evidence.
 - 2026-11-07T03:12Z: Claude: A11Y-1 (labels wrap, count/clock yield first) and A11Y-2 option b (Undo/Redo before Named structures in DOM; focus kept when the last Undo/Redo disables itself) at 84625b06834fc24ebcabd3a2b17ffff93dd737fe. Assertion-based a11y-r2.cjs 126/126 (100/150/200% at 390x844, 844x390, 320x568; enabled Undo/Redo keyboard at compact portrait, landscape, desktop). pnpm check 82/82, test:pages 12x2, test:touch pass. Report a11y-return-2.md. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
+
+- 2026-11-07T04:18Z: ChatGPT reviewed all 3/3 return files at PR44 84625b06834fc24ebcabd3a2b17ffff93dd737fe and saved/read back implementation-review-a11y-r2.md at 15f09a7620ac8b5863559abd4797b16e351ef65d before status. Both findings reviewed (2/2): A11Y-2 closed at source-review level; A11Y-1 partial, with count/clock content loss and a tools-toggle selector gap requiring correction. Independently inspected CI42332999290 logs: tested merge 872398ec55cc0bd8e731f88ef78e6a3f1139b230 passed 118/118 unit tests, 24/24 page cases and touch suite; head-to-merge includes non-doc changes from main, so this is not the branch's reported 82-test run. Claude's 126/126 a11y recording was inspected, not rerun. No new rendered/device acceptance or release approval. Stage implementation-review → fixing, owner chatgpt → claude.
