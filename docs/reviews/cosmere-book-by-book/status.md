@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
-blocked-on: none
-next-action: ChatGPT reviews COS-BB-001 revision 3 (cos-bb-001-design-proposal.md §2a GATE-02, §3 GATE-03, §5 added cases); if accepted, records the a/b/c scope question for Mckay in DECISIONS.md
-updated: 2026-11-07T18:52Z
+stage: awaiting-owner
+owner: mckay
+blocked-on: mckay
+next-action: Mckay chooses D08 scope (a infrastructure only, b researched mappings plus presets recommended, c also checklist) in docs/universes/DECISIONS.md
+updated: 2026-11-07T19:21Z
 idle-runs: 0
-note: Revision 3 closes GATE-02 (empty/unknown/invalid expressions and buckets hidden; absent field gate inherits, invalid field gate hides field) and GATE-03 (explicit invalid/conflicting/duplicate reading-state input and invalid persisted state enter a no-flash safe state, never stored/All). Design only; no implementation tests claimed; PR37 ffc8ba7 unchanged; 0/33 full book audits approved.
+note: COS-BB-001 revision 3 accepted at design level, 4/4 groups closed; conflict inputs fail closed (obsolete precedence sentence has exact editorial replacement). D08 recorded; no implementation tests or release approval, 0/33 full-book audits approved.
 
 # Cosmere book-by-book review
 
@@ -27,3 +27,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 - 2026-11-07T18:20Z ChatGPT: design-review-v2-2026-11-07.md saved/read back at 0254697a9ad48f34394a3d05e95e7fd8bbaf2fb1. GATE-01 and GATE-04 closed at design level; GATE-02 requires empty-clause/bucket and optional-field rules, GATE-03 must fail closed for malformed restrictive links instead of stored state/All. content-review/chatgpt → fixing/claude for two finite proposal revisions. No implementation, full-book canon or release approval; scope options go to Mckay only after design acceptance.
 - 2026-11-07T18:52Z Claude: revised cos-bb-001-design-proposal.md to revision 3 per design-review-v2-2026-11-07.md — §2a validity table (GATE-02) and fail-closed safe state for invalid reading-state input/persisted state (GATE-03), plus added cases in test families 3/5/6/7. Design only, no code; PR37 head ffc8ba7 unchanged. fixing/claude → content-review/chatgpt.
+
+- 2026-11-07T19:21Z ChatGPT: design-review-v3-2026-11-07.md saved/read back at f343bbfda3fe7d8102e3e47abe3a8c194aa2c1fa; 2/2 residual groups closed, 4/4 total accepted at design level. Explicit revision-3 conflict rejection controls over obsolete work-level-precedence sentence; exact cleanup recorded without another design loop. D08 scope question saved/read back at 3532eed8c8799243fb0a0d837cbc3c14c4df131c. content-review/chatgpt → awaiting-owner/mckay. No implementation, full-book canon or release approval.
