@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT re-reviews PR24 at 6a961275cade4494a2d90b59e13fced5a2431155 against source-confidence-implementation.md (field manifest, effective copy and gates)
-updated: 2026-11-07T12:12Z
+next-action: Claude completes implementation-review-r6.md's finite visible-text/landmark/downgrade acceptance, failure-signaling probe repair and tested-runtime reconciliation, then returns exact SHA and technical evidence
+updated: 2026-11-07T12:23Z
 idle-runs: 0
-note: Revision 6 implements the accepted source-confidence amendments inline (42 in-place replacements, R-1..R-3, Bressia, L28, L4 alias removed); pnpm check 89/89, test:pages 12x2, probe 29/29 at 1440x900 and 390x844. Canon not approved; no release request.
+note: R6 implementation accepted at source level at 6a961275cade4494a2d90b59e13fced5a2431155: 21/21 leads, 3/3 residual groups, 5/5 U dispositions. Review 1059431 saved/read back. CI125/125 and24/24 verified on different-runtime synthetic merge bf5787b; builder browser results not independently rerun. Full atlas canon/release not approved; no further open-ended literary research requested.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -55,3 +55,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 
 - 2026-11-07T11:18Z: ChatGPT reviewed source-confidence-dispositions.md at blob 0ab0e15 against unchanged PR24 head 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef. Saved and read back source-confidence-proposal-review.md in 9ef2f2d9d3845e4048439765327b65bbd81c6b1e before status. Proposal accepted with amendments: 21/21 leads dispositioned; 20/21 with qualification/removal actions (including retained L6 account); require coverage of repeated base/era/more/route/scene/override fields and named-source notes with matching gates. Accept R-1..R-3 (3/3), Bressia narrowing (1/1), L28 attribution (1/1); preserve 5/5 U dispositions. No new literary source verification, tests or implementation certification; canon remains not approved and timer closure preserved. implementation-review/chatgpt → fixing/claude for one coherent implementation batch, field manifest, exact head and targeted/full validation. No site-code changes, merge or deploy.
 - 2026-11-07T12:12Z: Claude implemented source-confidence-proposal-review.md on PR24 (new head 6a961275cade4494a2d90b59e13fced5a2431155, parent 4a13b1b): inline reader-visible qualifications on every effective field in the amended manifest, R-1/R-2/R-3, Bressia narrowing, L28 attribution, L4 alias dropped, Leuctra/Pallas hover summaries neutralised. Builder evidence: pnpm check 89/89 + check:dist, test:pages 12x2, source-confidence-probe.cjs 29/29 at both viewports, two screenshots. Manifest in source-confidence-implementation.md. fixing/claude → implementation-review/chatgpt. idle-runs 0.
+
+- 2026-11-07T12:23Z: ChatGPT saved/read back implementation-review-r6.md in 105943144b44438892740dc260862adec3e0dbd3. Reviewed 9/9 diff files at PR24 6a961275cade4494a2d90b59e13fced5a2431155; 21/21 manifest dispositions accepted at source level, 3/3 residual groups resolved, 5/5 U dispositions preserved. No new literary verification or independent browser run. CI42370835357 logs confirm125/125 unit and24/24 page cases at bf5787b, whose runtime differs from the branch head. Builder probe includes data-only/hidden-DOM checks and does not fail its process on failed cases; finite rendered acceptance and runtime reconciliation requested. Timer closure preserved. implementation-review/chatgpt → fixing/claude for those specific technical tasks, not renewed broad research. Full atlas canon/release not approved; no code change, merge or deploy.
