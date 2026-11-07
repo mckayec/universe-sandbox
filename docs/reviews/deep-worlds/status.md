@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude fixes DWH-01 history ownership using implementation-review-d902c8a.md and dwr-history-probe-d902c8a.cjs, preserves the two accepted fixes, and returns the exact head with regression and navigation evidence
-updated: 2026-11-07T15:19Z
+next-action: ChatGPT reviews DWH-01 fix at PR37 fb79488 (fix-return-fb79488.md): rerun dwr-history-probe H1–H3 plus the 11 and 22 assertions, and decide accept or return
+updated: 2026-11-07T16:20Z
 idle-runs: 0
-note: At PR37 d902c8a, 2/2 requested residuals accepted in source/VM scope; 33/33 existing assertions pass, old-head negative control fails as expected. New history cases 2/3 pass, 1/3 fails (DWH-01 Medium). CI merge 125/125 unit and 24/24 page cases verified in logs. Broad canon gaps and release gates remain.
+note: PR37 head fb79488cbc3ff9a404f2052dbd7314e15913d838 (parent d902c8a): cancelEntry clears only the history entry its own generation created. Probes H 3/3, transition 11/11, dwr 22/22; check 125/125; pages 12x2; browser Back check 1440+390 ok; test:browser fails at pre-existing Save/Load step. Broad canon gaps and release gates remain.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -46,3 +46,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-07T14:56Z: Claude fixed DWR-B residual and DW-CS04-label on PR37 (fix e22d497, parent 232fef1) and merged main 51fe688 to clear conflicts (engine.css both blocks kept; status from main) → head d902c8a7092e5e1f2597af800b11f0f7f63dc901. dwr-transition-probe 11/11 with entered-place/state assertions (fails at 232fef1), dwr-probe 22/22, pnpm check 125/125, test:pages 12x2, test:browser pass, 4-viewport loads 0 errors. See fix-return-d902c8a.md. fixing/claude → content-review/chatgpt. Not merged.
 
 - 2026-11-07T15:19Z: ChatGPT saved/read back implementation-review-d902c8a.md (0af63c8783a165760711a98680f8481de9e919b7) and independent dwr-history-probe-d902c8a.cjs (5a3aea3c04c0f43cd36a07ae296390471ce804f5). Reviewed both fix files, inventoried 27 merge runtime changes and inspected the complete engine delta. Requested residuals closed 2/2; DWR-A and DWR-B source/VM closures preserved. Independently 11/11 transition + 22/22 lifecycle assertions pass; old 232fef1 fails the transition negative control. New history scenarios 2/3 pass, overlapping entry loses newer history marker (DWH-01 Medium). CI b11c718 non-doc tree matches head; logs verify 125/125 unit and 24/24 page cases, not test:browser. content-review/chatgpt → fixing/claude for the finite new regression. No full canon/release approval, application edit, merge or deploy.
+- 2026-11-07T16:20Z: Claude fixed DWH-01 at PR37 fb79488cbc3ff9a404f2052dbd7314e15913d838 (atlasEntry ownership tag; cancelEntry clears only its own entry). History probe 3/3, transition 11/11, dwr 22/22, pnpm check 125/125, test:pages 12x2, browser superseding-entry + Back check pass at 1440x900 and 390x844 (browser negative control did not reproduce; VM H3 is the sensitive test). test:browser fails at the pre-existing simulator Save/Load step. Evidence: fix-return-fb79488.md, dwh-browser-check.cjs. Handed to ChatGPT; not merged.
