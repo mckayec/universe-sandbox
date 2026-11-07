@@ -30,8 +30,8 @@
   const PGP = 5;
 
   /* Codex entry for a place with no approved map anchor (build-handoff.md "Unknown-place recipe"). */
-  function unmapped(name, book, layers, desc) {
-    return { name, books: [book], layers, desc };
+  function unmapped(name, book, layers, desc, src) {
+    return { name, books: [book], layers, desc, src };
   }
 
   return {
@@ -1008,42 +1008,49 @@
           {
             /* C01 */ name: 'Standard works',
             desc: 'The Church names the Bible, Book of Mormon, Doctrine and Covenants and Pearl of Great Price as its standard works.',
+            src: [{ t: 'Guide to the Scriptures: Standard Works', u: 'https://www.churchofjesuschrist.org/study/scriptures/gs/standard-works?lang=eng' }],
           },
           {
             /* C02 */ name: 'Resurrection testimony',
             books: [NT],
             layers: ['nt'],
             desc: 'Matthew 28 narrates the announcement that Jesus has risen, appearances to followers and a commission to teach and baptize.',
+            src: [{ t: 'Matthew 28:1–20', u: 'https://www.churchofjesuschrist.org/study/scriptures/nt/matt/28?lang=eng' }],
           },
           {
             /* C03 */ name: 'Baptism at Mormon',
             books: [BOM],
             layers: ['bom'],
             desc: 'Mosiah connects baptism with service, mourning with others and standing as witnesses of God.',
+            src: [{ t: 'Mosiah 18:8–10', u: 'https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng' }],
           },
           {
             /* C04 */ name: 'Doctrine and Covenants',
             books: [DC],
             layers: ['dc'],
             desc: 'The Church presents this collection as modern revelations and declarations. Section 7 is specifically described as a translated record attributed to John.',
+            src: [{ t: 'D&C introduction', u: 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/introduction?lang=eng' }, { t: 'D&C 7 (section heading)', u: 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/7?lang=eng' }],
           },
           {
             /* C05 */ name: 'Kolob',
             books: [PGP],
             layers: ['pgp'],
             desc: 'Abraham describes Kolob in a revelation about heavenly order and divine reckoning of time. This atlas does not identify it with an observed star.',
+            src: [{ t: 'Abraham 3:2–4, 9', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng' }],
           },
           {
             /* C06 */ name: 'Principles and ordinances',
             books: [PGP],
             layers: ['pgp'],
             desc: 'The fourth Article of Faith names faith in Jesus Christ, repentance, baptism by immersion and laying on of hands for the gift of the Holy Ghost.',
+            src: [{ t: 'Articles of Faith 1:4', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/a-of-f/1?lang=eng' }],
           },
           {
             /* C07 */ name: 'Scripture and revelation',
             books: [PGP],
             layers: ['pgp'],
             desc: 'Articles of Faith 8–9 affirm the Bible, with a translation qualification, the Book of Mormon and continuing revelation.',
+            src: [{ t: 'Articles of Faith 1:8–9', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/a-of-f/1?lang=eng' }],
           },
         ],
       },
@@ -1052,27 +1059,27 @@
         title: 'Places without a map pin',
         list: [
           /* BA05: each source's account is its own entry, so it follows only its own layer. */
-          unmapped('Haran', OT, ['ot'], 'Old Testament: Genesis describes Abram departing from Haran. Modern identification not adopted here.'), // P01
-          unmapped('Haran', PGP, ['pgp'], 'Pearl of Great Price: Abraham’s account describes departure from Haran. Modern identification not adopted here.'), // P01
-          unmapped('Shechem (Sichem)', OT, ['ot'], 'Old Testament: the journey reaches the place called Sichem by the plain of Moreh. Modern archaeological identification pending.'), // P02
-          unmapped('Camp between Bethel and Hai', OT, ['ot'], 'Old Testament: Abram pitches his tent between Bethel and Hai and builds an altar. The text gives Bethel to the west and Hai to the east; no pin.'), // P03
-          unmapped('Egypt', OT, ['ot'], 'Old Testament: Genesis describes Abram travelling to Egypt during famine. No single city or point is asserted.'), // P04
-          unmapped('Horeb', OT, ['ot'], 'Old Testament: Exodus places Moses’ encounter at the burning bush at Horeb. No Sinai candidate is adopted.'), // P05
-          unmapped('Ur of the Chaldees', OT, ['ot'], 'Old Testament: Genesis describes Terah’s household leaving Ur for Canaan and settling in Haran. No proposed Ur is chosen.'), // P18
-          unmapped('Ur of the Chaldees', PGP, ['pgp'], 'Pearl of Great Price: Abraham describes leaving Ur with family members. No proposed Ur is chosen.'), // P18
-          unmapped('Mount of Olives', OT, ['ot'], 'Old Testament: Zechariah’s prophecy names the Mount of Olives east of Jerusalem.'), // P20
-          unmapped('Mount of Olives', NT, ['nt'], 'New Testament: Matthew names the Mount of Olives in the Passion narrative.'), // P20
-          unmapped('Mount of Olives', PGP, ['pgp'], 'Pearl of Great Price: Joseph Smith—Matthew places Jesus’ conversation with his disciples on the Mount of Olives.'), // P20
-          unmapped('Gethsemane', NT, ['nt'], 'New Testament: Matthew describes Jesus praying here before his arrest. No exact garden identification is adopted.'), // AP10
-          unmapped('Golgotha', NT, ['nt'], 'New Testament: Matthew names Golgotha as the place of crucifixion. No modern candidate is selected.'), // AP11
-          unmapped('Waters of Mormon', BOM, ['bom'], 'Book of Mormon: Mosiah describes Alma teaching and baptizing at waters in the place called Mormon. Modern location unknown; not placed on the Earth map.'), // P09
-          unmapped('Temple in Bountiful', BOM, ['bom'], 'Book of Mormon: 3 Nephi places a gathered multitude at the temple in Bountiful when Jesus appears. Modern location unknown; distinct from the Bountiful on the Arabian shore in 1 Nephi.'), // P10
-          unmapped('Woods near the Smith home', PGP, ['pgp'], 'Pearl of Great Price: Joseph Smith’s canonized account describes a prayer in nearby woods and a vision of two personages, reported for spring 1820, near Manchester, New York. No grove point is sourced.'), // P11
+          unmapped('Haran', OT, ['ot'], 'Old Testament: Genesis describes Abram departing from Haran. Modern identification not adopted here.', [{ t: 'Genesis 12:4–5', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/gen/12?lang=eng' }]), // P01
+          unmapped('Haran', PGP, ['pgp'], 'Pearl of Great Price: Abraham’s account describes departure from Haran. Modern identification not adopted here.', [{ t: 'Abraham 2:14–15', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?lang=eng' }]), // P01
+          unmapped('Shechem (Sichem)', OT, ['ot'], 'Old Testament: the journey reaches the place called Sichem by the plain of Moreh. Modern archaeological identification pending.', [{ t: 'Genesis 12:6', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/gen/12?lang=eng' }]), // P02
+          unmapped('Camp between Bethel and Hai', OT, ['ot'], 'Old Testament: Abram pitches his tent between Bethel and Hai and builds an altar. The text gives Bethel to the west and Hai to the east; no pin.', [{ t: 'Genesis 12:8', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/gen/12?lang=eng' }]), // P03
+          unmapped('Egypt', OT, ['ot'], 'Old Testament: Genesis describes Abram travelling to Egypt during famine. No single city or point is asserted.', [{ t: 'Genesis 12:10', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/gen/12?lang=eng' }]), // P04
+          unmapped('Horeb', OT, ['ot'], 'Old Testament: Exodus places Moses’ encounter at the burning bush at Horeb. No Sinai candidate is adopted.', [{ t: 'Exodus 3:1–2', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/ex/3?lang=eng' }]), // P05
+          unmapped('Ur of the Chaldees', OT, ['ot'], 'Old Testament: Genesis describes Terah’s household leaving Ur for Canaan and settling in Haran. No proposed Ur is chosen.', [{ t: 'Genesis 11:31', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/gen/11?lang=eng' }]), // P18
+          unmapped('Ur of the Chaldees', PGP, ['pgp'], 'Pearl of Great Price: Abraham describes leaving Ur with family members. No proposed Ur is chosen.', [{ t: 'Abraham 2:1–4', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?lang=eng' }]), // P18
+          unmapped('Mount of Olives', OT, ['ot'], 'Old Testament: Zechariah’s prophecy names the Mount of Olives east of Jerusalem.', [{ t: 'Zechariah 14:4', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/zech/14?lang=eng' }]), // P20
+          unmapped('Mount of Olives', NT, ['nt'], 'New Testament: Matthew names the Mount of Olives in the Passion narrative.', [{ t: 'Matthew 26:30', u: 'https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?lang=eng' }]), // P20
+          unmapped('Mount of Olives', PGP, ['pgp'], 'Pearl of Great Price: Joseph Smith—Matthew places Jesus’ conversation with his disciples on the Mount of Olives.', [{ t: 'Joseph Smith—Matthew 1:4', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/js-m/1?lang=eng' }]), // P20
+          unmapped('Gethsemane', NT, ['nt'], 'New Testament: Matthew describes Jesus praying here before his arrest. No exact garden identification is adopted.', [{ t: 'Matthew 26:36–39', u: 'https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?lang=eng' }]), // AP10
+          unmapped('Golgotha', NT, ['nt'], 'New Testament: Matthew names Golgotha as the place of crucifixion. No modern candidate is selected.', [{ t: 'Matthew 27:33', u: 'https://www.churchofjesuschrist.org/study/scriptures/nt/matt/27?lang=eng' }]), // AP11
+          unmapped('Waters of Mormon', BOM, ['bom'], 'Book of Mormon: Mosiah describes Alma teaching and baptizing at waters in the place called Mormon. Modern location unknown; not placed on the Earth map.', [{ t: 'Mosiah 18:4–17', u: 'https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng' }]), // P09
+          unmapped('Temple in Bountiful', BOM, ['bom'], 'Book of Mormon: 3 Nephi places a gathered multitude at the temple in Bountiful when Jesus appears. Modern location unknown; distinct from the Bountiful on the Arabian shore in 1 Nephi.', [{ t: '3 Nephi 11:1–10', u: 'https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng' }]), // P10
+          unmapped('Woods near the Smith home', PGP, ['pgp'], 'Pearl of Great Price: Joseph Smith’s canonized account describes a prayer in nearby woods and a vision of two personages, reported for spring 1820, near Manchester, New York. No grove point is sourced.', [{ t: 'Joseph Smith—History 1:3, 14–17', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng' }]), // P11
           // P17 source view (dc)
-          { key: 'P17-dc-enoch-city', name: 'Enoch’s city (Zion)', books: [4], layers: ['dc'], desc: 'Doctrine and Covenants: D&C 38:4 describes the Zion of Enoch as taken into God’s presence. No terrestrial location is supplied.', see: [{ k: 'P17-pgp-enoch-city', r: 'Enoch’s city in another account' }] },
+          { key: 'P17-dc-enoch-city', name: 'Enoch’s city (Zion)', books: [4], layers: ['dc'], desc: 'Doctrine and Covenants: D&C 38:4 describes the Zion of Enoch as taken into God’s presence. No terrestrial location is supplied.', src: [{ t: 'D&C 38:4', u: 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/38?lang=eng' }], see: [{ k: 'P17-pgp-enoch-city', r: 'Enoch’s city in another account' }] },
           // P17 source view (pgp)
-          { key: 'P17-pgp-enoch-city', name: 'Enoch’s city (Zion)', books: [5], layers: ['pgp'], desc: 'Pearl of Great Price: Moses 7 describes Enoch’s community as Zion and the city being taken up. No terrestrial location is supplied.', see: [{ k: 'P17-dc-enoch-city', r: 'Enoch’s city in another account' }, { k: 'PGM-qg06-zion', r: 'Moses 7 teaching and promise' }] },
-          unmapped('Jershon (Abraham)', PGP, ['pgp'], 'Pearl of Great Price: Abraham names Jershon on the way from Haran to Canaan. Location unknown; not the Book of Mormon Jershon.'), // P19
+          { key: 'P17-pgp-enoch-city', name: 'Enoch’s city (Zion)', books: [5], layers: ['pgp'], desc: 'Pearl of Great Price: Moses 7 describes Enoch’s community as Zion and the city being taken up. No terrestrial location is supplied.', src: [{ t: 'Moses 7:18–21, 69', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng' }], see: [{ k: 'P17-dc-enoch-city', r: 'Enoch’s city in another account' }, { k: 'PGM-qg06-zion', r: 'Moses 7 teaching and promise' }] },
+          unmapped('Jershon (Abraham)', PGP, ['pgp'], 'Pearl of Great Price: Abraham names Jershon on the way from Haran to Canaan. Location unknown; not the Book of Mormon Jershon.', [{ t: 'Abraham 2:16–17', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?lang=eng' }]), // P19
           /* BA07 round 2 (unlocated-places, primary-remainder): nonspatial source views, one work layer each, no pins. */
           { key: 'AP01', name: 'Succoth (Exodus)', books: [1], layers: ['ot'], desc: 'Exodus describes Israel departing from Succoth and camping at Etham.', src: [{ t: 'Exodus 13:20', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/ex/13?lang=eng' }] },
           { key: 'AP02', name: 'Etham', books: [1], layers: ['ot'], desc: 'Exodus places Israel’s camp at Etham at the edge of the wilderness.', src: [{ t: 'Exodus 13:20', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/ex/13?lang=eng' }] },
@@ -1107,13 +1114,13 @@
         id: 'unmapped-narratives',
         title: 'Narratives without a map pin',
         list: [
-          { name: 'Abram’s journey', books: [OT], layers: ['ot'], desc: 'Genesis traces Abram’s movement from Haran into Canaan and then Egypt (Gen. 12:4–10).' }, // E01
-          { name: 'Moses’ commission', books: [OT], layers: ['ot'], desc: 'At Horeb, Moses is commissioned to bring Israel out of Egypt (Ex. 3:1–12).' }, // E02
-          { name: 'Baptisms at Mormon', books: [BOM], layers: ['bom'], desc: 'Alma teaches baptismal commitments and baptizes at the waters of Mormon (Mosiah 18:7–17).' }, // E06
-          { name: 'Jesus at Bountiful', books: [BOM], layers: ['bom'], desc: 'The narrative describes Jesus appearing to the multitude at the temple (3 Ne. 11:1–17).' }, // E07
-          { name: 'First Vision account', books: [DC], layers: ['dc'], when: 1820, date: 'spring 1820, as narrated', desc: 'The D&C introduction reports Joseph Smith’s First Vision in spring 1820 while he was living in Manchester.' }, // E08
-          { name: 'First Vision account', books: [PGP], layers: ['pgp'], when: 1820, date: 'spring 1820, as narrated', desc: 'Joseph Smith’s canonized account in the Pearl of Great Price reports a vision following prayer in the woods.' }, // E08
-          { name: 'Abraham’s journey account', books: [PGP], layers: ['pgp'], desc: 'Abraham describes a journey from Ur through Haran and Canaan toward Egypt (Abr. 2:4–21). It gives Abraham’s age on leaving Haran as 62; Genesis 12:4 gives 75. Neither value is corrected or harmonized here.' }, // E12, LDS-Q04
+          { name: 'Abram’s journey', books: [OT], layers: ['ot'], desc: 'Genesis traces Abram’s movement from Haran into Canaan and then Egypt (Gen. 12:4–10).', src: [{ t: 'Genesis 12:4–10', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/gen/12?lang=eng' }] }, // E01
+          { name: 'Moses’ commission', books: [OT], layers: ['ot'], desc: 'At Horeb, Moses is commissioned to bring Israel out of Egypt (Ex. 3:1–12).', src: [{ t: 'Exodus 3:1–12', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/ex/3?lang=eng' }] }, // E02
+          { name: 'Baptisms at Mormon', books: [BOM], layers: ['bom'], desc: 'Alma teaches baptismal commitments and baptizes at the waters of Mormon (Mosiah 18:7–17).', src: [{ t: 'Mosiah 18:7–17', u: 'https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?lang=eng' }] }, // E06
+          { name: 'Jesus at Bountiful', books: [BOM], layers: ['bom'], desc: 'The narrative describes Jesus appearing to the multitude at the temple (3 Ne. 11:1–17).', src: [{ t: '3 Nephi 11:1–17', u: 'https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng' }] }, // E07
+          { name: 'First Vision account', books: [DC], layers: ['dc'], when: 1820, date: 'spring 1820, as narrated', desc: 'The D&C introduction reports Joseph Smith’s First Vision in spring 1820 while he was living in Manchester.', src: [{ t: 'D&C introduction', u: 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/introduction?lang=eng' }] }, // E08
+          { name: 'First Vision account', books: [PGP], layers: ['pgp'], when: 1820, date: 'spring 1820, as narrated', desc: 'Joseph Smith’s canonized account in the Pearl of Great Price reports a vision following prayer in the woods.', src: [{ t: 'Joseph Smith—History 1:14–20', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng' }] }, // E08
+          { name: 'Abraham’s journey account', books: [PGP], layers: ['pgp'], desc: 'Abraham describes a journey from Ur through Haran and Canaan toward Egypt (Abr. 2:4–21). It gives Abraham’s age on leaving Haran as 62; Genesis 12:4 gives 75. Neither value is corrected or harmonized here.', src: [{ t: 'Abraham 2:4–21', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?lang=eng' }, { t: 'Genesis 12:4', u: 'https://www.churchofjesuschrist.org/study/scriptures/ot/gen/12?lang=eng' }] }, // E12, LDS-Q04
           /* BA07 source views (ba07-remediation-spec / ba07-bible-spec): one work layer each, no `when`, no pins. */
           { key: 'PE02', name: 'Creation in Moses', books: [5], layers: ['pgp'], desc: 'Pearl of Great Price — The account presents God creating the heavens and earth.', src: [{ t: 'Moses 2', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng' }] },
           { key: 'PE03', name: 'Leaving Eden in Moses', books: [5], layers: ['pgp'], desc: 'Pearl of Great Price — Moses describes expulsion from the garden and life outside it.', src: [{ t: 'Moses 4', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng' }, { t: 'Moses 5', u: 'https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/5?lang=eng' }] },
