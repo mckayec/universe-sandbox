@@ -3261,6 +3261,10 @@ addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("input,text
 /* ---- panels: collapse, map-only ---- */
 const B=document.body;
 function setCls(c,on){B.classList.toggle(c,on);}
+/* side panels stop above the Chronicle: reserve its measured height (its rows wrap with
+   the viewport and the selected book), not a fixed guess, so long dossiers aren't hidden under it */
+{const ch=$("#chron");const setR=()=>{if(!ch)return;const h=ch.offsetHeight;if(h)document.documentElement.style.setProperty("--chronR",(h+12)+"px");};
+  if(ch&&window.ResizeObserver)new ResizeObserver(setR).observe(ch);addEventListener("resize",setR);setR();}
 $("#idxCol").addEventListener("click",()=>{const h=!B.classList.contains("hide-index");setCls("hide-index",h);$("#idxCol").setAttribute("aria-expanded",!h);syncMapOnly();});
 $("#dosCol").addEventListener("click",()=>{const h=!B.classList.contains("hide-dossier");setCls("hide-dossier",h);$("#dosCol").setAttribute("aria-expanded",!h);syncMapOnly();});
 $("#chronMin").addEventListener("click",()=>{const h=!B.classList.contains("hide-chron");setCls("hide-chron",h);$("#chronMin").setAttribute("aria-expanded",!h);$("#chronMin").textContent=h?"▴ Show":"▾ Hide";syncMapOnly();});
