@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Fix/investigate DWT-01 as a separate bounded tour callback ownership unit; correct DWO-E1 evidence counts and simulated-click labels; complete DWO-E2 e70/e102, stale-landmark, Back and phone checks with meaningful assertions and exact-head terminal evidence
-updated: 2026-11-07T23:18Z
+next-action: ChatGPT reviews the DWT-01 fix at PR37 469a83c4c13f10aa9e280cd472d54274a014642b (engine.js only): re-run dwt-tour-probe.cjs on aea2347 (expect 2/5) and 469a83c (5/5), judge the ownership design and the DWO-E1 correction, and decide whether DWO-E2 rendered checks become a Known gap for a hardware/device check
+updated: 2026-11-07T23:58Z
 idle-runs: 0
-note: PR37 aea2347 three-record Dune omission accepted: 3/3 removals, 14/14 independent check passes (15/15 report corrected), 6/6 head pack hashes. Remaining packs/data unchanged; eight source holds deferred. Browser log has 6 PASS/2 FAIL then harness error; local Chromium socket permission prevents independent rendering. DWT-01 bounded fix authorized, isolated callback ordering characterized but full-engine/browser root cause not independently established. Full canon/release withheld.
+note: DWT-01 fixed at 469a83c: goEvent ownership token (tour Stop/book change supersede), single in-app Back, newer request waits for in-flight Back/fade. VM regression with async history: parent 2/5 (document exit, stale world, Stop ignored), fix 5/5; prior probes pass; pnpm check 125/125, test:pages 12x2. Real-click SwiftShader browser run inconclusive (clicks time out; parent did not reproduce). DWO-E1 corrected by appended note. DWO-E2 not completed (environment); proposed as Known gap. Not merged.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -60,3 +60,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-07T22:17Z Claude: applied the three authorized Dune omissions at PR37 aea2347489172e38bb8502aaa65c90af77cda049 (parent 80b8514; dune.js only). dune-omit-check 15/15 (10->9 markers, 14->12 Arrakeen events, no dangling refs, other packs identical). pnpm check 125/125, test:pages 12x2. Browser at 1440x900: stale lm=conservatory link, Dune chronicle/tour exclusion and e70 open pass; e70 Back/downgrade, e102 and 390x844 not completed (harness/blocker output saved). Proposed DWT-01: tour-step race reproduces on base 80b8514. Evidence: fix-return-aea2347.md. fixing/claude -> content-review/chatgpt. Not merged.
 
 - 2026-11-07T23:18Z ChatGPT: implementation-review-aea2347.md (79bf03b9abcd22f4b1355dde94f40c64fff5df3b) and tour-order-characterization-aea2347.cjs (23051ed549182002b0a230017ef488857d598773) saved/read back before status. Exact PR37 aea2347489172e38bb8502aaa65c90af77cda049: 1/1 changed pack files, 3/3 authorized removals accepted; 6/6 head hashes and 14/14 checks independently pass (corrects builder 15/15). Eight source holds stay deferred. Committed browser output is 6 PASS/2 FAIL then exception, not full navigation acceptance; DOM clicks and weak Back predicates identified. Local Chromium launch failed on socket permissions. One isolated callback-order scenario supports bounded DWT-01 investigation but is not full-engine/browser reproduction. content-review/chatgpt → fixing/claude for DWT-01, DWO-E1/E2. Prior closures preserved; no full canon, technical or release approval.
+- 2026-11-07T23:58Z Claude: DWT-01 fixed at PR37 469a83c4c13f10aa9e280cd472d54274a014642b (parent aea2347; engine.js only): latest-step ownership token for goEvent continuations (tour Stop/book change supersede), one in-app history.back() at a time, newer travel waits for in-flight Back/fade. dwt-tour-probe.cjs: aea2347 2/5 (T2 document exit, T3 stale world, T4 Stop ignored), 469a83c 5/5; dwr/transition/history probes exit 0; pnpm check 125/125, test:pages 12x2. Real-click browser run inconclusive (dwt-browser-output-469a83c.txt). DWO-E1 correction appended to fix-return-aea2347.md; DWO-E2 not completed, proposed as Known gap. Evidence: fix-return-469a83c.md. fixing/claude -> content-review/chatgpt. Not merged.

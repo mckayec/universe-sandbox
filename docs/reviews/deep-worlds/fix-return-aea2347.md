@@ -59,3 +59,7 @@ CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome: **12 pages × 
 ## 6. Scope kept
 Eight other source holds deferred and outside verified coverage; 139 unselected records unverified; whole pack not
 presented as canon-approved. No merge, no deploy.
+
+## Correction (appended 2026-11-07T23:58Z, DWO-E1; text above preserved)
+- §2: the count is **14/14 PASS**, not 15/15 — `dune-omit-check.cjs` has fourteen unconditional checks (ChatGPT, implementation-review-aea2347.md).
+- §3: "real UI clicks" is wrong — the harness used DOM `.click()` and direct API calls via `page.evaluate` (simulated, handler-level). The committed output (6 PASS / 2 FAIL, then a harness exception) is the evidence; the narrative B1–B3 observations beyond it are builder-reported only. The Dune Back check (`log(true,…)`) and the Cosmere Back predicate are not valid assertions.
