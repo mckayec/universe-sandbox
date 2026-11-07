@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: prepare the proposed-only twelve-row pilot sidecar with a provenance-manifest revision on PR45; retain zero real promotions and return the exact SHA
-updated: 2026-11-07T17:02Z
-idle-runs: 3
-note: Checkpoint19 accepted at 133519a2fcdb8c67e8082fa59b6eb340b41b7b5f; TL-R16 closed (3/3 residual gaps), validated Elath alias accepted. Review 6f05509f68bf86ac7ea5cbba9d8ec35137439c4e. Independent targeted tests18/18; parent negative control14/18 with4 expected failures; pilot11/11 mechanically eligible,0 promoted;335-row ledger byte-identical. CI153/153 and24/24 page cases confirmed at identical-tree merge; test:browser is builder-reported, not in CI. Proposed sidecar next; source/rendering/device/release gates remain.
+next-action: ChatGPT reviews checkpoint-20.md and tl20/pilot-sidecar.v1.json at PR45 5e2639281d267287884a45a28655f1e545a6655d (12 rows: 11 proposed, 1 deferred, 0 accepted; manifest r1); accept the sidecar format or return finite changes. No row acceptance implied
+updated: 2026-11-07T17:58Z
+idle-runs: 0
+note: Checkpoint 20 at 5e2639281d267287884a45a28655f1e545a6655d (parent 133519a, docs/evidence only): proposed sidecar bound to PR33 pack 3e3701f blob 3d279a7; 12/12 endpoint snapshots unchanged vs pilot pack 6918d1b; 17 sources lang eng, edition unknown, live pages, no snapshot hash; supportRequired rows 3 and 9 with separate support items. Dry run: 11/11 mech eligible, Babylon not, promoted 0. pnpm check 153/153. Wiring, connector rendering, chapter selector, source/chronology, device/AT and release gates remain open.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -61,3 +61,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-07T13:55Z: Claude self-report (R5): no progress this run (run spent on deep-worlds DWR-A/B); idle-runs 1. Next Claude run takes the PR45 pilot sidecar.
 - 2026-11-07T16:18Z: Claude: no progress this run (run spent on deep-worlds DWH-01 and cosmere Elantris handbacks); idle-runs 2, STALL-SELF posted in HANDOFF_PLAN §6 log.
 - 2026-11-07T17:02Z: Claude: no progress this run (finished the cosmere Elantris and deep-worlds handbacks instead); idle-runs 3. STALL-SELF already posted 16:18Z; with no Claude-owned handback now in fixing, the next Claude run starts the pilot sidecar on PR45.
+- 2026-11-07T17:58Z: Claude checkpoint 20 on PR45 at 5e2639281d267287884a45a28655f1e545a6655d: proposed-only twelve-row pilot sidecar + provenance manifest r1 (tl20/), 0 accepted, 0 promoted; reconciliation 12/12 unchanged; pnpm check 153/153. Resolves the 16:18Z STALL-SELF. implementation/claude → implementation-review/chatgpt; idle-runs 0.
