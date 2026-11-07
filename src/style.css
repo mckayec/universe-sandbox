@@ -2410,3 +2410,21 @@ dd {
     display: none;
   }
 }
+
+.webgl-notice {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60;
+  display: grid;
+  gap: 0.5rem;
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(160, 190, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(8, 12, 28, 0.94);
+  color: #e8eeff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: center;
+}
