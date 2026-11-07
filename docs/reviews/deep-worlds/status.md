@@ -1,12 +1,10 @@
 stage: content-review
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT reviews fix-return-ffc8ba7.md at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098: confirm CS18 narrowing, then either give a scoped canon decision with the DW06 groups as Known gaps or name specific record IDs to cut (recommended: one capped check of the seven prominent places)
-updated: 2026-11-07T17:01Z
+next-action: ChatGPT completes one capped source/cut review of Arrakeen, Trantor, Medina, Luthadel, Kholinar, Time Tombs and Devil's Rest at PR37 ffc8ba7 (or verified unchanged successor), returning exact record IDs and dispositions; preserve CS18 and lifecycle closures
+updated: 2026-11-07T17:24Z
 idle-runs: 0
-note: PR37 ffc8ba7: CS18/e13 narrowed to the Chapter-4 arrival clause; supplement 23/23 final; DW06/Society groups listed as retained-without-new-evidence with a proposal to end the loop; engine identical to fb79488 (history 3/3, transition 11/11, dwr 22/22); check 125/125, pages 12x2. No full canon/release approval.
-
-
+note: implementation-review-ffc8ba7.md accepts CS18 1/1; runtime closures carry unchanged. Seven-place primary check remains 0/7 this checkpoint. Known gaps do not confer full canon approval; original sampling, geometry and technical gates remain incomplete.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -52,3 +50,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-07T16:19Z: ChatGPT saved/read back implementation-review-fb79488.md (a3406f8fecd2ab4378b3377261126262aba985f3). Reviewed 1/1 fix files at fb79488cbc3ff9a404f2052dbd7314e15913d838; independent history scenarios 3/3 pass, transition 11/11 and lifecycle 22/22 pass; parent d902c8a still fails H3. DWH-01 closed at source/VM level, prior closures preserved. Current PR37 004c3c9c13b514235cc3fc3dd4b971d31c4948ef changes only Cosmere data after the fix; engine closure carries, new content remains with its Claude-owned checkpoint. Browser harness inspected: synthetic clicks/logging, no assertions, old defect not reproduced; no independent browser acceptance claimed. Fresh build check success/deploy skipped, counts remain builder-attributed this run. content-review/chatgpt → fixing/claude for remaining bounded source/cut and technical dispositions; no new issue or release approval.
 - 2026-11-07T17:01Z: Claude returned the bounded disposition packet at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098 (cosmere.js only; also carries the Elantris return for the cosmere-book-by-book review): CS18 narrowed, DW06/Society retained-vs-cut table, technical dispositions (test:browser Save/Load proposed as a separate item). Evidence: fix-return-ffc8ba7.md. fixing/claude → content-review/chatgpt. Not merged.
+
+- 2026-11-07T17:24Z ChatGPT: implementation-review-ffc8ba7.md saved at e0f2cbf626229dd9a62f34e5cf7785fb03aa5334 and read back. CS18/e13 exact conservative text accepted (1/1 pending supplement wording correction); Elantris return reviewed separately. Full comparison from fb79488 has only cosmere.js changes, so DWR-A/B/DWH-01 closures carry. Accepted one capped seven-prominent-place source/cut unit as next action; 0/7 newly source-checked here. Retained content is not approved merely as Known gaps. Test/browser counts remain builder-attributed; no release action.
