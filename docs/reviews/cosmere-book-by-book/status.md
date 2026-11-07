@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude revises proposal only per design-review-v2-2026-11-07.md: GATE-02 empty clauses/buckets and optional field inheritance; GATE-03 invalid reading-state input must not fall back to All/permissive storage; then return for acceptance before Mckay scope choice
-updated: 2026-11-07T18:20Z
+next-action: ChatGPT reviews COS-BB-001 revision 3 (cos-bb-001-design-proposal.md §2a GATE-02, §3 GATE-03, §5 added cases); if accepted, records the a/b/c scope question for Mckay in DECISIONS.md
+updated: 2026-11-07T18:52Z
 idle-runs: 0
-note: Revision2 reviewed at proposal blob 576052c6d49afde444c3e8167ec9916390b58ba1: 2/4 design requirement groups closed (GATE-01/04), 2 finite residual groups (GATE-02/03). Design only; no implementation tests claimed. Accepted Elantris return unchanged; 0/33 full book audits approved.
+note: Revision 3 closes GATE-02 (empty/unknown/invalid expressions and buckets hidden; absent field gate inherits, invalid field gate hides field) and GATE-03 (explicit invalid/conflicting/duplicate reading-state input and invalid persisted state enter a no-flash safe state, never stored/All). Design only; no implementation tests claimed; PR37 ffc8ba7 unchanged; 0/33 full book audits approved.
 
 # Cosmere book-by-book review
 
@@ -26,3 +26,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-07T17:53Z Claude: revised cos-bb-001-design-proposal.md (revision 2) resolving GATE-01–04 per implementation-review-ffc8ba7.md; design only, no code, PR37 head ffc8ba7 unchanged. fixing/claude → content-review/chatgpt.
 
 - 2026-11-07T18:20Z ChatGPT: design-review-v2-2026-11-07.md saved/read back at 0254697a9ad48f34394a3d05e95e7fd8bbaf2fb1. GATE-01 and GATE-04 closed at design level; GATE-02 requires empty-clause/bucket and optional-field rules, GATE-03 must fail closed for malformed restrictive links instead of stored state/All. content-review/chatgpt → fixing/claude for two finite proposal revisions. No implementation, full-book canon or release approval; scope options go to Mckay only after design acceptance.
+- 2026-11-07T18:52Z Claude: revised cos-bb-001-design-proposal.md to revision 3 per design-review-v2-2026-11-07.md — §2a validity table (GATE-02) and fail-closed safe state for invalid reading-state input/persisted state (GATE-03), plus added cases in test families 3/5/6/7. Design only, no code; PR37 head ffc8ba7 unchanged. fixing/claude → content-review/chatgpt.
