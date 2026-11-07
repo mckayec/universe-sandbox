@@ -1352,9 +1352,20 @@ function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
 /* Back from the surface. If descending pushed a history entry, go back through history so the browser's
    Back button and this button stay in step; popstate then does the work. */
 let afterAscend=null;
-function ascend(after){if(S.view==="place"){leavePlace(()=>ascend(after));return;}if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
-function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
-  const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
+/* DWT-01: one in-app history.back() at a time. history.state only changes when popstate arrives, so a second
+   Back issued before then would step past the atlas's own entries (and can leave the document). A newer request
+   made while a Back is pending replaces the pending continuation instead of issuing another Back. */
+let backAt=0;
+function goBack(){if(Date.now()-backAt<2000)return;backAt=Date.now();history.back();setTimeout(navKick,2050);}
+/* DWT-01: while a Back or a leave/ascend fade is in flight the current view is about to change, so a newer travel
+   request waits (only the latest is kept) and runs once the view has settled. */
+let navBusy=0,navNext=null;
+function navIdle(){return !navBusy&&Date.now()-backAt>=2000;}
+function navKick(){if(navNext&&navIdle()){const n=navNext;navNext=null;goEvent(n);}}
+function navDone(){navBusy=Math.max(0,navBusy-1);navKick();}
+function ascend(after){if(S.view==="place"){leavePlace(()=>ascend(after));return;}if(history.state&&history.state.atlasSurface){afterAscend=after||null;goBack();return;}doAscend(after);}
+function doAscend(after){navBusy++;transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
+  const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);navDone();});}
 function selectSite(id){placeGen++;S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
     /* turn the world so the place sits in daylight, between the sun and the viewer */
@@ -1403,10 +1414,10 @@ function cancelEntry(fromHistory,gen){if(S.view==="place")return;
   const hs=!fromHistory&&urlReady?history.state:null;
   if(hs&&hs.atlasPlace&&hs.atlasEntry===gen){try{history.replaceState({atlasSurface:true},"",urlFor());}catch(e){}}
   refreshAll();}
-function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;history.back();return;}doLeavePlace(after);}
+function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;goBack();return;}doLeavePlace(after);}
 function doLeavePlace(after){placeGen++;if(AUD)AUD.leave();
   if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)setTimeout(()=>selectSite(site),900);if(after)setTimeout(after,1000);return;}
-  transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL)buildSiteLabels(WORLD_BY[S.sel]);refreshAll();if(after)setTimeout(after,60);});}
+  navBusy++;transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL)buildSiteLabels(WORLD_BY[S.sel]);refreshAll();if(after)setTimeout(after,60);navDone();});}
 function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
   if(!quiet){renderDossier();renderCrumbs();syncURL();const it=dos.querySelector('[data-lm="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}}
 /* an event inside the place: fly to its landmark, then play its scene */
@@ -1437,14 +1448,19 @@ function placeDossier(){const w=WORLD_BY[S.sel];const s=siteOf(w,S.site)||{name:
 const TOUR={on:false,list:[],i:0,paused:false,timer:0};
 function tourList(){return EVENTS.filter(e=>filterOk(e)&&WORLD_BY[e.world]&&seen(WORLD_BY[e.world])&&(!S.book||e.book===S.book));}
 /* travel to an event: into its place when it has one, otherwise to its world */
-function goEvent(e){const w=WORLD_BY[e.world];if(!w)return;
+/* DWT-01: each travel request owns a token. Its delayed leave/ascend/entry/event continuations run only while it is
+   still the latest request; a newer tour step, tour Stop or a book change supersedes it, so older work can never
+   reassign the world/site/event or push history after a newer step. */
+let evNav=0;
+function goEvent(e){const w=WORLD_BY[e.world];if(!w)return;const t=++evNav;if(!navIdle()){navNext=e;return;}const live=f=>()=>{if(t===evNav)f();};
+  const into=live(()=>{S.sel=e.world;enterPlace(e.site,false,live(()=>evInPlace(e)));});
   if(e.site&&canEnterEv(e)){
-    if(S.view==="place"&&S.sel===e.world){if(S.site===e.site)evInPlace(e);else enterPlace(e.site,false,()=>evInPlace(e));}
-    else if(S.view==="place"){leavePlace(()=>ascend(()=>{S.sel=e.world;enterPlace(e.site,false,()=>evInPlace(e));}));}
-    else if(S.view==="world"&&S.sel===e.world){selectSite(e.site);enterPlace(e.site,false,()=>evInPlace(e));}
-    else if(S.view==="world"){ascend(()=>{S.sel=e.world;enterPlace(e.site,false,()=>evInPlace(e));});}
-    else{S.sel=e.world;enterPlace(e.site,false,()=>evInPlace(e));}}
-  else if(S.view==="place")leavePlace(()=>{if(S.sel===e.world)openEvent(e.id,false);else ascend(()=>openEvent(e.id,true));});
+    if(S.view==="place"&&S.sel===e.world){if(S.site===e.site)evInPlace(e);else enterPlace(e.site,false,live(()=>evInPlace(e)));}
+    else if(S.view==="place"){leavePlace(live(()=>ascend(into)));}
+    else if(S.view==="world"&&S.sel===e.world){selectSite(e.site);enterPlace(e.site,false,live(()=>evInPlace(e)));}
+    else if(S.view==="world"){ascend(into);}
+    else into();}
+  else if(S.view==="place")leavePlace(live(()=>{if(S.sel===e.world)openEvent(e.id,false);else ascend(live(()=>openEvent(e.id,true)));}));
   else openEvent(e.id,true);}
 function tourShow(){const e=TOUR.list[TOUR.i];if(!e)return;const w=WORLD_BY[e.world];
   $("#tourE").textContent=BOOKS[e.book].title+" · "+(e.site?siteName(w,e.site)+", ":"")+w.name;$("#tourT").textContent=e.title;$("#tourX").textContent=e.text;
@@ -1454,7 +1470,7 @@ function tourArm(){clearTimeout(TOUR.timer);if(TOUR.paused||!TOUR.on)return;cons
   TOUR.timer=setTimeout(()=>{if(TOUR.i>=TOUR.list.length-1){tourStop();return;}tourStep(1);},(e&&e.fx?15000:10000)+Math.min(6000,(e&&e.text||"").length*25));}
 function tourStart(){TOUR.list=tourList();if(!TOUR.list.length){hint("No events to tour in this selection.");return;}TOUR.on=true;TOUR.paused=false;TOUR.i=0;
   $("#tourBox").hidden=false;document.body.classList.add("touring");$("#tourBtn").setAttribute("aria-pressed","true");if(MOB)closeChron();tourStep(0);}
-function tourStop(){TOUR.on=false;clearTimeout(TOUR.timer);$("#tourBox").hidden=true;document.body.classList.remove("touring");$("#tourBtn").setAttribute("aria-pressed","false");}
+function tourStop(){TOUR.on=false;evNav++;navNext=null;clearTimeout(TOUR.timer);$("#tourBox").hidden=true;document.body.classList.remove("touring");$("#tourBtn").setAttribute("aria-pressed","false");}
 $("#tourBtn").addEventListener("click",e=>{e.stopPropagation();if(TOUR.on)tourStop();else tourStart();});
 $("#tourBox").addEventListener("click",e=>{const b=e.target.closest("[data-tour]");if(!b)return;const k=b.dataset.tour;
   if(k==="stop")tourStop();else if(k==="next")tourStep(1);else if(k==="prev")tourStep(-1);else if(k==="pause"){TOUR.paused=!TOUR.paused;tourShow();tourArm();}});
@@ -1472,7 +1488,7 @@ function openEvent(id,travel){placeGen++;S.ev=id;if(!id){renderDossier();renderC
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
-$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;if(+b.dataset.b!==S.book){placeGen++;if(TOUR.on)tourStop();if(PLACES)PLACES.stopFx();}
+$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;if(+b.dataset.b!==S.book){placeGen++;evNav++;navNext=null;if(TOUR.on)tourStop();if(PLACES)PLACES.stopFx();}
   if(S.view==="place"){const nb=+b.dataset.b;const w=WORLD_BY[S.sel];S.book=nb;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
     const st=siteOf(w,S.site);if(!seen(w)||!st||!siteSeen(st)){leavePlace(()=>{if(!seen(w))ascend(()=>{S.sel=null;refreshAll();});else{S.site=null;refreshAll();}});return;}
     const lm=S.lm;PLACES.enter(w,st,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});viewOffset();S.ev=null;
@@ -1602,11 +1618,12 @@ function afterRefresh(){
   const w=S.sel&&WORLD_BY[S.sel];const ann=(w?(S.view==="place"&&S.site?siteName(w,S.site)+", inside, on "+w.name:w.name+(S.view==="world"?", on the surface":", selected")):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");
   if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
   syncURL();}
-addEventListener("popstate",()=>{const st=parseHash();
+addEventListener("popstate",()=>{backAt=0;popNav();navKick();});
+function popNav(){const st=parseHash();
   if(S.view==="place"&&!st.place){const a=afterLeave;afterLeave=null;doLeavePlace(a);if(!st.surface)setTimeout(()=>doAscend(),520);return;}
   if(S.view==="world"&&st.place&&st.site&&st.world===S.sel){enterPlace(st.site,true);return;}
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
-  else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
+  else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);}
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
   if(b&&b!==S.book)API.setBook(b);
   if(st.realm&&st.realm!==S.realm)setRealm(st.realm,true);
