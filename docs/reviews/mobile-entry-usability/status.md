@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: complete or explicitly disposition remaining rendered/device and entry/resilience acceptance; preserve A11Y-1/A11Y-2 source closures per implementation-review-a11y-r3.md
-updated: 2026-11-07T05:18Z
+next-action: ChatGPT: review acceptance-r4.md and the one-commit R4-1 no-WebGL notice return at PR44 2e305cc24ad714be8211d839d283d114748a4310; approve that exact head for Mckay's release decision or return findings
+updated: 2026-11-07T08:06Z
 idle-runs: 0
-note: PR44 38725238ed2df86910dc24438d9565fd14500d69 reviewed: 2/2 return files; A11Y-1 reflow and coverage repair accepted at source level, A11Y-2 preserved (2/2 source findings closed). Review b585fee2 saved/read back. CI tested merge 8ed5392: 118/118 unit,24/24 page cases,touch pass. Builder's198/198 a11y recording not independently rerun; device/rendered/release gates remain.
+note: Return 4 at 2e305cc: R4-1 no-WebGL notice (2 files). accept-r4.cjs 132/132 (live resize/text-size, short landscape, rotation with sheets, reduced motion, long press, no-WebGL; negative control fails 2 at 3872523). Entry card deferred to a separate item; real-device checks unavailable, proposed as Mckay post-release spot-check (Known gaps).
 
 # Mobile entry and landing-page usability
 
@@ -39,3 +39,4 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 - 2026-11-07T05:02Z: Claude: A11Y-1 return 3 at 38725238ed2df86910dc24438d9565fd14500d69 — status values reflow (top bar wraps, controls below offset by --topbar-extra) instead of clipping; repaired #panel-toggle overlap probe (expanded+collapsed, fails if absent); status-value and panel-specific activation assertions. a11y-r3.cjs 198/198; negative control; pnpm check 82/82; test:pages 12x2; test:browser 1 known-timeout fail + 1 pass. Report a11y-return-3.md. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
 
 - 2026-11-07T05:18Z: ChatGPT saved/read back implementation-review-a11y-r3.md at b585fee228334811484f1fb1c3829d8466be90a7. Inspected 2/2 return files and actual diff at 38725238ed2df86910dc24438d9565fd14500d69, plus compact-query dependency and complete test scripts. A11Y-1 reflow/coverage fix accepted at source-review level; A11Y-2 closure retained (2/2 bounded implementation findings closed). Independently read CI42340983341 logs: tested merge8ed5392637a1d6cf7b5918440709dd9b6c7c9c70 passed118/118 unit,24/24 page cases,touch suite; no claim of identical merge/head trees. Builder198/198 assertion output not rerun; negative control is diagnostic logging, not an assertion test. Native/device/live-resize and other acceptance limits remain; Save/Load race not declared fixed. implementation-review/chatgpt → implementation/claude for remaining acceptance and entry/resilience scope; no release approval.
+- 2026-11-07T08:06Z: Claude: remaining emulated acceptance at PR44 2e305cc24ad714be8211d839d283d114748a4310 (acceptance-r4.md): found and fixed R4-1 (no explanation without WebGL); accept-r4.cjs 132/132 incl. live resize/text-size, short landscape, rotation with sheets open, reduced motion, repeated/long-press; negative control 130/2 at 3872523. pnpm check 82/82, test:pages 12x2, test:touch pass. Entry card deferred out of PR44; native-device checks unavailable (Known gaps). Stage implementation → implementation-review, owner claude → chatgpt. idle-runs 0.
