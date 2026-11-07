@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: finish A11Y-1 visible enlarged-label availability and implement A11Y-2 option b (DOM Undo/Redo before Named structures), then return enabled Undo/Redo keyboard and label assertions at a new exact SHA
-updated: 2026-11-06T07:18Z
+next-action: ChatGPT: review a11y-return-2.md against PR44 head 84625b06834fc24ebcabd3a2b17ffff93dd737fe (3 files) and accept or return A11Y-1/A11Y-2
+updated: 2026-11-07T03:12Z
 idle-runs: 0
-note: ChatGPT reviewed 2/2 A11Y items at d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242; A11Y-1 partial, option b accepted for A11Y-2 but implementation/testing pending. Raw focus recording skipped disabled Undo/Redo; ellipsis/unchanged accessible names do not prove visible label availability. Review d15df60eb42ebc9ec151ac9ad6dbfe4d55a11174 saved/read back. Independent CI logs confirm 82/82 unit, 24/24 page cases and touch markers; new a11y measurements builder-attributed. Prior M1/M2 closures preserved. Not release-approved.
+note: A11Y-1 labels wrap/stay whole (one line at 390 and 844 px wide, in-word wrap at 320 px) and A11Y-2 option b DOM order plus focus retention after last Undo/Redo, at 84625b06834fc24ebcabd3a2b17ffff93dd737fe. Assertion script a11y-r2.cjs 126/126; pnpm check 82/82, test:pages 12x2, test:touch pass. Emulation only; not release-approved.
 
 # Mobile entry and landing-page usability
 
@@ -33,3 +33,4 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 - 2026-11-06T07:05Z: Claude: emulated accessibility checks (a11y-acceptance.md). Found A11Y-1 (200% text pushes Exhibits/Fullscreen off screen, Clear all overlaps Show tools) at 4ffda2d; fixed CSS-only at d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242 and re-checked. A11Y-2 focus order recorded with options. pnpm check 82/82, test:touch, test:pages 12x2 pass. Stage implementation → implementation-review, owner claude → chatgpt. idle-runs 0.
 
 - 2026-11-06T07:18Z: ChatGPT reviewed the one-file CSS return at PR44 d699aaacdbd2cf381dab3808dcbe8f4ebcdd0242. Saved/read back implementation-review-a11y.md at d15df60eb42ebc9ec151ac9ad6dbfe4d55a11174 before status. Both A11Y items dispositioned (2/2): A11Y-1 partial, full enlarged labels need wrapping/reflow or a demonstrated discoverable reveal; A11Y-2 option b selected, desktop reorder acceptable with regression check. Actual tab recording excludes disabled Undo/Redo, so enabled traversal/activation is required. Independently inspected CI42178297785 logs and docs-only tested-merge delta: 82/82 unit, 24/24 page cases and touch suite passed. No new local/rendered/device pass; no formal approval or release decision. Implementation-review/chatgpt → fixing/claude for bounded changes and evidence.
+- 2026-11-07T03:12Z: Claude: A11Y-1 (labels wrap, count/clock yield first) and A11Y-2 option b (Undo/Redo before Named structures in DOM; focus kept when the last Undo/Redo disables itself) at 84625b06834fc24ebcabd3a2b17ffff93dd737fe. Assertion-based a11y-r2.cjs 126/126 (100/150/200% at 390x844, 844x390, 320x568; enabled Undo/Redo keyboard at compact portrait, landscape, desktop). pnpm check 82/82, test:pages 12x2, test:touch pass. Report a11y-return-2.md. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
