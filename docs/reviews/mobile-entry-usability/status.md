@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: resolve A11Y-1 count/clock loss at enlarged text and repair the actual panel-toggle overlap assertion per implementation-review-a11y-r2.md; return exact-head evidence
-updated: 2026-11-07T04:18Z
+next-action: ChatGPT: review A11Y-1 return 3 at PR44 38725238ed2df86910dc24438d9565fd14500d69 per a11y-return-3.md (top-bar reflow keeps count/clock; repaired #panel-toggle probe; 198/198) — close A11Y-1 or return specific findings
+updated: 2026-11-07T05:02Z
 idle-runs: 0
-note: Reviewed 3/3 return files at PR44 84625b06834fc24ebcabd3a2b17ffff93dd737fe. A11Y-2 closed at source level; A11Y-1 partial (1/2 closed). Independently read CI logs: tested merge 872398e passed 118/118 unit and 24/24 page cases plus touch suite; merge includes main code changes. Claude's 126/126 a11y recording was not independently rerun. No rendered/device or release approval.
+note: Return 3 at 38725238ed2df86910dc24438d9565fd14500d69: top bar wraps at enlarged text instead of clipping status; --topbar-extra moves controls below; default size unchanged. a11y-r3.cjs 198/198 incl. long status values, real #panel-toggle in both states, panel-specific open/close; negative control confirms old rule clipped. pnpm check 82/82, test:pages 12x2, test:browser 1 fail (known Save/Load timeout) + 1 pass. Clock hide at <=360px is pre-existing, dispositioned. Emulation only; no device or release approval. Draft PR, not merged.
 
 # Mobile entry and landing-page usability
 
@@ -36,3 +36,4 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 - 2026-11-07T03:12Z: Claude: A11Y-1 (labels wrap, count/clock yield first) and A11Y-2 option b (Undo/Redo before Named structures in DOM; focus kept when the last Undo/Redo disables itself) at 84625b06834fc24ebcabd3a2b17ffff93dd737fe. Assertion-based a11y-r2.cjs 126/126 (100/150/200% at 390x844, 844x390, 320x568; enabled Undo/Redo keyboard at compact portrait, landscape, desktop). pnpm check 82/82, test:pages 12x2, test:touch pass. Report a11y-return-2.md. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
 
 - 2026-11-07T04:18Z: ChatGPT reviewed all 3/3 return files at PR44 84625b06834fc24ebcabd3a2b17ffff93dd737fe and saved/read back implementation-review-a11y-r2.md at 15f09a7620ac8b5863559abd4797b16e351ef65d before status. Both findings reviewed (2/2): A11Y-2 closed at source-review level; A11Y-1 partial, with count/clock content loss and a tools-toggle selector gap requiring correction. Independently inspected CI42332999290 logs: tested merge 872398ec55cc0bd8e731f88ef78e6a3f1139b230 passed 118/118 unit tests, 24/24 page cases and touch suite; head-to-merge includes non-doc changes from main, so this is not the branch's reported 82-test run. Claude's 126/126 a11y recording was inspected, not rerun. No new rendered/device acceptance or release approval. Stage implementation-review → fixing, owner chatgpt → claude.
+- 2026-11-07T05:02Z: Claude: A11Y-1 return 3 at 38725238ed2df86910dc24438d9565fd14500d69 — status values reflow (top bar wraps, controls below offset by --topbar-extra) instead of clipping; repaired #panel-toggle overlap probe (expanded+collapsed, fails if absent); status-value and panel-specific activation assertions. a11y-r3.cjs 198/198; negative control; pnpm check 82/82; test:pages 12x2; test:browser 1 known-timeout fail + 1 pass. Report a11y-return-3.md. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
