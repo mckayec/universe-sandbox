@@ -1,10 +1,11 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the DWR-A/B fix and per-ID supplement dispositions at PR37 232fef155c7a76cfb9e728321f064010cbb3878a (fix-return-232fef1.md) and approves the bounded return or names exact changes; open-ended research stays deferred
-updated: 2026-11-07T13:55Z
+next-action: Claude fixes the DWR-B transition/destination residual and DW-CS04-label in implementation-review-232fef1.md, returns exact SHA plus entered-place/state assertions, and reconciles PR37 conflicts with applicable rechecks
+updated: 2026-11-07T14:20Z
 idle-runs: 0
-note: PR37 head 232fef1 (parent 60176e7): DWR-A/B guarded; CS01/04/07/08/11/12/17 narrowed, CS02 and CS06 (e7) omitted, e14 untied, e16 clarified. pnpm check 89/89, test:pages 12x2, dwr-probe 22/22. test:browser, screenshots, rendered/device acceptance and remaining canon gaps open. Not merged; no release approval.
+note: Reviewed 3/3 diff files at 232fef155c7a76cfb9e728321f064010cbb3878a; DWR-A closed at source/isolated scope, DWR-B partial. Independent committed suite22/22; supplemental3/3 characterization outcomes include2 stale-transition reproductions. Seven replacement descriptions match,2 omissions and2 optional changes conform, but CS04 label still says refugee. Two Medium follow-ups; full canon/rendered/release gates remain.
+
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -40,3 +41,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-06T04:36Z: ChatGPT completed the bounded supplement reconciliation at exact PR37 head 60176e78f1272816a0869a5abe8018e884d704f7. Saved/read back cosmere-supplement-crosswalk.csv (07879199d1848fd8b4229172273c739a02865e8f), supplement-review-60176e7.md (c8d0b5d162494ecd064ef42e5b2a0381b0e4eca6), and audit.md's preserved-history/Known-gaps handoff (2a86d89efe7f6544f9d8eee4bc2ea5fb88b289f4) before this status update. All 23 identities resolve: six historical joins and seventeen disjoint Nalthis additions, zero duplicates. Current evidence classes are six supported text, ten partial primary, one not reverified, one commentary-assisted, four accepted returns carried and one clarification carried; do not reconstruct the prior November 4 aggregate or count inherited CB closures as new coverage. Seven conservative wording options and specific source/omission holds are ready for Claude. Stage content-review → fixing, owner chatgpt → claude for existing DWR-A/B repair and bounded per-ID dispositions. Remaining open-ended research is deferred under the speed amendment; full canon audit is incomplete and unapproved. No Mckay-only action, application edit, merge, deploy or release approval.
 - 2026-11-07T13:55Z: Claude returned DWR-A/B fixes and the supplement source/cut packet on PR37 at 232fef155c7a76cfb9e728321f064010cbb3878a (parent 60176e7): see fix-return-232fef1.md, dwr-probe.cjs and dwr-probe-output-232fef1.json. pnpm check 89/89, test:pages 12×2, probe 22/22 (positive and cancellation controls). Handed to ChatGPT (content-review). Not merged.
+
+- 2026-11-07T14:20Z: ChatGPT saved/read back implementation-review-232fef1.md (991e71a7c3dacd55bdae2dc40e89a08a85beff81) and dwr-residual-probe-232fef1.cjs (cf4d66103a022d799a2dbd6f414f2197bd2e0f13). Inspected3/3 diff files at unchanged PR37 head232fef155c7a76cfb9e728321f064010cbb3878a; DWR-A closed, DWR-B partial (1/2 lifecycle groups closed). Independently reran22/22 committed VM assertions;3/3 additional characterization cases include1 positive and2 stale-transition reproductions (not browser acceptance). Supplement23/23 dispositions accounted;11 changed objects=10 conform/1 partial owing to retained CS04 refugee label despite narrowed description. Two Medium finite fixes returned; broad source work stays deferred. Head check-runs returned0; fresh PR metadata reports merge conflicts. No fresh CI/browser/full-book certification, merge or deploy. content-review/chatgpt → fixing/claude; idle-runs0.
