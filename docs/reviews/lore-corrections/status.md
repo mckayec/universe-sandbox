@@ -1,10 +1,11 @@
-stage: implementation-review
-owner: chatgpt
-blocked-on: none
-next-action: ChatGPT checks the 3-file delta 6a96127→a4a6ea0 (content unchanged; Society Chronicle-reserve layout fix; rewritten probe) against technical-r6-a4a6ea0.md and confirms or returns findings; if confirmed, open the owner release question
-updated: 2026-11-07T13:15Z
+stage: ready-for-owner
+owner: mckay
+blocked-on: mckay
+next-action: Mckay answers D07 in docs/universes/DECISIONS.md for PR24 at a4a6ea0; if approved, Claude reconciles and validates the actual integrated runtime before release, returning material changes for the relevant review
+updated: 2026-11-07T13:20Z
 idle-runs: 0
-note: Technical approved at PR24 a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065 (branch-head runtime): probe 48/48 at 1440x900, 390x844, 1280x800, 3840x2160 (27 visible, 14 absent, 4 data-only, 3 negative controls; non-zero exit on failure/page errors); pnpm check 89/89, test:pages 12x2. Fixed T-R6a-1 (Society dossier hidden under Chronicle). No content change since ChatGPT's r6 acceptance at 6a96127.
+note: Bounded Canon/content and Claude Technical approved at a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065; implementation-review-r6a.md records 3/3 diff files, 4/4 finite return items, unchanged 21/21 manifest dispositions, 3/3 residual groups and 5/5 U dispositions. Independent source/screenshot/CI inspection; builder-reported browser counts remain attributed. No full-book certification or owner release approval. Actual integration/runtime checks remain required.
+
 
 # Book-accuracy corrections for the existing atlases
 
@@ -58,3 +59,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 
 - 2026-11-07T12:23Z: ChatGPT saved/read back implementation-review-r6.md in 105943144b44438892740dc260862adec3e0dbd3. Reviewed 9/9 diff files at PR24 6a961275cade4494a2d90b59e13fced5a2431155; 21/21 manifest dispositions accepted at source level, 3/3 residual groups resolved, 5/5 U dispositions preserved. No new literary verification or independent browser run. CI42370835357 logs confirm125/125 unit and24/24 page cases at bf5787b, whose runtime differs from the branch head. Builder probe includes data-only/hidden-DOM checks and does not fail its process on failed cases; finite rendered acceptance and runtime reconciliation requested. Timer closure preserved. implementation-review/chatgpt → fixing/claude for those specific technical tasks, not renewed broad research. Full atlas canon/release not approved; no code change, merge or deploy.
 - 2026-11-07T13:15Z: Claude completed implementation-review-r6.md items 1–4 at PR24 a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065 (parent 6a96127): rewritten source-confidence-probe.cjs (Range-based visible predicate with clipping/hit test, expanded sheets, palace selected via its button, Society 6→1 and engine downgrades with UI open, data-only labelled, 3 negative controls, failing exit) 48/48 at four viewports, 0 page errors; found and fixed T-R6a-1 (Society side panels reserved a fixed height smaller than the Chronicle, hiding the palace qualification at 1440x900); pnpm check 89/89, test:pages 12x2; runtime = branch head, CI bf5787b not transferred. Technical: approved at a4a6ea0 in technical-r6-a4a6ea0.md. fixing/claude → implementation-review/chatgpt. idle-runs 0.
+
+- 2026-11-07T13:20Z: ChatGPT saved/read back implementation-review-r6a.md in 4a6c9509295debfcdffa6a38789598fb8c6b1a49 before status. PR24 remains open/unmerged at a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065. Reviewed 3/3 changed files, complete probe and 4/4 supplied screenshots; 4/4 finite R6 return items addressed, 0 new blockers. Prior21/21 source-confidence dispositions,3/3 residual groups,5/5 U dispositions and timer closure preserved. Fresh CI42375798669 logs confirm125/125 unit,24/24 page cases and113 distribution files at synthetic merge17e40e0; branch-head48/48 per four viewports remains builder-reported, not independently rerun. Bounded Canon/content approved alongside same-head Claude Technical; full-book certification not granted. D07 saved/read back in01cbe5efb996b54f75f07cbd0a139b3ffadd9f49; implementation-review/chatgpt → ready-for-owner/mckay. Any approved release still requires actual integrated-runtime validation; no code edits, merge or deployment.
