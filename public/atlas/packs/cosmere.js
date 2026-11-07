@@ -230,7 +230,7 @@
         ]},
       kholinar: {/* layout schematic */ kind: "capital", arch: "imperial", size: "huge", tod: "day", weather: "clear", walls: true, sky: {moons: 3},
         landmarks: [
-          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .7], h: 1.6, books: [4, 8, 9], desc: "The Kholin palace on a northern plateau. King Gavilar is murdered here on the night of the treaty feast."},
+          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .7], h: 1.6, books: [4, 8, 9], desc: "The Kholin palace. King Gavilar is murdered here on the night of the treaty feast."},
           {id: "windblades", name: "The windblades", kind: "cliff", at: [-.7, .1], h: 1.8, books: [8], desc: "Giant fins of storm-carved rock that shelter the city from the highstorms. Tunnels are cut through them and people live along their tops."},
           {id: "wall", name: "The city wall", kind: "wall", at: [.75, -.4], h: 1.3, books: [8], desc: "About sixty feet high, built into the windblades. Highmarshal Azure’s Wall Guard holds it against Fused raids until a thunderclast breaks through."},
           {id: "oathgate", name: "The Monastery Dais (Oathgate)", kind: "portal", at: [.2, .35], h: 1.1, books: [8], desc: "The Oathgate platform, joined to the palace by the Sunwalk and used as the ardents’ monastery. Its spren has been corrupted by Sja-anat, and the Cult of Moments holds endless feasts on it."},
@@ -315,7 +315,7 @@
         ]},
       yeddaw: {/* layout schematic */ kind: "city", arch: "desert", size: "medium", tod: "day", weather: "clear",
         landmarks: [
-          {id: "gate", name: "The refugee entrance", kind: "gate", at: [-.7, -.6], books: [7], desc: "A guarded way into the city with a long queue of refugees, which Lift skips."},
+          {id: "gate", name: "The refugee entrance", kind: "gate", at: [-.7, -.6], books: [7], desc: "A guarded entrance with a long line of people waiting to enter; Lift sneaks toward the front."},
           {id: "market", name: "The market", kind: "market", at: [-.2, -.1], books: [7], desc: "Lift watches the man she calls Darkness execute a girl here for stealing fruit."},
           {id: "indicium", name: "The Grand Indicium", kind: "tower", at: [.2, .6], h: 1.6, books: [7], desc: "A huge records building towering over the city. Lift talks her way in as an envoy from Azir to find who Darkness is hunting."},
           {id: "slots", name: "The slots", kind: "farm", at: [-.55, .4], books: [7], desc: "The city’s deep cut channels, where farmers grow crops out of season."}
@@ -410,7 +410,6 @@
       luthadel: {/* layout schematic */ kind: "capital", arch: "gothic", size: "huge", tod: "dusk", weather: "ash", walls: true, river: true,
         landmarks: [
           {id: "fountain", name: "Fountain Square", kind: "plaza", at: [.1, .05], books: [2], desc: "A raised square with four fountains where the Lord Ruler stages executions and every man must watch. Kelsier dies in a courtyard beside it, and it becomes the Square of the Survivor."},
-          {id: "clubs", name: "Clubs’s shop", kind: "house", at: [-.15, -.2], h: .6, books: [2], desc: "A carpentry shop near the square that hides the crew’s base, where Kelsier lays out the plan to bring down the empire."},
           {id: "venture", name: "Keep Venture", kind: "keep", at: [-.5, .35], h: 1.3, books: [2], desc: "A great noble keep where Vin, disguised as Valette Renoux, attends balls and meets Elend. In The Well of Ascension it is Elend’s palace."},
           {id: "hasting", name: "Keep Hasting", kind: "keep", at: [.55, .45], h: 1.2, books: [2], desc: "Another noble keep. During the siege Vin and Zane spar across its heights, and Elend dines here with Lord Cett."},
           {id: "assembly", name: "The Assembly hall", kind: "hall", at: [-.1, .55], books: [2], desc: "Where Elend’s new Assembly meets, and votes him off his own throne during the siege."},
@@ -565,15 +564,15 @@
     nalthis: {
       ttelir: {/* layout schematic */ kind: "capital", arch: "classical", size: "huge", tod: "day", weather: "clear", coast: "e", walls: true, pal: {roof: "#d04a8a", stone: "#e8d0a0"},
         landmarks: [
-          {id: "markets", name: "The markets", kind: "market", at: [.1, .1], books: [3], desc: "Crowded, brightly dyed streets where Awakened objects and Lifeless servants are everywhere."},
-          {id: "highlands", name: "The Highlands", kind: "house", at: [-.5, .6], books: [3], desc: "The Idrian slum in the north of the city, run by three slumlords."},
+          {id: "markets", name: "The markets", kind: "market", at: [.1, .1], books: [3], desc: "Brightly colored crowds fill the city’s streets."},
+          {id: "highlands", name: "The Highlands", kind: "house", at: [-.5, .6], books: [3], desc: "The Idrian quarter called the Highlands, where Vivenna meets the slumlords Paxen, Ashu, and Rira."},
           {id: "docks", name: "The docks", kind: "dock", at: [.75, -.3], books: [3], desc: "Shipyards, warehouses and slums along the bay."},
           {id: "wall", name: "The landward wall", kind: "wall", at: [-.8, -.2], h: 1.1, books: [3], desc: "The city wall, with gates carved as sea creatures."}
         ]},
       courtofgods: {/* layout schematic */ kind: "palace", arch: "classical", size: "large", tod: "day", weather: "clear", walls: true, pal: {roof: "#202020"},
         landmarks: [
-          {id: "palace", name: "The God King’s palace", kind: "pyramid", at: [0, .7], h: 1.8, books: [3], desc: "A black, pyramid-shaped palace at the far end of the Court. Siri is brought here to marry Susebron and finds a gentle man the priests have kept silent."},
-          {id: "palaces", name: "The ring of palaces", kind: "palace", at: [-.5, .2], books: [3], desc: "One palace for each Returned god, Lightsong’s and Blushweaver’s among them, each with a hall for petitions."},
+          {id: "palace", name: "The God King’s palace", kind: "pyramid", at: [0, .7], h: 1.8, books: [3], desc: "The God King’s black, stepped palace at the far end of the Court, where Siri is brought as his wife."},
+          {id: "palaces", name: "The ring of palaces", kind: "palace", at: [-.5, .2], books: [3], desc: "The Returned gods’ palaces stand around the Court’s lawn, including those of Lightsong and Blushweaver."},
           {id: "arena", name: "The arena", kind: "arena", at: [.6, .6], books: [3], desc: "A roofless sand arena behind the palaces, where priests debate before the gods and athletes compete."},
           {id: "lawn", name: "The great lawn", kind: "garden", at: [0, -.1], books: [3], desc: "The Court is essentially one vast lawn inside its walls; gardeners lay out flowers when a god asks."},
           {id: "enclave", name: "The Lifeless enclave", kind: "hall", at: [.3, -.6], books: [3], desc: "Barracks for Hallandren’s army of Lifeless soldiers, controlled by gods who know the command phrases."},
@@ -581,7 +580,7 @@
         ]},
       denir: {/* layout schematic */ kind: "ruins", arch: "classical", size: "small", tod: "day", weather: "clear",
         landmarks: [
-          {id: "statues", name: "The D’Denir statues", kind: "statue", at: [0, 0], books: [3], desc: "Hundreds of old warrior statues standing in a quiet field in the north of the city."}
+          {id: "statues", name: "The D’Denir statues", kind: "statue", at: [0, 0], books: [3], desc: "Hundreds of old warrior statues stand in the quiet D’Denir garden."}
         ]},
       brightsea: {kind: "sea", size: "huge", water: true, tod: "day", weather: "clear"},
       edglipool: {kind: "underground", arch: "organic", size: "small", tod: "night", weather: "mist", under: true},
@@ -1275,7 +1274,6 @@
       {id: "e5", book: 1, world: "sel", site: "elantris", lm: "gate", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
       /* II Mistborn */
       {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn."},
-      {id: "e7", book: 2, world: "scadrial", site: "hathsin", lm: "pits", title: "The survivor of Hathsin", text: "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."},
       {id: "e68", book: 2, world: "scadrial", site: "fellise", lm: "renoux", title: "Valette Renoux", text: "Vin learns to pass as a young noblewoman and goes to the balls in Luthadel’s keeps, where she meets Elend Venture."},
       {id: "e69", book: 2, world: "scadrial", site: "luthadel", lm: "fountain", fx: "battle", title: "The Survivor falls", text: "Kelsier attacks the Inquisitors at an execution beside Fountain Square, and the Lord Ruler kills him in front of the skaa. His death makes him a legend."},
       {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", lm: "throne", fx: "duel", title: "The Lord Ruler falls", text: "Vin finds his weakness and kills the immortal emperor in his palace."},
@@ -1291,11 +1289,11 @@
       {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed takes up both Shards and restores the world, clearing the ash."},
       /* III Warbreaker */
       {id: "e13", book: 3, world: "nalthis", site: "courtofgods", lm: "palace", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
-      {id: "e14", book: 3, world: "nalthis", site: "ttelir", lm: "markets", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},
+      {id: "e14", book: 3, world: "nalthis", site: "ttelir", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},
       {id: "e77", book: 3, world: "nalthis", site: "courtofgods", title: "The Lifeless march", text: "After killing Blushweaver and threatening Llarimar, the plotters obtain Lightsong’s command phrase, change it, and order the Lifeless to march on Idris."},
       {id: "e15", book: 3, world: "nalthis", site: "courtofgods", title: "Lightsong’s last day", text: "In captivity, Lightsong gives his Breath to heal Susebron, sacrificing himself to restore the God King’s tongue."},
       {id: "e78", book: 3, world: "nalthis", site: "courtofgods", fx: "battle", title: "Susebron speaks", text: "Susebron uses Awakened cloth to rescue Siri. Vasher entrusts him with the D’Denir army, which is sent after the Lifeless marching on Idris."},
-      {id: "e16", book: 3, world: "nalthis", site: "ttelir", title: "Vasher and Nightblood", text: "A grim Awakener with a talking black sword works to stop the war he helped cause long ago."},
+      {id: "e16", book: 3, world: "nalthis", site: "ttelir", title: "Vasher and Nightblood", text: "Vasher and Nightblood work to prevent a new war between Hallandren and Idris; Vasher’s past is tied to the earlier Manywar."},
       /* IV The Way of Kings */
       {id: "e17", book: 4, world: "roshar", site: "kholinar", lm: "palace", title: "The assassin in white", text: "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge."},
       {id: "e79", book: 4, world: "roshar", site: "purelake", lm: "fuabra", title: "Three foreigners", text: "The fisherman Ishikk is paid by three odd outsiders to search the Purelake for a man who sounds very like Wit. They find nothing."},

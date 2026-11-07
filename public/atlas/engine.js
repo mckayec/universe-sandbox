@@ -1316,7 +1316,7 @@ const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||
 function refreshAll(){document.body.classList.toggle("inplace",S.view==="place");renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
-function selectWorld(id,fly){if(!WORLD_BY[id])return;if(S.view==="place"){if(id===S.sel){leavePlace();return;}leavePlace(()=>selectWorld(id,fly));return;}const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
+function selectWorld(id,fly){if(!WORLD_BY[id])return;if(id!==S.sel)placeGen++;if(S.view==="place"){if(id===S.sel){leavePlace();return;}leavePlace(()=>selectWorld(id,fly));return;}const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
 function flyGalaxy(){if(S.view!=="galaxy"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
@@ -1368,8 +1368,13 @@ function enterBtn(w,s){return canEnter(w,s)&&S.site===s.id?'<span class="enter b
 function lmOk(l){if(!realmOk(l)||!filterOk(l))return false;const b=S.book||0;if(l.until&&b&&b>=l.until)return false;if(l.since&&b&&b<l.since)return false;
   if(!CUM||!b)return true;const f=l.first||(l.books&&l.books.length?Math.min(...l.books):null);return f==null||f<=b;}
 let afterLeave=null,placeThen=null;
+/* DWR-B: navigation generation. Book, selection, world and place changes bump it; delayed place-entry
+   continuations and event effects only commit if it is unchanged and the event is still eligible. */
+let placeGen=0;
+function evEligible(e){if(!e||!filterOk(e))return false;const w=WORLD_BY[e.world];if(!w||!seen(w))return false;
+  if(S.book&&!(CUM?e.book<=S.book:e.book===S.book))return false;return !e.site||canEnterEv(e);}
 const AUD=window.AtlasPlacesAudio||null;let soundOn=false;try{soundOn=localStorage.getItem("atlas-sound")==="1";}catch(e){}
-function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(w,id);if(!canEnter(w,s))return;
+function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(w,id);if(!canEnter(w,s))return;const gen=++placeGen;
   /* straight from the galaxy: no planet is baked; leaving the place descends to the surface then */
   const fromGal=S.view==="galaxy";if(needRealm(w,s))setRealm(needRealm(w,s),true);
   S.site=id;S.lm=null;S.ev=null;if(MOB)dosCollapsed=true;
@@ -1384,17 +1389,17 @@ function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(
     catch(err){console.error("Atlas: could not build",s.id,err);S.view="world";refreshAll();return;}
     PLACES.setIdle(true);viewOffset();S.interacted=false;refreshAll();hint(MOB?UI.hints.placeMob:UI.hints.place);
     if(AUD&&soundOn){if(AUD.on)AUD.place(PLACES.place.sc.kind);}
-    if(then)setTimeout(then,500);});}
+    if(then)setTimeout(()=>{if(gen===placeGen&&S.view==="place"&&S.sel===w.id&&S.site===id)then();},500);});}
 function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;history.back();return;}doLeavePlace(after);}
-function doLeavePlace(after){if(AUD)AUD.leave();
+function doLeavePlace(after){placeGen++;if(AUD)AUD.leave();
   if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)setTimeout(()=>selectSite(site),900);if(after)setTimeout(after,1000);return;}
   transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL)buildSiteLabels(WORLD_BY[S.sel]);refreshAll();if(after)setTimeout(after,60);});}
 function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
   if(!quiet){renderDossier();renderCrumbs();syncURL();const it=dos.querySelector('[data-lm="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}}
 /* an event inside the place: fly to its landmark, then play its scene */
-function evInPlace(e){if(!e||S.view!=="place")return;S.ev=e.id;const has=e.lm&&PLACES.landmarks().some(l=>l.id===e.lm);
+function evInPlace(e){if(!e||S.view!=="place"||!evEligible(e)||S.sel!==e.world||(e.site&&S.site!==e.site))return;S.ev=e.id;const gen=placeGen;const has=e.lm&&PLACES.landmarks().some(l=>l.id===e.lm);
   if(has)selectLandmark(e.lm,true);else{S.lm=null;PLACES.focus(null);PLACES.overview();}
-  PLACES.stopFx();if(e.fx)setTimeout(()=>{if(S.view==="place"&&S.ev===e.id){PLACES.play(e.fx,has?e.lm:null);if(AUD)AUD.burst(e.fx);}},has?1300:600);
+  PLACES.stopFx();if(e.fx)setTimeout(()=>{if(gen===placeGen&&S.view==="place"&&S.ev===e.id&&evEligible(e)&&S.site===(e.site||S.site)){PLACES.play(e.fx,has?e.lm:null);if(AUD)AUD.burst(e.fx);}},has?1300:600);
   renderDossier();renderCrumbs();syncURL();}
 const PLACE_KIND={city:"City",capital:"Capital",town:"Town",village:"Village",palace:"Palace",fortress:"Fortress",castle:"Castle",port:"Port",spaceport:"Spaceport",station:"Station",habitat:"Habitat",
   underground:"Underground",sietch:"Sietch",desert:"Desert",ruins:"Ruins",battlefield:"Battlefield",wilds:"Wilds",forest:"Forest",mountain:"Mountains",ice:"Ice",sea:"Sea",temple:"Temple",
@@ -1442,7 +1447,7 @@ $("#tourBox").addEventListener("click",e=>{const b=e.target.closest("[data-tour]
   if(k==="stop")tourStop();else if(k==="next")tourStep(1);else if(k==="prev")tourStep(-1);else if(k==="pause"){TOUR.paused=!TOUR.paused;tourShow();tourArm();}});
 /* any hand on the controls pauses the tour rather than fighting it */
 canvas.addEventListener("pointerdown",()=>{if(TOUR.on&&!TOUR.paused){TOUR.paused=true;tourShow();clearTimeout(TOUR.timer);}});
-function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
+function openEvent(id,travel){placeGen++;S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
   else if(travel&&S.view==="place"&&S.sel===e.world){if(e.site&&e.site!==S.site&&canEnterEv(e))enterPlace(e.site,false,()=>evInPlace(e));else if(e.site===S.site)evInPlace(e);else leavePlace();return;}
@@ -1454,7 +1459,7 @@ function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();retu
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
-$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;if(+b.dataset.b!==S.book){if(TOUR.on)tourStop();if(PLACES)PLACES.stopFx();}
+$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;if(+b.dataset.b!==S.book){placeGen++;if(TOUR.on)tourStop();if(PLACES)PLACES.stopFx();}
   if(S.view==="place"){const nb=+b.dataset.b;const w=WORLD_BY[S.sel];S.book=nb;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
     const st=siteOf(w,S.site);if(!seen(w)||!st||!siteSeen(st)){leavePlace(()=>{if(!seen(w))ascend(()=>{S.sel=null;refreshAll();});else{S.site=null;refreshAll();}});return;}
     const lm=S.lm;PLACES.enter(w,st,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});viewOffset();S.ev=null;

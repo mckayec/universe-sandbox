@@ -4547,7 +4547,7 @@ function playFx(name,quiet){const info=FX_VIEW[name]||{};let f=FX[name];
   if(mode==="globe"&&info.view==="site")f=FXG[name];if(!f)return;stopFx();
   if(!quiet)showBanner(info.title||name,info.sub||"",mode==="site"?curSite.name:cur?cur.name:"");
   const scene=mode==="site"?site3:glb;const g=new THREE.Group();scene.add(g);const inst=f(g);if(inst){inst.group=g;inst.scene=scene;inst.t=0;inst.name=name;fxList.push(inst);}else scene.remove(g);}
-function stopFx(){fxList.forEach(f=>{if(f.dispose)f.dispose();if(f.group&&f.scene)f.scene.remove(f.group);});fxList=[];}
+function stopFx(){fxList.forEach(f=>{if(f.group&&f.group.userData.timers){f.group.userData.timers.forEach(clearTimeout);f.group.userData.timers=[];}if(f.dispose)f.dispose();if(f.group&&f.scene)f.scene.remove(f.group);});fxList=[];}
 function fxPlaying(name){return fxList.some(f=>f.name===name);}
 function updateFx(dt,now){if(!fxList.length)return;dt*=window.__fxScale||1;fxList=fxList.filter(f=>{f.t+=dt;const alive=f.update(dt,f.t)!==false&&f.t<(f.dur||30);if(!alive){if(f.dispose)f.dispose();if(f.group&&f.scene)f.scene.remove(f.group);}return alive;});}
 
@@ -4788,7 +4788,7 @@ FX.storms=g=>{const S=SITES.helios;S._tog=S._tog||{};S._tog.storms=true;document
   sFly({target:[0,0,400],r:16000,theta:.1,phi:.95});return {dur:1,update(){return true;}};};
 FX.flood=g=>{if(SITES.tyche._flood)SITES.tyche._flood();sFly({target:[200,200,600],r:11000,theta:Math.PI-.12,phi:1.12});return {dur:1,update(){return true;}};};
 /* ---------- Heliopolis falls ---------- */
-FX.heliofall=g=>{setTod("dusk");const HP=SITES.heliopolis._P;sFly({target:[HP.hipp[0],300,HP.hipp[2]+800],r:12000,theta:.7,phi:1.12});SITES.heliopolis._emp&&setTimeout(()=>SITES.heliopolis._emp(),2500);
+FX.heliofall=g=>{setTod("dusk");const HP=SITES.heliopolis._P;sFly({target:[HP.hipp[0],300,HP.hipp[2]+800],r:12000,theta:.7,phi:1.12});/* DWR-A: the EMP beat is owned by this effect instance; stopFx/clearForBook cancel it, and it re-checks generation + live instance */if(SITES.heliopolis._emp){const empGen=navGen;(g.userData.timers=g.userData.timers||[]).push(setTimeout(()=>{if(empGen===navGen&&fxList.some(f=>f.group===g)&&SITES.heliopolis._emp)SITES.heliopolis._emp();},2500));}
   const F=Flashes(g);const ring=new THREE.Mesh(new THREE.RingGeometry(.96,1,128).rotateX(-Math.PI/2),new THREE.MeshBasicMaterial({color:col(0x9fd0ff),transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));ring.position.y=200;g.add(ring);
   const P0=new THREE.Vector3(HP.hipp[0],10,HP.hipp[2]);const riders=[];for(let i=0;i<160;i++){const s=glowSprite(GLOW_WARM,40,0);g.add(s);riders.push({s,d:i*.04+Math.random()*.2,lane:(Math.random()-.5)*60});}
   const R=rng(4);const falling=[];
