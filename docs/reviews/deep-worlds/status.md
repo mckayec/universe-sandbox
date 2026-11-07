@@ -1,10 +1,11 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews DWH-01 fix at PR37 fb79488 (fix-return-fb79488.md): rerun dwr-history-probe H1–H3 plus the 11 and 22 assertions, and decide accept or return
-updated: 2026-11-07T16:01Z
+next-action: Claude returns a bounded remaining DW06/CS18 source-or-omit and technical disposition packet, preserving DWR-A/B/DWH-01 closures and coordinating the unfinished Elantris return in its own folder
+updated: 2026-11-07T16:19Z
 idle-runs: 0
-note: PR37 head fb79488cbc3ff9a404f2052dbd7314e15913d838 (parent d902c8a): cancelEntry clears only the history entry its own generation created. Probes H 3/3, transition 11/11, dwr 22/22; check 125/125; pages 12x2; browser Back check 1440+390 ok; test:browser fails at pre-existing Save/Load step. Broad canon gaps and release gates remain.
+note: DWH-01 closed 1/1 at fb79488; engine unchanged at current PR37 004c3c9. Independent H1–H3 3/3, transition 11/11, lifecycle 22/22; parent fails H3 as expected. Browser observations remain builder-attributed with failed old-head reproduction and Save/Load limitation. No full canon/release approval.
+
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -48,3 +49,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-07T15:19Z: ChatGPT saved/read back implementation-review-d902c8a.md (0af63c8783a165760711a98680f8481de9e919b7) and independent dwr-history-probe-d902c8a.cjs (5a3aea3c04c0f43cd36a07ae296390471ce804f5). Reviewed both fix files, inventoried 27 merge runtime changes and inspected the complete engine delta. Requested residuals closed 2/2; DWR-A and DWR-B source/VM closures preserved. Independently 11/11 transition + 22/22 lifecycle assertions pass; old 232fef1 fails the transition negative control. New history scenarios 2/3 pass, overlapping entry loses newer history marker (DWH-01 Medium). CI b11c718 non-doc tree matches head; logs verify 125/125 unit and 24/24 page cases, not test:browser. content-review/chatgpt → fixing/claude for the finite new regression. No full canon/release approval, application edit, merge or deploy.
 - 2026-11-07T16:01Z: Claude fixed DWH-01 at PR37 fb79488cbc3ff9a404f2052dbd7314e15913d838 (atlasEntry ownership tag; cancelEntry clears only its own entry). History probe 3/3, transition 11/11, dwr 22/22, pnpm check 125/125, test:pages 12x2, browser superseding-entry + Back check pass at 1440x900 and 390x844 (browser negative control did not reproduce; VM H3 is the sensitive test). test:browser fails at the pre-existing simulator Save/Load step. Evidence: fix-return-fb79488.md, dwh-browser-check.cjs. Handed to ChatGPT; not merged.
 - 2026-11-07T16:15Z: Claude: PR37 head has since moved to 004c3c9 with cosmere.js-only Elantris changes (cosmere-book-by-book review, still owned by Claude); engine.js is identical to fb79488, so the DWH-01 review applies to fb79488 and is unaffected.
+
+- 2026-11-07T16:19Z: ChatGPT saved/read back implementation-review-fb79488.md (a3406f8fecd2ab4378b3377261126262aba985f3). Reviewed 1/1 fix files at fb79488cbc3ff9a404f2052dbd7314e15913d838; independent history scenarios 3/3 pass, transition 11/11 and lifecycle 22/22 pass; parent d902c8a still fails H3. DWH-01 closed at source/VM level, prior closures preserved. Current PR37 004c3c9c13b514235cc3fc3dd4b971d31c4948ef changes only Cosmere data after the fix; engine closure carries, new content remains with its Claude-owned checkpoint. Browser harness inspected: synthetic clicks/logging, no assertions, old defect not reproduced; no independent browser acceptance claimed. Fresh build check success/deploy skipped, counts remain builder-attributed this run. content-review/chatgpt → fixing/claude for remaining bounded source/cut and technical dispositions; no new issue or release approval.
