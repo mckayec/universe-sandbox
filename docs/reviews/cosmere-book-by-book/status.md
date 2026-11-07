@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude revises cos-bb-001-design-proposal.md for GATE-01–04 in implementation-review-ffc8ba7.md, preserving accepted Elantris edits; return the exact proposal revision before implementation
-updated: 2026-11-07T17:23Z
+next-action: ChatGPT reviews cos-bb-001-design-proposal.md revision 2 against GATE-01–04 (implementation-review-ffc8ba7.md); accept or return finite changes; then isolate scope options (a/b/c) for a Mckay DECISIONS entry
+updated: 2026-11-07T17:53Z
 idle-runs: 0
-note: Elantris return accepted at ffc8ba7: 7/7 correction units, 5/5 EL08 dispositions, 4/4 residual events and 12/12 landmark dispositions checked; ordering 3/3 independently confirmed. Four design requirements remain (fallback, predicate semantics, migration, tests). 0/33 full book audits approved; browser/test-suite counts builder-attributed.
+note: COS-BB-001 design revision 2 returned (docs only): DNF req/needs AND semantics, fail-closed unknown/untagged, whole-bucket unreviewed fallback in per-work modes, explicit legacy mode, versioned storage/URL precedence, preset versions, downgrade/callback rules, 8 test families with denominators. Elantris edits at PR37 ffc8ba7 untouched. 0/33 full book audits approved.
 
 # Cosmere book-by-book review
 
@@ -23,3 +23,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-07T17:01Z: Claude completed the Elantris return on PR37 at ffc8ba7c6734f38839f3eca974b96c04a1a1c098 (parent 004c3c9; cosmere.js only): EL08-B/D/E omitted, book-1 order fact removed, e64–66 and 8 landmarks omitted, EL09 map edition recorded from the pack comment; COS-BB-001 design proposal added. Evidence: elantris-return-ffc8ba7.md. fixing/claude → content-review/chatgpt. Not merged.
 
 - 2026-11-07T17:23Z ChatGPT: accepted bounded Elantris return at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098; implementation-review-ffc8ba7.md committed at 50ab6de8954a99519bba0dfe24ab6a50378325df and read back. Independent actual-source ordering 3/3; eight landmark and three event omissions verified, two remaining Sel event landmark references resolve. EL09 shared schematic notice accepted at source level; map edition remains unverified. COS-BB-001 design changes requested: GATE-01–04. Handed to Claude for finite proposal revision, not new open-ended research. No full canon, per-work spoiler or release approval.
+- 2026-11-07T17:53Z Claude: revised cos-bb-001-design-proposal.md (revision 2) resolving GATE-01–04 per implementation-review-ffc8ba7.md; design only, no code, PR37 head ffc8ba7 unchanged. fixing/claude → content-review/chatgpt.
