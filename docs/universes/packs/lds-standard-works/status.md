@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: check the 33 CS-1 links in cs1-source-manifest.csv against opened sources, record the 20-entry §4 sample (incl. non-codex) and decide canon at PR33 9d53e7c48eae8469e240e6b61e933e7b5c115d5f
-updated: 2026-11-07T06:13Z
+next-action: Claude: apply CS-2 exact selected-coverage notice in audit-final.md, verify desktop/phone notice readability, return exact PR33 head and diff for notice-only canon recheck
+updated: 2026-11-07T06:37Z
 idle-runs: 0
-note: CS-1 implemented at PR33 9d53e7c48eae8469e240e6b61e933e7b5c115d5f (pack blob 0e4a2f81): 33/33 cards linked, 1647/1647 cards now sourced, 0 non-src leaves changed. pnpm check 174/174, pages 13x2, browser pass; CS-1 rendered links pass at 1440 and 390. See cs1-return-9d53e7c.md. Canon not yet approved.
+note: Audited PR33 9d53e7c48eae8469e240e6b61e933e7b5c115d5f. CS-1 closed 33/33; final sample 20/20; original anchor dispositions 26/26; independent regressions 72/72. One Medium remaining: CS-2 required visible curated-coverage notice absent. Prior content/confidence dispositions accepted; do not repeat source/sample/residual reviews. Technical/device and owner-release gates separate.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -115,3 +115,5 @@ Track A · view: Earth-historical, layered
 
 - 2026-11-07T05:16Z: ChatGPT reviewed final package at unchanged PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25; saved/read back final-package-review-e2c02e4.md at 3d03e70172fd270628e717714e844a78361d8c46. Independently evaluated all 1647 codex rows and inspected 33/33 unlinked card texts. CS-1 decision: add official sources to all 33, with account-specific links and unchanged gates/prose; six works entries contain specific claims, so no seven-card exemption. Regex count112 reproduced but not accepted as a confidence ledger. Curated-coverage description accepted; retained unsupported claims cannot be deferred as omitted expansion. Final 20-entry sample remains pending (0/20 this checkpoint), with non-codex population coverage requested. Prior corrections preserved; checkpoint67 runtime/captures remain builder-attributed. final-audit/chatgpt → fixing/claude for concrete link patch and manifest; no release approval.
 - 2026-11-07T06:13Z: Claude implemented CS-1 on PR33 at 9d53e7c48eae8469e240e6b61e933e7b5c115d5f (c005a79 adds src to 33 cards + tests/lds-cs1.test.ts; 9d53e7c regenerates timeline-source-vision.csv). Manifest cs1-source-manifest.csv (33 rows); return cs1-return-9d53e7c.md with preservation diff (0 non-src changes), negative control 3/3, and open-finding dispositions. 0 fresh source openings (churchofjesuschrist.org blocked in builder sandbox). Stage fixing → final-audit, owner claude → chatgpt.
+
+- 2026-11-07T06:37Z: ChatGPT completed checkpoint-68 final canon review at PR33 9d53e7c48eae8469e240e6b61e933e7b5c115d5f. Saved/read back cs1-review-9d53e7c.md at 54cf4d1d1a9f83e9fe68adc3be00ffb13cc0e655 (33/33 added-source cards; 20/20 reproducibly selected entries including sites/events/routes), final-validation-9d53e7c.txt at da7fec75611156049e7915821cfda3404937a39a (72/72 independent existing regressions), and audit-final.md at 7805288eb1e3d738d295fc9183da0b71f0cdec41 before status. Reconciled 7/7 original finding groups, all 26 anchor dispositions, all 5 addendum receipts and prior semantic/confidence closures; no new substantive book/text discrepancy. CS-1 closed. CS-2 Medium: builder says curated-scope description is visible, but it is absent from actual pack/registry/engine; exact meta.notice replacement supplied. Canon not yet approved. final-audit/chatgpt -> fixing/claude for that bounded notice change and display evidence; no repeated 33-link, 20-sample or residual-96 audit requested. Technical/device evidence and Mckay release gate remain separate.
