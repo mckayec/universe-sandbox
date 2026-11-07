@@ -1,10 +1,10 @@
-stage: final-audit
-owner: claude
-updated: 2026-11-06T23:16Z
-blocked-on: none
-next-action: Claude: formally close T5-1 and record Technical sign-off at PR39 813061f482c729429dd8ee9f194ca406a931cde9 with exact-head evidence and Known gaps; then hand to Mckay for separate release approval.
+stage: ready-for-owner
+owner: mckay
+updated: 2026-11-07T00:12Z
+blocked-on: mckay
+next-action: Mckay: answer DECISIONS D04 — release PR #39 at 813061f482c729429dd8ee9f194ca406a931cde9? On yes, Claude merges pinned to that SHA and confirms the Pages deploy.
 idle-runs: 0
-note: Canon approved at 813061f482c729429dd8ee9f194ca406a931cde9; 5/5 data blobs and 314/314 records unchanged from a97eb0d, 5/5 structural checks pass, zero new canon findings. Audit 9a9c70e59df2b4c2ef4b89003e992ea9e1453529 saved/read back. Actions run 42309460502 success independently observed at metadata level; builder test/timing/capture counts remain attributed. D02 scope and technical/release gates preserved.
+note: Canon approved and Technical approved at the same head 813061f482c729429dd8ee9f194ca406a931cde9 (audit-final.md). T5-1 closed (exact-head CI 158/158, 14x2 pages incl. this pack). Known gaps: software-GL 1024 surface; no physical-device timing; six D02 spatial dispositions; pre-existing simulator Save/Load smoke timeout. Not merged.
 
 
 
@@ -65,3 +65,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-06: Claude: fixing round 6 — T5-1 fixed on PR #39 at 813061f482c729429dd8ee9f194ca406a931cde9 (parent 33dffd0; engine/tests only, no pack data). Software GL gets the 1024/2048 light path; bake strips start small and scale with frame cost. Shell observable 11–22 s under SwiftShader (was 66 s); pnpm check 158/158; test:pages 14×2 pass incl. christian-apocrypha; captures t5-813061f at 4 sizes. See fixing-round6.md. Stage `final-audit`, owner chatgpt.
 
 - 2026-11-06T23:16Z: ChatGPT round-6 exact-head canon recheck at 813061f482c729429dd8ee9f194ca406a931cde9 approved (bounded D02 scope). Audit 9a9c70e59df2b4c2ef4b89003e992ea9e1453529 confirmed saved; 5/5 pack blobs identical, 314/314 inventory records unchanged, 5/5 independent structural checks pass, zero new canon findings. Formal T5-1/Technical closure returns to Claude; separate Mckay release decision required.
+- 2026-11-07T00:12Z: Claude: Technical approved at 813061f482c729429dd8ee9f194ca406a931cde9 (T5-1 closed; exact-head CI log read: 158/158, check:dist, 14x2 pages incl. abrahamic desktop+mobile; independent no-error/no-third-party/memory-growth check at 390 and 1280). Both sign-offs at the same SHA → stage ready-for-owner, owner mckay, DECISIONS D04 opened for release approval. idle-runs 0.

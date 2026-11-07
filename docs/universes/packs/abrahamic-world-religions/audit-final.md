@@ -399,3 +399,31 @@ Claude's **158/158 unit tests**, **28/28 page/viewport checks**, 11–22 second 
 Inspected **25/25 status files** (18 packs, 7 reviews). Other chats' research assignments and Cosmere book-by-book work were left intact. No site code, PR branch, release decision, merge or deployment changed.
 
 **Canon: approved** at **813061f482c729429dd8ee9f194ca406a931cde9**, for the previously approved bounded D02 scope. Zero new canon findings. Return **final-audit / claude** for formal same-head technical sign-off; Mckay's separate release approval remains required.
+
+
+## 2026-11-07T00:12Z — Round-6 technical sign-off (Claude)
+
+**Revision:** PR [#39](https://github.com/mckayec/universe-sandbox/pull/39) head **813061f482c729429dd8ee9f194ca406a931cde9** (canon approved at this same head above). PR read open, `mergeable_state: clean`; main has moved only in `docs/**` since the CI merge base 00eafd8, so no rebase is needed.
+
+### T5-1 — closed
+
+The desktop load freeze is resolved at 813061f482c729429dd8ee9f194ca406a931cde9 (fixing-round6.md: software-GL light path + bounded proportional bake strips). Exact-head CI [run 42309460502](https://github.com/mckayec/universe-sandbox/actions/runs/42309460502), job 128206999204 log read this pass: synthetic merge `0c2dfad` (= 813061f482c729429dd8ee9f194ca406a931cde9 into 00eafd8); build ok; **158/158** unit tests (incl. "atlas pack abrahamic-world-religions.js has no broken references or spoiler leaks" and the tree validator); `check:dist` pass; standalone pages **14 × 2 pass**, including `atlas/?pack=abrahamic-world-religions` @desktop and @mobile. This is the same page check the deploy workflow gates on, so T5-1 no longer blocks a deploy.
+
+### AUDIT_CHECKLIST §4 (technical)
+
+| Item | Result at 813061f482c729429dd8ee9f194ca406a931cde9 |
+|---|---|
+| Atlas validator (refs, IDs, coordinates, spoiler order) | pass — CI unit tests above |
+| `pnpm check`, page/browser checks, no console errors, no third-party requests | pass — CI 158/158, check:dist, 14×2 pages (the page check fails on page errors, console errors, 4xx and any non-origin request). Independent run this pass on a fresh build of 813061f482c729429dd8ee9f194ca406a931cde9: 0 page/console errors, 0 external requests at 390x844 and 1280x800 |
+| Screenshots 3840x2160 / 1440x900 / 1280x800 / 390x844 | shots/t5-813061f-*.jpg (load state, this head); finished 4096 surface at 4K in fixing-round4 (d95eaf2, real-GPU path, unchanged apart from strip sizing). Readable, nothing clipped |
+| Meaningful sites; events open real places; journeys | pass — 15 reference markers + 7 event links accepted in Q01 rounds; journeys are ordered reference lists by design (build-report) |
+| Performance / mobile textures / memory growth | phone + low-memory + software GL use the 1024 bake / 2048 maps. **New this pass:** memory across navigation (scripted selectWorld/descend/6 sites/ascend/25 events per cycle, forced GC between): 390x844 heap 4.78 → 5.04 → 5.07 → 5.09 → 5.22 MB over 4 cycles, DOM fixed at 1206 nodes; 1280x800 5.02 → 4.84 MB over 2 cycles. No meaningful growth |
+| Back link, fan-work notice, credits | pass — unchanged since fixing-round4/5 captures; back-link selector asserted by the page check |
+
+### Known gaps (carried, disclosed for release)
+
+- Under software GL the finished surface is 1024 px; real-GPU desktops keep the 4096 bake. No physical phone or real-GPU timing/memory measurement exists.
+- Six D02 spatial dispositions (Antioch held, Fayette/Whitmer, Karbala, Azusa Street, Seesen unpinned; Najaf mapped feature deferred) — approved by Mckay as scope.
+- Pre-existing simulator Save/Load browser-smoke timeout reproduces on unmodified main; not this pack.
+
+**Technical: approved** at **813061f482c729429dd8ee9f194ca406a931cde9**. With "Canon: approved" at the same SHA, stage → `ready-for-owner`, owner mckay (DECISIONS D04).
