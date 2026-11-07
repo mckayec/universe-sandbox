@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: run the AUDIT_CHECKLIST §4 canon checks on PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 using final-package-e2c02e4.md — decide CS-1 (33 cards without source links: add links vs accept prose refs), take or replace the seeded 20-entry sample, accept/return the completeness disposition; then "Canon: approved" or blockers
-updated: 2026-11-07T04:33Z
+next-action: Claude: add official source links to all 33 CS-1 cards per final-package-review-e2c02e4.md; return exact head, 33-row source manifest, preservation checks and existing-open-finding dispositions
+updated: 2026-11-07T05:16Z
 idle-runs: 0
-note: Checkpoint 67 final-audit package at unchanged head e2c02e4 (final-package-e2c02e4.md): pnpm check 171/171 + 114 dist files, test:pages 13x2, test:browser pass; RC64-O1 rendered chooser/scroll/focus/Escape/resize pass at 3840x2160, 1440x900, 1280x800, 390x844 with 0 third-party requests (builder-executed, script committed); full-res 4K capture. Scope: 1,647 cards, 33 lack src links (CS-1 source decision), 112 visibly qualified. Device/GPU remains a Known gap. No merge.
+note: CS-1 decision: link all 33 cards, including all 7 works entries. Exact-head inventory independently counted 1647 cards, 1614 linked/33 unlinked; 33/33 unlinked texts inspected. Review 3d03e701 saved/read back. Qualification regex 112 is not whole-pack confidence clearance; final sample 0/20 this checkpoint. Prior RES64 closures retained; canon not yet approved.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -112,3 +112,5 @@ Track A · view: Earth-historical, layered
 
 - 2026-11-06T05:18Z: ChatGPT completed the requested narrow checkpoint-66 return at PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25: RES64-C1/C2 closed (2/2), 0 new findings. Reopened both official chapter bodies; exact generator and generated replacements accepted. Whole-pack comparison found only the two desc leaves changed. Local targeted tests 18/18; new RES96-C suite against parent failed the expected 1/5. Independently inspected CI run 42165272882: 171/171 unit and 26/26 page/viewport cases on identified synthetic merge. Saved and verified audit-final.md at 0061dcb553f068b17554305c3ef826c963383ebb before this status handoff. Full canon is not yet approved: remaining completeness/confidence disposition and final §4 coverage stay open; rendered/device/owner gates separate. Final-audit/chatgpt → fixing/claude for a concrete final evidence package, not a repeat of accepted copy or residual research.
 - 2026-11-07T04:33Z: Claude saved checkpoint-67 final-audit package final-package-e2c02e4.md for PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 (no code/content change): exact-head pnpm check 171/171, test:pages 13x2, test:browser pass; s67-final-evidence.mjs RC64-O1 rendered checks pass at all four viewports, 0 third-party requests; full-res 4K capture shots/s67-reference-3840x2160.jpg; completeness disposition (1,647 cards) with CS-1 (33 cards without source links) for a source decision and a seeded 20-entry §4 sample. Stage final-audit, owner chatgpt. Frees the WIP slot for the hierarchy build.
+
+- 2026-11-07T05:16Z: ChatGPT reviewed final package at unchanged PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25; saved/read back final-package-review-e2c02e4.md at 3d03e70172fd270628e717714e844a78361d8c46. Independently evaluated all 1647 codex rows and inspected 33/33 unlinked card texts. CS-1 decision: add official sources to all 33, with account-specific links and unchanged gates/prose; six works entries contain specific claims, so no seven-card exemption. Regex count112 reproduced but not accepted as a confidence ledger. Curated-coverage description accepted; retained unsupported claims cannot be deferred as omitted expansion. Final 20-entry sample remains pending (0/20 this checkpoint), with non-codex population coverage requested. Prior corrections preserved; checkpoint67 runtime/captures remain builder-attributed. final-audit/chatgpt → fixing/claude for concrete link patch and manifest; no release approval.
