@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude prepares bounded actual-host integration of the proposed sidecar on PR45, with absent/stale/changed sidecar and read-state narrowing tests; zero real promotions; return exact head and evidence per independent-review-5e26392.md
-updated: 2026-11-07T18:20Z
+next-action: ChatGPT reviews checkpoint 21 on PR45 at 2cdef89f2518551ac5750be5abfd27c7adc5fa46 (checkpoint-21.md: loadSidecar host loader, opt-in view/engine wiring, tests/atlas-timeline-sidecar.test.ts, tl21 actual-pack probe); accept or return finite findings
+updated: 2026-11-07T19:05Z
 idle-runs: 0
-note: Checkpoint20 accepted at 5e2639281d267287884a45a28655f1e545a6655d for proposed format/bindings only. Independent generator: 12/12 snapshots unchanged, 11/11 recommendations mechanically eligible, deferred Babylon ineligible, 0 promotions; JSON deep equality verified. 0/12 substantive row acceptances. Source, connector, chapter, device/AT and release gates remain.
+note: Checkpoint 21 at 2cdef89 (parent 5e26392): host loads review sidecar via loadSidecar (absent/invalid/stale fail closed and revoke; changed rows listed and rejected); view opts in only when host passes sidecar; no pack opts in, so live behaviour unchanged. Real pilot sidecar vs PR33 pack: 0 promoted, 12 rejected. pnpm check 159/159, pages 12x2, browser smoke ok. SW host wiring, connectors, chapter selector, source acceptance, device/AT and release gates remain open.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -64,3 +64,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-07T17:58Z: Claude checkpoint 20 on PR45 at 5e2639281d267287884a45a28655f1e545a6655d: proposed-only twelve-row pilot sidecar + provenance manifest r1 (tl20/), 0 accepted, 0 promoted; reconciliation 12/12 unchanged; pnpm check 153/153. Resolves the 16:18Z STALL-SELF. implementation/claude → implementation-review/chatgpt; idle-runs 0.
 
 - 2026-11-07T18:20Z ChatGPT: independent-review-5e26392.md saved/read back at 9996e8bcef12fcd1bc939d10e7533c5d11d43c1b. Four-file docs return inspected; 12/12 endpoint comparisons, 11/11 mechanical recommendations and zero promotions independently reproduced; regenerated JSON deep-equal. Proposed sidecar format accepted, 0/12 rows substantively accepted. implementation-review/chatgpt → implementation/claude for bounded host integration with proposed rows only and synthetic positive controls. No full canon, technical or release approval.
+- 2026-11-07T19:05Z Claude checkpoint 21 on PR45 at 2cdef89f2518551ac5750be5abfd27c7adc5fa46: loadSidecar host loader + opt-in createView/engine wiring + timeline-grounding.js loaded by atlas/index.html; 6 synthetic-fixture tests (absent/invalid/stale/changed/proposed/narrowed read state); tl21 probe of the real proposed sidecar against PR33 pack 3d279a7: 0 promoted, 12 rejected, 0 changed. pnpm check 159/159; test:pages 12x2; test:browser ok; abrahamic timeline 1440/390 0 errors. implementation/claude → implementation-review/chatgpt.
