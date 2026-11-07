@@ -1,10 +1,10 @@
 stage: final-audit
-owner: chatgpt
+owner: claude
 blocked-on: none
-next-action: ChatGPT: notice-only canon recheck of CS-2 at PR33 14c9d0f897c259c7e3011dcfedfa9081cc5f9925 per cs2-return-14c9d0f.md (also check the 2-line generic engine/CSS narrow-width notice); then Claude technical §4
-updated: 2026-11-07T07:18Z
+next-action: Claude: complete exact-head technical §4 at PR33 14c9d0f897c259c7e3011dcfedfa9081cc5f9925, including narrow notice readability; then request Mckay release decision if approved
+updated: 2026-11-07T08:19:42Z
 idle-runs: 0
-note: CS-2 implemented at PR33 14c9d0f897c259c7e3011dcfedfa9081cc5f9925: exact selected-coverage meta.notice; engine repeats the notice in the world dossier at <=1180px because credits are hidden there and this pack never shows the overview on phones. Pack data diff vs 9d53e7c: only meta.notice. check 176/176, pages 13x2, smoke pass. Not merged.
+note: Canon approved at 14c9d0f; CS-2 closed 1/1, all 4/4 return files reviewed, exact pack-source comparison confirms notice-only change. Prior 33-source/20-sample/26-anchor evidence preserved, not rerun. Audit 029fb7a saved/read back. Technical/device and owner-release gates remain separate.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -119,3 +119,5 @@ Track A · view: Earth-historical, layered
 - 2026-11-07T06:37Z: ChatGPT completed checkpoint-68 final canon review at PR33 9d53e7c48eae8469e240e6b61e933e7b5c115d5f. Saved/read back cs1-review-9d53e7c.md at 54cf4d1d1a9f83e9fe68adc3be00ffb13cc0e655 (33/33 added-source cards; 20/20 reproducibly selected entries including sites/events/routes), final-validation-9d53e7c.txt at da7fec75611156049e7915821cfda3404937a39a (72/72 independent existing regressions), and audit-final.md at 7805288eb1e3d738d295fc9183da0b71f0cdec41 before status. Reconciled 7/7 original finding groups, all 26 anchor dispositions, all 5 addendum receipts and prior semantic/confidence closures; no new substantive book/text discrepancy. CS-1 closed. CS-2 Medium: builder says curated-scope description is visible, but it is absent from actual pack/registry/engine; exact meta.notice replacement supplied. Canon not yet approved. final-audit/chatgpt -> fixing/claude for that bounded notice change and display evidence; no repeated 33-link, 20-sample or residual-96 audit requested. Technical/device evidence and Mckay release gate remain separate.
 
 - 2026-11-07T07:18Z: Claude implemented CS-2 on PR33 at 14c9d0f897c259c7e3011dcfedfa9081cc5f9925 (exact notice text; generic narrow-width dossier notice since phones showed no notice surface; tests/lds-cs2.test.ts). Return cs2-return-14c9d0f.md with shots. check 176/176, pages 13x2, smoke pass. Stage fixing -> final-audit, owner chatgpt.
+
+- 2026-11-07T08:19:42Z: ChatGPT closed CS-2 at PR33 14c9d0f897c259c7e3011dcfedfa9081cc5f9925; audit-final.md saved/read back at 029fb7a0f187cdebeda453467ca8cb11162a6499. 4/4 return files reviewed; exact complete pack source comparison confirms only notice text differs. Generic narrow-width notice path accepted at source level; builder rendered/test evidence remains attributed, independent browser launch blocked by socket permission. Canon approved within prior curated scope; final-audit/chatgpt -> final-audit/claude for exact-head technical §4. No release approval, merge or deploy.
