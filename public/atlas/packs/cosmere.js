@@ -513,21 +513,13 @@
       elantris: {/* layout schematic */ kind: "ruins", arch: "classical", size: "large", tod: "day", weather: "rain", walls: true, pal: {stone: "#8a8478", ground: "#5a5448"},
         landmarks: [
           {id: "gate", name: "The gates of Elantris", kind: "gate", at: [.7, 0], h: 1.2, books: [1], desc: "Those taken by the Shaod are confined within Elantris; Raoden enters through this gate."},
-          {id: "newelantris", name: "New Elantris", kind: "plaza", at: [0, .2], books: [1], desc: "The community Raoden builds among the rot with Galladon, Karata and the others: work, gardens and repaired roofs instead of despair."},
-          {id: "walls", name: "The walls", kind: "wall", at: [-.6, -.5], h: 1.3, books: [1], desc: "Elantris’s high walls now serve to keep its people in."},
-          {id: "barrows", name: "The memorial barrows", kind: "tomb", at: [.85, -.7], h: .6, books: [1], desc: "Outside the city, where the heroes of the war are buried; Sarene asks that Hrathen lie here too."}
+          {id: "walls", name: "The walls", kind: "wall", at: [-.6, -.5], h: 1.3, books: [1], desc: "Elantris’s high walls now serve to keep its people in."}
         ]},
       kae: {/* layout schematic */ kind: "capital", arch: "classical", size: "medium", tod: "day", weather: "rain", coast: "n",
         landmarks: [
-          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .4], h: 1.3, books: [1], desc: "King Iadon’s palace in Kae. Sarene meets him here after arriving from Teod."},
-          {id: "kiin", name: "Kiin’s manor", kind: "house", at: [-.45, -.2], books: [1], desc: "Sarene’s uncle’s house, where the opposition meets. It is barricaded when the Dakhor monks attack."},
-          {id: "roial", name: "Roial’s mansion", kind: "house", at: [.5, .1], books: [1], desc: "Home of the old duke Roial, Sarene’s ally at court."},
-          {id: "market", name: "The market district", kind: "market", at: [.1, -.55], books: [1], desc: "Dakhor monks burst from tents here when the attack begins."}
+          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .4], h: 1.3, books: [1], desc: "King Iadon’s palace in Kae. Sarene meets him here after arriving from Teod."}
         ]},
-      pool: {/* layout schematic */ kind: "mountain", arch: "ancient", size: "small", tod: "dusk", weather: "mist",
-        landmarks: [
-          {id: "pool", name: "The pool", kind: "lake", at: [0, 0], books: [1], desc: "A deep pool of thick blue liquid where Elantrians who have given up walk in and vanish. Galladon and Karata carry the dying Raoden up toward it."}
-        ]},
+      pool: {/* layout schematic */ kind: "mountain", arch: "ancient", size: "small", tod: "dusk", weather: "mist"},
       kondeon: {kind: "town", arch: "rustic", size: "small", tod: "day", weather: "rain", river: true},
       iald: {kind: "city", arch: "classical", size: "medium", tod: "day", weather: "clear"},
       alonoe: {kind: "sea", size: "large", water: true, tod: "day", weather: "clear"},
@@ -545,11 +537,7 @@
       hrovell: {kind: "village", arch: "rustic", size: "small", tod: "day", weather: "clear"},
       velf: {kind: "city", arch: "classical", size: "medium", tod: "day", weather: "clear", river: true},
       seraven: {kind: "port", arch: "classical", size: "medium", tod: "day", weather: "clear", coast: "n"},
-      teoras: {/* layout schematic */ kind: "port", arch: "classical", size: "medium", tod: "day", weather: "clear", coast: "s",
-        landmarks: [
-          {id: "harbour", name: "Teoras harbour", kind: "dock", at: [0, -.7], books: [1], desc: "Home of the Teo navy, which rules the Sea of Fjorden."},
-          {id: "streets", name: "The streets of Teoras", kind: "plaza", at: [0, .2], books: [1], desc: "Dilaf brings Sarene and Hrathen here to destroy Teod. Hrathen turns on him and is struck down in these streets, and the Elantrians arrive."}
-        ]},
+      teoras: {/* layout schematic */ kind: "port", arch: "classical", size: "medium", tod: "day", weather: "clear", coast: "s"},
       roseempire: {/* layout schematic */ kind: "capital", arch: "eastern", size: "large", tod: "day", weather: "clear",
         landmarks: [
           {id: "palace", name: "The Rose Palace", kind: "palace", at: [0, .2], h: 1.5, books: [7], desc: "On the central of the capital’s seven hills: the seat of the emperor and the arbiters."},
@@ -978,12 +966,12 @@
        short: "Hot, dusty and barren.", facts: [["Order", "1st from Mashe"]],
        gfx: {type: "desert", sea: .05, pal: ["#3a2818", "#5a3a20", "#b08458", "#c09468", "#a07a50", "#e8d8c0"], clouds: .3, cloudCol: "#c8a878", atmo: "#e0b080", atmoK: .9, sw: "#c09468"}},
 
-      {id: "sel", name: "Sel", aka: ["Seol"], realms: {cognitive: {name: "Expanse of the Densities", style: "plasma", c1: "#ff6a2a", c2: "#7a2ab8", c3: "#200a10", blurb: "Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it."}}, group: "selish", books: [1, 7], first: 1, major: true, status: "World of Elantris",
+      {id: "sel", name: "Sel", aka: ["Seol"], group: "selish", books: [1, 7], first: 1, major: true, status: "World of Elantris",
        star: {name: "Mashe", col: "#fff6e0"}, map: orb(C.sel, .22, 30), distText: ORR, hero: "elantris",
        blurb: "Once the city of Elantris shone, and anyone the Shaod took became a near-immortal with silver skin and power drawn from the Aons, the symbols of their writing. Ten years ago it all failed. Now Elantris is a rotting prison where the newly taken are thrown, Arelon is ruled by a merchant king, and the empire of Fjorden, which holds most of the continent, sends priests to convert what is left.",
        short: "The world of Elantris and The Emperor’s Soul.",
        eras: {7: {facts: [["Order", "2nd from Mashe"], ["Moon", "Oem"], ["Shards", "Devotion and Dominion, both splintered"], ["Magic", "AonDor, Forgery, Dakhor and more, tied to the land"], ["Nations", "Arelon, Teod, the Fjordell Empire, the Rose Empire"]]}},
-       facts: [["Order", "2nd from Mashe"], ["Moon", "Oem"], ["Continents", "Opelon (Sycla) and a northern continent"], ["Magic", "AonDor, drawn from the shape of the land"]],
+       facts: [["Moon", "Oem"], ["Continents", "Opelon (Sycla) and a northern continent"], ["Magic", "AonDor, drawn from the shape of the land"]],
        moons: [{name: "Oem", size: .2, dist: 3.2, speed: .04, gfx: rock(["#a8b8c8", "#c0d0e0", "#d8e4ee", "#e0eaf2", "#eef4fa", "#ffffff"])}],
        gfx: {type: "terran", sea: .5, freq: 1.5, warp: .5, rough: .55, ice: 76, pal: ["#0c2240", "#2c6a92", "#5a7a40", "#6a8a4a", "#8a8068", "#f0f0ee"],
              clouds: .33, atmo: "#8ab8ff", lights: .25, sw: "#6a8a4a", map: MAP_SEL},
@@ -1266,10 +1254,7 @@
       {id: "e1", book: 1, world: "sel", site: "elantris", lm: "gate", title: "Raoden is taken", text: "The prince of Arelon wakes with the Shaod and is quietly thrown into Elantris, declared dead to the world."},
       {id: "e2", book: 1, world: "sel", site: "kae", title: "A widow before the wedding", text: "Sarene reaches Kae and learns that Raoden is reported dead; their contract makes her his widow."},
       {id: "e3", book: 1, world: "sel", site: "kae", title: "Hrathen’s three months", text: "A priest of Fjorden comes with a deadline: convert Arelon, or watch it destroyed."},
-      {id: "e64", book: 1, world: "sel", site: "elantris", lm: "newelantris", title: "New Elantris", text: "Inside the walls Raoden befriends Galladon, wins over the gang leaders and builds a community that works instead of waiting to rot."},
-      {id: "e65", book: 1, world: "sel", site: "kae", lm: "palace", title: "The king’s secret", text: "Sarene exposes King Iadon’s hidden Jeskeri sacrifices. He is arrested and hangs himself, and a struggle for the throne follows."},
       {id: "e4", book: 1, world: "sel", title: "The land is part of the writing", text: "Raoden discovers that adding a line for the Chasm lets his Aons function again."},
-      {id: "e66", book: 1, world: "sel", site: "kae", lm: "market", fx: "battle", title: "The Dakhor strike", text: "Dakhor monks burst out of tents in Kae’s market district, and the slaughter Fjorden planned all along begins."},
       {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "Raoden adds the missing Chasm line to the city-scale Aon, restoring Elantris."},
       {id: "e67", book: 1, world: "sel", title: "Hrathen’s choice", text: "Hrathen confronts Dilaf."},
       /* II Mistborn */
@@ -1288,7 +1273,7 @@
       {id: "e75", book: 2, world: "scadrial", site: "kredikshaw", lm: "spires", fx: "battle", title: "Vin and Ruin", text: "Holding Preservation’s power, Vin destroys Ruin’s last Inquisitors and the palace with them, then strikes at Ruin itself."},
       {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed takes up both Shards and restores the world, clearing the ash."},
       /* III Warbreaker */
-      {id: "e13", book: 3, world: "nalthis", site: "courtofgods", lm: "palace", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
+      {id: "e13", book: 3, world: "nalthis", site: "courtofgods", lm: "palace", title: "Siri’s marriage", text: "Siri of Idris arrives at the Court of Gods to marry the God King of Hallandren."},
       {id: "e14", book: 3, world: "nalthis", site: "ttelir", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},
       {id: "e77", book: 3, world: "nalthis", site: "courtofgods", title: "The Lifeless march", text: "After killing Blushweaver and threatening Llarimar, the plotters obtain Lightsong’s command phrase, change it, and order the Lifeless to march on Idris."},
       {id: "e15", book: 3, world: "nalthis", site: "courtofgods", title: "Lightsong’s last day", text: "In captivity, Lightsong gives his Breath to heal Susebron, sacrificing himself to restore the God King’s tongue."},
@@ -1401,14 +1386,12 @@
 
     codex: [
       {id: "shards", title: "Shards", list: [
-        {name: "Adonalsium", first: 1, desc: "The single power behind creation, shattered long before the books into sixteen Shards.", more: [[7, "It was destroyed on Yolen by a group that included Hoid."]]},
         {name: "Honor", books: [4, 5, 8, 9, 12], desc: "Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions.", more: [[12, "Merged with Odium after Dalinar renounced it, forming Retribution."]]},
         {name: "Cultivation", books: [4, 5, 8, 9, 12], desc: "Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly."},
         {name: "Odium", books: [4, 5, 8, 9, 12], desc: "Shard of passion and division, the enemy behind the Desolations, who has killed other Shards.", more: [[7, "He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody."], [9, "His vessel Rayse is killed and Taravangian takes the Shard."], [12, "Becomes Retribution."]]},
         {name: "Preservation", books: [2], desc: "Shard of stability on Scadrial, who made the mists."},
         {name: "Ruin", books: [2], desc: "Shard of entropy, trapped at the Well of Ascension and working through lies."},
         {name: "Harmony", first: 2, books: [2, 6, 10], desc: "Sazed holding both Preservation and Ruin, god of Scadrial’s second era."},
-        {name: "Devotion and Dominion", books: [1, 7], desc: "The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics."},
         {name: "Endowment", books: [3], desc: "Shard of Nalthis, giver of Breath and of the Returned."},
         {name: "Autonomy", books: [7, 10], desc: "Shard of Taldain, who likes many avatars and dislikes rivals.", more: [[8, "Claims the world of Obrodai and raises an avatar there."], [10, "Reaches toward Scadrial in The Lost Metal."], [12, "Patji, the deadly island of First of the Sun, is one of its avatars."]]},
         {name: "Ambition", first: 7, desc: "A Shard mortally wounded in a battle with Odium, and probably Mercy, in the empty space of the Threnodite system. The battle destroyed planets there and still twists the Investiture on Threnody."},
