@@ -282,6 +282,7 @@ export function bindToolbar() {
     .forEach(b => (b.onclick = () => setSimulationSpeed(Number(b.dataset.speed))));
   bindCompactPanels();
   bindToolbarFade();
+  bindTopbarReflow();
 }
 /** Collapsible tool panel and expandable selected-object sheet on compact layouts. */
 function bindCompactPanels() {
@@ -298,6 +299,19 @@ function bindCompactPanels() {
   document.querySelector<HTMLButtonElement>('#info-life-zones')!.onclick = toggleHabitabilityGuides;
   // Phones start with the body palette collapsed so the playfield stays visible.
   if (compactLayout() && innerHeight < 900) setToolsCollapsed(true);
+}
+/** Publishes how much taller than one row the top bar has wrapped (enlarged text), so the controls
+ *  positioned below it move down instead of being overlapped. */
+function bindTopbarReflow() {
+  const bar = document.querySelector<HTMLElement>('.topbar')!;
+  const root = document.documentElement;
+  const update = () => {
+    const extra = compactLayout() ? Math.max(0, Math.ceil(bar.getBoundingClientRect().height) - 44) : 0;
+    root.style.setProperty('--topbar-extra', `${extra}px`);
+  };
+  new ResizeObserver(update).observe(bar);
+  addEventListener('resize', update);
+  update();
 }
 /** Fades the universe toolbar's edges when more buttons are scrolled out of view. */
 function bindToolbarFade() {

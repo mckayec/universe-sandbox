@@ -1850,7 +1850,7 @@ dd {
     font-size: 18px;
   }
   .universe-toolbar {
-    top: calc(max(10px, var(--safe-top)) + 50px);
+    top: calc(max(10px, var(--safe-top)) + 50px + var(--topbar-extra, 0px));
     left: max(12px, var(--safe-left));
     right: max(12px, var(--safe-right));
     height: 54px;
@@ -1868,7 +1868,7 @@ dd {
     max-width: 190px;
   }
   .zoom-controls {
-    top: calc(max(10px, var(--safe-top)) + 112px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     right: max(12px, var(--safe-right));
     grid-template-columns: 44px 44px;
     gap: 6px;
@@ -1896,7 +1896,7 @@ dd {
     transform: none;
   }
   .event-feed {
-    top: calc(max(10px, var(--safe-top)) + 112px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     bottom: auto;
     pointer-events: none;
   }
@@ -1916,7 +1916,7 @@ dd {
     font-size: 11px;
   }
   .guide-card {
-    top: calc(max(10px, var(--safe-top)) + 112px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     padding: 12px 14px;
   }
   .guide-card > span,
@@ -1937,12 +1937,12 @@ dd {
     display: none;
   }
   .attract-badge {
-    top: calc(max(10px, var(--safe-top)) + 112px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     font-size: 11px;
     text-align: center;
   }
   .narration-card {
-    top: calc(max(10px, var(--safe-top)) + 160px);
+    top: calc(max(10px, var(--safe-top)) + 160px + var(--topbar-extra, 0px));
   }
   .narration-card span {
     font-size: 11px;
@@ -1951,7 +1951,7 @@ dd {
     font-size: 12px;
   }
   .science-legend {
-    top: calc(max(10px, var(--safe-top)) + 212px);
+    top: calc(max(10px, var(--safe-top)) + 212px + var(--topbar-extra, 0px));
     flex-wrap: wrap;
     justify-content: flex-start;
     font-size: 11px;
@@ -2308,14 +2308,21 @@ dd {
 /* Enlarged text (browser text scaling up to 200%): controls may shrink or wrap but never leave the screen
    or overlap their neighbours. At default text size these rules change nothing. */
 @media (max-width: 800px), (max-height: 500px) and (pointer: coarse) {
-  /* The object count and clock give up space before any action label does. */
+  /* When enlarged text no longer fits on one row, the top bar wraps instead of clipping: the object count
+     and clock keep their full values, and the controls below move down by the extra height
+     (--topbar-extra, set by bindTopbarReflow). At default text size everything fits on one row. */
   .topbar {
     gap: 6px;
+    row-gap: 4px;
+    height: auto;
+    min-height: 44px;
+    flex-wrap: wrap;
   }
   .sim-state {
-    flex: 0 9999 auto;
-    min-width: 0;
-    overflow: hidden;
+    flex: 0 0 auto;
+    min-height: 32px;
+    align-items: center;
+    white-space: nowrap;
   }
   .top-actions {
     flex: 0 1 auto;
