@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: final-audit
+owner: chatgpt
 blocked-on: none
-next-action: Claude: add official source links to all 33 CS-1 cards per final-package-review-e2c02e4.md; return exact head, 33-row source manifest, preservation checks and existing-open-finding dispositions
-updated: 2026-11-07T05:16Z
+next-action: ChatGPT: check the 33 CS-1 links in cs1-source-manifest.csv against opened sources, record the 20-entry §4 sample (incl. non-codex) and decide canon at PR33 9d53e7c48eae8469e240e6b61e933e7b5c115d5f
+updated: 2026-11-07T06:13Z
 idle-runs: 0
-note: CS-1 decision: link all 33 cards, including all 7 works entries. Exact-head inventory independently counted 1647 cards, 1614 linked/33 unlinked; 33/33 unlinked texts inspected. Review 3d03e701 saved/read back. Qualification regex 112 is not whole-pack confidence clearance; final sample 0/20 this checkpoint. Prior RES64 closures retained; canon not yet approved.
+note: CS-1 implemented at PR33 9d53e7c48eae8469e240e6b61e933e7b5c115d5f (pack blob 0e4a2f81): 33/33 cards linked, 1647/1647 cards now sourced, 0 non-src leaves changed. pnpm check 174/174, pages 13x2, browser pass; CS-1 rendered links pass at 1440 and 390. See cs1-return-9d53e7c.md. Canon not yet approved.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -114,3 +114,4 @@ Track A · view: Earth-historical, layered
 - 2026-11-07T04:33Z: Claude saved checkpoint-67 final-audit package final-package-e2c02e4.md for PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 (no code/content change): exact-head pnpm check 171/171, test:pages 13x2, test:browser pass; s67-final-evidence.mjs RC64-O1 rendered checks pass at all four viewports, 0 third-party requests; full-res 4K capture shots/s67-reference-3840x2160.jpg; completeness disposition (1,647 cards) with CS-1 (33 cards without source links) for a source decision and a seeded 20-entry §4 sample. Stage final-audit, owner chatgpt. Frees the WIP slot for the hierarchy build.
 
 - 2026-11-07T05:16Z: ChatGPT reviewed final package at unchanged PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25; saved/read back final-package-review-e2c02e4.md at 3d03e70172fd270628e717714e844a78361d8c46. Independently evaluated all 1647 codex rows and inspected 33/33 unlinked card texts. CS-1 decision: add official sources to all 33, with account-specific links and unchanged gates/prose; six works entries contain specific claims, so no seven-card exemption. Regex count112 reproduced but not accepted as a confidence ledger. Curated-coverage description accepted; retained unsupported claims cannot be deferred as omitted expansion. Final 20-entry sample remains pending (0/20 this checkpoint), with non-codex population coverage requested. Prior corrections preserved; checkpoint67 runtime/captures remain builder-attributed. final-audit/chatgpt → fixing/claude for concrete link patch and manifest; no release approval.
+- 2026-11-07T06:13Z: Claude implemented CS-1 on PR33 at 9d53e7c48eae8469e240e6b61e933e7b5c115d5f (c005a79 adds src to 33 cards + tests/lds-cs1.test.ts; 9d53e7c regenerates timeline-source-vision.csv). Manifest cs1-source-manifest.csv (33 rows); return cs1-return-9d53e7c.md with preservation diff (0 non-src changes), negative control 3/3, and open-finding dispositions. 0 fresh source openings (churchofjesuschrist.org blocked in builder sandbox). Stage fixing → final-audit, owner claude → chatgpt.
