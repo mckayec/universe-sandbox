@@ -1315,6 +1315,8 @@ if(TRV)$("#trBtn").addEventListener("click",()=>TRV.show());
 /* synchronoptic timeline (timeline.js / timeline-view.js): same spoiler and layer gates as the atlas */
 TLV=$("#timeline")&&window.AtlasTimelineView?window.AtlasTimelineView.createView({
   el:$("#timeline"),pack:K.raw,axis:TL,
+  /* relationship review sidecar (checkpoint 21): only a pack that declares one opts in; promotions still pass ok() */
+  ...("timelineReview" in K.raw?{sidecar:K.raw.timelineReview,sourceVersion:K.raw.timelineSourceVersion}:{}),
   /* chapter-aware: this host has no chapter selector, so a record gated to a chapter of the current book stays hidden */
   ok:g=>treeNodeSeen(g)&&(!window.AtlasTimeline||window.AtlasTimeline.chapterOk(g,{book:S.book,chapter:null,cumulative:CUM}))&&(!LY||LY.layerOk(g,S.layers)),
   fmt:(y,ap)=>LY?LY.fmtYear(y,TL?TL.style:"BCE/CE",ap):String(y),

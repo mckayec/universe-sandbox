@@ -595,6 +595,44 @@
     });
   }
 
+  /* ---------- host loading of a review sidecar (checkpoint 21) ----------
+     The host passes the sidecar file it shipped (or nothing) and the source version it declares for the pack it is
+     showing. The sidecar never supplies the model's source version: a host that declares none promotes nothing.
+     Every outcome reconciles the model (applyEdgeSources is always called), so a previous promotion can never survive
+     a missing, invalid, stale or changed sidecar. Statuses:
+       absent   no sidecar: every relationship stays unsourced;
+       invalid  wrong kind, review version or pack, or rows that are not a map: nothing is read from it;
+       stale    the sidecar's manifest names another source version than the host's: nothing is read from it;
+       ok       rows are applied; a row whose binding no longer matches the current edge is listed in `changed`
+                and is rejected by acceptance() like any other stale row.
+     Recommendations are never states: a `proposed` row with recommendation `accept` stays rejected. */
+  const SIDECAR_KIND = 'atlas-timeline-review-sidecar';
+  function sidecarProblem(sc, packId) {
+    if (!sc || typeof sc !== 'object') return 'sidecar is not an object';
+    if (sc.kind !== SIDECAR_KIND) return 'sidecar kind is not ' + SIDECAR_KIND;
+    if (sc.reviewVersion !== REVIEW_VERSION) return 'sidecar review version is not ' + REVIEW_VERSION;
+    if (packId != null && sc.pack !== packId) return 'sidecar is for another pack';
+    if (!sc.rows || typeof sc.rows !== 'object' || Array.isArray(sc.rows)) return 'sidecar rows are not a map';
+    if (!sc.manifest || !filled(sc.manifest.sourceVersion)) return 'sidecar manifest names no source version';
+    return null;
+  }
+  function loadSidecar(model, sidecar, host) {
+    const h = host || {};
+    model.sourceVersion = filled(h.sourceVersion) ? h.sourceVersion : null;
+    const out = (status, why, res, changed) =>
+      Object.assign({ status, why: why || null, changed: changed || [] }, res);
+    if (sidecar == null) return out('absent', null, applyEdgeSources(model, {}));
+    const bad = sidecarProblem(sidecar, h.packId);
+    if (bad) return out('invalid', bad, applyEdgeSources(model, {}));
+    if (sidecar.manifest.sourceVersion !== model.sourceVersion)
+      return out('stale', 'sidecar source version is not the current source version', applyEdgeSources(model, {}));
+    const changed = Object.keys(sidecar.rows).filter(id => {
+      const row = sidecar.rows[id];
+      return !row || row.binding !== bindingFor(model, id, row);
+    });
+    return out('ok', null, applyEdgeSources(model, sidecar.rows), changed);
+  }
+
   root.AtlasTimelineGrounding = {
     REVIEW_VERSION,
     parseLocator,
@@ -609,5 +647,6 @@
     supportFingerprint,
     provenanceOf,
     ledger,
+    loadSidecar,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

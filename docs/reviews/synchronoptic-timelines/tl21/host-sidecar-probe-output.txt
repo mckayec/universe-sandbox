@@ -1,0 +1,10 @@
+pack blob 3d279a757303e6ae7e80c358a6f6e041269eb82c
+host sourceVersion lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c
+manifest sourceVersion lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c
+current host version: status=ok promoted=0 rejected=12 revoked=0 changed=0 groundedEdges=0
+  11 × review state is proposed, not accepted
+  1 × to evidence is not cited by that card
+absent sidecar: status=absent promoted=0 rejected=0 revoked=0 changed=0 groundedEdges=0
+host declares no version: status=stale promoted=0 rejected=0 revoked=0 changed=0 groundedEdges=0 why="sidecar source version is not the current source version"
+host version differs (stale): status=stale promoted=0 rejected=0 revoked=0 changed=0 groundedEdges=0 why="sidecar source version is not the current source version"
+other pack: status=invalid promoted=0 rejected=0 revoked=0 changed=0 groundedEdges=0 why="sidecar is for another pack"

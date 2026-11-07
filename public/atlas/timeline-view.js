@@ -68,11 +68,19 @@
     context: 'Context',
   };
 
-  /* env: {el, pack, axis, ok(gate), fmt(year, approx), onChange(), colorFor(layerId)}; `model` (optional) is an
+  /* env: {el, pack, axis, ok(gate), fmt(year, approx), onChange(), colorFor(layerId), sidecar?, sourceVersion?}; `model` (optional) is an
      already-adapted model, used only by probes until another adapter is wired to a host */
   function createView(env) {
     const model = env.model || TLM.adaptTree(env.pack);
     if (!model.records.length || !env.el) return null;
+    /* a host that opts in (passes `sidecar`, even null) reconciles relationship sources against its review sidecar
+       before anything is drawn (timeline-grounding.js loadSidecar, checkpoint 21); hosts that do not pass it are
+       unchanged. Promoted sources still pass through visible(), so the atlas's read-state gate always applies. */
+    const G = root.AtlasTimelineGrounding;
+    const grounding =
+      'sidecar' in env && G
+        ? G.loadSidecar(model, env.sidecar, { packId: env.pack && env.pack.id, sourceVersion: env.sourceVersion })
+        : null;
     const el = env.el;
     const axis = env.axis || {};
     let open = false;
@@ -1133,6 +1141,7 @@
     }
     return {
       model,
+      grounding,
       show,
       close,
       refresh() {
