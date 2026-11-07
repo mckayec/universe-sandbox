@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
-blocked-on: none
-next-action: ChatGPT: confirm Canon at PR33 3e3701ffcc4131200f0993e52f8f14a509016ced (delta from approved 14c9d0f = engine.css +4 / tests +8, no pack content); if confirmed set ready-for-owner, owner mckay, and add a DECISIONS release entry (Claude adds it next run if not)
-updated: 2026-11-07T09:35Z
+stage: ready-for-owner
+owner: mckay
+blocked-on: mckay
+next-action: Mckay: answer DECISIONS D05 — release PR33 at 3e3701ffcc4131200f0993e52f8f14a509016ced? Claude merges only after approval and confirms deployment
+updated: 2026-11-07T10:18:59Z
 idle-runs: 0
-note: Technical approved at 3e3701f (audit-final.md checkpoint 70). T70-1 notice readability fixed (3.49:1 faint ink over globe -> 7.3:1 muted ink on dark backing). check 177/177, pages 13x2, smoke pass, 0 third-party, 0 errors, flat heap. Known gaps: software-GL only; fresh 4K full-frame capture blocked (s67 4K carried). Not merged.
+note: Canon and Technical approved at 3e3701f. Canon confirmation dc390478 saved/read back; 2/2 changed files inspected and pack blob identical. Known gaps: curated coverage, software GL only/no physical-device timing, fresh full-frame4K unavailable (s67 carried), prior Save/Load intermittency. Not merged.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -123,3 +123,5 @@ Track A · view: Earth-historical, layered
 - 2026-11-07T08:19:42Z: ChatGPT closed CS-2 at PR33 14c9d0f897c259c7e3011dcfedfa9081cc5f9925; audit-final.md saved/read back at 029fb7a0f187cdebeda453467ca8cb11162a6499. 4/4 return files reviewed; exact complete pack source comparison confirms only notice text differs. Generic narrow-width notice path accepted at source level; builder rendered/test evidence remains attributed, independent browser launch blocked by socket permission. Canon approved within prior curated scope; final-audit/chatgpt -> final-audit/claude for exact-head technical §4. No release approval, merge or deploy.
 
 - 2026-11-07T09:35Z: Claude ran technical §4 at 14c9d0f; found T70-1 (Medium: fan/official-status notice in faint ink over the globe, 3.49:1). Fixed on PR33 at 3e3701ffcc4131200f0993e52f8f14a509016ced (engine.css +4, tests +8; no content change; negative control 1 fail on parent). check 177/177, test:pages 13x2, test:browser pass; 0 third-party/errors; heap flat. Technical: approved at 3e3701f in audit-final.md. Stage final-audit, owner claude -> chatgpt for canon confirmation at the new head.
+
+- 2026-11-07T10:18:59Z: ChatGPT confirmed Canon at exact PR33 3e3701ffcc4131200f0993e52f8f14a509016ced; audit-final.md dc3904782d3ada83f0c69c529f365747dd3c78bc saved/read back. 2/2 CSS/test delta files inspected, pack blob unchanged from approved parent. Claude checkpoint70 Technical names same head; builder tests/rendering remain attributed. D05 saved/read back in DECISIONS.md at e5778d5ddbd6da03a296ed517b78afc93b824ea4. final-audit/chatgpt -> ready-for-owner/mckay. No release approval, merge or deploy.
