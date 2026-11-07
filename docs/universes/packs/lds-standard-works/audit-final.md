@@ -181,3 +181,37 @@ The preceding independent 33/33 source-card checks,20/20 sample,26/26 anchor dis
 Hand to Claude for technical §4 at this exact revision. Mckay release approval remains required after both sign-offs. No code, PR branch, merge or deployment changed.
 
 **Canon: approved** at **14c9d0f897c259c7e3011dcfedfa9081cc5f9925**, within the recorded curated scope and confidence dispositions.
+
+---
+
+# Technical §4 — checkpoint 70, 2026-11-07
+
+Claude (technical) · PR33 `pack/lds-standard-works`. Audited the canon-approved head **14c9d0f897c259c7e3011dcfedfa9081cc5f9925**, found one readability blocker in the required notice, fixed it, and approve the fixed head **3e3701ffcc4131200f0993e52f8f14a509016ced** (parent 14c9d0f). Evidence script `supplementary-build/s70-technical.mjs`; raw results `supplementary-build/s70/` (before-* = 14c9d0f, after-* = 3e3701f).
+
+## Finding T70-1 (Medium) — required notice hard to read (found at 14c9d0f, resolved at 3e3701f)
+
+- Desktop (1440x900, 1280x800): the Chronicle credits strip carrying the fan/official-status notice is drawn in `--faint` ink directly over the globe; the first words sit on the bright land/fade and are effectively unreadable ([before](shots/s70-before-1440.jpg)). Measured ink contrast against the panel colour 3.49:1 at 9.5 px.
+- Phone (390x844): the CS-2 dossier notice is visible and unclipped, but at 3.49:1, 10 px — below 4.5:1 for small text.
+- **Resolution (3e3701f):** generic engine CSS, +4 lines: `.chron-head .credits` gets `--muted` ink and a dark rgba(7,9,13,.78) backing with padding; `.srcnote.fan` gets `--muted` ink. Contrast now **7.3:1** on both surfaces, no clipping ([desktop strip](shots/s70-1440-notice-strip.png), [desktop](shots/s70-1440.jpg), [phone](shots/s70-390-notice.jpg)). Pinned by a new test in `tests/lds-cs2.test.ts`; negative control: that test fails on the parent CSS (pass 2 / fail 1), passes at head. **No pack/content change** — the delta is `public/atlas/engine.css` (+4) and `tests/lds-cs2.test.ts` (+8) only; all other packs get the same, more readable notice strip.
+
+## §4 technical checklist (at 3e3701f unless stated)
+
+| Check | Result |
+| --- | --- |
+| Atlas validator (`validatePacks`) | lds-standard-works: 1 world, 24 events, 34 sites, 0 issues, 0 warnings, no world without sites (14c9d0f; 3e3701f has no pack change) |
+| `pnpm check` | pass — format, tsc + build, **177/177** tests, check:dist 114 files OK, no third-party loads |
+| `pnpm test:pages` | pass — 13 pages x 2 viewports under /universe-sandbox/ |
+| `pnpm test:browser` | pass — desktop construction, persistence, controls, mobile layout |
+| Third-party requests / page + console errors | 0 / 0 at 1440, 1280 (14c9d0f) and 1440, 390 (both heads); GPU-driver noise filtered |
+| Back link | `← Gravity Lab` → `../`, visible at every viewport |
+| Fan-work / official-status notice | exact CS-2 text; desktop credits strip and ≤1180 px dossier notice both visible, unclipped, 7.3:1 |
+| Memory across navigation | JS heap after GC flat (6 MB → 6 MB) over 4 galaxy ↔ Earth cycles at 1440, 1280 and 390 |
+| Screenshots 1440x900, 390x844 | captured and inspected at 3e3701f; 1280x800 at 14c9d0f (same desktop rules, delta does not branch on width above 1180 px) |
+| 3840x2160 | page reached ready and notice measured, but the full-frame 4K screenshot timed out under software GL in this sandbox (known capability limit, see checkpoint 53/54). Carried evidence: full-res 4K capture `shots/s67-reference-3840x2160.jpg` at e2c02e4; the only rendering delta since then is the credits strip CSS above. **Known gap**, not a blocker. |
+| Sites / events / journeys | unchanged since the s65–s67 rendered checks (no pack data change except CS-1 `src` and CS-2 notice text) |
+
+## Known gaps (carried to the release decision)
+
+Software-GL only (no physical phone or real GPU timing); fresh 4K full-frame capture blocked by sandbox software GL (prior 4K capture carried); pre-existing simulator Save/Load smoke-timeout history (smoke passed this run); curated coverage per the CS-2 notice and canon scope above.
+
+**Technical: approved** at **3e3701ffcc4131200f0993e52f8f14a509016ced**. Canon is approved at its parent 14c9d0f; because the head moved (CSS + test only, no content), ChatGPT must confirm Canon at 3e3701f before `ready-for-owner`. No merge or deploy.
