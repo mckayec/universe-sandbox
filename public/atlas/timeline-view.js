@@ -69,7 +69,7 @@
   };
 
   /* env: {el, pack, axis, ok(gate), fmt(year, approx), onChange(), colorFor(layerId), sidecar?, sourceVersion?}; `model` (optional) is an
-     already-adapted model, used only by probes until another adapter is wired to a host */
+     already-adapted model (the engine passes adapterFor(pack)(pack); probes pass fixtures) */
   function createView(env) {
     const model = env.model || TLM.adaptTree(env.pack);
     if (!model.records.length || !env.el) return null;
@@ -83,6 +83,8 @@
         : null;
     const el = env.el;
     const axis = env.axis || {};
+    /* the reconciliation outcome, readable by probes and reviewers without a global (checkpoint 22) */
+    if (grounding) el.dataset.tlGrounding = grounding.status + ' promoted=' + grounding.promoted.length;
     let open = false;
     let mode = 'chart';
     let zoom = 0;
@@ -641,7 +643,13 @@
       const r = sel && V.byId.get(sel);
       if (!r)
         return (
-          '<h3 class="tl-ov" tabindex="-1">Overview</h3><p class="tl-intro">Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. <span class="tl-undated">Brackets in the left gutter join related traditions; they are not dated.</span> Pick any mark or row for its source wording.</p>' +
+          '<h3 class="tl-ov" tabindex="-1">Overview</h3><p class="tl-intro">' +
+          (model.intro
+            ? ESC(model.intro)
+            : 'Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events.') +
+          ' <span class="tl-undated">Brackets in the left gutter join related ' +
+          ESC(model.relatedWord || 'traditions') +
+          '; they are not dated.</span> Pick any mark or row for its source wording.</p>' +
           coverageHtml()
         );
       const w = r.when;

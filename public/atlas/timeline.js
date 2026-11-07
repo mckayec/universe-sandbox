@@ -496,6 +496,10 @@
       lanes,
       journeys: [],
       omitted: { travelLegs: omittedLegs, danglingLinks },
+      /* overview wording for this host (the tree adapter's default speaks of traditions) — checkpoint 22 */
+      intro:
+        'The first lanes hold dated church-history events, places with years given and dated journeys; then one lane per book of scripture holds its undated records. Diamonds are dated events; bars are year spans.',
+      relatedWord: 'records',
     };
   }
   /* which adapter a pack uses; null = the pack has no timeline adapter (the view is not offered) */

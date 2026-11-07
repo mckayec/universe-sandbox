@@ -431,6 +431,8 @@ function buildShell(K){
   const stops=T.chromeStops||[[0,"#fff7e2"],[.45,"#e8cd8a"],[.68,"#9a7432"],[1,"#f4e2b2"]];
   const defs='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">'+stops.map(s=>'<stop offset="'+s[0]+'" stop-color="'+s[1]+'"/>').join("")+'</linearGradient></defs>';
   const sig=T.sigil||DEF_SIGIL,ssig=T.splashSigil||sig;const TT=M.title.toUpperCase();
+  /* timeline adapter for this pack (timeline.js adapterFor): tree packs and the Standard Works pack; null = no Timeline button */
+  const TLA=window.AtlasTimeline&&window.AtlasTimelineView?window.AtlasTimeline.adapterFor(K.raw):null;
   const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");
   app.innerHTML=
 '<canvas id="c" aria-label="'+esc(M.canvasLabel||("Three-dimensional map of the Milky Way and the worlds of "+M.series))+'"></canvas>'+
@@ -444,7 +446,7 @@ function buildShell(K){
   '<button class="btn" id="galBtn">'+esc(U.galaxyButton)+'</button><button class="btn" id="webBtn">'+esc(U.homeButton)+'</button>'+
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
   (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+
-  (K.raw.tree&&window.AtlasTimelineView?'<button class="btn" id="tlBtn" aria-haspopup="dialog">Timeline</button>':"")+'</div></header>'+
+  (TLA?'<button class="btn" id="tlBtn" aria-haspopup="dialog">Timeline</button>':"")+'</div></header>'+
 '<nav id="crumbs" aria-label="Location"></nav>'+
 (K.raw.realms?'<div class="seg" id="realms" role="group" aria-label="Realm">'+["physical","cognitive","spiritual"].filter(r=>r==="physical"||K.raw.realms[r]).map(r=>{const R=K.raw.realms[r]||{};
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
@@ -455,7 +457,7 @@ function buildShell(K){
   '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
   '<div class="cx-tabs" id="cxTabs"></div><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
-(K.raw.tree?'<div id="tree" hidden></div>':"")+(K.raw.tree&&window.AtlasTimelineView?'<div id="timeline" hidden></div>':"")+
+(K.raw.tree?'<div id="tree" hidden></div>':"")+(TLA?'<div id="timeline" hidden></div>':"")+
 '<div id="splash"><div><svg width="'+(T.splashSize||78)+'" height="'+(T.splashSize||78)+'" viewBox="0 0 48 48" aria-hidden="true">'+ssig+'</svg><h1 class="chrome">'+esc(TT)+'</h1>'+
   (M.splash?'<p>'+esc(M.splash)+'</p>':"")+'<div class="ld" id="splashLd">Charting the galaxy</div></div></div>';
   document.body.appendChild(app);
@@ -1315,6 +1317,8 @@ if(TRV)$("#trBtn").addEventListener("click",()=>TRV.show());
 /* synchronoptic timeline (timeline.js / timeline-view.js): same spoiler and layer gates as the atlas */
 TLV=$("#timeline")&&window.AtlasTimelineView?window.AtlasTimelineView.createView({
   el:$("#timeline"),pack:K.raw,axis:TL,
+  /* the pack's own adapter (checkpoint 22): Standard Works records keep their book/layer/chapter gates below */
+  model:window.AtlasTimeline.adapterFor(K.raw)(K.raw),
   /* relationship review sidecar (checkpoint 21): only a pack that declares one opts in; promotions still pass ok() */
   ...("timelineReview" in K.raw?{sidecar:K.raw.timelineReview,sourceVersion:K.raw.timelineSourceVersion}:{}),
   /* chapter-aware: this host has no chapter selector, so a record gated to a chapter of the current book stays hidden */
