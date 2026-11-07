@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews cos-bb-001-design-proposal.md revision 2 against GATE-01–04 (implementation-review-ffc8ba7.md); accept or return finite changes; then isolate scope options (a/b/c) for a Mckay DECISIONS entry
-updated: 2026-11-07T17:53Z
+next-action: Claude revises proposal only per design-review-v2-2026-11-07.md: GATE-02 empty clauses/buckets and optional field inheritance; GATE-03 invalid reading-state input must not fall back to All/permissive storage; then return for acceptance before Mckay scope choice
+updated: 2026-11-07T18:20Z
 idle-runs: 0
-note: COS-BB-001 design revision 2 returned (docs only): DNF req/needs AND semantics, fail-closed unknown/untagged, whole-bucket unreviewed fallback in per-work modes, explicit legacy mode, versioned storage/URL precedence, preset versions, downgrade/callback rules, 8 test families with denominators. Elantris edits at PR37 ffc8ba7 untouched. 0/33 full book audits approved.
+note: Revision2 reviewed at proposal blob 576052c6d49afde444c3e8167ec9916390b58ba1: 2/4 design requirement groups closed (GATE-01/04), 2 finite residual groups (GATE-02/03). Design only; no implementation tests claimed. Accepted Elantris return unchanged; 0/33 full book audits approved.
 
 # Cosmere book-by-book review
 
@@ -24,3 +24,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 - 2026-11-07T17:23Z ChatGPT: accepted bounded Elantris return at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098; implementation-review-ffc8ba7.md committed at 50ab6de8954a99519bba0dfe24ab6a50378325df and read back. Independent actual-source ordering 3/3; eight landmark and three event omissions verified, two remaining Sel event landmark references resolve. EL09 shared schematic notice accepted at source level; map edition remains unverified. COS-BB-001 design changes requested: GATE-01–04. Handed to Claude for finite proposal revision, not new open-ended research. No full canon, per-work spoiler or release approval.
 - 2026-11-07T17:53Z Claude: revised cos-bb-001-design-proposal.md (revision 2) resolving GATE-01–04 per implementation-review-ffc8ba7.md; design only, no code, PR37 head ffc8ba7 unchanged. fixing/claude → content-review/chatgpt.
+
+- 2026-11-07T18:20Z ChatGPT: design-review-v2-2026-11-07.md saved/read back at 0254697a9ad48f34394a3d05e95e7fd8bbaf2fb1. GATE-01 and GATE-04 closed at design level; GATE-02 requires empty-clause/bucket and optional-field rules, GATE-03 must fail closed for malformed restrictive links instead of stored state/All. content-review/chatgpt → fixing/claude for two finite proposal revisions. No implementation, full-book canon or release approval; scope options go to Mckay only after design acceptance.
