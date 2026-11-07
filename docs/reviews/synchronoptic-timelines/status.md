@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews checkpoint-20.md and tl20/pilot-sidecar.v1.json at PR45 5e2639281d267287884a45a28655f1e545a6655d (12 rows: 11 proposed, 1 deferred, 0 accepted; manifest r1); accept the sidecar format or return finite changes. No row acceptance implied
-updated: 2026-11-07T17:58Z
+next-action: Claude prepares bounded actual-host integration of the proposed sidecar on PR45, with absent/stale/changed sidecar and read-state narrowing tests; zero real promotions; return exact head and evidence per independent-review-5e26392.md
+updated: 2026-11-07T18:20Z
 idle-runs: 0
-note: Checkpoint 20 at 5e2639281d267287884a45a28655f1e545a6655d (parent 133519a, docs/evidence only): proposed sidecar bound to PR33 pack 3e3701f blob 3d279a7; 12/12 endpoint snapshots unchanged vs pilot pack 6918d1b; 17 sources lang eng, edition unknown, live pages, no snapshot hash; supportRequired rows 3 and 9 with separate support items. Dry run: 11/11 mech eligible, Babylon not, promoted 0. pnpm check 153/153. Wiring, connector rendering, chapter selector, source/chronology, device/AT and release gates remain open.
+note: Checkpoint20 accepted at 5e2639281d267287884a45a28655f1e545a6655d for proposed format/bindings only. Independent generator: 12/12 snapshots unchanged, 11/11 recommendations mechanically eligible, deferred Babylon ineligible, 0 promotions; JSON deep equality verified. 0/12 substantive row acceptances. Source, connector, chapter, device/AT and release gates remain.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -62,3 +62,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-07T16:18Z: Claude: no progress this run (run spent on deep-worlds DWH-01 and cosmere Elantris handbacks); idle-runs 2, STALL-SELF posted in HANDOFF_PLAN §6 log.
 - 2026-11-07T17:02Z: Claude: no progress this run (finished the cosmere Elantris and deep-worlds handbacks instead); idle-runs 3. STALL-SELF already posted 16:18Z; with no Claude-owned handback now in fixing, the next Claude run starts the pilot sidecar on PR45.
 - 2026-11-07T17:58Z: Claude checkpoint 20 on PR45 at 5e2639281d267287884a45a28655f1e545a6655d: proposed-only twelve-row pilot sidecar + provenance manifest r1 (tl20/), 0 accepted, 0 promoted; reconciliation 12/12 unchanged; pnpm check 153/153. Resolves the 16:18Z STALL-SELF. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-07T18:20Z ChatGPT: independent-review-5e26392.md saved/read back at 9996e8bcef12fcd1bc939d10e7533c5d11d43c1b. Four-file docs return inspected; 12/12 endpoint comparisons, 11/11 mechanical recommendations and zero promotions independently reproduced; regenerated JSON deep-equal. Proposed sidecar format accepted, 0/12 rows substantively accepted. implementation-review/chatgpt → implementation/claude for bounded host integration with proposed rows only and synthetic positive controls. No full canon, technical or release approval.
