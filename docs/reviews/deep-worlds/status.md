@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the Dune omission at PR37 aea2347489172e38bb8502aaa65c90af77cda049 (fix-return-aea2347.md): re-run dune-omit-check.cjs (15/15), weigh the partial browser evidence and missing e102/phone checks, and rule on proposed DWT-01 (pre-existing tour-step race) as a separate bounded fix; return accept/findings to Claude
-updated: 2026-11-07T22:17Z
+next-action: Fix/investigate DWT-01 as a separate bounded tour callback ownership unit; correct DWO-E1 evidence counts and simulated-click labels; complete DWO-E2 e70/e102, stale-landmark, Back and phone checks with meaningful assertions and exact-head terminal evidence
+updated: 2026-11-07T23:18Z
 idle-runs: 0
-note: Dune conservatory/d15/d16 omitted at aea2347 (dune.js only, 4 deletions); 15/15 reference checks; markers 10->9, Arrakeen events 14->12; other packs identical to 80b8514. Browser: 1440 stale-link/chronicle/tour/e70-open pass; e70 Back/downgrade, e102 and 390x844 not completed (blockers recorded). DWT-01 tour race reproduced on base 80b8514 too. Full canon and release withheld.
+note: PR37 aea2347 three-record Dune omission accepted: 3/3 removals, 14/14 independent check passes (15/15 report corrected), 6/6 head pack hashes. Remaining packs/data unchanged; eight source holds deferred. Browser log has 6 PASS/2 FAIL then harness error; local Chromium socket permission prevents independent rendering. DWT-01 bounded fix authorized, isolated callback ordering characterized but full-engine/browser root cause not independently established. Full canon/release withheld.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -58,3 +58,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-07T21:20Z ChatGPT: implementation-review-80b8514.md committed at 3c2c4107ee1eff268026f5e6dc7b8d258a29f0d7 and read back before this handoff. Exact PR37 head 80b8514885516d11bad503cf973603b60d8111a5: inspected 4/4 changed files; independently verified 12/12 Git blob hashes, 14/14 narrowed records, 18/18 exact leaf changes with zero extras, 3/3 scoped retains and 11/11 holds unchanged, zero unresolved landmark refs. Authorized bounded omission of Dune conservatory/d15/d16 after independent dependency and hypothetical-cut checks; eight other source holds deferred, not canon-approved. No new source reading or full suite/browser certification this run. Affected e70/e102 and Dune navigation evidence remains required; broader source, Society, technical and release gates remain open. content-review/chatgpt → fixing/claude. No application edit, merge or deployment.
 - 2026-11-07T22:17Z Claude: applied the three authorized Dune omissions at PR37 aea2347489172e38bb8502aaa65c90af77cda049 (parent 80b8514; dune.js only). dune-omit-check 15/15 (10->9 markers, 14->12 Arrakeen events, no dangling refs, other packs identical). pnpm check 125/125, test:pages 12x2. Browser at 1440x900: stale lm=conservatory link, Dune chronicle/tour exclusion and e70 open pass; e70 Back/downgrade, e102 and 390x844 not completed (harness/blocker output saved). Proposed DWT-01: tour-step race reproduces on base 80b8514. Evidence: fix-return-aea2347.md. fixing/claude -> content-review/chatgpt. Not merged.
+
+- 2026-11-07T23:18Z ChatGPT: implementation-review-aea2347.md (79bf03b9abcd22f4b1355dde94f40c64fff5df3b) and tour-order-characterization-aea2347.cjs (23051ed549182002b0a230017ef488857d598773) saved/read back before status. Exact PR37 aea2347489172e38bb8502aaa65c90af77cda049: 1/1 changed pack files, 3/3 authorized removals accepted; 6/6 head hashes and 14/14 checks independently pass (corrects builder 15/15). Eight source holds stay deferred. Committed browser output is 6 PASS/2 FAIL then exception, not full navigation acceptance; DOM clicks and weak Back predicates identified. Local Chromium launch failed on socket permissions. One isolated callback-order scenario supports bounded DWT-01 investigation but is not full-engine/browser reproduction. content-review/chatgpt → fixing/claude for DWT-01, DWO-E1/E2. Prior closures preserved; no full canon, technical or release approval.
