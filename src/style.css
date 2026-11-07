@@ -1867,14 +1867,6 @@ dd {
     min-width: 150px;
     max-width: 190px;
   }
-  /* Undo and Redo come first on small screens so recovery after Clear all is visible without scrolling. */
-  #universe-home {
-    order: -2;
-  }
-  #undo,
-  #redo {
-    order: -1;
-  }
   .zoom-controls {
     top: calc(max(10px, var(--safe-top)) + 112px);
     right: max(12px, var(--safe-right));
@@ -2316,8 +2308,12 @@ dd {
 /* Enlarged text (browser text scaling up to 200%): controls may shrink or wrap but never leave the screen
    or overlap their neighbours. At default text size these rules change nothing. */
 @media (max-width: 800px), (max-height: 500px) and (pointer: coarse) {
+  /* The object count and clock give up space before any action label does. */
+  .topbar {
+    gap: 6px;
+  }
   .sim-state {
-    flex: 0 1 auto;
+    flex: 0 9999 auto;
     min-width: 0;
     overflow: hidden;
   }
@@ -2325,12 +2321,18 @@ dd {
     flex: 0 1 auto;
     min-width: 0;
   }
+  /* Labels wrap (breaking inside a word only when one word cannot fit) so the full text stays visible. */
   .top-actions button {
     flex: 0 1 auto;
     min-width: 44px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    height: auto;
+    padding: 2px 6px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.05;
+  }
+  .top-actions #fullscreen-button {
+    padding: 0 10px;
   }
   .zoom-controls {
     grid-template-columns: minmax(44px, auto) minmax(44px, auto);
