@@ -978,7 +978,7 @@
        short: "Hot, dusty and barren.", facts: [["Order", "1st from Mashe"]],
        gfx: {type: "desert", sea: .05, pal: ["#3a2818", "#5a3a20", "#b08458", "#c09468", "#a07a50", "#e8d8c0"], clouds: .3, cloudCol: "#c8a878", atmo: "#e0b080", atmoK: .9, sw: "#c09468"}},
 
-      {id: "sel", name: "Sel", aka: ["Seol"], realms: {cognitive: {name: "Expanse of the Densities", style: "plasma", c1: "#ff6a2a", c2: "#7a2ab8", c3: "#200a10", blurb: "Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it."}}, group: "selish", books: [1, 7], first: 1, major: true, status: "2nd from Mashe · Shardworld of Devotion and Dominion",
+      {id: "sel", name: "Sel", aka: ["Seol"], realms: {cognitive: {name: "Expanse of the Densities", style: "plasma", c1: "#ff6a2a", c2: "#7a2ab8", c3: "#200a10", blurb: "Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it."}}, group: "selish", books: [1, 7], first: 1, major: true, status: "World of Elantris",
        star: {name: "Mashe", col: "#fff6e0"}, map: orb(C.sel, .22, 30), distText: ORR, hero: "elantris",
        blurb: "Once the city of Elantris shone, and anyone the Shaod took became a near-immortal with silver skin and power drawn from the Aons, the symbols of their writing. Ten years ago it all failed. Now Elantris is a rotting prison where the newly taken are thrown, Arelon is ruled by a merchant king, and the empire of Fjorden, which holds most of the continent, sends priests to convert what is left.",
        short: "The world of Elantris and The Emperor’s Soul.",
@@ -990,7 +990,7 @@
        sites: [
          {id: "elantris", name: "Elantris", lat: 33.3, lon: -41.6, books: [1, 7], desc: "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."},
          {id: "kae", name: "Kae", lat: 33.6, lon: -41.0, books: [1], desc: "The eastern gate city beside Elantris, on the Aredel’s mouth and Arelon’s best northern harbour. It became the capital after the Reod. Elantris and its four gate cities (Ake, Ato, Kae and Toa) together form the Aon Rao."},
-         {id: "pool", name: "The Pool (Devotion’s perpendicularity)", lat: 32.6, lon: -40.1, books: [1], desc: "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm."},
+         {id: "pool", name: "The Pool", lat: 32.6, lon: -40.1, books: [1], desc: "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks."},
          {id: "kondeon", name: "Kondeon", lat: 30.0, lon: -45.5, books: [1], desc: "A town on the Aredel River, about halfway between Elantris and Lake Alonoe."},
          {id: "iald", name: "Iald", lat: 32.6, lon: -56.5, books: [1], desc: "Arelon’s second city under King Iadon, on Duke Roial’s lands. Which coast it is on is not stated; this placement is ours."},
          {id: "alonoe", name: "Lake Alonoe", lat: 27.0, lon: -50.0, sea: true, books: [1], desc: "The lake near the centre of Arelon, fed by rivers from the south-west and drained north-east by the Aredel. It is the dot in Aon Aon."},
@@ -1271,7 +1271,7 @@
       {id: "e4", book: 1, world: "sel", title: "The land is part of the writing", text: "Raoden discovers that adding a line for the Chasm lets his Aons function again."},
       {id: "e66", book: 1, world: "sel", site: "kae", lm: "market", fx: "battle", title: "The Dakhor strike", text: "Dakhor monks burst out of tents in Kae’s market district, and the slaughter Fjorden planned all along begins."},
       {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "Raoden adds the missing Chasm line to the city-scale Aon, restoring Elantris."},
-      {id: "e67", book: 1, world: "sel", site: "teoras", lm: "streets", fx: "battle", title: "Hrathen’s choice", text: "In Teoras Hrathen turns against Dilaf to save Sarene. Struck down in the streets, he still kills Dilaf before he dies."},
+      {id: "e67", book: 1, world: "sel", title: "Hrathen’s choice", text: "Hrathen confronts Dilaf."},
       /* II Mistborn */
       {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn."},
       {id: "e68", book: 2, world: "scadrial", site: "fellise", lm: "renoux", title: "Valette Renoux", text: "Vin learns to pass as a young noblewoman and goes to the balls in Luthadel’s keeps, where she meets Elend Venture."},
