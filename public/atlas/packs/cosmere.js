@@ -315,7 +315,7 @@
         ]},
       yeddaw: {/* layout schematic */ kind: "city", arch: "desert", size: "medium", tod: "day", weather: "clear",
         landmarks: [
-          {id: "gate", name: "The refugee entrance", kind: "gate", at: [-.7, -.6], books: [7], desc: "A guarded entrance with a long line of people waiting to enter; Lift sneaks toward the front."},
+          {id: "gate", name: "The guarded entrance", kind: "gate", at: [-.7, -.6], books: [7], desc: "A guarded entrance with a long line of people waiting to enter; Lift sneaks toward the front."},
           {id: "market", name: "The market", kind: "market", at: [-.2, -.1], books: [7], desc: "Lift watches the man she calls Darkness execute a girl here for stealing fruit."},
           {id: "indicium", name: "The Grand Indicium", kind: "tower", at: [.2, .6], h: 1.6, books: [7], desc: "A huge records building towering over the city. Lift talks her way in as an envoy from Azir to find who Darkness is hunting."},
           {id: "slots", name: "The slots", kind: "farm", at: [-.55, .4], books: [7], desc: "The city’s deep cut channels, where farmers grow crops out of season."}

@@ -1348,7 +1348,7 @@ let afterAscend=null;
 function ascend(after){if(S.view==="place"){leavePlace(()=>ascend(after));return;}if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
 function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
-function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
+function selectSite(id){placeGen++;S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
     /* turn the world so the place sits in daylight, between the sun and the viewer */
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();
@@ -1382,7 +1382,7 @@ function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(
     if(fromGal)history.pushState({atlasSurface:true},"",urlFor({view:"world",site:id}));
     if(history.state&&history.state.atlasPlace)history.replaceState(st,"",u);else history.pushState(st,"",u);}
   const fe=$("#fade");if(fe)fe.dataset.label=s.name;
-  transition(()=>{if(!canEnter(WORLD_BY[S.sel]||w,s)||S.sel!==w.id){if(S.view!=="place")refreshAll();return;}
+  transition(()=>{if(gen!==placeGen||S.site!==id||S.sel!==w.id||!canEnter(WORLD_BY[S.sel]||w,s)){cancelEntry(fromHistory);return;}
     S.view="place";hideTip();SITE_EL.forEach(o=>{o.el.style.opacity=0;o.el.style.pointerEvents="none";});
     Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
     try{PLACES.enter(w,s,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});}
@@ -1390,6 +1390,10 @@ function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(
     PLACES.setIdle(true);viewOffset();S.interacted=false;refreshAll();hint(MOB?UI.hints.placeMob:UI.hints.place);
     if(AUD&&soundOn){if(AUD.on)AUD.place(PLACES.place.sc.kind);}
     if(then)setTimeout(()=>{if(gen===placeGen&&S.view==="place"&&S.sel===w.id&&S.site===id)then();},500);});}
+/* DWR-B: a pending entry superseded before its fade commits builds nothing; drop the place history entry it pushed */
+function cancelEntry(fromHistory){if(S.view==="place")return;
+  if(!fromHistory&&urlReady&&history.state&&history.state.atlasPlace){try{history.replaceState({atlasSurface:true},"",urlFor());}catch(e){}}
+  refreshAll();}
 function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;history.back();return;}doLeavePlace(after);}
 function doLeavePlace(after){placeGen++;if(AUD)AUD.leave();
   if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)setTimeout(()=>selectSite(site),900);if(after)setTimeout(after,1000);return;}
