@@ -45,7 +45,7 @@
         'Explore the places and narratives of the scriptures of The Church of Jesus Christ of Latter-day Saints, with historical evidence and proposed geography clearly distinguished.',
       credits: '',
       notice:
-        'Independent educational atlas. Not an official publication of The Church of Jesus Christ of Latter-day Saints. Scripture narratives, religious beliefs, historical evidence and geographic proposals are labelled separately.',
+        'Independent educational atlas with selected coverage, not a verse-complete concordance. Not an official publication of The Church of Jesus Christ of Latter-day Saints. Scripture narratives, religious beliefs, historical evidence and geographic proposals are labelled separately.',
       srcnote:
         'Map pins mark modern heritage properties, gazetteer points or visitor centers. They locate a place, not the exact spot of a narrated event, and do not verify it. Places without an approved location are listed in the codex instead of being pinned.',
       canvasLabel: 'A globe of places named in the standard works of The Church of Jesus Christ of Latter-day Saints',

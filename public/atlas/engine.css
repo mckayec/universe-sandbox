@@ -323,7 +323,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
   .manybooks #index{top:174px}
   .manybooks #navhint{top:170px}
 }
-@media (max-width:1180px){.credits{display:none}}
+.srcnote.narrow-notice{display:none}
+@media (max-width:1180px){.credits{display:none}.srcnote.narrow-notice{display:block}}
 @media (hover:none),(pointer:coarse){#tip{display:none!important}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 

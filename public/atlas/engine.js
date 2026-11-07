@@ -1456,6 +1456,8 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     const evs=evFor(w.id);h+='<div class="rule"><span class="eyebrow">In the Chronicle</span></div>';
     h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+'</button>').join("")
       :'<p class="empty">'+(S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
+    /* the Chronicle credits (and the notice in them) are hidden at narrow widths: repeat the notice here there */
+    h+='<p class="srcnote fan narrow-notice">'+esc(fanNotice(M))+'</p>';
   }
   dos.innerHTML=h;dos.classList.toggle("collapsed",MOB&&dosCollapsed);dos.scrollTop=0;
   const gb=$("#grab");
