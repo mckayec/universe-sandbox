@@ -512,14 +512,14 @@
     sel: {
       elantris: {/* layout schematic */ kind: "ruins", arch: "classical", size: "large", tod: "day", weather: "rain", walls: true, pal: {stone: "#8a8478", ground: "#5a5448"},
         landmarks: [
-          {id: "gate", name: "The gates of Elantris", kind: "gate", at: [.7, 0], h: 1.2, books: [1], desc: "The newly taken are pushed through here and the gates shut behind them. Sarene later brings food in through them."},
+          {id: "gate", name: "The gates of Elantris", kind: "gate", at: [.7, 0], h: 1.2, books: [1], desc: "Those taken by the Shaod are confined within Elantris; Raoden enters through this gate."},
           {id: "newelantris", name: "New Elantris", kind: "plaza", at: [0, .2], books: [1], desc: "The community Raoden builds among the rot with Galladon, Karata and the others: work, gardens and repaired roofs instead of despair."},
           {id: "walls", name: "The walls", kind: "wall", at: [-.6, -.5], h: 1.3, books: [1], desc: "Elantris’s high walls now serve to keep its people in."},
           {id: "barrows", name: "The memorial barrows", kind: "tomb", at: [.85, -.7], h: .6, books: [1], desc: "Outside the city, where the heroes of the war are buried; Sarene asks that Hrathen lie here too."}
         ]},
       kae: {/* layout schematic */ kind: "capital", arch: "classical", size: "medium", tod: "day", weather: "rain", coast: "n",
         landmarks: [
-          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .4], h: 1.3, books: [1], desc: "King Iadon’s court, where Sarene arrives to find Raoden declared dead. Raoden is crowned here near the end."},
+          {id: "palace", name: "The royal palace", kind: "palace", at: [0, .4], h: 1.3, books: [1], desc: "King Iadon’s palace in Kae. Sarene meets him here after arriving from Teod."},
           {id: "kiin", name: "Kiin’s manor", kind: "house", at: [-.45, -.2], books: [1], desc: "Sarene’s uncle’s house, where the opposition meets. It is barricaded when the Dakhor monks attack."},
           {id: "roial", name: "Roial’s mansion", kind: "house", at: [.5, .1], books: [1], desc: "Home of the old duke Roial, Sarene’s ally at court."},
           {id: "market", name: "The market district", kind: "market", at: [.1, -.55], books: [1], desc: "Dakhor monks burst from tents here when the attack begins."}
@@ -533,7 +533,7 @@
       alonoe: {kind: "sea", size: "large", water: true, tod: "day", weather: "clear"},
       chasm: {/* layout schematic */ kind: "wilds", size: "large", tod: "day", weather: "clear",
         landmarks: [
-          {id: "crack", name: "The great crack", kind: "cliff", at: [0, 0], h: 1.4, books: [1], desc: "Opened by the earthquake of the Reod. Raoden sees it in the shape of the land and in the Aons, and understands what broke the magic."}
+          {id: "crack", name: "The great crack", kind: "cliff", at: [0, 0], h: 1.4, books: [1], desc: "The Chasm is the feature whose missing line Raoden adds to his Aons."}
         ]},
       kaltii: {kind: "town", arch: "classical", size: "small", tod: "day", weather: "clear"},
       fellavoo: {kind: "capital", arch: "classical", size: "medium", tod: "day", weather: "clear"},
@@ -988,7 +988,7 @@
        gfx: {type: "terran", sea: .5, freq: 1.5, warp: .5, rough: .55, ice: 76, pal: ["#0c2240", "#2c6a92", "#5a7a40", "#6a8a4a", "#8a8068", "#f0f0ee"],
              clouds: .33, atmo: "#8ab8ff", lights: .25, sw: "#6a8a4a", map: MAP_SEL},
        sites: [
-         {id: "elantris", name: "Elantris", lat: 33.3, lon: -41.6, books: [1, 7], desc: "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. Its streets trace Aon Ela. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."},
+         {id: "elantris", name: "Elantris", lat: 33.3, lon: -41.6, books: [1, 7], desc: "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."},
          {id: "kae", name: "Kae", lat: 33.6, lon: -41.0, books: [1], desc: "The eastern gate city beside Elantris, on the Aredel’s mouth and Arelon’s best northern harbour. It became the capital after the Reod. Elantris and its four gate cities (Ake, Ato, Kae and Toa) together form the Aon Rao."},
          {id: "pool", name: "The Pool (Devotion’s perpendicularity)", lat: 32.6, lon: -40.1, books: [1], desc: "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm."},
          {id: "kondeon", name: "Kondeon", lat: 30.0, lon: -45.5, books: [1], desc: "A town on the Aredel River, about halfway between Elantris and Lake Alonoe."},
@@ -998,7 +998,7 @@
          {id: "kaltii", name: "Kaltii", lat: 21.3, lon: -48.0, books: [1], desc: "A southern Arelene city on the Chasm."},
          {id: "fellavoo", name: "Fellavoo", lat: 17.8, lon: -40.5, books: [1], desc: "Capital of Duladel, near the Atad passes and the borders of Arelon and Fjorden."},
          {id: "atad", name: "The Atad Mountains", lat: 27.0, lon: -38.5, books: [1], desc: "The range between Arelon and Fjorden, called Dathreki in Fjorden, which long held off the Derethi armies."},
-         {id: "widor", name: "Widor (the Wyrn’s Seat)", lat: 33.2, lon: -18.6, books: [1], desc: "Capital of Fjorden and of the Fjordell Empire, a northern port and the seat of the Wyrn, whose Derethi church sends gyorns like Hrathen east."},
+         {id: "widor", name: "Widor (the Wyrn’s Seat)", lat: 33.2, lon: -18.6, books: [1], desc: "Capital of Fjorden and of the Fjordell Empire, a northern port and the seat of the Wyrn, whose Derethi church sends Hrathen west to Arelon."},
          {id: "dakhor", name: "Dakhor Monastery", lat: 28.5, lon: -22.0, books: [1], desc: "Derethi monastery of the bone-warriors, somewhere in Fjorden; the exact site is not given."},
          {id: "jindo", name: "JinDo", lat: 3.0, lon: -38.0, books: [1], desc: "A land south-east of Arelon, related in culture to MaiPon. The city of HaiKo lies in its north-east."},
          {id: "jaador", name: "Jaador", lat: 3.0, lon: -18.0, books: [1], desc: "A landlocked nation of the empire between JinDo and Hraggen, with the desert to the south."},
@@ -1264,14 +1264,14 @@
     events: [
       /* I Elantris */
       {id: "e1", book: 1, world: "sel", site: "elantris", lm: "gate", title: "Raoden is taken", text: "The prince of Arelon wakes with the Shaod and is quietly thrown into Elantris, declared dead to the world."},
-      {id: "e2", book: 1, world: "sel", site: "kae", lm: "palace", title: "A widow before the wedding", text: "Sarene of Teod arrives to marry Raoden and finds him already ‘dead’. She stays and goes to war in the court."},
+      {id: "e2", book: 1, world: "sel", site: "kae", title: "A widow before the wedding", text: "Sarene reaches Kae and learns that Raoden is reported dead; their contract makes her his widow."},
       {id: "e3", book: 1, world: "sel", site: "kae", title: "Hrathen’s three months", text: "A priest of Fjorden comes with a deadline: convert Arelon, or watch it destroyed."},
       {id: "e64", book: 1, world: "sel", site: "elantris", lm: "newelantris", title: "New Elantris", text: "Inside the walls Raoden befriends Galladon, wins over the gang leaders and builds a community that works instead of waiting to rot."},
       {id: "e65", book: 1, world: "sel", site: "kae", lm: "palace", title: "The king’s secret", text: "Sarene exposes King Iadon’s hidden Jeskeri sacrifices. He is arrested and hangs himself, and a struggle for the throne follows."},
-      {id: "e4", book: 1, world: "sel", site: "chasm", lm: "crack", title: "The land is part of the writing", text: "Raoden works out that the Aons echo the shape of the land. The Chasm broke them, and one more line fixes them."},
+      {id: "e4", book: 1, world: "sel", title: "The land is part of the writing", text: "Raoden discovers that adding a line for the Chasm lets his Aons function again."},
       {id: "e66", book: 1, world: "sel", site: "kae", lm: "market", fx: "battle", title: "The Dakhor strike", text: "Dakhor monks burst out of tents in Kae’s market district, and the slaughter Fjorden planned all along begins."},
+      {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "Raoden adds the missing Chasm line to the city-scale Aon, restoring Elantris."},
       {id: "e67", book: 1, world: "sel", site: "teoras", lm: "streets", fx: "battle", title: "Hrathen’s choice", text: "In Teoras Hrathen turns against Dilaf to save Sarene. Struck down in the streets, he still kills Dilaf before he dies."},
-      {id: "e5", book: 1, world: "sel", site: "elantris", lm: "gate", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
       /* II Mistborn */
       {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn."},
       {id: "e68", book: 2, world: "scadrial", site: "fellise", lm: "renoux", title: "Valette Renoux", text: "Vin learns to pass as a young noblewoman and goes to the balls in Luthadel’s keeps, where she meets Elend Venture."},
