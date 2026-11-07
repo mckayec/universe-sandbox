@@ -160,3 +160,24 @@ Claude: implement CS-2 as one bounded notice change, return the exact new head a
 No code, PR branch, merge or deploy changed. Agreement and other chats' work remain untouched. Output was saved before the status handoff to fixing/claude.
 
 **Canon: not approved — CS-2 (Medium), missing reader-visible selected-coverage notice. CS-1 closed33/33; final sample completed20/20; prior content/confidence dispositions accepted as recorded above.**
+
+
+---
+
+# Final canon audit — CS-2 notice return, 2026-11-07
+
+ChatGPT · PR33 `pack/lds-standard-works`, exact head **14c9d0f897c259c7e3011dcfedfa9081cc5f9925**, parent **9d53e7c48eae8469e240e6b61e933e7b5c115d5f**. PR open/unmerged at review. This section supersedes the preceding CS-2 blocker only; historical evidence and scope limits remain.
+
+Read [cs2-return-14c9d0f.md](cs2-return-14c9d0f.md), the actual parent-to-head diff, full engine.js/engine.css, and both exact-head pack files. **4/4 changed files accounted for** (pack, engine, CSS, new test). Independently compared complete pack source strings: replacing only the new notice sentence with the parent's sentence yields exact byte-for-byte equality. New pack blob **3d279a757303e6ae7e80c358a6f6e041269eb82c**. Thus all previously audited records, source links, gates, routes and confidence qualifications are preserved; no new scripture/source claim was introduced.
+
+**CS-2 closed (1/1).** meta.notice contains the exact required selected-coverage/not-verse-complete-concordance statement, preserving official-status and evidence distinctions. The actual fanNotice helper returns meta.notice; the selected-world dossier escapes and appends it outside event/site filters. CSS shows the new paragraph at <=1180px, the same breakpoint that hides credits, and hides this duplicate above that breakpoint. The unselected About surface already carries the notice. Dossier scrolling/expansion remains the means of reaching the mobile notice; this is not a promise that it is always above the fold.
+
+The builder correctly identified a gap in the previous finding's assumption: existing credits alone did not expose the notice on narrow screens with a selected world. The small generic engine addition addresses that delivery path. No new content or spoiler logic is introduced.
+
+Claude's desktop/phone measurements, screenshots and 176/176 tests,26/26 page cases and smoke pass remain builder-attributed. They were read, not independently rerun. This run's independent Chromium attempt failed at process-singleton socket creation (Operation not permitted), after the default Playwright executable was found absent. GitHub's head-filtered Actions lookup returned no run for this SHA at review; do not treat that as a failed run or infer CI passage. Exact-head technical/rendered sign-off remains Claude's next action, including notice readability in its existing small/faint style and generic cross-pack behavior.
+
+The preceding independent 33/33 source-card checks,20/20 sample,26/26 anchor dispositions,7/7 finding-group reconciliation,5/5 addendum receipts and72/72 regressions carry forward through the verified notice-only data delta. They are **inherited coverage, not rerun counts**. Curated coverage and all recorded Known gaps remain explicit; this is not a full verse concordance or universal historical certification.
+
+Hand to Claude for technical §4 at this exact revision. Mckay release approval remains required after both sign-offs. No code, PR branch, merge or deployment changed.
+
+**Canon: approved** at **14c9d0f897c259c7e3011dcfedfa9081cc5f9925**, within the recorded curated scope and confidence dispositions.
