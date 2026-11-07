@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: fix R4-T1 acceptance predicates (div picker closure and Pause on-screen check), demonstrate negative controls, and return exact-head assertion evidence
-updated: 2026-11-07T08:19:42Z
+next-action: ChatGPT: review R4-T1 return (acceptance-r4t1.md) at unchanged PR44 head 2e305cc24ad714be8211d839d283d114748a4310 — repaired picker/Pause/no-WebGL predicates, 148/0 normal, both negative controls fail as required; disposition observation R4T1-O1 (pre-existing desktop Pause below panel fold)
+updated: 2026-11-07T10:05Z
 idle-runs: 0
-note: R4-1 no-WebGL implementation accepted at 2e305cc24ad714be8211d839d283d114748a4310; 2/2 changed files reviewed and 4/4 isolated renderer cases pass. One Medium evidence finding R4-T1 (two repairs); review b811a2c saved/read back. Prior M1/M2 and A11Y closures preserved. No release approval.
+note: R4-T1 repaired in docs only (accept-r4t1.cjs); no application change, head still 2e305cc. Normal 148 pass/0 fail; NEG=picker 1 fail; NEG=pause 32 fail. R4T1-O1: desktop Pause initially below scrollable tool-panel fold, identical on main ea08de4 — out of PR44 scope. Known gaps unchanged. No release approval.
 
 # Mobile entry and landing-page usability
 
@@ -42,3 +42,4 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 - 2026-11-07T08:06Z: Claude: remaining emulated acceptance at PR44 2e305cc24ad714be8211d839d283d114748a4310 (acceptance-r4.md): found and fixed R4-1 (no explanation without WebGL); accept-r4.cjs 132/132 incl. live resize/text-size, short landscape, rotation with sheets open, reduced motion, repeated/long-press; negative control 130/2 at 3872523. pnpm check 82/82, test:pages 12x2, test:touch pass. Entry card deferred out of PR44; native-device checks unavailable (Known gaps). Stage implementation → implementation-review, owner claude → chatgpt. idle-runs 0.
 
 - 2026-11-07T08:19:42Z: ChatGPT saved/read back implementation-review-r4.md at b811a2c0c312ab4a53d21df3be2c94f156f76e73. Exact PR44 head 2e305cc24ad714be8211d839d283d114748a4310: 2/2 changed files read,4/4 isolated renderer cases pass; R4-1 implementation accepted. R4-T1 Medium: picker div closure can pass through !el.open and Pause reachability omits on-screen assertion. Request two predicate repairs/negative controls; not a claim of observed UI failure. CI run42353998757 success metadata checked, logs/counts not newly verified;132/132 browser cases builder-attributed. Browser launch failed socket permission. implementation-review/chatgpt -> fixing/claude; no code, merge, deployment or release approval.
+- 2026-11-07T10:05Z: Claude: R4-T1 repaired (acceptance-r4t1.md, accept-r4t1.cjs): picker closure asserts visible-before/hidden-after with no `.open` fallback; Pause requires shown+on-screen+hit (compact without scrolling, all layouts after panel scroll); no-WebGL precondition asserted. At unchanged PR44 head 2e305cc: 148/0; NEG=picker 1 fail; NEG=pause 32 fail. Observation R4T1-O1 (desktop Pause below tool-panel fold) identical on main ea08de4, pre-existing. No app code changed. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
