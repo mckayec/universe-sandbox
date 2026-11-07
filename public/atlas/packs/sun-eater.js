@@ -29,8 +29,8 @@ const WORLDS=[
    scene:{kind:"castle",arch:"gothic",size:"medium",tod:"dusk",weather:"mist",coast:"s",walls:true,pal:{stone:"#26242a",ground:"#d8d2c2"},   /* layout schematic */
     landmarks:[
      {id:"castle",name:"Devil’s Rest",kind:"castle",at:[0,.15],h:1.7,desc:"The dark-stone home of House Marlowe, whose lord is Archon of Meidua. Hadrian grows up under a father who wants an heir rather than a child."},
-     {id:"bluff",name:"The limestone bluff",kind:"cliff",at:[0,-.5],h:1.2,desc:"The white bluff the castle crowns, dropping to the Apollan Ocean."},
-     {id:"study",name:"The scholiast’s rooms",kind:"library",at:[-.4,.35],desc:"Where Tor Gibson tutors Hadrian in history, languages and the scholiasts’ discipline, and feeds his dream of leaving to join their order."}]}},
+     {id:"bluff",name:"The limestone bluff",kind:"cliff",at:[0,-.5],h:1.2,desc:"The white limestone bluff beneath Devil’s Rest, above Meidua and the sea."},
+     {id:"study",name:"The scholiast’s rooms",kind:"library",at:[-.4,.35],desc:"Gibson’s book-filled study in the scholiasts’ cloister, where Hadrian visits his tutor."}]}},
   {id:"meidua",name:"Meidua",lat:28.4,lon:-10,books:[1],desc:"An old fishing village grown into the prefecture capital, with a Colosso and the slums of Lowtown below the castle.",
    scene:{kind:"city",arch:"classical",size:"medium",tod:"day",weather:"clear",coast:"s",   /* layout schematic */
     landmarks:[
@@ -710,8 +710,8 @@ const EVENTS=[
  {id:"b1p",book:1,world:"cressgard",title:"First contact",text:"Three centuries before Hadrian is born, humans meet the Cielcin for the first time at Cressgard, ISD 15792. The colony is lost."},
  {id:"b1q",book:1,world:"caishen",fx:"fire",title:"Cai Shen burns",text:"While Hadrian is still a boy, the Cielcin burn the Mandari world of Cai Shen and its famous temple, ISD 16130."},
  {id:"b1a",book:1,world:"colchis",title:"The memoir begins",text:"From the Library on Colchis, Hadrian Marlowe sets out to tell the truth about the man history calls the Sun Eater, who burned a star and killed billions."},
- {id:"b1b",book:1,world:"delos",site:"devilsrest",lm:"study",title:"A boyhood at Devil’s Rest",text:"Heir to the Archon of Meidua, Hadrian is schooled by the scholiast Tor Gibson and dreams of joining the scholiasts rather than ruling."},
- {id:"b1k",book:1,world:"delos",site:"devilsrest",lm:"castle",title:"The Consortium",text:"House Marlowe does business with the Wong-Hopper Consortium, and Hadrian grows to resent his family’s dealings with it."},
+ {id:"b1b",book:1,world:"delos",site:"devilsrest",lm:"study",title:"A boyhood at Devil’s Rest",text:"Heir to the Archon of Meidua, Hadrian is taught by Tor Gibson and hopes to become a scholiast."},
+ {id:"b1k",book:1,world:"delos",site:"devilsrest",lm:"castle",title:"The Consortium",text:"House Marlowe does business with the Wong-Hopper Consortium."},
  {id:"b1l",book:1,world:"delos",site:"meidua",lm:"colosso",fx:"crowd",title:"Games in the Colosso",text:"Hadrian watches the Colosso games with his family and is sickened by the killing his brother Crispin relishes."},
  {id:"b1c",book:1,world:"delos",site:"devilsrest",lm:"castle",title:"Sent to the Chantry",text:"His father means to send him to the Chantry’s seminary on Vesperad. Gibson is caught helping him and is maimed and exiled."},
  {id:"b1d",book:1,world:"delos",site:"haspida",lm:"palace",title:"Flight from Delos",text:"His mother arranges his escape. After a fight with his brother Crispin, he boards the Eurynasir at Karch, bound for Teukros."},

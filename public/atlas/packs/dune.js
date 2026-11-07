@@ -195,7 +195,7 @@ return {
     /* layout schematic */
     landmarks: [
      {id: "residency", name: "The Residency", kind: "palace", at: [0, .15], h: 1.5, books: [1],
-      desc: "The governor’s mansion that House Atreides takes over from the Harkonnens. Paul is attacked by a hunter-seeker in his bedroom here, and on the night of the attack Dr Yueh brings down its shields."},
+      desc: "The Arrakeen residence designated for Duke Leto’s family, formerly the home of Count and Lady Fenring."},
      {id: "conservatory", name: "The conservatory", kind: "garden", at: [-.25, .3], books: [1],
       desc: "A sealed garden of wet-planet plants left by the last governor’s household, a costly show of water. Jessica finds a hidden warning from Lady Margot Fenring among its leaves."},
      {id: "dining", name: "The dining hall", kind: "hall", at: [.3, .38], books: [1],
