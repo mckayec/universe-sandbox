@@ -355,6 +355,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 #navhint{top:calc(var(--hdr,62px) + 42px)}
 /* A13: the credits never run under the dossier; long credits wrap within their own column */
 .chron-head .credits{max-width:min(120ch,calc(100% - 420px))}
+/* Fan/official-status notice must stay readable: muted (not faint) ink, and a dark backing so the strip never sits
+   directly on a bright globe or sky (s70 technical audit: faint ink measured 3.49:1, obscured over the globe). */
+.chron-head .credits{color:var(--muted);background:rgba(7,9,13,.78);padding:4px 8px;border-radius:4px}
+.srcnote.fan{color:var(--muted)}
 .srcnote.fan{margin-top:8px}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 /* styled fatal panel (engine fail()) */

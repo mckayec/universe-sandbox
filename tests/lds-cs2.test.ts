@@ -28,3 +28,11 @@ test('CS-2: the notice is repeated in the world dossier where the Chronicle cred
     /@media \(max-width:1180px\)\{\.credits\{display:none\}\.srcnote\.narrow-notice\{display:block\}\}/,
   );
 });
+
+test('T70-1: the notice uses muted (not faint) ink and the credits strip has a dark backing', () => {
+  assert.match(
+    css,
+    /\.chron-head \.credits\{color:var\(--muted\);background:rgba\(7,9,13,\.78\);padding:4px 8px;border-radius:4px\}/,
+  );
+  assert.match(css, /\.srcnote\.fan\{color:var\(--muted\)\}/);
+});
