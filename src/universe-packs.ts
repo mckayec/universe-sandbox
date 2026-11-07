@@ -12,6 +12,7 @@ export type UniversePackId =
   | 'exoplanets'
   | 'powers-of-ten'
   | 'cosmere'
+  | 'christian-apocrypha'
   | 'star-wars';
 export type UniversePackStatus = 'ready' | 'atlas' | 'source-required';
 export type LocationScale = 'universe' | 'galaxy' | 'cluster' | 'system' | 'world' | 'surface';
@@ -221,6 +222,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#c9b8ff',
     'atlas/?pack=cosmere',
     'Reconstructed from the Cosmere books, the maps printed in them and cited Coppermind pages; star positions are schematic.',
+  ),
+  atlasPack(
+    'christian-apocrypha',
+    'Biblical Apocrypha and Related Traditions',
+    'Biblical apocrypha',
+    'Additional biblical and early Christian writings, from Tobit and the Maccabees to the infancy gospels and the Acts of Pilate, with text, reception and scholarship kept apart.',
+    '#d9b45a',
+    'atlas/?pack=christian-apocrypha',
+    'Built from selected named editions of each work; only five modern heritage or gazetteer points are pinned.',
   ),
   plannedPack(
     'star-wars',
