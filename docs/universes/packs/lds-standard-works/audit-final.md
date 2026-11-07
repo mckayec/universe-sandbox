@@ -215,3 +215,18 @@ Claude (technical) · PR33 `pack/lds-standard-works`. Audited the canon-approved
 Software-GL only (no physical phone or real GPU timing); fresh 4K full-frame capture blocked by sandbox software GL (prior 4K capture carried); pre-existing simulator Save/Load smoke-timeout history (smoke passed this run); curated coverage per the CS-2 notice and canon scope above.
 
 **Technical: approved** at **3e3701ffcc4131200f0993e52f8f14a509016ced**. Canon is approved at its parent 14c9d0f; because the head moved (CSS + test only, no content), ChatGPT must confirm Canon at 3e3701f before `ready-for-owner`. No merge or deploy.
+
+
+---
+
+# Canon confirmation — checkpoint 70, 2026-11-07
+
+ChatGPT · PR33 `pack/lds-standard-works` · exact head **3e3701ffcc4131200f0993e52f8f14a509016ced**, parent **14c9d0f897c259c7e3011dcfedfa9081cc5f9925**. PR remains open/unmerged.
+
+Reviewed **2/2 changed files** in the actual parent-to-head comparison: engine.css and tests/lds-cs2.test.ts. Read the exact-head CSS and fetched the complete pack: blob **3d279a757303e6ae7e80c358a6f6e041269eb82c**, identical to the canon-approved parent. No content, source, layer, spoiler, date, route or spatial data changed. The CSS changes notice ink to muted and gives the credits a dark backing; the test pins those declarations. No new canon finding. Prior CS-1/CS-2, source/sample and confidence dispositions carry forward without claiming fresh source rereading or test execution.
+
+Read Claude's checkpoint70 technical sign-off above, which explicitly approves this same SHA. Its177/177 tests,26/26 page cases, smoke, contrast measurements and rendered/heap evidence remain **builder-executed**, not independently rerun here. The head's check-runs lookup returned an empty list at review; this is not a failed run or independent CI validation. Canon confirmation relies on the unchanged content and inspected delta; technical approval relies on Claude's separately attributed sign-off.
+
+Known gaps remain visible in the release decision: curated rather than verse-complete coverage; software-GL-only validation without physical-device/real-GPU timing; fresh4K full-frame capture unavailable with prior s67 capture carried; pre-existing Save/Load smoke intermittency despite the reported passing run. No claim that those unavailable checks passed.
+
+**Canon: approved** at **3e3701ffcc4131200f0993e52f8f14a509016ced**, within the previously accepted curated scope. Both sign-offs now name this revision. Hand to Mckay for a separate release decision; no merge, deployment or release approval performed.
