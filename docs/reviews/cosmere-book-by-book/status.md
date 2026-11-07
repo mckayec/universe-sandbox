@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the full Elantris return at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098 (elantris-return-ffc8ba7.md) and the COS-BB-001 design proposal (cos-bb-001-design-proposal.md); accept, or return specific changes
-updated: 2026-11-07T17:01Z
+next-action: Claude revises cos-bb-001-design-proposal.md for GATE-01–04 in implementation-review-ffc8ba7.md, preserving accepted Elantris edits; return the exact proposal revision before implementation
+updated: 2026-11-07T17:23Z
 idle-runs: 0
-note: Full bounded Elantris return at PR37 ffc8ba7: EL08 5/5 groups dispositioned (A narrowed, B/D/E omitted, C narrowed), e64–66 omitted, e67 narrowed, 8/8 unresolved landmarks omitted; order probe 3/3; check 125/125, pages 12x2, browser 2 viewports x 4 views 0 errors. No new sources; COS-BB-001 is a proposal only. PR24 untouched (D07).
+note: Elantris return accepted at ffc8ba7: 7/7 correction units, 5/5 EL08 dispositions, 4/4 residual events and 12/12 landmark dispositions checked; ordering 3/3 independently confirmed. Four design requirements remain (fallback, predicate semantics, migration, tests). 0/33 full book audits approved; browser/test-suite counts builder-attributed.
 
 # Cosmere book-by-book review
 
@@ -21,3 +21,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-07T15:25Z: ChatGPT reconciled current PR24 a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065 and PR37 d902c8a7092e5e1f2597af800b11f0f7f63dc901; reopened 3 author-hosted chapters and 4 annotations. Saved/read back handoff-elantris-2026-11-07.md (7f258bdf43bfa258a485a4f1da14b2ae15aa4f52, denominator corrected after counting all 33 ledger rows at 6806c543d5650f34df60d642f4f5be0233b54f1d) and elantris-order-probe.cjs (98395868ca187ec660575d46be82742b8983cd0a). Seven finite correction units (EL01–05, EL10, new EL11); 10/10 previous units retain explicit dispositions. Four residual events and twelve book-1 landmarks inventoried with per-record holds/narrowing; 3/3 real-source ordering paths show e67 before e5. The 14:57Z STALL is answered by a concrete builder handoff, not a claim of complete research. content-review/chatgpt → fixing/claude. SEL01 full audit deferred with Known gaps; SEL02 and all other work-ledger states preserved, 0/33 full audits approved. No code edit, merge, deploy or release approval.
 - 2026-11-07T16:15Z: Claude checkpoint on PR37 (5cb521d, 004c3c9): applied EL01–05, EL10, EL11, conservative gate/crack landmark copy, EL08-A, EL08-C, e67 narrowing; order probe 3/3 pass; pnpm check 125/125; test:pages 12x2; browser 1440 order ok, 0 errors. Remaining dispositions + COS-BB-001 proposal next run; owner stays claude. See elantris-return-checkpoint-004c3c9.md.
 - 2026-11-07T17:01Z: Claude completed the Elantris return on PR37 at ffc8ba7c6734f38839f3eca974b96c04a1a1c098 (parent 004c3c9; cosmere.js only): EL08-B/D/E omitted, book-1 order fact removed, e64–66 and 8 landmarks omitted, EL09 map edition recorded from the pack comment; COS-BB-001 design proposal added. Evidence: elantris-return-ffc8ba7.md. fixing/claude → content-review/chatgpt. Not merged.
+
+- 2026-11-07T17:23Z ChatGPT: accepted bounded Elantris return at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098; implementation-review-ffc8ba7.md committed at 50ab6de8954a99519bba0dfe24ab6a50378325df and read back. Independent actual-source ordering 3/3; eight landmark and three event omissions verified, two remaining Sel event landmark references resolve. EL09 shared schematic notice accepted at source level; map edition remains unverified. COS-BB-001 design changes requested: GATE-01–04. Handed to Claude for finite proposal revision, not new open-ended research. No full canon, per-work spoiler or release approval.
