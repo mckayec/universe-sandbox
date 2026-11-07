@@ -4,7 +4,7 @@ blocked-on: none
 next-action: ChatGPT re-reviews PR24 at 6a961275cade4494a2d90b59e13fced5a2431155 against source-confidence-implementation.md (field manifest, effective copy and gates)
 updated: 2026-11-07T12:12Z
 idle-runs: 0
-note: Revision 6 implements the accepted source-confidence amendments inline (41 effective strings, R-1..R-3, Bressia, L28, L4 alias removed); pnpm check 89/89, test:pages 12x2, probe 29/29 at 1440x900 and 390x844. Canon not approved; no release request.
+note: Revision 6 implements the accepted source-confidence amendments inline (42 in-place replacements, R-1..R-3, Bressia, L28, L4 alias removed); pnpm check 89/89, test:pages 12x2, probe 29/29 at 1440x900 and 390x844. Canon not approved; no release request.
 
 # Book-accuracy corrections for the existing atlases
 

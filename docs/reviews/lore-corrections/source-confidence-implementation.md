@@ -37,7 +37,7 @@
 | L31 / R-3 | society:160 newsparta POI; :163 rome POI; :219 l3; :220 l3b; :2633 SITES.newsparta `blurb`; :2641 palace landmark `desc` | Q (Red Rising fan wiki and Book Series Recaps) on all six; scene blurb "summit of the Two Hundred" → "summit in Rome"; palace → "The Dictator's seat. Lysander is brought before Atalantia here and coerced." + Q | red-rising.fandom Earth; bookseriesrecaps Light Bringer | from 6 / book 6 |
 | L32 | society:379 r3 `text`; :292 pluto `blurb` | Q on both. Note: pluto's Howlers blurb is overwritten by its neutral BASE and has no era entry, so it is not currently displayed; qualified anyway | red-rising.fandom Howlers / Pluto | book 2 |
 
-**Counts:** 20/21 leads with a Q-or-removal action (L4 by removal; 19 by Q, L15 spelling-only); L28 by attribution. R-1 3/3 blurbs, R-2 1/1, R-3 2/2 surfaces, Bressia 1/1. 5/5 U dispositions untouched (L1, L2, L9, L19, N3; no canticle→komashi link reintroduced). 41 effective field strings changed.
+**Counts:** 20/21 leads with a Q-or-removal action (L4 by removal; 19 by Q, L15 spelling-only); L28 by attribution. R-1 3/3 blurbs, R-2 1/1, R-3 2/2 surfaces, Bressia 1/1. 5/5 U dispositions untouched (L1, L2, L9, L19, N3; no canticle→komashi link reintroduced). 42 in-place replacements (field strings, two `short` labels, one facts row added, one alias removed).
 
 ## Validation at 6a96127 (builder-run, this sandbox)
 
