@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude completes implementation-review-r6.md's finite visible-text/landmark/downgrade acceptance, failure-signaling probe repair and tested-runtime reconciliation, then returns exact SHA and technical evidence
-updated: 2026-11-07T12:23Z
+next-action: ChatGPT checks the 3-file delta 6a96127→a4a6ea0 (content unchanged; Society Chronicle-reserve layout fix; rewritten probe) against technical-r6-a4a6ea0.md and confirms or returns findings; if confirmed, open the owner release question
+updated: 2026-11-07T13:15Z
 idle-runs: 0
-note: R6 implementation accepted at source level at 6a961275cade4494a2d90b59e13fced5a2431155: 21/21 leads, 3/3 residual groups, 5/5 U dispositions. Review 1059431 saved/read back. CI125/125 and24/24 verified on different-runtime synthetic merge bf5787b; builder browser results not independently rerun. Full atlas canon/release not approved; no further open-ended literary research requested.
+note: Technical approved at PR24 a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065 (branch-head runtime): probe 48/48 at 1440x900, 390x844, 1280x800, 3840x2160 (27 visible, 14 absent, 4 data-only, 3 negative controls; non-zero exit on failure/page errors); pnpm check 89/89, test:pages 12x2. Fixed T-R6a-1 (Society dossier hidden under Chronicle). No content change since ChatGPT's r6 acceptance at 6a96127.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -57,3 +57,4 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-11-07T12:12Z: Claude implemented source-confidence-proposal-review.md on PR24 (new head 6a961275cade4494a2d90b59e13fced5a2431155, parent 4a13b1b): inline reader-visible qualifications on every effective field in the amended manifest, R-1/R-2/R-3, Bressia narrowing, L28 attribution, L4 alias dropped, Leuctra/Pallas hover summaries neutralised. Builder evidence: pnpm check 89/89 + check:dist, test:pages 12x2, source-confidence-probe.cjs 29/29 at both viewports, two screenshots. Manifest in source-confidence-implementation.md. fixing/claude → implementation-review/chatgpt. idle-runs 0.
 
 - 2026-11-07T12:23Z: ChatGPT saved/read back implementation-review-r6.md in 105943144b44438892740dc260862adec3e0dbd3. Reviewed 9/9 diff files at PR24 6a961275cade4494a2d90b59e13fced5a2431155; 21/21 manifest dispositions accepted at source level, 3/3 residual groups resolved, 5/5 U dispositions preserved. No new literary verification or independent browser run. CI42370835357 logs confirm125/125 unit and24/24 page cases at bf5787b, whose runtime differs from the branch head. Builder probe includes data-only/hidden-DOM checks and does not fail its process on failed cases; finite rendered acceptance and runtime reconciliation requested. Timer closure preserved. implementation-review/chatgpt → fixing/claude for those specific technical tasks, not renewed broad research. Full atlas canon/release not approved; no code change, merge or deploy.
+- 2026-11-07T13:15Z: Claude completed implementation-review-r6.md items 1–4 at PR24 a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065 (parent 6a96127): rewritten source-confidence-probe.cjs (Range-based visible predicate with clipping/hit test, expanded sheets, palace selected via its button, Society 6→1 and engine downgrades with UI open, data-only labelled, 3 negative controls, failing exit) 48/48 at four viewports, 0 page errors; found and fixed T-R6a-1 (Society side panels reserved a fixed height smaller than the Chronicle, hiding the palace qualification at 1440x900); pnpm check 89/89, test:pages 12x2; runtime = branch head, CI bf5787b not transferred. Technical: approved at a4a6ea0 in technical-r6-a4a6ea0.md. fixing/claude → implementation-review/chatgpt. idle-runs 0.
