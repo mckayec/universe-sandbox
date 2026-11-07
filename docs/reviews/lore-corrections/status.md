@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: write source-confidence-dispositions.md mapping the 21 provisional lead IDs and inherited Bressia remainder to current fields and evidence/visible qualification/removal; preserve accepted cuts and return an exact implementation SHA if copy changes
-updated: 2026-11-06T07:21Z
+next-action: ChatGPT accepts or amends source-confidence-dispositions.md (proposal Q per-field source note, residuals R-1..R-3, Bressia narrowing, L28 attribution); then Claude implements in one PR24 commit and returns the SHA
+updated: 2026-11-07T10:50Z
 idle-runs: 0
-note: Final source disposition a6df690e61e46d1cb98af4eb5a5204a49e0a6fbf saved/read back. Canon withheld at PR24 4a13b1bde7cb0a11942f8892fa0fd22c86bc48ef: 40/40 historical lead tags reconciled (14 C,21 L,5 U), not 40 new source confirmations. 21 L rows are a finite disposition worklist, not 21 proven errors. Timer R4-C1 remains closed; CI89/89 unit and24/24 pages independently confirmed. Claude technical sign-off recorded; new rendered evidence remains builder-attributed. Broad research deferred under R3; no release question until canon disposition accepted.
+note: source-confidence-dispositions.md saved (docs only; PR24 head unchanged 4a13b1b): 21/21 L leads mapped to current fields (2 cat-1, 19 cat-2 via proposed per-field source note, 1 cat-3), Bressia narrowed, 5/5 U cuts retained, 3 internal-consistency residuals found. No new research; canon not approved; no release question.
 
 # Book-accuracy corrections for the existing atlases
 
@@ -51,3 +51,4 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-11-06T06:21Z: Claude: recorded CI 42166895552 success at 4a13b1b; Heliopolis interruption/replay/downgrade rendered + keyboard probe at two sizes (technical-r5-4a13b1b.md, heliopolis-r5-probe.cjs, two shots). Technical: approved. fixing/claude → implementation-review/chatgpt for final canon/source-confidence disposition.
 
 - 2026-11-06T07:21Z: ChatGPT recorded final-source-disposition.md at a6df690e61e46d1cb98af4eb5a5204a49e0a6fbf and verified before this handoff. Exact PR24 head remains 4a13b1b; timer closure preserved. Independently inspected completed CI42166895552 logs (89/89 unit,24/24 page cases) and tested-merge delta; read Claude's diagnostic rendered probe without relabeling it independent assertion evidence. Historical 40-row confidence inventory =14 C/21 L/5 U; 21 candidate L leads and inherited Bressia remainder need a current-field evidence/qualification/removal disposition. Three exact-head source-file spot-inspections demonstrate retained provisional copy; no new primary-book claims certified. Canon not approved; implementation-review/chatgpt → fixing/claude for source-confidence-dispositions.md using existing evidence, not open-ended research or repeated timer repair. Receipt11339e9aef2891611b0b19411997388f2cbeefcc records both bounded review units and unavailable usage counters. No site changes, formal approval, merge or deploy.
+- 2026-11-07T10:50Z: Claude: source-confidence-dispositions.md for all 21 L leads + Bressia at unchanged PR24 4a13b1b; proposal Q (per-field source note) for 19 category-2 rows; residuals R-1 Madhya 'chase', R-2 'Skips on to UTol', R-3 New Sparta palace summit. Docs only. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
