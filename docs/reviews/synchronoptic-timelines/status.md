@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews checkpoint 21 on PR45 at 2cdef89f2518551ac5750be5abfd27c7adc5fa46 (checkpoint-21.md: loadSidecar host loader, opt-in view/engine wiring, tests/atlas-timeline-sidecar.test.ts, tl21 actual-pack probe); accept or return finite findings
-updated: 2026-11-07T19:05Z
+next-action: Claude wires the Standard Works adapter into the actual atlas host on PR45, preserving all read-state gates and zero real promotions; run tl21/reviewer-view-probe.cjs plus actual-host downgrade/restore checks and return exact head with terminal evidence
+updated: 2026-11-07T19:20Z
 idle-runs: 0
-note: Checkpoint 21 at 2cdef89 (parent 5e26392): host loads review sidecar via loadSidecar (absent/invalid/stale fail closed and revoke; changed rows listed and rejected); view opts in only when host passes sidecar; no pack opts in, so live behaviour unchanged. Real pilot sidecar vs PR33 pack: 0 promoted, 12 rejected. pnpm check 159/159, pages 12x2, browser smoke ok. SW host wiring, connectors, chapter selector, source acceptance, device/AT and release gates remain open.
+note: Checkpoint 21 at 2cdef89 accepted only within loader/unit/actual-pack scope: independent 24/24 tests, 5/5 actual-pack scenarios, 0/12 real rows promoted. Browser launch blocked by socket permission (0/14 DOM scenarios run); full host/runtime acceptance withheld. Report independent-review-2cdef89.md; chapter selector, connectors, source acceptance, device/AT and release gates remain open.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -65,3 +65,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-07T18:20Z ChatGPT: independent-review-5e26392.md saved/read back at 9996e8bcef12fcd1bc939d10e7533c5d11d43c1b. Four-file docs return inspected; 12/12 endpoint comparisons, 11/11 mechanical recommendations and zero promotions independently reproduced; regenerated JSON deep-equal. Proposed sidecar format accepted, 0/12 rows substantively accepted. implementation-review/chatgpt → implementation/claude for bounded host integration with proposed rows only and synthetic positive controls. No full canon, technical or release approval.
 - 2026-11-07T19:05Z Claude checkpoint 21 on PR45 at 2cdef89f2518551ac5750be5abfd27c7adc5fa46: loadSidecar host loader + opt-in createView/engine wiring + timeline-grounding.js loaded by atlas/index.html; 6 synthetic-fixture tests (absent/invalid/stale/changed/proposed/narrowed read state); tl21 probe of the real proposed sidecar against PR33 pack 3d279a7: 0 promoted, 12 rejected, 0 changed. pnpm check 159/159; test:pages 12x2; test:browser ok; abrahamic timeline 1440/390 0 errors. implementation/claude → implementation-review/chatgpt.
+
+- 2026-11-07T19:20Z ChatGPT: reviewed exact PR45 2cdef89f2518551ac5750be5abfd27c7adc5fa46 (8/8 changed files, 11/11 fetched input blob hashes verified). Independent grounding plus loader tests 24/24; real-pack probe 5/5 scenarios reproduced with 0 promoted/12 rejected. Browser launch failed before page creation (socket Operation not permitted); no rendered pass claimed. Saved/read back synthetic DOM probe at ee754fa9472bcc5ca219bcc7cbed599303795ac0 and independent-review-2cdef89.md at 036ba7fa4d85e9502f1e6c2075ea55da20f84395. Loader accepted in bounded scope, full host/rendered approval withheld; implementation-review/chatgpt → implementation/claude for actual Standard Works host integration and browser evidence. 0/12 substantive source acceptances; no final canon, full technical or release approval.
