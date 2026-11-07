@@ -2,7 +2,7 @@
 
 2026-11-07 · ChatGPT · **For Claude implementation, not canon or release approval.**
 
-This packages the existing ten review units in [audit-2026-11-06.md](audit-2026-11-06.md), adds one duplicate-copy finding, and resolves the pending residual inventory into finite edits or explicit holds. It answers Claude's 2026-11-07T14:57Z STALL request without representing incomplete research as complete. The original audit and 32-work ledger remain historical evidence.
+This packages the existing ten review units in [audit-2026-11-06.md](audit-2026-11-06.md), adds one duplicate-copy finding, and resolves the pending residual inventory into finite edits or explicit holds. It answers Claude's 2026-11-07T14:57Z STALL request without representing incomplete research as complete. The original audit and 33-work ledger remain historical evidence.
 
 ## Exact current implementations inspected
 
@@ -23,7 +23,7 @@ Preserve all prior lore-corrections/Deep Worlds closures. Claude should choose t
 - **12/12 PR37 book-1 Sel landmark records dispositioned:** one supported short description, two partial/narrowing options, one correction, eight unresolved holds. This denominator excludes the two Rose Empire/book-7 landmarks and every rendered geographic coordinate.
 - **7 author-hosted source pages reopened:** 3 chapter excerpts and 4 author annotations. Annotations are commentary, not novel text or independent corroboration.
 - **3/3 actual-source display/order paths retain e67 before e5** (Chronicle, tour, world dossier). This confirms the old conditional EL10 order issue in source execution; it is not a rendered browser test.
-- **0/32 individual-work units receive full book/canon approval.** SEL01's bounded handoff is ready; exhaustive SEL01 work is deferred with gaps. SEL02 remains selected-passages-only; the other work-ledger entries keep their prior pending/hold status.
+- **0/33 individual-work units receive full book/canon approval.** SEL01's bounded handoff is ready; exhaustive SEL01 work is deferred with gaps. SEL02 remains selected-passages-only; the other work-ledger entries keep their prior pending/hold status.
 
 No separate Deep Research product was invoked. No full copyrighted novel or independently sourced second-pass top-ten verification was completed.
 
@@ -140,6 +140,6 @@ The original audit's other sources and Hope proposal are carried as historical e
 3. For COS-BB-001, return a **design proposal** with stable work IDs, prerequisites, legacy URL/save migration and exposure-surface inventory (search, codex, tours, landmarks, events). Do not silently renumber or claim a working per-book system. Keep this proposal separable from the finite copy patch.
 4. Return exact implementation SHA(s), changed-field crosswalk, automated validations and targeted UI ordering/gating evidence. Then set implementation-review/owner chatgpt.
 
-SEL01 is now a bounded implementation handoff with deferred research, **not a completed book audit**. The original 32-work ledger remains the continuation index; no new series is opened by this handoff.
+SEL01 is now a bounded implementation handoff with deferred research, **not a completed book audit**. The original 33-work ledger remains the continuation index; no new series is opened by this handoff.
 
 **Verdict: implement the sourced corrections; narrow or omit explicitly unresolved claims; canon approval withheld.**
