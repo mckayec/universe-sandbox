@@ -96,7 +96,7 @@
   },
 
   intro: {
-    text: "Twelve thousand years after humanity spread from a forgotten home world, the Galactic Empire rules twenty-five million worlds of the Milky Way from Trantor, a planet roofed over by a single city. Hari Seldon’s psychohistory predicts its fall and thirty thousand years of barbarism, and his Plan sets two Foundations at opposite ends of the Galaxy to cut that dark age to a thousand years. The book buttons follow publication order, so the two prequels, set before the first book, come last.",
+    text: "In the distant future, the Galactic Empire rules twenty-five million worlds from Trantor, a planet covered by a single city. Hari Seldon’s psychohistory predicts its fall and thirty thousand years of barbarism, and his Plan sets two Foundations at opposite ends of the Galaxy to cut that dark age to a thousand years. The book buttons follow publication order, so the two prequels, set before the first book, come last.",
     legend: [
       ["Galaxy", "The real Milky Way. Asimov gave few coordinates, so most worlds are placed by the region the books name and marked estimated"],
       ["Bright points", "Worlds, coloured by their star. The worlds near Sol use the real stars"],
@@ -162,7 +162,7 @@
      {id: "sacratorium", name: "The Sacratorium", rel: {to: "mycogen", dlat: 4, dlon: 5}, books: [6], desc: "Mycogen’s temple, where Seldon and Dors break in looking for an ancient robot and are caught."},
      {id: "dahl", name: "Dahl", lat: -24, lon: -96, books: [6, 7], desc: "A poor, proud sector whose heat-sink workers tap the planet’s inner heat for power. Seldon meets the heat-sinker Yugo Amaryl, who becomes his partner in psychohistory."},
      {id: "billibotton", name: "Billibotton", rel: {to: "dahl", dlat: -6, dlon: -8}, books: [6], desc: "Dahl’s notorious slum, where Seldon and Dors find the street boy Raych and the old woman Mother Rittah, who tells them legends of Earth."},
-     {id: "wye", name: "Wye", lat: -80, lon: 30, books: [6, 7], desc: "A powerful sector at the south pole, ruled by Mayor Mannix IV. His daughter Rashelle kidnaps Seldon to lend her coup legitimacy; Demerzel crushes it."}
+     {id: "wye", name: "Wye", lat: -80, lon: 30, books: [6, 7], desc: "A powerful sector near the south pole, ruled by Mayor Mannix IV. His daughter Rashelle kidnaps Seldon to lend her coup legitimacy; Demerzel crushes it."}
    ]},
 
   {id: "neotrantor", name: "Neotrantor", aka: ["Delicass"], group: "core", books: [2], first: 2, status: "Last seat of the Empire",
@@ -261,7 +261,7 @@
   {id: "loris", name: "Loris", group: "periphery", books: [2], first: 2, status: "Foundation world",
    star: {name: "Loris’s sun", col: "#fff0d8"},
    at: {of: "terminus", spread: 1.6}, est: true, /* about 20 pc from Terminus (planet list) */
-   blurb: "A Foundation world some twenty parsecs from Terminus, known for its wine. It marks the deepest point of Bel Riose’s advance into Foundation space.",
+   blurb: "A Foundation world reached by Bel Riose’s campaign.",
    gfx: {type: "terran", sea: .45, freq: 1.7, pal: ["#0c2034", "#2c5c7c", "#4e6a34", "#6e7a40", "#7a6a50", "#eeeae0"], clouds: .4, atmo: "#88aaff", lights: .3,
          feat: [{k: "biome", style: "farm", at: [30, 10], r: 14, s: .7, c: "#6a5a3a"}]}},
 
