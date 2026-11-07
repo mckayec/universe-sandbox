@@ -194,7 +194,7 @@ const WORLDS=[
   feat:[{k:"basin",at:[30,-40],r:5,s:.7},{k:"biome",style:"rock",at:[30,-40],r:3.5,s:1,c:"#1a1a1c"}]},
  sites:[{id:"camp",name:"The Emperor’s Camp",lat:24,lon:-30,books:[5],desc:"A moving city of grounded ships around the Emperor’s flagship, the Radiant Dawn."},{id:"rothsmoor",name:"Rothsmoor",lat:30,lon:-40,books:[5],desc:"The ruined old capital. In its ruins the Emperor tells Hadrian what his secret service knows about dead civilizations."}]},
 
-{id:"ganelon",name:"Ganelon",aka:["VA-639D"],group:"centaurus",books:[5],first:5,status:"MINOS research base",map:[15.4,17.3],est:true,
+{id:"ganelon",name:"Ganelon",group:"centaurus",books:[5],first:5,status:"MINOS research base",map:[15.4,17.3],est:true,
  star:{name:"Unnamed sun",col:"#ffd8b0"},
  blurb:"A half-barren world where the machine cult MINOS breeds a plague for the Cielcin. Hadrian leads a strike that destroys its tower, and a Jaddian prince arrives who turns out to be an old friend from Emesh.",
  gfx:{type:"barren",sea:.2,pal:["#2a2420","#3a322a","#5a4e40","#6a5c4a","#7a6c5a","#d8d0c4"],rough:.7,clouds:.15,atmo:"#d0b898",atmoK:.4},
@@ -555,7 +555,7 @@ const CHARACTERS=[
  {name:"Aranata Otiolo",role:"Cielcin prince",books:[2],desc:"Prince of Clan Otiolo, who comes to Vorgossos to bargain and beheads Hadrian; brought back by the Quiet, Hadrian kills it."},
  {name:"Otavia Corvo",role:"Captain",books:[2,3,4],desc:"A Norman captain who joins Hadrian and commands his ships.",more:[[4,"She dies at Akterumu."]]},
  {name:"Lorian Aristedes",role:"Tactical officer",books:[3,4,5,6,7],desc:"A brilliant, frail officer of the Red Company.",more:[[4,"He alone is spared at Akterumu, to carry the news."],[6,"He took Hadrian’s place on Belusha and returns as an Extrasolarian captain."]]},
- {name:"William XXIII",role:"Emperor",books:[3,5,6,7],desc:"Emperor of the Solar Throne for some seventeen centuries, and Hadrian’s patron.",more:[[5,"Hadrian breaks his nose."],[7,"William names Hadrian Auctor of the Imperium."]]},
+ {name:"William XXIII",role:"Emperor",books:[3,5,6,7],desc:"Emperor of the Solar Throne and Hadrian’s patron. His reign of some seventeen centuries is a provisional account based on the Sun Eater fan wiki; not independently checked against the novels.",more:[[5,"Hadrian breaks his nose."],[7,"William names Hadrian Auctor of the Imperium."]]},
  {name:"Princess Selene",role:"Imperial princess",books:[3,6,7],desc:"The Emperor’s daughter, betrothed to Hadrian for political reasons."},
  {name:"Prince Alexander",role:"Squire",books:[3,5,6,7],desc:"A young prince who serves as Hadrian’s squire.",more:[[7,"He becomes Hadrian’s enemy and takes the throne."]]},
  {name:"Syriani Dorayaica",role:"Prince of Princes",books:[3,4,5,6,7],desc:"A Cielcin prophet-prince who serves the Watcher Miudanar and gathers the clans to war.",more:[[4,"Crowned at the Black Feast of Akterumu."],[7,"Destroyed in the final battle."]]},

@@ -247,3 +247,7 @@ disabled the generation, active-instance and handler guards each still block the
 `pnpm check` 89/89, `pnpm test:pages` 12 pages x 2 viewports. `pnpm test:browser` passed (one earlier attempt
 did not start because CHROME_PATH pointed at a browser that is not installed; that was a setup error, not a test result). No rendered or device check of the
 Heliopolis scene was run for this change; earlier rendered/mobile/keyboard gates stay open at their recorded scope.
+
+## Revision 6 — source-confidence batch (2026-11-07)
+
+Implements ChatGPT's source-confidence-proposal-review.md (main 9ef2f2d) as inline, reader-visible qualifications in the effective visible copy (no new renderer, no schema change, no change to existing source metadata), plus the accepted narrowings R-1, R-2, R-3, Bressia and L28, and the L4 alias removal. Each qualification sits in the same string as the claim, so it carries that string's existing gate and disappears with it on downgrade. Two hover-card `short` summaries that repeated qualified claims (Leuctra, Pallas) were made neutral. Full field manifest: docs/reviews/lore-corrections/source-confidence-implementation.md on main. Probe: source-confidence-probe.cjs (29 cases per viewport).

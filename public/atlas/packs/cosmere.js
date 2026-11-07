@@ -310,7 +310,7 @@
          5: {status: "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"},
          8: {blurb: "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."},
          12: {status: "Retribution’s world · cut off in slowed time",
-              blurb: "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule.",
+              blurb: "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule. Provisional account based on the Coppermind wiki; not independently checked against the book.",
               gfx: {clouds: .7, cloudCol: "#4a3540", atmo: "#c04a48", lights: .15}}
        },
        facts: [["Order", "2nd from the sun"], ["Shards", "Honor, Cultivation, Odium"], ["Moons", "Salas, Nomon, Mishim (a fourth broke up long ago)"], ["Gravity", "About 0.7 g; no axial tilt"], ["Day", "20 hours; about 500 days a year"]],
@@ -622,7 +622,7 @@
        star: {name: "Canticle’s sun", col: "#fff0c0"}, map: U.canticle, est: true, distText: SCHEM, hero: "union",
        blurb: "A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, rings light its night side, and a firestorm sweeps the sunset line. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.",
        short: "Cities racing the dawn: The Sunlit Man.",
-       eras: {12: {blurb: "A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol."}},
+       eras: {12: {blurb: "A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then moves on to another world. Identifying Nomad as Sigzil is a provisional account based on the Coppermind wiki; not independently checked against the book."}},
        facts: [["Hazard", "Sunlight that burns"], ["Power", "Sunhearts"], ["Ruler", "The Cinder King"], ["Rings", "Yes, lighting the night side"]],
        ring: {inner: 1.5, outer: 2.3, c1: "#c8a080", c2: "#806050", tilt: .2},
        gfx: {type: "lava", sea: .35, freq: 1.8, rough: .9, pal: ["#1a0a08", "#3a1a10", "#3a3030", "#4a3a34", "#6a5a50", "#a09088"],
@@ -646,7 +646,7 @@
       /* worlds named in the books but never visited on the page (Coppermind: Physical Realm) */
       {id: "obrodai", name: "Obrodai", group: "named", books: [8], first: 8, status: "Claimed by Autonomy",
        star: {name: "Unknown", col: "#e8e0d0"}, map: U.obrodai, est: true, distText: SCHEM,
-       blurb: "Named in a letter from Patji to Hoid in Oathbringer’s epigraphs: Autonomy has claimed it and is raising an avatar there, and Hoid is warned not to come back. Nothing else is known; this surface is a placeholder.",
+       blurb: "Named in a letter from Patji to Hoid in Oathbringer’s epigraphs: Autonomy has claimed it and is raising an avatar there, and Hoid is warned not to come back. Nothing else is known; this surface is a placeholder. Identifying the letter’s writer as Patji is a provisional account based on the Coppermind wiki; not independently checked against the book.",
        facts: [["Named in", "Oathbringer"], ["Shard", "Autonomy"]], gfx: rock(["#3a3428", "#5a5040", "#7a7058", "#8a8068", "#a09880", "#e4e0d4"], {atmoK: .5, atmo: "#d8d0b8"})},
       {id: "vax", name: "Vax", group: "named", books: [7], first: 7, status: "World with its own Investiture",
        star: {name: "Unknown", col: "#e8e0d0"}, map: U.vax, est: true, distText: SCHEM,
@@ -715,7 +715,7 @@
       /* V Words of Radiance */
       {id: "e22", book: 5, world: "roshar", site: "narak", title: "To the centre of the Plains", text: "Dalinar marches on the Parshendi city as they summon a new storm from the west."},
       {id: "e23", book: 5, world: "roshar", site: "urithiru", title: "Urithiru found", text: "Shallan opens the Oathgate and leads the armies to the lost tower city."},
-      {id: "e24", book: 5, world: "roshar", title: "Kaladin’s Third Ideal", text: "At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar."},
+      {id: "e24", book: 5, world: "roshar", title: "Kaladin’s Third Ideal", text: "At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Provisional account based on the Coppermind wiki; not independently checked against the book."},
       {id: "e25", book: 5, world: "braize", title: "Damnation named", text: "The Heralds’ torment between Desolations is laid bare, and the Everstorm brings the return of something long imprisoned."},
       /* VI Wax & Wayne */
       {id: "e26", book: 6, world: "scadrial", site: "elendel", title: "Home from the Roughs", text: "Waxillium Ladrian returns to Elendel to run his house, and is pulled back into lawkeeping by a run of train heists."},
@@ -757,7 +757,7 @@
       {id: "e56", book: 12, world: "roshar", site: "shinovar", title: "Kaladin and Szeth in Shinovar", text: "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."},
       {id: "e57", book: 12, world: "roshar", site: "thaylen", title: "Fronts falling", text: "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."},
       {id: "e58", book: 12, world: "roshar", site: "urithiru", title: "Retribution", text: "Dalinar renounces Honor’s power. Odium absorbs it, kills the Stormfather and becomes Retribution."},
-      {id: "e59", book: 12, world: "roshar", title: "Stormfall", text: "Retribution’s ascension ends the old storms and leaves Roshar isolated in slowed time."},
+      {id: "e59", book: 12, world: "roshar", title: "Stormfall", text: "Retribution’s ascension ends the old storms and leaves Roshar isolated in slowed time. Provisional account based on the Coppermind wiki; not independently checked against the book."},
       {id: "e60", book: 12, world: "scadrial", title: "Hoid seeks help", text: "In the epilogue Hoid travels to Scadrial to look for allies against Retribution."},
       {id: "e61", book: 12, world: "firstsun", site: "patjiseye", title: "Through Patji’s Eye", text: "Dusk leaves his world through the Eye, searching for help against the Ones Above."},
       {id: "e62", book: 12, world: "emberdark", site: "hiddengate", title: "Dusk and Starling", text: "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."},
@@ -800,7 +800,7 @@
         {name: "Khriss", role: "Scholar of Darkside", books: [7], desc: "A worldhopping scholar whose essays explain the cosmere’s rules."},
         {name: "Tress", role: "Cup collector", books: [11], desc: "A practical girl from the Rock who becomes a captain."},
         {name: "Yumi and Nikaro", role: "Komashi", books: [11], desc: "A spirit-honouring stone-stacker and a nightmare painter."},
-        {name: "Nomad", role: "Worldhopper", books: [11], desc: "A haunted traveller on the run from the Night Brigade.", more: [[12, "He is Sigzil of Bridge Four."]]},
+        {name: "Nomad", role: "Worldhopper", books: [11], desc: "A haunted traveller on the run from the Night Brigade.", more: [[12, "He is Sigzil of Bridge Four. This identification is a provisional account based on the Coppermind wiki; not independently checked against the book."]]},
         {name: "Dusk", role: "Trapper of Patji", books: [7, 12], first: 7, desc: "A trapper who survives Patji by knowing its rules and by his Aviar.", more: [[12, "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."]]},
         {name: "December", role: "Miral", books: [12], desc: "An orphan who bonds with a demon and tries to warn a kingdom of plague."}
       ]},

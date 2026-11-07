@@ -157,10 +157,10 @@ POIS.venus=[
  {id:"rath",name:"House Valii-Rath",lat:-22,lon:60,desc:"Where Apollonius au Valii-Rath takes back his house’s forces from his brother Tharsus in Iron Gold."}
 ];
 POIS.earth=[
- {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:6,desc:"Atalantia’s African seat, where she pressures Lysander before the summit."},
+ {id:"newsparta",name:"New Sparta",lat:4,lon:24,site:"newsparta",from:6,desc:"Atalantia’s African seat, where she pressures Lysander before the summit. Provisional account based on the Red Rising fan wiki and Book Series Recaps; not independently checked against the novels."},
  {id:"deepgrave",name:"Deepgrave",lat:38,lon:-38,from:4,desc:"A prison beneath the Atlantic. Darrow’s team raids it in Iron Gold and frees Apollonius au Valii-Rath."},
  {id:"greenland",name:"Greenland base",lat:72,lon:-42,from:4,desc:"Darrow’s hidden base on Earth in Iron Gold."},
- {id:"rome",name:"Rome",lat:41.9,lon:12.5,from:6,desc:"Atalantia convenes the Two Hundred in Rome’s Colosseum."}
+ {id:"rome",name:"Rome",lat:41.9,lon:12.5,from:6,desc:"Atalantia convenes the Two Hundred in Rome’s Colosseum. Provisional account based on the Red Rising fan wiki and Book Series Recaps; not independently checked against the novels."}
 ];
 POIS.luna.push(
  {id:"silene",name:"Lake Silene",lat:14,lon:34,from:4,desc:"Silene Manor stands here, where Darrow gives Pax his gravBike key and says goodbye before escaping."},
@@ -175,7 +175,7 @@ POIS.phobos.push({id:"nucleus",name:"The Nucleus",lat:-30,lon:90,from:4,site:"ph
 POIS.io.push(
  {id:"garter",name:"Demeter’s Garter",lat:0,lon:-60,site:"garter",desc:"The equatorial farm belt that grows most of the Rim’s food. In Light Bringer, Lysander bombards it."},
  {id:"sungrave",name:"Sungrave",lat:-18,lon:70,from:4,desc:"City of House Raa on Io, where Lysander and Cassius are brought as prisoners in Iron Gold."},
- {id:"bleeding",name:"The Bleeding Place",lat:26,lon:110,from:4,desc:"The dueling ground of the Raa. Cassius kills Bellerephon here in Iron Gold, and Lysander reveals who he is."}
+ {id:"bleeding",name:"The Bleeding Place",lat:26,lon:110,from:4,desc:"The dueling ground of the Raa. Cassius kills Bellerephon here in Iron Gold, and Lysander reveals who he is. Provisional account based on the Red Rising fan wiki; not independently checked against the novels."}
 );
 POIS.europa.push({id:"athena",name:"Daughters of Athena",lat:-20,lon:60,from:6,site:"europa",focus:"athena",desc:"A base hidden beneath Europa’s ocean. In Light Bringer, Athena tries Darrow and Diomedes here, and Sevro talks her into sparing them."});
 POIS.asteroid=[{id:"base",name:"Tabula Rasa",lat:10,lon:0,site:"asteroid",desc:"Quicksilver’s secret base inside the asteroid, and the generation ship he has built in place of a fleet."}];
@@ -192,7 +192,7 @@ EVENTS.push(
  {id:"g5",book:4,body:"luna",poi:"hyperion",lm:"lostcity",title:"The kidnapping",text:"Ephraim’s crew downs the Telemanus shuttle and takes Pax and Electra. Lyria escapes the kidnappers through the Lost City."},
  {id:"g6",book:4,body:"earth",poi:"deepgrave",title:"Deepgrave",text:"Darrow’s team raids the prison beneath the Atlantic and frees Apollonius au Valii-Rath to lead them to the Ash Lord."},
  {id:"g7",book:4,body:"venus",poi:"gorgon",lm:"keep",title:"The Ash Lord’s end",text:"Darrow storms Gorgon Isle and finds Magnus au Grimmus dying of poison. He learns that Atalantia leads the Society and that Pax and Electra were taken. Magnus is burned alive."},
- {id:"g8",book:4,body:"io",poi:"bleeding",title:"The Bleeding Place",text:"Prisoners of the Rim, Lysander and Cassius are brought to Io. Cassius kills Bellerephon in the Bleeding Place, Lysander reveals his name, and Dido’s coup topples Romulus, who dies."},
+ {id:"g8",book:4,body:"io",poi:"bleeding",title:"The Bleeding Place",text:"Prisoners of the Rim, Lysander and Cassius are brought to Io. Cassius kills Bellerephon in the Bleeding Place, Lysander reveals his name, and Dido’s coup topples Romulus, who dies. Provisional account based on the Red Rising fan wiki; not independently checked against the novels."},
  {id:"g9",book:4,body:"luna",poi:"endymion",title:"Endymion",text:"Ephraim frees Pax and Electra from the Duke of Hands’ vault in Endymion. When the Syndicate Queen seizes their ship, he crashes it."},
  {id:"g10",book:4,body:"io",poi:"sungrave",title:"A new alliance",text:"Lysander proposes an alliance between the Rim and the Society, and Dido accepts. Darrow returns to Mercury, where Atalantia’s forces are massacring the people."},
  /* DARK AGE */
@@ -216,8 +216,8 @@ EVENTS.push(
  /* LIGHT BRINGER */
  {id:"l1",book:6,body:"mercury",poi:"heliopolis",lm:"bay",title:"The Lightbringer",text:"Eight months after Mercury falls, Lysander unveils the rebuilt Morning Star above Heliopolis, renamed the Lightbringer."},
  {id:"l2",book:6,body:"belt",where:"Marcher, a trash moon",title:"Marcher",text:"Darrow and barely two hundred survivors, later joined by Colloway’s two thousand, hide for months on a trash moon with the crippled Archimedes."},
- {id:"l3",book:6,body:"earth",poi:"newsparta",lm:"palace",title:"New Sparta",text:"Atalantia pressures Lysander at New Sparta, using Glirastes as leverage."},
- {id:"l3b",book:6,body:"earth",poi:"rome",title:"The Two Hundred",text:"Lysander defies Atalantia at the summit and gathers support for attacking Mars."},
+ {id:"l3",book:6,body:"earth",poi:"newsparta",lm:"palace",title:"New Sparta",text:"Atalantia pressures Lysander at New Sparta, using Glirastes as leverage. Provisional account based on the Red Rising fan wiki and Book Series Recaps; not independently checked against the novels."},
+ {id:"l3b",book:6,body:"earth",poi:"rome",title:"The Two Hundred",text:"Lysander defies Atalantia at the summit and gathers support for attacking Mars. Provisional account based on the Red Rising fan wiki and Book Series Recaps; not independently checked against the novels."},
  {id:"l4",book:6,body:"venus",poi:"vdocks",lm:"coliseum",fx:"venusdocks",title:"The Hanging Coliseum",text:"Darrow and Cassius are caught at Venus. Darrow loses a razor duel in the Hanging Coliseum, then Sevro blows up the dockyards and they escape."},
  {id:"l5",book:6,body:"asteroid",poi:"base",lm:"tabula",title:"The Tabula Rasa",text:"In the asteroid belt, Darrow finds Quicksilver’s secret: not a fleet, but a generation ship to carry children beyond the Solar System."},
  {id:"l6",book:6,body:"phobos",poi:"phobosport",fx:"phobosfall",title:"Fall of Phobos",text:"Mercury’s railguns batter Phobos’s defenses and Lysander rams its shield with crewless destroyers. Phobos falls; Victra and Thraxa kill Ajax."},
@@ -253,7 +253,7 @@ Object.assign(FX_VIEW,{
   set("raaseat",{lat:17,lon:59,desc:"North of the Garter, Io’s old capital and seat of House Raa during the Second Moon Lord Rebellion. Romulus au Raa meets Darrow on Io in Morning Star."});
   set("garter",{lat:0,lon:20,desc:"The belt of farmland around Io’s equator, growing more than half of the Rim’s food. In Light Bringer, Lysander bombards it."});
   set("sungrave",{lat:-19,lon:3,desc:"Io’s most famous city, south-west of Plutus, and its capital by Iron Gold. Lysander and Cassius are brought here as prisoners."});
-  set("bleeding",{lat:-15,lon:10,desc:"The dueling ground of the Raa. Cassius kills Bellerephon here in Iron Gold, and Lysander reveals who he is."});
+  set("bleeding",{lat:-15,lon:10,desc:"The dueling ground of the Raa. Cassius kills Bellerephon here in Iron Gold, and Lysander reveals who he is. Provisional account based on the Red Rising fan wiki; not independently checked against the novels."});
   io.push(
    {id:"plutus",name:"Plutus",lat:9,lon:43,from:4,desc:"Just south of Nesos on the Garter’s edge: the administrative heart of the farm belt."},
    {id:"ioinst",name:"The Institute of Io",lat:78,lon:20,desc:"The Rim’s Institute, in the frozen far north at the edge of the Yellow Sea. The most brutal of them all, so cold that blood freezes before it can drip."},
@@ -280,8 +280,8 @@ Object.assign(FX_VIEW,{
 /* ---- the far Rim ---- */
 const _FAR=[
  {id:"rhea",name:"Rhea",parent:"saturn",kind:"callisto",a:6.2,size:.26,period:16,phase:.4,group:"Saturn",moon:true,epithet:"The burned moon",control:"Dead since 701 PCE",
-  blurb:"Once the seat of the Rim’s government. When the Moon Lords rose against Octavia au Lune, the Ash Lord’s fleet burned Rhea with atomics and some sixty million died. The Rim has remembered ever since.",sw:"#5a524c",
-  facts:[["Burned","701 PCE, First Moon Lord Rebellion"],["Ordered by","Sovereign Octavia au Lune"],["Carried out by","Magnus au Grimmus, the Ash Lord"],["Dead","About 60 million"]]},
+  blurb:"Once the seat of the Rim’s government. When the Moon Lords rose against Octavia au Lune, the Ash Lord’s fleet burned Rhea with atomics and some sixty million died. The Rim has remembered ever since. The date and details are a provisional account based on the Red Rising fan wiki; not independently checked against the novels.",sw:"#5a524c",
+  facts:[["Burned","701 PCE, First Moon Lord Rebellion"],["Ordered by","Sovereign Octavia au Lune"],["Carried out by","Magnus au Grimmus, the Ash Lord"],["Dead","About 60 million"],["Source","Red Rising fan wiki; not independently checked against the novels"]]},
  {id:"uranus",name:"Uranus",parent:"sun",kind:"saturn",a:92,size:1.55,period:330,phase:.7,group:"Uranus",epithet:"Ice giant of the outer dark",control:"Unknown",
   blurb:"The ice giant beyond Saturn. The books barely mention it; it is shown here to complete the Solar System.",sw:"#9fd6dc"},
  {id:"neptune",name:"Neptune",parent:"sun",kind:"saturn",a:112,size:1.5,period:430,phase:.08,group:"Neptune",epithet:"Ice giant at the Society’s edge",control:"The Society",
@@ -289,7 +289,7 @@ const _FAR=[
  {id:"triton",name:"Triton",parent:"neptune",kind:"callisto",a:3.6,size:.27,period:12,phase:.3,group:"Neptune",moon:true,epithet:"Lovelock moon",control:"The Society",
   blurb:"Neptune’s great moon, warmed by Lovelock Engines at both poles. In the Sons of Ares comics, Fitchner au Barca governs it after a quake throws the northern engine into the sea. Its ArchGoverness is killed at the Gala Massacre in Golden Son.",sw:"#c9d4dc"},
  {id:"pluto",name:"Pluto",parent:"sun",kind:"callisto",a:130,size:.3,period:560,phase:.5,group:"Kuiper",epithet:"A world under construction",control:"The Society’s frontier",
-  blurb:"Months from the Core and still being terraformed: domes and shield lattices creep across the great heart-shaped plain. In Golden Son, Sevro and the Howlers are posted out here, far from Darrow.",sw:"#d8c8b0"}
+  blurb:"Months from the Core and still being terraformed: domes and shield lattices creep across the great heart-shaped plain. In Golden Son, Sevro and the Howlers are posted out here, far from Darrow (a provisional account based on the Red Rising fan wiki; not independently checked against the novels).",sw:"#d8c8b0"}
 ];
 BODIES.splice(BODIES.findIndex(b=>b.id==="saturn")+1,0,..._FAR);
 
@@ -367,16 +367,16 @@ BODIES.splice(BODIES.findIndex(b=>b.id==="saturn")+1,0,..._FAR);
   BODIES.find(b=>b.id==="triton").retro=true;
 })();
 
-POIS.rhea=[{id:"rheacities",name:"The burned cities",lat:8,lon:12,desc:"Glass craters where the Rim’s capital stood. The ArchGovernor of Rhea died in the burning, after striking the Ash Lord with his scepter for urging him to submit."}];
+POIS.rhea=[{id:"rheacities",name:"The burned cities",lat:8,lon:12,desc:"Glass craters where the Rim’s capital stood. In Octavia’s telling, the ArchGovernor of Rhea died in the burning after striking the Ash Lord with his scepter for urging him to submit."}];
 POIS.triton=[{id:"lovelockn",name:"North Lovelock Engine",lat:84,lon:0,desc:"One of the two pole engines warming Triton. In the Sons of Ares comics a geyser quake throws it into the sea."},
  {id:"lovelocks",name:"South Lovelock Engine",lat:-84,lon:0,desc:"The southern pole engine."},
  {id:"cryssos",name:"Cryssos",lat:28,lon:-60,desc:"A Red settlement on Triton, home of Bryn, in the Sons of Ares comics."}];
 POIS.pluto=[{id:"heart",name:"The terraforming works",lat:22,lon:-178,desc:"The great plain where Pluto’s terraforming has begun: seas, domes and shield lattices, still under construction."}];
 POIS.neptune=[];POIS.uranus=[];
 EVENTS.push(
- {id:"r1",book:2,body:"rhea",poi:"rheacities",title:"Memory of Rhea",text:"Golden Son recalls how Rhea burned in 701 PCE: on Octavia’s order, the Ash Lord’s fleet ended the First Moon Lord Rebellion by killing some sixty million people. The Rim never forgets."},
+ {id:"r1",book:2,body:"rhea",poi:"rheacities",title:"Memory of Rhea",text:"Golden Son recalls how Rhea burned in 701 PCE: on Octavia’s order, the Ash Lord’s fleet ended the First Moon Lord Rebellion by killing some sixty million people. The Rim never forgets. Provisional account based on the Red Rising fan wiki; not independently checked against the novels."},
  {id:"r2",book:3,body:"rhea",poi:"rheacities",title:"Never again",text:"Darrow reveals that Octavia has stockpiled warheads to burn the Rim again, and the memory of Rhea helps bring the Moon Lords into the fight against her."},
- {id:"r3",book:2,body:"pluto",poi:"heart",title:"Exiled to Pluto",text:"Sevro and the Howlers are posted to distant Pluto, keeping them from Darrow, before they return for the Summit on Luna."}
+ {id:"r3",book:2,body:"pluto",poi:"heart",title:"Exiled to Pluto",text:"Sevro and the Howlers are posted to distant Pluto, keeping them from Darrow, before they return for the Summit on Luna. Provisional account based on the Red Rising fan wiki; not independently checked against the novels."}
 );
 
 /* ---- 09-index.js ---- */
@@ -2630,7 +2630,7 @@ function ground(x,z){let h=(N.f(x*.0005,0,z*.0005,5)-.5)*90;h+=sst(5000,9000,Mat
   const kop=Math.hypot(x,z);h+=sst(900,200,kop)*160;return h;}
 function color(x,z,h,sl){const n=N.f(x*.002,3,z*.002,3);let c=mixc([176,150,90],[150,140,80],n);c=mixc(c,[108,120,64],sst(.6,.75,N.f(x*.0015,5,z*.0015,3)));if(sl>.5)c=mixc(c,[130,96,70],(sl-.5)*1.5);return c;}
 SITES.newsparta={name:"New Sparta",body:"earth",poi:"newsparta",epithet:"Earth · Africa · seat of Atalantia",seed:171,
-  blurb:"Atalantia au Grimmus rules the Society from New Sparta, a fortress city rising from the African plains. In Light Bringer she summons Lysander here and coerces him with Glirastes as hostage, but at the summit of the Two Hundred he wins the vote to strike Mars first.",
+  blurb:"Atalantia au Grimmus rules the Society from New Sparta, a fortress city rising from the African plains. In Light Bringer she summons Lysander here and coerces him with Glirastes as hostage, but at the summit in Rome he wins the vote to strike Mars first. Provisional account based on the Red Rising fan wiki and Book Series Recaps; not independently checked against the novels.",
   facts:[["Dictator","Atalantia au Grimmus"],["Setting","The plains of Africa"],["Book","Light Bringer"]],note:"Layout is an artistic reconstruction; the books name New Sparta but say little of its look.",
   ground,bounds:7000,minR:150,maxR:18000,shadow:5200,win:[2.6,2.1],cam:{target:[0,200,0],r:7200,theta:.4,phi:1.12},defaultTod:"dusk",
   skyBody:{id:"luna",dir:[-.4,.35,-.85],size:900},
@@ -2638,7 +2638,7 @@ SITES.newsparta={name:"New Sparta",body:"earth",poi:"newsparta",epithet:"Earth �
     dusk:{top:0x24305a,hor:0xff9a50,bot:0x5a4030,sun:0xffa060,sunEl:.05,sunAz:-.7,sunI:2.5,skyL:0x8a7aa0,gndL:0x4a3428,hemiI:.6,fog:0xc88a5a,fogD:.00005,night:.55,exp:1.05,haze:1},
     night:{top:0x03050c,hor:0x141826,bot:0x0a0a0e,sun:0x9ab0e0,sunEl:.5,sunAz:2.2,sunI:.22,skyL:0x2a3048,gndL:0x0c0a0a,hemiI:.18,fog:0x101218,fogD:.00005,night:1,exp:1.15,stars:1}},
   landmarks:[
-   {id:"palace",name:"Atalantia’s Citadel",pos:[0,900,0],desc:"The Dictator’s seat. Lysander is brought before Atalantia here and coerced. She wants her Iron Rain on Luna, but the Two Hundred vote with him for Mars.",cam:{target:[0,400,0],r:2400,theta:.5,phi:1.05}},
+   {id:"palace",name:"Atalantia’s Citadel",pos:[0,900,0],desc:"The Dictator’s seat. Lysander is brought before Atalantia here and coerced. Provisional account based on the Red Rising fan wiki and Book Series Recaps; not independently checked against the novels.",cam:{target:[0,400,0],r:2400,theta:.5,phi:1.05}},
    {id:"plains",name:"The Plains",pos:[3800,80,2600],desc:"The African savanna around New Sparta, as this atlas imagines it.",cam:{target:[3800,0,2600],r:3000,theta:.9,phi:1.15}},
    {id:"field",name:"Landing Field",pos:[-2600,60,1400],desc:"Where the Society’s ships come down outside the walls.",cam:{target:[-2600,0,1400],r:1800,theta:-.3,phi:1.05}}],
   build(ctx){const R=ctx.R,root=ctx.root;root.add(makeTerrain({size:22000,seg:280,height:ground,color}));
