@@ -1385,11 +1385,11 @@ function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(
   /* straight from the galaxy: no planet is baked; leaving the place descends to the surface then */
   const fromGal=S.view==="galaxy";if(needRealm(w,s))setRealm(needRealm(w,s),true);
   S.site=id;S.lm=null;S.ev=null;if(MOB)dosCollapsed=true;
-  if(!fromHistory&&urlReady){const st={atlasSurface:true,atlasPlace:true};const u=urlFor({view:"place",site:id});
+  if(!fromHistory&&urlReady){const st={atlasSurface:true,atlasPlace:true,atlasEntry:gen};const u=urlFor({view:"place",site:id});
     if(fromGal)history.pushState({atlasSurface:true},"",urlFor({view:"world",site:id}));
     if(history.state&&history.state.atlasPlace)history.replaceState(st,"",u);else history.pushState(st,"",u);}
   const fe=$("#fade");if(fe)fe.dataset.label=s.name;
-  transition(()=>{if(gen!==placeGen||S.site!==id||S.sel!==w.id||!canEnter(WORLD_BY[S.sel]||w,s)){cancelEntry(fromHistory);return;}
+  transition(()=>{if(gen!==placeGen||S.site!==id||S.sel!==w.id||!canEnter(WORLD_BY[S.sel]||w,s)){cancelEntry(fromHistory,gen);return;}
     S.view="place";hideTip();SITE_EL.forEach(o=>{o.el.style.opacity=0;o.el.style.pointerEvents="none";});
     Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
     try{PLACES.enter(w,s,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});}
@@ -1397,9 +1397,11 @@ function enterPlace(id,fromHistory,then){const w=WORLD_BY[S.sel];const s=siteOf(
     PLACES.setIdle(true);viewOffset();S.interacted=false;refreshAll();hint(MOB?UI.hints.placeMob:UI.hints.place);
     if(AUD&&soundOn){if(AUD.on)AUD.place(PLACES.place.sc.kind);}
     if(then)setTimeout(()=>{if(gen===placeGen&&S.view==="place"&&S.sel===w.id&&S.site===id)then();},500);});}
-/* DWR-B: a pending entry superseded before its fade commits builds nothing; drop the place history entry it pushed */
-function cancelEntry(fromHistory){if(S.view==="place")return;
-  if(!fromHistory&&urlReady&&history.state&&history.state.atlasPlace){try{history.replaceState({atlasSurface:true},"",urlFor());}catch(e){}}
+/* DWR-B: a pending entry superseded before its fade commits builds nothing; drop the place history entry it pushed.
+   DWH-01: only the entry this call created (atlasEntry===gen) is dropped, never a newer pending entry's marker. */
+function cancelEntry(fromHistory,gen){if(S.view==="place")return;
+  const hs=!fromHistory&&urlReady?history.state:null;
+  if(hs&&hs.atlasPlace&&hs.atlasEntry===gen){try{history.replaceState({atlasSurface:true},"",urlFor());}catch(e){}}
   refreshAll();}
 function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;history.back();return;}doLeavePlace(after);}
 function doLeavePlace(after){placeGen++;if(AUD)AUD.leave();
