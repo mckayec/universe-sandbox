@@ -19,13 +19,13 @@ copy of the host gate (engine.js `treeNodeSeen` book gate, chapter gate with no 
 count both equal to the expected edge count, and `AtlasTimeline.visible()` with the same predicate agreeing. Run in
 five states per width/variant (20 comparisons, all exact):
 
-| state | records | edges |
-| --- | --- | --- |
-| All books, all layers | 1714 | 342 |
-| NT layer off (host chip) | 1428 | 316 |
-| NT layer back on | 1714 | 342 |
-| fresh load `layers=ot,bom,dc,pgp` | 1428 | 316 |
-| Old Testament only (book gate, mode `single`) | 526 | 52 |
+| state                                         | records | edges |
+| --------------------------------------------- | ------- | ----- |
+| All books, all layers                         | 1714    | 342   |
+| NT layer off (host chip)                      | 1428    | 316   |
+| NT layer back on                              | 1714    | 342   |
+| fresh load `layers=ot,bom,dc,pgp`             | 1428    | 316   |
+| Old Testament only (book gate, mode `single`) | 526     | 52    |
 
 The checkpoint-22 thresholds (>1000 / >100) are superseded by these equalities; a partial render now fails. The first
 draft of this probe used only `.tl-list` and correctly failed (30 of 1714: the undated rows sit in `.tl-und`), which
