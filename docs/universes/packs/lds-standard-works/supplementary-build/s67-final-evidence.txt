@@ -1,0 +1,23 @@
+# s67 final evidence at e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 (2026-11-07, Chromium 1243 SwiftShader)
+## VPS=1440x900
+lds 1440x900: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":464,"sideways":0}
+lds 1440x900 escape: {"hidden":true,"focus":"cxBtn"}
+dune 1440x900: {"compact":false,"tabsShown":true,"pickShown":false,"head":53,"body":685,"sideways":0}
+third-party requests: 0
+s67 final evidence: all checks passed
+## VPS=1280x800
+lds 1280x800: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":464,"sideways":0}
+lds 1280x800 escape: {"hidden":true,"focus":"cxBtn"}
+third-party requests: 0
+s67 final evidence: all checks passed
+## VPS=390x844
+lds 390x844: {"compact":false,"tabsShown":false,"pickShown":true,"head":104,"body":588,"sideways":0}
+lds 390x844 escape: {"hidden":true,"focus":"cxBtn"}
+third-party requests: 0
+s67 final evidence: all checks passed
+## VPS=3840x2160
+lds 3840x2160: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":464,"sideways":0}
+lds 3840x2160 escape: {"hidden":true,"focus":"cxBtn"}
+third-party requests: 0
+s67 final evidence: all checks passed
+## note: first parallel 3840x2160 attempt timed out on initial Codex click (240s) under 4x software-GL load; rerun alone above.

@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: final-audit
+owner: chatgpt
 blocked-on: none
-next-action: Claude: package exact-head final technical/rendered evidence and explicit remaining completeness-scope dispositions for PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25; do not repeat the accepted two-copy recheck
-updated: 2026-11-06T05:18Z
+next-action: ChatGPT: run the AUDIT_CHECKLIST §4 canon checks on PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 using final-package-e2c02e4.md — decide CS-1 (33 cards without source links: add links vs accept prose refs), take or replace the seeded 20-entry sample, accept/return the completeness disposition; then "Canon: approved" or blockers
+updated: 2026-11-07T04:33Z
 idle-runs: 0
-note: ChatGPT accepted RES64-C1/C2, 2/2 closed, 0 new findings; audit-final.md at 0061dcb553f068b17554305c3ef826c963383ebb. Exactly 2 desc leaves changed; independent targeted 18/18, parent negative control fails 1/5 as expected. Inspected CI 171/171 and 26/26 page cases. Full canon remains withheld pending whole-atlas completeness/confidence disposition and final §4 coverage; independent RC64-O1 rendered, finished 4K, physical device/GPU and Mckay release gates remain open. No merge.
+note: Checkpoint 67 final-audit package at unchanged head e2c02e4 (final-package-e2c02e4.md): pnpm check 171/171 + 114 dist files, test:pages 13x2, test:browser pass; RC64-O1 rendered chooser/scroll/focus/Escape/resize pass at 3840x2160, 1440x900, 1280x800, 390x844 with 0 third-party requests (builder-executed, script committed); full-res 4K capture. Scope: 1,647 cards, 33 lack src links (CS-1 source decision), 112 visibly qualified. Device/GPU remains a Known gap. No merge.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -111,3 +111,4 @@ Track A · view: Earth-historical, layered
 - 2026-11-06T04:55Z: Claude applied RES64-C1/C2 (checkpoint 66) on pack/lds-standard-works at e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25; two-description-only pack diff, targeted tests 18/18, pnpm check 171/171, test:pages pass. Evidence in supplementary-implementation.md 'Checkpoint 66'. Stage final-audit, owner chatgpt for the narrow recheck.
 
 - 2026-11-06T05:18Z: ChatGPT completed the requested narrow checkpoint-66 return at PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25: RES64-C1/C2 closed (2/2), 0 new findings. Reopened both official chapter bodies; exact generator and generated replacements accepted. Whole-pack comparison found only the two desc leaves changed. Local targeted tests 18/18; new RES96-C suite against parent failed the expected 1/5. Independently inspected CI run 42165272882: 171/171 unit and 26/26 page/viewport cases on identified synthetic merge. Saved and verified audit-final.md at 0061dcb553f068b17554305c3ef826c963383ebb before this status handoff. Full canon is not yet approved: remaining completeness/confidence disposition and final §4 coverage stay open; rendered/device/owner gates separate. Final-audit/chatgpt → fixing/claude for a concrete final evidence package, not a repeat of accepted copy or residual research.
+- 2026-11-07T04:33Z: Claude saved checkpoint-67 final-audit package final-package-e2c02e4.md for PR33 e2c02e49d8f77d020d5e0d1f8ddd30b2fab98d25 (no code/content change): exact-head pnpm check 171/171, test:pages 13x2, test:browser pass; s67-final-evidence.mjs RC64-O1 rendered checks pass at all four viewports, 0 third-party requests; full-res 4K capture shots/s67-reference-3840x2160.jpg; completeness disposition (1,647 cards) with CS-1 (33 cards without source links) for a source decision and a seeded 20-entry §4 sample. Stage final-audit, owner chatgpt. Frees the WIP slot for the hierarchy build.
