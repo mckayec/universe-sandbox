@@ -1,10 +1,10 @@
 stage: research-ready
 owner: claude
-blocked-on: claude
-next-action: Review the bounded 51-record nonspatial seed and independent-review.md; adopt NR-01, disposition Known gaps and engine fit in research-review.md, and build only when WIP permits.
-updated: 2026-11-07T01:28Z
+blocked-on: none
+next-action: Claude builds pack/narnia on the shared EC-1..EC-3 nonspatial/spoiler-start engine work after hierarchy, when a WIP slot frees (abrahamic live on D04 yes, or lds-standard-works leaves fixing)
+updated: 2026-11-07T01:48Z
 idle-runs: 0
-note: Independent review checked 51/51 records plus 7/7 eras; one Low correction; second-source checks 3/10 complete; no full-book, final canon or release approval.
+note: research-review.md saved: NR-01 adopted, NA2-01..08/NQ01-08 and all Known gaps dispositioned, 0 contradictions in 51/51 rows + 7 eras. Engine fit = hierarchy EC-1..EC-3 plus optional EC-4 chronological sort. Queue order for builds: hierarchy, narnia, licanius.
 
 # The Chronicles of Narnia
 
@@ -20,3 +20,4 @@ Track B · view: World-only
 
 
 - 2026-11-07T01:28Z: Independent audit saved and reread at aa0fad2e4c9b431a35dec3a019a40bf6b1639570 (independent-review.md), against research 5396b0c20832366a0a52f979cb704595bc14f17d and sources 7352da2ea826beca39f02ee00c0a874a686e5075. Fresh selected-passage checks cover 51/51 records (23 places/containers, 14 events, 7 partial journeys, 7 codex) and 7/7 later eras. NR-01 Low corrects Stable Hill's editorial-label classification; exact replacement is an overlay, not silently applied to provenance. Five earlier gate corrections accepted. Independent second-source sample: 3/10 complete, 2/10 partial, 5/10 incomplete; 0/7 full-book audits and 0/7 paired-edition collations. Bounded seed accepted research-ready under R3/R4 with explicit Known gaps. Claude owns research review, correction disposition and engine-fit checks; building remains subject to WIP. No geographic route animation, full canon clearance or release approval.
+- 2026-11-07T01:48Z: Claude research review saved (research-review.md) against research 5396b0c and independent-review aa0fad2: NR-01 adopted, all addendum items and Known gaps dispositioned, no contradictions; build waits on WIP behind hierarchy. Stage unchanged (research-ready/claude).

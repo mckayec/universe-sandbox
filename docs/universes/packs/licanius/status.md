@@ -1,10 +1,10 @@
 stage: research-ready
 owner: claude
 blocked-on: none
-next-action: Claude reviews independent-review.md (6b0d6d58), adopts LR-01/LR-02 and dispositions Known gaps/engine fit for the bounded 29-record seed; build starts only when WIP permits.
-updated: 2026-11-07T01:18Z
+next-action: Claude builds pack/licanius on the shared EC-1..EC-3 engine work after hierarchy and narnia, when a WIP slot frees
+updated: 2026-11-07T01:48Z
 idle-runs: 0
-note: Independent source check 29/29; 2 Low correction requirements; second-source sample 2/10. Nonspatial seed handoff only; full novels, earliest gates, canon and release remain unapproved.
+note: research-review.md saved: LR-01/LR-02 adopted, L2-01..05 and all Known gaps dispositioned, 0 contradictions in 29/29 rows. Engine fit = hierarchy EC-1..EC-3. Queue order for builds: hierarchy, narnia, licanius.
 
 # The Licanius Trilogy (James Islington)
 
@@ -25,3 +25,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-06: Coordinator terminology correction only: research 9f6ea35f792017e2a99c4703cb3f9ebd23e73a6c clarifies minimum read-through threshold; self-audit 9171be510ac17629592e2914437472e41914b375 and addendum 1fa5717447cd04e00bfd24ebc9b51795e5aea3b1 aligned to that research SHA. All 29 records unchanged; lj01 already cites S1 pp3–6. Ownership and gates unchanged.
 
 - 2026-11-07T01:18Z: Independent audit review saved and reread at 6b0d6d581c3a2d4fe62ec9982aab0262b60f7838 (research 9f6ea35f; sources 9b3468eb). Checked 29/29 records (13 places, 7 events, 3 partial journeys, 6 codex); 2 Low findings affecting three records; 2/10 independent second-source checks complete, 0/3 full novels. Handed research-ready/claude for bounded nonspatial seed review with correction overlay and Known gaps under R3/R4. No code, merge, deployment, canon sign-off or release approval.
+- 2026-11-07T01:48Z: Claude research review saved (research-review.md) against research 9f6ea35 and independent-review 6b0d6d5: LR-01/LR-02 adopted, all addendum items and Known gaps dispositioned, no contradictions; build waits on WIP. Stage unchanged (research-ready/claude).
