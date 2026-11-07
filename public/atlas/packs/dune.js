@@ -196,8 +196,6 @@ return {
     landmarks: [
      {id: "residency", name: "The Residency", kind: "palace", at: [0, .15], h: 1.5, books: [1],
       desc: "The Arrakeen residence designated for Duke Leto’s family, formerly the home of Count and Lady Fenring."},
-     {id: "conservatory", name: "The conservatory", kind: "garden", at: [-.25, .3], books: [1],
-      desc: "A sealed garden of wet-planet plants left by the last governor’s household, a costly show of water. Jessica finds a hidden warning from Lady Margot Fenring among its leaves."},
      {id: "dining", name: "The dining hall", kind: "hall", at: [.3, .38], books: [1],
       desc: "Where the old Duke’s portrait and the head of the bull that killed him are hung. Duke Leto gives a dinner here for the planet’s powers, smugglers and Guild bankers among them."},
      {id: "greathall", name: "The great hall", kind: "hall", at: [.12, .5], h: 1.2, books: [1],
@@ -955,8 +953,6 @@ return {
 {id: "d13", book: 1, world: "caladan", site: "castle", lm: "training", title: "Gurney’s lesson", text: "Gurney Halleck spars with Paul in the castle’s training hall, teaching him that under a shield only the slow blade gets through."},
 {id: "d2", book: 1, world: "giedi", site: "hkeep", lm: "chambers", title: "The Baron’s trap", text: "Baron Harkonnen and Piter de Vries lay their plan: let the Atreides take Arrakis, then destroy them with a traitor inside their house and Sardaukar in Harkonnen uniform."},
 {id: "d3", book: 1, world: "arrakis", site: "arrakeen", lm: "spaceport", fx: "arrival", title: "House Atreides comes to Arrakis", text: "Duke Leto, Jessica and Paul come down at Arrakeen and take over the Residency. Leto sets out to win the Fremen and the planetologist Liet-Kynes."},
-{id: "d15", book: 1, world: "arrakis", site: "arrakeen", lm: "residency", title: "The hunter-seeker", text: "On the first night a hunter-seeker, a tiny flying poison needle, comes for Paul in his bedroom. He keeps still until it comes close, then snatches it from the air and crushes it."},
-{id: "d16", book: 1, world: "arrakis", site: "arrakeen", lm: "conservatory", title: "A hidden warning", text: "In the Residency’s water-wasting conservatory Jessica finds a coded message from Lady Margot Fenring warning of a traitor in the house."},
 {id: "d26", book: 1, world: "arrakis", site: "arrakeen", lm: "residency", title: "A false scent", text: "A Harkonnen plant points Thufir Hawat towards Jessica as the traitor in the house, hiding the real one, Dr Yueh."},
 {id: "d14", book: 1, world: "arrakis", fx: "worm", title: "The harvester and the worm", text: "Watching the spice harvest from the air with Kynes, Duke Leto sees a worm coming for a crawler and orders the crew lifted out. He saves the crew and loses the machine, and the Fremen take note."},
 {id: "d17", book: 1, world: "arrakis", site: "arrakeen", lm: "dining", title: "The Duke’s dinner", text: "Leto gives a dinner for the powers of Arrakis, from a water-shipper and a Guild banker to the smuggler Esmar Tuek and Kynes himself. Talk of water and the plight of the Fremen runs under the courtesies."},
