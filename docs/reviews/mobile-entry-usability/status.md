@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT: review A11Y-1 return 3 at PR44 38725238ed2df86910dc24438d9565fd14500d69 per a11y-return-3.md (top-bar reflow keeps count/clock; repaired #panel-toggle probe; 198/198) — close A11Y-1 or return specific findings
-updated: 2026-11-07T05:02Z
+next-action: Claude: complete or explicitly disposition remaining rendered/device and entry/resilience acceptance; preserve A11Y-1/A11Y-2 source closures per implementation-review-a11y-r3.md
+updated: 2026-11-07T05:18Z
 idle-runs: 0
-note: Return 3 at 38725238ed2df86910dc24438d9565fd14500d69: top bar wraps at enlarged text instead of clipping status; --topbar-extra moves controls below; default size unchanged. a11y-r3.cjs 198/198 incl. long status values, real #panel-toggle in both states, panel-specific open/close; negative control confirms old rule clipped. pnpm check 82/82, test:pages 12x2, test:browser 1 fail (known Save/Load timeout) + 1 pass. Clock hide at <=360px is pre-existing, dispositioned. Emulation only; no device or release approval. Draft PR, not merged.
+note: PR44 38725238ed2df86910dc24438d9565fd14500d69 reviewed: 2/2 return files; A11Y-1 reflow and coverage repair accepted at source level, A11Y-2 preserved (2/2 source findings closed). Review b585fee2 saved/read back. CI tested merge 8ed5392: 118/118 unit,24/24 page cases,touch pass. Builder's198/198 a11y recording not independently rerun; device/rendered/release gates remain.
 
 # Mobile entry and landing-page usability
 
@@ -37,3 +37,5 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 
 - 2026-11-07T04:18Z: ChatGPT reviewed all 3/3 return files at PR44 84625b06834fc24ebcabd3a2b17ffff93dd737fe and saved/read back implementation-review-a11y-r2.md at 15f09a7620ac8b5863559abd4797b16e351ef65d before status. Both findings reviewed (2/2): A11Y-2 closed at source-review level; A11Y-1 partial, with count/clock content loss and a tools-toggle selector gap requiring correction. Independently inspected CI42332999290 logs: tested merge 872398ec55cc0bd8e731f88ef78e6a3f1139b230 passed 118/118 unit tests, 24/24 page cases and touch suite; head-to-merge includes non-doc changes from main, so this is not the branch's reported 82-test run. Claude's 126/126 a11y recording was inspected, not rerun. No new rendered/device acceptance or release approval. Stage implementation-review → fixing, owner chatgpt → claude.
 - 2026-11-07T05:02Z: Claude: A11Y-1 return 3 at 38725238ed2df86910dc24438d9565fd14500d69 — status values reflow (top bar wraps, controls below offset by --topbar-extra) instead of clipping; repaired #panel-toggle overlap probe (expanded+collapsed, fails if absent); status-value and panel-specific activation assertions. a11y-r3.cjs 198/198; negative control; pnpm check 82/82; test:pages 12x2; test:browser 1 known-timeout fail + 1 pass. Report a11y-return-3.md. Stage fixing → implementation-review, owner claude → chatgpt. idle-runs 0.
+
+- 2026-11-07T05:18Z: ChatGPT saved/read back implementation-review-a11y-r3.md at b585fee228334811484f1fb1c3829d8466be90a7. Inspected 2/2 return files and actual diff at 38725238ed2df86910dc24438d9565fd14500d69, plus compact-query dependency and complete test scripts. A11Y-1 reflow/coverage fix accepted at source-review level; A11Y-2 closure retained (2/2 bounded implementation findings closed). Independently read CI42340983341 logs: tested merge8ed5392637a1d6cf7b5918440709dd9b6c7c9c70 passed118/118 unit,24/24 page cases,touch suite; no claim of identical merge/head trees. Builder198/198 assertion output not rerun; negative control is diagnostic logging, not an assertion test. Native/device/live-resize and other acceptance limits remain; Save/Load race not declared fixed. implementation-review/chatgpt → implementation/claude for remaining acceptance and entry/resilience scope; no release approval.
