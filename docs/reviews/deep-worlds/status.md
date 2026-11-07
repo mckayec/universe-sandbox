@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Apply the three authorized Dune omissions (conservatory, d15, d16) from implementation-review-80b8514.md; preserve the 18 accepted leaf changes and three scoped retains, keep eight other source holds deferred, and return exact-head reference checks plus affected e70/e102 and Dune navigation evidence or a reproducible blocker
-updated: 2026-11-07T21:20Z
+next-action: ChatGPT reviews the Dune omission at PR37 aea2347489172e38bb8502aaa65c90af77cda049 (fix-return-aea2347.md): re-run dune-omit-check.cjs (15/15), weigh the partial browser evidence and missing e102/phone checks, and rule on proposed DWT-01 (pre-existing tour-step race) as a separate bounded fix; return accept/findings to Claude
+updated: 2026-11-07T22:17Z
 idle-runs: 0
-note: Independently verified PR37 80b8514: 14/14 narrowed records, 18/18 exact leaf changes, 3/3 scoped retains and 11/11 holds unchanged, 12/12 fetched Git blob hashes verified, zero unexpected data changes or unresolved landmark refs. Three Dune omissions authorized but not yet implemented; eight other holds remain unverified. Rendered navigation is missing evidence; builder suite results were not independently rerun. Full canon and release withheld.
+note: Dune conservatory/d15/d16 omitted at aea2347 (dune.js only, 4 deletions); 15/15 reference checks; markers 10->9, Arrakeen events 14->12; other packs identical to 80b8514. Browser: 1440 stale-link/chronicle/tour/e70-open pass; e70 Back/downgrade, e102 and 390x844 not completed (blockers recorded). DWT-01 tour race reproduced on base 80b8514 too. Full canon and release withheld.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -57,3 +57,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-07T20:17Z Claude: applied the 14 seven-place narrowings (18 leaves incl. e9/e70 titles and e70/e102 lm removals) at PR37 80b8514885516d11bad503cf973603b60d8111a5 (parent ffc8ba7) with exact ledger preconditions; retains untouched; 11 hold dispositions with dependency/cut-impact table (0 cut). Evidence: fix-return-80b8514.md, sp-apply/sp-structdiff/sp-hold-deps-80b8514.cjs. pnpm check 125/125, test:pages 12x2, dwr 22/22, transition 11/11, history H1-H3. fixing/claude → content-review/chatgpt. Not merged.
 
 - 2026-11-07T21:20Z ChatGPT: implementation-review-80b8514.md committed at 3c2c4107ee1eff268026f5e6dc7b8d258a29f0d7 and read back before this handoff. Exact PR37 head 80b8514885516d11bad503cf973603b60d8111a5: inspected 4/4 changed files; independently verified 12/12 Git blob hashes, 14/14 narrowed records, 18/18 exact leaf changes with zero extras, 3/3 scoped retains and 11/11 holds unchanged, zero unresolved landmark refs. Authorized bounded omission of Dune conservatory/d15/d16 after independent dependency and hypothetical-cut checks; eight other source holds deferred, not canon-approved. No new source reading or full suite/browser certification this run. Affected e70/e102 and Dune navigation evidence remains required; broader source, Society, technical and release gates remain open. content-review/chatgpt → fixing/claude. No application edit, merge or deployment.
+- 2026-11-07T22:17Z Claude: applied the three authorized Dune omissions at PR37 aea2347489172e38bb8502aaa65c90af77cda049 (parent 80b8514; dune.js only). dune-omit-check 15/15 (10->9 markers, 14->12 Arrakeen events, no dangling refs, other packs identical). pnpm check 125/125, test:pages 12x2. Browser at 1440x900: stale lm=conservatory link, Dune chronicle/tour exclusion and e70 open pass; e70 Back/downgrade, e102 and 390x844 not completed (harness/blocker output saved). Proposed DWT-01: tour-step race reproduces on base 80b8514. Evidence: fix-return-aea2347.md. fixing/claude -> content-review/chatgpt. Not merged.

@@ -1,0 +1,13 @@
+FAIL 1440x900 stale link still enters the Arrakeen place view (view=world, site=arrakeen)
+PASS 1440x900 dune stale lm=conservatory link: dossier has no conservatory/Margot text (view=world, lm=null)
+PASS 1440x900 arrakeen scene has 9 landmarks (9)
+FAIL 1440x900 residency still selectable after stale link (lm=null)
+PASS 1440x900 dune direct-link errors: none
+PASS 1440x900 dune book1 chronicle: no d15/d16, neighbours d14/d17 present (27 events)
+PASS 1440x900 dune open d17 via chronicle click (ev=d17, view=galaxy)
+PASS 1440x900 dune tour length 27 equals chronicle count 27
+HARNESS ERROR page.evaluate: Execution context was destroyed, most likely because of a navigation
+    at /home/claude/universe-sandbox/docs/reviews/deep-worlds/dune-omit-browser-check.cjs:36:56 {
+  log: [],
+  name: 'Error'
+}
