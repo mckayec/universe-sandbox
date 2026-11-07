@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews fix-return-d902c8a.md at PR37 d902c8a7092e5e1f2597af800b11f0f7f63dc901 (DWR-B transition guard + CS04 label; merge with main) and closes or returns the two Medium residuals
-updated: 2026-11-07T14:56Z
+next-action: Claude fixes DWH-01 history ownership using implementation-review-d902c8a.md and dwr-history-probe-d902c8a.cjs, preserves the two accepted fixes, and returns the exact head with regression and navigation evidence
+updated: 2026-11-07T15:19Z
 idle-runs: 0
-note: PR37 head d902c8a (fix e22d497 + merge of main 51fe688). DWR-B: transition now guarded by captured generation + destination, selectSite invalidates pending entry; dwr-transition-probe 11/11 (negative control fails at 232fef1), dwr-probe 22/22. CS04 name → "The guarded entrance". check 125/125, pages 12x2, test:browser pass, 8/8 viewport loads 0 errors. Full canon/release gates remain.
+note: At PR37 d902c8a, 2/2 requested residuals accepted in source/VM scope; 33/33 existing assertions pass, old-head negative control fails as expected. New history cases 2/3 pass, 1/3 fails (DWH-01 Medium). CI merge 125/125 unit and 24/24 page cases verified in logs. Broad canon gaps and release gates remain.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -44,3 +44,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-07T14:20Z: ChatGPT saved/read back implementation-review-232fef1.md (991e71a7c3dacd55bdae2dc40e89a08a85beff81) and dwr-residual-probe-232fef1.cjs (cf4d66103a022d799a2dbd6f414f2197bd2e0f13). Inspected3/3 diff files at unchanged PR37 head232fef155c7a76cfb9e728321f064010cbb3878a; DWR-A closed, DWR-B partial (1/2 lifecycle groups closed). Independently reran22/22 committed VM assertions;3/3 additional characterization cases include1 positive and2 stale-transition reproductions (not browser acceptance). Supplement23/23 dispositions accounted;11 changed objects=10 conform/1 partial owing to retained CS04 refugee label despite narrowed description. Two Medium finite fixes returned; broad source work stays deferred. Head check-runs returned0; fresh PR metadata reports merge conflicts. No fresh CI/browser/full-book certification, merge or deploy. content-review/chatgpt → fixing/claude; idle-runs0.
 - 2026-11-07T14:56Z: Claude fixed DWR-B residual and DW-CS04-label on PR37 (fix e22d497, parent 232fef1) and merged main 51fe688 to clear conflicts (engine.css both blocks kept; status from main) → head d902c8a7092e5e1f2597af800b11f0f7f63dc901. dwr-transition-probe 11/11 with entered-place/state assertions (fails at 232fef1), dwr-probe 22/22, pnpm check 125/125, test:pages 12x2, test:browser pass, 4-viewport loads 0 errors. See fix-return-d902c8a.md. fixing/claude → content-review/chatgpt. Not merged.
+
+- 2026-11-07T15:19Z: ChatGPT saved/read back implementation-review-d902c8a.md (0af63c8783a165760711a98680f8481de9e919b7) and independent dwr-history-probe-d902c8a.cjs (5a3aea3c04c0f43cd36a07ae296390471ce804f5). Reviewed both fix files, inventoried 27 merge runtime changes and inspected the complete engine delta. Requested residuals closed 2/2; DWR-A and DWR-B source/VM closures preserved. Independently 11/11 transition + 22/22 lifecycle assertions pass; old 232fef1 fails the transition negative control. New history scenarios 2/3 pass, overlapping entry loses newer history marker (DWH-01 Medium). CI b11c718 non-doc tree matches head; logs verify 125/125 unit and 24/24 page cases, not test:browser. content-review/chatgpt → fixing/claude for the finite new regression. No full canon/release approval, application edit, merge or deploy.
