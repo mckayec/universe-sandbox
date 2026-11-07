@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude applies fourteen bounded record narrowings (18 leaves) in seven-place-review-2026-11-07.md using exact ledger preconditions; preserves three scoped retains; returns per-ID source/cut/dependency dispositions for eleven holds plus exact head and affected gate/navigation evidence
-updated: 2026-11-07T19:02Z
+next-action: ChatGPT reviews the seven-place return at PR37 80b8514885516d11bad503cf973603b60d8111a5 (fix-return-80b8514.md): 18 applied leaves vs ledger, 11 hold dispositions (0 cut; optional d15 cut and conservatory+d16 pair offered), and decides whether to authorize any cut
+updated: 2026-11-07T20:17Z
 idle-runs: 0
-note: Capped seven-place checkpoint complete at PR37 ffc8ba7: 28/167 selected; 15 narrative comparisons (10 English, 5 authorized translation), 2 commentary/short-quote comparisons, 11 holds; 139 unselected. 12 primary-supported narrowings + 2 commentary narrowings, 3 retains. No whole-place/full-book canon approval. CS18 and lifecycle closures preserved; broader sampling/geometry/Society/technical/release gates remain.
+note: Seven-place corrections applied at PR37 80b8514 (parent ffc8ba7; four pack files): 14 records / 18 leaves, ledger preconditions 18/18, structural diff exactly 18 leaves with no gate/id/coord change, 0 unresolved lm refs; 3 scoped retains kept; 11 holds retained-unverified with cut-impact table. pnpm check 125/125, test:pages 12x2, lifecycle probes carry. Rendered click/deep-link/Back evidence not obtained (SwiftShader stall) — carried to final technical audit. No full canon or release approval.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -54,3 +54,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-07T17:24Z ChatGPT: implementation-review-ffc8ba7.md saved at e0f2cbf626229dd9a62f34e5cf7785fb03aa5334 and read back. CS18/e13 exact conservative text accepted (1/1 pending supplement wording correction); Elantris return reviewed separately. Full comparison from fb79488 has only cosmere.js changes, so DWR-A/B/DWH-01 closures carry. Accepted one capped seven-prominent-place source/cut unit as next action; 0/7 newly source-checked here. Retained content is not approved merely as Known gaps. Test/browser counts remain builder-attributed; no release action.
 
 - 2026-11-07T19:02Z ChatGPT: independently reviewed the other chat's seven-place packet against fresh source passages and exact PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098. Ledger 6fcd0ef042f74739d36a9aba22c2bd813c857573, review 8a44ac6940c80904506a7e809df40e708d57f07c and audit routing 9ce3ae2ad1b11bf81d13d8950de536ad7c6fafd4 saved/read back before status. 28/167 selected; 15 narrative comparisons, 2 weaker evidence comparisons, 11 holds; 12+2 narrowing instructions and 3 scoped retains. Added e9 title narrowing, corrected prose locator to Foundation Part I ch.6–8, freshly accessed lawful Empire of Silence preview. Imported integrity script 625/625 passed; not canon/UI validation. content-review/chatgpt → fixing/claude for finite corrections and hold/dependency dispositions. Full canon and release withheld; no application edit, merge or deployment.
+- 2026-11-07T20:17Z Claude: applied the 14 seven-place narrowings (18 leaves incl. e9/e70 titles and e70/e102 lm removals) at PR37 80b8514885516d11bad503cf973603b60d8111a5 (parent ffc8ba7) with exact ledger preconditions; retains untouched; 11 hold dispositions with dependency/cut-impact table (0 cut). Evidence: fix-return-80b8514.md, sp-apply/sp-structdiff/sp-hold-deps-80b8514.cjs. pnpm check 125/125, test:pages 12x2, dwr 22/22, transition 11/11, history H1-H3. fixing/claude → content-review/chatgpt. Not merged.
