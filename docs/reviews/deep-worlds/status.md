@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the seven-place return at PR37 80b8514885516d11bad503cf973603b60d8111a5 (fix-return-80b8514.md): 18 applied leaves vs ledger, 11 hold dispositions (0 cut; optional d15 cut and conservatory+d16 pair offered), and decides whether to authorize any cut
-updated: 2026-11-07T20:17Z
+next-action: Apply the three authorized Dune omissions (conservatory, d15, d16) from implementation-review-80b8514.md; preserve the 18 accepted leaf changes and three scoped retains, keep eight other source holds deferred, and return exact-head reference checks plus affected e70/e102 and Dune navigation evidence or a reproducible blocker
+updated: 2026-11-07T21:20Z
 idle-runs: 0
-note: Seven-place corrections applied at PR37 80b8514 (parent ffc8ba7; four pack files): 14 records / 18 leaves, ledger preconditions 18/18, structural diff exactly 18 leaves with no gate/id/coord change, 0 unresolved lm refs; 3 scoped retains kept; 11 holds retained-unverified with cut-impact table. pnpm check 125/125, test:pages 12x2, lifecycle probes carry. Rendered click/deep-link/Back evidence not obtained (SwiftShader stall) — carried to final technical audit. No full canon or release approval.
+note: Independently verified PR37 80b8514: 14/14 narrowed records, 18/18 exact leaf changes, 3/3 scoped retains and 11/11 holds unchanged, 12/12 fetched Git blob hashes verified, zero unexpected data changes or unresolved landmark refs. Three Dune omissions authorized but not yet implemented; eight other holds remain unverified. Rendered navigation is missing evidence; builder suite results were not independently rerun. Full canon and release withheld.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -55,3 +55,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-07T19:02Z ChatGPT: independently reviewed the other chat's seven-place packet against fresh source passages and exact PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098. Ledger 6fcd0ef042f74739d36a9aba22c2bd813c857573, review 8a44ac6940c80904506a7e809df40e708d57f07c and audit routing 9ce3ae2ad1b11bf81d13d8950de536ad7c6fafd4 saved/read back before status. 28/167 selected; 15 narrative comparisons, 2 weaker evidence comparisons, 11 holds; 12+2 narrowing instructions and 3 scoped retains. Added e9 title narrowing, corrected prose locator to Foundation Part I ch.6–8, freshly accessed lawful Empire of Silence preview. Imported integrity script 625/625 passed; not canon/UI validation. content-review/chatgpt → fixing/claude for finite corrections and hold/dependency dispositions. Full canon and release withheld; no application edit, merge or deployment.
 - 2026-11-07T20:17Z Claude: applied the 14 seven-place narrowings (18 leaves incl. e9/e70 titles and e70/e102 lm removals) at PR37 80b8514885516d11bad503cf973603b60d8111a5 (parent ffc8ba7) with exact ledger preconditions; retains untouched; 11 hold dispositions with dependency/cut-impact table (0 cut). Evidence: fix-return-80b8514.md, sp-apply/sp-structdiff/sp-hold-deps-80b8514.cjs. pnpm check 125/125, test:pages 12x2, dwr 22/22, transition 11/11, history H1-H3. fixing/claude → content-review/chatgpt. Not merged.
+
+- 2026-11-07T21:20Z ChatGPT: implementation-review-80b8514.md committed at 3c2c4107ee1eff268026f5e6dc7b8d258a29f0d7 and read back before this handoff. Exact PR37 head 80b8514885516d11bad503cf973603b60d8111a5: inspected 4/4 changed files; independently verified 12/12 Git blob hashes, 14/14 narrowed records, 18/18 exact leaf changes with zero extras, 3/3 scoped retains and 11/11 holds unchanged, zero unresolved landmark refs. Authorized bounded omission of Dune conservatory/d15/d16 after independent dependency and hypothetical-cut checks; eight other source holds deferred, not canon-approved. No new source reading or full suite/browser certification this run. Affected e70/e102 and Dune navigation evidence remains required; broader source, Society, technical and release gates remain open. content-review/chatgpt → fixing/claude. No application edit, merge or deployment.
