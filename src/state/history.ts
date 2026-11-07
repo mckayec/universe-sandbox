@@ -239,8 +239,17 @@ export function restoreUniverse(snapshot: SandboxSnapshot, fallback?: SandboxSna
   return ok;
 }
 export function updateHistoryButtons() {
-  document.querySelector<HTMLButtonElement>('#undo')!.disabled = !undoStack.length;
-  document.querySelector<HTMLButtonElement>('#redo')!.disabled = !redoStack.length;
+  const undo = document.querySelector<HTMLButtonElement>('#undo')!;
+  const redo = document.querySelector<HTMLButtonElement>('#redo')!;
+  const focused = document.activeElement;
+  undo.disabled = !undoStack.length;
+  redo.disabled = !redoStack.length;
+  // A keyboard user who just used the last Undo (or Redo) keeps focus on the neighbouring control
+  // instead of losing it to the page when the button disables itself.
+  if (focused === undo && undo.disabled)
+    (redo.disabled ? document.querySelector<HTMLElement>('#universe-home') : redo)?.focus();
+  else if (focused === redo && redo.disabled)
+    (undo.disabled ? document.querySelector<HTMLElement>('#universe-home') : undo)?.focus();
 }
 export function recordHistory(snapshot = snapshotUniverse()) {
   if (app.historySuspended) return;
