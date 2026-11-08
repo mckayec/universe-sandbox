@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: After the bounded Deep Worlds rendered qualification, Claude verifies rendered year-filter restoration (explicit/omitted yr via link, Back, Forward at 1440/390) per independent-review-0650d33.md; retain R29-1 and missing chapter parent control
-updated: 2026-11-08T12:20:02Z
+next-action: ChatGPT reviews checkpoint 30 (rendered yr restoration, evidence only) at PR45 eabf9c61ddd70558f0b5c8c3ba7244129262c47d (parent 0650d33; checkpoint-30.md + tl30/); close the rendered-year gap or return findings
+updated: 2026-11-08T21:26Z
 idle-runs: 0
-note: Checkpoint29 accepted as bounded builder input/focus evidence at 0650d33; 8/8 text files and 1/1 image inspected, 225/225 runtime files identical to daeaf39. Builder chapter path20/20, parent0; independent browser0/20 (launch socket-permission failure). Slow frames are a plausible timeout explanation, not isolated causality or whole-PR exoneration. R29-1 Low retained; 0/12 promotions; full technical/canon/release gates open.
+note: Checkpoint 30 at eabf9c6 (docs/evidence only; runtime = 0650d33 = daeaf39). tl30/year-history-probe.mjs 194/194 at head (link/Back/Forward, explicit and omitted yr, 1440/390: URL yr, S.range, rendered inputs/readout/fill/All-years, Chronicle events = baseline ∩ overlap with events hidden, Earth site labels, timeline ids/tlsel/rendered selection); parent 1ceb4b2 control 114 pass/76 fail. Chapter-path parent control still incomplete (2 PASS then harness timeout). R30-1 Low (snapped full-range max handle) recorded, not fixed. No canon/full technical/release approval. Not merged.
 
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
@@ -95,3 +95,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-08T11:31Z Claude checkpoint 29 on PR45 at 0650d33a00e9fe152001d15c07bdeed774ceaca6 (docs/evidence only, parent daeaf39): [checkpoint-29.md](https://github.com/mckayec/universe-sandbox/blob/0650d33a00e9fe152001d15c07bdeed774ceaca6/docs/reviews/synchronoptic-timelines/checkpoint-29.md). TL22-E2 1440 timeout = Playwright actionability wait starved by ~3 s software-GL frames (head and parent identical; 90 s budget opens in ~13 s; real CDP click/Escape/Enter work with focus into timeline and back to #tlBtn). tl29/real-chapter-path.mjs 20/20 real-input at 1440/390; parent control for that path not run. R29-1 phone-width scroll-strip discoverability recorded, unchanged. implementation/claude → implementation-review/chatgpt; idle-runs 0.
 
 - 2026-11-08T12:20:02Z ChatGPT: independent-review-0650d33.md saved/read back at 0a8b5bda153025a2393e6298331363a23a14deb2. Reviewed 8/8 text files and 1/1 screenshot at PR45 0650d33a00e9fe152001d15c07bdeed774ceaca6; 225/225 non-doc files match direct parent daeaf39. Accepted TL22-E2 bounded builder input/focus evidence with causal qualifications: sparse frame samples and warm later click do not isolate timeout cause; control 1ceb4b2 already includes PR45. Chapter log20/20 reconciled, parent0 remains missing, independent0/20 due fresh Chromium socket-permission failure. R29-1 Low retained. implementation-review/chatgpt -> implementation/claude for carried rendered-year gap after the Deep Worlds rendered qualification; DWT-02 source repair already reviewed separately, do not repeat it. No canon, full technical, release approval, merge or deploy.
+- 2026-11-08T21:26Z Claude checkpoint 30 on PR45 at eabf9c61ddd70558f0b5c8c3ba7244129262c47d (docs/evidence only, parent 0650d33): [checkpoint-30.md](https://github.com/mckayec/universe-sandbox/blob/eabf9c61ddd70558f0b5c8c3ba7244129262c47d/docs/reviews/synchronoptic-timelines/checkpoint-30.md). Rendered year-filter restoration: tl30 probe 194/194 head vs 114/76 with parent 1ceb4b2 engine.js (Back to entry 0 left the document at both viewports there; remaining parent Back cases not run). tl29 chapter-path parent control attempted: 2 PASS then 1440 Timeline actionability timeout; still incomplete. R30-1 Low recorded. implementation/claude → implementation-review/chatgpt; idle-runs 0.
