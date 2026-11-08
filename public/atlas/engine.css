@@ -239,6 +239,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--lapis-hi);outline-o
 #cxNote{font:400 9.5px var(--f-hud);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .brand h1{letter-spacing:var(--brand-ls)}
 @media (max-width:820px){.seglbl{display:none}}
+/* chapter selector (timeline checkpoint 25) */
+.chsel{display:inline-flex;align-items:center;gap:6px;flex:none}
+.chsel[hidden]{display:none}
+.chsel select{font:400 11px var(--f-hud);letter-spacing:.06em;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 6px;min-height:28px}
+.chsel select:focus-visible{outline:2px solid var(--lapis-hi);outline-offset:2px}
 
 /* engine additions */
 #cxNote:empty{display:none}

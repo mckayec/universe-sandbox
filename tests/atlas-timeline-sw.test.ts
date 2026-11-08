@@ -261,3 +261,41 @@ test('folded undated panels keep every gated record in source order; search reac
   assert.ok(!TL.searchUndated(b1, 'fold 19').length);
   assert.equal(TL.FOLD_MAX, 12);
 });
+
+// Checkpoint 25: chapter selector values. Only a book declaring a positive-integer `chapters` gets a selector; a
+// selector or URL value is a chapter position only as plain digits within 1..chapters, otherwise "not set" (null).
+test('chapterCount: only positive-integer chapters declare a selector', () => {
+  const books = {
+    1: { chapters: 12 },
+    2: {},
+    3: { chapters: 0 },
+    4: { chapters: 2.5 },
+    5: { chapters: '7' },
+    6: { chapters: -3 },
+  };
+  assert.deepEqual(
+    [1, 2, 3, 4, 5, 6, 7].map(b => TL.chapterCount(books, b)),
+    [12, 0, 0, 0, 0, 0, 0],
+  );
+  assert.equal(TL.chapterCount(null, 1), 0);
+});
+
+test('chapterPos: valid positions and fail-closed rejects', () => {
+  const books = { 1: { chapters: 12 }, 2: {} };
+  assert.equal(TL.chapterPos(books, 1, '1'), 1);
+  assert.equal(TL.chapterPos(books, 1, 12), 12);
+  for (const bad of [null, undefined, '', '0', '13', '-1', '1.5', ' 3', '3a', '03', 'x', '1e1'])
+    assert.equal(TL.chapterPos(books, 1, bad), null, String(bad));
+  assert.equal(TL.chapterPos(books, 2, '1'), null, 'a book without chapters has no position');
+  assert.equal(TL.chapterPos(books, 0, '1'), null, 'All has no position');
+});
+
+test('chapterOk with a selected chapter: earlier book safe, current book by chapter, later book hidden', () => {
+  const g = { first: 2, chapter: 4 };
+  const pos = (book: number, chapter: number | null) => ({ book, chapter, cumulative: true });
+  assert.equal(TL.chapterOk(g, pos(2, null)), false, 'not set: hidden');
+  assert.equal(TL.chapterOk(g, pos(2, 3)), false);
+  assert.equal(TL.chapterOk(g, pos(2, 4)), true);
+  assert.equal(TL.chapterOk(g, pos(3, null)), true, 'a later book has read past it');
+  assert.equal(TL.chapterOk(g, pos(1, 12)), false, 'an earlier book never shows it');
+});

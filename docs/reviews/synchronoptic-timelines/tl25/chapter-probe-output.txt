@@ -1,0 +1,115 @@
+PASS chapters/1440 All: selector present but hidden
+PASS chapters/1440 All: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS chapters/1440 All: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS chapters/1440 book I: selector shown, Not set + 6 chapters, value Not set, no ch in URL — {"present":true,"shown":true,"value":"","options":7}
+INFO chapters/1440 selector reachability with the timeline open — {"onScreen":true,"topIsSelect":false}
+PASS chapters/1440 book I, chapter not set: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/1440 book I, chapter not set: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/1440 chapter 3: URL ch=3, announcement names the chapter — ch=3 ann=Earth, on the surface. Reading Part one, through chapter 3
+PASS chapters/1440 book I, chapter 3: list ids == gated model ids (rows distinct), relationships == gated edges — expected 167/124; DOM 167 distinct (167 rows), missing 0, extra 0; rel 124/124; lib true
+PASS chapters/1440 book I, chapter 3: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":true,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/1440 Karaite selected at chapter 3 (tlsel + detail) — tlsel=n:jud-karaite
+PASS chapters/1440 chapter 3 → 2: selection, detail and URL tlsel removed; ch=2 — {"book":"1","ch":"2","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/1440 book I, chapter 2: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/1440 book I, chapter 2: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/1440 chapter 2: undated search does not find Covenant tradition
+PASS chapters/1440 book I, chapter 5: list ids == gated model ids (rows distinct), relationships == gated edges — expected 168/127; DOM 168 distinct (168 rows), missing 0, extra 0; rel 127/127; lib true
+PASS chapters/1440 book I, chapter 5: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false}
+PASS chapters/1440 chapter 5: undated search finds Covenant tradition
+PASS chapters/1440 Covenant tradition selected at chapter 5 — tlsel=n:jud-covenant-tradition
+PASS chapters/1440 jud layer off: selection removed, chapter kept (ch=5) — {"book":"1","ch":"5","world":"earth","site":"jerusalem","view":"surface","layers":"chr,isl,enc","tl":"1"}
+PASS chapters/1440 book I, chapter 5, jud off: list ids == gated model ids (rows distinct), relationships == gated edges — expected 123/89; DOM 123 distinct (123 rows), missing 0, extra 0; rel 89/89; lib true
+PASS chapters/1440 book I, chapter 5, jud off: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/1440 book I, chapter 5, jud back on: list ids == gated model ids (rows distinct), relationships == gated edges — expected 168/127; DOM 168 distinct (168 rows), missing 0, extra 0; rel 127/127; lib true
+PASS chapters/1440 book I, chapter 5, jud back on: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false}
+PASS chapters/1440 Not set again: ch removed from the URL
+PASS chapters/1440 book I, chapter reset: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/1440 book I, chapter reset: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/1440 book II (no chapters): selector hidden, ch dropped — {"book":"2","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/1440 book II: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS chapters/1440 book II: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS chapters/1440 back to book I: chapter Not set again (fail closed)
+PASS chapters/1440 book I after book II: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/1440 book I after book II: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/1440 All: selector hidden, ch dropped
+PASS chapters/1440 same-document link ch=2 applied
+PASS chapters/1440 same-document link ch=abc: Not set, ch dropped
+PASS chapters/1440 book I after ch=abc: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/1440 book I after ch=abc: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/1440 fresh load book=1&ch=3&tlsel=Karaite: chapter 3 and selection restored — {"book":"1","ch":"3","world":"earth","site":"jerusalem","view":"surface","tl":"1","tlsel":"n:jud-karaite"}
+PASS chapters/1440 fresh load ch=9 (out of range): Not set, Karaite selection not restored — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/1440 fresh load book=2&ch=3 (book without chapters): ch dropped — {"book":"2","world":"earth","site":"jerusalem","view":"surface"}
+PASS chapters/1440 fresh load ch=3 without a book (remembered book 1): ch ignored, Karaite not selected — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/1440 no runtime errors
+PASS chapters/390 All: selector present but hidden
+PASS chapters/390 All: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS chapters/390 All: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS chapters/390 book I: selector shown, Not set + 6 chapters, value Not set, no ch in URL — {"present":true,"shown":true,"value":"","options":7}
+INFO chapters/390 selector reachability with the timeline open — {"onScreen":true,"topIsSelect":false}
+PASS chapters/390 book I, chapter not set: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/390 book I, chapter not set: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/390 chapter 3: URL ch=3, announcement names the chapter — ch=3 ann=Earth, on the surface. Reading Part one, through chapter 3
+PASS chapters/390 book I, chapter 3: list ids == gated model ids (rows distinct), relationships == gated edges — expected 167/124; DOM 167 distinct (167 rows), missing 0, extra 0; rel 124/124; lib true
+PASS chapters/390 book I, chapter 3: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":true,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/390 Karaite selected at chapter 3 (tlsel + detail) — tlsel=n:jud-karaite
+PASS chapters/390 chapter 3 → 2: selection, detail and URL tlsel removed; ch=2 — {"book":"1","ch":"2","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/390 book I, chapter 2: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/390 book I, chapter 2: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/390 chapter 2: undated search does not find Covenant tradition
+PASS chapters/390 book I, chapter 5: list ids == gated model ids (rows distinct), relationships == gated edges — expected 168/127; DOM 168 distinct (168 rows), missing 0, extra 0; rel 127/127; lib true
+PASS chapters/390 book I, chapter 5: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false}
+PASS chapters/390 chapter 5: undated search finds Covenant tradition
+PASS chapters/390 Covenant tradition selected at chapter 5 — tlsel=n:jud-covenant-tradition
+PASS chapters/390 jud layer off: selection removed, chapter kept (ch=5) — {"book":"1","ch":"5","world":"earth","site":"jerusalem","view":"surface","layers":"chr,isl,enc","tl":"1"}
+PASS chapters/390 book I, chapter 5, jud off: list ids == gated model ids (rows distinct), relationships == gated edges — expected 123/89; DOM 123 distinct (123 rows), missing 0, extra 0; rel 89/89; lib true
+PASS chapters/390 book I, chapter 5, jud off: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/390 book I, chapter 5, jud back on: list ids == gated model ids (rows distinct), relationships == gated edges — expected 168/127; DOM 168 distinct (168 rows), missing 0, extra 0; rel 127/127; lib true
+PASS chapters/390 book I, chapter 5, jud back on: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":false}
+PASS chapters/390 Not set again: ch removed from the URL
+PASS chapters/390 book I, chapter reset: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/390 book I, chapter reset: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/390 book II (no chapters): selector hidden, ch dropped — {"book":"2","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/390 book II: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS chapters/390 book II: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS chapters/390 back to book I: chapter Not set again (fail closed)
+PASS chapters/390 book I after book II: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/390 book I after book II: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/390 All: selector hidden, ch dropped
+PASS chapters/390 same-document link ch=2 applied
+PASS chapters/390 same-document link ch=abc: Not set, ch dropped
+PASS chapters/390 book I after ch=abc: list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS chapters/390 book I after ch=abc: fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS chapters/390 fresh load book=1&ch=3&tlsel=Karaite: chapter 3 and selection restored — {"book":"1","ch":"3","world":"earth","site":"jerusalem","view":"surface","tl":"1","tlsel":"n:jud-karaite"}
+PASS chapters/390 fresh load ch=9 (out of range): Not set, Karaite selection not restored — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/390 fresh load book=2&ch=3 (book without chapters): ch dropped — {"book":"2","world":"earth","site":"jerusalem","view":"surface"}
+PASS chapters/390 fresh load ch=3 without a book (remembered book 1): ch ignored, Karaite not selected — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS chapters/390 no runtime errors
+PASS no-chapters/1440 All: selector absent
+PASS no-chapters/1440 All: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS no-chapters/1440 All: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS no-chapters/1440 book I without declared chapters: no selector, no ch in URL
+PASS no-chapters/1440 book I, no selector (fail closed): list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS no-chapters/1440 book I, no selector (fail closed): fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS no-chapters/1440 link ch=3 on a book with no chapters is ignored and dropped from the URL — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS no-chapters/1440 book I via link with ch=3 (ignored): list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS no-chapters/1440 book I via link with ch=3 (ignored): fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS no-chapters/1440 no runtime errors
+PASS no-chapters/390 All: selector absent
+PASS no-chapters/390 All: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS no-chapters/390 All: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS no-chapters/390 book I without declared chapters: no selector, no ch in URL
+PASS no-chapters/390 book I, no selector (fail closed): list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS no-chapters/390 book I, no selector (fail closed): fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS no-chapters/390 link ch=3 on a book with no chapters is ignored and dropped from the URL — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS no-chapters/390 book I via link with ch=3 (ignored): list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS no-chapters/390 book I via link with ch=3 (ignored): fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS no-chapters/390 no runtime errors
+PASS unmodified/1440 real single-mode pack: no chapter selector in the page
+PASS unmodified/1440 real pack, All: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS unmodified/1440 real pack, All: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS unmodified/1440 no runtime errors
+PASS unmodified/390 real single-mode pack: no chapter selector in the page
+PASS unmodified/390 real pack, All: list ids == gated model ids (rows distinct), relationships == gated edges — expected 169/129; DOM 169 distinct (169 rows), missing 0, extra 0; rel 129/129; lib true
+PASS unmodified/390 real pack, All: fixture records {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true} — {"n:jud-karaite":true,"n:jud-covenant-tradition":true,"n:jud-ananites":true}
+PASS unmodified/390 no runtime errors
+chapter probe: 112 pass, 0 fail

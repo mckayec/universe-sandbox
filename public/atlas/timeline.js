@@ -78,7 +78,8 @@
       .map(n => ({ id: n.id || null, t: n.t }));
   /* Gate fields the atlas understands (PACK_FORMAT §6): layers, a `books` list, a first book, and an event's single
      `book` (shown iff event.book <= selected book, i.e. a first book). An optional `chapter` is carried so a
-     chapter-aware host can gate on it; the atlas host has no chapter selector, so nothing here is chapter-safe yet. */
+     chapter-aware host can gate on it; the atlas host offers a chapter selector only for books that declare
+     `chapters` (chapterCount below), otherwise a current-book chapter-gated record stays hidden. */
   const gateOf = o => {
     const first = firstBook(o);
     return { layers: arr(o.layers), books: o.books || null, first, chapter: o.chapter == null ? null : o.chapter };
@@ -527,6 +528,26 @@
     return pos.chapter != null && pos.chapter >= gate.chapter;
   }
 
+  /* ---------- chapter selector (checkpoint 25) ----------
+     A book may declare how many chapters it has (`books[b].chapters`, a positive integer). Only such a book in a
+     cumulative host gets a chapter selector. chapterCount() is 0 for any other value, so a pack that declares no
+     chapters keeps the no-selector, fail-closed behaviour of chapterOk(). */
+  function chapterCount(books, b) {
+    const n = books && books[b] ? books[b].chapters : null;
+    return Number.isInteger(n) && n > 0 && n <= 9999 ? n : 0;
+  }
+  /* A reader's chapter position from a selector value or a URL `ch`: an integer 1..chapterCount of that book, given
+     as plain decimal digits; anything else (missing, empty, 0, negative, fractional, out of range, a book with no
+     chapters) is null, i.e. "not set", which hides that book's chapter-gated records. */
+  function chapterPos(books, b, raw) {
+    const n = chapterCount(books, b);
+    if (!n || raw == null) return null;
+    const s = String(raw);
+    if (!/^[1-9][0-9]{0,3}$/.test(s)) return null;
+    const c = Number(s);
+    return c <= n ? c : null;
+  }
+
   /* ---------- gating ---------- */
   /* `ok(gate)` is the atlas's own filter (layers.js + book gate). Records first, then edges whose endpoints both
      survive and whose own gate passes; lanes that keep at least one record. Everything downstream uses this. */
@@ -768,6 +789,8 @@
     adaptStandardWorks,
     adapterFor,
     chapterOk,
+    chapterCount,
+    chapterPos,
     firstBook,
     visible,
     revalidate,
