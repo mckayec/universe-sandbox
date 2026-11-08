@@ -1,10 +1,11 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews checkpoint 29 (TL22-E2 real-input diagnosis, evidence only) at PR45 0650d33a00e9fe152001d15c07bdeed774ceaca6 per checkpoint-29.md; then Claude resumes deep-worlds DWT-02
-updated: 2026-11-08T11:31Z
+next-action: After the bounded Deep Worlds rendered qualification, Claude verifies rendered year-filter restoration (explicit/omitted yr via link, Back, Forward at 1440/390) per independent-review-0650d33.md; retain R29-1 and missing chapter parent control
+updated: 2026-11-08T12:20:02Z
 idle-runs: 0
-note: Checkpoint 29 at 0650d33 (docs-only over daeaf39): 1440 click timeout diagnosed as swiftshader frame starvation (~2.9 s/frame vs 0.45 s at 390; button on top and stable; same page.click succeeds in ~13 s with a 90 s budget; head = parent). Real close→chapter change→reopen 20/20 at head with real pointer/keys incl. focus return; parent chapter-path control not run (time). R29-1: phone-width Timeline button starts off-screen in the #controls scroll strip of cumulative packs (pre-existing, not changed). 0/12 real promotions; release gates open.
+note: Checkpoint29 accepted as bounded builder input/focus evidence at 0650d33; 8/8 text files and 1/1 image inspected, 225/225 runtime files identical to daeaf39. Builder chapter path20/20, parent0; independent browser0/20 (launch socket-permission failure). Slow frames are a plausible timeout explanation, not isolated causality or whole-PR exoneration. R29-1 Low retained; 0/12 promotions; full technical/canon/release gates open.
+
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -92,3 +93,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-08T10:13:36Z: ChatGPT independently reviewed checkpoint28 at exact PR45 daeaf395fd4fc309eca1ea27854e2a8f4bb287ea (parent1ceb4b2). [Review](independent-review-daeaf39.md) saved/read back at 6f6eb0f1bcc643e3eb8aff5a60e6ce766d5f9854; [source controls](tl28/reviewer-transaction.cjs) at bbd2e9aee141f92398ff1db55e3bae17b128cf4d.6/6 changed text files read; actual-source transaction controls8/8 head vs1/8 parent. O-1 closes within source/transaction scope. Builder logs96/96 vs48/96, chapter regression38/38 reconciled; relationship counts are not identity checks, yr rendered restoration absent. Fresh browser launch blocked before page creation,0/96 independent browser cases. implementation-review/chatgpt → implementation/claude for carried TL22-E2 actual-input/focus unit; preserve deep-worlds DWT-02.0/12 real promotions; no final canon/full technical/release approval.
 - 2026-11-08T11:31Z Claude checkpoint 29 on PR45 at 0650d33a00e9fe152001d15c07bdeed774ceaca6 (docs/evidence only, parent daeaf39): [checkpoint-29.md](https://github.com/mckayec/universe-sandbox/blob/0650d33a00e9fe152001d15c07bdeed774ceaca6/docs/reviews/synchronoptic-timelines/checkpoint-29.md). TL22-E2 1440 timeout = Playwright actionability wait starved by ~3 s software-GL frames (head and parent identical; 90 s budget opens in ~13 s; real CDP click/Escape/Enter work with focus into timeline and back to #tlBtn). tl29/real-chapter-path.mjs 20/20 real-input at 1440/390; parent control for that path not run. R29-1 phone-width scroll-strip discoverability recorded, unchanged. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-08T12:20:02Z ChatGPT: independent-review-0650d33.md saved/read back at 0a8b5bda153025a2393e6298331363a23a14deb2. Reviewed 8/8 text files and 1/1 screenshot at PR45 0650d33a00e9fe152001d15c07bdeed774ceaca6; 225/225 non-doc files match direct parent daeaf39. Accepted TL22-E2 bounded builder input/focus evidence with causal qualifications: sparse frame samples and warm later click do not isolate timeout cause; control 1ceb4b2 already includes PR45. Chapter log20/20 reconciled, parent0 remains missing, independent0/20 due fresh Chromium socket-permission failure. R29-1 Low retained. implementation-review/chatgpt -> implementation/claude for carried rendered-year gap after the Deep Worlds rendered qualification; DWT-02 source repair already reviewed separately, do not repeat it. No canon, full technical, release approval, merge or deploy.
