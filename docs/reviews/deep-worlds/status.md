@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude publishes one technical disposition packet for PR37 5bfde31: accept the bounded navigation review, defer DWT-03-R1 until tree integration or fix it narrowly, and identify remaining Society/visual/device/Save-Load gates
-updated: 2026-11-08T21:20Z
+next-action: ChatGPT disposes the 8 source holds + Society content (Known gap or cut each, R3 cap) per technical-disposition-5bfde31.md §5, then records "Canon: approved for 5bfde31 with Known gaps" or a finite cut list for Claude
+updated: 2026-11-08T21:52Z
 idle-runs: 0
-note: DWT-03 stale-entry guards independently pass 6/6; retained source checks 53/53. Reviewer probe 11/15 head vs 8/15 parent records four latent tree-order failures; 7/7 current packs have no tree. Builder rendered qualification inspected (3/3 traces, 76/76 repeat/Stop assertions, 90/90 matrix); CI verified, 0 independent rendered cases. Full canon/technical and Mckay release approval remain open.
+note: Technical disposition packet at PR37 5bfde31 (technical-disposition-5bfde31.md): DWT-03 review accepted (11/15 vs 8/15); DWT-03-R1 deferred with trigger = before any tree-bearing pack; navigation evidence consolidated, no more qualification requested. Remaining: canon holds/Society (ChatGPT), then Claude §4 final technical (Society suite, 4-viewport shots), then Mckay release. Save/Load flake tracked under mobile-entry-usability.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -92,3 +92,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T20:32Z Claude: v2.1 rendered pairs at 5bfde31 ALL PASS 19 x4 (Cosmere b10, Dune b3; 1440x900, 390x844). DWT-03 fix handed over in [fix-return-5bfde31.md](fix-return-5bfde31.md). Stage fixing->implementation-review, owner claude->chatgpt. Not merged. idle-runs 0.
 
 - 2026-11-08T21:20Z ChatGPT: saved/read back [DWT-03 review](implementation-review-5bfde31.md) at 14e6b1cf8a9226152c1ca325781e976bde58239f and [independent probe](reviewer-dwt03-5bfde31.cjs) at 7775f00dd80ff5bfe3ebf84ccc9618d03f27072d before this handoff. Exact unchanged PR37 head 5bfde313d819ab89e273af4b9c6a5f788d6d6f3d; 1/1 changed application files and 3/3 timer routes inspected. Original stale-entry defect closes at source/VM scope (6/6 sensitive checks vs 0/6 parent); retained checks 53/53 on both. New probe totals 11/15 head vs 8/15 parent: four Low DWT-03-R1 tree-order failures, latent because 7/7 current concrete packs have no tree. Builder qualification inspected: 3/3 directed traces, 19/19 x4 repeat/Stop assertions and 90/90 matrix; limits preserved, not independent rendered acceptance. CI42509377038/build128818895165 logs verify 125/125 units, 175-file dist and 12x2 pages; tested merge 97a0a214 has 281/281 matching non-doc files. Fresh local Chromium socket-permission failure before page creation (0 independent rendered cases). implementation-review/chatgpt -> fixing/claude for finite technical disposition, with R1 fix/defer trigger before tree integration; do not repeat completed current-pack qualification merely for this environment limit. Prior content decisions, eight source holds and 139 unselected records preserved. No new canon, full technical or release approval; no application edit, PR approval, merge or deployment.
+- 2026-11-08T21:52Z Claude: published [technical-disposition-5bfde31.md](technical-disposition-5bfde31.md) at unchanged PR37 5bfde31 (no app edit): accepted DWT-03 review and its 11/15 count; DWT-03-R1 deferred with tree-integration trigger; consolidated navigation evidence; gate table splits blocking canon/Society (ChatGPT) and final technical (Claude: Society suite + 4-viewport shots at final SHA) from Known gaps (device, Save/Load flake under mobile-entry-usability, geometry). fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
