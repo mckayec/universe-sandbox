@@ -1,0 +1,91 @@
+PASS 1440x900 D1 stale conservatory link renders Arrakeen place (view=place sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=arrakeen renderedLm=null hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS 1440x900 D1 stale lm dropped in state and render (lm=null, renderedLm=null)
+PASS 1440x900 D1 no conservatory/Margot copy or URL
+PASS 1440x900 D1 rendered Arrakeen landmarks exclude conservatory, include residency (residency,dining,greathall,palms,streets,spaceport,hut,wall)
+PASS 1440x900 D1 residency positive control via dossier click (view=place sel=arrakis site=arrakeen lm=residency ev=null book=1 rendered=arrakeen renderedLm=residency hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=residency)
+PASS 1440x900 D1 same document
+PASS 1440x900 D1 page errors: none
+PASS 1440x900 D2 residency direct link restores place + landmark (view=place sel=arrakis site=arrakeen lm=residency ev=null book=1 rendered=arrakeen renderedLm=residency hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=residency)
+PASS 1440x900 D2 page errors: none
+PASS 1440x900 D3 surface link settles on Arrakis (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1&world=arrakis&view=surface)
+PASS 1440x900 D3 book1 chronicle: no d15/d16, d14/d17 present (27)
+PASS 1440x900 D3 chronicle d4 enters Arrakeen at the Residency (view=place sel=arrakis site=arrakeen lm=residency ev=d4 book=1 rendered=arrakeen renderedLm=residency hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=residency)
+PASS 1440x900 D3 Back returns to Arrakis surface in the same document (view=world sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1&world=arrakis&site=arrakeen&view=surface)
+PASS 1440x900 D3 tour length 27 equals chronicle 27
+PASS 1440x900 D3 all 27 tour steps exclude d15/d16 titles
+PASS 1440x900 D3 tour Stop settles with render matching state (view=galaxy sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1&world=arrakis)
+PASS 1440x900 D3 All-books chronicle has no d15/d16 (88)
+PASS 1440x900 D3 same document
+PASS 1440x900 D3 page errors: none
+PASS 1440x900 e70 surface link settles on scadrial (view=world sel=scadrial site=null lm=null ev=null book=2 rendered=null renderedLm=null hash=#book=2&world=scadrial&view=surface)
+PASS 1440x900 e70 at gate book2: chronicle lists it
+PASS 1440x900 e70 chronicle click renders luthadel place, no landmark (view=place sel=scadrial site=luthadel lm=null ev=e70 book=2 rendered=luthadel renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=place)
+PASS 1440x900 e70 Back returns to scadrial surface in the same document (view=world sel=scadrial site=luthadel lm=null ev=null book=2 rendered=null renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=surface)
+PASS 1440x900 e70 tour (14 steps = current-book chronicle 14) reaches "Elend is deposed" at step 6
+PASS 1440x900 e70 tour step renders luthadel with no landmark (view=place sel=scadrial site=luthadel lm=null ev=e70 book=2 rendered=luthadel renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=place)
+PASS 1440x900 e70 downgrade to book1: gone from chronicle, dossier and state (view=place sel=scadrial site=luthadel lm=null ev=null book=1 rendered=luthadel renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=surface)
+PASS 1440x900 e70 same document
+PASS 1440x900 e70 chronicle/tour/Back/downgrade page errors: none
+PASS 1440x900 e70 direct place link at gate renders luthadel (view=place sel=scadrial site=luthadel lm=null ev=null book=2 rendered=luthadel renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=place)
+PASS 1440x900 e70 direct link page errors: none
+PASS 1440x900 e70 below-gate direct link (book1) shows no e70 copy (view=galaxy sel=null site=null lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1)
+PASS 1440x900 e70 below-gate link page errors: none
+PASS 1440x900 e102 surface link settles on roshar (view=world sel=roshar site=null lm=null ev=null book=8 rendered=null renderedLm=null hash=#book=8&world=roshar&view=surface)
+PASS 1440x900 e102 at gate book8: chronicle lists it
+PASS 1440x900 e102 chronicle click renders kholinar place, no landmark (view=place sel=roshar site=kholinar lm=null ev=e102 book=8 rendered=kholinar renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=place)
+PASS 1440x900 e102 Back returns to roshar surface in the same document (view=world sel=roshar site=kholinar lm=null ev=null book=8 rendered=null renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=surface)
+PASS 1440x900 e102 tour (18 steps = current-book chronicle 18) reaches "The Cult of Moments" at step 7
+PASS 1440x900 e102 tour step renders kholinar with no landmark (view=place sel=roshar site=kholinar lm=null ev=e102 book=8 rendered=kholinar renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=place)
+PASS 1440x900 e102 downgrade to book7: gone from chronicle, dossier and state (view=place sel=roshar site=kholinar lm=null ev=null book=7 rendered=kholinar renderedLm=null hash=#book=7&world=roshar&site=kholinar&view=place)
+PASS 1440x900 e102 same document
+PASS 1440x900 e102 chronicle/tour/Back/downgrade page errors: none
+PASS 1440x900 e102 direct place link at gate renders kholinar (view=place sel=roshar site=kholinar lm=null ev=null book=8 rendered=kholinar renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=place)
+PASS 1440x900 e102 direct link page errors: none
+PASS 1440x900 e102 below-gate direct link (book7) shows no e102 copy (view=place sel=roshar site=kholinar lm=null ev=null book=7 rendered=kholinar renderedLm=null hash=#book=7&world=roshar&site=kholinar&view=place)
+PASS 1440x900 e102 below-gate link page errors: none
+PASS 390x844 D1 stale conservatory link renders Arrakeen place (view=place sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=arrakeen renderedLm=null hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS 390x844 D1 stale lm dropped in state and render (lm=null, renderedLm=null)
+PASS 390x844 D1 no conservatory/Margot copy or URL
+PASS 390x844 D1 rendered Arrakeen landmarks exclude conservatory, include residency (residency,dining,greathall,palms,streets,spaceport,hut,wall)
+PASS 390x844 D1 residency positive control via dossier click (view=place sel=arrakis site=arrakeen lm=residency ev=null book=1 rendered=arrakeen renderedLm=residency hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=residency)
+PASS 390x844 D1 same document
+PASS 390x844 D1 page errors: none
+PASS 390x844 D2 residency direct link restores place + landmark (view=place sel=arrakis site=arrakeen lm=residency ev=null book=1 rendered=arrakeen renderedLm=residency hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=residency)
+PASS 390x844 D2 page errors: none
+PASS 390x844 D3 surface link settles on Arrakis (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1&world=arrakis&view=surface)
+PASS 390x844 D3 book1 chronicle: no d15/d16, d14/d17 present (27)
+PASS 390x844 D3 chronicle d4 enters Arrakeen at the Residency (view=place sel=arrakis site=arrakeen lm=residency ev=d4 book=1 rendered=arrakeen renderedLm=residency hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=residency)
+PASS 390x844 D3 Back returns to Arrakis surface in the same document (view=world sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1&world=arrakis&site=arrakeen&view=surface)
+PASS 390x844 D3 tour length 27 equals chronicle 27
+PASS 390x844 D3 all 27 tour steps exclude d15/d16 titles
+PASS 390x844 D3 tour Stop settles with render matching state (view=galaxy sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1&world=arrakis)
+PASS 390x844 D3 All-books chronicle has no d15/d16 (88)
+PASS 390x844 D3 same document
+PASS 390x844 D3 page errors: none
+PASS 390x844 e70 surface link settles on scadrial (view=world sel=scadrial site=null lm=null ev=null book=2 rendered=null renderedLm=null hash=#book=2&world=scadrial&view=surface)
+PASS 390x844 e70 at gate book2: chronicle lists it
+PASS 390x844 e70 chronicle click renders luthadel place, no landmark (view=place sel=scadrial site=luthadel lm=null ev=e70 book=2 rendered=luthadel renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=place)
+PASS 390x844 e70 Back returns to scadrial surface in the same document (view=world sel=scadrial site=luthadel lm=null ev=null book=2 rendered=null renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=surface)
+PASS 390x844 e70 tour (14 steps = current-book chronicle 14) reaches "Elend is deposed" at step 6
+PASS 390x844 e70 tour step renders luthadel with no landmark (view=place sel=scadrial site=luthadel lm=null ev=e70 book=2 rendered=luthadel renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=place)
+PASS 390x844 e70 downgrade to book1: gone from chronicle, dossier and state (view=world sel=scadrial site=luthadel lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1&world=scadrial&site=luthadel&view=surface)
+PASS 390x844 e70 same document
+PASS 390x844 e70 chronicle/tour/Back/downgrade page errors: none
+PASS 390x844 e70 direct place link at gate renders luthadel (view=place sel=scadrial site=luthadel lm=null ev=null book=2 rendered=luthadel renderedLm=null hash=#book=2&world=scadrial&site=luthadel&view=place)
+PASS 390x844 e70 direct link page errors: none
+PASS 390x844 e70 below-gate direct link (book1) shows no e70 copy (view=galaxy sel=null site=null lm=null ev=null book=1 rendered=null renderedLm=null hash=#book=1)
+PASS 390x844 e70 below-gate link page errors: none
+PASS 390x844 e102 surface link settles on roshar (view=world sel=roshar site=null lm=null ev=null book=8 rendered=null renderedLm=null hash=#book=8&world=roshar&view=surface)
+PASS 390x844 e102 at gate book8: chronicle lists it
+PASS 390x844 e102 chronicle click renders kholinar place, no landmark (view=place sel=roshar site=kholinar lm=null ev=e102 book=8 rendered=kholinar renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=place)
+PASS 390x844 e102 Back returns to roshar surface in the same document (view=world sel=roshar site=kholinar lm=null ev=null book=8 rendered=null renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=surface)
+PASS 390x844 e102 tour (18 steps = current-book chronicle 18) reaches "The Cult of Moments" at step 7
+PASS 390x844 e102 tour step renders kholinar with no landmark (view=place sel=roshar site=kholinar lm=null ev=e102 book=8 rendered=kholinar renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=place)
+PASS 390x844 e102 downgrade to book7: gone from chronicle, dossier and state (view=place sel=roshar site=kholinar lm=null ev=null book=7 rendered=kholinar renderedLm=null hash=#book=7&world=roshar&site=kholinar&view=place)
+PASS 390x844 e102 same document
+PASS 390x844 e102 chronicle/tour/Back/downgrade page errors: none
+PASS 390x844 e102 direct place link at gate renders kholinar (view=place sel=roshar site=kholinar lm=null ev=null book=8 rendered=kholinar renderedLm=null hash=#book=8&world=roshar&site=kholinar&view=place)
+PASS 390x844 e102 direct link page errors: none
+PASS 390x844 e102 below-gate direct link (book7) shows no e102 copy (view=place sel=roshar site=kholinar lm=null ev=null book=7 rendered=kholinar renderedLm=null hash=#book=7&world=roshar&site=kholinar&view=place)
+PASS 390x844 e102 below-gate link page errors: none
+ALL PASS 90

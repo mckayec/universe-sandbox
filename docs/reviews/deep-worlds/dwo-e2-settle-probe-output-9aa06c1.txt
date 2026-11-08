@@ -1,0 +1,13 @@
+  +10s {"t":10,"view":"world","sel":"scadrial","hash":"#book=1&world=scadrial&site=luthadel&view=surface","crumbs":"The galaxy›The Scadrian system›Scadrial›Luthadel"}
+  +12s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +14s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +16s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +18s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +20s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +22s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +24s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +26s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+  +28s {"t":10,"view":"galaxy","sel":null,"hash":"#book=1","crumbs":"The galaxy›The cluster"}
+run 1 +1.5s {"view":"place","site":"luthadel","ev":null,"book":1,"hash":"#book=2&world=scadrial&site=luthadel&view=surface","rendered":"luthadel","dossierHasE70":false,"placeCopy":false,"chronHasE70":false}
+run 1 +8s   {"view":"world","site":"luthadel","ev":null,"book":1,"hash":"#book=1&world=scadrial&site=luthadel&view=surface","rendered":null,"dossierHasE70":false,"placeCopy":true,"chronHasE70":false} clean
+persistent leaks 0/1; transient leaks 0/1
