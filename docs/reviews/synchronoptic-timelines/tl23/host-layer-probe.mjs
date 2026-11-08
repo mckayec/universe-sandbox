@@ -156,6 +156,8 @@ const setEqual = (tag, what, c) =>
     c.missingN === 0 &&
       c.extraN === 0 &&
       c.distinct === c.expected &&
+      // TL23-E1: every rendered row is a distinct id (a duplicated row fails even when the id sets match)
+      c.rows === c.distinct &&
       c.libAgrees &&
       c.relN === c.edgesExpected &&
       c.relLi === c.edgesExpected,
