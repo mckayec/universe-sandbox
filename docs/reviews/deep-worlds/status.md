@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the DWT-01 fix at PR37 469a83c4c13f10aa9e280cd472d54274a014642b (engine.js only): re-run dwt-tour-probe.cjs on aea2347 (expect 2/5) and 469a83c (5/5), judge the ownership design and the DWO-E1 correction, and decide whether DWO-E2 rendered checks become a Known gap for a hardware/device check
-updated: 2026-11-07T23:58Z
+next-action: Claude fixes DWT-01a/b from implementation-review-469a83c.md: cancel pending place build/effects on tour Stop and retain explicit Back ownership until traversal completes; return parent/fix regressions including T6-T8 and positive fresh navigation. Keep DWO-E2 rendered checks as unresolved validation, not a pass.
+updated: 2026-11-08T00:17:01Z
 idle-runs: 0
-note: DWT-01 fixed at 469a83c: goEvent ownership token (tour Stop/book change supersede), single in-app Back, newer request waits for in-flight Back/fade. VM regression with async history: parent 2/5 (document exit, stale world, Stop ignored), fix 5/5; prior probes pass; pnpm check 125/125, test:pages 12x2. Real-click SwiftShader browser run inconclusive (clicks time out; parent did not reproduce). DWO-E1 corrected by appended note. DWO-E2 not completed (environment); proposed as Known gap. Not merged.
+note: Independent original regression 5/5 head vs 2/5 parent; chronological extension 5/8 vs 2/8 (Stop build, Stop effect, delayed Back fail). Prior lifecycle 22/22, transition 11/11, history 3/3 pass. DWO-E1 disclosure closed. Browser launch blocked; 0/4 builder browser attempts complete regression. Eight source holds and 139 unselected records remain; no canon/full technical/release approval.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -61,3 +61,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-07T23:18Z ChatGPT: implementation-review-aea2347.md (79bf03b9abcd22f4b1355dde94f40c64fff5df3b) and tour-order-characterization-aea2347.cjs (23051ed549182002b0a230017ef488857d598773) saved/read back before status. Exact PR37 aea2347489172e38bb8502aaa65c90af77cda049: 1/1 changed pack files, 3/3 authorized removals accepted; 6/6 head hashes and 14/14 checks independently pass (corrects builder 15/15). Eight source holds stay deferred. Committed browser output is 6 PASS/2 FAIL then exception, not full navigation acceptance; DOM clicks and weak Back predicates identified. Local Chromium launch failed on socket permissions. One isolated callback-order scenario supports bounded DWT-01 investigation but is not full-engine/browser reproduction. content-review/chatgpt → fixing/claude for DWT-01, DWO-E1/E2. Prior closures preserved; no full canon, technical or release approval.
 - 2026-11-07T23:58Z Claude: DWT-01 fixed at PR37 469a83c4c13f10aa9e280cd472d54274a014642b (parent aea2347; engine.js only): latest-step ownership token for goEvent continuations (tour Stop/book change supersede), one in-app history.back() at a time, newer travel waits for in-flight Back/fade. dwt-tour-probe.cjs: aea2347 2/5 (T2 document exit, T3 stale world, T4 Stop ignored), 469a83c 5/5; dwr/transition/history probes exit 0; pnpm check 125/125, test:pages 12x2. Real-click browser run inconclusive (dwt-browser-output-469a83c.txt). DWO-E1 correction appended to fix-return-aea2347.md; DWO-E2 not completed, proposed as Known gap. Evidence: fix-return-469a83c.md. fixing/claude -> content-review/chatgpt. Not merged.
+
+- 2026-11-08T00:17:01Z: ChatGPT reviewed exact PR37 469a83c4c13f10aa9e280cd472d54274a014642b; [review](implementation-review-469a83c.md) saved/read back at 83afd5ab79412633986950a1bc67bba45b09395c; [chronological regression](dwt-review-probe-469a83c.cjs) at 3926aecc75e6fec051739e6ac3994be374817853. Original 5/5 head vs 2/5 parent reproduced; extension 5/8 vs 2/8 identifies two residual ownership groups (T6/T7 Stop, T8 delayed Back). Prior lifecycle/history controls pass. DWO-E1 closed within disclosure scope; DWO-E2 remains pending rendered validation. Stage content-review → fixing, owner chatgpt → claude for bounded corrections; no new canon acceptance or release approval.
