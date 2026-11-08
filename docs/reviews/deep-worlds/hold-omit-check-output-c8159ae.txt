@@ -1,0 +1,21 @@
+PASS dune unchanged
+PASS foundation unchanged
+PASS sun-eater unchanged
+PASS cosmere unchanged
+PASS expanse events removed exactly b3f,b3o,b3i,b7d
+PASS expanse remaining events identical in order and content (116 -> 112)
+PASS expanse medina/drum landmarks = base minus drumring,engineering (7 -> 5)
+PASS expanse whole pack = base minus the named records (no other leaf changed)
+PASS expanse dangling world/site/lm refs: 0
+PASS expanse no remaining quoted id refs to removed events
+PASS expanse tours/chronicle contain no removed events
+PASS hyperion events removed exactly b1i2,b1n,b2b,b2k,b3b
+PASS hyperion remaining events identical in order and content (81 -> 76)
+PASS hyperion hyperion/tombs landmarks = base minus sphinx,jade (6 -> 4)
+PASS hyperion site hyperion/sphinx removed (18 -> 17 sites; nested door,inner,watch go with it)
+PASS hyperion whole pack = base minus the named records (no other leaf changed)
+PASS hyperion dangling world/site/lm refs: 0
+PASS hyperion no remaining quoted id refs to removed events
+PASS hyperion tours/chronicle contain no removed events
+PASS unique top-level removal targets 14 (expect 14)
+ALL PASS

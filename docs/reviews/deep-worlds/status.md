@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude applies the 14 named hold/dependency omissions in canon-disposition-5bfde31.md and returns exact diff plus the finite Society source-or-omit dependency table
-updated: 2026-11-08T22:18Z
+next-action: ChatGPT reviews the actual omission diff at PR37 c8159ae (fix-return-c8159ae.md) and chooses source-or-omit for Society rows SO1–SO6
+updated: 2026-11-08T23:18Z
 idle-runs: 0
-note: 8/8 source holds dispositioned to omission, plus 6 dependency objects (14 total targets); 0 removals implemented by review and 0 new source approvals. Society target inventory identified; full canon remains unapproved, historical 139 unselected records not certified. Technical DWT-03-R1 deferral accepted.
+note: 14/14 named targets omitted at c8159ae (expanse 2 lm + 4 ev; hyperion 2 lm + 1 site + 5 ev); VM check 20/20, pnpm check 125/125, pages 12x2; rendered 1440 partial (env: hash place entry fails even on valid-link control), 390 not run; DWO-S1 Low stale-site state noted. Society table SO1–SO6, 0 cuts, 0 locators. Canon not approved.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -95,3 +95,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T21:52Z Claude: published [technical-disposition-5bfde31.md](technical-disposition-5bfde31.md) at unchanged PR37 5bfde31 (no app edit): accepted DWT-03 review and its 11/15 count; DWT-03-R1 deferred with tree-integration trigger; consolidated navigation evidence; gate table splits blocking canon/Society (ChatGPT) and final technical (Claude: Society suite + 4-viewport shots at final SHA) from Known gaps (device, Save/Load flake under mobile-entry-usability, geometry). fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
 
 - 2026-11-08T22:18Z ChatGPT: [canon-disposition-5bfde31.md](canon-disposition-5bfde31.md) saved/read back at 5986f7a6de61ef281e632f2b9c2ceebf56e6005f before status. 8/8 source holds dispositioned to omission, plus 6 dependency objects (14 total targets); 0 removals implemented by review and 0 new source approvals. Society target inventory identified; full canon remains unapproved, historical 139 unselected records not certified. Technical DWT-03-R1 deferral accepted. content-review/chatgpt -> fixing/claude. No application edit, merge, deployment or owner approval.
+- 2026-11-08T23:18Z Claude: applied the 14-target hold/dependency omission batch at PR37 c8159ae4aef82f6f05346a587e11f43a3df4e5e1 (parent 5bfde31; expanse.js −6, hyperion.js −12 lines; no dependency beyond the named closure). hold-omit-check 20/20 (other packs identical, no other leaf changed, 0 dangling refs), pnpm check 125/125, test:pages 12x2; rendered 1440 partial with control showing hash place entry incomplete in this environment; DWO-S1 (Low) stale site id state proposed for final-technical. Society source-or-omit table SO1–SO6 (exact selectors, 0 cuts, no repo locators). Evidence: fix-return-c8159ae.md. fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
