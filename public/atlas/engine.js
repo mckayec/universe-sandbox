@@ -1409,7 +1409,10 @@ let afterLeave=null,placeThen=null;
 let placeGen=0;
 /* DWT-01c: snapshot of the last committed (rendered) place while any in-place entry is still pending; overlapping
    requests inherit it so a cancellation never restores another uncommitted destination. Cleared on commit/leave. */
-let pendPrev=null;
+let pendPrev=null,pendGen=0;
+/* DWT-02: an entry started from inside a place is still in flight (its fade has not committed and nothing newer
+   superseded it), so S.site names a pending destination, not the rendered place */
+const entryPending=()=>!!pendPrev&&pendGen===placeGen;
 function evEligible(e){if(!e||!filterOk(e))return false;const w=WORLD_BY[e.world];if(!w||!seen(w))return false;
   if(S.book&&!(CUM?e.book<=S.book:e.book===S.book))return false;return !e.site||canEnterEv(e);}
 const AUD=window.AtlasPlacesAudio||null;let soundOn=false;try{soundOn=localStorage.getItem("atlas-sound")==="1";}catch(e){}
@@ -1420,7 +1423,7 @@ function enterPlace(id,fromHistory,then,own){const w=WORLD_BY[S.sel];const s=sit
   const fromGal=S.view==="galaxy";if(needRealm(w,s))setRealm(needRealm(w,s),true);
   /* DWT-01c: entering from inside a place keeps the rendered place until the fade commits; remember what it was
      so a cancelled entry can put state and history back to the place still on screen */
-  const prev=S.view==="place"?(pendPrev||{site:S.site,lm:S.lm,ev:S.ev,hs:history.state,href:location.href}):null;pendPrev=prev;
+  const prev=S.view==="place"?(pendPrev||{site:S.site,lm:S.lm,ev:S.ev,hs:history.state,href:location.href}):null;pendPrev=prev;pendGen=prev?gen:0;
   S.site=id;S.lm=null;S.ev=null;if(MOB)dosCollapsed=true;
   if(!fromHistory&&urlReady){const st={atlasSurface:true,atlasPlace:true,atlasEntry:gen};const u=urlFor({view:"place",site:id});
     if(fromGal)history.pushState({atlasSurface:true},"",urlFor({view:"world",site:id}));
@@ -1486,7 +1489,10 @@ let evNav=0;
 function goEvent(e){const w=WORLD_BY[e.world];if(!w)return;const t=++evNav;if(!navIdle()){navNext=e;return;}const own=()=>t===evNav;const live=f=>()=>{if(own())f();};
   const inPlace=live(()=>evInPlace(e,own));const into=live(()=>{S.sel=e.world;enterPlace(e.site,false,inPlace,own);});
   if(e.site&&canEnterEv(e)){
-    if(S.view==="place"&&S.sel===e.world){if(S.site===e.site)evInPlace(e,own);else enterPlace(e.site,false,inPlace,own);}
+    if(S.view==="place"&&S.sel===e.world){
+      /* DWT-02: a repeated request for a destination still pending re-issues the entry (keeping the committed
+         rollback baseline) so the latest request arrives once, instead of treating it as already rendered */
+      if(S.site===e.site&&!entryPending())evInPlace(e,own);else enterPlace(e.site,false,inPlace,own);}
     else if(S.view==="place"){leavePlace(live(()=>ascend(into)));}
     else if(S.view==="world"&&S.sel===e.world){selectSite(e.site);enterPlace(e.site,false,inPlace,own);}
     else if(S.view==="world"){ascend(into);}
