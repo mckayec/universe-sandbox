@@ -1319,7 +1319,7 @@ function goPlace(wid,sid){
   if(!sid||noSurface(WORLD_BY[wid])){if(S.view==="world"&&S.sel!==wid)ascend(()=>selectWorld(wid,true));else if(S.view!=="world")selectWorld(wid,true);return;}
   if(S.view==="world"&&S.sel===wid){selectSite(sid);return;}
   if(S.view==="world"){S.sel=wid;descend(wid);}else descend(wid);
-  setTimeout(()=>selectSite(sid),1000);}
+  selectSiteLater(wid,sid,1000);}
 TRV=K.raw.tree&&window.AtlasTree?window.AtlasTree.createView({
   el:$("#tree"),pack:K.raw,LY,LAY,TL,noteLabels:NOTE_LBL,
   visible:treeNodeSeen,filterOk,
@@ -1384,6 +1384,10 @@ function navDone(){navBusy=Math.max(0,navBusy-1);navKick();}
 function ascend(after){if(S.view==="place"){leavePlace(()=>ascend(after));return;}if(history.state&&history.state.atlasSurface){afterAscend=after||null;goBack();return;}doAscend(after);}
 function doAscend(after){navBusy++;transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);navDone();});}
+/* DWT-03: a site selection delayed until a descent settles only runs if no newer navigation (place entry, site/world
+   selection, event, book change) bumped placeGen meanwhile and the same world is still selected, so a late timer can
+   never rename the site of a newer, committed or pending place entry. */
+function selectSiteLater(wid,sid,ms){const g=placeGen;setTimeout(()=>{if(g===placeGen&&S.sel===wid)selectSite(sid);},ms);}
 function selectSite(id){placeGen++;S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
     /* turn the world so the place sits in daylight, between the sun and the viewer */
@@ -1450,7 +1454,7 @@ function cancelEntry(fromHistory,gen,id,prev){if(S.view==="place"){if(!prev||gen
   refreshAll();}
 function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;goBack();return;}doLeavePlace(after);}
 function doLeavePlace(after){placeGen++;pendPrev=null;if(AUD)AUD.leave();
-  if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)setTimeout(()=>selectSite(site),900);if(after)setTimeout(after,1000);return;}
+  if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)selectSiteLater(S.sel,site,900);if(after)setTimeout(after,1000);return;}
   navBusy++;transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL&&!(S.sel&&!worldBookOk(WORLD_BY[S.sel])))buildSiteLabels(WORLD_BY[S.sel]);else if(PL){SITE_EL.forEach(o=>o.el.remove());SITE_EL=[];}refreshAll();if(after)setTimeout(after,60);navDone();});}
 function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
   if(!quiet){renderDossier();renderCrumbs();syncURL();const it=dos.querySelector('[data-lm="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}}
@@ -1519,7 +1523,7 @@ function openEvent(id,travel){placeGen++;S.ev=id;if(!id){renderDossier();renderC
   else if(travel&&S.view==="place"&&S.sel===e.world){if(e.site&&e.site!==S.site&&canEnterEv(e))enterPlace(e.site,false,()=>evInPlace(e));else if(e.site===S.site)evInPlace(e);else leavePlace();return;}
   else if(travel&&S.view==="place"){leavePlace(()=>openEvent(id,true));return;}
   else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site){selectSite(e.site);if(canEnterEv(e)){enterPlace(e.site,false,()=>evInPlace(e));return;}}}
-    else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site)setTimeout(()=>selectSite(e.site),900);}
+    else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site)selectSiteLater(e.world,e.site,900);}
     else{S.sel=e.world;const w=WORLD_BY[e.world];orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}}
   if(MOB)dosCollapsed=false;refreshAll();S.ev=id;renderDossier();
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
