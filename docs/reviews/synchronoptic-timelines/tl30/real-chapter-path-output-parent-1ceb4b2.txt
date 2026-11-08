@@ -1,0 +1,25 @@
+# CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome dist=PR45 head dist with parent 1ceb4b2 public/atlas/engine.js (chapter-path parent control)
+.. parent-1ceb4b2 1440 real click: book I
+PASS parent-1ceb4b2 1440 real click on book I shows the chapter selector
+.. parent-1ceb4b2 1440 real click: chapter select → 3
+PASS parent-1ceb4b2 1440 real keys set chapter 3 (select value, URL ch=3) — {"book":"1","ch":"3","world":"earth","site":"jerusalem","view":"surface"}
+.. parent-1ceb4b2 1440 real click: Timeline button
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.boundingBox: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#tlBtn').first()[22m
+[2m    - locator resolved to visible <button id="tlBtn" class="btn" aria-haspopup="dialog">Timeline</button>[22m
+
+    at real (/home/claude/universe-sandbox/docs/reviews/synchronoptic-timelines/tl29/real-chapter-path.mjs:141:25)
+    at async file:///home/claude/universe-sandbox/docs/reviews/synchronoptic-timelines/tl29/real-chapter-path.mjs:193:3 {
+  log: [
+    "  - waiting for locator('#tlBtn').first()",
+    '    - locator resolved to visible <button id="tlBtn" class="btn" aria-haspopup="dialog">Timeline</button>'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4

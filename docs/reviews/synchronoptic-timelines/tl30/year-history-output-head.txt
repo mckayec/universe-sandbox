@@ -1,0 +1,198 @@
+# CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome dist=PR45 head 0650d33 (runtime identical to daeaf39)
+INFO yr/1440 year axis — min -799 max 2030 step 10; view world; 10 site labels
+PASS yr/1440 load entry 0 (start: full range, timeline closed (site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/1440 load entry 0: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/1440 load entry 0: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/1440 link to entry 1 (explicit yr 500 BC–AD 100, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 link to entry 1: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/1440 link to entry 1: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 link to entry 1: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 link to entry 1: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 link to entry 2 (explicit yr 600–1500, Covenant selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"600_1500","range":"600_1500","fill":["49.45%","81.27%"],"wantFill":["49.45%","81.27%"],"wantInputs":[601,1501],"from":"601","to":"1501","readout":"600 CE – 1500","allBtn":true,"fromVT":"600 CE","toVT":"1500","open":true,"tlsel":"n:jud-covenant-tradition"}
+PASS yr/1440 link to entry 2: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 19/60 (hidden by yr 41); DOM 19; missing ; extra 
+PASS yr/1440 link to entry 2: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 link to entry 2: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 link to entry 2: rendered timeline selection == n:jud-covenant-tradition — rendered n:jud-covenant-tradition
+PASS yr/1440 link to entry 3 (yr omitted: full range again, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 link to entry 3: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/1440 link to entry 3: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/1440 link to entry 3: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 link to entry 3: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 link to entry 4 (only Judaism, yr omitted (Judaism site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 link to entry 4: full-range Chronicle events == baseline for layers jud — 17 vs 17
+PASS yr/1440 link to entry 4: full-range site labels == baseline for layers jud — 2 vs 2
+PASS yr/1440 link to entry 4: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/1440 link to entry 4: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 link to entry 5 (explicit yr 1800–1950 with only Judaism): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"1800_1950","range":"1800_1950","fill":["91.87%","97.17%"],"wantFill":["91.87%","97.17%"],"wantInputs":[1801,1951],"from":"1801","to":"1951","readout":"1800–1950","allBtn":true,"fromVT":"1800","toVT":"1950","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 link to entry 5: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 8/17 (hidden by yr 9); DOM 8; missing ; extra 
+PASS yr/1440 link to entry 5: site labels == baseline ∩ overlap(yr) — want 2/2 (hidden by yr 0); DOM 2; missing ; extra 
+PASS yr/1440 link to entry 5: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/1440 link to entry 5: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 link to entry 6 (explicit yr 500 BC–AD 100, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":false,"tlsel":null}
+PASS yr/1440 link to entry 6: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/1440 link to entry 6: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 link to entry 7 (yr omitted, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/1440 link to entry 7: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/1440 link to entry 7: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/1440 Back to entry 6 (explicit yr 500 BC–AD 100, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":false,"tlsel":null}
+PASS yr/1440 Back to entry 6: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/1440 Back to entry 6: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 Back to entry 5 (explicit yr 1800–1950 with only Judaism): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"1800_1950","range":"1800_1950","fill":["91.87%","97.17%"],"wantFill":["91.87%","97.17%"],"wantInputs":[1801,1951],"from":"1801","to":"1951","readout":"1800–1950","allBtn":true,"fromVT":"1800","toVT":"1950","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Back to entry 5: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 8/17 (hidden by yr 9); DOM 8; missing ; extra 
+PASS yr/1440 Back to entry 5: site labels == baseline ∩ overlap(yr) — want 2/2 (hidden by yr 0); DOM 2; missing ; extra 
+PASS yr/1440 Back to entry 5: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/1440 Back to entry 5: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Back to entry 4 (only Judaism, yr omitted (Judaism site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Back to entry 4: full-range Chronicle events == baseline for layers jud — 17 vs 17
+PASS yr/1440 Back to entry 4: full-range site labels == baseline for layers jud — 2 vs 2
+PASS yr/1440 Back to entry 4: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/1440 Back to entry 4: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Back to entry 3 (yr omitted: full range again, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Back to entry 3: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/1440 Back to entry 3: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/1440 Back to entry 3: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 Back to entry 3: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Back to entry 2 (explicit yr 600–1500, Covenant selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"600_1500","range":"600_1500","fill":["49.45%","81.27%"],"wantFill":["49.45%","81.27%"],"wantInputs":[601,1501],"from":"601","to":"1501","readout":"600 CE – 1500","allBtn":true,"fromVT":"600 CE","toVT":"1500","open":true,"tlsel":"n:jud-covenant-tradition"}
+PASS yr/1440 Back to entry 2: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 19/60 (hidden by yr 41); DOM 19; missing ; extra 
+PASS yr/1440 Back to entry 2: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 Back to entry 2: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 Back to entry 2: rendered timeline selection == n:jud-covenant-tradition — rendered n:jud-covenant-tradition
+PASS yr/1440 Back to entry 1 (explicit yr 500 BC–AD 100, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Back to entry 1: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/1440 Back to entry 1: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 Back to entry 1: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 Back to entry 1: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Back to entry 0 (start: full range, timeline closed (site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/1440 Back to entry 0: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/1440 Back to entry 0: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/1440 Forward to entry 1 (explicit yr 500 BC–AD 100, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Forward to entry 1: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/1440 Forward to entry 1: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 Forward to entry 1: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 Forward to entry 1: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Forward to entry 2 (explicit yr 600–1500, Covenant selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"600_1500","range":"600_1500","fill":["49.45%","81.27%"],"wantFill":["49.45%","81.27%"],"wantInputs":[601,1501],"from":"601","to":"1501","readout":"600 CE – 1500","allBtn":true,"fromVT":"600 CE","toVT":"1500","open":true,"tlsel":"n:jud-covenant-tradition"}
+PASS yr/1440 Forward to entry 2: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 19/60 (hidden by yr 41); DOM 19; missing ; extra 
+PASS yr/1440 Forward to entry 2: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 Forward to entry 2: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 Forward to entry 2: rendered timeline selection == n:jud-covenant-tradition — rendered n:jud-covenant-tradition
+PASS yr/1440 Forward to entry 3 (yr omitted: full range again, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Forward to entry 3: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/1440 Forward to entry 3: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/1440 Forward to entry 3: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/1440 Forward to entry 3: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Forward to entry 4 (only Judaism, yr omitted (Judaism site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Forward to entry 4: full-range Chronicle events == baseline for layers jud — 17 vs 17
+PASS yr/1440 Forward to entry 4: full-range site labels == baseline for layers jud — 2 vs 2
+PASS yr/1440 Forward to entry 4: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/1440 Forward to entry 4: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Forward to entry 5 (explicit yr 1800–1950 with only Judaism): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"1800_1950","range":"1800_1950","fill":["91.87%","97.17%"],"wantFill":["91.87%","97.17%"],"wantInputs":[1801,1951],"from":"1801","to":"1951","readout":"1800–1950","allBtn":true,"fromVT":"1800","toVT":"1950","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/1440 Forward to entry 5: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 8/17 (hidden by yr 9); DOM 8; missing ; extra 
+PASS yr/1440 Forward to entry 5: site labels == baseline ∩ overlap(yr) — want 2/2 (hidden by yr 0); DOM 2; missing ; extra 
+PASS yr/1440 Forward to entry 5: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/1440 Forward to entry 5: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/1440 Forward to entry 6 (explicit yr 500 BC–AD 100, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":false,"tlsel":null}
+PASS yr/1440 Forward to entry 6: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/1440 Forward to entry 6: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/1440 Forward to entry 7 (yr omitted, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/1440 Forward to entry 7: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/1440 Forward to entry 7: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/1440 no runtime errors
+INFO yr/390 year axis — min -799 max 2030 step 10; view world; 10 site labels
+PASS yr/390 load entry 0 (start: full range, timeline closed (site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/390 load entry 0: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/390 load entry 0: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/390 link to entry 1 (explicit yr 500 BC–AD 100, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 link to entry 1: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/390 link to entry 1: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 link to entry 1: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 link to entry 1: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 link to entry 2 (explicit yr 600–1500, Covenant selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"600_1500","range":"600_1500","fill":["49.45%","81.27%"],"wantFill":["49.45%","81.27%"],"wantInputs":[601,1501],"from":"601","to":"1501","readout":"600 CE – 1500","allBtn":true,"fromVT":"600 CE","toVT":"1500","open":true,"tlsel":"n:jud-covenant-tradition"}
+PASS yr/390 link to entry 2: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 19/60 (hidden by yr 41); DOM 19; missing ; extra 
+PASS yr/390 link to entry 2: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 link to entry 2: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 link to entry 2: rendered timeline selection == n:jud-covenant-tradition — rendered n:jud-covenant-tradition
+PASS yr/390 link to entry 3 (yr omitted: full range again, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 link to entry 3: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/390 link to entry 3: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/390 link to entry 3: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 link to entry 3: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 link to entry 4 (only Judaism, yr omitted (Judaism site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 link to entry 4: full-range Chronicle events == baseline for layers jud — 17 vs 17
+PASS yr/390 link to entry 4: full-range site labels == baseline for layers jud — 2 vs 2
+PASS yr/390 link to entry 4: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/390 link to entry 4: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 link to entry 5 (explicit yr 1800–1950 with only Judaism): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"1800_1950","range":"1800_1950","fill":["91.87%","97.17%"],"wantFill":["91.87%","97.17%"],"wantInputs":[1801,1951],"from":"1801","to":"1951","readout":"1800–1950","allBtn":true,"fromVT":"1800","toVT":"1950","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 link to entry 5: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 8/17 (hidden by yr 9); DOM 8; missing ; extra 
+PASS yr/390 link to entry 5: site labels == baseline ∩ overlap(yr) — want 2/2 (hidden by yr 0); DOM 2; missing ; extra 
+PASS yr/390 link to entry 5: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/390 link to entry 5: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 link to entry 6 (explicit yr 500 BC–AD 100, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":false,"tlsel":null}
+PASS yr/390 link to entry 6: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/390 link to entry 6: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 link to entry 7 (yr omitted, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/390 link to entry 7: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/390 link to entry 7: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/390 Back to entry 6 (explicit yr 500 BC–AD 100, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":false,"tlsel":null}
+PASS yr/390 Back to entry 6: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/390 Back to entry 6: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 Back to entry 5 (explicit yr 1800–1950 with only Judaism): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"1800_1950","range":"1800_1950","fill":["91.87%","97.17%"],"wantFill":["91.87%","97.17%"],"wantInputs":[1801,1951],"from":"1801","to":"1951","readout":"1800–1950","allBtn":true,"fromVT":"1800","toVT":"1950","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Back to entry 5: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 8/17 (hidden by yr 9); DOM 8; missing ; extra 
+PASS yr/390 Back to entry 5: site labels == baseline ∩ overlap(yr) — want 2/2 (hidden by yr 0); DOM 2; missing ; extra 
+PASS yr/390 Back to entry 5: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/390 Back to entry 5: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Back to entry 4 (only Judaism, yr omitted (Judaism site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Back to entry 4: full-range Chronicle events == baseline for layers jud — 17 vs 17
+PASS yr/390 Back to entry 4: full-range site labels == baseline for layers jud — 2 vs 2
+PASS yr/390 Back to entry 4: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/390 Back to entry 4: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Back to entry 3 (yr omitted: full range again, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Back to entry 3: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/390 Back to entry 3: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/390 Back to entry 3: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 Back to entry 3: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Back to entry 2 (explicit yr 600–1500, Covenant selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"600_1500","range":"600_1500","fill":["49.45%","81.27%"],"wantFill":["49.45%","81.27%"],"wantInputs":[601,1501],"from":"601","to":"1501","readout":"600 CE – 1500","allBtn":true,"fromVT":"600 CE","toVT":"1500","open":true,"tlsel":"n:jud-covenant-tradition"}
+PASS yr/390 Back to entry 2: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 19/60 (hidden by yr 41); DOM 19; missing ; extra 
+PASS yr/390 Back to entry 2: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 Back to entry 2: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 Back to entry 2: rendered timeline selection == n:jud-covenant-tradition — rendered n:jud-covenant-tradition
+PASS yr/390 Back to entry 1 (explicit yr 500 BC–AD 100, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Back to entry 1: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/390 Back to entry 1: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 Back to entry 1: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 Back to entry 1: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Back to entry 0 (start: full range, timeline closed (site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/390 Back to entry 0: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/390 Back to entry 0: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/390 Forward to entry 1 (explicit yr 500 BC–AD 100, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Forward to entry 1: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/390 Forward to entry 1: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 Forward to entry 1: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 Forward to entry 1: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Forward to entry 2 (explicit yr 600–1500, Covenant selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"600_1500","range":"600_1500","fill":["49.45%","81.27%"],"wantFill":["49.45%","81.27%"],"wantInputs":[601,1501],"from":"601","to":"1501","readout":"600 CE – 1500","allBtn":true,"fromVT":"600 CE","toVT":"1500","open":true,"tlsel":"n:jud-covenant-tradition"}
+PASS yr/390 Forward to entry 2: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 19/60 (hidden by yr 41); DOM 19; missing ; extra 
+PASS yr/390 Forward to entry 2: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 Forward to entry 2: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 Forward to entry 2: rendered timeline selection == n:jud-covenant-tradition — rendered n:jud-covenant-tradition
+PASS yr/390 Forward to entry 3 (yr omitted: full range again, Karaite selected): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Forward to entry 3: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/390 Forward to entry 3: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/390 Forward to entry 3: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 168; DOM 168 distinct (168 rows), missing 0, extra 0
+PASS yr/390 Forward to entry 3: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Forward to entry 4 (only Judaism, yr omitted (Judaism site baseline)): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Forward to entry 4: full-range Chronicle events == baseline for layers jud — 17 vs 17
+PASS yr/390 Forward to entry 4: full-range site labels == baseline for layers jud — 2 vs 2
+PASS yr/390 Forward to entry 4: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/390 Forward to entry 4: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Forward to entry 5 (explicit yr 1800–1950 with only Judaism): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"1800_1950","range":"1800_1950","fill":["91.87%","97.17%"],"wantFill":["91.87%","97.17%"],"wantInputs":[1801,1951],"from":"1801","to":"1951","readout":"1800–1950","allBtn":true,"fromVT":"1800","toVT":"1950","open":true,"tlsel":"n:jud-karaite"}
+PASS yr/390 Forward to entry 5: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 8/17 (hidden by yr 9); DOM 8; missing ; extra 
+PASS yr/390 Forward to entry 5: site labels == baseline ∩ overlap(yr) — want 2/2 (hidden by yr 0); DOM 2; missing ; extra 
+PASS yr/390 Forward to entry 5: timeline list ids == gated model ids (not year-filtered), rows distinct — expected 45; DOM 45 distinct (45 rows), missing 0, extra 0
+PASS yr/390 Forward to entry 5: rendered timeline selection == n:jud-karaite — rendered n:jud-karaite
+PASS yr/390 Forward to entry 6 (explicit yr 500 BC–AD 100, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":"-500_100","range":"-500_100","fill":["10.60%","31.78%"],"wantFill":["10.60%","31.78%"],"wantInputs":[-499,101],"from":"-499","to":"101","readout":"500 BCE – 100 CE","allBtn":true,"fromVT":"500 BCE","toVT":"100 CE","open":false,"tlsel":null}
+PASS yr/390 Forward to entry 6: Chronicle events == baseline ∩ overlap(yr), and yr hides at least one — want 5/60 (hidden by yr 55); DOM 5; missing ; extra 
+PASS yr/390 Forward to entry 6: site labels == baseline ∩ overlap(yr) — want 10/10 (hidden by yr 0); DOM 10; missing ; extra 
+PASS yr/390 Forward to entry 7 (yr omitted, timeline closed): URL yr + S.range + rendered year controls + timeline open/tlsel — {"yrQ":null,"range":null,"fill":["0.00%","100.00%"],"wantFill":["0.00%","100.00%"],"wantInputs":[-799,2021],"from":"-799","to":"2021","readout":"All years","allBtn":false,"fromVT":"800 BCE","toVT":"2030","open":false,"tlsel":null}
+PASS yr/390 Forward to entry 7: full-range Chronicle events == baseline for layers ALL — 60 vs 60
+PASS yr/390 Forward to entry 7: full-range site labels == baseline for layers ALL — 10 vs 10
+PASS yr/390 no runtime errors
+TL30 year history probe head-0650d33: 194 pass, 0 fail
