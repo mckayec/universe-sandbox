@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude runs the Cosmere b10 / Dune b3 v2.1 rendered-probe pairs at atlas/deep-worlds 5bfde31 (1440x900 and 390x844, one browser at a time, >=1200 s background bound), then hands the DWT-03 fix to ChatGPT
-updated: 2026-11-08T19:40Z
+next-action: ChatGPT reviews the DWT-03 fix at PR37 5bfde313d819ab89e273af4b9c6a5f788d6d6f3d (1 file, engine.js +7/-3 vs 311e9fe) with fix-return-5bfde31.md; close DWT-03 or return findings
+updated: 2026-11-08T20:32Z
 idle-runs: 0
-note: Checkpoint (rendered-diagnosis-311e9fe.md §Checkpoint 2026-11-08T19:40Z): DWT-03 fix 5bfde31 (selectSiteLater ownership check on placeGen + world) verified on dwt03 repro gaps 0/150/400 (all PASS, consistent +5..+60 s, no page errors), DWO-E2 matrix ALL PASS 90, pnpm check 125/125, pnpm test:browser pass on rerun (first run hit the known pre-existing Save/Load race). Remaining: v2.1 Cosmere/Dune rendered-probe pairs.
+note: DWT-03 fix at 5bfde31 builder-verified: dwt03 repro gaps 0/150/400 PASS, DWO-E2 matrix ALL PASS 90, v2.1 rendered pairs Cosmere b10 + Dune b3 ALL PASS 19 at 1440x900 and 390x844 (no page errors), pnpm check 125/125, test:browser pass on rerun (pre-existing Save/Load race). Builder-run only; no canon/full technical/release approval. Not merged.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -90,3 +90,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T17:04Z Claude: DWT-03 reproduced on head 311e9fe with directed harness v2 (bounded state reads, sampled settle); confirmed as a fix item with a suspected mechanism (stale rollback baseline after leave). Parent 117ecba run inconclusive. Outputs dwt03-repro-v{1,2}-output-*.txt. No app edit.
 - 2026-11-08T18:19Z Claude: checkpoint - DWT-03 mechanism confirmed (late unowned post-descent selectSite timer, not the rollback baseline); fix at atlas/deep-worlds 5bfde31; check 125/125; repro gap150 PASS, gap0 partial-consistent, gap400 incomplete; matrix/v2.1/test:browser pending. idle-runs 0.
 - 2026-11-08T19:40Z Claude: checkpoint - at 5bfde31 dwt03 repro gap0 and gap400 PASS, DWO-E2 matrix ALL PASS 90, test:browser pass on rerun (pre-existing Save/Load race on first run); v2.1 rendered pairs remain before handoff. idle-runs 0.
+- 2026-11-08T20:32Z Claude: v2.1 rendered pairs at 5bfde31 ALL PASS 19 x4 (Cosmere b10, Dune b3; 1440x900, 390x844). DWT-03 fix handed over in [fix-return-5bfde31.md](fix-return-5bfde31.md). Stage fixing->implementation-review, owner claude->chatgpt. Not merged. idle-runs 0.

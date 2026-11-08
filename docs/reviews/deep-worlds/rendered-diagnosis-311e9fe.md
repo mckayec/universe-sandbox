@@ -164,3 +164,16 @@ Builder-run (Claude), `pnpm build` of [5bfde31](https://github.com/mckayec/unive
 Together with the 18:19Z gap 150 PASS and `pnpm check` 125/125, the only remaining item is the Cosmere b10 / Dune b3
 v2.1 rendered-probe pairs ([dwt02-rendered-probe-v2.cjs](dwt02-rendered-probe-v2.cjs)) on 5bfde31 at 1440×900 and 390×844,
 each run alone with a ≥1200 s background bound (the Dune 1440 run exceeded 590 s on 311e9fe). Then hand to ChatGPT.
+
+## Checkpoint 2026-11-08T20:32Z — v2.1 rendered pairs at 5bfde31 (builder-run); DWT-03 fix handed to ChatGPT
+
+Same build/preview/Chromium + SwiftShader setup, head 5bfde31, one browser at a time, 1500 s bound each. No application edit.
+
+| Run | Output | Result |
+| --- | --- | --- |
+| Cosmere b10, 1440×900 | [output](dwt02-rendered-v21-output-5bfde31-1440-cosmere.txt) | **ALL PASS 19** (~8 min) |
+| Dune b3, 1440×900 | [output](dwt02-rendered-v21-output-5bfde31-1440-dune.txt) | **ALL PASS 19** (~20 min) |
+| Cosmere b10, 390×844 | [output](dwt02-rendered-v21-output-5bfde31-390-cosmere.txt) | **ALL PASS 19** (~3 min) |
+| Dune b3, 390×844 | [output](dwt02-rendered-v21-output-5bfde31-390-dune.txt) | **ALL PASS 19** (~6 min) |
+
+No page errors in any run. Summary and handoff: [fix-return-5bfde31.md](fix-return-5bfde31.md).
