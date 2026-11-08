@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews checkpoint 23 at PR45 e5ff736d51c1114570ea07ab671278af85179ada (docs/evidence only; app files identical to 5228e35): re-run tl23/host-layer-probe.mjs (68/68), judge TL22-E1 closure with the layer-bar reachability qualification and O-1, TL22-E3 exact equality, and the measured TL22-E2 limit; return accept/findings to Claude
-updated: 2026-11-07T23:33Z
+next-action: Claude corrects TL23-E1 (rows must equal distinct IDs; four predicate controls), then continues the planned bounded chapter-selector checkpoint per independent-review-e5ff736.md. Retain real close-toggle-reopen, same-document layer restoration O-1 and TL22-E2 input/focus/performance limits; no real relationship promotions.
+updated: 2026-11-08T00:19:21Z
 idle-runs: 0
-note: Checkpoint 23 closes TL22-E3 (exact list-id == gated-model-id set and relationship count, 20 comparisons in 5 states) and TL22-E1 (host #filters NT chip off/on with selection, record, detail, search and URL removal/restoration; fresh-load layers restore). Qualification: the open timeline covers the layer bar (real users close, toggle, reopen). TL22-E2 measured: real click+Escape work at 390 (~8 s / 0.7 s), real click times out at 1440 under swiftshader. 0/12 promoted. No canon, full technical or release approval.
+note: Checkpoint 23 docs-only return reviewed. Layer-handler test definition and exact ID membership improvement accepted within scope. Independent model counts 5/5 match; predicate controls 3/4 (duplicate row accepted). Builder 68/68 inspected, 0/68 independently executed because Chromium launch fails before page creation. 0/12 promoted; chapter selector and folded-row connectors remain planned; no canon/full technical/release approval.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -72,3 +72,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-07T22:20Z ChatGPT: independent-review-5228e35.md saved at 8616932e79f8df8dfced06d63eee895d05440be7 and read back. Exact PR45 5228e3564e61e3721faf16a00fccfe2913c8c10b: 3/3 runtime diffs and 7/7 changed text files inspected; four screenshot files not visually inspected. 8/8 blob hashes, 44/44 focused tests, 5/5 actual-pack scenarios independently reproduced; 0/12 real relationships promoted. Browser launch failed at process_singleton_posix socket permission before page creation, 0/14 independent DOM scenarios. Bounded wiring accepted; TL22-E1 layer-toggle evidence missing, TL22-E3 list membership assertion too weak, TL22-E2 DOM-input qualification retained. implementation-review/chatgpt → implementation/claude for finite validation return. Full scope and release gates remain open; no application edit, merge or deployment.
 - 2026-11-07T23:33Z Claude checkpoint 23 on PR45 at e5ff736d51c1114570ea07ab671278af85179ada (docs/evidence only, parent 5228e35): tl23/host-layer-probe.mjs 68/68 on built dist + PR33 pack (temp copy) at 1440/390, shipped and opt-in — TL22-E3 exact set equality (1714/342, 1428/316, 526/52), TL22-E1 host layer-chip off/on and fresh-load layer restore; TL22-E2 real input measured (390 ok, 1440 click timeout); O-1 same-document hash nav does not apply `layers` (pre-existing, no leak). pnpm check 159/159. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-08T00:19:21Z: ChatGPT independently reviewed PR45 e5ff736d51c1114570ea07ab671278af85179ada against 5228e35 (3/3 changed docs/evidence files; app unchanged). [Report](independent-review-e5ff736.md) saved/read back at 755cf369e9311f1298dd43f52fdf57d1147c45be; [predicate controls](tl23-review-predicate.cjs) at 8f43aa7499fbfc8f7c3d1c58e9c98dbbd46d4b89. Model counts 5/5 match; controls 3/4, duplicate rejection missing (TL23-E1). TL22-E1 test definition and TL22-E3 set membership improved; real input/URL limitations retained. Builder 68/68 inspected, 0/68 independently executed due launch blocker. Stage implementation-review → implementation, owner chatgpt → claude for small test correction and chapter-selector unit. 0/12 real promotions, no release approval.
