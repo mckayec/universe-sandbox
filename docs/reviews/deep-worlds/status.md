@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
 blocked-on: none
-next-action: Claude runs probe v2.1 (converging prime) on head 311e9fe and parent 117ecba at 390x844 (Cosmere b10) and on the Dune b3 pair at 1440/390, finishes parent R6/R6b, then the 90-case DWO-E2 matrix and pnpm test:browser, then hands to ChatGPT (no app change expected)
-updated: 2026-11-08T15:17Z
+next-action: Claude characterizes DWT-03 candidate (Dune b3 split state after rapid tour Next: S.site/URL tabr, rendered fane, ev null) with a per-press-logged v2.1 Dune prime and directed repro on head 311e9fe then parent 117ecba (bounded ~10 runs: confirm -> fix item, else Known gap), then remaining 390 Dune/parent runs, 90-case DWO-E2 matrix and pnpm test:browser, then hands to ChatGPT
+updated: 2026-11-08T16:20Z
 idle-runs: 0
-note: Checkpoint (rendered-diagnosis-311e9fe.md §Checkpoint 15:17Z): harness v2.1 fixes the C0/R2x priming race. Head 311e9fe 1440 Cosmere b10 ALL PASS 19 (C0, R2x, R3x, R6, R6b, no page errors); parent 117ecba reproduces DWT-02 (R2x/R3x revert to Bilming), so the harness discriminates. No app edit. Not yet run: 390, Dune pair, parent R6, 90-matrix, test:browser. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
+note: Checkpoint (rendered-diagnosis-311e9fe.md §Checkpoint 16:20Z): head 311e9fe 390 Cosmere b10 ALL PASS 19 (1440 already ALL PASS 19). 1440 Dune b3 prime ended in a stable split state for 60 s (tour 12/13, S.site/hash tabr, rendered fane, S.ev null, no page errors) -> DWT-03 candidate, observed 1/4 attempts, not yet confirmed or dismissed. No app edit. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -86,3 +86,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T13:26Z Claude: rendered DWT-02 checkpoint at PR37 311e9fe, [rendered-qualification-311e9fe.md](rendered-qualification-311e9fe.md) with [probe](dwt02-rendered-probe.cjs) and outputs. Head: R6 Stop rollback + R6b retry PASS; R2x repeated pre-commit Next arrives at Elendel but ev=null (new finding DWT-02-R); parent: C0 control only before harness race. 90-matrix attempt invalid (parallel SwiftShader starvation), not rerun. Stays fixing/claude; idle-runs 0. No application edit, merge or deploy.
 - 2026-11-08T14:22Z Claude: DWT-02-R diagnosed at PR37 311e9fe as a harness sampling artefact, [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md) with [probe v2](dwt02-rendered-probe-v2.cjs) and output: in-page S.ev log shows null only until the SwiftShader-starved 500 ms continuation sets e48; R3x triple pre-commit Next arrives once with e48, R6 Stop rollback and R6b retry pass, 0 page errors. No application edit. C0/R2x priming race remains; paired parent, 390, Dune, 90-matrix pending. Stays fixing/claude; idle-runs 0.
 - 2026-11-08T15:17Z Claude: checkpoint — probe v2.1 converging prime; head 311e9fe 1440 Cosmere b10 ALL PASS 19, parent 117ecba reproduces DWT-02 at R2x/R3x (partial, timed out in R6). Outputs and notes in [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md). Remaining: 390, Dune pair, parent R6, 90-matrix, test:browser. Owner unchanged (claude).
+- 2026-11-08T16:20Z Claude: checkpoint — head 311e9fe v2.1 390 Cosmere b10 ALL PASS 19; 1440 Dune b3 prime hit a stable split state (S.site/URL tabr vs rendered fane, ev null) recorded as DWT-03 candidate (1/4 attempts; directed repro not yet reproducing). Outputs and next steps in [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md). No app edit.

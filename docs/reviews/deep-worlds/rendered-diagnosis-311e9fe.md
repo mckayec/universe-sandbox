@@ -64,3 +64,26 @@ priming and input. This is builder evidence for one pair at one viewport.
 
 Still not run: 390×844 (both commits), Dune book-3 pair (both commits), parent R6/R6b, the 90-case DWO-E2 matrix,
 `pnpm test:browser`. Runs take ~9 min per commit×viewport×pair on 2 CPUs; continue next run.
+
+## Checkpoint 2026-11-08T16:20Z — head 390×844 Cosmere pass; Dune book-3 prime leaves a stable split state (DWT-03 candidate)
+
+Builder-run (Claude), same build/preview/Chromium setup, head 311e9fe only. **No application edit.**
+
+| Run | Output | Result |
+| --- | --- | --- |
+| head 311e9fe, v2.1, 390×844 Cosmere b10 | [390 cosmere](dwt02-rendered-v21-output-311e9fe-390-cosmere.txt) | **ALL PASS 19** (C0, R2x, R3x exactly once at Elendel/e48, history delta 0; R6 Next,Next,Stop pre-commit restores Bilming incl. `lm=shaw`, nothing built; R6b retry arrives; no page errors) |
+| head 311e9fe, v2.1, 1440×900 Dune b3 | [1440 dune](dwt02-rendered-v21-output-311e9fe-1440-dune.txt) | **C0 prime FAIL, then harness timeout (590 s)**. After the prime loop's rapid trusted Tour/Pause/Next presses, the page held for 60 s: tour `12 / 13` paused, `S.site=tabr` and hash `site=tabr&view=place`, but the rendered place is **fane** and `S.ev=null` (builds arrakeen,fane,tabr,tabr,fane). No page errors. |
+| head 311e9fe, directed repro [dwt03-dune-prime-repro.cjs](dwt03-dune-prime-repro.cjs), 1440, gap 0 | [g0](dwt03-repro-output-311e9fe-1440-g0.txt) | Not reproduced: settles consistent at fane/c6 step 12 |
+| same, gap 400 / 900 ms | [g400](dwt03-repro-output-311e9fe-1440-g400-incomplete.txt), [g900](dwt03-repro-output-311e9fe-1440-g900-incomplete.txt) | Incomplete (killed at the 10-min shell bound; the auto-advance timer also stepped the tour once in g400). No split state seen in the steps logged |
+
+**DWT-03 (candidate, not yet confirmed):** after rapid tour Next presses across different sites/worlds on a slow
+renderer, state and URL can name one site (tabr) while the rendered place is another (fane) and no event is set,
+stable for ≥60 s. This is the different-destination analogue of DWT-02 (DWT-02's fix covers only the identical
+repeat). Observed once in 1 of 4 attempts; the exact press timing of the failing run was not logged (prime only
+logs Prev corrections). Not dismissed as harness: a settled split state is user-visible if real.
+
+Next: re-run the v2.1 Dune prime with a per-press state log (and the directed repro with smaller gaps, 100–300 ms,
+one run per shell call) on head, then on parent 117ecba to tell whether it predates the DWT-02 fix. If confirmed,
+it becomes a fix item on the PR branch; if it cannot be reproduced in a bounded set (e.g. 10 runs), record it as a
+Known gap with the one observation. Still not run: 390 Dune pair, 390 parent Cosmere, parent R6/R6b, the 90-case
+DWO-E2 matrix, `pnpm test:browser`.
