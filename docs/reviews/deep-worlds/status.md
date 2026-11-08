@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
 blocked-on: none
-next-action: Claude confirms the DWT-03 mechanism with an in-page trace (pending tabr entry -> leave -> fane entry -> cancelEntry restores stale S.site/href), fixes it on atlas/deep-worlds, re-runs the dwt03 repro (>=3 passes, gaps 0/150/400), Cosmere/Dune v2.1 pairs, 90-case DWO-E2 matrix and pnpm test:browser, then hands to ChatGPT
-updated: 2026-11-08T17:04Z
+next-action: Claude completes DWT-03 verification at atlas/deep-worlds 5bfde31: dwt03 repro full passes at gaps 0 and 400 (one browser at a time, 420 s bound), Cosmere/Dune v2.1 pairs, 90-case DWO-E2 matrix and pnpm test:browser, then hands the fix to ChatGPT
+updated: 2026-11-08T18:19Z
 idle-runs: 0
-note: Checkpoint (rendered-diagnosis-311e9fe.md §Checkpoint 2026-11-08T17:04Z): DWT-03 reproduced by directed harness v2 on head 311e9fe at 1440 gap 150 (tour 12/13, S.site/hash tabr, rendered fane, S.ev null at +40 s) -> now a fix item; parent 117ecba run took a different interleaving (inconclusive). Suspected cause: rollback baseline snapshotted from a pending S.site after a leave. No app edit yet. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
+note: Checkpoint (rendered-diagnosis-311e9fe.md §Checkpoint 2026-11-08T18:19Z): DWT-03 mechanism confirmed by in-page history trace on 311e9fe - the unowned 900 ms selectSite(site) timer in doLeavePlace's galaxy branch fired ~63 s late and renamed S.site/URL over a newer fane entry (suspected rollback-baseline cause ruled out). Fix pushed at 5bfde313d819ab89e273af4b9c6a5f788d6d6f3d (selectSiteLater: runs only if placeGen and world unchanged; same guard on openEvent/goPlace descents). pnpm check 125/125 + check:dist; repro gap150 PASS (fane/c6 consistent +5..+60 s), gap0 consistent at +5 s (run cut by bound), gap400 incomplete. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -88,3 +88,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T15:17Z Claude: checkpoint — probe v2.1 converging prime; head 311e9fe 1440 Cosmere b10 ALL PASS 19, parent 117ecba reproduces DWT-02 at R2x/R3x (partial, timed out in R6). Outputs and notes in [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md). Remaining: 390, Dune pair, parent R6, 90-matrix, test:browser. Owner unchanged (claude).
 - 2026-11-08T16:20Z Claude: checkpoint — head 311e9fe v2.1 390 Cosmere b10 ALL PASS 19; 1440 Dune b3 prime hit a stable split state (S.site/URL tabr vs rendered fane, ev null) recorded as DWT-03 candidate (1/4 attempts; directed repro not yet reproducing). Outputs and next steps in [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md). No app edit.
 - 2026-11-08T17:04Z Claude: DWT-03 reproduced on head 311e9fe with directed harness v2 (bounded state reads, sampled settle); confirmed as a fix item with a suspected mechanism (stale rollback baseline after leave). Parent 117ecba run inconclusive. Outputs dwt03-repro-v{1,2}-output-*.txt. No app edit.
+- 2026-11-08T18:19Z Claude: checkpoint - DWT-03 mechanism confirmed (late unowned post-descent selectSite timer, not the rollback baseline); fix at atlas/deep-worlds 5bfde31; check 125/125; repro gap150 PASS, gap0 partial-consistent, gap400 incomplete; matrix/v2.1/test:browser pending. idle-runs 0.

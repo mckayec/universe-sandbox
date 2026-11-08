@@ -117,3 +117,34 @@ pending entry; add an engine unit/probe for pending-entry → leave → new entr
 Next (Claude, next run): instrument enterPlace/cancelEntry/doLeavePlace with a temporary in-page trace in the probe
 (no app edit) to confirm the mechanism, then fix on `atlas/deep-worlds`, re-run this repro (≥3 passes at gaps
 0/150/400), the Cosmere/Dune v2.1 pairs, the 90-case DWO-E2 matrix and `pnpm test:browser`, then hand to ChatGPT.
+
+## Checkpoint 2026-11-08T18:19Z — DWT-03 mechanism confirmed and fixed at 5bfde31 (builder-run, verification partial)
+
+Builder-run (Claude), same build/preview/Chromium + SwiftShader setup, 1440×900, Dune book 3. Harness
+[dwt03-trace-repro.cjs](dwt03-trace-repro.cjs) = repro v2 plus an init-script hook that records every
+`history.pushState/replaceState` with time and the top stack frames (no app edit for the diagnosis run).
+
+**Mechanism (trace on 311e9fe, [output](dwt03-trace-output-311e9fe-1440-g150.txt)).** The suspected rollback-baseline
+cause is ruled out. At t=238051 ms a `selectSite` called from `engine.js:1453` (the `setTimeout(()=>selectSite(site),900)`
+in `doLeavePlace`'s branch for a place entered straight from the galaxy) fired ~63 s after its leave — timers were
+starved by the busy SwiftShader main thread — after the newer fane entry from the galaxy had been requested. It renamed
+`S.site`/URL to tabr and bumped `placeGen`, so the newer entry was cancelled or left split (this run ended
+view=world, site=fane, rendered null, ev null; the 17:04Z run ended S.site=tabr over a rendered fane). The timer had no
+ownership check; `openEvent(…,true)` (world→other world) and `goPlace` had the same unowned pattern.
+
+**Fix ([5bfde31](https://github.com/mckayec/universe-sandbox/commit/5bfde313d819ab89e273af4b9c6a5f788d6d6f3d), `public/atlas/engine.js` only, +7/−3).**
+`selectSiteLater(wid,sid,ms)` captures `placeGen` and runs `selectSite` only if `placeGen` is unchanged and the same world
+is still selected; used at all three sites. Restore-from-URL startup path unchanged.
+
+| Check at 5bfde31 | Result |
+| --- | --- |
+| `pnpm check` | format, build, 125/125 tests, check:dist 175 files OK |
+| repro gap 150 ([output](dwt03-trace-output-5bfde31-1440-g150.txt)) | **PASS** — fane / ev c6 / hash fane place consistent at +5/+20/+40/+60 s, no page errors (step 10 took a different interleaving than the failing run: ev c11 surface event committed) |
+| repro gap 0 ([partial](dwt03-trace-output-5bfde31-1440-g0-partial.txt)) | consistent at +5 s (fane/c6); run killed by the 290 s shell bound before later samples |
+| repro gap 400 ([partial](dwt03-trace-output-5bfde31-1440-g400-partial.txt)) | incomplete — killed by the bound at step 10; no verdict |
+
+A first attempt ran three browsers in parallel on the 2-core runner and starved all three (no verdict; not recorded).
+
+Next (Claude, next run): gap 0 and gap 400 full passes one browser at a time (420 s bound), Cosmere/Dune v2.1 pairs,
+the 90-case DWO-E2 matrix and `pnpm test:browser` on 5bfde31, then hand to ChatGPT.
+
