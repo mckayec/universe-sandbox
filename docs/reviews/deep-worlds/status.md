@@ -1,11 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the DWT-03 fix at PR37 5bfde313d819ab89e273af4b9c6a5f788d6d6f3d (1 file, engine.js +7/-3 vs 311e9fe) with fix-return-5bfde31.md; close DWT-03 or return findings
-updated: 2026-11-08T20:32Z
+next-action: Claude publishes one technical disposition packet for PR37 5bfde31: accept the bounded navigation review, defer DWT-03-R1 until tree integration or fix it narrowly, and identify remaining Society/visual/device/Save-Load gates
+updated: 2026-11-08T21:20Z
 idle-runs: 0
-note: DWT-03 fix at 5bfde31 builder-verified: dwt03 repro gaps 0/150/400 PASS, DWO-E2 matrix ALL PASS 90, v2.1 rendered pairs Cosmere b10 + Dune b3 ALL PASS 19 at 1440x900 and 390x844 (no page errors), pnpm check 125/125, test:browser pass on rerun (pre-existing Save/Load race). Builder-run only; no canon/full technical/release approval. Not merged.
-
+note: DWT-03 stale-entry guards independently pass 6/6; retained source checks 53/53. Reviewer probe 11/15 head vs 8/15 parent records four latent tree-order failures; 7/7 current packs have no tree. Builder rendered qualification inspected (3/3 traces, 76/76 repeat/Stop assertions, 90/90 matrix); CI verified, 0 independent rendered cases. Full canon/technical and Mckay release approval remain open.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -91,3 +90,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T18:19Z Claude: checkpoint - DWT-03 mechanism confirmed (late unowned post-descent selectSite timer, not the rollback baseline); fix at atlas/deep-worlds 5bfde31; check 125/125; repro gap150 PASS, gap0 partial-consistent, gap400 incomplete; matrix/v2.1/test:browser pending. idle-runs 0.
 - 2026-11-08T19:40Z Claude: checkpoint - at 5bfde31 dwt03 repro gap0 and gap400 PASS, DWO-E2 matrix ALL PASS 90, test:browser pass on rerun (pre-existing Save/Load race on first run); v2.1 rendered pairs remain before handoff. idle-runs 0.
 - 2026-11-08T20:32Z Claude: v2.1 rendered pairs at 5bfde31 ALL PASS 19 x4 (Cosmere b10, Dune b3; 1440x900, 390x844). DWT-03 fix handed over in [fix-return-5bfde31.md](fix-return-5bfde31.md). Stage fixing->implementation-review, owner claude->chatgpt. Not merged. idle-runs 0.
+
+- 2026-11-08T21:20Z ChatGPT: saved/read back [DWT-03 review](implementation-review-5bfde31.md) at 14e6b1cf8a9226152c1ca325781e976bde58239f and [independent probe](reviewer-dwt03-5bfde31.cjs) at 7775f00dd80ff5bfe3ebf84ccc9618d03f27072d before this handoff. Exact unchanged PR37 head 5bfde313d819ab89e273af4b9c6a5f788d6d6f3d; 1/1 changed application files and 3/3 timer routes inspected. Original stale-entry defect closes at source/VM scope (6/6 sensitive checks vs 0/6 parent); retained checks 53/53 on both. New probe totals 11/15 head vs 8/15 parent: four Low DWT-03-R1 tree-order failures, latent because 7/7 current concrete packs have no tree. Builder qualification inspected: 3/3 directed traces, 19/19 x4 repeat/Stop assertions and 90/90 matrix; limits preserved, not independent rendered acceptance. CI42509377038/build128818895165 logs verify 125/125 units, 175-file dist and 12x2 pages; tested merge 97a0a214 has 281/281 matching non-doc files. Fresh local Chromium socket-permission failure before page creation (0 independent rendered cases). implementation-review/chatgpt -> fixing/claude for finite technical disposition, with R1 fix/defer trigger before tree integration; do not repeat completed current-pack qualification merely for this environment limit. Prior content decisions, eight source holds and 139 unselected records preserved. No new canon, full technical or release approval; no application edit, PR approval, merge or deployment.
