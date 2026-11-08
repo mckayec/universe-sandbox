@@ -680,6 +680,34 @@
   const GUTTER_STEP = 6;
   const GUTTER_PAD = 6;
   const gutterWidth = count => (count ? GUTTER_PAD * 2 + count * GUTTER_STEP : 0);
+  /* Folded-row connectors. An endpoint in an expanded lane joins at its own row (rowY). An endpoint inside a
+     collapsed lane joins at that lane's summary row (foldY[lane]) and is flagged folded, so the view marks it as
+     "somewhere in this lane", never as a specific row. `laneOf(id)` returns a lane only for records that would have
+     a chart row when the lane is expanded (dated records), so expanding a lane never makes a connector vanish.
+     Edges come from the gated view only (record and edge gates already applied), so book/chapter/layer
+     downgrades remove them here too. Not drawn, but counted: both ends folded into the same lane (`inside`), or
+     an end with no chart row at all, e.g. an undated record (`offChart`; those stay in the list and panels).
+     → {links: [{id, ya, yb, fa, fb}], inside, offChart} */
+  function connectorEnds(edges, rowY, foldY, laneOf) {
+    const links = [];
+    let inside = 0;
+    let offChart = 0;
+    const end = id => {
+      if (rowY[id] != null) return { y: rowY[id], folded: false, lane: null };
+      const lane = laneOf(id);
+      if (lane != null && foldY[lane] != null) return { y: foldY[lane], folded: true, lane };
+      return null;
+    };
+    edges.forEach(e => {
+      if (e.from === e.to) return;
+      const a = end(e.from);
+      const b = end(e.to);
+      if (!a || !b) offChart++;
+      else if (a.folded && b.folded && a.lane === b.lane) inside++;
+      else links.push({ id: e.id, ya: a.y, yb: b.y, fa: a.folded, fb: b.folded });
+    });
+    return { links, inside, offChart };
+  }
   /* bracket path for one connector: short nub at each row, vertical join; x never enters the time axis */
   function bracketPath(col, count, ya, yb) {
     const xr = GUTTER_PAD + (count - 1 - col) * GUTTER_STEP;
@@ -801,6 +829,7 @@
     extent,
     coverage,
     bracketColumns,
+    connectorEnds,
     gutterWidth,
     bracketPath,
     arrangeLanes,

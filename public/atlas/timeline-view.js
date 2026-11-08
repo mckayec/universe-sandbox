@@ -92,6 +92,8 @@
     let V = null;
     let lastFocus = null;
     let gut = 0;
+    /* connectors drawn with an end on a collapsed lane's summary row, and those hidden inside one collapsed lane */
+    let foldStats = { folded: 0, inside: 0 };
     const defaultOrder = model.lanes.map(l => l.id);
     let order = defaultOrder.slice();
     const collapsed = new Set();
@@ -167,8 +169,19 @@
       });
       const H = y + 6;
       /* relationships are undated: draw them as brackets in a gutter outside the time axis (TL-R07) */
-      const links = V.drawnEdges.filter(e => rowY[e.from] != null && rowY[e.to] != null && e.from !== e.to);
-      const cols = TLM.bracketColumns(links.map(e => ({ id: e.id, y0: rowY[e.from], y1: rowY[e.to] })));
+      /* an end inside a collapsed lane joins that lane's summary row and is marked with an open ring */
+      const foldY = {};
+      lanes.forEach(x => {
+        if (x.sumY != null) foldY[x.l.id] = x.sumY;
+      });
+      const laneOf = id => {
+        const r = V.byId.get(id);
+        return r && r.when ? r.lane : null;
+      };
+      const ends = TLM.connectorEnds(V.drawnEdges, rowY, foldY, laneOf);
+      const links = ends.links;
+      foldStats = { folded: links.filter(l => l.fa || l.fb).length, inside: ends.inside };
+      const cols = TLM.bracketColumns(links.map(l => ({ id: l.id, y0: l.ya, y1: l.yb })));
       gut = TLM.gutterWidth(cols.count);
       const X = y => gut + 12 + ((TLM.astro(y) - a0) / (a1 - a0)) * (W - gut - 24);
       let s =
@@ -254,15 +267,37 @@
           '" height="' +
           (H - AXIS_H) +
           '"><title>Relationship links: undated, joined by row only</title></rect>';
-      links.forEach(e => {
+      const edgeById = new Map(V.drawnEdges.map(e => [e.id, e]));
+      const laneTitle = id => {
+        const ln = lanes.find(x => x.l.id === id);
+        return ln ? ln.l.title : id;
+      };
+      links.forEach(l => {
+        const e = edgeById.get(l.id);
         const a = V.byId.get(e.from);
         const b = V.byId.get(e.to);
-        const p = TLM.bracketPath(cols.cols[e.id], cols.count, rowY[a.id], rowY[b.id]);
+        const p = TLM.bracketPath(cols.cols[l.id], cols.count, l.ya, l.yb);
+        const where = [l.fa ? a : null, l.fb ? b : null]
+          .filter(Boolean)
+          .map(r => r.label + ' is inside the collapsed ' + laneTitle(r.lane) + ' lane; expand it for the exact row');
+        const ring = (y, side) =>
+          '<circle class="tl-edge-fold" data-fold-edge="' +
+          ESC(l.id) +
+          '" data-fold-end="' +
+          side +
+          '" cx="' +
+          (p.x1 + 1) +
+          '" cy="' +
+          y +
+          '" r="2.6" aria-hidden="true"/>';
         s +=
+          (l.fa ? ring(l.ya, 'from') : '') +
+          (l.fb ? ring(l.yb, 'to') : '') +
           '<path class="tl-edge t-' +
           e.type +
+          (where.length ? ' folded' : '') +
           '" data-edge="' +
-          ESC(e.id) +
+          ESC(l.id) +
           '" d="' +
           p.d +
           '"><title>' +
@@ -272,7 +307,9 @@
               (EDGE_WORD[e.type] || e.type) +
               ' — ' +
               a.label +
-              ' (relationship not dated; the bracket joins the two rows, its position is not a year)',
+              ' (relationship not dated; the bracket joins the two rows, its position is not a year' +
+              (where.length ? '. ' + where.join('. ') : '') +
+              ')',
           ) +
           '</title></path>';
       });
@@ -639,6 +676,24 @@
         '</ul></div>'
       );
     }
+    /* only while some lane is collapsed in the chart: say what the open rings and missing brackets mean */
+    function foldNote() {
+      if (mode !== 'chart' || !(foldStats.folded || foldStats.inside)) return '';
+      let t = '';
+      if (foldStats.folded)
+        t +=
+          ' ' +
+          foldStats.folded +
+          (foldStats.folded === 1 ? ' bracket ends' : ' brackets end') +
+          ' in an open ring on a collapsed lane: the related record is somewhere in that lane.';
+      if (foldStats.inside)
+        t +=
+          ' ' +
+          foldStats.inside +
+          (foldStats.inside === 1 ? ' relationship is' : ' relationships are') +
+          ' inside one collapsed lane and hidden until it is expanded.';
+      return t;
+    }
     function details() {
       const r = sel && V.byId.get(sel);
       if (!r)
@@ -649,7 +704,9 @@
             : 'Each lane is a tradition or its Chronicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events.') +
           ' <span class="tl-undated">Brackets in the left gutter join related ' +
           ESC(model.relatedWord || 'traditions') +
-          '; they are not dated.</span> Pick any mark or row for its source wording.</p>' +
+          '; they are not dated.' +
+          foldNote() +
+          '</span> Pick any mark or row for its source wording.</p>' +
           coverageHtml()
         );
       const w = r.when;
@@ -850,6 +907,7 @@
       laneBar.innerHTML = mode === 'chart' ? laneControls() : '';
       laneBar.hidden = !laneBar.innerHTML;
       const left = scrollEl.scrollLeft;
+      foldStats = { folded: 0, inside: 0 };
       scrollEl.innerHTML = mode === 'chart' ? chart() + undated() : list();
       scrollEl.scrollLeft = left;
       info.innerHTML = details();

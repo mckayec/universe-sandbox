@@ -1,0 +1,466 @@
+{
+  "pass": 63,
+  "total": 63,
+  "results": [
+    {
+      "name": "1440 expanded: 9 connectors, none folded, no rings",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 expanded: every end on its own row",
+      "pass": true
+    },
+    {
+      "name": "1440 expanded: no fold note",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-jud: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Judaism",
+        "folded": 1,
+        "inside": 2,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-jud: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 2,
+        "note": " bracket ends in an open ring on a collapsed lane: the related record is somewhere in that lane. 2 relationships are inside one collapsed lane and hidden until it is expanded. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand lane-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-chr: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Christianity",
+        "folded": 1,
+        "inside": 6,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-chr: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 6,
+        "note": " bracket ends in an open ring on a collapsed lane: the related record is somewhere in that lane. 6 relationships are inside one collapsed lane and hidden until it is expanded. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand lane-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-isl: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Islam",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-isl: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand lane-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-enc: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Encounters",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-enc: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand lane-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-jud: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Judaism",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-jud: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand chron-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-chr: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Christianity",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-chr: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand chron-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-isl: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Islam",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-isl: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand chron-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-enc: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Encounters",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-enc: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "1440 expand chron-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 some connector was folded across all lane collapses",
+      "pass": true,
+      "actual": {
+        "foldedTotal": 2,
+        "insideTotal": 8
+      }
+    },
+    {
+      "name": "1440 layer downgrade (isl off, lane collapsed): no drawn connector outside the active layers",
+      "pass": true,
+      "actual": {
+        "active": [
+          "jud",
+          "chr",
+          "enc"
+        ],
+        "before": 7,
+        "after": 7,
+        "outside": []
+      }
+    },
+    {
+      "name": "1440 layer downgrade: rings only on drawn connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 layer restored: connector set equals pre-downgrade",
+      "pass": true
+    },
+    {
+      "name": "390 expanded: 9 connectors, none folded, no rings",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 expanded: every end on its own row",
+      "pass": true
+    },
+    {
+      "name": "390 expanded: no fold note",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-jud: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Judaism",
+        "folded": 1,
+        "inside": 2,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-jud: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 2,
+        "note": " bracket ends in an open ring on a collapsed lane: the related record is somewhere in that lane. 2 relationships are inside one collapsed lane and hidden until it is expanded. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand lane-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-chr: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Christianity",
+        "folded": 1,
+        "inside": 6,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-chr: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 6,
+        "note": " bracket ends in an open ring on a collapsed lane: the related record is somewhere in that lane. 6 relationships are inside one collapsed lane and hidden until it is expanded. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand lane-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-isl: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Islam",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-isl: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand lane-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-enc: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Encounters",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-enc: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand lane-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-jud: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Judaism",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-jud: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand chron-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-chr: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Christianity",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-chr: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand chron-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-isl: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Islam",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-isl: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand chron-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-enc: folded ends on the summary row, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Encounters",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-enc: Overview note matches",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "note": "onicle. Hatched marks are emergence windows; fading bars are still ongoing; diamonds are dated events. Brackets in the left gutter join related traditions; they are not dated. Pick any mark or row for its source wording."
+      }
+    },
+    {
+      "name": "390 expand chron-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 some connector was folded across all lane collapses",
+      "pass": true,
+      "actual": {
+        "foldedTotal": 2,
+        "insideTotal": 8
+      }
+    },
+    {
+      "name": "390 layer downgrade (isl off, lane collapsed): no drawn connector outside the active layers",
+      "pass": true,
+      "actual": {
+        "active": [
+          "jud",
+          "chr",
+          "enc"
+        ],
+        "before": 7,
+        "after": 7,
+        "outside": []
+      }
+    },
+    {
+      "name": "390 layer downgrade: rings only on drawn connectors",
+      "pass": true
+    },
+    {
+      "name": "390 layer restored: connector set equals pre-downgrade",
+      "pass": true
+    },
+    {
+      "name": "no page errors",
+      "pass": true,
+      "actual": []
+    }
+  ],
+  "errors": []
+}

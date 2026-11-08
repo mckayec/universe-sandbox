@@ -263,3 +263,135 @@ test('TL-R07: relationship connectors are undated brackets outside the time axis
   assert.equal(TL.gutterWidth(0), 0, 'no gutter without connectors');
   assert.equal(TL.coverage(v, model).drawable, v.drawnEdges.length);
 });
+
+/* Folded-row connectors: an end inside a collapsed lane joins that lane's summary row and is flagged folded. */
+const layout = (v: any, collapsedLanes: Set<string>) => {
+  const rowY: Record<string, number> = {};
+  const foldY: Record<string, number> = {};
+  let y = 40;
+  v.lanes.forEach((l: any) => {
+    const rows = v.dated.filter((r: any) => r.lane === l.id);
+    if (!rows.length) return;
+    y += 26;
+    if (collapsedLanes.has(l.id)) {
+      foldY[l.id] = y;
+      y += 34;
+      return;
+    }
+    rows.forEach((r: any) => {
+      rowY[r.id] = y;
+      y += 26;
+    });
+  });
+  const laneOf = (id: string) => {
+    const r = v.byId.get(id);
+    return r && r.when ? r.lane : null;
+  };
+  return { rowY, foldY, laneOf };
+};
+
+test('folded-row connectors: expanded lanes match the row-only connectors exactly', () => {
+  const v = TL.visible(model, all);
+  const { rowY, foldY, laneOf } = layout(v, new Set());
+  const out = TL.connectorEnds(v.drawnEdges, rowY, foldY, laneOf);
+  const rowOnly = v.drawnEdges.filter((e: any) => rowY[e.from] != null && rowY[e.to] != null && e.from !== e.to);
+  assert.deepEqual(
+    out.links.map((l: any) => l.id),
+    rowOnly.map((e: any) => e.id),
+  );
+  assert.equal(out.links.length, 9);
+  assert.ok(out.links.every((l: any) => !l.fa && !l.fb));
+  assert.equal(out.inside, 0);
+  // every other sourced relationship has an undated (or missing) end and stays off the chart
+  assert.equal(out.offChart, v.drawnEdges.filter((e: any) => e.from !== e.to).length - 9);
+});
+
+test('folded-row connectors: collapsing any one lane re-attaches its ends to the summary row, never drops them', () => {
+  const v = TL.visible(model, all);
+  const base = layout(v, new Set());
+  const baseIds = TL.connectorEnds(v.drawnEdges, base.rowY, base.foldY, base.laneOf).links.map((l: any) => l.id);
+  let foldedSeen = 0;
+  let insideSeen = 0;
+  for (const lane of v.lanes) {
+    const lay = layout(v, new Set([lane.id]));
+    const out = TL.connectorEnds(v.drawnEdges, lay.rowY, lay.foldY, lay.laneOf);
+    const byId = new Map(out.links.map((l: any) => [l.id, l]));
+    for (const id of baseIds) {
+      const e = v.drawnEdges.find((x: any) => x.id === id);
+      const inA = v.byId.get(e.from).lane === lane.id;
+      const inB = v.byId.get(e.to).lane === lane.id;
+      if (inA && inB) {
+        assert.ok(!byId.has(id), id + ' hidden inside ' + lane.id);
+        insideSeen++;
+        continue;
+      }
+      const l: any = byId.get(id);
+      assert.ok(l, id + ' still drawn with ' + lane.id + ' collapsed');
+      assert.equal(l.fa, inA);
+      assert.equal(l.fb, inB);
+      assert.equal(l.ya, inA ? lay.foldY[lane.id] : lay.rowY[e.from]);
+      assert.equal(l.yb, inB ? lay.foldY[lane.id] : lay.rowY[e.to]);
+      if (inA || inB) foldedSeen++;
+    }
+    // conservation: drawn + inside + off-chart covers every non-self sourced relationship
+    assert.equal(out.links.length + out.inside + out.offChart, v.drawnEdges.filter((e: any) => e.from !== e.to).length);
+    // an undated end never joins a summary row
+    out.links.forEach((l: any) => {
+      const e = v.drawnEdges.find((x: any) => x.id === l.id);
+      assert.ok(v.byId.get(e.from).when && v.byId.get(e.to).when, l.id + ' has two dated ends');
+    });
+  }
+  assert.ok(foldedSeen > 0, 'some connector ran to a collapsed lane');
+  assert.ok(foldedSeen + insideSeen >= baseIds.length, 'every connector was exercised against a collapse');
+});
+
+test('folded-row connectors (synthetic fixture, not canon): book/chapter/layer downgrades remove gated ends', () => {
+  // SYNTHETIC positive control: invented records and gates, used only to prove gating happens before layout
+  const rec = (id: string, lane: string, from: number | null, gate: any, order: number) => ({
+    id,
+    lane,
+    label: id,
+    when: from == null ? null : { from },
+    gate,
+    order,
+  });
+  const syn = {
+    calendar: 'gregorian',
+    lanes: [{ id: 'A' }, { id: 'B' }],
+    records: [
+      rec('a1', 'A', 100, { layers: ['x'], book: 1, chapter: 1 }, 1),
+      rec('a2', 'A', 200, { layers: ['x'], book: 1, chapter: 5 }, 2),
+      rec('b1', 'B', 150, { layers: ['y'], book: 1, chapter: 1 }, 3),
+      rec('b2', 'B', 250, { layers: ['x'], book: 2, chapter: 1 }, 4),
+      rec('u1', 'B', null, { layers: ['x'], book: 1, chapter: 1 }, 5),
+    ],
+    edges: [
+      { id: 'e1', from: 'a1', to: 'b1', type: 'branch', gate: { layers: ['x'], book: 1, chapter: 1 }, src: ['s'] },
+      { id: 'e2', from: 'a2', to: 'b1', type: 'branch', gate: { layers: ['x'], book: 1, chapter: 1 }, src: ['s'] },
+      { id: 'e3', from: 'a1', to: 'b2', type: 'context', gate: { layers: ['x'], book: 1, chapter: 1 }, src: ['s'] },
+      { id: 'e4', from: 'a1', to: 'a2', type: 'branch', gate: { layers: ['x'], book: 1, chapter: 6 }, src: ['s'] },
+      { id: 'e5', from: 'a1', to: 'u1', type: 'branch', gate: { layers: ['x'], book: 1, chapter: 1 }, src: ['s'] },
+    ],
+  };
+  const okAt = (layers: string[], book: number, chapter: number) => (g: any) =>
+    g.layers.some((l: string) => layers.includes(l)) && (g.book < book || (g.book === book && g.chapter <= chapter));
+  const drawn = (ok: any, coll: string[]) => {
+    const v = TL.visible(syn, ok);
+    const lay = layout(v, new Set(coll));
+    const out = TL.connectorEnds(v.drawnEdges, lay.rowY, lay.foldY, lay.laneOf);
+    return { ids: Array.from(out.links, (l: any) => l.id + (l.fa ? '<' : '') + (l.fb ? '>' : '')).sort(), out };
+  };
+  // everything visible, lane A collapsed: e4 folds inside A, e5 has an undated end
+  const full = drawn(okAt(['x', 'y'], 2, 9), ['A']);
+  assert.deepEqual(full.ids, ['e1<', 'e2<', 'e3<']);
+  assert.equal(full.out.inside, 1);
+  assert.equal(full.out.offChart, 1);
+  // chapter downgrade: a2 (ch 5) and e4 (ch 6) gated out before layout
+  assert.deepEqual(drawn(okAt(['x', 'y'], 1, 4), ['A']).ids, ['e1<']);
+  // book downgrade: b2 (book 2) gated out, so e3 is gone even folded
+  assert.deepEqual(drawn(okAt(['x', 'y'], 1, 9), ['A']).ids, ['e1<', 'e2<']);
+  // layer downgrade: b1 (layer y) gated out
+  assert.deepEqual(drawn(okAt(['x'], 2, 9), ['A']).ids, ['e3<']);
+  // lane B collapsed instead: folded flag moves to the other end
+  assert.deepEqual(drawn(okAt(['x', 'y'], 2, 9), ['B']).ids, ['e1>', 'e2>', 'e3>', 'e4']);
+});
