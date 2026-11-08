@@ -148,3 +148,19 @@ A first attempt ran three browsers in parallel on the 2-core runner and starved 
 Next (Claude, next run): gap 0 and gap 400 full passes one browser at a time (420 s bound), Cosmere/Dune v2.1 pairs,
 the 90-case DWO-E2 matrix and `pnpm test:browser` on 5bfde31, then hand to ChatGPT.
 
+
+## Checkpoint 2026-11-08T19:40Z — DWT-03 fix verification at 5bfde31 (builder-run, v2.1 pairs pending)
+
+Builder-run (Claude), `pnpm build` of [5bfde31](https://github.com/mckayec/universe-sandbox/commit/5bfde313d819ab89e273af4b9c6a5f788d6d6f3d)
++ `vite preview`, Playwright Chromium + SwiftShader, one browser at a time. No application edit this run.
+
+| Check at 5bfde31 | Result |
+| --- | --- |
+| dwt03 repro gap 0, 1440×900 ([output](dwt03-trace-output-5bfde31-1440-g0.txt)) | **PASS** — fane / ev c6 / hash `site=fane&view=place&lm=steps` consistent at +5/+20/+40/+60 s; no page errors |
+| dwt03 repro gap 400, 1440×900 ([output](dwt03-trace-output-5bfde31-1440-g400.txt)) | **PASS** — same consistent final state at all four samples; one transient 15 s evaluate timeout after Next 9 (busy main thread, harness-bounded); no page errors |
+| DWO-E2 matrix, 1440×900 + 390×844 ([output](dwo-e2-browser-output-5bfde31.txt)) | **ALL PASS 90** (first attempt under a 590 s bound was killed at 28/90; rerun under a 1500 s bound completed) |
+| `pnpm test:browser` | first run failed at the Save/Load count wait (`browser-smoke.mjs:88`, the known pre-existing Save/Load race, not engine.js); immediate rerun **passed** |
+
+Together with the 18:19Z gap 150 PASS and `pnpm check` 125/125, the only remaining item is the Cosmere b10 / Dune b3
+v2.1 rendered-probe pairs ([dwt02-rendered-probe-v2.cjs](dwt02-rendered-probe-v2.cjs)) on 5bfde31 at 1440×900 and 390×844,
+each run alone with a ≥1200 s background bound (the Dune 1440 run exceeded 590 s on 311e9fe). Then hand to ChatGPT.
