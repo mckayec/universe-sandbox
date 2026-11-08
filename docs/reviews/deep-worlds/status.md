@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
 blocked-on: none
-next-action: Claude diagnoses and fixes rendered finding DWT-02-R (two identical pre-commit tour Next presses arrive at the place but leave S.ev null) per rendered-qualification-311e9fe.md, then reruns the hardened rendered probe alone (head/parent, 1440/390, both pairs) and the 90-case matrix alone
-updated: 2026-11-08T13:26Z
+next-action: Claude fixes the remaining C0/R2x tour-priming race in dwt02-rendered-probe-v2.cjs, then runs it alone on head and parent at 1440/390 for both pairs, then the 90-case matrix alone, then hands to ChatGPT (no app change expected: DWT-02-R diagnosed as harness sampling artefact)
+updated: 2026-11-08T14:22Z
 idle-runs: 0
-note: Rendered checkpoint at 311e9fe (builder-run, 1440, Cosmere book 10 tour e47 Bilming -> e48 Elendel, trusted pointer input): Next,Next,Stop rollback and fresh retry PASS; repeated pre-commit Next arrives once but drops the event selection (ev=null) -> DWT-02 R1 not closed at rendered scope. Parent paired R2x, 390, Dune pair, 90-matrix and test:browser not yet run. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
+note: DWT-02-R diagnosed at 311e9fe (rendered-diagnosis-311e9fe.md): S.ev=null was v1 sampling before the starved 500 ms event continuation; v2 R3x (3 pre-commit Next) arrives once with e48 (set +7 s after build), R6/R6b pass, no page errors; no app edit. C0/R2x priming still racy; parent, 390, Dune pair, 90-matrix and test:browser not yet run. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -84,3 +84,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-08T12:17:33Z ChatGPT: saved/read back implementation-review-311e9fe.md at a57a6c1a6b523627d10a08ddea95dda7a03c7ee1 and independent boundary probe at fc4155bb7526cf9c2ee92be814ae95b308909105. Reviewed 1/1 delta files at PR37 311e9fefa4bad16dff40e909d57f0b450532b216; DWT-02 source/VM scope closed with paired controls and retained regressions. CI42477650426 build log verified; synthetic merge 8dbacb5 has 281/281 identical non-doc files. Fresh Chromium launch blocked by socket permission before page creation (0 independent rendered cases). implementation-review/chatgpt -> fixing/claude for bounded rendered repeat/Stop and current matrix qualification; no full technical/canon or release approval. Prior content dispositions and source holds preserved.
 - 2026-11-08T13:26Z Claude: rendered DWT-02 checkpoint at PR37 311e9fe, [rendered-qualification-311e9fe.md](rendered-qualification-311e9fe.md) with [probe](dwt02-rendered-probe.cjs) and outputs. Head: R6 Stop rollback + R6b retry PASS; R2x repeated pre-commit Next arrives at Elendel but ev=null (new finding DWT-02-R); parent: C0 control only before harness race. 90-matrix attempt invalid (parallel SwiftShader starvation), not rerun. Stays fixing/claude; idle-runs 0. No application edit, merge or deploy.
+- 2026-11-08T14:22Z Claude: DWT-02-R diagnosed at PR37 311e9fe as a harness sampling artefact, [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md) with [probe v2](dwt02-rendered-probe-v2.cjs) and output: in-page S.ev log shows null only until the SwiftShader-starved 500 ms continuation sets e48; R3x triple pre-commit Next arrives once with e48, R6 Stop rollback and R6b retry pass, 0 page errors. No application edit. C0/R2x priming race remains; paired parent, 390, Dune, 90-matrix pending. Stays fixing/claude; idle-runs 0.

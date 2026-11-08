@@ -1,0 +1,44 @@
+# Deep worlds — DWT-02-R diagnosis at PR37 311e9fe (rendered, builder-run)
+
+- Builder: Claude, 2026-11-08T13:47–14:22Z. Exact head `311e9fefa4bad16dff40e909d57f0b450532b216` (atlas/deep-worlds), `pnpm build` served by `vite preview`, Playwright Chromium + SwiftShader, 1440×900, Cosmere book 10 tour e47 Bilming → e48 Elendel, trusted `page.mouse` input. Builder-run, not independent. **No application edit.**
+- Harness: [dwt02-rendered-probe-v2.cjs](dwt02-rendered-probe-v2.cjs) (v1 kept unchanged). Output: [dwt02-rendered-v2-output-311e9fe-1440.txt](dwt02-rendered-v2-output-311e9fe-1440.txt).
+
+## Finding: DWT-02-R is a harness sampling artefact, not an app defect
+
+v1 judged R2x from one snapshot at a fixed +3.5 s after the presses. After the place commits, `enterPlace` runs the
+event continuation (`evInPlace`, which sets `S.ev`) on a 500 ms timer; under SwiftShader timers are starved by
+seconds. v2 logs every `S.ev` assignment with an in-page timestamp (a getter/setter on `__atlas.S.ev`, value only).
+
+Qualified case R3x (three trusted Next presses at +0/+18/+32 ms; the in-page click record shows Bilming still the
+rendered place at each repeat, so all are pre-commit):
+
+| Time from first press | Observation |
+| --- | --- |
+| +1 ms | `S.ev` → null (entry starts; expected) |
+| +4581 ms | single place build: Elendel |
+| +6367 ms | fade off |
+| +9210 ms | first rendered-arrival snapshot: rendered Elendel, `ev=null` — the state v1 sampled |
+| +11516 ms | `S.ev` → e48 (the starved continuation runs) |
+| end | PASS: arrives exactly once at Elendel with e48; URL `site=elendel`; history length unchanged (3 → 3, same as R6b single Next) |
+
+No assignment ever sets `S.ev` back to null after e48; the null was the pre-continuation window. R1 ("latest
+event selected") holds at rendered scope for this case.
+
+Also this run: R6 (Next, Next, Stop at +0/+15/+27 ms, pre-commit) PASS — Bilming restored with state, render, URL
+incl. `lm=shaw`, history and ev e47, nothing built; R6b fresh retry PASS. Page errors: none in any case.
+
+## Harness changes in v2 (why earlier runs were unreliable)
+
+1. Pass/fail waits for the end state (bounded 30 s + 20 s, then a 2 s settle and re-read) instead of a fixed 3.5 s.
+2. Repeated presses are sent back to back from coordinates read once; pre-commit is decided in-page from the
+   rendered place recorded at each click (v1 read state between presses, which could take ~6 s under SwiftShader,
+   so a "repeat" could land after commit while the check still passed).
+3. Tour start is retried if the first press lands during the splash; Pause is confirmed by its label and retried.
+4. Interval/evaluate loops replace `waitForFunction` (never resolves under SwiftShader here).
+
+## Limits / not done
+
+- C0 and R2x failed to **prime** this run (tour already on step 2/2 when sampled), so their rows and the
+  history-delta rows (which compare against C0) are harness failures, not results. Remaining cause: Pause can
+  register after the tour has already advanced; next step is to prime via the URL/state instead of the live tour.
+- Parent 117ecba pair, 390×844, Dune book-3 pair, the 90-case DWO-E2 matrix and `test:browser` not rerun.
