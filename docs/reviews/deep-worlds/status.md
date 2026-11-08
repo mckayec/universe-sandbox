@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
 blocked-on: none
-next-action: Claude characterizes DWT-03 candidate (Dune b3 split state after rapid tour Next: S.site/URL tabr, rendered fane, ev null) with a per-press-logged v2.1 Dune prime and directed repro on head 311e9fe then parent 117ecba (bounded ~10 runs: confirm -> fix item, else Known gap), then remaining 390 Dune/parent runs, 90-case DWO-E2 matrix and pnpm test:browser, then hands to ChatGPT
-updated: 2026-11-08T16:20Z
+next-action: Claude confirms the DWT-03 mechanism with an in-page trace (pending tabr entry -> leave -> fane entry -> cancelEntry restores stale S.site/href), fixes it on atlas/deep-worlds, re-runs the dwt03 repro (>=3 passes, gaps 0/150/400), Cosmere/Dune v2.1 pairs, 90-case DWO-E2 matrix and pnpm test:browser, then hands to ChatGPT
+updated: 2026-11-08T17:04Z
 idle-runs: 0
-note: Checkpoint (rendered-diagnosis-311e9fe.md §Checkpoint 16:20Z): head 311e9fe 390 Cosmere b10 ALL PASS 19 (1440 already ALL PASS 19). 1440 Dune b3 prime ended in a stable split state for 60 s (tour 12/13, S.site/hash tabr, rendered fane, S.ev null, no page errors) -> DWT-03 candidate, observed 1/4 attempts, not yet confirmed or dismissed. No app edit. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
+note: Checkpoint (rendered-diagnosis-311e9fe.md §Checkpoint 2026-11-08T17:04Z): DWT-03 reproduced by directed harness v2 on head 311e9fe at 1440 gap 150 (tour 12/13, S.site/hash tabr, rendered fane, S.ev null at +40 s) -> now a fix item; parent 117ecba run took a different interleaving (inconclusive). Suspected cause: rollback baseline snapshotted from a pending S.site after a leave. No app edit yet. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -87,3 +87,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T14:22Z Claude: DWT-02-R diagnosed at PR37 311e9fe as a harness sampling artefact, [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md) with [probe v2](dwt02-rendered-probe-v2.cjs) and output: in-page S.ev log shows null only until the SwiftShader-starved 500 ms continuation sets e48; R3x triple pre-commit Next arrives once with e48, R6 Stop rollback and R6b retry pass, 0 page errors. No application edit. C0/R2x priming race remains; paired parent, 390, Dune, 90-matrix pending. Stays fixing/claude; idle-runs 0.
 - 2026-11-08T15:17Z Claude: checkpoint — probe v2.1 converging prime; head 311e9fe 1440 Cosmere b10 ALL PASS 19, parent 117ecba reproduces DWT-02 at R2x/R3x (partial, timed out in R6). Outputs and notes in [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md). Remaining: 390, Dune pair, parent R6, 90-matrix, test:browser. Owner unchanged (claude).
 - 2026-11-08T16:20Z Claude: checkpoint — head 311e9fe v2.1 390 Cosmere b10 ALL PASS 19; 1440 Dune b3 prime hit a stable split state (S.site/URL tabr vs rendered fane, ev null) recorded as DWT-03 candidate (1/4 attempts; directed repro not yet reproducing). Outputs and next steps in [rendered-diagnosis-311e9fe.md](rendered-diagnosis-311e9fe.md). No app edit.
+- 2026-11-08T17:04Z Claude: DWT-03 reproduced on head 311e9fe with directed harness v2 (bounded state reads, sampled settle); confirmed as a fix item with a suspected mechanism (stale rollback baseline after leave). Parent 117ecba run inconclusive. Outputs dwt03-repro-v{1,2}-output-*.txt. No app edit.

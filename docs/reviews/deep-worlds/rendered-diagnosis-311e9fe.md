@@ -87,3 +87,33 @@ one run per shell call) on head, then on parent 117ecba to tell whether it preda
 it becomes a fix item on the PR branch; if it cannot be reproduced in a bounded set (e.g. 10 runs), record it as a
 Known gap with the one observation. Still not run: 390 Dune pair, 390 parent Cosmere, parent R6/R6b, the 90-case
 DWO-E2 matrix, `pnpm test:browser`.
+
+## Checkpoint 2026-11-08T17:04Z — DWT-03 reproduced by the directed harness on head 311e9fe (confirmed builder-side)
+
+Builder-run (Claude), same build/preview/Chromium + SwiftShader setup, 1440×900, Dune book 3, trusted `page.mouse`
+presses. **No application edit.** Harness [dwt03-dune-prime-repro.cjs](dwt03-dune-prime-repro.cjs) is now v2: each state
+read is bounded by a 15 s race (the busy SwiftShader main thread starved `page.evaluate` for minutes in v1), and the
+settle is sampled at +5/+20/+40/+60 s after the last Next.
+
+| Run | Output | Result |
+| --- | --- | --- |
+| head 311e9fe, v1, gap 150 ms | [v1 g150](dwt03-repro-v1-output-311e9fe-1440-g150-hung.txt) | 11 presses logged; final state read hung >3 min (killed at the shell bound) — harness, fixed in v2 |
+| head 311e9fe, v2, gap 150 ms | [v2 g150](dwt03-repro-v2-output-311e9fe-1440-g150.txt) | **Split state reproduced.** Sequence: step 10 requests tabr place (pending, rendered null), step 11 a surface event, step 12 requests fane. At +40 s: tour `12 / 13`, `S.site=tabr`, hash `site=tabr&view=place`, **rendered fane**, `S.ev=null`, no fade. (+5/+20 s reads timed out; browser closed at the 280 s bound before +60 s.) |
+| parent 117ecba, v2, gap 150 ms | [parent g150](dwt03-repro-v2-output-117ecba-1440-g150.txt) | Consistent at +5 s (fane/c6). Different interleaving (tabr was never left pending), so this does **not** show whether the defect predates the DWT-02 fix |
+
+**DWT-03 status: confirmed defect candidate (2 observations: the v2.1 prime and this directed run), now a fix item.**
+State and URL name an earlier, never-committed destination (tabr) while the place on screen is the latest (fane), and
+the latest step's event is never set.
+
+Suspected mechanism (source reading of `public/atlas/engine.js` at 311e9fe, not yet tested): `doLeavePlace()` bumps
+`placeGen` and clears `pendPrev` but leaves `S.site` naming the uncommitted pending destination (tabr). The next
+in-place `enterPlace(fane)` then snapshots `prev={site:S.site,…,href:location.href}` from that pending value instead
+of the rendered place; when the fane entry is then cancelled/superseded inside the place, `cancelEntry()` restores
+`S.site=tabr` and `prev.href` (tabr URL) although the rendered place is fane. Candidate fix: take the rollback
+baseline from the committed/rendered place (`PLACES.place.site`, with its lm/ev/history) rather than `S.site` when
+no pending snapshot exists, and/or have the leave path restore `S.site` to the rendered place when it cancels a
+pending entry; add an engine unit/probe for pending-entry → leave → new entry → cancel.
+
+Next (Claude, next run): instrument enterPlace/cancelEntry/doLeavePlace with a temporary in-page trace in the probe
+(no app edit) to confirm the mechanism, then fix on `atlas/deep-worlds`, re-run this repro (≥3 passes at gaps
+0/150/400), the Cosmere/Dune v2.1 pairs, the 90-case DWO-E2 matrix and `pnpm test:browser`, then hand to ChatGPT.

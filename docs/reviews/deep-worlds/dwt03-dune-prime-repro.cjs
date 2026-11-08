@@ -2,13 +2,15 @@
 // Dune book 3 (Tour, Pause, then trusted Next presses each waiting only for the step label, not for the place
 // entry to commit) and reports the settled state after a 20 s idle. Question: does the app end with state/URL and
 // rendered place disagreeing (S.site != rendered, S.ev null) after rapid Next across different sites?
+// v2 (2026-11-08T16:55Z): st() bounded by a 15 s race (a busy SwiftShader main thread can starve evaluate);
+// settle sampled at +5/+20/+40/+60 s so a transient pending entry is not mistaken for a split state.
 // Usage: node dwt03-dune-prime-repro.cjs <base-url> <label> [viewport WxH] [gapMs]
 const { chromium } = require('playwright');
 const base = process.argv[2] || 'http://127.0.0.1:4173/';
 const label = process.argv[3] || base;
 const [W, H] = (process.argv[4] || '1440x900').split('x').map(Number);
 const gap = +(process.argv[5] || 0);
-const st = p =>
+const st0 = p =>
   p.evaluate(() => {
     const A = window.__atlas;
     const P = A.PLACES && A.PLACES.place;
@@ -24,7 +26,10 @@ const st = p =>
       pause: (document.querySelector('#tourBox [data-tour="pause"]') || {}).textContent || '',
     };
   });
+const st = p =>
+  Promise.race([st0(p), new Promise(r => setTimeout(() => r({ tourN: '', pause: '', timeout: true }), 15000))]);
 const b2 = s =>
+  s.timeout ? 'EVALUATE-TIMEOUT(15s)' :
   `step=${s.tourN} view=${s.view} site=${s.site} rendered=${s.rendered} ev=${s.ev} fade=${s.fade} hash=${s.hash}`;
 async function click(p, sel) {
   const [x, y] = await p.evaluate(sel => {
@@ -65,10 +70,15 @@ async function until(p, f, ms) {
     if (gap) await p.waitForTimeout(gap);
     console.log('after Next ' + k + ': ' + b2(await st(p)));
   }
-  await p.waitForTimeout(20000);
-  const s = await st(p);
-  const ok = s.site === s.rendered && s.ev !== null && !s.fade;
-  console.log((ok ? 'PASS' : 'FAIL') + ' settled 20 s after last press: ' + b2(s));
+  let s, ok = false, waited = 0;
+  for (const t of [5000, 15000, 20000, 20000]) {
+    await p.waitForTimeout(t);
+    waited += t;
+    s = await st(p);
+    ok = !s.timeout && s.site === s.rendered && s.ev !== null && !s.fade;
+    console.log('settle +' + waited / 1000 + ' s: ' + (ok ? 'consistent ' : 'NOT consistent ') + b2(s));
+  }
+  console.log((ok ? 'PASS' : 'FAIL') + ' final (+60 s after last press): ' + b2(s));
   // settled reference: one fresh Prev then Next with full settle
   console.log('page errors: ' + (errs.length ? errs.join(' | ') : 'none'));
   await b.close();
