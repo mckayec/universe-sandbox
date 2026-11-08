@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
 blocked-on: none
-next-action: Claude completes the bounded DWO-E2 rendered matrix at exact PR37 head (e70/e102 at/below gate, links, tour/Back, 390px, Dune conservatory/residency); carry DWT-02 repeated-destination Low follow-up separately per implementation-review-b47a60c.md
-updated: 2026-11-08T04:19:23Z
+next-action: Claude root-causes and fixes DWO-E2-F1 (transient below-gate e70 copy after tour Stop + downgrade while a leave is in flight; dwo-e2-matrix-b47a60c.md) on PR37, re-runs the corrected dwo-e2 matrix + downgrade repro, then hands matrix and fix to ChatGPT together
+updated: 2026-11-08T05:42Z
 idle-runs: 0
-note: DWT-01c closed at b47a60c source/VM scope: independently 22/22 reviewer and 26/26 extended cases (parent 23/26). Same-destination repeat remains pre-existing/recoverable (1/2 arrival/retry on both), recorded DWT-02 Low follow-up. Builder rendered logs inspected, not independently executed; DWO-E2 pending. No new canon/full technical/release approval.
+note: DWO-E2 matrix run at exact b47a60c: 85/90 builder-executed (SwiftShader, 1440x900 + 390x844); 4 FAILs are a harness tour-count predicate error (cumulative chronicle vs current-book tour; corrected, not re-run); 1 real new finding DWO-E2-F1 (transient, 3/3 repro at 1440, settles clean by 8 s). DWT-02 Low carried. No canon/release approval.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -72,3 +72,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T03:22Z Claude: DWT-01c overlapping-cancellation residual fixed at PR37 b47a60c663c571a2bb5deb932bb129fe941c73da (parent 3621250). [Return](fix-return-b47a60c.md): reviewer probe 22/22 vs 21/22, extended probe 26/26 vs 23/26, rendered overlap-stop consistent on head (parent state/URL name unbuilt Paddies). Pre-existing same-destination-repeat observation flagged. DWO-E2 pending. fixing/claude → content-review/chatgpt.
 
 - 2026-11-08T04:19:23Z: ChatGPT reviewed exact PR37 b47a60c663c571a2bb5deb932bb129fe941c73da, 1/1 changed application files; source blob independently verified. [Review](implementation-review-b47a60c.md) saved/read back at 3a6d114784dddb30f1376966ebe0a9ac88c8efaa before status. Independent reviewer 22/22; builder extension 26/26 vs 23/26 parent (T21/T23/T26 negative controls). DWT-01c closed at source/VM level. Same-destination repeat independently reproduced on both, fresh retry passes (1/2 each); DWT-02 Low follow-up, does not block starting DWO-E2. Six builder browser records inspected with API/null-predicate/viewport limits; local Chromium socket-permission failure means zero independent rendered scenarios. content-review/chatgpt → fixing/claude for the existing finite DWO-E2 matrix. No canon/release approval.
+- 2026-11-08T05:42Z Claude: ran the bounded DWO-E2 rendered matrix at exact PR37 b47a60c663c571a2bb5deb932bb129fe941c73da (no app edit): 85/90 with strict rendered-state, same-document and zero-error predicates (D1 stale conservatory/residency control, D2 residency link, D3 Dune chronicle/tour/Back/All-books, e70/e102 chronicle/Back/tour/direct links/below-gate, both widths). 4 FAILs = harness predicate error (chronicle is cumulative, tour is current-book; corrected). New DWO-E2-F1: after tour Stop + downgrade to book 1 with a leave in flight, e70 title stays in dossier/chronicle ~1.5 s+ (3/3), settles clean by 8 s. Evidence: dwo-e2-matrix-b47a60c.md, dwo-e2-browser-check.cjs + output, dwo-e2-downgrade-repro.cjs + output. Owner stays claude for the F1 fix; not merged.
