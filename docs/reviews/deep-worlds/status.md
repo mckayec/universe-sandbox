@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude fixes DWT-01a/b from implementation-review-469a83c.md: cancel pending place build/effects on tour Stop and retain explicit Back ownership until traversal completes; return parent/fix regressions including T6-T8 and positive fresh navigation. Keep DWO-E2 rendered checks as unresolved validation, not a pass.
-updated: 2026-11-08T00:17:01Z
+next-action: ChatGPT reviews DWT-01a/b at PR37 1fe00c42d4d44c61544a68223e2d47ad40704d70 using fix-return-1fe00c4.md and dwt01ab-probe.cjs (parent 8/14, head 14/14); DWO-E2 rendered validation remains a pending gate, not a pass.
+updated: 2026-11-08T01:05Z
 idle-runs: 0
-note: Independent original regression 5/5 head vs 2/5 parent; chronological extension 5/8 vs 2/8 (Stop build, Stop effect, delayed Back fail). Prior lifecycle 22/22, transition 11/11, history 3/3 pass. DWO-E1 disclosure closed. Browser launch blocked; 0/4 builder browser attempts complete regression. Eight source holds and 139 unselected records remain; no canon/full technical/release approval.
+note: Stop now owns pending entry/effects via goEvent ownership check; Back owned by explicit pending flag until popstate (no wall-clock expiry). engine.js only (+20/-14). pnpm check 125/125, test:pages 24/24 on rerun (one intermittent abort recorded), test:browser pass. Known gap: dropped popstate would hold travel. No canon/full technical/release approval.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -63,3 +63,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-07T23:58Z Claude: DWT-01 fixed at PR37 469a83c4c13f10aa9e280cd472d54274a014642b (parent aea2347; engine.js only): latest-step ownership token for goEvent continuations (tour Stop/book change supersede), one in-app history.back() at a time, newer travel waits for in-flight Back/fade. dwt-tour-probe.cjs: aea2347 2/5 (T2 document exit, T3 stale world, T4 Stop ignored), 469a83c 5/5; dwr/transition/history probes exit 0; pnpm check 125/125, test:pages 12x2. Real-click browser run inconclusive (dwt-browser-output-469a83c.txt). DWO-E1 correction appended to fix-return-aea2347.md; DWO-E2 not completed, proposed as Known gap. Evidence: fix-return-469a83c.md. fixing/claude -> content-review/chatgpt. Not merged.
 
 - 2026-11-08T00:17:01Z: ChatGPT reviewed exact PR37 469a83c4c13f10aa9e280cd472d54274a014642b; [review](implementation-review-469a83c.md) saved/read back at 83afd5ab79412633986950a1bc67bba45b09395c; [chronological regression](dwt-review-probe-469a83c.cjs) at 3926aecc75e6fec051739e6ac3994be374817853. Original 5/5 head vs 2/5 parent reproduced; extension 5/8 vs 2/8 identifies two residual ownership groups (T6/T7 Stop, T8 delayed Back). Prior lifecycle/history controls pass. DWO-E1 closed within disclosure scope; DWO-E2 remains pending rendered validation. Stage content-review → fixing, owner chatgpt → claude for bounded corrections; no new canon acceptance or release approval.
+- 2026-11-08T01:05Z Claude: DWT-01a/b fixed at PR37 1fe00c42d4d44c61544a68223e2d47ad40704d70 (parent 469a83c; engine.js only): goEvent ownership check passed into enterPlace/evInPlace so Stop/newer step cancels uncommitted entry (marker dropped) and queued effects; tourStop stops running fx; explicit backPending cleared only by popstate/pageshow. dwt01ab-probe.cjs parent 8/14, head 14/14; reviewer probe 8/8; prior probes exit 0; pnpm check 125/125; test:pages 24/24 on rerun; test:browser pass. DWO-E2 still pending. Evidence: fix-return-1fe00c4.md. fixing/claude -> content-review/chatgpt. Not merged.
