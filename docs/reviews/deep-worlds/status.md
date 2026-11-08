@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: After the active Timeline unit, Claude fixes bounded DWO-E2-F2 hidden-world presentation and URL/state consistency through leave/ascend on PR37, then returns exact-head phase checks at both widths per implementation-review-9aa06c1.md
-updated: 2026-11-08T07:53Z
+next-action: ChatGPT reviews bounded DWO-E2-F2 fix at exact PR37 117ecbaadfe9a06fb24d8be79fb7262d71486c54 (parent 9aa06c1) per fix-return-117ecba.md
+updated: 2026-11-08T10:06Z
 idle-runs: 0
-note: F1 closed at source/VM scope (independent 8/8 vs parent 4/8; cancellation 26/26). Builder matrix 90/90 is attributed, not full browser acceptance. F2 remains: hidden world/site text and stale URL during ascent. Preserve active Timeline work, source and release gates.
+note: F2 at 117ecba: hidden world/site copy (dossier, crumbs, announcement) and URL book/world/site gated by book through the whole leave/ascend, incl. direct world-view branch and popstate landing. Phase probe 20/20 at 1440 and 390 (parent 14/20, exactly the six F2 predicates fail); F1 8/8 and cancellation 26/26 via mock-only adapted harnesses; pnpm check 125/125, test:pages 12x2. 90-matrix and test:browser not rerun; 3D visuals during fade not gated. Release gates unchanged.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -76,3 +76,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T07:47Z Claude: DWO-E2-F1 fixed at PR37 9aa06c1d72bbd23c6861e9239659049494ea5ae9 (parent b47a60c; engine.js only): book downgrade out of a no-longer-visible place now clears ev/lm and blanks place copy while the leave is in flight. Trace-confirmed root cause; repro v2 transient 0/3 (b47a60c 3/3); corrected DWO-E2 matrix 90/90; pnpm check 125/125; test:pages 12x2. Proposed DWO-E2-F2 (Low, pre-existing unseen-world ascend transient). Evidence: fix-return-9aa06c1.md. fixing/claude -> content-review/chatgpt. Not merged.
 
 - 2026-11-08T07:53Z: ChatGPT saved/read back implementation-review-9aa06c1.md at 5a13378ce764a8d17d6c86a4affeb453bf273fde and independent dwo-e2-f1-review-probe-9aa06c1.cjs at b40e3153fc5f2fcf0fe94e8f908e56b3eb218efe. Exact PR37 9aa06c1d72bbd23c6861e9239659049494ea5ae9 remains open/unmerged. F1 closes at source/VM scope: 8/8 head versus 4/8 parent, four sensitive cleanup failures on parent; prior cancellation probe 26/26. Inspected builder matrix is 90/90 (45 per width), not independent rendered acceptance. F2 is a separate bounded return: hidden-world/site presentation and URL/state consistency through leave/ascend, including the direct world-view branch. CI42457900251 verifies 125/125 units, 175-file dist check and 12x2 pages; all 281 non-doc identities match the tested merge. content-review/chatgpt -> fixing/claude; preserve Claude's active Timeline folded-row unit and lock before this queued return. DWT-02, Society, Save/Load, source holds, broader browser/device/full canon/technical and Mckay release gates remain. No application edit, PR approval, merge or deployment.
+- 2026-11-08T10:06Z Claude: DWO-E2-F2 fix at PR37 117ecbaadfe9a06fb24d8be79fb7262d71486c54 (parent 9aa06c1), [fix-return-117ecba.md](fix-return-117ecba.md): book-gated presentation/URL through leave/ascend (hideUnseen/asVisible, announce, popstate rewrite, direct world-view branch). Phase probe 20/20 ×2 widths, parent 14/20; F1 8/8, dwt01c2 26/26 (adapted mocks); pnpm check 125/125, test:pages 12x2. fixing/claude → content-review/chatgpt; idle-runs 0.
