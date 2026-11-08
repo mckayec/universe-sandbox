@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews checkpoint 26 (TL25-R1 history transaction) at exact PR45 4d022abe9fd2f525395736e041f9547c1479e9ec per checkpoint-26.md; on acceptance return to Claude for folded-row connectors
-updated: 2026-11-08T06:23Z
+next-action: Claude implements the bounded folded-row connector unit on PR45 per independent-review-4d022ab.md, preserving chapter/book/layer gates and provenance; return exact SHA and focused folded/expanded endpoint and downgrade evidence, with synthetic controls labelled
+updated: 2026-11-08T07:15:40Z
 idle-runs: 0
-note: Checkpoint 26 at PR45 4d022abe9fd2f525395736e041f9547c1479e9ec (parent 66c80f1): popstate is one transaction (capture incoming hash, hold URL writes, chapter then timeline restore from captured hash, one normalized write). Reviewer tl25 probe 5/5 (parent 2/5); isolated tl26 12/12 (parent 4/12); actual-host link + real Back/Forward 38/38 at 1440/390 (parent 16/38); tl25 chapter probe 112/112; pnpm check 162/162. 0/12 real promotions; no canon/full technical/release approval.
+note: TL25-R1 closed within history-restoration scope at exact 4d022abe9fd2f525395736e041f9547c1479e9ec. Independent original probe 5/5 vs parent 2/5; expanded probe 12/12 vs parent 4/12; targeted units 12/12. Browser launch blocked before page creation; 38/38 builder browser results inspected and attributed. 0/12 real promotions; full technical/canon/release gates retained.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -79,3 +79,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-08T05:22:09Z: ChatGPT reviewed checkpoint 25 at exact PR45 66c80f1f50e44d32bc68c404a4e4addac77e1d57 (parent 04398997). [Review](independent-review-66c80f1.md) saved/read back at 9336f3b3b2a5695efb26dd7d4bf7c4701838d998; [probe](tl25/reviewer-chapter-history.cjs) at 5670fa23213f2875f0b3f19137e37a8d97263e3c; [evidence](tl25/reviewer-evidence.md) at 99eac2f3e7bc17cc49e64d37a00cc6e1d09daa8c. 8/8 changed text files inspected; 0/2 PNGs visually inspected. Independent units 12/12; predicate controls 4/4 close TL23-E1 within scope; actual-source host transaction 2/5 (both controls pass, three chapter-change cases fail) establishes Medium TL25-R1: refresh writes old timeline state over incoming URL before restore. Browser blocked at socket permission before page creation, 0/112 independent chapter browser assertions; builder 112/112 kept attributed. implementation-review/chatgpt → implementation/claude for the single transaction fix and combined history regressions. 0/12 real promotions; prior limits and release gates retained.
 - 2026-11-08T06:23Z Claude: checkpoint 26 at PR45 4d022abe9fd2f525395736e041f9547c1479e9ec (parent 66c80f1): TL25-R1 fixed in engine.js popstate transaction (checkpoint-26.md, evidence tl26/ on the PR branch). Reviewer tl25 probe 5/5; tl26 isolated 12/12 and actual-host Back/Forward 38/38 at 1440/390, both also run on the parent (4/12, 16/38); tl25 chapter probe rerun 112/112; pnpm check 162/162. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-08T07:15:40Z: ChatGPT independently reviewed checkpoint26 at exact PR45 4d022abe9fd2f525395736e041f9547c1479e9ec (parent 66c80f1). [Report](independent-review-4d022ab.md) saved/read back at 1643f45c12ae11e333959d96498b6654a2fdd2d3; [terminal evidence](tl26/reviewer-evidence.md) at aa1d238b9ebbecd225492fed61ba01cd84245084. 9/9 changed text files inspected; independent reviewer probe 5/5 vs 2/5 parent, expanded probe 12/12 vs 4/12 parent, targeted units 12/12. TL25-R1 closed within bounded source/transaction scope. Builder browser logs 38/38 vs 16/38 parent count-reconciled; independent browser launch blocked at socket permission before page creation, 0/38 browser cases executed. Intermediate browser assertions cover panel/selector/URL, not every rendered selection/detail/lane state. implementation-review/chatgpt → implementation/claude for folded-row connectors with existing gates/provenance preserved. 0/12 real promotions; no final canon, full technical or release approval.
