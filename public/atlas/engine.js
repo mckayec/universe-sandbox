@@ -937,6 +937,19 @@ const seen=w=>(!CUM||!S.book||firstOf(w)<=S.book)&&realmOk(w)&&filterOk(w);
 const inBook=w=>!S.book||(w.books||[]).includes(S.book);
 const siteEraOk=s=>{const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since)&&filterOk(s);};
 const siteSeen=s=>siteEraOk(s)&&(!CUM||!S.book||!(s.books&&s.books.length)||Math.min(...s.books)<=S.book)&&realmOk(s);
+/* DWO-E2-F2: what may be shown for the current selection under the current book. A selected world (or site) the
+   book does not reach yet - e.g. while a downgrade's leave/ascend is still in flight - is presented and written to
+   the URL as if nothing (or only the world) were selected, so no later-book name or text appears meanwhile. */
+/* book gating only: layer filters and realms keep their own existing behaviour */
+const worldBookOk=w=>!CUM||!S.book||firstOf(w)<=S.book;
+const siteBookOk=s=>{const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since)&&(!CUM||!b||!(s.books&&s.books.length)||Math.min(...s.books)<=b);};
+function hideUnseen(o){const w=o.sel&&WORLD_BY[o.sel];
+  if(w&&!worldBookOk(w)){o.sel=null;o.site=null;o.lm=null;if(o.view!=="galaxy")o.view="galaxy";return o;}
+  if(w&&o.site){const st=siteOf(w,o.site);if(st&&!siteBookOk(st)){o.site=null;o.lm=null;if(o.view==="place")o.view="world";}}
+  return o;}
+function selHidden(){const v=hideUnseen({sel:S.sel,site:S.site,lm:S.lm,view:S.view});return v.sel!==S.sel||v.site!==S.site;}
+function asVisible(fn){const was={sel:S.sel,site:S.site,lm:S.lm,view:S.view};const v=hideUnseen(Object.assign({},was));
+  if(v.sel===was.sel&&v.site===was.site)return fn();Object.assign(S,v);try{return fn();}finally{Object.assign(S,was);}}
 const evFor=(wid,site)=>EVENTS.filter(e=>e.world===wid&&(site==null||e.site===site)&&filterOk(e)&&(!S.book||(CUM?e.book<=S.book:e.book===S.book)));
 const eraKeys=w=>w.eras?Object.keys(w.eras).map(Number).filter(k=>isFinite(k)&&w.eras[k]).sort((a,b)=>a-b):[];
 function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(S.book>=k&&w.eras[k].status)s=w.eras[k].status;});
@@ -1041,7 +1054,8 @@ const dos=$("#dossier");let dosCollapsed=MOB;
 const nBooksWord=BOOK_IDS.length<=12?NUMW[BOOK_IDS.length]:String(BOOK_IDS.length);
 function grab(title,sub,go){return '<div class="grab" id="grab" role="button" tabindex="0" aria-label="Show or hide details">'+(go?'<button class="btn primary go" data-act="descend">Descend</button>':'')+'<span>'+esc(title)+'</span><em>'+esc(sub||"")+'</em></div>';}
 function chipStyle(w){const g=GROUP_BY[w.group];const c=g&&g.chip;return c?' style="'+(c.border?"--chip-b:"+esc(c.border)+";":"")+(c.color?"--chip-c:"+esc(c.color):"")+'"':"";}
-function renderDossier(){let h="";const M=K.meta,IN=K.intro;
+function renderDossier(){asVisible(renderDossierNow);}
+function renderDossierNow(){let h="";const M=K.meta,IN=K.intro;
   if(S.view==="place"&&PLACES&&PLACES.place&&S.sel)h=placeDossier();
   else if(!S.sel){
     h=grab(M.title,"About")+'<p class="eyebrow">'+esc([M.author,M.years].filter(Boolean).join(" · "))+'</p><h2>'+esc(M.series)+'</h2>'+realmCard(null)+
@@ -1167,7 +1181,8 @@ $("#codex").addEventListener("keydown",e=>{
 addEventListener("keydown",e=>{if(e.key==="Escape"){if(TOUR.on)tourStop();else if(TRV&&TRV.open)TRV.close();else if(!$("#codex").hidden)closeCodex();else if(S.view==="place"){if(S.lm)selectLandmark(null);else leavePlace();}else if(S.view==="world")ascend();}});
 
 /* ===================== CRUMBS & HINT ===================== */
-function renderCrumbs(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
+function renderCrumbs(){asVisible(renderCrumbsNow);}
+function renderCrumbsNow(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
   const w=S.sel&&WORLD_BY[S.sel];const gc=w&&groupOpt(w,"crumb",null);
   if(gc)h+='<button data-c="'+(gc.ascendOnly?"sat":"web")+'">'+esc(gc.label||GROUP_NAME(w.group))+'</button>';
   else if(UI.crumbGroups)h+='<button data-c="web"'+(!w?' class="here"':"")+'>'+(w?esc(GROUP_NAME(w.group)):esc(UI.homeCrumb))+'</button>';
@@ -1433,7 +1448,7 @@ function cancelEntry(fromHistory,gen,id,prev){if(S.view==="place"){if(!prev||gen
 function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;goBack();return;}doLeavePlace(after);}
 function doLeavePlace(after){placeGen++;pendPrev=null;if(AUD)AUD.leave();
   if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)setTimeout(()=>selectSite(site),900);if(after)setTimeout(after,1000);return;}
-  navBusy++;transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL)buildSiteLabels(WORLD_BY[S.sel]);refreshAll();if(after)setTimeout(after,60);navDone();});}
+  navBusy++;transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL&&!(S.sel&&!worldBookOk(WORLD_BY[S.sel])))buildSiteLabels(WORLD_BY[S.sel]);else if(PL){SITE_EL.forEach(o=>o.el.remove());SITE_EL=[];}refreshAll();if(after)setTimeout(after,60);navDone();});}
 function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
   if(!quiet){renderDossier();renderCrumbs();syncURL();const it=dos.querySelector('[data-lm="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}}
 /* an event inside the place: fly to its landmark, then play its scene */
@@ -1510,10 +1525,14 @@ $("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if
       /* DWO-E2-F1: the place is not visible in the new book; while its leave is in flight, drop the event/landmark
          and blank the place copy so no later-book dossier, chronicle or breadcrumb text shows under the earlier book */
       S.ev=null;S.lm=null;if(PLACES)PLACES.stopFx();dos.innerHTML="";$("#crumbs").innerHTML='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button>';renderChron();
+      /* DWO-E2-F2: neutral presentation and an earlier-book URL for the whole leave/ascend, not only until it starts */
+      renderDossier();renderCrumbs();announce();syncURL();
       leavePlace(()=>{if(!seen(w))ascend(()=>{S.sel=null;refreshAll();});else{S.site=null;refreshAll();}});return;}
     const lm=S.lm;PLACES.enter(w,st,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});viewOffset();S.ev=null;
     if(lm&&PLACES.landmarks().some(l=>l.id===lm))selectLandmark(lm,true);else S.lm=null;refreshAll();return;}
-  S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
+  S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+      /* DWO-E2-F2: the hidden world's copy goes now, not when the ascent finishes */
+      S.ev=null;S.lm=null;renderDossier();renderCrumbs();renderChron();announce();syncURL();ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
@@ -1619,7 +1638,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
 const BOOK_KEY="atlas-book:"+(K.raw.id||K.meta.title||"pack");
 function storeBook(b){try{localStorage.setItem(BOOK_KEY,String(b||0));}catch(e){}}
 function storedBook(){try{const v=parseInt(localStorage.getItem(BOOK_KEY),10);return BOOKS[v]?v:0;}catch(e){return 0;}}
-function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view,lm:S.lm},o||{});
+function urlFor(o){o=hideUnseen(Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view,lm:S.lm},o||{}));
   const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&(o.view==="world"||o.view==="place"))q.set("site",o.site);
   if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");if(o.view==="place"){q.set("view","place");if(o.lm)q.set("lm",o.lm);}
   if(LY){const f=LY.encodeState(LAY,TL,S.layers,S.range);Object.keys(f).forEach(k=>q.set(k,f[k]));}
@@ -1635,10 +1654,11 @@ let urlReady=false,lastBook=null,lastAnn="";
 function afterRefresh(){
   if(urlReady&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
   /* short announcement for screen readers instead of re-reading the whole panel */
-  const w=S.sel&&WORLD_BY[S.sel];const ann=(w?(S.view==="place"&&S.site?siteName(w,S.site)+", inside, on "+w.name:w.name+(S.view==="world"?", on the surface":", selected")):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");
-  if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
-  syncURL();}
-addEventListener("popstate",()=>{backPending=false;popNav();navKick();});
+  announce();syncURL();}
+function announce(){const ann=asVisible(()=>{const w=S.sel&&WORLD_BY[S.sel];return (w?(S.view==="place"&&S.site?siteName(w,S.site)+", inside, on "+w.name:w.name+(S.view==="world"?", on the surface":", selected")):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");});
+  if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}}
+/* DWO-E2-F2: Back during a downgrade lands on an entry written under the later book; rewrite it at once */
+addEventListener("popstate",()=>{backPending=false;popNav();if(selHidden())syncURL();navKick();});
 addEventListener("pageshow",e=>{if(e.persisted){backPending=false;navKick();}});
 function popNav(){const st=parseHash();
   if(S.view==="place"&&!st.place){const a=afterLeave;afterLeave=null;doLeavePlace(a);if(!st.surface)setTimeout(()=>doAscend(),520);return;}
