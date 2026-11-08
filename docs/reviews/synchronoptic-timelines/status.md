@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude corrects TL27-E1 browser geometry evidence per independent-review-97674ad.md: compare folded endpoints/rings with the actual lane summary-bar center and reject a paired off-row shift; rerun at1440/390 and return exact SHA/logs
-updated: 2026-11-08T08:21:16Z
+next-action: ChatGPT independently reviews the TL27-E1 evidence correction at exact PR45 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f (parent 97674ad; probe/docs only) per checkpoint-27.md "TL27-E1 evidence correction"
+updated: 2026-11-08T08:57Z
 idle-runs: 0
-note: Checkpoint27 source/model accepted within bounded scope at PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887; rendered geometry unverified. Independent targeted tests14/14, predicate controls4/4 demonstrate existing false positive, input blobs9/9. Builder63/63 count-reconciled, independent browser0/63 (socket permission). Low TL27-E1 finite evidence correction; no reproduced application defect. 0/12 real promotions; full technical/canon/release gates remain open.
+note: TL27-E1 at 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f: probe-only (no public/src/tests change vs 97674ad). Folded ends and rings now compared, in root SVG space, with the collapsed lane's rendered .tl-sum-bar centre (data-lane-t); live-DOM controls reject paired 26px end+ring shift and ring-alone shift (8/8); Overview note checked by numbers. Probe 75/75 at 1440/390, pnpm check 165/165, tl26 history 38/38; test:pages not rerun (no app change). No real mismatch found. 0/12 promoted.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -84,3 +84,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-08T07:59Z Claude: checkpoint 27 at PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887 (parent 4d022ab): folded-row connectors — TL.connectorEnds; ends in a collapsed lane on its summary row (ring, title), same-lane edges hidden/counted, undated ends off-chart; Overview note. pnpm check 165/165, test:pages 12x2, tl27/folded-connector-probe.mjs 63/63 (1440/390), tl26 history probe 38/38. implementation/claude → implementation-review/chatgpt; idle-runs 0.
 
 - 2026-11-08T08:21:16Z: ChatGPT independently reviewed checkpoint27 at exact PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887 (parent4d022ab). [Review](independent-review-97674ad.md) saved/read back at f2a9671a84947b4c264a3cebca7c67e3877706a9; [predicate controls](tl27/reviewer-predicate-control.cjs) at a4df2c00155c290c2e2f502f7c12bbd9e24b14ed. Inspected7/7 changed text files;0/2 JPGs visually inspected. Targeted tests14/14 and9/9 input hashes independently verified;4/4 characterization controls show a paired26px ring/connector shift falsely passes the browser predicate. Low TL27-E1 requires actual summary-bar-center comparison and negative control; implementation source/model accepted within scope, no application defect reproduced. Builder63/63 log count-reconciled; fresh browser launch blocked before page creation,0/63 independent browser assertions. implementation-review/chatgpt → implementation/claude for finite evidence correction.0/12 real promotions; prior limitations and Mckay release approval remain open.
+
+- 2026-11-08T08:57Z Claude: TL27-E1 evidence correction at PR45 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f (parent 97674ad), probe/docs only: tl27 probe reads the rendered summary-bar centre per collapsed lane (root SVG space) and requires folded ends and rings on it; live-DOM negative controls (end+ring together, ring alone) rejected 8/8; numeric Overview-note check. Probe 75/75 (1440/390), pnpm check 165/165, tl26 history 38/38. implementation/claude → implementation-review/chatgpt; idle-runs 0.
