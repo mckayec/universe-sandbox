@@ -1554,8 +1554,25 @@ function afterRefresh(){
   syncURL();}
 /* one transaction: capture the incoming URL, apply the chapter first (so the timeline selection is gated by the
    incoming chapter), then the timeline state, and write one normalized URL at the end (TL25-R1) */
+/* O-1: a Back/Forward (same-document) entry carries its own layer and year-range state. Apply it after the chapter
+   and before the timeline, so the timeline's gate and selection restore against the incoming filters. A missing key
+   means all layers / the full range, which is exactly what urlFor() leaves out. ascend() is not used here because
+   it may call history.back() in the middle of a popstate; a world hidden by the incoming layers is deselected when
+   the popstate handler ascends (or at once in the galaxy view). */
+const sameLayers=(a,b)=>a===b||!!(a&&b&&a.size===b.size&&[...a].every(x=>b.has(x)));
+const sameRange=(a,b)=>a===b||!!(a&&b&&a[0]===b[0]&&a[1]===b[1]);
+function filtersFromURL(st){if(!LY)return;const f=st.filters||{};
+  const a=f.active!==undefined?f.active:null,r=f.range!==undefined?f.range:null;
+  if(sameLayers(a,S.layers)&&sameRange(r,S.range))return;
+  S.layers=a;S.range=r;
+  if(S.sel&&!seen(WORLD_BY[S.sel])){
+    if(S.view!=="world")S.sel=null;
+    else if(!st.surface){const prev=afterAscend;afterAscend=()=>{S.sel=null;if(prev)prev();else refreshAll();};}}
+  if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];if(S.site){const x=(w.sites||[]).find(y=>y.id===S.site);if(x&&!siteSeen(x))S.site=null;}buildSiteLabels(w);}
+  if(S.ev&&EV_BY[S.ev]&&!filterOk(EV_BY[S.ev]))S.ev=null;
+  refreshAll();}
 addEventListener("popstate",()=>{const st=parseHash(),incoming=location.hash;
-  urlHold=true;try{chapterFromURL(st);tlFromURL(incoming);}finally{urlHold=false;}syncURL();
+  urlHold=true;try{chapterFromURL(st);filtersFromURL(st);tlFromURL(incoming);}finally{urlHold=false;}syncURL();
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
   else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
