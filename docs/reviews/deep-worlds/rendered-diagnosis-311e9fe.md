@@ -42,3 +42,25 @@ incl. `lm=shaw`, history and ev e47, nothing built; R6b fresh retry PASS. Page e
   history-delta rows (which compare against C0) are harness failures, not results. Remaining cause: Pause can
   register after the tour has already advanced; next step is to prime via the URL/state instead of the live tour.
 - Parent 117ecba pair, 390×844, Dune book-3 pair, the 90-case DWO-E2 matrix and `test:browser` not rerun.
+
+## Checkpoint 2026-11-08T15:17Z — harness v2.1 (converging prime), head vs parent at 1440×900, Cosmere b10
+
+Builder-run (Claude), `pnpm build` + `vite preview`, Playwright Chromium + SwiftShader, trusted `page.mouse` input. **No application edit.**
+
+Harness change (same file, [dwt02-rendered-probe-v2.cjs](dwt02-rendered-probe-v2.cjs), now v2.1):
+`prime()` is a state loop that reads the tour box each pass and issues one corrective trusted press (Tour / Pause /
+Prev / Next) until the tour is on, paused (label "Play") and on the target step, then waits for the rendered place.
+This removes the C0/R2x race (the 10–21 s auto-advance firing before Pause registered). R6 now reads Next/Stop
+coordinates once and presses back to back, and pre-commit is judged from the in-page click record.
+
+| Run | Output | Result |
+| --- | --- | --- |
+| head 311e9fe, first v2.1 pass (R6 still had separate coordinate reads) | [v21pre](dwt02-rendered-v21pre-output-311e9fe-1440-cosmere.txt) | 17/19: priming fixed (C0, R2x, R3x pass; "tour on step 2, pressing Prev" logged); R6 Stop landed post-commit (+11 s) so its case was not exercised — harness, fixed below |
+| head 311e9fe, v2.1 final | [v21](dwt02-rendered-v21-output-311e9fe-1440-cosmere.txt) | **ALL PASS 19**: C0; R2x and R3x arrive exactly once at Elendel/e48 (S.ev null → e48 only), history delta 0 = control; R6 Next,Next,Stop pre-commit restores Bilming (state, render, URL incl. `lm=shaw`, history, e47, nothing built); R6b retry arrives; no page errors |
+| parent 117ecba, v2.1 (timed out at 590 s during R6) | [partial](dwt02-rendered-v21-output-117ecba-1440-cosmere-partial.txt) | C0 PASS; **R2x and R3x FAIL** on the parent: S.ev e48 then back to e47, ends rendered Bilming with the tour showing 2/2 and no build — the DWT-02 defect reproduced in the rendered UI. R6/R6b not reached |
+
+So the rendered harness now discriminates: the parent shows the DWT-02 defect, the head does not, with the same
+priming and input. This is builder evidence for one pair at one viewport.
+
+Still not run: 390×844 (both commits), Dune book-3 pair (both commits), parent R6/R6b, the 90-case DWO-E2 matrix,
+`pnpm test:browser`. Runs take ~9 min per commit×viewport×pair on 2 CPUs; continue next run.

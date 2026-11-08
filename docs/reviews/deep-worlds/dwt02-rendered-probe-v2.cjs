@@ -1,4 +1,4 @@
-// DWT-02 rendered qualification v2 (Claude, builder-run; v1 = dwt02-rendered-probe.cjs). Real Chromium (SwiftShader) against a `pnpm build`
+// DWT-02 rendered qualification v2.1 (2026-11-08T14:5xZ: converging prime; Claude, builder-run; v1 = dwt02-rendered-probe.cjs). Real Chromium (SwiftShader) against a `pnpm build`
 // served by `vite preview`; real Playwright pointer clicks on the tour controls (no programmatic goEvent).
 // Usage: node dwt02-rendered-probe.cjs <base-url> <label>   e.g. http://127.0.0.1:4173/ head
 //
@@ -151,42 +151,65 @@ async function tourClick(p, k) {
 // Bring the tour to step `idx` (1-based) of `total`, rendered in place at `site`, then pause it so the
 // auto-advance timer cannot interfere.
 async function prime(p, L, tag, idx, ev, site) {
-  // v2: the first Tour press can land during the splash/intro and be ignored; retry until the tour is on
-  for (let a = 0; a < 4; a++) {
-    await tourClick(p, 'tourBtn');
-    const [on] = await until(p, s => s.tourOn && /\d+ \/ \d+/.test(s.tourN), 8000);
-    if (on) break;
-    note(`${L} ${tag} tour did not start on press ${a + 1}; retrying`);
-  }
-  // v2: wait until the Pause control is laid out before pressing it (v1 priming race)
-  // (manual evaluate loop: Playwright waitForFunction never resolves under SwiftShader here)
-  for (let t0 = Date.now(); Date.now() - t0 < 15000;) {
+  // v2.1: converge on "tour on, paused, step idx" with a state loop. v2 pressed Tour then Pause once and assumed
+  // the step; under SwiftShader the auto-advance timer (10-21 s) could fire first (or stop the tour at its last
+  // step) before Pause registered, so C0/R2x sometimes primed on the wrong step. Each pass reads the tour state
+  // and issues one corrective trusted press (Tour / Pause / Prev / Next); nothing touches app state directly.
+  let last = null;
+  for (let a = 0; a < 40; a++) {
+    const s = await st(p);
+    last = s;
+    const m = /(\d+) \/ (\d+)/.exec(s.tourN || '');
+    const paused = /Play/.test(s.pauseLabel || '');
+    if (!s.tourOn || !m) {
+      await tourClick(p, 'tourBtn');
+      await until(p, s => s.tourOn && /\d+ \/ \d+/.test(s.tourN), 8000);
+      continue;
+    }
     const laid = await p.evaluate(() => {
-      const b = document.querySelector('#tourBox [data-tour="pause"]');
-      const r = b && b.getBoundingClientRect();
-      return !!(r && r.width > 0 && r.height > 0);
+      const r = document.querySelector('#tourBox [data-tour="pause"]').getBoundingClientRect();
+      return r.width > 0 && r.height > 0;
     });
-    if (laid) break;
-    await p.waitForTimeout(100);
-  }
-  // v2: the tour box may still be moving when its coordinates are read; confirm Pause took (label -> Play), else retry
-  for (let a = 0; a < 6; a++) {
-    await tourClick(p, 'pause');
-    const [paused] = await until(p, s => /Play/.test(s.pauseLabel || ''), 1500);
-    if (paused) break;
-    note(`${L} ${tag} Pause did not register on press ${a + 1}; retrying`);
-    await p.waitForTimeout(300);
-  }
-  for (let i = 1; i < idx; i++) {
-    await tourClick(p, 'next');
-    await p.waitForTimeout(150);
+    if (!laid) {
+      await p.waitForTimeout(150);
+      continue;
+    }
+    if (!paused) {
+      await tourClick(p, 'pause');
+      await until(p, s => /Play/.test(s.pauseLabel || '') || !s.tourOn, 1500);
+      continue;
+    }
+    const k = +m[1];
+    if (k > idx) {
+      note(`${L} ${tag} prime: tour on step ${k}, pressing Prev`);
+      await tourClick(p, 'prev');
+      await until(p, s => !s.tourOn || (s.tourN || '').startsWith(k - 1 + ' /'), 3000);
+      continue;
+    }
+    if (k < idx) {
+      await tourClick(p, 'next');
+      await until(p, s => !s.tourOn || (s.tourN || '').startsWith(k + 1 + ' /'), 3000);
+      continue;
+    }
+    break;
   }
   const [ok, s] = await until(
     p,
-    s => s.view === 'place' && s.ev === ev && s.site === site && s.rendered === site && !s.fadeOn,
+    s =>
+      s.view === 'place' &&
+      s.ev === ev &&
+      s.site === site &&
+      s.rendered === site &&
+      !s.fadeOn &&
+      s.tourOn &&
+      /Play/.test(s.pauseLabel || '') &&
+      (s.tourN || '').startsWith(idx + ' /'),
     60000,
   );
-  log(ok, `${L} ${tag} primed: tour step ${idx} rendered in place at ${site} with ${ev} (${brief(s)})`);
+  log(
+    ok,
+    `${L} ${tag} primed: tour step ${idx} (paused) rendered in place at ${site} with ${ev} (${brief(ok ? s : s || last)})`,
+  );
   await p.waitForTimeout(800);
   return ok;
 }
@@ -288,19 +311,32 @@ async function pair(b, L, vp, P) {
     if (await prime(p, L, tag + ' R6', idx, fromEv, from)) {
       const s0 = await st(p);
       await clear(p);
-      await tourClick(p, 'next');
-      await tourClick(p, 'next');
-      const pre = (await st(p)).rendered;
-      await tourClick(p, 'stop');
+      // v2.1: read Next/Stop coordinates once and press back to back (separate reads let Stop land post-commit)
+      const [nx, ny, sx, sy] = await p.evaluate(() => {
+        const c = k => document.querySelector(`#tourBox [data-tour="${k}"]`).getBoundingClientRect();
+        const n = c('next');
+        const t = c('stop');
+        return [n.x + n.width / 2, n.y + n.height / 2, t.x + t.width / 2, t.y + t.height / 2];
+      });
+      await p.mouse.click(nx, ny);
+      await p.mouse.click(nx, ny);
+      await p.mouse.click(sx, sy);
+      const pre = (await st(p)).clicks
+        .map(c => c[3])
+        .filter((r, i) => i > 0)
+        .join(',');
       await p.waitForTimeout(3500);
       await until(p, s => !s.fadeOn, 20000); // v2: fade timers are starved under SwiftShader
       await p.waitForTimeout(1500);
       const s = await st(p);
       const tm = timing(s);
       note(
-        `${L} ${tag} R6 timing: clicks ${tm.gaps}; first fade on +${tm.firstFadeOn}ms off +${tm.firstFadeOff}ms; place build(s) at +${tm.build}ms; rendered before Stop=${pre}; trusted=${tm.trusted}`,
+        `${L} ${tag} R6 timing: clicks ${tm.gaps}; first fade on +${tm.firstFadeOn}ms off +${tm.firstFadeOff}ms; place build(s) at +${tm.build}ms; rendered at repeat/Stop clicks=${pre}; trusted=${tm.trusted}`,
       );
-      log(pre === from, `${L} ${tag} R6 Stop pressed while entry pending (rendered still ${from})`);
+      log(
+        pre.split(',').every(r => r === from),
+        `${L} ${tag} R6 repeat and Stop pressed while entry pending (rendered still ${from})`,
+      );
       log(
         !s.tourOn &&
           s.view === 'place' &&
@@ -314,15 +350,7 @@ async function pair(b, L, vp, P) {
       );
       // R6b fresh retry: restart the tour (step 1) and press Next once
       await clear(p);
-      await tourClick(p, 'tourBtn');
-      await until(p, s => s.tourOn, 8000);
-      await tourClick(p, 'pause');
-      for (let i = 1; i < idx; i++) {
-        await tourClick(p, 'next');
-        await p.waitForTimeout(150);
-      }
-      await until(p, s => s.ev === fromEv && s.rendered === from && !s.fadeOn, 20000);
-      await p.waitForTimeout(800);
+      await prime(p, L, tag + ' R6b', idx, fromEv, from); // v2.1: same converging prime as the other cases
       await tourClick(p, 'next');
       const [ok, s2] = await until(p, s => s.ev === toEv && s.rendered === to && s.site === to && !s.fadeOn, 20000);
       log(ok, `${L} ${tag} R6b fresh retry after Stop arrives at ${to}/${toEv} (${brief(s2)})`);
