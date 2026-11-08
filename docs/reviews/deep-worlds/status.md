@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews DWT-01c overlapping-cancellation fix at PR37 b47a60c663c571a2bb5deb932bb129fe941c73da per fix-return-b47a60c.md (T21 + T23-T26, rendered overlap check) and disposes the same-destination-repeat observation; Claude then runs the DWO-E2 matrix
-updated: 2026-11-08T03:22Z
+next-action: Claude completes the bounded DWO-E2 rendered matrix at exact PR37 head (e70/e102 at/below gate, links, tour/Back, 390px, Dune conservatory/residency); carry DWT-02 repeated-destination Low follow-up separately per implementation-review-b47a60c.md
+updated: 2026-11-08T04:19:23Z
 idle-runs: 0
-note: PR37 b47a60c: rollback now uses the last committed rendered place across overlapping pending entries. Reviewer probe 22/22 (parent 21/22), extended probe 26/26 (parent 23/26), pnpm check 125/125, test:pages 24/24, rendered overlap check 3/3 consistent (parent mismatch reproduced; API calls, not the Stop button). DWO-E2 still pending (Claude). No canon/release approval.
+note: DWT-01c closed at b47a60c source/VM scope: independently 22/22 reviewer and 26/26 extended cases (parent 23/26). Same-destination repeat remains pre-existing/recoverable (1/2 arrival/retry on both), recorded DWT-02 Low follow-up. Builder rendered logs inspected, not independently executed; DWO-E2 pending. No new canon/full technical/release approval.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -70,3 +70,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-08T02:18:40Z: ChatGPT reviewed exact PR37 3621250b917509aa57bb877fd3f143dd8a0ad2fe (1/1 changed files). [Review](implementation-review-3621250.md) saved/read back at fe2750e3fa05760f8982f5a55d414316b6ebdc4b; [22-case extension](dwt-review-probe-3621250.cjs) at 6fca8b780e15f977d210fb9e099dcc9f05c28f6d. Independently builder probe 20/20 vs 17/20 parent, prior probe 16/16, extension 21/22 vs 19/22 parent. Single-switch correction passes; T21 demonstrates rollback to an unbuilt pending destination after two same-world requests and Stop (Medium DWT-01c residual). Four builder browser logs inspected with API/harness limits; zero independent rendered cases because Chromium launch failed. DWO-E2 remains pending. content-review/chatgpt → fixing/claude for finite correction; prior canon dispositions unchanged, no release approval.
 - 2026-11-08T03:22Z Claude: DWT-01c overlapping-cancellation residual fixed at PR37 b47a60c663c571a2bb5deb932bb129fe941c73da (parent 3621250). [Return](fix-return-b47a60c.md): reviewer probe 22/22 vs 21/22, extended probe 26/26 vs 23/26, rendered overlap-stop consistent on head (parent state/URL name unbuilt Paddies). Pre-existing same-destination-repeat observation flagged. DWO-E2 pending. fixing/claude → content-review/chatgpt.
+
+- 2026-11-08T04:19:23Z: ChatGPT reviewed exact PR37 b47a60c663c571a2bb5deb932bb129fe941c73da, 1/1 changed application files; source blob independently verified. [Review](implementation-review-b47a60c.md) saved/read back at 3a6d114784dddb30f1376966ebe0a9ac88c8efaa before status. Independent reviewer 22/22; builder extension 26/26 vs 23/26 parent (T21/T23/T26 negative controls). DWT-01c closed at source/VM level. Same-destination repeat independently reproduced on both, fresh retry passes (1/2 each); DWT-02 Low follow-up, does not block starting DWO-E2. Six builder browser records inspected with API/null-predicate/viewport limits; local Chromium socket-permission failure means zero independent rendered scenarios. content-review/chatgpt → fixing/claude for the existing finite DWO-E2 matrix. No canon/release approval.
