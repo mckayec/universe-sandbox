@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude builds the bounded chapter-selector checkpoint on engine/timelines (book/chapter/layer downgrade; selection/detail/search/URL fail-closed; no-selector stays fail-closed) per independent-review-e5ff736.md. Retain real close-toggle-reopen, O-1 same-document layer restoration and TL22-E2 input/focus/performance limits; no real relationship promotions.
-updated: 2026-11-08T01:40Z
+next-action: ChatGPT reviews checkpoint 25 (chapter selector) at PR45 66c80f1f50e44d32bc68c404a4e4addac77e1d57 per checkpoint-25.md: helpers + host wiring diff, tl25/chapter-probe.mjs output 112/112, fail-closed URL/book/layer cases; then returns the next bounded unit (folded-row connectors) or corrections to Claude
+updated: 2026-11-08T04:26Z
 idle-runs: 0
-note: Checkpoint 24 at PR45 04398997c8c01d57c2f05da2368b6fa7828a94f3 (docs/evidence only): TL23-E1 closed in probe (setEqual requires rows===distinct); reviewer predicate controls 4/4 (were 3/4); host probe rerun 68/68 with 20/20 rows==distinct, builder-run. 0/12 promoted; chapter selector next, folded-row connectors later; no canon/full technical/release approval.
+note: Checkpoint 25 at PR45 66c80f1f50e44d32bc68c404a4e4addac77e1d57 (parent 0439899): chapter selector for cumulative packs whose books declare `chapters` (none shipped do, so shipped behaviour is unchanged fail-closed); ch in URL only for the named book; book change resets; pnpm check 162/162, test:pages 12x2, chapter probe 112/112 at 1440/390 on a synthetic fixture (simulated input). 0/12 promoted; not merged; no canon/full technical/release approval.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -75,3 +75,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-08T00:19:21Z: ChatGPT independently reviewed PR45 e5ff736d51c1114570ea07ab671278af85179ada against 5228e35 (3/3 changed docs/evidence files; app unchanged). [Report](independent-review-e5ff736.md) saved/read back at 755cf369e9311f1298dd43f52fdf57d1147c45be; [predicate controls](tl23-review-predicate.cjs) at 8f43aa7499fbfc8f7c3d1c58e9c98dbbd46d4b89. Model counts 5/5 match; controls 3/4, duplicate rejection missing (TL23-E1). TL22-E1 test definition and TL22-E3 set membership improved; real input/URL limitations retained. Builder 68/68 inspected, 0/68 independently executed due launch blocker. Stage implementation-review → implementation, owner chatgpt → claude for small test correction and chapter-selector unit. 0/12 real promotions, no release approval.
 - 2026-11-08T01:40Z Claude: checkpoint 24 at PR45 04398997c8c01d57c2f05da2368b6fa7828a94f3 (parent e5ff736; docs/evidence only): TL23-E1 fixed — setEqual adds rows===distinct; tl23-review-predicate.cjs 4/4; host-layer-probe rerun 68/68 (20/20 rows==distinct; INFO 390 real open 6.6–7.0 s, 1440 real click timeout). Ownership kept for the chapter-selector checkpoint. Not merged.
+- 2026-11-08T04:26Z Claude: checkpoint 25 at PR45 66c80f1f50e44d32bc68c404a4e4addac77e1d57 (parent 04398997): chapter selector (timeline.js chapterCount/chapterPos; engine.js S.chapter, header select, URL `ch` fail-closed, book change resets) + 3 unit tests; pnpm check 162/162; test:pages 12x2; tl25/chapter-probe.mjs 112/112 (chapters / no-chapters / unmodified × 1440/390, exact set equality, 0 errors); header shots tl25/. implementation/claude → implementation-review/chatgpt; idle-runs 0.
