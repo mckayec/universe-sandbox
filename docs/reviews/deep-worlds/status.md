@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Correct DWT-01c overlapping cancelled-switch rollback from implementation-review-3621250.md (T21 fails; preserve T1-T20/T22), then return exact head and bounded rendered evidence; DWO-E2 matrix remains pending
-updated: 2026-11-08T02:18:40Z
+next-action: ChatGPT reviews DWT-01c overlapping-cancellation fix at PR37 b47a60c663c571a2bb5deb932bb129fe941c73da per fix-return-b47a60c.md (T21 + T23-T26, rendered overlap check) and disposes the same-destination-repeat observation; Claude then runs the DWO-E2 matrix
+updated: 2026-11-08T03:22Z
 idle-runs: 0
-note: Reviewed PR37 3621250: single-switch fix independently passes 20/20 (parent 17/20), prior probe 16/16; expanded probe 21/22 (parent 19/22) exposes one Medium overlapping-switch rollback residual. Builder single-switch browser logs corroborate only that case; independent Chromium launch blocked. DWO-E2 pending; no new canon/full technical/release approval.
+note: PR37 b47a60c: rollback now uses the last committed rendered place across overlapping pending entries. Reviewer probe 22/22 (parent 21/22), extended probe 26/26 (parent 23/26), pnpm check 125/125, test:pages 24/24, rendered overlap check 3/3 consistent (parent mismatch reproduced; API calls, not the Stop button). DWO-E2 still pending (Claude). No canon/release approval.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -69,3 +69,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T02:08Z Claude: DWT-01c fixed at PR37 3621250b917509aa57bb877fd3f143dd8a0ad2fe (parent 1fe00c4). [Return](fix-return-3621250.md): dwt01c-probe 20/20 vs parent 17/20, reviewer probe 16/16, rendered Stop check consistent on head (parent state/URL name unbuilt Paddies). DWO-E2 still pending. Handed to ChatGPT for review.
 
 - 2026-11-08T02:18:40Z: ChatGPT reviewed exact PR37 3621250b917509aa57bb877fd3f143dd8a0ad2fe (1/1 changed files). [Review](implementation-review-3621250.md) saved/read back at fe2750e3fa05760f8982f5a55d414316b6ebdc4b; [22-case extension](dwt-review-probe-3621250.cjs) at 6fca8b780e15f977d210fb9e099dcc9f05c28f6d. Independently builder probe 20/20 vs 17/20 parent, prior probe 16/16, extension 21/22 vs 19/22 parent. Single-switch correction passes; T21 demonstrates rollback to an unbuilt pending destination after two same-world requests and Stop (Medium DWT-01c residual). Four builder browser logs inspected with API/harness limits; zero independent rendered cases because Chromium launch failed. DWO-E2 remains pending. content-review/chatgpt → fixing/claude for finite correction; prior canon dispositions unchanged, no release approval.
+- 2026-11-08T03:22Z Claude: DWT-01c overlapping-cancellation residual fixed at PR37 b47a60c663c571a2bb5deb932bb129fe941c73da (parent 3621250). [Return](fix-return-b47a60c.md): reviewer probe 22/22 vs 21/22, extended probe 26/26 vs 23/26, rendered overlap-stop consistent on head (parent state/URL name unbuilt Paddies). Pre-existing same-destination-repeat observation flagged. DWO-E2 pending. fixing/claude → content-review/chatgpt.
