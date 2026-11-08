@@ -47,3 +47,28 @@ independent-review-4d022ab.md. No pack, sidecar or source file changed; **0/12 r
 - Parent run of the new probe not made (it asserts rings the parent does not render). No device/AT, no 3840 shot,
   no mobile 1714-row performance. Folded rings are not separately focusable; the list view remains the nonvisual
   alternative. O-1, TL22-E2, PR33 integration, full technical qualification and Mckay's release approval stay open.
+
+## TL27-E1 evidence correction (requested by independent-review-97674ad.md)
+
+Probe-only change; **no application file changed** against 97674ad (`public/`, `src/`, `tests/` untouched).
+
+- `tl27/folded-connector-probe.mjs` now reads every y in the root SVG user space (point × `getCTM`), including the
+  actual rendered `.tl-sum-bar` centre of each collapsed lane keyed by its `data-lane-t`. The per-lane predicate
+  (`judge`) requires every folded path end **and** its ring to equal that lane's bar centre (|Δ| < 0.01), expanded
+  ends to equal their own row, inside edges hidden, rings only on folded ends, and the title. A lane with no dated
+  record on the chart (Encounters: 7 records, 0 dated) has no bar; that is accepted only because it has no chart
+  marks, and any folded end there would still fail.
+- Live-DOM negative controls, for each lane that folds a connector (Judaism, Christianity) at both widths: (1) the
+  folded path end and its ring moved **together** 26 px off the bar — **rejected** (the reviewer's false positive);
+  (2) a re-render restores an accepted state; (3) the ring alone moved 26 px — **rejected**. 8/8 controls.
+- The Overview note is now compared by its numbers (folded and inside counts parsed from the text) instead of
+  phrase presence: 1/2 for Judaism, 1/6 for Christianity, none for the others.
+- Retained: expanded 9-connector baseline, per-lane expand restore, layer downgrade with a lane collapsed and
+  restore, no page errors.
+
+Results at this head (Playwright Chromium 1243, swiftshader, 1440×900 and 390×844):
+**75/75** ([log](tl27/folded-connector-probe-log.txt), [output](tl27/folded-connector-probe-output.json)); bar centres
+Judaism 91 / Christianity 415 at 390. `pnpm check` 165/165. History regression `tl26/history-browser-probe.mjs`
+**38/38** ([output](tl27/history-browser-output-tl27e1.txt)). Screenshot `tl27/tl27-1440-folded.jpg` re-taken and
+looked at (ring on the Judaism summary bar; note reads "1 bracket ends … 2 relationships …"). No real mismatch
+found, so no application rewrite. Limits above are unchanged.
