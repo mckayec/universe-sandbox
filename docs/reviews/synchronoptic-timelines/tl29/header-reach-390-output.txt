@@ -1,0 +1,8 @@
+== head
+390 initial (All): {"box":[495,123,89,32],"inViewport":false,"docScrollW":390,"row":"controls","rowWrap":"nowrap","scroller":{"el":"controls","scrollWidth":569,"clientWidth":358,"overflowX":"auto"}}
+390 book I (chapter selector shown): {"box":[603,123,89,32],"inViewport":false,"docScrollW":390,"row":"controls","rowWrap":"nowrap","scroller":{"el":"controls","scrollWidth":677,"clientWidth":358,"overflowX":"auto"}}
+390 book II (no chapters): {"box":[495,123,89,32],"inViewport":false,"docScrollW":390,"row":"controls","rowWrap":"nowrap","scroller":{"el":"controls","scrollWidth":569,"clientWidth":358,"overflowX":"auto"}}
+== parent
+390 initial (All): {"box":[495,123,89,32],"inViewport":false,"docScrollW":390,"row":"controls","rowWrap":"nowrap","scroller":{"el":"controls","scrollWidth":569,"clientWidth":358,"overflowX":"auto"}}
+390 book I (chapter selector shown): {"box":[603,123,89,32],"inViewport":false,"docScrollW":390,"row":"controls","rowWrap":"nowrap","scroller":{"el":"controls","scrollWidth":677,"clientWidth":358,"overflowX":"auto"}}
+390 book II (no chapters): {"box":[495,123,89,32],"inViewport":false,"docScrollW":390,"row":"controls","rowWrap":"nowrap","scroller":{"el":"controls","scrollWidth":569,"clientWidth":358,"overflowX":"auto"}}
