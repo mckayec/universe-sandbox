@@ -1506,7 +1506,11 @@ function openEvent(id,travel){placeGen++;S.ev=id;if(!id){renderDossier();renderC
 /* book filter */
 $("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;if(+b.dataset.b!==S.book){placeGen++;evNav++;navNext=null;if(TOUR.on)tourStop();if(PLACES)PLACES.stopFx();}
   if(S.view==="place"){const nb=+b.dataset.b;const w=WORLD_BY[S.sel];S.book=nb;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-    const st=siteOf(w,S.site);if(!seen(w)||!st||!siteSeen(st)){leavePlace(()=>{if(!seen(w))ascend(()=>{S.sel=null;refreshAll();});else{S.site=null;refreshAll();}});return;}
+    const st=siteOf(w,S.site);if(!seen(w)||!st||!siteSeen(st)){
+      /* DWO-E2-F1: the place is not visible in the new book; while its leave is in flight, drop the event/landmark
+         and blank the place copy so no later-book dossier, chronicle or breadcrumb text shows under the earlier book */
+      S.ev=null;S.lm=null;if(PLACES)PLACES.stopFx();dos.innerHTML="";$("#crumbs").innerHTML='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button>';renderChron();
+      leavePlace(()=>{if(!seen(w))ascend(()=>{S.sel=null;refreshAll();});else{S.site=null;refreshAll();}});return;}
     const lm=S.lm;PLACES.enter(w,st,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});viewOffset();S.ev=null;
     if(lm&&PLACES.landmarks().some(l=>l.id===lm))selectLandmark(lm,true);else S.lm=null;refreshAll();return;}
   S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
