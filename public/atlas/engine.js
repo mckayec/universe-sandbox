@@ -1392,6 +1392,9 @@ let afterLeave=null,placeThen=null;
 /* DWR-B: navigation generation. Book, selection, world and place changes bump it; delayed place-entry
    continuations and event effects only commit if it is unchanged and the event is still eligible. */
 let placeGen=0;
+/* DWT-01c: snapshot of the last committed (rendered) place while any in-place entry is still pending; overlapping
+   requests inherit it so a cancellation never restores another uncommitted destination. Cleared on commit/leave. */
+let pendPrev=null;
 function evEligible(e){if(!e||!filterOk(e))return false;const w=WORLD_BY[e.world];if(!w||!seen(w))return false;
   if(S.book&&!(CUM?e.book<=S.book:e.book===S.book))return false;return !e.site||canEnterEv(e);}
 const AUD=window.AtlasPlacesAudio||null;let soundOn=false;try{soundOn=localStorage.getItem("atlas-sound")==="1";}catch(e){}
@@ -1402,14 +1405,14 @@ function enterPlace(id,fromHistory,then,own){const w=WORLD_BY[S.sel];const s=sit
   const fromGal=S.view==="galaxy";if(needRealm(w,s))setRealm(needRealm(w,s),true);
   /* DWT-01c: entering from inside a place keeps the rendered place until the fade commits; remember what it was
      so a cancelled entry can put state and history back to the place still on screen */
-  const prev=S.view==="place"?{site:S.site,lm:S.lm,ev:S.ev,hs:history.state,href:location.href}:null;
+  const prev=S.view==="place"?(pendPrev||{site:S.site,lm:S.lm,ev:S.ev,hs:history.state,href:location.href}):null;pendPrev=prev;
   S.site=id;S.lm=null;S.ev=null;if(MOB)dosCollapsed=true;
   if(!fromHistory&&urlReady){const st={atlasSurface:true,atlasPlace:true,atlasEntry:gen};const u=urlFor({view:"place",site:id});
     if(fromGal)history.pushState({atlasSurface:true},"",urlFor({view:"world",site:id}));
     if(history.state&&history.state.atlasPlace)history.replaceState(st,"",u);else history.pushState(st,"",u);}
   const fe=$("#fade");if(fe)fe.dataset.label=s.name;
   transition(()=>{if(gen!==placeGen||(own&&!own())||S.site!==id||S.sel!==w.id||!canEnter(WORLD_BY[S.sel]||w,s)){cancelEntry(fromHistory,gen,id,prev);return;}
-    S.view="place";hideTip();SITE_EL.forEach(o=>{o.el.style.opacity=0;o.el.style.pointerEvents="none";});
+    S.view="place";pendPrev=null;hideTip();SITE_EL.forEach(o=>{o.el.style.opacity=0;o.el.style.pointerEvents="none";});
     Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
     try{PLACES.enter(w,s,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});}
     catch(err){console.error("Atlas: could not build",s.id,err);S.view="world";refreshAll();return;}
@@ -1421,14 +1424,14 @@ function enterPlace(id,fromHistory,then,own){const w=WORLD_BY[S.sel];const s=sit
    DWT-01c: cancelled while still inside a place, restore the rendered place's state and history only if this entry
    still owns them (no newer navigation bumped placeGen and state still names this destination). */
 function cancelEntry(fromHistory,gen,id,prev){if(S.view==="place"){if(!prev||gen!==placeGen||S.site!==id)return;
-    S.site=prev.site;S.lm=prev.lm;S.ev=prev.ev;const hs=!fromHistory&&urlReady?history.state:null;
+    pendPrev=null;S.site=prev.site;S.lm=prev.lm;S.ev=prev.ev;const hs=!fromHistory&&urlReady?history.state:null;
     if(hs&&hs.atlasPlace&&hs.atlasEntry===gen){try{history.replaceState(prev.hs,"",prev.href);}catch(e){}}
     if(PLACES){PLACES.focus(S.lm);if(!S.lm)PLACES.overview();}refreshAll();return;}
   const hs=!fromHistory&&urlReady?history.state:null;
   if(hs&&hs.atlasPlace&&hs.atlasEntry===gen){try{history.replaceState({atlasSurface:true},"",urlFor());}catch(e){}}
   refreshAll();}
 function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;goBack();return;}doLeavePlace(after);}
-function doLeavePlace(after){placeGen++;if(AUD)AUD.leave();
+function doLeavePlace(after){placeGen++;pendPrev=null;if(AUD)AUD.leave();
   if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)setTimeout(()=>selectSite(site),900);if(after)setTimeout(after,1000);return;}
   navBusy++;transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL)buildSiteLabels(WORLD_BY[S.sel]);refreshAll();if(after)setTimeout(after,60);navDone();});}
 function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
