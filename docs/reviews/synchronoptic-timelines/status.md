@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT independently reviews checkpoint 27 folded-row connectors at exact PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887 (parent 4d022ab) per checkpoint-27.md on the PR branch
-updated: 2026-11-08T07:59Z
+next-action: Claude corrects TL27-E1 browser geometry evidence per independent-review-97674ad.md: compare folded endpoints/rings with the actual lane summary-bar center and reject a paired off-row shift; rerun at1440/390 and return exact SHA/logs
+updated: 2026-11-08T08:21:16Z
 idle-runs: 0
-note: Checkpoint 27 at 97674adb29a88745ddf56c9ea3b7f0cf46093887: collapsed-lane connector ends join the lane summary row with an open ring and "collapsed" title; same-lane edges hidden and counted; undated ends off-chart. Units 165/165 (3 new incl. labelled synthetic book/chapter/layer downgrade), test:pages 12x2, tl27 browser probe 63/63 at 1440/390, tl26 history 38/38. Real-pack layer downgrade is weak (no Islam-gated connectors). 0/12 promoted.
+note: Checkpoint27 source/model accepted within bounded scope at PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887; rendered geometry unverified. Independent targeted tests14/14, predicate controls4/4 demonstrate existing false positive, input blobs9/9. Builder63/63 count-reconciled, independent browser0/63 (socket permission). Low TL27-E1 finite evidence correction; no reproduced application defect. 0/12 real promotions; full technical/canon/release gates remain open.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -82,3 +82,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-08T07:15:40Z: ChatGPT independently reviewed checkpoint26 at exact PR45 4d022abe9fd2f525395736e041f9547c1479e9ec (parent 66c80f1). [Report](independent-review-4d022ab.md) saved/read back at 1643f45c12ae11e333959d96498b6654a2fdd2d3; [terminal evidence](tl26/reviewer-evidence.md) at aa1d238b9ebbecd225492fed61ba01cd84245084. 9/9 changed text files inspected; independent reviewer probe 5/5 vs 2/5 parent, expanded probe 12/12 vs 4/12 parent, targeted units 12/12. TL25-R1 closed within bounded source/transaction scope. Builder browser logs 38/38 vs 16/38 parent count-reconciled; independent browser launch blocked at socket permission before page creation, 0/38 browser cases executed. Intermediate browser assertions cover panel/selector/URL, not every rendered selection/detail/lane state. implementation-review/chatgpt → implementation/claude for folded-row connectors with existing gates/provenance preserved. 0/12 real promotions; no final canon, full technical or release approval.
 - 2026-11-08T07:59Z Claude: checkpoint 27 at PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887 (parent 4d022ab): folded-row connectors — TL.connectorEnds; ends in a collapsed lane on its summary row (ring, title), same-lane edges hidden/counted, undated ends off-chart; Overview note. pnpm check 165/165, test:pages 12x2, tl27/folded-connector-probe.mjs 63/63 (1440/390), tl26 history probe 38/38. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-08T08:21:16Z: ChatGPT independently reviewed checkpoint27 at exact PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887 (parent4d022ab). [Review](independent-review-97674ad.md) saved/read back at f2a9671a84947b4c264a3cebca7c67e3877706a9; [predicate controls](tl27/reviewer-predicate-control.cjs) at a4df2c00155c290c2e2f502f7c12bbd9e24b14ed. Inspected7/7 changed text files;0/2 JPGs visually inspected. Targeted tests14/14 and9/9 input hashes independently verified;4/4 characterization controls show a paired26px ring/connector shift falsely passes the browser predicate. Low TL27-E1 requires actual summary-bar-center comparison and negative control; implementation source/model accepted within scope, no application defect reproduced. Builder63/63 log count-reconciled; fresh browser launch blocked before page creation,0/63 independent browser assertions. implementation-review/chatgpt → implementation/claude for finite evidence correction.0/12 real promotions; prior limitations and Mckay release approval remain open.
