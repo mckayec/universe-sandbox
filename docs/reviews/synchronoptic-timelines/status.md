@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT independently reviews the TL27-E1 evidence correction at exact PR45 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f (parent 97674ad; probe/docs only) per checkpoint-27.md "TL27-E1 evidence correction"
-updated: 2026-11-08T08:57Z
+next-action: After queued deep-worlds DWO-E2-F2, Claude addresses O-1 same-document layer restoration on PR45 with incoming layers applied before timeline gating/selection; return exact-head/parent Back/Forward evidence per independent-review-1ceb4b2.md
+updated: 2026-11-08T09:20:34Z
 idle-runs: 0
-note: TL27-E1 at 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f: probe-only (no public/src/tests change vs 97674ad). Folded ends and rings now compared, in root SVG space, with the collapsed lane's rendered .tl-sum-bar centre (data-lane-t); live-DOM controls reject paired 26px end+ring shift and ring-alone shift (8/8); Overview note checked by numbers. Probe 75/75 at 1440/390, pnpm check 165/165, tl26 history 38/38; test:pages not rerun (no app change). No real mismatch found. 0/12 promoted.
+note: TL27-E1 closed within evidence-definition scope at 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f. Independent synthetic predicates10/10 reject paired offset and wrong note counts. Builder75/75 and history38/38 count-reconciled; browser independently0/75 (socket permission). No app change;0/12 real promotions. Prior technical/canon/release gates remain open.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -86,3 +86,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-08T08:21:16Z: ChatGPT independently reviewed checkpoint27 at exact PR45 97674adb29a88745ddf56c9ea3b7f0cf46093887 (parent4d022ab). [Review](independent-review-97674ad.md) saved/read back at f2a9671a84947b4c264a3cebca7c67e3877706a9; [predicate controls](tl27/reviewer-predicate-control.cjs) at a4df2c00155c290c2e2f502f7c12bbd9e24b14ed. Inspected7/7 changed text files;0/2 JPGs visually inspected. Targeted tests14/14 and9/9 input hashes independently verified;4/4 characterization controls show a paired26px ring/connector shift falsely passes the browser predicate. Low TL27-E1 requires actual summary-bar-center comparison and negative control; implementation source/model accepted within scope, no application defect reproduced. Builder63/63 log count-reconciled; fresh browser launch blocked before page creation,0/63 independent browser assertions. implementation-review/chatgpt → implementation/claude for finite evidence correction.0/12 real promotions; prior limitations and Mckay release approval remain open.
 
 - 2026-11-08T08:57Z Claude: TL27-E1 evidence correction at PR45 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f (parent 97674ad), probe/docs only: tl27 probe reads the rendered summary-bar centre per collapsed lane (root SVG space) and requires folded ends and rings on it; live-DOM negative controls (end+ring together, ring alone) rejected 8/8; numeric Overview-note check. Probe 75/75 (1440/390), pnpm check 165/165, tl26 history 38/38. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-08T09:20:34Z: ChatGPT reviewed exact PR45 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f (parent97674ad),5/5 changed text files inspected,0/1 changed JPG viewed, no application changes. [Review](independent-review-1ceb4b2.md) saved/read back at 0861daf83e97f74f6a873d1fd6c5fe1ed0206aa9; [independent predicate controls](tl27/reviewer-e1-predicate.cjs) at 38b3e77d7b65fd29a304bef75ced996b74fe0456.10/10 synthetic checks pass; paired26px displacement now rejected and note numbers compared. TL27-E1 closed within bounded evidence scope. Builder logs75/75 incl8 negative/4 restore controls, history38/38 reconciled; fresh browser blocked before page creation,0/75 independent browser assertions. implementation-review/chatgpt → implementation/claude for existing O-1 after queued deep-worlds F2.0/12 real promotions; no final canon/full technical/release approval.
