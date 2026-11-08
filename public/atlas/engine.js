@@ -1347,8 +1347,9 @@ function tlChanged(){const o=!!(TLV&&TLV.open);
   syncURL();}
 /* also restores between two open timeline states (different order/collapse/selection) — TL-R05 */
 function tlKey(q){return ["tl","tlc","tlsel"].map(k=>k+"="+(q.get(k)||"")).join("&");}
-function tlFromURL(){if(!TLV)return;const q=new URLSearchParams((location.hash||"").replace(/^#/,""));const tl=q.has("tl");
-  if(TLV.open===tl&&(!tl||tlKey(q)===tlKey(new URLSearchParams(urlFor().split("#")[1]||""))))return;tlFromHistory=true;try{if(tl)TLV.restore(location.hash);else TLV.close();}finally{tlFromHistory=false;}}
+/* `hash` is the incoming URL captured before anything else ran (TL25-R1), so an earlier refresh cannot overwrite it */
+function tlFromURL(hash){if(!TLV)return;if(hash==null)hash=location.hash;const q=new URLSearchParams((hash||"").replace(/^#/,""));const tl=q.has("tl");
+  if(TLV.open===tl&&(!tl||tlKey(q)===tlKey(new URLSearchParams(urlFor().split("#")[1]||""))))return;tlFromHistory=true;try{if(tl)TLV.restore(hash);else TLV.close();}finally{tlFromHistory=false;}}
 /* ===================== CHAPTER SELECTOR (timeline checkpoint 25) =====================
    Shown only in a cumulative atlas, for a selected book that declares `chapters` (AtlasTimeline.chapterCount).
    "Not set" (null) is the default and the fail-closed state: the current book's chapter-gated timeline records
@@ -1540,16 +1541,21 @@ function parseHash(){const q=new URLSearchParams((location.hash||"").replace(/^#
   return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface",filters:LY?LY.decodeState(LAY,TL,q):null,tree:q.get("tree"),ch:q.get("ch")};}
 /* replaceState right away (not debounced): a delayed write could land after descend() pushed its entry and
    overwrite it with the galaxy view */
-function syncURL(){if(!urlReady)return;const u=urlFor();if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
+function syncURL(){if(!urlReady||urlHold)return;const u=urlFor();if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
 /* nothing is written to the address bar or storage until the start-up state has been restored from them */
 let urlReady=false,lastBook=null,lastAnn="";
+/* while a Back/Forward entry is being applied, intermediate refreshes must not rewrite the incoming URL (TL25-R1) */
+let urlHold=false;
 function afterRefresh(){
   if(urlReady&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
   /* short announcement for screen readers instead of re-reading the whole panel */
   const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title+(S.chapter!=null?", through chapter "+S.chapter:""):"");
   if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
   syncURL();}
-addEventListener("popstate",()=>{const st=parseHash();chapterFromURL(st);tlFromURL();
+/* one transaction: capture the incoming URL, apply the chapter first (so the timeline selection is gated by the
+   incoming chapter), then the timeline state, and write one normalized URL at the end (TL25-R1) */
+addEventListener("popstate",()=>{const st=parseHash(),incoming=location.hash;
+  urlHold=true;try{chapterFromURL(st);tlFromURL(incoming);}finally{urlHold=false;}syncURL();
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
   else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();

@@ -1,0 +1,19 @@
+engine blob 56d47d017dbf4a13b19a49a0d4a888a39863c819 / timeline blob a16d2a10d7ccee44fd15674f745c8617cdfdd65c
+PASS control: same chapter, open, restore selection {"got":{"chapter":3,"open":true,"sel":"record-b","order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1&tlsel=record-b"},"writes":0,"restores":1}
+PASS control: same chapter, closed, open + select {"got":{"chapter":3,"open":true,"sel":"record-b","order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1&tlsel=record-b"},"writes":0,"restores":1}
+FAIL chapter change, open, restore selection {"got":{"chapter":3,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1"},"writes":1,"restores":0}
+FAIL chapter change, closed, open + select {"got":{"chapter":3,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3"},"writes":1,"restores":0}
+FAIL chapter change closes timeline {"got":{"chapter":3,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1"},"writes":1,"restores":0}
+PASS chapter change gates selection out (later record) {"got":{"chapter":3,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1"},"writes":1,"restores":0}
+FAIL chapter raised admits selection gated at old chapter {"got":{"chapter":5,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=5"},"writes":1,"restores":0}
+FAIL chapter change + lane order/collapse restored {"got":{"chapter":4,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=4&tl=1"},"writes":1,"restores":0}
+FAIL chapter change + default order replaces custom order {"got":{"chapter":2,"open":true,"sel":null,"order":"z,x,y","collapsed":"y","hash":"#book=1&ch=2&tl=z%2Cx%2Cy&tlc=y"},"writes":1,"restores":0}
+PASS missing ch → Not set, selection gated out {"got":{"chapter":null,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&tl=1"},"writes":1,"restores":0}
+FAIL invalid ch → Not set, timeline closes {"got":{"chapter":null,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&tl=1"},"writes":1,"restores":0}
+  traversal step to entry 1 FAIL {"chapter":3,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3"}
+  traversal step to entry 2 FAIL {"chapter":5,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=5"}
+  traversal step to entry 1 FAIL {"chapter":3,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3"}
+  traversal step to entry 1 FAIL {"chapter":3,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3"}
+  traversal step to entry 2 FAIL {"chapter":5,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=5"}
+FAIL Back/Forward traversal over 3 entries, 7 steps (each lands on its own URL, unchanged)
+4/12 history transaction checks pass

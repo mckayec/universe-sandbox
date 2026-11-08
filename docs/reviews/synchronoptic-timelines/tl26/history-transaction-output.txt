@@ -1,0 +1,14 @@
+engine blob b6650d6fe7a33fa0d2d8c9b3ac27ea3a883fdedf / timeline blob a16d2a10d7ccee44fd15674f745c8617cdfdd65c
+PASS control: same chapter, open, restore selection {"got":{"chapter":3,"open":true,"sel":"record-b","order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1&tlsel=record-b"},"writes":0,"restores":1}
+PASS control: same chapter, closed, open + select {"got":{"chapter":3,"open":true,"sel":"record-b","order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1&tlsel=record-b"},"writes":0,"restores":1}
+PASS chapter change, open, restore selection {"got":{"chapter":3,"open":true,"sel":"record-b","order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1&tlsel=record-b"},"writes":0,"restores":1}
+PASS chapter change, closed, open + select {"got":{"chapter":3,"open":true,"sel":"record-b","order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1&tlsel=record-b"},"writes":0,"restores":1}
+PASS chapter change closes timeline {"got":{"chapter":3,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3"},"writes":0,"restores":0}
+PASS chapter change gates selection out (later record) {"got":{"chapter":3,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=3&tl=1"},"writes":1,"restores":1}
+PASS chapter raised admits selection gated at old chapter {"got":{"chapter":5,"open":true,"sel":"record-late","order":"x,y,z","collapsed":"","hash":"#book=1&ch=5&tl=1&tlsel=record-late"},"writes":0,"restores":1}
+PASS chapter change + lane order/collapse restored {"got":{"chapter":4,"open":true,"sel":"record-b","order":"z,x,y","collapsed":"y","hash":"#book=1&ch=4&tl=z%2Cx%2Cy&tlc=y&tlsel=record-b"},"writes":0,"restores":1}
+PASS chapter change + default order replaces custom order {"got":{"chapter":2,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&ch=2&tl=1"},"writes":0,"restores":1}
+PASS missing ch → Not set, selection gated out {"got":{"chapter":null,"open":true,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1&tl=1"},"writes":1,"restores":1}
+PASS invalid ch → Not set, timeline closes {"got":{"chapter":null,"open":false,"sel":null,"order":"x,y,z","collapsed":"","hash":"#book=1"},"writes":1,"restores":0}
+PASS Back/Forward traversal over 3 entries, 7 steps (each lands on its own URL, unchanged)
+12/12 history transaction checks pass
