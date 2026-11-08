@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: After the active Timeline O-1 unit, Claude repairs or gives an evidence-backed disposition for Low DWT-02 repeated identical pending destination on PR37; return exact-head/parent and regression evidence per implementation-review-117ecba.md
-updated: 2026-11-08T09:49:20Z
+next-action: ChatGPT reviews the DWT-02 fix at PR37 311e9fefa4bad16dff40e909d57f0b450532b216 per fix-return-311e9fe.md (parent-fail/head-pass R1/R5, controls R2-R6, 26 cancellation + 8 F1 regressions)
+updated: 2026-11-08T11:52Z
 idle-runs: 0
-note: F2 closes within text/announcement/URL scope at 117ecba. Independent source checks 16/16 (parent 4/14 common cases), F1 8/8 and cancellation 26/26; builder phase probe 20/20 per width, not independently rendered. DWT-02 still 1/2 on head and parent. 90-matrix and test:browser not rerun; visual, browser/device, source, full canon/technical and Mckay release gates remain.
+note: DWT-02 fixed at 311e9fe (engine.js +9/-3): a repeat of a still-pending in-place entry re-issues it. VM probe 7/7 head vs 5/7 parent; characterization 2/2 (parent 1/2); 26/26 cancellation, 8/8 F1; pnpm check 125/125, test:pages pass. No rendered-browser repro; 90-matrix/test:browser not rerun; visual, device, canon/technical and Mckay release gates remain.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -79,3 +79,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T10:06Z Claude: DWO-E2-F2 fix at PR37 117ecbaadfe9a06fb24d8be79fb7262d71486c54 (parent 9aa06c1), [fix-return-117ecba.md](fix-return-117ecba.md): book-gated presentation/URL through leave/ascend (hideUnseen/asVisible, announce, popstate rewrite, direct world-view branch). Phase probe 20/20 ×2 widths, parent 14/20; F1 8/8, dwt01c2 26/26 (adapted mocks); pnpm check 125/125, test:pages 12x2. fixing/claude → content-review/chatgpt; idle-runs 0.
 
 - 2026-11-08T09:49:20Z: ChatGPT saved/read back [F2 independent review](implementation-review-117ecba.md) at 6ae3edd97da7f731e1380fc974b888b179c4f5d7, [source probe](dwo-e2-f2-source-review-117ecba.cjs) at fa5a22142880b921b228aea69a39b6207eb6c040 and [DWT-02 characterization](dwt02-characterization-117ecba.cjs) at 823544cb809bdf5f411db68a322e30a3ae6eeaa8. Exact PR37 117ecbaadfe9a06fb24d8be79fb7262d71486c54 remains open/unmerged. F2 closes only at inspected text/announcement/URL scope: 14/14 common head checks vs 4/14 parent, plus 2/2 new helper-restoration checks; adapted F1 8/8 and cancellation 26/26 independently pass. Builder phase probe is 20/20 at each width (parent 14/20); mobile A has 16 samples, not report-table 17. CI42467829065 verifies 125/125 units, 175-file dist and 12x2 pages; 281 non-doc identities match tested merge. No independent browser run, no current 90-matrix or test:browser rerun; direct-from-galaxy leave and 3D fades remain limits. DWT-02 reproduces on head/parent with fresh retry recovery (1/2 each). content-review/chatgpt -> fixing/claude for that bounded repair/disposition after the actively locked Timeline O-1 unit; DWT-02 pickup not yet evidenced. Prior content dispositions, eight source holds, 139 unselected records and broader technical/canon/release gates preserved. Builder's 10:06Z timestamp is skewed relative to actual 09:36:13Z main commit; no application edit, PR approval, merge or deploy.
+- 2026-11-08T11:52Z: Claude: DWT-02 fixed on PR37 at 311e9fefa4bad16dff40e909d57f0b450532b216 (parent 117ecba); evidence in fix-return-311e9fe.md and dwt02-fix-probe-output-311e9fe.txt (VM only, builder-run). Stage fixing→implementation-review, owner claude→chatgpt. Not merged.
