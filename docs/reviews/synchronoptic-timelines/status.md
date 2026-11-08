@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews bounded O-1 fix (checkpoint-28.md) at exact PR45 daeaf395fd4fc309eca1ea27854e2a8f4bb287ea (parent 1ceb4b2): popstate filtersFromURL between chapter and timeline; tl28 probe 96/96 fix vs 48/96 parent, tl26 38/38
-updated: 2026-11-08T10:09Z
+next-action: Claude investigates carried TL22-E2 real-input/focus qualification at1440 with390 control, including real close→chapter change→reopen; return exact-head/parent diagnosis and scoped evidence per independent-review-daeaf39.md
+updated: 2026-11-08T10:13:36Z
 idle-runs: 0
-note: Checkpoint 28 at daeaf395fd4fc309eca1ea27854e2a8f4bb287ea: O-1 same-document layer/yr restoration in the popstate transaction (chapter → filters → timeline, one URL write). tl28/layer-history-probe.mjs 96/96 at 1440/390 (link, Back, Forward; layers+chips+URL+chapter+timeline+exact set equality); parent 48/96. tl26 chapter-history 38/38; pnpm check 165/165; test:pages pass. 0 promoted. Prior technical/canon/release gates remain open.
+note: O-1 closed within bounded source/transaction scope at daeaf395fd4fc309eca1ea27854e2a8f4bb287ea. Independent source controls8/8 vs parent1/8; builder browser96/96 vs48/96 and chapter history38/38 count-reconciled, not independently rendered (socket blocker;0/96). Relationship checks are counts, yr rendered controls untested.0/12 real promotions; prior technical/canon/release gates remain open.
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
 
@@ -89,3 +89,5 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-08T09:20:34Z: ChatGPT reviewed exact PR45 1ceb4b224b5343f06116ccd581cb1ceb10ad9f5f (parent97674ad),5/5 changed text files inspected,0/1 changed JPG viewed, no application changes. [Review](independent-review-1ceb4b2.md) saved/read back at 0861daf83e97f74f6a873d1fd6c5fe1ed0206aa9; [independent predicate controls](tl27/reviewer-e1-predicate.cjs) at 38b3e77d7b65fd29a304bef75ced996b74fe0456.10/10 synthetic checks pass; paired26px displacement now rejected and note numbers compared. TL27-E1 closed within bounded evidence scope. Builder logs75/75 incl8 negative/4 restore controls, history38/38 reconciled; fresh browser blocked before page creation,0/75 independent browser assertions. implementation-review/chatgpt → implementation/claude for existing O-1 after queued deep-worlds F2.0/12 real promotions; no final canon/full technical/release approval.
 - 2026-11-08T10:09Z Claude: checkpoint 28 at PR45 daeaf395fd4fc309eca1ea27854e2a8f4bb287ea (parent 1ceb4b2): O-1 fixed — popstate applies incoming `layers`/`yr` after chapter and before timeline restore (checkpoint-28.md); tl28 probe 96/96 fix, 48/96 parent control, tl26 38/38, pnpm check 165/165, test:pages pass. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-08T10:13:36Z: ChatGPT independently reviewed checkpoint28 at exact PR45 daeaf395fd4fc309eca1ea27854e2a8f4bb287ea (parent1ceb4b2). [Review](independent-review-daeaf39.md) saved/read back at 6f6eb0f1bcc643e3eb8aff5a60e6ce766d5f9854; [source controls](tl28/reviewer-transaction.cjs) at bbd2e9aee141f92398ff1db55e3bae17b128cf4d.6/6 changed text files read; actual-source transaction controls8/8 head vs1/8 parent. O-1 closes within source/transaction scope. Builder logs96/96 vs48/96, chapter regression38/38 reconciled; relationship counts are not identity checks, yr rendered restoration absent. Fresh browser launch blocked before page creation,0/96 independent browser cases. implementation-review/chatgpt → implementation/claude for carried TL22-E2 actual-input/focus unit; preserve deep-worlds DWT-02.0/12 real promotions; no final canon/full technical/release approval.
