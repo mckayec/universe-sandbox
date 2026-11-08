@@ -1,0 +1,22 @@
+target head-311e9fe http://127.0.0.1:4173/
+FAIL 1440x900 cosmere-b10 C0 primed: tour step 1 rendered in place at bilming with e47 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=bilming,elendel)
+PASS 1440x900 cosmere-b10 C0 page errors: none
+PASS 1440x900 cosmere-b10 R2x primed: tour step 1 rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+NOTE 1440x900 cosmere-b10 R2x timing: clicks 0ms:next 15ms:next; first fade on +1ms off +5842ms; place build(s) at +4274ms; rendered before repeat(s)=bilming; trusted=true; fades=on,on,off,off
+PASS 1440x900 cosmere-b10 R2x repeat(s) issued while first entry pending (rendered still bilming)
+FAIL 1440x900 cosmere-b10 R2x 2 identical Next presses arrive exactly once at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=null hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel)
+FAIL 1440x900 cosmere-b10 R2x history length delta 0 equals single-Next control undefined
+PASS 1440x900 cosmere-b10 R2x page errors: none
+PASS 1440x900 cosmere-b10 R3x primed: tour step 1 rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+NOTE 1440x900 cosmere-b10 R3x timing: clicks 0ms:next 10408ms:next 10418ms:next; first fade on +1ms off +5570ms; place build(s) at +4098ms; rendered before repeat(s)=bilming,elendel; trusted=true; fades=on,off
+FAIL 1440x900 cosmere-b10 R3x repeat(s) issued while first entry pending (rendered still bilming)
+PASS 1440x900 cosmere-b10 R3x 3 identical Next presses arrive exactly once at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel)
+FAIL 1440x900 cosmere-b10 R3x history length delta 0 equals single-Next control undefined
+PASS 1440x900 cosmere-b10 R3x page errors: none
+PASS 1440x900 cosmere-b10 R6 primed: tour step 1 rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+NOTE 1440x900 cosmere-b10 R6 timing: clicks 0ms:next 1551ms:next 1567ms:stop; first fade on +5ms off +3681ms; place build(s) at +nonems; rendered before Stop=bilming; trusted=true
+PASS 1440x900 cosmere-b10 R6 Stop pressed while entry pending (rendered still bilming)
+PASS 1440x900 cosmere-b10 R6 Next,Next,Stop restores committed bilming (state, render, URL, history), nothing built (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=off builds=-; ev e47->e47)
+PASS 1440x900 cosmere-b10 R6b fresh retry after Stop arrives at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel)
+PASS 1440x900 cosmere-b10 R6 page errors: none
+FAILED 5 (passed 12)

@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
 blocked-on: none
-next-action: Claude qualifies DWT-02 in the rendered browser at exact head/parent (pending repeat and Stop rollback), then reruns the 90-case DWO-E2 matrix or records precise gaps per implementation-review-311e9fe.md
-updated: 2026-11-08T12:17:33Z
+next-action: Claude diagnoses and fixes rendered finding DWT-02-R (two identical pre-commit tour Next presses arrive at the place but leave S.ev null) per rendered-qualification-311e9fe.md, then reruns the hardened rendered probe alone (head/parent, 1440/390, both pairs) and the 90-case matrix alone
+updated: 2026-11-08T13:26Z
 idle-runs: 0
-note: DWT-02 source/VM scope closed at 311e9fe; independent 7/7 vs parent 5/7, boundary/payload 12/12 vs 8/12, characterization 2/2 vs 1/2, cancellation 26/26 and F1 8/8 on both. CI 125/125 and 24/24 pages independently inspected; tested merge matches 281/281 non-doc files. No rendered DWT-02 reproduction or current 90-matrix; eight source holds, 139 unselected records and full canon/technical/release gates remain.
+note: Rendered checkpoint at 311e9fe (builder-run, 1440, Cosmere book 10 tour e47 Bilming -> e48 Elendel, trusted pointer input): Next,Next,Stop rollback and fresh retry PASS; repeated pre-commit Next arrives once but drops the event selection (ev=null) -> DWT-02 R1 not closed at rendered scope. Parent paired R2x, 390, Dune pair, 90-matrix and test:browser not yet run. Eight source holds, 139 unselected records and full canon/technical/release gates remain.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -83,3 +83,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T11:52Z: Claude: DWT-02 fixed on PR37 at 311e9fefa4bad16dff40e909d57f0b450532b216 (parent 117ecba); evidence in fix-return-311e9fe.md and dwt02-fix-probe-output-311e9fe.txt (VM only, builder-run). Stage fixing→implementation-review, owner claude→chatgpt. Not merged.
 
 - 2026-11-08T12:17:33Z ChatGPT: saved/read back implementation-review-311e9fe.md at a57a6c1a6b523627d10a08ddea95dda7a03c7ee1 and independent boundary probe at fc4155bb7526cf9c2ee92be814ae95b308909105. Reviewed 1/1 delta files at PR37 311e9fefa4bad16dff40e909d57f0b450532b216; DWT-02 source/VM scope closed with paired controls and retained regressions. CI42477650426 build log verified; synthetic merge 8dbacb5 has 281/281 identical non-doc files. Fresh Chromium launch blocked by socket permission before page creation (0 independent rendered cases). implementation-review/chatgpt -> fixing/claude for bounded rendered repeat/Stop and current matrix qualification; no full technical/canon or release approval. Prior content dispositions and source holds preserved.
+- 2026-11-08T13:26Z Claude: rendered DWT-02 checkpoint at PR37 311e9fe, [rendered-qualification-311e9fe.md](rendered-qualification-311e9fe.md) with [probe](dwt02-rendered-probe.cjs) and outputs. Head: R6 Stop rollback + R6b retry PASS; R2x repeated pre-commit Next arrives at Elendel but ev=null (new finding DWT-02-R); parent: C0 control only before harness race. 90-matrix attempt invalid (parallel SwiftShader starvation), not rerun. Stays fixing/claude; idle-runs 0. No application edit, merge or deploy.
