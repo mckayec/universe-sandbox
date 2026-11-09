@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude publishes one remaining-gate disposition packet for PR45 eabf9c6: R30-1 range endpoints, R29-1 mobile reach and incomplete chapter control; preserve accepted URL/history qualification
-updated: 2026-11-08T22:18Z
+next-action: ChatGPT reviews checkpoint 31 at PR45 420c1e7 (R30-1 + focus fix, dispositions table) and returns fixes or approves within scope
+updated: 2026-11-09T00:20Z
 idle-runs: 0
-note: Checkpoint30 builder evidence accepted within URL/history scope: 194/194 head (97/width), control 114/190 with 76 failures; chapter control 2 predicates then timeout. 5/5 added docs inspected, 225/225 non-doc identities unchanged. Independent browser 0/194; no canon/full technical/release approval.
+note: Checkpoint 31 at PR45 420c1e77f50c9c34a433f00b4062911cc422c42b: R30-1 fixed (input max 2031, rangeFromHandles keeps untouched ends), new keyboard focus-loss on filter rebuild fixed; pnpm check 166/166, test:pages pass, tl31 real-keyboard probe 8/8 at 1440 (control 0/1 then timeout; 390 and drag not run). R29-1, chapter control, default-off, hidden-surface hashes dispositioned. No canon/full technical/release approval.
 
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
@@ -98,3 +98,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-08T21:26Z Claude checkpoint 30 on PR45 at eabf9c61ddd70558f0b5c8c3ba7244129262c47d (docs/evidence only, parent 0650d33): [checkpoint-30.md](https://github.com/mckayec/universe-sandbox/blob/eabf9c61ddd70558f0b5c8c3ba7244129262c47d/docs/reviews/synchronoptic-timelines/checkpoint-30.md). Rendered year-filter restoration: tl30 probe 194/194 head vs 114/76 with parent 1ceb4b2 engine.js (Back to entry 0 left the document at both viewports there; remaining parent Back cases not run). tl29 chapter-path parent control attempted: 2 PASS then 1440 Timeline actionability timeout; still incomplete. R30-1 Low recorded. implementation/claude → implementation-review/chatgpt; idle-runs 0.
 
 - 2026-11-08T22:18Z ChatGPT: [independent-review-eabf9c6.md](independent-review-eabf9c6.md) saved/read back at f12c8bc929b7dea5938132fd4deea9fba02a72e2 before status. Checkpoint30 builder evidence accepted within URL/history scope: 194/194 head (97/width), control 114/190 with 76 failures; chapter control 2 predicates then timeout. 5/5 added docs inspected, 225/225 non-doc identities unchanged. Independent browser 0/194; no canon/full technical/release approval. implementation-review/chatgpt -> implementation/claude. No application edit, merge, deployment or owner approval.
+- 2026-11-09T00:20Z Claude checkpoint 31 on PR45 at 420c1e77f50c9c34a433f00b4062911cc422c42b (parent eabf9c6): [checkpoint-31.md](https://github.com/mckayec/universe-sandbox/blob/420c1e77f50c9c34a433f00b4062911cc422c42b/docs/reviews/synchronoptic-timelines/checkpoint-31.md). R30-1 fixed in layers.js (axisTop/snapAxis/rangeFromHandles) + engine readRange; pre-existing keyboard focus loss after each year step fixed in renderFilters. pnpm check 166/166, test:pages 12x2, tl31 probe 8/8 head at 1440, control eabf9c6 0/1 then actionability timeout (incomplete); 390x844 and pointer drag not run. Dispositions: R29-1 → mobile-entry-usability; chapter control, default-off, hidden-surface hashes, device/AT deferred with reasons. implementation/claude → implementation-review/chatgpt; idle-runs 0.
