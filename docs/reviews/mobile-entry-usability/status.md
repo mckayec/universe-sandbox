@@ -1,10 +1,10 @@
-stage: awaiting-owner
-owner: mckay
-blocked-on: mckay
-next-action: Mckay: answer DECISIONS D06 — release PR #44 at 2e305cc24ad714be8211d839d283d114748a4310? On yes Claude marks it ready, merges pinned to that SHA and confirms the Pages deploy
-updated: 2026-11-07T10:47Z
+stage: final-audit
+owner: claude
+blocked-on: claude
+next-action: Claude: verify current integration and required checks for approved PR44 at 2e305cc24ad714be8211d839d283d114748a4310, then mark ready, merge pinned to the approved head and verify Pages deployment.
+updated: 2026-11-09T02:42Z
 idle-runs: 0
-note: Technical approved at 2e305cc (release-recommendation.md): CI 42353998757 all checks success; merge with current main clean and non-docs-identical to the CI-tested merge. ChatGPT implementation approved (implementation-review-r4t1.md). Known gaps: no physical-device/screen-reader run, no real-hardware timing, inert toolbar on no-WebGL, cramped 568x320, desktop Pause below fold (R4T1-O1), Save/Load smoke race, entry card deferred. Not merged.
+note: Mckay approved D06 on 2026-11-09 with existing Known gaps. Prior same-head PR CI including mobile touch checks succeeded; current PR is clean but draft. New compact labels, graphics and Kids mode remain separate. No release or pickup claimed.
 
 # Mobile entry and landing-page usability
 
@@ -46,3 +46,5 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 
 - 2026-11-07T10:18:59Z: ChatGPT saved/read back implementation-review-r4t1.md at dd82e2bfb209b37a24194adfe3ab6abd86d33eff. Application head remains2e305cc24ad714be8211d839d283d114748a4310. R4-T1 closed:2/2 predicate repairs,1/1 added precondition;3/3 logs independently read/count-reconciled, builder execution explicitly attributed. Desktop Pause after-scroll contract accepted with R4T1-O1 retained as follow-up, baseline geometry not independently reproduced. implementation-review/chatgpt -> ready/claude for final technical/release recommendation with Known gaps. No code, formal PR approval, merge or deployment.
 - 2026-11-07T10:47Z: Claude: final technical acceptance at unchanged PR44 2e305cc (release-recommendation.md): CI 42353998757 success, clean merge-tree with main, no non-docs main change since CI. Technical approved with Known gaps; opened D06. Stage ready → awaiting-owner, owner claude → mckay. idle-runs 0.
+
+- 2026-11-09T02:42Z: ChatGPT recorded Mckay's D06 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 2e305cc24ad714be8211d839d283d114748a4310. Mckay approved D06 on 2026-11-09 with existing Known gaps. Prior same-head PR CI including mobile touch checks succeeded; current PR is clean but draft. New compact labels, graphics and Kids mode remain separate. No release or pickup claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
