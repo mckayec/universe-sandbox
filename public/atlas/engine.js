@@ -945,7 +945,8 @@ const worldBookOk=w=>!CUM||!S.book||firstOf(w)<=S.book;
 const siteBookOk=s=>{const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since)&&(!CUM||!b||!(s.books&&s.books.length)||Math.min(...s.books)<=b);};
 function hideUnseen(o){const w=o.sel&&WORLD_BY[o.sel];
   if(w&&!worldBookOk(w)){o.sel=null;o.site=null;o.lm=null;if(o.view!=="galaxy")o.view="galaxy";return o;}
-  if(w&&o.site){const st=siteOf(w,o.site);if(st&&!siteBookOk(st)){o.site=null;o.lm=null;if(o.view==="place")o.view="world";}}
+  /* DWO-S1: a site id the world no longer has (stale link) is dropped like one the book does not reach yet */
+  if(w&&o.site){const st=siteOf(w,o.site);if(!st||!siteBookOk(st)){o.site=null;o.lm=null;if(o.view==="place")o.view="world";}}
   return o;}
 function selHidden(){const v=hideUnseen({sel:S.sel,site:S.site,lm:S.lm,view:S.view});return v.sel!==S.sel||v.site!==S.site;}
 function asVisible(fn){const was={sel:S.sel,site:S.site,lm:S.lm,view:S.view};const v=hideUnseen(Object.assign({},was));
@@ -1388,7 +1389,9 @@ function doAscend(after){navBusy++;transition(()=>{S.view="galaxy";S.site=null;c
    selection, event, book change) bumped placeGen meanwhile and the same world is still selected, so a late timer can
    never rename the site of a newer, committed or pending place entry. */
 function selectSiteLater(wid,sid,ms){const g=placeGen;setTimeout(()=>{if(g===placeGen&&S.sel===wid)selectSite(sid);},ms);}
-function selectSite(id){placeGen++;S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
+function selectSite(id){placeGen++;
+  /* DWO-S1: never keep an id that names no site of the selected world */
+  const sw=S.sel&&WORLD_BY[S.sel];if(id&&sw&&!siteOf(sw,id))id=null;S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
     /* turn the world so the place sits in daylight, between the sun and the viewer */
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();

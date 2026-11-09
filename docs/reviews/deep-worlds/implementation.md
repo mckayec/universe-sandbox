@@ -70,6 +70,12 @@ Correction (SO6, 2026-11-09): this deviation was originally justified by the sta
 staging was unverified and has been omitted (SO1-SO3 on PR37: event g1, set-piece `irongoldprologue`, the Tyche
 prologue toggle, `SITES.prologue`, `FX.irongoldprologue` and `FX.irongoldreaper`), and it is not evidence for
 Book IV availability. The Book IV gate itself is unchanged; it still needs its own accepted evidence or disposition.
+Superseded (68d47ce, accepted in implementation-review-68d47ce.md): Tyche now opens at Book V (pin and site), the
+lore-corrections r2 minimum; the Book IV deviation no longer exists. The Book V tour has 6 steps (not 9), one of them
+the Tyche step. The 390×844 main-probe log at 68d47ce is 25 rows = 22 PASS + 3 FAIL; those three rows are superseded
+by the focused flood/stale logs, which are separate runs and are not summed into unique coverage.
+DWO-S1 (stale removed-site id kept in state/URL) is fixed in engine.js at the commit after 68d47ce; see the
+dwo-s1-probe evidence on main.
 
 ## 4. Checks at bb5eb23 (re-run at 14f7a52 after merging main: pnpm check 82/82, test:pages 12×2)
 
