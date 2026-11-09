@@ -1,0 +1,97 @@
+[
+  {
+    "path": "src/disk-encounter.ts",
+    "sha": "4233a3e3eb05a997d0142b8a52019dafabf6528e",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/visuals/disk-flow.ts",
+    "sha": "ebcf93ce89728dd3fd31ecd80c5ebf77bbe25f5b",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/visuals/materials.ts",
+    "sha": "0a53491b5c16ae5d05b589a6f5d430d2666e2692",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/visuals/disk-encounters.ts",
+    "sha": "22ecf62793ea43040d7950ea09a64dd22b8797af",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/physics/matter-streams.ts",
+    "sha": "a4e56aa54e6cdf9e758ba5da8aa465df4542b6de",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/ui/inspector.ts",
+    "sha": "72a1101f431dfa7f4a0132400967cb220d04fbb4",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/ui/test-probe.ts",
+    "sha": "ae0db25ad5d25ac8ccb2d1714f428a22e3648681",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/main.ts",
+    "sha": "4076cb24777432c8b885b9c0ad253394aa35aa08",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/visuals/create-visual.ts",
+    "sha": "3ef479ff9b66079f2a0dfa8b7d5192fea0bfc1fa",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/state/types.ts",
+    "sha": "04eac9d525075ac8b0c002c6ef72c0106d75fed7",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/visuals/update-visuals.ts",
+    "sha": "bff3c02af1291af0108164c6b3e2965e5abdcb4e",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/bodies/lifecycle.ts",
+    "sha": "e82147093a71193c472d0ccbad016a6893cde76e",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "src/physics/collisions.ts",
+    "sha": "ea397324b9a57a3e70d48e2c4c9b84532634afa8",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "tests/disk-encounter.test.ts",
+    "sha": "652a2009b66ec7dee12bf7ce8606a06596f70187",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "tests/disk-readability.test.ts",
+    "sha": "d4a38d4d1aab66f93e28b6ce59269c1aa5a6a113",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "package.json",
+    "sha": "b1f48285aa0cea5b38c339c4cf23e80ffdd9d0fc",
+    "ref": "920f76e80958a7753ced450b97d66d49ebc4eaca"
+  },
+  {
+    "path": "docs/reviews/simulator-clarity/evidence-harness-4b2.mjs",
+    "sha": "6f22d4a9761b78b0df3b36f4777c7385f26b3df8",
+    "ref": "6a25703bac51e05163759b76358dc205103e054a"
+  },
+  {
+    "path": "docs/reviews/simulator-clarity/evidence-920f76e.jsonl",
+    "sha": "d749dfd61f9193bc3ab054429576ab90b5ad669c",
+    "ref": "6a25703bac51e05163759b76358dc205103e054a"
+  },
+  {
+    "path": "docs/reviews/simulator-clarity/reviewer-4b1-6c7d08e.mjs",
+    "sha": "4ba51e8239a47143e50b6b9b09b606630d5c15bf",
+    "ref": "6a25703bac51e05163759b76358dc205103e054a"
+  }
+]
