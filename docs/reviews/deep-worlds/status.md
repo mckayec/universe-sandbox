@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude runs dwd-flood-probe.cjs (head 1440 stale rows + 390, parent 390) and dwd-probe-v2 390 one browser at a time, then writes fix-return-68d47ce.md and hands to ChatGPT (fix-checkpoint-68d47ce.md §Checkpoint 2).
-updated: 2026-11-09T16:32Z
+next-action: ChatGPT reviews the Society disposition batch at exact PR37 head 68d47ce per fix-return-68d47ce.md against disposition-review-2f04e41.md; accept, or return finite fixes to Claude.
+updated: 2026-11-09T17:32Z
 idle-runs: 0
-note: Disposition batch at PR37 68d47ce (parent 2f04e41). pnpm check 125/125. Stale V→IV exit diagnosed as harness starvation (app exits by 500 ms; parent same). Parent discriminator: forced VI flood present on 2f04e41, absent on head (1440). Remaining: 390 flood rows, stale rows in new probe, full return. Canon not approved.
+note: Disposition batch complete at PR37 68d47ce (parent 2f04e41): pnpm check 125/125; flood/stale probes all PASS at 1440 and 390 (V/VI fresh steady, on/off, V→IV exit, re-entry, V→VI upgrade); parent discriminator shows forced VI flood at 1440 and 390. Earlier FAILs superseded (swiftshader starvation; compact sheet swallows first tap by design). Real GPU/devices, 3840/1280 not run. Canon not approved.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -112,3 +112,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-09T14:23:15Z ChatGPT: [disposition-review-2f04e41.md](disposition-review-2f04e41.md) saved at 0d42b958276652323c4c3107971acfd2e7f7cf76 and read back before status. Exact PR37 2f04e416696f0fe32ab5eca7be5d8b578cd129cd unchanged/open: 3/3 decisions, 9/9 flood selector groups inspected. A amended retains explicit provisional flood treatment, cuts c–e and unqualified F6–F8 copies, removes automatic VI flooding with visible non-historical-baseline qualification. Tyche V minimum accepted; Europa VI boundary adds missed late LEV_TEXT and preserves existing facts-era machinery. 3/4 source pages readable, 2 relevant secondary narrative sources, 0/4 needed primary passages; 0/6 legacy Society rows newly primary-verified, 0 independent browser cases. content-review/chatgpt -> fixing/claude for the finite implementation/evidence batch. Prior omissions, 139 unselected records and canon/full technical/release gates preserved. No application edit, PR approval, merge or deployment.
 - 2026-11-09T15:35Z Claude: implemented disposition-review-2f04e41.md on PR37 as 68d47cebf40b37c345a37cb8b0080590c52a0339 (parent 2f04e41); checkpoint fix-checkpoint-68d47ce.md with diff, probes and partial outputs. pnpm check 125/125. Open: stale V→IV Tyche exit, 390 rows, parent comparison. Keeps fixing/claude. No merge or deploy.
 - 2026-11-09T16:32Z Claude: checkpoint 2 at unchanged PR37 68d47ce (docs-only): stale V→IV Tyche exit diagnosed as swiftshader starvation under the flood amplifier (app leaves to globe by 500 ms at 1440/390, storms on/off; parent identical) — no app fix needed; new dwd-flood-probe.cjs; parent 2f04e41 shows the forced VI rise the head removed (discriminator PASS); head 1440 amplified rows 7/7; 390 main probe 26/29 with 3 superseded harness rows. Keeps fixing/claude. idle-runs 0 (new deliverables). No merge or deploy.
+- 2026-11-09T17:32Z Claude: [fix-return-68d47ce.md](fix-return-68d47ce.md) at unchanged PR37 68d47cebf40b37c345a37cb8b0080590c52a0339 (docs-only). New dwd-stale-probe.cjs; both probes open the compact bottom sheet before pressing (a closed sheet swallows the first tap by design). Head: flood 1440 V/VI 7/7 and 390 11/11, stale 4/4 at 1440 and 390; parent 2f04e41 VI forced rise at 390 (discriminator, 1440 earlier). Exit with storms on took 33.5 s/18.7 s under swiftshader (real GPU unmeasured). fixing/claude -> content-review/chatgpt. idle-runs 0. No merge or deploy.

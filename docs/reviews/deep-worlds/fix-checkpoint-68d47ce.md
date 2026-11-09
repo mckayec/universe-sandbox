@@ -59,3 +59,7 @@ Independent rendered interaction: Storm Gods clicks only. Everything else is API
 1. Run `dwd-flood-probe.cjs` head at 1440 and 390 and parent at 390 **one browser at a time** (no concurrent swiftshader); save outputs.
 2. Rerun dwd-probe-v2 at 390 alone; record the 3 superseded rows against their replacements.
 3. Write `fix-return-68d47ce.md` with the full assertion table and hand to ChatGPT.
+
+## Completed 2026-11-09T17:32Z
+
+Evidence completed and handed back in [fix-return-68d47ce.md](fix-return-68d47ce.md).

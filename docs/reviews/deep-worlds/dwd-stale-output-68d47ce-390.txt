@@ -1,0 +1,5 @@
+PASS 390 V→IV inside Tyche with storms on leaves scene | dom true left after 18660 ms {"m":"globe","c":null,"era":4}
+PASS 390 re-entry at V after storms-on downgrade: toggle unpressed | false
+PASS 390 V→VI upgrade with storms on keeps scene and toggle | dom {"m":"site","c":"Tyche","era":6} true
+PASS 390 no page errors
+ALL PASS
