@@ -191,6 +191,9 @@ export function transferDiskMaterial(kind: MatterStream['kind'], layer: number) 
       hot: { value: new THREE.Color(colors[0]) },
       mid: { value: new THREE.Color(colors[1]) },
       cool: { value: new THREE.Color(colors[2]) },
+      tideCut: { value: 1e5 },
+      tideAngle: { value: 0 },
+      tideAmp: { value: 0 },
     },
     transparent: true,
     side: THREE.DoubleSide,
@@ -198,9 +201,9 @@ export function transferDiskMaterial(kind: MatterStream['kind'], layer: number) 
     blending: THREE.AdditiveBlending,
     toneMapped: false,
     vertexShader: DISK_VERTEX,
-    fragmentShader: `varying float vR;varying vec2 vXY;varying float vRad;varying float vBeam;uniform float intensity;uniform float layer;uniform vec3 hot;uniform vec3 mid;uniform vec3 cool;${NOISE_GLSL}${DISK_FLOW_GLSL}
+    fragmentShader: `varying float vR;varying vec2 vXY;varying float vRad;varying float vBeam;uniform float intensity;uniform float layer;uniform vec3 hot;uniform vec3 mid;uniform vec3 cool;${NOISE_GLSL}${DISK_FLOW_GLSL}${DISK_TIDE_GLSL}
 float fil(float a,float r,float s){float spiral=.5+.5*sin(a*(13.-layer*3.)+spin*r*(38.+layer*8.));float turbulence=noise(vec3(cos(a)*(3.+r*7.),sin(a)*(3.+r*7.),s+time*.06+layer*4.));return smoothstep(.32,.9,spiral*.58+turbulence*.72);}
-void main(){float r=clamp((vRad-.75)/4.,0.,1.);float a1,a2,w1,s1,s2;diskFlow(atan(vXY.y,vXY.x),vRad,a1,a2,w1,s1,s2);float filaments=flowBlend(fil(a1,r,s1),fil(a2,r,s2),w1);float innerHeat=pow(1.-r,2.2);float doppler=pow(max(.1,1.+.22*vBeam*sqrt(clamp(.75/max(vRad,.01),.05,1.))),3.);vec3 color=mix(cool,mid,pow(1.-r,.72));color=mix(color,hot,innerHeat*(.72+filaments*.28));float edge=smoothstep(0.,.06,r)*(1.-smoothstep(.8,1.,r));float alpha=edge*(.18+filaments*.7)*(layer>.5?.3:.68)*intensity;gl_FragColor=vec4(color*(.8+filaments*1.3+innerHeat)*doppler,alpha);}`,
+void main(){float r=clamp((vRad-.75)/4.,0.,1.);float a1,a2,w1,s1,s2;diskFlow(atan(vXY.y,vXY.x),vRad,a1,a2,w1,s1,s2);float filaments=flowBlend(fil(a1,r,s1),fil(a2,r,s2),w1);vec2 tide=tideShape(atan(vXY.y,vXY.x),vRad);filaments=clamp(filaments+tide.y*.5,0.,1.);float innerHeat=pow(1.-r,2.2);float doppler=pow(max(.1,1.+.22*vBeam*sqrt(clamp(.75/max(vRad,.01),.05,1.))),3.);vec3 color=mix(cool,mid,pow(1.-r,.72));color=mix(color,hot,innerHeat*(.72+filaments*.28));float edge=smoothstep(0.,.06,r)*(1.-smoothstep(.8,1.,r))*tide.x;float alpha=edge*(.18+filaments*.7)*(layer>.5?.3:.68)*intensity;gl_FragColor=vec4(color*(.8+filaments*1.3+innerHeat)*doppler,alpha);}`,
   });
 }
 export function addGlow(group: THREE.Group, color: string, size: number, opacity = 0.58) {

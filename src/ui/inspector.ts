@@ -19,11 +19,11 @@ import {
   protoIgnitionMass,
   stellarEvolutionRate,
 } from '../physics/body-math.ts';
-import { app, bodies } from '../state/app-state.ts';
+import { app, bodies, matterStreams } from '../state/app-state.ts';
 import { recordHistory } from '../state/history.ts';
 import type { Body } from '../state/types.ts';
 import { describeEncounter } from '../disk-encounter.ts';
-import { diskEncounterOf } from '../visuals/disk-encounters.ts';
+import { diskEncounterOf, transferDiskEncounterOf } from '../visuals/disk-encounters.ts';
 import { select, toast } from './feed.ts';
 
 export function updateInspector() {
@@ -80,8 +80,15 @@ export function updateInspector() {
   document.querySelector('#info-magnet')!.textContent = `${Math.round(b.magnetosphere * 100)}%`;
   document.querySelector('#info-life')!.textContent = b.lifeLevel === 'none' ? 'None detected' : b.lifeLevel;
   document.querySelector('#info-climate')!.textContent = b.habitatStatus;
-  const hasDisk = b.kind === 'blackhole' || b.kind === 'protostar',
-    encounter = hasDisk ? diskEncounterOf(b) : undefined,
+  const ownDisk = b.kind === 'blackhole' || b.kind === 'protostar',
+    // A star, white dwarf or pulsar fed by a companion shows the tide on its visible transfer disk.
+    transfer = ownDisk
+      ? undefined
+      : [...matterStreams.values()].find(
+          s => s.receiverId === b.id && s.outerDisk.visible && transferDiskEncounterOf(s),
+        ),
+    hasDisk = ownDisk || !!transfer,
+    encounter = ownDisk ? diskEncounterOf(b) : transfer && transferDiskEncounterOf(transfer),
     diskText = encounter ? describeEncounter(encounter, bodies.find(x => x.id === encounter.companionId)?.name) : null;
   document.querySelector<HTMLElement>('#disk-row')!.style.display = hasDisk ? 'flex' : 'none';
   document.querySelector('#info-disk')!.textContent = diskText ?? 'Undisturbed';

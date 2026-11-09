@@ -6,7 +6,7 @@
 //
 // What is sourced: the Roche-lobe size uses the Eggleton (1983, ApJ 268, 368, eq. 2) fit, which is accurate for
 // circular, synchronous binaries. What is a teaching choice (SC4-O1), not established by that fit:
-// - the fixed 0.8 truncation fraction (a common rule of thumb; real disks depend on mass ratio, viscosity, orbit);
+// - the fixed 0.8 truncation fraction (a chosen teaching factor, not a sourced value; real disks depend on mass ratio, viscosity, orbit);
 // - applying the fit to the companion's instantaneous 3D separation, so eccentric orbits and flybys are only
 //   illustrated (Sepinsky, Willems & Kalogera 2007 show the circular fit does not carry over in general);
 // - the strength span, the 0.25 cut floor, the 2.2/s strip and 0.55/s recovery rates, the 2% companion mass
@@ -16,7 +16,7 @@
 // Everything here works in the disk's own local frame (the RingGeometry plane is local XY), so mesh scale and
 // tilt never change the result and the disk keeps its plane and pattern phase.
 
-/** Fraction of the Roche lobe a tidally truncated disk can fill (rule of thumb, see header). */
+/** Fraction of the Roche lobe a tidally truncated disk can fill (chosen teaching factor, see header). */
 export const TRUNCATION_FRACTION = 0.8;
 /** Truncation shallower than this (as a fraction of the outer radius) counts as no encounter. */
 const STRENGTH_SPAN = 0.6;

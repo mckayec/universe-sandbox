@@ -1,8 +1,9 @@
-// Per-frame companion response of black-hole and protostar disks (labelled heuristic; see src/disk-encounter.ts).
+// Per-frame companion response of black-hole, protostar and mass-transfer disks (labelled heuristic; see
+// src/disk-encounter.ts).
 import * as THREE from 'three';
 import { QUIET_ENCOUNTER, diskEncounter, outranks, relaxEncounter, type DiskEncounter } from '../disk-encounter.ts';
 import { bodies } from '../state/app-state.ts';
-import type { Body } from '../state/types.ts';
+import type { Body, MatterStream } from '../state/types.ts';
 
 /** A companion lighter than this fraction of the host is ignored (a planet does not reshape a black-hole disk). */
 const MIN_MASS_RATIO = 0.02;
@@ -57,9 +58,12 @@ export function updateDiskEncounter(b: Body, dt: number) {
     };
   if (next.strength === 0) next.companionId = undefined;
   b.mesh.userData.diskEncounter = next;
-  // All layers share the plane, so one local cut radius applies to each of them.
+  applyTide(layers, next, outer, b.mesh.getObjectByName('inflow'));
+}
+
+/** Push one encounter state into the tide uniforms of every layer (all layers share a plane and a local scale). */
+function applyTide(layers: readonly THREE.Mesh[], next: DiskEncounterState, outer: number, inflow?: THREE.Object3D) {
   const cut = next.strength > 0 ? next.cut * outer : 1e5;
-  const inflow = b.mesh.getObjectByName('inflow');
   if (inflow) inflow.userData.tide = { cut, angle: next.angle, amp: next.strength };
   for (const layer of layers) {
     const uniforms = (layer.material as THREE.ShaderMaterial).uniforms;
@@ -68,6 +72,36 @@ export function updateDiskEncounter(b: Body, dt: number) {
     uniforms.tideAngle.value = next.angle;
     uniforms.tideAmp.value = next.strength;
   }
+}
+
+/**
+ * Tide on a mass-transfer disk (slice 4b-2). The companion is the donor that feeds it: a disk around the receiver
+ * cannot extend past the receiver's Roche lobe, and the companion-side streamer lines up with the incoming stream.
+ * The state lives on the outer layer's userData; `dt` is the capped disk step, or frame time while paused (as for
+ * black holes: nothing moves while paused, so the tide settles on a fixed target).
+ */
+export function updateTransferDiskTide(stream: MatterStream, receiver: Body, donor: Body, dt: number) {
+  const layers = [stream.disk, stream.outerDisk],
+    reference = stream.outerDisk,
+    outer = Number((reference.material as THREE.ShaderMaterial).uniforms.outer?.value ?? 0);
+  if (!(outer > 0)) return;
+  reference.updateWorldMatrix(true, false);
+  reference.worldToLocal(tmpLocal.copy(donor.mesh.position));
+  // A nebula is an extended, low-density medium, not a point companion: it feeds the disk without truncating it.
+  const target =
+      donor.kind === 'nebula' || donor.debris
+        ? { ...QUIET_ENCOUNTER }
+        : { ...diskEncounter(tmpLocal, outer, receiver.mass, donor.mass), companionId: donor.id },
+    current = (reference.userData.diskEncounter as DiskEncounterState | undefined) ?? { ...QUIET_ENCOUNTER },
+    next: DiskEncounterState = { ...relaxEncounter(current, target, dt), companionId: donor.id };
+  if (next.strength === 0) next.companionId = undefined;
+  reference.userData.diskEncounter = next;
+  applyTide(layers, next, outer);
+}
+
+/** Current tide state of a transfer disk, if it has been updated. */
+export function transferDiskEncounterOf(stream: MatterStream) {
+  return stream.outerDisk.userData.diskEncounter as DiskEncounterState | undefined;
 }
 
 export function diskEncounterOf(b: Body) {

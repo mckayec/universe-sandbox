@@ -5,6 +5,7 @@ import { isCompact, scene } from '../scene/setup.ts';
 import { app, bodies, matterStreams } from '../state/app-state.ts';
 import type { Body, MatterStream } from '../state/types.ts';
 import { diskSpinFromOrbit, setDiskSpin } from '../visuals/disk-flow.ts';
+import { updateTransferDiskTide } from '../visuals/disk-encounters.ts';
 import { transferDiskMaterial } from '../visuals/materials.ts';
 
 /** Tilt of a transfer disk around a star, pulsar or white dwarf: close to the orbital plane, opened toward the camera. */
@@ -305,6 +306,7 @@ export function updateMatterStreams(dt: number) {
       material.uniforms.spin.value = flowSign;
       material.uniforms.intensity.value = intensity * (receiver.kind === 'blackhole' ? 0.72 : 1);
     }
+    if (!ownDisk) updateTransferDiskTide(stream, receiver, donor, diskDt > 0 ? diskDt : dt);
     stream.flare.position.copy(end);
     stream.flare.position.y += 0.12;
     stream.flare.scale.setScalar(

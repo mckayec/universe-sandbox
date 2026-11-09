@@ -29,13 +29,32 @@ void main(){
 }`;
 
 /**
+ * Readability floor (simulator-clarity item 4b-2), in pattern radians per visual second. Pure Keplerian speeds
+ * left the outer edges of large disks orbiting once every 25–186 visual seconds, which reads as frozen. A small
+ * uniform term is added to every radius: the differential (Keplerian) shear between radii is unchanged, so gas
+ * still winds into trailing spirals, and no outer edge takes longer than about 30 visual seconds per turn.
+ * This is a display choice, not a physical speed (the simulator's time is already compressed).
+ */
+export const READABLE_MIN_OMEGA = (2 * Math.PI) / 32;
+
+/** Pattern angular speed (rad per visual second) at local radius `rad`, matching `diskFlow` in the shader. */
+export function diskPatternOmega(kepler: number, rad: number) {
+  return kepler * Math.pow(Math.max(rad, 0.05), -1.5) + READABLE_MIN_OMEGA;
+}
+
+/** Visual seconds for the gas pattern at local radius `rad` to complete one turn at 1× speed. */
+export function diskPatternPeriod(kepler: number, rad: number) {
+  return (2 * Math.PI) / diskPatternOmega(kepler, rad);
+}
+
+/**
  * diskFlow(angle, radius, a1, a2, w1, s1, s2): the two pattern angles to sample, the weight of the first, and a
  * seed per phase that changes only while that phase is invisible. Requires uniforms `time`, `kepler`, `spin`.
  */
 export const DISK_FLOW_GLSL = /* glsl */ `
 uniform float time;uniform float kepler;uniform float spin;
 void diskFlow(float a,float rad,out float a1,out float a2,out float w1,out float s1,out float s2){
-  float om=kepler*pow(max(rad,.05),-1.5);
+  float om=kepler*pow(max(rad,.05),-1.5)+${READABLE_MIN_OMEGA.toFixed(6)};
   float cyc=time*.3333;
   float p1=fract(cyc),p2=fract(cyc+.5);
   a1=a-spin*om*p1*3.;a2=a-spin*om*p2*3.;

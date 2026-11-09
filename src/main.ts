@@ -13,6 +13,7 @@ import { app, bodies } from './state/app-state.ts';
 import { updateHistoryButtons } from './state/history.ts';
 import { setInteractionMode, updateScienceModeButton } from './ui/controls.ts';
 import { recoverySnapshot } from './ui/feed.ts';
+import { installTestProbe } from './ui/test-probe.ts';
 import { prewarmEffectTextures } from './visuals/textures.ts';
 
 if (import.meta.env.PROD && 'serviceWorker' in navigator)
@@ -21,6 +22,7 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator)
 bindPointerEvents();
 bindToolbar();
 bindFrameTimingReset();
+installTestProbe();
 setInteractionMode(true);
 addBody('star', new THREE.Vector3(), new THREE.Vector3(), { locked: true });
 addBody('rocky', new THREE.Vector3(7, 0, 0), new THREE.Vector3(0, 0, -5.6));

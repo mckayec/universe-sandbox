@@ -216,7 +216,7 @@ test('encounter controller drives black-hole and protostar disks', () => {
   assert.match(runtime, /blackhole: \['accretionDiskHot', 'accretionDiskMid', 'accretionDiskDust'\]/);
   assert.match(runtime, /protostar: \['protoDisk'\]/);
   assert.match(loop, /b\.kind === 'blackhole' \|\| b\.kind === 'protostar'\) updateDiskEncounter/);
-  assert.match(inspector, /hasDisk = b\.kind === 'blackhole' \|\| b\.kind === 'protostar'/);
+  assert.match(inspector, /ownDisk = b\.kind === 'blackhole' \|\| b\.kind === 'protostar'/);
 });
 
 test('model header states the SC4-O1 heuristic limits', () => {
