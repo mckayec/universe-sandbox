@@ -12,12 +12,17 @@ varying vec3 vWN;
 varying vec3 vWP;
 `;
 
-/** p: object-space normal (surface pattern, turns with spin); n: view normal (rim); vWN/vWP: world normal/position (light). */
+/**
+ * p: object-space normal (surface pattern, turns with spin); n: view normal (rim); vWN/vWP: world normal/position (light).
+ * vWN comes from the view normal: normalMatrix is the inverse-transpose of the model-view matrix, so it stays correct
+ * under the nonuniform tidal stretch, and the rigid view rotation is undone by multiplying with viewMatrix on the right
+ * (its transpose). Transforming the normal with the model matrix itself would tilt it on stretched worlds (SC5-T1).
+ */
 export const LIT_VERTEX = `${LIT_VARYINGS}
 void main() {
   p = normal;
   n = normalize(normalMatrix * normal);
-  vWN = normalize(mat3(modelMatrix) * normal);
+  vWN = normalize((vec4(n, 0.) * viewMatrix).xyz);
   vec4 world = modelMatrix * vec4(position, 1.);
   vWP = world.xyz;
   gl_Position = projectionMatrix * viewMatrix * world;

@@ -4,6 +4,7 @@ import { updateNebulaPart } from '../nebula-hd.ts';
 import { STAGES, TYPES } from '../celestial-catalog.ts';
 import { galaxyUniforms } from '../galaxy-visuals.ts';
 import { bodyBaseScale } from '../bodies/lifecycle.ts';
+import { tidalVisualScale } from '../tidal-visual.ts';
 import { camera, composer, isCompact } from '../scene/setup.ts';
 import { app, bodies, trails } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
@@ -26,9 +27,8 @@ function tidalFrameFor(b: Body) {
   return frame;
 }
 function setTidalVisualScale(b: Body, base: number) {
-  const strain = THREE.MathUtils.clamp(b.tidalStretch, 0, 0.88),
-    elongation = strain * 0.42,
-    compression = strain * 0.11;
+  const shape = tidalVisualScale(b.tidalStretch),
+    strain = shape.strain;
   b.mesh.scale.setScalar(base);
   if (!b.artificial) b.mesh.rotation.y = b.kind === 'pulsar' ? (b.spinAngle ?? 0) : 0;
   const frame = tidalFrameFor(b),
@@ -40,7 +40,7 @@ function setTidalVisualScale(b: Body, base: number) {
     angle = strain > 0.004 ? current + delta * 0.12 : current;
   b.tidalVisualAngle = angle;
   frame.rotation.y = angle;
-  frame.scale.set(1 + elongation, 1 - compression, 1 - compression * 0.72);
+  frame.scale.set(shape.x, shape.y, shape.z);
   surface.rotation.y = (b.artificial ? 0 : (b.spinAngle ?? 0)) - angle;
 }
 
