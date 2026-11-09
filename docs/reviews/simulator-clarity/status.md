@@ -1,10 +1,11 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews slice 4a (black-hole disk companion tide) at PR47 c4214ef818d78d78f62efb8c69fa68751b3f272a per the 4a receipt below; Claude continues 4b (unequal/flyby/merger clips, protostar/transfer disks, readability periods) after review or in parallel if review is slow
+next-action: Claude fixes SC4-T1 saturated companion ranking in helper and runtime selector, returns exact head with both-order regressions and focused checks per implementation-review-c4214ef.md; carry SC4-E1 and SC4-O1 into 4b evidence
 updated: 2026-11-09T10:20Z
 idle-runs: 0
-note: Item 4 split into bounded slices. 4a built at c4214ef: pure tested encounter model + shader tide + inflow response + inspector Disk row; 143/143 tests; rendered on swiftshader only. 4b and items 5–7 not started. SC1-E1 rendered gaps retained. No release approval.
+note: Slice 4a reviewed at c4214ef: independent 13/13 repository tests pass, additional helper/controller outcomes 2/4 pass (2 saturated-selection failures). One Medium correction; rendered harness observations not behavioral passes. No whole-item or release approval; 4b and items 5–7 remain.
+
 
 # Simulator clarity and physics
 
@@ -83,3 +84,5 @@ Known gaps (4a):
 - 2026-11-09T04:16Z ChatGPT: saved and verified implementation-review-d9d5026.md (cfcde1c354e3b1208dceb76f089803d6eeba6ac8) and reviewer reproduction (4057ae1de5bda763f5302772840d4e9f4e37110e). Exact PR47 head d9d5026a7d94ac22a1816c65dabb9217f823e071: SC1-T1 closed; mixed 3.243-FPS trace reports 3 and lowers scale to .62. 10/10 focused tests, 3/3 trace expectations, 1/1 visibility-listener stub pass; no independent browser execution. SC1-E1 raw delivery satisfied, rendered acceptance partial (compact placement skipped, synthetic hide/show, logging-only behavior checks). implementation-review/chatgpt -> implementation/claude for next bounded item 4 with final technical gaps preserved. No merge/deploy/release approval.
 
 - 2026-11-09T10:20Z Claude: item 4 split into bounded slices; slice 4a (black-hole disk companion tide) built on PR #47 at c4214ef818d78d78f62efb8c69fa68751b3f272a (see 4a receipt). implementation/claude → implementation-review/chatgpt. 4b and items 5–7 not started. No merge.
+
+- 2026-11-09T10:20Z ChatGPT: [implementation-review-c4214ef.md](implementation-review-c4214ef.md) saved/read back at a07238fc0bbb4b0779194f26c0d47ea99cfb1d68; [reproduction](reviewer-encounter-c4214ef.mjs) at f3a3a1136175151a2b18eae95957b7d7d4375348. Exact PR47 c4214ef818d78d78f62efb8c69fa68751b3f272a, 8/8-file delta inspected, 13/13 repository tests pass independently. Additional actual-helper/extracted-controller cases 2/4 pass, 2/4 fail: SC4-T1 Medium, strength saturation makes selection depend on body order instead of deeper cut. SC4-E1 Low retains logging-only browser limitations; SC4-O1 qualifies physical model heuristics using two opened primary research sources. 0 independent rendered cases, 0/3 screenshots inspected; 3/3 builder scenario records read. implementation-review/chatgpt → fixing/claude for bounded selection correction; prior timing closure preserved. No application/PR-branch edit, merge, deployment or release approval.
