@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Return one finite source/cut disposition table for the connected flood feature plus era 6, book-IV Tyche availability and Harmonia/Discordia early-book visibility per omission-review-2f04e41.md; preserve current feature and gates pending disposition
-updated: 2026-11-09T09:53:19Z
+next-action: ChatGPT decides disposition-2f04e41.md: flood feature option A (keep core claim with source-confidence note, cut d8 sub-claims c–e) or B (full omission, closure given) or one locator; accept/amend tyche SITE_FROM 4→5 and the Book VI Harmonia/Discordia boundary. Claude then applies accepted rows on PR37 in one commit.
+updated: 2026-11-09T14:05Z
 idle-runs: 0
-note: SO4/SO5 2/2 finite omissions accepted at PR37 2f04e41; independent full-file reconstruction 1/1 (14 changed lines, 4 deleted). Builder probe 32/32 remains attributed; 0 independent browser cases and 0/6 new Society source verifications. DWO-S1/final technical and 139 unselected records remain open; canon not approved.
+note: Docs-only disposition packet at unchanged PR37 2f04e41: flood feature 9 selectors inventoried (pre-existing on main, no source on record), book-IV Tyche fallback = accepted lore-corrections V gate, Harmonia/Discordia boundary VI from the file's own Light Bringer map locator. 0/6 new source verification; DWO-S1/final technical and 139 unselected records open; canon not approved.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -107,3 +107,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-09T08:13Z Claude: SO4/SO5 finite cuts applied at PR37 2f04e416696f0fe32ab5eca7be5d8b578cd129cd (parent 08d10e1; society.js only, +14/−18): [fix-return-2f04e41.md](fix-return-2f04e41.md), [diff](so45-diff-2f04e41.patch), [probe](so45-probe-2f04e41.cjs) 32/32 at 1440/390 with exit code. No dependency beyond the named closure; dead overwritten Europa text recorded, not purged. pnpm check 125/125, test:pages 12x2. fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
 
 - 2026-11-09T09:53:19Z ChatGPT: [omission-review-2f04e41.md](omission-review-2f04e41.md) saved at 8294428ec5e8218dade33b79d45be1448a0ed4b3 and read back before status. Exact unchanged PR37 2f04e416696f0fe32ab5eca7be5d8b578cd129cd: 1/1 changed-file diff and complete parent/head Society blobs reviewed; independent reconstruction 1/1 passes with 14 changed lines and 4 deleted, SO4/SO5 2/2 finite omission units accepted. Prior omissions and separate flood/gate scope preserved. Builder probe 32/32 (17 desktop + 15 phone) inspected, stricter site/exit checks accepted with API/text-coverage limits; 0 independent browser cases, 0/6 new source verifications, 139 unselected records uncertified. content-review/chatgpt → fixing/claude for one finite connected-flood/era-6 and two book-gate disposition packet; no cascading cut authorization, fresh broad research loop, canon/full technical/release approval, merge or deployment.
+- 2026-11-09T14:05Z Claude: [disposition-2f04e41.md](disposition-2f04e41.md) at unchanged PR37 2f04e416696f0fe32ab5eca7be5d8b578cd129cd (docs-only). Flood: 9-selector table F1–F9 with option A (recommended: keep 'surges drown Tyche' + Orion clause with inline source-confidence note; cut horizon four / master override / tens of millions) and complete option B omission closure; Ladon set (d6/d7/polar/ladonstorm) explicitly out. Book-IV: no evidence; propose SITE_FROM.tyche 4→5 per lore-corrections r2 minimum (matches globe pin). Harmonia/Discordia: only locator is the file's 'Named on the Light Bringer map'; propose VI boundary across 8 selectors reusing existing neutral wording. Nothing applied. fixing/claude -> content-review/chatgpt. idle-runs 0.
