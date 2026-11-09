@@ -1,10 +1,10 @@
 stage: final-audit
-owner: chatgpt
-blocked-on: chatgpt
-next-action: ChatGPT: exact-head recheck of the integration delta at PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8 per integration-3e5791e.md (engine merge + earthMask opt-in; no content change); on acceptance hand to Mckay/Claude for the D05 merge pinned to 3e5791e (D09 governs who merges).
-updated: 2026-11-09T05:15Z
+owner: claude
+blocked-on: claude
+next-action: Claude: record the relevant technical recheck/sign-off at PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8 in audit-final.md, explicitly dispositioning current-head rendering gaps and INT71-O1/O2 in integration-review-3e5791e.md; then route under existing D05/D09. Canon is approved at this head; no repeated source audit requested.
+updated: 2026-11-09T05:26Z
 idle-runs: 0
-note: D05 approved at 3e3701f. Integration conflict resolved by merging main at 3e5791e (no rebase); check 213/213, test:pages 13x2, test:browser pass, exact-head Actions run 42565302906 build success; PR mergeable. Not merged, not deployed.
+note: Integration canon accepted; whole pack preserved except earthMask option. Independent 17/17 targeted tests and 14/14 loader scenarios; exact-head CI logs 213/213 tests and 26/26 page cases. Technical signature still names 3e3701f; both signatures at new head do not yet exist. No merge or deploy.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -129,3 +129,6 @@ Track A · view: Earth-historical, layered
 - 2026-11-09T02:42Z: ChatGPT recorded Mckay's D05 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 3e3701ffcc4131200f0993e52f8f14a509016ced. Mckay approved D05 on 2026-11-09 within the curated scope and existing Known gaps. Current PR is dirty and has no exact-head Actions run. Prior local acceptance is not current CI. No conflict bypass, merge or deployment. Owner mckay → claude for the next action above; historical review evidence is preserved.
 
 - 2026-11-09T05:15Z: Claude resolved the PR33 integration conflict with main (christian-apocrypha engine changes) by a merge commit at 3e5791ec9ea89bc5f362449f5bf1d07c963073c8; resolution and evidence in integration-3e5791e.md. New engine option gfx.earthMask:"hi" keeps live packs on main's mask and LDS on its approved mask. pnpm check 213/213, test:pages 13x2, test:browser pass, Actions run 42565302906 success. fixing/claude -> final-audit/chatgpt for exact-head recheck of the delta. No merge or deploy.
+
+
+- 2026-11-09T05:26Z: ChatGPT completed the bounded integration recheck at exact PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8. Saved/read back reviewer-integration-3e5791e.mjs at 83b8c150239b399d6a6c6a70c3a7614b78b74cbc, integration-review-3e5791e.md at 79daffb15d7b7ab91e2f765993ba32b6c51c700f, and audit-final.md at 4ab3ea198b2b9612772119014eabbaffeff0f60f before this status update. Canon approved: exact whole-pack preservation except the hi-mask option, 28/28 non-doc delta paths classified, 7/7 combined files inspected, 17/17 local existing tests and 14/14 actual-loader stub scenarios passed; independently opened exact-head CI logs (213/213 tests, 26/26 page cases). Two Low precision observations: pack-wide mask selection and changed shader/fallback rendering despite preserved hi assets. No new High/Medium canon finding; prior source audit retained, no fresh scripture research claimed. final-audit/chatgpt -> final-audit/claude for exact-head technical sign-off and explicit visual-gap disposition, then existing D05/D09 routing. No owner release approval, merge or deployment.
