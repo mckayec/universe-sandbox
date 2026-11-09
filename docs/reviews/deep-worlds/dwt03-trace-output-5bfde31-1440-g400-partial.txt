@@ -1,0 +1,21 @@
+target fix-g400 1440x900 gap=400
+after Next 1: step=3 / 13 view=world site=fane rendered=null ev=null fade=true hash=#book=3&world=arrakis&site=fane&view=surface
+after Next 2: step=4 / 13 view=place site=tabr rendered=tabr ev=c3 fade=false hash=#book=3&world=arrakis&site=tabr&view=place&lm=cliffs
+after Next 3: step=5 / 13 view=place site=tabr rendered=tabr ev=c12 fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 4: step=6 / 13 view=world site=tabr rendered=null ev=null fade=false hash=#book=3&world=arrakis&site=tabr&view=surface
+after Next 5: step=7 / 13 view=galaxy site=exile rendered=null ev=null fade=false hash=#book=3&world=salusa&site=exile&view=place
+after Next 6: EVALUATE-TIMEOUT(15s)
+after Next 7: step=9 / 13 view=galaxy site=null rendered=null ev=c9 fade=true hash=#book=3&world=arrakis
+after Next 8: step=10 / 13 view=place site=tabr rendered=tabr ev=c10 fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.evaluate: Target page, context or browser has been closed
+    at st0 (/tmp/claude-0/-home-claude-universe-sandbox/c8fd468f-829b-5727-be90-29b05899f7c4/scratchpad/trace.cjs:14:5)
+    at st (/tmp/claude-0/-home-claude-universe-sandbox/c8fd468f-829b-5727-be90-29b05899f7c4/scratchpad/trace.cjs:30:17)
+    at /tmp/claude-0/-home-claude-universe-sandbox/c8fd468f-829b-5727-be90-29b05899f7c4/scratchpad/trace.cjs:82:53 {
+  log: []
+}
+
+Node.js v22.23.4

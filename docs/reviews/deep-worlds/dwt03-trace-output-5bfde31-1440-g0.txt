@@ -1,0 +1,42 @@
+target fix-g0 1440x900 gap=0
+after Next 1: step=2 / 13 view=place site=fane rendered=fane ev=null fade=false hash=#book=3&world=arrakis&site=fane&view=place
+after Next 2: step=3 / 13 view=place site=fane rendered=fane ev=c8 fade=true hash=#book=3&world=arrakis&site=arrakeen&view=surface
+after Next 3: step=4 / 13 view=place site=tabr rendered=tabr ev=null fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 4: step=5 / 13 view=place site=tabr rendered=tabr ev=c12 fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 5: step=6 / 13 view=place site=tabr rendered=tabr ev=c12 fade=true hash=#book=3&world=arrakis&site=tabr&view=surface
+after Next 6: step=7 / 13 view=galaxy site=null rendered=null ev=null fade=true hash=#book=3&world=arrakis
+after Next 7: step=8 / 13 view=galaxy site=jacurutu rendered=null ev=null fade=true hash=#book=3&world=arrakis&site=jacurutu&view=place
+after Next 8: step=9 / 13 view=galaxy site=jacurutu rendered=null ev=c9 fade=true hash=#book=3&world=arrakis
+after Next 9: step=10 / 13 view=galaxy site=tabr rendered=null ev=null fade=true hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 10: step=11 / 13 view=galaxy site=tabr rendered=null ev=c11 fade=true hash=#book=3&world=arrakis
+after Next 11: step=12 / 13 view=galaxy site=fane rendered=null ev=null fade=true hash=#book=3&world=arrakis&site=fane&view=place
+settle +5 s: consistent step=12 / 13 view=place site=fane rendered=fane ev=c6 fade=false hash=#book=3&world=arrakis&site=fane&view=place&lm=steps
+settle +20 s: consistent step=12 / 13 view=place site=fane rendered=fane ev=c6 fade=false hash=#book=3&world=arrakis&site=fane&view=place&lm=steps
+settle +40 s: consistent step=12 / 13 view=place site=fane rendered=fane ev=c6 fade=false hash=#book=3&world=arrakis&site=fane&view=place&lm=steps
+settle +60 s: consistent step=12 / 13 view=place site=fane rendered=fane ev=c6 fade=false hash=#book=3&world=arrakis&site=fane&view=place&lm=steps
+PASS final (+60 s after last press): step=12 / 13 view=place site=fane rendered=fane ev=c6 fade=false hash=#book=3&world=arrakis&site=fane&view=place&lm=steps
+TRACE
+718 replaceState #book=3&world=arrakis :: syncURL (/atlas/engine.js:1661:125) < start (/atlas/engine.js:1703:31) < Object.start (/atlas/engine.js:1713:54) < /atlas/?pack=dune:58:177
+2132 replaceState #book=3&world=arrakis&view=surface :: syncURL (/atlas/engine.js:1661:125) < /atlas/engine.js:1355:44 < /atlas/engine.js:1347:66
+79619 replaceState #book=3&world=arrakis&site=arrakeen&view=surface :: syncURL (/atlas/engine.js:1661:125) < selectSite (/atlas/engine.js:1391:107) < goEvent (/atlas/engine.js:1501:48) < tourStep (/atlas/engine.js:1509:147)
+79619 pushState #book=3&world=arrakis&site=arrakeen&view=place :: enterPlace (/atlas/engine.js:1434:91) < goEvent (/atlas/engine.js:1501:67) < tourStep (/atlas/engine.js:1509:147) < tourStart (/atlas/engine.js:1513:139)
+107072 replaceState #book=3&world=arrakis&site=fane&view=place :: enterPlace (/atlas/engine.js:1434:56) < goEvent (/atlas/engine.js:1499:65) < tourStep (/atlas/engine.js:1509:147) < HTMLDivElement.<anonymous> (/atlas/engine.js:1517:47)
+115861 replaceState #book=3&world=arrakis&site=fane&view=place&lm=plaza :: syncURL (/atlas/engine.js:1661:125) < evInPlace (/atlas/engine.js:1465:34) < /atlas/engine.js:1494:26 < /atlas/engine.js:1493:161
+122204 replaceState #book=3&world=arrakis&site=fane&view=surface :: syncURL (/atlas/engine.js:1661:125) < afterRefresh (/atlas/engine.js:1667:14) < refreshAll (/atlas/engine.js:1338:229) < /atlas/engine.js:1458:226
+124897 replaceState #book=3&world=arrakis&site=tabr&view=surface :: syncURL (/atlas/engine.js:1661:125) < selectSite (/atlas/engine.js:1391:107) < goEvent (/atlas/engine.js:1501:48) < tourStep (/atlas/engine.js:1509:147)
+124899 pushState #book=3&world=arrakis&site=tabr&view=place :: enterPlace (/atlas/engine.js:1434:91) < goEvent (/atlas/engine.js:1501:67) < tourStep (/atlas/engine.js:1509:147) < HTMLDivElement.<anonymous> (/atlas/engine.js:1517:47)
+134623 replaceState #book=3&world=arrakis&site=tabr&view=place&lm=cliffs :: syncURL (/atlas/engine.js:1661:125) < evInPlace (/atlas/engine.js:1465:34) < /atlas/engine.js:1494:26 < /atlas/engine.js:1493:161
+134634 replaceState #book=3&world=arrakis&site=tabr&view=place :: syncURL (/atlas/engine.js:1661:125) < evInPlace (/atlas/engine.js:1465:34) < goEvent (/atlas/engine.js:1499:43) < tourStep (/atlas/engine.js:1509:147)
+147086 replaceState #book=3&world=arrakis :: syncURL (/atlas/engine.js:1661:125) < afterRefresh (/atlas/engine.js:1667:14) < refreshAll (/atlas/engine.js:1338:229) < /atlas/engine.js:1386:108
+147639 pushState #book=3&world=arrakis&site=jacurutu&view=surface :: enterPlace (/atlas/engine.js:1433:24) < /atlas/engine.js:1494:79 < /atlas/engine.js:1493:161 < goEvent (/atlas/engine.js:1503:10)
+147642 pushState #book=3&world=arrakis&site=jacurutu&view=place :: enterPlace (/atlas/engine.js:1434:91) < /atlas/engine.js:1494:79 < /atlas/engine.js:1493:161 < goEvent (/atlas/engine.js:1503:10)
+147668 replaceState #book=3&world=arrakis :: syncURL (/atlas/engine.js:1661:125) < afterRefresh (/atlas/engine.js:1667:14) < refreshAll (/atlas/engine.js:1338:229) < openEvent (/atlas/engine.js:1528:29)
+148361 replaceState #book=3&world=arrakis :: cancelEntry (/atlas/engine.js:1453:58) < /atlas/engine.js:1436:113 < /atlas/engine.js:1347:66
+148558 pushState #book=3&world=arrakis&site=tabr&view=surface :: enterPlace (/atlas/engine.js:1433:24) < /atlas/engine.js:1494:79 < /atlas/engine.js:1493:161 < goEvent (/atlas/engine.js:1503:10)
+148558 pushState #book=3&world=arrakis&site=tabr&view=place :: enterPlace (/atlas/engine.js:1434:91) < /atlas/engine.js:1494:79 < /atlas/engine.js:1493:161 < goEvent (/atlas/engine.js:1503:10)
+148852 replaceState #book=3&world=arrakis :: syncURL (/atlas/engine.js:1661:125) < afterRefresh (/atlas/engine.js:1667:14) < refreshAll (/atlas/engine.js:1338:229) < openEvent (/atlas/engine.js:1528:29)
+149225 replaceState #book=3&world=arrakis :: cancelEntry (/atlas/engine.js:1453:58) < /atlas/engine.js:1436:113 < /atlas/engine.js:1347:66
+149702 pushState #book=3&world=arrakis&site=fane&view=surface :: enterPlace (/atlas/engine.js:1433:24) < /atlas/engine.js:1494:79 < /atlas/engine.js:1493:161 < goEvent (/atlas/engine.js:1503:10)
+149705 pushState #book=3&world=arrakis&site=fane&view=place :: enterPlace (/atlas/engine.js:1434:91) < /atlas/engine.js:1494:79 < /atlas/engine.js:1493:161 < goEvent (/atlas/engine.js:1503:10)
+154590 replaceState #book=3&world=arrakis&site=fane&view=place&lm=steps :: syncURL (/atlas/engine.js:1661:125) < evInPlace (/atlas/engine.js:1465:34) < /atlas/engine.js:1494:26 < /atlas/engine.js:1493:161
+page errors: none

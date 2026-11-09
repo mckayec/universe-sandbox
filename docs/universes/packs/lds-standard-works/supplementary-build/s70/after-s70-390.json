@@ -1,0 +1,45 @@
+{
+  "viewport": "390",
+  "head": "pending",
+  "readyMs": 29783,
+  "backLink": {
+    "href": "../",
+    "text": "← Gravity Lab",
+    "visible": true
+  },
+  "notice": {
+    "credits": {
+      "display": "none",
+      "w": 0,
+      "h": 0,
+      "font": "9.5px",
+      "color": "rgb(163, 156, 140)",
+      "bg": "rgb(7,9,13)",
+      "contrast": 7.3,
+      "clipped": false,
+      "text": "Independent educational atlas with selected coverage, not a verse-complete concordance. Not an official publication of The Church of Jesus Christ of Latter-day Saints. Scripture narratives, religious beliefs, historical evidence and geographic proposals are labelled separately."
+    },
+    "narrow": {
+      "display": "block",
+      "w": 336,
+      "h": 90,
+      "font": "10px",
+      "color": "rgb(163, 156, 140)",
+      "bg": "rgb(7,9,13)",
+      "contrast": 7.3,
+      "clipped": false,
+      "text": "Independent educational atlas with selected coverage, not a verse-complete concordance. Not an official publication of The Church of Jesus Christ of Latter-day Saints. Scripture narratives, religious beliefs, historical evidence and geographic proposals are labelled separately."
+    }
+  },
+  "heapMB": [
+    6,
+    6,
+    6,
+    6,
+    6
+  ],
+  "descendOk": true,
+  "navOk": true,
+  "thirdParty": [],
+  "errors": []
+}

@@ -1,0 +1,20 @@
+# node dwt-tour-probe.cjs <checkout>  — run 2026-11-07T23:5xZ
+## parent aea2347489172e38bb8502aaa65c90af77cda049
+PASS T1 positive: single step from a place on world a to event in b/b1 arrives there
+FAIL T2 two rapid steps from a surface (Back pending): no second Back, no document exit, newest wins :: document exits: got 1 expected 0
+FAIL T3 stale ascend continuation after a newer same-world step must not overwrite world/site :: final world/site/event: got ["b","b1","e1"] expected ["a","a2","e2"]
+FAIL T4 tour Stop supersedes an in-flight step :: places built after Stop: got ["b/b1"] expected []
+PASS T5 two rapid steps from inside a place: one Back, newest wins, no exit
+2/5 passed
+exit 1
+## fix 469a83c4c13f10aa9e280cd472d54274a014642b
+PASS T1 positive: single step from a place on world a to event in b/b1 arrives there
+PASS T2 two rapid steps from a surface (Back pending): no second Back, no document exit, newest wins
+PASS T3 stale ascend continuation after a newer same-world step must not overwrite world/site
+PASS T4 tour Stop supersedes an in-flight step
+PASS T5 two rapid steps from inside a place: one Back, newest wins, no exit
+5/5 passed
+exit 0
+## dwr-probe.cjs at 469a83c: exit 0
+## dwr-transition-probe.cjs at 469a83c: exit 0
+## dwr-history-probe-d902c8a.cjs at 469a83c: exit 0

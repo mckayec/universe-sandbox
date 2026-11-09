@@ -1,0 +1,28 @@
+target 5bfde31 http://127.0.0.1:4173/
+PASS 390x844 cosmere-b10 C0 primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+PASS 390x844 cosmere-b10 C0 control: single Next arrives once at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel; hlen 3->3)
+PASS 390x844 cosmere-b10 C0 page errors: none
+PASS 390x844 cosmere-b10 R2x primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+NOTE 390x844 cosmere-b10 R2x first rendered-arrival snapshot: view=place sel=scadrial site=elendel rendered=elendel ev=null hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel at +4319ms
+NOTE 390x844 cosmere-b10 R2x S.ev log: null@+0 e48@+5082
+NOTE 390x844 cosmere-b10 R2x timing: clicks 0ms:next 525ms:next; first fade on +1ms off +1287ms; place build(s) at +1820ms; rendered before repeat(s)=bilming; trusted=true; fades=on,on,off,off
+PASS 390x844 cosmere-b10 R2x repeat(s) issued while first entry pending (rendered still bilming)
+PASS 390x844 cosmere-b10 R2x 2 identical Next presses arrive exactly once at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel)
+PASS 390x844 cosmere-b10 R2x history length delta 0 equals single-Next control 0
+PASS 390x844 cosmere-b10 R2x page errors: none
+PASS 390x844 cosmere-b10 R3x primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+NOTE 390x844 cosmere-b10 R3x first rendered-arrival snapshot: view=place sel=scadrial site=elendel rendered=elendel ev=null hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel at +4432ms
+NOTE 390x844 cosmere-b10 R3x S.ev log: null@+1 e48@+5255
+NOTE 390x844 cosmere-b10 R3x timing: clicks 0ms:next 559ms:next 575ms:next; first fade on +3ms off +1349ms; place build(s) at +1947ms; rendered before repeat(s)=bilming,bilming; trusted=true; fades=on,on,on,off,off,off
+PASS 390x844 cosmere-b10 R3x repeat(s) issued while first entry pending (rendered still bilming)
+PASS 390x844 cosmere-b10 R3x 3 identical Next presses arrive exactly once at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel)
+PASS 390x844 cosmere-b10 R3x history length delta 0 equals single-Next control 0
+PASS 390x844 cosmere-b10 R3x page errors: none
+PASS 390x844 cosmere-b10 R6 primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+NOTE 390x844 cosmere-b10 R6 timing: clicks 0ms:next 518ms:next 526ms:stop; first fade on +6ms off +1305ms; place build(s) at +nonems; rendered at repeat/Stop clicks=bilming,bilming; trusted=true
+PASS 390x844 cosmere-b10 R6 repeat and Stop pressed while entry pending (rendered still bilming)
+PASS 390x844 cosmere-b10 R6 Next,Next,Stop restores committed bilming (state, render, URL, history), nothing built (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=off builds=-; ev e47->e47)
+PASS 390x844 cosmere-b10 R6b primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=-)
+PASS 390x844 cosmere-b10 R6b fresh retry after Stop arrives at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel)
+PASS 390x844 cosmere-b10 R6 page errors: none
+ALL PASS 19

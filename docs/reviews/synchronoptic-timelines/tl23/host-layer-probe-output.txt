@@ -1,0 +1,83 @@
+PASS not-opted-in/1440 All books, all layers: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS not-opted-in/1440 NT place selected from its list row — tlsel=s:capernaum
+INFO not-opted-in/1440 layer chip reachability while the timeline is open — {"onScreen":true,"topIsChip":false}
+PASS not-opted-in/1440 NT chip starts pressed
+PASS not-opted-in/1440 NT layer off: chip unpressed, URL layers=ot,bom,dc,pgp — layers=ot,bom,dc,pgp
+PASS not-opted-in/1440 NT layer off: selection, record, detail and URL tlsel removed — tlsel=undefined
+PASS not-opted-in/1440 NT layer off: search no longer finds Capernaum
+PASS not-opted-in/1440 NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS not-opted-in/1440 NT layer off: the timeline stayed open
+PASS not-opted-in/1440 NT layer on: chip pressed, URL layers removed — layers=undefined
+PASS not-opted-in/1440 NT layer on: record and search restored
+PASS not-opted-in/1440 NT layer on: earlier selection not resurrected (as for a book downgrade) — tlsel=undefined
+PASS not-opted-in/1440 NT layer back on: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS not-opted-in/1440 edge removal exercised (NT-gated edges 10; 342 on vs 316 off)
+PASS not-opted-in/1440 fresh load with layers=ot,bom,dc,pgp: chip unpressed, tlsel dropped, record absent — layers=ot,bom,dc,pgp tlsel=undefined
+PASS not-opted-in/1440 fresh load, NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS not-opted-in/1440 Old Testament only: list ids == gated model ids, relationships == gated edges — expected 526 records/52 edges; DOM 526 distinct (526 rows), missing 0, extra 0; relationships 52/52 li; library visible() agrees true
+INFO not-opted-in/1440 TL22-E2 real pointer click on Timeline button — timed out: page.click: Timeout 15000ms exceeded.
+INFO not-opted-in/1440 TL22-E2 real keyboard Escape — not attempted (panel not open)
+PASS not-opted-in/1440 no page/console errors
+PASS not-opted-in/390 All books, all layers: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS not-opted-in/390 NT place selected from its list row — tlsel=s:capernaum
+INFO not-opted-in/390 layer chip reachability while the timeline is open — {"onScreen":true,"topIsChip":false}
+PASS not-opted-in/390 NT chip starts pressed
+PASS not-opted-in/390 NT layer off: chip unpressed, URL layers=ot,bom,dc,pgp — layers=ot,bom,dc,pgp
+PASS not-opted-in/390 NT layer off: selection, record, detail and URL tlsel removed — tlsel=undefined
+PASS not-opted-in/390 NT layer off: search no longer finds Capernaum
+PASS not-opted-in/390 NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS not-opted-in/390 NT layer off: the timeline stayed open
+PASS not-opted-in/390 NT layer on: chip pressed, URL layers removed — layers=undefined
+PASS not-opted-in/390 NT layer on: record and search restored
+PASS not-opted-in/390 NT layer on: earlier selection not resurrected (as for a book downgrade) — tlsel=undefined
+PASS not-opted-in/390 NT layer back on: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS not-opted-in/390 edge removal exercised (NT-gated edges 10; 342 on vs 316 off)
+PASS not-opted-in/390 fresh load with layers=ot,bom,dc,pgp: chip unpressed, tlsel dropped, record absent — layers=ot,bom,dc,pgp tlsel=undefined
+PASS not-opted-in/390 fresh load, NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS not-opted-in/390 Old Testament only: list ids == gated model ids, relationships == gated edges — expected 526 records/52 edges; DOM 526 distinct (526 rows), missing 0, extra 0; relationships 52/52 li; library visible() agrees true
+INFO not-opted-in/390 TL22-E2 real pointer click on Timeline button — opened in 8246 ms
+INFO not-opted-in/390 TL22-E2 real keyboard Escape — Escape closed in 691 ms
+PASS not-opted-in/390 no page/console errors
+PASS opted-in/1440 All books, all layers: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS opted-in/1440 NT place selected from its list row — tlsel=s:capernaum
+INFO opted-in/1440 layer chip reachability while the timeline is open — {"onScreen":true,"topIsChip":false}
+PASS opted-in/1440 NT chip starts pressed
+PASS opted-in/1440 NT layer off: chip unpressed, URL layers=ot,bom,dc,pgp — layers=ot,bom,dc,pgp
+PASS opted-in/1440 NT layer off: selection, record, detail and URL tlsel removed — tlsel=undefined
+PASS opted-in/1440 NT layer off: search no longer finds Capernaum
+PASS opted-in/1440 NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS opted-in/1440 NT layer off: the timeline stayed open
+PASS opted-in/1440 NT layer on: chip pressed, URL layers removed — layers=undefined
+PASS opted-in/1440 NT layer on: record and search restored
+PASS opted-in/1440 NT layer on: earlier selection not resurrected (as for a book downgrade) — tlsel=undefined
+PASS opted-in/1440 NT layer back on: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS opted-in/1440 edge removal exercised (NT-gated edges 10; 342 on vs 316 off)
+PASS opted-in/1440 fresh load with layers=ot,bom,dc,pgp: chip unpressed, tlsel dropped, record absent — layers=ot,bom,dc,pgp tlsel=undefined
+PASS opted-in/1440 fresh load, NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS opted-in/1440 Old Testament only: list ids == gated model ids, relationships == gated edges — expected 526 records/52 edges; DOM 526 distinct (526 rows), missing 0, extra 0; relationships 52/52 li; library visible() agrees true
+INFO opted-in/1440 TL22-E2 real pointer click on Timeline button — timed out: page.click: Timeout 15000ms exceeded.
+INFO opted-in/1440 TL22-E2 real keyboard Escape — not attempted (panel not open)
+PASS opted-in/1440 no page/console errors
+PASS opted-in/390 All books, all layers: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS opted-in/390 NT place selected from its list row — tlsel=s:capernaum
+INFO opted-in/390 layer chip reachability while the timeline is open — {"onScreen":true,"topIsChip":false}
+PASS opted-in/390 NT chip starts pressed
+PASS opted-in/390 NT layer off: chip unpressed, URL layers=ot,bom,dc,pgp — layers=ot,bom,dc,pgp
+PASS opted-in/390 NT layer off: selection, record, detail and URL tlsel removed — tlsel=undefined
+PASS opted-in/390 NT layer off: search no longer finds Capernaum
+PASS opted-in/390 NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS opted-in/390 NT layer off: the timeline stayed open
+PASS opted-in/390 NT layer on: chip pressed, URL layers removed — layers=undefined
+PASS opted-in/390 NT layer on: record and search restored
+PASS opted-in/390 NT layer on: earlier selection not resurrected (as for a book downgrade) — tlsel=undefined
+PASS opted-in/390 NT layer back on: list ids == gated model ids, relationships == gated edges — expected 1714 records/342 edges; DOM 1714 distinct (1714 rows), missing 0, extra 0; relationships 342/342 li; library visible() agrees true
+PASS opted-in/390 edge removal exercised (NT-gated edges 10; 342 on vs 316 off)
+PASS opted-in/390 fresh load with layers=ot,bom,dc,pgp: chip unpressed, tlsel dropped, record absent — layers=ot,bom,dc,pgp tlsel=undefined
+PASS opted-in/390 fresh load, NT layer off: list ids == gated model ids, relationships == gated edges — expected 1428 records/316 edges; DOM 1428 distinct (1428 rows), missing 0, extra 0; relationships 316/316 li; library visible() agrees true
+PASS opted-in/390 Old Testament only: list ids == gated model ids, relationships == gated edges — expected 526 records/52 edges; DOM 526 distinct (526 rows), missing 0, extra 0; relationships 52/52 li; library visible() agrees true
+INFO opted-in/390 TL22-E2 real pointer click on Timeline button — opened in 7806 ms
+INFO opted-in/390 TL22-E2 real keyboard Escape — Escape closed in 701 ms
+PASS opted-in/390 no page/console errors
+pack blob 3d279a757303e6ae7e80c358a6f6e041269eb82c
+68/68 checks passed
+exit 0

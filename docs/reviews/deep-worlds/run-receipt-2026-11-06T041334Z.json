@@ -1,0 +1,115 @@
+{
+  "project_id": "mckayec/universe-sandbox",
+  "item_ids": [
+    "synchronoptic-timelines",
+    "lds-standard-works",
+    "deep-worlds"
+  ],
+  "actor": "chatgpt",
+  "run_id": "chatgpt-20261106-timeline-kv3x2t8aak",
+  "attempt_id": "2026-11-06T04:13:34Z",
+  "observed_start": "2026-11-06T04:13:34Z",
+  "observed_end": "2026-11-06T04:37:46Z",
+  "duration_seconds": 1452,
+  "duration_type": "elapsed_run_window",
+  "timestamp_source": "clock.curr_time UTC; start is recorded lock timestamp, end is observed before receipt publication and lock cleanup, not the full session finish",
+  "outputs": [
+    {
+      "item_id": "synchronoptic-timelines",
+      "status": "implementation/claude",
+      "label": "TL-R16: 3/3 residuals closed; 18/18 targeted tests; no promotions",
+      "path": "docs/reviews/synchronoptic-timelines/independent-review-133519a.md",
+      "commit_sha": "6f05509f68bf86ac7ea5cbba9d8ec35137439c4e",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/6f05509f68bf86ac7ea5cbba9d8ec35137439c4e/docs/reviews/synchronoptic-timelines/independent-review-133519a.md"
+    },
+    {
+      "item_id": "synchronoptic-timelines",
+      "status": "implementation/claude",
+      "label": "Proposed-only pilot sidecar next",
+      "path": "docs/reviews/synchronoptic-timelines/status.md",
+      "commit_sha": "301c5b4e5f048038a23fe59b0ab0dcbf8a5096ee",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/301c5b4e5f048038a23fe59b0ab0dcbf8a5096ee/docs/reviews/synchronoptic-timelines/status.md"
+    },
+    {
+      "item_id": "lds-standard-works",
+      "status": "fixing/claude",
+      "label": "16/16 cards, 14/14 groups, 20/20 residual keys; two Low wording fixes; 18/18 targeted tests",
+      "path": "docs/universes/packs/lds-standard-works/return-review-a3d5cc4.md",
+      "commit_sha": "4aac8178004be6469596cb705476da88c9ec196a",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/4aac8178004be6469596cb705476da88c9ec196a/docs/universes/packs/lds-standard-works/return-review-a3d5cc4.md"
+    },
+    {
+      "item_id": "lds-standard-works",
+      "status": "fixing/claude",
+      "label": "Two generator copy replacements next; Known gaps retained",
+      "path": "docs/universes/packs/lds-standard-works/status.md",
+      "commit_sha": "2cff4e16eeac20eedd49b6c3ce492de58218303b",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/2cff4e16eeac20eedd49b6c3ce492de58218303b/docs/universes/packs/lds-standard-works/status.md"
+    },
+    {
+      "item_id": "deep-worlds",
+      "status": "fixing/claude",
+      "label": "23/23 identities reconciled: six historical joins and seventeen Nalthis additions",
+      "path": "docs/reviews/deep-worlds/cosmere-supplement-crosswalk.csv",
+      "commit_sha": "07879199d1848fd8b4229172273c739a02865e8f",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/07879199d1848fd8b4229172273c739a02865e8f/docs/reviews/deep-worlds/cosmere-supplement-crosswalk.csv"
+    },
+    {
+      "item_id": "deep-worlds",
+      "status": "fixing/claude",
+      "label": "Six supported-text; ten partial-primary; one not-reverified; one commentary-assisted; four accepted returns carried; one clarification carried",
+      "path": "docs/reviews/deep-worlds/supplement-review-60176e7.md",
+      "commit_sha": "c8d0b5d162494ecd064ef42e5b2a0381b0e4eca6",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/c8d0b5d162494ecd064ef42e5b2a0381b0e4eca6/docs/reviews/deep-worlds/supplement-review-60176e7.md"
+    },
+    {
+      "item_id": "deep-worlds",
+      "status": "fixing/claude",
+      "label": "Historical audit retained with current Known gaps and source-expansion deferral",
+      "path": "docs/reviews/deep-worlds/audit.md",
+      "commit_sha": "2a86d89efe7f6544f9d8eee4bc2ea5fb88b289f4",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/2a86d89efe7f6544f9d8eee4bc2ea5fb88b289f4/docs/reviews/deep-worlds/audit.md"
+    },
+    {
+      "item_id": "deep-worlds",
+      "status": "fixing/claude",
+      "label": "DWR-A/B and per-ID source/cut dispositions next",
+      "path": "docs/reviews/deep-worlds/status.md",
+      "commit_sha": "c5848133727e6d7182de80a56dde7ae8c0bfdda8",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/c5848133727e6d7182de80a56dde7ae8c0bfdda8/docs/reviews/deep-worlds/status.md"
+    }
+  ],
+  "measured_usage": {
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "output_tokens": null,
+    "reasoning_output_tokens": null,
+    "total_tokens": null,
+    "credits": null,
+    "estimated_usd": null,
+    "billed_usd": null,
+    "source": null
+  },
+  "coverage_notes": [
+    "Observed mixed interval includes research, tests, waits and publication; it is not active model/compute time and is unallocated across items.",
+    "No provider token/credit/billing counters were exposed; all measured_usage fields remain null.",
+    "All 24 current-main statuses were inspected (18 universe packs, six reviews) and freshly rechecked at c5848133727e6d7182de80a56dde7ae8c0bfdda8; zero remaining ChatGPT-owned headers and no research-ready/Claude parallel-self-audit candidates.",
+    "Three already-active universe packs exceed the standing two-universe downstream WIP limit; no new queued universe was started.",
+    "Signed active agreement was left unchanged. All three handled status headers use R1; histories preserved; outputs confirmed saved before status changes.",
+    "Source-based web research only; no separate Deep Research product invoked. No full canon or release approval.",
+    "Timeline exact audited head 133519a2fcdb8c67e8082fa59b6eb340b41b7b5f; Standard Works a3d5cc4de273be0590567cde45461b5ebc30fc53; Deep Worlds 60176e78f1272816a0869a5abe8018e884d704f7.",
+    "Timeline parent negative control failed four of eighteen tests as expected; current-head eighteen passed. These are distinct from full CI and renderer acceptance.",
+    "Standard Works attempted isolated Chromium fixture failed before page execution: socket() failed: Operation not permitted. Zero independently executed rendered cases; builder outputs remain attributed.",
+    "Deep Worlds Society Contents reads returned empty bodies for a 1238977-byte file; unchanged blob identity carries prior DWR-A evidence, not a new execution claim.",
+    "Remaining Deep Worlds open-ended source research is deferred; fixing/Claude denotes a bounded implementation handoff with explicit Known gaps, not completed canon audit.",
+    "Only authorized documentation paths and own coordination lock changed. No site code, PR branch, PR approval, merge, deployment or schedule mutation.",
+    "Receipt itself and final own-lock deletion occur after observed_end and are intentionally excluded from this measured window."
+  ],
+  "recorded_at": "2026-11-06T04:37:46Z",
+  "coordination": {
+    "lock_path": "docs/chatgpt-run.lock",
+    "acquisition_commit": "5551758857e4e1884078dd70ba3d5b0d8a0de213",
+    "lock_owner_verified_before_outputs": true,
+    "release": "Pending fresh own-lock read and conditional deletion after receipt readback; not yet claimed complete in this pre-publication receipt."
+  }
+}

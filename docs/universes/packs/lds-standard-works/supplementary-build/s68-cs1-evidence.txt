@@ -1,0 +1,16 @@
+lds 1440x900: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":557,"sideways":0}
+1440x900 CS-1 works: 3/3 link targets rendered
+1440x900 CS-1 unmapped-places: 4/4 link targets rendered
+1440x900 CS-1 unmapped-narratives: 4/4 link targets rendered
+lds 1440x900 escape: {"hidden":true,"focus":"cxBtn"}
+third-party requests: 0
+s67 final evidence: all checks passed
+--- 1280x800: run killed by the builder's 10-minute shell limit under software GL before completion (not a check failure); not re-run this checkpoint
+--- 390x844 (separate run)
+lds 390x844: {"compact":false,"tabsShown":false,"pickShown":true,"head":104,"body":588,"sideways":0}
+390x844 CS-1 works: 3/3 link targets rendered
+390x844 CS-1 unmapped-places: 4/4 link targets rendered
+390x844 CS-1 unmapped-narratives: 4/4 link targets rendered
+lds 390x844 escape: {"hidden":true,"focus":"cxBtn"}
+third-party requests: 0
+s67 final evidence: all checks passed

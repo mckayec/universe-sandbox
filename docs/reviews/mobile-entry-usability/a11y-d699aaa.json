@@ -1,0 +1,148 @@
+{
+ "reducedMotion": {
+  "mq": true,
+  "effectsLabel": "Effects: gentle",
+  "toastTransition": "0s",
+  "countAfterTap": "5",
+  "errs": []
+ },
+ "text200_390x844": {
+  "clipped": [],
+  "textOverflow": [
+   "universes-button",
+   "exhibits-button",
+   "fullscreen-button"
+  ],
+  "scrollW": 390,
+  "w": 390,
+  "sampledFontSizes": [
+   "22px",
+   "0px",
+   "24px",
+   "64px",
+   "36px",
+   "34px",
+   "40px",
+   "30px"
+  ],
+  "errs": []
+ },
+ "text200_844x390": {
+  "clipped": [],
+  "textOverflow": [],
+  "scrollW": 844,
+  "w": 844,
+  "sampledFontSizes": [
+   "22px",
+   "0px",
+   "24px",
+   "64px",
+   "36px",
+   "34px",
+   "40px",
+   "30px"
+  ],
+  "errs": []
+ },
+ "rotation": {
+  "before": {
+   "count": "5",
+   "sheetOpen": true
+  },
+  "steps": [
+   {
+    "size": "844x390",
+    "count": "5",
+    "sheetOpen": true,
+    "toolsExpanded": "false",
+    "clipped": [],
+    "textOverflow": [],
+    "scrollW": 844,
+    "w": 844
+   },
+   {
+    "size": "390x844",
+    "count": "5",
+    "sheetOpen": true,
+    "toolsExpanded": "false",
+    "clipped": [],
+    "textOverflow": [],
+    "scrollW": 390,
+    "w": 390
+   },
+   {
+    "size": "844x390",
+    "count": "5",
+    "sheetOpen": true,
+    "toolsExpanded": "false",
+    "clipped": [],
+    "textOverflow": [],
+    "scrollW": 844,
+    "w": 844
+   }
+  ],
+  "errs": []
+ },
+ "focusOrder": {
+  "dom": [
+   "universe-home",
+   "group-select",
+   "undo",
+   "redo",
+   "save-universe",
+   "load-universe",
+   "recover-session",
+   "habitability-mode",
+   "trail-mode",
+   "science-mode",
+   "quality-mode",
+   "realism-mode",
+   "effects-mode",
+   "sound-mode"
+  ],
+  "visual": [
+   "universe-home",
+   "undo",
+   "redo",
+   "group-select",
+   "save-universe",
+   "load-universe",
+   "recover-session",
+   "habitability-mode",
+   "trail-mode",
+   "science-mode",
+   "quality-mode",
+   "realism-mode",
+   "effects-mode",
+   "sound-mode"
+  ],
+  "compact": true,
+  "tabSequence": [
+   "universes-button",
+   "exhibits-button",
+   "fullscreen-button",
+   "universe-home",
+   "group-select",
+   "save-universe",
+   "habitability-mode",
+   "trail-mode",
+   "science-mode",
+   "quality-mode",
+   "realism-mode",
+   "effects-mode",
+   "sound-mode",
+   "panel-toggle",
+   "add-mode",
+   "inspect-mode",
+   "navigate-mode",
+   "pause",
+   "clear",
+   "zoom-in",
+   "zoom-out",
+   "zoom-fit",
+   "BUTTON",
+   "BUTTON"
+  ],
+  "errs": []
+ }
+}

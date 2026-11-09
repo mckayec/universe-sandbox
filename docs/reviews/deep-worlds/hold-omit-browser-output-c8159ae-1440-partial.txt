@@ -1,0 +1,44 @@
+PASS 1440x900 CONTROL expanse valid lm=bridge link: placed=false view=world site=drum lm=null errors=0
+PASS 1440x900 CONTROL hyperion valid lm=obelisk link: placed=false view=world site=tombs lm=null errors=0
+FAIL 1440x900 expanse stale lm=drumring: enters drum place view (view=world, site=drum, lm=null)
+PASS 1440x900 expanse stale lm=drumring: no removed-landmark selection or copy
+PASS 1440x900 expanse drum scene has 5 landmarks (5)
+FAIL 1440x900 expanse surviving landmark bridge selectable after stale link (lm=null)
+PASS 1440x900 expanse stale lm=drumring errors: none
+FAIL 1440x900 expanse stale lm=engineering: enters drum place view (view=world, site=drum, lm=null)
+PASS 1440x900 expanse stale lm=engineering: no removed-landmark selection or copy
+PASS 1440x900 expanse drum scene has 5 landmarks (5)
+FAIL 1440x900 expanse surviving landmark brig selectable after stale link (lm=null)
+PASS 1440x900 expanse stale lm=engineering errors: none
+FAIL 1440x900 hyperion stale lm=jade: enters tombs place view (view=world, site=tombs, lm=null)
+PASS 1440x900 hyperion stale lm=jade: no removed-landmark selection or copy
+PASS 1440x900 hyperion tombs scene has 4 landmarks (4)
+FAIL 1440x900 hyperion surviving landmark obelisk selectable after stale link (lm=null)
+PASS 1440x900 hyperion stale lm=jade errors: none
+HARNESS ERROR page.evaluate: Target page, context or browser has been closed
+    at st (/home/claude/ev/hold-omit-browser-check.cjs:7:19)
+    at /home/claude/ev/hold-omit-browser-check.cjs:34:88 {
+  log: []
+}
+FAIL 1440x900 hyperion stale site=sphinx: site absent, not entered (view=world, sel=hyperion, site=sphinx)
+PASS 1440x900 hyperion stale site errors: none
+PASS 1440x900 expanse stale ev=b3o: not opened (ev=null, view=galaxy)
+PASS 1440x900 expanse stale ev=b3o errors: none
+PASS 1440x900 hyperion stale ev=b2k: not opened (ev=null, view=galaxy)
+PASS 1440x900 hyperion stale ev=b2k errors: none
+PASS 1440x900 expanse book3 chronicle: no removed events, b3g present (37)
+PASS 1440x900 expanse open b3g via chronicle (ev=b3g, view=galaxy, site=null, lm=null)
+PASS 1440x900 expanse book3 tour started (10 stops); runtime pack events contain no removed ids (tour list is drawn from them)
+PASS 1440x900 expanse book3 tour steps never visit removed events (b3a,,)
+PASS 1440x900 expanse Back after event/tour: view=world ev=null hash=#book=3&world=solring&site=ringmouth&view=surface
+PASS 1440x900 expanse book3->2: b3g gated out (27, ev=null)
+PASS 1440x900 expanse book3 errors: none
+PASS 1440x900 expanse book7 chronicle: no removed events, b7p present (85)
+PASS 1440x900 expanse open b7p via chronicle (ev=b7p, view=galaxy, site=null, lm=null)
+PASS 1440x900 expanse book7 tour started (11 stops); runtime pack events contain no removed ids (tour list is drawn from them)
+PASS 1440x900 expanse book7 tour steps never visit removed events (b7a,,)
+PASS 1440x900 expanse Back after event/tour: view=galaxy ev=null hash=#book=7&world=medina&site=drum&view=surface
+HARNESS ERROR page.evaluate: Target page, context or browser has been closed
+    at /home/claude/ev/hold-omit-browser-check.cjs:72:41 {
+  log: []
+}

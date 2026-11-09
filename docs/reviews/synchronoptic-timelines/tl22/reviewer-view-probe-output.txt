@@ -1,0 +1,16 @@
+PASS 1440/accepted: first-render source state, downgrade selection/text/citation, no page errors
+PASS 1440/proposed: first-render source state, downgrade selection/text/citation, no page errors
+PASS 1440/absent: first-render source state, downgrade selection/text/citation, no page errors
+PASS 1440/invalid: first-render source state, downgrade selection/text/citation, no page errors
+PASS 1440/stale: first-render source state, downgrade selection/text/citation, no page errors
+PASS 1440/changed: first-render source state, downgrade selection/text/citation, no page errors
+PASS 1440/not-opted-in: first-render source state, downgrade selection/text/citation, no page errors
+PASS 390/accepted: first-render source state, downgrade selection/text/citation, no page errors
+PASS 390/proposed: first-render source state, downgrade selection/text/citation, no page errors
+PASS 390/absent: first-render source state, downgrade selection/text/citation, no page errors
+PASS 390/invalid: first-render source state, downgrade selection/text/citation, no page errors
+PASS 390/stale: first-render source state, downgrade selection/text/citation, no page errors
+PASS 390/changed: first-render source state, downgrade selection/text/citation, no page errors
+PASS 390/not-opted-in: first-render source state, downgrade selection/text/citation, no page errors
+14/14 scenarios passed (8 assertions each; synthetic DOM integration, not full atlas host/device qualification)
+exit 0

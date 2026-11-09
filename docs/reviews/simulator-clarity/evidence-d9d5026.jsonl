@@ -1,0 +1,15 @@
+{"tag":"1440x900","step":"loaded","renderer":"chromium headless + swiftshader","build":"vite preview (production)"}
+{"tag":"1440x900","step":"black hole placed","placedByUi":true,"count":"6","badge":"4 FPS · BALANCED · 6 OBJECTS"}
+{"tag":"1440x900","step":"pause/resume","pausedFrom":"00:01","pausedTo":"00:01","frozen":true,"resumedTo":"00:01","advanced":false}
+{"tag":"1440x900","step":"10x","from":"00:02","to":"00:06","badge":"4 FPS · BALANCED · 3 OBJECTS","errorsSoFar":0}
+{"tag":"1440x900","step":"cpu-throttle x20 (slow foreground)","before":"6 FPS · BALANCED · 3 OBJECTS","throttled":"4 FPS · BALANCED · 3 OBJECTS","recovered":"7 FPS · BALANCED · 3 OBJECTS"}
+{"tag":"1440x900","step":"hide 3s / show","badgeTrace":["8 FPS · BALANCED · 3 OBJECTS","8 FPS · BALANCED · 4 OBJECTS","7 FPS · BALANCED · 4 OBJECTS","8 FPS · BALANCED · 4 OBJECTS"],"elapsedAfter":"00:12"}
+{"tag":"1440x900","step":"console","errors":[],"glMessages":[],"swiftshaderPerformanceNotices":4}
+{"tag":"390x844","step":"loaded","renderer":"chromium headless + swiftshader","build":"vite preview (production)"}
+{"tag":"390x844","step":"black hole placed","placedByUi":false,"count":"4","badge":"9 FPS · BALANCED · 4 OBJECTS"}
+{"tag":"390x844","step":"pause/resume","pausedFrom":"00:01","pausedTo":"00:01","frozen":true,"resumedTo":"00:02","advanced":true}
+{"tag":"390x844","step":"10x","from":"00:03","to":"00:17","badge":"14 FPS · BALANCED · 5 OBJECTS","errorsSoFar":0}
+{"tag":"390x844","step":"cpu-throttle x20 (slow foreground)","before":"15 FPS · BALANCED · 5 OBJECTS","throttled":"3 FPS · BALANCED · 5 OBJECTS","recovered":"16 FPS · BALANCED · 6 OBJECTS"}
+{"tag":"390x844","step":"hide 3s / show","badgeTrace":["20 FPS · BALANCED · 6 OBJECTS","21 FPS · BALANCED · 7 OBJECTS","21 FPS · BALANCED · 7 OBJECTS","19 FPS · BALANCED · 7 OBJECTS"],"elapsedAfter":"00:26"}
+{"tag":"390x844","step":"console","errors":[],"glMessages":[],"swiftshaderPerformanceNotices":0}
+{"step":"done","outDir":"/tmp/claude-0/sc1","consoleProblems":0}

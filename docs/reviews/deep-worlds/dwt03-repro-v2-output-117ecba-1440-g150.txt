@@ -1,0 +1,23 @@
+target parent-117ecba 1440x900 gap=150
+after Next 1: step=2 / 13 view=place site=fane rendered=fane ev=null fade=false hash=#book=3&world=arrakis&site=fane&view=place
+after Next 2: step=3 / 13 view=place site=fane rendered=fane ev=c8 fade=true hash=#book=3&world=arrakis&site=arrakeen&view=surface
+after Next 3: step=4 / 13 view=world site=tabr rendered=null ev=null fade=true hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 4: step=5 / 13 view=place site=tabr rendered=tabr ev=c12 fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 5: step=6 / 13 view=place site=tabr rendered=tabr ev=c12 fade=true hash=#book=3&world=arrakis&site=tabr&view=surface
+after Next 6: step=7 / 13 view=galaxy site=null rendered=null ev=null fade=false hash=#book=3&world=arrakis
+after Next 7: step=8 / 13 view=galaxy site=jacurutu rendered=null ev=null fade=false hash=#book=3&world=arrakis&site=jacurutu&view=place
+after Next 8: step=9 / 13 view=galaxy site=null rendered=null ev=null fade=true hash=#book=3&world=arrakis&site=jacurutu&view=surface
+after Next 9: EVALUATE-TIMEOUT(15s)
+after Next 10: step=11 / 13 view=world site=jacurutu rendered=null ev=c11 fade=false hash=#book=3&world=arrakis&site=jacurutu&view=surface
+after Next 11: step=12 / 13 view=place site=fane rendered=fane ev=null fade=false hash=#book=3&world=arrakis&site=fane&view=place
+settle +5 s: consistent step=12 / 13 view=place site=fane rendered=fane ev=c6 fade=false hash=#book=3&world=arrakis&site=fane&view=place&lm=steps
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.waitForTimeout: Target page, context or browser has been closed
+    at /tmp/claude-0/r.cjs:75:13 {
+  log: []
+}
+
+Node.js v22.23.4

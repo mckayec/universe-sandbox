@@ -1,0 +1,22 @@
+PASS 390 E control: fresh book-1 galaxy copy has no hidden words {"head":"The Cosmere","chrome":"The galaxy›The cluster | No world selected. Reading Elantris"}
+PASS 390 A precondition: inside Luthadel with e70 and its copy shown {"ubook":2,"usite":"luthadel"}
+PASS 390 A place→galaxy (book 2→1): no hidden world/site copy in dossier, crumbs or announcement at any sample {"samples":16,"leaks":0}
+PASS 390 A place→galaxy (book 2→1): URL book equals state book and names no hidden world/site at any sample {"bad":0}
+PASS 390 A place→galaxy (book 2→1): settles in the galaxy with nothing selected {"phases":"place:scadrial/luthadel@0ms → world:scadrial/luthadel@3069ms → galaxy:scadrial@5452ms → galaxy@5586ms","last":{"view":"galaxy","sel":null,"site":null,"uworld":null,"uview":null}}
+PASS 390 A F1 regression: e70 never in state or chronicle
+PASS 390 A no page errors []
+PASS 390 B precondition: Scadrial surface with Luthadel selected {"usite":"luthadel"}
+PASS 390 B surface→galaxy (book 2→1): no hidden world/site copy in dossier, crumbs or announcement at any sample {"samples":13,"leaks":0}
+PASS 390 B surface→galaxy (book 2→1): URL book equals state book and names no hidden world/site at any sample {"bad":0}
+PASS 390 B surface→galaxy (book 2→1): settles in the galaxy with nothing selected {"phases":"world:scadrial/luthadel@0ms → galaxy:scadrial@5627ms → galaxy@5915ms","last":{"view":"galaxy","sel":null,"site":null,"uworld":null,"uview":null}}
+PASS 390 B no page errors []
+PASS 390 C precondition: inside Elendel at book 6 {"uview":"place"}
+PASS 390 C place→surface (book 6→5): no hidden world/site copy in dossier, crumbs or announcement at any sample {"samples":8,"leaks":0}
+PASS 390 C place→surface (book 6→5): URL book equals state book and names no hidden world/site at any sample {"bad":0}
+PASS 390 C place→surface (book 6→5): settles on the Scadrial surface with no site {"phases":"place:scadrial/elendel@0ms → world:scadrial/elendel@2724ms → world:scadrial@4067ms","last":{"view":"world","sel":"scadrial","site":null,"uworld":"scadrial","uview":"surface"}}
+PASS 390 C visible world kept: Scadrial named in crumbs once settled
+PASS 390 C no page errors []
+PASS 390 D positive: Luthadel still visible at book 2 stays entered with its copy and URL {"view":"place","rendered":"luthadel","ubook":2,"usite":"luthadel","uview":"place"}
+PASS 390 D no page errors []
+20/20
+exit 0
