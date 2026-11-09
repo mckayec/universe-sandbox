@@ -1,5 +1,7 @@
 # Workflow: how ChatGPT and Claude hand work to each other
 
+Start with [CURRENT_CONTEXT](CURRENT_CONTEXT.md) for source navigation. Use current item status for routing and the signed agreement plus its speed amendment for rules; historical receipts are not new assignments. Documentation in this repository is public even when it is not deployed to the site.
+
 ## Where status lives
 Each universe has a folder `docs/universes/packs/<id>/` with a `status.md` file. Its first lines are always:
 
