@@ -1,0 +1,4 @@
+2026-11-09T02:42:00Z
+owner: chatgpt
+run: release-universe-decisions-20261109
+scope: Record Mckay's D04-D08 decisions and hand D04-D07 release execution to Claude. Coordinated with the separate Cosmere worker; no application changes.
