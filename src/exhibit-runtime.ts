@@ -61,6 +61,24 @@ export function detectDeviceTier(compact: boolean): DeviceTier {
   return 'balanced';
 }
 
+/** Longest real frame used for physics/animation (fixed-step safety at high speeds and after stalls). */
+export const MAX_FRAME_STEP = 0.03;
+/** Real frames longer than this are interruptions (hidden tab, debugger, OS pause), not rendering cost. */
+export const MAX_MEASURED_FRAME = 0.5;
+
+/**
+ * Split one sampled frame delta into the honest wall-clock time used to measure performance and the capped step
+ * used to advance the simulation. `measured` is null for non-finite or interruption-length frames, which callers
+ * should drop from FPS and adaptive-quality windows instead of averaging them in.
+ */
+export function frameTiming(rawDelta: number) {
+  const finite = Number.isFinite(rawDelta) && rawDelta > 0 ? rawDelta : 0;
+  return {
+    measured: finite > 0 && finite <= MAX_MEASURED_FRAME ? finite : null,
+    step: Math.min(finite, MAX_FRAME_STEP),
+  };
+}
+
 export class PerformanceMonitor {
   private elapsed = 0;
   private frames = 0;
@@ -78,5 +96,11 @@ export class PerformanceMonitor {
       return true;
     }
     return false;
+  }
+
+  /** Start a fresh averaging window, e.g. after the page was hidden. */
+  reset() {
+    this.elapsed = 0;
+    this.frames = 0;
   }
 }

@@ -1,5 +1,6 @@
 // The animation loop: fixed-step simulation, visuals, overlays and rendering.
 import * as THREE from 'three';
+import { frameTiming } from '../exhibit-runtime.ts';
 import { saveRecoverySnapshot } from '../sandbox-state.ts';
 import { updateNebulaFrame } from '../nebula-hd.ts';
 import { runFixedSteps } from '../physics-continuity.ts';
@@ -9,7 +10,7 @@ import { MAX_SIM_STEPS, SIM_STEP, simulate } from '../physics/simulate.ts';
 import { updateSlowMotion } from '../physics/tidal-disruption.ts';
 import { updateCameraTransition } from '../scene/camera.ts';
 import { updateScienceOverlays } from '../scene/overlays.ts';
-import { updateAdaptiveQuality, updateLensing } from '../scene/quality.ts';
+import { resetAdaptiveQualityWindow, updateAdaptiveQuality, updateLensing } from '../scene/quality.ts';
 import {
   BASE_BLOOM,
   bloom,
@@ -109,9 +110,20 @@ function updateLabels() {
   }
   return viewDistance;
 }
+/** Reset frame-rate measurement windows whenever the page is hidden or shown again. */
+export function bindFrameTimingReset() {
+  document.addEventListener('visibilitychange', () => {
+    clock.getDelta();
+    performanceMonitor.reset();
+    resetAdaptiveQualityWindow();
+  });
+}
 export function animate() {
   requestAnimationFrame(animate);
-  const realDt = Math.min(clock.getDelta(), 0.03),
+  // Sample the clock once: the capped step drives physics and animation, the uncapped measured time drives the
+  // FPS badge and adaptive quality (a real 0.1 s frame must read as 10 FPS, not 33).
+  const timing = frameTiming(clock.getDelta()),
+    realDt = timing.step,
     refs = domRefs();
   updateCameraTransition(realDt);
   updateSlowMotion(realDt);
@@ -137,8 +149,8 @@ export function animate() {
   updateVisuals(realDt);
   updateScienceOverlays();
   updateLensing();
-  updateAdaptiveQuality(realDt);
-  if (performanceMonitor.update(realDt, droppedSimulationFrame)) {
+  if (timing.measured !== null) updateAdaptiveQuality(timing.measured);
+  if (timing.measured !== null && performanceMonitor.update(timing.measured, droppedSimulationFrame)) {
     setText(refs.perf, `${performanceMonitor.fps} FPS · ${deviceTier.toUpperCase()} · ${bodies.length} OBJECTS`);
     refs.perf.classList.toggle('warning', performanceMonitor.fps < 42);
   }

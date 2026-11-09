@@ -367,72 +367,52 @@ export function planetaryNebulaEffect(position: THREE.Vector3) {
   particleBurst(position, 0x8ce5df, isCompact ? 100 : 220, 3.1, 5.8);
   particleBurst(position, 0xd78cff, isCompact ? 70 : 150, 2.2, 7.2);
 }
+/**
+ * Fusion switching on: a soft core glow that contracts and then settles to the star's new brightness, plus a gentle
+ * puff of light. Deliberately smaller, slower and inward-looking compared with supernovaEffect (no expanding shells,
+ * no blast) so the two moments read differently. Visual only: ignition applies no forces.
+ */
 export function stellarIgnitionEffect(position: THREE.Vector3, color: number, mass: number) {
   const strength = THREE.MathUtils.clamp(mass / 175, 0.75, 1.55);
-  triggerFlash(0.86 * strength);
-  const flash = new THREE.Sprite(
+  triggerFlash(0.42 * strength);
+  const glow = new THREE.Sprite(
+    new THREE.SpriteMaterial({
+      map: coronaTexture('#ffffff', 37),
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      toneMapped: false,
+    }),
+  );
+  glow.position.copy(position);
+  transient(glow, 2.2, (life, dt) => {
+    // Gather inward for the first fifth, then brighten in place and fade.
+    const gather = THREE.MathUtils.smootherstep(life, 0, 0.2);
+    const scale = THREE.MathUtils.lerp(11, 5.5, gather) + Math.sin(Math.min(1, life * 1.4) * Math.PI) * 1.4;
+    glow.scale.setScalar(scale * strength);
+    const material = glow.material as THREE.SpriteMaterial;
+    material.opacity = gather * Math.pow(1 - life, 1.6) * 0.9;
+    material.rotation += dt * 0.12;
+  });
+  const core = new THREE.Sprite(
     new THREE.SpriteMaterial({
       map: coronaTexture('#ffffff', 37),
       transparent: true,
-      opacity: 0.96,
+      opacity: 0,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
       toneMapped: false,
     }),
   );
-  flash.position.copy(position);
-  flash.scale.setScalar(7 * strength);
-  transient(flash, 1.55, (life, dt) => {
-    flash.scale.set((7 + life * 35) * strength, (7 + life * 27) * strength, 1);
-    (flash.material as THREE.SpriteMaterial).opacity = Math.pow(1 - life, 2.35) * 0.96;
-    (flash.material as THREE.SpriteMaterial).rotation += dt * 0.24;
+  core.position.copy(position);
+  transient(core, 1.6, life => {
+    const pulse = Math.sin(Math.min(1, life / 0.55) * Math.PI * 0.5) * Math.pow(1 - life, 1.2);
+    core.scale.setScalar((2.2 + pulse * 2.4) * strength);
+    (core.material as THREE.SpriteMaterial).opacity = pulse * 0.95;
   });
-  const fireball = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(0.7, 4),
-    new THREE.MeshBasicMaterial({
-      color,
-      transparent: true,
-      opacity: 0.82,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-      toneMapped: false,
-    }),
-  );
-  fireball.position.copy(position);
-  transient(fireball, 1.8, (life, dt) => {
-    const contraction =
-      life < 0.22 ? THREE.MathUtils.lerp(3.4, 0.78, life / 0.22) : THREE.MathUtils.lerp(0.78, 10, (life - 0.22) / 0.78);
-    fireball.scale.setScalar(contraction * strength);
-    fireball.rotation.x += dt * 0.7;
-    fireball.rotation.y -= dt * 0.9;
-    (fireball.material as THREE.MeshBasicMaterial).opacity = Math.pow(1 - life, 1.4) * 0.82;
-  });
-  for (let i = 0; i < 3; i++) {
-    const shell = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1, 2),
-      new THREE.MeshBasicMaterial({
-        color: i === 0 ? 0xffffff : color,
-        wireframe: i === 2,
-        transparent: true,
-        opacity: 0.26,
-        side: THREE.DoubleSide,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-        toneMapped: false,
-      }),
-    );
-    shell.position.copy(position);
-    transient(shell, 2.3 + i * 0.35, (life, dt) => {
-      const delay = Math.max(0, life - i * 0.055),
-        pulse = THREE.MathUtils.smootherstep(delay, 0, 0.18);
-      shell.scale.setScalar((0.35 + pulse * (13 + i * 3)) * strength);
-      shell.rotation.x += dt * (0.22 + i * 0.08);
-      shell.rotation.y -= dt * (0.18 + i * 0.06);
-      (shell.material as THREE.MeshBasicMaterial).opacity = Math.sin(Math.min(1, delay) * Math.PI) * (0.28 - i * 0.055);
-    });
-  }
-  particleBurst(position, 0xffffff, isCompact ? 70 : 140, 7.2 * strength, 2.2);
-  particleBurst(position, color, isCompact ? 115 : 250, 4.8 * strength, 3.4);
+  particleBurst(position, color, isCompact ? 36 : 80, 1.6 * strength, 2.4);
 }
 export function nebulaAccretionEffect(cloud: Body, target: Body, density: number) {
   const start = cloud.mesh.position.clone(),

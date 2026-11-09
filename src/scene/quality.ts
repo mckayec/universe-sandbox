@@ -92,6 +92,11 @@ export function updateAdaptiveQuality(dt: number) {
   app.qualityTimer = 0;
   app.qualityFrames = 0;
 }
+/** Discard a partly filled adaptive-quality window (after the page was hidden or the frame was an interruption). */
+export function resetAdaptiveQualityWindow() {
+  app.qualityTimer = 0;
+  app.qualityFrames = 0;
+}
 export function updateLensing() {
   let strongest: Body | undefined;
   for (const body of bodies)

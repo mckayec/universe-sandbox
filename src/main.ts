@@ -4,7 +4,7 @@ import { bindPointerEvents } from './ui/pointer.ts';
 import { bindToolbar } from './ui/toolbar.ts';
 import * as THREE from 'three';
 import { saveRecoverySnapshot } from './sandbox-state.ts';
-import { animate } from './app/loop.ts';
+import { animate, bindFrameTimingReset } from './app/loop.ts';
 import { refreshGroupNavigator } from './bodies/groups.ts';
 import { addBody } from './bodies/registry.ts';
 import { applyExhibitPreferences, applyQualityScale, updateQualityModeButton } from './scene/quality.ts';
@@ -20,6 +20,7 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator)
 
 bindPointerEvents();
 bindToolbar();
+bindFrameTimingReset();
 setInteractionMode(true);
 addBody('star', new THREE.Vector3(), new THREE.Vector3(), { locked: true });
 addBody('rocky', new THREE.Vector3(7, 0, 0), new THREE.Vector3(0, 0, -5.6));

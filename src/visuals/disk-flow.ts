@@ -10,16 +10,20 @@
 // bright as it orbits instead of the bright patch spinning around with the gas.
 import * as THREE from 'three';
 
-/** Vertex shader for a RingGeometry disk (ring in local XY, normal +Z). */
+/**
+ * Vertex shader for a RingGeometry disk (ring in local XY, normal +Z). The local position is passed as a varying
+ * and the polar angle is computed per fragment: interpolating atan() itself breaks across the -pi/+pi seam.
+ */
 export const DISK_VERTEX = /* glsl */ `
-varying float vR;varying float vA;varying float vRad;varying float vBeam;
+varying float vR;varying vec2 vXY;varying float vRad;varying float vBeam;
 uniform float inner;uniform float outer;uniform float spin;
 void main(){
   vRad=length(position.xy);
   vR=(vRad-inner)/(outer-inner);
-  vA=atan(position.y,position.x);
+  vXY=position.xy;
+  float a=atan(position.y,position.x);
   vec4 mv=modelViewMatrix*vec4(position,1.);
-  vec3 orbit=mat3(modelViewMatrix)*(vec3(-sin(vA),cos(vA),0.)*spin);
+  vec3 orbit=mat3(modelViewMatrix)*(vec3(-sin(a),cos(a),0.)*spin);
   vBeam=dot(normalize(orbit),normalize(-mv.xyz));
   gl_Position=projectionMatrix*mv;
 }`;
