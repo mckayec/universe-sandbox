@@ -1,0 +1,32 @@
+# dwd-probe-v2.cjs VP=390x844 at head 68d47ce (ran concurrently with the parent flood probe: CPU contention)
+PASS 390 D d8 text keeps a+b with qualifier; c-e gone; harbor/flood refs intact | {"text":"Orion, broken by torture, drives the Storm Gods against Tyche, and storm surges drown the city. Provisional account; not independently checked against the novel.","lm":"harbor","fx":"flood"}
+PASS 390 D Tyche site from V; storms toggle era 5; harbor kept | 5 storms:5
+PASS 390 D Europa pins discordia/harmonia from VI | 6,6
+PASS 390 D Europa base facts neutral, era2 neutral+Golden Son, VI full rows | [[["Lord","Lorn au Arcos, the Stoneside"],["Island","An island of Europa’s ocean"],["Weather","Blue lightning near the poles"],["Book","Golden Son"]],[["Lord","Lorn au Arcos, the Stoneside"],["Island","Harmonia, Discordia Sea"],["Weather","Blue lightning near 
+PASS 390 IV Tyche enterSite denied | {"cur":null,"mode":"system"}
+PASS 390 IV Tyche globe pin gated from V | 5
+PASS 390 V Tyche entered; note qualifier visible on direct entry; V blurb qualified | Tyche
+PASS 390 V Tyche rendered text has no unqualified drowned capital
+FAIL 390 stale: V→IV inside Tyche leaves the scene | {"cur":"Tyche","mode":"site"}
+PASS 390 V d8 replay enters Tyche, presses Storm Gods, banner qualified | {"pressed":"true","ban":"TYCHE\nTyche Drowns\nIllustrative reconstruction of a provisional account, not checked against the novel"}
+PASS 390 V Chronicle/replay entry for d8 present in dossier | V
+Tyche drowns
+TYCHE · ANIMATED
+Orion, broken by torture, drives the Storm Gods against Tyche, and storm surges drown the city. Provisional account; not independently checked against the novel.
+▶ WATCH IT UNFOLD
+PASS 390 V Chronicle d8 text carries qualifier somewhere visible
+FAIL 390 V manual Storm Gods off/on toggles | true / false
+PASS 390 VI fresh Tyche: sea not raised (no default flood) | [{"r":169705.6274847714,"y":-6},{"r":169705.6274847714,"y":-6}]
+PASS 390 VI blurb neutral water-level note; no drowned capital
+FAIL 390 VI explicit Storm Gods replay raises sea | {"r":169705.6274847714,"y":-6}
+PASS 390 VI→V→VI in scene: no stale unqualified drowned text
+PASS 390 VI re-entry after replay: toggle unpressed (control reset) | false [{"r":169705.6274847714,"y":-6},{"r":169705.6274847714,"y":-6}]
+PASS 390 II Europa scene rendered text has no Harmonia/Discordia
+PASS 390 book 2 Europa visible landmark data (villa/seagate/leviathan) neutral; sea hidden | ["villa","keep","hall","seagate","leviathan"]
+PASS 390 V Europa scene rendered text has no Harmonia/Discordia
+PASS 390 book 5 Europa visible landmark data (villa/seagate/leviathan) neutral; sea hidden | ["villa","keep","hall","seagate","leviathan"]
+PASS 390 VI Europa names restored (epithet blurb/facts/sea/seagate/leviathan) | ["villa","keep","hall","seagate","deep","sea","leviathan"]
+PASS 390 leviathan shared LEV_TEXT (globe popup + landmark): 1 neutral, 6 full | {"1":"Carved monsters of Europa’s ocean and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-strip
+PASS 390 no page errors
+FAILED 3
+EXIT 1

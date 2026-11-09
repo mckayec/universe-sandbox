@@ -40,3 +40,22 @@ Independent rendered interaction: Storm Gods clicks only. Everything else is API
 1. Diagnose the stale V→IV Tyche case (try `history`/crumb route and a longer settle; compare a V-gated site on parent 2f04e41); fix only if it is a real gap.
 2. Complete the 390 rows of both probes; add the VI fresh-entry comparison on parent 2f04e41 (must show the old forced rise) so the "no forced flood" check is shown to discriminate.
 3. Add downgrade/upgrade with storms on and history/crumb navigation rows; then write the full return with an assertion table and hand to ChatGPT.
+
+## Checkpoint 2 — run 2026-11-09T15:46Z (head still 68d47ce; no application change)
+
+**Stale V→IV Tyche exit: diagnosed as a harness artifact, not an app gap.** [dwd-stale-diag.cjs](dwd-stale-diag.cjs), output [dwd-stale-diag-output-68d47ce.txt](dwd-stale-diag-output-68d47ce.txt):
+- Head, Tyche V→IV, storms off: `mode` globe by 500 ms (1440 and 390). Storms on: globe by 500 ms (2/2 runs). Storms on with `__floodH=43000`: globe by 500 ms.
+- Same pattern on the parent (Tyche IV→III storms on; Helios V→IV on head and parent).
+- Reproduced the earlier FAIL only with the focus probe's exact sequence (amplified flood toggled on/off/on): swiftshader frames take seconds, `page.click` times out (30 s, DOM-click fallback), `selectBook(4)` evaluate returns after 14 s and the 400 ms `fadeTo` callback lands at ~30 s — beyond the probe's 10 s wait. The app does leave the scene (globe, era 4). `setEra→leaveSite` is unchanged and correct.
+- The main probe's 390 stale FAIL (in [dwd-probe-output-68d47ce-390.txt](dwd-probe-output-68d47ce-390.txt)) was recorded while a second swiftshader browser was running (contention); the isolated 390 diagnostic passes.
+
+**New probe** [dwd-flood-probe.cjs](dwd-flood-probe.cjs): sea rows on an amplified page; stale/upgrade rows on a separate unamplified page; records whether each click was rendered or DOM fallback; `parent` mode is the discriminator.
+- Parent 2f04e41, 1440: VI fresh entry **forced rise present** (y 410→619, already flooded on entry) — PASS; so the head's "VI fresh steady" row discriminates. [Output](dwd-flood-output-2f04e41-parent.txt). 390 parent: not run (goto timeout under contention).
+- Head 68d47ce, 1440 amplified page: **7/7 PASS** — V and VI fresh entry unpressed and steady (−6→−6), Storm Gods on raises sea (V −6→415, VI −6→421), off returns to −6, no page errors. Clicks used the DOM fallback (rendered `page.click` starved under amplification). Stale/upgrade page rows not reached before the time bound. [Partial output](dwd-flood-output-68d47ce-1440-partial.txt).
+
+**390 main probe** (dwd-probe-v2.cjs = dwd-probe.cjs + `VP` env): 29 rows run, 3 FAIL — stale (contention, above), manual off/on (known deferred-callback race, superseded by the flood probe), VI explicit replay raise (known harness sensitivity without amplifier, superseded). All Europa/text/gate rows PASS at 390; no page errors.
+
+### Stopped at (next run)
+1. Run `dwd-flood-probe.cjs` head at 1440 and 390 and parent at 390 **one browser at a time** (no concurrent swiftshader); save outputs.
+2. Rerun dwd-probe-v2 at 390 alone; record the 3 superseded rows against their replacements.
+3. Write `fix-return-68d47ce.md` with the full assertion table and hand to ChatGPT.
