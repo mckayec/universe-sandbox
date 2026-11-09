@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude fixes SC4-T1 saturated companion ranking in helper and runtime selector, returns exact head with both-order regressions and focused checks per implementation-review-c4214ef.md; carry SC4-E1 and SC4-O1 into 4b evidence
-updated: 2026-11-09T10:20Z
+next-action: ChatGPT re-reviews SC4-T1 fix at PR47 ff480a5 (helper + runtime selector, both companion orders; reviewer repro must also inject `outranks`); then Claude continues slice 4b with SC4-E1 enforced evidence and SC4-O1 model-limit wording
+updated: 2026-11-09T10:52Z
 idle-runs: 0
-note: Slice 4a reviewed at c4214ef: independent 13/13 repository tests pass, additional helper/controller outcomes 2/4 pass (2 saturated-selection failures). One Medium correction; rendered harness observations not behavioral passes. No whole-item or release approval; 4b and items 5–7 remain.
+note: SC4-T1 fixed at ff480a5a388feb1e46549b358f633ec55c733d77: shared outranks() ranking by unclamped depth with deterministic ID tie-break; 146/146 unit tests, pages 24/24. SC4-E1/SC4-O1 carried into 4b. 4b and items 5–7 remain; no merge.
 
 
 # Simulator clarity and physics
@@ -67,6 +67,18 @@ Known gaps (4a):
 - Readability periods (outer-edge 25–186 visual s, 4× visual cap) unchanged. Planned 4b.
 - Truncation uses model masses in legacy units; consistent within a scene, not physical. Coordinate with item 7.
 
+## SC4-T1 fix receipt (PR #47, ff480a5a388feb1e46549b358f633ec55c733d77)
+
+Diff vs reviewed head c4214ef: 3 files — src/disk-encounter.ts, src/visuals/disk-encounters.ts, tests/disk-encounter.test.ts (+115/−16). No shader, inspector or template change.
+
+- `DiskEncounter` gains optional `depth` (unclamped truncation radius / outer radius; smaller = deeper) and optional `companionId`. `diskEncounter()` sets `depth`; strength, cut and angle are unchanged.
+- New pure `outranks(candidate, best)` is the single rule for both paths: an active encounter beats a quiet one; otherwise smaller `depth` wins (falls back to `cut` if `depth` is absent); on an exact tie the smaller companion ID wins, and without IDs the earlier encounter is kept.
+- `strongestEncounter()` (helper) and `targetEncounter()` (runtime selector) both use `outranks`; the runtime attaches `companionId` before ranking, so ID and angle travel with the chosen encounter. No candidate returns a fresh quiet state with no ID.
+- Regressions (tests/disk-encounter.test.ts): reviewer fixture (outer 10, equal masses, companions at (12,0,0) and (0,9,0), both strength 1) picks cut .2728 in both orders for the helper; two companions below the .25 cut floor are still separated by depth in both orders; exact-tie ID rule in both orders and no-ID earlier-wins; actual runtime selector extracted from source with identity-transform stubs returns cut .2728, companion ID 3 and angle π/2 in both orders, and quiet/no ID with no companions.
+
+Checks at ff480a5: `pnpm format`; `pnpm check` passed (build, 146/146 unit tests, check:dist 113 files); `node --test tests/disk-encounter.test.ts` 16/16; `pnpm test:pages` 12 pages × 2 viewports. Negative control: the reviewer's repro at c4214ef (2/4 fail) stands; the new test file against the c4214ef sources fails (it imports `outranks`, which did not exist). Note for re-running the reviewer repro at this head: its `new Function` must also pass `outranks`.
+Not run this return: browser/GPU scenes (no visual change), SC4-E1 enforced harness (deferred to 4b as allowed), physical devices.
+
 ## Known gaps
 
 - A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
@@ -86,3 +98,5 @@ Known gaps (4a):
 - 2026-11-09T10:20Z Claude: item 4 split into bounded slices; slice 4a (black-hole disk companion tide) built on PR #47 at c4214ef818d78d78f62efb8c69fa68751b3f272a (see 4a receipt). implementation/claude → implementation-review/chatgpt. 4b and items 5–7 not started. No merge.
 
 - 2026-11-09T10:20Z ChatGPT: [implementation-review-c4214ef.md](implementation-review-c4214ef.md) saved/read back at a07238fc0bbb4b0779194f26c0d47ea99cfb1d68; [reproduction](reviewer-encounter-c4214ef.mjs) at f3a3a1136175151a2b18eae95957b7d7d4375348. Exact PR47 c4214ef818d78d78f62efb8c69fa68751b3f272a, 8/8-file delta inspected, 13/13 repository tests pass independently. Additional actual-helper/extracted-controller cases 2/4 pass, 2/4 fail: SC4-T1 Medium, strength saturation makes selection depend on body order instead of deeper cut. SC4-E1 Low retains logging-only browser limitations; SC4-O1 qualifies physical model heuristics using two opened primary research sources. 0 independent rendered cases, 0/3 screenshots inspected; 3/3 builder scenario records read. implementation-review/chatgpt → fixing/claude for bounded selection correction; prior timing closure preserved. No application/PR-branch edit, merge, deployment or release approval.
+
+- 2026-11-09T10:52Z Claude: SC4-T1 fixed on PR #47 at ff480a5a388feb1e46549b358f633ec55c733d77 (see SC4-T1 fix receipt): shared `outranks` depth ranking with deterministic ID tie-break in helper and runtime; both-order regressions; 146/146 unit, pages 24/24. SC4-E1, SC4-O1 carried to 4b. fixing/claude → implementation-review/chatgpt. No merge.
