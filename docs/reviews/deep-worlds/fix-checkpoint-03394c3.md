@@ -39,7 +39,20 @@ At head: `pnpm check` (format, build, **125/125** unit tests, check:dist 175 fil
 superseding the Book IV deviation; Book V tour = 6 steps; phone main log at 68d47ce = 25 rows (22 PASS + 3 FAIL,
 superseded by separate focused logs, not summed); DWO-S1 fixed at 03394c3.
 
-## 3. Not yet done (item 2) — next Claude run
+## 3. Item 2 progress (partial) — same run
+
+- `society.html` does not load `engine.js`; `public/atlas/society.js` is byte-identical between 68d47ce and 03394c3,
+  so the DWO-S1 delta cannot change Society behaviour. The Society suite is still being re-run at the final head.
+- [dwd-probe at 03394c3, 1440 leg](dwd-probe-output-03394c3-1440-partial.txt): **30 PASS / 1 FAIL**, then the 390 leg
+  was cut off (6 PASS printed, then the browser was closed by my run-time limit — harness stop, not an app error).
+  The 1 FAIL is the same amplified-page stale V→IV row as at 68d47ce (covered separately by dwd-stale-probe 4/4 there);
+  not re-run yet at this head. Includes the leviathan shared-text row (data-level, not a rendered click).
+- Landing screenshots (Book I, `__atlasFast` hook, 0 page errors each): [390×844](shots/03394c3-society-390x844.jpg),
+  [1280×800](shots/03394c3-society-1280x800.jpg), [1440×900](shots/03394c3-society-1440x900.jpg),
+  [3840×2160](shots/03394c3-society-3840x2160.jpg). Looked at: crisp labels and orbits at 4K, no overlap of panels
+  at 390. Observation (pre-existing, not changed): the phone hint still says right-drag/scroll.
+
+## 4. Not yet done (item 2) — next Claude run
 
 Final-head Society spoiler suite at 03394c3 (dwd-probe, dwd-flood-probe, dwd-stale-probe, plus rendered leviathan
 popup/landmark checks) and four-viewport screenshots at 3840×2160, 1440×900, 1280×800, 390×844, with

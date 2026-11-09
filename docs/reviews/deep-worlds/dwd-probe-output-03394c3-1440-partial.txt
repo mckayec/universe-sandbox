@@ -1,0 +1,46 @@
+PASS 1440 D d8 text keeps a+b with qualifier; c-e gone; harbor/flood refs intact | {"text":"Orion, broken by torture, drives the Storm Gods against Tyche, and storm surges drown the city. Provisional account; not independently checked against the novel.","lm":"harbor","fx":"flood"}
+PASS 1440 D Tyche site from V; storms toggle era 5; harbor kept | 5 storms:5
+PASS 1440 D Europa pins discordia/harmonia from VI | 6,6
+PASS 1440 D Europa base facts neutral, era2 neutral+Golden Son, VI full rows | [[["Lord","Lorn au Arcos, the Stoneside"],["Island","An island of Europa’s ocean"],["Weather","Blue lightning near the poles"],["Book","Golden Son"]],[["Lord","Lorn au Arcos, the Stoneside"],["Island","Harmonia, Discordia Sea"],["Weather","Blue lightning near 
+PASS 1440 IV Tyche enterSite denied | {"cur":null,"mode":"system"}
+PASS 1440 IV Tyche globe pin gated from V | 5
+PASS 1440 V Tyche entered; note qualifier visible on direct entry; V blurb qualified | Tyche
+PASS 1440 V Tyche rendered text has no unqualified drowned capital
+FAIL 1440 stale: V→IV inside Tyche leaves the scene | {"cur":"Tyche","mode":"site"}
+PASS 1440 V d8 replay enters Tyche, presses Storm Gods, banner qualified | {"pressed":"true","ban":"TYCHE\nTyche Drowns\nIllustrative reconstruction of a provisional account, not checked against the novel"}
+PASS 1440 V Chronicle/replay entry for d8 present in dossier | V
+Tyche drowns
+TYCHE · ANIMATED
+Orion, broken by torture, drives the Storm Gods against Tyche, and storm surges drown the city. Provisional account; not independently checked against the novel.
+▶ WATCH IT UNFOLD
+PASS 1440 V Chronicle d8 text carries qualifier somewhere visible
+PASS 1440 V manual Storm Gods off/on toggles | false / true
+PASS 1440 VI fresh Tyche: sea not raised (no default flood) | [{"r":169705.6274847714,"y":-6},{"r":169705.6274847714,"y":-6}]
+PASS 1440 VI blurb neutral water-level note; no drowned capital
+PASS 1440 VI explicit Storm Gods replay raises sea | {"r":169705.6274847714,"y":-4.193122203118668}
+PASS 1440 VI→V→VI in scene: no stale unqualified drowned text
+PASS 1440 VI re-entry after replay: toggle unpressed (control reset) | false [{"r":169705.6274847714,"y":-6},{"r":169705.6274847714,"y":-6}]
+PASS 1440 II Europa scene rendered text has no Harmonia/Discordia
+PASS 1440 book 2 Europa visible landmark data (villa/seagate/leviathan) neutral; sea hidden | ["villa","keep","hall","seagate","leviathan"]
+PASS 1440 V Europa scene rendered text has no Harmonia/Discordia
+PASS 1440 book 5 Europa visible landmark data (villa/seagate/leviathan) neutral; sea hidden | ["villa","keep","hall","seagate","leviathan"]
+PASS 1440 VI Europa names restored (epithet blurb/facts/sea/seagate/leviathan) | ["villa","keep","hall","seagate","deep","sea","leviathan"]
+PASS 1440 leviathan shared LEV_TEXT (globe popup + landmark): 1 neutral, 6 full | {"1":"Carved monsters of Europa’s ocean and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-strip
+PASS 1440 no page errors
+PASS 390 D d8 text keeps a+b with qualifier; c-e gone; harbor/flood refs intact | {"text":"Orion, broken by torture, drives the Storm Gods against Tyche, and storm surges drown the city. Provisional account; not independently checked against the novel.","lm":"harbor","fx":"flood"}
+PASS 390 D Tyche site from V; storms toggle era 5; harbor kept | 5 storms:5
+PASS 390 D Europa pins discordia/harmonia from VI | 6,6
+PASS 390 D Europa base facts neutral, era2 neutral+Golden Son, VI full rows | [[["Lord","Lorn au Arcos, the Stoneside"],["Island","An island of Europa’s ocean"],["Weather","Blue lightning near the poles"],["Book","Golden Son"]],[["Lord","Lorn au Arcos, the Stoneside"],["Island","Harmonia, Discordia Sea"],["Weather","Blue lightning near 
+PASS 390 IV Tyche enterSite denied | {"cur":null,"mode":"system"}
+PASS 390 IV Tyche globe pin gated from V | 5
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.waitForTimeout: Target page, context or browser has been closed
+    at enter (/home/claude/universe-sandbox/docs/reviews/deep-worlds/dwd-probe.cjs:18:261)
+    at async /home/claude/universe-sandbox/docs/reviews/deep-worlds/dwd-probe.cjs:35:33 {
+  log: []
+}
+
+Node.js v22.23.4
