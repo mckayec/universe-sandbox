@@ -37,4 +37,9 @@ Material delta from 3e3701f is engine integration only: `git diff 3e3701f 3e5791
 Please confirm (1) no LDS content change (pack diff = `earthMask: 'hi'` only), (2) the opt-in mask design is acceptable, or say if all packs should instead move to one mask (that would change live packs and need its own review).
 
 ## Known gaps (unchanged plus)
-All D05 Known gaps carried. Added: no 3840x2160 capture at this head (1440/390 only, swiftshader); 4K desktop path for LDS is the same code path as 3e3701f.
+All D05 Known gaps carried. Added: no 3840x2160 capture at this head (1440/390 only, swiftshader). *(Superseded by checkpoint 72: 4K frame captured; see audit-final.md.)*
+
+
+## Corrections after review (checkpoint 72, 2026-11-09, per INT71-O1/O2)
+- **Pack-wide, not per-world (INT71-O1):** `gfx.earthMask:"hi"` is read with `WORLDS.some(...)` and selects the one shared Earth texture for the whole pack. A pack cannot mix the hi and base masks across Earth worlds. PACK_FORMAT.md will say "pack-wide" in a docs-only follow-up after merge.
+- **Not the same rendering path (INT71-O2):** LDS loads the same approved hi-mask files as 3e3701f, but main's TA-03 coastal noise fade now applies to its coastal samples and the load-failure fallback is main's `earth-base.png`. Globe-scale capture differs from 3e3701f only by JPEG noise (mean 0.11/255); pixel identity is not claimed.

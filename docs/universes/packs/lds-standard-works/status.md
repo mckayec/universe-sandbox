@@ -1,10 +1,10 @@
-stage: final-audit
-owner: claude
-blocked-on: claude
-next-action: Claude: record the relevant technical recheck/sign-off at PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8 in audit-final.md, explicitly dispositioning current-head rendering gaps and INT71-O1/O2 in integration-review-3e5791e.md; then route under existing D05/D09. Canon is approved at this head; no repeated source audit requested.
-updated: 2026-11-09T05:26Z
+stage: ready-for-owner
+owner: mckay
+blocked-on: mckay
+next-action: Mckay: merge PR #33 on GitHub pinned to 3e5791ec9ea89bc5f362449f5bf1d07c963073c8 (D05 approved; both sign-offs at this SHA; main has 0 non-doc changes since), or allow Claude merge permission per D09; Claude then confirms the Pages deploy, sets live, and rewords the PACK_FORMAT earthMask row to pack-wide (docs-only).
+updated: 2026-11-09T06:35Z
 idle-runs: 0
-note: Integration canon accepted; whole pack preserved except earthMask option. Independent 17/17 targeted tests and 14/14 loader scenarios; exact-head CI logs 213/213 tests and 26/26 page cases. Technical signature still names 3e3701f; both signatures at new head do not yet exist. No merge or deploy.
+note: Canon and Technical both approved at 3e5791e (audit-final.md). Checkpoint 72: pnpm check 213/213, test:pages 13x2, smoke pass, RC64-O1 + notice/heap harnesses pass at 4 viewports incl. fresh 4K frame; globe identical to 3e3701f at globe scale. INT71-O1/O2 accepted and documented. Not merged (D09).
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -132,3 +132,5 @@ Track A · view: Earth-historical, layered
 
 
 - 2026-11-09T05:26Z: ChatGPT completed the bounded integration recheck at exact PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8. Saved/read back reviewer-integration-3e5791e.mjs at 83b8c150239b399d6a6c6a70c3a7614b78b74cbc, integration-review-3e5791e.md at 79daffb15d7b7ab91e2f765993ba32b6c51c700f, and audit-final.md at 4ab3ea198b2b9612772119014eabbaffeff0f60f before this status update. Canon approved: exact whole-pack preservation except the hi-mask option, 28/28 non-doc delta paths classified, 7/7 combined files inspected, 17/17 local existing tests and 14/14 actual-loader stub scenarios passed; independently opened exact-head CI logs (213/213 tests, 26/26 page cases). Two Low precision observations: pack-wide mask selection and changed shader/fallback rendering despite preserved hi assets. No new High/Medium canon finding; prior source audit retained, no fresh scripture research claimed. final-audit/chatgpt -> final-audit/claude for exact-head technical sign-off and explicit visual-gap disposition, then existing D05/D09 routing. No owner release approval, merge or deployment.
+
+- 2026-11-09T06:35Z: Claude technical recheck (checkpoint 72) at exact PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8: pnpm check 213/213, test:pages 13x2, test:browser pass; unchanged s67/s70 harnesses pass at 3840x2160/1440/1280/390 (notice 7.3:1, 0 errors, 0 third-party, heap flat); fresh full-frame 4K capture; globe-scale diff vs 3e3701f 0.11/255. INT71-O1 (pack-wide mask) and INT71-O2 (TA-03 shader/fallback differ, no pixel identity) accepted with receipt corrections. Technical: approved at 3e5791e in audit-final.md. final-audit/claude -> ready-for-owner/mckay for merge execution under D05/D09. No merge or deploy.

@@ -245,3 +245,33 @@ Independent local results: **17/17 existing targeted tests**, **14/14 loader stu
 No new High/Medium canon findings. INT71-O1 clarifies that the nominal world option chooses one mask pack-wide; INT71-O2 distinguishes preserved mask selection from changed coastal shader/layout/fallback rendering. Neither blocks current LDS canon acceptance. Existing curated coverage, software-GL/physical-device limitations, missing fresh 4K frame and Save/Load intermittency remain visible.
 
 The prior **Technical: approved** signature names **3e3701f**, not this new revision. Claude should now record the relevant technical recheck/sign-off at **3e5791e**, explicitly retaining/dispositioning current-head visual gaps and the two Low observations. Until then, both sign-offs for the new revision do **not** exist. Keep `final-audit`, hand owner to Claude; after the signature, follow existing D05/D09 release routing. No release approval, merge or deployment by ChatGPT.
+
+
+---
+
+# Technical sign-off — integration head, checkpoint 72, 2026-11-09
+
+Claude · PR33 `pack/lds-standard-works` · exact head **3e5791ec9ea89bc5f362449f5bf1d07c963073c8** (merge of approved 3e3701f with main 9bff987). Main has changed only `docs/**` since 9bff987 (0 non-doc files), so this head still integrates cleanly with current main. Evidence: [s72-technical.txt](supplementary-build/s72-technical.txt), [s72 JSON](supplementary-build/s72/), shots below. All runs are builder-executed (Chromium 1243, SwiftShader).
+
+| §4 check | Result at 3e5791e |
+|---|---|
+| `pnpm check` | format OK, build OK, **213/213** tests, check:dist 116 files, no third-party loads |
+| `pnpm test:pages` | 13 pages x 2 viewports pass |
+| `pnpm test:browser` | pass on first try (desktop construction, persistence, controls, mobile layout) |
+| Exact-head CI | Actions run 42565302906: build **success**, deploy skipped (PR) |
+| RC64-O1 Reference fit (s67 harness, unchanged) | all checks pass at **3840x2160, 1440x900, 1280x800, 390x844**; compact chooser, Escape returns focus, 0 sideways overflow, Dune control unchanged |
+| Notice / back link / errors / memory (s70 harness, unchanged) | 1440, 1280, 390: notice contrast **7.3:1**, not clipped (credits strip on desktop, narrow dossier notice on phone); back link visible; 0 page/console errors; 0 third-party requests; heap 6 MB flat over 5 navigation cycles. Byte-for-byte the same measurements as the approved 3e3701f run |
+| 3840x2160 full frame | **captured this run**: [s72-reference-3840x2160.jpg](shots/s72-reference-3840x2160.jpg) — text crisp, cards fit, no overlap. Closes the "no fresh 4K frame" gap for this head (still software GL) |
+| Globe vs approved head | [s72-globe-1440.jpg](shots/s72-globe-1440.jpg) against shots/s70-1440.jpg (3e3701f), same camera: globe region mean pixel difference **0.11/255** (0.09% of pixels > 24), i.e. JPEG noise at this zoom. Phone: [s72-390.jpg](shots/s72-390.jpg) |
+
+## Dispositions
+
+- **INT71-O1 (Low) — accepted, documented.** Confirmed: `EARTH_HI_MASK` is computed once with `WORLDS.some(...)`, so `gfx.earthMask:"hi"` on any world switches the single shared Earth texture for the whole pack. Correct for LDS (one Earth world). The receipt now states this; the PACK_FORMAT.md row will be reworded to "pack-wide" as a docs-only follow-up on main after merge, so the reviewed head does not move. No pack today mixes masks.
+- **INT71-O2 (Low) — accepted, wording corrected.** The approved hi-mask files are what LDS loads, but the rendering path is **not** identical to 3e3701f: main's TA-03 coastal noise fade now applies to interpolated coastal samples, and the failure fallback is main's `earth-base.png`. Measured effect at globe scale is nil (above); at close coastal zoom the fade can only reduce noise amplitude next to the coast, which is the purpose of TA-03. No pixel identity is claimed. The receipt's "same code path" sentence is corrected.
+- **Layout delta from main's codex/filter CSS:** Reference body is taller at 4K (557 px vs 464 px; flex body) and the desktop dossier panel ends ~38 px higher at 1440 (it scrolls; nothing clipped). Both are main's already-released rules; no regression in the RC64-O1 checks.
+
+## Known gaps (carried to the release decision)
+
+Software GL only (no physical phone or real-GPU timing); no close-zoom coastal before/after at 4K for the TA-03 fade (globe-scale identical); pre-existing simulator Save/Load smoke intermittency (passed this run); curated, not verse-complete, coverage per the CS-2 notice.
+
+**Technical: approved** at **3e5791ec9ea89bc5f362449f5bf1d07c963073c8**. Canon is already approved at this same SHA (section above). Both sign-offs now name this revision. Release routes under D05 (approved) and D09 (merge execution). No merge or deploy performed.
