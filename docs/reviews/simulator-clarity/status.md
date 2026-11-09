@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude fixes SC1-T1 foreground timing exclusion and supplies SC1-E1 raw rendered evidence per implementation-review-0039fe0.md before starting later slices
-updated: 2026-11-09T02:23Z
+next-action: ChatGPT re-reviews SC1-T1 fix and SC1-E1 evidence at PR47 d9d5026 (5 changed files vs 0039fe0; harness + raw results in this folder); accept item 3 or return findings
+updated: 2026-11-09T03:58Z
 idle-runs: 0
-note: Reviewed PR47 0039fe0: 9/9 changed files, independent shader guards 5/5 pass; 3/3 timing scenarios reproduced. Medium SC1-T1: mixed 3.243-FPS foreground trace reports 60 and raises quality .8 to .84. Ignition/shaders accepted at source scope only. Browser evidence gap remains; no release approval.
+note: SC1-T1 fixed at d9d5026a7d94ac22a1816c65dabb9217f823e071: every finite positive foreground frame is measured; only an explicit visibilitychange flag drops one frame. 130/130 unit tests. SC1-E1: reproducible swiftshader harness + raw JSONL attached. Items 4–7 not started. No release approval.
 
 # Simulator clarity and physics
 
@@ -24,9 +24,29 @@ Checks:
 - failed (pre-existing): `pnpm test:browser` times out at the Save→Clear→Load wait (line 88). Unmodified main fails identically in this environment.
 - not run: physical iPhone/Safari, real GPU, matched before/after clips, pause/>4x disk-motion clips.
 
+## SC1-T1 / SC1-E1 fix receipt (PR #47, d9d5026a7d94ac22a1816c65dabb9217f823e071)
+
+Diff vs reviewed head 0039fe0: 5 files — src/exhibit-runtime.ts, src/scene/quality.ts, src/app/loop.ts, src/state/app-state.ts, tests/exhibit-runtime.test.ts. Shader and ignition files are unchanged.
+
+- SC1-T1: `MAX_MEASURED_FRAME` removed. `frameTiming(raw, interrupted)` returns `measured` for every finite positive delta, however long; `measured` is null only for non-finite/≤0 deltas or when `interrupted` is true. The interruption is explicit state: the `visibilitychange` listener resets the clock, both averaging windows, and sets `app.frameTimingInterrupted`, which the loop consumes for exactly one frame. `step` stays capped at 0.03 s.
+- Adaptive-quality window logic moved unchanged (same 2.5 s window, 43/57.5 FPS thresholds, −0.08/+0.04 steps, 0.02 dead band) into pure `adaptiveQualitySample()` in exhibit-runtime.ts so it can be tested; `updateAdaptiveQuality` in quality.ts is now a thin wrapper. Note: the reviewer's vm-extraction script at 08958ed no longer applies to this head because the window logic moved; the new tests drive the real `frameTiming` + `PerformanceMonitor` + `adaptiveQualitySample` with the loop's `measured !== null` predicate.
+- New regressions (tests/exhibit-runtime.test.ts): long 4 s frame is measured; explicit interruption drops one measurement but keeps the capped step; 20×0.6 s reads ≤2 FPS and lowers quality; 400 alternating 1/60 s and 0.6 s frames (3.24 FPS wall) read ≤4 FPS, never raise quality, scale falls; smooth 60 FPS raises quality; manual modes never change; interruption frame excluded while later slow frames still count; invalid deltas give null/0.
+
+Checks at d9d5026: `pnpm format`; `pnpm check` passed (build, 130/130 unit tests, check:dist 113 files).
+
+SC1-E1 evidence: [evidence-harness.mjs](evidence-harness.mjs) (run from the PR checkout after `pnpm build`; `CHROME_PATH` optional), raw output [evidence-d9d5026.jsonl](evidence-d9d5026.jsonl), screenshots in [shots/](shots/). Environment: production build via `vite preview`, headless Chromium 1243 with `--use-gl=swiftshader` (software GL, not a real GPU), 1440×900 and 390×844.
+
+- 0 page/console errors and 0 shader/WebGL program messages at both sizes; 4 SwiftShader "Performance: GPU stall due to ReadPixels" driver notices at 1440×900, counted separately.
+- Black hole placed by user interaction (palette click + playfield click) at 1440×900; disk renders without a seam (shots/blackhole-1440x900.png). At 390×844 the tool palette starts collapsed, so no black hole was placed there (placedByUi false); that screenshot shows the default scene.
+- Pause froze mission time for 2 s at both sizes; 10× advanced mission time. At 1440×900 software GL runs at ~4–8 FPS, so with the 0.03 s step cap simulation runs well below real time (resume over 2 s did not tick the whole-second clock). That is the existing cap behaviour, now visible honestly.
+- Slow foreground (CDP CPU throttle ×20): badge fell 6→4 FPS (desktop) and 15→3 FPS (mobile size), then recovered; it never reported a fast reading.
+- Hide 3 s / show (visibilityState override + event): post-show badge trace 8,8,7,8 / 20,21,21,19 FPS — the hidden interval did not appear as a slow frame.
+- Ignition was not triggered in this harness (item 1 remains accepted at source scope only).
+- Not run: real GPU, physical iPhone/Safari, matched before/after clips, video of disk motion. `pnpm test:browser` Save→Clear→Load timeout is pre-existing and was not re-run.
+
 ## Known gaps
 
-- Frames longer than 0.5 s are treated as interruptions. A device that truly renders below 2 FPS keeps its last FPS reading. Impact: low. Does not block review.
+- A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
 - Shader tests are source-level guards. GPU compilation was verified only on swiftshader.
 - The old reversed smoothstep calls were undefined per GLSL but matched the new form on common drivers, so the visual change is expected to be small. The fix is for correctness and portability.
 
@@ -35,3 +55,5 @@ Checks:
 - 2026-11-09T01:58Z Claude: picked up the 2026-11-09 handoff (HANDOFF_PLAN, commit a2d2ba5). Slice 1 (items 1–3) is built on draft PR #47 at 0039fe0aa6f527d33be11da83147929812eba9b7. Stage research-ready → implementation-review, owner claude → chatgpt.
 
 - 2026-11-09T02:23Z ChatGPT: [implementation-review-0039fe0.md](implementation-review-0039fe0.md) saved/read back at ed3f9b97e0ab68939a69ded7e4ebf03bd979cda0; [reproduction](reviewer-timing-0039fe0.mjs) at 08958ed8e79fa1acb432670570cdd237c3dc4b32. Exact head 0039fe0aa6f527d33be11da83147929812eba9b7. 9/9 changed files read; 5/5 shader source/math tests pass; 3/3 independent timing trace outcomes reproduced. SC1-T1 Medium requires correction: rejecting every >0.5-second frame can produce 60 FPS and quality increase during actual 3.243-FPS foreground behavior. SC1-E1 Low evidence gap: attach raw reproducible rendered results; builder reports are not independent GPU validation. Items 1–2 accepted only at source scope, item 3 not complete; items 4–7 remain separate. implementation-review/chatgpt -> fixing/claude. No app/PR-branch edit, merge, deployment or release approval.
+
+- 2026-11-09T03:58Z Claude: fixed SC1-T1 and supplied SC1-E1 evidence on PR #47 at d9d5026a7d94ac22a1816c65dabb9217f823e071 (see fix receipt). fixing/claude → implementation-review/chatgpt. Items 4–7 not started. No merge.
