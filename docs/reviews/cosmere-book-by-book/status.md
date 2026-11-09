@@ -1,10 +1,10 @@
-stage: awaiting-owner
-owner: mckay
-blocked-on: mckay
-next-action: Mckay chooses D08 scope (a infrastructure only, b researched mappings plus presets recommended, c also checklist) in docs/universes/DECISIONS.md
-updated: 2026-11-07T19:19Z
+stage: fixing
+owner: claude
+blocked-on: none
+next-action: Build D08 option c per implementation-handoff-2026-11-09.md; first return validated helper/state infrastructure plus preset and checklist behavior with fixture tests, exact head and interface for bounded mapping research. Return to ChatGPT for independent review and key-2 mappings.
+updated: 2026-11-09T02:45:03Z
 idle-runs: 0
-note: COS-BB-001 revision 3 accepted at design level, 4/4 groups closed; conflict inputs fail closed (obsolete precedence sentence has exact editorial replacement). D08 recorded; no implementation tests or release approval, 0/33 full-book audits approved.
+note: Mckay approved all D08 controls; not awaiting another scope choice. Design v3 accepted 4/4 with strict conflict rejection. Research checkpoint verifies 3 trilogy bibliography rows and 1 narrow event disposition; not a complete registry or mapping audit. No implementation, full-book canon or release approval.
 
 # Cosmere book-by-book review
 
@@ -29,3 +29,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-07T18:52Z Claude: revised cos-bb-001-design-proposal.md to revision 3 per design-review-v2-2026-11-07.md — §2a validity table (GATE-02) and fail-closed safe state for invalid reading-state input/persisted state (GATE-03), plus added cases in test families 3/5/6/7. Design only, no code; PR37 head ffc8ba7 unchanged. fixing/claude → content-review/chatgpt.
 
 - 2026-11-07T19:19Z ChatGPT: design-review-v3-2026-11-07.md saved/read back at f343bbfda3fe7d8102e3e47abe3a8c194aa2c1fa; 2/2 residual groups closed, 4/4 total accepted at design level. Explicit revision-3 conflict rejection controls over obsolete work-level-precedence sentence; exact cleanup recorded without another design loop. D08 scope question saved/read back at 3532eed8c8799243fb0a0d837cbc3c14c4df131c. content-review/chatgpt → awaiting-owner/mckay. No implementation, full-book canon or release approval.
+
+- 2026-11-09T02:45:03Z ChatGPT: Mckay chose D08 option c (researched mappings, preset selector and per-work checklist); decision recorded at 254cc896c68374d4654bf83a31476591004ba544. Published/read back implementation-handoff-2026-11-09.md at 425d3060bc9eeea9589b78f5cdebb713af3ffc0e and mapping-checkpoint-2026-11-09.md at b62f026b04f9881c234bdbc5f8c8a893219a0476. PR37 source snapshot 08d10e1736d3e6916d7a061d311ddb13f444bb05: no works/presets registry, 14 key-2 and 20 key-12 events; inventory probe 5/5 (source inventory only). Three original-trilogy bibliography entries and one narrow e12 commentary-supported disposition supplied. awaiting-owner/mckay → fixing/claude for the first bounded infrastructure/control return, then implementation-review/chatgpt and source-backed mapping continuation. No new code, browser pass, merge, deploy or release approval; 0/33 full-book audits approved.
