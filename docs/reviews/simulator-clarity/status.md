@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude continues slice 4b (protostar/transfer response, readability periods, orbiting/unequal/flyby/merger qualification) with SC4-E1 enforced evidence and SC4-O1 heuristic wording per implementation-review-ff480a5.md
-updated: 2026-11-09T11:17Z
+next-action: ChatGPT reviews slice 4b-1 at PR47 6c7d08ea380c4c93deb7bc928fb45b36ab3b3413 (protostar tide, SC4-O1 header/wording, merger selection handoff, enforced SC4-E1 harness) and returns accept or bounded findings; Claude then continues 4b-2 (transfer disks, readability periods, orbit/flyby clips)
+updated: 2026-11-09T12:03Z
 idle-runs: 0
-note: SC4-T1 closed at exact PR47 ff480a5 at source/controller scope; independent repository tests 16/16 and reviewer cases 14/14 vs parent 8/14. Rendered acceptance, stale post-merger inspector, SC1-E1/SC4-E1/SC4-O1 and items 5–7 remain; no full technical or release approval.
+note: Slice 4b split: 4b-1 at PR47 6c7d08ea380c4c93deb7bc928fb45b36ab3b3413 closes SC4-O1 wording and the stale post-merger selection; SC4-E1 now an exit-code harness (3 scenarios, 0 failures at head; parent ff480a5 fails 4 checks). Transfer disks, readability periods, orbit/flyby/unequal clips remain 4b-2; items 5–7 unfinished; no release approval.
 
 
 
@@ -80,6 +80,23 @@ Diff vs reviewed head c4214ef: 3 files — src/disk-encounter.ts, src/visuals/di
 Checks at ff480a5: `pnpm format`; `pnpm check` passed (build, 146/146 unit tests, check:dist 113 files); `node --test tests/disk-encounter.test.ts` 16/16; `pnpm test:pages` 12 pages × 2 viewports. Negative control: the reviewer's repro at c4214ef (2/4 fail) stands; the new test file against the c4214ef sources fails (it imports `outranks`, which did not exist). Note for re-running the reviewer repro at this head: its `new Function` must also pass `outranks`.
 Not run this return: browser/GPU scenes (no visual change), SC4-E1 enforced harness (deferred to 4b as allowed), physical devices.
 
+## Slice 4b-1 receipt (PR #47, 6c7d08ea380c4c93deb7bc928fb45b36ab3b3413)
+
+Parent ff480a5. Diff: 9 files (+93/−24) — src/disk-encounter.ts, src/visuals/disk-encounters.ts, src/visuals/materials.ts, src/visuals/update-visuals.ts, src/ui/inspector.ts, src/bodies/lifecycle.ts, src/physics/collisions.ts, src/state/history.ts (forEach wrapper for the new optional parameter), tests/disk-encounter.test.ts.
+
+- Protostar disk response: `protostarDiskMaterial` gains the tide uniforms and `DISK_TIDE_GLSL`; its edge is multiplied by the tide cut and the lanes take the arm brightness. The encounter controller now drives a per-kind layer table (`ENCOUNTER_DISK_LAYERS`: black hole 3 layers, protostar `protoDisk`) and runs for protostars too. The protostar disk's growing mesh scale is handled by the local frame (an unformed, tiny disk is naturally quiet). The inspector Disk row shows for protostars.
+- SC4-O1: the model header now separates what is sourced (Eggleton 1983 eq. 2 fit, circular synchronous binaries) from teaching choices (0.8 fraction, instantaneous 3D separation so eccentric orbits/flybys are illustrations per Sepinsky, Willems & Kalogera 2007, strength span, 0.25 floor, 2.2/0.55 rates, 2% filter, bulge/arm/streamer shapes, simulator mass units). Inspector wording is "… (heuristic estimate)".
+- Stale post-merger inspector: `removeBody(b, successor?)`. Merger (`consume`) and fragment collisions pass the survivor, so a selected swallowed body hands the selection to the survivor instead of clearing it (the old path called `select(null)` and left stale text in the hidden panel, which the 4a harness read).
+- Not in 4b-1 (moved to 4b-2): transfer (mass-stream) disks, readability periods, orbiting/flyby/unequal-mass clips.
+
+Checks at 6c7d08ea380c4c93deb7bc928fb45b36ab3b3413:
+- passed: `pnpm format`; `pnpm check` (build, 150/150 unit tests incl. 4 new: protostar shader wiring, controller/inspector wiring, SC4-O1 header phrases, selection-handoff wiring; check:dist 113 files); `pnpm test:pages` 12 pages × 2 viewports.
+- passed (SC4-E1, enforced): [evidence-harness-4b.mjs](evidence-harness-4b.mjs) exits 1 on any failed assertion. Raw [evidence-6c7d08e.jsonl](evidence-6c7d08e.jsonl): 3 scenarios, 0 failures. Asserted per scenario: clear → 0 bodies; first placement → count 1, selected type black hole, Disk "Undisturbed"; second placement → count 2, new name selected, Disk names the first body and says "heuristic estimate"; 10× button active; close pairs (1440×900, 390×844) → count 1, panel shown, survivor selected, survivor Disk "Undisturbed"; wide pair → still 2 bodies, still responding at 10×; 0 page/console errors and 0 shader/WebGL program messages; closer pair cut deeper than wide (66% vs 77%). Screenshots: [close paused 1440](shots/sc4b-close-1440x900-paused.jpg), [wide 10× 1440](shots/sc4b-wide-1440x900-10x.jpg), [merged 390](shots/sc4b-close-390x844-10x.jpg).
+- negative control: the same harness against a parent ff480a5 build fails 4 checks in the first two scenarios (heuristic wording ×2, selection handoff, survivor Disk text — it read stale "Truncated…" text from the hidden panel); its third scenario was cut by my 110 s timeout and is not counted.
+- not run: protostar disk in a rendered scene (protostars are not placeable; they form from nebulae, so its shader compile is source-checked only), real GPU, physical iPhone/Safari, matched motion clips, orbiting/flyby/unequal-mass scenes (the harness pairs start at rest; the two placed holes differ in variant mass), `pnpm test:browser` (pre-existing Save→Clear→Load timeout).
+
+Known gaps (4b-1): SC1-E1 shader/ignition/background limits unchanged; tidal disruption (`removeBody(donor)`) and other removals still clear selection rather than hand it on (low; no survivor is obvious there).
+
 ## Known gaps
 
 - A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
@@ -103,3 +120,5 @@ Not run this return: browser/GPU scenes (no visual change), SC4-E1 enforced harn
 - 2026-11-09T10:52Z Claude: SC4-T1 fixed on PR #47 at ff480a5a388feb1e46549b358f633ec55c733d77 (see SC4-T1 fix receipt): shared `outranks` depth ranking with deterministic ID tie-break in helper and runtime; both-order regressions; 146/146 unit, pages 24/24. SC4-E1, SC4-O1 carried to 4b. fixing/claude → implementation-review/chatgpt. No merge.
 
 - 2026-11-09T11:17Z ChatGPT: [implementation-review-ff480a5.md](implementation-review-ff480a5.md) saved/read back at 907abad56580accd5002e04d0b6a2fe762c3dbdf; [compatible head/parent runner](reviewer-encounter-ff480a5.mjs) at e194bebcc98157ddf4a4214e7c96c539a48c2b76. Exact PR47 ff480a5a388feb1e46549b358f633ec55c733d77, 3/3 changed files reviewed; independent repository tests 16/16, helper/runtime cases 14/14 head vs 8/14 parent (six behavioral failures, not missing-import failure). SC4-T1 closed within source/controller scope; no new High/Medium finding. 0 independent rendered cases; SC4-E1/SC1-E1, SC4-O1 and stale merger inspector remain visible. implementation-review/chatgpt → implementation/claude for bounded 4b continuation; items 5–7 unfinished. No application/PR-branch edit, merge, deployment or release approval.
+
+- 2026-11-09T12:03Z Claude: slice 4b split; 4b-1 on PR #47 at 6c7d08ea380c4c93deb7bc928fb45b36ab3b3413 (see 4b-1 receipt): protostar disk tide, SC4-O1 model-limit header and "heuristic estimate" wording, merger/fragment selection handoff, enforced SC4-E1 harness (3/3 scenarios pass at head; parent fails 4 checks). 150/150 unit, pages 24/24. 4b-2 (transfer disks, readability periods, orbit/flyby/unequal clips) and items 5–7 not started. implementation/claude → implementation-review/chatgpt. No merge.
