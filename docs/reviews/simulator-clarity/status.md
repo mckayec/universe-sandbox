@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude continues 4b-2 (transfer disks, readability periods, orbit/flyby/equal-and-unequal-mass evidence); include rendered protostar, enforced actual-surviving-ID and pause assertions per implementation-review-6c7d08e.md, then return exact head for bounded review.
-updated: 2026-11-09T12:22Z
+next-action: ChatGPT reviews slice 4b-2 at PR47 920f76e80958a7753ced450b97d66d49ebc4eaca (transfer-disk tide, readability floor, ?probe=1 harness with surviving-ID/pause assertions, rendered protostar and orbiting unequal binary); return accept or bounded findings. Items 5–7 follow.
+updated: 2026-11-09T13:15Z
 idle-runs: 0
-note: 4b-1 accepted at source/controller/removal-function scope at PR47 6c7d08e; independent 20/20 focused tests and 12/12 behavior probes (parent 5/12). SC4-O1 qualification addressed; SC4-E1 partially addressed, SC1-E1/rendered gates retained. Chromium launch blocked by executor socket permission; builder 33/33 rendered checks remain attributed. Items 4b-2 and 5–7 unfinished; no release approval.
+note: 4b-2 built at PR47 920f76e: pnpm check 159/159, pages 24/24, enforced harness 45/45 rendered checks + 2 negative-control rules (builder-attributed, SwiftShader). Flyby, real GPU, physical devices and Save→Clear→Load smoke not run. SC1-E1 retained. Item 4 complete pending review; items 5–7 not started. No merge.
 
 
 
@@ -97,6 +97,27 @@ Checks at 6c7d08ea380c4c93deb7bc928fb45b36ab3b3413:
 
 Known gaps (4b-1): SC1-E1 shader/ignition/background limits unchanged; tidal disruption (`removeBody(donor)`) and other removals still clear selection rather than hand it on (low; no survivor is obvious there).
 
+## Slice 4b-2 receipt (PR #47, 920f76e80958a7753ced450b97d66d49ebc4eaca)
+
+Parent 6c7d08e. Diff: 10 files (+205/−14) — src/visuals/disk-flow.ts, src/visuals/materials.ts, src/visuals/disk-encounters.ts, src/physics/matter-streams.ts, src/ui/inspector.ts, src/ui/test-probe.ts (new), src/main.ts, src/disk-encounter.ts (comment only), tests/disk-encounter.test.ts (one regex), tests/disk-readability.test.ts (new, 9 tests).
+
+- Transfer-disk response: `transferDiskMaterial` gains the tide uniforms and `DISK_TIDE_GLSL` (edge × tide cut, filaments + arm brightness). `updateTransferDiskTide(stream, receiver, donor, dt)` runs the same `diskEncounter`/`relaxEncounter` model with the donor as companion, in the outer layer's local frame (handles the stream's growing scale). A nebula or debris donor feeds without truncating (extended medium, consistent with the black-hole companion filter). Black holes that keep their own disk are skipped (their own controller already responds). The inspector Disk row now also shows for a star/white dwarf/pulsar with a visible transfer disk.
+- Readability periods: `diskFlow` adds a uniform floor `READABLE_MIN_OMEGA = 2π/32` rad per visual second to the Keplerian pattern speed. The differential (shear) term is unchanged, so spirals still wind; every outer edge now turns in ≤ 30 visual s at 1× (was 25–186 s; tests compute all 15 built geometries). Innermost edges speed up ≤ 11%. The 4× visual cap is unchanged. TS helpers `diskPatternOmega`/`diskPatternPeriod` mirror the shader; a test pins the GLSL constant.
+- Pause behavior: transfer tides relax on frame time while paused, exactly like black-hole and protostar disks (nothing moves, so they settle on a fixed target).
+- SC4-O1 wording: the 0.8 fraction is now "a chosen teaching factor, not a sourced value".
+- Test probe: `src/ui/test-probe.ts` installs a read-only `window.__sandboxProbe()` only when the URL has `?probe=1` (paused, speed, selected ID, bodies with IDs/kinds/tide, transfer disks). No visible UI; a unit test checks it is opt-in and writes no state.
+
+Checks at 920f76e80958a7753ced450b97d66d49ebc4eaca:
+- passed: `pnpm format:check`; `pnpm check` (build, 159/159 unit tests, check:dist 113 files); `pnpm test:pages` 12 pages × 2 viewports.
+- passed (SC4-E1, enforced): [evidence-harness-4b2.mjs](evidence-harness-4b2.mjs), exits 1 on any failure. Raw [evidence-920f76e.jsonl](evidence-920f76e.jsonl): 5 scenarios, 45/45 checks, 0 failures.
+  - Merger at 1440×900 and 390×844 (10 checks each): probe installed; probe `paused === true` with 0 bodies before placement and still paused after both placements; the survivor rule asserts exactly one of the two original IDs remains, it is the selected ID, and the swallowed ID is absent; running at 10× verified from the probe; survivor Disk "Undisturbed"; 0 page/console and 0 shader/WebGL messages.
+  - Rendered protostar at 1440×900 and 390×844 (10 checks each) via the existing Build a Star exhibit (two protostars in a nebula; no fixture injection needed): a newborn (unformed) disk is quiet; after forming at 5×, paused: a protostar is selected, its Disk names the other protostar (not the nebula) with "heuristic estimate", probe strength > 0, and the paused tide settles monotonically. Screenshots: [1440](shots/sc4b2-protostar-1440x900-paused.jpg), [390](shots/sc4b2-protostar-390x844-paused.jpg).
+  - Orbiting unequal-mass binary (Dance of Two Suns, 270/185) at 1440×900, 10× (5 checks): a visible transfer disk with tide > 0 appears within 60 s; paused tide settles monotonically. [Screenshot](shots/sc4b2-binary-1440x900-transfer-paused.jpg): giant receiver Disk "Strongly truncated by Helios 02: outer gas cut to 37% (heuristic estimate)".
+- negative controls: the pure survivor rule rejects a stale swallowed selection, no selection, and an unmerged pair, and accepts the live survivor; the settle rule rejects oscillation, acceleration and a quiet disk. The same harness against a parent 6c7d08e build exits 1 at the first probe call (`window.__sandboxProbe is not a function`); that shows the harness cannot pass without the probe, not a behavioral comparison.
+- not run: a flyby (unbound) encounter; matched motion clips; real GPU; physical iPhone/Safari; `pnpm test:browser` (pre-existing Save→Clear→Load timeout). Screenshots of the merger at 390 [here](shots/sc4b2-merge-390x844.jpg).
+
+Known gaps (4b-2): flyby is not exercised in the rendered harness (the model treats it the same as any instantaneous separation, per SC4-O1); a transfer tide on a black-hole receiver is carried by the hole's own disk controller, not the stream; SC1-E1 shader/ignition/background limits unchanged.
+
 ## Known gaps
 
 - A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
@@ -124,3 +145,5 @@ Known gaps (4b-1): SC1-E1 shader/ignition/background limits unchanged; tidal dis
 - 2026-11-09T12:03Z Claude: slice 4b split; 4b-1 on PR #47 at 6c7d08ea380c4c93deb7bc928fb45b36ab3b3413 (see 4b-1 receipt): protostar disk tide, SC4-O1 model-limit header and "heuristic estimate" wording, merger/fragment selection handoff, enforced SC4-E1 harness (3/3 scenarios pass at head; parent fails 4 checks). 150/150 unit, pages 24/24. 4b-2 (transfer disks, readability periods, orbit/flyby/unequal clips) and items 5–7 not started. implementation/claude → implementation-review/chatgpt. No merge.
 
 - 2026-11-09T12:22Z — ChatGPT reviewed PR47 `sim/clarity-physics` at **6c7d08ea380c4c93deb7bc928fb45b36ab3b3413**, parent **ff480a5a388feb1e46549b358f633ec55c733d77**. Saved [implementation-review-6c7d08e.md](implementation-review-6c7d08e.md) (commit b12f91ab50543d61dad472f204930fc512d61353) after [independent runner](reviewer-4b1-6c7d08e.mjs) (47645c355dd1991cb36931ff824a24cbb935c448), both read back. Incremental 9/9 files examined; 17/17 fetched input blob hashes verified. Exact-head focused tests 20/20; actual extracted controller with Three.js matrices plus removal function 12/12, identical parent runner 5/12 (seven behavioral failures). Accepted protostar wiring and selection handoff at that scope. SC4-O1 model-limit clarification accepted without physical validation; SC4-E1 logging-only defect addressed, actual survivor identity/pause assertions and remaining rendered scenarios still due. Independent Chromium launch failed at process-singleton socket permission before any page; 0 completed browser cases, builder 33/33 checks remain attributed. Return implementation/claude for the bounded 4b-2 continuation and retained SC1-E1 gates; items 5–7 incomplete. No merge/deploy/release approval.
+
+- 2026-11-09T13:15Z Claude: slice 4b-2 on PR #47 at 920f76e80958a7753ced450b97d66d49ebc4eaca (see 4b-2 receipt): transfer-disk tide from donor (nebula/debris excluded), readability floor (outer edges ≤ 30 visual s, shear unchanged), opt-in read-only probe; enforced harness 45/45 with surviving-ID, pause, rendered protostar and orbiting unequal binary transfer scenarios plus negative controls. 159/159 unit, pages 24/24. Item 4 complete pending review; items 5–7 not started. implementation/claude → implementation-review/chatgpt. No merge.
