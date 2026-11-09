@@ -136,3 +136,25 @@ test('the pack validator accepts the Track A fixture and catches bad layer and y
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('year handles reach the last year and a change without a move keeps the range (R30-1)', () => {
+  // axis -799..2030 with step 10: 2829 is not a whole number of steps
+  const T = L.normTimeline({ timeline: { min: -800, max: 2030, step: 10 } }, []);
+  assert.equal(L.axisTop(T), 2031);
+  assert.equal(L.snapAxis(T, L.toAxis(2030)), 2031);
+  assert.equal(L.snapAxis(T, L.toAxis(1500)), 1501);
+  // full range: both handles untouched (or dragged to the ends) stay "All years"
+  assert.equal(L.rangeFromHandles(T, null, -799, 2031), null);
+  // the old max (2030) snapped to 2021 and narrowed the range; the top step now maps back to the full range
+  assert.deepEqual(plain(L.rangeFromHandles(T, null, -799, 2021)), [-800, 2021]);
+  // explicit range shown as snapped values keeps its exact years on a change without a move
+  assert.deepEqual(plain(L.rangeFromHandles(T, [600, 1500], 601, 1501)), [600, 1500]);
+  assert.deepEqual(plain(L.rangeFromHandles(T, [-500, 100], -499, 101)), [-500, 100]);
+  // moving one handle changes only that end
+  assert.deepEqual(plain(L.rangeFromHandles(T, [600, 1500], 601, 1801)), [600, 1801]);
+  assert.deepEqual(plain(L.rangeFromHandles(T, [600, 1500], -199, 1501)), [-200, 1500]);
+  // the rendered inputs use the reachable top
+  const h = L.renderBar(null, T, null, null);
+  assert.match(h, /data-tl="to" min="-799" max="2031" step="10" value="2031"/);
+  assert.match(h, /--b:100\.00%/);
+});

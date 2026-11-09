@@ -181,6 +181,31 @@
     return lo <= T.min && hi >= T.max ? null : [lo, hi];
   }
 
+  /* top of the year inputs: the axis minimum plus whole steps, so a handle can reach the last year
+     (a range input only takes min + n*step, so max = T.max itself could be unreachable) */
+  function axisTop(T) {
+    const mn = toAxis(T.min);
+    const st = +T.step || 1;
+    return mn + Math.ceil((toAxis(T.max) - mn) / st) * st;
+  }
+
+  /* the value a year input actually holds for an axis value (snapped to min + n*step, within [min, top]) */
+  function snapAxis(T, v) {
+    const mn = toAxis(T.min);
+    const st = +T.step || 1;
+    return Math.max(mn, Math.min(axisTop(T), mn + Math.round((v - mn) / st) * st));
+  }
+
+  /* the range from the two handle values; a handle still at the snapped position of the current end
+     keeps that end exactly, so a change without a move never narrows or shifts the range */
+  function rangeFromHandles(T, range, va, vb) {
+    if (!T) return null;
+    const r = range || [T.min, T.max];
+    const lo = +va === snapAxis(T, toAxis(r[0])) ? r[0] : fromAxis(+va);
+    const hi = +vb === snapAxis(T, toAxis(r[1])) ? r[1] : fromAxis(+vb);
+    return clampRange(T, lo, hi);
+  }
+
   /* the era names that overlap a range (for the readout) */
   function erasIn(T, range) {
     if (!T) return [];
@@ -245,10 +270,10 @@
     }
     if (T) {
       const r = range || [T.min, T.max];
-      const a = toAxis(r[0]);
-      const b = toAxis(r[1]);
       const mn = toAxis(T.min);
-      const mx = toAxis(T.max);
+      const mx = axisTop(T);
+      const a = range ? toAxis(r[0]) : mn;
+      const b = range ? toAxis(r[1]) : mx;
       const pct = (v) => (mx === mn ? 0 : ((v - mn) / (mx - mn)) * 100).toFixed(2);
       const eras = erasIn(T, range);
       h +=
@@ -320,6 +345,9 @@
     fmtWhen,
     fmtRange,
     clampRange,
+    axisTop,
+    snapAxis,
+    rangeFromHandles,
     erasIn,
     encodeState,
     decodeState,

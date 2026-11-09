@@ -1278,7 +1278,10 @@ if($("#realms"))$("#realms").addEventListener("click",e=>{const b=e.target.close
 
 /* ===================== LAYERS & TIMELINE (PACK_FORMAT 20) ===================== */
 const filtersEl=$("#filters");let fDrag=false,fPend=false;
-function renderFilters(){if(!filtersEl||!LY||fDrag)return;filtersEl.innerHTML=LY.renderBar(LAY,TL,S.layers,S.range);}
+/* rebuilding the bar keeps keyboard focus on the same control (a year handle or layer chip), so arrow keys keep working */
+function renderFilters(){if(!filtersEl||!LY||fDrag)return;const fa=document.activeElement,ds=fa&&filtersEl.contains(fa)?fa.dataset:null;
+  filtersEl.innerHTML=LY.renderBar(LAY,TL,S.layers,S.range);
+  const k=ds&&(ds.tl?'[data-tl="'+CSS.escape(ds.tl)+'"]':ds.layer?'[data-layer="'+CSS.escape(ds.layer)+'"]':null),n=k&&filtersEl.querySelector(k);if(n)n.focus({preventScroll:true});}
 function applyFilters(){
   if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];if(S.site){const st=(w.sites||[]).find(x=>x.id===S.site);if(st&&!siteSeen(st))S.site=null;}buildSiteLabels(w);}
@@ -1287,7 +1290,7 @@ function applyFilters(){
 /* read the two year handles (they never cross) and update the readout without rebuilding the bar mid-drag */
 function readRange(moved){const ins=filtersEl.querySelectorAll("input[data-tl]");if(ins.length<2)return;let a=+ins[0].value,b=+ins[1].value;
   if(a>b){if(moved===ins[0]){a=b;ins[0].value=b;}else{b=a;ins[1].value=a;}}
-  S.range=LY.clampRange(TL,LY.fromAxis(a),LY.fromAxis(b));const r=S.range||[TL.min,TL.max];
+  S.range=LY.rangeFromHandles(TL,S.range,a,b);const r=S.range||[TL.min,TL.max];
   const mn=+ins[0].min,mx=+ins[0].max,pc=v=>(mx===mn?0:(v-mn)/(mx-mn)*100).toFixed(2)+"%";
   const tr=filtersEl.querySelector(".tl-track");if(tr){tr.style.setProperty("--a",pc(a));tr.style.setProperty("--b",pc(b));}
   ins[0].setAttribute("aria-valuetext",LY.fmtYear(r[0],TL.style));ins[1].setAttribute("aria-valuetext",LY.fmtYear(r[1],TL.style));

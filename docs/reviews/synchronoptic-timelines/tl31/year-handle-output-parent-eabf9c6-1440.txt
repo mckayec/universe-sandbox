@@ -1,0 +1,21 @@
+INFO yr-handles/1440 axis to.max 2030, to.value 2021, from.value -799
+FAIL yr-handles/1440 A full range, "to" left+right (change ends where it started): S.range = URL yr = none — {"range":"-800_2011","yr":"-800_2011","readout":"800 BCE – 2011","from":"-799","to":"2011","max":"2030"}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.focus: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#filters input[data-tl="to"]')[22m
+[2m    - locator resolved to <input step="10" min="-799" max="2030" type="range" data-tl="to" value="2030" aria-label="To year" aria-valuetext="2030"/>[22m
+
+    at focusInput (/home/claude/pr45/docs/reviews/synchronoptic-timelines/tl31/year-handle-probe.mjs:64:42)
+    at /home/claude/pr45/docs/reviews/synchronoptic-timelines/tl31/year-handle-probe.mjs:100:9 {
+  log: [
+    `  - waiting for locator('#filters input[data-tl="to"]')`,
+    '    - locator resolved to <input step="10" min="-799" max="2030" type="range" data-tl="to" value="2030" aria-label="To year" aria-valuetext="2030"/>'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4
