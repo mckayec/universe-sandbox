@@ -10,6 +10,7 @@ import type { Body } from '../state/types.ts';
 import { updateGalaxyMotion } from './galaxy-motion.ts';
 import { updateDiskEncounter } from './disk-encounters.ts';
 import { animateRelativisticJets } from './jets.ts';
+import { updatePlanetLighting } from './planet-lighting.ts';
 
 function tidalFrameFor(b: Body) {
   const g = b.mesh,
@@ -187,6 +188,7 @@ export function updateVisuals(dt: number) {
         visibleZoneStars.add(star.id);
     else if (app.selectedBody?.kind === 'star') visibleZoneStars.add(app.selectedBody.id);
   }
+  updatePlanetLighting();
   for (const b of bodies) {
     if (b.kind === 'comet') updateCometVisual(b);
     if (b.kind === 'nebula') {

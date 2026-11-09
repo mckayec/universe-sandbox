@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { type StageLook } from '../celestial-catalog.ts';
 import type { MatterStream } from '../state/types.ts';
 import { DISK_FLOW_GLSL, DISK_TIDE_GLSL, DISK_VERTEX, keplerConstant } from './disk-flow.ts';
+import { KEY_LIGHT_GLSL, LIT_VARYINGS, LIT_VERTEX, keyLightUniforms } from './key-light-glsl.ts';
 import { glowTexture } from './textures.ts';
 
 export const NOISE_GLSL = `float hash(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}`;
@@ -56,9 +57,10 @@ export function rockyMaterial(seed: number) {
       accent: { value: new THREE.Color(accent) },
       seed: { value: seed * 0.73 },
       mode: { value: variant },
+      ...keyLightUniforms(),
     },
-    vertexShader: `varying vec3 p;varying vec3 n;void main(){p=normal;n=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-    fragmentShader: `varying vec3 p;varying vec3 n;uniform float time;uniform float seed;uniform float mode;uniform vec3 low;uniform vec3 high;uniform vec3 accent;${NOISE_GLSL}void main(){vec3 q=normalize(p);float broad=noise(q*3.1+seed)+.46*noise(q*8.7-seed);float detail=noise(q*22.+seed*2.);vec3 col=mix(low,high,smoothstep(.3,1.18,broad));if(mode<.5){float crater=smoothstep(.82,.96,noise(q*7.2+seed*3.));col*=1.-crater*.48;col=mix(col,accent,detail*.13);}else if(mode<1.5){col=mix(col,accent,smoothstep(.72,1.22,broad)*.28);col*=.82+.18*detail;}else if(mode<2.5){col=mix(col,accent,smoothstep(.67,1.08,broad)*.32);}else if(mode<3.5){float land=smoothstep(.72,.86,broad);col=mix(low,mix(high,accent,detail*.3),land);float ice=smoothstep(.74,.94,abs(q.y));col=mix(col,vec3(.9,.97,1.),ice*.85);}else if(mode<4.5){float ice=smoothstep(.25,.88,broad);col=mix(low,high,ice);col=mix(col,accent,smoothstep(.72,.98,abs(q.y)));}else if(mode<5.5){float fissure=1.-smoothstep(.025,.11,abs(noise(q*5.4+seed+time*.025)-.5));col=mix(col,accent,fissure*.92);col+=accent*fissure*.42;}else if(mode<6.5){float vein=smoothstep(.67,.84,noise(q*12.+seed));col=mix(col,accent,vein*.32);}else if(mode<7.5){col=mix(col,accent,smoothstep(.52,1.04,broad)*.42);col*=.72+.28*detail;}else if(mode<8.5){float day=smoothstep(-.05,.08,dot(q,normalize(vec3(.8,.1,.4))));col=mix(low,high,day);col=mix(col,accent,smoothstep(.72,.94,detail)*.26);}else{float salt=smoothstep(.6,.82,broad);col=mix(low,high,salt);col=mix(col,accent,smoothstep(.7,.95,detail)*.34);}float daylight=smoothstep(-.18,.28,dot(q,normalize(vec3(.62,.25,.74))));col*=.12+.88*daylight;if(mode>2.5&&mode<3.5){float cities=smoothstep(.84,.94,noise(q*38.+seed*4.));col+=vec3(1.,.55,.16)*cities*(1.-daylight)*.72;}float facing=abs(dot(normalize(n),vec3(0,0,1)));col+=accent*pow(1.-facing,3.)*.08;gl_FragColor=vec4(col,1.);}`,
+    vertexShader: LIT_VERTEX,
+    fragmentShader: `${LIT_VARYINGS}uniform float time;uniform float seed;uniform float mode;uniform vec3 low;uniform vec3 high;uniform vec3 accent;${NOISE_GLSL}${KEY_LIGHT_GLSL}void main(){vec3 q=normalize(p);float ocean=0.;float broad=noise(q*3.1+seed)+.46*noise(q*8.7-seed);float detail=noise(q*22.+seed*2.);vec3 col=mix(low,high,smoothstep(.3,1.18,broad));if(mode<.5){float crater=smoothstep(.82,.96,noise(q*7.2+seed*3.));col*=1.-crater*.48;col=mix(col,accent,detail*.13);}else if(mode<1.5){col=mix(col,accent,smoothstep(.72,1.22,broad)*.28);col*=.82+.18*detail;}else if(mode<2.5){col=mix(col,accent,smoothstep(.67,1.08,broad)*.32);}else if(mode<3.5){float land=smoothstep(.72,.86,broad);ocean=1.-land;col=mix(low,mix(high,accent,detail*.3),land);float ice=smoothstep(.74,.94,abs(q.y));col=mix(col,vec3(.9,.97,1.),ice*.85);}else if(mode<4.5){float ice=smoothstep(.25,.88,broad);col=mix(low,high,ice);col=mix(col,accent,smoothstep(.72,.98,abs(q.y)));}else if(mode<5.5){float fissure=1.-smoothstep(.025,.11,abs(noise(q*5.4+seed+time*.025)-.5));col=mix(col,accent,fissure*.92);col+=accent*fissure*.42;}else if(mode<6.5){float vein=smoothstep(.67,.84,noise(q*12.+seed));col=mix(col,accent,vein*.32);}else if(mode<7.5){col=mix(col,accent,smoothstep(.52,1.04,broad)*.42);col*=.72+.28*detail;}else if(mode<8.5){float day=smoothstep(-.05,.08,dot(q,normalize(vec3(.8,.1,.4))));col=mix(low,high,day);col=mix(col,accent,smoothstep(.72,.94,detail)*.26);}else{float salt=smoothstep(.6,.82,broad);col=mix(low,high,salt);col=mix(col,accent,smoothstep(.7,.95,detail)*.34);}vec3 N=normalize(vWN);float daylight=dayside(N,-.18,.28);col*=.12+.88*daylight;col+=oceanGlint(N,ocean)*daylight;if(mode>2.5&&mode<3.5){float cities=smoothstep(.84,.94,noise(q*38.+seed*4.));col+=vec3(1.,.55,.16)*cities*(1.-daylight)*.72;}float facing=abs(dot(normalize(n),vec3(0,0,1)));col+=accent*pow(1.-facing,3.)*.08;gl_FragColor=vec4(col,1.);}`,
   });
 }
 export function gasMaterial(seed: number) {
@@ -86,9 +88,10 @@ export function gasMaterial(seed: number) {
       stormAmount: { value: stormAmount },
       seed: { value: seed * 0.61 },
       hot: { value: variant === 4 ? 1 : 0 },
+      ...keyLightUniforms(),
     },
-    vertexShader: `varying vec3 p;varying vec3 n;void main(){p=normal;n=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-    fragmentShader: `varying vec3 p;varying vec3 n;uniform float time;uniform float seed;uniform float frequency;uniform float stormAmount;uniform float hot;uniform vec3 dark;uniform vec3 light;uniform vec3 storm;${NOISE_GLSL}void main(){vec3 q=normalize(p);float lon=atan(q.z,q.x);float warp=noise(vec3(lon*1.4,q.y*3.2,seed+time*.035));float lat=q.y*frequency+warp*2.1;float stripes=.5+.5*sin(lat);float fine=.5+.5*sin(lat*2.7+noise(q*8.+seed)*1.4);vec3 col=mix(dark,light,smoothstep(.16,.84,stripes));col=mix(col,light,fine*.16);float stormLon=seed*.47;float dx=abs(atan(sin(lon-stormLon),cos(lon-stormLon)));float oval=length(vec2(dx*.55,(q.y-.13*sin(seed))*3.5));float vortex=(1.-smoothstep(.12,.45,oval))*stormAmount;col=mix(col,storm,vortex);float wisps=smoothstep(.72,1.2,noise(q*10.+vec3(time*.045,seed,0.)));col=mix(col,storm,wisps*.12*stormAmount);float polar=smoothstep(.68,.96,abs(q.y));col=mix(col,light,polar*.16);float daylight=smoothstep(-.2,.32,dot(q,normalize(vec3(.62,.25,.74))));col*=.24+.76*daylight;float facing=abs(dot(normalize(n),vec3(0,0,1)));col+=light*hot*pow(1.-facing,3.)*.35;gl_FragColor=vec4(col,1.);}`,
+    vertexShader: LIT_VERTEX,
+    fragmentShader: `${LIT_VARYINGS}uniform float time;uniform float seed;uniform float frequency;uniform float stormAmount;uniform float hot;uniform vec3 dark;uniform vec3 light;uniform vec3 storm;${NOISE_GLSL}${KEY_LIGHT_GLSL}void main(){vec3 q=normalize(p);float lon=atan(q.z,q.x);float warp=noise(vec3(lon*1.4,q.y*3.2,seed+time*.035));float lat=q.y*frequency+warp*2.1;float stripes=.5+.5*sin(lat);float fine=.5+.5*sin(lat*2.7+noise(q*8.+seed)*1.4);vec3 col=mix(dark,light,smoothstep(.16,.84,stripes));col=mix(col,light,fine*.16);float stormLon=seed*.47;float dx=abs(atan(sin(lon-stormLon),cos(lon-stormLon)));float oval=length(vec2(dx*.55,(q.y-.13*sin(seed))*3.5));float vortex=(1.-smoothstep(.12,.45,oval))*stormAmount;col=mix(col,storm,vortex);float wisps=smoothstep(.72,1.2,noise(q*10.+vec3(time*.045,seed,0.)));col=mix(col,storm,wisps*.12*stormAmount);float polar=smoothstep(.68,.96,abs(q.y));col=mix(col,light,polar*.16);float daylight=dayside(normalize(vWN),-.2,.32);col*=.24+.76*daylight;float facing=abs(dot(normalize(n),vec3(0,0,1)));col+=light*hot*pow(1.-facing,3.)*.35;gl_FragColor=vec4(col,1.);}`,
   });
 }
 export function atmosphereMaterial(color: number, opacity: number, seed: number, clouds = false) {
@@ -98,13 +101,14 @@ export function atmosphereMaterial(color: number, opacity: number, seed: number,
       color: { value: new THREE.Color(color) },
       opacity: { value: opacity },
       seed: { value: seed * 0.39 },
+      ...keyLightUniforms(),
     },
     transparent: true,
     side: THREE.FrontSide,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
-    vertexShader: `varying vec3 p;varying vec3 n;void main(){p=normal;n=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
-    fragmentShader: `varying vec3 p;varying vec3 n;uniform float time;uniform float seed;uniform float opacity;uniform vec3 color;${NOISE_GLSL}void main(){float rim=pow(1.-abs(n.z),2.6);float cloud=${clouds ? 'smoothstep(.46,.8,noise(normalize(p)*5.+vec3(time*.025,seed,0.)))' : '1.'};gl_FragColor=vec4(color*(.65+rim),opacity*(rim*.8+cloud*.25));}`,
+    vertexShader: LIT_VERTEX,
+    fragmentShader: `${LIT_VARYINGS}uniform float time;uniform float seed;uniform float opacity;uniform vec3 color;${NOISE_GLSL}${KEY_LIGHT_GLSL}void main(){float rim=pow(1.-abs(n.z),2.6);float lit=.18+.82*dayside(normalize(vWN),-.35,.45);float cloud=${clouds ? 'smoothstep(.46,.8,noise(normalize(p)*5.+vec3(time*.025,seed,0.)))' : '1.'};gl_FragColor=vec4(color*(.65+rim)*lit,opacity*(rim*.8+cloud*.25)*lit);}`,
     toneMapped: false,
   });
 }
