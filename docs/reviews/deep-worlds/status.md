@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements SO1–SO3 prologue omission and SO6 doc correction per omission-review-c8159ae.md; returns exact SO4/SO5 duplicate/dependency closure before those sub-cuts
-updated: 2026-11-09T00:20Z
+next-action: ChatGPT reviews SO1–SO3 omission at PR37 08d10e1 and decides the SO4/SO5 options in fix-return-08d10e1.md (garden, centralcmd, era-6, Storm Gods/d8 scope)
+updated: 2026-11-09T01:40Z
 idle-runs: 0
-note: 14/14 omissions accepted at c8159ae source/data scope; independent whole-pack subtraction 2/2 and surviving site refs 156/156. Society packet incomplete: active scene copies remain beyond proposed POI cuts. Canon not approved; final technical gates retained.
+note: SO1–SO3 applied at 08d10e1736d3e6916d7a061d311ddb13f444bb05 (g1, set-piece, whole 52u prologue module incl. SITES.prologue and both FX; no dependency beyond the closure); SO6 corrected; check 125/125, pages 12x2, so13 probe 26/26 (1440/390). SO4/SO5 exact closure tables returned, not applied. Canon not approved; DWO-S1 and final technical gates retained.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -14,6 +14,7 @@ Scope (on branch `atlas/deep-worlds`): `public/atlas/packs/{sun-eater,hyperion,e
 for spoiler leaks.
 
 ## Your task (ChatGPT)
+
 `implementation.md` describes what was built and lists every item the builders were unsure of. The new content
 was written by AI from plot summaries, not checked against the books: treat it as unaudited.
 
@@ -31,6 +32,7 @@ was written by AI from plot summaries, not checked against the books: treat it a
 Do not edit the pack files yourself; Claude applies the findings on the PR branch.
 
 ## History
+
 - 2026-10-27: Claude built the work on `atlas/deep-worlds` (head bb5eb23; PR #37 head 14f7a52 after merging main) and handed the canon audit to ChatGPT. Not merged; Mckay approves after the audit.
 - 2026-11-04: Claude: Cosmere CB01–CB04 (queued in HANDOFF_PLAN) pushed to PR #37 at 60176e78f1272816a0869a5abe8018e884d704f7 (parent 9a09dbc, the reviewed baseline): e6/e77/e15/e78 copy replaced as specified, landmarks removed (e78: composite, landmark removed), ids/site/book/gates kept; optional e14/e16 left for ChatGPT. pnpm check 89/89, test:pages pass, cb-probe 56/56 at 1440/390; test:browser flaky on this branch at an unrelated save/load step, including on unmodified 9a09dbc. Details: implementation.md §7 on the branch. Stage/owner not changed by Claude. Not merged.
 
@@ -98,3 +100,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-08T23:18Z Claude: applied the 14-target hold/dependency omission batch at PR37 c8159ae4aef82f6f05346a587e11f43a3df4e5e1 (parent 5bfde31; expanse.js −6, hyperion.js −12 lines; no dependency beyond the named closure). hold-omit-check 20/20 (other packs identical, no other leaf changed, 0 dangling refs), pnpm check 125/125, test:pages 12x2; rendered 1440 partial with control showing hash place entry incomplete in this environment; DWO-S1 (Low) stale site id state proposed for final-technical. Society source-or-omit table SO1–SO6 (exact selectors, 0 cuts, no repo locators). Evidence: fix-return-c8159ae.md. fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
 
 - 2026-11-09T00:20Z ChatGPT: [omission-review-c8159ae.md](omission-review-c8159ae.md) saved/read back at 0da30980f30466ffa114075964fdd011c6c79350. Exact PR37 c8159ae4aef82f6f05346a587e11f43a3df4e5e1: 2/2 changed files inspected, 14/14 omissions accepted, 2/2 independent complete-pack subtraction checks and 156/156 surviving event-site references pass. Builder browser log remains partial (7 FAIL rows, 2 harness errors); 0 independent rendered cases. SO1–SO3 prologue exposure omission authorized with explicit registration/effect closure, SO6 rationale correction; SO4/SO5 require finite duplicate scene/era/landmark dependency closure before sub-cuts. 0/6 newly source-verified; 139 unselected records and full canon/technical/release gates remain unapproved. content-review/chatgpt -> fixing/claude. No application edit, PR approval, merge or deployment.
+- 2026-11-09T01:40Z Claude: [fix-return-08d10e1.md](fix-return-08d10e1.md). PR37 08d10e1736d3e6916d7a061d311ddb13f444bb05 (parent c8159ae; society.js +4/−222, implementation.md): removed g1, FX_VIEW irongoldprologue, the self-contained 52u prologue module (Tyche toggle/handler, interval chain, SITES.prologue with landmark/control, FX.irongoldprologue, FX.irongoldreaper) and SITE_FROM prologue:4; caller inventory found no dependency beyond the closure; two guarded _prolT reads in shared Tyche/Sungrave code kept (now always false). SO6 rationale corrected on branch and main, gate unchanged. pnpm check 125/125, test:pages 12x2, so13 probe 26/26 at 1440/390 (builder-run, API-driven). SO4/SO5 finite closure tables with exact proposed removals and stop points returned; not applied. fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
