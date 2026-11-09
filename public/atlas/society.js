@@ -48,7 +48,7 @@ const POIS={
  luna:[{id:"hyperion",name:"Hyperion",lat:1,lon:32,site:"hyperion",desc:{1:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge.",2:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge. Site of the Summit in Golden Son.",3:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge. Site of the Summit in Golden Son and the last stand in Morning Star."}}],
  phobos:[{id:"phobosport",name:"The Hive & the Needles",lat:8,lon:0,site:"phobos",desc:"A jagged city built over six centuries into and above the rock, its luxury tower tips called the Needles. Quicksilver’s helium-3 fortune is based here."}],
  io:[{id:"raaseat",name:"Nesos",lat:12,lon:20,site:"io",desc:"Io’s capital and the seat of House Raa, sheltered by pulse shields amid sulfur dunes and volcanoes. Romulus au Raa meets Darrow on Io."}],
- europa:[{id:"lornhome",name:"Lorn’s castle",lat:62,lon:-20,site:"europa",desc:"A white limestone castle on a far-northern island of Europa’s ocean, its walls ringing a private forest. Lorn au Arcos lives here with his family, far from his wars."}],
+ europa:[{id:"lornhome",name:"Lorn’s castle",lat:62,lon:-20,site:"europa",desc:"A castle on an island of Europa’s ocean. Lorn au Arcos lives here with his family, far from his wars."}],
  ganymede:[{id:"docks",name:"Ganymede Dockyards",lat:0,lon:6,site:"ganymede",desc:"A grey ring of shipyards around Ganymede’s equator, centuries in the building, where the Society’s greatest warships, Colossus among them, are made."}]
 };
 
@@ -64,7 +64,7 @@ const EVENTS=[
  {id:"e6",book:2,body:"belt",where:"The Asteroid Belt",poi:null,title:"Losing the Academy",text:"At the fleet Academy out in the asteroid belt, Darrow finishes second to Karnus au Bellona, who has help from the Sovereign and the Proctors. Nero puts Darrow’s contract up for auction."},
  {id:"e7",book:2,body:"luna",poi:"hyperion",lm:"sovspire",fx:"galaduel",title:"The Summit",text:"Darrow abandons a Sons of Ares bombing, duels and beats Cassius, and a sword brawl breaks out with House Bellona. Leto is killed."},
  {id:"e8",book:2,body:"luna",poi:"vanguard",lm:"bridge",fx:"paxtaking",title:"Taking the Vanguard",text:"After the Summit massacre, Darrow and Sevro are fired from launch tubes onto the bridge of the Vanguard, a warship of the Sovereign’s fleet, while its lowColor crew rises against their Golds. Renamed the Pax, it escapes Luna, and Ragnar pledges himself to Darrow."},
- {id:"e9",book:2,body:"europa",poi:"lornhome",lm:"villa",title:"Winning Lorn",text:"Darrow comes to recruit his old sword teacher and survives an ambush by Aja. After Tactus betrays them, Lorn executes him and joins Darrow’s cause."},
+ {id:"e9",book:2,body:"europa",poi:"lornhome",lm:"villa",title:"Winning Lorn",text:"Darrow comes to recruit his old sword teacher. After Tactus betrays them, Lorn executes him and joins Darrow’s cause."},
  {id:"e10",book:2,body:"ganymede",poi:"docks",lm:"platform",fx:"docktrap",title:"Trap at Ganymede",text:"House Augustus raids the dockyards, knocking out reactors on the defense platform, but Pliny has betrayed the plan. Nero and the Jackal are ambushed and captured while Darrow is away on Europa."},
  {id:"e11",book:2,body:"mars",poi:"agea",fx:"ironrain",title:"Iron Rain over Mars",text:"Darrow’s forces drop onto Bellona-held Mars in an Iron Rain, thousands of soldiers falling from orbit at once. Ragnar opens Agea’s gates from within. Darrow kills Karnus aboard the Sovereign’s ship, and Fitchner reveals that he is Ares."},
  {id:"e12",book:2,body:"mars",poi:"lykos",lm:"common",title:"Return to Lykos",text:"Darrow brings Mustang home and tells her the truth about who he is. He sees his mother again, and Mustang leaves troubled by what his revolution will cost."},
@@ -144,7 +144,7 @@ BODIES.splice(BODIES.findIndex(b=>b.id==="jupiter"),0,_NEWB[1]);
 const HL={"tyche":[24.33,-17.33],"heliopolis":[-3.86,-15.95],"bluereach":[29.54,-10.6],"pan":[33.67,-4.68],"kaikos":[41.34,12.53],"priapos":[40.8,32.46],"kydon":[30.2,30.45],"redreach":[22.58,4.73],"kylor":[20.54,-15.64],"angelia":[14.2,15.38],"naran":[9.38,-13.3],"erebos":[7.45,-16.35],"eleusis":[6.43,17.87],"caduceus":[26.58,9.88],"ladon":[12.46,-5.39],"hesperides":[2.44,-31.72],"sirens":[-14.67,-23.62],"caliban":[-26.4,-61.37],"keryx":[1.59,49.98],"polybos":[-17.83,33.41],"arabos":[33.53,45.36]};
 POIS.mercury=[
  {id:"heliopolis",name:"Heliopolis",lat:HL.heliopolis[0],lon:HL.heliopolis[1],site:"heliopolis",desc:{1:"Second jewel of Mercury, south of the Hesperides and east of the Bay of Sirens: the Hippodrome, the Water Plaza, the Graveyard of Tyrants, and the Mound of Votum on the bay.",5:"Second jewel of Mercury, south of the Hesperides and east of the Bay of Sirens: the Hippodrome, the Water Plaza, the Graveyard of Tyrants, and the Mound of Votum on the bay. It falls in Dark Age."}},
- {id:"tyche",name:"Tyche",lat:HL.tyche[0],lon:HL.tyche[1],site:"tyche",desc:{1:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands.",4:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands. Darrow’s headquarters.",5:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands. Darrow’s headquarters, drowned in Dark Age."}},
+ {id:"tyche",name:"Tyche",lat:HL.tyche[0],lon:HL.tyche[1],site:"tyche",desc:{1:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands.",4:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands.",5:"Mercury’s capital and richest city, on the Sycorax Sea: glass-and-limestone towers of House Votum, libraries carved into the mountains as colossal heads, and bridged islands."}},
  {id:"ladon",name:"Waste of Ladon",lat:HL.ladon[0],lon:HL.ladon[1],site:"ladon",desc:{1:"The chalk desert along Helios’s equator, called the Waste and the Eater of Armies.",5:"The chalk desert along Helios’s equator, called the Waste and the Eater of Armies. In Dark Age the Storm Gods raise a sandstorm across it that swallows armies."}},
  {id:"redreach",name:"Red Reach",from:5,lat:HL.redreach[0],lon:HL.redreach[1],site:"siege",desc:"A Republic military base east of Tyche, one of the few with its own power. In Dark Age an atomic strike destroys it, along with most of the Second Army."},
  {id:"caduceus",name:"Plains of Caduceus",lat:HL.caduceus[0],lon:HL.caduceus[1],site:"helios",focus:"caduceus",desc:{1:"Grasslands between the north coast and the Ladon.",5:"Grasslands between the north coast and the Ladon, where the Society’s landing waves are caught in Orion’s storms."}},
@@ -433,7 +433,7 @@ const byId={}; BODIES.forEach(b=>byId[b.id]=b);
       2:"Luna’s capital on the south shore of the Sea of Serenity: a layered city of kilometers-tall towers, with the Citadel of Light on its western edge. Site of the Summit in Golden Son."}},
     mars:{attica:{1:"A city on seven mountain peaks in Cimmeria, crowned with jagged steel-and-glass towers linked by bridges."}},
     io:{karrack:{1:"Plains of frozen sulfur crystal lit by Jupiter’s auroras, where Airdancers sail."}},
-    europa:{lornhome:{1:"A white limestone castle on a far-northern island of Europa’s ocean, its walls ringing a private forest."}},
+    europa:{lornhome:{1:"A castle on an island of Europa’s ocean."}},
     ganymede:{docks:{1:"A grey ring of shipyards around Ganymede’s equator, centuries in the building, where the Society’s greatest warships are made."}}
   };
   const POI_FULL_AT={luna:{hyperion:3},mars:{attica:3},io:{karrack:3},europa:{lornhome:2},ganymede:{docks:3}};
@@ -3478,7 +3478,7 @@ const HF=(fx,fy)=>HB(fx,fy);
 /* cities and features, placed from the map */
 const HCITY=[
  {id:"heliopolis",name:"Heliopolis",f:[563,607],kind:"capital",r:230,enter:"heliopolis",desc:"Mercury’s second great city, south of the Hesperides and east of the Bay of Sirens: the Hippodrome, the Water Plaza, the Graveyard of Tyrants. Besieged and taken in Dark Age."},
- {id:"tyche",name:"Tyche",f:[507,318],kind:"capital",r:210,enter:"tyche",desc:"Mercury’s capital, on a strip of lowland between the Hesperides and the Sycorax Sea, spilling onto bridged islands. Darrow’s headquarters; drowned by storm surges in Dark Age."},
+ {id:"tyche",name:"Tyche",f:[507,318],kind:"capital",r:210,enter:"tyche",desc:"Mercury’s capital, on a strip of lowland between the Hesperides and the Sycorax Sea, spilling onto bridged islands."},
  {id:"redreach",name:"Red Reach",f:[620,333],kind:"base",r:140,enter:"siege",desc:"A Republic base east of Tyche with its own power supply. In Dark Age an atomic strike destroys it, along with most of the Second Army."},
  {id:"bluereach",name:"Blue Reach",f:[613,253],kind:"base",r:70,desc:"A coastal installation east of Tyche, as marked on the map."},
  {id:"pan",name:"Pan",f:[680,198],kind:"city",r:110,desc:"One of the Children, the cities of the Petasos Peninsula. A Republic base stands near it; Darrow’s planned killbox lay to its south."},
@@ -3887,20 +3887,19 @@ function tycheHead(v){const g=new THREE.SphereGeometry(1,150,110);const p=g.attr
   g.setAttribute("color",new THREE.Float32BufferAttribute(cols,3));g.computeVertexNormals();return g;}
 const ISL=ISLES[0];
 const lm=[
- {id:"harbor",name:"The Harbor Front",pos:[0,80,coast(0)+80],desc:"Tyche’s waterfront on the Sycorax Sea. In Dark Age, storm surges and tidal waves from the Storm Gods pour over it and drown the city.",cam:{target:[0,0,coast(0)+200],r:2800,theta:Math.PI-.15,phi:1.05}},
+ {id:"harbor",name:"The Harbor Front",pos:[0,80,coast(0)+80],desc:"Tyche’s waterfront on the Sycorax Sea.",cam:{target:[0,0,coast(0)+200],r:2800,theta:Math.PI-.15,phi:1.05}},
  {id:"libraries",name:"Libraries of the Heads",pos:[HEADS[1][0],1500,HEADS[1][1]],desc:"Libraries carved into the mountains behind the city in the shape of colossal human heads.",cam:{target:[HEADS[1][0],700,HEADS[1][1]],r:3200,theta:Math.PI,phi:1.2}},
- {id:"centralcmd",name:"Tyche Central Command",pos:[700,1500,1200],desc:"The Republic’s headquarters on Mercury, from which Darrow runs the war. Orion is taken from her headquarters here.",cam:{target:[700,400,1200],r:2400,theta:Math.PI-.4,phi:1.05}},
  {id:"vespasian",name:"Vespasian Island",pos:[ISL[0],300,ISL[1]],desc:"Island seat of the Hall of Justice, joined to the city by bridges.",cam:{target:[ISL[0],60,ISL[1]],r:2200,theta:Math.PI-.6,phi:1.0}},
  {id:"ancestor",name:"Ancestor Bridge",pos:[1900,300,-1500],desc:"One of the bridges that carry Tyche out onto its islands.",cam:{target:[1900,60,-1500],r:1800,theta:Math.PI-.8,phi:1.0}},
  {id:"oldquarter",name:"Old Quarter",pos:[-3200,320,900],desc:"The old city, carved from local stone by House Votum, below the glass and limestone towers.",cam:{target:[-3200,120,900],r:1900,theta:Math.PI+.3,phi:1.0}},
  {id:"harpers",name:"Harper’s Plaza",pos:[-1000,200,500],desc:"A public square of the capital.",cam:{target:[-1000,100,500],r:1300,theta:Math.PI,phi:1.0}},
  {id:"cascades",name:"The Cascades",pos:[RIVERS[1],600,1700],desc:"Rivers from the Hesperides fall terrace by terrace through the city to the sea.",cam:{target:[RIVERS[1],250,1500],r:1800,theta:Math.PI-.3,phi:1.05},minor:true},
  {id:"railguns",name:"Railgun Batteries",pos:[3600,2700,TOP+2200],desc:"Railgun installations in the mountains guard Tyche from aerial attack.",cam:{target:[3600,2000,TOP+2200],r:3000,theta:Math.PI-.3,phi:1.15}},
- {id:"morningstar",name:"The Morning Star",pos:[6200,2200,-4800],desc:"Darrow’s flagship, under repair at Tyche when the war turns. After Mercury falls, Lysander rebuilds it as the Lightbringer.",cam:{target:[6200,1800,-4800],r:4600,theta:2.6,phi:1.25}}
+ {id:"morningstar",name:"The Morning Star",pos:[6200,2200,-4800],desc:"Darrow’s flagship.",cam:{target:[6200,1800,-4800],r:4600,theta:2.6,phi:1.25}}
 ];
 SITES.tyche={name:"Tyche",body:"mercury",poi:"tyche",epithet:"Capital of Mercury · on the Sycorax Sea",seed:141,
   blurb:"Mercury’s capital and richest city, on a sloping strip of lowland between the Hesperides and the sea. House Votum built it in glass and limestone; libraries shaped as colossal heads are carved into the mountains behind it, and bridges carry it onto its islands.",
-  eras:{4:{blurb:"Iron Gold. Darrow’s headquarters on Mercury, under the Republic’s shield."},5:{blurb:"Dark Age. Darrow’s headquarters, with the Morning Star docked for repairs, until the Storm Gods drown it. Toggle the Storm Gods to see the flood."},6:{blurb:"Light Bringer. A drowned and broken capital under the Society."}},
+  eras:{5:{blurb:"Dark Age. Toggle the Storm Gods to see the flood."},6:{blurb:"Light Bringer. A drowned and broken capital under the Society."}},
   facts:[["House","Votum"],["Sea","Sycorax"],["Undersea transit","Lines beneath the seafloor"],["Link south","The GravLoop to Heliopolis"]],
   note:"Layout is an artistic reconstruction from the books’ descriptions.",
   ground,bounds:8500,minR:150,maxR:22000,shadow:6500,win:[3,2.4],cam:{target:[200,300,600],r:11000,theta:Math.PI-.12,phi:1.12},defaultTod:"day",
@@ -6415,17 +6414,16 @@ function ground(x,z){const d=Math.hypot(x*1.0,z*1.25);let h=-160+Math.max(0,1-Ma
   return h;}
 function color(x,z,h,sl){let c=mixc([66,96,56],[88,116,66],N.f(x*.003,2,z*.003,3));if(h<16)c=[204,196,176];if(sl>.45)c=mixc(c,mixc([214,208,192],[182,176,162],N.f(x*.01,4,h*.02,2)),Math.min(1,(sl-.45)*1.8));return c;}
 const lm=[
- {id:"villa",name:"Lorn’s Castle",pos:[CAS.x,CAS.top+180,CAS.z],desc:"White limestone keep and walls on Harmonia’s heights, in the far-northern Discordia Sea. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him. By Light Bringer the castle stands decaying.",cam:{target:[CAS.x,CAS.top+40,CAS.z],r:1100,theta:.6,phi:1.12}},
+ {id:"villa",name:"Lorn’s Castle",pos:[CAS.x,CAS.top+180,CAS.z],desc:"Keep and walls on Harmonia’s heights, in the Discordia Sea. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him. By Light Bringer the castle stands decaying.",cam:{target:[CAS.x,CAS.top+40,CAS.z],r:1100,theta:.6,phi:1.12}},
  {id:"keep",name:"The Keep",pos:[CAS.x-30,CAS.top+150,CAS.z-60],desc:"The castle’s great square keep with its corner turrets.",minor:true,cam:{target:[CAS.x-30,CAS.top+60,CAS.z-60],r:420,theta:.9,phi:1.15}},
  {id:"hall",name:"The Great Hall",pos:[CAS.x+90,CAS.top+60,CAS.z+40],desc:"Lorn’s hall, where his family gathers.",minor:true,cam:{target:[CAS.x+90,CAS.top+20,CAS.z+40],r:300,theta:.3,phi:1.2}},
- {id:"garden",name:"The Walled Forest",pos:[-520,CAS.top+20,520],desc:"Lorn’s private forest within the outer walls, where Darrow survives Aja’s ambush.",cam:{target:[-520,CAS.top-40,520],r:900,theta:-.2,phi:1.05}},
  {id:"seagate",name:"The Sea Gate",pos:[1150,40,1050],desc:"A stair winds down from the castle to the harbor in the cove, where boats come in from the Discordia Sea.",minor:true,cam:{target:[1150,10,1050],r:800,theta:.9,phi:1.15}},
  {id:"deep",name:"Down to The Deep",pos:[0,20,-2800],enter:"thedeep",desc:"Far to the south under the Discordia Sea lies The Deep, held by the Daughters of Athena in Light Bringer. Enter to go down.",minor:true,cam:{target:[0,0,-2600],r:900,theta:.1,phi:1.2}},
  {id:"sea",name:"Discordia Sea",pos:[0,20,-3200],desc:"Europa’s ocean, about ninety kilometers deep, where waves run near ten meters tall in the low gravity.",minor:true,cam:{target:[0,0,-2600],r:4000,theta:.2,phi:1.1}}];
 SITES.europa={name:"Lorn’s Castle",body:"europa",poi:"lornhome",epithet:"Europa · Harmonia · House Arcos",seed:121,
-  blurb:"A white limestone castle on Harmonia, an island in the far-northern Discordia Sea: a great keep and hall on the heights, walls ringing a private forest, cliffs falling to the sea and Jupiter filling the sky. Lorn au Arcos withdrew here from war.",
+  blurb:"A castle on Harmonia, an island in the Discordia Sea: a great keep and hall on the heights, cliffs falling to the sea and Jupiter filling the sky. Lorn au Arcos withdrew here from war.",
   eras:{6:{blurb:"Light Bringer. Years after Lorn’s death, his castle on Harmonia stands decaying: roofs fallen in, ivy on the stone, the forest grown wild."}},
-  facts:[["Lord","Lorn au Arcos, the Stoneside"],["Island","Harmonia, far-northern Discordia Sea"],["Weather","Blue lightning near the poles"],["Books","Golden Son, Light Bringer"]],
+  facts:[["Lord","Lorn au Arcos, the Stoneside"],["Island","Harmonia, Discordia Sea"],["Weather","Blue lightning near the poles"],["Books","Golden Son, Light Bringer"]],
   note:"Layout is an artistic reconstruction from the books’ descriptions. Switch to Book VI to see it decaying.",
   ground,targetLift:10,bounds:5200,minR:40,maxR:12000,shadow:2400,win:[1.6,1.3],cam:{target:[0,160,200],r:4200,theta:.5,phi:1.12},defaultTod:"day",
   skyBody:{id:"jupiter",dir:[.5,.28,-.82],size:2600},
@@ -9014,9 +9012,8 @@ lmHide("ganymede","berth",3);lmHide("ganymede","platform",2);
 siteGate("newtroy","blurb",3,"A city of the Moon Lords on Ganymede’s forested coast, its towers under the great dock ring that arches across the sky.");
 lmGate("newtroy","ring",3,"Ganymede’s ring of shipyards arching across the sky.");
 lmHide("europa","athena",6);lmHide("europa","deep",6);
-lmGate("europa","villa",6,{1:"White limestone keep and walls on Harmonia’s heights, in the far-northern Discordia Sea.",
-  2:"White limestone keep and walls on Harmonia’s heights, in the far-northern Discordia Sea. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him."});
-lmGate("europa","garden",2,"Lorn’s private forest within the outer walls.");
+lmGate("europa","villa",6,{1:"Keep and walls on Harmonia’s heights, in the Discordia Sea.",
+  2:"Keep and walls on Harmonia’s heights, in the Discordia Sea. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him."});
 {const E=SITES.europa;if(E){E.note="Layout is an artistic reconstruction from the books’ descriptions.";
   const full=E.facts,base=full.filter(f=>f[0]!=="Books");siteGate("europa","facts",6,base);E.eras[2]=Object.assign({},E.eras[2],{facts:base.concat([["Book","Golden Son"]])});}}
 {const S=SITES.sungrave;if(S){S.note="An artistic reconstruction.";
@@ -9035,9 +9032,8 @@ lmGate("gorgon","keep",4,"Magnus au Grimmus’s black fortress on the crater rim
 lmGate("venusdocks","coliseum",6,"An arena hung beneath the dockyards.");
 lmGate("heliopolis","bay",6,{5:"The bay west of the city. Glirastes’ floating home, the Lady Beatrice, hangs above the city."});
 lmGate("heliopolis","via",6,{5:"The triumphal avenue where the battle for the city is fought after the shield falls."});
-lmGate("tyche","morningstar",6,{4:"Darrow’s flagship.",5:"Darrow’s flagship, under repair at Tyche when the war turns."});
+lmGate("tyche","morningstar",6,{4:"Darrow’s flagship.",5:"Darrow’s flagship."});
 lmGate("tyche","harbor",5,"Tyche’s waterfront on the Sycorax Sea.");
-lmGate("tyche","centralcmd",5,"The Republic’s headquarters on Mercury, from which Darrow runs the war.");
 })();
 /* ---- 80-phone.js ---- */
 /* ===================== PHONE LAYOUT =====================
