@@ -65,8 +65,11 @@ scenes, captioned set pieces, tours, sound, Names / CC / Detail controls, the ex
 in `public/atlas/tex/` (Solar System Scope CC BY 4.0, NASA via three.js, Celestia; credited on the page), plus
 the repo's Gravity Lab link, local fonts and three.js, phone layout, Kepler orbits, Kuiper Belt / Oort Cloud,
 plumes, moon view and Easter eggs. Lore corrections r1–r3 re-applied; the newer scenes and set-piece buttons
-open only from their own book. One deviation from r3: Tyche opens at Book IV (the Iron Gold prologue is staged
-there), with its later-book landmark text gated.
+open only from their own book. One deviation from r3: Tyche opens at Book IV, with its later-book landmark text gated.
+Correction (SO6, 2026-11-09): this deviation was originally justified by the staged Iron Gold prologue. That
+staging was unverified and has been omitted (SO1-SO3 on PR37: event g1, set-piece `irongoldprologue`, the Tyche
+prologue toggle, `SITES.prologue`, `FX.irongoldprologue` and `FX.irongoldreaper`), and it is not evidence for
+Book IV availability. The Book IV gate itself is unchanged; it still needs its own accepted evidence or disposition.
 
 ## 4. Checks at bb5eb23 (re-run at 14f7a52 after merging main: pnpm check 82/82, test:pages 12×2)
 
@@ -88,7 +91,7 @@ small ones elsewhere; whichever PR merges second takes both sides.
   conference and Medina rooms untied or marked schematic; e35 narrowed; disputed given names dropped).
 - Follow-up: DW07 (Tabr entrance keeps only its book-I sentence), Trantor terminal narrowed to the S06 wording,
   the Hyperion ship-landing return clause omitted at III, and the Iron Gold prologue blurb reduced to
-  supported context (the wordless cinematic itself is unchanged and still awaits the primary prologue).
+  supported context (the wordless cinematic itself was later omitted entirely, SO1-SO3; see the SO6 correction in §3).
 - DW01 (Europa) unchanged. Everything else in the DW06 evidence holds and the 202 uncompared sample records
   stays open for ChatGPT.
 

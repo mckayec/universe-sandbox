@@ -194,7 +194,6 @@ POIS.asteroid=[{id:"base",name:"Tabula Rasa",from:6,lat:10,lon:0,site:"asteroid"
 /* ---- the Chronicle, books IV to VI ---- */
 EVENTS.push(
  /* IRON GOLD */
- {id:"g1",book:4,body:"mercury",poi:"tyche",fx:"irongoldprologue",title:"The Rain on Mercury",text:"Ten years after Morning Star, Darrow leads the Republic’s Iron Rain onto Mercury and frees it from the Society, against the wishes of the Senate."},
  {id:"g2",book:4,body:"luna",poi:"hyperion",lm:"citadel",title:"Darrow on trial",text:"After a Triumph along the Via Triumphia, the Senate condemns Darrow’s unauthorized war. Dancer reveals he refused the Ash Lord’s ceasefire, and Darrow is placed under arrest."},
  {id:"g3",book:4,body:"luna",poi:"silene",lm:"manor",title:"Escape from Luna",text:"Darrow says goodbye to Virginia and Pax at Silene Manor and escapes Luna, accidentally killing ArchWarden Wulfgar."},
  {id:"g4",book:4,body:"mars",poi:"lagalos",title:"Camp 121",text:"The Red Hand massacres Lyria’s assimilation camp on Mars and her family dies. She jumps into the river to save Kavax au Telemanus from drowning, then enters his house’s service."},
@@ -254,7 +253,6 @@ Object.assign(FX_VIEW,{
  summit:{view:"site",site:"rome",title:"The Summit of the Two Hundred",sub:"Lysander defies Atalantia in the Colosseum"},
  pandoraboard:{view:"site",site:"pandora",title:"The Boarding of the Pandora",sub:"The Ascomanni board Victra’s flagship in Mars space"},
  heraklionraid:{view:"site",site:"heraklion",title:"The Raid on Heraklion",sub:"The Harbinger rises from the sea as the Ascomanni attack"},
- irongoldprologue:{view:"site",site:"tyche",title:"Iron Gold · The Prologue",sub:"The night of the Iron Rain on Mercury"},
  ladonstorm:{view:"site",site:"ladon",title:"Operation Tartarus",sub:"The Storm Gods’ sandstorm sweeps the Waste of Ladon"},
  storms:{view:"site",site:"helios",title:"Operation Tartarus",sub:"The Storm Gods wake over the Waste of Ladon"},
  flood:{view:"site",site:"tyche",title:"Tyche Drowns",sub:"Storm surges pour over the capital"},
@@ -7192,223 +7190,6 @@ SITES.triton={name:"Triton",body:"triton",poi:"tritonbase",epithet:"Neptune · t
     return {update(dt,t){const pxs=pxScale(camX);plumes.forEach(pl=>{pl.p.forEach((o,i)=>{const u=(o.u+t*.02)%1;_T.set(pl.x+Math.cos(o.a)*u*900+u*u*2600,pl.y+u*5200,pl.z+Math.sin(o.a)*u*900);pl.P.set(i,_T,o.s*(1+u*4),.85,.9,1,.35*(1-u));});pl.P.setScale(pxs);pl.P.flush();});}};}};}
 })();
 
-/* ---- 52u-site-prologue.js ---- */
-/* ===================== IRON GOLD · THE PROLOGUE (a cinematic, no words but the title) =====================
-   Played inside the real Tyche, then above Mercury:
-   1  The Fury: Aja and her knights on a black islet off Tyche, waves breaking around them, looking up as the
-      fleet comes in high over the sea.
-   2  Tyche at night, just before the bombs, in the atlas's own city.
-   3  The girl at a fogged window on the poor edge of the city, tracing the whole curved blade on the glass.
-   4  The bombs: bombers dive; the Hall of Justice on Vespasian Island goes up, the sea erupts over a hidden
-      warship, a railgun battery in the mountains strikes the third and it tumbles toward the city's edge; cut.
-   5  Above Mercury: Darrow alone in his capsule; the launch; one continuous tracking shot following his pod
-      out of the Morning Star and down into the upper atmosphere, other pods falling with him, pulling slowly
-      back until Mercury fills the view as it does from orbit; fade to black; "Iron Gold". */
-(function(){
-/* ---------- the overlay: fades and the title, above everything (it survives the change of place) ---------- */
-function overlay(){let ov=document.getElementById("prolOv");if(ov)return ov;ov=document.createElement("div");ov.id="prolOv";ov.innerHTML='<div class="pfade"></div><div class="pcard"><div class="pct"></div></div>';document.body.appendChild(ov);
-  const st=document.createElement("style");st.textContent="#prolOv{position:fixed;inset:0;pointer-events:none;z-index:9999}#prolOv .pfade{position:absolute;inset:0;background:#000;opacity:0;transition:opacity 1.4s}#prolOv .pcard{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 2.2s}#prolOv .pct{font:500 clamp(40px,7vw,96px)/1 Cinzel,Georgia,serif;letter-spacing:.34em;color:#e8d29a;text-shadow:0 0 40px rgba(217,176,96,.4)}"+
-    "body.prol #index,body.prol #dossier,body.prol #chron,body.prol #sitehud,body.prol #idxCol,body.prol #dosCol,body.prol header.top,body.prol #crumbs,body.prol #navhint,body.prol #tourBox,body.prol #banner,body.prol #cineCap{opacity:0!important;pointer-events:none!important}";document.head.appendChild(st);return ov;}
-const ovFade=(v,sec)=>{const f=overlay().querySelector(".pfade");f.style.transition="opacity "+(sec==null?1.4:sec)+"s";f.style.opacity=v;};
-const ovTitle=t=>{const ov=overlay();ov.querySelector(".pct").textContent=t||"";ov.querySelector(".pcard").style.opacity=t?1:0;};
-const camCut=(tg,r,th,ph)=>{sctl.tt.set(tg[0],tg[1],tg[2]);sctl.target.copy(sctl.tt);sctl.tr=sctl.r=r;sctl.tth=sctl.theta=th;sctl.tph=sctl.phi=ph;};
-const camGlide=(tg,r,th,ph)=>{sctl.tt.set(tg[0],tg[1],tg[2]);sctl.tr=r;sctl.tth=th;sctl.tph=ph;};
-const lerpK=(K,t)=>{let i=0;while(i<K.length-2&&t>K[i+1][0])i++;const a=K[i],b=K[i+1];const u=Math.min(1,Math.max(0,(t-a[0])/(b[0]-a[0])));const e=u*u*(3-2*u);
-  return [[a[1][0]+(b[1][0]-a[1][0])*e,a[1][1]+(b[1][1]-a[1][1])*e,a[1][2]+(b[1][2]-a[1][2])*e],a[2]+(b[2]-a[2])*e,a[3]+(b[3]-a[3])*e,a[4]+(b[4]-a[4])*e];};
-/* a knight: legs, armored torso, pauldrons, helm with a crest, cloak */
-function knight(M,h,c,trim,crest){const g=new THREE.Group();const D=new GeoBuilder();
-  /* greaves and thighs */
-  [-1,1].forEach(sd=>{D.add(new THREE.CylinderGeometry(h*.045,h*.038,h*.24,12).translate(0,h*.12,0),TM(sd*h*.055,0,0),c);D.add(new THREE.CylinderGeometry(h*.055,h*.046,h*.24,12).translate(0,h*.36,0),TM(sd*h*.058,0,0),c);
-    D.add(new THREE.SphereGeometry(h*.05,12,8),TM(sd*h*.056,h*.245,h*.01),trim);D.add(new THREE.BoxGeometry(h*.08,h*.03,h*.13).translate(0,h*.015,h*.02),TM(sd*h*.055,0,0),c);
-    /* arms: upper, vambrace, gauntlet; pauldrons */
-    D.add(new THREE.CylinderGeometry(h*.034,h*.03,h*.17,10).translate(0,-h*.085,0),TM(sd*h*.17,h*.72,0,0,1,1,1,0,sd*.1),c);D.add(new THREE.CylinderGeometry(h*.032,h*.026,h*.16,10).translate(0,-h*.08,0),TM(sd*h*.188,h*.555,0,0,1,1,1,0,sd*.06),c);
-    D.add(new THREE.SphereGeometry(h*.03,10,8),TM(sd*h*.195,h*.39,0),trim);D.add(new THREE.SphereGeometry(h*.085,16,10,0,TAU,0,Math.PI*.55),TM(sd*h*.155,h*.72,0,0,1,1,1,0,sd*.35),trim);});
-  /* the cuirass, turned on a lathe: waist, flared chest, gorget */
-  const prof=[[.06,0],[.105,.02],[.12,.07],[.13,.15],[.14,.22],[.12,.27],[.07,.3]].map(([r,y])=>new THREE.Vector2(r*h,y*h));D.add(new THREE.LatheGeometry(prof,20).scale(1,1,.72),TM(0,h*.47,0),c);
-  D.add(new THREE.CylinderGeometry(h*.13,h*.1,h*.06,18).scale(1,1,.75),TM(0,h*.455,0),trim);
-  /* the helm: a smooth dome, a cheek guard, a crest */
-  D.add(new THREE.SphereGeometry(h*.07,18,14).scale(.92,1.08,1),TM(0,h*.86,0),c);D.add(new THREE.BoxGeometry(h*.11,h*.02,h*.03),TM(0,h*.84,h*.06),0x0a0a0c);
-  D.add(new THREE.BoxGeometry(h*.018,h*.06,h*.16).translate(0,h*.03,0),TM(0,h*.92,0),crest||trim);
-  /* a cloak falling from the shoulders */
-  const cl=new THREE.CylinderGeometry(h*.16,h*.24,h*.64,18,1,true,Math.PI*.55,Math.PI*.9).translate(0,-h*.32,0);D.add(cl,TM(0,h*.76,-h*.02),0x18141a);
-  const m=D.mesh(M.cleanMetal);m.material=m.material.clone();m.material.side=THREE.DoubleSide;g.add(m);return g;}
-
-/* ---------------- the Tyche set: hidden in Tyche until the prologue plays ---------------- */
-const T={};SITES._prolT=T;if(SITES.tyche)SITES.tyche._prolT=T;
-(function(){const S=SITES.tyche;if(!S)return;const oldB=S.build;
-  S.toggles=(S.toggles||[]).concat([{id:"prologue",label:"▶ Iron Gold · Prologue",era:4}]);
-  S.build=ctx=>{const o=oldB(ctx)||{};const oldT=S.onToggle;S.onToggle=(id,v)=>{if(id==="prologue"){if(v)playFx("irongoldprologue");else stopFx();}else if(oldT)oldT(id,v);};
-    const R=rng(4404),root=ctx.root,gr=S.ground,M=mats();const P=new THREE.Group();P.visible=false;root.add(P);T.P=P;T.ground=gr;
-    /* the Fury's islet off the coast */
-    const IS={x:-1800,z:-5400};T.IS=IS;{const g=new THREE.CylinderGeometry(60,180,180,40,8);const p=g.attributes.position;const nz=makeNoise(77);for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),z=p.getZ(i);const k=1+(nz.f(x*.03,y*.03,z*.03,3)-.5)*.5;p.setXYZ(i,x*k,y,z*k);}g.computeVertexNormals();
-      const m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:col(0x16141a),roughness:.95,flatShading:true}));m.position.set(IS.x,-80,IS.z);P.add(m);T.top=10;}
-    const FY=T.top;const crests=[0x0f6a3a,0xe8e4dc,0xd9b060,0x121214];
-    const aja=knight(M,2.4,0x26262c,0xd9b060,0xd9b060);aja.position.set(IS.x,FY,IS.z+40);aja.rotation.y=Math.PI;P.add(aja);T.aja=aja;
-    const bear=knight(M,2.3,0x2a2a30,0x8a7a60);bear.position.set(IS.x+2,FY,IS.z+39);bear.rotation.y=Math.PI;P.add(bear);
-    const pole=new THREE.Mesh(new THREE.CylinderGeometry(.05,.06,7,6).translate(0,3.5,0),M.cleanMetal);pole.position.set(IS.x+2.5,FY,IS.z+39);P.add(pole);
-    const banT=(()=>{const c=document.createElement("canvas");c.width=256;c.height=160;const x=c.getContext("2d");x.fillStyle="#141416";x.fillRect(0,0,256,160);x.strokeStyle="#d9b060";x.lineWidth=6;x.strokeRect(6,6,244,148);
-      x.fillStyle="#cfc8b8";x.beginPath();x.arc(128,84,32,0,7);x.fill();x.fillStyle="#141416";x.beginPath();x.arc(115,80,7,0,7);x.arc(141,80,7,0,7);x.fill();x.fillRect(119,98,18,9);
-      x.fillStyle="#d9b060";x.beginPath();x.moveTo(94,52);x.lineTo(102,32);x.lineTo(115,46);x.lineTo(128,28);x.lineTo(141,46);x.lineTo(154,32);x.lineTo(162,52);x.closePath();x.fill();return new THREE.CanvasTexture(c);})();
-    const banG=new THREE.PlaneGeometry(3.4,2.1,24,6);const ban=new THREE.Mesh(banG,new THREE.MeshStandardMaterial({map:banT,side:THREE.DoubleSide,roughness:.8}));ban.position.set(IS.x+4.2,FY+5.8,IS.z+39);P.add(ban);T.ban=ban;T.banBase=banG.attributes.position.array.slice();
-    T.knights=[];for(let i=0;i<13;i++){const a=(i-6)*.11;const k=knight(M,2.7,[0x34343c,0x3e3e46,0x2c2c34][i%3],0x9a9aa2,crests[i%4]);k.position.set(IS.x+Math.sin(a)*16,FY,IS.z+40+7+Math.cos(a)*4+Math.abs(i-6)*.6);k.rotation.y=Math.PI;
-      const sh=new THREE.Mesh(new THREE.CircleGeometry(.28,24),new THREE.MeshStandardMaterial({color:col(crests[i%4]),metalness:.5,roughness:.4,side:THREE.DoubleSide}));sh.position.set(.5,1.15,.14);sh.rotation.y=.5;k.add(sh);P.add(k);T.knights.push(k);}
-    {const rim=new THREE.PointLight(col(0x8aa8ff),2,120,1.3);rim.position.set(IS.x,FY+18,IS.z+10);P.add(rim);const key=new THREE.PointLight(col(0xffc890),1.2,80,1.3);key.position.set(IS.x+12,FY+6,IS.z+70);P.add(key);}
-    /* breaking waves: rings of foam and bursts of spray round the islet */
-    T.foam=GlowPoints(P,900);T.fo=[];for(let i=0;i<900;i++)T.fo.push({a:R()*TAU,r:40+R()*120,ph:R()*6,s:1+R()*3});
-    /* the Republic's fleet coming in high over the sea, and the battle flashing above */
-    T.fleet=[];for(let i=0;i<16;i++){const s=makeShip(i<3?"dread":"frigate",i<3?900:300);s.traverse(m=>{if(m.isMesh){m.material=m.material.clone();m.material.color=col(0xe8e6e0);if(m.material.emissive)m.material.emissive=col(0x3a3a3a);}});
-      s.userData.o=new THREE.Vector3(-9000+R()*18000,9000+R()*6000,-26000+R()*8000);P.add(s);const e=glowSprite(GLOW_BLUE,i<3?1600:600,.9);e.position.x=-(i<3?900:300)*.6;s.add(e);T.fleet.push(s);}
-    T.sky=GlowPoints(P,160);T.sk=[];for(let i=0;i<160;i++)T.sk.push({p:new THREE.Vector3(),t:R()*4,d:.2+R()*.8});
-    /* the girl's tenement on the poor edge of the city, far from the water */
-    const HOME={x:-5600,z:3100};T.HOME=HOME;{const y0=gr(HOME.x,HOME.z);const room=new THREE.Group();room.position.set(HOME.x,y0,HOME.z);P.add(room);const Bb=new GeoBuilder();const RY=26,W=8,D=6,H=3;T.roomY=y0+RY;
-      Bb.add(G.box(W+18,RY-.2,D+4),TM(0,0,0),0x6a6256,1);Bb.add(G.box(W+18,14,D+4),TM(0,RY+H+.2,0),0x6a6256,1);[-1,1].forEach(sd=>Bb.add(G.box(9,H+.4,D+4),TM(sd*(W/2+4.6),RY-.2,0),0x6a6256,1));Bb.add(G.box(W+18,RY+H+14,10),TM(0,0,-D/2-7),0x5a544c,1);
-      Bb.add(G.box(W,.2,D),TM(0,RY-.2,0),0x4a4238);Bb.add(G.box(W,.2,D),TM(0,RY+H,0),0x5a544c);Bb.add(G.box(.2,H,D),TM(-W/2,RY,0),0x7a7062);Bb.add(G.box(.2,H,D),TM(W/2,RY,0),0x7a7062);Bb.add(G.box(W,H,.2),TM(0,RY,-D/2),0x7a7062);
-      Bb.add(G.box(W/2-1.2,H,.2),TM(-W/4-.6,RY,-D/2*-1),0x7a7062);Bb.add(G.box(W/2-1.2,H,.2),TM(W/4+.6,RY,D/2),0x7a7062);Bb.add(G.box(2.4,1,.2),TM(0,RY,D/2),0x7a7062);Bb.add(G.box(2.4,.6,.2),TM(0,RY+2.4,D/2),0x7a7062);
-      Bb.add(G.box(1.6,.75,.9),TM(-1.8,RY,-1.2),0xc8c0b0);Bb.add(G.box(.5,.3,.3),TM(-3.4,RY+1.2,-2.7),0x2a2a30);Bb.add(G.box(1,2.2,.25),TM(2.8,RY,-2.9),0x1a1612);room.add(Bb.mesh(M.bld));
-      const holo=new THREE.Mesh(new THREE.PlaneGeometry(.9,.6),new THREE.MeshBasicMaterial({color:col(0x9fd0ff),transparent:true,opacity:.7}));holo.position.set(-3.4,RY+1.8,-2.6);room.add(holo);T.holo=holo;
-      const bulb=new THREE.PointLight(col(0xffc890),.8,14,1.5);bulb.position.set(-1,RY+2.7,0);room.add(bulb);const hL=new THREE.PointLight(col(0x9fc8ff),1.2,10,1.6);hL.position.set(-3,RY+1.8,-2);room.add(hL);T.holoL=hL;
-      const girl=knight(M,1.15,0x8a5a3a,0xc89070,0x3a2418);girl.position.set(.25,RY,2.35);room.add(girl);[-.05,.05].forEach(dx=>{const e=glowSprite(GLOW_WARM,.05,.9);e.position.set(dx,.99,.09);girl.add(e);});T.girl=girl;
-      const arm=new THREE.Mesh(new THREE.BoxGeometry(.07,.36,.07).translate(0,.18,0),new THREE.MeshStandardMaterial({color:col(0xc89070)}));arm.position.set(.12,.82,.05);girl.add(arm);T.arm=arm;
-      [[-1.8,-2.1,1.3,0x4a5a6a],[-2.9,-1.1,1,0x6a4a3a],[-.7,-1.1,.9,0x3a5a4a]].forEach(([x,z,h,c])=>{const f=knight(M,h,c,0xc89878);f.position.set(x,RY,z);room.add(f);});
-      const fc=document.createElement("canvas");fc.width=512;fc.height=300;T.fogX=fc.getContext("2d");T.fogT=new THREE.CanvasTexture(fc);
-      const glass=new THREE.Mesh(new THREE.PlaneGeometry(2.4,1.4),new THREE.MeshBasicMaterial({map:T.fogT,transparent:true,depthWrite:false}));glass.position.set(0,RY+1.7,D/2-.02);glass.rotation.y=Math.PI;room.add(glass);}
-    /* bombers, bombs, the warship under the chop, the railgun battery */
-    const gT=(()=>{const c=document.createElement("canvas");c.width=512;c.height=256;const x=c.getContext("2d");x.fillStyle="#3a3c40";x.fillRect(0,0,512,256);x.lineWidth=10;x.strokeStyle="#b02020";x.beginPath();for(let i=0;i<9;i++)x.lineTo(60+i*40,128+Math.sin(i*1.4)*50);x.stroke();
-      x.strokeStyle="#e8e0c8";x.lineWidth=12;x.beginPath();x.arc(390,128,60,-1.3,1.6);x.stroke();x.fillStyle="#d9b060";for(let i=0;i<6;i++){x.beginPath();x.arc(120+i*50,40,6,0,7);x.fill();}return new THREE.CanvasTexture(c);})();
-    const bombM=new THREE.MeshStandardMaterial({map:gT,metalness:.5,roughness:.5});T.bombers=[];
-    for(let i=0;i<4;i++){const g=new THREE.Group();const sh=new THREE.Shape();sh.moveTo(70,0);sh.lineTo(-50,46);sh.lineTo(-36,0);sh.lineTo(-50,-46);sh.closePath();g.add(new THREE.Mesh(new THREE.ExtrudeGeometry(sh,{depth:10,bevelEnabled:false}).rotateX(Math.PI/2).translate(0,5,0),bombM));
-      const cone=new THREE.Mesh(new THREE.ConeGeometry(60,240,24,1,true).rotateZ(Math.PI/2).translate(-40,0,0),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide}));g.add(cone);g.userData.cone=cone;
-      const e=glowSprite(GLOW_BLUE,90,.95);e.position.x=-44;g.add(e);g.visible=false;P.add(g);T.bombers.push(g);}
-    T.bombs=[0,1,2].map(()=>{const s=glowSprite(GLOW_WARM,70,1);s.visible=false;P.add(s);return s;});
-    T.VESP={x:2600,z:-2500,y:gr(2600,-2500)};T.WS={x:-400,z:-4300};
-    const ws=makeShip("frigate",260);ws.traverse(m=>{if(m.isMesh){m.material=m.material.clone();m.material.color=col(0x3a3a40);}});ws.position.set(T.WS.x,-22,T.WS.z);P.add(ws);T.warship=ws;
-    T.RAIL={x:3600,z:5700,y:gr(3600,5700)};
-    T.BT=Battle(P,40,{seed:44,debris:1200,slugs:40});
-    /* flying wreckage: real chunks with fire, thrown by the blasts */
-    T.chunks=[];{const cg=new THREE.BoxGeometry(1,1,1);for(let i=0;i<160;i++){const m=new THREE.Mesh(cg,new THREE.MeshStandardMaterial({color:col([0xd8d0c0,0x8a8278,0x3a3430][i%3]),roughness:.8}));m.visible=false;P.add(m);const f=glowSprite(GLOW_WARM,1.6,.8);m.add(f);T.chunks.push({m,v:new THREE.Vector3(),w:new THREE.Vector3(),t:9});}}
-    T.water=GlowPoints(P,900);T.wp=[];for(let i=0;i<900;i++)T.wp.push({a:R()*TAU,r:R(),v:.6+R()*.6});T.wT=-1;
-    T.trail=GlowPoints(P,500);T.tp=[];T.dust=[];
-    T.reset=()=>{T.bombers.forEach(b=>b.visible=false);T.bombs.forEach(b=>b.visible=false);T.wT=-1;T.tp=[];T.chunks.forEach(c=>{c.t=9;c.m.visible=false;});T.flags={};ws.position.set(T.WS.x,-22,T.WS.z);ws.rotation.set(0,0,0);
-      T.fogX.clearRect(0,0,512,300);const g_=T.fogX.createRadialGradient(256,150,20,256,150,260);g_.addColorStop(0,"rgba(220,226,232,.5)");g_.addColorStop(1,"rgba(220,226,232,.14)");T.fogX.fillStyle=g_;T.fogX.fillRect(0,0,512,300);T.fogT.needsUpdate=true;T.drawn=0;};T.reset();
-    T.throwChunks=(p,n,sp)=>{let k=0;for(const c of T.chunks){if(k>=n)break;if(c.t<4)continue;c.t=0;c.m.visible=true;const s=6+Math.random()*26;c.m.scale.set(s,s*.6,s*.8);c.m.position.copy(p);c.v.set(Math.random()-.5,.4+Math.random(),Math.random()-.5).normalize().multiplyScalar(sp*(.4+Math.random()));c.w.set(Math.random()*3,Math.random()*3,Math.random()*3);k++;}};
-    /* the curved blade, wiped into the fog stroke by stroke: the outer edge, the inner edge, the spine, the grip */
-    const BLADE=(()=>{const pts=[];for(let i=0;i<=40;i++){const a=-2.6+i/40*2.3;pts.push([256+Math.cos(a)*120,190+Math.sin(a)*120]);}for(let i=40;i>=0;i--){const a=-2.45+i/40*2.1;pts.push([262+Math.cos(a)*92,196+Math.sin(a)*86]);}
-      pts.push([180,238]);pts.push([162,262]);pts.push([150,282]);return pts;})();
-    T.draw=k=>{const x=T.fogX;x.save();x.globalCompositeOperation="destination-out";x.lineCap="round";x.lineJoin="round";x.lineWidth=11;x.strokeStyle="rgba(0,0,0,1)";const n=Math.floor(k*BLADE.length);
-      x.beginPath();for(let i=0;i<n;i++){const p=BLADE[i];if(i===0)x.moveTo(p[0],p[1]);else x.lineTo(p[0],p[1]);}x.stroke();x.restore();T.fogT.needsUpdate=true;const p=BLADE[Math.max(0,n-1)];return p;};
-    return {update(dt,t){if(o.update)o.update(dt,t);if(!P.visible)return;const pxs=pxScale(camX);
-      const bp=T.ban.geometry.attributes.position;for(let i=0;i<bp.count;i++){const x=T.banBase[i*3];const k=(x+1.7)/3.4;bp.setZ(i,Math.sin(t*4.5+x*3)*.3*k);}bp.needsUpdate=true;
-      T.fo.forEach((o,i)=>{const w=(t*.5+o.ph)%1;const r=o.r*(1-w*.6);_T.set(IS.x+Math.cos(o.a)*r,-4+Math.sin(w*Math.PI)*(o.r<70?9:3),IS.z+Math.sin(o.a)*r);T.foam.set(i,_T,o.s*(o.r<70?1.6:1.1),.9,.95,1,(o.r<70?.75:.35)*Math.sin(w*Math.PI));});T.foam.setScale(pxs);T.foam.flush();
-      T.sk.forEach((o,i)=>{o.t-=dt;if(o.t<0){o.t=.5+Math.random()*3;o.p.set((Math.random()-.5)*60000,16000+Math.random()*14000,-30000+Math.random()*30000);}const k=o.t<o.d?o.t/o.d:0;T.sky.set(i,o.p,900,1,.85,.6,k*.9);});T.sky.setScale(pxs);T.sky.flush();
-      T.holo.material.opacity=.5+.3*Math.random();T.holoL.intensity=.7+.5*Math.random();
-      T.chunks.forEach(c=>{if(c.t>=4){if(c.m.visible)c.m.visible=false;return;}c.t+=dt;c.v.y-=dt*180;c.m.position.addScaledVector(c.v,dt);c.m.rotation.x+=c.w.x*dt;c.m.rotation.y+=c.w.y*dt;if(c.m.position.y<gr(c.m.position.x,c.m.position.z)){c.v.multiplyScalar(0);c.t=Math.max(c.t,3.6);}});
-      for(let i=0;i<500;i++){const p=T.tp[i];if(p){T.trail.set(i,p.p,p.s,1,.6,.3,Math.max(0,p.a-=dt*.12));}else T.trail.hide(i);}T.trail.setScale(pxs);T.trail.flush();
-      if(T.wT>=0){T.wT+=dt;const k=T.wT;T.wp.forEach((o,i)=>{const h=Math.max(0,o.v*2600*k-k*k*420);_T.set(T.WS.x+300+Math.cos(o.a)*o.r*(90+k*160),h-6,T.WS.z+Math.sin(o.a)*o.r*(90+k*160));T.water.set(i,_T,60+o.r*90,.88,.94,1,Math.max(0,.85-k*.07)*(h>0?1:0));});}else T.wp.forEach((o,i)=>T.water.hide(i));T.water.setScale(pxs);T.water.flush();
-      T.BT.update(dt);}};};})();
-
-/* the sequence over Tyche */
-FX.irongoldprologue=g=>{const S=SITES.tyche;if(!S||curSite!==S||!T.P)return null;T.reset();T.P.visible=true;T.chain=false;T.on=true;overlay();document.body.classList.add("prol","cine");ovTitle();ovFade(1,0);
-  const todNow=k=>{const D=Object.assign({},S.tods[k],{sunEl:-.35,sunI:.12,stars:1});tod.cur=k;tod.t=1;tod.from=null;applyTod(D,D,1);};todNow("night");
-  const IS=T.IS,FY=T.top,H=T.HOME,HY=T.roomY,V=T.VESP,W=T.WS,RL=T.RAIL;let wasStorm=null;
-  const K1=[[0,[IS.x+1,FY+2.3,IS.z+40],8,.45,1.5],[5,[IS.x+1,FY+2.6,IS.z+40],6,2.7,1.5],[10,[IS.x,FY+4,IS.z+34],26,.2,1.6],[15,[IS.x,FY+34,IS.z+20],60,.25,1.95]];
-  const K2=[[17,[0,300,1200],9000,Math.PI-.05,1.32],[23,[1900,120,-900],2600,Math.PI-.7,1.25],[29,[-2500,300,1500],2200,Math.PI-.35,1.18]];
-  const K3=[[33,[H.x+.6,HY+1.4,H.z+1.2],3.2,2.5,1.5],[38,[H.x+.1,HY+1.7,H.z+2.6],1.35,3.08,1.55]];
-  const K4=[[45,[0,2400,-1500],5600,Math.PI-.2,1.66],[50,[V.x,V.y+80,V.z],2400,Math.PI-.5,1.25],[57,[W.x+300,40,W.z],3200,Math.PI-1.2,1.3],[63,[RL.x-1500,2600,RL.z-1800],5200,Math.PI+.4,1.25],[70,[-3000,1600,3600],4600,Math.PI-.1,1.22]];
-  const path=(i,u)=>{const a=new THREE.Vector3(-14000+i*2400,18000-i*800,-30000+i*1800),b=new THREE.Vector3(-1500+i*900,1800+i*300,-1800-i*400);return a.lerp(b,u*u);};
-  return {dur:73,update(dt,t){
-      if(!T.flags.in){T.flags.in=1;ovFade(0,2.5);}
-      /* the fleet glides in, high over the sea */
-      T.fleet.forEach((s,i)=>{s.position.copy(s.userData.o).add(new THREE.Vector3(0,-t*25,t*160));s.rotation.y=-Math.PI/2;});
-      if(t<16){const c=lerpK(K1,t);camGlide(...c);if(t<.1)camCut(...c);}
-      else if(t<31){if(!T.flags.c1){T.flags.c1=1;ovFade(1,.8);}if(t>16.8&&!T.flags.c2){T.flags.c2=1;camCut(...lerpK(K2,17));ovFade(0,1.5);}if(t>17)camGlide(...lerpK(K2,t));}
-      else if(t<43){if(!T.flags.d1){T.flags.d1=1;ovFade(1,.7);}if(t>31.8&&!T.flags.d2){T.flags.d2=1;camCut(...lerpK(K3,33));ovFade(0,1.2);}if(t>32)camGlide(...lerpK(K3,Math.max(33,t)));
-        if(t>35.5&&t<41.5){const p=T.draw((t-35.5)/6);T.arm.rotation.x=-2.4+Math.sin(t*6)*.15;T.arm.rotation.z=(p[0]-256)/400;}else T.arm.rotation.x=0;}
-      else{if(!T.flags.e1){T.flags.e1=1;ovFade(1,.6);}if(t>43.7&&!T.flags.e2){T.flags.e2=1;camCut(...lerpK(K4,45));ovFade(0,1);}if(t>44)camGlide(...lerpK(K4,Math.max(45,t)));
-        /* the bombers dive out of the sky with shock cones at their noses */
-        if(t>44&&t<56){T.bombers.forEach((b,i)=>{const u=Math.min(1,(t-44)/(5+i*.6));b.visible=true;const p=path(i,u),q=path(i,Math.min(1,u+.01));b.position.copy(p);b.lookAt(q);b.rotateY(-Math.PI/2);b.userData.cone.material.opacity=u<.9?.4*(1-u):0;if(u>=1)b.position.y+=(t-44-(5+i*.6))*1400;});}else T.bombers.forEach(b=>b.visible=false);
-        /* one: the Hall of Justice */
-        if(t>48&&t<52){const u=Math.min(1,(t-48)/2.4);T.bombs[0].visible=u<1;T.bombs[0].position.lerpVectors(path(0,1),new THREE.Vector3(V.x,V.y,V.z),u*u);if(u>=1&&!T.flags.b1){T.flags.b1=1;T.BT.hit(new THREE.Vector3(V.x,V.y+20,V.z),3);}}
-        if(t>51.6&&!T.flags.b1b){T.flags.b1b=1;const p=new THREE.Vector3(V.x,V.y+40,V.z);T.BT.boom(p,9);T.BT.boom(p.clone().add(new THREE.Vector3(120,60,-80)),6);T.throwChunks(p,90,900);}
-        if(t>52.4&&!T.flags.b1c){T.flags.b1c=1;T.BT.boom(new THREE.Vector3(V.x+80,V.y+200,V.z+40),7);}
-        /* two: the sea and the warship hidden under the chop */
-        if(t>54&&t<58){const u=Math.min(1,(t-54)/2.4);T.bombs[1].visible=u<1;T.bombs[1].position.lerpVectors(path(1,1),new THREE.Vector3(W.x+300,0,W.z),u*u);if(u>=1&&T.wT<0){T.wT=0;T.BT.boom(new THREE.Vector3(W.x+300,20,W.z),8);T.throwChunks(new THREE.Vector3(W.x+300,10,W.z),50,700);}}
-        if(T.wT>0){T.warship.position.y=-22-T.wT*16;T.warship.rotation.z=Math.min(.6,T.wT*.1);T.warship.rotation.x=Math.min(.3,T.wT*.05);}
-        /* three: over the mountains, the railgun, the tumble toward the edge of the city; we leave before it lands */
-        if(t>60&&t<71){const k=t-60;let p;if(k<3.2)p=new THREE.Vector3(4000-k*300,5200-k*500,12000-k*1800);else{const kk=k-3.2;p=new THREE.Vector3(3040-kk*1100,3600-kk*300+Math.sin(kk*4)*120,6240-kk*350);}
-          T.bombs[2].visible=true;T.bombs[2].position.copy(p);if(k>=3.2&&!T.flags.b3){T.flags.b3=1;T.BT.fire(new THREE.Vector3(RL.x,RL.y+40,RL.z),p,0x9fd0ff);T.BT.boom(p.clone(),3);}
-          if(k>=3.2&&T.tp.length<500)T.tp.push({p:p.clone(),s:50+Math.random()*50,a:1});}
-        if(t>70&&!T.flags.out){T.flags.out=1;ovFade(1,1.4);}}
-      siteTour=false;},
-    dispose(){T.P.visible=false;T.on=false;T.reset();if(!T.chain){document.body.classList.remove("prol","cine");ovFade(0,1);ovTitle();}const b=document.querySelector('[data-tog="prologue"]');if(b)b.setAttribute("aria-pressed","false");if(S._tog)S._tog.prologue=false;
-      if(T.ended&&!T.chain){} },
-    _end(){}};};
-/* when the Tyche part ends, carry on above Mercury */
-(function(){const old=updateFx;})();
-setInterval(()=>{if(typeof fxList==="undefined")return;const f=fxList.find(x=>x.name==="irongoldprologue");if(f&&f.t>=72.4&&!T.chain){T.chain=true;enterSite("prologue",null,()=>{playFx("irongoldreaper",true);});}},200);
-
-/* ---------------- above Mercury: the capsule, the launch, the long fall ---------------- */
-const RM=24000;
-const CAP=new THREE.Vector3(0,RM+9000,90000);
-const lm=[{id:"orbit",name:"Above Mercury",pos:[0,RM+7000,0],desc:"Virginia’s fleet in orbit over Mercury on the night of the Iron Rain.",cam:{target:[0,RM+6000,0],r:9000,theta:.6,phi:1.3}}];
-SITES.prologue={name:"Iron Gold · The Prologue",body:"mercury",poi:"tyche",epithet:"Mercury · the night of the Iron Rain",seed:291,
-  blurb:"A wordless cinematic for the opening of Iron Gold and the Rising’s assault on Mercury. The staging is the atlas’s own interpretation, not a scene-by-scene adaptation. Play it from Tyche or from the event.",
-  facts:[["Book","Iron Gold, prologue"],["Where","Tyche, and the orbit above Mercury"],["When","The tenth year of the war"]],note:"A staged reconstruction of the prologue.",
-  ground:noGround,targetLift:0,bounds:200000,minR:2,maxR:90000,shadow:3000,win:[3,2.4],cam:{target:[0,RM+6000,0],r:9000,theta:.6,phi:1.3},defaultTod:"space",
-  toggles:[{id:"play",label:"▶ Play the Prologue",era:4}],onToggle(id,v){if(id==="play"&&v){enterSite("tyche",null,()=>playFx("irongoldprologue",true));}},
-  tods:{space:{top:0x000002,hor:0x020206,bot:0x000002,sun:0xfff4e4,sunEl:.15,sunAz:.9,sunI:3.2,skyL:0x8a90a0,gndL:0x2a2420,hemiI:.25,fog:0x000002,fogD:.0000005,night:.4,exp:.95,stars:1,haze:0,sunSize:.9984}},
-  landmarks:lm,
-  build(ctx){const R=ctx.R,root=ctx.root;const M=mats();const S={};SITES.prologue._S=S;
-    /* Mercury as the atlas shows it from orbit */
-    const tx=REAL.mercury||procSet(byId.mercury,1024,512);const pm=new THREE.Mesh(new THREE.SphereGeometry(RM,160,120),new THREE.MeshPhongMaterial({map:tx.map,emissiveMap:tx.lights||null,emissive:col(tx.lights?0xffffff:0),emissiveIntensity:.6,shininess:6,fog:false}));pm.rotation.set(Math.PI/2,0,2.2);root.add(pm);S.planet=pm;
-    if(!REAL.mercury&&typeof applySet==="function")applySet("mercury",()=>setTimeout(()=>{const t2=REAL.mercury;if(t2&&t2.map){pm.material.map=t2.map;pm.material.needsUpdate=true;}},50));
-    const at=makeAtmo("mercury",RM,1.035);at.material.fog=false;root.add(at);const at2=makeAtmo("mercury",RM,1.012);at2.material.fog=false;root.add(at2);
-    /* the white fleet, scorched; the Morning Star at its heart */
-    const white=(s)=>{s.traverse(o=>{if(o.isMesh){o.material=o.material.clone();o.material.color=col(0xdcd8d0);if(o.material.emissive)o.material.emissive=col(0x404040);}});return s;};
-    const MS=new THREE.Vector3(0,RM+7200,0);S.MS=MS;const ms=white(makeShip("dread",1800));ms.position.copy(MS);ms.rotation.y=Math.PI/2;root.add(ms);S.ms=ms;
-    for(let i=0;i<30;i++){const sp=glowSprite(GLOW_WHITE,100+R()*220,.3);sp.material.color=col(0x1a1614);sp.material.blending=THREE.NormalBlending;sp.position.set((R()-.5)*1700,(R()-.5)*200,(R()-.5)*300);ms.add(sp);}
-    S.ships=[ms];for(let i=0;i<22;i++){const s=white(makeShip(i<4?"dread":"frigate",i<4?1100:360+R()*240));s.position.set(MS.x+(R()-.5)*16000,MS.y+(R()-.5)*3000+800,MS.z+(R()-.5)*16000);s.rotation.y=Math.PI/2+(R()-.5)*.3;root.add(s);S.ships.push(s);const e=glowSprite(GLOW_BLUE,i<4?900:300,.8);e.position.x=-(i<4?1100:400)*.55;s.add(e);}
-    /* Darrow's capsule, alone: a close cell of armor and light */
-    {const cap=new THREE.Group();cap.position.copy(CAP);root.add(cap);S.cap=cap;
-      const shell=new THREE.Mesh(new THREE.CylinderGeometry(1.5,1.5,5,32,1,true).rotateZ(Math.PI/2),new THREE.MeshStandardMaterial({color:col(0x3a3c42),metalness:.7,roughness:.4,side:THREE.BackSide}));cap.add(shell);
-      [-2.5,2.5].forEach(x=>{const e=new THREE.Mesh(new THREE.CircleGeometry(1.5,32).rotateY(x<0?Math.PI/2:-Math.PI/2),shell.material);e.position.x=x;cap.add(e);});
-      S.rings=[];for(let k=0;k<8;k++){const r=new THREE.Mesh(new THREE.TorusGeometry(1.44,.012,6,48).rotateY(Math.PI/2),new THREE.MeshBasicMaterial({color:col(0x4a8aff),transparent:true,opacity:.3,blending:THREE.AdditiveBlending}));r.position.x=-2.2+k*.62;cap.add(r);S.rings.push(r);}
-      const dar=knight(M,1.9,0xa01818,0x3a1010,0x3a1010);dar.rotation.set(-Math.PI/2,Math.PI/2,0,'YXZ');dar.position.set(.9,-.6,0);cap.add(dar);const visor=glowSprite(GLOW_WARM,.3,.9);visor.position.set(-.72,-.38,0);cap.add(visor);
-      const rl=new THREE.PointLight(col(0xff2a1a),1.2,8,1.4);rl.position.set(0,1.1,0);cap.add(rl);S.capL=rl;const wl=new THREE.PointLight(col(0xd8e8ff),.4,6,1.6);wl.position.set(1.5,.6,0);cap.add(wl);}
-    /* Darrow's pod and the others: they fall in fire */
-    const podG=new THREE.CylinderGeometry(4,6,16,12).rotateZ(Math.PI/2);const pod=new THREE.Mesh(podG,new THREE.MeshStandardMaterial({color:col(0x6a1a14),metalness:.6,roughness:.4}));root.add(pod);pod.visible=false;S.pod=pod;
-    const plasma=glowSprite(GLOW_WARM,60,0);pod.add(plasma);S.plasma=plasma;const pglow=glowSprite(GLOW_RED,160,0);pod.add(pglow);S.pglow=pglow;
-    S.trail=GlowPoints(root,700);S.tr=[];S.others=GlowPoints(root,3000);S.oth=[];
-    for(let i=0;i<300;i++){const sh=S.ships[(R()*S.ships.length)|0];const from=sh.position.clone().add(new THREE.Vector3((R()-.5)*600,-60,(R()-.5)*600));const n=from.clone().normalize();
-      const to=n.clone().applyAxisAngle(new THREE.Vector3(1,0,0),.12+R()*.22).applyAxisAngle(new THREE.Vector3(0,1,0),(R()-.5)*.6).multiplyScalar(RM*1.002);S.oth.push({from,to,mid:from.clone().lerp(to,.5).multiplyScalar(1.01),d:2+R()*20,dur:16+R()*6});}
-    return {update(dt,t){const pxs=pxScale(camX);S.ships.forEach((s,i)=>{if(i)s.position.x+=dt*20;});
-      S.rings.forEach((r,i)=>{r.material.opacity=.2+(S.charge||0)*.8*(.6+.4*Math.sin(t*40+i));r.material.color.setRGB(.3+(S.charge||0)*.7,.55+(S.charge||0)*.45,1);});
-      for(let i=0;i<700;i++){const p=S.tr[i];if(p){S.trail.set(i,p.p,p.s*(1+p.age*.6),1,.55+.3*Math.max(0,1-p.age),.25,Math.max(0,.8-p.age*.08));p.age+=dt;}else S.trail.hide(i);}S.trail.setScale(pxs);S.trail.flush();
-      const ot=S.fall?S.fall.t:-1;S.oth.forEach((o,i)=>{const k=ot<0?0:Math.min(1,Math.max(0,(ot-o.d)/o.dur));for(let j=0;j<10;j++){const idx=i*10+j;if(k<=0||k>=1){S.others.hide(idx);continue;}const kk=Math.max(0,k-j*.006);const u=1-kk;
-        _T.set(0,0,0).addScaledVector(o.from,u*u).addScaledVector(o.mid,2*u*kk).addScaledVector(o.to,kk*kk);const alt=_T.length()-RM;const hot=alt<1400?1:0;S.others.set(idx,_T,(j?40:70)*(1+hot*2)*(1-j/11),1,hot?.55:.85,hot?.25:.7,.9*(1-j/11));}});
-      S.others.setScale(pxs);S.others.flush();}};}};
-
-FX.irongoldreaper=g=>{const S=SITES.prologue&&SITES.prologue._S;if(!S)return null;overlay();document.body.classList.add("prol","cine");ovTitle();ovFade(1,0);T.chain=false;
-  const D=SITES.prologue.tods.space;tod.cur="space";tod.t=1;tod.from=null;applyTod(D,D,1);
-  const MS=S.MS;const tube=MS.clone().add(new THREE.Vector3(200,-120,180));
-  /* the fall: out of the tube, down and forward into the upper air */
-  const P0=tube.clone(),P1=tube.clone().add(new THREE.Vector3(900,-400,1600));const P3=new THREE.Vector3(1200,RM*1.004,9000).normalize().multiplyScalar(RM*1.004);const P2=P1.clone().lerp(P3,.5).multiplyScalar(1.03);
-  const bez=(u,o)=>{const a=1-u;return o.set(0,0,0).addScaledVector(P0,a*a*a).addScaledVector(P1,3*a*a*u).addScaledVector(P2,3*a*u*u).addScaledVector(P3,u*u*u);};
-  const pp=new THREE.Vector3(),pq=new THREE.Vector3();S.fall={t:-1};S.tr.length=0;
-  return {dur:54,update(dt,t){
-      if(t<6.8){/* the capsule */if(!S.c0){S.c0=1;camCut([CAP.x,CAP.y-.5,CAP.z],1.9,.4,.62);ovFade(0,1.6);}camGlide([CAP.x-.4,CAP.y-.5,CAP.z],1.6,.15,.5);
-        S.charge=t<3.5?0:Math.min(1,(t-3.5)/3);S.capL.intensity=1.2+S.charge*2*Math.random();S.pod.visible=false;}
-      else{if(!S.flags){S.flags=1;ovFade(.9,.05);setTimeout(()=>ovFade(0,.6),120);S.charge=0;S.fall.t=0;S.pod.visible=true;}
-        S.fall.t+=dt;const ft=S.fall.t;const u=Math.min(1,ft/38);const e=1-Math.pow(1-u,1.6);bez(e,pp);bez(Math.min(1,e+.002),pq);S.pod.position.copy(pp);S.pod.lookAt(pq);S.pod.rotateY(-Math.PI/2);
-        const alt=pp.length()-RM;const hot=sst(2600,700,alt);S.plasma.material.opacity=hot*.95;S.plasma.scale.setScalar(60+hot*260);S.pglow.material.opacity=hot*.7;S.pglow.scale.setScalar(160+hot*900);
-        if(S.tr.length<700&&Math.random()<.9)S.tr.push({p:pp.clone(),s:hot>0?30+hot*70:6,age:0});if(S.tr.length>=700)S.tr.shift();
-        /* the tracking shot: close behind the pod, then slowly pulling back until Mercury fills the view as from orbit */
-        const back=Math.pow(Math.min(1,ft/42),2.2);const r=30+back*(RM*3.4);const tg=pp.clone().lerp(new THREE.Vector3(0,0,0),Math.pow(back,1.6));
-        camGlide([tg.x,tg.y,tg.z],r,.5+ft*.012,1.25-back*.25);if(ft<.2)camCut([tg.x,tg.y,tg.z],r,.5,1.25);}
-      if(t>46&&!S.f2){S.f2=1;ovFade(1,3.5);}if(t>49.5&&!S.f3){S.f3=1;ovTitle("Iron Gold");}
-      siteTour=false;},
-    dispose(){S.flags=0;S.f2=S.f3=0;S.c0=0;S.fall={t:-1};S.pod.visible=false;S.tr.length=0;document.body.classList.remove("prol","cine");ovTitle();ovFade(0,2);const b=document.querySelector('[data-tog="play"]');if(b)b.setAttribute("aria-pressed","false");if(curSite&&curSite._tog)curSite._tog.play=false;}};};
-})();
-
 /* ---- 53-site-duel.js ---- */
 /* ===================== THE DUEL · DARROW AND CASSIUS (a close-up set piece) =====================
    Golden Son: at the Summit gala, Octavia makes it a fight to the death. Here only the two of them, in armor and
@@ -9182,9 +8963,10 @@ return {ground,geo,mat,model,COLS};
    the last scene module (the Siege of Red Reach) so every scene is covered. */
 (function(){
 const SITE_FROM={gala:2,io:3,gorgon:4,helios:5,heliopolis:5,tyche:4,venusdocks:6,garter:6,newsparta:6,asteroid:6,
-  /* merge: Tyche opens at IV (not V) because the Iron Gold prologue (event g1) is staged there; its Dark Age and
-     Light Bringer landmark text is gated below. The newer atlas's other scenes open from the book each one stages */
-  vanguard:2,duel:2,silene:4,deepgrave:4,sungrave:4,prologue:4,ladon:5,whitefleet:5,atlasbase:5,pandora:5,olympia:5,siege:5,
+  /* merge: Tyche opens at IV (not V). The staged Iron Gold prologue (event g1) that motivated this was omitted in
+     review (SO1-SO3) and is not evidence for book-IV availability; the gate is kept pending its own disposition (SO6).
+     Its Dark Age and Light Bringer landmark text is gated below. The newer atlas's other scenes open from the book each one stages */
+  vanguard:2,duel:2,silene:4,deepgrave:4,sungrave:4,ladon:5,whitefleet:5,atlasbase:5,pandora:5,olympia:5,siege:5,
   marcher:6,rome:6,nixian:6,thedeep:6,heraklion:6};
 Object.entries(SITE_FROM).forEach(([k,b])=>{if(SITES[k])SITES[k].from=Math.max(SITES[k].from||1,b);});
 
