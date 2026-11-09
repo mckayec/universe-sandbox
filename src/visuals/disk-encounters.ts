@@ -1,6 +1,6 @@
 // Per-frame companion response of black-hole accretion disks (labelled approximation; see src/disk-encounter.ts).
 import * as THREE from 'three';
-import { QUIET_ENCOUNTER, diskEncounter, relaxEncounter, type DiskEncounter } from '../disk-encounter.ts';
+import { QUIET_ENCOUNTER, diskEncounter, outranks, relaxEncounter, type DiskEncounter } from '../disk-encounter.ts';
 import { bodies } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 
@@ -9,7 +9,7 @@ const MIN_MASS_RATIO = 0.02;
 const DISK_LAYERS = ['accretionDiskHot', 'accretionDiskMid', 'accretionDiskDust'];
 const tmpLocal = new THREE.Vector3();
 
-export type DiskEncounterState = DiskEncounter & { companionId?: number };
+export type DiskEncounterState = DiskEncounter;
 
 function diskLayers(b: Body) {
   const cached = b.mesh.userData.diskLayers as THREE.Mesh[] | undefined;
@@ -21,20 +21,17 @@ function diskLayers(b: Body) {
   return layers;
 }
 
-function targetEncounter(b: Body, reference: THREE.Mesh, outer: number) {
-  let best: DiskEncounter = QUIET_ENCOUNTER,
-    companionId: number | undefined;
+/** Deepest companion encounter for one disk; ranking shared with the pure helper via `outranks`. */
+function targetEncounter(b: Body, reference: THREE.Mesh, outer: number): DiskEncounterState {
+  let best: DiskEncounter = QUIET_ENCOUNTER;
   reference.updateWorldMatrix(true, false);
   for (const other of bodies) {
     if (other === b || other.kind === 'nebula' || other.debris || !(other.mass >= b.mass * MIN_MASS_RATIO)) continue;
     reference.worldToLocal(tmpLocal.copy(other.mesh.position));
-    const e = diskEncounter(tmpLocal, outer, b.mass, other.mass);
-    if (e.strength > best.strength) {
-      best = e;
-      companionId = other.id;
-    }
+    const e = { ...diskEncounter(tmpLocal, outer, b.mass, other.mass), companionId: other.id };
+    if (outranks(e, best)) best = e;
   }
-  return { ...best, companionId };
+  return best.strength > 0 ? best : { ...QUIET_ENCOUNTER };
 }
 
 /** Update the tide uniforms on one black hole's disks. `dt` is the disk (simulated, capped) step or frame time. */

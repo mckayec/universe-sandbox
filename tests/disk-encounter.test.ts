@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { stripTypeScriptTypes } from 'node:module';
 import test from 'node:test';
 import {
   QUIET_ENCOUNTER,
   TRUNCATION_FRACTION,
   describeEncounter,
   diskEncounter,
+  outranks,
   relaxEncounter,
   rocheLobeFraction,
   strongestEncounter,
@@ -117,4 +119,77 @@ test('black-hole disk shader declares and applies the tide uniforms', () => {
   assert.match(materials, /\$\{DISK_TIDE_GLSL\}/);
   assert.match(materials, /tideCut: \{ value: 1e5 \}/);
   assert.match(materials, /\*tide\.x;/);
+});
+
+// SC4-T1: two saturated companions (strength 1 each) with different cuts, in both orders.
+const shallowSaturated = diskEncounter({ x: 12, y: 0, z: 0 }, OUTER, 1, 1);
+const deepSaturated = diskEncounter({ x: 0, y: 9, z: 0 }, OUTER, 1, 1);
+
+test('strongestEncounter ranks saturated companions by depth in either order', () => {
+  assert.equal(shallowSaturated.strength, 1);
+  assert.equal(deepSaturated.strength, 1);
+  assert.ok(deepSaturated.cut < shallowSaturated.cut);
+  assert.equal(strongestEncounter([shallowSaturated, deepSaturated]), deepSaturated);
+  assert.equal(strongestEncounter([deepSaturated, shallowSaturated]), deepSaturated);
+  // Below the 0.25 cut floor, the unclamped depth still separates them.
+  const veryClose = diskEncounter({ x: 3, y: 0, z: 0 }, OUTER, 1, 1),
+    closer = diskEncounter({ x: 0, y: 2, z: 0 }, OUTER, 1, 1);
+  assert.equal(veryClose.cut, 0.25);
+  assert.equal(closer.cut, 0.25);
+  assert.equal(strongestEncounter([veryClose, closer]), closer);
+  assert.equal(strongestEncounter([closer, veryClose]), closer);
+});
+
+test('exact ranking ties are deterministic', () => {
+  const left = { ...diskEncounter({ x: 9, y: 0, z: 0 }, OUTER, 1, 1), companionId: 7 },
+    right = { ...diskEncounter({ x: -9, y: 0, z: 0 }, OUTER, 1, 1), companionId: 4 };
+  assert.equal(left.depth, right.depth);
+  assert.equal(strongestEncounter([left, right]), right);
+  assert.equal(strongestEncounter([right, left]), right);
+  const { companionId: _a, ...noIdLeft } = left,
+    { companionId: _b, ...noIdRight } = right;
+  assert.equal(strongestEncounter([noIdLeft, noIdRight]), noIdLeft);
+  assert.ok(!outranks(QUIET_ENCOUNTER, deepSaturated));
+  assert.ok(outranks(shallowSaturated, QUIET_ENCOUNTER));
+});
+
+test('runtime companion selector uses the shared ranking in either order (identity-transform stubs)', () => {
+  const source = readFileSync(new URL('../src/visuals/disk-encounters.ts', import.meta.url), 'utf8'),
+    start = source.indexOf('function targetEncounter('),
+    end = source.indexOf('/** Update the tide uniforms', start);
+  assert.ok(start >= 0 && end > start);
+  const controller = stripTypeScriptTypes(source.slice(start, end));
+  const host = { id: 1, mass: 1, kind: 'blackhole' },
+    shallow = { id: 2, mass: 1, kind: 'blackhole', mesh: { position: { x: 12, y: 0, z: 0 } } },
+    deep = { id: 3, mass: 1, kind: 'blackhole', mesh: { position: { x: 0, y: 9, z: 0 } } },
+    reference = { updateWorldMatrix() {}, worldToLocal: (v: unknown) => v };
+  const run = (order: object[]) => {
+    const tmpLocal = {
+      copy(v: object) {
+        Object.assign(this, v);
+        return this;
+      },
+    };
+    return new Function(
+      'QUIET_ENCOUNTER',
+      'diskEncounter',
+      'outranks',
+      'bodies',
+      'tmpLocal',
+      'MIN_MASS_RATIO',
+      'reference',
+      `${controller}; return targetEncounter(bodies[0], reference, ${OUTER});`,
+    )(QUIET_ENCOUNTER, diskEncounter, outranks, [host, ...order], tmpLocal, 0.02, reference);
+  };
+  for (const order of [
+    [shallow, deep],
+    [deep, shallow],
+  ]) {
+    const got = run(order);
+    assert.equal(got.cut, deepSaturated.cut);
+    assert.equal(got.companionId, 3);
+    assert.equal(got.angle, deepSaturated.angle);
+  }
+  assert.equal(run([]).strength, 0);
+  assert.equal(run([]).companionId, undefined);
 });

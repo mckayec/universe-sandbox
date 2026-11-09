@@ -20,6 +20,13 @@ export type DiskEncounter = {
   cut: number;
   /** Polar angle of the companion in the disk plane (local XY), radians. */
   angle: number;
+  /**
+   * Unclamped truncation radius / outer radius (smaller = deeper). Used only to rank companions, because both
+   * `strength` (saturates at 1) and `cut` (floors at 0.25) stop distinguishing very close companions.
+   */
+  depth?: number;
+  /** Identity of the companion, when known; breaks exact ranking ties deterministically. */
+  companionId?: number;
 };
 
 export const QUIET_ENCOUNTER: DiskEncounter = Object.freeze({ strength: 0, cut: 1, angle: 0 });
@@ -49,13 +56,33 @@ export function diskEncounter(
     cut = clamp(truncation / outer, 0.25, 1),
     strength = clamp((1 - truncation / outer) / STRENGTH_SPAN, 0, 1);
   if (strength <= 0) return QUIET_ENCOUNTER;
-  return { strength, cut, angle: Math.atan2(local.y, local.x) };
+  return { strength, cut, angle: Math.atan2(local.y, local.x), depth: truncation / outer };
 }
 
-/** The strongest of several encounters (smallest cut). */
-export function strongestEncounter(encounters: Iterable<DiskEncounter>) {
-  let best = QUIET_ENCOUNTER;
-  for (const e of encounters) if (e.strength > best.strength) best = e;
+function rankDepth(e: DiskEncounter) {
+  return Number.isFinite(e.depth) ? (e.depth as number) : e.cut;
+}
+
+/**
+ * True when `candidate` should replace `best` as the encounter shown on a disk. One rule for the helper and the
+ * runtime selector: any active encounter beats a quiet one; otherwise the deeper (unclamped) truncation wins; on an
+ * exact tie the smaller companion ID wins, and without IDs the earlier encounter is kept.
+ */
+export function outranks(candidate: DiskEncounter, best: DiskEncounter) {
+  if (!(candidate.strength > 0)) return false;
+  if (!(best.strength > 0)) return true;
+  const a = rankDepth(candidate),
+    b = rankDepth(best);
+  if (a !== b) return a < b;
+  return (
+    candidate.companionId !== undefined && best.companionId !== undefined && candidate.companionId < best.companionId
+  );
+}
+
+/** The strongest of several encounters: the deepest truncation (see `outranks`). */
+export function strongestEncounter<T extends DiskEncounter>(encounters: Iterable<T>): T | DiskEncounter {
+  let best: T | DiskEncounter = QUIET_ENCOUNTER;
+  for (const e of encounters) if (outranks(e, best)) best = e;
   return best;
 }
 
