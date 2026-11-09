@@ -101,7 +101,7 @@ const ERAS={
  mercury:{1:{epithet:"Innermost world of the Core",control:"House Votum · the Society",blurb:"A terraformed world under a fierce sun. Its great continent, Helios, runs from alpine north coasts through the chalk desert of the Waste of Ladon to southern jungles. Ancestral seat of House Votum."},
    3:{blurb:"A terraformed world under a fierce sun. Its great continent, Helios, runs from alpine north coasts through the chalk desert of the Waste of Ladon to southern jungles. Ancestral seat of House Votum. At the close of the trilogy it becomes a refuge for the Ash Lord’s retreating fleet."},
    4:{epithet:"The Republic’s conquest",control:"The Republic · Darrow’s legions",blurb:"Ten years after Morning Star, Darrow’s Iron Rain tears Mercury from the Society against the Senate’s wishes. Tyche and Heliopolis fly Republic colors, but the Society Remnant has not let go."},
-   5:{epithet:"The war for Helios",control:"Contested · Republic vs. Society Remnant",blurb:"Dark Age. Atalantia’s Remnant falls on Mercury. Darrow wakes the Storm Gods, Tyche drowns, the Ladon swallows armies, and Heliopolis is besieged until it falls."},
+   5:{epithet:"The war for Helios",control:"Contested · Republic vs. Society Remnant",blurb:"Dark Age. Atalantia’s Remnant falls on Mercury. Darrow wakes the Storm Gods, the Ladon swallows armies, and Heliopolis is besieged until it falls."},
    6:{epithet:"Lysander’s world",control:"The Society · Lysander au Lune",blurb:"Light Bringer. Mercury belongs to the Society and hails Lysander as its hero. Above Heliopolis he unveils the Lightbringer, once Darrow’s Morning Star."}},
  venus:{3:{blurb:"Cloud-wrapped Core world loyal to the Sovereign. After Luna falls, the Ash Lord pulls what remains of his forces back here and to Mercury."},
    4:{epithet:"Stronghold of the Society",control:"The Society · the Ash Lord",blurb:"A terraformed world of warm seas and islands. On Gorgon Isle stands the fortress of the Ash Lord, Magnus au Grimmus, until Darrow storms it in Iron Gold."},
@@ -212,7 +212,7 @@ EVENTS.push(
  {id:"d5",book:5,body:"mercury",poi:"caduceus",lm:"caduceus",title:"Plains of Caduceus",text:"Orion’s storms trap the Society’s landing waves on the plains, and Darrow’s Helldivers break a Votum division."},
  {id:"d6",book:5,body:"mercury",poi:"ladon",lm:"wall",fx:"ladonstorm",title:"Operation Tartarus",text:"Darrow wakes the Storm Gods against the Iron Rain. Hypercanes and a vast sandstorm across the Ladon wreck the landing; Darrow’s forces ride the storm."},
  {id:"d7",book:5,body:"mercury",poi:"ladon",lm:"stormgod",title:"Battle of the Ladon",text:"Seraphina is killed by a rail slug at the Storm God. At a downed Storm God, Darrow maims Kalindora and burns half of Lysander’s face."},
- {id:"d8",book:5,body:"mercury",poi:"tyche",lm:"harbor",fx:"flood",title:"Tyche drowns",text:"Orion, broken by torture, drives the Storm Gods toward horizon four. Storm surges drown Tyche, and Darrow kills her with the master override. Tens of millions are dead."},
+ {id:"d8",book:5,body:"mercury",poi:"tyche",lm:"harbor",fx:"flood",title:"Tyche drowns",text:"Orion, broken by torture, drives the Storm Gods against Tyche, and storm surges drown the city. Provisional account; not independently checked against the novel."},
  {id:"d9",book:5,body:"mercury",poi:"erebos",lm:"erebos",title:"Lysander in the Ladon",text:"Abandoned in a sandstorm, Lysander survives the desert and is captured by the Gorgons at Erebos. Posing as “Cato,” he is sent into Heliopolis and wins over Glirastes."},
  {id:"d10",book:5,body:"mercury",poi:"heliopolis",lm:"wall",title:"Siege of Heliopolis",text:"Ajax’s siege is broken, then Atalantia’s begins. She shows Darrow footage of Dancer’s death and gives him a day to surrender."},
  {id:"d11",book:5,body:"luna",poi:"hyperion",lm:"forum",title:"Day of Red Doves",text:"Dancer is poisoned before the vote. Publius and the Vox Populi seize power, Daxo is killed, and Lilath au Faran is revealed as the Syndicate Queen. Virginia escapes, maimed."},
@@ -255,7 +255,7 @@ Object.assign(FX_VIEW,{
  heraklionraid:{view:"site",site:"heraklion",title:"The Raid on Heraklion",sub:"The Harbinger rises from the sea as the Ascomanni attack"},
  ladonstorm:{view:"site",site:"ladon",title:"Operation Tartarus",sub:"The Storm Gods’ sandstorm sweeps the Waste of Ladon"},
  storms:{view:"site",site:"helios",title:"Operation Tartarus",sub:"The Storm Gods wake over the Waste of Ladon"},
- flood:{view:"site",site:"tyche",title:"Tyche Drowns",sub:"Storm surges pour over the capital"},
+ flood:{view:"site",site:"tyche",title:"Tyche Drowns",sub:"Illustrative reconstruction of a provisional account, not checked against the novel"},
  heliofall:{view:"site",site:"heliopolis",title:"Fall of Heliopolis",sub:"The EMP drops the shield; Lysander rides from the Hippodrome"},
  pandora:{view:"globe",body:"mars",title:"The Pandora",sub:"Ascomanni boarding craft swarm Victra’s flagship"},
  venusdocks:{view:"site",site:"venusdocks",title:"The Venus Dockyards Burn",sub:"Sevro blows the Carthii dockyards apart"},
@@ -417,7 +417,7 @@ const byId={}; BODIES.forEach(b=>byId[b.id]=b);
     io:{raaseat:3,garter:6},
     mars:{olympia:5},
     phobos:{nucleus:6},
-    europa:{nyad:6,nixian:6,harmonia:6,heraklion:6,oceanus:6,psychonas:6},
+    europa:{nyad:6,nixian:6,harmonia:6,discordia:6,heraklion:6,oceanus:6,psychonas:6},
     asteroid:{base:6},
     rhea:{rheacities:2},
     /* merge: places the newer atlas added */
@@ -3526,7 +3526,7 @@ const MERC_T={
 SITES.helios={name:"The Continent of Helios",body:"mercury",poi:"ladon",pois:["heliopolis","tyche","redreach","caduceus","angelia","erebos","eleusis","children","ladon","caliban"],epithet:"Mercury · as charted in the Solar War",seed:121,
   blurb:"Mercury’s great continent, laid out from the in-book maps: alpine green along the Sycorax coast, the chalk Waste of Ladon across the equator, the Hesperides walling the west, and Heliopolis on the Bay of Sirens.",
   eras:{4:{blurb:"Iron Gold. Darrow’s Republic has torn Helios from the Society. Shields guard the northern cities, linked into a chain by their reactors."},
-        5:{blurb:"Dark Age. The Society Remnant falls on Helios. Toggle the Storm Gods to see Operation Tartarus: hypercanes, the Ladon sandstorm, and the surge that drowns Tyche."},
+        5:{blurb:"Dark Age. The Society Remnant falls on Helios. Toggle the Storm Gods to see Operation Tartarus: hypercanes and the Ladon sandstorm."},
         6:{blurb:"Light Bringer. Helios belongs to the Society, and Lysander is its hero."}},
   facts:[["Continent","Helios, with Borealis named elsewhere"],["Seas","Sycorax north, Caliban west"],["Heart","The Waste of Ladon"],["Capital","Tyche"]],
   note:"City and base positions follow the Dark Age map of Helios; the terrain is painted after your reference art, so coastline details, ranges and valleys are this atlas’s reconstruction.",
@@ -3899,7 +3899,7 @@ const lm=[
 ];
 SITES.tyche={name:"Tyche",body:"mercury",poi:"tyche",epithet:"Capital of Mercury · on the Sycorax Sea",seed:141,
   blurb:"Mercury’s capital and richest city, on a sloping strip of lowland between the Hesperides and the sea. House Votum built it in glass and limestone; libraries shaped as colossal heads are carved into the mountains behind it, and bridges carry it onto its islands.",
-  eras:{5:{blurb:"Dark Age. Toggle the Storm Gods to see the flood."},6:{blurb:"Light Bringer. A drowned and broken capital under the Society."}},
+  eras:{5:{blurb:"Dark Age. Toggle the Storm Gods for an illustrative flood reconstruction; this account has not been independently checked against the novel."},6:{blurb:"Light Bringer. The scene does not establish Tyche’s water level in this book; the Storm Gods control replays the provisional Book V reconstruction."}},
   facts:[["House","Votum"],["Sea","Sycorax"],["Undersea transit","Lines beneath the seafloor"],["Link south","The GravLoop to Heliopolis"]],
   note:"Layout is an artistic reconstruction from the books’ descriptions.",
   ground,bounds:8500,minR:150,maxR:22000,shadow:6500,win:[3,2.4],cam:{target:[200,300,600],r:11000,theta:Math.PI-.12,phi:1.12},defaultTod:"day",
@@ -4016,7 +4016,7 @@ SITES.tyche={name:"Tyche",body:"mercury",poi:"tyche",epithet:"Capital of Mercury
     SITES.tyche.onToggle=(id,v)=>{if(id==="storms")on=v;};
     SITES.tyche._flood=()=>{on=true;SITES.tyche._tog={storms:true};document.querySelectorAll('[data-tog=storms]').forEach(b=>b.setAttribute("aria-pressed",true));};
     return {update(dt,t){k+=((on?1:0)-k)*Math.min(1,dt*.8);if(window.__atlasFast)k=on?1:0;storm.visible=k>.01;
-      const prol=SITES._prolT&&SITES._prolT.on;const fOn=!prol&&(on||ERA>=6);flood+=((fOn?1:0)-flood)*Math.min(1,dt*.05);if(window.__atlasFast||prol)flood=fOn?flood:0;
+      const prol=SITES._prolT&&SITES._prolT.on;const fOn=!prol&&on;flood+=((fOn?1:0)-flood)*Math.min(1,dt*.05);if(window.__atlasFast||prol)flood=fOn?flood:0;
       sea.position.y=SEA_Y+flood*(window.__floodH||430)*(.9+.1*Math.sin(t*.6));
       cars.forEach(c=>{c.a+=c.sp*dt;c.m.position.set(c.cx+Math.cos(c.a)*c.r,c.y,c.cz+Math.sin(c.a)*c.r);c.m.rotation.y=-c.a;c.m.visible=k<.5;});
       if(SITES.tyche._light)SITES.tyche._light.material.opacity=.6+.35*Math.sin(t*2.2);
@@ -6420,8 +6420,8 @@ const lm=[
  {id:"seagate",name:"The Sea Gate",pos:[1150,40,1050],desc:"A stair winds down from the castle to the harbor in the cove, where boats come in from the Discordia Sea.",minor:true,cam:{target:[1150,10,1050],r:800,theta:.9,phi:1.15}},
  {id:"deep",name:"Down to The Deep",pos:[0,20,-2800],enter:"thedeep",desc:"Far to the south under the Discordia Sea lies The Deep, held by the Daughters of Athena in Light Bringer. Enter to go down.",minor:true,cam:{target:[0,0,-2600],r:900,theta:.1,phi:1.2}},
  {id:"sea",name:"Discordia Sea",pos:[0,20,-3200],desc:"Europa’s ocean, about ninety kilometers deep, where waves run near ten meters tall in the low gravity.",minor:true,cam:{target:[0,0,-2600],r:4000,theta:.2,phi:1.1}}];
-SITES.europa={name:"Lorn’s Castle",body:"europa",poi:"lornhome",epithet:"Europa · Harmonia · House Arcos",seed:121,
-  blurb:"A castle on Harmonia, an island in the Discordia Sea: a great keep and hall on the heights, cliffs falling to the sea and Jupiter filling the sky. Lorn au Arcos withdrew here from war.",
+SITES.europa={name:"Lorn’s Castle",body:"europa",poi:"lornhome",epithet:"Europa · House Arcos",seed:121,
+  blurb:"A castle on an island of Europa’s ocean: a great keep and hall on the heights, cliffs falling to the sea and Jupiter filling the sky. Lorn au Arcos withdrew here from war.",
   eras:{6:{blurb:"Light Bringer. Years after Lorn’s death, his castle on Harmonia stands decaying: roofs fallen in, ivy on the stone, the forest grown wild."}},
   facts:[["Lord","Lorn au Arcos, the Stoneside"],["Island","Harmonia, Discordia Sea"],["Weather","Blue lightning near the poles"],["Books","Golden Son, Light Bringer"]],
   note:"Layout is an artistic reconstruction from the books’ descriptions. Switch to Book VI to see it decaying.",
@@ -7035,7 +7035,7 @@ function deckCrowd(grp,n,c,spread){const fg=new THREE.CylinderGeometry(.32,.4,1.
    · Iron Gold (IV): just after the Republic's Iron Rain: drop pods steaming in the streets, scorch fires, the
      white ships of Virginia's fleet hanging overhead.
    · Dark Age (V): a city at war: fires and smoke columns across the districts, rubble, the sky full of ships.
-   · Light Bringer (VI): Tyche drowned (the flood stays) with its lights out; Heliopolis rebuilt under the Society. */
+   · Light Bringer (VI): Tyche with its lights out (no default flood; the Storm Gods toggle replays the provisional Book V reconstruction); Heliopolis rebuilt under the Society. */
 (function(){
 function dress(key,center,spread){const S=SITES[key];if(!S)return;const oldB=S.build;
   S.build=ctx=>{const o=oldB(ctx)||{};const oldE=S.onEra;const R=rng(500+key.length),root=ctx.root,g=S.ground;const pick=(minH)=>{for(let k=0;k<30;k++){const x=center[0]+(R()-.5)*spread,z=center[1]+(R()-.5)*spread;const y=g(x,z);if(y>(minH||8))return [x,y,z];}return null;};
@@ -8044,7 +8044,7 @@ TOURS.book5={title:"Dark Age · a tour of Mercury and beyond",steps:[
   {site:"heliopolis",lm:"hippodrome",t:"Heliopolis",s:"Darrow’s army holds the golden city on Mercury’s coast against the Society’s armies."},
   {site:"ladon",lm:"wall",t:"The Eater of Armies",s:"Darrow wakes the Storm Gods. A sandstorm the size of a country rolls across the Waste of Ladon, and legions of Golds die trying to outrun it."},
   {site:"atlasbase",lm:"lair",t:"The Fear Knight",s:"Atlas au Raa runs his Gorgons from caves in the Hesperides, and Lysander is taken near Erebos."},
-  {site:"tyche",lm:"libraries",t:"Tyche",s:"The City of Libraries, its great sculpted heads above the sea, drowns when the flood comes."},
+  {site:"tyche",lm:"libraries",t:"Tyche",s:"The City of Libraries, its great sculpted heads above the sea."},
   {site:"pandora",lm:"hangar",t:"The Pandora",s:"In Mars space the Ascomanni board Victra’s flagship. She releases a nerve agent and escapes; her craft crashes in Cimmeria with Lyria aboard."}]};
 TOURS.book6={title:"Light Bringer · a tour of the war",steps:[
   {site:"marcher",lm:"base",t:"Marcher",s:"After Mercury falls, Darrow and some two hundred survivors hide for months on a trash moon with the crippled Archimedes."},
@@ -8960,10 +8960,10 @@ return {ground,geo,mat,model,COLS};
    stays where it was written: lmGate(site,id,book,base) keeps it from `book` and shows `base` before it. Runs after
    the last scene module (the Siege of Red Reach) so every scene is covered. */
 (function(){
-const SITE_FROM={gala:2,io:3,gorgon:4,helios:5,heliopolis:5,tyche:4,venusdocks:6,garter:6,newsparta:6,asteroid:6,
-  /* merge: Tyche opens at IV (not V). The staged Iron Gold prologue (event g1) that motivated this was omitted in
-     review (SO1-SO3) and is not evidence for book-IV availability; the gate is kept pending its own disposition (SO6).
-     Its Dark Age and Light Bringer landmark text is gated below. The newer atlas's other scenes open from the book each one stages */
+const SITE_FROM={gala:2,io:3,gorgon:4,helios:5,heliopolis:5,tyche:5,venusdocks:6,garter:6,newsparta:6,asteroid:6,
+  /* Tyche opens at V per the lore-corrections minimum (matches POI_FROM.mercury.tyche). The withdrawn book-IV staging
+     (Iron Gold prologue, event g1) is omitted (SO1-SO3, SO6) and is not evidence; this is a conservative display
+     boundary, not a proven earliest mention. Its Dark Age and Light Bringer landmark text is gated below. The newer atlas's other scenes open from the book each one stages */
   vanguard:2,duel:2,silene:4,deepgrave:4,sungrave:4,ladon:5,whitefleet:5,atlasbase:5,pandora:5,olympia:5,siege:5,
   marcher:6,rome:6,nixian:6,thedeep:6,heraklion:6};
 Object.entries(SITE_FROM).forEach(([k,b])=>{if(SITES[k])SITES[k].from=Math.max(SITES[k].from||1,b);});
@@ -9012,10 +9012,12 @@ lmHide("ganymede","berth",3);lmHide("ganymede","platform",2);
 siteGate("newtroy","blurb",3,"A city of the Moon Lords on Ganymede’s forested coast, its towers under the great dock ring that arches across the sky.");
 lmGate("newtroy","ring",3,"Ganymede’s ring of shipyards arching across the sky.");
 lmHide("europa","athena",6);lmHide("europa","deep",6);
-lmGate("europa","villa",6,{1:"Keep and walls on Harmonia’s heights, in the Discordia Sea.",
-  2:"Keep and walls on Harmonia’s heights, in the Discordia Sea. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him."});
+lmGate("europa","villa",6,{1:"Keep and walls on the island’s heights.",
+  2:"Keep and walls on the island’s heights. Darrow comes to recruit his old teacher; after Tactus takes Lorn’s grandchildren hostage and surrenders, Lorn executes him."});
+lmGate("europa","seagate",6,"A stair winds down from the castle to the harbor in the cove.");
+lmHide("europa","sea",6);
 {const E=SITES.europa;if(E){E.note="Layout is an artistic reconstruction from the books’ descriptions.";
-  const full=E.facts,base=full.filter(f=>f[0]!=="Books");siteGate("europa","facts",6,base);E.eras[2]=Object.assign({},E.eras[2],{facts:base.concat([["Book","Golden Son"]])});}}
+  const full=E.facts,base=full.filter(f=>f[0]!=="Books").map(f=>f[0]==="Island"?["Island","An island of Europa’s ocean"]:f);siteGate("europa","facts",6,base);E.eras[2]=Object.assign({},E.eras[2],{facts:base.concat([["Book","Golden Son"]])});}}
 {const S=SITES.sungrave;if(S){S.note="An artistic reconstruction.";
   siteGate("sungrave","blurb",6,"A city of House Raa on Io: a citadel cut into a mountain in the volcanic wastes, white and gold under its pulse shield, with Jupiter filling the sky. In Iron Gold, Lysander and Cassius are brought here as prisoners.");
   siteGate("sungrave","facts",6,S.facts.filter(f=>f[0]==="House"||f[0]==="Iron Gold"));}}
@@ -9034,6 +9036,7 @@ lmGate("heliopolis","bay",6,{5:"The bay west of the city. Glirastes’ floating 
 lmGate("heliopolis","via",6,{5:"The triumphal avenue where the battle for the city is fought after the shield falls."});
 lmGate("tyche","morningstar",6,{4:"Darrow’s flagship.",5:"Darrow’s flagship."});
 lmGate("tyche","harbor",5,"Tyche’s waterfront on the Sycorax Sea.");
+{const T=SITES.tyche;if(T)T.note="Layout is an artistic reconstruction from the books’ descriptions. The Storm Gods flood is illustrative: its extent and water height are not verified against the novel.";}
 })();
 /* ---- 80-phone.js ---- */
 /* ===================== PHONE LAYOUT =====================
@@ -9430,7 +9433,7 @@ lmGate("tyche","harbor",5,"Tyche’s waterfront on the Sycorax Sea.");
     levAnchor=kids[0];return G;});
   /* the Light Bringer line shows from Book VI */
   const LEV_BASE="Carved monsters of Europa’s Discordia Sea and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kalibar’s 300-year-old bull.";
-  const LEV_TEXT={1:LEV_BASE,6:LEV_BASE+" In Light Bringer, the Ascomanni feed captives to leviathans at the Nixian Isles."};
+  const LEV_TEXT={1:LEV_BASE.replace("Europa’s Discordia Sea","Europa’s ocean"),6:LEV_BASE+" In Light Bringer, the Ascomanni feed captives to leviathans at the Nixian Isles."};
   let levLbl=null,levAnchor=null;
   function updLevLbl(){if(!levLbl)return;const on=mode==="globe"&&cur&&cur.id==="europa"&&levAnchor&&levAnchor.parent;let ok=false;
     if(on){const bst=levAnchor.children[0];bst.getWorldPosition(pw);const p=project(pw,camG);const front=pw.z>-.5;ok=p.front&&front&&bst.visible;
