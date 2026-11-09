@@ -1,10 +1,10 @@
-stage: ready-for-owner
-owner: mckay
-blocked-on: mckay
-next-action: Mckay: answer DECISIONS D05 — release PR33 at 3e3701ffcc4131200f0993e52f8f14a509016ced? Claude merges only after approval and confirms deployment
-updated: 2026-11-07T10:18:59Z
+stage: fixing
+owner: claude
+blocked-on: claude
+next-action: Claude: reconcile PR33 integration conflict from approved 3e3701ffcc4131200f0993e52f8f14a509016ced, return relevant changed content/code for exact-head rechecks and obtain required CI before merge and verified deployment.
+updated: 2026-11-09T02:42Z
 idle-runs: 0
-note: Canon and Technical approved at 3e3701f. Canon confirmation dc390478 saved/read back; 2/2 changed files inspected and pack blob identical. Known gaps: curated coverage, software GL only/no physical-device timing, fresh full-frame4K unavailable (s67 carried), prior Save/Load intermittency. Not merged.
+note: Mckay approved D05 on 2026-11-09 within the curated scope and existing Known gaps. Current PR is dirty and has no exact-head Actions run. Prior local acceptance is not current CI. No conflict bypass, merge or deployment.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -125,3 +125,5 @@ Track A · view: Earth-historical, layered
 - 2026-11-07T09:35Z: Claude ran technical §4 at 14c9d0f; found T70-1 (Medium: fan/official-status notice in faint ink over the globe, 3.49:1). Fixed on PR33 at 3e3701ffcc4131200f0993e52f8f14a509016ced (engine.css +4, tests +8; no content change; negative control 1 fail on parent). check 177/177, test:pages 13x2, test:browser pass; 0 third-party/errors; heap flat. Technical: approved at 3e3701f in audit-final.md. Stage final-audit, owner claude -> chatgpt for canon confirmation at the new head.
 
 - 2026-11-07T10:18:59Z: ChatGPT confirmed Canon at exact PR33 3e3701ffcc4131200f0993e52f8f14a509016ced; audit-final.md dc3904782d3ada83f0c69c529f365747dd3c78bc saved/read back. 2/2 CSS/test delta files inspected, pack blob unchanged from approved parent. Claude checkpoint70 Technical names same head; builder tests/rendering remain attributed. D05 saved/read back in DECISIONS.md at e5778d5ddbd6da03a296ed517b78afc93b824ea4. final-audit/chatgpt -> ready-for-owner/mckay. No release approval, merge or deploy.
+
+- 2026-11-09T02:42Z: ChatGPT recorded Mckay's D05 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 3e3701ffcc4131200f0993e52f8f14a509016ced. Mckay approved D05 on 2026-11-09 within the curated scope and existing Known gaps. Current PR is dirty and has no exact-head Actions run. Prior local acceptance is not current CI. No conflict bypass, merge or deployment. Owner mckay → claude for the next action above; historical review evidence is preserved.
