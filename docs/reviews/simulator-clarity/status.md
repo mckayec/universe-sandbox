@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements bounded item 5 lighting/graphics on PR47, then items 6–7; carry SC1-E1/SC4-E1 finite evidence return, add explicit binary running/paused probe assertions, and return exact-head tests plus passed/failed/not-run rendering and device coverage. No merge or deploy.
-updated: 2026-11-09T14:10Z
+next-action: ChatGPT reviews item 5 (star-relative planet lighting) on PR47 at exact head da48c23ac0c8738c3168f1be92fce51487bd9a30 (see Item 5 receipt), then returns it or hands items 6–7 back. Meanwhile Claude may take save-load-smoke-fix-plan.md Milestone 2 on a separate fix/save-load-smoke-race branch (no PR47 change). No merge or deploy.
+updated: 2026-11-09T21:16Z
 idle-runs: 0
-note: 4b-2 source/controller review accepted at 920f76e; independent 20 encounter + 9 helper/source + 14 controller/probe checks pass; 19/19 input hashes verified. Builder 45/45 rendered checks remain attributed; binary pause/motion, flyby, real GPU/devices, SC1-E1 and Save→Clear→Load gates retained. Items 5–7 unfinished.
+note: Item 5 built at da48c23 (parent 920f76e): 7 files, 169/169 unit tests, pages 24/24, enforced rendered harness 6 scenarios 0 failures at head; parent run recorded for matched screenshots/FPS. Items 6–7 and the explicit binary running/paused probe assertions are not started. Earlier gates (SC1-E1, SC4-E1 flyby/devices/GPU, Save→Clear→Load) retained.
 
 
 
@@ -118,6 +118,30 @@ Checks at 920f76e80958a7753ced450b97d66d49ebc4eaca:
 
 Known gaps (4b-2): flyby is not exercised in the rendered harness (the model treats it the same as any instantaneous separation, per SC4-O1); a transfer tide on a black-hole receiver is carried by the hole's own disk controller, not the stream; SC1-E1 shader/ignition/background limits unchanged.
 
+## Item 5 receipt — star-relative planet lighting (PR #47, da48c23ac0c8738c3168f1be92fce51487bd9a30)
+
+Parent 920f76e. Diff: 7 files (+390/−8) — src/key-light.ts (new, pure), src/visuals/key-light-glsl.ts (new), src/visuals/planet-lighting.ts (new), src/visuals/materials.ts, src/visuals/update-visuals.ts (one call), src/ui/test-probe.ts (read-only fields), tests/key-light.test.ts (new, 10 tests).
+
+- Before: rocky, gas-giant and atmosphere shaders lit every world from a fixed direction `(.62,.25,.74)` in the body's own normal space, so the "sun" had no relation to any star and the terminator was painted on the body.
+- Now: the three shaders share `LIT_VERTEX` (world normal `mat3(modelMatrix)*normal`, world position) and `dayside()` over scene-space `keyDir`/`fillDir`/`fillAmount` uniforms. Each frame `updatePlanetLighting()` picks, for every rocky/dwarf/moon/gas body, the emitter with the largest flux L/d² (key) and the second-largest (fill, weighted by its flux ratio, `max` not sum, so the terminator does not pop when two equal stars swap). Emitters: stars (catalog stage temperature), brown dwarfs (1300 K) and protostars (3500 K) — teaching values; L ∝ R²T⁴ from display radius. Pulsars, black-hole disks and nebulae do not light worlds. No eclipses or shadows.
+- No-star fallback (documented in src/key-light.ts): the old direction, but fixed in scene space. It does not follow the camera or the body's spin.
+- Spin / camera / source kept distinct: the surface pattern still uses the object-space normal (turns with spin); light uses world normals (spin moves features under a fixed terminator); camera motion changes only the view; a moving star moves the key every frame.
+- Restrained effects: ocean glint (Blinn-Phong, exponent 64, ×0.26, ocean mask, day side only) on Earth-like worlds; atmospheres/clouds scale by `0.18 + 0.82·dayside`; night-side floors unchanged (rocky 0.12, gas 0.24), city lights still on the night side. Same renderer, no new passes or textures.
+- Not changed: asteroids and comets (MeshStandardMaterial under the hemisphere light; no directional light), the tidally-locked "eyeball" rocky variant's painted day pattern (an albedo pattern, now independent of the real terminator), stars, disks.
+
+Checks at da48c23ac0c8738c3168f1be92fce51487bd9a30:
+- passed: `pnpm format:check`; `pnpm check` (build, 169/169 unit tests incl. 10 new: R²T⁴ ratios and invalid input, fallback, single-star aim from any side, self/dark/coincident exclusion, flux not distance picks the key in both orders, equal-star crossing continuity, spin independence, daylight mirror of the shader terminator, shader wiring (no body-local light left, 3 materials on LIT_VERTEX/uniforms/GLSL), controller scope; check:dist 113 files); `pnpm test:pages` 12 pages × 2 viewports.
+- passed (enforced, rendered): [evidence-harness-5.mjs](evidence-harness-5.mjs) exits 1 on any failure; raw [evidence-da48c23.jsonl](evidence-da48c23.jsonl) (parent rows first, then head). Production build via vite preview, Chromium (`/usr/bin/google-chrome`) with SwiftShader, 1440×900 and 390×844, 3 scenarios each, 0 failures at head:
+  - Solar System placed by builder + playfield click: all 10 worlds' key light aims at the Sun (worst cosine 0.9999999999999998).
+  - Lone gas giant (no star): key = documented fallback; at 10× spin advanced (0 → 6.10 rad desktop, 0 → 1.46 mobile) and after a camera zoom-out the key direction is unchanged (cos > 0.9999).
+  - Yellow star + rocky + gas giant, paused then 10×: paused aim correct with 1 emitter; bodies moved and every later sample with a world still aims at the moving star (a world merging into the star ends its own samples; at 390 one did).
+  - 0 page/console errors and 0 shader/WebGL program messages in all 6 head and 6 parent scenarios.
+- FPS (badge, 1× running Solar System, 6 one-second samples, software GL — not representative of a real GPU): desktop parent 8,7,7,7,8,7 vs head 8,8,8,7,9,9 (separate run 7,6,8,8,7,8); mobile size parent 19,17,20,18,19,20 vs head 19,19,20,19,21,22. No measurable cost at this resolution; the added per-frame CPU work is O(worlds × emitters).
+- Matched before/after (same scripted scene and camera, parent 920f76e vs head): [Solar 1440 parent](shots/item5-solar-1440x900-parent.jpg) / [head](shots/item5-solar-1440x900-head.jpg); [Solar 390 parent](shots/item5-solar-390x844-parent.jpg) / [head](shots/item5-solar-390x844-head.jpg); [star + worlds 1440 parent](shots/item5-star-worlds-1440x900-parent.jpg) / [head](shots/item5-star-worlds-1440x900-head.jpg); [lone gas 1440 parent](shots/item5-lone-gas-1440x900-parent.jpg) / [head](shots/item5-lone-gas-1440x900-head.jpg). Close-up ([evidence-closeup-5.mjs](evidence-closeup-5.mjs), star at left, gas giant at right, focus + 5 zoom steps): [parent vs head](shots/item5-gas-closeup-parent-vs-head.jpg) — parent lit from the upper front right regardless of the star; head lit from the star's side (left) with the night side toward the right. At full-scene zoom the worlds are a few pixels across, so the difference is mainly visible in close-ups.
+- not run: real GPU, physical iPhone/Safari, motion clips/video, 3840×2160, `pnpm test:browser` (pre-existing Save→Clear→Load timeout; see save-load-smoke-fix-plan.md).
+
+Known gaps (item 5): contrast is deliberately restrained — the night side keeps the old floors plus atmosphere glow, so terminators are soft on gas giants; asteroids/comets are not star-lit; no eclipses/shadows or ring shadows; the "eyeball" variant's painted day side is not aligned to its star; binaries use one key plus one fill only (a third star is ignored).
+
 ## Known gaps
 
 - A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
@@ -149,3 +173,5 @@ Known gaps (4b-2): flyby is not exercised in the rendered harness (the model tre
 - 2026-11-09T13:15Z Claude: slice 4b-2 on PR #47 at 920f76e80958a7753ced450b97d66d49ebc4eaca (see 4b-2 receipt): transfer-disk tide from donor (nebula/debris excluded), readability floor (outer edges ≤ 30 visual s, shear unchanged), opt-in read-only probe; enforced harness 45/45 with surviving-ID, pause, rendered protostar and orbiting unequal binary transfer scenarios plus negative controls. 159/159 unit, pages 24/24. Item 4 complete pending review; items 5–7 not started. implementation/claude → implementation-review/chatgpt. No merge.
 
 - 2026-11-09T14:10Z ChatGPT: [4b-2 review](implementation-review-920f76e.md) saved at 02ea18f53ccd2522e2b54de26c6921e1fba331ec and read back after [independent runner](reviewer-4b2-920f76e.mjs) 94ba7b035e0831f8b0c932b406aa62cda81346c9 and [input manifest](review-inputs-920f76e.json) 80625e653d4196ecbc6a2382209b4935573a6a56. Audited PR47 sim/clarity-physics exact head 920f76e80958a7753ced450b97d66d49ebc4eaca, unchanged on final recheck. All 10 changed files inspected; 19/19 fixture blob hashes matched; independent encounter tests 20/20, helper/source tests 9/9 (unused Three import stub), and extracted controller/probe/harness tests 14/14 with analytic scene adapters. Source/controller delta accepted, no new High/Medium finding. Builder SwiftShader 45/45 assertions remain attributed; 0 independent rendered cases. SC4-E1 retains explicit binary pause/running and motion evidence precision, flyby and device/GPU gaps; SC1-E1 and Save→Clear→Load smoke limits unchanged. Exact-head CI 42623662937 passed with deploy skipped. implementation-review/chatgpt -> implementation/claude for bounded item 5 then items 6–7, plus finite evidence return. Read 18 pack and 8 review statuses; unrelated owners untouched. No application/PR-branch edit, merge, deployment or release approval.
+
+- 2026-11-09T21:16Z Claude: item 5 (star-relative planet lighting, documented no-star fallback, restrained glint/atmosphere) on PR #47 at da48c23ac0c8738c3168f1be92fce51487bd9a30 (see Item 5 receipt): 169/169 unit, pages 24/24, enforced rendered harness 6/6 scenarios 0 failures at head with matched parent screenshots and FPS. Items 6–7 and the binary running/paused probe assertions not started; save-load-smoke-fix-plan.md noted for Claude's next free slot. implementation/claude → implementation-review/chatgpt. No merge.
