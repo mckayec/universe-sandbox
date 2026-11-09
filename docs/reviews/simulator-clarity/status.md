@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude continues bounded item 4 per HANDOFF_PLAN; retain SC1-E1 rendered gaps and strengthen harness before final technical acceptance per implementation-review-d9d5026.md
-updated: 2026-11-09T04:16Z
+next-action: ChatGPT reviews slice 4a (black-hole disk companion tide) at PR47 c4214ef818d78d78f62efb8c69fa68751b3f272a per the 4a receipt below; Claude continues 4b (unequal/flyby/merger clips, protostar/transfer disks, readability periods) after review or in parallel if review is slow
+updated: 2026-11-09T10:20Z
 idle-runs: 0
-note: SC1-T1 closed at d9d5026 source/test scope: 5/5 changed files read, 10/10 focused tests, 3/3 timing traces and 1/1 listener stub pass. Item 3 accepted at this scope; raw rendered evidence remains partial. Items 4–7 unimplemented; no release approval.
+note: Item 4 split into bounded slices. 4a built at c4214ef: pure tested encounter model + shader tide + inflow response + inspector Disk row; 143/143 tests; rendered on swiftshader only. 4b and items 5–7 not started. SC1-E1 rendered gaps retained. No release approval.
 
 # Simulator clarity and physics
 
@@ -44,6 +44,28 @@ SC1-E1 evidence: [evidence-harness.mjs](evidence-harness.mjs) (run from the PR c
 - Ignition was not triggered in this harness (item 1 remains accepted at source scope only).
 - Not run: real GPU, physical iPhone/Safari, matched before/after clips, video of disk motion. `pnpm test:browser` Save→Clear→Load timeout is pre-existing and was not re-run.
 
+## Slice 4a receipt — black-hole disk companion tide (PR #47, c4214ef818d78d78f62efb8c69fa68751b3f272a)
+
+Parent d9d5026. Changed files: src/disk-encounter.ts (new, pure), src/visuals/disk-encounters.ts (new), src/visuals/disk-flow.ts, src/visuals/materials.ts, src/visuals/update-visuals.ts, src/ui/inspector.ts, src/ui/template.ts, tests/disk-encounter.test.ts (new).
+
+- Model (labelled approximation, not hydrodynamics/GRMHD): Eggleton (1983) Roche-lobe fraction × 0.8 tidal-truncation rule of thumb, computed in the disk's local frame from the companion position (3D separation), host mass and companion mass. Strength 0 when the estimated truncation radius is beyond the outer dust edge, so distant disks stay unchanged. Companions lighter than 2% of the host, nebulae and debris are ignored. Strongest companion wins.
+- Encounter state eases on the capped disk step (or frame time when paused): stripping rate 2.2/s, recovery 0.55/s, angle follows the companion along the short arc across ±π. When the companion no longer exists (merger/removal) the state resets, so a merged disk starts undisturbed; no explosion is added.
+- Shader (black-hole disk, all 3 layers share one local cut): `DISK_TIDE_GLSL.tideShape` cuts gas past a companion-aligned m=2 bulge, adds two companion-locked arms near the cut, and keeps a thin streamer past the cut on the companion side only. The Doppler highlight stays view-space and the gas pattern keeps its phase and plane; meshes are not rotated or scaled.
+- Inflow clumps (52/108) beyond the cut are pulled outward on the companion side (escape/transfer illustration) and re-enter inside the cut elsewhere.
+- Inspector: black holes show a Disk row — "Undisturbed" or e.g. "Truncated by Void 01: outer gas cut to 66% (tidal estimate)".
+
+Checks at c4214ef:
+- passed: `pnpm format`; `pnpm check` (build, 143/143 unit tests incl. 13 new in tests/disk-encounter.test.ts, check:dist 113 files). New tests: Eggleton reference value, distant = quiet, equal-mass close cut matches formula, monotonic with distance, unequal masses, out-of-plane uses 3D separation, bounded cut and invalid inputs, strongest selection, timestep-consistent relaxation without overshoot, slower recovery, seam-crossing angle, inspector wording, shader wiring.
+- passed (builder-run, rendered): [evidence-harness-4a.mjs](evidence-harness-4a.mjs), raw [evidence-c4214ef.jsonl](evidence-c4214ef.jsonl). Production build via vite preview, headless Chromium + SwiftShader, scene cleared, two black holes placed by palette + playfield clicks while paused. 1440×900 close (150 px): isolated "Undisturbed" → paired "Truncated … 66%" → 10× "Strongly truncated … 33%", then merged. 1440×900 wide (700 px): "Undisturbed" → "Perturbed … 89%" → 10× infall "Strongly truncated … 53%". 390×844 close (90 px): "Undisturbed" → "Strongly truncated … 49%" → merged. 0 page/console errors, 0 shader/WebGL program messages in all three runs. Screenshots: [close 1440](shots/sc4a-pair-close-1440x900.jpg), [wide 10× 1440](shots/sc4a-pair-wide-1440x900-10x.jpg) (both disks cut, streamer between them), [merged 390](shots/sc4a-pair-close-390x844-10x.jpg) (merged disk full and undisturbed).
+- passed: `pnpm test:pages` (12 pages × 2 viewports) at c4214ef.
+- not run: real GPU, physical iPhone/Safari, matched before/after video clips, orbiting equal/unequal binaries and flybys with initial velocity (both harness pairs start at rest), `pnpm test:browser` (pre-existing Save→Clear→Load timeout).
+
+Known gaps (4a):
+- After a merger the inspector can keep showing the removed body (stale selection; pre-existing behaviour). In the 1440 close run it still read "Void 02 … truncated by Void 01" while the surviving Void 01's disk rendered undisturbed. Impact: low/medium (explainability). Does not block 4a review; candidate for item 6.
+- Protostar and transfer disks do not respond yet; only black-hole disks. Planned 4b.
+- Readability periods (outer-edge 25–186 visual s, 4× visual cap) unchanged. Planned 4b.
+- Truncation uses model masses in legacy units; consistent within a scene, not physical. Coordinate with item 7.
+
 ## Known gaps
 
 - A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
@@ -59,3 +81,5 @@ SC1-E1 evidence: [evidence-harness.mjs](evidence-harness.mjs) (run from the PR c
 - 2026-11-09T03:58Z Claude: fixed SC1-T1 and supplied SC1-E1 evidence on PR #47 at d9d5026a7d94ac22a1816c65dabb9217f823e071 (see fix receipt). fixing/claude → implementation-review/chatgpt. Items 4–7 not started. No merge.
 
 - 2026-11-09T04:16Z ChatGPT: saved and verified implementation-review-d9d5026.md (cfcde1c354e3b1208dceb76f089803d6eeba6ac8) and reviewer reproduction (4057ae1de5bda763f5302772840d4e9f4e37110e). Exact PR47 head d9d5026a7d94ac22a1816c65dabb9217f823e071: SC1-T1 closed; mixed 3.243-FPS trace reports 3 and lowers scale to .62. 10/10 focused tests, 3/3 trace expectations, 1/1 visibility-listener stub pass; no independent browser execution. SC1-E1 raw delivery satisfied, rendered acceptance partial (compact placement skipped, synthetic hide/show, logging-only behavior checks). implementation-review/chatgpt -> implementation/claude for next bounded item 4 with final technical gaps preserved. No merge/deploy/release approval.
+
+- 2026-11-09T10:20Z Claude: item 4 split into bounded slices; slice 4a (black-hole disk companion tide) built on PR #47 at c4214ef818d78d78f62efb8c69fa68751b3f272a (see 4a receipt). implementation/claude → implementation-review/chatgpt. 4b and items 5–7 not started. No merge.
