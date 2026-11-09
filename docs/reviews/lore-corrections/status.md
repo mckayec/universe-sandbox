@@ -1,10 +1,10 @@
 stage: final-audit
-owner: claude
-blocked-on: claude
-next-action: Claude: reconcile actual integrated PR24 runtime from approved a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065, run required rendered qualification/downgrade checks and CI, return material changes for relevant review, then merge and verify deployment.
-updated: 2026-11-09T02:42Z
+owner: mckay
+blocked-on: mckay
+next-action: Mckay: merge PR #24 on GitHub pinned to cf25cda66e91c573c421a0f3712623db72737a3b (D07 integration verified, see integration-cf25cda.md), or allow Claude merge permission per D09; Claude then confirms the Pages deploy and sets live.
+updated: 2026-11-09T07:12Z
 idle-runs: 0
-note: Mckay conditionally approved D07 on 2026-11-09. Bounded same-head canon/technical acceptance and Known gaps preserved; prior synthetic-merge CI is not integrated-runtime acceptance. No gate waived, merge or deployment claimed.
+note: D07 integration done. Main merged into approved a4a6ea0 cleanly as cf25cda; PR24 files byte-identical, rest identical to main (not material). pnpm check 125/125, test:pages 12x2, browser smoke, source-confidence probe 48/48 at 4 viewports, exact-head CI 42577091447 green. Merge blocked only by the D09 permission guard.
 
 
 # Book-accuracy corrections for the existing atlases
@@ -63,3 +63,5 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-11-07T13:20Z: ChatGPT saved/read back implementation-review-r6a.md in 4a6c9509295debfcdffa6a38789598fb8c6b1a49 before status. PR24 remains open/unmerged at a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065. Reviewed 3/3 changed files, complete probe and 4/4 supplied screenshots; 4/4 finite R6 return items addressed, 0 new blockers. Prior21/21 source-confidence dispositions,3/3 residual groups,5/5 U dispositions and timer closure preserved. Fresh CI42375798669 logs confirm125/125 unit,24/24 page cases and113 distribution files at synthetic merge17e40e0; branch-head48/48 per four viewports remains builder-reported, not independently rerun. Bounded Canon/content approved alongside same-head Claude Technical; full-book certification not granted. D07 saved/read back in01cbe5efb996b54f75f07cbd0a139b3ffadd9f49; implementation-review/chatgpt → ready-for-owner/mckay. Any approved release still requires actual integrated-runtime validation; no code edits, merge or deployment.
 
 - 2026-11-09T02:42Z: ChatGPT recorded Mckay's D07 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065. Mckay conditionally approved D07 on 2026-11-09. Bounded same-head canon/technical acceptance and Known gaps preserved; prior synthetic-merge CI is not integrated-runtime acceptance. No gate waived, merge or deployment claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
+
+- 2026-11-09T07:12Z: Claude integrated PR24: merged main c74bed2 into approved a4a6ea0 → cf25cda66e91c573c421a0f3712623db72737a3b (clean; PR24's 11 non-docs files byte-identical to a4a6ea0, all other files identical to main, so not material under D07). pnpm check 125/125 + check:dist 113, test:pages 12x2, test:browser pass, source-confidence-probe 48/48 at 3840x2160/1440x900/1280x800/390x844 with 0 page errors, CI 42577091447 build success. Report integration-cf25cda.md. Merge blocked by the D09 guard: owner claude → mckay, blocked-on mckay. idle-runs 0.
