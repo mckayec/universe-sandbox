@@ -64,7 +64,7 @@ function fragmentCollision(a: Body, b: Body, relativeSpeed: number) {
   remnant.mass = combined - ejected;
   remnant.habitabilityShock = 1;
   remnant.collisionCooldown = 0.8;
-  removeBody(food);
+  removeBody(food, remnant);
   updateScale(remnant);
   const pieces = ejected >= 10 && bodies.length < 80 ? 2 : 1,
     pieceMass = ejected / pieces,
@@ -214,7 +214,7 @@ export function consume(a: Body, b: Body) {
     : `Momentum carried forward after accreting ${foodName}`;
   if (a.kind === 'rocky') a.habitabilityShock = Math.max(a.habitabilityShock, 0.82);
   impactEffect(impact, a.kind === 'blackhole' ? 0xffa14d : TYPES[a.kind].color, a.kind === 'blackhole' ? 1.8 : 1);
-  removeBody(b);
+  removeBody(b, a);
   if (!applyGrowthProgression(a)) toast(`${a.name} accreted ${foodName}`);
 }
 function candidatePairs(): Array<[Body, Body]> {

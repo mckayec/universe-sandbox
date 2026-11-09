@@ -1,14 +1,22 @@
-// Bounded companion response for accretion disks (simulator-clarity item 4, slice 4a).
+// Bounded companion response for accretion disks (simulator-clarity item 4, slices 4a/4b).
 //
-// A labelled teaching approximation, not hydrodynamics or GRMHD. A disk around a body in a binary cannot extend
-// much past its Roche lobe: gas further out is pulled into a tidal bulge, sheared into two trailing arms and
-// stripped. We estimate that with the Eggleton (1983) Roche-lobe fit and the common tidal-truncation rule of
-// thumb (disk radius about 0.8 of the Roche lobe). Distant companions leave the disk alone.
+// A labelled teaching heuristic, not hydrodynamics or GRMHD, and not a validated truncation calculation. A disk
+// around a body in a binary cannot extend much past its Roche lobe: gas further out is pulled into a tidal bulge,
+// sheared into two trailing arms and stripped.
+//
+// What is sourced: the Roche-lobe size uses the Eggleton (1983, ApJ 268, 368, eq. 2) fit, which is accurate for
+// circular, synchronous binaries. What is a teaching choice (SC4-O1), not established by that fit:
+// - the fixed 0.8 truncation fraction (a common rule of thumb; real disks depend on mass ratio, viscosity, orbit);
+// - applying the fit to the companion's instantaneous 3D separation, so eccentric orbits and flybys are only
+//   illustrated (Sepinsky, Willems & Kalogera 2007 show the circular fit does not carry over in general);
+// - the strength span, the 0.25 cut floor, the 2.2/s strip and 0.55/s recovery rates, the 2% companion mass
+//   filter, and the bulge/arm/streamer shapes drawn in the shader;
+// - model masses are the simulator's own units (see item 7), consistent within one scene, not physical.
 //
 // Everything here works in the disk's own local frame (the RingGeometry plane is local XY), so mesh scale and
 // tilt never change the result and the disk keeps its plane and pattern phase.
 
-/** Fraction of the Roche lobe a tidally truncated disk can fill. */
+/** Fraction of the Roche lobe a tidally truncated disk can fill (rule of thumb, see header). */
 export const TRUNCATION_FRACTION = 0.8;
 /** Truncation shallower than this (as a fraction of the outer radius) counts as no encounter. */
 const STRENGTH_SPAN = 0.6;
@@ -110,7 +118,7 @@ export function describeEncounter(e: DiskEncounter, companionName?: string) {
   if (e.strength < 0.05) return null;
   const who = companionName ? ` by ${companionName}` : '';
   const level = e.strength > 0.66 ? 'Strongly truncated' : e.strength > 0.25 ? 'Truncated' : 'Perturbed';
-  return `${level}${who}: outer gas cut to ${Math.round(e.cut * 100)}% (tidal estimate)`;
+  return `${level}${who}: outer gas cut to ${Math.round(e.cut * 100)}% (heuristic estimate)`;
 }
 
 function clamp(v: number, lo: number, hi: number) {

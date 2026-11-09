@@ -309,7 +309,7 @@ export function updateVisuals(dt: number) {
     }
     const inflow = b.mesh.getObjectByName('inflow') as THREE.Points | undefined;
     if (inflow) updateInflow(inflow, diskDt);
-    if (b.kind === 'blackhole') updateDiskEncounter(b, diskDt > 0 ? diskDt : dt);
+    if (b.kind === 'blackhole' || b.kind === 'protostar') updateDiskEncounter(b, diskDt > 0 ? diskDt : dt);
     const trail = trails.get(b.id);
     if (trail) {
       trail.line.visible = app.trailsEnabled;

@@ -109,7 +109,7 @@ test('angle follows the companion across the -pi/+pi seam along the short arc', 
 test('inspector wording is labelled as an estimate and hidden when quiet', () => {
   assert.equal(describeEncounter(QUIET_ENCOUNTER), null);
   const text = describeEncounter({ strength: 0.8, cut: 0.42, angle: 0 }, 'Companion');
-  assert.match(text ?? '', /Strongly truncated by Companion: outer gas cut to 42% \(tidal estimate\)/);
+  assert.match(text ?? '', /Strongly truncated by Companion: outer gas cut to 42% \(heuristic estimate\)/);
 });
 
 test('black-hole disk shader declares and applies the tide uniforms', () => {
@@ -192,4 +192,53 @@ test('runtime companion selector uses the shared ranking in either order (identi
   }
   assert.equal(run([]).strength, 0);
   assert.equal(run([]).companionId, undefined);
+});
+
+// Slice 4b: protostar disks respond to companions through the same encounter state and shader cut.
+test('protostar disk shader declares and applies the tide uniforms', () => {
+  const materials = readFileSync(new URL('../src/visuals/materials.ts', import.meta.url), 'utf8'),
+    start = materials.indexOf('export function protostarDiskMaterial('),
+    end = materials.indexOf('export function transferDiskMaterial(', start);
+  assert.ok(start >= 0 && end > start);
+  const proto = materials.slice(start, end);
+  assert.match(proto, /tideCut: \{ value: 1e5 \}/);
+  assert.match(proto, /tideAngle: \{ value: 0 \}/);
+  assert.match(proto, /tideAmp: \{ value: 0 \}/);
+  assert.match(proto, /\$\{DISK_FLOW_GLSL\}\$\{DISK_TIDE_GLSL\}/);
+  assert.match(proto, /tideShape\(atan\(vXY\.y,vXY\.x\),vRad\)/);
+  assert.match(proto, /\*tide\.x;/);
+});
+
+test('encounter controller drives black-hole and protostar disks', () => {
+  const runtime = readFileSync(new URL('../src/visuals/disk-encounters.ts', import.meta.url), 'utf8'),
+    loop = readFileSync(new URL('../src/visuals/update-visuals.ts', import.meta.url), 'utf8'),
+    inspector = readFileSync(new URL('../src/ui/inspector.ts', import.meta.url), 'utf8');
+  assert.match(runtime, /blackhole: \['accretionDiskHot', 'accretionDiskMid', 'accretionDiskDust'\]/);
+  assert.match(runtime, /protostar: \['protoDisk'\]/);
+  assert.match(loop, /b\.kind === 'blackhole' \|\| b\.kind === 'protostar'\) updateDiskEncounter/);
+  assert.match(inspector, /hasDisk = b\.kind === 'blackhole' \|\| b\.kind === 'protostar'/);
+});
+
+test('model header states the SC4-O1 heuristic limits', () => {
+  const model = readFileSync(new URL('../src/disk-encounter.ts', import.meta.url), 'utf8');
+  for (const phrase of [
+    /not a validated truncation calculation/,
+    /Eggleton \(1983/,
+    /fixed 0\.8 truncation fraction/,
+    /Sepinsky, Willems & Kalogera 2007/,
+    /flybys are only\s+\/\/\s+illustrated/,
+  ])
+    assert.match(model, phrase);
+});
+
+test('a merged or fragmented body hands the selection to the survivor', () => {
+  const lifecycle = readFileSync(new URL('../src/bodies/lifecycle.ts', import.meta.url), 'utf8'),
+    collisions = readFileSync(new URL('../src/physics/collisions.ts', import.meta.url), 'utf8');
+  assert.match(lifecycle, /export function removeBody\(b: Body, successor\?: Body\)/);
+  assert.match(
+    lifecycle,
+    /if \(app\.selectedBody === b\) select\(successor && !successor\.removed \? successor : null\);/,
+  );
+  assert.match(collisions, /removeBody\(food, remnant\);/);
+  assert.match(collisions, /removeBody\(b, a\);/);
 });

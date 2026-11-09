@@ -42,7 +42,7 @@ export function resetSimulation() {
   app.pendingTouchPlacement = null;
   clearGuides();
   app.historySuspended = true;
-  [...bodies].forEach(removeBody);
+  [...bodies].forEach(b => removeBody(b));
   app.historySuspended = false;
   clearGalaxyVisuals();
   cosmicGroups.length = 0;

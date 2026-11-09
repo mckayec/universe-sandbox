@@ -1,4 +1,4 @@
-// Per-frame companion response of black-hole accretion disks (labelled approximation; see src/disk-encounter.ts).
+// Per-frame companion response of black-hole and protostar disks (labelled heuristic; see src/disk-encounter.ts).
 import * as THREE from 'three';
 import { QUIET_ENCOUNTER, diskEncounter, outranks, relaxEncounter, type DiskEncounter } from '../disk-encounter.ts';
 import { bodies } from '../state/app-state.ts';
@@ -6,7 +6,11 @@ import type { Body } from '../state/types.ts';
 
 /** A companion lighter than this fraction of the host is ignored (a planet does not reshape a black-hole disk). */
 const MIN_MASS_RATIO = 0.02;
-const DISK_LAYERS = ['accretionDiskHot', 'accretionDiskMid', 'accretionDiskDust'];
+/** Disk meshes that respond to companions, per host kind. The last layer is the reference for the local frame. */
+export const ENCOUNTER_DISK_LAYERS: Partial<Record<Body['kind'], readonly string[]>> = {
+  blackhole: ['accretionDiskHot', 'accretionDiskMid', 'accretionDiskDust'],
+  protostar: ['protoDisk'],
+};
 const tmpLocal = new THREE.Vector3();
 
 export type DiskEncounterState = DiskEncounter;
@@ -14,9 +18,9 @@ export type DiskEncounterState = DiskEncounter;
 function diskLayers(b: Body) {
   const cached = b.mesh.userData.diskLayers as THREE.Mesh[] | undefined;
   if (cached && cached.every(m => m.parent)) return cached;
-  const layers = DISK_LAYERS.map(name => b.mesh.getObjectByName(name)).filter(
-    (o): o is THREE.Mesh => o instanceof THREE.Mesh,
-  );
+  const layers = (ENCOUNTER_DISK_LAYERS[b.kind] ?? [])
+    .map(name => b.mesh.getObjectByName(name))
+    .filter((o): o is THREE.Mesh => o instanceof THREE.Mesh);
   b.mesh.userData.diskLayers = layers;
   return layers;
 }
@@ -34,7 +38,7 @@ function targetEncounter(b: Body, reference: THREE.Mesh, outer: number): DiskEnc
   return best.strength > 0 ? best : { ...QUIET_ENCOUNTER };
 }
 
-/** Update the tide uniforms on one black hole's disks. `dt` is the disk (simulated, capped) step or frame time. */
+/** Update the tide uniforms on one body's responsive disks (black holes, protostars). `dt` is the disk (simulated, capped) step or frame time. */
 export function updateDiskEncounter(b: Body, dt: number) {
   const layers = diskLayers(b);
   if (!layers.length) return;

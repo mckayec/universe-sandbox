@@ -155,6 +155,9 @@ export function protostarDiskMaterial(inner: number, outer: number, kepler = 2, 
       inner: { value: inner },
       outer: { value: outer },
       formation: { value: 0 },
+      tideCut: { value: 1e5 },
+      tideAngle: { value: 0 },
+      tideAmp: { value: 0 },
     },
     transparent: true,
     side: THREE.DoubleSide,
@@ -162,9 +165,9 @@ export function protostarDiskMaterial(inner: number, outer: number, kepler = 2, 
     blending: THREE.AdditiveBlending,
     toneMapped: false,
     vertexShader: DISK_VERTEX,
-    fragmentShader: `varying float vR;varying vec2 vXY;varying float vRad;varying float vBeam;uniform float formation;${NOISE_GLSL}${DISK_FLOW_GLSL}
+    fragmentShader: `varying float vR;varying vec2 vXY;varying float vRad;varying float vBeam;uniform float formation;${NOISE_GLSL}${DISK_FLOW_GLSL}${DISK_TIDE_GLSL}
 float lanesAt(float a,float r,float s){float spiral=.5+.5*sin(a*7.+spin*r*24.);float dust=noise(vec3(cos(a)*(2.+r*5.),sin(a)*(2.+r*5.),s+time*.03));return smoothstep(.34,.9,spiral*.46+dust*.72);}
-void main(){float r=clamp(vR,0.,1.);float a1,a2,w1,s1,s2;diskFlow(atan(vXY.y,vXY.x),vRad,a1,a2,w1,s1,s2);float lanes=flowBlend(lanesAt(a1,r,s1),lanesAt(a2,r,s2),w1);float edge=smoothstep(0.,.08,r)*(1.-smoothstep(.72,1.,r));vec3 color=mix(vec3(.72,.08,.012),vec3(1.,.78,.34),pow(1.-r,1.65));float alpha=edge*(.16+lanes*.54)*formation;gl_FragColor=vec4(color*(.62+lanes*.9)*(1.+vBeam*.12),alpha);}`,
+void main(){float r=clamp(vR,0.,1.);float a1,a2,w1,s1,s2;diskFlow(atan(vXY.y,vXY.x),vRad,a1,a2,w1,s1,s2);float lanes=flowBlend(lanesAt(a1,r,s1),lanesAt(a2,r,s2),w1);vec2 tide=tideShape(atan(vXY.y,vXY.x),vRad);lanes=clamp(lanes+tide.y*.45,0.,1.);float edge=smoothstep(0.,.08,r)*(1.-smoothstep(.72,1.,r))*tide.x;vec3 color=mix(vec3(.72,.08,.012),vec3(1.,.78,.34),pow(1.-r,1.65));float alpha=edge*(.16+lanes*.54)*formation;gl_FragColor=vec4(color*(.62+lanes*.9)*(1.+vBeam*.12),alpha);}`,
   });
 }
 export function transferDiskMaterial(kind: MatterStream['kind'], layer: number) {
