@@ -412,7 +412,8 @@ function normalise(P){
   ui.hints=Object.assign(mode==="cumulative"?
     {galaxy:"Drag to turn · scroll to zoom · right-drag or shift-drag to pan · pick the book you are reading above",galaxyMob:"Drag to turn · pinch to zoom · tap a world · pick your book above"}:
     {galaxy:"Drag to turn · scroll to zoom · right-drag or shift-drag to pan · click a world",galaxyMob:"Drag to turn · pinch to zoom · tap a world"},
-    {world:"Drag to turn the world · scroll to zoom in close · Esc returns to the galaxy",worldMob:"Drag to turn the world · pinch to zoom · tap a place"},ui.hints||{});
+    {world:"Drag to turn the world · scroll to zoom in close · Esc returns to the galaxy",worldMob:"Drag to turn the world · pinch to zoom · tap a place",
+     place:"Drag to look around · scroll to zoom · right-drag to move · click a landmark · Esc returns to the world",placeMob:"Drag to look around · pinch to zoom · two fingers to move · tap a landmark"},ui.hints||{});
   if(ui.go===undefined){const m=worlds.find(w=>w.major)||worlds[0];ui.go={id:m.id,label:"Go to "+m.name};}
   if(ui.go&&!ids.has(ui.go.id))ui.go=null;
   const codex=ARR(P.codex).filter(t=>t&&t.id).map(t=>({id:t.id,t:t.title||t.id,list:ARR(t.list).filter(x=>x&&x.name)}));
@@ -451,8 +452,9 @@ function buildShell(K){
   return '<button data-r="'+r+'" aria-pressed="'+(r==="physical")+'" title="'+esc(R.tip||"")+'">'+esc(R.label||(r.charAt(0).toUpperCase()+r.slice(1)))+'</button>';}).join("")+'</div>':"")+
 (K.raw.layers||K.raw.timeline?'<div id="filters"'+(K.raw.realms?' class="withrealms"':'')+'></div>':"")+
 '<aside class="panel" id="index" aria-label="Worlds"></aside><aside class="panel" id="dossier" aria-label="Details"></aside><div id="announce" class="sr-only" aria-live="polite"></div>'+
-'<div id="navhint"></div><div id="bake" hidden>Charting surface<b><i></i></b></div><div id="tip" hidden></div>'+
-'<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><span class="hint" id="legend"></span>'+
+'<div id="navhint"></div><div id="tourBox" class="panel" hidden role="region" aria-label="Tour of the Chronicle"><p class="eyebrow" id="tourE"></p><h3 id="tourT"></h3><p id="tourX"></p>'+
+  '<div class="tb"><button class="btn" data-tour="prev" aria-label="Previous event">‹</button><button class="btn" data-tour="pause">Pause</button><button class="btn" data-tour="next" aria-label="Next event">›</button><span id="tourN"></span><button class="btn" data-tour="stop">End tour</button></div></div><div id="bake" hidden>Charting surface<b><i></i></b></div><div id="tip" hidden></div>'+
+'<section id="chron" aria-label="The Chronicle"><div class="chron-head"><h2 id="chronT">'+esc(U.chronTitle)+'</h2><button class="btn" id="tourBtn" title="Play the Chronicle: travel to each event in turn">▶ Tour</button><span class="hint" id="legend"></span>'+
   '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
   '<div class="cx-tabs" id="cxTabs"></div><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
@@ -915,7 +917,7 @@ function updatePlanet(dt,t,spinOn){if(!PL)return;
 }
 
 /* ===================== STATE & SPOILER RULES (PACK_FORMAT 6) ===================== */
-const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null};
+const S={view:"galaxy",sel:null,site:null,lm:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null};
 /* layers and timeline (PACK_FORMAT 20; helpers in layers.js) */
 const LY=window.AtlasLayers||null;
 const LAY=LY?LY.normLayers(K.raw):null;
@@ -935,6 +937,19 @@ const seen=w=>(!CUM||!S.book||firstOf(w)<=S.book)&&realmOk(w)&&filterOk(w);
 const inBook=w=>!S.book||(w.books||[]).includes(S.book);
 const siteEraOk=s=>{const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since)&&filterOk(s);};
 const siteSeen=s=>siteEraOk(s)&&(!CUM||!S.book||!(s.books&&s.books.length)||Math.min(...s.books)<=S.book)&&realmOk(s);
+/* DWO-E2-F2: what may be shown for the current selection under the current book. A selected world (or site) the
+   book does not reach yet - e.g. while a downgrade's leave/ascend is still in flight - is presented and written to
+   the URL as if nothing (or only the world) were selected, so no later-book name or text appears meanwhile. */
+/* book gating only: layer filters and realms keep their own existing behaviour */
+const worldBookOk=w=>!CUM||!S.book||firstOf(w)<=S.book;
+const siteBookOk=s=>{const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since)&&(!CUM||!b||!(s.books&&s.books.length)||Math.min(...s.books)<=b);};
+function hideUnseen(o){const w=o.sel&&WORLD_BY[o.sel];
+  if(w&&!worldBookOk(w)){o.sel=null;o.site=null;o.lm=null;if(o.view!=="galaxy")o.view="galaxy";return o;}
+  if(w&&o.site){const st=siteOf(w,o.site);if(st&&!siteBookOk(st)){o.site=null;o.lm=null;if(o.view==="place")o.view="world";}}
+  return o;}
+function selHidden(){const v=hideUnseen({sel:S.sel,site:S.site,lm:S.lm,view:S.view});return v.sel!==S.sel||v.site!==S.site;}
+function asVisible(fn){const was={sel:S.sel,site:S.site,lm:S.lm,view:S.view};const v=hideUnseen(Object.assign({},was));
+  if(v.sel===was.sel&&v.site===was.site)return fn();Object.assign(S,v);try{return fn();}finally{Object.assign(S,was);}}
 const evFor=(wid,site)=>EVENTS.filter(e=>e.world===wid&&(site==null||e.site===site)&&filterOk(e)&&(!S.book||(CUM?e.book<=S.book:e.book===S.book)));
 const eraKeys=w=>w.eras?Object.keys(w.eras).map(Number).filter(k=>isFinite(k)&&w.eras[k]).sort((a,b)=>a-b):[];
 function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(S.book>=k&&w.eras[k].status)s=w.eras[k].status;});
@@ -955,6 +970,9 @@ buildGalaxy();buildMarkers();buildTerritories();localField();
 
 /* ===================== LABELS ===================== */
 const labelsEl=$("#labels");
+/* enterable places (PACK_FORMAT 22; places.js) */
+const PLACES=window.AtlasPlaces?window.AtlasPlaces.create({THREE,renderer,labelsEl,small:SMALL,lowMem:LOWMEM,accent:(K.theme&&K.theme.accentHi)||"#e8cd8a",
+  onPick:id=>selectLandmark(id===S.lm?null:id),onFxEnd:()=>{}}):null;
 const GL_LBL={};
 WORLDS.forEach(w=>{const b=document.createElement("button");b.className="lbl"+(w.major?" major":"");b.tabIndex=-1;b.setAttribute("aria-hidden","true");b.textContent=w.name;b.dataset.id=w.id;labelsEl.appendChild(b);GL_LBL[w.id]=b;
   b.addEventListener("click",ev=>{ev.stopPropagation();if(S.sel===w.id&&S.view==="galaxy"&&!noSurface(w))descend(w.id);else selectWorld(w.id,true);});
@@ -1002,10 +1020,10 @@ function buildSiteLabels(w){SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];
     if(!s.sea&&land)[lat,lon]=snapToLand(PL.mask,lat,lon);return pos[s.id]=[lat,lon];};
   (w.sites||[]).filter(siteSeen).forEach(s=>{const [lat,lon]=place(s);
     const el=document.createElement("button");el.className="plbl";el.tabIndex=-1;el.innerHTML='<span class="pip"></span><span class="tx">'+esc(s.name)+'</span>';labelsEl.appendChild(el);
-    el.addEventListener("click",ev=>{ev.stopPropagation();selectSite(s.id);});
+    el.addEventListener("click",ev=>{ev.stopPropagation();if(S.site===s.id&&canEnter(w,s))enterPlace(s.id);else selectSite(s.id);});
     SITE_EL.push({s,el,dir:latLonDir(lat,lon)});});}
 const _w=new THREE.Vector3(),_n=new THREE.Vector3();
-function layoutSiteLabels(W,H){if(!PL)return;const placed=[];
+function layoutSiteLabels(W,H){if(!PL||S.view==="place")return;const placed=[];
   SITE_EL.slice().sort((a,b)=>(b.s.id===S.site)-(a.s.id===S.site)).forEach(o=>{_n.copy(o.dir).applyQuaternion(PL.root.quaternion);_w.copy(_n).multiplyScalar(1.004);
     const facing=_n.dot(camW.position.clone().sub(_w).normalize());const pr=project(_w,camW,W,H);let show=facing>.12&&pr.z<1;
     const r={x:pr.x,y:pr.y-12,w:String(o.s.name).length*8+30,h:24};
@@ -1036,8 +1054,10 @@ const dos=$("#dossier");let dosCollapsed=MOB;
 const nBooksWord=BOOK_IDS.length<=12?NUMW[BOOK_IDS.length]:String(BOOK_IDS.length);
 function grab(title,sub,go){return '<div class="grab" id="grab" role="button" tabindex="0" aria-label="Show or hide details">'+(go?'<button class="btn primary go" data-act="descend">Descend</button>':'')+'<span>'+esc(title)+'</span><em>'+esc(sub||"")+'</em></div>';}
 function chipStyle(w){const g=GROUP_BY[w.group];const c=g&&g.chip;return c?' style="'+(c.border?"--chip-b:"+esc(c.border)+";":"")+(c.color?"--chip-c:"+esc(c.color):"")+'"':"";}
-function renderDossier(){let h="";const M=K.meta,IN=K.intro;
-  if(!S.sel){
+function renderDossier(){asVisible(renderDossierNow);}
+function renderDossierNow(){let h="";const M=K.meta,IN=K.intro;
+  if(S.view==="place"&&PLACES&&PLACES.place&&S.sel)h=placeDossier();
+  else if(!S.sel){
     h=grab(M.title,"About")+'<p class="eyebrow">'+esc([M.author,M.years].filter(Boolean).join(" · "))+'</p><h2>'+esc(M.series)+'</h2>'+realmCard(null)+
       (IN.text?'<p class="blurb">'+esc(IN.text)+'</p>':"")+
       (CUM?'<div class="rule"><span class="eyebrow">Reading through</span></div>'+
@@ -1057,16 +1077,17 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
         '<dt>Distance</dt><dd>'+esc(distText(w))+'</dd></dl>'+
       (ns?'<p class="srcnote">A star: there is no surface to land on.</p>':'')+
       '<div class="actions">'+(S.view==="galaxy"?(ns?'':'<button class="btn primary" data-act="descend">Descend to the surface</button>'):'<button class="btn primary" data-act="ascend">Return to the galaxy</button>')+
+        (!ns&&PLACES&&!(w.sites||[]).some(siteSeen)?'<button class="btn" data-act="enter" data-id="__surface">Walk the surface ›</button>':"")+
         (S.view==="world"?'':'<button class="btn" data-act="web">'+esc(UI.homeLink)+'</button>')+'</div>';
     const all=(w.sites||[]).filter(siteEraOk);
     if(CUM){const sites=all.filter(siteSeen);
       if(sites.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
-        sites.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(!S.book||(s.books||[]).includes(S.book)?"":' style="opacity:.55"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||[])+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
+        sites.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(!S.book||(s.books||[]).includes(S.book)?"":' style="opacity:.55"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||[])+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+enterBtn(w,s)+'</button>';});}}
     else{const vis=all.filter(s=>!S.book||!s.book||s.book===S.book||(s.books||[]).includes(S.book));
       if(all.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
-        all.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(vis.includes(s)?"":' style="opacity:.45"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||(s.book?[s.book]:[]))+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
+        all.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(vis.includes(s)?"":' style="opacity:.45"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||(s.book?[s.book]:[]))+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+enterBtn(w,s)+'</button>';});}}
     const evs=evFor(w.id);h+='<div class="rule"><span class="eyebrow">In the Chronicle</span></div>';
-    h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+'</button>').join("")
+    h+=evs.length?evs.map(evItem).join("")
       :'<p class="empty">'+(S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
   }
   dos.innerHTML=h;dos.classList.toggle("collapsed",MOB&&dosCollapsed);dos.scrollTop=0;
@@ -1083,7 +1104,8 @@ function siteExtra(s){let h="";if(s.modern)h+='<span class="pm">'+esc(UI.modernL
   if(S.site===s.id&&TRV&&S.sel){const tn=TRV.nodeFor(S.sel,s.id);if(tn&&treeNodeSeen(tn))h+='<span class="tr-from" data-tree-node="'+esc(tn.id)+'">Show '+esc(tn.name)+' in the '+esc(TRV.T.title.toLowerCase())+'</span>';}
   if(S.site===s.id){const ns=ARR(s.notes).filter(n=>n&&n.t);if(ns.length)h+='<span class="pnotes">'+ns.map(n=>'<span class="pnote"><b>'+esc(NOTE_LBL[n.k]||n.k||NOTE_LBL.note)+'</b>'+esc(n.t)+(n.ref?' <i>'+esc(n.ref)+'</i>':"")+'</span>').join("")+'</span>';}
   return h;}
-function siteName(w,id){const s=(w.sites||[]).find(x=>x.id===id);return s?s.name:"";}
+function evItem(e){const w=WORLD_BY[e.world];return '<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+(e.fx&&PLACES?'<span class="fxm" title="Plays a scene inside the place">▶</span>':"")+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+(S.ev===e.id&&e.site&&S.view!=="place"&&canEnterEv(e)?'<span class="goev btn" role="button" tabindex="0" data-act="goev" data-id="'+esc(e.id)+'">Go there ›</span>':"")+(S.ev===e.id&&S.view==="place"&&e.fx?'<span class="goev btn" role="button" tabindex="0" data-act="replay" data-id="'+esc(e.id)+'">▶ Replay</span>':"")+'</button>';}
+function siteName(w,id){if(id==="__surface"&&w)return surfaceSite(w).name;const s=(w.sites||[]).find(x=>x.id===id);return s?s.name:"";}
 const HOOK_API={get worldBy(){return WORLD_BY;},sol:SOL,get state(){return {book:S.book,sel:S.sel,view:S.view};},books:BOOKS,worlds:WORLDS};
 function distText(w){
   if(w.distText)return w.distText;
@@ -1095,9 +1117,20 @@ function distText(w){
   const ly=Math.round(w.pos.distanceTo(SOL))*100;if(!ly)return "At Sol";
   return "About "+ly.toLocaleString()+" light-years from Sol"+(w.est?" · position estimated":"");}
 dos.addEventListener("click",e=>{const a=e.target.closest("[data-act]");if(a){const k=a.dataset.act;
-    if(k==="descend")descend(S.sel);else if(k==="ascend")ascend();else if(k==="web")flyHuman();else if(k==="go")selectWorld(a.dataset.id,true);return;}
+    if(k==="descend")descend(S.sel);else if(k==="ascend")ascend();else if(k==="web")flyHuman();else if(k==="go")selectWorld(a.dataset.id,true);
+    else if(k==="enter")enterPlace(a.dataset.id);else if(k==="leave")leavePlace();else if(k==="overview")selectLandmark(null);
+    else if(k==="hop")enterPlace(a.dataset.id);else if(k==="goev")openEvent(a.dataset.id,true);
+    else if(k==="sound"&&AUD){soundOn=!(soundOn&&AUD.on);AUD.set(soundOn,PLACES.place&&PLACES.place.sc.kind);try{localStorage.setItem("atlas-sound",soundOn?"1":"0");}catch(er){}renderDossier();}
+    else if(k==="replay"){const ev0=EV_BY[a.dataset.id];if(ev0)evInPlace(ev0);}
+    e.stopPropagation();return;}
+  const td=e.target.closest("[data-tod]");if(td&&PLACES){PLACES.setTod(td.dataset.tod);td.parentNode.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===td));return;}
+  const lm=e.target.closest("[data-lm]");if(lm){selectLandmark(lm.dataset.lm===S.lm?null:lm.dataset.lm);return;}
   const p=e.target.closest("[data-site]");if(p){selectSite(p.dataset.site===S.site?null:p.dataset.site);return;}
-  const ev=e.target.closest("[data-ev]");if(ev){openEvent(ev.dataset.ev===S.ev?null:ev.dataset.ev,false);}});
+  const ev=e.target.closest("[data-ev]");if(ev){const id=ev.dataset.ev===S.ev?null:ev.dataset.ev;
+    if(S.view==="place"&&id&&EV_BY[id]&&EV_BY[id].site===S.site){evInPlace(EV_BY[id]);return;}
+    if(S.view==="place"&&!id&&PLACES)PLACES.stopFx();
+    openEvent(id,false);}});
+dos.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches('span[role="button"][data-act]')){e.preventDefault();e.target.click();}});
 
 /* ===================== CHRONICLE ===================== */
 const track=$("#track");const chron=$("#chron");
@@ -1145,19 +1178,23 @@ $("#codex").addEventListener("keydown",e=>{
   if(!f.length)return;const first=f[0],last=f[f.length-1];
   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
-addEventListener("keydown",e=>{if(e.key==="Escape"){if(TRV&&TRV.open)TRV.close();else if(!$("#codex").hidden)closeCodex();else if(S.view==="world")ascend();}});
+addEventListener("keydown",e=>{if(e.key==="Escape"){if(TOUR.on)tourStop();else if(TRV&&TRV.open)TRV.close();else if(!$("#codex").hidden)closeCodex();else if(S.view==="place"){if(S.lm)selectLandmark(null);else leavePlace();}else if(S.view==="world")ascend();}});
 
 /* ===================== CRUMBS & HINT ===================== */
-function renderCrumbs(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
+function renderCrumbs(){asVisible(renderCrumbsNow);}
+function renderCrumbsNow(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
   const w=S.sel&&WORLD_BY[S.sel];const gc=w&&groupOpt(w,"crumb",null);
   if(gc)h+='<button data-c="'+(gc.ascendOnly?"sat":"web")+'">'+esc(gc.label||GROUP_NAME(w.group))+'</button>';
   else if(UI.crumbGroups)h+='<button data-c="web"'+(!w?' class="here"':"")+'>'+(w?esc(GROUP_NAME(w.group)):esc(UI.homeCrumb))+'</button>';
   else h+='<button data-c="web"'+(!w?' class="here"':"")+'>'+esc(UI.homeCrumb)+'</button>';
   if(w)h+='<i>›</i><button data-c="world" class="'+(S.view==="world"&&!S.site?"here":S.view==="galaxy"?"here":"")+'">'+esc(w.name)+'</button>';
   if(S.view==="world"&&S.site)h+='<i>›</i><span class="here">'+esc(siteName(w,S.site))+'</span>';
+  if(S.view==="place"&&S.site){const lm=S.lm&&PLACES&&PLACES.landmarks().find(l=>l.id===S.lm);
+    h+='<i>›</i>'+(lm?'<button data-c="place">'+esc(siteName(w,S.site))+'</button><i>›</i><span class="here">'+esc(lm.name)+'</span>':'<span class="here">'+esc(siteName(w,S.site))+'</span>');}
   c.innerHTML=h;}
 $("#crumbs").addEventListener("click",e=>{const b=e.target.closest("[data-c]");if(!b)return;const k=b.dataset.c;
-  if(k==="gal")flyGalaxy();else if(k==="web")flyHuman();else if(k==="sat"){if(S.view==="world")ascend();}else if(k==="world"){if(S.view==="world")selectSite(null);else descend(S.sel);}});
+  if(k==="gal")flyGalaxy();else if(k==="web")flyHuman();else if(k==="sat"){if(S.view!=="galaxy")ascend();}else if(k==="place")selectLandmark(null);
+  else if(k==="world"){if(S.view==="place")leavePlace();else if(S.view==="world")selectSite(null);else descend(S.sel);}});
 let hintT=0;function hint(t){const h=$("#navhint");h.textContent=t;h.style.opacity=1;clearTimeout(hintT);hintT=setTimeout(()=>h.style.opacity=0,5200);}
 
 /* ===================== REALMS (PACK_FORMAT 19) =====================
@@ -1282,7 +1319,7 @@ function goPlace(wid,sid){
   if(!sid||noSurface(WORLD_BY[wid])){if(S.view==="world"&&S.sel!==wid)ascend(()=>selectWorld(wid,true));else if(S.view!=="world")selectWorld(wid,true);return;}
   if(S.view==="world"&&S.sel===wid){selectSite(sid);return;}
   if(S.view==="world"){S.sel=wid;descend(wid);}else descend(wid);
-  setTimeout(()=>selectSite(sid),1000);}
+  selectSiteLater(wid,sid,1000);}
 TRV=K.raw.tree&&window.AtlasTree?window.AtlasTree.createView({
   el:$("#tree"),pack:K.raw,LY,LAY,TL,noteLabels:NOTE_LBL,
   visible:treeNodeSeen,filterOk,
@@ -1298,14 +1335,14 @@ dos.addEventListener("click",e=>{const t=e.target.closest("[data-tree-node]");if
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();afterRefresh();}
+function refreshAll(){document.body.classList.toggle("inplace",S.view==="place");renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
-function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
+function selectWorld(id,fly){if(!WORLD_BY[id])return;if(id!==S.sel)placeGen++;if(S.view==="place"){if(id===S.sel){leavePlace();return;}leavePlace(()=>selectWorld(id,fly));return;}const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
-function flyGalaxy(){if(S.view==="world"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
-function flyHuman(){if(S.view==="world"){ascend(()=>flyHuman());return;}orbG.flyTo(HOME_AT,HOME.dist,orbG.gyaw,HOME.pitch,HOME.dur);}
+function flyGalaxy(){if(S.view!=="galaxy"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
+function flyHuman(){if(S.view!=="galaxy"){ascend(()=>flyHuman());return;}orbG.flyTo(HOME_AT,HOME.dist,orbG.gyaw,HOME.pitch,HOME.dur);}
 const fade=$("#fade");
 function transition(fn){fade.classList.add("on");setTimeout(()=>{fn();requestAnimationFrame(()=>fade.classList.remove("on"));},430);}
 function fitDist(r){const hf=2*Math.atan(Math.tan(camW.fov*DEG/2)*camW.aspect);return r/Math.sin(Math.min(hf,camW.fov*DEG)/2);}
@@ -1330,27 +1367,182 @@ function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
 /* Back from the surface. If descending pushed a history entry, go back through history so the browser's
    Back button and this button stay in step; popstate then does the work. */
 let afterAscend=null;
-function ascend(after){if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
-function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
-  const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
-function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
+/* DWT-01: one in-app history.back() at a time. history.state only changes when popstate arrives, so a second
+   Back issued before then would step past the atlas's own entries (and can leave the document). A newer request
+   made while a Back is pending replaces the pending continuation instead of issuing another Back.
+   DWT-01b: the Back stays owned until its popstate (or a bfcache pageshow) arrives - no wall-clock expiry, so a
+   slow traversal can never be followed by a second unresolved Back. A late traversal is only reported. */
+let backPending=false;
+function goBack(){if(backPending)return;backPending=true;history.back();
+  setTimeout(()=>{if(backPending)console.warn("Atlas: history Back still pending; holding travel until it completes");},5000);}
+/* DWT-01: while a Back or a leave/ascend fade is in flight the current view is about to change, so a newer travel
+   request waits (only the latest is kept) and runs once the view has settled. */
+let navBusy=0,navNext=null;
+function navIdle(){return !navBusy&&!backPending;}
+function navKick(){if(navNext&&navIdle()){const n=navNext;navNext=null;goEvent(n);}}
+function navDone(){navBusy=Math.max(0,navBusy-1);navKick();}
+function ascend(after){if(S.view==="place"){leavePlace(()=>ascend(after));return;}if(history.state&&history.state.atlasSurface){afterAscend=after||null;goBack();return;}doAscend(after);}
+function doAscend(after){navBusy++;transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
+  const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);navDone();});}
+/* DWT-03: a site selection delayed until a descent settles only runs if no newer navigation (place entry, site/world
+   selection, event, book change) bumped placeGen meanwhile and the same world is still selected, so a late timer can
+   never rename the site of a newer, committed or pending place entry. */
+function selectSiteLater(wid,sid,ms){const g=placeGen;setTimeout(()=>{if(g===placeGen&&S.sel===wid)selectSite(sid);},ms);}
+function selectSite(id){placeGen++;S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
     /* turn the world so the place sits in daylight, between the sun and the viewer */
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();
     const vy=Math.atan2(V.x,V.z);const sy=Math.atan2(o.dir.x,o.dir.z);const r0=PL.root.rotation.y;PL.turn={t0:performance.now(),from:r0,to:r0+((((vy-sy)-r0+Math.PI)%TAU+TAU)%TAU-Math.PI)};
     const pitch=Math.asin(clamp(o.dir.y,-1,1));const dy=((vy-orbW.gyaw+Math.PI)%TAU+TAU)%TAU-Math.PI;
     orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
-function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
+/* ===================== PLACES: ENTERING A SITE (PACK_FORMAT 22) ===================== */
+/* a world the books give no named places still has a surface to stand on: an unnamed, schematic view */
+const SURF={};
+function surfaceSite(w){return SURF[w.id]||(SURF[w.id]={id:"__surface",name:w.name+" surface",surface:true,lat:0,lon:0,
+  desc:"An unnamed stretch of "+w.name+"’s surface. The books name no places here, so this view is schematic: the land, sky and light come from the world’s own map."});}
+const siteOf=(w,id)=>w&&(id==="__surface"?surfaceSite(w):(w.sites||[]).find(x=>x.id===id));
+function canEnter(w,s){return !!(PLACES&&w&&s&&!noSurface(w)&&siteSeen(s));}
+function canEnterEv(e){const w=WORLD_BY[e.world];return canEnter(w,siteOf(w,e.site));}
+function enterBtn(w,s){return canEnter(w,s)&&S.site===s.id?'<span class="enter btn primary" role="button" tabindex="0" data-act="enter" data-id="'+esc(s.id)+'">Enter '+esc(s.name)+' ›</span>':"";}
+/* landmarks follow the same book gating as sites */
+function lmOk(l){if(!realmOk(l)||!filterOk(l))return false;const b=S.book||0;if(l.until&&b&&b>=l.until)return false;if(l.since&&b&&b<l.since)return false;
+  if(!CUM||!b)return true;const f=l.first||(l.books&&l.books.length?Math.min(...l.books):null);return f==null||f<=b;}
+let afterLeave=null,placeThen=null;
+/* DWR-B: navigation generation. Book, selection, world and place changes bump it; delayed place-entry
+   continuations and event effects only commit if it is unchanged and the event is still eligible. */
+let placeGen=0;
+/* DWT-01c: snapshot of the last committed (rendered) place while any in-place entry is still pending; overlapping
+   requests inherit it so a cancellation never restores another uncommitted destination. Cleared on commit/leave. */
+let pendPrev=null,pendGen=0;
+/* DWT-02: an entry started from inside a place is still in flight (its fade has not committed and nothing newer
+   superseded it), so S.site names a pending destination, not the rendered place */
+const entryPending=()=>!!pendPrev&&pendGen===placeGen;
+function evEligible(e){if(!e||!filterOk(e))return false;const w=WORLD_BY[e.world];if(!w||!seen(w))return false;
+  if(S.book&&!(CUM?e.book<=S.book:e.book===S.book))return false;return !e.site||canEnterEv(e);}
+const AUD=window.AtlasPlacesAudio||null;let soundOn=false;try{soundOn=localStorage.getItem("atlas-sound")==="1";}catch(e){}
+/* DWT-01a: `own` (optional) is the caller's ownership check; a tour/event travel passes one so tour Stop or a newer
+   step cancels an entry whose fade has not committed yet (nothing is built and its history marker is dropped). */
+function enterPlace(id,fromHistory,then,own){const w=WORLD_BY[S.sel];const s=siteOf(w,id);if(!canEnter(w,s))return;const gen=++placeGen;
+  /* straight from the galaxy: no planet is baked; leaving the place descends to the surface then */
+  const fromGal=S.view==="galaxy";if(needRealm(w,s))setRealm(needRealm(w,s),true);
+  /* DWT-01c: entering from inside a place keeps the rendered place until the fade commits; remember what it was
+     so a cancelled entry can put state and history back to the place still on screen */
+  const prev=S.view==="place"?(pendPrev||{site:S.site,lm:S.lm,ev:S.ev,hs:history.state,href:location.href}):null;pendPrev=prev;pendGen=prev?gen:0;
+  S.site=id;S.lm=null;S.ev=null;if(MOB)dosCollapsed=true;
+  if(!fromHistory&&urlReady){const st={atlasSurface:true,atlasPlace:true,atlasEntry:gen};const u=urlFor({view:"place",site:id});
+    if(fromGal)history.pushState({atlasSurface:true},"",urlFor({view:"world",site:id}));
+    if(history.state&&history.state.atlasPlace)history.replaceState(st,"",u);else history.pushState(st,"",u);}
+  const fe=$("#fade");if(fe)fe.dataset.label=s.name;
+  transition(()=>{if(gen!==placeGen||(own&&!own())||S.site!==id||S.sel!==w.id||!canEnter(WORLD_BY[S.sel]||w,s)){cancelEntry(fromHistory,gen,id,prev);return;}
+    S.view="place";pendPrev=null;hideTip();SITE_EL.forEach(o=>{o.el.style.opacity=0;o.el.style.pointerEvents="none";});
+    Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
+    try{PLACES.enter(w,s,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});}
+    catch(err){console.error("Atlas: could not build",s.id,err);S.view="world";refreshAll();return;}
+    PLACES.setIdle(true);viewOffset();S.interacted=false;refreshAll();hint(MOB?UI.hints.placeMob:UI.hints.place);
+    if(AUD&&soundOn){if(AUD.on)AUD.place(PLACES.place.sc.kind);}
+    if(then)setTimeout(()=>{if(gen===placeGen&&S.view==="place"&&S.sel===w.id&&S.site===id)then();},500);});}
+/* DWR-B: a pending entry superseded before its fade commits builds nothing; drop the place history entry it pushed.
+   DWH-01: only the entry this call created (atlasEntry===gen) is dropped, never a newer pending entry's marker.
+   DWT-01c: cancelled while still inside a place, restore the rendered place's state and history only if this entry
+   still owns them (no newer navigation bumped placeGen and state still names this destination). */
+function cancelEntry(fromHistory,gen,id,prev){if(S.view==="place"){if(!prev||gen!==placeGen||S.site!==id)return;
+    pendPrev=null;S.site=prev.site;S.lm=prev.lm;S.ev=prev.ev;const hs=!fromHistory&&urlReady?history.state:null;
+    if(hs&&hs.atlasPlace&&hs.atlasEntry===gen){try{history.replaceState(prev.hs,"",prev.href);}catch(e){}}
+    if(PLACES){PLACES.focus(S.lm);if(!S.lm)PLACES.overview();}refreshAll();return;}
+  const hs=!fromHistory&&urlReady?history.state:null;
+  if(hs&&hs.atlasPlace&&hs.atlasEntry===gen){try{history.replaceState({atlasSurface:true},"",urlFor());}catch(e){}}
+  refreshAll();}
+function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(history.state&&history.state.atlasPlace){afterLeave=after||null;goBack();return;}doLeavePlace(after);}
+function doLeavePlace(after){placeGen++;pendPrev=null;if(AUD)AUD.leave();
+  if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)selectSiteLater(S.sel,site,900);if(after)setTimeout(after,1000);return;}
+  navBusy++;transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL&&!(S.sel&&!worldBookOk(WORLD_BY[S.sel])))buildSiteLabels(WORLD_BY[S.sel]);else if(PL){SITE_EL.forEach(o=>o.el.remove());SITE_EL=[];}refreshAll();if(after)setTimeout(after,60);navDone();});}
+function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
+  if(!quiet){renderDossier();renderCrumbs();syncURL();const it=dos.querySelector('[data-lm="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}}
+/* an event inside the place: fly to its landmark, then play its scene */
+function evInPlace(e,own){if(!e||S.view!=="place"||!evEligible(e)||S.sel!==e.world||(e.site&&S.site!==e.site))return;S.ev=e.id;const gen=placeGen;const has=e.lm&&PLACES.landmarks().some(l=>l.id===e.lm);
+  if(has)selectLandmark(e.lm,true);else{S.lm=null;PLACES.focus(null);PLACES.overview();}
+  PLACES.stopFx();if(e.fx)setTimeout(()=>{if(gen===placeGen&&(!own||own())&&S.view==="place"&&S.ev===e.id&&evEligible(e)&&S.site===(e.site||S.site)){PLACES.play(e.fx,has?e.lm:null);if(AUD)AUD.burst(e.fx);}},has?1300:600);
+  renderDossier();renderCrumbs();syncURL();}
+const PLACE_KIND={city:"City",capital:"Capital",town:"Town",village:"Village",palace:"Palace",fortress:"Fortress",castle:"Castle",port:"Port",spaceport:"Spaceport",station:"Station",habitat:"Habitat",
+  underground:"Underground",sietch:"Sietch",desert:"Desert",ruins:"Ruins",battlefield:"Battlefield",wilds:"Wilds",forest:"Forest",mountain:"Mountains",ice:"Ice",sea:"Sea",temple:"Temple",
+  monastery:"Monastery",library:"Library",arena:"Arena",camp:"Camp",crater:"Crater",tombs:"Tombs",farm:"Farmland",dome:"Domes",wreck:"Wreck",industrial:"Works"};
+function placeDossier(){const w=WORLD_BY[S.sel];const s=siteOf(w,S.site)||{name:"",desc:""};const P=PLACES.place;const lms=PLACES.landmarks();
+  const auto=lms.length===1&&lms[0].auto;const evs=s.surface?evFor(w.id).filter(e=>!e.site):evFor(w.id,s.id);
+  let h=grab(s.name,"Inside "+w.name)+'<p class="eyebrow">'+esc(w.name)+' · '+esc(PLACE_KIND[P.sc.kind]||"Place")+'</p><h2>'+esc(s.name)+'</h2>'+
+    '<div class="chips">'+bks(s.books||[])+'</div><p class="blurb">'+esc(s.desc)+'</p>'+siteExtra(s);
+  if(!P.sc.under&&!P.sc.space||P.sc.space)h+='<div class="seg tod" role="group" aria-label="Light">'+(P.sc.under?[]:["day","dusk","night","dawn"]).map(k=>'<button data-tod="'+k+'" aria-pressed="'+(PLACES.tod===k)+'">'+k.charAt(0).toUpperCase()+k.slice(1)+'</button>').join("")+'</div>';
+  h+='<div class="actions"><button class="btn primary" data-act="leave">Back to '+esc(w.name)+'</button><button class="btn" data-act="overview">Overview</button>'+
+    (AUD?'<button class="btn" data-act="sound" aria-pressed="'+(soundOn&&AUD.on)+'">'+(soundOn&&AUD.on?"Sound on":"Sound off")+'</button>':"")+'</div>';
+  if(!auto&&lms.length){h+='<div class="rule"><span class="eyebrow">Landmarks</span></div>';
+    lms.forEach(l=>{const le=evs.filter(e=>e.lm===l.id);
+      h+='<button class="place lmk'+(S.lm===l.id?" sel":"")+'" data-lm="'+esc(l.id)+'"><span class="pn"><span class="pip"></span>'+esc(l.name)+'<span class="pc">'+bks(l.books||[])+'</span></span><span class="pd">'+esc(l.desc)+'</span>'+
+        (le.length?'<span class="pm">'+le.map(e=>esc(BOOKS[e.book].n)+' · '+esc(e.title)).join("<br>")+'</span>':"")+'</button>';});}
+  h+='<div class="rule"><span class="eyebrow">What happened here</span></div>';
+  h+=evs.length?evs.map(evItem).join(""):'<p class="empty">'+(S.book?"Nothing recorded here up to "+esc(BOOKS[S.book].title)+".":"No events are recorded at this place.")+'</p>';
+  const others=(w.sites||[]).filter(x=>x.id!==s.id&&canEnter(w,x));
+  if(others.length)h+='<div class="rule"><span class="eyebrow">Elsewhere on '+esc(w.name)+'</span></div><div class="hops">'+others.map(x=>'<button class="btn" data-act="hop" data-id="'+esc(x.id)+'">'+esc(x.name)+'</button>').join("")+'</div>';
+  return h;}
+/* ===================== TOUR: the Chronicle played in order ===================== */
+const TOUR={on:false,list:[],i:0,paused:false,timer:0};
+function tourList(){return EVENTS.filter(e=>filterOk(e)&&WORLD_BY[e.world]&&seen(WORLD_BY[e.world])&&(!S.book||e.book===S.book));}
+/* travel to an event: into its place when it has one, otherwise to its world */
+/* DWT-01: each travel request owns a token. Its delayed leave/ascend/entry/event continuations run only while it is
+   still the latest request; a newer tour step, tour Stop or a book change supersedes it, so older work can never
+   reassign the world/site/event or push history after a newer step. */
+let evNav=0;
+function goEvent(e){const w=WORLD_BY[e.world];if(!w)return;const t=++evNav;if(!navIdle()){navNext=e;return;}const own=()=>t===evNav;const live=f=>()=>{if(own())f();};
+  const inPlace=live(()=>evInPlace(e,own));const into=live(()=>{S.sel=e.world;enterPlace(e.site,false,inPlace,own);});
+  if(e.site&&canEnterEv(e)){
+    if(S.view==="place"&&S.sel===e.world){
+      /* DWT-02: a repeated request for a destination still pending re-issues the entry (keeping the committed
+         rollback baseline) so the latest request arrives once, instead of treating it as already rendered */
+      if(S.site===e.site&&!entryPending())evInPlace(e,own);else enterPlace(e.site,false,inPlace,own);}
+    else if(S.view==="place"){leavePlace(live(()=>ascend(into)));}
+    else if(S.view==="world"&&S.sel===e.world){selectSite(e.site);enterPlace(e.site,false,inPlace,own);}
+    else if(S.view==="world"){ascend(into);}
+    else into();}
+  else if(S.view==="place")leavePlace(live(()=>{if(S.sel===e.world)openEvent(e.id,false);else ascend(live(()=>openEvent(e.id,true)));}));
+  else openEvent(e.id,true);}
+function tourShow(){const e=TOUR.list[TOUR.i];if(!e)return;const w=WORLD_BY[e.world];
+  $("#tourE").textContent=BOOKS[e.book].title+" · "+(e.site?siteName(w,e.site)+", ":"")+w.name;$("#tourT").textContent=e.title;$("#tourX").textContent=e.text;
+  $("#tourN").textContent=(TOUR.i+1)+" / "+TOUR.list.length;$("#tourBox").querySelector('[data-tour="pause"]').textContent=TOUR.paused?"Play":"Pause";}
+function tourStep(d){if(!TOUR.on)return;clearTimeout(TOUR.timer);TOUR.i=clamp(TOUR.i+d,0,TOUR.list.length-1);const e=TOUR.list[TOUR.i];tourShow();goEvent(e);tourArm();}
+function tourArm(){clearTimeout(TOUR.timer);if(TOUR.paused||!TOUR.on)return;const e=TOUR.list[TOUR.i];
+  TOUR.timer=setTimeout(()=>{if(TOUR.i>=TOUR.list.length-1){tourStop();return;}tourStep(1);},(e&&e.fx?15000:10000)+Math.min(6000,(e&&e.text||"").length*25));}
+function tourStart(){TOUR.list=tourList();if(!TOUR.list.length){hint("No events to tour in this selection.");return;}TOUR.on=true;TOUR.paused=false;TOUR.i=0;
+  $("#tourBox").hidden=false;document.body.classList.add("touring");$("#tourBtn").setAttribute("aria-pressed","true");if(MOB)closeChron();tourStep(0);}
+function tourStop(){const was=TOUR.on;TOUR.on=false;evNav++;navNext=null;if(was&&PLACES)PLACES.stopFx();clearTimeout(TOUR.timer);$("#tourBox").hidden=true;document.body.classList.remove("touring");$("#tourBtn").setAttribute("aria-pressed","false");}
+$("#tourBtn").addEventListener("click",e=>{e.stopPropagation();if(TOUR.on)tourStop();else tourStart();});
+$("#tourBox").addEventListener("click",e=>{const b=e.target.closest("[data-tour]");if(!b)return;const k=b.dataset.tour;
+  if(k==="stop")tourStop();else if(k==="next")tourStep(1);else if(k==="prev")tourStep(-1);else if(k==="pause"){TOUR.paused=!TOUR.paused;tourShow();tourArm();}});
+/* any hand on the controls pauses the tour rather than fighting it */
+canvas.addEventListener("pointerdown",()=>{if(TOUR.on&&!TOUR.paused){TOUR.paused=true;tourShow();clearTimeout(TOUR.timer);}});
+function openEvent(id,travel){placeGen++;S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
-  else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
-    else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site)setTimeout(()=>selectSite(e.site),900);}
+  else if(travel&&S.view==="place"&&S.sel===e.world){if(e.site&&e.site!==S.site&&canEnterEv(e))enterPlace(e.site,false,()=>evInPlace(e));else if(e.site===S.site)evInPlace(e);else leavePlace();return;}
+  else if(travel&&S.view==="place"){leavePlace(()=>openEvent(id,true));return;}
+  else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site){selectSite(e.site);if(canEnterEv(e)){enterPlace(e.site,false,()=>evInPlace(e));return;}}}
+    else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site)selectSiteLater(e.world,e.site,900);}
     else{S.sel=e.world;const w=WORLD_BY[e.world];orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}}
   if(MOB)dosCollapsed=false;refreshAll();S.ev=id;renderDossier();
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
-$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
+$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;if(+b.dataset.b!==S.book){placeGen++;evNav++;navNext=null;if(TOUR.on)tourStop();if(PLACES)PLACES.stopFx();}
+  if(S.view==="place"){const nb=+b.dataset.b;const w=WORLD_BY[S.sel];S.book=nb;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    const st=siteOf(w,S.site);if(!seen(w)||!st||!siteSeen(st)){
+      /* DWO-E2-F1: the place is not visible in the new book; while its leave is in flight, drop the event/landmark
+         and blank the place copy so no later-book dossier, chronicle or breadcrumb text shows under the earlier book */
+      S.ev=null;S.lm=null;if(PLACES)PLACES.stopFx();dos.innerHTML="";$("#crumbs").innerHTML='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button>';renderChron();
+      /* DWO-E2-F2: neutral presentation and an earlier-book URL for the whole leave/ascend, not only until it starts */
+      renderDossier();renderCrumbs();announce();syncURL();
+      leavePlace(()=>{if(!seen(w))ascend(()=>{S.sel=null;refreshAll();});else{S.site=null;refreshAll();}});return;}
+    const lm=S.lm;PLACES.enter(w,st,{book:S.book,gfx:gfxFor(w,S.book),defaults:K.raw.places||{},landmarkOk:lmOk});viewOffset();S.ev=null;
+    if(lm&&PLACES.landmarks().some(l=>l.id===lm))selectLandmark(lm,true);else S.lm=null;refreshAll();return;}
+  S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+      /* DWO-E2-F2: the hidden world's copy goes now, not when the ascent finishes */
+      S.ev=null;S.lm=null;renderDossier();renderCrumbs();renderChron();announce();syncURL();ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
@@ -1382,6 +1574,8 @@ canvas.addEventListener("pointerdown",e=>{canvas.setPointerCapture(e.pointerId);
 canvas.addEventListener("pointermove",e=>{const p=ptrs.get(e.pointerId);
   if(!p){if(S.view==="galaxy"&&e.pointerType==="mouse")hoverPick(e.clientX,e.clientY);return;}
   const dx=e.clientX-p.x,dy=e.clientY-p.y;p.x=e.clientX;p.y=e.clientY;dragMoved+=Math.abs(dx)+Math.abs(dy);
+  if(S.view==="place"&&PLACES){if(ptrs.size===1){if(e.shiftKey||e.buttons===2||e.buttons===4)PLACES.pan(dx,dy);else PLACES.rotate(dx,dy);}
+    else if(ptrs.size===2){const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);if(pinch0>0)PLACES.zoom(Math.pow(pinch0/d,1.3));pinch0=d;PLACES.pan(dx*.5,dy*.5);}return;}
   const orb=S.view==="world"?orbW:orbG;
   if(ptrs.size===1){if(e.shiftKey||e.buttons===2||e.buttons===4){if(S.view==="galaxy")orb.pan(dx,dy);}else{const k=S.view==="world"?clamp((orb.dist-1)/3,.12,1):1;orb.rotate(dx*k,dy*k);}}
   else if(ptrs.size===2){const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);if(pinch0>0){orb.zoom(Math.pow(pinch0/d,1.2));}pinch0=d;
@@ -1390,20 +1584,23 @@ function endPtr(e){if(!ptrs.has(e.pointerId))return;ptrs.delete(e.pointerId);if(
   if(ptrs.size===0&&dragMoved<8&&performance.now()-downAt<500)tapAt(e.clientX,e.clientY);}
 canvas.addEventListener("pointerup",endPtr);canvas.addEventListener("pointercancel",endPtr);
 canvas.addEventListener("contextmenu",e=>e.preventDefault());
-canvas.addEventListener("wheel",e=>{e.preventDefault();const orb=S.view==="world"?orbW:orbG;const f=Math.exp(e.deltaY*(S.view==="world"?.0012:.0016));
+canvas.addEventListener("wheel",e=>{e.preventDefault();if(S.view==="place"&&PLACES){PLACES.zoom(Math.exp(e.deltaY*.0014));S.interacted=true;return;}const orb=S.view==="world"?orbW:orbG;const f=Math.exp(e.deltaY*(S.view==="world"?.0012:.0016));
   if(S.view==="world"){const dd=orbW.gdist-1;orbW.gdist=clamp(1+dd*f,orbW.min,orbW.max);orbW.fly=null;}else orb.zoom(f);S.interacted=true;},{passive:false});
 function pickWorld(x,y){const W=innerWidth,H=innerHeight;let best=null,bd=MOB?26:16;
   WORLDS.forEach(w=>{if(!seen(w))return;const pr=project(w.pos,camG,W,H);if(pr.z>=1)return;const d=Math.hypot(pr.x-x,pr.y-y);if(d<bd){bd=d;best=w;}});return best;}
 function hoverPick(x,y){const w=pickWorld(x,y);if((w&&w.id)!==S.hover){S.hover=w?w.id:null;if(w)showTipWorld(w,x,y);else hideTip();}else if(w)placeTip(x,y);canvas.classList.toggle("pointing",!!w);}
 function tapAt(x,y){const now=performance.now();const dbl=now-lastTap<320;lastTap=now;
   if(S.view==="galaxy"){const w=pickWorld(x,y);if(w){if((dbl||S.sel===w.id)&&!noSurface(w))descend(w.id);else selectWorld(w.id,true);}}
+  else if(S.view==="place"&&PLACES){const id=PLACES.pick(x,y,innerWidth,innerHeight);if(id){selectLandmark(id===S.lm&&!dbl?null:id);return;}
+    if(MOB){dosCollapsed=true;dos.classList.add("collapsed");closeChron();}}
   else if(MOB){dosCollapsed=true;dos.classList.add("collapsed");closeChron();}}
 
 /* ===================== RESIZE & LOOP ===================== */
 function viewOffset(){const W=innerWidth,H=innerHeight;let ox=0,oy=0;
   if(!MOB&&W>900){const L=idx.getBoundingClientRect().right||0,R=dos.getBoundingClientRect().left||W;ox=W/2-(L+R)/2;ox=clamp(ox,-W*.2,W*.2);}
   if(MOB)oy=H*.07;
-  [camG,camW].forEach(c=>{if(ox||oy)c.setViewOffset(W,H,ox,oy,W,H);else c.clearViewOffset();});}
+  [camG,camW].forEach(c=>{if(ox||oy)c.setViewOffset(W,H,ox,oy,W,H);else c.clearViewOffset();});
+  if(PLACES)PLACES.resize(W,H,ox,oy);}
 function chronH(){document.documentElement.style.setProperty('--ch',chron.offsetHeight+'px');}
 /* the header may wrap onto two rows: panels below it follow its real height */
 const topEl=document.querySelector(".top");
@@ -1440,6 +1637,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     Object.keys(GMARK).forEach(k=>{GMARK[k].rotation.y=T*.02;});
     layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
+  else if(S.view==="place"&&PLACES&&PLACES.place){SITE_EL.forEach(o=>{if(o.el.style.opacity!=="0"){o.el.style.opacity=0;o.el.style.pointerEvents="none";}});PLACES.render(dt,W,H);}
   else{orbW.update(dt);updatePlanet(dt,T,!S.interacted);layoutSiteLabels(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
@@ -1450,14 +1648,14 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
 const BOOK_KEY="atlas-book:"+(K.raw.id||K.meta.title||"pack");
 function storeBook(b){try{localStorage.setItem(BOOK_KEY,String(b||0));}catch(e){}}
 function storedBook(){try{const v=parseInt(localStorage.getItem(BOOK_KEY),10);return BOOKS[v]?v:0;}catch(e){return 0;}}
-function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view},o||{});
-  const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&o.view==="world")q.set("site",o.site);
-  if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");
+function urlFor(o){o=hideUnseen(Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view,lm:S.lm},o||{}));
+  const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&(o.view==="world"||o.view==="place"))q.set("site",o.site);
+  if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");if(o.view==="place"){q.set("view","place");if(o.lm)q.set("lm",o.lm);}
   if(LY){const f=LY.encodeState(LAY,TL,S.layers,S.range);Object.keys(f).forEach(k=>q.set(k,f[k]));}
   if(TRV&&TRV.open)q.set("tree",TRV.sel||"1");
   const h=q.toString();return location.pathname+location.search+(h?"#"+h:"");}
 function parseHash(){const q=new URLSearchParams((location.hash||"").replace(/^#/,""));const b=parseInt(q.get("book"),10);
-  return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface",filters:LY?LY.decodeState(LAY,TL,q):null,tree:q.get("tree")};}
+  return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface"||q.get("view")==="place",place:q.get("view")==="place",lm:q.get("lm"),filters:LY?LY.decodeState(LAY,TL,q):null,tree:q.get("tree")};}
 /* replaceState right away (not debounced): a delayed write could land after descend() pushed its entry and
    overwrite it with the galaxy view */
 function syncURL(){if(!urlReady)return;const u=urlFor();if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
@@ -1466,21 +1664,26 @@ let urlReady=false,lastBook=null,lastAnn="";
 function afterRefresh(){
   if(urlReady&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
   /* short announcement for screen readers instead of re-reading the whole panel */
-  const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");
-  if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
-  syncURL();}
-addEventListener("popstate",()=>{const st=parseHash();
+  announce();syncURL();}
+function announce(){const ann=asVisible(()=>{const w=S.sel&&WORLD_BY[S.sel];return (w?(S.view==="place"&&S.site?siteName(w,S.site)+", inside, on "+w.name:w.name+(S.view==="world"?", on the surface":", selected")):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");});
+  if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}}
+/* DWO-E2-F2: Back during a downgrade lands on an entry written under the later book; rewrite it at once */
+addEventListener("popstate",()=>{backPending=false;popNav();if(selHidden())syncURL();navKick();});
+addEventListener("pageshow",e=>{if(e.persisted){backPending=false;navKick();}});
+function popNav(){const st=parseHash();
+  if(S.view==="place"&&!st.place){const a=afterLeave;afterLeave=null;doLeavePlace(a);if(!st.surface)setTimeout(()=>doAscend(),520);return;}
+  if(S.view==="world"&&st.place&&st.site&&st.world===S.sel){enterPlace(st.site,true);return;}
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
-  else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
+  else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);}
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
   if(b&&b!==S.book)API.setBook(b);
   if(st.realm&&st.realm!==S.realm)setRealm(st.realm,true);
   if(st.filters){const f=st.filters;if(f.active!==undefined)S.layers=f.active;if(f.range!==undefined)S.range=f.range;if(f.active!==undefined||f.range!==undefined)refreshAll();}
   if(TRV&&st.tree){const tn=TRV.T.by[st.tree];TRV.show(tn&&treeNodeSeen(tn)?tn.id:null);}
   /* pack.start (PACK_FORMAT 20.4) opens straight onto a world when the link names none */
-  const ps=K.raw.start;const t=st.world?st:(ps&&WORLD_BY[ps.world]?{world:ps.world,surface:ps.view==="surface",site:ps.site}:null);
+  const ps=K.raw.start;const t=st.world?st:(ps&&WORLD_BY[ps.world]?{world:ps.world,surface:ps.view==="surface"||ps.view==="place",place:ps.view==="place",site:ps.site,lm:ps.lm}:null);
   if(t&&seen(WORLD_BY[t.world])){
-    if(t.surface&&!noSurface(WORLD_BY[t.world])){descend(t.world);if(t.site)setTimeout(()=>selectSite(t.site),1200);}
+    if(t.surface&&!noSurface(WORLD_BY[t.world])){descend(t.world);if(t.site)setTimeout(()=>{selectSite(t.site);if(t.place)setTimeout(()=>enterPlace(t.site,false,()=>{if(t.lm)selectLandmark(t.lm);}),300);},1200);}
     else selectWorld(t.world,true);
     return true;}
   return false;}
@@ -1493,6 +1696,7 @@ setTimeout(()=>{$("#splash").classList.add("out");if(!restored)hint(MOB?UI.hints
   setTimeout(()=>{if(!restored)flyHuman();},900);},1400);
 $("#splash").addEventListener("click",()=>$("#splash").classList.add("out"));
 const API={pack:K.raw,LINKS,WORLD_BY,get PL(){return PL;},get SITE_EL(){return SITE_EL;},descend,ascend,selectWorld,flyHuman,flyGalaxy,selectSite,orbG,orbW,S,openEvent,
+  enterPlace,leavePlace,selectLandmark,get PLACES(){return PLACES;},
   setBook(b){const el=document.querySelector('#books [data-b="'+(b|0)+'"]');if(el)el.click();},setRealm};
 window.__atlas=API;
 try{restored=restoreFromURL();}catch(e){console.warn("Atlas: could not restore the link state",e);}

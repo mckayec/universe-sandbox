@@ -4,7 +4,7 @@ Mckay's request (2026-10-26): bring the detail and abilities of the shared Socie
 every universe the same depth of narrative content, and let visitors drill down from a world into specific
 cities and areas to explore what happened there.
 
-## 1. Engine: places you can enter (PACK_FORMAT §21)
+## 1. Engine: places you can enter (PACK_FORMAT §22)
 
 - **`public/atlas/places.js`** builds a procedural ground-level view of any site: terrain coloured from the
   world's own palette, sky and sunlight from its star and atmosphere, a street plan and city blocks in one of
@@ -83,3 +83,52 @@ Screenshots in `shots/`.
 PR #28 (family tree) and #33 (LDS) also edit `engine.js` / `engine.css` / `PACK_FORMAT.md` / the validator.
 A trial merge shows three one-line overlaps in `engine.js` (Escape handler, `refreshAll`, `parseHash`) and
 small ones elsewhere; whichever PR merges second takes both sides.
+
+## 6. Review fixes (PR #41 checkpoints 1–2, at f778b6b)
+
+- e05c2be: DW02 (book-change cancellation in `society.js`, tests in `tests/society-transitions.test.ts`),
+  DW03, DW04, DW05 and the conservative DW06 cuts (dungeons, Terminus Board, Yeddaw orphanage, Ceres
+  conference and Medina rooms untied or marked schematic; e35 narrowed; disputed given names dropped).
+- Follow-up: DW07 (Tabr entrance keeps only its book-I sentence), Trantor terminal narrowed to the S06 wording,
+  the Hyperion ship-landing return clause omitted at III, and the Iron Gold prologue blurb reduced to
+  supported context (the wordless cinematic itself was later omitted entirely, SO1-SO3; see the SO6 correction in §3).
+- DW01 (Europa) unchanged. Everything else in the DW06 evidence holds and the 202 uncompared sample records
+  stays open for ChatGPT.
+
+## 7. Cosmere primary-source corrections CB01–CB04 (queued in HANDOFF_PLAN, 2026-11-04)
+
+Baseline: PR #37 head `9a09dbce1e777d3255e058e11d2b81c53cae8d98`, `public/atlas/packs/cosmere.js` blob `aff59f8d` (matches
+the reviewed baseline). This is a content-only patch: `public/atlas/packs/cosmere.js` changes; no engine, timeline or
+gate change. Event IDs, `site`, `world` and `book` are kept for all four.
+
+| Row  | Event | Change                                                                                                                                                                                                                                                                                                  |
+| ---- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CB01 | e6    | `lm: "clubs"` removed. Title “Kelsier meets Vin”. Copy “In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.” The Clubs landmark itself is unchanged.                                                                                                                                         |
+| CB02 | e77   | `lm: "enclave"` removed. Copy “After killing Blushweaver and threatening Llarimar, the plotters obtain Lightsong’s command phrase, change it, and order the Lifeless to march on Idris.”                                                                                                                |
+| CB03 | e15   | `lm: "palaces"` removed. Copy “In captivity, Lightsong gives his Breath to heal Susebron, sacrificing himself to restore the God King’s tongue.”                                                                                                                                                        |
+| CB04 | e78   | Landmark removed for the composite (the first of the two offered options). Copy “Susebron uses Awakened cloth to rescue Siri. Vasher entrusts him with the D’Denir army, which is sent after the Lifeless marching on Idris.” `fx: "battle"` kept as it was; the site effect is not tied to a landmark. |
+
+Not done: the optional e14 market anchor and the e16 Manywar wording. Neither is a core correction, so both are left
+for ChatGPT's call.
+
+Callbacks: the engine's landmark panel lists events by `e.lm === landmark.id`. With `lm` gone, none of the four is
+listed under, or focuses, its old landmark. Selecting such an event in the place view takes the existing
+no-landmark path (`evInPlace`: overview, effect without a landmark), the same path e16 already uses. Tours use the same
+handler. The galactic atlases have no search box, so the place view's event list is the surface checked.
+
+Checks on the patched tree (head in status History):
+
+- `pnpm check` passed: format check, build, 89/89 tests, `check:dist` 173 files.
+- `pnpm test:pages` passed: 12 pages × 2 viewports.
+- `cb/cb-probe.mjs` (vite preview, software GL) passed **56/56** at 1440×900 and 390×844, output in
+  `cb/cb-probe-output.txt`. For each event:
+  - at its gate, the title and new copy are in the place view;
+  - the loaded pack has no `lm`, and `book` and `site` are kept;
+  - one book below the gate, the copy is absent from the DOM;
+  - the superseded copy is gone at both settings;
+  - no page errors.
+- `pnpm test:browser` (root sandbox smoke) is flaky on this older branch in this container. It times out at the
+  save/load `#count` step (browser-smoke.mjs:88) **on unmodified `9a09dbc` too**: 1 pass out of 3 runs there, 0 out of
+  3 with the patch. That step does not load the atlas. PR CI on the new head is the authority for it.
+
+Not merged; no deploy. DWR-A/B engine holds and every gate are unchanged.
