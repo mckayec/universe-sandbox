@@ -1622,3 +1622,82 @@ Done by Claude at 2026-11-06T03:47Z: every Claude-owned status header now uses R
 - 2026-11-07T17:02Z Claude: cosmere-book-by-book full Elantris return and deep-worlds disposition packet both at PR37 ffc8ba7c6734f38839f3eca974b96c04a1a1c098, handed to ChatGPT (content-review). Deep Worlds proposes ending the DW06 loop: scoped canon decision with Known gaps, or name record IDs to cut (recommended: one capped check of the seven prominent places). COS-BB-001 design proposal saved (not implemented). synchronoptic-timelines idle-runs 3 (STALL-SELF stands); next Claude run starts its pilot sidecar.
 - 2026-11-07T17:58Z Claude: STALL-SELF synchronoptic-timelines resolved: checkpoint 20 (proposed-only pilot sidecar, manifest r1) at PR45 5e2639281d267287884a45a28655f1e545a6655d handed to ChatGPT. Also: cosmere-book-by-book COS-BB-001 design revision 2 (GATE-01–04) handed to ChatGPT (content-review). Claude WIP now: none in fixing; hierarchy build still waits on a WIP slot (D04/D05/D06/D07 pending with Mckay).
 - 2026-11-07T19:05Z Claude: synchronoptic-timelines checkpoint 21 (host sidecar loading, 0 promoted) at PR45 2cdef89f2518551ac5750be5abfd27c7adc5fa46 handed to ChatGPT (implementation-review); cosmere-book-by-book COS-BB-001 revision 3 (GATE-02/03) handed to ChatGPT (content-review). Claude WIP now: none in fixing; hierarchy/narnia/licanius still wait on a WIP slot (D04–D07 pending with Mckay).
+
+## 2026-11-09 — Simulator clarity and physics implementation handoff
+
+This handoff queues the prepared simulator work for Claude. It is not evidence of builder pickup, implementation, review acceptance or release.
+
+Stage: research-ready. Owner: Claude. Next action: implement the first bounded slice below on a draft PR, after reconciling any already claimed work, then return its exact head for independent review. This entry does not change any other item's status or release decision.
+
+**Requested outcome:** remove the distracting geometric ignition cage; make the simulator's gas motion and close black-hole encounters visibly plausible; improve graphics and frame-time reporting; simplify mobile labels and routine event feedback; add a child-friendly mode; provide black-hole size presets and named examples with honest units.
+
+**Implementation owner:** Claude. **Independent return review:** ChatGPT. Keep changes on a draft implementation PR. Preserve current owner release gates. Do not merge/deploy based on this handoff. Do not overwrite PR44 or re-run completed unrelated research.
+
+### Current verified state
+
+On 2026-11-08, main e68d411b71eb38178ce0ee2235e3d245c715dc8f had the same complete src tree (24c3f502f19d5958da61de8fcc8c7980db61653d) as the latest verified Pages deployment, 6b65a79cd28a1f6fd8ed278b2779010a72fb90bc. Deploy run 42438026686 succeeded at 2026-11-08T02:26:03Z. The new requests below were absent from that source. At the 2026-11-09 check of main 42f685e262523cca923ea0575ab4ab59f23b7a26, effects.ts, disk-flow.ts, loop.ts and celestial-catalog.ts still match their reviewed source blobs. PR44 remains open at the head below. Recheck current source before implementation; this dated record does not assert an unpublished branch is empty.
+
+PR44 at 2e305cc24ad714be8211d839d283d114748a4310 is an older, separately reviewed mobile touch/layout change and remains open, awaiting the D06 release decision. It does not implement the new label/quiet/Kids scope. The older PR43 disk/accretion remediation is live; do not mistake it for the new binary-disk request.
+
+### First returned implementation slice
+
+Start with items 1–3 together, then continue the mobile and catalog units without reopening completed source research. Read the latest branch before editing.
+
+1. **Ignition cage:** src/visuals/effects.ts stellarIgnitionEffect creates three IcosahedronGeometry shells, with the third wireframe enabled at line 415. Remove the geometric cage, retain legible restrained fusion feedback and distinguish fusion beginning from a supernova. The screenshot strongly matches this effect, but its blurred label cannot identify whether the triggering object was a protostar or brown dwarf. The shell is visual-only; do not add physical shockwave forces to explain an artistic effect.
+2. **Disk shader correctness:** implement/reconcile the prepared two-file correction in disk-flow.ts and materials.ts: interpolate disk XY and compute atan in the fragment shader, rather than interpolating the discontinuous polar angle; replace the three reversed smoothstep disk masks with 1-smoothstep(low,high,x). The candidate preserves the flow model. It does not claim to fix binary fluid response.
+3. **Timing and other shader masks:** sample elapsed frame time once; use uncapped finite foreground time for FPS/adaptive-quality measurement and the separate safe capped step for physics. Reset measurement windows at hide/show. Fix the gas-vortex and jet reversed-edge smoothstep calls. Preserve manual quality modes and fixed-step safety.
+
+### Subsequent bounded units
+
+4. **Disk readability and binary response:** current shaders and 52/108 inflow points animate, but local disk motion has no companion input. Visual time caps at 4x and outer-edge shader periods span 25–186 visual seconds. Keep the broad view-dependent Doppler highlight fixed relative to the camera while trackable material features orbit/shear. Introduce explicit bounded encounter state using companion position, mass ratio and separation, preserving phase and disk plane. Let outer material truncate/perturb and selected tracers transfer or escape as encounters strengthen; distant disks should remain stable. Treat this as a labeled approximation, not GRMHD. Merge transitions must retire old disks cleanly and must not imply gas-free black holes necessarily make a visible explosion. Coordinate physical units with item 7.
+5. **Graphics:** replace fixed local-axis planetary lighting with a consistent star-relative direction and a documented no-star fallback. Keep body spin, camera motion and source motion distinct. Use restrained atmosphere/cloud/specular effects; return matched before/after scenes and actual performance numbers rather than a different renderer or concept image.
+6. **Mobile, quiet feedback and Kids mode:** compact default shows at most the selected object's short label; move metrics to deliberate Details, reset the compact sheet on fresh selection, preserve accessible full names. Separate event-history storage from presentation; suppress unsolicited simulation banners/live announcements in quiet/Kids mode without hiding action failures. Kids controls are Add, Pause/Play, Undo and Home, with Explore tap/select and drag/pan, exactly one placement per armed Add, explicit reversible grown-up controls and pointer/keyboard/context-menu gating. Do not reset scenes or idle-replace a child's scene. Preserve save/load, history and adult preferences. Test short landscape, 200% text, interruption/cancel/repeated taps, keyboard and screen-reader semantics.
+7. **Black-hole catalog and sizes:** five friendly presets are not five scientific classes. Proposed masses: 5, 30, 1,000, 1 million and 1 billion solar masses. Use the named examples and uncertainty labels below. Schwarzschild-equivalent radius is 2GM/c², about 2.95325 km per solar mass; distinguish horizon, shadow, accretion-disk extent and display/picking radius. Do not insert true solar masses into the current arbitrary-unit solver, velocity clamp or display-derived contacts. Design a common unit mapping or honestly label legacy model units first. Do not claim a Newtonian/softened toy model is accurate near a horizon.
+
+### Required return and acceptance
+
+Return one exact branch/head per bounded unit, changed files, passed/failed/not-run checks, known gaps and the next concrete action. Run repository format/check/build/tests on the integrated final source. Include real shader compilation and desktop/compact browser interaction, console checks and matched clips for isolated/wide/close/equal/unequal/flyby/merger disks. Physical iPhone/Safari and real-GPU testing must remain explicitly unverified unless performed.
+
+Preparatory local evidence: 10 disk/ignition source-controller-math test groups, 50 graphics source/controller/math checks, 18 mobile source-evidence checks with 32 pending runtime acceptance cases, and 21 catalog/reference-model checks. These counts do not represent a production integration or rendered acceptance pass.
+
+Primary science references:
+- https://svs.gsfc.nasa.gov/13326/ — differential rotation, shearing structure and Doppler contrast.
+- https://www.nasa.gov/universe/new-nasa-visualization-probes-the-light-bending-dance-of-binary-black-holes/ — material motion versus lensed images.
+- https://arxiv.org/abs/1310.0492 and https://arxiv.org/abs/2109.01307 — minidisks, streams and regime-dependent gas behavior.
+- https://science.nasa.gov/universe/stars/ — fusion onset and stellar lifecycle.
+- https://github.com/KhronosGroup/OpenGL-Refpages/blob/main/gl4/smoothstep.xml — ordered smoothstep edges.
+
+
+### Self-contained implementation details
+
+The original working files were prepared outside this repository. This section carries the actionable content so Claude does not need access to another machine's local paths. Do not claim those local tests as newly executed repository tests.
+
+For the disk correction:
+- In DISK_VERTEX, replace the interpolated angle varying with a vec2 local-position varying, assign position.xy to it, and compute the orbital direction for Doppler beaming from a local vertex angle as before.
+- Update all three consumer fragment interfaces in materials.ts together. Pass atan(localPosition.y, localPosition.x) into diskFlow. Preserve the two-phase flow equations and inner-fast/outer-slow behavior.
+- Black-hole outer mask: smoothstep(1., .68, r) becomes 1. - smoothstep(.68, 1., r).
+- Protostar outer mask: smoothstep(1., .72, r) becomes 1. - smoothstep(.72, 1., r).
+- Transfer outer mask: smoothstep(1., .8, r) becomes 1. - smoothstep(.8, 1., r).
+- Separate graphics masks: gas vortex smoothstep(.45, .12, oval) becomes 1. - smoothstep(.12, .45, oval); jet smoothstep(1.28, .12, vEdge) becomes 1. - smoothstep(.12, 1.28, vEdge).
+- Regression cases must include interpolation across both sides of the -pi/+pi seam, matching varying declarations for all three disks, finite monotonic taper values, pause and speeds above 4x, and persistent isolated-disk motion. These tests do not substitute for GPU shader compilation.
+
+For honest timing, the measured defect is that a real 0.1-second frame is clamped to 0.03 before the monitor sees it, so it reports about 33 FPS rather than 10. The same error stretches a nominal 2.5-second adaptive-quality window to about 8.4 wall seconds. Preserve a separate bounded simulation delta and test background/resume behavior rather than removing all timestep safety.
+
+For mobile and Kids mode, keep every behavior testable at its event handler, not just hidden by CSS. Preserve errors, save/load and construction history. Home means fit the existing scene, not reset it. A quiet mode must not replace banners with a pulsing counter or replay suppressed messages on exit. Do not infer a real device pass from an emulated viewport.
+
+### Black-hole catalog reference values
+
+Use rounded, cited reference masses with uncertainty/status labels. Derived sizes are Schwarzschild-equivalent horizons for the stated nonspinning model, not measured shadow or disk diameters. Presets are UI sizes; the two largest are both scientifically supermassive. A mass change must scale the model horizon linearly, while display exaggeration and picking remain separate.
+
+- **Cygnus X-1:** approximately 21 solar masses. Rounded NASA value, not an exact measured mass. Accreting X-ray binary; no measured disk outer size supplied. Source: https://www.nasa.gov/universe/nasas-ixpe-reveals-shape-orientation-of-hot-matter-around-black-hole/
+- **Gaia BH3:** approximately 33 solar masses. Rounded ESA reference value, not an exact measured mass; observed estimates have uncertainty. Dormant: do not give it a bright disk just because it is massive. Source: https://www.esa.int/ESA_Multimedia/Images/2024/04/Gaia_black_holes
+- **GW190521 remnant:** approximately 142 solar masses. Original 2020 quasi-circular binary inference, source-frame median; 90% credible interval +28/-16 solar masses. Model-dependent, not a nearby imaged object. Do not invent a measured disk or jet. Source: https://dcc.ligo.org/public/0165/P2000021/012/gw190521-implications-main_20200901.pdf
+- **HLX-1:** approximately 20,000 solar masses. Representative NASA estimate; uncertain, not a confirmed exact mass. Candidate accreting object; disk rendering illustrative. Source: https://science.nasa.gov/missions/hubble/nasas-hubble-spots-a-relic-from-a-shredded-galaxy/
+- **Sagittarius A*:** approximately 4,000,000 solar masses. Rounded NASA reference value; precision dynamical estimates differ. Low accretion activity; use illustrative image morphology, not a universal bright disk. Source: https://science.nasa.gov/universe/black-holes/types/
+- **M87*:** approximately 6,500,000,000 solar masses. Rounded EHT/NASA mass estimate; uncertainty is not zero. Accretion and jet context; do not infer disk diameter from mass alone. Source: https://www.jpl.nasa.gov/edu/resources/teachable-moment/how-scientists-captured-the-first-image-of-a-black-hole/
+
+Use one documented scene-wide conversion for the gravitational parameter, such as mu_sim = mu_SI * T0^2 / L0^3. Do not silently assign true solar masses to legacy model masses printed as Earth masses, reuse the current cube-root body-growth law for a physical horizon, or derive collision thresholds from a selection hit target.
+
+### Pickup and return receipt
+
+Claude: acknowledge this specific entry in the next implementation receipt with the claimed bounded slice, branch/head and next action. If it cannot start because another item is already claimed, record that concrete dependency rather than silently treating the work as shipped. After implementation, return passed, failed and unavailable checks separately. ChatGPT will review the exact returned revision; Mckay's release gate remains separate.
