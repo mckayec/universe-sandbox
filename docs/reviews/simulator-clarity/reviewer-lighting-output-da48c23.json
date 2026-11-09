@@ -1,0 +1,70 @@
+{
+  "threeRevision": "180",
+  "pass": 7,
+  "fail": 2,
+  "total": 9,
+  "results": [
+    {
+      "name": "actual controller updates nested surface/atmosphere for all four world kinds",
+      "pass": true,
+      "detail": {
+        "worlds": 4
+      }
+    },
+    {
+      "name": "moving and removed star update key and reset fallback, including fill",
+      "pass": true
+    },
+    {
+      "name": "actual controller ranks flux, fills second and does not light excluded kinds",
+      "pass": true
+    },
+    {
+      "name": "new visual uses fresh materials rather than cached old mesh",
+      "pass": true
+    },
+    {
+      "name": "emitter temperatures and excluded kinds follow actual catalog/controller",
+      "pass": true
+    },
+    {
+      "name": "uniform-scale normal control with body spin",
+      "pass": true,
+      "detail": {
+        "strain": 0,
+        "spin": 0.7,
+        "angle": 0.2,
+        "actual": [
+          0.996355792372499,
+          0,
+          0.0852944019603275
+        ],
+        "expected": [
+          0.996355792372499,
+          0,
+          0.0852944019603275
+        ],
+        "errorDegrees": 0,
+        "dayActual": 1,
+        "dayExpected": 1
+      }
+    },
+    {
+      "name": "SC5-T1 nonuniform tidal normal matches inverse-transpose at strain 0.5",
+      "pass": false,
+      "error": "{\"strain\":0.5,\"spin\":0,\"angle\":0,\"actual\":[0.7832628852953296,0,0.6216906405269708],\"expected\":[0.6216906405269709,0,0.7832628852953297],\"errorDegrees\":13.120601234320896,\"dayActual\":0.7040576104209016,\"dayExpected\":0.0554525100262706}"
+    },
+    {
+      "name": "SC5-T1 nonuniform tidal normal matches inverse-transpose at strain 0.88",
+      "pass": false,
+      "error": "{\"strain\":0.88,\"spin\":0,\"angle\":0,\"actual\":[0.8272139793045225,0,0.5618870281855393],\"expected\":[0.5618870281855393,0,0.8272139793045225],\"errorDegrees\":21.627201944483996,\"dayActual\":0.8951941867285194,\"dayExpected\":0}"
+    },
+    {
+      "name": "inverse-transpose correction control remains perpendicular to transformed tangent",
+      "pass": true,
+      "detail": {
+        "cases": 2
+      }
+    }
+  ]
+}
