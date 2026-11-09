@@ -114,6 +114,7 @@ function updateLabels() {
 export function bindFrameTimingReset() {
   document.addEventListener('visibilitychange', () => {
     clock.getDelta();
+    app.frameTimingInterrupted = true;
     performanceMonitor.reset();
     resetAdaptiveQualityWindow();
   });
@@ -122,9 +123,10 @@ export function animate() {
   requestAnimationFrame(animate);
   // Sample the clock once: the capped step drives physics and animation, the uncapped measured time drives the
   // FPS badge and adaptive quality (a real 0.1 s frame must read as 10 FPS, not 33).
-  const timing = frameTiming(clock.getDelta()),
+  const timing = frameTiming(clock.getDelta(), app.frameTimingInterrupted),
     realDt = timing.step,
     refs = domRefs();
+  app.frameTimingInterrupted = false;
   updateCameraTransition(realDt);
   updateSlowMotion(realDt);
   updateAttractMode(realDt);

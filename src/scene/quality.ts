@@ -1,7 +1,7 @@
 // Render quality scaling, realism/effects preferences, adaptive quality and gravitational lensing.
 import * as THREE from 'three';
 import { setNebulaQuality } from '../nebula-hd.ts';
-import { savePreferences } from '../exhibit-runtime.ts';
+import { adaptiveQualitySample, savePreferences } from '../exhibit-runtime.ts';
 import { bloom, camera, composer, deviceTier, isCompact, lensingPass, preferences, renderer } from './setup.ts';
 import { app, audio, bodies } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
@@ -75,24 +75,13 @@ export function cycleEffectsMode() {
   toast(app.effectsMode === 'full' ? 'Full exhibit effects enabled' : 'Gentle effects reduce flashes and particles');
 }
 export function updateAdaptiveQuality(dt: number) {
-  if (app.qualityMode !== 'auto') return;
-  app.qualityTimer += dt;
-  app.qualityFrames++;
-  if (app.qualityTimer < 2.5) return;
-  // Hysteresis: step down quickly when clearly slow, step up slowly and only when comfortably fast, so the
-  // scale does not oscillate around the threshold.
-  const fps = app.qualityFrames / app.qualityTimer,
-    target =
-      fps < 43
-        ? Math.max(QUALITY_FLOOR, app.qualityScale - 0.08)
-        : fps > 57.5
-          ? Math.min(1, app.qualityScale + 0.04)
-          : app.qualityScale;
-  if (Math.abs(target - app.qualityScale) > 0.02) applyQualityScale(target);
-  app.qualityTimer = 0;
-  app.qualityFrames = 0;
+  const window = { timer: app.qualityTimer, frames: app.qualityFrames },
+    target = adaptiveQualitySample(window, dt, app.qualityScale, QUALITY_FLOOR, app.qualityMode);
+  app.qualityTimer = window.timer;
+  app.qualityFrames = window.frames;
+  if (target !== null) applyQualityScale(target);
 }
-/** Discard a partly filled adaptive-quality window (after the page was hidden or the frame was an interruption). */
+/** Discard a partly filled adaptive-quality window (after the page was hidden or shown). */
 export function resetAdaptiveQualityWindow() {
   app.qualityTimer = 0;
   app.qualityFrames = 0;

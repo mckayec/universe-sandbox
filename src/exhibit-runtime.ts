@@ -63,20 +63,49 @@ export function detectDeviceTier(compact: boolean): DeviceTier {
 
 /** Longest real frame used for physics/animation (fixed-step safety at high speeds and after stalls). */
 export const MAX_FRAME_STEP = 0.03;
-/** Real frames longer than this are interruptions (hidden tab, debugger, OS pause), not rendering cost. */
-export const MAX_MEASURED_FRAME = 0.5;
-
 /**
  * Split one sampled frame delta into the honest wall-clock time used to measure performance and the capped step
- * used to advance the simulation. `measured` is null for non-finite or interruption-length frames, which callers
- * should drop from FPS and adaptive-quality windows instead of averaging them in.
+ * used to advance the simulation. Every finite positive foreground frame is measured, however long: duration alone
+ * cannot tell a slow renderer from a pause, so only an explicit interruption (the page was hidden or shown since the
+ * last frame) drops the measurement. `measured` is null for that frame and for non-finite or non-positive deltas.
  */
-export function frameTiming(rawDelta: number) {
+export function frameTiming(rawDelta: number, interrupted = false) {
   const finite = Number.isFinite(rawDelta) && rawDelta > 0 ? rawDelta : 0;
   return {
-    measured: finite > 0 && finite <= MAX_MEASURED_FRAME ? finite : null,
+    measured: finite > 0 && !interrupted ? finite : null,
     step: Math.min(finite, MAX_FRAME_STEP),
   };
+}
+
+/** Wall-clock seconds averaged before adaptive quality may change the render scale. */
+export const ADAPTIVE_QUALITY_WINDOW = 2.5;
+
+export interface AdaptiveQualityWindow {
+  timer: number;
+  frames: number;
+}
+
+/**
+ * Add one measured frame to the adaptive-quality window. When the window closes, return the new render scale if it
+ * should change, otherwise null. Hysteresis: step down quickly when clearly slow, step up slowly and only when
+ * comfortably fast, so the scale does not oscillate around the threshold. Manual quality never changes.
+ */
+export function adaptiveQualitySample(
+  window: AdaptiveQualityWindow,
+  dt: number,
+  scale: number,
+  floor: number,
+  mode: string,
+): number | null {
+  if (mode !== 'auto') return null;
+  window.timer += dt;
+  window.frames++;
+  if (window.timer < ADAPTIVE_QUALITY_WINDOW) return null;
+  const fps = window.frames / window.timer,
+    target = fps < 43 ? Math.max(floor, scale - 0.08) : fps > 57.5 ? Math.min(1, scale + 0.04) : scale;
+  window.timer = 0;
+  window.frames = 0;
+  return Math.abs(target - scale) > 0.02 ? target : null;
 }
 
 export class PerformanceMonitor {

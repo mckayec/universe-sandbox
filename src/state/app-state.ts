@@ -83,6 +83,8 @@ export const app = {
   pendingTouchPlacement: null as { pointerId: number; screen: THREE.Vector2; world: THREE.Vector3 } | null,
   qualityTimer: 0,
   qualityFrames: 0,
+  /** Set by visibility changes so the next frame is not measured as rendering time. */
+  frameTimingInterrupted: false,
   audioPulseTimer: 0,
   recoveryTimer: 0,
   narrationTimer: 0,
