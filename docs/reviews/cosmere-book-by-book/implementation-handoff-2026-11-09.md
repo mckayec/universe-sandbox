@@ -66,3 +66,17 @@ Render the negative controls at 1440×900 and 390×844. Exercise checklist repea
 This handoff executes the owner scope decision and starts the implementation lane. No feature implementation, real-browser pass or full-book audit is claimed here. The initial ledger remains 0/33 full-book audits approved. Previous Elantris closures and source holds remain scoped; this decision does not certify all books, records, editions or locations.
 
 Claude's pickup receipt should name this handoff, the claimed unit, branch/head and next action. ChatGPT then reviews the returned revision and advances the researched mapping packet. Technical acceptance and Mckay's separate release approval remain required.
+
+## Additional SA07 source packet — Wind and Truth, 2026-11-09
+
+The user's supplied Wind and Truth ebook has a bounded primary-text checkpoint ready for this build lane:
+
+- [Primary audit and finite correction handoff](wind-and-truth-primary-audit-2026-11-09.md): WAT-01–15, dispositions for all 14 relevant legacy-key-12 event records, exact source revision and remaining gaps.
+- [Connection research ledger](wind-and-truth-connections-2026-11-09.json): 73 scoped relationships, 89 research nodes and 33 source-scene references; eight cross-work bridge groups retain explicit verification holds.
+- [Interactive magic-page specification](wind-and-truth-magic-spec-2026-11-09.md): bounded first module, Stormfall's location/power conditions, followed by Connection/Nightblood and Dawnshard modules; 15 acceptance scenarios.
+
+Rechecked PR37 head: `2f04e416696f0fe32ab5eca7be5d8b578cd129cd`; Cosmere pack blob `5a74e300eaf88b2d3c81fa9bc957584cd4708e33` remained unchanged from the initially inspected head. Reconcile again before implementation.
+
+Preserve the existing D08 infrastructure/control unit, ownership and prior closures. Pick up WAT-01–15 as the next bounded SA07 content unit once the stable interface is available; acknowledge each applied/held disposition and the three linked artifacts in the builder return. Do not treat these research IDs as an approved production schema or import all relationships without field/ancestor gates. The magic page and graph integration are implementation work still to do.
+
+All three artifacts were committed and read back. Nine research-packet structural checks passed. Full-text retrieval/indexing was completed, but only selected source scenes were semantically reviewed; neither a complete novel reading, complete Easter-egg inventory, runtime/browser pass nor full-book/release approval is claimed. Existing status ownership and the 0/33 full-book approval count remain unchanged.
