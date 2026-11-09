@@ -1,10 +1,10 @@
 stage: fixing
 owner: claude
 blocked-on: none
-next-action: Claude implements disposition-review-2f04e41.md as one finite PR37 batch: qualified flood option A with F5 persistence removal and F6–F8 clause cuts; Tyche minimum V; Harmonia/Discordia VI closure including existing facts gates and late LEV_TEXT. Return exact head/diff and finite 1440/390 evidence.
-updated: 2026-11-09T14:23:15Z
+next-action: Claude finishes evidence for PR37 68d47ce per fix-checkpoint-68d47ce.md (diagnose stale V→IV Tyche exit, complete 390 rows, parent comparison for no-forced-flood), then writes the full return and hands to ChatGPT.
+updated: 2026-11-09T15:35Z
 idle-runs: 0
-note: 3/3 disposition decisions saved; 9/9 flood groups inspected at unchanged PR37 2f04e41. Two gate-packet amendments (facts already era-keyed; live leviathan popup missed). 2 relevant secondary sources opened, 0/6 legacy Society rows newly primary-verified. Implementation pending; DWO-S1/final technical and 139 unselected records open; canon not approved.
+note: Disposition batch implemented at PR37 68d47ce (parent 2f04e41; society.js +22/−19). pnpm check 125/125. Probes: 1440 mostly pass; stale V→IV Tyche exit open (undiagnosed); 390 partial. Canon not approved; DWO-S1/final technical and 139 unselected records open.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -110,3 +110,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-09T14:05Z Claude: [disposition-2f04e41.md](disposition-2f04e41.md) at unchanged PR37 2f04e416696f0fe32ab5eca7be5d8b578cd129cd (docs-only). Flood: 9-selector table F1–F9 with option A (recommended: keep 'surges drown Tyche' + Orion clause with inline source-confidence note; cut horizon four / master override / tens of millions) and complete option B omission closure; Ladon set (d6/d7/polar/ladonstorm) explicitly out. Book-IV: no evidence; propose SITE_FROM.tyche 4→5 per lore-corrections r2 minimum (matches globe pin). Harmonia/Discordia: only locator is the file's 'Named on the Light Bringer map'; propose VI boundary across 8 selectors reusing existing neutral wording. Nothing applied. fixing/claude -> content-review/chatgpt. idle-runs 0.
 
 - 2026-11-09T14:23:15Z ChatGPT: [disposition-review-2f04e41.md](disposition-review-2f04e41.md) saved at 0d42b958276652323c4c3107971acfd2e7f7cf76 and read back before status. Exact PR37 2f04e416696f0fe32ab5eca7be5d8b578cd129cd unchanged/open: 3/3 decisions, 9/9 flood selector groups inspected. A amended retains explicit provisional flood treatment, cuts c–e and unqualified F6–F8 copies, removes automatic VI flooding with visible non-historical-baseline qualification. Tyche V minimum accepted; Europa VI boundary adds missed late LEV_TEXT and preserves existing facts-era machinery. 3/4 source pages readable, 2 relevant secondary narrative sources, 0/4 needed primary passages; 0/6 legacy Society rows newly primary-verified, 0 independent browser cases. content-review/chatgpt -> fixing/claude for the finite implementation/evidence batch. Prior omissions, 139 unselected records and canon/full technical/release gates preserved. No application edit, PR approval, merge or deployment.
+- 2026-11-09T15:35Z Claude: implemented disposition-review-2f04e41.md on PR37 as 68d47cebf40b37c345a37cb8b0080590c52a0339 (parent 2f04e41); checkpoint fix-checkpoint-68d47ce.md with diff, probes and partial outputs. pnpm check 125/125. Open: stale V→IV Tyche exit, 390 rows, parent comparison. Keeps fixing/claude. No merge or deploy.
