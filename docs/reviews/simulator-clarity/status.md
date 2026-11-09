@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT re-reviews SC1-T1 fix and SC1-E1 evidence at PR47 d9d5026 (5 changed files vs 0039fe0; harness + raw results in this folder); accept item 3 or return findings
-updated: 2026-11-09T03:58Z
+next-action: Claude continues bounded item 4 per HANDOFF_PLAN; retain SC1-E1 rendered gaps and strengthen harness before final technical acceptance per implementation-review-d9d5026.md
+updated: 2026-11-09T04:16Z
 idle-runs: 0
-note: SC1-T1 fixed at d9d5026a7d94ac22a1816c65dabb9217f823e071: every finite positive foreground frame is measured; only an explicit visibilitychange flag drops one frame. 130/130 unit tests. SC1-E1: reproducible swiftshader harness + raw JSONL attached. Items 4–7 not started. No release approval.
+note: SC1-T1 closed at d9d5026 source/test scope: 5/5 changed files read, 10/10 focused tests, 3/3 timing traces and 1/1 listener stub pass. Item 3 accepted at this scope; raw rendered evidence remains partial. Items 4–7 unimplemented; no release approval.
 
 # Simulator clarity and physics
 
@@ -57,3 +57,5 @@ SC1-E1 evidence: [evidence-harness.mjs](evidence-harness.mjs) (run from the PR c
 - 2026-11-09T02:23Z ChatGPT: [implementation-review-0039fe0.md](implementation-review-0039fe0.md) saved/read back at ed3f9b97e0ab68939a69ded7e4ebf03bd979cda0; [reproduction](reviewer-timing-0039fe0.mjs) at 08958ed8e79fa1acb432670570cdd237c3dc4b32. Exact head 0039fe0aa6f527d33be11da83147929812eba9b7. 9/9 changed files read; 5/5 shader source/math tests pass; 3/3 independent timing trace outcomes reproduced. SC1-T1 Medium requires correction: rejecting every >0.5-second frame can produce 60 FPS and quality increase during actual 3.243-FPS foreground behavior. SC1-E1 Low evidence gap: attach raw reproducible rendered results; builder reports are not independent GPU validation. Items 1–2 accepted only at source scope, item 3 not complete; items 4–7 remain separate. implementation-review/chatgpt -> fixing/claude. No app/PR-branch edit, merge, deployment or release approval.
 
 - 2026-11-09T03:58Z Claude: fixed SC1-T1 and supplied SC1-E1 evidence on PR #47 at d9d5026a7d94ac22a1816c65dabb9217f823e071 (see fix receipt). fixing/claude → implementation-review/chatgpt. Items 4–7 not started. No merge.
+
+- 2026-11-09T04:16Z ChatGPT: saved and verified implementation-review-d9d5026.md (cfcde1c354e3b1208dceb76f089803d6eeba6ac8) and reviewer reproduction (4057ae1de5bda763f5302772840d4e9f4e37110e). Exact PR47 head d9d5026a7d94ac22a1816c65dabb9217f823e071: SC1-T1 closed; mixed 3.243-FPS trace reports 3 and lowers scale to .62. 10/10 focused tests, 3/3 trace expectations, 1/1 visibility-listener stub pass; no independent browser execution. SC1-E1 raw delivery satisfied, rendered acceptance partial (compact placement skipped, synthetic hide/show, logging-only behavior checks). implementation-review/chatgpt -> implementation/claude for next bounded item 4 with final technical gaps preserved. No merge/deploy/release approval.
