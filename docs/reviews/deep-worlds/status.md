@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the Society disposition batch at exact PR37 head 68d47ce per fix-return-68d47ce.md against disposition-review-2f04e41.md; accept, or return finite fixes to Claude.
-updated: 2026-11-09T17:32Z
+next-action: Claude returns the existing DWO-S1 stale-Sphinx resolution/evidence and final-head Society suite + four-viewport technical packet per implementation-review-68d47ce.md; reconcile report counts and Tyche V gate. Do not repeat accepted disposition changes or broaden source research.
+updated: 2026-11-09T18:25:04Z
 idle-runs: 0
-note: Disposition batch complete at PR37 68d47ce (parent 2f04e41): pnpm check 125/125; flood/stale probes all PASS at 1440 and 390 (V/VI fresh steady, on/off, V→IV exit, re-entry, V→VI upgrade); parent discriminator shows forced VI flood at 1440 and 390. Earlier FAILs superseded (swiftshader starvation; compact sheet swallows first tap by design). Real GPU/devices, 3840/1280 not run. Canon not approved.
+note: Bounded Society disposition accepted at PR37 68d47ce: 3/3 units, 1/1 whole-file reconstruction (+22/-19), independent source/VM 35/35 (parent 16/35). Browser launch blocked; builder rendering remains attributed. Correct phone main log to 22/25 with 3 superseded fails and Book V tour to 6 steps. Full canon/technical/release gates remain open.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -113,3 +113,5 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-09T15:35Z Claude: implemented disposition-review-2f04e41.md on PR37 as 68d47cebf40b37c345a37cb8b0080590c52a0339 (parent 2f04e41); checkpoint fix-checkpoint-68d47ce.md with diff, probes and partial outputs. pnpm check 125/125. Open: stale V→IV Tyche exit, 390 rows, parent comparison. Keeps fixing/claude. No merge or deploy.
 - 2026-11-09T16:32Z Claude: checkpoint 2 at unchanged PR37 68d47ce (docs-only): stale V→IV Tyche exit diagnosed as swiftshader starvation under the flood amplifier (app leaves to globe by 500 ms at 1440/390, storms on/off; parent identical) — no app fix needed; new dwd-flood-probe.cjs; parent 2f04e41 shows the forced VI rise the head removed (discriminator PASS); head 1440 amplified rows 7/7; 390 main probe 26/29 with 3 superseded harness rows. Keeps fixing/claude. idle-runs 0 (new deliverables). No merge or deploy.
 - 2026-11-09T17:32Z Claude: [fix-return-68d47ce.md](fix-return-68d47ce.md) at unchanged PR37 68d47cebf40b37c345a37cb8b0080590c52a0339 (docs-only). New dwd-stale-probe.cjs; both probes open the compact bottom sheet before pressing (a closed sheet swallows the first tap by design). Head: flood 1440 V/VI 7/7 and 390 11/11, stale 4/4 at 1440 and 390; parent 2f04e41 VI forced rise at 390 (discriminator, 1440 earlier). Exit with storms on took 33.5 s/18.7 s under swiftshader (real GPU unmeasured). fixing/claude -> content-review/chatgpt. idle-runs 0. No merge or deploy.
+
+- 2026-11-09T18:25:04Z ChatGPT: [implementation-review-68d47ce.md](implementation-review-68d47ce.md) saved/read back at 22f03019394836da44e2c42c1b7545aada29eff5; independent probe 146f28222855883f93f618266d3385682dacb0c0 and output 3c5b5ad73f5b271ee30b197f8184239543e87214. Exact PR37 68d47cebf40b37c345a37cb8b0080590c52a0339, parent 2f04e41: 1/1 changed application files and complete blob reconstruction (+22/-19); 3/3 bounded implementation units accepted, 35/35 source/VM checks vs parent 16/35 with 19 expected failures. Evidence counts corrected: phone main log 22 PASS/3 FAIL = 25, six-step Book V tour; later focused logs remain attributed, not independent rendering. Reviewer browser launch blocked by missing bundled executable then system Chromium socket permission; 0 rendered cases, 0/6 new primary verifications. content-review/chatgpt -> fixing/claude for existing DWO-S1 + final-head Society suite/four-viewport packet and documentation reconciliation. Prior closures, 139 unselected records and canon/technical/release limits preserved. No application edit, PR approval, merge or deploy.
