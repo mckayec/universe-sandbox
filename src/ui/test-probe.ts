@@ -14,6 +14,7 @@ export type ProbeSnapshot = {
     kind: string;
     name: string;
     tide: number | null;
+    stretch: number;
     position: [number, number, number];
     spin: number;
     keyLightId: number | null;
@@ -44,6 +45,7 @@ export function probeSnapshot(): ProbeSnapshot {
       kind: b.kind,
       name: b.name,
       tide: diskEncounterOf(b)?.strength ?? null,
+      stretch: b.tidalStretch,
       position: [b.mesh.position.x, b.mesh.position.y, b.mesh.position.z],
       spin: b.spinAngle ?? 0,
       keyLightId: (b.mesh.userData.keyLightId as number | null | undefined) ?? null,
