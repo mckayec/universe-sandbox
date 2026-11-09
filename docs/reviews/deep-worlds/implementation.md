@@ -13,8 +13,8 @@ cities and areas to explore what happened there.
   `places-lm.js` draws about 60 kinds of landmark; `places-fx.js` plays event scenes (battle, bombard, blast,
   fleet, storm, quake, crowd, duel, flood, launch, arrival, eruption, worm); `places-audio.js` is optional
   synthesised ambience (off by default). All procedural; no files or network.
-- **Engine view "place"**: *Enter* from a site card (or click a site's label twice) → landmarks list, Day /
-  Dusk / Night / Dawn, "What happened here", hops to the world's other places, *Back* / Esc to the surface.
+- **Engine view "place"**: _Enter_ from a site card (or click a site's label twice) → landmarks list, Day /
+  Dusk / Night / Dawn, "What happened here", hops to the world's other places, _Back_ / Esc to the surface.
   Clicking an event inside a place flies to its landmark and plays its scene. Deep links:
   `#world=…&site=…&view=place&lm=…`. Landmarks use the same book gating as sites.
 - **Walk the surface**: a world with no named places offers an unnamed schematic view, labelled as such.
@@ -24,14 +24,14 @@ cities and areas to explore what happened there.
 
 ## 2. Content (all six galactic packs)
 
-| pack | worlds with sites | sites | scenes | landmarks | events | events → landmark | events with scene | codex |
-|---|---|---|---|---|---|---|---|---|
-| sun-eater | 26 → 37 | 61 → 72 | 72 | 138 | 64 → 84 | 58 | 25 | 56 → 71 |
-| hyperion | 31 → 35 | 70 → 75 | 75 | 97 | 57 → 81 | 62 | 8 | 69 → 72 |
-| expanse | 14 → 32 | 34 → 58 | 58 | 112 | 88 → 116 | 95 | 33 | 65 → 95 |
-| dune | 6 → 14 | 46 → 56 | 56 | 101 | 54 → 90 | 64 | 26 | 86 → 97 |
-| foundation | 20 → 21 | 40 → 44 | 44 | 101 | 68 → 121 | 104 | 7 | 91 → 132 |
-| cosmere | 15 → 16 | 174 → 175 | 175 | 190 | 63 → 124 | 105 | 34 | 41 → 59 |
+| pack       | worlds with sites | sites     | scenes | landmarks | events   | events → landmark | events with scene | codex    |
+| ---------- | ----------------- | --------- | ------ | --------- | -------- | ----------------- | ----------------- | -------- |
+| sun-eater  | 26 → 37           | 61 → 72   | 72     | 138       | 64 → 84  | 58                | 25                | 56 → 71  |
+| hyperion   | 31 → 35           | 70 → 75   | 75     | 97        | 57 → 81  | 62                | 8                 | 69 → 72  |
+| expanse    | 14 → 32           | 34 → 58   | 58     | 112       | 88 → 116 | 95                | 33                | 65 → 95  |
+| dune       | 6 → 14            | 46 → 56   | 56     | 101       | 54 → 90  | 64                | 26                | 86 → 97  |
+| foundation | 20 → 21           | 40 → 44   | 44     | 101       | 68 → 121 | 104               | 7                 | 91 → 132 |
+| cosmere    | 15 → 16           | 174 → 175 | 175    | 190       | 63 → 124 | 105               | 34                | 41 → 59  |
 
 Rules followed: paraphrase only; spoilers gated by book (later-book facts moved out of base site text into
 gated landmarks or eras); positions inside a place are schematic (`/* layout schematic */`); new site
@@ -43,13 +43,14 @@ their own knowledge of the books, and plot summaries (SuperSummary, Wikipedia, B
 asimov.fandom, Coppermind where reachable); several wikis were blocked. Treat new content as unaudited.
 
 ### Items the builders flagged for checking
+
 - **Sun Eater**: Lady Liliana's name, Count Balian's first name, Cielcin prisoners under the Colosso (single
   source); b1j moved from Castle Borosevo to the Colosso dungeons (least sure); Padmurak `books` [1,4] → [4].
-- **Hyperion**: spoiler mode stays *cumulative* per L8; the Sphinx text changed so it no longer spoils book II;
+- **Hyperion**: spoiler mode stays _cumulative_ per L8; the Sphinx text changed so it no longer spoils book II;
   raft launch books [3] → [3,4]; Cicero's, Stan Leweski and a Cleft cruciform-caves landmark left out.
 - **Expanse**: b6i (Transport Union) moved from Medina to Ceres; Medina's railguns placed in the slow-zone
   scene without naming the hull; b3f / b6g / b8j split into b3l / b6l / b8n.
-- **Dune**: d5 now credits Duncan *and* Liet-Kynes with the testing-station rescue; d3 split (d14 harvester
+- **Dune**: d5 now credits Duncan _and_ Liet-Kynes with the testing-station rescue; d3 split (d14 harvester
   rescue); "takes the name Muad'Dib" moved to the Jamis duel (d19); Jamis duel, Kynes's death, the raid that
   kills Paul's son and Gurney's return left at world level (exact place unconfirmed).
 - **Foundation**: f1d moved to the Terminus city (Board meeting place not given); f7g moved to the Trantor
@@ -64,8 +65,11 @@ scenes, captioned set pieces, tours, sound, Names / CC / Detail controls, the ex
 in `public/atlas/tex/` (Solar System Scope CC BY 4.0, NASA via three.js, Celestia; credited on the page), plus
 the repo's Gravity Lab link, local fonts and three.js, phone layout, Kepler orbits, Kuiper Belt / Oort Cloud,
 plumes, moon view and Easter eggs. Lore corrections r1–r3 re-applied; the newer scenes and set-piece buttons
-open only from their own book. One deviation from r3: Tyche opens at Book IV (the Iron Gold prologue is staged
-there), with its later-book landmark text gated.
+open only from their own book. One deviation from r3: Tyche opens at Book IV, with its later-book landmark text gated.
+Correction (SO6, 2026-11-09): this deviation was originally justified by the staged Iron Gold prologue. That
+staging was unverified and has been omitted (SO1-SO3 on PR37: event g1, set-piece `irongoldprologue`, the Tyche
+prologue toggle, `SITES.prologue`, `FX.irongoldprologue` and `FX.irongoldreaper`), and it is not evidence for
+Book IV availability. The Book IV gate itself is unchanged; it still needs its own accepted evidence or disposition.
 
 ## 4. Checks at bb5eb23 (re-run at 14f7a52 after merging main: pnpm check 82/82, test:pages 12×2)
 

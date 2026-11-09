@@ -199,6 +199,10 @@ books: {
   link opens straight onto that place; descending to a surface adds a history entry so Back ascends.
 * Any number of books works. On phones, packs with more than 7 books get the book buttons on their own
   full-width row so none are hidden.
+* More than 12 books (e.g. a library of 39 works) no longer fit as buttons: the chooser becomes one
+  compact picker (a select with ‹ › step buttons), grouped under `books[k].group` headings in book order.
+  `ui.bookPicker:true|false` forces it on or off; `ui.pickerAll`, `ui.pickerPrev`, `ui.pickerNext` rename
+  its "All", previous and next labels. Badge rows longer than 12 collapse to "first … last  N".
 
 `spoilers.mode` decides what picking book *k* does:
 
@@ -376,7 +380,8 @@ fractal coastlines and fine relief as you zoom in (always on, nothing to configu
 | `lava` | `#ff5a1a` | glow colour for `lava` and `dyson` |
 | `amb` | .018 | ambient light on the night side |
 | `wall` | 0 | 1 = a single thin glowing line across one face (Hyperion's Wall); rarely needed |
-| `base` | none | `"earth"` = use the built-in real Earth landmask (Natural Earth 1:10m land and lakes, 8192×4096 on desktops, 4096×2048 on phones; `tools/build_earth_mask.py`) as the height base; coastlines stay sharp up close |
+| `base` | none | `"earth"` = use the built-in real Earth landmask (Natural Earth 1:10m; default `earth-base.png` signed-distance coast ramp, 4096×2048, 2048×1024 on phones; `scripts/make-earth-mask.py`) as the height base |
+| `earthMask` | none | with `base:"earth"`, `"hi"` = use the binary land-and-lakes mask instead (8192×4096 on capable desktops, 4096×2048 elsewhere; `tools/build_earth_mask.py`) so coastlines and lakes stay sharp up close |
 | `sw` | `pal[3]` | swatch colour in the index |
 | `feat` | [] | hand-laid features, max **18** (11.2) |
 

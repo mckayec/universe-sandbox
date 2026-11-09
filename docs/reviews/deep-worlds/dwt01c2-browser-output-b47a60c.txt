@@ -1,0 +1,7 @@
+MISMATCH PARENT-3621250 overlap-stop {"view":"place","site":"paddies","hash":"#book=1&world=caladan&site=paddies&view=place","histPlace":true,"rendered":"castle"} pageerrors: 0
+CONSISTENT PARENT-3621250 chain3-stop {"view":"place","site":"castle","hash":"#book=1&world=caladan&site=castle&view=place","histPlace":true,"rendered":"castle"} pageerrors: 0
+CONSISTENT PARENT-3621250 positive {"view":"place","site":"castle","hash":"#book=1&world=caladan&site=castle&view=place","histPlace":true,"rendered":"castle"} pageerrors: 0
+CONSISTENT FIX overlap-stop {"view":"place","site":"castle","hash":"#book=1&world=caladan&site=castle&view=place","histPlace":true,"rendered":"castle"} pageerrors: 0
+CONSISTENT FIX chain3-stop {"view":"place","site":"castle","hash":"#book=1&world=caladan&site=castle&view=place","histPlace":true,"rendered":"castle"} pageerrors: 0
+CONSISTENT FIX positive {"view":"place","site":"castle","hash":"#book=1&world=caladan&site=castle&view=place","histPlace":true,"rendered":"castle"} pageerrors: 0
+FIX mismatches: 0

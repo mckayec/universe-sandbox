@@ -1,0 +1,55 @@
+PASS not-opted-in/1440 Timeline button offered and on screen — {"x":1335,"y":66,"w":89}
+PASS not-opted-in/1440 opens (dialog visible, tl in URL)
+PASS not-opted-in/1440 not opted in: no sidecar read — null
+PASS not-opted-in/1440 actual SW model behind the host — {"records":1714,"edges":342,"grounded":0}
+PASS not-opted-in/1440 list mode renders records (All books) — 1714 distinct record ids in DOM
+PASS not-opted-in/1440 search finds Capernaum with All books
+PASS not-opted-in/1440 Escape closes
+PASS not-opted-in/1440 URL restore opens with selection — tlsel=s:capernaum
+PASS not-opted-in/1440 downgrade to OT drops selection, record and URL tlsel — tlsel=undefined inDom=false
+PASS not-opted-in/1440 downgrade: search no longer finds Capernaum
+PASS not-opted-in/1440 NT book restores Capernaum to search
+PASS not-opted-in/1440 Back closes, Forward reopens
+PASS not-opted-in/1440 no page/console errors
+PASS not-opted-in/390 Timeline button offered and on screen — {"x":16,"y":220,"w":89}
+PASS not-opted-in/390 opens (dialog visible, tl in URL)
+PASS not-opted-in/390 not opted in: no sidecar read — null
+PASS not-opted-in/390 actual SW model behind the host — {"records":1714,"edges":342,"grounded":0}
+PASS not-opted-in/390 list mode renders records (All books) — 1714 distinct record ids in DOM
+PASS not-opted-in/390 search finds Capernaum with All books
+PASS not-opted-in/390 Escape closes
+PASS not-opted-in/390 URL restore opens with selection — tlsel=s:capernaum
+PASS not-opted-in/390 downgrade to OT drops selection, record and URL tlsel — tlsel=undefined inDom=false
+PASS not-opted-in/390 downgrade: search no longer finds Capernaum
+PASS not-opted-in/390 NT book restores Capernaum to search
+PASS not-opted-in/390 Back closes, Forward reopens
+PASS not-opted-in/390 no page/console errors
+PASS opted-in/1440 Timeline button offered and on screen — {"x":1335,"y":66,"w":89}
+PASS opted-in/1440 opens (dialog visible, tl in URL)
+PASS opted-in/1440 sidecar reconciled on the actual host: 0 promoted — ok promoted=0
+PASS opted-in/1440 actual SW model behind the host — {"records":1714,"edges":342,"grounded":0}
+PASS opted-in/1440 list mode renders records (All books) — 1714 distinct record ids in DOM
+PASS opted-in/1440 search finds Capernaum with All books
+PASS opted-in/1440 Escape closes
+PASS opted-in/1440 URL restore opens with selection — tlsel=s:capernaum
+PASS opted-in/1440 downgrade to OT drops selection, record and URL tlsel — tlsel=undefined inDom=false
+PASS opted-in/1440 downgrade: search no longer finds Capernaum
+PASS opted-in/1440 NT book restores Capernaum to search
+PASS opted-in/1440 Back closes, Forward reopens
+PASS opted-in/1440 no page/console errors
+PASS opted-in/390 Timeline button offered and on screen — {"x":16,"y":220,"w":89}
+PASS opted-in/390 opens (dialog visible, tl in URL)
+PASS opted-in/390 sidecar reconciled on the actual host: 0 promoted — ok promoted=0
+PASS opted-in/390 actual SW model behind the host — {"records":1714,"edges":342,"grounded":0}
+PASS opted-in/390 list mode renders records (All books) — 1714 distinct record ids in DOM
+PASS opted-in/390 search finds Capernaum with All books
+PASS opted-in/390 Escape closes
+PASS opted-in/390 URL restore opens with selection — tlsel=s:capernaum
+PASS opted-in/390 downgrade to OT drops selection, record and URL tlsel — tlsel=undefined inDom=false
+PASS opted-in/390 downgrade: search no longer finds Capernaum
+PASS opted-in/390 NT book restores Capernaum to search
+PASS opted-in/390 Back closes, Forward reopens
+PASS opted-in/390 no page/console errors
+pack blob 3d279a757303e6ae7e80c358a6f6e041269eb82c
+52/52 checks passed
+exit 0

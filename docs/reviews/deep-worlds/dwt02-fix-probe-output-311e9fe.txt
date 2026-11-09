@@ -1,0 +1,25 @@
+# head 311e9fefa4bad16dff40e909d57f0b450532b216
+PASS R1 repeat of pending a/a2 arrives once with e2 selected {"site":"a2","ev":"e2","view":"place","sel":"a","hash":"#world=a&site=a2&view=place","len":3,"entered":["a/a2"]}
+PASS R2 committed a/a2 then same request is idempotent (no rebuild), e2 selected {"site":"a2","ev":"e2","view":"place","sel":"a","hash":"#world=a&site=a2&view=place","len":3,"entered":["a/a2"]}
+PASS R3 newer b/b1 wins over pending a/a2; a/a2 never built {"site":"b1","ev":"e5","view":"place","sel":"b","hash":"#world=b&site=b1&view=place","len":3,"entered":["b/b1"]}
+PASS R4 newer a/a1 request while a/a2 pending: no a/a2 build, ends at a/a1 with e1 {"site":"a1","ev":"e1","view":"place","sel":"a","hash":"#world=a&site=a1&view=place","len":3,"entered":["a/a1"]}
+PASS R5 triple repeat arrives once {"site":"a2","ev":"e2","view":"place","sel":"a","hash":"#world=a&site=a2&view=place","len":3,"entered":["a/a2"]}
+PASS R6 repeat then Stop restores committed a/a1 state and URL, nothing built {"site":"a1","ev":null,"view":"place","sel":"a","hash":"#world=a&site=a1&view=place","len":3,"entered":[]}
+PASS R6b fresh request after that Stop arrives {"site":"a2","ev":"e2","view":"place","sel":"a","hash":"#world=a&site=a2&view=place","len":3,"entered":["a/a2"]}
+7/7 passed
+# characterization (unchanged) at head
+desired arrival and recovery: 2/2
+# dwt01c2-probe-f2 (26 cancellation) at head
+Atlas: history Back still pending; holding travel until it completes
+26/26 passed
+# dwo-e2-f1-review-probe-f2 (8 F1) at head
+{"pass":8,"fail":0,"total":8}
+# parent 117ecbaadfe9a06fb24d8be79fb7262d71486c54
+FAIL R1 repeat of pending a/a2 arrives once with e2 selected {"site":"a1","ev":null,"view":"place","sel":"a","hash":"#world=a&site=a1&view=place","len":3,"entered":[]}
+PASS R2 committed a/a2 then same request is idempotent (no rebuild), e2 selected {"site":"a2","ev":"e2","view":"place","sel":"a","hash":"#world=a&site=a2&view=place","len":3,"entered":["a/a2"]}
+PASS R3 newer b/b1 wins over pending a/a2; a/a2 never built {"site":"b1","ev":"e5","view":"place","sel":"b","hash":"#world=b&site=b1&view=place","len":3,"entered":["b/b1"]}
+PASS R4 newer a/a1 request while a/a2 pending: no a/a2 build, ends at a/a1 with e1 {"site":"a1","ev":"e1","view":"place","sel":"a","hash":"#world=a&site=a1&view=place","len":3,"entered":["a/a1"]}
+FAIL R5 triple repeat arrives once {"site":"a1","ev":null,"view":"place","sel":"a","hash":"#world=a&site=a1&view=place","len":3,"entered":[]}
+PASS R6 repeat then Stop restores committed a/a1 state and URL, nothing built {"site":"a1","ev":null,"view":"place","sel":"a","hash":"#world=a&site=a1&view=place","len":3,"entered":[]}
+PASS R6b fresh request after that Stop arrives {"site":"a2","ev":"e2","view":"place","sel":"a","hash":"#world=a&site=a2&view=place","len":3,"entered":["a/a2"]}
+5/7 passed

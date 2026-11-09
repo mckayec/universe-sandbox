@@ -1,0 +1,5 @@
+PASS valid: predicate=true, expected=true
+PASS missing: predicate=false, expected=false
+PASS extra: predicate=false, expected=false
+PASS duplicate: predicate=false, expected=false
+4/4 predicate controls passed

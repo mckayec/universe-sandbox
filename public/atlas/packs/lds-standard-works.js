@@ -141,7 +141,7 @@
         map: [0, 27.14],
         blurb: 'Places named in the standard works that have a cited modern location.',
         distText: 'Present-day Earth with modern place markers',
-        gfx: { type: 'terran', base: 'earth', sea: 0.5, clouds: 0.25 },
+        gfx: { type: 'terran', base: 'earth', earthMask: 'hi', sea: 0.5, clouds: 0.25 },
         hero: 'jerusalem',
         sites: [
           {

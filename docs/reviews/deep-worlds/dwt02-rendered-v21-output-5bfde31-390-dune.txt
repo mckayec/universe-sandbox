@@ -1,0 +1,28 @@
+target 5bfde31 http://127.0.0.1:4173/
+PASS 390x844 dune-b3 C0 primed: tour step 12 (paused) rendered in place at fane with c6 (view=place sel=arrakis site=fane rendered=fane ev=c6 hash=#book=3&world=arrakis&site=fane&view=place&lm=steps hlen=16 tour=12 / 13 builds=arrakeen,fane,fane)
+PASS 390x844 dune-b3 C0 control: single Next arrives once at keep/c7 (view=place sel=arrakis site=keep rendered=keep ev=c7 hash=#book=3&world=arrakis&site=keep&view=place hlen=16 tour=13 / 13 builds=keep; hlen 16->16)
+PASS 390x844 dune-b3 C0 page errors: none
+PASS 390x844 dune-b3 R2x primed: tour step 12 (paused) rendered in place at fane with c6 (view=place sel=arrakis site=fane rendered=fane ev=c6 hash=#book=3&world=arrakis&site=fane&view=place&lm=steps hlen=10 tour=12 / 13 builds=arrakeen,fane,tabr,fane)
+NOTE 390x844 dune-b3 R2x first rendered-arrival snapshot: view=place sel=arrakis site=keep rendered=keep ev=null hash=#book=3&world=arrakis&site=keep&view=place hlen=10 tour=13 / 13 builds=keep at +4296ms
+NOTE 390x844 dune-b3 R2x S.ev log: null@+0 c7@+4975
+NOTE 390x844 dune-b3 R2x timing: clicks 0ms:next 708ms:next; first fade on +6ms off +1492ms; place build(s) at +2039ms; rendered before repeat(s)=fane; trusted=true; fades=on,on,off,off
+PASS 390x844 dune-b3 R2x repeat(s) issued while first entry pending (rendered still fane)
+PASS 390x844 dune-b3 R2x 2 identical Next presses arrive exactly once at keep/c7 (view=place sel=arrakis site=keep rendered=keep ev=c7 hash=#book=3&world=arrakis&site=keep&view=place hlen=10 tour=13 / 13 builds=keep)
+PASS 390x844 dune-b3 R2x history length delta 0 equals single-Next control 0
+PASS 390x844 dune-b3 R2x page errors: none
+PASS 390x844 dune-b3 R3x primed: tour step 12 (paused) rendered in place at fane with c6 (view=place sel=arrakis site=fane rendered=fane ev=c6 hash=#book=3&world=arrakis&site=fane&view=place&lm=steps hlen=8 tour=12 / 13 builds=arrakeen,fane,tabr,fane)
+NOTE 390x844 dune-b3 R3x first rendered-arrival snapshot: view=place sel=arrakis site=keep rendered=keep ev=null hash=#book=3&world=arrakis&site=keep&view=place hlen=8 tour=13 / 13 builds=keep at +4905ms
+NOTE 390x844 dune-b3 R3x S.ev log: null@+0 c7@+4909
+NOTE 390x844 dune-b3 R3x timing: clicks 0ms:next 671ms:next 1470ms:next; first fade on +1ms off +2096ms; place build(s) at +2668ms; rendered before repeat(s)=fane,fane; trusted=true; fades=on,on,on,off,off,off
+PASS 390x844 dune-b3 R3x repeat(s) issued while first entry pending (rendered still fane)
+PASS 390x844 dune-b3 R3x 3 identical Next presses arrive exactly once at keep/c7 (view=place sel=arrakis site=keep rendered=keep ev=c7 hash=#book=3&world=arrakis&site=keep&view=place hlen=8 tour=13 / 13 builds=keep)
+PASS 390x844 dune-b3 R3x history length delta 0 equals single-Next control 0
+PASS 390x844 dune-b3 R3x page errors: none
+PASS 390x844 dune-b3 R6 primed: tour step 12 (paused) rendered in place at fane with c6 (view=place sel=arrakis site=fane rendered=fane ev=c6 hash=#book=3&world=arrakis&site=fane&view=place&lm=steps hlen=16 tour=12 / 13 builds=arrakeen,fane,fane)
+NOTE 390x844 dune-b3 R6 timing: clicks 0ms:next 653ms:next 1369ms:stop; first fade on +1ms off +1879ms; place build(s) at +nonems; rendered at repeat/Stop clicks=fane,fane; trusted=true
+PASS 390x844 dune-b3 R6 repeat and Stop pressed while entry pending (rendered still fane)
+PASS 390x844 dune-b3 R6 Next,Next,Stop restores committed fane (state, render, URL, history), nothing built (view=place sel=arrakis site=fane rendered=fane ev=c6 hash=#book=3&world=arrakis&site=fane&view=place&lm=steps hlen=16 tour=off builds=-; ev c6->c6)
+PASS 390x844 dune-b3 R6b primed: tour step 12 (paused) rendered in place at fane with c6 (view=place sel=arrakis site=fane rendered=fane ev=c6 hash=#book=3&world=arrakis&site=fane&view=place&lm=steps hlen=16 tour=12 / 13 builds=arrakeen,fane,tabr,jacurutu,tabr,fane)
+PASS 390x844 dune-b3 R6b fresh retry after Stop arrives at keep/c7 (view=place sel=arrakis site=keep rendered=keep ev=c7 hash=#book=3&world=arrakis&site=keep&view=place hlen=16 tour=13 / 13 builds=arrakeen,fane,tabr,jacurutu,tabr,fane,keep)
+PASS 390x844 dune-b3 R6 page errors: none
+ALL PASS 19

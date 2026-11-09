@@ -13,6 +13,7 @@ export type UniversePackId =
   | 'powers-of-ten'
   | 'cosmere'
   | 'lds-standard-works'
+  | 'christian-apocrypha'
   | 'star-wars';
 export type UniversePackStatus = 'ready' | 'atlas' | 'source-required';
 export type LocationScale = 'universe' | 'galaxy' | 'cluster' | 'system' | 'world' | 'surface';
@@ -231,6 +232,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#e4cf9a',
     'atlas/?pack=lds-standard-works',
     'Independent educational atlas. Pins use UNESCO, Pleiades and National Park Service locations; places without an approved location are not pinned.',
+  ),
+  atlasPack(
+    'christian-apocrypha',
+    'Biblical Apocrypha and Related Traditions',
+    'Biblical apocrypha',
+    'Additional biblical and early Christian writings, from Tobit and the Maccabees to the infancy gospels and the Acts of Pilate, with text, reception and scholarship kept apart.',
+    '#d9b45a',
+    'atlas/?pack=christian-apocrypha',
+    'Built from selected named editions of each work; only five modern heritage or gazetteer points are pinned.',
   ),
   plannedPack(
     'star-wars',

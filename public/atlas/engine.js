@@ -98,7 +98,8 @@ float height(vec3 p){
   q+=w*uWarp;
   float h=fbm(q,uOct)*.5+.5;
   h=pow(h,1.15)*1.08;
-  if(uBase>.5){float b=gB>=0.?gB:baseAt(p);h=uSea+(b-.5)*.3+(h-.5)*.12;}
+  if(uBase>.5){float b=gB>=0.?gB:baseAt(p);
+    float bt=(b-.5)*.3;h=uSea+bt+(h-.5)*.12*clamp(abs(bt)/.075,0.,1.);/* TA-03: noise fades at the coast so it cannot move the mask coastline */}
   if(uMapOn>.5){float lon=atan(-p.z,p.x);float la=asin(clamp(p.y,-1.,1.));vec2 muv=vec2(lon/6.28318530718+.5,la/PI+.5);
     vec4 Hi=texture2D(tMapHi,muv);vec4 Lo=texture2D(tMapLo,muv);float ml=Hi.r;
     h=uSea+(ml-.5)*.05+Lo.r*.07*ml+(h-.5)*(.05+.1*ml);
@@ -456,6 +457,7 @@ function buildShell(K){
   const stops=T.chromeStops||[[0,"#fff7e2"],[.45,"#e8cd8a"],[.68,"#9a7432"],[1,"#f4e2b2"]];
   const defs='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">'+stops.map(s=>'<stop offset="'+s[0]+'" stop-color="'+s[1]+'"/>').join("")+'</linearGradient></defs>';
   const sig=T.sigil||DEF_SIGIL,ssig=T.splashSigil||sig;const TT=M.title.toUpperCase();
+  const BOOK_PICK=!!(window.AtlasLayers&&window.AtlasLayers.usePicker(K.bookIds,U));
   const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");
   /* #labels follows the top bar and side panels in the DOM so keyboard focus reaches those controls before the
      tabbable on-globe site labels. Stacking is by z-index (#labels is 3), so paint order is unchanged. */
@@ -466,8 +468,9 @@ function buildShell(K){
   '<div><h1 class="chrome">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
  '<div class="controls"><button class="btn" id="idxBtn" aria-expanded="false" aria-controls="index">Worlds</button>'+
   (U.bookLabel?'<span class="seglbl">'+esc(U.bookLabel)+'</span>':"")+
-  '<div class="seg" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+
-  K.bookIds.map(b=>'<button data-b="'+b+'" aria-pressed="false" title="'+esc(K.books[b].title+(K.books[b].y?" ("+K.books[b].y+")":""))+'">'+esc(K.books[b].n)+'</button>').join("")+'</div>'+
+  '<div class="seg'+(BOOK_PICK?" picker":"")+'" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+
+  K.bookIds.map(b=>'<button data-b="'+b+'" aria-pressed="false" title="'+esc(K.books[b].title+(K.books[b].y?" ("+K.books[b].y+")":""))+'">'+esc(K.books[b].n)+'</button>').join("")+
+  (BOOK_PICK?window.AtlasLayers.renderBookPicker(K.books,K.bookIds,{label:U.booksAria,allLabel:U.pickerAll||"All",prevLabel:U.pickerPrev,nextLabel:U.pickerNext}):"")+'</div>'+
   '<button class="btn" id="galBtn">'+esc(U.galaxyButton)+'</button><button class="btn" id="webBtn">'+esc(U.homeButton)+'</button>'+
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
   (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
@@ -775,12 +778,16 @@ function setFeatures(g){const u=bakeMat.uniforms;const F0=ARR(g.feat).filter(f=>
   u.uBase.value=g.base==="earth"&&EARTH_TEX?1:0;u.tBase.value=EARTH_TEX;
   const MT=g.map?mapTextures(g.map):null;u.uMapOn.value=MT?1:0;u.tMapHi.value=MT?MT.hi:null;u.tMapLo.value=MT?MT.lo:null;u.tMapReg.value=MT?MT.reg:null;
   u.uMapMtn.value=g.map&&g.map.mtn!=null?g.map.mtn:.35;}
-/* built-in Earth (gfx.base:"earth"): a Natural Earth 1:10m land-and-lakes mask (tools/build_earth_mask.py),
-   8192x4096 on capable desktops and 4096x2048 elsewhere. The bake reads it for the surface map and the
-   planet shader reads it again up close, so coastlines stay sharp at 4K. Falls back to the small mask. */
+/* built-in Earth (gfx.base:"earth"). The bake reads the mask for the surface map and the planet shader reads it
+   again up close. Worlds that opt in with gfx.earthMask:"hi" get the Natural Earth 1:10m land-and-lakes mask
+   (tools/build_earth_mask.py), 8192x4096 on capable desktops and 4096x2048 elsewhere, so coastlines stay sharp at 4K. */
+const EARTH_HI_MASK=!!window.__EARTH_FILE||WORLDS.some(w=>gfxFor(w,99).earthMask==="hi");
 const EARTH_FILE=window.__EARTH_FILE||(SMALL||LOWMEM||MAXTEX<8192||(navigator.deviceMemory&&navigator.deviceMemory<8)?"earth-hi-4k.png":"earth-hi.png");
 let EARTH_TEX=null;let earthReady=null;
-function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>{if(!im.src.endsWith("earth-base.png"))im.src=ENGINE_BASE+"earth-base.png";else res();};im.src=ENGINE_BASE+EARTH_FILE;});return earthReady;}
+/* TA-01: 4096x2048 land mask (Natural Earth 1:10m, scripts/make-earth-mask.py); phones and low-memory devices get the 2048x1024 copy.
+   A world with gfx.earthMask:"hi" instead uses the binary land-and-lakes mask (tools/build_earth_mask.py): 8192x4096 on capable
+   desktops (EARTH_FILE), 4096x2048 elsewhere; it falls back to earth-base.png if that file fails to load. */
+function loadEarth(){if(!earthReady)earthReady=new Promise(res=>{const im=new Image();im.onload=()=>{const t=new THREE.Texture(im);t.wrapS=THREE.RepeatWrapping;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;t.needsUpdate=true;EARTH_TEX=t;res();};im.onerror=()=>{if(!im.src.endsWith("earth-base.png"))im.src=ENGINE_BASE+"earth-base.png";else res();};im.src=ENGINE_BASE+(EARTH_HI_MASK?EARTH_FILE:(SMALL||LOWMEM||MAXTEX<4096?"earth-base-2048.png":"earth-base.png"));});return earthReady;}
 if(WORLDS.some(w=>gfxFor(w,99).base==="earth"))loadEarth();
 /* vector maps (gfx.map): hand-laid coastlines, lakes, rivers, ranges and painted regions, given as
    [lat,lon] outlines, are roughened with deterministic midpoint displacement and drawn into
@@ -976,7 +983,11 @@ function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(S.book>=k&&w.eras
     if(CUM){const ks=eraKeys(w).filter(k=>w.eras[k].status);if(ks.length){const k=Math.max(...ks);s=w.status+" → "+w.eras[k].status;}}
     else{const ks=eraKeys(w);if(ks.length){const k=Math.max(...ks);if(w.eras[k].status)s=w.status+" → "+w.eras[k].status;}}}
   return s;}
-const bks=arr=>'<span class="bks">'+(arr||[]).filter(b=>BOOKS[b]&&(!CUM||!S.book||b<=S.book)).map(b=>'<span class="bk bk'+b+'">'+esc(BOOKS[b].n)+'</span>').join("")+'</span>';
+const bk1=b=>'<span class="bk bk'+b+'">'+esc(BOOKS[b].n)+'</span>';
+/* more than 12 badges (packs with many books) collapse to "first … last · N" */
+const bks=arr=>{const l=(arr||[]).filter(b=>BOOKS[b]&&(!CUM||!S.book||b<=S.book));
+  if(l.length>12)return '<span class="bks">'+bk1(l[0])+'<span class="bkgap">…</span>'+bk1(l[l.length-1])+'<span class="bkgap">'+l.length+'</span></span>';
+  return '<span class="bks">'+l.map(bk1).join("")+'</span>';};
 const groupOpt=(w,k,def)=>{const g=GROUP_BY[w.group];return g&&g[k]!=null?g[k]:def;};
 const flyDistFor=w=>groupOpt(w,"flyDist",G.flyDist||24);
 const FLY_PITCH=G.flyPitch==null?.5:G.flyPitch;
@@ -1927,6 +1938,16 @@ $("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
+/* compact work picker (more than 12 books): the select and step buttons press the hidden data-b buttons */
+function bindBookPicker(){
+  const box=$("#books"),sel=box.querySelector(".bkpick");if(!sel)return;
+  const press=b=>{const el=box.querySelector('[data-b="'+b+'"]');if(el)el.click();};
+  sel.addEventListener("change",()=>press(+sel.value));
+  box.querySelectorAll(".bkstep").forEach(btn=>btn.addEventListener("click",()=>
+    press(window.AtlasLayers.stepBook(K.bookIds,S.book,+btn.dataset.step))));
+  box.addEventListener("click",()=>{sel.value=String(S.book);});
+  sel.value=String(S.book);}
+bindBookPicker();
 $("#galBtn").addEventListener("click",flyGalaxy);
 $("#webBtn").addEventListener("click",flyHuman);
 function applyBookToScene(){const b=S.book;

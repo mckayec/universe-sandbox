@@ -61,7 +61,7 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     eyebrow: 'Slow-accretion laboratory',
     description: 'A quiet black hole draws in a drifting gas cloud, then a Sun-like star on a plunging orbit.',
     objective:
-      'Keep time at 1×. The cloud is stretched toward the black hole and drained through its disk over about a minute; about 70 s in, the star dives past the tidal radius and is stripped into the disk over roughly half a minute. Select the black hole to watch its mass climb.',
+      'At 1× in Exhibit mode, watch a gas cloud feed the disk, followed by a star on a close approach. Capture and stripping are paced for this demonstration, over seconds to minutes rather than physical astronomical times. Select the black hole to follow its mass. This simplified model does not resolve stellar disruption, disk viscosity or outflows.',
     accent: '#ffc27a',
   },
   {
@@ -115,7 +115,7 @@ export const EXHIBITS: readonly ExhibitDefinition[] = [
     eyebrow: 'Galaxy-merger laboratory',
     description: 'Two spiral galaxies fall toward each other on an off-centre path.',
     objective:
-      'Run at 5× or faster. On the first close pass each galaxy tears long tidal tails out of the other; friction in their dark-matter halos then pulls the cores back together until the black holes merge and the scattered stars settle into one larger galaxy.',
+      'Run at 5× or faster to explore a compressed galaxy encounter. Gravity redirects stellar orbits and can draw out tidal tails. A simplified drag rule brings these model cores together; their final replacement by one core is illustrative, not a calculation of black-hole binary evolution. Most stars miss one another, while real galactic gas can collide and shock.',
     accent: '#c9a6ff',
   },
 ] as const;

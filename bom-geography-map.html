@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book of Mormon Geography — Mesoamerica</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --parchment: #e8dfc4;
+    --parchment-dark: #d4c89a;
+    --ink: #1a1410;
+    --ink-light: #3d2f1e;
+    --gold: #b8860b;
+    --gold-bright: #d4a017;
+    --nephite: #2e5e8e;
+    --lamanite: #8b2500;
+    --jaredite: #4a6741;
+    --lidar: #00b4d8;
+    --lidar-glow: rgba(0,180,216,0.25);
+    --sea: #7bb8d4;
+    --sea-deep: #4a8fa8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0a07;
+    font-family: 'EB Garamond', Georgia, serif;
+    color: var(--parchment);
+    min-height: 100vh;
+  }
+
+  header {
+    text-align: center;
+    padding: 28px 20px 16px;
+    background: linear-gradient(180deg, #0d0a07 0%, #1a1208 100%);
+    border-bottom: 1px solid var(--gold);
+  }
+
+  header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--gold-bright);
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 30px rgba(212,160,23,0.4);
+  }
+
+  header p {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--parchment-dark);
+    margin-top: 6px;
+    opacity: 0.8;
+  }
+
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* MAP CONTAINER */
+  .map-wrap {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    padding: 20px 20px 0;
+  }
+
+  .map-svg-container {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(160deg, #0a1a2e 0%, #0d2235 40%, #1a3a50 100%);
+    border-radius: 4px;
+    border: 1px solid var(--gold);
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+  }
+
+  svg#map {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* LEGEND */
+  .legend {
+    width: 100%;
+    max-width: 900px;
+    padding: 16px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    justify-content: center;
+    background: #0d0a07;
+    border-bottom: 1px solid rgba(184,134,11,0.3);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.78rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--parchment-dark);
+  }
+
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+
+  /* INFO PANEL */
+  .info-panel {
+    width: 100%;
+    max-width: 900px;
+    min-height: 160px;
+    padding: 20px 24px;
+    background: #110e08;
+    border-bottom: 1px solid rgba(184,134,11,0.2);
+  }
+
+  .info-panel h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-bright);
+    margin-bottom: 8px;
+  }
+
+  .info-panel .subtitle {
+    font-size: 0.78rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  .info-panel p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--parchment);
+    opacity: 0.9;
+  }
+
+  .info-panel .lidar-badge {
+    display: inline-block;
+    background: var(--lidar-glow);
+    border: 1px solid var(--lidar);
+    color: var(--lidar);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .info-default {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--parchment-dark);
+    font-style: italic;
+    opacity: 0.6;
+    font-size: 0.88rem;
+  }
+
+  /* CITY CARDS GRID */
+  .cards-section {
+    width: 100%;
+    max-width: 900px;
+    padding: 24px 20px;
+    background: #0d0a07;
+  }
+
+  .cards-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    background: #15110b;
+    border: 1px solid rgba(184,134,11,0.25);
+    border-radius: 3px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .card:hover, .card.active {
+    border-color: var(--gold);
+    background: #1e1709;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.88rem;
+    color: var(--gold-bright);
+    font-weight: 600;
+  }
+
+  .card-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  .type-nephite { background: rgba(46,94,142,0.3); color: #7ab4e0; border: 1px solid rgba(46,94,142,0.5); }
+  .type-lamanite { background: rgba(139,37,0,0.3); color: #e07a60; border: 1px solid rgba(139,37,0,0.5); }
+  .type-jaredite { background: rgba(74,103,65,0.3); color: #90c080; border: 1px solid rgba(74,103,65,0.5); }
+  .type-landmark { background: rgba(184,134,11,0.2); color: var(--gold-bright); border: 1px solid rgba(184,134,11,0.4); }
+
+  .card-location {
+    font-size: 0.78rem;
+    color: var(--parchment-dark);
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+
+  .card-lidar {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--lidar);
+    margin-top: 6px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.75rem;
+    color: var(--parchment-dark);
+    opacity: 0.5;
+    font-style: italic;
+    background: #0d0a07;
+  }
+
+  /* MAP MARKERS */
+  .marker { cursor: pointer; }
+  .marker circle { transition: r 0.15s; }
+  .marker:hover circle.pulse { animation: pulse 1.2s infinite; }
+  .marker text { pointer-events: none; font-family: 'EB Garamond', serif; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.15; r: 14; }
+    50% { opacity: 0.4; r: 20; }
+  }
+
+  .sea-label { font-family: 'Cinzel', serif; fill: rgba(123,184,212,0.5); font-style: italic; }
+  .region-label { font-family: 'Cinzel', serif; fill: rgba(232,223,196,0.12); font-weight: 700; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Book of Mormon Geography</h1>
+  <p>Proposed Mesoamerican Locations &amp; Modern LiDAR Discoveries</p>
+</header>
+
+<div class="main-layout">
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#2e5e8e"></div> Nephite City</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8b2500"></div> Lamanite City</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4a6741"></div> Jaredite / Northward</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div> Landmark / Region</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#00b4d8"></div> LiDAR Discovery</div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <div class="map-svg-container">
+      <svg id="map" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow-gold">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="glow-blue">
+            <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <radialGradient id="sea-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#0d2235"/>
+            <stop offset="100%" stop-color="#071520"/>
+          </radialGradient>
+        </defs>
+
+        <!-- SEA BACKGROUND -->
+        <rect width="800" height="520" fill="url(#sea-grad)"/>
+
+        <!-- LAND MASS — simplified Mesoamerica shape -->
+        <!-- Mexico/Central America rough outline -->
+        <path d="
+          M 30,80 L 120,60 L 200,55 L 280,65 L 360,70 L 430,85 L 500,100 L 560,120 L 600,145
+          L 620,170 L 610,200 L 590,220 L 570,240 L 540,255 L 510,260 L 480,270 L 460,285
+          L 440,300 L 420,320 L 400,345 L 390,370 L 395,400 L 405,425 L 410,450
+          L 390,460 L 370,455 L 355,440 L 340,420 L 330,400 L 320,380 L 305,360
+          L 285,350 L 265,345 L 245,340 L 225,330 L 210,315 L 195,300 L 180,280
+          L 160,265 L 140,250 L 120,240 L 100,230 L 80,215 L 55,195 L 30,170 L 15,140 L 20,110 Z
+        " fill="#2a3d1e" stroke="#3d5a28" stroke-width="1"/>
+
+        <!-- Yucatan peninsula -->
+        <path d="
+          M 500,100 L 540,90 L 570,95 L 590,110 L 600,130 L 605,155 L 600,175
+          L 580,185 L 560,190 L 540,185 L 520,175 L 505,160 L 500,140 L 500,120 Z
+        " fill="#2a3d1e" stroke="#3d5a28" stroke-width="1"/>
+
+        <!-- WATER SHADING for seas -->
+        <!-- West Sea (Pacific) -->
+        <text x="52" y="320" class="sea-label" font-size="11" transform="rotate(-15,52,320)">West Sea</text>
+        <text x="40" y="336" class="sea-label" font-size="9" transform="rotate(-15,40,336)">(Pacific)</text>
+
+        <!-- East Sea (Gulf/Caribbean) -->
+        <text x="620" y="200" class="sea-label" font-size="11">East Sea</text>
+        <text x="625" y="215" class="sea-label" font-size="9">(Gulf/Caribbean)</text>
+
+        <!-- Sea South -->
+        <text x="370" y="490" class="sea-label" font-size="10" text-anchor="middle">Sea South (Pacific)</text>
+
+        <!-- REGION LABELS -->
+        <text x="520" y="165" class="region-label" font-size="22" text-anchor="middle" opacity="0.15">LAND NORTHWARD</text>
+        <text x="300" y="195" class="region-label" font-size="18" text-anchor="middle" opacity="0.12">LAND SOUTHWARD</text>
+        <text x="300" y="380" class="region-label" font-size="14" text-anchor="middle" opacity="0.12">LAND OF NEPHI</text>
+
+        <!-- NARROW NECK indicator line -->
+        <line x1="455" y1="258" x2="510" y2="255" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+        <text x="480" y="248" font-family="'EB Garamond',serif" font-size="8.5" fill="var(--gold-bright)" text-anchor="middle" opacity="0.8">Narrow Neck of Land</text>
+        <text x="480" y="258" font-family="'EB Garamond',serif" font-size="7.5" fill="var(--gold)" text-anchor="middle" opacity="0.7" font-style="italic">(Isthmus of Tehuantepec)</text>
+
+        <!-- RIVER SIDON -->
+        <path d="M 330,340 Q 310,300 295,270 Q 285,240 280,210 Q 278,185 270,165" fill="none" stroke="#7bb8d4" stroke-width="2" opacity="0.5" stroke-dasharray="6,3"/>
+        <text x="245" y="255" font-family="'EB Garamond',serif" font-size="8" fill="#7bb8d4" opacity="0.6" font-style="italic" transform="rotate(-60,245,255)">River Sidon</text>
+        <text x="243" y="265" font-family="'EB Garamond',serif" font-size="7" fill="#7bb8d4" opacity="0.5" font-style="italic" transform="rotate(-60,243,265)">(Usumacinta R.)</text>
+
+        <!-- ===== MARKERS ===== -->
+
+        <!-- ZARAHEMLA -->
+        <g class="marker" onclick="showInfo('zarahemla')" id="mk-zarahemla">
+          <circle cx="295" cy="220" r="18" fill="rgba(46,94,142,0.12)" class="pulse"/>
+          <circle cx="295" cy="220" r="9" fill="#2e5e8e" stroke="#7ab4e0" stroke-width="1.5" filter="url(#glow-gold)"/>
+          <circle cx="295" cy="220" r="4" fill="#c8e0f4"/>
+          <text x="295" y="207" font-family="'Cinzel',serif" font-size="8.5" fill="#e8dfc4" text-anchor="middle" font-weight="600">ZARAHEMLA</text>
+          <text x="295" y="198" font-family="'EB Garamond',serif" font-size="7" fill="var(--parchment-dark)" text-anchor="middle" font-style="italic">Nephite Capital</text>
+        </g>
+
+        <!-- CITY OF NEPHI -->
+        <g class="marker" onclick="showInfo('nephi')" id="mk-nephi">
+          <circle cx="330" cy="355" r="16" fill="rgba(139,37,0,0.12)" class="pulse"/>
+          <circle cx="330" cy="355" r="8" fill="#8b2500" stroke="#e07a60" stroke-width="1.5"/>
+          <circle cx="330" cy="355" r="3.5" fill="#f5b0a0"/>
+          <text x="330" y="342" font-family="'Cinzel',serif" font-size="8.5" fill="#e8dfc4" text-anchor="middle" font-weight="600">CITY OF NEPHI</text>
+          <text x="330" y="333" font-family="'EB Garamond',serif" font-size="7" fill="var(--parchment-dark)" text-anchor="middle" font-style="italic">Original Colony</text>
+        </g>
+
+        <!-- BOUNTIFUL -->
+        <g class="marker" onclick="showInfo('bountiful')" id="mk-bountiful">
+          <circle cx="460" cy="230" r="16" fill="rgba(46,94,142,0.12)" class="pulse"/>
+          <circle cx="460" cy="230" r="8" fill="#2e5e8e" stroke="#7ab4e0" stroke-width="1.5"/>
+          <circle cx="460" cy="230" r="3.5" fill="#c8e0f4"/>
+          <text x="460" y="218" font-family="'Cinzel',serif" font-size="8.5" fill="#e8dfc4" text-anchor="middle" font-weight="600">BOUNTIFUL</text>
+          <text x="460" y="209" font-family="'EB Garamond',serif" font-size="7" fill="var(--parchment-dark)" text-anchor="middle" font-style="italic">Near Narrow Neck</text>
+        </g>
+
+        <!-- DESOLATION / LAND NORTHWARD -->
+        <g class="marker" onclick="showInfo('desolation')" id="mk-desolation">
+          <circle cx="535" cy="175" r="16" fill="rgba(74,103,65,0.12)" class="pulse"/>
+          <circle cx="535" cy="175" r="8" fill="#4a6741" stroke="#90c080" stroke-width="1.5"/>
+          <circle cx="535" cy="175" r="3.5" fill="#b8d8a8"/>
+          <text x="535" y="163" font-family="'Cinzel',serif" font-size="8" fill="#e8dfc4" text-anchor="middle" font-weight="600">DESOLATION</text>
+          <text x="535" y="154" font-family="'EB Garamond',serif" font-size="7" fill="var(--parchment-dark)" text-anchor="middle" font-style="italic">Jaredite Territory</text>
+        </g>
+
+        <!-- LAND OF FIRST INHERITANCE -->
+        <g class="marker" onclick="showInfo('firstinheritance')" id="mk-firstinheritance">
+          <circle cx="195" cy="295" r="14" fill="rgba(139,37,0,0.12)" class="pulse"/>
+          <circle cx="195" cy="295" r="7" fill="#8b2500" stroke="#e07a60" stroke-width="1.5"/>
+          <circle cx="195" cy="295" r="3" fill="#f5b0a0"/>
+          <text x="195" y="284" font-family="'Cinzel',serif" font-size="7.5" fill="#e8dfc4" text-anchor="middle" font-weight="600">FIRST INHERITANCE</text>
+          <text x="195" y="275" font-family="'EB Garamond',serif" font-size="7" fill="var(--parchment-dark)" text-anchor="middle" font-style="italic">Lehi's Landing</text>
+        </g>
+
+        <!-- HILL CUMORAH -->
+        <g class="marker" onclick="showInfo('cumorah')" id="mk-cumorah">
+          <circle cx="570" cy="220" r="14" fill="rgba(184,134,11,0.12)" class="pulse"/>
+          <circle cx="570" cy="220" r="7" fill="var(--gold)" stroke="var(--gold-bright)" stroke-width="1.5"/>
+          <circle cx="570" cy="220" r="3" fill="#fff8dc"/>
+          <text x="570" y="208" font-family="'Cinzel',serif" font-size="8" fill="#e8dfc4" text-anchor="middle" font-weight="600">HILL CUMORAH</text>
+          <text x="570" y="199" font-family="'EB Garamond',serif" font-size="7" fill="var(--parchment-dark)" text-anchor="middle" font-style="italic">Final Battle</text>
+        </g>
+
+        <!-- MULEK / MULEKITE CITY -->
+        <g class="marker" onclick="showInfo('mulek')" id="mk-mulek">
+          <circle cx="410" cy="160" r="13" fill="rgba(46,94,142,0.12)" class="pulse"/>
+          <circle cx="410" cy="160" r="6.5" fill="#2e5e8e" stroke="#7ab4e0" stroke-width="1.5"/>
+          <circle cx="410" cy="160" r="3" fill="#c8e0f4"/>
+          <text x="410" y="148" font-family="'Cinzel',serif" font-size="7.5" fill="#e8dfc4" text-anchor="middle" font-weight="600">MULEK</text>
+          <text x="410" y="140" font-family="'EB Garamond',serif" font-size="7" fill="var(--parchment-dark)" text-anchor="middle" font-style="italic">Mulekite Settlement</text>
+        </g>
+
+        <!-- ===== LIDAR DISCOVERIES ===== -->
+
+        <!-- Tabasco LiDAR (Zarahemla region) -->
+        <g class="marker" onclick="showInfo('lidar-tabasco')" id="mk-lidar-tabasco">
+          <circle cx="295" cy="250" r="22" fill="rgba(0,180,216,0.08)" stroke="rgba(0,180,216,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
+          <circle cx="295" cy="250" r="7" fill="rgba(0,180,216,0.3)" stroke="#00b4d8" stroke-width="1.5" filter="url(#glow-blue)"/>
+          <circle cx="295" cy="250" r="3" fill="#00b4d8"/>
+          <text x="295" y="272" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#00b4d8" text-anchor="middle">478 SITES FOUND</text>
+          <text x="295" y="280" font-family="'JetBrains Mono',monospace" font-size="6" fill="#00b4d8" text-anchor="middle" opacity="0.7">Tabasco LiDAR 2021</text>
+        </g>
+
+        <!-- Guatemala LiDAR (Land of Nephi) -->
+        <g class="marker" onclick="showInfo('lidar-guatemala')" id="mk-lidar-guatemala">
+          <circle cx="380" cy="360" r="24" fill="rgba(0,180,216,0.08)" stroke="rgba(0,180,216,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
+          <circle cx="380" cy="360" r="7" fill="rgba(0,180,216,0.3)" stroke="#00b4d8" stroke-width="1.5" filter="url(#glow-blue)"/>
+          <circle cx="380" cy="360" r="3" fill="#00b4d8"/>
+          <text x="380" y="382" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#00b4d8" text-anchor="middle">60K+ STRUCTURES</text>
+          <text x="380" y="390" font-family="'JetBrains Mono',monospace" font-size="6" fill="#00b4d8" text-anchor="middle" opacity="0.7">Guatemala 2018</text>
+        </g>
+
+        <!-- Valeriana (Campeche) -->
+        <g class="marker" onclick="showInfo('lidar-valeriana')" id="mk-lidar-valeriana">
+          <circle cx="490" cy="145" r="20" fill="rgba(0,180,216,0.08)" stroke="rgba(0,180,216,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
+          <circle cx="490" cy="145" r="6.5" fill="rgba(0,180,216,0.3)" stroke="#00b4d8" stroke-width="1.5" filter="url(#glow-blue)"/>
+          <circle cx="490" cy="145" r="3" fill="#00b4d8"/>
+          <text x="490" y="166" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#00b4d8" text-anchor="middle">VALERIANA CITY</text>
+          <text x="490" y="174" font-family="'JetBrains Mono',monospace" font-size="6" fill="#00b4d8" text-anchor="middle" opacity="0.7">6,500 Structures 2024</text>
+        </g>
+
+        <!-- Los Abuelos Guatemala 2025 -->
+        <g class="marker" onclick="showInfo('lidar-abuelos')" id="mk-lidar-abuelos">
+          <circle cx="420" cy="310" r="20" fill="rgba(0,180,216,0.08)" stroke="rgba(0,180,216,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
+          <circle cx="420" cy="310" r="6.5" fill="rgba(0,180,216,0.3)" stroke="#00b4d8" stroke-width="1.5" filter="url(#glow-blue)"/>
+          <circle cx="420" cy="310" r="3" fill="#00b4d8"/>
+          <text x="420" y="330" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#00b4d8" text-anchor="middle">LOS ABUELOS</text>
+          <text x="420" y="338" font-family="'JetBrains Mono',monospace" font-size="6" fill="#00b4d8" text-anchor="middle" opacity="0.7">800-500 BCE • May 2025</text>
+        </g>
+
+        <!-- Teotihuacan -->
+        <g class="marker" onclick="showInfo('lidar-teotihuacan')" id="mk-lidar-teotihuacan">
+          <circle cx="210" cy="140" r="20" fill="rgba(0,180,216,0.08)" stroke="rgba(0,180,216,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
+          <circle cx="210" cy="140" r="6.5" fill="rgba(0,180,216,0.3)" stroke="#00b4d8" stroke-width="1.5" filter="url(#glow-blue)"/>
+          <circle cx="210" cy="140" r="3" fill="#00b4d8"/>
+          <text x="210" y="161" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#00b4d8" text-anchor="middle">TEOTIHUACÁN</text>
+          <text x="210" y="169" font-family="'JetBrains Mono',monospace" font-size="6" fill="#00b4d8" text-anchor="middle" opacity="0.7">125K pop. LiDAR mapped</text>
+        </g>
+
+        <!-- Compass Rose -->
+        <g transform="translate(740,460)">
+          <circle cx="0" cy="0" r="20" fill="rgba(0,0,0,0.4)" stroke="rgba(184,134,11,0.4)" stroke-width="1"/>
+          <text x="0" y="-8" font-family="'Cinzel',serif" font-size="8" fill="var(--gold-bright)" text-anchor="middle">N</text>
+          <line x1="0" y1="-5" x2="0" y2="5" stroke="var(--gold)" stroke-width="1"/>
+          <line x1="-5" y1="0" x2="5" y2="0" stroke="var(--gold)" stroke-width="0.8" opacity="0.6"/>
+          <polygon points="0,-14 -3,-4 3,-4" fill="var(--gold-bright)"/>
+        </g>
+
+        <!-- Scale note -->
+        <text x="30" y="505" font-family="'JetBrains Mono',monospace" font-size="7" fill="var(--parchment-dark)" opacity="0.4">Schematic — not to precise geographic scale</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- INFO PANEL -->
+  <div class="info-panel" id="infoPanel">
+    <div class="info-default">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="rgba(184,134,11,0.5)" stroke-width="1"/><text x="10" y="14" font-size="11" text-anchor="middle" fill="rgba(184,134,11,0.7)">↑</text></svg>
+      Tap any marker on the map to explore that location
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-section">
+    <div class="cards-title">All Locations — Click to Highlight</div>
+    <div class="cards-grid" id="cardsGrid"></div>
+  </div>
+
+  <footer>
+    For study &amp; exploration purposes · Geographical correlations are scholarly proposals, not official LDS Church positions · LiDAR data from peer-reviewed sources
+  </footer>
+</div>
+
+<script>
+const locations = {
+  zarahemla: {
+    name: "Zarahemla",
+    type: "nephite",
+    typeLabel: "Nephite Capital",
+    modernLocation: "Chiapas lowlands, Mexico / Usumacinta River basin",
+    description: "The central Nephite city and governmental seat for much of the Book of Mormon narrative. Located along the River Sidon, which most scholars identify with the Usumacinta River flowing north toward the Gulf. Travel accounts suggest it was roughly 22 days' march from the City of Nephi through mountainous terrain.",
+    scriptureRef: "Omni 1:14, Alma 22:27",
+    lidar: null,
+    modernMatch: "The Tabasco/Chiapas region is exactly where 478 Olmec/Maya sites were discovered by LiDAR in 2021 — civilization density precisely matching what the text describes."
+  },
+  nephi: {
+    name: "City of Nephi",
+    type: "lamanite",
+    typeLabel: "Original Colony / Lamanite Capital",
+    modernLocation: "Guatemalan Highlands",
+    description: "The original Nephite settlement founded by Nephi after separating from his brothers. Later occupied by Lamanites and used as one of their capitals. Located in mountainous terrain south of Zarahemla — approximately 22 days' travel through highland wilderness.",
+    scriptureRef: "2 Nephi 5:8, Alma 47:20",
+    lidar: null,
+    modernMatch: "Guatemala's highland Maya cities — including newly LiDAR-revealed sites — sit in exactly this position. Los Abuelos (discovered May 2025) dates to 800–500 BCE, squarely within early Nephite/Lamanite timeframes."
+  },
+  bountiful: {
+    name: "Land of Bountiful",
+    type: "nephite",
+    typeLabel: "Nephite — Northern Border",
+    modernLocation: "Veracruz / Gulf Coast of Mexico",
+    description: "A fertile land on the north end of the Land Southward, immediately south of the Narrow Neck. Described as rich with fruit and wild animals. The city of Bountiful was a critical military stronghold near the east sea. Christ's post-resurrection ministry in the Americas occurred here at the temple.",
+    scriptureRef: "Alma 22:29, 3 Nephi 11:1",
+    lidar: null,
+    modernMatch: "The Veracruz/Gulf region, just south of the Tehuantepec isthmus, shows dense pre-Columbian settlement patterns now being mapped by LiDAR surveys."
+  },
+  desolation: {
+    name: "Land of Desolation",
+    type: "jaredite",
+    typeLabel: "Jaredite Territory",
+    modernLocation: "Central Mexico / Olmec heartland",
+    description: "The Land Northward, previously home to the Jaredites — a civilization that arrived from the Tower of Babel and was ultimately destroyed by civil war. Called 'Desolation' because it was littered with the bones of their civilization. Most scholars associate the Jaredites with the Olmec culture (1500–400 BC).",
+    scriptureRef: "Ether 1:1, Alma 22:30",
+    lidar: null,
+    modernMatch: "The Olmec heartland along the Gulf Coast of Mexico. LiDAR has revealed the Olmec site at San Lorenzo is connected to hundreds of later Maya sites — evidence of a foundational civilization matching Jaredite descriptions."
+  },
+  firstinheritance: {
+    name: "Land of First Inheritance",
+    type: "lamanite",
+    typeLabel: "Lehi's Landing Site",
+    modernLocation: "Pacific Coast — Chiapas/Guatemala",
+    description: "Where Lehi's family first landed upon arriving in the Americas, around 589 BC. Located on the western coast (West Sea). Lamanites maintained control of this area. The text places it west of the Land of Nephi, along the sea.",
+    scriptureRef: "Alma 22:28",
+    lidar: null,
+    modernMatch: "The Pacific coast of southern Mexico and Guatemala — now showing significant pre-Classic settlement activity in archaeological surveys, consistent with early habitation around 600 BC."
+  },
+  cumorah: {
+    name: "Hill Cumorah / Ramah",
+    type: "landmark",
+    typeLabel: "Final Battlefield",
+    modernLocation: "Disputed — Veracruz (Mesoamerican) or New York (traditional)",
+    description: "The site of the final destruction of the Nephite nation. Mormon compiled the plates here. Called 'Ramah' by the Jaredites, suggesting the same hill was used by both civilizations. Its location is one of the most debated in all Book of Mormon geography — near the east sea, north of Bountiful.",
+    scriptureRef: "Mormon 6:2, Ether 15:11",
+    lidar: null,
+    modernMatch: "If located in Veracruz near the Gulf Coast, it would fall within regions now being actively surveyed by LiDAR — several unidentified elevated sites in the region remain under investigation."
+  },
+  mulek: {
+    name: "City of Mulek",
+    type: "nephite",
+    typeLabel: "Mulekite Settlement",
+    modernLocation: "Yucatán / Campeche region",
+    description: "Named after Mulek, son of King Zedekiah, who escaped the Babylonian destruction of Jerusalem around 587 BC. The Mulekites settled in the Land Northward before migrating south to merge with the Nephites. Their city became a significant Nephite outpost near the east sea.",
+    scriptureRef: "Helaman 6:10, Omni 1:16",
+    lidar: null,
+    modernMatch: "The Campeche/Yucatán region — precisely where the lost city of Valeriana (6,500 structures) was found by LiDAR in 2024, hidden next to a major highway."
+  },
+  'lidar-tabasco': {
+    name: "Tabasco LiDAR Survey",
+    type: "lidar",
+    typeLabel: "LiDAR Discovery 2021",
+    modernLocation: "Eastern Tabasco, Mexico",
+    description: "Using publicly available Mexican government LiDAR data, archaeologists identified 478 previously unknown Olmec and Maya sites across 84,500 square kilometers. All sites share rectangular/square ceremonial complex layouts suggesting a shared cultural tradition. Dates: 1400 BC – 1000 AD.",
+    scriptureRef: "Proposed Zarahemla region",
+    lidar: "Nature Human Behaviour, 2021 | Inomata et al., University of Arizona",
+    modernMatch: "This is the core region proposed for Zarahemla and the heartland of the Nephite civilization. The civilization density now confirmed here was unimaginable before LiDAR."
+  },
+  'lidar-guatemala': {
+    name: "PACUNAM LiDAR — Guatemala",
+    type: "lidar",
+    typeLabel: "LiDAR Discovery 2018",
+    modernLocation: "Petén & Maya Biosphere Reserve, Guatemala",
+    description: "The largest LiDAR survey in Maya archaeology history — mapping 2,100+ square kilometers of Guatemala's jungle. Over 60,000 previously unknown structures identified including fortresses, canals, raised highways connecting cities, and agricultural terracing indicating a population far larger than previously believed.",
+    scriptureRef: "Proposed Land of Nephi region",
+    lidar: "PACUNAM LiDAR Initiative | National Geographic 2018",
+    modernMatch: "Guatemala's highlands and lowlands are the primary scholarly candidate for the Lamanite-controlled Land of Nephi. The interconnected cities, roads, and fortifications match the military geography described in Alma."
+  },
+  'lidar-valeriana': {
+    name: "Valeriana — Lost Maya City",
+    type: "lidar",
+    typeLabel: "LiDAR Discovery 2024",
+    modernLocation: "Campeche, Mexico",
+    description: "Discovered in 2024 by PhD student Luke Auld-Thomas using a decade-old forestry LiDAR dataset found on Google. The city contains over 6,500 structures including pyramids, plazas, and a ball court — and was sitting 15 minutes from a major road, hidden in plain sight. Estimated 30,000–50,000 inhabitants at peak.",
+    scriptureRef: "Proposed Mulek / northern Land Southward region",
+    lidar: "Antiquity Journal 2024 | Auld-Thomas, Northern Arizona University",
+    modernMatch: "The Campeche region sits precisely at the northern boundary of the Land Southward, where Mulekite settlements and the city of Mulek are described. This discovery proves major cities in this zone are still being found."
+  },
+  'lidar-abuelos': {
+    name: "Los Abuelos — 3,000-Year-Old City",
+    type: "lidar",
+    typeLabel: "LiDAR Discovery May 2025",
+    modernLocation: "Petén, Guatemala",
+    description: "Announced May 2025 — drone-borne LiDAR revealed a 16 km² ceremonial city dating to 800–500 BCE. Pyramids reach 33 meters tall. A unique canal system makes this one of the earliest monumental complexes in the Maya world. The timing perfectly overlaps with Book of Mormon early Nephite/Lamanite periods.",
+    scriptureRef: "Proposed southern Land Southward / Land of Nephi",
+    lidar: "The Guardian / AFP Guatemala, May 30 2025",
+    modernMatch: "800–500 BCE is the approximate era of the early Nephite/Lamanite split and wars described in 2 Nephi through Mosiah. A monumental city in Guatemala dating to exactly this period is a striking coincidence."
+  },
+  'lidar-teotihuacan': {
+    name: "Teotihuacán LiDAR Mapping",
+    type: "lidar",
+    typeLabel: "LiDAR Ongoing",
+    modernLocation: "~40 km NE of Mexico City",
+    description: "Teotihuacán ('Where humans become gods' in Nahuatl) was the largest pre-Columbian city in the Americas — 125,000 people at its peak across 22 km². LiDAR has revealed the full scale of this metropolis and confirmed its influence reached Tikal in Guatemala (1,000+ miles away). Dominated Mesoamerica 250–550 CE.",
+    scriptureRef: "Proposed major Jaredite or late-period Land Northward city",
+    lidar: "University of Houston NCALM, 2015 | UNESCO Courier 2025",
+    modernMatch: "Teotihuacán's dominance over a massive geographic region — confirmed by LiDAR connections to Guatemala — mirrors the Jaredite kingdom described as controlling the 'Land Northward' in Ether. The scale and timeline align."
+  }
+};
+
+function showInfo(id) {
+  const loc = locations[id];
+  if (!loc) return;
+
+  // Highlight active card
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+  const activeCard = document.getElementById('card-' + id);
+  if (activeCard) { activeCard.classList.add('active'); activeCard.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+
+  const typeColors = {
+    nephite: '#7ab4e0', lamanite: '#e07a60', jaredite: '#90c080', landmark: '#d4a017', lidar: '#00b4d8'
+  };
+  const color = typeColors[loc.type] || '#e8dfc4';
+
+  const lidarBadge = loc.lidar ? `<div class="lidar-badge">🔬 LiDAR Source: ${loc.lidar}</div>` : '';
+
+  document.getElementById('infoPanel').innerHTML = `
+    <div style="color:${color}; font-family:'JetBrains Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:5px;">${loc.typeLabel}</div>
+    <h2>${loc.name}</h2>
+    <div style="font-size:0.78rem; font-style:italic; color:var(--parchment-dark); margin-bottom:10px; font-family:'EB Garamond',serif;">📍 ${loc.modernLocation}</div>
+    ${lidarBadge}
+    <p style="margin-bottom:10px;">${loc.description}</p>
+    ${loc.scriptureRef ? `<p style="font-size:0.78rem; color:var(--gold); font-family:'JetBrains Mono',monospace; margin-bottom:8px;">Scripture: ${loc.scriptureRef}</p>` : ''}
+    <p style="font-size:0.85rem; color:#90d8e8; border-left:2px solid #00b4d8; padding-left:10px; font-style:italic;">${loc.modernMatch}</p>
+  `;
+}
+
+// Build cards
+const grid = document.getElementById('cardsGrid');
+const typeClass = { nephite:'type-nephite', lamanite:'type-lamanite', jaredite:'type-jaredite', landmark:'type-landmark', lidar:'type-nephite' };
+const typeLabel = { nephite:'Nephite', lamanite:'Lamanite', jaredite:'Jaredite', landmark:'Landmark', lidar:'LiDAR' };
+
+Object.entries(locations).forEach(([id, loc]) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.id = 'card-' + id;
+  card.onclick = () => showInfo(id);
+
+  const isLidar = loc.type === 'lidar';
+  const badgeClass = isLidar ? 'type-nephite' : (typeClass[loc.type] || 'type-nephite');
+  const badgeText = isLidar ? 'LiDAR' : (typeLabel[loc.type] || '');
+
+  card.innerHTML = `
+    <div class="card-header">
+      <div class="card-name">${loc.name}</div>
+      <div class="card-type ${isLidar ? '' : badgeClass}" style="${isLidar ? 'background:rgba(0,180,216,0.2);color:#00b4d8;border:1px solid rgba(0,180,216,0.4)' : ''}">${isLidar ? 'LiDAR' : badgeText}</div>
+    </div>
+    <div class="card-location">${loc.modernLocation}</div>
+    ${loc.lidar ? `<div class="card-lidar">🔬 ${loc.lidar.split('|')[0].trim()}</div>` : ''}
+  `;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
