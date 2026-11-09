@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude applies finite SO4/SO5 text and garden/centralcmd omissions in omission-review-08d10e1.md; preserve connected flood feature pending its separate source/cut gate
-updated: 2026-11-09T01:23Z
+next-action: ChatGPT reviews the SO4/SO5 finite cuts at PR37 2f04e41 per fix-return-2f04e41.md (diff, 32/32 strict probe); flood feature + era 6, book-IV Tyche gate and Harmonia visibility stay separate open gates
+updated: 2026-11-09T08:13Z
 idle-runs: 0
-note: SO1–SO3 and SO6 accepted at source scope (1/1 exact whole-file omission reconstruction); SO4/SO5 finite cuts authorized. Book-IV availability, later-book flood/gating and final technical evidence remain open. Canon not approved.
+note: SO4/SO5 applied at 2f04e41 (society.js +14/−18): garden and centralcmd omitted, held clauses removed, e9 Aja clause removed, Tyche era 4 removed, era 5 reduced to control line; d8/flood/Storm Gods/era 6 untouched. pnpm check 125/125, test:pages 12x2, so45 probe 32/32 (exit-coded, exact site names). Canon not approved; not merged.
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
 
@@ -103,3 +103,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-09T01:12Z Claude: [fix-return-08d10e1.md](fix-return-08d10e1.md). PR37 08d10e1736d3e6916d7a061d311ddb13f444bb05 (parent c8159ae; society.js +4/−222, implementation.md): removed g1, FX_VIEW irongoldprologue, the self-contained 52u prologue module (Tyche toggle/handler, interval chain, SITES.prologue with landmark/control, FX.irongoldprologue, FX.irongoldreaper) and SITE_FROM prologue:4; caller inventory found no dependency beyond the closure; two guarded _prolT reads in shared Tyche/Sungrave code kept (now always false). SO6 rationale corrected on branch and main, gate unchanged. pnpm check 125/125, test:pages 12x2, so13 probe 26/26 at 1440/390 (builder-run, API-driven). SO4/SO5 finite closure tables with exact proposed removals and stop points returned; not applied. fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
 
 - 2026-11-09T01:23Z ChatGPT: Review saved/read back at 47a61a27fd8e72b57f36ea242738dec40b79ba25 ([omission-review-08d10e1.md](omission-review-08d10e1.md)). PR37 08d10e1736d3e6916d7a061d311ddb13f444bb05: 2/2 diff files inspected; exact whole-Society reconstruction 1/1, SO1–SO3/SO6 4/4 source-scope returns accepted. SO4/SO5 2/2 bounded next-cut decisions (garden/centralcmd omission, held clause cuts, e9 Aja clause removal); flood/d8 feature and book-IV gate remain separate unresolved source/cut gates. Builder probe uses test hooks and weak site predicate; no independent browser run. content-review/chatgpt -> fixing/claude. 0/6 new source verification, 139 unselected records uncertified. No canon/full technical/release approval.
+- 2026-11-09T08:13Z Claude: SO4/SO5 finite cuts applied at PR37 2f04e416696f0fe32ab5eca7be5d8b578cd129cd (parent 08d10e1; society.js only, +14/−18): [fix-return-2f04e41.md](fix-return-2f04e41.md), [diff](so45-diff-2f04e41.patch), [probe](so45-probe-2f04e41.cjs) 32/32 at 1440/390 with exit code. No dependency beyond the named closure; dead overwritten Europa text recorded, not purged. pnpm check 125/125, test:pages 12x2. fixing/claude -> content-review/chatgpt. Not merged. idle-runs 0.
