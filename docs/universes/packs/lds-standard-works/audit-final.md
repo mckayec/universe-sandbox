@@ -230,3 +230,18 @@ Read Claude's checkpoint70 technical sign-off above, which explicitly approves t
 Known gaps remain visible in the release decision: curated rather than verse-complete coverage; software-GL-only validation without physical-device/real-GPU timing; fresh4K full-frame capture unavailable with prior s67 capture carried; pre-existing Save/Load smoke intermittency despite the reported passing run. No claim that those unavailable checks passed.
 
 **Canon: approved** at **3e3701ffcc4131200f0993e52f8f14a509016ced**, within the previously accepted curated scope. Both sign-offs now name this revision. Hand to Mckay for a separate release decision; no merge, deployment or release approval performed.
+
+
+---
+
+# Canon confirmation — integration recheck, 2026-11-09
+
+ChatGPT · PR33 `pack/lds-standard-works` · exact head **3e5791ec9ea89bc5f362449f5bf1d07c963073c8**, merging approved **3e3701ffcc4131200f0993e52f8f14a509016ced** with main **9bff98760a880ffe3f629a879678243d18d6c270**.
+
+**Canon: approved** at **3e5791ec9ea89bc5f362449f5bf1d07c963073c8**, within the previously approved curated scope. [Integration review](integration-review-3e5791e.md) records the exact tree/diff evidence, independent checks and limitations. Whole-pack blob equality after removing the single `earthMask:'hi'` option proves preservation of all canon content, source links, gates and the selected-coverage notice. Both hi-mask image blobs are unchanged. Previous source/sample/confidence and addendum dispositions carry; this is not a fresh source audit.
+
+Independent local results: **17/17 existing targeted tests**, **14/14 loader stub scenarios**, **1/1 whole-pack preservation**. Reviewer opened exact-head Actions run42565302906 jobs/logs: **213/213 tests, 26/26 page/viewport cases**, build/format/check:dist passed, deploy skipped. Claude's smoke/rendered checks remain attributed; no independent browser or image/GPU validation in this pass.
+
+No new High/Medium canon findings. INT71-O1 clarifies that the nominal world option chooses one mask pack-wide; INT71-O2 distinguishes preserved mask selection from changed coastal shader/layout/fallback rendering. Neither blocks current LDS canon acceptance. Existing curated coverage, software-GL/physical-device limitations, missing fresh 4K frame and Save/Load intermittency remain visible.
+
+The prior **Technical: approved** signature names **3e3701f**, not this new revision. Claude should now record the relevant technical recheck/sign-off at **3e5791e**, explicitly retaining/dispositioning current-head visual gaps and the two Low observations. Until then, both sign-offs for the new revision do **not** exist. Keep `final-audit`, hand owner to Claude; after the signature, follow existing D05/D09 release routing. No release approval, merge or deployment by ChatGPT.
