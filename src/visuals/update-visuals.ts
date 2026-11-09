@@ -8,6 +8,7 @@ import { camera, composer, isCompact } from '../scene/setup.ts';
 import { app, bodies, trails } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { updateGalaxyMotion } from './galaxy-motion.ts';
+import { updateDiskEncounter } from './disk-encounters.ts';
 import { animateRelativisticJets } from './jets.ts';
 
 function tidalFrameFor(b: Body) {
@@ -135,7 +136,11 @@ function updateInflow(inflow: THREE.Points, dt: number) {
     spin = Number(inflow.userData.spin ?? 1),
     kepler = Number(inflow.userData.kepler ?? 4),
     inner = Number(inflow.userData.inner ?? 1.8),
-    outer = Number(inflow.userData.outer ?? 9);
+    outer = Number(inflow.userData.outer ?? 9),
+    tide = inflow.userData.tide as { cut: number; angle: number; amp: number } | undefined,
+    tideAmp = tide?.amp ?? 0,
+    cut = tideAmp > 0 ? Math.max(inner * 1.2, tide!.cut) : Infinity,
+    rim = Math.min(outer, cut * 0.92);
   for (let i = 0; i < attr.count; i++) {
     const x = attr.getX(i),
       y = attr.getY(i);
@@ -143,7 +148,14 @@ function updateInflow(inflow: THREE.Points, dt: number) {
     const omega = kepler * Math.pow(Math.max(r, 0.3), -1.5),
       a = Math.atan2(y, x) + spin * omega * dt;
     r -= dt * 0.035 * omega * r;
-    if (r < inner) r = outer * (0.88 + 0.12 * ((i * 0.618034 + app.elapsed * 0.13) % 1));
+    if (r > cut * 0.95) {
+      // Past the tidal cut: clumps facing the companion are pulled out toward it, the rest are stripped.
+      const side = Math.abs(Math.atan2(Math.sin(a - tide!.angle), Math.cos(a - tide!.angle)));
+      if (side < 0.7 && tideAmp > 0.25) r += dt * omega * r * 0.6 * tideAmp;
+      else r = rim;
+      if (r > cut * 1.7) r = rim * (0.88 + 0.12 * ((i * 0.618034 + app.elapsed * 0.13) % 1));
+    }
+    if (r < inner) r = rim * (0.88 + 0.12 * ((i * 0.618034 + app.elapsed * 0.13) % 1));
     attr.setXY(i, Math.cos(a) * r, Math.sin(a) * r);
   }
   attr.needsUpdate = true;
@@ -297,6 +309,7 @@ export function updateVisuals(dt: number) {
     }
     const inflow = b.mesh.getObjectByName('inflow') as THREE.Points | undefined;
     if (inflow) updateInflow(inflow, diskDt);
+    if (b.kind === 'blackhole') updateDiskEncounter(b, diskDt > 0 ? diskDt : dt);
     const trail = trails.get(b.id);
     if (trail) {
       trail.line.visible = app.trailsEnabled;

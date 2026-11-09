@@ -22,6 +22,8 @@ import {
 import { app, bodies } from '../state/app-state.ts';
 import { recordHistory } from '../state/history.ts';
 import type { Body } from '../state/types.ts';
+import { describeEncounter } from '../disk-encounter.ts';
+import { diskEncounterOf } from '../visuals/disk-encounters.ts';
 import { select, toast } from './feed.ts';
 
 export function updateInspector() {
@@ -78,6 +80,10 @@ export function updateInspector() {
   document.querySelector('#info-magnet')!.textContent = `${Math.round(b.magnetosphere * 100)}%`;
   document.querySelector('#info-life')!.textContent = b.lifeLevel === 'none' ? 'None detected' : b.lifeLevel;
   document.querySelector('#info-climate')!.textContent = b.habitatStatus;
+  const encounter = b.kind === 'blackhole' ? diskEncounterOf(b) : undefined,
+    diskText = encounter ? describeEncounter(encounter, bodies.find(x => x.id === encounter.companionId)?.name) : null;
+  document.querySelector<HTMLElement>('#disk-row')!.style.display = b.kind === 'blackhole' ? 'flex' : 'none';
+  document.querySelector('#info-disk')!.textContent = diskText ?? 'Undisturbed';
   document.querySelector('#info-event')!.textContent = b.lastEvent;
   const life = document.querySelector<HTMLElement>('#lifecycle')!;
   life.style.display = ['star', 'protostar', 'asteroid', 'comet', 'moon', 'dwarf', 'rocky', 'gas', 'brown'].includes(

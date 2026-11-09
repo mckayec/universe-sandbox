@@ -47,6 +47,27 @@ float flowBlend(float f1,float f2,float w1){
   return clamp((f1*w1+f2*w2-.5)/max(.5,sqrt(w1*w1+w2*w2))+.5,0.,1.);
 }`;
 
+/**
+ * Companion tide for a disk (see src/disk-encounter.ts). Uniforms: `tideCut` local outer cut radius (huge = none),
+ * `tideAngle` companion polar angle in the disk plane, `tideAmp` encounter strength 0..1.
+ * tideShape(a, rad) returns vec2(alpha multiplier, arm brightness). The tidal bulge and its two arms stay aligned
+ * with the companion while the gas pattern keeps orbiting through them; a thin streamer survives past the cut on
+ * the companion side only, as an illustration of gas being pulled toward it.
+ */
+export const DISK_TIDE_GLSL = /* glsl */ `
+uniform float tideCut;uniform float tideAngle;uniform float tideAmp;
+vec2 tideShape(float a,float rad){
+  if(tideAmp<.001)return vec2(1.,0.);
+  float rel=a-tideAngle;
+  float bulge=tideCut*(1.+.16*tideAmp*cos(2.*rel));
+  float keep=1.-smoothstep(bulge*.8,bulge,rad);
+  float side=atan(sin(rel),cos(rel));
+  float stream=exp(-side*side/.05)*(1.-smoothstep(bulge,bulge*1.7,rad))*tideAmp;
+  float near=smoothstep(.45,.95,rad/max(tideCut,.001))*(1.-smoothstep(1.,1.3,rad/max(tideCut,.001)));
+  float arms=near*pow(.5+.5*cos(2.*rel-1.1*spin*rad/max(tideCut,.001)),6.)*tideAmp;
+  return vec2(max(keep,stream*.85),arms);
+}`;
+
 /** Angular speed (rad/s) at the inner edge → the Kepler constant the shaders use. */
 export function keplerConstant(innerRadius: number, innerAngularSpeed: number) {
   return innerAngularSpeed * Math.pow(innerRadius, 1.5);

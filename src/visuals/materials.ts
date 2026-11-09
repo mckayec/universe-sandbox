@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { type StageLook } from '../celestial-catalog.ts';
 import type { MatterStream } from '../state/types.ts';
-import { DISK_FLOW_GLSL, DISK_VERTEX, keplerConstant } from './disk-flow.ts';
+import { DISK_FLOW_GLSL, DISK_TIDE_GLSL, DISK_VERTEX, keplerConstant } from './disk-flow.ts';
 import { glowTexture } from './textures.ts';
 
 export const NOISE_GLSL = `float hash(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}`;
@@ -131,6 +131,9 @@ export function blackHoleDiskMaterial(inner: number, outer: number, layer: numbe
       midColor: { value: new THREE.Color(scheme[1]) },
       outerColor: { value: new THREE.Color(scheme[2]) },
       dopplerStrength: { value: 0.38 + (variant % 4) * 0.07 },
+      tideCut: { value: 1e5 },
+      tideAngle: { value: 0 },
+      tideAmp: { value: 0 },
     },
     transparent: true,
     side: THREE.DoubleSide,
@@ -138,9 +141,9 @@ export function blackHoleDiskMaterial(inner: number, outer: number, layer: numbe
     blending: dust ? THREE.NormalBlending : THREE.AdditiveBlending,
     toneMapped: false,
     vertexShader: DISK_VERTEX,
-    fragmentShader: `varying float vR;varying vec2 vXY;varying float vRad;varying float vBeam;uniform float inner;uniform float layer;uniform float activity;uniform float dopplerStrength;uniform vec3 hotColor;uniform vec3 midColor;uniform vec3 outerColor;${NOISE_GLSL}${DISK_FLOW_GLSL}
+    fragmentShader: `varying float vR;varying vec2 vXY;varying float vRad;varying float vBeam;uniform float inner;uniform float layer;uniform float activity;uniform float dopplerStrength;uniform vec3 hotColor;uniform vec3 midColor;uniform vec3 outerColor;${NOISE_GLSL}${DISK_FLOW_GLSL}${DISK_TIDE_GLSL}
 vec2 gas(float a,float r,float s){vec2 polar=vec2(cos(a),sin(a));float m=4.+layer;float broad=noise(vec3(polar*(2.2+r*4.6),s+time*.02+layer*3.7));float fine=noise(vec3(polar*(7.+r*15.),s*1.37-time*.035+layer*7.1));float spiralA=.5+.5*sin(a*m+spin*r*(25.+layer*12.));float spiralB=.5+.5*sin(a*(9.-layer)+spin*r*(57.+layer*8.)+fine*4.2);float filaments=smoothstep(.3,.9,spiralA*.46+spiralB*.22+broad*.44+fine*.22);float gaps=smoothstep(.67,.9,noise(vec3(polar*(4.5+r*9.),s*.71+11.)));return vec2(filaments,gaps);}
-void main(){float r=clamp(vR,0.,1.);float a1,a2,w1,s1,s2;diskFlow(atan(vXY.y,vXY.x),vRad,a1,a2,w1,s1,s2);vec2 g1=gas(a1,r,s1),g2=gas(a2,r,s2);float filaments=flowBlend(g1.x,g2.x,w1);float gaps=flowBlend(g1.y,g2.y,w1);float innerHeat=pow(1.-r,2.25);float whiteCore=pow(1.-r,7.5);float beta=dopplerStrength*.48*sqrt(clamp(inner/max(vRad,.01),.05,1.));float doppler=pow(max(.05,1.+beta*vBeam),2.6)/(1.+beta*beta*2.);vec3 color=mix(outerColor,midColor,pow(1.-r,.7));color=mix(color,hotColor,innerHeat*.82+whiteCore*.18);color=mix(color,color*vec3(.82,.94,1.22),clamp(vBeam*beta*2.,0.,1.));color=mix(color,color*vec3(1.18,.82,.62),clamp(-vBeam*beta*2.,0.,1.));color*=doppler*(.48+filaments*.92);float edge=smoothstep(0.,.035,r)*(1.-smoothstep(.68,1.,r));float layerAlpha=layer<.5?.82:(layer<1.5?.36:.18);float dustShade=layer>1.5?mix(.28,1.,filaments):1.;float alpha=edge*(.12+filaments*.82)*(1.-gaps*.48)*layerAlpha*(.62+activity*.48)*(1.-r*.18);if(alpha<.008)discard;gl_FragColor=vec4(color*dustShade*(.72+innerHeat*1.65+whiteCore*2.8),alpha);}`,
+void main(){float r=clamp(vR,0.,1.);float a1,a2,w1,s1,s2;diskFlow(atan(vXY.y,vXY.x),vRad,a1,a2,w1,s1,s2);vec2 g1=gas(a1,r,s1),g2=gas(a2,r,s2);float filaments=flowBlend(g1.x,g2.x,w1);float gaps=flowBlend(g1.y,g2.y,w1);vec2 tide=tideShape(atan(vXY.y,vXY.x),vRad);filaments=clamp(filaments+tide.y*.55,0.,1.);float innerHeat=pow(1.-r,2.25);float whiteCore=pow(1.-r,7.5);float beta=dopplerStrength*.48*sqrt(clamp(inner/max(vRad,.01),.05,1.));float doppler=pow(max(.05,1.+beta*vBeam),2.6)/(1.+beta*beta*2.);vec3 color=mix(outerColor,midColor,pow(1.-r,.7));color=mix(color,hotColor,innerHeat*.82+whiteCore*.18);color=mix(color,color*vec3(.82,.94,1.22),clamp(vBeam*beta*2.,0.,1.));color=mix(color,color*vec3(1.18,.82,.62),clamp(-vBeam*beta*2.,0.,1.));color*=doppler*(.48+filaments*.92);float edge=smoothstep(0.,.035,r)*(1.-smoothstep(.68,1.,r))*tide.x;float layerAlpha=layer<.5?.82:(layer<1.5?.36:.18);float dustShade=layer>1.5?mix(.28,1.,filaments):1.;float alpha=edge*(.12+filaments*.82)*(1.-gaps*.48)*layerAlpha*(.62+activity*.48)*(1.-r*.18);if(alpha<.008)discard;gl_FragColor=vec4(color*dustShade*(.72+innerHeat*1.65+whiteCore*2.8),alpha);}`,
   });
 }
 export function protostarDiskMaterial(inner: number, outer: number, kepler = 2, spin = 1) {
