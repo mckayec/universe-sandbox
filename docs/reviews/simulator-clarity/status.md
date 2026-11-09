@@ -1,10 +1,11 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT re-reviews SC4-T1 fix at PR47 ff480a5 (helper + runtime selector, both companion orders; reviewer repro must also inject `outranks`); then Claude continues slice 4b with SC4-E1 enforced evidence and SC4-O1 model-limit wording
-updated: 2026-11-09T10:52Z
+next-action: Claude continues slice 4b (protostar/transfer response, readability periods, orbiting/unequal/flyby/merger qualification) with SC4-E1 enforced evidence and SC4-O1 heuristic wording per implementation-review-ff480a5.md
+updated: 2026-11-09T11:17Z
 idle-runs: 0
-note: SC4-T1 fixed at ff480a5a388feb1e46549b358f633ec55c733d77: shared outranks() ranking by unclamped depth with deterministic ID tie-break; 146/146 unit tests, pages 24/24. SC4-E1/SC4-O1 carried into 4b. 4b and items 5–7 remain; no merge.
+note: SC4-T1 closed at exact PR47 ff480a5 at source/controller scope; independent repository tests 16/16 and reviewer cases 14/14 vs parent 8/14. Rendered acceptance, stale post-merger inspector, SC1-E1/SC4-E1/SC4-O1 and items 5–7 remain; no full technical or release approval.
+
 
 
 # Simulator clarity and physics
@@ -100,3 +101,5 @@ Not run this return: browser/GPU scenes (no visual change), SC4-E1 enforced harn
 - 2026-11-09T10:20Z ChatGPT: [implementation-review-c4214ef.md](implementation-review-c4214ef.md) saved/read back at a07238fc0bbb4b0779194f26c0d47ea99cfb1d68; [reproduction](reviewer-encounter-c4214ef.mjs) at f3a3a1136175151a2b18eae95957b7d7d4375348. Exact PR47 c4214ef818d78d78f62efb8c69fa68751b3f272a, 8/8-file delta inspected, 13/13 repository tests pass independently. Additional actual-helper/extracted-controller cases 2/4 pass, 2/4 fail: SC4-T1 Medium, strength saturation makes selection depend on body order instead of deeper cut. SC4-E1 Low retains logging-only browser limitations; SC4-O1 qualifies physical model heuristics using two opened primary research sources. 0 independent rendered cases, 0/3 screenshots inspected; 3/3 builder scenario records read. implementation-review/chatgpt → fixing/claude for bounded selection correction; prior timing closure preserved. No application/PR-branch edit, merge, deployment or release approval.
 
 - 2026-11-09T10:52Z Claude: SC4-T1 fixed on PR #47 at ff480a5a388feb1e46549b358f633ec55c733d77 (see SC4-T1 fix receipt): shared `outranks` depth ranking with deterministic ID tie-break in helper and runtime; both-order regressions; 146/146 unit, pages 24/24. SC4-E1, SC4-O1 carried to 4b. fixing/claude → implementation-review/chatgpt. No merge.
+
+- 2026-11-09T11:17Z ChatGPT: [implementation-review-ff480a5.md](implementation-review-ff480a5.md) saved/read back at 907abad56580accd5002e04d0b6a2fe762c3dbdf; [compatible head/parent runner](reviewer-encounter-ff480a5.mjs) at e194bebcc98157ddf4a4214e7c96c539a48c2b76. Exact PR47 ff480a5a388feb1e46549b358f633ec55c733d77, 3/3 changed files reviewed; independent repository tests 16/16, helper/runtime cases 14/14 head vs 8/14 parent (six behavioral failures, not missing-import failure). SC4-T1 closed within source/controller scope; no new High/Medium finding. 0 independent rendered cases; SC4-E1/SC1-E1, SC4-O1 and stale merger inspector remain visible. implementation-review/chatgpt → implementation/claude for bounded 4b continuation; items 5–7 unfinished. No application/PR-branch edit, merge, deployment or release approval.
