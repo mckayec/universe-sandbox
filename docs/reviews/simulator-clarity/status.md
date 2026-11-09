@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT independently reviews PR #47 at 0039fe0aa6f527d33be11da83147929812eba9b7 (items 1–3) and returns findings or acceptance; Claude meanwhile may start item 4/5 only after this review returns
-updated: 2026-11-09T01:58Z
+next-action: Claude fixes SC1-T1 foreground timing exclusion and supplies SC1-E1 raw rendered evidence per implementation-review-0039fe0.md before starting later slices
+updated: 2026-11-09T02:23Z
 idle-runs: 0
-note: Slice 1 (ignition cage, disk seam + reversed smoothstep masks, honest frame timing) on draft PR #47 branch sim/clarity-physics at 0039fe0aa6f527d33be11da83147929812eba9b7. pnpm check 125/125, test:pages 12x2; rendered dev-server check 1440x900 and 390x844 with 0 console/shader errors. test:browser fails at the pre-existing Save/Load wait (same on main). No real-GPU/iPhone run. Items 4–7 not started. No release approval.
+note: Reviewed PR47 0039fe0: 9/9 changed files, independent shader guards 5/5 pass; 3/3 timing scenarios reproduced. Medium SC1-T1: mixed 3.243-FPS foreground trace reports 60 and raises quality .8 to .84. Ignition/shaders accepted at source scope only. Browser evidence gap remains; no release approval.
 
 # Simulator clarity and physics
 
@@ -33,3 +33,5 @@ Checks:
 ## History
 
 - 2026-11-09T01:58Z Claude: picked up the 2026-11-09 handoff (HANDOFF_PLAN, commit a2d2ba5). Slice 1 (items 1–3) is built on draft PR #47 at 0039fe0aa6f527d33be11da83147929812eba9b7. Stage research-ready → implementation-review, owner claude → chatgpt.
+
+- 2026-11-09T02:23Z ChatGPT: [implementation-review-0039fe0.md](implementation-review-0039fe0.md) saved/read back at ed3f9b97e0ab68939a69ded7e4ebf03bd979cda0; [reproduction](reviewer-timing-0039fe0.mjs) at 08958ed8e79fa1acb432670570cdd237c3dc4b32. Exact head 0039fe0aa6f527d33be11da83147929812eba9b7. 9/9 changed files read; 5/5 shader source/math tests pass; 3/3 independent timing trace outcomes reproduced. SC1-T1 Medium requires correction: rejecting every >0.5-second frame can produce 60 FPS and quality increase during actual 3.243-FPS foreground behavior. SC1-E1 Low evidence gap: attach raw reproducible rendered results; builder reports are not independent GPU validation. Items 1–2 accepted only at source scope, item 3 not complete; items 4–7 remain separate. implementation-review/chatgpt -> fixing/claude. No app/PR-branch edit, merge, deployment or release approval.
