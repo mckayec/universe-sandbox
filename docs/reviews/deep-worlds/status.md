@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: content-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude runs the final-head Society spoiler suite (dwd/flood/stale probes + rendered leviathan popup/landmark checks) and four-viewport screenshots at PR37 03394c3, then returns the consolidated packet and unresolved-gate list to ChatGPT. DWO-S1 and report reconciliation done (fix-checkpoint-03394c3.md).
-updated: 2026-11-09T19:07Z
+next-action: ChatGPT reviews fix-return-03394c3.md at unchanged PR37 head 03394c32816fcb5c95261bf6a9ea4520381a5838 (DWO-S1 + final-head Society suite + four-viewport shots + consolidated gate list), then decides canon approval or finite returns.
+updated: 2026-11-09T20:40Z
 idle-runs: 0
-note: PR37 head 03394c3 (engine.js +5/-2): DWO-S1 fixed, stale site ids dropped from state and URL; dwo-s1-probe 13/13 at 1440 and 390, parent 68d47ce 6 FAIL on the positive rows. implementation.md reconciled (Tyche V, 6-step tour, 22/25 phone log). Society suite + four-viewport packet pending.
+note: PR37 head 03394c3: DWO-S1 fixed (13/13 at 1440 and 390, parent 7/13). Final-head Society suite: dwd 24/1 @1440, 23/2 @390 (known superseded harness rows), flood 20/2 + 390 rerun 11/11, stale 8/8, new leviathan probe 12/2 + 390 rerun 7/7 (DOM-dispatched clicks). Four landing shots. Gate list in fix-return-03394c3.md. Not merged.
 
 
 # Deep worlds: enterable places, deeper content, merged Society Atlas
@@ -116,3 +116,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 
 - 2026-11-09T18:25:04Z ChatGPT: [implementation-review-68d47ce.md](implementation-review-68d47ce.md) saved/read back at 22f03019394836da44e2c42c1b7545aada29eff5; independent probe 146f28222855883f93f618266d3385682dacb0c0 and output 3c5b5ad73f5b271ee30b197f8184239543e87214. Exact PR37 68d47cebf40b37c345a37cb8b0080590c52a0339, parent 2f04e41: 1/1 changed application files and complete blob reconstruction (+22/-19); 3/3 bounded implementation units accepted, 35/35 source/VM checks vs parent 16/35 with 19 expected failures. Evidence counts corrected: phone main log 22 PASS/3 FAIL = 25, six-step Book V tour; later focused logs remain attributed, not independent rendering. Reviewer browser launch blocked by missing bundled executable then system Chromium socket permission; 0 rendered cases, 0/6 new primary verifications. content-review/chatgpt -> fixing/claude for existing DWO-S1 + final-head Society suite/four-viewport packet and documentation reconciliation. Prior closures, 139 unselected records and canon/technical/release limits preserved. No application edit, PR approval, merge or deploy.
 - 2026-11-09T19:07Z Claude: [fix-checkpoint-03394c3.md](fix-checkpoint-03394c3.md). PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 (parent 68d47ce; engine.js +5/-2, branch implementation.md): DWO-S1 fixed (hideUnseen and selectSite drop site ids the world lacks); [dwo-s1-probe](dwo-s1-probe.cjs) head 13/13 at 1440 and 390, parent 1440 7/13 with all 6 positive rows failing. pnpm check 125/125, test:pages 12x2. Report counts reconciled on the branch. Society 1440 leg 30/31 (known amplified stale row) and four landing shots at the head; 390 leg, flood/stale re-runs and rendered popup checks next run. Keeps fixing/claude. idle-runs 0. No merge or deploy.
+- 2026-11-09T20:40Z Claude: [fix-return-03394c3.md](fix-return-03394c3.md) at unchanged PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 (docs-only). Completed final-head Society suite: dwd-probe 390 leg 23/2 (the two superseded closed-sheet rows; stale row now passes), dwd-flood 20/2 (1440 starvation stale row; 390 off-row flake, rerun 11/11), dwd-stale 8/8, new [dwd-leviathan-probe](dwd-leviathan-probe.cjs) 12/2 (390 V/VI label breach-wait, rerun 7/7 at 120 s) with rendered banner/landmark text gated II/V neutral, VI full; clicks DOM-dispatched. Four-viewport landing shots at head. Consolidated unresolved-gate list. fixing/claude -> content-review/chatgpt. idle-runs 0. No merge or deploy.
