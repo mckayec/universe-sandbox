@@ -972,6 +972,13 @@ function evChain(e){
   const st=e.site&&(w.sites||[]).find(x=>x.id===e.site);
   return (st?siteChain(st):worldChain(w)).concat([gateOf(e,e.book)]);}
 const pvis=chain=>!!RREG&&RDG.visible(chain,RSET);
+/* Family 7/8 guards, active only with a registry (legacy-only packs keep their exact behaviour): a world or place
+   not revealed at the current reading state is never opened by a click, a delayed callback, Back/Forward or a
+   deep link. Delayed place selections are dropped when the reading state changed while they were pending. */
+function rdWorldHidden(w){if(!RREG)return false;if(!w)return true;return PW()?!pvis(worldChain(w)):!!(CUM&&S.book&&firstOf(w)>S.book);}
+function rdSiteHidden(id){if(!RREG||!id)return false;const w=WORLD_BY[S.sel];const st=w&&(w.sites||[]).find(x=>x.id===id);return !st||rdWorldHidden(w)||!siteSeen(st);}
+function laterSite(id,ms){const g=RGEN;setTimeout(()=>{if(g!==RGEN)return;selectSite(id);},ms);}
+function rdNotRevealed(){hint("That place is not revealed by the books you have marked as read.");}
 /* legacy rule for events, unchanged */
 const evOk=e=>PW()?pvis(evChain(e)):(!S.book||(CUM?e.book<=S.book:e.book===S.book));
 const eraAt=(cur,k)=>PW()?reach(k):cur>=k;
@@ -1340,7 +1347,7 @@ function goPlace(wid,sid){
   if(!sid||noSurface(WORLD_BY[wid])){if(S.view==="world"&&S.sel!==wid)ascend(()=>selectWorld(wid,true));else if(S.view!=="world")selectWorld(wid,true);return;}
   if(S.view==="world"&&S.sel===wid){selectSite(sid);return;}
   if(S.view==="world"){S.sel=wid;descend(wid);}else descend(wid);
-  setTimeout(()=>selectSite(sid),1000);}
+  if(RREG)laterSite(sid,1000);else setTimeout(()=>selectSite(sid),1000);}
 TRV=K.raw.tree&&window.AtlasTree?window.AtlasTree.createView({
   el:$("#tree"),pack:K.raw,LY,LAY,TL,noteLabels:NOTE_LBL,
   visible:treeNodeSeen,filterOk,
@@ -1359,7 +1366,7 @@ const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||
 function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
-function selectWorld(id,fly){if(!WORLD_BY[id])return;const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
+function selectWorld(id,fly){if(!WORLD_BY[id])return;if(rdWorldHidden(WORLD_BY[id])){rdNotRevealed();return;}const nr=needRealm(WORLD_BY[id]);if(nr)setRealm(nr,true);S.sel=id;S.site=null;S.ev=null;if(MOB)dosCollapsed=true;refreshAll();
   const w=WORLD_BY[id];if(fly&&S.view==="galaxy"){orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}
   if(S.view==="world")descend(id);}
 function flyGalaxy(){if(S.view==="world"){ascend(()=>flyGalaxy());return;}orbG.flyTo(OVER_AT,OVER.dist,orbG.gyaw,OVER.pitch,OVER.dur);}
@@ -1368,6 +1375,7 @@ const fade=$("#fade");
 function transition(fn){fade.classList.add("on");setTimeout(()=>{fn();requestAnimationFrame(()=>fade.classList.remove("on"));},430);}
 function fitDist(r){const hf=2*Math.atan(Math.tan(camW.fov*DEG/2)*camW.aspect);return r/Math.sin(Math.min(hf,camW.fov*DEG)/2);}
 function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
+  if(rdWorldHidden(w)){rdNotRevealed();if(fromHistory)syncURL();return;}
   if(noSurface(w)){if(S.view==="world")ascend(()=>selectWorld(id,true));else selectWorld(id,true);return;}
   if(needRealm(w))setRealm(needRealm(w),true);
   S.sel=id;S.site=null;if(MOB)dosCollapsed=true;
@@ -1391,7 +1399,7 @@ let afterAscend=null;
 function ascend(after){if(history.state&&history.state.atlasSurface){afterAscend=after||null;history.back();return;}doAscend(after);}
 function doAscend(after){transition(()=>{S.view="galaxy";S.site=null;clearPlanet();freeMaps(null);SITE_EL.forEach(s=>s.el.remove());SITE_EL=[];$("#bake").hidden=true;
   const w=WORLD_BY[S.sel];if(w){orbG.t.copy(w.pos);orbG.gt.copy(w.pos);orbG.dist=orbG.gdist=flyDistFor(w);}refreshAll();if(after)setTimeout(after,60);});}
-function selectSite(id){S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
+function selectSite(id){if(rdSiteHidden(id))id=null;S.site=id;if(id&&MOB)dosCollapsed=false;renderDossier();renderCrumbs();syncURL();
   if(id&&PL){const o=SITE_EL.find(x=>x.s.id===id);if(o){S.interacted=true;
     /* turn the world so the place sits in daylight, between the sun and the viewer */
     const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));V.y=0;V.normalize();
@@ -1402,7 +1410,7 @@ function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();retu
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
   else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
-    else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site)setTimeout(()=>selectSite(e.site),900);}
+    else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site){if(RREG)laterSite(e.site,900);else setTimeout(()=>selectSite(e.site),900);}}
     else{S.sel=e.world;const w=WORLD_BY[e.world];orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}}
   if(MOB)dosCollapsed=false;refreshAll();S.ev=id;renderDossier();
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
@@ -1549,9 +1557,11 @@ function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:sto
   /* pack.start (PACK_FORMAT 20.4) opens straight onto a world when the link names none */
   const ps=K.raw.start;const t=st.world?st:(ps&&WORLD_BY[ps.world]?{world:ps.world,surface:ps.view==="surface",site:ps.site}:null);
   if(t&&seen(WORLD_BY[t.world])){
-    if(t.surface&&!noSurface(WORLD_BY[t.world])){descend(t.world);if(t.site)setTimeout(()=>selectSite(t.site),1200);}
+    if(t.surface&&!noSurface(WORLD_BY[t.world])){descend(t.world);if(t.site){if(RREG)laterSite(t.site,1200);else setTimeout(()=>selectSite(t.site),1200);}}
     else selectWorld(t.world,true);
     return true;}
+  /* a link to a place not revealed at this reading state stays on the galaxy with a short note */
+  if(RREG&&st.world&&rdWorldHidden(WORLD_BY[st.world])){rdNotRevealed();return "hidden";}
   return false;}
 
 /* ===================== START ===================== */
@@ -1566,7 +1576,7 @@ var RUI=null;
 function applyRd(st){
   setRd(st);setBookBar(PW()?-1:S.book);
   if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}
-  S.ev=null;
+  S.ev=null;if(S.site&&rdSiteHidden(S.site))S.site=null;
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();}
 function rdUnreviewed(){
