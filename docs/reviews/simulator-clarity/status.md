@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the SC4-E1 motion/flyby evidence unit at unchanged PR47 3ab737f (sc4e1-return-3ab737f.md: harness, raw log, 7 clips + sheets, coverage matrix) and decides whether SC4-E1 closes at builder-evidence scope and what remains before final technical sign-off.
-updated: 2026-11-10T16:26Z
+next-action: Claude repairs SC4-E1 video/log alignment and clean motion windows per sc4e1-review-3ab737f.md (isolated pause/1x/10x and flyby first); reuse accepted state series and correctly aligned unobscured scenario footage, return exact head.
+updated: 2026-11-10T17:24:05Z
 idle-runs: 0
-note: SC4-E1 evidence returned at unchanged 3ab737f: enforced harness 89/89 + 2/2 aggregate (SwiftShader, builder-run): deterministic Load-restored scenes, paused/1x/10x matched clips for isolated/wide/close/equal/unequal/flyby/merger, unbound flyby (E=+30.2, min sep 14.9, tide 0.94 -> relaxed, no merger) at 1280x800 and 390x844. Retained: SC7-O1 Low, Save/Load five-run gate, legacy labels, 200% text/screen reader, device/GPU/independent rendering limits. No code change, merge or release approval.
+note: At unchanged PR47 3ab737f, 2/2 flyby state series and 7/7 scenario artifact coverage accepted at builder-evidence scope. SC4-E1 partial: R1 timestamp origin mismatch and R2 contaminated recordings/fixed moving-body ROI remain. Recounted 83/83 conditional checks + 6 informational records, 2/2 aggregate; 7/7 sheets viewed, 7/7 videos hash-matched/decoded, 0 fresh browser runs. Other named gates retained; no final/release approval.
 
 
 
@@ -336,3 +336,5 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 
 - 2026-11-10T15:17:09Z ChatGPT: [final-packet review](packet-review-3ab737f.md) saved/read back at 03ef2ac3c2a187c7cf65202f0848c664580f094f. Fresh PR47 metadata confirms unchanged 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84 (0 application delta files). Read complete 7c harness/raw evidence and viewed 4/4 screenshots: 58/58 builder checks independently recounted (14+15+15+14). SC7-E1 closed with programmatic-focus/scroll and centre-hit-test limits; SC7-O1 Low dock clipping remains, all-control access not proved. Packet's optionalization of required SC4-E1 clips/flyby not accepted. Save/Load 2/3 remains builder-reported and gate open under existing five-run strict repair handoff; no release waiver. implementation-review/chatgpt -> implementation/claude for one bounded motion/flyby harness, matched clips and coverage matrix. No fresh test/browser run; prior exact-head checks remain historical. All 18/18 pack and 8/8 review statuses inspected; no stale self-audit. No app/PR-branch edit, merge, deployment or Mckay approval.
 - 2026-11-10T16:26Z Claude: [SC4-E1 evidence return](sc4e1-return-3ab737f.md) at unchanged PR47 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84 (no application change). [Harness](evidence-harness-sc4e1.mjs) blob 2f5b208, [raw log](evidence-sc4e1-3ab737f.jsonl): 89/89 scenario + 2/2 aggregate checks, negative controls pass, 0 console/shader messages; deterministic scenes via real Load, fixed cameras, paused/1x/10x matched segments with probe rows, simulated elapsed time and disk-crop pixel metrics; unbound flyby approaches (122.4 -> 14.9) and recedes with tide rise/relax at 1280x800 and 390x844; merger survivor/mass/cleanup/re-pause freeze. 7 clips (mp4 <=360 KB) + sheets in shots/sc4e1-*; coverage matrix with remaining limits. SwiftShader only. implementation/claude -> implementation-review/chatgpt. Not merged.
+
+- 2026-11-10T17:24:05Z — ChatGPT: saved [SC4-E1 review](sc4e1-review-3ab737f.md) in cb1429d19e82ee119a8667d1757f01b1e056903c; unchanged PR47 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84. Accepted enforced non-merging flyby/state coverage (2/2 series) and artifact inventory (7/7 categories); SC4-E1 remains partial for R1 alignment and R2 clean motion/ROI evidence. 83/83 conditional scenario checks + 6 informational records and 2/2 aggregate recounted; 7/7 sheets viewed, videos fully decoded and hash-matched. No independent browser execution, phase-rate certification, final technical or release approval. Handed bounded recording repair to Claude; all other gates retained.
