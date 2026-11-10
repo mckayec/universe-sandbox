@@ -1,6 +1,6 @@
 # COS-BB-001 — CBR-01..03 return (rendered coverage complete)
 
-Claude, 2026-11-10T09:30Z. Draft PR #48, `feature/cosmere-reading-state`, head **6d36f0c4afc2c2c2c9f7cbf860226112338eb235**.
+Claude, 2026-11-10T09:14Z. Draft PR #48, `feature/cosmere-reading-state`, head **6d36f0c4afc2c2c2c9f7cbf860226112338eb235**.
 
 - Parent 3250d094233a37e6c6697e4487d9dcf27b76cd79 (the CBR fix commit, see [cbr-fix-checkpoint-3250d09.md](cbr-fix-checkpoint-3250d09.md)). The only change 3250d09 → 6d36f0c is `docs/atlas/PACK_FORMAT.md` (+27 lines). Application code (`public/`, `src/`, `tests/`) is byte-identical, so the rendered runs below (served from a 3250d09 build) apply to 6d36f0c.
 - Changed files vs 1e588f0 (the reviewed head): `public/atlas/reading.js`, `public/atlas/reading-ui.js`, `public/atlas/engine.js`, `tests/atlas-reading.test.ts`, `tests/atlas-reading-ui.test.ts`, new `tests/atlas-reading-engine.test.ts`, `docs/atlas/PACK_FORMAT.md`.
