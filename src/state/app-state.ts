@@ -6,6 +6,7 @@ import { type ExhibitId } from '../exhibits.ts';
 import { type SandboxSnapshot } from '../sandbox-state.ts';
 import { ExhibitAudio } from '../exhibit-audio.ts';
 import { type EffectsMode, type RealismMode } from '../exhibit-runtime.ts';
+import { newDialogPresses } from '../kids-mode.ts';
 import { preferences } from '../scene/setup.ts';
 import type {
   WarpScript,
@@ -98,8 +99,8 @@ export const app = {
   } | null,
   /** Bumped by every mode change or Add cancel; a held touch begun under an older epoch can no longer place. */
   placementEpoch: 0,
-  /** Whether the latest press began inside the Kids grown-up dialog (a held canvas touch must not tap Leave). */
-  kidsPressInDialog: false,
+  /** Per-pointer record of presses that began inside the open Kids grown-up dialog (SC6-K3). */
+  kidsDialogPresses: newDialogPresses(),
   qualityTimer: 0,
   qualityFrames: 0,
   /** Set by visibility changes so the next frame is not measured as rendering time. */

@@ -5,7 +5,18 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { stripTypeScriptTypes } from 'node:module';
 import vm from 'node:vm';
-import { cancelArm, consumePlacement, dialogClickAllowed, pendingPlacementValid, toggleArm } from '../src/kids-mode.ts';
+import {
+  cancelArm,
+  consumePlacement,
+  dialogClickAllowed,
+  newDialogPresses,
+  notePointerCancel,
+  notePointerDown,
+  notePointerUp,
+  pendingPlacementValid,
+  resetDialogPresses,
+  toggleArm,
+} from '../src/kids-mode.ts';
 
 const pointer = readFileSync('src/ui/pointer.ts', 'utf8');
 const kids = readFileSync('src/ui/kids.ts', 'utf8');
@@ -79,6 +90,7 @@ function run(steps: Step[], options: { kids?: boolean; release?: boolean } = {})
     didDrag: false,
     orbitMode: false,
     paused: false,
+    kidsDialogPresses: newDialogPresses(),
   };
   const activePointers = new Map([[7, { x: 100, y: 100, type: 'touch' }]]);
   const ctx = vm.createContext({
@@ -111,6 +123,7 @@ function run(steps: Step[], options: { kids?: boolean; release?: boolean } = {})
     cancelArm,
     toggleArm,
     pendingPlacementValid,
+    resetDialogPresses,
     THREE: { Vector2: function () {} },
   });
   vm.runInContext(code, ctx);
@@ -201,11 +214,80 @@ test('SC6-K2: query-driven Kids start runs after the adult startup defaults', ()
 });
 
 test('grown-up dialog: a click counts only if the press began in the dialog or came from the keyboard', () => {
-  assert.equal(dialogClickAllowed(true, false), true, 'keyboard activation');
-  assert.equal(dialogClickAllowed(false, true), true, 'tap or click that began on the dialog');
-  assert.equal(dialogClickAllowed(false, false), false, 'held canvas touch released over Leave');
+  const s = newDialogPresses();
+  assert.equal(dialogClickAllowed(s, { detail: 0, pointerId: -1 }), true, 'keyboard activation');
+  notePointerDown(s, 8, true);
+  notePointerUp(s, 8);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 8 }), true, 'tap or click that began on the dialog');
+  notePointerDown(s, 7, false);
+  notePointerUp(s, 7);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 7 }), false, 'held canvas touch released over Leave');
   const kidsSource = readFileSync('src/ui/kids.ts', 'utf8');
   const press = kidsSource.indexOf("window.addEventListener('pointerdown', notePress, { capture: true })"),
     gates = kidsSource.indexOf('window.addEventListener(type, gate, { capture: true })');
   assert.ok(press >= 0 && press < gates, 'press tracking runs before the gate');
+  assert.ok(kidsSource.includes("window.addEventListener('pointerup', noteRelease, { capture: true })"));
+  assert.ok(kidsSource.includes("window.addEventListener('pointercancel', noteCancel, { capture: true })"));
+});
+
+test('SC6-K3: dialog authorization belongs to the originating pointer, not the latest press', () => {
+  // 1. Pointer 7 held on the canvas; pointer 8 presses inside the dialog; pointer 7's click must not be authorized.
+  let s = newDialogPresses();
+  notePointerDown(s, 7, false);
+  notePointerDown(s, 8, true);
+  notePointerUp(s, 7);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 7 }), false, 'other contact cannot grant');
+  notePointerUp(s, 8);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 8 }), true, 'dialog contact still allowed');
+  // 2. Pointer 7 presses a dialog button; pointer 8 presses the canvas; pointer 7's click stays authorized.
+  s = newDialogPresses();
+  notePointerDown(s, 7, true);
+  notePointerDown(s, 8, false);
+  notePointerUp(s, 7);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 7 }), true, 'other contact cannot revoke');
+  // Interleaved without a pointerup (click resolved while still recorded down).
+  s = newDialogPresses();
+  notePointerDown(s, 7, false);
+  notePointerDown(s, 8, true);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 7 }), false);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 8 }), true);
+});
+
+test('SC6-K3: canceled, consumed and reused gestures keep no stale permission', () => {
+  const s = newDialogPresses();
+  notePointerDown(s, 7, true);
+  notePointerCancel(s, 7);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 7 }), false, 'canceled gesture');
+  notePointerDown(s, 7, true);
+  notePointerUp(s, 7);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 7 }), true);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 7 }), false, 'authorization consumed by its click');
+  notePointerDown(s, 1, true);
+  notePointerUp(s, 1);
+  notePointerDown(s, 1, false); // mouse id reused by a new canvas press before any click
+  notePointerUp(s, 1);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 1 }), false, 'reused id takes the new press origin');
+  notePointerDown(s, 9, true);
+  resetDialogPresses(s); // dialog closed or reopened
+  notePointerUp(s, 9);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 9 }), false, 'dialog lifetime ends authorization');
+  notePointerDown(s, 3, true);
+  notePointerUp(s, 3);
+  assert.equal(dialogClickAllowed(s, { detail: 1 }), true, 'click without pointer id uses the releasing pointer');
+  notePointerDown(s, 4, false);
+  notePointerUp(s, 4);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: undefined }), false);
+  assert.equal(dialogClickAllowed(s, { detail: 0 }), true, 'keyboard still allowed');
+});
+
+test('SC6-K3: the dialog resets press authorization when it opens and closes', () => {
+  const kidsSource = readFileSync('src/ui/kids.ts', 'utf8');
+  const grown = body(kidsSource, "document.querySelector<HTMLButtonElement>('#kids-grownups')!.onclick = () =>");
+  assert.ok(
+    grown.indexOf('resetDialogPresses') >= 0 && grown.indexOf('resetDialogPresses') < grown.indexOf('showDialog'),
+  );
+  assert.ok(body(kidsSource, "'#kids-exit-cancel')!.onclick = () =>").includes('resetDialogPresses'));
+  assert.ok(body(kidsSource, "'#kids-exit-confirm')!.onclick = () =>").includes('resetDialogPresses'));
+  const notePress = body(kidsSource, 'function notePress(e: PointerEvent)');
+  assert.ok(notePress.includes('e.pointerId'), 'presses are recorded per pointer');
 });

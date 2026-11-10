@@ -81,12 +81,56 @@ export function pendingPlacementValid(pending: { epoch: number } | null, gate: P
 }
 
 /**
- * A pointer click on the grown-up dialog counts only if the press also began inside the dialog (keyboard
- * activation always counts). A child's finger held on the canvas while a grown-up opens the dialog would otherwise
- * release as a tap on whichever dialog button appeared under it (found by the 6d rendered harness).
+ * A pointer click on the grown-up dialog counts only if that same pointer's press began inside the dialog while it
+ * was open (keyboard or assistive activation, `detail === 0`, always counts). A child's finger held on the canvas
+ * while a grown-up opens the dialog would otherwise release as a tap on whichever dialog button appeared under it
+ * (6d rendered harness). Authorization belongs to the originating pointer (SC6-K3): a different contact can neither
+ * grant nor revoke it, and it ends with the gesture (release consumed by its click, cancel) or the dialog's lifetime.
  */
-export function dialogClickAllowed(keyboard: boolean, pressStartedInDialog: boolean) {
-  return keyboard || pressStartedInDialog;
+export type DialogPresses = {
+  /** Pointers currently down: whether each press began inside the open dialog. */
+  down: Map<number, boolean>;
+  /** Pointers released but whose click has not arrived yet. */
+  released: Map<number, boolean>;
+  /** The most recently released pointer, for a click that carries no pointer identity. */
+  last: number | null;
+};
+export function newDialogPresses(): DialogPresses {
+  return { down: new Map(), released: new Map(), last: null };
+}
+export function notePointerDown(s: DialogPresses, pointerId: number, inDialog: boolean) {
+  s.down.set(pointerId, inDialog);
+  s.released.delete(pointerId);
+}
+export function notePointerUp(s: DialogPresses, pointerId: number) {
+  s.released.set(pointerId, s.down.get(pointerId) === true);
+  s.down.delete(pointerId);
+  s.last = pointerId;
+}
+export function notePointerCancel(s: DialogPresses, pointerId: number) {
+  s.down.delete(pointerId);
+  s.released.delete(pointerId);
+  if (s.last === pointerId) s.last = null;
+}
+/** Opening or closing the dialog ends every earlier authorization: only presses made on the open dialog count. */
+export function resetDialogPresses(s: DialogPresses) {
+  s.down.clear();
+  s.released.clear();
+  s.last = null;
+}
+/**
+ * Decides one click and consumes the matching authorization. Pointer clicks carry the causing pointer's id
+ * (Pointer Events 3 §4.2.12.1); a click with no usable id falls back to the most recently released pointer, which is
+ * the pointer whose release dispatches that click.
+ */
+export function dialogClickAllowed(s: DialogPresses, click: { detail: number; pointerId?: number }) {
+  if (click.detail === 0) return true;
+  const id = typeof click.pointerId === 'number' && click.pointerId >= 0 ? click.pointerId : s.last;
+  if (id === null) return false;
+  const allowed = s.released.has(id) ? s.released.get(id) === true : s.down.get(id) === true;
+  s.released.delete(id);
+  if (s.last === id) s.last = null;
+  return allowed;
 }
 
 /** `?kids=1` starts the exhibit in Kids mode (for a dedicated kiosk); anything else starts in the adult layout. */

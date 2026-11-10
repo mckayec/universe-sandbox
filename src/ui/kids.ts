@@ -3,6 +3,10 @@
 import {
   consumePlacement,
   dialogClickAllowed,
+  notePointerCancel,
+  notePointerDown,
+  notePointerUp,
+  resetDialogPresses,
   effectiveFeedbackMode,
   kidsAllowsControl,
   kidsAllowsKey,
@@ -28,15 +32,23 @@ function regionOf(target: EventTarget | null) {
   const region = target.closest(KIDS_REGION_IDS.map(id => `#${id}`).join(','));
   return region?.id ?? null;
 }
-/** Records where the most recent press began, so a click on the grown-up dialog can be traced to a press inside it. */
-function notePress(e: Event) {
-  app.kidsPressInDialog = e.target instanceof Element && regionOf(e.target) === 'kids-dialog';
+/** Records, per pointer, whether its press began inside the open grown-up dialog (SC6-K3). */
+function notePress(e: PointerEvent) {
+  // A hidden dialog receives no presses, and opening/closing it resets every record, so only presses on the open
+  // dialog can authorize its clicks.
+  notePointerDown(app.kidsDialogPresses, e.pointerId, regionOf(e.target) === 'kids-dialog');
+}
+function noteRelease(e: PointerEvent) {
+  notePointerUp(app.kidsDialogPresses, e.pointerId);
+}
+function noteCancel(e: PointerEvent) {
+  notePointerCancel(app.kidsDialogPresses, e.pointerId);
 }
 /** Blocks an event aimed at an adult control while Kids mode is on. Canvas input is handled in pointer.ts. */
 function gate(e: Event) {
   if (!app.kidsMode) return;
   if (e.type === 'click' && e.target instanceof Element && regionOf(e.target) === 'kids-dialog') {
-    if (dialogClickAllowed((e as MouseEvent).detail === 0, app.kidsPressInDialog)) return;
+    if (dialogClickAllowed(app.kidsDialogPresses, e as MouseEvent & { pointerId?: number })) return;
     e.preventDefault();
     e.stopImmediatePropagation();
     return;
@@ -117,8 +129,10 @@ export function setKidsMode(on: boolean) {
 
 export function bindKidsMode() {
   // Window capture runs before the document-level and element handlers, so gated events never reach them.
-  // notePress is registered first so a gated pointerdown still updates where the latest press began.
+  // Press tracking is registered first so a gated pointerdown is still recorded for its own pointer.
   window.addEventListener('pointerdown', notePress, { capture: true });
+  window.addEventListener('pointerup', noteRelease, { capture: true });
+  window.addEventListener('pointercancel', noteCancel, { capture: true });
   for (const type of ['click', 'pointerdown', 'input', 'change', 'dblclick', 'contextmenu'])
     window.addEventListener(type, gate, { capture: true });
   window.addEventListener('keydown', gateKey, { capture: true });
@@ -138,10 +152,15 @@ export function bindKidsMode() {
   document.querySelector<HTMLButtonElement>('#kids-home')!.onclick = fitAllObjects;
   document.querySelector<HTMLButtonElement>('#kids-grownups')!.onclick = () => {
     setArmed(cancelArm().armed);
+    resetDialogPresses(app.kidsDialogPresses);
     showDialog(dialog);
   };
-  document.querySelector<HTMLButtonElement>('#kids-exit-cancel')!.onclick = () => hideDialog(dialog);
+  document.querySelector<HTMLButtonElement>('#kids-exit-cancel')!.onclick = () => {
+    resetDialogPresses(app.kidsDialogPresses);
+    hideDialog(dialog);
+  };
   document.querySelector<HTMLButtonElement>('#kids-exit-confirm')!.onclick = () => {
+    resetDialogPresses(app.kidsDialogPresses);
     hideDialog(dialog, false);
     setKidsMode(false);
     document.querySelector<HTMLButtonElement>('#kids-mode')!.focus({ preventScroll: true });
