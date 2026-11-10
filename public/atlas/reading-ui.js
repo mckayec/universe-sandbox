@@ -9,8 +9,9 @@
    Rules from the accepted design (revision 3) and implementation-handoff-2026-11-09.md:
    - ticking a work never ticks any other work; starting from a preset, the checklist starts from that preset's
      read prefix and the result is labelled a custom selection, never a preset;
-   - unticking the last work is the safe state (nothing read), not All; All is its own deliberate button;
-   - the safe state opens the panel by default so the reader can choose;
+   - unticking the last work is the deliberate 'none' state (nothing read, persisted as #read=_none), not All and not
+     the invalid-link safe state; All is its own deliberate button;
+   - the safe state (rejected link or stored value) opens the panel by default so the reader can choose;
    - the status line always lists the works actually selected. */
 (function (root) {
   'use strict';
@@ -26,7 +27,7 @@
     const o = opts || {};
     const d = R.describe(state, reg, o.bookTitle || '');
     const rs = R.readSetOf(state, reg) || new Set();
-    const perWork = state && (state.mode === 'preset' || state.mode === 'set');
+    const perWork = state && (state.mode === 'preset' || state.mode === 'set' || state.mode === 'none');
     const groups = [];
     const byBucket = new Map();
     reg.order.forEach((id) => {
@@ -162,7 +163,7 @@
 
     function update() {
       const d = R.describe(opts.getState(), reg, opts.bookTitle ? opts.bookTitle() : '');
-      btn.classList.toggle('on', d.kind === 'preset' || d.kind === 'set');
+      btn.classList.toggle('on', d.kind === 'preset' || d.kind === 'set' || d.kind === 'none');
       btn.classList.toggle('warn', d.kind === 'safe');
       btn.title = d.label;
       if (isOpen) {

@@ -38,10 +38,10 @@ test('ticking a later work from a preset becomes a custom set and ticks nothing 
   assert.deepEqual(plain(m.works), ['Fixture A1', 'Fixture B1']);
 });
 
-test('unticking the last work is the safe state, never All', () => {
+test('unticking the last work is the deliberate none state, never All or the invalid-link safe state', () => {
   const st = R.toggleWork({ mode: 'set', ids: ['fx-a2'] }, 'fx-a2', reg);
   const m = UI.model(R, st, reg, {});
-  assert.equal(m.kind, 'safe');
+  assert.equal(m.kind, 'none');
   assert.deepEqual(checked(m), []);
   assert.equal(m.allPressed, false);
 });

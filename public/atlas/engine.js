@@ -476,7 +476,7 @@ function start(pack){
   const K=normalise(pack);buildShell(K);
   const BOOKS=K.books,BOOK_IDS=K.bookIds,WORLDS=K.worlds,EVENTS=K.events,G=K.G,UI=K.ui,CUM=K.mode==="cumulative";
   const GROUP_BY={};K.groups.forEach(g=>GROUP_BY[g.id]=g);
-  const GROUP_NAME=g=>{const gr=GROUP_BY[g];if(!gr)return "";if(!gr.eras)return gr.name||"";let v=gr.name;const cur=S.book||99;Object.keys(gr.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(eraAt(cur,k)&&gr.eras[k]&&gr.eras[k].name)v=gr.eras[k].name;});return v||"";};
+  const GROUP_NAME=g=>{const gr=GROUP_BY[g];if(!gr)return "";if(!gr.eras)return gr.name||"";let v=gr.name;const cur=S.book||99;Object.keys(gr.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(gr.eras[k]&&gr.eras[k].name&&eraFieldOk(gr,k,"name",cur))v=gr.eras[k].name;});return v||"";};
   let MOB=isMob();
   /* budgets fixed at start-up: phones and coarse pointers get the light versions even if the window later grows */
   const SMALL=MOB||matchMedia("(pointer:coarse)").matches;
@@ -725,7 +725,7 @@ const bakeMat=new THREE.ShaderMaterial({vertexShader:BAKE_VS,fragmentShader:BAKE
     uP0:{value:new THREE.Color()},uP1:{value:new THREE.Color()},uP2:{value:new THREE.Color()},uP3:{value:new THREE.Color()},uP4:{value:new THREE.Color()},uP5:{value:new THREE.Color()}}});
 const bakeScene=new THREE.Scene();const bakeCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 const bakeQuad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),bakeMat);bakeQuad.frustumCulled=false;bakeScene.add(bakeQuad);
-function gfxFor(w,book){let g=Object.assign({},w.gfx||{});if(w.eras){Object.keys(w.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if((PW()?reach(k):book>=k)&&w.eras[k]&&w.eras[k].gfx)g=Object.assign(g,w.eras[k].gfx);});}return g;}
+function gfxFor(w,book){let g=Object.assign({},w.gfx||{});if(w.eras){Object.keys(w.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(w.eras[k]&&w.eras[k].gfx&&eraFieldOk(w,k,"gfx",book))g=Object.assign(g,w.eras[k].gfx);});}return g;}
 function setBakeU(g,seedKey){const u=bakeMat.uniforms;const R=rng(hashStr(seedKey));
   u.uType.value=TYPES[g.type]!=null?TYPES[g.type]:0;u.uSeed.value.set(R()*40-20,R()*40-20,R()*40-20);
   u.uFreq.value=g.freq||1.6;u.uWarp.value=g.warp==null?.6:g.warp;u.uRough.value=g.rough==null?.6:g.rough;u.uSea.value=g.sea==null?.5:g.sea;
@@ -940,7 +940,7 @@ var RGEN=0;
   const r=RDG.normRegistry(K.raw);
   if(r&&!r.ok)console.warn("Atlas: invalid reading registry; per-work modes are off",r.errors);
   RREG=r&&r.ok?r:null;})();
-function PW(){return !!(RREG&&S.rd&&(S.rd.mode==="preset"||S.rd.mode==="set"||S.rd.mode==="safe"));}
+function PW(){return !!(RREG&&S.rd&&(S.rd.mode==="preset"||S.rd.mode==="set"||S.rd.mode==="none"||S.rd.mode==="safe"));}
 /* apply a reading state: legacy/all keep S.book; per-work modes set S.book=0 and fill RSET. RGEN lets delayed
    callbacks notice that the state changed while they were pending. */
 function setRd(st){
@@ -991,6 +991,17 @@ function eTitle(e){return fOk(e,"title",evChain(e))?e.title:RD_PH.event;}
 function eText(e){return fOk(e,"text",evChain(e))?e.text:"";}
 /* a world era (child record): its own `gate` when present, else its numeric bucket, ANDed with the world chain */
 function eraOn(w,k){return pvis(worldChain(w).concat([gateOf(w.eras[k],k)]));}
+/* CBR-02: an era override of a field (name, short, blurb, facts, status, gfx, …) is shown only when EVERY gate on
+   its path passes: the world chain, the era record gate, the WORLD's own field gate for that field (an ancestor
+   restriction: a public era field never overrides a hidden world field) and the era's own field gate
+   (eras[k].gates[field]; absent → inherits, present but invalid → hidden). A hidden override is skipped, so the
+   earlier visible value stays. Objects that are not pack worlds (groups) use the numeric bucket as their record
+   gate. Legacy/All keep the numeric rule. */
+function eraFieldOk(o,k,key,cur){
+  if(!PW())return cur>=k;
+  const era=o&&o.eras&&o.eras[k];if(!era)return false;
+  const rec=WORLD_BY[o.id]===o?worldChain(o).concat([gateOf(era,k)]):[bucketGate(k)];
+  return pvis(rec.concat([fGate(o,key),fGate(era,key)]));}
 /* intro copy (text, legend) has no record above it, so in per-work modes each part shows only with an explicit
    intro.gates.text / intro.gates.legend (the Cosmere legend names later worlds) */
 function introOk(f){return !PW()||pvis([fGate(K.intro,f)]);}
@@ -1016,7 +1027,8 @@ function rdLabel(){return RREG&&S.rd?RDG.describe(S.rd,RREG,S.book&&BOOKS[S.book
 const firstOf=w=>w.first||(w.books&&w.books.length?Math.min(...w.books):1);
 /* optional book gating for labels, glows, territories and links: `books:[..]` = only in those books, `book`/`first` = from that book on */
 const gateOk=(it,b)=>{if(PW())return gatePW(it);if(!it||!b)return true;if(it.books)return ARR(it.books).includes(b);const f=it.first!=null?it.first:it.gateBook;return f==null||b>=f;};
-const eraVal=(o,key)=>{let v=PW()&&WORLD_BY[o.id]===o&&!fOk(o,key,worldChain(o))?undefined:o[key];const cur=CUM?EFF():S.book;eraKeys(o).forEach(k=>{if(eraAt(cur,k,o)&&o.eras[k][key]!=null)v=o.eras[k][key];});return v;};
+const eraVal=(o,key)=>{let v=PW()&&WORLD_BY[o.id]===o&&!fOk(o,key,worldChain(o))?undefined:o[key];const cur=CUM?EFF():S.book;
+  eraKeys(o).forEach(k=>{if(o.eras[k][key]!=null&&eraFieldOk(o,k,key,cur))v=o.eras[k][key];});return v;};
 const realmOk=it=>{if(!it)return true;const r=it.realm||it.realms;if(!r||typeof r!=="string"&&!Array.isArray(r))return true;return ARR(r).includes(S.realm||"physical");};
 const seen=w=>(PW()?pvis(worldChain(w)):(!CUM||!S.book||firstOf(w)<=S.book))&&realmOk(w)&&filterOk(w);
 const inBook=w=>PW()||!S.book||(w.books||[]).includes(S.book);
@@ -1024,7 +1036,7 @@ const siteEraOk=s=>{if(PW())return !(s.until&&reach(s.until))&&!(s.since&&!reach
 const siteSeen=s=>siteEraOk(s)&&(PW()?pvis(siteChain(s)):!CUM||!S.book||!(s.books&&s.books.length)||Math.min(...s.books)<=S.book)&&realmOk(s);
 const evFor=(wid,site)=>EVENTS.filter(e=>e.world===wid&&(site==null||e.site===site)&&filterOk(e)&&evOk(e));
 const eraKeys=w=>w.eras?Object.keys(w.eras).map(Number).filter(k=>isFinite(k)&&w.eras[k]).sort((a,b)=>a-b):[];
-function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(eraAt(S.book,k,w)&&w.eras[k].status)s=w.eras[k].status;});
+function statusFor(w){let s=PW()&&!fOk(w,"status",worldChain(w))?"":w.status;eraKeys(w).forEach(k=>{if(w.eras[k].status&&eraFieldOk(w,k,"status",S.book))s=w.eras[k].status;});
   if(!PW()&&!S.book&&w.eras){
     if(CUM){const ks=eraKeys(w).filter(k=>w.eras[k].status);if(ks.length){const k=Math.max(...ks);s=w.status+" → "+w.eras[k].status;}}
     else{const ks=eraKeys(w);if(ks.length){const k=Math.max(...ks);if(w.eras[k].status)s=w.status+" → "+w.eras[k].status;}}}
@@ -1162,7 +1174,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     gb.addEventListener("click",e=>{if(e.target.closest("[data-act]"))return;toggleSheet();});
     gb.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleSheet();}});}
 }
-function eraBlurb(w){let b=fOk(w,"blurb",worldChain(w))?w.blurb:"";const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(eraAt(cur,k,w)&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
+function eraBlurb(w){let b=fOk(w,"blurb",worldChain(w))?w.blurb:"";const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(w.eras[k].blurb&&eraFieldOk(w,k,"blurb",cur))b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
 const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
 function placeMeta(s){return LY?LY.itemMeta(LAY,TL,s):"";}
@@ -1404,6 +1416,23 @@ function flyHuman(){if(S.view==="world"){ascend(()=>flyHuman());return;}orbG.fly
 const fade=$("#fade");
 function transition(fn){fade.classList.add("on");setTimeout(()=>{fn();requestAnimationFrame(()=>fade.classList.remove("on"));},430);}
 function fitDist(r){const hf=2*Math.atan(Math.tan(camW.fov*DEG/2)*camW.aspect);return r/Math.sin(Math.min(hf,camW.fov*DEG)/2);}
+/* CBR-03: a descent is a ticket {id, w, RGEN at request, descent number}. The fade transition and the deferred
+   Earth-texture load re-check it before committing: a newer descent supersedes it, and a reading-state change
+   (RGEN) or a selection change while it was pending forces a re-check of selection and visibility with the NEW
+   state. A stale ticket never sets the world view or builds the surface; it only undoes its own transient UI. */
+let DGEN=0;
+function descendTicket(id,w){return {id:id,w:w,g:RGEN,d:++DGEN};}
+function descendLive(t){
+  if(t.d!==DGEN||WORLD_BY[t.id]!==t.w)return false;
+  if(t.g===RGEN&&S.sel===t.id)return true;
+  return S.sel===t.id&&!rdWorldHidden(t.w)&&!noSurface(t.w);}
+function descendCancel(t,entered){
+  if(t.d!==DGEN)return; // a newer descent owns the fade, the bake bar and the history entry
+  DGEN++;$("#bake").hidden=true;
+  if(RREG&&rdWorldHidden(t.w)){if(S.sel===t.id)S.sel=null;rdNotRevealed();}
+  if(entered&&S.view==="world"){ascend(()=>refreshAll());return;}
+  if(history.state&&history.state.atlasSurface){try{history.replaceState(null,"",urlFor({view:"galaxy"}));}catch(e){}}
+  refreshAll();}
 function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
   if(rdWorldHidden(w)){rdNotRevealed();if(fromHistory)syncURL();return;}
   if(noSurface(w)){if(S.view==="world")ascend(()=>selectWorld(id,true));else selectWorld(id,true);return;}
@@ -1411,9 +1440,13 @@ function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
   S.sel=id;S.site=null;if(MOB)dosCollapsed=true;
   /* one history entry per visit to a surface, so Back returns to the galaxy */
   if(!fromHistory&&urlReady){const st={atlasSurface:true};if(history.state&&history.state.atlasSurface)history.replaceState(st,"",urlFor({view:"world",sel:id}));else history.pushState(st,"",urlFor({view:"world",sel:id}));}
-  transition(()=>{S.view="world";hideTip();syncURL();
+  const tk=descendTicket(id,w);
+  transition(()=>{
+    if(!descendLive(tk)){descendCancel(tk,false);return;}
+    S.view="world";hideTip();syncURL();
     const bk=$("#bake");bk.hidden=false;const bi=bk.querySelector("i");
-    const go=()=>{buildPlanet(w,S.book,p=>{bi.style.width=(p*100).toFixed(0)+"%";if(p>=1)setTimeout(()=>bk.hidden=true,400);});buildSiteLabels(w);
+    const go=()=>{if(!descendLive(tk)||S.view!=="world"){descendCancel(tk,true);return;}
+      buildPlanet(w,S.book,p=>{bi.style.width=(p*100).toFixed(0)+"%";if(p>=1)setTimeout(()=>bk.hidden=true,400);});buildSiteLabels(w);
       /* open with the world's best-known place turned toward the sun */
       const hero=SITE_EL.find(o=>o.s.id===w.hero)||SITE_EL[0];
       if(hero&&PL){const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));
@@ -1560,10 +1593,21 @@ function syncURL(){if(!urlReady)return;const u=urlFor();if(u!==location.pathname
 /* nothing is written to the address bar or storage until the start-up state has been restored from them */
 let urlReady=false,lastBook=null,lastAnn="",lastRd=null;
 /* per-work hash parameters; the safe state keeps the rejected parameters until the reader makes a choice */
+/* the rejected parameters are captured once, at start-up, so Back/Forward to another entry cannot swap them */
+let RD_REJ=[];
 function rdParams(q){
-  if(S.rd.mode==="safe"){const old=new URLSearchParams((location.hash||"").replace(/^#/,""));
-    RDG.READ_PARAMS.forEach(k=>old.getAll(k).forEach(v=>q.append(k,v)));return;}
+  if(S.rd.mode==="safe"){RD_REJ.forEach(p=>q.append(p[0],p[1]));return;}
   const hp=RDG.hashParams(S.rd);Object.keys(hp).forEach(k=>q.set(k,hp[k]));}
+/* CBR-01: Back/Forward never changes the reading state (it is the reader's last deliberate choice, also kept in
+   storage), so an older entry's reading parameter (e.g. a work since unticked) is rewritten to the current one
+   before it can be reloaded or shared. Only the reading parameters of the entry are touched. */
+function rdFixURL(){
+  if(!RREG||!urlReady)return;
+  const cur=new URLSearchParams((location.hash||"").replace(/^#/,""));
+  const q=new URLSearchParams();if(PW())rdParams(q);else if(S.book)q.set("book",S.book);
+  RDG.READ_PARAMS.forEach(k=>cur.delete(k));cur.forEach((v,k)=>q.append(k,v));
+  const h=q.toString();const u=location.pathname+location.search+(h?"#"+h:"");
+  if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
 const RD_KEY=RDG?RDG.STORE_V2+(K.raw.id||K.meta.title||"pack"):"";
 function storeRd(){if(!RREG)return;const v=RDG.storeValue(S.rd);if(v==null||v===lastRd)return;lastRd=v;try{localStorage.setItem(RD_KEY,v);}catch(e){}}
 function readStored(k){try{return localStorage.getItem(k);}catch(e){return null;}}
@@ -1575,7 +1619,7 @@ function afterRefresh(){
   const w=S.sel&&WORLD_BY[S.sel];const ann=(w?wName(w)+(S.view==="world"?", on the surface":", selected"):"No world selected")+(PW()?". "+rdLabel():S.book?". Reading "+BOOKS[S.book].title:"");
   if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
   syncURL();}
-addEventListener("popstate",()=>{const st=parseHash();
+addEventListener("popstate",()=>{rdFixURL();const st=parseHash();
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
   else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
@@ -1599,6 +1643,7 @@ function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:sto
 function setBookBar(b){$("#books").querySelectorAll("button[data-b]").forEach(x=>x.setAttribute("aria-pressed",String(+x.dataset.b===b)));const sel=$("#books .bkpick");if(sel)sel.value=String(b);}
 if(RREG){const maxB=Math.max(0,...BOOK_IDS);
   const init=RDG.initialState(location.hash,readStored(RD_KEY),readStored(BOOK_KEY),RREG,maxB);
+  if(init.state.mode==="safe"&&init.source==="url"){const h=new URLSearchParams((location.hash||"").replace(/^#/,""));RDG.READ_PARAMS.forEach(k=>h.getAll(k).forEach(v=>RD_REJ.push([k,v])));}
   setRd(init.state);setBookBar(PW()?-1:S.book);}
 /* Reading panel (reading-ui.js): preset selector + per-work checklist. Each choice re-renders through the same
    path as the book bar; a now-hidden selected world is left (ascending from its surface), the event is closed. */

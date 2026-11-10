@@ -217,11 +217,16 @@
 
   /* ---------- reading state ---------- */
   /* States: {mode:'all'} | {mode:'legacy', book} | {mode:'preset', preset, v, work} | {mode:'set', ids}
-     | {mode:'safe', reason}. 'all' and 'legacy' keep today's numeric rules; 'safe' reveals only public content. */
+     | {mode:'none'} | {mode:'safe', reason}. 'all' and 'legacy' keep today's numeric rules. 'none' is the reader's
+     deliberate empty selection (nothing read): valid, persisted and written as `#read=_none` (a reserved token that
+     can never be a work ID, which must start with a letter or digit; an empty `#read=` stays an invalid link). 'safe' is
+     the fail-closed state for an invalid link or stored value: it reveals the same public-only content but never
+     writes storage and keeps the rejected parameter until the reader chooses (CBR-01). */
+  const NOTHING = '_none';
 
   function readSetOf(state, reg) {
     if (!state || !reg) return null;
-    if (state.mode === 'safe') return new Set();
+    if (state.mode === 'safe' || state.mode === 'none') return new Set();
     if (state.mode === 'set') return new Set(state.ids);
     if (state.mode === 'preset') {
       const seq = reg.presets.get(state.preset).versions.get(state.v);
@@ -235,6 +240,7 @@
     if (s.mode === 'all') return true;
     if (s.mode === 'legacy') return Number.isInteger(s.book) && s.book > 0 && s.book <= maxBook;
     if (!reg || !reg.ok) return false;
+    if (s.mode === 'none') return Object.keys(s).length === 1;
     if (s.mode === 'set')
       return (
         Array.isArray(s.ids) &&
@@ -272,6 +278,7 @@
     }
     if (!reg || !reg.ok) return { present: true, state: safe(k + ' without a registry') };
     if (k === 'read') {
+      if (val === NOTHING) return { present: true, state: { mode: 'none' } };
       const ids = val.split(',');
       const s = { mode: 'set', ids: ids };
       return { present: true, state: validState(s, reg, maxBook) ? s : safe('invalid read') };
@@ -324,6 +331,7 @@
     if (state.mode === 'legacy') return { book: String(state.book) };
     if (state.mode === 'preset') return { upto: state.preset + ':' + state.v + ':' + state.work };
     if (state.mode === 'set') return { read: state.ids.join(',') };
+    if (state.mode === 'none') return { read: NOTHING };
     return {};
   }
 
@@ -337,14 +345,14 @@
 
   /* Checklist toggle. Starting from a preset, the explicit selection is the preset's read prefix; the result is
      always a custom set (never relabelled as a preset). Ticking a work never ticks any other work. Unticking the
-     last work returns to All only by an explicit separate choice: an empty selection is the safe state. */
+     last work is the deliberate 'none' state (nothing read, persisted); All is only ever its own explicit choice. */
   function toggleWork(state, id, reg) {
     if (!reg || !reg.ok || !reg.works.has(id)) return state;
     const cur = readSetOf(state, reg) || new Set();
     const next = new Set(cur);
     if (next.has(id)) next.delete(id);
     else next.add(id);
-    if (!next.size) return safe('nothing selected');
+    if (!next.size) return { mode: 'none' };
     return { mode: 'set', ids: reg.order.filter((w) => next.has(w)) };
   }
 
@@ -364,6 +372,8 @@
         label: 'This reading link could not be read — choose how far you’ve read',
         works: [],
       };
+    if (state.mode === 'none')
+      return { kind: 'none', label: 'Nothing read yet: showing spoiler-free content only', works: [] };
     if (state.mode === 'legacy')
       return {
         kind: 'legacy',

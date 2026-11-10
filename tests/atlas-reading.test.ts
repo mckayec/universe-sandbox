@@ -236,12 +236,54 @@ test('checklist and preset controls: explicit sets, no implied ticks, unticking 
   // from All, ticking a single later work selects only that work
   const solo = R.toggleWork({ mode: 'all' }, 'fx-a3', reg);
   assert.deepEqual(plain(solo), { mode: 'set', ids: ['fx-a3'] });
-  // unticking narrows immediately; empty selection is the safe state, not All
+  // unticking narrows immediately; empty selection is the deliberate none state, not All and not safe (CBR-01)
   s = R.toggleWork(s, 'fx-a2', reg);
   assert.deepEqual(plain(s.ids), ['fx-a1', 'fx-b1']);
-  assert.equal(R.toggleWork(solo, 'fx-a3', reg).mode, 'safe');
+  assert.equal(R.toggleWork(solo, 'fx-a3', reg).mode, 'none');
   assert.equal(R.toggleWork(s, 'zz9', reg), s, 'unknown id is ignored');
   assert.match(R.describe({ mode: 'preset', preset: 'pub', v: 2, work: 'fx-a2' }, reg).label, /through Fixture A2/);
   assert.match(R.describe({ mode: 'legacy', book: 2 }, reg, 'X').label, /series grouping/);
   assert.equal(R.describe({ mode: 'safe' }, reg).kind, 'safe');
+});
+
+test('CBR-01: deliberate empty selection persists and round-trips; invalid links stay safe and write nothing', () => {
+  const stored1 = JSON.stringify({ mode: 'set', ids: ['fx-a1'] });
+  const starts: [string, any, string | null][] = [
+    ['from URL', R.initialState('#read=fx-a1', null, null, reg, MAX).state, null],
+    ['from stored set', R.initialState('', stored1, null, reg, MAX).state, stored1],
+    ['from preset', R.choosePreset(reg, 'pub', 'fx-a1'), null],
+  ];
+  for (const [label, start] of starts) {
+    assert.deepEqual(Array.from(R.readSetOf(start, reg)), ['fx-a1'], label);
+    const none = R.toggleWork(start, 'fx-a1', reg);
+    assert.deepEqual(plain(none), { mode: 'none' }, label);
+    assert.equal(R.readSetOf(none, reg).size, 0, label + ': nothing read');
+    // persisted and written to the URL, replacing the old work
+    const sv = R.storeValue(none);
+    assert.equal(sv, JSON.stringify({ mode: 'none' }), label);
+    const hp = plain(R.hashParams(none));
+    assert.deepEqual(hp, { read: '_none' }, label);
+    const hash = '#' + new URLSearchParams(hp).toString() + '&world=w1';
+    // reload from the shared URL and from storage alone: still nothing read, never the old work, never All
+    for (const [how, st] of [
+      ['url', R.initialState(hash, stored1, null, reg, MAX).state],
+      ['storage', R.initialState('', sv, null, reg, MAX).state],
+      ['url+storage', R.initialState(hash, sv, '3', reg, MAX).state],
+    ]) {
+      assert.deepEqual(plain(st), { mode: 'none' }, label + ' reload ' + how);
+      assert.equal(R.validState(st, reg, MAX), true);
+    }
+    assert.equal(R.describe(none, reg).kind, 'none');
+    // a new deliberate tick leaves the none state (only that work)
+    assert.deepEqual(plain(R.toggleWork(none, 'fx-b1', reg)), { mode: 'set', ids: ['fx-b1'] }, label);
+  }
+  // negative controls preserved: empty/garbled read values are invalid links → safe, no write
+  for (const h of ['#read=', '#read=_none,fx-a1', '#read=_NONE', '#read=_none&read=_none', '#read=_none&book=1']) {
+    const r = R.parseReadingParams(h, reg, MAX);
+    assert.equal(r.state.mode, 'safe', h);
+    assert.equal(R.storeValue(r.state), null, h);
+  }
+  // a stored none with extra keys or without a registry is invalid
+  assert.equal(R.initialState('', JSON.stringify({ mode: 'none', ids: ['fx-a1'] }), null, reg, MAX).state.mode, 'safe');
+  assert.equal(R.parseReadingParams('read=_none', null, MAX).state.mode, 'safe');
 });
