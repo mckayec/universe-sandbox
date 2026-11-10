@@ -262,9 +262,8 @@ book buttons alone. Without `spoilers.works` nothing below applies and the numer
   list and breadcrumb.
 * **Configuration text is never gated (CBR-O1).** A group's `crumb.label` override (rendered in place of the group
   name in the breadcrumb), the `ui` strings, `books[k].title` and other configuration labels (not `intro`, which
-  follows `intro.gates` above) are shown as written in every reading state, including the safe state. Put only
-  public, spoiler-free text there;
-  if an override would carry protected lore, remove it or move the text into a gated record field instead.
+  follows `intro.gates` below) are shown as written in every reading state, including the safe state. Put only
+  public, spoiler-free text there; if an override would carry protected lore, remove it or move the text into a gated record field instead.
 * Reading states: `all`, `legacy` (`#book=k`), `preset` (`#upto=preset:v:work`), `set` (`#read=a,b`), and
   `none` — the reader's deliberate empty selection (unticking the last work), written `#read=_none` and stored as
   `{"mode":"none"}`; it shows only `public` content. An invalid or conflicting link or stored value opens the
