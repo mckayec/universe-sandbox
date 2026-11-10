@@ -1,0 +1,46 @@
+{
+  "head": "3c2e69d1cf11187717d919a03fd0051b963ca82d",
+  "three": "180",
+  "actualTidalFunctionCases": 108,
+  "passed": 108,
+  "maxNormalDistance": 3.608224830031759e-16,
+  "oldExpressionNegativeControls": {
+    "failed": 72,
+    "total": 108
+  },
+  "limitation": "CPU matrix evaluation, not GPU/compiler/rendered acceptance",
+  "inputs": [
+    {
+      "path": "src/tidal-visual.ts",
+      "sha": "91317682da783f1d4faa471b9b4511a8d34e0bd9"
+    },
+    {
+      "path": "src/visuals/update-visuals.ts",
+      "sha": "51616ce0ad0cdedad2f1b82fac0e8a22e5e07ff4"
+    },
+    {
+      "path": "src/visuals/key-light-glsl.ts",
+      "sha": "7d1a86bb9b098778e74255cce4294ffc274f5a0b"
+    },
+    {
+      "path": "src/ui/test-probe.ts",
+      "sha": "66143dc3c6339b453f7e2161b2c2d2e463770639"
+    },
+    {
+      "path": "tests/key-light.test.ts",
+      "sha": "e45b3932518a2b55f99b7bfcb788214862290cc5"
+    },
+    {
+      "path": "src/key-light.ts",
+      "sha": "aaeefb8bbd06f38d9be86b1d15b8c4a1aa097349"
+    },
+    {
+      "path": "src/visuals/materials.ts",
+      "sha": "e4421d87c4c4c42cfd070395fb0ca279a9be8b9c"
+    },
+    {
+      "path": "src/visuals/planet-lighting.ts",
+      "sha": "67bb9b11ed53b33044e7edbfdd2907c8631affdd"
+    }
+  ]
+}
