@@ -2,6 +2,7 @@
 // are gated at the event (capture listeners below), not only hidden by CSS. Leaving needs the grown-up dialog.
 import {
   consumePlacement,
+  dialogClickAllowed,
   effectiveFeedbackMode,
   kidsAllowsControl,
   kidsAllowsKey,
@@ -27,9 +28,19 @@ function regionOf(target: EventTarget | null) {
   const region = target.closest(KIDS_REGION_IDS.map(id => `#${id}`).join(','));
   return region?.id ?? null;
 }
+/** Records where the most recent press began, so a click on the grown-up dialog can be traced to a press inside it. */
+function notePress(e: Event) {
+  app.kidsPressInDialog = e.target instanceof Element && regionOf(e.target) === 'kids-dialog';
+}
 /** Blocks an event aimed at an adult control while Kids mode is on. Canvas input is handled in pointer.ts. */
 function gate(e: Event) {
   if (!app.kidsMode) return;
+  if (e.type === 'click' && e.target instanceof Element && regionOf(e.target) === 'kids-dialog') {
+    if (dialogClickAllowed((e as MouseEvent).detail === 0, app.kidsPressInDialog)) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return;
+  }
   const target = e.target;
   if (!(target instanceof Element) || target.closest('canvas')) return;
   if (!target.closest('button, select, input, textarea, [data-speed], #event-feed, [role="dialog"]')) return;
@@ -106,6 +117,8 @@ export function setKidsMode(on: boolean) {
 
 export function bindKidsMode() {
   // Window capture runs before the document-level and element handlers, so gated events never reach them.
+  // notePress is registered first so a gated pointerdown still updates where the latest press began.
+  window.addEventListener('pointerdown', notePress, { capture: true });
   for (const type of ['click', 'pointerdown', 'input', 'change', 'dblclick', 'contextmenu'])
     window.addEventListener(type, gate, { capture: true });
   window.addEventListener('keydown', gateKey, { capture: true });
@@ -137,5 +150,8 @@ export function bindKidsMode() {
   document.addEventListener('keydown', e => {
     if (app.kidsMode && e.key === 'Escape' && app.kidsArmed && dialog.hidden) setArmed(false);
   });
+}
+/** Applies `?kids=1`. Called by main.ts after the adult startup defaults so they cannot overwrite Kids state (SC6-K2). */
+export function startKidsFromQuery() {
   if (kidsFromQuery(location.search)) setKidsMode(true);
 }

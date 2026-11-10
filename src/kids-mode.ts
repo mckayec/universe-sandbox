@@ -69,6 +69,26 @@ export function cancelArm(): KidsArm {
   return { armed: false };
 }
 
+/**
+ * A held touch in Add mode waits for release (or an 8 px drag) before placing. It may place only if it is still the
+ * current authorized gesture: no mode change, Add cancel, Escape or grown-up dialog has happened since it began
+ * (each bumps the placement epoch), Add is still on, and in Kids mode Add is still armed.
+ */
+export type PlacementGate = { epoch: number; placementMode: boolean; kidsMode: boolean; kidsArmed: boolean };
+export function pendingPlacementValid(pending: { epoch: number } | null, gate: PlacementGate) {
+  if (!pending || pending.epoch !== gate.epoch || !gate.placementMode) return false;
+  return !gate.kidsMode || gate.kidsArmed;
+}
+
+/**
+ * A pointer click on the grown-up dialog counts only if the press also began inside the dialog (keyboard
+ * activation always counts). A child's finger held on the canvas while a grown-up opens the dialog would otherwise
+ * release as a tap on whichever dialog button appeared under it (found by the 6d rendered harness).
+ */
+export function dialogClickAllowed(keyboard: boolean, pressStartedInDialog: boolean) {
+  return keyboard || pressStartedInDialog;
+}
+
 /** `?kids=1` starts the exhibit in Kids mode (for a dedicated kiosk); anything else starts in the adult layout. */
 export function kidsFromQuery(search: string) {
   return new URLSearchParams(search).get('kids') === '1';

@@ -25,6 +25,7 @@ import { recordHistory, snapshotUniverse } from '../state/history.ts';
 import { noteActivity, select, toast } from './feed.ts';
 import { closeObjectMenu, openObjectMenu } from './inspector.ts';
 import { kidsPlacementDone } from './kids.ts';
+import { pendingPlacementValid } from '../kids-mode.ts';
 
 // Reused per-event temporaries (pointermove fires at display rate during pans and pinches).
 const tmpCenter = new THREE.Vector2(),
@@ -70,6 +71,15 @@ function bodyAtPointer() {
     true,
   );
   return hits.length ? fromHit(hits[0].object) : null;
+}
+
+function placementGate() {
+  return {
+    epoch: app.placementEpoch,
+    placementMode: app.placementMode,
+    kidsMode: app.kidsMode,
+    kidsArmed: app.kidsArmed,
+  };
 }
 
 function beginTouchGesture() {
@@ -149,6 +159,7 @@ export function bindPointerEvents() {
           pointerId: e.pointerId,
           screen: new THREE.Vector2(e.clientX, e.clientY),
           world: world.clone(),
+          epoch: app.placementEpoch,
         };
       else {
         const placed = placeSelected(world.clone());
@@ -199,6 +210,11 @@ export function bindPointerEvents() {
         camera.lookAt(viewTarget);
         return;
       }
+      if (
+        app.pendingTouchPlacement?.pointerId === e.pointerId &&
+        !pendingPlacementValid(app.pendingTouchPlacement, placementGate())
+      )
+        app.pendingTouchPlacement = null;
       if (
         app.placementMode &&
         app.pendingTouchPlacement?.pointerId === e.pointerId &&
@@ -263,9 +279,12 @@ export function bindPointerEvents() {
       return;
     }
     if (app.pendingTouchPlacement?.pointerId === e.pointerId) {
-      setPointer(e);
-      placeSelected(world.clone());
-      kidsPlacementDone();
+      // Validate immediately before placing: a cancel during the hold must not place on release (SC6-K1).
+      if (pendingPlacementValid(app.pendingTouchPlacement, placementGate())) {
+        setPointer(e);
+        placeSelected(world.clone());
+        kidsPlacementDone();
+      }
       app.pendingTouchPlacement = null;
       if (renderer.domElement.hasPointerCapture(e.pointerId)) renderer.domElement.releasePointerCapture(e.pointerId);
       return;

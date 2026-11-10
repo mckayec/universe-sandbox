@@ -2,7 +2,7 @@ import './style.css';
 import './ui/template.ts';
 import { bindPointerEvents } from './ui/pointer.ts';
 import { bindToolbar } from './ui/toolbar.ts';
-import { bindKidsMode } from './ui/kids.ts';
+import { bindKidsMode, startKidsFromQuery } from './ui/kids.ts';
 import { bindOverlayBudget } from './ui/overlay-layout.ts';
 import * as THREE from 'three';
 import { saveRecoverySnapshot } from './sandbox-state.ts';
@@ -37,6 +37,8 @@ updateHistoryButtons();
 updateScienceModeButton();
 updateQualityModeButton();
 applyExhibitPreferences();
+// Query-driven Kids start runs last, after every adult default above (SC6-K2).
+startKidsFromQuery();
 
 animate();
 prewarmEffectTextures();

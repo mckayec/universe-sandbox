@@ -90,7 +90,16 @@ export const app = {
   attractTimer: 0,
   attractMode: false,
   touchGesture: null as TouchGesture | null,
-  pendingTouchPlacement: null as { pointerId: number; screen: THREE.Vector2; world: THREE.Vector3 } | null,
+  pendingTouchPlacement: null as {
+    pointerId: number;
+    screen: THREE.Vector2;
+    world: THREE.Vector3;
+    epoch: number;
+  } | null,
+  /** Bumped by every mode change or Add cancel; a held touch begun under an older epoch can no longer place. */
+  placementEpoch: 0,
+  /** Whether the latest press began inside the Kids grown-up dialog (a held canvas touch must not tap Leave). */
+  kidsPressInDialog: false,
   qualityTimer: 0,
   qualityFrames: 0,
   /** Set by visibility changes so the next frame is not measured as rendering time. */
