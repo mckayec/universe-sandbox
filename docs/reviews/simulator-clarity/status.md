@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude fixes the SC6-O1 residual at short/narrow compact sizes (overlay stack vs dock at 720x450 and 320x568, see Kids 6b checkpoint), re-runs evidence-harness-6b.mjs, then hands PR47 to ChatGPT for implementation review; catalog/units item 7 follows.
-updated: 2026-11-10T06:22Z
+next-action: ChatGPT reviews PR47 sim/clarity-physics at fb6afbb082c114a05a1ec509b9d4e6dbf4de22a4 (Kids 6b + SC6-O1 incl. the compact stack/dock height budget) per the 6b and 6c receipts; then hands item 7 (black-hole catalog/units) back to Claude.
+updated: 2026-11-10T08:25Z
 idle-runs: 0
-note: Checkpoint: Kids 6b + SC6-O1 pushed at PR47 7a86fbefd3d89131cb00b07314dd9f8daf3234f0 (189/189 units, 113 dist, 24/24 pages, rendered harness 205/205). Residual compact short-height overlap remains, so not yet handed back. Inherited release gates unchanged; no release approval.
+note: Item 6b + SC6-O1 complete for review at PR47 fb6afbb (parent 7a86fbe): 195/195 units, 113 dist, 24/24 pages, rendered harness 6c 303/303 enforced checks (+70 info rows), exit 0. Inherited release gates unchanged; no release approval.
 
 
 
@@ -234,6 +234,25 @@ Known gaps (why this is a checkpoint, not a hand-back):
 - Idle demo suppression in Kids mode is covered by unit/wiring tests only (no 120 s rendered wait). Kids mode is not persisted across reloads except via `?kids=1`. Long-press (550 ms touch) menu gating covered by source test + right-click case, not a rendered long-press.
 - Not performed: physical iPhone/iPad/Safari, real GPU, screen reader (only accessible-name and aria-pressed checks), real audio. SC1-E1/SC4-E1 obligations and the Save→Clear→Load smoke limitation stand. Item 7 not started.
 
+## SC6-O1 residual receipt — compact stack/dock height budget (PR #47, fb6afbb082c114a05a1ec509b9d4e6dbf4de22a4)
+
+Parent 7a86fbe. Diff: 5 files (+212) — src/overlay-budget.ts (new, pure), src/ui/overlay-layout.ts (new), tests/overlay-budget.test.ts (new), src/main.ts (`bindOverlayBudget()`), src/style.css.
+
+- On compact screens (≤800px wide) `bindOverlayBudget()` measures the natural content height of the overlay stack and the bottom dock (ResizeObserver on their children, plus window resize). `overlayBudget()` splits the band between the stack top and the dock's anchored bottom (8px gap). When both fit nothing changes. Otherwise the dock keeps up to 72px (its main tool row), the stack gets the rest, and space the stack does not use goes back to the dock. `body.overlay-tight` then sets `--overlay-stack-max` / `--dock-max`; each side scrolls inside its own share, so they cannot overlap. Desktop (>800px) is unaffected.
+- Compact views ≤600px tall clamp the guide objective to about two lines (it scrolls inside the card), so Restart / Exit guide and the legend stay in view above the dock.
+- Unit tests (6 new): fits → unconstrained; empty side → inactive; the two limits never exceed the band for the 720x450 / 320x568 shapes and extremes; dock floor and give-back; inverted/invalid geometry; wiring (main.ts, compact media query, CSS variables).
+
+Checks at fb6afbb: `pnpm format`; `pnpm check` passed (build, 195/195 unit tests, check:dist 113 files); `pnpm test:pages` 12 pages × 2 viewports.
+
+Rendered evidence: [evidence-harness-6c.mjs](evidence-harness-6c.mjs) (6b plus stack/dock checks), raw log [evidence-fb6afbb.jsonl](evidence-fb6afbb.jsonl): **303/303** enforced checks, exit 0, 0 page errors (70 extra rows are labelled "(info)" and not enforced). Production build via `vite preview`, Playwright bundled Chromium, `--use-gl=swiftshader` (software GL; emulated viewports, not devices).
+- For binary-stars and collision-lab at 390x844, 1440x900, 844x390, 720x450 (200% zoom) and 320x568, with the selected-object sheet collapsed and (compact) Details expanded: no visible overlay-stack child box intersects any visible dock child box (both clipped to their scroll containers); Restart, the legend, the selected-object name and the Tools toggle are each the hit target after scrolling them into view within their own share, and still no overlap after scrolling. All 6b checks (guide/legend, pointer/keyboard Restart and Exit, Kids mode at 3 sizes, `?kids=1`) pass again.
+- Budget active (info rows): only at 720x450 and 320x568. There, as first shown, the guide card, full legend and the dock's tool row are visible; the selected-object name (both sizes) and, while a toast is in the dock, the Tools toggle sit below the fold of the dock's share and need a scroll (info rows record "hit as shown" false for these).
+- Screenshots (viewed): [200% zoom](shots/sc6c-o1-binary-stars-zoom200-1440x900.jpg), [200% zoom + Details](shots/sc6c-o1-binary-stars-zoom200-1440x900-details.jpg), [320 reflow](shots/sc6c-o1-collision-lab-reflow-320x568.jpg), [320 reflow + Details](shots/sc6c-o1-collision-lab-reflow-320x568-details.jpg), [390x844 unchanged](shots/sc6c-o1-binary-stars-390x844.jpg).
+
+Known gaps:
+- At the two tight sizes the selected-object sheet is reachable by scrolling the dock rather than shown at once; a toast in the dock briefly takes part of the dock's share. Impact: low (exhibit guide stays primary). Does not block review.
+- 390x844 at 200% zoom (195 CSS px) page-wide horizontal overflow is pre-existing and still not asserted. Physical devices, real GPU, screen reader and the other 6b gaps listed above are unchanged. Item 7 not started.
+
 ## History
 
 - 2026-11-09T01:58Z Claude: picked up the 2026-11-09 handoff (HANDOFF_PLAN, commit a2d2ba5). Slice 1 (items 1–3) is built on draft PR #47 at 0039fe0aa6f527d33be11da83147929812eba9b7. Stage research-ready → implementation-review, owner claude → chatgpt.
@@ -276,3 +295,4 @@ Known gaps (why this is a checkpoint, not a hand-back):
 
 - 2026-11-10T05:22:12Z ChatGPT: [SC6-E2 evidence review](implementation-review-8de9128-e2.md) saved/read back at bc8b2b58930a92efe2856eb20441632241d29241. Fresh PR47 head remains 8de912810c3fe029b79623f762b5eab325bc1236, 0 application delta files. Read committed harness 07830c8 and new raw log 5688f98; independently counted builder 29/29 desktop + 30/30 compact checks, including both idle start/restart and long-name resize returns. Viewed 4/4 supplied screenshots and exact-head style.css: Low SC6-O1 confirmed legend/guide visual overlap, pointer interception not demonstrated (legend pointer-events:none); fix in 6b with nonoverlap and real pointer/keyboard button checks, short landscape and 200% text. SC6-E2 closed and bounded 6a accepted; prior SC6-T1/T2/E1 dispositions retained. No fresh test/browser execution; prior independent 12/12 focused tests and 9/9 handler groups remain historical at the identical head. implementation-review/chatgpt -> implementation/claude for Kids 6b plus SC6-O1, then item 7. SC1-E1/SC4-E1, Save/Load and device/accessibility/release gaps retained. Inspected 18/18 pack and 8/8 review statuses; no other eligible work or stale parallel self-audit. No application/PR-branch edit, merge, deployment or owner approval.
 - 2026-11-10T06:22Z Claude: Kids 6b + SC6-O1 checkpoint at PR47 7a86fbefd3d89131cb00b07314dd9f8daf3234f0 (12 files; 189/189 units, 113 dist, 24/24 pages; rendered harness 6b 205/205, 0 errors; 9 screenshots). Residual compact short-height stack/dock overlap (720x450, 320x568) open, so owner stays claude for one more unit before implementation review. Not merged.
+- 2026-11-10T08:25Z Claude: SC6-O1 residual fixed at PR47 fb6afbb082c114a05a1ec509b9d4e6dbf4de22a4 (parent 7a86fbe): compact overlay stack and dock share one height budget and scroll within their shares (see SC6-O1 residual receipt). 195/195 units, 113 dist, 24/24 pages; rendered harness 6c 303/303 enforced, 0 errors; 5 screenshots viewed. Kids 6b + SC6-O1 complete for review. implementation/claude → implementation-review/chatgpt; item 7 next. Not merged.
