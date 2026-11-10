@@ -1,13 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude repairs SC4-E1 video/log alignment and clean motion windows per sc4e1-review-3ab737f.md (isolated pause/1x/10x and flyby first); reuse accepted state series and correctly aligned unobscured scenario footage, return exact head.
-updated: 2026-11-10T17:24:05Z
+next-action: ChatGPT reviews the SC4-E1 recording/alignment repair (sc4e1-repair-3ab737f.md) at unchanged PR47 3ab737f: per-frame marker alignment for 7/7 clips, lossless isolated pause/1x/10x metric pass, merger survivor freeze, flyby approach/closest/recession windows; close or narrow SC4-E1.
+updated: 2026-11-10T18:08Z
 idle-runs: 0
-note: At unchanged PR47 3ab737f, 2/2 flyby state series and 7/7 scenario artifact coverage accepted at builder-evidence scope. SC4-E1 partial: R1 timestamp origin mismatch and R2 contaminated recordings/fixed moving-body ROI remain. Recounted 83/83 conditional checks + 6 informational records, 2/2 aggregate; 7/7 sheets viewed, 7/7 videos hash-matched/decoded, 0 fresh browser runs. Other named gates retained; no final/release approval.
-
-
-
+note: Evidence-only repair at unchanged 3ab737f (no app diff). R1: harness-only colour marker, every frame labelled from the video itself, offset measured per transition per clip (clip starts differ ~6 s; within-clip spread up to 0.36 s); 0 blank frames inside labelled windows. R2: no screenshots during recording; host-tracked crops; lossless non-recording pass: isolated paused max 0.063 vs 1x min 3.333 vs 10x min 5.789 (disk at 4x display cap), asymmetry sign stable 13/13; merger survivor paused 0.011-0.014. Builder observations only (SwiftShader); other gates retained.
 
 # Simulator clarity and physics
 
@@ -338,3 +335,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-10T16:26Z Claude: [SC4-E1 evidence return](sc4e1-return-3ab737f.md) at unchanged PR47 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84 (no application change). [Harness](evidence-harness-sc4e1.mjs) blob 2f5b208, [raw log](evidence-sc4e1-3ab737f.jsonl): 89/89 scenario + 2/2 aggregate checks, negative controls pass, 0 console/shader messages; deterministic scenes via real Load, fixed cameras, paused/1x/10x matched segments with probe rows, simulated elapsed time and disk-crop pixel metrics; unbound flyby approaches (122.4 -> 14.9) and recedes with tide rise/relax at 1280x800 and 390x844; merger survivor/mass/cleanup/re-pause freeze. 7 clips (mp4 <=360 KB) + sheets in shots/sc4e1-*; coverage matrix with remaining limits. SwiftShader only. implementation/claude -> implementation-review/chatgpt. Not merged.
 
 - 2026-11-10T17:24:05Z — ChatGPT: saved [SC4-E1 review](sc4e1-review-3ab737f.md) in cb1429d19e82ee119a8667d1757f01b1e056903c; unchanged PR47 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84. Accepted enforced non-merging flyby/state coverage (2/2 series) and artifact inventory (7/7 categories); SC4-E1 remains partial for R1 alignment and R2 clean motion/ROI evidence. 83/83 conditional scenario checks + 6 informational records and 2/2 aggregate recounted; 7/7 sheets viewed, videos fully decoded and hash-matched. No independent browser execution, phase-rate certification, final technical or release approval. Handed bounded recording repair to Claude; all other gates retained.
+- 2026-11-10T18:08Z Claude: [SC4-E1 repair](sc4e1-repair-3ab737f.md) at unchanged PR47 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84 (no application change). New [harness](evidence-harness-sc4e1-r.mjs) + [frame analyser](evidence-analyze-sc4e1-r.py) + [lossless metric pass](evidence-metric-sc4e1-r.py); [alignment](alignment-sc4e1-r-3ab737f.json) for 7/7 re-recorded clips with per-transition measured offsets; isolated pause/1x/10x material-motion and merger-survivor freeze from unclipped lossless stills; flyby closest sep 14.822 desktop / 15.199 compact, count 2 throughout; 7 aligned sheets + 7 MP4s + 2 crop sheets. Earlier sc4e1-* footage superseded for timing claims. Handed to ChatGPT (implementation-review). idle-runs 0.
