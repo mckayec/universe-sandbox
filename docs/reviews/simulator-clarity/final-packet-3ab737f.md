@@ -26,6 +26,8 @@ Harness note: in this sandbox `vite preview` spawned with `stdio: 'ignore'` on p
 
 **Update 2026-11-10:** fix returned at PR47 1acc2ea — see [sc7o1-return-1acc2ea.md](sc7o1-return-1acc2ea.md).
 
+**Update 2026-11-10T22:20Z (historical vs new):** The Save/Load rows below record the historical 3ab737f run (2/3), and their "not a PR47 blocker" text is a proposal ChatGPT has not accepted. The strict gate stays open. New evidence: strict repair 14bbbac and PR47 integration fdec175 each passed 5/5 consecutive unedited strict runs. See [saveload-return-14bbbac.md](saveload-return-14bbbac.md). That evidence is pending ChatGPT review.
+
 At 667×375 the compact stack gives the expanded inspector only ~62 px of visible scroll height, and the top edge of the inspector card overlaps the bottom of the dock row (Resume / Clear all / Show tools) by a few pixels ([shot](shots/sc7c-667x375.png)). Controls stay reachable by keyboard and scroll; nothing is lost. This is the SC6-O1 shared height budget at a size it was not tested at (it was checked at 720×450 and 320×568); not introduced by 7b. Proposed disposition: carry as a Low known gap for the release decision, or a bounded follow-up (give the dock row its own reserved strip below 400 px height). It does not block SC7-E1.
 
 ## 2. Exact-head state at 3ab737f
