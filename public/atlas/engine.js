@@ -1077,7 +1077,7 @@ function layoutGalaxyLabels(W,H){
     el.classList.toggle("sel",w.id===S.sel);});
   REGIONS.forEach(r=>{if(r.spec&&r.spec.world&&WORLD_BY[r.spec.world])r.pos=WORLD_BY[r.spec.world].pos.clone().add(r.off);
     const pr=project(r.pos,camG,W,H);const cd=camPos.distanceTo(r.pos);const show=pr.z<1&&cd>r.minD&&cd<r.maxD&&gateOk(r.gate,S.book)&&realmOk(r.spec);
-    r.el.style.opacity=show?1:0;if(show)r.el.style.transform="translate(-50%,-50%) translate("+pr.x+"px,"+pr.y+"px)";});
+    r.el.style.opacity=show?1:0;r.el.style.visibility=show?"":"hidden";if(show)r.el.style.transform="translate(-50%,-50%) translate("+pr.x+"px,"+pr.y+"px)";});
 }
 
 /* ===================== SITE MARKERS (world view) ===================== */
@@ -1132,7 +1132,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
         (BOOK_IDS.length>1?'Showing all '+nBooksWord+' books. <b>Pick the book you are reading</b> in the bar above to hide later spoilers.':'Showing the whole book.'))+'</p>':"")+
       (ARR(IN.legend).length&&introOk("legend")?'<div class="rule"><span class="eyebrow">How to read the map</span></div>'+
       '<dl class="facts">'+ARR(IN.legend).map(r=>'<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>').join("")+'</dl>':"")+
-      '<div class="actions"><button class="btn primary" data-act="web">'+esc(UI.homeAction)+'</button>'+(UI.go?'<button class="btn" data-act="go" data-id="'+esc(UI.go.id)+'">'+esc(UI.go.label||("Go to "+WORLD_BY[UI.go.id].name))+'</button>':"")+'</div>'+
+      '<div class="actions"><button class="btn primary" data-act="web">'+esc(UI.homeAction)+'</button>'+(UI.go&&!(PW()&&rdWorldHidden(WORLD_BY[UI.go.id]))?'<button class="btn" data-act="go" data-id="'+esc(UI.go.id)+'">'+esc(UI.go.label||("Go to "+WORLD_BY[UI.go.id].name))+'</button>':"")+'</div>'+
       (M.srcnote?'<p class="srcnote">'+esc(M.srcnote)+'</p>':"")+'<p class="srcnote fan">'+esc(fanNotice(M))+'</p>';
   } else {const w=WORLD_BY[S.sel];const status=statusFor(w);
     const ns=noSurface(w);
