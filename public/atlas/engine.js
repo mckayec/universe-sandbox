@@ -1327,7 +1327,9 @@ const realmTarget=w=>S.realm==="cognitive"?w.posC:S.realm==="spiritual"?w.posS:w
 function placeWorlds(k){const pa=markerPts.geometry.attributes.position;WORLDS.forEach((w,i)=>{if(RT)w.pos.lerpVectors(RT.from[i],RT.to[i],k);else w.pos.copy(realmTarget(w));pa.setXYZ(i,w.pos.x,w.pos.y,w.pos.z);});pa.needsUpdate=true;}
 function stepRealmTween(){if(!RT)return;const k=clamp((performance.now()-RT.t0)/RT.dur,0,1);placeWorlds(ease(k));if(k>=1){RT=null;rebuildLinks();}}
 const STYLE_IX={beads:0,mist:1,plasma:2,paint:3,unsea:4};
-function realmLook(w){const r=S.realm;if(r==="cognitive"){const c=Object.assign({},RCOG.look||{},(w.realms&&w.realms.cognitive)||{});return {i:1,st:STYLE_IX[c.style]!=null?STYLE_IX[c.style]:0,c1:c.c1||"#6a4ab0",c2:c.c2||"#b8a0ff",c3:c.c3||"#121018"};}
+/* world-specific realm data (name/blurb/style/colors) honors the per-work "realms" field gate (CBR-04) */
+const realmsOwn=w=>w&&w.realms&&(!PW()||fOk(w,"realms",worldChain(w)))?w.realms:null;
+function realmLook(w){const r=S.realm;if(r==="cognitive"){const c=Object.assign({},RCOG.look||{},(realmsOwn(w)||{}).cognitive||{});return {i:1,st:STYLE_IX[c.style]!=null?STYLE_IX[c.style]:0,c1:c.c1||"#6a4ab0",c2:c.c2||"#b8a0ff",c3:c.c3||"#121018"};}
   if(r==="spiritual"){const cs=(w.spiritShards||[]).map(id=>(SHARDS.find(x=>x.id===id)||{}).color).filter(Boolean);const d=RSPI.color||"#f0d890";return {i:2,st:0,c1:cs[0]||d,c2:cs[1]||cs[0]||d,c3:"#0a0810"};}
   return {i:0,st:0,c1:"#000",c2:"#000",c3:"#000"};}
 function applyRealmToPlanet(){if(!PL)return;const L=realmLook(PL.w);const u=PL.mat.uniforms;u.uRealm.value=L.i;u.uRStyle.value=L.st;u.uRC1.value.copy(CL(L.c1));u.uRC2.value.copy(CL(L.c2));u.uRC3.value.copy(CL(L.c3));
@@ -1353,7 +1355,7 @@ function setRealm(r,quiet){if(!RL||r===S.realm||(r!=="physical"&&!RL[r]))return;
   if(!quiet)refreshAll();}
 function realmCard(w){if(!RL||S.realm==="physical")return "";const R=RL[S.realm]||{};
   if(!w)return '<div class="realmcard"><p class="eyebrow">'+esc(R.title||S.realm)+'</p><p>'+esc(R.text||"")+'</p></div>';
-  const rw=w.realms&&w.realms[S.realm];const t=rw&&rw.blurb?rw.blurb:(R.unknown||"");if(!t&&!(rw&&rw.name))return "";
+  const rw=(realmsOwn(w)||{})[S.realm];const t=rw&&rw.blurb?rw.blurb:(R.unknown||"");if(!t&&!(rw&&rw.name))return "";
   return '<div class="realmcard"><p class="eyebrow">'+esc((rw&&rw.name)||R.title||S.realm)+'</p><p>'+esc(t)+'</p></div>';}
 if($("#realms"))$("#realms").addEventListener("click",e=>{const b=e.target.closest("[data-r]");if(!b||b.disabled)return;setRealm(b.dataset.r);});
 
@@ -1658,7 +1660,7 @@ function applyRd(st){
   if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}
   S.ev=null;if(S.site&&rdSiteHidden(S.site))S.site=null;
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
-  refreshAll();}
+  applyRealmToPlanet();refreshAll();}
 function rdUnreviewed(){
   if(!PW())return false;
   const u=c=>pvis(c)&&RDG.anyUnreviewed(c);
