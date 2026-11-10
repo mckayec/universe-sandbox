@@ -1,0 +1,281 @@
+{
+  "head": "20837c0211575d03ed0ad3ff3c34fcb98adeb653",
+  "scope": "Independently executed builder-kids-k3.mjs at exact head; actual extracted handlers with DOM adapters, not an independent browser run.",
+  "inputs": [
+    {
+      "path": "src/ui/kids.ts",
+      "sha": "94d26ceb3d6652e08f9a7762eebfb482193be58c"
+    },
+    {
+      "path": "src/ui/pointer.ts",
+      "sha": "19ea6562ff0e73371d93756755bacb9f54812347"
+    },
+    {
+      "path": "src/ui/controls.ts",
+      "sha": "d7a530f1381bd0e9438acf4f3fa29679c129bc18"
+    },
+    {
+      "path": "src/kids-mode.ts",
+      "sha": "e2f4b968ef7adaf4fd5222450327c1121d2ed9be"
+    }
+  ],
+  "passed": 18,
+  "total": 18,
+  "results": [
+    {
+      "id": "held-touch-normal",
+      "expected": 1,
+      "actual": 1,
+      "armedAfter": false,
+      "pass": true
+    },
+    {
+      "id": "held-touch-escape",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": false,
+      "pass": true
+    },
+    {
+      "id": "held-touch-disarm",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": false,
+      "pass": true
+    },
+    {
+      "id": "held-touch-cancel",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": true,
+      "pass": true
+    },
+    {
+      "id": "held-touch-escape-rearm",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-canvas press released over dialog",
+      "trace": "down:canvas:7 up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog press and click",
+      "trace": "down:kids-dialog:8 up:8",
+      "click": {
+        "pointerId": 8,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-keyboard activation",
+      "trace": "",
+      "click": {
+        "pointerId": -1,
+        "detail": 0
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-canvas pointer 7 after dialog pointer 8 press (reviewer, no up)",
+      "trace": "down:canvas:7 down:kids-dialog:8",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog pointer 7 after canvas pointer 8 press (reviewer, no up)",
+      "trace": "down:kids-dialog:7 down:canvas:8",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-canvas 7 held, dialog 8 down, 7 up then click",
+      "trace": "down:canvas:7 down:kids-dialog:8 up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog 7, canvas 8 down, 7 up then click",
+      "trace": "down:kids-dialog:7 down:canvas:8 up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog 7 canceled",
+      "trace": "down:kids-dialog:7 cancel:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog 7 down before dialog reopened",
+      "trace": "down:kids-dialog:7 reset up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-reused id: dialog press then canvas press",
+      "trace": "down:kids-dialog:1 up:1 down:canvas:1 up:1",
+      "click": {
+        "pointerId": 1,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-click with no pointer id after dialog release",
+      "trace": "down:kids-dialog:3 up:3",
+      "click": {
+        "pointerId": null,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-click with no pointer id after canvas release",
+      "trace": "down:kids-dialog:3 down:canvas:4 up:4",
+      "click": {
+        "pointerId": null,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-second click from consumed authorization",
+      "trace": "down:kids-dialog:5 up:5 click:5",
+      "click": {
+        "pointerId": 5,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    }
+  ],
+  "inputManifest": [
+    {
+      "path": "src/feedback.ts",
+      "sha": "726022133be729a20678f68ae5a77027b09874be"
+    },
+    {
+      "path": "src/kids-mode.ts",
+      "sha": "e2f4b968ef7adaf4fd5222450327c1121d2ed9be"
+    },
+    {
+      "path": "src/main.ts",
+      "sha": "9e1c02057f0703bbf6f95bf4277188e87650a9cb"
+    },
+    {
+      "path": "src/style.css",
+      "sha": "31de37e29802d7ecb4378a2f3697051d4b611531"
+    },
+    {
+      "path": "src/overlay-budget.ts",
+      "sha": "e8bd27f8819d9bae98207bcf3c18aacb79182c9b"
+    },
+    {
+      "path": "tests/kids-cancel.test.ts",
+      "sha": "6756c65d11d79484b2abb1d0ce9e4c88f148c84f"
+    },
+    {
+      "path": "tests/overlay-budget.test.ts",
+      "sha": "7b5a0567dffb8b82f0a13921c48db0c22ba66fa2"
+    },
+    {
+      "path": "tests/kids-mode.test.ts",
+      "sha": "2d12ff125642a9d11bd349c948c19cb1983bfa8e"
+    },
+    {
+      "path": "src/ui/overlay-layout.ts",
+      "sha": "79c600e5dffa5960081d974f1f8d4e4b12b5ec37"
+    },
+    {
+      "path": "src/ui/kids.ts",
+      "sha": "94d26ceb3d6652e08f9a7762eebfb482193be58c"
+    },
+    {
+      "path": "src/ui/controls.ts",
+      "sha": "d7a530f1381bd0e9438acf4f3fa29679c129bc18"
+    },
+    {
+      "path": "src/ui/feed.ts",
+      "sha": "f752bf5ee598904b7c3fa7971db4b15d96aeb42e"
+    },
+    {
+      "path": "src/ui/pointer.ts",
+      "sha": "19ea6562ff0e73371d93756755bacb9f54812347"
+    },
+    {
+      "path": "src/ui/inspector.ts",
+      "sha": "a55307b572f8f307a3121d02af1f2aade09c0467"
+    },
+    {
+      "path": "src/state/app-state.ts",
+      "sha": "f89f09b25b03687671dd3c38069f9f71c03f86f3"
+    }
+  ],
+  "focusedTests": {
+    "passed": 20,
+    "total": 20
+  },
+  "ci": {
+    "run": 42804350399,
+    "job": 129789584287,
+    "checkout": "96324cb57c631fd21595444537cf239f2110112b",
+    "nonDocFilesIdentical": 238,
+    "unitsPassed": 204,
+    "unitsTotal": 204,
+    "dist": 113,
+    "pagesPassed": 24,
+    "pagesTotal": 24
+  }
+}
