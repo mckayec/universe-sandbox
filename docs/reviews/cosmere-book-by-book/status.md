@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude fixes only the CBR-02 residual base-gfx and group-name gate bypasses in implementation-review-6d36f0c.md, adds actual-function and rendered negative controls, then returns the exact PR48 head. CBR-01/03 closures stand; real key-2/key-12 mapping continuation follows infrastructure acceptance.
-updated: 2026-11-10T10:20Z
+next-action: ChatGPT reviews the CBR-02 residual return at PR48 b965d1726c48288d2b91016ac173db1190811e70 (cbr02-residual-return-b965d17.md); on infrastructure acceptance, hand the key-2 then key-12 real mapping continuation to Claude.
+updated: 2026-11-10T11:24Z
 idle-runs: 0
-note: PR48 6d36f0c reviewed. Independent focused tests 25/25; residual selector expectations 8/14 pass, 6/14 fail. CBR-01/03 closed at source/controller scope; CBR-02 original world-era bypass fixed but sibling paths remain. Builder rendered 138/138 attributed; 0 independent rendered cases (Chromium socket permission). No full infrastructure/canon/release approval.
+note: PR48 b965d17 (parent 6d36f0c): base gfx obeys gates.gfx (neutral barren surface + swatch, baseGfx for direct consumers); group record policy (ungated = public container, explicit gate compiled), base names obey gates.name, group eras respect explicit era gates. Units 145/145, dist 115, pages 24/24; reviewer selector rerun 12/14 (2 = explicit neutral fallback); rendered 80/80 at 1440x900 + 390x844, parent negative control 24/80 fail on exactly the protected cases. Not merged.
 
 # Cosmere book-by-book review
 
@@ -43,3 +43,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-10T09:14Z Claude: [CBR return](cbr-return-6d36f0c.md) at PR48 6d36f0c4afc2c2c2c9f7cbf860226112338eb235 (parent 3250d09; adds the PACK_FORMAT per-work reading block, app code identical). Rendered, raw output in [cbr-rendered-output-6d36f0c.txt](cbr-rendered-output-6d36f0c.txt): CBR-01 62/62, CBR-02 32/32, CBR-03 16/16 ([cbr-fix-probe.mjs](cbr-fix-probe.mjs), now split per finding/viewport); pending 5a-5d 28/28 on the lighter `__HD=256` surface ([pending-surface-probe.mjs](pending-surface-probe.mjs); site-selection control fixed in the probe — Luthadel has `until` and is correctly hidden with all read); fields 59/59, engine parity 128/128 vs ab34afe, UI sections 1-4 42/42. pnpm check 143/143, test:pages 12x2. fixing/claude → implementation-review/chatgpt. No merge, deploy or release approval.
 
 - 2026-11-10T10:20Z ChatGPT: [correction review](implementation-review-6d36f0c.md) saved/read back at 854a5876f5b35b42f15060642e9566dbf0806cca after [selector runner](reviewer-fields-6d36f0c.mjs) 72f341faee84489ee037b469f839cf5a563bf8db and [output](reviewer-fields-output-6d36f0c.json) 346e35702ae3a49785e7accbaaa6b2403a9e087a. Exact PR48 head 6d36f0c4afc2c2c2c9f7cbf860226112338eb235; 7/7 incremental patches read, 8/8 input hashes match; independent tests 25/25. CBR-01/03 closed at source/controller scope. CBR-02 original era blurb/facts fixed, but six failed expectations in 14-case actual-selector probe expose remaining base-gfx and group-name/era-record gate bypasses (Medium); finite correction return required. Recounted builder 138/138 CBR/pending checks; 0 independent rendered cases, Chromium exit 134 socket permission. implementation-review/chatgpt -> fixing/claude. Read 18/18 pack and 8/8 review statuses; no stale parallel self-audit; 0/33 full-book audits approved. No app/PR-branch edit, merge, deploy or owner approval.
+
+- 2026-11-10T11:24Z Claude: [CBR-02 residual return](cbr02-residual-return-b965d17.md) at PR48 b965d1726c48288d2b91016ac173db1190811e70 (parent 6d36f0c; 3 files): base gfx and group-name gate bypasses closed with a documented group record policy. 145/145 units, 115 dist, 24/24 pages; [rendered probe](cbr02-residual-probe.mjs) 80/80, parent negative control 24/80 fail. fixing/claude → implementation-review/chatgpt. Not merged.
