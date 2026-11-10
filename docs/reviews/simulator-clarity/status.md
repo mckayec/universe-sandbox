@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements bounded item 6 (mobile/quiet/Kids mode), then item 7; carry SC1-E1/SC4-E1 binary phase, motion/device and Save/Load evidence gaps forward. Item-5 normal correction accepted at source/matrix scope in implementation-review-3c2e69d.md; return each completed slice at its exact PR head.
-updated: 2026-11-10T00:20:11Z
+next-action: ChatGPT reviews item-6a slice at exact PR47 head b7fc3f1244b72471143f2a22674dd73238acd259 (compact labels, Details reset, quiet feedback; receipt "Item 6a receipt"); then return implementation/claude for 6b (Kids mode) and item 7.
+updated: 2026-11-10T01:00Z
 idle-runs: 0
-note: SC5-T1 closed at exact PR47 3c2e69d1cf11187717d919a03fd0051b963ca82d; 13/13 focused tests and 108/108 actual tidal-transform matrix cases pass independently. SC5-E1 item-5 amendments addressed, inherited binary phase obligation remains. CI merge b3b0070 has 229/229 identical non-doc files and passes 172/172 units, 113/113 dist, 24/24 pages. Zero independent rendered cases; release gaps remain. Not merged.
+note: Item 6 split: 6a (labels/Details/quiet) returned at b7fc3f1; 6b Kids mode (Add/Pause/Undo/Home, one placement per armed Add, grown-up gating, no idle replace) not started. 181/181 units, 113 dist, 24/24 pages; builder SwiftShader 35/35 rendered 6a checks at 1440x900 and 390x844. Carried gaps: SC1-E1/SC4-E1 binary phase, motion/device, Save/Load smoke. Not merged.
 
 
 
@@ -158,6 +158,25 @@ Checks at 3c2e69d1cf11187717d919a03fd0051b963ca82d (local, Node 22, Chromium 124
 - `pnpm test:browser`: head 1 pass / 3 fail, parent da48c23 1 pass / 2 fail in this environment, every failure at browser-smoke.mjs:88 — the pre-existing Save→Clear→Load wait (save-load-smoke-fix-plan.md), unrelated to lighting.
 - not run: real GPU, physical iPhone/Safari, 3840×2160, CI on 3c2e69d (pushed; pending at time of writing).
 
+## Item 6a receipt — compact labels, Details reset, quiet feedback (PR #47, b7fc3f1244b72471143f2a22674dd73238acd259)
+
+Parent 3c2e69d. Diff: 14 files (+300/−27) — src/feedback.ts (new, pure), tests/feedback.test.ts (new), src/ui/feed.ts, src/app/loop.ts, src/bodies/registry.ts, src/scene/quality.ts, src/exhibit-runtime.ts, src/state/app-state.ts, src/ui/template.ts, src/ui/toolbar.ts, src/ui/exhibit-flow.ts, src/builders/systems.ts, src/builders/galaxy.ts, src/style.css. Item 6 is split: this is 6a; Kids mode is 6b (not started).
+
+- Compact labels: `labelVisible()` — on the compact layout (≤800 px) only the selected object's label is visible; wider layouts keep the existing distance/kind/debris/escort/structure rules unchanged. The compact label shows only `shortLabel(name)` (≤14 chars, ellipsis); metrics/life lines are hidden by a `compact-labels` class the loop toggles on the label layer. Every label element carries the full name as `aria-label` and `title`; the inspector heading still shows the full name.
+- Details: `setDetailsExpanded()` is the single place the sheet opens/closes. `select()` collapses Details on a fresh selection (`detailsAfterSelect`, compared by object identity because IDs restart when an exhibit rebuilds the scene) and keeps it when the same object is re-selected. Metrics beyond mass/velocity were already behind Details on compact (unchanged CSS).
+- Event history vs presentation: `museumEvent()` now always calls `recordEvent()` (newest-first, bounded at 8, stored copy) and then `presentEvent(origin, mode)` decides banner/sound. Origin defaults to `simulation`; builder confirmations (Solar System, binary, triple, galaxies) and guided-exhibit starts pass `action`.
+- Quiet feedback: new adult preference `feedback: full|quiet` in `gravity-lab-preferences-v1` (invalid/missing → full), toolbar button `#feedback-mode` "Banners: on/quiet" with `aria-pressed`. Quiet drops simulation-origin banners, sounds and vibration, suppresses idle narration cards, and sets the timeline `aria-live` to `off`. Action responses and every direct `toast()` (failures such as "Select an object to focus", fullscreen unavailable) are unaffected. No counter replaces banners and nothing is replayed when quiet is turned off.
+
+Checks at b7fc3f1:
+- passed: `pnpm format`; `pnpm check` (build, 181/181 units incl. 9 new in tests/feedback.test.ts, check:dist 113 files); `pnpm test:pages` 12 pages × 2 viewports.
+- passed (builder-run, rendered): [evidence-harness-6a.mjs](evidence-harness-6a.mjs), raw [evidence-b7fc3f1.jsonl](evidence-b7fc3f1.jsonl). Production build via vite preview, headless Chromium + SwiftShader, localStorage cleared. 1440×900 17/17, 390×844 18/18: defaults (Banners on, timeline polite); compact shows 0 labels with no selection and exactly 1 (selected, metrics hidden, aria-label = full name) after an exhibit selects Helios 01; desktop labels/metrics unchanged; Details opened then a different exhibit's selection (Helios 01 → Void 01) collapses it; quiet sets aria-pressed/aria-live off; in quiet the guided-exhibit action banner still shows; Collision Lab at 10× for 9 s recorded "Planetary fragmentation" in the timeline with 0 banners; leaving quiet produced only the mode confirmation (no replay); quiet persisted across reload; 0 page/console errors. On desktop the Details button is hidden by layout, so its handler was invoked via DOM click there. Screenshots: [labels 390](shots/sc6a-labels-390x844.jpg), [labels 1440](shots/sc6a-labels-1440x900.jpg), [quiet 1440](shots/sc6a-quiet-1440x900.jpg), [quiet 390](shots/sc6a-quiet-390x844.jpg).
+- not run: physical iPhone/Safari, real GPU, short landscape, 200% text, screen-reader output (only attributes checked), keyboard-only traversal, `pnpm test:browser` (known Save→Clear→Load timeout, unchanged), 3840×2160.
+
+Known gaps (6a):
+- The desktop universe toolbar already overflows horizontally (hidden scrollbar); the new "Banners" button sits at its end and needs a scroll at 1440 px. Impact: low; candidate for a later toolbar regroup, not blocking.
+- Direct action toasts are not tagged failure vs confirmation; quiet keeps all of them, which over-shows rather than hides failures.
+- Kids mode (6b) and its gating, short-landscape/200%-text/interruption tests remain to do.
+
 ## Known gaps
 
 - A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
@@ -196,3 +215,4 @@ Checks at 3c2e69d1cf11187717d919a03fd0051b963ca82d (local, Node 22, Chromium 124
 - 2026-11-09T23:33Z Claude: SC5-T1/SC5-E1 return at PR47 3c2e69d1cf11187717d919a03fd0051b963ca82d (fix df6ea34 + probe 3c2e69d; parent da48c23). World normal now from the inverse-transpose view normal; behavioral tests over 6 transforms × 3 cameras × 3 normals plus negative control matching the review's 13.1206°/21.6272°; faulty-expression pin replaced. Harness 5b enforces head probe fields and recorded paused/running/speed states, adds a focused stretched-giant scene; head 60/60, parent comparison 26/26; matched shots at 1440 and 390. Receipt values corrected (E1.3/E1.4). pnpm check 172/172, test:pages 12x2; test:browser fails only at the known Save/Load wait (head 1/4, parent 1/3 passes). fixing/claude -> implementation-review/chatgpt. Not merged.
 
 - 2026-11-10T00:20:11Z ChatGPT: [SC5 correction review](implementation-review-3c2e69d.md) saved/read back at 82213316066c568f792a15dcee247e5fa6273586 after [independent runner](reviewer-normal-3c2e69d.mjs) e95bd2469bc4aa1dfb51a63ba447776540a1bc52 and [output/input manifest](reviewer-normal-output-3c2e69d.json) df69adf80591305494f0d909a7273434c6098c05. Exact unchanged PR47 head 3c2e69d1cf11187717d919a03fd0051b963ca82d: 5/5 changed files inspected, 8/8 input hashes matched, 13/13 focused tests and 108/108 actual tidal-transform normal cases pass; old expression fails 72/108, uniform 36/108 pass. SC5-T1 closed at source/matrix scope; SC5-E1 item-5 harness/receipt requests addressed, inherited item-4 binary phase evidence remains. CI logs at merge b3b007087699cfcc3e42ad56f31b2fe9f78bbdba (229/229 non-doc files identical) verify 172/172 units, 113/113 dist and 24/24 pages; deploy skipped. Builder SwiftShader 60/60 head and 26/26 generic parent checks remain attributed. Viewed 2/4 focused tidal image files, head only. Independent Chromium failed before page creation on process-singleton socket permission; 0 independent rendered cases. implementation-review/chatgpt -> implementation/claude for bounded item 6 then item 7; prior SC1-E1/SC4-E1 and Save/Load release gaps retained. Read 18/18 pack and 8/8 review statuses; unchanged parallel research audits and unrelated owners left untouched. No app/PR-branch edit, merge, deployment or release approval.
+- 2026-11-10T01:00Z Claude: item 6a returned at PR47 b7fc3f1244b72471143f2a22674dd73238acd259 (compact selected-only short labels, Details reset on fresh selection, event-history/presentation split, persisted quiet feedback). 181/181 units, 113 dist, 24/24 pages; rendered harness 6a 35/35 (17 desktop + 18 compact), 0 errors. implementation/claude -> implementation-review/chatgpt; 6b Kids mode next. Not merged.
