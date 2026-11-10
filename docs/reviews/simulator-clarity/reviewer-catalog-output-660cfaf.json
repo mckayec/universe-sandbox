@@ -1,0 +1,271 @@
+{
+  "head": "660cfaf36d838d35dc2aae0f0ed99bb16907b324",
+  "generatedMarkup": "<details class=\"bh-scales\" id=\"bh-scales\" hidden><summary>Real black-hole sizes</summary><ul><li><b>Small stellar · 5 M☉</b><span>Stellar-mass · horizon radius 15 km · shadow radius 38 km</span><small>e.g. <a href=\"https://www.nasa.gov/universe/nasas-ixpe-reveals-shape-orientation-of-hot-matter-around-black-hole/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Cygnus X-1 source (opens in a new tab)\">Cygnus X-1</a> ≈ 21 M☉<i>Rounded estimate · accreting X-ray binary</i></small></li><li><b>Large stellar · 30 M☉</b><span>Stellar-mass · horizon radius 89 km · shadow radius 230 km</span><small>e.g. <a href=\"https://www.esa.int/ESA_Multimedia/Images/2024/04/Gaia_black_holes\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Gaia BH3 source (opens in a new tab)\">Gaia BH3</a> ≈ 33 M☉<i>Rounded estimate · dormant, no bright disk (unlike the illustrative disk shown here)</i></small></li><li><b>Intermediate · 1,000 M☉</b><span>Intermediate-mass · horizon radius 2,953 km · shadow radius 7,673 km</span><small>e.g. <a href=\"https://dcc.ligo.org/public/0165/P2000021/012/gw190521-implications-main_20200901.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"GW190521 remnant source (opens in a new tab)\">GW190521 remnant</a> ≈ 142 M☉<i>Original 2020 quasi-circular merger model: source-frame median, 90% range +28/−16 M☉</i></small></li><li><b>Galactic core · 1 million M☉</b><span>Supermassive · horizon radius 2,953,250 km · shadow radius 7,672,769 km</span><small>e.g. <a href=\"https://science.nasa.gov/universe/black-holes/types/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Sagittarius A* source (opens in a new tab)\">Sagittarius A*</a> ≈ 4 million M☉<i>Rounded estimate; precise values differ</i></small></li><li><b>Giant core · 1 billion M☉</b><span>Supermassive · horizon radius 19.7 AU · shadow radius 51.3 AU</span><small>e.g. <a href=\"https://www.jpl.nasa.gov/edu/resources/teachable-moment/how-scientists-captured-the-first-image-of-a-black-hole/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"M87* source (opens in a new tab)\">M87*</a> ≈ 6.5 billion M☉<i>Rounded estimate · accretion and jet</i></small></li></ul><p>Radii, not diameters, for a nonspinning black hole of each mass: horizon radius 2GM/c²; apparent shadow radius ≈ 2.6× horizon, as seen from far away. These are not measured image sizes, gas extents or on-screen sizes. Example masses are rounded or model-dependent; follow each link for the source. Disk size is not set by mass. The simulator itself uses model units and softened Newtonian gravity, which is not accurate near a horizon.</p></details>",
+  "headChecks": [
+    {
+      "name": "Cygnus X-1",
+      "source": true,
+      "qualification": true,
+      "radii": true
+    },
+    {
+      "name": "Gaia BH3",
+      "source": true,
+      "qualification": true,
+      "radii": true
+    },
+    {
+      "name": "GW190521 remnant",
+      "source": true,
+      "qualification": true,
+      "radii": true
+    },
+    {
+      "name": "Sagittarius A*",
+      "source": true,
+      "qualification": true,
+      "radii": true
+    },
+    {
+      "name": "M87*",
+      "source": true,
+      "qualification": true,
+      "radii": true
+    }
+  ],
+  "parentChecks": [
+    {
+      "name": "Cygnus X-1",
+      "source": false,
+      "qualification": false,
+      "radii": false
+    },
+    {
+      "name": "Gaia BH3",
+      "source": false,
+      "qualification": false,
+      "radii": false
+    },
+    {
+      "name": "GW190521 remnant",
+      "source": false,
+      "qualification": false,
+      "radii": false
+    },
+    {
+      "name": "Sagittarius A*",
+      "source": false,
+      "qualification": false,
+      "radii": false
+    },
+    {
+      "name": "M87*",
+      "source": false,
+      "qualification": false,
+      "radii": false
+    }
+  ],
+  "manifest": [
+    {
+      "path": "src/black-hole-catalog.ts",
+      "sha": "98e8023c78312e2f4df347f085d553384fe17517",
+      "actual": "98e8023c78312e2f4df347f085d553384fe17517",
+      "match": true
+    },
+    {
+      "path": "src/bodies/registry.ts",
+      "sha": "13f8780ededaf00f0b8473ec608a473479782ca3",
+      "actual": "13f8780ededaf00f0b8473ec608a473479782ca3",
+      "match": true
+    },
+    {
+      "path": "src/celestial-catalog.ts",
+      "sha": "37d23d4bfd2539424345e3afb728ef7f9057e99f",
+      "actual": "37d23d4bfd2539424345e3afb728ef7f9057e99f",
+      "match": true
+    },
+    {
+      "path": "src/feedback.ts",
+      "sha": "726022133be729a20678f68ae5a77027b09874be",
+      "actual": "726022133be729a20678f68ae5a77027b09874be",
+      "match": true
+    },
+    {
+      "path": "src/gravity-engine.ts",
+      "sha": "d81e0a4bf70c08b19a171474afffb655f6ed1ec2",
+      "actual": "d81e0a4bf70c08b19a171474afffb655f6ed1ec2",
+      "match": true
+    },
+    {
+      "path": "src/kids-mode.ts",
+      "sha": "54319aaacd43d6e6a22a50c4119dc754e94ebc70",
+      "actual": "54319aaacd43d6e6a22a50c4119dc754e94ebc70",
+      "match": true
+    },
+    {
+      "path": "src/main.ts",
+      "sha": "9e1c02057f0703bbf6f95bf4277188e87650a9cb",
+      "actual": "9e1c02057f0703bbf6f95bf4277188e87650a9cb",
+      "match": true
+    },
+    {
+      "path": "src/overlay-budget.ts",
+      "sha": "e8bd27f8819d9bae98207bcf3c18aacb79182c9b",
+      "actual": "e8bd27f8819d9bae98207bcf3c18aacb79182c9b",
+      "match": true
+    },
+    {
+      "path": "src/physics/body-math.ts",
+      "sha": "7e87955a334d433a84ba2bc9812a41d887c2e0b2",
+      "actual": "7e87955a334d433a84ba2bc9812a41d887c2e0b2",
+      "match": true
+    },
+    {
+      "path": "src/physics/collisions.ts",
+      "sha": "37faf0f5ca1e6abb05cb5e780029b29805f5b7a5",
+      "actual": "37faf0f5ca1e6abb05cb5e780029b29805f5b7a5",
+      "match": true
+    },
+    {
+      "path": "src/physics/simulate.ts",
+      "sha": "0f7486dd139e3dbbf4997f01dbfad8a0873a8bef",
+      "actual": "0f7486dd139e3dbbf4997f01dbfad8a0873a8bef",
+      "match": true
+    },
+    {
+      "path": "src/state/app-state.ts",
+      "sha": "f89f09b25b03687671dd3c38069f9f71c03f86f3",
+      "actual": "f89f09b25b03687671dd3c38069f9f71c03f86f3",
+      "match": true
+    },
+    {
+      "path": "src/style.css",
+      "sha": "6f64947ee02da14fc279d2461c5c6ee1dc820c81",
+      "actual": "6f64947ee02da14fc279d2461c5c6ee1dc820c81",
+      "match": true
+    },
+    {
+      "path": "src/ui/black-hole-scales.ts",
+      "sha": "268db710252ae32373f2d76b33b953d61f505afb",
+      "actual": "268db710252ae32373f2d76b33b953d61f505afb",
+      "match": true
+    },
+    {
+      "path": "src/ui/controls.ts",
+      "sha": "d7a530f1381bd0e9438acf4f3fa29679c129bc18",
+      "actual": "d7a530f1381bd0e9438acf4f3fa29679c129bc18",
+      "match": true
+    },
+    {
+      "path": "src/ui/feed.ts",
+      "sha": "f752bf5ee598904b7c3fa7971db4b15d96aeb42e",
+      "actual": "f752bf5ee598904b7c3fa7971db4b15d96aeb42e",
+      "match": true
+    },
+    {
+      "path": "src/ui/inspector.ts",
+      "sha": "134ec4baa186fc0b96a5d7f63883e722c67d74a8",
+      "actual": "134ec4baa186fc0b96a5d7f63883e722c67d74a8",
+      "match": true
+    },
+    {
+      "path": "src/ui/kids.ts",
+      "sha": "3784ffe9ea73b7fcabdb9f63b099ec586e049bc2",
+      "actual": "3784ffe9ea73b7fcabdb9f63b099ec586e049bc2",
+      "match": true
+    },
+    {
+      "path": "src/ui/overlay-layout.ts",
+      "sha": "79c600e5dffa5960081d974f1f8d4e4b12b5ec37",
+      "actual": "79c600e5dffa5960081d974f1f8d4e4b12b5ec37",
+      "match": true
+    },
+    {
+      "path": "src/ui/pointer.ts",
+      "sha": "19ea6562ff0e73371d93756755bacb9f54812347",
+      "actual": "19ea6562ff0e73371d93756755bacb9f54812347",
+      "match": true
+    },
+    {
+      "path": "src/ui/template.ts",
+      "sha": "1fa69675880c8bfa6cc7342ab510ab3ebe9c9687",
+      "actual": "1fa69675880c8bfa6cc7342ab510ab3ebe9c9687",
+      "match": true
+    },
+    {
+      "path": "tests/black-hole-catalog.test.ts",
+      "sha": "c9e8a4d5a49bddfcb005741cc9288a7e58da8419",
+      "actual": "c9e8a4d5a49bddfcb005741cc9288a7e58da8419",
+      "match": true
+    },
+    {
+      "path": "tests/kids-cancel.test.ts",
+      "sha": "6ec4fc93ffb808864f728d18d8db1e4cbdc7877c",
+      "actual": "6ec4fc93ffb808864f728d18d8db1e4cbdc7877c",
+      "match": true
+    },
+    {
+      "path": "tests/kids-mode.test.ts",
+      "sha": "2d12ff125642a9d11bd349c948c19cb1983bfa8e",
+      "actual": "2d12ff125642a9d11bd349c948c19cb1983bfa8e",
+      "match": true
+    },
+    {
+      "path": "tests/overlay-budget.test.ts",
+      "sha": "7b5a0567dffb8b82f0a13921c48db0c22ba66fa2",
+      "actual": "7b5a0567dffb8b82f0a13921c48db0c22ba66fa2",
+      "match": true
+    }
+  ],
+  "reviewed_at": "2026-11-10T13:18:00Z",
+  "scope": "Reviewer Node execution of exact-head source; not a browser run.",
+  "focusedTests": {
+    "command": "node --test tests/black-hole-catalog.test.ts",
+    "passed": 9,
+    "total": 9
+  },
+  "browser": {
+    "renderedCases": 0,
+    "bundled": "Missing chromium_headless_shell-1234 executable",
+    "installed": "/usr/bin/chromium aborts before page creation: process_singleton_posix.cc:297 socket() failed: Operation not permitted (1)"
+  },
+  "ci": {
+    "run": 42819224457,
+    "job": 129840122266,
+    "checkedMerge": "358b8faf54bf39dd0278757b712a2217133e259b",
+    "nonDocsIdentical": {
+      "matched": 241,
+      "total": 241
+    },
+    "tests": {
+      "passed": 215,
+      "total": 215
+    },
+    "distFiles": 113,
+    "pageViewportChecks": {
+      "passed": 24,
+      "total": 24
+    },
+    "build": "success",
+    "format": "success",
+    "deploy": "skipped"
+  },
+  "builderRenderedEvidence": {
+    "path": "evidence-7a2-660cfaf.jsonl",
+    "desktop": {
+      "passed": 24,
+      "total": 24
+    },
+    "portrait": {
+      "passed": 25,
+      "total": 25
+    },
+    "landscape": {
+      "passed": 24,
+      "total": 24
+    },
+    "reviewerViewedScreenshots": 3,
+    "providedScreenshots": 3,
+    "independentlyExecuted": false
+  }
+}
