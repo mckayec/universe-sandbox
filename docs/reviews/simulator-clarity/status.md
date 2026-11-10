@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude fixes SC6-T1 automatic idle-exhibit banners/sounds bypassing quiet, dispositions SC6-T2 desktop truncation, and strengthens SC6-E1 timeline/running assertions per implementation-review-b7fc3f1.md; return exact head for review before treating 6a accepted. Kids mode 6b and item 7 remain unfinished.
-updated: 2026-11-10T01:16:16Z
+next-action: ChatGPT reviews the SC6-T1/T2/E1 return at PR47 8de912810c3fe029b79623f762b5eab325bc1236 (receipt below, implementation-review-b7fc3f1.md findings); accept 6a or return findings. Kids mode 6b and item 7 remain unfinished.
+updated: 2026-11-10T03:05Z
 idle-runs: 0
-note: Item 6a at PR47 b7fc3f1244b72471143f2a22674dd73238acd259 returned for correction: 9/9 repository tests pass, independent actual-handler groups 5/6 pass and 1/6 reproduces quiet idle start/restart producing two banners and two sound calls. 14/14-file delta read; 15/15 hashes verified. CI metadata green, builder rendered 35/35 attributed; zero independent rendered cases. Prior SC5 closure and SC1-E1/SC4-E1/Save-Load gaps preserved. Not merged.
+note: SC6 return at PR47 8de912810c3fe029b79623f762b5eab325bc1236: idle attract loads simulation-origin, plus audit fix for accretion/slow-motion banners; canvas labels shorten only in compact layout and relabel on breakpoint flips; harness 6a2 adds asserted 10x/recorded-event, long-name resize and idle start+restart cases. 184/184 units, 113 dist, 24/24 pages; ChatGPT's actual-handler reproduction re-run 6/6. Not merged.
 
 
 
@@ -177,6 +177,20 @@ Known gaps (6a):
 - Direct action toasts are not tagged failure vs confirmation; quiet keeps all of them, which over-shows rather than hides failures.
 - Kids mode (6b) and its gating, short-landscape/200%-text/interruption tests remain to do.
 
+## SC6-T1 / SC6-T2 / SC6-E1 return (PR #47, 8de912810c3fe029b79623f762b5eab325bc1236)
+
+Commits on `sim/clarity-physics` after b7fc3f1: 7f4d3de (T1, T2), 8de912810c3fe029b79623f762b5eab325bc1236 (T1 audit).
+
+- **SC6-T1 fixed.** `loadExhibit` now tags its Guided-exhibit event with `exhibitLoadOrigin(asAttract)` (src/feedback.ts): the idle attract start and every 48 s restart are `simulation` origin, so quiet mode records them in the timeline/lastEvent without banner or sound; visitor exhibit picks stay `action`. The source test that required every guide call to be action-origin is replaced by an SC6-T1 test (origin rule, presentEvent in both modes, loadExhibit follows asAttract, attract passes `true`, toolbar never does). **Audit:** the rendered idle run at the first fix exposed two more unsolicited banners outside museumEvent — `X accreted Y` (physics/collisions.ts) and the cinematic `Slow motion` (physics/tidal-disruption.ts). Both now go through `simulationToast()` (src/ui/feed.ts), which drops them in quiet; covered by a unit test. Not changed (for your call): the ambient pulsar tick in src/app/loop.ts still sounds in quiet; direct-action toasts (camera, history, quality, groups, drag-to-orbit) are action-origin and unchanged.
+- **SC6-T2 fixed (not justified).** `canvasLabelText(name, compact)` shortens only when compact; `app.compactLabels` holds the layout last applied and `updateLabels()` relabels every body when the ≤800 px breakpoint flips, so a resize goes both ways. Unit test with a long name in both layouts; rendered long-name resize case below.
+- **SC6-E1 strengthened.** [evidence-harness-6a2.mjs](evidence-harness-6a2.mjs) keeps every 6a check and adds: probe asserts running and speed 10 before and after; a bounded (30 s) wait for a non-Guided simulation event in the timeline before crediting no-banner; long-name (`Quiet Black Hole`, slow-feast) text on desktop/compact and after resizing back; idle attract in quiet (scene cleared so SwiftShader frames reach the 0.03 s step cap), counting a recorded start and a recorded restart and asserting zero banners and no narration.
+
+Evidence at 8de912810c3fe029b79623f762b5eab325bc1236:
+- `pnpm check`: format, build, **184/184** units, check:dist **113** files. `pnpm test:pages`: **12 pages × 2 viewports** pass.
+- ChatGPT's [actual-handler reproduction](reviewer-feedback-b7fc3f1.mjs), re-run as [builder-rerun-feedback-8de9128.mjs](builder-rerun-feedback-8de9128.mjs) (only change: loadExhibit's adapter scope also gets the real `exhibitLoadOrigin`, and the reported head): **6/6** groups pass, [output](builder-rerun-feedback-output-8de9128.json); idle start + restart give 0 banners and 0 sounds.
+- Rendered SwiftShader log [evidence-8de9128.jsonl](evidence-8de9128.jsonl): **1440×900 24/24** (idle case not run at that size; that run used the harness before its last two T2 edits — `settle()` waits and per-name comparison); **390×844 29/30** with the idle case: attract **started and restarted (2 recorded loads), badge shown, 0 banners**, quiet 10x run recorded Planetary fragmentation with 0 banners, compact long label `Quiet Black H…`. The one failure, "resizing back restores this layout", is a harness comparison fault, fixed in the committed harness: a second label (`Drifting Cloud`) appeared during the resize, and the restored long label text matched exactly (value in the log). Not re-run after that fix. Shots: [quiet 1440](shots/sc6a2-quiet-1440x900-8de9128.jpg), [labels 390](shots/sc6a2-labels-390x844-8de9128.jpg) (one selected short label, inspected).
+- Unavailable: `pnpm test:browser` not run this pass; physical iPhone/Safari, real GPU, real audio, screen reader. SC1-E1/SC4-E1 obligations and the Save→Clear→Load limitation stand. Kids mode 6b and item 7 not started.
+
 ## Known gaps
 
 - A debugger or OS pause without a visibility change is measured as one long frame and briefly lowers the FPS reading. Impact: low (honest, self-correcting next window). Does not block review.
@@ -218,3 +232,4 @@ Known gaps (6a):
 - 2026-11-10T01:00Z Claude: item 6a returned at PR47 b7fc3f1244b72471143f2a22674dd73238acd259 (compact selected-only short labels, Details reset on fresh selection, event-history/presentation split, persisted quiet feedback). 181/181 units, 113 dist, 24/24 pages; rendered harness 6a 35/35 (17 desktop + 18 compact), 0 errors. implementation/claude -> implementation-review/chatgpt; 6b Kids mode next. Not merged.
 
 - 2026-11-10T01:16:16Z ChatGPT: [item-6a review](implementation-review-b7fc3f1.md) saved/read back at 793cee30e45e27222fd14958c400b7b6173dbca7 after [actual-handler reproduction](reviewer-feedback-b7fc3f1.mjs) ae32360cdb100fb3535d6667b318558f318a450b and [output/input manifest](reviewer-feedback-output-b7fc3f1.json) d7a1661cbbf61a892b0bf09269a90edf30dcef43. Exact unchanged PR47 b7fc3f1244b72471143f2a22674dd73238acd259; 14/14-file delta reviewed, 15/15 hashes match, 9/9 focused repository tests pass. Independent extracted handlers 5/6 groups pass; 1/6 reproduces Medium SC6-T1: automatic idle start/restart is tagged action and bypasses quiet with two Guided exhibit banners plus two UI sound calls. Low SC6-T2 desktop long-name truncation scope and SC6-E1 missing enforced timeline/running evidence also returned. Builder 35/35 checks across 2 viewports remain attributed; CI run 42732521677 build success/deploy skipped verified by metadata, not full logs. Chromium fails before page creation on process-singleton socket permission; 0 independent rendered cases, 0/4 screenshots inspected. implementation-review/chatgpt -> fixing/claude. 6b/7 and prior evidence/release gates remain. Inspected 18/18 pack and 8/8 review statuses; three parallel audit folders unchanged. No application/PR-branch edit, merge, deployment or release approval.
+- 2026-11-10T03:05Z Claude: SC6-T1/T2/E1 return at PR47 8de912810c3fe029b79623f762b5eab325bc1236 (attract loads simulation-origin + accretion/slow-motion simulationToast audit; compact-only short labels with breakpoint relabel; harness 6a2). 184/184 units, 113 dist, 24/24 pages; reviewer reproduction re-run 6/6; rendered 1440 24/24, 390 29/30 (1 harness comparison fault, fixed, not re-run). fixing/claude -> implementation-review/chatgpt
