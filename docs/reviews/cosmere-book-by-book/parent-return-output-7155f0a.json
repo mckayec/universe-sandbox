@@ -1,0 +1,213 @@
+{
+  "head": "7155f0acbcfa351c73fb990366b4e0bd163ea3cf",
+  "manifest": {
+    "public/atlas/reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+    "public/atlas/packs/cosmere.js": "317cb58c4996c64f3acee32e7c9db00e95512552",
+    "public/atlas/engine.js": "6ecfb467f2577c2ffe57ee93ba5c06ee85979f52"
+  },
+  "compared": [
+    {
+      "file": "../../cos19/public/atlas/packs/cosmere.js",
+      "blob": "aebc2fb385bc6e2bfe453c610b48173f11d50916",
+      "scope": "whole pack with only authorized substitutions applied to parent for equality"
+    }
+  ],
+  "passed": 60,
+  "total": 60,
+  "checks": [
+    "authorized blurb",
+    "authorized short",
+    "authorized Luthadel description",
+    "scadrial field gate blurb",
+    "scadrial field gate short",
+    "luthadel field gate name",
+    "luthadel field gate desc",
+    "world record gate remains absent",
+    "site record gate remains absent",
+    "entire pack differs only by the 3 authorized texts and 4 field gates",
+    "candidate world.blurb mask 0",
+    "candidate world.short mask 0",
+    "candidate site.name mask 0",
+    "candidate site.desc mask 0",
+    "unchanged event ancestor hold e6 mask 0",
+    "unchanged event ancestor hold e12 mask 0",
+    "candidate world.blurb mask 1",
+    "candidate world.short mask 1",
+    "candidate site.name mask 1",
+    "candidate site.desc mask 1",
+    "unchanged event ancestor hold e6 mask 1",
+    "unchanged event ancestor hold e12 mask 1",
+    "candidate world.blurb mask 2",
+    "candidate world.short mask 2",
+    "candidate site.name mask 2",
+    "candidate site.desc mask 2",
+    "unchanged event ancestor hold e6 mask 2",
+    "unchanged event ancestor hold e12 mask 2",
+    "candidate world.blurb mask 3",
+    "candidate world.short mask 3",
+    "candidate site.name mask 3",
+    "candidate site.desc mask 3",
+    "unchanged event ancestor hold e6 mask 3",
+    "unchanged event ancestor hold e12 mask 3",
+    "candidate world.blurb mask 4",
+    "candidate world.short mask 4",
+    "candidate site.name mask 4",
+    "candidate site.desc mask 4",
+    "unchanged event ancestor hold e6 mask 4",
+    "unchanged event ancestor hold e12 mask 4",
+    "candidate world.blurb mask 5",
+    "candidate world.short mask 5",
+    "candidate site.name mask 5",
+    "candidate site.desc mask 5",
+    "unchanged event ancestor hold e6 mask 5",
+    "unchanged event ancestor hold e12 mask 5",
+    "candidate world.blurb mask 6",
+    "candidate world.short mask 6",
+    "candidate site.name mask 6",
+    "candidate site.desc mask 6",
+    "unchanged event ancestor hold e6 mask 6",
+    "unchanged event ancestor hold e12 mask 6",
+    "candidate world.blurb mask 7",
+    "candidate world.short mask 7",
+    "candidate site.name mask 7",
+    "candidate site.desc mask 7",
+    "unchanged event ancestor hold e6 mask 7",
+    "unchanged event ancestor hold e12 mask 7",
+    "world fallback is still unreviewed",
+    "site fallback is still unreviewed"
+  ],
+  "actualTruthTable": [
+    {
+      "mask": 0,
+      "read": [],
+      "fields": {
+        "world.blurb": false,
+        "world.short": false,
+        "site.name": false,
+        "site.desc": false
+      },
+      "events": {
+        "e6": false,
+        "e12": false
+      }
+    },
+    {
+      "mask": 1,
+      "read": [
+        "mistborn-the-final-empire"
+      ],
+      "fields": {
+        "world.blurb": false,
+        "world.short": false,
+        "site.name": false,
+        "site.desc": false
+      },
+      "events": {
+        "e6": false,
+        "e12": false
+      }
+    },
+    {
+      "mask": 2,
+      "read": [
+        "mistborn-the-well-of-ascension"
+      ],
+      "fields": {
+        "world.blurb": false,
+        "world.short": false,
+        "site.name": false,
+        "site.desc": false
+      },
+      "events": {
+        "e6": false,
+        "e12": false
+      }
+    },
+    {
+      "mask": 3,
+      "read": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension"
+      ],
+      "fields": {
+        "world.blurb": false,
+        "world.short": false,
+        "site.name": false,
+        "site.desc": false
+      },
+      "events": {
+        "e6": false,
+        "e12": false
+      }
+    },
+    {
+      "mask": 4,
+      "read": [
+        "mistborn-the-hero-of-ages"
+      ],
+      "fields": {
+        "world.blurb": false,
+        "world.short": false,
+        "site.name": false,
+        "site.desc": false
+      },
+      "events": {
+        "e6": false,
+        "e12": false
+      }
+    },
+    {
+      "mask": 5,
+      "read": [
+        "mistborn-the-final-empire",
+        "mistborn-the-hero-of-ages"
+      ],
+      "fields": {
+        "world.blurb": false,
+        "world.short": false,
+        "site.name": false,
+        "site.desc": false
+      },
+      "events": {
+        "e6": false,
+        "e12": false
+      }
+    },
+    {
+      "mask": 6,
+      "read": [
+        "mistborn-the-well-of-ascension",
+        "mistborn-the-hero-of-ages"
+      ],
+      "fields": {
+        "world.blurb": false,
+        "world.short": false,
+        "site.name": false,
+        "site.desc": false
+      },
+      "events": {
+        "e6": false,
+        "e12": false
+      }
+    },
+    {
+      "mask": 7,
+      "read": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension",
+        "mistborn-the-hero-of-ages"
+      ],
+      "fields": {
+        "world.blurb": true,
+        "world.short": true,
+        "site.name": true,
+        "site.desc": true
+      },
+      "events": {
+        "e6": true,
+        "e12": true
+      }
+    }
+  ],
+  "scope": "Actual PR48 pack and extracted actual engine selectors. No gates injected into audited pack. Independent source check, not browser rendering or whole-record/full-work canon certification."
+}
