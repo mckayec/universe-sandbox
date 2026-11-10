@@ -1,0 +1,259 @@
+{
+  "head": "1acc2ea61f39cb1f355a661373bf91bf86be00b8",
+  "parent": "3ab737fe90991767b3cebf5410dc5a1c3b7a6f84",
+  "delta": {
+    "files": 1,
+    "path": "src/style.css",
+    "additions": 50,
+    "deletions": 0
+  },
+  "manifest": {
+    "src/style.css": "6239fd6e061e5aa34fdf5ba8118260254e57a689",
+    "evidence-harness-7d.mjs": "c977eb17aada69a3d352bdf95fc6f0a000c2013a",
+    "evidence-7d-1acc2ea.jsonl": "8d72bcac580857c1816820b30530e2d50c92a549",
+    "evidence-7c-1acc2ea.jsonl": "7bb1c8a89f61a036b182e7b4a95a88b7352d8593",
+    "shots/sc7d-667x375.png": "6155ade22111ae3d46088a5ec6bd17b703edbc3c",
+    "shots/sc7d-667x375-200text.png": "d5ba0ecb5fa8c5bed5e48873433e556283c9c620"
+  },
+  "logs": {
+    "evidence-7d-1acc2ea.jsonl": {
+      "passed": 46,
+      "total": 46,
+      "tags": {
+        "667x375": 11,
+        "667x375@200%text": 11,
+        "844x390": 7,
+        "390x844": 10,
+        "1440x900": 7
+      },
+      "observations": [
+        {
+          "tag": "844x390",
+          "observe": "desktop action row visible without scrolling",
+          "value": false,
+          "detail": {
+            "pause": {
+              "rendered": true,
+              "rect": [
+                38,
+                319,
+                135,
+                348
+              ],
+              "clip": [
+                22,
+                120,
+                254,
+                330
+              ],
+              "fullyVisible": false,
+              "unobstructed": false,
+              "hits": [
+                false,
+                true,
+                true,
+                false,
+                false
+              ],
+              "font": "9px"
+            },
+            "clear": {
+              "rendered": true,
+              "rect": [
+                142,
+                319,
+                238,
+                348
+              ],
+              "clip": [
+                22,
+                120,
+                254,
+                330
+              ],
+              "fullyVisible": false,
+              "unobstructed": false,
+              "hits": [
+                false,
+                true,
+                true,
+                false,
+                false
+              ],
+              "font": "9px"
+            }
+          }
+        },
+        {
+          "tag": "1440x900",
+          "observe": "desktop action row visible without scrolling",
+          "value": true,
+          "detail": {
+            "pause": {
+              "rendered": true,
+              "rect": [
+                38,
+                795,
+                135,
+                824
+              ],
+              "clip": [
+                22,
+                120,
+                254,
+                840
+              ],
+              "fullyVisible": true,
+              "unobstructed": true,
+              "hits": [
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "font": "9px"
+            },
+            "clear": {
+              "rendered": true,
+              "rect": [
+                142,
+                795,
+                238,
+                824
+              ],
+              "clip": [
+                22,
+                120,
+                254,
+                840
+              ],
+              "fullyVisible": true,
+              "unobstructed": true,
+              "hits": [
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "font": "9px"
+            }
+          }
+        }
+      ],
+      "summaries": [
+        {
+          "summary": "PASS",
+          "failed": 0
+        }
+      ]
+    },
+    "evidence-7c-1acc2ea.jsonl": {
+      "passed": 58,
+      "total": 58,
+      "tags": {
+        "844x390": 14,
+        "667x375": 15,
+        "390x844": 15,
+        "1440x900": 14
+      },
+      "observations": [
+        {
+          "tag": "844x390",
+          "observe": "readout visible without scrolling after keyboard change",
+          "value": true,
+          "detail": {
+            "rect": [
+              614,
+              240,
+              806,
+              261
+            ],
+            "clip": [
+              598,
+              120,
+              822,
+              330
+            ],
+            "fullyVisible": true,
+            "unobstructed": true
+          }
+        },
+        {
+          "tag": "667x375",
+          "observe": "readout visible without scrolling after keyboard change",
+          "value": false,
+          "detail": {
+            "rect": [
+              293,
+              301,
+              546,
+              327
+            ],
+            "clip": [
+              12,
+              222,
+              559,
+              309
+            ],
+            "fullyVisible": false,
+            "unobstructed": false
+          }
+        },
+        {
+          "tag": "390x844",
+          "observe": "readout visible without scrolling after keyboard change",
+          "value": true,
+          "detail": {
+            "rect": [
+              202,
+              605,
+              365,
+              643
+            ],
+            "clip": [
+              12,
+              376,
+              378,
+              778
+            ],
+            "fullyVisible": true,
+            "unobstructed": true
+          }
+        },
+        {
+          "tag": "1440x900",
+          "observe": "readout visible without scrolling after keyboard change",
+          "value": true,
+          "detail": {
+            "rect": [
+              1210,
+              391,
+              1402,
+              412
+            ],
+            "clip": [
+              1194,
+              120,
+              1418,
+              543
+            ],
+            "fullyVisible": true,
+            "unobstructed": true
+          }
+        }
+      ],
+      "summaries": [
+        {
+          "summary": true,
+          "failed": 0
+        }
+      ]
+    }
+  },
+  "screenshotsViewed": 2,
+  "independentBrowserCases": 0,
+  "browserBlocker": "Chromium exited before page creation: process_singleton_posix.cc:297 socket() failed: Operation not permitted (1).",
+  "scope": "Independent source/diff inspection, hash verification, log recount and screenshot inspection of builder artifacts; not independent simulator execution. Picker selectOption is not pointer-only native-menu selection; dock-only doubled computed fonts are not page-wide resize/browser zoom/screen-reader coverage."
+}
