@@ -142,6 +142,20 @@ test('SC6-T1: idle attract start/restart loads are simulation-origin; visitor pi
   assert.ok(!/loadExhibit\([^)]*,\s*true\)/.test(toolbar), 'visitor exhibit buttons never load as attract');
 });
 
+test('SC6-T1 audit: simulation-raised banners outside museumEvent respect quiet', () => {
+  const feed = readFileSync('src/ui/feed.ts', 'utf8');
+  const helper = feed.slice(
+    feed.indexOf('export function simulationToast'),
+    feed.indexOf('export function renderExhibitEvents'),
+  );
+  assert.ok(helper.includes("presentEvent('simulation', app.feedbackMode).banner"));
+  for (const file of ['src/physics/collisions.ts', 'src/physics/tidal-disruption.ts']) {
+    const src = readFileSync(file, 'utf8');
+    assert.ok(src.includes('simulationToast('), `${file} uses simulationToast`);
+    assert.ok(!/(^|[^A-Za-z.])toast\(/m.test(src), `${file} has no direct toast()`);
+  }
+});
+
 test('wiring: museumEvent records before presenting; builders are action-origin', () => {
   const feed = readFileSync('src/ui/feed.ts', 'utf8');
   const body = feed.slice(feed.indexOf('export function museumEvent'), feed.indexOf('/** Matches the compact'));

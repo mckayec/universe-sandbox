@@ -12,7 +12,7 @@ import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts'
 import { isCompact } from '../scene/setup.ts';
 import { bodies, bodyGroupIds, cosmicGroups } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
-import { museumEvent, toast } from '../ui/feed.ts';
+import { museumEvent, simulationToast } from '../ui/feed.ts';
 import { impactEffect, particleBurst } from '../visuals/effects.ts';
 
 function separateCollision(a: Body, b: Body, normal: THREE.Vector3, strength: number) {
@@ -215,7 +215,7 @@ export function consume(a: Body, b: Body) {
   if (a.kind === 'rocky') a.habitabilityShock = Math.max(a.habitabilityShock, 0.82);
   impactEffect(impact, a.kind === 'blackhole' ? 0xffa14d : TYPES[a.kind].color, a.kind === 'blackhole' ? 1.8 : 1);
   removeBody(b, a);
-  if (!applyGrowthProgression(a)) toast(`${a.name} accreted ${foodName}`);
+  if (!applyGrowthProgression(a)) simulationToast(`${a.name} accreted ${foodName}`);
 }
 function candidatePairs(): Array<[Body, Body]> {
   const pairs: Array<[Body, Body]> = [];

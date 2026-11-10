@@ -116,6 +116,10 @@ export function toast(msg: string) {
   el.classList.add('show');
   app.toastTimer = 2.6;
 }
+/** A banner the simulation raises on its own (not a museumEvent): quiet mode drops it. */
+export function simulationToast(msg: string) {
+  if (presentEvent('simulation', app.feedbackMode).banner) toast(msg);
+}
 export function renderExhibitEvents() {
   const root = document.querySelector<HTMLElement>('#event-items')!;
   root.replaceChildren();
