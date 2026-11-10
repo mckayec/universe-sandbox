@@ -32,7 +32,14 @@ import {
 import { hideDialog, openDialog, showDialog, trapFocus } from './dialogs.ts';
 import { exitGuide, loadExhibit, openUniversePack } from './exhibit-flow.ts';
 import { compactLayout, noteActivity, select, session, setDetailsExpanded, setToolsCollapsed, toast } from './feed.ts';
-import { closeObjectMenu, orbitNearest, refreshObjectMenu, toggleBuildLock, togglePositionLock } from './inspector.ts';
+import {
+  closeObjectMenu,
+  orbitNearest,
+  refreshObjectMenu,
+  setBlackHoleReference,
+  toggleBuildLock,
+  togglePositionLock,
+} from './inspector.ts';
 import { impactEffect } from '../visuals/effects.ts';
 
 export function bindToolbar() {
@@ -162,6 +169,9 @@ export function bindToolbar() {
     if (app.selectedBody) toggleBuildLock(app.selectedBody);
   };
   document.querySelector<HTMLButtonElement>('#universe-home')!.onclick = fitAllObjects;
+  document.querySelector<HTMLSelectElement>('#bh-reference')!.onchange = e => {
+    if (app.selectedBody) setBlackHoleReference(app.selectedBody, (e.currentTarget as HTMLSelectElement).value);
+  };
   document.querySelector<HTMLSelectElement>('#group-select')!.onchange = e => {
     const value = (e.currentTarget as HTMLSelectElement).value;
     focusCosmicGroup(value ? Number(value) : null);

@@ -43,6 +43,7 @@ export function transform(b: Body, kind: Kind, mass = b.mass) {
   b.stageAge = 0;
   b.stage = kind === 'star' ? stellarBirthStage(mass) : undefined;
   if (kind !== 'star') b.holdStage = undefined;
+  if (kind !== 'blackhole') b.bhReference = undefined;
   b.stageTransition = undefined;
   b.nebulaTidal = 0;
   b.nebulaCompression = 0;

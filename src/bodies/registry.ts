@@ -101,6 +101,7 @@ export function addBody(kind: Kind, pos: THREE.Vector3, vel = new THREE.Vector3(
       tidalAngle: o.tidalAngle ?? 0,
       tidalPartnerId: o.tidalPartnerId,
       tidalStrain: o.tidalStrain,
+      bhReference: kind === 'blackhole' ? o.bhReference : undefined,
       tidalWarned: o.tidalWarned,
       debris: o.debris,
       lifeScore: o.lifeScore ?? 0,

@@ -27,6 +27,10 @@ export type ProbeSnapshot = {
     spin: number;
     keyLightId: number | null;
     keyDir: [number, number, number] | null;
+    mass: number;
+    radius: number;
+    /** Item 7b reference scale (read-only copy). */
+    bhReference: { origin: string; solarMassPerModelUnit: number } | null;
   }[];
   transferDisks: { donorId: number; receiverId: number; visible: boolean; tide: number | null; cut: number | null }[];
 };
@@ -70,6 +74,9 @@ export function probeSnapshot(): ProbeSnapshot {
       spin: b.spinAngle ?? 0,
       keyLightId: (b.mesh.userData.keyLightId as number | null | undefined) ?? null,
       keyDir: keyDirOf(b),
+      mass: b.mass,
+      radius: b.radius,
+      bhReference: b.bhReference ? { ...b.bhReference } : null,
     })),
     transferDisks: [...matterStreams.values()].map(s => {
       const e = transferDiskEncounterOf(s);

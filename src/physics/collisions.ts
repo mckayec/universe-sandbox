@@ -12,6 +12,7 @@ import { accreteMomentum, applyGrowthProgression } from './stellar-evolution.ts'
 import { isCompact } from '../scene/setup.ts';
 import { bodies, bodyGroupIds, cosmicGroups } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
+import { mergeReferences } from '../black-hole-reference.ts';
 import { museumEvent, simulationToast } from '../ui/feed.ts';
 import { impactEffect, particleBurst } from '../visuals/effects.ts';
 
@@ -204,6 +205,14 @@ export function consume(a: Body, b: Body) {
     receiverMass = a.mass,
     total = receiverMass + b.mass,
     impact = b.mesh.position.clone().lerp(a.mesh.position, 0.45);
+  // Reference scale only (item 7b): referenced masses add; unreferenced mass is read at the survivor's factor.
+  if (a.kind === 'blackhole')
+    a.bhReference = mergeReferences(
+      receiverMass,
+      a.bhReference,
+      b.mass,
+      b.kind === 'blackhole' ? b.bhReference : undefined,
+    );
   // An exhibit anchor isn't yanked around by its own system's members (same rule as gravity).
   if (!(isExhibitAnchor(a) && sameExhibitSystem(a, b))) accreteMomentum(a, b.velocity, b.mass, receiverMass);
   if (a.buildLocked) a.velocity.set(0, 0, 0);

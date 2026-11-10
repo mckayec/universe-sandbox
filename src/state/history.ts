@@ -34,6 +34,7 @@ import {
 import type { LifeLevel, Stage, StellarTransition } from './types.ts';
 import { renderExhibitEvents, select, toast } from '../ui/feed.ts';
 import { closeObjectMenu } from '../ui/inspector.ts';
+import { sanitizeReference } from '../black-hole-reference.ts';
 
 export function resetSimulation() {
   closeObjectMenu();
@@ -98,6 +99,7 @@ export function snapshotUniverse(): SandboxSnapshot {
       stageTransition: body.stageTransition ? { ...body.stageTransition } : undefined,
       debris: body.debris,
       tidalStrain: body.tidalStrain,
+      bhReference: body.bhReference ? { ...body.bhReference } : undefined,
       infall: body.infall ? { ...body.infall } : undefined,
       nebulaTimer: body.nebulaTimer,
       hostId: body.hostId,
@@ -189,6 +191,7 @@ function restoreBody(saved: SandboxSnapshot['bodies'][number]) {
     stageTransition: saved.stageTransition ? ({ ...saved.stageTransition } as StellarTransition) : undefined,
     debris: saved.debris,
     tidalStrain: saved.tidalStrain,
+    bhReference: sanitizeReference(saved.bhReference, saved.kind),
     nebulaTimer: saved.nebulaTimer,
     hostId: saved.hostId,
     protoAngle: saved.protoAngle,

@@ -25,6 +25,7 @@ import { app, bodies, matterStreams } from '../state/app-state.ts';
 import { recordHistory } from '../state/history.ts';
 import type { Body } from '../state/types.ts';
 import { describeEncounter } from '../disk-encounter.ts';
+import { describeReference, referenceForPreset, referencePickerValue } from '../black-hole-reference.ts';
 import { diskEncounterOf, transferDiskEncounterOf } from '../visuals/disk-encounters.ts';
 import { select, toast } from './feed.ts';
 
@@ -54,6 +55,12 @@ export function updateInspector() {
   const isHole = b.kind === 'blackhole';
   document.querySelector<HTMLElement>('#scale-row')!.style.display = isHole ? 'flex' : 'none';
   document.querySelector<HTMLElement>('#bh-scales')!.hidden = !isHole;
+  document.querySelector<HTMLElement>('#reference-row')!.style.display = isHole ? 'flex' : 'none';
+  if (isHole) {
+    const picker = document.querySelector<HTMLSelectElement>('#bh-reference')!;
+    if (document.activeElement !== picker) picker.value = referencePickerValue(b.bhReference);
+    document.querySelector('#info-reference')!.textContent = describeReference(b.mass, b.bhReference);
+  }
   document.querySelector('#info-velocity')!.textContent = `${b.velocity.length().toFixed(2)} u/s`;
   document.querySelector('#info-age')!.textContent = `${b.age.toFixed(1)} s`;
   const structure = groupForBody(b),
@@ -252,4 +259,19 @@ export function orbitNearest(b: Body) {
   updateInspector();
   refreshObjectMenu();
   toast(`${b.name} entered orbit around ${center.name}`);
+}
+/**
+ * Gives a black hole a reference scale (item 7b): its current model mass is read as the chosen preset from now on,
+ * and the factor stays fixed so growth and mergers scale the referenced mass linearly. Undoable; physics unchanged.
+ */
+export function setBlackHoleReference(b: Body, presetId: string) {
+  if (b.kind !== 'blackhole' || presetId === referencePickerValue(b.bhReference)) return;
+  recordHistory();
+  b.bhReference = referenceForPreset(presetId, b.mass);
+  updateInspector();
+  toast(
+    b.bhReference
+      ? `${b.name} read as ${describeReference(b.mass, b.bhReference).split(' · ')[0]} (reference only)`
+      : `${b.name} back to model units only`,
+  );
 }

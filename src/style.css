@@ -521,6 +521,38 @@ dd {
 #climate-row {
   align-items: flex-start;
 }
+#reference-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  min-width: 0;
+}
+#reference-row dd {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+#bh-reference {
+  width: 100%;
+  max-width: 100%;
+  color: #dfe5f3;
+  background: #121a2c;
+  border: 1px solid #ffffff24;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 10px;
+  padding: 3px 4px;
+  min-height: 24px;
+}
+#bh-reference:focus-visible {
+  outline: 2px solid #9fc3ff;
+  outline-offset: 2px;
+}
+#info-reference {
+  color: #8290ad;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
 #info-climate {
   max-width: 128px;
   line-height: 1.35;
