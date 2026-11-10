@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude continues item 7 (catalog/units) at PR47 after bounded Kids 6b acceptance in implementation-review-20837c0.md; include finite SC6-O2 pointer-record cleanup and return exact-head validation.
-updated: 2026-11-10T11:19:09Z
+next-action: ChatGPT reviews item 7a at PR47 07464c3c379aa0632fcc8526a39983a391c20e2a per item-7a-return-07464c3.md (black-hole catalog values/wording, model-unit labels, SC6-O2 bounds); Claude then implements 7b (per-body reference scale + documented unit mapping) unless redirected.
+updated: 2026-11-10T12:07Z
 idle-runs: 0
-note: SC6-K3 closed at 20837c0; independent 18/18 handler and 20/20 focused tests, 15/15 input hashes; inspected builder 72/72 traces with 10/28 parent failures and six vacuous multi-touch cases distinguished. CI 204/204 units, 113 dist, 24/24 pages (238/238 non-doc files identical). Low retention observation SC6-O2 carried; browser/device/Save-Load and release limits remain.
+note: Item 7a returned at 07464c3 (parent 20837c0; 11 files): pure black-hole-catalog.ts (5 presets/3 classes, 6 cited examples, nonspinning horizon/shadow/ISCO, outer disk null), black-hole masses labelled model units (inspector, menu, canvas label), Scale row + Real black-hole sizes block; SC6-O2 records bounded. 214/214 units, 113 dist, 24/24 pages; rendered 7a 40/40 at 3 viewports, 0 errors, 3 screenshots viewed. 7b (per-body scale, unit mapping) open; device/GPU/Save-Load/release limits remain. Not merged.
 
 
 
@@ -323,3 +323,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-10T11:10Z Claude: [SC6-K3 return](sc6-k3-return-20837c0.md) at PR47 20837c0211575d03ed0ad3ff3c34fcb98adeb653 (parent a50f1aa; 4 files): dialog click authorization now belongs to the originating pointer and the dialog lifetime. 204/204 units, 113 dist; [handler runner](builder-kids-k3.mjs) 18/18; [rendered 6e](evidence-harness-6e.mjs) 72/72 with traces, 0 errors; parent negative control 10/28 failed. 4 screenshots viewed. fixing/claude → implementation-review/chatgpt. Not merged.
 
 - 2026-11-10T11:19:09Z ChatGPT: [per-pointer correction review](implementation-review-20837c0.md) saved/read back at 4204195083b90918c50bd21fe341a0b28fce7ed9 after [reviewer execution output](reviewer-kids-output-20837c0.json) 70ef62afa44e5e1032efe96b153b07e8dff04e31. Exact PR47 20837c0211575d03ed0ad3ff3c34fcb98adeb653: 4/4 delta patches, 15/15 input hashes, independent 18/18 handler expectations and 20/20 focused tests; builder 72/72 checks and 10/28 parent failures inspected, six vacuous multi-touch cases explicit. CI 42804350399 verifies 204/204 units, 113 dist and 24/24 pages on code-equivalent merge 96324cb (238/238 non-doc files); deploy skipped. SC6-K3 closed, bounded Kids 6b accepted; implementation-review/chatgpt -> implementation/claude for item 7 plus Low SC6-O2 retention cleanup. 0 independent rendered cases (Chromium socket permission); prior release gaps remain. No code/PR-branch edit, merge, deployment or Mckay approval.
+- 2026-11-10T12:07Z Claude: [item 7a return](item-7a-return-07464c3.md) at PR47 07464c3c379aa0632fcc8526a39983a391c20e2a (parent 20837c0; 11 files): black-hole reference catalog and honest model-unit labels, plus SC6-O2 pointer-record bounds. 214/214 units, 113 dist, 24/24 pages; [rendered 7a](evidence-harness-7a.mjs) 40/40 at 1440x900, 390x844, 844x390, 0 errors. 7b (per-body reference scale + unit mapping) and an M⊕ label on other bodies listed as Known gaps. implementation/claude → implementation-review/chatgpt. Not merged.
