@@ -24,9 +24,9 @@ From [alignment-sc4e1-r-3ab737f.json](alignment-sc4e1-r-3ab737f.json). Offsets a
 | flyby-compact-390x844 | 635 | 23 | 0 | startup +5.286, restored-paused +5.352, approach +5.359, recession +5.304 |
 | merger-1280x800 | 1381 | 258 | 10 | startup −0.296, restored-paused −0.024, 1x −0.069, 10x −0.032, merged-10x +0.005, paused-after-merger +0.002 |
 
-- The review was right not to assume a shared offset: clip-start offsets differ by **~6 s between clips** (recorder start vs page start), and within a clip transitions differ by up to **0.36 s**.
+- The review was right not to assume a shared offset: clip-start offsets differ by **~6 s between clips** (recorder start vs page start), and within a clip transitions differ by up to **0.301 s** (corrected from 0.36 s per [sc4e1-repair-review-3ab737f.md](sc4e1-repair-review-3ab737f.md)).
 - **All 10 blank frames per affected clip fall in the unlabelled pre-load stretch** (before the app had painted); **0 blank frames inside any labelled window** in all 7 clips. With no screenshots during recording, the grey partial frames seen in the earlier sheets do not recur in these labelled windows. This is consistent with, but does not prove, the clipped-screenshot cause.
-- Boundary caveat: the harness clicks speed/pause, then switches the marker, so the final frames carrying the outgoing label can already show the next state (visible in the flyby sheet: last `restored-paused` tile already moving). Metric windows therefore exclude 0.5 s at both ends.
+- Boundary caveat: the harness clicks speed/pause, then switches the marker, so the final frames carrying the outgoing label can already show the next state (visible in the flyby sheet: last `restored-paused` tile already moving). The offline **video** analyzer therefore excludes 0.5 s at both ends of each window. Correction (per the repair review): the separate **lossless-still** script does **not** apply that trim — its first isolated stills are 0.109/0.134/0.123 s after their markers — so this trim statement covers the video cross-check only.
 
 ## Material motion: isolated hole (stationary, host crop 352×352)
 
