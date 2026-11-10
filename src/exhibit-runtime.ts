@@ -1,3 +1,5 @@
+import { parseFeedbackMode, type FeedbackMode } from './feedback.ts';
+
 export type RealismMode = 'exhibit' | 'educational' | 'realistic';
 export type EffectsMode = 'full' | 'gentle';
 export type DeviceTier = 'mobile' | 'balanced' | 'performance';
@@ -6,6 +8,7 @@ export type ExhibitPreferences = {
   realism: RealismMode;
   effects: EffectsMode;
   narration: boolean;
+  feedback: FeedbackMode;
 };
 
 const PREFERENCES_KEY = 'gravity-lab-preferences-v1';
@@ -15,6 +18,7 @@ export function loadPreferences(reducedMotion = false): ExhibitPreferences {
     realism: 'exhibit',
     effects: reducedMotion ? 'gentle' : 'full',
     narration: true,
+    feedback: 'full',
   };
   if (typeof localStorage === 'undefined') return fallback;
   try {
@@ -25,6 +29,7 @@ export function loadPreferences(reducedMotion = false): ExhibitPreferences {
         : fallback.realism,
       effects: ['full', 'gentle'].includes(parsed.effects ?? '') ? parsed.effects! : fallback.effects,
       narration: parsed.narration ?? fallback.narration,
+      feedback: parseFeedbackMode(parsed.feedback, fallback.feedback),
     };
   } catch {
     return fallback;

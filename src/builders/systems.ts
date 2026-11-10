@@ -111,6 +111,7 @@ export function createSolarSystem(origin: THREE.Vector3) {
     `${group.name} includes the Sun, eight planets, Earth's Moon, and dwarf planet Pluto. Distances and sizes are compressed for play.`,
     '#ffd57c',
     sun,
+    'action',
   );
   return sun;
 }
@@ -155,6 +156,7 @@ export function createBinarySystem(origin: THREE.Vector3) {
     `${group.name} demonstrates barycentric orbits, Roche lobes, and future mass transfer.`,
     '#9ec5ff',
     starA,
+    'action',
   );
   return starA;
 }
@@ -220,6 +222,7 @@ export function createTripleSystem(origin: THREE.Vector3) {
     `${group.name} uses a stable hierarchical layout: a close binary orbited by a more distant third star.`,
     '#c9d7ff',
     primary,
+    'action',
   );
   return primary;
 }

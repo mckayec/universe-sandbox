@@ -1,6 +1,7 @@
 // Shared mutable app state. Collections are exported directly; values that get reassigned live on the `app` object
 // (e.g. app.speed, app.selectedBody) so every module sees the same current value.
 import * as THREE from 'three';
+import type { FeedbackMode } from '../feedback.ts';
 import { type ExhibitId } from '../exhibits.ts';
 import { type SandboxSnapshot } from '../sandbox-state.ts';
 import { ExhibitAudio } from '../exhibit-audio.ts';
@@ -53,6 +54,7 @@ export const app = {
   qualityScale: 1,
   realismMode: preferences.realism as RealismMode,
   effectsMode: preferences.effects as EffectsMode,
+  feedbackMode: preferences.feedback as FeedbackMode,
   historySuspended: false,
   historyBeforeDrag: null as SandboxSnapshot | null,
   historyBeforeGravity: null as SandboxSnapshot | null,

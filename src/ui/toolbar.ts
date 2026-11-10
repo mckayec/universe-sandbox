@@ -6,7 +6,7 @@ import { focusCosmicGroup } from '../bodies/groups.ts';
 import { removeBody, replaceVisual, transform } from '../bodies/lifecycle.ts';
 import { planetSubtype } from '../physics/body-math.ts';
 import { fitAllObjects, focusSelected, nudgeCamera, zoomCamera } from '../scene/camera.ts';
-import { cycleEffectsMode, cycleQualityMode, cycleRealismMode } from '../scene/quality.ts';
+import { cycleEffectsMode, cycleFeedbackMode, cycleQualityMode, cycleRealismMode } from '../scene/quality.ts';
 import { renderer } from '../scene/setup.ts';
 import { app, audio } from '../state/app-state.ts';
 import {
@@ -31,7 +31,7 @@ import {
 } from './controls.ts';
 import { hideDialog, openDialog, showDialog, trapFocus } from './dialogs.ts';
 import { exitGuide, loadExhibit, openUniversePack } from './exhibit-flow.ts';
-import { compactLayout, noteActivity, select, session, setToolsCollapsed, toast } from './feed.ts';
+import { compactLayout, noteActivity, select, session, setDetailsExpanded, setToolsCollapsed, toast } from './feed.ts';
 import { closeObjectMenu, orbitNearest, refreshObjectMenu, toggleBuildLock, togglePositionLock } from './inspector.ts';
 import { impactEffect } from '../visuals/effects.ts';
 
@@ -177,6 +177,7 @@ export function bindToolbar() {
   document.querySelector<HTMLButtonElement>('#quality-mode')!.onclick = cycleQualityMode;
   document.querySelector<HTMLButtonElement>('#realism-mode')!.onclick = cycleRealismMode;
   document.querySelector<HTMLButtonElement>('#effects-mode')!.onclick = cycleEffectsMode;
+  document.querySelector<HTMLButtonElement>('#feedback-mode')!.onclick = cycleFeedbackMode;
   document.querySelector<HTMLButtonElement>('#sound-mode')!.onclick = e => {
     audio.setMuted(!audio.muted);
     (e.currentTarget as HTMLButtonElement).textContent = `Sound: ${audio.muted ? 'off' : 'on'}`;
@@ -285,11 +286,7 @@ function bindCompactPanels() {
     setToolsCollapsed(!document.querySelector('.shell')!.classList.contains('tools-collapsed'));
   const infoPanel = document.querySelector<HTMLElement>('#info-panel')!,
     expand = document.querySelector<HTMLButtonElement>('#info-expand')!;
-  expand.onclick = () => {
-    const expanded = infoPanel.classList.toggle('expanded');
-    expand.textContent = expanded ? 'Less' : 'Details';
-    expand.setAttribute('aria-expanded', String(expanded));
-  };
+  expand.onclick = () => setDetailsExpanded(!infoPanel.classList.contains('expanded'));
   document.querySelector<HTMLButtonElement>('#info-close')!.onclick = () => select(null);
   document.querySelector<HTMLButtonElement>('#info-life-zones')!.onclick = toggleHabitabilityGuides;
   // Phones start with the body palette collapsed so the playfield stays visible.

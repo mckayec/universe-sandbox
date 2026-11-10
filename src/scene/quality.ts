@@ -6,6 +6,7 @@ import { bloom, camera, composer, deviceTier, isCompact, lensingPass, preference
 import { app, audio, bodies } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { toast } from '../ui/feed.ts';
+import { timelineLive } from '../feedback.ts';
 
 // Lowest scale the adaptive loop and the Low setting may reach, and the absolute pixel-ratio floors. Desktop
 // can now drop below 1× so Low quality really renders fewer pixels on DPR-1 displays.
@@ -51,8 +52,13 @@ export function applyExhibitPreferences() {
   document.documentElement.classList.toggle('gentle-effects', app.effectsMode === 'gentle');
   document.querySelector('#realism-mode')!.textContent = `Model: ${app.realismMode}`;
   document.querySelector('#effects-mode')!.textContent = `Effects: ${app.effectsMode}`;
+  const feedbackButton = document.querySelector<HTMLButtonElement>('#feedback-mode')!;
+  feedbackButton.textContent = `Banners: ${app.feedbackMode === 'full' ? 'on' : 'quiet'}`;
+  feedbackButton.setAttribute('aria-pressed', String(app.feedbackMode === 'quiet'));
+  document.querySelector('#event-feed')!.setAttribute('aria-live', timelineLive(app.feedbackMode));
   preferences.realism = app.realismMode;
   preferences.effects = app.effectsMode;
+  preferences.feedback = app.feedbackMode;
   savePreferences(preferences);
 }
 export function cycleRealismMode() {
@@ -73,6 +79,17 @@ export function cycleEffectsMode() {
   applyExhibitPreferences();
   audio.play('ui');
   toast(app.effectsMode === 'full' ? 'Full exhibit effects enabled' : 'Gentle effects reduce flashes and particles');
+}
+/** Adult preference: quiet mode drops unsolicited simulation banners; the timeline keeps recording. */
+export function cycleFeedbackMode() {
+  app.feedbackMode = app.feedbackMode === 'full' ? 'quiet' : 'full';
+  applyExhibitPreferences();
+  audio.play('ui');
+  toast(
+    app.feedbackMode === 'quiet'
+      ? 'Quiet: simulation events stay in the timeline without banners'
+      : 'Event banners and sounds on',
+  );
 }
 export function updateAdaptiveQuality(dt: number) {
   const window = { timer: app.qualityTimer, frames: app.qualityFrames },

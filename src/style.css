@@ -2274,3 +2274,8 @@ dd {
     grid-template-columns: repeat(6, 1fr);
   }
 }
+/* Compact layout: the selected object's label shows only its short name (item 6a). */
+.label-layer.compact-labels .object-label span,
+.label-layer.compact-labels .object-label em {
+  display: none;
+}

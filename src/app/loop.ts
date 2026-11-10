@@ -27,7 +27,15 @@ import {
   viewTarget,
 } from '../scene/setup.ts';
 import { app, audio, bodies, bodyGroupIds } from '../state/app-state.ts';
-import { narrationFacts, recoverySnapshot, reducedMotion, showNarration, updateAttractMode } from '../ui/feed.ts';
+import { labelVisible } from '../feedback.ts';
+import {
+  compactLayout,
+  narrationFacts,
+  recoverySnapshot,
+  reducedMotion,
+  showNarration,
+  updateAttractMode,
+} from '../ui/feed.ts';
 import { updateInspector } from '../ui/inspector.ts';
 import { updateTransients } from '../visuals/effects.ts';
 import { updateVisuals } from '../visuals/update-visuals.ts';
@@ -98,15 +106,20 @@ function isEscortShip(body: (typeof bodies)[number]) {
   return body.artificial === 'warship' && body.mass <= body.birthMass;
 }
 function updateLabels() {
-  const viewDistance = camera.position.distanceTo(viewTarget);
+  const viewDistance = camera.position.distanceTo(viewTarget),
+    compact = compactLayout();
+  // Compact layout: at most the selected object's short name; metrics live behind Details.
+  labelRenderer.domElement.classList.toggle('compact-labels', compact);
   for (const body of bodies) {
-    const inFocusedStructure = app.selectedGroupId === null || bodyGroupIds.get(body.id) === app.selectedGroupId;
-    body.label.visible =
-      body === app.selectedBody ||
-      (!body.debris &&
-        !isEscortShip(body) &&
-        inFocusedStructure &&
-        (viewDistance < 170 || (viewDistance < 650 && (body.kind === 'blackhole' || body.kind === 'nebula'))));
+    body.label.visible = labelVisible({
+      compact,
+      selected: body === app.selectedBody,
+      debris: !!body.debris,
+      escort: isEscortShip(body),
+      inFocusedStructure: app.selectedGroupId === null || bodyGroupIds.get(body.id) === app.selectedGroupId,
+      kind: body.kind,
+      viewDistance,
+    });
   }
   return viewDistance;
 }

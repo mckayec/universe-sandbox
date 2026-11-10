@@ -187,7 +187,7 @@ export function loadExhibit(id: ExhibitId, asAttract = false) {
   document.querySelector<HTMLElement>('#scenario-picker')!.hidden = true;
   if (asAttract) document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
   else showGuide(id);
-  museumEvent('Guided exhibit', `${exhibit.title}: ${exhibit.objective}`, exhibit.accent, focus ?? undefined);
+  museumEvent('Guided exhibit', `${exhibit.title}: ${exhibit.objective}`, exhibit.accent, focus ?? undefined, 'action');
 }
 /**
  * A Slow Feast: the cloud drifts in first and is drained through the disk; the star starts near the far end of a

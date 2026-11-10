@@ -5,6 +5,7 @@ import { stellarBirthStage } from '../simulation-model.ts';
 import { TYPES, VARIANT_COUNTS, type Kind, type Placeable } from '../celestial-catalog.ts';
 import { updateCount, updateScale } from './lifecycle.ts';
 import { formatMass, seeded } from '../physics/body-math.ts';
+import { shortLabel } from '../feedback.ts';
 import { isCompact, scene } from '../scene/setup.ts';
 import { app, bodies, trails } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
@@ -26,7 +27,9 @@ export function updateBodyLabel(b: Body) {
   const title = b.label.element.querySelector('strong'),
     metrics = b.label.element.querySelector('span'),
     life = b.label.element.querySelector('em');
-  if (title) title.textContent = b.name;
+  if (title) title.textContent = shortLabel(b.name);
+  b.label.element.setAttribute('aria-label', b.name);
+  b.label.element.title = b.name;
   if (metrics) metrics.textContent = `${formatMass(b.mass)} M⊕ · Ø${(b.radius * 2).toFixed(1)}u`;
   if (life) {
     life.textContent = b.lifeLevel === 'none' ? '' : `LIFE · ${b.lifeLevel.toUpperCase()}`;
