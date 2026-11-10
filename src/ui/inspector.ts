@@ -16,6 +16,7 @@ import { groupForBody } from '../bodies/groups.ts';
 import {
   brownIgnitionMass,
   formatMass,
+  massText,
   planetSubtype,
   protoIgnitionMass,
   stellarEvolutionRate,
@@ -48,7 +49,11 @@ export function updateInspector() {
       : ['moon', 'dwarf', 'rocky', 'gas', 'blackhole', 'nebula'].includes(b.kind)
         ? planetSubtype(b)
         : t.label;
-  document.querySelector('#info-mass')!.textContent = `${formatMass(b.mass)} M⊕`;
+  document.querySelector('#info-mass')!.textContent = massText(b);
+  // Black holes are not to scale and their mass is in legacy model units (item 7a); the reference block shows real sizes.
+  const isHole = b.kind === 'blackhole';
+  document.querySelector<HTMLElement>('#scale-row')!.style.display = isHole ? 'flex' : 'none';
+  document.querySelector<HTMLElement>('#bh-scales')!.hidden = !isHole;
   document.querySelector('#info-velocity')!.textContent = `${b.velocity.length().toFixed(2)} u/s`;
   document.querySelector('#info-age')!.textContent = `${b.age.toFixed(1)} s`;
   const structure = groupForBody(b),
@@ -184,7 +189,7 @@ export function refreshObjectMenu() {
     positionLocked = b.locked && !b.buildLocked;
   document.querySelector('#menu-name')!.textContent = b.name;
   document.querySelector('#menu-type')!.textContent = type;
-  document.querySelector('#menu-mass')!.textContent = `${formatMass(b.mass)} M⊕`;
+  document.querySelector('#menu-mass')!.textContent = massText(b);
   document.querySelector('#menu-diameter')!.textContent = `Ø ${(b.radius * 2).toFixed(1)}u`;
   lock.textContent = positionLocked ? 'Unlock' : 'Position lock';
   lock.classList.toggle('active', positionLocked);

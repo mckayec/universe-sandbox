@@ -99,11 +99,22 @@ export function newDialogPresses(): DialogPresses {
   return { down: new Map(), released: new Map(), last: null };
 }
 export function notePointerDown(s: DialogPresses, pointerId: number, inDialog: boolean) {
-  s.down.set(pointerId, inDialog);
+  remember(s.down, pointerId, inDialog);
   s.released.delete(pointerId);
 }
+/** Upper bound on remembered pointers per map; real hands and mice stay far below it (SC6-O2). */
+export const MAX_TRACKED_POINTERS = 16;
+function remember(map: Map<number, boolean>, pointerId: number, value: boolean) {
+  map.delete(pointerId);
+  map.set(pointerId, value);
+  // Maps iterate in insertion order, so the first key is the oldest record.
+  while (map.size > MAX_TRACKED_POINTERS) map.delete(map.keys().next().value!);
+}
 export function notePointerUp(s: DialogPresses, pointerId: number) {
-  s.released.set(pointerId, s.down.get(pointerId) === true);
+  // Only a press recorded while the dialog was open can authorize a click. A release with no such record keeps no
+  // entry (its click is refused either way), so presses outside the dialog leave nothing behind (SC6-O2).
+  if (s.down.has(pointerId)) remember(s.released, pointerId, s.down.get(pointerId) === true);
+  else s.released.delete(pointerId);
   s.down.delete(pointerId);
   s.last = pointerId;
 }

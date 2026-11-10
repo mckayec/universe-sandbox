@@ -291,3 +291,51 @@ test('SC6-K3: the dialog resets press authorization when it opens and closes', (
   const notePress = body(kidsSource, 'function notePress(e: PointerEvent)');
   assert.ok(notePress.includes('e.pointerId'), 'presses are recorded per pointer');
 });
+
+test('SC6-O2: irrelevant and completed pointer records stay bounded', async () => {
+  const { MAX_TRACKED_POINTERS } = await import('../src/kids-mode.ts');
+  // 1,000 distinct presses/releases with no dialog press recorded leave nothing behind.
+  const s = newDialogPresses();
+  for (let id = 0; id < 1000; id++) notePointerUp(s, id);
+  assert.equal(s.released.size, 0);
+  assert.equal(s.down.size, 0);
+  // Fallback stays: an identity-less click resolves against the last release and is refused.
+  assert.equal(dialogClickAllowed(s, { detail: 1 }), false);
+  // Recorded presses whose clicks never arrive are capped, oldest first; the newest dialog press stays authorized.
+  for (let id = 0; id < 1000; id++) {
+    notePointerDown(s, id, id === 999);
+    notePointerUp(s, id);
+  }
+  assert.ok(s.released.size <= MAX_TRACKED_POINTERS && s.down.size === 0);
+  assert.equal(dialogClickAllowed(s, { detail: 1, pointerId: 999 }), true);
+  // Held pointers that never release are capped too, without losing the latest held dialog press.
+  const held = newDialogPresses();
+  for (let id = 0; id < 1000; id++) notePointerDown(held, id, id === 999);
+  assert.ok(held.down.size <= MAX_TRACKED_POINTERS);
+  assert.equal(dialogClickAllowed(held, { detail: 1, pointerId: 999 }), true);
+  assert.equal(dialogClickAllowed(held, { detail: 0 }), true, 'keyboard activation unchanged');
+  resetDialogPresses(held);
+  assert.equal(held.down.size + held.released.size, 0);
+});
+
+test('SC6-O2: presses are recorded only while Kids mode shows the grown-up dialog', () => {
+  const press = body(kids, 'function notePress(e: PointerEvent)');
+  assert.match(press, /if \(!app\.kidsMode \|\| !dialog \|\| dialog\.hidden\) return;/);
+  const run = (kidsMode: boolean, hidden: boolean) => {
+    const app = { kidsMode, kidsDialogPresses: newDialogPresses() };
+    const ctx = vm.createContext({
+      app,
+      document: { querySelector: () => ({ hidden }) },
+      notePointerDown,
+      regionOf: () => 'kids-dialog',
+    });
+    vm.runInContext(
+      `${stripTypeScriptTypes(`function notePress(e: PointerEvent) {${press}}`)}\nnotePress({ pointerId: 4, target: null });`,
+      ctx,
+    );
+    return app.kidsDialogPresses.down.size;
+  };
+  assert.equal(run(true, false), 1, 'open dialog in Kids mode records');
+  assert.equal(run(true, true), 0, 'closed dialog records nothing');
+  assert.equal(run(false, false), 0, 'adult mode records nothing');
+});

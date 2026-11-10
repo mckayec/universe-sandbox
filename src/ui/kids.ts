@@ -34,8 +34,10 @@ function regionOf(target: EventTarget | null) {
 }
 /** Records, per pointer, whether its press began inside the open grown-up dialog (SC6-K3). */
 function notePress(e: PointerEvent) {
-  // A hidden dialog receives no presses, and opening/closing it resets every record, so only presses on the open
-  // dialog can authorize its clicks.
+  // Opening/closing the dialog resets every record, so only presses made while it is open can authorize its clicks.
+  // Presses at any other time are not recorded at all (SC6-O2); their releases then leave no entry either.
+  const dialog = document.querySelector<HTMLElement>('#kids-dialog');
+  if (!app.kidsMode || !dialog || dialog.hidden) return;
   notePointerDown(app.kidsDialogPresses, e.pointerId, regionOf(e.target) === 'kids-dialog');
 }
 function noteRelease(e: PointerEvent) {

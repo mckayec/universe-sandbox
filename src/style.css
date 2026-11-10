@@ -418,6 +418,36 @@ button:focus-visible {
 .info-panel:not(.empty) .empty-copy {
   display: none;
 }
+.bh-scales {
+  margin: 4px 0 10px;
+  color: #8290ad;
+  font-size: 10px;
+  line-height: 1.45;
+}
+.bh-scales summary {
+  cursor: pointer;
+  color: #c9d2e8;
+  font-size: 11px;
+  padding: 4px 0;
+}
+.bh-scales ul {
+  list-style: none;
+  margin: 4px 0;
+  padding: 0;
+}
+.bh-scales li {
+  display: grid;
+  gap: 1px;
+  padding: 4px 0;
+  border-top: 1px solid #ffffff0d;
+}
+.bh-scales b {
+  color: #dfe5f3;
+  font-weight: 500;
+}
+.bh-scales p {
+  margin: 6px 0 0;
+}
 .object-heading {
   display: flex;
   gap: 11px;
@@ -2173,6 +2203,7 @@ dd {
   }
   /* Collapsed sheet: name, mass, velocity and the main actions; Details reveals the rest. */
   .info-panel:not(.expanded) dl div:nth-child(n + 3),
+  .info-panel:not(.expanded) .bh-scales,
   .info-panel:not(.expanded) .lifecycle {
     display: none !important;
   }
