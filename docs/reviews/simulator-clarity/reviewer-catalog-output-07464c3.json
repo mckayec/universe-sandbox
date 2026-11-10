@@ -1,0 +1,423 @@
+{
+  "head": "07464c3c379aa0632fcc8526a39983a391c20e2a",
+  "local_input_manifest": [
+    {
+      "path": "src/black-hole-catalog.ts",
+      "expected": "c851ac419204533a777c0994db0fd7694df21a6a",
+      "actual": "c851ac419204533a777c0994db0fd7694df21a6a",
+      "match": true
+    },
+    {
+      "path": "src/bodies/registry.ts",
+      "expected": "13f8780ededaf00f0b8473ec608a473479782ca3",
+      "actual": "13f8780ededaf00f0b8473ec608a473479782ca3",
+      "match": true
+    },
+    {
+      "path": "src/celestial-catalog.ts",
+      "expected": "37d23d4bfd2539424345e3afb728ef7f9057e99f",
+      "actual": "37d23d4bfd2539424345e3afb728ef7f9057e99f",
+      "match": true
+    },
+    {
+      "path": "src/feedback.ts",
+      "expected": "726022133be729a20678f68ae5a77027b09874be",
+      "actual": "726022133be729a20678f68ae5a77027b09874be",
+      "match": true
+    },
+    {
+      "path": "src/gravity-engine.ts",
+      "expected": "d81e0a4bf70c08b19a171474afffb655f6ed1ec2",
+      "actual": "d81e0a4bf70c08b19a171474afffb655f6ed1ec2",
+      "match": true
+    },
+    {
+      "path": "src/kids-mode.ts",
+      "expected": "54319aaacd43d6e6a22a50c4119dc754e94ebc70",
+      "actual": "54319aaacd43d6e6a22a50c4119dc754e94ebc70",
+      "match": true
+    },
+    {
+      "path": "src/main.ts",
+      "expected": "9e1c02057f0703bbf6f95bf4277188e87650a9cb",
+      "actual": "9e1c02057f0703bbf6f95bf4277188e87650a9cb",
+      "match": true
+    },
+    {
+      "path": "src/overlay-budget.ts",
+      "expected": "e8bd27f8819d9bae98207bcf3c18aacb79182c9b",
+      "actual": "e8bd27f8819d9bae98207bcf3c18aacb79182c9b",
+      "match": true
+    },
+    {
+      "path": "src/physics/body-math.ts",
+      "expected": "7e87955a334d433a84ba2bc9812a41d887c2e0b2",
+      "actual": "7e87955a334d433a84ba2bc9812a41d887c2e0b2",
+      "match": true
+    },
+    {
+      "path": "src/physics/collisions.ts",
+      "expected": "37faf0f5ca1e6abb05cb5e780029b29805f5b7a5",
+      "actual": "37faf0f5ca1e6abb05cb5e780029b29805f5b7a5",
+      "match": true
+    },
+    {
+      "path": "src/physics/simulate.ts",
+      "expected": "0f7486dd139e3dbbf4997f01dbfad8a0873a8bef",
+      "actual": "0f7486dd139e3dbbf4997f01dbfad8a0873a8bef",
+      "match": true
+    },
+    {
+      "path": "src/state/app-state.ts",
+      "expected": "f89f09b25b03687671dd3c38069f9f71c03f86f3",
+      "actual": "f89f09b25b03687671dd3c38069f9f71c03f86f3",
+      "match": true
+    },
+    {
+      "path": "src/style.css",
+      "expected": "21985b3e804945fa4586e8a92c61bb6251eff9f7",
+      "actual": "21985b3e804945fa4586e8a92c61bb6251eff9f7",
+      "match": true
+    },
+    {
+      "path": "src/ui/black-hole-scales.ts",
+      "expected": "acfb787bc16ef3e0997bc28c3e48922664ea4834",
+      "actual": "acfb787bc16ef3e0997bc28c3e48922664ea4834",
+      "match": true
+    },
+    {
+      "path": "src/ui/controls.ts",
+      "expected": "d7a530f1381bd0e9438acf4f3fa29679c129bc18",
+      "actual": "d7a530f1381bd0e9438acf4f3fa29679c129bc18",
+      "match": true
+    },
+    {
+      "path": "src/ui/feed.ts",
+      "expected": "f752bf5ee598904b7c3fa7971db4b15d96aeb42e",
+      "actual": "f752bf5ee598904b7c3fa7971db4b15d96aeb42e",
+      "match": true
+    },
+    {
+      "path": "src/ui/inspector.ts",
+      "expected": "134ec4baa186fc0b96a5d7f63883e722c67d74a8",
+      "actual": "134ec4baa186fc0b96a5d7f63883e722c67d74a8",
+      "match": true
+    },
+    {
+      "path": "src/ui/kids.ts",
+      "expected": "3784ffe9ea73b7fcabdb9f63b099ec586e049bc2",
+      "actual": "3784ffe9ea73b7fcabdb9f63b099ec586e049bc2",
+      "match": true
+    },
+    {
+      "path": "src/ui/overlay-layout.ts",
+      "expected": "79c600e5dffa5960081d974f1f8d4e4b12b5ec37",
+      "actual": "79c600e5dffa5960081d974f1f8d4e4b12b5ec37",
+      "match": true
+    },
+    {
+      "path": "src/ui/pointer.ts",
+      "expected": "19ea6562ff0e73371d93756755bacb9f54812347",
+      "actual": "19ea6562ff0e73371d93756755bacb9f54812347",
+      "match": true
+    },
+    {
+      "path": "src/ui/template.ts",
+      "expected": "1fa69675880c8bfa6cc7342ab510ab3ebe9c9687",
+      "actual": "1fa69675880c8bfa6cc7342ab510ab3ebe9c9687",
+      "match": true
+    },
+    {
+      "path": "tests/black-hole-catalog.test.ts",
+      "expected": "62b8559d01619ce170514b49b5a7239ed99958e4",
+      "actual": "62b8559d01619ce170514b49b5a7239ed99958e4",
+      "match": true
+    },
+    {
+      "path": "tests/kids-cancel.test.ts",
+      "expected": "6ec4fc93ffb808864f728d18d8db1e4cbdc7877c",
+      "actual": "6ec4fc93ffb808864f728d18d8db1e4cbdc7877c",
+      "match": true
+    },
+    {
+      "path": "tests/kids-mode.test.ts",
+      "expected": "2d12ff125642a9d11bd349c948c19cb1983bfa8e",
+      "actual": "2d12ff125642a9d11bd349c948c19cb1983bfa8e",
+      "match": true
+    },
+    {
+      "path": "tests/overlay-budget.test.ts",
+      "expected": "7b5a0567dffb8b82f0a13921c48db0c22ba66fa2",
+      "actual": "7b5a0567dffb8b82f0a13921c48db0c22ba66fa2",
+      "match": true
+    }
+  ],
+  "repository_tests": {
+    "command": "node --test tests/black-hole-catalog.test.ts tests/kids-cancel.test.ts tests/kids-mode.test.ts tests/overlay-budget.test.ts",
+    "passed": 30,
+    "total": 30,
+    "raw": "\u2714 Schwarzschild radius is about 2.95325 km per solar mass (0.857842ms)\n\u2714 five presets: 5, 30, 1,000, 1 million, 1 billion; not five classes (0.687186ms)\n\u2714 reference examples carry the handoff masses, status labels and sources (0.354645ms)\n\u2714 sizes scale linearly with mass and keep horizon, shadow and disk distinct (0.199962ms)\n\u2714 nearest example stays inside the same class (0.381655ms)\n\u2714 formatting: masses, km and AU (16.626864ms)\n\u2714 simulated black holes are labelled in model units, never solar or Earth masses (0.531511ms)\n\u2714 the reference catalog never feeds the solver (0.274263ms)\n(node:13) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n\u2714 SC6-K1: a normal Kids tap places exactly one object and consumes the arm (3.04067ms)\n\u2714 SC6-K1: every cancellation during a held touch places nothing on release (8.187344ms)\n\u2714 SC6-K1: an armed drag past 8 px places one object; adult Add is preserved (4.222522ms)\n\u2714 SC6-K1: placement gate rejects stale epochs and unarmed Kids (0.226511ms)\n\u2714 SC6-K2: query-driven Kids start runs after the adult startup defaults (0.280443ms)\n\u2714 grown-up dialog: a click counts only if the press began in the dialog or came from the keyboard (0.386262ms)\n\u2714 SC6-K3: dialog authorization belongs to the originating pointer, not the latest press (0.201003ms)\n\u2714 SC6-K3: canceled, consumed and reused gestures keep no stale permission (0.299752ms)\n\u2714 SC6-K3: the dialog resets press authorization when it opens and closes (0.387804ms)\n\u2714 SC6-O2: irrelevant and completed pointer records stay bounded (2.72832ms)\n\u2714 SC6-O2: presses are recorded only while Kids mode shows the grown-up dialog (2.858716ms)\n\u2714 kids gate: only the kids bar and grown-up dialog are operable (1.211825ms)\n\u2714 kids keys: focus/activation/Escape and Ctrl+Z only (0.322125ms)\n\u2714 kids arm: exactly one placement per armed Add; cancel and repeated taps (0.189716ms)\n\u2714 kids presentation is quiet without changing the adult preference; no idle demo or object menu (0.181864ms)\n\u2714 kids wiring: handlers gate at the event, placements consume the arm, Home fits (1.388101ms)\n\u2714 overlay budget leaves both unconstrained when they fit (1.323785ms)\n\u2714 overlay budget is inactive when either side shows nothing (0.167332ms)\n\u2714 overlay budget never lets the two exceed the band (720x450 and 320x568 shapes) (0.284569ms)\n\u2714 overlay budget keeps the dock floor and returns unused stack space to the dock (0.161213ms)\n\u2714 overlay budget handles invalid and inverted geometry (0.13924ms)\n\u2714 overlay budget is wired: bound from main.ts, applied only on compact, CSS limits both sides (1.942807ms)\n\u2139 tests 30\n\u2139 suites 0\n\u2139 pass 30\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 203.165276\n"
+  },
+  "handlers": {
+    "head": "07464c3c379aa0632fcc8526a39983a391c20e2a",
+    "scope": "Reviewer adaptation for 07464c3: open-dialog document adapter added to the existing builder runner; actual handlers and helper, not browser",
+    "inputs": [
+      {
+        "path": "src/ui/kids.ts",
+        "sha": "3784ffe9ea73b7fcabdb9f63b099ec586e049bc2"
+      },
+      {
+        "path": "src/ui/pointer.ts",
+        "sha": "19ea6562ff0e73371d93756755bacb9f54812347"
+      },
+      {
+        "path": "src/ui/controls.ts",
+        "sha": "d7a530f1381bd0e9438acf4f3fa29679c129bc18"
+      },
+      {
+        "path": "src/kids-mode.ts",
+        "sha": "54319aaacd43d6e6a22a50c4119dc754e94ebc70"
+      }
+    ],
+    "passed": 18,
+    "total": 18,
+    "results": [
+      {
+        "id": "held-touch-normal",
+        "expected": 1,
+        "actual": 1,
+        "armedAfter": false,
+        "pass": true
+      },
+      {
+        "id": "held-touch-escape",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": false,
+        "pass": true
+      },
+      {
+        "id": "held-touch-disarm",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": false,
+        "pass": true
+      },
+      {
+        "id": "held-touch-cancel",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": true,
+        "pass": true
+      },
+      {
+        "id": "held-touch-escape-rearm",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-canvas press released over dialog",
+        "trace": "down:canvas:7 up:7",
+        "click": {
+          "pointerId": 7,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-dialog press and click",
+        "trace": "down:kids-dialog:8 up:8",
+        "click": {
+          "pointerId": 8,
+          "detail": 1
+        },
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-keyboard activation",
+        "trace": "",
+        "click": {
+          "pointerId": -1,
+          "detail": 0
+        },
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-canvas pointer 7 after dialog pointer 8 press (reviewer, no up)",
+        "trace": "down:canvas:7 down:kids-dialog:8",
+        "click": {
+          "pointerId": 7,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-dialog pointer 7 after canvas pointer 8 press (reviewer, no up)",
+        "trace": "down:kids-dialog:7 down:canvas:8",
+        "click": {
+          "pointerId": 7,
+          "detail": 1
+        },
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-canvas 7 held, dialog 8 down, 7 up then click",
+        "trace": "down:canvas:7 down:kids-dialog:8 up:7",
+        "click": {
+          "pointerId": 7,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-dialog 7, canvas 8 down, 7 up then click",
+        "trace": "down:kids-dialog:7 down:canvas:8 up:7",
+        "click": {
+          "pointerId": 7,
+          "detail": 1
+        },
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-dialog 7 canceled",
+        "trace": "down:kids-dialog:7 cancel:7",
+        "click": {
+          "pointerId": 7,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-dialog 7 down before dialog reopened",
+        "trace": "down:kids-dialog:7 reset up:7",
+        "click": {
+          "pointerId": 7,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-reused id: dialog press then canvas press",
+        "trace": "down:kids-dialog:1 up:1 down:canvas:1 up:1",
+        "click": {
+          "pointerId": 1,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-click with no pointer id after dialog release",
+        "trace": "down:kids-dialog:3 up:3",
+        "click": {
+          "pointerId": null,
+          "detail": 1
+        },
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-click with no pointer id after canvas release",
+        "trace": "down:kids-dialog:3 down:canvas:4 up:4",
+        "click": {
+          "pointerId": null,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-second click from consumed authorization",
+        "trace": "down:kids-dialog:5 up:5 click:5",
+        "click": {
+          "pointerId": 5,
+          "detail": 1
+        },
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      }
+    ]
+  },
+  "markup": {
+    "head": "07464c3c379aa0632fcc8526a39983a391c20e2a",
+    "generatedMarkup": "<details class=\"bh-scales\" id=\"bh-scales\" hidden><summary>Real black-hole sizes</summary><ul><li><b>Small stellar \u00b7 5 M\u2609</b><span>Stellar-mass \u00b7 horizon 15 km \u00b7 shadow 38 km</span><small>e.g. Cygnus X-1 \u2248 21 M\u2609</small></li><li><b>Large stellar \u00b7 30 M\u2609</b><span>Stellar-mass \u00b7 horizon 89 km \u00b7 shadow 230 km</span><small>e.g. Gaia BH3 \u2248 33 M\u2609</small></li><li><b>Intermediate \u00b7 1,000 M\u2609</b><span>Intermediate-mass \u00b7 horizon 2,953 km \u00b7 shadow 7,673 km</span><small>e.g. GW190521 remnant \u2248 142 M\u2609</small></li><li><b>Galactic core \u00b7 1 million M\u2609</b><span>Supermassive \u00b7 horizon 2,953,250 km \u00b7 shadow 7,672,769 km</span><small>e.g. Sagittarius A* \u2248 4 million M\u2609</small></li><li><b>Giant core \u00b7 1 billion M\u2609</b><span>Supermassive \u00b7 horizon 19.7 AU \u00b7 shadow 51.3 AU</span><small>e.g. M87* \u2248 6.5 billion M\u2609</small></li></ul><p>Real sizes for a nonspinning black hole of each mass (horizon 2GM/c\u00b2, shadow \u2248 2.6\u00d7 horizon). Disk size is not set by mass. The simulator itself uses model units and softened Newtonian gravity, which is not accurate near a horizon.</p></details>",
+    "rows": [
+      {
+        "preset": "small-stellar",
+        "example": "Cygnus X-1",
+        "statusIncluded": false,
+        "sourceIncluded": false
+      },
+      {
+        "preset": "large-stellar",
+        "example": "Gaia BH3",
+        "statusIncluded": false,
+        "sourceIncluded": false
+      },
+      {
+        "preset": "intermediate",
+        "example": "GW190521 remnant",
+        "statusIncluded": false,
+        "sourceIncluded": false
+      },
+      {
+        "preset": "galactic-core",
+        "example": "Sagittarius A*",
+        "statusIncluded": false,
+        "sourceIncluded": false
+      },
+      {
+        "preset": "giant-core",
+        "example": "M87*",
+        "statusIncluded": false,
+        "sourceIncluded": false
+      }
+    ],
+    "statusesPresent": 0,
+    "sourcesPresent": 0,
+    "displayedExamples": 5,
+    "radiusWordPresent": false,
+    "fiveSolarMassSizes": {
+      "horizonKm": 14.76625038050125,
+      "photonSphereKm": 22.149375570751875,
+      "shadowKm": 38.36384384446715,
+      "innerDiskKm": 44.29875114150375,
+      "outerDiskKm": null
+    },
+    "note": "Source/markup execution, not browser. An approx sign is present but does not carry model/credible-interval qualification."
+  },
+  "browser": {
+    "independent_rendered_cases": 0,
+    "bundled_executable": "missing",
+    "installed_chromium": "process_singleton_posix.cc:297 socket() failed: Operation not permitted"
+  },
+  "attempt_corrections": [
+    "Initial focused catalog invocation from parent directory failed 2/8 on relative file paths; rerun from sim12 passes 30/30.",
+    "Initial old handler runner lacked document adapter required by new notePress; adapted reviewer runner adds open dialog query stub and passes 18/18.",
+    "Downloaded inputs initially had one extra trailing newline from local transport; exact bytes restored and all 25 blob hashes matched before counted runs."
+  ]
+}

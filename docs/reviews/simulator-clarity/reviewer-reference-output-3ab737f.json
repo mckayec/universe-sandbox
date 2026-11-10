@@ -1,0 +1,142 @@
+{
+  "head": "3ab737fe90991767b3cebf5410dc5a1c3b7a6f84",
+  "checks": [
+    {
+      "name": "actual setter changes reference only and records once",
+      "pass": true
+    },
+    {
+      "name": "same preset does not add history; non-hole ignored",
+      "pass": true
+    },
+    {
+      "name": "fixed factor scales mass and horizon linearly",
+      "pass": true
+    },
+    {
+      "name": "actual setter clears reference with one history step",
+      "pass": true
+    },
+    {
+      "name": "four merger cases and input immutability",
+      "pass": true
+    },
+    {
+      "name": "actual storage JSON roundtrip and sanitize boundary",
+      "pass": true
+    },
+    {
+      "name": "dimensional conversion scales with time squared and length cubed",
+      "pass": true
+    }
+  ],
+  "scope": "Real pure functions and extracted setter with stubbed history/DOM feedback; real storage JSON with in-memory localStorage. No rendered browser or full history rebuild execution.",
+  "runnerSource": "import fs from 'node:fs';import assert from 'node:assert/strict';import {stripTypeScriptTypes} from 'node:module';import * as ref from './src/black-hole-reference.ts';import {saveUniverse,loadUniverse} from './src/sandbox-state.ts';\nconst checks=[];function check(name,f){try{f();checks.push({name,pass:true})}catch(e){checks.push({name,pass:false,error:e.message})}}\nconst source=fs.readFileSync('src/ui/inspector.ts','utf8');const fn=stripTypeScriptTypes(source.slice(source.indexOf('export function setBlackHoleReference')).replace('export ',''));let history=0,render=0;const set=new Function('recordHistory','updateInspector','toast','referenceForPreset','referencePickerValue','describeReference',fn+';return setBlackHoleReference')(()=>history++,()=>render++,()=>{},ref.referenceForPreset,ref.referencePickerValue,ref.describeReference);\nconst b={kind:'blackhole',name:'Test',mass:600,radius:2,velocity:[1,2,3],position:[4,5,6]};\ncheck('actual setter changes reference only and records once',()=>{const before=JSON.stringify(b);set(b,'large-stellar');assert.equal(ref.referenceSolarMasses(b.mass,b.bhReference),30);const {bhReference,...rest}=b;assert.equal(JSON.stringify(rest),before);assert.equal(history,1);assert.equal(render,1)});\ncheck('same preset does not add history; non-hole ignored',()=>{set(b,'large-stellar');set({kind:'star'},'small-stellar');assert.equal(history,1)});\ncheck('fixed factor scales mass and horizon linearly',()=>{b.mass=1200;assert.equal(ref.referenceSolarMasses(b.mass,b.bhReference),60);assert.match(ref.describeReference(b.mass,b.bhReference),/177 km/)});\ncheck('actual setter clears reference with one history step',()=>{set(b,'none');assert.equal(b.bhReference,undefined);assert.equal(history,2)});\ncheck('four merger cases and input immutability',()=>{const a=ref.referenceForPreset('large-stellar',600),c=ref.referenceForPreset('small-stellar',200);const old=JSON.stringify([a,c]);assert.equal(ref.referenceSolarMasses(800,ref.mergeReferences(600,a,200,c)),35);assert.equal(ref.referenceSolarMasses(800,ref.mergeReferences(600,a,200,undefined)),40);assert.equal(ref.referenceSolarMasses(800,ref.mergeReferences(600,undefined,200,c)),20);assert.equal(ref.mergeReferences(600,undefined,200,undefined),undefined);assert.equal(JSON.stringify([a,c]),old)});\ncheck('actual storage JSON roundtrip and sanitize boundary',()=>{const map=new Map();globalThis.localStorage={setItem:(k,v)=>map.set(k,v),getItem:k=>map.get(k)??null};const good=ref.referenceForPreset('large-stellar',600);assert.equal(saveUniverse({version:1,bodies:[{kind:'blackhole',bhReference:good}]}),true);const saved=loadUniverse().bodies[0];assert.deepEqual(ref.sanitizeReference(saved.bhReference,saved.kind),good);assert.equal(ref.sanitizeReference(saved.bhReference,'star'),undefined);assert.equal(ref.sanitizeReference(undefined,'blackhole'),undefined);assert.equal(ref.sanitizeReference({origin:'merged',solarMassPerModelUnit:Infinity},'blackhole'),undefined)});\ncheck('dimensional conversion scales with time squared and length cubed',()=>{assert.equal(ref.gravitationalParameterSim(5,4,2),10);assert.equal(ref.gravitationalParameterSim(5,8,2),40);assert.equal(ref.gravitationalParameterSim(5,4,4),1.25)});\nfs.writeFileSync('reviewer-reference-output.json',JSON.stringify({head:'3ab737fe90991767b3cebf5410dc5a1c3b7a6f84',checks,scope:'Real pure functions and extracted setter with stubbed history/DOM feedback; real storage JSON with in-memory localStorage. No rendered browser or full history rebuild execution.'},null,2)+'\\n');console.log(checks);if(checks.some(c=>!c.pass))process.exitCode=1;\n",
+  "inputManifest": [
+    {
+      "path": "src/black-hole-reference.ts",
+      "sha": "3bf758055b989a737ecf47d88618e6614428458c"
+    },
+    {
+      "path": "src/bodies/lifecycle.ts",
+      "sha": "ca78d86f08aa104da790d8683ad83f2e892c1e94"
+    },
+    {
+      "path": "src/bodies/registry.ts",
+      "sha": "da2eff04bdb8ceee6a7153fcc017e5fb13cf9175"
+    },
+    {
+      "path": "src/physics/collisions.ts",
+      "sha": "ede1f5bbf0bcd7612f923420a56fc8f345b60bbb"
+    },
+    {
+      "path": "src/sandbox-state.ts",
+      "sha": "f82667e1556e8a4bfc0365e7184c44d074e93c3d"
+    },
+    {
+      "path": "src/state/history.ts",
+      "sha": "931fdc74023e07b0865dc384fbfe0c19e18a40b5"
+    },
+    {
+      "path": "src/state/types.ts",
+      "sha": "26e479ade9af020f5188d7b21fd0e65a174ecd55"
+    },
+    {
+      "path": "src/style.css",
+      "sha": "5136bd8a027602d09e40aa1a251e266ee34bbc99"
+    },
+    {
+      "path": "src/ui/black-hole-scales.ts",
+      "sha": "01a31f4a4040467cbc087de36a44da3b4650f11f"
+    },
+    {
+      "path": "src/ui/inspector.ts",
+      "sha": "757b221a6a7721deee22b10bd0fe8bf183047c5a"
+    },
+    {
+      "path": "src/ui/template.ts",
+      "sha": "5e38ddbb93935dd51ee774d449d46fc0fbe1ac8d"
+    },
+    {
+      "path": "src/ui/test-probe.ts",
+      "sha": "28c54cebe9da9e59e1cfc0e6204099ae9ff0f2b4"
+    },
+    {
+      "path": "src/ui/toolbar.ts",
+      "sha": "528e8c1c6315d9f740e2d371eb67026070e2f8a5"
+    },
+    {
+      "path": "tests/black-hole-reference.test.ts",
+      "sha": "6855f2fa9e120fb450068e6672ee9ff10b1b4c17"
+    },
+    {
+      "path": "src/black-hole-catalog.ts",
+      "sha": "98e8023c78312e2f4df347f085d553384fe17517"
+    },
+    {
+      "path": "src/gravity-engine.ts",
+      "sha": "d81e0a4bf70c08b19a171474afffb655f6ed1ec2"
+    },
+    {
+      "path": "src/physics/simulate.ts",
+      "sha": "0f7486dd139e3dbbf4997f01dbfad8a0873a8bef"
+    },
+    {
+      "path": "src/visuals/update-visuals.ts",
+      "sha": "51616ce0ad0cdedad2f1b82fac0e8a22e5e07ff4"
+    },
+    {
+      "path": "src/ui/pointer.ts",
+      "sha": "19ea6562ff0e73371d93756755bacb9f54812347"
+    },
+    {
+      "path": "src/celestial-catalog.ts",
+      "sha": "37d23d4bfd2539424345e3afb728ef7f9057e99f"
+    }
+  ],
+  "focusedTests": {
+    "passed": 9,
+    "total": 9
+  },
+  "ci": {
+    "run": 42831060743,
+    "job": 129880885133,
+    "merge": "2676af2dc248e0f1a5c3aa299284c98a414ade7d",
+    "identicalNonDocs": 243,
+    "units": 224,
+    "dist": 113,
+    "pages": 24,
+    "deploy": "skipped"
+  },
+  "builderEvidence": {
+    "passed": 73,
+    "total": 73,
+    "screenshotsViewed": 3,
+    "screenshotsProvided": 3,
+    "independentRenderedCases": 0
+  },
+  "browserBlockers": [
+    "bundled chromium_headless_shell-1234 missing",
+    "/usr/bin/chromium process_singleton socket() Operation not permitted"
+  ]
+}

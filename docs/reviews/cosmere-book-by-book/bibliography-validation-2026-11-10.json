@@ -1,0 +1,441 @@
+{
+  "kind": "Independent proposed-data compatibility check; no DOM/browser/build execution",
+  "script_input": "PR48 public/atlas/reading.js at f74622957d0a889001598b3a4ad874181da75763",
+  "passed": 43,
+  "total": 43,
+  "preset_prefixes": 14,
+  "checks": [
+    {
+      "name": "registry accepts proposed works and presets",
+      "actual": [],
+      "expected": [],
+      "pass": true
+    },
+    {
+      "name": "unique works",
+      "actual": 33,
+      "expected": 33,
+      "pass": true
+    },
+    {
+      "name": "bucket coverage",
+      "actual": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "pass": true
+    },
+    {
+      "name": "year omitted exactly on held rows",
+      "actual": [
+        "the-hope-of-elantris",
+        "white-sand-omnibus"
+      ],
+      "expected": [
+        "the-hope-of-elantris",
+        "white-sand-omnibus"
+      ],
+      "pass": true
+    },
+    {
+      "name": "mistborn-original-trilogy prefix 1",
+      "actual": [
+        "mistborn-the-final-empire"
+      ],
+      "expected": [
+        "mistborn-the-final-empire"
+      ],
+      "pass": true
+    },
+    {
+      "name": "mistborn-original-trilogy prefix 2",
+      "actual": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension"
+      ],
+      "expected": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension"
+      ],
+      "pass": true
+    },
+    {
+      "name": "mistborn-original-trilogy prefix 3",
+      "actual": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension",
+        "mistborn-the-hero-of-ages"
+      ],
+      "expected": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension",
+        "mistborn-the-hero-of-ages"
+      ],
+      "pass": true
+    },
+    {
+      "name": "mistborn-wax-and-wayne prefix 1",
+      "actual": [
+        "the-alloy-of-law"
+      ],
+      "expected": [
+        "the-alloy-of-law"
+      ],
+      "pass": true
+    },
+    {
+      "name": "mistborn-wax-and-wayne prefix 2",
+      "actual": [
+        "the-alloy-of-law",
+        "shadows-of-self"
+      ],
+      "expected": [
+        "the-alloy-of-law",
+        "shadows-of-self"
+      ],
+      "pass": true
+    },
+    {
+      "name": "mistborn-wax-and-wayne prefix 3",
+      "actual": [
+        "the-alloy-of-law",
+        "shadows-of-self",
+        "the-bands-of-mourning"
+      ],
+      "expected": [
+        "the-alloy-of-law",
+        "shadows-of-self",
+        "the-bands-of-mourning"
+      ],
+      "pass": true
+    },
+    {
+      "name": "mistborn-wax-and-wayne prefix 4",
+      "actual": [
+        "the-alloy-of-law",
+        "shadows-of-self",
+        "the-bands-of-mourning",
+        "the-lost-metal"
+      ],
+      "expected": [
+        "the-alloy-of-law",
+        "shadows-of-self",
+        "the-bands-of-mourning",
+        "the-lost-metal"
+      ],
+      "pass": true
+    },
+    {
+      "name": "stormlight-with-novellas prefix 1",
+      "actual": [
+        "the-way-of-kings"
+      ],
+      "expected": [
+        "the-way-of-kings"
+      ],
+      "pass": true
+    },
+    {
+      "name": "stormlight-with-novellas prefix 2",
+      "actual": [
+        "the-way-of-kings",
+        "words-of-radiance"
+      ],
+      "expected": [
+        "the-way-of-kings",
+        "words-of-radiance"
+      ],
+      "pass": true
+    },
+    {
+      "name": "stormlight-with-novellas prefix 3",
+      "actual": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer"
+      ],
+      "expected": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer"
+      ],
+      "pass": true
+    },
+    {
+      "name": "stormlight-with-novellas prefix 4",
+      "actual": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer"
+      ],
+      "expected": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer"
+      ],
+      "pass": true
+    },
+    {
+      "name": "stormlight-with-novellas prefix 5",
+      "actual": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer",
+        "dawnshard"
+      ],
+      "expected": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer",
+        "dawnshard"
+      ],
+      "pass": true
+    },
+    {
+      "name": "stormlight-with-novellas prefix 6",
+      "actual": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer",
+        "dawnshard",
+        "rhythm-of-war"
+      ],
+      "expected": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer",
+        "dawnshard",
+        "rhythm-of-war"
+      ],
+      "pass": true
+    },
+    {
+      "name": "stormlight-with-novellas prefix 7",
+      "actual": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer",
+        "dawnshard",
+        "rhythm-of-war",
+        "wind-and-truth"
+      ],
+      "expected": [
+        "the-way-of-kings",
+        "words-of-radiance",
+        "edgedancer",
+        "oathbringer",
+        "dawnshard",
+        "rhythm-of-war",
+        "wind-and-truth"
+      ],
+      "pass": true
+    },
+    {
+      "name": "all12 bucket fallbacks remain unreviewed",
+      "actual": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "pass": true
+    },
+    {
+      "name": "bucket 1 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 1 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 2 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 2 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 3 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 3 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 4 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 4 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 5 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 5 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 6 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 6 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 7 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 7 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 8 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 8 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 9 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 9 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 10 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 10 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 11 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 11 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "bucket 12 complete selected",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "bucket 12 missing one hidden",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    }
+  ]
+}

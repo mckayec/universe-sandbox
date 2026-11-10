@@ -1,0 +1,378 @@
+{
+ "key": 2,
+ "worlds": [
+  {
+   "id": "scadsun",
+   "group": "scadrian",
+   "fields": [
+    "name",
+    "status",
+    "star",
+    "blurb",
+    "short",
+    "facts",
+    "gfx"
+   ]
+  },
+  {
+   "id": "scadrial",
+   "group": "scadrian",
+   "fields": [
+    "name",
+    "status",
+    "star",
+    "blurb",
+    "short",
+    "eras",
+    "facts",
+    "gfx"
+   ]
+  }
+ ],
+ "worldEras": [],
+ "sites": [
+  {
+   "id": "luthadel",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "kredikshaw",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "well",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "fellise",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "hathsin",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "homeland",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "arguois",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "tyrian",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "urteau",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "tremredare",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "fadrex",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "statlin",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "conventical",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "vetitan",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "lekal",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "tathingdwen",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "id": "islands",
+   "world": "scadrial",
+   "worldFirst": 2,
+   "own": 2,
+   "fields": [
+    "name",
+    "desc"
+   ]
+  }
+ ],
+ "landmarks": [],
+ "events": [
+  {
+   "id": "e6",
+   "title": "The crew",
+   "ancestors": [
+    "world:scadrial(first 2)",
+    "site:luthadel"
+   ],
+   "fields": [
+    "title",
+    "text"
+   ]
+  },
+  {
+   "id": "e7",
+   "title": "The survivor of Hathsin",
+   "ancestors": [
+    "world:scadrial(first 2)",
+    "site:hathsin"
+   ],
+   "fields": [
+    "title",
+    "text"
+   ]
+  },
+  {
+   "id": "e8",
+   "title": "The Lord Ruler falls",
+   "ancestors": [
+    "world:scadrial(first 2)",
+    "site:kredikshaw"
+   ],
+   "fields": [
+    "title",
+    "text"
+   ]
+  },
+  {
+   "id": "e9",
+   "title": "Siege of Luthadel",
+   "ancestors": [
+    "world:scadrial(first 2)",
+    "site:luthadel"
+   ],
+   "fields": [
+    "title",
+    "text"
+   ]
+  },
+  {
+   "id": "e10",
+   "title": "The Well of Ascension",
+   "ancestors": [
+    "world:scadrial(first 2)",
+    "site:well"
+   ],
+   "fields": [
+    "title",
+    "text"
+   ]
+  },
+  {
+   "id": "e11",
+   "title": "Fadrex and the caches",
+   "ancestors": [
+    "world:scadrial(first 2)",
+    "site:fadrex"
+   ],
+   "fields": [
+    "title",
+    "text"
+   ]
+  },
+  {
+   "id": "e12",
+   "title": "The Hero of Ages",
+   "ancestors": [
+    "world:scadrial(first 2)"
+   ],
+   "fields": [
+    "title",
+    "text"
+   ]
+  }
+ ],
+ "codex": [
+  {
+   "section": "shards",
+   "name": "Preservation",
+   "own": 2,
+   "moreAtK": [],
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "section": "shards",
+   "name": "Ruin",
+   "own": 2,
+   "moreAtK": [],
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "section": "shards",
+   "name": "Harmony",
+   "own": 2,
+   "moreAtK": [],
+   "fields": [
+    "name",
+    "desc"
+   ]
+  },
+  {
+   "section": "people",
+   "name": "Kelsier",
+   "own": 2,
+   "moreAtK": [],
+   "fields": [
+    "name",
+    "role",
+    "desc",
+    "more"
+   ]
+  },
+  {
+   "section": "people",
+   "name": "Vin",
+   "own": 2,
+   "moreAtK": [],
+   "fields": [
+    "name",
+    "role",
+    "desc"
+   ]
+  },
+  {
+   "section": "people",
+   "name": "Sazed",
+   "own": 2,
+   "moreAtK": [],
+   "fields": [
+    "name",
+    "role",
+    "desc",
+    "more"
+   ]
+  }
+ ],
+ "realms": [],
+ "routes": [],
+ "groupEras": [],
+ "carriedIntoK": [],
+ "counts": {
+  "worlds": 2,
+  "worldEras": 0,
+  "sites": 17,
+  "landmarks": 0,
+  "events": 7,
+  "codex": 6,
+  "realms": 0,
+  "routes": 0,
+  "groupEras": 0,
+  "carriedIntoK": 0
+ },
+ "registry": {
+  "works": 0,
+  "mode": "cumulative"
+ }
+}

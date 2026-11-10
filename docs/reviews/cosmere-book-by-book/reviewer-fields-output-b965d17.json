@@ -1,0 +1,317 @@
+{
+  "head": {
+    "head": "b965d1726c48288d2b91016ac173db1190811e70",
+    "scope": "Actual extracted field selectors and reading helper; no renderer; synthetic fixtures",
+    "inputs": [
+      {
+        "path": "public/atlas/engine.js",
+        "git_blob_sha": "6ecfb467f2577c2ffe57ee93ba5c06ee85979f52"
+      },
+      {
+        "path": "public/atlas/reading.js",
+        "git_blob_sha": "88a2b8b8ff94843eb89cb9a47bffb620ab3d4632"
+      }
+    ],
+    "passed": 14,
+    "total": 14,
+    "results": [
+      {
+        "id": "gfx base unmet field",
+        "expected": "neutral barren recipe without map/SECRET",
+        "actual": {
+          "type": "barren",
+          "pal": [
+            "#3c3c42",
+            "#4a4a50",
+            "#58585e",
+            "#66666c",
+            "#74747a",
+            "#828288"
+          ],
+          "rough": 0.6,
+          "sea": 0,
+          "atmoK": 0
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx base invalid field",
+        "expected": "neutral barren recipe without map/SECRET",
+        "actual": {
+          "type": "barren",
+          "pal": [
+            "#3c3c42",
+            "#4a4a50",
+            "#58585e",
+            "#66666c",
+            "#74747a",
+            "#828288"
+          ],
+          "rough": 0.6,
+          "sea": 0,
+          "atmoK": 0
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx base public field control",
+        "expected": {
+          "map": "SECRET-BASE"
+        },
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx base met field control",
+        "expected": {
+          "map": "SECRET-BASE"
+        },
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx legacy control",
+        "expected": {
+          "map": "SECRET-BASE"
+        },
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx era field unmet control",
+        "expected": {
+          "map": "BASE"
+        },
+        "actual": {
+          "map": "BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "group base unmet field",
+        "expected": "",
+        "actual": "",
+        "pass": true
+      },
+      {
+        "id": "group base invalid field",
+        "expected": "",
+        "actual": "",
+        "pass": true
+      },
+      {
+        "id": "group base public control",
+        "expected": "BASE",
+        "actual": "BASE",
+        "pass": true
+      },
+      {
+        "id": "group era unmet record",
+        "expected": "BASE",
+        "actual": "BASE",
+        "pass": true
+      },
+      {
+        "id": "group era invalid record",
+        "expected": "BASE",
+        "actual": "BASE",
+        "pass": true
+      },
+      {
+        "id": "group era unmet field control",
+        "expected": "BASE",
+        "actual": "BASE",
+        "pass": true
+      },
+      {
+        "id": "group era met record control",
+        "expected": "SECRET-ERA",
+        "actual": "SECRET-ERA",
+        "pass": true
+      },
+      {
+        "id": "group era legacy control",
+        "expected": "SECRET-ERA",
+        "actual": "SECRET-ERA",
+        "pass": true
+      }
+    ]
+  },
+  "parent": {
+    "head": "6d36f0c4afc2c2c2c9f7cbf860226112338eb235",
+    "scope": "Actual extracted field selectors and reading helper; no renderer; synthetic fixtures",
+    "inputs": [
+      {
+        "path": "public/atlas/engine.js",
+        "git_blob_sha": "7f4913c5180d9d64879f19f16e5340041f0aa428"
+      },
+      {
+        "path": "public/atlas/reading.js",
+        "git_blob_sha": "88a2b8b8ff94843eb89cb9a47bffb620ab3d4632"
+      }
+    ],
+    "passed": 8,
+    "total": 14,
+    "results": [
+      {
+        "id": "gfx base unmet field",
+        "expected": "neutral barren recipe without map/SECRET",
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": false
+      },
+      {
+        "id": "gfx base invalid field",
+        "expected": "neutral barren recipe without map/SECRET",
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": false
+      },
+      {
+        "id": "gfx base public field control",
+        "expected": {
+          "map": "SECRET-BASE"
+        },
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx base met field control",
+        "expected": {
+          "map": "SECRET-BASE"
+        },
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx legacy control",
+        "expected": {
+          "map": "SECRET-BASE"
+        },
+        "actual": {
+          "map": "SECRET-BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "gfx era field unmet control",
+        "expected": {
+          "map": "BASE"
+        },
+        "actual": {
+          "map": "BASE"
+        },
+        "pass": true
+      },
+      {
+        "id": "group base unmet field",
+        "expected": "",
+        "actual": "BASE",
+        "pass": false
+      },
+      {
+        "id": "group base invalid field",
+        "expected": "",
+        "actual": "BASE",
+        "pass": false
+      },
+      {
+        "id": "group base public control",
+        "expected": "BASE",
+        "actual": "BASE",
+        "pass": true
+      },
+      {
+        "id": "group era unmet record",
+        "expected": "BASE",
+        "actual": "SECRET-ERA",
+        "pass": false
+      },
+      {
+        "id": "group era invalid record",
+        "expected": "BASE",
+        "actual": "SECRET-ERA",
+        "pass": false
+      },
+      {
+        "id": "group era unmet field control",
+        "expected": "BASE",
+        "actual": "BASE",
+        "pass": true
+      },
+      {
+        "id": "group era met record control",
+        "expected": "SECRET-ERA",
+        "actual": "SECRET-ERA",
+        "pass": true
+      },
+      {
+        "id": "group era legacy control",
+        "expected": "SECRET-ERA",
+        "actual": "SECRET-ERA",
+        "pass": true
+      }
+    ]
+  },
+  "inputManifest": [
+    {
+      "path": "tests/atlas-reading.test.ts",
+      "sha": "3f27cf037188d59f82d4589942ed0619a84b4d74"
+    },
+    {
+      "path": "tests/atlas-reading-ui.test.ts",
+      "sha": "6d161c927e24f2fa3a34cb127317f2fa3245731b"
+    },
+    {
+      "path": "tests/atlas-reading-engine.test.ts",
+      "sha": "e65ee9f4c1d92f9d6c094abdf1f2385047fe5b21"
+    },
+    {
+      "path": "public/atlas/reading.js",
+      "sha": "88a2b8b8ff94843eb89cb9a47bffb620ab3d4632"
+    },
+    {
+      "path": "public/atlas/reading-ui.js",
+      "sha": "0b9446a87c10313bd058d9c8660b8d3c8d40dd84"
+    },
+    {
+      "path": "public/atlas/engine.js",
+      "sha": "6ecfb467f2577c2ffe57ee93ba5c06ee85979f52"
+    },
+    {
+      "path": "docs/atlas/PACK_FORMAT.md",
+      "sha": "97ecfb2b6546d653d2323c87dfcc3a526e9ae8cf"
+    },
+    {
+      "path": "tests/fixtures/reading-demo.js",
+      "sha": "de56c1af497d0e6022829da88e862284ef8519a2"
+    }
+  ],
+  "focusedTests": {
+    "passed": 27,
+    "total": 27
+  },
+  "ci": {
+    "run": 42805064886,
+    "job": 129791967444,
+    "checkout": "032e210dbce5dee1f08843fe6aa372a6aadba574",
+    "nonDocFilesIdentical": 224,
+    "unitsPassed": 145,
+    "unitsTotal": 145,
+    "dist": 115,
+    "pagesPassed": 24,
+    "pagesTotal": 24
+  }
+}

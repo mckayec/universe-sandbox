@@ -1,0 +1,125 @@
+{
+  "head": "1e588f0c5bdab5f8775f20481e07b57cb3b5c318",
+  "scope": "actual extracted functions with state/DOM/render adapters; not browser",
+  "reproductions": [
+    {
+      "id": "EMPTY-selection-reload",
+      "observed": {
+        "before": "safe",
+        "url": "read=a",
+        "reload": "set",
+        "ids": [
+          "a"
+        ]
+      },
+      "expected": {
+        "before": "safe",
+        "url": "read=a",
+        "reload": "set",
+        "ids": [
+          "a"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "ERA-field-gates",
+      "observed": {
+        "blurb": "SECRET-ERA",
+        "facts": [
+          "SECRET-FACT"
+        ]
+      },
+      "expected": {
+        "blurb": "SECRET-ERA",
+        "facts": [
+          "SECRET-FACT"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "PENDING-descend-control",
+      "observed": {
+        "built": [
+          "w"
+        ],
+        "view": "world"
+      },
+      "expected": {
+        "built": [
+          "w"
+        ],
+        "view": "world"
+      },
+      "pass": true
+    },
+    {
+      "id": "PENDING-descend-narrowed",
+      "observed": {
+        "built": [
+          "w"
+        ],
+        "view": "world"
+      },
+      "expected": {
+        "built": [
+          "w"
+        ],
+        "view": "world"
+      },
+      "pass": true
+    }
+  ],
+  "inputs": [
+    {
+      "path": "package.json",
+      "sha": "55c8f612261f53275c324351f11b36779fb73832"
+    },
+    {
+      "path": "public/atlas/engine.css",
+      "sha": "e9df821a66587818ad9d4718643efb58481311a5"
+    },
+    {
+      "path": "public/atlas/engine.js",
+      "sha": "a0f366fd5fff113f9b234ea0624dd38eef52cb36"
+    },
+    {
+      "path": "public/atlas/index.html",
+      "sha": "493e3b5994e623639c1613e23e0b5e111bab7c74"
+    },
+    {
+      "path": "public/atlas/reading-ui.js",
+      "sha": "61de8c8059f5ec33947d3d841efc7a24cccc34c8"
+    },
+    {
+      "path": "public/atlas/reading.js",
+      "sha": "c195928e99ddc0d598c94a7f370eb8953700fd95"
+    },
+    {
+      "path": "tests/atlas-reading-ui.test.ts",
+      "sha": "133a5d6f7bf640ad8c5cdfe5cfc209a1b8bb51b0"
+    },
+    {
+      "path": "tests/atlas-reading.test.ts",
+      "sha": "e0d3e234e50fab1f7ac82d69fbcc77a23fabda90"
+    },
+    {
+      "path": "tests/fixtures/reading-demo.js",
+      "sha": "de56c1af497d0e6022829da88e862284ef8519a2"
+    },
+    {
+      "path": "public/atlas/packs/cosmere.js",
+      "sha": "0ca2f3eedf23bd6b453240c3e047e8c50671e5d2"
+    }
+  ],
+  "focusedRepositoryTests": {
+    "passed": 17,
+    "total": 17
+  },
+  "browser": {
+    "completed": 0,
+    "exit": 134,
+    "error": "process_singleton_posix.cc:297 socket() failed: Operation not permitted (1)"
+  }
+}

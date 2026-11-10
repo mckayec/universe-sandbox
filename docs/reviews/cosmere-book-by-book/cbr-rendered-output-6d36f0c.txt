@@ -1,0 +1,193 @@
+### CBR-01-1440x900
+{"pass":true,"case":"CBR-01 1440x900 url: starts in a valid per-work state"}
+{"pass":true,"case":"CBR-01 1440x900 url: last untick → none (none)"}
+{"pass":true,"case":"CBR-01 1440x900 url: URL #read=_none&world=scadrial"}
+{"pass":true,"case":"CBR-01 1440x900 url: stored {\"mode\":\"none\"}"}
+{"pass":true,"case":"CBR-01 1440x900 url: Forward to the old surface entry keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 1440x900 url: Back keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 1440x900 url: reload → none"}
+{"pass":true,"case":"CBR-01 1440x900 url: shared link #read=_none → none"}
+{"pass":true,"case":"CBR-01 1440x900 url: no page errors "}
+{"pass":true,"case":"CBR-01 1440x900 stored set: starts in a valid per-work state"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: last untick → none (none)"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: URL #read=_none&world=scadrial"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: stored {\"mode\":\"none\"}"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: Forward to the old surface entry keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: Back keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: reload → none"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: shared link #read=_none → none"}
+{"pass":true,"case":"CBR-01 1440x900 stored set: no page errors "}
+{"pass":true,"case":"CBR-01 1440x900 preset: starts in a valid per-work state"}
+{"pass":true,"case":"CBR-01 1440x900 preset: last untick → none (none)"}
+{"pass":true,"case":"CBR-01 1440x900 preset: URL #read=_none&world=scadrial"}
+{"pass":true,"case":"CBR-01 1440x900 preset: stored {\"mode\":\"none\"}"}
+{"pass":true,"case":"CBR-01 1440x900 preset: Forward to the old surface entry keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 1440x900 preset: Back keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 1440x900 preset: reload → none"}
+{"pass":true,"case":"CBR-01 1440x900 preset: shared link #read=_none → none"}
+{"pass":true,"case":"CBR-01 1440x900 preset: no page errors "}
+{"pass":true,"case":"CBR-01 1440x900 negative #read=: safe, nothing stored"}
+{"pass":true,"case":"CBR-01 1440x900 negative #read=zz9: safe, nothing stored"}
+{"pass":true,"case":"CBR-01 1440x900 negative #read=_none,fx-1: safe, nothing stored"}
+{"pass":true,"case":"CBR-01 1440x900 negative #read=_none&book=1: safe, nothing stored"}
+{"pass":31,"total":31}
+exit 0
+### CBR-01-390x844
+{"pass":true,"case":"CBR-01 390x844 url: starts in a valid per-work state"}
+{"pass":true,"case":"CBR-01 390x844 url: last untick → none (none)"}
+{"pass":true,"case":"CBR-01 390x844 url: URL #read=_none&world=scadrial"}
+{"pass":true,"case":"CBR-01 390x844 url: stored {\"mode\":\"none\"}"}
+{"pass":true,"case":"CBR-01 390x844 url: Forward to the old surface entry keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 390x844 url: Back keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 390x844 url: reload → none"}
+{"pass":true,"case":"CBR-01 390x844 url: shared link #read=_none → none"}
+{"pass":true,"case":"CBR-01 390x844 url: no page errors "}
+{"pass":true,"case":"CBR-01 390x844 stored set: starts in a valid per-work state"}
+{"pass":true,"case":"CBR-01 390x844 stored set: last untick → none (none)"}
+{"pass":true,"case":"CBR-01 390x844 stored set: URL #read=_none"}
+{"pass":true,"case":"CBR-01 390x844 stored set: stored {\"mode\":\"none\"}"}
+{"pass":true,"case":"CBR-01 390x844 stored set: Forward to the old surface entry keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 390x844 stored set: Back keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 390x844 stored set: reload → none"}
+{"pass":true,"case":"CBR-01 390x844 stored set: shared link #read=_none → none"}
+{"pass":true,"case":"CBR-01 390x844 stored set: no page errors "}
+{"pass":true,"case":"CBR-01 390x844 preset: starts in a valid per-work state"}
+{"pass":true,"case":"CBR-01 390x844 preset: last untick → none (none)"}
+{"pass":true,"case":"CBR-01 390x844 preset: URL #read=_none&world=scadrial"}
+{"pass":true,"case":"CBR-01 390x844 preset: stored {\"mode\":\"none\"}"}
+{"pass":true,"case":"CBR-01 390x844 preset: Forward to the old surface entry keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 390x844 preset: Back keeps none (#read=_none)"}
+{"pass":true,"case":"CBR-01 390x844 preset: reload → none"}
+{"pass":true,"case":"CBR-01 390x844 preset: shared link #read=_none → none"}
+{"pass":true,"case":"CBR-01 390x844 preset: no page errors "}
+{"pass":true,"case":"CBR-01 390x844 negative #read=: safe, nothing stored"}
+{"pass":true,"case":"CBR-01 390x844 negative #read=zz9: safe, nothing stored"}
+{"pass":true,"case":"CBR-01 390x844 negative #read=_none,fx-1: safe, nothing stored"}
+{"pass":true,"case":"CBR-01 390x844 negative #read=_none&book=1: safe, nothing stored"}
+{"pass":31,"total":31}
+exit 0
+### CBR-02-1440x900
+{"pass":true,"case":"CBR-02 1440x900 absent era field gate, era readable: shown"}
+{"pass":true,"case":"CBR-02 1440x900 absent era field gate, era readable: no page errors "}
+{"pass":true,"case":"CBR-02 1440x900 era field needs fx-2, only fx-1: hidden"}
+{"pass":true,"case":"CBR-02 1440x900 era field needs fx-2, only fx-1: no page errors "}
+{"pass":true,"case":"CBR-02 1440x900 era field needs fx-2, fx-2 read: shown"}
+{"pass":true,"case":"CBR-02 1440x900 era field needs fx-2, fx-2 read: no page errors "}
+{"pass":true,"case":"CBR-02 1440x900 invalid era field gate, all fixtures read: hidden"}
+{"pass":true,"case":"CBR-02 1440x900 invalid era field gate, all fixtures read: no page errors "}
+{"pass":true,"case":"CBR-02 1440x900 public era field, era readable: shown"}
+{"pass":true,"case":"CBR-02 1440x900 public era field, era readable: no page errors "}
+{"pass":true,"case":"CBR-02 1440x900 needs fx-3 unmet: hidden"}
+{"pass":true,"case":"CBR-02 1440x900 needs fx-3 unmet: no page errors "}
+{"pass":true,"case":"CBR-02 1440x900 world field hidden, public era field: hidden"}
+{"pass":true,"case":"CBR-02 1440x900 world field hidden, public era field: no page errors "}
+{"pass":true,"case":"CBR-02 1440x900 era record hidden, public era field: hidden"}
+{"pass":true,"case":"CBR-02 1440x900 era record hidden, public era field: no page errors "}
+{"pass":16,"total":16}
+exit 0
+### CBR-02-390x844
+{"pass":true,"case":"CBR-02 390x844 absent era field gate, era readable: shown"}
+{"pass":true,"case":"CBR-02 390x844 absent era field gate, era readable: no page errors "}
+{"pass":true,"case":"CBR-02 390x844 era field needs fx-2, only fx-1: hidden"}
+{"pass":true,"case":"CBR-02 390x844 era field needs fx-2, only fx-1: no page errors "}
+{"pass":true,"case":"CBR-02 390x844 era field needs fx-2, fx-2 read: shown"}
+{"pass":true,"case":"CBR-02 390x844 era field needs fx-2, fx-2 read: no page errors "}
+{"pass":true,"case":"CBR-02 390x844 invalid era field gate, all fixtures read: hidden"}
+{"pass":true,"case":"CBR-02 390x844 invalid era field gate, all fixtures read: no page errors "}
+{"pass":true,"case":"CBR-02 390x844 public era field, era readable: shown"}
+{"pass":true,"case":"CBR-02 390x844 public era field, era readable: no page errors "}
+{"pass":true,"case":"CBR-02 390x844 needs fx-3 unmet: hidden"}
+{"pass":true,"case":"CBR-02 390x844 needs fx-3 unmet: no page errors "}
+{"pass":true,"case":"CBR-02 390x844 world field hidden, public era field: hidden"}
+{"pass":true,"case":"CBR-02 390x844 world field hidden, public era field: no page errors "}
+{"pass":true,"case":"CBR-02 390x844 era record hidden, public era field: hidden"}
+{"pass":true,"case":"CBR-02 390x844 era record hidden, public era field: no page errors "}
+{"pass":16,"total":16}
+exit 0
+### CBR-03-1440x900
+{"pass":true,"case":"CBR-03 1440x900 unchanged control: {\"view\":\"world\",\"sel\":\"scadrial\",\"pl\":true,\"bake\":false}"}
+{"pass":true,"case":"CBR-03 1440x900 unchanged control: no page errors "}
+{"pass":true,"case":"CBR-03 1440x900 narrowed while pending: {\"view\":\"galaxy\",\"sel\":null,\"pl\":false,\"bake\":true}"}
+{"pass":true,"case":"CBR-03 1440x900 narrowed while pending: no page errors "}
+{"pass":true,"case":"CBR-03 1440x900 invalid-link safe state analogue: hidden by panel All→none: {\"view\":\"galaxy\",\"sel\":null,\"pl\":false,\"bake\":true}"}
+{"pass":true,"case":"CBR-03 1440x900 invalid-link safe state analogue: hidden by panel All→none: no page errors "}
+{"pass":true,"case":"CBR-03 1440x900 another world selected while pending: {\"view\":\"galaxy\",\"sel\":\"nalthis\",\"pl\":false,\"bake\":true}"}
+{"pass":true,"case":"CBR-03 1440x900 another world selected while pending: no page errors "}
+{"pass":8,"total":8}
+exit 0
+### CBR-03-390x844
+{"pass":true,"case":"CBR-03 390x844 unchanged control: {\"view\":\"world\",\"sel\":\"scadrial\",\"pl\":true,\"bake\":false}"}
+{"pass":true,"case":"CBR-03 390x844 unchanged control: no page errors "}
+{"pass":true,"case":"CBR-03 390x844 narrowed while pending: {\"view\":\"galaxy\",\"sel\":null,\"pl\":false,\"bake\":true}"}
+{"pass":true,"case":"CBR-03 390x844 narrowed while pending: no page errors "}
+{"pass":true,"case":"CBR-03 390x844 invalid-link safe state analogue: hidden by panel All→none: {\"view\":\"galaxy\",\"sel\":null,\"pl\":false,\"bake\":true}"}
+{"pass":true,"case":"CBR-03 390x844 invalid-link safe state analogue: hidden by panel All→none: no page errors "}
+{"pass":true,"case":"CBR-03 390x844 another world selected while pending: {\"view\":\"galaxy\",\"sel\":\"nalthis\",\"pl\":false,\"bake\":true}"}
+{"pass":true,"case":"CBR-03 390x844 another world selected while pending: no page errors "}
+{"pass":8,"total":8}
+exit 0
+### PEND-1440x900
+{"pass":true,"case":"1440x900 fixture places found {\"w1\":\"sel\",\"s1\":\"elantris\",\"sLate\":\"roseempire\",\"wLate\":\"ashyn\"}"}
+{"pass":true,"case":"1440x900 pending site selection dropped after a state change [{\"ev\":\"e13\",\"world\":\"nalthis\",\"site\":\"courtofgods\",\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"},{\"sel\":\"nalthis\",\"site\":null,\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"}]"}
+{"pass":true,"case":"1440x900 state ended identical after the double toggle {\"mode\":\"set\",\"ids\":[\"fx-1\",\"fx-2a\",\"fx-2b\",\"fx-2c\",\"fx-3\",\"fx-4\",\"fx-5\",\"fx-6\",\"fx-7\",\"fx-8\",\"fx-9\",\"fx-10\",\"fx-11\",\"fx-12\"]}"}
+{"pass":true,"case":"1440x900 no errors (5a true) "}
+{"pass":true,"case":"1440x900 control: site selected when nothing changed [{\"ev\":\"e13\",\"world\":\"nalthis\",\"site\":\"courtofgods\",\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"},{\"sel\":\"nalthis\",\"site\":\"courtofgods\",\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"}]"}
+{"pass":true,"case":"1440x900 no errors (5a false) "}
+{"pass":true,"case":"1440x900 hidden world not opened {\"sel\":null,\"view\":\"galaxy\",\"hint\":\"That place is not revealed by the books you have marked as read.\"}"}
+{"pass":true,"case":"1440x900 not-revealed note shown"}
+{"pass":true,"case":"1440x900 no errors (5b) "}
+{"pass":true,"case":"1440x900 hidden site not selected {\"sel\":\"sel\",\"site\":null,\"view\":\"world\"}"}
+{"pass":true,"case":"1440x900 on the late world surface"}
+{"pass":true,"case":"1440x900 narrowing left the hidden surface {\"sel\":null,\"view\":\"galaxy\"}"}
+{"pass":true,"case":"1440x900 Forward does not reopen the hidden surface {\"sel\":null,\"view\":\"galaxy\",\"h\":\"#upto=pub%3A1%3Afx-1\"}"}
+{"pass":true,"case":"1440x900 no errors (5d) "}
+{"pass":14,"total":14}
+exit 0
+### PEND-390x844
+{"pass":true,"case":"390x844 fixture places found {\"w1\":\"sel\",\"s1\":\"elantris\",\"sLate\":\"roseempire\",\"wLate\":\"ashyn\"}"}
+{"pass":true,"case":"390x844 pending site selection dropped after a state change [{\"ev\":\"e13\",\"world\":\"nalthis\",\"site\":\"courtofgods\",\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"},{\"sel\":\"nalthis\",\"site\":null,\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"}]"}
+{"pass":true,"case":"390x844 state ended identical after the double toggle {\"mode\":\"set\",\"ids\":[\"fx-1\",\"fx-2a\",\"fx-2b\",\"fx-2c\",\"fx-3\",\"fx-4\",\"fx-5\",\"fx-6\",\"fx-7\",\"fx-8\",\"fx-9\",\"fx-10\",\"fx-11\",\"fx-12\"]}"}
+{"pass":true,"case":"390x844 no errors (5a true) "}
+{"pass":true,"case":"390x844 control: site selected when nothing changed [{\"ev\":\"e13\",\"world\":\"nalthis\",\"site\":\"courtofgods\",\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"},{\"sel\":\"nalthis\",\"site\":\"courtofgods\",\"rd\":\"{\\\"mode\\\":\\\"set\\\",\\\"ids\\\":[\\\"fx-1\\\",\\\"fx-2a\\\",\\\"fx-2b\\\",\\\"fx-2c\\\",\\\"fx-3\\\",\\\"fx-4\\\",\\\"fx-5\\\",\\\"fx-6\\\",\\\"fx-7\\\",\\\"fx-8\\\",\\\"fx-9\\\",\\\"fx-10\\\",\\\"fx-11\\\",\\\"fx-12\\\"]}\"}]"}
+{"pass":true,"case":"390x844 no errors (5a false) "}
+{"pass":true,"case":"390x844 hidden world not opened {\"sel\":null,\"view\":\"galaxy\",\"hint\":\"That place is not revealed by the books you have marked as read.\"}"}
+{"pass":true,"case":"390x844 not-revealed note shown"}
+{"pass":true,"case":"390x844 no errors (5b) "}
+{"pass":true,"case":"390x844 hidden site not selected {\"sel\":\"sel\",\"site\":null,\"view\":\"world\"}"}
+{"pass":true,"case":"390x844 on the late world surface"}
+{"pass":true,"case":"390x844 narrowing left the hidden surface {\"sel\":null,\"view\":\"galaxy\"}"}
+{"pass":true,"case":"390x844 Forward does not reopen the hidden surface {\"sel\":null,\"view\":\"galaxy\",\"h\":\"#upto=pub%3A1%3Afx-1\"}"}
+{"pass":true,"case":"390x844 no errors (5d) "}
+{"pass":14,"total":14}
+exit 0
+### reading-fields-probe
+reading-fields probe: 59/59 passed
+exit 0
+### reading-engine-probe (vs ab34afe engine)
+book=0 parity surfaces=6 worlds=60
+book=1 parity surfaces=6 worlds=60
+book=2 parity surfaces=6 worlds=60
+book=3 parity surfaces=6 worlds=60
+book=4 parity surfaces=6 worlds=60
+book=5 parity surfaces=6 worlds=60
+book=6 parity surfaces=6 worlds=60
+book=7 parity surfaces=6 worlds=60
+book=8 parity surfaces=6 worlds=60
+book=9 parity surfaces=6 worlds=60
+book=10 parity surfaces=6 worlds=60
+book=11 parity surfaces=6 worlds=60
+book=12 parity surfaces=6 worlds=60
+set {fx-1}                               {"rd":"{\"mode\":\"set\",\"ids\":[\"fx-1\"]}","book":0,"chronEvents":5,"worlds":0,"hash":"#read=fx-1","stored":""}
+set {fx-2a}: key-2 bucket incomplete     {"rd":"{\"mode\":\"set\",\"ids\":[\"fx-2a\"]}","book":0,"chronEvents":0,"worlds":0,"hash":"#read=fx-2a","stored":""}
+set key1+key2 complete                   {"rd":"{\"mode\":\"set\",\"ids\":[\"fx-1\",\"fx-2a\",\"fx-2b\",\"fx-2c\"]}","book":0,"chronEvents":12,"worlds":0,"hash":"#read=fx-1%2Cfx-2a%2Cfx-2b%2Cfx-2c","stored":""}
+preset through fx-3                      {"rd":"{\"mode\":\"preset\",\"preset\":\"pub\",\"v\":1,\"work\":\"fx-3\"}","book":0,"chronEvents":16,"worlds":0,"hash":"#upto=pub%3A1%3Afx-3","stored":""}
+conflict -> safe                         {"rd":"{\"mode\":\"safe\",\"reason\":\"conflict book+read\"}","book":0,"chronEvents":0,"worlds":0,"hash":"#book=2&read=fx-1","stored":""}
+unknown id -> safe                       {"rd":"{\"mode\":\"safe\",\"reason\":\"invalid read\"}","book":0,"chronEvents":0,"worlds":0,"hash":"#read=zz9","stored":""}
+repeated -> safe                         {"rd":"{\"mode\":\"safe\",\"reason\":\"repeated book\"}","book":0,"chronEvents":0,"worlds":0,"hash":"#book=2&book=3","stored":""}
+unknown version -> safe                  {"rd":"{\"mode\":\"safe\",\"reason\":\"invalid upto\"}","book":0,"chronEvents":0,"worlds":0,"hash":"#upto=pub%3A9%3Afx-3","stored":""}
+
+128/128 checks passed
+exit 0
+### reading-ui-probe sections 1-4
+reading-ui probe: 42/42 passed
+exit 0

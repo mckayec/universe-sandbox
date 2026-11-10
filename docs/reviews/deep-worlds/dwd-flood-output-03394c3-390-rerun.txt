@@ -1,0 +1,13 @@
+PASS 390 5 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 390 5 Storm Gods on raises sea | dom true -6→631.9069399468822
+PASS 390 5 Storm Gods off returns sea | dom false -6
+PASS 390 6 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 390 6 Storm Gods on raises sea | dom true -6→557.6965560655835
+PASS 390 6 Storm Gods off returns sea | dom false -6
+PASS 390 no page errors (amplified page)
+PASS 390 V→IV inside Tyche with storms on leaves scene | dom true {"m":"globe","c":null,"era":4}
+PASS 390 re-entry at V after storms-on downgrade: toggle unpressed | false
+PASS 390 V→VI upgrade with storms on keeps scene and toggle | {"m":"site","c":"Tyche"}
+PASS 390 no page errors (stale page)
+ALL PASS
+exit 0

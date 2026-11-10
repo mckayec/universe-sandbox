@@ -1,0 +1,144 @@
+{
+  "head": "6d36f0c4afc2c2c2c9f7cbf860226112338eb235",
+  "scope": "Actual extracted field selectors and reading helper; no renderer; synthetic fixtures",
+  "inputs": [
+    {
+      "path": "public/atlas/engine.js",
+      "git_blob_sha": "6ecfb467f2577c2ffe57ee93ba5c06ee85979f52"
+    },
+    {
+      "path": "public/atlas/reading.js",
+      "git_blob_sha": "88a2b8b8ff94843eb89cb9a47bffb620ab3d4632"
+    }
+  ],
+  "passed": 12,
+  "total": 14,
+  "results": [
+    {
+      "id": "gfx base unmet field",
+      "expected": {},
+      "actual": {
+        "type": "barren",
+        "pal": [
+          "#3c3c42",
+          "#4a4a50",
+          "#58585e",
+          "#66666c",
+          "#74747a",
+          "#828288"
+        ],
+        "rough": 0.6,
+        "sea": 0,
+        "atmoK": 0
+      },
+      "pass": false
+    },
+    {
+      "id": "gfx base invalid field",
+      "expected": {},
+      "actual": {
+        "type": "barren",
+        "pal": [
+          "#3c3c42",
+          "#4a4a50",
+          "#58585e",
+          "#66666c",
+          "#74747a",
+          "#828288"
+        ],
+        "rough": 0.6,
+        "sea": 0,
+        "atmoK": 0
+      },
+      "pass": false
+    },
+    {
+      "id": "gfx base public field control",
+      "expected": {
+        "map": "SECRET-BASE"
+      },
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "gfx base met field control",
+      "expected": {
+        "map": "SECRET-BASE"
+      },
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "gfx legacy control",
+      "expected": {
+        "map": "SECRET-BASE"
+      },
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "gfx era field unmet control",
+      "expected": {
+        "map": "BASE"
+      },
+      "actual": {
+        "map": "BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "group base unmet field",
+      "expected": "",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "group base invalid field",
+      "expected": "",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "group base public control",
+      "expected": "BASE",
+      "actual": "BASE",
+      "pass": true
+    },
+    {
+      "id": "group era unmet record",
+      "expected": "BASE",
+      "actual": "BASE",
+      "pass": true
+    },
+    {
+      "id": "group era invalid record",
+      "expected": "BASE",
+      "actual": "BASE",
+      "pass": true
+    },
+    {
+      "id": "group era unmet field control",
+      "expected": "BASE",
+      "actual": "BASE",
+      "pass": true
+    },
+    {
+      "id": "group era met record control",
+      "expected": "SECRET-ERA",
+      "actual": "SECRET-ERA",
+      "pass": true
+    },
+    {
+      "id": "group era legacy control",
+      "expected": "SECRET-ERA",
+      "actual": "SECRET-ERA",
+      "pass": true
+    }
+  ]
+}

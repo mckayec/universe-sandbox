@@ -1,0 +1,122 @@
+{
+  "head": "6d36f0c4afc2c2c2c9f7cbf860226112338eb235",
+  "scope": "Actual extracted field selectors and reading helper; no renderer; synthetic fixtures",
+  "inputs": [
+    {
+      "path": "public/atlas/engine.js",
+      "git_blob_sha": "7f4913c5180d9d64879f19f16e5340041f0aa428"
+    },
+    {
+      "path": "public/atlas/reading.js",
+      "git_blob_sha": "88a2b8b8ff94843eb89cb9a47bffb620ab3d4632"
+    }
+  ],
+  "passed": 8,
+  "total": 14,
+  "results": [
+    {
+      "id": "gfx base unmet field",
+      "expected": {},
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": false
+    },
+    {
+      "id": "gfx base invalid field",
+      "expected": {},
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": false
+    },
+    {
+      "id": "gfx base public field control",
+      "expected": {
+        "map": "SECRET-BASE"
+      },
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "gfx base met field control",
+      "expected": {
+        "map": "SECRET-BASE"
+      },
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "gfx legacy control",
+      "expected": {
+        "map": "SECRET-BASE"
+      },
+      "actual": {
+        "map": "SECRET-BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "gfx era field unmet control",
+      "expected": {
+        "map": "BASE"
+      },
+      "actual": {
+        "map": "BASE"
+      },
+      "pass": true
+    },
+    {
+      "id": "group base unmet field",
+      "expected": "",
+      "actual": "BASE",
+      "pass": false
+    },
+    {
+      "id": "group base invalid field",
+      "expected": "",
+      "actual": "BASE",
+      "pass": false
+    },
+    {
+      "id": "group base public control",
+      "expected": "BASE",
+      "actual": "BASE",
+      "pass": true
+    },
+    {
+      "id": "group era unmet record",
+      "expected": "BASE",
+      "actual": "SECRET-ERA",
+      "pass": false
+    },
+    {
+      "id": "group era invalid record",
+      "expected": "BASE",
+      "actual": "SECRET-ERA",
+      "pass": false
+    },
+    {
+      "id": "group era unmet field control",
+      "expected": "BASE",
+      "actual": "BASE",
+      "pass": true
+    },
+    {
+      "id": "group era met record control",
+      "expected": "SECRET-ERA",
+      "actual": "SECRET-ERA",
+      "pass": true
+    },
+    {
+      "id": "group era legacy control",
+      "expected": "SECRET-ERA",
+      "actual": "SECRET-ERA",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,525 @@
+{
+ "isolated-1280x800": {
+  "clip": "sc4e1r-isolated-1280x800.webm",
+  "frames": 1089,
+  "segments": [
+   {
+    "label": null,
+    "firstPts": 0.0,
+    "lastPts": 9.92,
+    "frames": 249,
+    "blank": 10
+   },
+   {
+    "label": "startup",
+    "firstPts": 9.96,
+    "lastPts": 27.4,
+    "frames": 437,
+    "blank": 0
+   },
+   {
+    "label": "restored-paused",
+    "firstPts": 27.44,
+    "lastPts": 33.72,
+    "frames": 158,
+    "blank": 0
+   },
+   {
+    "label": "1x",
+    "firstPts": 33.76,
+    "lastPts": 39.04,
+    "frames": 133,
+    "blank": 0
+   },
+   {
+    "label": "10x",
+    "firstPts": 39.08,
+    "lastPts": 43.52,
+    "frames": 112,
+    "blank": 0
+   }
+  ],
+  "transitionOffsets": [
+   {
+    "label": "startup",
+    "logS": 9.655,
+    "firstPts": 9.96,
+    "offsetS": -0.305
+   },
+   {
+    "label": "restored-paused",
+    "logS": 27.348,
+    "firstPts": 27.44,
+    "offsetS": -0.092
+   },
+   {
+    "label": "1x",
+    "logS": 33.729,
+    "firstPts": 33.76,
+    "offsetS": -0.031
+   },
+   {
+    "label": "10x",
+    "logS": 39.032,
+    "firstPts": 39.08,
+    "offsetS": -0.048
+   }
+  ],
+  "unlabelledFrames": 249,
+  "blankFrames": 10
+ },
+ "wide-equal-1280x800": {
+  "clip": "sc4e1r-wide-equal-1280x800.webm",
+  "frames": 887,
+  "segments": [
+   {
+    "label": null,
+    "firstPts": 0.0,
+    "lastPts": 2.4,
+    "frames": 61,
+    "blank": 0
+   },
+   {
+    "label": "startup",
+    "firstPts": 2.44,
+    "lastPts": 19.16,
+    "frames": 419,
+    "blank": 0
+   },
+   {
+    "label": "restored-paused",
+    "firstPts": 19.2,
+    "lastPts": 25.76,
+    "frames": 165,
+    "blank": 0
+   },
+   {
+    "label": "1x",
+    "firstPts": 25.8,
+    "lastPts": 30.84,
+    "frames": 127,
+    "blank": 0
+   },
+   {
+    "label": "10x",
+    "firstPts": 30.88,
+    "lastPts": 35.44,
+    "frames": 115,
+    "blank": 0
+   }
+  ],
+  "transitionOffsets": [
+   {
+    "label": "startup",
+    "logS": 8.362,
+    "firstPts": 2.44,
+    "offsetS": 5.922
+   },
+   {
+    "label": "restored-paused",
+    "logS": 25.302,
+    "firstPts": 19.2,
+    "offsetS": 6.102
+   },
+   {
+    "label": "1x",
+    "logS": 31.939,
+    "firstPts": 25.8,
+    "offsetS": 6.139
+   },
+   {
+    "label": "10x",
+    "logS": 37.037,
+    "firstPts": 30.88,
+    "offsetS": 6.157
+   }
+  ],
+  "unlabelledFrames": 61,
+  "blankFrames": 0
+ },
+ "close-equal-1280x800": {
+  "clip": "sc4e1r-close-equal-1280x800.webm",
+  "frames": 1096,
+  "segments": [
+   {
+    "label": null,
+    "firstPts": 0.0,
+    "lastPts": 10.12,
+    "frames": 254,
+    "blank": 10
+   },
+   {
+    "label": "startup",
+    "firstPts": 10.16,
+    "lastPts": 27.76,
+    "frames": 441,
+    "blank": 0
+   },
+   {
+    "label": "restored-paused",
+    "firstPts": 27.8,
+    "lastPts": 34.16,
+    "frames": 160,
+    "blank": 0
+   },
+   {
+    "label": "1x",
+    "firstPts": 34.2,
+    "lastPts": 39.36,
+    "frames": 130,
+    "blank": 0
+   },
+   {
+    "label": "10x",
+    "firstPts": 39.4,
+    "lastPts": 43.8,
+    "frames": 111,
+    "blank": 0
+   }
+  ],
+  "transitionOffsets": [
+   {
+    "label": "startup",
+    "logS": 9.843,
+    "firstPts": 10.16,
+    "offsetS": -0.317
+   },
+   {
+    "label": "restored-paused",
+    "logS": 27.726,
+    "firstPts": 27.8,
+    "offsetS": -0.074
+   },
+   {
+    "label": "1x",
+    "logS": 34.121,
+    "firstPts": 34.2,
+    "offsetS": -0.079
+   },
+   {
+    "label": "10x",
+    "logS": 39.346,
+    "firstPts": 39.4,
+    "offsetS": -0.054
+   }
+  ],
+  "unlabelledFrames": 254,
+  "blankFrames": 10
+ },
+ "unequal-1280x800": {
+  "clip": "sc4e1r-unequal-1280x800.webm",
+  "frames": 933,
+  "segments": [
+   {
+    "label": null,
+    "firstPts": 0.0,
+    "lastPts": 2.8,
+    "frames": 71,
+    "blank": 0
+   },
+   {
+    "label": "startup",
+    "firstPts": 2.84,
+    "lastPts": 20.4,
+    "frames": 440,
+    "blank": 0
+   },
+   {
+    "label": "restored-paused",
+    "firstPts": 20.44,
+    "lastPts": 27.2,
+    "frames": 170,
+    "blank": 0
+   },
+   {
+    "label": "1x",
+    "firstPts": 27.24,
+    "lastPts": 32.72,
+    "frames": 138,
+    "blank": 0
+   },
+   {
+    "label": "10x",
+    "firstPts": 32.76,
+    "lastPts": 37.28,
+    "frames": 114,
+    "blank": 0
+   }
+  ],
+  "transitionOffsets": [
+   {
+    "label": "startup",
+    "logS": 9.087,
+    "firstPts": 2.84,
+    "offsetS": 6.247
+   },
+   {
+    "label": "restored-paused",
+    "logS": 26.895,
+    "firstPts": 20.44,
+    "offsetS": 6.455
+   },
+   {
+    "label": "1x",
+    "logS": 33.718,
+    "firstPts": 27.24,
+    "offsetS": 6.478
+   },
+   {
+    "label": "10x",
+    "logS": 39.258,
+    "firstPts": 32.76,
+    "offsetS": 6.498
+   }
+  ],
+  "unlabelledFrames": 71,
+  "blankFrames": 0
+ },
+ "flyby-1280x800": {
+  "clip": "sc4e1r-flyby-1280x800.webm",
+  "frames": 1174,
+  "segments": [
+   {
+    "label": null,
+    "firstPts": 0.0,
+    "lastPts": 9.68,
+    "frames": 243,
+    "blank": 10
+   },
+   {
+    "label": "startup",
+    "firstPts": 9.72,
+    "lastPts": 27.08,
+    "frames": 435,
+    "blank": 0
+   },
+   {
+    "label": "restored-paused",
+    "firstPts": 27.12,
+    "lastPts": 33.48,
+    "frames": 160,
+    "blank": 0
+   },
+   {
+    "label": "approach",
+    "firstPts": 33.52,
+    "lastPts": 39.96,
+    "frames": 162,
+    "blank": 0
+   },
+   {
+    "label": "recession",
+    "firstPts": 40.0,
+    "lastPts": 46.92,
+    "frames": 174,
+    "blank": 0
+   }
+  ],
+  "transitionOffsets": [
+   {
+    "label": "startup",
+    "logS": 9.461,
+    "firstPts": 9.72,
+    "offsetS": -0.259
+   },
+   {
+    "label": "restored-paused",
+    "logS": 27.077,
+    "firstPts": 27.12,
+    "offsetS": -0.043
+   },
+   {
+    "label": "approach",
+    "logS": 33.478,
+    "firstPts": 33.52,
+    "offsetS": -0.042
+   },
+   {
+    "label": "recession",
+    "logS": 39.918,
+    "firstPts": 40.0,
+    "offsetS": -0.082
+   }
+  ],
+  "unlabelledFrames": 243,
+  "blankFrames": 10,
+  "closest": {
+   "sep": 14.822,
+   "tide": 0.8662528867284621,
+   "sampleLogS": 39.478,
+   "framePts": 39.52,
+   "frameLabel": "approach"
+  }
+ },
+ "flyby-compact-390x844": {
+  "clip": "sc4e1r-flyby-compact-390x844.webm",
+  "frames": 635,
+  "segments": [
+   {
+    "label": null,
+    "firstPts": 0.0,
+    "lastPts": 0.88,
+    "frames": 23,
+    "blank": 0
+   },
+   {
+    "label": "startup",
+    "firstPts": 0.92,
+    "lastPts": 12.6,
+    "frames": 293,
+    "blank": 0
+   },
+   {
+    "label": "restored-paused",
+    "firstPts": 12.64,
+    "lastPts": 17.32,
+    "frames": 118,
+    "blank": 0
+   },
+   {
+    "label": "approach",
+    "firstPts": 17.36,
+    "lastPts": 20.64,
+    "frames": 83,
+    "blank": 0
+   },
+   {
+    "label": "recession",
+    "firstPts": 20.68,
+    "lastPts": 25.36,
+    "frames": 118,
+    "blank": 0
+   }
+  ],
+  "transitionOffsets": [
+   {
+    "label": "startup",
+    "logS": 6.206,
+    "firstPts": 0.92,
+    "offsetS": 5.286
+   },
+   {
+    "label": "restored-paused",
+    "logS": 17.992,
+    "firstPts": 12.64,
+    "offsetS": 5.352
+   },
+   {
+    "label": "approach",
+    "logS": 22.719,
+    "firstPts": 17.36,
+    "offsetS": 5.359
+   },
+   {
+    "label": "recession",
+    "logS": 25.984,
+    "firstPts": 20.68,
+    "offsetS": 5.304
+   }
+  ],
+  "unlabelledFrames": 23,
+  "blankFrames": 0,
+  "closest": {
+   "sep": 15.199,
+   "tide": 0.8972857560019907,
+   "sampleLogS": 25.788,
+   "framePts": 20.44,
+   "frameLabel": "approach"
+  }
+ },
+ "merger-1280x800": {
+  "clip": "sc4e1r-merger-1280x800.webm",
+  "frames": 1381,
+  "segments": [
+   {
+    "label": null,
+    "firstPts": 0.0,
+    "lastPts": 10.28,
+    "frames": 258,
+    "blank": 10
+   },
+   {
+    "label": "startup",
+    "firstPts": 10.32,
+    "lastPts": 29.0,
+    "frames": 468,
+    "blank": 0
+   },
+   {
+    "label": "restored-paused",
+    "firstPts": 29.04,
+    "lastPts": 36.28,
+    "frames": 182,
+    "blank": 0
+   },
+   {
+    "label": "1x",
+    "firstPts": 36.32,
+    "lastPts": 42.08,
+    "frames": 145,
+    "blank": 0
+   },
+   {
+    "label": "10x",
+    "firstPts": 42.12,
+    "lastPts": 45.76,
+    "frames": 92,
+    "blank": 0
+   },
+   {
+    "label": "merged-10x",
+    "firstPts": 45.8,
+    "lastPts": 51.12,
+    "frames": 134,
+    "blank": 0
+   },
+   {
+    "label": "paused-after-merger",
+    "firstPts": 51.16,
+    "lastPts": 55.2,
+    "frames": 102,
+    "blank": 0
+   }
+  ],
+  "transitionOffsets": [
+   {
+    "label": "startup",
+    "logS": 10.024,
+    "firstPts": 10.32,
+    "offsetS": -0.296
+   },
+   {
+    "label": "restored-paused",
+    "logS": 29.016,
+    "firstPts": 29.04,
+    "offsetS": -0.024
+   },
+   {
+    "label": "1x",
+    "logS": 36.251,
+    "firstPts": 36.32,
+    "offsetS": -0.069
+   },
+   {
+    "label": "10x",
+    "logS": 42.088,
+    "firstPts": 42.12,
+    "offsetS": -0.032
+   },
+   {
+    "label": "merged-10x",
+    "logS": 45.805,
+    "firstPts": 45.8,
+    "offsetS": 0.005
+   },
+   {
+    "label": "paused-after-merger",
+    "logS": 51.162,
+    "firstPts": 51.16,
+    "offsetS": 0.002
+   }
+  ],
+  "unlabelledFrames": 258,
+  "blankFrames": 10
+ }
+}

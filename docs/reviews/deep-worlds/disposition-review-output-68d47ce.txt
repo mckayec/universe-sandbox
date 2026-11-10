@@ -1,0 +1,72 @@
+PASS F1 d8 qualifier, omissions, route
+PASS F2 banner qualifier
+PASS F3 direct-scene illustrative extent/height note
+PASS F4 V blurb qualifier
+PASS F5 VI water level not established
+PASS F6 Mercury V narrow cut
+PASS F7 Helios preserves Ladon, cuts Tyche drowning
+PASS F8 six-step tour and neutral Tyche step
+PASS F9 harbor target survives
+PASS T site+pin availability 1
+PASS T site+pin availability 4
+PASS T site+pin availability 5
+PASS T site+pin availability 6
+PASS E rendered-input names boundary 2
+PASS E pins and sea boundary 2
+PASS E bibliography 2
+PASS E both leviathan text consumers 2
+PASS E rendered-input names boundary 5
+PASS E pins and sea boundary 5
+PASS E bibliography 5
+PASS E both leviathan text consumers 5
+PASS E rendered-input names boundary 6
+PASS E pins and sea boundary 6
+PASS E bibliography 6
+PASS E both leviathan text consumers 6
+PASS F5 VI fresh no forced flood y=-6
+PASS F5 V fresh no forced flood
+PASS F5 explicit V replay raises sea
+PASS F5 explicit VI replay raises sea
+PASS F5 default hook-off and hook-on baseline
+PASS T direct IV entry schedules no scene
+PASS T V entry schedules scene
+PASS T pending V entry rechecks IV before build
+PASS T no Society push/pop/hash routing claimed
+PASS T fresh tyche hash refused at initial Book I
+{"variant":"head","blob":"c002eae9f01eacf8655e20a368217743d5d8f5f9","passed":35,"failed":0,"total":35,"kind":"actual-source VM; no browser, rendering, primary-source or full-app certification"}
+FAIL F1 d8 qualifier, omissions, route
+FAIL F2 banner qualifier
+FAIL F3 direct-scene illustrative extent/height note
+FAIL F4 V blurb qualifier
+FAIL F5 VI water level not established
+FAIL F6 Mercury V narrow cut
+FAIL F7 Helios preserves Ladon, cuts Tyche drowning
+FAIL F8 six-step tour and neutral Tyche step
+PASS F9 harbor target survives
+PASS T site+pin availability 1
+FAIL T site+pin availability 4
+PASS T site+pin availability 5
+PASS T site+pin availability 6
+FAIL E rendered-input names boundary 2
+FAIL E pins and sea boundary 2
+PASS E bibliography 2
+FAIL E both leviathan text consumers 2
+FAIL E rendered-input names boundary 5
+FAIL E pins and sea boundary 5
+PASS E bibliography 5
+FAIL E both leviathan text consumers 5
+PASS E rendered-input names boundary 6
+PASS E pins and sea boundary 6
+PASS E bibliography 6
+PASS E both leviathan text consumers 6
+FAIL F5 VI fresh no forced flood y=141.43029186240312
+PASS F5 V fresh no forced flood
+PASS F5 explicit V replay raises sea
+PASS F5 explicit VI replay raises sea
+FAIL F5 default hook-off and hook-on baseline
+FAIL T direct IV entry schedules no scene
+PASS T V entry schedules scene
+FAIL T pending V entry rechecks IV before build
+PASS T no Society push/pop/hash routing claimed
+PASS T fresh tyche hash refused at initial Book I
+{"variant":"parent","blob":"fd3b2d14eb2457fef933b8925e9a4888b3e57d34","passed":16,"failed":19,"total":35,"kind":"actual-source VM; no browser, rendering, primary-source or full-app certification"}

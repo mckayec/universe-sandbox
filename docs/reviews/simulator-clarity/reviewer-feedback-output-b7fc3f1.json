@@ -1,0 +1,112 @@
+{
+  "head": "b7fc3f1244b72471143f2a22674dd73238acd259",
+  "passed": 5,
+  "total": 6,
+  "results": [
+    {
+      "name": "quiet simulation records and updates body without presentation",
+      "pass": true
+    },
+    {
+      "name": "direct exhibit action remains audible and visible in quiet",
+      "pass": true
+    },
+    {
+      "name": "quiet idle start and repeated attract restart produce no unsolicited banner or sound",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n\n4 !== 0\n"
+    },
+    {
+      "name": "full feedback simulation presents and vibrates",
+      "pass": true
+    },
+    {
+      "name": "history remains bounded after repeated quiet events",
+      "pass": true
+    },
+    {
+      "name": "actual selection resets sheet for rebuilt object with same ID",
+      "pass": true
+    }
+  ],
+  "idleEvidence": {
+    "banners": [
+      "Guided exhibit",
+      "Guided exhibit"
+    ],
+    "sounds": [
+      [
+        "ui",
+        1
+      ],
+      [
+        "ui",
+        1
+      ]
+    ],
+    "attractMode": true
+  },
+  "limitation": "Extracted actual handlers with adapters, no renderer, physical device or audio output",
+  "inputs": [
+    {
+      "path": "src/app/loop.ts",
+      "sha": "4b94ae78af7602b09844a33af3b3253244dbc31a"
+    },
+    {
+      "path": "src/bodies/registry.ts",
+      "sha": "636753a0a8c03fe0f6f6a1c5e8c32b6437cda931"
+    },
+    {
+      "path": "src/builders/galaxy.ts",
+      "sha": "1d3fc1bd5078f179e97b7878941b4bb561e142df"
+    },
+    {
+      "path": "src/builders/systems.ts",
+      "sha": "a245fff7b6baab887e23688c939f9fcdced67223"
+    },
+    {
+      "path": "src/exhibit-runtime.ts",
+      "sha": "1e2d4f17623a72077331111eb684e81d91d58b43"
+    },
+    {
+      "path": "src/feedback.ts",
+      "sha": "1710ae5e08ff36a400fdca643b6dd127c1846e7d"
+    },
+    {
+      "path": "src/scene/quality.ts",
+      "sha": "a82dd2472e0aa92a32e0faeb81c8bcfcae7241bc"
+    },
+    {
+      "path": "src/state/app-state.ts",
+      "sha": "d53b902585414f34de05ae3774ff83139c45dd42"
+    },
+    {
+      "path": "src/style.css",
+      "sha": "6c4fd601e9a3cbd9d6254f809c94e9bf07173528"
+    },
+    {
+      "path": "src/ui/exhibit-flow.ts",
+      "sha": "bcacfa708112fd0b9387dcdedcf69b5815d0c231"
+    },
+    {
+      "path": "src/ui/feed.ts",
+      "sha": "e7d1bf17deb264e601dd0d35c078d6d8752b0fe5"
+    },
+    {
+      "path": "src/ui/template.ts",
+      "sha": "ea7c7635dd352609c8ceb3961cba7611f9a764c4"
+    },
+    {
+      "path": "src/ui/toolbar.ts",
+      "sha": "c8a897ae7260dda83ec9af5cc73e216b562c8690"
+    },
+    {
+      "path": "tests/feedback.test.ts",
+      "sha": "113b3b7998375db034df95860d5f2151590346e2"
+    },
+    {
+      "path": "src/physics/stellar-evolution.ts",
+      "sha": "bcfb7c5957c019ece727250fc0bcc86a29426568"
+    }
+  ]
+}

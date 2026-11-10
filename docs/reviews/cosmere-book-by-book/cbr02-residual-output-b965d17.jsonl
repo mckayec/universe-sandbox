@@ -1,0 +1,81 @@
+{"pass":true,"case":"gfx 1440x900 gfx field needs fx-2, only fx-1 read: surface built","value":"scadrial|{\"type\":\"barren\",\"pal\":[\"#3c3c42\",\"#4a4a50\",\"#58585e\",\"#66666c\",\"#74747"}
+{"pass":true,"case":"gfx 1440x900 gfx field needs fx-2, only fx-1 read: surface gfx is not the protected base"}
+{"pass":true,"case":"gfx 1440x900 gfx field needs fx-2, only fx-1 read: neutral fallback surface"}
+{"pass":true,"case":"gfx 1440x900 gfx field needs fx-2, only fx-1 read: list swatch does not use the protected colour","value":["background:#889"]}
+{"pass":true,"case":"gfx 1440x900 gfx field needs fx-2, only fx-1 read: no page errors","value":[]}
+{"pass":true,"case":"gfx 1440x900 invalid gfx field gate, all fixtures read: surface built","value":"scadrial|{\"type\":\"barren\",\"pal\":[\"#3c3c42\",\"#4a4a50\",\"#58585e\",\"#66666c\",\"#74747"}
+{"pass":true,"case":"gfx 1440x900 invalid gfx field gate, all fixtures read: surface gfx is not the protected base"}
+{"pass":true,"case":"gfx 1440x900 invalid gfx field gate, all fixtures read: neutral fallback surface"}
+{"pass":true,"case":"gfx 1440x900 invalid gfx field gate, all fixtures read: list swatch does not use the protected colour","value":["background:#889"]}
+{"pass":true,"case":"gfx 1440x900 invalid gfx field gate, all fixtures read: no page errors","value":[]}
+{"pass":true,"case":"gfx 1440x900 control: gfx field met (fx-1,fx-2): surface built","value":"scadrial|{\"type\":\"terran\",\"sea\":0.5,\"freq\":1.4,\"rough\":0.6,\"ice\":90,\"pal\":[\"#1a1"}
+{"pass":true,"case":"gfx 1440x900 control: gfx field met (fx-1,fx-2): surface gfx is the protected base"}
+{"pass":true,"case":"gfx 1440x900 control: gfx field met (fx-1,fx-2): list swatch uses the protected colour","value":["background:#ab12cd"]}
+{"pass":true,"case":"gfx 1440x900 control: gfx field met (fx-1,fx-2): no page errors","value":[]}
+{"pass":true,"case":"gfx 1440x900 control: public gfx field: surface built","value":"scadrial|{\"type\":\"terran\",\"sea\":0.5,\"freq\":1.4,\"rough\":0.6,\"ice\":90,\"pal\":[\"#1a1"}
+{"pass":true,"case":"gfx 1440x900 control: public gfx field: surface gfx is the protected base"}
+{"pass":true,"case":"gfx 1440x900 control: public gfx field: list swatch uses the protected colour","value":["background:#ab12cd"]}
+{"pass":true,"case":"gfx 1440x900 control: public gfx field: no page errors","value":[]}
+{"pass":true,"case":"gfx 1440x900 control: absent gfx field gate inherits the visible world: surface built","value":"scadrial|{\"type\":\"terran\",\"sea\":0.5,\"freq\":1.4,\"rough\":0.6,\"ice\":90,\"pal\":[\"#1a1"}
+{"pass":true,"case":"gfx 1440x900 control: absent gfx field gate inherits the visible world: surface gfx is the protected base"}
+{"pass":true,"case":"gfx 1440x900 control: absent gfx field gate inherits the visible world: list swatch uses the protected colour","value":["background:#ab12cd"]}
+{"pass":true,"case":"gfx 1440x900 control: absent gfx field gate inherits the visible world: no page errors","value":[]}
+{"pass":true,"case":"group 1440x900 base name gate needs fx-2, only fx-1: CBR2-SECRET-GROUP absent from DOM"}
+{"pass":true,"case":"group 1440x900 base name gate needs fx-2, only fx-1: neutral group label in the list"}
+{"pass":true,"case":"group 1440x900 base name gate needs fx-2, only fx-1: no page errors","value":[]}
+{"pass":true,"case":"group 1440x900 invalid base name gate, all read: CBR2-SECRET-GROUP absent from DOM"}
+{"pass":true,"case":"group 1440x900 invalid base name gate, all read: neutral group label in the list"}
+{"pass":true,"case":"group 1440x900 invalid base name gate, all read: no page errors","value":[]}
+{"pass":true,"case":"group 1440x900 control: base name gate met: CBR2-SECRET-GROUP shown"}
+{"pass":true,"case":"group 1440x900 control: base name gate met: no page errors","value":[]}
+{"pass":true,"case":"group 1440x900 control: ungated group name: CBR2-SECRET-GROUP shown"}
+{"pass":true,"case":"group 1440x900 control: ungated group name: no page errors","value":[]}
+{"pass":true,"case":"group 1440x900 era record gate fx-2 unmet while bucket 1 read: CBR2-SECRET-GROUPERA absent from DOM"}
+{"pass":true,"case":"group 1440x900 era record gate fx-2 unmet while bucket 1 read: earlier visible base name stays"}
+{"pass":true,"case":"group 1440x900 era record gate fx-2 unmet while bucket 1 read: no page errors","value":[]}
+{"pass":true,"case":"group 1440x900 invalid era record gate, all read: CBR2-SECRET-GROUPERA absent from DOM"}
+{"pass":true,"case":"group 1440x900 invalid era record gate, all read: earlier visible base name stays"}
+{"pass":true,"case":"group 1440x900 invalid era record gate, all read: no page errors","value":[]}
+{"pass":true,"case":"group 1440x900 control: era record gate met: CBR2-SECRET-GROUPERA shown"}
+{"pass":true,"case":"group 1440x900 control: era record gate met: no page errors","value":[]}
+{"pass":true,"case":"gfx 390x844 gfx field needs fx-2, only fx-1 read: surface built","value":"scadrial|{\"type\":\"barren\",\"pal\":[\"#3c3c42\",\"#4a4a50\",\"#58585e\",\"#66666c\",\"#74747"}
+{"pass":true,"case":"gfx 390x844 gfx field needs fx-2, only fx-1 read: surface gfx is not the protected base"}
+{"pass":true,"case":"gfx 390x844 gfx field needs fx-2, only fx-1 read: neutral fallback surface"}
+{"pass":true,"case":"gfx 390x844 gfx field needs fx-2, only fx-1 read: list swatch does not use the protected colour","value":["background:#889"]}
+{"pass":true,"case":"gfx 390x844 gfx field needs fx-2, only fx-1 read: no page errors","value":[]}
+{"pass":true,"case":"gfx 390x844 invalid gfx field gate, all fixtures read: surface built","value":"scadrial|{\"type\":\"barren\",\"pal\":[\"#3c3c42\",\"#4a4a50\",\"#58585e\",\"#66666c\",\"#74747"}
+{"pass":true,"case":"gfx 390x844 invalid gfx field gate, all fixtures read: surface gfx is not the protected base"}
+{"pass":true,"case":"gfx 390x844 invalid gfx field gate, all fixtures read: neutral fallback surface"}
+{"pass":true,"case":"gfx 390x844 invalid gfx field gate, all fixtures read: list swatch does not use the protected colour","value":["background:#889"]}
+{"pass":true,"case":"gfx 390x844 invalid gfx field gate, all fixtures read: no page errors","value":[]}
+{"pass":true,"case":"gfx 390x844 control: gfx field met (fx-1,fx-2): surface built","value":"scadrial|{\"type\":\"terran\",\"sea\":0.5,\"freq\":1.4,\"rough\":0.6,\"ice\":90,\"pal\":[\"#1a1"}
+{"pass":true,"case":"gfx 390x844 control: gfx field met (fx-1,fx-2): surface gfx is the protected base"}
+{"pass":true,"case":"gfx 390x844 control: gfx field met (fx-1,fx-2): list swatch uses the protected colour","value":["background:#ab12cd"]}
+{"pass":true,"case":"gfx 390x844 control: gfx field met (fx-1,fx-2): no page errors","value":[]}
+{"pass":true,"case":"gfx 390x844 control: public gfx field: surface built","value":"scadrial|{\"type\":\"terran\",\"sea\":0.5,\"freq\":1.4,\"rough\":0.6,\"ice\":90,\"pal\":[\"#1a1"}
+{"pass":true,"case":"gfx 390x844 control: public gfx field: surface gfx is the protected base"}
+{"pass":true,"case":"gfx 390x844 control: public gfx field: list swatch uses the protected colour","value":["background:#ab12cd"]}
+{"pass":true,"case":"gfx 390x844 control: public gfx field: no page errors","value":[]}
+{"pass":true,"case":"gfx 390x844 control: absent gfx field gate inherits the visible world: surface built","value":"scadrial|{\"type\":\"terran\",\"sea\":0.5,\"freq\":1.4,\"rough\":0.6,\"ice\":90,\"pal\":[\"#1a1"}
+{"pass":true,"case":"gfx 390x844 control: absent gfx field gate inherits the visible world: surface gfx is the protected base"}
+{"pass":true,"case":"gfx 390x844 control: absent gfx field gate inherits the visible world: list swatch uses the protected colour","value":["background:#ab12cd"]}
+{"pass":true,"case":"gfx 390x844 control: absent gfx field gate inherits the visible world: no page errors","value":[]}
+{"pass":true,"case":"group 390x844 base name gate needs fx-2, only fx-1: CBR2-SECRET-GROUP absent from DOM"}
+{"pass":true,"case":"group 390x844 base name gate needs fx-2, only fx-1: neutral group label in the list"}
+{"pass":true,"case":"group 390x844 base name gate needs fx-2, only fx-1: no page errors","value":[]}
+{"pass":true,"case":"group 390x844 invalid base name gate, all read: CBR2-SECRET-GROUP absent from DOM"}
+{"pass":true,"case":"group 390x844 invalid base name gate, all read: neutral group label in the list"}
+{"pass":true,"case":"group 390x844 invalid base name gate, all read: no page errors","value":[]}
+{"pass":true,"case":"group 390x844 control: base name gate met: CBR2-SECRET-GROUP shown"}
+{"pass":true,"case":"group 390x844 control: base name gate met: no page errors","value":[]}
+{"pass":true,"case":"group 390x844 control: ungated group name: CBR2-SECRET-GROUP shown"}
+{"pass":true,"case":"group 390x844 control: ungated group name: no page errors","value":[]}
+{"pass":true,"case":"group 390x844 era record gate fx-2 unmet while bucket 1 read: CBR2-SECRET-GROUPERA absent from DOM"}
+{"pass":true,"case":"group 390x844 era record gate fx-2 unmet while bucket 1 read: earlier visible base name stays"}
+{"pass":true,"case":"group 390x844 era record gate fx-2 unmet while bucket 1 read: no page errors","value":[]}
+{"pass":true,"case":"group 390x844 invalid era record gate, all read: CBR2-SECRET-GROUPERA absent from DOM"}
+{"pass":true,"case":"group 390x844 invalid era record gate, all read: earlier visible base name stays"}
+{"pass":true,"case":"group 390x844 invalid era record gate, all read: no page errors","value":[]}
+{"pass":true,"case":"group 390x844 control: era record gate met: CBR2-SECRET-GROUPERA shown"}
+{"pass":true,"case":"group 390x844 control: era record gate met: no page errors","value":[]}
+{"pass":80,"total":80}

@@ -1,0 +1,63 @@
+{"tag":"844x390","check":"black hole placed and selected","pass":true,"detail":1}
+{"tag":"844x390","check":"picker reachable by Tab from the inspector","pass":true,"detail":{"tabs":48,"path":["BUTTON","orbit-mode","gravity","pause","clear","bh-reference"]}}
+{"tag":"844x390","check":"focus semantics: focused, :focus-visible with a visible outline, native tab order, labelled \"Read as\"","pass":true,"detail":{"active":true,"focusVisible":true,"outline":"solid 2px rgb(159, 195, 255)","tabIndex":0,"disabled":false,"labelText":"Read as","accessibleLabels":["Read as"],"options":[{"v":"none","hidden":false,"disabled":false},{"v":"small-stellar","hidden":false,"disabled":false},{"v":"large-stellar","hidden":false,"disabled":false},{"v":"intermediate","hidden":false,"disabled":false},{"v":"galactic-core","hidden":false,"disabled":false},{"v":"giant-core","hidden":false,"disabled":false},{"v":"merged","hidden":true,"disabled":true}]}}
+{"tag":"844x390","check":"focused picker fully visible and unobstructed (vertical and horizontal)","pass":true,"detail":{"rect":[614,213,806,237],"clip":[598,120,822,330],"fullyVisible":true,"unobstructed":true}}
+{"tag":"844x390","check":"keyboard ArrowDown selects Large stellar","pass":true,"detail":["none","small-stellar","large-stellar"]}
+{"tag":"844x390","check":"readout after keyboard change ≈ 30 M☉ · horizon radius 89 km","pass":true,"detail":"≈ 30 M☉ · Stellar-mass · horizon radius 89 km (not drawn to scale)"}
+{"tag":"844x390","check":"body reference record set (factor × mass = 30)","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"844x390","check":"physics untouched by keyboard change","pass":true,"detail":""}
+{"tag":"844x390","check":"keyboard walk recorded one undo step per value change","pass":true,"detail":{"undo0":2,"undo":4,"steps":2}}
+{"tag":"844x390","check":"focus stays on picker after change","pass":true,"detail":""}
+{"tag":"844x390","check":"picker still fully visible after change","pass":true,"detail":{"rect":[614,213,806,237],"clip":[598,120,822,330],"fullyVisible":true,"unobstructed":true}}
+{"tag":"844x390","observe":"readout visible without scrolling after keyboard change","value":true,"detail":{"rect":[614,240,806,261],"clip":[598,120,822,330],"fullyVisible":true,"unobstructed":true}}
+{"tag":"844x390","check":"readout fully visible and unobstructed (after at most a nearest-edge panel scroll)","pass":true,"detail":{"rect":[614,240,806,261],"clip":[598,120,822,330],"fullyVisible":true,"unobstructed":true}}
+{"tag":"844x390","check":"picker visible together with the readout","pass":true,"detail":{"rect":[614,213,806,237],"clip":[598,120,822,330],"fullyVisible":true,"unobstructed":true}}
+{"tag":"844x390","check":"no page/console errors","pass":true,"detail":[]}
+{"tag":"667x375","check":"black hole placed and selected","pass":true,"detail":1}
+{"tag":"667x375","check":"compact sheet expanded via keyboard","pass":true,"detail":""}
+{"tag":"667x375","check":"picker reachable by Tab from the inspector","pass":true,"detail":{"tabs":2,"path":["info-expand","info-close","bh-reference"]}}
+{"tag":"667x375","check":"focus semantics: focused, :focus-visible with a visible outline, native tab order, labelled \"Read as\"","pass":true,"detail":{"active":true,"focusVisible":true,"outline":"solid 2px rgb(159, 195, 255)","tabIndex":0,"disabled":false,"labelText":"Read as","accessibleLabels":["Read as"],"options":[{"v":"none","hidden":false,"disabled":false},{"v":"small-stellar","hidden":false,"disabled":false},{"v":"large-stellar","hidden":false,"disabled":false},{"v":"intermediate","hidden":false,"disabled":false},{"v":"galactic-core","hidden":false,"disabled":false},{"v":"giant-core","hidden":false,"disabled":false},{"v":"merged","hidden":true,"disabled":true}]}}
+{"tag":"667x375","check":"focused picker fully visible and unobstructed (vertical and horizontal)","pass":true,"detail":{"rect":[341,250,631,274],"clip":[24,214,644,309],"fullyVisible":true,"unobstructed":true}}
+{"tag":"667x375","check":"keyboard ArrowDown selects Large stellar","pass":true,"detail":["none","small-stellar","large-stellar"]}
+{"tag":"667x375","check":"readout after keyboard change ≈ 30 M☉ · horizon radius 89 km","pass":true,"detail":"≈ 30 M☉ · Stellar-mass · horizon radius 89 km (not drawn to scale)"}
+{"tag":"667x375","check":"body reference record set (factor × mass = 30)","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"667x375","check":"physics untouched by keyboard change","pass":true,"detail":""}
+{"tag":"667x375","check":"keyboard walk recorded one undo step per value change","pass":true,"detail":{"undo0":2,"undo":4,"steps":2}}
+{"tag":"667x375","check":"focus stays on picker after change","pass":true,"detail":""}
+{"tag":"667x375","check":"picker still fully visible after change","pass":true,"detail":{"rect":[341,283,631,307],"clip":[24,247,644,309],"fullyVisible":true,"unobstructed":true}}
+{"tag":"667x375","observe":"readout visible without scrolling after keyboard change","value":false,"detail":{"rect":[341,310,631,335],"clip":[24,247,644,309],"fullyVisible":false,"unobstructed":false}}
+{"tag":"667x375","check":"readout fully visible and unobstructed (after at most a nearest-edge panel scroll)","pass":true,"detail":{"rect":[341,283,631,308],"clip":[24,247,644,309],"fullyVisible":true,"unobstructed":true}}
+{"tag":"667x375","check":"picker visible together with the readout","pass":true,"detail":{"rect":[341,256,631,280],"clip":[24,247,644,309],"fullyVisible":true,"unobstructed":true}}
+{"tag":"667x375","check":"no page/console errors","pass":true,"detail":[]}
+{"tag":"390x844","check":"black hole placed and selected","pass":true,"detail":1}
+{"tag":"390x844","check":"compact sheet expanded via keyboard","pass":true,"detail":""}
+{"tag":"390x844","check":"picker reachable by Tab from the inspector","pass":true,"detail":{"tabs":2,"path":["info-expand","info-close","bh-reference"]}}
+{"tag":"390x844","check":"focus semantics: focused, :focus-visible with a visible outline, native tab order, labelled \"Read as\"","pass":true,"detail":{"active":true,"focusVisible":true,"outline":"solid 2px rgb(159, 195, 255)","tabIndex":0,"disabled":false,"labelText":"Read as","accessibleLabels":["Read as"],"options":[{"v":"none","hidden":false,"disabled":false},{"v":"small-stellar","hidden":false,"disabled":false},{"v":"large-stellar","hidden":false,"disabled":false},{"v":"intermediate","hidden":false,"disabled":false},{"v":"galactic-core","hidden":false,"disabled":false},{"v":"giant-core","hidden":false,"disabled":false},{"v":"merged","hidden":true,"disabled":true}]}}
+{"tag":"390x844","check":"focused picker fully visible and unobstructed (vertical and horizontal)","pass":true,"detail":{"rect":[202,604,365,628],"clip":[12,402,378,778],"fullyVisible":true,"unobstructed":true}}
+{"tag":"390x844","check":"keyboard ArrowDown selects Large stellar","pass":true,"detail":["none","small-stellar","large-stellar"]}
+{"tag":"390x844","check":"readout after keyboard change ≈ 30 M☉ · horizon radius 89 km","pass":true,"detail":"≈ 30 M☉ · Stellar-mass · horizon radius 89 km (not drawn to scale)"}
+{"tag":"390x844","check":"body reference record set (factor × mass = 30)","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"390x844","check":"physics untouched by keyboard change","pass":true,"detail":""}
+{"tag":"390x844","check":"keyboard walk recorded one undo step per value change","pass":true,"detail":{"undo0":2,"undo":4,"steps":2}}
+{"tag":"390x844","check":"focus stays on picker after change","pass":true,"detail":""}
+{"tag":"390x844","check":"picker still fully visible after change","pass":true,"detail":{"rect":[202,578,365,602],"clip":[12,376,378,778],"fullyVisible":true,"unobstructed":true}}
+{"tag":"390x844","observe":"readout visible without scrolling after keyboard change","value":true,"detail":{"rect":[202,605,365,643],"clip":[12,376,378,778],"fullyVisible":true,"unobstructed":true}}
+{"tag":"390x844","check":"readout fully visible and unobstructed (after at most a nearest-edge panel scroll)","pass":true,"detail":{"rect":[202,605,365,643],"clip":[12,376,378,778],"fullyVisible":true,"unobstructed":true}}
+{"tag":"390x844","check":"picker visible together with the readout","pass":true,"detail":{"rect":[202,578,365,602],"clip":[12,376,378,778],"fullyVisible":true,"unobstructed":true}}
+{"tag":"390x844","check":"no page/console errors","pass":true,"detail":[]}
+{"tag":"1440x900","check":"black hole placed and selected","pass":true,"detail":1}
+{"tag":"1440x900","check":"picker reachable by Tab from the inspector","pass":true,"detail":{"tabs":48,"path":["BUTTON","orbit-mode","gravity","pause","clear","bh-reference"]}}
+{"tag":"1440x900","check":"focus semantics: focused, :focus-visible with a visible outline, native tab order, labelled \"Read as\"","pass":true,"detail":{"active":true,"focusVisible":true,"outline":"solid 2px rgb(159, 195, 255)","tabIndex":0,"disabled":false,"labelText":"Read as","accessibleLabels":["Read as"],"options":[{"v":"none","hidden":false,"disabled":false},{"v":"small-stellar","hidden":false,"disabled":false},{"v":"large-stellar","hidden":false,"disabled":false},{"v":"intermediate","hidden":false,"disabled":false},{"v":"galactic-core","hidden":false,"disabled":false},{"v":"giant-core","hidden":false,"disabled":false},{"v":"merged","hidden":true,"disabled":true}]}}
+{"tag":"1440x900","check":"focused picker fully visible and unobstructed (vertical and horizontal)","pass":true,"detail":{"rect":[1210,364,1402,388],"clip":[1194,120,1418,533],"fullyVisible":true,"unobstructed":true}}
+{"tag":"1440x900","check":"keyboard ArrowDown selects Large stellar","pass":true,"detail":["none","small-stellar","large-stellar"]}
+{"tag":"1440x900","check":"readout after keyboard change ≈ 30 M☉ · horizon radius 89 km","pass":true,"detail":"≈ 30 M☉ · Stellar-mass · horizon radius 89 km (not drawn to scale)"}
+{"tag":"1440x900","check":"body reference record set (factor × mass = 30)","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"1440x900","check":"physics untouched by keyboard change","pass":true,"detail":""}
+{"tag":"1440x900","check":"keyboard walk recorded one undo step per value change","pass":true,"detail":{"undo0":2,"undo":4,"steps":2}}
+{"tag":"1440x900","check":"focus stays on picker after change","pass":true,"detail":""}
+{"tag":"1440x900","check":"picker still fully visible after change","pass":true,"detail":{"rect":[1210,364,1402,388],"clip":[1194,120,1418,543],"fullyVisible":true,"unobstructed":true}}
+{"tag":"1440x900","observe":"readout visible without scrolling after keyboard change","value":true,"detail":{"rect":[1210,391,1402,412],"clip":[1194,120,1418,543],"fullyVisible":true,"unobstructed":true}}
+{"tag":"1440x900","check":"readout fully visible and unobstructed (after at most a nearest-edge panel scroll)","pass":true,"detail":{"rect":[1210,391,1402,412],"clip":[1194,120,1418,543],"fullyVisible":true,"unobstructed":true}}
+{"tag":"1440x900","check":"picker visible together with the readout","pass":true,"detail":{"rect":[1210,364,1402,388],"clip":[1194,120,1418,543],"fullyVisible":true,"unobstructed":true}}
+{"tag":"1440x900","check":"no page/console errors","pass":true,"detail":[]}
+{"summary":true,"failed":0}
