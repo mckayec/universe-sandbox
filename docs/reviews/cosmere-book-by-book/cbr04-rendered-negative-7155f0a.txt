@@ -1,0 +1,88 @@
+PASS 1440x900 unread valid gate (fixture req secret-history): Scadrial world view, Cognitive realm
+FAIL 1440x900 unread valid gate (fixture req secret-history): realm card omits world-specific name
+FAIL 1440x900 unread valid gate (fixture req secret-history): material colours generic (313742,dae2eb,060605)
+FAIL 1440x900 unread valid gate (fixture req secret-history): style generic unsea (1)
+PASS 1440x900 unread valid gate (fixture req secret-history): no page errors 
+PASS 1440x900 present-invalid gate (fixture {}): Scadrial world view, Cognitive realm
+FAIL 1440x900 present-invalid gate (fixture {}): realm card omits world-specific name
+FAIL 1440x900 present-invalid gate (fixture {}): material colours generic (313742,dae2eb,060605)
+FAIL 1440x900 present-invalid gate (fixture {}): style generic unsea (1)
+PASS 1440x900 present-invalid gate (fixture {}): no page errors 
+PASS 1440x900 satisfied gate (fixture req warbreaker): Scadrial world view, Cognitive realm
+PASS 1440x900 satisfied gate (fixture req warbreaker): realm card shows world-specific name
+PASS 1440x900 satisfied gate (fixture req warbreaker): material colours world-specific (313742,dae2eb,060605)
+PASS 1440x900 satisfied gate (fixture req warbreaker): style mist (1)
+PASS 1440x900 satisfied gate (fixture req warbreaker): no page errors 
+PASS 1440x900 absent gate (shipped pack): Scadrial world view, Cognitive realm
+PASS 1440x900 absent gate (shipped pack): realm card shows world-specific name
+PASS 1440x900 absent gate (shipped pack): material colours world-specific (313742,dae2eb,060605)
+PASS 1440x900 absent gate (shipped pack): style mist (1)
+PASS 1440x900 absent gate (shipped pack): no page errors 
+PASS 1440x900 legacy book 4 (fixture req secret-history): Scadrial world view, Cognitive realm
+PASS 1440x900 legacy book 4 (fixture req secret-history): realm card shows world-specific name
+PASS 1440x900 legacy book 4 (fixture req secret-history): material colours world-specific (313742,dae2eb,060605)
+PASS 1440x900 legacy book 4 (fixture req secret-history): style mist (1)
+PASS 1440x900 legacy book 4 (fixture req secret-history): no page errors 
+PASS 1440x900 All (fixture req secret-history): Scadrial world view, Cognitive realm
+PASS 1440x900 All (fixture req secret-history): realm card shows world-specific name
+PASS 1440x900 All (fixture req secret-history): material colours world-specific (313742,dae2eb,060605)
+PASS 1440x900 All (fixture req secret-history): style mist (1)
+PASS 1440x900 All (fixture req secret-history): no page errors 
+PASS 1440x900 transition start (allowed): Scadrial world view, Cognitive realm
+PASS 1440x900 transition start (allowed): realm card shows world-specific name
+PASS 1440x900 transition start (allowed): material colours world-specific (313742,dae2eb,060605)
+PASS 1440x900 transition start (allowed): style mist (1)
+PASS 1440x900 transition after untick (denied): Scadrial world view, Cognitive realm
+FAIL 1440x900 transition after untick (denied): realm card omits world-specific name
+FAIL 1440x900 transition after untick (denied): material colours generic (313742,dae2eb,060605)
+FAIL 1440x900 transition after untick (denied): style generic unsea (1)
+PASS 1440x900 transition after re-tick (allowed): Scadrial world view, Cognitive realm
+PASS 1440x900 transition after re-tick (allowed): realm card shows world-specific name
+PASS 1440x900 transition after re-tick (allowed): material colours world-specific (313742,dae2eb,060605)
+PASS 1440x900 transition after re-tick (allowed): style mist (1)
+PASS 1440x900 transition: no page errors 
+PASS 390x844 unread valid gate (fixture req secret-history): Scadrial world view, Cognitive realm
+FAIL 390x844 unread valid gate (fixture req secret-history): realm card omits world-specific name
+FAIL 390x844 unread valid gate (fixture req secret-history): material colours generic (313742,dae2eb,060605)
+FAIL 390x844 unread valid gate (fixture req secret-history): style generic unsea (1)
+PASS 390x844 unread valid gate (fixture req secret-history): no page errors 
+PASS 390x844 present-invalid gate (fixture {}): Scadrial world view, Cognitive realm
+FAIL 390x844 present-invalid gate (fixture {}): realm card omits world-specific name
+FAIL 390x844 present-invalid gate (fixture {}): material colours generic (313742,dae2eb,060605)
+FAIL 390x844 present-invalid gate (fixture {}): style generic unsea (1)
+PASS 390x844 present-invalid gate (fixture {}): no page errors 
+PASS 390x844 satisfied gate (fixture req warbreaker): Scadrial world view, Cognitive realm
+PASS 390x844 satisfied gate (fixture req warbreaker): realm card shows world-specific name
+PASS 390x844 satisfied gate (fixture req warbreaker): material colours world-specific (313742,dae2eb,060605)
+PASS 390x844 satisfied gate (fixture req warbreaker): style mist (1)
+PASS 390x844 satisfied gate (fixture req warbreaker): no page errors 
+PASS 390x844 absent gate (shipped pack): Scadrial world view, Cognitive realm
+PASS 390x844 absent gate (shipped pack): realm card shows world-specific name
+PASS 390x844 absent gate (shipped pack): material colours world-specific (313742,dae2eb,060605)
+PASS 390x844 absent gate (shipped pack): style mist (1)
+PASS 390x844 absent gate (shipped pack): no page errors 
+PASS 390x844 legacy book 4 (fixture req secret-history): Scadrial world view, Cognitive realm
+PASS 390x844 legacy book 4 (fixture req secret-history): realm card shows world-specific name
+PASS 390x844 legacy book 4 (fixture req secret-history): material colours world-specific (313742,dae2eb,060605)
+PASS 390x844 legacy book 4 (fixture req secret-history): style mist (1)
+PASS 390x844 legacy book 4 (fixture req secret-history): no page errors 
+PASS 390x844 All (fixture req secret-history): Scadrial world view, Cognitive realm
+PASS 390x844 All (fixture req secret-history): realm card shows world-specific name
+PASS 390x844 All (fixture req secret-history): material colours world-specific (313742,dae2eb,060605)
+PASS 390x844 All (fixture req secret-history): style mist (1)
+PASS 390x844 All (fixture req secret-history): no page errors 
+PASS 390x844 transition start (allowed): Scadrial world view, Cognitive realm
+PASS 390x844 transition start (allowed): realm card shows world-specific name
+PASS 390x844 transition start (allowed): material colours world-specific (313742,dae2eb,060605)
+PASS 390x844 transition start (allowed): style mist (1)
+PASS 390x844 transition after untick (denied): Scadrial world view, Cognitive realm
+FAIL 390x844 transition after untick (denied): realm card omits world-specific name
+FAIL 390x844 transition after untick (denied): material colours generic (313742,dae2eb,060605)
+FAIL 390x844 transition after untick (denied): style generic unsea (1)
+PASS 390x844 transition after re-tick (allowed): Scadrial world view, Cognitive realm
+PASS 390x844 transition after re-tick (allowed): realm card shows world-specific name
+PASS 390x844 transition after re-tick (allowed): material colours world-specific (313742,dae2eb,060605)
+PASS 390x844 transition after re-tick (allowed): style mist (1)
+PASS 390x844 transition: no page errors 
+RESULT 68/86 pass
+exit 1

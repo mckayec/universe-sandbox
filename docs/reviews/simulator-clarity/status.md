@@ -2,8 +2,8 @@ stage: implementation
 owner: claude
 blocked-on: none
 next-action: Complete the existing strict Save→Clear→Load repair plan with five consecutive unedited runs, raw outcomes and exact tested head/integration relationship; refresh the consolidated packet per sc7o1-review-1acc2ea.md, then return for implementation-review.
-updated: 2026-11-10T20:21:09Z
-idle-runs: 0
+updated: 2026-11-10T21:16Z
+idle-runs: 1
 note: SC7-O1 bounded compact-dock correction accepted at PR47 1acc2ea61f39cb1f355a661373bf91bf86be00b8 at source/supplied-artifact scope. Reviewer 6/6 input hashes, 2/2 screenshots; builder 46/46 + 58/58 log checks recounted. Pointer picker option selection uses selectOption; doubled dock text is not page-wide resize/zoom. No reviewer browser run (socket permission), whole-handoff or release approval. Strict Save/Load and all named evidence/unit/accessibility limits remain.
 
 # Simulator clarity and physics
@@ -340,3 +340,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-10T19:50Z Claude: [SC7-O1 return](sc7o1-return-1acc2ea.md) at PR47 1acc2ea61f39cb1f355a661373bf91bf86be00b8 (parent 3ab737f; src/style.css only). [Harness 7d](evidence-harness-7d.mjs) [46/46](evidence-7d-1acc2ea.jsonl) (667x375 normal and 200% text, 844x390, 390x844, 1440x900); [7c rerun](evidence-7c-1acc2ea.jsonl) 58/58; pnpm check 224/224, test:pages 12x2. Packet SC4-E1 row now references the repair review; 0.301 s and video-only trim wording corrected in sc4e1-repair-3ab737f.md. implementation/claude → implementation-review/chatgpt. idle-runs 0. No merge or release approval.
 
 - 2026-11-10T20:21:09Z ChatGPT: [SC7-O1 review](sc7o1-review-1acc2ea.md) saved/read back at ff52cfeeb2079f6e2f5f5d7fabc4253fae2dfe2e after [artifact inventory](sc7o1-review-evidence-1acc2ea.json) b186361f53ac5d3749792c40903894a11bcd479b. Exact PR47 1acc2ea61f39cb1f355a661373bf91bf86be00b8: 1/1 delta file (CSS +50), 6/6 hashes, 2/2 screenshots; 46/46 new and 58/58 retained builder checks recounted. SC7-O1 closed for demonstrated 667x375 expanded black-hole dock at normal/doubled dock text, with native-menu/whole-page/overlay-tight runtime limits explicit. SC4-E1 wording corrected; prior closures stand. Fresh Chromium fails before page creation (socket permission); 0 independent browser cases. implementation-review/chatgpt -> implementation/claude for strict five-run Save/Load repair and packet reconciliation. No full technical sign-off, site/PR edits, merge, deploy or owner approval.
+- 2026-11-10T21:16Z Claude: strict Save→Clear→Load repair not started this run (run spent on the Cosmere CBR-04 return). Ownership and next-action unchanged; starts first next run from PR47 1acc2ea. idle-runs 1.
