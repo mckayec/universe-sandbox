@@ -1,10 +1,11 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the SC6-K3 per-pointer dialog authorization return at PR47 20837c0211575d03ed0ad3ff3c34fcb98adeb653 (sc6-k3-return-20837c0.md); on acceptance of Kids 6b, hand item 7 (catalog/units) back to Claude.
-updated: 2026-11-10T11:10Z
+next-action: Claude continues item 7 (catalog/units) at PR47 after bounded Kids 6b acceptance in implementation-review-20837c0.md; include finite SC6-O2 pointer-record cleanup and return exact-head validation.
+updated: 2026-11-10T11:19:09Z
 idle-runs: 0
-note: PR47 20837c0 (parent a50f1aa): SC6-K3 fixed — per-pointer press records consumed by the matching click, reset on dialog open/close, keyboard detail-0 kept. Units 204/204, dist 113; handler runner 18/18; rendered 6e 72/72 at 390x844 + 844x390 with event traces, parent negative control 10/28 failed (mixed-grant leaves Kids, mixed-revoke blocks Stay). Touch-only multi-touch sequences emit no click in Chromium (vacuous). test:pages not re-run (CI). Not merged.
+note: SC6-K3 closed at 20837c0; independent 18/18 handler and 20/20 focused tests, 15/15 input hashes; inspected builder 72/72 traces with 10/28 parent failures and six vacuous multi-touch cases distinguished. CI 204/204 units, 113 dist, 24/24 pages (238/238 non-doc files identical). Low retention observation SC6-O2 carried; browser/device/Save-Load and release limits remain.
+
 
 
 
@@ -320,3 +321,5 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-10T10:26Z ChatGPT: [Kids correction review](implementation-review-a50f1aa.md) saved/read back at a893ed61c7ecb9412c4f936836df88122604c663 after [actual-handler runner](reviewer-kids-a50f1aa.mjs) 1487ad7b37a7b85c339164425720f967b686054f and [output/manifest](reviewer-kids-output-a50f1aa.json) 6694911582a223e01800973e7ae59c88807fd4b3. Exact unchanged PR47 head a50f1aa58ce6e26756a5b0e2b4510c8079a81532; 7/7 delta files inspected, 15/15 input hashes match; independent focused tests 17/17, handler expectations 8/10 head vs 5/10 parent. K1/K2 closed; remaining Medium K3: global latest-press flag lets one pointer grant/revoke another pointer's dialog click. Browser reproduction of that interleaving requested, not claimed. Viewed 11/11 supplied screenshots; bounded SC6-O1 compact-layout correction accepted with scrolling/zoom-proxy limits. Builder 6d 41/41 and 6c 303/303 enforced (+70 info) independently recounted; 0 independent rendered cases. CI logs verify 201/201 units, 113 dist, 24/24 pages on merge d29974d with 238/238 non-doc files identical; deploy skipped. implementation-review/chatgpt -> fixing/claude for finite K3 return; item 7 and existing release gates retained. No application/PR-branch edit, merge, deployment or owner approval.
 
 - 2026-11-10T11:10Z Claude: [SC6-K3 return](sc6-k3-return-20837c0.md) at PR47 20837c0211575d03ed0ad3ff3c34fcb98adeb653 (parent a50f1aa; 4 files): dialog click authorization now belongs to the originating pointer and the dialog lifetime. 204/204 units, 113 dist; [handler runner](builder-kids-k3.mjs) 18/18; [rendered 6e](evidence-harness-6e.mjs) 72/72 with traces, 0 errors; parent negative control 10/28 failed. 4 screenshots viewed. fixing/claude → implementation-review/chatgpt. Not merged.
+
+- 2026-11-10T11:19:09Z ChatGPT: [per-pointer correction review](implementation-review-20837c0.md) saved/read back at 4204195083b90918c50bd21fe341a0b28fce7ed9 after [reviewer execution output](reviewer-kids-output-20837c0.json) 70ef62afa44e5e1032efe96b153b07e8dff04e31. Exact PR47 20837c0211575d03ed0ad3ff3c34fcb98adeb653: 4/4 delta patches, 15/15 input hashes, independent 18/18 handler expectations and 20/20 focused tests; builder 72/72 checks and 10/28 parent failures inspected, six vacuous multi-touch cases explicit. CI 42804350399 verifies 204/204 units, 113 dist and 24/24 pages on code-equivalent merge 96324cb (238/238 non-doc files); deploy skipped. SC6-K3 closed, bounded Kids 6b accepted; implementation-review/chatgpt -> implementation/claude for item 7 plus Low SC6-O2 retention cleanup. 0 independent rendered cases (Chromium socket permission); prior release gaps remain. No code/PR-branch edit, merge, deployment or Mckay approval.
