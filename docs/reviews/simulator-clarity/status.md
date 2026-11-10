@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude addresses SC7-C1 (visible source/uncertainty context) and SC7-C2 (explicit radius labels) per implementation-review-07464c3.md, returns exact-head markup/keyboard/three-viewport evidence, then continues bounded 7b unit mapping and per-body reference scale.
-updated: 2026-11-10T12:30:01Z
+next-action: ChatGPT reviews SC7-C1/C2 corrections at PR47 660cfaf36d838d35dc2aae0f0ed99bb16907b324 per sc7-c-return-660cfaf.md; on acceptance hand back to Claude for 7b (unit mapping, per-body reference scale).
+updated: 2026-11-10T13:05Z
 idle-runs: 0
-note: 7a reviewed at 07464c3: 1 Medium + 1 Low presentation finding; SC6-O2 closed. Independent 30/30 focused tests, 18/18 adapted handler checks, 25/25 input hashes; 6/6 cited masses checked, 3/3 screenshots viewed. CI 214/214 units, 113 dist, 24/24 pages on code-equivalent merge (241/241 files). 7b and existing Save/Load, device/GPU/accessibility/release limits remain; no release approval.
+note: SC7-C1/C2 returned at 660cfaf (parent 07464c3; 4 files): 5/5 displayed examples show source link + qualification (GW190521 2020 quasi-circular median/90% +28/−16; Gaia dormant), rows/caveat say radii. 215/215 units, 113 dist, 24/24 pages, rendered 73/73 at 3 viewports, 0 errors. 7b, Save/Load, device/GPU/accessibility/release limits remain; no release approval.
 
 
 
@@ -326,3 +326,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-10T12:07Z Claude: [item 7a return](item-7a-return-07464c3.md) at PR47 07464c3c379aa0632fcc8526a39983a391c20e2a (parent 20837c0; 11 files): black-hole reference catalog and honest model-unit labels, plus SC6-O2 pointer-record bounds. 214/214 units, 113 dist, 24/24 pages; [rendered 7a](evidence-harness-7a.mjs) 40/40 at 1440x900, 390x844, 844x390, 0 errors. 7b (per-body reference scale + unit mapping) and an M⊕ label on other bodies listed as Known gaps. implementation/claude → implementation-review/chatgpt. Not merged.
 
 - 2026-11-10T12:30:01Z ChatGPT: [item-7a review](implementation-review-07464c3.md) saved/read back at d2f09ebbd7162cbfdfea825213cd0289c423041a after [independent output/manifest](reviewer-catalog-output-07464c3.json) 022cd10796378f292540adbd9cdaa17ddbd8b1da. Exact unchanged PR47 07464c3c379aa0632fcc8526a39983a391c20e2a: 11/11 delta files inspected, 25/25 input hashes, 30/30 focused tests, 18/18 adapted actual-handler expectations. SC6-O2 closed. SC7-C1 Medium: 0/5 displayed examples retain stored status/source links; SC7-C2 Low: model radii labelled only horizon/shadow. Opened 6/6 mass citations and formula references; viewed 3/3 supplied screenshots; builder 40/40 rendered checks inspected and attributed. CI 42812892748 verifies 214/214 units, 113 dist, 24/24 pages on merge 57edda2 (241/241 non-doc files identical); deploy skipped. 0 independent rendered cases (Chromium socket permission). implementation-review/chatgpt -> fixing/claude for finite presentation corrections, then 7b. All 18/18 pack and 8/8 review statuses checked; three parallel self-audit folders unchanged. Prior SC1-E1/SC4-E1 and Save/Load/device/accessibility/release gaps retained. No site/PR-branch edit, merge, deployment or Mckay approval.
+- 2026-11-10T13:05Z Claude: [SC7-C1/C2 return](sc7-c-return-660cfaf.md) at PR47 660cfaf36d838d35dc2aae0f0ed99bb16907b324 (parent 07464c3; 4 files): example source links + qualifications through the actual markup path, radius wording. 215/215 units, 113 dist, 24/24 pages; [rendered](evidence-harness-7a2.mjs) 73/73 at 1440x900, 390x844, 844x390, 0 errors (keyboard summary/link, overflow, hiding). fixing/claude → implementation-review/chatgpt. 7b next with Claude. Not merged.
