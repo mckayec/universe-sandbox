@@ -41,7 +41,20 @@
       const bucket = w.bucket === undefined ? null : w.bucket;
       if (bucket !== null && !(Number.isInteger(bucket) && bucket > 0))
         errors.push('work ' + w.id + ' has an invalid bucket');
-      works.set(w.id, { id: w.id, title: String(w.title || w.id), y: w.y, pub: w.pub, bucket: bucket });
+      /* `y` (publication year) and `yNote` (a qualifier such as "catalogue listing") are display metadata only:
+         they never gate anything. A missing or non-integer `y` shows as an unverified year. */
+      const y = Number.isInteger(w.y) && w.y > 0 ? w.y : null;
+      if (w.y !== undefined && y === null) errors.push('work ' + w.id + ' has an invalid year');
+      if (w.yNote !== undefined && (typeof w.yNote !== 'string' || !w.yNote || y === null))
+        errors.push('work ' + w.id + ' has an invalid yNote');
+      works.set(w.id, {
+        id: w.id,
+        title: String(w.title || w.id),
+        y: y,
+        yNote: y !== null && typeof w.yNote === 'string' ? w.yNote : '',
+        pub: w.pub,
+        bucket: bucket,
+      });
       order.push(w.id);
     });
 
@@ -364,6 +377,12 @@
   }
 
   /* What the bar shows: a label and the actual selected works (titles in registry order). */
+  /* Year label for a work in the checklist: "2005", "2026, catalogue listing", or "publication year unverified". */
+  function yearLabel(w) {
+    if (!w || w.y == null) return 'publication year unverified';
+    return w.yNote ? w.y + ', ' + w.yNote : String(w.y);
+  }
+
   function describe(state, reg, bookTitle) {
     if (!state || state.mode === 'all') return { kind: 'all', label: 'All books', works: [] };
     if (state.mode === 'safe')
@@ -414,5 +433,6 @@
     toggleWork: toggleWork,
     choosePreset: choosePreset,
     describe: describe,
+    yearLabel: yearLabel,
   };
 })(typeof window !== 'undefined' ? window : this);

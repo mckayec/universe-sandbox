@@ -236,7 +236,54 @@
       11: {n: "XI", title: "Tress, Yumi & The Sunlit Man", y: 2023, c: BOOKC[11]},
       12: {n: "XII", title: "Wind and Truth, Isles of the Emberdark & The Fires of December", y: 2024, c: BOOKC[12]}
     },
-    spoilers: {mode: "cumulative"},
+    /* Per-work reading registry (COS-BB-001, D08 option c). Rows, years, buckets and presets come from ChatGPT's
+       R-A bibliography handoff (docs/reviews/cosmere-book-by-book/bibliography-handoff-2026-11-10.md). Bucket = the
+       numeric book key above (a conservative routing decision, not a claim that every record's content occurs in
+       every member). No `y`: publication year held (SEL02, TA04). FD01's 2026 is a catalogue listing only. IDs are
+       permanent: never rename them (saved reading links use them). Presets are frozen per version. */
+    spoilers: {
+      mode: "cumulative",
+      works: [
+        {id: "elantris", title: "Elantris", y: 2005, bucket: 1},
+        {id: "mistborn-the-final-empire", title: "Mistborn: The Final Empire", y: 2006, bucket: 2},
+        {id: "mistborn-the-well-of-ascension", title: "The Well of Ascension", y: 2007, bucket: 2},
+        {id: "mistborn-the-hero-of-ages", title: "The Hero of Ages", y: 2008, bucket: 2},
+        {id: "warbreaker", title: "Warbreaker", y: 2009, bucket: 3},
+        {id: "the-way-of-kings", title: "The Way of Kings", y: 2010, bucket: 4},
+        {id: "words-of-radiance", title: "Words of Radiance", y: 2014, bucket: 5},
+        {id: "the-alloy-of-law", title: "The Alloy of Law", y: 2011, bucket: 6},
+        {id: "shadows-of-self", title: "Shadows of Self", y: 2015, bucket: 6},
+        {id: "the-bands-of-mourning", title: "The Bands of Mourning", y: 2016, bucket: 6},
+        {id: "the-hope-of-elantris", title: "The Hope of Elantris", bucket: 7},
+        {id: "the-emperors-soul", title: "The Emperor’s Soul", y: 2012, bucket: 7},
+        {id: "the-eleventh-metal", title: "The Eleventh Metal", y: 2011, bucket: 7},
+        {id: "allomancer-jak-and-the-pits-of-eltania", title: "Allomancer Jak and the Pits of Eltania, Episodes 28 through 30", y: 2014, bucket: 7},
+        {id: "mistborn-secret-history", title: "Mistborn: Secret History", y: 2016, bucket: 7},
+        {id: "edgedancer", title: "Edgedancer", y: 2016, bucket: 7},
+        {id: "white-sand-volume-1", title: "White Sand — Volume 1", y: 2016, bucket: 7},
+        {id: "white-sand-volume-2", title: "White Sand — Volume 2", y: 2018, bucket: 7},
+        {id: "white-sand-volume-3", title: "White Sand — Volume 3", y: 2019, bucket: 7},
+        {id: "white-sand-omnibus", title: "White Sand omnibus — revisions and additions", bucket: 7},
+        {id: "shadows-for-silence-in-the-forests-of-hell", title: "Shadows for Silence in the Forests of Hell", y: 2013, bucket: 7},
+        {id: "sixth-of-the-dusk", title: "Sixth of the Dusk", y: 2014, bucket: 7},
+        {id: "arcanum-unbounded-system-essays-and-maps", title: "Arcanum Unbounded — system essays and maps", y: 2016, bucket: 7},
+        {id: "oathbringer", title: "Oathbringer", y: 2017, bucket: 8},
+        {id: "dawnshard", title: "Dawnshard", y: 2020, bucket: 8},
+        {id: "rhythm-of-war", title: "Rhythm of War", y: 2020, bucket: 9},
+        {id: "the-lost-metal", title: "The Lost Metal", y: 2022, bucket: 10},
+        {id: "tress-of-the-emerald-sea", title: "Tress of the Emerald Sea", y: 2023, bucket: 11},
+        {id: "yumi-and-the-nightmare-painter", title: "Yumi and the Nightmare Painter", y: 2023, bucket: 11},
+        {id: "the-sunlit-man", title: "The Sunlit Man", y: 2023, bucket: 11},
+        {id: "wind-and-truth", title: "Wind and Truth", y: 2024, bucket: 12},
+        {id: "isles-of-the-emberdark", title: "Isles of the Emberdark", y: 2025, bucket: 12},
+        {id: "the-fires-of-december", title: "The Fires of December", y: 2026, yNote: "catalogue listing", bucket: 12}
+      ],
+      presets: [
+        {id: "mistborn-original-trilogy", label: "Original Mistborn trilogy (3 books)", versions: [{v: 1, seq: ["mistborn-the-final-empire", "mistborn-the-well-of-ascension", "mistborn-the-hero-of-ages"]}]},
+        {id: "mistborn-wax-and-wayne", label: "Wax and Wayne (4 books)", versions: [{v: 1, seq: ["the-alloy-of-law", "shadows-of-self", "the-bands-of-mourning", "the-lost-metal"]}]},
+        {id: "stormlight-with-novellas", label: "Stormlight Archive with novellas (7 works)", versions: [{v: 1, seq: ["the-way-of-kings", "words-of-radiance", "edgedancer", "oathbringer", "dawnshard", "rhythm-of-war", "wind-and-truth"]}]}
+      ]
+    },
 
     ui: {
       indexTitle: "Worlds of the Cosmere",
@@ -694,13 +741,13 @@
       {id: "e4", book: 1, world: "sel", site: "chasm", title: "The land is part of the writing", text: "Raoden works out that the Aons echo the shape of the land. The Chasm broke them, and one more line fixes them."},
       {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
       /* II Mistborn */
-      {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "The crew", text: "Kelsier gathers thieves for an impossible job and finds Vin, a street girl who is secretly Mistborn."},
+      {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.", gate: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
       {id: "e7", book: 2, world: "scadrial", site: "hathsin", title: "The survivor of Hathsin", text: "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."},
       {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", title: "The Lord Ruler falls", text: "Vin finds his weakness and kills the immortal emperor in his palace."},
       {id: "e9", book: 2, world: "scadrial", site: "luthadel", title: "Siege of Luthadel", text: "Elend Venture tries to rule a free city while three armies camp outside the walls."},
       {id: "e10", book: 2, world: "scadrial", site: "well", title: "The Well of Ascension", text: "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."},
       {id: "e11", book: 2, world: "scadrial", site: "fadrex", title: "Fadrex and the caches", text: "Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart."},
-      {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed takes up both Shards and remakes the world, ending the ash and the mists."},
+      {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed ascends and remakes the world.", gate: {in: ["mistborn-the-hero-of-ages"], req: "mistborn-the-hero-of-ages"}},
       /* III Warbreaker */
       {id: "e13", book: 3, world: "nalthis", site: "courtofgods", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
       {id: "e14", book: 3, world: "nalthis", site: "ttelir", title: "Vivenna in the city", text: "Her sister comes after her, falls in with mercenaries and learns what the city really is."},

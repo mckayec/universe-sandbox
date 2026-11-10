@@ -38,7 +38,9 @@
         byBucket.set(key, g);
         groups.push(g);
       }
-      byBucket.get(key).works.push({ id: id, title: w.title, checked: !!perWork && rs.has(id) });
+      byBucket
+        .get(key)
+        .works.push({ id: id, title: w.title, year: R.yearLabel(w), checked: !!perWork && rs.has(id) });
     });
     const presets = Array.from(reg.presets.values()).map((p) => ({
       id: p.id,
@@ -135,7 +137,9 @@
                   (w.checked ? ' checked' : '') +
                   '><span>' +
                   esc(w.title) +
-                  '</span></label></li>',
+                  ' <small class="rd-y">(' +
+                  esc(w.year) +
+                  ')</small></span></label></li>',
               )
               .join('') +
             '</ul></li>',
