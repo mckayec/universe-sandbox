@@ -2,6 +2,7 @@ import './style.css';
 import './ui/template.ts';
 import { bindPointerEvents } from './ui/pointer.ts';
 import { bindToolbar } from './ui/toolbar.ts';
+import { bindKidsMode } from './ui/kids.ts';
 import * as THREE from 'three';
 import { saveRecoverySnapshot } from './sandbox-state.ts';
 import { animate, bindFrameTimingReset } from './app/loop.ts';
@@ -21,6 +22,7 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator)
 
 bindPointerEvents();
 bindToolbar();
+bindKidsMode();
 bindFrameTimingReset();
 installTestProbe();
 setInteractionMode(true);

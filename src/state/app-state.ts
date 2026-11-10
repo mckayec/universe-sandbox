@@ -55,6 +55,12 @@ export const app = {
   realismMode: preferences.realism as RealismMode,
   effectsMode: preferences.effects as EffectsMode,
   feedbackMode: preferences.feedback as FeedbackMode,
+  /** Kids mode (item 6b): reduced controls; not saved into preferences, so adult settings are untouched. */
+  kidsMode: false,
+  /** Kids mode: Add is armed for exactly one placement. */
+  kidsArmed: false,
+  /** The adult interaction state to restore when a grown-up leaves Kids mode. */
+  kidsRestore: null as null | { placementMode: boolean; navigationMode: boolean; builder: PlacementBuilder },
   /** Compact (≤800px) layout, as last applied to canvas label text; the loop refreshes labels when it flips. */
   compactLabels: matchMedia('(max-width: 800px)').matches,
   historySuspended: false,

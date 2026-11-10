@@ -148,7 +148,7 @@ test('SC6-T1 audit: simulation-raised banners outside museumEvent respect quiet'
     feed.indexOf('export function simulationToast'),
     feed.indexOf('export function renderExhibitEvents'),
   );
-  assert.ok(helper.includes("presentEvent('simulation', app.feedbackMode).banner"));
+  assert.ok(helper.includes("presentEvent('simulation', feedbackNow()).banner"));
   for (const file of ['src/physics/collisions.ts', 'src/physics/tidal-disruption.ts']) {
     const src = readFileSync(file, 'utf8');
     assert.ok(src.includes('simulationToast('), `${file} uses simulationToast`);

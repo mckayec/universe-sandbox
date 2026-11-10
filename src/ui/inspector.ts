@@ -1,4 +1,5 @@
 // Selected-object panel, object menu, locks and orbit-nearest.
+import { objectMenuAllowed } from '../kids-mode.ts';
 import * as THREE from 'three';
 import { nextStellarStep, stellarTrackLabel } from '../simulation-model.ts';
 import { orbitalSpeed } from '../physics-continuity.ts';
@@ -197,6 +198,8 @@ export function refreshObjectMenu() {
     .forEach(x => x.classList.toggle('active', x.dataset.change === b.kind));
 }
 export function openObjectMenu(b: Body, x: number, y: number) {
+  // Change / remove are adult tools: long-press and right-click do not open them in Kids mode.
+  if (!objectMenuAllowed(app.kidsMode)) return;
   select(b);
   app.menuBody = b;
   refreshObjectMenu();

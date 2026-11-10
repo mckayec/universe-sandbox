@@ -9,6 +9,11 @@ import type { Body, ExhibitEvent } from '../state/types.ts';
 import { setSimulationSpeed } from './controls.ts';
 import { detailsAfterSelect, narrationAllowed, presentEvent, recordEvent, type EventOrigin } from '../feedback.ts';
 import { loadExhibit, showGuide } from './exhibit-flow.ts';
+import { effectiveFeedbackMode, idleDemoAllowed } from '../kids-mode.ts';
+/** Presentation mode in force: Kids mode is always quiet without changing the adult preference. */
+export function feedbackNow() {
+  return effectiveFeedbackMode(app.feedbackMode, app.kidsMode);
+}
 import { updateInspector } from './inspector.ts';
 
 export const narrationFacts = [
@@ -20,7 +25,7 @@ export const narrationFacts = [
   "Inside a Roche limit, the pull on a world's near side outruns its own gravity, and it is torn into a stream of debris.",
 ];
 export function showNarration() {
-  if (!narrationAllowed(app.feedbackMode, preferences.narration)) return;
+  if (!narrationAllowed(feedbackNow(), preferences.narration)) return;
   const card = document.querySelector<HTMLElement>('#narration-card')!;
   document.querySelector('#narration-copy')!.textContent = narrationFacts[app.narrationIndex % narrationFacts.length];
   card.hidden = false;
@@ -102,6 +107,10 @@ export function updateAttractMode(dt: number) {
     if (app.attractTimer > 48) startAttractMode();
     return;
   }
+  if (!idleDemoAllowed(app.kidsMode)) {
+    app.idleSeconds = 0;
+    return;
+  }
   app.idleSeconds += dt;
   if (reducedMotion.matches || app.idleSeconds <= 120) return;
   const pickerOpen =
@@ -118,7 +127,7 @@ export function toast(msg: string) {
 }
 /** A banner the simulation raises on its own (not a museumEvent): quiet mode drops it. */
 export function simulationToast(msg: string) {
-  if (presentEvent('simulation', app.feedbackMode).banner) toast(msg);
+  if (presentEvent('simulation', feedbackNow()).banner) toast(msg);
 }
 export function renderExhibitEvents() {
   const root = document.querySelector<HTMLElement>('#event-items')!;
@@ -155,7 +164,7 @@ export function museumEvent(
   if (body) body.lastEvent = `${title}: ${detail}`;
   renderExhibitEvents();
   if (app.selectedBody === body) updateInspector();
-  const shown = presentEvent(origin, app.feedbackMode);
+  const shown = presentEvent(origin, feedbackNow());
   if (shown.banner) toast(title);
   if (!shown.sound) return;
   const normalized = title.toLowerCase(),

@@ -1929,7 +1929,8 @@ dd {
     min-height: 40px;
     padding: 0 12px;
   }
-  .guide-card:not([hidden]) ~ .event-feed {
+  /* The compact timeline strip shares the overlay band: it steps aside while any overlay card is showing. */
+  .overlay-stack:has(> :not([hidden])) ~ .event-feed {
     display: none;
   }
   .attract-badge {
@@ -2278,4 +2279,199 @@ dd {
 .label-layer.compact-labels .object-label span,
 .label-layer.compact-labels .object-label em {
   display: none;
+}
+
+/* SC6-O1: the guide card, demo badge, narration, science legend and navigation help share one flow stack, so
+   they never overlap however their text wraps. The stack itself ignores the pointer; the guide card does not. */
+.overlay-stack {
+  position: absolute;
+  z-index: 12;
+  top: 120px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.overlay-stack > .guide-card,
+.overlay-stack > .science-legend,
+.overlay-stack > .navigation-help {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+}
+.overlay-stack > .science-legend {
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc(100vw - 580px);
+}
+.overlay-stack > .attract-badge {
+  top: -42px;
+}
+.overlay-stack > .narration-card {
+  top: 6px;
+}
+@media (max-width: 800px) {
+  .overlay-stack {
+    top: calc(max(10px, var(--safe-top)) + 102px);
+    left: max(12px, var(--safe-left));
+    right: calc(max(12px, var(--safe-right)) + 96px);
+    align-items: stretch;
+    gap: 6px;
+  }
+  .overlay-stack > .guide-card,
+  .overlay-stack > .attract-badge,
+  .overlay-stack > .narration-card,
+  .overlay-stack > .science-legend,
+  .overlay-stack > .navigation-help {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+  .overlay-stack > .guide-card > div {
+    flex-wrap: wrap;
+  }
+  /* Long objectives (or 200% text) scroll inside the card instead of pushing the stack over the dock. */
+  .overlay-stack > .guide-card > p {
+    max-height: 30vh;
+    max-height: 30dvh;
+    overflow-y: auto;
+  }
+}
+
+/* Short desktop windows (or 200% zoom): the timeline would sit under the guide card, so it steps aside. */
+@media (min-width: 801px) and (max-height: 560px) {
+  .overlay-stack:has(> .guide-card:not([hidden])) ~ .event-feed {
+    display: none;
+  }
+}
+/* Very narrow views (small phones, or 200% zoom): the stack drops below the zoom buttons and uses the full width. */
+@media (max-width: 360px) {
+  .overlay-stack {
+    top: calc(max(10px, var(--safe-top)) + 196px);
+    right: max(12px, var(--safe-right));
+  }
+}
+
+/* Kids mode (item 6b): four large controls and a small grown-up exit. Adult controls are also gated in JS. */
+.kids-bar {
+  position: absolute;
+  z-index: 13;
+  left: 50%;
+  bottom: max(14px, var(--safe-bottom));
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  max-width: calc(100vw - 24px);
+  padding: 10px;
+  transform: translateX(-50%);
+  border: 1px solid #5c6b8866;
+  border-radius: 22px;
+  background: #0b1222eb;
+  box-shadow: 0 16px 45px #0009;
+  backdrop-filter: blur(12px);
+}
+.kids-bar[hidden] {
+  display: none;
+}
+.kids-bar button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 76px;
+  min-height: 68px;
+  padding: 6px 10px;
+  color: #e9efff;
+  border: 1px solid #5c6b8888;
+  border-radius: 16px;
+  background: #151d2c;
+  font:
+    600 15px system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+.kids-bar button b {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+}
+.kids-bar button.active {
+  border-color: #9bb7ff;
+  background: #2a4a8a;
+}
+.kids-bar button:focus-visible,
+.kids-dialog button:focus-visible {
+  outline: 3px solid #ffd36b;
+  outline-offset: 2px;
+}
+.kids-bar .kids-grownups {
+  align-self: center;
+  min-width: 0;
+  min-height: 44px;
+  color: #8c9ab6;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+}
+.kids-mode .universe-toolbar,
+.kids-mode .tool-panel,
+.kids-mode .zoom-controls,
+.kids-mode .speed,
+.kids-mode .event-feed,
+.kids-mode .guide-card,
+.kids-mode .topbar button,
+.kids-mode .info-panel button,
+.kids-mode .perf-badge,
+.kids-mode .readout {
+  display: none !important;
+}
+.kids-dialog {
+  max-width: min(440px, calc(100vw - 32px));
+}
+.kids-dialog-copy {
+  margin: 10px 0 16px;
+  color: #b8c4dc;
+  font:
+    14px/1.5 system-ui,
+    sans-serif;
+}
+.kids-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.kids-dialog-actions button {
+  flex: 1 1 160px;
+  min-height: 48px;
+  padding: 0 14px;
+  color: #e9efff;
+  border: 1px solid #5c6b8888;
+  border-radius: 12px;
+  background: #151d2c;
+  font:
+    600 14px system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .kids-mode .dock {
+    bottom: calc(max(14px, var(--safe-bottom)) + 100px);
+  }
+  .kids-bar {
+    gap: 6px;
+    padding: 8px;
+  }
+  .kids-bar button {
+    min-width: 64px;
+    min-height: 64px;
+  }
 }
