@@ -1,10 +1,11 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews the CBR-02 residual return at PR48 b965d1726c48288d2b91016ac173db1190811e70 (cbr02-residual-return-b965d17.md); on infrastructure acceptance, hand the key-2 then key-12 real mapping continuation to Claude.
-updated: 2026-11-10T11:24Z
+next-action: Claude resumes key-2 then key-12 mapping continuation per implementation-review-b965d17.md: reconcile PR48's older pack with latest PR24/PR37/main, inventory exact-head fields/ancestors, apply only source-supported mappings and return missing research inventory to ChatGPT.
+updated: 2026-11-10T11:23:30Z
 idle-runs: 0
-note: PR48 b965d17 (parent 6d36f0c): base gfx obeys gates.gfx (neutral barren surface + swatch, baseGfx for direct consumers); group record policy (ungated = public container, explicit gate compiled), base names obey gates.name, group eras respect explicit era gates. Units 145/145, dist 115, pages 24/24; reviewer selector rerun 12/14 (2 = explicit neutral fallback); rendered 80/80 at 1440x900 + 390x844, parent negative control 24/80 fail on exactly the protected cases. Not merged.
+note: CBR-02 residuals closed at b965d17; bounded infrastructure accepted. Independent selectors 14/14 head vs 8/14 parent, focused tests 27/27, input hashes 8/8; builder rendered 80/80 vs 56/80 parent inspected. CI 145/145 units, 115 dist, 24/24 pages on code-equivalent merge (224/224 files). Real mappings and 0/33 full-book approvals remain incomplete; CBR-O1 public-only crumb override documentation carried. Not release approval.
+
 
 # Cosmere book-by-book review
 
@@ -45,3 +46,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-10T10:20Z ChatGPT: [correction review](implementation-review-6d36f0c.md) saved/read back at 854a5876f5b35b42f15060642e9566dbf0806cca after [selector runner](reviewer-fields-6d36f0c.mjs) 72f341faee84489ee037b469f839cf5a563bf8db and [output](reviewer-fields-output-6d36f0c.json) 346e35702ae3a49785e7accbaaa6b2403a9e087a. Exact PR48 head 6d36f0c4afc2c2c2c9f7cbf860226112338eb235; 7/7 incremental patches read, 8/8 input hashes match; independent tests 25/25. CBR-01/03 closed at source/controller scope. CBR-02 original era blurb/facts fixed, but six failed expectations in 14-case actual-selector probe expose remaining base-gfx and group-name/era-record gate bypasses (Medium); finite correction return required. Recounted builder 138/138 CBR/pending checks; 0 independent rendered cases, Chromium exit 134 socket permission. implementation-review/chatgpt -> fixing/claude. Read 18/18 pack and 8/8 review statuses; no stale parallel self-audit; 0/33 full-book audits approved. No app/PR-branch edit, merge, deploy or owner approval.
 
 - 2026-11-10T11:24Z Claude: [CBR-02 residual return](cbr02-residual-return-b965d17.md) at PR48 b965d1726c48288d2b91016ac173db1190811e70 (parent 6d36f0c; 3 files): base gfx and group-name gate bypasses closed with a documented group record policy. 145/145 units, 115 dist, 24/24 pages; [rendered probe](cbr02-residual-probe.mjs) 80/80, parent negative control 24/80 fail. fixing/claude → implementation-review/chatgpt. Not merged.
+
+- 2026-11-10T11:23:30Z ChatGPT: [CBR-02 residual review](implementation-review-b965d17.md) saved/read back at 77f71250bb4f675b3442e67ad61a75a7acecf521 after [reviewer selector](reviewer-fields-b965d17.mjs) 4f5f3ba07d107f1dc5f5351b3678b8e4cbd2c7f6 and [head/parent output](reviewer-fields-output-b965d17.json) 7e62b99e13c6a9beb7ecc72c740bc7ce236c934d. Exact PR48 b965d1726c48288d2b91016ac173db1190811e70; 3/3 delta patches, 8/8 input hashes, independent selectors 14/14 head vs 8/14 parent and focused tests 27/27. Both CBR-02 residuals close; CBR-01/03 stand. Builder 80/80 rendered checks vs 56/80 parent independently inspected, not reviewer browser execution. CI 42805064886 verifies 145/145 units, 115 dist, 24/24 pages; merge 032e210 has 224/224 non-doc files identical; deploy skipped. implementation-review/chatgpt -> implementation/claude for key-2 then key-12 mapping continuation, with mandatory older-pack reconciliation and explicit source/ancestor holds (existing key-2 packet only 1/14 events). Low CBR-O1 configuration-label documentation carried. 0/33 full-book approvals; 0 independent rendered cases (Chromium socket permission). No application/PR-branch edit, merge, deployment or Mckay approval.
