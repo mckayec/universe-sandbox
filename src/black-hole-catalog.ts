@@ -50,6 +50,8 @@ export type BlackHoleExample = {
   solarMasses: number;
   /** How the number should be read: rounding, uncertainty, model dependence. */
   status: string;
+  /** Compact visitor-facing qualification shown next to the example in the reference block. */
+  note: string;
   /** Observed context; disks and jets are only described where the source supports them. */
   context: string;
   source: string;
@@ -60,6 +62,7 @@ export const BLACK_HOLE_EXAMPLES: readonly BlackHoleExample[] = [
     name: 'Cygnus X-1',
     solarMasses: 21,
     status: 'Rounded NASA value, not an exact measured mass',
+    note: 'Rounded estimate · accreting X-ray binary',
     context: 'Accreting X-ray binary; no measured disk outer size',
     source: 'https://www.nasa.gov/universe/nasas-ixpe-reveals-shape-orientation-of-hot-matter-around-black-hole/',
   },
@@ -67,13 +70,16 @@ export const BLACK_HOLE_EXAMPLES: readonly BlackHoleExample[] = [
     name: 'Gaia BH3',
     solarMasses: 33,
     status: 'Rounded ESA reference value; observed estimates have uncertainty',
+    note: 'Rounded estimate · dormant, no bright disk (unlike the illustrative disk shown here)',
     context: 'Dormant: no bright disk',
     source: 'https://www.esa.int/ESA_Multimedia/Images/2024/04/Gaia_black_holes',
   },
   {
     name: 'GW190521 remnant',
     solarMasses: 142,
-    status: 'Model-dependent gravitational-wave inference; 90% interval +28/−16 M☉',
+    status:
+      'Model-dependent gravitational-wave inference (original 2020 quasi-circular interpretation): source-frame median, 90% credible interval +28/−16 M☉',
+    note: 'Original 2020 quasi-circular merger model: source-frame median, 90% range +28/−16 M☉',
     context: 'Merger remnant; no measured disk or jet',
     source: 'https://dcc.ligo.org/public/0165/P2000021/012/gw190521-implications-main_20200901.pdf',
   },
@@ -81,6 +87,7 @@ export const BLACK_HOLE_EXAMPLES: readonly BlackHoleExample[] = [
     name: 'HLX-1',
     solarMasses: 20_000,
     status: 'Representative NASA estimate; uncertain',
+    note: 'Uncertain estimate · candidate',
     context: 'Candidate accreting object; any disk shown is illustrative',
     source: 'https://science.nasa.gov/missions/hubble/nasas-hubble-spots-a-relic-from-a-shredded-galaxy/',
   },
@@ -88,6 +95,7 @@ export const BLACK_HOLE_EXAMPLES: readonly BlackHoleExample[] = [
     name: 'Sagittarius A*',
     solarMasses: 4_000_000,
     status: 'Rounded NASA reference value; precise estimates differ',
+    note: 'Rounded estimate; precise values differ',
     context: 'Low accretion activity',
     source: 'https://science.nasa.gov/universe/black-holes/types/',
   },
@@ -95,6 +103,7 @@ export const BLACK_HOLE_EXAMPLES: readonly BlackHoleExample[] = [
     name: 'M87*',
     solarMasses: 6_500_000_000,
     status: 'Rounded EHT/NASA estimate; uncertainty is not zero',
+    note: 'Rounded estimate · accretion and jet',
     context: 'Accretion and jet; disk size not inferable from mass',
     source:
       'https://www.jpl.nasa.gov/edu/resources/teachable-moment/how-scientists-captured-the-first-image-of-a-black-hole/',
@@ -168,7 +177,12 @@ export type PresetRow = {
   cls: string;
   horizon: string;
   shadow: string;
+  /** Example name and rounded mass, e.g. "Gaia BH3 ≈ 33 M☉". */
   example: string;
+  exampleName: string;
+  exampleMass: string;
+  exampleNote: string;
+  exampleSource: string;
 };
 /** One row per preset for the selected-object reference table. */
 export function presetRows(): PresetRow[] {
@@ -182,11 +196,16 @@ export function presetRows(): PresetRow[] {
       horizon: formatLength(sizes.horizonKm),
       shadow: formatLength(sizes.shadowKm),
       example: example ? `${example.name} ≈ ${formatSolarMasses(example.solarMasses)}` : '—',
+      exampleName: example?.name ?? '',
+      exampleMass: example ? formatSolarMasses(example.solarMasses) : '',
+      exampleNote: example?.note ?? '',
+      exampleSource: example?.source ?? '',
     };
   });
 }
 
 /** Caveat shown with the table; the simulator is a softened Newtonian toy model, not general relativity. */
 export const SCALE_NOTE =
-  'Real sizes for a nonspinning black hole of each mass (horizon 2GM/c², shadow ≈ 2.6× horizon). ' +
-  'Disk size is not set by mass. The simulator itself uses model units and softened Newtonian gravity, which is not accurate near a horizon.';
+  'Radii, not diameters, for a nonspinning black hole of each mass: horizon radius 2GM/c²; apparent shadow radius ' +
+  '≈ 2.6× horizon, as seen from far away. These are not measured image sizes, gas extents or on-screen sizes. ' +
+  'Example masses are rounded or model-dependent; follow each link for the source. Disk size is not set by mass. The simulator itself uses model units and softened Newtonian gravity, which is not accurate near a horizon.';

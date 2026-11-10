@@ -448,6 +448,22 @@ button:focus-visible {
 .bh-scales p {
   margin: 6px 0 0;
 }
+.bh-scales small i {
+  display: block;
+  font-style: normal;
+  color: #74809a;
+}
+.bh-scales a {
+  color: #9fc3ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.bh-scales a:focus-visible,
+.bh-scales summary:focus-visible {
+  outline: 2px solid #9fc3ff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 .object-heading {
   display: flex;
   gap: 11px;

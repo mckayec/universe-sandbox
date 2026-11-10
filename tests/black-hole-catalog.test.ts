@@ -102,3 +102,24 @@ test('the reference catalog never feeds the solver', () => {
   ])
     assert.ok(!readFileSync(file, 'utf8').includes('black-hole-catalog'), file);
 });
+
+test('SC7-C1/C2: displayed examples carry a qualification and source link; lengths are labelled radii', async () => {
+  const { blackHoleScalesHtml } = await import('../src/ui/black-hole-scales.ts');
+  const html = blackHoleScalesHtml(),
+    rows = presetRows();
+  const items = html.match(/<li>[\s\S]*?<\/li>/g) ?? [];
+  assert.equal(items.length, 5);
+  for (const [i, item] of items.entries()) {
+    const example = BLACK_HOLE_EXAMPLES.find(e => e.name === rows[i].exampleName)!;
+    assert.ok(example, rows[i].label);
+    assert.ok(item.includes(`href="${example.source}"`), `${example.name} source link`);
+    assert.match(item, /rel="noopener noreferrer"/);
+    assert.ok(item.includes(`<i>${example.note}</i>`), `${example.name} qualification`);
+    assert.match(item, /horizon radius .+ · shadow radius /);
+  }
+  assert.match(html, /quasi-circular[^<]*source-frame median[^<]*\+28\/−16 M☉/);
+  assert.match(html, /Gaia BH3<\/a>[^<]*<i>[^<]*dormant, no bright disk/);
+  assert.match(html, /Radii, not diameters/);
+  assert.match(html, /not measured image sizes, gas extents or on-screen sizes/);
+  assert.match(html, /id="bh-scales" hidden/);
+});
