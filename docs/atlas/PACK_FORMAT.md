@@ -250,6 +250,16 @@ book buttons alone. Without `spoilers.works` nothing below applies and the numer
   A hidden override is skipped, so the latest earlier visible value stays. This applies to every era-backed
   field (short, facts, blurb, status, gfx, group names). So a world-level field gate also restricts all of that
   field's era overrides; put the narrower gate on the era when only one era's text is the spoiler.
+* **Base graphics:** a world's `gates.gfx` also gates its BASE `gfx` (surface recipe, map, list swatch colour).
+  When it does not pass, the surface is built from a neutral grey rocky recipe (`type:"barren"`) and the list
+  swatch is neutral; era `gfx` overrides cannot paint over a hidden base. `gfx.type:"star"` still marks a body
+  with no surface (structure, not a spoiler) — put such a body's spoiler on its record gate.
+* **Groups:** a group is a container record. Without `gate` it is a public record (its name only ever appears
+  beside its visible worlds); a present `gate` is compiled like any record gate (invalid → hidden). Its base
+  `name` obeys `gates.name`; a group era name (`eras[k].name`) passes the group record, the era's own `gate`
+  (else bucket k; a present invalid era gate is NOT rescued by the bucket), the group's `gates.name` and the
+  era's `gates.name`. A hidden group name is omitted from eyebrows and shown as "Unrevealed group" in the world
+  list and breadcrumb.
 * Reading states: `all`, `legacy` (`#book=k`), `preset` (`#upto=preset:v:work`), `set` (`#read=a,b`), and
   `none` — the reader's deliberate empty selection (unticking the last work), written `#read=_none` and stored as
   `{"mode":"none"}`; it shows only `public` content. An invalid or conflicting link or stored value opens the

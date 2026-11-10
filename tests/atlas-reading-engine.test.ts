@@ -234,6 +234,111 @@ test('CBR-02: legacy/All era selectors are unchanged (numeric rule)', () => {
   assert.deepEqual(r, { b: 'E2', s: 's2', g: { map: 'm2' } });
 });
 
+test('CBR-02 residual 1: base gfx obeys the world gfx field gate (actual gfxFor/baseGfx)', () => {
+  const W = (gates: any, eras?: any) => ({
+    id: 'world',
+    first: 1,
+    gate: { req: 'a' },
+    gfx: { map: 'SECRET-BASE', sw: '#f00', pal: ['', '', '', '#0f0'] },
+    gates,
+    eras,
+  });
+  const run = (w: any, read: string[], legacy = false) => {
+    const c = eraCtx(w, read);
+    if (legacy) {
+      c.PW = () => false;
+      c.S.book = 1;
+    }
+    return plain(vm.runInContext('({g:gfxFor(w,1),b:baseGfx(w)})', c));
+  };
+  for (const [label, gates, read] of [
+    ['unmet', { gfx: { req: 'b' } }, ['a']],
+    ['invalid', { gfx: { req: 'zz9' } }, ['a', 'b']],
+    ['invalid shape', { gfx: 7 }, ['a', 'b']],
+  ] as [string, any, string[]][]) {
+    const r = run(W(gates), read);
+    assert.notEqual(r.g.map, 'SECRET-BASE', label + ': surface never gets the protected map');
+    assert.equal(r.g.type, 'barren', label + ': neutral surface fallback');
+    assert.ok(
+      !JSON.stringify(r.g).includes('#f00') && !JSON.stringify(r.g).includes('#0f0'),
+      label + ': no base colours',
+    );
+    assert.deepEqual(r.b, {}, label + ': list swatch falls back to neutral');
+  }
+  assert.equal(run(W({ gfx: { public: true } }), ['a']).g.map, 'SECRET-BASE', 'public field control');
+  assert.equal(run(W({ gfx: { req: 'b' } }), ['a', 'b']).g.map, 'SECRET-BASE', 'met field control');
+  assert.equal(run(W({}), ['a']).g.map, 'SECRET-BASE', 'absent field gate inherits the visible world');
+  assert.equal(run(W({ gfx: { req: 'b' } }), [], true).g.map, 'SECRET-BASE', 'legacy control');
+  // a hidden base is an ancestor: even a public era gfx field cannot paint over the neutral base
+  const hidden = run(
+    W({ gfx: { req: 'b' } }, { 1: { gate: { req: 'a' }, gfx: { map: 'ERA' }, gates: { gfx: { public: true } } } }),
+    ['a'],
+  );
+  assert.notEqual(hidden.g.map, 'ERA');
+  assert.equal(hidden.g.type, 'barren');
+  // visible base, visible and hidden eras: earlier visible override stays
+  const eras = { 1: { gate: { req: 'a' }, gfx: { map: 'ERA1' } }, 2: { gate: { req: 'b' }, gfx: { map: 'ERA2' } } };
+  assert.equal(run(W({}, eras), ['a']).g.map, 'ERA1');
+  assert.equal(run(W({}, eras), ['a', 'b']).g.map, 'ERA2');
+  // direct base-gfx consumers in the engine go through baseGfx / gfxFor
+  const directUses = engine.match(/\bw\.gfx\b/g) || [];
+  const allowed = ['if(!w.gfx)w.gfx={type:"terran"}', 'w.gfx&&w.gfx.type==="star"'];
+  const stripped = allowed.reduce(
+    (t, a) => t.split(a).join(''),
+    engine.replace(cut('function gfxFor(w,book)', '\n'), '').replace(cut('function baseGfx(w)', '\n'), ''),
+  );
+  assert.deepEqual(
+    stripped.match(/\bw\.gfx\b/g) || [],
+    [],
+    'no other direct base-gfx read (' + directUses.length + ' total)',
+  );
+});
+
+function groupCtx(group: any, read: string[], legacy = false) {
+  const c: any = eraCtx({ id: 'world', gate: { req: 'a' } }, read);
+  c.GROUP_BY = { g: group };
+  if (legacy) {
+    c.PW = () => false;
+    c.S.book = 1;
+  }
+  vm.runInContext(cut('const GROUP_NAME=g=>', '\n'), c);
+  return c;
+}
+test('CBR-02 residual 2: group names obey gates.name, explicit era gates and the group record (actual GROUP_NAME)', () => {
+  const G = (extra: any, era?: any) => ({ id: 'g', name: 'BASE', ...extra, eras: era ? { 1: era } : undefined });
+  const name = (g: any, read: string[], legacy = false) =>
+    vm.runInContext('GROUP_NAME("g")', groupCtx(g, read, legacy));
+  assert.equal(name(G({ gates: { name: { req: 'b' } } }), ['a']), '', 'unmet base-name gate');
+  assert.equal(name(G({ gates: { name: { req: 'zz9' } } }), ['a', 'b']), '', 'invalid base-name gate');
+  assert.equal(name(G({ gates: { name: { public: true } } }), []), 'BASE', 'public base-name control');
+  assert.equal(name(G({ gates: { name: { req: 'b' } } }), ['a', 'b']), 'BASE', 'met base-name control');
+  assert.equal(name(G({}), []), 'BASE', 'ungated group is a public container record');
+  assert.equal(name(G({ gate: { req: 'b' } }), ['a']), '', 'unmet group record gate hides its name');
+  assert.equal(name(G({ gate: { req: 'zz9' } }), ['a', 'b']), '', 'invalid group record gate hides its name');
+  assert.equal(name(G({ gate: { req: 'b' } }), ['b']), 'BASE', 'met group record gate');
+  const era = (gate: any, gates?: any) => ({ name: 'SECRET-ERA', ...(gate === undefined ? {} : { gate }), gates });
+  assert.equal(name(G({}, era({ req: 'b' })), ['a']), 'BASE', 'unmet explicit era record gate (bucket A read)');
+  assert.equal(name(G({}, era({ req: 'zz9' })), ['a', 'b']), 'BASE', 'invalid explicit era record gate');
+  assert.equal(name(G({}, era({ req: 'a' }, { name: { req: 'b' } })), ['a']), 'BASE', 'unmet era field gate');
+  assert.equal(name(G({}, era({ req: 'b' })), ['a', 'b']), 'SECRET-ERA', 'met era record');
+  assert.equal(name(G({}, era(undefined)), ['a']), 'SECRET-ERA', 'absent era gate inherits bucket 1 (A read)');
+  assert.equal(name(G({}, era(undefined)), []), 'BASE', 'absent era gate, bucket unread');
+  assert.equal(name(G({ gate: { req: 'b' } }, era({ req: 'a' })), ['a']), '', 'hidden group ancestor hides era names');
+  assert.equal(
+    name(G({ gates: { name: { req: 'b' } } }, era({ req: 'a' })), ['a']),
+    '',
+    'hidden base name is an ancestor',
+  );
+  assert.equal(name(G({}, era({ req: 'b' })), [], true), 'SECRET-ERA', 'legacy numeric rule');
+  // neutral labels where a group name is a heading or crumb
+  for (const m of [
+    'esc(GROUP_NAME(g)||RD_PH.group)',
+    'esc(gc.label||GROUP_NAME(w.group)||RD_PH.group)',
+    'esc(GROUP_NAME(w.group)||RD_PH.group)',
+  ])
+    assert.ok(engine.includes(m), m);
+});
+
 /* ---------- CBR-03 ---------- */
 function descendCtx(opts: { earth?: boolean } = {}) {
   const pending: (() => void)[] = [];
@@ -261,6 +366,7 @@ function descendCtx(opts: { earth?: boolean } = {}) {
     UI: { hints: {} },
     $: () => bake,
     gfxFor: () => (opts.earth ? { base: 'earth' } : {}),
+    baseGfx: () => ({}),
     loadEarth: () => ({ then: (f: () => void) => (deferred = f) }),
     orbW: { t: { set() {} }, gt: { set() {} } },
     fitDist: () => 1,

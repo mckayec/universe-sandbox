@@ -476,7 +476,7 @@ function start(pack){
   const K=normalise(pack);buildShell(K);
   const BOOKS=K.books,BOOK_IDS=K.bookIds,WORLDS=K.worlds,EVENTS=K.events,G=K.G,UI=K.ui,CUM=K.mode==="cumulative";
   const GROUP_BY={};K.groups.forEach(g=>GROUP_BY[g.id]=g);
-  const GROUP_NAME=g=>{const gr=GROUP_BY[g];if(!gr)return "";if(!gr.eras)return gr.name||"";let v=gr.name;const cur=S.book||99;Object.keys(gr.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(gr.eras[k]&&gr.eras[k].name&&eraFieldOk(gr,k,"name",cur))v=gr.eras[k].name;});return v||"";};
+  const GROUP_NAME=g=>{const gr=GROUP_BY[g];if(!gr)return "";let v=fOk(gr,"name",grpChain(gr))?gr.name:"";if(gr.eras){const cur=S.book||99;Object.keys(gr.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(gr.eras[k]&&gr.eras[k].name&&eraFieldOk(gr,k,"name",cur))v=gr.eras[k].name;});}return v||"";};
   let MOB=isMob();
   /* budgets fixed at start-up: phones and coarse pointers get the light versions even if the window later grows */
   const SMALL=MOB||matchMedia("(pointer:coarse)").matches;
@@ -725,7 +725,7 @@ const bakeMat=new THREE.ShaderMaterial({vertexShader:BAKE_VS,fragmentShader:BAKE
     uP0:{value:new THREE.Color()},uP1:{value:new THREE.Color()},uP2:{value:new THREE.Color()},uP3:{value:new THREE.Color()},uP4:{value:new THREE.Color()},uP5:{value:new THREE.Color()}}});
 const bakeScene=new THREE.Scene();const bakeCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 const bakeQuad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),bakeMat);bakeQuad.frustumCulled=false;bakeScene.add(bakeQuad);
-function gfxFor(w,book){let g=Object.assign({},w.gfx||{});if(w.eras){Object.keys(w.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(w.eras[k]&&w.eras[k].gfx&&eraFieldOk(w,k,"gfx",book))g=Object.assign(g,w.eras[k].gfx);});}return g;}
+function gfxFor(w,book){let g=Object.assign({},PW()&&!fOk(w,"gfx",worldChain(w))?{type:"barren",pal:["#3c3c42","#4a4a50","#58585e","#66666c","#74747a","#828288"],rough:.6,sea:0,atmoK:0}:w.gfx||{});if(w.eras){Object.keys(w.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(w.eras[k]&&w.eras[k].gfx&&eraFieldOk(w,k,"gfx",book))g=Object.assign(g,w.eras[k].gfx);});}return g;}
 function setBakeU(g,seedKey){const u=bakeMat.uniforms;const R=rng(hashStr(seedKey));
   u.uType.value=TYPES[g.type]!=null?TYPES[g.type]:0;u.uSeed.value.set(R()*40-20,R()*40-20,R()*40-20);
   u.uFreq.value=g.freq||1.6;u.uWarp.value=g.warp==null?.6:g.warp;u.uRough.value=g.rough==null?.6:g.rough;u.uSea.value=g.sea==null?.5:g.sea;
@@ -983,7 +983,7 @@ function fGate(o,f){
   if(!m.has(f))m.set(f,RDG.fieldGate(o,f,RREG));
   return m.get(f);}
 function fOk(o,f,chain){return !PW()||pvis(chain.concat([fGate(o,f)]));}
-const RD_PH={world:"An unrevealed world",place:"An unrevealed place",event:"An unrevealed event",entry:"An unrevealed entry"};
+const RD_PH={world:"An unrevealed world",place:"An unrevealed place",event:"An unrevealed event",entry:"An unrevealed entry",group:"Unrevealed group"};
 function wName(w){return w&&fOk(w,"name",worldChain(w))?w.name:RD_PH.world;}
 function sName(s){return s&&fOk(s,"name",siteChain(s))?s.name:RD_PH.place;}
 function sDesc(s){return fOk(s,"desc",siteChain(s))?s.desc:"";}
@@ -991,16 +991,21 @@ function eTitle(e){return fOk(e,"title",evChain(e))?e.title:RD_PH.event;}
 function eText(e){return fOk(e,"text",evChain(e))?e.text:"";}
 /* a world era (child record): its own `gate` when present, else its numeric bucket, ANDed with the world chain */
 function eraOn(w,k){return pvis(worldChain(w).concat([gateOf(w.eras[k],k)]));}
+/* Group record policy (CBR-02): a group is a container. With no `gate` it is a public record (its name is only shown
+   beside its visible worlds); a present `gate` is compiled (invalid → hidden). Its base name obeys gates.name. */
+function grpChain(gr){return [gr&&Object.prototype.hasOwnProperty.call(gr,"gate")?RDG.compileGate(gr.gate,RREG):{kind:"public"}];}
+/* base world graphics with the world's gfx field gate applied (list swatches); gfxFor applies it to surfaces */
+function baseGfx(w){return PW()&&!fOk(w,"gfx",worldChain(w))?{}:w.gfx||{};}
 /* CBR-02: an era override of a field (name, short, blurb, facts, status, gfx, …) is shown only when EVERY gate on
    its path passes: the world chain, the era record gate, the WORLD's own field gate for that field (an ancestor
    restriction: a public era field never overrides a hidden world field) and the era's own field gate
    (eras[k].gates[field]; absent → inherits, present but invalid → hidden). A hidden override is skipped, so the
-   earlier visible value stays. Objects that are not pack worlds (groups) use the numeric bucket as their record
-   gate. Legacy/All keep the numeric rule. */
+   earlier visible value stays. Groups use grpChain as their ancestor; the era record gate is the era's own `gate`
+   when present (invalid → hidden), else its numeric bucket. Legacy/All keep the numeric rule. */
 function eraFieldOk(o,k,key,cur){
   if(!PW())return cur>=k;
   const era=o&&o.eras&&o.eras[k];if(!era)return false;
-  const rec=WORLD_BY[o.id]===o?worldChain(o).concat([gateOf(era,k)]):[bucketGate(k)];
+  const rec=(WORLD_BY[o.id]===o?worldChain(o):grpChain(o)).concat([gateOf(era,k)]);
   return pvis(rec.concat([fGate(o,key),fGate(era,key)]));}
 /* intro copy (text, legend) has no record above it, so in per-work modes each part shows only with an explicit
    intro.gates.text / intro.gates.legend (the Cosmere legend names later worlds) */
@@ -1122,8 +1127,8 @@ function hideTip(){tip.hidden=true;}
 /* ===================== INDEX ===================== */
 const idx=$("#index");
 function renderIndex(){let h='<h2 class="eyebrow">'+esc(UI.indexTitle)+'</h2>';
-  K.groups.forEach(gr=>{const g=gr.id;const ws=WORLDS.filter(w=>w.group===g&&seen(w));if(!ws.length)return;h+='<div class="grp">'+esc(GROUP_NAME(g))+'</div>';
-    ws.forEach(w=>{const n=evFor(w.id).length;h+='<button class="world'+(inBook(w)?"":" dim")+(S.sel===w.id?" sel":"")+(w.craft?" craft":"")+'" data-id="'+esc(w.id)+'"><span class="sw" style="background:'+esc((w.gfx&&w.gfx.sw)||(w.gfx&&w.gfx.pal&&w.gfx.pal[3])||"#889")+'"></span>'+esc(wName(w))+'<span class="n">'+(n?n+UI.evCount:"")+'</span></button>';});});
+  K.groups.forEach(gr=>{const g=gr.id;const ws=WORLDS.filter(w=>w.group===g&&seen(w));if(!ws.length)return;h+='<div class="grp">'+esc(GROUP_NAME(g)||RD_PH.group)+'</div>';
+    ws.forEach(w=>{const n=evFor(w.id).length;h+='<button class="world'+(inBook(w)?"":" dim")+(S.sel===w.id?" sel":"")+(w.craft?" craft":"")+'" data-id="'+esc(w.id)+'"><span class="sw" style="background:'+esc((bg=>bg.sw||(bg.pal&&bg.pal[3])||"#889")(baseGfx(w)))+'"></span>'+esc(wName(w))+'<span class="n">'+(n?n+UI.evCount:"")+'</span></button>';});});
   if(S.book||PW()){const hid=WORLDS.filter(w=>realmOk(w)&&!seen(w)).length;if(hid)h+='<p class="locked-note">'+hid+' more world'+(hid===1?" appears":"s appear")+(PW()?' in books you have not marked as read.':' in later books.')+'</p>';}
   idx.innerHTML=h;}
 idx.addEventListener("click",e=>{const b=e.target.closest(".world");if(!b)return;if(MOB){idx.classList.remove("open");$("#idxBtn").setAttribute("aria-expanded","false");}
@@ -1256,8 +1261,8 @@ addEventListener("keydown",e=>{if(e.key==="Escape"){if(TRV&&TRV.open)TRV.close()
 /* ===================== CRUMBS & HINT ===================== */
 function renderCrumbs(){const c=$("#crumbs");let h='<button data-c="gal">'+esc(UI.galaxyCrumb)+'</button><i>›</i>';
   const w=S.sel&&WORLD_BY[S.sel];const gc=w&&groupOpt(w,"crumb",null);
-  if(gc)h+='<button data-c="'+(gc.ascendOnly?"sat":"web")+'">'+esc(gc.label||GROUP_NAME(w.group))+'</button>';
-  else if(UI.crumbGroups)h+='<button data-c="web"'+(!w?' class="here"':"")+'>'+(w?esc(GROUP_NAME(w.group)):esc(UI.homeCrumb))+'</button>';
+  if(gc)h+='<button data-c="'+(gc.ascendOnly?"sat":"web")+'">'+esc(gc.label||GROUP_NAME(w.group)||RD_PH.group)+'</button>';
+  else if(UI.crumbGroups)h+='<button data-c="web"'+(!w?' class="here"':"")+'>'+(w?esc(GROUP_NAME(w.group)||RD_PH.group):esc(UI.homeCrumb))+'</button>';
   else h+='<button data-c="web"'+(!w?' class="here"':"")+'>'+esc(UI.homeCrumb)+'</button>';
   if(w)h+='<i>›</i><button data-c="world" class="'+(S.view==="world"&&!S.site?"here":S.view==="galaxy"?"here":"")+'">'+esc(wName(w))+'</button>';
   if(S.view==="world"&&S.site)h+='<i>›</i><span class="here">'+esc(siteName(w,S.site))+'</span>';
@@ -1451,7 +1456,7 @@ function descend(id,fromHistory){const w=WORLD_BY[id];if(!w)return;
       const hero=SITE_EL.find(o=>o.s.id===w.hero)||SITE_EL[0];
       if(hero&&PL){const V=SUN_DIR.clone().multiplyScalar(.55).add(new THREE.Vector3(Math.sin(orbW.gyaw),0,Math.cos(orbW.gyaw)).multiplyScalar(.45));
         PL.root.rotation.y=Math.atan2(V.x,V.z)-Math.atan2(hero.dir.x,hero.dir.z);orbW.pitch=orbW.gpitch=clamp(Math.asin(hero.dir.y)*.6,-.6,.6);}};
-    orbW.min=gfxFor(w,S.book).map?1.012:1.06;orbW.t.set(0,0,0);orbW.gt.set(0,0,0);orbW.dist=orbW.gdist=Math.max(w.view||(w.gfx&&w.gfx.type==="gas"?4.8:4.0),fitDist(w.ring?2.3:1.15));orbW.yaw=orbW.gyaw=.45;orbW.pitch=orbW.gpitch=.18;
+    orbW.min=gfxFor(w,S.book).map?1.012:1.06;orbW.t.set(0,0,0);orbW.gt.set(0,0,0);orbW.dist=orbW.gdist=Math.max(w.view||(baseGfx(w).type==="gas"?4.8:4.0),fitDist(w.ring?2.3:1.15));orbW.yaw=orbW.gyaw=.45;orbW.pitch=orbW.gpitch=.18;
     if(gfxFor(w,S.book).base==="earth"&&!EARTH_TEX)loadEarth().then(go);else go();
     S.interacted=false;
     Object.values(GL_LBL).forEach(l=>{l.style.opacity=0;l.style.pointerEvents="none";});REGIONS.forEach(r=>r.el.style.opacity=0);
