@@ -1,0 +1,1312 @@
+{
+  "schema": "cosmere-key2-research-dispositions-v1",
+  "reviewed_at": "2026-11-10",
+  "audited_head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+  "pack_blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+  "counts": {
+    "records": 65,
+    "listed_field_units": 148,
+    "worlds": 2,
+    "world_fields": 15,
+    "sites": 17,
+    "landmarks": 23,
+    "events": 14,
+    "codex": 9,
+    "narrow_candidate_events": 2,
+    "event_holds": 12,
+    "record_holds": 63,
+    "field_holds": 144,
+    "narrow_candidate_fields": 4,
+    "full_book_approvals": 0,
+    "work_ledger": 33
+  },
+  "instructions": {
+    "hold": "Retain existing unreviewed bucket fallback; no explicit gate, public ancestor, or earliest-work certification is authorized by a hold. Preserve prior accepted corrections. If a field is separately omitted/narrowed, record that explicit builder action.",
+    "candidate": "Apply only exact narrow copy/gate after current-head reconciliation, keeping every ancestor restriction; candidate does not assert newly visible standalone content.",
+    "field_scope": "Inventory text/gfx/era containers only; not all geometric/scene/nested-realm exposure."
+  },
+  "sources": {
+    "B01": {
+      "url": "https://www.brandonsanderson.com/blogs/blog/mistborn-chapter-three",
+      "kind": "Direct author-hosted narrative excerpt",
+      "locator": "Chapter Three: Luthadel context, Kelsier enters Camon’s lair, introduces/testing interaction with Vin, identifies her as Mistborn (retrieved lines 161–162, 192–243, 502–504).",
+      "supports": "e6 title/text only. No complete novel reading."
+    },
+    "B02": {
+      "url": "https://www.brandonsanderson.com/blogs/blog/annotation-mistborn-3-chapter-eighty-two",
+      "kind": "Author commentary, not independently read chapter text",
+      "locator": "Sazed Ascendant section, retrieved lines 115–121.",
+      "supports": "Narrow e12: Sazed ascends and remakes the world. Does not certify every clause in existing versions."
+    }
+  },
+  "inventory_recount": [
+    {
+      "surface": "worlds",
+      "records": 2,
+      "fields": 15,
+      "equal": true
+    },
+    {
+      "surface": "sites",
+      "records": 17,
+      "fields": 34,
+      "equal": true
+    },
+    {
+      "surface": "landmarks",
+      "records": 23,
+      "fields": 46,
+      "equal": true
+    },
+    {
+      "surface": "events",
+      "records": 14,
+      "fields": 28,
+      "equal": true
+    },
+    {
+      "surface": "codex",
+      "records": 9,
+      "fields": 25,
+      "equal": true
+    }
+  ],
+  "records": [
+    {
+      "kind": "world",
+      "id": "scadsun",
+      "parent": "group:scadrian",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Proper system label lacks an MB01–03 locator."
+        },
+        "status": {
+          "disposition": "hold",
+          "reason": "System classification lacks edition/source locator."
+        },
+        "star": {
+          "disposition": "hold",
+          "reason": "Name/color not audited as trilogy evidence."
+        },
+        "blurb": {
+          "disposition": "hold",
+          "reason": "Mixed red-sun observation, orbital changes/Harmony and system-chart assertions."
+        },
+        "short": {
+          "disposition": "hold",
+          "reason": "Yellow-star classification not independently established."
+        },
+        "facts": {
+          "disposition": "hold",
+          "reason": "Aagal Nod, Aagal Uch and two dwarf planets need system-chart/AU evidence."
+        },
+        "gfx": {
+          "disposition": "hold",
+          "reason": "Artistic/model parameters not an exact visual-source audit."
+        }
+      }
+    },
+    {
+      "kind": "world",
+      "id": "scadrial",
+      "parent": "group:scadrian",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Do not infer an MB01 first appearance of the planet name from later bibliography."
+        },
+        "status": {
+          "disposition": "hold",
+          "reason": "Orbital rank and Final Empire identity require separate locators."
+        },
+        "star": {
+          "disposition": "hold",
+          "reason": "Display name/color not separately audited."
+        },
+        "blurb": {
+          "disposition": "hold",
+          "reason": "Opening setting, pole/desert geography and plot premise form a mixed field."
+        },
+        "short": {
+          "disposition": "hold",
+          "reason": "No whole-world promotion while sibling fields remain mixed."
+        },
+        "eras": {
+          "disposition": "hold",
+          "reason": "Contains later keys 6 and 10; preserve child fallback, no MB01–03 override."
+        },
+        "facts": {
+          "disposition": "hold",
+          "reason": "Order/no moon, two named Shards and three arts need per-claim checks."
+        },
+        "gfx": {
+          "disposition": "hold",
+          "reason": "MAPSCAD1 geometry/regions/texture and features not certified by the opened chapter."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/luthadel",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Capital/walls/eight metal-named gates/river/Well location bundle needs separate checks."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Capital/walls/eight metal-named gates/river/Well location bundle needs separate checks."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/kredikshaw",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Palace/spire epithet/Vin’s final confrontation need separate locators."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Palace/spire epithet/Vin’s final confrontation need separate locators."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/well",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Pool/perpendicularity/Rashek relocation mixes reveal levels."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Pool/perpendicularity/Rashek relocation mixes reveal levels."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/fellise",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Town/travel time/mansion details unverified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Town/travel time/mansion details unverified here."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/hathsin",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Prison/mines/Snapping/Ruin’s pool mixes claims and reveal levels."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Prison/mines/Snapping/Ruin’s pool mixes claims and reveal levels."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/homeland",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Cavern placement/hidden atium require text and map separation."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Cavern placement/hidden atium require text and map separation."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/arguois",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Cave geography/army training lacks a locator."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Cave geography/army training lacks a locator."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/tyrian",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Lake/ashmount placement needs identified map or direct location text."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Lake/ashmount placement needs identified map or direct location text."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/urteau",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Capital/house seat/canals/rebel control needs per-claim sources."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Capital/house seat/canals/rebel control needs per-claim sources."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/tremredare",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Former capital/luxury-market description unverified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Former capital/luxury-market description unverified here."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/fadrex",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Rock geography/cache/siege needs primary locators."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Rock geography/cache/siege needs primary locators."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/statlin",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Eastern/mining/cache description unverified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Eastern/mining/cache description unverified here."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/conventical",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Steel/crater/orientation requires text/map separation."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Steel/crater/orientation requires text/map separation."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/vetitan",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Southern farming/mining/cache location unverified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Southern farming/mining/cache location unverified here."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/lekal",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Capital/river/lava ending includes late spoilers without locators here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Capital/river/lava ending includes late spoilers without locators here."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/tathingdwen",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Terris/Synod/geography/koloss fate needs separate locators."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Terris/Synod/geography/koloss fate needs separate locators."
+        }
+      }
+    },
+    {
+      "kind": "site",
+      "id": "scadrial/islands",
+      "parent": "world:scadrial",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Sea-relative geography unverified from consulted narrative."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Sea-relative geography unverified from consulted narrative."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "luthadel/fountain",
+      "parent": "site:scadrial/luthadel",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Fountains/executions/exact death location/renaming need separate text checks."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Fountains/executions/exact death location/renaming need separate text checks."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "luthadel/venture",
+      "parent": "site:scadrial/luthadel",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "MB02 palace use not newly verified; preserve existing correction."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "MB02 palace use not newly verified; preserve existing correction."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "luthadel/hasting",
+      "parent": "site:scadrial/luthadel",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Sparring location and Cett dinner need chapter locators."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Sparring location and Cett dinner need chapter locators."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "luthadel/assembly",
+      "parent": "site:scadrial/luthadel",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Venue and deposition attribution need MB02 evidence."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Venue and deposition attribution need MB02 evidence."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "luthadel/walls",
+      "parent": "site:scadrial/luthadel",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Structure and Elend/Straff scene need primary locator."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Structure and Elend/Straff scene need primary locator."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "luthadel/channerel",
+      "parent": "site:scadrial/luthadel",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "River identity/location needs text or identified map."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "River identity/location needs text or identified map."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "kredikshaw/spires",
+      "parent": "site:scadrial/kredikshaw",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Architecture and late Preservation/Inquisitor/destruction scene are mixed."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Architecture and late Preservation/Inquisitor/destruction scene are mixed."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "kredikshaw/throne",
+      "parent": "site:scadrial/kredikshaw",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Capture/interrogation/window/death need scene verification."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Capture/interrogation/window/death need scene verification."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "kredikshaw/murals",
+      "parent": "site:scadrial/kredikshaw",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Exact mural contents and arrangement require passage inspection."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Exact mural contents and arrangement require passage inspection."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "well/pool",
+      "parent": "site:scadrial/well",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Pool/cavern/door/release bundle not verified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Pool/cavern/door/release bundle not verified here."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "fellise/renoux",
+      "parent": "site:scadrial/fellise",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Rented mansion/front/training does not establish Luthadel ball location."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Rented mansion/front/training does not establish Luthadel ball location."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "hathsin/pits",
+      "parent": "site:scadrial/hathsin",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Prison geology/survival/wife’s fate/Elend’s ending cannot share an assumed early gate."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Prison geology/survival/wife’s fate/Elend’s ending cannot share an assumed early gate."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "hathsin/refuge",
+      "parent": "site:scadrial/hathsin",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Refuge and universal no-mist-sickness claim need direct evidence."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Refuge and universal no-mist-sickness claim need direct evidence."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "homeland/trustwarren",
+      "parent": "site:scadrial/homeland",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Chamber/court/trial/platform-atium bundle needs text."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Chamber/court/trial/platform-atium bundle needs text."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "homeland/prison",
+      "parent": "site:scadrial/homeland",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Sentence and escape need direct locator."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Sentence and escape need direct locator."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "arguois/caves",
+      "parent": "site:scadrial/arguois",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Army hiding/training needs direct locator."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Army hiding/training needs direct locator."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "urteau/canals",
+      "parent": "site:scadrial/urteau",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Drainage/diversion/lake/cache need primary scene evidence."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Drainage/diversion/lake/cache need primary scene evidence."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "urteau/cache",
+      "parent": "site:scadrial/urteau",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Location/discovery attribution unverified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Location/discovery attribution unverified here."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "urteau/burnings",
+      "parent": "site:scadrial/urteau",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Execution method and escape-route claim need direct locator."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Execution method and escape-route claim need direct locator."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "fadrex/rocks",
+      "parent": "site:scadrial/fadrex",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Fortifications/siege/exact half-koloss loss need separate checks."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Fortifications/siege/exact half-koloss loss need separate checks."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "fadrex/orielle",
+      "parent": "site:scadrial/fadrex",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Ball/ultimatum/refusal details unverified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Ball/ultimatum/refusal details unverified here."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "fadrex/cache",
+      "parent": "site:scadrial/fadrex",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Storage identification and motivation unverified here."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Storage identification and motivation unverified here."
+        }
+      }
+    },
+    {
+      "kind": "landmark",
+      "id": "conventical/plate",
+      "parent": "site:scadrial/conventical",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Massacre/Marsh/Sazed/rubbing/Kwaan need direct locator."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Massacre/Marsh/Sazed/rubbing/Kwaan need direct locator."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e6",
+      "disposition": "narrow-copy-gate-candidate-parent-held",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/luthadel"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "sourced-narrow-candidate",
+          "copy": "Kelsier meets Vin",
+          "gate": {
+            "in": [
+              "mistborn-the-final-empire"
+            ],
+            "req": "mistborn-the-final-empire"
+          },
+          "evidence": "B01 direct hosted chapter"
+        },
+        "text": {
+          "disposition": "sourced-narrow-candidate",
+          "copy": "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.",
+          "gate": {
+            "in": [
+              "mistborn-the-final-empire"
+            ],
+            "req": "mistborn-the-final-empire"
+          },
+          "evidence": "B01 direct hosted chapter"
+        }
+      },
+      "candidateGate": {
+        "in": [
+          "mistborn-the-final-empire"
+        ],
+        "req": "mistborn-the-final-empire"
+      },
+      "candidateCopy": {
+        "title": "Kelsier meets Vin",
+        "text": "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn."
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e68",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/fellise",
+        "landmark:fellise/renoux"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Training and Luthadel balls/Elend meeting span locations; Fellise/Renoux is not verified for every clause."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Training and Luthadel balls/Elend meeting span locations; Fellise/Renoux is not verified for every clause."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e69",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/luthadel",
+        "landmark:luthadel/fountain"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Fight/execution location/killing/causal legend sentence not text-checked here."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Fight/execution location/killing/causal legend sentence not text-checked here."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e8",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/kredikshaw",
+        "landmark:kredikshaw/throne"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Weakness/death/palace scene not verified by e6 excerpt."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Weakness/death/palace scene not verified by e6 excerpt."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e9",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/luthadel",
+        "landmark:luthadel/walls"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Army approach and Elend scene need MB02 locator."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Army approach and Elend scene need MB02 locator."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e70",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/luthadel"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Deposition remains primary-text hold; preserve existing narrowed copy."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Deposition remains primary-text hold; preserve existing narrowed copy."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e71",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/luthadel",
+        "landmark:luthadel/walls"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Battle/death list/control/attack sequence needs multiple locators."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Battle/death list/control/attack sequence needs multiple locators."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e10",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/well",
+        "landmark:well/pool"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Well release and deceiver need MB02 scene evidence."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Well release and deceiver need MB02 scene evidence."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e72",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/homeland",
+        "landmark:homeland/trustwarren"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Trial/contract/sentence/First Generation/escape needs multiple locators."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Trial/contract/sentence/First Generation/escape needs multiple locators."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e73",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/urteau",
+        "landmark:urteau/burnings"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Pewter/Citizen/executions/city/cache outcome needs direct evidence."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Pewter/Citizen/executions/city/cache outcome needs direct evidence."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e11",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/fadrex",
+        "landmark:fadrex/rocks"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Cache motive/siege participants/timing need direct source."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Cache motive/siege participants/timing need direct source."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e74",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/hathsin",
+        "landmark:hathsin/pits"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Exact Pits location/death/atium motivation not established by e12 annotation."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Exact Pits location/death/atium motivation not established by e12 annotation."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e75",
+      "disposition": "hold",
+      "ancestors": [
+        "world:scadrial",
+        "site:scadrial/kredikshaw",
+        "landmark:kredikshaw/spires"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "hold",
+          "reason": "Power/Inquisitors/palace destruction/Ruin sequence needs MB03 locators."
+        },
+        "text": {
+          "disposition": "hold",
+          "reason": "Power/Inquisitors/palace destruction/Ruin sequence needs MB03 locators."
+        }
+      }
+    },
+    {
+      "kind": "event",
+      "id": "e12",
+      "disposition": "narrow-copy-gate-candidate-parent-held",
+      "ancestors": [
+        "world:scadrial"
+      ],
+      "fields": {
+        "title": {
+          "disposition": "sourced-narrow-candidate",
+          "copy": "The Hero of Ages",
+          "gate": {
+            "in": [
+              "mistborn-the-hero-of-ages"
+            ],
+            "req": "mistborn-the-hero-of-ages"
+          },
+          "evidence": "B02 author commentary"
+        },
+        "text": {
+          "disposition": "sourced-narrow-candidate",
+          "copy": "Sazed ascends and remakes the world.",
+          "gate": {
+            "in": [
+              "mistborn-the-hero-of-ages"
+            ],
+            "req": "mistborn-the-hero-of-ages"
+          },
+          "evidence": "B02 author commentary"
+        }
+      },
+      "candidateGate": {
+        "in": [
+          "mistborn-the-hero-of-ages"
+        ],
+        "req": "mistborn-the-hero-of-ages"
+      },
+      "candidateCopy": {
+        "title": "The Hero of Ages",
+        "text": "Sazed ascends and remakes the world."
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "shards/Preservation",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Mists’ creator/stability descriptor not certified by narrow e12 annotation."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Mists’ creator/stability descriptor not certified by narrow e12 annotation."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "shards/Ruin",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Entropy/Well imprisonment/deception bundle needs direct source."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Entropy/Well imprisonment/deception bundle needs direct source."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "shards/Harmony",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Combined Shards/second-era label exceeds narrow e12 evidence."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Combined Shards/second-era label exceeds narrow e12 evidence."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "people/Kelsier",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Crew outcome/Survivor label not fully covered by e6; later more lines separate."
+        },
+        "role": {
+          "disposition": "hold",
+          "reason": "Crew outcome/Survivor label not fully covered by e6; later more lines separate."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Crew outcome/Survivor label not fully covered by e6; later more lines separate."
+        },
+        "more": {
+          "disposition": "hold",
+          "reason": "Crew outcome/Survivor label not fully covered by e6; later more lines separate."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "people/Vin",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Chapter establishes Mistborn, not most powerful Allomancer of her age."
+        },
+        "role": {
+          "disposition": "hold",
+          "reason": "Chapter establishes Mistborn, not most powerful Allomancer of her age."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Chapter establishes Mistborn, not most powerful Allomancer of her age."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "people/Sazed",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Every religion is an unsupported universal here; later Harmony line separate."
+        },
+        "role": {
+          "disposition": "hold",
+          "reason": "Every religion is an unsupported universal here; later Harmony line separate."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Every religion is an unsupported universal here; later Harmony line separate."
+        },
+        "more": {
+          "disposition": "hold",
+          "reason": "Every religion is an unsupported universal here; later Harmony line separate."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "people/Elend Venture",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Noble/king/meeting/post-Lord-Ruler agenda needs earliest-threshold checks."
+        },
+        "role": {
+          "disposition": "hold",
+          "reason": "Noble/king/meeting/post-Lord-Ruler agenda needs earliest-threshold checks."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Noble/king/meeting/post-Lord-Ruler agenda needs earliest-threshold checks."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "people/Spook",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Kinship/age/crew/tin ability needs direct text."
+        },
+        "role": {
+          "disposition": "hold",
+          "reason": "Kinship/age/crew/tin ability needs direct text."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Kinship/age/crew/tin ability needs direct text."
+        }
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "ideas/The metal arts",
+      "disposition": "hold",
+      "fields": {
+        "name": {
+          "disposition": "hold",
+          "reason": "Three systems/Hemalurgy explanation needs per-system reveal locators."
+        },
+        "desc": {
+          "disposition": "hold",
+          "reason": "Three systems/Hemalurgy explanation needs per-system reveal locators."
+        }
+      }
+    }
+  ],
+  "additional_holds": [
+    {
+      "id": "main-or-PR24/event:e7",
+      "reason": "Not in PR37 denominator; not e74. Preserve identity and unreviewed fallback; no gate supplied."
+    },
+    {
+      "id": "world:scadrial/realms/cognitive",
+      "reason": "Nested name/blurb/style/color structure is not in the 15-field inventory; explicitly unreviewed, not a 0-realm approval."
+    },
+    {
+      "id": "world:scadrial/eras:6,10",
+      "reason": "Later-era children retain separate later fallback; no wholesale key-2 gate."
+    },
+    {
+      "id": "codex:people/Kelsier/more:0",
+      "bucket": 7,
+      "reason": "Secret History continuation-after-death sentence remains held."
+    },
+    {
+      "id": "codex:people/Kelsier/more:1",
+      "bucket": 12,
+      "reason": "Ghostbloods later-work line remains held."
+    },
+    {
+      "id": "codex:people/Sazed/more:0",
+      "bucket": 6,
+      "reason": "Harmony later-era line remains held; no inheritance shortcut from e12."
+    },
+    {
+      "id": "scadrial/site-scenes-and-geography",
+      "reason": "Coordinates, at, dimensions, architecture, scene graphics and map transforms are not certified by text inventory."
+    }
+  ]
+}
