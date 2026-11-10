@@ -28,6 +28,7 @@ import {
 } from '../scene/setup.ts';
 import { app, audio, bodies, bodyGroupIds } from '../state/app-state.ts';
 import { labelVisible } from '../feedback.ts';
+import { updateBodyLabel } from '../bodies/registry.ts';
 import {
   compactLayout,
   narrationFacts,
@@ -110,6 +111,11 @@ function updateLabels() {
     compact = compactLayout();
   // Compact layout: at most the selected object's short name; metrics live behind Details.
   labelRenderer.domElement.classList.toggle('compact-labels', compact);
+  if (compact !== app.compactLabels) {
+    // Resizing across the breakpoint: short names in compact layout, full names again on wider layouts.
+    app.compactLabels = compact;
+    for (const body of bodies) updateBodyLabel(body);
+  }
   for (const body of bodies) {
     body.label.visible = labelVisible({
       compact,

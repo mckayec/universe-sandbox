@@ -55,6 +55,8 @@ export const app = {
   realismMode: preferences.realism as RealismMode,
   effectsMode: preferences.effects as EffectsMode,
   feedbackMode: preferences.feedback as FeedbackMode,
+  /** Compact (≤800px) layout, as last applied to canvas label text; the loop refreshes labels when it flips. */
+  compactLabels: matchMedia('(max-width: 800px)').matches,
   historySuspended: false,
   historyBeforeDrag: null as SandboxSnapshot | null,
   historyBeforeGravity: null as SandboxSnapshot | null,

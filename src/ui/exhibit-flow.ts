@@ -16,6 +16,7 @@ import { resetSimulation, snapshotUniverse } from '../state/history.ts';
 import type { Body } from '../state/types.ts';
 import { updateScienceModeButton } from './controls.ts';
 import { museumEvent, select, toast } from './feed.ts';
+import { exhibitLoadOrigin } from '../feedback.ts';
 
 export function showGuide(id: ExhibitId) {
   const exhibit = exhibitById(id),
@@ -187,7 +188,13 @@ export function loadExhibit(id: ExhibitId, asAttract = false) {
   document.querySelector<HTMLElement>('#scenario-picker')!.hidden = true;
   if (asAttract) document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
   else showGuide(id);
-  museumEvent('Guided exhibit', `${exhibit.title}: ${exhibit.objective}`, exhibit.accent, focus ?? undefined, 'action');
+  museumEvent(
+    'Guided exhibit',
+    `${exhibit.title}: ${exhibit.objective}`,
+    exhibit.accent,
+    focus ?? undefined,
+    exhibitLoadOrigin(asAttract),
+  );
 }
 /**
  * A Slow Feast: the cloud drifts in first and is drained through the disk; the star starts near the far end of a

@@ -10,6 +10,8 @@ import {
   presentEvent,
   recordEvent,
   shortLabel,
+  canvasLabelText,
+  exhibitLoadOrigin,
   timelineLive,
   type LabelContext,
   type LoggedEvent,
@@ -103,13 +105,50 @@ test('Details sheet resets on a fresh selection and survives re-selecting the sa
   assert.equal(detailsAfterSelect(true, a, rebuilt), false, 'same ID after a scene rebuild is still a fresh selection');
 });
 
-test('wiring: museumEvent records before presenting; builders and guides are action-origin', () => {
+test('SC6-T2: long names shorten only in compact layout, both ways across a resize', () => {
+  const long = 'Milky Way merger remnant';
+  assert.equal(canvasLabelText(long, false), long, 'desktop keeps the full visible name');
+  const short = canvasLabelText(long, true);
+  assert.ok(short.length <= 14 && short.endsWith('…'), 'compact shortens');
+  assert.equal(canvasLabelText(long, false), long, 'returning to desktop restores the full name');
+  assert.equal(canvasLabelText('Void 01', true), 'Void 01');
+  const registry = readFileSync('src/bodies/registry.ts', 'utf8');
+  assert.ok(registry.includes('canvasLabelText(b.name, app.compactLabels)'), 'labels follow the compact flag');
+  const loop = readFileSync('src/app/loop.ts', 'utf8');
+  const labels = loop.slice(loop.indexOf('function updateLabels'));
+  assert.ok(/compact !== app\.compactLabels[\s\S]*updateBodyLabel\(body\)/.test(labels), 'breakpoint flip relabels');
+});
+
+test('SC6-T1: idle attract start/restart loads are simulation-origin; visitor picks stay action', () => {
+  assert.equal(exhibitLoadOrigin(true), 'simulation');
+  assert.equal(exhibitLoadOrigin(false), 'action');
+  assert.deepEqual(presentEvent(exhibitLoadOrigin(true), 'quiet'), { banner: false, sound: false });
+  assert.deepEqual(presentEvent(exhibitLoadOrigin(true), 'full'), { banner: true, sound: true });
+  assert.deepEqual(presentEvent(exhibitLoadOrigin(false), 'quiet'), { banner: true, sound: true });
+  const flow = readFileSync('src/ui/exhibit-flow.ts', 'utf8');
+  const load = flow.slice(
+    flow.indexOf('export function loadExhibit'),
+    flow.indexOf('/**', flow.indexOf('export function loadExhibit')),
+  );
+  assert.ok(load.includes('exhibitLoadOrigin(asAttract)'), 'guided-exhibit event origin follows asAttract');
+  assert.ok(!/'action',?\s*\)/.test(load), 'loadExhibit no longer hard-codes action origin');
+  const feed = readFileSync('src/ui/feed.ts', 'utf8');
+  const attract = feed.slice(
+    feed.indexOf('function startAttractMode'),
+    feed.indexOf('export function updateAttractMode'),
+  );
+  assert.ok(attract.includes("loadExhibit('feed-black-hole', true)"), 'attract start/restart passes asAttract');
+  const toolbar = readFileSync('src/ui/toolbar.ts', 'utf8');
+  assert.ok(!/loadExhibit\([^)]*,\s*true\)/.test(toolbar), 'visitor exhibit buttons never load as attract');
+});
+
+test('wiring: museumEvent records before presenting; builders are action-origin', () => {
   const feed = readFileSync('src/ui/feed.ts', 'utf8');
   const body = feed.slice(feed.indexOf('export function museumEvent'), feed.indexOf('/** Matches the compact'));
   assert.ok(body.indexOf('recordEvent(') < body.indexOf('presentEvent('));
   assert.ok(body.includes('if (shown.banner) toast(title)'));
   assert.ok(!body.includes('exhibitEvents.unshift'));
-  for (const file of ['src/builders/systems.ts', 'src/builders/galaxy.ts', 'src/ui/exhibit-flow.ts']) {
+  for (const file of ['src/builders/systems.ts', 'src/builders/galaxy.ts']) {
     const src = readFileSync(file, 'utf8');
     const calls = src.split('museumEvent(').length - 1;
     const actions = src.match(/'action',?\s*\)/g)?.length ?? 0;

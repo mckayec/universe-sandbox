@@ -54,6 +54,19 @@ export function shortLabel(name: string, max = SHORT_LABEL_MAX) {
   return `${trimmed.slice(0, Math.max(1, max - 1)).trimEnd()}…`;
 }
 
+/** Visible canvas label text: shortened only in the compact layout; desktop keeps the full name. */
+export function canvasLabelText(name: string, compact: boolean, max = SHORT_LABEL_MAX) {
+  return compact ? shortLabel(name, max) : name.trim();
+}
+
+/**
+ * Who started a guided-exhibit load. A visitor's own pick is an action; the idle attract demo (start and every
+ * restart) loads exhibits on its own, so it is simulation-origin and stays silent in quiet mode.
+ */
+export function exhibitLoadOrigin(asAttract: boolean): EventOrigin {
+  return asAttract ? 'simulation' : 'action';
+}
+
 export type LabelContext = {
   compact: boolean;
   selected: boolean;
