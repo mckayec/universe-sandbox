@@ -1,0 +1,74 @@
+{"tag":"1440x900","check":"black hole placed and selected","pass":true,"detail":1}
+{"tag":"1440x900","check":"reference row visible with picker","pass":true,"detail":""}
+{"tag":"1440x900","check":"default reads model units only","pass":true,"detail":"None · model units only"}
+{"tag":"1440x900","check":"picker has a visible label","pass":true,"detail":"Read as"}
+{"tag":"1440x900","check":"Large stellar reads ≈ 30 M☉, stellar-mass, horizon radius 89 km","pass":true,"detail":"≈ 30 M☉ · Stellar-mass · horizon radius 89 km (not drawn to scale)"}
+{"tag":"1440x900","check":"reference row fits inside the panel (no clipping)","pass":true,"detail":{"rowOverflow":false,"inside":true,"right":1402,"panelRight":1418}}
+{"tag":"1440x900","check":"mass row still model units","pass":true,"detail":"600 model units"}
+{"tag":"1440x900","check":"factor = 30 / model mass","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"1440x900","check":"physics untouched: mass, radius, position equal","pass":true,"detail":[600,600,1.4,1.4]}
+{"tag":"1440x900","check":"change is one undo step","pass":true,"detail":[2,3]}
+{"tag":"1440x900","check":"undo restores no reference","pass":true,"detail":null}
+{"tag":"1440x900","check":"redo restores the 30 M☉ reference","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"1440x900","check":"select restored hole in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"1440x900","check":"picker reflects restored reference","pass":true,"detail":"large-stellar"}
+{"tag":"1440x900","check":"select saved hole in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"1440x900","check":"set back to none","pass":true,"detail":null}
+{"tag":"1440x900","check":"load restores the saved reference","pass":true,"detail":[{"origin":"large-stellar","solarMassPerModelUnit":0.05}]}
+{"tag":"1440x900","check":"two referenced holes total 35 M☉","pass":true,"detail":35}
+{"tag":"1440x900","check":"merged survivor reference = 35 M☉, origin merged","pass":true,"detail":{"n":1,"ref":{"origin":"merged","solarMassPerModelUnit":0.029166666666666667},"mass":1200,"solarAfter":35}}
+{"tag":"1440x900","check":"select merged survivor in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"1440x900","check":"inspector shows merged ≈ 35 M☉ and picker shows Merged remnant","pass":true,"detail":["≈ 35 M☉ · Stellar-mass · horizon radius 103 km (not drawn to scale)","merged"]}
+{"tag":"1440x900","check":"panel within viewport width","pass":true,"detail":{"x":1194,"y":120,"width":224,"height":435.359375}}
+{"tag":"1440x900","check":"rocky selection hides reference row","pass":true,"detail":"Carbon world"}
+{"tag":"1440x900","check":"no page/console errors","pass":true,"detail":[]}
+{"tag":"390x844","check":"black hole placed and selected","pass":true,"detail":1}
+{"tag":"390x844","check":"collapsed sheet hides reference row","pass":true,"detail":""}
+{"tag":"390x844","check":"reference row visible with picker","pass":true,"detail":""}
+{"tag":"390x844","check":"default reads model units only","pass":true,"detail":"None · model units only"}
+{"tag":"390x844","check":"picker has a visible label","pass":true,"detail":"Read as"}
+{"tag":"390x844","check":"Large stellar reads ≈ 30 M☉, stellar-mass, horizon radius 89 km","pass":true,"detail":"≈ 30 M☉ · Stellar-mass · horizon radius 89 km (not drawn to scale)"}
+{"tag":"390x844","check":"reference row fits inside the panel (no clipping)","pass":true,"detail":{"rowOverflow":false,"inside":true,"right":365,"panelRight":378}}
+{"tag":"390x844","check":"mass row still model units","pass":true,"detail":"600 model units"}
+{"tag":"390x844","check":"factor = 30 / model mass","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"390x844","check":"physics untouched: mass, radius, position equal","pass":true,"detail":[600,600,1.4,1.4]}
+{"tag":"390x844","check":"change is one undo step","pass":true,"detail":[2,3]}
+{"tag":"390x844","check":"undo restores no reference","pass":true,"detail":null}
+{"tag":"390x844","check":"redo restores the 30 M☉ reference","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"390x844","check":"select restored hole in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"390x844","check":"picker reflects restored reference","pass":true,"detail":"large-stellar"}
+{"tag":"390x844","check":"select saved hole in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"390x844","check":"set back to none","pass":true,"detail":null}
+{"tag":"390x844","check":"load restores the saved reference","pass":true,"detail":[{"origin":"large-stellar","solarMassPerModelUnit":0.05}]}
+{"tag":"390x844","check":"two referenced holes total 35 M☉","pass":true,"detail":35}
+{"tag":"390x844","check":"merged survivor reference = 35 M☉, origin merged","pass":true,"detail":{"n":1,"ref":{"origin":"merged","solarMassPerModelUnit":0.029166666666666667},"mass":1200,"solarAfter":35}}
+{"tag":"390x844","check":"select merged survivor in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"390x844","check":"inspector shows merged ≈ 35 M☉ and picker shows Merged remnant","pass":true,"detail":["≈ 35 M☉ · Stellar-mass · horizon radius 103 km (not drawn to scale)","merged"]}
+{"tag":"390x844","check":"panel within viewport width","pass":true,"detail":{"x":12,"y":372.890625,"width":366,"height":405.109375}}
+{"tag":"390x844","check":"rocky selection hides reference row","pass":true,"detail":"Carbon world"}
+{"tag":"390x844","check":"no page/console errors","pass":true,"detail":[]}
+{"tag":"844x390","check":"black hole placed and selected","pass":true,"detail":1}
+{"tag":"844x390","check":"reference row visible with picker","pass":true,"detail":""}
+{"tag":"844x390","check":"default reads model units only","pass":true,"detail":"None · model units only"}
+{"tag":"844x390","check":"picker has a visible label","pass":true,"detail":"Read as"}
+{"tag":"844x390","check":"Large stellar reads ≈ 30 M☉, stellar-mass, horizon radius 89 km","pass":true,"detail":"≈ 30 M☉ · Stellar-mass · horizon radius 89 km (not drawn to scale)"}
+{"tag":"844x390","check":"reference row fits inside the panel (no clipping)","pass":true,"detail":{"rowOverflow":false,"inside":true,"right":806,"panelRight":822}}
+{"tag":"844x390","check":"mass row still model units","pass":true,"detail":"600 model units"}
+{"tag":"844x390","check":"factor = 30 / model mass","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"844x390","check":"physics untouched: mass, radius, position equal","pass":true,"detail":[600,600,1.4,1.4]}
+{"tag":"844x390","check":"change is one undo step","pass":true,"detail":[2,3]}
+{"tag":"844x390","check":"undo restores no reference","pass":true,"detail":null}
+{"tag":"844x390","check":"redo restores the 30 M☉ reference","pass":true,"detail":{"origin":"large-stellar","solarMassPerModelUnit":0.05}}
+{"tag":"844x390","check":"select restored hole in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"844x390","check":"picker reflects restored reference","pass":true,"detail":"large-stellar"}
+{"tag":"844x390","check":"select saved hole in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"844x390","check":"set back to none","pass":true,"detail":null}
+{"tag":"844x390","check":"load restores the saved reference","pass":true,"detail":[{"origin":"large-stellar","solarMassPerModelUnit":0.05}]}
+{"tag":"844x390","check":"two referenced holes total 35 M☉","pass":true,"detail":35}
+{"tag":"844x390","check":"merged survivor reference = 35 M☉, origin merged","pass":true,"detail":{"n":1,"ref":{"origin":"merged","solarMassPerModelUnit":0.029166666666666667},"mass":1200,"solarAfter":35}}
+{"tag":"844x390","check":"select merged survivor in inspect mode (no new body)","pass":true,"detail":{"placementMode":false,"selected":1,"want":1,"n":1}}
+{"tag":"844x390","check":"inspector shows merged ≈ 35 M☉ and picker shows Merged remnant","pass":true,"detail":["≈ 35 M☉ · Stellar-mass · horizon radius 103 km (not drawn to scale)","merged"]}
+{"tag":"844x390","check":"panel within viewport width","pass":true,"detail":{"x":598,"y":120,"width":224,"height":210}}
+{"tag":"844x390","check":"rocky selection hides reference row","pass":true,"detail":"Carbon world"}
+{"tag":"844x390","check":"no page/console errors","pass":true,"detail":[]}
+{"summary":true,"failed":0}

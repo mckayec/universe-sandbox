@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements bounded item 7b (scene-wide unit mapping, per-body reference scale, persistence/history/merger treatment, physical-horizon versus visual/picking/contact size); SC7-C1/C2 closed at 660cfaf per implementation-review-660cfaf.md.
-updated: 2026-11-10T13:19:30Z
+next-action: ChatGPT reviews bounded item 7b at exact PR47 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84 per sc7b-return-3ab737f.md (unit-mapping wording, reference/merger semantics, persistence, physics isolation).
+updated: 2026-11-10T14:08Z
 idle-runs: 0
-note: Bounded 7a correction accepted at exact PR47 660cfaf; SC7-C1/C2 closed 2/2. Independent 9/9 focused tests, 5/5 markup rows, 25/25 input hashes; CI logs 215/215 units, 113/113 dist, 24/24 pages. Builder rendered 73/73 attributed, 3/3 screenshots viewed; 0 independent rendered cases (Chromium socket permission). 7b, Save/Load, prior SC1-E1/SC4-E1, device/GPU/accessibility/release limits remain; no release approval.
+note: Item 7b returned at PR47 3ab737f (parent 660cfaf, 14 files): per-body black-hole reference scale (Read as picker, fixed M☉/model-unit factor, linear horizon growth), merger/save/undo/transform treatment, documented mu_sim = mu_SI·T0²/L0³ mapping not applied to the solver. Units 224/224, dist 113, pages 24/24; builder rendered 73/73 at 3 viewports, 3/3 screenshots viewed. Legacy M⊕ on other bodies, Save→Clear→Load, SC1-E1/SC4-E1, device/GPU/accessibility/release limits remain; no release approval.
 
 
 
@@ -329,3 +329,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-10T13:05Z Claude: [SC7-C1/C2 return](sc7-c-return-660cfaf.md) at PR47 660cfaf36d838d35dc2aae0f0ed99bb16907b324 (parent 07464c3; 4 files): example source links + qualifications through the actual markup path, radius wording. 215/215 units, 113 dist, 24/24 pages; [rendered](evidence-harness-7a2.mjs) 73/73 at 1440x900, 390x844, 844x390, 0 errors (keyboard summary/link, overflow, hiding). fixing/claude → implementation-review/chatgpt. 7b next with Claude. Not merged.
 
 - 2026-11-10T13:19:30Z ChatGPT: [SC7 correction review](implementation-review-660cfaf.md) saved/read back at f28b32a70893c2922440bcac865317f0f62b0d58 after [independent output/manifest](reviewer-catalog-output-660cfaf.json) b308b6038ca38fc013ee2ebfd4f537afb5677636. Exact unchanged PR47 660cfaf36d838d35dc2aae0f0ed99bb16907b324: 4/4 delta files read, 25/25 input hashes, independent 9/9 focused tests and 5/5 generated rows retaining sources/qualifications/radius labels versus parent 0/5. SC7-C1/C2 closed (2/2), bounded 7a accepted. CI run 42819224457 logs verify 215/215 units, 113/113 dist, 24/24 pages on merge 358b8faf54bf39dd0278757b712a2217133e259b (241/241 non-doc files identical); deploy skipped. Builder 73/73 checks recounted and attributed, 3/3 screenshots viewed; harness visibility/keyboard scope limits documented. Fresh Chromium fails before page creation on socket permission; 0 independent rendered cases. implementation-review/chatgpt -> implementation/claude for 7b. Prior SC1-E1/SC4-E1, Save/Load, device/GPU/accessibility/release gaps retained. Inspected 18/18 pack and 8/8 review statuses; no stale parallel self-audit or other owned work. No site/PR-branch edit, merge, deployment or Mckay approval.
+- 2026-11-10T14:08Z Claude: [item 7b return](sc7b-return-3ab737f.md) at PR47 3ab737fe90991767b3cebf5410dc5a1c3b7a6f84 (parent 660cfaf; 14 files, +362/−4): per-body reference scale, merger/persistence/history treatment, documented unit mapping; physics untouched. 224/224 units, 113 dist, 24/24 pages; [rendered](evidence-harness-7b.mjs) [73/73](evidence-7b-3ab737f.jsonl), shots sc7b-*. Stage implementation → implementation-review, owner claude → chatgpt. idle-runs 0.
