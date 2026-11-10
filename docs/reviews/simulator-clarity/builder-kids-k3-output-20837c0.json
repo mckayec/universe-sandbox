@@ -1,0 +1,204 @@
+{
+  "head": "20837c0211575d03ed0ad3ff3c34fcb98adeb653",
+  "scope": "Builder adaptation of reviewer-kids-a50f1aa.mjs for the per-pointer state shape: actual handlers (notePress/noteRelease/noteCancel/gate) and helper; DOM adapters, not browser",
+  "inputs": [
+    {
+      "path": "src/ui/kids.ts",
+      "sha": "94d26ceb3d6652e08f9a7762eebfb482193be58c"
+    },
+    {
+      "path": "src/ui/pointer.ts",
+      "sha": "19ea6562ff0e73371d93756755bacb9f54812347"
+    },
+    {
+      "path": "src/ui/controls.ts",
+      "sha": "d7a530f1381bd0e9438acf4f3fa29679c129bc18"
+    },
+    {
+      "path": "src/kids-mode.ts",
+      "sha": "e2f4b968ef7adaf4fd5222450327c1121d2ed9be"
+    }
+  ],
+  "passed": 18,
+  "total": 18,
+  "results": [
+    {
+      "id": "held-touch-normal",
+      "expected": 1,
+      "actual": 1,
+      "armedAfter": false,
+      "pass": true
+    },
+    {
+      "id": "held-touch-escape",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": false,
+      "pass": true
+    },
+    {
+      "id": "held-touch-disarm",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": false,
+      "pass": true
+    },
+    {
+      "id": "held-touch-cancel",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": true,
+      "pass": true
+    },
+    {
+      "id": "held-touch-escape-rearm",
+      "expected": 0,
+      "actual": 0,
+      "armedAfter": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-canvas press released over dialog",
+      "trace": "down:canvas:7 up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog press and click",
+      "trace": "down:kids-dialog:8 up:8",
+      "click": {
+        "pointerId": 8,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-keyboard activation",
+      "trace": "",
+      "click": {
+        "pointerId": -1,
+        "detail": 0
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-canvas pointer 7 after dialog pointer 8 press (reviewer, no up)",
+      "trace": "down:canvas:7 down:kids-dialog:8",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog pointer 7 after canvas pointer 8 press (reviewer, no up)",
+      "trace": "down:kids-dialog:7 down:canvas:8",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-canvas 7 held, dialog 8 down, 7 up then click",
+      "trace": "down:canvas:7 down:kids-dialog:8 up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog 7, canvas 8 down, 7 up then click",
+      "trace": "down:kids-dialog:7 down:canvas:8 up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog 7 canceled",
+      "trace": "down:kids-dialog:7 cancel:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-dialog 7 down before dialog reopened",
+      "trace": "down:kids-dialog:7 reset up:7",
+      "click": {
+        "pointerId": 7,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-reused id: dialog press then canvas press",
+      "trace": "down:kids-dialog:1 up:1 down:canvas:1 up:1",
+      "click": {
+        "pointerId": 1,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-click with no pointer id after dialog release",
+      "trace": "down:kids-dialog:3 up:3",
+      "click": {
+        "pointerId": null,
+        "detail": 1
+      },
+      "expectedBlocked": false,
+      "actualBlocked": false,
+      "pass": true
+    },
+    {
+      "id": "dialog-click with no pointer id after canvas release",
+      "trace": "down:kids-dialog:3 down:canvas:4 up:4",
+      "click": {
+        "pointerId": null,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    },
+    {
+      "id": "dialog-second click from consumed authorization",
+      "trace": "down:kids-dialog:5 up:5 click:5",
+      "click": {
+        "pointerId": 5,
+        "detail": 1
+      },
+      "expectedBlocked": true,
+      "actualBlocked": true,
+      "pass": true
+    }
+  ]
+}
