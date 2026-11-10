@@ -476,7 +476,7 @@ function start(pack){
   const K=normalise(pack);buildShell(K);
   const BOOKS=K.books,BOOK_IDS=K.bookIds,WORLDS=K.worlds,EVENTS=K.events,G=K.G,UI=K.ui,CUM=K.mode==="cumulative";
   const GROUP_BY={};K.groups.forEach(g=>GROUP_BY[g.id]=g);
-  const GROUP_NAME=g=>{const gr=GROUP_BY[g];if(!gr)return "";if(!gr.eras)return gr.name||"";let v=gr.name;const cur=S.book||99;Object.keys(gr.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(cur>=k&&gr.eras[k]&&gr.eras[k].name)v=gr.eras[k].name;});return v||"";};
+  const GROUP_NAME=g=>{const gr=GROUP_BY[g];if(!gr)return "";if(!gr.eras)return gr.name||"";let v=gr.name;const cur=S.book||99;Object.keys(gr.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(eraAt(cur,k)&&gr.eras[k]&&gr.eras[k].name)v=gr.eras[k].name;});return v||"";};
   let MOB=isMob();
   /* budgets fixed at start-up: phones and coarse pointers get the light versions even if the window later grows */
   const SMALL=MOB||matchMedia("(pointer:coarse)").matches;
@@ -725,7 +725,7 @@ const bakeMat=new THREE.ShaderMaterial({vertexShader:BAKE_VS,fragmentShader:BAKE
     uP0:{value:new THREE.Color()},uP1:{value:new THREE.Color()},uP2:{value:new THREE.Color()},uP3:{value:new THREE.Color()},uP4:{value:new THREE.Color()},uP5:{value:new THREE.Color()}}});
 const bakeScene=new THREE.Scene();const bakeCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 const bakeQuad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),bakeMat);bakeQuad.frustumCulled=false;bakeScene.add(bakeQuad);
-function gfxFor(w,book){let g=Object.assign({},w.gfx||{});if(w.eras){Object.keys(w.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if(book>=k&&w.eras[k]&&w.eras[k].gfx)g=Object.assign(g,w.eras[k].gfx);});}return g;}
+function gfxFor(w,book){let g=Object.assign({},w.gfx||{});if(w.eras){Object.keys(w.eras).map(Number).sort((a,b)=>a-b).forEach(k=>{if((PW()?reach(k):book>=k)&&w.eras[k]&&w.eras[k].gfx)g=Object.assign(g,w.eras[k].gfx);});}return g;}
 function setBakeU(g,seedKey){const u=bakeMat.uniforms;const R=rng(hashStr(seedKey));
   u.uType.value=TYPES[g.type]!=null?TYPES[g.type]:0;u.uSeed.value.set(R()*40-20,R()*40-20,R()*40-20);
   u.uFreq.value=g.freq||1.6;u.uWarp.value=g.warp==null?.6:g.warp;u.uRough.value=g.rough==null?.6:g.rough;u.uSea.value=g.sea==null?.5:g.sea;
@@ -926,25 +926,80 @@ const filterOk=it=>!LY||(LY.layerOk(it,S.layers)&&LY.timeOk(it,S.range));
 let TRV=null;
 const EV_BY={};EVENTS.forEach((e,i)=>{e.ord=i;EV_BY[e.id]=e;});
 const EFF=()=>S.book||99;
+/* ===================== PER-WORK READING STATE (COS-BB-001, reading.js) =====================
+   Dormant unless a cumulative pack declares a valid spoilers.works registry: then legacy (#book=N) and All keep
+   every numeric rule below unchanged, and the per-work modes (preset, set, safe) route each gated surface through
+   AtlasReading.visible(). Records without their own `gate` fall back to their whole numeric bucket ("unreviewed").
+   Declared with var/function so code above this point can call PW() safely before start-up reaches here. */
+var RDG=window.AtlasReading||null;
+var RREG=null;
+var RSET=new Set();
+var RGEN=0;
+(function initReadingRegistry(){
+  if(!RDG||!CUM)return;
+  const r=RDG.normRegistry(K.raw);
+  if(r&&!r.ok)console.warn("Atlas: invalid reading registry; per-work modes are off",r.errors);
+  RREG=r&&r.ok?r:null;})();
+function PW(){return !!(RREG&&S.rd&&(S.rd.mode==="preset"||S.rd.mode==="set"||S.rd.mode==="safe"));}
+/* apply a reading state: legacy/all keep S.book; per-work modes set S.book=0 and fill RSET. RGEN lets delayed
+   callbacks notice that the state changed while they were pending. */
+function setRd(st){
+  RGEN++;
+  S.rd=st||{mode:"all"};
+  S.book=S.rd.mode==="legacy"?S.rd.book:0;
+  RSET=(RREG&&RDG.readSetOf(S.rd,RREG))||new Set();}
+const GCACHE=new WeakMap();
+function bucketGate(k){
+  return RREG?RDG.recordGate({book:k},RREG):{kind:"invalid"};}
+function gateOf(o,key){
+  if(!o||typeof o!=="object")return {kind:"invalid"};
+  let g=GCACHE.get(o);
+  if(!g){g=Object.prototype.hasOwnProperty.call(o,"gate")?RDG.compileGate(o.gate,RREG):bucketGate(key);GCACHE.set(o,g);}
+  return g;}
+/* numeric thresholds (eras, realms, badges, scene gates): reached only when every work of bucket k is read */
+function reach(k){
+  if(k==null||!(k>0))return true;
+  return !!RREG&&RDG.visible([bucketGate(k)],RSET);}
+let SITE_W=null;
+function siteWorld(s){
+  if(!SITE_W){SITE_W=new Map();WORLDS.forEach(w=>(w.sites||[]).forEach(x=>SITE_W.set(x,w)));}
+  return SITE_W.get(s)||null;}
+const siteKey=(s,w)=>s.books&&s.books.length?Math.min(...s.books):s.book||(w?firstOf(w):null);
+const worldChain=w=>[gateOf(w,firstOf(w))];
+function siteChain(s){const w=siteWorld(s);return w?worldChain(w).concat([gateOf(s,siteKey(s,w))]):[{kind:"invalid"}];}
+function evChain(e){
+  const w=WORLD_BY[e.world];if(!w)return [{kind:"invalid"}];
+  const st=e.site&&(w.sites||[]).find(x=>x.id===e.site);
+  return (st?siteChain(st):worldChain(w)).concat([gateOf(e,e.book)]);}
+const pvis=chain=>!!RREG&&RDG.visible(chain,RSET);
+/* legacy rule for events, unchanged */
+const evOk=e=>PW()?pvis(evChain(e)):(!S.book||(CUM?e.book<=S.book:e.book===S.book));
+const eraAt=(cur,k)=>PW()?reach(k):cur>=k;
+function gatePW(it){
+  if(!it)return true;
+  if(it.books)return ARR(it.books).some(reach);
+  const f=it.first!=null?it.first:it.gateBook;
+  return f==null||reach(f);}
+function rdLabel(){return RREG&&S.rd?RDG.describe(S.rd,RREG,S.book&&BOOKS[S.book]?BOOKS[S.book].title:"").label:"";}
 const firstOf=w=>w.first||(w.books&&w.books.length?Math.min(...w.books):1);
 /* optional book gating for labels, glows, territories and links: `books:[..]` = only in those books, `book`/`first` = from that book on */
-const gateOk=(it,b)=>{if(!it||!b)return true;if(it.books)return ARR(it.books).includes(b);const f=it.first!=null?it.first:it.gateBook;return f==null||b>=f;};
-const eraVal=(o,key)=>{let v=o[key];const cur=CUM?EFF():S.book;eraKeys(o).forEach(k=>{if(cur>=k&&o.eras[k][key]!=null)v=o.eras[k][key];});return v;};
+const gateOk=(it,b)=>{if(PW())return gatePW(it);if(!it||!b)return true;if(it.books)return ARR(it.books).includes(b);const f=it.first!=null?it.first:it.gateBook;return f==null||b>=f;};
+const eraVal=(o,key)=>{let v=o[key];const cur=CUM?EFF():S.book;eraKeys(o).forEach(k=>{if(eraAt(cur,k)&&o.eras[k][key]!=null)v=o.eras[k][key];});return v;};
 const realmOk=it=>{if(!it)return true;const r=it.realm||it.realms;if(!r||typeof r!=="string"&&!Array.isArray(r))return true;return ARR(r).includes(S.realm||"physical");};
-const seen=w=>(!CUM||!S.book||firstOf(w)<=S.book)&&realmOk(w)&&filterOk(w);
-const inBook=w=>!S.book||(w.books||[]).includes(S.book);
-const siteEraOk=s=>{const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since)&&filterOk(s);};
-const siteSeen=s=>siteEraOk(s)&&(!CUM||!S.book||!(s.books&&s.books.length)||Math.min(...s.books)<=S.book)&&realmOk(s);
-const evFor=(wid,site)=>EVENTS.filter(e=>e.world===wid&&(site==null||e.site===site)&&filterOk(e)&&(!S.book||(CUM?e.book<=S.book:e.book===S.book)));
+const seen=w=>(PW()?pvis(worldChain(w)):(!CUM||!S.book||firstOf(w)<=S.book))&&realmOk(w)&&filterOk(w);
+const inBook=w=>PW()||!S.book||(w.books||[]).includes(S.book);
+const siteEraOk=s=>{if(PW())return !(s.until&&reach(s.until))&&!(s.since&&!reach(s.since))&&filterOk(s);const b=S.book||0;return !(s.until&&b>=s.until)&&!(s.since&&b<s.since)&&filterOk(s);};
+const siteSeen=s=>siteEraOk(s)&&(PW()?pvis(siteChain(s)):!CUM||!S.book||!(s.books&&s.books.length)||Math.min(...s.books)<=S.book)&&realmOk(s);
+const evFor=(wid,site)=>EVENTS.filter(e=>e.world===wid&&(site==null||e.site===site)&&filterOk(e)&&evOk(e));
 const eraKeys=w=>w.eras?Object.keys(w.eras).map(Number).filter(k=>isFinite(k)&&w.eras[k]).sort((a,b)=>a-b):[];
-function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(S.book>=k&&w.eras[k].status)s=w.eras[k].status;});
-  if(!S.book&&w.eras){
+function statusFor(w){let s=w.status;eraKeys(w).forEach(k=>{if(eraAt(S.book,k)&&w.eras[k].status)s=w.eras[k].status;});
+  if(!PW()&&!S.book&&w.eras){
     if(CUM){const ks=eraKeys(w).filter(k=>w.eras[k].status);if(ks.length){const k=Math.max(...ks);s=w.status+" → "+w.eras[k].status;}}
     else{const ks=eraKeys(w);if(ks.length){const k=Math.max(...ks);if(w.eras[k].status)s=w.status+" → "+w.eras[k].status;}}}
   return s;}
 const bk1=b=>'<span class="bk bk'+b+'">'+esc(BOOKS[b].n)+'</span>';
 /* more than 12 badges (packs with many books) collapse to "first … last · N" */
-const bks=arr=>{const l=(arr||[]).filter(b=>BOOKS[b]&&(!CUM||!S.book||b<=S.book));
+const bks=arr=>{const l=(arr||[]).filter(b=>BOOKS[b]&&(PW()?reach(b):!CUM||!S.book||b<=S.book));
   if(l.length>12)return '<span class="bks">'+bk1(l[0])+'<span class="bkgap">…</span>'+bk1(l[l.length-1])+'<span class="bkgap">'+l.length+'</span></span>';
   return '<span class="bks">'+l.map(bk1).join("")+'</span>';};
 const groupOpt=(w,k,def)=>{const g=GROUP_BY[w.group];return g&&g[k]!=null?g[k]:def;};
@@ -1025,7 +1080,7 @@ const idx=$("#index");
 function renderIndex(){let h='<h2 class="eyebrow">'+esc(UI.indexTitle)+'</h2>';
   K.groups.forEach(gr=>{const g=gr.id;const ws=WORLDS.filter(w=>w.group===g&&seen(w));if(!ws.length)return;h+='<div class="grp">'+esc(GROUP_NAME(g))+'</div>';
     ws.forEach(w=>{const n=evFor(w.id).length;h+='<button class="world'+(inBook(w)?"":" dim")+(S.sel===w.id?" sel":"")+(w.craft?" craft":"")+'" data-id="'+esc(w.id)+'"><span class="sw" style="background:'+esc((w.gfx&&w.gfx.sw)||(w.gfx&&w.gfx.pal&&w.gfx.pal[3])||"#889")+'"></span>'+esc(w.name)+'<span class="n">'+(n?n+UI.evCount:"")+'</span></button>';});});
-  if(S.book){const hid=WORLDS.filter(w=>realmOk(w)&&!seen(w)).length;if(hid)h+='<p class="locked-note">'+hid+' more world'+(hid===1?" appears":"s appear")+' in later books.</p>';}
+  if(S.book||PW()){const hid=WORLDS.filter(w=>realmOk(w)&&!seen(w)).length;if(hid)h+='<p class="locked-note">'+hid+' more world'+(hid===1?" appears":"s appear")+(PW()?' in books you have not marked as read.':' in later books.')+'</p>';}
   idx.innerHTML=h;}
 idx.addEventListener("click",e=>{const b=e.target.closest(".world");if(!b)return;if(MOB){idx.classList.remove("open");$("#idxBtn").setAttribute("aria-expanded","false");}
   if(S.view==="world")descend(b.dataset.id);else selectWorld(b.dataset.id,true);});
@@ -1041,7 +1096,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     h=grab(M.title,"About")+'<p class="eyebrow">'+esc([M.author,M.years].filter(Boolean).join(" · "))+'</p><h2>'+esc(M.series)+'</h2>'+realmCard(null)+
       (IN.text?'<p class="blurb">'+esc(IN.text)+'</p>':"")+
       (CUM?'<div class="rule"><span class="eyebrow">Reading through</span></div>'+
-      '<p class="shield">'+(S.book?'Showing <b>'+esc(BOOKS[S.book].title)+'</b> and the books before it. Worlds, events and fates from later books are hidden.':
+      '<p class="shield">'+(PW()?esc(rdLabel())+'. Only what those books reveal is shown.':S.book?'Showing <b>'+esc(BOOKS[S.book].title)+'</b> and the books before it. Worlds, events and fates from later books are hidden.':
         (BOOK_IDS.length>1?'Showing all '+nBooksWord+' books. <b>Pick the book you are reading</b> in the bar above to hide later spoilers.':'Showing the whole book.'))+'</p>':"")+
       (ARR(IN.legend).length?'<div class="rule"><span class="eyebrow">How to read the map</span></div>'+
       '<dl class="facts">'+ARR(IN.legend).map(r=>'<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>').join("")+'</dl>':"")+
@@ -1061,13 +1116,13 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     const all=(w.sites||[]).filter(siteEraOk);
     if(CUM){const sites=all.filter(siteSeen);
       if(sites.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
-        sites.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(!S.book||(s.books||[]).includes(S.book)?"":' style="opacity:.55"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||[])+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
+        sites.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(PW()||!S.book||(s.books||[]).includes(S.book)?"":' style="opacity:.55"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||[])+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
     else{const vis=all.filter(s=>!S.book||!s.book||s.book===S.book||(s.books||[]).includes(S.book));
       if(all.length){h+='<div class="rule"><span class="eyebrow">Places</span></div>';
         all.forEach(s=>{h+='<button class="place'+(S.site===s.id?" sel":"")+'" data-site="'+esc(s.id)+'"'+(vis.includes(s)?"":' style="opacity:.45"')+'><span class="pn"><span class="pip"></span>'+esc(s.name)+'<span class="pc">'+bks(s.books||(s.book?[s.book]:[]))+placeMeta(s)+'</span></span><span class="pd">'+esc(s.desc)+'</span>'+siteExtra(s)+'</button>';});}}
     const evs=evFor(w.id);h+='<div class="rule"><span class="eyebrow">In the Chronicle</span></div>';
     h+=evs.length?evs.map(e=>'<button class="evitem'+(S.ev===e.id?" open":"")+(S.book&&e.book<S.book?" past":"")+'" data-ev="'+esc(e.id)+'"><span class="et"><span class="bk bk'+e.book+'">'+esc(BOOKS[e.book].n)+'</span>'+esc(e.title)+'</span>'+(LY&&(e.when!=null||e.layers||e.layer)?'<span class="ep lmeta">'+LY.itemMeta(LAY,TL,e)+'</span>':"")+'<span class="ex">'+esc(e.text)+'</span>'+(e.side?'<span class="ep">'+esc(e.side)+'</span>':e.site?'<span class="ep">'+esc(siteName(w,e.site))+'</span>':"")+'</button>').join("")
-      :'<p class="empty">'+(S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
+      :'<p class="empty">'+(PW()?"Nothing here is revealed by the books you have read.":S.book?(CUM?"Nothing happens here up to "+BOOKS[S.book].title+".":"No events here in "+BOOKS[S.book].title+"."):"No major events take place here.")+'</p>';
   }
   dos.innerHTML=h;dos.classList.toggle("collapsed",MOB&&dosCollapsed);dos.scrollTop=0;
   const gb=$("#grab");
@@ -1075,7 +1130,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     gb.addEventListener("click",e=>{if(e.target.closest("[data-act]"))return;toggleSheet();});
     gb.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleSheet();}});}
 }
-function eraBlurb(w){let b=w.blurb;const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(cur>=k&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
+function eraBlurb(w){let b=w.blurb;const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(eraAt(cur,k)&&w.eras[k].blurb)b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
 const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
 function placeMeta(s){return LY?LY.itemMeta(LAY,TL,s):"";}
@@ -1102,8 +1157,9 @@ dos.addEventListener("click",e=>{const a=e.target.closest("[data-act]");if(a){co
 /* ===================== CHRONICLE ===================== */
 const track=$("#track");const chron=$("#chron");
 function renderChron(){let h="";BOOK_IDS.forEach(b=>{
+  if(PW()&&!EVENTS.some(e=>e.book===b&&filterOk(e)&&evOk(e))&&!reach(b)){h+='<div class="book locked"><div class="book-t" style="color:var(--b'+b+')"><i>'+esc(BOOKS[b].n)+'</i>'+esc(BOOKS[b].title)+'</div><div class="lockmsg">Hidden until you mark it read</div></div>';return;}
   if(CUM&&S.book&&b>S.book){h+='<div class="book locked"><div class="book-t" style="color:var(--b'+b+')"><i>'+esc(BOOKS[b].n)+'</i>'+esc(BOOKS[b].title)+'</div><div class="lockmsg">Hidden until you reach it</div></div>';return;}
-  const evs=EVENTS.filter(e=>e.book===b&&filterOk(e));
+  const evs=EVENTS.filter(e=>e.book===b&&filterOk(e)&&(!PW()||evOk(e)));
   h+='<div class="book'+(CUM&&S.book&&b<S.book?" past":"")+'"><div class="book-t" style="color:var(--b'+b+')"><i>'+esc(BOOKS[b].n)+'</i>'+esc(BOOKS[b].title)+'</div><div class="evs">'+
     evs.map(e=>'<button class="ev'+(!CUM&&S.book&&S.book!==b?" dim":"")+(S.ev===e.id?" hl":"")+(e.side?" side":"")+'" data-ev="'+esc(e.id)+'" style="--c:var(--b'+b+')"><span class="d"></span><span class="tt">'+esc(e.title)+'</span><span class="pl">'+esc(WORLD_BY[e.world]?WORLD_BY[e.world].name:"")+'</span></button>').join("")+'</div></div>';});
   track.innerHTML=h;if(typeof chronH==="function")requestAnimationFrame(chronH);
@@ -1118,6 +1174,7 @@ function renderLegend(){const b=S.book;let L=[];
   if(typeof K.legend==="function"){try{L=ARR(K.legend(b,HOOK_API));}catch(e){console.warn(e);}}
   else ARR(K.legend).forEach(it=>{if(!it)return;
     if(it.bookColors){if(b)L.push([BOOKS[b].c,(it.label||"")+" · "+BOOKS[b].title]);else L.push(["linear-gradient(90deg,"+BOOK_IDS.map(k=>BOOKS[k].c).join(",")+")",it.allLabel||it.label||""]);return;}
+    if(PW()&&(it.books&&!ARR(it.books).some(reach)||it.book!=null&&!reach(it.book)))return;
     if(it.books&&b&&!ARR(it.books).includes(b))return;if(it.book!=null&&b&&b<it.book)return;
     L.push([it.color||"#fff",it.label||""]);});
   $("#legend").innerHTML=L.map(l=>'<span><i style="background:'+esc(l[0])+'"></i>'+esc(l[1])+'</span>').join("");}
@@ -1127,11 +1184,11 @@ let cxTab=K.codex.length?K.codex[0].id:null;
 function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books):1);}
 function renderCodex(){if(!cxTab)return;$("#cxTabs").innerHTML=K.codex.map(t=>'<button class="btn" data-tab="'+esc(t.id)+'" aria-pressed="'+(t.id===cxTab)+'">'+esc(t.t)+'</button>').join("");
   const tab=K.codex.find(t=>t.id===cxTab)||K.codex[0];
-  const list=tab.list.filter(x=>!CUM||!S.book||cxFirst(x)<=S.book);const hid=tab.list.length-list.length;
-  $("#cxBody").innerHTML=list.map(x=>{const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
+  const list=tab.list.filter(x=>PW()?pvis([gateOf(x,cxFirst(x))]):!CUM||!S.book||cxFirst(x)<=S.book);const hid=tab.list.length-list.length;
+  $("#cxBody").innerHTML=list.map(x=>{const more=ARR(x.more).filter(m=>m&&(PW()?pvis([gateOf(x,cxFirst(x)),bucketGate(m[0])]):m[0]<=EFF())).map(m=>m[1]).join(" ");
     return '<div class="cx-item"><h3>'+esc(x.name)+'</h3>'+(x.role||x.books?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p></div>';}).join("")+
-    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in later books.</p>':"");
-  $("#cxNote").textContent=CUM?(S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
+    (hid?'<p class="cx-hid">'+hid+' more entr'+(hid===1?"y unlocks":"ies unlock")+' in '+(PW()?'books you have not marked as read':'later books')+'.</p>':"");
+  $("#cxNote").textContent=CUM?(PW()?rdLabel():S.book?"Reading through "+BOOKS[S.book].title:(BOOK_IDS.length>1?"All "+nBooksWord+" books · spoilers":"")):"";}
 $("#cxTabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){cxTab=b.dataset.tab;renderCodex();}});
 function openCodex(){renderCodex();$("#codex").hidden=false;$("#cxClose").focus();}
 function closeCodex(){if($("#codex").hidden)return;$("#codex").hidden=true;$("#cxBtn").focus();}
@@ -1228,7 +1285,7 @@ function applyRealmToPlanet(){if(!PL)return;const L=realmLook(PL.w);const u=PL.m
 const REALM_GAL={physical:{g:1,d:.55,clear:0x04050b},cognitive:{g:.1,d:.05,clear:0x030206},spiritual:{g:.04,d:0,clear:0x06040a}};
 function setRealmLook(){const L=REALM_GAL[S.realm];galMat.uniforms.uAlpha.value=L.g;dustMat.uniforms.uAlpha.value=L.d;renderer.setClearColor(L.clear,1);}
 const realmFirst=r=>RL&&RL[r]&&RL[r].first||0;
-const realmOpen=r=>r==="physical"||!CUM||!S.book||S.book>=realmFirst(r);
+const realmOpen=r=>r==="physical"||(PW()?reach(realmFirst(r)):!CUM||!S.book||S.book>=realmFirst(r));
 function renderRealmBar(){const bar=$("#realms");if(!bar)return;if(!realmOpen(S.realm)){setRealm("physical",true);}
   bar.querySelectorAll("button").forEach(b=>{const r=b.dataset.r;const open=realmOpen(r);b.disabled=!open;b.setAttribute("aria-pressed",String(r===S.realm));
     b.title=open?((RL[r]||{}).tip||""):("Appears from "+(BOOKS[realmFirst(r)]?BOOKS[realmFirst(r)].title:"a later book"));});}
@@ -1273,6 +1330,7 @@ if(filtersEl&&LY){
 /* A node is hidden by the spoiler gate (book) and only faded by the layer and year filters, so the
    shape of the tree stays readable while the filters point at part of it. */
 function treeNodeSeen(n){
+  if(PW()){if(n.gate)return pvis([gateOf(n,null)]);const f=n.first!=null?n.first:n.books&&n.books.length?Math.min(...n.books):null;return reach(f);}
   if(!S.book)return true;
   if(n.first!=null&&S.book<n.first)return false;
   if(n.books&&n.books.length)return CUM?Math.min(...n.books)<=S.book:n.books.includes(S.book);
@@ -1350,7 +1408,7 @@ function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();retu
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
-$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
+$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;if(RREG)setRd(+b.dataset.b?{mode:"legacy",book:+b.dataset.b}:{mode:"all"});S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
@@ -1368,12 +1426,12 @@ $("#galBtn").addEventListener("click",flyGalaxy);
 $("#webBtn").addEventListener("click",flyHuman);
 function applyBookToScene(){const b=S.book;
   LINK_DEFS.forEach(d=>{const L=LINKS[d.id];if(!L)return;const op=d.op,R=d.L;
-    let a=!b?op.all:R.books?(ARR(R.books).includes(b)?op.cur:0):R.book!=null?(R.book===b?op.cur:R.book<b?op.past:0):op.cur;if(d.minBook!=null&&b&&b<d.minBook)a=0;if(!realmOk(R)||!filterOk(R))a=0;
+    let a=PW()?(R.books?(ARR(R.books).some(reach)?op.cur:0):R.book!=null?(reach(R.book)?op.cur:0):op.cur):!b?op.all:R.books?(ARR(R.books).includes(b)?op.cur:0):R.book!=null?(R.book===b?op.cur:R.book<b?op.past:0):op.cur;if(d.minBook!=null&&(PW()?!reach(d.minBook):b&&b<d.minBook))a=0;if(!realmOk(R)||!filterOk(R))a=0;
     L.material.uniforms.uA.value=a;L.visible=a>0;});
   const dim=markerPts.geometry.attributes.aDim;WORLDS.forEach((w,i)=>dim.setX(i,!seen(w)?-1:inBook(w)?1:K.spoil.dimMarker));dim.needsUpdate=true;
   WORLDS.filter(w=>w.swarm).forEach(w=>{const s=GMARK[w.id+"_swarm"];if(s)s.visible=CUM?seen(w):(!b||inBook(w));});
   GLOWS.forEach(g=>{g.s.visible=gateOk(g.gate,b)&&realmOk(g.def);});
-  REALM_FX.forEach(f=>{f.s.visible=f.realm===S.realm&&(!f.first||!CUM||!b||b>=f.first);});TERR.forEach(m=>{m.visible=gateOk(m.userData.gate,b);});}
+  REALM_FX.forEach(f=>{f.s.visible=f.realm===S.realm&&(!f.first||(PW()?reach(f.first):!CUM||!b||b>=f.first));});TERR.forEach(m=>{m.visible=gateOk(m.userData.gate,b);});}
 
 /* ===================== POINTER INPUT ===================== */
 const ptrs=new Map();let dragMoved=0,pinch0=0,lastTap=0,downAt=0;
@@ -1451,7 +1509,7 @@ const BOOK_KEY="atlas-book:"+(K.raw.id||K.meta.title||"pack");
 function storeBook(b){try{localStorage.setItem(BOOK_KEY,String(b||0));}catch(e){}}
 function storedBook(){try{const v=parseInt(localStorage.getItem(BOOK_KEY),10);return BOOKS[v]?v:0;}catch(e){return 0;}}
 function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view},o||{});
-  const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&o.view==="world")q.set("site",o.site);
+  const q=new URLSearchParams();if(PW())rdParams(q);else if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&o.view==="world")q.set("site",o.site);
   if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");
   if(LY){const f=LY.encodeState(LAY,TL,S.layers,S.range);Object.keys(f).forEach(k=>q.set(k,f[k]));}
   if(TRV&&TRV.open)q.set("tree",TRV.sel||"1");
@@ -1462,18 +1520,28 @@ function parseHash(){const q=new URLSearchParams((location.hash||"").replace(/^#
    overwrite it with the galaxy view */
 function syncURL(){if(!urlReady)return;const u=urlFor();if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
 /* nothing is written to the address bar or storage until the start-up state has been restored from them */
-let urlReady=false,lastBook=null,lastAnn="";
+let urlReady=false,lastBook=null,lastAnn="",lastRd=null;
+/* per-work hash parameters; the safe state keeps the rejected parameters until the reader makes a choice */
+function rdParams(q){
+  if(S.rd.mode==="safe"){const old=new URLSearchParams((location.hash||"").replace(/^#/,""));
+    RDG.READ_PARAMS.forEach(k=>old.getAll(k).forEach(v=>q.append(k,v)));return;}
+  const hp=RDG.hashParams(S.rd);Object.keys(hp).forEach(k=>q.set(k,hp[k]));}
+const RD_KEY=RDG?RDG.STORE_V2+(K.raw.id||K.meta.title||"pack"):"";
+function storeRd(){if(!RREG)return;const v=RDG.storeValue(S.rd);if(v==null||v===lastRd)return;lastRd=v;try{localStorage.setItem(RD_KEY,v);}catch(e){}}
+function readStored(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function afterRefresh(){
-  if(urlReady&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
+  if(urlReady&&!PW()&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
+  if(urlReady)storeRd();
   /* short announcement for screen readers instead of re-reading the whole panel */
-  const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");
+  const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(PW()?". "+rdLabel():S.book?". Reading "+BOOKS[S.book].title:"");
   if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
   syncURL();}
 addEventListener("popstate",()=>{const st=parseHash();
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
   else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
-  if(b&&b!==S.book)API.setBook(b);
+  if(!RREG&&b&&b!==S.book)API.setBook(b);
+  if(RREG&&S.book)setBookBar(S.book);
   if(st.realm&&st.realm!==S.realm)setRealm(st.realm,true);
   if(st.filters){const f=st.filters;if(f.active!==undefined)S.layers=f.active;if(f.range!==undefined)S.range=f.range;if(f.active!==undefined||f.range!==undefined)refreshAll();}
   if(TRV&&st.tree){const tn=TRV.T.by[st.tree];TRV.show(tn&&treeNodeSeen(tn)?tn.id:null);}
@@ -1486,6 +1554,11 @@ function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:sto
   return false;}
 
 /* ===================== START ===================== */
+/* with a registry the reading state is parsed before the first render (no flash of All or of a previous state) */
+function setBookBar(b){$("#books").querySelectorAll("button[data-b]").forEach(x=>x.setAttribute("aria-pressed",String(+x.dataset.b===b)));const sel=$("#books .bkpick");if(sel)sel.value=String(b);}
+if(RREG){const maxB=Math.max(0,...BOOK_IDS);
+  const init=RDG.initialState(location.hash,readStored(RD_KEY),readStored(BOOK_KEY),RREG,maxB);
+  setRd(init.state);if(!PW())setBookBar(S.book);}
 refreshAll();
 requestAnimationFrame(frame);
 let restored=false;
