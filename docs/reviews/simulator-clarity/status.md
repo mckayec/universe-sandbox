@@ -1,11 +1,10 @@
 stage: implementation
 owner: claude
 blocked-on: none
-next-action: Claude implements bounded Kids 6b plus SC6-O1 compact legend/guide layout correction, then returns exact PR head with evidence for implementation review; catalog/units item 7 follows. See implementation-review-8de9128-e2.md. Preserve prior release-validation gaps.
-updated: 2026-11-10T05:22:12Z
+next-action: Claude fixes the SC6-O1 residual at short/narrow compact sizes (overlay stack vs dock at 720x450 and 320x568, see Kids 6b checkpoint), re-runs evidence-harness-6b.mjs, then hands PR47 to ChatGPT for implementation review; catalog/units item 7 follows.
+updated: 2026-11-10T06:22Z
 idle-runs: 0
-note: SC6-E2 closed; bounded 6a label/Details/quiet implementation accepted at unchanged PR47 8de912810c3fe029b79623f762b5eab325bc1236. Builder log independently inspected/count-checked: 59/59; 4/4 supplied images viewed, 0 independent browser cases this run. Low SC6-O1 visual overlap remains open for 6b. Kids 6b, item 7 and inherited release gates remain incomplete; no release approval.
-
+note: Checkpoint: Kids 6b + SC6-O1 pushed at PR47 7a86fbefd3d89131cb00b07314dd9f8daf3234f0 (189/189 units, 113 dist, 24/24 pages, rendered harness 205/205). Residual compact short-height overlap remains, so not yet handed back. Inherited release gates unchanged; no release approval.
 
 
 
@@ -207,6 +206,34 @@ Evidence at 8de912810c3fe029b79623f762b5eab325bc1236:
 - Shader tests are source-level guards. GPU compilation was verified only on swiftshader.
 - The old reversed smoothstep calls were undefined per GLSL but matched the new form on common drivers, so the visual change is expected to be small. The fix is for correctness and portability.
 
+
+## Kids 6b + SC6-O1 checkpoint (PR #47, 7a86fbefd3d89131cb00b07314dd9f8daf3234f0)
+
+Parent 8de9128. Diff: 12 files (+547/−10) — src/kids-mode.ts (new, pure), src/ui/kids.ts (new), tests/kids-mode.test.ts (new), src/main.ts, src/state/app-state.ts, src/style.css, src/ui/feed.ts, src/ui/inspector.ts, src/ui/pointer.ts, src/ui/template.ts, src/ui/test-probe.ts, tests/feedback.test.ts (wiring assertion now reads `feedbackNow()`).
+
+Kids 6b:
+- Controls: Add, Pause/Play, Undo, Home, plus a small "Grown-ups" button. Entered from the toolbar's "Kids mode" button or `?kids=1`. Leaving needs the grown-up dialog (Stay / Leave Kids mode; Escape = Stay). Leaving restores the adult interaction mode (Add/Inspect/Navigate and builder).
+- Gating at the event: window capture listeners for click, pointerdown, input, change, dblclick and contextmenu stop anything outside `#kids-bar`/`#kids-dialog` before element handlers run; a keydown gate allows only Tab, Enter, Space, Escape and Ctrl/Cmd+Z (no redo, no mode/zoom/focus keys). `openObjectMenu` returns early in Kids mode (right-click and long-press). CSS hiding is in addition, not instead.
+- Explore (Add not armed): tap selects, drag on the canvas pans; objects are never dragged or flung.
+- Exactly one placement per armed Add: all three `placeSelected` paths in pointer.ts call `kidsPlacementDone()`. Add again or Escape cancels; a cancelled touch or a second finger leaves it armed and places nothing.
+- Home = `fitAllObjects` (fit the existing scene, no reset). Undo = existing `undoUniverse` (says "Nothing to undo yet" when empty). Pause syncs the adult Pause label.
+- Quiet: presentation uses `effectiveFeedbackMode(app.feedbackMode, kidsMode)` = quiet in Kids mode; the stored adult preference is not written; nothing is queued or replayed on exit; action responses still show. The idle demo never starts in Kids mode (`idleDemoAllowed`). Save/load, history and autosave code are untouched.
+
+SC6-O1: the guide card, demo badge, narration card, science legend and navigation help now sit in one flow container (`#overlay-stack`), so they cannot overlap as text wraps (desktop and compact). The compact timeline strip hides while any overlay card is showing; the desktop timeline hides behind a guide card only at heights ≤560px. Below 360px wide the stack drops under the zoom buttons and uses the full width. Legend keeps `pointer-events: none`.
+
+Checks at 7a86fbe: `pnpm format`; `pnpm check` passed (build, 189/189 unit tests incl. 5 new kids tests, check:dist 113 files); `pnpm test:pages` 12 pages × 2 viewports.
+
+Rendered evidence: [evidence-harness-6b.mjs](evidence-harness-6b.mjs), raw log [evidence-7a86fbe.jsonl](evidence-7a86fbe.jsonl): **205/205** checks, exit 0, 0 page/console errors. Production build via `vite preview`, Playwright 1.62.1 bundled Chromium with `--use-gl=swiftshader`, Node v22.23.4 (software GL; emulated viewports, not devices).
+- SC6-O1 (binary-stars and collision-lab, each at 390x844, 1440x900, 844x390 short landscape, 720x450 = 1440x900 at 200% zoom, and 320x568 reflow): guide + legend both visible and not intersecting; Restart and Exit guide are the `elementFromPoint` hit at their centres; pointer click and keyboard Enter on Restart rebuild the exhibit; pointer and keyboard Exit guide hide it. 10/10 in all 10 cases.
+- Kids 6b at 390x844 (touch), 1440x900 (mouse), 844x390 (touch): adult controls hidden; programmatic `.click()` on Clear, Exhibits, Universes, Add mode, Banners and Undo does nothing; keys b/n/0/f do nothing; right-click on an object opens no menu; Pause/keyboard Play; tap selects; a paused explore drag moves no object and adds nothing; Add → one tap places exactly one, two more taps place nothing; Add twice and Escape cancel; real CDP touch cancel and two-finger interruption place nothing and stay armed (touch cases only); Undo removes the placement; Home keeps the scene; dialog opens, Escape keeps Kids mode, keyboard Leave restores the toolbar and Add mode; redo history kept; adult Banners label and non-session localStorage unchanged. `?kids=1` starts in Kids mode; kids buttons have accessible names.
+- Screenshots (viewed): [O1 binary 390](shots/sc6b-o1-binary-stars-390x844.jpg), [O1 collision 390](shots/sc6b-o1-collision-lab-390x844.jpg), [O1 short landscape](shots/sc6b-o1-binary-stars-844x390.jpg), [O1 desktop](shots/sc6b-o1-collision-lab-1440x900.jpg), [O1 200% zoom](shots/sc6b-o1-binary-stars-zoom200-1440x900.jpg), [O1 320 reflow](shots/sc6b-o1-collision-lab-reflow-320x568.jpg), [Kids 390](shots/sc6b-kids-390x844.jpg), [Kids dialog 390](shots/sc6b-kids-dialog-390x844.jpg), [Kids desktop](shots/sc6b-kids-1440x900.jpg).
+
+Known gaps (why this is a checkpoint, not a hand-back):
+- **Open, blocks hand-back:** at compact short heights the overlay stack still overlaps the bottom dock — 720x450 (200% zoom) guide/legend cover the top of the tools/selected-object panels; 320x568 legend covers the selected-object heading. Guide/legend no longer overlap each other and the guide buttons stay the hit target, but this is not yet "nonoverlapping space" for the dock. Next run: give the stack and dock a shared height budget at compact short heights.
+- 390x844 at 200% zoom (195 CSS px) shows a pre-existing page-wide horizontal overflow; not asserted (harness uses 720x450 and 320 reflow instead).
+- Idle demo suppression in Kids mode is covered by unit/wiring tests only (no 120 s rendered wait). Kids mode is not persisted across reloads except via `?kids=1`. Long-press (550 ms touch) menu gating covered by source test + right-click case, not a rendered long-press.
+- Not performed: physical iPhone/iPad/Safari, real GPU, screen reader (only accessible-name and aria-pressed checks), real audio. SC1-E1/SC4-E1 obligations and the Save→Clear→Load smoke limitation stand. Item 7 not started.
+
 ## History
 
 - 2026-11-09T01:58Z Claude: picked up the 2026-11-09 handoff (HANDOFF_PLAN, commit a2d2ba5). Slice 1 (items 1–3) is built on draft PR #47 at 0039fe0aa6f527d33be11da83147929812eba9b7. Stage research-ready → implementation-review, owner claude → chatgpt.
@@ -248,3 +275,4 @@ Evidence at 8de912810c3fe029b79623f762b5eab325bc1236:
 - 2026-11-10T04:25Z Claude: SC6-E2 evidence return at unchanged PR47 8de912810c3fe029b79623f762b5eab325bc1236: committed harness 6a2 (blob 07830c8) run unedited, idle enabled at both viewports; 1440x900 29/29, 390x844 30/30, exit 0 ([evidence-8de9128-e2.jsonl](evidence-8de9128-e2.jsonl), 4 shots viewed). No source change. Observation SC6-O1 (390 legend overlaps exhibit-card buttons) raised for disposition. fixing/claude -> implementation-review/chatgpt
 
 - 2026-11-10T05:22:12Z ChatGPT: [SC6-E2 evidence review](implementation-review-8de9128-e2.md) saved/read back at bc8b2b58930a92efe2856eb20441632241d29241. Fresh PR47 head remains 8de912810c3fe029b79623f762b5eab325bc1236, 0 application delta files. Read committed harness 07830c8 and new raw log 5688f98; independently counted builder 29/29 desktop + 30/30 compact checks, including both idle start/restart and long-name resize returns. Viewed 4/4 supplied screenshots and exact-head style.css: Low SC6-O1 confirmed legend/guide visual overlap, pointer interception not demonstrated (legend pointer-events:none); fix in 6b with nonoverlap and real pointer/keyboard button checks, short landscape and 200% text. SC6-E2 closed and bounded 6a accepted; prior SC6-T1/T2/E1 dispositions retained. No fresh test/browser execution; prior independent 12/12 focused tests and 9/9 handler groups remain historical at the identical head. implementation-review/chatgpt -> implementation/claude for Kids 6b plus SC6-O1, then item 7. SC1-E1/SC4-E1, Save/Load and device/accessibility/release gaps retained. Inspected 18/18 pack and 8/8 review statuses; no other eligible work or stale parallel self-audit. No application/PR-branch edit, merge, deployment or owner approval.
+- 2026-11-10T06:22Z Claude: Kids 6b + SC6-O1 checkpoint at PR47 7a86fbefd3d89131cb00b07314dd9f8daf3234f0 (12 files; 189/189 units, 113 dist, 24/24 pages; rendered harness 6b 205/205, 0 errors; 9 screenshots). Residual compact short-height stack/dock overlap (720x450, 320x568) open, so owner stays claude for one more unit before implementation review. Not merged.
