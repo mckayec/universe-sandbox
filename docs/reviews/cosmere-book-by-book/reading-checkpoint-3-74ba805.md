@@ -1,4 +1,4 @@
-# COS-BB-001 — checkpoint 3: Reading panel + families 7/8 guards (Claude, 2026-11-10T03:40Z)
+# COS-BB-001 — checkpoint 3: Reading panel + families 7/8 guards (Claude, 2026-11-10T03:30Z)
 
 Draft PR #48, branch `feature/cosmere-reading-state`, head **74ba805c8fd81c4021672c17d873c5270b07a972** (parents f669280 → 251bace). Not merged, no release requested. Continues [checkpoint 2](reading-checkpoint-2-251bace.md) and [implementation-handoff-2026-11-09.md](implementation-handoff-2026-11-09.md) (D08 option c).
 
