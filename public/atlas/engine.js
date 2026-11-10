@@ -1530,6 +1530,7 @@ const RD_KEY=RDG?RDG.STORE_V2+(K.raw.id||K.meta.title||"pack"):"";
 function storeRd(){if(!RREG)return;const v=RDG.storeValue(S.rd);if(v==null||v===lastRd)return;lastRd=v;try{localStorage.setItem(RD_KEY,v);}catch(e){}}
 function readStored(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function afterRefresh(){
+  if(RUI)RUI.update();
   if(urlReady&&!PW()&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
   if(urlReady)storeRd();
   /* short announcement for screen readers instead of re-reading the whole panel */
@@ -1558,7 +1559,24 @@ function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:sto
 function setBookBar(b){$("#books").querySelectorAll("button[data-b]").forEach(x=>x.setAttribute("aria-pressed",String(+x.dataset.b===b)));const sel=$("#books .bkpick");if(sel)sel.value=String(b);}
 if(RREG){const maxB=Math.max(0,...BOOK_IDS);
   const init=RDG.initialState(location.hash,readStored(RD_KEY),readStored(BOOK_KEY),RREG,maxB);
-  setRd(init.state);if(!PW())setBookBar(S.book);}
+  setRd(init.state);setBookBar(PW()?-1:S.book);}
+/* Reading panel (reading-ui.js): preset selector + per-work checklist. Each choice re-renders through the same
+   path as the book bar; a now-hidden selected world is left (ascending from its surface), the event is closed. */
+var RUI=null;
+function applyRd(st){
+  setRd(st);setBookBar(PW()?-1:S.book);
+  if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}
+  S.ev=null;
+  if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
+  refreshAll();}
+function rdUnreviewed(){
+  if(!PW())return false;
+  const u=c=>pvis(c)&&RDG.anyUnreviewed(c);
+  return WORLDS.some(w=>u(worldChain(w)))||EVENTS.some(e=>u(evChain(e)));}
+if(RREG&&window.AtlasReadingUI){
+  RUI=window.AtlasReadingUI.mount({R:RDG,reg:RREG,after:$("#books"),getState:()=>S.rd,onChoose:applyRd,unreviewed:rdUnreviewed,
+    groupTitle:b=>b!=null&&BOOKS[b]?BOOKS[b].title:"Other works",bookTitle:()=>S.book&&BOOKS[S.book]?BOOKS[S.book].title:""});
+  if(S.rd.mode==="safe")RUI.open();}
 refreshAll();
 requestAnimationFrame(frame);
 let restored=false;
