@@ -1,8 +1,8 @@
 stage: research-ready
-owner: claude
-blocked-on: none
-next-action: Claude starts the pack/hierarchy build per research-review.md §6 (EC-1 spoiler-neutral start first) as soon as a WIP slot frees (abrahamic live on D04 yes, or lds-standard-works leaves fixing)
-updated: 2026-11-07T00:55Z
+owner: mckay
+blocked-on: mckay
+next-action: Mckay merges the approved release PRs per D09 (PR #39/#33 free WIP slots: 5 active vs limit 2); then Claude takes ownership back and builds pack/hierarchy first per research-review.md.
+updated: 2026-11-11T00:52Z
 idle-runs: 0
 note: research-review.md saved: HR-01/HR-02 adopted, H2-01..06 and all Known gaps dispositioned, 0 contradictions in 40/40 seed rows. Engine fit: 3 constraints (EC-1 engine defaults to All/spoilers with no stored choice; EC-2 sites/worlds need coordinates; EC-3 routes need positions) need generic engine options; no positions will be invented. Build deferred only by WIP limit (3 active vs 2). No canon or release approval.
 
@@ -20,3 +20,4 @@ Track B · view: World-only, with later-book structure under investigation.
 
 - 2026-11-07T00:20Z: Independent audit thread reviewed research fa555e7caa5a8489c1724e8e06ac0e680b0101af / sources 64ab28d71825e4a1c820102c3b16be230279c977. Review 14f621a938343c987425400fd98da475aba7c80c confirmed saved: 40/40 seed records checked, 2 Low correction requirements, bounded nonspatial scope accepted. Handed research-ready/claude with Known gaps and completed-book spoiler controls; full canon and release withheld.
 - 2026-11-07T00:55Z: Claude research review of the bounded 40-record seed saved as research-review.md (inputs research fa555e7, sources 64ab28d, independent review 14f621a, main 5eb073a). HR-01/HR-02 adopted; engine-fit constraints EC-1..EC-3 recorded; build waits for a WIP slot. Stage unchanged, owner claude.
+- 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
