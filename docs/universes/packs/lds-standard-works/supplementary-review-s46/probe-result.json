@@ -1,0 +1,33 @@
+{
+  "head": "5c7edcd824e7657ae0010c9d3943a753d478f899",
+  "base": "421a5bc0a65323a06bafd8c694f106823b71f1ff",
+  "changedFiles": [
+    "docs/universes/packs/lds-standard-works/shots/s47-index-open-390x844.jpg",
+    "docs/universes/packs/lds-standard-works/shots/s47-sheet-toggled-390x844.jpg",
+    "docs/universes/packs/lds-standard-works/shots/s47-sheet-toggled-768x1024.jpg",
+    "docs/universes/packs/lds-standard-works/shots/s47-start-390x844.jpg",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s47-chrome-probe-output.txt",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s47-chrome-probe.mjs",
+    "docs/universes/packs/lds-standard-works/supplementary-implementation.md",
+    "public/atlas/engine.js"
+  ],
+  "sourceDecisionCases": 5,
+  "selectedRightEdge": {
+    "x": 385,
+    "estimatedRight": 495,
+    "viewport": 390,
+    "result": {
+      "edgeOut": false,
+      "edgeDot": false,
+      "show": true,
+      "dot": false
+    }
+  },
+  "layoutHasNoFocusRecovery": true,
+  "packAndCSSUnchanged": true,
+  "mergeTreeMain": "e59f9b62d2106af7a93f0725b65afec63295732c",
+  "mergeTreeExit": 0,
+  "mergeTreeOutput": "f6ebc6f03f07ac3d49e71920a1af8055a92ea65a",
+  "browserOrDOMExecuted": false,
+  "result": "findings reproduced from extracted decision logic"
+}

@@ -1,0 +1,18 @@
+{
+  "head": "91a69fbaa9f42e9409955f0c2d35fe59eb02fdd0",
+  "base": "b27b845eec64bb987feb82fe1674051c9dde0e40",
+  "addedCards": 10,
+  "changedPriorCards": 3,
+  "unchangedPriorCards": 1499,
+  "totalCards": 1512,
+  "uniqueKeyedCards": 1479,
+  "gateCombinations": 325,
+  "earlyWorkExclusions": 52,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S21-C1 source-specific ages absent; S21-C2 ambiguous Sarai pronoun; see report"
+  ]
+}

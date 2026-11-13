@@ -1,0 +1,24 @@
+{
+  "head": "8ec67f4732b1e253a31f3a5e802a7bd4d183e44a",
+  "base": "e09d6e83bb8774e798cdf583150f380eff2b0282",
+  "totalCards": 1523,
+  "addedCards": 0,
+  "changedCards": 49,
+  "unchangedCards": 1474,
+  "linkOnlyChangedCards": 44,
+  "copyChanged": [
+    "BE02",
+    "BXP02",
+    "bom-model-mesoamerican-sorenson",
+    "bom-model-heartland",
+    "bom-model-hemispheric-historical"
+  ],
+  "linkedCards": 44,
+  "directedEdges": 108,
+  "reachabilityChecks": 2640,
+  "allOtherPackDataUnchanged": true,
+  "namingPreserved": true,
+  "S23C1": "closed",
+  "browserExecuted": false,
+  "result": "pass"
+}

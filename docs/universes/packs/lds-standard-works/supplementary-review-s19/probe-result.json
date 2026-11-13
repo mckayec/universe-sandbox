@@ -1,0 +1,18 @@
+{
+  "head": "c95e948d05887862ff39e32810d5795a9ba0710c",
+  "base": "e1d56505d17425128364dd75a1faa09ccc2f57ca",
+  "addedCards": 70,
+  "changedPriorCards": 5,
+  "unchangedPriorCards": 1409,
+  "totalCards": 1484,
+  "uniqueKeyedCards": 1451,
+  "gateCombinations": 1875,
+  "preDCAllLayerExclusions": 225,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S19-C1/C2/C3 remain content findings; see report"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "head": "82a0053bf64e680554afe5a178576f9c017b1fc0",
+  "base": "91a69fbaa9f42e9409955f0c2d35fe59eb02fdd0",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1365,
+  "SDRowsReconciled": 1271,
+  "importedSD": 1260,
+  "pendingSD": 11,
+  "pendingByCategory": {
+    "SC52": 3,
+    "SC53": 4,
+    "SC54": 4
+  },
+  "standaloneProse": 9,
+  "consolidatedProse": 1,
+  "constraintMappings": 3,
+  "childRows": 81,
+  "newSDRows": 9,
+  "newChildRows": 6,
+  "newCards": 8,
+  "importedMappingRows": 1354,
+  "distinctResolvedMappingTargets": 1326,
+  "generatorPackAndMappingByteIdentical": true,
+  "freshFullPrimaryReading": false
+}

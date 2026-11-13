@@ -1,0 +1,14 @@
+{
+  "head": "dc36cd0653c33439b4f2e31ee71cbf4b5b7a1b47",
+  "base": "6295f7243d2fb4495544e804fc2ad011053f975c",
+  "totalCards": 1523,
+  "changedCards": 1,
+  "unchangedCards": 1522,
+  "totalLinks": 381,
+  "allOtherPackDataAndEngineUnchanged": true,
+  "edgeGateFieldsIgnored": true,
+  "filteredRelationshipLabelVisible": true,
+  "sitePrefixUnsupported": true,
+  "browserExecuted": false,
+  "result": "pass"
+}

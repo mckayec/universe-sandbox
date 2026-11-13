@@ -1,0 +1,18 @@
+{
+  "head": "e1d56505d17425128364dd75a1faa09ccc2f57ca",
+  "base": "1b55cc853c11a86340a3baf21913bc311ddfbadc",
+  "addedCards": 70,
+  "changedPriorCards": 5,
+  "unchangedPriorCards": 1339,
+  "totalCards": 1414,
+  "uniqueKeyedCards": 1381,
+  "gateCombinations": 1875,
+  "preDCAllLayerExclusions": 225,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S18-C1/C2/C3 remain content or consolidation findings; see report"
+  ]
+}
