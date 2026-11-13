@@ -1,0 +1,342 @@
+[
+  {
+    "width": 390,
+    "phase": "gate",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "gate",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "gate",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "gate",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "resize",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "resize",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "resize",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "resize",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "collapse",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "collapse",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "collapse",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "phase": "collapse",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 390,
+    "escapeCloses": true
+  },
+  {
+    "width": 1440,
+    "phase": "gate",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "gate",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "gate",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "gate",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "resize",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "resize",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "resize",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "resize",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "collapse",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "collapse",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "collapse",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "phase": "collapse",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 1440,
+    "escapeCloses": true
+  },
+  {
+    "width": 3840,
+    "phase": "gate",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "gate",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "gate",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "gate",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "resize",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "resize",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "resize",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "resize",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "collapse",
+    "selector": ".tl-ov",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "collapse",
+    "selector": ".tl-ov",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "collapse",
+    "selector": ".tl-scroll",
+    "key": "Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "phase": "collapse",
+    "selector": ".tl-scroll",
+    "key": "Shift+Tab",
+    "presses": 60,
+    "escaped": 0
+  },
+  {
+    "width": 3840,
+    "escapeCloses": true
+  },
+  {
+    "head": "312d2dd",
+    "ids": ["n:jud-second-temple", "n:jud-ananites", "n:jud-karaite"],
+    "forward": {
+      "id": "n:jud-ananites",
+      "tag": "g",
+      "html": "<g class=\"tl-m\" style=\"--tc:#d9b45a\" tabindex=\"0\" role=\"button\" data-id=\"n:jud-ananites\" aria-pressed=\"false\" aria-label=\"Ananites, Eighth century\"><rect class=\"tl-win-bg\" x=\"519.687074829932\" y=\"111\" width=\"38.16326530612241\" hei"
+    },
+    "backward": {
+      "id": "n:jud-second-temple",
+      "tag": "g",
+      "html": "<g class=\"tl-m\" style=\"--tc:#d9b45a\" tabindex=\"0\" role=\"button\" data-id=\"n:jud-second-temple\" aria-pressed=\"false\" aria-label=\"Second Temple era, Temple-period frame\"><rect class=\"tl-bar ap\" x=\"51.31972789115646\" y=\"87\" width=\"225"
+    },
+    "arrow": {
+      "id": "n:jud-ananites",
+      "tag": "g",
+      "html": "<g class=\"tl-m\" style=\"--tc:#d9b45a\" tabindex=\"0\" role=\"button\" data-id=\"n:jud-ananites\" aria-pressed=\"false\" aria-label=\"Ananites, Eighth century\"><rect class=\"tl-win-bg\" x=\"519.687074829932\" y=\"111\" width=\"38.16326530612241\" hei"
+    },
+    "svgOffsetParent": false
+  },
+  {
+    "head": "24655eb",
+    "ids": ["n:jud-second-temple", "n:jud-ananites", "n:jud-karaite"],
+    "forward": {
+      "id": "n:jud-ananites",
+      "tag": "g",
+      "html": "<g class=\"tl-m\" style=\"--tc:#d9b45a\" tabindex=\"0\" role=\"button\" data-id=\"n:jud-ananites\" aria-pressed=\"false\" aria-label=\"Ananites, Eighth century\"><rect class=\"tl-win-bg\" x=\"519.687074829932\" y=\"111\" width=\"38.16326530612241\" hei"
+    },
+    "backward": {
+      "id": "n:jud-second-temple",
+      "tag": "g",
+      "html": "<g class=\"tl-m\" style=\"--tc:#d9b45a\" tabindex=\"0\" role=\"button\" data-id=\"n:jud-second-temple\" aria-pressed=\"false\" aria-label=\"Second Temple era, Temple-period frame\"><rect class=\"tl-bar ap\" x=\"51.31972789115646\" y=\"87\" width=\"225"
+    },
+    "arrow": {
+      "id": "n:jud-ananites",
+      "tag": "g",
+      "html": "<g class=\"tl-m\" style=\"--tc:#d9b45a\" tabindex=\"0\" role=\"button\" data-id=\"n:jud-ananites\" aria-pressed=\"false\" aria-label=\"Ananites, Eighth century\"><rect class=\"tl-win-bg\" x=\"519.687074829932\" y=\"111\" width=\"38.16326530612241\" hei"
+    },
+    "svgOffsetParent": false
+  }
+]
