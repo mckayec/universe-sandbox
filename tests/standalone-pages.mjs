@@ -59,7 +59,12 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const origin = `http://127.0.0.1:${server.address().port}`;
 const base = origin + SUB;
 
-const PACKS = ['sun-eater', 'hyperion', 'expanse', 'foundation', 'dune', 'cosmere'];
+const PACKS = ['sun-eater', 'hyperion', 'expanse', 'foundation', 'dune', 'cosmere', 'lds-standard-works'];
+/* Atlases whose pack opens straight onto a planet surface (PACK_FORMAT 20.4 `start`). Under software WebGL
+   (SwiftShader on CI) the first surface frames take tens of seconds of GPU work, and the page's main thread
+   waits on them before it can report the header, so these get a longer readiness budget. On a real GPU the
+   same frames take milliseconds. */
+const SURFACE_START = new Set(['lds-standard-works']);
 const PAGES = [
   { path: 'atlas/', ready: '#chooser', back: '#chooser .gl-home' },
   ...PACKS.map(id => ({
@@ -68,6 +73,7 @@ const PAGES = [
     back: '.top .gl-home',
     header: true,
     wait: 2500,
+    readyTimeout: SURFACE_START.has(id) ? 240000 : 60000,
   })),
   { path: 'atlas/?pack=nope', ready: '#chooser', back: '#chooser .gl-home' },
   { path: 'atlas/society.html', ready: '#app .top', back: '.top .gl-home', wait: 4000 },
@@ -96,6 +102,21 @@ const browser = await chromium.launch({
 });
 
 const failures = [];
+/* Pages that open straight onto a planet surface (the LDS atlas starts on Earth) leave software WebGL
+   (SwiftShader, as on CI) busy for a while after their context closes, and the browser's compositor then
+   refuses the next page's first capture with "Unable to capture screenshot". That is a property of the
+   shared software GPU process, not of the page being captured, so retry the capture briefly; any other
+   error, or a capture that keeps failing, still fails the check. */
+async function screenshot(tab, path) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await tab.screenshot({ path });
+    } catch (e) {
+      if (attempt >= 4 || !/Unable to capture screenshot/.test(e.message)) throw e;
+      await tab.waitForTimeout(3000);
+    }
+  }
+}
 async function visit(page, vp) {
   const context = await browser.newContext({
     viewport: { width: vp.width, height: vp.height },
@@ -127,7 +148,7 @@ async function visit(page, vp) {
   });
   try {
     await tab.goto(base + page.path, { waitUntil: 'load', timeout: 90000 });
-    await tab.waitForSelector(page.ready, { timeout: 60000 });
+    await tab.waitForSelector(page.ready, { timeout: page.readyTimeout || 60000 });
     await tab.waitForTimeout(page.wait || 1200);
     // back link: visible and resolving to the sandbox root under the subpath
     const href = await tab.$eval(page.back, a => a.href).catch(() => null);
@@ -141,8 +162,7 @@ async function visit(page, vp) {
     // no horizontal page scroll
     const sw = await tab.evaluate(() => document.documentElement.scrollWidth - innerWidth);
     if (sw > 1) errs.push(`page scrolls horizontally by ${sw}px`);
-    if (shotsDir)
-      await tab.screenshot({ path: join(shotsDir, `${page.path.replace(/[^\w-]+/g, '_')}-${vp.name}.png`) });
+    if (shotsDir) await screenshot(tab, join(shotsDir, `${page.path.replace(/[^\w-]+/g, '_')}-${vp.name}.png`));
     // header must never be clipped at laptop widths
     if (page.header && vp.name === 'desktop') {
       for (const w of [1440, 1280, 1024]) {

@@ -1,0 +1,37 @@
+# Full run at the checkpoint-49 code (tooltip box-sizing fix included); Chromium via Playwright default, SwiftShader, 390x844 normal motion
+[22s] 390x844 ready (no-preference)
+  ok 1 390: labels visible with the sheet collapsed (6)
+  ok 2 390: Tab key traversal reaches a globe label (Jerusalem, 24 presses)
+  ok 3 390: that label matches :focus-visible after Tab
+    turned away: focus -> {"ok":true,"frac":0.91,"op":1,"onTop":true,"fv":true,"tag":"DIV","id":"grab","cls":"grab","label":null,"rect":[9,729,417,783]}
+  ok 4 390: focus left the hidden label
+  ok 5 390: recovery target is visible (viewport ∩ clipping ancestors, opacity, hit test)
+  ok 6 390: recovery target shows a focus ring (:focus-visible)
+  ok 7 390: selection unchanged by recovery
+  ok 8 390: Tab continues from the recovered control
+    clipped-row candidate: {"name":"Jerusalem","id":"jerusalem"}
+  ok 9 390: Tab reaches label "Jerusalem" (1 presses)
+    row geometry (collapsed sheet): {"row":[0,0],"sheet":[728,792],"onViewport":false,"old":false,"seen":{"ok":false,"why":"style"}}
+    row before recovery: {"onViewport":true,"old":true,"seen":{"ok":false,"frac":0,"op":1,"onTop":false,"fv":false,"tag":"BUTTON","id":"","cls":"place sel","site":"jerusalem","label":null,"rect":[27,-60,363,229]}}
+  ok 10 390: matching row intersects the viewport but is clipped by its scrolling sheet
+  ok 11 390: checkpoint-48 visibleControl would have accepted that clipped row (the S47-C1 gap)
+    after hide: focus -> {"ok":true,"frac":1,"op":1,"onTop":true,"fv":true,"tag":"BUTTON","id":"","cls":"","label":null,"rect":[47,254,116,273]}
+  ok 12 390: focus did not go to the clipped row
+  ok 13 390: focus went to a visible control with a focus ring
+  ok 14 390: selection unchanged
+    longest real name "Harmony / Priesthood Restoration Site" sweep: {"flip":2,"dot":7,"text":3,"hidden":49,"tipL":4,"tipR":3}, worst edge overflow -4.4px (negative = inside)
+  ok 15 390 longest real name "Harmony / Priesthood Restoration Site": box, focus ring and tooltip never cross a window edge across 61 camera steps
+  ok 16 390: longest real name shown as text somewhere in the sweep
+    synthetic over-wide name sweep: {"flip":0,"dot":12,"text":0,"hidden":49,"tipL":6,"tipR":6}, worst edge overflow -4.1px (negative = inside)
+  ok 17 390 synthetic over-wide name: box, focus ring and tooltip never cross a window edge across 61 camera steps
+  ok 18 390: over-wide selected name always collapses to a selected pin (12 steps)
+  ok 19 390: the pin tooltip opened on both sides (left 6, right 6)
+    rotated 844x390: focus -> {"ok":true,"frac":1,"op":1,"onTop":true,"fv":true,"tag":"A","id":"","cls":"gl-home","label":null,"rect":[16,17,124,55]}
+  ok 20 844x390: focus is on a visible control after rotation (label kept or recovered)
+  ok 21 zero console/request/page errors
+[709s] PASS 21 checks
+
+# Earlier run before the tooltip box-sizing fix (kept: it is the rendered failure that prompted the fix; stopped at the first failed check)
+AssertionError [ERR_ASSERTION]: 390 longest real name "Harmony / Priesthood Restoration Site": label box/ring/tooltip inside the window at step -2: {"vis":true,"dot":true,"flip":false,"tipl":true,"fv":true,"L":-13.554611206054688,"R":269.44537353515625,"tipW":255,"tipLines":null,"sel":true,"site":"harmony"}
+    at edgeSweep (file:///home/claude/universe-sandbox/docs/universes/packs/lds-standard-works/supplementary-build/s49-clip-edge-probe.mjs:294:12)
+    at async file:///home/claude/universe-sandbox/docs/universes/packs/lds-standard-works/supplementary-build/s49-clip-edge-probe.mjs:325:18 {
