@@ -230,6 +230,47 @@ hidden.
 Optional fine-tuning: `spoilers.dimLabel` (opacity of off-book labels; 0.4 cumulative, 0.35 single)
 and `spoilers.dimMarker` (0.2 / 0.15).
 
+**Per-work reading state (optional, cumulative packs only; COS-BB-001).** A pack that adds `spoilers.works`
+gets a Reading panel (preset "Read through…" selectors and a per-work checklist) instead of relying on the
+book buttons alone. Without `spoilers.works` nothing below applies and the numeric rules above are unchanged.
+* `spoilers.works: [{id, title, bucket?}]` — `id` matches `^[a-z0-9][a-z0-9_-]*$` (so it can never start with
+  `_`); `bucket` is the numeric book key the work belongs to. `spoilers.buckets: {"k": [ids]}` may list buckets
+  explicitly. `spoilers.presets: [{id, label, versions: [{v, seq: [ids]}]}]` — keep old versions so saved links
+  keep their meaning. Any registry error turns per-work modes off for the whole pack (console warning).
+* Gates: a record's `gate` is `{req, needs?, in?}` or `{public: true}`. `req` and `needs` are DNF: a work id, or
+  `[[a, b], [c]]` = (a AND b) OR c; every clause must be nonempty and name known works. `needs` narrows `req`;
+  `in` is descriptive only. A record without `gate` falls back to its whole numeric bucket and is marked
+  unreviewed. A present but invalid gate hides the record (the bucket does not rescue it).
+* Field gates: `gates: {field: gate}` on a record (e.g. `blurb`, `facts`, `status`, `short`, `name`). Absent =
+  inherits the record; present but invalid = that field is hidden. A child (site, event, era, codex `more` line)
+  is visible only if every ancestor, its own gate and the field gate pass — a `public` child never overrides a
+  hidden ancestor.
+* **Era overrides:** `eras[k].<field>` is used only when the world chain, the era's record gate
+  (`eras[k].gate`, else bucket k), the WORLD's `gates[field]` and the era's own `eras[k].gates[field]` all pass.
+  A hidden override is skipped, so the latest earlier visible value stays. This applies to every era-backed
+  field (short, facts, blurb, status, gfx, group names). So a world-level field gate also restricts all of that
+  field's era overrides; put the narrower gate on the era when only one era's text is the spoiler.
+* **Base graphics:** a world's `gates.gfx` also gates its BASE `gfx` (surface recipe, map, list swatch colour).
+  When it does not pass, the surface is built from a neutral grey rocky recipe (`type:"barren"`) and the list
+  swatch is neutral; era `gfx` overrides cannot paint over a hidden base. `gfx.type:"star"` still marks a body
+  with no surface (structure, not a spoiler) — put such a body's spoiler on its record gate.
+* **Groups:** a group is a container record. Without `gate` it is a public record (its name only ever appears
+  beside its visible worlds); a present `gate` is compiled like any record gate (invalid → hidden). Its base
+  `name` obeys `gates.name`; a group era name (`eras[k].name`) passes the group record, the era's own `gate`
+  (else bucket k; a present invalid era gate is NOT rescued by the bucket), the group's `gates.name` and the
+  era's `gates.name`. A hidden group name is omitted from eyebrows and shown as "Unrevealed group" in the world
+  list and breadcrumb.
+* **Configuration text is never gated (CBR-O1).** A group's `crumb.label` override (rendered in place of the group
+  name in the breadcrumb), the `ui` strings, `books[k].title` and other configuration labels (not `intro`, which
+  follows `intro.gates` below) are shown as written in every reading state, including the safe state. Put only
+  public, spoiler-free text there; if an override would carry protected lore, remove it or move the text into a gated record field instead.
+* Reading states: `all`, `legacy` (`#book=k`), `preset` (`#upto=preset:v:work`), `set` (`#read=a,b`), and
+  `none` — the reader's deliberate empty selection (unticking the last work), written `#read=_none` and stored as
+  `{"mode":"none"}`; it shows only `public` content. An invalid or conflicting link or stored value opens the
+  fail-closed safe state (public-only, nothing written) with the Reading panel open; `_none` mixed with ids,
+  repeated or conflicting reading params, and `#read=` are invalid. Intro text and legend need explicit
+  `intro.gates.text` / `intro.gates.legend` to show in per-work modes.
+
 ---------------------------------------------------------------------------------------------------
 
 ## 7. `ui` strings (all optional)
