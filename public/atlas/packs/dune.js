@@ -437,7 +437,7 @@ return {
 {id: "naraj", name: "Naraj", group: "landsraad", books: [2], first: 2, est: true,
  status: "Jihad battlefield",
  star: {name: "Unnamed", col: "#fff0dc"}, dir: {l: 192, b: 10}, ly: 260,      /* estimated */
- blurb: "One of the few battles of Paul’s jihad the books name. The old Fedaykin Farok fought in the conquest of Naraj and its moons, where the defenders used a stone burner and his son lost his eyes.",
+ blurb: "One of the few battles of Paul’s jihad the books name. The old Fedaykin Farok fought in the conquest of Naraj and its moons, where the defenders used a stone burner and his son lost his eyes. The Farok and stone-burner account is provisional, based on the Dune fan wiki; not independently checked against the novel.",
  facts: [["Source", "Dune Messiah"], ["Placement", "Not given in the books; estimated"]],
  gfx: {type: "terran", sea: .5, pal: ["#0a1e36", "#2a5a80", "#5a6a3a", "#7a7a4a", "#6a5a4a", "#e8e6e0"], clouds: .4, atmo: "#90b0ff", lights: .2},
  moons: [{name: "Moon", size: .15, dist: 3}, {name: "Moon", size: .1, dist: 3.8}]},
