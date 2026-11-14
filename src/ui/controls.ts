@@ -2,21 +2,41 @@
 import { container, scienceOverlayGroup } from '../scene/setup.ts';
 import { app, audio, trails } from '../state/app-state.ts';
 import type { PlacementBuilder } from '../state/types.ts';
-import { toast, updateLifeZoneButton } from './feed.ts';
+import { compactLayout, toast, updateLifeZoneButton } from './feed.ts';
 import { closeObjectMenu } from './inspector.ts';
 
+/** Keeps the visible selected style and the announced pressed state of a toggle button in sync. */
+function setPressed(element: Element, pressed: boolean) {
+  element.classList.toggle('active', pressed);
+  element.setAttribute('aria-pressed', String(pressed));
+}
+/** Short, touch-worded instruction shown above the compact dock (the desktop hint is hidden there). */
+export function setTouchHint(text: string) {
+  document.querySelector('#touch-hint')!.textContent = text;
+}
+function builderTouchHint() {
+  const builder = app.selectedBuilder;
+  if (builder === 'system') return 'Tap empty space to place our Solar System';
+  if (builder === 'binary') return 'Tap empty space to build two stars';
+  if (builder === 'triple') return 'Tap empty space to build three stars';
+  if (builder.startsWith('galaxy-')) return 'Tap empty space to build · pinch out to explore';
+  return 'Tap empty space to place · use Inspect to move objects';
+}
 export function setSimulationSpeed(value: number) {
   app.speed = value;
   document
     .querySelectorAll<HTMLElement>('[data-speed]')
-    .forEach(element => element.classList.toggle('active', Number(element.dataset.speed) === value));
+    .forEach(element => setPressed(element, Number(element.dataset.speed) === value));
+}
+function showMode(mode: 'add' | 'inspect' | 'navigate') {
+  setPressed(document.querySelector('#add-mode')!, mode === 'add');
+  setPressed(document.querySelector('#inspect-mode')!, mode === 'inspect');
+  setPressed(document.querySelector('#navigate-mode')!, mode === 'navigate');
 }
 export function setInteractionMode(add: boolean) {
   app.placementMode = add;
   app.navigationMode = false;
-  document.querySelector('#add-mode')!.classList.toggle('active', add);
-  document.querySelector('#inspect-mode')!.classList.toggle('active', !add);
-  document.querySelector('#navigate-mode')!.classList.remove('active');
+  showMode(add ? 'add' : 'inspect');
   document.querySelector<HTMLElement>('#navigation-help')!.hidden = true;
   const builderHint =
     app.selectedBuilder === 'system'
@@ -31,17 +51,18 @@ export function setInteractionMode(add: boolean) {
   document.querySelector('#hint')!.textContent = add
     ? builderHint
     : 'INSPECT MODE · CLICK OR DRAG OBJECTS · RIGHT-DRAG TO PAN';
+  setTouchHint(add ? builderTouchHint() : 'Tap an object to inspect · drag it to move');
   container.classList.toggle('placing', add);
   container.classList.remove('navigating');
 }
 export function setNavigationMode() {
   app.placementMode = false;
   app.navigationMode = true;
-  document.querySelector('#add-mode')!.classList.remove('active');
-  document.querySelector('#inspect-mode')!.classList.remove('active');
-  document.querySelector('#navigate-mode')!.classList.add('active');
+  showMode('navigate');
   document.querySelector('#hint')!.textContent =
     'NAVIGATE · DRAG SPACE TO PAN · SCROLL OR PINCH TO ZOOM · DOUBLE-CLICK TO FOCUS';
+  // Taps in Navigate pan the view and never select, so focusing goes through Inspect (see pointer.ts).
+  setTouchHint('Drag to pan · pinch to zoom · to focus: Inspect, tap an object, then Focus');
   document.querySelector<HTMLElement>('#navigation-help')!.hidden = false;
   container.classList.remove('placing');
   container.classList.add('navigating');
