@@ -298,7 +298,9 @@
         const l = L.by[id];
         if (l) parts.push('<span class="lchip" style="--lc:' + ESC(l.c) + '">' + ESC(l.short) + '</span>');
       });
-    const w = fmtWhen(it, T ? T.style : 'BC/AD');
+    /* whenText: the source's own wording ("eighteenth century", "narrative chronology") wins over the
+       numbers, which then only drive the year filter */
+    const w = it && it.whenText ? String(it.whenText) : fmtWhen(it, T ? T.style : 'BC/AD');
     if (w) parts.push('<span class="lwhen">' + ESC(w) + '</span>');
     return parts.join('');
   }
