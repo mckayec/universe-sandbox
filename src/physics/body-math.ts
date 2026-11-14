@@ -1,5 +1,6 @@
 // Small pure helpers: ignition thresholds, habitable range, life levels, seeded noise, formatting, spin.
 import * as THREE from 'three';
+import { modelMassLabel } from '../black-hole-catalog.ts';
 import { stellarBirthStage } from '../simulation-model.ts';
 import {
   BLACK_HOLE_VARIANTS,
@@ -66,6 +67,10 @@ export function seeded(seed: number, salt = 0) {
 }
 export function formatMass(mass: number) {
   return mass < 1 ? mass.toFixed(2) : mass < 10 ? mass.toFixed(1) : mass.toFixed(0);
+}
+/** Planet-scale bodies keep the existing Earth-mass readout; black holes say plainly that they use model units. */
+export function massText(b: Pick<Body, 'kind' | 'mass'>) {
+  return b.kind === 'blackhole' ? modelMassLabel(b.mass, formatMass(b.mass)) : `${formatMass(b.mass)} M⊕`;
 }
 export function planetSubtype(b: Body) {
   return b.kind === 'rocky'

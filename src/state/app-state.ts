@@ -1,10 +1,12 @@
 // Shared mutable app state. Collections are exported directly; values that get reassigned live on the `app` object
 // (e.g. app.speed, app.selectedBody) so every module sees the same current value.
 import * as THREE from 'three';
+import type { FeedbackMode } from '../feedback.ts';
 import { type ExhibitId } from '../exhibits.ts';
 import { type SandboxSnapshot } from '../sandbox-state.ts';
 import { ExhibitAudio } from '../exhibit-audio.ts';
 import { type EffectsMode, type RealismMode } from '../exhibit-runtime.ts';
+import { newDialogPresses } from '../kids-mode.ts';
 import { preferences } from '../scene/setup.ts';
 import type {
   WarpScript,
@@ -53,6 +55,15 @@ export const app = {
   qualityScale: 1,
   realismMode: preferences.realism as RealismMode,
   effectsMode: preferences.effects as EffectsMode,
+  feedbackMode: preferences.feedback as FeedbackMode,
+  /** Kids mode (item 6b): reduced controls; not saved into preferences, so adult settings are untouched. */
+  kidsMode: false,
+  /** Kids mode: Add is armed for exactly one placement. */
+  kidsArmed: false,
+  /** The adult interaction state to restore when a grown-up leaves Kids mode. */
+  kidsRestore: null as null | { placementMode: boolean; navigationMode: boolean; builder: PlacementBuilder },
+  /** Compact (≤800px) layout, as last applied to canvas label text; the loop refreshes labels when it flips. */
+  compactLabels: matchMedia('(max-width: 800px)').matches,
   historySuspended: false,
   historyBeforeDrag: null as SandboxSnapshot | null,
   historyBeforeGravity: null as SandboxSnapshot | null,
@@ -80,9 +91,20 @@ export const app = {
   attractTimer: 0,
   attractMode: false,
   touchGesture: null as TouchGesture | null,
-  pendingTouchPlacement: null as { pointerId: number; screen: THREE.Vector2; world: THREE.Vector3 } | null,
+  pendingTouchPlacement: null as {
+    pointerId: number;
+    screen: THREE.Vector2;
+    world: THREE.Vector3;
+    epoch: number;
+  } | null,
+  /** Bumped by every mode change or Add cancel; a held touch begun under an older epoch can no longer place. */
+  placementEpoch: 0,
+  /** Per-pointer record of presses that began inside the open Kids grown-up dialog (SC6-K3). */
+  kidsDialogPresses: newDialogPresses(),
   qualityTimer: 0,
   qualityFrames: 0,
+  /** Set by visibility changes so the next frame is not measured as rendering time. */
+  frameTimingInterrupted: false,
   audioPulseTimer: 0,
   recoveryTimer: 0,
   narrationTimer: 0,

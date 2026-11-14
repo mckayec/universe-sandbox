@@ -40,6 +40,8 @@ export type SavedBody = {
   stageTransition?: { from: string; to: string; age: number; duration: number };
   debris?: boolean;
   tidalStrain?: number;
+  /** Black-hole reference scale (item 7b); absent in older saves, sanitized on restore. */
+  bhReference?: { origin: string; solarMassPerModelUnit: number };
   /** Slow-accretion capture in progress (physics/infall.ts); absent in older saves. */
   infall?: SavedInfall;
 };

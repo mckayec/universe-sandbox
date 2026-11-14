@@ -199,6 +199,7 @@ export function createGalaxy(origin: THREE.Vector3, style: GalaxyStyle = 'spiral
       : `${group.name} deliberately has no central black hole; a distributed halo and dense stellar core hold this simplified exhibit model together.${neighbour ? ` It is falling toward ${neighbour.group.name}.` : ''}`,
     '#b39cff',
     anchor,
+    'action',
   );
   return anchor;
 }

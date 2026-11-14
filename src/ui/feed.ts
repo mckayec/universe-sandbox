@@ -7,7 +7,13 @@ import { app, audio, exhibitEvents, redoStack, undoStack } from '../state/app-st
 import { restoreUniverse, snapshotUniverse } from '../state/history.ts';
 import type { Body, ExhibitEvent } from '../state/types.ts';
 import { setSimulationSpeed } from './controls.ts';
+import { detailsAfterSelect, narrationAllowed, presentEvent, recordEvent, type EventOrigin } from '../feedback.ts';
 import { loadExhibit, showGuide } from './exhibit-flow.ts';
+import { effectiveFeedbackMode, idleDemoAllowed } from '../kids-mode.ts';
+/** Presentation mode in force: Kids mode is always quiet without changing the adult preference. */
+export function feedbackNow() {
+  return effectiveFeedbackMode(app.feedbackMode, app.kidsMode);
+}
 import { updateInspector } from './inspector.ts';
 
 export const narrationFacts = [
@@ -19,7 +25,7 @@ export const narrationFacts = [
   "Inside a Roche limit, the pull on a world's near side outruns its own gravity, and it is torn into a stream of debris.",
 ];
 export function showNarration() {
-  if (!preferences.narration) return;
+  if (!narrationAllowed(feedbackNow(), preferences.narration)) return;
   const card = document.querySelector<HTMLElement>('#narration-card')!;
   document.querySelector('#narration-copy')!.textContent = narrationFacts[app.narrationIndex % narrationFacts.length];
   card.hidden = false;
@@ -101,6 +107,10 @@ export function updateAttractMode(dt: number) {
     if (app.attractTimer > 48) startAttractMode();
     return;
   }
+  if (!idleDemoAllowed(app.kidsMode)) {
+    app.idleSeconds = 0;
+    return;
+  }
   app.idleSeconds += dt;
   if (reducedMotion.matches || app.idleSeconds <= 120) return;
   const pickerOpen =
@@ -114,6 +124,10 @@ export function toast(msg: string) {
   el.textContent = msg;
   el.classList.add('show');
   app.toastTimer = 2.6;
+}
+/** A banner the simulation raises on its own (not a museumEvent): quiet mode drops it. */
+export function simulationToast(msg: string) {
+  if (presentEvent('simulation', feedbackNow()).banner) toast(msg);
 }
 export function renderExhibitEvents() {
   const root = document.querySelector<HTMLElement>('#event-items')!;
@@ -135,12 +149,24 @@ export function renderExhibitEvents() {
     root.appendChild(card);
   }
 }
-export function museumEvent(title: string, detail: string, color = '#9bb7ff', body?: Body) {
-  exhibitEvents.unshift({ title, detail, color });
-  exhibitEvents.splice(8);
+/**
+ * Records an event in the timeline (always) and presents it according to the feedback mode. Simulation events
+ * are unsolicited; pass origin 'action' for direct responses to the visitor, which quiet mode never hides.
+ */
+export function museumEvent(
+  title: string,
+  detail: string,
+  color = '#9bb7ff',
+  body?: Body,
+  origin: EventOrigin = 'simulation',
+) {
+  recordEvent(exhibitEvents, { title, detail, color });
   if (body) body.lastEvent = `${title}: ${detail}`;
   renderExhibitEvents();
-  toast(title);
+  if (app.selectedBody === body) updateInspector();
+  const shown = presentEvent(origin, feedbackNow());
+  if (shown.banner) toast(title);
+  if (!shown.sound) return;
   const normalized = title.toLowerCase(),
     sound = normalized.includes('supernova')
       ? 'supernova'
@@ -154,11 +180,11 @@ export function museumEvent(title: string, detail: string, color = '#9bb7ff', bo
   audio.play(sound, normalized.includes('supernova') ? 2.2 : 1);
   if (app.effectsMode === 'full' && (sound === 'impact' || sound === 'supernova') && navigator.vibrate)
     navigator.vibrate(sound === 'supernova' ? [35, 25, 80] : 22);
-  if (app.selectedBody === body) updateInspector();
 }
 /** Matches the compact (phone / iPad portrait) layout breakpoint in style.css. */
+const compactQuery = matchMedia('(max-width: 800px)');
 export function compactLayout() {
-  return matchMedia('(max-width: 800px)').matches;
+  return compactQuery.matches;
 }
 export function setToolsCollapsed(collapsed: boolean) {
   document.querySelector('.shell')!.classList.toggle('tools-collapsed', collapsed);
@@ -175,13 +201,21 @@ export function updateLifeZoneButton() {
   button.classList.toggle('active', app.habitabilityGuides);
 }
 export function select(b: Body | null) {
+  const previous = app.selectedBody;
   app.selectedBody = b;
   const panel = document.querySelector('#info-panel')!;
   panel.classList.toggle('empty', !b);
-  if (!b) panel.classList.remove('expanded');
+  setDetailsExpanded(detailsAfterSelect(panel.classList.contains('expanded'), previous, b));
   updateLifeZoneButton();
   selectionRing.visible = !!b;
   document.querySelector<HTMLButtonElement>('#zoom-selected')!.disabled = !b;
   updateInspector();
   updateScienceOverlays();
+}
+/** Opens or closes the selected-object Details sheet and keeps its button state in step. */
+export function setDetailsExpanded(expanded: boolean) {
+  document.querySelector('#info-panel')!.classList.toggle('expanded', expanded);
+  const button = document.querySelector<HTMLButtonElement>('#info-expand')!;
+  button.textContent = expanded ? 'Less' : 'Details';
+  button.setAttribute('aria-expanded', String(expanded));
 }
