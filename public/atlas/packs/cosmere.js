@@ -405,9 +405,10 @@
        gates: {blurb: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}, short: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}, facts: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
        model: "Artist’s model: this surface and the colour of its sun are illustrations made for the atlas, not a verified map or measurement from the books.",
        eras: {
-         6: {status: "Harmony’s world · the Elendel Basin",
-             blurb: "Three hundred years after the end of the first trilogy, Sazed holds both Ruin and Preservation as the god Harmony and has remade the planet: blue skies, green plants, no ash. Most northerners live in the fertile Elendel Basin near the equator, ringed by the Seran, Faleast and Channerel mountains, where there are railways, electric lights and early cars. Around the Basin lie the Roughs, and near the south pole a colder southern continent.",
-             facts: [["Era", "Industrial, about 300 years after Mistborn"]],
+         6: {status: "The Alloy of Law · industrial Elendel",
+             blurb: "In The Alloy of Law, Elendel has railways, canals, electric street lighting and steel-framed towers under construction. Horseless carriages share its streets with horse-drawn vehicles.",
+             facts: [["Era", "About 300 years after the original Mistborn trilogy"]],
+             gates: {status: {in: ["the-alloy-of-law"], req: "the-alloy-of-law"}, blurb: {in: ["the-alloy-of-law"], req: "the-alloy-of-law"}, facts: {in: ["the-alloy-of-law"], req: "the-alloy-of-law"}},
              gfx: {pal: ["#0a2240", "#2a6aa0", "#5a8a40", "#6f9a52", "#7a7468", "#f0f0f0"], clouds: .4, cloudCol: "#ffffff", atmo: "#7aa8ff", lights: .45, ice: 80, map: MAP_SCAD2, feat: []}},
          10: {status: "Harmony’s world · under threat from outside"}
        },

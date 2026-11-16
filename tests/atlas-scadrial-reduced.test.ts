@@ -36,6 +36,24 @@ const MODEL =
   'Artist’s model: this surface and the colour of its sun are illustrations made for the atlas, not a verified map or measurement from the books.';
 const COG_NAME = 'Expanse of the Vapors';
 
+/* MB05 bounded Elendel setting (ChatGPT era6-handoff-2026-11-16.md): three nested era-6 fields with their own gates */
+const AOL = 'the-alloy-of-law';
+const MB05_GATE = { in: [AOL], req: AOL };
+const MB05 = {
+  status: 'The Alloy of Law · industrial Elendel',
+  blurb:
+    'In The Alloy of Law, Elendel has railways, canals, electric street lighting and steel-framed towers under construction. Horseless carriages share its streets with horse-drawn vehicles.',
+  facts: [['Era', 'About 300 years after the original Mistborn trilogy']],
+};
+const MB05_FACT = 'Era: About 300 years after the original Mistborn trilogy';
+const OLD_ERA6 = [
+  'Harmony’s world · the Elendel Basin',
+  'Sazed holds both Ruin and Preservation',
+  'Seran, Faleast and Channerel',
+  'near the south pole',
+  'Industrial, about 300 years after Mistborn',
+];
+
 const J = (x: unknown) => JSON.parse(JSON.stringify(x));
 type St = { mode: 'set' | 'legacy' | 'all'; ids?: string[]; book?: number };
 
@@ -116,8 +134,8 @@ test('payload: removed claims are gone from base and every era override; no reco
   assert.deepEqual(w.star, { name: 'Scadrial’s sun', col: '#ffd8a0' }, 'star object unchanged (held)');
   assert.equal(w.realms.cognitive.name, COG_NAME, 'Cognitive payload held unchanged');
   assert.deepEqual(Object.keys(w.eras), ['6', '10']);
-  assert.equal(w.eras[6].status, 'Harmony’s world · the Elendel Basin');
-  assert.deepEqual(w.eras[6].facts, [['Era', 'Industrial, about 300 years after Mistborn']]);
+  assert.equal(w.eras[6].status, MB05.status);
+  assert.deepEqual(w.eras[6].facts, MB05.facts);
   assert.equal(w.eras[10].status, 'Harmony’s world · under threat from outside');
   assert.equal(w.eras[6].gate, undefined);
   assert.equal(w.eras[10].gate, undefined);
@@ -178,8 +196,8 @@ test('per-work OT + bucket 6: era-6 status/facts appear only through the MB01 fa
   const { c } = setup({ mode: 'set', ids: [...MB, ...reg0().buckets.get(6)] });
   const s = surfaces(c);
   assert.equal(s.visible, true);
-  assert.equal(s.status, 'Harmony’s world · the Elendel Basin');
-  assert.deepEqual(s.facts, ['Era: Industrial, about 300 years after Mistborn']);
+  assert.equal(s.status, MB05.status);
+  assert.deepEqual(s.facts, [MB05_FACT]);
   for (const x of REMOVED) assert.ok(!text(s).includes(x));
 });
 
@@ -201,8 +219,8 @@ test('descendants (sites, events) cannot bypass the held parent', () => {
 
 for (const [book, status, facts] of [
   [2, 'The Final Empire', ['Ruler: The Lord Ruler']],
-  [6, 'Harmony’s world · the Elendel Basin', ['Era: Industrial, about 300 years after Mistborn']],
-  [10, 'Harmony’s world · under threat from outside', ['Era: Industrial, about 300 years after Mistborn']],
+  [6, 'The Alloy of Law · industrial Elendel', ['Era: About 300 years after the original Mistborn trilogy']],
+  [10, 'Harmony’s world · under threat from outside', ['Era: About 300 years after the original Mistborn trilogy']],
 ] as [number, string, string[]][]) {
   test('legacy #book=' + book + ': numeric rule unchanged, reduced payload shown', () => {
     const { c } = setup({ mode: 'legacy', book });
@@ -219,7 +237,7 @@ test('All: reduced payload in the base → latest-era status and the era facts',
   const { c } = setup({ mode: 'all' });
   const s = surfaces(c);
   assert.equal(s.status, 'The Final Empire → Harmony’s world · under threat from outside');
-  assert.deepEqual(s.facts, ['Era: Industrial, about 300 years after Mistborn']);
+  assert.deepEqual(s.facts, [MB05_FACT]);
   assert.ok(s.model.includes(MODEL));
   for (const x of REMOVED) assert.ok(!text(s).includes(x));
 });
@@ -277,3 +295,87 @@ function reg0() {
   if (!REG) REG = setup({ mode: 'all' }).reg;
   return REG;
 }
+
+/* MB05 (era6-handoff-2026-11-16.md): only eras[6].status/blurb/facts change, each with its own MB05 field gate.
+   Ancestor restrictions (world chain, era-6 numeric bucket record gate, the world's own MB01 blurb/facts gates)
+   still apply, era 10's status override is untouched, and no world or era record gate is added. */
+const BASE_BLURB =
+  'In the Final Empire, ash falls beneath a red sun. Skaa labor in the fields under the Lord Ruler’s rule, brown-leaved crops struggle to grow, and mists gather as evening falls.';
+
+test('MB05 payload: exact three fields and three own gates; no record gate; era 10 and gfx preserved', () => {
+  const { w: w0 } = setup({ mode: 'all' });
+  const w = J(w0);
+  const e6 = w.eras[6];
+  assert.equal(e6.status, MB05.status);
+  assert.equal(e6.blurb, MB05.blurb);
+  assert.deepEqual(e6.facts, MB05.facts);
+  assert.deepEqual(e6.gates, { status: MB05_GATE, blurb: MB05_GATE, facts: MB05_GATE });
+  assert.equal(Object.prototype.hasOwnProperty.call(e6, 'gate'), false, 'no era record gate');
+  assert.equal(Object.prototype.hasOwnProperty.call(w, 'gate'), false, 'no world record gate');
+  assert.deepEqual(Object.keys(e6).sort(), ['blurb', 'facts', 'gates', 'gfx', 'status']);
+  assert.ok(Array.isArray(e6.gfx.map) || typeof e6.gfx.map === 'object', 'era gfx map kept');
+  assert.deepEqual(e6.gfx.pal, ['#0a2240', '#2a6aa0', '#5a8a40', '#6f9a52', '#7a7468', '#f0f0f0']);
+  assert.deepEqual(w.eras[10], { status: 'Harmony’s world · under threat from outside' });
+  assert.equal(w.distText, SCAD_DIST, 'SCR-01 qualifier kept');
+  assert.equal(w.model, MODEL, 'model note kept');
+  const own = JSON.stringify(w.eras);
+  for (const x of OLD_ERA6) assert.ok(!own.includes(x), 'old era-6 copy removed: ' + x);
+  for (const x of REMOVED) assert.ok(!own.includes(x), 'no restored claim: ' + x);
+});
+
+const B6 = () => [...reg0().buckets.get(6)] as string[];
+for (let m = 0; m < 8; m++) {
+  for (let n = 0; n < 8; n++) {
+    for (const realm of ['physical', 'cognitive']) {
+      const ot = MB.filter((_, i) => m & (1 << i));
+      const b6 = B6().filter((_, i) => n & (1 << i));
+      test('MB05 per-work OT' + m + ' B6' + n + ' / ' + realm + ': era-6 fields only with every ancestor', () => {
+        const { c } = setup({ mode: 'set', ids: [...ot, ...b6] });
+        vm.runInContext('S.realm=' + JSON.stringify(realm), c);
+        const s = surfaces(c);
+        const otFull = ot.length === 3;
+        const eligible = otFull && b6.length === B6().length;
+        assert.equal(s.visible, otFull, 'world visibility unchanged');
+        assert.equal(vm.runInContext('distText(world)', c), SCAD_DIST);
+        for (const x of [...OLD_ERA6, ...REMOVED]) assert.ok(!text(s).includes(x), 'absent: ' + x);
+        if (eligible) {
+          assert.deepEqual([s.status, s.blurb, s.facts], [MB05.status, MB05.blurb, [MB05_FACT]]);
+        } else if (otFull) {
+          assert.deepEqual([s.status, s.blurb, s.facts], ['The Final Empire', BASE_BLURB, ['Ruler: The Lord Ruler']]);
+        } else {
+          assert.deepEqual([s.status, s.blurb, s.facts], ['', '', []]);
+        }
+        if (otFull) assert.equal(s.model, '<p class="srcnote model">' + MODEL + '</p>');
+      });
+    }
+  }
+}
+
+for (const [label, st, status] of [
+  ['legacy #book=2', { mode: 'legacy', book: 2 }, 'The Final Empire'],
+  ['legacy #book=6', { mode: 'legacy', book: 6 }, MB05.status],
+  ['legacy #book=10', { mode: 'legacy', book: 10 }, 'Harmony’s world · under threat from outside'],
+  ['All', { mode: 'all' }, 'The Final Empire → Harmony’s world · under threat from outside'],
+] as [string, St, string][]) {
+  test('MB05 ' + label + ': numeric rule, candidate copy from era 6, era-10 status override kept', () => {
+    const { c } = setup(st);
+    const s = surfaces(c);
+    assert.equal(s.status, status);
+    const early = st.mode === 'legacy' && st.book === 2;
+    assert.equal(s.blurb, early ? BASE_BLURB : MB05.blurb);
+    assert.deepEqual(s.facts, early ? ['Ruler: The Lord Ruler'] : [MB05_FACT]);
+    assert.ok(s.model.includes(MODEL));
+    for (const x of OLD_ERA6) assert.ok(!text(s).includes(x));
+  });
+}
+
+test('MB05 field gates fail closed: an invalid or unmet era-6 field gate keeps the earlier value', () => {
+  for (const g of [{}, { req: 'mistborn-secret-history' }]) {
+    const { c, w } = setup({ mode: 'set', ids: [...MB, ...B6()] });
+    w.eras[6].gates = { ...w.eras[6].gates, blurb: g };
+    const s = surfaces(c);
+    assert.equal(s.blurb, BASE_BLURB, JSON.stringify(g));
+    assert.equal(s.status, MB05.status, 'sibling field gate independent');
+    assert.deepEqual(s.facts, [MB05_FACT]);
+  }
+});
