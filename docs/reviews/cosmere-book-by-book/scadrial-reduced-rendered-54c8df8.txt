@@ -1,0 +1,170 @@
+ok   1440x900 none: Scadrial not selectable
+ok   1440x900 none: label placeholder (An unrevealed world)
+ok   1440x900 none: no removed claim on page
+ok   1440x900 none: no model note / subastral name
+ok   1440x900 none: child site cannot open the held parent
+ok   1440x900 none: no errors 
+ok   1440x900 MB01: Scadrial not selectable
+ok   1440x900 MB01: label placeholder (An unrevealed world)
+ok   1440x900 MB01: no removed claim on page
+ok   1440x900 MB01: no model note / subastral name
+ok   1440x900 MB01: child site cannot open the held parent
+ok   1440x900 MB01: no errors 
+ok   1440x900 MB02: Scadrial not selectable
+ok   1440x900 MB02: label placeholder (An unrevealed world)
+ok   1440x900 MB02: no removed claim on page
+ok   1440x900 MB02: no model note / subastral name
+ok   1440x900 MB02: child site cannot open the held parent
+ok   1440x900 MB02: no errors 
+ok   1440x900 MB01+MB02: Scadrial not selectable
+ok   1440x900 MB01+MB02: label placeholder (An unrevealed world)
+ok   1440x900 MB01+MB02: no removed claim on page
+ok   1440x900 MB01+MB02: no model note / subastral name
+ok   1440x900 MB01+MB02: child site cannot open the held parent
+ok   1440x900 MB01+MB02: no errors 
+ok   1440x900 MB03: Scadrial not selectable
+ok   1440x900 MB03: label placeholder (An unrevealed world)
+ok   1440x900 MB03: no removed claim on page
+ok   1440x900 MB03: no model note / subastral name
+ok   1440x900 MB03: child site cannot open the held parent
+ok   1440x900 MB03: no errors 
+ok   1440x900 MB01+MB03: Scadrial not selectable
+ok   1440x900 MB01+MB03: label placeholder (An unrevealed world)
+ok   1440x900 MB01+MB03: no removed claim on page
+ok   1440x900 MB01+MB03: no model note / subastral name
+ok   1440x900 MB01+MB03: child site cannot open the held parent
+ok   1440x900 MB01+MB03: no errors 
+ok   1440x900 MB02+MB03: Scadrial not selectable
+ok   1440x900 MB02+MB03: label placeholder (An unrevealed world)
+ok   1440x900 MB02+MB03: no removed claim on page
+ok   1440x900 MB02+MB03: no model note / subastral name
+ok   1440x900 MB02+MB03: child site cannot open the held parent
+ok   1440x900 MB02+MB03: no errors 
+ok   1440x900 OT set: selected
+ok   1440x900 OT set: status chip reduced (The Final Empire)
+ok   1440x900 OT set: facts = Star, Ruler, Distance (Star|Ruler|Distance)
+ok   1440x900 OT set: ruler fact
+ok   1440x900 OT set: model note in dossier
+ok   1440x900 OT set: no removed claim in dossier
+ok   1440x900 OT set: tooltip clean
+ok   1440x900 OT set: surface open
+ok   1440x900 OT set: surface dossier reduced + model note
+ok   1440x900 OT set: no errors 
+ok   1440x900 bucket-6 only: Scadrial not selectable
+ok   1440x900 bucket-6 only: no parent/era payload on page
+ok   1440x900 bucket-6 only: no errors 
+ok   1440x900 OT+bucket6: era-6 status reduced (Harmony’s world · the Elendel Basin)
+ok   1440x900 OT+bucket6: era-6 facts reduced (Star|Era|Distance)
+ok   1440x900 OT+bucket6: no removed claim; model note
+ok   1440x900 OT+bucket6: no errors 
+ok   1440x900 realm switch: Cognitive, selection kept (cognitive/scadrial)
+ok   1440x900 realm switch: Cognitive dossier reduced + model note
+ok   1440x900 realm switch: held Cognitive card unchanged (absent gate inherits)
+ok   1440x900 realm switch: back to Physical, selection kept
+ok   1440x900 realm switch: Physical dossier reduced
+ok   1440x900 realm switch: no errors 
+ok   1440x900 legacy book=2: selected
+ok   1440x900 legacy book=2: status "The Final Empire" (The Final Empire)
+ok   1440x900 legacy book=2: facts Star|Ruler|Distance (Star|Ruler|Distance)
+ok   1440x900 legacy book=2: no removed claim; model note
+ok   1440x900 legacy book=2: no errors 
+ok   1440x900 legacy book=6: selected
+ok   1440x900 legacy book=6: status "Harmony’s world · the Elendel Basin" (Harmony’s world · the Elendel Basin)
+ok   1440x900 legacy book=6: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 legacy book=6: no removed claim; model note
+ok   1440x900 legacy book=6: no errors 
+ok   1440x900 legacy book=10: selected
+ok   1440x900 legacy book=10: status "Harmony’s world · under threat from outside" (Harmony’s world · under threat from outside)
+ok   1440x900 legacy book=10: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 legacy book=10: no removed claim; model note
+ok   1440x900 legacy book=10: no errors 
+ok   1440x900 All: selected
+ok   1440x900 All: status "The Final Empire → Harmony’s world · under threat from outside" (The Final Empire → Harmony’s world · under threat from outside)
+ok   1440x900 All: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 All: no removed claim; model note
+ok   1440x900 All: no errors 
+ok   390x844 none: Scadrial not selectable
+ok   390x844 none: label placeholder (An unrevealed world)
+ok   390x844 none: no removed claim on page
+ok   390x844 none: no model note / subastral name
+ok   390x844 none: child site cannot open the held parent
+ok   390x844 none: no errors 
+ok   390x844 MB01: Scadrial not selectable
+ok   390x844 MB01: label placeholder (An unrevealed world)
+ok   390x844 MB01: no removed claim on page
+ok   390x844 MB01: no model note / subastral name
+ok   390x844 MB01: child site cannot open the held parent
+ok   390x844 MB01: no errors 
+ok   390x844 MB02: Scadrial not selectable
+ok   390x844 MB02: label placeholder (An unrevealed world)
+ok   390x844 MB02: no removed claim on page
+ok   390x844 MB02: no model note / subastral name
+ok   390x844 MB02: child site cannot open the held parent
+ok   390x844 MB02: no errors 
+ok   390x844 MB01+MB02: Scadrial not selectable
+ok   390x844 MB01+MB02: label placeholder (An unrevealed world)
+ok   390x844 MB01+MB02: no removed claim on page
+ok   390x844 MB01+MB02: no model note / subastral name
+ok   390x844 MB01+MB02: child site cannot open the held parent
+ok   390x844 MB01+MB02: no errors 
+ok   390x844 MB03: Scadrial not selectable
+ok   390x844 MB03: label placeholder (An unrevealed world)
+ok   390x844 MB03: no removed claim on page
+ok   390x844 MB03: no model note / subastral name
+ok   390x844 MB03: child site cannot open the held parent
+ok   390x844 MB03: no errors 
+ok   390x844 MB01+MB03: Scadrial not selectable
+ok   390x844 MB01+MB03: label placeholder (An unrevealed world)
+ok   390x844 MB01+MB03: no removed claim on page
+ok   390x844 MB01+MB03: no model note / subastral name
+ok   390x844 MB01+MB03: child site cannot open the held parent
+ok   390x844 MB01+MB03: no errors 
+ok   390x844 MB02+MB03: Scadrial not selectable
+ok   390x844 MB02+MB03: label placeholder (An unrevealed world)
+ok   390x844 MB02+MB03: no removed claim on page
+ok   390x844 MB02+MB03: no model note / subastral name
+ok   390x844 MB02+MB03: child site cannot open the held parent
+ok   390x844 MB02+MB03: no errors 
+ok   390x844 OT set: selected
+ok   390x844 OT set: status chip reduced (The Final Empire)
+ok   390x844 OT set: facts = Star, Ruler, Distance (Star|Ruler|Distance)
+ok   390x844 OT set: ruler fact
+ok   390x844 OT set: model note in dossier
+ok   390x844 OT set: no removed claim in dossier
+ok   390x844 OT set: surface open
+ok   390x844 OT set: surface dossier reduced + model note
+ok   390x844 OT set: no errors 
+ok   390x844 bucket-6 only: Scadrial not selectable
+ok   390x844 bucket-6 only: no parent/era payload on page
+ok   390x844 bucket-6 only: no errors 
+ok   390x844 OT+bucket6: era-6 status reduced (Harmony’s world · the Elendel Basin)
+ok   390x844 OT+bucket6: era-6 facts reduced (Star|Era|Distance)
+ok   390x844 OT+bucket6: no removed claim; model note
+ok   390x844 OT+bucket6: no errors 
+ok   390x844 realm switch: Cognitive, selection kept (cognitive/scadrial)
+ok   390x844 realm switch: Cognitive dossier reduced + model note
+ok   390x844 realm switch: held Cognitive card unchanged (absent gate inherits)
+ok   390x844 realm switch: back to Physical, selection kept
+ok   390x844 realm switch: Physical dossier reduced
+ok   390x844 realm switch: no errors 
+ok   390x844 legacy book=2: selected
+ok   390x844 legacy book=2: status "The Final Empire" (The Final Empire)
+ok   390x844 legacy book=2: facts Star|Ruler|Distance (Star|Ruler|Distance)
+ok   390x844 legacy book=2: no removed claim; model note
+ok   390x844 legacy book=2: no errors 
+ok   390x844 legacy book=6: selected
+ok   390x844 legacy book=6: status "Harmony’s world · the Elendel Basin" (Harmony’s world · the Elendel Basin)
+ok   390x844 legacy book=6: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 legacy book=6: no removed claim; model note
+ok   390x844 legacy book=6: no errors 
+ok   390x844 legacy book=10: selected
+ok   390x844 legacy book=10: status "Harmony’s world · under threat from outside" (Harmony’s world · under threat from outside)
+ok   390x844 legacy book=10: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 legacy book=10: no removed claim; model note
+ok   390x844 legacy book=10: no errors 
+ok   390x844 All: selected
+ok   390x844 All: status "The Final Empire → Harmony’s world · under threat from outside" (The Final Empire → Harmony’s world · under threat from outside)
+ok   390x844 All: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 All: no removed claim; model note
+ok   390x844 All: no errors 
+{"pass":169,"fail":0}

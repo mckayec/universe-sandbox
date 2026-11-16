@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: payload: removed claims are gone from base and every era override; no record gate or threshold change
+ok 1 - payload: removed claims are gone from base and every era override; no record gate or threshold change
+  ---
+  duration_ms: 10.874587
+  type: 'test'
+  ...
+# Subtest: per-work none selected: parent stays held unless all three are read; reduced copy only
+ok 2 - per-work none selected: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.67245
+  type: 'test'
+  ...
+# Subtest: per-work MB01: parent stays held unless all three are read; reduced copy only
+ok 3 - per-work MB01: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.690274
+  type: 'test'
+  ...
+# Subtest: per-work MB02: parent stays held unless all three are read; reduced copy only
+ok 4 - per-work MB02: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.470995
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB02: parent stays held unless all three are read; reduced copy only
+ok 5 - per-work MB01+MB02: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.760444
+  type: 'test'
+  ...
+# Subtest: per-work MB03: parent stays held unless all three are read; reduced copy only
+ok 6 - per-work MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.667638
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB03: parent stays held unless all three are read; reduced copy only
+ok 7 - per-work MB01+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.274541
+  type: 'test'
+  ...
+# Subtest: per-work MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 8 - per-work MB02+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.407555
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 9 - per-work MB01+MB02+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.87315
+  type: 'test'
+  ...
+# Subtest: per-work later-era-only (bucket 6 works without the original trilogy): parent and children stay hidden
+ok 10 - per-work later-era-only (bucket 6 works without the original trilogy): parent and children stay hidden
+  ---
+  duration_ms: 8.267335
+  type: 'test'
+  ...
+# Subtest: per-work OT + bucket 6: era-6 status/facts appear only through the MB01 facts gate and stay reduced
+ok 11 - per-work OT + bucket 6: era-6 status/facts appear only through the MB01 facts gate and stay reduced
+  ---
+  duration_ms: 2.66545
+  type: 'test'
+  ...
+# Subtest: descendants (sites, events) cannot bypass the held parent
+ok 12 - descendants (sites, events) cannot bypass the held parent
+  ---
+  duration_ms: 28.092458
+  type: 'test'
+  ...
+# Subtest: legacy \#book=2: numeric rule unchanged, reduced payload shown
+ok 13 - legacy \#book=2: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 4.689605
+  type: 'test'
+  ...
+# Subtest: legacy \#book=6: numeric rule unchanged, reduced payload shown
+ok 14 - legacy \#book=6: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 2.500669
+  type: 'test'
+  ...
+# Subtest: legacy \#book=10: numeric rule unchanged, reduced payload shown
+ok 15 - legacy \#book=10: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 3.009362
+  type: 'test'
+  ...
+# Subtest: All: reduced payload in the base → latest-era status and the era facts
+ok 16 - All: reduced payload in the base → latest-era status and the era facts
+  ---
+  duration_ms: 9.243024
+  type: 'test'
+  ...
+# Subtest: model note obeys a present gates.model (fixture) and an invalid one fails closed
+ok 17 - model note obeys a present gates.model (fixture) and an invalid one fails closed
+  ---
+  duration_ms: 13.824962
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 248.329048

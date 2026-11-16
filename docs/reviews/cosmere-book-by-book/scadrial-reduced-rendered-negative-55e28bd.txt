@@ -1,0 +1,45 @@
+FAIL 1440x900 OT set: status chip reduced (First planet · the Final Empire)
+FAIL 1440x900 OT set: facts = Star, Ruler, Distance (Star|Order|Shards|Magic|Ruler|Distance)
+FAIL 1440x900 OT set: model note in dossier
+FAIL 1440x900 OT set: no removed claim in dossier
+FAIL 1440x900 OT set: surface dossier reduced + model note
+FAIL 1440x900 OT+bucket6: era-6 status reduced (First planet · Harmony’s world · the Elendel Basin)
+FAIL 1440x900 OT+bucket6: era-6 facts reduced (Star|Order|Shards|Magic|Era|Distance)
+FAIL 1440x900 OT+bucket6: no removed claim; model note
+FAIL 1440x900 realm switch: Cognitive dossier reduced + model note
+FAIL 1440x900 realm switch: Physical dossier reduced
+FAIL 1440x900 legacy book=2: status "The Final Empire" (First planet · the Final Empire)
+FAIL 1440x900 legacy book=2: facts Star|Ruler|Distance (Star|Order|Shards|Magic|Ruler|Distance)
+FAIL 1440x900 legacy book=2: no removed claim; model note
+FAIL 1440x900 legacy book=6: status "Harmony’s world · the Elendel Basin" (First planet · Harmony’s world · the Elendel Basin)
+FAIL 1440x900 legacy book=6: facts Star|Era|Distance (Star|Order|Shards|Magic|Era|Distance)
+FAIL 1440x900 legacy book=6: no removed claim; model note
+FAIL 1440x900 legacy book=10: status "Harmony’s world · under threat from outside" (First planet · Harmony’s world · under threat from outside)
+FAIL 1440x900 legacy book=10: facts Star|Era|Distance (Star|Order|Shards|Magic|Era|Distance)
+FAIL 1440x900 legacy book=10: no removed claim; model note
+FAIL 1440x900 All: status "The Final Empire → Harmony’s world · under threat from outside" (First planet · the Final Empire → First planet · Harmony’s world · under threat from outside)
+FAIL 1440x900 All: facts Star|Era|Distance (Star|Order|Shards|Magic|Era|Distance)
+FAIL 1440x900 All: no removed claim; model note
+FAIL 390x844 OT set: status chip reduced (First planet · the Final Empire)
+FAIL 390x844 OT set: facts = Star, Ruler, Distance (Star|Order|Shards|Magic|Ruler|Distance)
+FAIL 390x844 OT set: model note in dossier
+FAIL 390x844 OT set: no removed claim in dossier
+FAIL 390x844 OT set: surface dossier reduced + model note
+FAIL 390x844 OT+bucket6: era-6 status reduced (First planet · Harmony’s world · the Elendel Basin)
+FAIL 390x844 OT+bucket6: era-6 facts reduced (Star|Order|Shards|Magic|Era|Distance)
+FAIL 390x844 OT+bucket6: no removed claim; model note
+FAIL 390x844 realm switch: Cognitive dossier reduced + model note
+FAIL 390x844 realm switch: Physical dossier reduced
+FAIL 390x844 legacy book=2: status "The Final Empire" (First planet · the Final Empire)
+FAIL 390x844 legacy book=2: facts Star|Ruler|Distance (Star|Order|Shards|Magic|Ruler|Distance)
+FAIL 390x844 legacy book=2: no removed claim; model note
+FAIL 390x844 legacy book=6: status "Harmony’s world · the Elendel Basin" (First planet · Harmony’s world · the Elendel Basin)
+FAIL 390x844 legacy book=6: facts Star|Era|Distance (Star|Order|Shards|Magic|Era|Distance)
+FAIL 390x844 legacy book=6: no removed claim; model note
+FAIL 390x844 legacy book=10: status "Harmony’s world · under threat from outside" (First planet · Harmony’s world · under threat from outside)
+FAIL 390x844 legacy book=10: facts Star|Era|Distance (Star|Order|Shards|Magic|Era|Distance)
+FAIL 390x844 legacy book=10: no removed claim; model note
+FAIL 390x844 All: status "The Final Empire → Harmony’s world · under threat from outside" (First planet · the Final Empire → First planet · Harmony’s world · under threat from outside)
+FAIL 390x844 All: facts Star|Era|Distance (Star|Order|Shards|Magic|Era|Distance)
+FAIL 390x844 All: no removed claim; model note
+{"pass":125,"fail":44}
