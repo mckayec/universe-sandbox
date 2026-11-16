@@ -46,6 +46,11 @@ const MB05 = {
   facts: [['Era', 'About 300 years after the original Mistborn trilogy']],
 };
 const MB05_FACT = 'Era: About 300 years after the original Mistborn trilogy';
+/* MB10 one-field era-10 status (ChatGPT era10-handoff-2026-11-16.md) with its own the-lost-metal gate */
+const TLM = 'the-lost-metal';
+const MB10_GATE = { in: [TLM], req: TLM };
+const MB10_STATUS = 'The Lost Metal · Elendel and the Outer Cities in tension';
+const OLD_ERA10 = 'Harmony’s world · under threat from outside';
 const OLD_ERA6 = [
   'Harmony’s world · the Elendel Basin',
   'Sazed holds both Ruin and Preservation',
@@ -136,7 +141,8 @@ test('payload: removed claims are gone from base and every era override; no reco
   assert.deepEqual(Object.keys(w.eras), ['6', '10']);
   assert.equal(w.eras[6].status, MB05.status);
   assert.deepEqual(w.eras[6].facts, MB05.facts);
-  assert.equal(w.eras[10].status, 'Harmony’s world · under threat from outside');
+  assert.equal(w.eras[10].status, MB10_STATUS);
+  assert.deepEqual(w.eras[10].gates, { status: MB10_GATE });
   assert.equal(w.eras[6].gate, undefined);
   assert.equal(w.eras[10].gate, undefined);
   const own = JSON.stringify({ s: w.status, f: w.facts, e: w.eras });
@@ -220,7 +226,7 @@ test('descendants (sites, events) cannot bypass the held parent', () => {
 for (const [book, status, facts] of [
   [2, 'The Final Empire', ['Ruler: The Lord Ruler']],
   [6, 'The Alloy of Law · industrial Elendel', ['Era: About 300 years after the original Mistborn trilogy']],
-  [10, 'Harmony’s world · under threat from outside', ['Era: About 300 years after the original Mistborn trilogy']],
+  [10, MB10_STATUS, ['Era: About 300 years after the original Mistborn trilogy']],
 ] as [number, string, string[]][]) {
   test('legacy #book=' + book + ': numeric rule unchanged, reduced payload shown', () => {
     const { c } = setup({ mode: 'legacy', book });
@@ -236,7 +242,7 @@ for (const [book, status, facts] of [
 test('All: reduced payload in the base → latest-era status and the era facts', () => {
   const { c } = setup({ mode: 'all' });
   const s = surfaces(c);
-  assert.equal(s.status, 'The Final Empire → Harmony’s world · under threat from outside');
+  assert.equal(s.status, 'The Final Empire → ' + MB10_STATUS);
   assert.deepEqual(s.facts, [MB05_FACT]);
   assert.ok(s.model.includes(MODEL));
   for (const x of REMOVED) assert.ok(!text(s).includes(x));
@@ -315,7 +321,7 @@ test('MB05 payload: exact three fields and three own gates; no record gate; era 
   assert.deepEqual(Object.keys(e6).sort(), ['blurb', 'facts', 'gates', 'gfx', 'status']);
   assert.ok(Array.isArray(e6.gfx.map) || typeof e6.gfx.map === 'object', 'era gfx map kept');
   assert.deepEqual(e6.gfx.pal, ['#0a2240', '#2a6aa0', '#5a8a40', '#6f9a52', '#7a7468', '#f0f0f0']);
-  assert.deepEqual(w.eras[10], { status: 'Harmony’s world · under threat from outside' });
+  assert.deepEqual(w.eras[10], { status: MB10_STATUS, gates: { status: MB10_GATE } });
   assert.equal(w.distText, SCAD_DIST, 'SCR-01 qualifier kept');
   assert.equal(w.model, MODEL, 'model note kept');
   const own = JSON.stringify(w.eras);
@@ -354,8 +360,8 @@ for (let m = 0; m < 8; m++) {
 for (const [label, st, status] of [
   ['legacy #book=2', { mode: 'legacy', book: 2 }, 'The Final Empire'],
   ['legacy #book=6', { mode: 'legacy', book: 6 }, MB05.status],
-  ['legacy #book=10', { mode: 'legacy', book: 10 }, 'Harmony’s world · under threat from outside'],
-  ['All', { mode: 'all' }, 'The Final Empire → Harmony’s world · under threat from outside'],
+  ['legacy #book=10', { mode: 'legacy', book: 10 }, MB10_STATUS],
+  ['All', { mode: 'all' }, 'The Final Empire → ' + MB10_STATUS],
 ] as [string, St, string][]) {
   test('MB05 ' + label + ': numeric rule, candidate copy from era 6, era-10 status override kept', () => {
     const { c } = setup(st);
@@ -377,5 +383,91 @@ test('MB05 field gates fail closed: an invalid or unmet era-6 field gate keeps t
     assert.equal(s.blurb, BASE_BLURB, JSON.stringify(g));
     assert.equal(s.status, MB05.status, 'sibling field gate independent');
     assert.deepEqual(s.facts, [MB05_FACT]);
+  }
+});
+
+/* MB10 one-field era-10 status (ChatGPT era10-handoff-2026-11-16.md): only eras[10].status changes and it carries
+   its own the-lost-metal field gate. The world chain, the era numeric bucket rule and the world's own MB01 gates
+   still apply; era-6 candidate/gates, every other field, registry and presets are unchanged. */
+test('MB10 payload: one nested field and one own gate; no record gate; era 6, distText and model preserved', () => {
+  const { w: w0 } = setup({ mode: 'all' });
+  const w = J(w0);
+  assert.deepEqual(w.eras[10], { status: MB10_STATUS, gates: { status: MB10_GATE } });
+  assert.deepEqual(Object.keys(w.eras[10]).sort(), ['gates', 'status']);
+  assert.equal(Object.prototype.hasOwnProperty.call(w.eras[10], 'gate'), false, 'no era-10 record gate');
+  assert.equal(Object.prototype.hasOwnProperty.call(w, 'gate'), false, 'no world record gate');
+  assert.equal(w.eras[6].status, MB05.status);
+  assert.equal(w.eras[6].blurb, MB05.blurb);
+  assert.deepEqual(w.eras[6].facts, MB05.facts);
+  assert.deepEqual(w.eras[6].gates, { status: MB05_GATE, blurb: MB05_GATE, facts: MB05_GATE });
+  assert.equal(w.distText, SCAD_DIST);
+  assert.equal(w.model, MODEL);
+  assert.ok(!JSON.stringify(w.eras).includes(OLD_ERA10), 'old era-10 status replaced');
+});
+
+for (let m = 0; m < 8; m++) {
+  for (let n = 0; n < 8; n++) {
+    for (const tlm of [false, true]) {
+      for (const realm of ['physical', 'cognitive']) {
+        const ot = MB.filter((_, i) => m & (1 << i));
+        const b6 = B6().filter((_, i) => n & (1 << i));
+        const label = 'MB10 per-work OT' + m + ' B6' + n + (tlm ? ' +TLM' : ' -TLM') + ' / ' + realm;
+        test(label + ': era-10 status only with the trilogy and The Lost Metal', () => {
+          const ids = [...ot, ...b6, ...(tlm ? [TLM] : [])];
+          const base = setup({ mode: 'set', ids: [...ot, ...b6] });
+          vm.runInContext('S.realm=' + JSON.stringify(realm), base.c);
+          const s0 = surfaces(base.c);
+          const { c } = setup({ mode: 'set', ids });
+          vm.runInContext('S.realm=' + JSON.stringify(realm), c);
+          const s = surfaces(c);
+          const otFull = ot.length === 3;
+          const b6Full = b6.length === B6().length;
+          assert.equal(s.visible, otFull, 'world visibility unchanged');
+          assert.equal(vm.runInContext('distText(world)', c), SCAD_DIST);
+          assert.ok(!text(s).includes(OLD_ERA10), 'old era-10 status absent');
+          for (const x of [...OLD_ERA6, ...REMOVED]) assert.ok(!text(s).includes(x), 'absent: ' + x);
+          let want = '';
+          if (otFull) want = tlm ? MB10_STATUS : b6Full ? MB05.status : 'The Final Empire';
+          assert.equal(s.status, want);
+          /* every non-status surface equals the same state without The Lost Metal */
+          assert.deepEqual(
+            [s.name, s.blurb, s.facts, s.star, s.model, s.card, s.visible],
+            [s0.name, s0.blurb, s0.facts, s0.star, s0.model, s0.card, s0.visible],
+          );
+        });
+      }
+    }
+  }
+}
+
+for (const [label, st, status] of [
+  ['legacy #book=2', { mode: 'legacy', book: 2 }, 'The Final Empire'],
+  ['legacy #book=6', { mode: 'legacy', book: 6 }, MB05.status],
+  ['legacy #book=10', { mode: 'legacy', book: 10 }, MB10_STATUS],
+  ['All', { mode: 'all' }, 'The Final Empire → ' + MB10_STATUS],
+] as [string, St, string][]) {
+  for (const realm of ['physical', 'cognitive']) {
+    test('MB10 ' + label + ' / ' + realm + ': status per numeric rule', () => {
+      const { c } = setup(st);
+      vm.runInContext('S.realm=' + JSON.stringify(realm), c);
+      const s = surfaces(c);
+      assert.equal(s.status, status);
+      assert.ok(!text(s).includes(OLD_ERA10));
+      assert.ok(s.model.includes(MODEL));
+    });
+  }
+}
+
+test('MB10 status gate fails closed: an invalid or unmet era-10 gate falls back to the earlier status', () => {
+  for (const realm of ['physical', 'cognitive']) {
+    for (const g of [{}, { req: 'mistborn-secret-history' }]) {
+      const { c, w } = setup({ mode: 'set', ids: [...MB, ...B6(), TLM] });
+      vm.runInContext('S.realm=' + JSON.stringify(realm), c);
+      w.eras[10].gates = { status: g };
+      const s = surfaces(c);
+      assert.equal(s.status, MB05.status, JSON.stringify(g) + ' ' + realm);
+      assert.equal(s.blurb, MB05.blurb);
+      assert.deepEqual(s.facts, [MB05_FACT]);
+    }
   }
 });

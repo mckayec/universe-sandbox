@@ -410,7 +410,8 @@
              facts: [["Era", "About 300 years after the original Mistborn trilogy"]],
              gates: {status: {in: ["the-alloy-of-law"], req: "the-alloy-of-law"}, blurb: {in: ["the-alloy-of-law"], req: "the-alloy-of-law"}, facts: {in: ["the-alloy-of-law"], req: "the-alloy-of-law"}},
              gfx: {pal: ["#0a2240", "#2a6aa0", "#5a8a40", "#6f9a52", "#7a7468", "#f0f0f0"], clouds: .4, cloudCol: "#ffffff", atmo: "#7aa8ff", lights: .45, ice: 80, map: MAP_SCAD2, feat: []}},
-         10: {status: "Harmony’s world · under threat from outside"}
+         10: {status: "The Lost Metal · Elendel and the Outer Cities in tension",
+              gates: {status: {in: ["the-lost-metal"], req: "the-lost-metal"}}}
        },
        facts: [["Ruler", "The Lord Ruler"]],
        gfx: {type: "terran", sea: .5, freq: 1.4, rough: .6, ice: 90,
