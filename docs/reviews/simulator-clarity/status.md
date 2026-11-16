@@ -1,10 +1,11 @@
-stage: implementation-review
-owner: chatgpt
+stage: final-audit
+owner: claude
 blocked-on: none
-next-action: ChatGPT reviews saveload-integration-fdec175.md (PR47 head = reviewed fdec175, test-only delta) and decides final technical sign-off for PR47 at fdec175 or returns one bounded unit.
-updated: 2026-11-16T20:47Z
+next-action: Claude writes its final technical sign-off or one concrete technical blocker for PR47 fdec175, with the retained limitations and current-head packet clarification in saveload-integration-review-fdec175.md; release remains Mckay's decision.
+updated: 2026-11-16T21:19:35Z
 idle-runs: 0
-note: Save/Load repair folded into PR47 by fast-forward: head 1acc2ea -> fdec17592d5635178a71bd1d1a8c6d8120c0dcae (identical to reviewed integration; 3 test files only, blobs match). Packet §4 Save/Load row updated to bounded acceptance; remaining-gates inventory in saveload-integration-fdec175.md. Not merged; release is Mckay's.
+note: Save/Load integration accepted: PR47 fdec17592d5635178a71bd1d1a8c6d8120c0dcae is the reviewed integration; actual 1/1 commit and 3/3 test blobs match, 0 application delta. Earlier 10/10 independent fixture and 5/5 builder strict runs apply unchanged. No fresh runtime claim, whole-handoff technical signature or release approval.
+
 
 
 # Simulator clarity and physics
@@ -346,3 +347,5 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 
 - 2026-11-16T20:36:34Z ChatGPT: [Strict Save/Load review](saveload-review-2026-11-16.md) saved/read back at 204dd304ce50a585b27c01ae38e8efbbbc49db2c. Inspected 3/3 repair files on each head; all three blobs match across branches; 12/12 downloaded input hashes and 10/10 fixture tests per head (20/20 total). Reviewed builder 5/5 strict browser runs each, disclosed earlier interrupted set; 0 independent browser cases (fresh socket-permission launch failure). Accepted bounded repair, directed fold into PR47, not a separate PR. implementation-review/chatgpt -> implementation/claude for integration/packet refresh. No exhaustive serialization, whole-handoff or release approval; no application edits, merge or deploy.
 - 2026-11-16T20:47Z Claude: Fast-forwarded PR47 `sim/clarity-physics` 1acc2ea -> fdec17592d5635178a71bd1d1a8c6d8120c0dcae (reviewed integration head; diff = 3 test files, 3/3 blobs verified). No checks re-run (identical tree). Updated final-packet §4 Save/Load row; [integration return + remaining-gates inventory](saveload-integration-fdec175.md). implementation/claude -> implementation-review/chatgpt. idle-runs 0. No merge.
+
+- 2026-11-16T21:19:35Z ChatGPT: [integration review](saveload-integration-review-fdec175.md) saved/read back at 7e133bd5ca3a02797a47a394d5b7a26634d9051b. Fresh PR47 head fdec175 matches the reviewed integration; actual 1/1 commit, 3/3 test blobs, 0 application delta. Bounded Save/Load closure stands; no unnecessary rerun of unchanged evidence. implementation-review/chatgpt -> final-audit/claude for Claude's exact-head technical sign-off or concrete blocker. Clarified page-wide resizing versus accepted doubled dock text and the role ownership of technical sign-off. All documented runtime/device/accessibility/model limitations retained; no merge/deploy/owner approval.
