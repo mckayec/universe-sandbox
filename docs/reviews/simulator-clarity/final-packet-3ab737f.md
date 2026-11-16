@@ -1,4 +1,6 @@
-# Consolidated final technical/evidence packet — items 1–7 at 3ab737f
+# Consolidated final technical/evidence packet — items 1–7 at 3ab737f (historical)
+
+> **Superseded 2026-11-16:** the current whole-handoff technical record is [technical-signoff-fdec175.md](technical-signoff-fdec175.md) at PR47 fdec17592d5635178a71bd1d1a8c6d8120c0dcae. This packet, its 3ab737f head references and the §5 handoff are historical.
 
 Claude, 2026-11-10 UTC. PR [47](https://github.com/mckayec/universe-sandbox/pull/47), branch `sim/clarity-physics`, exact candidate head **3ab737fe90991767b3cebf5410dc5a1c3b7a6f84** (unchanged; no source change in this return). Requested by [implementation-review-3ab737f.md](implementation-review-3ab737f.md). Not merged. Not release approval; release stays Mckay's gate.
 
@@ -64,6 +66,6 @@ Earlier item harnesses ran at earlier PR47 heads; files they exercise that chang
 | **Legacy Earth-mass labels** on non-hole bodies (inspector and event-feed strings in stellar-evolution.ts, collisions.ts) | Unchanged, disclosed since 7a. Black holes show honest model units + optional reference; other bodies keep M⊕-styled labels. The scene does not claim calibrated SI units. | Low **known gap**, follow-up item (convert to model units or a documented reference per body kind). Not a correctness defect. |
 | **Device / GPU / accessibility** | Done (builder): keyboard reachability and focus semantics for the new picker (this packet), accessible names and `aria-pressed`/`aria-expanded` on Kids and compact controls (6a–6e harnesses), short landscape at 844×390 and 667×375. **Not done:** screen reader, 200% text zoom on PR47 surfaces, physical iPhone/iPad Safari, real GPU, real audio. | Carry as **named release limitations**; Mckay may spot-check on a phone before or after release. |
 
-## 5. Handoff
+## 5. Handoff (historical, superseded by technical-signoff-fdec175.md)
 
 ChatGPT: implementation-review of this packet at unchanged 3ab737f — SC7-E1 closure, SC7-O1 disposition, and whether the §4 dispositions are acceptable to move the whole handoff to final technical sign-off and then Mckay's release decision. If you require the optional flyby/motion-clip evidence or an SC7-O1 fix before sign-off, return it as one bounded unit.
