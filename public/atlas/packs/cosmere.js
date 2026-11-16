@@ -398,19 +398,20 @@
        facts: [["Planets", "Scadrial, Aagal Nod, Aagal Uch, two dwarf planets"]],
        noSurface: true, gfx: sun("#ffe8a0", HOTY)},
 
-      {id: "scadrial", name: "Scadrial", realms: {cognitive: {name: "Expanse of the Vapors", style: "mist", c1: "#7a808c", c2: "#eef2f6", c3: "#2e2b28", blurb: "Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly."}}, group: "scadrian", books: [2, 6, 7, 10, 12], first: 2, major: true, status: "First planet · the Final Empire",
+      {id: "scadrial", name: "Scadrial", realms: {cognitive: {name: "Expanse of the Vapors", style: "mist", c1: "#7a808c", c2: "#eef2f6", c3: "#2e2b28", blurb: "Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly."}}, group: "scadrian", books: [2, 6, 7, 10, 12], first: 2, major: true, status: "The Final Empire",
        star: {name: "Scadrial’s sun", col: "#ffd8a0"}, map: orb(C.scadrial, .2, 40), distText: ORR, hero: "luthadel",
        blurb: "In the Final Empire, ash falls beneath a red sun. Skaa labor in the fields under the Lord Ruler’s rule, brown-leaved crops struggle to grow, and mists gather as evening falls.",
        short: "The Final Empire beneath a red sun.",
-       gates: {blurb: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}, short: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
+       gates: {blurb: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}, short: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}, facts: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
+       model: "Artist’s model: this surface and the colour of its sun are illustrations made for the atlas, not a verified map or measurement from the books.",
        eras: {
-         6: {status: "First planet · Harmony’s world · the Elendel Basin",
+         6: {status: "Harmony’s world · the Elendel Basin",
              blurb: "Three hundred years after the end of the first trilogy, Sazed holds both Ruin and Preservation as the god Harmony and has remade the planet: blue skies, green plants, no ash. Most northerners live in the fertile Elendel Basin near the equator, ringed by the Seran, Faleast and Channerel mountains, where there are railways, electric lights and early cars. Around the Basin lie the Roughs, and near the south pole a colder southern continent.",
-             facts: [["Order", "1st from the sun · no moon"], ["Shards", "Harmony (Ruin and Preservation)"], ["Magic", "Allomancy, Feruchemy, Hemalurgy"], ["Era", "Industrial, about 300 years after Mistborn"]],
+             facts: [["Era", "Industrial, about 300 years after Mistborn"]],
              gfx: {pal: ["#0a2240", "#2a6aa0", "#5a8a40", "#6f9a52", "#7a7468", "#f0f0f0"], clouds: .4, cloudCol: "#ffffff", atmo: "#7aa8ff", lights: .45, ice: 80, map: MAP_SCAD2, feat: []}},
-         10: {status: "First planet · Harmony’s world · under threat from outside"}
+         10: {status: "Harmony’s world · under threat from outside"}
        },
-       facts: [["Order", "1st from the sun · no moon"], ["Shards", "Preservation and Ruin"], ["Magic", "Allomancy, Feruchemy, Hemalurgy"], ["Ruler", "The Lord Ruler"]],
+       facts: [["Ruler", "The Lord Ruler"]],
        gfx: {type: "terran", sea: .5, freq: 1.4, rough: .6, ice: 90,
              pal: ["#1a1a1e", "#3d4a52", "#b8743d", "#a86a3a", "#3a302a", "#8a8078"],
              clouds: .5, cloudCol: "#6a605a", atmo: "#c87a50", atmoK: 1.1, lights: .12, sw: "#5a4a3a", map: MAP_SCAD1, feat: FEAT_SCAD1},

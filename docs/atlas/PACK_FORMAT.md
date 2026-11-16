@@ -366,6 +366,7 @@ Worlds whose group is not listed get an extra section at the end, named after th
 | `ly` | number | no | distance from Sol, ly (compressed placement, distance text) |
 | `est` | bool | no | placement is an estimate; says so in the distance line |
 | `facts` | `[label, value][]` | no | facts list |
+| `model` | string | no | a short qualifier shown under the facts, e.g. that the surface and sun colour are an artist's model rather than a verified map or measurement. Follows the world (and `gates.model`) in per-work modes; it never makes anything else visible |
 | `distText` | string | no | overrides the computed distance line |
 | `hero` | site id | no | site turned to face the viewer on landing (default first site) |
 | `view` | number | no | landing camera distance in planet radii (default 4.0, gas giants 4.8) |

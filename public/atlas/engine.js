@@ -1158,7 +1158,7 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
       '<div class="chips">'+(status?'<span class="chip"'+chipStyle(w)+'>'+esc(status)+'</span>':"")+bks(w.books)+'</div>'+
       realmCard(w)+(S.realm!=="physical"?'<div class="rule"><span class="eyebrow">In the Physical Realm</span></div>':"")+'<p class="blurb">'+esc(eraBlurb(w))+'</p>'+
       '<dl class="facts">'+(w.star&&w.star.name&&fOk(w,"star",worldChain(w))?'<dt>Star</dt><dd>'+esc(w.star.name)+'</dd>':"")+ARR(eraVal(w,"facts")).map(f=>'<dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>').join("")+
-        '<dt>Distance</dt><dd>'+esc(distText(w))+'</dd></dl>'+
+        '<dt>Distance</dt><dd>'+esc(distText(w))+'</dd></dl>'+modelNote(w)+
       (ns?'<p class="srcnote">A star: there is no surface to land on.</p>':'')+
       '<div class="actions">'+(S.view==="galaxy"?(ns?'':'<button class="btn primary" data-act="descend">Descend to the surface</button>'):'<button class="btn primary" data-act="ascend">Return to the galaxy</button>')+
         (S.view==="world"?'':'<button class="btn" data-act="web">'+esc(UI.homeLink)+'</button>')+'</div>';
@@ -1179,6 +1179,9 @@ function renderDossier(){let h="";const M=K.meta,IN=K.intro;
     gb.addEventListener("click",e=>{if(e.target.closest("[data-act]"))return;toggleSheet();});
     gb.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleSheet();}});}
 }
+/* `model`: an optional qualifier saying how the drawn surface/sun relate to the sources (e.g. an artist's model).
+   It follows the world chain and its own gates.model in per-work modes; it never grants visibility to anything. */
+function modelNote(w){return typeof w.model==="string"&&w.model&&fOk(w,"model",worldChain(w))?'<p class="srcnote model">'+esc(w.model)+'</p>':"";}
 function eraBlurb(w){let b=fOk(w,"blurb",worldChain(w))?w.blurb:"";const cur=CUM?EFF():S.book;eraKeys(w).forEach(k=>{if(w.eras[k].blurb&&eraFieldOk(w,k,"blurb",cur))b=w.eras[k].blurb;});return b;}
 /* Track A details for a place (PACK_FORMAT 20.3): layer chips and dates, modern name, labelled notes */
 const NOTE_LBL=Object.assign({text:"The text",tradition:"Tradition",scholarship:"Scholarship",note:"Note"},UI.noteLabels||{});
