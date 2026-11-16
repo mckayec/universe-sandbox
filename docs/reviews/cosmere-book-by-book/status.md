@@ -1,12 +1,10 @@
-stage: implementation-review
+stage: content-review
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT reviews the MB05 era-6 implementation at PR48 c1f1f2f6c3dbc8f8812797468effc4ac61788e12 (era6-return-c1f1f2f.md) and accepts it or returns one bounded correction; then the next located primary passage for a remaining Scadrial field.
-updated: 2026-11-16T22:20Z
+next-action: Locate one primary passage for a remaining Scadrial field, with an explicit work/field boundary; MB05 era-6 implementation accepted at PR48 c1f1f2f in implementation-review-c1f1f2f.md. Complete chart/essay remains a named evidence gap.
+updated: 2026-11-16T22:22Z
 idle-runs: 0
-note: MB05 implemented at PR48 c1f1f2f (parent 5ab3eac): Scadrial eras[6] status/blurb/facts + three own the-alloy-of-law field gates only. Focused 164/164 (parent 152/164), pnpm check 325/325 + 115 dist, rendered 134/134 at 1440x900 and 390x844 (parent 90/134), 8 screenshots viewed. 0 independent browser cases. No merge, canon or release claim.
-
-
+note: Three nested era-6 fields and three own gates accepted at bounded source/test/artifact scope. Independent 164/164 head tests vs 152/164 parent; 5/5 input hashes; 8/8 supplied crops inspected with Cognitive lower-field cropping limits. 0 independent browser cases; no whole-parent, full-work or release approval.
 
 # Cosmere book-by-book review
 
@@ -77,3 +75,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 - 2026-11-16T21:31:57Z ChatGPT: [MB05 era-6 source handoff](era6-handoff-2026-11-16.md) saved/read back at e5bb467dce17b5e9230eb211cb74cfd9f823c85a after [reviewer runner](era6-reviewer-probe-5ab3eac.mjs) 38c02b9f6bb7170c816bc7087a8f8204a3cb7969 and [complete output](era6-reviewer-output-5ab3eac.json) cc984f81355cdc3b2925b569bb6d8640d5ccbb03. PR48 5ab3eacc79476bc69a88879b1abb696d13be263f, PR24 cf25cda66e91c573c421a0f3712623db72737a3b and PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 reconciled; 2/2 older-branch blurb comparisons match, status/facts differ. Seven narrow claims evidenced (6 chapter-1 observations plus 1 official-synopsis chronology); 3 nested field candidates with own MB05 gates. Prospective actual-selector matrix 136/136 across 128 per-work and 8 legacy/All realm cases, 8/8 unmodified-head copy controls, 6/6 input hashes. 0 independent browser cases; no full-book/complete-chart reading. Chart-dependent evidence deferred as a named known gap after insufficient product composite and inaccessible wiki artifacts. Prior ledger denominators unchanged; 0/2 parent promotions and 0/33 full-work approvals. content-review/chatgpt -> fixing/claude for finite implementation, then implementation-review/chatgpt. No app/PR-branch edit, merge, deployment or Mckay release approval.
 - 2026-11-16T22:20Z Claude: MB05 [return](era6-return-c1f1f2f.md) at PR48 c1f1f2f6c3dbc8f8812797468effc4ac61788e12 (parent 5ab3eac): Scadrial eras[6] status/blurb/facts replaced by the handoff candidate with three own MB05 field gates; no record gate, era 10/gfx/distText/model preserved. Tests +134 (focused 164/164; parent negative 152/164), pnpm check 325/325, 115 dist; rendered [probe](era6-probe.mjs) 134/134 (parent 90/134), 8 screenshots in shots/era6-*. fixing/claude -> implementation-review/chatgpt. idle-runs 0. No merge.
+
+- 2026-11-16T22:22Z ChatGPT: [MB05 implementation review](implementation-review-c1f1f2f.md) saved/read back at 72534f48044adf8dc8d8010b35f1a4a701b1d6ce. Exact PR48 c1f1f2f6c3dbc8f8812797468effc4ac61788e12, 2/2 delta files, 3/3 candidate fields and 3/3 own gates; full-pack equality outside those changes. 5/5 input hashes match; independent focused 164/164 head versus 152/164 parent (12 failures). Viewed 8/8 supplied crops, including explicit Cognitive bottom-crop limits; recounted builder 134/134 rendered vs 90/134 parent. Actions 43966198757 build/validation step conclusions verified, detailed 325/325 and 115 remain builder-attributed; 0 independent browser cases. Bounded return accepted; implementation-review/chatgpt -> content-review/chatgpt for one located primary passage on a remaining Scadrial field. Earlier ledgers, 0/2 parent promotions and 0/33 full-work approvals unchanged. 18/18 pack and 8/8 review statuses checked; no stale parallel self-audit. No application/PR-branch edit, merge, deploy or release approval.
