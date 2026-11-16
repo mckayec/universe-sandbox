@@ -1,10 +1,11 @@
-stage: implementation-review
+stage: content-review
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT reviews the SCR-01 return (scr01-return-5ab3eac.md) at PR48 5ab3eac, then resumes individual-work source review from the recorded holds.
-updated: 2026-11-16T20:56Z
+next-action: ChatGPT resumes one bounded individual-work source unit from the Scadrial residual holds after the closed SCR-01 return; record field-specific evidence and no whole-parent promotion.
+updated: 2026-11-16T21:22:20Z
 idle-runs: 0
-note: SCR-01 fixed at PR48 5ab3eacc79476bc69a88879b1abb696d13be263f: Scadrial local distText only (illustrative layout; order/distances not verified). Focused 30/30, pnpm check 191/191; rendered 205/205 at head vs 169/205 at parent 54c8df8 (36 new checks fail there). 6 readable desktop/phone dossier crops. All other residuals held; no parent promotion, 0/33 full-work approvals.
+note: SCR-01 closed at PR48 5ab3eacc79476bc69a88879b1abb696d13be263f: 2/2 diff files, 4/4 input hashes, independent 30/30 selector tests; 6/6 supplied dossier crops hash-verified and viewed. Builder 205/205 recounted, parent 36 failures/169 passes attributed; 0 independent browser runs. Residual source holds remain; 0/33 full-work approvals.
+
 
 
 # Cosmere book-by-book review
@@ -71,3 +72,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 - 2026-11-16T20:38:49Z ChatGPT: [Reduced-parent implementation review](implementation-review-54c8df8.md) saved/read back at 4618d4541d5207d5a45059e6b0ac30dbf21f1dcc. Actual 4/4 incremental files inspected, 4/4 executable inputs hash-verified; 17/17 focused tests pass. Recounted builder head 169/169 success lines and 44 parent failures (125/169 pass reported); 0 independent rendered cases, supplied screenshots not visually inspected in this bounded correction review. Accepted reductions/model-note at source/test scope; returned Medium SCR-01 local distText qualifier and individually dispositioned every listed residual as held. implementation-review/chatgpt -> fixing/claude, then individual-work research continuation. Prior CBR closures and 4/10 narrowed, 6/10 held, 0/2 promotions, 2/7 events, 0/33 full-work approvals preserved. No code/PR-branch edit, merge, deploy or release approval.
 - 2026-11-16T20:56Z Claude: SCR-01 [return](scr01-return-5ab3eac.md) at PR48 5ab3eacc79476bc69a88879b1abb696d13be263f (parent 54c8df8): Scadrial distText qualifier only, +13 tests (30/30), pnpm check 191/191, rendered 205/205 (negative at parent 169/205). fixing/claude -> implementation-review/chatgpt. idle-runs 0. No merge.
+
+- 2026-11-16T21:22:20Z ChatGPT: [SCR-01 correction review](implementation-review-5ab3eac.md) saved/read back at 288889f88a9bbcc0d73bae2e47153267cdfb22ca. Fresh PR48 5ab3eac: 2/2 incremental patches; 4/4 exact input hashes and independent 30/30 tests; 6/6 screenshot blobs verified and viewed. Qualifier readable in galaxy/surface/Cognitive desktop and expanded-phone crops; scrolling/cropping limits disclosed. Recounted 205 head successes and 36 negative failures (169 passes aggregate). SCR-01 closed at bounded source/test/artifact scope; implementation-review/chatgpt -> content-review/chatgpt for individual-work source continuation. All other residuals, 0/2 parent promotions and 0/33 full-work approvals retained. No independent browser execution, app edit, merge or release approval.
