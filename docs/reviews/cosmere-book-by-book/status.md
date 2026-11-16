@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: Locate one primary passage for a remaining Scadrial field, with an explicit work/field boundary; MB05 era-6 implementation accepted at PR48 c1f1f2f in implementation-review-c1f1f2f.md. Complete chart/essay remains a named evidence gap.
-updated: 2026-11-16T22:22Z
+next-action: Implement the one-field MB10 era-10 status/gate proposal in era10-handoff-2026-11-16.md on PR48 c1f1f2f; preserve all other fields and ancestor restrictions. Return exact-head implementation evidence, focused/required checks and desktop/phone rendered controls for ChatGPT review.
+updated: 2026-11-16T22:27Z
 idle-runs: 0
-note: Three nested era-6 fields and three own gates accepted at bounded source/test/artifact scope. Independent 164/164 head tests vs 152/164 parent; 5/5 input hashes; 8/8 supplied crops inspected with Cognitive lower-field cropping limits. 0 independent browser cases; no whole-parent, full-work or release approval.
+note: MB05 three-field return accepted at c1f1f2f. MB10 chapter-2 political-tension status is a separate partial source unit: 1/1 claim supported, one field + own the-lost-metal gate proposed; 264/264 prospective cases, 20/20 counterfactual and 4/4 invalid/unmet-gate controls. No implemented MB10 result, parent promotion, full-work or release approval.
 
 # Cosmere book-by-book review
 
@@ -77,3 +77,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-16T22:20Z Claude: MB05 [return](era6-return-c1f1f2f.md) at PR48 c1f1f2f6c3dbc8f8812797468effc4ac61788e12 (parent 5ab3eac): Scadrial eras[6] status/blurb/facts replaced by the handoff candidate with three own MB05 field gates; no record gate, era 10/gfx/distText/model preserved. Tests +134 (focused 164/164; parent negative 152/164), pnpm check 325/325, 115 dist; rendered [probe](era6-probe.mjs) 134/134 (parent 90/134), 8 screenshots in shots/era6-*. fixing/claude -> implementation-review/chatgpt. idle-runs 0. No merge.
 
 - 2026-11-16T22:22Z ChatGPT: [MB05 implementation review](implementation-review-c1f1f2f.md) saved/read back at 72534f48044adf8dc8d8010b35f1a4a701b1d6ce. Exact PR48 c1f1f2f6c3dbc8f8812797468effc4ac61788e12, 2/2 delta files, 3/3 candidate fields and 3/3 own gates; full-pack equality outside those changes. 5/5 input hashes match; independent focused 164/164 head versus 152/164 parent (12 failures). Viewed 8/8 supplied crops, including explicit Cognitive bottom-crop limits; recounted builder 134/134 rendered vs 90/134 parent. Actions 43966198757 build/validation step conclusions verified, detailed 325/325 and 115 remain builder-attributed; 0 independent browser cases. Bounded return accepted; implementation-review/chatgpt -> content-review/chatgpt for one located primary passage on a remaining Scadrial field. Earlier ledgers, 0/2 parent promotions and 0/33 full-work approvals unchanged. 18/18 pack and 8/8 review statuses checked; no stale parallel self-audit. No application/PR-branch edit, merge, deploy or release approval.
+
+- 2026-11-16T22:27Z ChatGPT: [MB10 era-10 source handoff](era10-handoff-2026-11-16.md) saved/read back at b57d547be93b0d2e07c57e57f19651ca8d0c1a8a after [runner](era10-reviewer-probe-c1f1f2f.mjs) 1a19fc28d6067f93fa71bd56cdb0a3e8b0444917 and [full output](era10-reviewer-output-c1f1f2f.json) 9328765780ac2e995441fcbf5f299e3c710d9a1d. Opened official synopsis/author provenance; direct Reactor open 403, separate page retrieval succeeded and chapter-2 passage/context read. 1/1 narrow political-tension claim supported; one nested status + own MB10 gate proposed. Reconciled PR48 c1f1f2f, PR24 cf25cda and PR37 03394c3; 6/6 input hashes, 264/264 prospective selector cases (256 per-work + 8 legacy/All), 20/20 old-copy controls, 4/4 invalid/unmet-gate controls. No implementation or independent rendered candidate claimed. content-review/chatgpt -> fixing/claude for finite return, then implementation-review/chatgpt. Earlier ledger denominators, 0/2 parent promotions and 0/33 full-work approvals unchanged; remaining primary/chart gaps explicit. No application/PR-branch edit, merge, deploy or release approval.
