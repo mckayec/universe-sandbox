@@ -1,0 +1,3900 @@
+{
+  "head": "c1f1f2f6c3dbc8f8812797468effc4ac61788e12",
+  "node": "v24.22.1",
+  "scope": "in-memory prospective selector validation; not implemented or rendered",
+  "candidate": "The Lost Metal · Elendel and the Outer Cities in tension",
+  "gate": {
+    "in": [
+      "the-lost-metal"
+    ],
+    "req": "the-lost-metal"
+  },
+  "manifest": [
+    {
+      "path": "public/atlas/packs/cosmere.js",
+      "sha": "9a60b3f2aa16fd46a48fbbb1594fa7532abe8fae"
+    },
+    {
+      "path": "public/atlas/engine.js",
+      "sha": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0"
+    },
+    {
+      "path": "public/atlas/reading.js",
+      "sha": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+    },
+    {
+      "path": "tests/atlas-scadrial-reduced.test.ts",
+      "sha": "cd3134040baeda43f877930392db5ccbf349a5d7"
+    },
+    {
+      "pr": "24",
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "sha": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958"
+    },
+    {
+      "pr": "37",
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "sha": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33"
+    }
+  ],
+  "counts": {
+    "inputHashes": 6,
+    "perWorkCases": 256,
+    "legacyAllCases": 8,
+    "passedCases": 264,
+    "counterfactualControls": 20,
+    "gateControls": 4
+  },
+  "reconciliation": [
+    {
+      "pr": "24",
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "era10": {
+        "status": "First planet · Harmony’s world · under threat from outside"
+      }
+    },
+    {
+      "pr": "37",
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "era10": {
+        "status": "First planet · Harmony’s world · under threat from outside"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "st": {
+        "mode": "set",
+        "ids": []
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": []
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Alloy of Law · industrial Elendel",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Alloy of Law · industrial Elendel",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 2
+      },
+      "realm": "physical",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 6
+      },
+      "realm": "physical",
+      "status": "The Alloy of Law · industrial Elendel",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 10
+      },
+      "realm": "physical",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 2
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 6
+      },
+      "realm": "cognitive",
+      "status": "The Alloy of Law · industrial Elendel",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 10
+      },
+      "realm": "cognitive",
+      "status": "The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "all"
+      },
+      "realm": "physical",
+      "status": "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "st": {
+        "mode": "all"
+      },
+      "realm": "cognitive",
+      "status": "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension",
+      "otherSurfacesUnchanged": true
+    }
+  ],
+  "controls": [
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "set",
+        "ids": [
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-lost-metal"
+        ]
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 10
+      },
+      "realm": "physical",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "legacy",
+        "book": 10
+      },
+      "realm": "cognitive",
+      "unmodified": "Harmony’s world · under threat from outside",
+      "proposed": "The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "all"
+      },
+      "realm": "physical",
+      "unmodified": "The Final Empire → Harmony’s world · under threat from outside",
+      "proposed": "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension"
+    },
+    {
+      "st": {
+        "mode": "all"
+      },
+      "realm": "cognitive",
+      "unmodified": "The Final Empire → Harmony’s world · under threat from outside",
+      "proposed": "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension"
+    }
+  ],
+  "gateControls": [
+    {
+      "realm": "physical",
+      "gate": {},
+      "status": "The Alloy of Law · industrial Elendel"
+    },
+    {
+      "realm": "physical",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "status": "The Alloy of Law · industrial Elendel"
+    },
+    {
+      "realm": "cognitive",
+      "gate": {},
+      "status": "The Alloy of Law · industrial Elendel"
+    },
+    {
+      "realm": "cognitive",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "status": "The Alloy of Law · industrial Elendel"
+    }
+  ]
+}
