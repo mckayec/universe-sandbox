@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude resolves SCR-01 at Scadrial's local distText only per implementation-review-54c8df8.md, preserves all gates/geometry and accepted reductions, and returns exact-head checks plus readable desktop/expanded-phone qualifier evidence.
-updated: 2026-11-16T20:38:49Z
+next-action: ChatGPT reviews the SCR-01 return (scr01-return-5ab3eac.md) at PR48 5ab3eac, then resumes individual-work source review from the recorded holds.
+updated: 2026-11-16T20:56Z
 idle-runs: 0
-note: Reduced-parent changes accepted at source/test scope on PR48 54c8df8; independent 17/17 tests and 4/4 input hashes. One Medium residual SCR-01: qualify unverified system-chart order attribution in Scadrial dossier. All other residuals explicitly held; no parent promotion, 0/33 full-work approvals. Builder rendered results attributed, no independent visual acceptance.
+note: SCR-01 fixed at PR48 5ab3eacc79476bc69a88879b1abb696d13be263f: Scadrial local distText only (illustrative layout; order/distances not verified). Focused 30/30, pnpm check 191/191; rendered 205/205 at head vs 169/205 at parent 54c8df8 (36 new checks fail there). 6 readable desktop/phone dossier crops. All other residuals held; no parent promotion, 0/33 full-work approvals.
 
 
 # Cosmere book-by-book review
@@ -70,3 +70,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-16T05:36Z Claude: [Scadrial reduced-parent return](scadrial-reduced-return-54c8df8.md) at PR48 54c8df8fd3105694ef2c793a1be6926d4e571a99 (parent 55e28bd), implementing ChatGPT's [finite disposition](scadrial-disposition-2026-11-16.md), which Mckay supplied in a live session. Pack: status 'The Final Empire'; facts [Ruler] with gates.facts MB01; eras 6/10 status drop 'First planet'; era 6 facts [Era]; new `model` artist's-model note. Engine: modelNote(w) via existing fOk (PACK_FORMAT §10). Rest of pack identical; no record gate, books/first/until, name, star, realms, distText, Luthadel or accepted-gate change. pnpm check 178/178, check:dist 115, test:pages 24/24; [unit](scadrial-reduced-unit-54c8df8.txt) 17/17; [rendered probe](scadrial-reduced-probe.mjs) [169/169](scadrial-reduced-rendered-54c8df8.txt) vs [parent 125/169](scadrial-reduced-rendered-negative-55e28bd.txt) (all 44 parent failures are visible-state payload checks). 5 residual cross-record exposures listed for review. content-review/chatgpt → implementation-review/chatgpt. 4/10 narrowed, 6/10 held, 0/2 promotions, 0/33 full-work approvals unchanged. No merge, deploy or release approval.
 
 - 2026-11-16T20:38:49Z ChatGPT: [Reduced-parent implementation review](implementation-review-54c8df8.md) saved/read back at 4618d4541d5207d5a45059e6b0ac30dbf21f1dcc. Actual 4/4 incremental files inspected, 4/4 executable inputs hash-verified; 17/17 focused tests pass. Recounted builder head 169/169 success lines and 44 parent failures (125/169 pass reported); 0 independent rendered cases, supplied screenshots not visually inspected in this bounded correction review. Accepted reductions/model-note at source/test scope; returned Medium SCR-01 local distText qualifier and individually dispositioned every listed residual as held. implementation-review/chatgpt -> fixing/claude, then individual-work research continuation. Prior CBR closures and 4/10 narrowed, 6/10 held, 0/2 promotions, 2/7 events, 0/33 full-work approvals preserved. No code/PR-branch edit, merge, deploy or release approval.
+- 2026-11-16T20:56Z Claude: SCR-01 [return](scr01-return-5ab3eac.md) at PR48 5ab3eacc79476bc69a88879b1abb696d13be263f (parent 54c8df8): Scadrial distText qualifier only, +13 tests (30/30), pnpm check 191/191, rendered 205/205 (negative at parent 169/205). fixing/claude -> implementation-review/chatgpt. idle-runs 0. No merge.
