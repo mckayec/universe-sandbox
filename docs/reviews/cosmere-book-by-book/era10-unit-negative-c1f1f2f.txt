@@ -1,0 +1,433 @@
+not ok 1 - payload: removed claims are gone from base and every era override; no record gate or threshold change
+ok 2 - per-work none selected: parent stays held unless all three are read; reduced copy only
+ok 3 - per-work MB01: parent stays held unless all three are read; reduced copy only
+ok 4 - per-work MB02: parent stays held unless all three are read; reduced copy only
+ok 5 - per-work MB01+MB02: parent stays held unless all three are read; reduced copy only
+ok 6 - per-work MB03: parent stays held unless all three are read; reduced copy only
+ok 7 - per-work MB01+MB03: parent stays held unless all three are read; reduced copy only
+ok 8 - per-work MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 9 - per-work MB01+MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 10 - per-work later-era-only (bucket 6 works without the original trilogy): parent and children stay hidden
+ok 11 - per-work OT + bucket 6: era-6 status/facts appear only through the MB01 facts gate and stay reduced
+ok 12 - descendants (sites, events) cannot bypass the held parent
+ok 13 - legacy \#book=2: numeric rule unchanged, reduced payload shown
+ok 14 - legacy \#book=6: numeric rule unchanged, reduced payload shown
+not ok 15 - legacy \#book=10: numeric rule unchanged, reduced payload shown
+not ok 16 - All: reduced payload in the base → latest-era status and the era facts
+ok 17 - model note obeys a present gates.model (fixture) and an invalid one fails closed
+ok 18 - SCR-01 set: original trilogy read / physical: Scadrial Distance row is the exact qualifier
+ok 19 - SCR-01 set: original trilogy read / cognitive: Scadrial Distance row is the exact qualifier
+ok 20 - SCR-01 set: nothing read / physical: Scadrial Distance row is the exact qualifier
+ok 21 - SCR-01 set: nothing read / cognitive: Scadrial Distance row is the exact qualifier
+ok 22 - SCR-01 legacy \#book=2 / physical: Scadrial Distance row is the exact qualifier
+ok 23 - SCR-01 legacy \#book=2 / cognitive: Scadrial Distance row is the exact qualifier
+ok 24 - SCR-01 legacy \#book=6 / physical: Scadrial Distance row is the exact qualifier
+ok 25 - SCR-01 legacy \#book=6 / cognitive: Scadrial Distance row is the exact qualifier
+ok 26 - SCR-01 legacy \#book=10 / physical: Scadrial Distance row is the exact qualifier
+ok 27 - SCR-01 legacy \#book=10 / cognitive: Scadrial Distance row is the exact qualifier
+ok 28 - SCR-01 All / physical: Scadrial Distance row is the exact qualifier
+ok 29 - SCR-01 All / cognitive: Scadrial Distance row is the exact qualifier
+ok 30 - SCR-01 scope: only Scadrial changed; ORR constant and other Scadrial-system records keep their distText
+not ok 31 - MB05 payload: exact three fields and three own gates; no record gate; era 10 and gfx preserved
+ok 32 - MB05 per-work OT0 B60 / physical: era-6 fields only with every ancestor
+ok 33 - MB05 per-work OT0 B60 / cognitive: era-6 fields only with every ancestor
+ok 34 - MB05 per-work OT0 B61 / physical: era-6 fields only with every ancestor
+ok 35 - MB05 per-work OT0 B61 / cognitive: era-6 fields only with every ancestor
+ok 36 - MB05 per-work OT0 B62 / physical: era-6 fields only with every ancestor
+ok 37 - MB05 per-work OT0 B62 / cognitive: era-6 fields only with every ancestor
+ok 38 - MB05 per-work OT0 B63 / physical: era-6 fields only with every ancestor
+ok 39 - MB05 per-work OT0 B63 / cognitive: era-6 fields only with every ancestor
+ok 40 - MB05 per-work OT0 B64 / physical: era-6 fields only with every ancestor
+ok 41 - MB05 per-work OT0 B64 / cognitive: era-6 fields only with every ancestor
+ok 42 - MB05 per-work OT0 B65 / physical: era-6 fields only with every ancestor
+ok 43 - MB05 per-work OT0 B65 / cognitive: era-6 fields only with every ancestor
+ok 44 - MB05 per-work OT0 B66 / physical: era-6 fields only with every ancestor
+ok 45 - MB05 per-work OT0 B66 / cognitive: era-6 fields only with every ancestor
+ok 46 - MB05 per-work OT0 B67 / physical: era-6 fields only with every ancestor
+ok 47 - MB05 per-work OT0 B67 / cognitive: era-6 fields only with every ancestor
+ok 48 - MB05 per-work OT1 B60 / physical: era-6 fields only with every ancestor
+ok 49 - MB05 per-work OT1 B60 / cognitive: era-6 fields only with every ancestor
+ok 50 - MB05 per-work OT1 B61 / physical: era-6 fields only with every ancestor
+ok 51 - MB05 per-work OT1 B61 / cognitive: era-6 fields only with every ancestor
+ok 52 - MB05 per-work OT1 B62 / physical: era-6 fields only with every ancestor
+ok 53 - MB05 per-work OT1 B62 / cognitive: era-6 fields only with every ancestor
+ok 54 - MB05 per-work OT1 B63 / physical: era-6 fields only with every ancestor
+ok 55 - MB05 per-work OT1 B63 / cognitive: era-6 fields only with every ancestor
+ok 56 - MB05 per-work OT1 B64 / physical: era-6 fields only with every ancestor
+ok 57 - MB05 per-work OT1 B64 / cognitive: era-6 fields only with every ancestor
+ok 58 - MB05 per-work OT1 B65 / physical: era-6 fields only with every ancestor
+ok 59 - MB05 per-work OT1 B65 / cognitive: era-6 fields only with every ancestor
+ok 60 - MB05 per-work OT1 B66 / physical: era-6 fields only with every ancestor
+ok 61 - MB05 per-work OT1 B66 / cognitive: era-6 fields only with every ancestor
+ok 62 - MB05 per-work OT1 B67 / physical: era-6 fields only with every ancestor
+ok 63 - MB05 per-work OT1 B67 / cognitive: era-6 fields only with every ancestor
+ok 64 - MB05 per-work OT2 B60 / physical: era-6 fields only with every ancestor
+ok 65 - MB05 per-work OT2 B60 / cognitive: era-6 fields only with every ancestor
+ok 66 - MB05 per-work OT2 B61 / physical: era-6 fields only with every ancestor
+ok 67 - MB05 per-work OT2 B61 / cognitive: era-6 fields only with every ancestor
+ok 68 - MB05 per-work OT2 B62 / physical: era-6 fields only with every ancestor
+ok 69 - MB05 per-work OT2 B62 / cognitive: era-6 fields only with every ancestor
+ok 70 - MB05 per-work OT2 B63 / physical: era-6 fields only with every ancestor
+ok 71 - MB05 per-work OT2 B63 / cognitive: era-6 fields only with every ancestor
+ok 72 - MB05 per-work OT2 B64 / physical: era-6 fields only with every ancestor
+ok 73 - MB05 per-work OT2 B64 / cognitive: era-6 fields only with every ancestor
+ok 74 - MB05 per-work OT2 B65 / physical: era-6 fields only with every ancestor
+ok 75 - MB05 per-work OT2 B65 / cognitive: era-6 fields only with every ancestor
+ok 76 - MB05 per-work OT2 B66 / physical: era-6 fields only with every ancestor
+ok 77 - MB05 per-work OT2 B66 / cognitive: era-6 fields only with every ancestor
+ok 78 - MB05 per-work OT2 B67 / physical: era-6 fields only with every ancestor
+ok 79 - MB05 per-work OT2 B67 / cognitive: era-6 fields only with every ancestor
+ok 80 - MB05 per-work OT3 B60 / physical: era-6 fields only with every ancestor
+ok 81 - MB05 per-work OT3 B60 / cognitive: era-6 fields only with every ancestor
+ok 82 - MB05 per-work OT3 B61 / physical: era-6 fields only with every ancestor
+ok 83 - MB05 per-work OT3 B61 / cognitive: era-6 fields only with every ancestor
+ok 84 - MB05 per-work OT3 B62 / physical: era-6 fields only with every ancestor
+ok 85 - MB05 per-work OT3 B62 / cognitive: era-6 fields only with every ancestor
+ok 86 - MB05 per-work OT3 B63 / physical: era-6 fields only with every ancestor
+ok 87 - MB05 per-work OT3 B63 / cognitive: era-6 fields only with every ancestor
+ok 88 - MB05 per-work OT3 B64 / physical: era-6 fields only with every ancestor
+ok 89 - MB05 per-work OT3 B64 / cognitive: era-6 fields only with every ancestor
+ok 90 - MB05 per-work OT3 B65 / physical: era-6 fields only with every ancestor
+ok 91 - MB05 per-work OT3 B65 / cognitive: era-6 fields only with every ancestor
+ok 92 - MB05 per-work OT3 B66 / physical: era-6 fields only with every ancestor
+ok 93 - MB05 per-work OT3 B66 / cognitive: era-6 fields only with every ancestor
+ok 94 - MB05 per-work OT3 B67 / physical: era-6 fields only with every ancestor
+ok 95 - MB05 per-work OT3 B67 / cognitive: era-6 fields only with every ancestor
+ok 96 - MB05 per-work OT4 B60 / physical: era-6 fields only with every ancestor
+ok 97 - MB05 per-work OT4 B60 / cognitive: era-6 fields only with every ancestor
+ok 98 - MB05 per-work OT4 B61 / physical: era-6 fields only with every ancestor
+ok 99 - MB05 per-work OT4 B61 / cognitive: era-6 fields only with every ancestor
+ok 100 - MB05 per-work OT4 B62 / physical: era-6 fields only with every ancestor
+ok 101 - MB05 per-work OT4 B62 / cognitive: era-6 fields only with every ancestor
+ok 102 - MB05 per-work OT4 B63 / physical: era-6 fields only with every ancestor
+ok 103 - MB05 per-work OT4 B63 / cognitive: era-6 fields only with every ancestor
+ok 104 - MB05 per-work OT4 B64 / physical: era-6 fields only with every ancestor
+ok 105 - MB05 per-work OT4 B64 / cognitive: era-6 fields only with every ancestor
+ok 106 - MB05 per-work OT4 B65 / physical: era-6 fields only with every ancestor
+ok 107 - MB05 per-work OT4 B65 / cognitive: era-6 fields only with every ancestor
+ok 108 - MB05 per-work OT4 B66 / physical: era-6 fields only with every ancestor
+ok 109 - MB05 per-work OT4 B66 / cognitive: era-6 fields only with every ancestor
+ok 110 - MB05 per-work OT4 B67 / physical: era-6 fields only with every ancestor
+ok 111 - MB05 per-work OT4 B67 / cognitive: era-6 fields only with every ancestor
+ok 112 - MB05 per-work OT5 B60 / physical: era-6 fields only with every ancestor
+ok 113 - MB05 per-work OT5 B60 / cognitive: era-6 fields only with every ancestor
+ok 114 - MB05 per-work OT5 B61 / physical: era-6 fields only with every ancestor
+ok 115 - MB05 per-work OT5 B61 / cognitive: era-6 fields only with every ancestor
+ok 116 - MB05 per-work OT5 B62 / physical: era-6 fields only with every ancestor
+ok 117 - MB05 per-work OT5 B62 / cognitive: era-6 fields only with every ancestor
+ok 118 - MB05 per-work OT5 B63 / physical: era-6 fields only with every ancestor
+ok 119 - MB05 per-work OT5 B63 / cognitive: era-6 fields only with every ancestor
+ok 120 - MB05 per-work OT5 B64 / physical: era-6 fields only with every ancestor
+ok 121 - MB05 per-work OT5 B64 / cognitive: era-6 fields only with every ancestor
+ok 122 - MB05 per-work OT5 B65 / physical: era-6 fields only with every ancestor
+ok 123 - MB05 per-work OT5 B65 / cognitive: era-6 fields only with every ancestor
+ok 124 - MB05 per-work OT5 B66 / physical: era-6 fields only with every ancestor
+ok 125 - MB05 per-work OT5 B66 / cognitive: era-6 fields only with every ancestor
+ok 126 - MB05 per-work OT5 B67 / physical: era-6 fields only with every ancestor
+ok 127 - MB05 per-work OT5 B67 / cognitive: era-6 fields only with every ancestor
+ok 128 - MB05 per-work OT6 B60 / physical: era-6 fields only with every ancestor
+ok 129 - MB05 per-work OT6 B60 / cognitive: era-6 fields only with every ancestor
+ok 130 - MB05 per-work OT6 B61 / physical: era-6 fields only with every ancestor
+ok 131 - MB05 per-work OT6 B61 / cognitive: era-6 fields only with every ancestor
+ok 132 - MB05 per-work OT6 B62 / physical: era-6 fields only with every ancestor
+ok 133 - MB05 per-work OT6 B62 / cognitive: era-6 fields only with every ancestor
+ok 134 - MB05 per-work OT6 B63 / physical: era-6 fields only with every ancestor
+ok 135 - MB05 per-work OT6 B63 / cognitive: era-6 fields only with every ancestor
+ok 136 - MB05 per-work OT6 B64 / physical: era-6 fields only with every ancestor
+ok 137 - MB05 per-work OT6 B64 / cognitive: era-6 fields only with every ancestor
+ok 138 - MB05 per-work OT6 B65 / physical: era-6 fields only with every ancestor
+ok 139 - MB05 per-work OT6 B65 / cognitive: era-6 fields only with every ancestor
+ok 140 - MB05 per-work OT6 B66 / physical: era-6 fields only with every ancestor
+ok 141 - MB05 per-work OT6 B66 / cognitive: era-6 fields only with every ancestor
+ok 142 - MB05 per-work OT6 B67 / physical: era-6 fields only with every ancestor
+ok 143 - MB05 per-work OT6 B67 / cognitive: era-6 fields only with every ancestor
+ok 144 - MB05 per-work OT7 B60 / physical: era-6 fields only with every ancestor
+ok 145 - MB05 per-work OT7 B60 / cognitive: era-6 fields only with every ancestor
+ok 146 - MB05 per-work OT7 B61 / physical: era-6 fields only with every ancestor
+ok 147 - MB05 per-work OT7 B61 / cognitive: era-6 fields only with every ancestor
+ok 148 - MB05 per-work OT7 B62 / physical: era-6 fields only with every ancestor
+ok 149 - MB05 per-work OT7 B62 / cognitive: era-6 fields only with every ancestor
+ok 150 - MB05 per-work OT7 B63 / physical: era-6 fields only with every ancestor
+ok 151 - MB05 per-work OT7 B63 / cognitive: era-6 fields only with every ancestor
+ok 152 - MB05 per-work OT7 B64 / physical: era-6 fields only with every ancestor
+ok 153 - MB05 per-work OT7 B64 / cognitive: era-6 fields only with every ancestor
+ok 154 - MB05 per-work OT7 B65 / physical: era-6 fields only with every ancestor
+ok 155 - MB05 per-work OT7 B65 / cognitive: era-6 fields only with every ancestor
+ok 156 - MB05 per-work OT7 B66 / physical: era-6 fields only with every ancestor
+ok 157 - MB05 per-work OT7 B66 / cognitive: era-6 fields only with every ancestor
+ok 158 - MB05 per-work OT7 B67 / physical: era-6 fields only with every ancestor
+ok 159 - MB05 per-work OT7 B67 / cognitive: era-6 fields only with every ancestor
+ok 160 - MB05 legacy \#book=2: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 161 - MB05 legacy \#book=6: numeric rule, candidate copy from era 6, era-10 status override kept
+not ok 162 - MB05 legacy \#book=10: numeric rule, candidate copy from era 6, era-10 status override kept
+not ok 163 - MB05 All: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 164 - MB05 field gates fail closed: an invalid or unmet era-6 field gate keeps the earlier value
+not ok 165 - MB10 payload: one nested field and one own gate; no record gate; era 6, distText and model preserved
+ok 166 - MB10 per-work OT0 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 167 - MB10 per-work OT0 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 168 - MB10 per-work OT0 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 169 - MB10 per-work OT0 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 170 - MB10 per-work OT0 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 171 - MB10 per-work OT0 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 172 - MB10 per-work OT0 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 173 - MB10 per-work OT0 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 174 - MB10 per-work OT0 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 175 - MB10 per-work OT0 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 176 - MB10 per-work OT0 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 177 - MB10 per-work OT0 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 178 - MB10 per-work OT0 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 179 - MB10 per-work OT0 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 180 - MB10 per-work OT0 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 181 - MB10 per-work OT0 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 182 - MB10 per-work OT0 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 183 - MB10 per-work OT0 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 184 - MB10 per-work OT0 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 185 - MB10 per-work OT0 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 186 - MB10 per-work OT0 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 187 - MB10 per-work OT0 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 188 - MB10 per-work OT0 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 189 - MB10 per-work OT0 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 190 - MB10 per-work OT0 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 191 - MB10 per-work OT0 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 192 - MB10 per-work OT0 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 193 - MB10 per-work OT0 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 194 - MB10 per-work OT0 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 195 - MB10 per-work OT0 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 196 - MB10 per-work OT0 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 197 - MB10 per-work OT0 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 198 - MB10 per-work OT1 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 199 - MB10 per-work OT1 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 200 - MB10 per-work OT1 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 201 - MB10 per-work OT1 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 202 - MB10 per-work OT1 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 203 - MB10 per-work OT1 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 204 - MB10 per-work OT1 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 205 - MB10 per-work OT1 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 206 - MB10 per-work OT1 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 207 - MB10 per-work OT1 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 208 - MB10 per-work OT1 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 209 - MB10 per-work OT1 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 210 - MB10 per-work OT1 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 211 - MB10 per-work OT1 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 212 - MB10 per-work OT1 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 213 - MB10 per-work OT1 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 214 - MB10 per-work OT1 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 215 - MB10 per-work OT1 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 216 - MB10 per-work OT1 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 217 - MB10 per-work OT1 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 218 - MB10 per-work OT1 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 219 - MB10 per-work OT1 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 220 - MB10 per-work OT1 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 221 - MB10 per-work OT1 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 222 - MB10 per-work OT1 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 223 - MB10 per-work OT1 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 224 - MB10 per-work OT1 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 225 - MB10 per-work OT1 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 226 - MB10 per-work OT1 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 227 - MB10 per-work OT1 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 228 - MB10 per-work OT1 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 229 - MB10 per-work OT1 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 230 - MB10 per-work OT2 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 231 - MB10 per-work OT2 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 232 - MB10 per-work OT2 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 233 - MB10 per-work OT2 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 234 - MB10 per-work OT2 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 235 - MB10 per-work OT2 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 236 - MB10 per-work OT2 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 237 - MB10 per-work OT2 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 238 - MB10 per-work OT2 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 239 - MB10 per-work OT2 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 240 - MB10 per-work OT2 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 241 - MB10 per-work OT2 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 242 - MB10 per-work OT2 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 243 - MB10 per-work OT2 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 244 - MB10 per-work OT2 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 245 - MB10 per-work OT2 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 246 - MB10 per-work OT2 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 247 - MB10 per-work OT2 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 248 - MB10 per-work OT2 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 249 - MB10 per-work OT2 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 250 - MB10 per-work OT2 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 251 - MB10 per-work OT2 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 252 - MB10 per-work OT2 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 253 - MB10 per-work OT2 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 254 - MB10 per-work OT2 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 255 - MB10 per-work OT2 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 256 - MB10 per-work OT2 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 257 - MB10 per-work OT2 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 258 - MB10 per-work OT2 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 259 - MB10 per-work OT2 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 260 - MB10 per-work OT2 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 261 - MB10 per-work OT2 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 262 - MB10 per-work OT3 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 263 - MB10 per-work OT3 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 264 - MB10 per-work OT3 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 265 - MB10 per-work OT3 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 266 - MB10 per-work OT3 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 267 - MB10 per-work OT3 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 268 - MB10 per-work OT3 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 269 - MB10 per-work OT3 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 270 - MB10 per-work OT3 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 271 - MB10 per-work OT3 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 272 - MB10 per-work OT3 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 273 - MB10 per-work OT3 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 274 - MB10 per-work OT3 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 275 - MB10 per-work OT3 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 276 - MB10 per-work OT3 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 277 - MB10 per-work OT3 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 278 - MB10 per-work OT3 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 279 - MB10 per-work OT3 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 280 - MB10 per-work OT3 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 281 - MB10 per-work OT3 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 282 - MB10 per-work OT3 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 283 - MB10 per-work OT3 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 284 - MB10 per-work OT3 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 285 - MB10 per-work OT3 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 286 - MB10 per-work OT3 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 287 - MB10 per-work OT3 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 288 - MB10 per-work OT3 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 289 - MB10 per-work OT3 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 290 - MB10 per-work OT3 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 291 - MB10 per-work OT3 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 292 - MB10 per-work OT3 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 293 - MB10 per-work OT3 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 294 - MB10 per-work OT4 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 295 - MB10 per-work OT4 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 296 - MB10 per-work OT4 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 297 - MB10 per-work OT4 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 298 - MB10 per-work OT4 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 299 - MB10 per-work OT4 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 300 - MB10 per-work OT4 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 301 - MB10 per-work OT4 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 302 - MB10 per-work OT4 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 303 - MB10 per-work OT4 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 304 - MB10 per-work OT4 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 305 - MB10 per-work OT4 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 306 - MB10 per-work OT4 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 307 - MB10 per-work OT4 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 308 - MB10 per-work OT4 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 309 - MB10 per-work OT4 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 310 - MB10 per-work OT4 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 311 - MB10 per-work OT4 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 312 - MB10 per-work OT4 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 313 - MB10 per-work OT4 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 314 - MB10 per-work OT4 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 315 - MB10 per-work OT4 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 316 - MB10 per-work OT4 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 317 - MB10 per-work OT4 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 318 - MB10 per-work OT4 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 319 - MB10 per-work OT4 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 320 - MB10 per-work OT4 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 321 - MB10 per-work OT4 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 322 - MB10 per-work OT4 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 323 - MB10 per-work OT4 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 324 - MB10 per-work OT4 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 325 - MB10 per-work OT4 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 326 - MB10 per-work OT5 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 327 - MB10 per-work OT5 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 328 - MB10 per-work OT5 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 329 - MB10 per-work OT5 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 330 - MB10 per-work OT5 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 331 - MB10 per-work OT5 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 332 - MB10 per-work OT5 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 333 - MB10 per-work OT5 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 334 - MB10 per-work OT5 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 335 - MB10 per-work OT5 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 336 - MB10 per-work OT5 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 337 - MB10 per-work OT5 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 338 - MB10 per-work OT5 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 339 - MB10 per-work OT5 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 340 - MB10 per-work OT5 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 341 - MB10 per-work OT5 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 342 - MB10 per-work OT5 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 343 - MB10 per-work OT5 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 344 - MB10 per-work OT5 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 345 - MB10 per-work OT5 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 346 - MB10 per-work OT5 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 347 - MB10 per-work OT5 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 348 - MB10 per-work OT5 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 349 - MB10 per-work OT5 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 350 - MB10 per-work OT5 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 351 - MB10 per-work OT5 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 352 - MB10 per-work OT5 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 353 - MB10 per-work OT5 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 354 - MB10 per-work OT5 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 355 - MB10 per-work OT5 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 356 - MB10 per-work OT5 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 357 - MB10 per-work OT5 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 358 - MB10 per-work OT6 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 359 - MB10 per-work OT6 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 360 - MB10 per-work OT6 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 361 - MB10 per-work OT6 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 362 - MB10 per-work OT6 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 363 - MB10 per-work OT6 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 364 - MB10 per-work OT6 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 365 - MB10 per-work OT6 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 366 - MB10 per-work OT6 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 367 - MB10 per-work OT6 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 368 - MB10 per-work OT6 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 369 - MB10 per-work OT6 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 370 - MB10 per-work OT6 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 371 - MB10 per-work OT6 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 372 - MB10 per-work OT6 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 373 - MB10 per-work OT6 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 374 - MB10 per-work OT6 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 375 - MB10 per-work OT6 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 376 - MB10 per-work OT6 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 377 - MB10 per-work OT6 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 378 - MB10 per-work OT6 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 379 - MB10 per-work OT6 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 380 - MB10 per-work OT6 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 381 - MB10 per-work OT6 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 382 - MB10 per-work OT6 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 383 - MB10 per-work OT6 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 384 - MB10 per-work OT6 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 385 - MB10 per-work OT6 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 386 - MB10 per-work OT6 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 387 - MB10 per-work OT6 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 388 - MB10 per-work OT6 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 389 - MB10 per-work OT6 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 390 - MB10 per-work OT7 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 391 - MB10 per-work OT7 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 392 - MB10 per-work OT7 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 393 - MB10 per-work OT7 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 394 - MB10 per-work OT7 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 395 - MB10 per-work OT7 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 396 - MB10 per-work OT7 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 397 - MB10 per-work OT7 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 398 - MB10 per-work OT7 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 399 - MB10 per-work OT7 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 400 - MB10 per-work OT7 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 401 - MB10 per-work OT7 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 402 - MB10 per-work OT7 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 403 - MB10 per-work OT7 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 404 - MB10 per-work OT7 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 405 - MB10 per-work OT7 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 406 - MB10 per-work OT7 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 407 - MB10 per-work OT7 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 408 - MB10 per-work OT7 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 409 - MB10 per-work OT7 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 410 - MB10 per-work OT7 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 411 - MB10 per-work OT7 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 412 - MB10 per-work OT7 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 413 - MB10 per-work OT7 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 414 - MB10 per-work OT7 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 415 - MB10 per-work OT7 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 416 - MB10 per-work OT7 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 417 - MB10 per-work OT7 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 418 - MB10 per-work OT7 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 419 - MB10 per-work OT7 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+not ok 420 - MB10 per-work OT7 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+not ok 421 - MB10 per-work OT7 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 422 - MB10 legacy \#book=2 / physical: status per numeric rule
+ok 423 - MB10 legacy \#book=2 / cognitive: status per numeric rule
+ok 424 - MB10 legacy \#book=6 / physical: status per numeric rule
+ok 425 - MB10 legacy \#book=6 / cognitive: status per numeric rule
+not ok 426 - MB10 legacy \#book=10 / physical: status per numeric rule
+not ok 427 - MB10 legacy \#book=10 / cognitive: status per numeric rule
+not ok 428 - MB10 All / physical: status per numeric rule
+not ok 429 - MB10 All / cognitive: status per numeric rule
+ok 430 - MB10 status gate fails closed: an invalid or unmet era-10 gate falls back to the earlier status
+# tests 430
+# pass 403
+# fail 27
