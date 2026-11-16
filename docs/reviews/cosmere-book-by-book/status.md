@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT resumes one bounded individual-work source unit from the Scadrial residual holds after the closed SCR-01 return; record field-specific evidence and no whole-parent promotion.
-updated: 2026-11-16T21:22:20Z
+next-action: Implement the three nested Scadrial era-6 fields and their own MB05 gates from era6-handoff-2026-11-16.md on PR48, preserving ancestor fallbacks and prior closures; return exact-head implementation evidence and required validations for ChatGPT review.
+updated: 2026-11-16T21:31:57Z
 idle-runs: 0
-note: SCR-01 closed at PR48 5ab3eacc79476bc69a88879b1abb696d13be263f: 2/2 diff files, 4/4 input hashes, independent 30/30 selector tests; 6/6 supplied dossier crops hash-verified and viewed. Builder 205/205 recounted, parent 36 failures/169 passes attributed; 0 independent browser runs. Residual source holds remain; 0/33 full-work approvals.
+note: SCR-01 closed at 5ab3eac. MB05 bounded handoff saved: 7/7 narrow claims (6 direct excerpt, 1 official synopsis), 3/3 nested field candidates; prospective 136/136 state/realm cases and 8/8 unchanged-head copy controls, 6/6 input hashes. No candidate implemented by ChatGPT; 0/2 parent promotions, 0/33 full-work approvals. Chart and other residual source holds remain.
 
 
 
@@ -74,3 +74,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-16T20:56Z Claude: SCR-01 [return](scr01-return-5ab3eac.md) at PR48 5ab3eacc79476bc69a88879b1abb696d13be263f (parent 54c8df8): Scadrial distText qualifier only, +13 tests (30/30), pnpm check 191/191, rendered 205/205 (negative at parent 169/205). fixing/claude -> implementation-review/chatgpt. idle-runs 0. No merge.
 
 - 2026-11-16T21:22:20Z ChatGPT: [SCR-01 correction review](implementation-review-5ab3eac.md) saved/read back at 288889f88a9bbcc0d73bae2e47153267cdfb22ca. Fresh PR48 5ab3eac: 2/2 incremental patches; 4/4 exact input hashes and independent 30/30 tests; 6/6 screenshot blobs verified and viewed. Qualifier readable in galaxy/surface/Cognitive desktop and expanded-phone crops; scrolling/cropping limits disclosed. Recounted 205 head successes and 36 negative failures (169 passes aggregate). SCR-01 closed at bounded source/test/artifact scope; implementation-review/chatgpt -> content-review/chatgpt for individual-work source continuation. All other residuals, 0/2 parent promotions and 0/33 full-work approvals retained. No independent browser execution, app edit, merge or release approval.
+
+- 2026-11-16T21:31:57Z ChatGPT: [MB05 era-6 source handoff](era6-handoff-2026-11-16.md) saved/read back at e5bb467dce17b5e9230eb211cb74cfd9f823c85a after [reviewer runner](era6-reviewer-probe-5ab3eac.mjs) 38c02b9f6bb7170c816bc7087a8f8204a3cb7969 and [complete output](era6-reviewer-output-5ab3eac.json) cc984f81355cdc3b2925b569bb6d8640d5ccbb03. PR48 5ab3eacc79476bc69a88879b1abb696d13be263f, PR24 cf25cda66e91c573c421a0f3712623db72737a3b and PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 reconciled; 2/2 older-branch blurb comparisons match, status/facts differ. Seven narrow claims evidenced (6 chapter-1 observations plus 1 official-synopsis chronology); 3 nested field candidates with own MB05 gates. Prospective actual-selector matrix 136/136 across 128 per-work and 8 legacy/All realm cases, 8/8 unmodified-head copy controls, 6/6 input hashes. 0 independent browser cases; no full-book/complete-chart reading. Chart-dependent evidence deferred as a named known gap after insufficient product composite and inaccessible wiki artifacts. Prior ledger denominators unchanged; 0/2 parent promotions and 0/33 full-work approvals. content-review/chatgpt -> fixing/claude for finite implementation, then implementation-review/chatgpt. No app/PR-branch edit, merge, deployment or Mckay release approval.
