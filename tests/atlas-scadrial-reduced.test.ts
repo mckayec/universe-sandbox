@@ -78,6 +78,8 @@ function setup(st: St) {
   vm.runInContext(cut('const STYLE_IX=', 'function applyRealmToPlanet'), c);
   vm.runInContext(cut('const realmFirst=r=>', 'function renderRealmBar'), c);
   vm.runInContext(cut('function realmCard(w)', 'if($("#realms"))'), c);
+  vm.runInContext('const K={hooks:{}};const HOOK_API={};', c);
+  vm.runInContext(cut('function distText(w){', '\ndos.addEventListener'), c);
   return { c, w, reg, p };
 }
 
@@ -232,6 +234,42 @@ test('model note obeys a present gates.model (fixture) and an invalid one fails 
     w.gates = { ...w.gates, model: g };
     assert.equal(vm.runInContext('modelNote(world)', c) !== '', want, JSON.stringify(g));
   }
+});
+
+/* SCR-01: Scadrial's own Distance row must not attribute planet order to the (unverified) system chart.
+   Only Scadrial's local distText changes; other records keep their explicit holds (no site-wide assertion). */
+const SCAD_DIST = 'Illustrative system layout; distances and orbital order are not verified here.';
+const CHART_ATTR = 'planet order from the system chart';
+for (const [label, st] of [
+  ['set: original trilogy read', { mode: 'set', ids: MB }],
+  ['set: nothing read', { mode: 'set', ids: [] }],
+  ['legacy #book=2', { mode: 'legacy', book: 2 }],
+  ['legacy #book=6', { mode: 'legacy', book: 6 }],
+  ['legacy #book=10', { mode: 'legacy', book: 10 }],
+  ['All', { mode: 'all' }],
+] as [string, St][]) {
+  for (const realm of ['physical', 'cognitive']) {
+    test('SCR-01 ' + label + ' / ' + realm + ': Scadrial Distance row is the exact qualifier', () => {
+      const { c } = setup(st);
+      vm.runInContext('S.realm=' + JSON.stringify(realm), c);
+      const d = vm.runInContext('distText(world)', c) as string;
+      assert.equal(d, SCAD_DIST);
+      assert.ok(!d.includes(CHART_ATTR));
+      assert.ok(!/light-years/.test(d), 'no generic light-year substitution');
+    });
+  }
+}
+
+test('SCR-01 scope: only Scadrial changed; ORR constant and other Scadrial-system records keep their distText', () => {
+  const { p } = setup({ mode: 'all' });
+  assert.ok(packSrc.includes('var ORR = "System drawn enlarged; planet order from the system chart";'));
+  const others = p.worlds.filter((x: any) => x.id !== 'scadrial' && x.distText === SCAD_DIST);
+  assert.equal(
+    others.length,
+    0,
+    'other records with the Scadrial qualifier: ' + others.map((x: any) => x.id).join(','),
+  );
+  assert.ok(p.worlds.filter((x: any) => /planet order from the system chart/.test(x.distText || '')).length > 0);
 });
 
 let REG: any = null;

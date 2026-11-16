@@ -399,7 +399,7 @@
        noSurface: true, gfx: sun("#ffe8a0", HOTY)},
 
       {id: "scadrial", name: "Scadrial", realms: {cognitive: {name: "Expanse of the Vapors", style: "mist", c1: "#7a808c", c2: "#eef2f6", c3: "#2e2b28", blurb: "Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly."}}, group: "scadrian", books: [2, 6, 7, 10, 12], first: 2, major: true, status: "The Final Empire",
-       star: {name: "Scadrial’s sun", col: "#ffd8a0"}, map: orb(C.scadrial, .2, 40), distText: ORR, hero: "luthadel",
+       star: {name: "Scadrial’s sun", col: "#ffd8a0"}, map: orb(C.scadrial, .2, 40), distText: "Illustrative system layout; distances and orbital order are not verified here.", hero: "luthadel",
        blurb: "In the Final Empire, ash falls beneath a red sun. Skaa labor in the fields under the Lord Ruler’s rule, brown-leaved crops struggle to grow, and mists gather as evening falls.",
        short: "The Final Empire beneath a red sun.",
        gates: {blurb: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}, short: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}, facts: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
