@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude folds the reviewed test-only Save/Load repair into PR47, verifies the resulting exact head and refreshes the consolidated packet/remaining-gates inventory per saveload-review-2026-11-16.md; return integration evidence for review.
-updated: 2026-11-16T20:36:34Z
+next-action: ChatGPT reviews saveload-integration-fdec175.md (PR47 head = reviewed fdec175, test-only delta) and decides final technical sign-off for PR47 at fdec175 or returns one bounded unit.
+updated: 2026-11-16T20:47Z
 idle-runs: 0
-note: Bounded smoke repair accepted at 14bbbacc4627cbf26a37c0e00d0804d1d2563c3c and fdec17592d5635178a71bd1d1a8c6d8120c0dcae: independent 20/20 fixture tests, 12/12 input hashes; builder 5/5 strict runs each reviewed, not independently executed. PR47 still 1acc2ea. Enumerated-state scope and all other release gates remain.
+note: Save/Load repair folded into PR47 by fast-forward: head 1acc2ea -> fdec17592d5635178a71bd1d1a8c6d8120c0dcae (identical to reviewed integration; 3 test files only, blobs match). Packet §4 Save/Load row updated to bounded acceptance; remaining-gates inventory in saveload-integration-fdec175.md. Not merged; release is Mckay's.
 
 
 # Simulator clarity and physics
@@ -345,3 +345,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-10T22:20Z Claude: strict Save→Clear→Load repair (plan Milestone 2) applied as tests-only branch fix/save-load-smoke-race at 14bbbacc4627cbf26a37c0e00d0804d1d2563c3c (main 7c5393b + plan patch; 2 files byte-identical, 1 Prettier-only). Integration fix/save-load-smoke-race-on-pr47 at fdec17592d5635178a71bd1d1a8c6d8120c0dcae (cherry-pick onto PR47 1acc2ea). pnpm check pass on both (128/128, 234/234 unit; 113 dist). pnpm test:browser 5/5 consecutive unedited strict passes on each head; an earlier set (4 pass + 1 tool-timeout kill) disclosed, not counted. Full state fingerprint matched every run; no serialization defect found. Packet Save/Load row annotated historical. implementation/claude → implementation-review/chatgpt. idle-runs 0. See [saveload-return-14bbbac.md](saveload-return-14bbbac.md).
 
 - 2026-11-16T20:36:34Z ChatGPT: [Strict Save/Load review](saveload-review-2026-11-16.md) saved/read back at 204dd304ce50a585b27c01ae38e8efbbbc49db2c. Inspected 3/3 repair files on each head; all three blobs match across branches; 12/12 downloaded input hashes and 10/10 fixture tests per head (20/20 total). Reviewed builder 5/5 strict browser runs each, disclosed earlier interrupted set; 0 independent browser cases (fresh socket-permission launch failure). Accepted bounded repair, directed fold into PR47, not a separate PR. implementation-review/chatgpt -> implementation/claude for integration/packet refresh. No exhaustive serialization, whole-handoff or release approval; no application edits, merge or deploy.
+- 2026-11-16T20:47Z Claude: Fast-forwarded PR47 `sim/clarity-physics` 1acc2ea -> fdec17592d5635178a71bd1d1a8c6d8120c0dcae (reviewed integration head; diff = 3 test files, 3/3 blobs verified). No checks re-run (identical tree). Updated final-packet §4 Save/Load row; [integration return + remaining-gates inventory](saveload-integration-fdec175.md). implementation/claude -> implementation-review/chatgpt. idle-runs 0. No merge.
