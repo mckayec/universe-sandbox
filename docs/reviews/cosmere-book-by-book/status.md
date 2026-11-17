@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT performs one finite MB03 e11 Fadrex/cache/siege source unit, separating primary text from commentary and reconciling PR24/PR37/PR48 before any implementation handoff; e10 primary-scene/mapping gaps deferred.
-updated: 2026-11-17T06:25Z
+next-action: Claude applies K2-E11-01 from key2-e11-handoff-2026-11-17.md to PR48 e11.text only and returns exact-head diff, validation and desktop/phone allowed-withheld evidence for ChatGPT implementation review.
+updated: 2026-11-17T07:27Z
 idle-runs: 0
-note: e9 accepted at PR48 c0a8f03; e10 retained at commentary/synopsis scope per key2-e10-disposition-2026-11-17.md (0/4 primary-scene checks). 3/5 prose corrections accepted + 1/5 no-change disposition; e11 pending. 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals; intermittent smoke issue not proven fixed.
+note: e11 finite source unit complete: 4/4 components dispositioned, 0/4 published Fadrex scene checks; narrow crew to Elend’s army and cache/siege scope. 5/5 prose dispositions: 3 accepted, 1 no-change, 1 awaiting implementation. 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals; source and intermittent smoke gaps retained.
 
 # Cosmere book-by-book review
 
@@ -113,3 +113,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T06:23Z ChatGPT: [K2-E9-01 review](implementation-review-k2e9-c0a8f03.md) saved/read back at 2a65d455a0eef5ee6bf49cc5e21d53ba6c69829a. Exact PR48 c0a8f03668a273846750d0e66abc770e04dfb3cb: 2/2 incremental patches, 6/6 input blob hashes, whole pack equals parent after reversing only e9.text. Independent focused 480/480 vs parent 479/480 (one payload failure); 6/6 supplied images viewed; builder rendered 76/76 remains attributed, 0 reviewer browser runs. Builder smoke pass recorded without claiming intermittent :88 fixed. implementation-review/chatgpt → content-review/chatgpt for finite MB02 e10 source unit. 18/18 pack and 8/8 review statuses checked, no other eligible owned/stale self-audit; 3/5 prose units accepted, 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals. No app/PR edit, merge, deploy or release approval.
 
 - 2026-11-17T06:25Z ChatGPT: [e10 source disposition](key2-e10-disposition-2026-11-17.md) saved/read back at 348e3c9f2db15b1a193947c89ff58c6d29fe776a. Opened three author annotations and official MB03 synopsis; 4/4 broad clauses supported at commentary/synopsis scope, 0/4 primary MB02 ending checks. Retain existing restricted prose without code change; primary scene/earliest-reveal and site/mapping gaps deferred, not certified. PR24 cf25cda/PR37 03394c3 reconciled: identical e10 text, PR37 additionally has lm:pool, not imported/certified. content-review/chatgpt retained with next finite MB03 e11 unit. 3/5 prose corrections accepted + 1/5 no-change disposition, 4/5 finite dispositions, 1/5 pending; 2/7 mappings, 0/2 parent promotions, 0/33 full-work approvals. No full-novel reading, app/PR edit, merge, deploy or Mckay approval.
+
+- 2026-11-17T07:27Z — ChatGPT completed MB03 e11's finite source unit and saved [key2-e11-handoff-2026-11-17.md](key2-e11-handoff-2026-11-17.md) in commit 5c466806c19365f27d4a44c52bbe520a33e750db; exact read-back confirmed. Reconciled PR48 c0a8f03668a273846750d0e66abc770e04dfb3cb with PR24 cf25cda66e91c573c421a0f3712623db72737a3b and PR37 03394c32816fcb5c95261bf6a9ea4520381a5838. K2-E11-01 asks only e11.text to become “Seeking a storage cache, Elend’s army besieges Fadrex.” Commentary-supported synthesis; 4/4 components dispositioned, 0/4 published Fadrex scene checks. Primary opening excerpt supports crisis context only. No new mapping or parent/geometry certification. Five remaining prose units now have dispositions: 3/5 accepted corrections, 1/5 retained no-change, 1/5 awaiting implementation/review. Still 2/7 event mappings, 0/2 parent promotions, 0/33 full-work approvals. Deferred primary-scene/MB09 gaps and intermittent smoke limitation remain. Read 18/18 pack and 8/8 review statuses; no other owned unit or eligible parallel self-audit. Handed to Claude for the single-field change and exact-head return; no code/PR-branch edit, merge, deployment or release approval.
