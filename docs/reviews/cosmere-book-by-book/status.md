@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT inventories remaining unmapped key-2 events e7–e11 and parent gates at current PR48 head, reconciles prior key2 dispositions/e6/e12, and prepares one bounded source-backed correction/omission packet; preserve MB09 deferral and parent holds.
-updated: 2026-11-17T02:20Z
+next-action: Claude implements K2-E8-01 text-only narrowing on PR48 per key2-events-checkpoint-2026-11-17.md, preserving numeric/ancestor gates and site hold; return exact head, one-field diff and allowed/withheld rendered evidence for implementation review.
+updated: 2026-11-17T03:19:50Z
 idle-runs: 0
-note: SH-E1 closed at unchanged PR48 0b43f8ee562b232387e9342d00985c91df9663fb: 2/2 default-resolution finished captures reviewed, 5/5 new images inspected, independent readiness checks 19/19. SH-D1–03 omission package accepted within documented scope. Builder browser execution remains attributed; 0 reviewer browser cases this run; browser-smoke line 88 unresolved. 2/7 key-2 events mapped; 0/2 parent promotions; 0/33 full-work approvals.
+note: Five remaining key-2 events and five site parents inventoried at 0b43f8e; one e8 prose narrowing supported by opened author commentary, not chapter text. No new mappings authorized; e8 location and four other event texts remain held. 2/7 mapped events, 0/2 parent promotions, 0/33 full-work approvals. SH-E1 closure and prior acceptances stand; browser-smoke failure remains unresolved.
 
 # Cosmere book-by-book review
 
@@ -93,3 +93,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T02:02Z Claude: [SH-E1 return](sh-e1-surface-return-0b43f8e.md) at unchanged PR48 0b43f8ee562b232387e9342d00985c91df9663fb. [sh-surface-probe.mjs](sh-surface-probe.mjs) distinguishes PL assembly from finished bake (R1–R5, timeout = INCOMPLETE, exit 1). Default resolution 12/12, 2/2 complete (1440x900 4096 in 154 s, 390x844 2048 in 32 s); diag __HD=256 12/12, 2/2; 5 s-deadline negative control 0/2 complete, exit 1. 5 captures inspected. fixing/claude → implementation-review/chatgpt.
 
 - 2026-11-17T02:20Z ChatGPT: [SH-E1 evidence review](implementation-review-sh-e1-0b43f8e.md) saved/read back at ee0e0930b281da543c8e51834f84e2740af9f93c after [offline readiness checker](reviewer-sh-e1-readiness.cjs) 7cb58645f9462484fd5c1ed294d4bf60bafd3378. PR48 unchanged at 0b43f8ee562b232387e9342d00985c91df9663fb (0 files/0 commits since reviewed head); engine/pack blobs match. SH-E1 closed: 2/2 default completed captures supported by inspected probe/readiness logs and images; all 5/5 new captures inspected; independent predicate checks 19/19, 0 browser executions. Default/diag 12/12 executions and timings remain builder-attributed. SH-D1–03 accepted as bounded omission package, prior closures/holds unchanged, browser smoke unresolved. implementation-review/chatgpt → content-review/chatgpt for finite e7–e11 inventory/source disposition, not MB09 restart. 18/18 pack and 8/8 review statuses checked, no stale self-audit; 0/33 full-work approvals. No application/PR edit, merge, deploy or Mckay release approval.
+
+- 2026-11-17T03:19:50Z ChatGPT: [key-2 event checkpoint](key2-events-checkpoint-2026-11-17.md) saved/read back at 26d50642a124e4da2987452dd4997ec4fe125989 after [five-event inventory](key2-events-inventory-0b43f8e.json) 199c5358c41ab205fc4a29fa8c3f645248cd9ad0. PR48 0b43f8ee562b232387e9342d00985c91df9663fb and PR24 cf25cda/PR37 03394c3 reconciled; 3/3 input hashes verified, 5/5 remaining events and 5/5 parents inventoried, 5/5 own gates remain unreviewed fallback. Four author-commentary pages opened; no primary scene body or independent second witness obtained. K2-E8-01 supplies one supported text-only narrowing, 0 new gates; retained site is explicitly unverified. content-review/chatgpt → fixing/claude for this bounded correction, then implementation review and e7 source unit under the two-run cap. 18/18 pack and 8/8 review statuses inspected, no stale parallel self-audit. 0/33 full-work approvals; no application/PR edit, merge, deploy or Mckay approval.
