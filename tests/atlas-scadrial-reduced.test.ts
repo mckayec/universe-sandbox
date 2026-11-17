@@ -522,6 +522,11 @@ const OLD_UNKNOWN = 'The books have not described this world’s subastral.';
    legacy attachment under the unchanged world/site/event chain. */
 const E8_TEXT = 'The Lord Ruler is defeated and dies.';
 const E8_OLD = 'Vin finds his weakness and kills the immortal emperor in his palace.';
+/* K2-E7-01 (ChatGPT key2-e7-handoff-2026-11-17.md): e7 text-only narrowing to the identity and scars clauses.
+   Title, id, book, world, retained hathsin site and array position unchanged; no gate added. */
+const E7_TEXT = 'Kelsier is known as the Survivor of Hathsin; scars cover his hands and arms.';
+const E7_OLD =
+  'Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power.';
 const KEY2 = {
   e6: {
     id: 'e6',
@@ -538,7 +543,7 @@ const KEY2 = {
     world: 'scadrial',
     site: 'hathsin',
     title: 'The survivor of Hathsin',
-    text: 'Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power.',
+    text: E7_TEXT,
   },
   e8: { id: 'e8', book: 2, world: 'scadrial', site: 'kredikshaw', title: 'The Lord Ruler falls', text: E8_TEXT },
   e9: {
@@ -575,7 +580,7 @@ const KEY2 = {
   },
 };
 
-test('K2-E8-01 payload: only e8.text changed; e6/e7/e9–e12 exact; order and ids kept; old e8 wording gone', () => {
+test('K2-E8-01 + K2-E7-01 payload: only e7/e8 text changed; e6/e9–e12 exact; order and ids kept; old wording gone', () => {
   const { p } = setup({ mode: 'all' });
   const ids = p.events.map((e: any) => e.id);
   const i6 = ids.indexOf('e6');
@@ -585,15 +590,19 @@ test('K2-E8-01 payload: only e8.text changed; e6/e7/e9–e12 exact; order and id
   }
   assert.ok(!packSrc.includes(E8_OLD), 'old e8 wording absent from pack');
   assert.ok(!packSrc.includes('immortal emperor'), 'no residual immortal-emperor wording');
+  assert.ok(!packSrc.includes(E7_OLD), 'old e7 wording absent from pack');
+  assert.ok(!packSrc.includes('every Allomantic power'), 'no residual every-power wording');
 });
 
-test('K2-E8-01 visibility: e8 shown only when the unchanged chain allows it; parent restrictions unchanged', () => {
-  const vis = (st: St) => {
-    const { c, p } = setup(st);
-    c.__e = p.events.find((e: any) => e.id === 'e8');
-    return vm.runInContext('!PW()||pvis(evChain(__e))', c) as boolean;
-  };
-  assert.equal(vis({ mode: 'set', ids: MB }), true, 'full original trilogy');
-  for (const ids of SUBSETS.filter(x => x.length < 3)) assert.equal(vis({ mode: 'set', ids }), false, ids.join('+'));
-  assert.equal(vis({ mode: 'set', ids: [AOL, TLM] }), false, 'later era only');
-});
+for (const ev of ['e7', 'e8']) {
+  test(`K2 text narrowing visibility: ${ev} shown only when the unchanged chain allows it; parents unchanged`, () => {
+    const vis = (st: St) => {
+      const { c, p } = setup(st);
+      c.__e = p.events.find((e: any) => e.id === ev);
+      return vm.runInContext('!PW()||pvis(evChain(__e))', c) as boolean;
+    };
+    assert.equal(vis({ mode: 'set', ids: MB }), true, 'full original trilogy');
+    for (const ids of SUBSETS.filter(x => x.length < 3)) assert.equal(vis({ mode: 'set', ids }), false, ids.join('+'));
+    assert.equal(vis({ mode: 'set', ids: [AOL, TLM] }), false, 'later era only');
+  });
+}

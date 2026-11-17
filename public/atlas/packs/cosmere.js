@@ -746,7 +746,7 @@
       {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
       /* II Mistborn */
       {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.", gate: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
-      {id: "e7", book: 2, world: "scadrial", site: "hathsin", title: "The survivor of Hathsin", text: "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."},
+      {id: "e7", book: 2, world: "scadrial", site: "hathsin", title: "The survivor of Hathsin", text: "Kelsier is known as the Survivor of Hathsin; scars cover his hands and arms."},
       {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", title: "The Lord Ruler falls", text: "The Lord Ruler is defeated and dies."},
       {id: "e9", book: 2, world: "scadrial", site: "luthadel", title: "Siege of Luthadel", text: "Elend Venture tries to rule a free city while three armies camp outside the walls."},
       {id: "e10", book: 2, world: "scadrial", site: "well", title: "The Well of Ascension", text: "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."},
