@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: Run the second and final bounded SEL03 checkpoint: four site-description clauses and PR37 additions, with fresh PR24/37/48 reconciliation and lawful text/map sources. If unavailable, qualify/omit conservatively or defer with exact gaps; no new gates or full-work approval.
-updated: 2026-11-17T09:24Z
+next-action: Claude applies SEL03-GEO-01/02 only on PR48 from 17efc26c276594fa00b9775515a433bcf9bb9e87 per sel03-final-checkpoint-2026-11-17.md (two site desc fields), supplies exact head/parent, focused negative control and rendered evidence, then returns implementation-review/chatgpt. PR24/37 unchanged.
+updated: 2026-11-17T09:30Z
 idle-runs: 0
-note: SEL03-E30-01 accepted at PR48 17efc26c276594fa00b9775515a433bcf9bb9e87 in implementation-review-17efc26.md (a723d72665228e291c03b5ea529c3148eb80b16b). Independent focused 483/483; actual-parent control 482/483 with only the payload failure; 12/12 visibility states unchanged. Builder rendered 80/80, independently viewed 3/6 screenshots; 0 independent browser executions. Save/Load smoke remains unresolved. 1/1 requested SEL03 correction accepted; 0/4 whole sites certified; 0/33 full-work approvals.
+note: SEL03 source cap reached (2/2 checkpoints); full audit deferred with explicit primary-text/map gaps. e30 accepted in implementation-review-17efc26.md (a723d72665228e291c03b5ea529c3148eb80b16b), independent 483/483, actual-parent 482/483. Final checkpoint 7cade4c57be5dadf296f43cdd0faa3695dfe529e: 4/4 sites and 7/7 PR37 additions dispositioned, 2 conservative copy edits requested/0 implemented. No new gates, 0/4 complete sites certified, 0/33 full-work approvals. PR37 duration/attachment issues retained for separately owned integration. Save/Load smoke remains unresolved.
 
 # Cosmere book-by-book review
 
@@ -123,3 +123,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T09:03Z Claude: applied SEL03-E30-01 on PR48 at 17efc26c276594fa00b9775515a433bcf9bb9e87 (parent d22843792a983f5b47ceab22c897b8ce5ba37388; cosmere.js e30.text + new tests/atlas-sel03-e30.test.ts). Evidence [sel03e30-return-17efc26.md](sel03e30-return-17efc26.md): focused 483/483 (negative 482/1), pnpm check 636/636, test:pages 12x2, rendered 80/80 at 1440x900 + 390x844 (parent 64/16); e30 visibility and chain identical to parent across All, legacy 1/6/7/10, sufficient bucket 1+7 and 6 incomplete/other-work sets. Browser smoke Save/Load failure at line 88 unchanged (head 0/4, parent control 1/2). fixing/claude → implementation-review/chatgpt. Not merged.
 
 - 2026-11-17T09:24Z ChatGPT: saved/read back implementation-review-17efc26.md at a723d72665228e291c03b5ea529c3148eb80b16b. Accepted SEL03-E30-01 at exact PR48 17efc26c276594fa00b9775515a433bcf9bb9e87; 2/2 diff files read, 9/9 input hashes verified, independent focused 483/483 and actual-parent negative control 482/483. 12/12 visibility states unchanged; 3/6 builder screenshots viewed; 0 independent browser runs. Retained smoke failure and all source/geometry/gating holds. implementation-review/chatgpt → content-review/chatgpt for second/final bounded SEL03 checkpoint. No new gates, full-work or release approval.
+
+- 2026-11-17T09:30Z ChatGPT: saved/read back sel03-final-checkpoint-2026-11-17.md at 7cade4c57be5dadf296f43cdd0faa3695dfe529e; completed second/final bounded SEL03 source checkpoint. Reconciled PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR48 17efc26c276594fa00b9775515a433bcf9bb9e87; 3/3 pack hashes and 8/8 site comparisons verified. Opened author excerpt/FAQ, authorized Reactor excerpt and 4/4 secondary geography pages; later primary preview/map not obtained. 4/4 site and 7/7 PR37-addition dispositions; GEO-01/02 request two conservative PR48 desc edits, 0/2 implemented here. PR37 ownership and all held geometry/gates preserved. content-review/chatgpt → fixing/claude. After finite implementation review, keep SEL03 deferred with gaps and start MB04 initial inventory, subject to current priority checks; no third open-ended SEL03 pass. 0/4 whole sites and 0/33 full works approved; no release approval.
