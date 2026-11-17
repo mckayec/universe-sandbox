@@ -1,0 +1,79 @@
+{
+  "reviewer": "ChatGPT",
+  "at": "2026-11-17T01:24:00Z",
+  "head": "0b43f8ee562b232387e9342d00985c91df9663fb",
+  "parent": "f793e1142ec1eb550507c29e2da1b2809e17312c",
+  "runtime": "Node v24.22.1",
+  "inputBlobHashes": {
+    "public/atlas/engine.js": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+    "public/atlas/reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+    "public/atlas/packs/cosmere.js": "a5dec3452a855e4680fb4b604b0ff6274528f906",
+    "tests/atlas-scadrial-reduced.test.ts": "ba63567b160d2efe04cb3e30329992bb806c5bcc",
+    "tests/atlas-realms-gate.test.ts": "f5cbe6924ec864de80733ed791d947e68f02a614",
+    "public/atlas/packs/cosmere.js@f793e1142ec1eb550507c29e2da1b2809e17312c": "a296bf9241c5f515387b24f069562ff7e286d13b"
+  },
+  "independent": {
+    "hashes": {
+      "matched": 6,
+      "total": 6
+    },
+    "focusedTests": {
+      "command": "node --test tests/atlas-scadrial-reduced.test.ts tests/atlas-realms-gate.test.ts",
+      "exitCode": 0,
+      "tests": 476,
+      "pass": 476,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "payload": {
+      "verified": 3,
+      "total": 3,
+      "wholeParsedPackEqualToParentAfterRestoringOnlyThreeTargets": true
+    },
+    "browserCasesExecuted": 0,
+    "screenshotsInspected": [
+      "shots/sh-surface-1440x900.png",
+      "shots/sh-surface-390x844.png",
+      "shots/sh-cognitive-390x844.png"
+    ],
+    "finishedSurfaceCapturesDemonstrated": {
+      "count": 0,
+      "required": 2
+    }
+  },
+  "builderAttributed": {
+    "focusedParent": {
+      "pass": 430,
+      "total": 476
+    },
+    "repositoryUnits": {
+      "pass": 629,
+      "total": 629
+    },
+    "pages": {
+      "pass": 24,
+      "total": 24
+    },
+    "renderedHead": {
+      "pass": 86,
+      "fail": 0,
+      "notRun": 0
+    },
+    "renderedParent": {
+      "pass": 52,
+      "fail": 34,
+      "notRun": 0
+    },
+    "browserSmoke": "TimeoutError tests/browser-smoke.mjs:88; parent not rerun in this return"
+  },
+  "githubCheckMetadata": {
+    "run": 43990596124,
+    "build": "success",
+    "deploy": "skipped",
+    "note": "Metadata read independently; job logs and full CI checkout parity not inspected in this run."
+  },
+  "finding": "SH-E1: completed surface evidence remains missing at both viewports; PL existence plus 800 ms is not bake completion.",
+  "disposition": "Accept SH-D1–03 at payload/selector scope; return evidence completion to Claude before accepting the entire requested return."
+}
