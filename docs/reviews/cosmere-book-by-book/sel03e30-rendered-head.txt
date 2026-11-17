@@ -1,0 +1,81 @@
+ok   1440x900 sufficient: Sel selected (sel)
+ok   1440x900 sufficient: e30 item shows title
+ok   1440x900 sufficient: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   1440x900 sufficient: old e30 wording absent from page
+ok   1440x900 sufficient: no errors 
+ok   1440x900 legacy book=7: Sel selected (sel)
+ok   1440x900 legacy book=7: e30 item shows title
+ok   1440x900 legacy book=7: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   1440x900 legacy book=7: old e30 wording absent from page
+ok   1440x900 legacy book=7: no errors 
+ok   1440x900 legacy book=10: Sel selected (sel)
+ok   1440x900 legacy book=10: e30 item shows title
+ok   1440x900 legacy book=10: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   1440x900 legacy book=10: old e30 wording absent from page
+ok   1440x900 legacy book=10: no errors 
+ok   1440x900 All: Sel selected (sel)
+ok   1440x900 All: e30 item shows title
+ok   1440x900 All: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   1440x900 All: old e30 wording absent from page
+ok   1440x900 All: e1 text unchanged
+ok   1440x900 All: e2 text unchanged
+ok   1440x900 All: e3 text unchanged
+ok   1440x900 All: e4 text unchanged
+ok   1440x900 All: e5 text unchanged
+ok   1440x900 All: no errors 
+ok   1440x900 TES only: no e30 dossier item (sel=null)
+ok   1440x900 TES only: no e30 text anywhere
+ok   1440x900 TES only: no errors 
+ok   1440x900 bucket 7 only: no e30 dossier item (sel=null)
+ok   1440x900 bucket 7 only: no e30 text anywhere
+ok   1440x900 bucket 7 only: no errors 
+ok   1440x900 bucket 1 + TES: no e30 dossier item (sel=sel)
+ok   1440x900 bucket 1 + TES: no e30 text anywhere
+ok   1440x900 bucket 1 + TES: no errors 
+ok   1440x900 other work only: no e30 dossier item (sel=null)
+ok   1440x900 other work only: no e30 text anywhere
+ok   1440x900 other work only: no errors 
+ok   1440x900 legacy book=6: no e30 dossier item (sel=sel)
+ok   1440x900 legacy book=6: no e30 text anywhere
+ok   1440x900 legacy book=6: no errors 
+ok   390x844 sufficient: Sel selected (sel)
+ok   390x844 sufficient: e30 item shows title
+ok   390x844 sufficient: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   390x844 sufficient: old e30 wording absent from page
+ok   390x844 sufficient: no errors 
+ok   390x844 legacy book=7: Sel selected (sel)
+ok   390x844 legacy book=7: e30 item shows title
+ok   390x844 legacy book=7: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   390x844 legacy book=7: old e30 wording absent from page
+ok   390x844 legacy book=7: no errors 
+ok   390x844 legacy book=10: Sel selected (sel)
+ok   390x844 legacy book=10: e30 item shows title
+ok   390x844 legacy book=10: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   390x844 legacy book=10: old e30 wording absent from page
+ok   390x844 legacy book=10: no errors 
+ok   390x844 All: Sel selected (sel)
+ok   390x844 All: e30 item shows title
+ok   390x844 All: e30 text = new wording (A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank.)
+ok   390x844 All: old e30 wording absent from page
+ok   390x844 All: e1 text unchanged
+ok   390x844 All: e2 text unchanged
+ok   390x844 All: e3 text unchanged
+ok   390x844 All: e4 text unchanged
+ok   390x844 All: e5 text unchanged
+ok   390x844 All: no errors 
+ok   390x844 TES only: no e30 dossier item (sel=null)
+ok   390x844 TES only: no e30 text anywhere
+ok   390x844 TES only: no errors 
+ok   390x844 bucket 7 only: no e30 dossier item (sel=null)
+ok   390x844 bucket 7 only: no e30 text anywhere
+ok   390x844 bucket 7 only: no errors 
+ok   390x844 bucket 1 + TES: no e30 dossier item (sel=sel)
+ok   390x844 bucket 1 + TES: no e30 text anywhere
+ok   390x844 bucket 1 + TES: no errors 
+ok   390x844 other work only: no e30 dossier item (sel=null)
+ok   390x844 other work only: no e30 text anywhere
+ok   390x844 other work only: no errors 
+ok   390x844 legacy book=6: no e30 dossier item (sel=sel)
+ok   390x844 legacy book=6: no e30 text anywhere
+ok   390x844 legacy book=6: no errors 
+{"pass":80,"fail":0}
