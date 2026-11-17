@@ -527,6 +527,10 @@ const E8_OLD = 'Vin finds his weakness and kills the immortal emperor in his pal
 const E7_TEXT = 'Kelsier is known as the Survivor of Hathsin; scars cover his hands and arms.';
 const E7_OLD =
   'Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power.';
+/* K2-E9-01 (ChatGPT key2-e9-handoff-2026-11-17.md): e9 text-only precision narrowing. Title, id, book, world,
+   luthadel site and array position unchanged; no gate added; PR24/PR37 variants untouched. */
+const E9_TEXT = 'Elend Venture tries to govern Luthadel while three armies seek to conquer the city.';
+const E9_OLD = 'Elend Venture tries to rule a free city while three armies camp outside the walls.';
 const KEY2 = {
   e6: {
     id: 'e6',
@@ -552,7 +556,7 @@ const KEY2 = {
     world: 'scadrial',
     site: 'luthadel',
     title: 'Siege of Luthadel',
-    text: 'Elend Venture tries to rule a free city while three armies camp outside the walls.',
+    text: E9_TEXT,
   },
   e10: {
     id: 'e10',
@@ -580,7 +584,7 @@ const KEY2 = {
   },
 };
 
-test('K2-E8-01 + K2-E7-01 payload: only e7/e8 text changed; e6/e9–e12 exact; order and ids kept; old wording gone', () => {
+test('K2-E8-01 + K2-E7-01 + K2-E9-01 payload: only e7/e8/e9 text changed; e6/e10–e12 exact; order and ids kept; old wording gone', () => {
   const { p } = setup({ mode: 'all' });
   const ids = p.events.map((e: any) => e.id);
   const i6 = ids.indexOf('e6');
@@ -592,9 +596,11 @@ test('K2-E8-01 + K2-E7-01 payload: only e7/e8 text changed; e6/e9–e12 exact; o
   assert.ok(!packSrc.includes('immortal emperor'), 'no residual immortal-emperor wording');
   assert.ok(!packSrc.includes(E7_OLD), 'old e7 wording absent from pack');
   assert.ok(!packSrc.includes('every Allomantic power'), 'no residual every-power wording');
+  assert.ok(!packSrc.includes(E9_OLD), 'old e9 wording absent from pack');
+  assert.ok(!packSrc.includes('camp outside the walls'), 'no residual camp-outside-the-walls wording');
 });
 
-for (const ev of ['e7', 'e8']) {
+for (const ev of ['e7', 'e8', 'e9']) {
   test(`K2 text narrowing visibility: ${ev} shown only when the unchanged chain allows it; parents unchanged`, () => {
     const vis = (st: St) => {
       const { c, p } = setup(st);
