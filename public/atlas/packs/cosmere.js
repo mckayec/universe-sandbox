@@ -482,9 +482,9 @@
          {id: "seraven", name: "Seraven, Svorden", lat: 38.3, lon: 29.5, books: [1], desc: "Svorden’s capital and harbour at the north-east tip of Opelon, the empire’s northernmost point; Sarene once served here as ambassador."},
          {id: "teoras", name: "Teoras, Teod", lat: 38.8, lon: -50.0, sea: true, books: [1], desc: "Capital of Teod, Sarene’s homeland, a forest-ringed port across the Sea of Fjorden. Its navy rules the sea."},
          {id: "roseempire", name: "The Imperial Seat (Rose Empire)", lat: 58.0, lon: -45.0, books: [7], desc: "Capital of the Rose Empire on the northern continent, built on seven hills with the Rose Palace on the centre one. Here Shai rebuilds the emperor’s soul in The Emperor’s Soul."},
-         {id: "mulladil", name: "Mulla’dil", lat: 51.0, lon: -52.0, books: [7], desc: "A mountainous province of the Rose Empire whose Strikers guard the passes to Teod."},
+         {id: "mulladil", name: "Mulla’dil", lat: 51.0, lon: -52.0, books: [7], desc: "A mountainous region of the Rose Empire whose people are known as Strikers."},
          {id: "dzhamar", name: "Dzhamar", lat: 52.5, lon: -64.0, books: [7], desc: "The swampy province of the Bloodsealers."},
-         {id: "maipon", name: "MaiPon", lat: 61.0, lon: -25.0, books: [7], desc: "Shai’s homeland and the heart of Forgery; its position in the empire is not given."},
+         {id: "maipon", name: "MaiPon", lat: 61.0, lon: -25.0, books: [7], desc: "Shai’s homeland and the heart of Forgery."},
          {id: "desert", name: "The southern desert", lat: -16.0, lon: -10.0, books: [1], desc: "A vast desert south of all the known nations of Opelon."}
        ]},
       {id: "ky", name: "Ky", aka: ["Kii"], group: "selish", books: [7], first: 7, status: "Gas giant · beyond the asteroid belt",
