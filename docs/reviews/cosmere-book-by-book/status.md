@@ -1,10 +1,10 @@
 stage: content-review
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT performs the finite MB02 e10 Well/power-release source unit: disposition arrival, relinquishment, release and deception separately; reconcile PR24/PR37/PR48 before any handoff, under the two-checkpoint cap.
-updated: 2026-11-17T06:23Z
+next-action: ChatGPT performs one finite MB03 e11 Fadrex/cache/siege source unit, separating primary text from commentary and reconciling PR24/PR37/PR48 before any implementation handoff; e10 primary-scene/mapping gaps deferred.
+updated: 2026-11-17T06:25Z
 idle-runs: 0
-note: K2-E9-01 accepted at PR48 c0a8f03668a273846750d0e66abc770e04dfb3cb; independent 480/480 tests, parent 479/480, 6/6 screenshots inspected. Builder browser smoke passed this run; intermittent line-88 issue not proven fixed. 3/5 prose units accepted; 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals.
+note: e9 accepted at PR48 c0a8f03; e10 retained at commentary/synopsis scope per key2-e10-disposition-2026-11-17.md (0/4 primary-scene checks). 3/5 prose corrections accepted + 1/5 no-change disposition; e11 pending. 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals; intermittent smoke issue not proven fixed.
 
 # Cosmere book-by-book review
 
@@ -111,3 +111,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T05:53Z Claude: [K2-E9-01 return](k2e9-return-c0a8f03.md). PR48 9b49a52 → c0a8f03668a273846750d0e66abc770e04dfb3cb: e9.text only (pack +1/−1) and payload/visibility tests extended. Focused 480/480 (parent 479/1); pnpm check 633/633 + check:dist 115; test:pages 12x2; test:browser pass (1st attempt, CHROME_PATH Chromium 1243); rendered 76/76 at 1440x900 + 390x844 (parent 60/16, all wording checks). PR24/PR37 untouched. fixing/claude → implementation-review/chatgpt; idle-runs 0.
 
 - 2026-11-17T06:23Z ChatGPT: [K2-E9-01 review](implementation-review-k2e9-c0a8f03.md) saved/read back at 2a65d455a0eef5ee6bf49cc5e21d53ba6c69829a. Exact PR48 c0a8f03668a273846750d0e66abc770e04dfb3cb: 2/2 incremental patches, 6/6 input blob hashes, whole pack equals parent after reversing only e9.text. Independent focused 480/480 vs parent 479/480 (one payload failure); 6/6 supplied images viewed; builder rendered 76/76 remains attributed, 0 reviewer browser runs. Builder smoke pass recorded without claiming intermittent :88 fixed. implementation-review/chatgpt → content-review/chatgpt for finite MB02 e10 source unit. 18/18 pack and 8/8 review statuses checked, no other eligible owned/stale self-audit; 3/5 prose units accepted, 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals. No app/PR edit, merge, deploy or release approval.
+
+- 2026-11-17T06:25Z ChatGPT: [e10 source disposition](key2-e10-disposition-2026-11-17.md) saved/read back at 348e3c9f2db15b1a193947c89ff58c6d29fe776a. Opened three author annotations and official MB03 synopsis; 4/4 broad clauses supported at commentary/synopsis scope, 0/4 primary MB02 ending checks. Retain existing restricted prose without code change; primary scene/earliest-reveal and site/mapping gaps deferred, not certified. PR24 cf25cda/PR37 03394c3 reconciled: identical e10 text, PR37 additionally has lm:pool, not imported/certified. content-review/chatgpt retained with next finite MB03 e11 unit. 3/5 prose corrections accepted + 1/5 no-change disposition, 4/5 finite dispositions, 1/5 pending; 2/7 mappings, 0/2 parent promotions, 0/33 full-work approvals. No full-novel reading, app/PR edit, merge, deploy or Mckay approval.
