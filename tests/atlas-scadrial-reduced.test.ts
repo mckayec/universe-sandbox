@@ -531,6 +531,10 @@ const E7_OLD =
    luthadel site and array position unchanged; no gate added; PR24/PR37 variants untouched. */
 const E9_TEXT = 'Elend Venture tries to govern Luthadel while three armies seek to conquer the city.';
 const E9_OLD = 'Elend Venture tries to rule a free city while three armies camp outside the walls.';
+/* K2-E11-01 (ChatGPT key2-e11-handoff-2026-11-17.md): e11 text-only participant/scope narrowing. Title, id, book,
+   world, fadrex site and array position unchanged; no gate added; PR24/PR37 variants untouched. */
+const E11_TEXT = 'Seeking a storage cache, Elend’s army besieges Fadrex.';
+const E11_OLD = 'Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.';
 const KEY2 = {
   e6: {
     id: 'e6',
@@ -572,7 +576,7 @@ const KEY2 = {
     world: 'scadrial',
     site: 'fadrex',
     title: 'Fadrex and the caches',
-    text: 'Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.',
+    text: E11_TEXT,
   },
   e12: {
     id: 'e12',
@@ -584,7 +588,7 @@ const KEY2 = {
   },
 };
 
-test('K2-E8-01 + K2-E7-01 + K2-E9-01 payload: only e7/e8/e9 text changed; e6/e10–e12 exact; order and ids kept; old wording gone', () => {
+test('K2-E8-01 + K2-E7-01 + K2-E9-01 + K2-E11-01 payload: only e7/e8/e9/e11 text changed; e6/e10/e12 exact; order and ids kept; old wording gone', () => {
   const { p } = setup({ mode: 'all' });
   const ids = p.events.map((e: any) => e.id);
   const i6 = ids.indexOf('e6');
@@ -598,9 +602,11 @@ test('K2-E8-01 + K2-E7-01 + K2-E9-01 payload: only e7/e8/e9 text changed; e6/e10
   assert.ok(!packSrc.includes('every Allomantic power'), 'no residual every-power wording');
   assert.ok(!packSrc.includes(E9_OLD), 'old e9 wording absent from pack');
   assert.ok(!packSrc.includes('camp outside the walls'), 'no residual camp-outside-the-walls wording');
+  assert.ok(!packSrc.includes(E11_OLD), 'old e11 wording absent from pack');
+  assert.ok(!packSrc.includes('as the world falls apart'), 'no residual world-falls-apart wording');
 });
 
-for (const ev of ['e7', 'e8', 'e9']) {
+for (const ev of ['e7', 'e8', 'e9', 'e11']) {
   test(`K2 text narrowing visibility: ${ev} shown only when the unchanged chain allows it; parents unchanged`, () => {
     const vis = (st: St) => {
       const { c, p } = setup(st);

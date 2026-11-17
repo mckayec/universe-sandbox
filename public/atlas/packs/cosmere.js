@@ -750,7 +750,7 @@
       {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", title: "The Lord Ruler falls", text: "The Lord Ruler is defeated and dies."},
       {id: "e9", book: 2, world: "scadrial", site: "luthadel", title: "Siege of Luthadel", text: "Elend Venture tries to govern Luthadel while three armies seek to conquer the city."},
       {id: "e10", book: 2, world: "scadrial", site: "well", title: "The Well of Ascension", text: "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."},
-      {id: "e11", book: 2, world: "scadrial", site: "fadrex", title: "Fadrex and the caches", text: "Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart."},
+      {id: "e11", book: 2, world: "scadrial", site: "fadrex", title: "Fadrex and the caches", text: "Seeking a storage cache, Elend’s army besieges Fadrex."},
       {id: "e12", book: 2, world: "scadrial", title: "The Hero of Ages", text: "Sazed ascends and remakes the world.", gate: {in: ["mistborn-the-hero-of-ages"], req: "mistborn-the-hero-of-ages"}},
       /* III Warbreaker */
       {id: "e13", book: 3, world: "nalthis", site: "courtofgods", title: "Siri’s marriage", text: "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."},
