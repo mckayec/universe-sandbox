@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements SH-D1–03 from secret-history-omission-handoff-2026-11-17.md on PR48, returning an exact head with payload, selector and desktop/phone evidence; then implementation-review/chatgpt.
-updated: 2026-11-17T00:23Z
+next-action: ChatGPT reviews SH-D1–03 at PR48 0b43f8ee562b232387e9342d00985c91df9663fb per sh-omission-return-0b43f8e.md; accept or return finite findings.
+updated: 2026-11-17T01:00Z
 idle-runs: 0
-note: Second MB09 checkpoint ended with 3/3 finite omission dispositions, 0/3 implemented here. Proposal probe 136/136 across 19 states; 5/5 input hashes and 6/6 older-branch comparisons. 3/3 preview observations retained, 0/2 missing witnesses obtained, 0/1 full Cognitive blurb certified. No new gates or parent promotion; broader MB09 research deferred with Known gaps.
+note: SH-D1–03 implemented on PR48 at 0b43f8e (pack +3/−3, tests +59/−1). pnpm check 629/629, focused 476/476 (parent 430/476), test:pages 12x2, rendered 86/86 at 1440 and 390 (parent 52/86). test:browser fails at browser-smoke.mjs:88 (Save/Load wait; repair in PR47). Not merged; holds unchanged; 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -87,3 +87,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 
 - 2026-11-17T00:23Z ChatGPT: bounded second Secret History checkpoint concluded. Saved/read back [finite omission handoff](secret-history-omission-handoff-2026-11-17.md) at f701e103adb32d4bdcdb98a81c997fe112d4a7b8 after [proposal probe](secret-history-omission-probe-2026-11-17.mjs) 09ddcb476cbb6d49a91c67a38f74a0a7206eee49 and [output](secret-history-omission-output-2026-11-17.json) d31dc01a45b0551337fa767962b3cd1fea6732aa. PR48 f793e1142ec1eb550507c29e2da1b2809e17312c, PR24 cf25cda and PR37 03394c3 re-read unchanged; 5/5 input hashes, 6/6 target comparisons. 136/136 in-memory proposal assertions across 19 reading states; actual loop records 1/1 omitted name, 6/6 other label requests and 7/7 glow requests preserved. 0 independent rendered cases. Fresh preview retains 3/3 scene observations; Google Books/Kobo routes do not supply the 2 missing witnesses, 0/1 full blurb certified. SH-D1 omit world-specific Cognitive bundle, SH-D2 omit only separate name, SH-D3 neutral global unknown copy; no new gate, 0/3 changes implemented here. Broader MB09 research deferred under two-checkpoint cap; global Cognitive text/style/threshold and prior holds remain explicit. content-review/chatgpt -> fixing/claude for this finite implementation. 18/18 pack and 8/8 review statuses checked; no eligible stale parallel self-audit. Accepted MB05/MB10 returns and CBR closures preserved; 0/2 parent promotions, 0/33 full-work approvals. No app/PR-branch edit, merge, deploy or Mckay release approval.
+- 2026-11-17T01:00Z Claude: implemented SH-D1–03 on PR48 at 0b43f8ee562b232387e9342d00985c91df9663fb (parent f793e11): Scadrial world Cognitive bundle omitted (`realms: {}`), Scadrial subastral `name` only removed, neutral global `unknown` text. Tests: payload expectations updated, CBR-04 gate regressions moved to a labelled fixture bundle, new 38-state SH matrix. passed: pnpm check 629/629, focused 476/476 (parent pack 430/46 fail), test:pages 12x2, rendered [probe](sh-omission-probe.mjs) 86/86 at 1440x900 + 390x844 incl. descended surface uniforms = generic look and galaxy labels (parent 52/34 fail). failed: test:browser browser-smoke.mjs:88 (Save/Load wait). See [sh-omission-return-0b43f8e.md](sh-omission-return-0b43f8e.md). fixing/claude → implementation-review/chatgpt. Not merged.
