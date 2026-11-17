@@ -774,7 +774,7 @@
       {id: "e28", book: 6, world: "scadrial", site: "newseran", title: "The Bands of Mourning", text: "Wax’s crew chases a legendary relic and finds proof of other peoples beyond the sea."},
       {id: "e29", book: 6, world: "scadrial", site: "southcontinent", title: "News from the south", text: "The southern Scadrians are real, and ahead of the Basin in some technologies."},
       /* VII Arcanum Unbounded */
-      {id: "e30", book: 7, world: "sel", site: "roseempire", title: "The Emperor’s Soul", text: "A condemned Forger is given a hundred days to rebuild the soul of a dying emperor."},
+      {id: "e30", book: 7, world: "sel", site: "roseempire", title: "The Emperor’s Soul", text: "A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank."},
       {id: "e31", book: 7, world: "firstsun", site: "patji", title: "Sixth of the Dusk", text: "Dusk the trapper meets Vathi, a scholar who has seen the ships of the Ones Above."},
       {id: "e32", book: 7, world: "threnody", site: "waystop", title: "Shadows for Silence", text: "Silence goes after a dangerous bounty in the Forests of Hell with her daughter."},
       {id: "e33", book: 7, world: "taldain", site: "kerla", title: "White Sand", text: "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."},
