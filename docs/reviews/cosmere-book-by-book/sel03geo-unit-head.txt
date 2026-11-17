@@ -1,0 +1,2920 @@
+TAP version 13
+# Subtest: CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+ok 1 - CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+  ---
+  duration_ms: 11.836465
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+ok 2 - CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+  ---
+  duration_ms: 3.804226
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+ok 3 - CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+  ---
+  duration_ms: 2.730503
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+ok 4 - CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+  ---
+  duration_ms: 2.716378
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+ok 5 - CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+  ---
+  duration_ms: 4.14981
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: All ignores the per-work field gate
+ok 6 - CBR-04 realmCard + realmLook: All ignores the per-work field gate
+  ---
+  duration_ms: 6.349255
+  type: 'test'
+  ...
+# Subtest: CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+ok 7 - CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+  ---
+  duration_ms: 3.25728
+  type: 'test'
+  ...
+# Subtest: CBR-04: applyRd re-applies the realm look to the open planet before refresh
+ok 8 - CBR-04: applyRd re-applies the realm look to the open planet before refresh
+  ---
+  duration_ms: 0.297928
+  type: 'test'
+  ...
+# Subtest: payload: removed claims are gone from base and every era override; no record gate or threshold change
+ok 9 - payload: removed claims are gone from base and every era override; no record gate or threshold change
+  ---
+  duration_ms: 11.323304
+  type: 'test'
+  ...
+# Subtest: per-work none selected: parent stays held unless all three are read; reduced copy only
+ok 10 - per-work none selected: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 5.965365
+  type: 'test'
+  ...
+# Subtest: per-work MB01: parent stays held unless all three are read; reduced copy only
+ok 11 - per-work MB01: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.340296
+  type: 'test'
+  ...
+# Subtest: per-work MB02: parent stays held unless all three are read; reduced copy only
+ok 12 - per-work MB02: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 8.474364
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB02: parent stays held unless all three are read; reduced copy only
+ok 13 - per-work MB01+MB02: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.557884
+  type: 'test'
+  ...
+# Subtest: per-work MB03: parent stays held unless all three are read; reduced copy only
+ok 14 - per-work MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 3.839238
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB03: parent stays held unless all three are read; reduced copy only
+ok 15 - per-work MB01+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.294921
+  type: 'test'
+  ...
+# Subtest: per-work MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 16 - per-work MB02+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 7.240956
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 17 - per-work MB01+MB02+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.194053
+  type: 'test'
+  ...
+# Subtest: per-work later-era-only (bucket 6 works without the original trilogy): parent and children stay hidden
+ok 18 - per-work later-era-only (bucket 6 works without the original trilogy): parent and children stay hidden
+  ---
+  duration_ms: 4.420081
+  type: 'test'
+  ...
+# Subtest: per-work OT + bucket 6: era-6 status/facts appear only through the MB01 facts gate and stay reduced
+ok 19 - per-work OT + bucket 6: era-6 status/facts appear only through the MB01 facts gate and stay reduced
+  ---
+  duration_ms: 4.149555
+  type: 'test'
+  ...
+# Subtest: descendants (sites, events) cannot bypass the held parent
+ok 20 - descendants (sites, events) cannot bypass the held parent
+  ---
+  duration_ms: 44.613956
+  type: 'test'
+  ...
+# Subtest: legacy \#book=2: numeric rule unchanged, reduced payload shown
+ok 21 - legacy \#book=2: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 3.668679
+  type: 'test'
+  ...
+# Subtest: legacy \#book=6: numeric rule unchanged, reduced payload shown
+ok 22 - legacy \#book=6: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 3.47463
+  type: 'test'
+  ...
+# Subtest: legacy \#book=10: numeric rule unchanged, reduced payload shown
+ok 23 - legacy \#book=10: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 3.605538
+  type: 'test'
+  ...
+# Subtest: All: reduced payload in the base → latest-era status and the era facts
+ok 24 - All: reduced payload in the base → latest-era status and the era facts
+  ---
+  duration_ms: 4.011144
+  type: 'test'
+  ...
+# Subtest: model note obeys a present gates.model (fixture) and an invalid one fails closed
+ok 25 - model note obeys a present gates.model (fixture) and an invalid one fails closed
+  ---
+  duration_ms: 11.2183
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: original trilogy read / physical: Scadrial Distance row is the exact qualifier
+ok 26 - SCR-01 set: original trilogy read / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 4.141027
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: original trilogy read / cognitive: Scadrial Distance row is the exact qualifier
+ok 27 - SCR-01 set: original trilogy read / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 4.443595
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: nothing read / physical: Scadrial Distance row is the exact qualifier
+ok 28 - SCR-01 set: nothing read / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 7.328094
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: nothing read / cognitive: Scadrial Distance row is the exact qualifier
+ok 29 - SCR-01 set: nothing read / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.627182
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=2 / physical: Scadrial Distance row is the exact qualifier
+ok 30 - SCR-01 legacy \#book=2 / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.473087
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=2 / cognitive: Scadrial Distance row is the exact qualifier
+ok 31 - SCR-01 legacy \#book=2 / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 3.208663
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=6 / physical: Scadrial Distance row is the exact qualifier
+ok 32 - SCR-01 legacy \#book=6 / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 12.044936
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=6 / cognitive: Scadrial Distance row is the exact qualifier
+ok 33 - SCR-01 legacy \#book=6 / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 3.290199
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=10 / physical: Scadrial Distance row is the exact qualifier
+ok 34 - SCR-01 legacy \#book=10 / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 3.320842
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=10 / cognitive: Scadrial Distance row is the exact qualifier
+ok 35 - SCR-01 legacy \#book=10 / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 3.51551
+  type: 'test'
+  ...
+# Subtest: SCR-01 All / physical: Scadrial Distance row is the exact qualifier
+ok 36 - SCR-01 All / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 3.610623
+  type: 'test'
+  ...
+# Subtest: SCR-01 All / cognitive: Scadrial Distance row is the exact qualifier
+ok 37 - SCR-01 All / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 3.364344
+  type: 'test'
+  ...
+# Subtest: SCR-01 scope: only Scadrial changed; ORR constant and other Scadrial-system records keep their distText
+ok 38 - SCR-01 scope: only Scadrial changed; ORR constant and other Scadrial-system records keep their distText
+  ---
+  duration_ms: 3.675259
+  type: 'test'
+  ...
+# Subtest: MB05 payload: exact three fields and three own gates; no record gate; era 10 and gfx preserved
+ok 39 - MB05 payload: exact three fields and three own gates; no record gate; era 10 and gfx preserved
+  ---
+  duration_ms: 4.5331
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B60 / physical: era-6 fields only with every ancestor
+ok 40 - MB05 per-work OT0 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.6988
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B60 / cognitive: era-6 fields only with every ancestor
+ok 41 - MB05 per-work OT0 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.970355
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B61 / physical: era-6 fields only with every ancestor
+ok 42 - MB05 per-work OT0 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.825497
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B61 / cognitive: era-6 fields only with every ancestor
+ok 43 - MB05 per-work OT0 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.02234
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B62 / physical: era-6 fields only with every ancestor
+ok 44 - MB05 per-work OT0 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.016527
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B62 / cognitive: era-6 fields only with every ancestor
+ok 45 - MB05 per-work OT0 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.138899
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B63 / physical: era-6 fields only with every ancestor
+ok 46 - MB05 per-work OT0 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.133737
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B63 / cognitive: era-6 fields only with every ancestor
+ok 47 - MB05 per-work OT0 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.112068
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B64 / physical: era-6 fields only with every ancestor
+ok 48 - MB05 per-work OT0 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.070781
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B64 / cognitive: era-6 fields only with every ancestor
+ok 49 - MB05 per-work OT0 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.256104
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B65 / physical: era-6 fields only with every ancestor
+ok 50 - MB05 per-work OT0 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.115243
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B65 / cognitive: era-6 fields only with every ancestor
+ok 51 - MB05 per-work OT0 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.877201
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B66 / physical: era-6 fields only with every ancestor
+ok 52 - MB05 per-work OT0 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.697957
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B66 / cognitive: era-6 fields only with every ancestor
+ok 53 - MB05 per-work OT0 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.123308
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B67 / physical: era-6 fields only with every ancestor
+ok 54 - MB05 per-work OT0 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.106622
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B67 / cognitive: era-6 fields only with every ancestor
+ok 55 - MB05 per-work OT0 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 14.245656
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B60 / physical: era-6 fields only with every ancestor
+ok 56 - MB05 per-work OT1 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.932817
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B60 / cognitive: era-6 fields only with every ancestor
+ok 57 - MB05 per-work OT1 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.795768
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B61 / physical: era-6 fields only with every ancestor
+ok 58 - MB05 per-work OT1 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.272501
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B61 / cognitive: era-6 fields only with every ancestor
+ok 59 - MB05 per-work OT1 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.92885
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B62 / physical: era-6 fields only with every ancestor
+ok 60 - MB05 per-work OT1 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.750717
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B62 / cognitive: era-6 fields only with every ancestor
+ok 61 - MB05 per-work OT1 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.624607
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B63 / physical: era-6 fields only with every ancestor
+ok 62 - MB05 per-work OT1 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.999024
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B63 / cognitive: era-6 fields only with every ancestor
+ok 63 - MB05 per-work OT1 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.825899
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B64 / physical: era-6 fields only with every ancestor
+ok 64 - MB05 per-work OT1 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.810197
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B64 / cognitive: era-6 fields only with every ancestor
+ok 65 - MB05 per-work OT1 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.877307
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B65 / physical: era-6 fields only with every ancestor
+ok 66 - MB05 per-work OT1 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 15.520417
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B65 / cognitive: era-6 fields only with every ancestor
+ok 67 - MB05 per-work OT1 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.973111
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B66 / physical: era-6 fields only with every ancestor
+ok 68 - MB05 per-work OT1 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.982785
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B66 / cognitive: era-6 fields only with every ancestor
+ok 69 - MB05 per-work OT1 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.670975
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B67 / physical: era-6 fields only with every ancestor
+ok 70 - MB05 per-work OT1 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.552708
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B67 / cognitive: era-6 fields only with every ancestor
+ok 71 - MB05 per-work OT1 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.690908
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B60 / physical: era-6 fields only with every ancestor
+ok 72 - MB05 per-work OT2 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.792815
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B60 / cognitive: era-6 fields only with every ancestor
+ok 73 - MB05 per-work OT2 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.677864
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B61 / physical: era-6 fields only with every ancestor
+ok 74 - MB05 per-work OT2 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.689636
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B61 / cognitive: era-6 fields only with every ancestor
+ok 75 - MB05 per-work OT2 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.738479
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B62 / physical: era-6 fields only with every ancestor
+ok 76 - MB05 per-work OT2 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.775953
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B62 / cognitive: era-6 fields only with every ancestor
+ok 77 - MB05 per-work OT2 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.759355
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B63 / physical: era-6 fields only with every ancestor
+ok 78 - MB05 per-work OT2 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.657089
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B63 / cognitive: era-6 fields only with every ancestor
+ok 79 - MB05 per-work OT2 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.871556
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B64 / physical: era-6 fields only with every ancestor
+ok 80 - MB05 per-work OT2 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.718028
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B64 / cognitive: era-6 fields only with every ancestor
+ok 81 - MB05 per-work OT2 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.683627
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B65 / physical: era-6 fields only with every ancestor
+ok 82 - MB05 per-work OT2 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.653763
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B65 / cognitive: era-6 fields only with every ancestor
+ok 83 - MB05 per-work OT2 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.659687
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B66 / physical: era-6 fields only with every ancestor
+ok 84 - MB05 per-work OT2 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 15.937474
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B66 / cognitive: era-6 fields only with every ancestor
+ok 85 - MB05 per-work OT2 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.876687
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B67 / physical: era-6 fields only with every ancestor
+ok 86 - MB05 per-work OT2 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.708918
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B67 / cognitive: era-6 fields only with every ancestor
+ok 87 - MB05 per-work OT2 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.672075
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B60 / physical: era-6 fields only with every ancestor
+ok 88 - MB05 per-work OT3 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.721485
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B60 / cognitive: era-6 fields only with every ancestor
+ok 89 - MB05 per-work OT3 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.639626
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B61 / physical: era-6 fields only with every ancestor
+ok 90 - MB05 per-work OT3 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.69481
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B61 / cognitive: era-6 fields only with every ancestor
+ok 91 - MB05 per-work OT3 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.680789
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B62 / physical: era-6 fields only with every ancestor
+ok 92 - MB05 per-work OT3 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.645324
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B62 / cognitive: era-6 fields only with every ancestor
+ok 93 - MB05 per-work OT3 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.662299
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B63 / physical: era-6 fields only with every ancestor
+ok 94 - MB05 per-work OT3 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.611064
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B63 / cognitive: era-6 fields only with every ancestor
+ok 95 - MB05 per-work OT3 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.680091
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B64 / physical: era-6 fields only with every ancestor
+ok 96 - MB05 per-work OT3 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.771614
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B64 / cognitive: era-6 fields only with every ancestor
+ok 97 - MB05 per-work OT3 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 17.460819
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B65 / physical: era-6 fields only with every ancestor
+ok 98 - MB05 per-work OT3 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.846276
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B65 / cognitive: era-6 fields only with every ancestor
+ok 99 - MB05 per-work OT3 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.743438
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B66 / physical: era-6 fields only with every ancestor
+ok 100 - MB05 per-work OT3 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.076919
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B66 / cognitive: era-6 fields only with every ancestor
+ok 101 - MB05 per-work OT3 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.808613
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B67 / physical: era-6 fields only with every ancestor
+ok 102 - MB05 per-work OT3 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 18.089776
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B67 / cognitive: era-6 fields only with every ancestor
+ok 103 - MB05 per-work OT3 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 8.247647
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B60 / physical: era-6 fields only with every ancestor
+ok 104 - MB05 per-work OT4 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 8.74528
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B60 / cognitive: era-6 fields only with every ancestor
+ok 105 - MB05 per-work OT4 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 8.747367
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B61 / physical: era-6 fields only with every ancestor
+ok 106 - MB05 per-work OT4 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 7.421933
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B61 / cognitive: era-6 fields only with every ancestor
+ok 107 - MB05 per-work OT4 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 12.794375
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B62 / physical: era-6 fields only with every ancestor
+ok 108 - MB05 per-work OT4 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 18.421845
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B62 / cognitive: era-6 fields only with every ancestor
+ok 109 - MB05 per-work OT4 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.823315
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B63 / physical: era-6 fields only with every ancestor
+ok 110 - MB05 per-work OT4 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.12219
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B63 / cognitive: era-6 fields only with every ancestor
+ok 111 - MB05 per-work OT4 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.069066
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B64 / physical: era-6 fields only with every ancestor
+ok 112 - MB05 per-work OT4 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.006074
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B64 / cognitive: era-6 fields only with every ancestor
+ok 113 - MB05 per-work OT4 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.940948
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B65 / physical: era-6 fields only with every ancestor
+ok 114 - MB05 per-work OT4 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.868243
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B65 / cognitive: era-6 fields only with every ancestor
+ok 115 - MB05 per-work OT4 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.92012
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B66 / physical: era-6 fields only with every ancestor
+ok 116 - MB05 per-work OT4 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.757624
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B66 / cognitive: era-6 fields only with every ancestor
+ok 117 - MB05 per-work OT4 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.713158
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B67 / physical: era-6 fields only with every ancestor
+ok 118 - MB05 per-work OT4 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.75408
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B67 / cognitive: era-6 fields only with every ancestor
+ok 119 - MB05 per-work OT4 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.702885
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B60 / physical: era-6 fields only with every ancestor
+ok 120 - MB05 per-work OT5 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.703808
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B60 / cognitive: era-6 fields only with every ancestor
+ok 121 - MB05 per-work OT5 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.701796
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B61 / physical: era-6 fields only with every ancestor
+ok 122 - MB05 per-work OT5 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.746695
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B61 / cognitive: era-6 fields only with every ancestor
+ok 123 - MB05 per-work OT5 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.676991
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B62 / physical: era-6 fields only with every ancestor
+ok 124 - MB05 per-work OT5 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.729875
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B62 / cognitive: era-6 fields only with every ancestor
+ok 125 - MB05 per-work OT5 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.688172
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B63 / physical: era-6 fields only with every ancestor
+ok 126 - MB05 per-work OT5 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.876822
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B63 / cognitive: era-6 fields only with every ancestor
+ok 127 - MB05 per-work OT5 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.712317
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B64 / physical: era-6 fields only with every ancestor
+ok 128 - MB05 per-work OT5 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.772361
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B64 / cognitive: era-6 fields only with every ancestor
+ok 129 - MB05 per-work OT5 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.794767
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B65 / physical: era-6 fields only with every ancestor
+ok 130 - MB05 per-work OT5 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.63308
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B65 / cognitive: era-6 fields only with every ancestor
+ok 131 - MB05 per-work OT5 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.745414
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B66 / physical: era-6 fields only with every ancestor
+ok 132 - MB05 per-work OT5 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.805096
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B66 / cognitive: era-6 fields only with every ancestor
+ok 133 - MB05 per-work OT5 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.803344
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B67 / physical: era-6 fields only with every ancestor
+ok 134 - MB05 per-work OT5 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 12.666417
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B67 / cognitive: era-6 fields only with every ancestor
+ok 135 - MB05 per-work OT5 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.859094
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B60 / physical: era-6 fields only with every ancestor
+ok 136 - MB05 per-work OT6 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.764184
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B60 / cognitive: era-6 fields only with every ancestor
+ok 137 - MB05 per-work OT6 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.875918
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B61 / physical: era-6 fields only with every ancestor
+ok 138 - MB05 per-work OT6 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.80352
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B61 / cognitive: era-6 fields only with every ancestor
+ok 139 - MB05 per-work OT6 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.900925
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B62 / physical: era-6 fields only with every ancestor
+ok 140 - MB05 per-work OT6 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.773682
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B62 / cognitive: era-6 fields only with every ancestor
+ok 141 - MB05 per-work OT6 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.108251
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B63 / physical: era-6 fields only with every ancestor
+ok 142 - MB05 per-work OT6 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 16.271861
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B63 / cognitive: era-6 fields only with every ancestor
+ok 143 - MB05 per-work OT6 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.758862
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B64 / physical: era-6 fields only with every ancestor
+ok 144 - MB05 per-work OT6 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.679726
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B64 / cognitive: era-6 fields only with every ancestor
+ok 145 - MB05 per-work OT6 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.558975
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B65 / physical: era-6 fields only with every ancestor
+ok 146 - MB05 per-work OT6 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.482748
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B65 / cognitive: era-6 fields only with every ancestor
+ok 147 - MB05 per-work OT6 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.567545
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B66 / physical: era-6 fields only with every ancestor
+ok 148 - MB05 per-work OT6 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.448042
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B66 / cognitive: era-6 fields only with every ancestor
+ok 149 - MB05 per-work OT6 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.495787
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B67 / physical: era-6 fields only with every ancestor
+ok 150 - MB05 per-work OT6 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.465805
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B67 / cognitive: era-6 fields only with every ancestor
+ok 151 - MB05 per-work OT6 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.49012
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B60 / physical: era-6 fields only with every ancestor
+ok 152 - MB05 per-work OT7 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.532341
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B60 / cognitive: era-6 fields only with every ancestor
+ok 153 - MB05 per-work OT7 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.611873
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B61 / physical: era-6 fields only with every ancestor
+ok 154 - MB05 per-work OT7 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.572721
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B61 / cognitive: era-6 fields only with every ancestor
+ok 155 - MB05 per-work OT7 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.526693
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B62 / physical: era-6 fields only with every ancestor
+ok 156 - MB05 per-work OT7 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.442538
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B62 / cognitive: era-6 fields only with every ancestor
+ok 157 - MB05 per-work OT7 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.576766
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B63 / physical: era-6 fields only with every ancestor
+ok 158 - MB05 per-work OT7 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.500852
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B63 / cognitive: era-6 fields only with every ancestor
+ok 159 - MB05 per-work OT7 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.568163
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B64 / physical: era-6 fields only with every ancestor
+ok 160 - MB05 per-work OT7 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.531808
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B64 / cognitive: era-6 fields only with every ancestor
+ok 161 - MB05 per-work OT7 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.480243
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B65 / physical: era-6 fields only with every ancestor
+ok 162 - MB05 per-work OT7 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.575862
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B65 / cognitive: era-6 fields only with every ancestor
+ok 163 - MB05 per-work OT7 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 13.972612
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B66 / physical: era-6 fields only with every ancestor
+ok 164 - MB05 per-work OT7 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.646497
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B66 / cognitive: era-6 fields only with every ancestor
+ok 165 - MB05 per-work OT7 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.642596
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B67 / physical: era-6 fields only with every ancestor
+ok 166 - MB05 per-work OT7 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.635851
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B67 / cognitive: era-6 fields only with every ancestor
+ok 167 - MB05 per-work OT7 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.621401
+  type: 'test'
+  ...
+# Subtest: MB05 legacy \#book=2: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 168 - MB05 legacy \#book=2: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 2.592901
+  type: 'test'
+  ...
+# Subtest: MB05 legacy \#book=6: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 169 - MB05 legacy \#book=6: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 2.540466
+  type: 'test'
+  ...
+# Subtest: MB05 legacy \#book=10: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 170 - MB05 legacy \#book=10: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 2.586519
+  type: 'test'
+  ...
+# Subtest: MB05 All: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 171 - MB05 All: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 2.688086
+  type: 'test'
+  ...
+# Subtest: MB05 field gates fail closed: an invalid or unmet era-6 field gate keeps the earlier value
+ok 172 - MB05 field gates fail closed: an invalid or unmet era-6 field gate keeps the earlier value
+  ---
+  duration_ms: 5.03801
+  type: 'test'
+  ...
+# Subtest: MB10 payload: one nested field and one own gate; no record gate; era 6, distText and model preserved
+ok 173 - MB10 payload: one nested field and one own gate; no record gate; era 6, distText and model preserved
+  ---
+  duration_ms: 2.954743
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 174 - MB10 per-work OT0 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 16.734436
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 175 - MB10 per-work OT0 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.034192
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 176 - MB10 per-work OT0 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.023659
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 177 - MB10 per-work OT0 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.027502
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 178 - MB10 per-work OT0 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.918095
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 179 - MB10 per-work OT0 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.877806
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 180 - MB10 per-work OT0 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.323974
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 181 - MB10 per-work OT0 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.805771
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 182 - MB10 per-work OT0 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.872715
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 183 - MB10 per-work OT0 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 15.696816
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 184 - MB10 per-work OT0 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.220039
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 185 - MB10 per-work OT0 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.910418
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 186 - MB10 per-work OT0 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.816481
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 187 - MB10 per-work OT0 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.808182
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 188 - MB10 per-work OT0 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.858288
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 189 - MB10 per-work OT0 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.823709
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 190 - MB10 per-work OT0 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 14.91041
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 191 - MB10 per-work OT0 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.710539
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 192 - MB10 per-work OT0 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.330648
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 193 - MB10 per-work OT0 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.979534
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 194 - MB10 per-work OT0 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.89945
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 195 - MB10 per-work OT0 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.054472
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 196 - MB10 per-work OT0 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.861947
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 197 - MB10 per-work OT0 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.863328
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 198 - MB10 per-work OT0 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 14.640698
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 199 - MB10 per-work OT0 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.192579
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 200 - MB10 per-work OT0 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.237964
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 201 - MB10 per-work OT0 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.292238
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 202 - MB10 per-work OT0 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.034014
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 203 - MB10 per-work OT0 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.325408
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 204 - MB10 per-work OT0 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.268522
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 205 - MB10 per-work OT0 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.521211
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 206 - MB10 per-work OT1 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.864228
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 207 - MB10 per-work OT1 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.394671
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 208 - MB10 per-work OT1 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.276912
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 209 - MB10 per-work OT1 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.839892
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 210 - MB10 per-work OT1 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.865738
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 211 - MB10 per-work OT1 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.860851
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 212 - MB10 per-work OT1 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.709773
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 213 - MB10 per-work OT1 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.260788
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 214 - MB10 per-work OT1 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 16.750267
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 215 - MB10 per-work OT1 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.698929
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 216 - MB10 per-work OT1 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.810167
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 217 - MB10 per-work OT1 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.721203
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 218 - MB10 per-work OT1 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.17814
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 219 - MB10 per-work OT1 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.846656
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 220 - MB10 per-work OT1 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.832911
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 221 - MB10 per-work OT1 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 15.72648
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 222 - MB10 per-work OT1 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.184564
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 223 - MB10 per-work OT1 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.576572
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 224 - MB10 per-work OT1 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.454077
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 225 - MB10 per-work OT1 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.844887
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 226 - MB10 per-work OT1 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.854052
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 227 - MB10 per-work OT1 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.943026
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 228 - MB10 per-work OT1 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.461733
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 229 - MB10 per-work OT1 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 18.961436
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 230 - MB10 per-work OT1 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.941834
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 231 - MB10 per-work OT1 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.133155
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 232 - MB10 per-work OT1 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.982526
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 233 - MB10 per-work OT1 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.207201
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 234 - MB10 per-work OT1 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.822205
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 235 - MB10 per-work OT1 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.419387
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 236 - MB10 per-work OT1 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.719656
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 237 - MB10 per-work OT1 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 18.093436
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 238 - MB10 per-work OT2 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.948069
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 239 - MB10 per-work OT2 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.00279
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 240 - MB10 per-work OT2 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.290015
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 241 - MB10 per-work OT2 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.797582
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 242 - MB10 per-work OT2 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.89768
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 243 - MB10 per-work OT2 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.274098
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 244 - MB10 per-work OT2 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.611096
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 245 - MB10 per-work OT2 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 18.135438
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 246 - MB10 per-work OT2 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.659972
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 247 - MB10 per-work OT2 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.866296
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 248 - MB10 per-work OT2 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.097325
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 249 - MB10 per-work OT2 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.258191
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 250 - MB10 per-work OT2 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.519324
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 251 - MB10 per-work OT2 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.001961
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 252 - MB10 per-work OT2 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.891102
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 253 - MB10 per-work OT2 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 18.593253
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 254 - MB10 per-work OT2 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.32502
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 255 - MB10 per-work OT2 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.813167
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 256 - MB10 per-work OT2 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.39158
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 257 - MB10 per-work OT2 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.907357
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 258 - MB10 per-work OT2 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.853641
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 259 - MB10 per-work OT2 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.901485
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 260 - MB10 per-work OT2 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.286163
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 261 - MB10 per-work OT2 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 18.949427
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 262 - MB10 per-work OT2 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.286213
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 263 - MB10 per-work OT2 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.646254
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 264 - MB10 per-work OT2 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.779839
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 265 - MB10 per-work OT2 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.389988
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 266 - MB10 per-work OT2 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.017592
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 267 - MB10 per-work OT2 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.197428
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 268 - MB10 per-work OT2 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 19.623386
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 269 - MB10 per-work OT2 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.565388
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 270 - MB10 per-work OT3 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.505495
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 271 - MB10 per-work OT3 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.092482
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 272 - MB10 per-work OT3 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.993088
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 273 - MB10 per-work OT3 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.879414
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 274 - MB10 per-work OT3 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.801604
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 275 - MB10 per-work OT3 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.248526
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 276 - MB10 per-work OT3 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 24.091585
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 277 - MB10 per-work OT3 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.536995
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 278 - MB10 per-work OT3 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.738782
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 279 - MB10 per-work OT3 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.421399
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 280 - MB10 per-work OT3 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.259135
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 281 - MB10 per-work OT3 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.291483
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 282 - MB10 per-work OT3 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.204625
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 283 - MB10 per-work OT3 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.290668
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 284 - MB10 per-work OT3 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 32.68201
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 285 - MB10 per-work OT3 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.279934
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 286 - MB10 per-work OT3 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 9.711967
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 287 - MB10 per-work OT3 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.732787
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 288 - MB10 per-work OT3 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 9.178302
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 289 - MB10 per-work OT3 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.177604
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 290 - MB10 per-work OT3 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 9.714428
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 291 - MB10 per-work OT3 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.502786
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 292 - MB10 per-work OT3 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 36.853691
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 293 - MB10 per-work OT3 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.239289
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 294 - MB10 per-work OT3 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.991789
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 295 - MB10 per-work OT3 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.729387
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 296 - MB10 per-work OT3 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.938174
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 297 - MB10 per-work OT3 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.838688
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 298 - MB10 per-work OT3 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.643074
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 299 - MB10 per-work OT3 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.320808
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 300 - MB10 per-work OT3 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 56.866983
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 301 - MB10 per-work OT3 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.401267
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 302 - MB10 per-work OT4 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.299152
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 303 - MB10 per-work OT4 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.497397
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 304 - MB10 per-work OT4 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.116194
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 305 - MB10 per-work OT4 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.433713
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 306 - MB10 per-work OT4 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.321992
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 307 - MB10 per-work OT4 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.484706
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 308 - MB10 per-work OT4 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 40.508964
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 309 - MB10 per-work OT4 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 12.223815
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 310 - MB10 per-work OT4 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.184898
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 311 - MB10 per-work OT4 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 9.330807
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 312 - MB10 per-work OT4 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.200879
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 313 - MB10 per-work OT4 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.267473
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 314 - MB10 per-work OT4 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.261096
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 315 - MB10 per-work OT4 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 32.358621
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 316 - MB10 per-work OT4 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.28703
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 317 - MB10 per-work OT4 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.312493
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 318 - MB10 per-work OT4 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.299855
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 319 - MB10 per-work OT4 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.30613
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 320 - MB10 per-work OT4 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.592961
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 321 - MB10 per-work OT4 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.473863
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 322 - MB10 per-work OT4 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.390398
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 323 - MB10 per-work OT4 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 25.131126
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 324 - MB10 per-work OT4 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.209469
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 325 - MB10 per-work OT4 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.518145
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 326 - MB10 per-work OT4 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.715254
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 327 - MB10 per-work OT4 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 14.203438
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 328 - MB10 per-work OT4 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 21.639935
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 329 - MB10 per-work OT4 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.008092
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 330 - MB10 per-work OT4 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.902116
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 331 - MB10 per-work OT4 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.071076
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 332 - MB10 per-work OT4 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.892627
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 333 - MB10 per-work OT4 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.317503
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 334 - MB10 per-work OT5 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.164913
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 335 - MB10 per-work OT5 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.794443
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 336 - MB10 per-work OT5 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.930384
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 337 - MB10 per-work OT5 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.720552
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 338 - MB10 per-work OT5 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.125019
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 339 - MB10 per-work OT5 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.892117
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 340 - MB10 per-work OT5 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.115647
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 341 - MB10 per-work OT5 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 20.222778
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 342 - MB10 per-work OT5 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.917161
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 343 - MB10 per-work OT5 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.910825
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 344 - MB10 per-work OT5 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.947215
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 345 - MB10 per-work OT5 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 20.089795
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 346 - MB10 per-work OT5 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.331069
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 347 - MB10 per-work OT5 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.288016
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 348 - MB10 per-work OT5 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.128537
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 349 - MB10 per-work OT5 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.002894
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 350 - MB10 per-work OT5 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.987499
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 351 - MB10 per-work OT5 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.799834
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 352 - MB10 per-work OT5 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.98498
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 353 - MB10 per-work OT5 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.130119
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 354 - MB10 per-work OT5 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.532088
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 355 - MB10 per-work OT5 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.600482
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 356 - MB10 per-work OT5 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 17.059951
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 357 - MB10 per-work OT5 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.93329
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 358 - MB10 per-work OT5 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.770811
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 359 - MB10 per-work OT5 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.519653
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 360 - MB10 per-work OT5 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.447334
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 361 - MB10 per-work OT5 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.762828
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 362 - MB10 per-work OT5 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 16.390416
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 363 - MB10 per-work OT5 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.893227
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 364 - MB10 per-work OT5 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.535507
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 365 - MB10 per-work OT5 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.787035
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 366 - MB10 per-work OT6 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.778768
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 367 - MB10 per-work OT6 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.560811
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 368 - MB10 per-work OT6 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.544059
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 369 - MB10 per-work OT6 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.994435
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 370 - MB10 per-work OT6 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.281705
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 371 - MB10 per-work OT6 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 17.461129
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 372 - MB10 per-work OT6 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.740429
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 373 - MB10 per-work OT6 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.945949
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 374 - MB10 per-work OT6 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.859962
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 375 - MB10 per-work OT6 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.705668
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 376 - MB10 per-work OT6 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.811693
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 377 - MB10 per-work OT6 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.030009
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 378 - MB10 per-work OT6 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 21.007084
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 379 - MB10 per-work OT6 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.807078
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 380 - MB10 per-work OT6 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.760549
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 381 - MB10 per-work OT6 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.975837
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 382 - MB10 per-work OT6 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.125337
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 383 - MB10 per-work OT6 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.39556
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 384 - MB10 per-work OT6 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.668645
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 385 - MB10 per-work OT6 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.089077
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 386 - MB10 per-work OT6 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 23.428466
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 387 - MB10 per-work OT6 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.476027
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 388 - MB10 per-work OT6 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.49797
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 389 - MB10 per-work OT6 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.688317
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 390 - MB10 per-work OT6 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.831727
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 391 - MB10 per-work OT6 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.455936
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 392 - MB10 per-work OT6 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.495225
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 393 - MB10 per-work OT6 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.152326
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 394 - MB10 per-work OT6 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.308478
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 395 - MB10 per-work OT6 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.915472
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 396 - MB10 per-work OT6 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.819976
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 397 - MB10 per-work OT6 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.315427
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 398 - MB10 per-work OT7 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.91623
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 399 - MB10 per-work OT7 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.525784
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 400 - MB10 per-work OT7 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 13.465506
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 401 - MB10 per-work OT7 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.879663
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 402 - MB10 per-work OT7 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.73021
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 403 - MB10 per-work OT7 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.616679
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 404 - MB10 per-work OT7 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 14.355509
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 405 - MB10 per-work OT7 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.590101
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 406 - MB10 per-work OT7 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.491086
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 407 - MB10 per-work OT7 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.701268
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 408 - MB10 per-work OT7 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.490479
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 409 - MB10 per-work OT7 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.585912
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 410 - MB10 per-work OT7 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.600453
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 411 - MB10 per-work OT7 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.601166
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 412 - MB10 per-work OT7 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.582355
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 413 - MB10 per-work OT7 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.620325
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 414 - MB10 per-work OT7 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 12.849949
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 415 - MB10 per-work OT7 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.560869
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 416 - MB10 per-work OT7 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.52471
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 417 - MB10 per-work OT7 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.548729
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 418 - MB10 per-work OT7 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.50519
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 419 - MB10 per-work OT7 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.44515
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 420 - MB10 per-work OT7 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 14.666563
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 421 - MB10 per-work OT7 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.635504
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 422 - MB10 per-work OT7 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.450125
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 423 - MB10 per-work OT7 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.510867
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 424 - MB10 per-work OT7 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.441234
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 425 - MB10 per-work OT7 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.464563
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 426 - MB10 per-work OT7 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.159116
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 427 - MB10 per-work OT7 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.70762
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 428 - MB10 per-work OT7 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.615875
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 429 - MB10 per-work OT7 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 14.130459
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=2 / physical: status per numeric rule
+ok 430 - MB10 legacy \#book=2 / physical: status per numeric rule
+  ---
+  duration_ms: 2.509975
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=2 / cognitive: status per numeric rule
+ok 431 - MB10 legacy \#book=2 / cognitive: status per numeric rule
+  ---
+  duration_ms: 2.235755
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=6 / physical: status per numeric rule
+ok 432 - MB10 legacy \#book=6 / physical: status per numeric rule
+  ---
+  duration_ms: 2.320276
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=6 / cognitive: status per numeric rule
+ok 433 - MB10 legacy \#book=6 / cognitive: status per numeric rule
+  ---
+  duration_ms: 2.224717
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=10 / physical: status per numeric rule
+ok 434 - MB10 legacy \#book=10 / physical: status per numeric rule
+  ---
+  duration_ms: 2.166132
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=10 / cognitive: status per numeric rule
+ok 435 - MB10 legacy \#book=10 / cognitive: status per numeric rule
+  ---
+  duration_ms: 2.212757
+  type: 'test'
+  ...
+# Subtest: MB10 All / physical: status per numeric rule
+ok 436 - MB10 All / physical: status per numeric rule
+  ---
+  duration_ms: 2.51519
+  type: 'test'
+  ...
+# Subtest: MB10 All / cognitive: status per numeric rule
+ok 437 - MB10 All / cognitive: status per numeric rule
+  ---
+  duration_ms: 2.160599
+  type: 'test'
+  ...
+# Subtest: MB10 status gate fails closed: an invalid or unmet era-10 gate falls back to the earlier status
+ok 438 - MB10 status gate fails closed: an invalid or unmet era-10 gate falls back to the earlier status
+  ---
+  duration_ms: 8.997953
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 0/3 OT
+ok 439 - SH-D1–03: set 0/3 OT
+  ---
+  duration_ms: 2.503448
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 0/3 OT +B4
+ok 440 - SH-D1–03: set 0/3 OT +B4
+  ---
+  duration_ms: 12.53659
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 0/3 OT +SH
+ok 441 - SH-D1–03: set 0/3 OT +SH
+  ---
+  duration_ms: 2.254082
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 0/3 OT +SH +B4
+ok 442 - SH-D1–03: set 0/3 OT +SH +B4
+  ---
+  duration_ms: 2.21918
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT
+ok 443 - SH-D1–03: set 1/3 OT
+  ---
+  duration_ms: 2.215532
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +B4
+ok 444 - SH-D1–03: set 1/3 OT +B4
+  ---
+  duration_ms: 2.144579
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH
+ok 445 - SH-D1–03: set 1/3 OT +SH
+  ---
+  duration_ms: 2.192657
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH +B4
+ok 446 - SH-D1–03: set 1/3 OT +SH +B4
+  ---
+  duration_ms: 2.245611
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT
+ok 447 - SH-D1–03: set 1/3 OT
+  ---
+  duration_ms: 2.146887
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +B4
+ok 448 - SH-D1–03: set 1/3 OT +B4
+  ---
+  duration_ms: 2.199196
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH
+ok 449 - SH-D1–03: set 1/3 OT +SH
+  ---
+  duration_ms: 2.131189
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH +B4
+ok 450 - SH-D1–03: set 1/3 OT +SH +B4
+  ---
+  duration_ms: 2.254523
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT
+ok 451 - SH-D1–03: set 2/3 OT
+  ---
+  duration_ms: 2.210445
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +B4
+ok 452 - SH-D1–03: set 2/3 OT +B4
+  ---
+  duration_ms: 2.209301
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH
+ok 453 - SH-D1–03: set 2/3 OT +SH
+  ---
+  duration_ms: 2.126475
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH +B4
+ok 454 - SH-D1–03: set 2/3 OT +SH +B4
+  ---
+  duration_ms: 2.184976
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT
+ok 455 - SH-D1–03: set 1/3 OT
+  ---
+  duration_ms: 2.223086
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +B4
+ok 456 - SH-D1–03: set 1/3 OT +B4
+  ---
+  duration_ms: 2.153249
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH
+ok 457 - SH-D1–03: set 1/3 OT +SH
+  ---
+  duration_ms: 12.776044
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH +B4
+ok 458 - SH-D1–03: set 1/3 OT +SH +B4
+  ---
+  duration_ms: 9.688172
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT
+ok 459 - SH-D1–03: set 2/3 OT
+  ---
+  duration_ms: 2.399493
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +B4
+ok 460 - SH-D1–03: set 2/3 OT +B4
+  ---
+  duration_ms: 2.643086
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH
+ok 461 - SH-D1–03: set 2/3 OT +SH
+  ---
+  duration_ms: 2.533913
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH +B4
+ok 462 - SH-D1–03: set 2/3 OT +SH +B4
+  ---
+  duration_ms: 2.294269
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT
+ok 463 - SH-D1–03: set 2/3 OT
+  ---
+  duration_ms: 2.291376
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +B4
+ok 464 - SH-D1–03: set 2/3 OT +B4
+  ---
+  duration_ms: 2.247217
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH
+ok 465 - SH-D1–03: set 2/3 OT +SH
+  ---
+  duration_ms: 2.459766
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH +B4
+ok 466 - SH-D1–03: set 2/3 OT +SH +B4
+  ---
+  duration_ms: 2.36057
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 3/3 OT
+ok 467 - SH-D1–03: set 3/3 OT
+  ---
+  duration_ms: 2.226668
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 3/3 OT +B4
+ok 468 - SH-D1–03: set 3/3 OT +B4
+  ---
+  duration_ms: 2.226246
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 3/3 OT +SH
+ok 469 - SH-D1–03: set 3/3 OT +SH
+  ---
+  duration_ms: 2.205194
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 3/3 OT +SH +B4
+ok 470 - SH-D1–03: set 3/3 OT +SH +B4
+  ---
+  duration_ms: 2.285246
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set later-era only (B6 + TLM)
+ok 471 - SH-D1–03: set later-era only (B6 + TLM)
+  ---
+  duration_ms: 2.186787
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: legacy 2
+ok 472 - SH-D1–03: legacy 2
+  ---
+  duration_ms: 2.19212
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: legacy 4
+ok 473 - SH-D1–03: legacy 4
+  ---
+  duration_ms: 2.224071
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: legacy 7
+ok 474 - SH-D1–03: legacy 7
+  ---
+  duration_ms: 2.186121
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: legacy 10
+ok 475 - SH-D1–03: legacy 10
+  ---
+  duration_ms: 2.191914
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: All
+ok 476 - SH-D1–03: All
+  ---
+  duration_ms: 2.157038
+  type: 'test'
+  ...
+# Subtest: K2-E8-01 + K2-E7-01 + K2-E9-01 + K2-E11-01 payload: only e7/e8/e9/e11 text changed; e6/e10/e12 exact; order and ids kept; old wording gone
+ok 477 - K2-E8-01 + K2-E7-01 + K2-E9-01 + K2-E11-01 payload: only e7/e8/e9/e11 text changed; e6/e10/e12 exact; order and ids kept; old wording gone
+  ---
+  duration_ms: 2.882303
+  type: 'test'
+  ...
+# Subtest: K2 text narrowing visibility: e7 shown only when the unchanged chain allows it; parents unchanged
+ok 478 - K2 text narrowing visibility: e7 shown only when the unchanged chain allows it; parents unchanged
+  ---
+  duration_ms: 29.823009
+  type: 'test'
+  ...
+# Subtest: K2 text narrowing visibility: e8 shown only when the unchanged chain allows it; parents unchanged
+ok 479 - K2 text narrowing visibility: e8 shown only when the unchanged chain allows it; parents unchanged
+  ---
+  duration_ms: 28.366106
+  type: 'test'
+  ...
+# Subtest: K2 text narrowing visibility: e9 shown only when the unchanged chain allows it; parents unchanged
+ok 480 - K2 text narrowing visibility: e9 shown only when the unchanged chain allows it; parents unchanged
+  ---
+  duration_ms: 19.022712
+  type: 'test'
+  ...
+# Subtest: K2 text narrowing visibility: e11 shown only when the unchanged chain allows it; parents unchanged
+ok 481 - K2 text narrowing visibility: e11 shown only when the unchanged chain allows it; parents unchanged
+  ---
+  duration_ms: 19.440171
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+ok 482 - SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+  ---
+  duration_ms: 13.016569
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+ok 483 - SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 95.259972
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+ok 484 - SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+  ---
+  duration_ms: 34.388187
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+ok 485 - SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 87.691041
+  type: 'test'
+  ...
+1..485
+# tests 485
+# suites 0
+# pass 485
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4049.361375
