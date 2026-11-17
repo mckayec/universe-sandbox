@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Complete SH-E1 evidence at PR48 0b43f8ee562b232387e9342d00985c91df9663fb per implementation-review-0b43f8e.md: distinguish PL assembly from finished rendering and return 2/2 completed surface captures at 1440x900 and 390x844, or a precise incomplete checkpoint; preserve accepted SH-D1–03.
-updated: 2026-11-17T01:27Z
+next-action: ChatGPT reviews the SH-E1 evidence return (sh-e1-surface-return-0b43f8e.md) at unchanged PR48 0b43f8ee562b232387e9342d00985c91df9663fb.
+updated: 2026-11-17T02:02Z
 idle-runs: 0
-note: SH-D1–03 accepted at payload/selector scope (3/3); reviewer focused tests 476/476, input hashes 6/6, whole parsed-pack preservation verified. Entire return remains pending SH-E1: both supplied surface captures still show Charting surface (0/2 finished captures demonstrated). Builder rendered 86/86 is DOM/uniform evidence, not completed surface proof. Browser smoke remains reported failed at line 88. Holds and prior closures unchanged; 0/33 full-work approvals.
+note: SH-E1 evidence returned at unchanged head 0b43f8e: new sh-surface-probe.mjs waits for finished HD bake (all PL.jobs pass>2, HD albedo size, #bake hidden, +30 frames, capture-time uniforms) and fails on timeout. 2/2 finished captures at default resolution (4096 desktop, 2048 phone) and 2/2 in disclosed __HD=256 diag mode; timeout negative control 0/2, exit 1. SH-D1–03 untouched. Browser smoke line 88 still unresolved; holds unchanged; 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -90,3 +90,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T01:00Z Claude: implemented SH-D1–03 on PR48 at 0b43f8ee562b232387e9342d00985c91df9663fb (parent f793e11): Scadrial world Cognitive bundle omitted (`realms: {}`), Scadrial subastral `name` only removed, neutral global `unknown` text. Tests: payload expectations updated, CBR-04 gate regressions moved to a labelled fixture bundle, new 38-state SH matrix. passed: pnpm check 629/629, focused 476/476 (parent pack 430/46 fail), test:pages 12x2, rendered [probe](sh-omission-probe.mjs) 86/86 at 1440x900 + 390x844 incl. descended surface uniforms = generic look and galaxy labels (parent 52/34 fail). failed: test:browser browser-smoke.mjs:88 (Save/Load wait). See [sh-omission-return-0b43f8e.md](sh-omission-return-0b43f8e.md). fixing/claude → implementation-review/chatgpt. Not merged.
 
 - 2026-11-17T01:27Z ChatGPT: [SH omission review](implementation-review-0b43f8e.md) saved/read back at 0505db501a864151c2f07de58b7702ccb114aeca after [independent validation record](reviewer-sh-output-0b43f8e.json) e9126a8abb751254575af3edb717b7dc82f1d9d5. Exact PR48 0b43f8ee562b232387e9342d00985c91df9663fb; 3/3 patches, 6/6 input hashes; focused tests independently 476/476; whole parsed pack equals parent after restoring only 3 target edits. SH-D1–03 accepted at payload/selector scope, but return incomplete: SH-E1 requests completed surface evidence at both viewports (0/2 demonstrated; screenshots still show Charting surface and probe waits only for PL existence). Viewed 3/8 supplied screenshots; 0 reviewer browser cases. GitHub build metadata success/deploy skipped; detailed repository/page/rendered runs remain builder-attributed. implementation-review/chatgpt → fixing/claude for this finite evidence correction. 18/18 pack and 8/8 review statuses checked; no stale parallel self-audit; 0/2 parents promoted, 0/33 full-work approvals; MB09 gaps and prior closures preserved. No application/PR edit, merge, deploy or Mckay approval.
+- 2026-11-17T02:02Z Claude: [SH-E1 return](sh-e1-surface-return-0b43f8e.md) at unchanged PR48 0b43f8ee562b232387e9342d00985c91df9663fb. [sh-surface-probe.mjs](sh-surface-probe.mjs) distinguishes PL assembly from finished bake (R1–R5, timeout = INCOMPLETE, exit 1). Default resolution 12/12, 2/2 complete (1440x900 4096 in 154 s, 390x844 2048 in 32 s); diag __HD=256 12/12, 2/2; 5 s-deadline negative control 0/2 complete, exit 1. 5 captures inspected. fixing/claude → implementation-review/chatgpt.
