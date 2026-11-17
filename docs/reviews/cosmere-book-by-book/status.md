@@ -1,10 +1,10 @@
-stage: implementation-review
+stage: content-review
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT reviews K2-E7-01 at PR48 9b49a52014adf65eaa3003cf4c4f257bbfffff86 per k2e7-return-9b49a52.md, then starts the finite MB02 e9 source unit.
-updated: 2026-11-17T05:04Z
+next-action: ChatGPT starts one finite MB02 e9 source unit; locate primary text for Elend/Luthadel and separately disposition the three-army claim, reconciling PR24/PR37/PR48 before a bounded implementation handoff.
+updated: 2026-11-17T05:16Z
 idle-runs: 0
-note: K2-E7-01 implemented at PR48 9b49a52 (e7.text only; focused 479/479, parent 478/1; pnpm check 632/632; rendered 76/76, parent 60/76). Browser-smoke line-88 failure remains. 2/5 prose units implemented (e8 accepted, e7 in review); 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals.
+note: K2-E7-01 accepted at PR48 9b49a52014adf65eaa3003cf4c4f257bbfffff86 in implementation-review-k2e7-9b49a52.md; independent focused 479/479 and parent 478/479, 6/6 images inspected. Browser-smoke line-88 failure remains. 2/5 prose units accepted; 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -103,3 +103,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T04:26Z ChatGPT: [K2-E7-01 handoff](key2-e7-handoff-2026-11-17.md) committed at 24e0f590ac62740c09ceca9e21b0408ff31701e9 and read back. Opened author-hosted prologue/chapter 3 support 2/2 replacement clauses; 4/4 old backstory components dispositioned, not all verified. Detailed Mare/power account deferred; no new gates. Fresh PR24 cf25cda retains old e7; PR37 03394c3 has no e7 (e74 is distinct); PR48-only text change requested. One in-memory property replacement restores entire parsed pack. content-review/chatgpt → fixing/claude; next after implementation review is finite MB02 e9 source unit. 1/5 prose units implemented/accepted, 2/5 dispositioned; 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals. No site-code edit, merge, deploy or release approval.
 
 - 2026-11-17T05:04Z Claude: [K2-E7-01 return](k2e7-return-9b49a52.md) on PR48 at 9b49a52014adf65eaa3003cf4c4f257bbfffff86 (parent 7989e8d): e7.text only → "Kelsier is known as the Survivor of Hathsin; scars cover his hands and arms."; pack blob bbcd036; tests (payload e7, e7+e8 visibility). Focused 479/479 (parent 478/1), pnpm check 632/632, check:dist 115, test:pages 12x2, [k2e7-probe.mjs](k2e7-probe.mjs) 76/76 at 1440x900 + 390x844 (parent 60/76, 16 wording-only failures); test:browser fails at browser-smoke.mjs:88 (unresolved). 3 of 6 captures viewed. fixing/claude → implementation-review/chatgpt.
+
+- 2026-11-17T05:16Z ChatGPT: [K2-E7-01 implementation review](implementation-review-k2e7-9b49a52.md) committed at 9ac23ac7e913f3379e085ff6aed46f72c856da9a and read back. Exact PR48 9b49a52014adf65eaa3003cf4c4f257bbfffff86: 2/2 incremental patches, 6/6 input hashes, entire pack restored by reversing only e7.text. Independent focused 479/479 head vs 478/479 parent; viewed 6/6 screenshots; reopened 2 primary excerpts supporting 2/2 replacement clauses. Builder 76/76 rendered and repository-wide totals remain attributed; 0 reviewer browser runs; smoke :88 unresolved. Bounded correction accepted, implementation-review/chatgpt → content-review/chatgpt for finite MB02 e9. 2/5 prose units accepted, 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals; prior closures/holds preserved. 18/18 pack and 8/8 review statuses checked; no other owned/stale parallel audit. No application/PR edit, merge, deploy or Mckay approval.
