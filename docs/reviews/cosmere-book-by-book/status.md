@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT inventories SEL03 (The Emperor's Soul) prominent atlas claims across PR24/PR37/PR48 and performs one bounded official-excerpt source pass; keep earlier key-2 mapping/primary-scene gaps deferred.
-updated: 2026-11-17T08:26:36Z
+next-action: Claude applies SEL03-E30-01 to PR48 e30.text only per sel03-e30-handoff-2026-11-17.md, preserves existing gates/parents and prior accepted corrections, and returns exact SHA plus focused/rendered evidence for implementation-review.
+updated: 2026-11-17T08:35:18Z
 idle-runs: 0
-note: K2-E11-01 accepted at PR48 d22843792a983f5b47ceab22c897b8ce5ba37388; independent 481/481 focused tests, parent 480/481 with only e11 payload failure; 6/6 input hashes and 6/6 supplied screenshots inspected. 0 independent browser executions; known Save/Load smoke limitation remains. 5/5 prose dispositions (4 accepted corrections + e10 no change); 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals.
+note: K2-E11-01 accepted at d228437 (independent 481/481 tests); SEL03 first bounded source pass now hands off one Medium e30 precision correction (deadline and emperor condition). 6/6 core records inventoried at 3 heads (18/18 snapshots, 12/12 normalized comparisons); 5/5 replacement components supported by published Day Two text. 0/4 complete SEL03 site records certified, 0 new gates, 0/33 full-work approvals. Known Save/Load smoke failure remains.
 
 # Cosmere book-by-book review
 
@@ -118,3 +118,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T08:06Z Claude: applied K2-E11-01 on PR48 at d22843792a983f5b47ceab22c897b8ce5ba37388 (parent c0a8f03; cosmere.js e11.text + scadrial-reduced test). Evidence [k2e11-return-d228437.md](k2e11-return-d228437.md): focused 481/481 (negative 480/1), pnpm check 634/634, test:pages 12x2, rendered 76/76 at 1440x900 and 390x844 (negative 60/76), 6 shots. test:browser line-88 Save/Load timeout at head and parent (known intermittent; not attributed to this change). fixing/claude → implementation-review/chatgpt. Not merged.
 
 - 2026-11-17T08:26:36Z ChatGPT: [K2-E11-01 implementation review](implementation-review-d228437.md) saved/read back at 65709809dd5ddbc378cb3a4f9fcef6c043cd331c. PR48 d22843792a983f5b47ceab22c897b8ce5ba37388: 2/2 incremental files inspected; 6/6 input hashes verified; independent 481/481 tests, parent negative 480/481 (only e11 payload fails); reversing the single sentence restores the entire parent pack. Viewed 6/6 supplied screenshots, reviewed probe and 76/76 head vs 60/76 parent logs; 0 independent browser runs. Accepted one-field precision change; Save/Load smoke and canon/source/site/gate holds preserved. implementation-review/chatgpt → content-review/chatgpt for finite SEL03 inventory/excerpt unit. 5/5 key-2 prose dispositions, 4/5 corrections accepted + e10 no change; 2/7 mappings, 0/2 parent promotions, 0/33 full-work approvals. No app/PR-branch edit, merge, deploy or release approval.
+
+- 2026-11-17T08:35:18Z ChatGPT: [SEL03 inventory](sel03-inventory-d228437.json) saved/read back at e4d719ae2964ba5daf88b491717302bef8552936; [SEL03-E30-01 source handoff](sel03-e30-handoff-2026-11-17.md) saved/read back at 3f6c05825fff27eb30424aae33a2dc8209edee27. PR24 cf25cda / PR37 03394c3 / PR48 d228437 freshly reconciled; 3/3 pack hashes, 18/18 core record snapshots and 12/12 normalized comparisons. Opened author-hosted published Prologue/Day Two, two Tachyon edition pages and authorized Reactor Prologue–Day Five (web 403, Firecrawl public HTTP 200); source types and edition/access limits recorded. 5/5 proposed e30 components supported at passage scope; one Medium text-only correction for deadline/condition, 0 implemented here. Four full site records and PR37 geometry/landmarks remain held; no new mapping/parent promotion, no full-book reading. content-review/chatgpt → fixing/claude; after implementation review, one final bounded SEL03 site/qualification checkpoint, then concrete omissions/qualifiers or defer. Prior 5/5 key-2 prose dispositions, 2/7 mappings, 0/2 Scadrial parent promotions and 0/33 full-work approvals preserved. No app/PR-branch edit, merge, deployment or Mckay release approval.
