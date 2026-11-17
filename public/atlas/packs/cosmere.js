@@ -398,7 +398,7 @@
        facts: [["Planets", "Scadrial, Aagal Nod, Aagal Uch, two dwarf planets"]],
        noSurface: true, gfx: sun("#ffe8a0", HOTY)},
 
-      {id: "scadrial", name: "Scadrial", realms: {cognitive: {name: "Expanse of the Vapors", style: "mist", c1: "#7a808c", c2: "#eef2f6", c3: "#2e2b28", blurb: "Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly."}}, group: "scadrian", books: [2, 6, 7, 10, 12], first: 2, major: true, status: "The Final Empire",
+      {id: "scadrial", name: "Scadrial", realms: {}, group: "scadrian", books: [2, 6, 7, 10, 12], first: 2, major: true, status: "The Final Empire",
        star: {name: "Scadrial’s sun", col: "#ffd8a0"}, map: orb(C.scadrial, .2, 40), distText: "Illustrative system layout; distances and orbital order are not verified here.", hero: "luthadel",
        blurb: "In the Final Empire, ash falls beneath a red sun. Skaa labor in the fields under the Lord Ruler’s rule, brown-leaved crops struggle to grow, and mists gather as evening falls.",
        short: "The Final Empire beneath a red sun.",
@@ -875,12 +875,12 @@
       physical: {label: "Physical", tip: "The Physical Realm: worlds as they are"},
       cognitive: {label: "Cognitive", first: 4, title: "The Cognitive Realm", tip: "Shadesmar and the other subastrals: the realm of thought",
         text: "The realm of thought, laid over the same space. It is one flat plane on which each world appears as a flattened reflection, its subastral, shaped by what its people think. On most worlds the solid and the fluid swap places: Roshar’s land becomes an ocean of glass beads and its seas become dark ground. The sky is black, with no stars or moon, and living minds show as lights. Space that nobody thinks about collapses, so worlds light-years apart are days or weeks apart here, which is why they are drawn much closer together. Between the subastrals lies the emberdark, a starless black void with a transparent, liquid-like surface called the unsea. The two realms only line up exactly at perpendicularities.",
-        unknown: "The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.",
+        unknown: "No world-specific description is provided in this view. The appearance is an illustration, not a verified map.",
         compress: .36, compressInner: .8, zoom: .6, emberSpread: 9,
         look: {style: "unsea", c1: "#1e1a2c", c2: "#5a5088", c3: "#0e0c14"},
         subastrals: [
           {world: "roshar", name: "Shadesmar", color: "rgba(150,120,255,.55)", r: 1.6, first: 4},
-          {world: "scadrial", name: "Expanse of the Vapors", color: "rgba(220,225,235,.5)", r: 1.4, first: 7},
+          {world: "scadrial", color: "rgba(220,225,235,.5)", r: 1.4, first: 7},
           {world: "sel", name: "Expanse of the Densities (the Dor)", color: "rgba(80,130,255,.6)", r: 1.3, first: 7},
           {world: "nalthis", name: "Expanse of Vibrance", color: "rgba(255,120,200,.5)", r: 1.3, first: 7},
           {world: "taldain", name: "Expanse of the Broken Sky", color: "rgba(230,235,255,.4)", r: 1.1, first: 7},

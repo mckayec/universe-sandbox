@@ -35,6 +35,8 @@ const REMOVED = [
 const MODEL =
   'Artist’s model: this surface and the colour of its sun are illustrations made for the atlas, not a verified map or measurement from the books.';
 const COG_NAME = 'Expanse of the Vapors';
+const SH_UNKNOWN =
+  'No world-specific description is provided in this view. The appearance is an illustration, not a verified map.';
 
 /* MB05 bounded Elendel setting (ChatGPT era6-handoff-2026-11-16.md): three nested era-6 fields with their own gates */
 const AOL = 'the-alloy-of-law';
@@ -137,7 +139,8 @@ test('payload: removed claims are gone from base and every era override; no reco
   assert.equal(Object.prototype.hasOwnProperty.call(w, 'gate'), false, 'no record gate');
   assert.deepEqual([w.books, w.first, w.name, w.group], [[2, 6, 7, 10, 12], 2, 'Scadrial', 'scadrian']);
   assert.deepEqual(w.star, { name: 'Scadrial’s sun', col: '#ffd8a0' }, 'star object unchanged (held)');
-  assert.equal(w.realms.cognitive.name, COG_NAME, 'Cognitive payload held unchanged');
+  assert.deepEqual(w.realms, {}, 'SH-D1: world-specific Cognitive bundle omitted (empty container kept)');
+  assert.equal(p.realms.cognitive.unknown, SH_UNKNOWN, 'SH-D3: neutral global fallback');
   assert.deepEqual(Object.keys(w.eras), ['6', '10']);
   assert.equal(w.eras[6].status, MB05.status);
   assert.deepEqual(w.eras[6].facts, MB05.facts);
@@ -151,6 +154,11 @@ test('payload: removed claims are gone from base and every era override; no reco
   assert.deepEqual([lu.gates.name, lu.gates.desc, lu.until, lu.lat, lu.lon], [MB01_GATE, MB01_GATE, 6, 70, 0]);
   const sub = p.realms.cognitive.subastrals.find((s: any) => s.world === 'scadrial');
   assert.equal(sub.first, 7, 'subastral threshold unchanged');
+  assert.deepEqual(
+    sub,
+    { world: 'scadrial', color: 'rgba(220,225,235,.5)', r: 1.4, first: 7 },
+    'SH-D2: only name removed',
+  );
   assert.equal(p.realms.cognitive.first, 4, 'global Cognitive threshold unchanged');
 });
 
@@ -471,3 +479,40 @@ test('MB10 status gate fails closed: an invalid or unmet era-10 gate falls back 
     }
   }
 });
+
+/* SH-D1–03 (ChatGPT secret-history-omission-handoff-2026-11-17.md): the world-specific Cognitive bundle, its separate
+   subastral name and the old "books have not described" fallback are omitted in every mode. The Cognitive card for
+   Scadrial shows the global title with the neutral fallback and the look is the generic global look. */
+const SH = 'mistborn-secret-history';
+const OLD_COG_BLURB = 'Scadrial’s subastral is a world of mist.';
+const OLD_UNKNOWN = 'The books have not described this world’s subastral.';
+{
+  const reg0 = setup({ mode: 'all' }).reg;
+  const B4: string[] = [...reg0.buckets.get(4)];
+  const states: [string, St][] = [];
+  for (const sub of SUBSETS)
+    for (const sh of [false, true])
+      for (const b4 of [false, true]) {
+        const ids = [...sub, ...(sh ? [SH] : []), ...(b4 ? B4 : [])];
+        states.push([`set ${sub.length}/3 OT${sh ? ' +SH' : ''}${b4 ? ' +B4' : ''}`, { mode: 'set', ids }]);
+      }
+  states.push(['set later-era only (B6 + TLM)', { mode: 'set', ids: [...reg0.buckets.get(6), TLM] }]);
+  for (const book of [2, 4, 7, 10]) states.push([`legacy ${book}`, { mode: 'legacy', book }]);
+  states.push(['All', { mode: 'all' }]);
+  for (const [label, st] of states) {
+    test('SH-D1–03: ' + label, () => {
+      const { c, p } = setup(st);
+      const R = p.realms.cognitive;
+      const card: string = vm.runInContext('realmCard(world)', c);
+      const look = vm.runInContext('realmLook(world)', c);
+      assert.equal(
+        card,
+        '<div class="realmcard"><p class="eyebrow">' + R.title + '</p><p>' + SH_UNKNOWN + '</p></div>',
+        'global title + neutral fallback',
+      );
+      for (const x of [COG_NAME, OLD_COG_BLURB, OLD_UNKNOWN]) assert.ok(!card.includes(x), 'absent: ' + x);
+      assert.deepEqual([look.st, look.c1, look.c2, look.c3], [4, R.look.c1, R.look.c2, R.look.c3], 'generic look');
+      assert.equal(vm.runInContext('realmCard(null)', c).includes(R.text), true, 'home card keeps global text (held)');
+    });
+  }
+}

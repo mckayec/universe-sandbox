@@ -22,6 +22,17 @@ const cut = (a: string, b: string) => {
 
 type Mode = 'set' | 'legacy' | 'all';
 
+/* Since SH-D1 (secret-history-omission-handoff-2026-11-17.md) the real Scadrial record carries no world-specific
+   Cognitive bundle, so these gate regressions install a synthetic one. FIXTURE ONLY, not canon. */
+const FIXTURE_COG = {
+  name: 'Fixture Realm Name',
+  style: 'mist',
+  c1: '#010203',
+  c2: '#040506',
+  c3: '#070809',
+  blurb: 'Fixture realm blurb for gate tests.',
+};
+
 function setup(fieldGate: unknown, mode: Mode = 'set') {
   const c: any = { window: {}, Set, Map, WeakMap, URLSearchParams };
   vm.createContext(c);
@@ -32,6 +43,8 @@ function setup(fieldGate: unknown, mode: Mode = 'set') {
   const reg = R.normRegistry(p);
   assert.ok(reg.ok, 'registry valid');
   const w = p.worlds.find((x: any) => x.id === 'scadrial');
+  assert.deepEqual(Object.keys(w.realms), [], 'real pack: SH-D1 world Cognitive bundle omitted');
+  w.realms = { cognitive: { ...FIXTURE_COG } };
   if (fieldGate !== undefined) w.gates = { ...w.gates, realms: fieldGate };
   const readIds = [...reg.buckets.get(2), ...reg.buckets.get(4)];
   const st = { mode };
