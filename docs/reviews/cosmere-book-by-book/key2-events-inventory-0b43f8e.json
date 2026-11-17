@@ -1,0 +1,256 @@
+{
+  "head": "0b43f8ee562b232387e9342d00985c91df9663fb",
+  "packBlob": "a5dec3452a855e4680fb4b604b0ff6274528f906",
+  "readingBlob": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+  "engineBlob": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+  "counts": {
+    "key2Events": 7,
+    "mapped": 2,
+    "unmapped": 5,
+    "parentSites": 5
+  },
+  "world": {
+    "id": "scadrial",
+    "first": 2,
+    "gates": {
+      "blurb": {
+        "in": [
+          "mistborn-the-final-empire"
+        ],
+        "req": "mistborn-the-final-empire"
+      },
+      "short": {
+        "in": [
+          "mistborn-the-final-empire"
+        ],
+        "req": "mistborn-the-final-empire"
+      },
+      "facts": {
+        "in": [
+          "mistborn-the-final-empire"
+        ],
+        "req": "mistborn-the-final-empire"
+      }
+    }
+  },
+  "events": [
+    {
+      "record": {
+        "id": "e7",
+        "book": 2,
+        "world": "scadrial",
+        "site": "hathsin",
+        "title": "The survivor of Hathsin",
+        "text": "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."
+      },
+      "ownGate": {
+        "kind": "expr",
+        "req": [
+          [
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages"
+          ]
+        ],
+        "needs": null,
+        "unreviewed": true
+      },
+      "parentSite": {
+        "id": "hathsin",
+        "name": "Pits of Hathsin",
+        "lat": 74.12,
+        "lon": -1.85,
+        "books": [
+          2
+        ],
+        "desc": "The atium mines, worked by skaa prisoners, where Kelsier survived and Snapped. Ruin’s pool lay below them.",
+        "until": 6
+      }
+    },
+    {
+      "record": {
+        "id": "e8",
+        "book": 2,
+        "world": "scadrial",
+        "site": "kredikshaw",
+        "title": "The Lord Ruler falls",
+        "text": "Vin finds his weakness and kills the immortal emperor in his palace."
+      },
+      "ownGate": {
+        "kind": "expr",
+        "req": [
+          [
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages"
+          ]
+        ],
+        "needs": null,
+        "unreviewed": true
+      },
+      "parentSite": {
+        "id": "kredikshaw",
+        "name": "Kredik Shaw",
+        "lat": 70.01,
+        "lon": 0,
+        "books": [
+          2
+        ],
+        "desc": "The Lord Ruler’s palace, the Hill of a Thousand Spires, where Vin finally faces him.",
+        "until": 6
+      }
+    },
+    {
+      "record": {
+        "id": "e9",
+        "book": 2,
+        "world": "scadrial",
+        "site": "luthadel",
+        "title": "Siege of Luthadel",
+        "text": "Elend Venture tries to rule a free city while three armies camp outside the walls."
+      },
+      "ownGate": {
+        "kind": "expr",
+        "req": [
+          [
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages"
+          ]
+        ],
+        "needs": null,
+        "unreviewed": true
+      },
+      "parentSite": {
+        "id": "luthadel",
+        "name": "Luthadel",
+        "lat": 70,
+        "lon": 0,
+        "books": [
+          2
+        ],
+        "desc": "Luthadel is the walled capital of the Final Empire. The River Channerel runs through the city.",
+        "until": 6,
+        "gates": {
+          "name": {
+            "in": [
+              "mistborn-the-final-empire"
+            ],
+            "req": "mistborn-the-final-empire"
+          },
+          "desc": {
+            "in": [
+              "mistborn-the-final-empire"
+            ],
+            "req": "mistborn-the-final-empire"
+          }
+        }
+      }
+    },
+    {
+      "record": {
+        "id": "e10",
+        "book": 2,
+        "world": "scadrial",
+        "site": "well",
+        "title": "The Well of Ascension",
+        "text": "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."
+      },
+      "ownGate": {
+        "kind": "expr",
+        "req": [
+          [
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages"
+          ]
+        ],
+        "needs": null,
+        "unreviewed": true
+      },
+      "parentSite": {
+        "id": "well",
+        "name": "Well of Ascension",
+        "lat": 70.01,
+        "lon": 0,
+        "books": [
+          2
+        ],
+        "desc": "Preservation’s perpendicularity: a small pool of glowing power in a cavern beneath the palace. Rashek moved it here from the Terris mountains.",
+        "until": 6
+      }
+    },
+    {
+      "record": {
+        "id": "e11",
+        "book": 2,
+        "world": "scadrial",
+        "site": "fadrex",
+        "title": "Fadrex and the caches",
+        "text": "Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart."
+      },
+      "ownGate": {
+        "kind": "expr",
+        "req": [
+          [
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages"
+          ]
+        ],
+        "needs": null,
+        "unreviewed": true
+      },
+      "parentSite": {
+        "id": "fadrex",
+        "name": "Fadrex City",
+        "lat": 67.46,
+        "lon": -19.98,
+        "books": [
+          2
+        ],
+        "desc": "A western capital ringed by red rock formations, guarding one of the Lord Ruler’s storage caches. Besieged in The Hero of Ages.",
+        "until": 6
+      }
+    }
+  ],
+  "acceptedEventControls": [
+    {
+      "id": "e6",
+      "book": 2,
+      "world": "scadrial",
+      "site": "luthadel",
+      "title": "Kelsier meets Vin",
+      "text": "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.",
+      "gate": {
+        "in": [
+          "mistborn-the-final-empire"
+        ],
+        "req": "mistborn-the-final-empire"
+      }
+    },
+    {
+      "id": "e12",
+      "book": 2,
+      "world": "scadrial",
+      "title": "The Hero of Ages",
+      "text": "Sazed ascends and remakes the world.",
+      "gate": {
+        "in": [
+          "mistborn-the-hero-of-ages"
+        ],
+        "req": "mistborn-the-hero-of-ages"
+      }
+    }
+  ],
+  "proposal": {
+    "id": "K2-E8-01",
+    "replacementText": "The Lord Ruler is defeated and dies.",
+    "changedProperties": [
+      "events[e8].text"
+    ],
+    "wholePackUnchangedAfterRestoringText": true,
+    "newGatesAuthorized": 0,
+    "implementedThisRun": 0
+  }
+}
