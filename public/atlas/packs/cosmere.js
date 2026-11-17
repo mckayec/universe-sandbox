@@ -747,7 +747,7 @@
       /* II Mistborn */
       {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.", gate: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
       {id: "e7", book: 2, world: "scadrial", site: "hathsin", title: "The survivor of Hathsin", text: "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."},
-      {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", title: "The Lord Ruler falls", text: "Vin finds his weakness and kills the immortal emperor in his palace."},
+      {id: "e8", book: 2, world: "scadrial", site: "kredikshaw", title: "The Lord Ruler falls", text: "The Lord Ruler is defeated and dies."},
       {id: "e9", book: 2, world: "scadrial", site: "luthadel", title: "Siege of Luthadel", text: "Elend Venture tries to rule a free city while three armies camp outside the walls."},
       {id: "e10", book: 2, world: "scadrial", site: "well", title: "The Well of Ascension", text: "Vin reaches the Well and gives up its power, freeing the thing that had been tricking her."},
       {id: "e11", book: 2, world: "scadrial", site: "fadrex", title: "Fadrex and the caches", text: "Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart."},

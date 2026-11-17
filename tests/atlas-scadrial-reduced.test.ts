@@ -516,3 +516,84 @@ const OLD_UNKNOWN = 'The books have not described this world’s subastral.';
     });
   }
 }
+
+/* K2-E8-01 (ChatGPT key2-events-checkpoint-2026-11-17.md): e8 text-only narrowing. Every other property of e8,
+   and every other key-2 event, is unchanged; no gate is added; the retained kredikshaw site stays an unverified
+   legacy attachment under the unchanged world/site/event chain. */
+const E8_TEXT = 'The Lord Ruler is defeated and dies.';
+const E8_OLD = 'Vin finds his weakness and kills the immortal emperor in his palace.';
+const KEY2 = {
+  e6: {
+    id: 'e6',
+    book: 2,
+    world: 'scadrial',
+    site: 'luthadel',
+    title: 'Kelsier meets Vin',
+    text: 'In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.',
+    gate: MB01_GATE,
+  },
+  e7: {
+    id: 'e7',
+    book: 2,
+    world: 'scadrial',
+    site: 'hathsin',
+    title: 'The survivor of Hathsin',
+    text: 'Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power.',
+  },
+  e8: { id: 'e8', book: 2, world: 'scadrial', site: 'kredikshaw', title: 'The Lord Ruler falls', text: E8_TEXT },
+  e9: {
+    id: 'e9',
+    book: 2,
+    world: 'scadrial',
+    site: 'luthadel',
+    title: 'Siege of Luthadel',
+    text: 'Elend Venture tries to rule a free city while three armies camp outside the walls.',
+  },
+  e10: {
+    id: 'e10',
+    book: 2,
+    world: 'scadrial',
+    site: 'well',
+    title: 'The Well of Ascension',
+    text: 'Vin reaches the Well and gives up its power, freeing the thing that had been tricking her.',
+  },
+  e11: {
+    id: 'e11',
+    book: 2,
+    world: 'scadrial',
+    site: 'fadrex',
+    title: 'Fadrex and the caches',
+    text: 'Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.',
+  },
+  e12: {
+    id: 'e12',
+    book: 2,
+    world: 'scadrial',
+    title: 'The Hero of Ages',
+    text: 'Sazed ascends and remakes the world.',
+    gate: { in: [MB[2]], req: MB[2] },
+  },
+};
+
+test('K2-E8-01 payload: only e8.text changed; e6/e7/e9–e12 exact; order and ids kept; old e8 wording gone', () => {
+  const { p } = setup({ mode: 'all' });
+  const ids = p.events.map((e: any) => e.id);
+  const i6 = ids.indexOf('e6');
+  assert.deepEqual(J(ids.slice(i6, i6 + 7)), Object.keys(KEY2));
+  for (const [id, want] of Object.entries(KEY2)) {
+    assert.deepEqual(J(p.events.find((e: any) => e.id === id)), J(want), id);
+  }
+  assert.ok(!packSrc.includes(E8_OLD), 'old e8 wording absent from pack');
+  assert.ok(!packSrc.includes('immortal emperor'), 'no residual immortal-emperor wording');
+});
+
+test('K2-E8-01 visibility: e8 shown only when the unchanged chain allows it; parent restrictions unchanged', () => {
+  const vis = (st: St) => {
+    const { c, p } = setup(st);
+    c.__e = p.events.find((e: any) => e.id === 'e8');
+    return vm.runInContext('!PW()||pvis(evChain(__e))', c) as boolean;
+  };
+  assert.equal(vis({ mode: 'set', ids: MB }), true, 'full original trilogy');
+  for (const ids of SUBSETS.filter(x => x.length < 3)) assert.equal(vis({ mode: 'set', ids }), false, ids.join('+'));
+  assert.equal(vis({ mode: 'set', ids: [AOL, TLM] }), false, 'later era only');
+});
