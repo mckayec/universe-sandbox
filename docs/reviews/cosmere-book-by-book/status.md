@@ -1,10 +1,10 @@
-stage: implementation-review
+stage: content-review
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT reviews the K2-E8-01 return at PR48 7989e8dc8c5583d6bf5e8138f595979f74630a99 (k2e8-return-7989e8d.md); then the e7 MB01 source unit under the two-checkpoint cap.
-updated: 2026-11-17T04:02Z
+next-action: ChatGPT completes the finite e7 MB01 survival/Mare source unit (maximum two checkpoints), then supplies verified narrowing or explicit omission/defer; K2-E8-01 accepted at PR48 7989e8d.
+updated: 2026-11-17T04:26Z
 idle-runs: 0
-note: K2-E8-01 implemented at PR48 7989e8d (parent 0b43f8e): e8 text only. Focused 478/478 (parent 477/1), pnpm check 631/631, test:pages 12x2, rendered 76/76 (parent 60/76). Browser smoke still fails at line 88 (unresolved). 2/7 mapped, 0 new mappings, 0/2 parent promotions, 0/33 full-work approvals.
+note: implementation-review-k2e8-7989e8d.md saved/read back: 1/1 narrowing accepted; 6/6 input hashes, whole-pack one-field equality, independent 478/478 tests, 6/6 supplied screenshots inspected. 0 independent browser runs; smoke failure remains. 2/7 mapped, 0/2 parent promotions, 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -97,3 +97,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-17T03:19:50Z ChatGPT: [key-2 event checkpoint](key2-events-checkpoint-2026-11-17.md) saved/read back at 26d50642a124e4da2987452dd4997ec4fe125989 after [five-event inventory](key2-events-inventory-0b43f8e.json) 199c5358c41ab205fc4a29fa8c3f645248cd9ad0. PR48 0b43f8ee562b232387e9342d00985c91df9663fb and PR24 cf25cda/PR37 03394c3 reconciled; 3/3 input hashes verified, 5/5 remaining events and 5/5 parents inventoried, 5/5 own gates remain unreviewed fallback. Four author-commentary pages opened; no primary scene body or independent second witness obtained. K2-E8-01 supplies one supported text-only narrowing, 0 new gates; retained site is explicitly unverified. content-review/chatgpt → fixing/claude for this bounded correction, then implementation review and e7 source unit under the two-run cap. 18/18 pack and 8/8 review statuses inspected, no stale parallel self-audit. 0/33 full-work approvals; no application/PR edit, merge, deploy or Mckay approval.
 
 - 2026-11-17T04:02Z Claude: [K2-E8-01 return](k2e8-return-7989e8d.md) on PR48 at 7989e8dc8c5583d6bf5e8138f595979f74630a99 (parent 0b43f8e): e8.text only → "The Lord Ruler is defeated and dies."; pack blob 1958cee; tests +81 (payload e6–e12 exact, e8 visibility). Focused 478/478 (parent 477/1), pnpm check 631/631, check:dist 115, test:pages 12x2, [k2e8-probe.mjs](k2e8-probe.mjs) 76/76 at 1440x900 + 390x844 (parent 60/76, 16 wording-only failures); test:browser fails at browser-smoke.mjs:88 (unresolved). 3 of 6 captures viewed. fixing/claude → implementation-review/chatgpt.
+
+- 2026-11-17T04:26Z ChatGPT: K2-E8-01 accepted for one-field narrowing at PR48 7989e8dc8c5583d6bf5e8138f595979f74630a99; [implementation review](implementation-review-k2e8-7989e8d.md) committed at 5cbe7246c9aba6148e64e12f1a6d088df27f58c0 and read back. Independently 6/6 blob hashes, full-source replacement equality and parsed pack equality; focused 478/478 tests; viewed 6/6 returned images. Builder rendered 76/76 stays attributed; 0 independent browser runs and unresolved smoke line 88. implementation-review/chatgpt → content-review/chatgpt for finite e7 source unit. No new mappings, parent promotions, full-book approval, merge or deploy.
