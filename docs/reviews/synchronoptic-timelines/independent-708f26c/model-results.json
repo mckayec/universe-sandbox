@@ -1,0 +1,40 @@
+{
+  "coverage": {
+    "records": 169,
+    "dated": 91,
+    "windows": 19,
+    "approx": 2,
+    "undated": 78,
+    "narrative": 2,
+    "edges": 129,
+    "drawn": 0,
+    "gaps": [
+      {
+        "id": "family",
+        "t": "Family genealogy: no accepted parent/child records yet."
+      },
+      {
+        "id": "succession",
+        "t": "Succession: no accepted succession records yet."
+      },
+      {
+        "id": "migration",
+        "t": "Migration or travel: 12 journeys are described in text only, without ordered dated stops."
+      },
+      {
+        "id": "edge-sources",
+        "t": "129 relationships have no source locator on the relationship itself; listed, not drawn as fact."
+      }
+    ]
+  },
+  "sourceRecords": 42,
+  "allSourcesAreRefs": true,
+  "nodesWithNotes": 81,
+  "nodesWithIdentityGuards": 16,
+  "syntheticLaterEventGate": {
+    "layers": ["x"],
+    "books": null,
+    "first": null
+  },
+  "proof": "calendar, all 169 record date-wording mappings, emergence/ongoing separation, endpoint/own-edge gate, search and selected URL gate passed; future book/chapter gate fields lost"
+}

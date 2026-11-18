@@ -1,0 +1,27 @@
+{
+  "initial": {
+    "button": {
+      "x": 11,
+      "y": 197,
+      "width": 83.5625,
+      "height": 34,
+      "top": 197,
+      "right": 94.5625,
+      "bottom": 231,
+      "left": 11
+    },
+    "filters": {
+      "x": 10,
+      "y": 196,
+      "width": 0,
+      "height": 94,
+      "top": 196,
+      "right": 10,
+      "bottom": 290,
+      "left": 10
+    },
+    "filterWidth": "0px",
+    "hit": "<canvas id=\"c\" aria-label=\"Globe of Earth with heritage reference markers for religious history\" width=\"390\" height=\"844\"></canvas>"
+  },
+  "tap": "locator.tap: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-layer=\"jud\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button data-layer=\"jud\" aria-pressed=\"true\" title=\"Jewish texts, communities and movements\">…</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas id=\"c\" width=\"390\" height=\"844\" aria-label=\"Globe of Earth with heritage reference markers for religious history\"></canvas> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas id=\"c\" width=\"390\" height=\"844\" aria-label=\"Globe of Earth with heritage reference markers for religious history\"></canvas> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    15 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <canvas id=\"c\" width=\"390\" height=\"844\" aria-label=\"Globe of Earth with heritage reference markers for religious history\"></canvas> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+}

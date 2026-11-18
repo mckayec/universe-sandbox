@@ -1,0 +1,1 @@
+{"widths":[{"width":390,"paths":9,"rows":129,"links":123,"gatedRows":88,"escaped":0,"close":{"hidden":true,"focus":"tlBtn"}},{"width":1440,"paths":9,"rows":129,"links":123,"gatedRows":88,"escaped":0,"close":{"hidden":true,"focus":"tlBtn"}},{"width":3840,"paths":9,"rows":129,"links":123,"gatedRows":88,"escaped":0,"close":{"hidden":true,"focus":"tlBtn"}}],"errors":[]}

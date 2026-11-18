@@ -1,0 +1,82 @@
+1440 overview {"marks":91,"undated":78,"overflow":false,"coverage":"Coverage91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships.Not shown, because the data does not support it yetFamily genealogy: no accepted parent/child records yet.Succession: no accepted succession records yet.Migration or travel: 12 journeys are described in text only, without ordered dated stops.129 relationships have no source locator on the relationship itself; listed, not drawn as fact.","reduced":true}
+1440 zoom/reset {"before":"1044","zoom":"1670","reset":"1044"}
+1440 Back focus "tlBtn"
+1440 Forward selection {"sel":"n:jud-second-temple","restored":"n:jud-second-temple"}
+1440 repeated Escape {"len":3,"after":3,"focus":"tlBtn"}
+1440 lane controls {"first":"lane-chr","summaries":1,"hash":"#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud","focus":"<button class=\"btn tl-mv\" data-lane-mv=\"1\" data-lane=\"lane-chr\" aria-label=\"Move Christianity down\">↓</button>"}
+1440 collapsed list {"dated":91,"undated":60,"controls":0,"collapsedText":["Judaism · 18 undated, lane collapsed"]}
+1440 filter cycle 0 {"layers":{},"judMarks":0,"hash":"#world=earth&site=jerusalem&view=surface&layers=chr%2Cisl%2Cenc&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud"}
+1440 filter cycle 1 {"layers":null,"judMarks":0,"hash":"#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud"}
+1440 invalid URL {"hash":"#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc","selected":0,"lanes":8}
+event provenance "Seesen temple inaugurated\n\n17 July 1810\n\nYear given by the source\n\nSource: jud-seesen\n\nBACK TO THE OVERVIEW"
+source anchors 0
+clear focus {"tag":"BODY","id":"","inside":false}
+390 overview {"marks":91,"undated":78,"overflow":false,"coverage":"Coverage91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships.Not shown, because the data does not support it yetFamily genealogy: no accepted parent/child records yet.Succession: no accepted succession records yet.Migration or travel: 12 journeys are described in text only, without ordered dated stops.129 relationships have no source locator on the relationship itself; listed, not drawn as fact.","reduced":true}
+390 zoom/reset {"before":"366","zoom":"586","reset":"366"}
+390 Back focus "tlBtn"
+390 Forward selection {"sel":"n:jud-second-temple","restored":"n:jud-second-temple"}
+390 repeated Escape {"len":3,"after":3,"focus":"tlBtn"}
+390 lane controls {"first":"lane-chr","summaries":1,"hash":"#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud","focus":"<button class=\"btn tl-mv\" data-lane-mv=\"1\" data-lane=\"lane-chr\" aria-label=\"Move Christianity down\">↓</button>"}
+390 collapsed list {"dated":91,"undated":60,"controls":0,"collapsedText":["Judaism · 18 undated, lane collapsed"]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 180000ms exceeded.
+Call log:
+  - waiting for locator('[data-layer="jud"]')
+    - locator resolved to <button data-layer="jud" aria-pressed="true" title="Jewish texts, communities and movements">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <canvas id="c" width="390" height="844" aria-label="Globe of Earth with heritage reference markers for religious history"></canvas> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <canvas id="c" width="390" height="844" aria-label="Globe of Earth with heritage reference markers for religious history"></canvas> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    77 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <canvas id="c" width="390" height="844" aria-label="Globe of Earth with heritage reference markers for religious history"></canvas> intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+    at /workspace/timeline-review/docs/reviews/synchronoptic-timelines/independent-708f26c/probe.mjs:42:40 {
+  log: [
+    `  - waiting for locator('[data-layer="jud"]')`,
+    '    - locator resolved to <button data-layer="jud" aria-pressed="true" title="Jewish texts, communities and movements">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <canvas id="c" width="390" height="844" aria-label="Globe of Earth with heritage reference markers for religious history"></canvas> intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <canvas id="c" width="390" height="844" aria-label="Globe of Earth with heritage reference markers for religious history"></canvas> intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    77 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <canvas id="c" width="390" height="844" aria-label="Globe of Earth with heritage reference markers for religious history"></canvas> intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0

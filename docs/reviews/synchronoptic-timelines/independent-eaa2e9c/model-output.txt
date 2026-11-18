@@ -1,0 +1,1 @@
+129 mappings; own-edge gate removes edge from counts/drawing/selection while endpoints survive; 169 records lack explicit src

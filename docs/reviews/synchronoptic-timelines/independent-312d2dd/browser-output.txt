@@ -1,0 +1,59 @@
+phone filter width true 370
+phone jud hidden true 0
+390 initial marks true 91
+390 collapsed list IDs true 169
+390 Seesen wording/ref separation true true
+390 clear focus true true
+390 Tab after clear true true
+390 ShiftTab after clear true true
+390 covenant notes true true
+390 identity guards true true
+390 gated selection removed true true
+390 downgrade focus inside true true
+390 Tab after downgrade false false
+390 deselect focus true true
+390 reordered URL true "lane-chr"
+390 default URL true "lane-jud"
+390 unsupported range removed true true
+390 Back open-to-open true "lane-chr"
+390 Forward open-to-open true "lane-jud"
+390 no page overflow true true
+1440 initial marks true 91
+1440 collapsed list IDs true 169
+1440 Seesen wording/ref separation true true
+1440 clear focus true true
+1440 Tab after clear true true
+1440 ShiftTab after clear true true
+1440 covenant notes true true
+1440 identity guards true true
+1440 gated selection removed true true
+1440 downgrade focus inside true true
+1440 Tab after downgrade false false
+1440 deselect focus true true
+1440 reordered URL true "lane-chr"
+1440 default URL true "lane-jud"
+1440 unsupported range removed true true
+1440 Back open-to-open true "lane-chr"
+1440 Forward open-to-open true "lane-jud"
+1440 no page overflow true true
+event gate preservation true {"records":0,"search":0,"sel":null,"chapter":9}
+Seesen codex navigation true true
+3840 initial marks true 91
+3840 collapsed list IDs true 169
+3840 Seesen wording/ref separation true true
+3840 clear focus true true
+3840 Tab after clear true true
+3840 ShiftTab after clear true true
+3840 covenant notes true true
+3840 identity guards true true
+3840 gated selection removed true true
+3840 downgrade focus inside true true
+3840 Tab after downgrade false false
+3840 deselect focus true true
+3840 reordered URL true "lane-chr"
+3840 default URL true "lane-jud"
+3840 unsupported range removed true true
+3840 Back open-to-open true "lane-chr"
+3840 Forward open-to-open true "lane-jud"
+3840 no page overflow true true
+browser errors true []

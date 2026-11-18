@@ -1,0 +1,85 @@
+[
+  {
+    "name": "3840 overview",
+    "actual": {
+      "marks": 91,
+      "undated": 78,
+      "overflow": false,
+      "coverage": "Coverage91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships.Not shown, because the data does not support it yetFamily genealogy: no accepted parent/child records yet.Succession: no accepted succession records yet.Migration or travel: 12 journeys are described in text only, without ordered dated stops.129 relationships have no source locator on the relationship itself; listed, not drawn as fact.",
+      "reduced": true
+    }
+  },
+  {
+    "name": "3840 zoom/reset",
+    "actual": {
+      "before": "2096",
+      "zoom": "3354",
+      "reset": "2096"
+    }
+  },
+  {
+    "name": "3840 Back focus",
+    "actual": "tlBtn"
+  },
+  {
+    "name": "3840 Forward selection",
+    "actual": {
+      "sel": "n:jud-second-temple",
+      "restored": "n:jud-second-temple"
+    }
+  },
+  {
+    "name": "3840 repeated Escape",
+    "actual": {
+      "len": 3,
+      "after": 3,
+      "focus": "tlBtn"
+    }
+  },
+  {
+    "name": "3840 lane controls",
+    "actual": {
+      "first": "lane-chr",
+      "summaries": 1,
+      "hash": "#world=earth&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud",
+      "focus": "<button class=\"btn tl-mv\" data-lane-mv=\"1\" data-lane=\"lane-chr\" aria-label=\"Move Christianity down\">↓</button>"
+    }
+  },
+  {
+    "name": "3840 collapsed list",
+    "actual": {
+      "dated": 91,
+      "undated": 60,
+      "controls": 0,
+      "collapsedText": ["Judaism · 18 undated, lane collapsed"]
+    }
+  },
+  {
+    "name": "3840 filter cycle 0",
+    "actual": {
+      "layers": {},
+      "judMarks": 0,
+      "hash": "#world=earth&layers=chr%2Cisl%2Cenc&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud"
+    }
+  },
+  {
+    "name": "3840 filter cycle 1",
+    "actual": {
+      "layers": null,
+      "judMarks": 0,
+      "hash": "#world=earth&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud"
+    }
+  },
+  {
+    "name": "3840 invalid URL",
+    "actual": {
+      "hash": "#world=earth&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc",
+      "selected": 0,
+      "lanes": 8
+    }
+  },
+  {
+    "name": "errors",
+    "actual": []
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "name": "1440 overview",
+    "actual": {
+      "marks": 91,
+      "undated": 78,
+      "overflow": false,
+      "coverage": "Coverage91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships.Not shown, because the data does not support it yetFamily genealogy: no accepted parent/child records yet.Succession: no accepted succession records yet.Migration or travel: 12 journeys are described in text only, without ordered dated stops.129 relationships have no source locator on the relationship itself; listed, not drawn as fact.",
+      "reduced": true
+    }
+  },
+  {
+    "name": "1440 zoom/reset",
+    "actual": {
+      "before": "1044",
+      "zoom": "1670",
+      "reset": "1044"
+    }
+  },
+  {
+    "name": "1440 Back focus",
+    "actual": "tlBtn"
+  },
+  {
+    "name": "1440 Forward selection",
+    "actual": {
+      "sel": "n:jud-second-temple",
+      "restored": "n:jud-second-temple"
+    }
+  },
+  {
+    "name": "1440 repeated Escape",
+    "actual": {
+      "len": 3,
+      "after": 3,
+      "focus": "tlBtn"
+    }
+  },
+  {
+    "name": "1440 lane controls",
+    "actual": {
+      "first": "lane-chr",
+      "summaries": 1,
+      "hash": "#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud",
+      "focus": "<button class=\"btn tl-mv\" data-lane-mv=\"1\" data-lane=\"lane-chr\" aria-label=\"Move Christianity down\">↓</button>"
+    }
+  },
+  {
+    "name": "1440 collapsed list",
+    "actual": {
+      "dated": 91,
+      "undated": 60,
+      "controls": 0,
+      "collapsedText": ["Judaism · 18 undated, lane collapsed"]
+    }
+  },
+  {
+    "name": "1440 filter cycle 0",
+    "actual": {
+      "layers": {},
+      "judMarks": 0,
+      "hash": "#world=earth&site=jerusalem&view=surface&layers=chr%2Cisl%2Cenc&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud"
+    }
+  },
+  {
+    "name": "1440 filter cycle 1",
+    "actual": {
+      "layers": null,
+      "judMarks": 0,
+      "hash": "#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud"
+    }
+  },
+  {
+    "name": "1440 invalid URL",
+    "actual": {
+      "hash": "#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc",
+      "selected": 0,
+      "lanes": 8
+    }
+  },
+  {
+    "name": "event provenance",
+    "actual": "Seesen temple inaugurated\n\n17 July 1810\n\nYear given by the source\n\nSource: jud-seesen\n\nBACK TO THE OVERVIEW"
+  },
+  {
+    "name": "source anchors",
+    "actual": 0
+  },
+  {
+    "name": "clear focus",
+    "actual": {
+      "tag": "BODY",
+      "id": "",
+      "inside": false
+    }
+  },
+  {
+    "name": "390 overview",
+    "actual": {
+      "marks": 91,
+      "undated": 78,
+      "overflow": false,
+      "coverage": "Coverage91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships.Not shown, because the data does not support it yetFamily genealogy: no accepted parent/child records yet.Succession: no accepted succession records yet.Migration or travel: 12 journeys are described in text only, without ordered dated stops.129 relationships have no source locator on the relationship itself; listed, not drawn as fact.",
+      "reduced": true
+    }
+  },
+  {
+    "name": "390 zoom/reset",
+    "actual": {
+      "before": "366",
+      "zoom": "586",
+      "reset": "366"
+    }
+  },
+  {
+    "name": "390 Back focus",
+    "actual": "tlBtn"
+  },
+  {
+    "name": "390 Forward selection",
+    "actual": {
+      "sel": "n:jud-second-temple",
+      "restored": "n:jud-second-temple"
+    }
+  },
+  {
+    "name": "390 repeated Escape",
+    "actual": {
+      "len": 3,
+      "after": 3,
+      "focus": "tlBtn"
+    }
+  },
+  {
+    "name": "390 lane controls",
+    "actual": {
+      "first": "lane-chr",
+      "summaries": 1,
+      "hash": "#world=earth&site=jerusalem&view=surface&tl=lane-chr%2Clane-jud%2Clane-isl%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc&tlc=lane-jud",
+      "focus": "<button class=\"btn tl-mv\" data-lane-mv=\"1\" data-lane=\"lane-chr\" aria-label=\"Move Christianity down\">↓</button>"
+    }
+  },
+  {
+    "name": "390 collapsed list",
+    "actual": {
+      "dated": 91,
+      "undated": 60,
+      "controls": 0,
+      "collapsedText": ["Judaism · 18 undated, lane collapsed"]
+    }
+  }
+]
