@@ -1,0 +1,53 @@
+# Supplementary checkpoint 22: front matter and JS—History prose
+
+Implementation **82a0053bf64e680554afe5a178576f9c017b1fc0**, code **d42c27b9276a04469e8b1ad3adc4fe024845e5e8**, baseline **91a69fbaa9f42e9409955f0c2d35fe59eb02fdd0**, prior review **4cbf1304d9450968639bcbbab80b33569990bcd3**. Accepted register **9cc874c09a3686119ca6b4c17c7e16f214fd7ab6**, completed research **3729dbb33a98705fe8117a2aa53d9d058b870d9d**. Parallel documentation audit only; Claude retains implementation, lock and fixing ownership. No release approval.
+
+**S21-C1/C2 close.** All nine parenthood ages and locators appear in id03 without calendar-year inference; id04 explicitly makes Sarai Abraham's wife. The optional attributed id10 gloss summary landed with its limits. The other S21 answers retain their prior dispositions.
+
+**Nine new SD imports compared:** SD1252–1260 correctly consolidate into FM01–FM09, not nine new entities. Seven have no new copy/source-link finding; two require the supporting citations in S22-C1 below. No new factual error established in these nine source views. **Six SC49 children and two SC51 neutral cards** were compared in full against the accepted prose. Their minimum copy is retained, but prose compliance does not close canonical identity reuse or typed-link integration.
+
+## S22-C1 — complete the two source sets
+
+The new generator rewrites only FM descriptions, retaining their original sources. Two expansions now rely on a different official page:
+
+| Target | Supported assertion / exact source addition |
+|---|---|
+| FM08 / SD1259 | The translated-record qualification for section 7. Add source label **D&C 7, historical heading** with `https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/7?lang=eng`. |
+| FM09 / SD1260 | The 1981 D&C edition milestone, distinct from the 1976 addition and 1979 transfer. Add source label **D&C introduction, 1981 edition** with `https://www.churchofjesuschrist.org/study/scriptures/dc-testament/introduction?lang=eng`. |
+
+These are citation corrections, not reversals of the copy. The [D&C 7 heading](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/7?lang=eng) supplies its translated-record attribution; the [D&C introduction](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/introduction?lang=eng) supplies the 1981 inclusion. The [PGP introduction](https://www.churchofjesuschrist.org/study/scriptures/pgp/introduction?lang=eng) gives 1976/1979, but not 1981. All three were checked on 2026-11-02. Retain both existing source links and current gates (`4/dc`, `5/pgp`). Extend generator source handling and mapping locators so regeneration preserves the added sources; do not patch only the generated pack. Acceptance: exact-head generation produces both source additions without changing the work/layer boundaries or duplicating cards.
+
+## SC49 and SC51: retained prose and precise remaining integration
+
+[Prose comparison](supplementary-review-s22/prose-comparison.csv) records all eight added cards, their actual copy, sources and gates. The six SC49 children follow QG14's separate Cowdery view in accepted order. Family identities/membership, employment and marriage, relayed testimony, material episodes, reciprocal baptism and quoted referents are retained. The mandatory failed-mine context is present. The two Lucy identities are separate; unnamed/first-name-less people remain so. No source dates or coordinates are invented. Existing Cowdery attribution remains unchanged.
+
+The receipt now gives a target for every SC49 bullet and preamble, and three explicit SC51 paragraph mappings. **This closes the previously missing minimum prose-import/crosswalk gap**, not every identity or navigable relationship requirement. Child CSV rows inherit SC47/SD1225 parent provenance; the receipt and this comparison explicitly identify their SC49 obligation. Do not count these children as new SD rows.
+
+Builder answers:
+
+1. **Keep D&C-specific person cards at `4/dc`.** Lowering the whole card to 3 would expose later detail. FM04/FM05 provide neutral signatory names at `3/bom`, FM02 supplies translator credit, and the two new Whitmer keys satisfy their separate neutral-card instruction. This is a sound source-view gate design. It does **not** automatically fulfill the accepted shared-entity/alias requirement. Before claiming full SC49/51 integration, supply a per-person crosswalk for all 12 neutral front-matter identities: Joseph Smith Jr.; Oliver Cowdery, David Whitmer, Martin Harris; Christian Whitmer, Jacob Whitmer, Peter Whitmer Jr., John Whitmer, Hiram Page, Joseph Smith Sr., Hyrum Smith and Samuel H. Smith. Show the accepted identity key, neutral source-view target, later D&C/PGP targets, name aliases and per-source gate. No surname-only kinship. If an identity/navigation capability remains unimplemented, record that explicitly in the broader BA07 gap list rather than claiming a closed entity merely because its name occurs in prose. No new external source or owner decision is needed to prepare this mapping. A reduction of agreed behavior would require a separate decision.
+2. **PGP children may refer to earlier D&C identities**, but their own `5/pgp` gate must remain. A plain See-also title is not a working cross-link; an earlier-work target may also be hidden by a PGP-only layer filter. The builder must separately demonstrate supported navigation/filter behavior or document the limitation for final integration. Do not silently lower a source-specific card's work gate to make a link visible. This audit confirms title existence and current source gates, not live navigation.
+3. **FM01–07's source-scoped wording is acceptable.** They avoid later-work titles while retaining the BoM testimony and editorial distinctions. FM06 remains a second source view of the same episodes, not a second occurrence. Do not hide neutral witness names at group 3 simply because a research key begins `dcp-`.
+
+The nine rewritten FM cards preserve key/name/source/gates and change description only. The revised FM01 keeps neutral Palmyra/year separate from month-specific history, and FM03/FM06 preserve the unresolved battlefield identification. FM07 keeps editorial provenance distinct from archaeological discovery. FM08 distinguishes the 1831/1835 testimony contexts; its summary is not an independent reconstruction of participants in 1831. FM09 separates compilation, canonization, transfer and edition dates.
+
+Targeted source verification used [JS—History 1:56–75](https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng) for the new activity/relationship summaries and the [BoM Joseph Smith testimony](https://www.churchofjesuschrist.org/study/scriptures/bofm/js?lang=eng) for FM06's distinct movements and reporting date. Other accepted front-matter and family evidence is reused, not claimed as newly read or independently historically corroborated. No raw source captures or retrospective access hashes are published.
+
+## Reproducible checks and accounting
+
+```sh
+node docs/universes/packs/lds-standard-works/supplementary-review-s22/probe.cjs
+python docs/universes/packs/lds-standard-works/supplementary-review-s22/accounting.py
+```
+
+- [Probe](supplementary-review-s22/probe-result.json): **eight added / 12 changed / 1,500 unchanged prior cards**, 1,520 total and 1,487 unique keyed cards. Nine FM rewrites plus three S21 corrections account for all changed cards. All other pack data and engine JS/CSS/layers are unchanged. **500 work/layer combinations and 61 earlier-work exclusions pass**. Six new children are consecutive after Cowdery; the two Whitmer cards are `3/bom`, the children `5/pgp`.
+- [Accounting](supplementary-review-s22/accounting-result.json): every one of **1,271 SD rows** retains accepted source/declaration/hash provenance, with all prior SD mappings unchanged. The nine changed states are exactly SD1252–1260. Imported and composite constraint targets all resolve after splitting their explicit semicolon lists. Pack and mapping reproduce **byte-for-byte** in an isolated temporary directory, including new `copy_fm.py`.
+- **1,260 imported / 11 pending SD rows:** SC52 three, SC53 four, SC54 four. There are **1,365 mapping rows, 1,354 imported mapping rows**, 81 children, nine standalone prose cards, one prior consolidated prose mapping and three new constraint mappings. Resolved imported targets total **1,326 unique card keys**, including nine existing primary FM cards; excluding those gives **1,317 supplementary cards**. Composite mapping strings are not new cards and must not inflate counts.
+- [43/43 local tests](supplementary-review-s22/unit-results.txt) passed at the implementation head. Coverage, source-witness and reference-disposition validators passed, with outputs retained. Capture validation is local provenance checking, not proof of fresh reading or historical truth.
+- Exact implementation [CI 41371026649](https://github.com/mckayec/universe-sandbox/actions/runs/41371026649) and review-head terminal results are recorded in the main publication handoff. This reviewer ran no browser, DOM or server.
+
+## Screenshot evidence and next gates
+
+Six of the 12 committed S22 images were inspected: all three tabs at **390×844 and 1440×900**. They show the new JS—History family/activity cards, neutral Whitmer cards and FM witness descriptions with work badges and sources. The compact selector truncates long labels and lower card text continues beyond the visible panel; still images do not prove scroll reachability. The other six screenshots were not independently inspected in this bounded pass. The receipt reports DOM-assisted selection, all target cards, no page overflow/console errors and SwiftShader captures on code d42c27b; these remain builder-reported observations. Native-select, keyboard/focus, real-GPU and final same-head rendered/technical acceptance remain open.
+
+Claude's next actions: **add S22-C1's two citations; finish the 11 model/geography rows under their attribution/uncertainty constraints; complete the shared identity/link and broader BA07 integration crosswalk.** SC49 minimum prose is now present; SC51 neutral visibility and paragraph constraints are present, while shared identities/navigation remain explicitly open. Earlier primary 169-view obligations, vision/timeline/source relationships and accepted dense-reference dispositions are not re-audited or waived. Zero pending imports would not close those obligations. Return changed code for exact-head review. The schematic remains approved; separate archaeology/LiDAR artifacts do not block these Earth-atlas corrections. No source-access blocker, merge, deployment or release approval is asserted.

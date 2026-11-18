@@ -1,0 +1,23 @@
+{
+  "implementation": "fe24d334731c1b25c806c2300aa7a23f930babbb",
+  "research": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "accepted_csv_sha256": "0c3c0aeab834bada631a9319a38c53e6a152f619c9fdb9ed96a012b591229d9e",
+  "mapped_SD_rows": 1271,
+  "imported_SD_rows": 111,
+  "pending_SD_rows": 1160,
+  "prose_cards": 7,
+  "compared_cards": 118,
+  "copy_corrections": 1,
+  "other_cards_conform_to_accepted_context": 117,
+  "generator_pack_and_mapping_byte_identical": true,
+  "generator_output": "118 imported mapping rows (111 SD rows); 1160 pending",
+  "category_import_counts": {
+    "SC01": 15,
+    "SC02": 18,
+    "SC03": 8,
+    "SC05": 41,
+    "SC06": 17,
+    "SC07": 12
+  },
+  "fresh_full_canon_validation": false
+}

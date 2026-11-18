@@ -1,0 +1,42 @@
+{
+  "head": "6bf2812973995956e60cd3dc20472feb269cf916",
+  "cases": [
+    {
+      "name": "normal event activation",
+      "observedFocus": "event"
+    },
+    {
+      "name": "codex reopened",
+      "observedFocus": "#cxClose"
+    },
+    {
+      "name": "event replaced",
+      "observedFocus": "source"
+    },
+    {
+      "name": "event cleared",
+      "observedFocus": "source"
+    },
+    {
+      "name": "layer or year filters reject target",
+      "observedFocus": "source"
+    },
+    {
+      "name": "work gate locks target",
+      "observedFocus": "source"
+    },
+    {
+      "name": "target removed",
+      "observedFocus": "source"
+    },
+    {
+      "name": "reopen then close restores Codex button but pending callback overrides it",
+      "observedFocus": "event"
+    }
+  ],
+  "passingGuardCases": 7,
+  "remainingReproductions": 1,
+  "remainingFinding": "S27-C1: reopen/close before callback steals restored Codex-button focus; current-state checks do not detect intervening navigation",
+  "cameraUpdateOrder": "verified statically in both branches; no rendering execution",
+  "browserExecuted": false
+}

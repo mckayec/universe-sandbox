@@ -1,0 +1,22 @@
+key,old_semantic_state,current_ledger_state,payload,locators,evidence
+BMC-002,relation-no-card,omitted,bounded consolidation,1 Nephi 2,S37 accepted primary evidence reused; not freshly read
+BMC-013,relation-no-card,implemented,new source view,1 Nephi 13:20–29,S37 accepted primary evidence reused; not freshly read
+BMC-016,relation-no-card,omitted,bounded consolidation,1 Nephi 16,S37 accepted primary evidence reused; not freshly read
+BMC-031,reader,implemented,new source view,2 Nephi 9:6–10,S37 accepted primary evidence reused; not freshly read
+BMC-051,relation-no-card,implemented,new source view,2 Nephi 29:3–14,S37 accepted primary evidence reused; not freshly read
+BMC-053,candidate,implemented,new source view,2 Nephi 31:4–12,S37 accepted primary evidence reused; not freshly read
+BMC-081,unstated-parallel,implemented,new source view,"Mosiah 15:13–18, 28–31",S37 accepted primary evidence reused; not freshly read
+BMC-094,relation-no-card,implemented,new source view,Mosiah 28:17–19,S37 accepted primary evidence reused; not freshly read
+BMC-100,unstated-parallel,implemented,new source view,Alma 5:57–60,S37 accepted primary evidence reused; not freshly read
+BMC-113,reader,implemented,new source view,Alma 18:36,S37 accepted primary evidence reused; not freshly read
+BMC-124,candidate,implemented,new source view,Alma 29:11–13,S37 accepted primary evidence reused; not freshly read
+BMC-164,namesake,omitted,bounded consolidation,Helaman 6,S37 accepted primary evidence reused; not freshly read
+BMC-172,candidate,implemented,new source view,Helaman 14:14–25,S37 accepted primary evidence reused; not freshly read
+BMC-186,candidate,implemented,new source view,3 Nephi 12:1–12,S37 accepted primary evidence reused; not freshly read
+BMC-188,reader,implemented,new source view,3 Nephi 14:1–14,S37 accepted primary evidence reused; not freshly read
+BMC-191,unstated-parallel,implemented,new source view,"3 Nephi 17:4, 7–9",S37 accepted primary evidence reused; not freshly read
+BMC-192,unstated-parallel,implemented,new source view,3 Nephi 18:1–11,S37 accepted primary evidence reused; not freshly read
+BMC-202,reader,implemented,new source view,3 Nephi 28:4–9,S37 accepted primary evidence reused; not freshly read
+BMC-212,relation-no-card,implemented,new source view,Mormon 7:8–10,S37 accepted primary evidence reused; not freshly read
+BMC-214,reader,implemented,new source view,Mormon 9:11–13,S37 accepted primary evidence reused; not freshly read
+BMC-215,relation-no-card,implemented,new source view,"Ether 1:3–5, 33–37",S37 accepted primary evidence reused; not freshly read

@@ -1,0 +1,13 @@
+{
+  "head": "ed7a49bbe7bb1620b49eaa6c33799f5352663c4e",
+  "base": "1e8753001d674992603dee6153175c54204f60e9",
+  "acceptedRegister": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1365,
+  "importedSD": 1271,
+  "pendingSD": 0,
+  "mappingUnchanged": true,
+  "typedContractRows": 54,
+  "generatorPasses": 2,
+  "packMappingAndBothCrosswalksByteIdentical": true,
+  "newImports": 0
+}

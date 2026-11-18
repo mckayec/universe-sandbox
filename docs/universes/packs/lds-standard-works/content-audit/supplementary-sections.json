@@ -1,0 +1,76 @@
+{
+  "coverage-bom.md": [
+    "Place identities needing distinct records or explicit notes",
+    "Further material places from Alma 23–63",
+    "Journey additions (schematic sequence only)",
+    "People and relationships: minimum safe disambiguation",
+    "Additional place register from the completed chapter sweep",
+    "Later journey and event integration map",
+    "People and explanatory-entry additions"
+  ],
+  "coverage-nt.md": [
+    "Substantive inventory audit and stable candidate registry",
+    "Journey additions and repairs",
+    "Event families and source-specific children",
+    "Explanatory entries retained despite no new map site",
+    "People and relationship families"
+  ],
+  "coverage-ot-history.md": [
+    "Structured record families",
+    "Shared material places",
+    "People, relationships and deliberate non-merges",
+    "Journeys and event reuse",
+    "Explanatory entry keys across legal and nonspatial chapters"
+  ],
+  "coverage-ot-late-history.md": [
+    "Place and region index for integration",
+    "Ordered movements and non-movements",
+    "People, relationships and explanatory entries",
+    "Additional material places and aliases",
+    "Additional movement and source-view identity",
+    "Targeted apparatus, aliases and gate audit"
+  ],
+  "coverage-ot-major-prophets.md": [
+    "Material place and region records",
+    "Ordered movements and intentionally nonliteral movements",
+    "People and typed relationships",
+    "Explanatory and interpretive records",
+    "Additional reported movements retained from the complete chapter pass",
+    "Targeted apparatus interpretation and cross-work gates"
+  ],
+  "coverage-ot-wisdom-prophets.md": [
+    "Places and named poetic settings",
+    "Events, journeys and relationships",
+    "Explanatory entries and rendering limits",
+    "Selected JST appendix comparison (five complete selections read)",
+    "Bounded inline apparatus audit"
+  ],
+  "coverage-dc.md": [
+    "Place candidates",
+    "Event and journey candidates",
+    "Explanatory and relationship records",
+    "Additional settings and explanatory copy",
+    "Additional typed relationship records",
+    "Resolved recipient, traveler and office roster",
+    "Fully expanded companion and office relations",
+    "Ancient and visionary participants: separate identity space",
+    "Document-to-event decisions closed for research handoff",
+    "Explicit dispositions for the remaining documentary material",
+    "Complete disposition matrix"
+  ],
+  "coverage-pgp.md": [
+    "Additional research records and relationships",
+    "Fine-grained coverage for the single-chapter components",
+    "Stable-key and named-entity dispositions",
+    "Joseph Smith—History person and material index"
+  ],
+  "frontmatter-inventory.md": [
+    "@preamble",
+    "Binding integration adjustments"
+  ],
+  "geography-evidence.md": [
+    "Named model comparisons",
+    "Arabian narrative: statements that can be displayed without locating them",
+    "Jaredite narrative: Ether 1–3"
+  ]
+}

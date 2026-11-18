@@ -1,0 +1,14 @@
+{
+  "head": "47debcfdb86a3e41a023a30e04c6fcd5bd7209b0",
+  "base": "fe24d334731c1b25c806c2300aa7a23f930babbb",
+  "mappingRowsChecked": 1278,
+  "SDRowsCheckedAgainstResearch": 1271,
+  "importedSD": 111,
+  "proseCards": 7,
+  "pendingSD": 1160,
+  "changedMappingRows": [
+    "SC04.4 locators only"
+  ],
+  "generatorPackAndMappingByteIdentical": true,
+  "result": "pass"
+}

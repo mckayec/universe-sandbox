@@ -1,0 +1,18 @@
+{
+  "head": "82a0053bf64e680554afe5a178576f9c017b1fc0",
+  "base": "91a69fbaa9f42e9409955f0c2d35fe59eb02fdd0",
+  "addedCards": 8,
+  "changedPriorCards": 12,
+  "unchangedPriorCards": 1500,
+  "totalCards": 1520,
+  "uniqueKeyedCards": 1487,
+  "gateCombinations": 500,
+  "earlyWorkExclusions": 61,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S22-C1 FM08/FM09 supporting links missing; identity integration remains separate"
+  ]
+}

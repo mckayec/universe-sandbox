@@ -1,0 +1,45 @@
+✔ layers normalise with defaults and the starting set honours on:false (2.310875ms)
+✔ layerOk shows unlayered items and any item with one active layer (0.180271ms)
+✔ toggleLayer never switches off the last layer and collapses to null when all are on (0.171578ms)
+✔ timeline range overlap, undated items and the missing year zero (0.511729ms)
+✔ timeline bounds fall back to the data when the pack gives none (0.180381ms)
+✔ years format without a year zero in both styles (0.270286ms)
+✔ address-bar state round-trips and rejects junk (0.791991ms)
+✔ the filter bar escapes pack text and marks pressed layers (0.913825ms)
+✔ place notes obey their own layers, years and reading gate (0.385079ms)
+✔ codex entries split into shown, locked by reading order and hidden by filter (0.542205ms)
+✔ journeys draw only legs between consecutive placed stops (0.317367ms)
+✔ great-circle points start and end at the stops and stay on the sphere path (0.359351ms)
+✔ the pack validator accepts the Track A fixture and catches bad layer and year data (7.125056ms)
+✔ BA01: Lystra and South Pass are held as named unplaced stops, not pins (1.458564ms)
+✔ BA05: each codex account follows only its own layer (1.077621ms)
+✔ BA05 control: Jerusalem keeps its separately layered notes (0.410727ms)
+✔ BA06: the Fayette reference point agrees with its 1829 episodes under time filtering (0.243787ms)
+✔ BA02/BA03: register coordinates and visible qualifications are applied (0.360021ms)
+✔ BA07: 62 specified source views resolve, one work layer each, no dates or pins (4.9999ms)
+✔ R1-C1: Salamis credits its active ToposText point (0.116265ms)
+✔ R1 BA07: Palmyra has a neutral BoM facet; printing history stays with D&C (0.311368ms)
+✔ BA07 round 2: 108 further source views (107 research IDs) resolve with their own gates (4.979819ms)
+✔ Supplementary SC01–SC07: every Book of Mormon SD row maps to one bom-layer card with sources (4.389171ms)
+✔ Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer card with sources (4.123542ms)
+✔ Supplementary SC13–SC17: every Old Testament history SD row maps to one ot-layer card with sources (5.955227ms)
+✔ Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card (2.819791ms)
+✔ Supplementary SC25–SC28 and S6-C1: major-prophet rows map to OTM cards; SC22 prose consolidated (3.495682ms)
+✔ Supplementary SC24 and S7-C1/C2: major-prophet places, temple chapter views, OT-only Zedekiah card (3.265231ms)
+✔ Supplementary SC29, SC30, SC33: apparatus rows, poetic place views and JST selections (3.542507ms)
+✔ Supplementary SC31, SC32, SC34 and S9-C1: wisdom and Twelve events, reading limits and chapter notes (3.383018ms)
+✔ Supplementary S3/S4 review fixes: child source views follow their parents and required details are present (2.188302ms)
+✔ Supplementary S10 and S3-C1 (SD0214, SD0240): Dura, chapter sources, JST comparisons, pericope views (0.987015ms)
+✔ Supplementary S11 fixes: parable contexts, Psalm note labels and the two separate genealogies (0.935507ms)
+✔ Supplementary SC35–SC39: D&C place, event, teaching and relationship rows map to dc-layer cards (2.930408ms)
+✔ Supplementary checkpoint 15: S14-C1–C3 copy and SC40 person cards in dc-more (3.735798ms)
+✔ Supplementary checkpoint 16: S15-C1/C2 and SC41 office and companion relations in dc-more (3.551391ms)
+✔ Supplementary checkpoint 17: SC42 ancient participants and SC43 dated events in dc-more (5.250426ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 232.287328

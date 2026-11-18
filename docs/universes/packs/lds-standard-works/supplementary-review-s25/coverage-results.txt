@@ -1,0 +1,69 @@
+{
+  "canonical_units_expected": 1587,
+  "unit_definition": "1189 Bible chapters +239 BoM chapters +138 D&C sections +2 declarations +16 PGP chapters +3 facsimile explanations",
+  "files": [
+    {
+      "file": "coverage-bom.csv",
+      "units": 239,
+      "depth": {
+        "inspected": 239
+      }
+    },
+    {
+      "file": "coverage-dc.csv",
+      "units": 140,
+      "depth": {
+        "inspected": 140
+      }
+    },
+    {
+      "file": "coverage-nt.csv",
+      "units": 260,
+      "depth": {
+        "inspected": 260
+      }
+    },
+    {
+      "file": "coverage-ot-history.csv",
+      "units": 338,
+      "depth": {
+        "inspected": 338
+      }
+    },
+    {
+      "file": "coverage-ot-late-history.csv",
+      "units": 98,
+      "depth": {
+        "inspected": 98
+      }
+    },
+    {
+      "file": "coverage-ot-major-prophets.csv",
+      "units": 171,
+      "depth": {
+        "inspected": 171
+      }
+    },
+    {
+      "file": "coverage-ot-wisdom-prophets.csv",
+      "units": 322,
+      "depth": {
+        "inspected": 322
+      }
+    },
+    {
+      "file": "coverage-pgp.csv",
+      "units": 19,
+      "depth": {
+        "inspected": 19
+      }
+    }
+  ],
+  "total_depth": {
+    "inspected": 1587
+  },
+  "unrepresented_units": [],
+  "errors": [],
+  "scope_ready": false,
+  "scope_ready_reason": "Ledger integrity is not canon/source/integration approval. See substantive audit and status."
+}

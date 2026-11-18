@@ -1,0 +1,31 @@
+{
+  "head": "3e1f46091306c136610758a92a52589ac9a5e9f4",
+  "base": "6bf2812973995956e60cd3dc20472feb269cf916",
+  "changedFiles": [
+    "docs/universes/packs/lds-standard-works/shots/s27-event-completed-1440x900.jpg",
+    "docs/universes/packs/lds-standard-works/shots/s27-event-moving-1440x900.jpg",
+    "docs/universes/packs/lds-standard-works/shots/s27-zion-390x844.jpg",
+    "docs/universes/packs/lds-standard-works/shots/s27-zion-link-1440x900.jpg",
+    "docs/universes/packs/lds-standard-works/supplementary-implementation.md"
+  ],
+  "applicationTestsGeneratorsMappingsUnchanged": true,
+  "images": [
+    {
+      "path": "docs/universes/packs/lds-standard-works/shots/s27-event-completed-1440x900.jpg",
+      "sha256": "f7b81cb4642b70980f1aab6663f9b8a88ace17e9515a2bf6ab2e8d9d99ca8701"
+    },
+    {
+      "path": "docs/universes/packs/lds-standard-works/shots/s27-event-moving-1440x900.jpg",
+      "sha256": "6436ca332e62d6009a61277c7878c993e89ef262fa2dff42c801475efa50fd3a"
+    },
+    {
+      "path": "docs/universes/packs/lds-standard-works/shots/s27-zion-390x844.jpg",
+      "sha256": "b0b5af7c9bb33570845676d3a58ae203aa3b24ed997c4e988bf9596757832e79"
+    },
+    {
+      "path": "docs/universes/packs/lds-standard-works/shots/s27-zion-link-1440x900.jpg",
+      "sha256": "8920edf2b7d6626f6dfe0ba87de01ce19c7be5a195befe3694deaf718341a4ce"
+    }
+  ],
+  "scope": "Image hashes attest repository bytes; four images viewed independently. No browser/server execution or independent reproduction of builder probe."
+}

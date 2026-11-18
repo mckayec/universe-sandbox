@@ -1,0 +1,16 @@
+{
+  "head": "a89df3ee1ee97d713790ef7f999c305befc54604",
+  "base": "29e888069f32f7e2e5cd0ea8a0b5912af5a52339",
+  "totalCards": 1576,
+  "bmcViews": 53,
+  "newViews": 14,
+  "changedCitations": 0,
+  "unchangedNonBmcCards": 1523,
+  "bmcLinks": 81,
+  "newLinks": 15,
+  "totalLinks": 462,
+  "reachabilityCases": 5832,
+  "allNonBmcPackDataEngineAndMappingsUnchanged": true,
+  "browserExecuted": false,
+  "result": "pass"
+}

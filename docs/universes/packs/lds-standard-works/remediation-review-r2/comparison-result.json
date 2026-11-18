@@ -1,0 +1,22 @@
+{
+  "implementation": "dcc793c6036f9dc26ec4286d8c132c272638fd40",
+  "prior_implementation": "5a9711eb2676e0b421fb093211fc0be97ae2b368",
+  "research": "3729dbb33a98705fe8117a2aa53d9d058b870d9d",
+  "builder_receipt": "fd8320936e75a26c16273156a7c27733add42df0",
+  "specified_IDs": 169,
+  "keyed_cards": 170,
+  "builder_mapping_rows": 170,
+  "PGP_titles_checked": 18,
+  "prior_cards_preserved": 95,
+  "new_cards": 108,
+  "total_codex_cards": 203,
+  "sites": 34,
+  "changed_sites": [
+    "salamis",
+    "palmyra"
+  ],
+  "unchanged_events": 24,
+  "unchanged_routes": 9,
+  "supplementary_mapping": "not supplied; builder explicitly defers SC01\u201354 implementation",
+  "limits": "Source conformity and data equality only; not rendered, historical or full-canon certification"
+}

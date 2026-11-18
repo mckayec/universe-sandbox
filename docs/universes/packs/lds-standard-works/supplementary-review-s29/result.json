@@ -1,0 +1,41 @@
+{
+  "head": "34c34d96920a224d24ea8a56f86ad505c7ab8e7f",
+  "base": "e58e9a16c46b7216b055b9817a8dea464713a90e",
+  "helperStateChecks": 22,
+  "results": [
+    {
+      "name": "normal motion",
+      "observed": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "single delayed completion",
+      "observed": [
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "name": "repeated jumps",
+      "observed": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ]
+    }
+  ],
+  "frameEntryAndBothLayoutOrders": "pass",
+  "packLayersCssMappingsCrosswalksUnchanged": true,
+  "browserExecuted": false
+}

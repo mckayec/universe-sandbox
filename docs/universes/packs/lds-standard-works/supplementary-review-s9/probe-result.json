@@ -1,0 +1,18 @@
+{
+  "head": "a3ac8f89d3e501eea41a83f4ab31a12b9de8ca95",
+  "base": "0171db7e863b196a25993dec20999907bac43012",
+  "addedCards": 32,
+  "changedPriorCards": 3,
+  "unchangedPriorCards": 928,
+  "totalCards": 963,
+  "uniqueKeyedCards": 930,
+  "gateCombinations": 875,
+  "preNTAllLayerExclusions": 3,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "See review for source-reference versus integration limits"
+  ]
+}

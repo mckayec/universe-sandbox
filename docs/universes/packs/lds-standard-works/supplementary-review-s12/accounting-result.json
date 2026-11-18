@@ -1,0 +1,21 @@
+{
+  "head": "517a24afd70610485e6da6ce158660cf0ee0e31d",
+  "base": "684cec17a7fea64f4f82f160bd469b16485a4d3f",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1351,
+  "SDRowsReconciled": 1271,
+  "importedSD": 790,
+  "pendingSD": 481,
+  "newSDImports": 0,
+  "standaloneProse": 7,
+  "consolidatedProse": 1,
+  "childRows": 72,
+  "newChildRows": 6,
+  "newCards": 6,
+  "importedMappingRows": 870,
+  "supplementaryCards": 858,
+  "MatthewMainChainOccurrences": 40,
+  "LukeOccurrences": 77,
+  "generatorPackAndMappingByteIdentical": true,
+  "freshFullPrimaryReading": false
+}

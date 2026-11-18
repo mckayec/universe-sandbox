@@ -1,0 +1,40 @@
+{
+  "head": "52507fc725d1d4834aaf34449fedec685df28590",
+  "base": "66c87095778b29b86e4750e48e8b9596dc21af10",
+  "changedFiles": [
+    "docs/universes/packs/lds-standard-works/shots/s42-finished-1440x900.jpg",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s42-probe-output.txt",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s42-probe.mjs",
+    "docs/universes/packs/lds-standard-works/supplementary-build/timeline_vision.cjs",
+    "docs/universes/packs/lds-standard-works/supplementary-implementation.md",
+    "docs/universes/packs/lds-standard-works/timeline-source-vision.csv",
+    "tests/lds-pack.test.ts"
+  ],
+  "runtimeAndImportOmissionLedgersUnchanged": true,
+  "rows": 154,
+  "priorRowsPreserved": 137,
+  "addedChildRows": 17,
+  "allInheritedChildren": 21,
+  "keywordCandidates": 96,
+  "visionClasses": {
+    "": 41,
+    "vision-reception": 3,
+    "vision-setting": 10,
+    "vision-content": 53,
+    "not-vision": 25,
+    "mixed": 7,
+    "theme": 4,
+    "vision-participant": 10,
+    "vision-record": 1
+  },
+  "dateClasses": {
+    "site-period": 12,
+    "synthesis": 11,
+    "no-year": 119,
+    "documentary": 8,
+    "narrated": 4
+  },
+  "generatorReproductions": 2,
+  "browserExecuted": false,
+  "result": "pass"
+}

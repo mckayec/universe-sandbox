@@ -1,0 +1,18 @@
+{
+  "head": "e09d6e83bb8774e798cdf583150f380eff2b0282",
+  "base": "82a0053bf64e680554afe5a178576f9c017b1fc0",
+  "addedCards": 3,
+  "changedPriorCards": 7,
+  "unchangedPriorCards": 1513,
+  "totalCards": 1523,
+  "uniqueKeyedCards": 1490,
+  "gateCombinations": 250,
+  "earlyWorkExclusions": 23,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S23-C1 Church geography position notice missing beside model summaries; see report"
+  ]
+}

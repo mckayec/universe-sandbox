@@ -1,0 +1,18 @@
+{
+  "head": "be4c60eab72a4db26d81d18e4f977688016721ca",
+  "base": "e7a532a9009b7a4bcc485a52b6f32c0a09ab9def",
+  "addedCards": 18,
+  "changedPriorCards": 4,
+  "unchangedPriorCards": 1480,
+  "totalCards": 1502,
+  "uniqueKeyedCards": 1469,
+  "gateCombinations": 550,
+  "earlyWorkExclusions": 84,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S20-C1 QG07 retained age/name payload missing; see report"
+  ]
+}

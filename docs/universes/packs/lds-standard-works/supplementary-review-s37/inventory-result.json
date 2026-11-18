@@ -1,0 +1,20 @@
+{
+  "head": "102f697cd8ce55118a441d4d91e1f74542c52688",
+  "base": "57486b2e44c58e908db3f2f71f2992ed09c4760d",
+  "semanticRows": 167,
+  "uniqueKeys": 167,
+  "states": {
+    "relation-no-card": 7,
+    "represented": 17,
+    "no-bible-relation": 63,
+    "reader": 5,
+    "candidate": 4,
+    "practice-or-title": 4,
+    "namesake": 63,
+    "unstated-parallel": 4
+  },
+  "targetedPrimaryKeys": 21,
+  "otherReasonScreenedKeys": 146,
+  "primaryAbsenceCertified": false,
+  "runtimeAndOldMappingUnchanged": true
+}

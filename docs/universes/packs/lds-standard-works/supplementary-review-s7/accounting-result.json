@@ -1,0 +1,29 @@
+{
+  "head": "851715884a6969308ac1eadd7ff6cd4d37b7e2fb",
+  "base": "11b2491eeafb7a9e93ede1959f34f6f0eff9bcb4",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1304,
+  "SDRowsReconciled": 1271,
+  "importedSD": 627,
+  "pendingSD": 644,
+  "standaloneProse": 7,
+  "consolidatedProse": 1,
+  "childRows": 25,
+  "newSDRowsAndCards": 59,
+  "categoryCounts": {
+    "SC25": 23,
+    "SC26": 17,
+    "SC27": 15,
+    "SC28": 4
+  },
+  "all59SourceURLSetsMatchAcceptedPlusExplicitComparison": true,
+  "generatorPackAndMappingByteIdentical": true,
+  "S6C1MappingClosed": true,
+  "manualDispositionCounts": {
+    "conforms-to-accepted-minimum-context": 56,
+    "partial-S7-C1-chapter-payload": 1,
+    "S7-C2-earlier-work-name-exposure": 1,
+    "OT-facet-conforms-later-child-pending-SD0706": 1
+  },
+  "fullPrimaryRereading": false
+}

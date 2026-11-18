@@ -1,0 +1,11 @@
+{
+  "base": "f877f76f295fc09bd80b28d455ce59a093f31271",
+  "head": "b62bd3cf2d4c4218504b9c5b91720eacce98551f",
+  "pages": 13,
+  "extendedReadinessPages": 1,
+  "unchangedReadinessPages": 12,
+  "assertionsAfterReadinessUnchanged": true,
+  "applicationAndTargetedTestsUnchanged": true,
+  "browserExecuted": false,
+  "result": "pass"
+}

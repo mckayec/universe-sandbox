@@ -1,0 +1,19 @@
+{
+  "head": "0171db7e863b196a25993dec20999907bac43012",
+  "base": "851715884a6969308ac1eadd7ff6cd4d37b7e2fb",
+  "addedCards": 79,
+  "changedPriorCards": 4,
+  "unchangedPriorCards": 848,
+  "totalCards": 931,
+  "uniqueKeyedCards": 898,
+  "gateCombinations": 2075,
+  "preNTAllLayerExclusions": 0,
+  "allOtherPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false,
+  "knownContentFindings": [
+    "S8-C1 Samaria city/region wording",
+    "S8-C2 Ezekiel 46 source locator"
+  ]
+}

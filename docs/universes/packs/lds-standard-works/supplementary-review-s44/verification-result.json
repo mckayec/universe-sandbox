@@ -1,0 +1,150 @@
+{
+  "head": "4aa6571c45bd6cc9063e77c57f7a40156e0a4c26",
+  "base": "d84599cd2e67abc9265cc00873bd9eb482a0ce14",
+  "changedFiles": [
+    "docs/universes/packs/lds-standard-works/shots/s45-crumbs-1440.png",
+    "docs/universes/packs/lds-standard-works/shots/s45-crumbs-390.png",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s45-crumbs-contrast-probe-output.txt",
+    "docs/universes/packs/lds-standard-works/supplementary-build/s45-crumbs-contrast-probe.mjs",
+    "docs/universes/packs/lds-standard-works/supplementary-implementation.md",
+    "public/atlas/engine.css"
+  ],
+  "packAndEngineJSUnchanged": true,
+  "rows": [
+    {
+      "id": "sun-eater",
+      "back": 0,
+      "link": 7.6626491978852,
+      "here": 13.086551250078724,
+      "hover": 16.364129732026374,
+      "separator": 4.6370281054983575,
+      "focus": 13.086551250078724
+    },
+    {
+      "id": "sun-eater",
+      "back": 255,
+      "link": 5.841748083479913,
+      "here": 9.976750039086726,
+      "hover": 12.475466517019314,
+      "separator": 3.9316341000837496,
+      "focus": 9.976750039086726
+    },
+    {
+      "id": "hyperion",
+      "back": 0,
+      "link": 7.0201464137631335,
+      "here": 10.341957954426245,
+      "hover": 14.835129914810722,
+      "separator": 4.306168867699243,
+      "focus": 10.341957954426245
+    },
+    {
+      "id": "hyperion",
+      "back": 255,
+      "link": 5.326589486926926,
+      "here": 7.847039259222183,
+      "hover": 11.256267659390181,
+      "separator": 3.640829320932152,
+      "focus": 7.847039259222183
+    },
+    {
+      "id": "expanse",
+      "back": 0,
+      "link": 7.6165804438902995,
+      "here": 11.48025263611562,
+      "hover": 16.910069799481835,
+      "separator": 4.6189613076842955,
+      "focus": 11.48025263611562
+    },
+    {
+      "id": "expanse",
+      "back": 255,
+      "link": 5.788162369294595,
+      "here": 8.724330660967752,
+      "hover": 12.850678909853771,
+      "separator": 3.9039546778587195,
+      "focus": 8.724330660967752
+    },
+    {
+      "id": "foundation",
+      "back": 0,
+      "link": 7.203860319832666,
+      "here": 12.811711987728884,
+      "hover": 15.96854142674798,
+      "separator": 4.410296813801899,
+      "focus": 12.811711987728884
+    },
+    {
+      "id": "foundation",
+      "back": 255,
+      "link": 5.445086757639632,
+      "here": 9.683819534232155,
+      "hover": 12.06993050965,
+      "separator": 3.711856351524539,
+      "focus": 9.683819534232155
+    },
+    {
+      "id": "dune",
+      "back": 0,
+      "link": 7.363186841033682,
+      "here": 12.410294479526309,
+      "hover": 16.072263558163485,
+      "separator": 4.491255267519227,
+      "focus": 12.410294479526309
+    },
+    {
+      "id": "dune",
+      "back": 255,
+      "link": 5.576573634951988,
+      "here": 9.399044529311576,
+      "hover": 12.172468680676811,
+      "separator": 3.7852533405821878,
+      "focus": 9.399044529311576
+    },
+    {
+      "id": "cosmere",
+      "back": 0,
+      "link": 6.963895357529677,
+      "here": 11.412558328620719,
+      "hover": 16.890693482423735,
+      "separator": 4.266105840203126,
+      "focus": 11.412558328620719
+    },
+    {
+      "id": "cosmere",
+      "back": 255,
+      "link": 5.314554421980456,
+      "here": 8.709588415325731,
+      "hover": 12.890272631720684,
+      "separator": 3.62923426676442,
+      "focus": 8.709588415325731
+    },
+    {
+      "id": "lds-standard-works",
+      "back": 0,
+      "link": 7.343486740957217,
+      "here": 13.071294684033866,
+      "hover": 15.843959096304227,
+      "separator": 4.4946810541046975,
+      "focus": 13.071294684033866
+    },
+    {
+      "id": "lds-standard-works",
+      "back": 255,
+      "link": 5.512701347435964,
+      "here": 9.81252453490688,
+      "hover": 11.893943264277146,
+      "separator": 3.754761473512139,
+      "focus": 9.81252453490688
+    }
+  ],
+  "minimums": {
+    "link": 5.314554421980456,
+    "here": 7.847039259222183,
+    "hover": 11.256267659390181,
+    "separator": 3.62923426676442,
+    "focus": 7.847039259222183
+  },
+  "assumptions": "source theme colors and alpha compositing; no screenshot pixel measurement or browser execution",
+  "result": "pass"
+}

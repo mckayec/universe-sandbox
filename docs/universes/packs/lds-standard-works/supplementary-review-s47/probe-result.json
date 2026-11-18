@@ -1,0 +1,31 @@
+{
+  "head": "6b8684523d9c67f3a241e637d48df2737e7b81cb",
+  "cases": 3,
+  "right": {
+    "edgeOut": false,
+    "flip": true,
+    "edgeDot": false,
+    "x0": 282,
+    "show": true,
+    "dot": false
+  },
+  "left": {
+    "edgeOut": false,
+    "flip": false,
+    "edgeDot": false,
+    "x0": -5,
+    "show": true,
+    "dot": false
+  },
+  "long": {
+    "edgeOut": false,
+    "flip": false,
+    "edgeDot": true,
+    "x0": 188,
+    "show": true,
+    "dot": true
+  },
+  "focusRecoveryGuardPresent": true,
+  "focusVisibilityDoesNotCheckClippingAncestors": true,
+  "browserOrDOMExecuted": false
+}

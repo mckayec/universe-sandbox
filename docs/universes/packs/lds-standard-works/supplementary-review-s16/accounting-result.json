@@ -1,0 +1,31 @@
+{
+  "head": "1a6b94eea246a39a795d79c22204226e2d8f001e",
+  "base": "a136f70aec3a7ff7c47c020b06205cf2d4587506",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1352,
+  "SDRowsReconciled": 1271,
+  "importedSD": 1033,
+  "pendingSD": 238,
+  "pendingByCategory": {
+    "SC42": 17,
+    "SC43": 21,
+    "SC45": 140,
+    "SC46": 16,
+    "SC47": 13,
+    "SC48": 11,
+    "SC50": 9,
+    "SC52": 3,
+    "SC53": 4,
+    "SC54": 4
+  },
+  "standaloneProse": 7,
+  "consolidatedProse": 1,
+  "childRows": 73,
+  "newSDRows": 36,
+  "newChildRows": 1,
+  "newCards": 37,
+  "importedMappingRows": 1114,
+  "supplementaryCards": 1102,
+  "generatorPackAndMappingByteIdentical": true,
+  "freshFullPrimaryReading": false
+}

@@ -1,0 +1,14 @@
+{
+  "rows": 137,
+  "uniqueRecords": 137,
+  "filterYears": 30,
+  "textOnlyDates": 5,
+  "classes": {
+    "site-period": 12,
+    "synthesis": 11,
+    "no-year": 102,
+    "documentary": 8,
+    "narrated": 4
+  },
+  "visionMatches": 96
+}

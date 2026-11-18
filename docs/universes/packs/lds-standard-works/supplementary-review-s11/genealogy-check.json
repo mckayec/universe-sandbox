@@ -1,0 +1,12 @@
+{
+  "matt": {
+    "ordered_name_occurrences": 40,
+    "fallback_capture_sha256": "85bf22b56a4b55b5e5f138dc270e7b0b36edf3c87541ca27fbbe73b756bb59ff",
+    "per_verse_name_order_matches_retained_fallback": true
+  },
+  "luke": {
+    "ordered_name_occurrences": 77,
+    "fallback_capture_sha256": "a4439cd14cd1dd637ae614bd556499dca8df92db4f5d9f4a69c3c571969c5576",
+    "per_verse_name_order_matches_retained_fallback": true
+  }
+}

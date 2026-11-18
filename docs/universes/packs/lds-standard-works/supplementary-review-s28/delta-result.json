@@ -1,0 +1,20 @@
+{
+  "head": "e58e9a16c46b7216b055b9817a8dea464713a90e",
+  "base": "3e1f46091306c136610758a92a52589ac9a5e9f4",
+  "packMappingCrosswalkUnchanged": true,
+  "cases": [
+    {
+      "motionActiveAtFrameEntry": true,
+      "completesDuringUpdate": false,
+      "jumpAtLabelLayout": true
+    },
+    {
+      "motionActiveAtFrameEntry": true,
+      "completesDuringUpdate": true,
+      "jumpAtLabelLayout": false
+    }
+  ],
+  "finding": "S28-V1: motion completing during the update leaves jump false at layout, even if the view just moved far",
+  "limits": "Source branch with fake update collaborators; not a screenshot or timing measurement",
+  "browserExecuted": false
+}

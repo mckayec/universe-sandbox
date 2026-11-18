@@ -1,0 +1,76 @@
+[
+  {
+    "mapping": {
+      "disposition_id": "",
+      "category": "SC30",
+      "source_location": "child of SD0721",
+      "research_declaration": "OTW-p15-bathrabbim",
+      "state": "imported",
+      "target": "codex:ot-more",
+      "target_key": "OTW-heshbon",
+      "display_name": "Heshbon",
+      "locators": "Numbers 21; Joshua 12; Song of Solomon 7:4",
+      "work_gate": "1/ot",
+      "consolidation_rule": "child source view required by its parent row",
+      "row_sha256": ""
+    },
+    "card": {
+      "key": "OTW-heshbon",
+      "name": "Heshbon",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Heshbon is named as the city of Sihon, king of the Amorites, in Numbers and Joshua, and the Song of Solomon uses its pools in a poetic comparison. One place, not drawn: no position is given for the city, its pools or its gate.",
+      "src": [
+        {
+          "t": "Numbers 21",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/num/21?lang=eng"
+        },
+        {
+          "t": "Joshua 12",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/josh/12?lang=eng"
+        },
+        {
+          "t": "Song of Solomon 7:4",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/song/7?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "mapping": {
+      "disposition_id": "",
+      "category": "SC32",
+      "source_location": "child of SD0753",
+      "research_declaration": "OTW-c06-psalm-85",
+      "state": "imported",
+      "target": "codex:ot-more",
+      "target_key": "OTW-c06-psalm-85-heading",
+      "display_name": "Psalm 85 and the Book of Mormon (heading)",
+      "locators": "Psalm 85 heading",
+      "work_gate": "3/bom (child gate)",
+      "consolidation_rule": "child source view required by its parent row",
+      "row_sha256": ""
+    },
+    "card": {
+      "key": "OTW-c06-psalm-85-heading",
+      "name": "Psalm 85 and the Book of Mormon (heading)",
+      "books": [
+        3
+      ],
+      "layers": [
+        "bom"
+      ],
+      "desc": "Old Testament — The Church edition’s heading to Psalm 85 relates truth springing out of the earth to the Book of Mormon. This is the edition’s interpretation; verse 11 does not name that book.",
+      "src": [
+        {
+          "t": "Psalm 85 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/85?lang=eng"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "before": {
+      "key": "NTE-calls-and-healings-mark-2",
+      "name": "Calls, healings and crossings (Mark 2)",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Mark 2: a healing in a house at Capernaum, Levi’s call, a meal and Sabbath disputes. Mark’s naming of Abiathar is kept beside 1 Samuel 21’s Ahimelech; the difference is not silently resolved.",
+      "src": [
+        {
+          "t": "Mark 2",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/mark/2?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "NTE-calls-and-healings-mark-2",
+      "name": "Calls, healings and crossings (Mark 2)",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Mark 2: a healing in a house at Capernaum, Levi’s call, a meal and Sabbath disputes. Mark’s naming of Abiathar is kept beside 1 Samuel 21’s Ahimelech; the difference is not silently resolved.",
+      "src": [
+        {
+          "t": "Mark 2",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/mark/2?lang=eng"
+        },
+        {
+          "t": "1 Samuel 21",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/1-sam/21?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "NTC-genealogies",
+      "name": "Genealogies of Jesus",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew presents a genealogy through Joseph; Luke 3 supplies a different named lineage. They are kept as separate lists, with no inferred line through Mary.",
+      "src": [
+        {
+          "t": "Matthew 1:1–17",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/1?lang=eng"
+        },
+        {
+          "t": "Luke 3",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/luke/3?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "NTC-genealogies",
+      "name": "Genealogies of Jesus",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew presents a genealogy through Joseph; Luke 3 supplies a different named lineage. They are kept as separate lists, each in its own view, with no inferred line through Mary.",
+      "src": [
+        {
+          "t": "Matthew 1:1–17",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/1?lang=eng"
+        },
+        {
+          "t": "Luke 3",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/luke/3?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "NTC-parables",
+      "name": "Kingdom parables",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew presents kingdom teaching through seed, treasure, pearl and net comparisons. Parables in Matthew 18–25, Mark 4 and Luke 10–19 follow as separate views with their passages; places and estates within parables are not mapped.",
+      "src": [
+        {
+          "t": "Matthew 13:1–52",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/13?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "NTC-parables",
+      "name": "Kingdom parables",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew presents kingdom teaching through seed, treasure, pearl and net comparisons. Additional attributed parable views follow in each Gospel’s order; story settings are not mapped.",
+      "src": [
+        {
+          "t": "Matthew 13:1–52",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/13?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "OTW-a27-animal-instrument-notes",
+      "name": "Animal and instrument notes",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Examples of the edition’s notes: instrument glosses in Job 21 and 30 and buffalo or bison in Job 39; wild ox, bison or buffalo in Psalms 22, 29 and 92, jackal in Psalms 44 and 63, rock badger in Psalm 104, sea monsters in Psalm 148 and pipes or flutes in Psalm 150; rock badger in Proverbs 30; and jackals in Malachi 1. This is a bounded list of examples, not every such note. They are the edition’s vocabulary for poetic imagery, not zoological evidence or locations of species.",
+      "src": [
+        {
+          "t": "Job 21 (study note: instruments)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/21?lang=eng"
+        },
+        {
+          "t": "Job 30 (study note: instruments)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/30?lang=eng"
+        },
+        {
+          "t": "Job 39 (study note: buffalo or bison)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/39?lang=eng"
+        },
+        {
+          "t": "Psalm 22 (study note: wild ox)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/22?lang=eng"
+        },
+        {
+          "t": "Psalm 29 (study note: wild ox)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/29?lang=eng"
+        },
+        {
+          "t": "Psalm 92 (study note: wild ox)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/92?lang=eng"
+        },
+        {
+          "t": "Psalm 44 (study note: jackal)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/44?lang=eng"
+        },
+        {
+          "t": "Psalm 63 (study note: jackal)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/63?lang=eng"
+        },
+        {
+          "t": "Psalm 104 (study note: rock badger)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/104?lang=eng"
+        },
+        {
+          "t": "Psalm 148 (study note: sea monsters)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/148?lang=eng"
+        },
+        {
+          "t": "Psalm 150 (study note: pipes or flutes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/150?lang=eng"
+        },
+        {
+          "t": "Proverbs 30 (study note: rock badger)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/prov/30?lang=eng"
+        },
+        {
+          "t": "Malachi 1 (study note: jackals)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/mal/1?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "OTW-a27-animal-instrument-notes",
+      "name": "Animal and instrument notes",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Examples of the edition’s notes: instrument glosses in Job 21 and 30 and buffalo or bison in Job 39; wild ox, bison or buffalo in Psalms 22, 29 and 92, jackal in Psalms 44 and 63, rock badger in Psalm 104, sea monsters in Psalm 148 and pipes or flutes in Psalm 150; rock badger in Proverbs 30; and jackals in Malachi 1. This is a bounded list of examples, not every such note. They are the edition’s vocabulary for poetic imagery, not zoological evidence or locations of species.",
+      "src": [
+        {
+          "t": "Job 21 (study note: instruments)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/21?lang=eng"
+        },
+        {
+          "t": "Job 30 (study note: instruments)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/30?lang=eng"
+        },
+        {
+          "t": "Job 39 (study note: buffalo or bison)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/39?lang=eng"
+        },
+        {
+          "t": "Psalm 22 (study note: wild ox)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/22?lang=eng"
+        },
+        {
+          "t": "Psalm 29 (study note: bison or buffalo)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/29?lang=eng"
+        },
+        {
+          "t": "Psalm 92 (study note: buffalo or bison)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/92?lang=eng"
+        },
+        {
+          "t": "Psalm 44 (study note: jackal)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/44?lang=eng"
+        },
+        {
+          "t": "Psalm 63 (study note: jackal)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/63?lang=eng"
+        },
+        {
+          "t": "Psalm 104 (study note: rock badger)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/104?lang=eng"
+        },
+        {
+          "t": "Psalm 148 (study note: sea monsters)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/148?lang=eng"
+        },
+        {
+          "t": "Psalm 150 (study note: pipes or flutes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/150?lang=eng"
+        },
+        {
+          "t": "Proverbs 30 (study note: rock badger)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/prov/30?lang=eng"
+        },
+        {
+          "t": "Malachi 1 (study note: jackals)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/mal/1?lang=eng"
+        }
+      ]
+    }
+  }
+]

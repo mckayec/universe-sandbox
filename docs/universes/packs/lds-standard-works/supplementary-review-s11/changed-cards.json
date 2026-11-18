@@ -1,0 +1,434 @@
+[
+  {
+    "before": {
+      "key": "NTE-calls-and-healings",
+      "name": "Healings, a crossing and two demoniacs (Matthew 8)",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew describes healings, a sea crossing and two demoniacs in its ministry sequence, around Capernaum, the Sea of Galilee and the country Matthew calls the Gergesenes. Each Gospel’s order of these episodes is kept.",
+      "src": [
+        {
+          "t": "Matthew 8:1–34",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/8?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "NTE-calls-and-healings",
+      "name": "Healings, a crossing and two demoniacs (Matthew 8)",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew describes healings, a sea crossing and two demoniacs in its ministry sequence, around Capernaum, the Sea of Galilee and the country Matthew calls the Gergesenes. Matthew 9 and 12, Mark 1–5 and Luke 4–8 follow as separate views in each book’s own order; parallels are not merged into one chronology.",
+      "src": [
+        {
+          "t": "Matthew 8:1–34",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/8?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "NTC-parables",
+      "name": "Kingdom parables",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew presents kingdom teaching through seed, treasure, pearl and net comparisons. Other parables keep their own Gospel and passage; places and estates within parables are not mapped.",
+      "src": [
+        {
+          "t": "Matthew 13:1–52",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/13?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "NTC-parables",
+      "name": "Kingdom parables",
+      "books": [
+        2
+      ],
+      "layers": [
+        "nt"
+      ],
+      "desc": "New Testament — Matthew presents kingdom teaching through seed, treasure, pearl and net comparisons. Parables in Matthew 18–25, Mark 4 and Luke 10–19 follow as separate views with their passages; places and estates within parables are not mapped.",
+      "src": [
+        {
+          "t": "Matthew 13:1–52",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/13?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "OTW-e04-furnace",
+      "name": "The fiery furnace",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Daniel narrates Shadrach, Meshach and Abednego refusing to worship the royal image and surviving the fiery furnace, set on the plain of Dura. The fourth figure is described through the king’s words. Daniel himself is not said to be present.",
+      "src": [
+        {
+          "t": "Daniel 3",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/dan/3?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "OTW-e04-furnace",
+      "name": "The fiery furnace",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Daniel narrates Shadrach, Meshach and Abednego refusing to worship the royal image and surviving the fiery furnace. The image is set on the plain of Dura in the province of Babylon; the furnace is not separately located. The fourth figure is described through the king’s words. Daniel himself is not said to be present.",
+      "src": [
+        {
+          "t": "Daniel 3",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/dan/3?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "OTW-r04-psalm-collections",
+      "name": "Names in the psalm headings",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Psalm superscriptions associate psalms with David, Asaph, the sons of Korah, Solomon, Moses, Heman and Ethan, and some include directions involving Jeduthun. These are the headings’ attributions and directions, not independently established authorship, and each Asaph, Heman or Ethan elsewhere is not assumed to be the same person.",
+      "src": [
+        {
+          "t": "Psalms (chapter headings)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "OTW-r04-psalm-collections",
+      "name": "Names in the psalm headings",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Psalm superscriptions associate psalms with David, Asaph, the sons of Korah, Solomon, Moses, Heman and Ethan, and some include directions involving Jeduthun. These are the headings’ attributions and directions, not independently established authorship, and each Asaph, Heman or Ethan elsewhere is not assumed to be the same person.",
+      "src": [
+        {
+          "t": "Psalm 3 (superscription: David)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/3?lang=eng"
+        },
+        {
+          "t": "Psalm 50 (superscription: Asaph)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/50?lang=eng"
+        },
+        {
+          "t": "Psalm 42 (superscription: sons of Korah)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/42?lang=eng"
+        },
+        {
+          "t": "Psalm 72 (superscription: Solomon)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/72?lang=eng"
+        },
+        {
+          "t": "Psalm 90 (superscription: Moses)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/90?lang=eng"
+        },
+        {
+          "t": "Psalm 88 (superscription: Heman)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/88?lang=eng"
+        },
+        {
+          "t": "Psalm 89 (superscription: Ethan)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/89?lang=eng"
+        },
+        {
+          "t": "Psalm 39 (superscription: Jeduthun direction)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/39?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "OTW-a21-song-notes",
+      "name": "Notes to the Song of Solomon",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — The JST qualification in Song 1’s note, that the Songs are not inspired writings, stays visible. Glosses on henna, fragrant ointment, gazelles and fawns, and the turtledove are literary vocabulary; they do not establish animal migrations, plant sites or the lovers’ identities.",
+      "src": [
+        {
+          "t": "Song of Solomon (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/song?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "OTW-a21-song-notes",
+      "name": "Notes to the Song of Solomon",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — The JST qualification in Song 1’s note, that the Songs are not inspired writings, stays visible. Glosses on henna, fragrant ointment, gazelles and fawns, and the turtledove are literary vocabulary; they do not establish animal migrations, plant sites or the lovers’ identities.",
+      "src": [
+        {
+          "t": "Song of Solomon 1 (study notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/song/1?lang=eng"
+        },
+        {
+          "t": "Song of Solomon 2 (study notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/song/2?lang=eng"
+        },
+        {
+          "t": "Song of Solomon 4 (study notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/song/4?lang=eng"
+        },
+        {
+          "t": "Song of Solomon 8 (study notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/song/8?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "OTW-a23-psalms-jst-notes",
+      "name": "JST notes to Psalms 30, 32, 50, 138 and 141",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Inline JST notes in these psalms expand on repentance and divine favor, praise after death, forgiven transgressions, covenants set in order, knowledge of the kingdom, and righteous reproof by the word of God. Each is a labelled variant with its chapter and adds no place or date. Psalm 141’s reproof is not read as approval of physical harm.",
+      "src": [
+        {
+          "t": "Psalm 30",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/30?lang=eng"
+        },
+        {
+          "t": "Psalm 32",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/32?lang=eng"
+        },
+        {
+          "t": "Psalm 50",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/50?lang=eng"
+        },
+        {
+          "t": "Psalm 138",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/138?lang=eng"
+        },
+        {
+          "t": "Psalm 141",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/141?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "OTW-a23-psalms-jst-notes",
+      "name": "JST notes to Psalms 30, 32, 50, 138 and 141",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Inline JST notes in these psalms give six labelled variants, each compared with the KJV in its own view after this one, with its verse. The JST notes do not replace the KJV text and add no place or date.",
+      "src": [
+        {
+          "t": "Psalm 30",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/30?lang=eng"
+        },
+        {
+          "t": "Psalm 32",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/32?lang=eng"
+        },
+        {
+          "t": "Psalm 50",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/50?lang=eng"
+        },
+        {
+          "t": "Psalm 138",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/138?lang=eng"
+        },
+        {
+          "t": "Psalm 141",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/141?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "OTW-a27-animal-instrument-notes",
+      "name": "Animal and instrument notes",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Across Job, Psalms, Proverbs and the prophets the notes offer alternatives such as bison, buffalo or wild ox, jackal, serpent, sea monster, rock badger and birds, and pipe or flute for instruments. They are the edition’s vocabulary for poetic imagery, not zoological evidence or locations of species.",
+      "src": [
+        {
+          "t": "Job (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job?lang=eng"
+        },
+        {
+          "t": "Psalms (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps?lang=eng"
+        },
+        {
+          "t": "Proverbs (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/prov?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "OTW-a27-animal-instrument-notes",
+      "name": "Animal and instrument notes",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — Examples of the edition’s notes: instrument glosses in Job 21 and 30 and buffalo or bison in Job 39; wild ox, bison or buffalo in Psalms 22, 29 and 92, jackal in Psalms 44 and 63, rock badger in Psalm 104, sea monsters in Psalm 148 and pipes or flutes in Psalm 150; rock badger in Proverbs 30; and jackals in Malachi 1. This is a bounded list of examples, not every such note. They are the edition’s vocabulary for poetic imagery, not zoological evidence or locations of species.",
+      "src": [
+        {
+          "t": "Job 21 (study note: instruments)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/21?lang=eng"
+        },
+        {
+          "t": "Job 30 (study note: instruments)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/30?lang=eng"
+        },
+        {
+          "t": "Job 39 (study note: buffalo or bison)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job/39?lang=eng"
+        },
+        {
+          "t": "Psalm 22 (study note: wild ox)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/22?lang=eng"
+        },
+        {
+          "t": "Psalm 29 (study note: wild ox)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/29?lang=eng"
+        },
+        {
+          "t": "Psalm 92 (study note: wild ox)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/92?lang=eng"
+        },
+        {
+          "t": "Psalm 44 (study note: jackal)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/44?lang=eng"
+        },
+        {
+          "t": "Psalm 63 (study note: jackal)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/63?lang=eng"
+        },
+        {
+          "t": "Psalm 104 (study note: rock badger)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/104?lang=eng"
+        },
+        {
+          "t": "Psalm 148 (study note: sea monsters)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/148?lang=eng"
+        },
+        {
+          "t": "Psalm 150 (study note: pipes or flutes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps/150?lang=eng"
+        },
+        {
+          "t": "Proverbs 30 (study note: rock badger)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/prov/30?lang=eng"
+        },
+        {
+          "t": "Malachi 1 (study note: jackals)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/mal/1?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "OTW-a28-lexical-notes",
+      "name": "Other wording notes",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — The remaining notes on grammar, synonyms, food and harvest, social and legal idioms, reverence, moral description and metaphor add no identifiable place, journey or event, so the atlas draws nothing new from them. They stay with their chapters; this is a mapping choice, not a judgment that the passages lack meaning.",
+      "src": [
+        {
+          "t": "Job (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/job?lang=eng"
+        },
+        {
+          "t": "Psalms (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/ps?lang=eng"
+        },
+        {
+          "t": "Proverbs (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/prov?lang=eng"
+        },
+        {
+          "t": "Ecclesiastes (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/eccl?lang=eng"
+        },
+        {
+          "t": "Song of Solomon (chapter notes)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/song?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "OTW-a28-lexical-notes",
+      "name": "Other wording notes",
+      "books": [
+        1
+      ],
+      "layers": [
+        "ot"
+      ],
+      "desc": "Old Testament — The remaining notes on grammar, synonyms, food and harvest, social and legal idioms, reverence, moral description and metaphor add no identifiable place, journey or event, so the atlas draws nothing new from them. They remain in their chapters’ notes and in the research register, and the atlas does not display them one by one; this is a mapping choice, not a judgment that the passages lack meaning.",
+      "src": [
+        {
+          "t": "Accepted apparatus audit (chapter concept register)",
+          "u": "https://github.com/mckayec/universe-sandbox/blob/9cc874c09a3686119ca6b4c17c7e16f214fd7ab6/docs/universes/packs/lds-standard-works/coverage-ot-wisdom-prophets.md#bounded-inline-apparatus-audit"
+        }
+      ]
+    }
+  }
+]

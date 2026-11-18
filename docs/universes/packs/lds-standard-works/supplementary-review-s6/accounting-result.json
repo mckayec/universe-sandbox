@@ -1,0 +1,36 @@
+{
+  "head": "11b2491eeafb7a9e93ede1959f34f6f0eff9bcb4",
+  "base": "6067a78b1da53224026f7cd8ae0273a36c7f54b5",
+  "acceptedResearch": "9cc874c09a3686119ca6b4c17c7e16f214fd7ab6",
+  "mappingRows": 1303,
+  "SDRowsReconciled": 1271,
+  "importedSD": 568,
+  "pendingSD": 703,
+  "proseRows": 7,
+  "childRows": 25,
+  "newSDRows": 93,
+  "newCards": 83,
+  "consolidatedRows": {
+    "SD0485": "SD0548",
+    "SD0489": "SD0560",
+    "SD0490": "SD0558",
+    "SD0491": "SD0559",
+    "SD0492": "SD0557",
+    "SD0494": "SD0561",
+    "SD0564": "SD0477",
+    "SD0565": "SD0531",
+    "SD0567": "SD0543",
+    "SD0568": "SD0557"
+  },
+  "categoryCounts": {
+    "SC18": 20,
+    "SC19": 16,
+    "SC20": 14,
+    "SC21": 38,
+    "SC23": 5
+  },
+  "all93SourceURLSetsMatchAccepted": true,
+  "generatorPackAndMappingByteIdentical": true,
+  "SD0226ExactAddition": true,
+  "freshFullPrimaryReading": false
+}

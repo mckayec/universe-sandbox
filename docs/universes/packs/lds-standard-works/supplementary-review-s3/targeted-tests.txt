@@ -1,0 +1,32 @@
+✔ layers normalise with defaults and the starting set honours on:false (2.173821ms)
+✔ layerOk shows unlayered items and any item with one active layer (0.276006ms)
+✔ toggleLayer never switches off the last layer and collapses to null when all are on (0.279149ms)
+✔ timeline range overlap, undated items and the missing year zero (0.567533ms)
+✔ timeline bounds fall back to the data when the pack gives none (0.25237ms)
+✔ years format without a year zero in both styles (0.373532ms)
+✔ address-bar state round-trips and rejects junk (0.641094ms)
+✔ the filter bar escapes pack text and marks pressed layers (0.83764ms)
+✔ place notes obey their own layers, years and reading gate (0.408194ms)
+✔ codex entries split into shown, locked by reading order and hidden by filter (0.472891ms)
+✔ journeys draw only legs between consecutive placed stops (0.390678ms)
+✔ great-circle points start and end at the stops and stay on the sphere path (0.41871ms)
+✔ the pack validator accepts the Track A fixture and catches bad layer and year data (8.974823ms)
+✔ BA01: Lystra and South Pass are held as named unplaced stops, not pins (1.579216ms)
+✔ BA05: each codex account follows only its own layer (1.346656ms)
+✔ BA05 control: Jerusalem keeps its separately layered notes (0.248014ms)
+✔ BA06: the Fayette reference point agrees with its 1829 episodes under time filtering (0.203696ms)
+✔ BA02/BA03: register coordinates and visible qualifications are applied (0.411028ms)
+✔ BA07: 62 specified source views resolve, one work layer each, no dates or pins (3.166435ms)
+✔ R1-C1: Salamis credits its active ToposText point (0.151088ms)
+✔ R1 BA07: Palmyra has a neutral BoM facet; printing history stays with D&C (0.2722ms)
+✔ BA07 round 2: 108 further source views (107 research IDs) resolve with their own gates (3.641549ms)
+✔ Supplementary SC01–SC07: every Book of Mormon SD row maps to one bom-layer card with sources (4.674784ms)
+✔ Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer card with sources (4.661133ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 145.439378

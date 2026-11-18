@@ -1,0 +1,31 @@
+✔ layers normalise with defaults and the starting set honours on:false (1.811008ms)
+✔ layerOk shows unlayered items and any item with one active layer (0.170907ms)
+✔ toggleLayer never switches off the last layer and collapses to null when all are on (0.170285ms)
+✔ timeline range overlap, undated items and the missing year zero (1.313842ms)
+✔ timeline bounds fall back to the data when the pack gives none (0.175533ms)
+✔ years format without a year zero in both styles (0.485128ms)
+✔ address-bar state round-trips and rejects junk (0.528092ms)
+✔ the filter bar escapes pack text and marks pressed layers (0.58643ms)
+✔ place notes obey their own layers, years and reading gate (0.314472ms)
+✔ codex entries split into shown, locked by reading order and hidden by filter (0.323125ms)
+✔ journeys draw only legs between consecutive placed stops (0.283245ms)
+✔ great-circle points start and end at the stops and stay on the sphere path (0.308402ms)
+✔ the pack validator accepts the Track A fixture and catches bad layer and year data (7.180174ms)
+✔ BA01: Lystra and South Pass are held as named unplaced stops, not pins (2.255405ms)
+✔ BA05: each codex account follows only its own layer (0.834563ms)
+✔ BA05 control: Jerusalem keeps its separately layered notes (0.174913ms)
+✔ BA06: the Fayette reference point agrees with its 1829 episodes under time filtering (0.154141ms)
+✔ BA02/BA03: register coordinates and visible qualifications are applied (0.309815ms)
+✔ BA07: 62 specified source views resolve, one work layer each, no dates or pins (2.622125ms)
+✔ R1-C1: Salamis credits its active ToposText point (0.115784ms)
+✔ R1 BA07: Palmyra has a neutral BoM facet; printing history stays with D&C (0.229344ms)
+✔ BA07 round 2: 108 further source views (107 research IDs) resolve with their own gates (2.851509ms)
+✔ Supplementary SC01–SC07: every Book of Mormon SD row maps to one bom-layer card with sources (2.59291ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 140.127298

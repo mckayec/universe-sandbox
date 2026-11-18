@@ -1,0 +1,67 @@
+{
+  "manifests": {
+    "bom-source-witnesses.csv": {
+      "rows": 239,
+      "units": 239,
+      "verified_capture_references": 239,
+      "metadata_sha256": "896dc8a6133e50b1aa2f0195f769b80e70ee2cf542725a227a09e3eed80c4c2d"
+    },
+    "dc-source-witnesses.csv": {
+      "rows": 140,
+      "units": 140,
+      "verified_capture_references": 247,
+      "metadata_sha256": "18b7f4dbb22c89eb77dcc5232ab4a36ae9bb6ef2294cb32fa28059a3d7546e9e"
+    },
+    "frontmatter-witnesses.csv": {
+      "rows": 9,
+      "units": 9,
+      "verified_capture_references": 9,
+      "metadata_sha256": "989b2df4f3bfe13739c9cce7eb91dc13ff02db6da27240874de5330758e14ec6"
+    },
+    "nt-relationship-witnesses.csv": {
+      "rows": 3,
+      "units": 3,
+      "verified_capture_references": 3,
+      "metadata_sha256": "bd0d4a6dfb59209adf30faf453d803bcb8259c59443e99d76a69a81b332d59a6"
+    },
+    "nt-source-witnesses.csv": {
+      "rows": 575,
+      "units": 315,
+      "verified_capture_references": 575,
+      "metadata_sha256": "d27cb08aab97c08cd4e61b8cc70b0028919c55109d422456db07c50b16372555"
+    },
+    "ot-history-source-witnesses.csv": {
+      "rows": 676,
+      "units": 338,
+      "verified_capture_references": 676,
+      "metadata_sha256": "5f96de0f64c29183645910cc8e45c46259e398d18366736355362aee151d95c1"
+    },
+    "ot-late-major-apparatus-witnesses.csv": {
+      "rows": 16,
+      "units": 14,
+      "verified_capture_references": 16,
+      "metadata_sha256": "31057d395b130de58d93d0c059b26247ef21bb684530805ce331df1509ec3c82"
+    },
+    "ot-late-major-source-witnesses.csv": {
+      "rows": 538,
+      "units": 269,
+      "verified_capture_references": 538,
+      "metadata_sha256": "95f3ac7e5a31c8f952701ac3d70edc56f65ccd3ea33718ce80a96ecf29e89838"
+    },
+    "ot-wisdom-source-witnesses.csv": {
+      "rows": 652,
+      "units": 330,
+      "verified_capture_references": 652,
+      "metadata_sha256": "cb28ea081ecc5a0a18b4b54a076d292a3cf2053f1d80726deb72b2a498c6b2d8"
+    },
+    "pgp-source-witnesses.csv": {
+      "rows": 19,
+      "units": 19,
+      "verified_capture_references": 20,
+      "metadata_sha256": "3cfa52335e57432e9780c8e4a710f80a30b5f6a3e0f77db3dae4a7e74447dfc0"
+    }
+  },
+  "missing_manifests": [],
+  "errors": [],
+  "scope": "Capture bytes only; no certification of reading, extraction completeness, historical truth or normalized-body hashes"
+}

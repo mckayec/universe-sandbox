@@ -1,0 +1,72 @@
+{
+  "implementation": "c59c9bc13d848bbf0c4b3f3c64810bfa187749f0",
+  "counts": {
+    "sites": 36,
+    "events": 24,
+    "routes": 9,
+    "codex": 27
+  },
+  "crossLayerCases": [
+    {
+      "name": "Haran",
+      "activeLayer": "ot",
+      "retainedOtherWorkText": "Pearl of Great Price:",
+      "reproduced": true
+    },
+    {
+      "name": "Ur of the Chaldees",
+      "activeLayer": "ot",
+      "retainedOtherWorkText": "Pearl of Great Price:",
+      "reproduced": true
+    },
+    {
+      "name": "Mount of Olives",
+      "activeLayer": "ot",
+      "retainedOtherWorkText": "New Testament:",
+      "reproduced": true
+    },
+    {
+      "name": "Enoch’s city (Zion)",
+      "activeLayer": "dc",
+      "retainedOtherWorkText": "Pearl of Great Price:",
+      "reproduced": true
+    },
+    {
+      "name": "First Vision account",
+      "activeLayer": "dc",
+      "retainedOtherWorkText": "Pearl of Great Price",
+      "reproduced": true
+    },
+    {
+      "name": "Woods near the Smith home",
+      "activeLayer": "dc",
+      "retainedOtherWorkText": "Pearl of Great Price:",
+      "reproduced": true
+    },
+    {
+      "name": "Shechem (Sichem)",
+      "activeLayer": "pgp",
+      "retainedOtherWorkText": "Old Testament:",
+      "reproduced": true
+    },
+    {
+      "name": "Camp between Bethel and Hai",
+      "activeLayer": "pgp",
+      "retainedOtherWorkText": "Old Testament:",
+      "reproduced": true
+    },
+    {
+      "name": "Egypt",
+      "activeLayer": "pgp",
+      "retainedOtherWorkText": "Old Testament:",
+      "reproduced": true
+    }
+  ],
+  "year1829": {
+    "fayetteMatches": false,
+    "dictationEventMatches": true,
+    "dictationRouteMatches": true
+  },
+  "positiveControl": "Jerusalem note-level filtering excludes BoM text under OT-only",
+  "limit": "Actual pure helper outputs; no rendered/server/browser or historical verification"
+}

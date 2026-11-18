@@ -1,0 +1,198 @@
+[
+  {
+    "before": {
+      "key": "DCM-dp06-fishing-river",
+      "name": "Fishing River camp region",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — The heading of section 105 places the 1834 revelation deferring Zion’s redemption at the camp in the Fishing River region. The heading gives the camp’s position only approximately, so no point is drawn.",
+      "src": [
+        {
+          "t": "D&C 105 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/105?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "DCM-dp06-fishing-river",
+      "name": "Fishing River camp region",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — The heading of section 105 places the 1834 revelation deferring Zion’s redemption at the camp in the Fishing River region. The heading describes a location about four miles north of Fishing River in Clay County, Missouri; this does not establish an exact camp point.",
+      "src": [
+        {
+          "t": "D&C 105 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/105?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "DCM-dj03-salem-journey",
+      "name": "The Salem investigation",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — The heading of section 111 describes a journey in 1836 from Kirtland to Salem and back that returned without the expected money. The heading names four travelers; this is a historical account in an editorial heading, not the revelation’s own text.",
+      "src": [
+        {
+          "t": "D&C 111 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/111?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "DCM-dj03-salem-journey",
+      "name": "The Salem investigation",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — The heading of section 111 describes Joseph Smith, Sidney Rigdon, Hyrum Smith and Oliver Cowdery traveling from Kirtland to Salem in 1836 to investigate a money claim and preach. It reports that they returned to Kirtland when no money was forthcoming. This is historical context in the editorial heading, distinct from the revelation’s own text.",
+      "src": [
+        {
+          "t": "D&C 111 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/111?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "DCM-dx16-civil-government",
+      "name": "Section 134 on civil government",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — Section 134 is an adopted declaration on civil government. Its statement on religious liberty is read alongside its slavery-era qualification in verse 12. No modern policy is inferred from it.",
+      "src": [
+        {
+          "t": "D&C 134:1–12",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/134?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "DCM-dx16-civil-government",
+      "name": "Section 134 on civil government",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — Section 134 is an adopted declaration on civil government. Alongside its statements on religious liberty, verse 12 opposes preaching to or baptizing people held in servitude against their masters’ wishes, and influencing them to become dissatisfied with their condition. This is the declaration’s slavery-era position; no modern policy is inferred from it.",
+      "src": [
+        {
+          "t": "D&C 134:1–12",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/134?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "DCM-dr13-bishops-agent",
+      "name": "Bishops and the bishop’s agent",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — Edward Partridge is appointed bishop of the Church, Newel K. Whitney bishop in Kirtland, and Sidney Gilbert agent to the bishop (41:9; 53:4; 72:8). Separate roles with separate dates.",
+      "src": [
+        {
+          "t": "D&C 41:9",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/41?lang=eng"
+        },
+        {
+          "t": "D&C 53:4",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/53?lang=eng"
+        },
+        {
+          "t": "D&C 72:8",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/72?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "DCM-dr13-bishops-agent",
+      "name": "Bishops and the bishop’s agent",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — Edward Partridge is appointed bishop of the Church (41:9), Newel K. Whitney bishop in Kirtland (72:8), and Sidney Gilbert agent to the bishop (53:4). Separate roles with separate dates.",
+      "src": [
+        {
+          "t": "D&C 41:9",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/41?lang=eng"
+        },
+        {
+          "t": "D&C 53:4",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/53?lang=eng"
+        },
+        {
+          "t": "D&C 72:8",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/72?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "before": {
+      "key": "DCM-dr14-gause-williams",
+      "name": "Jesse Gause and Frederick G. Williams",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — Jesse Gause is an original counselor in the Presidency (heading of section 81), and Frederick G. Williams succeeds to his office. The 1832 instruction and its 1833 replacement are different documents, and the two names are not aliases of one person.",
+      "src": [
+        {
+          "t": "D&C 81 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/81?lang=eng"
+        }
+      ]
+    },
+    "after": {
+      "key": "DCM-dr14-gause-williams",
+      "name": "Jesse Gause and Frederick G. Williams",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "Doctrine and Covenants — The heading of section 81 says the March 15, 1832 revelation originally called Jesse Gause as a counselor to Joseph Smith. The call was later transferred to Frederick G. Williams, who was ordained to that office on March 18, 1833. The current text names Williams. These are distinct people and a succession in office, not aliases or evidence here of a separate 1833 revelation.",
+      "src": [
+        {
+          "t": "D&C 81 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/81?lang=eng"
+        }
+      ]
+    }
+  }
+]

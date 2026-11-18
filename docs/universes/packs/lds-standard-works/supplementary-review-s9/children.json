@@ -1,0 +1,68 @@
+[
+  {
+    "mapping": {
+      "disposition_id": "",
+      "category": "SC29",
+      "source_location": "child of SD0701",
+      "research_declaration": "OTM-a01-jesse",
+      "state": "imported",
+      "target": "codex:ot-more",
+      "target_key": "OTM-a01-jesse-dc113",
+      "display_name": "Stem, rod and root in D&C 113",
+      "locators": "D&C 113:1–6",
+      "work_gate": "4/dc (child gate)",
+      "consolidation_rule": "child source view required by its parent row",
+      "row_sha256": ""
+    },
+    "card": {
+      "key": "OTM-a01-jesse-dc113",
+      "name": "Stem, rod and root in D&C 113",
+      "books": [
+        4
+      ],
+      "layers": [
+        "dc"
+      ],
+      "desc": "D&C 113 — Section 113 identifies the stem of Jesse as Christ and describes the rod and the root as servants or descendants with particular roles, without giving their personal names. No unnamed servant is assigned to a particular person here.",
+      "src": [
+        {
+          "t": "D&C 113:1–6",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/113?lang=eng"
+        }
+      ]
+    }
+  },
+  {
+    "mapping": {
+      "disposition_id": "",
+      "category": "SC29",
+      "source_location": "child of SD0702",
+      "research_declaration": "OTM-a02-ariel",
+      "state": "imported",
+      "target": "codex:ot-more",
+      "target_key": "OTM-a02-ariel-jst-introduction",
+      "display_name": "Isaiah 29 and the Book of Mormon (JST introduction)",
+      "locators": "JST Isaiah 29 (introduction)",
+      "work_gate": "3/bom (child gate)",
+      "consolidation_rule": "child source view required by its parent row",
+      "row_sha256": ""
+    },
+    "card": {
+      "key": "OTM-a02-ariel-jst-introduction",
+      "name": "Isaiah 29 and the Book of Mormon (JST introduction)",
+      "books": [
+        3
+      ],
+      "layers": [
+        "bom"
+      ],
+      "desc": "Old Testament — The editorial introduction to the Joseph Smith Translation of Isaiah 29 relates the chapter’s message to the Book of Mormon. It is an editorial introduction, not wording added to the KJV verses, and it creates no Ariel site in the Americas.",
+      "src": [
+        {
+          "t": "JST Isaiah 29 (introduction)",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/jst/jst-isa/29?lang=eng"
+        }
+      ]
+    }
+  }
+]

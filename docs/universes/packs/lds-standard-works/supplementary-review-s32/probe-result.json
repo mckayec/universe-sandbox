@@ -1,0 +1,13 @@
+{
+  "head": "bd7bdeec1cf302ae10e243dd08ad56c4a594a244",
+  "base": "dc36cd0653c33439b4f2e31ee71cbf4b5b7a1b47",
+  "totalCards": 1558,
+  "newViews": 35,
+  "unchangedPriorCards": 1523,
+  "newLinks": 60,
+  "totalLinks": 441,
+  "reachabilityCases": 4320,
+  "allPriorPackDataEngineAndMappingsUnchanged": true,
+  "browserExecuted": false,
+  "result": "pass"
+}

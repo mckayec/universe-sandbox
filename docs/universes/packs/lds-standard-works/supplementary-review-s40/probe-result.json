@@ -1,0 +1,24 @@
+{
+  "head": "66c87095778b29b86e4750e48e8b9596dc21af10",
+  "base": "180b337b6b661861e19a4f746c40a5714556e698",
+  "cards": 1599,
+  "changedDateOnlyCards": 2,
+  "helperCases": 20,
+  "omittedVisionSequenceChildKeys": [
+    "NTC-vision-sequence-02",
+    "NTC-vision-sequence-03",
+    "NTC-vision-sequence-04",
+    "NTC-vision-sequence-05",
+    "NTC-vision-sequence-06",
+    "NTC-vision-sequence-07",
+    "NTC-vision-sequence-08",
+    "NTC-vision-sequence-09",
+    "NTC-vision-sequence-10",
+    "NTC-vision-sequence-11",
+    "NTC-vision-sequence-12",
+    "NTC-vision-sequence-13",
+    "NTC-vision-sequence-14"
+  ],
+  "runtimeOtherwiseUnchanged": true,
+  "browserExecuted": false
+}

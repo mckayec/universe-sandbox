@@ -1,0 +1,16 @@
+{
+  "head": "ed7a49bbe7bb1620b49eaa6c33799f5352663c4e",
+  "base": "1e8753001d674992603dee6153175c54204f60e9",
+  "totalCards": 1523,
+  "changedCards": 6,
+  "unchangedCards": 1517,
+  "copySourceGatesDatesAndAllNonCodexPackDataUnchanged": true,
+  "linkedCards": 126,
+  "totalLinks": 247,
+  "labelledLinks": 139,
+  "eventLinks": 3,
+  "priorLinksPreserved": 241,
+  "reachabilityChecks": 71136,
+  "result": "pass",
+  "browserExecuted": false
+}

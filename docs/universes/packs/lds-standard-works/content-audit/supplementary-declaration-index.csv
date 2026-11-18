@@ -1,0 +1,1272 @@
+category,location,declaration,primary_reuse,row_sha256
+SC01,coverage-bom.md:345,BXP01 `bom-laman-river`,false,9c5091b56e104cf9223996a7b3ce376811b26e14165ca98c8138a2a6e8c09b18
+SC01,coverage-bom.md:346,BXP02 `bom-irreantum` (REUSE geography record),false,117b9d2d9b889a0592952e4fadaeac03f0e6bfacd842b307d03d426ef9d5d5a8
+SC01,coverage-bom.md:347,BXP03 `bom-shemlon`,false,5540b6a4ea69089ce55bce301bc32a16b3c49c1798091303b0b326cc1c4479c8
+SC01,coverage-bom.md:348,BXP04 `bom-amulon`,false,a99dd56d31b7ff5e8395b81020b72e7fc891be65eef1058936d56b069c906921
+SC01,coverage-bom.md:349,BXP05 `bom-manti-hill`,false,bb53fbdf2c75e47382040c4d6ccfb4ec3eba5970b75d2b5134b2fee5649cdf8b
+SC01,coverage-bom.md:350,BXP06 `bom-amnihu`,false,462d3ec3cd5d4819d68b205fda6fc102e910b599849c91eb0361a826582c2471
+SC01,coverage-bom.md:351,BXP07 `bom-minon`,false,758145494e88bdfb3c1ac01591f19b97b056a5c4cc7752f7690db874a1e82878
+SC01,coverage-bom.md:352,BXP08 `bom-aaron-alma8`,false,2b93bd20dab8da83e5f29ebbf8e0a6b43f9cb7805f62eda261d0314f490774d2
+SC01,coverage-bom.md:353,BXP09 `bom-sidom`,false,f1f9323236b123be8cd8b7a3892e6f22f6f91ec661ae5901d32fa37688974959
+SC01,coverage-bom.md:354,BXP10 `bom-noah`,false,aafc080d6421a8483aa2809fd794923f163e935281e9f13362c0d49f4710c649
+SC01,coverage-bom.md:355,BXP11 `bom-ishmael`,false,af8e95753e8d5ed4f691b8e760fe10ade093586979803c817bd630a160bdb8c7
+SC01,coverage-bom.md:356,BXP12 `bom-sebus`,false,3d3d23af6c460543295e758816eb6b7c15f519500e8afdc53df30a721482b216
+SC01,coverage-bom.md:357,BXP13 `bom-middoni`,false,38f9b68089ef831cc1b34ba60046c7f19faba671759d6d20a2f4c9076871d72e
+SC01,coverage-bom.md:358,BXP14 `bom-jerusalem-americas`,false,af1cbc9fe49fad79b380f6cb3db6f7b5ca5780f5fa6cc89c1f12766812056056
+SC01,coverage-bom.md:359,BXP15 `bom-ani-anti`,false,d79766628271215de5efe68f19542020bd415cff95ae0eaa3575a8cff0849684
+SC02,coverage-bom.md:368,BXP16 `bom-lemuel-city`; Lemuel city,false,ed710fbefc07946ff44e8d4b2643fb87a593cee00556a2682b319034f8b16ffc
+SC02,coverage-bom.md:369,BXP17 `bom-shimnilom`; Shimnilom,false,b7eacdc85242d2e33e5a8172583fc410aac8b17297365e1d1994633acf2ae854
+SC02,coverage-bom.md:370,BXP18 `bom-midian`; Midian (Book of Mormon),false,12c951347ab929e8bc0d83a717a1407c58429251dd863dad07f5637b3b4b9895
+SC02,coverage-bom.md:371,BXP19 `bom-antionum`; Antionum,false,72cae1cff3ceebeb52cef69c1a0e5636870c95420a4ca58167970c4f580f5e83
+SC02,coverage-bom.md:372,BXP20 `bom-onidah-hill`; Onidah hill (Alma 32),false,e23e12648dd1ab6dbb2a0b1da7fe34cd921c68b179c5153b2ba126d753eb45e5
+SC02,coverage-bom.md:373,BXP21 `bom-rameumptom`; Rameumptom,false,6a92cfeba6e794cd0f432874345a1980f7b14b17d477898bf5be111a2b40ad43
+SC02,coverage-bom.md:374,BXP22 `bom-siron`; Siron,false,1d4e40017725029ec9b39d07c74116de4d6b1d1d533a55df18c019cf045ad910
+SC02,coverage-bom.md:375,BXP23 `bom-riplah`; Riplah,false,55c97f749b58ac40ed3cfc49a659ef2ae5f89dfda3e6d7e224fc02bab6dcd03b
+SC02,coverage-bom.md:376,BXP24 `bom-onidah-alma47`; Onidah gathering-place (Alma 47),false,59ee1418b1ea5829f3f18a9d3f33dce7ed474103e6ca574952fff1d7bb73616a
+SC02,coverage-bom.md:377,BXP25 `bom-antipas`; Antipas,false,77abf9272616fecd500fd2272f6bfbae99449546e8d9c7594ce85e784d63a5b1
+SC02,coverage-bom.md:378,BXP26 `bom-morianton`; Morianton city/land,false,c0b64ca621153292c6ec1a7f24da897b3166c9843bc363db62fde89a4b52eecb
+SC02,coverage-bom.md:379,BXP27 `bom-omner`; Omner city,false,ace4431bb9004055733145bf8705e3479df000d4565067b355cf1fb09d958347
+SC02,coverage-bom.md:380,BXP28 `bom-gid-city`; Gid city,false,dc9b33748b0d1f931829dc087b813003148c8868d2cb07fe5bf5ef4bf2568ef1
+SC02,coverage-bom.md:381,BXP29 `bom-mulek`; Mulek city,false,f21829a32b01482fc5fa154221169a411eede50849f42b42a189e11ae5187768
+SC02,coverage-bom.md:382,BXP30 `bom-judea`; Judea city,false,140ff64b14c15edf56fe34400eaea70113a942fe90b161310c5739d0fd9305f3
+SC02,coverage-bom.md:383,BXP31 `bom-zeezrom-city`; Zeezrom city,false,f2bb6a08633694e0057d22c0ddf489ace8c7d2e3ea5086d52530219f17f3406d
+SC02,coverage-bom.md:384,BXP32 `bom-cumeni`; Cumeni,false,9a1f67cd0d5f90afea82265c8fcf4911347c8a495bc18d59f7ccd41cd1dc69d6
+SC02,coverage-bom.md:385,BXP33 `bom-antiparah`; Antiparah,false,f0b44855a948b2299ff988b39f298ba22ed44e8319ea2a4df318a6b93956a473
+SC03,coverage-bom.md:393,BXJ01,false,6d3bbe2dc64db1774c7834eddc68eac312853407174a0b516b62907bf9ffa157
+SC03,coverage-bom.md:394,BXJ02,false,a5f931133bacaf0b914a4234bd168102648236dd542c10ad7bb502ce16b629f1
+SC03,coverage-bom.md:395,BXJ03,false,49f4056ad5e342b83bff1e2f85f325900fb5272990f5b12394c71fb306da98a6
+SC03,coverage-bom.md:396,BXJ04,false,b5d5e5fc29eda536fa19f8416babc9af3b7d72cc3d0221de4b687f8b8d1eee3c
+SC03,coverage-bom.md:397,BXJ05,false,804d60c28afc7813f94ff371dd5fd5edcbb1b455e6986ba680c0e215ef136dd2
+SC03,coverage-bom.md:398,BXJ06,false,c839a03a01e74a632c8199ffe27c6a413e8a4c0ac4dcde25f5d093cb5229d132
+SC03,coverage-bom.md:399,BXJ07,false,310659d0ea350785aa87e7b36d3e8211e530fc821e5fd8a4b16d797026ac3dbd
+SC03,coverage-bom.md:400,BXJ08,false,8dc5eb080bb2ec57a46191a94193791befa853e8ae054b5b4b9ca8ee3fa9103e
+SC05,coverage-bom.md:417,BXP34 `bom-hermounts`,false,bb984ba7d26d97f0ea22b83ca48f4b821bdba31ec297193e1aad7a4cc59c2f0e
+SC05,coverage-bom.md:418,BXP35 `bom-nephi-garden-tower`,false,1bb046bcbb7c42d48a6c72d6d5a5291e598ae0548680ebc034d9779dd50ceca8
+SC05,coverage-bom.md:419,BXP36 `bom-lehi-south-land`,false,fa1f2689b9cc192144a8bea263e08d1c4821b2e79c9e56d74b40a6f37c324f47
+SC05,coverage-bom.md:420,BXP37 `bom-mulek-north-land`,false,a07393240a3d80a5b63050445f60f7ed2741aca6726003a184a88665a354dfbd
+SC05,coverage-bom.md:421,BXP38 `bom-moronihah-city`,false,d52c03a97fbf0d31f4c44b3dff22999d6fa9c104623dfd55e9eeb60d98727021
+SC05,coverage-bom.md:422,BXP39 `bom-gilgal-city`,false,18d98db7e77b54c9c06ab2a9aa52f068950cd63d8d490a68a34568e093884ebe
+SC05,coverage-bom.md:423,BXP40 `bom-onihah`,false,da99f8e094fadbb85ef5a704dfe61c24187b89df505e84e136579d3446c0f3c0
+SC05,coverage-bom.md:424,BXP41 `bom-mocum`,false,86a352341b51bca3688d977b374ae130cf44f76c871b2effc99369f8b4bc0ca3
+SC05,coverage-bom.md:425,BXP42 `bom-gadiandi`,false,d7cfc9c713e2458f303e048304d301f65f206584f9600de4a610f1697b50abd5
+SC05,coverage-bom.md:426,BXP43 `bom-gadiomnah`,false,d48964d0bf21db41cb32bf8fa16b34a53a695c9c58b816ffdf3e7fd807053187
+SC05,coverage-bom.md:427,BXP44 `bom-jacob-city`,false,6c9df9fa574182a42c2b7334a09e9627ed6081807443f56d339d8dae03d4cf0a
+SC05,coverage-bom.md:428,BXP45 `bom-gimgimno`,false,e9ff86f0d2698955cafe75434b39749354785dca4310b4ad7e0baa2d2ca4345a
+SC05,coverage-bom.md:429,BXP46 `bom-jacobugath`,false,3b27b3d85610f7eb3cdae095a4df62ea277bdac3a833fa84ccb99331874fa326
+SC05,coverage-bom.md:430,BXP47 `bom-laman-city`,false,0bc77cdd8d357eb21931b08f2a57cd49a26d475a5cb56b09b87fa6a955607b7f
+SC05,coverage-bom.md:431,BXP48 `bom-josh-city`,false,e2b53799b2be122d91c3586809bc46e4d55be8163342f108f4cdf73d44f91c1f
+SC05,coverage-bom.md:432,BXP49 `bom-gad-city`,false,2f4b5fe24ae81efb9de9a2c01c5b25eb357455f27f60fc12b3ef7d6c6f8a0cfb
+SC05,coverage-bom.md:433,BXP50 `bom-kishkumen-city`,false,f6eb9bfe62b7047d5ba65990a2e7032409a34dc5c9dfa2113071551cc3e66305
+SC05,coverage-bom.md:434,BXP51 `bom-antum`,false,a9811e5e3ba81350ed051bde7a2d77c7b693e3297dab189dc892c5e59bfaad3f
+SC05,coverage-bom.md:435,BXP52 `bom-shim`,false,6c65639c5cd9df05962afee733b43af4a587b7d6f335f7b8862675f14b310bea
+SC05,coverage-bom.md:436,BXP53 `bom-jashon`,false,9280b84121b9464962201c37e7f7e2681ead314ad7ddd2a57480fb1116e3fe91
+SC05,coverage-bom.md:437,BXP54 `bom-shem`,false,27bbaa01678c57b33a45888ee1d4aa44acc961169fff7c58178df82db342076f
+SC05,coverage-bom.md:438,BXP55 `bom-teancum-city`,false,6aca821584d3ec1230be2c4b3dc8e430288c312c659c75634b59d4f945577bd1
+SC05,coverage-bom.md:439,BXP56 `bom-boaz`,false,4d53e88f3244b3783378e6990fc6175b8d2fd9aa3733b8efd8f46664610167cf
+SC05,coverage-bom.md:440,BXP57 `bom-jordan-city`,false,fdafdfdbad3ad5f39f58370983a19d54bf4d58ab9986cc2453e15cd6f5378b8c
+SC05,coverage-bom.md:441,BXP58 `bom-nehor-jaredite`,false,5a2fc3a482ea67fd6110845cb6f706a0a3350a9730921dc465dbcf580652f8b9
+SC05,coverage-bom.md:442,BXP59 `bom-moron-land`,false,d6cefb6aa3cada9c7c8ab240a8fc37486da2f103184ff24f9765af08633dad17
+SC05,coverage-bom.md:443,BXP60 `bom-ephraim-hill`,false,192b31b4cd7d9e092879e7ac197fdadb87e6b0720ad99f3321516cb3ae7d7c1b
+SC05,coverage-bom.md:444,BXP61 `bom-heth-land`,false,13e6c65baf2dc53ad79b7a824eecffdb517d073e838853540b0a6aedc521aad9
+SC05,coverage-bom.md:445,BXP62 `bom-ablom`,false,af1185caddef1b54bff96efb9853b38dfb593a4b47b2dbdea29285743091bac6
+SC05,coverage-bom.md:446,BXP63 `bom-lib-neck-city`,false,6eff8087314b3814eeda9f70ee10d915b9e1678680d2c6de8579ac06d9d50040
+SC05,coverage-bom.md:447,BXP64 `bom-zerin`,false,e31d477d01ba0dd51d50a57a98dc657f2fc7624de4b2e42cca20a7dc5f97aea4
+SC05,coverage-bom.md:448,BXP65 `bom-ether-rock-cavity`,false,35984293ec7d1ffd8a2e688f3707ded95ef50c1f39df1ce4cb80c397f5ecde57
+SC05,coverage-bom.md:449,BXP66 `bom-gilgal-valley`,false,99de861caf6438a176f8eb1b24b76129e2423bc038560f24c62a1bb6d1ee2a85
+SC05,coverage-bom.md:450,BXP67 `bom-heshlon`,false,db1c63eda31a33e9aa55752331c6b83cc0b8ef63e68a72dcfc0da6fec23a4a95
+SC05,coverage-bom.md:451,BXP68 `bom-akish-wilderness`,false,fdbcd14d4bc687760b9d4adba57845b4b957d1f543d68736d54150fe5801fd7f
+SC05,coverage-bom.md:452,BXP69 `bom-agosh`,false,d5373af851b320205e4db1547999e9d9b26812c14cb168f33256b1c2e2c9f987
+SC05,coverage-bom.md:453,BXP70 `bom-corihor-land-valley`,false,a814965cb91d6941b19745e919e717499135ed4d42e41f822583248e35af2b81
+SC05,coverage-bom.md:454,BXP71 `bom-shurr`,false,2c975db9581cc9f05ff6123102f0057286eb7bcdc340e8757ea6fdf9d6950ce6
+SC05,coverage-bom.md:455,BXP72 `bom-comnor`,false,cf29ea78920edd3beac8d35dfddbfa851e1107410ecc54c3c50ecca5bd83869e
+SC05,coverage-bom.md:456,BXP73 `bom-sherrizah`,false,5a7eef12232ad620e73400ca5210e591800feaf0fb08dbe582cccc8336a1ea62
+SC05,coverage-bom.md:457,BXP74 `bom-moriantum`,false,a233bbc587ee39870097b2c108f02a3c4f09694ff6c1ee6113b833b9aefc1f34
+SC06,coverage-bom.md:465,BXJ09,false,7f85732dcaea1fb6f0036c9c734debbbddcbd0dde6327af62c6e870aed13cf71
+SC06,coverage-bom.md:466,BXJ10,false,059972599fd45e367d18d42cef2018e33b32092681f6ad7327954916b0ff33fe
+SC06,coverage-bom.md:467,BXJ11,false,84dc9f92318a82df2f0d6899ecc6fb954711bbd8190954d58cf4d3e2b2fb217c
+SC06,coverage-bom.md:468,BXJ12,false,b6cf7c3850b50963669834e6e4edb1ef9c7928f564ff187e22f94ebac4720196
+SC06,coverage-bom.md:469,BXJ13,false,09da7fa3ab60d2997b8c4e6cd37359214e84ec8c7064216403384cd172d9eb71
+SC06,coverage-bom.md:470,BXJ14,false,b86eb62a6b18c79d55398d27825aa4a2e22ba66d314080e5653212f108875646
+SC06,coverage-bom.md:471,BXJ15,false,71b403c1396e9de770996e3cb322887c20c0253d251c8035e894d610f35fe1e6
+SC06,coverage-bom.md:472,BXJ16,false,b114809c261342ccbfb3d24c2f98a410d9b3eb3a0c1d6f89556903e3e0a8b697
+SC06,coverage-bom.md:473,BXJ17,false,d6ebdf827b7cfb665a48ea0731d0a6afa36cb76e40de4970e220201b2d4fccab
+SC06,coverage-bom.md:474,BXE01,false,9dc748e85f1734358d17b62bff92d6eefc521f588a0b12a7f0fc0add82cf72c4
+SC06,coverage-bom.md:475,BXE02,false,c03ae96404eeeee72c195b182aba656ecb68ba1d8b98b26c78023e770ba07b51
+SC06,coverage-bom.md:476,BXE03,false,155f5ee4c5596dc0d9a724c5767c8e362e3348a639af36affa2a5682c18afc4b
+SC06,coverage-bom.md:477,BXE04,false,c895be085dadebf7b60cf78ae61e125eba6069a1ba95d15337ccd908e0fae6f8
+SC06,coverage-bom.md:478,BXE05,false,a295d1783cf92ef5c41c64f3760162045e730643ab78b45629400723157a0621
+SC06,coverage-bom.md:479,BXE06,false,76c764225bb03c1d3719ddfb2ebb5f0eac4e72de8933cbea8b441088846e2cd8
+SC06,coverage-bom.md:480,BXE07,false,0f43cebfceec7a60eb5467400dec56c4b866d313f95f0a90eb306970adf0ed23
+SC06,coverage-bom.md:481,BXE08,false,1ecec5268541c6efccd970aeb7b8c44601af188cde0032b93f8781f71a0f4edf
+SC07,coverage-bom.md:487,BXR01,false,8d05b6f6bde0604285380d7d8bbc73479bf285b6c843ed28ddbfdf844c0ca676
+SC07,coverage-bom.md:488,BXR02,false,696102bf8d27d468d8363ab15a6cca1627c7a187bd58ef7f83e4a88dcbaf5ded
+SC07,coverage-bom.md:489,BXR03,false,f86903c9634ab6b8cb088ac471102d121622d9c6ef895e88309e91fd3ddf8e3b
+SC07,coverage-bom.md:490,BXR04,false,ce4c0641efd528cb0fc906a7f33aba8980f15e4d79ea120872d3b3ad271b2526
+SC07,coverage-bom.md:491,BXR05,false,df0bf27cefc8af4d60b02c3e680db6018a96b13efd07b211c0e8dbeb34948166
+SC07,coverage-bom.md:492,BXR06,false,32295ffbf755d9fdf83db03d3bdc6ddd13cfed74108a79517b2c7b0cb373fa8d
+SC07,coverage-bom.md:493,BXC01,false,50341bbf50de05b30b0255dbd77245bb68e80ddbe3aae75cb6a7d0c79897dc22
+SC07,coverage-bom.md:494,BXC02,false,0c53231ae85714e4bede53f8757bbfd85b8997e8bb1c65000ca1ef9934a70202
+SC07,coverage-bom.md:495,BXC03,false,e28b80d8eb1f06ad80ddc48857955ba31e84bef2e15f6159b30bab3f9f58231f
+SC07,coverage-bom.md:496,BXC04,false,13af4a82375d65678afdc10742d57a124c9b1ae2c1c4894ee3b873bbf38e820e
+SC07,coverage-bom.md:497,BXC05,false,6458ffbcf0c987268d3030c475d72dabdaa25cee6d85a075cef0664951b1d0c5
+SC07,coverage-bom.md:498,BXC06,false,fe8677ea754988cc5cb6bf14942946f6a2a831a6857e95bbb57851180bb2e556
+SC08,coverage-nt.md:454,`NTP-galilee` — Galilee,false,bc6dbfd320fc1401338d7958f38ac9aff511f65ccefa39a916a470481c6c5f0e
+SC08,coverage-nt.md:455,`NTP-judaea` — Judaea,false,0e242c17fcd728c06b885e590c27fdd306ce0697894976b43a7c853d6681cdd5
+SC08,coverage-nt.md:456,`NTP-jordan` — Jordan,false,0b0b4723de533ad1cecd1479b62e21e502296d5093225e47ef379de21a81a8ff
+SC08,coverage-nt.md:457,`NTP-bethany-jerusalem` — Bethany near Jerusalem,false,27c440f4e42f0a9e89333a0c32ea3330d69844b67731d94fe67f935e22640c9f
+SC08,coverage-nt.md:458,`NTP-bethphage` — Bethphage,false,2d4b7870926464aa7a307859083f398965f22784633067a75d7693620ae7a2eb
+SC08,coverage-nt.md:459,`NTP-cana` — Cana,false,a09b4b033b303c43027d1656c9606acc4e8550e23c38a8f78c8b0ccc671d77ad
+SC08,coverage-nt.md:460,`NTP-bethsaida` — Bethsaida,false,b6ea7996c08ba00a725815cc864d36cc5ceb0688074954bbdf817b80d8285679
+SC08,coverage-nt.md:461,`NTP-chorazin` — Chorazin,false,edd20dc6b0fd59a6abdd1d7c346af6baec2828fc30c66b37ef656f0b3ab28da4
+SC08,coverage-nt.md:462,`NTP-gennesaret-region` — Gennesaret region,false,22b75631a476e52318350788ca7a3723b889560061b350269f627f23b4079020
+SC08,coverage-nt.md:463,`NTP-magdala` — Magdala,false,afee1517df93a60360b99332305f287b59ccc346d475ae35ec9e1d95be14ff13
+SC08,coverage-nt.md:464,`NTP-dalmanutha` — Dalmanutha,false,fe0c1f4f6f4071fd40aac64e7dc6076014f6cc93577d8d4237fefa2c0cd29e78
+SC08,coverage-nt.md:465,`NTP-caesarea-philippi` — Caesarea Philippi,false,32d1a852bfaa4dbc15e62ed3466f9c5047ac99d3089eeccc7e28d449844a7115
+SC08,coverage-nt.md:466,`NTP-tyre` — Tyre,false,9502caabd34ebec1fc3624fe129dc411dedb127ceb7ce2e1911ce5cdb74c78e5
+SC08,coverage-nt.md:467,`NTP-sidon` — Sidon,false,88e93827708c7ea5032cc0db6f6f3e546f28d58c0e5489f8f5887257232cb8e5
+SC08,coverage-nt.md:468,`NTP-decapolis` — Decapolis,false,6c33bfaeba24d15b1e14d38ff2d93994b7102d14fb90ccfde9d0cfa66791dba1
+SC08,coverage-nt.md:469,`NTP-gadarene-country` — Country of the Gadarenes,false,dda8d60718b0dd903c43eff25f8621ae34b78014f0892b957bb9083e39b9fbfa
+SC08,coverage-nt.md:470,`NTP-nain` — Nain,false,365eb284d6fa6ac2114e111366dd6338e5a4325dde97c8120af3ed2187e6e1a0
+SC08,coverage-nt.md:471,`NTP-samaria` — Samaria,false,703cb29040846c1be92a74317f51fdfb8be13937b1fac8abd5ca71f074b5a49c
+SC08,coverage-nt.md:472,`NTP-sychar` — Sychar,false,4a4d5df757d7d320927df8f1ab652275059c02da466cdafbe46c922cb6792f89
+SC08,coverage-nt.md:473,`NTP-jacob-well` — Jacob’s well,false,3ab77d6efd2db556e7fd06bd0a018a294a54db32d2aaa430881399add7f17efe
+SC08,coverage-nt.md:474,`NTP-bethabara` — Bethabara beyond Jordan,false,64383f2d6082c930a7628079ba6e998b2ed97e3f71b96d4e006f0f71a5f5ca03
+SC08,coverage-nt.md:475,`NTP-aenon` — Aenon near Salim,false,359f3597f8a67505f4bfd6a0f5fdb3fa54d96a01d056c6c4823868070d9e6a5e
+SC08,coverage-nt.md:476,`NTP-bethesda` — Bethesda,false,f0d68ad6e2b6e47ea405f645fca8a4d00a097aa418dac8dfaa0e9dc2276374df
+SC08,coverage-nt.md:477,`NTP-siloam` — Siloam,false,323331e75a440a2fa12c53db6a1be2c5d7769225bde434f63e2212eb8ea2e667
+SC08,coverage-nt.md:478,`NTP-ephraim` — Ephraim near wilderness,false,b58b8434caa322bef5003269ae9624492b9840da256af5fe09bdeaaff29a2611
+SC08,coverage-nt.md:479,`NTP-emmaus` — Emmaus,false,97f7f154e2d780c85f91c9f2d92e94918d93477c9dd2dd87dd63535a896b5908
+SC08,coverage-nt.md:480,`NTP-cedron` — Cedron,false,9e15ccefa178643befb01161d04ec14c887394b460ea0ed54f31a9131ae67211
+SC08,coverage-nt.md:481,`NTP-gabbatha` — Pavement / Gabbatha,false,9b30aa2355446ee093f1173cbf700e248c73bfbab66d5fcc4d8ecde7c32d1932
+SC08,coverage-nt.md:482,`NTP-aceldama` — Aceldama / field of blood,false,83576995f1ccbcbfeb7f9b0f857d4a5486a6723e6b75705d8eade699b1d3007f
+SC08,coverage-nt.md:483,`NTP-damascus` — Damascus,false,82707f639e8253c5f376a9f61cdcbea523f06ec78409995a850da2e1920835e3
+SC08,coverage-nt.md:484,`NTP-tarsus` — Tarsus,false,2dc9648b6341d6404e7f0d5c2377b3ece048c2e81ab40eed84ab38177053d301
+SC08,coverage-nt.md:485,`NTP-lydda` — Lydda,false,4d64ab4ca607bf36098502dd660d3bb602d268515f52554ee48bb62ff2347070
+SC08,coverage-nt.md:486,`NTP-joppa` — Joppa,false,79b055659f25fd5f104b490226185fe4cf84fbdbd7c6d25381ff7c40f1d9fa98
+SC08,coverage-nt.md:487,`NTP-caesarea-coast` — Caesarea in Acts,false,55b3e8612fa8caff76c2df0e907c07782f910986adb174332d398615f0dcf6b9
+SC08,coverage-nt.md:488,`NTP-gaza-road` — Jerusalem–Gaza road,false,73b8cfe02f2bef87942ad4311678c9861fc528f8ab12b952150614514c213c25
+SC08,coverage-nt.md:489,`NTP-azotus` — Azotus,false,e4973388f6e331e5be99a45676a60a2e3eb59f4a7fc602b8c3621a61b3c858ca
+SC08,coverage-nt.md:490,`NTP-cyprus` — Cyprus,false,efbe911703ccaffba533ad68afa5bdef7b443f94fb1ee0999471ce8209524a42
+SC08,coverage-nt.md:491,`NTP-amphipolis` — Amphipolis,false,e7d49afcddd85fdc991f0ca92ac434e4cddd1add892b4da495f56444fb12fe28
+SC08,coverage-nt.md:492,`NTP-apollonia` — Apollonia,false,cfec8494d96228d08251034e74c3701393c33222637b66bae8e434fdfd84b0a2
+SC08,coverage-nt.md:493,`NTP-thessalonica` — Thessalonica,false,2912ad89ff7122dcf71b2339c490d5acad05cb5941f3578dfa28d0650a454553
+SC08,coverage-nt.md:494,`NTP-berea` — Berea,false,0e427441be67e47bad11909e26068a66f4a0c3d38f96d484abd7f2544808e911
+SC08,coverage-nt.md:495,`NTP-athens` — Athens,false,a801188cb4c88a621ab394ee4cd3907566e27f94d213c17ec9e3ba1c63a9cc01
+SC08,coverage-nt.md:496,`NTP-areopagus` — Areopagus,false,327dd57341e079a170eb7a7e52843db892d74caa1881b3f5b5d22e1f02c55969
+SC08,coverage-nt.md:497,`NTP-corinth` — Corinth,false,17bfe2c07b228501fc05fe3867496888f0d02b2919af33a59e5ed29679e22f15
+SC08,coverage-nt.md:498,`NTP-cenchrea` — Cenchrea,false,9ad1e7f830cf5c0d9ac0df2865308bfd34b1e0d34e61f576544e21e40c5b4528
+SC08,coverage-nt.md:499,`NTP-ephesus` — Ephesus,false,af466ca877088a9e1ef6e59f52105da7704362f8d47c0926d52c0a01a4f35cf4
+SC08,coverage-nt.md:500,`NTP-assos` — Assos,false,0e0740dcd8063431e515a5ce706ed7d3f6cb761f82cc687f502f2619811f572b
+SC08,coverage-nt.md:501,`NTP-mitylene` — Mitylene,false,7b7f2de23162ba9e1218d32f08067fa42ea8b1183c7ee957666518596461db2d
+SC08,coverage-nt.md:502,`NTP-chios` — Chios,false,4c33606dc1d5949abeda37c79a2ecaa5d1338deea78c63e275a9c178eb8ba246
+SC08,coverage-nt.md:503,`NTP-samos` — Samos,false,b2fe5d2374d27e780a88d297005950f52f27acf3159d5608c8277faa64e6d4d0
+SC08,coverage-nt.md:504,`NTP-trogyllium` — Trogyllium,false,c16aa52f768da1d8109e3f3e6b043efbdcb4fc676f45b641ec6cd78e47dba89b
+SC08,coverage-nt.md:505,`NTP-miletus` — Miletus,false,efb59330afafc4db6ea2102441be3df46c3b8d96ef7ace701ad43015aba62c2c
+SC08,coverage-nt.md:506,`NTP-coos` — Coos,false,c0d3de240c94529fc643ba6234a593473b804a9ce9658e2fad4d205945c64f3b
+SC08,coverage-nt.md:507,`NTP-rhodes` — Rhodes,false,22b4d5f563d94a247e094406b7953702094ebe4fecc6459e3ae3d75ed1b944a7
+SC08,coverage-nt.md:508,`NTP-patara` — Patara,false,b9d061c08e1506cce3da290056e7148730ee3c391b321a3fe54c1c4c0a96a51d
+SC08,coverage-nt.md:509,`NTP-ptolemais` — Ptolemais,false,9c2fd2101bbeb6d4b1ffec5bdd739d4f5e0324a3c35ba9e4eab76cfa7cf30c04
+SC08,coverage-nt.md:510,`NTP-antipatris` — Antipatris,false,2338b4448ef6f1e4104b6b7b3ebcd9efa888e56fc215f064e65e9aafe9582472
+SC08,coverage-nt.md:511,`NTP-myra` — Myra,false,1e55282301afd08b41e2500a5858a7a8bd9cd097fefc4da7461edd7ce687e0b6
+SC08,coverage-nt.md:512,`NTP-cnidus` — Cnidus,false,35c4ad3a5f6a74ae76d224fb4bf55d7e9e0f18b0396be3c4aff08d65a23396c1
+SC08,coverage-nt.md:513,`NTP-crete` — Crete,false,442d7cc8e58f5bbb305975d62d356424fa41ec487663a06bb968089124b3d52b
+SC08,coverage-nt.md:514,`NTP-salmone` — Salmone,false,d7fa2f450ad2cd896941fb8053acd46fd9ff8f3f017bab9644bfac268e11e6cf
+SC08,coverage-nt.md:515,`NTP-fair-havens` — Fair Havens,false,1a11ae0a5aa9a9a2c6d953163a40429383d101f56d03eb140e70fdb7514a6ce7
+SC08,coverage-nt.md:516,`NTP-phenice-crete` — Phenice in Crete,false,c11718ef4a2f6675343732b7dffa7e75dd8b33c03abc8629926cdd599d86bd20
+SC08,coverage-nt.md:517,`NTP-clauda` — Clauda,false,2077e13f7098d85837ea56197c54084781cd2f70edd363ac1125815b784b9b18
+SC08,coverage-nt.md:518,`NTP-smyrna` — Smyrna,false,3c4d7cbcccfbccfc90b6a8176ad06e07f3d0cf59fc2e416a6a0544c91c7f8e14
+SC08,coverage-nt.md:519,`NTP-pergamos` — Pergamos,false,19b17f7785f85d3df5ade370631450b4c926e771cff2c948fa1b106bd659159f
+SC08,coverage-nt.md:520,`NTP-thyatira` — Thyatira,false,6538b605eed3db139d8339141183688e976182a623957cea87a9284100816064
+SC08,coverage-nt.md:521,`NTP-sardis` — Sardis,false,b6cbe1521a3ca2140d2ab54ce727a93863ff82ba9177880342c109de8091d054
+SC08,coverage-nt.md:522,`NTP-philadelphia` — Philadelphia,false,1f185ffb162f02d561db8f6975a240d651730db38b58181ad10ded17e8b97625
+SC08,coverage-nt.md:523,`NTP-laodicea` — Laodicea,false,8a0518dacd996b199ba27e2161974fef48609f5713f59b7e05086851f88dfd4d
+SC08,coverage-nt.md:524,`NTP-colossae` — Colossae,false,22fcdc290df3dcea7da39f2882e560e22a0688c3c320e0edc7e4076f2bd18350
+SC08,coverage-nt.md:525,`NTP-hierapolis` — Hierapolis,false,583d796d3842bad36123f216625d2eb06a90688d78a319b7fdae53caed958e8a
+SC08,coverage-nt.md:526,`NTP-nicopolis` — Nicopolis,false,725b588b9433703495d2ca748ed0b84e949dcf97bc24ca7462f7ec34a031826f
+SC09,coverage-nt.md:536,"`NTJ-matthew-infancy`; Joseph, Mary, Jesus; wise men separate",false,c1f839cacdc16bbcea223874fade37978cca03d9cfd5ab79a97a5a3df7e3349e
+SC09,coverage-nt.md:537,`NTJ-mary-elizabeth`; Mary,false,2216f36e25dadf937f8ca326248b5bedebcff320f615f2fdede43db6cb11fbe3
+SC09,coverage-nt.md:538,"`NTJ-jesus-twelve`; Jesus, parents, relatives",false,b3a3d6dd44d54df419682a2cecef78c260e96c78042d0ba961274fe6275a7ddb
+SC09,coverage-nt.md:539,`NTJ-john-samaria`; Jesus and disciples,false,6b7e9d7b311632a1c99d068ae0b81d271691a6547fc8d993b3d357643405fb4b
+SC09,coverage-nt.md:540,`NTJ-mark-coasts`; Jesus,false,817c32115b0792fc984b67ee7d5bc2a564c02231192039aa10414f9c1d57552a
+SC09,coverage-nt.md:541,`NTJ-luke-jerusalemward`; Jesus and followers,false,f6bc125ce0138c5b565ddd70f87b614560b069898fd073415a9e4783fb929c3c
+SC09,coverage-nt.md:542,`NTJ-john-withdrawals`; Jesus,false,8cdbc06bf0ab9a6394d410f9d1524886506ec21e95db6354820ff3caed34efa0
+SC09,coverage-nt.md:543,`NTJ-emmaus`; Cleopas and unnamed companion,false,1e32f5c6ca5cfeeea78726c711eb83f7827ba70efdf127594642b68e2b3b96ec
+SC09,coverage-nt.md:544,`NTJ-philip-samaria-gaza`; Philip,false,58f29d8ef04c47cd4b16802645e1f330f915d329fb1a88d7cba37019da92d5d4
+SC09,coverage-nt.md:545,`NTJ-saul-damascus`; Saul,false,69da900762377a20ebba1eee0a199424a746a4198afb782208856d7d0eba3e7d
+SC09,coverage-nt.md:546,`NTJ-peter-coast`; Peter,false,9bdfea62362569d8ddb2d1addda9d380e09e2b49eef982004d61881a62351d18
+SC09,coverage-nt.md:547,`NTJ-cornelius-messengers`; Cornelius’s messengers; Peter’s party,false,0b637915b87d14a698ffa0dcba823754fe22c923b41c984d41a7d599b57ac2c2
+SC09,coverage-nt.md:548,"`NTJ-barnabas-tarsus`; Barnabas, then Barnabas and Saul",false,39769255ffd75ef3482927e0845ccda589b8a0f55ae4bd361fdb500f0b7680c9
+SC09,coverage-nt.md:549,`NTJ-split-after-council`; Barnabas/Mark; Paul/Silas,false,ef7c05aa488b4e9e65f136be9ac629bca9d2b26707ec8564164bc2d7b4a27287
+SC09,coverage-nt.md:550,`NTJ-mission-two-extension`; Paul’s successive parties,false,a2521cf84a21dfa0fd770380515f27a8beaddce041cf6c2fc519d5ceb083bbc2
+SC09,coverage-nt.md:551,`NTJ-macedonia-corinth`; Paul; companions split,false,a9f0dbfa23ef64840fd7eb484e4ffde5dda8043d4e018ac92773f3470dab2a2f
+SC09,coverage-nt.md:552,"`NTJ-corinth-antioch`; Paul, Priscilla, Aquila initially",false,baaf460465ce91513b8d37795756e437fa8263a208b231d754153454aa8c4700
+SC09,coverage-nt.md:553,`NTJ-apollos`; Apollos,false,5aaf847ab49b413133d8ace21f204e4bd868cd3d7cd19ff7ae48bc264740d5d4
+SC09,coverage-nt.md:554,`NTJ-paul-return-coast`; Paul and companions with split at Assos,false,de261eca53e1ccc80bc7cb5132033915b61c0ff678a14ded392745f60193d22b
+SC09,coverage-nt.md:555,`NTJ-miletus-jerusalem`; Paul’s company,false,b21c49108cba2bfa628391dc38636fe436597efc13d66592a503e9d77b286c88
+SC09,coverage-nt.md:556,`NTJ-custody-escort`; Paul and changing escort,false,d21f4472ceb29cf083c50ddaeb7b752d68d230efecd839916d52f68332e920d9
+SC09,coverage-nt.md:557,"`NTJ-voyage-to-melita`; Paul, Julius, ship parties",false,4d1a9a956475f62db57f52b85cabd38b9590a2b5b57fd211060d6809ac349f82
+SC09,coverage-nt.md:558,`NTJ-galatians-autobiography`; Paul,false,3d30e280161e3432a886ee642779c6947eff30802fb2a304c09dec8191ffd413
+SC09,coverage-nt.md:559,`NTJ-troas-macedonia-titus`; Paul and Titus separately,false,979e293932dfbefbcbb431ae8bf5e3e59901453e0361bd2f51d5810adf4bba95
+SC09,coverage-nt.md:560,`NTJ-romans-plans`; Paul,false,57a4647f6674f0492bcef625e66878d8fd25f8f69f0e737b603bd6c5ee96d2b4
+SC09,coverage-nt.md:561,"`NTJ-pastoral-network`; Timothy, Titus and other named coworkers",false,cf57dfb252a7d0e50d323dc03931e2624f4fd6b298fe66b0e40b9fc003cadd0c
+SC10,coverage-nt.md:569,`NTE-annunciations`,false,f3add5c92f7125073714bcae2103aa58fbf8b0a1fc13f6fa11be55ed449ea681
+SC10,coverage-nt.md:570,`NTE-baptism-matthew`,false,10ce000be6dc66d4186fe97aabb1d153cc6267cb0263113f379dcdd080e7123d
+SC10,coverage-nt.md:571,`NTE-temptations`,false,1f06d3bbf9adfe5ac08e8e62df05f8d5841638234dcf51f63a292a4c8a24d6fd
+SC10,coverage-nt.md:572,`NTE-calls-and-healings`,false,823d29f3eb7f251f41e0ef0e9f9d0cfc9f7a8ae7ded81ee3d2f9dcc2fdd0bb11
+SC10,coverage-nt.md:573,`NTE-feeding-five-thousand`,false,f5508322faa7278273f829bf10c69bf69d5f92781e07a15dc05372fe3cca709d
+SC10,coverage-nt.md:574,`NTE-feeding-four-thousand`,false,0cfdae618213afaf386e2f19922d1ce2abff1508a71e550a9afb5cdf6a63b040
+SC10,coverage-nt.md:575,`NTE-transfiguration`,false,1750761283d23d269894586b9ff194622884600dbafbce1c8c77a7ba7cd90903
+SC10,coverage-nt.md:576,`NTE-jericho-healings`,false,bb5003b2add1ddd7599408c1147df8a6c0ca27546440c40f094139ace8331d12
+SC10,coverage-nt.md:577,`NTE-temple-actions`,false,1197c4820f05ebf9fc9b0540256b7302b88cedfdd76316f9f42329a207dd671f
+SC10,coverage-nt.md:578,`NTE-lazarus`,false,220a1c18320ceaedc3f048eb91ea8849a32f63e17e051062dade456c9fc5793f
+SC10,coverage-nt.md:579,`NTE-anointings`,false,2a1d510a782a18278035420bc48c916e26e8cc126ddea7de4561d7c26cd92667
+SC10,coverage-nt.md:580,`NTE-passion-variants`,false,7a139bb3a1677e210358eb9e009887a6635616e6702f85c37b7e05908e91847e
+SC10,coverage-nt.md:581,`NTE-resurrection-accounts`,false,a605cab79e883a4aca9854ff2dd5746de933263711334d38a7468d5b9faf434a
+SC10,coverage-nt.md:582,`NTE-matthias`,false,c4632f9ce0f686618a55582f9d86dd6c35d4c3b2fd403754a1d3d22995ead5ef
+SC10,coverage-nt.md:583,`NTE-pentecost`,false,80a6e73ede261150141586a4d809e2b85c8cd739d94a387bad6aeb042c039188
+SC10,coverage-nt.md:584,`NTE-jerusalem-community`,false,89dda577e518857a20fc32d76275c426171281f4faa86e144a4d442c3821769e
+SC10,coverage-nt.md:585,`NTE-stephen`,false,f888f3bb3d1d47e1eea04f42b37684f1ba923e626f8f0a1c83574cef2d494e2b
+SC10,coverage-nt.md:586,`NTE-saul-encounter`,false,552ea737e1bf5b6f24f2468678eace6b1a8c69a1fb508cdc94d778a7267169b7
+SC10,coverage-nt.md:587,`NTE-cornelius`,false,61cacdf21ec7bef0bae3b9e80ed449a2582a93c174a7eef9299050c049fda705
+SC10,coverage-nt.md:588,`NTE-james-peter-herod`,false,9baeb8e2c6614bc8aac94cca487e8644807e66db4d73527d3c5358aae47f1485
+SC10,coverage-nt.md:589,`NTE-jerusalem-council`,false,1b02211a2bd3308e10b4a48630f500bbf1f571731745792b999cf0a72084267b
+SC10,coverage-nt.md:590,`NTE-philippi`,false,414adef9e964794421bdc4debc34df8a4f42cb4c1d83f41f66ebd83808d4bcb3
+SC10,coverage-nt.md:591,`NTE-athens-address`,false,f00177298fb5514763f800f470e33aaf8a544cd82bee68d0255acb805326e8ab
+SC10,coverage-nt.md:592,`NTE-ephesus-conflict`,false,ca8c86d440d69dfed45f22bd35626bcafb6e7cce31243ef5a9bf9f2263d68d2a
+SC10,coverage-nt.md:593,`NTE-eutychus-farewell`,false,1f716fe8c686f449319b16d37e089edd8d3492b5b74c0e59357151f8ac72fea7
+SC10,coverage-nt.md:594,`NTE-arrest-hearings`,false,d5fc97d4199f47b20b8e685d900903be3b6ca458981d4d98290898399b8cc9f6
+SC10,coverage-nt.md:595,`NTE-shipwreck-survival`,false,284a3d4b9dc36b5ac290197d6a8923e2aa38dcd43682ba6ab8eec9eece75b57d
+SC11,coverage-nt.md:603,`NTC-genealogies`,false,1552c45ca6f41b90bdcf173370dde37b2f5a55898f99b267a4c87334672e2703
+SC11,coverage-nt.md:604,`NTC-sermon-mountain`,false,f9e29c7b5d7a33efcf698dd92b63f01b24ef047783fc4befe57cd7490165e0d2
+SC11,coverage-nt.md:605,`NTC-parables`,false,912078feab7ec9a87dcd17e0e70ee5031ac2bfe84ad39a7aab68abad23fef2c8
+SC11,coverage-nt.md:606,`NTC-commission-keys`,false,538ff2165bf21a68cba5f2a9758280ada070291f55ac8c4fdaa1f6446ba091a9
+SC11,coverage-nt.md:607,`NTC-family-marriage`,false,fa8448d99bd9e0de1d5a3a0e71387518a57b8e6473589dd682eeb52422ceee1f
+SC11,coverage-nt.md:608,`NTC-baptism-spirit`,false,9274ca936dded4189e8ea9c51007c487d1bd5f45068f310206d0e5f05f5fd970
+SC11,coverage-nt.md:609,`NTC-other-sheep`,false,2054bf0f8f2eb94732cd99a56d2850edd92724458ed7147401224e4270caf05b
+SC11,coverage-nt.md:610,`NTC-comforter`,false,0fd6040c9c308ae1dec5c17257acc40cf82cd5a22a868a79482a4dacb4744e60
+SC11,coverage-nt.md:611,`NTC-unity-intercession`,false,f1d67dfe455882e79fbd646816c28aae348fb10ae5e449f3c10c924b7eb225a0
+SC11,coverage-nt.md:612,`NTC-resurrection-glory`,false,c2820fe7ae833ece2152102e3e9855ae8ba42eecf53294b703f115123c1e7e99
+SC11,coverage-nt.md:613,`NTC-grace-faith-works`,false,8cb86b86dd0040a812e5b682b4034db27b036dec623e8e768383cd4a9ff70e84
+SC11,coverage-nt.md:614,`NTC-gifts-community`,false,1d78078e72eaaf84cc00e084ef15d2b89939ee978abb0240864abccdde22ffb9
+SC11,coverage-nt.md:615,`NTC-gendered-assembly`,false,d63c5da798d2ee8c70b6711e3d1b0b9939e357ea96e43b6a7071fb8bd447325e
+SC11,coverage-nt.md:616,`NTC-apostolic-support`,false,0764760bc9db62c98234f044caf440eafe0420614e310a4486d83205e5fe69dd
+SC11,coverage-nt.md:617,`NTC-relief-network`,false,a585cb144b8e9424e8fcdd66d69ce9ec60f679f5105b3f6c32c8bc5a450abb99
+SC11,coverage-nt.md:618,`NTC-new-covenant`,false,b84a2b412d7949f2107e40b27d3b827322422d85e2e1624fe916c4895ace4bdf
+SC11,coverage-nt.md:619,`NTC-heavenly-experience`,false,777fe10d9b9dcae977a6753126344b427efc8a916fb069f94e56fa4322c00d22
+SC11,coverage-nt.md:620,`NTC-promise-law`,false,91713ddcb1a3e677deb9fd07e589f4d5ec98be091449168d462aefd849c51140
+SC11,coverage-nt.md:621,`NTC-adoption`,false,73e28d77860c7b5f7fcf3c1ed9dc3e5f71029b4c8309d1f8dea276c8e00ec28b
+SC11,coverage-nt.md:622,`NTC-israel-gentiles`,false,ecd1d3124ba8ed4cf1fa1b90c7c3a178e0acf3d1a558c56222bfeff3e9f21ea4
+SC11,coverage-nt.md:623,`NTC-coming-and-dead`,false,a6aa605e57e36b0067ad80b549a09e37164d04b5babdf45fa3b5e51253f36e9c
+SC11,coverage-nt.md:624,`NTC-priesthood`,false,c845ddfb40b899ecde4669ed3e3086880c4a8506019b0a52f65b50d8fb122311
+SC11,coverage-nt.md:625,`NTC-sanctuary-covenant`,false,b198acff38391f8249cba6b05263f8ef438e36034a23e2b6058597405ddfc2da
+SC11,coverage-nt.md:626,`NTC-foundational-teachings`,false,6db174d9fc03b271249a5c4f9f07f5e1f9661d6776c872b79c005e264acbc86e
+SC11,coverage-nt.md:627,`NTC-faith-exemplars`,false,40c3005d94345426a792bf736e3ef24b0e1c94c61ba875e0b69e19bff10e7374
+SC11,coverage-nt.md:628,`NTC-wisdom-action`,false,fcbdff8eeb1e190a03d18f4077e72b8e16294c5cc9923b9f56b395355ffbb491
+SC11,coverage-nt.md:629,`NTC-dead-spirits`,false,c570974d30aa789f466362ada23bc851787dfc3c4ee74f7b3c6fc835d748f8f0
+SC11,coverage-nt.md:630,`NTC-divine-nature`,false,dea3107c7630e2338b3afb70d0c9689fa9ee0c98b909a97d01a5fb19b4daf9e8
+SC11,coverage-nt.md:631,`NTC-love-discernment`,false,c5c00841476564a6f9df1de38939dc5db85c7196be3ad078f470ec92c80bad4b
+SC11,coverage-nt.md:632,`NTC-hospitality-conflict`,false,3f04a8dbbea89aa940383726d815d694878fb8b243cc552bf5560db1466e55fa
+SC11,coverage-nt.md:633,`NTC-jude-traditions`,false,7384ad674fd63559599dd280ce95d5938966d83d4be6a13d5cfc6e77d8f78e31
+SC11,coverage-nt.md:634,`NTC-seven-churches`,false,81a81ca7126a73cd22f930609f2583333ca6baf30fb576d24b30f86b171a1818
+SC11,coverage-nt.md:635,`NTC-vision-sequence`,false,5f7cbdfae474b15a43315fa1442738e133f2ca960c1a5100427a11d822e70ae4
+SC12,coverage-nt.md:643,`NTR-jesus-household`,false,b68fa2b07fc576baaebea1d6438cb6fedf4069f0712a56b83ecb155f8a3c6eef
+SC12,coverage-nt.md:644,`NTR-baptist-family`,false,fb0d3ca5e872cc1fe69c396147d78da578b74855c31451f2deb06494239831ca
+SC12,coverage-nt.md:645,`NTR-twelve`,false,cb8e1abb8ca9f9f53f4670882ef11f0bde76d3c2b94486f4b573ff257a040fde
+SC12,coverage-nt.md:646,`NTR-women-supporters`,false,4ff9c1748540bcf2a4c9f1ce689fda423fb2dc5f8e63bbf590fbcd8365044f58
+SC12,coverage-nt.md:647,`NTR-bethany-siblings`,false,ddd3d6ee2031e9fef0f7801ea234d94047217fff364e6e727dbe26b37609f777
+SC12,coverage-nt.md:648,`NTR-passion-authorities`,false,cbb738360d86b76b03f5c1b282b4a9dc63842c9ff92d53aecc9398f024afe006
+SC12,coverage-nt.md:649,`NTR-burial-witnesses`,false,68628a7e895eada8f8513a18871158b857bb6426942cd12c799862594d978dc9
+SC12,coverage-nt.md:650,`NTR-matthias-candidates`,false,b6e9ed84e45aabf869f8133e643ecfecf7d585220f15685d8c2822392f027ac4
+SC12,coverage-nt.md:651,`NTR-seven`,false,95d5096dbe06ea74b212f32867bf1a990ddb54d6f141a1f8f89f6ede3c4bf113
+SC12,coverage-nt.md:652,`NTR-barnabas-mark`,false,e35d832ad43a3b4cca16c6c5a2c806ca953ef9db6df90993f487d6d1e524d4f4
+SC12,coverage-nt.md:653,`NTR-paul-saul`,false,357eaf1a85ee07715c845f764bfbfd2e0c01b4dfda25aafb4684d8aa3a489022
+SC12,coverage-nt.md:654,`NTR-ananias-identities`,false,9d50ea3e1ba48e15371fad39e7c9eef3b14726ee1a7a934bf736676e92e1a7f5
+SC12,coverage-nt.md:655,`NTR-peter-coast-network`,false,5092e7f6bc5b2d474e84bfa9ebaa60257ab818100a7ebab8dad71ab3babd6cda
+SC12,coverage-nt.md:656,`NTR-antioch-teachers`,false,65d52e19f34dbf12b70b14739b11677066c027ae71bb2d4db7d4f0c291fe5ab4
+SC12,coverage-nt.md:657,`NTR-elymas-sergius`,false,923a53268ff9360c62f05ab3cc6037a5f3a2783b3d2545748265f8d7cef14d7b
+SC12,coverage-nt.md:658,`NTR-timothy-family`,false,f9e4b3530dba4caad3ced32e61298579190f1bfc781be03530b46190eee29b8f
+SC12,coverage-nt.md:659,`NTR-silas-judas`,false,c7747457508cbcdab43cf0f400c08c4098ac4d9426f6effb314b13a43bd4348c
+SC12,coverage-nt.md:660,`NTR-lydia-jailer`,false,1f0edee49c0b5eb5a7949124480400331a1d1eec9995f7d8a3cac6dd0d73538d
+SC12,coverage-nt.md:661,`NTR-priscilla-aquila`,false,534f1b85457b6c0549841c8c29bd861395c1330f651a2e96b0ab88ac76c6f1c6
+SC12,coverage-nt.md:662,`NTR-apollos`,false,877c17558f9789982e74922914530912b51e9028a6cbf1ee3c7d3eefa5a3432b
+SC12,coverage-nt.md:663,`NTR-ephesus-coworkers`,false,f58bddff1754c1b674df3e5cae37ce6bea56456189ce4312668ea5e49ae47a47
+SC12,coverage-nt.md:664,`NTR-travel-party`,false,406067bd264963b6cd7022fcf3f6ecd910edb3d933b528f4c356384d3d9d837f
+SC12,coverage-nt.md:665,`NTR-custody-authorities`,false,9f2d6bd7f151d5ab9814e7fd8ad6db06ce6782066f0d09e6c8f7fc797146fd57
+SC12,coverage-nt.md:666,`NTR-voyage-party`,false,cd7ba7dddce102dedfe72239c0c8c3cdf1e4d6fb3ca326062b6cc4f9f72f0c20
+SC12,coverage-nt.md:667,`NTR-romans-greetings`,false,3bea391ea9009bf2ff88b475b2b4f1a8dda9dcfccefb4e595a236195e9d42e70
+SC12,coverage-nt.md:668,`NTR-colossian-network`,false,d708d83f1beb1e25704b20d08f3e2625622e599a56ece4cb89c6b6ce10f51ac8
+SC12,coverage-nt.md:669,`NTR-philemon-house`,false,0f5251cd853d2b866a3efb696be76e1685921e9b6baac249889990959019eebd
+SC12,coverage-nt.md:670,`NTR-short-letter-identities`,false,dda48afb74ee005c86e22265b881b63e97ea64d3864bea6d6a1beb14308d541b
+SC13,coverage-ot-history.md:15,OH-C01,false,0dbfadb2c61e8a2131f83349961ebed48c2edd0a91f6be4a265b27b04f63e5c8
+SC13,coverage-ot-history.md:16,OH-P01,false,de21052c44c3dd623f7003075f51eacfc0d12bd4d66c2979c1e20539d653a635
+SC13,coverage-ot-history.md:17,OH-E01,false,c2070f4e892de9209c3bb4dbf421c1b3d7b1e3ba38eaf5559e9e2909c2fe99f2
+SC13,coverage-ot-history.md:18,OH-R01,false,6e52b5ed50c85c909c1a223dbda001790d64fc2570d7cd66912e64d62ba2f75e
+SC13,coverage-ot-history.md:19,OH-P02,false,0bdb7aaf6469c6a30f4da240c912cc46016f7e4b068b69e00f7fac23e593d560
+SC14,coverage-ot-history.md:510,P18 / region reference / Ur of Chaldees,true,a7dacbba09449b3edffb4cd4d7e641b13861ca4a7ca63b62519bb1c93be9cc36
+SC14,coverage-ot-history.md:511,P01 / town / Haran,true,0a1c9b29b492fc0f844cfd1bfec9910863f6a42da2b678569fbf3bea2110a5bb
+SC14,coverage-ot-history.md:512,"P02 / town / Shechem, Sichem",true,c7f539da90a233875bd3466fdb1140924f9e9549343ea0260ecaf181fa2ceb03
+SC14,coverage-ot-history.md:513,P03 / camp relation / Bethel–Hai,true,5cc4a50443313312f6fcc704708d66d81d670961fa15fad357470cbc648ffcb1
+SC14,coverage-ot-history.md:514,"OHP-BETHEL / town / Bethel, Luz in Genesis 28",false,4db64968987feaea09717cbbb7d897528bbf53eaa7dd413b286eb2f4ed7cdefb
+SC14,coverage-ot-history.md:515,"OHP-AI / town / Ai, Hai",false,83b3233b92d7cae1bb8523e08f6011f0e5932e3388ead8f3a90b8c0b3f4d0a78
+SC14,coverage-ot-history.md:516,P04 / region / Egypt,true,d5a4e85ebd9da9bf56d4bc81f69e9c69d20e6e348153d70590050cb0c7889819
+SC14,coverage-ot-history.md:517,"P07 / town / Bethlehem of Judah, Ephrath context",true,b5b2ca3b6e951efedc6b66a32eae571dff87510d12072b01b8ef0aaa949466f4
+SC14,coverage-ot-history.md:518,P08 / city / Jerusalem; Zion and City of David in cited Davidic context,true,cfbe00ae9bc7451d3be20a52fd8308ecde23f4cb1414eced5cf18c1894f8d31a
+SC14,coverage-ot-history.md:519,OHP-HEBRON / town / Kirjath-arba,false,a3ea30c2506f13883af8f7fbe6f28aa967bb5fe19109d50074a38ec1f28b5673
+SC14,coverage-ot-history.md:520,OHP-MACHPELAH / burial setting,false,b0dcf5697543a54a3498ea7c417382b9f17455a3729e3013a5ec42a9096dae6b
+SC14,coverage-ot-history.md:521,OHP-BEERSHEBA / town / Beer-sheba; Sheba in Joshua 19:2,false,3c313153e297f2701cd5544aea9d266e8df9aeae4107486aaa3dd77de7b08a7f
+SC14,coverage-ot-history.md:522,OHP-GERAR / town,false,09d210931a7142f6e1608498eeb2f088b183c7617a8ef9c34917fadebc7787da
+SC14,coverage-ot-history.md:523,OHP-SODOM / town,false,186ace768b545312a0a90fee46fab88e599da8f7bde1184e0501507bbc9a1cf7
+SC14,coverage-ot-history.md:524,OHP-GOMORRAH / town,false,1ca8a6a88f6c85257115b67c6d74349ca860c36554ea3e5ce9d92f7b6fa21d61
+SC14,coverage-ot-history.md:525,OHP-ZOAR / town / Bela in Genesis 14,false,4522f1ba66614d14df5184ef74645ef958bdb85671323567bca1da05a24e03ee
+SC14,coverage-ot-history.md:526,OHP-BEERLAHAIROI / well-region setting,false,6d0beab330dfa4d4b88a702745b2d4694b60801a5c2b19d86c7161e9eaca7066
+SC14,coverage-ot-history.md:527,OHP-SEIR / region / Edom context,false,cc61f90b596177c950a11def0cd07e02fd1d8a5828bcd2ec737412b5f555e651
+SC14,coverage-ot-history.md:528,OHP-PENUEL / encounter setting / Peniel,false,38417d8b4fac0fe6c3282f77926f1427f949a21389590f063987fdc151200c5f
+SC14,coverage-ot-history.md:529,OHP-SUCCOTH-JACOB / settlement,false,0511995745c7ac676a5f6ab9eaed852aca35103b89e2e4b5d6c1fc9b03cb632d
+SC14,coverage-ot-history.md:530,OHP-DOTHAN / settlement,false,cbeee50806c6da894d6747dc4f6292e06e92793c9b4935808b3f727ab45ec511
+SC14,coverage-ot-history.md:531,OHP-GOSHEN-EGYPT / region,false,49ba35077b4a1ceb41299beebe1d81061da23793d9a6537e2f961b1ab381638c
+SC14,coverage-ot-history.md:532,OHP-MIDIAN / region reference,false,14b533eb832f239e263ed72df5e4c6c05f7ab9de6c5616706756a60e76fd57fb
+SC14,coverage-ot-history.md:533,P05 / mountain reference / Horeb,true,3bd6991e17835a443e276ea38b5328979d35f5ce2ce179e97aa5f1e232fca2e2
+SC14,coverage-ot-history.md:534,AP01 / camp / Succoth of Exodus,true,899bcfba011110153e6bc8a955c63dcbf80a692a566e5d637321ec762164f047
+SC14,coverage-ot-history.md:535,AP02 / camp / Etham,true,cec7181add8f7810f822d2ab2cb91745a8462b6990091b641cccd7e1553fc787
+SC14,coverage-ot-history.md:536,AP03 / camp / Rephidim,true,77b2f83826cd2acdc31651e5004431e0d06118a99fc2478a6a83a2359c41305c
+SC14,coverage-ot-history.md:537,AP04 / mountain and camp / Sinai,true,e71e637189e07882f4ad9b7ecdeb7f8ba05364bef52f1dbe193c225b9f7c3c20
+SC14,coverage-ot-history.md:538,OHP-PIHAHIROTH / camp relation,false,8bef357fb0f79f31ce64b8bc347b80dff59cf6a2f0375b503193514b8b5dc80f
+SC14,coverage-ot-history.md:539,OHP-MARAH / water stop,false,2e2abccfca1d327ff5438005ed273a6b5203c144b23de2091616fe59c6324efb
+SC14,coverage-ot-history.md:540,OHP-ELIM / oasis stop,false,5488929ca21723edf247b32f39ccbe26b3c8abb8530fb72ed98458efd3f3e0d9
+SC14,coverage-ot-history.md:541,OHP-KADESH / wilderness setting / Kadesh-barnea in scouting context,false,e235b91e64a9b24ba1d0e73631f57fbb08f6e79dd2d04bf06425ad022372f4c0
+SC14,coverage-ot-history.md:542,OHP-HOR-AARON / mountain setting,false,5b75d7e12d25ab4e55d3eff929b29159aca344c39ab1959d2da19e2b643214e6
+SC14,coverage-ot-history.md:543,OHP-NEBO-MOAB / mountain setting / Pisgah relation,false,f5beb8b98611a36d02592c854d1e91b5b5cee99256d24005f44e91fbe70eda04
+SC14,coverage-ot-history.md:544,OHP-MOAB / region,false,9bf75bed1af8713fb9ebedeed8e4e6ac663cd2627ff10b0ea1e9f287f8ea2651
+SC14,coverage-ot-history.md:545,OHP-JORDAN / river,false,5bde351b189dbf81be4798b61eed45d58f51c23dec0d9ae6b25594b9f105e323
+SC14,coverage-ot-history.md:546,AP05 / crossing setting,true,2f0a671de8745be22f8718e202393c09800d37cc3568cc347a88e1a4007512bd
+SC14,coverage-ot-history.md:547,AP06 / city / Jericho,true,71d216a74b3d7068af7d6472c5058de7a46881ac714bbb6cd2ab6510b25e3e4e
+SC14,coverage-ot-history.md:548,OHP-GILGAL-JOSHUA / camp,false,4d7ab5123b16c8511e7af4552fb0ee70896eb68b80822f3f67a99ec03f6064db
+SC14,coverage-ot-history.md:549,OHP-GIBEON / town,false,e1f460d718bd1079a84b277da5a0470089bd0f432e216e95a8d217e69ca20fb1
+SC14,coverage-ot-history.md:550,OHP-SHILOH / sanctuary settlement,false,e13dee6328916620f3c5cd91b939f5a59a2e11febfda200cff5dc97a70fbfc08
+SC14,coverage-ot-history.md:551,OHP-EBAL / mountain,false,a9248787aebbf261ec9b3744b09eab2f74d78cf61b3cd4312bb3bad80be33867
+SC14,coverage-ot-history.md:552,OHP-GERIZIM / mountain,false,40a637f5c163b7af414f6d22994e431509f528756d9a0c8eed2ae9962f83556e
+SC14,coverage-ot-history.md:553,OHP-HAZOR / city,false,ada4502c76faffb1ffb80b5e299bc24cf7860f4eb1eb7b0824b09cae5aca3c5a
+SC14,coverage-ot-history.md:554,OHP-DAN-NORTH / city / Laish; compare Leshem in a parallel conquest account,false,e49ecac4b451b77602d2a05e58a8bf6a4d339d8e67bd5e7837dd580caae3f3e0
+SC14,coverage-ot-history.md:555,OHP-GAZA / city / Azzah context,false,180d5fe07df508215a73776cc0d9e59e793ea88dc0235e674419d5f25e8d9a8c
+SC14,coverage-ot-history.md:556,OHP-ASHDOD / city,false,92e724511af5170c01c60d032d6ea0a16b9b0e4273f0ba9aacdcb0bc4596d34c
+SC14,coverage-ot-history.md:557,OHP-GATH / city,false,1fa79a0f4eb52060b66a9823c2c69aa5fabf064c3139289cb54dcf501814e2b9
+SC14,coverage-ot-history.md:558,OHP-EKRON / city,false,5c954b03901006f4ae2c82ff27b13c86087ad87522739d4e0ad3d2aacc24435e
+SC14,coverage-ot-history.md:559,OHP-BETHSHEMESH-JUDAH / city,false,4352a3241d69c3420d78e99d64326ebca8db91cfeaf632798559db9a5d558d8a
+SC14,coverage-ot-history.md:560,OHP-KIRJATHJEARIM / ark settlement,false,0ac1ecd0e86fbd7787d4704672c7488f5ac10de69a333b8d80ca3fbcb59efc22
+SC14,coverage-ot-history.md:561,OHP-JABESHGILEAD / city,false,9049186865b854511a3403ccc475b122fca07200eae50067dcffd71aa585830d
+SC14,coverage-ot-history.md:562,OHP-GILBOA / mountain region,false,c2ff6477d4f6bc32c0e09136c313baf7294b4ebdb62d0673f46ecb8a5bd557c5
+SC14,coverage-ot-history.md:563,OHP-ZIKLAG / town,false,92d181e122bf35fc6e985f249c420a9488f60d5b42466981d3ef8041d1eca7fd
+SC14,coverage-ot-history.md:564,OHP-MAHANAIM / settlement,false,5af61700196e192241ff8f53bb318ea472ac7fa1a1e05cf5c8f84a54eb7cde4f
+SC14,coverage-ot-history.md:565,OHP-KIDRON / watercourse,false,216e030229c9906ec7fbadbade08856ebb21e19c61b50c1b3470c5132d168e02
+SC14,coverage-ot-history.md:566,"P20 / mountain / Olivet, Mount of Olives",true,e613c00e13c35ba90bae54d4207dff3a6f1ff914dae162f658b93d7059b5d6e0
+SC14,coverage-ot-history.md:567,OHP-SAMARIA / city,false,ff78e4dd5eab55084eea5a42f365de67a47dec8dffb4bc397d662eb05eee8f13
+SC14,coverage-ot-history.md:568,OHP-TIRZAH / royal settlement,false,d6bb44bc82e6166a7173a4a49e2ee8f752336c149651c8143058449235b7dd8f
+SC14,coverage-ot-history.md:569,OHP-JEZREEL / royal city,false,09c6981151a9d8a3c73244a0fb51e196c5dc429d3ece9753b5febb658b49fbfb
+SC14,coverage-ot-history.md:570,OHP-CARMEL-NORTH / mountain,false,977fc665c2a3329c1e002359061c4fa71ab633d66a04460e138380f47572775d
+SC14,coverage-ot-history.md:571,OHP-CARMEL-JUDAH / town-region,false,b88c52b950c2fa5b7385a9dabe7e09940c12238692e11d9258abee211138b462
+SC14,coverage-ot-history.md:572,OHP-ZAREPHATH / town / Zarephath belonging to Zidon,false,5cf6fda289dc3573f3210dd9e12b722846528a8ea8d3153b09fbaf683442b7d0
+SC14,coverage-ot-history.md:573,OHP-SHUNEM / settlement,false,192b55db0b6438c2bdec2e138a73b52145fdab81f6f758b30b8b5711b099faf8
+SC14,coverage-ot-history.md:574,OHP-TYRE / city,false,668a01461b006feba5e1fa89559aa2a4f8916067a279204f9043f65fa06b2d7a
+SC14,coverage-ot-history.md:575,OHP-DAMASCUS / city,false,239c0bd38d0727bf5ff7f0c461142f696dec154c977d99638d8b2c7da776895c
+SC14,coverage-ot-history.md:576,OHP-RAMOTHGILEAD / city,false,97ae32a7f46859bc5fa6400f3d580c57b533fd97131f8111a2c1418ab69d6e3c
+SC14,coverage-ot-history.md:577,OHP-EZIONGEBER / port setting / Ezion-geber,false,25f243153b380b1773f44f91c59dee6657bbb7cc3439e26f515ddf2a098775a1
+SC14,coverage-ot-history.md:578,OHP-ELATH / town / compare Eloth spelling,false,21e9bf600eb3237b0eb1a32e07998d26fee356acf2b8da1c12834165a4edd32c
+SC14,coverage-ot-history.md:579,OHP-OPHIR / destination region,false,daa57750615b8c7a0647f2972de3226f4a69e1c4beebe962ab080e2fb703b796
+SC14,coverage-ot-history.md:580,OHP-SHEBA / kingdom reference,false,3416313885fd09b73a024e8d4ae3b1c41cb8b522932b5f958d9828208fcadc06
+SC14,coverage-ot-history.md:581,OHP-LACHISH / city,false,58dacde1c2db806a8d11d59e0034eee9507a19b805a23ca20a52db3b863437f7
+SC14,coverage-ot-history.md:582,OHP-MEGIDDO / city,false,8bac058f9e2a8c7f93c7b0076e5c4ad7959324cc74ff4194a322b9289f110a42
+SC14,coverage-ot-history.md:583,OHP-RIBLAH-HAMATH / judgment setting,false,a77ece4907111d878adda2710acc5f48e1887d437f1cf75c3a135fe86e5bab3e
+SC14,coverage-ot-history.md:584,AP07 / city / Babylon,true,51550bd1245c144cc3427c6cf0899413617c0c141994bfdbc9d87e1ad7c4b697
+SC14,coverage-ot-history.md:585,OHP-NINEVEH / city,false,cf759ad066e9c0b2b2393f0d82a562a27c008255d5bfebadf76e156ca66b801d
+SC15,coverage-ot-history.md:593,"OHR-ABRAHAM / Abram, Abraham",false,91d24bcd65a6b495cbf42d982ea310f2d35c5b5c4e8108eb826bfea56faf2c55
+SC15,coverage-ot-history.md:594,"OHR-SARAH / Sarai, Sarah",false,f10941a2761e7d01fad659d70f1a6ba061ed33ae545f4e4e89d8fb4468c855ab
+SC15,coverage-ot-history.md:595,OHR-HAGAR,false,8cfe6124f94c1e1e2b9eb198d947888a02579f3883427f280acbf736f26abb5f
+SC15,coverage-ot-history.md:596,OHR-LOT,false,26b02d8d5046ea6ebf6e064a86950d2c8c354d9ebbccabbdc6e9192aedb413f4
+SC15,coverage-ot-history.md:597,OHR-ISAAC,false,2c846ff0642dfe846e966ebeec30623beaf2e38a04b2a5930e01c94cf8099f8e
+SC15,coverage-ot-history.md:598,OHR-REBEKAH,false,8b38a627295a234a2d1c54ef72ea586f0ad199fbaaa2c3095883d44a311e1c54
+SC15,coverage-ot-history.md:599,OHR-JACOB / Israel,false,09254a367afb55f31286607cf0d6d9d454d9799384e2b79ebdd24366f26bc32a
+SC15,coverage-ot-history.md:600,OHR-ESAU / Edom,false,6bfdd78f4a041b762c3a19bced866032c0979c7f222c901ef7cd7f581fe61dc1
+SC15,coverage-ot-history.md:601,OHR-LEAH; OHR-RACHEL; OHR-BILHAH; OHR-ZILPAH,false,494e4c6bfc7a15c23c691212843f1e4cd05843dec4f0ff29888f8f7abb436c56
+SC15,coverage-ot-history.md:602,OHR-JOSEPH-JACOB,false,dde34952d989acc7be0ddd860abb657551dfb94d938ada3c745120fab85c1446
+SC15,coverage-ot-history.md:603,OHR-TAMAR-JUDAH,false,c521bf3f9171dd1b7b8597ecb5ca6d88fd9907a2bca473314808afe2ca025e13
+SC15,coverage-ot-history.md:604,OHR-MOSES,false,f9f7d02cfa217b071098527ae53ce919eba86bd8a60c0c25a4fe1f9ee15d1d2e
+SC15,coverage-ot-history.md:605,OHR-AARON,false,4ab938860124763250313994aaad03b791df77387d5527de6313777739999a2e
+SC15,coverage-ot-history.md:606,OHR-MIRIAM,false,f7770b7fb886a901068149d5cda38981e939d73b4a390c93e491e6f1b6d73bbf
+SC15,coverage-ot-history.md:607,OHR-ZIPPORAH,false,9aa28e06b2956d9ee5bd9fd6aa2441307f371f75c2242a66db7ee109984148ac
+SC15,coverage-ot-history.md:608,OHR-JETHRO / Reuel relationship question,false,1a16c15429f550983261126a2b2fa2f05846fb04a90fd236d90ab75f94e02e80
+SC15,coverage-ot-history.md:609,OHR-JOSHUA-NUN / Hoshea renamed Joshua,false,cb911b96436424cec992b2555bbe497665ffbedef0ffbd7fa592eb1ea397c731
+SC15,coverage-ot-history.md:610,OHR-CALEB-JEPHUNNEH,false,75865594e2b210d6e70f6f56f212dc43dbb2b45d07abcf5d3489210578aed1ba
+SC15,coverage-ot-history.md:611,OHR-DEBORAH-JUDGE,false,01c6564e8c45b759df0f960259759414b9dd9d65cb6cfbfe17568fe2bf186228
+SC15,coverage-ot-history.md:612,OHR-JAEL,false,e739fddb3ee20553f9d64ba99e09ffba14a4713a3c7b226408803cbcf6e0926a
+SC15,coverage-ot-history.md:613,OHR-GIDEON / Jerubbaal,false,ccae0813ac3732760bd3e44494c4f276e1522fbbd40c5bdd7a466d9c96f32a31
+SC15,coverage-ot-history.md:614,OHR-JEPHTHAH,false,8fcc734a0dba6626d30c9f1d4bb2f9dd6a71d9141e745989d83465e4576259d5
+SC15,coverage-ot-history.md:615,OHR-SAMSON,false,5f2d6286a0ffab531171db0228db8919af17861659b17827cf26d27a05944ef6
+SC15,coverage-ot-history.md:616,OHR-NAOMI; OHR-RUTH; OHR-ORPAH,false,d4b9be5b8626da865d468071b3b40fd93b237f0e7a58ae45c94e749500836348
+SC15,coverage-ot-history.md:617,OHR-BOAZ,false,4a34174f62f13bc37f42a4b0db245f128745928f2a68515a7c380d7020f7f9c1
+SC15,coverage-ot-history.md:618,OHR-HANNAH,false,433714303de39dacfb4aa9faec5dacfa8760204f364d305a1ef745520427df22
+SC15,coverage-ot-history.md:619,OHR-SAMUEL,false,89c29f01a1aa49ece94c25392212365211b24c13315c710173cb601f40d5f98d
+SC15,coverage-ot-history.md:620,OHR-SAUL-KISH,false,ae7ff9bdf94b030495b36882b15f7c0b931773cb922d1637ae84dd28c17b9c58
+SC15,coverage-ot-history.md:621,OHR-JONATHAN-SAUL,false,eaaa0393371add0c9ec619d9bb19eb380aa62da06bb7fce97d0e048b5ca9eafb
+SC15,coverage-ot-history.md:622,OHR-DAVID,false,230f2a81afba857ccba196e9e89edc9773755171d5e221bbaaacb8c743a8da46
+SC15,coverage-ot-history.md:623,OHR-MICHAL; OHR-MERAB,false,9f85bab8b23aa7a9f1e6b31e7601a28e2ab9232ddcf5e13a1d2de15b772e9e89
+SC15,coverage-ot-history.md:624,OHR-ABIGAIL-NABAL,false,495fcc17fdd7bf62cc60d57089142311f70152ebb71358968d2bc29bf77751b5
+SC15,coverage-ot-history.md:625,OHR-BATHSHEBA / Bath-sheba,false,996876c420cb4249009bb37e5afd140547cb6931b509739d472377f666af5d21
+SC15,coverage-ot-history.md:626,OHR-TAMAR-DAVID,false,2f270569afacf4c1417fb0be71728e0081ff82b23369d7783184e92c90aa2a8d
+SC15,coverage-ot-history.md:627,OHR-ABSALOM,false,c9c75515a5f58ed7bee2e52dfb97cc2b01e3c196049c625cb7fdd7b8a94a8b53
+SC15,coverage-ot-history.md:628,OHR-MEPHIBOSHETH-JONATHAN; OHR-MEPHIBOSHETH-RIZPAH,false,2af5a475ff769941ce299f9189285d141d23713b4c9d2c44dab6ee0d09fab80c
+SC15,coverage-ot-history.md:629,OHR-SOLOMON / Jedidiah,false,50951eee5026db06dd51283db555a4fea2bb5b0114ef27553dae8c2da8d05e38
+SC15,coverage-ot-history.md:630,OHR-HIRAM-KING; OHR-HIRAM-ARTISAN,false,0580215aa54be2a774d87b3743398a371d341b95490faf1066f9a3fbfb8ca2e5
+SC15,coverage-ot-history.md:631,OHR-JEROBOAM-NEBAT; OHR-JEROBOAM-JOASH,false,10d87cf01fe82c2e3278625e2a3c536f9c2dcaed2d31a035c529588f706b5bc4
+SC15,coverage-ot-history.md:632,OHR-JEHU-PROPHET; OHR-JEHU-KING,false,d62f427727e37fbec2432ead303298297a3b6e13993e7f8c964d564195393641
+SC15,coverage-ot-history.md:633,OHR-ELIJAH,false,f0ca74880d6b683677a54fc56fe43c39d5dfa7bfd03d85fa1c17c9254ca9767d
+SC15,coverage-ot-history.md:634,OHR-ELISHA,false,b480650962296fb97f2d1b356124fbbf7c7b95b477181258b197bb5498a78bb5
+SC15,coverage-ot-history.md:635,OHR-AHAB; OHR-JEZEBEL,false,a01fe5cd867c5aa4c9672b8f0a5e29d06973c00b63c2c01f572bfeb786600645
+SC15,coverage-ot-history.md:636,OHR-JORAM-ISRAEL; OHR-JEHORAM-JUDAH,false,a3a807a6c8296540dc5e22110f5804d18966a658459cecf3956065ba8df80b90
+SC15,coverage-ot-history.md:637,OHR-AHAZIAH-ISRAEL; OHR-AHAZIAH-JUDAH,false,753b0604c663bc60862352f6cf8570f04d3a93fce08aab8afa97349d8204b3d0
+SC15,coverage-ot-history.md:638,OHR-JOASH-JUDAH; OHR-JOASH-ISRAEL,false,e46e453aac337e124888835c0969ee7616ca3b4558286d3cf416d0bf4cee464b
+SC15,coverage-ot-history.md:639,OHR-AZARIAH-UZZIAH,false,5a1787d844353257bdb27d66dea4095bcb41f3ed4d70b0dd03be4f2a2a2eeae4
+SC15,coverage-ot-history.md:640,OHR-HULDAH,false,39284b54691e83df3aa3a9fa43994354fa428f00709eb9ba004f88b1c68742eb
+SC15,coverage-ot-history.md:641,OHR-JEHOIAKIM / Eliakim son of Josiah,false,bc4b9c54297e3acab9578b8cd8621ed6b7b472314367febbff364a08a8e673ea
+SC15,coverage-ot-history.md:642,OHR-ZEDEKIAH / Mattaniah,false,d70078916d0eaa86e982f8d210f8a7a659a759d2530c2e88e78e6dd39f3312bb
+SC15,coverage-ot-history.md:643,OHR-JEHOIACHIN,false,cfe8dc88f1add09e5ae911396093d62aec3f216c946606e4857bfc4dda32e2e9
+SC16,coverage-ot-history.md:651,OHJ-01 / Terah household / migration,false,087ae2033ea1519795fd063effdc36404a2146ef8c3513b398df7e7dab23998d
+SC16,coverage-ot-history.md:652,OHJ-02 / Abram household / migration,false,cee83f44298db9507a259d87ad8720d6c71f1cda6b4686ce7b34bed232c732f9
+SC16,coverage-ot-history.md:653,OHJ-03 / Hagar / flight,false,da128a48ad781d9bf4be874e9e031305475d605f8a6c8f3ee38ae8f3436a55df
+SC16,coverage-ot-history.md:654,OHJ-04 / Hagar and Ishmael / expulsion,false,4ec2fe2160c60cb3f565ef9fe80ce135748e59bbf61f8c72a7fa4219e690e5d2
+SC16,coverage-ot-history.md:655,OHJ-05 / servant then Rebekah / marriage journey,false,cfdc5ead995197728193e2f5b6b30da7324a67dbfe7fcc653f91ffadb1b24703
+SC16,coverage-ot-history.md:656,OHJ-06 / Jacob / outbound flight and household return,false,09a8cc52e36ac64a53ba0cbb6f8fe437d48f274830d7c568cd71d7635d58ed25
+SC16,coverage-ot-history.md:657,OHJ-07 / Joseph / coerced transfer,false,3b6a3f1d15109961433a14d80a74a0d42ae9005665461743f79ec41a03da885b
+SC16,coverage-ot-history.md:658,OHJ-08 / Joseph's brothers / provision trips,false,4f0c095593dbaec8cfb1d009a6577b69f1286871aadd341d7597ddaecde2ced3
+SC16,coverage-ot-history.md:659,OHJ-09 / Jacob household / migration,false,703a2c4bdaab5c9c0de561d088e89bc876b3cf5b19f391d002f71023b0332b65
+SC16,coverage-ot-history.md:660,OHJ-10 / Joseph and burial company / burial return,false,86392b1cdf259c45ab0b9d9bdec2c8d3e9a6111f12ec8d0a03d0ff689c7768d7
+SC16,coverage-ot-history.md:661,OHJ-11 / Moses / flight and return,false,379f4d6580e53c2b7bb0e9e2678333409349904e142fbbac8775dfedf87a8f1a
+SC16,coverage-ot-history.md:662,AJ01 extended / Israel / exodus,true,b94b183871cccc196f4f7dc8a62e126c19d70cf4872ed52f9c7ab83018c7ebf6
+SC16,coverage-ot-history.md:663,OHJ-12 / Israel / wilderness itinerary,false,da6c28df0e375aeb182e53df7d3904c6fc4da762a96c6978b8e7255152e11d77
+SC16,coverage-ot-history.md:664,AE03 / Israel and priests / river crossing,true,b5842a9f42b81863d788f4158fe2da40d97ec6dbd7b2daf0f997f7938c47e474
+SC16,coverage-ot-history.md:665,"OHJ-13 / Naomi, Ruth, Orpah / return with separation",false,fa9678d96385b37dd350ce6730e7a02fe4dec1075e476738f072bd3d9f3d7500
+SC16,coverage-ot-history.md:666,OHJ-14 / ark convoy / object transfer,false,b0ddaa7e314281bfe21a256c4d98a9f8f667f069b2540cdfbc7678779effcf01
+SC16,coverage-ot-history.md:667,OHJ-15 / David's ark convoy / object transfer,false,62566afe7e45cfe10eddc15b5c78e13893650fc0305c348e852cc698f6ee0028
+SC16,coverage-ot-history.md:668,OHJ-16 / David and followers / royal flight,false,38e3a28a2bfc9979f746e5ff689ba526fe67c5b3307f136064f320e7a506d294
+SC16,coverage-ot-history.md:669,OHJ-17 / Elijah / refuge,false,a46f006ca02a11073c585c6efec401ea801bb6b36910670c82c7cef6ce2b2d16
+SC16,coverage-ot-history.md:670,OHJ-18 / Elijah / flight,false,44ac6b0b943ecf3403dc8925f2e0aaee316be619da07c0a2826e4459b5c9350b
+SC16,coverage-ot-history.md:671,OHJ-19 / Elijah and Elisha / succession,false,0538ba9836533e7fcbd36a3a3d1e1d9254e709ba7ee9c8620babbe473748ac4f
+SC16,coverage-ot-history.md:672,OHJ-20 / Naaman / healing journey,false,f6fe548e292f6e59117edc2eaa4697ac060f3ca37d7999c26166afe9f9e93070
+SC16,coverage-ot-history.md:673,OHJ-21 / Shunammite household / famine refuge,false,6279e2ca1530ddb55a0a83e0e4bcf5ae138709d98a2f61186b10a508f8d84b05
+SC16,coverage-ot-history.md:674,OHJ-22 / northern captives / deportation,false,34f698f9fc7dac4126fdc5d8ab1eb539fb1032ee31d743c752820ff1452c99b0
+SC16,coverage-ot-history.md:675,OHJ-23 / Jehoiachin household and captives / deportation,false,2e053aa34d77be8a1a99c0ae323ddb067f0a0fe67edf74cc8c8de3aabda209be
+SC16,coverage-ot-history.md:676,AE06 + OHJ-24 / Zedekiah / capture and deportation,true,881851a09d98e17cf0540ed7c2432e2437786644ece6d9206bbc7855855fecab
+SC16,coverage-ot-history.md:677,OHJ-25 / remnant / flight,false,4f6c735e7ca75bc08d9e416a2592c48007f12987bffa48998fe8be1a8fb96546
+SC17,coverage-ot-history.md:683,"OHC-CREATION / “Genesis describes creation, divine image and human stewardship.”",false,7e9d1c1e71527fcbd6889ffc40e5eb53293e0acf536d93c1d41dfaaea75fd705
+SC17,coverage-ot-history.md:684,"OHC-GENEALOGIES / “Genealogies organize kinship, succession and textual ages.”",false,dc23ca38e5429b40208607e8e9581979b3cc00983e774414cc446e3c61706650
+SC17,coverage-ot-history.md:685,"OHC-COVENANT / “The narratives connect covenant promises with descendants, land and obligations.”",false,96fe20f873ee66653d019c3cb479c60d955a7a219ef2b842c4fed95cbcc0378b
+SC17,coverage-ot-history.md:686,OHC-TABERNACLE / “Exodus distinguishes instructions for the sanctuary from its later construction.”,false,f67eb2c9671c754dd25d7333e1f577fc5dbf7c3676f3ef0848df02e2a46d0ff5
+SC17,coverage-ot-history.md:687,"OHC-PRIESTHOOD / “The texts distinguish priestly duties, Levite service and household eligibility.”",false,ac8afb32ee0f10ff8cc8fa5ea5e4cc0f9fabdde8fea857416ac05599b68575cc
+SC17,coverage-ot-history.md:688,"OHC-OFFERINGS / “Offerings are described with different purposes, materials and restitution rules.”",false,03daa2f8eb606ba78d02a512fab31872f8fdd7f1ecaca08e79abd0c05561122d
+SC17,coverage-ot-history.md:689,"OHC-PURITY / “Purity instructions address foods, bodily conditions, garments, houses and ritual access.”",false,da962047b82e023ba8c3f4251f2b145926f7b6ef49869a896314ed73a66664f2
+SC17,coverage-ot-history.md:690,OHC-CALENDAR / “Sabbaths and festivals structure the ritual calendar.”,false,a056a72f92e7d19462b18bb126bc04e677f1f1c542426acad15d260f83035544
+SC17,coverage-ot-history.md:691,"OHC-LAND-REDEMPTION / “Land, debt, servitude and inheritance rules use distinct legal categories.”",false,d1d3828fcee8a0e16debb131b4dc4a7db32495e6bd304ca44a16a115227f456b
+SC17,coverage-ot-history.md:692,"OHC-LAW-JUSTICE / “Covenant laws regulate injury, property, testimony and communal judgment.”",false,fa2f77441095d3b77e411a38ed3e7e5be69be779ddcfce1fcc11ccb621242665
+SC17,coverage-ot-history.md:693,OHC-REFUGE / “Cities of refuge distinguish accidental killing from murder within the text's legal framework.”,false,d3fba7a50b756037e20681b2a19c7a9b3f93f2e658fb9ddc495e2503395e5545
+SC17,coverage-ot-history.md:694,OHC-ALLOTMENTS / “Joshua records tribal boundaries and settlement lists alongside incomplete possession.”,false,3df77de4f84ab2b6796350066eadaa24d731b83b0f5388540178669b14dd5b19
+SC17,coverage-ot-history.md:695,OHC-JUDGES / “Judges presents recurring conflict and deliverance alongside local leadership.”,false,0d47bbd911ff1e7a211ac16eca7bc8a82f93a2544b8ffc3e6c4d1413ca293671
+SC17,coverage-ot-history.md:696,"OHC-REDEMPTION-RUTH / “Ruth's marriage and land transaction involve kinship, inheritance and community witness.”",false,e503848d9e8432392b216b437845719f0e42121e8cdbb11bc9e07b6b91e80478
+SC17,coverage-ot-history.md:697,"OHC-MONARCHY / “Samuel and Kings describe royal authority, succession and competing evaluations of kingship.”",false,4d9616eb5e04979ea3beb29cea885dfb81fa8255415e91d4cc7259c5565f1feb
+SC17,coverage-ot-history.md:698,"OHC-TEMPLE / “Kings describes building, dedication, repair, alteration and destruction of Jerusalem's temple.”",false,50aa2863e4d27c47301eb13c19cf78e926df4b86e31fc43ab12c4caef56c0674
+SC17,coverage-ot-history.md:699,"OHC-PROPHECY / “Prophetic speech, visions, disputed messages and later narrative fulfillments have distinct evidence roles.”",false,c899e4bb3842fbfc7de75cb5b1ab98fd7b33e4da011e85dc328343e270ea164a
+SC17,coverage-ot-history.md:700,"OHC-EXILE / “Kings distinguishes successive deportations, surviving populations, incoming settlers and flight to Egypt.”",false,9069a8a1029f33d6889487fb92b8f3ebbf839a2a47662b4022e1c19137f506df
+SC18,coverage-ot-late-history.md:146,`jerusalem-chronicles-eras` / city eras,false,f57c94b350d37c26bcc6f022dc3761b5ee8ae00beadbf6b24d2bf87ed75cb32d
+SC18,coverage-ot-late-history.md:147,`ornan-floor` / narrative landmark,false,208c2780af872b1d0b4958d1d66405106b4b43a33781d23119b5ce41746238a2
+SC18,coverage-ot-late-history.md:148,`gibeon-sanctuary` / worship setting,false,c215811ec290f9aa30e87c613b7b78f47c1400bd030a4898d43b3cca9c49dc73
+SC18,coverage-ot-late-history.md:149,`kirjath-jearim-ark` / city and journey origin,false,bbb95f9139936d3a221610629f750a4420204aaba8634b53b0a2e8a7d93f31df
+SC18,coverage-ot-late-history.md:150,`chidon-perez-uzza` / narrative landmark,false,97615f2b64e6ccf21739a5fc2ba2065c232fcc83ed23b5936b71d6695d154681
+SC18,coverage-ot-late-history.md:151,`obed-edom-house` / unlocated house,false,9ff5f800879a9a73c9da5dceaf4a7720339d955f4e987ede8293e8eb5b965935
+SC18,coverage-ot-late-history.md:152,`levitical-settlement-network` / grouped cities,false,97f1ce35fc227d95e732bdf939c122bf0a139620f95f15226db40ab65890e759
+SC18,coverage-ot-late-history.md:153,`transjordan-chronicles` / regions,false,5c63ad3d58bd950637d263fa2a964007fc82b3790bfba1e20c5e53a347c93965
+SC18,coverage-ot-late-history.md:154,`judah-fortress-network` / grouped cities,false,ab959947cfbc27b0777116c885bc4cd0199fcae4c83db5309f9778df9e00e07d
+SC18,coverage-ot-late-history.md:155,`jordan-casting-ground` / industrial locality,false,0bb218c415d291f9264ed0b10819d22a94170951d26cb57fbc69991b74e270e1
+SC18,coverage-ot-late-history.md:156,`solomon-maritime-network` / ports and unknown destinations,false,88c0071d5f793b0e41d0195c96ad256e7e3f12916990117392ea935193be0683
+SC18,coverage-ot-late-history.md:157,`tekoa-berachah-campaign` / narrative terrain group,false,99dd5682b38ce32c76808d85ca6378bd701f85aed574e5c205042fbab1fdce02
+SC18,coverage-ot-late-history.md:158,`gihon-ophel` / water/fortification settings,false,e0c6f93274f44d35772be79d54fca8f35c8cc07f867b054395c0b25cb5f35798
+SC18,coverage-ot-late-history.md:159,`achmetha-archive` / palace archive setting,false,c1641445b4907647101abd834a087e93a0e44fa6dc3b7cea0549e74e71d1a5c8
+SC18,coverage-ot-late-history.md:160,`ahava-camp` / river camp,false,34bcb387aa8792a5e5b2ae60d9bd3628bafb40c7a5a789111165a643a7593bf7
+SC18,coverage-ot-late-history.md:161,`casiphia` / delegation destination,false,409119254bf0e6cfe2c63e26f2642049c6db17a8fce9b8fd37abc0ce216f467a
+SC18,coverage-ot-late-history.md:162,`shushan-narrative` / city/palace setting,false,2167cfb65d8182c16dd3ffbc1bfbfdb549c1dc6612f4d7c7518dde8b7c3547e6
+SC18,coverage-ot-late-history.md:163,`jerusalem-nehemiah-gates` / city landmark network,false,a858a51640b954ab5205c6dd412f52a1167482f58dbae5c0ba08a07b705d7d5e
+SC18,coverage-ot-late-history.md:164,`ono-invitation` / proposed meeting place,false,09c416af274b7ded077e12e5e2a871dc3fc88f3f71edb9992a1febd1c0d28574
+SC18,coverage-ot-late-history.md:165,`returnee-settlement-registers` / grouped towns,false,4ec95cdd0112e61d36d605bda95982e4a07a08ccbafa6fea9bfb3086ffd9a2a2
+SC19,coverage-ot-late-history.md:174,`lh-j01-simeonite-expansion` / named Simeonite groups,false,832b29b3b8c82accfd3571bbf59e1b97d3a9cabe74ae3de83e047ec0d2efd392
+SC19,coverage-ot-late-history.md:175,`lh-j02-assyrian-deportation` / Transjordan tribes,false,e9dd860370ec2ec55e176a2e4b073705615c8e113bdf6d48dfeb587d6651333f
+SC19,coverage-ot-late-history.md:176,`lh-j03-david-accession` / David and supporters,false,ccdd3e843979f9c023a24ad4a23b3b6b7cba9fc15e884f51c6a3c8e24c25924a
+SC19,coverage-ot-late-history.md:177,`lh-j04-ark` / ark and escorts,false,0f236e2e04c004dfdae4a14333edb352cf284645671a6aa50907f6c2c655f881
+SC19,coverage-ot-late-history.md:178,`lh-j05-timber` / supplies and workers,false,cfa696d91fa270ab3dd002a08746f72230c6ef6c1fae610ad794d32779b317a2
+SC19,coverage-ot-late-history.md:179,`lh-j06-sheba` / queen and retinue,false,f3531b839e9956abdf86920b012bfeab37ae3db638ff31f3c2f98b7a2ceea6af
+SC19,coverage-ot-late-history.md:180,`lh-j07-jehoshaphat` / Judah's king and participants,false,1e302067f09371658276066cf8d0430ea1dc04613edafe1c48f35755a721333a
+SC19,coverage-ot-late-history.md:181,`lh-j08-captive-care` / northern leaders and Judah captives,false,6d51f62f2c06aaaf9d5b392e85ada402f0a6b2951fa5669776d8006c39e7b2cd
+SC19,coverage-ot-late-history.md:182,`lh-j09-manasseh` / Manasseh,false,2ee5bba767052a9297599d64424aabf8f7708202d37e3b9034e0fe7f0ae44aa2
+SC19,coverage-ot-late-history.md:183,"`lh-j10-exile-return` / captives, then returning groups",false,f03423d92f1f89151980a249a64007f32e0bd5e751e2e48802338d6e095e1049
+SC19,coverage-ot-late-history.md:184,`lh-j11-ezra` / Ezra's caravan and separate envoys,false,2ce0d5844e22494bfd929301e29b360136d9db84ac8135107d00069023b0eab9
+SC19,coverage-ot-late-history.md:185,`lh-j12-nehemiah` / Nehemiah and escort,false,e7352ae3c10554e79c39a543e54e979a6a30dd42d5fbd4140f4527f9f1d0d8dd
+SC19,coverage-ot-late-history.md:186,`lh-j13-night-inspection` / Nehemiah and a few men,false,ebca2314e2aa8cbca5ea994a486e6550743f6fd5d0a024adf65029cddd5d9a9b
+SC19,coverage-ot-late-history.md:187,"`lh-j14-dedication-a` / first thanksgiving company, Ezra before them",false,b75ce3d50c4992198cbb2118041944dc19042f26a69db515d82ff5b427a71531
+SC19,coverage-ot-late-history.md:188,"`lh-j15-dedication-b` / opposite company, Nehemiah following",false,b6e50f5d2c8fa331b569ce5598f8f1338e53e021697c425d439d33715ad05211
+SC19,coverage-ot-late-history.md:189,`lh-j16-mordecai-honor` / Haman escorting Mordecai,false,7a229cf5ca813e51e665be0fe4ccdc4cd2d0fff10b3f72da5e7182361efca782
+SC20,coverage-ot-late-history.md:199,`lh-c01-david-house`,false,a70e2ba726ef4cd0defad689ea5a411739e612c2656727d3a171d38ada45e6f0
+SC20,coverage-ot-late-history.md:200,`lh-c02-levites`,false,381fd02e0c328dbe4db2e4be86e598684d3c4c3c8bf030e108296e4ef6c910c5
+SC20,coverage-ot-late-history.md:201,`lh-c03-musical-service`,false,c3f43668a6997b8dbc4e1d6362e9ecbba92709f06a92eece30d9271baa63f5a5
+SC20,coverage-ot-late-history.md:202,`lh-c04-davidic-promise`,false,82320243a22c1169e257e0d6524b5bbc43580deddb89d01ef8452c1a05ad1914
+SC20,coverage-ot-late-history.md:203,`lh-c05-two-kingdoms`,false,fe8b2bd2d56e04bbe8ee0e78b0a6e49975160534ff569b6c5ea2ffe21743799b
+SC20,coverage-ot-late-history.md:204,`lh-c06-joash-rescue`,false,f76ae14ba948ba7b382a7d8ce5b7048f22888eed19779246c86805af3da7610b
+SC20,coverage-ot-late-history.md:205,`lh-c07-prophetic-women`,false,6bb82267e44bf3b3e57dfd1d8a98c5a2a94f71713c2f700ae118f782d99fd073
+SC20,coverage-ot-late-history.md:206,`lh-c08-ezra-nehemiah`,false,7e77f2168ec7a031664ed94511764734df6db2bde4ebab769c521743bf7661ed
+SC20,coverage-ot-late-history.md:207,`lh-c09-return-registers`,false,4ae851a3bf0d29edb22fbf8086178185c3b6956eeb7bb677ae8cd1498cd5d6b3
+SC20,coverage-ot-late-history.md:208,`lh-c10-restoration-of-worship`,false,23f53415f268b0624effa49170f4bed4a291da4f01fa549761056fdf45fae6d4
+SC20,coverage-ot-late-history.md:209,`lh-c11-identity-and-coercion`,false,5082f988935cd809c6c44d77ec3edb2604b7c0bac5ca4459f585eedca13eed58
+SC20,coverage-ot-late-history.md:210,`lh-c12-esther-household`,false,ef147d4ac1f4e2a159793fca51c43db0039704f4201ac9fb1bbfb470e0200d8e
+SC20,coverage-ot-late-history.md:211,`lh-c13-haman-mordecai`,false,13bf655444f9b16486f4e8d925ae57d815ac2d71a81ba35792b4939703d169ef
+SC20,coverage-ot-late-history.md:212,`lh-c14-purim`,false,3b1a2b2f58aa4eec872377842bc666863bacc8e0ba772c270aa9206bddaf660a
+SC21,coverage-ot-late-history.md:275,`hebron`,false,dc4095608e390deb83daf7106320257b6c34c9ddf199f332d90bfd90ba520be5
+SC21,coverage-ot-late-history.md:276,`shechem`,false,ed05a03325d0e17fd2d8fac3c83d8d9db92e0dca8361db81d79bc53deed7a9d4
+SC21,coverage-ot-late-history.md:277,`bethlehem`,false,e9e636b78bb2cf82e59c50302c83ef1a75e9c75107a6e79731bdbb53fdb00d00
+SC21,coverage-ot-late-history.md:278,`samaria`,false,10fb68dbb622f885a664221ea536a234dd48c809650b5106f81c6bd572f2f568
+SC21,coverage-ot-late-history.md:279,`damascus`,false,9babcf0e27e81e938550011542f3bb1c83e788326aaa6d73b396733ad8ae54e2
+SC21,coverage-ot-late-history.md:280,`ramoth-gilead`,false,9bf81c1a6e819c5c3d4b4d3363cb305bf8af1647c0e70114a101421bf0718a4c
+SC21,coverage-ot-late-history.md:281,`tekoa`,false,398d8c5ec4ecf2937d7f354fd56ff4ae6c1581a55e40788ca457473add89cf76
+SC21,coverage-ot-late-history.md:282,`berachah-valley`,false,4ebcf95a2abecaacc06b72bc7027e5ee27587ef8def45f88aa724281750376f5
+SC21,coverage-ot-late-history.md:283,`en-gedi`,false,698318540cc0c2a9ac949f323d3e2358c16102483f105e52a40f7f6a3ba1af80
+SC21,coverage-ot-late-history.md:284,`gur-baal`,false,9da40e29b7c5d3cf1ebad661a38e4066dc85d57667b2b51b144be2fe75ccb947
+SC21,coverage-ot-late-history.md:285,`ezem`,false,341828ef972b34449b9ff7babe0f036779b3a47488bb432ea8945fab5a4010a9
+SC21,coverage-ot-late-history.md:286,`gedor-pasture`,false,392df0bee1a873f4346400a100e24a10cb75527af54ab9a87e5deb016131d21c
+SC21,coverage-ot-late-history.md:287,`seir`,false,d06bb580e125121096cddbfdb7e4c05789fd304013bf89130e374df2004e5941
+SC21,coverage-ot-late-history.md:288,`gilead`,false,6760f26cb51e1ee48e3d1ddb9d99930215bbda3bd1e90f79b115e79fcaf6847e
+SC21,coverage-ot-late-history.md:289,`bashan`,false,0ce7019b01d712838bcd9a079cb09781578c7c332a6ba9d16191083392cad0e8
+SC21,coverage-ot-late-history.md:290,`halah-habor-hara-gozan`,false,c69bcec8561e9a657a9b1e5a8288d91abdc685edfe9470c9c6993ccf2f2b9a02
+SC21,coverage-ot-late-history.md:291,`ezion-geber`,false,90d32b888bfa623b7a0068fcf93e6b576c83775de88b4ee5c52b692a12815923
+SC21,coverage-ot-late-history.md:292,`eloth`,false,9fa52c535f553afc33e75e427570a69107fcd7e99b808f6ae7aea90e0dd6b144
+SC21,coverage-ot-late-history.md:293,`ophir`,false,5620232fe74e1d6b666e1ed986d3181f356ca579cf2942892fbc00ac6deaf77a
+SC21,coverage-ot-late-history.md:294,`sheba`,false,1a2fb41c06bd851ad9109622095efa4cffaa99adc613243c62d284e38a0eadf6
+SC21,coverage-ot-late-history.md:295,`lebanon`,false,014d602c98d489dff9aa1a9fb7c56fe0372be3919fe44deeb38466102f6d0dde
+SC21,coverage-ot-late-history.md:296,`joppa`,false,5a14703f2c3f4fbf749b2bb56a73038327f449557a93d2bfb9e89852701749db
+SC21,coverage-ot-late-history.md:297,`succoth-casting`,false,cb6c34f0baf1c9e96c25190d3547089a20360054ec8beffb5255cf89f96ca030
+SC21,coverage-ot-late-history.md:298,`zeredathah`,false,ccf020cd8c468dc9fdb977b13d87c58ac04a97f27109491c319115570c442a1f
+SC21,coverage-ot-late-history.md:299,`megiddo`,false,00ee763cd80be69135cef211361351e3c071e6114c77b095cc5b50defc2d2c78
+SC21,coverage-ot-late-history.md:300,`lachish`,false,0f2bbb8c08a23de3ff68f90a06ed51d265a6698705e6073882efca02df2d778f
+SC21,coverage-ot-late-history.md:301,`azekah`,false,727f6b48d1ea67942a2e21c9f692548bf3029d51a9bd401fc862a3060746bbb2
+SC21,coverage-ot-late-history.md:302,`gerar`,false,57363f79caea5734e0e5c7681418d1f2d7ed601ee0f7c03b103cd91fbccf8a2e
+SC21,coverage-ot-late-history.md:303,`mareshah`,false,d745daca0b1ff7a2b588caa94f223375fe2e85716c9219440c20c3293704bd42
+SC21,coverage-ot-late-history.md:304,`zephathah`,false,da63128624037dcb9eacca18b51007376c7c42508e6e17dc6645f934665ec223
+SC21,coverage-ot-late-history.md:305,`jericho`,false,4ee26cb702849b88eeb667e1b8a0ab920f323194b3bc1592b00c718f4df831b4
+SC21,coverage-ot-late-history.md:306,`shushan-narrative`,false,3515376a28e1afda165fd615e62b0cc97b7f0a4d1ebeb3eecf1f9c49c020aa4e
+SC21,coverage-ot-late-history.md:307,`ahava`,false,9f80dccbeefda4cba6aa09ccc0777cba4a1de08e9f7a02dddb4abd0292f6e2c7
+SC21,coverage-ot-late-history.md:308,`casiphia`,false,1d846bfcd227593431e01be7fd913f4fda7ac4607754162cfe483e193f35a003
+SC21,coverage-ot-late-history.md:309,`achmetha`,false,8f56e4caf5a8640869b0b398a2d3efee5590b5e9a1363a29856d0be1882c5d01
+SC21,coverage-ot-late-history.md:310,`ono`,false,cf2cd958bad51ce59cb6cfedfa33ffddc9792ed8aaee36f0bf2d27ed6dd7ecf3
+SC21,coverage-ot-late-history.md:311,`india-esther`,false,1ad0a6790732dbb3eb3e121487dcb90a9372a9abc4e18f38135262474ba47cc8
+SC21,coverage-ot-late-history.md:312,`ethiopia-esther`,false,3cc48020ff328d6ba1997c1211e316a42cdb466b122fcd9833de5b441a1a73f6
+SC23,coverage-ot-late-history.md:492,`lh-a01-angel` / LH1-21,false,cf6a487d83e1b6f356a7ff6fa80895e2271e3958c0cc43213dd70658e4239441
+SC23,coverage-ot-late-history.md:493,`lh-a02-lying-spirit` / LH2-18,false,f9e7aad5481b1de2bd66ace7a4e9f49737412619023bdb7bd95839fdab22aabe
+SC23,coverage-ot-late-history.md:494,"`lh-a03-trans-river` / LHE-04,LHE-06",false,d9890d6ef0991441a5ee1d25f0d30eabfd096e5568ef4f773c49af17ab235c1c
+SC23,coverage-ot-late-history.md:495,"`lh-a04-elath-eloth` / LH2-08,LH2-26",false,76fcc76674b7959e9125180be80b2929be640ca39e078a87bf7d38778bdae9ff
+SC23,coverage-ot-late-history.md:496,"`lh-a05-shushan-susa` / LHN-01,LHS-01",false,ea711096ffdb05532ea6e960376b937e3044418104b07f9574f9d916a7f447af
+SC24,coverage-ot-major-prophets.md:241,`jerusalem`,false,822f4e67afacab19b818f88ddc0e1bfe1a4e6ee477897b89b03e2e79d7c5085f
+SC24,coverage-ot-major-prophets.md:242,`babylon`,false,d33d1bc6c776cd1ed75342b1a70650e55e9fe826d8bac9aa42355f4f307e8754
+SC24,coverage-ot-major-prophets.md:243,`egypt-region`,false,3c3879bf23f74d233bbc1379aa686d90f70c64f1955543041449026b47823335
+SC24,coverage-ot-major-prophets.md:244,`judah-region`,false,fad4a46ca18c795f8d5c837bcab8add0320ab584250cc3a008ee583c8ecebd7f
+SC24,coverage-ot-major-prophets.md:245,`israel-prophetic-community`,false,3b989103d6af135267e39a17e70c57366a336abd98812534a74c32dbaaec0470
+SC24,coverage-ot-major-prophets.md:246,`zion-prophetic-jerusalem`,false,73d20db2a00a4374069064486ef4a63e95dd8b5195a07d1846f0e9dc82a4ff97
+SC24,coverage-ot-major-prophets.md:247,`upper-pool-fullers-field`,false,fd7824fddde60852507db51813c8188870a717d49cff9a3508c03757f4307a29
+SC24,coverage-ot-major-prophets.md:248,`shiloah-water`,false,051e40c7ba93e3d635bd73174a78632588c248247455e63f758a36521705d897
+SC24,coverage-ot-major-prophets.md:249,`damascus`,false,fe3b85abdae9b8aeb1e554ee9f81c329e197a0094ad3829a2df475a865a78608
+SC24,coverage-ot-major-prophets.md:250,`samaria`,false,1a09c5e01109372f3c97c3a8e0cfadca3d7aa0ee7db3476f23a86b862d734227
+SC24,coverage-ot-major-prophets.md:251,`assyria-region`,false,650664ee99367717f514146088fde1e0d85b243d30d0e480d22e9da671d2699f
+SC24,coverage-ot-major-prophets.md:252,`nineveh`,false,f691d4f5f90c1ec350f6cc85a744cc74a439c44a40b31e8b9c526ca39a2c1dcc
+SC24,coverage-ot-major-prophets.md:253,`lachish`,false,9303e13ab32582176962d7fd5d51589687340b2d4caee85c431707a7fa360a84
+SC24,coverage-ot-major-prophets.md:254,`libnah`,false,8feb8152feb92ed7eaa13e38922a42c173e32a3526168a8a0d94ffc732f606ee
+SC24,coverage-ot-major-prophets.md:255,`ararat-region`,false,7e3bb53ba95a8c6b8914264fd1a532714a34253a54cf48d8c8b7a02c3cd884b5
+SC24,coverage-ot-major-prophets.md:256,`anathoth`,false,bb3f39de322082a063a2de02d1392cf25c809f759eb048104afd13c5acd2c8ac
+SC24,coverage-ot-major-prophets.md:257,`benjamin-region`,false,e6131f096cf0f9cb1f1b8b2a2c74647471ff34d41f9cd383106c82a2224081b1
+SC24,coverage-ot-major-prophets.md:258,`tophet-hinnom`,false,e1262cd77a60f4b52691e59c5d0e7fc0672eb7842bc18b698c4184be90fd7705
+SC24,coverage-ot-major-prophets.md:259,`potters-house`,false,d83165095667fe72cb3ceba2e6c0dde07648e4e7f1c671025b3d416dd5c9c084
+SC24,coverage-ot-major-prophets.md:260,`jeremiah-prison-court`,false,04f67294228bcf4bf31ae9ed7089f0aa63cbba0fe9acddd983b821be8eb5ccf0
+SC24,coverage-ot-major-prophets.md:261,`ramah-jeremiah`,false,bcf1ecc26b5d72660aa4c5fb41c9664a4af1d97bcc8eb0e78f2116cf08f4e504
+SC24,coverage-ot-major-prophets.md:262,`mizpah-gedaliah`,false,a0abb9616309124e378cf7cd1884a6e9915aa9b4a8fcf02f11c1c3d306d40a30
+SC24,coverage-ot-major-prophets.md:263,`gibeon-great-waters`,false,706072d239f282c4c215522c211ae08f1a75f02c1e76454b3e4e4730f65dc00d
+SC24,coverage-ot-major-prophets.md:264,`bethlehem`,false,305dd7fee5af2ac7435bce564fb6cb2527f11c72ce859f8e98e2bfc3f76f77c6
+SC24,coverage-ot-major-prophets.md:265,`chimham-habitation`,false,12f6ba875fc21bac24c8f755f61a206ea5cf3b7ba68ad399eb0a6bca6fedbdc4
+SC24,coverage-ot-major-prophets.md:266,`tahpanhes`,false,ef261429e70e8cbaece75a9c3ce576e2942816b5f9cb844db1981c5a243ba93d
+SC24,coverage-ot-major-prophets.md:267,`noph`,false,dde0bfda76e323268a6ea750e9bb702a0aeb7700640d632f9d30e936ba71f72e
+SC24,coverage-ot-major-prophets.md:268,`pathros`,false,5c56abfcb31d05b87eed7d27d10fd32eb1f17d40d44dcbffc571090246ba1f4a
+SC24,coverage-ot-major-prophets.md:269,`migdol-egypt`,false,3cdd944edf8b91dd5e05910d1ffaaef10705be057d58f97f167eeb068420f350
+SC24,coverage-ot-major-prophets.md:270,`beth-shemesh-egypt`,false,a7f8b460af4caaa2fd3563607247cc93c416e87606dc4476029d2cfecdc2adc9
+SC24,coverage-ot-major-prophets.md:271,`carchemish`,false,e6b764d7ec1ea5e61f0d98536abc69d0bc4380df766676b6ec99361dbf1e1824
+SC24,coverage-ot-major-prophets.md:272,`euphrates`,false,d443cf21d4694a33cb168ea23c0d8824ced75cd7e507bdba76691c85e7482ac7
+SC24,coverage-ot-major-prophets.md:273,`chebar`,false,97e95b62352018a976bc8e361718e1d09424835f856b6bd314e36b2028f215d0
+SC24,coverage-ot-major-prophets.md:274,`tel-abib-exile`,false,841840574a2eb31f3b7f8c3b7a8b612253740f740116143026b8bfa04a13bb18
+SC24,coverage-ot-major-prophets.md:275,`ezekiel-house`,false,dedb5e28093aa139341d194d3a60476cdf203236532d5b3cf231ad6f994d971a
+SC24,coverage-ot-major-prophets.md:276,`ezekiel-valley-vision`,false,dfe1fd609d8d28ceb6e193360f65f7a111ce7b9a28d977e33db1125e5fe4524c
+SC24,coverage-ot-major-prophets.md:277,`ezekiel-temple-vision`,false,c38a44a650c3c8e88e77087edcc6367e9be8dda13ea3b446ef313042594b91f8
+SC24,coverage-ot-major-prophets.md:278,`ezekiel-restored-land`,false,1036dda5548cb7446a11ece8d9108ffcf57710a4fcdb9b9cdbaff246130143fb
+SC24,coverage-ot-major-prophets.md:279,`temple-river-vision`,false,8de741f4ac5b54b280deecef9ebd76d684f877575e0caf52aa881a09b34aa199
+SC24,coverage-ot-major-prophets.md:280,`en-gedi`,false,367e3d84074b7e8c4b6a4923dbaeed56b64937a31700b054eac3875dd61d0a23
+SC24,coverage-ot-major-prophets.md:281,`en-eglaim`,false,b9b1676535d3b2ebce389159624daf993bb56cea71fe0b1871eedb8ccfbb597d
+SC24,coverage-ot-major-prophets.md:282,`tyre`,false,aaa58746d1648d1804f62679616eaa612887337d658b8d3435315f34ee91f9e2
+SC24,coverage-ot-major-prophets.md:283,`sidon`,false,906490dc206a57784433b864c6eed369e5dca6af6e6e1b624290d037360347d9
+SC24,coverage-ot-major-prophets.md:284,`tarshish`,false,520e38f269ce2862d5243b2d82692bb46a3f97c648850a0358232b16baa4a140
+SC24,coverage-ot-major-prophets.md:285,`chittim`,false,6804950b9c871da01da59d1ed66b5037ca06a3aad99eaaf2a778da9271685950
+SC24,coverage-ot-major-prophets.md:286,`lebanon`,false,a33246bc673394f97401f2583451f45c503f919a8b97ab0cd9e889c4f96e31fd
+SC24,coverage-ot-major-prophets.md:287,`bashan`,false,23d43fc11ed0371914536d67b684d9a8c0cbc95e5f3828ee3a9291cfc85802c1
+SC24,coverage-ot-major-prophets.md:288,`carmel`,false,2618450307142d8779ef264a58a1c328218585c15ee3d65ddc8c866d634ef352
+SC24,coverage-ot-major-prophets.md:289,`sharon`,false,c699e11cb66ddda3ae5e8cf2ffde063c7d865203ca4b6c4dd6160787c54d4dfd
+SC24,coverage-ot-major-prophets.md:290,`achor`,false,21067c6fb15bf3713c43b6b9df79c05c200aee9ed14b36790be4acb67b4d3706
+SC24,coverage-ot-major-prophets.md:291,`moab`,false,11f0984014def13536f87121db6c350325429374d3cbc293cfc34ab6e7307d85
+SC24,coverage-ot-major-prophets.md:292,`edom`,false,547923a10f5320f931d7544d3a135d5617a94cc91ae3ae3a4df2387641d3b757
+SC24,coverage-ot-major-prophets.md:293,`bozrah-edom`,false,497dd21adb89da626b01db7b4e1127413b51a0a245af01dbe45746fdec57e629
+SC24,coverage-ot-major-prophets.md:294,`seir`,false,8ab30c3ea8012cc67a4419a86fd768ca08206335b04704f2aab2717c41704462
+SC24,coverage-ot-major-prophets.md:295,`ammon`,false,60777d1d227805b424329ab111e06599a10cee3cd188c6e667a2cbdfa1695db1
+SC24,coverage-ot-major-prophets.md:296,`rabbah-ammon`,false,ab0170a2ca6eff198f8f168a9e7c13ed61f4c3953cd7269e8e3710b3af43bbda
+SC24,coverage-ot-major-prophets.md:297,`philista-region`,false,4d4a9a42f4e68d891dcb4432e9e4f4d70f7346d1976ca0ac0fde6310fdcfd18a
+SC24,coverage-ot-major-prophets.md:298,`gaza`,false,94a2a11d9ddcaadf3b83ded25352294a663dcb17bbf3577e6796c51b95cab104
+SC24,coverage-ot-major-prophets.md:299,`ashkelon`,false,f6cf3267e030b31b5c8fc85f5095fe9f373feee4f1cf0739c0fd5cebdc99e486
+SC24,coverage-ot-major-prophets.md:300,`ashdod`,false,ef26ec90fca26e9ec7af18126298fd1b601f098b88e660b1123ecc270c608a84
+SC24,coverage-ot-major-prophets.md:301,`elam`,false,180427026476fe0ce6f9a0c05cfa3a1ff72d2391eca9268f472db62708e74400
+SC24,coverage-ot-major-prophets.md:302,`media`,false,5b1c0bf0750a22651341c72f3bc1087e6df5be1e4b4093d8486852d2ca19b2d4
+SC24,coverage-ot-major-prophets.md:303,`hamath`,false,4debbd0dcc3c40bea1e5bcc80f7cef9ce7c04066c03f29b4fa6eab836c080ff5
+SC24,coverage-ot-major-prophets.md:304,`riblah`,false,25836264fe2af6f5045bbb80b1f58f350dfc1692934c1069f43beef850131428
+SC24,coverage-ot-major-prophets.md:305,`jericho`,false,f5a444eaa61ec2d747860f503e5b83c57940284a6c47fc69a3a6c905380b0ab4
+SC24,coverage-ot-major-prophets.md:306,`shiloh`,false,a3f8372ce36ceb75b3ce7b95e6cd934a14ffc73a7ee3ee6086a4f882c8cdd856
+SC24,coverage-ot-major-prophets.md:307,`zoan`,false,06d7d9bc1dc7617cccb77d7de3899188f2791ba6970029190858873d4bd02d0f
+SC24,coverage-ot-major-prophets.md:308,`hanes`,false,84f16f7f31eca2e553a2b71a50dda3c8035327a3171888a24a47c3785aaf237a
+SC24,coverage-ot-major-prophets.md:309,`dedan`,false,818562d9527bd7be84eb17be833febb300592f82d9b25adcf459e202ea39c416
+SC24,coverage-ot-major-prophets.md:310,`tema`,false,5b1178c2e8233630eb1920d47a80962df0e91e8a2678f862682f8775d969a87a
+SC24,coverage-ot-major-prophets.md:311,`kedar`,false,ab2ef9b0366f3c5d2c6b9ae7bd18ffc6b44646962331c86e7c7944e642664418
+SC24,coverage-ot-major-prophets.md:312,`sheba`,false,38f59414dd1c34baad4ac37a2515a37bbc0262ecc99e795242e6b7372adcee89
+SC24,coverage-ot-major-prophets.md:313,`haran`,false,7512d21bdce4039387698bcc2e55199ec8fed7e5b953bb1930aa499ff0ff0a14
+SC25,coverage-ot-major-prophets.md:319,`mp-j01-assyrian-oracle-march`,false,275de8e71db30975d84f99a3cfe8f741164b2fc07c75887e576301356424762f
+SC25,coverage-ot-major-prophets.md:320,`mp-j02-moab-refugees`,false,b20bac169a635594fb76650f8f78aa434ff4549e4a5159663efc444e030ae5cb
+SC25,coverage-ot-major-prophets.md:321,`mp-j03-arabian-refugees`,false,bdc910ddc1f4305307d06c8104b99531cc942798f2b7e21c8284f96b2dae11be
+SC25,coverage-ot-major-prophets.md:322,`mp-j04-egypt-alliance`,false,3c263c775b3c1edc622dd840121d4615ddc03b520e7638fb899d2d809c344468
+SC25,coverage-ot-major-prophets.md:323,`mp-j05-rabshakeh`,false,f17799777c791c261abfe81cc112d9cfaa1ca6dcf18eb22a4a7ae5037d4902ee
+SC25,coverage-ot-major-prophets.md:324,`mp-j06-sennacherib-return`,false,29da445ccd6a195bd249b88a338e889b54780d62f6badd1e269b6cf1ca3b1ad6
+SC25,coverage-ot-major-prophets.md:325,`mp-j07-gathering-highways`,false,1bb81b1de5885287dbfe123c76e36493e4c525b4b12f5454454e71e7ae6e08dc
+SC25,coverage-ot-major-prophets.md:326,`mp-j08-jeremiah-girdle`,false,bae62072131e9dc6e4cf39add3f3823c9451999b639c4d9aee2adc9e591fc688
+SC25,coverage-ot-major-prophets.md:327,`mp-j09-jeremiah-potter`,false,42bfbf6e2bc5997bf30f1f784c9fcb1cbced8cbbf1d8ad8df9745d2fcacfc71b
+SC25,coverage-ot-major-prophets.md:328,`mp-j10-broken-bottle`,false,4370af86519ddfc164d5bce5a8510fdf3813f7136861c6cffb002de1d7ef8798
+SC25,coverage-ot-major-prophets.md:329,`mp-j11-baruch-scroll`,false,4e62b80e34681c169cbe9cdd04320c0325f33db72fd3f69c71f6bfdd4195809a
+SC25,coverage-ot-major-prophets.md:330,`mp-j12-jeremiah-arrest`,false,231716f94759fd40d91949cbc0eb46c226d1083cdec9d8e27cff78b8c4789bd3
+SC25,coverage-ot-major-prophets.md:331,`mp-j13-zedekiah-flight`,false,2e57a880756811e9e7bd046f32ef1eac2b2a5d8728df6d7ce057af94dbd8d473
+SC25,coverage-ot-major-prophets.md:332,`mp-j14-jeremiah-release`,false,4f6b7bdae8f3591d102fb82951cb1ba08b46f5ce31902eea6f67951eaf6b9c3e
+SC25,coverage-ot-major-prophets.md:333,`mp-j15-mizpah-captives`,false,712642e9c1e41b52018e0f48e849b3ceb4715a17dbf07b03b2ac8a13af8c83a6
+SC25,coverage-ot-major-prophets.md:334,`mp-j16-egypt-refugees`,false,f0e025e2899f854e43c83c16f9c40eea1e3de2e4623e5cf55cf954574b9bb668
+SC25,coverage-ot-major-prophets.md:335,`mp-j17-seraiah-scroll`,false,bd8f8dec0c7c37378a16afe05fbae40736b818d8f608f82eb6e2d5b8a04b607e
+SC25,coverage-ot-major-prophets.md:336,`mp-j18-ezekiel-transport`,false,427faf2a901079c6614e07149bad5cd1ea439ca1f3263e3a8cf1c78fdf80c368
+SC25,coverage-ot-major-prophets.md:337,`mp-j19-departing-glory`,false,fb9c57bff36598a27c36814912033ab4017155f122e2647aad07b1c3163b7732
+SC25,coverage-ot-major-prophets.md:338,`mp-j20-exile-baggage`,false,275eaa1e50bdd5bbe6a7cde8722e84ee6825fa198e61f5c49d7f8febbdbba1cb
+SC25,coverage-ot-major-prophets.md:339,`mp-j21-two-roads`,false,2b326ddee9603e2e38ead7cf8689c8ed24d9c42d38f9f784726cc8be7141e2a9
+SC25,coverage-ot-major-prophets.md:340,`mp-j22-temple-tour`,false,4f01f1ed678b0a4612dcd4ed27991130041151f93cefb92cdca9c0e45e552af7
+SC25,coverage-ot-major-prophets.md:341,`mp-j23-healing-water`,false,47d0ed1e348abea1b542de3617c2910b25d7e95f2e59f69d3787823990ce21c5
+SC26,coverage-ot-major-prophets.md:347,`mp-r01-isaiah-family`,false,aa67c5944a7aa88b73a2694a8dd2cf13a2825e340379da45b085f8a001f70df5
+SC26,coverage-ot-major-prophets.md:348,`mp-r02-ahaz-crisis`,false,98dcc494ee8957145c51a579d4c3632c20515b5609e0f3592d0eacce42be7cbe
+SC26,coverage-ot-major-prophets.md:349,`mp-r03-hezekiah-court`,false,e473bb72ad1a312fca3e72d6a7a3c9ca3f30f14b99ed0408ba32a7d04b90a037
+SC26,coverage-ot-major-prophets.md:350,`mp-r04-shebna-eliakim`,false,267e4abc99ab47259ea477613767793c7e9a2d9cfb958955de8f0298555df545
+SC26,coverage-ot-major-prophets.md:351,`mp-r05-cyrus`,false,b7e82992cb09206734098982ccab4516c6d423de4b2f59bdf93672e546f8a704
+SC26,coverage-ot-major-prophets.md:352,`mp-r06-jeremiah-family`,false,378966f99bfa5135c4a400c0a3455a4f91aa2c1389679faa15278d0c32c271da
+SC26,coverage-ot-major-prophets.md:353,`mp-r07-baruch-seraiah`,false,302ad6a773a94149006fb183c6491b5b97cecb09aaf0c76cd9c9ba48a5ed2420
+SC26,coverage-ot-major-prophets.md:354,`mp-r08-gedaliah-house`,false,498fe4ad0a80d10bccf8527db0458ee4bb3e43e0f340c536d76b7fce53e58cb9
+SC26,coverage-ot-major-prophets.md:355,`mp-r09-ebed-melech`,false,288590c545188260eb8e8e14aacc892d85c203ae37d8ebde4ec2785fef01933e
+SC26,coverage-ot-major-prophets.md:356,`mp-r10-prophetic-opponents`,false,618512184a73e7f5e871332e792b7a83e10b54108632139c1b03b1c4384ea01f
+SC26,coverage-ot-major-prophets.md:357,`mp-r11-rechabites`,false,a4a5efaa0a26523cc4dde1092d52740c479c527ee494acebf1a0fe37c0e1ea2f
+SC26,coverage-ot-major-prophets.md:358,`mp-r12-mizpah-conflict`,false,799806ed3c74b577b3e68be4b578129ee1a3440a7876f942243ee3f68022131f
+SC26,coverage-ot-major-prophets.md:359,`mp-r13-egypt-refugee-leaders`,false,055132dc1a40ad5f2fce68ca30e5ad8a3e4af01ae967de23aedb4d8067cdff6e
+SC26,coverage-ot-major-prophets.md:360,`mp-r14-ezekiel`,false,7018627d87d88fc615c8debfb8f2de325848c5f4096e30dea3612257676d6f82
+SC26,coverage-ot-major-prophets.md:361,`mp-r15-zedekiah-house`,false,184205e5c0bfd5ac7fb70c1046d379c3845e4e7b4cfd8016518df5cefb285136
+SC26,coverage-ot-major-prophets.md:362,`mp-r16-tyre-rulers`,false,451616d898768d12b782c83488eec233397ad3c9820b5eee4d0c711cb41da94c
+SC26,coverage-ot-major-prophets.md:363,`mp-r17-prince-vision`,false,fa16be064fdbf31dea75ebfb598f0b2b79ddfc3ae82b7c5b85ee99b61d3a4ab6
+SC27,coverage-ot-major-prophets.md:369,`mp-c01-prophetic-commission`,false,afa63717b6a11ca4b1024f71df3b5223ea0e6c4ba2adc66e65892c918c5aa209
+SC27,coverage-ot-major-prophets.md:370,`mp-c02-covenant-justice`,false,17f67871c9b4ef147f3902eac1d368685c88c31b7ccfa4a5301f2c3358672863
+SC27,coverage-ot-major-prophets.md:371,`mp-c03-remnant-gathering`,false,fcf53b6a8153cf4ff10c8bd0cbe5afeb96584491ef993885b44eedf74ebf073c
+SC27,coverage-ot-major-prophets.md:372,`mp-c04-messianic-reception`,false,95d6c3157f7e578e4bef0fab1bbdcff2152bbc4c1a41e1323e31e4e847c03b1f
+SC27,coverage-ot-major-prophets.md:373,`mp-c05-babylon-taunt`,false,4b786871e136bd579fde21408ba426f613b2a12b1fa2250bd8e0cf4f6cdace59
+SC27,coverage-ot-major-prophets.md:374,`mp-c06-symbolic-actions`,false,9039870f75e0047173a177d4764a1481c793f974430c0312d4665f55b5f6c18c
+SC27,coverage-ot-major-prophets.md:375,`mp-c07-new-covenant`,false,ce42b60fb1c542cfbde4e0e8fa725bf337b24c4c1f5e7c859233eeeca93bf4c3
+SC27,coverage-ot-major-prophets.md:376,`mp-c08-lament-trauma`,false,10794fa11eccfbefdd521433abe6689659b8e3a0f5c4e6b7dddf6bd9e6e0aa04
+SC27,coverage-ot-major-prophets.md:377,`mp-c09-watchman-responsibility`,false,54a5566f1f99c2ad5bfb3e18d6830f40c5940ae5e8fdd0cc7a4578a96d667576
+SC27,coverage-ot-major-prophets.md:378,`mp-c10-restoration-bones-sticks`,false,237c405a5624ae6dec5473bd7e2f4ffac2e017f5bb49a89338ef552deecf6139
+SC27,coverage-ot-major-prophets.md:379,`mp-c11-personified-cities`,false,af6f560df71e957ff950982c1cac0d281ceb45cc897c89c4039e739826595950
+SC27,coverage-ot-major-prophets.md:380,`mp-c12-future-sanctuary`,false,c4a12d0c436c9322d43c590ee09dc348e606663f8ff097fa891939bab6a13345
+SC27,coverage-ot-major-prophets.md:381,`mp-c13-gog-oracle`,false,ec1b22b277bdffc95f0ad5a3b9388ad627c6addfdaf56b5ca1105cdbb632e5cb
+SC27,coverage-ot-major-prophets.md:382,`mp-c14-tyre-trade`,false,bf633acdda62464646e61cba9bc0c0674f8b4793d60ae958159d608592cc6b0a
+SC27,coverage-ot-major-prophets.md:383,`mp-c15-divergent-chronology`,false,d5900c85ea25aa83a1590d197f94f40067a17bb5f74dd97dbc8401c8fc8e75df
+SC28,coverage-ot-major-prophets.md:577,`mp-j24-exile-letter` / document transmission,false,f2f0b99a33b0d09e48bbacce102af0d61991724fc860a26c247354e27ade81ef
+SC28,coverage-ot-major-prophets.md:578,`mp-j25-urijah-flight` / flight and forced return,false,f5c8a1d284d6ae5f6dbe49c70c8682a7e18b92e10b6eb7a117c57d5b64d06111
+SC28,coverage-ot-major-prophets.md:579,`mp-j26-fall-messenger` / reported arrival,false,2b0d61986ecac537cacf6e82234263d7c0b56a13eb291e863204202d343d5bfa
+SC28,coverage-ot-major-prophets.md:580,`mp-j27-cistern-rescue` / movement within custody,false,8fef1ff907f48470510f1003f50b76368d9549e9a2a2a11da3fc5ac24aebe7c7
+SC29,coverage-ot-major-prophets.md:630,"`mp-a01-jesse` / MP1-11,mp-c04",false,31514ffc8876751d59452ae25aacd404d30830461b7f2729ef4e9a14df947e30
+SC29,coverage-ot-major-prophets.md:631,"`mp-a02-ariel` / MP1-29,P08",false,c80abb53cfac8363643252457abdf1ff7e529bb8868dff034cfa9a1c91d7ad2a
+SC29,coverage-ot-major-prophets.md:632,`mp-a03-servant` / MP1-42,false,80bfd046316822e79f32caa78cff73e8df5c29bb48b789975006caa3562f4e2e
+SC29,coverage-ot-major-prophets.md:633,`mp-a04-conditional-calamity` / MP2-26,false,8534ef73597680b261609d9e8e119c6fd961e8db4dfe15c83d415254af69529f
+SC29,coverage-ot-major-prophets.md:634,"`mp-a05-reeds` / MP4-42,mp-j22",false,74d8b218b90c17583f4c468069224cb597135dd6c17e20e38fadcb6b45db248c
+SC29,coverage-ot-major-prophets.md:635,"`mp-a06-cross-canon-children` / mp-c10,MP4-37",false,c2b5658d82c1016c93755ccd120a389c47f916c1835ce345233d5172c027546e
+SC30,coverage-ot-wisdom-prophets.md:436,WP-P01 `uz-job`,false,98a8b9c287a9079fc82cf2f73634447ea1a17a258406b6a0284a414987b0da25
+SC30,coverage-ot-wisdom-prophets.md:437,WP-P02 `nineveh-jonah-nahum`,false,c15bcb5fd1739c57e85187b3e2da2cc190e9e5ef523696c9c7d6f1a10672f534
+SC30,coverage-ot-wisdom-prophets.md:438,WP-P03 `joppa-jonah`,false,a699c9ac1db0f49e64bbd720a9fbdebb64a6413d2131fa57ce650f23476e2018
+SC30,coverage-ot-wisdom-prophets.md:439,WP-P04 `tarshish-intended`,false,89adacc0980b58b9440b2ac8ca9b3568bc5ca0b6ca1d67a7e80b8b818149de38
+SC30,coverage-ot-wisdom-prophets.md:440,WP-P05 `dura-plain-daniel`,false,eb17c032acd792e33304d4a2641a745d5c508e87fb48b1c8e78966fe422e7194
+SC30,coverage-ot-wisdom-prophets.md:441,WP-P06 `shushan-daniel-vision`,false,4293c53e12f224960e47bd72e4bfec26213061174031ac78bff40fc3bae22d11
+SC30,coverage-ot-wisdom-prophets.md:442,WP-P07 `ulai-daniel`,false,dc87b2049af07f9cb611fd0650464c195672e06875fd98fa588c99ea840c0f23
+SC30,coverage-ot-wisdom-prophets.md:443,WP-P08 `hiddekel-daniel`,false,32cd736860fecba020dc7ba17ca7b7ae49dc8a2713827c8c867d0cc51908f99c
+SC30,coverage-ot-wisdom-prophets.md:444,WP-P09 `tekoa-amos`,false,655492bff4863e5ea1deec5f33bd4be22cf996aaab4dd4731f2d29a1d3214f84
+SC30,coverage-ot-wisdom-prophets.md:445,WP-P10 `moresheth-micah`,false,aea958088708b18b8d60ba620cc28492de7a77635458b8e73ac1a49facd3d496
+SC30,coverage-ot-wisdom-prophets.md:446,WP-P11 `en-gedi-song`,false,41492b89eee7223723b27dec804c95b458db371d1fc5344d9817d677905dad95
+SC30,coverage-ot-wisdom-prophets.md:447,WP-P12 `baca-psalm`,false,1bef827ffb214583466261c3877cd0398db26d4db111f2ee402438fc47595dbb
+SC30,coverage-ot-wisdom-prophets.md:448,WP-P13 `mizar-psalm`,false,6ce1dd23b74c4c0b3a1ed244596b077f012ef0ec650d6dc2bee371a35dda297c
+SC30,coverage-ot-wisdom-prophets.md:449,WP-P14 `baalhamon-song`,false,b72cce44d5455f8b874e9d5830469167705a2a1be91f50177baeef66a5777a92
+SC30,coverage-ot-wisdom-prophets.md:450,WP-P15 `bathrabbim-song`,false,12a66ec65bc89ad7fde3354f091857c8e46f9da627a3058c90f50303b7e3c4d5
+SC30,coverage-ot-wisdom-prophets.md:451,Existing P08 Jerusalem,false,d05425aa2c20696afe420508a3d0403fe5db4d8ad03ac0e105e85f4605f8150f
+SC30,coverage-ot-wisdom-prophets.md:452,Existing AP07 Babylon,false,90757e29a8c0b146071035e54b61b14691bbc885ed4f83de3dda102a8bb5d0f7
+SC30,coverage-ot-wisdom-prophets.md:453,Existing P07 Bethlehem,false,c3fd5e8a79a1ed39ec942b79b981b54cf0bdf2ef8c21e0a227e9ad247a0754ba
+SC30,coverage-ot-wisdom-prophets.md:454,Existing P20 Mount of Olives,false,adbfb854f9783804d09fcba7d16b11f6dec4a2c063bcca21f7d9664a96d0c398
+SC30,coverage-ot-wisdom-prophets.md:455,Existing P02 Shechem,false,495fe39aad757fa94b3571c5c2fd1bad476d37ad3a0bdbb6cd53b729c90d4849
+SC31,coverage-ot-wisdom-prophets.md:463,WP-E01 Job’s losses,false,2a92ce440824a9ea4bb7f041c613f865fd63db67c3336e8f5713841b40279ffb
+SC31,coverage-ot-wisdom-prophets.md:464,WP-E02 Job’s closing restoration,false,e92d4e81e78d3dff1727e61476da00075c48d09a5dfba54f5d8b6531777126cd
+SC31,coverage-ot-wisdom-prophets.md:465,WP-E03 Daniel’s court education,false,6803a3a2ec67294f9c4ba24b6af5bed3b84299ab2f86f916c4c29cf224445e0a
+SC31,coverage-ot-wisdom-prophets.md:466,WP-E04 Furnace deliverance,false,26236ffdf68662df764cf7541a14d18ed222f81afa6674eef371bafe140cbe60
+SC31,coverage-ot-wisdom-prophets.md:467,WP-E05 Belshazzar’s feast,false,35b8780db33be221716c8419720eb5ffc2e75f759072e0fe0383678e0e31b0b9
+SC31,coverage-ot-wisdom-prophets.md:468,WP-E06 Daniel and the lions,false,4b4030725e5a0baedb023272eb7d879732522865bd7645deb22ddc1224d8661c
+SC31,coverage-ot-wisdom-prophets.md:469,WP-E07 Nineveh’s response,false,46bfd804b8bc5ae8942d5ffc85850d3d31dce7c0b8e236f13d262637d54427e0
+SC31,coverage-ot-wisdom-prophets.md:470,WP-E08 Haggai’s rebuilding appeal,false,b5b754af6f99a4b141f3debf69f00fa6750247c8fbb7e46571f1791f94f4ae75
+SC31,coverage-ot-wisdom-prophets.md:471,WP-E09 Haggai’s foundation declaration,false,74c26556ae1dd51c8a8b0e0a8e726b6638494a943ae8e7279d3b4bded65b5f6d
+SC31,coverage-ot-wisdom-prophets.md:472,WP-E10 Psalm60 battle superscription,false,bb0ed9fe1fcf11c8271bd2e01768c52dfff4d857ddf6837eab005f93f7ceeedd
+SC31,coverage-ot-wisdom-prophets.md:473,WP-E11 David and Nathan setting,false,c4cfc721fe0bc7dc930ccaf3049a1dcb5e1c6cffa3b97f5b7233eb1adeaa4a91
+SC31,coverage-ot-wisdom-prophets.md:474,WP-J01 Jonah’s interrupted voyage,false,5b6e6c0b5a016bcd84a2608d43f906210349c1fbc4e57780ec48a7f2c86f6fd7
+SC31,coverage-ot-wisdom-prophets.md:475,WP-J02 Captives to royal service,false,eb6e96dcbe58c0e5c2a2edfb6f35d15bf6be58edb2097634b4935696a315ad98
+SC31,coverage-ot-wisdom-prophets.md:476,WP-J03 David at Gath,false,e751159f12f83aa56ba217df64362fbd0a276ffe46d9cdb95bc8b02aaa037689
+SC31,coverage-ot-wisdom-prophets.md:477,WP-J04 David’s cave refuge,false,55ed87fb54d6989b391435ca43afc1f7665b74abade5c6ce6431482d7bd75689
+SC31,coverage-ot-wisdom-prophets.md:478,WP-J05 Zion pilgrimage scene,false,17c0ae1b7a17eb309aaabac981e4bb6ea597e9b4bb891a979519bfe5322741e6
+SC31,coverage-ot-wisdom-prophets.md:479,WP-R01 Daniel and companions,false,bf613b1143427788d73433f63147294fc904a3abc35760ae38e0220cff5d6818
+SC31,coverage-ot-wisdom-prophets.md:480,WP-R02 Zechariah’s priest,false,aa10687bcab4b43d7231aa28133ad80cdcb5200448f45ebcdb6188d7fb4f07ec
+SC31,coverage-ot-wisdom-prophets.md:481,WP-R03 Hosea’s household,false,f040c936c85d9d51b34317b4583741d9dc0a39a1e5d33e9fa3c94d81deee00f3
+SC31,coverage-ot-wisdom-prophets.md:482,WP-R04 Psalm collections,false,e91c35bacde7d8fac62364bf37cba04f7372c857f87c8ddd8d8600b37758363a
+SC31,coverage-ot-wisdom-prophets.md:483,WP-R05 Proverbs voices,false,1e3661d0313f572bd64b829f26695bc70ea70681deaf695b4060306fd3771e28
+SC32,coverage-ot-wisdom-prophets.md:489,WP-C01 Wisdom and dialogue,false,2774c49adae309b15d99b9b7f273f9665a0e2cb25ebeed54c8adb0572b729d90
+SC32,coverage-ot-wisdom-prophets.md:490,WP-C02 Poetic place references,false,886fba6fbf4094120a4da272f242990f2f49cb8c9a260605c5a1f60cdb4d82c5
+SC32,coverage-ot-wisdom-prophets.md:491,WP-C03 Song in the Church edition,false,ad2e5fbd0635dfcbb75802080457222be4936b164921df7f51029f72fe7dcea1
+SC32,coverage-ot-wisdom-prophets.md:492,WP-C04 Vision settings and movements,false,aeb8d058399548961a16a5781ab95039f425015a0272ee71afb0ece4a8b3b4d3
+SC32,coverage-ot-wisdom-prophets.md:493,WP-C05 Unresolved prophetic numbers,false,ac5d172ab5d83c5bbae2b7aebbc380457a5da107a6613ecd791b179e216beb4e
+SC32,coverage-ot-wisdom-prophets.md:494,WP-C06 Psalm85 interpretation,false,03412535e5249af3b164420558b2f7c5a38500e48e4da9037b3056c162a0b469
+SC32,coverage-ot-wisdom-prophets.md:495,WP-C07 Messianic Psalm110 reading,false,d30bb0ac00e75f84f1f157c05af631f4ae2e7f94e36891ebca403c93ffb2c8c6
+SC32,coverage-ot-wisdom-prophets.md:496,WP-C08 Imprecation and lament,false,8287d9e5bda8363abf97961e0c38911af7a772d13b34ff1764560f2870d262d8
+SC32,coverage-ot-wisdom-prophets.md:497,WP-C09 Conflicting restoration language,false,4a863814e81bfdcd32118480ea5a8cbc26fccea36dca17ff477aa8e8ff319764
+SC32,coverage-ot-wisdom-prophets.md:498,WP-C10 Conditional and enduring covenant,false,e5fe16ac21b46998059aec80d1b629e184363433b3678e6d2f2767b8a904d40e
+SC33,coverage-ot-wisdom-prophets.md:749,WP-C11,false,50cdd63be17d0d8c41ca7ae17aee04ab49e1146aeb73ca9ab91be5ef59b5a070
+SC33,coverage-ot-wisdom-prophets.md:750,WP-C12,false,228e0dd1043bd653cc5fadc9d562bd841608ce0cad1720e124dc00cb991219d9
+SC33,coverage-ot-wisdom-prophets.md:751,WP-C13,false,647f03000a833b8cdf848f4f49d9a769f18209c4a22704c72b0a90fae59105c1
+SC33,coverage-ot-wisdom-prophets.md:752,WP-C14,false,09ff73d97e711c36c7f326141e2e9d07e8a54fb09ab4c2a83076e00058cd8946
+SC33,coverage-ot-wisdom-prophets.md:753,WP-C15,false,2e10b8439a28ddad0cb3fcb63cfd1e1ba43501681553c1993c570e1eae565753
+SC34,coverage-ot-wisdom-prophets.md:550,"WP-A01 / Jonah2–4;WP-P02,WP-J01,WP-E07",false,ae202b0380e32aac480e14ec0e5d74de964a7369963787bfff97f016f7c5a1cc
+SC34,coverage-ot-wisdom-prophets.md:551,WP-A02 / Nahum3,false,8a4c62bb52a448e97541a013a68862b0b55471939cce7b8e80cd0ab4fc5d0dad
+SC34,coverage-ot-wisdom-prophets.md:552,WP-A03 / Zephaniah1,false,e0c65ebb2ce92bb82710c8a60e7d8b0714e165b391bd9d15ce3b783449bc24de
+SC34,coverage-ot-wisdom-prophets.md:553,WP-A04 / Joel1–2,false,61082ae33f633038f596a60c917c579bf6e9dc3bbbd64d6b399516d496bec5cc
+SC34,coverage-ot-wisdom-prophets.md:554,"WP-A05 / Amos3,7;WP-C15",false,9c8cb804e2c0def4b29f32b0c1e419cb5e9229c98d5074e7f1d973140c2a0a70
+SC34,coverage-ot-wisdom-prophets.md:555,WP-A06 / Micah1,false,d5a3201ab03152c874d7b7fea75437792adeabed23f45b711a6284466cad7382
+SC34,coverage-ot-wisdom-prophets.md:556,WP-A07 / Daniel1;WP-R01,false,54f7cb036edf18465f727a623ac830873f5d3b353f9d0803b9f8e0c62aed621b
+SC34,coverage-ot-wisdom-prophets.md:557,WP-A08 / Daniel2,false,358aa093b4e6aa38dab6bdfb3e3cafbc0dc3947981bfcc7e60654f2d7f594beb
+SC34,coverage-ot-wisdom-prophets.md:558,WP-A09 / Daniel4,false,e128da901d59d61783ba55408284f694eddbb8306d290dd47c5cb5a489db50eb
+SC34,coverage-ot-wisdom-prophets.md:559,WP-A10 / Daniel5,false,61008462ec63f6bf1f7119d272bf224a2463f8155fe986a973f187fda215dd62
+SC34,coverage-ot-wisdom-prophets.md:560,WP-A11 / Daniel6–8,false,41e965aee81f10a3bd397e5aa8d700ca2964cba3be05675b2a8acaa239a232dc
+SC34,coverage-ot-wisdom-prophets.md:561,WP-A12 / Daniel10–11;WP-P08,false,c4a7e190c5c623266ce8ab85e09de19ad69f517e5170852c9603cdaa770d8d69
+SC34,coverage-ot-wisdom-prophets.md:562,WP-A13 / Hosea1–3;WP-R03,false,b3c00913c32cbe5126aaef9f70c35b37cd8e471cb9716b59bae2ff3ad3c99915
+SC34,coverage-ot-wisdom-prophets.md:563,WP-A14 / Hosea5–6,false,a3d62c12872be7ef30aae1f103a80f75edb5ac4613d5149b5c86f4a127f5eff3
+SC34,coverage-ot-wisdom-prophets.md:564,"WP-A15 / Hosea9,11,14",false,085c7e6ef1d383e6d584cd8a2bc838378dad67548e5713bbb607f95f971fc9ef
+SC34,coverage-ot-wisdom-prophets.md:565,"WP-A16 / Zechariah1,3,6,8,14;WP-R02,P20",false,73057e8d4d8e668cf151b36b140dedafb4f42a3e12b6c939adf16a1779012214
+SC34,coverage-ot-wisdom-prophets.md:566,WP-A17 / Job1–2;WP-E01,false,50680c87af1109b81102ea2d786158388cda87ecb49c92b84117c39a1d7217db
+SC34,coverage-ot-wisdom-prophets.md:567,"WP-A18 / Job6,28,40",false,05000bfca8107e7dd50ce46334e4be8a87d2ba36e2874bafac1598661bfc964c
+SC34,coverage-ot-wisdom-prophets.md:568,"WP-A19 / Proverbs2,18,23,27",false,3bc5f12d2dc2c2874b3b75b973dea68a3dd1b9239c054069ad319f22a822f4b9
+SC34,coverage-ot-wisdom-prophets.md:569,"WP-A20 / Ecclesiastes1,3,9,12",false,39e60b467ef20c2c38501892af98cd69ac70257d0bbc6841ecc266a861b5054e
+SC34,coverage-ot-wisdom-prophets.md:570,WP-A21 / Song1–8;WP-C03,false,d28f123683b7bf31e939f8039bdada3a216469b97a16c61a062e1a7b209a28eb
+SC34,coverage-ot-wisdom-prophets.md:571,"WP-A22 / Psalms8,15",false,efab568e8a6ab56a5edc075675d674fc915a10be24a687affe0877a954e4210b
+SC34,coverage-ot-wisdom-prophets.md:572,"WP-A23 / Psalms30,32,50,138,141",false,c498decdc272e67ca3966583d7931f090f12ba40cf6fa0004b069e9fc4f3be82
+SC34,coverage-ot-wisdom-prophets.md:573,"WP-A24 / Psalms60,66,68,74,78",false,6c9ad94ca088f52adb73cbc1f7ff7f1f5fbd34acc98212376ff2ebe9a15a3a79
+SC34,coverage-ot-wisdom-prophets.md:574,"WP-A25 / Psalms83,87,95,106,132",false,18de9447ca4b73e7d6b2b997639515293d1ab54ffea520f14feafefdd28ad853
+SC34,coverage-ot-wisdom-prophets.md:575,"WP-A26 / Psalm109;WP-C08,WP-C14",false,97353e7f455afc88c8eb8f70cd5141fb67c1bce5603a2c6897c51fa67d653692
+SC34,coverage-ot-wisdom-prophets.md:576,WP-A27 / animal/instrument notes,false,f28d1885afb4e5d870094c4129074c1e80992a6aabaaad61a041b1521f2e78e5
+SC34,coverage-ot-wisdom-prophets.md:577,WP-A28 / remaining lexical notes,false,51872ef26912dafe7566929ebb35ea1cf0e2de5500216dd9fae8ea3faacc2d24
+SC35,coverage-dc.md:168,DP01,false,e2740ad7266a72ab07a63841023bd137e4eeed085878d1017efefabfa435e939
+SC35,coverage-dc.md:169,DP02,false,5b4a0d44a942592a4c87d3d734e0e5ee141f95fbe11c4d5ad12aae0b433883a7
+SC35,coverage-dc.md:170,DP03 → existing P13,false,834191c14f57f237d4be1ba4996c56d92cfc7566e0747023816683de6f75876c
+SC35,coverage-dc.md:171,DP04,false,5facb711d61d69313b76ce55eb657bee21c2b015e53bd8b8162ae95061a270e6
+SC35,coverage-dc.md:172,DP05,false,3a48ba71cd0ec7e10d4ab7113b04cf175381a148fccfd83d51bbaa76ddf8f2c0
+SC35,coverage-dc.md:173,DP06,false,ccc8002890483d9c992de41f976adf29f87d048b34b713ab67e7c15be97213f8
+SC35,coverage-dc.md:174,DP07,false,fdf4305e150ef55ebc2e49428ac57e86fb70a904bf88f8b85c1ca951a612992d
+SC35,coverage-dc.md:175,DP08,false,2f786ebd5cb5a8b5c2926d9a8e7c75b2c4b9b6915712ea3712afc4b845fa152c
+SC35,coverage-dc.md:176,DP09,false,204e133f622829f18ad228279fb7165a4c7abe4727e7a01d9a66bbc1af816592
+SC35,coverage-dc.md:177,DP10,false,1f914bc4b55e1755c34865b6b14150daec1738ff1b0f51bb894154735079fbe6
+SC35,coverage-dc.md:178,DP11,false,625441bc362ec965986d37ae6f2027e86aaa3d4e335ee5b21b9d0a5dce6549c8
+SC35,coverage-dc.md:179,DP12,false,820fc44a21a3e912c80d3330c01c02a7f22e4a3fc9d230698df6621dd8bbd404
+SC36,coverage-dc.md:187,DE01,false,3b1101c3850f40037c59d2ee0b35d84a6078500f678c2f09ddb6785762c4fb67
+SC36,coverage-dc.md:188,DE02,false,a48e3eadbb1d651efeb1234cbdc0891b206b3077de1cc5af87936c890efa57de
+SC36,coverage-dc.md:189,DE03,false,347b17281c3c04d3ddda1391f90b6eb17b4b047608a8f981a5987db507747b66
+SC36,coverage-dc.md:190,DE04,false,bff6fb736ddaebcaa4e2f5429dc38f85a1f07874b20a36fd45bcb3ff373bc92a
+SC36,coverage-dc.md:191,DE05,false,d61627ca6b4dd365311414ea7189ef11a15ed46e5f6179b513431c904640e7d4
+SC36,coverage-dc.md:192,DE06,false,5ab5423f06f801425db070ca55e2ff71b2783316ec2e629b02a2b9dd03c1b18d
+SC36,coverage-dc.md:193,DE07,false,535e5604be4b3fe3da55245d2cf2c12968ad42942bfaaa6aef5f03c072a12e5f
+SC36,coverage-dc.md:194,DE08,false,b22ea2d78453739054119bf9c9e3f0e1b2f0108d0c2a39389f5ed9e3b919602a
+SC36,coverage-dc.md:195,DJ01,false,d2c7e10b3c52920c48255753ff4aa0dc0a61d4ee91dda3a1c7c4348d2255a953
+SC36,coverage-dc.md:196,DJ02,false,050b7a6be8808a847405caf03a6354b73066ecdaf3321d968494569002b01adb
+SC36,coverage-dc.md:197,DJ03,false,7669380cf59684d2b0c43a25a5d10fb465364dd09b287b991aa1b13f61217b7d
+SC36,coverage-dc.md:198,DJ04,false,d644cea6ab33de086e8d470a959829fc83d75af134da49d43e34bf524cbade7f
+SC36,coverage-dc.md:199,DJ05,false,6fb4b8f9ded0d639f847219c11a6dd9e2844201b858494559a1ee07c91df5cb8
+SC37,coverage-dc.md:205,DX01,false,b6cc76176576dcf48a671dbeb67a2a5ec0429ffae2394027ac54936564513d09
+SC37,coverage-dc.md:206,DX02,false,28ffd8f20daf0bb4027d14394b5d3bc9b3eb31b16503e1949bb5eb29d71800ce
+SC37,coverage-dc.md:207,DX03,false,4f4571d85636af605bdd426244da31a6c748a3705c5b8d1767deb1a68c359ce0
+SC37,coverage-dc.md:208,DX04,false,c554b92cad8cb79ac68c1ced57708776f2f341cae906ed24c54a90d586975cad
+SC37,coverage-dc.md:209,DX05,false,e806c2c0e585beb8d5e800df6b456372952cbd6abd45332b435ced2a63ecff23
+SC37,coverage-dc.md:210,DR01,false,69a27eaab584c8ca632e1496b6bf4d646c452830bd4d7085e4faf7f62cb71636
+SC37,coverage-dc.md:211,DR02,false,410738f5b6b3afd44c8688d60fecab4dec698a4ba1f4e4907c3cf9d9463ae37f
+SC37,coverage-dc.md:212,DR03,false,4d70555048f01b32494634f2ccf11b2d9e12642f7019370397a6fd79db02e003
+SC37,coverage-dc.md:213,DR04,false,d2cd0354605cc81755bcaa799b6b90331d55a08021a5ff6212345751437e0418
+SC37,coverage-dc.md:214,DR05,false,ad2d644ffa5b8b939c4ef2d9c33e65cdab3d7f54d6fb776af6f6371a8b24d0fb
+SC37,coverage-dc.md:215,DR06,false,c11716e0e8ddc8c6c7116f4e6fb1812af2b4a87bf2749c1c4be28c539bcadc4c
+SC37,coverage-dc.md:216,DR07,false,f12f780eda24590cb4bcfd031a9ef60ad51102f839b4c5298515ea2af03f9a01
+SC37,coverage-dc.md:217,DR08,false,424a3b9af4a7fb89cece6a14e3da815b86b896fd09108d81492c0587ea77ca01
+SC38,coverage-dc.md:240,DX06,false,a8c13e27455c40c44d62493b4b362f608db8593ec46714cee6d419757dd1afa3
+SC38,coverage-dc.md:241,DX07,false,5e6ac71925991d8ba7b346f7cd1c0314d103a725ebdfd1879c888cc5fa502bb8
+SC38,coverage-dc.md:242,DX08,false,bd3d4b8c549b584fb1bf31c74e6f0ffbfeb4162548b862b9dc7486a673a6fe74
+SC38,coverage-dc.md:243,DX09,false,9015043639855cae6fc625003e1e4fb70588f306ab28f2c0847f8ebcb4c13ece
+SC38,coverage-dc.md:244,DX10,false,7157f13ba6c37a195fa48f84060fd856e6d4f2e95c62781bbadbd2b40c8bb99f
+SC38,coverage-dc.md:245,DX11,false,0d6865f0588ba9bcf4cb70a675e2b9dd79115afac0289dd291d920c8da41040e
+SC38,coverage-dc.md:246,DX12,false,45d979808f1d49ab449bcc4f495c8c5b9593c81c535ae4d0da0c57fdbfe581fa
+SC38,coverage-dc.md:247,DX13,false,8e9adac53aac032edf6a32345a51629c0bdbd4d453e63542b4c17c53e892b3e8
+SC38,coverage-dc.md:248,DX14,false,435be70dde2ad685d42bcca72c053d25242e493d7773b380a5acb481bbb3285f
+SC38,coverage-dc.md:249,DX15,false,724f140b1e0dd7e06b0d8cd4322640562f679ec8c30d8a5ff8382f51230e4611
+SC38,coverage-dc.md:250,DX16,false,7a516eea6aeba6442478e06a4fe8bd2c49da5cdaca26e91edc7558a56e8c318d
+SC38,coverage-dc.md:251,DX17,false,ee975a5e43923635a0f5d743da5f4ecbe95b7d247aee8da43f74777972d8e62b
+SC38,coverage-dc.md:252,DX18,false,4ae287758c1a9a608ad065dee2454b98ffed319b0a060d9550a76c3eb970e275
+SC38,coverage-dc.md:253,DX19,false,e37726e728063fafd8f788d84f64e4814c8dd8aefa88c64be7cb65c364bb01e2
+SC38,coverage-dc.md:254,DX20,false,2d1e44681e4c3951c1d2788f2433994ef8e4166e46423f3152bdad506cf7e140
+SC39,coverage-dc.md:262,DR09,false,08117a5076df8a75e2d8104abfdcb634ceb37d6b87bd4bfec0d933839775134d
+SC39,coverage-dc.md:263,DR10,false,bc05ea5324ad0cb4dafd23725bf642b06d6faa8759b06a45698caf692ef70d7e
+SC39,coverage-dc.md:264,DR11,false,397eecb80b7a1729f584328caedf510de5b1f7a26fd8d1c537f1c0f20afa7adf
+SC39,coverage-dc.md:265,DR12,false,f267bee1dd1c69ae93ad4a229917168c9e9e29aadc7b118669f71f8e2525a01a
+SC39,coverage-dc.md:266,DR13,false,95e4f9c7afefc7fba6c0be83482fe69cabe3d9805a56e73018a5880070c7e20a
+SC39,coverage-dc.md:267,DR14,false,d147876f7860e29d18054991270f7037048455a2a7de1c7854ee775d5e4e4d42
+SC39,coverage-dc.md:268,DR15,false,e88db1b8bd66d9174d4037c6a511c0549feb0a7abf1add59d7135b2aa267d39f
+SC39,coverage-dc.md:269,DR16,false,a277c607f6f6ff655390202b4ec14d66bf354af9f17d61e18a520c29535842ef
+SC39,coverage-dc.md:270,DR17,false,7b7c50b40288b835b85ce4309b9d112841b0caaa829ae6801db6c11a963422b0
+SC39,coverage-dc.md:271,DR18,false,aaf879b4b3b5b5a17caaf9ebd47c4bd28b357ab3371bc78fb5e80fda7c262080
+SC39,coverage-dc.md:272,DR19,false,51a297571d7951d09a224fc63700121128e43c36fe11109de5f47eaa226580dc
+SC39,coverage-dc.md:273,DR20,false,cd286866a2ba57069625ebb1eefe37ed790a3e980ebb3f76b438e014cda80458
+SC39,coverage-dc.md:274,DR21,false,579c907483c006ab927a9df3e9de7c39677c12cef47e1ce362dbe04d02d8c56b
+SC39,coverage-dc.md:275,DR22,false,21b61995f93d048388fcc0383c28e8b4cd9b129519def19f14af64b083e2ea4e
+SC39,coverage-dc.md:276,DR23,false,c1bbcd65719f4ef9eb8c171788ca6b730e91cefb3117da172a347d7c011ff7a4
+SC39,coverage-dc.md:277,DR24,false,67f30e015233c30d5f9103987548e146aef88e8eaa4e02c923cd0af2722a45f4
+SC40,coverage-dc.md:440,`dcp-aaron-johnson`,false,959a0936d55e1a2118ca831ab0ceb8f274858e8952838bf20ae98ab38bf01d9c
+SC40,coverage-dc.md:441,`dcp-algernon-sidney-gilbert`,false,b7dff5592d44274d78676657b3e04a2b8796295d246358cb581cb60184d7627e
+SC40,coverage-dc.md:442,`dcp-almon-babbitt`,false,c650711300f531c3cd124030e730237165f9ab18fae20d2f7dac5019fe8e5b65
+SC40,coverage-dc.md:443,`dcp-alpheus-cutler`,false,68f187a167be3463053f2db793d1d8a5c63846de939147d7e684aa17c2ec1340
+SC40,coverage-dc.md:444,`dcp-alvin-smith`,false,86c65895ecf837dc9d5644ef50ac82f328d4a7b74f7fb1ddff524a4f24955fdb
+SC40,coverage-dc.md:445,`dcp-amasa-lyman`,false,fc629be9884909d7598da1086d466b1ad4e18e1c01138eea71ce3f86eedfa523
+SC40,coverage-dc.md:446,`dcp-amos-davies`,false,f18be02b07b1c78cf1aa516721b1eacd821a6ecfac7f5f04e22c1e58977d96ae
+SC40,coverage-dc.md:447,`dcp-ann-lee`,false,eb71bf3883b327b4275a8277310897c247ef09b884a78e9836d3c87d773bc499
+SC40,coverage-dc.md:448,`dcp-asa-dodds`,false,5b7553521bd71e67f3251149a473f0f12ff72b07cd6c5e86762d7cffc32265ca
+SC40,coverage-dc.md:449,`dcp-brigham-young`,false,a561faa9fc2219c52f9d6c3271fe26d6416c4105edba6f06817a63893d9048d6
+SC40,coverage-dc.md:450,`dcp-burr-riggs`,false,49a7cb44e36fe95865465b7eebd5db3cfc5d931abf22a262aca34ae01518a597
+SC40,coverage-dc.md:451,`dcp-calves-wilson`,false,87a74ec89fba07667affcb8fca33ac75d838c5a61e3f0bfdecc7b4544a9dd0b1
+SC40,coverage-dc.md:452,`dcp-charles-c-rich`,false,7c9efd4e23b1fdf9b40b53ed397b8e4fdc3e1fe95c3478540ad4d343ea61452c
+SC40,coverage-dc.md:453,`dcp-daniel-miles`,false,79a4761f74e05afe8568b84c2dac0873b1fcfa89a7bbe529a1940024b0032701
+SC40,coverage-dc.md:454,`dcp-daniel-stanton`,false,3bb22fda3a9d4cd9681d87c5c340c0002d560a8902e34d6bdcc380b3398f4edc
+SC40,coverage-dc.md:455,`dcp-david-dort`,false,bd5b4c7d97e62a6d80e8426031269a7fae11bdc59c15428b09f1a1284fbe18ac
+SC40,coverage-dc.md:456,`dcp-david-fullmer`,false,510fc4ecb226e7086675d1b8df2228359784f1241e18849c4ddc8174027071c4
+SC40,coverage-dc.md:457,`dcp-david-w-patten`,false,3d2e33b5b368eddd1d8db1d168b93cdb3b80cd5e114960822b714a05ff01b8ca
+SC40,coverage-dc.md:458,`dcp-david-whitmer`,false,b53b20ab5c050420530c57c6dd03b659f55a139d0ce00e2ab7bd307549720d2f
+SC40,coverage-dc.md:459,`dcp-don-c-smith`,false,097ec774ead4742cbeb72f8e53a3a553e3f9978a8359b939ee7218d4c11b0ddc
+SC40,coverage-dc.md:460,`dcp-dunbar-wilson`,false,73c5f44f231d8c56b975109cd5a8a8345989dc98c3688c6be5dedd0bcedc93f5
+SC40,coverage-dc.md:461,`dcp-eden-smith`,false,c98558ef9cae974a163c6c156d98965d03f5c13f0fc57044db0fabad5714d695
+SC40,coverage-dc.md:462,`dcp-edson-fuller`,false,fa7085df05cf2059857f208038e3793aeb9ce2e30b5d8c41fee0161a645ae3fc
+SC40,coverage-dc.md:463,`dcp-edward-partridge`,false,a44973e09b30e5d469e06803c13e5d74bb06c0c794d7bbec55153131cf02d850
+SC40,coverage-dc.md:464,`dcp-elias-higbee`,false,1ff62870aa625a12a606210d8ffd0b99ee18a57b869e596299fa0c5ab7423550
+SC40,coverage-dc.md:465,`dcp-emer-harris`,false,8ec9e65a0165d0487847494cf342d8c0e050409a5d778c993d8d33759e807939
+SC40,coverage-dc.md:466,`dcp-emma-smith`,false,6ce3e248ac8843d1b4ff15f4d9222ce164cb859cd06ab1307af0b7238fed2937
+SC40,coverage-dc.md:467,`dcp-erastus-snow`,false,3fbeca6bbc6e11583dd2c8f3c77e3d83fb5fb25e7c9a9cecb105c333c0d9c863
+SC40,coverage-dc.md:468,`dcp-ezra-booth`,false,26e756cf0c935ef9dea2e24ba6a53513f2f75587394eb03d9d90f253bd579173
+SC40,coverage-dc.md:469,`dcp-ezra-t-benson`,false,3afe4f26899e52a0099fe9ed90623c98dca963e8300b041b7ccb141cf0bd48c5
+SC40,coverage-dc.md:470,`dcp-ezra-thayre`,false,7d2caa1d5fa22b52b4173c683cbfc397732c835eb4d7065c65a61c526e057fa9
+SC40,coverage-dc.md:471,`dcp-frederick-g-williams`,false,39c0cc9333ecac5fd1184a37be8b6e32a7ca7cb794638027cd200eea5ea4f000
+SC40,coverage-dc.md:472,`dcp-george-a-smith`,false,99482df0a9d81abe98eb38d3e1e11801816ad72ae433d65fb8661bfd529d1d13
+SC40,coverage-dc.md:473,`dcp-george-james`,false,4cd3ec77359749e4d58164c67d0a128da640ed0585662eaa112978a24fa4928a
+SC40,coverage-dc.md:474,`dcp-george-miller`,false,386eac8d53c5c40616ca21dbb010b2e18ac402a4b0494024954a7579d873eacc
+SC40,coverage-dc.md:475,`dcp-george-w-harris`,false,c88a02569029bb11f4fce25deb276f3cb9b78be7c31599ccc9d83455c2aaa471
+SC40,coverage-dc.md:476,`dcp-gideon-carter`,false,d64d53665e2e5b970a2cffda73dfc8e7c5691516c1bb7ebad9fcdb9c87c1f63c
+SC40,coverage-dc.md:477,`dcp-harvey-whitlock`,false,6bc6160845fabec8f46a0875d4ad049db77a8dab77ccb760aca9b8e6ddd6bd7d
+SC40,coverage-dc.md:478,`dcp-heber-c-kimball`,false,1334c8d1cc4ee72dbff0d212a45fd922858c2af7191151166f4b64c1e749c7da
+SC40,coverage-dc.md:479,`dcp-heman-basset`,false,fd8c7975f19dd6c2fa74cc1cad8a87b27a808a97c64513421449b665bf8bfa5c
+SC40,coverage-dc.md:480,`dcp-henry-g-sherwood`,false,a8901c81a923360cb4af6b151781f0d48872a08d5e8c331fcef575d6db599052
+SC40,coverage-dc.md:481,`dcp-henry-herriman`,false,1d3d7ed59874a28939f3c1bda79fa77fe91bd6b8ed5313c3161e7d5deaaf9e57
+SC40,coverage-dc.md:482,`dcp-hiram-page`,false,1f97661d04c70b9d86366448c53dfbf08569b744a26655bec334a64dfa2ceac8
+SC40,coverage-dc.md:483,`dcp-hyrum-smith`,false,5a4f59f5b074fa315265616f8b76190f96f1aebaec1034495cc793e7708bae73
+SC40,coverage-dc.md:484,`dcp-isaac-galland`,false,47e7093c226eceb7cbd9c9d4af1434a1980107a6e06388bf3ab0599735c70f72
+SC40,coverage-dc.md:485,`dcp-isaac-morley`,false,74bfaf297d5eec788208b849948a7c5a653cbd14544f24d4202c613cb4442cef
+SC40,coverage-dc.md:486,`dcp-jacob-scott`,false,ee3be6cbca59b346aee8aed3b82818ad86fa64bbb9935983fcaa8c0c9d91ee8e
+SC40,coverage-dc.md:487,`dcp-james-covel`,false,a281b2ab0034e67f184b338e64f51c288f7f13b9efeaa2bf4c5aa1a3ae2031e0
+SC40,coverage-dc.md:488,`dcp-james-foster`,false,5d438af9cdd3748d0c5a77f4451ea03bb9f9d19be204dbeb6cfb7a793f0cf190
+SC40,coverage-dc.md:489,`dcp-jared-carter`,false,053e252af72e0f3668167a06d0223f63c210280662aef3e78a5276bc651542cd
+SC40,coverage-dc.md:490,`dcp-jesse-baker`,false,d709c4744835061ba6d4be882003724a739701160c68ebecd55d420433b8f232
+SC40,coverage-dc.md:491,`dcp-jesse-gause`,false,874fd04a935908d6307c12e1a13bc407322fcf8001577484579e0d463e34a1c2
+SC40,coverage-dc.md:492,`dcp-john-a-hicks`,false,2f12bd51f7853b39dda926dc00eca9cbacba3df41d1aab0ea3198dab1911f3d0
+SC40,coverage-dc.md:493,`dcp-john-c-bennett`,false,7320d8650dfbdddf60bb40b150105e19bcac6902ebe3c9d9a60ef327743a801c
+SC40,coverage-dc.md:494,`dcp-john-corrill`,false,31fddfb458a207a7beb81fb25c0a9924c4256e9483f2f6796dcc094c85b2ab91
+SC40,coverage-dc.md:495,`dcp-john-e-page`,false,8842a0308dde7f64c69e34b1fde2060cf51c170a130bb8d5677d167914d60a15
+SC40,coverage-dc.md:496,`dcp-john-gould`,false,7e337dfb05ebd330320e571eebfe6417c4b54748e8811702d876b1d06850e85d
+SC40,coverage-dc.md:497,`dcp-john-johnson`,false,934e22c998f419ec3d94ebfec84aa8151c740da786c6211d6eb804d43837f645
+SC40,coverage-dc.md:498,`dcp-john-murdock`,false,11becc95a076777cd328f8bb0ee3eb3dc6989dcae624b911e68d091e168655e3
+SC40,coverage-dc.md:499,`dcp-john-s-carter`,false,785c4762cb20666397abe55315e152ae9206ebfdaad2c25e255532fbda3f20c6
+SC40,coverage-dc.md:500,`dcp-john-smith`,false,401636bcdf159ac4f26c000553dc1c9bae3eb092637f4cdc8cf176593ba44482
+SC40,coverage-dc.md:501,`dcp-john-snider`,false,6b8cfdc81c461d5f2e5793f480f913641451e6890f96d577c1df11822a565117
+SC40,coverage-dc.md:502,`dcp-john-taylor`,false,2b0f13059d29c11da9dc0ccd0749340f2fc28f56d818073d0d02404d1575f2f7
+SC40,coverage-dc.md:503,`dcp-john-whitmer`,false,721223b116b1f6d303049f9992800ff98adde1891509eba6e3aad969106635a5
+SC40,coverage-dc.md:504,`dcp-joseph-coe`,false,8933809e5d0c11ff81ca1a429342c22d1bff20ffb07e915679e9fcfc7d6a86a3
+SC40,coverage-dc.md:505,`dcp-joseph-f-smith`,false,4c232f3034eb46d5585f5d0f52d0118cb1c33f782e703200940f8cbf425df535
+SC40,coverage-dc.md:506,`dcp-joseph-knight-sr`,false,195a5aae8d5a0e9d3116f712998261efc784578c79f47e6b1fd0561341b7927f
+SC40,coverage-dc.md:507,`dcp-joseph-smith-jr`,false,615f7ce5de204420ae11de968dc262050517a375a8aaa324b92b6315858afdff
+SC40,coverage-dc.md:508,`dcp-joseph-smith-sr`,false,7d66327bf966fccf4dda71603b51bacaf00ab49aaf10c759a99b80d9f175f523
+SC40,coverage-dc.md:509,`dcp-joseph-wakefield`,false,cd094da96fd184bc1e4baa25ddaad2d28ab304530ecdaa23783176223bcb5f11
+SC40,coverage-dc.md:510,`dcp-joseph-young`,false,4e8adff149b4332219c4ac2fe3011341c2e69a8c2f3954d959681f454f999a48
+SC40,coverage-dc.md:511,`dcp-josiah-butterfield`,false,163fb9b69747811ddf8b1265a891b3439b13b4671ec2d9421318dac0f45b57ff
+SC40,coverage-dc.md:512,`dcp-julia-clapp`,false,45e5a22673d7c44221bbc5ffc7e38840f3ea7584498ce2fe2662a66349ddf414
+SC40,coverage-dc.md:513,`dcp-leman-copley`,false,ee88301a46962a0eded9e517f28b83fdc4692b2fd24e4c4e256bf457f8184095
+SC40,coverage-dc.md:514,`dcp-levi-w-hancock`,false,0690e929cbdde9ed6bc0f4b92319c1256e27c32e5be529d3a72a2831c7230d8c
+SC40,coverage-dc.md:515,`dcp-lilburn-w-boggs`,false,8a0c2e9693a3718daee35fc1412316a29d3acb756ff73bdfbdea18e23adf774f
+SC40,coverage-dc.md:516,`dcp-lorenzo-snow`,false,688596077f85e134016043a67ba8afa57fe0f428edd31f7abc6d32c0fa78f987
+SC40,coverage-dc.md:517,`dcp-luke-s-johnson`,false,613c39c005a40b4c073975bb9cc78c0334d074af9acd24155f3b13272a02858a
+SC40,coverage-dc.md:518,`dcp-lyman-e-johnson`,false,a495b9f15c891f90b910d54cfc0743f577189481a3fd327f4c7a4d7381175b9b
+SC40,coverage-dc.md:519,`dcp-lyman-sherman`,false,75cd389bee85201900b60573fc2b972dff4389a4d90d49eb0cfd1fd4571d2bca
+SC40,coverage-dc.md:520,`dcp-lyman-wight`,false,84dfce4bd5449c7e377eb21e579cd394b8e18a7f807741cb4e67edd42ab8fb2a
+SC40,coverage-dc.md:521,`dcp-major-n-ashley`,false,a21a1b142de04cbf0d58a39854e2a11dd4aad6a0d1a781b592e7c7b8e07c148b
+SC40,coverage-dc.md:522,`dcp-marion-g-romney`,false,e30b27159d1ca96c6fd1a48bdefed9c7f0c91ff741a7c2cf01a4d3e9259ff9ac
+SC40,coverage-dc.md:523,`dcp-martin-harris`,false,fde2e8f4a18dece6028d65a24f9ce9a45e38e60c76464c8a5e95c1bd41ea2652
+SC40,coverage-dc.md:524,`dcp-micah-b-welton`,false,9316b395b870c016d7e409e01d5fd64c53943d45291e412a5d61d46f6d18f8a1
+SC40,coverage-dc.md:525,`dcp-n-eldon-tanner`,false,b3a32d11753a1a5b38b05c4bc97d5397fc543f0b77c0d5edfc203717ef2ad8d3
+SC40,coverage-dc.md:526,`dcp-newel-k-whitney`,false,04b4743d67372c56c39628cfb70548524faab337a6479054d9ab135f1d4245f7
+SC40,coverage-dc.md:527,`dcp-newel-knight`,false,e4475730bb17865052c0eda61e21495bd3a5350c026d648012a9ab19ca019785
+SC40,coverage-dc.md:528,`dcp-noah-packard`,false,b9e0b76ba2e55ff42e236eb262a001c4d60773f372ddf85e4034bf7344d6a2d7
+SC40,coverage-dc.md:529,`dcp-northrop-sweet`,false,d0a441b75d2424decc416d02773ffcf14c417aff60ed51018c4d7dc006a98937
+SC40,coverage-dc.md:530,`dcp-oliver-cowdery`,false,8f2d02ae2661918db3d500399cf7f221167fe7c6ea5c75d047d2304ab52b9352
+SC40,coverage-dc.md:531,`dcp-oliver-granger`,false,8b414eb13fdee8b1c98aa689972c3193bf13e29e9952fa38b0628915dcb74fad
+SC40,coverage-dc.md:532,`dcp-orson-hyde`,false,b09243c9a94d42e4081ab288b5fbf44f40c1f9b118e935182bff5b7cbe3aa703
+SC40,coverage-dc.md:533,`dcp-orson-pratt`,false,6051967c819be15b144e37066d3ce3eecc045d52a88ff2b2a6498cc63d317648
+SC40,coverage-dc.md:534,`dcp-parley-p-pratt`,false,09920616b67f39cc92a58cfb3c021069c2ecdbbbeb6d645ae64305dfa5184d58
+SC40,coverage-dc.md:535,`dcp-peter-haws`,false,67921da9ee7f622b46fc7dceea33ca16cdb9f3ee973a6c955e6cd2df96c08b4e
+SC40,coverage-dc.md:536,`dcp-peter-whitmer-jr`,false,cd759442abdaecf9313ce6aa66dfcc66faa5736fdf2bbd0477d4cb08f090a0dd
+SC40,coverage-dc.md:537,`dcp-peter-whitmer-sr`,false,4c552c7209410a983a11c6d9ffd8405403ee90df0edc78422831aaa63655dd04
+SC40,coverage-dc.md:538,`dcp-philip-burroughs`,false,1cd3d77b1b0fdf0e09f3a794494849c714153d3fa5500a503649fa24feb155af
+SC40,coverage-dc.md:539,`dcp-polly-knight`,false,eb0dc599a733d9d8d05de9a4d9b31246aeeb4a7b4ef1ce0ddabaf7a49fc935eb
+SC40,coverage-dc.md:540,`dcp-reynolds-cahoon`,false,37b419560e19324a931a880ec2a852d115109e012513025852276615ca0e90a2
+SC40,coverage-dc.md:541,`dcp-robert-b-thompson`,false,4165743ee591672e3d76b3d3811cbafdbd817e8198f176fe58ca4a735b9ff26f
+SC40,coverage-dc.md:542,`dcp-robert-d-foster`,false,34eacc7a342ed5a6662d9d15cfdc1b078e92a5468acb2ad3b67b3eace030847d
+SC40,coverage-dc.md:543,`dcp-ruggles-eames`,false,7aab49ac4cafbd8ab6a8a25effe4f74e72b7a558b2ed2b9f9290f3a26f047fae
+SC40,coverage-dc.md:544,`dcp-samuel-bent`,false,21551c600b9d13440fb8409fd23a60fd659b2190ea6e0f20d89d9381367cc5ed
+SC40,coverage-dc.md:545,`dcp-samuel-h-smith`,false,8e0c40f95f0ed679f7ebd3d976613ed42afa2ecb42934dc765869dea9d8e7968
+SC40,coverage-dc.md:546,`dcp-samuel-rolfe`,false,ddab94a60d23a1a1a6202db5524494a2db55fa85cffe8a0741fe0462f7b2de27
+SC40,coverage-dc.md:547,`dcp-samuel-williams`,false,bdb4e60028ecdb7b1a232b5b8e12f56724969013d9c117f1fafffe6a909352b7
+SC40,coverage-dc.md:548,`dcp-selah-j-griffin`,false,5726451e618cc1e40708a767be84afe3d87d9aacab093b88c5555c457f210cb1
+SC40,coverage-dc.md:549,`dcp-seymour-brunson`,false,d3b8fd263631aadd1114d4fcf1dca0210bdfead6b1e7cb0638b716d8c4fa1f25
+SC40,coverage-dc.md:550,`dcp-shadrach-roundy`,false,07eff10ea770a961f27dd29e3a95aa6b64865b47d8c5f9738307a089616e36dc
+SC40,coverage-dc.md:551,`dcp-sidney-rigdon`,false,59afdd5698719d4c10e49e80fda5ac46343e41b401596a2dbe152626b4ae91f8
+SC40,coverage-dc.md:552,`dcp-simeon-carter`,false,29281c0ecc7f6265bf6be36966ad0b3e8075028317bc95f468bf4bf7a5fa657e
+SC40,coverage-dc.md:553,`dcp-simonds-ryder`,false,68507065fa3af191bebcda02b7e905e9a88f9921624f912a648cd4cab1126d98
+SC40,coverage-dc.md:554,`dcp-solomon-hancock`,false,9febe9ad22895380f915508e100e9ac1c0db66b8b367328c57721ebf5f0ce573
+SC40,coverage-dc.md:555,`dcp-solomon-humphrey`,false,7507250a8c9da432429a765f43cda1709c2326971eb67ad974d5954f838b2c06
+SC40,coverage-dc.md:556,`dcp-spencer-w-kimball`,false,6caa39a0490994ef17d6e61e54ded5196dee4f7d9d83acd0788919cb1023e3dd
+SC40,coverage-dc.md:557,`dcp-stephen-burnett`,false,ffa610920b4f83698f8ff1c122307547e5a83549655f2c18e322d9dc07be4a68
+SC40,coverage-dc.md:558,`dcp-sylvester-smith`,false,c146b7e06c026f62ded83579e89132cfe0bcd6ba1f127674280a841f8bc4e8fd
+SC40,coverage-dc.md:559,`dcp-thomas-b-marsh`,false,b3149370e578d163d512c6251967a56c7b09cba96e53cbe35b0db1b9feab52d2
+SC40,coverage-dc.md:560,`dcp-thomas-grover`,false,589956824e4e8a470a94f45b6bff4a1f90ad8aab1a19f4430957d26f61036625
+SC40,coverage-dc.md:561,`dcp-titus-billings`,false,96518a3920d4b37068526a6866d1dc877b41d6d6a7a97fa6dbc7022047ba20e7
+SC40,coverage-dc.md:562,`dcp-vienna-jaques`,false,b59c5969fcc4b5e4df8a198dfefd156df043f7cc9b4714acd28aca3b173df39b
+SC40,coverage-dc.md:563,`dcp-vinson-knight`,false,ae133c6bc0bb4b35754051f7957626e0270dc9a3ff0a7905c807335b9b59ff13
+SC40,coverage-dc.md:564,`dcp-warren-a-cowdery`,false,57cf0acce99fddc79dea6aa9421df1a4b81263a7c04f848890cb6a2fed1535bb
+SC40,coverage-dc.md:565,`dcp-wheeler-baldwin`,false,050defa641de6a39d9f6525cf601465931d0da4ad7bd39f639fd274422e13bdb
+SC40,coverage-dc.md:566,`dcp-wilford-woodruff`,false,776dec3b33409d29c67827957c93e16a0112771ba1ada0ceba6897246af1d35c
+SC40,coverage-dc.md:567,`dcp-willard-richards`,false,e858d874c52a625bda008d867d8532079cc7856a8d0a9379435dc160a900243e
+SC40,coverage-dc.md:568,`dcp-william-carter`,false,f283ce81863a4f6d338fc9780fbf66d490093412db768d08076f03a26e3f2a24
+SC40,coverage-dc.md:569,`dcp-william-e-mclellin`,false,23f4a3a2a48eee79c57d9ba21cea35ac3ee3990c7b950de203af66861869c396
+SC40,coverage-dc.md:570,`dcp-william-huntington`,false,cf9ea3855bd732936577711407e565eca827b3bd1362e96c7b75c027fbd08462
+SC40,coverage-dc.md:571,`dcp-william-law`,false,93e342cf1e76b72c5198b0f39025a0635cc9c352fd46de14247a7814f0e37bfb
+SC40,coverage-dc.md:572,`dcp-william-marks`,false,d3edce3a686dae0fc21dc89a549474ec2b014195a19c263b1b492cd98a5cd429
+SC40,coverage-dc.md:573,`dcp-william-smith`,false,dee234824709c4383b5575bf4d1990b7935629efffb8da9fa7da63b5c6111855
+SC40,coverage-dc.md:574,`dcp-william-w-phelps`,false,9a8cc46447a3666524f703734d4cda672ff862a0acdd1db434389a3615102d52
+SC40,coverage-dc.md:575,`dcp-zebedee-coltrin`,false,b9e2220c1293c9807fe37de5561db609b853f7895a4bb0e38516a55e1799630b
+SC40,coverage-dc.md:576,`dcp-zera-pulsipher`,false,b42216943b9127139ec4a842746a320df406ee74c075b947bac4ddc737d4700f
+SC40,coverage-dc.md:577,`dcp-ziba-peterson`,false,f35e8eb4c4aa37021a1d89f927b68977c1f58c288be38b26d413a99b673e1c42
+SC41,coverage-dc.md:585,DRE030,false,4dbb3418cea314d57b2142437b607a63666fa39f8d7fa7e140c19a1244a31f0a
+SC41,coverage-dc.md:586,DRE032,false,090b18f755d56df8c9b5677affb686e58ded0d76f9385ed94740437fa672c45c
+SC41,coverage-dc.md:587,DRE049,false,fcfb5f5c609f3e533458cc87374d82790890a4bfb41e924b5d6931f8981991b0
+SC41,coverage-dc.md:588,DRE050,false,0b067d8c3b2ed91b7ad39804c295318dc275d8aba76d2191853a411c993e3390
+SC41,coverage-dc.md:589,DRE052a,false,a82370a295c35c8ce4a2a7302186f876f7b37da7ebe1fab718a803dac2fd4249
+SC41,coverage-dc.md:590,DRE052b,false,64afadba416c41e1248dc22fa3597f5d3d377798ce68ca2c6be00f1611d76335
+SC41,coverage-dc.md:591,DRE052c,false,5748b4e5f77bb3316520168e9adb42cf99b52935bb09de239d35cae86485b59c
+SC41,coverage-dc.md:592,DRE053,false,2e51f5e89fd7d156bbe47f438906a6fc41c1470a91fa9762c17e47f340d4b8ba
+SC41,coverage-dc.md:593,DRE055,false,eb127f691aba759e9419b238bab9d44e3c4c940f1dffe8da2deff4c510b1e64d
+SC41,coverage-dc.md:594,DRE056,false,26014e412e990a46c15f38d229c7d5d3175e453bafffc6782aeca1095481a948
+SC41,coverage-dc.md:595,DRE058,false,3cfa89e56f7f9c004f1d2d18b2b1909e302a59194a2e2a44b3f96dde61a41e1f
+SC41,coverage-dc.md:596,DRE061,false,a781bfba44565c556fbbf51f7625db4ca3f73cec52e405768dcf89e916ca2a8e
+SC41,coverage-dc.md:597,DRE066,false,f037831d554b4d78b33bf69adaa1d200de537caf062edd20315e2d69773258b2
+SC41,coverage-dc.md:598,DRE069,false,794061074a8f0209cf16c74cc3cbaaab9a0d7389c930c7dab5cb1ef3f7825057
+SC41,coverage-dc.md:599,DRE075,false,4086af2c0304b361101f24e2b145a0cfced4af7f19a26c27767211de9163ce7e
+SC41,coverage-dc.md:600,DRE078,false,1b392bac4ea8d15161b32b3758c2bc0db3de59a8dbf3397ec97d1947f5120d1f
+SC41,coverage-dc.md:601,DRE080,false,c59612fce6f8dcc4945598317e90e640399d723242bdc3faffb23d7b26f3cb33
+SC41,coverage-dc.md:602,DRE090,false,ab8c4811bfaeb60c3e62114922c2203dff7b8923ba9e866bb0ad65d7b7d7734a
+SC41,coverage-dc.md:603,DRE099,false,8c900b2eec6a28b219547dc64831ab0dc58c9a06a3179943fd300454da5e768a
+SC41,coverage-dc.md:604,DRE103,false,53f8fe6ad314ed832e79aa272553de9b57aa029ef8a06df24a895e2a2d5ac4dd
+SC41,coverage-dc.md:605,DRE111,false,fd232f8fa25ed182959a86251091cb6b67ae470a3ae8c9357fe85e1a620624cc
+SC41,coverage-dc.md:606,DRE117,false,719800ad043dbb4a98926128718b8ba669fe1386699cd4b05c41bb3b18f423c8
+SC41,coverage-dc.md:607,DRE118,false,7d9ac2938bbf887b1b70c3e2b0e30b7ad6e605e095fe87a5e361d59b4c4f3d7b
+SC41,coverage-dc.md:608,DRE124a,false,616a8e212e0c508dc6278e0a3f9366037dda1fd65ed7323a9070b791b5efa3c0
+SC41,coverage-dc.md:609,DRE124b,false,bec1521fb32b81400d880606a8b14c51ec62b268c0dacd3f0d0cd114ed188a14
+SC41,coverage-dc.md:610,DRE124c,false,e191b0ab64c661821f7dd1255eb1050e67a289d1b8e77e6529ed9b0d37f7955d
+SC41,coverage-dc.md:611,DRE124d,false,6c41322a91fe075d2583999d140653533989c6369c9d6cca72ffbc3e195064fe
+SC41,coverage-dc.md:612,DRE124e,false,ac8d0e4719a89343d42b4c6e1b66f37ac02b017d3da0e4f195075328ecc0e740
+SC41,coverage-dc.md:613,DRE124f,false,87bb11b85d8ae9fe9eeb39de7ad008ceb80bdf49c79fca5c6dba279bb708daac
+SC41,coverage-dc.md:614,DRE124g,false,a1b62cf8ad6f2ecbe1668b9358b1ffc98b7fa1b8e45190c366583a3300cc9a61
+SC41,coverage-dc.md:615,DRE124h,false,f55d1467d0a6ed01e9f57b2d34dfaab5891e71e8f952b5b9865da6157daddc14
+SC41,coverage-dc.md:616,DRE124i,false,8d0b1d123689924c85f967be16b404025e32d740152d3d6a9091c6d7f1e9af5f
+SC41,coverage-dc.md:617,DRE124j,false,479121e542143152deef1c87b7bdeae88dd9412d2cd2842e08b82dc3b8b0be3d
+SC41,coverage-dc.md:618,DRE124k,false,5b7cca2777f04c68d0e996a017aab9ca68a67e3e4cd041d1f86e3d76e1c22ada
+SC41,coverage-dc.md:619,DRE126,false,b01b26ea60d732d323edd442b7bd194feb6f9c6848c83b89effd613cefca8b9a
+SC41,coverage-dc.md:620,DRE136,false,73183309871947777eba4714bad35f0d98fe20e106b81ed1db8558a7b078ff3d
+SC42,coverage-dc.md:639,"`dca-jesus-christ`, `dca-god-father`, `dca-holy-ghost`",false,ddfaac936ea277b0e4fd6a5c21ea482c5ea580e1d622e9525920d5ba62173bd5
+SC42,coverage-dc.md:640,"`dca-john-beloved`, `dca-peter-apostle`, `dca-james-apostle`",false,562948764b5528bc12f4c9c32872b300497e7a79b09cc5905e849ca895c7da47
+SC42,coverage-dc.md:641,"`dca-john-baptist`, `dca-zacharias`",false,972ac471ced0bb00df862cdea72bf3bdfc7676acbb1d3f33af6b49ce5a292faa
+SC42,coverage-dc.md:642,"`dca-moroni-bom`, `dca-mormon-bom`",false,5b6659988707042635277efb8da7b6aa2e1348c0f4afe4ca492aa3dfafdfcb13
+SC42,coverage-dc.md:643,"`dca-elijah`, `dca-elias-dc110`, `dca-elias-dc27`, `dca-moses`",false,1961646170baf6382b281c7652d703f8e7f398f14bb3f62d1fe180165d2d4564
+SC42,coverage-dc.md:644,"`dca-adam-michael`, `dca-eve`",false,b05e33e848b4e8b00254890ba89815558cfc955114ce483ccaf3981b172d4084
+SC42,coverage-dc.md:645,"`dca-gabriel`, `dca-raphael`",false,e547110f28637704202e037472d5cf4b92eb4359e031c9add7dfa99e0e5e76c4
+SC42,coverage-dc.md:646,"`dca-abel`, `dca-cain`, `dca-seth`, `dca-enos`, `dca-cainan`, `dca-mahalaleel`, `dca-jared-genesis`, `dca-enoch`, `dca-methuselah`, `dca-lamech-genesis`, `dca-noah-genesis`",false,26250fc7003f15591a4e245bd336e8f62a5dea87cc7a07698f0ee4b2c34a2000
+SC42,coverage-dc.md:647,"`dca-melchizedek`, `dca-abraham`, `dca-isaac`, `dca-jacob-israel`, `dca-joseph-egypt`, `dca-judah`, `dca-ephraim`, `dca-jesse`",false,d0d405def8ec5fd9e5109bb7be5550da0156f58559be4be310f59651d13be4da
+SC42,coverage-dc.md:648,"`dca-jethro`, `dca-caleb-dc84`, `dca-elihu-dc84`, `dca-jeremy-dc84`, `dca-gad-dc84`, `dca-esaias-dc84`",false,7e3643da8a34a2ba16b0b9e3047b79e67837fd71392c59f67aa80c270f284263
+SC42,coverage-dc.md:649,`dca-aaron-moses-brother`,false,565d610b4261c2ec32c9d76da3bd8ef4605f2bdb11ef6851b54130e9ce219494
+SC42,coverage-dc.md:650,"`dca-david-king`, `dca-solomon`, `dca-uriah`, `dca-nathan-prophet`, `dca-sarah`, `dca-hagar`",false,408d1729bf0edfe7085e5d04855333e4548ff4cea95f0c42d214a42df3db894e
+SC42,coverage-dc.md:651,"`dca-isaiah`, `dca-ezekiel`, `dca-daniel`, `dca-malachi`",false,b7fa41a4bfcb6c0ea1847de46690fdf198be1b2623123651fb69fb124ff55cc0
+SC42,coverage-dc.md:652,"`dca-shem`, `dca-elias-transfiguration`",false,a0d9018e256cbbe7427c869f0e0beb3abe35774e334e7f32b10846b23daedc62
+SC42,coverage-dc.md:653,"`dca-nephi-bom`, `dca-lehi-bom`, `dca-laban-bom`, `dca-brother-of-jared`, `dca-benjamin-bom`",false,63f29b13d0ae5f6dab9b98722ccfeda37b91fbd7ad129b316e90452342f10cbf
+SC42,coverage-dc.md:654,"`dca-paul-apostle`, `dca-john-revelator`",false,fc6ec823e849b60b70bc484a6bb5d79057c7a4c2436647e6dde72408b5a2cfc5
+SC42,coverage-dc.md:655,`dca-lucifer-satan`,false,938f3e0339bd749585d916b371d73f87d4495eb3c046f14d7a6f76a453a328fc
+SC43,coverage-dc.md:667,DE06b / reported vision,false,b057ab41c4a93a9ecfce79ea147ba23680e4d446bbc6ac2d95996fd327188cb5
+SC43,coverage-dc.md:668,DE09 / narrated deaths,false,86263f8ae15b05f72dd9688c6cf8b6832be0cdae6cdf4b4b6c4a1cb5864b037c
+SC43,coverage-dc.md:669,DE10 / reported visitation,false,821fde8dc2b6ada21a1e6b9b1ed97d9b9628e2280f5fce083f9708ddd4b0213f
+SC43,coverage-dc.md:670,DE11 / manuscript-production history,false,f46d2a297ca940f532cf2320f2f5354e08a1e8c544013a712efed860ea1a5341
+SC43,coverage-dc.md:671,DE12 / conditional witness instruction,false,e6e41445e44b851e2a3629a47ffe4ed4579c7de63086faeb0f7d7bda82878509
+SC43,coverage-dc.md:672,DE13 / gathering command,false,16dcfc71a368e2d83a15f85d13b7e12bd405365b50208aee3893ff1163a26978
+SC43,coverage-dc.md:673,DE14 / appointment,false,65c0d15fb476ae80b2d3adc0a385f15ac7d04fc786ed8a4d8c35779ad7d7caaa
+SC43,coverage-dc.md:674,DE15 / property-dispute instruction,false,a6ca7ec9be6dc7dd7e0dac8d97aa2676d194eaebedf70084edc06d322b7b7086
+SC43,coverage-dc.md:675,DE16 / appointment,false,b57ad6dbe70d21ced5561b0bdd2c2bef2605d40713508f46fd001e8c8e869f9d
+SC43,coverage-dc.md:676,DE17 / publication stewardship,false,b1c844b7ac911feac3a3041acf661e2f064845f118cec3ebf4d3c4fb77c25f45
+SC43,coverage-dc.md:677,DE18 / successive appointments,false,b3cefeaa931657af500b6f50cea08a4e3658ae5c4056f3ab2031fb6dd7f232ca
+SC43,coverage-dc.md:678,DE19 / school instruction,false,d80a443153fae449ca334774818a3f5d83ff570b653b2e3117e8031aeffb6a13
+SC43,coverage-dc.md:679,DE20 / dietary instruction,false,5c222d21b5d4fe45dd40d795202fe7ca9f51f0593248c4fb77cf176625208505
+SC43,coverage-dc.md:680,DE21 / proposed construction,false,a4837a35789c3c5d5bd59e5ede7f84ec170f7d05e6705a42217f6bab3cbf8099
+SC43,coverage-dc.md:681,DE22 / temple proposal,false,6ee3dfd23212123f7a8b6e6d2f2b3f2148263c0d1352650872f2dbe522fd7980
+SC43,coverage-dc.md:682,DE23 / relocation and finances,false,ef02d23a7a8e4f6687141aa00411cc7f821279830399fe71c91ff79ba48888dc
+SC43,coverage-dc.md:683,DE24 / tithing administration,false,20de4c999ebfbbba09dddbdf138b5c9095660b215c08e852b60b30c5b46e660c
+SC43,coverage-dc.md:684,DE25 / recorded teaching,false,07b8b8a2e4b8218c79192e3fa4fda4c2fa6eb302fd77e6cecbc1740687f3e48f
+SC43,coverage-dc.md:685,DE26 / adopted declaration,false,163962798cf51998df997b4533f107d79dd920af6c5228cedcade32cbe18914a
+SC43,coverage-dc.md:686,DE27 / letter instruction,false,94b87822f723f0543f264e34a46a8765d67b59279a0d21ebc4f1e5de55c070ef
+SC43,coverage-dc.md:687,DE28 / publication and acceptance,false,02b90fe295409caef45fcfc201d09877f34e7638987f42e4d8615a1c3f145079
+SC45,coverage-dc.md:285,1 / DD001,false,0fa7917588003e4dc9e8265533e1203f50312e8ec643868d46d81d4674ace629
+SC45,coverage-dc.md:286,2 / DD002,false,63f377b0ea49335e54d9a00b631822629f86903f48a1ff5916bd667a31457e09
+SC45,coverage-dc.md:287,3 / DD003,false,40160cfcdd5f3c59ff3c6ca667dd8d83976ef69c747824220576b47144d2e970
+SC45,coverage-dc.md:288,4 / DD004,false,e8f7936a04b5b0c7323b64d0f470821bc732cf3b6d3a46809967f08b5cee50f5
+SC45,coverage-dc.md:289,5 / DD005,false,008c03c4eb0b95cb5b38a94fa55e386702cd8ec6f7c4e61eee4dd5da0a83271d
+SC45,coverage-dc.md:290,6 / DD006,false,f39fd9c183859cf9bd9f35030b4dabe247501142a8e4667dd393243c52fc0d58
+SC45,coverage-dc.md:291,7 / DD007,false,20a2e877df4ff8ec3d0528cb212db25cea9f6d5f5fc1b8eb47f1908ba7136d0d
+SC45,coverage-dc.md:292,8 / DD008,false,ea01aa65c2a1a0301ff172467e45ddef0acb2caf3fb9f24c22be9091a5a19c61
+SC45,coverage-dc.md:293,9 / DD009,false,a5e9aed7ccf0836a297432467aea2f2fa1f8f2f268391c639fd8704fa2f3782f
+SC45,coverage-dc.md:294,10 / DD010,false,c73a057cc19e06f688fdea8dee88ee9f02e9f578d0a2e3aa7acbc0ce64bc90e5
+SC45,coverage-dc.md:295,11 / DD011,false,71d9e86a8545652eb56013ce088a0e3f429d1fe8ded16dec4481b98ab76b3a0d
+SC45,coverage-dc.md:296,12 / DD012,false,328713e5614b754466fd4e5475cbfdbf6858d3c305e42bbf80fc8c1ed69f4acf
+SC45,coverage-dc.md:297,13 / DD013,false,cad68a6e243ca4aa8dcd9538706d4d9c78987337e614185170929d062739753e
+SC45,coverage-dc.md:298,14 / DD014,false,a67fb7e0b84336b298d26fd97a029d59312de6be21941bba48325dfa4796ee94
+SC45,coverage-dc.md:299,15 / DD015,false,be00b88de0fca3fdc4a8be67d84477f8426a7d0787174cce981240622445c286
+SC45,coverage-dc.md:300,16 / DD016,false,dae297d0dd9fa8adb38d09c5e3f06410d243c11519de51740126601f100998ec
+SC45,coverage-dc.md:301,17 / DD017,false,1082360bb50e00346271552c0e9fc215a796342e02877bb74b736a4809e645f4
+SC45,coverage-dc.md:302,18 / DD018,false,c1ec7f7b16d3deec1cdfab9a84fbccc763ec047a3a046d6b201f693c008beb01
+SC45,coverage-dc.md:303,19 / DD019,false,937b1c1fd6f29f14b7a70f8b881f57ee57ec9b0f6155ccdf7db240c6a1e1110d
+SC45,coverage-dc.md:304,20 / DD020,false,0dbb5236f552c56012db5a5afcf92d300cae95e946a6fd78d023a61d644afc7f
+SC45,coverage-dc.md:305,21 / DD021,false,a6d499605e9a7faa363c248066f1534594698bb44739ee2d1f826ac1ef267e49
+SC45,coverage-dc.md:306,22 / DD022,false,3d6680af7890cabe910216f28ac87a268d758f01cea1f0b50ce20495cd235331
+SC45,coverage-dc.md:307,23 / DD023,false,0ebcaa3f4fd8e0a39a2b39631d10a2f60038210cbd677767b6b9746d4caa7fe2
+SC45,coverage-dc.md:308,24 / DD024,false,ece70899549fed81dbac82678320d97e07fb41a3e5c90ee85a85eb9c958c150d
+SC45,coverage-dc.md:309,25 / DD025,false,7167b87d3ab229a51bba46d19a4959bf2465a61c8680a88bbbe72ca91faeea02
+SC45,coverage-dc.md:310,26 / DD026,false,4560b069fe8655e8bc12b513a2ca113f8c7b5692b8e518fc48fb32d4b15ccbae
+SC45,coverage-dc.md:311,27 / DD027,false,f63008a7b8e4a29a6b6caa53641a9b1fe0d98ad92a22721eaa2a2b62871f9017
+SC45,coverage-dc.md:312,28 / DD028,false,7120421267174ca789013f2f26c9de47c21aca8f96187af306039ecf3e38fa4e
+SC45,coverage-dc.md:313,29 / DD029,false,ad766b7291cbbe749dfe8b73e935a23f40687257330e0ed17f91bbcbf3dabd47
+SC45,coverage-dc.md:314,30 / DD030,false,bf1e9bd94624261226651385763d672c08ad6298ee6b94aff945a2c7199e0ad0
+SC45,coverage-dc.md:315,31 / DD031,false,29f3510fc370fae3f8a92713a679e6ba7ce8eda1d6711bea5eeae665367b8dbb
+SC45,coverage-dc.md:316,32 / DD032,false,cf76f3faddd791aa7619ce78f9c73056615c8c7c7ed484f8911f65d52d3a4414
+SC45,coverage-dc.md:317,33 / DD033,false,1a259ad64b55fe35b33c9963c5b5095d95f32266ef1b23fa8d9d876353846db5
+SC45,coverage-dc.md:318,34 / DD034,false,6ea8fd4cced7684973b4a515e74f8f1c71ce9128e8521ef25fad2a1649919af7
+SC45,coverage-dc.md:319,35 / DD035,false,63090e29555a041851e2f6fffdd89e81c249ce8b2e479cb031604e5916ef5c0f
+SC45,coverage-dc.md:320,36 / DD036,false,160532187ec06bd14f0d606afdbd26764f760e5421002176674f734a563fe425
+SC45,coverage-dc.md:321,37 / DD037,false,daee23f455ba940fd4f1abf65e08b48dc0b5022d7a4611846d67f5a12ec8c9be
+SC45,coverage-dc.md:322,38 / DD038,false,70bef6a724dc826ef5d21d622a1d8e6f8e50c28ad92dd63c654051c9ae03e866
+SC45,coverage-dc.md:323,39 / DD039,false,a4603b0dabb4f007c1ae4cdba7e819ae9efdbe3be96f4b45dd31d63c2f3f0d9c
+SC45,coverage-dc.md:324,40 / DD040,false,34404e68029b2f2bd76a1d7667b13c004cc1ec422bebe11ef86229eebdcf1f1f
+SC45,coverage-dc.md:325,41 / DD041,false,b0e595d0848dfeeb19168895e2f2bb814b528b54b4ac15c8828847bafde4cd6a
+SC45,coverage-dc.md:326,42 / DD042,false,74e89a7c59f576e041a480a4a0bfee008ff75cad10cc7bccfb044cf102b63f76
+SC45,coverage-dc.md:327,43 / DD043,false,5520d81dc92278a02a7002857e18bbce10483dfd500532a83b821b8958ea5301
+SC45,coverage-dc.md:328,44 / DD044,false,c57ad26e91ecba2be641565edfe813a88e29b325b24ac9573783068b1acec596
+SC45,coverage-dc.md:329,45 / DD045,false,d229c50a704ae305b7a6e04ff8c5034e3df4ab22687a09b113574c3c7a909be3
+SC45,coverage-dc.md:330,46 / DD046,false,50cc218a32ffcd920cb2116c0472f6e829f698d0d018dca5b1c17e4c99154a83
+SC45,coverage-dc.md:331,47 / DD047,false,87a8ac465184fffa730d2df157578955cc427c05061069b3fc54a5f923597a0b
+SC45,coverage-dc.md:332,48 / DD048,false,f0f58ac90e26a01f4c669ec752ab8c61b2cf71c17b96da6bd77e4dcd7a734888
+SC45,coverage-dc.md:333,49 / DD049,false,d1fafac95571e751eace13f3c1076d97fc798a6c5c918661eae4897a3fc6ae43
+SC45,coverage-dc.md:334,50 / DD050,false,cfe9168d3e729508bca51a22646a44815be4bb1d6e192216303c4436cfa261fd
+SC45,coverage-dc.md:335,51 / DD051,false,14ab649438fd6c0b192d63337ec7712c7b8e627086904249eca396412f1f006d
+SC45,coverage-dc.md:336,52 / DD052,false,fddc5c6ff4b121075a52923b490f804352e5a526564d69037fc44fb807b34689
+SC45,coverage-dc.md:337,53 / DD053,false,1cd6814c6d151d48e8edb1901a9f5c2be28f67c2103819299be96c3ae4398d30
+SC45,coverage-dc.md:338,54 / DD054,false,c0a6b1d164b310bf08a247e935b3ac85291824019e802640846f39f88565d830
+SC45,coverage-dc.md:339,55 / DD055,false,18fa415c583f98f51bedd92c25a65491a742e1b3b1bf341fdf5cc7898ad823b2
+SC45,coverage-dc.md:340,56 / DD056,false,8d92aa3af16454973958eb49131cad91392ab1bbd51de26ae116ed28ebbeef73
+SC45,coverage-dc.md:341,57 / DD057,false,92c7a19aa790dbaba03fbce0e6347f6d066b84e6b1113e1fdd9f88320c84a064
+SC45,coverage-dc.md:342,58 / DD058,false,a0ae7eaf5478f8c02d70da641a816ca54d9f6bf03608c5a6274c9b9b24c8a3ab
+SC45,coverage-dc.md:343,59 / DD059,false,18757c1b5c2441b713956409536497ac1658a2169b6d14b70444681956e2db69
+SC45,coverage-dc.md:344,60 / DD060,false,bb895e6c02e216d925c1580f04512b74ae53af8ede6a6c561dd68d976a64f966
+SC45,coverage-dc.md:345,61 / DD061,false,8f4e88cdb43d042a7765d32c849ee97b312d7549b8632195c7a6ec00e6689190
+SC45,coverage-dc.md:346,62 / DD062,false,d893ed8c0fca4a09933a70a23d0d31833f284b7d00fe901ddfa4f9a939509c41
+SC45,coverage-dc.md:347,63 / DD063,false,8c9c81ff3910888e3ae64cb25b58545ad2668bf07efd116521c2bea76dc8990d
+SC45,coverage-dc.md:348,64 / DD064,false,411025d9fae0dd11372291ef695322802c41c8c9d674b391b7ee128c0f4d92f6
+SC45,coverage-dc.md:349,65 / DD065,false,5af1cbf26e6b4e8b9e2859ea07fe474e21e961d2260ac7a6c719c10d663dc331
+SC45,coverage-dc.md:350,66 / DD066,false,e6259a18651943533476f3eb311e8c8295f5cdd94d3d8522f1ad3d55430ab33f
+SC45,coverage-dc.md:351,67 / DD067,false,7c718f8d6c62c0af78a9f7a53836ec1272c817dc9647f375022df53f86d50340
+SC45,coverage-dc.md:352,68 / DD068,false,ef64f9d84beacea372b2ac42b994dbe12f0616a6913833d1eab105756314c156
+SC45,coverage-dc.md:353,69 / DD069,false,4370ecaadddd9e1fe6b4433e6a05f76e0ca3456e1fa82720c2f6c3395f1c26e7
+SC45,coverage-dc.md:354,70 / DD070,false,b354f19409e2d2eb59487a0f267c74a10c1e45254a739cfd531f7886b2ae6797
+SC45,coverage-dc.md:355,71 / DD071,false,17aa8c26655cb245fc7cf129c2ccdcc8c26e694d912f958625202cec443b7ce9
+SC45,coverage-dc.md:356,72 / DD072,false,52d3c0d327f174883e013e0f302f6431b9a2b41f6dec086ba553ca3922d6da8e
+SC45,coverage-dc.md:357,73 / DD073,false,8b454f14f4d9320cde9ef646af0f7163904b01a0d635bec1fb5eb747139f3607
+SC45,coverage-dc.md:358,74 / DD074,false,7a8a253bb3424647a3acb77bc307e69264dae279b393e8bdff269f8ed2df73ed
+SC45,coverage-dc.md:359,75 / DD075,false,a41b297864817851c8d808ccb30884d529168b5f842f49844fef849552be29c7
+SC45,coverage-dc.md:360,76 / DD076,false,537b1426a17d054a3f238c9446aab0f8dae9dba9579345db571c55cf33812c48
+SC45,coverage-dc.md:361,77 / DD077,false,845da0c857d19de776571726ec7d4bfb8fa69dc0c26fe81fd8a664b24253d546
+SC45,coverage-dc.md:362,78 / DD078,false,4580de59be4f0c234408a18af54f7f0bb65961448fc89f4631a98e55354b4af4
+SC45,coverage-dc.md:363,79 / DD079,false,a058abfacc64364c28c92550aebbd6dc8008581dd330ec3753920dc6e604b177
+SC45,coverage-dc.md:364,80 / DD080,false,d10dbff707b06c6ec55d75b8205c2322c5769f722f6a52e3d87620ec80a24f38
+SC45,coverage-dc.md:365,81 / DD081,false,cace468e9ca7dc34e59edc566b6301052d370f687fde3df03ced291b3b1b7092
+SC45,coverage-dc.md:366,82 / DD082,false,24bc7e072e794c79f84def9ee87fb0ac09e5a86c8cf213930ad45a2db223dd07
+SC45,coverage-dc.md:367,83 / DD083,false,0e6c25658270c4b82b70f1541824a8a5712e6d10f0f77c47ac4a80fd027d0af4
+SC45,coverage-dc.md:368,84 / DD084,false,400e6283808e449286d91e1a553a24603f2cab5df5429e8383acb6a884aae29d
+SC45,coverage-dc.md:369,85 / DD085,false,9ddd64ad336978f47035af814f7c3352be879a4f6217781534cfd34121bed381
+SC45,coverage-dc.md:370,86 / DD086,false,53a99d51e344c33e94164baf09bd3998634539a80de04ea6812c2b77f7e317c4
+SC45,coverage-dc.md:371,87 / DD087,false,049fe22d30769780047cbf7d407286d1da41f09631503ba87540072b63b6d332
+SC45,coverage-dc.md:372,88 / DD088,false,42ea9b66b26232e1207d494fdbbc616f915d7e4f076871e379413ab242c1ec12
+SC45,coverage-dc.md:373,89 / DD089,false,87ba550dbd6ec31ee8c07503c5ffc85afcd9018924d5eca26c37c00c797b4702
+SC45,coverage-dc.md:374,90 / DD090,false,57be6ee7b73f7a5d00f693b8dc428c0d8bd3dc4b4528f2add6db5501de5b272c
+SC45,coverage-dc.md:375,91 / DD091,false,01a1988ab6736312c8fe60a4927e54c78f6a81099e4dd0b0347ee5bac9ba8378
+SC45,coverage-dc.md:376,92 / DD092,false,22b9cdcac8b3e72e9a3b79a65c28cacd2dcd6a91cfc5d448e2d04dbaadca9511
+SC45,coverage-dc.md:377,93 / DD093,false,baa9ddf21d92634bf2cd996d83811d7c6c24daa03f0268c0d1d9f82cd350095c
+SC45,coverage-dc.md:378,94 / DD094,false,991f041380e8d87a38905dfa80d82410885fb8a6d75d0b1eb6d2281c6c38fd3a
+SC45,coverage-dc.md:379,95 / DD095,false,efa8fb47fde606cc564bc3fbdfdfcb09e6ee4e9caec11998e9e3b7b724e9c04e
+SC45,coverage-dc.md:380,96 / DD096,false,9eda94f9b5381dda07eb1887402ed8e5fbd4b2a094105eafc2011c85e2c3ebc1
+SC45,coverage-dc.md:381,97 / DD097,false,54c5237932b103cb605c3852ed9961083240e8b39c17e55a976f1006ff10ab13
+SC45,coverage-dc.md:382,98 / DD098,false,523f0e2f55953360eb00f038dbcf153a2e2fdd3e1964bf80c0c243f23e0807ad
+SC45,coverage-dc.md:383,99 / DD099,false,f15433150d5889ead94f9fb5b826f1c40edadc006f68faea1426f6df91425c98
+SC45,coverage-dc.md:384,100 / DD100,false,99f061e8b3b51768cb58f00920bd98782d32e1ad558a9c7420a6f484927594c3
+SC45,coverage-dc.md:385,101 / DD101,false,0c00b90382671ccaa944f8135a1304ee2a7f9b444b0089029677476c23883efe
+SC45,coverage-dc.md:386,102 / DD102,false,1811c860f703f7c1dc8d55960e516f41e150a6c0fe3a4d20df623c9dfc03c315
+SC45,coverage-dc.md:387,103 / DD103,false,f0099b05fe8f292bd8d9aa84c8fbad0256c392c5c8db2414666606c31eee07ab
+SC45,coverage-dc.md:388,104 / DD104,false,df24c928305ce68217b73748e07dec3c80e3ac27d37a9c2fe7ae77690b6218a0
+SC45,coverage-dc.md:389,105 / DD105,false,1451abb2d9daf42ffa393f16e9f2fb8ec218a3e70e03edd14f1cc1cd5ba92437
+SC45,coverage-dc.md:390,106 / DD106,false,b38f1b0a0bb3d2461089c8870650e63ef5c83687aff4df0ff472be2d4d2ca219
+SC45,coverage-dc.md:391,107 / DD107,false,af58442567c4765ff8ae63ab71210be220dbfab39397437f25a400d025eb9c2b
+SC45,coverage-dc.md:392,108 / DD108,false,8d8b023802801cde202392a2506b821c15f72382626c3926a2fdbceb0a0159d4
+SC45,coverage-dc.md:393,109 / DD109,false,f0220f39d13ffd8094c5c2e9c71e7832e5c74d07ff03063f8343128190a211e8
+SC45,coverage-dc.md:394,110 / DD110,false,fa14ff4c6e28ea08f12c0d9113eea47067791dd28edd2c5f801ab67c263063df
+SC45,coverage-dc.md:395,111 / DD111,false,822766ed19ccbf3c5f43d0ce433ba20a325ec32b6db09c6ad8806f03f7b371d0
+SC45,coverage-dc.md:396,112 / DD112,false,55bcbc5e6a258b9ea992e29ec35e47b25fcc612ba503391d232e9d6070299262
+SC45,coverage-dc.md:397,113 / DD113,false,d58c29a61f913dbaf91848c8444c5b931f01cef6b1ef19b28d1b3d1b4b5b9269
+SC45,coverage-dc.md:398,114 / DD114,false,85005f7616fa1f126e6e1840c46d63a3d284caabef3b504ac0df13c2cc423068
+SC45,coverage-dc.md:399,115 / DD115,false,d9fb3e1026e9fda368caf8c98536e0cb048ae614446c8ebf6dd1544a0216c41c
+SC45,coverage-dc.md:400,116 / DD116,false,042c17dcdb56854204b99f0240cbdf82dec06be05ac23ade30bf650f24afecd2
+SC45,coverage-dc.md:401,117 / DD117,false,36ac59de7f24af1bdb733125cf4f8a4aa6b5dff18e7a6056ff6744684ab95dc3
+SC45,coverage-dc.md:402,118 / DD118,false,a3fe1ee74b958bf1f7d17403013408f301b592827127b225921556a6566d18f6
+SC45,coverage-dc.md:403,119 / DD119,false,eb6c230fab056bd38bee05e8d05cad5a9920a1a43b3cb449e2c3b725089a5486
+SC45,coverage-dc.md:404,120 / DD120,false,af9d34610750346e0d71506a321d63608b7d8a189793d71a3644906a5bbbccb2
+SC45,coverage-dc.md:405,121 / DD121,false,f7876b8d154e86d0c69da10bbe375f471e30ce62e5641ae3166021faefc9a7d3
+SC45,coverage-dc.md:406,122 / DD122,false,9d3beb77067491ba169263547f9aca0bec2a79414f55d4bf38ea184686a2883a
+SC45,coverage-dc.md:407,123 / DD123,false,3f98655c4e8723cd368e1f007dfdd733da35ecf818dce4df4cdc387597c86832
+SC45,coverage-dc.md:408,124 / DD124,false,ce19c49fee94a7b4f61a27db14738ad207eb1c57b6b466f90edcb69a2cc77a7f
+SC45,coverage-dc.md:409,125 / DD125,false,3fb8ffa638b9c640249dcb105c746b46c7e6ad4e4af483087d69b7b70f6ec517
+SC45,coverage-dc.md:410,126 / DD126,false,b85dbcd395a7b578cbcc575abe6f7bf005677b744949ad8fabb40ba662aff108
+SC45,coverage-dc.md:411,127 / DD127,false,05d6b800437f6338879cce15e0b51b5bbcd47e2321f95849a363ca0cbbeaac29
+SC45,coverage-dc.md:412,128 / DD128,false,eb5c16777e2f080114dca584bbb74003500e4d638d7469788f400fd714b4e818
+SC45,coverage-dc.md:413,129 / DD129,false,a3098956eab0b24b5ed60e978e75705587df86280fa5c66cb888baa95c55d226
+SC45,coverage-dc.md:414,130 / DD130,false,0348803e401e632b30f009c837ec790661294afb92cc45b4036f912a470a50de
+SC45,coverage-dc.md:415,131 / DD131,false,346cb8f324aac94d720e38159aa181384071b8a76fe64cc026b6b6f8ab315e26
+SC45,coverage-dc.md:416,132 / DD132,false,0a6d13ea7a4441466d0d4554f907ffd113cf8f969be0e3ebee49e91fa58b4277
+SC45,coverage-dc.md:417,133 / DD133,false,e6245715bfc16892071de1e9e91ffb20cf0a472df4879b4a6087ed96bc7bf8b7
+SC45,coverage-dc.md:418,134 / DD134,false,36cdc8fd4395c6d332bbb7d3ec6b0a8cdfe88441abe1381f2063df2095529ce7
+SC45,coverage-dc.md:419,135 / DD135,false,e0863380971ab6690c56f0a8fa25cbf998a43750daa30865b8b66e1db385e63f
+SC45,coverage-dc.md:420,136 / DD136,false,014cd7327a6d4f82a4812eb31884e6566745706ec0a345fd1cc183428de701e9
+SC45,coverage-dc.md:421,137 / DD137,false,51dec8698c6e554c996ab754f2535e86a77af0fb82963803ae76eeaca067895e
+SC45,coverage-dc.md:422,138 / DD138,false,55ff86abbfd96b129861a12494ac393a04d140a193186441a349792e68f67a28
+SC45,coverage-dc.md:423,OD1 / DDO1,false,eb0b5c2b1c962242cddae110a5d10c3a9758789217d8d7fa33721c4d4c6f72cb
+SC45,coverage-dc.md:424,OD2 / DDO2,false,a3e6bf482d9326fb8e0318293e09bb9bdb3501978a1269ddfd9fd12108e0b89d
+SC46,coverage-pgp.md:39,QG01,false,393acb93ee9f0d997e7531b1187d0a91ac5d6ba29a46c19d4e8710c60746fdb0
+SC46,coverage-pgp.md:40,QG02,false,478fc30cee1a3904c01472267289f88a55b91fa900b1bf04927303677d6781c3
+SC46,coverage-pgp.md:41,QG03,false,cf4bb785977dd589e463a834d3f043c100b0e426c0d7c364046d20672cbc3bea
+SC46,coverage-pgp.md:42,QG04,false,e12f97f42cb21a38fe1efd979ae30ccb74d2ff82d622da123b8d56f532700b9d
+SC46,coverage-pgp.md:43,QG05,false,470920b8356bdf0a57c6e3b352b812b24af57196a9d9e43d20cfdc530f5cf7c3
+SC46,coverage-pgp.md:44,QG06,false,9e5157e4ef2bdac90595c6e64b9fde09862b2a0befc9435238f780afd776af9e
+SC46,coverage-pgp.md:45,QG07,false,1523285926f8794687836ea3ac2fce466284cc276ed7ee71f5ad6597a2a67110
+SC46,coverage-pgp.md:46,QG08,false,9928802d851e3a46927cfebce9c971dbe492a1e6a370a183f139396c7ba7e139
+SC46,coverage-pgp.md:47,QG09,false,43c5d49d7b0db1f1316aef34623bb2a3bc5219bd174749f630846bbafa9d2891
+SC46,coverage-pgp.md:48,QG10,false,efefd1dc602156b7ef1bc4a18868058c1570730bb0eaf5d79127c55ee778961b
+SC46,coverage-pgp.md:49,QG11,false,a9f5c778a378db1b964ce0c6dfa084ace23035b0fb2f912a3183ac2fd0a653a5
+SC46,coverage-pgp.md:50,QG12,false,e54be773951b9738eefbdfd010268563f5451e71780a2aea4fdeddbb6104b119
+SC46,coverage-pgp.md:51,QG13,false,1f305e9e0794848529938c45c7282158602dd4f8e2a87b0c335d08c4e64e87f1
+SC46,coverage-pgp.md:52,QG14,false,b9ed44c1b6d88328281b72dd07ea51044a175bcf771c2eda10be017ac1a7b23b
+SC46,coverage-pgp.md:53,QG15,false,b841da9f93f629dd9545fdd97241f58083ef1b33970abdaaeba5646b4b91b84b
+SC46,coverage-pgp.md:54,QG16,false,465327199b91d51d921f1a66f03b66129036a7b24578881196ee163bde2b9148
+SC47,coverage-pgp.md:62,1,false,1c081b29b2356e42d5c2edbd7e1e03669060b92cae38798362f0d4a0f05dfd66
+SC47,coverage-pgp.md:63,2,false,e16730246be3922ab461a140de0d520e106be37f741fe7bcff35b0af52fd3a68
+SC47,coverage-pgp.md:64,3,false,540fa79ebd14a42922cbae54024c7a86d10fc9e6cde395d39189c7cf36f6a85f
+SC47,coverage-pgp.md:65,4,false,5fed4b3c578d783e00e337f6080e2f73b074ddb436105791b7d550d99cb1c3ad
+SC47,coverage-pgp.md:66,5,false,e1787b61a76af4dabc6ada863c0ec36d8db78f4f098d0dae4d6339324a031ef2
+SC47,coverage-pgp.md:67,6,false,3221c25e3878a74e4e53bfa62346f01ab2e49fc274635357bae5f124fff09c1e
+SC47,coverage-pgp.md:68,7,false,e0366bea1c6f5b5a6fb4bfbb0dc7dfd9d3b8b76f9694a99788b33b59a3b6581d
+SC47,coverage-pgp.md:69,8,false,bd32b5d57f013d09fa2a3b80c8cc628d8a49b04ee9fc323fccdd679b3a931ce7
+SC47,coverage-pgp.md:70,9,false,d094d1447e3156186b6c8a767efa02108f3e3498a83438d8aae3170084fd7578
+SC47,coverage-pgp.md:71,10,false,0d1cfe12651e62808bccc8d9962874974f7f3b500ae64551f6e91a23aad99298
+SC47,coverage-pgp.md:72,11,false,b81fed3e2fd1f420bd285d49d77901ef2cd39114b462987c066549ddd6eb71ee
+SC47,coverage-pgp.md:73,12,false,bf73bd734d59342d2e592f75fe4b1885c952a835d56627ddc701d784076a442c
+SC47,coverage-pgp.md:74,13,false,403b24f37fcb39f89a476f11c4f4d16a2ab6a8e770a4adf8dffc3266fa3bed53
+SC48,coverage-pgp.md:91,"Adam, Eve, Abel, Cain; `pgp-person-cainite-enoch`, `pgp-person-irad`, `pgp-person-mahujael`, `pgp-person-methusael`, `pgp-person-cainite-lamech`",false,fa332df1dc71b36587086e9036e8a93d879a47851da25a2ba618b38ff3632e57
+SC48,coverage-pgp.md:92,"`pgp-person-adah-lamech-wife`, `pgp-person-zillah`, `pgp-person-jabal`, `pgp-person-jubal`, `pgp-person-tubal-cain`, `pgp-person-naamah`",false,f6f48a7bf4702b350a441c7b95a1ae6ea511673df31e31a976fab289a5e4ad41
+SC48,coverage-pgp.md:93,"Seth, Enos, Cainan, Mahalaleel, Jared, Sethite Enoch, Methuselah, Sethite Lamech, Noah; `pgp-person-mahijah`",false,ed6c2c9be10ebf07735de0c839a3078f9e1fb4a61a54217590139f11a103f161
+SC48,coverage-pgp.md:94,"Japheth, Shem, Ham",false,ef7e9d3d803d5fb410a03e4614f54598e6ac263a6f297e9bd9502f5a93892185
+SC48,coverage-pgp.md:95,"Abraham, Sarai, Terah, Lot; `pgp-person-haran-terah-son`, `pgp-person-nahor-abraham-brother`, `pgp-person-milcah`, `pgp-person-lot-wife-unnamed`",false,f13b43b49c7dfa9dba08a2a9cc478e75b54706389a679a81c87f8114fabd60f2
+SC48,coverage-pgp.md:96,"`pgp-person-onitah`, `pgp-person-onitah-daughters-collective`, `pgp-person-priest-elkenah-unnamed`",false,a617a2b76921783febc413d76c84a031223f9a3e68356c27d3aa9972335194b7
+SC48,coverage-pgp.md:97,"`pgp-person-egyptus-abr1-23`, `pgp-person-egyptus-abr1-25`, `pgp-person-pharaoh-first-government`, `pgp-person-pharaoh-abraham-context`",false,3b389509c6eb460378022419849b1eb5713f6c251f5a216f428212fe21fcaf79
+SC48,coverage-pgp.md:98,"`pgp-person-shulem`, `pgp-person-olimlah`, `pgp-person-pharaoh-fac3`, `pgp-person-prince-fac3`",false,f60d9e6ef0d216717327a8b638ebc7f53ff1f4523c7b80c099dc042f306ccfe0
+SC48,coverage-pgp.md:99,"`pgp-term-elkenah`, `pgp-term-libnah`, `pgp-term-mahmackrah`, `pgp-term-korash`, `pgp-term-shagreel`",false,c6750f0361a80dd7d176cb97e8ee909b07d024544effd5958cf2bb1029ad4d90
+SC48,coverage-pgp.md:100,"Kolob, Shinehah, Olea, Kokob, Kokaubeam",false,c6935a8bbf6659a43cc7bd7d2c36231c5721cf7a70161d735fa5a3795be2319a
+SC48,coverage-pgp.md:101,"Oliblish, Enish-go-on-dosh, Jah-oh-eh, Kae-e-vanrash, Floeese, Kli-flos-is-es, Hah-ko-kau-beam; Raukeeyang, Shaumau, Shaumahyeem",false,4ccd0f51ee543abe88727f7b6dc55617e5292b3da0d0297f686632949b8312a0
+SC50,frontmatter-inventory.md:7,FM01 [BoM publication title](https://www.churchofjesuschrist.org/study/scriptures/bofm/title-page?lang=eng),false,f98c73206e0fefb297f3ca074e51cdec072217f8ce89ad141be766321663831d
+SC50,frontmatter-inventory.md:8,FM02 [Original BoM title](https://www.churchofjesuschrist.org/study/scriptures/bofm/bofm-title?lang=eng),false,654a6ce906d7f5c39e169bb381258360fc1013e40d3e2ebc8fb42cdcd2bdd312
+SC50,frontmatter-inventory.md:9,FM03 [BoM introduction](https://www.churchofjesuschrist.org/study/scriptures/bofm/introduction?lang=eng),false,6f9003ff926f3178cf53f469b9c0c83f7b96caceb7fb9f49a1d827c9fcf165a5
+SC50,frontmatter-inventory.md:10,FM04 [Three Witnesses](https://www.churchofjesuschrist.org/study/scriptures/bofm/three?lang=eng),false,c9e2ac60cf632942e42ed392a62a61c96e775813f0dd598b4c6123aa6ce2b3b6
+SC50,frontmatter-inventory.md:11,FM05 [Eight Witnesses](https://www.churchofjesuschrist.org/study/scriptures/bofm/eight?lang=eng),false,71f40e60c82a5ca5814fc3c6cbfd0693ac19e9cdf78785a37d818883e8f9c883
+SC50,frontmatter-inventory.md:12,FM06 [Joseph Smith testimony](https://www.churchofjesuschrist.org/study/scriptures/bofm/js?lang=eng),false,60ff6785e0742b1cf1ce46c6c108fc10e013399e29ac8b0d98a4db47dfd4733b
+SC50,frontmatter-inventory.md:13,FM07 [Brief Explanation](https://www.churchofjesuschrist.org/study/scriptures/bofm/explanation?lang=eng),false,436947899b3cf6a0f3e13712a86da355d78e7601363d3b4cd71dcb0d682e0607
+SC50,frontmatter-inventory.md:14,FM08 [D&C introduction](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/introduction?lang=eng),false,c4f5407b670950333007e5d92aa49ff00b48b5937ed956e09eaebbfb801f1589
+SC50,frontmatter-inventory.md:15,FM09 [PGP introduction](https://www.churchofjesuschrist.org/study/scriptures/pgp/introduction?lang=eng),false,157ad706fdf8d5bee038b0bc2ba46dbb006980be722344f953ae53c4ee45c4de
+SC52,geography-evidence.md:28,`bom-model-mesoamerican-sorenson`,false,caa06e985631421d209c55d2e4b4f7dbe45acef876329bf5030a80dee3b10643
+SC52,geography-evidence.md:29,`bom-model-heartland`,false,cab59f566cf95aab746a669989ae7c93a426a6d9bf2d356a9d70babdcd8d48ad
+SC52,geography-evidence.md:30,`bom-model-hemispheric-historical`,false,6425728d5496c86531eb33acec47883848a7681dc69e808243c8ba690fb88586
+SC53,geography-evidence.md:40,`bom-nahom`,false,11ce8efe579ad48e48e67cbd01b30417dfcdd3e8360bd21c490baf126e83274d
+SC53,geography-evidence.md:41,`bom-bountiful-arabia`,false,aa49f33bf58b05e90825b178e6380603678bf29154055c408e4253c463ede550
+SC53,geography-evidence.md:42,`bom-irreantum`,false,17c3abb4cbb36791f1cca2f259dabfdc01f44a6592bfa76d7ab26de92c6ccafa
+SC53,geography-evidence.md:43,`bom-first-landing`,false,dcddbc24844df02c3fd4433d6dbd96b2472e70b41c9e8469a088bb98b2662ae2
+SC54,geography-evidence.md:56,`bom-great-tower`,false,e22771220631451de97f20b49427c94e3f1a1fbbac9fcabc795ee7563b5165de
+SC54,geography-evidence.md:57,`bom-nimrod-valley`,false,b6b71992dbce3af51d9362fea7ef935fc836651d420e94f9a32c71ac16d591d3
+SC54,geography-evidence.md:58,`bom-moriancumer`,false,a47239eaa233913789c4c18d2929dbc6a4482bc286650f18ede033de872c3cf0
+SC54,geography-evidence.md:59,`bom-shelem`,false,19c93a003ef9c5e3736e60f6f26080b4080f96530ee82e3994c80e07d3662339

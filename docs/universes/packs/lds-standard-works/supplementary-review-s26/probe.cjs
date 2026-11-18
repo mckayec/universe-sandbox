@@ -1,0 +1,23 @@
+// Exact pure pack/layer/See-also functions; no DOM/browser/server execution.
+const cp=require('node:child_process'),vm=require('node:vm'),assert=require('node:assert/strict');
+const head='ed7a49bbe7bb1620b49eaa6c33799f5352663c4e',base='1e8753001d674992603dee6153175c54204f60e9',read=(r,p)=>cp.execFileSync('git',['show',r+':'+p],{encoding:'utf8'}),plain=x=>JSON.parse(JSON.stringify(x));
+function load(r){const c={window:{}};vm.createContext(c);for(const f of ['layers.js','packs/lds-standard-works.js'])vm.runInContext(read(r,'public/atlas/'+f),c);return c.window;}
+const w=load(head),p=w.ATLAS_PACKS['lds-standard-works'],old=load(base).ATLAS_PACKS['lds-standard-works'],cs=p.codex.flatMap(t=>t.list),bs=old.codex.flatMap(t=>t.list),by=new Map(cs.filter(c=>c.key).map(c=>[c.key,c])),events=Object.fromEntries(p.events.map(e=>[e.id,e]));
+assert.equal(cs.length,bs.length);let changed=0;for(let i=0;i<cs.length;i++){if(JSON.stringify(cs[i])!==JSON.stringify(bs[i]))changed++;const a=plain(cs[i]),b=plain(bs[i]);delete a.see;delete b.see;if(!b.key){assert(["P17-dc-enoch-city","P17-pgp-enoch-city"].includes(a.key)||!a.key);delete a.key;}assert.deepEqual(a,b);for(const ref of bs[i].see||[])assert(cs[i].see.some(x=>(typeof x==='object'?x.k:x)===(typeof ref==='object'?ref.k:ref)));}
+const stripped=plain(p);stripped.codex=plain(old.codex);assert.deepEqual(stripped,plain(old));
+const linked=cs.filter(c=>c.see),refs=linked.flatMap(c=>c.see),typed=refs.filter(r=>typeof r==='object');let evlinks=0;
+for(const c of linked){const keys=c.see.map(x=>typeof x==='object'?x.k:x);assert.equal(new Set(keys).size,keys.length);for(const k of keys){assert.notEqual(k,c.key);if(k.startsWith('ev:')){assert(events[k.slice(3)]);evlinks++;}else assert(by.has(k));}}
+assert.equal(linked.length,126);assert.equal(refs.length,247);assert.equal(typed.length,139);assert.equal(evlinks,3);
+const en=read(head,'public/atlas/engine.js');const ctx={K:p,LY:w.AtlasLayers,S:{},CUM:false,ARR:x=>Array.isArray(x)?x:[],EV_BY:events,cxFirst:x=>x.first||(x.books?.length?Math.min(...x.books):0)};vm.createContext(ctx);
+vm.runInContext(en.slice(en.indexOf('const esc='),en.indexOf('\n',en.indexOf('const esc='))),ctx);
+vm.runInContext(en.slice(en.indexOf('const filterOk='),en.indexOf('\n',en.indexOf('const filterOk='))),ctx);
+vm.runInContext(en.slice(en.indexOf('const CXK=new Map();'),en.indexOf('function cxGo(key)')),ctx);
+let checks=0;for(const cum of [false,true])for(const book of [0,1,2,3,4,5])for(const layer of [null,'ot','nt','bom','dc','pgp'])for(const range of [null,[1800,1801],[1836,1836],[1847,1847]])for(const r of refs){ctx.CUM=cum;ctx.S={book,layers:layer?new Set([layer]):null,range};ctx.ref=r;const actual=vm.runInContext('cxSeeRef(ref)',ctx),key=typeof r==='object'?r.k:r,event=key.startsWith('ev:'),x=event?events[key.slice(3)]:by.get(key),first=event?x.book:Math.min(...x.books);const expected=cum&&book&&first>book?'locked':(!w.AtlasLayers.layerOk(x,ctx.S.layers)||!w.AtlasLayers.timeOk(x,range)||(event&&book&&!cum&&x.book!==book))?'filtered':'ok';assert.equal(actual.reach,expected,key);checks++;}
+ctx.S={book:0,layers:null,range:null};ctx.CUM=false;for(const c of linked){ctx.card=c;const html=vm.runInContext('cxSee(card)',ctx);assert.equal((html.match(/<button /g)||[]).length,c.see.length);}
+ctx.S={book:0,layers:new Set(['nt']),range:null};ctx.card=by.get('NTP-siloam');assert(!vm.runInContext('cxSee(card)',ctx).includes('<button'));ctx.S={book:3,layers:null,range:null};ctx.CUM=true;ctx.card=by.get('DCM-dd109-dedication-prayer');assert(!vm.runInContext('cxSee(card)',ctx).includes('Kirtland'));
+ctx.ref='ev:missing';assert.equal(vm.runInContext('cxSeeRef(ref)',ctx),null);ctx.ref={k:'missing',r:'x'};assert.equal(vm.runInContext('cxSeeRef(ref)',ctx),null);
+for(const f of ['public/atlas/layers.js','public/atlas/packs/registry.js','src/universe-packs.ts','docs/universes/packs/lds-standard-works/supplementary-implementation.csv','docs/universes/packs/lds-standard-works/identity-crosswalk.csv'])assert.equal(read(head,f),read(base,f));
+for(const f of ['public/atlas/engine.js','public/atlas/engine.css'])assert.equal(read(head,f),read(base,f));
+assert.equal(changed,6);assert.equal(new Set(cs.filter(c=>c.key).map(c=>c.key)).size,cs.filter(c=>c.key).length);
+const result={head,base,totalCards:cs.length,changedCards:changed,unchangedCards:cs.length-changed,copySourceGatesDatesAndAllNonCodexPackDataUnchanged:true,linkedCards:linked.length,totalLinks:refs.length,labelledLinks:typed.length,eventLinks:evlinks,priorLinksPreserved:241,reachabilityChecks:checks,result:'pass',browserExecuted:false};
+console.log(JSON.stringify(process.argv.includes('--pack')?plain(p):result,null,2));

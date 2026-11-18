@@ -1,0 +1,14 @@
+{
+  "head": "7b7a3da6154aceb1e279775a5805e5e287df4194",
+  "base": "47debcfdb86a3e41a023a30e04c6fcd5bd7209b0",
+  "addedCards": 187,
+  "priorCards": 321,
+  "totalCards": 508,
+  "gateCombinations": 4675,
+  "preNTAllLayerChecks": 187,
+  "nonspatialUndatedChecks": 187,
+  "allPreexistingPackDataUnchanged": true,
+  "engineAndLayersUnchanged": true,
+  "result": "pass",
+  "browserExecuted": false
+}
