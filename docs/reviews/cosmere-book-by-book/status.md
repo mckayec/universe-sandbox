@@ -1,10 +1,10 @@
-stage: implementation-review
+stage: research
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT review MB06-E27-01 at PR48 52534d0975af39e620e05a43c2f4f05dc6b4b1fc per mb06e27-return-52534d0.md; then defer full MB06 with Known gaps and start MB07's first bounded unit.
-updated: 2026-11-19T19:55Z
+next-action: ChatGPT complete MB07's second bounded checkpoint per mb07-checkpoint-2026-11-19.md: verify setup and seek lawful primary e28/e29 discovery/location evidence; at the cap, hand off a finite correction or defer with Known gaps.
+updated: 2026-11-19T20:23:31Z
 idle-runs: 0
-note: MB06-E27-01 implemented on PR48 52534d0 (parent 88dc662): e27.text only, whole pack minus that field equals parent; visibility/gate chain identical to parent in 12 states. pnpm check 640/640 + 115 dist, test:pages 12x2, browser smoke pass on retry (known Save/Load timeout on attempt 1), rendered 98/98 at head vs 82/16 parent control. No new gates, no PR24/PR37 edits, no merge.
+note: MB06-E27-01 accepted at PR48 52534d0 in implementation-review-52534d0.md (47b4df2); actual-parent tests 2/2, 12/12 visibility states, 5/5 blob checks, expected negative control and exact-head CI success; 0 independent rendered cases. Full MB06 deferred. MB07 checkpoint 1 saved at a1f772d: 12/12 selected slots, 2 chapter bodies, 4/4 evidence units dispositioned (2 narrowly supported). No gates/parent promotions, 0/33 full-work approvals; Save/Load and PR37 holds preserved.
 
 # Cosmere book-by-book review
 
@@ -135,3 +135,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 - 2026-11-19T19:11:09Z ChatGPT: [MB06-E27-01 handoff](mb06-e27-handoff-2026-11-19.md) saved/read back at 595c8e34e076f305402964eeab244b28bea39220 after [probe](mb06-inventory-probe.cjs) 0ad79bf3aabf8404350eb777b79b455b5b1bc19c and [inventory](mb06-inventory-2026-11-19.json) 34ae9fd85f009af755b938c535267b4150f079a2. Exact PR48 88dc6627423a65eb117a10663b4f91551fb3cc70, PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 unchanged on recheck. Opened/read authorized SS chapters 1, 2 and 6; 4/4 old e27 component dispositions, 2/2 proposed clauses supported at primary-excerpt scope. 3/3 input hashes and 18/18 selected record slots; one-property in-memory reversal restores full parsed pack. Low one-field narrowing requested, 0 implemented here, no new gates/parent promotions. content-review/chatgpt → fixing/claude; after exact-head review defer broader MB06 with gaps and continue MB07 initial unit. MB04 and prior closures preserved; 18/18 pack and 8/8 review statuses checked this run, 0/33 full-work approvals. No application/PR-branch edit, browser execution, merge, deployment or Mckay release approval.
 - 2026-11-19T19:55Z Claude: [MB06-E27-01 return](mb06e27-return-52534d0.md). PR48 88dc662 → 52534d0975af39e620e05a43c2f4f05dc6b4b1fc (cosmere.js e27.text only + tests/atlas-mb06-e27.test.ts). Focused 487/487 (parent control 1/1), pnpm check 640/640, test:pages pass, smoke pass on retry, rendered 98/98 (parent 82/16). fixing/claude → implementation-review/chatgpt.
+
+- 2026-11-19T20:23:31Z ChatGPT: saved/read back reviewer-mb06-52534d0.ts at b61a6f29d9353b734862ef615fb6afe5467625ff and implementation-review-52534d0.md at 47b4df2e7eca18d2923bfd18a5bd3060195a2465. Accepted 1/1 MB06 e27 correction at unchanged PR48 52534d0975af39e620e05a43c2f4f05dc6b4b1fc; independently checked actual-parent payload/12-state visibility, expected negative control and CI. Full MB06 deferred with gaps. Saved/read back MB07 checkpoint 1 at a1f772daf0f83944f8cda98a9e6bc1141a26fdc4: PR48/24/37 four-record inventory (12/12 slots), two primary excerpt bodies, no implementation request or new gates. implementation-review/chatgpt → research/chatgpt for second bounded MB07 unit then cap disposition. Inspected 18/18 pack and 8/8 review statuses; no other eligible owned work or stale research-ready/claude self-audit. No app edit, merge, deploy or release approval.
