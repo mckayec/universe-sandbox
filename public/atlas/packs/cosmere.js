@@ -770,7 +770,7 @@
       {id: "e25", book: 5, world: "braize", title: "Damnation named", text: "The Heralds’ torment between Desolations is laid bare, and the Everstorm brings the return of something long imprisoned."},
       /* VI Wax & Wayne */
       {id: "e26", book: 6, world: "scadrial", site: "elendel", title: "Home from the Roughs", text: "Waxillium Ladrian returns to Elendel to run his house, and is pulled back into lawkeeping by a run of train heists."},
-      {id: "e27", book: 6, world: "scadrial", site: "elendel", title: "Shadows of Self", text: "A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open."},
+      {id: "e27", book: 6, world: "scadrial", site: "elendel", title: "Shadows of Self", text: "Wax investigates murders in Elendel as labor unrest grows."},
       {id: "e28", book: 6, world: "scadrial", site: "newseran", title: "The Bands of Mourning", text: "Wax’s crew chases a legendary relic and finds proof of other peoples beyond the sea."},
       {id: "e29", book: 6, world: "scadrial", site: "southcontinent", title: "News from the south", text: "The southern Scadrians are real, and ahead of the Basin in some technologies."},
       /* VII Arcanum Unbounded */
