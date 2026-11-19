@@ -1,0 +1,17 @@
+FAIL 1440x900 sufficient: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 1440x900 sufficient: old e27 wording absent from page
+FAIL 1440x900 legacy book=6: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 1440x900 legacy book=6: old e27 wording absent from page
+FAIL 1440x900 legacy book=10: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 1440x900 legacy book=10: old e27 wording absent from page
+FAIL 1440x900 All: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 1440x900 All: old e27 wording absent from page
+FAIL 390x844 sufficient: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 390x844 sufficient: old e27 wording absent from page
+FAIL 390x844 legacy book=6: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 390x844 legacy book=6: old e27 wording absent from page
+FAIL 390x844 legacy book=10: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 390x844 legacy book=10: old e27 wording absent from page
+FAIL 390x844 All: e27 text = new wording (A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.)
+FAIL 390x844 All: old e27 wording absent from page
+{"pass":82,"fail":16}
