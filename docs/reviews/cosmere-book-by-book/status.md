@@ -1,10 +1,10 @@
 stage: research
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT complete MB07's second bounded checkpoint per mb07-checkpoint-2026-11-19.md: verify setup and seek lawful primary e28/e29 discovery/location evidence; at the cap, hand off a finite correction or defer with Known gaps.
-updated: 2026-11-19T20:23:31Z
+next-action: ChatGPT start MB08 (Allomancer Jak and the Pits of Eltania, Episodes 28 through 30): exact-head inventory, authorized text/edition discovery, and separate Jak narration from Handerwym notes; follow the two-checkpoint cap. MB07 remains deferred per mb07-final-checkpoint-2026-11-19.md.
+updated: 2026-11-19T21:19:55Z
 idle-runs: 0
-note: MB06-E27-01 accepted at PR48 52534d0 in implementation-review-52534d0.md (47b4df2); actual-parent tests 2/2, 12/12 visibility states, 5/5 blob checks, expected negative control and exact-head CI success; 0 independent rendered cases. Full MB06 deferred. MB07 checkpoint 1 saved at a1f772d: 12/12 selected slots, 2 chapter bodies, 4/4 evidence units dispositioned (2 narrowly supported). No gates/parent promotions, 0/33 full-work approvals; Save/Load and PR37 holds preserved.
+note: MB07 checkpoint 2 saved/read back at 5c91bd4: 12/12 selected slots unchanged across exact PR48 52534d0, PR24 cf25cda and PR37 03394c3; 6/6 bounded dispositions (2 narrowly supported, 4 complete records held), 0/4 atlas records certified. Full MB07 deferred with Known gaps; MB08 next. Prior MB06-E27-01 acceptance, Save/Load and PR37 holds preserved; no new gates/parents, 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -137,3 +137,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-19T19:55Z Claude: [MB06-E27-01 return](mb06e27-return-52534d0.md). PR48 88dc662 → 52534d0975af39e620e05a43c2f4f05dc6b4b1fc (cosmere.js e27.text only + tests/atlas-mb06-e27.test.ts). Focused 487/487 (parent control 1/1), pnpm check 640/640, test:pages pass, smoke pass on retry, rendered 98/98 (parent 82/16). fixing/claude → implementation-review/chatgpt.
 
 - 2026-11-19T20:23:31Z ChatGPT: saved/read back reviewer-mb06-52534d0.ts at b61a6f29d9353b734862ef615fb6afe5467625ff and implementation-review-52534d0.md at 47b4df2e7eca18d2923bfd18a5bd3060195a2465. Accepted 1/1 MB06 e27 correction at unchanged PR48 52534d0975af39e620e05a43c2f4f05dc6b4b1fc; independently checked actual-parent payload/12-state visibility, expected negative control and CI. Full MB06 deferred with gaps. Saved/read back MB07 checkpoint 1 at a1f772daf0f83944f8cda98a9e6bc1141a26fdc4: PR48/24/37 four-record inventory (12/12 slots), two primary excerpt bodies, no implementation request or new gates. implementation-review/chatgpt → research/chatgpt for second bounded MB07 unit then cap disposition. Inspected 18/18 pack and 8/8 review statuses; no other eligible owned work or stale research-ready/claude self-audit. No app edit, merge, deploy or release approval.
+
+- 2026-11-19T21:19:55Z ChatGPT: saved/read back [MB07 second checkpoint](mb07-final-checkpoint-2026-11-19.md) at 5c91bd4d78187708ff45d31ae661c62af0108268. Re-read exact PR48/24/37 pack blobs, unchanged from checkpoint 1 (12/12 selected record slots); opened two authorized chapter bodies, one partial publisher sample and two explicitly secondary reviews. 6/6 bounded dispositions, 2/6 narrowly direct-text-supported, 4/6 whole-record holds; 0/4 selected atlas records and 0/33 full works certified. Full MB07 deferred at cap; research/chatgpt retained for MB08 first bounded unit. Read 18/18 pack and 8/8 review statuses; no other owned work or stale eligible parallel audit. Prior closures and release holds preserved; no implementation request, app/PR edit, merge, deploy or Mckay action.
