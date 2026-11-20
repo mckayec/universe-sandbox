@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements only TH01-RULES-01 on PR48 per th01-handoff-2026-11-20.md: replace the forests site’s Simple Rules sentence, preserve all other fields/gates and prior corrections, record exact parent/head and validation evidence, then return implementation-review/chatgpt. After independent return review resume TH01 research unit2/2; at cap defer unresolved full coverage and continue DR01.
-updated: 2026-11-20T18:30:18Z
+next-action: ChatGPT independently reviews TH01-RULES-01 at PR48 61e26afb4514f4b9510f33ce9f8b0b7bbe84e964 (parent 0636b08) per th01rules-return-61e26af.md; then resumes TH01 research unit2/2, at cap defers unresolved full coverage and continues DR01.
+updated: 2026-11-20T18:57Z
 idle-runs: 0
-note: TH01 checkpoint1/2 produced one finite sentence correction. Handoff e1f355eae98f9bd0a78da5ec082f354caadf37be, probe 4539d87a8aa3d63d6101b0dc412aa89a0a63f75d and evidence e6a8c08a760f043fdfa9eeac0b420ec3063adc3a saved/read back. 3/3 input hashes and one-field scope reversals; 8/8 groups dispositioned, 0/33 full-work approvals. TA04 deferred2/2; full TH01 primary coverage, system-essay/later-work attribution and prior runtime/release holds remain open. No new Mckay decision requested.
+note: TH01-RULES-01 implemented on PR48 at 61e26af (cosmere.js +1/−1 forests desc last sentence, new focused test). pnpm check 663/663, test:pages 12x2, rendered probe 80/80 head vs 48/80 parent; test:browser still fails at known Save/Load wait (browser-smoke.mjs:88). No gate change; TH01 full coverage, prior runtime/release holds and Mckay release approval remain open.
 
 # Cosmere book-by-book review
 
@@ -224,3 +224,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 
 - 2026-11-20T18:30:18Z ChatGPT: completed TH01 research checkpoint1/2 and handed off TH01-RULES-01, one Simple Rules sentence correction. Saved/read back [probe](th01-probe.cjs) at 4539d87a8aa3d63d6101b0dc412aa89a0a63f75d, [evidence](th01-evidence-2026-11-20.json) at e6a8c08a760f043fdfa9eeac0b420ec3063adc3a and [handoff](th01-handoff-2026-11-20.md) at e1f355eae98f9bd0a78da5ec082f354caadf37be before status. Fresh PR24 cf25cda66e91c573c421a0f3712623db72737a3b / PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 / PR48 0636b08ad9096274c793e045cc601324945844d9 unchanged; target persists on3/3. Five source bodies used, including one complete provided opening excerpt (not the novella), a partial Reactor retrieval followed by403, author-owned promotional rules and separate solo-ebook metadata. 15/15 selected world,21/21 site,3/3 event instances plus3/3 PR37 nested landmarks inventoried; 8/8 groups dispositioned. Candidate3/3 hashes,3/3 source reversals and3/3 parsed-pack reversals; no selector-helper or rendered cases. 0/5 complete world descriptions,0/7 complete sites,0/1 complete event and0/33 full-work approvals. research/chatgpt -> fixing/claude for this finite packet; independent implementation review then TH01 unit2/2, cap/defer and DR01. TA04 deferred2/2, prior Kenton acceptance, SA07/S20/WAT06 and runtime/release holds preserved. Rechecked18/18 pack and8/8 review statuses; no other owned or eligible stale parallel work. No application/PR-branch edit, merge, deploy or Mckay release approval.
+
+- 2026-11-20T18:57Z Claude: implemented only TH01-RULES-01 on PR48 feature/cosmere-reading-state at 61e26afb4514f4b9510f33ce9f8b0b7bbe84e964 (parent 0636b08ad9096274c793e045cc601324945844d9; cosmere.js blob 05170ea…): forests site desc last sentence replaced, preceding sentence preserved; new tests/atlas-th01-rules.test.ts 2/2 (819/819 events, 91/91 Threnody sites equal to parent except the sentence across 13 states; parent exposure 5/13). passed: pnpm format, pnpm check 663/663 (check:dist 115), test:pages 12x2, th01rules-probe 80/80 (1440x900 + 390x844, real click/tap on the place; parent negative 48/80). failed: test:browser 2/2 at known browser-smoke.mjs:88 Save/Load wait. Evidence: th01rules-return-61e26af.md. fixing/claude → implementation-review/chatgpt. Not merged; no gate, PR24/PR37 or canon change.
