@@ -804,12 +804,12 @@
       {id: "e53", book: 11, world: "canticle", site: "union", title: "Nomad lands", text: "Hunted by the Night Brigade, Nomad arrives on Canticle and is taken prisoner in Union."},
       {id: "e54", book: 11, world: "canticle", site: "beacon", title: "Beacon stands", text: "Nomad joins Beacon’s rebellion against the Cinder King, racing the sunrise."},
       /* XII 2024-26 */
-      {id: "e55", book: 12, world: "roshar", site: "urithiru", title: "A contest of champions", text: "Dalinar and Odium agree on a contest, with ten days for both sides to prepare."},
+      {id: "e55", book: 12, world: "roshar", site: "urithiru", title: "A contest of champions", text: "The agreed contest of champions approaches; its ten-day countdown is already underway."},
       {id: "e56", book: 12, world: "roshar", site: "shinovar", title: "Kaladin and Szeth in Shinovar", text: "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."},
       {id: "e57", book: 12, world: "roshar", site: "thaylen", title: "Fronts falling", text: "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."},
       {id: "e58", book: 12, world: "roshar", site: "urithiru", title: "Retribution", text: "Dalinar renounces Honor’s power. Odium absorbs it, kills the Stormfather and becomes Retribution."},
       {id: "e59", book: 12, world: "roshar", title: "The Night of Sorrows", text: "Stormlight is withdrawn, the Everstorm covers the world, and time on Roshar slows to a crawl."},
-      {id: "e60", book: 12, world: "scadrial", title: "Hoid seeks help", text: "In the epilogue Hoid travels to Scadrial to look for allies against Retribution."},
+      {id: "e60", book: 12, world: "scadrial", title: "Hoid seeks help", text: "Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor."},
       {id: "e61", book: 12, world: "firstsun", site: "patjiseye", title: "Through Patji’s Eye", text: "Dusk leaves his world through the Eye, searching for help against the Ones Above."},
       {id: "e62", book: 12, world: "emberdark", site: "hiddengate", title: "Dusk and Starling", text: "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."},
       {id: "e63", book: 12, world: "miral", site: "riverviolet", title: "Up the River Violet", text: "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)"}
