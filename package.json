@@ -14,6 +14,7 @@
     "check": "pnpm format:check && pnpm build && pnpm test && pnpm check:dist",
     "check:dist": "node tests/check-dist.mjs",
     "test:pages": "node tests/standalone-pages.mjs",
+    "test:touch": "node tests/mobile-touch.mjs",
     "test:exhibits": "node tests/exhibit-stability.mjs"
   },
   "dependencies": {
