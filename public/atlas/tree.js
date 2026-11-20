@@ -2,8 +2,8 @@
    A "family tree" of traditions on a year axis: each tradition is a bar from the year it began, joined to the
    tradition it branched from. Used by Track A packs (for example how Judaism, Christianity and Islam diverge).
    The top half is pure (normalise, lay out, draw an SVG string) and is unit-tested in a vm context; createView()
-   at the bottom is the small DOM controller the engine calls when a pack has `tree`.
-   Loaded by atlas/index.html after layers.js and before engine.js. */
+   in tree-view.js is the small DOM controller the engine calls when a pack has `tree`.
+   Loaded by atlas/index.html after tree-rel.js and before tree-view.js. */
 (function (root) {
   'use strict';
 
@@ -28,16 +28,80 @@
     return r <= 0 ? r - 1 : r;
   };
 
-  function span(n) {
-    const w = n && n.when;
+  const pair = (w) => {
     if (w == null) return null;
     const a = Array.isArray(w) ? +w[0] : +w;
     const b = Array.isArray(w) && w.length > 1 ? +w[1] : a;
     if (!isFinite(a) || !isFinite(b)) return null;
     return a <= b ? [a, b] : [b, a];
+  };
+
+  /* A node's dates: {from, to, sol, undated}. `when` is a start year or a [from, to] lifespan; `emerge:[a, b]`
+     is an uncertain window (drawn as a ramp from a to b, solid after b, ending at `until` or b);
+     `undated:true` has no defensible date at all (placed by its relations, never given a year). */
+  function span(n) {
+    if (!n) return null;
+    if (n.undated) return { from: null, to: null, sol: null, undated: true };
+    const e = pair(n.emerge);
+    if (e && Array.isArray(n.emerge) && n.emerge.length === 2) {
+      const u = n.until != null && isFinite(+n.until) ? Math.max(+n.until, e[1]) : e[1];
+      return { from: e[0], to: u, sol: e[1], undated: false };
+    }
+    const s = pair(n.when);
+    return s ? { from: s[0], to: s[1], sol: null, undated: false } : null;
+  }
+
+  /* does following parent and merge links up from `start` reach `target`? (guards against loops) */
+  function reaches(by, start, target) {
+    const seen = new Set();
+    const stack = [start];
+    while (stack.length) {
+      const id = stack.pop();
+      if (id === target) return true;
+      if (seen.has(id) || !by[id]) continue;
+      seen.add(id);
+      if (by[id].parent) stack.push(by[id].parent);
+      by[id].merge.forEach((m) => stack.push(m));
+    }
+    return false;
+  }
+
+  /* An undated node is drawn only so the chart can show it; it is never given that year in text, aria labels or
+     filters. With a parent (or merge predecessor) it sits where that node is drawn, so it never looks as if it
+     began with a much later descendant; a root sits where its earliest dated branch begins, else at the axis start. */
+  function placeUndated(nodes, by, min) {
+    const kids = {};
+    nodes.forEach((n) => {
+      if (n.parent) (kids[n.parent] = kids[n.parent] || []).push(n);
+      n.merge.forEach((m) => (kids[m] = kids[m] || []).push(n));
+    });
+    const earliest = (id, seen) => {
+      let best = Infinity;
+      (kids[id] || []).forEach((c) => {
+        if (seen.has(c.id)) return;
+        seen.add(c.id);
+        best = Math.min(best, c.undated ? earliest(c.id, seen) : c.from);
+      });
+      return best;
+    };
+    const at = (n, seen) => {
+      if (n.from != null) return n.from;
+      const up = n.parent || n.merge[0];
+      if (up && by[up] && !seen.has(up)) {
+        seen.add(up);
+        return at(by[up], seen);
+      }
+      const e = earliest(n.id, new Set([n.id]));
+      return isFinite(e) ? e : min;
+    };
+    nodes.forEach((n) => {
+      if (n.undated && n.from == null) n.from = n.to = at(n, new Set([n.id]));
+    });
   }
 
   /* ---------- normalise ---------- */
+
+  const FAM = (t, d) => (root.AtlasTreeRel ? root.AtlasTreeRel.family(t, d) : d);
 
   /* pack.tree → {title, intro, nodes, by, kids, links, min, max} (nodes in drawing order); null without nodes */
   function normTree(pack, timeline, layers) {
@@ -54,11 +118,21 @@
       const node = {
         id,
         name: n.name || id,
-        from: s[0],
-        to: s[1],
+        from: s.from,
+        to: s.to,
+        sol: s.sol,
+        undated: s.undated,
+        whenText: n.whenText ? String(n.whenText) : '',
+        kind: n.kind ? String(n.kind) : '',
         ongoing: !!n.ongoing,
         approx: !!n.approx,
         parent: n.parent != null ? String(n.parent) : null,
+        ptype: FAM(n.parentType, 'branch'),
+        prel: n.parentRel ? String(n.parentRel) : '',
+        merge: ARR(n.merge).map(String),
+        notSame: ARR(n.notSame)
+          .filter((x) => x && (x.t || x.id))
+          .map((x) => ({ id: x.id != null ? String(x.id) : null, t: x.t ? String(x.t) : '' })),
         also: ARR(n.also).map(String),
         c: n.c || null,
         layers: ARR(n.layers != null ? n.layers : n.layer).map(String),
@@ -87,10 +161,16 @@
         p = by[p].parent;
       }
       n.also = n.also.filter((a) => by[a] && a !== n.id && a !== n.parent);
+      n.merge = n.merge.filter((m, i, a) => by[m] && m !== n.id && a.indexOf(m) === i);
+    });
+    /* merge predecessors must not loop back through the node either */
+    nodes.forEach((n) => {
+      n.merge = n.merge.filter((m) => !reaches(by, m, n.id));
     });
     let min = Infinity;
     let max = -Infinity;
     nodes.forEach((n) => {
+      if (n.undated) return;
       min = Math.min(min, n.from);
       max = Math.max(max, n.to);
     });
@@ -99,31 +179,42 @@
       max = Math.max(max, timeline.max);
     }
     if (src.max != null && isFinite(+src.max)) max = Math.max(max, +src.max);
+    if (!isFinite(min) || !isFinite(max)) {
+      min = -1000;
+      max = 2000;
+    }
+    placeUndated(nodes, by, min);
     /* colour: own, else the parent's, else the first layer's */
     const colour = (n, depth) => {
       if (n.c) return n.c;
       if (n.parent && depth < 50) return colour(by[n.parent], depth + 1);
+      if (n.merge.length && depth < 50) return colour(by[n.merge[0]], depth + 1);
       const l = layers && n.layers.length && layers.by[n.layers[0]];
       return l ? l.c : DEF_C;
     };
     nodes.forEach((n) => (n.col = colour(n, 0)));
     nodes.forEach((n) => {
       if (n.ongoing) n.to = max;
-      n.when = n.from === n.to ? n.from : [n.from, n.to];
+      /* undated nodes carry no year for the filters, so the year filter never fades them */
+      n.when = n.undated ? null : n.from === n.to ? n.from : [n.from, n.to];
     });
     const links = ARR(src.links)
       .filter((l) => l && by[String(l.from)] && by[String(l.to)] && String(l.from) !== String(l.to))
       .map((l) => ({
         from: String(l.from),
         to: String(l.to),
-        label: l.label || '',
+        label: l.label || l.rel || '',
+        type: FAM(l.type, 'overlap'),
         at: l.when != null && isFinite(+l.when) ? +l.when : null,
       }));
-    nodes.forEach((n) => n.also.forEach((a) => links.push({ from: a, to: n.id, label: '', at: null })));
+    nodes.forEach((n) =>
+      n.also.forEach((a) => links.push({ from: a, to: n.id, label: '', type: 'overlap', at: null })),
+    );
     return {
       title: src.title || 'Family tree',
       button: src.button || 'Tree',
       intro: src.intro || '',
+      view: src.view === 'relationship' ? 'relationship' : 'date',
       nodes,
       by,
       links,
@@ -140,10 +231,21 @@
     const vis = T.nodes.filter(ok);
     const set = new Set(vis.map((n) => n.id));
     const parentOf = {};
+    const mergeOf = {};
+    const up = (p) => {
+      while (p && !set.has(p)) p = T.by[p].parent || T.by[p].merge[0] || null;
+      return p || null;
+    };
     vis.forEach((n) => {
-      let p = n.parent;
-      while (p && !set.has(p)) p = T.by[p].parent;
-      parentOf[n.id] = p || null;
+      /* merge predecessors (each resolved to its nearest visible ancestor); a node formed by merger and
+         without a parent is placed under its first predecessor, but every predecessor is drawn and listed */
+      const ms = [];
+      n.merge.forEach((m) => {
+        const v = up(m);
+        if (v && v !== n.id && ms.indexOf(v) < 0) ms.push(v);
+      });
+      if (ms.length) mergeOf[n.id] = ms;
+      parentOf[n.id] = up(n.parent) || ms[0] || null;
     });
     const kids = {};
     vis.forEach((n) => {
@@ -159,23 +261,29 @@
       (kids[n.id] || []).forEach(walk);
     };
     (kids[''] || []).forEach(walk);
-    return { nodes: out, parentOf, kids, ids: set };
+    return { nodes: out, parentOf, mergeOf, kids, ids: set };
   }
 
-  /* ancestors and descendants of a node (its lineage), for highlighting */
+  /* ancestors and descendants of a node (its lineage, through parents and mergers), for highlighting */
   function lineage(V, id) {
     const out = new Set();
     if (!id || !V.ids.has(id)) return out;
-    let p = V.parentOf[id];
-    while (p) {
-      out.add(p);
-      p = V.parentOf[p];
-    }
-    const down = (k) =>
-      (V.kids[k] || []).forEach((c) => {
-        out.add(c.id);
-        down(c.id);
+    const ups = (k) =>
+      [V.parentOf[k]].concat(V.mergeOf ? V.mergeOf[k] || [] : []).forEach((p) => {
+        if (!p || out.has(p) || p === id) return;
+        out.add(p);
+        ups(p);
       });
+    ups(id);
+    const below = {};
+    Object.keys(V.mergeOf || {}).forEach((c) => V.mergeOf[c].forEach((m) => (below[m] = below[m] || []).push(c)));
+    const down = (k) => {
+      (V.kids[k] || []).map((c) => c.id).concat(below[k] || []).forEach((c) => {
+        if (out.has(c) || c === id) return;
+        out.add(c);
+        down(c);
+      });
+    };
     down(id);
     return out;
   }
@@ -217,6 +325,14 @@
 
   /* ---------- drawing ---------- */
 
+  /* short date text for a node (tree-rel.js knows uncertain windows and undated nodes) */
+  function dateText(n, fmt, long) {
+    if (root.AtlasTreeRel) return root.AtlasTreeRel.dateText(n, fmt, long);
+    const a = fmt(n.from, n.approx);
+    if (n.ongoing) return a + (long ? ' – today' : ' –');
+    return n.from === n.to ? a : a + ' – ' + fmt(n.to);
+  }
+
   /* SVG markup for the tree. o = {sel, dim(node)→bool, fmt(year,approx)→string, eras:[{name,from,to}]} */
   function render(T, V, P, o) {
     o = o || {};
@@ -235,7 +351,9 @@
       P.h +
       '" role="group" aria-label="' +
       ESC(T.title) +
-      '">';
+      '">' +
+      '<defs><linearGradient id="trRamp"><stop offset="0" stop-color="currentColor" stop-opacity="0"/>' +
+      '<stop offset="1" stop-color="currentColor" stop-opacity=".85"/></linearGradient></defs>';
     /* eras: faint bands with their names */
     ARR(o.eras).forEach((e, i) => {
       const x0 = Math.max(PAD_L, P.x(e.from));
@@ -292,7 +410,8 @@
       const bend = Math.min(40, Math.abs(yb - ya) / 3 + 10);
       const on = sel && (sel === a.id || sel === b.id);
       s +=
-        '<path class="tr-link' +
+        '<path class="tr-link f-' +
+        l.type +
         (on ? ' on' : sel ? ' fade' : '') +
         '" d="M' +
         xx +
@@ -314,42 +433,69 @@
         ESC(a.name + ' · ' + b.name + (l.label ? ': ' + l.label : '')) +
         '</title></path>';
     });
-    /* branch connectors: from the parent's bar at the year the branch began, curving down into the child */
+    /* branch connectors: from the parent's bar at the year the branch began, curving into the child (up or
+       down); a node formed by merger gets one from each predecessor */
     V.nodes.forEach((n) => {
-      const p = V.parentOf[n.id];
-      if (!p) return;
-      const pn = T.by[p];
-      const yr = Math.max(pn.from, Math.min(pn.to, n.from));
-      const xp = P.x(yr);
-      const xc = P.x(n.from);
-      const yp = P.y(p);
-      const yc = P.y(n.id);
-      const k = Math.min(16, (yc - yp) / 2);
-      const on = sel && (n.id === sel || p === sel || (kin.has(n.id) && (kin.has(p) || p === sel)));
-      const dim = o.dim && o.dim(n);
-      s +=
-        '<path class="tr-br' +
-        (on ? ' on' : sel ? ' fade' : '') +
-        (dim ? ' dim' : '') +
-        '" style="--tc:' +
-        ESC(n.col) +
-        '" d="M' +
-        f1(xp) +
-        ' ' +
-        yp +
-        ' C' +
-        f1(xp) +
-        ' ' +
-        f1(yc - k) +
-        ' ' +
-        f1(xp) +
-        ' ' +
-        yc +
-        ' ' +
-        f1(Math.max(xc, xp + 1)) +
-        ' ' +
-        yc +
-        '"/>';
+      const ms = (V.mergeOf && V.mergeOf[n.id]) || [];
+      const ps = ms.slice();
+      const p0 = V.parentOf[n.id];
+      if (p0 && ps.indexOf(p0) < 0) ps.unshift(p0);
+      ps.forEach((p) => {
+        const pn = T.by[p];
+        const fam = ms.indexOf(p) >= 0 ? 'merger' : n.ptype;
+        const yr = Math.max(pn.from, Math.min(pn.to, n.from));
+        const xp = P.x(yr);
+        const xc = P.x(n.from);
+        const yp = P.y(p);
+        const yc = P.y(n.id);
+        const k = Math.max(-16, Math.min(16, (yc - yp) / 2));
+        const on = sel && (n.id === sel || p === sel || (kin.has(n.id) && (kin.has(p) || p === sel)));
+        const dim = o.dim && o.dim(n);
+        s +=
+          '<path class="tr-br f-' +
+          fam +
+          (on ? ' on' : sel ? ' fade' : '') +
+          (dim ? ' dim' : '') +
+          '" style="--tc:' +
+          ESC(n.col) +
+          '" d="M' +
+          f1(xp) +
+          ' ' +
+          yp +
+          ' C' +
+          f1(xp) +
+          ' ' +
+          f1(yc - k) +
+          ' ' +
+          f1(xp) +
+          ' ' +
+          yc +
+          ' ' +
+          f1(Math.max(xc, xp + 1)) +
+          ' ' +
+          yc +
+          '">' +
+          (n.prel || fam !== 'branch'
+            ? '<title>' + ESC(pn.name + ' → ' + n.name + (n.prel ? ': ' + n.prel : '')) + '</title>'
+            : '') +
+          '</path>';
+        /* a division is marked by a short cross-stroke where it leaves the parent */
+        if (fam === 'division')
+          s +=
+            '<path class="tr-cut' +
+            (dim ? ' dim' : '') +
+            '" style="--tc:' +
+            ESC(n.col) +
+            '" d="M' +
+            f1(xp - 4) +
+            ' ' +
+            f1(yp + (yc > yp ? 6 : -6)) +
+            ' L' +
+            f1(xp + 4) +
+            ' ' +
+            f1(yp + (yc > yp ? 10 : -10)) +
+            '"/>';
+      });
     });
     /* the traditions */
     V.nodes.forEach((n) => {
@@ -361,8 +507,19 @@
         'tr-n' +
         (n.id === sel ? ' sel' : kin.has(n.id) ? ' kin' : sel ? ' fade' : '') +
         (dim ? ' dim' : '') +
-        (n.ongoing ? ' go' : '');
-      const dates = n.ongoing ? fmt(n.from, n.approx) + ' –' : n.from === n.to ? fmt(n.from, n.approx) : fmt(n.from, n.approx) + ' – ' + fmt(n.to);
+        (n.ongoing ? ' go' : '') +
+        (n.undated ? ' und' : '');
+      const dates = dateText(n, fmt);
+      /* an uncertain window is a ramp from its earliest to its latest year, then the solid bar */
+      const xs = n.sol != null ? P.x(n.sol) : x0;
+      const bar = n.undated
+        ? (n.ongoing ? '<path class="tr-bar und" d="M' + f1(x0) + ' ' + yy + ' H' + f1(x1) + '"/>' : '') +
+          '<circle class="tr-dot und" cx="' + f1(x0) + '" cy="' + yy + '" r="4.5"/>'
+        : (xs > x0
+            ? '<rect class="tr-ramp" x="' + f1(x0) + '" y="' + (yy - 3) + '" width="' + f1(xs - x0) + '" height="6"/>'
+            : '') +
+          '<rect class="tr-bar" x="' + f1(xs) + '" y="' + (yy - 3) + '" width="' + f1(Math.max(x1 - xs, 6)) +
+          '" height="6" rx="3"/><circle class="tr-dot" cx="' + f1(xs) + '" cy="' + yy + '" r="4.5"/>';
       /* names near the right edge go to the left of the start dot so they stay on the chart */
       const right = x0 > P.w - 190;
       const tx = right ? x0 - 9 : x0 + 2;
@@ -388,18 +545,7 @@
         '" height="' +
         ROW +
         '"/>' +
-        '<rect class="tr-bar" x="' +
-        f1(x0) +
-        '" y="' +
-        (yy - 3) +
-        '" width="' +
-        f1(x1 - x0) +
-        '" height="6" rx="3"/>' +
-        '<circle class="tr-dot" cx="' +
-        f1(x0) +
-        '" cy="' +
-        yy +
-        '" r="4.5"/>' +
+        bar +
         '<text class="tr-name" x="' +
         f1(tx) +
         '" y="' +
@@ -413,287 +559,6 @@
     return s + ax + '</svg>';
   }
 
-  /* ---------- DOM controller (used by engine.js) ---------- */
-  /* env: {el, pack, LY, LAY, TL, esc, noteLabels, visible(node), filterOk(item), onShow(node, siteId),
-           onChange(), placeName(worldId, siteId)} */
-  function createView(env) {
-    const LY = env.LY;
-    const T = normTree(env.pack, env.TL, env.LAY);
-    if (!T || !env.el) return null;
-    const style = env.TL ? env.TL.style : 'BC/AD';
-    const fmt = (y, ap) => (LY ? LY.fmtYear(y, style, ap) : String(y));
-    const el = env.el;
-    let sel = null;
-    let zoom = 0;
-    let open = false;
-    let V = null;
-    let lastFocus = null;
-    el.innerHTML =
-      '<div class="panel" role="dialog" aria-modal="true" aria-labelledby="trT"><div class="cx-head tr-head">' +
-      '<h2 id="trT" class="chrome">' +
-      ESC(T.title.toUpperCase()) +
-      '</h2><span class="tr-note"></span><div class="tr-zoom" role="group" aria-label="Zoom the years">' +
-      '<button class="btn" data-z="-1" aria-label="Zoom out" title="Zoom out">−</button>' +
-      '<button class="btn" data-z="1" aria-label="Zoom in" title="Zoom in">+</button></div>' +
-      '<button class="btn" data-tr="close">Close</button></div>' +
-      '<div class="tr-main"><div class="tr-scroll"></div><div class="tr-info"></div></div></div>';
-    const scroll = el.querySelector('.tr-scroll');
-    const info = el.querySelector('.tr-info');
-    const note = el.querySelector('.tr-note');
-    const dimOf = (n) => !env.filterOk(n);
-
-    function draw() {
-      const ae = document.activeElement;
-      const had = ae && scroll.contains(ae) && ae.dataset ? ae.dataset.node : null;
-      V = visibleTree(T, env.visible);
-      if (sel && !V.ids.has(sel)) sel = null;
-      const P = layout(T, V, fitScale(T, scroll.clientWidth || 900, zoom));
-      scroll.innerHTML = V.nodes.length
-        ? render(T, V, P, { sel, dim: dimOf, fmt, eras: env.TL ? env.TL.eras : [] })
-        : '<p class="locked-note">Nothing in the tree yet for this reading position.</p>';
-      names = [...scroll.querySelectorAll('text[data-x0]')].map((t) => ({
-        t,
-        x0: +t.getAttribute('data-x0'),
-        x1: +t.getAttribute('data-x1'),
-        w: 0,
-      }));
-      stick();
-      if (had) {
-        const g = scroll.querySelector('[data-node="' + had + '"]');
-        if (g) g.focus({ preventScroll: true });
-      }
-      const nd = V.nodes.filter(dimOf).length;
-      note.textContent = nd ? nd + ' faded: outside the selected years or layers' : '';
-      el.querySelectorAll('[data-z]').forEach((b) => {
-        const z = zoom + +b.dataset.z;
-        b.disabled = z < 0 || z >= ZOOMS.length;
-      });
-      drawInfo();
-    }
-
-    /* keep the year labels at the top and each name inside the visible part of its bar while scrolling */
-    let names = [];
-    function stick() {
-      const tk = scroll.querySelector('.tr-ticks');
-      if (tk) tk.setAttribute('transform', 'translate(0,' + scroll.scrollTop + ')');
-      const left = scroll.scrollLeft + 8;
-      names.forEach((o) => {
-        if (!o.w) {
-          try {
-            o.w = o.t.getComputedTextLength();
-          } catch (e) {
-            o.w = 120;
-          }
-        }
-        const x = Math.max(o.x0, Math.min(left, o.x1 - o.w - 4));
-        o.t.setAttribute('x', String(Math.round(Math.max(o.x0, x))));
-      });
-    }
-    let sp = 0;
-    scroll.addEventListener(
-      'scroll',
-      () => {
-        if (sp) return;
-        sp = requestAnimationFrame(() => {
-          sp = 0;
-          stick();
-        });
-      },
-      { passive: true },
-    );
-
-    function chip(n) {
-      return (
-        '<button class="tr-chip" data-go="' +
-        ESC(n.id) +
-        '" style="--tc:' +
-        ESC(n.col) +
-        '"><span aria-hidden="true"></span>' +
-        ESC(n.name) +
-        '</button>'
-      );
-    }
-
-    function drawInfo() {
-      const n = sel && T.by[sel];
-      if (!n) {
-        info.innerHTML =
-          (T.intro ? '<p class="tr-intro">' + ESC(T.intro) + '</p>' : '') +
-          '<p class="tr-hint">Pick a tradition to see where it came from and what branched from it.</p>';
-        return;
-      }
-      const meta = LY ? LY.itemMeta(env.LAY, env.TL, { layers: n.layers }) : '';
-      const dates = n.ongoing ? fmt(n.from, n.approx) + ' – today' : LY ? LY.fmtWhen(n, style) : '';
-      const p = V.parentOf[n.id] ? T.by[V.parentOf[n.id]] : null;
-      const kids = V.kids[n.id] || [];
-      const rel = T.links
-        .filter((l) => (l.from === n.id || l.to === n.id) && V.ids.has(l.from) && V.ids.has(l.to))
-        .map((l) => ({ n: T.by[l.from === n.id ? l.to : l.from], label: l.label }));
-      const labels = env.noteLabels || {};
-      let h =
-        '<p class="eyebrow">' +
-        ESC(dates) +
-        '</p><h3 style="--tc:' +
-        ESC(n.col) +
-        '">' +
-        ESC(n.name) +
-        '</h3>' +
-        (meta ? '<p class="tr-meta">' + meta + '</p>' : '') +
-        (n.blurb ? '<p>' + ESC(n.blurb) + '</p>' : '');
-      if (n.notes.length)
-        h +=
-          '<div class="pnotes">' +
-          n.notes
-            .map(
-              (x) =>
-                '<span class="pnote"><b>' +
-                ESC(labels[x.k] || x.k || labels.note || 'Note') +
-                '</b>' +
-                ESC(x.t) +
-                (x.ref ? ' <i>' + ESC(x.ref) + '</i>' : '') +
-                '</span>',
-            )
-            .join('') +
-          '</div>';
-      if (p) h += '<p class="tr-rel"><b>Branched from</b>' + chip(p) + '</p>';
-      if (kids.length) h += '<p class="tr-rel"><b>Branches</b>' + kids.map(chip).join('') + '</p>';
-      if (rel.length)
-        h +=
-          '<p class="tr-rel"><b>Ties</b>' +
-          rel.map((r) => chip(r.n) + (r.label ? '<i class="tr-why">' + ESC(r.label) + '</i>' : '')).join('') +
-          '</p>';
-      const places = [];
-      if (n.site) places.push(n.site);
-      n.sites.forEach((s) => places.indexOf(s) < 0 && places.push(s));
-      if (n.world && places.length)
-        h +=
-          '<p class="tr-rel"><b>On the map</b>' +
-          places
-            .map((s) => {
-              const nm = env.placeName ? env.placeName(n.world, s) : '';
-              return nm ? '<button class="btn tr-map" data-site="' + ESC(s) + '">' + ESC(nm) + '</button>' : '';
-            })
-            .join('') +
-          '</p>';
-      else if (n.world) h += '<p class="tr-rel"><button class="btn tr-map" data-site="">Show on the map</button></p>';
-      info.innerHTML = h;
-    }
-
-    function focusNode(id) {
-      const g = scroll.querySelector('[data-node="' + (window.CSS && CSS.escape ? CSS.escape(id) : id) + '"]');
-      if (!g) return;
-      const r = g.getBoundingClientRect();
-      const b = scroll.getBoundingClientRect();
-      if (r.left < b.left + 20 || r.right > b.right - 20 || r.top < b.top || r.bottom > b.bottom)
-        scroll.scrollBy({ left: r.left - b.left - 60, top: r.top - b.top - b.height / 3, behavior: 'smooth' });
-      try {
-        g.focus({ preventScroll: true });
-      } catch (e) {
-        g.focus();
-      }
-    }
-
-    function select(id, keepFocus) {
-      sel = id && T.by[id] ? id : null;
-      draw();
-      if (sel && !keepFocus) focusNode(sel);
-      env.onChange();
-    }
-
-    el.addEventListener('click', (e) => {
-      if (e.target === el) return api.close();
-      const t = e.target;
-      if (t.closest('[data-tr="close"]')) return api.close();
-      const z = t.closest('[data-z]');
-      if (z) {
-        const c = scroll.scrollLeft + scroll.clientWidth / 2;
-        const before = scroll.scrollWidth || 1;
-        zoom = Math.max(0, Math.min(ZOOMS.length - 1, zoom + +z.dataset.z));
-        draw();
-        scroll.scrollLeft = (c / before) * scroll.scrollWidth - scroll.clientWidth / 2;
-        return;
-      }
-      const g = t.closest('[data-node]') || t.closest('[data-go]');
-      if (g) return select(g.dataset.node || g.dataset.go, !!g.dataset.node);
-      const m = t.closest('[data-site]');
-      if (m && sel) {
-        const n = T.by[sel];
-        api.close(true);
-        env.onShow(n, m.dataset.site || null);
-      }
-    });
-    el.addEventListener('keydown', (e) => {
-      const g = e.target.closest && e.target.closest('[data-node]');
-      if (g && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        select(g.dataset.node, true);
-        return;
-      }
-      if (g && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
-        e.preventDefault();
-        const i = V.nodes.findIndex((n) => n.id === g.dataset.node) + (e.key === 'ArrowDown' ? 1 : -1);
-        if (V.nodes[i]) focusNode(V.nodes[i].id);
-        return;
-      }
-      /* keep Tab inside the dialog */
-      if (e.key !== 'Tab') return;
-      const f = [...el.querySelectorAll('button,[tabindex="0"]')].filter((x) => !x.disabled);
-      if (!f.length) return;
-      if (e.shiftKey && document.activeElement === f[0]) {
-        e.preventDefault();
-        f[f.length - 1].focus();
-      } else if (!e.shiftKey && document.activeElement === f[f.length - 1]) {
-        e.preventDefault();
-        f[0].focus();
-      }
-    });
-    let rz = 0;
-    addEventListener('resize', () => {
-      if (!open) return;
-      cancelAnimationFrame(rz);
-      rz = requestAnimationFrame(draw);
-    });
-
-    const api = {
-      T,
-      get open() {
-        return open;
-      },
-      get sel() {
-        return sel;
-      },
-      show(id) {
-        lastFocus = document.activeElement;
-        open = true;
-        el.hidden = false;
-        sel = id && T.by[id] ? id : sel;
-        draw();
-        if (sel) focusNode(sel);
-        else {
-          const c = el.querySelector('[data-tr="close"]');
-          if (c) c.focus();
-        }
-        env.onChange();
-      },
-      close(quiet) {
-        if (!open) return;
-        open = false;
-        el.hidden = true;
-        if (!quiet && lastFocus && lastFocus.focus) lastFocus.focus();
-        env.onChange();
-      },
-      refresh() {
-        if (open) draw();
-      },
-      select,
-      /* the tree node whose home place this is (for a "Show in the tree" link) */
-      nodeFor(worldId, siteId) {
-        return T.nodes.find((n) => n.world === worldId && n.site === siteId) || null;
-      },
-    };
-    return api;
-  }
-
   root.AtlasTree = {
     normTree,
     visibleTree,
@@ -703,7 +568,8 @@
     ticks,
     tickStep,
     render,
-    createView,
+    dateText,
+    ESC,
     toAxis,
     fromAxis,
     ZOOMS,

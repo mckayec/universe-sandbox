@@ -2,6 +2,7 @@ import { EXHIBITS, type ExhibitId } from './exhibits.ts';
 
 export type UniversePackId =
   | 'museum-sandbox'
+  | 'abrahamic-world-religions'
   | 'solar-system'
   | 'red-rising'
   | 'sun-eater'
@@ -231,6 +232,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#d9b45a',
     'atlas/?pack=christian-apocrypha',
     'Built from selected named editions of each work; only five modern heritage or gazetteer points are pinned.',
+  ),
+  atlasPack(
+    'abrahamic-world-religions',
+    'Religious Traditions: Origins and Connections',
+    'Real history',
+    'How Jewish, Christian and Muslim communities developed, divided, met other traditions and spread, with traditions and historical evidence kept apart.',
+    '#dcc58e',
+    'atlas/?pack=abrahamic-world-religions',
+    'Built from cited research dossiers; map markers are UNESCO heritage references, and other places are listed without coordinates.',
   ),
   plannedPack(
     'star-wars',
