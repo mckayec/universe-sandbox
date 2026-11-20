@@ -648,7 +648,7 @@
        gfx: {type: "ocean", sea: .88, pal: ["#0a2a6a", "#2a6ac0", "#6a9a7a", "#7aaa8a", "#9ab09a", "#f0f4f8"], clouds: .4, atmo: "#9ac8ff", sw: "#2a6ac0"}},
       {id: "komashi", name: "Komashi", group: "utol", books: [11], first: 11, status: "Double world with UTol",
        star: {name: "UTol’s sun", col: "#ffb070"}, map: orb(U.utol, .3, 70), est: true, distText: SCHEM, hero: "kilahito",
-       blurb: "Half of a double planet circling a big red-orange sun, with its twin UTol shining blue in the sky. In one age, Yumi stacks stones to honour the spirits that warm the land. In another, a black shroud hides the sky, nightmares come out of it, and Nikaro paints them away for a living. A spirit binds the two of them together. The habitable land around Kilahito and Torio is only a few hundred miles across; on this globe it is drawn about six times larger so it can be seen.",
+       blurb: "Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.",
        short: "Stone-stacking and nightmare-painting: Yumi and the Nightmare Painter.",
        eras: {12: {status: "Shroud lifted"}},
        facts: [["Twin", "UTol"], ["Spirits", "The hijo"], ["Shard", "Virtuosity splintered nearby"], ["Nations", "Torio (ancient), Nagadan"]],
@@ -799,7 +799,7 @@
       /* XI 2023 */
       {id: "e49", book: 11, world: "lumar", site: "rock", title: "Tress sets sail", text: "When the duke’s son is sent off to the Sorceress, Tress leaves her island to get him back."},
       {id: "e50", book: 11, world: "lumar", site: "sorceress", title: "The Sorceress’s island", text: "With a pirate crew and an unusual narrator, Tress reaches the Midnight Sea and forces the Sorceress to leave the world."},
-      {id: "e51", book: 11, world: "komashi", site: "kilahito", title: "Yumi and Nikaro", text: "A stone-stacker and a nightmare painter are bound together across time and must work out why."},
+      {id: "e51", book: 11, world: "komashi", site: "kilahito", title: "Yumi and Nikaro", text: "Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."},
       {id: "e52", book: 11, world: "komashi", site: "torio", title: "The shroud lifts", text: "They destroy the machine behind the shroud, and the sun shines on Komashi again."},
       {id: "e53", book: 11, world: "canticle", site: "union", title: "Nomad lands", text: "Hunted by the Night Brigade, Nomad arrives on Canticle and is taken prisoner in Union."},
       {id: "e54", book: 11, world: "canticle", site: "beacon", title: "Beacon stands", text: "Nomad joins Beacon’s rebellion against the Cinder King, racing the sunrise."},
