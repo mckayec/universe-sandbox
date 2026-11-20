@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implement only NA01-GEO-01/02 from na01-geo-handoff-2026-11-19.md on PR48: replace ttelir.desc and denir.desc, preserve all metadata/gates/coordinates and prior fixes, return exact head/parent plus payload, unchanged-visibility, negative-control and required-check evidence for ChatGPT implementation review.
-updated: 2026-11-19T23:28:29Z
+next-action: ChatGPT review NA01-GEO-01/02 at PR48 fccfe2c7023b93a91b52df1f812a17f0e94e3ed3 per na01geo-return-fccfe2c.md; on acceptance continue SA01 / The Way of Kings.
+updated: 2026-11-20T00:02Z
 idle-runs: 0
-note: NA01 second source unit saved/read back at ad71ea6; 2/2 sourced description replacements handed off, 3/3 pack hashes, 48/48 base-site/event slots inventoried (44 present, 4 absent). Broader NA01 deferred at checkpoint cap; no new gates/parent promotions and 0/33 full-work approvals. After independent acceptance continue SA01; MB08/MB09/MB10 deferrals and separate PR37/technical/release holds remain.
+note: NA01-GEO-01/02 implemented at PR48 fccfe2c (parent 52534d0; cosmere.js two desc fields + new test). pnpm check 642/642, test:pages 12x2, rendered 158/158 (parent negative 94/64), unit negative 13/1; test:browser known Save/Load failure at :88. No gates/mappings/coordinates changed; 0/33 full-work approvals.
 
 
 
@@ -151,3 +151,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-19T23:24:26Z ChatGPT: saved/read back [NA01 first source checkpoint](na01-checkpoint-2026-11-19.md) at 1e4e6a4512ae381deb2f4a832c2d4a44406d2795. Reconciled PR48 52534d0975af39e620e05a43c2f4f05dc6b4b1fc, PR24 cf25cda66e91c573c421a0f3712623db72737a3b and PR37 03394c32816fcb5c95261bf6a9ea4520381a5838; 3/3 input hashes, 6/6 e13/Court record slots and 1/1 PR37 palace landmark. Opened author-linked Tor first-edition PDF, distinguished it from drafts, and checked selected passages plus author-hosted chapters. 6/6 bounded prose groups supported; CS11/CS18 reconciled without restoring removed copy. 0/3 complete logical records and 0/33 full works certified; no new gate or implementation request. Remain research/chatgpt for second bounded NA01 unit then cap disposition. Checked 18/18 pack and 8/8 review statuses; no other owned work or stale eligible parallel audit. Prior deferrals and technical/release holds preserved; no app/PR edit, merge, deploy or Mckay approval.
 
 - 2026-11-19T23:28:29Z ChatGPT: saved/read back [NA01 inventory probe](na01-inventory-probe.cjs) at 3e0533587da334ce918b5a93f6899649e5088ab1, [inventory output](na01-inventory-2026-11-19.json) at 74aa2c2508796d5fbc05cfe287f2dd18a9fe3f03 and [two-field handoff](na01-geo-handoff-2026-11-19.md) at ad71ea64f96bf37d92ffe5919281277a5f087745. Heads remain PR48 52534d0975af39e620e05a43c2f4f05dc6b4b1fc, PR24 cf25cda66e91c573c421a0f3712623db72737a3b and PR37 03394c32816fcb5c95261bf6a9ea4520381a5838. 3/3 hashes, 48/48 selected slots (44 present, four absent), 16/16 finite record-type dispositions; 2/2 replacement descriptions supported by selected primary passages. In-memory two-field substitution/reversal restores equality with the entire parsed PR48 pack; 0 rendered candidate cases. Research/chatgpt → fixing/claude for NA01-GEO-01/02 only. Broader NA01 deferred at the second checkpoint, not certified; after independent return acceptance continue SA01. No parent/gate promotion, application/PR edit, merge, deploy or Mckay approval; 0/33 full-work approvals and prior deferrals/closures preserved.
+- 2026-11-20T00:02Z Claude: implemented NA01-GEO-01/02 on PR48 at fccfe2c7023b93a91b52df1f812a17f0e94e3ed3 (parent 52534d0; ttelir.desc and denir.desc only, plus tests/atlas-na01-geo.test.ts). passed: pnpm format, pnpm check 642/642 (check:dist 115), test:pages 12x2, focused 14/14 (parent-pack negative 13/1), rendered na01geo-probe 158/158 at 1440x900 + 390x844 (parent negative 94/64, all on new/removed-text checks). failed (known): test:browser Save/Load at browser-smoke.mjs:88. Evidence: na01geo-return-fccfe2c.md. fixing/claude → implementation-review/chatgpt. Not merged.

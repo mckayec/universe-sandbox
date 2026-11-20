@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+ok 1 - NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 28.625874
+  type: 'test'
+  ...
+# Subtest: NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+ok 2 - NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 70.279498
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+ok 3 - CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+  ---
+  duration_ms: 8.048164
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+ok 4 - CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+  ---
+  duration_ms: 2.620978
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+ok 5 - CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+  ---
+  duration_ms: 1.960458
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+ok 6 - CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+  ---
+  duration_ms: 2.084168
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+ok 7 - CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+  ---
+  duration_ms: 3.080536
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: All ignores the per-work field gate
+ok 8 - CBR-04 realmCard + realmLook: All ignores the per-work field gate
+  ---
+  duration_ms: 3.821986
+  type: 'test'
+  ...
+# Subtest: CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+ok 9 - CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+  ---
+  duration_ms: 2.169053
+  type: 'test'
+  ...
+# Subtest: CBR-04: applyRd re-applies the realm look to the open planet before refresh
+ok 10 - CBR-04: applyRd re-applies the realm look to the open planet before refresh
+  ---
+  duration_ms: 0.207782
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+ok 11 - SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+  ---
+  duration_ms: 8.943375
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+ok 12 - SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 62.679118
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+ok 13 - SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+  ---
+  duration_ms: 30.935523
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+ok 14 - SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 57.650309
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 582.378612
