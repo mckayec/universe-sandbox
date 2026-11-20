@@ -580,7 +580,7 @@
        noSurface: true, gfx: sun("#f0f4ff", HOTW, {atmoK: .6})},
       {id: "taldain", name: "Taldain", group: "taldain", books: [7], first: 7, status: "Sole planet · Shardworld of Autonomy",
        star: {name: "AisDa", col: "#dce8ff"}, map: orb(C.taldain, .3, 90), distText: ORR, hero: "kerla",
-       blurb: "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.",
+       blurb: "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. After a massacre of the Sand Masters, Kenton believes himself to be the only survivor.",
        short: "Dayside’s white sand: White Sand.",
        facts: [["Shard", "Autonomy"], ["Moon", "Nizh Da, on a polar orbit over the twilight line"], ["Magic", "Sand mastery"], ["Peculiarity", "One face to each star"]],
        moons: [{name: "Nizh Da", size: .16, dist: 2.8, speed: .05}],
