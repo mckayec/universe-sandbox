@@ -230,7 +230,7 @@
       5: {n: "V", title: "Words of Radiance", y: 2014, c: BOOKC[5]},
       6: {n: "VI", title: "Mistborn: Wax & Wayne I–III", y: 2011, c: BOOKC[6]},
       7: {n: "VII", title: "Arcanum Unbounded (with White Sand)", y: 2016, c: BOOKC[7]},
-      8: {n: "VIII", title: "Oathbringer & Dawnshard", y: 2017, c: BOOKC[8]},
+      8: {n: "VIII", title: "Oathbringer & Dawnshard", y: "2017–2020", c: BOOKC[8]},
       9: {n: "IX", title: "Rhythm of War", y: 2020, c: BOOKC[9]},
       10: {n: "X", title: "The Lost Metal", y: 2022, c: BOOKC[10]},
       11: {n: "XI", title: "Tress, Yumi & The Sunlit Man", y: 2023, c: BOOKC[11]},
