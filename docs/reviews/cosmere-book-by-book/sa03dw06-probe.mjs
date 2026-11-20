@@ -12,9 +12,18 @@ const [base = 'http://127.0.0.1:4173', shotDir] = process.argv.slice(2);
 const NEW = 'Lift travels to Yeddaw in Tashikk, where Darkness has been reported.';
 const OLD = 'Lift crosses to Tashikk to protect a man the Herald Nale wants dead.';
 const B7 = [
-  'the-hope-of-elantris', 'the-emperors-soul', 'the-eleventh-metal', 'allomancer-jak-and-the-pits-of-eltania',
-  'mistborn-secret-history', 'edgedancer', 'white-sand-volume-1', 'white-sand-volume-2', 'white-sand-volume-3',
-  'white-sand-omnibus', 'shadows-for-silence-in-the-forests-of-hell', 'sixth-of-the-dusk',
+  'the-hope-of-elantris',
+  'the-emperors-soul',
+  'the-eleventh-metal',
+  'allomancer-jak-and-the-pits-of-eltania',
+  'mistborn-secret-history',
+  'edgedancer',
+  'white-sand-volume-1',
+  'white-sand-volume-2',
+  'white-sand-volume-3',
+  'white-sand-omnibus',
+  'shadows-for-silence-in-the-forests-of-hell',
+  'sixth-of-the-dusk',
   'arcanum-unbounded-system-essays-and-maps',
 ];
 const browser = await chromium.launch({
@@ -94,10 +103,20 @@ for (const [name, vp, mobile] of [
       const el = document.querySelector('#dossier .evitem.open[data-ev="e35"] .ex');
       if (!el) return null;
       const r = el.getBoundingClientRect();
-      return { text: el.innerText.trim(), w: r.width, right: r.right, vw: innerWidth, sw: el.scrollWidth, cw: el.clientWidth };
+      return {
+        text: el.innerText.trim(),
+        w: r.width,
+        right: r.right,
+        vw: innerWidth,
+        sw: el.scrollWidth,
+        cw: el.clientWidth,
+      };
     });
     ok(v && v.text === NEW, `${tag}: visible open text = new (${v && v.text})`);
-    ok(v && v.w > 0 && v.right <= v.vw && v.sw <= v.cw + 1, `${tag}: text wraps inside viewport (${JSON.stringify(v)})`);
+    ok(
+      v && v.w > 0 && v.right <= v.vw && v.sw <= v.cw + 1,
+      `${tag}: text wraps inside viewport (${JSON.stringify(v)})`,
+    );
     ok(!s.page.includes(OLD), `${tag}: old copy absent after open`);
     if (shotDir && label !== 'legacy book=7') {
       await b.scrollIntoViewIfNeeded();
@@ -124,7 +143,8 @@ for (const [name, vp, mobile] of [
     ok(s.ev === 'e35', `${tag}: Chronicle travel opens e35 (${s.ev})`);
     ok(s.item && s.item.ex === NEW && s.item.ep === 'Yeddaw', `${tag}: travel dossier item new text, Yeddaw label`);
     ok(!s.page.includes(OLD), `${tag}: old copy absent after travel`);
-    if (shotDir && label === 'wok+bucket7') await o.p.screenshot({ path: `${shotDir}/sa03dw06-e35-chronicle-${name}.png` });
+    if (shotDir && label === 'wok+bucket7')
+      await o.p.screenshot({ path: `${shotDir}/sa03dw06-e35-chronicle-${name}.png` });
     ok(o.errors.length === 0, `${tag}: no errors (chronicle) ${o.errors.join('|')}`);
     await o.p.close();
   }
