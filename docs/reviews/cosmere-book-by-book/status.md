@@ -1,10 +1,10 @@
 stage: research
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT starts TA04 unit 1/2: reconcile existing omnibus edition/date leads, open lawful author/publisher sources and a public sample, and distinguish additions/revisions from original TA01-03 before comparing current PR24/37/48 Taldain claims. TA03 is deferred at cap; retain all six residual dispositions and do not repeat the page-11 paywall.
-updated: 2026-11-20T17:22:54Z
+next-action: ChatGPT continues TA04 unit 2/2 using ta04-checkpoint-1-2026-11-20.md: seek materially new lawful primary access for printed 44-45 and Diem construction; keep CDN-only astronomy/map observations provisional, preserve original-volume boundaries, and do not repeat the GlobalComix page-11 paywall or failed gallery. At cap, disposition/defer unresolved TA04 and continue TH01.
+updated: 2026-11-20T17:31:09Z
 idle-runs: 0
-note: TA03 checkpoint2 saved/read back at 918ef24a4ca46c8be54f435c5d8a6ed3d6a6c89d. 7/7 selected reader pages inspected (4-10; 3 story), page11 membership paywall; internal original-edition identity closed, 6/6 units dispositioned, 0/9 complete site descriptions newly approved and 0/33 full-work approvals. Full TA03 deferred at 2/2; no new code correction. Prior accepted Kenton fix and runtime/release holds preserved.
+note: TA04 checkpoint1 saved/read back at e963787278097c02835f2fdb4e0c0d92131566bf. 3/3 selected publisher-reader passages and 9/20 provisional sample pages inspected; 8/8 groups dispositioned, 0/9 complete site descriptions and 0/33 full-work approvals. Identity/revision purpose verified; source-chain, later passages, earliest reveals and date conflict remain open. TA03 deferred at 2/2; accepted Kenton fix and all runtime/release holds preserved.
 
 # Cosmere book-by-book review
 
@@ -215,3 +215,6 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 
 - 2026-11-20T17:22:54Z ChatGPT: saved/read back [TA03 checkpoint 2/2](ta03-checkpoint-2-2026-11-20.md) at 918ef24a4ca46c8be54f435c5d8a6ed3d6a6c89d before status. New normal-browser source handoff independently inspected: 7/7 selected reader pages (4–10, including 3 story pages), 1/1 attempted continuation at page11 restricted by membership paywall. Original Volume3 internal 2019/ISBN identity closed; map and recap support narrow claims; 6/6 units dispositioned, 0/9 complete site descriptions newly approved. Full TA03 deferred at R3 cap2/2; research/chatgpt retained for TA04 unit1. Fresh PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR48 0636b08ad9096274c793e045cc601324945844d9 packs unchanged. All18/18 pack and8/8 review statuses inspected; no other owned or stale parallel work. No new finite correction, application test, code/PR-branch edit, merge, deploy or release approval; prior accepted Kenton fix, other deferrals and runtime/source holds preserved. 0/33 full-work approvals.
+
+
+- 2026-11-20T17:31:09Z ChatGPT: TA04 checkpoint 1/2 saved and read back at e963787278097c02835f2fdb4e0c0d92131566bf (ta04-checkpoint-1-2026-11-20.md). Current PR24/37/48 heads unchanged: cf25cda / 03394c3 / 0636b08. Inspected 3/3 selected GlobalComix publisher-reader passages (imprint, contents excerpt, foreword), verified page-11 membership boundary, and visually checked 9/20 cached public-sample PDF pages; its specific CDN provenance remains provisional despite matching front matter. 8/8 review groups dispositioned, 0/3 complete world descriptions, 0/9 complete site descriptions and 0/33 full-work approvals. No new correction or gate change; research/chatgpt retained for TA04 unit 2/2 with precise new-source targets and no repeated paywall/gallery loop. TA03 remains deferred at cap; prior closures and release holds preserved.
