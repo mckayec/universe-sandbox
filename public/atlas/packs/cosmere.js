@@ -518,9 +518,9 @@
        gfx: {type: "terran", sea: .5, freq: 1.5, rough: .55, pal: ["#0a2a48", "#1a7aa8", "#3a8a3a", "#5aa848", "#7a8a58", "#f0f0e8"],
              clouds: .35, atmo: "#7ac0ff", moist: .3, lights: .3, sw: "#5aa848", map: MAP_NALTHIS},
        sites: [
-         {id: "ttelir", name: "T’Telir", lat: 11.2, lon: 5.6, books: [3], desc: "Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere."},
+         {id: "ttelir", name: "T’Telir", lat: 11.2, lon: 5.6, books: [3], desc: "Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners."},
          {id: "courtofgods", name: "The Court of Gods", lat: 10.8, lon: 5.7, books: [3], desc: "A walled plateau in the south of T’Telir over the sea: a ring of palaces for the Returned and the God King’s black palace, where Siri is sent to be married."},
-         {id: "denir", name: "D’Denir garden", lat: 11.7, lon: 5.55, books: [3], desc: "A quiet field of hundreds of old warrior statues in the north of the city."},
+         {id: "denir", name: "D’Denir garden", lat: 11.7, lon: 5.55, books: [3], desc: "A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues."},
          {id: "brightsea", name: "The Bright Sea", lat: 11.0, lon: 16.0, sea: true, books: [3], desc: "The landlocked sea east of Hallandren, which Idrians call the Inner Sea."},
          {id: "edglipool", name: "Endowment’s perpendicularity", lat: 6.0, lon: -6.0, books: [3], desc: "In a shadowy jungle cavern in Hallandren; its seeping Investiture feeds the Tears of Edgli flowers. Worldhoppers pass customs here. The exact site is not given."},
          {id: "bevalis", name: "Bevalis", lat: 29.0, lon: -6.0, books: [3], desc: "The small capital of Idris in a mountain valley, Siri and Vivenna’s home."},
