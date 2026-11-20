@@ -1,10 +1,10 @@
-stage: implementation-review
+stage: content-review
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT reviews SA04-BOND-01/02 at PR48 766f7a75d6825b4de88bb3667fde49ab971cbca6 per sa04bond-return-766f7a7.md (actual parent 0d7637e). After acceptance continue SA05 / Dawnshard.
-updated: 2026-11-20T06:15Z
+next-action: ChatGPT starts SA05 / Dawnshard bounded source review, reconciling current PR24/37/48 payloads and existing closures; save a finite correction handoff or explicit gap checkpoint.
+updated: 2026-11-20T06:18Z
 idle-runs: 0
-note: SA04-BOND-01/02 implemented on PR48 766f7a7 (parent 0d7637e): e40 text and Dalinar key-8 codex text replaced exactly; 22/22 focused, 650/650 unit, pages OK, rendered 156/156 head vs 108/48 parent; browser smoke fails at :88 (carried Save/Load limit). Full SA04 deferred, 0/33 full-work approvals; surface-render limit remains.
+note: SA04-BOND-01/02 accepted at PR48 766f7a7: actual-parent comparison, 5/5 blobs, 3/3 independent tests, 11/11 eligibility states and 2/2 old-text negative controls. Builder rendered 156/156 attributed; 0 independent rendered cases. Full SA04 deferred; 0/33 full-work approvals, Save/Load and surface-render limits retained.
 
 # Cosmere book-by-book review
 
@@ -175,3 +175,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 - 2026-11-20T05:27:30Z ChatGPT: saved/read back [SA04 probe](sa04-probe.mjs) at c2af8d8bc43c43782459ee73b0c11885088722aa, [inventory/candidate output](sa04-inventory-2026-11-20.json) at efa9909c25261b4b4195d4f35d40c6157e375dcb and [source handoff](sa04-handoff-2026-11-20.md) at 4b99e50cc220ea5afc832d2de4e0121ce77af4e8. Heads rechecked: PR48 0d7637e8973187afa3e8c58552a197d48c315b03, PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838. 5/5 hashes; 93/93 selected slots, 69 present/24 absent, 31/31 type dispositions; 28/28 nested landmarks inventoried and held. Selected authorized chapter-4 body and chapter-119 reread/quoted fragment recovered after reader 403s; primary versus secondary provenance explicit, full novel unverified. SA04-BOND-01/02 propose two text replacements; 2/2 in-memory assignments, 1/1 full parsed-pack reversal, 11/11 actual-selector/codex-predicate states unchanged; 0 rendered candidate cases. Research/chatgpt → fixing/claude for immediate finite handoff after first bounded unit; full SA04 deferred with gaps, 0/33 full-work approvals. After independent acceptance continue SA05. Prior corrections, parent/gate restrictions, Save/Load and surface-render holds preserved; no application/PR-branch edit, merge, deploy or new Mckay action.
 - 2026-11-20T06:15Z: Claude implemented SA04-BOND-01/02 on PR48 at 766f7a75d6825b4de88bb3667fde49ab971cbca6 (parent 0d7637e): exact e40 text and Dalinar key-8 codex text replacements only, plus tests/atlas-sa04-bond.test.ts. Evidence in sa04bond-return-766f7a7.md. fixing/claude → implementation-review/chatgpt. No merge, deploy, PR24/37 edit or canon approval.
+
+- 2026-11-20T06:18Z ChatGPT: SA04-BOND-01/02 accepted at exact PR48 766f7a75d6825b4de88bb3667fde49ab971cbca6, parent 0d7637e8973187afa3e8c58552a197d48c315b03. Saved/read back reviewer-sa04-766f7a7.ts at cc5cdcc42496a17fee42552b6fd5edbea6d3e328 and implementation-review-766f7a7.md at ef4d3e3c7dabb39f1cb59c4788577a441cd6b5ab. Independently 5/5 blobs, 3/3 tests, 11/11 states, 2/2 actual-parent old-text negative controls; parent-as-candidate 2 pass/1 expected fail. Exact-head CI build/pages success, deploy skipped. Builder 156/156 rendered and 108/156 parent pass remain attributed; 0 independent rendered cases, Save/Load and surface route limits retained. All 18/18 pack + 8/8 review statuses checked; only this item eligible. implementation-review/chatgpt -> content-review/chatgpt for SA05 Dawnshard. Full SA04 deferred with 31/31 dispositions, 28/28 nested-landmark holds and 0/33 full-work approvals. No code edit, merge, deploy or release approval.
