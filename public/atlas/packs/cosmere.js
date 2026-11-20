@@ -779,7 +779,7 @@
       {id: "e32", book: 7, world: "threnody", site: "waystop", title: "Shadows for Silence", text: "Silence goes after a dangerous bounty in the Forests of Hell with her daughter."},
       {id: "e33", book: 7, world: "taldain", site: "kerla", title: "White Sand", text: "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."},
       {id: "e34", book: 7, world: "scadrial", title: "Mistborn: Secret History", text: "What Kelsier did after his death, and how he looked into the wider cosmere."},
-      {id: "e35", book: 7, world: "roshar", site: "yeddaw", title: "Edgedancer", text: "Lift crosses to Tashikk to protect a man the Herald Nale wants dead."},
+      {id: "e35", book: 7, world: "roshar", site: "yeddaw", title: "Edgedancer", text: "Lift travels to Yeddaw in Tashikk, where Darkness has been reported."},
       {id: "e36", book: 7, world: "silverlight", title: "The view from outside", text: "Essays and a star chart from a worldhopping scholar show the Shardworlds side by side for the first time."},
       /* VIII Oathbringer & Dawnshard */
       {id: "e37", book: 8, world: "roshar", site: "urithiru", title: "A coalition", text: "Dalinar tries to unite the monarchs of Roshar against the Voidbringers, with his own past catching up with him."},
