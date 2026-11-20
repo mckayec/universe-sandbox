@@ -785,7 +785,7 @@
       {id: "e37", book: 8, world: "roshar", site: "urithiru", title: "A coalition", text: "Dalinar tries to unite the monarchs of Roshar against the Voidbringers, with his own past catching up with him."},
       {id: "e38", book: 8, world: "roshar", site: "kholinar", title: "The fall of Kholinar", text: "Kaladin, Shallan, Adolin and Elhokar slip into the occupied capital. The city falls and the king dies."},
       {id: "e39", book: 8, world: "roshar", site: "celebrant", title: "Across Shadesmar", text: "Pulled through the Oathgate into the Cognitive Realm, the survivors walk and sail toward Thaylen City."},
-      {id: "e40", book: 8, world: "roshar", site: "thaylen", title: "The Battle of Thaylen Field", text: "Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith."},
+      {id: "e40", book: 8, world: "roshar", site: "thaylen", title: "The Battle of Thaylen Field", text: "At the Battle of Thaylen Field, Dalinar brings the three Realms together."},
       {id: "e41", book: 8, world: "ashyn", title: "The truth about humans", text: "The Alethi learn that their ancestors came from Ashyn as refugees and took the singers’ world."},
       {id: "e42", book: 8, world: "roshar", site: "akinah", title: "Dawnshard", text: "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."},
       /* IX Rhythm of War */
@@ -842,7 +842,7 @@
         {name: "Vasher", role: "Awakener", books: [3, 5], desc: "Bearer of the sword Nightblood.", more: [[5, "Appears on Roshar as the swordmaster Zahel."]]},
         {name: "Kaladin Stormblessed", role: "Windrunner", books: [4, 5, 8, 9, 12], desc: "A soldier made slave who becomes the first of the new Knights Radiant."},
         {name: "Shallan Davar", role: "Lightweaver", books: [4, 5, 8, 9, 12], desc: "An artist and scholar hiding a past she won’t remember."},
-        {name: "Dalinar Kholin", role: "The Blackthorn", books: [4, 5, 8, 9, 12], desc: "A warlord trying to become a better man.", more: [[8, "Becomes the Bondsmith."], [12, "Dies after renouncing Honor’s power."]]},
+        {name: "Dalinar Kholin", role: "The Blackthorn", books: [4, 5, 8, 9, 12], desc: "A warlord trying to become a better man.", more: [[8, "Brings the three Realms together at Thaylen City."], [12, "Dies after renouncing Honor’s power."]]},
         {name: "Jasnah Kholin", role: "Scholar, queen", books: [4, 8, 9, 12], desc: "A brilliant historian and Elsecaller."},
         {name: "Szeth", role: "Truthless", books: [4, 5, 8, 9, 12], desc: "The assassin in white, bound to obey whoever holds his oathstone."},
         {name: "Taravangian", role: "King of Kharbranth", books: [4, 5, 8, 9, 12], desc: "An old, gentle king with a ruthless plan.", more: [[9, "Becomes Odium."]]},
