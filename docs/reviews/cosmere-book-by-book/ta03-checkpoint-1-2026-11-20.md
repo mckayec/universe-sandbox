@@ -104,3 +104,17 @@ This adds a completed retrieval check to checkpoint 1; it **does not consume or 
 Final PR metadata recheck: all three exact heads in the revision table remain unchanged. No additional content/test acceptance arose from this follow-up. Coverage remains **7 narrative images + 1 cover, 4 narrow excerpt observations, 0/9 complete site descriptions newly verified, 0/33 full-work approvals**.
 
 **Refined next action for unit 2/2:** seek a materially different lawful original-edition preview/source with internal edition data or explicit Diem/e33 evidence; do not repeat the recorded reader bootstrap or dead image routes merely to generate another checkpoint. If no new usable evidence is found in that bounded pass, record the six-unit Known-gap disposition and defer full TA03 before starting TA04. The accessible first excerpt remains usable within its narrow limits.
+
+## Interactive GlobalComix source handoff for TA03 unit 2/2
+
+A distinct original-volume route works in a normal browser without signing in. Open the [Dynamite Entertainment Volume 3 release](https://globalcomix.com/read/578c010b-257f-4b1a-9883-a7253abd37a7/1) on the regular GlobalComix domain, not the previously attempted alternate host. The reader identified the release as *Brandon Sanderson's White Sand Vol. 3* and displayed a 151-page reader extent. This is its UI count, not proof of identical print pagination or complete public access.
+
+| Reader locator | Visually verified, with limits |
+| --- | --- |
+| Pages 1–3 | Cover and opening artwork/title spreads. The unlabeled architectural illustration does not identify construction material or place. |
+| [Page 4](https://globalcomix.com/read/578c010b-257f-4b1a-9883-a7253abd37a7/4/1) | Internal credits and copyright panel: Volume 3, Dynamite Entertainment, 2019, and standard-edition ISBN 9781524110062. This matches the original hardcover catalog record, independent of later omnibus or OverDrive digital identifiers. It does not, by itself, certify the complete printed-to-digital panel correspondence. |
+| [Page 5](https://globalcomix.com/read/578c010b-257f-4b1a-9883-a7253abd37a7/5/1) | A Dayside map exists here. Use its visible labels only and corroborate each relationship independently; it does not settle Diem construction, exact coordinates, or a compound event pin. |
+| [Page 6](https://globalcomix.com/read/578c010b-257f-4b1a-9883-a7253abd37a7/6/1) and [page 7](https://globalcomix.com/read/578c010b-257f-4b1a-9883-a7253abd37a7/7/1) | Recap identifies the Diem as the Sand Masters' home (same narrow claim as P03) and gives a basic tidal-lock premise; no precise astronomy, geography, or architecture established. Then the Chapter 1 divider. |
+| [Page 8](https://globalcomix.com/read/578c010b-257f-4b1a-9883-a7253abd37a7/8/1), first visible panel | The Hall of Judgment/Kezare caption and Ais's exchange with the guard match the beginning of the Beat Int-9 image. Only this panel overlap checked in this pass, not all seven images or scene chronology. |
+
+Checked reader locations 1–8, including the first story panel. Stopped there, not at a verified access limit; further public availability is unknown. Follow ordinary reader controls if selecting more pages for unit 2/2, stop at any restriction, and retain original/omnibus separation. No purchase, sign-in, access bypass, image redistribution, implementation request, or release approval. This is source evidence for the queued second checkpoint, not the second checkpoint or a new full-work approval.
