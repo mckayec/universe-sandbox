@@ -1,0 +1,4 @@
+baked+collapsed {"H":640,"a":373,"b":524,"gap":151,"collapsed":true,"bakeHidden":true,"site":"jerusalem","selLabel":{"tab":-1,"top":0,"bottom":33},"shown":0}
+57 {"H":546,"a":373,"b":430,"gap":57,"collapsed":true,"bakeHidden":true,"site":"jerusalem","selLabel":{"tab":0,"top":388.5,"bottom":421.5},"shown":6}
+56 {"H":545,"a":373,"b":429,"gap":56,"collapsed":true,"bakeHidden":true,"site":"jerusalem","selLabel":{"tab":-1,"top":388.5,"bottom":421.5},"shown":0}
+119 {"H":608,"a":373,"b":492,"gap":119,"collapsed":true,"bakeHidden":true,"site":"jerusalem","selLabel":{"tab":0,"top":419.5,"bottom":452.5},"shown":8}

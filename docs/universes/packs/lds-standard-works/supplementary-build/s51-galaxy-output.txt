@@ -1,0 +1,92 @@
+browser 153.0.8010.12
+[38s] lds-standard-works 390x844 ready in 37.6 s
+  lds-standard-works 390x844: view=galaxy open area 373–269 px; 0/1 world labels shown; under chrome: none; off-screen: none
+  ok 1 lds-standard-works 390x844: in the galaxy/space view
+  ok 2 lds-standard-works 390x844: no horizontal page overflow
+  ok 3 lds-standard-works 390x844: no open area (-104 px): names hidden, world still listed in the sheet
+  ok 4 lds-standard-works 390x844: no shown world label overlaps the compact chrome
+  ok 5 lds-standard-works 390x844: no shown world label extends past the viewport edge
+  ok 6 lds-standard-works 390x844: hidden labels are out of the Tab order and aria-hidden
+  ok 7 lds-standard-works 390x844: no shown region label overlaps the compact chrome
+  lds-standard-works 390x844 selected earth: view=galaxy open area 373–728 px; 1/1 world labels shown; under chrome: none; off-screen: none
+  ok 8 lds-standard-works 390x844 selected earth: in the galaxy/space view
+  ok 9 lds-standard-works 390x844 selected earth: no horizontal page overflow
+  ok 10 lds-standard-works 390x844 selected earth: at least one world label shown
+  ok 11 lds-standard-works 390x844 selected earth: no shown world label overlaps the compact chrome
+  ok 12 lds-standard-works 390x844 selected earth: no shown world label extends past the viewport edge
+  ok 13 lds-standard-works 390x844 selected earth: hidden labels are out of the Tab order and aria-hidden
+  ok 14 lds-standard-works 390x844 selected earth: no shown region label overlaps the compact chrome
+  lds-standard-works rotated 844x390: view=galaxy open area 193–96 px; 0/1 world labels shown; under chrome: none; off-screen: none
+  ok 15 lds-standard-works rotated 844x390: in the galaxy/space view
+  ok 16 lds-standard-works rotated 844x390: no horizontal page overflow
+  ok 17 lds-standard-works rotated 844x390: no open area (-97 px): names hidden, world still listed in the sheet
+  ok 18 lds-standard-works rotated 844x390: no shown world label overlaps the compact chrome
+  ok 19 lds-standard-works rotated 844x390: no shown world label extends past the viewport edge
+  ok 20 lds-standard-works rotated 844x390: hidden labels are out of the Tab order and aria-hidden
+  ok 21 lds-standard-works rotated 844x390: no shown region label overlaps the compact chrome
+  ok 22 lds-standard-works 390x844: 2 Tab stops on world labels, none on a hidden label
+[113s] expanse 390x844 ready in 2.9 s
+  expanse 390x844: view=galaxy open area 227–728 px; 13/34 world labels shown; under chrome: none; off-screen: none
+  ok 23 expanse 390x844: in the galaxy/space view
+  ok 24 expanse 390x844: no horizontal page overflow
+  ok 25 expanse 390x844: at least one world label shown
+  ok 26 expanse 390x844: no shown world label overlaps the compact chrome
+  ok 27 expanse 390x844: no shown world label extends past the viewport edge
+  ok 28 expanse 390x844: hidden labels are out of the Tab order and aria-hidden
+  ok 29 expanse 390x844: no shown region label overlaps the compact chrome
+  expanse 390x844 selected venus: view=galaxy open area 227–728 px; 8/34 world labels shown; under chrome: none; off-screen: none
+  ok 30 expanse 390x844 selected venus: in the galaxy/space view
+  ok 31 expanse 390x844 selected venus: no horizontal page overflow
+  ok 32 expanse 390x844 selected venus: at least one world label shown
+  ok 33 expanse 390x844 selected venus: no shown world label overlaps the compact chrome
+  ok 34 expanse 390x844 selected venus: no shown world label extends past the viewport edge
+  ok 35 expanse 390x844 selected venus: hidden labels are out of the Tab order and aria-hidden
+  ok 36 expanse 390x844 selected venus: no shown region label overlaps the compact chrome
+  ok 37 expanse 390x844: 16 Tab stops on world labels, none on a hidden label
+[152s] sun-eater 390x844 ready in 3.9 s
+  sun-eater 390x844: view=galaxy open area 216–728 px; 13/52 world labels shown; under chrome: none; off-screen: none
+  ok 38 sun-eater 390x844: in the galaxy/space view
+  ok 39 sun-eater 390x844: no horizontal page overflow
+  ok 40 sun-eater 390x844: at least one world label shown
+  ok 41 sun-eater 390x844: no shown world label overlaps the compact chrome
+  ok 42 sun-eater 390x844: no shown world label extends past the viewport edge
+  ok 43 sun-eater 390x844: hidden labels are out of the Tab order and aria-hidden
+  ok 44 sun-eater 390x844: no shown region label overlaps the compact chrome
+  sun-eater 390x844 selected delos: view=galaxy open area 216–728 px; 1/52 world labels shown; under chrome: none; off-screen: none
+  ok 45 sun-eater 390x844 selected delos: in the galaxy/space view
+  ok 46 sun-eater 390x844 selected delos: no horizontal page overflow
+  ok 47 sun-eater 390x844 selected delos: at least one world label shown
+  ok 48 sun-eater 390x844 selected delos: no shown world label overlaps the compact chrome
+  ok 49 sun-eater 390x844 selected delos: no shown world label extends past the viewport edge
+  ok 50 sun-eater 390x844 selected delos: hidden labels are out of the Tab order and aria-hidden
+  ok 51 sun-eater 390x844 selected delos: no shown region label overlaps the compact chrome
+  sun-eater rotated 844x390: view=galaxy open area 98–96 px; 0/52 world labels shown; under chrome: none; off-screen: none
+  ok 52 sun-eater rotated 844x390: in the galaxy/space view
+  ok 53 sun-eater rotated 844x390: no horizontal page overflow
+  ok 54 sun-eater rotated 844x390: no open area (-2 px): names hidden, world still listed in the sheet
+  ok 55 sun-eater rotated 844x390: no shown world label overlaps the compact chrome
+  ok 56 sun-eater rotated 844x390: no shown world label extends past the viewport edge
+  ok 57 sun-eater rotated 844x390: hidden labels are out of the Tab order and aria-hidden
+  ok 58 sun-eater rotated 844x390: no shown region label overlaps the compact chrome
+  ok 59 sun-eater 390x844: 3 Tab stops on world labels, none on a hidden label
+[203s] hyperion 390x844 ready in 2.9 s
+  hyperion 390x844: view=galaxy open area 216–728 px; 16/46 world labels shown; under chrome: none; off-screen: none
+  ok 60 hyperion 390x844: in the galaxy/space view
+  ok 61 hyperion 390x844: no horizontal page overflow
+  ok 62 hyperion 390x844: at least one world label shown
+  ok 63 hyperion 390x844: no shown world label overlaps the compact chrome
+  ok 64 hyperion 390x844: no shown world label extends past the viewport edge
+  ok 65 hyperion 390x844: hidden labels are out of the Tab order and aria-hidden
+  ok 66 hyperion 390x844: no shown region label overlaps the compact chrome
+  hyperion 390x844 selected hyperion: view=galaxy open area 216–728 px; 5/46 world labels shown; under chrome: none; off-screen: none
+  ok 67 hyperion 390x844 selected hyperion: in the galaxy/space view
+  ok 68 hyperion 390x844 selected hyperion: no horizontal page overflow
+  ok 69 hyperion 390x844 selected hyperion: at least one world label shown
+  ok 70 hyperion 390x844 selected hyperion: no shown world label overlaps the compact chrome
+  ok 71 hyperion 390x844 selected hyperion: no shown world label extends past the viewport edge
+  ok 72 hyperion 390x844 selected hyperion: hidden labels are out of the Tab order and aria-hidden
+  ok 73 hyperion 390x844 selected hyperion: no shown region label overlaps the compact chrome
+  ok 74 hyperion 390x844: 13 Tab stops on world labels, none on a hidden label
+  ok 75 zero console/request/page errors
+PASS 75 checks
+[240s] done

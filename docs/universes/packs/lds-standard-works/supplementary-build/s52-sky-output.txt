@@ -1,0 +1,159 @@
+browser 153.0.8010.12
+[47s] lds-standard-works 390x844 ready in 46.8 s
+  ok 1 lds-standard-works 390x844 surface view: no Sky button
+  lds-standard-works 390x844 before Sky: open area 373–728 px, 1 world names shown
+  ok 2 lds-standard-works 390x844: Sky button visible and not pressed
+  lds-standard-works 390x844 Sky on: {"sky":true,"pressed":"true","back":true,"books":6,"views":3,"crumbs":true,"panels":[],"skyBox":[331,378],"appScroll":0,"viewBtns":[163,237,310],"sel":"earth","view":"galaxy"}
+  ok 3 lds-standard-works 390x844: Sky button pressed (aria-pressed=true)
+  ok 4 lds-standard-works 390x844: Sky button wholly on screen (331,378) and the page was not scrolled to reach it
+  ok 5 lds-standard-works 390x844: filter rows, worlds list, sheet and chronicle hidden
+  ok 6 lds-standard-works 390x844: back link, view buttons and crumbs still visible
+  ok 7 lds-standard-works 390x844: book/reading buttons unchanged (6)
+  lds-standard-works 390x844 Sky on: view=galaxy open area 259–844 px; 1/1 world labels shown; under chrome: none; off-screen: none
+  ok 8 lds-standard-works 390x844 Sky on: in the galaxy/space view
+  ok 9 lds-standard-works 390x844 Sky on: no horizontal page overflow
+  ok 10 lds-standard-works 390x844 Sky on: at least one world label shown
+  ok 11 lds-standard-works 390x844 Sky on: no shown world label overlaps the compact chrome
+  ok 12 lds-standard-works 390x844 Sky on: no shown world label extends past the viewport edge
+  ok 13 lds-standard-works 390x844 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 14 lds-standard-works 390x844 Sky on: no shown region label overlaps the compact chrome
+  ok 15 lds-standard-works 390x844: Sky frees 585 px of open sky (>= 250) with 1 world names shown
+  ok 16 lds-standard-works 390x844 Sky on: real Tab reaches 3 shown world names, none hidden
+  ok 17 lds-standard-works 390x844: Sky off restores the sheet
+  lds-standard-works 844x390 before Sky: open area 193–96 px, 0 world names shown
+  ok 18 lds-standard-works 844x390: Sky button visible and not pressed
+  lds-standard-works 844x390 Sky on: {"sky":true,"pressed":"true","back":true,"books":6,"views":3,"crumbs":true,"panels":[],"skyBox":[785,832],"appScroll":0,"viewBtns":[1745,1818,1892],"sel":"earth","view":"galaxy"}
+  ok 19 lds-standard-works 844x390: Sky button pressed (aria-pressed=true)
+  ok 20 lds-standard-works 844x390: Sky button wholly on screen (785,832) and the page was not scrolled to reach it
+  ok 21 lds-standard-works 844x390: filter rows, worlds list, sheet and chronicle hidden
+  ok 22 lds-standard-works 844x390: back link, view buttons and crumbs still visible
+  ok 23 lds-standard-works 844x390: book/reading buttons unchanged (6)
+  lds-standard-works 844x390 Sky on: view=galaxy open area 98–390 px; 1/1 world labels shown; under chrome: none; off-screen: none
+  ok 24 lds-standard-works 844x390 Sky on: in the galaxy/space view
+  ok 25 lds-standard-works 844x390 Sky on: no horizontal page overflow
+  ok 26 lds-standard-works 844x390 Sky on: at least one world label shown
+  ok 27 lds-standard-works 844x390 Sky on: no shown world label overlaps the compact chrome
+  ok 28 lds-standard-works 844x390 Sky on: no shown world label extends past the viewport edge
+  ok 29 lds-standard-works 844x390 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 30 lds-standard-works 844x390 Sky on: no shown region label overlaps the compact chrome
+  ok 31 lds-standard-works 844x390: Sky frees 292 px of open sky (>= 120) with 1 world names shown
+  ok 32 lds-standard-works 844x390: tapping "Earth" selects earth and turns Sky off
+[167s] sun-eater 390x844 ready in 4.4 s
+  sun-eater 390x844 before Sky: open area 216–728 px, 13 world names shown
+  ok 33 sun-eater 390x844: Sky button visible and not pressed
+  sun-eater 390x844 Sky on: {"sky":true,"pressed":"true","back":true,"books":8,"views":3,"crumbs":true,"panels":[],"skyBox":[331,378],"appScroll":0,"viewBtns":[171,253,326],"sel":null,"view":"galaxy"}
+  ok 34 sun-eater 390x844: Sky button pressed (aria-pressed=true)
+  ok 35 sun-eater 390x844: Sky button wholly on screen (331,378) and the page was not scrolled to reach it
+  ok 36 sun-eater 390x844: filter rows, worlds list, sheet and chronicle hidden
+  ok 37 sun-eater 390x844: back link, view buttons and crumbs still visible
+  ok 38 sun-eater 390x844: book/reading buttons unchanged (8)
+  sun-eater 390x844 Sky on: view=galaxy open area 213–844 px; 14/52 world labels shown; under chrome: none; off-screen: none
+  ok 39 sun-eater 390x844 Sky on: in the galaxy/space view
+  ok 40 sun-eater 390x844 Sky on: no horizontal page overflow
+  ok 41 sun-eater 390x844 Sky on: at least one world label shown
+  ok 42 sun-eater 390x844 Sky on: no shown world label overlaps the compact chrome
+  ok 43 sun-eater 390x844 Sky on: no shown world label extends past the viewport edge
+  ok 44 sun-eater 390x844 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 45 sun-eater 390x844 Sky on: no shown region label overlaps the compact chrome
+  ok 46 sun-eater 390x844: Sky frees 631 px of open sky (>= 250) with 14 world names shown
+  ok 47 sun-eater 390x844 Sky on: real Tab reaches 30 shown world names, none hidden
+  ok 48 sun-eater 390x844: Sky off restores the sheet
+  sun-eater 844x390 before Sky: open area 98–96 px, 0 world names shown
+  ok 49 sun-eater 844x390: Sky button visible and not pressed
+  sun-eater 844x390 Sky on: {"sky":true,"pressed":"true","back":true,"books":8,"views":3,"crumbs":true,"panels":[],"skyBox":[785,832],"appScroll":0,"viewBtns":[1006,1088,1161],"sel":null,"view":"galaxy"}
+  ok 50 sun-eater 844x390: Sky button pressed (aria-pressed=true)
+  ok 51 sun-eater 844x390: Sky button wholly on screen (785,832) and the page was not scrolled to reach it
+  ok 52 sun-eater 844x390: filter rows, worlds list, sheet and chronicle hidden
+  ok 53 sun-eater 844x390: back link, view buttons and crumbs still visible
+  ok 54 sun-eater 844x390: book/reading buttons unchanged (8)
+  sun-eater 844x390 Sky on: view=galaxy open area 98–390 px; 14/52 world labels shown; under chrome: none; off-screen: none
+  ok 55 sun-eater 844x390 Sky on: in the galaxy/space view
+  ok 56 sun-eater 844x390 Sky on: no horizontal page overflow
+  ok 57 sun-eater 844x390 Sky on: at least one world label shown
+  ok 58 sun-eater 844x390 Sky on: no shown world label overlaps the compact chrome
+  ok 59 sun-eater 844x390 Sky on: no shown world label extends past the viewport edge
+  ok 60 sun-eater 844x390 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 61 sun-eater 844x390 Sky on: no shown region label overlaps the compact chrome
+  ok 62 sun-eater 844x390: Sky frees 292 px of open sky (>= 120) with 14 world names shown
+  ok 63 sun-eater 844x390: tapping "Delos" selects delos and turns Sky off
+[235s] expanse 390x844 ready in 2.8 s
+  expanse 390x844 before Sky: open area 227–728 px, 13 world names shown
+  ok 64 expanse 390x844: Sky button visible and not pressed
+  expanse 390x844 Sky on: {"sky":true,"pressed":"true","back":true,"books":10,"views":3,"crumbs":true,"panels":[],"skyBox":[331,378],"appScroll":0,"viewBtns":[171,229,302],"sel":null,"view":"galaxy"}
+  ok 65 expanse 390x844: Sky button pressed (aria-pressed=true)
+  ok 66 expanse 390x844: Sky button wholly on screen (331,378) and the page was not scrolled to reach it
+  ok 67 expanse 390x844: filter rows, worlds list, sheet and chronicle hidden
+  ok 68 expanse 390x844: back link, view buttons and crumbs still visible
+  ok 69 expanse 390x844: book/reading buttons unchanged (10)
+  expanse 390x844 Sky on: view=galaxy open area 213–844 px; 12/34 world labels shown; under chrome: none; off-screen: none
+  ok 70 expanse 390x844 Sky on: in the galaxy/space view
+  ok 71 expanse 390x844 Sky on: no horizontal page overflow
+  ok 72 expanse 390x844 Sky on: at least one world label shown
+  ok 73 expanse 390x844 Sky on: no shown world label overlaps the compact chrome
+  ok 74 expanse 390x844 Sky on: no shown world label extends past the viewport edge
+  ok 75 expanse 390x844 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 76 expanse 390x844 Sky on: no shown region label overlaps the compact chrome
+  ok 77 expanse 390x844: Sky frees 631 px of open sky (>= 250) with 12 world names shown
+  ok 78 expanse 390x844 Sky on: real Tab reaches 25 shown world names, none hidden
+  ok 79 expanse 390x844: Sky off restores the sheet
+  expanse 844x390 before Sky: open area 98–96 px, 0 world names shown
+  ok 80 expanse 844x390: Sky button visible and not pressed
+  expanse 844x390 Sky on: {"sky":true,"pressed":"true","back":true,"books":10,"views":3,"crumbs":true,"panels":[],"skyBox":[785,832],"appScroll":0,"viewBtns":[1074,1131,1205],"sel":null,"view":"galaxy"}
+  ok 81 expanse 844x390: Sky button pressed (aria-pressed=true)
+  ok 82 expanse 844x390: Sky button wholly on screen (785,832) and the page was not scrolled to reach it
+  ok 83 expanse 844x390: filter rows, worlds list, sheet and chronicle hidden
+  ok 84 expanse 844x390: back link, view buttons and crumbs still visible
+  ok 85 expanse 844x390: book/reading buttons unchanged (10)
+  expanse 844x390 Sky on: view=galaxy open area 98–390 px; 11/34 world labels shown; under chrome: none; off-screen: none
+  ok 86 expanse 844x390 Sky on: in the galaxy/space view
+  ok 87 expanse 844x390 Sky on: no horizontal page overflow
+  ok 88 expanse 844x390 Sky on: at least one world label shown
+  ok 89 expanse 844x390 Sky on: no shown world label overlaps the compact chrome
+  ok 90 expanse 844x390 Sky on: no shown world label extends past the viewport edge
+  ok 91 expanse 844x390 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 92 expanse 844x390 Sky on: no shown region label overlaps the compact chrome
+  ok 93 expanse 844x390: Sky frees 292 px of open sky (>= 120) with 11 world names shown
+  ok 94 expanse 844x390: tapping "Eros" selects eros and turns Sky off
+[282s] hyperion 390x844 ready in 3.3 s
+  hyperion 390x844 before Sky: open area 216–728 px, 16 world names shown
+  ok 95 hyperion 390x844: Sky button visible and not pressed
+  hyperion 390x844 Sky on: {"sky":true,"pressed":"true","back":true,"books":5,"views":3,"crumbs":true,"panels":[],"skyBox":[331,378],"appScroll":0,"viewBtns":[171,292,366],"sel":null,"view":"galaxy"}
+  ok 96 hyperion 390x844: Sky button pressed (aria-pressed=true)
+  ok 97 hyperion 390x844: Sky button wholly on screen (331,378) and the page was not scrolled to reach it
+  ok 98 hyperion 390x844: filter rows, worlds list, sheet and chronicle hidden
+  ok 99 hyperion 390x844: back link, view buttons and crumbs still visible
+  ok 100 hyperion 390x844: book/reading buttons unchanged (5)
+  hyperion 390x844 Sky on: view=galaxy open area 213–844 px; 16/46 world labels shown; under chrome: none; off-screen: none
+  ok 101 hyperion 390x844 Sky on: in the galaxy/space view
+  ok 102 hyperion 390x844 Sky on: no horizontal page overflow
+  ok 103 hyperion 390x844 Sky on: at least one world label shown
+  ok 104 hyperion 390x844 Sky on: no shown world label overlaps the compact chrome
+  ok 105 hyperion 390x844 Sky on: no shown world label extends past the viewport edge
+  ok 106 hyperion 390x844 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 107 hyperion 390x844 Sky on: no shown region label overlaps the compact chrome
+  ok 108 hyperion 390x844: Sky frees 631 px of open sky (>= 250) with 16 world names shown
+  ok 109 hyperion 390x844 Sky on: real Tab reaches 33 shown world names, none hidden
+  ok 110 hyperion 390x844: Sky off restores the sheet
+  hyperion 844x390 before Sky: open area 98–96 px, 0 world names shown
+  ok 111 hyperion 844x390: Sky button visible and not pressed
+  hyperion 844x390 Sky on: {"sky":true,"pressed":"true","back":true,"books":5,"views":3,"crumbs":true,"panels":[],"skyBox":[785,832],"appScroll":0,"viewBtns":[818,939,1013],"sel":null,"view":"galaxy"}
+  ok 112 hyperion 844x390: Sky button pressed (aria-pressed=true)
+  ok 113 hyperion 844x390: Sky button wholly on screen (785,832) and the page was not scrolled to reach it
+  ok 114 hyperion 844x390: filter rows, worlds list, sheet and chronicle hidden
+  ok 115 hyperion 844x390: back link, view buttons and crumbs still visible
+  ok 116 hyperion 844x390: book/reading buttons unchanged (5)
+  hyperion 844x390 Sky on: view=galaxy open area 98–390 px; 9/46 world labels shown; under chrome: none; off-screen: none
+  ok 117 hyperion 844x390 Sky on: in the galaxy/space view
+  ok 118 hyperion 844x390 Sky on: no horizontal page overflow
+  ok 119 hyperion 844x390 Sky on: at least one world label shown
+  ok 120 hyperion 844x390 Sky on: no shown world label overlaps the compact chrome
+  ok 121 hyperion 844x390 Sky on: no shown world label extends past the viewport edge
+  ok 122 hyperion 844x390 Sky on: hidden labels are out of the Tab order and aria-hidden
+  ok 123 hyperion 844x390 Sky on: no shown region label overlaps the compact chrome
+  ok 124 hyperion 844x390: Sky frees 292 px of open sky (>= 120) with 9 world names shown
+  ok 125 hyperion 844x390: tapping "Hyperion" selects hyperion and turns Sky off
+[333s] sun-eater 1440x900 ready in 2.8 s
+  ok 126 sun-eater 1440x900 desktop: no Sky button
+  ok 127 zero console/request/page errors
+PASS 127 checks
+[336s] done

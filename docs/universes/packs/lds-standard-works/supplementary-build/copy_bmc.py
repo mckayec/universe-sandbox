@@ -1,0 +1,801 @@
+# Book of Mormon source views for Bible texts and figures (checkpoint 32; builder answer in PR34
+# supplementary-review-s31.md at 30a880d, "Builder answer — proceed with independently gated BMC source views").
+#
+# BMC-001–239 are chapter-reference research keys (coverage-bom.md "Chapter coverage contract"), not runtime cards.
+# Where a chapter's own ledger finding (coverage-bom.md, BMC rows and the full-read omission checks) says the chapter
+# quotes, sees in vision, teaches from or mentions an entity that already has a shared Old or New Testament card,
+# this module adds one 3/bom codex source view in the tab `bom-bible`. The view carries the Book of Mormon copy and
+# the official chapter locator; its See-also links point one way, to the existing biblical card or Chronicle event,
+# with a relation label shown only on the view. No reciprocal label is written on any Bible card, no edge metadata is
+# relied on, no map pin, route, date or travel is added, and no `site:` link is used. The target keeps its own gate.
+#
+# Copy is the ledger's own wording, shortened; nothing is added from memory. Verse locators are the ones the ledger,
+# its full-read checks or the S31 review state; otherwise the view cites the chapter's full verse range, which is
+# the extent of the quotation or finding the ledger records.
+#
+# build.py writes VIEWS into the pack and bmc-source-views.csv, which accounts for every BMC key (implemented,
+# consolidated or omitted with a reason) and every hit of the bmc_candidates.py name scan (accepted or rejected).
+
+# (BMC number, view key suffix, name, mode, description, verses or None for the full chapter, [(target, label)])
+# mode: vision | quotation | teaching | mention | prophecy
+VIEWS = [
+    (1, 'jerusalem-destruction-vision', 'Lehi’s vision of Jerusalem’s destruction (1 Nephi 1)', 'vision',
+     'Book of Mormon — The narrative opens in the first year of Zedekiah’s reign; Lehi’s vision anticipates '
+     'Jerusalem’s destruction and Babylonian captivity. The vision is a warning, kept distinct from the destruction '
+     'the Old Testament narrates; no house or rock is located.', None,
+     [('OHR-ZEDEKIAH', 'first year of his reign named'), ('ev:jerusalem-destruction', 'foreseen in Lehi’s vision')]),
+    (5, 'joseph-moses-plates', 'Joseph and Moses on the brass plates (1 Nephi 5)', 'mention',
+     'Book of Mormon — Lehi reads the brass plates, which hold records of Moses and the prophets, and finds that he '
+     'and Laban descend from Joseph. The descent is the narrative’s claim, not a genetic finding.', None,
+     [('OHR-JOSEPH-JACOB', 'descent claimed from him'), ('OHR-MOSES', 'his records named on the plates')]),
+    (10, 'bethabara-prophecy', 'Lehi’s prophecy of baptism at Bethabara (1 Nephi 10)', 'prophecy',
+     'Book of Mormon — Lehi speaks of a Messiah six hundred years after the departure and of baptism at Bethabara '
+     'beyond Jordan. This is prophecy that reuses a Bible place; Lehi does not travel there.', None,
+     [('NTP-bethabara', 'foretold in Lehi’s prophecy')]),
+    (11, 'nazareth-jerusalem-vision', 'Nephi’s vision of Nazareth and Jerusalem (1 Nephi 11)', 'vision',
+     'Book of Mormon — In Nephi’s vision, he sees Nazareth and Jerusalem. The vision begins on an unnamed high '
+     'mountain; the cities are viewed, not visited, and no mountain or route is located.', '1, 13, 32', []),
+    (12, 'twelve-ministers-apostles-vision', 'Twelve ministers and the Lamb’s twelve apostles (1 Nephi 12)', 'vision',
+     'Book of Mormon — In Nephi’s vision, the angel distinguishes twelve ministers among Nephi’s descendants from the '
+     'Lamb’s twelve apostles, who are said to judge Israel. The two groups stay distinct; no member of either is '
+     'matched to a name, and no place, route or date is added.', '8–10',
+     [('NTR-twelve', 'apostles recalled in the vision')]),
+    (14, 'john-revelation-vision', 'John named in Nephi’s vision (1 Nephi 14)', 'vision',
+     'Book of Mormon — The angel in Nephi’s vision identifies John as the writer of later revelations. John is '
+     'named, not met.', '18–27', [('ev:patmos-vision', 'John named as its writer')]),
+    (20, 'babylon-quotation', 'Departure from Babylon, quoted from Isaiah (1 Nephi 20)', 'quotation',
+     'Book of Mormon — The quoted Isaiah discourse addresses Israel and departure from Babylon, contrasting divine '
+     'guidance with disobedience. It is a quotation, not a Lehite visit to Babylon.', None,
+     [('OTM-babylon', 'quoted from Isaiah')]),
+    (21, 'zion-quotation', 'Zion restored, quoted from Isaiah (1 Nephi 21)', 'quotation',
+     'Book of Mormon — The Isaiah quotation portrays a servant, Zion’s restoration and gathering from afar, '
+     'including the place-name Sinim, which stays unidentified. The prophecy contains no return routes.', None,
+     [('OTM-zion-prophetic-jerusalem', 'Zion’s restoration, quoted from Isaiah')]),
+    (17, 'moses-exodus-recalled', 'Moses and the Exodus recalled by Nephi (1 Nephi 17)', 'teaching',
+     'Book of Mormon — Nephi recalls Moses leading Israel out of Egypt and Israel’s wilderness experiences while '
+     'addressing his brothers. These are scriptural recollections, not stops on Nephi’s voyage.', '23–32, 40–42',
+     [('OHR-MOSES', 'recalled by Nephi')]),
+    (22, 'scattering-gathering-reading', 'Scattering and gathering in Nephi’s reading of Isaiah (1 Nephi 22)',
+     'teaching',
+     'Book of Mormon — Nephi interprets the Isaiah chapters he has just quoted (1 Nephi 20–21): Israel’s scattering '
+     'and gathering involve actual peoples, and he says the locations of the scattered tribes are unknown to his '
+     'audience (22:4). No tribe, migration or place is located.', None, []),
+    (23, 'jerusalem-destruction-known', 'Jerusalem’s destruction known in vision (2 Nephi 1)', 'vision',
+     'Book of Mormon — Lehi reports that he has seen in vision that Jerusalem is destroyed. He knows it through '
+     'vision, not a return journey.', None, [('ev:jerusalem-destruction', 'known to Lehi through vision')]),
+    (25, 'joseph-egypt-prophecy', 'Joseph of Egypt’s prophecy, quoted by Lehi (2 Nephi 3)', 'quotation',
+     'Book of Mormon — Lehi addresses his youngest son Joseph and quotes Joseph-of-Egypt traditions about Moses, '
+     'records and a future seer bearing Joseph’s name. The three Josephs stay distinct; identifying the seer is '
+     'interpretation. Nephi returns to Joseph of Egypt’s prophecies in 2 Nephi 4:1–2.', None,
+     [('OHR-JOSEPH-JACOB', 'prophecy attributed to him'), ('OHR-MOSES', 'named in the quoted prophecy')]),
+    (28, 'jerusalem-captivity-reading', 'Jerusalem’s captivity in Jacob’s reading of Isaiah (2 Nephi 6)', 'teaching',
+     'Book of Mormon — Jacob interprets Isaiah concerning Jerusalem’s captivity, the Messiah and a future '
+     'gathering, in a sermon to Nephi’s people. No sermon building or gathering route is located.', None,
+     [('OTM-jerusalem', 'its captivity, in Jacob’s reading')]),
+    (30, 'abraham-sarah-quotation', 'Abraham, Sarah and Jerusalem, quoted from Isaiah (2 Nephi 8)', 'quotation',
+     'Book of Mormon — Quoted Isaiah addresses Abraham and Sarah, Zion’s consolation, and Jerusalem’s affliction and '
+     'release. Ancestors and cities are recalled, not visited. Verses 19–20 read two sons where Isaiah 51 reads two '
+     'things; neither is harmonized.', None,
+     [('OHR-ABRAHAM', 'recalled in quoted Isaiah'), ('OHR-SARAH', 'recalled in quoted Isaiah'),
+      ('OTM-jerusalem', 'its affliction and release, quoted')]),
+    (32, 'crucifixion-jerusalem-prophecy', 'Christ’s crucifixion and Jerusalem in Jacob’s prophecy (2 Nephi 10)',
+     'prophecy',
+     'Book of Mormon — Jacob foretells Christ’s crucifixion and names Jerusalem in the prophecy. The prophecy is '
+     'Jacob’s, kept distinct from the later Gospel narrative; no travel, date or modern territory is added.', '3–8',
+     [('AE10', 'crucifixion foretold in prophecy'), ('OTM-jerusalem', 'named in the prophecy')]),
+    (34, 'judah-jerusalem-oracle', 'Isaiah’s oracle on Judah and Jerusalem (2 Nephi 12)', 'quotation',
+     'Book of Mormon — Isaiah’s oracle concerning Judah and Jerusalem, quoted, portrays the Lord’s mountain-house '
+     'and nations seeking instruction, then judgment of pride. No pilgrim route is plotted.', None,
+     [('OTM-judah-region', 'addressed in the quoted oracle'), ('OTM-jerusalem', 'addressed in the quoted oracle')]),
+    (35, 'judah-jerusalem-judgment', 'Judgment on Jerusalem and Judah, quoted (2 Nephi 13)', 'quotation',
+     'Book of Mormon — The Isaiah quotation announces judgment on Jerusalem and Judah, failed leadership and the '
+     'pride of Zion’s daughters. No Nephite event is narrated.', None,
+     [('OTM-jerusalem', 'judgment announced, quoted'), ('OTM-judah-region', 'judgment announced, quoted'),
+      ('OTM-zion-prophetic-jerusalem', 'Zion’s daughters, quoted')]),
+    (36, 'zion-shelter', 'Zion’s purified survivors, quoted (2 Nephi 14)', 'quotation',
+     'Book of Mormon — The Isaiah quotation moves to purified survivors in Zion and Jerusalem, with cloud, fire and '
+     'shelter over its assemblies. The shelter is imagery, not a building.', None,
+     [('OTM-zion-prophetic-jerusalem', 'its survivors, quoted from Isaiah')]),
+    (37, 'vineyard-song', 'Isaiah’s vineyard song (2 Nephi 15)', 'quotation',
+     'Book of Mormon — Isaiah’s vineyard song, quoted, identifies Israel and Judah as its referents and condemns '
+     'injustice, dispossession and pride. The vineyard is an allegory, not a site.', None,
+     [('OTM-judah-region', 'a referent of the quoted song')]),
+    (38, 'isaiah-throne-vision', 'Isaiah’s temple vision, quoted (2 Nephi 16)', 'quotation',
+     'Book of Mormon — Isaiah’s temple-throne vision in the year of Uzziah’s death, quoted, includes seraphim, '
+     'purification, commission and a surviving remnant. No calibrated year is given.', None,
+     [('OHR-AZARIAH-UZZIAH', 'year of his death, in the quoted vision')]),
+    (39, 'judah-damascus-samaria', 'Judah, Damascus and Samaria, quoted from Isaiah (2 Nephi 17)', 'quotation',
+     'Book of Mormon — This chapter quotes Isaiah’s account concerning Judah, Damascus and Samaria: Ahaz faces Rezin '
+     'and Pekah, and the Immanuel sign is given. It is quoted Israelite material, not Nephite geography; no pool is '
+     'identified.', '1–14',
+     [('OTM-r02-ahaz-crisis', 'same crisis, quoted'), ('OTM-judah-region', 'quoted from Isaiah'),
+      ('OTM-damascus', 'quoted from Isaiah'), ('OTM-samaria', 'quoted from Isaiah')]),
+    (40, 'isaiah-children-signs', 'Isaiah’s children as signs, quoted (2 Nephi 18)', 'quotation',
+     'Book of Mormon — In the quotation Isaiah’s children are signs; the oracle anticipates the spoil of Damascus '
+     'and Samaria and uses Assyria’s invasion as overflowing-water imagery, not a flood event.', None,
+     [('OTM-r01-isaiah-family', 'his children as signs, quoted'), ('OTM-damascus', 'quoted from Isaiah'),
+      ('OTM-samaria', 'quoted from Isaiah'), ('OTM-assyria-region', 'quoted from Isaiah')]),
+    (41, 'jordan-galilee-light', 'Light beyond Jordan, quoted (2 Nephi 19)', 'quotation',
+     'Book of Mormon — The quotation names Zebulun, Naphtali, Jordan and Galilee and promises light and a ruler. '
+     'Verse 1 reads Red Sea where Isaiah 9:1 differs; the wording is kept, not harmonized.', None,
+     [('OHP-JORDAN', 'named in the quotation')]),
+    (42, 'assyrian-advance-oracle', 'Assyria’s advance toward Nob, quoted (2 Nephi 20)', 'quotation',
+     'Book of Mormon — Assyria is portrayed as an instrument later judged; in verses 28–32 Aiath, Migron, Michmash, '
+     'Geba and Nob form the oracle’s prophetic advance toward Zion. It is a quoted threat, not a military route.',
+     '5–19, 28–32',
+     [('OTM-j01-assyrian-oracle-march', 'same oracle, quoted'), ('OTM-assyria-region', 'quoted from Isaiah'),
+      ('OTM-zion-prophetic-jerusalem', 'the advance’s goal, quoted')]),
+    (43, 'jesse-ruler', 'A ruler from Jesse, quoted (2 Nephi 21)', 'quotation',
+     'Book of Mormon — A ruler from Jesse, peace among creatures and recovery of Israel from named regions frame the '
+     'quoted gathering prophecy. The regions get no present-day boundaries.', None,
+     [('OTM-a01-jesse', 'same passage, quoted')]),
+    (44, 'zion-song', 'Zion’s song of salvation, quoted (2 Nephi 22)', 'quotation',
+     'Book of Mormon — A quoted song praises salvation, uses wells-of-salvation imagery and calls Zion’s inhabitants '
+     'to rejoice in the Holy One of Israel.', None,
+     [('OTM-zion-prophetic-jerusalem', 'its inhabitants addressed, quoted')]),
+    (45, 'babylon-oracle', 'The Babylon oracle, quoted (2 Nephi 23)', 'quotation',
+     'Book of Mormon — The quoted Babylon oracle portrays divine judgment, names the Medes and compares Babylon’s '
+     'fate with Sodom and Gomorrah. It is prophecy, not a dated archaeological account.', None,
+     [('OTM-babylon', 'quoted from Isaiah'), ('OTM-media', 'the Medes named, quoted'),
+      ('OHP-SODOM', 'compared, quoted'), ('OHP-GOMORRAH', 'compared, quoted')]),
+    (46, 'babylon-king-taunt', 'The taunt against Babylon’s king, quoted (2 Nephi 24)', 'quotation',
+     'Book of Mormon — Israel’s restoration frames a quoted taunt against Babylon’s king, followed by Assyrian and '
+     'Philistine judgment language. The taunt’s addressee and later interpretations stay separate; Palestina is not '
+     'a modern border.', None,
+     [('OTM-c05-babylon-taunt', 'same taunt, quoted'), ('OTM-assyria-region', 'quoted from Isaiah'),
+      ('OTM-philista-region', 'quoted from Isaiah')]),
+    (47, 'jerusalem-destruction-recounted', 'Jerusalem’s destruction recounted by Nephi (2 Nephi 25)', 'teaching',
+     'Book of Mormon — Nephi interprets Isaiah and recounts Jerusalem’s destruction and projected return. His '
+     'retrospective is kept apart from prophecy, and the six-hundred-year notices are not harmonized with outside '
+     'chronology.', None, [('ev:jerusalem-destruction', 'recounted by Nephi')]),
+    (78, 'sinai-recalled', 'Sinai and Egypt recalled by Abinadi (Mosiah 12)', 'teaching',
+     'Book of Mormon — Questioned by Noah’s priests, who cite Isaiah, Abinadi challenges their teaching of Moses’ '
+     'law. Sinai and Egypt are scriptural recollections, not Abinadi’s route.', None,
+     [('OTS-AP04-sinai', 'recalled by Abinadi'), ('OHR-MOSES', 'his law, in Abinadi’s defense')]),
+    (80, 'suffering-servant', 'The suffering servant, quoted by Abinadi (Mosiah 14)', 'quotation',
+     'Book of Mormon — Abinadi quotes Isaiah’s suffering-servant passage (Isaiah 53) in his answer to the priests. '
+     'It is a reference, not an observed crucifixion or a located grave.', None,
+     [('OTM-c04-messianic-reception', 'Isaiah 53, quoted by Abinadi')]),
+    (102, 'mary-jerusalem-teaching', 'Mary and Jerusalem in Alma’s teaching (Alma 7)', 'teaching',
+     'Book of Mormon — At Gideon, Alma teaches Christ’s coming and names Mary and Jerusalem. The text’s wording, '
+     'Jerusalem as the land of the forefathers, is kept beside the New Testament’s Bethlehem; no harmonization is '
+     'claimed.', None,
+     [('NTE-annunciations', 'Mary named by Alma'), ('ev:jesus-birth-luke', 'the birth Alma foretells')]),
+    (107, 'eden-fall-teaching', 'Adam’s Fall in Alma’s teaching (Alma 12)', 'teaching',
+     'Book of Mormon — In Ammonihah, Alma addresses Zeezrom and Antionah about Adam’s Fall, mortal probation and the '
+     'plan of redemption. The recalled Eden is not a newly located garden.', None,
+     [('OH-P01', 'Eden recalled by Alma')]),
+    (108, 'melchizedek-salem', 'Melchizedek, king of Salem, in Alma’s teaching (Alma 13)', 'teaching',
+     'Book of Mormon — Alma’s teaching recalls Melchizedek, king of Salem, and Abraham’s tithes as an example of '
+     'peace and faith. It is not Alma’s travel, and Salem is not identified.', [14, '–', 18],
+     [('OHR-ABRAHAM', 'his tithes recalled by Alma'), ('NTC-priesthood', 'Melchizedek, also in Hebrews 7')]),
+    (128, 'moses-wilderness-type', 'Moses’ wilderness healing, cited by Alma (Alma 33)', 'teaching',
+     'Book of Mormon — Alma cites Zenos, Zenock and Moses to teach prayer beyond synagogues and faith in the Son of '
+     'God, including the wilderness healing type. Amulek, speaking next, recalls that his brother has appealed to '
+     'Moses to prove these things (Alma 34:7). The quoted settings are not stops on Alma’s mission.', None,
+     [('OHR-MOSES', 'wilderness healing type, cited by Alma')]),
+    (166, 'witnesses-mulek-claim', 'Moses, Abraham and Mulek’s survival in Nephi’s preaching (Helaman 8)', 'teaching',
+     'Book of Mormon — Nephi recalls Moses and Abraham as witnesses and says that Mulek survived the killing of '
+     'Zedekiah’s sons. The survival and descent are this text’s claims, not an independently established genealogy '
+     'or migration. Helaman 6:10 separately says that the northern land was named after Mulek, whom that verse '
+     'calls Zedekiah’s son.', '11–22',
+     [('OHR-MOSES', 'recalled as a witness'), ('OHR-ABRAHAM', 'recalled as a witness'),
+      ('OHR-ZEDEKIAH', 'Mulek survival claim concerning his sons')]),
+    (190, 'redeemed-jerusalem', 'Redeemed Jerusalem, quoted by Jesus (3 Nephi 16)', 'quotation',
+     'Book of Mormon — Jesus speaks of other sheep beyond this land and Jerusalem and quotes Isaiah on redeemed '
+     'Jerusalem. The unvisited sheep have no named destination.', None,
+     [('OTM-jerusalem', 'its redemption, quoted from Isaiah')]),
+    (194, 'abraham-covenant-teaching', 'The covenant through Abraham, taught by Jesus (3 Nephi 20)', 'teaching',
+     'Book of Mormon — Jesus teaches Israel’s gathering, a New Jerusalem in this land, the covenant through Abraham '
+     'and a future return to ancestral Jerusalem. New Jerusalem and biblical Jerusalem stay distinct.', None,
+     [('OHR-ABRAHAM', 'his covenant, in Jesus’ teaching')]),
+    (199, 'horeb-elijah-malachi', 'Horeb and Elijah, quoted from Malachi (3 Nephi 25)', 'quotation',
+     'Book of Mormon — Malachi’s coming day, healing, Moses’ law at Horeb and Elijah’s heart-turning mission are '
+     'quoted to the people. Horeb is a retrospect, not a journey; Elijah’s coming is not said to occur here. Jesus '
+     'then says the Father commanded him to give them these scriptures, which they had not had, for future '
+     'generations (3 Nephi 26:1–2); that chapter does not name Malachi.', None,
+     [('OTS-P05-horeb', 'Moses’ law there, quoted from Malachi'), ('OHR-ELIJAH', 'his promised mission, quoted'),
+      ('OHR-MOSES', 'his law, quoted from Malachi')]),
+    (218, 'john-writings-named', 'John’s writings named by Moroni (Ether 4)', 'mention',
+     'Book of Mormon — Moroni explains restricted revelation and invites readers to receive fuller revelation, '
+     'including John’s writings. Moroni’s editorial time differs from the Jaredite scene.', None,
+     [('ev:patmos-vision', 'John’s writings named by Moroni')]),
+    (227, 'jerusalem-new-jerusalem-prophecy', 'Jerusalem and a New Jerusalem in Ether’s prophecy (Ether 13)',
+     'prophecy',
+     'Book of Mormon — Ether’s prophecy distinguishes the Jerusalem from which Lehi would come from a New Jerusalem '
+     'promised on this land. It recalls Joseph and his father in Egypt; the promised cities are not presented as '
+     'completed Jaredite construction.', '4–11',
+     [('OTM-jerusalem', 'Jerusalem of old in Ether’s prophecy'),
+      ('OHR-JOSEPH-JACOB', 'Joseph recalled in the prophecy')]),
+    # Checkpoint 35: the S34 builder decisions (supplementary-review-s34/builder-decisions.md at 5b9aa4a). Copy is the
+    # reviewer's minimum attributed copy; full-chapter locators, as that brief specifies.
+    (24, 'eden-lehi-teaching', 'Eden in Lehi’s teaching on the Fall (2 Nephi 2)', 'teaching',
+     'Book of Mormon — Lehi teaches Jacob about the Fall, opposition and moral agency. Eden belongs to this teaching; '
+     'no new physical location or dated creation event is supplied.', None,
+     [('OH-P01', 'Eden in Lehi’s teaching')]),
+    (27, 'temple-solomon-comparison', 'A temple after the manner of Solomon’s (2 Nephi 5)', 'mention',
+     'Book of Mormon — Nephi describes a temple constructed after the manner of Solomon’s temple while distinguishing '
+     'its materials. The comparison supplies neither a recovered building nor an exact plan.', None,
+     [('OHR-SOLOMON', 'his temple used as a comparison')]),
+    (57, 'david-solomon-rebuke', 'David and Solomon in Jacob’s rebuke (Jacob 2)', 'teaching',
+     'Book of Mormon — Jacob condemns his audience’s appeal to David and Solomon to justify plural marriages and '
+     'describes harm to wives and children. In Jacob 1:15 the narrative first says that under the second king the '
+     'people began to indulge in practices like David of old desiring many wives and concubines, and also Solomon '
+     'his son. This is Jacob’s attributed teaching, not an independently established biography.', None,
+     [('OHR-DAVID', 'named in Jacob’s rebuke'), ('OHR-SOLOMON', 'named in Jacob’s rebuke')]),
+    (105, 'amulek-joseph-descent', 'Amulek’s descent from Joseph (Alma 10)', 'mention',
+     'Book of Mormon — Amulek gives a lineage through Lehi and Manasseh to Joseph. The descent is the narrative’s '
+     'claim; unspecified intervening generations remain unspecified.', None,
+     [('OHR-JOSEPH-JACOB', 'descent claimed by Amulek')]),
+    (137, 'eden-alma-teaching', 'Eden in Alma’s teaching to Corianton (Alma 42)', 'teaching',
+     'Book of Mormon — Alma teaches Corianton about the Fall, mortal probation, justice and mercy, recalling the '
+     'garden and tree of life. No new Eden position or physical departure route is established.', None,
+     [('OH-P01', 'Eden in Alma’s teaching')]),
+    (187, 'solomon-glory-illustration', 'Solomon’s glory as an illustration (3 Nephi 13)', 'teaching',
+     'Book of Mormon — In the teaching addressed to the twelve from verse 25, Solomon’s glory is used as an '
+     'illustration about clothing and provision. Solomon is not a visitor to this scene. The discourse also invites '
+     'comparison with Matthew 6; its wording and addressed audience remain distinct.', None,
+     [('OHR-SOLOMON', 'illustrative reference in teaching'), ('NTC-sermon-mountain', 'compare Matthew 6')]),
+    (239, 'jerusalem-zion-exhortation', 'Jerusalem and Zion in Moroni’s closing exhortation (Moroni 10)', 'teaching',
+     'Book of Mormon — Moroni’s closing exhortation invokes Jerusalem and Zion in covenant imagery. It is not a '
+     'journey or a dated construction event.', None,
+     [('OTM-jerusalem', 'invoked in covenant exhortation'),
+      ('OTM-zion-prophetic-jerusalem', 'invoked in covenant exhortation')]),
+    (48, 'zion-welfare-teaching', 'Zion’s welfare and charity in Nephi’s teaching (2 Nephi 26)', 'teaching',
+     'Book of Mormon — Nephi condemns priestcraft that seeks gain and praise rather than Zion’s welfare, and teaches '
+     'charity. This passage does not identify Zion as a mapped city. Nephi later warns against those lulled into '
+     'saying all is well in Zion and those at ease in Zion (2 Nephi 28:21, 24), again without a mapped Zion.', '29–31',
+     []),
+    (49, 'isaiah-29-comparison', 'Isaiah 29 compared in Nephi’s prophecy (2 Nephi 27)', 'quotation',
+     'Book of Mormon — Compare 2 Nephi 27:25–35 with Isaiah 29:13–24; their language includes Abraham and the house of '
+     'Jacob. The two texts differ in wording and are not harmonized; the house of Jacob is the collective people, and '
+     'the chapter’s dream imagery is not located as a vision scene.', '25–35',
+     [('OHR-ABRAHAM', 'named in the compared passages')]),
+    (179, 'israel-gathering-editorial', 'Israel’s gathering in Mormon’s editorial voice (3 Nephi 5)', 'teaching',
+     'Book of Mormon — Mormon’s editorial voice proclaims Israel’s future gathering. His editorial present is '
+     'distinct from the preceding year-25 narrative.', None,
+     [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (195, 'israel-gathering-new-jerusalem', 'Gathering and a New Jerusalem in Jesus’ teaching (3 Nephi 21)',
+     'teaching',
+     'Book of Mormon — Jesus teaches gathering and covenant inclusion, with repentant Gentiles assisting in a '
+     'promised New Jerusalem. Neither a completed migration nor a modern territorial identification is supplied.',
+     None, [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (203, 'israel-remnant-warning', 'Israel’s remnant in Mormon’s address to future readers (3 Nephi 29)',
+     'teaching',
+     'Book of Mormon — Mormon addresses future recipients about covenant restoration and warns against mocking Jews '
+     'or Israel’s remnant. This is not Jesus’s earlier Bountiful audience or a dated modern fulfillment.', None,
+     [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (204, 'gentiles-numbered-israel', 'Gentiles numbered with Israel (3 Nephi 30)', 'teaching',
+     'Book of Mormon — Mormon transmits Christ’s call to Gentiles to repent, receive baptism and the Spirit, and be '
+     'numbered with Israel. The inclusion is covenant language, not a mapped border.', None,
+     [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (208, 'israel-address-mormon', 'Mormon’s address to Gentiles and Israel (Mormon 3)', 'teaching',
+     'Book of Mormon — After refusing command amid vows of revenge, Mormon addresses future Gentiles and Israel about '
+     'repentance and judgment. The address is distinct from a completed journey or an endorsement of extermination.',
+     None, [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    (210, 'israel-lament-restoration', 'Lament and covenant restoration in Mormon’s address (Mormon 5)', 'teaching',
+     'Book of Mormon — Mormon’s editorial address joins lament for his people with covenant restoration and warnings '
+     'to future readers. It does not establish modern ethnic identities or a physical voyage from its ship imagery.',
+     None, [('OTM-israel-prophetic-community', 'Israel as covenant people')]),
+    # Checkpoint 36: the five S35 answers (supplementary-review-s35.md at PR34 7e03f2b, “Returned builder questions”).
+    # Copy is the reviewer's minimum copy; verse locators are the passages that review opened.
+    (73, 'egypt-jerusalem-limhi', 'Egypt and Jerusalem recalled by Limhi (Mosiah 7)', 'teaching',
+     'Book of Mormon — Limhi recalls deliverance from Egypt through the Red Sea and the departure of his people’s '
+     'ancestors from Jerusalem. These are recollections in his address, not Limhi’s own travels.', '19–20',
+     [('OTS-P04-egypt', 'deliverance recalled by Limhi'), ('OTM-jerusalem', 'ancestral departure recalled')]),
+    (79, 'sinai-moses-comparison', 'Sinai in the comparison of Abinadi with Moses (Mosiah 13)', 'mention',
+     'Book of Mormon — The narrator compares Abinadi’s shining face with Moses at Sinai; Abinadi then continues the '
+     'commandments. Sinai is a biblical comparison, not another local mountain or a journey by Abinadi.', '5, 11–24',
+     [('OTS-AP04-sinai', 'Sinai in the Moses comparison')]),
+    (131, 'egypt-jerusalem-alma', 'Egypt and Jerusalem recalled by Alma (Alma 36)', 'teaching',
+     'Book of Mormon — Alma recalls ancestral deliverance from Egypt and from Jerusalem while addressing his son. The '
+     'memories are not new journeys undertaken by Alma.', '28–29',
+     [('OTS-P04-egypt', 'deliverance recalled by Alma'), ('OTM-jerusalem', 'ancestral departure recalled')]),
+    (141, 'joseph-garment-moroni', 'Joseph’s garment invoked by Moroni (Alma 46)', 'quotation',
+     'Book of Mormon — Moroni invokes Joseph’s torn garment and recounts words attributed to Jacob about a preserved '
+     'remnant. This quotation is presented in Alma’s narrative; it is not a quotation found in the Genesis text.',
+     '23–27', [('OHR-JOSEPH-JACOB', 'garment recalled by Moroni')]),
+    (69, 'mary-benjamin-angel', 'Mary named in the angel’s words reported by Benjamin (Mosiah 3)', 'prophecy',
+     'Book of Mormon — Benjamin reports an angel’s prophecy naming Mary as Jesus’s mother. This does not describe '
+     'Mary’s visit to Elisabeth.', '1–8',
+     [('NTE-annunciations', 'Mary, also named in Luke')]),
+    # Checkpoint 38: the S37 builder decisions (PR34 supplementary-review-s37/builder-decisions.md at 5069414).
+    # Copy is the reviewer's minimum copy; verse locators are the passages that review opened on 2026-11-02.
+    # Four candidates:
+    (53, 'baptism-example-nephi', 'Christ’s baptism taught as an example by Nephi (2 Nephi 31)', 'teaching',
+     'Book of Mormon — Nephi teaches Christ’s baptism as an example of obedience and calls his hearers to follow '
+     'him. This is a teaching about the baptism, not Nephi’s travel to its location.', '4–12',
+     [('NTE-baptism-matthew', 'his baptism taught as an example')]),
+    (124, 'egypt-deliverance-alma-29', 'Deliverance from Egypt recalled by Alma (Alma 29)', 'teaching',
+     'Book of Mormon — Alma recalls his fathers’ release from bondage and identifies their deliverer as the same God '
+     'who delivered people from the Egyptians. The recollection is not a Nephite journey to Egypt.', '11–13',
+     [('OTS-P04-egypt', 'deliverance recalled by Alma')]),
+    (172, 'death-signs-samuel', 'Christ’s death foretold by Samuel (Helaman 14)', 'prophecy',
+     'Book of Mormon — Samuel foretells Christ’s death and signs in the land, including three days of darkness and '
+     'upheaval. These predicted signs are not a description of conditions at Golgotha.', '14–25',
+     [('AE10', 'Christ’s death foretold')]),
+    (186, 'sermon-compare-matthew-5', 'Discourse to the multitude compared with Matthew 5 (3 Nephi 12)', 'teaching',
+     'Book of Mormon — Jesus teaches the multitude in a discourse comparable to Matthew 5. The accounts retain their '
+     'own wording and audiences; this is not the Galilean mountain setting.', '1–12',
+     [('NTC-sermon-mountain', 'compare Matthew 5')]),
+    # Five reader decisions:
+    (31, 'fall-redemption-jacob', 'The Fall and redemption in Jacob’s teaching (2 Nephi 9)', 'teaching',
+     'Book of Mormon — Jacob connects the Fall, death, resurrection and redemption in his teaching. The passage '
+     'recalls the first parents without locating Eden.', '6–10', []),
+    (113, 'creation-ammon-lamoni', 'Creation taught by Ammon to Lamoni (Alma 18)', 'teaching',
+     'Book of Mormon — Ammon teaches Lamoni about creation, Adam and the Fall, using the people’s records and '
+     'continuing through their ancestral history. This instruction is not a newly dated creation event or a located '
+     'Eden.', '36', [('OH-C01', 'creation in another account')]),
+    (214, 'creation-moroni-teaching', 'Creation and the Fall in Moroni’s teaching (Mormon 9)', 'teaching',
+     'Book of Mormon — Moroni names Adam while teaching creation, the Fall and redemption. These teachings do not '
+     'supply a new creation date or garden location.', '11–13', [('OH-C01', 'creation in another account')]),
+    (188, 'sermon-compare-matthew-7', 'Teaching on judgment and asking compared with Matthew 7 (3 Nephi 14)',
+     'teaching',
+     'Book of Mormon — Jesus continues teaching the multitude about judgment and asking God. Compare Matthew 7 '
+     'without collapsing the two narrative settings.', '1–14', [('NTC-sermon-mountain', 'compare Matthew 7')]),
+    (202, 'three-disciples-john', 'Three disciples’ desire compared with John’s (3 Nephi 28)', 'teaching',
+     'Book of Mormon — Jesus compares three disciples’ desire to remain in ministry with John’s desire. This is not '
+     'John’s vision on Patmos. John 21 preserves a conditional saying about remaining and cautions against the report '
+     'that the disciple would not die.', '4–9', []),
+    # Four previously unstated parallels, now read:
+    (81, 'peace-messengers-jerusalem', 'Proclaiming peace and Jerusalem in Abinadi’s words (Mosiah 15)', 'quotation',
+     'Book of Mormon — Abinadi applies the image of proclaiming peace to prophets and the Lord, and repeats language '
+     'about Zion and Jerusalem found in Isaiah 52. These are teaching and quotation references, not his itinerary.',
+     '13–18, 28–31', [('OTM-jerusalem', 'Jerusalem in the quoted language')]),
+    (100, 'good-shepherd-alma', 'The good shepherd in Alma’s call (Alma 5)', 'teaching',
+     'Book of Mormon — Alma calls hearers to follow the good shepherd. John 10 also uses shepherd imagery; this '
+     'comparison does not identify a shared scene or prove that Alma quotes that discourse.', '57–60', []),
+    (191, 'healings-jerusalem-recalled', 'Healings at Jerusalem recalled by Jesus (3 Nephi 17)', 'teaching',
+     'Book of Mormon — Jesus announces a visit to the lost tribes without naming their destination, and compares his '
+     'healings with what he did among people at Jerusalem. No modern tribal identity or route is supplied.',
+     '4, 7–9', [('OTM-jerusalem', 'healings at Jerusalem recalled')]),
+    (192, 'bread-wine-remembrance', 'Bread and wine in remembrance (3 Nephi 18)', 'teaching',
+     'Book of Mormon — Jesus gives bread and wine in remembrance of his body and blood. Compare Matthew’s supper '
+     'account as a distinct scene; the chapter does not move the multitude to Jerusalem or identify this meal as that '
+     'supper.', '1–11', []),
+    # Relations without a card, as unlinked source views:
+    (13, 'record-jews-gentiles-vision', 'A record from the Jews through the Gentiles, in Nephi’s vision (1 Nephi 13)',
+     'vision',
+     'Book of Mormon — Nephi’s vision describes a record proceeding from the Jews through the Gentiles and attributes '
+     'losses from that record to opposition to the gospel. This is the vision’s account, not an independently '
+     'established history of biblical transmission or an identification of a modern denomination.', '20–29', []),
+    (51, 'bible-records-discourse', 'The Bible and other records in Nephi’s discourse (2 Nephi 29)', 'teaching',
+     'Book of Mormon — The discourse explicitly names the Bible, condemns hostility toward the Jews, and describes '
+     'records among Jews, Nephites and other peoples. These are the discourse’s claims about scripture and covenant, '
+     'not a reconstructed history of all biblical canons.', '3–14', []),
+    (212, 'two-records-mormon', 'This record and the record from the Jews, in Mormon’s address (Mormon 7)', 'teaching',
+     'Book of Mormon — Mormon asks his future audience to believe this record together with the record coming from '
+     'Jews through Gentiles. The relationship is asserted by his address, not established by a shared modern map.',
+     '8–10', []),
+    (94, 'tower-creation-retrospect', 'The tower and the creation of Adam in Mosiah’s translation (Mosiah 28)',
+     'mention',
+     'Book of Mormon — Mosiah’s translation is said to recount the destroyed people’s history back through the great '
+     'tower and the creation of Adam. The retrospect does not date or locate the tower.', '17–19', []),
+    (215, 'tower-abridgment-moroni', 'The tower in Moroni’s abridgment (Ether 1)', 'mention',
+     'Book of Mormon — Moroni says he omits the creation-to-tower portion available among the Jews and begins his '
+     'abridgment from the tower. Jared’s departure is associated with the confounding of languages. No modern tower '
+     'site or date is supplied.', '3–5, 33–37', []),
+    # Checkpoint 58 (HANDOFF_PLAN 2026-11-04 "residual Book of Mormon dispositions"): views for the primary-read
+    # findings. Copy restates the cited verses; the speaker or narrator is named, and nothing is added from memory.
+    (15, 'abraham-covenant-isaiah-restoration',
+     'Abraham’s covenant and Isaiah’s restoration in Nephi’s reading (1 Nephi 15)', 'teaching',
+     'Book of Mormon — Nephi tells his brothers that their father’s words point to the covenant the Lord made to '
+     'Abraham, that in his seed all the kindreds of the earth shall be blessed, and he rehearses Isaiah’s words on '
+     'the restoration of the Jews, or the house of Israel. This is Nephi’s teaching; no Isaiah chapter is matched, and '
+     'no gathering route or date is added.', '18, 20', [('OHR-ABRAHAM', 'covenant with him recalled by Nephi')]),
+    (52, 'isaiah-11-righteous-judge', 'A righteous judge and peace among creatures in Nephi’s prophecy (2 Nephi 30)',
+     'teaching',
+     'Book of Mormon — In his own prophecy of the last days, Nephi uses words closely parallel to Isaiah 11:4–9: the '
+     'Lord judges the poor with righteousness, the wolf dwells with the lamb, and the earth is full of the knowledge '
+     'of the Lord. Compare Isaiah 11:4–9. Nephi frames them within his own prophecy, apart from the quotation of '
+     'Isaiah 11 in 2 Nephi 21, and the texts are not harmonized.', '9, 11–15',
+     [('OTM-c04-messianic-reception', 'compare Isaiah 11, in Nephi’s prophecy')]),
+    (59, 'abraham-isaac-similitude', 'Abraham’s offering of Isaac as a similitude in Jacob’s teaching (Jacob 4)',
+     'teaching',
+     'Book of Mormon — Jacob says his people keep the law of Moses because it points their souls to Christ, and that '
+     'it is sanctified to them as Abraham’s obedience in offering up his son Isaac was accounted to him; Jacob calls '
+     'that offering a similitude of God and his Only Begotten Son. The interpretation is Jacob’s, kept distinct from '
+     'the Genesis narrative; no place or date is added.', '5',
+     [('OHR-ABRAHAM', 'offering of Isaac, read by Jacob'),
+      ('OHR-ISAAC', 'offered up, in Jacob’s similitude')]),
+    (65, 'zedekiah-captivity-tower-stone', 'Zedekiah’s captivity and the tower in Amaleki’s record (Omni 1)', 'mention',
+     'Book of Mormon — Amaleki records that Mosiah learned the people of Zarahemla came out from Jerusalem when '
+     'Zedekiah, king of Judah, was carried away captive into Babylon, and that an engraved stone Mosiah interpreted '
+     'told of Coriantumr, whose first parents came out from the tower when the Lord confounded the language. The '
+     'synchronization is the text’s claim; no route, tower site or date is supplied. Moroni’s abridgment in Ether 1 '
+     'also begins from the tower.', '15, 20–22', [('OHR-ZEDEKIAH', 'his captivity, named by Amaleki')]),
+    (67, 'jerusalem-ancestral-benjamin', 'Ancestral Jerusalem in Benjamin’s charge (Mosiah 1)', 'mention',
+     'Book of Mormon — Benjamin tells his sons that the plates of Nephi hold their fathers’ records from the time they '
+     'left Jerusalem, and he announces that he will give his people a name so that they may be distinguished above all '
+     'the people the Lord brought out of Jerusalem. '
+     'Jerusalem is the ancestral city recalled, not a destination; no voyage or date is added.', '6, 11',
+     [('OTM-jerusalem', 'fathers’ departure, recalled by Benjamin')]),
+    (82, 'first-parents-fall-abinadi', 'The first parents and the Fall in Abinadi’s teaching (Mosiah 16)',
+     'teaching',
+     'Book of Mormon — Abinadi teaches that the old serpent beguiled the first parents, which was the cause of their '
+     'fall and of all mankind becoming carnal. This is Abinadi’s sermon, distinct from Jacob’s teaching in 2 Nephi 9; '
+     'later in the chapter he speaks of future events as though already accomplished. No Eden is located.', '3, 6–8', []),
+    (104, 'jerusalem-deliverance-alma', 'Deliverance from Jerusalem recalled by Alma at Ammonihah (Alma 9)', 'mention',
+     'Book of Mormon — Alma asks the people of Ammonihah whether they remember that their father Lehi was brought out '
+     'of Jerusalem by the hand of God, and recalls their deliverance from the land of Jerusalem. The recollection is '
+     'Alma’s; no voyage route or date is added.', '9, 22',
+     [('OTM-jerusalem', 'deliverance from it, recalled by Alma')]),
+    (117, 'creation-fall-aaron', 'Creation and the Fall taught by Aaron to Lamoni’s father (Alma 22)', 'teaching',
+     'Book of Mormon — Lamoni’s father asks whether God is the Great Spirit that brought his fathers out of the land '
+     'of Jerusalem; Aaron answers that he created all things and reads the scriptures to him from the creation of '
+     'Adam, laying the fall of man before him. The king means the ancestral city, not the Book of Mormon city of '
+     'Alma 21; this is Aaron’s teaching, not Ammon’s to Lamoni in Alma 18, and no Eden is located.', '9–13',
+     [('OTM-jerusalem', 'ancestral city named by the king'), ('OH-C01', 'creation in another account')]),
+    (140, 'moses-comparison-alma-departure', 'Alma’s departure compared with Moses (Alma 45)', 'mention',
+     'Book of Mormon — The narrator says Alma departed as if to go to Melek and was never heard of more. A saying in '
+     'the church held that he was taken up by the Spirit or buried by the hand of the Lord, even as Moses; the '
+     'narrator supposes the Lord received Alma in the spirit and says nothing is known of his death or burial. The '
+     'comparison is explicitly uncertain; no death event or place is added.', '18–19',
+     [('OHR-MOSES', 'compared, as the narrator supposes')]),
+    (161, 'abraham-isaac-jacob-fellowship', 'Sitting down with Abraham, Isaac and Jacob (Helaman 3)', 'teaching',
+     'Book of Mormon — The narrator teaches that the word of God leads the man of Christ across the gulf of misery to '
+     'sit down with Abraham, Isaac and Jacob and all the holy fathers in the kingdom of heaven. This is teaching about '
+     'the hereafter, not a vision, journey or genealogy.', '29–30',
+     [('OHR-ABRAHAM', 'named in the promised fellowship'), ('OHR-ISAAC', 'named in the promised fellowship'),
+      ('OHR-JACOB', 'named in the promised fellowship')]),
+    (185, 'crucified-christ-wounds-bountiful', 'The risen Christ’s wounds at Bountiful (3 Nephi 11)', 'mention',
+     'Book of Mormon — At Bountiful Jesus says he has drunk the bitter cup and been slain for the sins of the world; '
+     'the multitude remember the prophecy that Christ would show himself after his ascension, and one by one feel the '
+     'prints of the nails in his hands and feet. Bountiful is kept distinct from the Gospel appearances; no Gospel '
+     'episode is matched.', '11–15', []),
+    # checkpoint 62 (HANDOFF_PLAN 2026-11-04 MAT61-C1): a second 3 Nephi 11 view, the rock/sand comparison; the
+    # wounds view BMV-185-crucified-christ-wounds-bountiful (11:11–15) is unchanged
+    (185, 'doctrine-foundations-matthew', 'Rock and sand compared with Matthew (3 Nephi 11)', 'teaching',
+     'Book of Mormon — Jesus describes his doctrine in terms of faith, repentance, baptism, and witness from the '
+     'Father, Son and Holy Ghost. He calls building on that doctrine building on his rock; declaring more or less and '
+     'establishing it as his doctrine is a sandy foundation. Compare Matthew 16:18’s rock/church/gates saying and '
+     'Matthew 7:24–27’s storm-tested houses. Matthew 16 addresses Peter; Matthew 7 contrasts hearing and doing '
+     'Jesus’s words with hearing without doing them. These are comparisons of wording and images, not one setting, '
+     'audience or event.', '31–40', []),
+    (201, 'lifted-up-cross', 'Lifted up upon the cross, in Jesus’ words (3 Nephi 27)', 'teaching',
+     'Book of Mormon — Jesus tells the disciples that the Father sent him to be lifted up upon the cross, that he might '
+     'draw all men to him to be judged. The crucifixion is recalled; Matthew’s account is not quoted, and no place or '
+     'date is added.', '14', [('AE10', 'crucifixion recalled, not quoted')]),
+    (205, 'jerusalem-persecution-comparison', 'Persecution compared with Jerusalem’s (4 Nephi 1)', 'mention',
+     'Book of Mormon — The narrator says the hardened people sought to kill the disciples, even as the Jews at '
+     'Jerusalem sought to kill Jesus. The comparison names an attempt to kill; it does not identify the crucifixion '
+     'or a specific Gospel episode.', '31', []),
+    (220, 'barges-like-noahs-ark', 'Barges tight like Noah’s ark (Ether 6)', 'mention',
+     'Book of Mormon — Buried in the deep, the Jaredite vessels let in no water, being tight like a dish and like the '
+     'ark of Noah. The comparison is the text’s; no flood account or voyage route is located.', '7', []),
+    (222, 'cain-oaths-first-parents', 'Oaths from Cain and the deceiver of the first parents (Ether 8)', 'mention',
+     'Book of Mormon — Moroni’s abridgment says Akish administered oaths handed down from Cain, a murderer from the '
+     'beginning, after Jared’s daughter prompted the search for them, and that such combinations are built up by the '
+     'devil, the liar who beguiled the first parents. These are the text’s claims, not an independently established '
+     'history of the oaths.', '15–17, 25', [('OH-R01', 'Cain named as the oaths’ source')]),
+    (236, 'charity-compare-1-corinthians-13', 'Charity compared with 1 Corinthians 13 (Moroni 7)', 'teaching',
+     'Book of Mormon — Mormon’s address describes charity in words comparable to 1 Corinthians 13:4–8: it suffers '
+     'long, is kind and never fails. He frames it his own way, calling charity the greatest of all, for all things '
+     'must fail. Compare the passages; their clauses differ, and neither is presented as a quotation of the other.',
+     '45–46', []),
+    (237, 'curse-of-adam-children', 'The curse of Adam in Mormon’s letter (Moroni 8)', 'teaching',
+     'Book of Mormon — Mormon’s letter gives words of Christ that little children are whole and that the curse of Adam '
+     'is taken from them. This is Mormon’s later teaching about children, kept distinct from the Genesis narrative '
+     'of the expulsion; no Eden is located.', '8', [('OH-E01', 'compare the Genesis account')]),
+    # Checkpoint 60 (HANDOFF_PLAN 2026-11-04 "next bounded semantic tranche", 20 full primary chapter reads): views
+    # for the ten coverage corrections that need one, BMC-135's qualified source view and the selected BMC-155
+    # comparison. Copy restates the cited verses; the speaker or narrator is named, and nothing is added from memory.
+    (68, 'jerusalem-thanksgiving-benjamin', 'Deliverance from Jerusalem in the assembly and Benjamin’s speech (Mosiah 2)',
+     'mention',
+     'Book of Mormon — The narrator says the people gathered at the temple to offer sacrifice according to the law of '
+     'Moses and to give thanks to the Lord their God, who had brought them out of the land of Jerusalem. In his speech '
+     'Benjamin later says they have been taught concerning the records of the holy prophets, even down to the time '
+     'their father Lehi left Jerusalem. The narrator’s description and Benjamin’s words are kept distinct; the '
+     'sacrifice is a practice, not a link to Moses, and no voyage or date is added.', '3–4, 34',
+     [('OTM-jerusalem', 'deliverance recalled at the assembly')]),
+    (76, 'jerusalem-tradition-zeniff-reports', 'Jerusalem in a tradition Zeniff reports (Mosiah 10)', 'mention',
+     'Book of Mormon — In his record Zeniff reports a tradition of the Lamanites’ fathers: that they were driven out '
+     'of the land of Jerusalem because of their fathers’ iniquities, were wronged in the wilderness, while crossing '
+     'the sea and in the land of first inheritance, because Nephi was favored of the Lord, and that Nephi robbed them '
+     'when he departed with the plates of brass. This is Zeniff’s report of another people’s tradition, not an '
+     'independently verified history, and his description of that people is his own. No route or date is added.',
+     '12–16', [('OTM-jerusalem', 'departure, in a tradition Zeniff reports')]),
+    (84, 'abinadi-words-taught-by-alma', 'Christ’s death, resurrection and ascension in Abinadi’s words (Mosiah 18)',
+     'teaching',
+     'Book of Mormon — Having fled from king Noah’s servants, Alma goes privately among the people and teaches the '
+     'words of Abinadi concerning that which was to come: the resurrection of the dead and the redemption of the '
+     'people through the power, sufferings and death of Christ, and his resurrection and ascension into heaven. This '
+     'is teaching about future events, not an eyewitness recollection, and it is distinct from the later Alma’s '
+     'counsel to Corianton in Alma 40. No Gospel episode or site is matched.', '1–2', []),
+    (106, 'nephite-reckoning-jews-jerusalem', 'Nephite reckoning contrasted with the Jews at Jerusalem (Alma 11)',
+     'mention',
+     'Book of Mormon — Introducing the pieces of gold and silver and the judges’ wages (verses 3–19), the narrator '
+     'says the names are given by the Nephites, for they did not reckon or measure after the manner of the Jews who '
+     'were at Jerusalem, but altered their reckoning and measure in every generation until the reign of the judges. '
+     'This is the narrator’s cultural comparison: the pieces are not presented as minted coins, no modern conversion '
+     'is given, and the biblical city is not said to have used the Nephite system.', '4',
+     [('OTM-jerusalem', 'its Jews, contrasted by the narrator')]),
+    (135, 'resurrection-ascension-alma-opinion', 'Christ’s resurrection and ascension in Alma’s reasoning (Alma 40)',
+     'teaching',
+     'Book of Mormon — Alma tells Corianton that the first resurrection spoken of means the reuniting of soul and body '
+     'of those from the days of Adam down to the resurrection of Christ. He gives it as his opinion that the souls and '
+     'bodies of the righteous are reunited at the resurrection of Christ and his ascension into heaven, but says he '
+     'does not say whether it is at his resurrection or after. Alma’s stated uncertainty is kept; Adam marks an '
+     'epoch, not a narrated Fall, and no Gospel account is matched as proof of the timing.', '16–21', []),
+    (149, 'zoram-jerusalem-ammoron-claim', 'Zoram and Jerusalem in Ammoron’s claim (Alma 54)', 'mention',
+     'Book of Mormon — In his letter to Moroni, Ammoron says he is a descendant of Zoram, whom Moroni’s fathers '
+     'pressed and brought out of Jerusalem. The descent and the charge of coercion are Ammoron’s claims in a hostile '
+     'letter, not established fact; Zoram’s departure is told in 1 Nephi and is not repeated here as a journey.', '23',
+     [('OTM-jerusalem', 'Zoram brought out, as Ammoron claims')]),
+    (155, 'inward-vessel-compare-matthew-23', 'The inward vessel cleansed first, in Moroni’s letter (Alma 60)',
+     'teaching',
+     'Book of Mormon — Moroni reminds Pahoran that God has said the inward vessel shall be cleansed first and then the '
+     'outer vessel, and applies it to their government: they will first cleanse the inward vessel, even the great '
+     'head of their government. Compare Matthew 23:25–26 on cleansing first within the cup and platter. Moroni applies '
+     'a saying he attributes to God; neither a quotation from Matthew nor a shared Gospel scene is established.',
+     '23–24', []),
+    (165, 'first-nephi-departure-recalled', 'The first Nephi’s departure from Jerusalem recalled (Helaman 7)', 'mention',
+     'Book of Mormon — Nephi, the son of Helaman, wishes he could have lived in the days when his father Nephi first '
+     'came out of the land of Jerusalem, when that people were easy to be entreated. The speaker is the later Nephi; '
+     'the Nephi he recalls is the founding ancestor. This is a recollection: no Jerusalem trip, genealogy, route or '
+     'date is added.', '7', [('OTM-jerusalem', 'the first Nephi’s departure, recalled')]),
+    (183, 'voice-creation-life-laid-down', 'Creation and a life laid down, declared by the voice (3 Nephi 9)',
+     'teaching',
+     'Book of Mormon — In the darkness after the destructions, a voice heard among the inhabitants declares: I am Jesus '
+     'Christ the Son of God; I created the heavens and the earth; in me is the law of Moses fulfilled; offerings by '
+     'the shedding of blood are done away; and for such as come unto me I have laid down my life and have taken it up '
+     'again. This is the voice scene, kept distinct from the bodily appearance at Bountiful in 3 Nephi 11; it is not '
+     'a quoted crucifixion account, and no creation or Moses card is linked.', '15–22', []),
+    (216, 'nimrod-valley-named', 'The valley named after the mighty hunter (Ether 2)', 'mention',
+     'Book of Mormon — Moroni’s abridgment says Jared, his brother and their families went down into the valley '
+     'northward, whose name was Nimrod, being called after the mighty hunter. Compare Genesis 10:8–9, which calls '
+     'Nimrod a mighty hunter before the Lord. The valley is not identified with Shinar or Babel, Nimrod is not said '
+     'to have built the tower, and the later Jaredite named Nimrod is a different person.', '1', []),
+    (217, 'fall-divine-image-spirit-body', 'The fall and the divine image as the Lord shows himself (Ether 3)',
+     'teaching',
+     'Book of Mormon — The brother of Jared prays that because of the fall their natures have become evil continually. '
+     'The Lord tells him that he shall take upon him flesh and blood, shows himself, and says that the brother is '
+     'redeemed from the fall, that all men were created in the beginning after his own image, and that the body seen '
+     'is the body of his spirit, after which man was created. Moroni then says Jesus showed himself in the likeness of '
+     'the same body as he showed himself to the Nephites. The prayer, the Lord’s words and Moroni’s comparison stay '
+     'distinct; Adam is not named, and the spirit-body teaching is Ether’s, not drawn from Genesis.', '2, 9, 13–18',
+     [('OHC-CREATION', 'compare the divine image in Genesis')]),
+]
+
+# Checkpoint 38: further sources a view cites beside its own chapter locator (S37 decisions): (text, url).
+_S = 'https://www.churchofjesuschrist.org/study/scriptures/'
+EXTRA_SOURCES = {
+    166: [('Helaman 6:10', _S + 'bofm/hel/6?lang=eng')],
+    186: [('Matthew 5:1–12', _S + 'nt/matt/5?lang=eng')],
+    188: [('Matthew 7:1–14', _S + 'nt/matt/7?lang=eng')],
+    202: [('John 21:20–23', _S + 'nt/john/21?lang=eng')],
+    81: [('Isaiah 52:7–10', _S + 'ot/isa/52?lang=eng')],
+    100: [('John 10:11–16', _S + 'nt/john/10?lang=eng')],
+    192: [('Matthew 26:26–29', _S + 'nt/matt/26?lang=eng')],
+    # checkpoint 53 (HANDOFF_PLAN 2026-11-03 bounded semantic dispositions): SEM-R2, SEM-R4
+    25: [('2 Nephi 4:1–2', _S + 'bofm/2-ne/4?lang=eng')],
+    49: [('Isaiah 29:13–24', _S + 'ot/isa/29?lang=eng')],
+    # checkpoint 58 (HANDOFF_PLAN 2026-11-04 residual Book of Mormon dispositions)
+    57: [('Jacob 1:15', _S + 'bofm/jacob/1?lang=eng')],
+    128: [('Alma 34:7', _S + 'bofm/alma/34?lang=eng')],
+    48: [('2 Nephi 28:21, 24', _S + 'bofm/2-ne/28?lang=eng')],
+    199: [('3 Nephi 26:1–2', _S + 'bofm/3-ne/26?lang=eng')],
+    52: [('Isaiah 11:4–9', _S + 'ot/isa/11?lang=eng')],
+    236: [('1 Corinthians 13:4–8', _S + 'nt/1-cor/13?lang=eng')],
+    # checkpoint 60 (HANDOFF_PLAN 2026-11-04 next bounded semantic tranche)
+    216: [('Genesis 10:8–9', _S + 'ot/gen/10?lang=eng')],
+    155: [('Matthew 23:25–26', _S + 'nt/matt/23?lang=eng')],
+    # checkpoint 59 (HANDOFF_PLAN 2026-11-04 SEM58-C3): source for the Ether 1 abridgment sentence
+    65: [('Ether 1:3–5', _S + 'bofm/ether/1?lang=eng')],
+    # checkpoint 62 (MAT61-C1): keyed by view so the other 3 Nephi 11 view keeps its own sources
+    'BMV-185-doctrine-foundations-matthew': [('Matthew 16:13–20', _S + 'nt/matt/16?lang=eng'),
+                                             ('Matthew 7:21–29', _S + 'nt/matt/7?lang=eng')],
+}
+
+# Views implemented without a See-also link: reason (recorded in bmc-source-views.csv). A view key overrides its
+# chapter number when one chapter has two views (checkpoint 62).
+NOLINK = {
+    'BMV-185-doctrine-foundations-matthew':
+        'checkpoint 62 decision (MAT61-C1): source-only comparison without a link; 3 Nephi 11:31–40 is compared with '
+        'Matthew 16:13–20 and Matthew 7:21–29 as wording and images, not one setting, audience or event. No Peter, '
+        'flood or Matthew-as-source claim; the Matthew 16:18 rock referent is not arbitrated',
+    11: 'nonspatial view without a link: its places are map pins, and See-also has no site: link',
+    22: 'interpretation view without a link: it carries the 1 Nephi 22 locator and the 22:4 unknown-location '
+        'safeguard for the 1 Nephi 20–21 quotations; no Bible card is its subject and no tribe or place is located',
+    48: 'S34 decision: explanatory view without a link; 2 Nephi 26:29–31 contrasts gain and praise with Zion’s welfare '
+        'but does not identify Zion with the mapped Jerusalem of OTM-zion-prophetic-jerusalem',
+    31: 'S37 decision: teaching view without a link; the Fall is a supported concept, not a missing coordinate, so the '
+        'garden-river card OH-P01 is not linked merely because the Fall is discussed',
+    202: 'S37 decision: source view without a link; not the Patmos vision (ev:patmos-vision is not used); no later-work '
+         '(4/dc) label or copy at this gate',
+    100: 'S37 decision: comparison view without a link; John 10 is cited as a source, with no shared scene or quotation '
+         'claimed. NTC-other-sheep is not reused because its principal subject differs from this bounded '
+         'good-shepherd comparison',
+    192: 'S37 decision: comparison view without a link; Matthew 26 is cited as a source; no Last Supper card is needed '
+         'and the meal is not identified with that supper',
+    13: 'S37 decision: relation without a card; the vision’s account of the record, with no fixed canon or edition '
+        'asserted',
+    51: 'S37 decision: relation without a card; the discourse’s claims about the Bible and other records, with no '
+        'people card required',
+    212: 'S37 decision: relation without a card; the relationship is asserted by Mormon’s address',
+    94: 'S37 decision: relation without a card; the tower is neither dated nor located',
+    215: 'S37 decision: relation without a card; no archaeological Babel equivalence, tower site or date',
+    82: 'checkpoint 58 decision: teaching view without a link, following BMV-031; Abinadi and Mosiah 16:3 are named '
+        'separately from Jacob’s sermon, and no Moses person or Gospel episode is linked',
+    185: 'checkpoint 58 decision: a Gospel cross-link would be editorial; the view carries the 3 Nephi 11:11–15 '
+         'locator for the prior death, wounds and ascension. Preferred over enriching BXE03, whose generated '
+         '3 Nephi 8–28 range comes from the accepted register; the 11:39–40 Matthew parallels are separate findings',
+    205: 'checkpoint 58 decision: attributed comparison without a link; attempted killing at Jerusalem does not '
+         'identify the completed crucifixion (AE10) or a specific Gospel episode',
+    220: 'checkpoint 58 decision: relation without a card; no Old Testament ark or flood card exists, and PE06 (a '
+         'later 5/pgp Moses 8 warning card) is not a matching ark account',
+    236: 'checkpoint 58 decision: passage-level comparison without a link; 1 Corinthians 13:4–8 is cited as a source. '
+         'No 1 Corinthians 13 card exists, and BC12/BXC05 are Book of Mormon cards, not Bible endpoints',
+    84: 'checkpoint 60 decision: future-event teaching without a link; a labelled Luke 24 comparison '
+        '(NTE-resurrection-accounts) is declined as editorial, and no AE10, Acts ascent or site is linked',
+    135: 'checkpoint 60 decision: qualified source-only view; NTE-resurrection-accounts is declined because a Gospel '
+         'account would read as proof of the timing Alma leaves open',
+    155: 'checkpoint 60 decision: optional comparison selected as source-only; Matthew 23:25–26 is cited beside the '
+         'chapter. The Sermon-on-the-Mount card is not the saying, and no Matthew 23 card exists',
+    183: 'checkpoint 60 decision: voice-scene view without a link; BXC01 keeps the visible law-fulfilled coverage and '
+         'this view supplies the direct 3 Nephi 9 source. An OH-C01 creation comparison is declined, and no Moses '
+         'person link is made for the law clause',
+    216: 'checkpoint 60 decision: no Old Testament Nimrod card exists; Genesis 10:8–9 is cited as the comparison '
+         'source. BJ11 (the 3/bom migration card) keeps the valley and tower tradition',
+}
+
+# BMC keys deliberately not given a view although their finding touches a Bible text or figure: reason.
+_BXJ01 = ('S34 decision: narrative Jerusalem setting consolidated into the journey entry BXJ01 “Return for the plates: '
+          'Lehi’s sons” (1 Nephi 3–5), which carries the trips to Jerusalem{0}; bounded consolidation of the setting '
+          'and return-trip payload only, not complete coverage of the chapter; no separate source view')
+OMIT = {
+    2: 'S37 decision: the named Red Sea setting (1 Nephi 2:5–8) is represented by the existing narrative cards BP01 '
+       '“Valley of Lemuel” (near the river’s outlet to the Red Sea, 1 Nephi 2:6–14), BXP01 “River Laman” (emptying '
+       'into the Red Sea, 1 Nephi 2:8–10) and the journey BJ01; bounded consolidation of the setting, not complete '
+       'coverage of the chapter; no Red Sea card, crossing or mapped river mouth is claimed',
+    16: 'S37 decision (S37-C1): BXP01 describes river Laman emptying into the Red Sea. In 1 Nephi 16:12 the party '
+        'crosses river Laman; verse 14 describes travel near the Red Sea. These references are represented by the '
+        'existing narrative cards, without a claimed Red Sea crossing or mapped river mouth',
+    26: 'SEM-R2 decision (checkpoint 53): 2 Nephi 4:1–2, where Nephi returns to Joseph of Egypt’s prophecies, is '
+        'represented by BMV-025 with its additional 2 Nephi 4:1–2 source and copy; bounded consolidation of that '
+        'relation, not complete coverage of the chapter. The three Joseph identities stay distinct and the 3/bom gate '
+        'is unchanged; Solomon’s temple comparison is BMC-027’s',
+    164: 'S37 decision (S37-C2): the land-name distinction is represented by BXP37; the chapter’s attributed '
+         'Mulek–Zedekiah relation is represented by BMV-166 with its additional Helaman 6:10 source. Neither relation '
+         'proves a modern continental assignment or independent genealogy',
+    3: _BXJ01.format(''),
+    4: _BXJ01.format(' and Nephi’s night entry and return'),
+    7: 'S34 decision: narrative Jerusalem setting consolidated into the journey entry BXJ02 “Return for Ishmael’s '
+       'household” (1 Nephi 7:2–22), a separate trip from the one for the plates; bounded consolidation of the setting '
+       'and return-trip payload only, not complete coverage of the chapter; no separate source view',
+    6: 'formulaic title “the God of Abraham, Isaac and Jacob” in a record-purpose chapter; no relation to the '
+       'persons’ cards beyond the formula',
+    19: 'Isaiah is introduced as a source and Zenos/Zenock are quoted prophets without cards; the Isaiah text itself is '
+        'carried by the 1 Nephi 20–21 views',
+    29: 'quoted Isaiah servant passage with no named shared entity in the finding; no card for this Isaiah chapter',
+    33: 'editorial bridge introducing Isaiah as a witness; no entity relation; the quoted chapters 2 Nephi 12–24 have '
+        'their own views',
+    60: 'Zenos’s allegory: Zenos has no shared Bible card and the vineyard is not mapped',
+    61: 'interpretation of Jacob 5; no named shared entity',
+    184: 'the finding cites “Jacob” with Zenos and Zenock without saying which Jacob; the identity is not stated, so '
+         'no person card is linked',
+    189: 'the cross-link the ledger names (John 10’s other sheep) has no codex card or Chronicle event at this head; '
+         'the card “Withdrawals beyond Jordan and to Ephraim (John 10–11)” is a journey, not that saying',
+    196: 'Jesus quotes Isaiah 54 and Noah’s waters; neither Isaiah 54 nor Noah has an Old Testament card at this head',
+    197: 'Samuel is the Lamanite prophet, not the Bible’s Samuel; the Isaiah study command names no entity',
+    # checkpoint 58 (HANDOFF_PLAN 2026-11-04 residual Book of Mormon dispositions; primary reading of the cited verses)
+    56: 'checkpoint 58 decision: the chapter-1 David/Solomon warning (Jacob 1:15) is represented by BMV-057 with its '
+        'added Jacob 1:15 source and copy. The wilderness provocation warning (Jacob 1:7) is an allusion naming no '
+        'person; a Psalm 95:8–11 comparison is declined as editorial, and no Moses link or itinerary is made',
+    129: 'checkpoint 58 decision: Amulek’s recollection that Alma appealed to Moses (Alma 34:7) is represented by '
+         'BMV-128 with its added Alma 34:7 source and a separate Amulek sentence; distinct from the law-practice usage',
+    50: 'checkpoint 58 decision: nongeographic Zion retained; the all-is-well and at-ease warnings (2 Nephi 28:21, 24) '
+        'are represented by BMV-048 with its added 2 Nephi 28 source and copy',
+    200: 'checkpoint 58 decision: the supplied-scriptures purpose (3 Nephi 26:1–2) is represented by BMV-199 with its '
+         'added 3 Nephi 26 source; Malachi is contextual and not named in chapter 26',
+    213: 'checkpoint 58 decision: Mormon 8:23 commands readers to search the prophecies of Isaiah and says Moroni '
+         'cannot write them; an Isaiah-study instruction naming no passage, so no Isaiah card, Isaiah-family or JST '
+         'link is made',
+    116: 'checkpoint 58 decision: the American city Jerusalem (Alma 21:1–4) is represented by BXP14, named after the '
+         'ancestral city and without the shared map pin; no duplicate view',
+    178: 'checkpoint 58 decision: “the God of Abraham, and the God of Isaac, and the God of Jacob” (3 Nephi 4:30) is '
+         'one divine-title formula, as for BMC-006; no patriarch event link',
+    93: 'checkpoint 58 decision: Mosiah 27:37 says the sons of Mosiah published peace and good tidings; a labelled '
+        'Isaiah 52:7 comparison is declined as editorial (the verse names neither Isaiah nor a quotation, and BMV-081 '
+        'already cites Isaiah 52:7–10 where Abinadi quotes it). Aaron and Ammon are Book of Mormon namesakes',
+    226: 'checkpoint 58 decision: an Ether 12:32–34 / John 14:2–3 comparison is declined as editorial (NTC-comforter '
+         'is not that saying). Ether 12:6 (Hebrews 11 wording) and 12:11 (the law of Moses given by faith) keep their '
+         'separate dispositions: an unstated parallel and a practice, with no law-practice link. The brother of Jared '
+         'and mount Zerin (BXP64) are Book of Mormon content',
+    198: 'Malachi 3 is quoted, but no Old Testament card covers Malachi at this head; the only Malachi card is a '
+         'Doctrine and Covenants source view (4/dc), a later work',
+    # checkpoint 60 (HANDOFF_PLAN 2026-11-04 next bounded semantic tranche; full primary reading of each chapter)
+    238: 'checkpoint 60 decision: represented by BC14, whose existing Moroni 9:25 source now carries Mormon’s '
+         'recollection of Christ’s sufferings and death and the showing of his body to their fathers (the Book of '
+         'Mormon appearance, not Luke 24). No new view, event or Bible edge. Moroni 9:17 names the army of Aaron; '
+         'this does not identify him with Moses’ brother or establish a royal title',
+    70: 'checkpoint 60 decision: Benjamin names the mankind his salvation teaching addresses as all who ever were '
+        'since the fall of Adam, or who are, or ever shall be (Mosiah 4:7). That scope relation needs no further '
+        'Fall card, event or Eden pin; the assembly’s forgiveness and care for the poor remain Book of Mormon content',
+    71: 'checkpoint 60 decision: covenant identity as children of Christ; no Bible event is required. A Mosiah 5:15 / '
+        '1 Corinthians 15:58 comparison (steadfast, immovable, abounding) is declined as editorial; no '
+        'resurrection-glory target',
+    91: 'checkpoint 60 decision: Mosiah 25:2 names Zarahemla as a descendant of Mulek but not Zedekiah or Jerusalem; '
+        'the Zedekiah relation stays with BMV-166 (Helaman 8:11–22 and 6:10). No duplicate relation',
+    92: 'checkpoint 60 decision: church judgment and forgiveness under Alma; no Gospel scene is required. A Mosiah '
+        '26:27 / Matthew 7:23 and 25:41 comparison is declined as editorial',
+    127: 'checkpoint 60 decision: the seed, word, faith and tree imagery is Alma’s own and is not an identified Bible '
+         'quotation or Eden. A Luke 8:4–15 sower comparison is declined as editorial',
+    132: 'checkpoint 60 decision: the Liahona is named as a type of Christ’s guidance within the Book of Mormon. Alma '
+         '37:46 says only that the fathers might look and live; Moses, the serpent, Israel and Egypt are not named, so '
+         'a Numbers 21:4–9 comparison is declined as editorial and no Moses edge or Exodus route is made',
+    134: 'checkpoint 60 decision: besides Corianton’s conduct, Alma teaches that Christ shall surely come to take away '
+         'the sins of the world and that his coming is made known beforehand (Alma 39:15–19). No Nativity or '
+         'Crucifixion setting is identified, so no Gospel event is linked',
+    170: 'checkpoint 60 decision: Helaman 12:14–15 is conditional rhetoric about God’s power over the earth, naming no '
+         'battle, Joshua or Lachish. A Helaman 12:25–26 / John 5:28–29 comparison is declined as editorial',
+}
+
+# Checkpoint 63/64: the residual-96 decisions (RES96) and the RES96-C01–C14 views live in their own modules.
+from copy_bmc_res96 import RES96_OMIT, RES96_SCAN_ROW  # noqa: E402
+from copy_bmc_res96c import RES96_VIEWS, RES96_EXTRA, RES96_NOLINK, RES96C_OMIT  # noqa: E402
+
+for new, old in ((RES96_OMIT, OMIT), (RES96C_OMIT, OMIT), (RES96_EXTRA, EXTRA_SOURCES), (RES96_NOLINK, NOLINK)):
+    assert not set(new) & set(old), sorted(set(new) & set(old))  # none overrides an earlier decision
+    old.update(new)
+VIEWS.extend(RES96_VIEWS)
+
+# Checkpoint 60: an existing primary 3/bom card whose description carries a BMC finding (desc rewritten in place by
+# build.write_bmc; its sources are unchanged). The first sentence is the card's existing copy.
+PRIMARY_DESC = {
+    'BC14': ('Book of Mormon — Mormon reports severe violence and suffering among both peoples, urges continued '
+             'service, and asks Moroni to find hope in Christ. He asks that Christ’s sufferings and death, the showing '
+             'of his body unto their fathers, his mercy and long-suffering, and the hope of his glory rest in Moroni’s '
+             'mind forever (verse 25). The showing of his body is the Book of Mormon appearance to their ancestors, '
+             'not a Gospel appearance.'),
+}
+
+# Name-scan hits (bmc_candidates.py): default disposition per scanned name, then per-row overrides.
+# 'accept' means the hit is implemented by the view for that BMC key; other values are the rejection reason.
+SCAN_DEFAULT = {
+    'Aaron': 'Book of Mormon namesake (Mosiah’s son Aaron, or the city Aaron), not Moses’ brother',
+    'Ammon': 'Book of Mormon namesake (Mosiah’s son or Zarahemla’s descendant Ammon), not the land of Ammon',
+    'Boaz': 'Book of Mormon city Boaz, not Ruth’s Boaz',
+    'Gideon': 'Book of Mormon namesake (Gideon the officer, or the land/city Gideon), not the judge Gideon',
+    'Gilgal': 'Book of Mormon or Jaredite Gilgal (city or valley), not Joshua’s Gilgal',
+    'Jacob': 'Book of Mormon namesake (Lehi’s son Jacob, the Zoramite commander, the band’s king, or the city Jacob), '
+             'not the patriarch',
+    'Midian': 'Book of Mormon land Midian, not the Midian of Moses',
+    'Ramah': 'Jaredite hill Ramah (identified with Cumorah), not Jeremiah’s Ramah',
+    'Samuel': 'Samuel the Lamanite, not the prophet Samuel of the Bible',
+    'Sidon': 'Book of Mormon river Sidon, not the Phoenician city',
+    'Moses': 'the law of Moses as a practice, not a relation to the person card',
+    'Zion': 'accept', 'Assyria': 'accept', 'Damascus': 'accept', 'Samaria': 'accept', 'Judah': 'accept',
+    'Bethabara beyond Jordan': 'accept', 'Elijah': 'accept', 'Horeb': 'accept', 'Sodom': 'accept',
+    'Gomorrah': 'accept', 'Zedekiah': 'accept',
+}
+SCAN_ROW = {
+    ('BMC-005', 'Moses'): 'accept', ('BMC-025', 'Moses'): 'accept', ('BMC-078', 'Moses'): 'accept',
+    ('BMC-128', 'Moses'): 'accept', ('BMC-199', 'Moses'): 'accept',
+    ('BMC-189', 'Moses'): 'Moses’ law said to be fulfilled: a practice, not a relation to the person card; the '
+                          'chapter is omitted (see its BMC row)',
+    ('BMC-006', 'Isaac'): 'formulaic divine title; see the BMC-006 omission',
+    ('BMC-006', 'Jacob'): 'formulaic divine title; see the BMC-006 omission',
+    ('BMC-184', 'Jacob'): 'identity not stated in the finding; see the BMC-184 omission',
+    ('BMC-010', 'Jordan'): 'consolidated: the view links the Bethabara-beyond-Jordan card, which carries the place',
+    ('BMC-041', 'Jordan'): 'accept',
+    ('BMC-041', 'Galilee'): 'not linked: the only Galilee card is the New Testament region (2/nt) and the ledger '
+                            'binds no identity between the quoted Isaiah region and it; named in the view’s copy',
+    ('BMC-210', 'Jordan'): 'Book of Mormon city Jordan, not the biblical river (the ledger exclusion says so)',
+    ('BMC-025', 'Egypt'): 'not linked: Egypt is the setting of Joseph’s quoted tradition, not a relation the finding '
+                          'states; Joseph’s card is linked instead',
+    ('BMC-039', 'Damascus'): 'accept (the Old Testament prophets’ card, OTM-damascus; the four Damascus views are '
+                             'already linked to each other as the same city)',
+    ('BMC-040', 'Damascus'): 'accept (OTM-damascus, as for BMC-039)',
+    ('BMC-039', 'Samaria'): 'accept (OTM-samaria, the prophets’ Samaria city card; NTP-samaria is the New '
+                            'Testament region and is not linked)',
+    ('BMC-040', 'Samaria'): 'accept (OTM-samaria, as for BMC-039)',
+    ('BMC-021', 'Zion'): 'accept', ('BMC-030', 'Zion'): 'consolidated: the view links Jerusalem for the consolation '
+                                                         'passage; Zion is named in its copy',
+    ('BMC-224', 'Aaron'): 'Jaredite Aaron, son of Heth and father of Amnigaddah, who lived in captivity; not Moses’ '
+                          'brother, Mosiah’s son or the city Aaron',
+    ('BMC-102', 'Gideon'): 'Book of Mormon land Gideon (where Alma teaches), not the judge; the chapter’s Mary and '
+                           'Jerusalem view is implemented',
+}
+assert not set(RES96_SCAN_ROW) & set(SCAN_ROW)
+SCAN_ROW.update(RES96_SCAN_ROW)

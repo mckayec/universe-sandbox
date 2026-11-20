@@ -341,6 +341,52 @@ export function validatePacks(dir = PACK_DIR) {
       });
       (P.events || []).forEach(e => items.push([`event ${e.id}`, e]));
       ((P.galaxy && P.galaxy.links) || []).forEach(l => items.push([`link ${l && l.id}`, l]));
+      // place notes and codex entries take the same layers / when (PACK_FORMAT 20.5)
+      worlds.forEach(w =>
+        (w.sites || []).forEach(s => {
+          if (!Array.isArray(s.notes)) return;
+          s.notes.forEach((n, i) => {
+            if (!n || typeof n !== 'object') return;
+            items.push([`world ${w.id} site ${s.id} note ${i}`, n]);
+            const g = n.first != null ? n.first : n.book;
+            if (g != null && !okBook(g)) issues.push(`world ${w.id} site ${s.id} note ${i}: unknown book ${g}`);
+          });
+        }),
+      );
+      // surface journeys (PACK_FORMAT 20.6)
+      worlds.forEach(w => {
+        if (w.routes == null) return;
+        if (!Array.isArray(w.routes)) return issues.push(`world ${w.id}: routes must be an array`);
+        const sids = new Set((w.sites || []).map(s => s.id));
+        const rids = new Set();
+        w.routes.forEach((r, i) => {
+          const tag = `world ${w.id} route ${(r && r.id) || i}`;
+          if (!r || !r.id) return issues.push(`world ${w.id} routes[${i}] needs an id`);
+          if (rids.has(r.id)) issues.push(`${tag}: duplicate route id`);
+          rids.add(r.id);
+          if (!r.name) warn.push(`${tag}: no name`);
+          const stops = Array.isArray(r.stops) ? r.stops : [];
+          if (stops.length < 2) issues.push(`${tag}: needs at least two stops`);
+          let placed = 0;
+          stops.forEach((st, j) => {
+            const id = typeof st === 'string' ? st : st && st.site;
+            if (id != null) {
+              if (!sids.has(id)) issues.push(`${tag}: stop ${j} -> missing site "${id}"`);
+              else placed++;
+            } else if (!st || !st.name) issues.push(`${tag}: stop ${j} needs a site id or a name`);
+          });
+          if (stops.length >= 2 && placed < 2) warn.push(`${tag}: fewer than two placed stops (nothing is drawn)`);
+          (r.books || []).forEach(b => {
+            if (!okBook(b)) issues.push(`${tag}: unknown book ${b}`);
+          });
+          items.push([tag, r]);
+        });
+      });
+      (P.codex || []).forEach(t =>
+        (t.list || []).forEach(x => {
+          if (x && (x.layers != null || x.layer != null || x.when != null)) items.push([`codex ${t.id}/${x.name}`, x]);
+        }),
+      );
       items.forEach(([tag, it]) => {
         if (!it) return;
         const ls = it.layers != null ? it.layers : it.layer;
