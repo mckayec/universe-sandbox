@@ -1,10 +1,10 @@
-stage: research
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: SA07 / Wind and Truth: reconcile the November 9 primary audit, WAT-01–15, connection ledger and magic spec against current PR24/37/48; preserve previous scoped closures and bridge holds before new source work.
-updated: 2026-11-20T09:18Z
+next-action: Claude implements only SA07-OPEN-01 e55.text and SA07-HOID-01 e60.text on PR48 per sa07-handoff-2026-11-20.md; return exact head/actual parent and 12-state evidence, then ChatGPT review.
+updated: 2026-11-20T09:23Z
 idle-runs: 0
-note: SA06-IDEAL-01 accepted at PR48 5c59d32; independent actual-parent check 3/3, five blobs verified, 13/13 states and 819/819 event comparisons unchanged. CI 655/655 and pages 24/24 verified from logs. Builder rendering attributed, 0 independent rendered runs; Save/Load and full SA06 gaps remain. 0/33 full-work approvals.
+note: SA06-IDEAL-01 independently accepted at 5c59d32. SA07 reconciled 15/15 prior findings, 66/66 selected slots (48 present/18 absent), 4/4 opened public pages. Two text repairs handed off; 5/5 hashes, 12/12 candidate states, 756/756 event comparisons unchanged. S20/secondary sequence conflict and WAT-06 fields remain held; full SA07 deferred, 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -187,3 +187,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-20T08:57Z Claude: implemented SA06-IDEAL-01 on PR48 `feature/cosmere-reading-state` at 5c59d326e1e2fb188b75203cdfd594c08c77ef2a (actual parent 03d7a67b0a3728024a05d143abc299409911f7e3); only e44.text changed + tests/atlas-sa06-ideal.test.ts. Evidence in [sa06ideal-return-5c59d32.md](sa06ideal-return-5c59d32.md); test:browser failure at :88 reported separately. fixing/claude → implementation-review/chatgpt. idle-runs 0.
 
 - 2026-11-20T09:18Z ChatGPT: accepted SA06-IDEAL-01 at PR48 5c59d326e1e2fb188b75203cdfd594c08c77ef2a against actual parent 03d7a67b0a3728024a05d143abc299409911f7e3. Reviewer saved/read back at a3e2ae3669f5803e8691f9d1eba63c3a80c08d17; implementation-review-5c59d32.md at e803fff435ffd631daf123b359e8b81374ad6706. Five input hashes verified; 3/3 tests pass, parent negative control 1/3 pass with two expected failures; all 63 events plus Urithiru/Roshar compared in 13/13 states. Exact-head CI 655/655 tests and 24/24 page checks verified. Builder 72/72 rendered assertions attributed, not independently executed; Save/Load and surface-route limits persist. implementation-review/chatgpt → research/chatgpt for SA07 evidence reconciliation. Full SA06 deferred; 0/33 full-work approvals. No code edit, merge, deploy or release approval.
+
+- 2026-11-20T09:23Z ChatGPT: completed SA07 reconciliation/finite correction packet, saved and read back sa07-probe.mjs at be26dbfc23a79267b6daa133ca3db77c80575e67, sa07-inventory-2026-11-20.json at 6fbf89a45f5f372b99c6e5ff43ea2bd758ec5c51, and sa07-handoff-2026-11-20.md at 9e258dc58209c710f47a1912afc3740efa3d6a8b. Current PR24 cf25cda66e91c573c421a0f3712623db72737a3b / PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 / PR48 5c59d326e1e2fb188b75203cdfd594c08c77ef2a rechecked. All 15 prior WAT units accounted for; 66/66 selected slots, 48 present/18 absent; prior 33 scenes/89 nodes/73 relationships and eight bridge holds preserved. Four public pages retrieved (one published preview, three rereads); bounded passages only, no fresh private ebook access or whole-book reading. Two requested text corrections: e55 existing countdown, e60 separate recovery/employment/intention. Candidate 5/5 hashes, two field changes/full reversal equality, 12/12 states comparing all 63 events plus Urithiru/Roshar/Scadrial, 0 rendered cases. WAT-02 prior S20 vs secondary recap sequence conflict recorded without silently changing primary provenance; WAT-06 residual spoiler fields remain open. research/chatgpt → fixing/claude for the completed two-field packet; full SA07 deferred with Known gaps, then return for independent implementation review and the stated source/gating continuation. 18/18 pack and 8/8 review statuses inspected; no other eligible work or stale parallel self-audit. No code/PR-branch edit, merge, deployment or Mckay release approval.
