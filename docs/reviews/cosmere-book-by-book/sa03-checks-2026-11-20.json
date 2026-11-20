@@ -1,0 +1,78 @@
+{
+  "hashes": "5/5",
+  "inventoryRecords": "17/17",
+  "nestedPR37Landmarks": 8,
+  "registryAndPresetRecords": 2,
+  "bucket7Works": 13,
+  "e35Difference": "text only between PR37 and PR48",
+  "gateStates": "11/11",
+  "results": [
+    {
+      "state": "All",
+      "event": true,
+      "site": true,
+      "worldHidden": false
+    },
+    {
+      "state": "legacy 6",
+      "event": false,
+      "site": false,
+      "worldHidden": false
+    },
+    {
+      "state": "legacy 7",
+      "event": true,
+      "site": true,
+      "worldHidden": false
+    },
+    {
+      "state": "legacy 12",
+      "event": true,
+      "site": true,
+      "worldHidden": false
+    },
+    {
+      "state": "empty set",
+      "event": false,
+      "site": false,
+      "worldHidden": true
+    },
+    {
+      "state": "Edgedancer only",
+      "event": false,
+      "site": false,
+      "worldHidden": true
+    },
+    {
+      "state": "WoK + Edgedancer",
+      "event": false,
+      "site": false,
+      "worldHidden": false
+    },
+    {
+      "state": "WoK + WoR + Edgedancer",
+      "event": false,
+      "site": false,
+      "worldHidden": false
+    },
+    {
+      "state": "bucket 7 only",
+      "event": false,
+      "site": false,
+      "worldHidden": true
+    },
+    {
+      "state": "WoK + whole bucket 7",
+      "event": true,
+      "site": true,
+      "worldHidden": false
+    },
+    {
+      "state": "WoK + bucket 7 minus Edgedancer",
+      "event": false,
+      "site": false,
+      "worldHidden": false
+    }
+  ],
+  "limits": "Actual source selectors in VM; no browser/rendered test, no canon validation, no proposed mapping implemented."
+}
