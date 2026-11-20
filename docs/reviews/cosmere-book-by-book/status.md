@@ -1,10 +1,10 @@
-stage: content-review
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT starts SA05 / Dawnshard bounded source review, reconciling current PR24/37/48 payloads and existing closures; save a finite correction handoff or explicit gap checkpoint.
-updated: 2026-11-20T06:18Z
+next-action: Claude applies SA05-N2-PORT only on PR48 per sa05-handoff-2026-11-20.md: books[8].y 2017 -> "2017–2020"; return exact head/actual parent, equality and regression/validation evidence. Then implementation-review/chatgpt; after acceptance continue SA06.
+updated: 2026-11-20T06:27Z
 idle-runs: 0
-note: SA04-BOND-01/02 accepted at PR48 766f7a7: actual-parent comparison, 5/5 blobs, 3/3 independent tests, 11/11 eligibility states and 2/2 old-text negative controls. Builder rendered 156/156 attributed; 0 independent rendered cases. Full SA04 deferred; 0/33 full-work approvals, Save/Load and surface-render limits retained.
+note: SA04-BOND-01/02 accepted at 766f7a7. SA05 first bounded unit hands off 1 Low existing-N2 bibliographic port; 36/36 slots, 30 present/6 absent, 12/12 dispositions and 12/12 nested landmark holds. 5/5 hashes and 11/11 candidate selector states; 0 rendered candidate cases. Full SA05 deferred with primary-text/geography/spoiler gaps; 0/33 full-work approvals. Save/Load and surface-render limits retained.
 
 # Cosmere book-by-book review
 
@@ -177,3 +177,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-20T06:15Z: Claude implemented SA04-BOND-01/02 on PR48 at 766f7a75d6825b4de88bb3667fde49ab971cbca6 (parent 0d7637e): exact e40 text and Dalinar key-8 codex text replacements only, plus tests/atlas-sa04-bond.test.ts. Evidence in sa04bond-return-766f7a7.md. fixing/claude → implementation-review/chatgpt. No merge, deploy, PR24/37 edit or canon approval.
 
 - 2026-11-20T06:18Z ChatGPT: SA04-BOND-01/02 accepted at exact PR48 766f7a75d6825b4de88bb3667fde49ab971cbca6, parent 0d7637e8973187afa3e8c58552a197d48c315b03. Saved/read back reviewer-sa04-766f7a7.ts at cc5cdcc42496a17fee42552b6fd5edbea6d3e328 and implementation-review-766f7a7.md at ef4d3e3c7dabb39f1cb59c4788577a441cd6b5ab. Independently 5/5 blobs, 3/3 tests, 11/11 states, 2/2 actual-parent old-text negative controls; parent-as-candidate 2 pass/1 expected fail. Exact-head CI build/pages success, deploy skipped. Builder 156/156 rendered and 108/156 parent pass remain attributed; 0 independent rendered cases, Save/Load and surface route limits retained. All 18/18 pack + 8/8 review statuses checked; only this item eligible. implementation-review/chatgpt -> content-review/chatgpt for SA05 Dawnshard. Full SA04 deferred with 31/31 dispositions, 28/28 nested-landmark holds and 0/33 full-work approvals. No code edit, merge, deploy or release approval.
+
+- 2026-11-20T06:27Z ChatGPT: completed first bounded SA05 / Dawnshard unit and handed off SA05-N2-PORT (existing N2, not a new canon finding). Saved/read back [probe](sa05-probe.mjs) at ae3a6208ad5cfc0e860cd14f3097eaa2c63b539e, [inventory/candidate output](sa05-inventory-2026-11-20.json) at ad94b0ce3b074d05d7d8beb6841258e2cb9ddddf, and [source handoff](sa05-handoff-2026-11-20.md) at bb1300a89862d2192b1e0abb927a2807d389c7f0. Fresh heads unchanged: PR48 766f7a75d6825b4de88bb3667fde49ab971cbca6, PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838. 36/36 selected slots, 30 present/6 absent; 12/12 logical dispositions and 12/12 nested-landmark holds. 5/5 input hashes, one in-memory metadata assignment, full parsed-pack reversal equality and 11/11 unchanged actual-selector states; 0 rendered candidate cases. Opened official bibliography sources, partial licensed chapter-2 opening and three public secondary reread articles; 0 complete chapters read. Full SA05 deferred with explicit primary/geography/earliest-reveal gaps, 0/33 full-work approvals. content-review/chatgpt -> fixing/claude for only books[8].y = "2017–2020"; exact-head implementation review next, then SA06 subject to audit priorities. Previous closures, PR24/37 ownership, conservative gates, Save/Load and surface-render holds preserved. All 18/18 pack and 8/8 review statuses inspected this run. No application/PR-branch edit, merge, deploy or Mckay release approval.
