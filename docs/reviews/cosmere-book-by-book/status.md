@@ -1,10 +1,10 @@
-stage: implementation-review
+stage: research
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT review SA01-GEO-01/02 at PR48 af49e0ab7f32626791d11a2f573dd7b4f074f654 (parent fccfe2c) per sa01geo-return-af49e0a.md; then keep full SA01 deferred and continue SA02 subject to current priorities.
-updated: 2026-11-20T01:00Z
+next-action: ChatGPT perform the first bounded SA02 / Words of Radiance inventory and source unit, separating edition changes and preserving SA01 deferral.
+updated: 2026-11-20T01:22Z
 idle-runs: 0
-note: SA01-GEO-01/02 implemented on PR48 at af49e0a with exact handoff strings (2 desc fields + focused test). Builder checks: focused 16/16 (parent 15/1), pnpm check 644/644, test:pages OK, rendered 190/190 (parent 94/96), test:browser known Save/Load flake 1 fail/1 pass. Not merged.
+note: SA01-GEO-01/02 accepted at af49e0a. Independently 5/5 input hashes, 2/2 focused tests and 10/10 actual-parent visibility states; expected parent negative. Full SA01 deferred; 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -158,3 +158,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-20T00:31:38Z ChatGPT: saved/read back [SA01 second checkpoint and handoff](sa01-final-handoff-2026-11-20.md) at 313b2cbf163fb73d48aa1c1bd85482f86c4ffd12. Rechecked PR48 fccfe2c7023b93a91b52df1f812a17f0e94e3ed3, PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838; 3/3 blob matches, unchanged 57/57 selected slots. Opened official Dragonsteel-linked Tor PDF sample and selected early passages; 6/6 follow-up groups dispositioned (two event-prose support decisions, two replacement candidates, two partial/held groups). SA01-GEO-01/02 request conservative shatteredplains.desc and warcamps.desc reductions; 2/2 in-memory assignments and 1/1 full-pack reversal verified, 0 implementation or rendered candidate passes claimed. Research/chatgpt → fixing/claude for these two fields and exact-head return. Full SA01 deferred at second checkpoint; after independent acceptance continue SA02, subject to current priorities. 0/5 complete key-4 events, 0/5 complete selected sites and 0/33 full works approved; prior closures, source/geometry/gate and technical/release holds preserved. No app/PR-branch edit, merge, deploy or Mckay action.
 
 - 2026-11-20T01:00Z Claude: implemented SA01-GEO-01/02 on PR48 at af49e0ab7f32626791d11a2f573dd7b4f074f654 (parent fccfe2c7023b93a91b52df1f812a17f0e94e3ed3); cosmere.js 0d1ddda→00d8ac4 (two desc fields), new tests/atlas-sa01-geo.test.ts. Evidence: [return](sa01geo-return-af49e0a.md). fixing/claude → implementation-review/chatgpt.
+
+- 2026-11-20T01:22Z ChatGPT: saved/read back [reviewer](reviewer-sa01-af49e0a.ts) at 08936b6019d7aa0c37c0d2fd1d69b2ef3e791efc and [SA01 implementation review](implementation-review-af49e0a.md) at 49abdab205bde11c0cc218ae59e1583e2ebabaa3. Exact PR48 af49e0ab7f32626791d11a2f573dd7b4f074f654, actual parent fccfe2c7023b93a91b52df1f812a17f0e94e3ed3; 2/2 incremental files, 5/5 hashes, 2/2 focused tests, 10/10 visibility states; expected parent negative 1/2. Exact-head CI steps verified; builder rendered 190/190 and parent 94/190 accounting inspected, 0 independent rendered cases. Accepted 2/2 description corrections only; full SA01 deferred with Known gaps. Implementation-review/chatgpt → research/chatgpt for SA02 initial unit. Read 18/18 pack and 8/8 review statuses; no other owned work or eligible parallel self-audit. Save/Load limitation, prior closures and 0/33 full-work approvals preserved. No app/PR edit, merge, deploy or release approval.
