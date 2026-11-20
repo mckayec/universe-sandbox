@@ -1,0 +1,1011 @@
+{
+  "scope": "SA05 selected inventory and existing eligibility; no changes or full canon certification",
+  "manifest": {
+    "pr24.js": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+    "pr37.js": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+    "head.js": "583abc7a47935530b160c7c7be43f8257cff0cd2",
+    "engine.js": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+    "reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+  },
+  "counts": {
+    "hashes": 5,
+    "types": 12,
+    "slots": 36,
+    "present": 30,
+    "absent": 6,
+    "nestedLandmarks": 12
+  },
+  "inventories": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "file": "pr24.js",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e42",
+          "value": {
+            "id": "e42",
+            "book": 8,
+            "world": "roshar",
+            "site": "akinah",
+            "title": "Dawnshard",
+            "text": "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e87",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "roshar/akinah",
+          "value": {
+            "id": "akinah",
+            "name": "Akinah",
+            "lat": 5,
+            "lon": -120,
+            "books": [
+              8
+            ],
+            "desc": "The ancient Aimian capital ringed by Soulcast spikes, hiding the real Oathgate and a Dawnshard. The Dawnshard expedition sails here."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/aimia",
+          "value": {
+            "id": "aimia",
+            "name": "Aimia",
+            "lat": -6,
+            "lon": -120,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "A barren island chain beyond the Aimian Sea, homeland of the Aimians."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/reshiisles",
+          "value": {
+            "id": "reshiisles",
+            "name": "The Reshi Isles",
+            "lat": 34,
+            "lon": -26,
+            "books": [
+              4,
+              8,
+              9,
+              12
+            ],
+            "desc": "Hot equatorial islands in the Reshi Sea, some of them living greatshells. Talik comes from here."
+          }
+        },
+        {
+          "type": "codex",
+          "id": "people/Rysn",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "yolen/shattering",
+          "value": {
+            "id": "shattering",
+            "name": "The Shattering (site unknown)",
+            "lat": 12,
+            "lon": 20,
+            "books": [
+              7
+            ],
+            "desc": "Somewhere on Yolen, eighteen conspirators struck down Adonalsium with a weapon made from the Dawnshards. The exact place has never been shown."
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/8",
+          "value": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          }
+        },
+        {
+          "type": "book",
+          "id": "8",
+          "value": {
+            "n": "VIII",
+            "title": "Oathbringer & Dawnshard",
+            "y": "2017–2020",
+            "c": "#ff9a62"
+          }
+        },
+        {
+          "type": "registry",
+          "id": "dawnshard",
+          "value": null
+        }
+      ],
+      "refsToAkinah": [
+        {
+          "id": "e42",
+          "lm": null,
+          "book": 8
+        }
+      ]
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "file": "pr37.js",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e42",
+          "value": {
+            "id": "e42",
+            "book": 8,
+            "world": "roshar",
+            "site": "akinah",
+            "lm": "oathgate",
+            "title": "Dawnshard",
+            "text": "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e87",
+          "value": {
+            "id": "e87",
+            "book": 5,
+            "world": "roshar",
+            "site": "reshiisles",
+            "lm": "reluna",
+            "title": "Rysn’s fall",
+            "text": "Trading with the Reshi, Rysn climbs down a living island to plead with it. She falls, and the island gives her a live larkin."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/akinah",
+          "value": {
+            "id": "akinah",
+            "name": "Akinah",
+            "lat": 5,
+            "lon": -120,
+            "books": [
+              8
+            ],
+            "desc": "The ancient Aimian capital ringed by Soulcast spikes, hiding the real Oathgate and a Dawnshard. The Dawnshard expedition sails here.",
+            "scene": {
+              "kind": "ruins",
+              "arch": "ancient",
+              "size": "medium",
+              "tod": "day",
+              "weather": "mist",
+              "coast": "s",
+              "landmarks": [
+                {
+                  "id": "spikes",
+                  "name": "The ring of spikes",
+                  "kind": "stones",
+                  "at": [
+                    0,
+                    -0.6
+                  ],
+                  "h": 1.3,
+                  "books": [
+                    8
+                  ],
+                  "desc": "Soulcast spikes ringing the forbidden old Aimian capital."
+                },
+                {
+                  "id": "oathgate",
+                  "name": "The hidden Oathgate",
+                  "kind": "portal",
+                  "at": [
+                    0,
+                    0.2
+                  ],
+                  "books": [
+                    8
+                  ],
+                  "desc": "The real Oathgate, hidden in the forbidden city, where the expedition finds something far older than the Radiants."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/aimia",
+          "value": {
+            "id": "aimia",
+            "name": "Aimia",
+            "lat": -6,
+            "lon": -120,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "A barren island chain beyond the Aimian Sea, homeland of the Aimians.",
+            "scene": {
+              "kind": "wilds",
+              "size": "medium",
+              "tod": "day",
+              "weather": "clear",
+              "coast": "s"
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates.",
+            "scene": {
+              "kind": "city",
+              "arch": "ancient",
+              "size": "large",
+              "tod": "day",
+              "weather": "snow",
+              "landmarks": [
+                {
+                  "id": "oathgates",
+                  "name": "The Oathgate platforms",
+                  "kind": "portal",
+                  "at": [
+                    0,
+                    -0.75
+                  ],
+                  "h": 1,
+                  "books": [
+                    5,
+                    8,
+                    9,
+                    12
+                  ],
+                  "desc": "Ten platforms on the plaza before the tower, each linked to an Oathgate across Roshar. Shallan’s gate from Narak brings the Alethi armies here at the end of Words of Radiance."
+                },
+                {
+                  "id": "gallery",
+                  "name": "The Gallery of Maps",
+                  "kind": "hall",
+                  "at": [
+                    0.1,
+                    0.55
+                  ],
+                  "h": 0.8,
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "A chamber near the top with a great map table, where Dalinar plans his coalition’s war."
+                },
+                {
+                  "id": "breakaway",
+                  "name": "The Breakaway",
+                  "kind": "market",
+                  "at": [
+                    -0.25,
+                    -0.25
+                  ],
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "The cavernous central market hall on the lower levels, where merchants and refugees fill the once-empty tower."
+                },
+                {
+                  "id": "corridor",
+                  "name": "The dark corridors",
+                  "kind": "cave",
+                  "at": [
+                    -0.6,
+                    0.1
+                  ],
+                  "h": 0.6,
+                  "books": [
+                    8
+                  ],
+                  "desc": "Miles of lightless, half-explored passages. Sadeas’s body is found in a corridor, and more killings follow."
+                },
+                {
+                  "id": "reshephir",
+                  "name": "Re-Shephir’s chamber",
+                  "kind": "cave",
+                  "at": [
+                    -0.4,
+                    -0.55
+                  ],
+                  "h": 0.7,
+                  "books": [
+                    8
+                  ],
+                  "desc": "A hidden ground-floor chamber where the Unmade Re-Shephir lurks. Shallan confronts her here with Lightweaving and drives her off."
+                },
+                {
+                  "id": "archive",
+                  "name": "The gem archive",
+                  "kind": "library",
+                  "at": [
+                    0.4,
+                    -0.45
+                  ],
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "A room where the ancient Radiants stored their records inside gemstones."
+                },
+                {
+                  "id": "pillar",
+                  "name": "The crystal pillar",
+                  "kind": "monolith",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 1.6,
+                  "books": [
+                    9,
+                    12
+                  ],
+                  "desc": "A pillar of gemstones deep in the tower, the heart of the Sibling. Raboniel pours Voidlight into it to seize the tower; Navani later bonds the Sibling here and becomes a Bondsmith."
+                },
+                {
+                  "id": "mercy",
+                  "name": "The Devotary of Mercy",
+                  "kind": "temple",
+                  "at": [
+                    0.55,
+                    0.2
+                  ],
+                  "books": [
+                    9
+                  ],
+                  "desc": "A fourth-floor hospital for the wounded in mind, where Kaladin, retired from fighting, works with the patients."
+                },
+                {
+                  "id": "cistern",
+                  "name": "The cistern chamber",
+                  "kind": "well",
+                  "at": [
+                    0.25,
+                    -0.1
+                  ],
+                  "h": 0.6,
+                  "books": [
+                    12
+                  ],
+                  "desc": "A water chamber in the tower where Dalinar opens a perpendicularity and goes with Navani into the Spiritual Realm."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/reshiisles",
+          "value": {
+            "id": "reshiisles",
+            "name": "The Reshi Isles",
+            "lat": 34,
+            "lon": -26,
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "Hot equatorial islands in the Reshi Sea, some of them living greatshells. Talik comes from here.",
+            "scene": {
+              "kind": "sea",
+              "arch": "rustic",
+              "size": "large",
+              "water": true,
+              "tod": "day",
+              "weather": "clear",
+              "landmarks": [
+                {
+                  "id": "reluna",
+                  "name": "Relu-na",
+                  "kind": "peak",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 1.6,
+                  "books": [
+                    5
+                  ],
+                  "desc": "A living greatshell island. Rysn climbs down its head on a rope to plead with the island itself; the rope breaks and she falls, and the island gives her a live larkin."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "codex",
+          "id": "people/Rysn",
+          "value": {
+            "name": "Rysn",
+            "role": "Thaylen trader",
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "A young Thaylen merchant apprenticed to the trader Vstim.",
+            "more": [
+              [
+                8,
+                "Leads the Dawnshard expedition to Akinah."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "site",
+          "id": "yolen/shattering",
+          "value": {
+            "id": "shattering",
+            "name": "The Shattering (site unknown)",
+            "lat": 12,
+            "lon": 20,
+            "books": [
+              7
+            ],
+            "desc": "Somewhere on Yolen, eighteen conspirators struck down Adonalsium with a weapon made from the Dawnshards. The exact place has never been shown.",
+            "scene": {
+              "kind": "wilds",
+              "size": "large",
+              "tod": "dusk",
+              "weather": "clear"
+            }
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/8",
+          "value": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          }
+        },
+        {
+          "type": "book",
+          "id": "8",
+          "value": {
+            "n": "VIII",
+            "title": "Oathbringer & Dawnshard",
+            "y": "2017–2020",
+            "c": "#ff9a62"
+          }
+        },
+        {
+          "type": "registry",
+          "id": "dawnshard",
+          "value": null
+        }
+      ],
+      "refsToAkinah": [
+        {
+          "id": "e42",
+          "lm": "oathgate",
+          "book": 8
+        }
+      ]
+    },
+    {
+      "pr": 48,
+      "head": "766f7a75d6825b4de88bb3667fde49ab971cbca6",
+      "file": "head.js",
+      "blob": "583abc7a47935530b160c7c7be43f8257cff0cd2",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e42",
+          "value": {
+            "id": "e42",
+            "book": 8,
+            "world": "roshar",
+            "site": "akinah",
+            "title": "Dawnshard",
+            "text": "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e87",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "roshar/akinah",
+          "value": {
+            "id": "akinah",
+            "name": "Akinah",
+            "lat": 5,
+            "lon": -120,
+            "books": [
+              8
+            ],
+            "desc": "The ancient Aimian capital ringed by Soulcast spikes, hiding the real Oathgate and a Dawnshard. The Dawnshard expedition sails here."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/aimia",
+          "value": {
+            "id": "aimia",
+            "name": "Aimia",
+            "lat": -6,
+            "lon": -120,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "A barren island chain beyond the Aimian Sea, homeland of the Aimians."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/reshiisles",
+          "value": {
+            "id": "reshiisles",
+            "name": "The Reshi Isles",
+            "lat": 34,
+            "lon": -26,
+            "books": [
+              4,
+              8,
+              9,
+              12
+            ],
+            "desc": "Hot equatorial islands in the Reshi Sea, some of them living greatshells. Talik comes from here."
+          }
+        },
+        {
+          "type": "codex",
+          "id": "people/Rysn",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "yolen/shattering",
+          "value": {
+            "id": "shattering",
+            "name": "The Shattering (site unknown)",
+            "lat": 12,
+            "lon": 20,
+            "books": [
+              7
+            ],
+            "desc": "Somewhere on Yolen, eighteen conspirators struck down Adonalsium with a weapon made from the Dawnshards. The exact place has never been shown."
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/8",
+          "value": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          }
+        },
+        {
+          "type": "book",
+          "id": "8",
+          "value": {
+            "n": "VIII",
+            "title": "Oathbringer & Dawnshard",
+            "y": 2017,
+            "c": "#ff9a62"
+          }
+        },
+        {
+          "type": "registry",
+          "id": "dawnshard",
+          "value": {
+            "id": "dawnshard",
+            "title": "Dawnshard",
+            "y": 2020,
+            "bucket": 8
+          }
+        }
+      ],
+      "refsToAkinah": [
+        {
+          "id": "e42",
+          "lm": null,
+          "book": 8
+        }
+      ]
+    }
+  ],
+  "candidate": {
+    "field": "books[8].y",
+    "before": 2017,
+    "after": "2017–2020",
+    "allOtherDataEqual": true
+  },
+  "checks": [
+    {
+      "label": "All",
+      "state": {
+        "mode": "all"
+      },
+      "before": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "legacy7",
+      "state": {
+        "mode": "legacy",
+        "book": 7
+      },
+      "before": {
+        "event": false,
+        "site": false,
+        "worldHidden": false
+      },
+      "after": {
+        "event": false,
+        "site": false,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "legacy8",
+      "state": {
+        "mode": "legacy",
+        "book": 8
+      },
+      "before": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "legacy12",
+      "state": {
+        "mode": "legacy",
+        "book": 12
+      },
+      "before": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "empty",
+      "state": {
+        "mode": "set",
+        "ids": []
+      },
+      "before": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      },
+      "after": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      }
+    },
+    {
+      "label": "DS only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      },
+      "after": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      }
+    },
+    {
+      "label": "OB only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "oathbringer"
+        ]
+      },
+      "before": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      },
+      "after": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      }
+    },
+    {
+      "label": "WoK+DS",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": false,
+        "site": false,
+        "worldHidden": false
+      },
+      "after": {
+        "event": false,
+        "site": false,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "WoK+OB",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "oathbringer"
+        ]
+      },
+      "before": {
+        "event": false,
+        "site": false,
+        "worldHidden": false
+      },
+      "after": {
+        "event": false,
+        "site": false,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "bucket8",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "oathbringer",
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      },
+      "after": {
+        "event": false,
+        "site": false,
+        "worldHidden": true
+      }
+    },
+    {
+      "label": "WoK+bucket8",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "oathbringer",
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "event": true,
+        "site": true,
+        "worldHidden": false
+      }
+    }
+  ]
+}
