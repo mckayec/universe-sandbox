@@ -1,0 +1,1636 @@
+{
+  "kind": "DR01 bounded source inventory, not canon or runtime certification",
+  "date": "2026-11-20",
+  "path": "public/atlas/packs/cosmere.js",
+  "selection": "All worlds with group drominad; all First of the Sun sites and events; 3 named related codex entries; e62 and h-dusk as later-work cross-references. Map geometry excluded.",
+  "snapshots": [
+    {
+      "pr": 24,
+      "head_sha": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob_sha": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "blob_verified": true,
+      "counts": {
+        "all_worlds": 60,
+        "selected_system_worlds": 8,
+        "firstsun_sites": 6,
+        "firstsun_landmarks": 0,
+        "all_events": 63,
+        "firstsun_events": 2
+      },
+      "worlds": [
+        {
+          "id": "drominad",
+          "name": "Drominad",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "Star of the Drominad system",
+          "blurb": "The star of First of the Sun, painted pale blue-white on the system chart. Seven planets circle it, named simply by their order: four small worlds in the habitable zone, an asteroid belt, then three gas giants.",
+          "facts": [
+            [
+              "Planets",
+              "First to Seventh of the Sun"
+            ]
+          ]
+        },
+        {
+          "id": "firstsun",
+          "name": "First of the Sun",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "1st planet · archipelago world",
+          "blurb": "An ocean world with one large mainland and many islands where the Eelakin live. The greatest island, Patji, is a jungle where almost everything can kill you. Trappers like Dusk survive by knowing its rules and by the Aviar, birds that give their owners talents such as seeing danger coming. Now ships from the Ones Above have arrived in orbit. On this globe the Pantheon islands are drawn about five times larger, and the homeisles three times, so they can be seen.",
+          "facts": [
+            [
+              "Order",
+              "1st from Drominad"
+            ],
+            [
+              "Moon",
+              "First of the First"
+            ],
+            [
+              "People",
+              "The Eelakin"
+            ],
+            [
+              "Magic",
+              "Aviar birds"
+            ],
+            [
+              "Threat",
+              "The Ones Above"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "An ocean world of islands. The greatest, Patji, is a deadly jungle where the Aviar live, and Patji itself is an avatar of Autonomy. Years after the Ones Above appeared, Dusk sees his people racing to modernise before they are conquered, and he sails through Patji’s Eye into the Emberdark to find help.",
+              "facts": [
+                [
+                  "Order",
+                  "1st from Drominad"
+                ],
+                [
+                  "Moon",
+                  "First of the First"
+                ],
+                [
+                  "Power",
+                  "Patji, an avatar of Autonomy"
+                ],
+                [
+                  "Magic",
+                  "Aviar birds"
+                ],
+                [
+                  "Gate",
+                  "Patji’s Eye"
+                ]
+              ]
+            }
+          },
+          "moons": [
+            {
+              "name": "First of the First",
+              "size": 0.18,
+              "dist": 3,
+              "speed": 0.04
+            }
+          ],
+          "realms": {
+            "cognitive": {
+              "name": "Drominad’s subastral",
+              "style": "unsea",
+              "c1": "#06060c",
+              "c2": "#3a6ae0",
+              "c3": "#141418",
+              "blurb": "Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights."
+            }
+          },
+          "sites": [
+            {
+              "id": "patji",
+              "name": "Patji",
+              "lat": -5,
+              "lon": -0.5,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The Father island, the largest of the Pantheon: wedge-shaped, with knife-edged peaks and a jungle that punishes every mistake. Aviar must visit it to gain their talents. Dusk traps here."
+            },
+            {
+              "id": "patjiseye",
+              "name": "Patji’s Eye",
+              "lat": -4.5,
+              "lon": 1.75,
+              "books": [
+                12
+              ],
+              "desc": "A green-tinted lake of not-quite-water in a canyon toward Patji’s eastern peak, holding glowing worms. It is a perpendicularity, and Dusk sails through it into the Emberdark."
+            },
+            {
+              "id": "fort",
+              "name": "The Northern Interests fort",
+              "lat": -5.75,
+              "lon": -4.25,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A fortified wooden stronghold with cannons at the far end of Patji, where the Ones Above set their machine."
+            },
+            {
+              "id": "sori",
+              "name": "Sori",
+              "lat": -15,
+              "lon": 4.5,
+              "books": [
+                7
+              ],
+              "desc": "The smallest and tamest island of the Pantheon, closest to home, where young trappers train."
+            },
+            {
+              "id": "homeisles",
+              "name": "The Homeisles",
+              "lat": -29.5,
+              "lon": 20.5,
+              "sea": true,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The tamed islands of the Eelakin, with their cities and reefs, about three weeks’ rowing from the Pantheon. Their layout here is our placeholder."
+            },
+            {
+              "id": "mainland",
+              "name": "The mainland",
+              "lat": -62,
+              "lon": 10,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A frozen wasteland to the south of the homeisles, with native ravens and no sign of people."
+            }
+          ]
+        },
+        {
+          "id": "secondsun",
+          "name": "Second of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "2nd planet from Drominad",
+          "blurb": "A habitable-zone world, smaller than First of the Sun, where water is the main surface feature. It may hold fully developed human societies.",
+          "facts": [
+            [
+              "Order",
+              "2 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "thirdsun",
+          "name": "Third of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "3rd planet from Drominad",
+          "blurb": "Apparently the smallest planet in the system. It may hold human societies.",
+          "facts": [
+            [
+              "Order",
+              "3 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "fourthsun",
+          "name": "Fourth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "4th planet from Drominad",
+          "blurb": "The last planet in the habitable zone and the last that might hold fully developed human societies. It appears to have rings. An asteroid belt lies beyond it.",
+          "facts": [
+            [
+              "Order",
+              "4 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "fifthsun",
+          "name": "Fifth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "5th planet from Drominad",
+          "blurb": "The first gas giant past the asteroid belt, with three major moons and a ring system.",
+          "facts": [
+            [
+              "Order",
+              "5 of 7"
+            ],
+            [
+              "Moons",
+              "3 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            }
+          ]
+        },
+        {
+          "id": "sixthsun",
+          "name": "Sixth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "6th planet from Drominad",
+          "blurb": "A gas giant with four major moons and a ring system, apparently the largest planet in the Drominad system.",
+          "facts": [
+            [
+              "Order",
+              "6 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            },
+            {
+              "name": "Moon 4",
+              "size": 0.09,
+              "dist": 4.5,
+              "speed": 0.041999999999999996
+            }
+          ]
+        },
+        {
+          "id": "seventhsun",
+          "name": "Seventh of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "7th planet from Drominad",
+          "blurb": "The outermost planet, a gas giant with four major moons.",
+          "facts": [
+            [
+              "Order",
+              "7 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            },
+            {
+              "name": "Moon 4",
+              "size": 0.09,
+              "dist": 4.5,
+              "speed": 0.041999999999999996
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e31",
+          "book": 7,
+          "world": "firstsun",
+          "site": "patji",
+          "title": "Sixth of the Dusk",
+          "text": "Dusk the trapper meets Vathi, a scholar who has seen the ships of the Ones Above."
+        },
+        {
+          "id": "e61",
+          "book": 12,
+          "world": "firstsun",
+          "site": "patjiseye",
+          "title": "Through Patji’s Eye",
+          "text": "Dusk leaves his world through the Eye, searching for help against the Ones Above."
+        }
+      ],
+      "later_event": {
+        "id": "e62",
+        "book": 12,
+        "world": "emberdark",
+        "site": "hiddengate",
+        "title": "Dusk and Starling",
+        "text": "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."
+      },
+      "codex": [
+        {
+          "name": "Autonomy",
+          "books": [
+            7,
+            10
+          ],
+          "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+          "more": [
+            [
+              8,
+              "Claims the world of Obrodai and raises an avatar there."
+            ],
+            [
+              10,
+              "Reaches toward Scadrial in The Lost Metal."
+            ],
+            [
+              12,
+              "Patji, the deadly island of First of the Sun, is one of its avatars."
+            ]
+          ]
+        },
+        {
+          "name": "Dusk",
+          "role": "Trapper of Patji",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "desc": "A trapper who survives Patji by knowing its rules and by his Aviar.",
+          "more": [
+            [
+              12,
+              "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."
+            ]
+          ]
+        },
+        {
+          "name": "Perpendicularities",
+          "first": 7,
+          "desc": "Places where a Shard’s power touches all three Realms, used as gates between worlds. Patji’s Eye is one."
+        }
+      ],
+      "drominad_group": {
+        "id": "drominad",
+        "anchor": "drominad",
+        "spirit": [
+          "autonomy"
+        ],
+        "name": "The Drominad system",
+        "chip": {
+          "border": "rgba(160,200,230,.6)",
+          "color": "#c4def0"
+        },
+        "labelFar": 6,
+        "flyDist": 1.6
+      },
+      "line_references": [
+        {
+          "line": 279,
+          "record": "drominad"
+        },
+        {
+          "line": 541,
+          "record": "drominad"
+        },
+        {
+          "line": 546,
+          "record": "firstsun"
+        },
+        {
+          "line": 727,
+          "record": "e31"
+        },
+        {
+          "line": 762,
+          "record": "e61"
+        },
+        {
+          "line": 763,
+          "record": "e62"
+        },
+        {
+          "line": 778,
+          "record": "Autonomy"
+        },
+        {
+          "line": 804,
+          "record": "Dusk"
+        },
+        {
+          "line": 811,
+          "record": "Perpendicularities"
+        },
+        {
+          "line": 861,
+          "record": "autonomy"
+        },
+        {
+          "line": 916,
+          "record": "h-dusk"
+        }
+      ],
+      "later_flow": {
+        "id": "h-dusk",
+        "pairs": [
+          [
+            "firstsun",
+            "emberdark"
+          ],
+          [
+            "yolen",
+            "emberdark"
+          ]
+        ],
+        "book": 12,
+        "opacity": {
+          "all": 0.5,
+          "cur": 0.95,
+          "past": 0.35
+        },
+        "curve": 0.08
+      }
+    },
+    {
+      "pr": 37,
+      "head_sha": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob_sha": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "blob_verified": true,
+      "counts": {
+        "all_worlds": 60,
+        "selected_system_worlds": 8,
+        "firstsun_sites": 6,
+        "firstsun_landmarks": 2,
+        "all_events": 120,
+        "firstsun_events": 2
+      },
+      "worlds": [
+        {
+          "id": "drominad",
+          "name": "Drominad",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "Star of the Drominad system",
+          "blurb": "The star of First of the Sun, painted pale blue-white on the system chart. Seven planets circle it, named simply by their order: four small worlds in the habitable zone, an asteroid belt, then three gas giants.",
+          "facts": [
+            [
+              "Planets",
+              "First to Seventh of the Sun"
+            ]
+          ]
+        },
+        {
+          "id": "firstsun",
+          "name": "First of the Sun",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "1st planet · archipelago world",
+          "blurb": "An ocean world with one large mainland and many islands where the Eelakin live. The greatest island, Patji, is a jungle where almost everything can kill you. Trappers like Dusk survive by knowing its rules and by the Aviar, birds that give their owners talents such as seeing danger coming. Now ships from the Ones Above have arrived in orbit. On this globe the Pantheon islands are drawn about five times larger, and the homeisles three times, so they can be seen.",
+          "facts": [
+            [
+              "Order",
+              "1st from Drominad"
+            ],
+            [
+              "Moon",
+              "First of the First"
+            ],
+            [
+              "People",
+              "The Eelakin"
+            ],
+            [
+              "Magic",
+              "Aviar birds"
+            ],
+            [
+              "Threat",
+              "The Ones Above"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "An ocean world of islands. The greatest, Patji, is a deadly jungle where the Aviar live, and Patji itself is an avatar of Autonomy. Years after the Ones Above appeared, Dusk sees his people racing to modernise before they are conquered, and he sails through Patji’s Eye into the Emberdark to find help.",
+              "facts": [
+                [
+                  "Order",
+                  "1st from Drominad"
+                ],
+                [
+                  "Moon",
+                  "First of the First"
+                ],
+                [
+                  "Power",
+                  "Patji, an avatar of Autonomy"
+                ],
+                [
+                  "Magic",
+                  "Aviar birds"
+                ],
+                [
+                  "Gate",
+                  "Patji’s Eye"
+                ]
+              ]
+            }
+          },
+          "moons": [
+            {
+              "name": "First of the First",
+              "size": 0.18,
+              "dist": 3,
+              "speed": 0.04
+            }
+          ],
+          "realms": {
+            "cognitive": {
+              "name": "Drominad’s subastral",
+              "style": "unsea",
+              "c1": "#06060c",
+              "c2": "#3a6ae0",
+              "c3": "#141418",
+              "blurb": "Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights."
+            }
+          },
+          "sites": [
+            {
+              "id": "patji",
+              "name": "Patji",
+              "lat": -5,
+              "lon": -0.5,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The Father island, the largest of the Pantheon: wedge-shaped, with knife-edged peaks and a jungle that punishes every mistake. Aviar must visit it to gain their talents. Dusk traps here.",
+              "scene": {
+                "kind": "forest",
+                "arch": "organic",
+                "size": "large",
+                "tod": "day",
+                "weather": "rain",
+                "coast": "s"
+              }
+            },
+            {
+              "id": "patjiseye",
+              "name": "Patji’s Eye",
+              "lat": -4.5,
+              "lon": 1.75,
+              "books": [
+                12
+              ],
+              "desc": "A green-tinted lake of not-quite-water in a canyon toward Patji’s eastern peak, holding glowing worms. It is a perpendicularity, and Dusk sails through it into the Emberdark.",
+              "scene": {
+                "kind": "wilds",
+                "arch": "organic",
+                "size": "small",
+                "tod": "dusk",
+                "weather": "mist",
+                "landmarks": [
+                  {
+                    "id": "pool",
+                    "name": "The not-water lake",
+                    "kind": "lake",
+                    "at": [
+                      0,
+                      0
+                    ],
+                    "books": [
+                      12
+                    ],
+                    "desc": "A green-tinted pool of not-water full of glowing worms. Their paste lets things float in the emberdark, and the Aviar gain their talents from them."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fort",
+              "name": "The Northern Interests fort",
+              "lat": -5.75,
+              "lon": -4.25,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A fortified wooden stronghold with cannons at the far end of Patji, where the Ones Above set their machine.",
+              "scene": {
+                "kind": "fortress",
+                "arch": "industrial",
+                "size": "small",
+                "tod": "day",
+                "weather": "rain",
+                "walls": true,
+                "landmarks": [
+                  {
+                    "id": "machine",
+                    "name": "The machine",
+                    "kind": "factory",
+                    "at": [
+                      0,
+                      0
+                    ],
+                    "books": [
+                      7,
+                      12
+                    ],
+                    "desc": "The Ones Above’s device inside the trading company’s fort."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sori",
+              "name": "Sori",
+              "lat": -15,
+              "lon": 4.5,
+              "books": [
+                7
+              ],
+              "desc": "The smallest and tamest island of the Pantheon, closest to home, where young trappers train.",
+              "scene": {
+                "kind": "forest",
+                "size": "small",
+                "tod": "day",
+                "weather": "clear",
+                "coast": "n"
+              }
+            },
+            {
+              "id": "homeisles",
+              "name": "The Homeisles",
+              "lat": -29.5,
+              "lon": 20.5,
+              "sea": true,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The tamed islands of the Eelakin, with their cities and reefs, about three weeks’ rowing from the Pantheon. Their layout here is our placeholder.",
+              "scene": {
+                "kind": "town",
+                "arch": "rustic",
+                "size": "medium",
+                "tod": "day",
+                "weather": "clear",
+                "coast": "n"
+              }
+            },
+            {
+              "id": "mainland",
+              "name": "The mainland",
+              "lat": -62,
+              "lon": 10,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A frozen wasteland to the south of the homeisles, with native ravens and no sign of people.",
+              "scene": {
+                "kind": "ice",
+                "size": "huge",
+                "tod": "day",
+                "weather": "snow"
+              }
+            }
+          ]
+        },
+        {
+          "id": "secondsun",
+          "name": "Second of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "2nd planet from Drominad",
+          "blurb": "A habitable-zone world, smaller than First of the Sun, where water is the main surface feature. It may hold fully developed human societies.",
+          "facts": [
+            [
+              "Order",
+              "2 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "thirdsun",
+          "name": "Third of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "3rd planet from Drominad",
+          "blurb": "Apparently the smallest planet in the system. It may hold human societies.",
+          "facts": [
+            [
+              "Order",
+              "3 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "fourthsun",
+          "name": "Fourth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "4th planet from Drominad",
+          "blurb": "The last planet in the habitable zone and the last that might hold fully developed human societies. It appears to have rings. An asteroid belt lies beyond it.",
+          "facts": [
+            [
+              "Order",
+              "4 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "fifthsun",
+          "name": "Fifth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "5th planet from Drominad",
+          "blurb": "The first gas giant past the asteroid belt, with three major moons and a ring system.",
+          "facts": [
+            [
+              "Order",
+              "5 of 7"
+            ],
+            [
+              "Moons",
+              "3 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            }
+          ]
+        },
+        {
+          "id": "sixthsun",
+          "name": "Sixth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "6th planet from Drominad",
+          "blurb": "A gas giant with four major moons and a ring system, apparently the largest planet in the Drominad system.",
+          "facts": [
+            [
+              "Order",
+              "6 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            },
+            {
+              "name": "Moon 4",
+              "size": 0.09,
+              "dist": 4.5,
+              "speed": 0.041999999999999996
+            }
+          ]
+        },
+        {
+          "id": "seventhsun",
+          "name": "Seventh of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "7th planet from Drominad",
+          "blurb": "The outermost planet, a gas giant with four major moons.",
+          "facts": [
+            [
+              "Order",
+              "7 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            },
+            {
+              "name": "Moon 4",
+              "size": 0.09,
+              "dist": 4.5,
+              "speed": 0.041999999999999996
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e31",
+          "book": 7,
+          "world": "firstsun",
+          "site": "patji",
+          "title": "Sixth of the Dusk",
+          "text": "Dusk the trapper meets Vathi, a scholar who has seen the ships of the Ones Above."
+        },
+        {
+          "id": "e61",
+          "book": 12,
+          "world": "firstsun",
+          "site": "patjiseye",
+          "lm": "pool",
+          "title": "Through Patji’s Eye",
+          "text": "Dusk leaves his world through the Eye, searching for help against the Ones Above."
+        }
+      ],
+      "later_event": {
+        "id": "e62",
+        "book": 12,
+        "world": "emberdark",
+        "site": "hiddengate",
+        "lm": "ring",
+        "title": "Dusk and Starling",
+        "text": "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."
+      },
+      "codex": [
+        {
+          "name": "Autonomy",
+          "books": [
+            7,
+            10
+          ],
+          "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+          "more": [
+            [
+              8,
+              "Claims the world of Obrodai and raises an avatar there."
+            ],
+            [
+              10,
+              "Reaches toward Scadrial in The Lost Metal."
+            ],
+            [
+              12,
+              "Patji, the deadly island of First of the Sun, is one of its avatars."
+            ]
+          ]
+        },
+        {
+          "name": "Dusk",
+          "role": "Trapper of Patji",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "desc": "A trapper who survives Patji by knowing its rules and by his Aviar.",
+          "more": [
+            [
+              12,
+              "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."
+            ]
+          ]
+        },
+        {
+          "name": "Perpendicularities",
+          "first": 7,
+          "desc": "Places where a Shard’s power touches all three Realms, used as gates between worlds. Patji’s Eye is one."
+        }
+      ],
+      "drominad_group": {
+        "id": "drominad",
+        "anchor": "drominad",
+        "spirit": [
+          "autonomy"
+        ],
+        "name": "The Drominad system",
+        "chip": {
+          "border": "rgba(160,200,230,.6)",
+          "color": "#c4def0"
+        },
+        "labelFar": 6,
+        "flyDist": 1.6
+      },
+      "line_references": [
+        {
+          "line": 842,
+          "record": "drominad"
+        },
+        {
+          "line": 1105,
+          "record": "drominad"
+        },
+        {
+          "line": 1110,
+          "record": "firstsun"
+        },
+        {
+          "line": 1315,
+          "record": "e31"
+        },
+        {
+          "line": 1379,
+          "record": "e61"
+        },
+        {
+          "line": 1380,
+          "record": "e62"
+        },
+        {
+          "line": 1396,
+          "record": "Autonomy"
+        },
+        {
+          "line": 1422,
+          "record": "Dusk"
+        },
+        {
+          "line": 1441,
+          "record": "Perpendicularities"
+        },
+        {
+          "line": 1497,
+          "record": "autonomy"
+        },
+        {
+          "line": 1552,
+          "record": "h-dusk"
+        }
+      ],
+      "later_flow": {
+        "id": "h-dusk",
+        "pairs": [
+          [
+            "firstsun",
+            "emberdark"
+          ],
+          [
+            "yolen",
+            "emberdark"
+          ]
+        ],
+        "book": 12,
+        "opacity": {
+          "all": 0.5,
+          "cur": 0.95,
+          "past": 0.35
+        },
+        "curve": 0.08
+      }
+    },
+    {
+      "pr": 48,
+      "head_sha": "61e26afb4514f4b9510f33ce9f8b0b7bbe84e964",
+      "blob_sha": "05170eab9f4c10f18c98a6fac51cf825e63c8a56",
+      "blob_verified": true,
+      "counts": {
+        "all_worlds": 60,
+        "selected_system_worlds": 8,
+        "firstsun_sites": 6,
+        "firstsun_landmarks": 0,
+        "all_events": 63,
+        "firstsun_events": 2
+      },
+      "worlds": [
+        {
+          "id": "drominad",
+          "name": "Drominad",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "Star of the Drominad system",
+          "blurb": "The star of First of the Sun, painted pale blue-white on the system chart. Seven planets circle it, named simply by their order: four small worlds in the habitable zone, an asteroid belt, then three gas giants.",
+          "facts": [
+            [
+              "Planets",
+              "First to Seventh of the Sun"
+            ]
+          ]
+        },
+        {
+          "id": "firstsun",
+          "name": "First of the Sun",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "1st planet · archipelago world",
+          "blurb": "An ocean world with one large mainland and many islands where the Eelakin live. The greatest island, Patji, is a jungle where almost everything can kill you. Trappers like Dusk survive by knowing its rules and by the Aviar, birds that give their owners talents such as seeing danger coming. Now ships from the Ones Above have arrived in orbit. On this globe the Pantheon islands are drawn about five times larger, and the homeisles three times, so they can be seen.",
+          "facts": [
+            [
+              "Order",
+              "1st from Drominad"
+            ],
+            [
+              "Moon",
+              "First of the First"
+            ],
+            [
+              "People",
+              "The Eelakin"
+            ],
+            [
+              "Magic",
+              "Aviar birds"
+            ],
+            [
+              "Threat",
+              "The Ones Above"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "An ocean world of islands. The greatest, Patji, is a deadly jungle where the Aviar live, and Patji itself is an avatar of Autonomy. Years after the Ones Above appeared, Dusk sees his people racing to modernise before they are conquered, and he sails through Patji’s Eye into the Emberdark to find help.",
+              "facts": [
+                [
+                  "Order",
+                  "1st from Drominad"
+                ],
+                [
+                  "Moon",
+                  "First of the First"
+                ],
+                [
+                  "Power",
+                  "Patji, an avatar of Autonomy"
+                ],
+                [
+                  "Magic",
+                  "Aviar birds"
+                ],
+                [
+                  "Gate",
+                  "Patji’s Eye"
+                ]
+              ]
+            }
+          },
+          "moons": [
+            {
+              "name": "First of the First",
+              "size": 0.18,
+              "dist": 3,
+              "speed": 0.04
+            }
+          ],
+          "realms": {
+            "cognitive": {
+              "name": "Drominad’s subastral",
+              "style": "unsea",
+              "c1": "#06060c",
+              "c2": "#3a6ae0",
+              "c3": "#141418",
+              "blurb": "Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights."
+            }
+          },
+          "sites": [
+            {
+              "id": "patji",
+              "name": "Patji",
+              "lat": -5,
+              "lon": -0.5,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The Father island, the largest of the Pantheon: wedge-shaped, with knife-edged peaks and a jungle that punishes every mistake. Aviar must visit it to gain their talents. Dusk traps here."
+            },
+            {
+              "id": "patjiseye",
+              "name": "Patji’s Eye",
+              "lat": -4.5,
+              "lon": 1.75,
+              "books": [
+                12
+              ],
+              "desc": "A green-tinted lake of not-quite-water in a canyon toward Patji’s eastern peak, holding glowing worms. It is a perpendicularity, and Dusk sails through it into the Emberdark."
+            },
+            {
+              "id": "fort",
+              "name": "The Northern Interests fort",
+              "lat": -5.75,
+              "lon": -4.25,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A fortified wooden stronghold with cannons at the far end of Patji, where the Ones Above set their machine."
+            },
+            {
+              "id": "sori",
+              "name": "Sori",
+              "lat": -15,
+              "lon": 4.5,
+              "books": [
+                7
+              ],
+              "desc": "The smallest and tamest island of the Pantheon, closest to home, where young trappers train."
+            },
+            {
+              "id": "homeisles",
+              "name": "The Homeisles",
+              "lat": -29.5,
+              "lon": 20.5,
+              "sea": true,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The tamed islands of the Eelakin, with their cities and reefs, about three weeks’ rowing from the Pantheon. Their layout here is our placeholder."
+            },
+            {
+              "id": "mainland",
+              "name": "The mainland",
+              "lat": -62,
+              "lon": 10,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A frozen wasteland to the south of the homeisles, with native ravens and no sign of people."
+            }
+          ]
+        },
+        {
+          "id": "secondsun",
+          "name": "Second of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "2nd planet from Drominad",
+          "blurb": "A habitable-zone world, smaller than First of the Sun, where water is the main surface feature. It may hold fully developed human societies.",
+          "facts": [
+            [
+              "Order",
+              "2 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "thirdsun",
+          "name": "Third of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "3rd planet from Drominad",
+          "blurb": "Apparently the smallest planet in the system. It may hold human societies.",
+          "facts": [
+            [
+              "Order",
+              "3 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "fourthsun",
+          "name": "Fourth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "4th planet from Drominad",
+          "blurb": "The last planet in the habitable zone and the last that might hold fully developed human societies. It appears to have rings. An asteroid belt lies beyond it.",
+          "facts": [
+            [
+              "Order",
+              "4 of 7"
+            ]
+          ]
+        },
+        {
+          "id": "fifthsun",
+          "name": "Fifth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "5th planet from Drominad",
+          "blurb": "The first gas giant past the asteroid belt, with three major moons and a ring system.",
+          "facts": [
+            [
+              "Order",
+              "5 of 7"
+            ],
+            [
+              "Moons",
+              "3 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            }
+          ]
+        },
+        {
+          "id": "sixthsun",
+          "name": "Sixth of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "6th planet from Drominad",
+          "blurb": "A gas giant with four major moons and a ring system, apparently the largest planet in the Drominad system.",
+          "facts": [
+            [
+              "Order",
+              "6 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            },
+            {
+              "name": "Moon 4",
+              "size": 0.09,
+              "dist": 4.5,
+              "speed": 0.041999999999999996
+            }
+          ]
+        },
+        {
+          "id": "seventhsun",
+          "name": "Seventh of the Sun",
+          "group": "drominad",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "status": "7th planet from Drominad",
+          "blurb": "The outermost planet, a gas giant with four major moons.",
+          "facts": [
+            [
+              "Order",
+              "7 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "moons": [
+            {
+              "name": "Moon 1",
+              "size": 0.09,
+              "dist": 2.4,
+              "speed": 0.06
+            },
+            {
+              "name": "Moon 2",
+              "size": 0.12,
+              "dist": 3.0999999999999996,
+              "speed": 0.054
+            },
+            {
+              "name": "Moon 3",
+              "size": 0.15,
+              "dist": 3.8,
+              "speed": 0.048
+            },
+            {
+              "name": "Moon 4",
+              "size": 0.09,
+              "dist": 4.5,
+              "speed": 0.041999999999999996
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e31",
+          "book": 7,
+          "world": "firstsun",
+          "site": "patji",
+          "title": "Sixth of the Dusk",
+          "text": "Dusk the trapper meets Vathi, a scholar who has seen the ships of the Ones Above."
+        },
+        {
+          "id": "e61",
+          "book": 12,
+          "world": "firstsun",
+          "site": "patjiseye",
+          "title": "Through Patji’s Eye",
+          "text": "Dusk leaves his world through the Eye, searching for help against the Ones Above."
+        }
+      ],
+      "later_event": {
+        "id": "e62",
+        "book": 12,
+        "world": "emberdark",
+        "site": "hiddengate",
+        "title": "Dusk and Starling",
+        "text": "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."
+      },
+      "codex": [
+        {
+          "name": "Autonomy",
+          "books": [
+            7,
+            10
+          ],
+          "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+          "more": [
+            [
+              8,
+              "Claims the world of Obrodai and raises an avatar there."
+            ],
+            [
+              10,
+              "Reaches toward Scadrial in The Lost Metal."
+            ],
+            [
+              12,
+              "Patji, the deadly island of First of the Sun, is one of its avatars."
+            ]
+          ]
+        },
+        {
+          "name": "Dusk",
+          "role": "Trapper of Patji",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "desc": "A trapper who survives Patji by knowing its rules and by his Aviar.",
+          "more": [
+            [
+              12,
+              "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."
+            ]
+          ]
+        },
+        {
+          "name": "Perpendicularities",
+          "first": 7,
+          "desc": "Places where a Shard’s power touches all three Realms, used as gates between worlds. Patji’s Eye is one."
+        }
+      ],
+      "drominad_group": {
+        "id": "drominad",
+        "anchor": "drominad",
+        "spirit": [
+          "autonomy"
+        ],
+        "name": "The Drominad system",
+        "chip": {
+          "border": "rgba(160,200,230,.6)",
+          "color": "#c4def0"
+        },
+        "labelFar": 6,
+        "flyDist": 1.6
+      },
+      "line_references": [
+        {
+          "line": 326,
+          "record": "drominad"
+        },
+        {
+          "line": 592,
+          "record": "drominad"
+        },
+        {
+          "line": 597,
+          "record": "firstsun"
+        },
+        {
+          "line": 778,
+          "record": "e31"
+        },
+        {
+          "line": 813,
+          "record": "e61"
+        },
+        {
+          "line": 814,
+          "record": "e62"
+        },
+        {
+          "line": 829,
+          "record": "Autonomy"
+        },
+        {
+          "line": 855,
+          "record": "Dusk"
+        },
+        {
+          "line": 862,
+          "record": "Perpendicularities"
+        },
+        {
+          "line": 912,
+          "record": "autonomy"
+        },
+        {
+          "line": 968,
+          "record": "h-dusk"
+        }
+      ],
+      "later_flow": {
+        "id": "h-dusk",
+        "pairs": [
+          [
+            "firstsun",
+            "emberdark"
+          ],
+          [
+            "yolen",
+            "emberdark"
+          ]
+        ],
+        "book": 12,
+        "opacity": {
+          "all": 0.5,
+          "cur": 0.95,
+          "past": 0.35
+        },
+        "curve": 0.08
+      }
+    }
+  ]
+}
