@@ -1,0 +1,1760 @@
+{
+  "date": "2026-11-20",
+  "finding": "TA01-KENTON-01",
+  "inputBlobs": {
+    "pr24.js": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+    "pr37.js": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+    "pr48.js": "0f5f5dd897f959bfa9afe4bb8af04bc95fb38f21",
+    "engine.js": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+    "reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+  },
+  "hashesVerified": 5,
+  "sourceReplacementCount": 1,
+  "sourceReversal": true,
+  "parsedPackReversal": true,
+  "inventory": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "recordCount": 15,
+      "records": [
+        {
+          "kind": "world",
+          "id": "aisda",
+          "data": {
+            "id": "aisda",
+            "name": "AisDa",
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "major": true,
+            "status": "Blue-white supergiant",
+            "star": {
+              "name": "AisDa",
+              "col": "#dce8ff"
+            },
+            "map": [
+              -1.416,
+              27.126,
+              0
+            ],
+            "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+            "blurb": "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet.",
+            "short": "Blue-white supergiant.",
+            "facts": [
+              [
+                "Companion",
+                "The Eye of Ridos"
+              ]
+            ],
+            "noSurface": true
+          },
+          "disposition": "Held: system astronomy/Investiture source and edition mapping unresolved"
+        },
+        {
+          "kind": "world",
+          "id": "ridos",
+          "data": {
+            "id": "ridos",
+            "name": "The Eye of Ridos",
+            "aka": [
+              "Ridos"
+            ],
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "status": "White dwarf behind a particle ring",
+            "star": {
+              "name": "The Eye of Ridos",
+              "col": "#f0f4ff"
+            },
+            "map": [
+              -1.366,
+              27.126,
+              0
+            ],
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "blurb": "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring.",
+            "short": "White dwarf behind the dust.",
+            "facts": [
+              [
+                "Ring",
+                "A dense particle cloud"
+              ]
+            ],
+            "ring": {
+              "inner": 1.6,
+              "outer": 3.2,
+              "c1": "#8a8070",
+              "c2": "#3a3430",
+              "tilt": 0.1
+            },
+            "noSurface": true
+          },
+          "disposition": "Held: system astronomy/Investiture source and edition mapping unresolved"
+        },
+        {
+          "kind": "world",
+          "id": "taldain",
+          "data": {
+            "id": "taldain",
+            "name": "Taldain",
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "status": "Sole planet · Shardworld of Autonomy",
+            "star": {
+              "name": "AisDa",
+              "col": "#dce8ff"
+            },
+            "map": [
+              -1.386,
+              27.126,
+              0
+            ],
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "hero": "kerla",
+            "blurb": "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.",
+            "short": "Dayside’s white sand: White Sand.",
+            "facts": [
+              [
+                "Shard",
+                "Autonomy"
+              ],
+              [
+                "Moon",
+                "Nizh Da, on a polar orbit over the twilight line"
+              ],
+              [
+                "Magic",
+                "Sand mastery"
+              ],
+              [
+                "Peculiarity",
+                "One face to each star"
+              ]
+            ],
+            "moons": [
+              {
+                "name": "Nizh Da",
+                "size": 0.16,
+                "dist": 2.8,
+                "speed": 0.05
+              }
+            ]
+          },
+          "disposition": "TA01-KENTON-01 changes final blurb sentence only; remainder held"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kraeda",
+          "data": {
+            "id": "kraeda",
+            "name": "Mount KraeDa",
+            "lat": 0,
+            "lon": 0,
+            "books": [
+              7
+            ],
+            "desc": "A lone mountain at the exact centre of Dayside, with the sun directly overhead. Kerla’s sand surrounds it, and the Diem hold their trials at its foot."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kerla",
+          "data": {
+            "id": "kerla",
+            "name": "Kerla",
+            "lat": 5,
+            "lon": -25,
+            "books": [
+              7
+            ],
+            "desc": "A sand ‘lake’ with water just beneath and vines under the surface, ringing KraeDa and covering much of Kerzta."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kezare",
+          "data": {
+            "id": "kezare",
+            "name": "Kezare",
+            "lat": -33,
+            "lon": 3,
+            "books": [
+              7
+            ],
+            "desc": "Lossand’s capital, on river islands where the Ry’DoAli meets the Nor’Tallon. Home of the Diem, the order of Sand Masters, in a building carved from one block of white sandstone."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kerkedasha",
+          "data": {
+            "id": "kerkedasha",
+            "name": "Ker Kedasha",
+            "lat": -30,
+            "lon": -34,
+            "books": [
+              7
+            ],
+            "desc": "The capital of Kerzta, the largest and strongest Dayside nation, due west of Kezare."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/lraezare",
+          "data": {
+            "id": "lraezare",
+            "name": "Lraezare",
+            "lat": -64.5,
+            "lon": 4.5,
+            "books": [
+              7
+            ],
+            "desc": "A port at the mouth of the Ry’DoAli on the south coast, where the sun sits low on the horizon."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/nortallon",
+          "data": {
+            "id": "nortallon",
+            "name": "Nor’Tallon",
+            "lat": -28,
+            "lon": 52,
+            "books": [
+              7
+            ],
+            "desc": "Capital of Tallon, in the mountains that wall off the eastern Rim Kingdoms."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/deepsand",
+          "data": {
+            "id": "deepsand",
+            "name": "The deep sand",
+            "lat": -28,
+            "lon": 30,
+            "books": [
+              7
+            ],
+            "desc": "Uninhabited deep desert east of Lossand, home of the deep sandlings."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/borderocean",
+          "data": {
+            "id": "borderocean",
+            "name": "The Border Ocean and Terminal Storm",
+            "lat": 0,
+            "lon": 90,
+            "sea": true,
+            "books": [
+              7
+            ],
+            "desc": "The ocean ring along the line between day and night, with a permanent storm along its middle that makes crossings deadly."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/darkside",
+          "data": {
+            "id": "darkside",
+            "name": "Darkside",
+            "lat": 0,
+            "lon": -170,
+            "books": [
+              7
+            ],
+            "desc": "The night face, always turned to the dim Eye of Ridos and lit in ultraviolet twilight. Khriss comes from the nation of Elis here, which resists the Dynasty. Its shape is our placeholder."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "event",
+          "id": "e33",
+          "data": {
+            "id": "e33",
+            "book": 7,
+            "world": "taldain",
+            "site": "kerla",
+            "title": "White Sand",
+            "text": "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."
+          },
+          "disposition": "Broad premise corroborated by official synopsis; site attachment and earliest scene not verified; unchanged"
+        },
+        {
+          "kind": "codex",
+          "id": "shards/Autonomy",
+          "data": {
+            "name": "Autonomy",
+            "books": [
+              7,
+              10
+            ],
+            "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+            "more": [
+              [
+                8,
+                "Claims the world of Obrodai and raises an avatar there."
+              ],
+              [
+                10,
+                "Reaches toward Scadrial in The Lost Metal."
+              ],
+              [
+                12,
+                "Patji, the deadly island of First of the Sun, is one of its avatars."
+              ]
+            ]
+          },
+          "disposition": "Cross-work hold: TA01 promo does not verify later avatars, worldhopping/essay identity, or gates"
+        },
+        {
+          "kind": "codex",
+          "id": "people/Khriss",
+          "data": {
+            "name": "Khriss",
+            "role": "Scholar of Darkside",
+            "books": [
+              7
+            ],
+            "desc": "A worldhopping scholar whose essays explain the cosmere’s rules."
+          },
+          "disposition": "Cross-work hold: TA01 promo does not verify later avatars, worldhopping/essay identity, or gates"
+        }
+      ],
+      "whiteSandRegistry": [],
+      "keywordHits": [
+        {
+          "path": "pack.books.7.title",
+          "text": "Arcanum Unbounded (with White Sand)"
+        },
+        {
+          "path": "pack.intro.legend.1.1",
+          "text": "Threnody, Taldain, Roshar, Scadrial, Sel, Nalthis, First of the Sun and the Scar sit where the Cosmere star chart shows them. The chart gives directions, not distances"
+        },
+        {
+          "path": "pack.groups.5.id",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.groups.5.name",
+          "text": "The Taldain system"
+        },
+        {
+          "path": "pack.worlds.35.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.35.blurb",
+          "text": "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet."
+        },
+        {
+          "path": "pack.worlds.36.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.36.blurb",
+          "text": "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring."
+        },
+        {
+          "path": "pack.worlds.37.id",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.37.name",
+          "text": "Taldain"
+        },
+        {
+          "path": "pack.worlds.37.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.37.blurb",
+          "text": "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre."
+        },
+        {
+          "path": "pack.worlds.37.short",
+          "text": "Dayside’s white sand: White Sand."
+        },
+        {
+          "path": "pack.worlds.37.facts.2.1",
+          "text": "Sand mastery"
+        },
+        {
+          "path": "pack.worlds.37.sites.0.desc",
+          "text": "A lone mountain at the exact centre of Dayside, with the sun directly overhead. Kerla’s sand surrounds it, and the Diem hold their trials at its foot."
+        },
+        {
+          "path": "pack.worlds.37.sites.2.desc",
+          "text": "Lossand’s capital, on river islands where the Ry’DoAli meets the Nor’Tallon. Home of the Diem, the order of Sand Masters, in a building carved from one block of white sandstone."
+        },
+        {
+          "path": "pack.worlds.37.sites.3.desc",
+          "text": "The capital of Kerzta, the largest and strongest Dayside nation, due west of Kezare."
+        },
+        {
+          "path": "pack.worlds.37.sites.8.id",
+          "text": "darkside"
+        },
+        {
+          "path": "pack.worlds.37.sites.8.name",
+          "text": "Darkside"
+        },
+        {
+          "path": "pack.worlds.37.sites.8.desc",
+          "text": "The night face, always turned to the dim Eye of Ridos and lit in ultraviolet twilight. Khriss comes from the nation of Elis here, which resists the Dynasty. Its shape is our placeholder."
+        },
+        {
+          "path": "pack.worlds.50.blurb",
+          "text": "The world where it all began. Humans, dragons and the strange Sho Del all came from Yolen, and it was here, long before any of the books, that a group of conspirators shattered Adonalsium into sixteen Shards. Khriss writes that it is shrouded and hidden somewhere in the cosmere. The books have barely shown the planet itself; this surface is an interpretation."
+        },
+        {
+          "path": "pack.worlds.54.blurb",
+          "text": "Mentioned in Mistborn: Secret History: a planet whose people are Invested in a way different from Sel, Scadrial, Nalthis or Taldain. Little else is known; this surface is a placeholder."
+        },
+        {
+          "path": "pack.events.32.world",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.events.32.title",
+          "text": "White Sand"
+        },
+        {
+          "path": "pack.events.32.text",
+          "text": "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."
+        },
+        {
+          "path": "pack.codex.0.list.9.desc",
+          "text": "Shard of Taldain, who likes many avatars and dislikes rivals."
+        },
+        {
+          "path": "pack.codex.1.list.15.name",
+          "text": "Khriss"
+        },
+        {
+          "path": "pack.codex.1.list.15.role",
+          "text": "Scholar of Darkside"
+        },
+        {
+          "path": "pack.realms.cognitive.subastrals.4.world",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.galaxy.labels.6.text",
+          "text": "Taldain system"
+        },
+        {
+          "path": "pack.galaxy.links.1.pairs.1.0",
+          "text": "taldain"
+        }
+      ],
+      "scope": "Selected records plus full-pack keyword hits, not a complete primary-work claim inventory. Graphics/geography are held, not verified."
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "recordCount": 16,
+      "records": [
+        {
+          "kind": "world",
+          "id": "aisda",
+          "data": {
+            "id": "aisda",
+            "name": "AisDa",
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "major": true,
+            "status": "Blue-white supergiant",
+            "star": {
+              "name": "AisDa",
+              "col": "#dce8ff"
+            },
+            "map": [
+              -1.416,
+              27.126,
+              0
+            ],
+            "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+            "blurb": "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet.",
+            "short": "Blue-white supergiant.",
+            "facts": [
+              [
+                "Companion",
+                "The Eye of Ridos"
+              ]
+            ],
+            "noSurface": true
+          },
+          "disposition": "Held: system astronomy/Investiture source and edition mapping unresolved"
+        },
+        {
+          "kind": "world",
+          "id": "ridos",
+          "data": {
+            "id": "ridos",
+            "name": "The Eye of Ridos",
+            "aka": [
+              "Ridos"
+            ],
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "status": "White dwarf behind a particle ring",
+            "star": {
+              "name": "The Eye of Ridos",
+              "col": "#f0f4ff"
+            },
+            "map": [
+              -1.366,
+              27.126,
+              0
+            ],
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "blurb": "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring.",
+            "short": "White dwarf behind the dust.",
+            "facts": [
+              [
+                "Ring",
+                "A dense particle cloud"
+              ]
+            ],
+            "ring": {
+              "inner": 1.6,
+              "outer": 3.2,
+              "c1": "#8a8070",
+              "c2": "#3a3430",
+              "tilt": 0.1
+            },
+            "noSurface": true
+          },
+          "disposition": "Held: system astronomy/Investiture source and edition mapping unresolved"
+        },
+        {
+          "kind": "world",
+          "id": "taldain",
+          "data": {
+            "id": "taldain",
+            "name": "Taldain",
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "status": "Sole planet · Shardworld of Autonomy",
+            "star": {
+              "name": "AisDa",
+              "col": "#dce8ff"
+            },
+            "map": [
+              -1.386,
+              27.126,
+              0
+            ],
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "hero": "kerla",
+            "blurb": "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.",
+            "short": "Dayside’s white sand: White Sand.",
+            "facts": [
+              [
+                "Shard",
+                "Autonomy"
+              ],
+              [
+                "Moon",
+                "Nizh Da, on a polar orbit over the twilight line"
+              ],
+              [
+                "Magic",
+                "Sand mastery"
+              ],
+              [
+                "Peculiarity",
+                "One face to each star"
+              ]
+            ],
+            "moons": [
+              {
+                "name": "Nizh Da",
+                "size": 0.16,
+                "dist": 2.8,
+                "speed": 0.05
+              }
+            ]
+          },
+          "disposition": "TA01-KENTON-01 changes final blurb sentence only; remainder held"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kraeda",
+          "data": {
+            "id": "kraeda",
+            "name": "Mount KraeDa",
+            "lat": 0,
+            "lon": 0,
+            "books": [
+              7
+            ],
+            "desc": "A lone mountain at the exact centre of Dayside, with the sun directly overhead. Kerla’s sand surrounds it, and the Diem hold their trials at its foot."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kerla",
+          "data": {
+            "id": "kerla",
+            "name": "Kerla",
+            "lat": 5,
+            "lon": -25,
+            "books": [
+              7
+            ],
+            "desc": "A sand ‘lake’ with water just beneath and vines under the surface, ringing KraeDa and covering much of Kerzta."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kezare",
+          "data": {
+            "id": "kezare",
+            "name": "Kezare",
+            "lat": -33,
+            "lon": 3,
+            "books": [
+              7
+            ],
+            "desc": "Lossand’s capital, on river islands where the Ry’DoAli meets the Nor’Tallon. Home of the Diem, the order of Sand Masters, in a building carved from one block of white sandstone."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "landmark",
+          "id": "taldain/kezare/diem",
+          "data": {
+            "id": "diem",
+            "name": "The Diem’s hall",
+            "kind": "hall",
+            "at": [
+              0,
+              0.1
+            ],
+            "h": 1.2,
+            "books": [
+              7
+            ],
+            "desc": "The home of the Sand Masters, carved from a single block of white sandstone."
+          },
+          "disposition": "Held: exact material/geometry and earliest source unresolved"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kerkedasha",
+          "data": {
+            "id": "kerkedasha",
+            "name": "Ker Kedasha",
+            "lat": -30,
+            "lon": -34,
+            "books": [
+              7
+            ],
+            "desc": "The capital of Kerzta, the largest and strongest Dayside nation, due west of Kezare."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/lraezare",
+          "data": {
+            "id": "lraezare",
+            "name": "Lraezare",
+            "lat": -64.5,
+            "lon": 4.5,
+            "books": [
+              7
+            ],
+            "desc": "A port at the mouth of the Ry’DoAli on the south coast, where the sun sits low on the horizon."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/nortallon",
+          "data": {
+            "id": "nortallon",
+            "name": "Nor’Tallon",
+            "lat": -28,
+            "lon": 52,
+            "books": [
+              7
+            ],
+            "desc": "Capital of Tallon, in the mountains that wall off the eastern Rim Kingdoms."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/deepsand",
+          "data": {
+            "id": "deepsand",
+            "name": "The deep sand",
+            "lat": -28,
+            "lon": 30,
+            "books": [
+              7
+            ],
+            "desc": "Uninhabited deep desert east of Lossand, home of the deep sandlings."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/borderocean",
+          "data": {
+            "id": "borderocean",
+            "name": "The Border Ocean and Terminal Storm",
+            "lat": 0,
+            "lon": 90,
+            "sea": true,
+            "books": [
+              7
+            ],
+            "desc": "The ocean ring along the line between day and night, with a permanent storm along its middle that makes crossings deadly."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/darkside",
+          "data": {
+            "id": "darkside",
+            "name": "Darkside",
+            "lat": 0,
+            "lon": -170,
+            "books": [
+              7
+            ],
+            "desc": "The night face, always turned to the dim Eye of Ridos and lit in ultraviolet twilight. Khriss comes from the nation of Elis here, which resists the Dynasty. Its shape is our placeholder."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "event",
+          "id": "e33",
+          "data": {
+            "id": "e33",
+            "book": 7,
+            "world": "taldain",
+            "site": "kerla",
+            "title": "White Sand",
+            "text": "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."
+          },
+          "disposition": "Broad premise corroborated by official synopsis; site attachment and earliest scene not verified; unchanged"
+        },
+        {
+          "kind": "codex",
+          "id": "shards/Autonomy",
+          "data": {
+            "name": "Autonomy",
+            "books": [
+              7,
+              10
+            ],
+            "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+            "more": [
+              [
+                8,
+                "Claims the world of Obrodai and raises an avatar there."
+              ],
+              [
+                10,
+                "Reaches toward Scadrial in The Lost Metal."
+              ],
+              [
+                12,
+                "Patji, the deadly island of First of the Sun, is one of its avatars."
+              ]
+            ]
+          },
+          "disposition": "Cross-work hold: TA01 promo does not verify later avatars, worldhopping/essay identity, or gates"
+        },
+        {
+          "kind": "codex",
+          "id": "people/Khriss",
+          "data": {
+            "name": "Khriss",
+            "role": "Scholar of Darkside",
+            "books": [
+              7
+            ],
+            "desc": "A worldhopping scholar whose essays explain the cosmere’s rules."
+          },
+          "disposition": "Cross-work hold: TA01 promo does not verify later avatars, worldhopping/essay identity, or gates"
+        }
+      ],
+      "whiteSandRegistry": [],
+      "keywordHits": [
+        {
+          "path": "pack.books.7.title",
+          "text": "Arcanum Unbounded (with White Sand)"
+        },
+        {
+          "path": "pack.intro.legend.1.1",
+          "text": "Threnody, Taldain, Roshar, Scadrial, Sel, Nalthis, First of the Sun and the Scar sit where the Cosmere star chart shows them. The chart gives directions, not distances"
+        },
+        {
+          "path": "pack.groups.5.id",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.groups.5.name",
+          "text": "The Taldain system"
+        },
+        {
+          "path": "pack.worlds.35.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.35.blurb",
+          "text": "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet."
+        },
+        {
+          "path": "pack.worlds.36.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.36.blurb",
+          "text": "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring."
+        },
+        {
+          "path": "pack.worlds.37.id",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.37.name",
+          "text": "Taldain"
+        },
+        {
+          "path": "pack.worlds.37.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.37.blurb",
+          "text": "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre."
+        },
+        {
+          "path": "pack.worlds.37.short",
+          "text": "Dayside’s white sand: White Sand."
+        },
+        {
+          "path": "pack.worlds.37.facts.2.1",
+          "text": "Sand mastery"
+        },
+        {
+          "path": "pack.worlds.37.sites.0.desc",
+          "text": "A lone mountain at the exact centre of Dayside, with the sun directly overhead. Kerla’s sand surrounds it, and the Diem hold their trials at its foot."
+        },
+        {
+          "path": "pack.worlds.37.sites.2.desc",
+          "text": "Lossand’s capital, on river islands where the Ry’DoAli meets the Nor’Tallon. Home of the Diem, the order of Sand Masters, in a building carved from one block of white sandstone."
+        },
+        {
+          "path": "pack.worlds.37.sites.2.scene.landmarks.0.desc",
+          "text": "The home of the Sand Masters, carved from a single block of white sandstone."
+        },
+        {
+          "path": "pack.worlds.37.sites.3.desc",
+          "text": "The capital of Kerzta, the largest and strongest Dayside nation, due west of Kezare."
+        },
+        {
+          "path": "pack.worlds.37.sites.8.id",
+          "text": "darkside"
+        },
+        {
+          "path": "pack.worlds.37.sites.8.name",
+          "text": "Darkside"
+        },
+        {
+          "path": "pack.worlds.37.sites.8.desc",
+          "text": "The night face, always turned to the dim Eye of Ridos and lit in ultraviolet twilight. Khriss comes from the nation of Elis here, which resists the Dynasty. Its shape is our placeholder."
+        },
+        {
+          "path": "pack.worlds.50.blurb",
+          "text": "The world where it all began. Humans, dragons and the strange Sho Del all came from Yolen, and it was here, long before any of the books, that a group of conspirators shattered Adonalsium into sixteen Shards. Khriss writes that it is shrouded and hidden somewhere in the cosmere. The books have barely shown the planet itself; this surface is an interpretation."
+        },
+        {
+          "path": "pack.worlds.54.blurb",
+          "text": "Mentioned in Mistborn: Secret History: a planet whose people are Invested in a way different from Sel, Scadrial, Nalthis or Taldain. Little else is known; this surface is a placeholder."
+        },
+        {
+          "path": "pack.events.57.world",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.events.57.title",
+          "text": "White Sand"
+        },
+        {
+          "path": "pack.events.57.text",
+          "text": "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."
+        },
+        {
+          "path": "pack.codex.0.list.7.desc",
+          "text": "Shard of Taldain, who likes many avatars and dislikes rivals."
+        },
+        {
+          "path": "pack.codex.1.list.15.name",
+          "text": "Khriss"
+        },
+        {
+          "path": "pack.codex.1.list.15.role",
+          "text": "Scholar of Darkside"
+        },
+        {
+          "path": "pack.realms.cognitive.subastrals.4.world",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.galaxy.labels.6.text",
+          "text": "Taldain system"
+        },
+        {
+          "path": "pack.galaxy.links.1.pairs.1.0",
+          "text": "taldain"
+        }
+      ],
+      "scope": "Selected records plus full-pack keyword hits, not a complete primary-work claim inventory. Graphics/geography are held, not verified."
+    },
+    {
+      "pr": 48,
+      "head": "9a6e54bdf4f33364bc98b9f2482d75e1c5868857",
+      "recordCount": 15,
+      "records": [
+        {
+          "kind": "world",
+          "id": "aisda",
+          "data": {
+            "id": "aisda",
+            "name": "AisDa",
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "major": true,
+            "status": "Blue-white supergiant",
+            "star": {
+              "name": "AisDa",
+              "col": "#dce8ff"
+            },
+            "map": [
+              -1.416,
+              27.126,
+              0
+            ],
+            "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+            "blurb": "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet.",
+            "short": "Blue-white supergiant.",
+            "facts": [
+              [
+                "Companion",
+                "The Eye of Ridos"
+              ]
+            ],
+            "noSurface": true
+          },
+          "disposition": "Held: system astronomy/Investiture source and edition mapping unresolved"
+        },
+        {
+          "kind": "world",
+          "id": "ridos",
+          "data": {
+            "id": "ridos",
+            "name": "The Eye of Ridos",
+            "aka": [
+              "Ridos"
+            ],
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "status": "White dwarf behind a particle ring",
+            "star": {
+              "name": "The Eye of Ridos",
+              "col": "#f0f4ff"
+            },
+            "map": [
+              -1.366,
+              27.126,
+              0
+            ],
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "blurb": "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring.",
+            "short": "White dwarf behind the dust.",
+            "facts": [
+              [
+                "Ring",
+                "A dense particle cloud"
+              ]
+            ],
+            "ring": {
+              "inner": 1.6,
+              "outer": 3.2,
+              "c1": "#8a8070",
+              "c2": "#3a3430",
+              "tilt": 0.1
+            },
+            "noSurface": true
+          },
+          "disposition": "Held: system astronomy/Investiture source and edition mapping unresolved"
+        },
+        {
+          "kind": "world",
+          "id": "taldain",
+          "data": {
+            "id": "taldain",
+            "name": "Taldain",
+            "group": "taldain",
+            "books": [
+              7
+            ],
+            "first": 7,
+            "status": "Sole planet · Shardworld of Autonomy",
+            "star": {
+              "name": "AisDa",
+              "col": "#dce8ff"
+            },
+            "map": [
+              -1.386,
+              27.126,
+              0
+            ],
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "hero": "kerla",
+            "blurb": "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.",
+            "short": "Dayside’s white sand: White Sand.",
+            "facts": [
+              [
+                "Shard",
+                "Autonomy"
+              ],
+              [
+                "Moon",
+                "Nizh Da, on a polar orbit over the twilight line"
+              ],
+              [
+                "Magic",
+                "Sand mastery"
+              ],
+              [
+                "Peculiarity",
+                "One face to each star"
+              ]
+            ],
+            "moons": [
+              {
+                "name": "Nizh Da",
+                "size": 0.16,
+                "dist": 2.8,
+                "speed": 0.05
+              }
+            ]
+          },
+          "disposition": "TA01-KENTON-01 changes final blurb sentence only; remainder held"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kraeda",
+          "data": {
+            "id": "kraeda",
+            "name": "Mount KraeDa",
+            "lat": 0,
+            "lon": 0,
+            "books": [
+              7
+            ],
+            "desc": "A lone mountain at the exact centre of Dayside, with the sun directly overhead. Kerla’s sand surrounds it, and the Diem hold their trials at its foot."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kerla",
+          "data": {
+            "id": "kerla",
+            "name": "Kerla",
+            "lat": 5,
+            "lon": -25,
+            "books": [
+              7
+            ],
+            "desc": "A sand ‘lake’ with water just beneath and vines under the surface, ringing KraeDa and covering much of Kerzta."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kezare",
+          "data": {
+            "id": "kezare",
+            "name": "Kezare",
+            "lat": -33,
+            "lon": 3,
+            "books": [
+              7
+            ],
+            "desc": "Lossand’s capital, on river islands where the Ry’DoAli meets the Nor’Tallon. Home of the Diem, the order of Sand Masters, in a building carved from one block of white sandstone."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/kerkedasha",
+          "data": {
+            "id": "kerkedasha",
+            "name": "Ker Kedasha",
+            "lat": -30,
+            "lon": -34,
+            "books": [
+              7
+            ],
+            "desc": "The capital of Kerzta, the largest and strongest Dayside nation, due west of Kezare."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/lraezare",
+          "data": {
+            "id": "lraezare",
+            "name": "Lraezare",
+            "lat": -64.5,
+            "lon": 4.5,
+            "books": [
+              7
+            ],
+            "desc": "A port at the mouth of the Ry’DoAli on the south coast, where the sun sits low on the horizon."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/nortallon",
+          "data": {
+            "id": "nortallon",
+            "name": "Nor’Tallon",
+            "lat": -28,
+            "lon": 52,
+            "books": [
+              7
+            ],
+            "desc": "Capital of Tallon, in the mountains that wall off the eastern Rim Kingdoms."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/deepsand",
+          "data": {
+            "id": "deepsand",
+            "name": "The deep sand",
+            "lat": -28,
+            "lon": 30,
+            "books": [
+              7
+            ],
+            "desc": "Uninhabited deep desert east of Lossand, home of the deep sandlings."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/borderocean",
+          "data": {
+            "id": "borderocean",
+            "name": "The Border Ocean and Terminal Storm",
+            "lat": 0,
+            "lon": 90,
+            "sea": true,
+            "books": [
+              7
+            ],
+            "desc": "The ocean ring along the line between day and night, with a permanent storm along its middle that makes crossings deadly."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "site",
+          "id": "taldain/darkside",
+          "data": {
+            "id": "darkside",
+            "name": "Darkside",
+            "lat": 0,
+            "lon": -170,
+            "books": [
+              7
+            ],
+            "desc": "The night face, always turned to the dim Eye of Ridos and lit in ultraviolet twilight. Khriss comes from the nation of Elis here, which resists the Dynasty. Its shape is our placeholder."
+          },
+          "disposition": "Held: no fresh scene/map verification; no gate assignment"
+        },
+        {
+          "kind": "event",
+          "id": "e33",
+          "data": {
+            "id": "e33",
+            "book": 7,
+            "world": "taldain",
+            "site": "kerla",
+            "title": "White Sand",
+            "text": "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."
+          },
+          "disposition": "Broad premise corroborated by official synopsis; site attachment and earliest scene not verified; unchanged"
+        },
+        {
+          "kind": "codex",
+          "id": "shards/Autonomy",
+          "data": {
+            "name": "Autonomy",
+            "books": [
+              7,
+              10
+            ],
+            "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+            "more": [
+              [
+                8,
+                "Claims the world of Obrodai and raises an avatar there."
+              ],
+              [
+                10,
+                "Reaches toward Scadrial in The Lost Metal."
+              ],
+              [
+                12,
+                "Patji, the deadly island of First of the Sun, is one of its avatars."
+              ]
+            ]
+          },
+          "disposition": "Cross-work hold: TA01 promo does not verify later avatars, worldhopping/essay identity, or gates"
+        },
+        {
+          "kind": "codex",
+          "id": "people/Khriss",
+          "data": {
+            "name": "Khriss",
+            "role": "Scholar of Darkside",
+            "books": [
+              7
+            ],
+            "desc": "A worldhopping scholar whose essays explain the cosmere’s rules."
+          },
+          "disposition": "Cross-work hold: TA01 promo does not verify later avatars, worldhopping/essay identity, or gates"
+        }
+      ],
+      "whiteSandRegistry": [
+        {
+          "id": "white-sand-volume-1",
+          "title": "White Sand — Volume 1",
+          "y": 2016,
+          "bucket": 7
+        },
+        {
+          "id": "white-sand-volume-2",
+          "title": "White Sand — Volume 2",
+          "y": 2018,
+          "bucket": 7
+        },
+        {
+          "id": "white-sand-volume-3",
+          "title": "White Sand — Volume 3",
+          "y": 2019,
+          "bucket": 7
+        },
+        {
+          "id": "white-sand-omnibus",
+          "title": "White Sand omnibus — revisions and additions",
+          "bucket": 7
+        }
+      ],
+      "keywordHits": [
+        {
+          "path": "pack.books.7.title",
+          "text": "Arcanum Unbounded (with White Sand)"
+        },
+        {
+          "path": "pack.spoilers.works.16.title",
+          "text": "White Sand — Volume 1"
+        },
+        {
+          "path": "pack.spoilers.works.17.title",
+          "text": "White Sand — Volume 2"
+        },
+        {
+          "path": "pack.spoilers.works.18.title",
+          "text": "White Sand — Volume 3"
+        },
+        {
+          "path": "pack.spoilers.works.19.title",
+          "text": "White Sand omnibus — revisions and additions"
+        },
+        {
+          "path": "pack.intro.legend.1.1",
+          "text": "Threnody, Taldain, Roshar, Scadrial, Sel, Nalthis, First of the Sun and the Scar sit where the Cosmere star chart shows them. The chart gives directions, not distances"
+        },
+        {
+          "path": "pack.groups.5.id",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.groups.5.name",
+          "text": "The Taldain system"
+        },
+        {
+          "path": "pack.worlds.35.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.35.blurb",
+          "text": "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet."
+        },
+        {
+          "path": "pack.worlds.36.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.36.blurb",
+          "text": "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring."
+        },
+        {
+          "path": "pack.worlds.37.id",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.37.name",
+          "text": "Taldain"
+        },
+        {
+          "path": "pack.worlds.37.group",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.worlds.37.blurb",
+          "text": "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre."
+        },
+        {
+          "path": "pack.worlds.37.short",
+          "text": "Dayside’s white sand: White Sand."
+        },
+        {
+          "path": "pack.worlds.37.facts.2.1",
+          "text": "Sand mastery"
+        },
+        {
+          "path": "pack.worlds.37.sites.0.desc",
+          "text": "A lone mountain at the exact centre of Dayside, with the sun directly overhead. Kerla’s sand surrounds it, and the Diem hold their trials at its foot."
+        },
+        {
+          "path": "pack.worlds.37.sites.2.desc",
+          "text": "Lossand’s capital, on river islands where the Ry’DoAli meets the Nor’Tallon. Home of the Diem, the order of Sand Masters, in a building carved from one block of white sandstone."
+        },
+        {
+          "path": "pack.worlds.37.sites.3.desc",
+          "text": "The capital of Kerzta, the largest and strongest Dayside nation, due west of Kezare."
+        },
+        {
+          "path": "pack.worlds.37.sites.8.id",
+          "text": "darkside"
+        },
+        {
+          "path": "pack.worlds.37.sites.8.name",
+          "text": "Darkside"
+        },
+        {
+          "path": "pack.worlds.37.sites.8.desc",
+          "text": "The night face, always turned to the dim Eye of Ridos and lit in ultraviolet twilight. Khriss comes from the nation of Elis here, which resists the Dynasty. Its shape is our placeholder."
+        },
+        {
+          "path": "pack.worlds.50.blurb",
+          "text": "The world where it all began. Humans, dragons and the strange Sho Del all came from Yolen, and it was here, long before any of the books, that a group of conspirators shattered Adonalsium into sixteen Shards. Khriss writes that it is shrouded and hidden somewhere in the cosmere. The books have barely shown the planet itself; this surface is an interpretation."
+        },
+        {
+          "path": "pack.worlds.54.blurb",
+          "text": "Mentioned in Mistborn: Secret History: a planet whose people are Invested in a way different from Sel, Scadrial, Nalthis or Taldain. Little else is known; this surface is a placeholder."
+        },
+        {
+          "path": "pack.events.32.world",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.events.32.title",
+          "text": "White Sand"
+        },
+        {
+          "path": "pack.events.32.text",
+          "text": "After a massacre of the Sand Masters, Kenton fights to save the order with help from Khriss of Darkside."
+        },
+        {
+          "path": "pack.codex.0.list.9.desc",
+          "text": "Shard of Taldain, who likes many avatars and dislikes rivals."
+        },
+        {
+          "path": "pack.codex.1.list.15.name",
+          "text": "Khriss"
+        },
+        {
+          "path": "pack.codex.1.list.15.role",
+          "text": "Scholar of Darkside"
+        },
+        {
+          "path": "pack.realms.cognitive.subastrals.4.world",
+          "text": "taldain"
+        },
+        {
+          "path": "pack.galaxy.labels.6.text",
+          "text": "Taldain system"
+        },
+        {
+          "path": "pack.galaxy.links.1.pairs.1.0",
+          "text": "taldain"
+        }
+      ],
+      "scope": "Selected records plus full-pack keyword hits, not a complete primary-work claim inventory. Graphics/geography are held, not verified."
+    }
+  ],
+  "selectorEvidence": {
+    "states": 16,
+    "eventComparisons": 1008,
+    "siteComparisons": 144,
+    "exposedStates": 5,
+    "renderedCases": 0,
+    "rows": [
+      {
+        "label": "All",
+        "state": {
+          "mode": "all"
+        },
+        "worldHidden": false,
+        "oldExposed": true,
+        "newExposed": true,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "legacy6",
+        "state": {
+          "mode": "legacy",
+          "book": 6
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "legacy7",
+        "state": {
+          "mode": "legacy",
+          "book": 7
+        },
+        "worldHidden": false,
+        "oldExposed": true,
+        "newExposed": true,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "legacy12",
+        "state": {
+          "mode": "legacy",
+          "book": 12
+        },
+        "worldHidden": false,
+        "oldExposed": true,
+        "newExposed": true,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "none",
+        "state": {
+          "mode": "none"
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "white-sand-volume-1 only",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "white-sand-volume-1"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "white-sand-volume-2 only",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "white-sand-volume-2"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "white-sand-volume-3 only",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "white-sand-volume-3"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "white-sand-omnibus only",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "white-sand-omnibus"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "original three volumes",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "white-sand-volume-1",
+            "white-sand-volume-2",
+            "white-sand-volume-3"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "all White Sand entries",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "white-sand-volume-1",
+            "white-sand-volume-2",
+            "white-sand-volume-3",
+            "white-sand-omnibus"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "system essays only",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "arcanum-unbounded-system-essays-and-maps"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "bucket7",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "the-hope-of-elantris",
+            "the-emperors-soul",
+            "the-eleventh-metal",
+            "allomancer-jak-and-the-pits-of-eltania",
+            "mistborn-secret-history",
+            "edgedancer",
+            "white-sand-volume-1",
+            "white-sand-volume-2",
+            "white-sand-volume-3",
+            "white-sand-omnibus",
+            "shadows-for-silence-in-the-forests-of-hell",
+            "sixth-of-the-dusk",
+            "arcanum-unbounded-system-essays-and-maps"
+          ]
+        },
+        "worldHidden": false,
+        "oldExposed": true,
+        "newExposed": true,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "bucket7 minus omnibus",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "the-hope-of-elantris",
+            "the-emperors-soul",
+            "the-eleventh-metal",
+            "allomancer-jak-and-the-pits-of-eltania",
+            "mistborn-secret-history",
+            "edgedancer",
+            "white-sand-volume-1",
+            "white-sand-volume-2",
+            "white-sand-volume-3",
+            "shadows-for-silence-in-the-forests-of-hell",
+            "sixth-of-the-dusk",
+            "arcanum-unbounded-system-essays-and-maps"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "all works minus White Sand",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "elantris",
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages",
+            "warbreaker",
+            "the-way-of-kings",
+            "words-of-radiance",
+            "the-alloy-of-law",
+            "shadows-of-self",
+            "the-bands-of-mourning",
+            "the-hope-of-elantris",
+            "the-emperors-soul",
+            "the-eleventh-metal",
+            "allomancer-jak-and-the-pits-of-eltania",
+            "mistborn-secret-history",
+            "edgedancer",
+            "shadows-for-silence-in-the-forests-of-hell",
+            "sixth-of-the-dusk",
+            "arcanum-unbounded-system-essays-and-maps",
+            "oathbringer",
+            "dawnshard",
+            "rhythm-of-war",
+            "the-lost-metal",
+            "tress-of-the-emerald-sea",
+            "yumi-and-the-nightmare-painter",
+            "the-sunlit-man",
+            "wind-and-truth",
+            "isles-of-the-emberdark",
+            "the-fires-of-december"
+          ]
+        },
+        "worldHidden": true,
+        "oldExposed": false,
+        "newExposed": false,
+        "eventCount": 63,
+        "siteCount": 9
+      },
+      {
+        "label": "all works",
+        "state": {
+          "mode": "set",
+          "ids": [
+            "elantris",
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages",
+            "warbreaker",
+            "the-way-of-kings",
+            "words-of-radiance",
+            "the-alloy-of-law",
+            "shadows-of-self",
+            "the-bands-of-mourning",
+            "the-hope-of-elantris",
+            "the-emperors-soul",
+            "the-eleventh-metal",
+            "allomancer-jak-and-the-pits-of-eltania",
+            "mistborn-secret-history",
+            "edgedancer",
+            "white-sand-volume-1",
+            "white-sand-volume-2",
+            "white-sand-volume-3",
+            "white-sand-omnibus",
+            "shadows-for-silence-in-the-forests-of-hell",
+            "sixth-of-the-dusk",
+            "arcanum-unbounded-system-essays-and-maps",
+            "oathbringer",
+            "dawnshard",
+            "rhythm-of-war",
+            "the-lost-metal",
+            "tress-of-the-emerald-sea",
+            "yumi-and-the-nightmare-painter",
+            "the-sunlit-man",
+            "wind-and-truth",
+            "isles-of-the-emberdark",
+            "the-fires-of-december"
+          ]
+        },
+        "worldHidden": false,
+        "oldExposed": true,
+        "newExposed": true,
+        "eventCount": 63,
+        "siteCount": 9
+      }
+    ]
+  }
+}
