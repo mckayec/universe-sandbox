@@ -790,7 +790,7 @@
       {id: "e42", book: 8, world: "roshar", site: "akinah", title: "Dawnshard", text: "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."},
       /* IX Rhythm of War */
       {id: "e43", book: 9, world: "roshar", site: "urithiru", title: "The tower occupied", text: "The Fused take Urithiru. Navani, a prisoner, works out the science of Light."},
-      {id: "e44", book: 9, world: "roshar", site: "urithiru", title: "Kaladin’s Fourth Ideal", text: "Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway."},
+      {id: "e44", book: 9, world: "roshar", site: "urithiru", title: "Kaladin’s Fourth Ideal", text: "Kaladin accepts that there are people he cannot protect and swears the Fourth Ideal."},
       {id: "e45", book: 9, world: "roshar", site: "lastingintegrity", title: "Adolin’s trial", text: "Adolin asks the honorspren to judge humanity, and stands up for the dead spren of his sword."},
       {id: "e46", book: 9, world: "roshar", title: "A new Odium", text: "Taravangian kills the vessel of Odium and takes up the Shard himself."},
       /* X The Lost Metal */
