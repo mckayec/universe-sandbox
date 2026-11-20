@@ -1,12 +1,10 @@
-stage: research
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT perform the second bounded SA01 source unit, prioritizing e18/e19 and e17's revenge-war clause via lawful author/publisher material; then hand off sourced corrections or defer full SA01 with Known gaps at cap.
-updated: 2026-11-20T00:25Z
+next-action: Claude implement SA01-GEO-01/02 only on PR48 per sa01-final-handoff-2026-11-20.md; return exact head/parent and per-finding validation for ChatGPT review. After acceptance, keep full SA01 deferred and continue SA02 subject to current priorities.
+updated: 2026-11-20T00:31Z
 idle-runs: 0
-note: SA01 first checkpoint saved; 3/3 pack hashes, 57/57 selected slots (41 present, 16 absent), 19/19 finite dispositions. Prologue and commentary support remain narrow; early/later excerpt routes returned 403. Full research incomplete; 0/33 approvals.
-
-
+note: Second SA01 source checkpoint saved; 6/6 follow-up groups dispositioned and two conservative desc replacements supported. Official excerpt resolves part of early-source gap; full SA01 remains deferred at cap, 0/33 approvals.
 
 # Cosmere book-by-book review
 
@@ -156,3 +154,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-20T00:21:38Z ChatGPT: saved/read back [actual-parent reviewer](reviewer-na01-fccfe2c.ts) at 2af20d7074962a833ca7f6d4b3de3192eafe08a8 and [implementation review](implementation-review-fccfe2c.md) at 7c50f712d0118b3bb7592f9d15f5073bfb48731f. Accepted 2/2 NA01-GEO descriptions at unchanged PR48 fccfe2c7023b93a91b52df1f812a17f0e94e3ed3; 5/5 input hashes, 2/2 focused tests, 10/10 actual-parent visibility states, expected negative payload failure. Reopened two primary chapter bodies; exact-head CI steps independently verified. 0 independent rendered cases; builder 158/158 remains attributed, Save/Load failure unresolved. Broader NA01 deferred with its 16/16 finite dispositions and known gaps; implementation-review/chatgpt → research/chatgpt for SA01. Inspected 18/18 pack and 8/8 review statuses; no other owned or stale eligible parallel audit. 0/33 full-work approvals, prior closures and release holds preserved; no application/PR edit, merge, deploy or Mckay release approval.
 
 - 2026-11-20T00:25:48Z ChatGPT: saved/read back [SA01 probe](sa01-inventory-probe.cjs) at fa85a20870f843867ab1c586552ef6987a1b550b, [inventory](sa01-inventory-2026-11-20.json) at bc7acbcb5abda10c34b8b3087c86b1b3c084cfb6 and [first checkpoint](sa01-checkpoint-2026-11-20.md) at 256be07a2418e985a7eaca0db8caf8944a95826e. Pinned PR48 fccfe2c7023b93a91b52df1f812a17f0e94e3ed3, PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838; 3/3 hashes, 57/57 selected slots (41 present / 16 absent), 19/19 finite record-type dispositions. Opened/read prologue passages and chapter-3 author commentary; 3/3 evidence-group dispositions (one primary-supported, one commentary-supported, one held). Chapter-3 author page is only a referral; Reactor opening and later excerpt routes returned 403. 0/5 complete PR48 key-4 events, 0/5 selected base sites and 0/33 full works certified. Research/chatgpt retained for second bounded SA01 unit and cap disposition. Prior closures and technical/release holds preserved; no new implementation request, application edit, merge, deploy or Mckay action.
+
+- 2026-11-20T00:31:38Z ChatGPT: saved/read back [SA01 second checkpoint and handoff](sa01-final-handoff-2026-11-20.md) at 313b2cbf163fb73d48aa1c1bd85482f86c4ffd12. Rechecked PR48 fccfe2c7023b93a91b52df1f812a17f0e94e3ed3, PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838; 3/3 blob matches, unchanged 57/57 selected slots. Opened official Dragonsteel-linked Tor PDF sample and selected early passages; 6/6 follow-up groups dispositioned (two event-prose support decisions, two replacement candidates, two partial/held groups). SA01-GEO-01/02 request conservative shatteredplains.desc and warcamps.desc reductions; 2/2 in-memory assignments and 1/1 full-pack reversal verified, 0 implementation or rendered candidate passes claimed. Research/chatgpt → fixing/claude for these two fields and exact-head return. Full SA01 deferred at second checkpoint; after independent acceptance continue SA02, subject to current priorities. 0/5 complete key-4 events, 0/5 complete selected sites and 0/33 full works approved; prior closures, source/geometry/gate and technical/release holds preserved. No app/PR-branch edit, merge, deploy or Mckay action.
