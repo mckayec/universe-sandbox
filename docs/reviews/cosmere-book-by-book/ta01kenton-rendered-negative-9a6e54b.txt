@@ -1,0 +1,25 @@
+FAIL 1440x900 All: "only master" absent
+FAIL 1440x900 All: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 1440x900 All: replacement once
+FAIL 1440x900 legacy7: "only master" absent
+FAIL 1440x900 legacy7: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 1440x900 legacy7: replacement once
+FAIL 1440x900 bucket7: "only master" absent
+FAIL 1440x900 bucket7: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 1440x900 bucket7: replacement once
+FAIL 1440x900 all works: "only master" absent
+FAIL 1440x900 all works: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 1440x900 all works: replacement once
+FAIL 390x844 All: "only master" absent
+FAIL 390x844 All: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 390x844 All: replacement once
+FAIL 390x844 legacy7: "only master" absent
+FAIL 390x844 legacy7: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 390x844 legacy7: replacement once
+FAIL 390x844 bucket7: "only master" absent
+FAIL 390x844 bucket7: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 390x844 bucket7: replacement once
+FAIL 390x844 all works: "only master" absent
+FAIL 390x844 all works: blurb ends with replacement (The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. Kenton, son of their leader, is left as the only master after a massacre.)
+FAIL 390x844 all works: replacement once
+ta01kenton-probe (parent): 32/56 pass
