@@ -1,10 +1,10 @@
-stage: research
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT resumes CA01 research unit2/2: seek lawful later sunlight-height/core, identity and ending passages; reconcile SP04/SP05/SP07/SP11 and destination links, retaining supplied-edition evidence as attributed unless reopened. At the cap hand off finite sourced corrections or defer full CA01 and continue AU01. Preserve accepted CA01-WEATHER-01.
-updated: 2026-11-21T03:41:47Z
+next-action: Claude applies CA01-DESTINATION-01 D1/D2 on PR48 per ca01-checkpoint2-2026-11-21.md: remove the definite UTol clause and unsupported h-nomad Canticle-Komashi route; preserve accepted weather and all other data/gates. Return exact-head evidence for implementation-review. After independent review, ChatGPT proceeds to AU01 unit1/2; full CA01 is deferred at its research cap.
+updated: 2026-11-21T04:36:52Z
 idle-runs: 0
-note: CA01-WEATHER-01 accepted1/1 at PR48 0ad0c14957a840a69700e6d26df47102882a65d3; implementation-review-0ad0c14.md saved/read back atb3234e1bc6d9e18a88dc9cd8434abba7a27f0306. Independent3/3 source/data checks and13/13 actual-parent selector comparisons pass (819/819 event-state,39/39 site-state entries); builder logs96/96 lines reconciled. Browser results remain attributed; smoke failure retained. 0/33 full-work approvals.
+note: CA01 research2/2 capped; two Medium removal operations in one finite handoff saved/read back at09e11444cec138672d7134eb4600f611146b885a. Current PR24/37/48 heads checked3/3; seven source pages retrieved, six remaining groups dispositioned0/6 wholly certified. Proposal2/2 targets and2/2 removals plus1/1 whole-data restoration check;0 implementation/runtime tests.0/33 full-work approvals.
 
 
 
@@ -269,3 +269,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-21T02:56Z Claude: implemented CA01-WEATHER-01 on PR48 at 0ad0c14957a840a69700e6d26df47102882a65d3 (parent b202db06188bc11a694e5232ee0ce983882a7fb8; pack blob ab5db8c8…): one sentence substitution in worlds[canticle].blurb + focused test. Evidence in ca01weather-return-0ad0c14.md with probe, head/parent logs and screenshots. fixing/claude → implementation-review/chatgpt. Not merged.
 
 - 2026-11-21T03:41:47Z: ChatGPT saved/read back implementation-review-0ad0c14.md atb3234e1bc6d9e18a88dc9cd8434abba7a27f0306 (blob9696b88b0006fa7f666d42c16e467c479130be1d). Accepted CA01-WEATHER-01,1/1 finite sunset correction at PR48 0ad0c14957a840a69700e6d26df47102882a65d3, actual parent b202db06188bc11a694e5232ee0ce983882a7fb8. Independently read2/2 changed files, passed3/3 source/data checks and13/13 selector comparisons using actual parent/head packs, including819/819 event-state and39/39 site-state entries. Reconciled96/96 builder assertion lines (head48/48,parent40/48 with8 expected failures); exact-head build CI success observed. 0 independent rendered cases; browser smoke failure and screenshot/local-test attribution retained. implementation-review/chatgpt → research/chatgpt, resume CA01 unit2/2 without counting this review as research. Existing gaps, deferrals and release holds preserved;0/33 full-work approvals. No code edits, merge, deploy or release approval.
+
+- 2026-11-21T04:36:52Z: ChatGPT completed CA01 research checkpoint2/2 and saved/read back [ca01-checkpoint2-2026-11-21.md](ca01-checkpoint2-2026-11-21.md) at09e11444cec138672d7134eb4600f611146b885a (blob6593b69863620959d74c629e5fb45db50d57eb76). Fresh3/3 PR heads/pack files: PR24 cf25cda66e91c573c421a0f3712623db72737a3b; PR37 03394c32816fcb5c95261bf6a9ea4520381a5838; PR48 0ad0c14957a840a69700e6d26df47102882a65d3. Seven pages retrieved; targeted author commentary corroborates identity, secondary UTol wording remains qualified, later primary ending/altitude/sacrifice scenes unavailable in this pass. Handed Claude CA01-DESTINATION-01 (2 Medium removal operations, existing SP05/SP12) on PR48 only. In-memory proposal:2/2 unique targets,2/2 removals,1/1 full parsed-data restoration;10 to9 galaxy links, weather unchanged. No implementation tests or rendered checks. Full CA01 deferred at cap with6/6 remaining-group dispositions,0/6 wholly certified;0/33 full-work approvals. After finite patch review, proceed AU01 unit1/2. Existing release/source holds and owner decisions unchanged.
