@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements FD01-PUBLICATION-01 (existing FD08) from fd01-handoff-2026-11-21.md on PR48 only: remove e63's publication parenthetical and return exact head/parent evidence for implementation-review/chatgpt. After finite acceptance resume FD01 research unit2/2; full research remains incomplete.
-updated: 2026-11-21T10:24:08Z
+next-action: ChatGPT independently reviews FD01-PUBLICATION-01 at PR48 614a391443a87cd67d27caca255d2836b5f15d37 (fd01publication-return-614a391.md); after acceptance resume FD01 research unit2/2.
+updated: 2026-11-21T10:51Z
 idle-runs: 0
-note: FD01 unit1/2 saved; one Low one-field handoff, no application change yet. Public ebook/audio October 6 and Tor hardcover December 8 distinguished. Selected primary passages only; 10/10 historical findings dispositioned, later-text/map/gating gaps retained. AU01/CA01 deferred2/2 and prior accepted fixes preserved;0/33 full-work approvals.
+note: FD01-PUBLICATION-01 implemented on PR48 only at 614a391 (parent 88e9266): e63 publication aside removed, one field; focused test 2/2 head, 0/2 parent; pnpm check 675/675, test:pages 12x2; browser smoke inherited Save/Load timeout. No canon approval;0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -287,3 +287,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 
 - 2026-11-21T10:24:08Z ChatGPT: FD01 research unit1/2 [inventory](fd01-inventory-2026-11-21.json) saved/read back at 51d6ceae911c4969042f39976f7ee25a82926607 and [finite handoff](fd01-handoff-2026-11-21.md) at 12afbe8b8ea07955c05e953c5bb9ece27e18ab37. Current PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR48 88e9266c3670fc11991b05b46b8ccd4b73931412 rechecked unchanged. Opened official publisher/catalogue records and chapter1-8 sample;3/3 public edition records reconciled, only selected primary passages read, no full novel or map approval. Per snapshot1/60 worlds,8/8 Miral sites,2 selected codex entries; Miral events1/1 PR24/48 or4/4 PR37;5/5 PR37 landmarks inventoried.8/8 groups and10/10 historical findings dispositioned without blanket certification. FD01-PUBLICATION-01 Low implements existing FD08: one e63 parenthetical removal on PR48 only, not a finding that October digital release was false. Proposal-only3/3 unique matches,3/3 replacements,3/3 source reversals and3/3 parsed-data restorations;0 implementation tests/rendered cases. research/chatgpt -> fixing/claude for this finite change, then independent implementation review and FD01 unit2/2 under cap.18/18 pack+8/8 review statuses checked; no stale eligible parallel self-audit. AU01/CA01 deferrals, prior accepted corrections and source/runtime/release holds preserved;0/33 full-work approvals. No site/PR-branch edit, merge, deploy or Mckay release approval.
+- 2026-11-21T10:51Z Claude: FD01-PUBLICATION-01 implemented on PR48 at 614a391443a87cd67d27caca255d2836b5f15d37 (actual parent 88e9266c3670fc11991b05b46b8ccd4b73931412; pack blob defcba5 → 179dfb8). Changed files: cosmere.js (e63.text only) + new tests/atlas-fd01-publication.test.ts. Focused 2/2 pass at head, 2/2 fail on parent; pnpm check 675/675 + check:dist 115; test:pages 12x2; test:browser inherited Save/Load timeout; rendered probe not run. [Return](fd01publication-return-614a391.md). fixing/claude -> implementation-review/chatgpt. No merge, deploy or canon approval.
