@@ -1018,7 +1018,10 @@ function rdRelabel(){if(!RREG)return;WORLDS.forEach(w=>{const el=GL_LBL[w.id];co
    deep link. Delayed place selections are dropped when the reading state changed while they were pending. */
 function rdWorldHidden(w){if(!RREG)return false;if(!w)return true;return PW()?!pvis(worldChain(w)):!!(CUM&&S.book&&firstOf(w)>S.book);}
 function rdSiteHidden(id){if(!RREG||!id)return false;const w=WORLD_BY[S.sel];const st=w&&(w.sites||[]).find(x=>x.id===id);return !st||rdWorldHidden(w)||!siteSeen(st);}
-function laterSite(id,ms){const g=RGEN;setTimeout(()=>{if(g!==RGEN)return;selectSite(id);},ms);}
+/* EL-PORT-R1: NAVG counts place-travel requests. A newer travel (or a newer delayed place selection) drops an
+   older pending one, so a stale callback can never restore a place after travel to a world-only event. */
+var NAVG=0;
+function laterSite(id,ms){const g=RGEN,n=++NAVG;setTimeout(()=>{if(g!==RGEN||n!==NAVG)return;selectSite(id);},ms);}
 function rdNotRevealed(){hint("That place is not revealed by the books you have marked as read.");}
 /* legacy rule for events, unchanged */
 const evOk=e=>PW()?pvis(evChain(e)):(!S.book||(CUM?e.book<=S.book:e.book===S.book));
@@ -1481,8 +1484,11 @@ function selectSite(id){if(rdSiteHidden(id))id=null;S.site=id;if(id&&MOB)dosColl
     orbW.flyTo(new THREE.Vector3(),Math.min(orbW.dist,2.4),orbW.gyaw+dy,clamp(pitch,-1.2,1.2),1500);}}}
 function openEvent(id,travel){S.ev=id;if(!id){renderDossier();renderChron();return;}const e=EV_BY[id];if(!e)return;
   if(travel&&RL){const ew=WORLD_BY[e.world];const st=ew&&e.site&&(ew.sites||[]).find(x=>x.id===e.site);const nr=needRealm(ew,st);if(nr)setRealm(nr);}
+  /* a travel drops older pending place callbacks; travel to an event without a place ends at the world, so a
+     stale selected place is cleared there (EL-PORT-R1). Non-travel dossier clicks keep the place. */
+  if(travel)NAVG++;
   if(travel&&noSurface(WORLD_BY[e.world])){if(S.view==="world")ascend(()=>selectWorld(e.world,true));else selectWorld(e.world,true);}
-  else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);}
+  else if(travel){if(S.view==="world"&&S.sel===e.world){if(e.site)selectSite(e.site);else if(S.site)selectSite(null);}
     else if(S.view==="world"){S.sel=e.world;descend(e.world);if(e.site){if(RREG)laterSite(e.site,900);else setTimeout(()=>selectSite(e.site),900);}}
     else{S.sel=e.world;const w=WORLD_BY[e.world];orbG.flyTo(w.pos,flyDistFor(w),orbG.gyaw,FLY_PITCH,1900);}}
   if(MOB)dosCollapsed=false;refreshAll();S.ev=id;renderDossier();

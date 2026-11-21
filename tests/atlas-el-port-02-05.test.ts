@@ -168,6 +168,7 @@ test('EL-PORT-03 e4: world-only chain and no Chasm destination on travel', () =>
   const calls: string[] = [];
   const t: any = {
     S: { view: 'world', sel: 'sel', site: null, ev: null },
+    NAVG: 0,
     EV_BY: { e4 },
     WORLD_BY: c.WORLD_BY,
     RL: null,
