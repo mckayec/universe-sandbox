@@ -671,7 +671,7 @@
 
       {id: "canticle", name: "Canticle", group: "wider", books: [11, 12], first: 11, status: "Tiny world under a burning sun",
        star: {name: "Canticle’s sun", col: "#fff0c0"}, map: U.canticle, est: true, distText: SCHEM, hero: "union",
-       blurb: "A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, rings light its night side, and a firestorm sweeps the sunset line. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.",
+       blurb: "A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.",
        short: "Cities racing the dawn: The Sunlit Man.",
        eras: {12: {blurb: "A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol."}},
        facts: [["Hazard", "Sunlight that burns"], ["Power", "Sunhearts"], ["Ruler", "The Cinder King"], ["Rings", "Yes, lighting the night side"]],
