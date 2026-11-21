@@ -473,7 +473,7 @@
          {id: "kaltii", name: "Kaltii", lat: 21.3, lon: -48.0, books: [1], desc: "A southern Arelene city on the Chasm."},
          {id: "fellavoo", name: "Fellavoo", lat: 17.8, lon: -40.5, books: [1], desc: "Capital of Duladel, near the Atad passes and the borders of Arelon and Fjorden."},
          {id: "atad", name: "The Atad Mountains", lat: 27.0, lon: -38.5, books: [1], desc: "The range between Arelon and Fjorden, called Dathreki in Fjorden, which long held off the Derethi armies."},
-         {id: "widor", name: "Widor (the Wyrn’s Seat)", lat: 33.2, lon: -18.6, books: [1], desc: "Capital of Fjorden and of the Fjordell Empire, a northern port and the seat of the Wyrn, whose Derethi church sends gyorns like Hrathen east."},
+         {id: "widor", name: "Widor (the Wyrn’s Seat)", lat: 33.2, lon: -18.6, books: [1], desc: "Capital of Fjorden and of the Fjordell Empire, a northern port and the seat of the Wyrn, whose Derethi church sends Hrathen west to Arelon."},
          {id: "dakhor", name: "Dakhor Monastery", lat: 28.5, lon: -22.0, books: [1], desc: "Derethi monastery of the bone-warriors, somewhere in Fjorden; the exact site is not given."},
          {id: "jindo", name: "JinDo", lat: 3.0, lon: -38.0, books: [1], desc: "A land south-east of Arelon, related in culture to MaiPon. The city of HaiKo lies in its north-east."},
          {id: "jaador", name: "Jaador", lat: 3.0, lon: -18.0, books: [1], desc: "A landlocked nation of the empire between JinDo and Hraggen, with the desert to the south."},
@@ -740,10 +740,10 @@
     events: [
       /* I Elantris */
       {id: "e1", book: 1, world: "sel", site: "elantris", title: "Raoden is taken", text: "The prince of Arelon wakes with the Shaod and is quietly thrown into Elantris, declared dead to the world."},
-      {id: "e2", book: 1, world: "sel", site: "kae", title: "A widow before the wedding", text: "Sarene of Teod arrives to marry Raoden and finds him already ‘dead’. She stays and goes to war in the court."},
+      {id: "e2", book: 1, world: "sel", site: "kae", title: "A widow before the wedding", text: "Sarene reaches Kae and learns that Raoden is reported dead; their contract makes her his widow."},
       {id: "e3", book: 1, world: "sel", site: "kae", title: "Hrathen’s three months", text: "A priest of Fjorden comes with a deadline: convert Arelon, or watch it destroyed."},
-      {id: "e4", book: 1, world: "sel", site: "chasm", title: "The land is part of the writing", text: "Raoden works out that the Aons echo the shape of the land. The Chasm broke them, and one more line fixes them."},
-      {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "The magic returns, the city is restored and an invasion is turned back."},
+      {id: "e4", book: 1, world: "sel", title: "The land is part of the writing", text: "Raoden discovers that adding a line for the Chasm lets his Aons function again."},
+      {id: "e5", book: 1, world: "sel", site: "elantris", title: "Elantris shines again", text: "Raoden adds the missing Chasm line to the city-scale Aon, restoring Elantris."},
       /* II Mistborn */
       {id: "e6", book: 2, world: "scadrial", site: "luthadel", title: "Kelsier meets Vin", text: "In Luthadel, Kelsier meets Vin and recognizes her as Mistborn.", gate: {in: ["mistborn-the-final-empire"], req: "mistborn-the-final-empire"}},
       {id: "e7", book: 2, world: "scadrial", site: "hathsin", title: "The survivor of Hathsin", text: "Kelsier is known as the Survivor of Hathsin; scars cover his hands and arms."},
