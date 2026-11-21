@@ -1,10 +1,11 @@
 stage: research
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT resumes KO01 research unit2/2: seek lawful published later passages/maps for machine-era explanation, geography and UTol; retain Y01–Y07 as attributed prior evidence unless reopened. At the cap hand off finite sourced corrections or defer the full audit and continue CA01. Preserve accepted KO01-TEXT-01 and prior holds.
-updated: 2026-11-21T01:13:48Z
+next-action: ChatGPT starts CA01 (The Sunlit Man) research unit1/2: reconcile the prior Secret Projects audit with current PR24/37/48 pack claims, open lawful primary excerpts, and produce a finite correction or precise gap checkpoint. Preserve KO01 deferred at2/2 and accepted KO01-TEXT-01.
+updated: 2026-11-21T01:17:53Z
 idle-runs: 0
-note: KO01-EVID-01 closed1/1; evidence-review-b202db0-r2.md saved/read back at6d8b7cbf7c0f69d8ff9aedae7e6e9bb0ff1b7e11. Two-field correction accepted at unchanged PR48 b202db06188bc11a694e5232ee0ce983882a7fb8. Independent3/3 source/data checks;4/4 evidence blobs match;216/216 assertion lines reconciled (head108/108,parent52/108 with56 expected failures). Builder execution remains attributed;0 independent rendered cases,0/33 full-work approvals.
+note: KO01 checkpoint2/2 saved/read back at0daaf135a02e1a9158adf583f4dc984200879f7a; full audit deferred,8/8 groups dispositioned,0/8 wholly certified,0/33 full-work approvals. Later text/maps remain unverified; edition/access evidence recorded. KO01-EVID-01 closed1/1 and two-field PR48 correction accepted in evidence-review-b202db0-r2.md at6d8b7cbf7c0f69d8ff9aedae7e6e9bb0ff1b7e11. No new Mckay decision.
+
 
 
 # Cosmere book-by-book review
@@ -258,3 +259,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 
 
 - 2026-11-21T01:13:48Z ChatGPT: [KO01 evidence recheck](evidence-review-b202db0-r2.md) saved/read back at6d8b7cbf7c0f69d8ff9aedae7e6e9bb0ff1b7e11 before status. KO01-EVID-01 closed1/1 and KO01-TEXT-01 accepted2/2 fields at unchanged PR48 b202db06188bc11a694e5232ee0ce983882a7fb8,actual parent61e26afb4514f4b9510f33ce9f8b0b7bbe84e964. Fresh source/data checks3/3;4/4 supplied evidence blobs match;216/216 verbose assertion lines reconcile with committed probe970b1c9 (head108/108,parent52/108 with56 expected failures). Old uncommitted-harness logs remain superseded; builder runtime evidence not an independent rendered pass.0 reviewer browser cases,0/2 screenshots inspected; prior CI and tests retain attribution. implementation-review/chatgpt -> research/chatgpt for KO01 unit2/2.18/18 pack+8/8 review statuses checked,no eligible stale parallel self-audit.0/33 full-work approvals; prior deferrals/source/runtime/release holds preserved. No application/PR-branch edit,merge,deploy or owner approval.
+
+- 2026-11-21T01:17:53Z: ChatGPT completed KO01 research checkpoint2/2 and saved/read back ko01-checkpoint-2-2026-11-21.md at0daaf135a02e1a9158adf583f4dc984200879f7a (blob16424ce3c5259ef33bf404effbcb21926f06c70c). Opened author/publisher/catalog sources; logged inaccessible OverDrive/Google preview and Arcanum attempts. No new narrative chapters or maps verified; prior7/7 posted-chapter coverage and Y01–Y07 remain attributed. Fresh3/3 PR heads unchanged;8/8 inventory groups dispositioned,0/8 wholly certified;0/33 full-work approvals. Full KO01 deferred under cap, finite two-field PR48 acceptance and KO01-EVID-01 closure preserved. Next CA01 research unit1/2; owner remains chatgpt, blocked-on none. Known access gaps do not require a new Mckay decision; prior deferrals and all release/source/runtime holds preserved. Docs only; no code, merge, deploy or release approval.
