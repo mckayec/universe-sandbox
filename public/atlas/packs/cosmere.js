@@ -382,11 +382,11 @@
       ["betab", "Betab", "#2a8a9a", "#4ab0c0", "#8ad8e0"], ["kak", "Kak", "#5a2a8a", "#7a4ab0", "#a888d8"], ["tanat", "Tanat", "#a86a2a", "#d08a40", "#ecb878"],
       ["ishi", "Ishi", "#a8a02a", "#ccc44a", "#ece888"]
     ].map(function (g, i) {
-      return {id: g[0], name: g[1], group: "rosharan", books: [7], first: 7, status: "Gas giant · " + (i + 5) + "th from the sun",
+      return {id: g[0], name: g[1], group: "rosharan", books: [7], first: 7, status: "Gas giant · " + (i + 4) + "th from the sun",
         star: {name: "Roshar’s sun", col: "#f4f6ff"}, map: orb(C.roshar, .42 + i * .053, 60 + i * 37), distText: ORR,
         blurb: g[1] + " is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
         short: "Gas giant " + (i + 1) + " of 10 beyond the asteroid belt.",
-        facts: [["Order", (i + 5) + "th from the sun (" + (i + 1) + " of the ten gas giants)"], ["Moons", "None known"]],
+        facts: [["Order", (i + 4) + "th from the sun (" + (i + 1) + " of the ten gas giants)"], ["Moons", "None known"]],
         gfx: gas([g[2], g[3], g[4], g[3], g[2], g[4]], {atmo: g[4]})};
     })).concat([
 
