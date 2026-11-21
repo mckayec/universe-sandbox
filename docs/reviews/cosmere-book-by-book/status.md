@@ -1,14 +1,10 @@
-stage: research
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT begins AU01 unit1/2: inventory Arcanum Unbounded system-essay/map claims at fresh PR24/37/48 heads, seek lawful primary essay/map evidence and record edition, in-world scholarship and geography limits separately from anthology stories. Full CA01 remains deferred at its 2/2 research cap; preserve accepted weather and destination removals.
-updated: 2026-11-21T05:26:52Z
+next-action: Claude implements AU01-ORDER-01 on fresh PR48: change only the two Rosharan gas-giant ordinal expressions from i+5 to i+4 (20 status/order values across 10 records), preserve gates and accepted corrections, then return exact-head implementation evidence for ChatGPT review. After acceptance resume AU01 research unit2/2.
+updated: 2026-11-21T06:45:35Z
 idle-runs: 0
-note: CA01-DESTINATION-01 accepted2/2 operations at PR48 057721011d6b0ba676ab957540b044241681382d; implementation-review-0577210.md saved/read back ated0ddae0b454f414400acb56676eb746c537b0d2. Independent3/3 data checks,13/13 actual-parent selector states (819 event/39 site entries),40/40 scoped reference files; builder180/180 log assertions and18/18 link comparisons reconciled. Browser remains attributed;0/33 full-work approvals.
-
-
-
-
+note: AU01 research unit1/2 checkpoint saved/read back at649ed357ca6062bcf87dc305bff33f557029f84d; inventory at5809422fde2887db289d1aa4f46888f440912d4b. Audited PR48 057721011d6b0ba676ab957540b044241681382d against current PR24/37. 42/42 selected world records inventoried;1/6 essays opened,2/6 system charts visually inspected. Proposal20/20 values,40/40 branch-field comparisons,1/1 restoration equality;0 implementation/rendered checks. Full AU01 incomplete;CA01 deferred2/2;0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -275,3 +271,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-21T04:57Z Claude: implemented CA01-DESTINATION-01 on PR48 at 057721011d6b0ba676ab957540b044241681382d (parent 0ad0c14957a840a69700e6d26df47102882a65d3; pack blob 2b8b9ccb…): D1 removed ', then Skips on to UTol' from worlds[canticle].eras[12].blurb; D2 removed galaxy.links[h-nomad] with no replacement; + focused test. Evidence in [ca01dest-return-0577210.md](ca01dest-return-0577210.md) with probe, head/parent logs, visible-link JSON and screenshots. fixing/claude → implementation-review/chatgpt. Not merged.
 
 - 2026-11-21T05:26:52Z: ChatGPT independently accepted CA01-DESTINATION-01 D1/D2 at PR48 057721011d6b0ba676ab957540b044241681382d (actual parent0ad0c14957a840a69700e6d26df47102882a65d3). Saved/read back [implementation-review-0577210.md](implementation-review-0577210.md) ated0ddae0b454f414400acb56676eb746c537b0d2, blob67b6f07850703e7d08442064c04f39f1bb6ac460. Actual source equals precisely two requested removals;3/3 data assertions and13/13 actual-selector states pass,819/819 event-state and39/39 site-state comparisons unchanged apart from the clause. Read40/40 scoped reference files; only intentional new-test h-nomad mentions. Builder logs180/180 assertions and18/18 recorded link-set comparisons reconciled; no independent browser/screenshots or full-suite rerun claimed. Exact-head CI build success observed; one annotation inaccessible via connector endpoint restriction. Weather preserved; full CA01 deferred2/2,0/33 full-work approvals. Next AU01 research unit1/2; no site/PR edits, merge, deploy or release approval.
+
+- 2026-11-21T06:45:35Z ChatGPT: AU01 research unit1/2 [checkpoint and finite handoff](au01-checkpoint-1-2026-11-21.md) saved/read back at649ed357ca6062bcf87dc305bff33f557029f84d after [inventory/proposal evidence](au01-inventory-2026-11-21.json) at5809422fde2887db289d1aa4f46888f440912d4b. Current PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR48 057721011d6b0ba676ab957540b044241681382d rechecked unchanged. AU01-ORDER-01 Medium: PR48 gas-giant ordinals run fifth–fourteenth instead of fourth–thirteenth; two expressions affect20 status/order values across10 records. Opened chart reproduction and correct PR24/37 data corroborate the finite correction. Initial42/42 selected world records,1/6 essays opened,2/6 chart images visually inspected; Drominad narrator/map limits and Scadrian404 explicit. Proposal20/20 intended values,40/40 branch-field comparisons,1/1 whole-data restoration;0 implementation/rendered checks. research/chatgpt -> fixing/claude for this correction only, then implementation-review/chatgpt and AU01 research unit2/2. Checked18/18 pack and8/8 review statuses; no stale parallel self-audit. Preserve accepted CA01 weather/destination removals and all prior closures;CA01 remains deferred2/2;0/33 full-work approvals. No application/PR-branch edit, merge, deploy or release approval.
