@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude applies the four exact PR48 corrections EL-PORT-02 through EL-PORT-05 in implementation-review-5bdcf0a.md (four text replacements and e4.site removal only), compares against the actual parent, validates allowed/denied selectors and e4 world-only destination behavior, saves exact-head return evidence, then returns implementation-review/owner chatgpt. Preserve absent e67/palace landmark; no HO01 or parent-gate promotion.
-updated: 2026-11-21T13:22:25Z
+next-action: ChatGPT independently reviews EL-PORT-02..05 at PR48 bfaab6b873a493150f090c3cfbb25202c4cf626a (parent 5bdcf0a) per elport-return-bfaab6b.md, and dispositions the out-of-batch Chasm site desc wording; accept or return finite findings.
+updated: 2026-11-21T13:55Z
 idle-runs: 0
-note: SEL02-EL01-PORT accepted at5bdcf0a2cb9222fe4994cd1fdf542300e811cff2; review saved/read back atc9a547a9cbf8aecfe836293cbaf5cb5d21ec9e12. Independent actual-parent equality3/3 and selector states10/10; exact-head CI five relevant steps5/5 success. Browser smoke failure remains builder-reported unresolved;0 new browser cases. Original finite corrections7/7 reconciled:1 closed,4 ports,2 absent targets/no port.0/33 full-work approvals;28 deferred/5 partial;FD01 deferred2/2.
+note: EL-PORT-02..05 applied on PR48 at bfaab6b (cosmere.js +4/-4, five leaf ops; new test 4/4). Reverse(head)==actual parent 1/1; actual selector 30/30 head-vs-parent, e4 6 visible/4 denied; e4 world-only, 0 site selections on travel. check 681/681, pages 12x2, desktop+phone shots 0 errors; test:browser smoke timeout :88 inherited, unresolved. Not merged; HO01/e67/palace lm absent; 0/33 full-work approvals.
 
 # Cosmere book-by-book review
 
@@ -302,3 +302,4 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-21T12:51Z Claude: SEL02-EL01-PORT applied on PR48 at 5bdcf0a2cb9222fe4994cd1fdf542300e811cff2 (parent 614a391, unchanged since handoff): deleted only "Its streets trace Aon Ela. " from worlds[sel].sites[elantris].desc; new focused test. Evidence: sel02el01-return-5bdcf0a.md. fixing/claude → implementation-review/chatgpt. Not merged; no PR24/PR37 edit; HO01 held.
 
 - 2026-11-21T13:22:25Z ChatGPT: [implementation-review-5bdcf0a.md](implementation-review-5bdcf0a.md) saved/read back at c9a547a9cbf8aecfe836293cbaf5cb5d21ec9e12 (blob 24550db4ebfdd01102cc30ee6ec31048f382e235). Accepted SEL02-EL01-PORT only at PR48 5bdcf0a2cb9222fe4994cd1fdf542300e811cff2, actual parent614a391443a87cd67d27caca255d2836b5f15d37; inspected2/2 incremental files. Actual fetched parent comparison3/3 and implemented selector states10/10 passed (6 visible,4 denied). Independently inspected exact-head Actions44905924942:format/build/test/check:dist/standalone-pages5/5 successful,deploy skipped; builder677/677 count remains attributed,smoke timeout unresolved,0 new rendered cases. Compared original7/7 finite corrections against current PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR48:EL01 closed,EL02–05 need4 bounded ports(5 leaf operations),EL10/EL11 targets absent on PR48 and must stay absent. Re-read prior accepted source/implementation handoffs;no new full-book/source pass. Implementation-review/chatgpt → fixing/claude for exact batch;return independent implementation review.18/18 pack+8/8 review statuses inspected;no other owned work or eligible parallel self-audit,WIP holds unchanged.33/33 ledger rows remain28 deferred/5 partial,0 full-work approvals,FD01 deferred2/2,HO01 held. No code/PR-branch edit,merge,deploy or Mckay release approval.
+- 2026-11-21T13:55Z Claude: EL-PORT-02..05 applied on PR48 at bfaab6b873a493150f090c3cfbb25202c4cf626a (parent 5bdcf0a, unchanged since handoff): widor.desc, e2/e4/e5 text, e4.site deleted. Evidence: elport-return-bfaab6b.md (actual-parent equality, actual selector 30/30, e4 world-only travel, desktop/phone shots; browser smoke :88 inherited failure). fixing/claude → implementation-review/chatgpt. Not merged; no PR24/PR37 edit.
