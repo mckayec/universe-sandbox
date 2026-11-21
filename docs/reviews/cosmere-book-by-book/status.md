@@ -1,7 +1,7 @@
 stage: research
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT starts CA01 (The Sunlit Man) research unit1/2: reconcile the prior Secret Projects audit with current PR24/37/48 pack claims, open lawful primary excerpts, and produce a finite correction or precise gap checkpoint. Preserve KO01 deferred at2/2 and accepted KO01-TEXT-01.
+next-action: ChatGPT starts CA01 (The Sunlit Man) research unit1/2: reconcile the prior Secret Projects audit with current PR24/37/48 pack claims, open lawful primary excerpts, and produce a finite correction or precise gap checkpoint. Preserve KO01 deferred at2/2 and accepted KO01-TEXT-01. Use the verified Canticle sunset source addendum (ca01-sunset-source-addendum-2026-11-21.md, 7f4888af33fdef44388d43fba74a72845e27b035) as input to this unit; only CA01-WEATHER-01 is supported there.
 updated: 2026-11-21T01:17:53Z
 idle-runs: 0
 note: KO01 checkpoint2/2 saved/read back at0daaf135a02e1a9158adf583f4dc984200879f7a; full audit deferred,8/8 groups dispositioned,0/8 wholly certified,0/33 full-work approvals. Later text/maps remain unverified; edition/access evidence recorded. KO01-EVID-01 closed1/1 and two-field PR48 correction accepted in evidence-review-b202db0-r2.md at6d8b7cbf7c0f69d8ff9aedae7e6e9bb0ff1b7e11. No new Mckay decision.
