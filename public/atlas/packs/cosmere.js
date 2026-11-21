@@ -453,19 +453,19 @@
        short: "Hot, dusty and barren.", facts: [["Order", "1st from Mashe"]],
        gfx: {type: "desert", sea: .05, pal: ["#3a2818", "#5a3a20", "#b08458", "#c09468", "#a07a50", "#e8d8c0"], clouds: .3, cloudCol: "#c8a878", atmo: "#e0b080", atmoK: .9, sw: "#c09468"}},
 
-      {id: "sel", name: "Sel", aka: ["Seol"], realms: {cognitive: {name: "Expanse of the Densities", style: "plasma", c1: "#ff6a2a", c2: "#7a2ab8", c3: "#200a10", blurb: "Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it."}}, group: "selish", books: [1, 7], first: 1, major: true, status: "2nd from Mashe · Shardworld of Devotion and Dominion",
+      {id: "sel", name: "Sel", aka: ["Seol"], group: "selish", books: [1, 7], first: 1, major: true, status: "World of Elantris",
        star: {name: "Mashe", col: "#fff6e0"}, map: orb(C.sel, .22, 30), distText: ORR, hero: "elantris",
        blurb: "Once the city of Elantris shone, and anyone the Shaod took became a near-immortal with silver skin and power drawn from the Aons, the symbols of their writing. Ten years ago it all failed. Now Elantris is a rotting prison where the newly taken are thrown, Arelon is ruled by a merchant king, and the empire of Fjorden, which holds most of the continent, sends priests to convert what is left.",
        short: "The world of Elantris and The Emperor’s Soul.",
        eras: {7: {facts: [["Order", "2nd from Mashe"], ["Moon", "Oem"], ["Shards", "Devotion and Dominion, both splintered"], ["Magic", "AonDor, Forgery, Dakhor and more, tied to the land"], ["Nations", "Arelon, Teod, the Fjordell Empire, the Rose Empire"]]}},
-       facts: [["Order", "2nd from Mashe"], ["Moon", "Oem"], ["Continents", "Opelon (Sycla) and a northern continent"], ["Magic", "AonDor, drawn from the shape of the land"]],
+       facts: [["Moon", "Oem"], ["Continents", "Opelon (Sycla) and a northern continent"], ["Magic", "AonDor, drawn from the shape of the land"]],
        moons: [{name: "Oem", size: .2, dist: 3.2, speed: .04, gfx: rock(["#a8b8c8", "#c0d0e0", "#d8e4ee", "#e0eaf2", "#eef4fa", "#ffffff"])}],
        gfx: {type: "terran", sea: .5, freq: 1.5, warp: .5, rough: .55, ice: 76, pal: ["#0c2240", "#2c6a92", "#5a7a40", "#6a8a4a", "#8a8068", "#f0f0ee"],
              clouds: .33, atmo: "#8ab8ff", lights: .25, sw: "#6a8a4a", map: MAP_SEL},
        sites: [
          {id: "elantris", name: "Elantris", lat: 33.3, lon: -41.6, books: [1, 7], desc: "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."},
          {id: "kae", name: "Kae", lat: 33.6, lon: -41.0, books: [1], desc: "The eastern gate city beside Elantris, on the Aredel’s mouth and Arelon’s best northern harbour. It became the capital after the Reod. Elantris and its four gate cities (Ake, Ato, Kae and Toa) together form the Aon Rao."},
-         {id: "pool", name: "The Pool (Devotion’s perpendicularity)", lat: 32.6, lon: -40.1, books: [1], desc: "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm."},
+         {id: "pool", name: "The Pool", lat: 32.6, lon: -40.1, books: [1], desc: "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks."},
          {id: "kondeon", name: "Kondeon", lat: 30.0, lon: -45.5, books: [1], desc: "A town on the Aredel River, about halfway between Elantris and Lake Alonoe."},
          {id: "iald", name: "Iald", lat: 32.6, lon: -56.5, books: [1], desc: "Arelon’s second city under King Iadon, on Duke Roial’s lands. Which coast it is on is not stated; this placement is ours."},
          {id: "alonoe", name: "Lake Alonoe", lat: 27.0, lon: -50.0, sea: true, books: [1], desc: "The lake near the centre of Arelon, fed by rivers from the south-west and drained north-east by the Aredel. It is the dot in Aon Aon."},
@@ -817,14 +817,12 @@
 
     codex: [
       {id: "shards", title: "Shards", list: [
-        {name: "Adonalsium", first: 1, desc: "The single power behind creation, shattered long before the books into sixteen Shards.", more: [[7, "It was destroyed on Yolen by a group that included Hoid."]]},
         {name: "Honor", books: [4, 5, 8, 9, 12], desc: "Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions.", more: [[12, "Merged with Odium after Dalinar renounced it, forming Retribution."]]},
         {name: "Cultivation", books: [4, 5, 8, 9, 12], desc: "Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly."},
         {name: "Odium", books: [4, 5, 8, 9, 12], desc: "Shard of passion and division, the enemy behind the Desolations, who has killed other Shards.", more: [[7, "He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody."], [9, "His vessel Rayse is killed and Taravangian takes the Shard."], [12, "Becomes Retribution."]]},
         {name: "Preservation", books: [2], desc: "Shard of stability on Scadrial, who made the mists."},
         {name: "Ruin", books: [2], desc: "Shard of entropy, trapped at the Well of Ascension and working through lies."},
         {name: "Harmony", first: 2, books: [2, 6, 10], desc: "Sazed holding both Preservation and Ruin, god of Scadrial’s second era."},
-        {name: "Devotion and Dominion", books: [1, 7], desc: "The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics."},
         {name: "Endowment", books: [3], desc: "Shard of Nalthis, giver of Breath and of the Returned."},
         {name: "Autonomy", books: [7, 10], desc: "Shard of Taldain, who likes many avatars and dislikes rivals.", more: [[8, "Claims the world of Obrodai and raises an avatar there."], [10, "Reaches toward Scadrial in The Lost Metal."], [12, "Patji, the deadly island of First of the Sun, is one of its avatars."]]},
         {name: "Ambition", first: 7, desc: "A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody."},
