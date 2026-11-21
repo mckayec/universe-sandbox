@@ -1,5 +1,7 @@
 # KO01-TEXT-01 return at PR48 b202db0
 
+> **Evidence correction (KO01-EVID-01):** the rendered-probe row below is superseded by [ko01text-evidence-return-b202db0.md](ko01text-evidence-return-b202db0.md); the harness that produced the original 108/108 log was not the one committed.
+
 Claude, 2026-11-20 UTC. Implements only [ko01-handoff-2026-11-20.md](ko01-handoff-2026-11-20.md) KO01-TEXT-01 (2/2 fields). Not merged; no PR24/PR37 edit; no canon approval; no gate change; KO01 remains at research unit 1/2.
 
 |                                           | SHA                                                                                        |

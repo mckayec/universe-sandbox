@@ -1,8 +1,10 @@
 // KO01-TEXT-01 rendered probe (ko01-handoff-2026-11-20.md); harness adapted from th01rules-probe.mjs.
 // Real Cosmere pack + engine, no fixtures; Playwright + software GL, 1440x900 and 390x844 (touch; phone dossier sheet
 // expanded with a real tap on #grab). Komashi is selected programmatically (__atlas.selectWorld).
-//  - eligible states: dossier p.blurb equals the new Komashi blurb; the e51 event row (.ex) equals the new text and
-//    sits inside the viewport after scrolling; removed wording ("across time", "few hundred miles") absent from page;
+//  - eligible states: dossier p.blurb equals the new Komashi blurb; the e51 event row's .ex text equals the new text;
+//    the e51 row (.evitem) is then opened with a REAL pointer event (page.click on desktop, page.tap on phone) and
+//    must become S.ev === 'e51' with class "open" and the replacement text; the opened .ex box must sit fully inside
+//    the viewport (left/top/right/bottom) after scrolling; removed wording absent from page;
 //  - denied states: neither the old nor the new blurb / e51 text anywhere in page text.
 // Eligibility per state comes from the focused selector test (tests/atlas-ko01-text.test.ts, parent exposure 5/13).
 // Usage: node ko01text-probe.mjs <baseUrl> <packPath> [mode=head|parent] [shotDir]
@@ -89,14 +91,47 @@ for (const [name, vp, mobile] of [
       ok(s.sel === 'komashi', `${tag}: komashi selected (${s.sel})`);
       ok(s.blurb === NEW_BLURB, `${tag}: blurb = replacement (${s.blurb})`);
       ok(s.e51 === NEW_E51, `${tag}: e51 text = replacement (${s.e51})`);
-      const ev = p.locator('#dossier [data-ev="e51"]').first();
-      await ev.scrollIntoViewIfNeeded();
+      const row = '#dossier .evitem[data-ev="e51"]';
+      await p.locator(row).first().scrollIntoViewIfNeeded();
       await p.waitForTimeout(300);
-      const r = await p.evaluate(() => {
-        const el = document.querySelector('#dossier [data-ev="e51"] .ex').getBoundingClientRect();
-        return { w: el.width, right: el.right, bottom: el.bottom, vw: innerWidth, vh: innerHeight };
-      });
-      ok(r.w > 0 && r.right <= r.vw && r.bottom <= r.vh, `${tag}: e51 inside viewport (${JSON.stringify(r)})`);
+      if (mobile) await p.tap(row);
+      else await p.click(row);
+      await p.waitForTimeout(400);
+      const o = await p.evaluate(r => {
+        const el = document.querySelector(r);
+        return {
+          ev: window.__atlas.S.ev,
+          open: !!el && el.classList.contains('open'),
+          ex: el ? el.querySelector('.ex').textContent : null,
+        };
+      }, row);
+      ok(
+        o.ev === 'e51' && o.open && o.ex === NEW_E51,
+        `${tag}: e51 opened by real ${mobile ? 'tap' : 'click'}, shows replacement (${JSON.stringify(o)})`,
+      );
+      await p
+        .locator(row + ' .ex')
+        .first()
+        .scrollIntoViewIfNeeded();
+      await p.waitForTimeout(300);
+      const r = await p.evaluate(rs => {
+        const el = document.querySelector(rs + ' .ex').getBoundingClientRect();
+        const q = v => Math.round(v * 10) / 10;
+        return {
+          w: q(el.width),
+          h: q(el.height),
+          left: q(el.left),
+          top: q(el.top),
+          right: q(el.right),
+          bottom: q(el.bottom),
+          vw: innerWidth,
+          vh: innerHeight,
+        };
+      }, row);
+      ok(
+        r.w > 0 && r.h > 0 && r.left >= 0 && r.top >= 0 && r.right <= r.vw && r.bottom <= r.vh,
+        `${tag}: opened e51 text inside viewport (${JSON.stringify(r)})`,
+      );
       if (shotDir && (label === 'All' || label === 'bucket11'))
         await p.screenshot({ path: `${shotDir}/ko01text-${mode}-${label.replace(/\s/g, '')}-${name}.png` });
     } else {
