@@ -1,10 +1,11 @@
-stage: implementation-review
+stage: research
 owner: chatgpt
 blocked-on: none
-next-action: ChatGPT independently reviews CA01-WEATHER-01 at PR48 0ad0c14957a840a69700e6d26df47102882a65d3 per ca01weather-return-0ad0c14.md (actual diff/files at that head); on acceptance resume CA01 research unit 2/2.
-updated: 2026-11-21T02:56Z
+next-action: ChatGPT resumes CA01 research unit2/2: seek lawful later sunlight-height/core, identity and ending passages; reconcile SP04/SP05/SP07/SP11 and destination links, retaining supplied-edition evidence as attributed unless reopened. At the cap hand off finite sourced corrections or defer full CA01 and continue AU01. Preserve accepted CA01-WEATHER-01.
+updated: 2026-11-21T03:41:47Z
 idle-runs: 0
-note: CA01-WEATHER-01 implemented on PR48 only: head 0ad0c14 (parent b202db0), cosmere.js +1/-1 in worlds[canticle].blurb plus tests/atlas-ca01-weather.test.ts. Builder evidence: focused 2/2 (parent fails), pnpm check 667/667, test:pages 12x2, rendered probe 48/48 head vs 40/48 parent (8 expected), base-blurb exposure 2/13 (legacy11, bucket11); browser smoke known line-88 timeout. Not merged; no gate/PR24/PR37 change; 0/33 full-work approvals.
+note: CA01-WEATHER-01 accepted1/1 at PR48 0ad0c14957a840a69700e6d26df47102882a65d3; implementation-review-0ad0c14.md saved/read back atb3234e1bc6d9e18a88dc9cd8434abba7a27f0306. Independent3/3 source/data checks and13/13 actual-parent selector comparisons pass (819/819 event-state,39/39 site-state entries); builder logs96/96 lines reconciled. Browser results remain attributed; smoke failure retained. 0/33 full-work approvals.
+
 
 
 
@@ -266,3 +267,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-21T02:16:31Z: ChatGPT completed CA01 research unit1/2, freshly reconciled PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR48 b202db06188bc11a694e5232ee0ce983882a7fb8. Read prior Secret Projects audit and CA01 sunset addendum; opened author chapters8/9/10 for targeted passages. Saved/read back ca01-inventory-2026-11-21.json at7c42c61f6c3e97b07d19906ea6c87e4dda17fa38 and ca01-handoff-2026-11-21.md atf7fbb9a3fc6ddbde58c02971481701c825571765. CA01-WEATHER-01 hands one Medium SP06 sunset correction to Claude, one field on PR48 only;3/3 proposals change one parsed leaf and restore whole data.7/7 selected inventory groups dispositioned,0/7 wholly certified. 0 implementation tests,0 rendered cases,0/33 full-work approvals. research/chatgpt → fixing/claude; return exact implementation head for independent review, then CA01 unit2/2 under cap. KO01 and other deferrals, accepted corrections and all source/runtime/release holds preserved; no code edits, merge, deploy or release approval.
 
 - 2026-11-21T02:56Z Claude: implemented CA01-WEATHER-01 on PR48 at 0ad0c14957a840a69700e6d26df47102882a65d3 (parent b202db06188bc11a694e5232ee0ce983882a7fb8; pack blob ab5db8c8…): one sentence substitution in worlds[canticle].blurb + focused test. Evidence in ca01weather-return-0ad0c14.md with probe, head/parent logs and screenshots. fixing/claude → implementation-review/chatgpt. Not merged.
+
+- 2026-11-21T03:41:47Z: ChatGPT saved/read back implementation-review-0ad0c14.md atb3234e1bc6d9e18a88dc9cd8434abba7a27f0306 (blob9696b88b0006fa7f666d42c16e467c479130be1d). Accepted CA01-WEATHER-01,1/1 finite sunset correction at PR48 0ad0c14957a840a69700e6d26df47102882a65d3, actual parent b202db06188bc11a694e5232ee0ce983882a7fb8. Independently read2/2 changed files, passed3/3 source/data checks and13/13 selector comparisons using actual parent/head packs, including819/819 event-state and39/39 site-state entries. Reconciled96/96 builder assertion lines (head48/48,parent40/48 with8 expected failures); exact-head build CI success observed. 0 independent rendered cases; browser smoke failure and screenshot/local-test attribution retained. implementation-review/chatgpt → research/chatgpt, resume CA01 unit2/2 without counting this review as research. Existing gaps, deferrals and release holds preserved;0/33 full-work approvals. No code edits, merge, deploy or release approval.
