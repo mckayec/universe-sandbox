@@ -1,0 +1,101 @@
+ok   1440x900 All: threnosun selected (threnosun)
+ok   1440x900 All: dossier shows new blurb
+ok   1440x900 All: dossier has no removed clause
+ok   1440x900 All: codex open
+ok   1440x900 All: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   1440x900 All: Ambition has no removed clause
+ok   1440x900 All: removed clauses absent from page
+ok   1440x900 All: no errors 
+ok   1440x900 legacy7: threnosun selected (threnosun)
+ok   1440x900 legacy7: dossier shows new blurb
+ok   1440x900 legacy7: dossier has no removed clause
+ok   1440x900 legacy7: codex open
+ok   1440x900 legacy7: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   1440x900 legacy7: Ambition has no removed clause
+ok   1440x900 legacy7: removed clauses absent from page
+ok   1440x900 legacy7: no errors 
+ok   1440x900 bucket7: threnosun selected (threnosun)
+ok   1440x900 bucket7: dossier shows new blurb
+ok   1440x900 bucket7: dossier has no removed clause
+ok   1440x900 bucket7: codex open
+ok   1440x900 bucket7: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   1440x900 bucket7: Ambition has no removed clause
+ok   1440x900 bucket7: removed clauses absent from page
+ok   1440x900 bucket7: no errors 
+ok   1440x900 all works: threnosun selected (threnosun)
+ok   1440x900 all works: dossier shows new blurb
+ok   1440x900 all works: dossier has no removed clause
+ok   1440x900 all works: codex open
+ok   1440x900 all works: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   1440x900 all works: Ambition has no removed clause
+ok   1440x900 all works: removed clauses absent from page
+ok   1440x900 all works: no errors 
+ok   1440x900 legacy6: threnosun not selectable (null)
+ok   1440x900 legacy6: codex open
+ok   1440x900 legacy6: no Ambition entry
+ok   1440x900 legacy6: no target text on page
+ok   1440x900 legacy6: removed clauses absent from page
+ok   1440x900 legacy6: no errors 
+ok   1440x900 AU01 only: threnosun not selectable (null)
+ok   1440x900 AU01 only: codex open
+ok   1440x900 AU01 only: no Ambition entry
+ok   1440x900 AU01 only: no target text on page
+ok   1440x900 AU01 only: removed clauses absent from page
+ok   1440x900 AU01 only: no errors 
+ok   1440x900 bucket7 minus AU01: threnosun not selectable (null)
+ok   1440x900 bucket7 minus AU01: codex open
+ok   1440x900 bucket7 minus AU01: no Ambition entry
+ok   1440x900 bucket7 minus AU01: no target text on page
+ok   1440x900 bucket7 minus AU01: removed clauses absent from page
+ok   1440x900 bucket7 minus AU01: no errors 
+ok   390x844 All: threnosun selected (threnosun)
+ok   390x844 All: dossier shows new blurb
+ok   390x844 All: dossier has no removed clause
+ok   390x844 All: codex open
+ok   390x844 All: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   390x844 All: Ambition has no removed clause
+ok   390x844 All: removed clauses absent from page
+ok   390x844 All: no errors 
+ok   390x844 legacy7: threnosun selected (threnosun)
+ok   390x844 legacy7: dossier shows new blurb
+ok   390x844 legacy7: dossier has no removed clause
+ok   390x844 legacy7: codex open
+ok   390x844 legacy7: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   390x844 legacy7: Ambition has no removed clause
+ok   390x844 legacy7: removed clauses absent from page
+ok   390x844 legacy7: no errors 
+ok   390x844 bucket7: threnosun selected (threnosun)
+ok   390x844 bucket7: dossier shows new blurb
+ok   390x844 bucket7: dossier has no removed clause
+ok   390x844 bucket7: codex open
+ok   390x844 bucket7: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   390x844 bucket7: Ambition has no removed clause
+ok   390x844 bucket7: removed clauses absent from page
+ok   390x844 bucket7: no errors 
+ok   390x844 all works: threnosun selected (threnosun)
+ok   390x844 all works: dossier shows new blurb
+ok   390x844 all works: dossier has no removed clause
+ok   390x844 all works: codex open
+ok   390x844 all works: Ambition desc is new text (A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.)
+ok   390x844 all works: Ambition has no removed clause
+ok   390x844 all works: removed clauses absent from page
+ok   390x844 all works: no errors 
+ok   390x844 legacy6: threnosun not selectable (null)
+ok   390x844 legacy6: codex open
+ok   390x844 legacy6: no Ambition entry
+ok   390x844 legacy6: no target text on page
+ok   390x844 legacy6: removed clauses absent from page
+ok   390x844 legacy6: no errors 
+ok   390x844 AU01 only: threnosun not selectable (null)
+ok   390x844 AU01 only: codex open
+ok   390x844 AU01 only: no Ambition entry
+ok   390x844 AU01 only: no target text on page
+ok   390x844 AU01 only: removed clauses absent from page
+ok   390x844 AU01 only: no errors 
+ok   390x844 bucket7 minus AU01: threnosun not selectable (null)
+ok   390x844 bucket7 minus AU01: codex open
+ok   390x844 bucket7 minus AU01: no Ambition entry
+ok   390x844 bucket7 minus AU01: no target text on page
+ok   390x844 bucket7 minus AU01: removed clauses absent from page
+ok   390x844 bucket7 minus AU01: no errors 
+au01threnody-probe (head): 100/100 pass
