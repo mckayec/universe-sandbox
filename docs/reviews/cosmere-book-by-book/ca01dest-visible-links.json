@@ -1,0 +1,256 @@
+{
+ "head_0577210": {
+  "1440x900 All": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 legacy12": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 all works": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 legacy11": [
+   "h-nal-ros",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 bucket11": [
+   "h-scad-can",
+   "h-sel-lum"
+  ],
+  "1440x900 legacy10": [
+   "h-nal-ros",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 Sunlit only": [],
+  "1440x900 bucket11 minus Sunlit": [],
+  "1440x900 all works minus Sunlit": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 All": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 legacy12": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 all works": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 legacy11": [
+   "h-nal-ros",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 bucket11": [
+   "h-scad-can",
+   "h-sel-lum"
+  ],
+  "390x844 legacy10": [
+   "h-nal-ros",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 Sunlit only": [],
+  "390x844 bucket11 minus Sunlit": [],
+  "390x844 all works minus Sunlit": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-yol-silv",
+   "odium"
+  ]
+ },
+ "parent_0ad0c14": {
+  "1440x900 All": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 legacy12": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 all works": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 legacy11": [
+   "h-nal-ros",
+   "h-nomad",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 bucket11": [
+   "h-nomad",
+   "h-scad-can",
+   "h-sel-lum"
+  ],
+  "1440x900 legacy10": [
+   "h-nal-ros",
+   "h-yol-silv",
+   "odium"
+  ],
+  "1440x900 Sunlit only": [],
+  "1440x900 bucket11 minus Sunlit": [],
+  "1440x900 all works minus Sunlit": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 All": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 legacy12": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 all works": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad",
+   "h-nomad2",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 legacy11": [
+   "h-nal-ros",
+   "h-nomad",
+   "h-scad-can",
+   "h-sel-lum",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 bucket11": [
+   "h-nomad",
+   "h-scad-can",
+   "h-sel-lum"
+  ],
+  "390x844 legacy10": [
+   "h-nal-ros",
+   "h-yol-silv",
+   "odium"
+  ],
+  "390x844 Sunlit only": [],
+  "390x844 bucket11 minus Sunlit": [],
+  "390x844 all works minus Sunlit": [
+   "h-dhatri",
+   "h-dusk",
+   "h-hoid12",
+   "h-nal-ros",
+   "h-nomad2",
+   "h-yol-silv",
+   "odium"
+  ]
+ }
+}
