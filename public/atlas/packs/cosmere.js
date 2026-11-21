@@ -812,7 +812,7 @@
       {id: "e60", book: 12, world: "scadrial", title: "Hoid seeks help", text: "Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor."},
       {id: "e61", book: 12, world: "firstsun", site: "patjiseye", title: "Through Patji’s Eye", text: "Dusk leaves his world through the Eye, searching for help against the Ones Above."},
       {id: "e62", book: 12, world: "emberdark", site: "hiddengate", title: "Dusk and Starling", text: "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."},
-      {id: "e63", book: 12, world: "miral", site: "riverviolet", title: "Up the River Violet", text: "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)"}
+      {id: "e63", book: 12, world: "miral", site: "riverviolet", title: "Up the River Violet", text: "December sets out to warn Kingseat of a coming plague."}
     ],
 
     codex: [
