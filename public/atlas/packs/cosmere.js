@@ -463,7 +463,7 @@
        gfx: {type: "terran", sea: .5, freq: 1.5, warp: .5, rough: .55, ice: 76, pal: ["#0c2240", "#2c6a92", "#5a7a40", "#6a8a4a", "#8a8068", "#f0f0ee"],
              clouds: .33, atmo: "#8ab8ff", lights: .25, sw: "#6a8a4a", map: MAP_SEL},
        sites: [
-         {id: "elantris", name: "Elantris", lat: 33.3, lon: -41.6, books: [1, 7], desc: "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. Its streets trace Aon Ela. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."},
+         {id: "elantris", name: "Elantris", lat: 33.3, lon: -41.6, books: [1, 7], desc: "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."},
          {id: "kae", name: "Kae", lat: 33.6, lon: -41.0, books: [1], desc: "The eastern gate city beside Elantris, on the Aredel’s mouth and Arelon’s best northern harbour. It became the capital after the Reod. Elantris and its four gate cities (Ake, Ato, Kae and Toa) together form the Aon Rao."},
          {id: "pool", name: "The Pool (Devotion’s perpendicularity)", lat: 32.6, lon: -40.1, books: [1], desc: "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm."},
          {id: "kondeon", name: "Kondeon", lat: 30.0, lon: -45.5, books: [1], desc: "A town on the Aredel River, about halfway between Elantris and Lake Alonoe."},
