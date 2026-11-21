@@ -1,0 +1,49 @@
+ok   1440x900 legacy11: old wording absent
+ok   1440x900 legacy11: canticle selected (canticle)
+ok   1440x900 legacy11: blurb = full replacement blurb (A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.)
+ok   1440x900 legacy11: blurb box visible, horizontally inside viewport ({"w":370,"h":230.1,"left":1033,"top":262,"right":1403,"bottom":492.1,"vw":1440,"vh":900})
+ok   1440x900 legacy11: no errors 
+ok   1440x900 bucket11: old wording absent
+ok   1440x900 bucket11: canticle selected (canticle)
+ok   1440x900 bucket11: blurb = full replacement blurb (A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.)
+ok   1440x900 bucket11: blurb box visible, horizontally inside viewport ({"w":370,"h":230.1,"left":1033,"top":262,"right":1403,"bottom":492.1,"vw":1440,"vh":900})
+ok   1440x900 bucket11: no errors 
+ok   1440x900 All: old wording absent
+ok   1440x900 All: canticle selected (canticle)
+ok   1440x900 All: eras[12] blurb shown
+ok   1440x900 All: replacement not on page (era-12 blurb in effect)
+ok   1440x900 All: no errors 
+ok   1440x900 legacy10: old wording absent
+ok   1440x900 legacy10: replacement not on page
+ok   1440x900 legacy10: no errors 
+ok   1440x900 Sunlit only: old wording absent
+ok   1440x900 Sunlit only: replacement not on page
+ok   1440x900 Sunlit only: no errors 
+ok   1440x900 bucket11 minus Sunlit: old wording absent
+ok   1440x900 bucket11 minus Sunlit: replacement not on page
+ok   1440x900 bucket11 minus Sunlit: no errors 
+ok   390x844 legacy11: old wording absent
+ok   390x844 legacy11: canticle selected (canticle)
+ok   390x844 legacy11: blurb = full replacement blurb (A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.)
+ok   390x844 legacy11: blurb box visible, horizontally inside viewport ({"w":336,"h":230.1,"left":27,"top":412.7,"right":363,"bottom":642.8,"vw":390,"vh":844})
+ok   390x844 legacy11: no errors 
+ok   390x844 bucket11: old wording absent
+ok   390x844 bucket11: canticle selected (canticle)
+ok   390x844 bucket11: blurb = full replacement blurb (A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.)
+ok   390x844 bucket11: blurb box visible, horizontally inside viewport ({"w":336,"h":230.1,"left":27,"top":412.7,"right":363,"bottom":642.8,"vw":390,"vh":844})
+ok   390x844 bucket11: no errors 
+ok   390x844 All: old wording absent
+ok   390x844 All: canticle selected (canticle)
+ok   390x844 All: eras[12] blurb shown
+ok   390x844 All: replacement not on page (era-12 blurb in effect)
+ok   390x844 All: no errors 
+ok   390x844 legacy10: old wording absent
+ok   390x844 legacy10: replacement not on page
+ok   390x844 legacy10: no errors 
+ok   390x844 Sunlit only: old wording absent
+ok   390x844 Sunlit only: replacement not on page
+ok   390x844 Sunlit only: no errors 
+ok   390x844 bucket11 minus Sunlit: old wording absent
+ok   390x844 bucket11 minus Sunlit: replacement not on page
+ok   390x844 bucket11 minus Sunlit: no errors 
+ca01weather-probe (head): 48/48 pass

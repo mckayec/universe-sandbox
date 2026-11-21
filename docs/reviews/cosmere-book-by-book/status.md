@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude implements CA01-WEATHER-01 on PR48 only per ca01-handoff-2026-11-21.md: replace the sunset firestorm sentence in canticle.blurb, preserve all other source/data/gates, and return an exact-head implementation report with source/data and applicable rendered/check evidence for ChatGPT review.
-updated: 2026-11-21T02:16:31Z
+next-action: ChatGPT independently reviews CA01-WEATHER-01 at PR48 0ad0c14957a840a69700e6d26df47102882a65d3 per ca01weather-return-0ad0c14.md (actual diff/files at that head); on acceptance resume CA01 research unit 2/2.
+updated: 2026-11-21T02:56Z
 idle-runs: 0
-note: CA01 research1/2 handoff saved/read back atf7fbb9a3fc6ddbde58c02971481701c825571765; selected inventory at7c42c61f6c3e97b07d19906ea6c87e4dda17fa38. One Medium sunset-clause correction from SP06;3/3 exact packs reconciled,3/3 single-leaf proposal/restoration checks pass;3 targeted primary pages opened. 0 implementation tests,0 rendered cases,0/33 full-work approvals. Resume CA01 research2/2 after independent implementation acceptance; prior deferrals/holds preserved.
+note: CA01-WEATHER-01 implemented on PR48 only: head 0ad0c14 (parent b202db0), cosmere.js +1/-1 in worlds[canticle].blurb plus tests/atlas-ca01-weather.test.ts. Builder evidence: focused 2/2 (parent fails), pnpm check 667/667, test:pages 12x2, rendered probe 48/48 head vs 40/48 parent (8 expected), base-blurb exposure 2/13 (legacy11, bucket11); browser smoke known line-88 timeout. Not merged; no gate/PR24/PR37 change; 0/33 full-work approvals.
 
 
 
@@ -264,3 +264,5 @@ Known source gaps are explicit in the audit. Follow the shared bounded-checkpoin
 - 2026-11-21T01:17:53Z: ChatGPT completed KO01 research checkpoint2/2 and saved/read back ko01-checkpoint-2-2026-11-21.md at0daaf135a02e1a9158adf583f4dc984200879f7a (blob16424ce3c5259ef33bf404effbcb21926f06c70c). Opened author/publisher/catalog sources; logged inaccessible OverDrive/Google preview and Arcanum attempts. No new narrative chapters or maps verified; prior7/7 posted-chapter coverage and Y01–Y07 remain attributed. Fresh3/3 PR heads unchanged;8/8 inventory groups dispositioned,0/8 wholly certified;0/33 full-work approvals. Full KO01 deferred under cap, finite two-field PR48 acceptance and KO01-EVID-01 closure preserved. Next CA01 research unit1/2; owner remains chatgpt, blocked-on none. Known access gaps do not require a new Mckay decision; prior deferrals and all release/source/runtime holds preserved. Docs only; no code, merge, deploy or release approval.
 
 - 2026-11-21T02:16:31Z: ChatGPT completed CA01 research unit1/2, freshly reconciled PR24 cf25cda66e91c573c421a0f3712623db72737a3b, PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR48 b202db06188bc11a694e5232ee0ce983882a7fb8. Read prior Secret Projects audit and CA01 sunset addendum; opened author chapters8/9/10 for targeted passages. Saved/read back ca01-inventory-2026-11-21.json at7c42c61f6c3e97b07d19906ea6c87e4dda17fa38 and ca01-handoff-2026-11-21.md atf7fbb9a3fc6ddbde58c02971481701c825571765. CA01-WEATHER-01 hands one Medium SP06 sunset correction to Claude, one field on PR48 only;3/3 proposals change one parsed leaf and restore whole data.7/7 selected inventory groups dispositioned,0/7 wholly certified. 0 implementation tests,0 rendered cases,0/33 full-work approvals. research/chatgpt → fixing/claude; return exact implementation head for independent review, then CA01 unit2/2 under cap. KO01 and other deferrals, accepted corrections and all source/runtime/release holds preserved; no code edits, merge, deploy or release approval.
+
+- 2026-11-21T02:56Z Claude: implemented CA01-WEATHER-01 on PR48 at 0ad0c14957a840a69700e6d26df47102882a65d3 (parent b202db06188bc11a694e5232ee0ce983882a7fb8; pack blob ab5db8c8…): one sentence substitution in worlds[canticle].blurb + focused test. Evidence in ca01weather-return-0ad0c14.md with probe, head/parent logs and screenshots. fixing/claude → implementation-review/chatgpt. Not merged.
