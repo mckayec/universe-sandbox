@@ -1,0 +1,13 @@
+# FD01 unit 2: Kingseat illustration evidence for FD09
+
+2026-11-21. This is a narrow visual-source addendum, not an implementation handoff or a completed work audit. It supplements the [historical primary checkpoint](fires-of-december-primary-checkpoint-2026-11-09.md) and the [unit 1 handoff](fd01-handoff-2026-11-21.md).
+
+**Source.** The [author's Hoid’s Travails gallery](https://www.brandonsanderson.com/pages/hoids-travails) captions Tran Nguyen's illustration “Map of Kingseat.” Two reviewers independently opened the [gallery-served raster](https://images.robinpro.gallery/v7/_origin_/uploads/9eac8961f3b733cf719fb3532eb9daa5.jpg?ci_seal=46b51a8103&w=1800&h=2700&org_if_sml=1) and inspected the actual 1037 × 1556 image. The illustration is linked, not redistributed.
+
+| Observation | Disposition |
+| --- | --- |
+| A giant reclining body is within a walled urban area, with red flow visibly issuing from a chest opening into a channel winding through urban buildings and across streets spanned by bridges. | **Confirmed as depicted.** Corroborates the limited city/body/waterway relationship, not anatomical, hydrological or chronological claims. |
+| Gallery metadata describes an outer-turn palace, elevated road and colored branches. | **Described, not certified from this raster.** There is no legible in-image palace label or independent confirmation of three exact named branches in this served frame. Do not assign exact 3D geometry from alt text. |
+| No legible scale, compass or regional framework; no view inside the chest or below ground. | **Held.** No inference of exact city, regional or site coordinates, distances, sword location, mining/tunnel layout, monastery age, or description of the southern plains. The drawing does not replace a chapter citation. |
+
+**Branch reconciliation.** The common `SITES_MIRAL` Kingseat summary on inspected [PR48 614a391](https://github.com/mckayec/universe-sandbox/blob/614a391443a87cd67d27caca255d2836b5f15d37/public/atlas/packs/cosmere.js) and [PR37 03394c3](https://github.com/mckayec/universe-sandbox/blob/03394c32816fcb5c95261bf6a9ea4520381a5838/public/atlas/packs/cosmere.js) already places the city around the Megalith; the picture does not certify the site's size, precise coordinates, or count/source of rivers. PR37 marks its detailed Kingseat layout schematic. Keep the schematic label and preserve the existing chapter-based FD01–03 and FD09 dispositions. Do not use the map to revive held claims or reopen the accepted e63 publication change. FD01 unit 2/2 remains in progress; no branch/app edit, new approval, merge or deployment.
