@@ -543,7 +543,7 @@
       /* ============================ THE THRENODITE SYSTEM (system chart: red sun, Monody, Elegy + Coronach, Threnody, far-out Purity) ============================ */
       {id: "threnosun", name: "Threnody’s sun", group: "threnodite", books: [7], first: 7, major: true, status: "Red star of the Threnodite system",
        star: {name: "Threnody’s sun", col: "#ff9a70"}, map: C.threnody, distText: CHARTPOS,
-       blurb: "A red star. In the empty space of this system the Shards Ambition, Odium and probably Mercy fought; Ambition was mortally wounded, and planets that once orbited here were destroyed. The twisted Investiture on Threnody is at least partly a scar of that battle.",
+       blurb: "A red star. In the empty space of this system the Shards Ambition and Odium fought; Ambition was mortally wounded. The twisted Investiture on Threnody is at least partly a scar of that battle.",
        short: "Red star where Ambition was wounded.", facts: [["Planets", "Monody, Elegy, Threnody, Purity"]], noSurface: true, gfx: sun("#ff8a50", HOTR)},
       {id: "monody", name: "Monody", group: "threnodite", books: [7], first: 7, status: "1st from the sun",
        star: {name: "Threnody’s sun", col: "#ff9a70"}, map: orb(C.threnody, .12, 70), distText: ORR,
@@ -827,7 +827,7 @@
         {name: "Devotion and Dominion", books: [1, 7], desc: "The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics."},
         {name: "Endowment", books: [3], desc: "Shard of Nalthis, giver of Breath and of the Returned."},
         {name: "Autonomy", books: [7, 10], desc: "Shard of Taldain, who likes many avatars and dislikes rivals.", more: [[8, "Claims the world of Obrodai and raises an avatar there."], [10, "Reaches toward Scadrial in The Lost Metal."], [12, "Patji, the deadly island of First of the Sun, is one of its avatars."]]},
-        {name: "Ambition", first: 7, desc: "A Shard mortally wounded in a battle with Odium, and probably Mercy, in the empty space of the Threnodite system. The battle destroyed planets there and still twists the Investiture on Threnody."},
+        {name: "Ambition", first: 7, desc: "A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody."},
         {name: "Virtuosity", first: 11, desc: "A Shard who splintered herself near Komashi."},
         {name: "Valor", first: 12, desc: "A Shard who was active on Miral and founded temples there."},
         {name: "Retribution", first: 12, desc: "Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere."}
