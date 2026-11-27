@@ -95,6 +95,17 @@ function beginTouchGesture() {
 
 export function bindPointerEvents() {
   renderer.domElement.addEventListener('contextmenu', e => e.preventDefault());
+  // A tap on the canvas must never become a click on a control that moved under the finger:
+  // placing a body opens the selected-object sheet, which shifts the compact dock (and Clear all) upward.
+  // Pointer events still drive placement, selection and dragging; only the synthetic click is dropped.
+  // After a drag or pinch the touchend is not cancelable (and no click follows), so leave it alone there.
+  renderer.domElement.addEventListener(
+    'touchend',
+    e => {
+      if (e.cancelable) e.preventDefault();
+    },
+    { passive: false },
+  );
   renderer.domElement.addEventListener('pointerdown', e => {
     noteActivity();
     app.cameraTransition = null;

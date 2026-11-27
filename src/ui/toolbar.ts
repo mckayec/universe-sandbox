@@ -26,6 +26,7 @@ import {
   setInteractionMode,
   setNavigationMode,
   setSimulationSpeed,
+  setTouchHint,
   toggleHabitabilityGuides,
   toggleTrails,
 } from './controls.ts';
@@ -89,7 +90,7 @@ export function bindToolbar() {
     resetSimulation();
     app.currentExhibit = null;
     document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
-    toast('Simulation cleared');
+    toast('Simulation cleared · Undo restores it');
   };
   document.querySelector<HTMLButtonElement>('#orbit-mode')!.onclick = e => {
     app.orbitMode = !app.orbitMode;
@@ -98,6 +99,9 @@ export function bindToolbar() {
     document.querySelector('#hint')!.textContent = app.orbitMode
       ? 'ORBIT MODE · DRAG NEAR A BLUE RING TO ENTER ORBIT'
       : 'INSPECT MODE · CLICK OR DRAG OBJECTS · RIGHT-DRAG TO PAN';
+    setTouchHint(
+      app.orbitMode ? 'Orbit mode · drag a planet near a blue ring' : 'Tap an object to inspect · drag it to move',
+    );
   };
   const universePicker = document.querySelector<HTMLElement>('#universe-picker')!,
     scenarioPicker = document.querySelector<HTMLElement>('#scenario-picker')!;
@@ -278,6 +282,7 @@ export function bindToolbar() {
     .forEach(b => (b.onclick = () => setSimulationSpeed(Number(b.dataset.speed))));
   bindCompactPanels();
   bindToolbarFade();
+  bindTopbarReflow();
 }
 /** Collapsible tool panel and expandable selected-object sheet on compact layouts. */
 function bindCompactPanels() {
@@ -294,6 +299,19 @@ function bindCompactPanels() {
   document.querySelector<HTMLButtonElement>('#info-life-zones')!.onclick = toggleHabitabilityGuides;
   // Phones start with the body palette collapsed so the playfield stays visible.
   if (compactLayout() && innerHeight < 900) setToolsCollapsed(true);
+}
+/** Publishes how much taller than one row the top bar has wrapped (enlarged text), so the controls
+ *  positioned below it move down instead of being overlapped. */
+function bindTopbarReflow() {
+  const bar = document.querySelector<HTMLElement>('.topbar')!;
+  const root = document.documentElement;
+  const update = () => {
+    const extra = compactLayout() ? Math.max(0, Math.ceil(bar.getBoundingClientRect().height) - 44) : 0;
+    root.style.setProperty('--topbar-extra', `${extra}px`);
+  };
+  new ResizeObserver(update).observe(bar);
+  addEventListener('resize', update);
+  update();
 }
 /** Fades the universe toolbar's edges when more buttons are scrolled out of view. */
 function bindToolbarFade() {
