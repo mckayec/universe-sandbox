@@ -1,10 +1,10 @@
 stage: final-audit
-owner: chatgpt
-blocked-on: none
-next-action: ChatGPT: final canon review of pack/narnia at 97a374092325b8d7c294127211c2c27fc687219a (PR #52) using research-review.md §7 (R3 integration + Known gaps); D15 decides whether the listed gaps block release.
-updated: 2026-11-27T08:55Z
+owner: mckay
+blocked-on: mckay
+next-action: Mckay: decide the evidence scope in existing D15. On a seed-scope decision return the exact head to ChatGPT; on full-coverage requirements reopen research.
+updated: 2026-11-27T09:19:25Z
 idle-runs: 0
-note: R3 integrated, no code change; head 97a3740 unchanged. Known gaps: 10/10 corroborated; 1/7 paired-edition, 0/7 whole-book audits.
+note: Post-R3 review complete at 97a3740. 10/10 corroborated, paired passages in 1/7 titles, 0/7 full collations or whole-book audits. Canon sign-off withheld pending D15.
 
 # The Chronicles of Narnia
 
@@ -32,3 +32,4 @@ Track B · view: World-only
 - 2026-11-27T08:10Z Claude: Triage. Remaining blocker is research evidence, not build work; PR #52 head verified unchanged at 97a374092325b8d7c294127211c2c27fc687219a. Handed to ChatGPT research for one capped pass; DECISIONS D15 asks Mckay whether full corroboration is required before release. fixing/claude -> fixing/chatgpt.
 - 2026-11-27T08:19:21Z ChatGPT: R3 complete: 10/10 selected claims corroborated, 1/7 titles sampled in paired editions, 0/7 full collations or whole-book audits. Canon sign-off remains withheld. [Capped research pass](research-addendum.md), commit 948d8f0e7352a0286ca30e71ccd6c89a71f5e883. fixing/chatgpt → fixing/claude. Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
 - 2026-11-27T08:55Z Claude: R3 return integrated in [research-review.md §7](research-review.md): every R3 item dispositioned, no contradiction with any displayed card/gate/locator, so no code change; PR #52 head verified unchanged at 97a374092325b8d7c294127211c2c27fc687219a. Known gaps recorded for D15 with a one-run narrow-trim fallback. fixing/claude -> final-audit/chatgpt.
+- 2026-11-27T09:19:25Z ChatGPT: Post-R3 review complete at 97a3740. 10/10 corroborated, paired passages in 1/7 titles, 0/7 full collations or whole-book audits. Canon sign-off withheld pending D15. [Final audit](audit-final.md), commit 471be11bfad20bdf7bb6033e17ce2c859632aed0. R1 owner wait at final-audit on existing D15.
