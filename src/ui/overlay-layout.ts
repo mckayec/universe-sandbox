@@ -2,9 +2,15 @@
 // guide card / legend never cover the selected-object sheet or the tool row (720x450 at 200% zoom, 320x568).
 import { overlayBudget } from '../overlay-budget.ts';
 
-const COMPACT = '(max-width: 800px)';
+// Same condition as the compact overlay-stack CSS in style.css, including landscape phones wider than 800px.
+const COMPACT = '(max-width: 800px), (max-height: 500px) and (pointer: coarse)';
 const GAP = 8;
 const DOCK_FLOOR = 72;
+// Landscape phones (PR44 two-column dock): the dock keeps both rows of the tool panel and the sheet heading (Pause /
+// Clear all / Show tools, Add / Inspect / Navigate, Details / ×); the guide card (Restart / Exit beside its text)
+// fits in the rest, and the legend and navigation help scroll inside the stack's share below it.
+const LANDSCAPE = '(max-height: 500px) and (pointer: coarse) and (min-width: 601px)';
+const LANDSCAPE_DOCK_FLOOR = 124;
 
 function visibleChildren(parent: HTMLElement) {
   return [...parent.children].filter(
@@ -25,7 +31,7 @@ function columnNeed(parent: HTMLElement) {
   return total;
 }
 
-function apply(stack: HTMLElement, dock: HTMLElement, compact: MediaQueryList) {
+function apply(stack: HTMLElement, dock: HTMLElement, compact: MediaQueryList, landscape: MediaQueryList) {
   const root = document.documentElement;
   const budget = compact.matches
     ? overlayBudget({
@@ -34,7 +40,7 @@ function apply(stack: HTMLElement, dock: HTMLElement, compact: MediaQueryList) {
         stackNeed: columnNeed(stack),
         dockNeed: columnNeed(dock),
         gap: GAP,
-        dockFloor: DOCK_FLOOR,
+        dockFloor: landscape.matches ? LANDSCAPE_DOCK_FLOOR : DOCK_FLOOR,
       })
     : { tight: false, stackMax: null, dockMax: null };
   document.body.classList.toggle('overlay-tight', budget.tight);
@@ -52,12 +58,13 @@ export function bindOverlayBudget() {
   const dock = document.querySelector<HTMLElement>('.dock');
   if (!stack || !dock) return;
   const compact = matchMedia(COMPACT);
+  const landscape = matchMedia(LANDSCAPE);
   let queued = 0;
   const schedule = () => {
     if (queued) return;
     queued = requestAnimationFrame(() => {
       queued = 0;
-      apply(stack, dock, compact);
+      apply(stack, dock, compact, landscape);
     });
   };
   // Children (not the containers) are observed: showing/hiding a card, Details/Collapse and wrapping text all
@@ -66,5 +73,6 @@ export function bindOverlayBudget() {
   for (const el of [...stack.children, ...dock.children]) resize.observe(el);
   addEventListener('resize', schedule);
   compact.addEventListener('change', schedule);
+  landscape.addEventListener('change', schedule);
   schedule();
 }

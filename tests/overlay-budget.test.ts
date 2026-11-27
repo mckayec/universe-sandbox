@@ -63,3 +63,21 @@ test('overlay budget is wired: bound from main.ts, applied only on compact, CSS 
   assert.match(css, /\.overlay-tight \.overlay-stack \{\s*max-height: var\(--overlay-stack-max\);/);
   assert.match(css, /\.overlay-tight \.dock \{\s*max-height: var\(--dock-max\);/);
 });
+
+test('overlay budget also covers landscape phones wider than 800px (PR47 x PR44, 844x390 coarse)', () => {
+  const ui = readFileSync(new URL('../src/ui/overlay-layout.ts', import.meta.url), 'utf8');
+  const css = readFileSync(new URL('../src/style.css', import.meta.url), 'utf8');
+  const landscape = '(max-height: 500px) and (pointer: coarse)';
+  // The JS budget and the CSS limits it drives use the same condition, so the stack never leaves the viewport and
+  // the stack and the PR44 two-column dock share one band.
+  assert.ok(ui.includes(`'(max-width: 800px), ${landscape}'`));
+  assert.ok(css.includes(`@media (max-width: 800px), ${landscape} {\n  .overlay-stack {`));
+  assert.ok(css.includes(`@media (max-width: 800px), ${landscape} {\n  .overlay-tight .overlay-stack {`));
+  // The landscape guide layout must not override the hidden attribute (Exit guide hides the card).
+  assert.match(css, /\.overlay-stack > \.guide-card:not\(\[hidden\]\) \{\s*display: grid;/);
+  // On landscape the dock keeps both control rows before the stack takes the rest of the band.
+  const big = overlayBudget({ stackTop: 112, dockBottom: 322, stackNeed: 170, dockNeed: 123, gap: 8, dockFloor: 124 });
+  assert.equal(big.tight, true);
+  assert.equal(big.dockMax, 123);
+  assert.equal(big.stackMax! + big.dockMax!, 322 - 112 - 8);
+});
