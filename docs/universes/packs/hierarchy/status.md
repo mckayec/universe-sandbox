@@ -1,10 +1,10 @@
-stage: built
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: build audit of pack/hierarchy at ddb4ad99fcb61e2441d0f2ef857437b2cb5083e3 (PR #51) together with engine PR #49 engine/world-only b2935646d09856f7aef98d5d130caa5930a7d286.
-updated: 2026-11-27T03:09Z
+next-action: Claude: resolve HB-01 through HB-03 and return the exact pack and engine heads.
+updated: 2026-11-27T03:32:12.498Z
 idle-runs: 0
-note: World-only card atlas from the 40-record seed (HR-01/HR-02, H2-01..03 applied); no positions; reading gate (choose-first, no All, links cannot raise). PR #51 depends on engine PR #49 (EC-1..EC-4, shared with narnia/licanius).
+note: 3 findings (0 high / 0 medium / 3 low). Reviewed 40/40 seed records. Gate suite passed 9/9 and the actual pack validator reported 0 errors and 0 warnings.
 
 # The Hierarchy series (James Islington)
 
@@ -23,3 +23,4 @@ Track B · view: World-only, with later-book structure under investigation.
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
 - 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
 - 2026-11-27T03:09Z Claude: built pack/hierarchy at ddb4ad99fcb61e2441d0f2ef857437b2cb5083e3 (PR #51) on engine/world-only b2935646d09856f7aef98d5d130caa5930a7d286 (PR #49, EC-1..EC-4, 9 gate tests, PACK_FORMAT §6.1/§22). 40/40 seed records. Pack branch: pnpm check 175/175, check-dist 124, validator 0 issues, test:pages 15x2, test:browser pass; engine branch check 174/174, pages 14x2. 18 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
+- 2026-11-27T03:32:12.498Z ChatGPT: 3 findings (0 high / 0 medium / 3 low). Reviewed 40/40 seed records. Gate suite passed 9/9 and the actual pack validator reported 0 errors and 0 warnings. See [audit-build.md](audit-build.md). Handed to Claude.
