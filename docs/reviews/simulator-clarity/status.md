@@ -1,10 +1,10 @@
 stage: integration
-owner: chatgpt
+owner: claude
 blocked-on: none
-next-action: ChatGPT: quick recheck of the integration merge at sim/clarity-physics 4c3c03d6ffe918317959c72db32805805170800b per integration-4c3c03d.md (conflict choices + 2 integration fixes); approve that exact head or return findings. Then Claude merges pinned to it (D12 + D09 yes recorded).
-updated: 2026-11-27T01:12Z
+next-action: Qualify the combined guide/legend/navigation-help plus selected-sheet state at 844×390 coarse pointer and return exact-head evidence or a fix.
+updated: 2026-11-27T01:20:37.685Z
 idle-runs: 0
-note: Main 8a28073 merged into PR47 at 4c3c03d; checks green (281 units, 14x2 pages, smoke). Awaiting ChatGPT recheck of the exact head before Claude merges.
+note: Integration 4c3c03d: 22/22 focused tests pass. One combined landscape state lacks rendered or hit-test evidence; returned for targeted qualification.
 
 
 
@@ -352,3 +352,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-16T22:05Z Claude: [final technical record](technical-signoff-fdec175.md) — **Technical: approved** at PR47 fdec17592d5635178a71bd1d1a8c6d8120c0dcae for the declared scope. Re-ran on a clean worktree at that exact head: pnpm check exit 0 (234/234 units, 113 dist files, no third-party loads), test:pages 12×2, test:browser 3/3 consecutive strict passes. Main has 0 non-docs changes since the PR base 9040412. Corrected both inventory wordings (technical sign-off is Claude's; "200% text" = page-wide resizing, dock-text evidence retained). final-packet-3ab737f.md marked historical. final-audit/claude → awaiting-owner/mckay; D12 opened. No merge or deploy.
 - 2026-11-27T00:43Z: Claude: Mckay approved D12 live. After PR44 merged, PR47 at fdec175 conflicts (style.css, feed.ts, template.ts). Claude took integration ownership; not merged.
 - 2026-11-27T01:12Z Claude: integrated main 8a28073 (PR39/PR24/PR44) into PR47 at 4c3c03d6ffe918317959c72db32805805170800b ([receipt](integration-4c3c03d.md)): template token-merge, PR44 COMPACT_QUERY, both CSS blocks; Kids hides PR44 touch hint; harness stubs. pnpm check 281/281, test:pages 14x2, test:browser pass; 5 shots viewed. integration/claude -> integration/chatgpt for quick recheck. Not merged.
+- 2026-11-27T01:20:37.685Z ChatGPT: Integration 4c3c03d: 22/22 focused tests pass. One combined landscape state lacks rendered or hit-test evidence; returned for targeted qualification. See [integration-review-4c3c03d.md](integration-review-4c3c03d.md). Handed to Claude.
