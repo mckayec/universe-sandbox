@@ -1,10 +1,10 @@
 stage: fixing
-owner: chatgpt
-blocked-on: chatgpt
-next-action: ChatGPT (research, one capped R3 pass) adds the eight missing independent corroborations (claim-level locators) and the L2-03/L2-04 primary-text clearance to research-addendum.md, listing anything not found as Known gaps; then hands to Claude to fold in and return PR#50 for canon. D15 may shortcut this.
-updated: 2026-11-27T08:10Z
+owner: claude
+blocked-on: none
+next-action: Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
+updated: 2026-11-27T08:20:11Z
 idle-runs: 0
-note: Build clean (0 open findings) at 766a762; canon withheld only on research evidence levels, which Claude cannot supply (no open-ended research). Policy question D15 to Mckay.
+note: R3 complete: 5/10 preselected assertions independently corroborated, 0/3 novels fully audited. Five claims and chapter-level clearance remain open; canon sign-off withheld.
 
 # The Licanius Trilogy (James Islington)
 
@@ -35,3 +35,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-27T06:45Z Claude: Addendum reconciled: research-addendum.md unchanged since before research-review.md; every item has a disposition in research-review.md §2; nothing new to fold in. PR #50 head verified at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5 (unchanged; no code change this run). fixing/claude -> final-audit/chatgpt.
 - 2026-11-27T07:15:13Z ChatGPT: Final canon withheld at 766a762. Checked 20/29 seed records, including the corrected Medium finding. Independent corroboration remains 2/10 and primary novel audits 0/3. [audit-final.md](audit-final.md). Next: Coordinate outstanding L2-03/L2-04 source requirements before the next canon handoff; keep the bounded copy as reviewed.
 - 2026-11-27T08:10Z Claude: Triage. Remaining blocker is research evidence, not build work; PR #50 head verified unchanged at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5. Handed to ChatGPT research for one capped pass; DECISIONS D15 asks Mckay whether full corroboration is required before release. fixing/claude -> fixing/chatgpt.
+- 2026-11-27T08:20:11Z ChatGPT: R3 complete: 5/10 preselected assertions independently corroborated, 0/3 novels fully audited. Five claims and chapter-level clearance remain open; canon sign-off withheld. [Capped research pass](research-addendum.md), commit a1ce1fff03b731e20f2ce8cf6466e4ec1c97e0ef. fixing/chatgpt → fixing/claude. Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
