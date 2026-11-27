@@ -1,0 +1,18 @@
+browser 153.0.8010.12
+[2s] sun-eater 390x844 ready in 2.3 s
+  ok 1 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 A1 crumbs+Worlds off screen, resize: focus {"id":"button#galBtn","label":"Galaxy","crumb":false,"vis":true,"wholeX":true,"box":[1035,14,1109,46]}
+  ok 2 sun-eater 390x844 A1: crumbs+Worlds off screen, resize -> focus on visible button#galBtn "Galaxy"
+  ok 3 sun-eater 390x844 A1: an off-screen crumb was not chosen
+  ok 4 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 A2 844x390, header row scrolled to end, crumbs off screen, view change to delos: focus {"id":"button#galBtn","label":"Galaxy","crumb":false,"vis":true,"wholeX":true,"box":[599,14,673,46]}
+  ok 5 sun-eater 390x844 A2: 844x390, header row scrolled to end, crumbs off screen, view change to delos -> focus on visible button#galBtn "Galaxy"
+  ok 6 sun-eater 390x844 A2: an off-screen crumb was not chosen
+  ok 7 Sky button shown again in the compact galaxy view
+    sun-eater 390x844 A3 every candidate off screen, resize: focus {"id":"button","label":"Delos","crumb":true,"vis":false,"wholeX":false,"box":[-3105,75,-3063,95]}
+  FAIL sun-eater 390x844 A3: no off-screen control focused (focus button, visible=false)
+  ok 8 sun-eater 390x844 A3: selection unchanged
+  ok 9 Sky button shown again in the compact galaxy view
+  ok 10 zero console/request/page errors
+FAILED 1: sun-eater 390x844 A3: no off-screen control focused (focus button, visible=false)
+[63s] done

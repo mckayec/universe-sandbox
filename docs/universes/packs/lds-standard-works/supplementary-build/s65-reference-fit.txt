@@ -1,0 +1,6 @@
+lds 3840x2160: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":464,"sideways":0}
+lds 1440x900: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":464,"sideways":0}
+lds 1280x800: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":464,"sideways":0}
+lds 390x844: {"compact":false,"tabsShown":false,"pickShown":true,"head":104,"body":588,"sideways":0}
+dune 1440x900: {"compact":false,"tabsShown":true,"pickShown":false,"head":53,"body":685,"sideways":0}
+s65 reference fit: all checks passed

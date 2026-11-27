@@ -1,0 +1,7 @@
+[50s] desktop loaded
+[156s] check 1 passed (reopen+close before queued focus: #cxBtn keeps focus)
+[1289s] samples 248, moving 1: [{"vis":13,"stale":0,"max":0,"jump":true,"turning":true,"flying":true,"bake":true}]
+[1293s] completed: {"vis":13,"stale":0,"max":0,"jump":false,"turning":false,"flying":false,"bake":false}
+[1320s] check 2 passed
+[1320s] PASS (no console errors, no failed or >=400 resources)
+EXIT 0
