@@ -42,7 +42,7 @@ A stage can go backwards: any auditor can set `stage: fixing` (or `research`) wi
 - **Exact revisions:** build reports, audits and sign-offs name the PR branch **and** the commit SHA; approvals apply to that revision only.
 - **Large stages span several runs:** each run does a bounded unit of work and leaves a precise checkpoint (what's covered, what's next) in the stage's file.
 - **Speed rules (2026-11-06, override older limits where they conflict):** ChatGPT researches at most 2 items at once; research is capped at 2 checkpoint runs or 24h per item, then `research-ready` with a `## Known gaps` section (gap, impact, blocks build?), Mckay-blocked with a DECISIONS.md question, or deferred; builds may start on `research-ready` with Known gaps; `idle-runs` reaching 2 forces self-escalation, 3 lets the other AI post `STALL`, 6 lets it do the narrow stuck step (see HANDOFF_PLAN.md R5).
-- **Work-in-progress limit:** at most two universes in `research-ready`, `built`, `fixing`, `final-audit` or `ready-for-owner` at once, and at most one universe in new research while two are active.
+- **No work-in-progress limit (Mckay, 2026-11-27):** any number of universes may be in any stage. Claude builds research-ready packs in parallel (one agent per pack); ChatGPT may research several queued universes, queue order first.
 - **Writes:** reread the latest file version just before writing, preserve others' edits, commit output before changing status, never force-push.
 
 ## Scheduled check-ins

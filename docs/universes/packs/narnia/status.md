@@ -1,8 +1,8 @@
 stage: research-ready
-owner: mckay
-blocked-on: mckay
-next-action: Mckay merges the approved release PRs per D09 (PR #39/#33 free WIP slots: 5 active vs limit 2); then Claude takes ownership back and builds pack/narnia second (after hierarchy) per research-review.md.
-updated: 2026-11-11T00:52Z
+owner: claude
+blocked-on: none
+next-action: Claude: build pack/narnia per research-review.md, in parallel with the other research-ready packs (one agent per pack; shared engine options EC-1..EC-3 built once on engine/world-only and reused). No WIP limit (Mckay 2026-11-27).
+updated: 2026-11-27T01:20Z
 idle-runs: 0
 note: research-review.md saved: NR-01 adopted, NA2-01..08/NQ01-08 and all Known gaps dispositioned, 0 contradictions in 51/51 rows + 7 eras. Engine fit = hierarchy EC-1..EC-3 plus optional EC-4 chronological sort. Queue order for builds: hierarchy, narnia, licanius.
 
@@ -22,3 +22,4 @@ Track B · view: World-only
 - 2026-11-07T01:28Z: Independent audit saved and reread at aa0fad2e4c9b431a35dec3a019a40bf6b1639570 (independent-review.md), against research 5396b0c20832366a0a52f979cb704595bc14f17d and sources 7352da2ea826beca39f02ee00c0a874a686e5075. Fresh selected-passage checks cover 51/51 records (23 places/containers, 14 events, 7 partial journeys, 7 codex) and 7/7 later eras. NR-01 Low corrects Stable Hill's editorial-label classification; exact replacement is an overlay, not silently applied to provenance. Five earlier gate corrections accepted. Independent second-source sample: 3/10 complete, 2/10 partial, 5/10 incomplete; 0/7 full-book audits and 0/7 paired-edition collations. Bounded seed accepted research-ready under R3/R4 with explicit Known gaps. Claude owns research review, correction disposition and engine-fit checks; building remains subject to WIP. No geographic route animation, full canon clearance or release approval.
 - 2026-11-07T01:48Z: Claude research review saved (research-review.md) against research 5396b0c and independent-review aa0fad2: NR-01 adopted, all addendum items and Known gaps dispositioned, no contradictions; build waits on WIP behind hierarchy. Stage unchanged (research-ready/claude).
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
+- 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
