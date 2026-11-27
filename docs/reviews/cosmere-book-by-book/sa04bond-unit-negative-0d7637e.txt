@@ -1,0 +1,159 @@
+TAP version 13
+# Subtest: NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+ok 1 - NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 35.007447
+  type: 'test'
+  ...
+# Subtest: NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+ok 2 - NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 85.376076
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+ok 3 - CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+  ---
+  duration_ms: 14.276807
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+ok 4 - CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+  ---
+  duration_ms: 3.239238
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+ok 5 - CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+  ---
+  duration_ms: 2.431162
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+ok 6 - CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+  ---
+  duration_ms: 2.465662
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+ok 7 - CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+  ---
+  duration_ms: 3.693511
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: All ignores the per-work field gate
+ok 8 - CBR-04 realmCard + realmLook: All ignores the per-work field gate
+  ---
+  duration_ms: 4.279054
+  type: 'test'
+  ...
+# Subtest: CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+ok 9 - CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+  ---
+  duration_ms: 2.543001
+  type: 'test'
+  ...
+# Subtest: CBR-04: applyRd re-applies the realm look to the open planet before refresh
+ok 10 - CBR-04: applyRd re-applies the realm look to the open planet before refresh
+  ---
+  duration_ms: 0.273863
+  type: 'test'
+  ...
+# Subtest: SA01-GEO-01/02 payload: exact two Roshar descriptions; whole pack otherwise equal to the parent
+ok 11 - SA01-GEO-01/02 payload: exact two Roshar descriptions; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 43.913554
+  type: 'test'
+  ...
+# Subtest: SA01-GEO-01/02 visibility: Roshar and its sites identical to the parent across All, legacy, eligible and insufficient sets
+ok 12 - SA01-GEO-01/02 visibility: Roshar and its sites identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 94.202782
+  type: 'test'
+  ...
+# Subtest: SA02-L23-PORT payload: e24 has no site and the exact qualified text; whole pack otherwise equal to the parent
+ok 13 - SA02-L23-PORT payload: e24 has no site and the exact qualified text; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 31.473811
+  type: 'test'
+  ...
+# Subtest: SA02-L23-PORT visibility: Roshar events identical to the parent across All, legacy, eligible and insufficient sets
+ok 14 - SA02-L23-PORT visibility: Roshar events identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 103.213429
+  type: 'test'
+  ...
+# Subtest: SA03-DW06-PORT payload: e35 has the exact journey text; whole pack otherwise equal to the parent
+ok 15 - SA03-DW06-PORT payload: e35 has the exact journey text; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 29.695416
+  type: 'test'
+  ...
+# Subtest: SA03-DW06-PORT visibility: e35 and Yeddaw identical to the parent in the 11 enumerated states
+ok 16 - SA03-DW06-PORT visibility: e35 and Yeddaw identical to the parent in the 11 enumerated states
+  ---
+  duration_ms: 68.149798
+  type: 'test'
+  ...
+# node:internal/modules/run_main:123
+#     triggerUncaughtException(
+#     ^
+# AssertionError [ERR_ASSERTION]: new e40 text occurs once
+# 1 !== 2
+#     at file:///home/claude/pr48/tests/atlas-sa04-bond.test.ts:36:8
+#     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+#     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+#   generatedMessage: false,
+#   code: 'ERR_ASSERTION',
+#   actual: 1,
+#   expected: 2,
+#   operator: 'strictEqual',
+#   diff: 'simple'
+# }
+# Node.js v22.23.5
+# Subtest: tests/atlas-sa04-bond.test.ts
+not ok 6 - tests/atlas-sa04-bond.test.ts
+  ---
+  duration_ms: 69.372413
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-sa04-bond.test.ts:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+ok 18 - SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+  ---
+  duration_ms: 10.396103
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+ok 19 - SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 76.488861
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+ok 20 - SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+  ---
+  duration_ms: 36.276213
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+ok 21 - SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 70.66542
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 20
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1450.76431

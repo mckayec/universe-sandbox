@@ -1,0 +1,2148 @@
+{
+  "scope": "Bounded SA04 inventory, not complete research or rendered proof",
+  "manifest": {
+    "sa04-pr24.js": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+    "sa04-pr37.js": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+    "sa04-pr48.js": "ae2a877eb9a667c332e0f5b96ea22c89b5c91f35",
+    "engine.js": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+    "reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+  },
+  "counts": {
+    "hashes": 5,
+    "slots": 93,
+    "present": 69,
+    "absent": 24,
+    "types": 31,
+    "nestedLandmarks": 28
+  },
+  "inventories": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e37",
+          "value": {
+            "id": "e37",
+            "book": 8,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "A coalition",
+            "text": "Dalinar tries to unite the monarchs of Roshar against the Voidbringers, with his own past catching up with him."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e38",
+          "value": {
+            "id": "e38",
+            "book": 8,
+            "world": "roshar",
+            "site": "kholinar",
+            "title": "The fall of Kholinar",
+            "text": "Kaladin, Shallan, Adolin and Elhokar slip into the occupied capital. The city falls and the king dies."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e39",
+          "value": {
+            "id": "e39",
+            "book": 8,
+            "world": "roshar",
+            "site": "celebrant",
+            "title": "Across Shadesmar",
+            "text": "Pulled through the Oathgate into the Cognitive Realm, the survivors walk and sail toward Thaylen City."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e40",
+          "value": {
+            "id": "e40",
+            "book": 8,
+            "world": "roshar",
+            "site": "thaylen",
+            "title": "The Battle of Thaylen Field",
+            "text": "Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e41",
+          "value": {
+            "id": "e41",
+            "book": 8,
+            "world": "ashyn",
+            "title": "The truth about humans",
+            "text": "The Alethi learn that their ancestors came from Ashyn as refugees and took the singers’ world."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e42",
+          "value": {
+            "id": "e42",
+            "book": 8,
+            "world": "roshar",
+            "site": "akinah",
+            "title": "Dawnshard",
+            "text": "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e97",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e99",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e100",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e98",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e101",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e102",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e103",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e104",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e105",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e108",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e106",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e107",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "roshar/urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/kholinar",
+          "value": {
+            "id": "kholinar",
+            "name": "Kholinar",
+            "lat": 13,
+            "lon": 35,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/celebrant",
+          "value": {
+            "id": "celebrant",
+            "name": "Celebrant",
+            "lat": -2,
+            "lon": 45,
+            "books": [
+              8
+            ],
+            "desc": "A big spren trading port on the west side of the ‘island’ that mirrors the Sea of Spears. The travellers from Kholinar buy passage here.",
+            "sea": true,
+            "realm": "cognitive"
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/thaylen",
+          "value": {
+            "id": "thaylen",
+            "name": "Thaylen City",
+            "lat": -37.5,
+            "lon": 4,
+            "books": [
+              8,
+              9,
+              12
+            ],
+            "desc": "The terraced capital of Thaylenah on the main island’s north-west coast, with the Thalath Oathgate. The Battle of Thaylen Field ends Oathbringer."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/riino",
+          "value": {
+            "id": "riino",
+            "name": "Riino’s lighthouse",
+            "lat": 8,
+            "lon": 42,
+            "books": [
+              8
+            ],
+            "desc": "A stone tower with a heatless bonfire on a peninsula of obsidian that is a river in the Physical Realm. Its exact counterpart is our guess.",
+            "realm": "cognitive"
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/rathalas",
+          "value": {
+            "id": "rathalas",
+            "name": "Rathalas (the Rift)",
+            "lat": 2,
+            "lon": 51,
+            "books": [
+              8
+            ],
+            "desc": "A canyon city at the north tip of the Sea of Spears, burned by Dalinar in his years as the Blackthorn."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/azimir",
+          "value": {
+            "id": "azimir",
+            "name": "Azimir",
+            "lat": -10,
+            "lon": -47,
+            "books": [
+              7,
+              8,
+              12
+            ],
+            "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."
+          }
+        },
+        {
+          "type": "site",
+          "id": "ashyn/centralsea",
+          "value": {
+            "id": "centralsea",
+            "name": "The Central Sea",
+            "lat": 10,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              8
+            ],
+            "desc": "The sea at the heart of Ashyn’s old world, across which the ancient empire held its conference."
+          }
+        },
+        {
+          "type": "site",
+          "id": "ashyn/floating",
+          "value": {
+            "id": "floating",
+            "name": "Floating cities",
+            "lat": 25,
+            "lon": -30,
+            "books": [
+              8
+            ],
+            "desc": "Survivors live in cities held up in the air by people whose Surge-sickness lets them control gravity."
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "ashyn",
+          "value": {
+            "id": "ashyn",
+            "name": "Ashyn",
+            "aka": [
+              "Alaswha",
+              "the Tranquiline Halls"
+            ],
+            "books": [
+              8,
+              12
+            ],
+            "first": 8,
+            "status": "First planet · the Tranquiline Halls of legend",
+            "blurb": "The innermost planet, the world humans came from before Roshar. A global catastrophe, probably from Surges used without restraint, drove most of its people away as refugees. Those who stayed live in floating cities in the sky and a few habitable pockets. The surface is violently volcanic, and the axial tilt gives it seasons. Rosharan myth calls it the Tranquiline Halls.",
+            "short": "Humanity’s ruined world before Roshar.",
+            "facts": [
+              [
+                "Order",
+                "1st from the sun"
+              ],
+              [
+                "Known as",
+                "The Tranquiline Halls"
+              ],
+              [
+                "People",
+                "Floating cities and small refuges"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/8",
+          "value": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          }
+        },
+        {
+          "type": "codex",
+          "id": "people/Dalinar Kholin",
+          "value": {
+            "name": "Dalinar Kholin",
+            "role": "The Blackthorn",
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "A warlord trying to become a better man.",
+            "more": [
+              [
+                8,
+                "Becomes the Bondsmith."
+              ],
+              [
+                12,
+                "Dies after renouncing Honor’s power."
+              ]
+            ]
+          }
+        }
+      ],
+      "book8Index": {
+        "worlds": [
+          "rosharsun",
+          "ashyn",
+          "roshar",
+          "braize",
+          "obrodai"
+        ],
+        "sites": [
+          "ashyn/centralsea",
+          "ashyn/floating",
+          "roshar/shatteredplains",
+          "roshar/warcamps",
+          "roshar/narak",
+          "roshar/kholinar",
+          "roshar/revolar",
+          "roshar/rathalas",
+          "roshar/seaofspears",
+          "roshar/urithiru",
+          "roshar/valley",
+          "roshar/kharbranth",
+          "roshar/thaylen",
+          "roshar/vedenar",
+          "roshar/horneaterpeaks",
+          "roshar/azimir",
+          "roshar/shinovar",
+          "roshar/kurth",
+          "roshar/panatham",
+          "roshar/purelake",
+          "roshar/reshiisles",
+          "roshar/herdaz",
+          "roshar/akinah",
+          "roshar/aimia",
+          "roshar/newnatanan",
+          "roshar/tarat",
+          "roshar/reshisea",
+          "roshar/seaoflostlights",
+          "roshar/seaofregret",
+          "roshar/nexustransition",
+          "roshar/nexustruth",
+          "roshar/nexusimagination",
+          "roshar/celebrant",
+          "roshar/unyieldingfidelity",
+          "roshar/riino",
+          "roshar/thaylensea",
+          "roshar/beadsea"
+        ],
+        "codex": [
+          "shards/Honor",
+          "shards/Cultivation",
+          "shards/Odium",
+          "shards/Autonomy",
+          "people/Hoid (Wit)",
+          "people/Kaladin Stormblessed",
+          "people/Shallan Davar",
+          "people/Dalinar Kholin",
+          "people/Jasnah Kholin",
+          "people/Szeth",
+          "people/Taravangian"
+        ]
+      }
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e37",
+          "value": {
+            "id": "e37",
+            "book": 8,
+            "world": "roshar",
+            "site": "urithiru",
+            "lm": "gallery",
+            "title": "A coalition",
+            "text": "Dalinar tries to unite the monarchs of Roshar against the Voidbringers, with his own past catching up with him."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e38",
+          "value": {
+            "id": "e38",
+            "book": 8,
+            "world": "roshar",
+            "site": "kholinar",
+            "lm": "palace",
+            "fx": "battle",
+            "title": "The fall of Kholinar",
+            "text": "Kaladin, Shallan, Adolin and Elhokar slip into the occupied capital. The city falls and the king dies."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e39",
+          "value": {
+            "id": "e39",
+            "book": 8,
+            "world": "roshar",
+            "site": "celebrant",
+            "lm": "docks",
+            "title": "Across Shadesmar",
+            "text": "Pulled through the Oathgate into the Cognitive Realm, the survivors walk and sail toward Thaylen City."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e40",
+          "value": {
+            "id": "e40",
+            "book": 8,
+            "world": "roshar",
+            "site": "thaylen",
+            "lm": "field",
+            "fx": "battle",
+            "title": "The Battle of Thaylen Field",
+            "text": "Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e41",
+          "value": {
+            "id": "e41",
+            "book": 8,
+            "world": "ashyn",
+            "title": "The truth about humans",
+            "text": "The Alethi learn that their ancestors came from Ashyn as refugees and took the singers’ world."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e42",
+          "value": {
+            "id": "e42",
+            "book": 8,
+            "world": "roshar",
+            "site": "akinah",
+            "lm": "oathgate",
+            "title": "Dawnshard",
+            "text": "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e97",
+          "value": {
+            "id": "e97",
+            "book": 8,
+            "world": "roshar",
+            "site": "urithiru",
+            "lm": "corridor",
+            "title": "Sadeas found dead",
+            "text": "Highprince Sadeas is found murdered in one of the tower’s dark corridors, and Shallan takes up the search for the killer."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e99",
+          "value": {
+            "id": "e99",
+            "book": 8,
+            "world": "roshar",
+            "site": "revolar",
+            "lm": "east",
+            "fx": "storm",
+            "title": "Kaladin among the singers",
+            "text": "Kaladin follows a band of freed parshmen to Revolar, learns how they see the world, and escapes the Fused on a highstorm."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e100",
+          "value": {
+            "id": "e100",
+            "book": 8,
+            "world": "roshar",
+            "site": "rathalas",
+            "lm": "rift",
+            "fx": "fire",
+            "title": "The Rift burns",
+            "text": "In Dalinar’s returning memories, the Blackthorn burns the rebel city, not knowing his wife Evi is inside."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e98",
+          "value": {
+            "id": "e98",
+            "book": 8,
+            "world": "roshar",
+            "site": "urithiru",
+            "lm": "reshephir",
+            "title": "Re-Shephir",
+            "text": "Shallan tracks the killings to an Unmade hiding in the tower and drives it off with her Lightweaving."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e101",
+          "value": {
+            "id": "e101",
+            "book": 8,
+            "world": "roshar",
+            "site": "azimir",
+            "lm": "oathgate",
+            "title": "Azir joins",
+            "text": "Lift unlocks Azimir’s Oathgate and Dalinar wins the Azish to his coalition, before talks with the singers collapse."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e102",
+          "value": {
+            "id": "e102",
+            "book": 8,
+            "world": "roshar",
+            "site": "kholinar",
+            "title": "The Cult of Moments",
+            "text": "Shallan seeks to infiltrate the Cult of Moments in Kholinar."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e103",
+          "value": {
+            "id": "e103",
+            "book": 8,
+            "world": "roshar",
+            "site": "kholinar",
+            "lm": "wall",
+            "fx": "battle",
+            "title": "The Wall Guard",
+            "text": "Kaladin fights beside Highmarshal Azure’s guard on the walls until a thunderclast breaks through."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e104",
+          "value": {
+            "id": "e104",
+            "book": 8,
+            "world": "roshar",
+            "site": "riino",
+            "lm": "lighthouse",
+            "title": "Vision at the lighthouse",
+            "text": "Kaladin looks into a heatless fire and sees Thaylen City overrun and Dalinar surrounded."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e105",
+          "value": {
+            "id": "e105",
+            "book": 8,
+            "world": "roshar",
+            "site": "thaylen",
+            "lm": "temple",
+            "title": "The Bondsmith mends",
+            "text": "Dalinar finds he can mend what is broken, and Queen Fen joins his coalition."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e108",
+          "value": {
+            "id": "e108",
+            "book": 8,
+            "world": "roshar",
+            "site": "vedenar",
+            "lm": "palace",
+            "title": "Excommunicated",
+            "text": "On a visit to Vedenar, the Vorin church casts Dalinar out."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e106",
+          "value": {
+            "id": "e106",
+            "book": 8,
+            "world": "roshar",
+            "site": "thaylen",
+            "lm": "stele",
+            "title": "The Eila Stele",
+            "text": "A translated stone says humans came to Roshar as the invaders, and the coalition starts to come apart."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e107",
+          "value": {
+            "id": "e107",
+            "book": 8,
+            "world": "roshar",
+            "site": "thaylen",
+            "lm": "reserve",
+            "title": "The King’s Drop",
+            "text": "A thunderclast smashes the Gemstone Reserve. Dalinar traps the Unmade Nergaoul in the great gem, and the possessed soldiers come back to themselves."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates.",
+            "scene": {
+              "kind": "city",
+              "arch": "ancient",
+              "size": "large",
+              "tod": "day",
+              "weather": "snow",
+              "landmarks": [
+                {
+                  "id": "oathgates",
+                  "name": "The Oathgate platforms",
+                  "kind": "portal",
+                  "at": [
+                    0,
+                    -0.75
+                  ],
+                  "h": 1,
+                  "books": [
+                    5,
+                    8,
+                    9,
+                    12
+                  ],
+                  "desc": "Ten platforms on the plaza before the tower, each linked to an Oathgate across Roshar. Shallan’s gate from Narak brings the Alethi armies here at the end of Words of Radiance."
+                },
+                {
+                  "id": "gallery",
+                  "name": "The Gallery of Maps",
+                  "kind": "hall",
+                  "at": [
+                    0.1,
+                    0.55
+                  ],
+                  "h": 0.8,
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "A chamber near the top with a great map table, where Dalinar plans his coalition’s war."
+                },
+                {
+                  "id": "breakaway",
+                  "name": "The Breakaway",
+                  "kind": "market",
+                  "at": [
+                    -0.25,
+                    -0.25
+                  ],
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "The cavernous central market hall on the lower levels, where merchants and refugees fill the once-empty tower."
+                },
+                {
+                  "id": "corridor",
+                  "name": "The dark corridors",
+                  "kind": "cave",
+                  "at": [
+                    -0.6,
+                    0.1
+                  ],
+                  "h": 0.6,
+                  "books": [
+                    8
+                  ],
+                  "desc": "Miles of lightless, half-explored passages. Sadeas’s body is found in a corridor, and more killings follow."
+                },
+                {
+                  "id": "reshephir",
+                  "name": "Re-Shephir’s chamber",
+                  "kind": "cave",
+                  "at": [
+                    -0.4,
+                    -0.55
+                  ],
+                  "h": 0.7,
+                  "books": [
+                    8
+                  ],
+                  "desc": "A hidden ground-floor chamber where the Unmade Re-Shephir lurks. Shallan confronts her here with Lightweaving and drives her off."
+                },
+                {
+                  "id": "archive",
+                  "name": "The gem archive",
+                  "kind": "library",
+                  "at": [
+                    0.4,
+                    -0.45
+                  ],
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "A room where the ancient Radiants stored their records inside gemstones."
+                },
+                {
+                  "id": "pillar",
+                  "name": "The crystal pillar",
+                  "kind": "monolith",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 1.6,
+                  "books": [
+                    9,
+                    12
+                  ],
+                  "desc": "A pillar of gemstones deep in the tower, the heart of the Sibling. Raboniel pours Voidlight into it to seize the tower; Navani later bonds the Sibling here and becomes a Bondsmith."
+                },
+                {
+                  "id": "mercy",
+                  "name": "The Devotary of Mercy",
+                  "kind": "temple",
+                  "at": [
+                    0.55,
+                    0.2
+                  ],
+                  "books": [
+                    9
+                  ],
+                  "desc": "A fourth-floor hospital for the wounded in mind, where Kaladin, retired from fighting, works with the patients."
+                },
+                {
+                  "id": "cistern",
+                  "name": "The cistern chamber",
+                  "kind": "well",
+                  "at": [
+                    0.25,
+                    -0.1
+                  ],
+                  "h": 0.6,
+                  "books": [
+                    12
+                  ],
+                  "desc": "A water chamber in the tower where Dalinar opens a perpendicularity and goes with Navani into the Spiritual Realm."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/kholinar",
+          "value": {
+            "id": "kholinar",
+            "name": "Kholinar",
+            "lat": 13,
+            "lon": 35,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat.",
+            "scene": {
+              "kind": "capital",
+              "arch": "imperial",
+              "size": "huge",
+              "tod": "day",
+              "weather": "clear",
+              "walls": true,
+              "sky": {
+                "moons": 3
+              },
+              "landmarks": [
+                {
+                  "id": "palace",
+                  "name": "The royal palace",
+                  "kind": "palace",
+                  "at": [
+                    0,
+                    0.7
+                  ],
+                  "h": 1.6,
+                  "books": [
+                    4,
+                    8,
+                    9
+                  ],
+                  "desc": "The Kholin palace. King Gavilar is murdered here on the night of the treaty feast."
+                },
+                {
+                  "id": "windblades",
+                  "name": "The windblades",
+                  "kind": "cliff",
+                  "at": [
+                    -0.7,
+                    0.1
+                  ],
+                  "h": 1.8,
+                  "books": [
+                    8
+                  ],
+                  "desc": "Sleek, layered rock formations in Kholinar."
+                },
+                {
+                  "id": "wall",
+                  "name": "The city wall",
+                  "kind": "wall",
+                  "at": [
+                    0.75,
+                    -0.4
+                  ],
+                  "h": 1.3,
+                  "books": [
+                    8
+                  ],
+                  "desc": "About sixty feet high, built into the windblades. Highmarshal Azure’s Wall Guard holds it against Fused raids until a thunderclast breaks through."
+                },
+                {
+                  "id": "oathgate",
+                  "name": "The Monastery Dais (Oathgate)",
+                  "kind": "portal",
+                  "at": [
+                    0.2,
+                    0.35
+                  ],
+                  "h": 1.1,
+                  "books": [
+                    8
+                  ],
+                  "desc": "The Oathgate platform, joined to the palace by the Sunwalk and used as the ardents’ monastery. Its spren has been corrupted by Sja-anat, and the Cult of Moments holds endless feasts on it."
+                },
+                {
+                  "id": "yokska",
+                  "name": "Yokska’s shop",
+                  "kind": "house",
+                  "at": [
+                    -0.3,
+                    -0.3
+                  ],
+                  "h": 0.5,
+                  "books": [
+                    8
+                  ],
+                  "desc": "A tailor’s house where Elhokar, Adolin, Kaladin and Shallan hide while they work out how to reach the Oathgate."
+                },
+                {
+                  "id": "guard",
+                  "name": "Wall Guard barracks",
+                  "kind": "hall",
+                  "at": [
+                    0.55,
+                    -0.65
+                  ],
+                  "books": [
+                    8
+                  ],
+                  "desc": "Azure’s headquarters, where a hidden Soulcaster in an aluminium-lined room keeps soldiers and refugees fed. Kaladin joins the Guard here."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/celebrant",
+          "value": {
+            "id": "celebrant",
+            "name": "Celebrant",
+            "lat": -2,
+            "lon": 45,
+            "books": [
+              8
+            ],
+            "desc": "A big spren trading port on the west side of the ‘island’ that mirrors the Sea of Spears. The travellers from Kholinar buy passage here.",
+            "sea": true,
+            "realm": "cognitive",
+            "scene": {
+              "kind": "port",
+              "arch": "alien",
+              "size": "medium",
+              "tod": "night",
+              "weather": "clear",
+              "coast": "w",
+              "landmarks": [
+                {
+                  "id": "docks",
+                  "name": "The bead docks",
+                  "kind": "dock",
+                  "at": [
+                    -0.5,
+                    0
+                  ],
+                  "books": [
+                    8
+                  ],
+                  "desc": "A busy spren trading port on the bead sea. The travellers from Kholinar buy passage here on a ship bound toward Thaylen."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/thaylen",
+          "value": {
+            "id": "thaylen",
+            "name": "Thaylen City",
+            "lat": -37.5,
+            "lon": 4,
+            "books": [
+              8,
+              9,
+              12
+            ],
+            "desc": "The terraced capital of Thaylenah on the main island’s north-west coast, with the Thalath Oathgate. The Battle of Thaylen Field ends Oathbringer.",
+            "scene": {
+              "kind": "port",
+              "arch": "classical",
+              "size": "large",
+              "tod": "day",
+              "weather": "clear",
+              "coast": "w",
+              "landmarks": [
+                {
+                  "id": "oathgate",
+                  "name": "The Oathgate",
+                  "kind": "portal",
+                  "at": [
+                    0.6,
+                    0.6
+                  ],
+                  "books": [
+                    8,
+                    12
+                  ],
+                  "desc": "On the north-east edge beside the Royal Ward, long used as a sculpture garden, until it is cleared and reopened to Urithiru."
+                },
+                {
+                  "id": "temple",
+                  "name": "Temple of Talenelat",
+                  "kind": "temple",
+                  "at": [
+                    0.3,
+                    0.45
+                  ],
+                  "books": [
+                    8
+                  ],
+                  "desc": "One of ten Herald temples in the Royal Ward. Dalinar finds his Bondsmith power when he mends a broken statue and this damaged temple, and Queen Fen joins his coalition."
+                },
+                {
+                  "id": "stele",
+                  "name": "The Eila Stele",
+                  "kind": "obelisk",
+                  "at": [
+                    -0.1,
+                    0.3
+                  ],
+                  "books": [
+                    8
+                  ],
+                  "desc": "An ancient carved stone kept in the city. Its translation says humans came to Roshar as the invaders, and the coalition nearly breaks apart over it."
+                },
+                {
+                  "id": "reserve",
+                  "name": "The Gemstone Reserve",
+                  "kind": "hall",
+                  "at": [
+                    0,
+                    0.05
+                  ],
+                  "books": [
+                    8
+                  ],
+                  "desc": "The national bank, which holds the great gemstone called the King’s Drop. The thunderclast Yushah smashes it during the battle."
+                },
+                {
+                  "id": "wall",
+                  "name": "The city wall",
+                  "kind": "wall",
+                  "at": [
+                    -0.4,
+                    -0.2
+                  ],
+                  "h": 1.1,
+                  "books": [
+                    8
+                  ],
+                  "desc": "Runs north to south below the city. Breached in the battle; the gap is later sealed with Soulcast metal."
+                },
+                {
+                  "id": "field",
+                  "name": "Thaylen Field",
+                  "kind": "plaza",
+                  "at": [
+                    -0.7,
+                    -0.6
+                  ],
+                  "books": [
+                    8
+                  ],
+                  "desc": "The docks and market district outside the wall, wrecked by the Everstorm. Odium’s armies and the possessed Sadeas troops fight here, and Dalinar faces Odium."
+                },
+                {
+                  "id": "palace",
+                  "name": "The Royal Palace",
+                  "kind": "palace",
+                  "at": [
+                    0.5,
+                    0.2
+                  ],
+                  "books": [
+                    8,
+                    12
+                  ],
+                  "desc": "Seat of the Thaylen monarchs and of Queen Fen."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/riino",
+          "value": {
+            "id": "riino",
+            "name": "Riino’s lighthouse",
+            "lat": 8,
+            "lon": 42,
+            "books": [
+              8
+            ],
+            "desc": "A stone tower with a heatless bonfire on a peninsula of obsidian that is a river in the Physical Realm. Its exact counterpart is our guess.",
+            "realm": "cognitive",
+            "scene": {
+              "kind": "wilds",
+              "arch": "alien",
+              "size": "small",
+              "tod": "night",
+              "weather": "clear",
+              "landmarks": [
+                {
+                  "id": "lighthouse",
+                  "name": "Riino’s lighthouse",
+                  "kind": "lighthouse",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 1.4,
+                  "books": [
+                    8
+                  ],
+                  "desc": "A stone tower with a fire that gives no heat. Kaladin looks into it and sees Thaylen City overrun and Dalinar surrounded."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/rathalas",
+          "value": {
+            "id": "rathalas",
+            "name": "Rathalas (the Rift)",
+            "lat": 2,
+            "lon": 51,
+            "books": [
+              8
+            ],
+            "desc": "A canyon city at the north tip of the Sea of Spears, burned by Dalinar in his years as the Blackthorn.",
+            "scene": {
+              "kind": "city",
+              "arch": "ancient",
+              "size": "medium",
+              "tod": "dusk",
+              "weather": "ash",
+              "landmarks": [
+                {
+                  "id": "rift",
+                  "name": "The Rift",
+                  "kind": "cliff",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 1.4,
+                  "books": [
+                    8
+                  ],
+                  "desc": "The canyon city that rebels against Gavilar. In Dalinar’s memories he burns it to the ground, not knowing that his wife Evi is inside."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/azimir",
+          "value": {
+            "id": "azimir",
+            "name": "Azimir",
+            "lat": -10,
+            "lon": -47,
+            "books": [
+              5,
+              7,
+              8,
+              12
+            ],
+            "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms.",
+            "scene": {
+              "kind": "capital",
+              "arch": "imperial",
+              "size": "huge",
+              "tod": "day",
+              "weather": "clear",
+              "landmarks": [
+                {
+                  "id": "palace",
+                  "name": "The Bronze Palace",
+                  "kind": "palace",
+                  "at": [
+                    0.2,
+                    0.5
+                  ],
+                  "h": 1.4,
+                  "books": [
+                    5,
+                    7,
+                    8,
+                    12
+                  ],
+                  "desc": "Seat of the Prime Aqasix. Lift breaks in to steal food, and the boy Gawx, whom she heals, is chosen as Prime."
+                },
+                {
+                  "id": "market",
+                  "name": "The Grand Market",
+                  "kind": "dome",
+                  "at": [
+                    -0.25,
+                    -0.1
+                  ],
+                  "h": 1.5,
+                  "books": [
+                    8,
+                    12
+                  ],
+                  "desc": "An indoor market under a great bronze dome, built over the city’s Oathgate. The Azish fortify it once they learn what is underneath."
+                },
+                {
+                  "id": "oathgate",
+                  "name": "The Makabakam Oathgate",
+                  "kind": "portal",
+                  "at": [
+                    -0.25,
+                    -0.3
+                  ],
+                  "books": [
+                    8,
+                    12
+                  ],
+                  "desc": "The platform under the market dome, which Lift unlocks to open the way to Urithiru."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "ashyn/centralsea",
+          "value": {
+            "id": "centralsea",
+            "name": "The Central Sea",
+            "lat": 10,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              8
+            ],
+            "desc": "The sea at the heart of Ashyn’s old world, across which the ancient empire held its conference.",
+            "scene": {
+              "kind": "sea",
+              "size": "huge",
+              "water": true,
+              "tod": "dusk",
+              "weather": "ash"
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "ashyn/floating",
+          "value": {
+            "id": "floating",
+            "name": "Floating cities",
+            "lat": 25,
+            "lon": -30,
+            "books": [
+              8
+            ],
+            "desc": "Survivors live in cities held up in the air by people whose Surge-sickness lets them control gravity.",
+            "scene": {
+              "kind": "city",
+              "arch": "ancient",
+              "size": "medium",
+              "tod": "day",
+              "weather": "clear"
+            }
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "ashyn",
+          "value": {
+            "id": "ashyn",
+            "name": "Ashyn",
+            "aka": [
+              "Alaswha",
+              "the Tranquiline Halls"
+            ],
+            "books": [
+              8,
+              12
+            ],
+            "first": 8,
+            "status": "First planet · the Tranquiline Halls of legend",
+            "blurb": "The innermost planet, the world humans came from before Roshar. A global catastrophe, probably from Surges used without restraint, drove most of its people away as refugees. Those who stayed live in floating cities in the sky and a few habitable pockets. The surface is violently volcanic, and the axial tilt gives it seasons. Rosharan myth calls it the Tranquiline Halls.",
+            "short": "Humanity’s ruined world before Roshar.",
+            "facts": [
+              [
+                "Order",
+                "1st from the sun"
+              ],
+              [
+                "Known as",
+                "The Tranquiline Halls"
+              ],
+              [
+                "People",
+                "Floating cities and small refuges"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/8",
+          "value": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          }
+        },
+        {
+          "type": "codex",
+          "id": "people/Dalinar Kholin",
+          "value": {
+            "name": "Dalinar Kholin",
+            "role": "The Blackthorn",
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "A warlord trying to become a better man.",
+            "more": [
+              [
+                8,
+                "Becomes the Bondsmith."
+              ],
+              [
+                12,
+                "Dies after renouncing Honor’s power."
+              ]
+            ]
+          }
+        }
+      ],
+      "book8Index": {
+        "worlds": [
+          "rosharsun",
+          "ashyn",
+          "roshar",
+          "braize",
+          "obrodai"
+        ],
+        "sites": [
+          "ashyn/centralsea",
+          "ashyn/floating",
+          "roshar/shatteredplains",
+          "roshar/warcamps",
+          "roshar/narak",
+          "roshar/kholinar",
+          "roshar/revolar",
+          "roshar/rathalas",
+          "roshar/seaofspears",
+          "roshar/urithiru",
+          "roshar/valley",
+          "roshar/kharbranth",
+          "roshar/thaylen",
+          "roshar/vedenar",
+          "roshar/horneaterpeaks",
+          "roshar/azimir",
+          "roshar/shinovar",
+          "roshar/rallelorim",
+          "roshar/kurth",
+          "roshar/panatham",
+          "roshar/purelake",
+          "roshar/reshiisles",
+          "roshar/herdaz",
+          "roshar/akinah",
+          "roshar/aimia",
+          "roshar/newnatanan",
+          "roshar/tarat",
+          "roshar/reshisea",
+          "roshar/seaoflostlights",
+          "roshar/seaofregret",
+          "roshar/nexustransition",
+          "roshar/nexustruth",
+          "roshar/nexusimagination",
+          "roshar/celebrant",
+          "roshar/unyieldingfidelity",
+          "roshar/riino",
+          "roshar/thaylensea",
+          "roshar/beadsea",
+          "braize/damnation"
+        ],
+        "codex": [
+          "shards/Honor",
+          "shards/Cultivation",
+          "shards/Odium",
+          "shards/Autonomy",
+          "people/Hoid (Wit)",
+          "people/Kaladin Stormblessed",
+          "people/Shallan Davar",
+          "people/Dalinar Kholin",
+          "people/Jasnah Kholin",
+          "people/Szeth",
+          "people/Taravangian",
+          "people/Adolin Kholin",
+          "people/Navani Kholin",
+          "people/Moash",
+          "people/Rysn",
+          "people/Lift",
+          "people/Venli",
+          "ideas/Singers and the Fused",
+          "ideas/The Unmade"
+        ]
+      }
+    },
+    {
+      "pr": 48,
+      "head": "0d7637e8973187afa3e8c58552a197d48c315b03",
+      "blob": "ae2a877eb9a667c332e0f5b96ea22c89b5c91f35",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e37",
+          "value": {
+            "id": "e37",
+            "book": 8,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "A coalition",
+            "text": "Dalinar tries to unite the monarchs of Roshar against the Voidbringers, with his own past catching up with him."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e38",
+          "value": {
+            "id": "e38",
+            "book": 8,
+            "world": "roshar",
+            "site": "kholinar",
+            "title": "The fall of Kholinar",
+            "text": "Kaladin, Shallan, Adolin and Elhokar slip into the occupied capital. The city falls and the king dies."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e39",
+          "value": {
+            "id": "e39",
+            "book": 8,
+            "world": "roshar",
+            "site": "celebrant",
+            "title": "Across Shadesmar",
+            "text": "Pulled through the Oathgate into the Cognitive Realm, the survivors walk and sail toward Thaylen City."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e40",
+          "value": {
+            "id": "e40",
+            "book": 8,
+            "world": "roshar",
+            "site": "thaylen",
+            "title": "The Battle of Thaylen Field",
+            "text": "Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e41",
+          "value": {
+            "id": "e41",
+            "book": 8,
+            "world": "ashyn",
+            "title": "The truth about humans",
+            "text": "The Alethi learn that their ancestors came from Ashyn as refugees and took the singers’ world."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e42",
+          "value": {
+            "id": "e42",
+            "book": 8,
+            "world": "roshar",
+            "site": "akinah",
+            "title": "Dawnshard",
+            "text": "Rysn’s ship sails for forbidden Akinah and finds something far older than the Radiants."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e97",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e99",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e100",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e98",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e101",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e102",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e103",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e104",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e105",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e108",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e106",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e107",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "roshar/urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/kholinar",
+          "value": {
+            "id": "kholinar",
+            "name": "Kholinar",
+            "lat": 13,
+            "lon": 35,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/celebrant",
+          "value": {
+            "id": "celebrant",
+            "name": "Celebrant",
+            "lat": -2,
+            "lon": 45,
+            "books": [
+              8
+            ],
+            "desc": "A big spren trading port on the west side of the ‘island’ that mirrors the Sea of Spears. The travellers from Kholinar buy passage here.",
+            "sea": true,
+            "realm": "cognitive"
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/thaylen",
+          "value": {
+            "id": "thaylen",
+            "name": "Thaylen City",
+            "lat": -37.5,
+            "lon": 4,
+            "books": [
+              8,
+              9,
+              12
+            ],
+            "desc": "The terraced capital of Thaylenah on the main island’s north-west coast, with the Thalath Oathgate. The Battle of Thaylen Field ends Oathbringer."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/riino",
+          "value": {
+            "id": "riino",
+            "name": "Riino’s lighthouse",
+            "lat": 8,
+            "lon": 42,
+            "books": [
+              8
+            ],
+            "desc": "A stone tower with a heatless bonfire on a peninsula of obsidian that is a river in the Physical Realm. Its exact counterpart is our guess.",
+            "realm": "cognitive"
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/rathalas",
+          "value": {
+            "id": "rathalas",
+            "name": "Rathalas (the Rift)",
+            "lat": 2,
+            "lon": 51,
+            "books": [
+              8
+            ],
+            "desc": "A canyon city at the north tip of the Sea of Spears, burned by Dalinar in his years as the Blackthorn."
+          }
+        },
+        {
+          "type": "site",
+          "id": "roshar/azimir",
+          "value": {
+            "id": "azimir",
+            "name": "Azimir",
+            "lat": -10,
+            "lon": -47,
+            "books": [
+              7,
+              8,
+              12
+            ],
+            "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."
+          }
+        },
+        {
+          "type": "site",
+          "id": "ashyn/centralsea",
+          "value": {
+            "id": "centralsea",
+            "name": "The Central Sea",
+            "lat": 10,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              8
+            ],
+            "desc": "The sea at the heart of Ashyn’s old world, across which the ancient empire held its conference."
+          }
+        },
+        {
+          "type": "site",
+          "id": "ashyn/floating",
+          "value": {
+            "id": "floating",
+            "name": "Floating cities",
+            "lat": 25,
+            "lon": -30,
+            "books": [
+              8
+            ],
+            "desc": "Survivors live in cities held up in the air by people whose Surge-sickness lets them control gravity."
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "parent-prose",
+          "id": "ashyn",
+          "value": {
+            "id": "ashyn",
+            "name": "Ashyn",
+            "aka": [
+              "Alaswha",
+              "the Tranquiline Halls"
+            ],
+            "books": [
+              8,
+              12
+            ],
+            "first": 8,
+            "status": "First planet · the Tranquiline Halls of legend",
+            "blurb": "The innermost planet, the world humans came from before Roshar. A global catastrophe, probably from Surges used without restraint, drove most of its people away as refugees. Those who stayed live in floating cities in the sky and a few habitable pockets. The surface is violently volcanic, and the axial tilt gives it seasons. Rosharan myth calls it the Tranquiline Halls.",
+            "short": "Humanity’s ruined world before Roshar.",
+            "facts": [
+              [
+                "Order",
+                "1st from the sun"
+              ],
+              [
+                "Known as",
+                "The Tranquiline Halls"
+              ],
+              [
+                "People",
+                "Floating cities and small refuges"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/8",
+          "value": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          }
+        },
+        {
+          "type": "codex",
+          "id": "people/Dalinar Kholin",
+          "value": {
+            "name": "Dalinar Kholin",
+            "role": "The Blackthorn",
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "A warlord trying to become a better man.",
+            "more": [
+              [
+                8,
+                "Becomes the Bondsmith."
+              ],
+              [
+                12,
+                "Dies after renouncing Honor’s power."
+              ]
+            ]
+          }
+        }
+      ],
+      "book8Index": {
+        "worlds": [
+          "rosharsun",
+          "ashyn",
+          "roshar",
+          "braize",
+          "obrodai"
+        ],
+        "sites": [
+          "ashyn/centralsea",
+          "ashyn/floating",
+          "roshar/shatteredplains",
+          "roshar/warcamps",
+          "roshar/narak",
+          "roshar/kholinar",
+          "roshar/revolar",
+          "roshar/rathalas",
+          "roshar/seaofspears",
+          "roshar/urithiru",
+          "roshar/valley",
+          "roshar/kharbranth",
+          "roshar/thaylen",
+          "roshar/vedenar",
+          "roshar/horneaterpeaks",
+          "roshar/azimir",
+          "roshar/shinovar",
+          "roshar/kurth",
+          "roshar/panatham",
+          "roshar/purelake",
+          "roshar/reshiisles",
+          "roshar/herdaz",
+          "roshar/akinah",
+          "roshar/aimia",
+          "roshar/newnatanan",
+          "roshar/tarat",
+          "roshar/reshisea",
+          "roshar/seaoflostlights",
+          "roshar/seaofregret",
+          "roshar/nexustransition",
+          "roshar/nexustruth",
+          "roshar/nexusimagination",
+          "roshar/celebrant",
+          "roshar/unyieldingfidelity",
+          "roshar/riino",
+          "roshar/thaylensea",
+          "roshar/beadsea"
+        ],
+        "codex": [
+          "shards/Honor",
+          "shards/Cultivation",
+          "shards/Odium",
+          "shards/Autonomy",
+          "people/Hoid (Wit)",
+          "people/Kaladin Stormblessed",
+          "people/Shallan Davar",
+          "people/Dalinar Kholin",
+          "people/Jasnah Kholin",
+          "people/Szeth",
+          "people/Taravangian"
+        ]
+      }
+    }
+  ],
+  "candidate": {
+    "fields": 2,
+    "oldEvent": "Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.",
+    "newEvent": "At the Battle of Thaylen Field, Dalinar brings the three Realms together.",
+    "oldMore": "Becomes the Bondsmith.",
+    "newMore": "Brings the three Realms together at Thaylen City.",
+    "fullPackReversal": true,
+    "allOtherDataEqual": true
+  },
+  "checks": [
+    {
+      "label": "All",
+      "state": {
+        "mode": "all"
+      },
+      "before": {
+        "event": true,
+        "more": true
+      },
+      "after": {
+        "event": true,
+        "more": true
+      }
+    },
+    {
+      "label": "legacy7",
+      "state": {
+        "mode": "legacy",
+        "book": 7
+      },
+      "before": {
+        "event": false,
+        "more": false
+      },
+      "after": {
+        "event": false,
+        "more": false
+      }
+    },
+    {
+      "label": "legacy8",
+      "state": {
+        "mode": "legacy",
+        "book": 8
+      },
+      "before": {
+        "event": true,
+        "more": true
+      },
+      "after": {
+        "event": true,
+        "more": true
+      }
+    },
+    {
+      "label": "legacy12",
+      "state": {
+        "mode": "legacy",
+        "book": 12
+      },
+      "before": {
+        "event": true,
+        "more": true
+      },
+      "after": {
+        "event": true,
+        "more": true
+      }
+    },
+    {
+      "label": "empty",
+      "state": {
+        "mode": "set",
+        "ids": []
+      },
+      "before": {
+        "event": false,
+        "more": false
+      },
+      "after": {
+        "event": false,
+        "more": false
+      }
+    },
+    {
+      "label": "OB only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "oathbringer"
+        ]
+      },
+      "before": {
+        "event": false,
+        "more": false
+      },
+      "after": {
+        "event": false,
+        "more": false
+      }
+    },
+    {
+      "label": "DS only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": false,
+        "more": false
+      },
+      "after": {
+        "event": false,
+        "more": false
+      }
+    },
+    {
+      "label": "WoK+OB",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "oathbringer"
+        ]
+      },
+      "before": {
+        "event": false,
+        "more": false
+      },
+      "after": {
+        "event": false,
+        "more": false
+      }
+    },
+    {
+      "label": "bucket8 only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "oathbringer",
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": false,
+        "more": false
+      },
+      "after": {
+        "event": false,
+        "more": false
+      }
+    },
+    {
+      "label": "WoK+bucket8",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "oathbringer",
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": true,
+        "more": true
+      },
+      "after": {
+        "event": true,
+        "more": true
+      }
+    },
+    {
+      "label": "WoK+DS",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "dawnshard"
+        ]
+      },
+      "before": {
+        "event": false,
+        "more": false
+      },
+      "after": {
+        "event": false,
+        "more": false
+      }
+    }
+  ]
+}

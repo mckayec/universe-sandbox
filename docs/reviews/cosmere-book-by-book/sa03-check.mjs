@@ -1,0 +1,23 @@
+import fs from 'node:fs'; import vm from 'node:vm'; import crypto from 'node:crypto'; import assert from 'node:assert/strict';
+// Usage: node sa03-check.mjs inventory.json pack24.js pack37.js pack48.js engine48.js reading48.js
+const [inventoryPath, pack24, pack37, pack48, enginePath, readingPath] = process.argv.slice(2);
+assert(readingPath, 'Supply inventory and the five pinned source files.');
+const sourcePaths = {24:pack24,37:pack37,48:pack48};
+const inv=JSON.parse(fs.readFileSync(inventoryPath,'utf8'));
+const hash=x=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+x.length+'\0'),x])).digest('hex');
+let records=0;for(const b of inv.branches){const raw=fs.readFileSync(sourcePaths[b.pr]);assert.equal(hash(raw),b.blob);const c={window:{}};vm.runInNewContext(raw.toString(),c);const p=c.window.ATLAS_PACKS.cosmere;const actual={events:p.events.filter(e=>e.world==='roshar'&&e.book===7),worlds:p.worlds.filter(w=>w.id==='roshar').map(w=>({parent:Object.fromEntries(Object.entries(w).filter(([k])=>!['gfx','map','sites'].includes(k))),sites:w.sites.filter(s=>['yeddaw','azimir','valley'].includes(s.id))})),codex:p.codex.flatMap(g=>g.list||[]).filter(x=>x.name==='Lift'),registry:p.spoilers?.works?.filter(w=>w.id==='edgedancer')||[],presets:p.spoilers?.presets?.filter(x=>JSON.stringify(x).includes('edgedancer'))||[]};assert.deepEqual(JSON.parse(JSON.stringify(actual)),{events:b.events,worlds:b.worlds,codex:b.codex,registry:b.registry,presets:b.presets});records+=b.events.length+b.worlds.length+b.worlds.reduce((n,w)=>n+w.sites.length,0)+b.codex.length;}
+const engineRaw=fs.readFileSync(enginePath);assert.equal(hash(engineRaw),'0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0');
+const readingRaw=fs.readFileSync(readingPath);assert.equal(hash(readingRaw),'4d9bc177294e5e33accf6f19825ef467f0bb90d4');
+const engine=engineRaw.toString(); const pack=fs.readFileSync(pack48,'utf8');
+const cut=(a,b)=>{const i=engine.indexOf(a),j=engine.indexOf(b,i);assert(i>=0&&j>i);return engine.slice(i,j);};
+function setup(st){const c={window:{},Set,Map,WeakMap,URLSearchParams};vm.createContext(c);vm.runInContext(readingRaw.toString(),c);vm.runInContext(pack,c);const p=c.window.ATLAS_PACKS.cosmere,R=c.window.AtlasReading,reg=R.normRegistry(p);assert(reg.ok);Object.assign(c,{RDG:R,RREG:reg,RSET:new Set(st.ids||[]),WORLDS:p.worlds,WORLD_BY:Object.fromEntries(p.worlds.map(w=>[w.id,w])),EVENTS:p.events,PW:()=>st.mode==='set',CUM:true,S:{book:st.book||0,realm:'physical'},LY:null});
+for(const [a,b]of [['const ARR=','\n'],['const filterOk=','\n'],['const GCACHE=new WeakMap();','/* intro copy'],['const firstOf=w=>','\n'],['const evOk=','\n'],['const realmOk=','\n'],['const siteEraOk=','\n'],['const siteSeen=','\n'],['function rdWorldHidden(','\n']])vm.runInContext(cut(a,b),c);
+return {c,p};}
+const p=setup({mode:'all'}).p,b7=p.spoilers.works.filter(w=>w.bucket===7).map(w=>w.id),wok='the-way-of-kings';
+const states=[{name:'All',mode:'all'},{name:'legacy 6',mode:'legacy',book:6},{name:'legacy 7',mode:'legacy',book:7},{name:'legacy 12',mode:'legacy',book:12},{name:'empty set',mode:'set',ids:[]},{name:'Edgedancer only',mode:'set',ids:['edgedancer']},{name:'WoK + Edgedancer',mode:'set',ids:[wok,'edgedancer']},{name:'WoK + WoR + Edgedancer',mode:'set',ids:[wok,'words-of-radiance','edgedancer']},{name:'bucket 7 only',mode:'set',ids:b7},{name:'WoK + whole bucket 7',mode:'set',ids:[wok,...b7]},{name:'WoK + bucket 7 minus Edgedancer',mode:'set',ids:[wok,...b7.filter(x=>x!=='edgedancer')]}];
+const results=states.map(st=>{const {c}=setup(st);const vals=vm.runInContext(`(()=>{const e=EVENTS.find(x=>x.id==='e35'),w=WORLD_BY.roshar,s=w.sites.find(x=>x.id==='yeddaw');return {event:!!evOk(e),site:!!siteSeen(s),worldHidden:rdWorldHidden(w)};})()`,c);return {state:st.name,...vals}});
+assert.deepEqual(results.map(x=>x.event),[true,false,true,true,false,false,false,false,false,true,false]);
+assert.deepEqual(results.map(x=>x.site),[true,false,true,true,false,false,false,false,false,true,false]);
+const e48=inv.branches.find(b=>b.pr===48).events.find(e=>e.id==='e35'),e37=inv.branches.find(b=>b.pr===37).events.find(e=>e.id==='e35');const strip=e=>Object.fromEntries(Object.entries(e).filter(([k])=>k!=='text'));assert.deepEqual(strip(e48),strip(e37));
+const out={hashes:'5/5',inventoryRecords:records+'/17',nestedPR37Landmarks:8,registryAndPresetRecords:2,bucket7Works:b7.length,e35Difference:'text only between PR37 and PR48',gateStates:results.length+'/11',results,limits:'Actual source selectors in VM; no browser/rendered test, no canon validation, no proposed mapping implemented.'};
+console.log(JSON.stringify(out,null,2));

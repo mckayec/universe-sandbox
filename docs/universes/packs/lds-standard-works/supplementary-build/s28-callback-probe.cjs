@@ -12,7 +12,7 @@ const en = rev
   : fs.readFileSync('public/atlas/engine.js', 'utf8');
 const start = en.indexOf('function cxGoEvent(id)'),
   end = en.indexOf('\n$("#cxBody").addEventListener', start);
-const openStart = en.indexOf('function openCodex()'),
+const openStart = en.indexOf('function openCodex('),
   openEnd = en.indexOf('\n$("#cxBtn").addEventListener', openStart);
 function scenario(name, mutate, want) {
   const queue = [],
@@ -26,6 +26,9 @@ function scenario(name, mutate, want) {
     EV_BY: { e: { id: 'e' }, f: { id: 'f' } },
     evReach: () => reach,
     renderCodex: () => {},
+    // reference-card jumps (PACK_FORMAT 13.1, merged from main): no entry or tab is passed here, so none resolves
+    K: { codex: [] },
+    CX_BY: {},
     // RC64-O1 header fit is layout-only (no focus or callback effect); stubbed like renderCodex
     cxFit: () => {},
     $: s => (s === '#codex' ? modal : { focus: () => (focus = s) }),

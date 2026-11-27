@@ -1,10 +1,11 @@
-stage: implementation
-owner: claude
-blocked-on: none
-next-action: Claude prepares the final technical scope/gap packet for PR45 420c1e7 per independent-review-420c1e7.md; retain mobile/input/integration limitations explicitly
-updated: 2026-11-09T01:23Z
+stage: awaiting-owner
+owner: mckay
+blocked-on: mckay
+next-action: Existing PR39/PR33 release disposition under D04/D05/D09 resolves G1; then Claude takes implementation ownership to integrate PR45 onto the authorized base and return exact-SHA validation per packet-review-420c1e7.md
+updated: 2026-11-09T09:52Z
 idle-runs: 0
-note: R30-1 accepted at source/helper scope (17/17 independent assertions); focus source checks 3/3 DOM stubs. Builder 8/8 at 1440, parent 0/1 then timeout; no independent rendered cases. No canon/full technical/release approval.
+note: Integration packet accepted with qualifications at unchanged PR45 420c1e7. Dependency wait only, not PR45 release approval. G2 phone keyboard remains required after integration; touch/device checks unverified, R29-1 retained here; 0/12 real promotions.
+
 
 
 # Synchronoptic timelines (reusable timeline view for the religion atlases and other worlds)
@@ -101,3 +102,6 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-09T00:20Z Claude checkpoint 31 on PR45 at 420c1e77f50c9c34a433f00b4062911cc422c42b (parent eabf9c6): [checkpoint-31.md](https://github.com/mckayec/universe-sandbox/blob/420c1e77f50c9c34a433f00b4062911cc422c42b/docs/reviews/synchronoptic-timelines/checkpoint-31.md). R30-1 fixed in layers.js (axisTop/snapAxis/rangeFromHandles) + engine readRange; pre-existing keyboard focus loss after each year step fixed in renderFilters. pnpm check 166/166, test:pages 12x2, tl31 probe 8/8 head at 1440, control eabf9c6 0/1 then actionability timeout (incomplete); 390x844 and pointer drag not run. Dispositions: R29-1 → mobile-entry-usability; chapter control, default-off, hidden-surface hashes, device/AT deferred with reasons. implementation/claude → implementation-review/chatgpt; idle-runs 0.
 
 - 2026-11-09T01:23Z ChatGPT: Independent checkpoint31 review saved/read back at eb6e9fc2b3793754233facf7ffed12ea5fa59016 ([independent-review-420c1e7.md](independent-review-420c1e7.md)). PR45 420c1e77f50c9c34a433f00b4062911cc422c42b: 7/7 changed text files inspected; actual helper 17/17 assertions and extracted focus function 3/3 DOM-stub cases pass. Builder keyboard 8/8 at 1440; parent 0/1 then timeout, not full control. Exact readout/input values logged but not asserted, final focus check only. R29-1 retained in this PR's gaps, no silent transfer into Mckay-owned mobile release. implementation-review/chatgpt -> implementation/claude for final technical scope/gap packet. 0 independent rendered cases; no canon/full technical/release approval.
+- 2026-11-09T08:58Z Claude: [final-technical-packet-420c1e7.md](final-technical-packet-420c1e7.md) (docs only, PR45 unchanged at 420c1e77f50c9c34a433f00b4062911cc422c42b). Candidate, accepted evidence with limits, gaps G1–G9 dispositioned (G1 integration blocks release: trial merges conflict with PR39 813061f in 4 files and main in 5), integration/release steps. implementation/claude → implementation-review/chatgpt; idle-runs 0.
+
+- 2026-11-09T09:52Z ChatGPT: [packet-review-420c1e7.md](packet-review-420c1e7.md) saved at 270a5d7012af7f2b9eeb9f758bcb7ec6b7a113e0 and read back before status. Unchanged exact PR45 420c1e77f50c9c34a433f00b4062911cc422c42b: packet accepted as integration checkpoint with G1–G9 qualifications, not full technical acceptance. G2 remains required post-integration; G3/G4 device evidence unverified, G5 stays here. Prior 17/17 helper and 3/3 DOM-stub results are carried history, no fresh rendered tests; 0/12 real promotions. implementation-review/chatgpt → awaiting-owner/mckay solely for existing PR39/PR33 dependency disposition under D04/D05/D09, then Claude integrates and returns exact-head evidence. No PR45 release request or approval, application edit, merge or deployment.

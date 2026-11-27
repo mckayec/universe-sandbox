@@ -1,0 +1,462 @@
+{
+ "isolated-1280x800": {
+  "restored-paused": [
+   {
+    "file": "sc4e1r-metric-isolated-0.png",
+    "logS": 24.47,
+    "paused": true,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1374
+   },
+   {
+    "file": "sc4e1r-metric-isolated-1.png",
+    "logS": 25.396,
+    "paused": true,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1371,
+    "diff": 0.038
+   },
+   {
+    "file": "sc4e1r-metric-isolated-2.png",
+    "logS": 26.307,
+    "paused": true,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1368,
+    "diff": 0.063
+   },
+   {
+    "file": "sc4e1r-metric-isolated-3.png",
+    "logS": 27.313,
+    "paused": true,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1368,
+    "diff": 0.009
+   }
+  ],
+  "1x": [
+   {
+    "file": "sc4e1r-metric-isolated-4.png",
+    "logS": 30.983,
+    "paused": false,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1258
+   },
+   {
+    "file": "sc4e1r-metric-isolated-5.png",
+    "logS": 31.945,
+    "paused": false,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1325,
+    "diff": 3.333
+   },
+   {
+    "file": "sc4e1r-metric-isolated-6.png",
+    "logS": 32.793,
+    "paused": false,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1433,
+    "diff": 3.697
+   },
+   {
+    "file": "sc4e1r-metric-isolated-7.png",
+    "logS": 33.831,
+    "paused": false,
+    "speed": 1,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1502,
+    "diff": 3.493
+   }
+  ],
+  "10x": [
+   {
+    "file": "sc4e1r-metric-isolated-8.png",
+    "logS": 36.157,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1161
+   },
+   {
+    "file": "sc4e1r-metric-isolated-9.png",
+    "logS": 37.02,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1138,
+    "diff": 5.789
+   },
+   {
+    "file": "sc4e1r-metric-isolated-10.png",
+    "logS": 37.913,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1377,
+    "diff": 5.826
+   },
+   {
+    "file": "sc4e1r-metric-isolated-11.png",
+    "logS": 38.782,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1123,
+    "diff": 7.26
+   },
+   {
+    "file": "sc4e1r-metric-isolated-12.png",
+    "logS": 39.624,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     640,
+     400
+    ],
+    "asym": 0.1197,
+    "diff": 6.46
+   }
+  ]
+ },
+ "merger-1280x800": {
+  "restored-paused": [
+   {
+    "file": "sc4e1r-metric-merger-0.png",
+    "logS": 24.523,
+    "paused": true,
+    "speed": 1,
+    "count": 2,
+    "tide": 0.9130132960353962,
+    "center": [
+     532.8,
+     400
+    ],
+    "asym": 0.0401
+   },
+   {
+    "file": "sc4e1r-metric-merger-1.png",
+    "logS": 25.609,
+    "paused": true,
+    "speed": 1,
+    "count": 2,
+    "tide": 0.945196433224386,
+    "center": [
+     532.8,
+     400
+    ],
+    "asym": 0.0473,
+    "diff": 1.499
+   },
+   {
+    "file": "sc4e1r-metric-merger-2.png",
+    "logS": 26.613,
+    "paused": true,
+    "speed": 1,
+    "count": 2,
+    "tide": 0.9654725286228647,
+    "center": [
+     532.8,
+     400
+    ],
+    "asym": 0.0479,
+    "diff": 0.601
+   }
+  ],
+  "1x": [
+   {
+    "file": "sc4e1r-metric-merger-3.png",
+    "logS": 30.867,
+    "paused": false,
+    "speed": 1,
+    "count": 2,
+    "tide": 0.9949075692073008,
+    "center": [
+     533.2,
+     399.4
+    ],
+    "asym": 0.0342
+   },
+   {
+    "file": "sc4e1r-metric-merger-4.png",
+    "logS": 31.873,
+    "paused": false,
+    "speed": 1,
+    "count": 2,
+    "tide": 0.9967916548359914,
+    "center": [
+     534.8,
+     398.4
+    ],
+    "asym": 0.047,
+    "diff": 5.841
+   },
+   {
+    "file": "sc4e1r-metric-merger-5.png",
+    "logS": 32.864,
+    "paused": false,
+    "speed": 1,
+    "count": 2,
+    "tide": 0.99797867087243,
+    "center": [
+     538.2,
+     397.4
+    ],
+    "asym": 0.065,
+    "diff": 6.312
+   },
+   {
+    "file": "sc4e1r-metric-merger-6.png",
+    "logS": 33.924,
+    "paused": false,
+    "speed": 1,
+    "count": 2,
+    "tide": 0.9987265174932557,
+    "center": [
+     543.1,
+     396.4
+    ],
+    "asym": 0.0057,
+    "diff": 6.421
+   }
+  ],
+  "10x": [
+   {
+    "file": "sc4e1r-metric-merger-7.png",
+    "logS": 36.579,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0521
+   },
+   {
+    "file": "sc4e1r-metric-merger-8.png",
+    "logS": 37.472,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0434,
+    "diff": 11.203
+   },
+   {
+    "file": "sc4e1r-metric-merger-9.png",
+    "logS": 38.365,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0938,
+    "diff": 18.678
+   },
+   {
+    "file": "sc4e1r-metric-merger-10.png",
+    "logS": 39.22,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0631,
+    "diff": 14.016
+   }
+  ],
+  "merged-10x": [
+   {
+    "file": "sc4e1r-metric-merger-11.png",
+    "logS": 40.36,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0632
+   },
+   {
+    "file": "sc4e1r-metric-merger-12.png",
+    "logS": 41.303,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.1033,
+    "diff": 14.653
+   },
+   {
+    "file": "sc4e1r-metric-merger-13.png",
+    "logS": 42.263,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0657,
+    "diff": 14.997
+   },
+   {
+    "file": "sc4e1r-metric-merger-14.png",
+    "logS": 43.221,
+    "paused": false,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0679,
+    "diff": 13.027
+   }
+  ],
+  "paused-after-merger": [
+   {
+    "file": "sc4e1r-metric-merger-15.png",
+    "logS": 45.532,
+    "paused": true,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0667
+   },
+   {
+    "file": "sc4e1r-metric-merger-16.png",
+    "logS": 46.421,
+    "paused": true,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0667,
+    "diff": 0.014
+   },
+   {
+    "file": "sc4e1r-metric-merger-17.png",
+    "logS": 47.438,
+    "paused": true,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0667,
+    "diff": 0.011
+   },
+   {
+    "file": "sc4e1r-metric-merger-18.png",
+    "logS": 48.173,
+    "paused": true,
+    "speed": 10,
+    "count": 1,
+    "tide": 0,
+    "center": [
+     629.4,
+     396.1
+    ],
+    "asym": 0.0667,
+    "diff": 0.013
+   }
+  ]
+ }
+}

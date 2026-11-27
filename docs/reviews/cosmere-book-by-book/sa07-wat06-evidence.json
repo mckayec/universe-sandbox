@@ -1,0 +1,306 @@
+{
+  "head": "36bbde8d6d0d188c04db1ea6c70c37623e7f2867",
+  "inputBlobs": {
+    "head.js": "92680a69eafaea2877851db4872b58006c9a46ea",
+    "engine.js": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+    "reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+  },
+  "scope": "Two in-memory omissions; actual source selectors, not rendered browser evidence",
+  "assignments": 2,
+  "parsedPackReversal": true,
+  "states": 14,
+  "eventComparisons": 882,
+  "siteComparisons": 728,
+  "renderedCases": 0,
+  "rows": [
+    {
+      "label": "All",
+      "state": {
+        "mode": "all"
+      },
+      "worldHidden": false,
+      "poolSeen": true,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": true,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "legacy4",
+      "state": {
+        "mode": "legacy",
+        "book": 4
+      },
+      "worldHidden": false,
+      "poolSeen": false,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": false,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "legacy9",
+      "state": {
+        "mode": "legacy",
+        "book": 9
+      },
+      "worldHidden": false,
+      "poolSeen": true,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": true,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "legacy11",
+      "state": {
+        "mode": "legacy",
+        "book": 11
+      },
+      "worldHidden": false,
+      "poolSeen": true,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": true,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "legacy12",
+      "state": {
+        "mode": "legacy",
+        "book": 12
+      },
+      "worldHidden": false,
+      "poolSeen": true,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": true,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "empty",
+      "state": {
+        "mode": "set",
+        "ids": []
+      },
+      "worldHidden": true,
+      "poolSeen": false,
+      "oldMoonExposed": false,
+      "oldDepartureExposed": false,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "WoK only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings"
+        ]
+      },
+      "worldHidden": false,
+      "poolSeen": false,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": false,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "WaT only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "wind-and-truth"
+        ]
+      },
+      "worldHidden": true,
+      "poolSeen": false,
+      "oldMoonExposed": false,
+      "oldDepartureExposed": false,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "RoW only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "rhythm-of-war"
+        ]
+      },
+      "worldHidden": true,
+      "poolSeen": false,
+      "oldMoonExposed": false,
+      "oldDepartureExposed": false,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "bucket4",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings"
+        ]
+      },
+      "worldHidden": false,
+      "poolSeen": false,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": false,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "bucket9",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "rhythm-of-war"
+        ]
+      },
+      "worldHidden": true,
+      "poolSeen": false,
+      "oldMoonExposed": false,
+      "oldDepartureExposed": false,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "buckets4+9",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "rhythm-of-war"
+        ]
+      },
+      "worldHidden": false,
+      "poolSeen": true,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": true,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "all minus WaT",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "warbreaker",
+          "the-way-of-kings",
+          "words-of-radiance",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war",
+          "the-lost-metal",
+          "tress-of-the-emerald-sea",
+          "yumi-and-the-nightmare-painter",
+          "the-sunlit-man",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "worldHidden": false,
+      "poolSeen": true,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": true,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    },
+    {
+      "label": "all works",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "warbreaker",
+          "the-way-of-kings",
+          "words-of-radiance",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war",
+          "the-lost-metal",
+          "tress-of-the-emerald-sea",
+          "yumi-and-the-nightmare-painter",
+          "the-sunlit-man",
+          "wind-and-truth",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "worldHidden": false,
+      "poolSeen": true,
+      "oldMoonExposed": true,
+      "oldDepartureExposed": true,
+      "newMoonExposed": false,
+      "newDepartureExposed": false,
+      "eventCount": 63,
+      "siteCount": 52
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+FAIL 1440x900 sufficient: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 1440x900 sufficient: old e30 wording absent from page
+FAIL 1440x900 legacy book=7: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 1440x900 legacy book=7: old e30 wording absent from page
+FAIL 1440x900 legacy book=10: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 1440x900 legacy book=10: old e30 wording absent from page
+FAIL 1440x900 All: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 1440x900 All: old e30 wording absent from page
+FAIL 390x844 sufficient: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 390x844 sufficient: old e30 wording absent from page
+FAIL 390x844 legacy book=7: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 390x844 legacy book=7: old e30 wording absent from page
+FAIL 390x844 legacy book=10: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 390x844 legacy book=10: old e30 wording absent from page
+FAIL 390x844 All: e30 text = new wording (A condemned Forger is given a hundred days to rebuild the soul of a dying emperor.)
+FAIL 390x844 All: old e30 wording absent from page
+{"pass":64,"fail":16}

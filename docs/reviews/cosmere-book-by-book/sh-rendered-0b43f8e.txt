@@ -1,0 +1,87 @@
+ok   1440x900 OT+WoK: Cognitive button enabled
+ok   1440x900 OT+WoK galaxy: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   1440x900 OT+WoK galaxy: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   1440x900 OT+WoK galaxy: no old Cognitive name/blurb/fallback in dossier
+ok   1440x900 OT+WoK: surface uniforms Cognitive + generic "unsea" style ({"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"})
+ok   1440x900 OT+WoK: surface colours = global look
+ok   1440x900 OT+WoK surface: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   1440x900 OT+WoK surface: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   1440x900 OT+WoK surface: no old Cognitive name/blurb/fallback in dossier
+ok   1440x900 OT+WoK: Physical, no realm card
+ok   1440x900 OT+WoK: accepted MB01 blurb
+ok   1440x900 OT+WoK: no old Cognitive copy
+ok   1440x900 OT+WoK: no errors 
+ok   1440x900 OT+WoK+SH: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   1440x900 OT+WoK+SH: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   1440x900 OT+WoK+SH: no old Cognitive name/blurb/fallback in dossier
+ok   1440x900 OT+WoK+SH: no errors 
+ok   1440x900 legacy book=4: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   1440x900 legacy book=4: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   1440x900 legacy book=4: no old Cognitive name/blurb/fallback in dossier
+ok   1440x900 legacy book=4: no errors 
+ok   1440x900 legacy book=10: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   1440x900 legacy book=10: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   1440x900 legacy book=10: no old Cognitive name/blurb/fallback in dossier
+ok   1440x900 legacy book=10: no errors 
+ok   1440x900 All: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   1440x900 All: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   1440x900 All: no old Cognitive name/blurb/fallback in dossier
+ok   1440x900 All: no Scadrial subastral label element
+ok   1440x900 All: other 6 subastral labels exist ()
+ok   1440x900 All: no errors 
+ok   1440x900 incomplete OT+WoK: Scadrial withheld (sel=null)
+ok   1440x900 incomplete OT+WoK: no Cognitive copy
+ok   1440x900 incomplete OT+WoK: no errors 
+ok   1440x900 later-era only: Scadrial withheld (sel=null)
+ok   1440x900 later-era only: no Cognitive copy
+ok   1440x900 later-era only: no errors 
+ok   1440x900 narrow OT+WoK → untick Hero of Ages before: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   1440x900 narrow OT+WoK → untick Hero of Ages before: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   1440x900 narrow OT+WoK → untick Hero of Ages before: no old Cognitive name/blurb/fallback in dossier
+ok   1440x900 narrow OT+WoK → untick Hero of Ages: selection cleared (sel=null)
+ok   1440x900 narrow OT+WoK → untick Hero of Ages: no Cognitive or later copy
+ok   1440x900 narrow OT+WoK → untick Hero of Ages: no errors 
+ok   390x844 OT+WoK: Cognitive button enabled
+ok   390x844 OT+WoK galaxy: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   390x844 OT+WoK galaxy: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   390x844 OT+WoK galaxy: no old Cognitive name/blurb/fallback in dossier
+ok   390x844 OT+WoK: surface uniforms Cognitive + generic "unsea" style ({"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"})
+ok   390x844 OT+WoK: surface colours = global look
+ok   390x844 OT+WoK surface: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   390x844 OT+WoK surface: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   390x844 OT+WoK surface: no old Cognitive name/blurb/fallback in dossier
+ok   390x844 OT+WoK: Physical, no realm card
+ok   390x844 OT+WoK: accepted MB01 blurb
+ok   390x844 OT+WoK: no old Cognitive copy
+ok   390x844 OT+WoK: no errors 
+ok   390x844 OT+WoK+SH: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   390x844 OT+WoK+SH: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   390x844 OT+WoK+SH: no old Cognitive name/blurb/fallback in dossier
+ok   390x844 OT+WoK+SH: no errors 
+ok   390x844 legacy book=4: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   390x844 legacy book=4: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   390x844 legacy book=4: no old Cognitive name/blurb/fallback in dossier
+ok   390x844 legacy book=4: no errors 
+ok   390x844 legacy book=10: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   390x844 legacy book=10: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   390x844 legacy book=10: no old Cognitive name/blurb/fallback in dossier
+ok   390x844 legacy book=10: no errors 
+ok   390x844 All: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   390x844 All: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   390x844 All: no old Cognitive name/blurb/fallback in dossier
+ok   390x844 All: no Scadrial subastral label element
+ok   390x844 All: other 6 subastral labels exist ()
+ok   390x844 All: no errors 
+ok   390x844 incomplete OT+WoK: Scadrial withheld (sel=null)
+ok   390x844 incomplete OT+WoK: no Cognitive copy
+ok   390x844 incomplete OT+WoK: no errors 
+ok   390x844 later-era only: Scadrial withheld (sel=null)
+ok   390x844 later-era only: no Cognitive copy
+ok   390x844 later-era only: no errors 
+ok   390x844 narrow OT+WoK → untick Hero of Ages before: Scadrial selected in Cognitive (scadrial/cognitive)
+ok   390x844 narrow OT+WoK → untick Hero of Ages before: realm card = global title + neutral fallback (<p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in )
+ok   390x844 narrow OT+WoK → untick Hero of Ages before: no old Cognitive name/blurb/fallback in dossier
+ok   390x844 narrow OT+WoK → untick Hero of Ages: selection cleared (sel=null)
+ok   390x844 narrow OT+WoK → untick Hero of Ages: no Cognitive or later copy
+ok   390x844 narrow OT+WoK → untick Hero of Ages: no errors 
+{"pass":86,"fail":0,"notRun":0}

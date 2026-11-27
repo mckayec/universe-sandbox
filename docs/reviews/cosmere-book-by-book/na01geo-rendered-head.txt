@@ -1,0 +1,159 @@
+ok   1440x900 warbreaker: Nalthis selected (nalthis)
+ok   1440x900 warbreaker: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 warbreaker: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 warbreaker: courtofgods desc unchanged
+ok   1440x900 warbreaker: brightsea desc unchanged
+ok   1440x900 warbreaker: "Awakened statues everywhere" absent from page
+ok   1440x900 warbreaker: "in the north of the city" absent from page
+ok   1440x900 warbreaker: ttelir opened (ttelir)
+ok   1440x900 warbreaker: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 warbreaker: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 warbreaker: denir opened (denir)
+ok   1440x900 warbreaker: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 warbreaker: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 warbreaker: "Awakened statues everywhere" absent after opening
+ok   1440x900 warbreaker: "in the north of the city" absent after opening
+ok   1440x900 warbreaker: no errors 
+ok   1440x900 legacy book=3: Nalthis selected (nalthis)
+ok   1440x900 legacy book=3: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 legacy book=3: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 legacy book=3: courtofgods desc unchanged
+ok   1440x900 legacy book=3: brightsea desc unchanged
+ok   1440x900 legacy book=3: "Awakened statues everywhere" absent from page
+ok   1440x900 legacy book=3: "in the north of the city" absent from page
+ok   1440x900 legacy book=3: ttelir opened (ttelir)
+ok   1440x900 legacy book=3: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 legacy book=3: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 legacy book=3: denir opened (denir)
+ok   1440x900 legacy book=3: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 legacy book=3: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 legacy book=3: "Awakened statues everywhere" absent after opening
+ok   1440x900 legacy book=3: "in the north of the city" absent after opening
+ok   1440x900 legacy book=3: no errors 
+ok   1440x900 legacy book=10: Nalthis selected (nalthis)
+ok   1440x900 legacy book=10: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 legacy book=10: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 legacy book=10: courtofgods desc unchanged
+ok   1440x900 legacy book=10: brightsea desc unchanged
+ok   1440x900 legacy book=10: "Awakened statues everywhere" absent from page
+ok   1440x900 legacy book=10: "in the north of the city" absent from page
+ok   1440x900 legacy book=10: ttelir opened (ttelir)
+ok   1440x900 legacy book=10: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 legacy book=10: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 legacy book=10: denir opened (denir)
+ok   1440x900 legacy book=10: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 legacy book=10: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 legacy book=10: "Awakened statues everywhere" absent after opening
+ok   1440x900 legacy book=10: "in the north of the city" absent after opening
+ok   1440x900 legacy book=10: no errors 
+ok   1440x900 All: Nalthis selected (nalthis)
+ok   1440x900 All: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 All: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 All: courtofgods desc unchanged
+ok   1440x900 All: brightsea desc unchanged
+ok   1440x900 All: "Awakened statues everywhere" absent from page
+ok   1440x900 All: "in the north of the city" absent from page
+ok   1440x900 All: ttelir opened (ttelir)
+ok   1440x900 All: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   1440x900 All: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 All: denir opened (denir)
+ok   1440x900 All: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   1440x900 All: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":346,"right":1391,"vw":1440,"sw":346,"cw":346})
+ok   1440x900 All: "Awakened statues everywhere" absent after opening
+ok   1440x900 All: "in the north of the city" absent after opening
+ok   1440x900 All: no errors 
+ok   1440x900 buckets 1+2 (no Warbreaker): no ttelir place (sel=null)
+ok   1440x900 buckets 1+2 (no Warbreaker): no ttelir desc anywhere
+ok   1440x900 buckets 1+2 (no Warbreaker): no denir place (sel=null)
+ok   1440x900 buckets 1+2 (no Warbreaker): no denir desc anywhere
+ok   1440x900 buckets 1+2 (no Warbreaker): no errors 
+ok   1440x900 other work only: no ttelir place (sel=null)
+ok   1440x900 other work only: no ttelir desc anywhere
+ok   1440x900 other work only: no denir place (sel=null)
+ok   1440x900 other work only: no denir desc anywhere
+ok   1440x900 other work only: no errors 
+ok   1440x900 legacy book=2: no ttelir place (sel=null)
+ok   1440x900 legacy book=2: no ttelir desc anywhere
+ok   1440x900 legacy book=2: no denir place (sel=null)
+ok   1440x900 legacy book=2: no denir desc anywhere
+ok   1440x900 legacy book=2: no errors 
+ok   390x844 warbreaker: Nalthis selected (nalthis)
+ok   390x844 warbreaker: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 warbreaker: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 warbreaker: courtofgods desc unchanged
+ok   390x844 warbreaker: brightsea desc unchanged
+ok   390x844 warbreaker: "Awakened statues everywhere" absent from page
+ok   390x844 warbreaker: "in the north of the city" absent from page
+ok   390x844 warbreaker: ttelir opened (ttelir)
+ok   390x844 warbreaker: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 warbreaker: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 warbreaker: denir opened (denir)
+ok   390x844 warbreaker: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 warbreaker: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 warbreaker: "Awakened statues everywhere" absent after opening
+ok   390x844 warbreaker: "in the north of the city" absent after opening
+ok   390x844 warbreaker: no errors 
+ok   390x844 legacy book=3: Nalthis selected (nalthis)
+ok   390x844 legacy book=3: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 legacy book=3: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 legacy book=3: courtofgods desc unchanged
+ok   390x844 legacy book=3: brightsea desc unchanged
+ok   390x844 legacy book=3: "Awakened statues everywhere" absent from page
+ok   390x844 legacy book=3: "in the north of the city" absent from page
+ok   390x844 legacy book=3: ttelir opened (ttelir)
+ok   390x844 legacy book=3: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 legacy book=3: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 legacy book=3: denir opened (denir)
+ok   390x844 legacy book=3: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 legacy book=3: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 legacy book=3: "Awakened statues everywhere" absent after opening
+ok   390x844 legacy book=3: "in the north of the city" absent after opening
+ok   390x844 legacy book=3: no errors 
+ok   390x844 legacy book=10: Nalthis selected (nalthis)
+ok   390x844 legacy book=10: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 legacy book=10: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 legacy book=10: courtofgods desc unchanged
+ok   390x844 legacy book=10: brightsea desc unchanged
+ok   390x844 legacy book=10: "Awakened statues everywhere" absent from page
+ok   390x844 legacy book=10: "in the north of the city" absent from page
+ok   390x844 legacy book=10: ttelir opened (ttelir)
+ok   390x844 legacy book=10: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 legacy book=10: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 legacy book=10: denir opened (denir)
+ok   390x844 legacy book=10: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 legacy book=10: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 legacy book=10: "Awakened statues everywhere" absent after opening
+ok   390x844 legacy book=10: "in the north of the city" absent after opening
+ok   390x844 legacy book=10: no errors 
+ok   390x844 All: Nalthis selected (nalthis)
+ok   390x844 All: ttelir desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 All: denir desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 All: courtofgods desc unchanged
+ok   390x844 All: brightsea desc unchanged
+ok   390x844 All: "Awakened statues everywhere" absent from page
+ok   390x844 All: "in the north of the city" absent from page
+ok   390x844 All: ttelir opened (ttelir)
+ok   390x844 All: ttelir visible desc = new (Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.)
+ok   390x844 All: ttelir desc wraps inside viewport ({"site":"ttelir","text":"Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 All: denir opened (denir)
+ok   390x844 All: denir visible desc = new (A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.)
+ok   390x844 All: denir desc wraps inside viewport ({"site":"denir","text":"A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues.","w":312,"right":351,"vw":390,"sw":312,"cw":312})
+ok   390x844 All: "Awakened statues everywhere" absent after opening
+ok   390x844 All: "in the north of the city" absent after opening
+ok   390x844 All: no errors 
+ok   390x844 buckets 1+2 (no Warbreaker): no ttelir place (sel=null)
+ok   390x844 buckets 1+2 (no Warbreaker): no ttelir desc anywhere
+ok   390x844 buckets 1+2 (no Warbreaker): no denir place (sel=null)
+ok   390x844 buckets 1+2 (no Warbreaker): no denir desc anywhere
+ok   390x844 buckets 1+2 (no Warbreaker): no errors 
+ok   390x844 other work only: no ttelir place (sel=null)
+ok   390x844 other work only: no ttelir desc anywhere
+ok   390x844 other work only: no denir place (sel=null)
+ok   390x844 other work only: no denir desc anywhere
+ok   390x844 other work only: no errors 
+ok   390x844 legacy book=2: no ttelir place (sel=null)
+ok   390x844 legacy book=2: no ttelir desc anywhere
+ok   390x844 legacy book=2: no denir place (sel=null)
+ok   390x844 legacy book=2: no denir desc anywhere
+ok   390x844 legacy book=2: no errors 
+{"pass":158,"fail":0}

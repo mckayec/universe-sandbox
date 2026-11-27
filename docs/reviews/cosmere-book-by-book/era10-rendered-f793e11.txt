@@ -1,0 +1,175 @@
+ok   1440x900 OT+B4+B6+TLM realm switch: Cognitive (cognitive)
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: selected
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: model note kept
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: no old era-6 copy in dossier
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: old era-10 status absent
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: one status chip
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: candidate blurb
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: Era fact (About 300 years after the original Mistborn trilogy)
+ok   1440x900 OT+B4+B6+TLM realm switch cognitive: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 OT+B4+B6+TLM realm switch: held Cognitive card unchanged
+ok   1440x900 OT+B4+B6+TLM realm switch: back to Physical
+ok   1440x900 OT+B4+B6+TLM realm switch physical: selected
+ok   1440x900 OT+B4+B6+TLM realm switch physical: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   1440x900 OT+B4+B6+TLM realm switch physical: model note kept
+ok   1440x900 OT+B4+B6+TLM realm switch physical: no old era-6 copy in dossier
+ok   1440x900 OT+B4+B6+TLM realm switch physical: old era-10 status absent
+ok   1440x900 OT+B4+B6+TLM realm switch physical: one status chip
+ok   1440x900 OT+B4+B6+TLM realm switch physical: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   1440x900 OT+B4+B6+TLM realm switch physical: candidate blurb
+ok   1440x900 OT+B4+B6+TLM realm switch physical: Era fact (About 300 years after the original Mistborn trilogy)
+ok   1440x900 OT+B4+B6+TLM realm switch physical: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 OT+B4+B6+TLM realm switch: whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   1440x900 OT+B4+B6+TLM realm switch: no errors 
+ok   1440x900 OT+TLM (no bucket 6): selected
+ok   1440x900 OT+TLM (no bucket 6): Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   1440x900 OT+TLM (no bucket 6): model note kept
+ok   1440x900 OT+TLM (no bucket 6): no old era-6 copy in dossier
+ok   1440x900 OT+TLM (no bucket 6): old era-10 status absent
+ok   1440x900 OT+TLM (no bucket 6): era-10 status (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   1440x900 OT+TLM (no bucket 6): base blurb
+ok   1440x900 OT+TLM (no bucket 6): base facts (Star|Ruler|Distance)
+ok   1440x900 OT+TLM (no bucket 6): whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   1440x900 OT+TLM (no bucket 6): no errors 
+ok   1440x900 OT+B6 (no Lost Metal): selected
+ok   1440x900 OT+B6 (no Lost Metal): Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   1440x900 OT+B6 (no Lost Metal): model note kept
+ok   1440x900 OT+B6 (no Lost Metal): no old era-6 copy in dossier
+ok   1440x900 OT+B6 (no Lost Metal): old era-10 status absent
+ok   1440x900 OT+B6 (no Lost Metal): one status chip
+ok   1440x900 OT+B6 (no Lost Metal): status chip "The Alloy of Law · industrial Elendel" (The Alloy of Law · industrial Elendel)
+ok   1440x900 OT+B6 (no Lost Metal): candidate blurb
+ok   1440x900 OT+B6 (no Lost Metal): Era fact (About 300 years after the original Mistborn trilogy)
+ok   1440x900 OT+B6 (no Lost Metal): facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 OT+B6 (no Lost Metal): era-10 status denied
+ok   1440x900 OT+B6 (no Lost Metal): whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   1440x900 OT+B6 (no Lost Metal): no errors 
+ok   1440x900 OT incomplete + B6 + TLM (denied): no era-10/era-6 status
+ok   1440x900 OT incomplete + B6 + TLM (denied): no candidate or base blurb
+ok   1440x900 OT incomplete + B6 + TLM (denied): no old copy
+ok   1440x900 OT incomplete + B6 + TLM (denied): parent name withheld (sel=null)
+ok   1440x900 OT incomplete + B6 + TLM (denied): whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   1440x900 OT incomplete + B6 + TLM (denied): no errors 
+ok   1440x900 legacy book=6: selected
+ok   1440x900 legacy book=6: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   1440x900 legacy book=6: model note kept
+ok   1440x900 legacy book=6: no old era-6 copy in dossier
+ok   1440x900 legacy book=6: old era-10 status absent
+ok   1440x900 legacy book=6: one status chip
+ok   1440x900 legacy book=6: status chip "The Alloy of Law · industrial Elendel" (The Alloy of Law · industrial Elendel)
+ok   1440x900 legacy book=6: candidate blurb
+ok   1440x900 legacy book=6: Era fact (About 300 years after the original Mistborn trilogy)
+ok   1440x900 legacy book=6: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 legacy book=6: no errors 
+ok   1440x900 legacy book=10: selected
+ok   1440x900 legacy book=10: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   1440x900 legacy book=10: model note kept
+ok   1440x900 legacy book=10: no old era-6 copy in dossier
+ok   1440x900 legacy book=10: old era-10 status absent
+ok   1440x900 legacy book=10: one status chip
+ok   1440x900 legacy book=10: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   1440x900 legacy book=10: candidate blurb
+ok   1440x900 legacy book=10: Era fact (About 300 years after the original Mistborn trilogy)
+ok   1440x900 legacy book=10: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 legacy book=10: no errors 
+ok   1440x900 All: selected
+ok   1440x900 All: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   1440x900 All: model note kept
+ok   1440x900 All: no old era-6 copy in dossier
+ok   1440x900 All: old era-10 status absent
+ok   1440x900 All: one status chip
+ok   1440x900 All: status chip "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension" (The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension)
+ok   1440x900 All: candidate blurb
+ok   1440x900 All: Era fact (About 300 years after the original Mistborn trilogy)
+ok   1440x900 All: facts Star|Era|Distance (Star|Era|Distance)
+ok   1440x900 All: no errors 
+ok   390x844 OT+B4+B6+TLM realm switch: Cognitive (cognitive)
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: selected
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: model note kept
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: no old era-6 copy in dossier
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: old era-10 status absent
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: one status chip
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: candidate blurb
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: Era fact (About 300 years after the original Mistborn trilogy)
+ok   390x844 OT+B4+B6+TLM realm switch cognitive: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 OT+B4+B6+TLM realm switch: held Cognitive card unchanged
+ok   390x844 OT+B4+B6+TLM realm switch: back to Physical
+ok   390x844 OT+B4+B6+TLM realm switch physical: selected
+ok   390x844 OT+B4+B6+TLM realm switch physical: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   390x844 OT+B4+B6+TLM realm switch physical: model note kept
+ok   390x844 OT+B4+B6+TLM realm switch physical: no old era-6 copy in dossier
+ok   390x844 OT+B4+B6+TLM realm switch physical: old era-10 status absent
+ok   390x844 OT+B4+B6+TLM realm switch physical: one status chip
+ok   390x844 OT+B4+B6+TLM realm switch physical: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   390x844 OT+B4+B6+TLM realm switch physical: candidate blurb
+ok   390x844 OT+B4+B6+TLM realm switch physical: Era fact (About 300 years after the original Mistborn trilogy)
+ok   390x844 OT+B4+B6+TLM realm switch physical: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 OT+B4+B6+TLM realm switch: whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   390x844 OT+B4+B6+TLM realm switch: no errors 
+ok   390x844 OT+TLM (no bucket 6): selected
+ok   390x844 OT+TLM (no bucket 6): Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   390x844 OT+TLM (no bucket 6): model note kept
+ok   390x844 OT+TLM (no bucket 6): no old era-6 copy in dossier
+ok   390x844 OT+TLM (no bucket 6): old era-10 status absent
+ok   390x844 OT+TLM (no bucket 6): era-10 status (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   390x844 OT+TLM (no bucket 6): base blurb
+ok   390x844 OT+TLM (no bucket 6): base facts (Star|Ruler|Distance)
+ok   390x844 OT+TLM (no bucket 6): whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   390x844 OT+TLM (no bucket 6): no errors 
+ok   390x844 OT+B6 (no Lost Metal): selected
+ok   390x844 OT+B6 (no Lost Metal): Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   390x844 OT+B6 (no Lost Metal): model note kept
+ok   390x844 OT+B6 (no Lost Metal): no old era-6 copy in dossier
+ok   390x844 OT+B6 (no Lost Metal): old era-10 status absent
+ok   390x844 OT+B6 (no Lost Metal): one status chip
+ok   390x844 OT+B6 (no Lost Metal): status chip "The Alloy of Law · industrial Elendel" (The Alloy of Law · industrial Elendel)
+ok   390x844 OT+B6 (no Lost Metal): candidate blurb
+ok   390x844 OT+B6 (no Lost Metal): Era fact (About 300 years after the original Mistborn trilogy)
+ok   390x844 OT+B6 (no Lost Metal): facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 OT+B6 (no Lost Metal): era-10 status denied
+ok   390x844 OT+B6 (no Lost Metal): whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   390x844 OT+B6 (no Lost Metal): no errors 
+ok   390x844 OT incomplete + B6 + TLM (denied): no era-10/era-6 status
+ok   390x844 OT incomplete + B6 + TLM (denied): no candidate or base blurb
+ok   390x844 OT incomplete + B6 + TLM (denied): no old copy
+ok   390x844 OT incomplete + B6 + TLM (denied): parent name withheld (sel=null)
+ok   390x844 OT incomplete + B6 + TLM (denied): whole-parent "not yet sorted by book" note present in Reading panel (Some details in this series are only grouped, not yet sorted by book.)
+ok   390x844 OT incomplete + B6 + TLM (denied): no errors 
+ok   390x844 legacy book=6: selected
+ok   390x844 legacy book=6: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   390x844 legacy book=6: model note kept
+ok   390x844 legacy book=6: no old era-6 copy in dossier
+ok   390x844 legacy book=6: old era-10 status absent
+ok   390x844 legacy book=6: one status chip
+ok   390x844 legacy book=6: status chip "The Alloy of Law · industrial Elendel" (The Alloy of Law · industrial Elendel)
+ok   390x844 legacy book=6: candidate blurb
+ok   390x844 legacy book=6: Era fact (About 300 years after the original Mistborn trilogy)
+ok   390x844 legacy book=6: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 legacy book=6: no errors 
+ok   390x844 legacy book=10: selected
+ok   390x844 legacy book=10: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   390x844 legacy book=10: model note kept
+ok   390x844 legacy book=10: no old era-6 copy in dossier
+ok   390x844 legacy book=10: old era-10 status absent
+ok   390x844 legacy book=10: one status chip
+ok   390x844 legacy book=10: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (The Lost Metal · Elendel and the Outer Cities in tension)
+ok   390x844 legacy book=10: candidate blurb
+ok   390x844 legacy book=10: Era fact (About 300 years after the original Mistborn trilogy)
+ok   390x844 legacy book=10: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 legacy book=10: no errors 
+ok   390x844 All: selected
+ok   390x844 All: Distance qualifier kept (Illustrative system layout; distances and orbital order are not verified here.)
+ok   390x844 All: model note kept
+ok   390x844 All: no old era-6 copy in dossier
+ok   390x844 All: old era-10 status absent
+ok   390x844 All: one status chip
+ok   390x844 All: status chip "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension" (The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension)
+ok   390x844 All: candidate blurb
+ok   390x844 All: Era fact (About 300 years after the original Mistborn trilogy)
+ok   390x844 All: facts Star|Era|Distance (Star|Era|Distance)
+ok   390x844 All: no errors 
+{"pass":174,"fail":0}

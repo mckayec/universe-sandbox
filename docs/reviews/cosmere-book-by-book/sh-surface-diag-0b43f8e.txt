@@ -1,0 +1,16 @@
+ok   diag 1440x900: R1–R4 still hold after 30 frames ({"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":256,"cancelled":false}],"texW":256,"texH":128,"bakeHidden":true,"bar":"100%"})
+ok   diag 1440x900: HD albedo 256x128 = expected 256x128
+ok   diag 1440x900: capture-time uniforms Cognitive + generic style 4 ({"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"})
+ok   diag 1440x900: capture-time colours = global look
+info diag 1440x900: R7 centre luma (report only) {"meanLuma":4.5,"litFrac":0.031,"side":540}
+ok   diag 1440x900: no held Scadrial Cognitive copy in card
+ok   diag 1440x900: no page/console errors 
+ok   diag 390x844: R1–R4 still hold after 30 frames ({"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":256,"cancelled":false}],"texW":256,"texH":128,"bakeHidden":true,"bar":"100%"})
+ok   diag 390x844: HD albedo 256x128 = expected 256x128
+ok   diag 390x844: capture-time uniforms Cognitive + generic style 4 ({"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"})
+ok   diag 390x844: capture-time colours = global look
+info diag 390x844: R7 centre luma (report only) {"meanLuma":1.8,"litFrac":0.009,"side":234}
+ok   diag 390x844: no held Scadrial Cognitive copy in card
+ok   diag 390x844: no page/console errors 
+[{"tag":"diag 1440x900","complete":true,"secs":"4.3","W":256,"readiness":{"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":256,"cancelled":false}],"texW":256,"texH":128,"bakeHidden":true,"bar":"100%"},"uniforms":{"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"},"pixels":{"meanLuma":4.5,"litFrac":0.031,"side":540},"file":"/tmp/shots/sh-surface-diag-1440x900.png"},{"tag":"diag 390x844","complete":true,"secs":"3.2","W":256,"readiness":{"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":256,"cancelled":false}],"texW":256,"texH":128,"bakeHidden":true,"bar":"100%"},"uniforms":{"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"},"pixels":{"meanLuma":1.8,"litFrac":0.009,"side":234},"file":"/tmp/shots/sh-surface-diag-390x844.png"}]
+{"mode":"diag","pass":12,"fail":0,"complete":2,"required":2,"incomplete":0}

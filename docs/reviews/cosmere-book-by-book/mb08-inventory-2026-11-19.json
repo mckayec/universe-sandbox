@@ -1,0 +1,215 @@
+{
+  "scope": "MB08 lexical inventory; no semantic completeness or runtime claim",
+  "inputs": [
+    {
+      "branch": "PR48",
+      "commit": "52534d0975af39e620e05a43c2f4f05dc6b4b1fc",
+      "blob": "0fd66c7cca0085872e8f8a3d2154e4010356b9e6",
+      "blobVerified": true,
+      "counts": {
+        "namedStringHits": 2,
+        "sharedContextStringHits": 8
+      },
+      "named": [
+        {
+          "path": "pack.spoilers.works.13.id",
+          "value": "allomancer-jak-and-the-pits-of-eltania",
+          "parentId": "allomancer-jak-and-the-pits-of-eltania"
+        },
+        {
+          "path": "pack.spoilers.works.13.title",
+          "value": "Allomancer Jak and the Pits of Eltania, Episodes 28 through 30",
+          "parentId": "allomancer-jak-and-the-pits-of-eltania"
+        }
+      ],
+      "sharedContext": [
+        {
+          "path": "pack.worlds.15.sites.15.desc",
+          "value": "Capital of the Terris people in the far north, seat of the Keepers’ Synod. Burned by koloss.",
+          "parentId": "tathingdwen"
+        },
+        {
+          "path": "pack.worlds.15.sites.21.desc",
+          "value": "A rail city far north-east of Elendel, on the line to the Northern Roughs.",
+          "parentId": "drypost"
+        },
+        {
+          "path": "pack.worlds.15.sites.27.desc",
+          "value": "The largest city of the Northern Roughs, where two rivers meet; the only railhead out there.",
+          "parentId": "truemadil"
+        },
+        {
+          "path": "pack.worlds.15.sites.28.desc",
+          "value": "A dusty grassland town in the Roughs, Waxillium’s base for twenty years.",
+          "parentId": "weathering"
+        },
+        {
+          "path": "pack.worlds.15.sites.29.desc",
+          "value": "A large Northern Roughs city.",
+          "parentId": "fardorest"
+        },
+        {
+          "path": "pack.worlds.15.sites.30.desc",
+          "value": "The sea in the Northern Roughs that took the place of Lake Tyrian.",
+          "parentId": "tyriansea"
+        },
+        {
+          "path": "pack.worlds.15.sites.32.desc",
+          "value": "The Festival City on the Sea of Lennes, at the edge of the Conrad Delta in the Southern Roughs.",
+          "parentId": "newtremredare"
+        },
+        {
+          "path": "pack.events.25.title",
+          "value": "Home from the Roughs",
+          "parentId": "e26"
+        }
+      ]
+    },
+    {
+      "branch": "PR24",
+      "commit": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "blobVerified": true,
+      "counts": {
+        "namedStringHits": 0,
+        "sharedContextStringHits": 9
+      },
+      "named": [],
+      "sharedContext": [
+        {
+          "path": "pack.worlds.15.eras.6.blurb",
+          "value": "Three hundred years after the end of the first trilogy, Sazed holds both Ruin and Preservation as the god Harmony and has remade the planet: blue skies, green plants, no ash. Most northerners live in the fertile Elendel Basin near the equator, ringed by the Seran, Faleast and Channerel mountains, where there are railways, electric lights and early cars. Around the Basin lie the Roughs, and near the south pole a colder southern continent.",
+          "parentId": null
+        },
+        {
+          "path": "pack.worlds.15.sites.15.desc",
+          "value": "Capital of the Terris people in the far north, seat of the Keepers’ Synod. Burned by koloss.",
+          "parentId": "tathingdwen"
+        },
+        {
+          "path": "pack.worlds.15.sites.21.desc",
+          "value": "A rail city far north-east of Elendel, on the line to the Northern Roughs.",
+          "parentId": "drypost"
+        },
+        {
+          "path": "pack.worlds.15.sites.27.desc",
+          "value": "The largest city of the Northern Roughs, where two rivers meet; the only railhead out there.",
+          "parentId": "truemadil"
+        },
+        {
+          "path": "pack.worlds.15.sites.28.desc",
+          "value": "A dusty grassland town in the Roughs, Waxillium’s base for twenty years.",
+          "parentId": "weathering"
+        },
+        {
+          "path": "pack.worlds.15.sites.29.desc",
+          "value": "A large Northern Roughs city.",
+          "parentId": "fardorest"
+        },
+        {
+          "path": "pack.worlds.15.sites.30.desc",
+          "value": "The sea in the Northern Roughs that took the place of Lake Tyrian.",
+          "parentId": "tyriansea"
+        },
+        {
+          "path": "pack.worlds.15.sites.32.desc",
+          "value": "The Festival City on the Sea of Lennes, at the edge of the Conrad Delta in the Southern Roughs.",
+          "parentId": "newtremredare"
+        },
+        {
+          "path": "pack.events.25.title",
+          "value": "Home from the Roughs",
+          "parentId": "e26"
+        }
+      ]
+    },
+    {
+      "branch": "PR37",
+      "commit": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "blobVerified": true,
+      "counts": {
+        "namedStringHits": 0,
+        "sharedContextStringHits": 15
+      },
+      "named": [],
+      "sharedContext": [
+        {
+          "path": "pack.worlds.15.eras.6.blurb",
+          "value": "Three hundred years after the end of the first trilogy, Sazed holds both Ruin and Preservation as the god Harmony and has remade the planet: blue skies, green plants, no ash. Most northerners live in the fertile Elendel Basin near the equator, ringed by the Seran, Faleast and Channerel mountains, where there are railways, electric lights and early cars. Around the Basin lie the Roughs, and near the south pole a colder southern continent.",
+          "parentId": null
+        },
+        {
+          "path": "pack.worlds.15.sites.4.scene.landmarks.0.desc",
+          "value": "Prisoners crawl into the cracks to find atium geodes and seldom last a year. Kelsier survived here when his wife did not. At the end of the trilogy Elend makes his last stand here against the koloss.",
+          "parentId": "pits"
+        },
+        {
+          "path": "pack.worlds.15.sites.10.scene.landmarks.0.desc",
+          "value": "Rock walls and a canyon-like approach make the city hard to take. Elend’s army besieges it, and Yomen’s raid destroys half his koloss.",
+          "parentId": "rocks"
+        },
+        {
+          "path": "pack.worlds.15.sites.15.desc",
+          "value": "Capital of the Terris people in the far north, seat of the Keepers’ Synod. Burned by koloss.",
+          "parentId": "tathingdwen"
+        },
+        {
+          "path": "pack.worlds.15.sites.17.scene.landmarks.1.desc",
+          "value": "The near-bankrupt house Wax inherits when he comes back from the Roughs.",
+          "parentId": "ladrian"
+        },
+        {
+          "path": "pack.worlds.15.sites.21.desc",
+          "value": "A rail city far north-east of Elendel, on the line to the Northern Roughs.",
+          "parentId": "drypost"
+        },
+        {
+          "path": "pack.worlds.15.sites.27.desc",
+          "value": "The largest city of the Northern Roughs, where two rivers meet; the only railhead out there.",
+          "parentId": "truemadil"
+        },
+        {
+          "path": "pack.worlds.15.sites.28.desc",
+          "value": "A dusty grassland town in the Roughs, Waxillium’s base for twenty years.",
+          "parentId": "weathering"
+        },
+        {
+          "path": "pack.worlds.15.sites.29.desc",
+          "value": "A large Northern Roughs city.",
+          "parentId": "fardorest"
+        },
+        {
+          "path": "pack.worlds.15.sites.30.desc",
+          "value": "The sea in the Northern Roughs that took the place of Lake Tyrian.",
+          "parentId": "tyriansea"
+        },
+        {
+          "path": "pack.worlds.15.sites.32.desc",
+          "value": "The Festival City on the Sea of Lennes, at the edge of the Conrad Delta in the Southern Roughs.",
+          "parentId": "newtremredare"
+        },
+        {
+          "path": "pack.events.12.title",
+          "value": "The koloss break in",
+          "parentId": "e71"
+        },
+        {
+          "path": "pack.events.12.text",
+          "value": "The koloss storm Luthadel and Clubs, Dockson and Tindwyl are among the dead. Vin returns, takes control of the koloss and turns them on Straff’s army.",
+          "parentId": "e71"
+        },
+        {
+          "path": "pack.events.17.text",
+          "value": "Elend fights the koloss at the Pits of Hathsin, above the hidden atium, and dies there. His soldiers burn the atium so Ruin can never have it.",
+          "parentId": "e74"
+        },
+        {
+          "path": "pack.events.47.title",
+          "value": "Home from the Roughs",
+          "parentId": "e26"
+        }
+      ]
+    }
+  ]
+}

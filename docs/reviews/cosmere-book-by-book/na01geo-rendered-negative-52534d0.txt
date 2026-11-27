@@ -1,0 +1,65 @@
+FAIL 1440x900 warbreaker: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 warbreaker: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 warbreaker: "Awakened statues everywhere" absent from page
+FAIL 1440x900 warbreaker: "in the north of the city" absent from page
+FAIL 1440x900 warbreaker: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 warbreaker: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 warbreaker: "Awakened statues everywhere" absent after opening
+FAIL 1440x900 warbreaker: "in the north of the city" absent after opening
+FAIL 1440x900 legacy book=3: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 legacy book=3: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 legacy book=3: "Awakened statues everywhere" absent from page
+FAIL 1440x900 legacy book=3: "in the north of the city" absent from page
+FAIL 1440x900 legacy book=3: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 legacy book=3: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 legacy book=3: "Awakened statues everywhere" absent after opening
+FAIL 1440x900 legacy book=3: "in the north of the city" absent after opening
+FAIL 1440x900 legacy book=10: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 legacy book=10: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 legacy book=10: "Awakened statues everywhere" absent from page
+FAIL 1440x900 legacy book=10: "in the north of the city" absent from page
+FAIL 1440x900 legacy book=10: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 legacy book=10: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 legacy book=10: "Awakened statues everywhere" absent after opening
+FAIL 1440x900 legacy book=10: "in the north of the city" absent after opening
+FAIL 1440x900 All: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 All: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 All: "Awakened statues everywhere" absent from page
+FAIL 1440x900 All: "in the north of the city" absent from page
+FAIL 1440x900 All: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 1440x900 All: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 1440x900 All: "Awakened statues everywhere" absent after opening
+FAIL 1440x900 All: "in the north of the city" absent after opening
+FAIL 390x844 warbreaker: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 warbreaker: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 warbreaker: "Awakened statues everywhere" absent from page
+FAIL 390x844 warbreaker: "in the north of the city" absent from page
+FAIL 390x844 warbreaker: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 warbreaker: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 warbreaker: "Awakened statues everywhere" absent after opening
+FAIL 390x844 warbreaker: "in the north of the city" absent after opening
+FAIL 390x844 legacy book=3: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 legacy book=3: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 legacy book=3: "Awakened statues everywhere" absent from page
+FAIL 390x844 legacy book=3: "in the north of the city" absent from page
+FAIL 390x844 legacy book=3: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 legacy book=3: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 legacy book=3: "Awakened statues everywhere" absent after opening
+FAIL 390x844 legacy book=3: "in the north of the city" absent after opening
+FAIL 390x844 legacy book=10: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 legacy book=10: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 legacy book=10: "Awakened statues everywhere" absent from page
+FAIL 390x844 legacy book=10: "in the north of the city" absent from page
+FAIL 390x844 legacy book=10: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 legacy book=10: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 legacy book=10: "Awakened statues everywhere" absent after opening
+FAIL 390x844 legacy book=10: "in the north of the city" absent after opening
+FAIL 390x844 All: ttelir desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 All: denir desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 All: "Awakened statues everywhere" absent from page
+FAIL 390x844 All: "in the north of the city" absent from page
+FAIL 390x844 All: ttelir visible desc = new (Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.)
+FAIL 390x844 All: denir visible desc = new (A quiet field of hundreds of old warrior statues in the north of the city.)
+FAIL 390x844 All: "Awakened statues everywhere" absent after opening
+FAIL 390x844 All: "in the north of the city" absent after opening
+{"pass":94,"fail":64}

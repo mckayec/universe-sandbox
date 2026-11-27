@@ -1,0 +1,69 @@
+FAIL 1440x900 All: "fourth broke up" absent
+FAIL 1440x900 All: "Cultivation left" absent
+FAIL 1440x900 All: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 1440x900 All: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 1440x900 All: "fourth broke up" absent after selecting pool
+FAIL 1440x900 All: "Cultivation left" absent after selecting pool
+FAIL 1440x900 legacy4: "fourth broke up" absent
+FAIL 1440x900 legacy4: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 1440x900 legacy9: "fourth broke up" absent
+FAIL 1440x900 legacy9: "Cultivation left" absent
+FAIL 1440x900 legacy9: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 1440x900 legacy9: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 1440x900 legacy9: "fourth broke up" absent after selecting pool
+FAIL 1440x900 legacy9: "Cultivation left" absent after selecting pool
+FAIL 1440x900 legacy11: "fourth broke up" absent
+FAIL 1440x900 legacy11: "Cultivation left" absent
+FAIL 1440x900 legacy11: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 1440x900 legacy11: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 1440x900 legacy11: "fourth broke up" absent after selecting pool
+FAIL 1440x900 legacy11: "Cultivation left" absent after selecting pool
+FAIL 1440x900 WoK only: "fourth broke up" absent
+FAIL 1440x900 WoK only: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 1440x900 all minus WaT: "fourth broke up" absent
+FAIL 1440x900 all minus WaT: "Cultivation left" absent
+FAIL 1440x900 all minus WaT: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 1440x900 all minus WaT: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 1440x900 all minus WaT: "fourth broke up" absent after selecting pool
+FAIL 1440x900 all minus WaT: "Cultivation left" absent after selecting pool
+FAIL 1440x900 all works: "fourth broke up" absent
+FAIL 1440x900 all works: "Cultivation left" absent
+FAIL 1440x900 all works: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 1440x900 all works: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 1440x900 all works: "fourth broke up" absent after selecting pool
+FAIL 1440x900 all works: "Cultivation left" absent after selecting pool
+FAIL 390x844 All: "fourth broke up" absent
+FAIL 390x844 All: "Cultivation left" absent
+FAIL 390x844 All: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 390x844 All: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 390x844 All: "fourth broke up" absent after selecting pool
+FAIL 390x844 All: "Cultivation left" absent after selecting pool
+FAIL 390x844 legacy4: "fourth broke up" absent
+FAIL 390x844 legacy4: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 390x844 legacy9: "fourth broke up" absent
+FAIL 390x844 legacy9: "Cultivation left" absent
+FAIL 390x844 legacy9: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 390x844 legacy9: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 390x844 legacy9: "fourth broke up" absent after selecting pool
+FAIL 390x844 legacy9: "Cultivation left" absent after selecting pool
+FAIL 390x844 legacy11: "fourth broke up" absent
+FAIL 390x844 legacy11: "Cultivation left" absent
+FAIL 390x844 legacy11: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 390x844 legacy11: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 390x844 legacy11: "fourth broke up" absent after selecting pool
+FAIL 390x844 legacy11: "Cultivation left" absent after selecting pool
+FAIL 390x844 WoK only: "fourth broke up" absent
+FAIL 390x844 WoK only: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 390x844 all minus WaT: "fourth broke up" absent
+FAIL 390x844 all minus WaT: "Cultivation left" absent
+FAIL 390x844 all minus WaT: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 390x844 all minus WaT: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 390x844 all minus WaT: "fourth broke up" absent after selecting pool
+FAIL 390x844 all minus WaT: "Cultivation left" absent after selecting pool
+FAIL 390x844 all works: "fourth broke up" absent
+FAIL 390x844 all works: "Cultivation left" absent
+FAIL 390x844 all works: Moons = "Salas, Nomon, Mishim (a fourth broke up long ago)"
+FAIL 390x844 all works: pool text = retained (A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.)
+FAIL 390x844 all works: "fourth broke up" absent after selecting pool
+FAIL 390x844 all works: "Cultivation left" absent after selecting pool
+sa07wat06-probe (parent): 66/134 pass

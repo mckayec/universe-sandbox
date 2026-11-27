@@ -1,0 +1,489 @@
+{
+  "checkedAt": "2026-11-20",
+  "inputs": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "hashVerified": true,
+      "sourceReversalEqual": true,
+      "parsedPackReversalEqual": true,
+      "totalWorlds": 60,
+      "totalEvents": 63,
+      "threnoditeWorlds": [
+        {
+          "id": "threnosun",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "monody",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "elegy",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "threnody",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "purity",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        }
+      ],
+      "sites": [
+        {
+          "id": "waystop",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "Silence Montane’s roadside inn on the forest road, ringed by three circles of silver. Its position is our placeholder."
+        },
+        {
+          "id": "oldbridge",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "A rickety bridge over a chasm near the waystop; the wreck of the New Bridge lies below it."
+        },
+        {
+          "id": "lastport",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The most powerful fortress town on the forested continent, which posts the bounties. Position is our placeholder."
+        },
+        {
+          "id": "bastion",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "Another fortress town in the mountains."
+        },
+        {
+          "id": "forests",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive."
+        },
+        {
+          "id": "fallenworld",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The larger continent, humanity’s first home on Threnody, consumed by the Evil. Expeditions there do not come back."
+        },
+        {
+          "id": "abyss",
+          "books": [
+            11
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "An extraordinarily deep trench in the ocean between the continents, mentioned in Tress."
+        }
+      ],
+      "nestedLandmarks": [],
+      "events": [
+        {
+          "id": "e32",
+          "book": 7,
+          "world": "threnody",
+          "site": "waystop",
+          "title": "Shadows for Silence",
+          "text": "Silence goes after a dangerous bounty in the Forests of Hell with her daughter."
+        }
+      ],
+      "candidate": {
+        "field": "worlds[threnody].sites[forests].desc",
+        "oldSentence": "No fire, no blood: the Simple Rules keep you alive.",
+        "newSentence": "To avoid drawing shades, the Simple Rules prohibit kindling flame, shedding another’s blood, and running at night."
+      },
+      "limitations": [
+        "in-memory candidate only",
+        "no selector helper or rendered test",
+        "no full-work canon approval"
+      ]
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "hashVerified": true,
+      "sourceReversalEqual": true,
+      "parsedPackReversalEqual": true,
+      "totalWorlds": 60,
+      "totalEvents": 120,
+      "threnoditeWorlds": [
+        {
+          "id": "threnosun",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "monody",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "elegy",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "threnody",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "purity",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        }
+      ],
+      "sites": [
+        {
+          "id": "waystop",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "Silence Montane’s roadside inn on the forest road, ringed by three circles of silver. Its position is our placeholder."
+        },
+        {
+          "id": "oldbridge",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "A rickety bridge over a chasm near the waystop; the wreck of the New Bridge lies below it."
+        },
+        {
+          "id": "lastport",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The most powerful fortress town on the forested continent, which posts the bounties. Position is our placeholder."
+        },
+        {
+          "id": "bastion",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "Another fortress town in the mountains."
+        },
+        {
+          "id": "forests",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive."
+        },
+        {
+          "id": "fallenworld",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The larger continent, humanity’s first home on Threnody, consumed by the Evil. Expeditions there do not come back."
+        },
+        {
+          "id": "abyss",
+          "books": [
+            11
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "An extraordinarily deep trench in the ocean between the continents, mentioned in Tress."
+        }
+      ],
+      "nestedLandmarks": [
+        {
+          "site": "waystop",
+          "id": "inn",
+          "name": "Silence’s waystop",
+          "kind": "house",
+          "at": [
+            0,
+            0
+          ],
+          "books": [
+            7
+          ],
+          "desc": "The inn Silence keeps for travellers on the forest road, paid for by her secret bounty hunting."
+        },
+        {
+          "site": "waystop",
+          "id": "rings",
+          "name": "The silver rings",
+          "kind": "stones",
+          "at": [
+            0.5,
+            0.3
+          ],
+          "books": [
+            7
+          ],
+          "desc": "Three circles of silver around the waystop keep the shades out."
+        },
+        {
+          "site": "oldbridge",
+          "id": "bridge",
+          "name": "The Old Bridge",
+          "kind": "bridge",
+          "at": [
+            0,
+            0
+          ],
+          "books": [
+            7
+          ],
+          "desc": "A rickety span over a chasm; the wreck of the New Bridge lies below."
+        }
+      ],
+      "events": [
+        {
+          "id": "e32",
+          "book": 7,
+          "world": "threnody",
+          "site": "waystop",
+          "lm": "inn",
+          "title": "Shadows for Silence",
+          "text": "Silence goes after a dangerous bounty in the Forests of Hell with her daughter."
+        }
+      ],
+      "candidate": {
+        "field": "worlds[threnody].sites[forests].desc",
+        "oldSentence": "No fire, no blood: the Simple Rules keep you alive.",
+        "newSentence": "To avoid drawing shades, the Simple Rules prohibit kindling flame, shedding another’s blood, and running at night."
+      },
+      "limitations": [
+        "in-memory candidate only",
+        "no selector helper or rendered test",
+        "no full-work canon approval"
+      ]
+    },
+    {
+      "pr": 48,
+      "head": "0636b08ad9096274c793e045cc601324945844d9",
+      "blob": "7850087a03ff82650632d28015c755568f8d784f",
+      "hashVerified": true,
+      "sourceReversalEqual": true,
+      "parsedPackReversalEqual": true,
+      "totalWorlds": 60,
+      "totalEvents": 63,
+      "threnoditeWorlds": [
+        {
+          "id": "threnosun",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "monody",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "elegy",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "threnody",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        },
+        {
+          "id": "purity",
+          "books": [
+            7
+          ],
+          "first": 7,
+          "req": null,
+          "needs": null
+        }
+      ],
+      "sites": [
+        {
+          "id": "waystop",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "Silence Montane’s roadside inn on the forest road, ringed by three circles of silver. Its position is our placeholder."
+        },
+        {
+          "id": "oldbridge",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "A rickety bridge over a chasm near the waystop; the wreck of the New Bridge lies below it."
+        },
+        {
+          "id": "lastport",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The most powerful fortress town on the forested continent, which posts the bounties. Position is our placeholder."
+        },
+        {
+          "id": "bastion",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "Another fortress town in the mountains."
+        },
+        {
+          "id": "forests",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive."
+        },
+        {
+          "id": "fallenworld",
+          "books": [
+            7
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "The larger continent, humanity’s first home on Threnody, consumed by the Evil. Expeditions there do not come back."
+        },
+        {
+          "id": "abyss",
+          "books": [
+            11
+          ],
+          "req": null,
+          "needs": null,
+          "desc": "An extraordinarily deep trench in the ocean between the continents, mentioned in Tress."
+        }
+      ],
+      "nestedLandmarks": [],
+      "events": [
+        {
+          "id": "e32",
+          "book": 7,
+          "world": "threnody",
+          "site": "waystop",
+          "title": "Shadows for Silence",
+          "text": "Silence goes after a dangerous bounty in the Forests of Hell with her daughter."
+        }
+      ],
+      "candidate": {
+        "field": "worlds[threnody].sites[forests].desc",
+        "oldSentence": "No fire, no blood: the Simple Rules keep you alive.",
+        "newSentence": "To avoid drawing shades, the Simple Rules prohibit kindling flame, shedding another’s blood, and running at night."
+      },
+      "limitations": [
+        "in-memory candidate only",
+        "no selector helper or rendered test",
+        "no full-work canon approval"
+      ]
+    }
+  ],
+  "summary": {
+    "verifiedBlobs": 3,
+    "expectedBlobs": 3,
+    "matchingOldSentences": 3,
+    "expectedOldSentences": 3,
+    "sourceReversals": 3,
+    "parsedReversals": 3,
+    "renderedCases": 0,
+    "fullWorkApprovals": 0,
+    "fullWorkDenominator": 33
+  }
+}

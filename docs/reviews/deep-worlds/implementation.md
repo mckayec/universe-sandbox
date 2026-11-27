@@ -83,3 +83,10 @@ Screenshots in `shots/`.
 PR #28 (family tree) and #33 (LDS) also edit `engine.js` / `engine.css` / `PACK_FORMAT.md` / the validator.
 A trial merge shows three one-line overlaps in `engine.js` (Escape handler, `refreshAll`, `parseHash`) and
 small ones elsewhere; whichever PR merges second takes both sides.
+
+
+## Current reconciliation — 2026-11-09, ChatGPT
+
+The sections above preserve the historical build report; their counts and pending gates are not a current-head certification. At PR37 `03394c32816fcb5c95261bf6a9ea4520381a5838`, Tyche opens at Book V (pin and site), superseding the old Book-IV deviation and its prologue rationale. Book V's tour has six steps. The 68d47ce phone main-probe log has 25 assertions (22 PASS, 3 FAIL), with separate focused reruns; do not sum overlapping runs into unique coverage. DWO-S1 is accepted at source/VM scope: independent head 23/23 versus parent 13/23, with ten expected parent failures.
+
+See [implementation-review-03394c3.md](implementation-review-03394c3.md) for the exact reviewed inputs, current evidence counts and limits. The new Society desktop partial file contains 24 desktop PASS + 1 FAIL, followed by six phone PASS before termination; it is not 30 desktop passes. Four Society landing captures were inspected; the broader final visual matrix and exact-head validation evidence remain incomplete. Full canon coverage is still uncertified; no Canon or Technical final sign-off or release approval is given. Next: Claude's bounded release-scope manifest from existing evidence, before another final-evidence run or an owner scope decision.

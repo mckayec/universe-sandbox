@@ -1,10 +1,10 @@
-stage: fixing
+stage: integration
 owner: claude
-blocked-on: claude
-next-action: Claude: reconcile PR33 integration conflict from approved 3e3701ffcc4131200f0993e52f8f14a509016ced, return relevant changed content/code for exact-head rechecks and obtain required CI before merge and verified deployment.
-updated: 2026-11-09T02:42Z
+blocked-on: none
+next-action: Claude: merge main 1896dda into pack/lds-standard-works resolving 13 conflict hunks (engine.css 3, engine.js 7, layers.js, packs/registry.js, tests/standalone-pages.mjs) against PR39 atlas-engine work; rerun pnpm check, test:pages, test:browser, 4-viewport shots; hand new head to ChatGPT for quick recheck, then Claude merges (D05 + D09 yes recorded).
+updated: 2026-11-27T00:43Z
 idle-runs: 0
-note: Mckay approved D05 on 2026-11-09 within the curated scope and existing Known gaps. Current PR is dirty and has no exact-head Actions run. Prior local acceptance is not current CI. No conflict bypass, merge or deployment.
+note: D05 approved; D09 merge permission given by Mckay live 2026-11-26. Not merged: after PR39 merged, approved head 3e5791e conflicts with main (atlas engine overlap). Needs integration + ChatGPT recheck per HANDOFF_PLAN.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -127,3 +127,11 @@ Track A · view: Earth-historical, layered
 - 2026-11-07T10:18:59Z: ChatGPT confirmed Canon at exact PR33 3e3701ffcc4131200f0993e52f8f14a509016ced; audit-final.md dc3904782d3ada83f0c69c529f365747dd3c78bc saved/read back. 2/2 CSS/test delta files inspected, pack blob unchanged from approved parent. Claude checkpoint70 Technical names same head; builder tests/rendering remain attributed. D05 saved/read back in DECISIONS.md at e5778d5ddbd6da03a296ed517b78afc93b824ea4. final-audit/chatgpt -> ready-for-owner/mckay. No release approval, merge or deploy.
 
 - 2026-11-09T02:42Z: ChatGPT recorded Mckay's D05 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 3e3701ffcc4131200f0993e52f8f14a509016ced. Mckay approved D05 on 2026-11-09 within the curated scope and existing Known gaps. Current PR is dirty and has no exact-head Actions run. Prior local acceptance is not current CI. No conflict bypass, merge or deployment. Owner mckay → claude for the next action above; historical review evidence is preserved.
+
+- 2026-11-09T05:15Z: Claude resolved the PR33 integration conflict with main (christian-apocrypha engine changes) by a merge commit at 3e5791ec9ea89bc5f362449f5bf1d07c963073c8; resolution and evidence in integration-3e5791e.md. New engine option gfx.earthMask:"hi" keeps live packs on main's mask and LDS on its approved mask. pnpm check 213/213, test:pages 13x2, test:browser pass, Actions run 42565302906 success. fixing/claude -> final-audit/chatgpt for exact-head recheck of the delta. No merge or deploy.
+
+
+- 2026-11-09T05:26Z: ChatGPT completed the bounded integration recheck at exact PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8. Saved/read back reviewer-integration-3e5791e.mjs at 83b8c150239b399d6a6c6a70c3a7614b78b74cbc, integration-review-3e5791e.md at 79daffb15d7b7ab91e2f765993ba32b6c51c700f, and audit-final.md at 4ab3ea198b2b9612772119014eabbaffeff0f60f before this status update. Canon approved: exact whole-pack preservation except the hi-mask option, 28/28 non-doc delta paths classified, 7/7 combined files inspected, 17/17 local existing tests and 14/14 actual-loader stub scenarios passed; independently opened exact-head CI logs (213/213 tests, 26/26 page cases). Two Low precision observations: pack-wide mask selection and changed shader/fallback rendering despite preserved hi assets. No new High/Medium canon finding; prior source audit retained, no fresh scripture research claimed. final-audit/chatgpt -> final-audit/claude for exact-head technical sign-off and explicit visual-gap disposition, then existing D05/D09 routing. No owner release approval, merge or deployment.
+
+- 2026-11-09T06:35Z: Claude technical recheck (checkpoint 72) at exact PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8: pnpm check 213/213, test:pages 13x2, test:browser pass; unchanged s67/s70 harnesses pass at 3840x2160/1440/1280/390 (notice 7.3:1, 0 errors, 0 third-party, heap flat); fresh full-frame 4K capture; globe-scale diff vs 3e3701f 0.11/255. INT71-O1 (pack-wide mask) and INT71-O2 (TA-03 shader/fallback differ, no pixel identity) accepted with receipt corrections. Technical: approved at 3e5791e in audit-final.md. final-audit/claude -> ready-for-owner/mckay for merge execution under D05/D09. No merge or deploy.
+- 2026-11-27T00:43Z: Claude: Mckay said yes to merging, live. PR39/24/44 merged first; PR33 at 3e5791e then became dirty (13 conflict hunks in public/atlas engine/layers/registry and tests). Claude took integration ownership; not merged.

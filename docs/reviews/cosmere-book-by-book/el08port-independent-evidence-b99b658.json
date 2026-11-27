@@ -1,0 +1,897 @@
+{
+  "head": "b99b65885b63c2f9936e0492435b6c2f5ce1f125",
+  "parent": "1fdd398a7ac936d21e11ddb9da8de65a895aac9b",
+  "inputs": {
+    "head": "cc7eaa7987627c4fc54e33c613705b9a1a786b17",
+    "parent": "0ec8d80d4b9e184dafbc6461867fb9be54c6c631",
+    "engine": "7c2daaa7bc159e88b6aec6157019780baa7bf209",
+    "reading": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+  },
+  "actualParentPlusSevenEqualsWholeHead": true,
+  "counts": {
+    "pairedStates": 10,
+    "visible": 6,
+    "denied": 4
+  },
+  "rows": [
+    {
+      "label": "all",
+      "readingState": {
+        "mode": "all"
+      },
+      "parent": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "name": "The Pool (Devotion’s perpendicularity)",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "open": true,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Adonalsium</h3><p>The single power behind creation, shattered long before the books into sixteen Shards. It was destroyed on Yolen by a group that included Hoid.</p></div><div class=\"cx-item\"><h3>Honor</h3><div class=\"r\"> </div><p>Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions. Merged with Odium after Dalinar renounced it, forming Retribution.</p></div><div class=\"cx-item\"><h3>Cultivation</h3><div class=\"r\"> </div><p>Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly.</p></div><div class=\"cx-item\"><h3>Odium</h3><div class=\"r\"> </div><p>Shard of passion and division, the enemy behind the Desolations, who has killed other Shards. He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody. His vessel Rayse is killed and Taravangian takes the Shard. Becomes Retribution.</p></div><div class=\"cx-item\"><h3>Preservation</h3><div class=\"r\"> </div><p>Shard of stability on Scadrial, who made the mists.</p></div><div class=\"cx-item\"><h3>Ruin</h3><div class=\"r\"> </div><p>Shard of entropy, trapped at the Well of Ascension and working through lies.</p></div><div class=\"cx-item\"><h3>Harmony</h3><div class=\"r\"> </div><p>Sazed holding both Preservation and Ruin, god of Scadrial’s second era.</p></div><div class=\"cx-item\"><h3>Devotion and Dominion</h3><div class=\"r\"> </div><p>The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics.</p></div><div class=\"cx-item\"><h3>Endowment</h3><div class=\"r\"> </div><p>Shard of Nalthis, giver of Breath and of the Returned.</p></div><div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals. Claims the world of Obrodai and raises an avatar there. Reaches toward Scadrial in The Lost Metal. Patji, the deadly island of First of the Sun, is one of its avatars.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><div class=\"cx-item\"><h3>Virtuosity</h3><p>A Shard who splintered herself near Komashi.</p></div><div class=\"cx-item\"><h3>Valor</h3><p>A Shard who was active on Miral and founded temples there.</p></div><div class=\"cx-item\"><h3>Retribution</h3><p>Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere.</p></div>"
+      },
+      "head": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "World of Elantris",
+        "name": "The Pool",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "open": true,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Honor</h3><div class=\"r\"> </div><p>Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions. Merged with Odium after Dalinar renounced it, forming Retribution.</p></div><div class=\"cx-item\"><h3>Cultivation</h3><div class=\"r\"> </div><p>Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly.</p></div><div class=\"cx-item\"><h3>Odium</h3><div class=\"r\"> </div><p>Shard of passion and division, the enemy behind the Desolations, who has killed other Shards. He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody. His vessel Rayse is killed and Taravangian takes the Shard. Becomes Retribution.</p></div><div class=\"cx-item\"><h3>Preservation</h3><div class=\"r\"> </div><p>Shard of stability on Scadrial, who made the mists.</p></div><div class=\"cx-item\"><h3>Ruin</h3><div class=\"r\"> </div><p>Shard of entropy, trapped at the Well of Ascension and working through lies.</p></div><div class=\"cx-item\"><h3>Harmony</h3><div class=\"r\"> </div><p>Sazed holding both Preservation and Ruin, god of Scadrial’s second era.</p></div><div class=\"cx-item\"><h3>Endowment</h3><div class=\"r\"> </div><p>Shard of Nalthis, giver of Breath and of the Returned.</p></div><div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals. Claims the world of Obrodai and raises an avatar there. Reaches toward Scadrial in The Lost Metal. Patji, the deadly island of First of the Sun, is one of its avatars.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><div class=\"cx-item\"><h3>Virtuosity</h3><p>A Shard who splintered herself near Komashi.</p></div><div class=\"cx-item\"><h3>Valor</h3><p>A Shard who was active on Miral and founded temples there.</p></div><div class=\"cx-item\"><h3>Retribution</h3><p>Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere.</p></div>"
+      }
+    },
+    {
+      "label": "legacy1",
+      "readingState": {
+        "mode": "legacy",
+        "book": 1
+      },
+      "parent": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "name": "The Pool (Devotion’s perpendicularity)",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Adonalsium</h3><p>The single power behind creation, shattered long before the books into sixteen Shards.</p></div><div class=\"cx-item\"><h3>Devotion and Dominion</h3><div class=\"r\"> </div><p>The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics.</p></div><p class=\"cx-hid\">12 more entries unlock in later books.</p>"
+      },
+      "head": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "World of Elantris",
+        "name": "The Pool",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "facts": [
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">12 more entries unlock in later books.</p>"
+      }
+    },
+    {
+      "label": "legacy7",
+      "readingState": {
+        "mode": "legacy",
+        "book": 7
+      },
+      "parent": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "name": "The Pool (Devotion’s perpendicularity)",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "open": true,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Adonalsium</h3><p>The single power behind creation, shattered long before the books into sixteen Shards. It was destroyed on Yolen by a group that included Hoid.</p></div><div class=\"cx-item\"><h3>Honor</h3><div class=\"r\"> </div><p>Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions.</p></div><div class=\"cx-item\"><h3>Cultivation</h3><div class=\"r\"> </div><p>Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly.</p></div><div class=\"cx-item\"><h3>Odium</h3><div class=\"r\"> </div><p>Shard of passion and division, the enemy behind the Desolations, who has killed other Shards. He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody.</p></div><div class=\"cx-item\"><h3>Preservation</h3><div class=\"r\"> </div><p>Shard of stability on Scadrial, who made the mists.</p></div><div class=\"cx-item\"><h3>Ruin</h3><div class=\"r\"> </div><p>Shard of entropy, trapped at the Well of Ascension and working through lies.</p></div><div class=\"cx-item\"><h3>Harmony</h3><div class=\"r\"> </div><p>Sazed holding both Preservation and Ruin, god of Scadrial’s second era.</p></div><div class=\"cx-item\"><h3>Devotion and Dominion</h3><div class=\"r\"> </div><p>The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics.</p></div><div class=\"cx-item\"><h3>Endowment</h3><div class=\"r\"> </div><p>Shard of Nalthis, giver of Breath and of the Returned.</p></div><div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><p class=\"cx-hid\">3 more entries unlock in later books.</p>"
+      },
+      "head": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "World of Elantris",
+        "name": "The Pool",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "open": true,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Honor</h3><div class=\"r\"> </div><p>Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions.</p></div><div class=\"cx-item\"><h3>Cultivation</h3><div class=\"r\"> </div><p>Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly.</p></div><div class=\"cx-item\"><h3>Odium</h3><div class=\"r\"> </div><p>Shard of passion and division, the enemy behind the Desolations, who has killed other Shards. He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody.</p></div><div class=\"cx-item\"><h3>Preservation</h3><div class=\"r\"> </div><p>Shard of stability on Scadrial, who made the mists.</p></div><div class=\"cx-item\"><h3>Ruin</h3><div class=\"r\"> </div><p>Shard of entropy, trapped at the Well of Ascension and working through lies.</p></div><div class=\"cx-item\"><h3>Harmony</h3><div class=\"r\"> </div><p>Sazed holding both Preservation and Ruin, god of Scadrial’s second era.</p></div><div class=\"cx-item\"><h3>Endowment</h3><div class=\"r\"> </div><p>Shard of Nalthis, giver of Breath and of the Returned.</p></div><div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><p class=\"cx-hid\">3 more entries unlock in later books.</p>"
+      }
+    },
+    {
+      "label": "none",
+      "readingState": {
+        "mode": "none"
+      },
+      "parent": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">14 more entries unlock in books you have not marked as read.</p>"
+      },
+      "head": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      }
+    },
+    {
+      "label": "safe",
+      "readingState": {
+        "mode": "safe"
+      },
+      "parent": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">14 more entries unlock in books you have not marked as read.</p>"
+      },
+      "head": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      }
+    },
+    {
+      "label": "hope",
+      "readingState": {
+        "mode": "set",
+        "ids": [
+          "the-hope-of-elantris"
+        ]
+      },
+      "parent": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">14 more entries unlock in books you have not marked as read.</p>"
+      },
+      "head": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      }
+    },
+    {
+      "label": "elantris",
+      "readingState": {
+        "mode": "set",
+        "ids": [
+          "elantris"
+        ]
+      },
+      "parent": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "name": "The Pool (Devotion’s perpendicularity)",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Adonalsium</h3><p>The single power behind creation, shattered long before the books into sixteen Shards.</p></div><div class=\"cx-item\"><h3>Devotion and Dominion</h3><div class=\"r\"> </div><p>The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics.</p></div><p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      },
+      "head": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "World of Elantris",
+        "name": "The Pool",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "facts": [
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      }
+    },
+    {
+      "label": "elantris+hope",
+      "readingState": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "the-hope-of-elantris"
+        ]
+      },
+      "parent": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "name": "The Pool (Devotion’s perpendicularity)",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Adonalsium</h3><p>The single power behind creation, shattered long before the books into sixteen Shards.</p></div><div class=\"cx-item\"><h3>Devotion and Dominion</h3><div class=\"r\"> </div><p>The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics.</p></div><p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      },
+      "head": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "World of Elantris",
+        "name": "The Pool",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "facts": [
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      }
+    },
+    {
+      "label": "bucket7-no-elantris",
+      "readingState": {
+        "mode": "set",
+        "ids": [
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps"
+        ]
+      },
+      "parent": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><p class=\"cx-hid\">12 more entries unlock in books you have not marked as read.</p>"
+      },
+      "head": {
+        "visible": false,
+        "poolVisible": false,
+        "status": "",
+        "name": "An unrevealed place",
+        "desc": "",
+        "open": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><p class=\"cx-hid\">10 more entries unlock in books you have not marked as read.</p>"
+      }
+    },
+    {
+      "label": "all33",
+      "readingState": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "warbreaker",
+          "the-way-of-kings",
+          "words-of-radiance",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war",
+          "the-lost-metal",
+          "tress-of-the-emerald-sea",
+          "yumi-and-the-nightmare-painter",
+          "the-sunlit-man",
+          "wind-and-truth",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "parent": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "name": "The Pool (Devotion’s perpendicularity)",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "open": true,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Adonalsium</h3><p>The single power behind creation, shattered long before the books into sixteen Shards. It was destroyed on Yolen by a group that included Hoid.</p></div><div class=\"cx-item\"><h3>Honor</h3><div class=\"r\"> </div><p>Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions. Merged with Odium after Dalinar renounced it, forming Retribution.</p></div><div class=\"cx-item\"><h3>Cultivation</h3><div class=\"r\"> </div><p>Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly.</p></div><div class=\"cx-item\"><h3>Odium</h3><div class=\"r\"> </div><p>Shard of passion and division, the enemy behind the Desolations, who has killed other Shards. He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody. His vessel Rayse is killed and Taravangian takes the Shard. Becomes Retribution.</p></div><div class=\"cx-item\"><h3>Preservation</h3><div class=\"r\"> </div><p>Shard of stability on Scadrial, who made the mists.</p></div><div class=\"cx-item\"><h3>Ruin</h3><div class=\"r\"> </div><p>Shard of entropy, trapped at the Well of Ascension and working through lies.</p></div><div class=\"cx-item\"><h3>Harmony</h3><div class=\"r\"> </div><p>Sazed holding both Preservation and Ruin, god of Scadrial’s second era.</p></div><div class=\"cx-item\"><h3>Devotion and Dominion</h3><div class=\"r\"> </div><p>The Shards of Sel. Their broken power lingers in the land and drives Sel’s many magics.</p></div><div class=\"cx-item\"><h3>Endowment</h3><div class=\"r\"> </div><p>Shard of Nalthis, giver of Breath and of the Returned.</p></div><div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals. Claims the world of Obrodai and raises an avatar there. Reaches toward Scadrial in The Lost Metal. Patji, the deadly island of First of the Sun, is one of its avatars.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><div class=\"cx-item\"><h3>Virtuosity</h3><p>A Shard who splintered herself near Komashi.</p></div><div class=\"cx-item\"><h3>Valor</h3><p>A Shard who was active on Miral and founded temples there.</p></div><div class=\"cx-item\"><h3>Retribution</h3><p>Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere.</p></div>"
+      },
+      "head": {
+        "visible": true,
+        "poolVisible": true,
+        "status": "World of Elantris",
+        "name": "The Pool",
+        "desc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "open": true,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "codex": "<div class=\"cx-item\"><h3>Honor</h3><div class=\"r\"> </div><p>Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions. Merged with Odium after Dalinar renounced it, forming Retribution.</p></div><div class=\"cx-item\"><h3>Cultivation</h3><div class=\"r\"> </div><p>Shard of growth and change on Roshar, the Nightwatcher’s power, rarely seen directly.</p></div><div class=\"cx-item\"><h3>Odium</h3><div class=\"r\"> </div><p>Shard of passion and division, the enemy behind the Desolations, who has killed other Shards. He splintered Devotion and Dominion on Sel and wounded Ambition at Threnody. His vessel Rayse is killed and Taravangian takes the Shard. Becomes Retribution.</p></div><div class=\"cx-item\"><h3>Preservation</h3><div class=\"r\"> </div><p>Shard of stability on Scadrial, who made the mists.</p></div><div class=\"cx-item\"><h3>Ruin</h3><div class=\"r\"> </div><p>Shard of entropy, trapped at the Well of Ascension and working through lies.</p></div><div class=\"cx-item\"><h3>Harmony</h3><div class=\"r\"> </div><p>Sazed holding both Preservation and Ruin, god of Scadrial’s second era.</p></div><div class=\"cx-item\"><h3>Endowment</h3><div class=\"r\"> </div><p>Shard of Nalthis, giver of Breath and of the Returned.</p></div><div class=\"cx-item\"><h3>Autonomy</h3><div class=\"r\"> </div><p>Shard of Taldain, who likes many avatars and dislikes rivals. Claims the world of Obrodai and raises an avatar there. Reaches toward Scadrial in The Lost Metal. Patji, the deadly island of First of the Sun, is one of its avatars.</p></div><div class=\"cx-item\"><h3>Ambition</h3><p>A Shard mortally wounded in a battle with Odium in the empty space of the Threnodite system. The battle still twists the Investiture on Threnody.</p></div><div class=\"cx-item\"><h3>Virtuosity</h3><p>A Shard who splintered herself near Komashi.</p></div><div class=\"cx-item\"><h3>Valor</h3><p>A Shard who was active on Miral and founded temples there.</p></div><div class=\"cx-item\"><h3>Retribution</h3><p>Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere.</p></div>"
+      }
+    }
+  ],
+  "portability": {
+    "selEvents": [
+      {
+        "id": "e1",
+        "book": 1,
+        "world": "sel",
+        "site": "elantris",
+        "title": "Raoden is taken",
+        "text": "The prince of Arelon wakes with the Shaod and is quietly thrown into Elantris, declared dead to the world."
+      },
+      {
+        "id": "e2",
+        "book": 1,
+        "world": "sel",
+        "site": "kae",
+        "title": "A widow before the wedding",
+        "text": "Sarene reaches Kae and learns that Raoden is reported dead; their contract makes her his widow."
+      },
+      {
+        "id": "e3",
+        "book": 1,
+        "world": "sel",
+        "site": "kae",
+        "title": "Hrathen’s three months",
+        "text": "A priest of Fjorden comes with a deadline: convert Arelon, or watch it destroyed."
+      },
+      {
+        "id": "e4",
+        "book": 1,
+        "world": "sel",
+        "title": "The land is part of the writing",
+        "text": "Raoden discovers that adding a line for the Chasm lets his Aons function again."
+      },
+      {
+        "id": "e5",
+        "book": 1,
+        "world": "sel",
+        "site": "elantris",
+        "title": "Elantris shines again",
+        "text": "Raoden adds the missing Chasm line to the city-scale Aon, restoring Elantris."
+      },
+      {
+        "id": "e30",
+        "book": 7,
+        "world": "sel",
+        "site": "roseempire",
+        "title": "The Emperor’s Soul",
+        "text": "A condemned Forger, Shai, has ninety-eight days to recreate Emperor Ashravan’s soul; his body has been healed, but his mind remains blank."
+      }
+    ],
+    "selSceneLandmarks": []
+  },
+  "reviewScope": "Independent source/data/function checks; no fresh browser execution, no full canon or release approval.",
+  "actualParentSourceReversal": {
+    "passed": 1,
+    "total": 1
+  },
+  "focusedTests": {
+    "originalPassed": 3,
+    "originalTotal": 3,
+    "additionalActualParentPassed": 1,
+    "additionalActualParentTotal": 1
+  },
+  "comparisonsWithPR37": {
+    "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+    "packBlob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+    "checks": [
+      [
+        "EL01",
+        true
+      ],
+      [
+        "EL02",
+        true
+      ],
+      [
+        "e4",
+        true
+      ],
+      [
+        "e5",
+        true
+      ],
+      [
+        "e2",
+        true
+      ],
+      [
+        "EL08 status",
+        true
+      ],
+      [
+        "EL08 facts",
+        true
+      ],
+      [
+        "EL08 realms",
+        true
+      ],
+      [
+        "EL08 pool",
+        true
+      ],
+      [
+        "EL08 codex",
+        true
+      ]
+    ]
+  },
+  "ci": {
+    "run": 44923077860,
+    "head": "b99b65885b63c2f9936e0492435b6c2f5ce1f125",
+    "relevantSteps": [
+      {
+        "name": "Run pnpm format:check",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-11-21T16:10:36Z",
+        "completed_at": "2026-11-21T16:10:38Z"
+      },
+      {
+        "name": "Run pnpm build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7,
+        "started_at": "2026-11-21T16:10:38Z",
+        "completed_at": "2026-11-21T16:10:42Z"
+      },
+      {
+        "name": "Run pnpm test",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8,
+        "started_at": "2026-11-21T16:10:42Z",
+        "completed_at": "2026-11-21T16:10:47Z"
+      },
+      {
+        "name": "Run pnpm check:dist",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-11-21T16:10:47Z",
+        "completed_at": "2026-11-21T16:10:47Z"
+      },
+      {
+        "name": "Standalone pages (subpath browser check)",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11,
+        "started_at": "2026-11-21T16:11:15Z",
+        "completed_at": "2026-11-21T16:13:48Z"
+      }
+    ],
+    "deploy": "skipped",
+    "fullSuiteNotRerunByReviewer": true
+  },
+  "suppliedRenderedEvidence": {
+    "source": "el08port-probe-output-b99b658.jsonl",
+    "blob": "d568a4653bcac72a05fc6fc4c1b8833e3202890f",
+    "recordsRead": 24,
+    "headRecords": 12,
+    "parentRecords": 12,
+    "errorRows": 0,
+    "provenance": "Claude-supplied capture; inspected as observations; probe does not assert target results; not independently rerun"
+  },
+  "suppliedScreenshots": {
+    "viewed": 4,
+    "totalLinked": 8,
+    "files": [
+      {
+        "path": "shots/el08-head-all-pool-1440x900.jpg",
+        "sha": "cf021f1583fd2e47ab11935cadb35eac4df780ae"
+      },
+      {
+        "path": "shots/el08-head-legacy1-pool-390x844.jpg",
+        "sha": "35a5de24a10d1e50e683a36d40ef3ffdf541161f"
+      },
+      {
+        "path": "shots/el08-head-cognitive-sel-1440x900.jpg",
+        "sha": "7c2f2083c6472e6a3f3591ec322f43f118fe57a1"
+      },
+      {
+        "path": "shots/el08-parent-cognitive-sel-1440x900.jpg",
+        "sha": "bda8d8e64f8f4c1745c9e0329c7e12ae118b2cde"
+      }
+    ],
+    "limits": "Visual inspection of supplied images, not independent interaction or device execution. Pool description and disabled realm control are not visible in the selected phone crop."
+  }
+}

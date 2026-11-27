@@ -1,0 +1,34 @@
+{
+  "head": "fb6afbb082c114a05a1ec509b9d4e6dbf4de22a4",
+  "scope": "actual extracted handlers with DOM/render adapters; no browser",
+  "results": [
+    {
+      "name": "normal tap",
+      "armedAtRelease": true,
+      "expectedPlacements": 1,
+      "actualPlacements": 1,
+      "passes": true
+    },
+    {
+      "name": "Escape before release",
+      "armedAtRelease": false,
+      "expectedPlacements": 0,
+      "actualPlacements": 1,
+      "passes": false
+    },
+    {
+      "name": "Add disarm before release",
+      "armedAtRelease": false,
+      "expectedPlacements": 0,
+      "actualPlacements": 1,
+      "passes": false
+    },
+    {
+      "name": "pointercancel before release",
+      "armedAtRelease": true,
+      "expectedPlacements": 0,
+      "actualPlacements": 0,
+      "passes": true
+    }
+  ]
+}

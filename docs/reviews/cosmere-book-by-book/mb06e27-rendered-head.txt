@@ -1,0 +1,99 @@
+ok   1440x900 sufficient: Scadrial selected (scadrial)
+ok   1440x900 sufficient: e27 item shows title
+ok   1440x900 sufficient: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   1440x900 sufficient: old e27 wording absent from page
+ok   1440x900 sufficient: no errors 
+ok   1440x900 legacy book=6: Scadrial selected (scadrial)
+ok   1440x900 legacy book=6: e27 item shows title
+ok   1440x900 legacy book=6: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   1440x900 legacy book=6: old e27 wording absent from page
+ok   1440x900 legacy book=6: no errors 
+ok   1440x900 legacy book=10: Scadrial selected (scadrial)
+ok   1440x900 legacy book=10: e27 item shows title
+ok   1440x900 legacy book=10: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   1440x900 legacy book=10: old e27 wording absent from page
+ok   1440x900 legacy book=10: no errors 
+ok   1440x900 All: Scadrial selected (scadrial)
+ok   1440x900 All: e27 item shows title
+ok   1440x900 All: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   1440x900 All: old e27 wording absent from page
+ok   1440x900 All: e6 text unchanged
+ok   1440x900 All: e7 text unchanged
+ok   1440x900 All: e8 text unchanged
+ok   1440x900 All: e9 text unchanged
+ok   1440x900 All: e10 text unchanged
+ok   1440x900 All: e11 text unchanged
+ok   1440x900 All: e12 text unchanged
+ok   1440x900 All: e26 text unchanged
+ok   1440x900 All: e28 text unchanged
+ok   1440x900 All: e29 text unchanged
+ok   1440x900 All: e34 text unchanged
+ok   1440x900 All: e47 text unchanged
+ok   1440x900 All: e48 text unchanged
+ok   1440x900 All: e60 text unchanged
+ok   1440x900 All: no errors 
+ok   1440x900 MB06 only: no e27 dossier item (sel=null)
+ok   1440x900 MB06 only: no e27 text anywhere
+ok   1440x900 MB06 only: no errors 
+ok   1440x900 bucket 6 only: no e27 dossier item (sel=null)
+ok   1440x900 bucket 6 only: no e27 text anywhere
+ok   1440x900 bucket 6 only: no errors 
+ok   1440x900 trilogy + MB06: no e27 dossier item (sel=scadrial)
+ok   1440x900 trilogy + MB06: no e27 text anywhere
+ok   1440x900 trilogy + MB06: no errors 
+ok   1440x900 trilogy only: no e27 dossier item (sel=scadrial)
+ok   1440x900 trilogy only: no e27 text anywhere
+ok   1440x900 trilogy only: no errors 
+ok   1440x900 legacy book=5: no e27 dossier item (sel=scadrial)
+ok   1440x900 legacy book=5: no e27 text anywhere
+ok   1440x900 legacy book=5: no errors 
+ok   390x844 sufficient: Scadrial selected (scadrial)
+ok   390x844 sufficient: e27 item shows title
+ok   390x844 sufficient: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   390x844 sufficient: old e27 wording absent from page
+ok   390x844 sufficient: no errors 
+ok   390x844 legacy book=6: Scadrial selected (scadrial)
+ok   390x844 legacy book=6: e27 item shows title
+ok   390x844 legacy book=6: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   390x844 legacy book=6: old e27 wording absent from page
+ok   390x844 legacy book=6: no errors 
+ok   390x844 legacy book=10: Scadrial selected (scadrial)
+ok   390x844 legacy book=10: e27 item shows title
+ok   390x844 legacy book=10: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   390x844 legacy book=10: old e27 wording absent from page
+ok   390x844 legacy book=10: no errors 
+ok   390x844 All: Scadrial selected (scadrial)
+ok   390x844 All: e27 item shows title
+ok   390x844 All: e27 text = new wording (Wax investigates murders in Elendel as labor unrest grows.)
+ok   390x844 All: old e27 wording absent from page
+ok   390x844 All: e6 text unchanged
+ok   390x844 All: e7 text unchanged
+ok   390x844 All: e8 text unchanged
+ok   390x844 All: e9 text unchanged
+ok   390x844 All: e10 text unchanged
+ok   390x844 All: e11 text unchanged
+ok   390x844 All: e12 text unchanged
+ok   390x844 All: e26 text unchanged
+ok   390x844 All: e28 text unchanged
+ok   390x844 All: e29 text unchanged
+ok   390x844 All: e34 text unchanged
+ok   390x844 All: e47 text unchanged
+ok   390x844 All: e48 text unchanged
+ok   390x844 All: e60 text unchanged
+ok   390x844 All: no errors 
+ok   390x844 MB06 only: no e27 dossier item (sel=null)
+ok   390x844 MB06 only: no e27 text anywhere
+ok   390x844 MB06 only: no errors 
+ok   390x844 bucket 6 only: no e27 dossier item (sel=null)
+ok   390x844 bucket 6 only: no e27 text anywhere
+ok   390x844 bucket 6 only: no errors 
+ok   390x844 trilogy + MB06: no e27 dossier item (sel=scadrial)
+ok   390x844 trilogy + MB06: no e27 text anywhere
+ok   390x844 trilogy + MB06: no errors 
+ok   390x844 trilogy only: no e27 dossier item (sel=scadrial)
+ok   390x844 trilogy only: no e27 text anywhere
+ok   390x844 trilogy only: no errors 
+ok   390x844 legacy book=5: no e27 dossier item (sel=scadrial)
+ok   390x844 legacy book=5: no e27 text anywhere
+ok   390x844 legacy book=5: no errors 
+{"pass":98,"fail":0}

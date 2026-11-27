@@ -233,7 +233,7 @@ const BODIES = [
 
  {id:"mars",name:"Mars",kind:"planet",R:3389.5,a:1.52366,e:.09341,i:1.850,node:49.558,peri:286.502,M0:19.373,tex:"mars",normal:"mars",atmo:"#e9a27a",atmoThin:1,tilt:25.19,rot:24.623,interior:"mars",
   facts:{"Diameter":"6,779 km","From Sun":"228 million km (1.52 AU)","Year":"687 Earth days","Day":"24 h 37 min","Temperature":"−140 to 20 °C","Moons":"2"},
-  blurb:"A cold desert world with the largest volcano and deepest canyon in the Solar System. Dry river valleys and lake beds show Mars was once warmer and wetter. Rovers Curiosity and Perseverance are exploring it now.",
+  blurb:"A cold desert world with enormous volcanoes and the vast Valles Marineris canyon system. Dry river valleys and lake beds show Mars was once warmer and wetter. Rovers Curiosity and Perseverance are exploring it now.",
   features:[
    {n:"Olympus Mons",lat:18.65,lon:-133.8,d:"The tallest volcano in the Solar System: about 22 km high and as wide as Arizona."},
    {n:"Valles Marineris",lat:-13.9,lon:-59.2,d:"A canyon system 4,000 km long and up to 7 km deep. It would stretch across the United States."},
@@ -387,7 +387,7 @@ const BODIES = [
   features:[{n:"Cassini Regio",lat:0,lon:-90,d:"The dark leading hemisphere picks up dust and warms; ice evaporates and refreezes on the bright side, sharpening the contrast."},{n:"Equatorial ridge",lat:0,lon:120,d:"A mountain ridge up to 20 km high running along the equator, like a walnut seam."}]},
  {id:"kiviuq",name:"Kiviuq",kind:"moon",parent:"saturn",R:8,a:11110000,P:449,inc:46,tex:"asteroid",tint:"#7d6c60",lumpy:1,interior:"rubble",facts:{"Diameter":"~17 km","Orbit":"449 days"},blurb:"An irregular moon of the Inuit group, with an elongated, possibly two-lobed shape."},
  {id:"phoebe",name:"Phoebe",kind:"moon",parent:"saturn",R:106.5,a:12947780,P:-550.3,inc:175,tex:"phoebe",lumpy:[109,108,102],rot:9.3,interior:"rubble",
-  facts:{"Diameter":"213 km","Orbit":"550 days, retrograde"},blurb:"A captured relic from the outer Solar System. Dust from it forms a giant, faint ring 7 to 30 million km from Saturn.",
+  facts:{"Diameter":"213 km","Orbit":"550 days, retrograde"},blurb:"A captured relic from the outer Solar System. Dust from it forms a faint ring extending roughly 6–16 million km from Saturn’s center.",
   features:[{n:"Jason crater",lat:16,lon:-40,d:"A 100 km crater; impacts reveal bright ice under a dark coating."}]},
  {id:"siarnaq",name:"Siarnaq",kind:"moon",parent:"saturn",R:20,a:18195000,P:895.5,inc:46,tex:"asteroid",tint:"#7d6c60",lumpy:1,interior:"rubble",facts:{"Diameter":"~40 km","Orbit":"896 days"},blurb:"The largest moon of Saturn's Inuit group."},
  {id:"ymir",name:"Ymir",kind:"moon",parent:"saturn",R:9,a:23040000,P:-1315,inc:173,tex:"asteroid",tint:"#5a5550",lumpy:1,interior:"rubble",facts:{"Diameter":"~19 km","Orbit":"3.6 years, retrograde"},blurb:"A dark Norse-group moon on one of the longest orbits around Saturn."},
@@ -447,7 +447,7 @@ const BODIES = [
   features:[{n:"Polar cap & geysers",lat:-45,lon:20,plume:{h:.06,spread:.05,col:"#9a9088",n:900,speed:.25,size:.008},d:"Dark plumes up to 8 km high leave streaks on the nitrogen frost of the polar cap."},{n:"Cantaloupe terrain",lat:25,lon:-100,d:"Dimpled terrain unlike anything else, possibly from blobs of ice rising through the crust."}]},
  {id:"nereid",name:"Nereid",kind:"moon",parent:"neptune",R:170,a:5513818,P:360.1,inc:7,ecc:.75,tex:"icy",tint:"#b0aba5",interior:"icyMixed",facts:{"Diameter":"~340 km","Orbit":"360 days, very eccentric"},blurb:"Has one of the most stretched orbits of any moon, swinging from 1.4 to 9.7 million km from Neptune."},
  {id:"halimede",name:"Halimede",kind:"moon",parent:"neptune",R:31,a:16611000,P:-1879,inc:134,tex:"asteroid",tint:"#5d5a58",lumpy:1,interior:"rubble",facts:{"Diameter":"~62 km","Orbit":"5.1 years, retrograde"},blurb:"A distant irregular moon, possibly a fragment of Nereid."},
- {id:"neso",name:"Neso",kind:"moon",parent:"neptune",R:30,a:49285000,P:-9741,inc:132,tex:"asteroid",tint:"#5d5a58",lumpy:1,interior:"rubble",facts:{"Diameter":"~60 km","Orbit":"26.7 years"},blurb:"The farthest known moon from its planet: its orbit reaches more than 70 million km."},
+ {id:"neso",name:"Neso",kind:"moon",parent:"neptune",R:30,a:49285000,P:-9741,inc:132,tex:"asteroid",tint:"#5d5a58",lumpy:1,interior:"rubble",facts:{"Diameter":"~60 km","Orbit":"26.7 years"},blurb:"One of Neptune’s most distant known moons: its orbit reaches more than 70 million km."},
 
  /* Trans-Neptunian */
  {id:"pluto",name:"Pluto",kind:"dwarf",R:1188.3,a:39.482,e:.2488,i:17.14,node:110.30,peri:113.76,M0:14.53,tex:"pluto",atmo:"#b9c9e8",atmoThin:1,tilt:122.5,rot:-153.3,interior:"pluto",
@@ -495,7 +495,7 @@ const BODIES = [
   blurb:"Almost the same size as Pluto and more massive. Its discovery in 2005 led to the definition of 'dwarf planet'. Its methane atmosphere freezes onto the surface as it travels away from the Sun."},
  {id:"dysnomia",name:"Dysnomia",kind:"moon",parent:"eris",R:307,a:37350,P:15.79,tex:"rocky",tint:"#4a4644",interior:"icyMixed",facts:{"Diameter":"~615 km"},blurb:"A large, dark moon that keeps Eris tidally locked to it."},
  {id:"sedna",name:"Sedna",kind:"dwarf",R:500,a:506,e:.855,i:11.93,node:144.25,peri:311.3,M0:358.2,tex:"rocky",tint:"#b14c38",interior:"dwarfIcy",
-  facts:{"Diameter":"~1,000 km","From Sun":"76 AU now, up to ~940 AU","Year":"~11,400 years","Perihelion":"July 2076"},
+  facts:{"Diameter":"~1,000 km","From Sun":"Perihelion: about 76 AU, up to ~940 AU","Year":"~11,400 years","Perihelion":"July 2076"},
   blurb:"A deep-red world that never comes close to Neptune. Its strange orbit is one of the clues behind the Planet Nine idea."},
 
  {id:"halley",name:"Halley's Comet",kind:"comet",R:5.5,a:17.834,e:.96714,i:162.26,node:58.42,peri:111.33,Tp:1986.11,tex:"comet",tint:"#4b4844",lumpy:[7.5,4.2,4.0],rot:52.8,interior:"comet",

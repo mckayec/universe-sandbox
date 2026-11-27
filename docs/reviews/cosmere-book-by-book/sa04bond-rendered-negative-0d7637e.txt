@@ -1,0 +1,49 @@
+FAIL 1440x900 wok+ob+ds: e40 dossier text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 1440x900 wok+ob+ds: old copy absent
+FAIL 1440x900 wok+ob+ds: visible open text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 1440x900 wok+ob+ds: old copy absent after open
+FAIL 1440x900 wok+ob+ds: old codex line absent
+FAIL 1440x900 wok+ob+ds: Dalinar codex shows new key-8 line (A warlord trying to become a better man. Becomes the Bondsmith.)
+FAIL 1440x900 wok+ob+ds: travel dossier item new text, Thaylen City label
+FAIL 1440x900 wok+ob+ds: old copy absent after travel
+FAIL 1440x900 legacy book=8: e40 dossier text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 1440x900 legacy book=8: old copy absent
+FAIL 1440x900 legacy book=8: visible open text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 1440x900 legacy book=8: old copy absent after open
+FAIL 1440x900 legacy book=8: old codex line absent
+FAIL 1440x900 legacy book=8: Dalinar codex shows new key-8 line (A warlord trying to become a better man. Becomes the Bondsmith.)
+FAIL 1440x900 legacy book=8: travel dossier item new text, Thaylen City label
+FAIL 1440x900 legacy book=8: old copy absent after travel
+FAIL 1440x900 All: e40 dossier text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 1440x900 All: old copy absent
+FAIL 1440x900 All: visible open text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 1440x900 All: old copy absent after open
+FAIL 1440x900 All: old codex line absent
+FAIL 1440x900 All: Dalinar codex shows new key-8 line (A warlord trying to become a better man. Becomes the Bondsmith. Dies after renouncing Honor’s power.)
+FAIL 1440x900 All: travel dossier item new text, Thaylen City label
+FAIL 1440x900 All: old copy absent after travel
+FAIL 390x844 wok+ob+ds: e40 dossier text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 390x844 wok+ob+ds: old copy absent
+FAIL 390x844 wok+ob+ds: visible open text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 390x844 wok+ob+ds: old copy absent after open
+FAIL 390x844 wok+ob+ds: old codex line absent
+FAIL 390x844 wok+ob+ds: Dalinar codex shows new key-8 line (A warlord trying to become a better man. Becomes the Bondsmith.)
+FAIL 390x844 wok+ob+ds: travel dossier item new text, Thaylen City label
+FAIL 390x844 wok+ob+ds: old copy absent after travel
+FAIL 390x844 legacy book=8: e40 dossier text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 390x844 legacy book=8: old copy absent
+FAIL 390x844 legacy book=8: visible open text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 390x844 legacy book=8: old copy absent after open
+FAIL 390x844 legacy book=8: old codex line absent
+FAIL 390x844 legacy book=8: Dalinar codex shows new key-8 line (A warlord trying to become a better man. Becomes the Bondsmith.)
+FAIL 390x844 legacy book=8: travel dossier item new text, Thaylen City label
+FAIL 390x844 legacy book=8: old copy absent after travel
+FAIL 390x844 All: e40 dossier text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 390x844 All: old copy absent
+FAIL 390x844 All: visible open text = new (Odium sends his champion. Dalinar refuses to give in, binds the realms together and becomes the Bondsmith.)
+FAIL 390x844 All: old copy absent after open
+FAIL 390x844 All: old codex line absent
+FAIL 390x844 All: Dalinar codex shows new key-8 line (A warlord trying to become a better man. Becomes the Bondsmith. Dies after renouncing Honor’s power.)
+FAIL 390x844 All: travel dossier item new text, Thaylen City label
+FAIL 390x844 All: old copy absent after travel
+{"pass":108,"fail":48}

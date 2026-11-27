@@ -7,7 +7,7 @@
 | 1 | `lds-standard-works` | LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers) | A | Earth-historical, layered | [packs/lds-standard-works](packs/lds-standard-works/status.md) |
 | 2 | `christian-apocrypha` | Christian apocrypha (later layer of the Bible portion) | A | Earth-historical layer | [packs/christian-apocrypha](packs/christian-apocrypha/status.md) |
 | 3 | `abrahamic-world-religions` | Abrahamic origins and divergence (Judaism, Christianity, Islam), their branches and spread, and ties to Buddhism, Taoism, Hinduism and others | A | Earth map + branching tree | [packs/abrahamic-world-religions](packs/abrahamic-world-religions/status.md) |
-| 4 | `wheel-of-time` | The Wheel of Time | B | World-only (builds the mode) | [packs/wheel-of-time](packs/wheel-of-time/status.md) |
+| 4 | `wheel-of-time` | The Wheel of Time | B | World-only (builds the mode) | [packs/wheel-of-time](packs/wheel-of-time/status.md) · [Required Eye of the World intake](packs/wheel-of-time/eye-of-the-world-intake.md) |
 | 5 | `lord-of-the-rings` | Middle-earth (The Hobbit, The Lord of the Rings, Silmarillion) | B | World-only | [packs/lord-of-the-rings](packs/lord-of-the-rings/status.md) |
 | 6 | `narnia` | The Chronicles of Narnia | B | World-only | [packs/narnia](packs/narnia/status.md) |
 | 7 | `throne-of-glass` | Throne of Glass and related Maas works | B | World-only (+ cross-world links) | [packs/throne-of-glass](packs/throne-of-glass/status.md) |

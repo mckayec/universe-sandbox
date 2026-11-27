@@ -380,8 +380,9 @@
         if (l) parts.push('<span class="lchip" style="--lc:' + ESC(l.c) + '">' + ESC(l.short) + '</span>');
       });
     // `date` is an attributed date as text ("May 15, 1829, as reported"); it never feeds the year filter.
+    // `whenText` (the source wording, e.g. "eighteenth century") is shown the same way.
     // When an item has both, the text is shown (it keeps the source's wording) and `when` still filters.
-    const txt = typeof it.date === 'string' ? it.date.trim() : '';
+    const txt = typeof it.date === 'string' ? it.date.trim() : it && it.whenText ? String(it.whenText) : '';
     const w = txt || fmtWhen(it, T ? T.style : 'BC/AD');
     if (w) parts.push('<span class="lwhen">' + ESC(w) + '</span>');
     return parts.join('');

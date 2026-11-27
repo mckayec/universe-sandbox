@@ -1,0 +1,109 @@
+ok   1440x900 All: old wording absent (across time and must work out why)
+ok   1440x900 All: old wording absent (few hundred miles)
+ok   1440x900 All: old wording absent (six times larger)
+ok   1440x900 All: old wording absent (Half of a double planet)
+ok   1440x900 All: komashi selected (komashi)
+ok   1440x900 All: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   1440x900 All: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   1440x900 All: e51 opened by real click, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   1440x900 All: opened e51 text inside viewport ({"w":356,"h":45,"left":1047,"top":581.3,"right":1403,"bottom":626.3,"vw":1440,"vh":900})
+ok   1440x900 All: no errors 
+ok   1440x900 legacy11: old wording absent (across time and must work out why)
+ok   1440x900 legacy11: old wording absent (few hundred miles)
+ok   1440x900 legacy11: old wording absent (six times larger)
+ok   1440x900 legacy11: old wording absent (Half of a double planet)
+ok   1440x900 legacy11: komashi selected (komashi)
+ok   1440x900 legacy11: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   1440x900 legacy11: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   1440x900 legacy11: e51 opened by real click, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   1440x900 legacy11: opened e51 text inside viewport ({"w":356,"h":45,"left":1047,"top":581.3,"right":1403,"bottom":626.3,"vw":1440,"vh":900})
+ok   1440x900 legacy11: no errors 
+ok   1440x900 legacy10: old wording absent (across time and must work out why)
+ok   1440x900 legacy10: old wording absent (few hundred miles)
+ok   1440x900 legacy10: old wording absent (six times larger)
+ok   1440x900 legacy10: old wording absent (Half of a double planet)
+ok   1440x900 legacy10: new blurb not on page
+ok   1440x900 legacy10: new e51 not on page
+ok   1440x900 legacy10: no errors 
+ok   1440x900 bucket11: old wording absent (across time and must work out why)
+ok   1440x900 bucket11: old wording absent (few hundred miles)
+ok   1440x900 bucket11: old wording absent (six times larger)
+ok   1440x900 bucket11: old wording absent (Half of a double planet)
+ok   1440x900 bucket11: komashi selected (komashi)
+ok   1440x900 bucket11: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   1440x900 bucket11: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   1440x900 bucket11: e51 opened by real click, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   1440x900 bucket11: opened e51 text inside viewport ({"w":356,"h":45,"left":1047,"top":581.3,"right":1403,"bottom":626.3,"vw":1440,"vh":900})
+ok   1440x900 bucket11: no errors 
+ok   1440x900 all works: old wording absent (across time and must work out why)
+ok   1440x900 all works: old wording absent (few hundred miles)
+ok   1440x900 all works: old wording absent (six times larger)
+ok   1440x900 all works: old wording absent (Half of a double planet)
+ok   1440x900 all works: komashi selected (komashi)
+ok   1440x900 all works: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   1440x900 all works: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   1440x900 all works: e51 opened by real click, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   1440x900 all works: opened e51 text inside viewport ({"w":356,"h":45,"left":1047,"top":581.3,"right":1403,"bottom":626.3,"vw":1440,"vh":900})
+ok   1440x900 all works: no errors 
+ok   1440x900 Yumi only: old wording absent (across time and must work out why)
+ok   1440x900 Yumi only: old wording absent (few hundred miles)
+ok   1440x900 Yumi only: old wording absent (six times larger)
+ok   1440x900 Yumi only: old wording absent (Half of a double planet)
+ok   1440x900 Yumi only: new blurb not on page
+ok   1440x900 Yumi only: new e51 not on page
+ok   1440x900 Yumi only: no errors 
+ok   390x844 All: old wording absent (across time and must work out why)
+ok   390x844 All: old wording absent (few hundred miles)
+ok   390x844 All: old wording absent (six times larger)
+ok   390x844 All: old wording absent (Half of a double planet)
+ok   390x844 All: komashi selected (komashi)
+ok   390x844 All: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   390x844 All: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   390x844 All: e51 opened by real tap, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   390x844 All: opened e51 text inside viewport ({"w":322,"h":45,"left":41,"top":652,"right":363,"bottom":697,"vw":390,"vh":844})
+ok   390x844 All: no errors 
+ok   390x844 legacy11: old wording absent (across time and must work out why)
+ok   390x844 legacy11: old wording absent (few hundred miles)
+ok   390x844 legacy11: old wording absent (six times larger)
+ok   390x844 legacy11: old wording absent (Half of a double planet)
+ok   390x844 legacy11: komashi selected (komashi)
+ok   390x844 legacy11: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   390x844 legacy11: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   390x844 legacy11: e51 opened by real tap, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   390x844 legacy11: opened e51 text inside viewport ({"w":322,"h":45,"left":41,"top":652,"right":363,"bottom":697,"vw":390,"vh":844})
+ok   390x844 legacy11: no errors 
+ok   390x844 legacy10: old wording absent (across time and must work out why)
+ok   390x844 legacy10: old wording absent (few hundred miles)
+ok   390x844 legacy10: old wording absent (six times larger)
+ok   390x844 legacy10: old wording absent (Half of a double planet)
+ok   390x844 legacy10: new blurb not on page
+ok   390x844 legacy10: new e51 not on page
+ok   390x844 legacy10: no errors 
+ok   390x844 bucket11: old wording absent (across time and must work out why)
+ok   390x844 bucket11: old wording absent (few hundred miles)
+ok   390x844 bucket11: old wording absent (six times larger)
+ok   390x844 bucket11: old wording absent (Half of a double planet)
+ok   390x844 bucket11: komashi selected (komashi)
+ok   390x844 bucket11: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   390x844 bucket11: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   390x844 bucket11: e51 opened by real tap, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   390x844 bucket11: opened e51 text inside viewport ({"w":322,"h":45,"left":41,"top":652,"right":363,"bottom":697,"vw":390,"vh":844})
+ok   390x844 bucket11: no errors 
+ok   390x844 all works: old wording absent (across time and must work out why)
+ok   390x844 all works: old wording absent (few hundred miles)
+ok   390x844 all works: old wording absent (six times larger)
+ok   390x844 all works: old wording absent (Half of a double planet)
+ok   390x844 all works: komashi selected (komashi)
+ok   390x844 all works: blurb = replacement (Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.)
+ok   390x844 all works: e51 text = replacement (Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked.)
+ok   390x844 all works: e51 opened by real tap, shows replacement ({"ev":"e51","open":true,"ex":"Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."})
+ok   390x844 all works: opened e51 text inside viewport ({"w":322,"h":45,"left":41,"top":652,"right":363,"bottom":697,"vw":390,"vh":844})
+ok   390x844 all works: no errors 
+ok   390x844 Yumi only: old wording absent (across time and must work out why)
+ok   390x844 Yumi only: old wording absent (few hundred miles)
+ok   390x844 Yumi only: old wording absent (six times larger)
+ok   390x844 Yumi only: old wording absent (Half of a double planet)
+ok   390x844 Yumi only: new blurb not on page
+ok   390x844 Yumi only: new e51 not on page
+ok   390x844 Yumi only: no errors 
+ko01text-probe (head): 108/108 pass

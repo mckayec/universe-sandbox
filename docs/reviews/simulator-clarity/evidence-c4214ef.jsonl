@@ -1,0 +1,4 @@
+{"tag":"close-1440x900","placedByUi":[true,true],"count":"1","selected":"Void 02","isolated":"Undisturbed","pairPaused":"Truncated by Void 01: outer gas cut to 66% (tidal estimate)","pairFast":"Strongly truncated by Void 01: outer gas cut to 33% (tidal estimate)","errors":[],"glMessages":[]}
+{"tag":"wide-1440x900","placedByUi":[true,true],"count":"2","selected":"Void 02","isolated":"Undisturbed","pairPaused":"Perturbed by Void 01: outer gas cut to 89% (tidal estimate)","pairFast":"Strongly truncated by Void 01: outer gas cut to 53% (tidal estimate)","errors":[],"glMessages":[]}
+{"tag":"close-390x844","placedByUi":[true,true],"count":"1","selected":"Void 02","isolated":"Undisturbed","pairPaused":"Strongly truncated by Void 01: outer gas cut to 49% (tidal estimate)","pairFast":"Strongly truncated by Void 01: outer gas cut to 30% (tidal estimate)","errors":[],"glMessages":[]}
+{"outDir":"/tmp/claude-0/shots4a"}

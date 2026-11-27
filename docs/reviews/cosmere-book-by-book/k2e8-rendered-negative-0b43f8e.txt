@@ -1,0 +1,17 @@
+FAIL 1440x900 OT: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 1440x900 OT: old e8 wording absent from page
+FAIL 1440x900 legacy book=2: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 1440x900 legacy book=2: old e8 wording absent from page
+FAIL 1440x900 legacy book=10: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 1440x900 legacy book=10: old e8 wording absent from page
+FAIL 1440x900 All: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 1440x900 All: old e8 wording absent from page
+FAIL 390x844 OT: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 390x844 OT: old e8 wording absent from page
+FAIL 390x844 legacy book=2: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 390x844 legacy book=2: old e8 wording absent from page
+FAIL 390x844 legacy book=10: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 390x844 legacy book=10: old e8 wording absent from page
+FAIL 390x844 All: e8 text = new wording (Vin finds his weakness and kills the immortal emperor in his palace.)
+FAIL 390x844 All: old e8 wording absent from page
+{"pass":60,"fail":16}

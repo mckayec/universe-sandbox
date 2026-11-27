@@ -1,0 +1,41 @@
+{"tag":"1440x900","check":"black hole placed by UI","pass":true,"detail":"1"}
+{"tag":"1440x900","check":"mass reads model units, not M⊕/M☉","pass":true,"detail":"600 model units"}
+{"tag":"1440x900","check":"canvas label metrics use model units","pass":true,"detail":["600 model units · Ø2.8u"]}
+{"tag":"1440x900","check":"scale row visible","pass":true,"detail":"Model units · not to scale"}
+{"tag":"1440x900","check":"reference block visible","pass":true,"detail":""}
+{"tag":"1440x900","check":"reference block opens","pass":true,"detail":""}
+{"tag":"1440x900","check":"five preset rows","pass":true,"detail":["Small stellar · 5 M☉Stellar-mass · horizon 15 km · shadow 38 kme.g. Cygnus X-1 ≈ 21 M☉","Large stellar · 30 M☉Stellar-mass · horizon 89 km · shadow 230 kme.g. Gaia BH3 ≈ 33 M☉","Intermediate · 1,000 M☉Intermediate-mass · horizon 2,953 km · shadow 7,673 kme.g. GW190521 remnant ≈ 142 M☉","Galactic core · 1 million M☉Supermassive · horizon 2,953,250 km · shadow 7,672,769 kme.g. Sagittarius A* ≈ 4 million M☉","Giant core · 1 billion M☉Supermassive · horizon 19.7 AU · shadow 51.3 AUe.g. M87* ≈ 6.5 billion M☉"]}
+{"tag":"1440x900","check":"Sgr A* and M87* examples","pass":true,"detail":""}
+{"tag":"1440x900","check":"panel within viewport width","pass":true,"detail":{"x":1194,"y":120,"width":224,"height":720}}
+{"tag":"1440x900","check":"second object placed","pass":true,"detail":"2"}
+{"tag":"1440x900","check":"non-black-hole selection hides scale row and block","pass":true,"detail":"Salt-and-ice world"}
+{"tag":"1440x900","check":"non-black-hole keeps M⊕","pass":true,"detail":""}
+{"tag":"1440x900","check":"no page/console errors","pass":true,"detail":[]}
+{"tag":"390x844","check":"black hole placed by UI","pass":true,"detail":"1"}
+{"tag":"390x844","check":"mass reads model units, not M⊕/M☉","pass":true,"detail":"600 model units"}
+{"tag":"390x844","check":"canvas label metrics use model units","pass":true,"detail":["600 model units · Ø2.8u"]}
+{"tag":"390x844","check":"collapsed sheet hides reference block","pass":true,"detail":""}
+{"tag":"390x844","check":"scale row visible","pass":true,"detail":"Model units · not to scale"}
+{"tag":"390x844","check":"reference block visible","pass":true,"detail":""}
+{"tag":"390x844","check":"reference block opens","pass":true,"detail":""}
+{"tag":"390x844","check":"five preset rows","pass":true,"detail":["Small stellar · 5 M☉Stellar-mass · horizon 15 km · shadow 38 kme.g. Cygnus X-1 ≈ 21 M☉","Large stellar · 30 M☉Stellar-mass · horizon 89 km · shadow 230 kme.g. Gaia BH3 ≈ 33 M☉","Intermediate · 1,000 M☉Intermediate-mass · horizon 2,953 km · shadow 7,673 kme.g. GW190521 remnant ≈ 142 M☉","Galactic core · 1 million M☉Supermassive · horizon 2,953,250 km · shadow 7,672,769 kme.g. Sagittarius A* ≈ 4 million M☉","Giant core · 1 billion M☉Supermassive · horizon 19.7 AU · shadow 51.3 AUe.g. M87* ≈ 6.5 billion M☉"]}
+{"tag":"390x844","check":"Sgr A* and M87* examples","pass":true,"detail":""}
+{"tag":"390x844","check":"panel within viewport width","pass":true,"detail":{"x":12,"y":372.890625,"width":366,"height":405.109375}}
+{"tag":"390x844","check":"second object placed","pass":true,"detail":"2"}
+{"tag":"390x844","check":"non-black-hole selection hides scale row and block","pass":true,"detail":"Salt-and-ice world"}
+{"tag":"390x844","check":"non-black-hole keeps M⊕","pass":true,"detail":""}
+{"tag":"390x844","check":"no page/console errors","pass":true,"detail":[]}
+{"tag":"844x390","check":"black hole placed by UI","pass":true,"detail":"1"}
+{"tag":"844x390","check":"mass reads model units, not M⊕/M☉","pass":true,"detail":"600 model units"}
+{"tag":"844x390","check":"canvas label metrics use model units","pass":true,"detail":["600 model units · Ø2.8u"]}
+{"tag":"844x390","check":"scale row visible","pass":true,"detail":"Model units · not to scale"}
+{"tag":"844x390","check":"reference block visible","pass":true,"detail":""}
+{"tag":"844x390","check":"reference block opens","pass":true,"detail":""}
+{"tag":"844x390","check":"five preset rows","pass":true,"detail":["Small stellar · 5 M☉Stellar-mass · horizon 15 km · shadow 38 kme.g. Cygnus X-1 ≈ 21 M☉","Large stellar · 30 M☉Stellar-mass · horizon 89 km · shadow 230 kme.g. Gaia BH3 ≈ 33 M☉","Intermediate · 1,000 M☉Intermediate-mass · horizon 2,953 km · shadow 7,673 kme.g. GW190521 remnant ≈ 142 M☉","Galactic core · 1 million M☉Supermassive · horizon 2,953,250 km · shadow 7,672,769 kme.g. Sagittarius A* ≈ 4 million M☉","Giant core · 1 billion M☉Supermassive · horizon 19.7 AU · shadow 51.3 AUe.g. M87* ≈ 6.5 billion M☉"]}
+{"tag":"844x390","check":"Sgr A* and M87* examples","pass":true,"detail":""}
+{"tag":"844x390","check":"panel within viewport width","pass":true,"detail":{"x":598,"y":120,"width":224,"height":210}}
+{"tag":"844x390","check":"second object placed","pass":true,"detail":"2"}
+{"tag":"844x390","check":"non-black-hole selection hides scale row and block","pass":true,"detail":"Salt-and-ice world"}
+{"tag":"844x390","check":"non-black-hole keeps M⊕","pass":true,"detail":""}
+{"tag":"844x390","check":"no page/console errors","pass":true,"detail":[]}
+{"summary":true,"failed":0}

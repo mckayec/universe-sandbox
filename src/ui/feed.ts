@@ -156,9 +156,10 @@ export function museumEvent(title: string, detail: string, color = '#9bb7ff', bo
     navigator.vibrate(sound === 'supernova' ? [35, 25, 80] : 22);
   if (app.selectedBody === body) updateInspector();
 }
-/** Matches the compact (phone / iPad portrait) layout breakpoint in style.css. */
+/** Matches the compact layout media query in style.css: narrow screens and phones held in landscape. */
+export const COMPACT_QUERY = '(max-width: 800px), (max-height: 500px) and (pointer: coarse)';
 export function compactLayout() {
-  return matchMedia('(max-width: 800px)').matches;
+  return matchMedia(COMPACT_QUERY).matches;
 }
 export function setToolsCollapsed(collapsed: boolean) {
   document.querySelector('.shell')!.classList.toggle('tools-collapsed', collapsed);

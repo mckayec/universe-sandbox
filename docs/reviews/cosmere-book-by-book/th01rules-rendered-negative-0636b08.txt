@@ -1,0 +1,33 @@
+FAIL 1440x900 All: old wording absent
+FAIL 1440x900 All: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 All: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 All: page has replacement, no old sentence
+FAIL 1440x900 legacy7: old wording absent
+FAIL 1440x900 legacy7: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 legacy7: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 legacy7: page has replacement, no old sentence
+FAIL 1440x900 bucket7: old wording absent
+FAIL 1440x900 bucket7: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 bucket7: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 bucket7: page has replacement, no old sentence
+FAIL 1440x900 all works: old wording absent
+FAIL 1440x900 all works: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 all works: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 1440x900 all works: page has replacement, no old sentence
+FAIL 390x844 All: old wording absent
+FAIL 390x844 All: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 All: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 All: page has replacement, no old sentence
+FAIL 390x844 legacy7: old wording absent
+FAIL 390x844 legacy7: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 legacy7: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 legacy7: page has replacement, no old sentence
+FAIL 390x844 bucket7: old wording absent
+FAIL 390x844 bucket7: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 bucket7: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 bucket7: page has replacement, no old sentence
+FAIL 390x844 all works: old wording absent
+FAIL 390x844 all works: places list desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 all works: opened desc = preserved + replacement (The smaller continent, almost wall-to-wall forest, unnaturally silent and haunted by shades. No fire, no blood: the Simple Rules keep you alive.)
+FAIL 390x844 all works: page has replacement, no old sentence
+th01rules-probe (parent): 48/80 pass

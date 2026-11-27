@@ -1,0 +1,198 @@
+# sa07text-probe.mjs raw output (vite preview of local build; Playwright chromium-1243, swiftshader)
+## head 36bbde8d6d0d188c04db1ea6c70c37623e7f2867 (VERBOSE)
+ok   1440x900 e55 all works: roshar selected (roshar)
+ok   1440x900 e55 all works: dossier text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   1440x900 e55 all works: place label unchanged = Urithiru (Urithiru)
+ok   1440x900 e55 all works: old copy absent
+ok   1440x900 e55 all works: opened from dossier (e55)
+ok   1440x900 e55 all works: visible open text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   1440x900 e55 all works: text wraps inside viewport ({"text":"The agreed contest of champions approaches; its ten-day countdown is already underway.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 e55 all works: old copy absent after open
+ok   1440x900 e55 all works: no errors 
+ok   1440x900 e55 legacy book=12: roshar selected (roshar)
+ok   1440x900 e55 legacy book=12: dossier text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   1440x900 e55 legacy book=12: place label unchanged = Urithiru (Urithiru)
+ok   1440x900 e55 legacy book=12: old copy absent
+ok   1440x900 e55 legacy book=12: opened from dossier (e55)
+ok   1440x900 e55 legacy book=12: visible open text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   1440x900 e55 legacy book=12: text wraps inside viewport ({"text":"The agreed contest of champions approaches; its ten-day countdown is already underway.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 e55 legacy book=12: old copy absent after open
+ok   1440x900 e55 legacy book=12: no errors 
+ok   1440x900 e55 All: roshar selected (roshar)
+ok   1440x900 e55 All: dossier text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   1440x900 e55 All: place label unchanged = Urithiru (Urithiru)
+ok   1440x900 e55 All: old copy absent
+ok   1440x900 e55 All: opened from dossier (e55)
+ok   1440x900 e55 All: visible open text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   1440x900 e55 All: text wraps inside viewport ({"text":"The agreed contest of champions approaches; its ten-day countdown is already underway.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 e55 All: old copy absent after open
+ok   1440x900 e55 All: no errors 
+ok   1440x900 e55 WaT only: no item (sel=null)
+ok   1440x900 e55 WaT only: no text anywhere
+ok   1440x900 e55 WaT only: no errors 
+ok   1440x900 e55 all minus WaT: no item (sel=roshar)
+ok   1440x900 e55 all minus WaT: no text anywhere
+ok   1440x900 e55 all minus WaT: no errors 
+ok   1440x900 e55 legacy book=11: no item (sel=roshar)
+ok   1440x900 e55 legacy book=11: no text anywhere
+ok   1440x900 e55 legacy book=11: no errors 
+ok   1440x900 e60 all works: scadrial selected (scadrial)
+ok   1440x900 e60 all works: dossier text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   1440x900 e60 all works: place label observed = null
+ok   1440x900 e60 all works: old copy absent
+ok   1440x900 e60 all works: opened from dossier (e60)
+ok   1440x900 e60 all works: visible open text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   1440x900 e60 all works: text wraps inside viewport ({"text":"Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 e60 all works: old copy absent after open
+ok   1440x900 e60 all works: no errors 
+ok   1440x900 e60 legacy book=12: scadrial selected (scadrial)
+ok   1440x900 e60 legacy book=12: dossier text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   1440x900 e60 legacy book=12: place label observed = null
+ok   1440x900 e60 legacy book=12: old copy absent
+ok   1440x900 e60 legacy book=12: opened from dossier (e60)
+ok   1440x900 e60 legacy book=12: visible open text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   1440x900 e60 legacy book=12: text wraps inside viewport ({"text":"Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 e60 legacy book=12: old copy absent after open
+ok   1440x900 e60 legacy book=12: no errors 
+ok   1440x900 e60 All: scadrial selected (scadrial)
+ok   1440x900 e60 All: dossier text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   1440x900 e60 All: place label observed = null
+ok   1440x900 e60 All: old copy absent
+ok   1440x900 e60 All: opened from dossier (e60)
+ok   1440x900 e60 All: visible open text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   1440x900 e60 All: text wraps inside viewport ({"text":"Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 e60 All: old copy absent after open
+ok   1440x900 e60 All: no errors 
+ok   1440x900 e60 WaT only: no item (sel=null)
+ok   1440x900 e60 WaT only: no text anywhere
+ok   1440x900 e60 WaT only: no errors 
+ok   1440x900 e60 all minus WaT: no item (sel=scadrial)
+ok   1440x900 e60 all minus WaT: no text anywhere
+ok   1440x900 e60 all minus WaT: no errors 
+ok   1440x900 e60 legacy book=11: no item (sel=scadrial)
+ok   1440x900 e60 legacy book=11: no text anywhere
+ok   1440x900 e60 legacy book=11: no errors 
+ok   390x844 e55 all works: roshar selected (roshar)
+ok   390x844 e55 all works: dossier text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   390x844 e55 all works: place label unchanged = Urithiru (Urithiru)
+ok   390x844 e55 all works: old copy absent
+ok   390x844 e55 all works: opened from dossier (e55)
+ok   390x844 e55 all works: visible open text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   390x844 e55 all works: text wraps inside viewport ({"text":"The agreed contest of champions approaches; its ten-day countdown is already underway.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 e55 all works: old copy absent after open
+ok   390x844 e55 all works: no errors 
+ok   390x844 e55 legacy book=12: roshar selected (roshar)
+ok   390x844 e55 legacy book=12: dossier text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   390x844 e55 legacy book=12: place label unchanged = Urithiru (Urithiru)
+ok   390x844 e55 legacy book=12: old copy absent
+ok   390x844 e55 legacy book=12: opened from dossier (e55)
+ok   390x844 e55 legacy book=12: visible open text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   390x844 e55 legacy book=12: text wraps inside viewport ({"text":"The agreed contest of champions approaches; its ten-day countdown is already underway.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 e55 legacy book=12: old copy absent after open
+ok   390x844 e55 legacy book=12: no errors 
+ok   390x844 e55 All: roshar selected (roshar)
+ok   390x844 e55 All: dossier text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   390x844 e55 All: place label unchanged = Urithiru (Urithiru)
+ok   390x844 e55 All: old copy absent
+ok   390x844 e55 All: opened from dossier (e55)
+ok   390x844 e55 All: visible open text = new (The agreed contest of champions approaches; its ten-day countdown is already underway.)
+ok   390x844 e55 All: text wraps inside viewport ({"text":"The agreed contest of champions approaches; its ten-day countdown is already underway.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 e55 All: old copy absent after open
+ok   390x844 e55 All: no errors 
+ok   390x844 e55 WaT only: no item (sel=null)
+ok   390x844 e55 WaT only: no text anywhere
+ok   390x844 e55 WaT only: no errors 
+ok   390x844 e55 all minus WaT: no item (sel=roshar)
+ok   390x844 e55 all minus WaT: no text anywhere
+ok   390x844 e55 all minus WaT: no errors 
+ok   390x844 e55 legacy book=11: no item (sel=roshar)
+ok   390x844 e55 legacy book=11: no text anywhere
+ok   390x844 e55 legacy book=11: no errors 
+ok   390x844 e60 all works: scadrial selected (scadrial)
+ok   390x844 e60 all works: dossier text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   390x844 e60 all works: place label observed = null
+ok   390x844 e60 all works: old copy absent
+ok   390x844 e60 all works: opened from dossier (e60)
+ok   390x844 e60 all works: visible open text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   390x844 e60 all works: text wraps inside viewport ({"text":"Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 e60 all works: old copy absent after open
+ok   390x844 e60 all works: no errors 
+ok   390x844 e60 legacy book=12: scadrial selected (scadrial)
+ok   390x844 e60 legacy book=12: dossier text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   390x844 e60 legacy book=12: place label observed = null
+ok   390x844 e60 legacy book=12: old copy absent
+ok   390x844 e60 legacy book=12: opened from dossier (e60)
+ok   390x844 e60 legacy book=12: visible open text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   390x844 e60 legacy book=12: text wraps inside viewport ({"text":"Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 e60 legacy book=12: old copy absent after open
+ok   390x844 e60 legacy book=12: no errors 
+ok   390x844 e60 All: scadrial selected (scadrial)
+ok   390x844 e60 All: dossier text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   390x844 e60 All: place label observed = null
+ok   390x844 e60 All: old copy absent
+ok   390x844 e60 All: opened from dossier (e60)
+ok   390x844 e60 All: visible open text = new (Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.)
+ok   390x844 e60 All: text wraps inside viewport ({"text":"Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 e60 All: old copy absent after open
+ok   390x844 e60 All: no errors 
+ok   390x844 e60 WaT only: no item (sel=null)
+ok   390x844 e60 WaT only: no text anywhere
+ok   390x844 e60 WaT only: no errors 
+ok   390x844 e60 all minus WaT: no item (sel=scadrial)
+ok   390x844 e60 all minus WaT: no text anywhere
+ok   390x844 e60 all minus WaT: no errors 
+ok   390x844 e60 legacy book=11: no item (sel=scadrial)
+ok   390x844 e60 legacy book=11: no text anywhere
+ok   390x844 e60 legacy book=11: no errors 
+sa07text-probe: 144/144 pass
+
+## actual parent 5c59d326e1e2fb188b75203cdfd594c08c77ef2a (negative control)
+FAIL 1440x900 e55 all works: dossier text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 1440x900 e55 all works: old copy absent
+FAIL 1440x900 e55 all works: visible open text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 1440x900 e55 all works: old copy absent after open
+FAIL 1440x900 e55 legacy book=12: dossier text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 1440x900 e55 legacy book=12: old copy absent
+FAIL 1440x900 e55 legacy book=12: visible open text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 1440x900 e55 legacy book=12: old copy absent after open
+FAIL 1440x900 e55 All: dossier text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 1440x900 e55 All: old copy absent
+FAIL 1440x900 e55 All: visible open text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 1440x900 e55 All: old copy absent after open
+FAIL 1440x900 e60 all works: dossier text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 1440x900 e60 all works: old copy absent
+FAIL 1440x900 e60 all works: visible open text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 1440x900 e60 all works: old copy absent after open
+FAIL 1440x900 e60 legacy book=12: dossier text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 1440x900 e60 legacy book=12: old copy absent
+FAIL 1440x900 e60 legacy book=12: visible open text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 1440x900 e60 legacy book=12: old copy absent after open
+FAIL 1440x900 e60 All: dossier text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 1440x900 e60 All: old copy absent
+FAIL 1440x900 e60 All: visible open text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 1440x900 e60 All: old copy absent after open
+FAIL 390x844 e55 all works: dossier text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 390x844 e55 all works: old copy absent
+FAIL 390x844 e55 all works: visible open text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 390x844 e55 all works: old copy absent after open
+FAIL 390x844 e55 legacy book=12: dossier text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 390x844 e55 legacy book=12: old copy absent
+FAIL 390x844 e55 legacy book=12: visible open text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 390x844 e55 legacy book=12: old copy absent after open
+FAIL 390x844 e55 All: dossier text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 390x844 e55 All: old copy absent
+FAIL 390x844 e55 All: visible open text = new (Dalinar and Odium agree on a contest, with ten days for both sides to prepare.)
+FAIL 390x844 e55 All: old copy absent after open
+FAIL 390x844 e60 all works: dossier text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 390x844 e60 all works: old copy absent
+FAIL 390x844 e60 all works: visible open text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 390x844 e60 all works: old copy absent after open
+FAIL 390x844 e60 legacy book=12: dossier text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 390x844 e60 legacy book=12: old copy absent
+FAIL 390x844 e60 legacy book=12: visible open text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 390x844 e60 legacy book=12: old copy absent after open
+FAIL 390x844 e60 All: dossier text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 390x844 e60 All: old copy absent
+FAIL 390x844 e60 All: visible open text = new (In the epilogue Hoid travels to Scadrial to look for allies against Retribution.)
+FAIL 390x844 e60 All: old copy absent after open
+sa07text-probe: 96/144 pass

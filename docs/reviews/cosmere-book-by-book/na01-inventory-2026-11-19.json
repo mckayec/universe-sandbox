@@ -1,0 +1,594 @@
+{
+  "scope": "Nalthis base site records and six event slots; scene IDs inventoried, scene claims not certified",
+  "branches": [
+    {
+      "pr": 48,
+      "head": "52534d0975af39e620e05a43c2f4f05dc6b4b1fc",
+      "blob": "0fd66c7cca0085872e8f8a3d2154e4010356b9e6",
+      "baseSites": [
+        {
+          "id": "ttelir",
+          "name": "T’Telir",
+          "lat": 11.2,
+          "lon": 5.6,
+          "books": [
+            3
+          ],
+          "desc": "Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere."
+        },
+        {
+          "id": "courtofgods",
+          "name": "The Court of Gods",
+          "lat": 10.8,
+          "lon": 5.7,
+          "books": [
+            3
+          ],
+          "desc": "A walled plateau in the south of T’Telir over the sea: a ring of palaces for the Returned and the God King’s black palace, where Siri is sent to be married."
+        },
+        {
+          "id": "denir",
+          "name": "D’Denir garden",
+          "lat": 11.7,
+          "lon": 5.55,
+          "books": [
+            3
+          ],
+          "desc": "A quiet field of hundreds of old warrior statues in the north of the city."
+        },
+        {
+          "id": "brightsea",
+          "name": "The Bright Sea",
+          "lat": 11,
+          "lon": 16,
+          "sea": true,
+          "books": [
+            3
+          ],
+          "desc": "The landlocked sea east of Hallandren, which Idrians call the Inner Sea."
+        },
+        {
+          "id": "edglipool",
+          "name": "Endowment’s perpendicularity",
+          "lat": 6,
+          "lon": -6,
+          "books": [
+            3
+          ],
+          "desc": "In a shadowy jungle cavern in Hallandren; its seeping Investiture feeds the Tears of Edgli flowers. Worldhoppers pass customs here. The exact site is not given."
+        },
+        {
+          "id": "bevalis",
+          "name": "Bevalis",
+          "lat": 29,
+          "lon": -6,
+          "books": [
+            3
+          ],
+          "desc": "The small capital of Idris in a mountain valley, Siri and Vivenna’s home."
+        },
+        {
+          "id": "passes",
+          "name": "The Idrian passes",
+          "lat": 34.5,
+          "lon": -5,
+          "books": [
+            3
+          ],
+          "desc": "Idris controls four trade passes north through its mountains and lives on their tolls."
+        },
+        {
+          "id": "pahnkahl",
+          "name": "Pahn Kahl",
+          "lat": -4,
+          "lon": -2,
+          "books": [
+            3
+          ],
+          "desc": "A quiet southern province of tropical lowlands inside Hallandren, with grievances of its own."
+        },
+        {
+          "id": "tedradel",
+          "name": "Tedradel",
+          "lat": 11,
+          "lon": 36,
+          "books": [
+            3
+          ],
+          "desc": "The kingdom directly across the Bright Sea, friendly with Idris and at odds with Hallandren since the Manywar."
+        },
+        {
+          "id": "kuth",
+          "name": "Kuth and Huth",
+          "lat": 40,
+          "lon": -5,
+          "books": [
+            3
+          ],
+          "desc": "Northern kingdoms beyond the Idrian mountains, destroyed in the Manywar."
+        }
+      ],
+      "events": [
+        {
+          "id": "e13",
+          "record": {
+            "id": "e13",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "title": "Siri’s marriage",
+            "text": "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."
+          }
+        },
+        {
+          "id": "e14",
+          "record": {
+            "id": "e14",
+            "book": 3,
+            "world": "nalthis",
+            "site": "ttelir",
+            "title": "Vivenna in the city",
+            "text": "Her sister comes after her, falls in with mercenaries and learns what the city really is."
+          }
+        },
+        {
+          "id": "e15",
+          "record": {
+            "id": "e15",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "title": "Lightsong’s last day",
+            "text": "A god who doesn’t believe in himself uncovers the plot to start a war and gives his Breath to heal the God King."
+          }
+        },
+        {
+          "id": "e16",
+          "record": {
+            "id": "e16",
+            "book": 3,
+            "world": "nalthis",
+            "site": "ttelir",
+            "title": "Vasher and Nightblood",
+            "text": "A grim Awakener with a talking black sword works to stop the war he helped cause long ago."
+          }
+        },
+        {
+          "id": "e77",
+          "record": null
+        },
+        {
+          "id": "e78",
+          "record": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "baseSites": [
+        {
+          "id": "ttelir",
+          "name": "T’Telir",
+          "lat": 11.2,
+          "lon": 5.6,
+          "books": [
+            3
+          ],
+          "desc": "Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere."
+        },
+        {
+          "id": "courtofgods",
+          "name": "The Court of Gods",
+          "lat": 10.8,
+          "lon": 5.7,
+          "books": [
+            3
+          ],
+          "desc": "A walled plateau in the south of T’Telir over the sea: a ring of palaces for the Returned and the God King’s black palace, where Siri is sent to be married."
+        },
+        {
+          "id": "denir",
+          "name": "D’Denir garden",
+          "lat": 11.7,
+          "lon": 5.55,
+          "books": [
+            3
+          ],
+          "desc": "A quiet field of hundreds of old warrior statues in the north of the city."
+        },
+        {
+          "id": "brightsea",
+          "name": "The Bright Sea",
+          "lat": 11,
+          "lon": 16,
+          "sea": true,
+          "books": [
+            3
+          ],
+          "desc": "The landlocked sea east of Hallandren, which Idrians call the Inner Sea."
+        },
+        {
+          "id": "edglipool",
+          "name": "Endowment’s perpendicularity",
+          "lat": 6,
+          "lon": -6,
+          "books": [
+            3
+          ],
+          "desc": "In a shadowy jungle cavern in Hallandren; its seeping Investiture feeds the Tears of Edgli flowers. Worldhoppers pass customs here. The exact site is not given."
+        },
+        {
+          "id": "bevalis",
+          "name": "Bevalis",
+          "lat": 29,
+          "lon": -6,
+          "books": [
+            3
+          ],
+          "desc": "The small capital of Idris in a mountain valley, Siri and Vivenna’s home."
+        },
+        {
+          "id": "passes",
+          "name": "The Idrian passes",
+          "lat": 34.5,
+          "lon": -5,
+          "books": [
+            3
+          ],
+          "desc": "Idris controls four trade passes north through its mountains and lives on their tolls."
+        },
+        {
+          "id": "pahnkahl",
+          "name": "Pahn Kahl",
+          "lat": -4,
+          "lon": -2,
+          "books": [
+            3
+          ],
+          "desc": "A quiet southern province of tropical lowlands inside Hallandren, with grievances of its own."
+        },
+        {
+          "id": "tedradel",
+          "name": "Tedradel",
+          "lat": 11,
+          "lon": 36,
+          "books": [
+            3
+          ],
+          "desc": "The kingdom directly across the Bright Sea, friendly with Idris and at odds with Hallandren since the Manywar."
+        },
+        {
+          "id": "kuth",
+          "name": "Kuth and Huth",
+          "lat": 40,
+          "lon": -5,
+          "books": [
+            3
+          ],
+          "desc": "Northern kingdoms beyond the Idrian mountains, destroyed in the Manywar."
+        }
+      ],
+      "events": [
+        {
+          "id": "e13",
+          "record": {
+            "id": "e13",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "title": "Siri’s marriage",
+            "text": "Idris sends its youngest princess to marry the God King of Hallandren, and she finds him nothing like the stories."
+          }
+        },
+        {
+          "id": "e14",
+          "record": {
+            "id": "e14",
+            "book": 3,
+            "world": "nalthis",
+            "site": "ttelir",
+            "title": "Vivenna in the city",
+            "text": "Her sister comes after her, falls in with mercenaries and learns what the city really is."
+          }
+        },
+        {
+          "id": "e15",
+          "record": {
+            "id": "e15",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "title": "Lightsong’s last day",
+            "text": "A god who doesn’t believe in himself uncovers the plot to start a war and gives his Breath to heal the God King."
+          }
+        },
+        {
+          "id": "e16",
+          "record": {
+            "id": "e16",
+            "book": 3,
+            "world": "nalthis",
+            "site": "ttelir",
+            "title": "Vasher and Nightblood",
+            "text": "A grim Awakener with a talking black sword works to stop the war he helped cause long ago."
+          }
+        },
+        {
+          "id": "e77",
+          "record": null
+        },
+        {
+          "id": "e78",
+          "record": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "baseSites": [
+        {
+          "id": "ttelir",
+          "name": "T’Telir",
+          "lat": 11.2,
+          "lon": 5.6,
+          "books": [
+            3
+          ],
+          "desc": "Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere."
+        },
+        {
+          "id": "courtofgods",
+          "name": "The Court of Gods",
+          "lat": 10.8,
+          "lon": 5.7,
+          "books": [
+            3
+          ],
+          "desc": "A walled plateau in the south of T’Telir over the sea: a ring of palaces for the Returned and the God King’s black palace, where Siri is sent to be married."
+        },
+        {
+          "id": "denir",
+          "name": "D’Denir garden",
+          "lat": 11.7,
+          "lon": 5.55,
+          "books": [
+            3
+          ],
+          "desc": "A quiet field of hundreds of old warrior statues in the north of the city."
+        },
+        {
+          "id": "brightsea",
+          "name": "The Bright Sea",
+          "lat": 11,
+          "lon": 16,
+          "sea": true,
+          "books": [
+            3
+          ],
+          "desc": "The landlocked sea east of Hallandren, which Idrians call the Inner Sea."
+        },
+        {
+          "id": "edglipool",
+          "name": "Endowment’s perpendicularity",
+          "lat": 6,
+          "lon": -6,
+          "books": [
+            3
+          ],
+          "desc": "In a shadowy jungle cavern in Hallandren; its seeping Investiture feeds the Tears of Edgli flowers. Worldhoppers pass customs here. The exact site is not given."
+        },
+        {
+          "id": "bevalis",
+          "name": "Bevalis",
+          "lat": 29,
+          "lon": -6,
+          "books": [
+            3
+          ],
+          "desc": "The small capital of Idris in a mountain valley, Siri and Vivenna’s home."
+        },
+        {
+          "id": "passes",
+          "name": "The Idrian passes",
+          "lat": 34.5,
+          "lon": -5,
+          "books": [
+            3
+          ],
+          "desc": "Idris controls four trade passes north through its mountains and lives on their tolls."
+        },
+        {
+          "id": "pahnkahl",
+          "name": "Pahn Kahl",
+          "lat": -4,
+          "lon": -2,
+          "books": [
+            3
+          ],
+          "desc": "A quiet southern province of tropical lowlands inside Hallandren, with grievances of its own."
+        },
+        {
+          "id": "tedradel",
+          "name": "Tedradel",
+          "lat": 11,
+          "lon": 36,
+          "books": [
+            3
+          ],
+          "desc": "The kingdom directly across the Bright Sea, friendly with Idris and at odds with Hallandren since the Manywar."
+        },
+        {
+          "id": "kuth",
+          "name": "Kuth and Huth",
+          "lat": 40,
+          "lon": -5,
+          "books": [
+            3
+          ],
+          "desc": "Northern kingdoms beyond the Idrian mountains, destroyed in the Manywar."
+        }
+      ],
+      "events": [
+        {
+          "id": "e13",
+          "record": {
+            "id": "e13",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "lm": "palace",
+            "title": "Siri’s marriage",
+            "text": "Siri of Idris arrives at the Court of Gods to marry the God King of Hallandren."
+          }
+        },
+        {
+          "id": "e14",
+          "record": {
+            "id": "e14",
+            "book": 3,
+            "world": "nalthis",
+            "site": "ttelir",
+            "title": "Vivenna in the city",
+            "text": "Her sister comes after her, falls in with mercenaries and learns what the city really is."
+          }
+        },
+        {
+          "id": "e15",
+          "record": {
+            "id": "e15",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "title": "Lightsong’s last day",
+            "text": "In captivity, Lightsong gives his Breath to heal Susebron, sacrificing himself to restore the God King’s tongue."
+          }
+        },
+        {
+          "id": "e16",
+          "record": {
+            "id": "e16",
+            "book": 3,
+            "world": "nalthis",
+            "site": "ttelir",
+            "title": "Vasher and Nightblood",
+            "text": "Vasher and Nightblood work to prevent a new war between Hallandren and Idris; Vasher’s past is tied to the earlier Manywar."
+          }
+        },
+        {
+          "id": "e77",
+          "record": {
+            "id": "e77",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "title": "The Lifeless march",
+            "text": "After killing Blushweaver and threatening Llarimar, the plotters obtain Lightsong’s command phrase, change it, and order the Lifeless to march on Idris."
+          }
+        },
+        {
+          "id": "e78",
+          "record": {
+            "id": "e78",
+            "book": 3,
+            "world": "nalthis",
+            "site": "courtofgods",
+            "fx": "battle",
+            "title": "Susebron speaks",
+            "text": "Susebron uses Awakened cloth to rescue Siri. Vasher entrusts him with the D’Denir army, which is sent after the Lifeless marching on Idris."
+          }
+        }
+      ],
+      "scenes": [
+        {
+          "site": "ttelir",
+          "landmarkIds": [
+            "markets",
+            "highlands",
+            "docks",
+            "wall"
+          ]
+        },
+        {
+          "site": "courtofgods",
+          "landmarkIds": [
+            "palace",
+            "palaces",
+            "arena",
+            "lawn",
+            "enclave",
+            "tunnels"
+          ]
+        },
+        {
+          "site": "denir",
+          "landmarkIds": [
+            "statues"
+          ]
+        },
+        {
+          "site": "brightsea",
+          "landmarkIds": []
+        },
+        {
+          "site": "edglipool",
+          "landmarkIds": []
+        },
+        {
+          "site": "bevalis",
+          "landmarkIds": []
+        },
+        {
+          "site": "passes",
+          "landmarkIds": []
+        },
+        {
+          "site": "pahnkahl",
+          "landmarkIds": []
+        },
+        {
+          "site": "tedradel",
+          "landmarkIds": []
+        },
+        {
+          "site": "kuth",
+          "landmarkIds": []
+        }
+      ]
+    }
+  ],
+  "proposed": {
+    "before": {
+      "ttelir": "Hallandren’s capital, built in a crescent around a sheltered bay on the Bright Sea, with markets, merchant mansions, slums and docks, and Awakened statues everywhere.",
+      "denir": "A quiet field of hundreds of old warrior statues in the north of the city."
+    },
+    "after": {
+      "ttelir": "Hallandren’s capital curves around a bay on the Bright Sea, with painted buildings and warrior statues at street corners.",
+      "denir": "A quiet grassy field in T’Telir, filled with hundreds of weathered warrior statues."
+    }
+  },
+  "checks": {
+    "inputHashes": {
+      "passed": 3,
+      "total": 3
+    },
+    "inventorySlots": {
+      "inspected": 48,
+      "total": 48,
+      "present": 44,
+      "absent": 4
+    },
+    "distinctReplacements": {
+      "passed": 2,
+      "total": 2
+    },
+    "entireParsedPackEqualAfterRevertingOnlyTwoDescriptions": true,
+    "applicationFilesWritten": 0,
+    "renderedCases": 0
+  }
+}

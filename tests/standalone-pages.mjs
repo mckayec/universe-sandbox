@@ -59,7 +59,17 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const origin = `http://127.0.0.1:${server.address().port}`;
 const base = origin + SUB;
 
-const PACKS = ['sun-eater', 'hyperion', 'expanse', 'foundation', 'dune', 'cosmere', 'lds-standard-works'];
+const PACKS = [
+  'sun-eater',
+  'hyperion',
+  'expanse',
+  'foundation',
+  'dune',
+  'cosmere',
+  'abrahamic-world-religions',
+  'christian-apocrypha',
+  'lds-standard-works',
+];
 /* Atlases whose pack opens straight onto a planet surface (PACK_FORMAT 20.4 `start`). Under software WebGL
    (SwiftShader on CI) the first surface frames take tens of seconds of GPU work, and the page's main thread
    waits on them before it can report the header, so these get a longer readiness budget. On a real GPU the
