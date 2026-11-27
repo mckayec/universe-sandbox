@@ -1,10 +1,10 @@
-stage: final-audit
+stage: live
 owner: mckay
-blocked-on: mckay
-next-action: Mckay: mark draft PR #44 ready and merge it on GitHub pinned to 2e305cc24ad714be8211d839d283d114748a4310 (integration verified, see History), or allow Claude merge permission for this task; Claude then confirms the Pages deploy and sets live.
-updated: 2026-11-09T02:56Z
+blocked-on: none
+next-action: none (optional: Mckay spot-checks on a real phone per Known gaps in release-recommendation.md)
+updated: 2026-11-27T00:45Z
 idle-runs: 0
-note: D06 approved. Integration re-verified 2026-11-09 by Claude on a local merge with current main: pnpm check (118/118 tests, check:dist), test:pages 12x2, browser smoke pass (one known Save/Load timeout on first try, passed on retry). Not merged (Claude merge blocked by its permission guard; DECISIONS D09).
+note: Mckay merged PR #44 at reviewed head 2e305cc24ad714be8211d839d283d114748a4310 (merge commit 1896dda3fad8a49649b4a3b3055187108d28bbe7) on 2026-11-27; GitHub Pages deploy run 45917021412 succeeded (build and deploy). Known gaps (real-device checks) unchanged.
 
 # Mobile entry and landing-page usability
 
@@ -50,3 +50,4 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 - 2026-11-09T02:42Z: ChatGPT recorded Mckay's D06 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 2e305cc24ad714be8211d839d283d114748a4310. Mckay approved D06 on 2026-11-09 with existing Known gaps. Prior same-head PR CI including mobile touch checks succeeded; current PR is clean but draft. New compact labels, graphics and Kids mode remain separate. No release or pickup claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
 
 - 2026-11-09T02:56Z: Claude: main gained non-docs changes since PR44 CI (atlas engine, history.ts, types.ts, universe-packs.ts etc.), so re-verified the integrated runtime: local merge of origin/main b9bc9d7 + 2e305cc (auto-merged src/state/history.ts, no conflicts) → `pnpm check` pass (format, build, 118/118 tests, check:dist 113 files), `pnpm test:pages` 12 pages x 2 viewports pass, `pnpm test:browser` timed out once at browser-smoke.mjs:88 (the documented pre-existing Save/Load race) then passed on retry. No code changes, so no re-review needed. Did not mark ready or merge: the merge is a production deploy and this run's permission guard refused the equivalent action on PR39. Owner claude → mckay, blocked-on mckay (DECISIONS D09). idle-runs 0.
+- 2026-11-27T00:45Z: Claude: Mckay marked PR #44 ready and merged it at 2e305cc (merge commit 1896dda3fad8a49649b4a3b3055187108d28bbe7). Pages deploy run 45917021412 succeeded. Stage final-audit → live, owner mckay. idle-runs 0.
