@@ -121,8 +121,16 @@ export function validatePacks(dir = PACK_DIR) {
     let siteTotal = 0,
       noSites = [],
       polar = [];
+    // editorialNote: a per-record tooltip for the "Editorial label" badge (PACK_FORMAT section 22)
+    const edNote = (where, x) => {
+      if (x.editorialNote == null) return;
+      if (typeof x.editorialNote !== 'string' || !x.editorialNote.trim())
+        issues.push(`${where}: editorialNote must be a non-empty string`);
+      else if (!x.editorial) warn.push(`${where}: editorialNote without editorial:true (never shown)`);
+    };
     worlds.forEach(w => {
       const tag = `world ${w.id}`;
+      edNote(tag, w);
       (CARDS ? ['name'] : ['name', 'group', 'books', 'blurb', 'gfx']).forEach(k => {
         if (w[k] == null || w[k] === '') issues.push(`${tag}: missing required "${k}"`);
       });
@@ -210,6 +218,7 @@ export function validatePacks(dir = PACK_DIR) {
         }
         if (sids.has(s.id)) issues.push(`${tag}: duplicate site id ${s.id}`);
         sids.add(s.id);
+        edNote(st, s);
         ['name', 'desc'].forEach(k => {
           if (!s[k]) issues.push(`${st}: missing ${k}`);
         });
@@ -340,6 +349,7 @@ export function validatePacks(dir = PACK_DIR) {
     (P.codex || []).forEach(t =>
       (t.list || []).forEach(x => {
         if (!x.name) issues.push(`codex ${t.id}: entry without name`);
+        edNote(`codex ${t.id}/${x.name}`, x);
         if (!x.desc) warn.push(`codex ${t.id}/${x.name}: no desc`);
         (x.books || []).forEach(b => {
           if (!okBook(b)) issues.push(`codex ${t.id}/${x.name}: unknown book ${b}`);

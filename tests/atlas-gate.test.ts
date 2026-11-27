@@ -101,6 +101,17 @@ test('cards model fills defaults without changing the pack', () => {
   assert.equal(JSON.stringify(pack), before);
 });
 
+test('editorial badge tooltip: neutral default, pack override, then per-record note', () => {
+  const K = C.model(pack, G);
+  assert.equal(K.ui.editorialNote, 'This atlas supplies this grouping or display label.');
+  assert.doesNotMatch(K.ui.editorialNote, /gives no name/);
+  assert.equal(C.editorialNote({ editorial: true }, K.ui), K.ui.editorialNote);
+  assert.equal(C.editorialNote({ editorial: true }, { editorialNote: 'Pack note.' }), 'Pack note.');
+  const own = { editorial: true, editorialNote: 'Record note.' };
+  assert.equal(C.editorialNote(own, { editorialNote: 'Pack note.' }), 'Record note.');
+  assert.equal(C.editorialNote({ editorial: true, editorialNote: '  ' }, {}), K.ui.editorialNote);
+});
+
 test('the validator accepts the cards demo', () => {
   const dir = new URL('./fixtures/cards-pack/', import.meta.url).pathname;
   const r = validatePacks(dir)['cards-demo.js'];
@@ -111,7 +122,7 @@ test('the validator accepts the cards demo', () => {
 test('the validator rejects coordinates, broken parents and journeys past their stops in a cards layout', () => {
   const dir = mkdtempSync(join(tmpdir(), 'cards-bad-'));
   const src = readFileSync(new URL('./fixtures/cards-pack/cards-demo.js', import.meta.url), 'utf8')
-    .replace("{ id: 'city', name: 'City',", "{ id: 'city', lat: 1, lon: 2, name: 'City',")
+    .replace("{ id: 'city', name: 'City',", "{ id: 'city', lat: 1, lon: 2, editorialNote: 7, name: 'City',")
     .replace("parent: 'tower', first: 3", "parent: 'nope', first: 3")
     .replace("{ id: 'j1', book: 1,", "{ id: 'j1', book: 1, path0: 1,")
     .replace("path: ['setting/city', 'setting/tower']", "path: ['setting/city', 'other/gate']");
@@ -120,6 +131,10 @@ test('the validator rejects coordinates, broken parents and journeys past their 
   const issues: string[] = validatePacks(dir)['cards-demo.js'].issues;
   assert.ok(
     issues.some(i => /coordinates in a cards layout/.test(i)),
+    issues.join('\n'),
+  );
+  assert.ok(
+    issues.some(i => /site city: editorialNote must be a non-empty string/.test(i)),
     issues.join('\n'),
   );
   assert.ok(

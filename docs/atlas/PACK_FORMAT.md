@@ -880,7 +880,7 @@ ignored. Fields:
 | `type` or `status` | both | short kind shown on the card and in the list ("city", "world") |
 | `parent` | site | another site of the same world: nests it (any depth); the card shows the breadcrumb chain |
 | `first` / `books` | both | gate. A site never shows before its parent: its effective gate is the largest gate on its chain |
-| `editorial` | both, codex | `true` = the name is the atlas's label, not the books'. Shown as "Editorial label" (`ui.editorialLabel`, `ui.editorialNote`) |
+| `editorial` | both, codex | `true` = the label or grouping is the atlas's choice. Shown as an "Editorial label" badge (`ui.editorialLabel`); its tooltip is the record's own `editorialNote`, else `ui.editorialNote`, else the neutral default "This atlas supplies this grouping or display label." The default never says the source gives no name, so use `editorialNote` to explain a specific case (e.g. a named world shown as an atlas grouping) |
 | `more`, `facts`, `note`, `src`, `aka` | both | gated additions `[[book,text]]`, fact pairs, a visible caveat, a short source line, alternative names (not displayed) |
 
 A place is addressed as `"world"` or `"world/site"` (or `{world, site}`) everywhere below.
