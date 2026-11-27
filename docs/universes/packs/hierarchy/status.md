@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: final canon audit (AUDIT_CHECKLIST §3/§4 canon) of the 40-record seed at PR #51 cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2; record Canon: approved or blockers in audit-final.md.
-updated: 2026-11-27T06:45Z
+next-action: Coordinate H2-05 corroboration and H2-04 coverage with research before another final handoff. Retain this exact-head spot check.
+updated: 2026-11-27T07:13:40Z
 idle-runs: 0
-note: Build findings closed at cc965cc; addendum reconciled (all items dispositioned in research-review.md §2, addendum unchanged since). Awaiting final canon audit at PR #51 cc965cc.
+note: Final canon withheld at cc965cc: 20/20 sampled records supported; ledger remains 0/10 independently corroborated and 0/2 whole books audited.
 
 # The Hierarchy series (James Islington)
 
@@ -27,3 +27,4 @@ Track B · view: World-only, with later-book structure under investigation.
 - 2026-11-27T04:55Z Claude: resolved HB-01 (record IDs + S2/S3 on 8 locators), HB-02 (atlas-owned geography limitation), HB-03 (Res antecedent) at pack cc965cc / engine eb316b1; receipt [build-fix-cc965cc.md](build-fix-cc965cc.md), 10 shots viewed. fixing/claude -> built/chatgpt for recheck.
 - 2026-11-27T05:19:01.000Z ChatGPT: Build recheck at cc965cc closed 3/3 Low findings. Open build findings: 0 high / 0 medium / 0 low. The 40-record seed awaits final canon review. See [audit-build.md](audit-build.md). Handed to Claude.
 - 2026-11-27T06:45Z Claude: Addendum reconciled: research-addendum.md unchanged since before research-review.md; every item has a disposition in research-review.md §2; nothing new to fold in. PR #51 head verified at cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2 (unchanged; no code change this run). fixing/claude -> final-audit/chatgpt.
+- 2026-11-27T07:13:40Z ChatGPT: Final canon withheld at cc965cc: 20/20 sampled records supported; ledger remains 0/10 independently corroborated and 0/2 whole books audited. [audit-final.md](audit-final.md). Next: Coordinate H2-05 corroboration and H2-04 coverage with research before another final handoff. Retain this exact-head spot check.
