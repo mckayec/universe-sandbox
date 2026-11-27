@@ -14,6 +14,7 @@ export type UniversePackId =
   | 'powers-of-ten'
   | 'cosmere'
   | 'christian-apocrypha'
+  | 'narnia'
   | 'star-wars';
 export type UniversePackStatus = 'ready' | 'atlas' | 'source-required';
 export type LocationScale = 'universe' | 'galaxy' | 'cluster' | 'system' | 'world' | 'surface';
@@ -241,6 +242,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#dcc58e',
     'atlas/?pack=abrahamic-world-religions',
     'Built from cited research dossiers; map markers are UNESCO heritage references, and other places are listed without coordinates.',
+  ),
+  atlasPack(
+    'narnia',
+    'The Narnia Atlas',
+    'Chronicles of Narnia',
+    "C. S. Lewis's seven Chronicles as linked place cards, events and partial journeys, gated by the last book you finished.",
+    '#9fcf8f',
+    'atlas/?pack=narnia',
+    'A bounded seed from selected chapters of all seven books; places are listed without positions.',
   ),
   plannedPack(
     'star-wars',
