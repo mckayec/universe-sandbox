@@ -127,3 +127,18 @@ test('narnia: NQ07 container notes, inter-world grouping and no wolf record', ()
   assert.match(pack.meta.notice, /Unofficial fan project/);
   assert.match(pack.intro.coverage, /Limited coverage/);
 });
+
+test('narnia: build audit NB-01/NB-02 wording', () => {
+  // NB-01: book-I text never uses the surname that the book-I passage does not introduce
+  const london = byId.get('p16')!.item;
+  assert.doesNotMatch(london.desc, /Pevensie/);
+  for (const p of places.filter(q => q.first === 1)) assert.doesNotMatch(p.item.desc || p.item.blurb, /Pevensie/);
+  // NB-02: no editorial tooltip claims the source leaves a place unnamed
+  const notes = [pack.ui.editorialNote, ...places.filter(p => p.editorial).map(p => p.item.editorialNote)];
+  assert.equal(notes.length, 4);
+  for (const n of notes) {
+    assert.equal(typeof n, 'string');
+    assert.doesNotMatch(n, /no name|gives none|unnamed/i);
+  }
+  assert.match(byId.get('n00')!.item.editorialNote, /books name Narnia/);
+});

@@ -81,6 +81,7 @@
 
   const WORLDS = [
     { id: 'n00', name: 'Narnia (world)', group: 'narnia', type: 'World container', first: 1, editorial: true,
+      editorialNote: 'The books name Narnia. This atlas supplies the world-level grouping and its display label.',
       blurb: "The children's destination beyond the wardrobe.", note: CONTAINER_NOTE,
       src: 'S1 I–II; later S6 VIII–IX, S7 XIV',
       more: [
@@ -89,10 +90,11 @@
       ],
       sites: NARNIA_SITES },
     { id: 'e00', name: 'Earth', group: 'other', type: 'World container', first: 1, editorial: true,
+      editorialNote: "This atlas supplies this grouping of the children's home-world places and its display label.",
       blurb: "Home-world container for the children's departures.", src: 'S1 I',
       sites: [
         { id: 'p16', name: 'London', type: 'City', first: 1, src: 'S1 I; later S6 VI',
-          desc: 'The Pevensies leave during wartime air raids.',
+          desc: 'Four siblings are sent away from London during the wartime air raids.',
           more: [[6, "Digory and Polly's home-world setting."]] },
         { id: 'p10', name: 'Experiment House', type: 'School', first: 4, src: 'S4 I',
           desc: "Jill and Eustace's school; real-world site unidentified." },
@@ -102,7 +104,8 @@
     { id: 'p18', name: 'Charn', group: 'other', type: 'City in another world', first: 6, src: 'S6 IV–V',
       blurb: 'Ruined city identified by Jadis.' },
     { id: 'p21', name: 'Country beyond the stable door', group: 'other', type: 'Other-country view', first: 7,
-      editorial: true, src: 'S7 XII–XIV', blurb: 'Daylit country entered through the stable doorway.' },
+      editorial: true, editorialNote: 'A descriptive display label supplied by this atlas.',
+      src: 'S7 XII–XIV', blurb: 'Daylit country entered through the stable doorway.' },
   ];
 
   /* Events (research.md §4): gate = book; array order = chapter order within each book. */
@@ -223,6 +226,7 @@
     spoilers: { mode: 'cumulative', start: 'choose', all: false },
     ui: {
       bookLabel: 'Completed through',
+      editorialNote: 'This atlas supplies the grouping or display label.',
       booksAria: 'The last Narnia book you have finished, in publication order',
       placesTitle: 'Places',
       gateText:
