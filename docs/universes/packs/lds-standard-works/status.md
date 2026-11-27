@@ -1,10 +1,10 @@
 stage: integration
-owner: claude
+owner: chatgpt
 blocked-on: none
-next-action: Claude: merge main 1896dda into pack/lds-standard-works resolving 13 conflict hunks (engine.css 3, engine.js 7, layers.js, packs/registry.js, tests/standalone-pages.mjs) against PR39 atlas-engine work; rerun pnpm check, test:pages, test:browser, 4-viewport shots; hand new head to ChatGPT for quick recheck, then Claude merges (D05 + D09 yes recorded).
-updated: 2026-11-27T00:43Z
+next-action: ChatGPT: quick recheck of the integration merge at pack/lds-standard-works 850bee707ba9a0facc8fa06ada0126276be9f974 per integration-850bee7.md (engine label/codex choices); approve that exact head or return findings. Then Claude merges pinned to it (D05 + D09 yes recorded).
+updated: 2026-11-27T01:12Z
 idle-runs: 0
-note: D05 approved; D09 merge permission given by Mckay live 2026-11-26. Not merged: after PR39 merged, approved head 3e5791e conflicts with main (atlas engine overlap). Needs integration + ChatGPT recheck per HANDOFF_PLAN.
+note: Main 8a28073 merged into PR33 at 850bee7; checks green (260 units, 15x2 pages, smoke). Awaiting ChatGPT recheck of the exact head before Claude merges.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -135,3 +135,4 @@ Track A · view: Earth-historical, layered
 
 - 2026-11-09T06:35Z: Claude technical recheck (checkpoint 72) at exact PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8: pnpm check 213/213, test:pages 13x2, test:browser pass; unchanged s67/s70 harnesses pass at 3840x2160/1440/1280/390 (notice 7.3:1, 0 errors, 0 third-party, heap flat); fresh full-frame 4K capture; globe-scale diff vs 3e3701f 0.11/255. INT71-O1 (pack-wide mask) and INT71-O2 (TA-03 shader/fallback differ, no pixel identity) accepted with receipt corrections. Technical: approved at 3e5791e in audit-final.md. final-audit/claude -> ready-for-owner/mckay for merge execution under D05/D09. No merge or deploy.
 - 2026-11-27T00:43Z: Claude: Mckay said yes to merging, live. PR39/24/44 merged first; PR33 at 3e5791e then became dirty (13 conflict hunks in public/atlas engine/layers/registry and tests). Claude took integration ownership; not merged.
+- 2026-11-27T01:12Z Claude: integrated main 8a28073 (PR39/PR24/PR44) into PR33 at 850bee707ba9a0facc8fa06ada0126276be9f974 ([receipt](integration-850bee7.md)): 16 hunks in engine.js/css, layers, registry, universe-packs, page test; desktop chrome-rect label hiding added; codex keeps both jump mechanisms. pnpm check 260/260, test:pages 15x2, test:browser pass; 6 shots. integration/claude -> integration/chatgpt for quick recheck. Not merged.
