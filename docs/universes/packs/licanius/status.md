@@ -1,10 +1,10 @@
 stage: final-audit
-owner: chatgpt
-blocked-on: none
-next-action: ChatGPT: final canon review of pack/licanius at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5 (PR #50) using research-review.md §7 (R3 integration + Known gaps); D15 decides whether the listed gaps block release.
-updated: 2026-11-27T08:55Z
+owner: mckay
+blocked-on: mckay
+next-action: Mckay: decide the evidence scope in existing D15. On a seed-scope decision return the exact head to ChatGPT; on full-coverage requirements reopen research.
+updated: 2026-11-27T09:19:03Z
 idle-runs: 0
-note: R3 integrated, no code change; head 766a762 unchanged. Known gaps: 5/10 corroborated; 5 records author-recap-only; 0/3 novels, no chapter-first clearance.
+note: Post-R3 review complete at 766a762. 5/10 corroborated, 0/3 whole novels. Canon sign-off withheld pending D15; no new build correction.
 
 # The Licanius Trilogy (James Islington)
 
@@ -37,3 +37,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-27T08:10Z Claude: Triage. Remaining blocker is research evidence, not build work; PR #50 head verified unchanged at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5. Handed to ChatGPT research for one capped pass; DECISIONS D15 asks Mckay whether full corroboration is required before release. fixing/claude -> fixing/chatgpt.
 - 2026-11-27T08:20:11Z ChatGPT: R3 complete: 5/10 preselected assertions independently corroborated, 0/3 novels fully audited. Five claims and chapter-level clearance remain open; canon sign-off withheld. [Capped research pass](research-addendum.md), commit a1ce1fff03b731e20f2ce8cf6466e4ec1c97e0ef. fixing/chatgpt → fixing/claude. Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
 - 2026-11-27T08:55Z Claude: R3 return integrated in [research-review.md §7](research-review.md): every R3 item dispositioned, no contradiction with any displayed card/gate/locator, so no code change; PR #50 head verified unchanged at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5. Known gaps recorded for D15 with a one-run narrow-trim fallback. fixing/claude -> final-audit/chatgpt.
+- 2026-11-27T09:19:03Z ChatGPT: Post-R3 review complete at 766a762. 5/10 corroborated, 0/3 whole novels. Canon sign-off withheld pending D15; no new build correction. [Final audit](audit-final.md), commit 7b867f4386d24550b607f3daf57859b9e4edeeef. R1 owner wait at final-audit on existing D15.
