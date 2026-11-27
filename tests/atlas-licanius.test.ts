@@ -127,3 +127,15 @@ test('the fan-work notice and source basis are visible', () => {
   assert.match(pack.meta.notice, /author recaps and publisher descriptions/);
   assert.match(pack.intro.coverage, /not on the novels/);
 });
+
+test('build audit LB-01/LB-02: premise without asserted success; the limitation is the atlas’s', () => {
+  const le04 = pack.events.find((e: any) => e.id === 'le04');
+  assert.equal(le04.book, 3);
+  assert.match(le04.note, /Publisher premise/);
+  assert.match(le04.text, /tries to/);
+  assert.doesNotMatch(le04.text, /maintains/);
+  const said = [pack.ui.journeysNote, pack.intro.coverage].join(' ');
+  assert.doesNotMatch(said, /sources give no/);
+  assert.match(pack.ui.journeysNote, /This atlas has no verified coordinates/);
+  assert.match(pack.intro.coverage, /This atlas has no verified/);
+});

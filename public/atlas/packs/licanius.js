@@ -12,8 +12,9 @@
    for book 3 (no excerpt). S1 and S2 share an author and are not independent witnesses.
 
    Rules followed here (research-review.md):
-   * No coordinates, map, pins, distances or route lines exist for this series in the sources, so the pack uses
-     layout:"cards" (EC-2) and text journeys (EC-3). Nothing is positioned.
+   * The recaps give relations (north/south, proximity, ordered stops) and the author publishes a map of Andarra,
+     but this atlas has no verified coordinates or measured routes (LB-02), so the pack uses layout:"cards" (EC-2)
+     and text journeys (EC-3). Nothing is positioned.
    * Gates are "completed through book N" minimum thresholds, never "first appears" (L2-02). The visitor must
      choose a completed book before anything is listed, and there is no "All" (EC-1).
    * "The setting" is an editorial container, not a canonical world name. "Caladel school site" is an editorial
@@ -130,7 +131,7 @@
       site: 'ilin-illan',
       title: 'Fragile coalition',
       who: ['Wirr'],
-      text: 'Wirr maintains a precarious alliance.',
+      text: 'In Ilin Illan, Wirr tries to hold a precarious alliance together.',
       locator: PUB3_LOC,
       note: PREMISE,
     },
@@ -295,7 +296,8 @@
       chronNote:
         'A small sample of events from author recaps and publisher descriptions, grouped by book. Not a complete ' +
         'timeline; order within a book is not a chronology.',
-      journeysNote: 'Ordered stops only. The sources give no routes, distances or timing.',
+      journeysNote:
+        'Ordered stops documented in the recaps. This atlas has no verified coordinates, measured routes or timing.',
       codexNote: 'Each entry shows from the book it is gated to: a conservative threshold, not where it first appears.',
     },
     intro: {
@@ -306,7 +308,8 @@
       coverage:
         'Seed prototype based on author recaps and publisher descriptions, not on the novels themselves. Book 3 ' +
         'appears only through its publisher premise. Gates are conservative “completed through” thresholds. ' +
-        'There is no map: the sources give no geography to place anything.',
+        'These cards show the places and ordered stops documented in the recaps. This atlas has no verified ' +
+        'coordinates or measured routes, so nothing is drawn on a map.',
     },
     groups: [{ id: 'places', name: 'Reference cards (no map)' }],
     worlds: [
