@@ -11,7 +11,7 @@ import { isCompact } from '../scene/setup.ts';
 import { app, bodies, bodyGroupIds, cosmicGroups } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { setSimulationSpeed } from '../ui/controls.ts';
-import { museumEvent, select, toast } from '../ui/feed.ts';
+import { museumEvent, select, simulationToast } from '../ui/feed.ts';
 import { impactEffect, particleBurst } from '../visuals/effects.ts';
 
 // ── Tidal disruption: Roche-limit breakup into debris streams ──────────────
@@ -28,7 +28,7 @@ function cinematicSlowMotion() {
   }
   app.slowMotionTimer = 3.2;
   setSimulationSpeed(0.1);
-  toast('Slow motion');
+  simulationToast('Slow motion');
 }
 export function updateSlowMotion(realDt: number) {
   if (app.slowMotionTimer <= 0) return;
