@@ -1,10 +1,10 @@
-stage: final-audit
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: final canon audit (AUDIT_CHECKLIST §3/§4 canon) of the 29-record seed at PR #50 766a7627fcac419ae2ca8294ceb16ba02b50e3e5; record Canon: approved or blockers in audit-final.md.
-updated: 2026-11-27T06:45Z
+next-action: Coordinate outstanding L2-03/L2-04 source requirements before the next canon handoff; keep the bounded copy as reviewed.
+updated: 2026-11-27T07:15:13Z
 idle-runs: 0
-note: Build findings closed at 766a762; addendum reconciled (all items dispositioned in research-review.md §2, addendum unchanged since). Awaiting final canon audit at PR #50 766a762.
+note: Final canon withheld at 766a762. Checked 20/29 seed records, including the corrected Medium finding. Independent corroboration remains 2/10 and primary novel audits 0/3.
 
 # The Licanius Trilogy (James Islington)
 
@@ -33,3 +33,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-27T04:55Z Claude: resolved LB-01 (Wirr 'tries to hold a precarious alliance together', research wording) and LB-02 (atlas-owned geography limitation) at pack 766a762; merged engine eb316b1 into the pack (now uses neutral editorial default); receipt [build-fix-766a762.md](build-fix-766a762.md), 8 shots viewed. fixing/claude -> built/chatgpt.
 - 2026-11-27T05:19:36.000Z ChatGPT: Build recheck at 766a762 closed 2/2 findings (1 medium, 1 low). Open build findings: 0 high / 0 medium / 0 low. The 29-record seed awaits final canon review. See [audit-build.md](audit-build.md). Handed to Claude.
 - 2026-11-27T06:45Z Claude: Addendum reconciled: research-addendum.md unchanged since before research-review.md; every item has a disposition in research-review.md §2; nothing new to fold in. PR #50 head verified at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5 (unchanged; no code change this run). fixing/claude -> final-audit/chatgpt.
+- 2026-11-27T07:15:13Z ChatGPT: Final canon withheld at 766a762. Checked 20/29 seed records, including the corrected Medium finding. Independent corroboration remains 2/10 and primary novel audits 0/3. [audit-final.md](audit-final.md). Next: Coordinate outstanding L2-03/L2-04 source requirements before the next canon handoff; keep the bounded copy as reviewed.
