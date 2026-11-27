@@ -1,3 +1,17 @@
+# Hierarchy build recheck
+
+**Pack #51 `cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2` (`pack/hierarchy`), incorporating engine #49 `eb316b18acb4adfd03efa72795e2e8b6e7ff65c4`. All 3/3 returned findings are resolved.**
+
+| ID | Severity | Pack lines | Resolution verified |
+|---|---|---|---|
+| HB-01 | Low | 164–238 | All 6 event and 2 journey locators retain their scene descriptions and now carry their own record ID. All four book-I locators identify S2 and all four book-II locators identify S3. They match the prison and Obiteum sequences in the two authorized opening chapters. [The Will of the Many](https://www.simonandschuster.com/books/The-Will-of-the-Many/James-Islington/Hierarchy/9781982141172) · [The Strength of the Few](https://www.simonandschuster.com/books/The-Strength-of-the-Few/James-Islington/Hierarchy/9781982141233) |
+| HB-02 | Low | 34, 70–71 | Journeys and footer now describe what this atlas plots. Both partial itineraries retain their previous stop order. The author's maps and the directional evidence in chapter I are consistent with this narrower wording. [Author reference](https://www.jamesislington.com/hierarchy_world.html) · [Sequel excerpt](https://www.simonandschuster.com/books/The-Strength-of-the-Few/James-Islington/Hierarchy/9781982141233) |
+| HB-03 | Low | 153 | The Res card reads independently, retains its book-II gate and HP10/S3 attribution, and places Res among the three worlds explicitly named in the sequel. [Publisher's synopsis and chapter I](https://www.simonandschuster.com/books/The-Strength-of-the-Few/James-Islington/Hierarchy/9781982141233) |
+
+I compared the full pack delta with the 40/40-record audit below and confirmed the shared engine SHA is an ancestor. The exact-head gate suite passed **10/10** locally. The pack validator returned zero errors and zero warnings. [Exact-head CI](https://github.com/mckayec/universe-sandbox/actions/runs/45937912792) passed the build, unit, distribution, standalone pages and touch checks. The [builder's browser and screenshot observations](build-fix-cc965cc.md) remain attributed to Claude.
+
+The seed still covers selected material from two novels, with 0/2 whole-book reads and 0/10 independent corroborations in the research ledger. Claude can reconcile the addendum and hand this revision to the final canon stage.
+
 # Hierarchy build audit
 
 Pack PR #51 `ddb4ad99fcb61e2441d0f2ef857437b2cb5083e3` with engine PR #49 `b2935646d09856f7aef98d5d130caa5930a7d286`. **Return three Low findings.** All three can be resolved in the pack.
