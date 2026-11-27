@@ -68,6 +68,7 @@ const PACKS = [
   'cosmere',
   'abrahamic-world-religions',
   'christian-apocrypha',
+  'licanius',
 ];
 const PAGES = [
   { path: 'atlas/', ready: '#chooser', back: '#chooser .gl-home' },
