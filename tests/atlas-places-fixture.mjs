@@ -1,5 +1,5 @@
 // Deep worlds R0-1: browser lifecycle check of the dormant places engine with an ISOLATED opt-in fixture.
-// Run after `pnpm build`: `node tests/atlas-places-fixture.mjs` (env: CHROME_PATH, VIEWPORTS="1440x900,390x844",
+// Run after `pnpm build`: `node tests/atlas-places-fixture.mjs` (env: CHROME_PATH, VIEWPORTS="1440x900,390x844", CASES=regexp,
 // SCREENSHOTS=dir to save mid-fade and settled shots).
 //
 // Nothing shipped is changed: dist/ is served as built, and tests/fixtures/places-optin-fixture.js is appended to the
@@ -11,6 +11,9 @@
 //   - no later-book name or text (dossier, chronicle, crumbs, announcement, URL) under an earlier book, even mid-fade;
 //   - a superseded or cancelled entry builds nothing and leaves no place history entry; Back stays in the document;
 //   - stale place links (later-book site/landmark, unknown site) never enter a hidden place and are rewritten.
+//   - R0-2: after a downgrade on the surface (direct, or during a cancelled entry) the globe's site buttons carry no
+//     later-book name, tab stop or aria exposure, a real Tab walk reaches none, book-1 sites stay offered, and an
+//     upgrade restores the later site's label (cases S1, B3; label checks also in B2/B4).
 // Exits 1 on any FAIL.
 import { createReadStream, existsSync, readFileSync, statSync, mkdirSync } from 'node:fs';
 import { createServer } from 'node:http';
@@ -80,6 +83,14 @@ const SNAP = () => {
     chron: t('#chron'),
     tourHidden: document.querySelector('#tourBox').hidden,
     tourT: t('#tourT'),
+    // R0-2: the globe's site buttons as the reader and keyboard get them
+    labels: [...document.querySelectorAll('#labels .plbl')].map(el => ({
+      t: el.textContent,
+      op: el.style.opacity,
+      tab: el.tabIndex,
+      ah: el.getAttribute('aria-hidden'),
+      pe: el.style.pointerEvents,
+    })),
   };
 };
 const brief = s =>
@@ -197,6 +208,57 @@ const noLater = (s, tag) => {
     `${tag}: no later-book copy or URL${leak ? ' LEAK: ' + leak.slice(0, 120) : ''} (${s.hash})`,
   );
 };
+// R0-2: globe labels under book 1. No .plbl may carry later-book text at all (DOM, tab stop or accessibility tree);
+// with `eligible`, the book-1 sites are still offered as labels.
+const ELIGIBLE = /Arrakeen|Sietch Tabr/;
+const exposed = l => l.tab >= 0 || l.ah !== 'true' || (l.op !== '0' && l.op !== '') || l.pe === 'auto';
+const labelCheck = (s, tag, eligible = true) => {
+  const later = (s.labels || []).filter(l => LATER.test(l.t));
+  row(later.length === 0, `${tag}: globe labels carry no later-book text (${later.map(l => l.t).join(',') || 'none'})`);
+  const exp = later.filter(exposed);
+  row(
+    exp.length === 0,
+    `${tag}: no later-book label focusable or exposed (${exp.map(l => `${l.t} tab=${l.tab} aria-hidden=${l.ah} op=${l.op}`).join('; ') || 'none'})`,
+  );
+  if (eligible) {
+    const el = (s.labels || []).filter(l => ELIGIBLE.test(l.t)).map(l => l.t);
+    row(el.length > 0, `${tag}: book-1 site labels still offered (${el.join(',') || 'none'})`);
+  }
+};
+// R0-2: real keyboard traversal. Tab from the top of the document and record every focused element; no later-book
+// name may be reachable, and the walk reports which globe labels it reached.
+async function tabWalk(p, n = 90) {
+  await p.evaluate(() => {
+    document.activeElement && document.activeElement.blur && document.activeElement.blur();
+    window.scrollTo(0, 0);
+  });
+  const seen = [];
+  for (let i = 0; i < n; i++) {
+    await p.keyboard.press('Tab');
+    seen.push(
+      await p.evaluate(() => {
+        const a = document.activeElement;
+        return a
+          ? {
+              t: (a.getAttribute('aria-label') || a.textContent || '').trim().slice(0, 60),
+              plbl: a.classList.contains('plbl'),
+            }
+          : null;
+      }),
+    );
+  }
+  return seen.filter(Boolean);
+}
+const keyCheck = async (o, tag) => {
+  const walk = await tabWalk(o.p);
+  const later = walk.filter(w => LATER.test(w.t));
+  const lbls = [...new Set(walk.filter(w => w.plbl).map(w => w.t))];
+  row(
+    later.length === 0,
+    `${tag}: keyboard walk (${walk.length} Tab stops) reaches no later-book name${later.length ? ' LEAK: ' + later.map(w => w.t).join(',') : ''}; globe labels reached: ${lbls.join(',') || 'none'}`,
+  );
+  return lbls;
+};
 const finish = async (o, tag) => {
   row((await snap(o.p)).mark === o.mark, `${tag}: same document`);
   row(o.errs.length === 0, `${tag}: page/console errors: ${o.errs.join(' | ') || 'none'}`);
@@ -209,7 +271,7 @@ async function run(browser, vp) {
 
   // ---- L1 valid place link (landmark restore) ----
   CASE = `[${V} L1 valid link]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=1&world=arrakis&site=arrakeen&view=place&lm=fxres');
     const m = await midFade(o.p, 8000);
     row(m.fade && !LATER.test(m.dossier + m.crumbs + m.ann), `entry fade sampled, no later copy (${brief(m)})`);
@@ -233,7 +295,7 @@ async function run(browser, vp) {
 
   // ---- L2 stale landmark link (later-book landmark under book 1) ----
   CASE = `[${V} L2 stale lm]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=1&world=arrakis&site=arrakeen&view=place&lm=fxlater');
     const m = await midFade(o.p, 6000);
     noLater(m, 'mid-fade');
@@ -254,6 +316,7 @@ async function run(browser, vp) {
     ['L4 stale unknown site', 'nosuch'],
   ]) {
     CASE = `[${V} ${tag}]`;
+    if (ONLY && !ONLY.test(CASE)) continue;
     const o = await open(browser, vp, `book=1&world=arrakis&site=${site}&view=place`);
     let entered = false;
     const t0 = Date.now();
@@ -276,7 +339,7 @@ async function run(browser, vp) {
 
   // ---- B1 downgrade in a committed place with a later-book landmark selected ----
   CASE = `[${V} B1 downgrade keeps place, drops later lm]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=2&world=arrakis&site=arrakeen&view=place&lm=fxlater');
     const [ok0, s0] = await until(o.p, s => s.view === 'place' && s.renderedLm === 'fxlater');
     row(ok0 && /Fixture Later Hall/.test(s0.dossier), `positive control: book 2 shows fxlater (${brief(s0)})`);
@@ -296,7 +359,7 @@ async function run(browser, vp) {
 
   // ---- B2 downgrade in a committed later-book place (leave fade) ----
   CASE = `[${V} B2 downgrade in later-book place]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=2&world=arrakis&site=keep&view=surface');
     await until(o.p, s => s.view === 'world' && s.site === 'keep');
     await click(o.p, '#dossier [data-act="enter"]'); // in-app entry pushes the place history entry
@@ -316,13 +379,14 @@ async function run(browser, vp) {
     row(ok && s.sel === 'arrakis' && consistent(s), `settles on the Arrakis surface (${brief(s)})`);
     row(!(s.hs && s.hs.atlasPlace), 'history no longer on a place entry');
     noLater(s, 'settled');
+    labelCheck(s, 'settled');
     await shot(o.p, vp, 'B2-downgrade-settled');
     await finish(o, 'B2');
   }
 
   // ---- B3 downgrade while the entry fade is in flight ----
   CASE = `[${V} B3 downgrade mid-entry]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=2&world=arrakis&site=keep&view=surface');
     await until(o.p, s => s.view === 'world' && s.site === 'keep');
     const h0 = (await snap(o.p)).hlen;
@@ -333,13 +397,20 @@ async function run(browser, vp) {
       return window.__SNAP();
     });
     noLater(m, 'mid-fade (150 ms into the entry)');
+    labelCheck(m, 'immediately after downgrade (entry pending)');
     let entered = false;
+    const midLeaks = new Set();
     for (let i = 0; i < 20; i++) {
       const s = await snap(o.p);
       if (s.view === 'place' || s.rendered) entered = true;
+      s.labels.filter(l => LATER.test(l.t)).forEach(l => midLeaks.add(`${l.t} tab=${l.tab} op=${l.op}`));
       await sleep(100);
     }
     row(!entered, 'cancelled entry never commits or builds the Keep place');
+    row(
+      midLeaks.size === 0,
+      `during cancellation (20 samples, 100 ms apart) no later-book globe label (${[...midLeaks].join('; ') || 'none'})`,
+    );
     const [ok, s] = await until(o.p, s => s.book === 1 && s.view === 'world' && hiddenOrNull(s));
     row(ok && consistent(s), `settles on the Arrakis surface, no visible site (${brief(s)})`);
     row(
@@ -347,12 +418,82 @@ async function run(browser, vp) {
       `place history marker dropped (atlasPlace=${!!(s.hs && s.hs.atlasPlace)}, history +${s.hlen - h0})`,
     );
     noLater(s, 'settled');
+    row(s.site == null, `ineligible Keep selection cleared once settled (site=${s.site})`);
+    labelCheck(s, 'settled');
+    await keyCheck(o, 'settled');
+    await shot(o.p, vp, 'B3-downgrade-settled');
+    // forward again: the Keep returns as a globe label at book 2
+    await o.p.evaluate(() => window.__atlas.setBook(2));
+    const [okU, sU] = await until(o.p, s => s.book === 2 && s.view === 'world');
+    row(
+      okU && sU.labels.some(l => /Paul’s Keep/.test(l.t)),
+      `upgrade to book 2 restores the Keep label (${sU.labels.map(l => l.t).join(',')})`,
+    );
     await finish(o, 'B3');
+  }
+
+  // ---- S1 direct surface downgrade on an unchanged planet mesh (R0-2) ----
+  CASE = `[${V} S1 surface downgrade]`;
+  if (!ONLY || ONLY.test(CASE)) {
+    const o = await open(browser, vp, 'book=2&world=arrakis&site=keep&view=surface');
+    const [ok0, s0] = await until(o.p, s => s.view === 'world' && s.site === 'keep');
+    // let the turn toward the Keep finish so its label faces the camera and clears the compact chrome
+    let s1 = await snap(o.p);
+    for (let i = 0; i < 40; i++) {
+      const k = s1.labels.find(l => /Paul’s Keep/.test(l.t));
+      if (k && k.tab === 0) break;
+      // compact layout: the open details sheet can cover the selected site; lower it as a reader would
+      if (i === 15)
+        await o.p.evaluate(() => {
+          const d = document.querySelector('#dossier');
+          if (d && !d.classList.contains('collapsed')) document.querySelector('#grab').click();
+        });
+      await sleep(200);
+      s1 = await snap(o.p);
+    }
+    const keep0 = s1.labels.find(l => /Paul’s Keep/.test(l.t));
+    row(
+      ok0 && !!keep0 && keep0.tab === 0 && keep0.ah === 'false',
+      `positive control: book 2 Keep label shown and focusable (${keep0 ? `tab=${keep0.tab} aria-hidden=${keep0.ah} op=${keep0.op}` : 'absent'})`,
+    );
+    await shot(o.p, vp, 'S1-book2-before');
+    await o.p.evaluate(() => (window.__plRef = window.__atlas.PL));
+    await skipFades(o.p);
+    await o.p.evaluate(() => window.__atlas.setBook(1));
+    const m = await snap(o.p);
+    noLater(m, 'immediately after downgrade');
+    labelCheck(m, 'immediately after downgrade');
+    const [ok, s] = await until(o.p, s => s.book === 1 && s.view === 'world');
+    row(
+      await o.p.evaluate(() => window.__atlas.PL === window.__plRef),
+      'planet mesh unchanged (no re-descent): the R0-2 path',
+    );
+    row(
+      ok && s.sel === 'arrakis' && s.site == null && consistent(s),
+      `ineligible Keep selection cleared (${brief(s)})`,
+    );
+    row(!/site=/.test(s.hash) && /view=surface/.test(s.hash), `URL ${s.hash}`);
+    noLater(s, 'settled');
+    labelCheck(s, 'settled');
+    const reached = await keyCheck(o, 'settled');
+    row(
+      reached.every(t => !LATER.test(t)),
+      `every keyboard-reached globe label is book-1 eligible (${reached.join(',') || 'none in view'})`,
+    );
+    await shot(o.p, vp, 'S1-downgrade-settled');
+    await o.p.evaluate(() => window.__atlas.setBook(2));
+    await sleep(300);
+    const [okU, sU] = await until(o.p, s => s.book === 2 && s.view === 'world');
+    row(
+      okU && sU.labels.some(l => /Paul’s Keep/.test(l.t)),
+      `upgrade to book 2 restores the Keep label (${sU.labels.map(l => l.t).join(',')})`,
+    );
+    await finish(o, 'S1');
   }
 
   // ---- B4 downgrade while a Back-to-world leave fade is in flight ----
   CASE = `[${V} B4 downgrade mid-leave]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=2&world=arrakis&site=keep&view=surface');
     await until(o.p, s => s.view === 'world' && s.site === 'keep');
     await click(o.p, '#dossier [data-act="enter"]');
@@ -366,12 +507,13 @@ async function run(browser, vp) {
     const [ok, s] = await until(o.p, s => s.book === 1 && s.view === 'world' && hiddenOrNull(s));
     row(ok && s.sel === 'arrakis' && consistent(s), `settles on the Arrakis surface, no visible site (${brief(s)})`);
     noLater(s, 'settled');
+    labelCheck(s, 'settled');
     await finish(o, 'B4');
   }
 
   // ---- T1 tour: Stop while the first entry fade is in flight (DWT-01a) ----
   CASE = `[${V} T1 tour Stop mid-entry]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=1&world=arrakis&view=surface');
     await until(o.p, s => s.view === 'world' && s.sel === 'arrakis');
     // tour step 1 is d1 (Caladan): ascend + entry; Stop as soon as the first fade shows
@@ -396,7 +538,7 @@ async function run(browser, vp) {
 
   // ---- T2 tour: repeated destination (d3 -> d4, both Arrakeen) and superseding steps ----
   CASE = `[${V} T2 tour repeated destination]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=1');
     await sleep(3000);
     await click(o.p, '#tourBtn');
@@ -454,7 +596,7 @@ async function run(browser, vp) {
 
   // ---- T3 tour: Stop during a leave + queued entry ----
   CASE = `[${V} T3 tour Stop mid-leave]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=1&world=arrakis&site=arrakeen&view=surface');
     await until(o.p, s => s.view === 'world' && s.site === 'arrakeen');
     await click(o.p, '#track .ev[data-ev="d4"]'); // in-app entry (pushes the place entry)
@@ -474,7 +616,7 @@ async function run(browser, vp) {
 
   // ---- H1 Back during an in-place hop (Arrakeen -> Tabr fade) ----
   CASE = `[${V} H1 Back during travel]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=1&world=arrakis&site=arrakeen&view=surface');
     await until(o.p, s => s.view === 'world' && s.site === 'arrakeen');
     await click(o.p, '#track .ev[data-ev="d4"]');
@@ -519,7 +661,7 @@ async function run(browser, vp) {
 
   // ---- H2 Back after a settled place entry returns to the surface; Forward re-enters ----
   CASE = `[${V} H2 Back/Forward settled]`;
-  {
+  if (!ONLY || ONLY.test(CASE)) {
     const o = await open(browser, vp, 'book=1&world=arrakis&site=tabr&view=surface');
     await until(o.p, s => s.view === 'world' && s.site === 'tabr');
     await click(o.p, '#dossier [data-act="enter"]');

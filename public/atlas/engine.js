@@ -1321,7 +1321,8 @@ function layoutSiteLabels(W, H) {
     o._flip = P.flip;
     const { edgeOut, edgeDot, flip, x0 } = P;
     const r = { x: x0, y: pr.y - fh / 2, w: fw, h: fh };
-    const show = facing > 0.12 && pr.z < 1 && !edgeOut && !underChrome(r, bands) && !(!sel && hitsAny(r, chrome));
+    /* R0-2: on an opted-in pack a label the current book does not reach is never shown, focusable or exposed */
+    const show = (!PLACES || siteSeen(o.s)) && facing > 0.12 && pr.z < 1 && !edgeOut && !underChrome(r, bands) && !(!sel && hitsAny(r, chrome));
     const dot = show && (edgeDot || (!sel && placed.some((q) => hit(r, q))));
     if (show) placed.push(dot ? { x: pr.x - 6, y: pr.y - 6, w: 12, h: 12 } : r);
     if (!show && document.activeElement === o.el) recoverLabelFocus(o);
@@ -2180,6 +2181,12 @@ function openEvent(id,travel){placeGen++;cancelEvFocus();S.ev=id;if(!id){renderD
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
+/* R0-2 (opted-in packs only): a book change that keeps the planet mesh does not rebuild the surface, so the globe's
+   site buttons would keep the previous book's names, tab stops and aria exposure. Clear a selection the new book
+   does not reach and rebuild the labels from the sites it does: a downgrade drops later-book markers, an upgrade
+   restores them. A pending place entry is cancelled by its own generation check (placeGen), so nothing it needs
+   for cancellation is lost here. */
+function syncSurfaceSites(w){if(!PL||!w)return;const st=S.site&&siteOf(w,S.site);if(S.site&&(!st||!siteSeen(st))){S.site=null;S.lm=null;}buildSiteLabels(w);}
 $("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;cancelEvFocus();if(+b.dataset.b!==S.book){placeGen++;evNav++;navNext=null;if(TOUR.on)tourStop();if(PLACES)PLACES.stopFx();}
   if(S.view==="place"){const nb=+b.dataset.b;const w=WORLD_BY[S.sel];S.book=nb;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
     const st=siteOf(w,S.site);if(!seen(w)||!st||!siteSeen(st)){
@@ -2193,9 +2200,9 @@ $("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if
     if(lm&&PLACES.landmarks().some(l=>l.id===lm))selectLandmark(lm,true);else S.lm=null;refreshAll();return;}
   S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
       /* DWO-E2-F2: the hidden world's copy goes now, not when the ascent finishes */
-      S.ev=null;S.lm=null;renderDossier();renderCrumbs();renderChron();announce();syncURL();ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
+      S.ev=null;S.lm=null;if(PLACES){SITE_EL.forEach(o=>o.el.remove());SITE_EL=[];clearRoutes();}renderDossier();renderCrumbs();renderChron();announce();syncURL();ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
+  if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}if(PLACES)syncSurfaceSites(w);}
   refreshAll();});
 /* compact work picker (more than 12 books): the select and step buttons press the hidden data-b buttons */
 function bindBookPicker(){
@@ -2358,7 +2365,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
     syncSky();
     labelJumpFrame(movingAtEntry,!!orbG.fly);orbG.cam.updateMatrixWorld();layoutGalaxyLabels(W,H);
     renderer.render(gal,camG);}
-  else if(S.view==="place"&&PLACES&&PLACES.place){SITE_EL.forEach(o=>{if(o.el.style.opacity!=="0"){o.el.style.opacity=0;o.el.style.pointerEvents="none";}});if(routeSvg)routeSvg.style.visibility="hidden";PLACES.render(dt,W,H);}
+  else if(S.view==="place"&&PLACES&&PLACES.place){SITE_EL.forEach(o=>{if(o.el.style.opacity!=="0"||o.el._tab){o.el.style.opacity=0;o.el.style.pointerEvents="none";o.el._tab=false;o.el.tabIndex=-1;o.el.setAttribute("aria-hidden","true");}});if(routeSvg)routeSvg.style.visibility="hidden";PLACES.render(dt,W,H);}
   else{if(routeSvg&&routeSvg.style.visibility)routeSvg.style.visibility="";syncSky();orbW.update(dt);updatePlanet(dt,T,!S.interacted);labelJumpFrame(movingAtEntry,viewMoving());orbW.cam.updateMatrixWorld();layoutSiteLabels(W,H);layoutRoutes(W,H);renderer.render(wsc,camW);}
   requestAnimationFrame(frame);}
 
