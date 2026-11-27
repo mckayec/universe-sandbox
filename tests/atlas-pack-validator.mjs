@@ -136,6 +136,12 @@ export function validatePacks(dir = PACK_DIR) {
     Object.keys(P).forEach(k => {
       if (!TOP.includes(k)) warn.push(`unknown top-level key "${k}" (ignored by engine)`);
     });
+    // PACK_FORMAT 22 opt-in: only a plain object turns places on (engine placesOn); anything else silently leaves the
+    // feature off, so it is an error here rather than a quiet no-op
+    if ('places' in P && !(P.places && typeof P.places === 'object' && !Array.isArray(P.places)))
+      issues.push(
+        `places must be an object ({} turns enterable places on); got ${Array.isArray(P.places) ? 'array' : P.places === null ? 'null' : typeof P.places}`,
+      );
     const books = P.books || {};
     const bookIds = Object.keys(books).map(Number);
     const okBook = b => books[b] != null;

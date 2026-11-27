@@ -426,6 +426,10 @@ function normalise(P){
    in with a top-level `places` object. No shipped pack does yet, so every atlas behaves as before; the infrastructure
    ships dormant for a later, separately reviewed content slice. With the gate off, a `view=place` link is read as main
    reads it (an unknown view), so stale place links land exactly where they did before. */
+/* PACK_FORMAT 22 opt-in (R0): enterable places, the Tour button and view=place links exist only for a pack whose
+   top-level `places` is a plain object. `places:{}` turns them on; its keys are scene defaults passed to
+   AtlasPlaces.enter (`defaults`). A missing key, null, an array, a boolean, a number or a string leaves the feature
+   off (dormant, like main); tests/atlas-pack-validator.mjs reports any such non-object value as an error. */
 function placesOn(raw){return !!(raw&&raw.places&&typeof raw.places==="object"&&!Array.isArray(raw.places));}
 function buildShell(K){
   const M=K.meta,T=K.theme,U=K.ui;
@@ -1514,7 +1518,9 @@ function leavePlace(after){if(S.view!=="place"){if(after)after();return;}if(hist
 function doLeavePlace(after){placeGen++;pendPrev=null;if(AUD)AUD.leave();
   if(!PL||!PL.w||PL.w.id!==S.sel){if(PLACES)PLACES.exit();S.lm=null;S.ev=null;S.view="galaxy";const site=S.site;descend(S.sel,true);if(site)selectSiteLater(S.sel,site,900);if(after)setTimeout(after,1000);return;}
   navBusy++;transition(()=>{if(PLACES)PLACES.exit();S.view="world";S.lm=null;S.ev=null;if(PL&&!(S.sel&&!worldBookOk(WORLD_BY[S.sel])))buildSiteLabels(WORLD_BY[S.sel]);else if(PL){SITE_EL.forEach(o=>o.el.remove());SITE_EL=[];}refreshAll();if(after)setTimeout(after,60);navDone();});}
-function selectLandmark(id,quiet){if(S.view!=="place")return;S.lm=id||null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
+function selectLandmark(id,quiet){if(S.view!=="place")return;
+  /* R0-1: only a landmark the rendered place shows can be selected; a stale or later-book id (e.g. a deep link's lm) is dropped */
+  S.lm=id&&PLACES.landmarks().some(l=>l.id===id)?id:null;PLACES.focus(S.lm);if(!S.lm)PLACES.overview();if(MOB&&id)dosCollapsed=false;
   if(!quiet){renderDossier();renderCrumbs();syncURL();const it=dos.querySelector('[data-lm="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}}
 /* an event inside the place: fly to its landmark, then play its scene */
 function evInPlace(e,own){if(!e||S.view!=="place"||!evEligible(e)||S.sel!==e.world||(e.site&&S.site!==e.site))return;S.ev=e.id;const gen=placeGen;const has=e.lm&&PLACES.landmarks().some(l=>l.id===e.lm);
