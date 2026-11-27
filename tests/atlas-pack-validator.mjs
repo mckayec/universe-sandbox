@@ -6,7 +6,14 @@ import path from 'node:path';
 import vm from 'node:vm';
 
 export const PACK_DIR = new URL('../public/atlas/packs/', import.meta.url).pathname;
-const FEAT_MAX = 18; // matches FEAT_MAX in public/atlas/engine.js
+const FEAT_MAX = 18;
+// gate.js (EC-1..EC-4 helpers) run in a sandbox, so the validator gates world-only places exactly as cards.js does
+const GATE = (() => {
+  const g = { window: {} };
+  vm.createContext(g);
+  vm.runInContext(fs.readFileSync(new URL('../public/atlas/gate.js', import.meta.url), 'utf8'), g);
+  return g.window.AtlasGate;
+})(); // matches FEAT_MAX in public/atlas/engine.js
 // relation families for tree links and parent links; matches FAMILIES in public/atlas/tree-rel.js
 export const TREE_FAMILIES = ['branch', 'within', 'division', 'merger', 'overlap', 'contact', 'history', 'context'];
 // the years a tree node spans for ordering checks: when, or the emergence window; none when undated
@@ -31,7 +38,7 @@ export function validatePacks(dir = PACK_DIR) {
   const TYPES = 'terran ocean archipelago desert forest ice gas city barren lava hive toxic dyson'.split(' ');
   const FK = 'continent range biome basin peak river'.split(' ');
   const TOP =
-    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start tree'.split(
+    'id meta theme books spoilers ui intro groups worlds events codex galaxy legend hooks realms layers timeline start tree layout journeys'.split(
       ' ',
     );
   const finite = v => typeof v === 'number' && isFinite(v);
@@ -91,6 +98,8 @@ export function validatePacks(dir = PACK_DIR) {
     const bookIds = Object.keys(books).map(Number);
     const okBook = b => books[b] != null;
     const worlds = P.worlds || [];
+    const CARDS = P.layout === 'cards';
+    if (P.layout != null && !CARDS) issues.push(`layout "${P.layout}" unknown (only "cards")`);
     stats.worlds = worlds.length;
     stats.events = (P.events || []).length;
     const wid = new Map();
@@ -112,12 +121,20 @@ export function validatePacks(dir = PACK_DIR) {
     let siteTotal = 0,
       noSites = [],
       polar = [];
+    // editorialNote: a per-record tooltip for the "Editorial label" badge (PACK_FORMAT section 22)
+    const edNote = (where, x) => {
+      if (x.editorialNote == null) return;
+      if (typeof x.editorialNote !== 'string' || !x.editorialNote.trim())
+        issues.push(`${where}: editorialNote must be a non-empty string`);
+      else if (!x.editorial) warn.push(`${where}: editorialNote without editorial:true (never shown)`);
+    };
     worlds.forEach(w => {
       const tag = `world ${w.id}`;
-      ['name', 'group', 'books', 'blurb', 'gfx'].forEach(k => {
+      edNote(tag, w);
+      (CARDS ? ['name'] : ['name', 'group', 'books', 'blurb', 'gfx']).forEach(k => {
         if (w[k] == null || w[k] === '') issues.push(`${tag}: missing required "${k}"`);
       });
-      if (w.group && !groups.has(w.group))
+      if (w.group && !groups.has(w.group) && !CARDS)
         warn.push(`${tag}: group "${w.group}" not declared in groups[] (auto-created, appended at end of index)`);
       (w.books || []).forEach(b => {
         if (!okBook(b)) issues.push(`${tag}: books has unknown book ${b}`);
@@ -129,7 +146,10 @@ export function validatePacks(dir = PACK_DIR) {
       // placement
       const pl = ['map', 'gal', 'at', 'pos3', 'dir'].filter(k => w[k] != null);
       if (w.star && w.star.ra != null) pl.push('star.ra');
-      if (!pl.length && !(P.galaxy && P.galaxy.sectors && P.galaxy.sectors[w.group]))
+      if (CARDS && pl.length) issues.push(`${tag}: placement ${pl} in a cards layout (positions are never drawn)`);
+      if (CARDS) {
+        if (w.gfx) warn.push(`${tag}: gfx ignored in a cards layout`);
+      } else if (!pl.length && !(P.galaxy && P.galaxy.sectors && P.galaxy.sectors[w.group]))
         warn.push(`${tag}: no placement (falls back to Sol)`);
       if (pl.length > 1) warn.push(`${tag}: multiple placements ${pl} (engine precedence pos3>map>gal>at>star>dir)`);
       if (w.map && !w.map.slice(0, 2).every(finite)) issues.push(`${tag}: map not numeric ${JSON.stringify(w.map)}`);
@@ -198,10 +218,18 @@ export function validatePacks(dir = PACK_DIR) {
         }
         if (sids.has(s.id)) issues.push(`${tag}: duplicate site id ${s.id}`);
         sids.add(s.id);
+        edNote(st, s);
         ['name', 'desc'].forEach(k => {
           if (!s[k]) issues.push(`${st}: missing ${k}`);
         });
-        if (s.rel) {
+        if (CARDS) {
+          if (s.lat != null || s.lon != null || s.rel)
+            issues.push(`${st}: coordinates in a cards layout (positions are never drawn)`);
+          if (s.parent != null && !(w.sites || []).find(x => x.id === s.parent))
+            issues.push(`${st}: parent -> missing site "${s.parent}" on ${w.id}`);
+          if (s.parent === s.id) issues.push(`${st}: parent is itself`);
+          if (s.first != null && !okBook(s.first)) issues.push(`${st}: first=${s.first} unknown book`);
+        } else if (s.rel) {
           if (!(w.sites || []).find(x => x.id === s.rel.to))
             issues.push(`${st}: rel.to -> missing site "${s.rel.to}" (placed at 0,0)`);
         } else if (!(finite(s.lat) && finite(s.lon)))
@@ -221,6 +249,55 @@ export function validatePacks(dir = PACK_DIR) {
       if (!(w.sites || []).length) noSites.push(w.id);
     });
     stats.sites = siteTotal;
+    if (
+      P.spoilers &&
+      P.spoilers.start != null &&
+      P.spoilers.start !== 'choose' &&
+      P.spoilers.start !== 0 &&
+      !okBook(P.spoilers.start)
+    )
+      issues.push(`spoilers.start ${P.spoilers.start} is not "choose", 0 or a book`);
+    if (P.spoilers && P.spoilers.start === 0 && P.spoilers.all === false)
+      issues.push('spoilers.start 0 ("All") with spoilers.all:false');
+    Object.keys(books).forEach(b => {
+      if (books[b].chron != null && !finite(books[b].chron)) issues.push(`books[${b}].chron not a number`);
+    });
+    const PIDX = GATE.placeIndex(worlds);
+    if (CARDS) {
+      worlds.forEach(w =>
+        (w.sites || []).forEach(s => {
+          const e = PIDX.by[w.id + '/' + s.id];
+          const own = GATE.firstOf(s, 0);
+          if (e && own && own < e.gate)
+            warn.push(`site ${w.id}/${s.id}: own gate ${own} < parent gate ${e.gate} (shown from ${e.gate})`);
+        }),
+      );
+      (P.events || []).forEach(e =>
+        GATE.eventPlaces(e).forEach(k => {
+          const pe = PIDX.by[k];
+          if (!pe) issues.push(`event ${e.id}: place -> missing "${k}"`);
+          else if (okBook(e.book) && pe.gate > e.book)
+            issues.push(`event ${e.id}: place ${k} gate ${pe.gate} > event book ${e.book} (spoiler line)`);
+        }),
+      );
+    } else if (P.journeys) warn.push('journeys are drawn only in a cards layout');
+    const jid = new Set();
+    (P.journeys || []).forEach((j, i) => {
+      const t = `journey ${j.id || '#' + i}`;
+      if (j.id == null) issues.push(`${t}: no id`);
+      else if (jid.has(j.id)) issues.push(`duplicate journey id ${j.id}`);
+      jid.add(j.id);
+      if (!okBook(j.book)) issues.push(`${t}: unknown book ${j.book}`);
+      if (!(j.path || []).length) issues.push(`${t}: empty path`);
+      (j.path || []).forEach(p => {
+        const k = GATE.placeKey(p);
+        const pe = PIDX.by[k];
+        if (!pe) issues.push(`${t}: stop -> missing place "${k}"`);
+        else if (okBook(j.book) && pe.gate > j.book)
+          issues.push(`${t}: stop ${k} gate ${pe.gate} > journey book ${j.book} (journey never shown)`);
+      });
+    });
+    stats.journeys = (P.journeys || []).length;
     stats.worldsWithoutSites = noSites;
     stats.polarSites = polar;
     // positions: compute map coordinates proximity duplicates
@@ -272,6 +349,7 @@ export function validatePacks(dir = PACK_DIR) {
     (P.codex || []).forEach(t =>
       (t.list || []).forEach(x => {
         if (!x.name) issues.push(`codex ${t.id}: entry without name`);
+        edNote(`codex ${t.id}/${x.name}`, x);
         if (!x.desc) warn.push(`codex ${t.id}/${x.name}: no desc`);
         (x.books || []).forEach(b => {
           if (!okBook(b)) issues.push(`codex ${t.id}/${x.name}: unknown book ${b}`);

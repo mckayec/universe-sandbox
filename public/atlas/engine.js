@@ -416,7 +416,9 @@ function normalise(P){
   if(ui.go===undefined){const m=worlds.find(w=>w.major)||worlds[0];ui.go={id:m.id,label:"Go to "+m.name};}
   if(ui.go&&!ids.has(ui.go.id))ui.go=null;
   const codex=ARR(P.codex).filter(t=>t&&t.id).map(t=>({id:t.id,t:t.title||t.id,list:ARR(t.list).filter(x=>x&&x.name)}));
-  return {raw:P,id:P.id||"atlas",meta,theme,mode,books,bookIds,worlds,events,groups,G,ui,codex,intro:P.intro||{},legend:P.legend,hooks:P.hooks||{},
+  /* EC-1 (PACK_FORMAT 6.1): pack-declared starting gate and optional "All" */
+  const gate=window.AtlasGate?window.AtlasGate.normSpoilers(P.spoilers,bookIds):{start:0,all:true,guard:false};
+  return {raw:P,id:P.id||"atlas",gate,meta,theme,mode,books,bookIds,worlds,events,groups,G,ui,codex,intro:P.intro||{},legend:P.legend,hooks:P.hooks||{},
     spoil:Object.assign({dimLabel:mode==="cumulative"?.4:.35,dimMarker:mode==="cumulative"?.2:.15},P.spoilers||{})};
 }
 
@@ -440,9 +442,9 @@ function buildShell(K){
   '<div><h1 class="chrome'+(String(TT).length>26?" long":"")+'">'+esc(TT)+'</h1><p>'+(M.tagline||"")+'</p></div></div>'+
  '<div class="controls"><button class="btn" id="idxBtn" aria-expanded="false" aria-controls="index">Worlds</button>'+
   (U.bookLabel?'<span class="seglbl">'+esc(U.bookLabel)+'</span>':"")+
-  '<div class="seg'+(BOOK_PICK?" picker":"")+'" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+
+  '<div class="seg'+(BOOK_PICK?" picker":"")+'" id="books" role="group" aria-label="'+esc(U.booksAria)+'">'+(K.gate.all?'<button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>':'')+
   K.bookIds.map(b=>'<button data-b="'+b+'" aria-pressed="false" title="'+esc(K.books[b].title+(K.books[b].y?" ("+K.books[b].y+")":""))+'">'+esc(K.books[b].n)+'</button>').join("")+
-  (BOOK_PICK?window.AtlasLayers.renderBookPicker(K.books,K.bookIds,{label:U.booksAria,allLabel:U.pickerAll||"All",prevLabel:U.pickerPrev,nextLabel:U.pickerNext}):"")+'</div>'+
+  (BOOK_PICK?window.AtlasLayers.renderBookPicker(K.books,K.bookIds,{label:U.booksAria,all:K.gate.all,allLabel:U.pickerAll||"All",prevLabel:U.pickerPrev,nextLabel:U.pickerNext}):"")+'</div>'+
   '<button class="btn" id="galBtn">'+esc(U.galaxyButton)+'</button><button class="btn" id="webBtn">'+esc(U.homeButton)+'</button>'+
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
   (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
@@ -473,6 +475,8 @@ function noSurface(w){return !!(w&&(w.noSurface||(w.gfx&&w.gfx.type==="star")));
 let STARTED=false;
 function start(pack){
   if(STARTED)throw new Error("AtlasEngine.start may only be called once per page.");STARTED=true;
+  /* EC-2/EC-3 (PACK_FORMAT 22): a world-only pack with no coordinates is drawn by cards.js, not the galaxy */
+  if(pack&&pack.layout==="cards"){if(!window.AtlasCards)throw new Error("cards.js is not loaded.");return window.AtlasCards.start(pack);}
   const K=normalise(pack);buildShell(K);
   const BOOKS=K.books,BOOK_IDS=K.bookIds,WORLDS=K.worlds,EVENTS=K.events,G=K.G,UI=K.ui,CUM=K.mode==="cumulative";
   const GROUP_BY={};K.groups.forEach(g=>GROUP_BY[g.id]=g);
@@ -934,6 +938,11 @@ function updatePlanet(dt,t,spinOn){if(!PL)return;
 
 /* ===================== STATE & SPOILER RULES (PACK_FORMAT 6) ===================== */
 const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null};
+/* EC-1: a pack without "All" (or with a numeric spoilers.start) opens at its starting book, never at everything;
+   start:"choose" has no chooser dialog in the galactic view and falls back to the first book */
+const GATE_FIRST=Math.min(...K.bookIds);
+S.book=K.gate.start==="choose"?GATE_FIRST:K.gate.start;
+document.querySelectorAll('#books [data-b]').forEach(x=>x.setAttribute("aria-pressed",String(+x.dataset.b===S.book)));
 /* layers and timeline (PACK_FORMAT 20; helpers in layers.js) */
 const LY=window.AtlasLayers||null;
 const LAY=LY?LY.normLayers(K.raw):null;
@@ -1499,7 +1508,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
    falls back to "All" and its spoilers. */
 const BOOK_KEY="atlas-book:"+(K.raw.id||K.meta.title||"pack");
 function storeBook(b){try{localStorage.setItem(BOOK_KEY,String(b||0));}catch(e){}}
-function storedBook(){try{const v=parseInt(localStorage.getItem(BOOK_KEY),10);return BOOKS[v]?v:0;}catch(e){return 0;}}
+function storedBook(){try{const r=localStorage.getItem(BOOK_KEY);if(r==null)return null;const v=parseInt(r,10);return BOOKS[v]||(v===0&&K.gate.all)?v:null;}catch(e){return null;}}
 function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view},o||{});
   const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&o.view==="world")q.set("site",o.site);
   if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");
@@ -1522,8 +1531,10 @@ function afterRefresh(){
 addEventListener("popstate",()=>{const st=parseHash();
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
   else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
-function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
-  if(b&&b!==S.book)API.setBook(b);
+function restoreFromURL(){const st=parseHash();
+  const r=window.AtlasGate?window.AtlasGate.resolveBook({N:K.gate,bookIds:BOOK_IDS,url:st.book,stored:storedBook()}):{book:st.book!=null?st.book:storedBook()||0};
+  const b=r.book==null?GATE_FIRST:r.book;
+  if(b!==S.book)API.setBook(b);
   if(st.realm&&st.realm!==S.realm)setRealm(st.realm,true);
   if(st.filters){const f=st.filters;if(f.active!==undefined)S.layers=f.active;if(f.range!==undefined)S.range=f.range;if(f.active!==undefined||f.range!==undefined)refreshAll();}
   if(TRV&&st.tree){const tn=TRV.T.by[st.tree];TRV.show(tn&&treeNodeSeen(tn)?tn.id:null);}
