@@ -1,10 +1,10 @@
 stage: integration
 owner: claude
 blocked-on: none
-next-action: Claude: merge main 1896dda into sim/clarity-physics resolving conflicts with PR44 (src/style.css, src/ui/feed.ts compact query, src/ui/template.ts — keep PR44 aria/touch-hint/landscape layout plus PR47 overlay-stack/kids/disk rows); rerun checks + phone portrait/landscape shots; hand new head to ChatGPT for quick recheck, then Claude merges (D12 + D09 yes recorded).
-updated: 2026-11-27T00:43Z
+next-action: Claude: resume release execution under recorded D12 with SC-L1 and guided landscape hint visibility disclosed.
+updated: 2026-11-27T03:23:36.815Z
 idle-runs: 0
-note: D12 approved by Mckay live 2026-11-26 (with D09 merge permission). Not merged: PR44 merged first and overlaps 7 files; approved head fdec175 now conflicts in 3. Needs integration + ChatGPT recheck.
+note: Landscape control overlap closed at 14c684d. Exact-head overlay suite passed 7/7 and 6/6 recorded stack gaps measured 8 px. Selected-label occlusion and hidden guided landscape touch hints remain disclosed.
 
 
 
@@ -351,3 +351,7 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-16T21:19:35Z ChatGPT: [integration review](saveload-integration-review-fdec175.md) saved/read back at 7e133bd5ca3a02797a47a394d5b7a26634d9051b. Fresh PR47 head fdec175 matches the reviewed integration; actual 1/1 commit, 3/3 test blobs, 0 application delta. Bounded Save/Load closure stands; no unnecessary rerun of unchanged evidence. implementation-review/chatgpt -> final-audit/claude for Claude's exact-head technical sign-off or concrete blocker. Clarified page-wide resizing versus accepted doubled dock text and the role ownership of technical sign-off. All documented runtime/device/accessibility/model limitations retained; no merge/deploy/owner approval.
 - 2026-11-16T22:05Z Claude: [final technical record](technical-signoff-fdec175.md) — **Technical: approved** at PR47 fdec17592d5635178a71bd1d1a8c6d8120c0dcae for the declared scope. Re-ran on a clean worktree at that exact head: pnpm check exit 0 (234/234 units, 113 dist files, no third-party loads), test:pages 12×2, test:browser 3/3 consecutive strict passes. Main has 0 non-docs changes since the PR base 9040412. Corrected both inventory wordings (technical sign-off is Claude's; "200% text" = page-wide resizing, dock-text evidence retained). final-packet-3ab737f.md marked historical. final-audit/claude → awaiting-owner/mckay; D12 opened. No merge or deploy.
 - 2026-11-27T00:43Z: Claude: Mckay approved D12 live. After PR44 merged, PR47 at fdec175 conflicts (style.css, feed.ts, template.ts). Claude took integration ownership; not merged.
+- 2026-11-27T01:12Z Claude: integrated main 8a28073 (PR39/PR24/PR44) into PR47 at 4c3c03d6ffe918317959c72db32805805170800b ([receipt](integration-4c3c03d.md)): template token-merge, PR44 COMPACT_QUERY, both CSS blocks; Kids hides PR44 touch hint; harness stubs. pnpm check 281/281, test:pages 14x2, test:browser pass; 5 shots viewed. integration/claude -> integration/chatgpt for quick recheck. Not merged.
+- 2026-11-27T01:20:37.685Z ChatGPT: Integration 4c3c03d: 22/22 focused tests pass. One combined landscape state lacks rendered or hit-test evidence; returned for targeted qualification. See [integration-review-4c3c03d.md](integration-review-4c3c03d.md). Handed to Claude.
+- 2026-11-27T03:09Z Claude: [landscape qualification](landscape-qualification-14c684d.md): 844×390 coarse combined guide+legend+nav+sheet state was defective at 4c3c03d. Fixed at PR47 14c684dcd0a7b3ca3252749854af7371d7ef2a7b (style.css, overlay-layout.ts, +1 test). pnpm check 282/282, dist 120, test:pages 14x2, test:browser pass, test:touch pass, harness 102/102 (16 controls × 5 points at 844×390 and 390×844); 8 shots viewed. SC-L1 label-cover residual recorded. integration/claude -> integration/chatgpt. Not merged.
+- 2026-11-27T03:23:36.815Z ChatGPT: Landscape control overlap closed at 14c684d. Exact-head overlay suite passed 7/7 and 6/6 recorded stack gaps measured 8 px. Selected-label occlusion and hidden guided landscape touch hints remain disclosed. See [integration-review-14c684d.md](integration-review-14c684d.md). Handed to Claude.

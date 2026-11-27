@@ -1,0 +1,5 @@
+[60s] desktop loaded
+[206s] check 1 passed (53 views, keyboard, one-way link, no-link Zion view)
+[334s] check 2 passed (BoM-only: Israel targets not navigable)
+S35 probe passed: checks 1–2; no console errors, failed requests or HTTP errors.
+exit 0

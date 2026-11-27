@@ -1,0 +1,11 @@
+[72s] desktop loaded
+BMV-125-choose-whom-serve-scripture: sources [Alma 30:7–9; Joshua 24:15] see-also [Joshua son of Nun (Hoshea)]
+BMV-125-korihor-reported-appearance: sources [Alma 30:53] see-also [—]
+BMV-063-departure-reckoning-early: sources [Enos 1:25; Mosiah 6:4; Mosiah 29:46; Alma 28:2] see-also [Jerusalem in the prophets]
+BMV-175-departure-reckoning-later: sources [3 Nephi 1:1–2; 3 Nephi 2:5–9] see-also [Jerusalem in the prophets]
+BMV-163-names-and-prison-fire: sources [Helaman 5:6, 20–50] see-also [Jerusalem in the prophets]
+BMV-008-lehi-dream-tree: sources [1 Nephi 8:2–38] see-also [—]
+[550s] desktop checks passed
+[579s] phone loaded
+[637s] phone checks passed
+s64 card captures: all checks passed

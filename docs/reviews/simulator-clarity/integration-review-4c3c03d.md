@@ -1,0 +1,12 @@
+# PR47 integration review
+
+Reviewed `sim/clarity-physics` at **4c3c03d6ffe918317959c72db32805805170800b**. **Return one landscape interaction check before merge.** The PR adds the PR44 landscape dock to the previously reviewed simulator. [Builder's integration receipt](integration-4c3c03d.md) and [prior Save/Load review](saveload-integration-review-fdec175.md).
+
+| Check | Result |
+|---|---|
+| Shared markup and Kids mode | Inspected the actual PR file patches and integrated template, feed, styles, overlay budget and Kids cancellation harness. 125/125 literal template IDs unique. Undo/Redo precede the system selector, pressed-state attributes survive, the adult touch hint is explicitly hidden in Kids mode, and the five overlay children share one container. |
+| Independent focused tests | Ran the revision's Kids cancellation, Kids mode and overlay budget suites with Node in an isolated source copy: **22/22 passed, 0 skipped**. Covers handler cancellation, query-driven Kids startup and budget arithmetic/wiring. The harness substitutes touch hint helpers and does not measure browser geometry. |
+| GitHub CI | [Run 45919625555](https://github.com/mckayec/universe-sandbox/actions/runs/45919625555) build succeeded, including format, build, unit, dist, standalone pages and mobile touch checks (7/7). Deployment skipped. The separate 29/29 persistence-state result in the receipt is builder-reported. |
+| Combined landscape state | **0/1 independently rendered.** At 844×390 with coarse pointer the PR44 two-column dock applies. The PR47 overlay budget JS and its CSS limits both require width ≤800. The guide, legend and navigation help can share the stack while the dock occupies the lower band, with no shared height cap at this width. Builder's idle-stack shots did not exercise this combination. A reviewer Chromium launch failed because the installed wrapper's browser executable is absent. Actual overlap has not been established. |
+
+**Return requested:** On this head, use a coarse-pointer 844×390 viewport. Activate a guided exhibit, legend and navigation help together and show the selected-object sheet. Record panel bounds and hit-test the guide and dock actions (including Restart, Exit and Inspect), with a screenshot. If controls remain accessible, return the receipt at this same SHA. If they overlap or cannot receive taps, correct the layout and return the new SHA and check. Preserve the existing physical-device and accessibility gaps. Owner release authorization is recorded separately.

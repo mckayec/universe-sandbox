@@ -1,0 +1,6 @@
+[35s] loaded
+[65s] galaxy path passed: 12 frames, 1 completing frame(s), world earth
+[117s] settled on babylon; jumping 103 degrees to salt-lake-temple
+[137s] surface path passed: 6 frames, 1 completing frame(s); completed state {"vis":13,"stale":0}
+[137s] PASS (no console errors, no >=400 resources)
+EXIT 0

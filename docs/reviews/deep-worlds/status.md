@@ -1,10 +1,10 @@
-stage: content-review
-owner: mckay
-blocked-on: mckay
-next-action: Mckay answers D10 in docs/universes/DECISIONS.md: prepare the separate engine-only R0 candidate or defer Deep Worlds; Claude implements the selected scope only after that answer and returns its exact head.
-updated: 2026-11-09T23:24Z
+stage: fixing
+owner: claude
+blocked-on: none
+next-action: Claude: return R0-1 rendered lifecycle, downgrade and history evidence from an isolated opt-in fixture; document the opt-in/type behavior.
+updated: 2026-11-27T03:25:34.192Z
 idle-runs: 0
-note: V2 scope reviewed at unchanged PR37 03394c3. Independently 68/68 operations inventoried, 47/47 included value/absence checks and 256/256 references pass; 3/4 response groups closed, RS2 partial because 14 whole-landmark copies retain unresolved labels/gates. R1 not canon-cleared; R0 offered as implementation scope, not release approval. D10 pending.
+note: PR53 7a25822: 9/9 paths within R0 scope; 4/4 module blobs match PR37, 41/41 independent VM checks pass. Rendered lifecycle fixture and opt-in documentation remain open.
 
 
 
@@ -129,3 +129,6 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-09T22:53Z Claude: [release-scope-manifest-v2-03394c3.md](release-scope-manifest-v2-03394c3.md), [allowlist CSV](release-scope-allowlist-03394c3.csv) (68 rows), [script](release-scope-allowlist.py) and [output](release-scope-allowlist-output-03394c3.txt) at unchanged PR37 03394c32816fcb5c95261bf6a9ea4520381a5838; pinned main 0aebd6c (packs byte-identical to base 51fe688); baseline PR24 cf25cda. RS1 option (a): hotel/tower and f1a2 out (14 A landmarks). RS2: A = accepted leaf only, unresolved fields listed per row; 47/47 included leaves match head; scene treatment proposed (illustrated-scene line) with R0 fallback. RS3: e13 accepted text carried, lm dropped; 13 Elantris EL01–05/EL08 leaves carried (were U); e1 change excluded; Q landmarks out; e70/e102/b1p out, not rejected; d1/e35 undecided, kept at main. RS4: 10/10 O provenance (b7c via PR24 L1/IR1 6ce5fc5; e7 via 232fef1; eight via c8159ae), 0 remaining refs. Found PR37 reverts 8 PR24 fields and differs on 19, so R1 = PR24 baseline + allowlist. Holds 11 IDs; visual matrix 32 slots. fixing/claude -> content-review/chatgpt. Docs only; no application edit, merge or deploy.
 
 - 2026-11-09T23:24Z ChatGPT: [release-scope-review-v2-03394c3.md](release-scope-review-v2-03394c3.md) saved/read back at 2cbd42f5e9497cce37b18ad3fc1bc2ee95469927; independent [checker](scope-v2-check.cjs) 8c7863dfc28c72aa5ebd5b00b41cb51678e0dbe2 and [output](scope-v2-check-output-03394c3.json) 863da06c57f63f9e081134e75f6deb6309c934a5. Exact PR37 03394c32816fcb5c95261bf6a9ea4520381a5838 and PR24 construction baseline cf25cda66e91c573c421a0f3712623db72737a3b: 12/12 retrieved blob hashes, 68/68 unique operations, 47/47 included value/absence checks, 256/256 references resolve, 10/10 omissions absent/no matching string references. RS1/3/4 closed at proposal/disposition scope; RS2 packaging addressed but R1 acceptance withheld for unresolved names/gates copied with 14/14 landmarks. b1k/e77/e78 and link set L out; d1/e35 baseline retained without recertification. D10 saved/read back at e1c511bb90117d007a01983ec3f2b573b8f47f20 offers engine-only R0 or deferral. content-review/chatgpt -> content-review/mckay, blocked-on mckay; not ready-for-owner. No new primary sources, browser/CI execution, application edits, PR approval, merge, deployment or release approval. All 18/18 pack and 8/8 review statuses inspected; three parallel audit folders unchanged. idle-runs 0.
+- 2026-11-27T01:20Z Mckay answered D10: (a) R0 engine-only candidate. Owner claude.
+- 2026-11-27T03:09Z Claude: [r0-implementation-7a25822.md](r0-implementation-7a25822.md). Engine-only R0 on fresh main 718d84d: draft PR #53 at 7a25822e8504da0882fc593942065328794a579a. Ported 4 places modules (byte-identical) + engine/css/index/package/validator integration from PR37 03394c3; new dormancy gate (pack `places` opt-in). Scope check PASS (9 allowlisted paths; packs/Society/tex/solar/src unchanged). pnpm check 165/165, pages 14x2, dormancy 138/138 at 1440 and 390; browser smoke flaky on main and branch alike. implementation/claude -> implementation-review/chatgpt. No merge or deploy.
+- 2026-11-27T03:25:34.192Z ChatGPT: PR53 7a25822: 9/9 paths within R0 scope; 4/4 module blobs match PR37, 41/41 independent VM checks pass. Rendered lifecycle fixture and opt-in documentation remain open. See [implementation-review-7a25822.md](implementation-review-7a25822.md). Handed to Claude.

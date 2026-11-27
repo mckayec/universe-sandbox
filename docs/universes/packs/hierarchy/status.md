@@ -1,10 +1,10 @@
-stage: research-ready
-owner: mckay
-blocked-on: mckay
-next-action: Mckay merges the approved release PRs per D09 (PR #39/#33 free WIP slots: 5 active vs limit 2); then Claude takes ownership back and builds pack/hierarchy first per research-review.md.
-updated: 2026-11-11T00:52Z
+stage: fixing
+owner: claude
+blocked-on: none
+next-action: Claude: resolve HB-01 through HB-03 and return the exact pack and engine heads.
+updated: 2026-11-27T03:32:12.498Z
 idle-runs: 0
-note: research-review.md saved: HR-01/HR-02 adopted, H2-01..06 and all Known gaps dispositioned, 0 contradictions in 40/40 seed rows. Engine fit: 3 constraints (EC-1 engine defaults to All/spoilers with no stored choice; EC-2 sites/worlds need coordinates; EC-3 routes need positions) need generic engine options; no positions will be invented. Build deferred only by WIP limit (3 active vs 2). No canon or release approval.
+note: 3 findings (0 high / 0 medium / 3 low). Reviewed 40/40 seed records. Gate suite passed 9/9 and the actual pack validator reported 0 errors and 0 warnings.
 
 # The Hierarchy series (James Islington)
 
@@ -21,3 +21,6 @@ Track B · view: World-only, with later-book structure under investigation.
 - 2026-11-07T00:20Z: Independent audit thread reviewed research fa555e7caa5a8489c1724e8e06ac0e680b0101af / sources 64ab28d71825e4a1c820102c3b16be230279c977. Review 14f621a938343c987425400fd98da475aba7c80c confirmed saved: 40/40 seed records checked, 2 Low correction requirements, bounded nonspatial scope accepted. Handed research-ready/claude with Known gaps and completed-book spoiler controls; full canon and release withheld.
 - 2026-11-07T00:55Z: Claude research review of the bounded 40-record seed saved as research-review.md (inputs research fa555e7, sources 64ab28d, independent review 14f621a, main 5eb073a). HR-01/HR-02 adopted; engine-fit constraints EC-1..EC-3 recorded; build waits for a WIP slot. Stage unchanged, owner claude.
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
+- 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
+- 2026-11-27T03:09Z Claude: built pack/hierarchy at ddb4ad99fcb61e2441d0f2ef857437b2cb5083e3 (PR #51) on engine/world-only b2935646d09856f7aef98d5d130caa5930a7d286 (PR #49, EC-1..EC-4, 9 gate tests, PACK_FORMAT §6.1/§22). 40/40 seed records. Pack branch: pnpm check 175/175, check-dist 124, validator 0 issues, test:pages 15x2, test:browser pass; engine branch check 174/174, pages 14x2. 18 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
+- 2026-11-27T03:32:12.498Z ChatGPT: 3 findings (0 high / 0 medium / 3 low). Reviewed 40/40 seed records. Gate suite passed 9/9 and the actual pack validator reported 0 errors and 0 warnings. See [audit-build.md](audit-build.md). Handed to Claude.

@@ -1,10 +1,10 @@
-stage: research-ready
-owner: mckay
-blocked-on: mckay
-next-action: Mckay merges the approved release PRs per D09 (PR #39/#33 free WIP slots: 5 active vs limit 2); then Claude takes ownership back and builds pack/licanius third (after hierarchy and narnia) per research-review.md.
-updated: 2026-11-11T00:52Z
+stage: fixing
+owner: claude
+blocked-on: none
+next-action: Claude: resolve LB-01/02 and return the exact revised pack and engine SHAs.
+updated: 2026-11-27T03:31:15.400Z
 idle-runs: 0
-note: research-review.md saved: LR-01/LR-02 adopted, L2-01..05 and all Known gaps dispositioned, 0 contradictions in 29/29 rows. Engine fit = hierarchy EC-1..EC-3. Queue order for builds: hierarchy, narnia, licanius.
+note: 2 findings (0 high / 1 medium / 1 low). Reviewed 29/29 seed records; pack tests passed 10/10. Qualify the coalition premise and geography note.
 
 # The Licanius Trilogy (James Islington)
 
@@ -27,3 +27,6 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-07T01:18Z: Independent audit review saved and reread at 6b0d6d581c3a2d4fe62ec9982aab0262b60f7838 (research 9f6ea35f; sources 9b3468eb). Checked 29/29 records (13 places, 7 events, 3 partial journeys, 6 codex); 2 Low findings affecting three records; 2/10 independent second-source checks complete, 0/3 full novels. Handed research-ready/claude for bounded nonspatial seed review with correction overlay and Known gaps under R3/R4. No code, merge, deployment, canon sign-off or release approval.
 - 2026-11-07T01:48Z: Claude research review saved (research-review.md) against research 9f6ea35 and independent-review 6b0d6d5: LR-01/LR-02 adopted, all addendum items and Known gaps dispositioned, no contradictions; build waits on WIP. Stage unchanged (research-ready/claude).
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
+- 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
+- 2026-11-27T03:09Z Claude: built pack/licanius at 48055796b7148bf190cfbd12f230ee05f9da536e (PR #50) on engine/world-only a7df00fdc429b5db6e7093b6e72d562843fa508b (engine since advanced to b293564, CSS-only). 29/29 records; pnpm check 185/185 (10 new), validator 0, test:pages 15x2, test:browser pass, gating checks pass; 12 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
+- 2026-11-27T03:31:15.400Z ChatGPT: 2 findings (0 high / 1 medium / 1 low). Reviewed 29/29 seed records; pack tests passed 10/10. Qualify the coalition premise and geography note. See [audit-build.md](audit-build.md). Handed to Claude.

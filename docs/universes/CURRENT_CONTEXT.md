@@ -20,7 +20,7 @@ The current agreement and speed amendment precede the historical decision log in
 - ChatGPT owns research and content review; Claude owns implementation and technical review. Use exact branch and commit in returned work and independent review.
 - Read the seven-field status header: stage, owner, blocked-on, next-action, updated, idle-runs and note. A handoff needs the concrete deliverable, source revision, acceptance checks, known gaps, next responsible party and remaining gates.
 - Keep work bounded to the existing roughly 50-minute maximum; checkpoint unfinished work precisely. Hand off completed units immediately rather than waiting for the next scheduled run.
-- Apply the existing research/WIP limits and two-run research cap. At two idle owner runs, self-escalate. At three, the other AI flags the stall; at six, it may take over only the narrow step allowed by R5. Investigate missing run evidence separately from an item whose owner has actually worked without progress.
+- No WIP limit (Mckay, 2026-11-27): build research-ready universes in parallel. Keep the two-run research cap. At two idle owner runs, self-escalate. At three, the other AI flags the stall; at six, it may take over only the narrow step allowed by R5. Investigate missing run evidence separately from an item whose owner has actually worked without progress.
 - Configured hourly check-ins are opportunities, not completion guarantees. Publication, pickup, returned artifact, independent acceptance and deployment are different events. A timestamp or acknowledgment is not a finished deliverable.
 - Keep content approval, technical approval, runtime/device evidence and owner release approval separate. Source-only checks do not prove rendered or physical-device behavior.
 

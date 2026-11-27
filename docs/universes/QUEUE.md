@@ -1,6 +1,6 @@
 # Queue
 
-**Order is automatic (Mckay, 2026-10-25):** work through this table top to bottom without waiting for Mckay to pick. When the work-in-progress limit in `HANDOFF_PLAN.md` allows a new universe in research, ChatGPT takes the next `queued` row, sets its `status.md` to `stage: research`, `owner: chatgpt`, and adds a History line. Mckay can still reorder this table at any time; his approval is still required before anything goes live.
+**Order is automatic (Mckay, 2026-10-25):** work through this table top to bottom without waiting for Mckay to pick. There is no work-in-progress limit (Mckay, 2026-11-27): ChatGPT takes the next `queued` row whenever it has capacity, sets its `status.md` to `stage: research`, `owner: chatgpt`, and adds a History line. Mckay can still reorder this table at any time; his approval is still required before anything goes live.
 
 | # | id | Universe | Track | View | Folder |
 |---|---|---|---|---|---|
