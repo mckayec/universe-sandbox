@@ -68,6 +68,7 @@ const PACKS = [
   'cosmere',
   'abrahamic-world-religions',
   'christian-apocrypha',
+  'hierarchy',
 ];
 const PAGES = [
   { path: 'atlas/', ready: '#chooser', back: '#chooser .gl-home' },
@@ -144,6 +145,22 @@ async function visit(page, vp) {
     else if (href !== base) errs.push(`back link goes to ${href}, expected ${base}`);
     const visible = await tab.isVisible(page.back).catch(() => false);
     if (!visible) errs.push('back link is not visible');
+    // world-only packs with a reading gate (PACK_FORMAT 6.1): a fresh visitor, even one following a link with
+    // #book=, sees the chooser and no place until a book is chosen
+    if (page.path === 'atlas/?pack=hierarchy') {
+      if (!(await tab.$('.ca-gate'))) errs.push('reading-gate chooser not shown to a fresh visitor');
+      if ((await tab.$$('.ca-node')).length) errs.push('places listed before a book was chosen');
+      if (await tab.$('#books [data-b="0"]')) errs.push('"All" offered although the pack disables it');
+      await tab.goto(base + page.path + '#book=2&place=obiteum', { waitUntil: 'load' });
+      await tab.reload({ waitUntil: 'load' });
+      await tab
+        .waitForSelector('.ca-gate', { timeout: 10000 })
+        .catch(() => errs.push('#book=2 link skipped the chooser'));
+      await tab.click('.ca-gate-b[data-b="1"]');
+      const listed = await tab.$$eval('.ca-node span', a => a.map(x => x.textContent));
+      if (listed.includes('Obiteum') || listed.includes('Res')) errs.push('book-2 world listed at book 1');
+      if (!listed.includes('Letens Prison')) errs.push('book-1 places missing at book 1');
+    }
     // no notice overlay (three.js missing, WebGL lost) should be up
     if (await tab.$('.gl-notice')) errs.push('an error notice is showing');
     if (await tab.$('.atlas-fail')) errs.push('the atlas failure panel is showing');

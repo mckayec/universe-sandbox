@@ -14,6 +14,7 @@ export type UniversePackId =
   | 'powers-of-ten'
   | 'cosmere'
   | 'christian-apocrypha'
+  | 'hierarchy'
   | 'star-wars';
 export type UniversePackStatus = 'ready' | 'atlas' | 'source-required';
 export type LocationScale = 'universe' | 'galaxy' | 'cluster' | 'system' | 'world' | 'surface';
@@ -232,6 +233,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#d9b45a',
     'atlas/?pack=christian-apocrypha',
     'Built from selected named editions of each work; only five modern heritage or gazetteer points are pinned.',
+  ),
+  atlasPack(
+    'hierarchy',
+    'The Hierarchy Atlas',
+    'Hierarchy',
+    "A spoiler-gated reference prototype of James Islington's Hierarchy novels: places as linked cards, sampled opening episodes and key ideas, with no invented map positions.",
+    '#c9a46a',
+    'atlas/?pack=hierarchy',
+    "Built from the author's glossary, the publisher's synopses and the opening chapter of each novel; limited coverage, geography schematic.",
   ),
   atlasPack(
     'abrahamic-world-religions',
