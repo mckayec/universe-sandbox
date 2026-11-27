@@ -576,9 +576,8 @@ body.cards-body {
     min-width: 0;
   }
   .ca-brand h1 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    letter-spacing: 0.06em;
+    overflow-wrap: anywhere;
   }
   .ca-controls {
     grid-column: 1 / -1;
@@ -588,7 +587,7 @@ body.cards-body {
     padding: 0.3rem 0.6rem;
   }
   .ca-brand h1 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
   .ca-brand p {
     display: none;
