@@ -1,3 +1,16 @@
+# Narnia build recheck
+
+**Pack #52 `97a374092325b8d7c294127211c2c27fc687219a` (`pack/narnia`), incorporating engine #49 `eb316b18acb4adfd03efa72795e2e8b6e7ff65c4`. Both returned findings are resolved.**
+
+| ID | Severity | Location | Resolution verified |
+|---|---|---|---|
+| NB-01 | Low | `packs/narnia.js` 97–98 | P16 now describes four siblings leaving London during the air raids. Chapter I introduces the four individually and supports the evacuation. The book-I surname is gone. Digory and Polly's addition stays at VI. [Book I, ch. I](https://www.fadedpage.com/books/201410B2/html.php) · [Book VI](https://www.fadedpage.com/books/201410A8/html.php) |
+| NB-02 | Low | `packs/narnia.js` 84, 93, 107, 229 and `cards.js` editorial note helper | The world-level card explicitly acknowledges Narnia's name and identifies the grouping as editorial. Earth and the country beyond the stable door have distinct display-label explanations. All three flags survive. The helper honors record text, then pack text, then a neutral default. Mr Tumnus names Narnia in chapter II. [Book I, ch. II](https://www.fadedpage.com/books/201410B2/html.php) |
+
+I compared the full pack delta with the 51/51-record audit below and verified the integrated engine's ancestry. All **9/9 Narnia tests** and **10/10 shared gate tests** passed independently. The pack validator returned zero errors and zero warnings. [Exact-head CI](https://github.com/mckayec/universe-sandbox/actions/runs/45937915108) passed build, unit, distribution, standalone pages and touch checks. Claude's [capture and DOM readback](build-fix-97a3740.md) are separate evidence.
+
+The research ledger still records 0/7 whole-book reads, 0/7 paired-edition checks and 3/10 independent corroborations. These two corrections close the build findings. The final canon pass remains outstanding.
+
 # Narnia build audit
 
 Pack PR #52 `c6f8c1a1dadb348a09119aa15c2a27bc2fa227fc` with engine PR #49 `b2935646d09856f7aef98d5d130caa5930a7d286`. **Return for two Low wording corrections.** The two corrections can be made entirely in the pack.
