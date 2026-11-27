@@ -1,0 +1,161 @@
+TAP version 13
+# Subtest: NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+ok 1 - NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 32.264294
+  type: 'test'
+  ...
+# Subtest: NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+ok 2 - NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 82.386238
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+ok 3 - CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+  ---
+  duration_ms: 10.817171
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+ok 4 - CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+  ---
+  duration_ms: 3.314999
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+ok 5 - CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+  ---
+  duration_ms: 2.37143
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+ok 6 - CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+  ---
+  duration_ms: 2.423284
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+ok 7 - CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+  ---
+  duration_ms: 3.926621
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: All ignores the per-work field gate
+ok 8 - CBR-04 realmCard + realmLook: All ignores the per-work field gate
+  ---
+  duration_ms: 4.117395
+  type: 'test'
+  ...
+# Subtest: CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+ok 9 - CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+  ---
+  duration_ms: 2.557849
+  type: 'test'
+  ...
+# Subtest: CBR-04: applyRd re-applies the realm look to the open planet before refresh
+ok 10 - CBR-04: applyRd re-applies the realm look to the open planet before refresh
+  ---
+  duration_ms: 0.242705
+  type: 'test'
+  ...
+# Subtest: SA01-GEO-01/02 payload: exact two Roshar descriptions; whole pack otherwise equal to the parent
+not ok 11 - SA01-GEO-01/02 payload: exact two Roshar descriptions; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 14.558154
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-sa01-geo.test.ts:86:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        books: [
+          4,
+          5,
+          8,
+    ...
+        ],
+    +   desc: 'Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.',
+    -   desc: 'An expanse of rocky plateaus divided by deep chasms, east of the Alethi warcamps. Kaladin is brought here as a slave.',
+        id: 'shatteredplains',
+        lat: -12,
+        lon: 58,
+        name: 'The Shattered Plains'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    id: 'shatteredplains'
+    name: 'The Shattered Plains'
+    lat: -12
+    lon: 58
+    books:
+      0: 4
+      1: 5
+      2: 8
+      3: 9
+      4: 12
+    desc: 'An expanse of rocky plateaus divided by deep chasms, east of the Alethi warcamps. Kaladin is brought here as a slave.'
+  actual:
+    id: 'shatteredplains'
+    name: 'The Shattered Plains'
+    lat: -12
+    lon: 58
+    books:
+      0: 4
+      1: 5
+      2: 8
+      3: 9
+      4: 12
+    desc: 'Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-sa01-geo.test.ts:99:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: SA01-GEO-01/02 visibility: Roshar and its sites identical to the parent across All, legacy, eligible and insufficient sets
+ok 12 - SA01-GEO-01/02 visibility: Roshar and its sites identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 92.979902
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+ok 13 - SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+  ---
+  duration_ms: 10.321636
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+ok 14 - SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 74.557215
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+ok 15 - SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+  ---
+  duration_ms: 31.048611
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+ok 16 - SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 75.131491
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 15
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 891.775796

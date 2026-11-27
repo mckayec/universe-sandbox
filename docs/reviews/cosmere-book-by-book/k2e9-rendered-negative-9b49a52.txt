@@ -1,0 +1,77 @@
+ok   1440x900 OT: Scadrial selected (scadrial)
+ok   1440x900 OT: e9 item shows title
+FAIL 1440x900 OT: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 1440x900 OT: old e9 wording absent from page
+ok   1440x900 OT: no errors 
+ok   1440x900 legacy book=2: Scadrial selected (scadrial)
+ok   1440x900 legacy book=2: e9 item shows title
+FAIL 1440x900 legacy book=2: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 1440x900 legacy book=2: old e9 wording absent from page
+ok   1440x900 legacy book=2: no errors 
+ok   1440x900 legacy book=10: Scadrial selected (scadrial)
+ok   1440x900 legacy book=10: e9 item shows title
+FAIL 1440x900 legacy book=10: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 1440x900 legacy book=10: old e9 wording absent from page
+ok   1440x900 legacy book=10: no errors 
+ok   1440x900 All: Scadrial selected (scadrial)
+ok   1440x900 All: e9 item shows title
+FAIL 1440x900 All: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 1440x900 All: old e9 wording absent from page
+ok   1440x900 All: e6 text unchanged
+ok   1440x900 All: e7 text unchanged
+ok   1440x900 All: e8 text unchanged
+ok   1440x900 All: e10 text unchanged
+ok   1440x900 All: e11 text unchanged
+ok   1440x900 All: e12 text unchanged
+ok   1440x900 All: no errors 
+ok   1440x900 MB1+MB2: Scadrial withheld (sel=null)
+ok   1440x900 MB1+MB2: no e9 title/text anywhere
+ok   1440x900 MB1+MB2: no errors 
+ok   1440x900 MB1+MB3: Scadrial withheld (sel=null)
+ok   1440x900 MB1+MB3: no e9 title/text anywhere
+ok   1440x900 MB1+MB3: no errors 
+ok   1440x900 MB2+MB3: Scadrial withheld (sel=null)
+ok   1440x900 MB2+MB3: no e9 title/text anywhere
+ok   1440x900 MB2+MB3: no errors 
+ok   1440x900 later-era only: Scadrial withheld (sel=null)
+ok   1440x900 later-era only: no e9 title/text anywhere
+ok   1440x900 later-era only: no errors 
+ok   390x844 OT: Scadrial selected (scadrial)
+ok   390x844 OT: e9 item shows title
+FAIL 390x844 OT: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 390x844 OT: old e9 wording absent from page
+ok   390x844 OT: no errors 
+ok   390x844 legacy book=2: Scadrial selected (scadrial)
+ok   390x844 legacy book=2: e9 item shows title
+FAIL 390x844 legacy book=2: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 390x844 legacy book=2: old e9 wording absent from page
+ok   390x844 legacy book=2: no errors 
+ok   390x844 legacy book=10: Scadrial selected (scadrial)
+ok   390x844 legacy book=10: e9 item shows title
+FAIL 390x844 legacy book=10: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 390x844 legacy book=10: old e9 wording absent from page
+ok   390x844 legacy book=10: no errors 
+ok   390x844 All: Scadrial selected (scadrial)
+ok   390x844 All: e9 item shows title
+FAIL 390x844 All: e9 text = new wording (Elend Venture tries to rule a free city while three armies camp outside the walls.)
+FAIL 390x844 All: old e9 wording absent from page
+ok   390x844 All: e6 text unchanged
+ok   390x844 All: e7 text unchanged
+ok   390x844 All: e8 text unchanged
+ok   390x844 All: e10 text unchanged
+ok   390x844 All: e11 text unchanged
+ok   390x844 All: e12 text unchanged
+ok   390x844 All: no errors 
+ok   390x844 MB1+MB2: Scadrial withheld (sel=null)
+ok   390x844 MB1+MB2: no e9 title/text anywhere
+ok   390x844 MB1+MB2: no errors 
+ok   390x844 MB1+MB3: Scadrial withheld (sel=null)
+ok   390x844 MB1+MB3: no e9 title/text anywhere
+ok   390x844 MB1+MB3: no errors 
+ok   390x844 MB2+MB3: Scadrial withheld (sel=null)
+ok   390x844 MB2+MB3: no e9 title/text anywhere
+ok   390x844 MB2+MB3: no errors 
+ok   390x844 later-era only: Scadrial withheld (sel=null)
+ok   390x844 later-era only: no e9 title/text anywhere
+ok   390x844 later-era only: no errors 
+{"pass":60,"fail":16}

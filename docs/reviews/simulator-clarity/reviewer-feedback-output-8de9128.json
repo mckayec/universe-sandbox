@@ -1,0 +1,164 @@
+{
+  "head": "8de912810c3fe029b79623f762b5eab325bc1236",
+  "passed": 9,
+  "total": 9,
+  "results": [
+    {
+      "name": "quiet simulation records and updates body without presentation",
+      "pass": true
+    },
+    {
+      "name": "direct exhibit action remains audible and visible in quiet",
+      "pass": true
+    },
+    {
+      "name": "quiet idle start and repeated attract restart produce no unsolicited banner or sound",
+      "pass": true
+    },
+    {
+      "name": "full feedback simulation presents and vibrates",
+      "pass": true
+    },
+    {
+      "name": "history remains bounded after repeated quiet events",
+      "pass": true
+    },
+    {
+      "name": "actual selection resets sheet for rebuilt object with same ID",
+      "pass": true
+    },
+    {
+      "name": "actual simulationToast hides quiet banners and preserves full banners",
+      "pass": true
+    },
+    {
+      "name": "actual label handlers preserve long names across compact desktop compact",
+      "pass": true
+    },
+    {
+      "name": "resize updates hidden unselected labels before a later selection",
+      "pass": true
+    }
+  ],
+  "idleEvidence": {
+    "banners": [],
+    "sounds": [],
+    "attractMode": true
+  },
+  "limitation": "Extracted actual handlers with adapters, no renderer, physical device or audio output",
+  "reviewedAt": "2026-11-10",
+  "repositoryTests": {
+    "command": "node --test tests/feedback.test.ts",
+    "passed": 12,
+    "total": 12,
+    "exitCode": 0
+  },
+  "inputManifest": {
+    "node": "v24.22.1",
+    "inputs": [
+      {
+        "path": "src/app/loop.ts",
+        "expected": "9b289fcf767e7eea093333f28638e06da120750b",
+        "actual": "9b289fcf767e7eea093333f28638e06da120750b",
+        "match": true
+      },
+      {
+        "path": "src/bodies/registry.ts",
+        "expected": "b790986f19dc9fcf9fa4a99d583fe452293da130",
+        "actual": "b790986f19dc9fcf9fa4a99d583fe452293da130",
+        "match": true
+      },
+      {
+        "path": "src/feedback.ts",
+        "expected": "726022133be729a20678f68ae5a77027b09874be",
+        "actual": "726022133be729a20678f68ae5a77027b09874be",
+        "match": true
+      },
+      {
+        "path": "src/physics/collisions.ts",
+        "expected": "37faf0f5ca1e6abb05cb5e780029b29805f5b7a5",
+        "actual": "37faf0f5ca1e6abb05cb5e780029b29805f5b7a5",
+        "match": true
+      },
+      {
+        "path": "src/physics/tidal-disruption.ts",
+        "expected": "40d928530c4d54263d3ab7e91fe6ccf2e4a2e828",
+        "actual": "40d928530c4d54263d3ab7e91fe6ccf2e4a2e828",
+        "match": true
+      },
+      {
+        "path": "src/state/app-state.ts",
+        "expected": "31edd49142bd43674d18ecee9a41c88d30eb4101",
+        "actual": "31edd49142bd43674d18ecee9a41c88d30eb4101",
+        "match": true
+      },
+      {
+        "path": "src/ui/exhibit-flow.ts",
+        "expected": "4918e9ff2c1ea6ff20394c16cb41c7ede31e886a",
+        "actual": "4918e9ff2c1ea6ff20394c16cb41c7ede31e886a",
+        "match": true
+      },
+      {
+        "path": "src/ui/feed.ts",
+        "expected": "a008363f7d9854f35f80cb98888a0c4b83625857",
+        "actual": "a008363f7d9854f35f80cb98888a0c4b83625857",
+        "match": true
+      },
+      {
+        "path": "tests/feedback.test.ts",
+        "expected": "019cbc9eb66f3776be779df2775893a0279de771",
+        "actual": "019cbc9eb66f3776be779df2775893a0279de771",
+        "match": true
+      },
+      {
+        "path": "src/ui/toolbar.ts",
+        "expected": "c8a897ae7260dda83ec9af5cc73e216b562c8690",
+        "actual": "c8a897ae7260dda83ec9af5cc73e216b562c8690",
+        "match": true
+      },
+      {
+        "path": "src/builders/galaxy.ts",
+        "expected": "1d3fc1bd5078f179e97b7878941b4bb561e142df",
+        "actual": "1d3fc1bd5078f179e97b7878941b4bb561e142df",
+        "match": true
+      },
+      {
+        "path": "src/builders/systems.ts",
+        "expected": "a245fff7b6baab887e23688c939f9fcdced67223",
+        "actual": "a245fff7b6baab887e23688c939f9fcdced67223",
+        "match": true
+      },
+      {
+        "path": "src/physics/stellar-evolution.ts",
+        "expected": "bcfb7c5957c019ece727250fc0bcc86a29426568",
+        "actual": "bcfb7c5957c019ece727250fc0bcc86a29426568",
+        "match": true
+      }
+    ],
+    "matches": 13,
+    "total": 13
+  },
+  "browserAttempt": {
+    "chunk_id": "338113",
+    "wall_time_seconds": 0,
+    "exit_code": 134,
+    "original_token_count": 82,
+    "output": "/usr/bin/chromium: 9: [: 5225713664: unexpected operator\n[5:5:1110/031801.196341:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)\n[1110/031801.196666:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)\n"
+  },
+  "ci": {
+    "run": 42740579750,
+    "job": 129580322489,
+    "checkout": "2fb56a36cfabb27857d7f29943bf4d5912058b53",
+    "equivalence": {
+      "total": 231,
+      "mergeTotal": 231,
+      "diff": []
+    },
+    "unitPassed": 184,
+    "unitTotal": 184,
+    "distributionFiles": 113,
+    "pagePassed": 24,
+    "pageTotal": 24,
+    "deploy": "skipped"
+  }
+}

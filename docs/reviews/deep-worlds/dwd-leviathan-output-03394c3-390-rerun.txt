@@ -1,0 +1,9 @@
+PASS 390 book 2 globe Leviathans label shown and banner text gated | shown=true click=dom Carved monsters of Europa’s ocean and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kaliba
+PASS 390 book 2 scene Leviathans landmark selected, visible text gated | click=dom Leviathans Carved monsters of Europa’s ocean and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kaliba
+PASS 390 book 5 globe Leviathans label shown and banner text gated | shown=true click=dom Carved monsters of Europa’s ocean and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kaliba
+PASS 390 book 5 scene Leviathans landmark selected, visible text gated | click=dom Leviathans Carved monsters of Europa’s ocean and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes, Kaliba
+PASS 390 book 6 globe Leviathans label shown and banner text gated | shown=true click=dom Carved monsters of Europa’s Discordia Sea and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes
+PASS 390 book 6 scene Leviathans landmark selected, visible text gated | click=dom Leviathans Carved monsters of Europa’s Discordia Sea and the sigil of House Kalibar, who ride them in pressure suits far below the surface. They are never truly tamed and sometimes eat their riders. The gold-striped one is Cyraxes
+PASS 390 zero page errors
+RESULT ALL PASS
+exit 0

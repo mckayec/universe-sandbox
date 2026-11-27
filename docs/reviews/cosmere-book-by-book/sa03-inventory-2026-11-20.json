@@ -1,0 +1,910 @@
+{
+  "scope": "SA03 first bounded inventory; repository records, not canon certification",
+  "selection": "all Roshar book-7 events; Roshar parent; sites yeddaw, azimir, valley including all nested landmarks; Lift codex; Edgedancer registry/preset; recursive word-boundary keyword scan (later-work hits excluded from SA03 approval)",
+  "branches": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "events": [
+        {
+          "id": "e35",
+          "book": 7,
+          "world": "roshar",
+          "site": "yeddaw",
+          "title": "Edgedancer",
+          "text": "Lift crosses to Tashikk to protect a man the Herald Nale wants dead."
+        }
+      ],
+      "worlds": [
+        {
+          "parent": {
+            "id": "roshar",
+            "name": "Roshar",
+            "realms": {
+              "cognitive": {
+                "name": "Shadesmar",
+                "style": "beads",
+                "c1": "#2e2460",
+                "c2": "#c8b8ff",
+                "c3": "#15121c",
+                "blurb": "Roshar’s subastral, the best known. Where Roshar has land there is an ocean of glass beads, each the soul of an object; where it has seas there is dark, obsidian-like ground. Spren live here openly, in cities such as Celebrant and the honorspren fortress of Lasting Integrity, and trade in Stormlight. People show as candle-like flames."
+              }
+            },
+            "group": "rosharan",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "major": true,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "star": {
+              "name": "Roshar’s sun",
+              "col": "#f4f6ff"
+            },
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "hero": "shatteredplains",
+            "view": 4.2,
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "eras": {
+              "5": {
+                "status": "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"
+              },
+              "8": {
+                "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+              },
+              "12": {
+                "status": "Retribution’s world · cut off in slowed time",
+                "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule. Provisional account based on the Coppermind wiki; not independently checked against the book.",
+                "gfx": {
+                  "clouds": 0.7,
+                  "cloudCol": "#4a3540",
+                  "atmo": "#c04a48",
+                  "lights": 0.15
+                }
+              }
+            },
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ],
+            "moons": [
+              {
+                "name": "Salas",
+                "size": 0.14,
+                "dist": 2.7,
+                "speed": 0.06
+              },
+              {
+                "name": "Nomon",
+                "size": 0.2,
+                "dist": 3.5,
+                "speed": 0.045
+              },
+              {
+                "name": "Mishim",
+                "size": 0.12,
+                "dist": 4.3,
+                "speed": 0.035
+              }
+            ]
+          },
+          "sites": [
+            {
+              "id": "valley",
+              "name": "The Valley",
+              "lat": -12,
+              "lon": -30,
+              "books": [
+                4,
+                7,
+                8,
+                9
+              ],
+              "desc": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young."
+            },
+            {
+              "id": "azimir",
+              "name": "Azimir",
+              "lat": -10,
+              "lon": -47,
+              "books": [
+                7,
+                8,
+                12
+              ],
+              "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."
+            },
+            {
+              "id": "yeddaw",
+              "name": "Yeddaw",
+              "lat": -14,
+              "lon": -70,
+              "books": [
+                7
+              ],
+              "desc": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer."
+            }
+          ]
+        }
+      ],
+      "codex": [],
+      "registry": [],
+      "presets": [],
+      "hits": [
+        {
+          "path": "pack.worlds.2.eras.12.blurb",
+          "value": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule. Provisional account based on the Coppermind wiki; not independently checked against the book."
+        },
+        {
+          "path": "pack.worlds.2.sites.11.desc",
+          "value": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young."
+        },
+        {
+          "path": "pack.worlds.2.sites.18.id",
+          "value": "azimir"
+        },
+        {
+          "path": "pack.worlds.2.sites.18.name",
+          "value": "Azimir"
+        },
+        {
+          "path": "pack.worlds.2.sites.18.desc",
+          "value": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."
+        },
+        {
+          "path": "pack.worlds.2.sites.19.id",
+          "value": "yeddaw"
+        },
+        {
+          "path": "pack.worlds.2.sites.19.name",
+          "value": "Yeddaw"
+        },
+        {
+          "path": "pack.worlds.2.sites.19.desc",
+          "value": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer."
+        },
+        {
+          "path": "pack.worlds.2.sites.40.desc",
+          "value": "The central bead sea, over Azir, the Ur range and the southern kingdoms. The honorspren lands are on it."
+        },
+        {
+          "path": "pack.events.34.site",
+          "value": "yeddaw"
+        },
+        {
+          "path": "pack.events.34.title",
+          "value": "Edgedancer"
+        },
+        {
+          "path": "pack.events.34.text",
+          "value": "Lift crosses to Tashikk to protect a man the Herald Nale wants dead."
+        },
+        {
+          "path": "pack.events.56.text",
+          "value": "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."
+        }
+      ]
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "events": [
+        {
+          "id": "e96",
+          "book": 7,
+          "world": "roshar",
+          "site": "yeddaw",
+          "lm": "indicium",
+          "title": "Into the Indicium",
+          "text": "Lift bluffs her way into the Grand Indicium as an envoy from Azir to find out whom Nale is hunting."
+        },
+        {
+          "id": "e35",
+          "book": 7,
+          "world": "roshar",
+          "site": "yeddaw",
+          "title": "Edgedancer",
+          "text": "Lift travels to Yeddaw in Tashikk, where Darkness has been reported."
+        }
+      ],
+      "worlds": [
+        {
+          "parent": {
+            "id": "roshar",
+            "name": "Roshar",
+            "realms": {
+              "cognitive": {
+                "name": "Shadesmar",
+                "style": "beads",
+                "c1": "#2e2460",
+                "c2": "#c8b8ff",
+                "c3": "#15121c",
+                "blurb": "Roshar’s subastral, the best known. Where Roshar has land there is an ocean of glass beads, each the soul of an object; where it has seas there is dark, obsidian-like ground. Spren live here openly, in cities such as Celebrant and the honorspren fortress of Lasting Integrity, and trade in Stormlight. People show as candle-like flames."
+              }
+            },
+            "group": "rosharan",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "major": true,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "star": {
+              "name": "Roshar’s sun",
+              "col": "#f4f6ff"
+            },
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "hero": "shatteredplains",
+            "view": 4.2,
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "eras": {
+              "5": {
+                "status": "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"
+              },
+              "8": {
+                "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+              },
+              "12": {
+                "status": "Retribution’s world · cut off in slowed time",
+                "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule.",
+                "gfx": {
+                  "clouds": 0.7,
+                  "cloudCol": "#4a3540",
+                  "atmo": "#c04a48",
+                  "lights": 0.15
+                }
+              }
+            },
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ],
+            "moons": [
+              {
+                "name": "Salas",
+                "size": 0.14,
+                "dist": 2.7,
+                "speed": 0.06
+              },
+              {
+                "name": "Nomon",
+                "size": 0.2,
+                "dist": 3.5,
+                "speed": 0.045
+              },
+              {
+                "name": "Mishim",
+                "size": 0.12,
+                "dist": 4.3,
+                "speed": 0.035
+              }
+            ]
+          },
+          "sites": [
+            {
+              "id": "valley",
+              "name": "The Valley",
+              "lat": -12,
+              "lon": -30,
+              "books": [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              "desc": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young.",
+              "scene": {
+                "kind": "forest",
+                "arch": "organic",
+                "size": "medium",
+                "tod": "dusk",
+                "weather": "mist",
+                "landmarks": [
+                  {
+                    "id": "grove",
+                    "name": "The Nightwatcher’s valley",
+                    "kind": "grove",
+                    "at": [
+                      0,
+                      0
+                    ],
+                    "h": 1.2,
+                    "books": [
+                      5
+                    ],
+                    "desc": "A warm, overgrown valley where people come to the Old Magic for a boon and a curse. Taravangian’s boon from her shapes everything he does."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "azimir",
+              "name": "Azimir",
+              "lat": -10,
+              "lon": -47,
+              "books": [
+                5,
+                7,
+                8,
+                12
+              ],
+              "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms.",
+              "scene": {
+                "kind": "capital",
+                "arch": "imperial",
+                "size": "huge",
+                "tod": "day",
+                "weather": "clear",
+                "landmarks": [
+                  {
+                    "id": "palace",
+                    "name": "The Bronze Palace",
+                    "kind": "palace",
+                    "at": [
+                      0.2,
+                      0.5
+                    ],
+                    "h": 1.4,
+                    "books": [
+                      5,
+                      7,
+                      8,
+                      12
+                    ],
+                    "desc": "Seat of the Prime Aqasix. Lift breaks in to steal food, and the boy Gawx, whom she heals, is chosen as Prime."
+                  },
+                  {
+                    "id": "market",
+                    "name": "The Grand Market",
+                    "kind": "dome",
+                    "at": [
+                      -0.25,
+                      -0.1
+                    ],
+                    "h": 1.5,
+                    "books": [
+                      8,
+                      12
+                    ],
+                    "desc": "An indoor market under a great bronze dome, built over the city’s Oathgate. The Azish fortify it once they learn what is underneath."
+                  },
+                  {
+                    "id": "oathgate",
+                    "name": "The Makabakam Oathgate",
+                    "kind": "portal",
+                    "at": [
+                      -0.25,
+                      -0.3
+                    ],
+                    "books": [
+                      8,
+                      12
+                    ],
+                    "desc": "The platform under the market dome, which Lift unlocks to open the way to Urithiru."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "yeddaw",
+              "name": "Yeddaw",
+              "lat": -14,
+              "lon": -70,
+              "books": [
+                7
+              ],
+              "desc": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer.",
+              "scene": {
+                "kind": "city",
+                "arch": "desert",
+                "size": "medium",
+                "tod": "day",
+                "weather": "clear",
+                "landmarks": [
+                  {
+                    "id": "gate",
+                    "name": "The guarded entrance",
+                    "kind": "gate",
+                    "at": [
+                      -0.7,
+                      -0.6
+                    ],
+                    "books": [
+                      7
+                    ],
+                    "desc": "A guarded entrance with a long line of people waiting to enter; Lift sneaks toward the front."
+                  },
+                  {
+                    "id": "market",
+                    "name": "The market",
+                    "kind": "market",
+                    "at": [
+                      -0.2,
+                      -0.1
+                    ],
+                    "books": [
+                      7
+                    ],
+                    "desc": "Lift watches the man she calls Darkness execute a girl here for stealing fruit."
+                  },
+                  {
+                    "id": "indicium",
+                    "name": "The Grand Indicium",
+                    "kind": "tower",
+                    "at": [
+                      0.2,
+                      0.6
+                    ],
+                    "h": 1.6,
+                    "books": [
+                      7
+                    ],
+                    "desc": "A huge records building towering over the city. Lift talks her way in as an envoy from Azir to find who Darkness is hunting."
+                  },
+                  {
+                    "id": "slots",
+                    "name": "The slots",
+                    "kind": "farm",
+                    "at": [
+                      -0.55,
+                      0.4
+                    ],
+                    "books": [
+                      7
+                    ],
+                    "desc": "The city’s deep cut channels, where farmers grow crops out of season."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "codex": [
+        {
+          "name": "Lift",
+          "role": "Thief",
+          "books": [
+            5,
+            7,
+            8,
+            9,
+            12
+          ],
+          "desc": "A young Reshi thief who breaks into palaces for the food, with a power she calls her awesomeness.",
+          "more": [
+            [
+              7,
+              "An Edgedancer, who stands up to the Herald Nale in Yeddaw."
+            ]
+          ]
+        }
+      ],
+      "registry": [],
+      "presets": [],
+      "hits": [
+        {
+          "path": "pack.worlds.2.eras.12.blurb",
+          "value": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule."
+        },
+        {
+          "path": "pack.worlds.2.sites.11.desc",
+          "value": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young."
+        },
+        {
+          "path": "pack.worlds.2.sites.18.id",
+          "value": "azimir"
+        },
+        {
+          "path": "pack.worlds.2.sites.18.name",
+          "value": "Azimir"
+        },
+        {
+          "path": "pack.worlds.2.sites.18.desc",
+          "value": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."
+        },
+        {
+          "path": "pack.worlds.2.sites.18.scene.landmarks.0.desc",
+          "value": "Seat of the Prime Aqasix. Lift breaks in to steal food, and the boy Gawx, whom she heals, is chosen as Prime."
+        },
+        {
+          "path": "pack.worlds.2.sites.18.scene.landmarks.2.desc",
+          "value": "The platform under the market dome, which Lift unlocks to open the way to Urithiru."
+        },
+        {
+          "path": "pack.worlds.2.sites.19.id",
+          "value": "yeddaw"
+        },
+        {
+          "path": "pack.worlds.2.sites.19.name",
+          "value": "Yeddaw"
+        },
+        {
+          "path": "pack.worlds.2.sites.19.desc",
+          "value": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer."
+        },
+        {
+          "path": "pack.worlds.2.sites.19.scene.landmarks.0.desc",
+          "value": "A guarded entrance with a long line of people waiting to enter; Lift sneaks toward the front."
+        },
+        {
+          "path": "pack.worlds.2.sites.19.scene.landmarks.1.desc",
+          "value": "Lift watches the man she calls Darkness execute a girl here for stealing fruit."
+        },
+        {
+          "path": "pack.worlds.2.sites.19.scene.landmarks.2.desc",
+          "value": "A huge records building towering over the city. Lift talks her way in as an envoy from Azir to find who Darkness is hunting."
+        },
+        {
+          "path": "pack.worlds.2.sites.22.scene.landmarks.6.desc",
+          "value": "Kaladin duels the Herald Nale here; Nale yields his Honorblade and admits what Ishar has done."
+        },
+        {
+          "path": "pack.worlds.2.sites.40.desc",
+          "value": "The central bead sea, over Azir, the Ur range and the southern kingdoms. The honorspren lands are on it."
+        },
+        {
+          "path": "pack.events.59.site",
+          "value": "yeddaw"
+        },
+        {
+          "path": "pack.events.59.text",
+          "value": "Lift bluffs her way into the Grand Indicium as an envoy from Azir to find out whom Nale is hunting."
+        },
+        {
+          "path": "pack.events.60.site",
+          "value": "yeddaw"
+        },
+        {
+          "path": "pack.events.60.title",
+          "value": "Edgedancer"
+        },
+        {
+          "path": "pack.events.60.text",
+          "value": "Lift travels to Yeddaw in Tashikk, where Darkness has been reported."
+        },
+        {
+          "path": "pack.events.67.site",
+          "value": "azimir"
+        },
+        {
+          "path": "pack.events.67.title",
+          "value": "Azir joins"
+        },
+        {
+          "path": "pack.events.67.text",
+          "value": "Lift unlocks Azimir’s Oathgate and Dalinar wins the Azish to his coalition, before talks with the singers collapse."
+        },
+        {
+          "path": "pack.events.104.site",
+          "value": "azimir"
+        },
+        {
+          "path": "pack.events.104.title",
+          "value": "The defence of Azimir"
+        },
+        {
+          "path": "pack.events.106.text",
+          "value": "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."
+        },
+        {
+          "path": "pack.events.108.title",
+          "value": "Kaladin and Nale"
+        },
+        {
+          "path": "pack.events.108.text",
+          "value": "Kaladin duels the Herald Nale, who yields his Honorblade and reveals what Ishar has done to Shinovar."
+        },
+        {
+          "path": "pack.codex.1.list.25.more.1.1",
+          "value": "Helps defend Azimir through the ten days of the contest."
+        },
+        {
+          "path": "pack.codex.1.list.29.name",
+          "value": "Lift"
+        },
+        {
+          "path": "pack.codex.1.list.29.more.0.1",
+          "value": "An Edgedancer, who stands up to the Herald Nale in Yeddaw."
+        }
+      ]
+    },
+    {
+      "pr": 48,
+      "head": "97ebc3d1c4d0f7e21d486dc2afdac842e4dc19fb",
+      "blob": "ebe9c3948fe288723aac8093e9fc5eabbee65f91",
+      "events": [
+        {
+          "id": "e35",
+          "book": 7,
+          "world": "roshar",
+          "site": "yeddaw",
+          "title": "Edgedancer",
+          "text": "Lift crosses to Tashikk to protect a man the Herald Nale wants dead."
+        }
+      ],
+      "worlds": [
+        {
+          "parent": {
+            "id": "roshar",
+            "name": "Roshar",
+            "realms": {
+              "cognitive": {
+                "name": "Shadesmar",
+                "style": "beads",
+                "c1": "#2e2460",
+                "c2": "#c8b8ff",
+                "c3": "#15121c",
+                "blurb": "Roshar’s subastral, the best known. Where Roshar has land there is an ocean of glass beads, each the soul of an object; where it has seas there is dark, obsidian-like ground. Spren live here openly, in cities such as Celebrant and the honorspren fortress of Lasting Integrity, and trade in Stormlight. People show as candle-like flames."
+              }
+            },
+            "group": "rosharan",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "major": true,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "star": {
+              "name": "Roshar’s sun",
+              "col": "#f4f6ff"
+            },
+            "distText": "System drawn enlarged; planet order from the system chart",
+            "hero": "shatteredplains",
+            "view": 4.2,
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "eras": {
+              "5": {
+                "status": "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"
+              },
+              "8": {
+                "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+              },
+              "12": {
+                "status": "Retribution’s world · cut off in slowed time",
+                "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Only Azir is spared the storm.",
+                "gfx": {
+                  "clouds": 0.7,
+                  "cloudCol": "#4a3540",
+                  "atmo": "#c04a48",
+                  "lights": 0.15
+                }
+              }
+            },
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ],
+            "moons": [
+              {
+                "name": "Salas",
+                "size": 0.14,
+                "dist": 2.7,
+                "speed": 0.06
+              },
+              {
+                "name": "Nomon",
+                "size": 0.2,
+                "dist": 3.5,
+                "speed": 0.045
+              },
+              {
+                "name": "Mishim",
+                "size": 0.12,
+                "dist": 4.3,
+                "speed": 0.035
+              }
+            ]
+          },
+          "sites": [
+            {
+              "id": "valley",
+              "name": "The Valley",
+              "lat": -12,
+              "lon": -30,
+              "books": [
+                4,
+                7,
+                8,
+                9
+              ],
+              "desc": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young."
+            },
+            {
+              "id": "azimir",
+              "name": "Azimir",
+              "lat": -10,
+              "lon": -47,
+              "books": [
+                7,
+                8,
+                12
+              ],
+              "desc": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."
+            },
+            {
+              "id": "yeddaw",
+              "name": "Yeddaw",
+              "lat": -14,
+              "lon": -70,
+              "books": [
+                7
+              ],
+              "desc": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer."
+            }
+          ]
+        }
+      ],
+      "codex": [],
+      "registry": [
+        {
+          "id": "edgedancer",
+          "title": "Edgedancer",
+          "y": 2016,
+          "bucket": 7
+        }
+      ],
+      "presets": [
+        {
+          "id": "stormlight-with-novellas",
+          "label": "Stormlight Archive with novellas (7 works)",
+          "versions": [
+            {
+              "v": 1,
+              "seq": [
+                "the-way-of-kings",
+                "words-of-radiance",
+                "edgedancer",
+                "oathbringer",
+                "dawnshard",
+                "rhythm-of-war",
+                "wind-and-truth"
+              ]
+            }
+          ]
+        }
+      ],
+      "hits": [
+        {
+          "path": "pack.spoilers.works.15.id",
+          "value": "edgedancer"
+        },
+        {
+          "path": "pack.spoilers.works.15.title",
+          "value": "Edgedancer"
+        },
+        {
+          "path": "pack.spoilers.presets.2.versions.0.seq.2",
+          "value": "edgedancer"
+        },
+        {
+          "path": "pack.worlds.2.eras.12.blurb",
+          "value": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Only Azir is spared the storm."
+        },
+        {
+          "path": "pack.worlds.2.sites.11.desc",
+          "value": "A hot, overgrown valley where the Nightwatcher grants boons and curses. Dalinar sought her here; Lift asked to stay young."
+        },
+        {
+          "path": "pack.worlds.2.sites.18.id",
+          "value": "azimir"
+        },
+        {
+          "path": "pack.worlds.2.sites.18.name",
+          "value": "Azimir"
+        },
+        {
+          "path": "pack.worlds.2.sites.18.desc",
+          "value": "Azir’s capital, with the Bronze Palace and the Grand Market dome over the Makabakam Oathgate. Lift steals food here; Azir is run by scribes and forms."
+        },
+        {
+          "path": "pack.worlds.2.sites.19.id",
+          "value": "yeddaw"
+        },
+        {
+          "path": "pack.worlds.2.sites.19.name",
+          "value": "Yeddaw"
+        },
+        {
+          "path": "pack.worlds.2.sites.19.desc",
+          "value": "A Tashikki city made of Shardblade-cut trenches spiralling to the Grand Indicium, where Lift faces the Herald Nale in Edgedancer."
+        },
+        {
+          "path": "pack.worlds.2.sites.40.desc",
+          "value": "The central bead sea, over Azir, the Ur range and the southern kingdoms. The honorspren lands are on it."
+        },
+        {
+          "path": "pack.events.34.site",
+          "value": "yeddaw"
+        },
+        {
+          "path": "pack.events.34.title",
+          "value": "Edgedancer"
+        },
+        {
+          "path": "pack.events.34.text",
+          "value": "Lift crosses to Tashikk to protect a man the Herald Nale wants dead."
+        },
+        {
+          "path": "pack.events.56.text",
+          "value": "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."
+        }
+      ]
+    }
+  ]
+}

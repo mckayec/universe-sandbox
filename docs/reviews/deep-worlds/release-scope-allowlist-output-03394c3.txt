@@ -1,0 +1,8 @@
+allowlist rows: 68
+decisions: {'include (prose leaf only)': 14, 'exclude': 15, 'include': 9, 'include (RS3)': 1, 'include (RS3 Elantris reconciliation)': 13, 'exclude change': 1, 'ChatGPT choice (default exclude)': 3, 'undecided': 2, 'include omission': 10}
+included set/add leaves matching head: 47 / 47
+scene model objects copied onto baseline sites: 424 ; landmarks in R1: 14 ; scenes with 0 landmarks: 417
+event site/lm references checked: 256 ; dangling: 0
+included landmarks with incoming event lm links: {}
+omitted ids: quoted occurrences remaining in constructed R1 packs (0 = no incoming refs): {"sun-eater/event/b7c": 0, "cosmere/event/e7": 0, "expanse/event/b3f": 0, "expanse/event/b3i": 0, "expanse/event/b7d": 0, "hyperion/event/b1n": 0, "hyperion/event/b2b": 0, "hyperion/event/b2k": 0, "hyperion/event/b3b": 0, "hyperion/hyperion/sphinx": 0}
+failures: 0

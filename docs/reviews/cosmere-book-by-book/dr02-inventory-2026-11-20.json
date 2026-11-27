@@ -1,0 +1,1497 @@
+{
+  "kind": "DR02 bounded static research inventory, not canon or runtime certification",
+  "date": "2026-11-20",
+  "path": "public/atlas/packs/cosmere.js",
+  "selection": "Four world records (Firstsun, Yolen, Dhatri, Emberdark) and all 10 nested sites; e61/e62; codex entries matching Dusk, Starling, Autonomy, Perpendicularities (3 matches in PR24/48; 4 in PR37); Lumar era12; h-dusk with both pairs; Cognitive Realm overview. This is a bounded selection, not every DR02 claim in the atlas.",
+  "snapshots": [
+    {
+      "pr": 24,
+      "head_sha": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob_sha": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "blob_verified": true,
+      "counts": {
+        "all_worlds": 60,
+        "selected_worlds": 4,
+        "selected_sites": 10,
+        "selected_landmarks": 0,
+        "selected_events": 2,
+        "selected_codex": 3,
+        "selected_flow_records": 1,
+        "selected_flow_pairs": 2,
+        "selected_realm_overviews": 1
+      },
+      "worlds": [
+        {
+          "id": "firstsun",
+          "name": "First of the Sun",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "1st planet · archipelago world",
+          "blurb": "An ocean world with one large mainland and many islands where the Eelakin live. The greatest island, Patji, is a jungle where almost everything can kill you. Trappers like Dusk survive by knowing its rules and by the Aviar, birds that give their owners talents such as seeing danger coming. Now ships from the Ones Above have arrived in orbit. On this globe the Pantheon islands are drawn about five times larger, and the homeisles three times, so they can be seen.",
+          "short": "Patji and the Aviar: Sixth of the Dusk.",
+          "facts": [
+            [
+              "Order",
+              "1st from Drominad"
+            ],
+            [
+              "Moon",
+              "First of the First"
+            ],
+            [
+              "People",
+              "The Eelakin"
+            ],
+            [
+              "Magic",
+              "Aviar birds"
+            ],
+            [
+              "Threat",
+              "The Ones Above"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "An ocean world of islands. The greatest, Patji, is a deadly jungle where the Aviar live, and Patji itself is an avatar of Autonomy. Years after the Ones Above appeared, Dusk sees his people racing to modernise before they are conquered, and he sails through Patji’s Eye into the Emberdark to find help.",
+              "facts": [
+                [
+                  "Order",
+                  "1st from Drominad"
+                ],
+                [
+                  "Moon",
+                  "First of the First"
+                ],
+                [
+                  "Power",
+                  "Patji, an avatar of Autonomy"
+                ],
+                [
+                  "Magic",
+                  "Aviar birds"
+                ],
+                [
+                  "Gate",
+                  "Patji’s Eye"
+                ]
+              ]
+            }
+          },
+          "realms": {
+            "cognitive": {
+              "name": "Drominad’s subastral",
+              "style": "unsea",
+              "c1": "#06060c",
+              "c2": "#3a6ae0",
+              "c3": "#141418",
+              "blurb": "Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights."
+            }
+          },
+          "sites": [
+            {
+              "id": "patji",
+              "name": "Patji",
+              "lat": -5,
+              "lon": -0.5,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The Father island, the largest of the Pantheon: wedge-shaped, with knife-edged peaks and a jungle that punishes every mistake. Aviar must visit it to gain their talents. Dusk traps here."
+            },
+            {
+              "id": "patjiseye",
+              "name": "Patji’s Eye",
+              "lat": -4.5,
+              "lon": 1.75,
+              "books": [
+                12
+              ],
+              "desc": "A green-tinted lake of not-quite-water in a canyon toward Patji’s eastern peak, holding glowing worms. It is a perpendicularity, and Dusk sails through it into the Emberdark."
+            },
+            {
+              "id": "fort",
+              "name": "The Northern Interests fort",
+              "lat": -5.75,
+              "lon": -4.25,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A fortified wooden stronghold with cannons at the far end of Patji, where the Ones Above set their machine."
+            },
+            {
+              "id": "sori",
+              "name": "Sori",
+              "lat": -15,
+              "lon": 4.5,
+              "books": [
+                7
+              ],
+              "desc": "The smallest and tamest island of the Pantheon, closest to home, where young trappers train."
+            },
+            {
+              "id": "homeisles",
+              "name": "The Homeisles",
+              "lat": -29.5,
+              "lon": 20.5,
+              "sea": true,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The tamed islands of the Eelakin, with their cities and reefs, about three weeks’ rowing from the Pantheon. Their layout here is our placeholder."
+            },
+            {
+              "id": "mainland",
+              "name": "The mainland",
+              "lat": -62,
+              "lon": 10,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A frozen wasteland to the south of the homeisles, with native ravens and no sign of people."
+            }
+          ]
+        },
+        {
+          "id": "yolen",
+          "name": "Yolen",
+          "group": "origin",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "Where Adonalsium was shattered · hidden",
+          "blurb": "The world where it all began. Humans, dragons and the strange Sho Del all came from Yolen, and it was here, long before any of the books, that a group of conspirators shattered Adonalsium into sixteen Shards. Khriss writes that it is shrouded and hidden somewhere in the cosmere. The books have barely shown the planet itself; this surface is an interpretation.",
+          "short": "Origin of humanity and of the Shattering.",
+          "facts": [
+            [
+              "Known for",
+              "The Shattering of Adonalsium"
+            ],
+            [
+              "Peoples",
+              "Humans, dragons, Sho Del"
+            ],
+            [
+              "Where",
+              "Hidden; not on the star chart"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "The world where it all began. Humans, dragons and the Sho Del all came from Yolen, and it was here that Adonalsium was shattered into sixteen Shards. It is hidden from most of the cosmere. In Isles of the Emberdark, Starling, a young dragon living in human form, was exiled from Yolen twelve years before the story. The planet itself is still barely described; this surface is an interpretation."
+            }
+          },
+          "sites": [
+            {
+              "id": "greatstar",
+              "name": "The greatstar",
+              "lat": 20,
+              "lon": 10,
+              "books": [
+                12
+              ],
+              "desc": "A glowing hole high in Yolen’s atmosphere where the Silverlight Nexus comes through, with a flying city of dragons nearby. Its position on the globe is our placeholder."
+            },
+            {
+              "id": "fainlife",
+              "name": "Fainlife lands",
+              "lat": -20,
+              "lon": 50,
+              "books": [
+                12
+              ],
+              "desc": "Regions overrun by bone-white invasive life; about half the trees are white."
+            },
+            {
+              "id": "shattering",
+              "name": "The Shattering (site unknown)",
+              "lat": 12,
+              "lon": 20,
+              "books": [
+                7
+              ],
+              "desc": "Somewhere on Yolen, eighteen conspirators struck down Adonalsium with a weapon made from the Dawnshards. The exact place has never been shown."
+            }
+          ]
+        },
+        {
+          "id": "dhatri",
+          "name": "Dhatri",
+          "group": "named",
+          "books": [
+            12
+          ],
+          "first": 12,
+          "status": "Homeworld of the Aethers",
+          "blurb": "Named in Isles of the Emberdark: the homeworld of the Aethers and the centre of the Dhatrian planetary network, which includes Lumar. It has lost its perpendicularity but has starships. This surface is a placeholder.",
+          "facts": [
+            [
+              "Named in",
+              "The Lost Metal and Isles of the Emberdark"
+            ],
+            [
+              "Network",
+              "The Dhatrian planetary network"
+            ]
+          ]
+        },
+        {
+          "id": "emberdark",
+          "name": "The Emberdark",
+          "group": "cognitive",
+          "realm": "cognitive",
+          "realmAnchor": "drominad",
+          "books": [
+            12
+          ],
+          "first": 12,
+          "status": "A region of the Cognitive Realm",
+          "blurb": "A dark region of the Cognitive Realm that Dusk enters through Patji’s Eye. Here he meets Starling, a young dragon serving on a starship, who has found a map to a hidden gate back into the physical world.",
+          "short": "Where Dusk meets Starling.",
+          "facts": [
+            [
+              "Realm",
+              "Cognitive"
+            ],
+            [
+              "Book",
+              "Isles of the Emberdark"
+            ]
+          ],
+          "sites": [
+            {
+              "id": "hiddengate",
+              "name": "The hidden gate",
+              "lat": 0,
+              "lon": 0,
+              "books": [
+                12
+              ],
+              "desc": "The way back to the physical world shown on Starling’s old map."
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e61",
+          "book": 12,
+          "world": "firstsun",
+          "site": "patjiseye",
+          "title": "Through Patji’s Eye",
+          "text": "Dusk leaves his world through the Eye, searching for help against the Ones Above."
+        },
+        {
+          "id": "e62",
+          "book": 12,
+          "world": "emberdark",
+          "site": "hiddengate",
+          "title": "Dusk and Starling",
+          "text": "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."
+        }
+      ],
+      "codex": [
+        {
+          "section": "shards",
+          "name": "Autonomy",
+          "books": [
+            7,
+            10
+          ],
+          "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+          "more": [
+            [
+              8,
+              "Claims the world of Obrodai and raises an avatar there."
+            ],
+            [
+              10,
+              "Reaches toward Scadrial in The Lost Metal."
+            ],
+            [
+              12,
+              "Patji, the deadly island of First of the Sun, is one of its avatars."
+            ]
+          ]
+        },
+        {
+          "section": "people",
+          "name": "Dusk",
+          "role": "Trapper of Patji",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "desc": "A trapper who survives Patji by knowing its rules and by his Aviar.",
+          "more": [
+            [
+              12,
+              "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."
+            ]
+          ]
+        },
+        {
+          "section": "ideas",
+          "name": "Perpendicularities",
+          "first": 7,
+          "desc": "Places where a Shard’s power touches all three Realms, used as gates between worlds. Patji’s Eye is one."
+        }
+      ],
+      "lumar_era12": {
+        "facts": [
+          [
+            "Moons",
+            "Twelve, each home to an aether"
+          ],
+          [
+            "Seas",
+            "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+          ],
+          [
+            "Network",
+            "Part of the Dhatrian planetary network"
+          ],
+          [
+            "Neighbour",
+            "First of the Sun, under a year by sublight ship"
+          ]
+        ]
+      },
+      "later_flows": [
+        {
+          "id": "h-dusk",
+          "pairs": [
+            [
+              "firstsun",
+              "emberdark"
+            ],
+            [
+              "yolen",
+              "emberdark"
+            ]
+          ],
+          "book": 12,
+          "opacity": {
+            "all": 0.5,
+            "cur": 0.95,
+            "past": 0.35
+          },
+          "curve": 0.08
+        }
+      ],
+      "line_references": [
+        {
+          "line": 546,
+          "text": "      {id: \"firstsun\", name: \"First of the Sun\", realms: {cognitive: {name: \"Drominad’s subastral\", style: \"unsea\", c1: \"#06060c\", c2: \"#3a6ae0\", c3: \"#141418\", blurb: \"Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights.\"}}, group: \"drominad\", books: [7, 12], first: 7, status: \"1st planet · archipelago world\","
+        },
+        {
+          "line": 577,
+          "text": "       eras: {12: {facts: [[\"Moons\", \"Twelve, each home to an aether\"], [\"Seas\", \"Emerald, Crimson, Midnight, Sapphire, Rose and more\"], [\"Network\", \"Part of the Dhatrian planetary network\"], [\"Neighbour\", \"First of the Sun, under a year by sublight ship\"]]}},"
+        },
+        {
+          "line": 610,
+          "text": "      {id: \"yolen\", name: \"Yolen\", group: \"origin\", books: [7, 12], first: 7, major: true, status: \"Where Adonalsium was shattered · hidden\","
+        },
+        {
+          "line": 663,
+          "text": "      {id: \"dhatri\", name: \"Dhatri\", group: \"named\", books: [12], first: 12, status: \"Homeworld of the Aethers\","
+        },
+        {
+          "line": 666,
+          "text": "       facts: [[\"Named in\", \"The Lost Metal and Isles of the Emberdark\"], [\"Network\", \"The Dhatrian planetary network\"]],"
+        },
+        {
+          "line": 679,
+          "text": "      {id: \"emberdark\", name: \"The Emberdark\", group: \"cognitive\", realm: \"cognitive\", realmAnchor: \"drominad\", books: [12], first: 12, status: \"A region of the Cognitive Realm\","
+        },
+        {
+          "line": 762,
+          "text": "      {id: \"e61\", book: 12, world: \"firstsun\", site: \"patjiseye\", title: \"Through Patji’s Eye\", text: \"Dusk leaves his world through the Eye, searching for help against the Ones Above.\"},"
+        },
+        {
+          "line": 763,
+          "text": "      {id: \"e62\", book: 12, world: \"emberdark\", site: \"hiddengate\", title: \"Dusk and Starling\", text: \"In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate.\"},"
+        },
+        {
+          "line": 804,
+          "text": "        {name: \"Dusk\", role: \"Trapper of Patji\", books: [7, 12], first: 7, desc: \"A trapper who survives Patji by knowing its rules and by his Aviar.\", more: [[12, \"Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices.\"]]},"
+        },
+        {
+          "line": 826,
+          "text": "        text: \"The realm of thought, laid over the same space. It is one flat plane on which each world appears as a flattened reflection, its subastral, shaped by what its people think. On most worlds the solid and the fluid swap places: Roshar’s land becomes an ocean of glass beads and its seas become dark ground. The sky is black, with no stars or moon, and living minds show as lights. Space that nobody thinks about collapses, so worlds light-years apart are days or weeks apart here, which is why they are drawn much closer together. Between the subastrals lies the emberdark, a starless black void with a transparent, liquid-like surface called the unsea. The two realms only line up exactly at perpendicularities.\","
+        },
+        {
+          "line": 916,
+          "text": "        {id: \"h-dusk\", pairs: [[\"firstsun\", \"emberdark\"], [\"yolen\", \"emberdark\"]], book: 12, opacity: {all: .5, cur: .95, past: .35}, curve: .08},"
+        }
+      ],
+      "cognitive_realm": {
+        "title": "The Cognitive Realm",
+        "text": "The realm of thought, laid over the same space. It is one flat plane on which each world appears as a flattened reflection, its subastral, shaped by what its people think. On most worlds the solid and the fluid swap places: Roshar’s land becomes an ocean of glass beads and its seas become dark ground. The sky is black, with no stars or moon, and living minds show as lights. Space that nobody thinks about collapses, so worlds light-years apart are days or weeks apart here, which is why they are drawn much closer together. Between the subastrals lies the emberdark, a starless black void with a transparent, liquid-like surface called the unsea. The two realms only line up exactly at perpendicularities.",
+        "unknown": "The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky."
+      }
+    },
+    {
+      "pr": 37,
+      "head_sha": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob_sha": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "blob_verified": true,
+      "counts": {
+        "all_worlds": 60,
+        "selected_worlds": 4,
+        "selected_sites": 10,
+        "selected_landmarks": 6,
+        "selected_events": 2,
+        "selected_codex": 4,
+        "selected_flow_records": 1,
+        "selected_flow_pairs": 2,
+        "selected_realm_overviews": 1
+      },
+      "worlds": [
+        {
+          "id": "firstsun",
+          "name": "First of the Sun",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "1st planet · archipelago world",
+          "blurb": "An ocean world with one large mainland and many islands where the Eelakin live. The greatest island, Patji, is a jungle where almost everything can kill you. Trappers like Dusk survive by knowing its rules and by the Aviar, birds that give their owners talents such as seeing danger coming. Now ships from the Ones Above have arrived in orbit. On this globe the Pantheon islands are drawn about five times larger, and the homeisles three times, so they can be seen.",
+          "short": "Patji and the Aviar: Sixth of the Dusk.",
+          "facts": [
+            [
+              "Order",
+              "1st from Drominad"
+            ],
+            [
+              "Moon",
+              "First of the First"
+            ],
+            [
+              "People",
+              "The Eelakin"
+            ],
+            [
+              "Magic",
+              "Aviar birds"
+            ],
+            [
+              "Threat",
+              "The Ones Above"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "An ocean world of islands. The greatest, Patji, is a deadly jungle where the Aviar live, and Patji itself is an avatar of Autonomy. Years after the Ones Above appeared, Dusk sees his people racing to modernise before they are conquered, and he sails through Patji’s Eye into the Emberdark to find help.",
+              "facts": [
+                [
+                  "Order",
+                  "1st from Drominad"
+                ],
+                [
+                  "Moon",
+                  "First of the First"
+                ],
+                [
+                  "Power",
+                  "Patji, an avatar of Autonomy"
+                ],
+                [
+                  "Magic",
+                  "Aviar birds"
+                ],
+                [
+                  "Gate",
+                  "Patji’s Eye"
+                ]
+              ]
+            }
+          },
+          "realms": {
+            "cognitive": {
+              "name": "Drominad’s subastral",
+              "style": "unsea",
+              "c1": "#06060c",
+              "c2": "#3a6ae0",
+              "c3": "#141418",
+              "blurb": "Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights."
+            }
+          },
+          "sites": [
+            {
+              "id": "patji",
+              "name": "Patji",
+              "lat": -5,
+              "lon": -0.5,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The Father island, the largest of the Pantheon: wedge-shaped, with knife-edged peaks and a jungle that punishes every mistake. Aviar must visit it to gain their talents. Dusk traps here.",
+              "scene": {
+                "kind": "forest",
+                "arch": "organic",
+                "size": "large",
+                "tod": "day",
+                "weather": "rain",
+                "coast": "s"
+              }
+            },
+            {
+              "id": "patjiseye",
+              "name": "Patji’s Eye",
+              "lat": -4.5,
+              "lon": 1.75,
+              "books": [
+                12
+              ],
+              "desc": "A green-tinted lake of not-quite-water in a canyon toward Patji’s eastern peak, holding glowing worms. It is a perpendicularity, and Dusk sails through it into the Emberdark.",
+              "scene": {
+                "kind": "wilds",
+                "arch": "organic",
+                "size": "small",
+                "tod": "dusk",
+                "weather": "mist",
+                "landmarks": [
+                  {
+                    "id": "pool",
+                    "name": "The not-water lake",
+                    "kind": "lake",
+                    "at": [
+                      0,
+                      0
+                    ],
+                    "books": [
+                      12
+                    ],
+                    "desc": "A green-tinted pool of not-water full of glowing worms. Their paste lets things float in the emberdark, and the Aviar gain their talents from them."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fort",
+              "name": "The Northern Interests fort",
+              "lat": -5.75,
+              "lon": -4.25,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A fortified wooden stronghold with cannons at the far end of Patji, where the Ones Above set their machine.",
+              "scene": {
+                "kind": "fortress",
+                "arch": "industrial",
+                "size": "small",
+                "tod": "day",
+                "weather": "rain",
+                "walls": true,
+                "landmarks": [
+                  {
+                    "id": "machine",
+                    "name": "The machine",
+                    "kind": "factory",
+                    "at": [
+                      0,
+                      0
+                    ],
+                    "books": [
+                      7,
+                      12
+                    ],
+                    "desc": "The Ones Above’s device inside the trading company’s fort."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sori",
+              "name": "Sori",
+              "lat": -15,
+              "lon": 4.5,
+              "books": [
+                7
+              ],
+              "desc": "The smallest and tamest island of the Pantheon, closest to home, where young trappers train.",
+              "scene": {
+                "kind": "forest",
+                "size": "small",
+                "tod": "day",
+                "weather": "clear",
+                "coast": "n"
+              }
+            },
+            {
+              "id": "homeisles",
+              "name": "The Homeisles",
+              "lat": -29.5,
+              "lon": 20.5,
+              "sea": true,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The tamed islands of the Eelakin, with their cities and reefs, about three weeks’ rowing from the Pantheon. Their layout here is our placeholder.",
+              "scene": {
+                "kind": "town",
+                "arch": "rustic",
+                "size": "medium",
+                "tod": "day",
+                "weather": "clear",
+                "coast": "n"
+              }
+            },
+            {
+              "id": "mainland",
+              "name": "The mainland",
+              "lat": -62,
+              "lon": 10,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A frozen wasteland to the south of the homeisles, with native ravens and no sign of people.",
+              "scene": {
+                "kind": "ice",
+                "size": "huge",
+                "tod": "day",
+                "weather": "snow"
+              }
+            }
+          ]
+        },
+        {
+          "id": "yolen",
+          "name": "Yolen",
+          "group": "origin",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "Where Adonalsium was shattered · hidden",
+          "blurb": "The world where it all began. Humans, dragons and the strange Sho Del all came from Yolen, and it was here, long before any of the books, that a group of conspirators shattered Adonalsium into sixteen Shards. Khriss writes that it is shrouded and hidden somewhere in the cosmere. The books have barely shown the planet itself; this surface is an interpretation.",
+          "short": "Origin of humanity and of the Shattering.",
+          "facts": [
+            [
+              "Known for",
+              "The Shattering of Adonalsium"
+            ],
+            [
+              "Peoples",
+              "Humans, dragons, Sho Del"
+            ],
+            [
+              "Where",
+              "Hidden; not on the star chart"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "The world where it all began. Humans, dragons and the Sho Del all came from Yolen, and it was here that Adonalsium was shattered into sixteen Shards. It is hidden from most of the cosmere. In Isles of the Emberdark, Starling, a young dragon living in human form, was exiled from Yolen twelve years before the story. The planet itself is still barely described; this surface is an interpretation."
+            }
+          },
+          "sites": [
+            {
+              "id": "greatstar",
+              "name": "The greatstar",
+              "lat": 20,
+              "lon": 10,
+              "books": [
+                12
+              ],
+              "desc": "A glowing hole high in Yolen’s atmosphere where the Silverlight Nexus comes through, with a flying city of dragons nearby. Its position on the globe is our placeholder.",
+              "scene": {
+                "kind": "wilds",
+                "arch": "crystal",
+                "size": "large",
+                "tod": "day",
+                "weather": "clear"
+              }
+            },
+            {
+              "id": "fainlife",
+              "name": "Fainlife lands",
+              "lat": -20,
+              "lon": 50,
+              "books": [
+                12
+              ],
+              "desc": "Regions overrun by bone-white invasive life; about half the trees are white.",
+              "scene": {
+                "kind": "forest",
+                "size": "large",
+                "tod": "day",
+                "weather": "mist",
+                "pal": {
+                  "ground": "#d8d4c8"
+                }
+              }
+            },
+            {
+              "id": "shattering",
+              "name": "The Shattering (site unknown)",
+              "lat": 12,
+              "lon": 20,
+              "books": [
+                7
+              ],
+              "desc": "Somewhere on Yolen, eighteen conspirators struck down Adonalsium with a weapon made from the Dawnshards. The exact place has never been shown.",
+              "scene": {
+                "kind": "wilds",
+                "size": "large",
+                "tod": "dusk",
+                "weather": "clear"
+              }
+            }
+          ]
+        },
+        {
+          "id": "dhatri",
+          "name": "Dhatri",
+          "group": "named",
+          "books": [
+            12
+          ],
+          "first": 12,
+          "status": "Homeworld of the Aethers",
+          "blurb": "Named in Isles of the Emberdark: the homeworld of the Aethers and the centre of the Dhatrian planetary network, which includes Lumar. It has lost its perpendicularity but has starships. This surface is a placeholder.",
+          "facts": [
+            [
+              "Named in",
+              "The Lost Metal and Isles of the Emberdark"
+            ],
+            [
+              "Network",
+              "The Dhatrian planetary network"
+            ]
+          ]
+        },
+        {
+          "id": "emberdark",
+          "name": "The Emberdark",
+          "group": "cognitive",
+          "realm": "cognitive",
+          "realmAnchor": "drominad",
+          "books": [
+            12
+          ],
+          "first": 12,
+          "status": "A region of the Cognitive Realm",
+          "blurb": "A dark region of the Cognitive Realm that Dusk enters through Patji’s Eye. Here he meets Starling, a young dragon serving on a starship, who has found a map to a hidden gate back into the physical world.",
+          "short": "Where Dusk meets Starling.",
+          "facts": [
+            [
+              "Realm",
+              "Cognitive"
+            ],
+            [
+              "Book",
+              "Isles of the Emberdark"
+            ]
+          ],
+          "sites": [
+            {
+              "id": "hiddengate",
+              "name": "The hidden gate",
+              "lat": 0,
+              "lon": 0,
+              "books": [
+                12
+              ],
+              "desc": "The way back to the physical world shown on Starling’s old map.",
+              "scene": {
+                "kind": "sea",
+                "arch": "alien",
+                "size": "medium",
+                "water": true,
+                "tod": "night",
+                "weather": "clear",
+                "landmarks": [
+                  {
+                    "id": "ring",
+                    "name": "The ring island",
+                    "kind": "lake",
+                    "at": [
+                      0,
+                      0
+                    ],
+                    "h": 1.2,
+                    "books": [
+                      12
+                    ],
+                    "desc": "A ring-shaped island around a lake of not-water, guarded by Scadrian warships. The crew believes the small central island holds the hidden perpendicularity."
+                  },
+                  {
+                    "id": "dakwara",
+                    "name": "The Dakwara",
+                    "kind": "monolith",
+                    "at": [
+                      0.35,
+                      0.3
+                    ],
+                    "books": [
+                      12
+                    ],
+                    "desc": "A giant serpent that guards the central island."
+                  },
+                  {
+                    "id": "cave",
+                    "name": "The Cave of Death",
+                    "kind": "cave",
+                    "at": [
+                      -0.6,
+                      -0.3
+                    ],
+                    "books": [
+                      12
+                    ],
+                    "desc": "A tunnel that may be a way past the Dakwara."
+                  },
+                  {
+                    "id": "dynamic",
+                    "name": "The Dynamic",
+                    "kind": "ship",
+                    "at": [
+                      0.7,
+                      -0.6
+                    ],
+                    "books": [
+                      12
+                    ],
+                    "desc": "Starling’s cargo starship and its crew of misfits from many worlds."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e61",
+          "book": 12,
+          "world": "firstsun",
+          "site": "patjiseye",
+          "lm": "pool",
+          "title": "Through Patji’s Eye",
+          "text": "Dusk leaves his world through the Eye, searching for help against the Ones Above."
+        },
+        {
+          "id": "e62",
+          "book": 12,
+          "world": "emberdark",
+          "site": "hiddengate",
+          "lm": "ring",
+          "title": "Dusk and Starling",
+          "text": "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."
+        }
+      ],
+      "codex": [
+        {
+          "section": "shards",
+          "name": "Autonomy",
+          "books": [
+            7,
+            10
+          ],
+          "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+          "more": [
+            [
+              8,
+              "Claims the world of Obrodai and raises an avatar there."
+            ],
+            [
+              10,
+              "Reaches toward Scadrial in The Lost Metal."
+            ],
+            [
+              12,
+              "Patji, the deadly island of First of the Sun, is one of its avatars."
+            ]
+          ]
+        },
+        {
+          "section": "people",
+          "name": "Dusk",
+          "role": "Trapper of Patji",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "desc": "A trapper who survives Patji by knowing its rules and by his Aviar.",
+          "more": [
+            [
+              12,
+              "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."
+            ]
+          ]
+        },
+        {
+          "section": "people",
+          "name": "Starling",
+          "role": "Dragon",
+          "books": [
+            12
+          ],
+          "desc": "A young dragon exiled from Yolen and held in human form, who serves on a cargo starship with a crew from many worlds."
+        },
+        {
+          "section": "ideas",
+          "name": "Perpendicularities",
+          "first": 7,
+          "desc": "Places where a Shard’s power touches all three Realms, used as gates between worlds. Patji’s Eye is one."
+        }
+      ],
+      "lumar_era12": {
+        "facts": [
+          [
+            "Moons",
+            "Twelve, each home to an aether"
+          ],
+          [
+            "Seas",
+            "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+          ],
+          [
+            "Network",
+            "Part of the Dhatrian planetary network"
+          ],
+          [
+            "Neighbour",
+            "First of the Sun, under a year by sublight ship"
+          ]
+        ]
+      },
+      "later_flows": [
+        {
+          "id": "h-dusk",
+          "pairs": [
+            [
+              "firstsun",
+              "emberdark"
+            ],
+            [
+              "yolen",
+              "emberdark"
+            ]
+          ],
+          "book": 12,
+          "opacity": {
+            "all": 0.5,
+            "cur": 0.95,
+            "past": 0.35
+          },
+          "curve": 0.08
+        }
+      ],
+      "line_references": [
+        {
+          "line": 1110,
+          "text": "      {id: \"firstsun\", name: \"First of the Sun\", realms: {cognitive: {name: \"Drominad’s subastral\", style: \"unsea\", c1: \"#06060c\", c2: \"#3a6ae0\", c3: \"#141418\", blurb: \"Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights.\"}}, group: \"drominad\", books: [7, 12], first: 7, status: \"1st planet · archipelago world\","
+        },
+        {
+          "line": 1141,
+          "text": "       eras: {12: {facts: [[\"Moons\", \"Twelve, each home to an aether\"], [\"Seas\", \"Emerald, Crimson, Midnight, Sapphire, Rose and more\"], [\"Network\", \"Part of the Dhatrian planetary network\"], [\"Neighbour\", \"First of the Sun, under a year by sublight ship\"]]}},"
+        },
+        {
+          "line": 1174,
+          "text": "      {id: \"yolen\", name: \"Yolen\", group: \"origin\", books: [7, 12], first: 7, major: true, status: \"Where Adonalsium was shattered · hidden\","
+        },
+        {
+          "line": 1226,
+          "text": "      {id: \"dhatri\", name: \"Dhatri\", group: \"named\", books: [12], first: 12, status: \"Homeworld of the Aethers\","
+        },
+        {
+          "line": 1229,
+          "text": "       facts: [[\"Named in\", \"The Lost Metal and Isles of the Emberdark\"], [\"Network\", \"The Dhatrian planetary network\"]],"
+        },
+        {
+          "line": 1242,
+          "text": "      {id: \"emberdark\", name: \"The Emberdark\", group: \"cognitive\", realm: \"cognitive\", realmAnchor: \"drominad\", books: [12], first: 12, status: \"A region of the Cognitive Realm\","
+        },
+        {
+          "line": 1379,
+          "text": "      {id: \"e61\", book: 12, world: \"firstsun\", site: \"patjiseye\", lm: \"pool\", title: \"Through Patji’s Eye\", text: \"Dusk leaves his world through the Eye, searching for help against the Ones Above.\"},"
+        },
+        {
+          "line": 1380,
+          "text": "      {id: \"e62\", book: 12, world: \"emberdark\", site: \"hiddengate\", lm: \"ring\", title: \"Dusk and Starling\", text: \"In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate.\"},"
+        },
+        {
+          "line": 1422,
+          "text": "        {name: \"Dusk\", role: \"Trapper of Patji\", books: [7, 12], first: 7, desc: \"A trapper who survives Patji by knowing its rules and by his Aviar.\", more: [[12, \"Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices.\"]]},"
+        },
+        {
+          "line": 1435,
+          "text": "        {name: \"Starling\", role: \"Dragon\", books: [12], desc: \"A young dragon exiled from Yolen and held in human form, who serves on a cargo starship with a crew from many worlds.\"}"
+        },
+        {
+          "line": 1462,
+          "text": "        text: \"The realm of thought, laid over the same space. It is one flat plane on which each world appears as a flattened reflection, its subastral, shaped by what its people think. On most worlds the solid and the fluid swap places: Roshar’s land becomes an ocean of glass beads and its seas become dark ground. The sky is black, with no stars or moon, and living minds show as lights. Space that nobody thinks about collapses, so worlds light-years apart are days or weeks apart here, which is why they are drawn much closer together. Between the subastrals lies the emberdark, a starless black void with a transparent, liquid-like surface called the unsea. The two realms only line up exactly at perpendicularities.\","
+        },
+        {
+          "line": 1552,
+          "text": "        {id: \"h-dusk\", pairs: [[\"firstsun\", \"emberdark\"], [\"yolen\", \"emberdark\"]], book: 12, opacity: {all: .5, cur: .95, past: .35}, curve: .08},"
+        }
+      ],
+      "cognitive_realm": {
+        "title": "The Cognitive Realm",
+        "text": "The realm of thought, laid over the same space. It is one flat plane on which each world appears as a flattened reflection, its subastral, shaped by what its people think. On most worlds the solid and the fluid swap places: Roshar’s land becomes an ocean of glass beads and its seas become dark ground. The sky is black, with no stars or moon, and living minds show as lights. Space that nobody thinks about collapses, so worlds light-years apart are days or weeks apart here, which is why they are drawn much closer together. Between the subastrals lies the emberdark, a starless black void with a transparent, liquid-like surface called the unsea. The two realms only line up exactly at perpendicularities.",
+        "unknown": "The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky."
+      }
+    },
+    {
+      "pr": 48,
+      "head_sha": "61e26afb4514f4b9510f33ce9f8b0b7bbe84e964",
+      "blob_sha": "05170eab9f4c10f18c98a6fac51cf825e63c8a56",
+      "blob_verified": true,
+      "counts": {
+        "all_worlds": 60,
+        "selected_worlds": 4,
+        "selected_sites": 10,
+        "selected_landmarks": 0,
+        "selected_events": 2,
+        "selected_codex": 3,
+        "selected_flow_records": 1,
+        "selected_flow_pairs": 2,
+        "selected_realm_overviews": 1
+      },
+      "worlds": [
+        {
+          "id": "firstsun",
+          "name": "First of the Sun",
+          "group": "drominad",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "1st planet · archipelago world",
+          "blurb": "An ocean world with one large mainland and many islands where the Eelakin live. The greatest island, Patji, is a jungle where almost everything can kill you. Trappers like Dusk survive by knowing its rules and by the Aviar, birds that give their owners talents such as seeing danger coming. Now ships from the Ones Above have arrived in orbit. On this globe the Pantheon islands are drawn about five times larger, and the homeisles three times, so they can be seen.",
+          "short": "Patji and the Aviar: Sixth of the Dusk.",
+          "facts": [
+            [
+              "Order",
+              "1st from Drominad"
+            ],
+            [
+              "Moon",
+              "First of the First"
+            ],
+            [
+              "People",
+              "The Eelakin"
+            ],
+            [
+              "Magic",
+              "Aviar birds"
+            ],
+            [
+              "Threat",
+              "The Ones Above"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "An ocean world of islands. The greatest, Patji, is a deadly jungle where the Aviar live, and Patji itself is an avatar of Autonomy. Years after the Ones Above appeared, Dusk sees his people racing to modernise before they are conquered, and he sails through Patji’s Eye into the Emberdark to find help.",
+              "facts": [
+                [
+                  "Order",
+                  "1st from Drominad"
+                ],
+                [
+                  "Moon",
+                  "First of the First"
+                ],
+                [
+                  "Power",
+                  "Patji, an avatar of Autonomy"
+                ],
+                [
+                  "Magic",
+                  "Aviar birds"
+                ],
+                [
+                  "Gate",
+                  "Patji’s Eye"
+                ]
+              ]
+            }
+          },
+          "realms": {
+            "cognitive": {
+              "name": "Drominad’s subastral",
+              "style": "unsea",
+              "c1": "#06060c",
+              "c2": "#3a6ae0",
+              "c3": "#141418",
+              "blurb": "Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights."
+            }
+          },
+          "sites": [
+            {
+              "id": "patji",
+              "name": "Patji",
+              "lat": -5,
+              "lon": -0.5,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The Father island, the largest of the Pantheon: wedge-shaped, with knife-edged peaks and a jungle that punishes every mistake. Aviar must visit it to gain their talents. Dusk traps here."
+            },
+            {
+              "id": "patjiseye",
+              "name": "Patji’s Eye",
+              "lat": -4.5,
+              "lon": 1.75,
+              "books": [
+                12
+              ],
+              "desc": "A green-tinted lake of not-quite-water in a canyon toward Patji’s eastern peak, holding glowing worms. It is a perpendicularity, and Dusk sails through it into the Emberdark."
+            },
+            {
+              "id": "fort",
+              "name": "The Northern Interests fort",
+              "lat": -5.75,
+              "lon": -4.25,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A fortified wooden stronghold with cannons at the far end of Patji, where the Ones Above set their machine."
+            },
+            {
+              "id": "sori",
+              "name": "Sori",
+              "lat": -15,
+              "lon": 4.5,
+              "books": [
+                7
+              ],
+              "desc": "The smallest and tamest island of the Pantheon, closest to home, where young trappers train."
+            },
+            {
+              "id": "homeisles",
+              "name": "The Homeisles",
+              "lat": -29.5,
+              "lon": 20.5,
+              "sea": true,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "The tamed islands of the Eelakin, with their cities and reefs, about three weeks’ rowing from the Pantheon. Their layout here is our placeholder."
+            },
+            {
+              "id": "mainland",
+              "name": "The mainland",
+              "lat": -62,
+              "lon": 10,
+              "books": [
+                7,
+                12
+              ],
+              "desc": "A frozen wasteland to the south of the homeisles, with native ravens and no sign of people."
+            }
+          ]
+        },
+        {
+          "id": "yolen",
+          "name": "Yolen",
+          "group": "origin",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "status": "Where Adonalsium was shattered · hidden",
+          "blurb": "The world where it all began. Humans, dragons and the strange Sho Del all came from Yolen, and it was here, long before any of the books, that a group of conspirators shattered Adonalsium into sixteen Shards. Khriss writes that it is shrouded and hidden somewhere in the cosmere. The books have barely shown the planet itself; this surface is an interpretation.",
+          "short": "Origin of humanity and of the Shattering.",
+          "facts": [
+            [
+              "Known for",
+              "The Shattering of Adonalsium"
+            ],
+            [
+              "Peoples",
+              "Humans, dragons, Sho Del"
+            ],
+            [
+              "Where",
+              "Hidden; not on the star chart"
+            ]
+          ],
+          "eras": {
+            "12": {
+              "blurb": "The world where it all began. Humans, dragons and the Sho Del all came from Yolen, and it was here that Adonalsium was shattered into sixteen Shards. It is hidden from most of the cosmere. In Isles of the Emberdark, Starling, a young dragon living in human form, was exiled from Yolen twelve years before the story. The planet itself is still barely described; this surface is an interpretation."
+            }
+          },
+          "sites": [
+            {
+              "id": "greatstar",
+              "name": "The greatstar",
+              "lat": 20,
+              "lon": 10,
+              "books": [
+                12
+              ],
+              "desc": "A glowing hole high in Yolen’s atmosphere where the Silverlight Nexus comes through, with a flying city of dragons nearby. Its position on the globe is our placeholder."
+            },
+            {
+              "id": "fainlife",
+              "name": "Fainlife lands",
+              "lat": -20,
+              "lon": 50,
+              "books": [
+                12
+              ],
+              "desc": "Regions overrun by bone-white invasive life; about half the trees are white."
+            },
+            {
+              "id": "shattering",
+              "name": "The Shattering (site unknown)",
+              "lat": 12,
+              "lon": 20,
+              "books": [
+                7
+              ],
+              "desc": "Somewhere on Yolen, eighteen conspirators struck down Adonalsium with a weapon made from the Dawnshards. The exact place has never been shown."
+            }
+          ]
+        },
+        {
+          "id": "dhatri",
+          "name": "Dhatri",
+          "group": "named",
+          "books": [
+            12
+          ],
+          "first": 12,
+          "status": "Homeworld of the Aethers",
+          "blurb": "Named in Isles of the Emberdark: the homeworld of the Aethers and the centre of the Dhatrian planetary network, which includes Lumar. It has lost its perpendicularity but has starships. This surface is a placeholder.",
+          "facts": [
+            [
+              "Named in",
+              "The Lost Metal and Isles of the Emberdark"
+            ],
+            [
+              "Network",
+              "The Dhatrian planetary network"
+            ]
+          ]
+        },
+        {
+          "id": "emberdark",
+          "name": "The Emberdark",
+          "group": "cognitive",
+          "realm": "cognitive",
+          "realmAnchor": "drominad",
+          "books": [
+            12
+          ],
+          "first": 12,
+          "status": "A region of the Cognitive Realm",
+          "blurb": "A dark region of the Cognitive Realm that Dusk enters through Patji’s Eye. Here he meets Starling, a young dragon serving on a starship, who has found a map to a hidden gate back into the physical world.",
+          "short": "Where Dusk meets Starling.",
+          "facts": [
+            [
+              "Realm",
+              "Cognitive"
+            ],
+            [
+              "Book",
+              "Isles of the Emberdark"
+            ]
+          ],
+          "sites": [
+            {
+              "id": "hiddengate",
+              "name": "The hidden gate",
+              "lat": 0,
+              "lon": 0,
+              "books": [
+                12
+              ],
+              "desc": "The way back to the physical world shown on Starling’s old map."
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e61",
+          "book": 12,
+          "world": "firstsun",
+          "site": "patjiseye",
+          "title": "Through Patji’s Eye",
+          "text": "Dusk leaves his world through the Eye, searching for help against the Ones Above."
+        },
+        {
+          "id": "e62",
+          "book": 12,
+          "world": "emberdark",
+          "site": "hiddengate",
+          "title": "Dusk and Starling",
+          "text": "In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate."
+        }
+      ],
+      "codex": [
+        {
+          "section": "shards",
+          "name": "Autonomy",
+          "books": [
+            7,
+            10
+          ],
+          "desc": "Shard of Taldain, who likes many avatars and dislikes rivals.",
+          "more": [
+            [
+              8,
+              "Claims the world of Obrodai and raises an avatar there."
+            ],
+            [
+              10,
+              "Reaches toward Scadrial in The Lost Metal."
+            ],
+            [
+              12,
+              "Patji, the deadly island of First of the Sun, is one of its avatars."
+            ]
+          ]
+        },
+        {
+          "section": "people",
+          "name": "Dusk",
+          "role": "Trapper of Patji",
+          "books": [
+            7,
+            12
+          ],
+          "first": 7,
+          "desc": "A trapper who survives Patji by knowing its rules and by his Aviar.",
+          "more": [
+            [
+              12,
+              "Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices."
+            ]
+          ]
+        },
+        {
+          "section": "ideas",
+          "name": "Perpendicularities",
+          "first": 7,
+          "desc": "Places where a Shard’s power touches all three Realms, used as gates between worlds. Patji’s Eye is one."
+        }
+      ],
+      "lumar_era12": {
+        "facts": [
+          [
+            "Moons",
+            "Twelve, each home to an aether"
+          ],
+          [
+            "Seas",
+            "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+          ],
+          [
+            "Network",
+            "Part of the Dhatrian planetary network"
+          ],
+          [
+            "Neighbour",
+            "First of the Sun, under a year by sublight ship"
+          ]
+        ]
+      },
+      "later_flows": [
+        {
+          "id": "h-dusk",
+          "pairs": [
+            [
+              "firstsun",
+              "emberdark"
+            ],
+            [
+              "yolen",
+              "emberdark"
+            ]
+          ],
+          "book": 12,
+          "opacity": {
+            "all": 0.5,
+            "cur": 0.95,
+            "past": 0.35
+          },
+          "curve": 0.08
+        }
+      ],
+      "line_references": [
+        {
+          "line": 597,
+          "text": "      {id: \"firstsun\", name: \"First of the Sun\", realms: {cognitive: {name: \"Drominad’s subastral\", style: \"unsea\", c1: \"#06060c\", c2: \"#3a6ae0\", c3: \"#141418\", blurb: \"Much like the unsea: black, coral-like ground and a few small islands, blue smoke-like streaks across the sky, no visible sun, and people and Aviar shown as floating, fishhook-shaped lights.\"}}, group: \"drominad\", books: [7, 12], first: 7, status: \"1st planet · archipelago world\","
+        },
+        {
+          "line": 628,
+          "text": "       eras: {12: {facts: [[\"Moons\", \"Twelve, each home to an aether\"], [\"Seas\", \"Emerald, Crimson, Midnight, Sapphire, Rose and more\"], [\"Network\", \"Part of the Dhatrian planetary network\"], [\"Neighbour\", \"First of the Sun, under a year by sublight ship\"]]}},"
+        },
+        {
+          "line": 661,
+          "text": "      {id: \"yolen\", name: \"Yolen\", group: \"origin\", books: [7, 12], first: 7, major: true, status: \"Where Adonalsium was shattered · hidden\","
+        },
+        {
+          "line": 714,
+          "text": "      {id: \"dhatri\", name: \"Dhatri\", group: \"named\", books: [12], first: 12, status: \"Homeworld of the Aethers\","
+        },
+        {
+          "line": 717,
+          "text": "       facts: [[\"Named in\", \"The Lost Metal and Isles of the Emberdark\"], [\"Network\", \"The Dhatrian planetary network\"]],"
+        },
+        {
+          "line": 730,
+          "text": "      {id: \"emberdark\", name: \"The Emberdark\", group: \"cognitive\", realm: \"cognitive\", realmAnchor: \"drominad\", books: [12], first: 12, status: \"A region of the Cognitive Realm\","
+        },
+        {
+          "line": 813,
+          "text": "      {id: \"e61\", book: 12, world: \"firstsun\", site: \"patjiseye\", title: \"Through Patji’s Eye\", text: \"Dusk leaves his world through the Eye, searching for help against the Ones Above.\"},"
+        },
+        {
+          "line": 814,
+          "text": "      {id: \"e62\", book: 12, world: \"emberdark\", site: \"hiddengate\", title: \"Dusk and Starling\", text: \"In the Emberdark he allies with Starling and her crew in a hunt for a hidden gate.\"},"
+        },
+        {
+          "line": 855,
+          "text": "        {name: \"Dusk\", role: \"Trapper of Patji\", books: [7, 12], first: 7, desc: \"A trapper who survives Patji by knowing its rules and by his Aviar.\", more: [[12, \"Dusk teams up with Starling, a young dragon and one of Hoid’s apprentices.\"]]},"
+        },
+        {
+          "line": 877,
+          "text": "        text: \"The realm of thought, laid over the same space. It is one flat plane on which each world appears as a flattened reflection, its subastral, shaped by what its people think. On most worlds the solid and the fluid swap places: Roshar’s land becomes an ocean of glass beads and its seas become dark ground. The sky is black, with no stars or moon, and living minds show as lights. Space that nobody thinks about collapses, so worlds light-years apart are days or weeks apart here, which is why they are drawn much closer together. Between the subastrals lies the emberdark, a starless black void with a transparent, liquid-like surface called the unsea. The two realms only line up exactly at perpendicularities.\","
+        },
+        {
+          "line": 968,
+          "text": "        {id: \"h-dusk\", pairs: [[\"firstsun\", \"emberdark\"], [\"yolen\", \"emberdark\"]], book: 12, opacity: {all: .5, cur: .95, past: .35}, curve: .08},"
+        }
+      ],
+      "cognitive_realm": {
+        "title": "The Cognitive Realm",
+        "text": "The realm of thought, laid over the same space. It is one flat plane on which each world appears as a flattened reflection, its subastral, shaped by what its people think. On most worlds the solid and the fluid swap places: Roshar’s land becomes an ocean of glass beads and its seas become dark ground. The sky is black, with no stars or moon, and living minds show as lights. Space that nobody thinks about collapses, so worlds light-years apart are days or weeks apart here, which is why they are drawn much closer together. Between the subastrals lies the emberdark, a starless black void with a transparent, liquid-like surface called the unsea. The two realms only line up exactly at perpendicularities.",
+        "unknown": "No world-specific description is provided in this view. The appearance is an illustration, not a verified map."
+      }
+    }
+  ]
+}

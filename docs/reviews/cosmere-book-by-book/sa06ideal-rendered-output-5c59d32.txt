@@ -1,0 +1,32 @@
+# sa06ideal-probe.mjs raw summaries (vite preview of local build; Playwright chromium, swiftshader)
+head 5c59d326e1e2fb188b75203cdfd594c08c77ef2a: sa06ideal-probe: 72/72 pass
+  allowed (1440x900 and 390x844 x WoK+WoR+RoW / #book=9 / All): Roshar selected; dossier e44 .ex = new sentence,
+  .ep = "Urithiru"; real click (desktop) / tap (phone) opens e44; open text = new, wraps inside viewport; old copy absent
+  withheld (both viewports x RoW only / WoK+OB+DS+RoW / #book=8): no e44 item; neither old nor new text on the page
+  0 console/page errors in 12/12 page loads
+parent 03d7a67b0a3728024a05d143abc299409911f7e3 (negative control): sa06ideal-probe: 48/72 pass
+  24 expected failures = 6 allowed page loads x (dossier text new, old copy absent, open text new, old absent after open):
+  FAIL 1440x900 wok+wor+row: e44 dossier text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 1440x900 wok+wor+row: old copy absent
+  FAIL 1440x900 wok+wor+row: visible open text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 1440x900 wok+wor+row: old copy absent after open
+  FAIL 1440x900 legacy book=9: e44 dossier text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 1440x900 legacy book=9: old copy absent
+  FAIL 1440x900 legacy book=9: visible open text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 1440x900 legacy book=9: old copy absent after open
+  FAIL 1440x900 All: e44 dossier text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 1440x900 All: old copy absent
+  FAIL 1440x900 All: visible open text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 1440x900 All: old copy absent after open
+  FAIL 390x844 wok+wor+row: e44 dossier text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 390x844 wok+wor+row: old copy absent
+  FAIL 390x844 wok+wor+row: visible open text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 390x844 wok+wor+row: old copy absent after open
+  FAIL 390x844 legacy book=9: e44 dossier text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 390x844 legacy book=9: old copy absent
+  FAIL 390x844 legacy book=9: visible open text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 390x844 legacy book=9: old copy absent after open
+  FAIL 390x844 All: e44 dossier text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 390x844 All: old copy absent
+  FAIL 390x844 All: visible open text = new (Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.)
+  FAIL 390x844 All: old copy absent after open

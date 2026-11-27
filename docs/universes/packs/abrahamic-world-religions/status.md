@@ -1,10 +1,10 @@
-stage: ready-for-owner
+stage: live
 owner: mckay
-updated: 2026-11-07T00:12Z
-blocked-on: mckay
-next-action: Mckay: answer DECISIONS D04 — release PR #39 at 813061f482c729429dd8ee9f194ca406a931cde9? On yes, Claude merges pinned to that SHA and confirms the Pages deploy.
+updated: 2026-11-27T00:43Z
+blocked-on: none
+next-action: none (live). Mckay may spot-check on the public site; any follow-up becomes a new review item.
 idle-runs: 0
-note: Canon approved and Technical approved at the same head 813061f482c729429dd8ee9f194ca406a931cde9 (audit-final.md). T5-1 closed (exact-head CI 158/158, 14x2 pages incl. this pack). Known gaps: software-GL 1024 surface; no physical-device timing; six D02 spatial dispositions; pre-existing simulator Save/Load smoke timeout. Not merged.
+note: PR #39 merged by Claude in a live session on Mckay's explicit yes (2026-11-26; D04, D09), pinned to approved head 813061f482c729429dd8ee9f194ca406a931cde9 as merge commit ffcbea8245d2c933f441b0aa4e1fc13d81de3d0e. Pages deploy run 45917021412 (main 1896dda) build+deploy success.
 
 
 
@@ -66,3 +66,9 @@ Track A · view: Earth map + branching tree
 
 - 2026-11-06T23:16Z: ChatGPT round-6 exact-head canon recheck at 813061f482c729429dd8ee9f194ca406a931cde9 approved (bounded D02 scope). Audit 9a9c70e59df2b4c2ef4b89003e992ea9e1453529 confirmed saved; 5/5 pack blobs identical, 314/314 inventory records unchanged, 5/5 independent structural checks pass, zero new canon findings. Formal T5-1/Technical closure returns to Claude; separate Mckay release decision required.
 - 2026-11-07T00:12Z: Claude: Technical approved at 813061f482c729429dd8ee9f194ca406a931cde9 (T5-1 closed; exact-head CI log read: 158/158, check:dist, 14x2 pages incl. abrahamic desktop+mobile; independent no-error/no-third-party/memory-growth check at 390 and 1280). Both sign-offs at the same SHA → stage ready-for-owner, owner mckay, DECISIONS D04 opened for release approval. idle-runs 0.
+
+- 2026-11-09T02:42Z: ChatGPT recorded Mckay's D04 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 813061f482c729429dd8ee9f194ca406a931cde9. Mckay approved D04 on 2026-11-09 within D02 scope and existing Known gaps. Prior same-head PR CI succeeded; current PR is clean. Release execution remains pending; no merge, deployment or pickup claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
+
+- 2026-11-09T02:56Z: Claude: verified integration for PR39 at 813061f against main b9bc9d7 — only docs/** changed on main since the PR base, `git merge-tree` clean, exact-head PR CI (build) success 2026-11-06, so integrated runtime equals reviewed runtime. Attempted pinned merge; the merge call via the GitHub REST API (PUT pulls/39/merge with sha pinned) was refused by this run's automated permission guard as a production deploy; Claude did not retry or work around it. Owner claude → mckay, blocked-on mckay (DECISIONS D09). idle-runs 0.
+- 2026-11-27: Claude: confirmed Mckay's merge of PR #39 at 813061f (merge ffcbea8) and the successful GitHub Pages deploy for ffcbea8 (build + deploy jobs green). Stage live, owner mckay.
+- 2026-11-27T00:43Z: Claude: merged PR39 pinned to 813061f (merge ffcbea8) on Mckay's live yes; deploy run 45917021412 success. Stage live.

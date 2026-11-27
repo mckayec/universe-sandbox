@@ -1,10 +1,10 @@
-stage: ready-for-owner
+stage: live
 owner: mckay
-blocked-on: mckay
-next-action: Mckay answers D07 in docs/universes/DECISIONS.md for PR24 at a4a6ea0; if approved, Claude reconciles and validates the actual integrated runtime before release, returning material changes for the relevant review
-updated: 2026-11-07T13:20Z
+blocked-on: none
+next-action: none (live). Mckay may spot-check on the public site; any follow-up becomes a new review item.
+updated: 2026-11-27T00:43Z
 idle-runs: 0
-note: Bounded Canon/content and Claude Technical approved at a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065; implementation-review-r6a.md records 3/3 diff files, 4/4 finite return items, unchanged 21/21 manifest dispositions, 3/3 residual groups and 5/5 U dispositions. Independent source/screenshot/CI inspection; builder-reported browser counts remain attributed. No full-book certification or owner release approval. Actual integration/runtime checks remain required.
+note: PR #24 merged by Claude in a live session on Mckay's explicit yes (2026-11-26; D07, D09), pinned to approved head cf25cda66e91c573c421a0f3712623db72737a3b as merge commit 9092dc78e8d5e83ce4f82e4909d11ee3dbc6ac3c. Pages deploy run 45917021412 (main 1896dda) build+deploy success.
 
 
 # Book-accuracy corrections for the existing atlases
@@ -61,3 +61,8 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-11-07T13:15Z: Claude completed implementation-review-r6.md items 1–4 at PR24 a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065 (parent 6a96127): rewritten source-confidence-probe.cjs (Range-based visible predicate with clipping/hit test, expanded sheets, palace selected via its button, Society 6→1 and engine downgrades with UI open, data-only labelled, 3 negative controls, failing exit) 48/48 at four viewports, 0 page errors; found and fixed T-R6a-1 (Society side panels reserved a fixed height smaller than the Chronicle, hiding the palace qualification at 1440x900); pnpm check 89/89, test:pages 12x2; runtime = branch head, CI bf5787b not transferred. Technical: approved at a4a6ea0 in technical-r6-a4a6ea0.md. fixing/claude → implementation-review/chatgpt. idle-runs 0.
 
 - 2026-11-07T13:20Z: ChatGPT saved/read back implementation-review-r6a.md in 4a6c9509295debfcdffa6a38789598fb8c6b1a49 before status. PR24 remains open/unmerged at a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065. Reviewed 3/3 changed files, complete probe and 4/4 supplied screenshots; 4/4 finite R6 return items addressed, 0 new blockers. Prior21/21 source-confidence dispositions,3/3 residual groups,5/5 U dispositions and timer closure preserved. Fresh CI42375798669 logs confirm125/125 unit,24/24 page cases and113 distribution files at synthetic merge17e40e0; branch-head48/48 per four viewports remains builder-reported, not independently rerun. Bounded Canon/content approved alongside same-head Claude Technical; full-book certification not granted. D07 saved/read back in01cbe5efb996b54f75f07cbd0a139b3ffadd9f49; implementation-review/chatgpt → ready-for-owner/mckay. Any approved release still requires actual integrated-runtime validation; no code edits, merge or deployment.
+
+- 2026-11-09T02:42Z: ChatGPT recorded Mckay's D07 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065. Mckay conditionally approved D07 on 2026-11-09. Bounded same-head canon/technical acceptance and Known gaps preserved; prior synthetic-merge CI is not integrated-runtime acceptance. No gate waived, merge or deployment claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
+
+- 2026-11-09T07:12Z: Claude integrated PR24: merged main c74bed2 into approved a4a6ea0 → cf25cda66e91c573c421a0f3712623db72737a3b (clean; PR24's 11 non-docs files byte-identical to a4a6ea0, all other files identical to main, so not material under D07). pnpm check 125/125 + check:dist 113, test:pages 12x2, test:browser pass, source-confidence-probe 48/48 at 3840x2160/1440x900/1280x800/390x844 with 0 page errors, CI 42577091447 build success. Report integration-cf25cda.md. Merge blocked by the D09 guard: owner claude → mckay, blocked-on mckay. idle-runs 0.
+- 2026-11-27T00:43Z: Claude: merged PR24 pinned to cf25cda (merge 9092dc7; main had gained only PR39, no overlapping files, GitHub mergeable clean) on Mckay's live yes; deploy run 45917021412 success. Stage live.

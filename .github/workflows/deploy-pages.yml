@@ -47,6 +47,10 @@ jobs:
         run: pnpm test:pages
         env:
           SCREENSHOTS: page-shots
+      # Compact-layout touch regressions in Chromium touch emulation: a placing tap never reaches Clear all,
+      # the Navigate focus instruction is followable, pan/pinch/cancel, and mouse double-click focus.
+      - name: Mobile touch checks
+        run: pnpm test:touch
       - name: Keep page screenshots
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,0 +1,13 @@
+# head 68d47ce, 1440, run before the compact-sheet/stale-probe change; the stale FAIL row is superseded by dwd-stale-output-68d47ce-1440.txt (see fix-return-68d47ce.md)
+PASS 1440 5 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 1440 5 Storm Gods on raises sea | dom true -6→408.3151570425365
+PASS 1440 5 Storm Gods off returns sea | dom false -6
+PASS 1440 6 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 1440 6 Storm Gods on raises sea | dom true -6→422.87308907180955
+PASS 1440 6 Storm Gods off returns sea | dom false -6
+PASS 1440 no page errors (amplified page)
+FAIL 1440 V→IV inside Tyche with storms on leaves scene | dom true {"m":"site","c":"Tyche","era":4}
+PASS 1440 re-entry at V after storms-on downgrade: toggle unpressed | false
+PASS 1440 V→VI upgrade with storms on keeps scene and toggle | {"m":"site","c":"Tyche"}
+PASS 1440 no page errors (stale page)
+FAILED 1

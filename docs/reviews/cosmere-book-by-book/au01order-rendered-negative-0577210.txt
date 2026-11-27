@@ -1,0 +1,455 @@
+ok   1440x900 All jes: selected (jes)
+FAIL 1440x900 All jes: status 4th shown
+FAIL 1440x900 All jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 1440x900 All jes: old 5th absent
+ok   1440x900 All nan: selected (nan)
+FAIL 1440x900 All nan: status 5th shown
+FAIL 1440x900 All nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 1440x900 All nan: old 6th absent
+ok   1440x900 All chach: selected (chach)
+FAIL 1440x900 All chach: status 6th shown
+FAIL 1440x900 All chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 1440x900 All chach: old 7th absent
+ok   1440x900 All vev: selected (vev)
+FAIL 1440x900 All vev: status 7th shown
+FAIL 1440x900 All vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 1440x900 All vev: old 8th absent
+ok   1440x900 All palah: selected (palah)
+FAIL 1440x900 All palah: status 8th shown
+FAIL 1440x900 All palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 1440x900 All palah: old 9th absent
+ok   1440x900 All shash: selected (shash)
+FAIL 1440x900 All shash: status 9th shown
+FAIL 1440x900 All shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 1440x900 All shash: old 10th absent
+ok   1440x900 All betab: selected (betab)
+FAIL 1440x900 All betab: status 10th shown
+FAIL 1440x900 All betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 1440x900 All betab: old 11th absent
+ok   1440x900 All kak: selected (kak)
+FAIL 1440x900 All kak: status 11th shown
+FAIL 1440x900 All kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 1440x900 All kak: old 12th absent
+ok   1440x900 All tanat: selected (tanat)
+FAIL 1440x900 All tanat: status 12th shown
+FAIL 1440x900 All tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 1440x900 All tanat: old 13th absent
+ok   1440x900 All ishi: selected (ishi)
+FAIL 1440x900 All ishi: status 13th shown
+FAIL 1440x900 All ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 1440x900 All ishi: old 14th absent
+ok   1440x900 All: no errors 
+ok   1440x900 legacy7 jes: selected (jes)
+FAIL 1440x900 legacy7 jes: status 4th shown
+FAIL 1440x900 legacy7 jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 1440x900 legacy7 jes: old 5th absent
+ok   1440x900 legacy7 nan: selected (nan)
+FAIL 1440x900 legacy7 nan: status 5th shown
+FAIL 1440x900 legacy7 nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 1440x900 legacy7 nan: old 6th absent
+ok   1440x900 legacy7 chach: selected (chach)
+FAIL 1440x900 legacy7 chach: status 6th shown
+FAIL 1440x900 legacy7 chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 1440x900 legacy7 chach: old 7th absent
+ok   1440x900 legacy7 vev: selected (vev)
+FAIL 1440x900 legacy7 vev: status 7th shown
+FAIL 1440x900 legacy7 vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 1440x900 legacy7 vev: old 8th absent
+ok   1440x900 legacy7 palah: selected (palah)
+FAIL 1440x900 legacy7 palah: status 8th shown
+FAIL 1440x900 legacy7 palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 1440x900 legacy7 palah: old 9th absent
+ok   1440x900 legacy7 shash: selected (shash)
+FAIL 1440x900 legacy7 shash: status 9th shown
+FAIL 1440x900 legacy7 shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 1440x900 legacy7 shash: old 10th absent
+ok   1440x900 legacy7 betab: selected (betab)
+FAIL 1440x900 legacy7 betab: status 10th shown
+FAIL 1440x900 legacy7 betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 1440x900 legacy7 betab: old 11th absent
+ok   1440x900 legacy7 kak: selected (kak)
+FAIL 1440x900 legacy7 kak: status 11th shown
+FAIL 1440x900 legacy7 kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 1440x900 legacy7 kak: old 12th absent
+ok   1440x900 legacy7 tanat: selected (tanat)
+FAIL 1440x900 legacy7 tanat: status 12th shown
+FAIL 1440x900 legacy7 tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 1440x900 legacy7 tanat: old 13th absent
+ok   1440x900 legacy7 ishi: selected (ishi)
+FAIL 1440x900 legacy7 ishi: status 13th shown
+FAIL 1440x900 legacy7 ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 1440x900 legacy7 ishi: old 14th absent
+ok   1440x900 legacy7: no errors 
+ok   1440x900 bucket7 jes: selected (jes)
+FAIL 1440x900 bucket7 jes: status 4th shown
+FAIL 1440x900 bucket7 jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 1440x900 bucket7 jes: old 5th absent
+ok   1440x900 bucket7 nan: selected (nan)
+FAIL 1440x900 bucket7 nan: status 5th shown
+FAIL 1440x900 bucket7 nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 1440x900 bucket7 nan: old 6th absent
+ok   1440x900 bucket7 chach: selected (chach)
+FAIL 1440x900 bucket7 chach: status 6th shown
+FAIL 1440x900 bucket7 chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 1440x900 bucket7 chach: old 7th absent
+ok   1440x900 bucket7 vev: selected (vev)
+FAIL 1440x900 bucket7 vev: status 7th shown
+FAIL 1440x900 bucket7 vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 1440x900 bucket7 vev: old 8th absent
+ok   1440x900 bucket7 palah: selected (palah)
+FAIL 1440x900 bucket7 palah: status 8th shown
+FAIL 1440x900 bucket7 palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 1440x900 bucket7 palah: old 9th absent
+ok   1440x900 bucket7 shash: selected (shash)
+FAIL 1440x900 bucket7 shash: status 9th shown
+FAIL 1440x900 bucket7 shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 1440x900 bucket7 shash: old 10th absent
+ok   1440x900 bucket7 betab: selected (betab)
+FAIL 1440x900 bucket7 betab: status 10th shown
+FAIL 1440x900 bucket7 betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 1440x900 bucket7 betab: old 11th absent
+ok   1440x900 bucket7 kak: selected (kak)
+FAIL 1440x900 bucket7 kak: status 11th shown
+FAIL 1440x900 bucket7 kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 1440x900 bucket7 kak: old 12th absent
+ok   1440x900 bucket7 tanat: selected (tanat)
+FAIL 1440x900 bucket7 tanat: status 12th shown
+FAIL 1440x900 bucket7 tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 1440x900 bucket7 tanat: old 13th absent
+ok   1440x900 bucket7 ishi: selected (ishi)
+FAIL 1440x900 bucket7 ishi: status 13th shown
+FAIL 1440x900 bucket7 ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 1440x900 bucket7 ishi: old 14th absent
+ok   1440x900 bucket7: no errors 
+ok   1440x900 all works jes: selected (jes)
+FAIL 1440x900 all works jes: status 4th shown
+FAIL 1440x900 all works jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 1440x900 all works jes: old 5th absent
+ok   1440x900 all works nan: selected (nan)
+FAIL 1440x900 all works nan: status 5th shown
+FAIL 1440x900 all works nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 1440x900 all works nan: old 6th absent
+ok   1440x900 all works chach: selected (chach)
+FAIL 1440x900 all works chach: status 6th shown
+FAIL 1440x900 all works chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 1440x900 all works chach: old 7th absent
+ok   1440x900 all works vev: selected (vev)
+FAIL 1440x900 all works vev: status 7th shown
+FAIL 1440x900 all works vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 1440x900 all works vev: old 8th absent
+ok   1440x900 all works palah: selected (palah)
+FAIL 1440x900 all works palah: status 8th shown
+FAIL 1440x900 all works palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 1440x900 all works palah: old 9th absent
+ok   1440x900 all works shash: selected (shash)
+FAIL 1440x900 all works shash: status 9th shown
+FAIL 1440x900 all works shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 1440x900 all works shash: old 10th absent
+ok   1440x900 all works betab: selected (betab)
+FAIL 1440x900 all works betab: status 10th shown
+FAIL 1440x900 all works betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 1440x900 all works betab: old 11th absent
+ok   1440x900 all works kak: selected (kak)
+FAIL 1440x900 all works kak: status 11th shown
+FAIL 1440x900 all works kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 1440x900 all works kak: old 12th absent
+ok   1440x900 all works tanat: selected (tanat)
+FAIL 1440x900 all works tanat: status 12th shown
+FAIL 1440x900 all works tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 1440x900 all works tanat: old 13th absent
+ok   1440x900 all works ishi: selected (ishi)
+FAIL 1440x900 all works ishi: status 13th shown
+FAIL 1440x900 all works ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 1440x900 all works ishi: old 14th absent
+ok   1440x900 all works: no errors 
+ok   1440x900 legacy6 jes: not selectable (null)
+ok   1440x900 legacy6 jes: no gas-giant ordinal on page
+ok   1440x900 legacy6 nan: not selectable (null)
+ok   1440x900 legacy6 nan: no gas-giant ordinal on page
+ok   1440x900 legacy6 chach: not selectable (null)
+ok   1440x900 legacy6 chach: no gas-giant ordinal on page
+ok   1440x900 legacy6 vev: not selectable (null)
+ok   1440x900 legacy6 vev: no gas-giant ordinal on page
+ok   1440x900 legacy6 palah: not selectable (null)
+ok   1440x900 legacy6 palah: no gas-giant ordinal on page
+ok   1440x900 legacy6 shash: not selectable (null)
+ok   1440x900 legacy6 shash: no gas-giant ordinal on page
+ok   1440x900 legacy6 betab: not selectable (null)
+ok   1440x900 legacy6 betab: no gas-giant ordinal on page
+ok   1440x900 legacy6 kak: not selectable (null)
+ok   1440x900 legacy6 kak: no gas-giant ordinal on page
+ok   1440x900 legacy6 tanat: not selectable (null)
+ok   1440x900 legacy6 tanat: no gas-giant ordinal on page
+ok   1440x900 legacy6 ishi: not selectable (null)
+ok   1440x900 legacy6 ishi: no gas-giant ordinal on page
+ok   1440x900 legacy6: no errors 
+ok   1440x900 AU01 only jes: not selectable (null)
+ok   1440x900 AU01 only jes: no gas-giant ordinal on page
+ok   1440x900 AU01 only nan: not selectable (null)
+ok   1440x900 AU01 only nan: no gas-giant ordinal on page
+ok   1440x900 AU01 only chach: not selectable (null)
+ok   1440x900 AU01 only chach: no gas-giant ordinal on page
+ok   1440x900 AU01 only vev: not selectable (null)
+ok   1440x900 AU01 only vev: no gas-giant ordinal on page
+ok   1440x900 AU01 only palah: not selectable (null)
+ok   1440x900 AU01 only palah: no gas-giant ordinal on page
+ok   1440x900 AU01 only shash: not selectable (null)
+ok   1440x900 AU01 only shash: no gas-giant ordinal on page
+ok   1440x900 AU01 only betab: not selectable (null)
+ok   1440x900 AU01 only betab: no gas-giant ordinal on page
+ok   1440x900 AU01 only kak: not selectable (null)
+ok   1440x900 AU01 only kak: no gas-giant ordinal on page
+ok   1440x900 AU01 only tanat: not selectable (null)
+ok   1440x900 AU01 only tanat: no gas-giant ordinal on page
+ok   1440x900 AU01 only ishi: not selectable (null)
+ok   1440x900 AU01 only ishi: no gas-giant ordinal on page
+ok   1440x900 AU01 only: no errors 
+ok   1440x900 bucket7 minus AU01 jes: not selectable (null)
+ok   1440x900 bucket7 minus AU01 jes: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 nan: not selectable (null)
+ok   1440x900 bucket7 minus AU01 nan: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 chach: not selectable (null)
+ok   1440x900 bucket7 minus AU01 chach: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 vev: not selectable (null)
+ok   1440x900 bucket7 minus AU01 vev: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 palah: not selectable (null)
+ok   1440x900 bucket7 minus AU01 palah: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 shash: not selectable (null)
+ok   1440x900 bucket7 minus AU01 shash: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 betab: not selectable (null)
+ok   1440x900 bucket7 minus AU01 betab: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 kak: not selectable (null)
+ok   1440x900 bucket7 minus AU01 kak: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 tanat: not selectable (null)
+ok   1440x900 bucket7 minus AU01 tanat: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01 ishi: not selectable (null)
+ok   1440x900 bucket7 minus AU01 ishi: no gas-giant ordinal on page
+ok   1440x900 bucket7 minus AU01: no errors 
+ok   390x844 All jes: selected (jes)
+FAIL 390x844 All jes: status 4th shown
+FAIL 390x844 All jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 390x844 All jes: old 5th absent
+ok   390x844 All nan: selected (nan)
+FAIL 390x844 All nan: status 5th shown
+FAIL 390x844 All nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 390x844 All nan: old 6th absent
+ok   390x844 All chach: selected (chach)
+FAIL 390x844 All chach: status 6th shown
+FAIL 390x844 All chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 390x844 All chach: old 7th absent
+ok   390x844 All vev: selected (vev)
+FAIL 390x844 All vev: status 7th shown
+FAIL 390x844 All vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 390x844 All vev: old 8th absent
+ok   390x844 All palah: selected (palah)
+FAIL 390x844 All palah: status 8th shown
+FAIL 390x844 All palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 390x844 All palah: old 9th absent
+ok   390x844 All shash: selected (shash)
+FAIL 390x844 All shash: status 9th shown
+FAIL 390x844 All shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 390x844 All shash: old 10th absent
+ok   390x844 All betab: selected (betab)
+FAIL 390x844 All betab: status 10th shown
+FAIL 390x844 All betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 390x844 All betab: old 11th absent
+ok   390x844 All kak: selected (kak)
+FAIL 390x844 All kak: status 11th shown
+FAIL 390x844 All kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 390x844 All kak: old 12th absent
+ok   390x844 All tanat: selected (tanat)
+FAIL 390x844 All tanat: status 12th shown
+FAIL 390x844 All tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 390x844 All tanat: old 13th absent
+ok   390x844 All ishi: selected (ishi)
+FAIL 390x844 All ishi: status 13th shown
+FAIL 390x844 All ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 390x844 All ishi: old 14th absent
+ok   390x844 All: no errors 
+ok   390x844 legacy7 jes: selected (jes)
+FAIL 390x844 legacy7 jes: status 4th shown
+FAIL 390x844 legacy7 jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 390x844 legacy7 jes: old 5th absent
+ok   390x844 legacy7 nan: selected (nan)
+FAIL 390x844 legacy7 nan: status 5th shown
+FAIL 390x844 legacy7 nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 390x844 legacy7 nan: old 6th absent
+ok   390x844 legacy7 chach: selected (chach)
+FAIL 390x844 legacy7 chach: status 6th shown
+FAIL 390x844 legacy7 chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 390x844 legacy7 chach: old 7th absent
+ok   390x844 legacy7 vev: selected (vev)
+FAIL 390x844 legacy7 vev: status 7th shown
+FAIL 390x844 legacy7 vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 390x844 legacy7 vev: old 8th absent
+ok   390x844 legacy7 palah: selected (palah)
+FAIL 390x844 legacy7 palah: status 8th shown
+FAIL 390x844 legacy7 palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 390x844 legacy7 palah: old 9th absent
+ok   390x844 legacy7 shash: selected (shash)
+FAIL 390x844 legacy7 shash: status 9th shown
+FAIL 390x844 legacy7 shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 390x844 legacy7 shash: old 10th absent
+ok   390x844 legacy7 betab: selected (betab)
+FAIL 390x844 legacy7 betab: status 10th shown
+FAIL 390x844 legacy7 betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 390x844 legacy7 betab: old 11th absent
+ok   390x844 legacy7 kak: selected (kak)
+FAIL 390x844 legacy7 kak: status 11th shown
+FAIL 390x844 legacy7 kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 390x844 legacy7 kak: old 12th absent
+ok   390x844 legacy7 tanat: selected (tanat)
+FAIL 390x844 legacy7 tanat: status 12th shown
+FAIL 390x844 legacy7 tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 390x844 legacy7 tanat: old 13th absent
+ok   390x844 legacy7 ishi: selected (ishi)
+FAIL 390x844 legacy7 ishi: status 13th shown
+FAIL 390x844 legacy7 ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 390x844 legacy7 ishi: old 14th absent
+ok   390x844 legacy7: no errors 
+ok   390x844 bucket7 jes: selected (jes)
+FAIL 390x844 bucket7 jes: status 4th shown
+FAIL 390x844 bucket7 jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 390x844 bucket7 jes: old 5th absent
+ok   390x844 bucket7 nan: selected (nan)
+FAIL 390x844 bucket7 nan: status 5th shown
+FAIL 390x844 bucket7 nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 390x844 bucket7 nan: old 6th absent
+ok   390x844 bucket7 chach: selected (chach)
+FAIL 390x844 bucket7 chach: status 6th shown
+FAIL 390x844 bucket7 chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 390x844 bucket7 chach: old 7th absent
+ok   390x844 bucket7 vev: selected (vev)
+FAIL 390x844 bucket7 vev: status 7th shown
+FAIL 390x844 bucket7 vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 390x844 bucket7 vev: old 8th absent
+ok   390x844 bucket7 palah: selected (palah)
+FAIL 390x844 bucket7 palah: status 8th shown
+FAIL 390x844 bucket7 palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 390x844 bucket7 palah: old 9th absent
+ok   390x844 bucket7 shash: selected (shash)
+FAIL 390x844 bucket7 shash: status 9th shown
+FAIL 390x844 bucket7 shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 390x844 bucket7 shash: old 10th absent
+ok   390x844 bucket7 betab: selected (betab)
+FAIL 390x844 bucket7 betab: status 10th shown
+FAIL 390x844 bucket7 betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 390x844 bucket7 betab: old 11th absent
+ok   390x844 bucket7 kak: selected (kak)
+FAIL 390x844 bucket7 kak: status 11th shown
+FAIL 390x844 bucket7 kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 390x844 bucket7 kak: old 12th absent
+ok   390x844 bucket7 tanat: selected (tanat)
+FAIL 390x844 bucket7 tanat: status 12th shown
+FAIL 390x844 bucket7 tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 390x844 bucket7 tanat: old 13th absent
+ok   390x844 bucket7 ishi: selected (ishi)
+FAIL 390x844 bucket7 ishi: status 13th shown
+FAIL 390x844 bucket7 ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 390x844 bucket7 ishi: old 14th absent
+ok   390x844 bucket7: no errors 
+ok   390x844 all works jes: selected (jes)
+FAIL 390x844 all works jes: status 4th shown
+FAIL 390x844 all works jes: Order fact (5th from the sun (1 of the ten gas giants))
+FAIL 390x844 all works jes: old 5th absent
+ok   390x844 all works nan: selected (nan)
+FAIL 390x844 all works nan: status 5th shown
+FAIL 390x844 all works nan: Order fact (6th from the sun (2 of the ten gas giants))
+FAIL 390x844 all works nan: old 6th absent
+ok   390x844 all works chach: selected (chach)
+FAIL 390x844 all works chach: status 6th shown
+FAIL 390x844 all works chach: Order fact (7th from the sun (3 of the ten gas giants))
+FAIL 390x844 all works chach: old 7th absent
+ok   390x844 all works vev: selected (vev)
+FAIL 390x844 all works vev: status 7th shown
+FAIL 390x844 all works vev: Order fact (8th from the sun (4 of the ten gas giants))
+FAIL 390x844 all works vev: old 8th absent
+ok   390x844 all works palah: selected (palah)
+FAIL 390x844 all works palah: status 8th shown
+FAIL 390x844 all works palah: Order fact (9th from the sun (5 of the ten gas giants))
+FAIL 390x844 all works palah: old 9th absent
+ok   390x844 all works shash: selected (shash)
+FAIL 390x844 all works shash: status 9th shown
+FAIL 390x844 all works shash: Order fact (10th from the sun (6 of the ten gas giants))
+FAIL 390x844 all works shash: old 10th absent
+ok   390x844 all works betab: selected (betab)
+FAIL 390x844 all works betab: status 10th shown
+FAIL 390x844 all works betab: Order fact (11th from the sun (7 of the ten gas giants))
+FAIL 390x844 all works betab: old 11th absent
+ok   390x844 all works kak: selected (kak)
+FAIL 390x844 all works kak: status 11th shown
+FAIL 390x844 all works kak: Order fact (12th from the sun (8 of the ten gas giants))
+FAIL 390x844 all works kak: old 12th absent
+ok   390x844 all works tanat: selected (tanat)
+FAIL 390x844 all works tanat: status 12th shown
+FAIL 390x844 all works tanat: Order fact (13th from the sun (9 of the ten gas giants))
+FAIL 390x844 all works tanat: old 13th absent
+ok   390x844 all works ishi: selected (ishi)
+FAIL 390x844 all works ishi: status 13th shown
+FAIL 390x844 all works ishi: Order fact (14th from the sun (10 of the ten gas giants))
+FAIL 390x844 all works ishi: old 14th absent
+ok   390x844 all works: no errors 
+ok   390x844 legacy6 jes: not selectable (null)
+ok   390x844 legacy6 jes: no gas-giant ordinal on page
+ok   390x844 legacy6 nan: not selectable (null)
+ok   390x844 legacy6 nan: no gas-giant ordinal on page
+ok   390x844 legacy6 chach: not selectable (null)
+ok   390x844 legacy6 chach: no gas-giant ordinal on page
+ok   390x844 legacy6 vev: not selectable (null)
+ok   390x844 legacy6 vev: no gas-giant ordinal on page
+ok   390x844 legacy6 palah: not selectable (null)
+ok   390x844 legacy6 palah: no gas-giant ordinal on page
+ok   390x844 legacy6 shash: not selectable (null)
+ok   390x844 legacy6 shash: no gas-giant ordinal on page
+ok   390x844 legacy6 betab: not selectable (null)
+ok   390x844 legacy6 betab: no gas-giant ordinal on page
+ok   390x844 legacy6 kak: not selectable (null)
+ok   390x844 legacy6 kak: no gas-giant ordinal on page
+ok   390x844 legacy6 tanat: not selectable (null)
+ok   390x844 legacy6 tanat: no gas-giant ordinal on page
+ok   390x844 legacy6 ishi: not selectable (null)
+ok   390x844 legacy6 ishi: no gas-giant ordinal on page
+ok   390x844 legacy6: no errors 
+ok   390x844 AU01 only jes: not selectable (null)
+ok   390x844 AU01 only jes: no gas-giant ordinal on page
+ok   390x844 AU01 only nan: not selectable (null)
+ok   390x844 AU01 only nan: no gas-giant ordinal on page
+ok   390x844 AU01 only chach: not selectable (null)
+ok   390x844 AU01 only chach: no gas-giant ordinal on page
+ok   390x844 AU01 only vev: not selectable (null)
+ok   390x844 AU01 only vev: no gas-giant ordinal on page
+ok   390x844 AU01 only palah: not selectable (null)
+ok   390x844 AU01 only palah: no gas-giant ordinal on page
+ok   390x844 AU01 only shash: not selectable (null)
+ok   390x844 AU01 only shash: no gas-giant ordinal on page
+ok   390x844 AU01 only betab: not selectable (null)
+ok   390x844 AU01 only betab: no gas-giant ordinal on page
+ok   390x844 AU01 only kak: not selectable (null)
+ok   390x844 AU01 only kak: no gas-giant ordinal on page
+ok   390x844 AU01 only tanat: not selectable (null)
+ok   390x844 AU01 only tanat: no gas-giant ordinal on page
+ok   390x844 AU01 only ishi: not selectable (null)
+ok   390x844 AU01 only ishi: no gas-giant ordinal on page
+ok   390x844 AU01 only: no errors 
+ok   390x844 bucket7 minus AU01 jes: not selectable (null)
+ok   390x844 bucket7 minus AU01 jes: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 nan: not selectable (null)
+ok   390x844 bucket7 minus AU01 nan: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 chach: not selectable (null)
+ok   390x844 bucket7 minus AU01 chach: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 vev: not selectable (null)
+ok   390x844 bucket7 minus AU01 vev: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 palah: not selectable (null)
+ok   390x844 bucket7 minus AU01 palah: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 shash: not selectable (null)
+ok   390x844 bucket7 minus AU01 shash: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 betab: not selectable (null)
+ok   390x844 bucket7 minus AU01 betab: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 kak: not selectable (null)
+ok   390x844 bucket7 minus AU01 kak: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 tanat: not selectable (null)
+ok   390x844 bucket7 minus AU01 tanat: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01 ishi: not selectable (null)
+ok   390x844 bucket7 minus AU01 ishi: no gas-giant ordinal on page
+ok   390x844 bucket7 minus AU01: no errors 
+au01order-probe (parent): 214/454 pass

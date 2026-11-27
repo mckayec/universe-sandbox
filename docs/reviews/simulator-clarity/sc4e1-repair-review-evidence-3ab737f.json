@@ -1,0 +1,543 @@
+{
+  "reviewer": "ChatGPT",
+  "date": "2026-11-10",
+  "audited_head": "3ab737fe90991767b3cebf5410dc5a1c3b7a6f84",
+  "evidence_main_snapshot": "9660d4e0f98f1d9788ac7ce59b19ae08053ab535",
+  "method": {
+    "input": "Published builder MP4s; independent offline decode and arithmetic, not a fresh simulation",
+    "decode": "ffprobe best_effort_timestamp_time; ffmpeg passthrough RGB24; assert decoder exit 0 and decoded count equals timestamp count",
+    "marker": "RGB mean of source-equivalent [8:32,8:32], scaled to encoded dimensions; nearest of eight harness colours, Euclidean threshold <90",
+    "blank": "Global RGB standard deviation below marker strip <2; detects wholly blank frames, not every partial occlusion",
+    "isolated": "Encoded 800x500; fixed 220x220 crop centered (400,250); exclude 0.75s at both ends of builder WebM marker windows; sample >=0.49s apart; luminance = .2126R+.7152G+.0722B; consecutive mean absolute difference. Asymmetry=(left mean-right mean)/whole crop mean (twice builder normalization).",
+    "merger": "Encoded 800x500; fixed crop x[330:450],y[188:308]; merged-10x window 46.55..50.37s and paused-after-merger 51.91..54.45s; sample >=.49s apart; same luminance and difference. Fixed image crop is not a pixel-perfect tracked host ROI.",
+    "scope": "Differences establish freeze versus visible change in stationary scenes; do not measure angular speed, radial shear, continuity at every frame, GPU correctness, or physical accuracy."
+  },
+  "integrity": {
+    "matched_git_blobs": 16,
+    "expected_assets": 16,
+    "assets": [
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-close-equal-1280x800-sheet.jpg",
+        "git_blob_sha": "b6cb482c99cf59896d6404bde5adb6939e36ea80",
+        "sha256": "357b6b196cf6fe91276aab015e6bfc3cffdcd17c4619232dd20aadfead0a3292"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-close-equal-1280x800.mp4",
+        "git_blob_sha": "7281994d8bae338e341dba768e19454e426f9604",
+        "sha256": "9615de40ffeb94b071c21a3ffc953e624c9d75a9528917c2335a852fdcab5343"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-flyby-1280x800-sheet.jpg",
+        "git_blob_sha": "f7399fe48a5abad14821ee2dd09f234f0c3f7d10",
+        "sha256": "6a0558f46ebfe808b5fde827b56f5974d665103a48d30593c02480d0790b0d18"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-flyby-1280x800.mp4",
+        "git_blob_sha": "ea1422a6a82f074ce3d3310e6401d7f5eb20e2e6",
+        "sha256": "cf654b0062bd0544fe51699b6497e8f9d6fbb5115aafbb6311de6607b2441c92"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-flyby-compact-390x844-sheet.jpg",
+        "git_blob_sha": "736b00b700f509cdea64eaa67ac82105e8159edd",
+        "sha256": "d301f1ba41d28c2c53f14deafe13e391ed23024d227b395d61c5241e26471d1e"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-flyby-compact-390x844.mp4",
+        "git_blob_sha": "420f83e29add483147f92d6590c8963db99739b8",
+        "sha256": "abc0348c9f7a24d0ea6f7373d765ef20c503de05c94672af0f77cc05333271ba"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-isolated-1280x800-sheet.jpg",
+        "git_blob_sha": "11eaa8ac801c02c37418df360748df4b67d97e87",
+        "sha256": "918fcfc9f9c1057370bcededb556f68e1958a0fdb4765a1acc638b1e6f28f0e7"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-isolated-1280x800.mp4",
+        "git_blob_sha": "1682b89eadb1fbb2780a07942e1304b836b775b0",
+        "sha256": "ef209346104b34b8511dc458ffcbdc2c373a9c74bf2ad06291deb74c3c1acee1"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-merger-1280x800-sheet.jpg",
+        "git_blob_sha": "2a6df02f61df4d74b490df2ed39e05d0c17e72df",
+        "sha256": "8b20a3e58272049e16d7f6e43fb1472a05576a4c9c6be5bc1641a0774f457c05"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-merger-1280x800.mp4",
+        "git_blob_sha": "6213ce59bc3f5fe7b3b005a4c7bf30a2c522c13f",
+        "sha256": "f95a19b1160c3f86be57704bdbc897f54655b4501752dc7443e336145b8cd1d7"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-metric-isolated-1280x800-crops.jpg",
+        "git_blob_sha": "c1d74308ee6379ba8860770e5160d04d497fae8d",
+        "sha256": "2cbd8553efeea73333bb21cf95d9f1d1a8781ab1c17abc2782715195f307d34a"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-metric-merger-1280x800-crops.jpg",
+        "git_blob_sha": "bdaca882e11e446a0ddb68dd2ba3d0330164b439",
+        "sha256": "585c4fe09c6c8bda4ca5d3274210acfc2940d698cd5d4dd2e3d62e416da2d4c3"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-unequal-1280x800-sheet.jpg",
+        "git_blob_sha": "a7ec90621ec88799a8d12528823665023515989e",
+        "sha256": "c723031317b01d52b5a7dd39f4b7392ed2529a20a13740cc29f766c323103338"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-unequal-1280x800.mp4",
+        "git_blob_sha": "4e8e9deb424707ad939ac9fac430197a6614c11e",
+        "sha256": "8439c77d557cde930e8141ebe818dfeaa8b9593dd75d6a9f7198b4f740e68cac"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-wide-equal-1280x800-sheet.jpg",
+        "git_blob_sha": "acc82c40c338320bf741ce898b7fe428e1e83185",
+        "sha256": "e5cdcb02d7a6a7be6e3ada42595c8a36e1a515261ddff1af8d743fff8683b262"
+      },
+      {
+        "path": "docs/reviews/simulator-clarity/shots/sc4e1r-wide-equal-1280x800.mp4",
+        "git_blob_sha": "d4712d06975360331177dd7167bb05012ad1d5bd",
+        "sha256": "52645186bdef209d02a6d8d07373c85261e633e2a39a765361de4d899acffce5"
+      }
+    ]
+  },
+  "mp4_results": {
+    "close-equal-1280x800": {
+      "sha256": "9615de40ffeb94b071c21a3ffc953e624c9d75a9528917c2335a852fdcab5343",
+      "width": 800,
+      "height": 500,
+      "decoded_frames": 526,
+      "labeled_blank_frames": 0,
+      "segments": [
+        {
+          "label": null,
+          "first": 0.0,
+          "last": 10.083333,
+          "frames": 122
+        },
+        {
+          "label": "startup",
+          "first": 10.166667,
+          "last": 27.75,
+          "frames": 212
+        },
+        {
+          "label": "restored-paused",
+          "first": 27.833333,
+          "last": 34.083333,
+          "frames": 76
+        },
+        {
+          "label": "1x",
+          "first": 34.166667,
+          "last": 39.333333,
+          "frames": 63
+        },
+        {
+          "label": "10x",
+          "first": 39.416667,
+          "last": 43.75,
+          "frames": 53
+        }
+      ],
+      "transition_delta_vs_builder_webm_s": [
+        0.006667,
+        0.033333,
+        -0.033333,
+        0.016667
+      ],
+      "isolated_center_crop_metrics": {}
+    },
+    "flyby-1280x800": {
+      "sha256": "cf654b0062bd0544fe51699b6497e8f9d6fbb5115aafbb6311de6607b2441c92",
+      "width": 800,
+      "height": 500,
+      "decoded_frames": 564,
+      "labeled_blank_frames": 0,
+      "segments": [
+        {
+          "label": null,
+          "first": 0.0,
+          "last": 9.666667,
+          "frames": 117
+        },
+        {
+          "label": "startup",
+          "first": 9.75,
+          "last": 27.0,
+          "frames": 208
+        },
+        {
+          "label": "restored-paused",
+          "first": 27.083333,
+          "last": 33.416667,
+          "frames": 77
+        },
+        {
+          "label": "approach",
+          "first": 33.5,
+          "last": 39.916667,
+          "frames": 78
+        },
+        {
+          "label": "recession",
+          "first": 40.0,
+          "last": 46.916667,
+          "frames": 84
+        }
+      ],
+      "transition_delta_vs_builder_webm_s": [
+        0.03,
+        -0.036667,
+        -0.02,
+        0.0
+      ],
+      "isolated_center_crop_metrics": {}
+    },
+    "flyby-compact-390x844": {
+      "sha256": "abc0348c9f7a24d0ea6f7373d765ef20c503de05c94672af0f77cc05333271ba",
+      "width": 390,
+      "height": 844,
+      "decoded_frames": 305,
+      "labeled_blank_frames": 0,
+      "segments": [
+        {
+          "label": null,
+          "first": 0.0,
+          "last": 0.833333,
+          "frames": 11
+        },
+        {
+          "label": "startup",
+          "first": 0.916667,
+          "last": 12.583333,
+          "frames": 141
+        },
+        {
+          "label": "restored-paused",
+          "first": 12.666667,
+          "last": 17.25,
+          "frames": 56
+        },
+        {
+          "label": "approach",
+          "first": 17.333333,
+          "last": 20.583333,
+          "frames": 40
+        },
+        {
+          "label": "recession",
+          "first": 20.666667,
+          "last": 25.333333,
+          "frames": 57
+        }
+      ],
+      "transition_delta_vs_builder_webm_s": [
+        -0.003333,
+        0.026667,
+        -0.026667,
+        -0.013333
+      ],
+      "isolated_center_crop_metrics": {}
+    },
+    "isolated-1280x800": {
+      "sha256": "ef209346104b34b8511dc458ffcbdc2c373a9c74bf2ad06291deb74c3c1acee1",
+      "width": 800,
+      "height": 500,
+      "decoded_frames": 523,
+      "labeled_blank_frames": 0,
+      "segments": [
+        {
+          "label": null,
+          "first": 0.0,
+          "last": 9.916667,
+          "frames": 120
+        },
+        {
+          "label": "startup",
+          "first": 10.0,
+          "last": 27.333333,
+          "frames": 209
+        },
+        {
+          "label": "restored-paused",
+          "first": 27.416667,
+          "last": 33.666667,
+          "frames": 76
+        },
+        {
+          "label": "1x",
+          "first": 33.75,
+          "last": 39.0,
+          "frames": 64
+        },
+        {
+          "label": "10x",
+          "first": 39.083333,
+          "last": 43.5,
+          "frames": 54
+        }
+      ],
+      "transition_delta_vs_builder_webm_s": [
+        0.04,
+        -0.023333,
+        -0.01,
+        0.003333
+      ],
+      "isolated_center_crop_metrics": {
+        "restored-paused": {
+          "samples": 10,
+          "intervals": 9,
+          "min_diff": 0.0,
+          "max_diff": 0.13531754545454544,
+          "asym_min": 0.280084053004377,
+          "asym_max": 0.2806995792621258,
+          "times": [
+            28.25,
+            28.75,
+            29.25,
+            29.75,
+            30.25,
+            30.75,
+            31.25,
+            31.75,
+            32.25,
+            32.75
+          ]
+        },
+        "1x": {
+          "samples": 8,
+          "intervals": 7,
+          "min_diff": 0.9986648553719009,
+          "max_diff": 4.84200088429752,
+          "asym_min": 0.2470534777011462,
+          "asym_max": 0.29980673553252213,
+          "times": [
+            34.583333,
+            35.083333,
+            35.583333,
+            36.083333,
+            36.583333,
+            37.083333,
+            37.583333,
+            38.083333
+          ]
+        },
+        "10x": {
+          "samples": 6,
+          "intervals": 5,
+          "min_diff": 3.9882045206611574,
+          "max_diff": 6.4863283223140495,
+          "asym_min": 0.21835530659910657,
+          "asym_max": 0.28578358098337614,
+          "times": [
+            39.833333,
+            40.333333,
+            40.833333,
+            41.333333,
+            41.833333,
+            42.333333
+          ]
+        }
+      }
+    },
+    "merger-1280x800": {
+      "sha256": "f95a19b1160c3f86be57704bdbc897f54655b4501752dc7443e336145b8cd1d7",
+      "width": 800,
+      "height": 500,
+      "decoded_frames": 663,
+      "labeled_blank_frames": 0,
+      "segments": [
+        {
+          "label": null,
+          "first": 0.0,
+          "last": 10.25,
+          "frames": 124
+        },
+        {
+          "label": "startup",
+          "first": 10.333333,
+          "last": 28.916667,
+          "frames": 224
+        },
+        {
+          "label": "restored-paused",
+          "first": 29.0,
+          "last": 36.25,
+          "frames": 88
+        },
+        {
+          "label": "1x",
+          "first": 36.333333,
+          "last": 42.0,
+          "frames": 69
+        },
+        {
+          "label": "10x",
+          "first": 42.083333,
+          "last": 45.75,
+          "frames": 45
+        },
+        {
+          "label": "merged-10x",
+          "first": 45.833333,
+          "last": 51.083333,
+          "frames": 64
+        },
+        {
+          "label": "paused-after-merger",
+          "first": 51.166667,
+          "last": 55.166667,
+          "frames": 49
+        }
+      ],
+      "transition_delta_vs_builder_webm_s": [
+        0.013333,
+        -0.04,
+        0.013333,
+        -0.036667,
+        0.033333,
+        0.006667
+      ],
+      "isolated_center_crop_metrics": {}
+    },
+    "unequal-1280x800": {
+      "sha256": "8439c77d557cde930e8141ebe818dfeaa8b9593dd75d6a9f7198b4f740e68cac",
+      "width": 800,
+      "height": 500,
+      "decoded_frames": 448,
+      "labeled_blank_frames": 0,
+      "segments": [
+        {
+          "label": null,
+          "first": 0.0,
+          "last": 2.75,
+          "frames": 34
+        },
+        {
+          "label": "startup",
+          "first": 2.833333,
+          "last": 20.333333,
+          "frames": 211
+        },
+        {
+          "label": "restored-paused",
+          "first": 20.416667,
+          "last": 27.166667,
+          "frames": 82
+        },
+        {
+          "label": "1x",
+          "first": 27.25,
+          "last": 32.666667,
+          "frames": 66
+        },
+        {
+          "label": "10x",
+          "first": 32.75,
+          "last": 37.25,
+          "frames": 55
+        }
+      ],
+      "transition_delta_vs_builder_webm_s": [
+        -0.006667,
+        -0.023333,
+        0.01,
+        -0.01
+      ],
+      "isolated_center_crop_metrics": {}
+    },
+    "wide-equal-1280x800": {
+      "sha256": "52645186bdef209d02a6d8d07373c85261e633e2a39a765361de4d899acffce5",
+      "width": 800,
+      "height": 500,
+      "decoded_frames": 426,
+      "labeled_blank_frames": 0,
+      "segments": [
+        {
+          "label": null,
+          "first": 0.0,
+          "last": 2.333333,
+          "frames": 29
+        },
+        {
+          "label": "startup",
+          "first": 2.416667,
+          "last": 19.083333,
+          "frames": 201
+        },
+        {
+          "label": "restored-paused",
+          "first": 19.166667,
+          "last": 25.75,
+          "frames": 80
+        },
+        {
+          "label": "1x",
+          "first": 25.833333,
+          "last": 30.833333,
+          "frames": 61
+        },
+        {
+          "label": "10x",
+          "first": 30.916667,
+          "last": 35.416667,
+          "frames": 55
+        }
+      ],
+      "transition_delta_vs_builder_webm_s": [
+        -0.023333,
+        -0.033333,
+        0.033333,
+        0.036667
+      ],
+      "isolated_center_crop_metrics": {}
+    }
+  },
+  "merger_fixed_crop_metrics": {
+    "merged-10x": {
+      "samples": 8,
+      "intervals": 7,
+      "diff_min": 9.465185180555554,
+      "diff_max": 11.667479972222221,
+      "times": [
+        46.583333333333336,
+        47.083333333333336,
+        47.583333333333336,
+        48.083333333333336,
+        48.583333333333336,
+        49.083333333333336,
+        49.583333333333336,
+        50.083333333333336
+      ]
+    },
+    "paused-after-merger": {
+      "samples": 6,
+      "intervals": 5,
+      "diff_min": 0.0,
+      "diff_max": 0.005572999999999998,
+      "times": [
+        51.916666666666664,
+        52.416666666666664,
+        52.916666666666664,
+        53.416666666666664,
+        53.916666666666664,
+        54.416666666666664
+      ]
+    }
+  },
+  "counts": {
+    "decoded_mp4s": 7,
+    "expected_mp4s": 7,
+    "decoded_frames": 3455,
+    "matched_marker_transitions": 30,
+    "expected_marker_transitions": 30,
+    "viewed_builder_sheets": 9,
+    "expected_builder_sheets": 9,
+    "viewed_independently_extracted_mp4_frames": 6,
+    "fresh_browser_cases": 0,
+    "fresh_application_test_runs": 0
+  },
+  "limits": [
+    "Source WebM fetch returned SHA metadata but empty base64 payload; no original-WebM decode claimed.",
+    "Metric PNG inputs and full raw probe sample arrays not published; exact source-video/lossless metrics remain attributed to Claude.",
+    "Seven builder clips inspected, not independently rerendered; SwiftShader-only evidence; inherited gates remain."
+  ]
+}

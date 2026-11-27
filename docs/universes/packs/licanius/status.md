@@ -1,8 +1,8 @@
 stage: research-ready
-owner: claude
-blocked-on: none
-next-action: Claude builds pack/licanius on the shared EC-1..EC-3 engine work after hierarchy and narnia, when a WIP slot frees
-updated: 2026-11-07T01:48Z
+owner: mckay
+blocked-on: mckay
+next-action: Mckay merges the approved release PRs per D09 (PR #39/#33 free WIP slots: 5 active vs limit 2); then Claude takes ownership back and builds pack/licanius third (after hierarchy and narnia) per research-review.md.
+updated: 2026-11-11T00:52Z
 idle-runs: 0
 note: research-review.md saved: LR-01/LR-02 adopted, L2-01..05 and all Known gaps dispositioned, 0 contradictions in 29/29 rows. Engine fit = hierarchy EC-1..EC-3. Queue order for builds: hierarchy, narnia, licanius.
 
@@ -26,3 +26,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 
 - 2026-11-07T01:18Z: Independent audit review saved and reread at 6b0d6d581c3a2d4fe62ec9982aab0262b60f7838 (research 9f6ea35f; sources 9b3468eb). Checked 29/29 records (13 places, 7 events, 3 partial journeys, 6 codex); 2 Low findings affecting three records; 2/10 independent second-source checks complete, 0/3 full novels. Handed research-ready/claude for bounded nonspatial seed review with correction overlay and Known gaps under R3/R4. No code, merge, deployment, canon sign-off or release approval.
 - 2026-11-07T01:48Z: Claude research review saved (research-review.md) against research 9f6ea35 and independent-review 6b0d6d5: LR-01/LR-02 adopted, all addendum items and Known gaps dispositioned, no contradictions; build waits on WIP. Stage unchanged (research-ready/claude).
+- 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.

@@ -1,0 +1,921 @@
+{
+  "scope": "13 key-4 event slots, five base sites, Roshar parent prose/metadata (geometry omitted); scene IDs only",
+  "branches": [
+    {
+      "pr": 48,
+      "head": "fccfe2c7023b93a91b52df1f812a17f0e94e3ed3",
+      "blob": "0d1dddaec48658936ab7a99225a9b089837a1f94",
+      "events": [
+        {
+          "id": "e17",
+          "record": {
+            "id": "e17",
+            "book": 4,
+            "world": "roshar",
+            "site": "kholinar",
+            "title": "The assassin in white",
+            "text": "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge."
+          }
+        },
+        {
+          "id": "e18",
+          "record": {
+            "id": "e18",
+            "book": 4,
+            "world": "roshar",
+            "site": "shatteredplains",
+            "title": "Bridge Four",
+            "text": "Kaladin, a surgeon’s son turned soldier turned slave, carries bridges in the plateau runs and keeps his crew alive."
+          }
+        },
+        {
+          "id": "e19",
+          "record": {
+            "id": "e19",
+            "book": 4,
+            "world": "roshar",
+            "site": "kharbranth",
+            "title": "Jasnah’s ward",
+            "text": "Shallan Davar talks her way into Jasnah Kholin’s service, planning to steal her Soulcaster."
+          }
+        },
+        {
+          "id": "e20",
+          "record": {
+            "id": "e20",
+            "book": 4,
+            "world": "roshar",
+            "site": "tower",
+            "title": "Battle of the Tower",
+            "text": "Abandoned by Sadeas, Dalinar’s army is saved when Kaladin leads his bridgemen back."
+          }
+        },
+        {
+          "id": "e21",
+          "record": {
+            "id": "e21",
+            "book": 4,
+            "world": "roshar",
+            "site": "shatteredplains",
+            "title": "The visions",
+            "text": "In the storms Dalinar sees the past and hears a voice that admits it is dying."
+          }
+        },
+        {
+          "id": "e79",
+          "record": null
+        },
+        {
+          "id": "e80",
+          "record": null
+        },
+        {
+          "id": "e81",
+          "record": null
+        },
+        {
+          "id": "e82",
+          "record": null
+        },
+        {
+          "id": "e83",
+          "record": null
+        },
+        {
+          "id": "e84",
+          "record": null
+        },
+        {
+          "id": "e85",
+          "record": null
+        },
+        {
+          "id": "e86",
+          "record": null
+        }
+      ],
+      "sites": [
+        {
+          "record": {
+            "id": "shatteredplains",
+            "name": "The Shattered Plains",
+            "lat": -12,
+            "lon": 58,
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "warcamps",
+            "name": "The warcamps",
+            "lat": -11.5,
+            "lon": 55.5,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "tower",
+            "name": "The Tower",
+            "lat": -10.5,
+            "lon": 61,
+            "books": [
+              4
+            ],
+            "desc": "A huge plateau where Sadeas abandons Dalinar’s army and Bridge Four turns back to save it."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "kholinar",
+            "name": "Kholinar",
+            "lat": 13,
+            "lon": 35,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "kharbranth",
+            "name": "Kharbranth",
+            "lat": -27,
+            "lon": 8,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian."
+          },
+          "landmarkIds": []
+        }
+      ],
+      "parent": {
+        "id": "roshar",
+        "name": "Roshar",
+        "realms": {
+          "cognitive": {
+            "name": "Shadesmar",
+            "style": "beads",
+            "c1": "#2e2460",
+            "c2": "#c8b8ff",
+            "c3": "#15121c",
+            "blurb": "Roshar’s subastral, the best known. Where Roshar has land there is an ocean of glass beads, each the soul of an object; where it has seas there is dark, obsidian-like ground. Spren live here openly, in cities such as Celebrant and the honorspren fortress of Lasting Integrity, and trade in Stormlight. People show as candle-like flames."
+          }
+        },
+        "group": "rosharan",
+        "books": [
+          4,
+          5,
+          7,
+          8,
+          9,
+          12
+        ],
+        "first": 4,
+        "major": true,
+        "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+        "star": {
+          "name": "Roshar’s sun",
+          "col": "#f4f6ff"
+        },
+        "distText": "System drawn enlarged; planet order from the system chart",
+        "hero": "shatteredplains",
+        "view": 4.2,
+        "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+        "short": "The storm world of the Stormlight Archive.",
+        "eras": {
+          "5": {
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"
+          },
+          "8": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          },
+          "12": {
+            "status": "Retribution’s world · cut off in slowed time",
+            "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Only Azir is spared the storm.",
+            "gfx": {
+              "clouds": 0.7,
+              "cloudCol": "#4a3540",
+              "atmo": "#c04a48",
+              "lights": 0.15
+            }
+          }
+        },
+        "facts": [
+          [
+            "Order",
+            "2nd from the sun"
+          ],
+          [
+            "Shards",
+            "Honor, Cultivation, Odium"
+          ],
+          [
+            "Moons",
+            "Salas, Nomon, Mishim (a fourth broke up long ago)"
+          ],
+          [
+            "Gravity",
+            "About 0.7 g; no axial tilt"
+          ],
+          [
+            "Day",
+            "20 hours; about 500 days a year"
+          ]
+        ],
+        "moons": [
+          {
+            "name": "Salas",
+            "size": 0.14,
+            "dist": 2.7,
+            "speed": 0.06
+          },
+          {
+            "name": "Nomon",
+            "size": 0.2,
+            "dist": 3.5,
+            "speed": 0.045
+          },
+          {
+            "name": "Mishim",
+            "size": 0.12,
+            "dist": 4.3,
+            "speed": 0.035
+          }
+        ]
+      }
+    },
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "events": [
+        {
+          "id": "e17",
+          "record": {
+            "id": "e17",
+            "book": 4,
+            "world": "roshar",
+            "site": "kholinar",
+            "title": "The assassin in white",
+            "text": "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge."
+          }
+        },
+        {
+          "id": "e18",
+          "record": {
+            "id": "e18",
+            "book": 4,
+            "world": "roshar",
+            "site": "shatteredplains",
+            "title": "Bridge Four",
+            "text": "Kaladin, a surgeon’s son turned soldier turned slave, carries bridges in the plateau runs and keeps his crew alive."
+          }
+        },
+        {
+          "id": "e19",
+          "record": {
+            "id": "e19",
+            "book": 4,
+            "world": "roshar",
+            "site": "kharbranth",
+            "title": "Jasnah’s ward",
+            "text": "Shallan Davar talks her way into Jasnah Kholin’s service, planning to steal her Soulcaster."
+          }
+        },
+        {
+          "id": "e20",
+          "record": {
+            "id": "e20",
+            "book": 4,
+            "world": "roshar",
+            "site": "tower",
+            "title": "Battle of the Tower",
+            "text": "Abandoned by Sadeas, Dalinar’s army is saved when Kaladin leads his bridgemen back."
+          }
+        },
+        {
+          "id": "e21",
+          "record": {
+            "id": "e21",
+            "book": 4,
+            "world": "roshar",
+            "site": "shatteredplains",
+            "title": "The visions",
+            "text": "In the storms Dalinar sees the past and hears a voice that admits it is dying."
+          }
+        },
+        {
+          "id": "e79",
+          "record": null
+        },
+        {
+          "id": "e80",
+          "record": null
+        },
+        {
+          "id": "e81",
+          "record": null
+        },
+        {
+          "id": "e82",
+          "record": null
+        },
+        {
+          "id": "e83",
+          "record": null
+        },
+        {
+          "id": "e84",
+          "record": null
+        },
+        {
+          "id": "e85",
+          "record": null
+        },
+        {
+          "id": "e86",
+          "record": null
+        }
+      ],
+      "sites": [
+        {
+          "record": {
+            "id": "shatteredplains",
+            "name": "The Shattered Plains",
+            "lat": -12,
+            "lon": 58,
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "warcamps",
+            "name": "The warcamps",
+            "lat": -11.5,
+            "lon": 55.5,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "tower",
+            "name": "The Tower",
+            "lat": -10.5,
+            "lon": 61,
+            "books": [
+              4
+            ],
+            "desc": "A huge plateau where Sadeas abandons Dalinar’s army and Bridge Four turns back to save it."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "kholinar",
+            "name": "Kholinar",
+            "lat": 13,
+            "lon": 35,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat."
+          },
+          "landmarkIds": []
+        },
+        {
+          "record": {
+            "id": "kharbranth",
+            "name": "Kharbranth",
+            "lat": -27,
+            "lon": 8,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian."
+          },
+          "landmarkIds": []
+        }
+      ],
+      "parent": {
+        "id": "roshar",
+        "name": "Roshar",
+        "realms": {
+          "cognitive": {
+            "name": "Shadesmar",
+            "style": "beads",
+            "c1": "#2e2460",
+            "c2": "#c8b8ff",
+            "c3": "#15121c",
+            "blurb": "Roshar’s subastral, the best known. Where Roshar has land there is an ocean of glass beads, each the soul of an object; where it has seas there is dark, obsidian-like ground. Spren live here openly, in cities such as Celebrant and the honorspren fortress of Lasting Integrity, and trade in Stormlight. People show as candle-like flames."
+          }
+        },
+        "group": "rosharan",
+        "books": [
+          4,
+          5,
+          7,
+          8,
+          9,
+          12
+        ],
+        "first": 4,
+        "major": true,
+        "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+        "star": {
+          "name": "Roshar’s sun",
+          "col": "#f4f6ff"
+        },
+        "distText": "System drawn enlarged; planet order from the system chart",
+        "hero": "shatteredplains",
+        "view": 4.2,
+        "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+        "short": "The storm world of the Stormlight Archive.",
+        "eras": {
+          "5": {
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"
+          },
+          "8": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          },
+          "12": {
+            "status": "Retribution’s world · cut off in slowed time",
+            "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule. Provisional account based on the Coppermind wiki; not independently checked against the book.",
+            "gfx": {
+              "clouds": 0.7,
+              "cloudCol": "#4a3540",
+              "atmo": "#c04a48",
+              "lights": 0.15
+            }
+          }
+        },
+        "facts": [
+          [
+            "Order",
+            "2nd from the sun"
+          ],
+          [
+            "Shards",
+            "Honor, Cultivation, Odium"
+          ],
+          [
+            "Moons",
+            "Salas, Nomon, Mishim (a fourth broke up long ago)"
+          ],
+          [
+            "Gravity",
+            "About 0.7 g; no axial tilt"
+          ],
+          [
+            "Day",
+            "20 hours; about 500 days a year"
+          ]
+        ],
+        "moons": [
+          {
+            "name": "Salas",
+            "size": 0.14,
+            "dist": 2.7,
+            "speed": 0.06
+          },
+          {
+            "name": "Nomon",
+            "size": 0.2,
+            "dist": 3.5,
+            "speed": 0.045
+          },
+          {
+            "name": "Mishim",
+            "size": 0.12,
+            "dist": 4.3,
+            "speed": 0.035
+          }
+        ]
+      }
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "events": [
+        {
+          "id": "e17",
+          "record": {
+            "id": "e17",
+            "book": 4,
+            "world": "roshar",
+            "site": "kholinar",
+            "lm": "palace",
+            "title": "The assassin in white",
+            "text": "Szeth kills King Gavilar in Kholinar on the night of the treaty feast."
+          }
+        },
+        {
+          "id": "e18",
+          "record": {
+            "id": "e18",
+            "book": 4,
+            "world": "roshar",
+            "site": "shatteredplains",
+            "lm": "plateau",
+            "fx": "battle",
+            "title": "Bridge Four",
+            "text": "Kaladin, a surgeon’s son turned soldier turned slave, carries bridges in the plateau runs and keeps his crew alive."
+          }
+        },
+        {
+          "id": "e19",
+          "record": {
+            "id": "e19",
+            "book": 4,
+            "world": "roshar",
+            "site": "kharbranth",
+            "lm": "palanaeum",
+            "title": "Jasnah’s ward",
+            "text": "Shallan Davar talks her way into Jasnah Kholin’s service, planning to steal her Soulcaster."
+          }
+        },
+        {
+          "id": "e20",
+          "record": {
+            "id": "e20",
+            "book": 4,
+            "world": "roshar",
+            "site": "tower",
+            "lm": "plateau",
+            "fx": "battle",
+            "title": "Battle of the Tower",
+            "text": "Abandoned by Sadeas, Dalinar’s army is saved when Kaladin leads his bridgemen back."
+          }
+        },
+        {
+          "id": "e21",
+          "record": {
+            "id": "e21",
+            "book": 4,
+            "world": "roshar",
+            "site": "warcamps",
+            "lm": "kholin",
+            "fx": "storm",
+            "title": "The visions",
+            "text": "In the storms Dalinar sees the past and hears a voice that admits it is dying."
+          }
+        },
+        {
+          "id": "e79",
+          "record": {
+            "id": "e79",
+            "book": 4,
+            "world": "roshar",
+            "site": "purelake",
+            "lm": "fuabra",
+            "title": "Three foreigners",
+            "text": "The fisherman Ishikk is paid by three odd outsiders to search the Purelake for a man who sounds very like Wit. They find nothing."
+          }
+        },
+        {
+          "id": "e80",
+          "record": {
+            "id": "e80",
+            "book": 4,
+            "world": "roshar",
+            "site": "kasitor",
+            "lm": "jail",
+            "title": "Axies the Collector",
+            "text": "A scholar who collects sightings of spren gets drunk, robbed and jailed in Kasitor."
+          }
+        },
+        {
+          "id": "e81",
+          "record": {
+            "id": "e81",
+            "book": 4,
+            "world": "roshar",
+            "site": "vedenar",
+            "lm": "palace",
+            "title": "The trap at Vedenar",
+            "text": "The king of Jah Keved sets a trap for the Assassin in White at a feast. Szeth kills him anyway."
+          }
+        },
+        {
+          "id": "e82",
+          "record": {
+            "id": "e82",
+            "book": 4,
+            "world": "roshar",
+            "site": "shatteredplains",
+            "lm": "honorchasm",
+            "title": "At the Honor Chasm",
+            "text": "Close to giving up, Kaladin goes to the chasm where bridgemen end their lives. Syl turns him back to try once more."
+          }
+        },
+        {
+          "id": "e83",
+          "record": {
+            "id": "e83",
+            "book": 4,
+            "world": "roshar",
+            "site": "warcamps",
+            "lm": "barrack",
+            "fx": "storm",
+            "title": "Strung up for the storm",
+            "text": "Kaladin is tied to the outside of the barrack and left to a highstorm. To everyone’s shock he is alive in the morning."
+          }
+        },
+        {
+          "id": "e84",
+          "record": {
+            "id": "e84",
+            "book": 4,
+            "world": "roshar",
+            "site": "kharbranth",
+            "lm": "alley",
+            "title": "Jasnah in the alley",
+            "text": "Jasnah lets thugs follow her into a dark alley and destroys them with her Soulcaster while Shallan watches."
+          }
+        },
+        {
+          "id": "e85",
+          "record": {
+            "id": "e85",
+            "book": 4,
+            "world": "roshar",
+            "site": "shatteredplains",
+            "lm": "chasms",
+            "title": "Spears in the chasms",
+            "text": "Sent down to scavenge the dead, Kaladin secretly teaches Bridge Four to fight with spears."
+          }
+        },
+        {
+          "id": "e86",
+          "record": {
+            "id": "e86",
+            "book": 4,
+            "world": "roshar",
+            "site": "kharbranth",
+            "lm": "conclave",
+            "title": "Szeth’s true master",
+            "text": "The gentle King Taravangian reveals that he holds Szeth’s oathstone, and sends him to kill Dalinar."
+          }
+        }
+      ],
+      "sites": [
+        {
+          "record": {
+            "id": "shatteredplains",
+            "name": "The Shattered Plains",
+            "lat": -12,
+            "lon": 58,
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave."
+          },
+          "landmarkIds": [
+            "plateau",
+            "chasms",
+            "honorchasm",
+            "eastedge"
+          ]
+        },
+        {
+          "record": {
+            "id": "warcamps",
+            "name": "The warcamps",
+            "lat": -11.5,
+            "lon": 55.5,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial."
+          },
+          "landmarkIds": [
+            "kholin",
+            "sadeas",
+            "barrack",
+            "pinnacle",
+            "basin",
+            "arena",
+            "sebarial",
+            "market"
+          ]
+        },
+        {
+          "record": {
+            "id": "tower",
+            "name": "The Tower",
+            "lat": -10.5,
+            "lon": 61,
+            "books": [
+              4
+            ],
+            "desc": "A huge plateau where Sadeas abandons Dalinar’s army and Bridge Four turns back to save it."
+          },
+          "landmarkIds": [
+            "plateau"
+          ]
+        },
+        {
+          "record": {
+            "id": "kholinar",
+            "name": "Kholinar",
+            "lat": 13,
+            "lon": 35,
+            "books": [
+              4,
+              8,
+              9
+            ],
+            "desc": "Alethkar’s capital, built among storm-carved rock fins. Gavilar was murdered in his palace here, and the city falls to the singers in Oathbringer. Its Oathgate was corrupted by the Unmade Sja-anat."
+          },
+          "landmarkIds": [
+            "palace",
+            "windblades",
+            "wall",
+            "oathgate",
+            "yokska",
+            "guard"
+          ]
+        },
+        {
+          "record": {
+            "id": "kharbranth",
+            "name": "Kharbranth",
+            "lat": -27,
+            "lon": 8,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian."
+          },
+          "landmarkIds": [
+            "conclave",
+            "palanaeum",
+            "ralinsa",
+            "harbour",
+            "alley",
+            "hospital",
+            "bells"
+          ]
+        }
+      ],
+      "parent": {
+        "id": "roshar",
+        "name": "Roshar",
+        "realms": {
+          "cognitive": {
+            "name": "Shadesmar",
+            "style": "beads",
+            "c1": "#2e2460",
+            "c2": "#c8b8ff",
+            "c3": "#15121c",
+            "blurb": "Roshar’s subastral, the best known. Where Roshar has land there is an ocean of glass beads, each the soul of an object; where it has seas there is dark, obsidian-like ground. Spren live here openly, in cities such as Celebrant and the honorspren fortress of Lasting Integrity, and trade in Stormlight. People show as candle-like flames."
+          }
+        },
+        "group": "rosharan",
+        "books": [
+          4,
+          5,
+          7,
+          8,
+          9,
+          12
+        ],
+        "first": 4,
+        "major": true,
+        "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+        "star": {
+          "name": "Roshar’s sun",
+          "col": "#f4f6ff"
+        },
+        "distText": "System drawn enlarged; planet order from the system chart",
+        "hero": "shatteredplains",
+        "view": 4.2,
+        "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+        "short": "The storm world of the Stormlight Archive.",
+        "eras": {
+          "5": {
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium · the Everstorm"
+          },
+          "8": {
+            "blurb": "A world of stone and wind scoured by highstorms from the east, and now by the Everstorm blowing the other way. The Knights Radiant have returned, the singers have woken, and Odium’s Fused are back from Braize. Dalinar Kholin tries to hold a coalition of nations together through the True Desolation."
+          },
+          "12": {
+            "status": "Retribution’s world · cut off in slowed time",
+            "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule.",
+            "gfx": {
+              "clouds": 0.7,
+              "cloudCol": "#4a3540",
+              "atmo": "#c04a48",
+              "lights": 0.15
+            }
+          }
+        },
+        "facts": [
+          [
+            "Order",
+            "2nd from the sun"
+          ],
+          [
+            "Shards",
+            "Honor, Cultivation, Odium"
+          ],
+          [
+            "Moons",
+            "Salas, Nomon, Mishim (a fourth broke up long ago)"
+          ],
+          [
+            "Gravity",
+            "About 0.7 g; no axial tilt"
+          ],
+          [
+            "Day",
+            "20 hours; about 500 days a year"
+          ]
+        ],
+        "moons": [
+          {
+            "name": "Salas",
+            "size": 0.14,
+            "dist": 2.7,
+            "speed": 0.06
+          },
+          {
+            "name": "Nomon",
+            "size": 0.2,
+            "dist": 3.5,
+            "speed": 0.045
+          },
+          {
+            "name": "Mishim",
+            "size": 0.12,
+            "dist": 4.3,
+            "speed": 0.035
+          }
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "inputHashes": {
+      "matched": 3,
+      "total": 3
+    },
+    "recordSlots": {
+      "inspected": 57,
+      "total": 57,
+      "present": 41,
+      "absent": 16
+    },
+    "completeWorksApproved": 0,
+    "fullWorkLedger": 33
+  }
+}

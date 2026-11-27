@@ -1,0 +1,28 @@
+# CBR-02 residual return — b965d17
+
+Claude, 2026-11-10 UTC. Draft PR #48, `feature/cosmere-reading-state`, exact head **b965d1726c48288d2b91016ac173db1190811e70**; parent (reviewed) **6d36f0c4afc2c2c2c9f7cbf860226112338eb235**. Scope: only the two CBR-02 residuals in [implementation-review-6d36f0c.md](implementation-review-6d36f0c.md). CBR-01/03 code untouched.
+
+## Fixes (3 files)
+
+1. **Base graphics** (`public/atlas/engine.js`). `gfxFor` now starts from the base `gfx` only when the world's `gates.gfx` passes (per-work modes; legacy/All unchanged). Otherwise it starts from a neutral grey rocky recipe `{type:"barren", pal:[greys], rough:.6, sea:0, atmoK:0}`, so the surface builder and its cache key never receive the protected map. Era `gfx` overrides already required the world's `gates.gfx` (eraFieldOk), so they cannot paint over a hidden base. Direct base consumers now go through a new `baseGfx(w)` (empty → neutral): the world-list swatch (was `w.gfx.sw` / `w.gfx.pal[3]`) and the surface camera distance (`type==="gas"`). Remaining direct reads are the load-time default (`if(!w.gfx)w.gfx={type:"terran"}`) and `noSurface` (`type==="star"`: structural "nothing to land on", documented as not a spoiler carrier). A regression asserts no other direct `w.gfx` read exists.
+2. **Group names** — documented group record policy (`grpChain`): a group without `gate` is a public container record (its name only ever appears beside its visible worlds); a present `gate` is compiled (invalid → hidden). `GROUP_NAME` now evaluates the base name with `fOk(gr,"name",grpChain(gr))`. For group eras, `eraFieldOk` uses `grpChain(o)` + `gateOf(era,k)` — the era's own `gate` when present (an invalid present gate is not rescued by the bucket), else bucket k — plus the group's and the era's `gates.name`. A hidden group name is omitted from eyebrows; the world-list heading and breadcrumbs show the neutral "Unrevealed group". The fail-closed / field-gate contract is unchanged: the only new default is that an ungated group container is public, which matches its existing visibility (shown only with a visible member world).
+3. `docs/atlas/PACK_FORMAT.md`: "Base graphics" and "Groups" bullets in the per-work reading section.
+
+## Evidence
+
+- `pnpm format && pnpm check`: build OK, **145/145 units** (143 + 2 new test groups), check:dist **115 files OK**. Focused `node --test tests/atlas-reading*.test.ts`: **27/27**.
+- New actual-function regressions (`tests/atlas-reading-engine.test.ts`, extracted real `gfxFor`/`baseGfx`/`GROUP_NAME`/`eraFieldOk`/`grpChain` with the real reading helper):
+  - base gfx: unmet, invalid and invalid-shape field gates → neutral surface, no protected map or colours, neutral swatch; public / met / absent-field (inherits visible world) / legacy controls keep the base; a hidden base with a `public` era gfx field stays neutral; visible era 1 + hidden era 2 keeps era 1, both read → era 2; no other direct base-gfx read in the engine.
+  - groups: unmet / invalid base-name gates → omitted; public / met / ungated controls; unmet and invalid group record gates hide the name; unmet / invalid explicit era record gates keep the base even with bucket 1 read; unmet era field gate; met era record; absent era gate inherits bucket 1 (read → era, unread → base); hidden group ancestor and hidden base name hide era names; legacy numeric rule; neutral labels wired in list/crumb.
+- Reviewer selector probe rerun at head [reviewer-fields-rerun-b965d17.json](reviewer-fields-rerun-b965d17.json): **12/14**; the two remaining "fails" are `gfx base unmet/invalid field`, which return the explicit neutral fallback rather than `{}` (the review allows a neutral production fallback). All six group expectations now pass.
+- **Rendered probe** [cbr02-residual-probe.mjs](cbr02-residual-probe.mjs) — real Cosmere pack + in-memory fixture registry (as cbr-fix-probe.mjs), 1440×900 and 390×844 (mobile/touch), test-only `window.__HD=256`. Head [cbr02-residual-output-b965d17.jsonl](cbr02-residual-output-b965d17.jsonl): **80/80**, 0 page errors.
+  - Graphics assertion distinguishes the resource: scadrial's base gfx gets marker keys (`cbrMarker:"CBR2-SECRET-GFX"`, swatch `#ab12cd`); after an actual `descend`, `PL.key` (world id + JSON of the exact gfx given to the surface builder) contains the marker in the met / public / absent controls and is `"type":"barren"` without the marker in the unmet / invalid cases; the list swatch is `#889` instead of `#ab12cd`.
+  - Group text: `document.body.textContent` (includes collapsed sheets and labels) never contains the protected base / era group name in the unmet / invalid cases, shows "Unrevealed group" when the base is hidden and keeps the earlier visible base name when only the era is hidden; met / ungated controls show them.
+- **Negative control at parent 6d36f0c** (same probe) [cbr02-residual-negative-6d36f0c.jsonl](cbr02-residual-negative-6d36f0c.jsonl): **24 of 80 fail**, exactly the protected gfx (surface + swatch) and group base / era-record cases at both viewports; all controls pass.
+- `pnpm test:pages` at head: **24/24** (12 pages × 2 viewports). No new screenshots: the graphics evidence is the surface cache key, not an image.
+
+## Limits
+
+Builder SwiftShader runs, fixture registry and synthetic gates — not real-book mappings; 0/33 full-book audits approved. `gc.label` (a pack-authored crumb override) is not gated and must not carry spoilers (not documented yet; flagged here). Key-2/key-12 mapping continuation remains queued behind infrastructure acceptance.
+
+Handoff: implementation-review / chatgpt at b965d17.

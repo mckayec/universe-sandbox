@@ -1,0 +1,21 @@
+FAIL 1440x900 OT+B4+B6+TLM realm switch cognitive: old era-10 status absent
+FAIL 1440x900 OT+B4+B6+TLM realm switch cognitive: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (Harmony’s world · under threat from outside)
+FAIL 1440x900 OT+B4+B6+TLM realm switch physical: old era-10 status absent
+FAIL 1440x900 OT+B4+B6+TLM realm switch physical: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (Harmony’s world · under threat from outside)
+FAIL 1440x900 OT+TLM (no bucket 6): old era-10 status absent
+FAIL 1440x900 OT+TLM (no bucket 6): era-10 status (Harmony’s world · under threat from outside)
+FAIL 1440x900 legacy book=10: old era-10 status absent
+FAIL 1440x900 legacy book=10: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (Harmony’s world · under threat from outside)
+FAIL 1440x900 All: old era-10 status absent
+FAIL 1440x900 All: status chip "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension" (The Final Empire → Harmony’s world · under threat from outside)
+FAIL 390x844 OT+B4+B6+TLM realm switch cognitive: old era-10 status absent
+FAIL 390x844 OT+B4+B6+TLM realm switch cognitive: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (Harmony’s world · under threat from outside)
+FAIL 390x844 OT+B4+B6+TLM realm switch physical: old era-10 status absent
+FAIL 390x844 OT+B4+B6+TLM realm switch physical: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (Harmony’s world · under threat from outside)
+FAIL 390x844 OT+TLM (no bucket 6): old era-10 status absent
+FAIL 390x844 OT+TLM (no bucket 6): era-10 status (Harmony’s world · under threat from outside)
+FAIL 390x844 legacy book=10: old era-10 status absent
+FAIL 390x844 legacy book=10: status chip "The Lost Metal · Elendel and the Outer Cities in tension" (Harmony’s world · under threat from outside)
+FAIL 390x844 All: old era-10 status absent
+FAIL 390x844 All: status chip "The Final Empire → The Lost Metal · Elendel and the Outer Cities in tension" (The Final Empire → Harmony’s world · under threat from outside)
+{"pass":154,"fail":20}

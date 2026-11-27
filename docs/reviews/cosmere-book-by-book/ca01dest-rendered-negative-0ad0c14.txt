@@ -1,0 +1,91 @@
+FAIL 1440x900 All: no h-nomad link object (10 built)
+FAIL 1440x900 All: no Canticle-Komashi link object (h-nomad)
+FAIL 1440x900 All: removed clause absent from page
+ok   1440x900 All: canticle selected (canticle)
+FAIL 1440x900 All: eras[12] blurb = new text (A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol.)
+ok   1440x900 All: blurb box visible ({"w":370,"h":153.375,"l":1033,"r":1403,"t":262,"b":415.375,"vw":1440,"vh":900})
+ok   1440x900 All: no errors 
+FAIL 1440x900 legacy12: no h-nomad link object (10 built)
+FAIL 1440x900 legacy12: no Canticle-Komashi link object (h-nomad)
+FAIL 1440x900 legacy12: removed clause absent from page
+ok   1440x900 legacy12: canticle selected (canticle)
+FAIL 1440x900 legacy12: eras[12] blurb = new text (A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol.)
+ok   1440x900 legacy12: blurb box visible ({"w":370,"h":153.375,"l":1033,"r":1403,"t":262,"b":415.375,"vw":1440,"vh":900})
+ok   1440x900 legacy12: no errors 
+FAIL 1440x900 all works: no h-nomad link object (10 built)
+FAIL 1440x900 all works: no Canticle-Komashi link object (h-nomad)
+FAIL 1440x900 all works: removed clause absent from page
+ok   1440x900 all works: canticle selected (canticle)
+FAIL 1440x900 all works: eras[12] blurb = new text (A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol.)
+ok   1440x900 all works: blurb box visible ({"w":370,"h":153.375,"l":1033,"r":1403,"t":262,"b":415.375,"vw":1440,"vh":900})
+ok   1440x900 all works: no errors 
+FAIL 1440x900 legacy11: no h-nomad link object (10 built)
+FAIL 1440x900 legacy11: no Canticle-Komashi link object (h-nomad)
+ok   1440x900 legacy11: removed clause absent from page
+ok   1440x900 legacy11: no errors 
+FAIL 1440x900 bucket11: no h-nomad link object (10 built)
+FAIL 1440x900 bucket11: no Canticle-Komashi link object (h-nomad)
+ok   1440x900 bucket11: removed clause absent from page
+ok   1440x900 bucket11: no errors 
+FAIL 1440x900 legacy10: no h-nomad link object (10 built)
+FAIL 1440x900 legacy10: no Canticle-Komashi link object (h-nomad)
+ok   1440x900 legacy10: removed clause absent from page
+ok   1440x900 legacy10: no errors 
+FAIL 1440x900 Sunlit only: no h-nomad link object (10 built)
+FAIL 1440x900 Sunlit only: no Canticle-Komashi link object (h-nomad)
+ok   1440x900 Sunlit only: removed clause absent from page
+ok   1440x900 Sunlit only: no errors 
+FAIL 1440x900 bucket11 minus Sunlit: no h-nomad link object (10 built)
+FAIL 1440x900 bucket11 minus Sunlit: no Canticle-Komashi link object (h-nomad)
+ok   1440x900 bucket11 minus Sunlit: removed clause absent from page
+ok   1440x900 bucket11 minus Sunlit: no errors 
+FAIL 1440x900 all works minus Sunlit: no h-nomad link object (10 built)
+FAIL 1440x900 all works minus Sunlit: no Canticle-Komashi link object (h-nomad)
+ok   1440x900 all works minus Sunlit: removed clause absent from page
+ok   1440x900 all works minus Sunlit: no errors 
+FAIL 390x844 All: no h-nomad link object (10 built)
+FAIL 390x844 All: no Canticle-Komashi link object (h-nomad)
+FAIL 390x844 All: removed clause absent from page
+ok   390x844 All: canticle selected (canticle)
+FAIL 390x844 All: eras[12] blurb = new text (A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol.)
+ok   390x844 All: blurb box visible ({"w":336,"h":153.375,"l":27,"r":363,"t":412.734375,"b":566.109375,"vw":390,"vh":844})
+ok   390x844 All: no errors 
+FAIL 390x844 legacy12: no h-nomad link object (10 built)
+FAIL 390x844 legacy12: no Canticle-Komashi link object (h-nomad)
+FAIL 390x844 legacy12: removed clause absent from page
+ok   390x844 legacy12: canticle selected (canticle)
+FAIL 390x844 legacy12: eras[12] blurb = new text (A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol.)
+ok   390x844 legacy12: blurb box visible ({"w":336,"h":153.375,"l":27,"r":363,"t":412.734375,"b":566.109375,"vw":390,"vh":844})
+ok   390x844 legacy12: no errors 
+FAIL 390x844 all works: no h-nomad link object (10 built)
+FAIL 390x844 all works: no Canticle-Komashi link object (h-nomad)
+FAIL 390x844 all works: removed clause absent from page
+ok   390x844 all works: canticle selected (canticle)
+FAIL 390x844 all works: eras[12] blurb = new text (A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol.)
+ok   390x844 all works: blurb box visible ({"w":336,"h":153.375,"l":27,"r":363,"t":412.734375,"b":566.109375,"vw":390,"vh":844})
+ok   390x844 all works: no errors 
+FAIL 390x844 legacy11: no h-nomad link object (10 built)
+FAIL 390x844 legacy11: no Canticle-Komashi link object (h-nomad)
+ok   390x844 legacy11: removed clause absent from page
+ok   390x844 legacy11: no errors 
+FAIL 390x844 bucket11: no h-nomad link object (10 built)
+FAIL 390x844 bucket11: no Canticle-Komashi link object (h-nomad)
+ok   390x844 bucket11: removed clause absent from page
+ok   390x844 bucket11: no errors 
+FAIL 390x844 legacy10: no h-nomad link object (10 built)
+FAIL 390x844 legacy10: no Canticle-Komashi link object (h-nomad)
+ok   390x844 legacy10: removed clause absent from page
+ok   390x844 legacy10: no errors 
+FAIL 390x844 Sunlit only: no h-nomad link object (10 built)
+FAIL 390x844 Sunlit only: no Canticle-Komashi link object (h-nomad)
+ok   390x844 Sunlit only: removed clause absent from page
+ok   390x844 Sunlit only: no errors 
+FAIL 390x844 bucket11 minus Sunlit: no h-nomad link object (10 built)
+FAIL 390x844 bucket11 minus Sunlit: no Canticle-Komashi link object (h-nomad)
+ok   390x844 bucket11 minus Sunlit: removed clause absent from page
+ok   390x844 bucket11 minus Sunlit: no errors 
+FAIL 390x844 all works minus Sunlit: no h-nomad link object (10 built)
+FAIL 390x844 all works minus Sunlit: no Canticle-Komashi link object (h-nomad)
+ok   390x844 all works minus Sunlit: removed clause absent from page
+ok   390x844 all works minus Sunlit: no errors 
+ca01dest-probe (parent): 42/90 pass

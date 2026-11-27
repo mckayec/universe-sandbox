@@ -1,0 +1,273 @@
+{
+  "scope": "MB06 e27 plus selected overlap inventory, not exhaustive full-work audit",
+  "snapshots": [
+    {
+      "pr": 48,
+      "head": "88dc6627423a65eb117a10663b4f91551fb3cc70",
+      "sha": "a76929639d9cc848e2c52bcaa39622fde3cf239c",
+      "records": {
+        "scadrial": {
+          "id": "scadrial",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            7,
+            10,
+            12
+          ],
+          "gate": null
+        },
+        "elendel": {
+          "id": "elendel",
+          "name": "Elendel",
+          "lat": 1,
+          "lon": 0,
+          "books": [
+            6,
+            7,
+            10
+          ],
+          "desc": "Capital of the Basin, split into eight octants by canals around the Field of Rebirth, on Hammondar Bay. The equator runs close by and the prime meridian through it.",
+          "since": 6
+        },
+        "e27": {
+          "id": "e27",
+          "book": 6,
+          "world": "scadrial",
+          "site": "elendel",
+          "title": "Shadows of Self",
+          "text": "A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open."
+        },
+        "e92": null,
+        "governor": null,
+        "eastbridge": null
+      }
+    },
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "sha": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "records": {
+        "scadrial": {
+          "id": "scadrial",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            7,
+            10,
+            12
+          ],
+          "gate": null
+        },
+        "elendel": {
+          "id": "elendel",
+          "name": "Elendel",
+          "lat": 1,
+          "lon": 0,
+          "books": [
+            6,
+            7,
+            10
+          ],
+          "desc": "Capital of the Basin, split into eight octants by canals around the Field of Rebirth, on Hammondar Bay. The equator runs close by and the prime meridian through it.",
+          "since": 6
+        },
+        "e27": {
+          "id": "e27",
+          "book": 6,
+          "world": "scadrial",
+          "site": "elendel",
+          "title": "Shadows of Self",
+          "text": "A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open."
+        },
+        "e92": null,
+        "governor": null,
+        "eastbridge": null
+      }
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "sha": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "records": {
+        "scadrial": {
+          "id": "scadrial",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            7,
+            10,
+            12
+          ],
+          "gate": null
+        },
+        "elendel": {
+          "id": "elendel",
+          "name": "Elendel",
+          "lat": 1,
+          "lon": 0,
+          "books": [
+            6,
+            7,
+            10
+          ],
+          "desc": "Capital of the Basin, split into eight octants by canals around the Field of Rebirth, on Hammondar Bay. The equator runs close by and the prime meridian through it.",
+          "since": 6,
+          "scene": {
+            "kind": "capital",
+            "arch": "industrial",
+            "size": "huge",
+            "tod": "dusk",
+            "weather": "mist",
+            "coast": "s",
+            "landmarks": [
+              {
+                "id": "field",
+                "name": "The Field of Rebirth",
+                "kind": "garden",
+                "at": [
+                  0,
+                  0
+                ],
+                "h": 1.2,
+                "books": [
+                  6
+                ],
+                "desc": "The park at the centre of the eight octants, with a museum and tomb. Wax gets in through a secret door in its atium chamber."
+              },
+              {
+                "id": "ladrian",
+                "name": "Ladrian mansion",
+                "kind": "house",
+                "at": [
+                  -0.4,
+                  0.35
+                ],
+                "books": [
+                  6
+                ],
+                "desc": "The near-bankrupt house Wax inherits when he comes back from the Roughs."
+              },
+              {
+                "id": "governor",
+                "name": "The governor’s mansion",
+                "kind": "palace",
+                "at": [
+                  0.35,
+                  0.4
+                ],
+                "books": [
+                  6
+                ],
+                "desc": "Bleeder breaks into the safe room here, and Wax later works out she has taken the governor’s place."
+              },
+              {
+                "id": "eastbridge",
+                "name": "Eastbridge",
+                "kind": "bridge",
+                "at": [
+                  0.7,
+                  -0.2
+                ],
+                "h": 1.4,
+                "books": [
+                  6
+                ],
+                "desc": "On the suspension tower of this bridge Wax corners Bleeder, who wears Lessie’s face."
+              },
+              {
+                "id": "village",
+                "name": "The Village",
+                "kind": "house",
+                "at": [
+                  -0.6,
+                  -0.4
+                ],
+                "books": [
+                  6
+                ],
+                "desc": "The Terris enclave where Wax’s grandmother lived."
+              },
+              {
+                "id": "statue",
+                "name": "Wayne’s statue",
+                "kind": "statue",
+                "at": [
+                  0.15,
+                  -0.55
+                ],
+                "books": [
+                  10
+                ],
+                "desc": "Raised by the city after The Lost Metal."
+              }
+            ]
+          }
+        },
+        "e27": {
+          "id": "e27",
+          "book": 6,
+          "world": "scadrial",
+          "site": "elendel",
+          "lm": "governor",
+          "title": "Shadows of Self",
+          "text": "A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open."
+        },
+        "e92": {
+          "id": "e92",
+          "book": 6,
+          "world": "scadrial",
+          "site": "elendel",
+          "lm": "eastbridge",
+          "fx": "duel",
+          "title": "Lessie’s face",
+          "text": "Wax corners the kandra Bleeder on a tower of the Eastbridge. She wears the face of Lessie, his dead wife."
+        },
+        "governor": {
+          "id": "governor",
+          "name": "The governor’s mansion",
+          "kind": "palace",
+          "at": [
+            0.35,
+            0.4
+          ],
+          "books": [
+            6
+          ],
+          "desc": "Bleeder breaks into the safe room here, and Wax later works out she has taken the governor’s place."
+        },
+        "eastbridge": {
+          "id": "eastbridge",
+          "name": "Eastbridge",
+          "kind": "bridge",
+          "at": [
+            0.7,
+            -0.2
+          ],
+          "h": 1.4,
+          "books": [
+            6
+          ],
+          "desc": "On the suspension tower of this bridge Wax corners Bleeder, who wears Lessie’s face."
+        }
+      }
+    }
+  ],
+  "proposal": {
+    "target": "events[id=e27].text",
+    "old": "A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.",
+    "proposed": "Wax investigates murders in Elendel as labor unrest grows.",
+    "implemented": false,
+    "oneFieldRoundTripRestoresWholeParsedPack": true,
+    "gatePresent": false
+  },
+  "counts": {
+    "inputHashes": "3/3",
+    "selectedRecordSlots": "18/18 (including explicit absence)",
+    "proposedTextFields": 1,
+    "remoteApplicationEdits": 0
+  }
+}

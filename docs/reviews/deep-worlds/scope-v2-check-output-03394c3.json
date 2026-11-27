@@ -1,0 +1,254 @@
+{
+  "target_head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+  "baseline": "cf25cda66e91c573c421a0f3712623db72737a3b",
+  "git_blob_hashes": "12/12",
+  "rows": "68/68",
+  "unique_operations": 68,
+  "decisions": {
+    "include (prose leaf only)": 14,
+    "exclude": 15,
+    "include": 9,
+    "include (RS3)": 1,
+    "include (RS3 Elantris reconciliation)": 13,
+    "exclude change": 1,
+    "ChatGPT choice (default exclude)": 3,
+    "undecided": 2,
+    "include omission": 10
+  },
+  "included_head_value_or_absence_checks": "47/47",
+  "included_operations": {
+    "add-landmark": 14,
+    "set": 18,
+    "remove": 2,
+    "remove-entry:Order": 1,
+    "remove-entry:Adonalsium": 1,
+    "remove-entry:Devotion and Dominion": 1,
+    "omit-record": 10
+  },
+  "virtual_construction": {
+    "copied_scene_objects": 424,
+    "final_scenes": 424,
+    "empty_scenes": 417,
+    "landmarks": 14,
+    "event_references": 256,
+    "dangling": 0,
+    "omissions_absent_and_no_matching_string_values": "10/10"
+  },
+  "whole_record_copies_with_unresolved_fields": [
+    {
+      "id": "dune/arrakis/arrakeen/residency",
+      "name": "The Residency",
+      "books": [
+        1
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h",
+        "books"
+      ]
+    },
+    {
+      "id": "foundation/trantor/commission/court",
+      "name": "The trial chamber",
+      "books": [
+        1
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h",
+        "books"
+      ]
+    },
+    {
+      "id": "sun-eater/delos/devilsrest/bluff",
+      "name": "The limestone bluff",
+      "books": null,
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h"
+      ]
+    },
+    {
+      "id": "sun-eater/delos/devilsrest/study",
+      "name": "The scholiast’s rooms",
+      "books": null,
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at"
+      ]
+    },
+    {
+      "id": "cosmere/scadrial/luthadel/venture",
+      "name": "Keep Venture",
+      "books": [
+        2
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/scadrial/luthadel/walls",
+      "name": "The city walls",
+      "books": [
+        2
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/roshar/kholinar/palace",
+      "name": "The royal palace",
+      "books": [
+        4,
+        8,
+        9
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/roshar/kholinar/windblades",
+      "name": "The windblades",
+      "books": [
+        8
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/scadrial/luthadel/channerel",
+      "name": "The Channerel",
+      "books": [
+        2
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/nalthis/ttelir/docks",
+      "name": "The docks",
+      "books": [
+        3
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/nalthis/ttelir/wall",
+      "name": "The landward wall",
+      "books": [
+        3
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "h",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/nalthis/courtofgods/arena",
+      "name": "The arena",
+      "books": [
+        3
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/nalthis/courtofgods/lawn",
+      "name": "The great lawn",
+      "books": [
+        3
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "books"
+      ]
+    },
+    {
+      "id": "cosmere/nalthis/courtofgods/enclave",
+      "name": "The Lifeless enclave",
+      "books": [
+        3
+      ],
+      "first": null,
+      "copied_keys": [
+        "id",
+        "name",
+        "kind",
+        "at",
+        "books"
+      ]
+    }
+  ],
+  "limits": "Independent data/virtual construction only. Whole landmark metadata was copied, not canon-approved. No actual R1 branch, browser, CI, new primary sources or release acceptance."
+}

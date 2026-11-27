@@ -1,0 +1,1112 @@
+{
+  "manifest": {
+    "pr24.js": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+    "pr37.js": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+    "pr48.js": "715b658363a852af635c7988ac5b5958874788bf",
+    "engine.js": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+    "reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+  },
+  "counts": {
+    "hashes": 5,
+    "types": 14,
+    "slots": 42,
+    "present": 31,
+    "absent": 11,
+    "nestedLandmarks": 14
+  },
+  "inventories": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "file": "pr24.js",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e43",
+          "value": {
+            "id": "e43",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "The tower occupied",
+            "text": "The Fused take Urithiru. Navani, a prisoner, works out the science of Light."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e44",
+          "value": {
+            "id": "e44",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "Kaladin’s Fourth Ideal",
+            "text": "Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e45",
+          "value": {
+            "id": "e45",
+            "book": 9,
+            "world": "roshar",
+            "site": "lastingintegrity",
+            "title": "Adolin’s trial",
+            "text": "Adolin asks the honorspren to judge humanity, and stands up for the dead spren of his sword."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e46",
+          "value": {
+            "id": "e46",
+            "book": 9,
+            "world": "roshar",
+            "title": "A new Odium",
+            "text": "Taravangian kills the vessel of Odium and takes up the Shard himself."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e109",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e110",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e111",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "hearthstone",
+          "value": {
+            "id": "hearthstone",
+            "name": "Hearthstone",
+            "lat": 22,
+            "lon": 40,
+            "books": [
+              4,
+              9
+            ],
+            "desc": "Kaladin’s home town beside a breakwall hill, where his father was the surgeon."
+          }
+        },
+        {
+          "type": "site",
+          "id": "urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."
+          }
+        },
+        {
+          "type": "site",
+          "id": "lastingintegrity",
+          "value": {
+            "id": "lastingintegrity",
+            "name": "Lasting Integrity",
+            "lat": -23,
+            "lon": -68,
+            "books": [
+              9
+            ],
+            "desc": "The honorspren capital, a tall roofless box of blue stone on a cliff over the Astral Banks, where each inner wall has its own gravity. Adolin stands trial here.",
+            "sea": true,
+            "realm": "cognitive"
+          }
+        },
+        {
+          "type": "parent",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/9",
+          "value": null
+        },
+        {
+          "type": "book",
+          "id": "9",
+          "value": {
+            "n": "IX",
+            "title": "Rhythm of War",
+            "y": 2020,
+            "c": "#9be07a"
+          }
+        },
+        {
+          "type": "registry",
+          "id": "rhythm-of-war",
+          "value": null
+        }
+      ]
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "file": "pr37.js",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e43",
+          "value": {
+            "id": "e43",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "lm": "pillar",
+            "title": "The tower occupied",
+            "text": "The Fused take Urithiru. Navani, a prisoner, works out the science of Light."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e44",
+          "value": {
+            "id": "e44",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "Kaladin’s Fourth Ideal",
+            "text": "Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e45",
+          "value": {
+            "id": "e45",
+            "book": 9,
+            "world": "roshar",
+            "site": "lastingintegrity",
+            "lm": "trial",
+            "title": "Adolin’s trial",
+            "text": "Adolin asks the honorspren to judge humanity, and stands up for the dead spren of his sword."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e46",
+          "value": {
+            "id": "e46",
+            "book": 9,
+            "world": "roshar",
+            "title": "A new Odium",
+            "text": "Taravangian kills the vessel of Odium and takes up the Shard himself."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e109",
+          "value": {
+            "id": "e109",
+            "book": 9,
+            "world": "roshar",
+            "site": "hearthstone",
+            "lm": "manor",
+            "fx": "duel",
+            "title": "Hearthstone",
+            "text": "Navani’s flying platform lifts the townsfolk out while Kaladin duels the Fused Leshwi. At the manor, Moash kills Roshone."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e110",
+          "value": {
+            "id": "e110",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "lm": "mercy",
+            "title": "The surgeon’s son",
+            "text": "Relieved of command, Kaladin works with his father among the tower’s wounded in mind."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e111",
+          "value": {
+            "id": "e111",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "lm": "pillar",
+            "title": "A new Bondsmith",
+            "text": "Navani bonds the Sibling, and together they drive the corruption out of the tower."
+          }
+        },
+        {
+          "type": "site",
+          "id": "hearthstone",
+          "value": {
+            "id": "hearthstone",
+            "name": "Hearthstone",
+            "lat": 22,
+            "lon": 40,
+            "books": [
+              4,
+              9
+            ],
+            "desc": "Kaladin’s home town beside a breakwall hill, where his father was the surgeon.",
+            "scene": {
+              "kind": "town",
+              "arch": "rustic",
+              "size": "small",
+              "tod": "day",
+              "weather": "clear",
+              "landmarks": [
+                {
+                  "id": "surgery",
+                  "name": "Lirin’s surgery",
+                  "kind": "house",
+                  "at": [
+                    -0.2,
+                    -0.1
+                  ],
+                  "h": 0.6,
+                  "books": [
+                    4,
+                    9
+                  ],
+                  "desc": "The surgeon’s house where Kaladin grew up learning his father’s trade."
+                },
+                {
+                  "id": "manor",
+                  "name": "Roshone’s manor",
+                  "kind": "house",
+                  "at": [
+                    0.35,
+                    0.4
+                  ],
+                  "books": [
+                    4,
+                    9
+                  ],
+                  "desc": "The citylord’s manor. Roshone’s feud with Lirin shapes Kaladin’s childhood."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates.",
+            "scene": {
+              "kind": "city",
+              "arch": "ancient",
+              "size": "large",
+              "tod": "day",
+              "weather": "snow",
+              "landmarks": [
+                {
+                  "id": "oathgates",
+                  "name": "The Oathgate platforms",
+                  "kind": "portal",
+                  "at": [
+                    0,
+                    -0.75
+                  ],
+                  "h": 1,
+                  "books": [
+                    5,
+                    8,
+                    9,
+                    12
+                  ],
+                  "desc": "Ten platforms on the plaza before the tower, each linked to an Oathgate across Roshar. Shallan’s gate from Narak brings the Alethi armies here at the end of Words of Radiance."
+                },
+                {
+                  "id": "gallery",
+                  "name": "The Gallery of Maps",
+                  "kind": "hall",
+                  "at": [
+                    0.1,
+                    0.55
+                  ],
+                  "h": 0.8,
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "A chamber near the top with a great map table, where Dalinar plans his coalition’s war."
+                },
+                {
+                  "id": "breakaway",
+                  "name": "The Breakaway",
+                  "kind": "market",
+                  "at": [
+                    -0.25,
+                    -0.25
+                  ],
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "The cavernous central market hall on the lower levels, where merchants and refugees fill the once-empty tower."
+                },
+                {
+                  "id": "corridor",
+                  "name": "The dark corridors",
+                  "kind": "cave",
+                  "at": [
+                    -0.6,
+                    0.1
+                  ],
+                  "h": 0.6,
+                  "books": [
+                    8
+                  ],
+                  "desc": "Miles of lightless, half-explored passages. Sadeas’s body is found in a corridor, and more killings follow."
+                },
+                {
+                  "id": "reshephir",
+                  "name": "Re-Shephir’s chamber",
+                  "kind": "cave",
+                  "at": [
+                    -0.4,
+                    -0.55
+                  ],
+                  "h": 0.7,
+                  "books": [
+                    8
+                  ],
+                  "desc": "A hidden ground-floor chamber where the Unmade Re-Shephir lurks. Shallan confronts her here with Lightweaving and drives her off."
+                },
+                {
+                  "id": "archive",
+                  "name": "The gem archive",
+                  "kind": "library",
+                  "at": [
+                    0.4,
+                    -0.45
+                  ],
+                  "books": [
+                    8,
+                    9
+                  ],
+                  "desc": "A room where the ancient Radiants stored their records inside gemstones."
+                },
+                {
+                  "id": "pillar",
+                  "name": "The crystal pillar",
+                  "kind": "monolith",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 1.6,
+                  "books": [
+                    9,
+                    12
+                  ],
+                  "desc": "A pillar of gemstones deep in the tower, the heart of the Sibling. Raboniel pours Voidlight into it to seize the tower; Navani later bonds the Sibling here and becomes a Bondsmith."
+                },
+                {
+                  "id": "mercy",
+                  "name": "The Devotary of Mercy",
+                  "kind": "temple",
+                  "at": [
+                    0.55,
+                    0.2
+                  ],
+                  "books": [
+                    9
+                  ],
+                  "desc": "A fourth-floor hospital for the wounded in mind, where Kaladin, retired from fighting, works with the patients."
+                },
+                {
+                  "id": "cistern",
+                  "name": "The cistern chamber",
+                  "kind": "well",
+                  "at": [
+                    0.25,
+                    -0.1
+                  ],
+                  "h": 0.6,
+                  "books": [
+                    12
+                  ],
+                  "desc": "A water chamber in the tower where Dalinar opens a perpendicularity and goes with Navani into the Spiritual Realm."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "lastingintegrity",
+          "value": {
+            "id": "lastingintegrity",
+            "name": "Lasting Integrity",
+            "lat": -23,
+            "lon": -68,
+            "books": [
+              9
+            ],
+            "desc": "The honorspren capital, a tall roofless box of blue stone on a cliff over the Astral Banks, where each inner wall has its own gravity. Adolin stands trial here.",
+            "sea": true,
+            "realm": "cognitive",
+            "scene": {
+              "kind": "fortress",
+              "arch": "alien",
+              "size": "medium",
+              "tod": "night",
+              "weather": "clear",
+              "landmarks": [
+                {
+                  "id": "walls",
+                  "name": "The walls of the box",
+                  "kind": "wall",
+                  "at": [
+                    0,
+                    0.3
+                  ],
+                  "h": 2,
+                  "books": [
+                    9
+                  ],
+                  "desc": "A tall, roofless box of blue stone. Each inner wall has its own gravity, and the honorspren live on all four."
+                },
+                {
+                  "id": "door",
+                  "name": "The door",
+                  "kind": "gate",
+                  "at": [
+                    0,
+                    -0.7
+                  ],
+                  "books": [
+                    9
+                  ],
+                  "desc": "Adolin’s party camps outside the closed fortress, waiting for the honorspren to let him in."
+                },
+                {
+                  "id": "trial",
+                  "name": "The trial ground",
+                  "kind": "plaza",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "books": [
+                    9
+                  ],
+                  "desc": "Adolin stands trial here for the betrayal of the ancient Radiants, and calls on the dead spren of his Blade as a witness."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "parent",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/9",
+          "value": null
+        },
+        {
+          "type": "book",
+          "id": "9",
+          "value": {
+            "n": "IX",
+            "title": "Rhythm of War",
+            "y": 2020,
+            "c": "#9be07a"
+          }
+        },
+        {
+          "type": "registry",
+          "id": "rhythm-of-war",
+          "value": null
+        }
+      ]
+    },
+    {
+      "pr": 48,
+      "head": "03d7a67b0a3728024a05d143abc299409911f7e3",
+      "file": "pr48.js",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e43",
+          "value": {
+            "id": "e43",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "The tower occupied",
+            "text": "The Fused take Urithiru. Navani, a prisoner, works out the science of Light."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e44",
+          "value": {
+            "id": "e44",
+            "book": 9,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "Kaladin’s Fourth Ideal",
+            "text": "Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e45",
+          "value": {
+            "id": "e45",
+            "book": 9,
+            "world": "roshar",
+            "site": "lastingintegrity",
+            "title": "Adolin’s trial",
+            "text": "Adolin asks the honorspren to judge humanity, and stands up for the dead spren of his sword."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e46",
+          "value": {
+            "id": "e46",
+            "book": 9,
+            "world": "roshar",
+            "title": "A new Odium",
+            "text": "Taravangian kills the vessel of Odium and takes up the Shard himself."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e109",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e110",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e111",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "hearthstone",
+          "value": {
+            "id": "hearthstone",
+            "name": "Hearthstone",
+            "lat": 22,
+            "lon": 40,
+            "books": [
+              4,
+              9
+            ],
+            "desc": "Kaladin’s home town beside a breakwall hill, where his father was the surgeon."
+          }
+        },
+        {
+          "type": "site",
+          "id": "urithiru",
+          "value": {
+            "id": "urithiru",
+            "name": "Urithiru",
+            "lat": -8,
+            "lon": -30,
+            "books": [
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "The ten-tiered tower city of the ancient Radiants, carved from a mountain high in the Mountains of Ur, home of the Sibling and hub of the ten Oathgates."
+          }
+        },
+        {
+          "type": "site",
+          "id": "lastingintegrity",
+          "value": {
+            "id": "lastingintegrity",
+            "name": "Lasting Integrity",
+            "lat": -23,
+            "lon": -68,
+            "books": [
+              9
+            ],
+            "desc": "The honorspren capital, a tall roofless box of blue stone on a cliff over the Astral Banks, where each inner wall has its own gravity. Adolin stands trial here.",
+            "sea": true,
+            "realm": "cognitive"
+          }
+        },
+        {
+          "type": "parent",
+          "id": "roshar",
+          "value": {
+            "id": "roshar",
+            "name": "Roshar",
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4,
+            "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+            "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+            "short": "The storm world of the Stormlight Archive.",
+            "facts": [
+              [
+                "Order",
+                "2nd from the sun"
+              ],
+              [
+                "Shards",
+                "Honor, Cultivation, Odium"
+              ],
+              [
+                "Moons",
+                "Salas, Nomon, Mishim (a fourth broke up long ago)"
+              ],
+              [
+                "Gravity",
+                "About 0.7 g; no axial tilt"
+              ],
+              [
+                "Day",
+                "20 hours; about 500 days a year"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/9",
+          "value": null
+        },
+        {
+          "type": "book",
+          "id": "9",
+          "value": {
+            "n": "IX",
+            "title": "Rhythm of War",
+            "y": 2020,
+            "c": "#9be07a"
+          }
+        },
+        {
+          "type": "registry",
+          "id": "rhythm-of-war",
+          "value": {
+            "id": "rhythm-of-war",
+            "title": "Rhythm of War",
+            "y": 2020,
+            "bucket": 9
+          }
+        }
+      ]
+    }
+  ],
+  "candidate": {
+    "field": "e44.text",
+    "old": "Alone in the captured tower, Kaladin learns he cannot save everyone and keeps going anyway.",
+    "replacement": "Kaladin accepts that there are people he cannot protect and swears the Fourth Ideal.",
+    "otherwiseEqual": true
+  },
+  "checks": [
+    {
+      "label": "All",
+      "state": {
+        "mode": "all"
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "legacy8",
+      "state": {
+        "mode": "legacy",
+        "book": 8
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": false,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "legacy9",
+      "state": {
+        "mode": "legacy",
+        "book": 9
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "legacy12",
+      "state": {
+        "mode": "legacy",
+        "book": 12
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "empty",
+      "state": {
+        "mode": "set",
+        "ids": []
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": false,
+        "worldHidden": true
+      },
+      "after": {
+        "e44": false,
+        "site": false,
+        "worldHidden": true
+      }
+    },
+    {
+      "label": "RoW only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "rhythm-of-war"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": false,
+        "worldHidden": true
+      },
+      "after": {
+        "e44": false,
+        "site": false,
+        "worldHidden": true
+      }
+    },
+    {
+      "label": "WoK only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "WoK+RoW",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "rhythm-of-war"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "OB+RoW",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "oathbringer",
+          "rhythm-of-war"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": false,
+        "worldHidden": true
+      },
+      "after": {
+        "e44": false,
+        "site": false,
+        "worldHidden": true
+      }
+    },
+    {
+      "label": "WoK+OB+DS",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "oathbringer",
+          "dawnshard"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "WoK+OB+DS+RoW",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": false,
+        "site": false,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "WoK+WoR+RoW",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "words-of-radiance",
+          "rhythm-of-war"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      }
+    },
+    {
+      "label": "all works",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "warbreaker",
+          "the-way-of-kings",
+          "words-of-radiance",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war",
+          "the-lost-metal",
+          "tress-of-the-emerald-sea",
+          "yumi-and-the-nightmare-painter",
+          "the-sunlit-man",
+          "wind-and-truth",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      },
+      "after": {
+        "e44": true,
+        "site": true,
+        "worldHidden": false
+      }
+    }
+  ]
+}

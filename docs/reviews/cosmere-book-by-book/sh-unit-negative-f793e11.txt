@@ -1,0 +1,3918 @@
+TAP version 13
+# Subtest: CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+not ok 1 - CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+  ---
+  duration_ms: 8.701009
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-realms-gate.test.ts:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    real pack: SH-D1 world Cognitive bundle omitted
+    + actual - expected
+    
+    + [
+    +   'cognitive'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'cognitive'
+  operator: 'deepStrictEqual'
+  stack: |-
+    setup (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:46:10)
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:98:22)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+not ok 2 - CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+  ---
+  duration_ms: 2.746141
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-realms-gate.test.ts:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    real pack: SH-D1 world Cognitive bundle omitted
+    + actual - expected
+    
+    + [
+    +   'cognitive'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'cognitive'
+  operator: 'deepStrictEqual'
+  stack: |-
+    setup (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:46:10)
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:98:22)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+not ok 3 - CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+  ---
+  duration_ms: 1.861079
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-realms-gate.test.ts:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    real pack: SH-D1 world Cognitive bundle omitted
+    + actual - expected
+    
+    + [
+    +   'cognitive'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'cognitive'
+  operator: 'deepStrictEqual'
+  stack: |-
+    setup (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:46:10)
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:98:22)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+not ok 4 - CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+  ---
+  duration_ms: 1.969828
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-realms-gate.test.ts:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    real pack: SH-D1 world Cognitive bundle omitted
+    + actual - expected
+    
+    + [
+    +   'cognitive'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'cognitive'
+  operator: 'deepStrictEqual'
+  stack: |-
+    setup (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:46:10)
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:98:22)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+not ok 5 - CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+  ---
+  duration_ms: 3.880392
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-realms-gate.test.ts:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    real pack: SH-D1 world Cognitive bundle omitted
+    + actual - expected
+    
+    + [
+    +   'cognitive'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'cognitive'
+  operator: 'deepStrictEqual'
+  stack: |-
+    setup (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:46:10)
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:98:22)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: CBR-04 realmCard + realmLook: All ignores the per-work field gate
+not ok 6 - CBR-04 realmCard + realmLook: All ignores the per-work field gate
+  ---
+  duration_ms: 4.548964
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-realms-gate.test.ts:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    real pack: SH-D1 world Cognitive bundle omitted
+    + actual - expected
+    
+    + [
+    +   'cognitive'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'cognitive'
+  operator: 'deepStrictEqual'
+  stack: |-
+    setup (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:46:10)
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:98:22)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+not ok 7 - CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+  ---
+  duration_ms: 1.910692
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-realms-gate.test.ts:112:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    real pack: SH-D1 world Cognitive bundle omitted
+    + actual - expected
+    
+    + [
+    +   'cognitive'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'cognitive'
+  operator: 'deepStrictEqual'
+  stack: |-
+    setup (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:46:10)
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-realms-gate.test.ts:114:25)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: CBR-04: applyRd re-applies the realm look to the open planet before refresh
+ok 8 - CBR-04: applyRd re-applies the realm look to the open planet before refresh
+  ---
+  duration_ms: 0.370999
+  type: 'test'
+  ...
+# Subtest: payload: removed claims are gone from base and every era override; no record gate or threshold change
+not ok 9 - payload: removed claims are gone from base and every era override; no record gate or threshold change
+  ---
+  duration_ms: 8.438251
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:129:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    SH-D1: world-specific Cognitive bundle omitted (empty container kept)
+    + actual - expected
+    
+    + {
+    +   cognitive: {
+    +     blurb: 'Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.',
+    +     c1: '#7a808c',
+    +     c2: '#eef2f6',
+    +     c3: '#2e2b28',
+    +     name: 'Expanse of the Vapors',
+    +     style: 'mist'
+    +   }
+    + }
+    - {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    cognitive:
+      name: 'Expanse of the Vapors'
+      style: 'mist'
+      c1: '#7a808c'
+      c2: '#eef2f6'
+      c3: '#2e2b28'
+      blurb: 'Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:142:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: per-work none selected: parent stays held unless all three are read; reduced copy only
+ok 10 - per-work none selected: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 3.84607
+  type: 'test'
+  ...
+# Subtest: per-work MB01: parent stays held unless all three are read; reduced copy only
+ok 11 - per-work MB01: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.63803
+  type: 'test'
+  ...
+# Subtest: per-work MB02: parent stays held unless all three are read; reduced copy only
+ok 12 - per-work MB02: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.472205
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB02: parent stays held unless all three are read; reduced copy only
+ok 13 - per-work MB01+MB02: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.557945
+  type: 'test'
+  ...
+# Subtest: per-work MB03: parent stays held unless all three are read; reduced copy only
+ok 14 - per-work MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.659028
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB03: parent stays held unless all three are read; reduced copy only
+ok 15 - per-work MB01+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.698116
+  type: 'test'
+  ...
+# Subtest: per-work MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 16 - per-work MB02+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 4.758814
+  type: 'test'
+  ...
+# Subtest: per-work MB01+MB02+MB03: parent stays held unless all three are read; reduced copy only
+ok 17 - per-work MB01+MB02+MB03: parent stays held unless all three are read; reduced copy only
+  ---
+  duration_ms: 2.064261
+  type: 'test'
+  ...
+# Subtest: per-work later-era-only (bucket 6 works without the original trilogy): parent and children stay hidden
+ok 18 - per-work later-era-only (bucket 6 works without the original trilogy): parent and children stay hidden
+  ---
+  duration_ms: 2.234142
+  type: 'test'
+  ...
+# Subtest: per-work OT + bucket 6: era-6 status/facts appear only through the MB01 facts gate and stay reduced
+ok 19 - per-work OT + bucket 6: era-6 status/facts appear only through the MB01 facts gate and stay reduced
+  ---
+  duration_ms: 2.052378
+  type: 'test'
+  ...
+# Subtest: descendants (sites, events) cannot bypass the held parent
+ok 20 - descendants (sites, events) cannot bypass the held parent
+  ---
+  duration_ms: 34.812229
+  type: 'test'
+  ...
+# Subtest: legacy \#book=2: numeric rule unchanged, reduced payload shown
+ok 21 - legacy \#book=2: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 2.204263
+  type: 'test'
+  ...
+# Subtest: legacy \#book=6: numeric rule unchanged, reduced payload shown
+ok 22 - legacy \#book=6: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 2.239433
+  type: 'test'
+  ...
+# Subtest: legacy \#book=10: numeric rule unchanged, reduced payload shown
+ok 23 - legacy \#book=10: numeric rule unchanged, reduced payload shown
+  ---
+  duration_ms: 2.222039
+  type: 'test'
+  ...
+# Subtest: All: reduced payload in the base → latest-era status and the era facts
+ok 24 - All: reduced payload in the base → latest-era status and the era facts
+  ---
+  duration_ms: 2.31428
+  type: 'test'
+  ...
+# Subtest: model note obeys a present gates.model (fixture) and an invalid one fails closed
+ok 25 - model note obeys a present gates.model (fixture) and an invalid one fails closed
+  ---
+  duration_ms: 6.443677
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: original trilogy read / physical: Scadrial Distance row is the exact qualifier
+ok 26 - SCR-01 set: original trilogy read / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.471365
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: original trilogy read / cognitive: Scadrial Distance row is the exact qualifier
+ok 27 - SCR-01 set: original trilogy read / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.443814
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: nothing read / physical: Scadrial Distance row is the exact qualifier
+ok 28 - SCR-01 set: nothing read / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.438157
+  type: 'test'
+  ...
+# Subtest: SCR-01 set: nothing read / cognitive: Scadrial Distance row is the exact qualifier
+ok 29 - SCR-01 set: nothing read / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.35793
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=2 / physical: Scadrial Distance row is the exact qualifier
+ok 30 - SCR-01 legacy \#book=2 / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.448697
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=2 / cognitive: Scadrial Distance row is the exact qualifier
+ok 31 - SCR-01 legacy \#book=2 / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.76255
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=6 / physical: Scadrial Distance row is the exact qualifier
+ok 32 - SCR-01 legacy \#book=6 / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 8.906475
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=6 / cognitive: Scadrial Distance row is the exact qualifier
+ok 33 - SCR-01 legacy \#book=6 / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.389132
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=10 / physical: Scadrial Distance row is the exact qualifier
+ok 34 - SCR-01 legacy \#book=10 / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.41179
+  type: 'test'
+  ...
+# Subtest: SCR-01 legacy \#book=10 / cognitive: Scadrial Distance row is the exact qualifier
+ok 35 - SCR-01 legacy \#book=10 / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.543942
+  type: 'test'
+  ...
+# Subtest: SCR-01 All / physical: Scadrial Distance row is the exact qualifier
+ok 36 - SCR-01 All / physical: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 9.598716
+  type: 'test'
+  ...
+# Subtest: SCR-01 All / cognitive: Scadrial Distance row is the exact qualifier
+ok 37 - SCR-01 All / cognitive: Scadrial Distance row is the exact qualifier
+  ---
+  duration_ms: 2.378995
+  type: 'test'
+  ...
+# Subtest: SCR-01 scope: only Scadrial changed; ORR constant and other Scadrial-system records keep their distText
+ok 38 - SCR-01 scope: only Scadrial changed; ORR constant and other Scadrial-system records keep their distText
+  ---
+  duration_ms: 1.880709
+  type: 'test'
+  ...
+# Subtest: MB05 payload: exact three fields and three own gates; no record gate; era 10 and gfx preserved
+ok 39 - MB05 payload: exact three fields and three own gates; no record gate; era 10 and gfx preserved
+  ---
+  duration_ms: 2.184351
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B60 / physical: era-6 fields only with every ancestor
+ok 40 - MB05 per-work OT0 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.989397
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B60 / cognitive: era-6 fields only with every ancestor
+ok 41 - MB05 per-work OT0 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.859487
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B61 / physical: era-6 fields only with every ancestor
+ok 42 - MB05 per-work OT0 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.852509
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B61 / cognitive: era-6 fields only with every ancestor
+ok 43 - MB05 per-work OT0 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.834056
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B62 / physical: era-6 fields only with every ancestor
+ok 44 - MB05 per-work OT0 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.022206
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B62 / cognitive: era-6 fields only with every ancestor
+ok 45 - MB05 per-work OT0 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.915194
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B63 / physical: era-6 fields only with every ancestor
+ok 46 - MB05 per-work OT0 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.980963
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B63 / cognitive: era-6 fields only with every ancestor
+ok 47 - MB05 per-work OT0 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.221304
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B64 / physical: era-6 fields only with every ancestor
+ok 48 - MB05 per-work OT0 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.038386
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B64 / cognitive: era-6 fields only with every ancestor
+ok 49 - MB05 per-work OT0 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.112437
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B65 / physical: era-6 fields only with every ancestor
+ok 50 - MB05 per-work OT0 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.039304
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B65 / cognitive: era-6 fields only with every ancestor
+ok 51 - MB05 per-work OT0 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.165654
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B66 / physical: era-6 fields only with every ancestor
+ok 52 - MB05 per-work OT0 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.012682
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B66 / cognitive: era-6 fields only with every ancestor
+ok 53 - MB05 per-work OT0 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.087732
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B67 / physical: era-6 fields only with every ancestor
+ok 54 - MB05 per-work OT0 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.05927
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT0 B67 / cognitive: era-6 fields only with every ancestor
+ok 55 - MB05 per-work OT0 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.096553
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B60 / physical: era-6 fields only with every ancestor
+ok 56 - MB05 per-work OT1 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.054995
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B60 / cognitive: era-6 fields only with every ancestor
+ok 57 - MB05 per-work OT1 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.059506
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B61 / physical: era-6 fields only with every ancestor
+ok 58 - MB05 per-work OT1 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.992902
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B61 / cognitive: era-6 fields only with every ancestor
+ok 59 - MB05 per-work OT1 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 10.277815
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B62 / physical: era-6 fields only with every ancestor
+ok 60 - MB05 per-work OT1 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.012363
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B62 / cognitive: era-6 fields only with every ancestor
+ok 61 - MB05 per-work OT1 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.072969
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B63 / physical: era-6 fields only with every ancestor
+ok 62 - MB05 per-work OT1 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.032613
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B63 / cognitive: era-6 fields only with every ancestor
+ok 63 - MB05 per-work OT1 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.061482
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B64 / physical: era-6 fields only with every ancestor
+ok 64 - MB05 per-work OT1 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.993872
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B64 / cognitive: era-6 fields only with every ancestor
+ok 65 - MB05 per-work OT1 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.032689
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B65 / physical: era-6 fields only with every ancestor
+ok 66 - MB05 per-work OT1 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.987124
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B65 / cognitive: era-6 fields only with every ancestor
+ok 67 - MB05 per-work OT1 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.052949
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B66 / physical: era-6 fields only with every ancestor
+ok 68 - MB05 per-work OT1 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.971191
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B66 / cognitive: era-6 fields only with every ancestor
+ok 69 - MB05 per-work OT1 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 11.764204
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B67 / physical: era-6 fields only with every ancestor
+ok 70 - MB05 per-work OT1 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.917379
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT1 B67 / cognitive: era-6 fields only with every ancestor
+ok 71 - MB05 per-work OT1 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.865322
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B60 / physical: era-6 fields only with every ancestor
+ok 72 - MB05 per-work OT2 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.859111
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B60 / cognitive: era-6 fields only with every ancestor
+ok 73 - MB05 per-work OT2 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.800658
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B61 / physical: era-6 fields only with every ancestor
+ok 74 - MB05 per-work OT2 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.920813
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B61 / cognitive: era-6 fields only with every ancestor
+ok 75 - MB05 per-work OT2 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.845829
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B62 / physical: era-6 fields only with every ancestor
+ok 76 - MB05 per-work OT2 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.813805
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B62 / cognitive: era-6 fields only with every ancestor
+ok 77 - MB05 per-work OT2 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.789628
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B63 / physical: era-6 fields only with every ancestor
+ok 78 - MB05 per-work OT2 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.826642
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B63 / cognitive: era-6 fields only with every ancestor
+ok 79 - MB05 per-work OT2 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.790775
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B64 / physical: era-6 fields only with every ancestor
+ok 80 - MB05 per-work OT2 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.78624
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B64 / cognitive: era-6 fields only with every ancestor
+ok 81 - MB05 per-work OT2 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.853284
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B65 / physical: era-6 fields only with every ancestor
+ok 82 - MB05 per-work OT2 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.062077
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B65 / cognitive: era-6 fields only with every ancestor
+ok 83 - MB05 per-work OT2 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.91439
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B66 / physical: era-6 fields only with every ancestor
+ok 84 - MB05 per-work OT2 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.863067
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B66 / cognitive: era-6 fields only with every ancestor
+ok 85 - MB05 per-work OT2 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.877092
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B67 / physical: era-6 fields only with every ancestor
+ok 86 - MB05 per-work OT2 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.918549
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT2 B67 / cognitive: era-6 fields only with every ancestor
+ok 87 - MB05 per-work OT2 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.845726
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B60 / physical: era-6 fields only with every ancestor
+ok 88 - MB05 per-work OT3 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 9.021185
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B60 / cognitive: era-6 fields only with every ancestor
+ok 89 - MB05 per-work OT3 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.893586
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B61 / physical: era-6 fields only with every ancestor
+ok 90 - MB05 per-work OT3 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.776923
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B61 / cognitive: era-6 fields only with every ancestor
+ok 91 - MB05 per-work OT3 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.914787
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B62 / physical: era-6 fields only with every ancestor
+ok 92 - MB05 per-work OT3 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.794966
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B62 / cognitive: era-6 fields only with every ancestor
+ok 93 - MB05 per-work OT3 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.82659
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B63 / physical: era-6 fields only with every ancestor
+ok 94 - MB05 per-work OT3 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.86013
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B63 / cognitive: era-6 fields only with every ancestor
+ok 95 - MB05 per-work OT3 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.876084
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B64 / physical: era-6 fields only with every ancestor
+ok 96 - MB05 per-work OT3 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.937638
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B64 / cognitive: era-6 fields only with every ancestor
+ok 97 - MB05 per-work OT3 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.854361
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B65 / physical: era-6 fields only with every ancestor
+ok 98 - MB05 per-work OT3 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.91876
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B65 / cognitive: era-6 fields only with every ancestor
+ok 99 - MB05 per-work OT3 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.830425
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B66 / physical: era-6 fields only with every ancestor
+ok 100 - MB05 per-work OT3 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.113987
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B66 / cognitive: era-6 fields only with every ancestor
+ok 101 - MB05 per-work OT3 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 22.299498
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B67 / physical: era-6 fields only with every ancestor
+ok 102 - MB05 per-work OT3 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.385895
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT3 B67 / cognitive: era-6 fields only with every ancestor
+ok 103 - MB05 per-work OT3 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.520968
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B60 / physical: era-6 fields only with every ancestor
+ok 104 - MB05 per-work OT4 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 4.525774
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B60 / cognitive: era-6 fields only with every ancestor
+ok 105 - MB05 per-work OT4 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.925469
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B61 / physical: era-6 fields only with every ancestor
+ok 106 - MB05 per-work OT4 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 3.693759
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B61 / cognitive: era-6 fields only with every ancestor
+ok 107 - MB05 per-work OT4 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.913657
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B62 / physical: era-6 fields only with every ancestor
+ok 108 - MB05 per-work OT4 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.832003
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B62 / cognitive: era-6 fields only with every ancestor
+ok 109 - MB05 per-work OT4 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.949412
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B63 / physical: era-6 fields only with every ancestor
+ok 110 - MB05 per-work OT4 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.071761
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B63 / cognitive: era-6 fields only with every ancestor
+ok 111 - MB05 per-work OT4 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.893344
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B64 / physical: era-6 fields only with every ancestor
+ok 112 - MB05 per-work OT4 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.933386
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B64 / cognitive: era-6 fields only with every ancestor
+ok 113 - MB05 per-work OT4 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.840141
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B65 / physical: era-6 fields only with every ancestor
+ok 114 - MB05 per-work OT4 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.819905
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B65 / cognitive: era-6 fields only with every ancestor
+ok 115 - MB05 per-work OT4 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.754726
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B66 / physical: era-6 fields only with every ancestor
+ok 116 - MB05 per-work OT4 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.813806
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B66 / cognitive: era-6 fields only with every ancestor
+ok 117 - MB05 per-work OT4 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.972778
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B67 / physical: era-6 fields only with every ancestor
+ok 118 - MB05 per-work OT4 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 11.139075
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT4 B67 / cognitive: era-6 fields only with every ancestor
+ok 119 - MB05 per-work OT4 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.78358
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B60 / physical: era-6 fields only with every ancestor
+ok 120 - MB05 per-work OT5 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.85845
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B60 / cognitive: era-6 fields only with every ancestor
+ok 121 - MB05 per-work OT5 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.809174
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B61 / physical: era-6 fields only with every ancestor
+ok 122 - MB05 per-work OT5 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.808095
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B61 / cognitive: era-6 fields only with every ancestor
+ok 123 - MB05 per-work OT5 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.776458
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B62 / physical: era-6 fields only with every ancestor
+ok 124 - MB05 per-work OT5 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.90427
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B62 / cognitive: era-6 fields only with every ancestor
+ok 125 - MB05 per-work OT5 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 2.342178
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B63 / physical: era-6 fields only with every ancestor
+ok 126 - MB05 per-work OT5 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.841536
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B63 / cognitive: era-6 fields only with every ancestor
+ok 127 - MB05 per-work OT5 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.774882
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B64 / physical: era-6 fields only with every ancestor
+ok 128 - MB05 per-work OT5 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.84369
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B64 / cognitive: era-6 fields only with every ancestor
+ok 129 - MB05 per-work OT5 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.779039
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B65 / physical: era-6 fields only with every ancestor
+ok 130 - MB05 per-work OT5 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.847694
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B65 / cognitive: era-6 fields only with every ancestor
+ok 131 - MB05 per-work OT5 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.787034
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B66 / physical: era-6 fields only with every ancestor
+ok 132 - MB05 per-work OT5 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 10.483954
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B66 / cognitive: era-6 fields only with every ancestor
+ok 133 - MB05 per-work OT5 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.97387
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B67 / physical: era-6 fields only with every ancestor
+ok 134 - MB05 per-work OT5 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.851862
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT5 B67 / cognitive: era-6 fields only with every ancestor
+ok 135 - MB05 per-work OT5 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.884
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B60 / physical: era-6 fields only with every ancestor
+ok 136 - MB05 per-work OT6 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.89579
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B60 / cognitive: era-6 fields only with every ancestor
+ok 137 - MB05 per-work OT6 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.763538
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B61 / physical: era-6 fields only with every ancestor
+ok 138 - MB05 per-work OT6 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.892511
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B61 / cognitive: era-6 fields only with every ancestor
+ok 139 - MB05 per-work OT6 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.761449
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B62 / physical: era-6 fields only with every ancestor
+ok 140 - MB05 per-work OT6 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.831713
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B62 / cognitive: era-6 fields only with every ancestor
+ok 141 - MB05 per-work OT6 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.782646
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B63 / physical: era-6 fields only with every ancestor
+ok 142 - MB05 per-work OT6 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.88013
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B63 / cognitive: era-6 fields only with every ancestor
+ok 143 - MB05 per-work OT6 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.89791
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B64 / physical: era-6 fields only with every ancestor
+ok 144 - MB05 per-work OT6 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.784537
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B64 / cognitive: era-6 fields only with every ancestor
+ok 145 - MB05 per-work OT6 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.833574
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B65 / physical: era-6 fields only with every ancestor
+ok 146 - MB05 per-work OT6 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.794898
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B65 / cognitive: era-6 fields only with every ancestor
+ok 147 - MB05 per-work OT6 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.950196
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B66 / physical: era-6 fields only with every ancestor
+ok 148 - MB05 per-work OT6 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.931693
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B66 / cognitive: era-6 fields only with every ancestor
+ok 149 - MB05 per-work OT6 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 10.772408
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B67 / physical: era-6 fields only with every ancestor
+ok 150 - MB05 per-work OT6 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.911369
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT6 B67 / cognitive: era-6 fields only with every ancestor
+ok 151 - MB05 per-work OT6 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.855665
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B60 / physical: era-6 fields only with every ancestor
+ok 152 - MB05 per-work OT7 B60 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.815671
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B60 / cognitive: era-6 fields only with every ancestor
+ok 153 - MB05 per-work OT7 B60 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.840563
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B61 / physical: era-6 fields only with every ancestor
+ok 154 - MB05 per-work OT7 B61 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.76283
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B61 / cognitive: era-6 fields only with every ancestor
+ok 155 - MB05 per-work OT7 B61 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.851691
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B62 / physical: era-6 fields only with every ancestor
+ok 156 - MB05 per-work OT7 B62 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.882874
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B62 / cognitive: era-6 fields only with every ancestor
+ok 157 - MB05 per-work OT7 B62 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.855933
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B63 / physical: era-6 fields only with every ancestor
+ok 158 - MB05 per-work OT7 B63 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.817653
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B63 / cognitive: era-6 fields only with every ancestor
+ok 159 - MB05 per-work OT7 B63 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.957945
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B64 / physical: era-6 fields only with every ancestor
+ok 160 - MB05 per-work OT7 B64 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.902694
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B64 / cognitive: era-6 fields only with every ancestor
+ok 161 - MB05 per-work OT7 B64 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.836094
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B65 / physical: era-6 fields only with every ancestor
+ok 162 - MB05 per-work OT7 B65 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.870848
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B65 / cognitive: era-6 fields only with every ancestor
+ok 163 - MB05 per-work OT7 B65 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 11.313344
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B66 / physical: era-6 fields only with every ancestor
+ok 164 - MB05 per-work OT7 B66 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 5.576448
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B66 / cognitive: era-6 fields only with every ancestor
+ok 165 - MB05 per-work OT7 B66 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 5.87002
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B67 / physical: era-6 fields only with every ancestor
+ok 166 - MB05 per-work OT7 B67 / physical: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.95629
+  type: 'test'
+  ...
+# Subtest: MB05 per-work OT7 B67 / cognitive: era-6 fields only with every ancestor
+ok 167 - MB05 per-work OT7 B67 / cognitive: era-6 fields only with every ancestor
+  ---
+  duration_ms: 1.743411
+  type: 'test'
+  ...
+# Subtest: MB05 legacy \#book=2: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 168 - MB05 legacy \#book=2: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 1.827164
+  type: 'test'
+  ...
+# Subtest: MB05 legacy \#book=6: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 169 - MB05 legacy \#book=6: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 1.680158
+  type: 'test'
+  ...
+# Subtest: MB05 legacy \#book=10: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 170 - MB05 legacy \#book=10: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 1.672132
+  type: 'test'
+  ...
+# Subtest: MB05 All: numeric rule, candidate copy from era 6, era-10 status override kept
+ok 171 - MB05 All: numeric rule, candidate copy from era 6, era-10 status override kept
+  ---
+  duration_ms: 1.608814
+  type: 'test'
+  ...
+# Subtest: MB05 field gates fail closed: an invalid or unmet era-6 field gate keeps the earlier value
+ok 172 - MB05 field gates fail closed: an invalid or unmet era-6 field gate keeps the earlier value
+  ---
+  duration_ms: 3.497101
+  type: 'test'
+  ...
+# Subtest: MB10 payload: one nested field and one own gate; no record gate; era 6, distText and model preserved
+ok 173 - MB10 payload: one nested field and one own gate; no record gate; era 6, distText and model preserved
+  ---
+  duration_ms: 2.006357
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 174 - MB10 per-work OT0 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.414008
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 175 - MB10 per-work OT0 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.262546
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 176 - MB10 per-work OT0 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.238216
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 177 - MB10 per-work OT0 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.368599
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 178 - MB10 per-work OT0 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.249922
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 179 - MB10 per-work OT0 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.425442
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 180 - MB10 per-work OT0 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.414528
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 181 - MB10 per-work OT0 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.203919
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 182 - MB10 per-work OT0 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.566739
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 183 - MB10 per-work OT0 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.254424
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 184 - MB10 per-work OT0 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.279634
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 185 - MB10 per-work OT0 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.342371
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 186 - MB10 per-work OT0 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.260414
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 187 - MB10 per-work OT0 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.309055
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 188 - MB10 per-work OT0 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.152506
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 189 - MB10 per-work OT0 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.216161
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 190 - MB10 per-work OT0 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.202716
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 191 - MB10 per-work OT0 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.36459
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 192 - MB10 per-work OT0 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.293476
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 193 - MB10 per-work OT0 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.16958
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 194 - MB10 per-work OT0 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.228681
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 195 - MB10 per-work OT0 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.377099
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 196 - MB10 per-work OT0 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.391003
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 197 - MB10 per-work OT0 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.427372
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 198 - MB10 per-work OT0 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.269215
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 199 - MB10 per-work OT0 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.332612
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 200 - MB10 per-work OT0 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.299722
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 201 - MB10 per-work OT0 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.341956
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 202 - MB10 per-work OT0 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.651449
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 203 - MB10 per-work OT0 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.473253
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 204 - MB10 per-work OT0 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.319826
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT0 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 205 - MB10 per-work OT0 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.451631
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 206 - MB10 per-work OT1 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.616794
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 207 - MB10 per-work OT1 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.268119
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 208 - MB10 per-work OT1 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.234694
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 209 - MB10 per-work OT1 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.585214
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 210 - MB10 per-work OT1 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.490727
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 211 - MB10 per-work OT1 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.358771
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 212 - MB10 per-work OT1 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.480874
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 213 - MB10 per-work OT1 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.518712
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 214 - MB10 per-work OT1 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.245837
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 215 - MB10 per-work OT1 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.40121
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 216 - MB10 per-work OT1 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.259449
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 217 - MB10 per-work OT1 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.354368
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 218 - MB10 per-work OT1 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.33251
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 219 - MB10 per-work OT1 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.29014
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 220 - MB10 per-work OT1 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.216123
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 221 - MB10 per-work OT1 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.211172
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 222 - MB10 per-work OT1 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.488366
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 223 - MB10 per-work OT1 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.680627
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 224 - MB10 per-work OT1 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.539841
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 225 - MB10 per-work OT1 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.592414
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 226 - MB10 per-work OT1 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.492198
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 227 - MB10 per-work OT1 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.340306
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 228 - MB10 per-work OT1 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.404604
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 229 - MB10 per-work OT1 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.340973
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 230 - MB10 per-work OT1 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.379882
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 231 - MB10 per-work OT1 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.23732
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 232 - MB10 per-work OT1 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.260964
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 233 - MB10 per-work OT1 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.28279
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 234 - MB10 per-work OT1 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.340144
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 235 - MB10 per-work OT1 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.269645
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 236 - MB10 per-work OT1 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.322588
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT1 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 237 - MB10 per-work OT1 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.250113
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 238 - MB10 per-work OT2 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 13.397972
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 239 - MB10 per-work OT2 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.447574
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 240 - MB10 per-work OT2 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.501878
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 241 - MB10 per-work OT2 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.304
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 242 - MB10 per-work OT2 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.530563
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 243 - MB10 per-work OT2 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.308107
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 244 - MB10 per-work OT2 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.327771
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 245 - MB10 per-work OT2 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.248617
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 246 - MB10 per-work OT2 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.207774
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 247 - MB10 per-work OT2 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.444232
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 248 - MB10 per-work OT2 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.232451
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 249 - MB10 per-work OT2 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.214121
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 250 - MB10 per-work OT2 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.278959
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 251 - MB10 per-work OT2 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.246164
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 252 - MB10 per-work OT2 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.345928
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 253 - MB10 per-work OT2 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.331339
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 254 - MB10 per-work OT2 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.313462
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 255 - MB10 per-work OT2 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.271338
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 256 - MB10 per-work OT2 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.253995
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 257 - MB10 per-work OT2 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.471218
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 258 - MB10 per-work OT2 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.327436
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 259 - MB10 per-work OT2 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.8284
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 260 - MB10 per-work OT2 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.244379
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 261 - MB10 per-work OT2 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.218137
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 262 - MB10 per-work OT2 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.718408
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 263 - MB10 per-work OT2 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.462525
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 264 - MB10 per-work OT2 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.375297
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 265 - MB10 per-work OT2 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.630379
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 266 - MB10 per-work OT2 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.750773
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 267 - MB10 per-work OT2 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.71092
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 268 - MB10 per-work OT2 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 12.064685
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT2 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 269 - MB10 per-work OT2 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.623502
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 270 - MB10 per-work OT3 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.618616
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 271 - MB10 per-work OT3 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.378515
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 272 - MB10 per-work OT3 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.402497
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 273 - MB10 per-work OT3 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.358964
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 274 - MB10 per-work OT3 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.245906
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 275 - MB10 per-work OT3 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.449409
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 276 - MB10 per-work OT3 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.37119
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 277 - MB10 per-work OT3 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.337589
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 278 - MB10 per-work OT3 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.203803
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 279 - MB10 per-work OT3 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.340207
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 280 - MB10 per-work OT3 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.326237
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 281 - MB10 per-work OT3 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.001746
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 282 - MB10 per-work OT3 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.374893
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 283 - MB10 per-work OT3 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.339822
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 284 - MB10 per-work OT3 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.300995
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 285 - MB10 per-work OT3 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.557404
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 286 - MB10 per-work OT3 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.152557
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 287 - MB10 per-work OT3 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.543987
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 288 - MB10 per-work OT3 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.628719
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 289 - MB10 per-work OT3 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.886062
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 290 - MB10 per-work OT3 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.621197
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 291 - MB10 per-work OT3 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.419128
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 292 - MB10 per-work OT3 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.504184
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 293 - MB10 per-work OT3 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.474949
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 294 - MB10 per-work OT3 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.437739
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 295 - MB10 per-work OT3 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.561111
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 296 - MB10 per-work OT3 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.258788
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 297 - MB10 per-work OT3 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.923578
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 298 - MB10 per-work OT3 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.411597
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 299 - MB10 per-work OT3 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.457046
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 300 - MB10 per-work OT3 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.415341
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT3 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 301 - MB10 per-work OT3 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 12.74776
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 302 - MB10 per-work OT4 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.292966
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 303 - MB10 per-work OT4 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.008714
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 304 - MB10 per-work OT4 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.044811
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 305 - MB10 per-work OT4 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 12.545379
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 306 - MB10 per-work OT4 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.209487
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 307 - MB10 per-work OT4 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.170807
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 308 - MB10 per-work OT4 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.469642
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 309 - MB10 per-work OT4 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.040722
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 310 - MB10 per-work OT4 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.994724
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 311 - MB10 per-work OT4 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.14802
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 312 - MB10 per-work OT4 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.455804
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 313 - MB10 per-work OT4 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.704531
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 314 - MB10 per-work OT4 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.334083
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 315 - MB10 per-work OT4 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.125141
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 316 - MB10 per-work OT4 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.971982
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 317 - MB10 per-work OT4 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.038932
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 318 - MB10 per-work OT4 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 6.667708
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 319 - MB10 per-work OT4 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 8.259335
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 320 - MB10 per-work OT4 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.69259
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 321 - MB10 per-work OT4 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.994477
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 322 - MB10 per-work OT4 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 17.056107
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 323 - MB10 per-work OT4 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 13.966115
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 324 - MB10 per-work OT4 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.580635
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 325 - MB10 per-work OT4 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.956637
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 326 - MB10 per-work OT4 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 5.47194
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 327 - MB10 per-work OT4 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.081758
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 328 - MB10 per-work OT4 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.29243
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 329 - MB10 per-work OT4 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.160744
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 330 - MB10 per-work OT4 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.798911
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 331 - MB10 per-work OT4 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 16.771155
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 332 - MB10 per-work OT4 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.515689
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT4 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 333 - MB10 per-work OT4 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.530623
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 334 - MB10 per-work OT5 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.694203
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 335 - MB10 per-work OT5 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.5414
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 336 - MB10 per-work OT5 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.651224
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 337 - MB10 per-work OT5 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.486444
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 338 - MB10 per-work OT5 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 12.012404
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 339 - MB10 per-work OT5 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.720428
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 340 - MB10 per-work OT5 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.326341
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 341 - MB10 per-work OT5 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.524852
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 342 - MB10 per-work OT5 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.84641
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 343 - MB10 per-work OT5 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.441365
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 344 - MB10 per-work OT5 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.259303
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 345 - MB10 per-work OT5 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.343127
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 346 - MB10 per-work OT5 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 14.949448
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 347 - MB10 per-work OT5 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.764033
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 348 - MB10 per-work OT5 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.492881
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 349 - MB10 per-work OT5 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.224416
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 350 - MB10 per-work OT5 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.783526
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 351 - MB10 per-work OT5 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.206887
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 352 - MB10 per-work OT5 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.347225
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 353 - MB10 per-work OT5 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.484718
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 354 - MB10 per-work OT5 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.211224
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 355 - MB10 per-work OT5 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.715954
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 356 - MB10 per-work OT5 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.922953
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 357 - MB10 per-work OT5 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.42231
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 358 - MB10 per-work OT5 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.300586
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 359 - MB10 per-work OT5 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.772558
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 360 - MB10 per-work OT5 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.808794
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 361 - MB10 per-work OT5 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.381737
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 362 - MB10 per-work OT5 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.793872
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 363 - MB10 per-work OT5 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.411705
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 364 - MB10 per-work OT5 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 12.334104
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT5 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 365 - MB10 per-work OT5 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.408859
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 366 - MB10 per-work OT6 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.193786
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 367 - MB10 per-work OT6 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.289696
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 368 - MB10 per-work OT6 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.364809
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 369 - MB10 per-work OT6 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.034912
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 370 - MB10 per-work OT6 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.457209
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 371 - MB10 per-work OT6 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.273719
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 372 - MB10 per-work OT6 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.452344
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 373 - MB10 per-work OT6 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.698282
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 374 - MB10 per-work OT6 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.443441
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 375 - MB10 per-work OT6 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.918119
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 376 - MB10 per-work OT6 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.739491
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 377 - MB10 per-work OT6 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.234562
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 378 - MB10 per-work OT6 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.329274
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 379 - MB10 per-work OT6 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.398126
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 380 - MB10 per-work OT6 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.616768
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 381 - MB10 per-work OT6 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.452561
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 382 - MB10 per-work OT6 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.206829
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 383 - MB10 per-work OT6 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.47149
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 384 - MB10 per-work OT6 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.359265
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 385 - MB10 per-work OT6 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.220592
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 386 - MB10 per-work OT6 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.279988
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 387 - MB10 per-work OT6 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.41386
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 388 - MB10 per-work OT6 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.434724
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 389 - MB10 per-work OT6 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.226979
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 390 - MB10 per-work OT6 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 9.677736
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 391 - MB10 per-work OT6 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.628104
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 392 - MB10 per-work OT6 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.237797
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 393 - MB10 per-work OT6 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.363145
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 394 - MB10 per-work OT6 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.282706
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 395 - MB10 per-work OT6 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.435089
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 396 - MB10 per-work OT6 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.533371
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT6 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 397 - MB10 per-work OT6 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 10.631533
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 398 - MB10 per-work OT7 B60 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.343307
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 399 - MB10 per-work OT7 B60 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.508737
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 400 - MB10 per-work OT7 B60 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.345092
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 401 - MB10 per-work OT7 B60 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.248166
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 402 - MB10 per-work OT7 B61 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.366163
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 403 - MB10 per-work OT7 B61 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.824717
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 404 - MB10 per-work OT7 B61 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.005089
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 405 - MB10 per-work OT7 B61 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 16.193017
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 406 - MB10 per-work OT7 B62 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 4.493641
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 407 - MB10 per-work OT7 B62 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 7.848817
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 408 - MB10 per-work OT7 B62 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.890935
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 409 - MB10 per-work OT7 B62 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.318044
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 410 - MB10 per-work OT7 B63 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.300389
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 411 - MB10 per-work OT7 B63 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.277026
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 412 - MB10 per-work OT7 B63 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.465143
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 413 - MB10 per-work OT7 B63 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.404545
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 414 - MB10 per-work OT7 B64 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.218841
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 415 - MB10 per-work OT7 B64 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.244011
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 416 - MB10 per-work OT7 B64 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.356286
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 417 - MB10 per-work OT7 B64 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.680917
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 418 - MB10 per-work OT7 B65 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.324802
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 419 - MB10 per-work OT7 B65 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.300318
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 420 - MB10 per-work OT7 B65 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 9.93622
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 421 - MB10 per-work OT7 B65 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.448758
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 422 - MB10 per-work OT7 B66 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.249486
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 423 - MB10 per-work OT7 B66 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.267341
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 424 - MB10 per-work OT7 B66 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 11.968464
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 425 - MB10 per-work OT7 B66 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.780951
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 426 - MB10 per-work OT7 B67 -TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.715206
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 427 - MB10 per-work OT7 B67 -TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.886529
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+ok 428 - MB10 per-work OT7 B67 +TLM / physical: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.886149
+  type: 'test'
+  ...
+# Subtest: MB10 per-work OT7 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+ok 429 - MB10 per-work OT7 B67 +TLM / cognitive: era-10 status only with the trilogy and The Lost Metal
+  ---
+  duration_ms: 3.744547
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=2 / physical: status per numeric rule
+ok 430 - MB10 legacy \#book=2 / physical: status per numeric rule
+  ---
+  duration_ms: 2.375484
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=2 / cognitive: status per numeric rule
+ok 431 - MB10 legacy \#book=2 / cognitive: status per numeric rule
+  ---
+  duration_ms: 1.831559
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=6 / physical: status per numeric rule
+ok 432 - MB10 legacy \#book=6 / physical: status per numeric rule
+  ---
+  duration_ms: 1.996027
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=6 / cognitive: status per numeric rule
+ok 433 - MB10 legacy \#book=6 / cognitive: status per numeric rule
+  ---
+  duration_ms: 2.155245
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=10 / physical: status per numeric rule
+ok 434 - MB10 legacy \#book=10 / physical: status per numeric rule
+  ---
+  duration_ms: 2.01793
+  type: 'test'
+  ...
+# Subtest: MB10 legacy \#book=10 / cognitive: status per numeric rule
+ok 435 - MB10 legacy \#book=10 / cognitive: status per numeric rule
+  ---
+  duration_ms: 1.844571
+  type: 'test'
+  ...
+# Subtest: MB10 All / physical: status per numeric rule
+ok 436 - MB10 All / physical: status per numeric rule
+  ---
+  duration_ms: 1.8671
+  type: 'test'
+  ...
+# Subtest: MB10 All / cognitive: status per numeric rule
+ok 437 - MB10 All / cognitive: status per numeric rule
+  ---
+  duration_ms: 1.85482
+  type: 'test'
+  ...
+# Subtest: MB10 status gate fails closed: an invalid or unmet era-10 gate falls back to the earlier status
+ok 438 - MB10 status gate fails closed: an invalid or unmet era-10 gate falls back to the earlier status
+  ---
+  duration_ms: 15.258906
+  type: 'test'
+  ...
+# Subtest: SH-D1–03: set 0/3 OT
+not ok 439 - SH-D1–03: set 0/3 OT
+  ---
+  duration_ms: 3.883492
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 0/3 OT +B4
+not ok 440 - SH-D1–03: set 0/3 OT +B4
+  ---
+  duration_ms: 2.110592
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 0/3 OT +SH
+not ok 441 - SH-D1–03: set 0/3 OT +SH
+  ---
+  duration_ms: 2.076581
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 0/3 OT +SH +B4
+not ok 442 - SH-D1–03: set 0/3 OT +SH +B4
+  ---
+  duration_ms: 2.548675
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT
+not ok 443 - SH-D1–03: set 1/3 OT
+  ---
+  duration_ms: 2.164816
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +B4
+not ok 444 - SH-D1–03: set 1/3 OT +B4
+  ---
+  duration_ms: 2.027643
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH
+not ok 445 - SH-D1–03: set 1/3 OT +SH
+  ---
+  duration_ms: 1.944766
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH +B4
+not ok 446 - SH-D1–03: set 1/3 OT +SH +B4
+  ---
+  duration_ms: 2.027746
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT
+not ok 447 - SH-D1–03: set 1/3 OT
+  ---
+  duration_ms: 2.121094
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +B4
+not ok 448 - SH-D1–03: set 1/3 OT +B4
+  ---
+  duration_ms: 2.107491
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH
+not ok 449 - SH-D1–03: set 1/3 OT +SH
+  ---
+  duration_ms: 11.281642
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH +B4
+not ok 450 - SH-D1–03: set 1/3 OT +SH +B4
+  ---
+  duration_ms: 2.078058
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT
+not ok 451 - SH-D1–03: set 2/3 OT
+  ---
+  duration_ms: 2.012383
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +B4
+not ok 452 - SH-D1–03: set 2/3 OT +B4
+  ---
+  duration_ms: 2.073817
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH
+not ok 453 - SH-D1–03: set 2/3 OT +SH
+  ---
+  duration_ms: 2.277062
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH +B4
+not ok 454 - SH-D1–03: set 2/3 OT +SH +B4
+  ---
+  duration_ms: 2.21039
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT
+not ok 455 - SH-D1–03: set 1/3 OT
+  ---
+  duration_ms: 2.119895
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +B4
+not ok 456 - SH-D1–03: set 1/3 OT +B4
+  ---
+  duration_ms: 1.980546
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH
+not ok 457 - SH-D1–03: set 1/3 OT +SH
+  ---
+  duration_ms: 2.025546
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 1/3 OT +SH +B4
+not ok 458 - SH-D1–03: set 1/3 OT +SH +B4
+  ---
+  duration_ms: 1.875973
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT
+not ok 459 - SH-D1–03: set 2/3 OT
+  ---
+  duration_ms: 1.953028
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +B4
+not ok 460 - SH-D1–03: set 2/3 OT +B4
+  ---
+  duration_ms: 1.906306
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH
+not ok 461 - SH-D1–03: set 2/3 OT +SH
+  ---
+  duration_ms: 2.515255
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH +B4
+not ok 462 - SH-D1–03: set 2/3 OT +SH +B4
+  ---
+  duration_ms: 2.993056
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT
+not ok 463 - SH-D1–03: set 2/3 OT
+  ---
+  duration_ms: 2.047529
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +B4
+not ok 464 - SH-D1–03: set 2/3 OT +B4
+  ---
+  duration_ms: 1.999441
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH
+not ok 465 - SH-D1–03: set 2/3 OT +SH
+  ---
+  duration_ms: 1.935712
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 2/3 OT +SH +B4
+not ok 466 - SH-D1–03: set 2/3 OT +SH +B4
+  ---
+  duration_ms: 1.951184
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 3/3 OT
+not ok 467 - SH-D1–03: set 3/3 OT
+  ---
+  duration_ms: 10.073424
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 3/3 OT +B4
+not ok 468 - SH-D1–03: set 3/3 OT +B4
+  ---
+  duration_ms: 2.110821
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 3/3 OT +SH
+not ok 469 - SH-D1–03: set 3/3 OT +SH
+  ---
+  duration_ms: 1.985657
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set 3/3 OT +SH +B4
+not ok 470 - SH-D1–03: set 3/3 OT +SH +B4
+  ---
+  duration_ms: 1.969934
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: set later-era only (B6 + TLM)
+not ok 471 - SH-D1–03: set later-era only (B6 + TLM)
+  ---
+  duration_ms: 1.980601
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>The books have not described this world’s subastral. It is drawn with the common pattern: solid and fluid swapped, under a black sky.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: legacy 2
+not ok 472 - SH-D1–03: legacy 2
+  ---
+  duration_ms: 1.936138
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: legacy 4
+not ok 473 - SH-D1–03: legacy 4
+  ---
+  duration_ms: 2.032091
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: legacy 7
+not ok 474 - SH-D1–03: legacy 7
+  ---
+  duration_ms: 2.11245
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: legacy 10
+not ok 475 - SH-D1–03: legacy 10
+  ---
+  duration_ms: 1.941259
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SH-D1–03: All
+not ok 476 - SH-D1–03: All
+  ---
+  duration_ms: 2.02551
+  type: 'test'
+  location: '/home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:503:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    global title + neutral fallback
+    + actual - expected
+    
+    + '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+    - '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '<div class="realmcard"><p class="eyebrow">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>'
+  actual: '<div class="realmcard"><p class="eyebrow">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/pr48/tests/atlas-scadrial-reduced.test.ts:508:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..476
+# tests 476
+# suites 0
+# pass 430
+# fail 46
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2311.842212

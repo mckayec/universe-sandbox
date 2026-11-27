@@ -1,0 +1,1715 @@
+{
+  "auditedAt": "2026-11-21",
+  "scope": "AU01 unit1/2 initial world/system surface inventory; not atomic, all-world-field, story, codex, journey, gate or full-work approval",
+  "snapshots": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "path": "public/atlas/packs/cosmere.js",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "groups": [
+        {
+          "id": "rosharan",
+          "anchor": "rosharsun",
+          "spirit": [
+            "honor",
+            "cultivation",
+            "odium"
+          ],
+          "name": "The Rosharan system",
+          "chip": {
+            "border": "rgba(111,162,255,.6)",
+            "color": "#a8c6ff"
+          },
+          "labelFar": 7,
+          "flyDist": 2.1
+        },
+        {
+          "id": "scadrian",
+          "anchor": "scadsun",
+          "spirit": [
+            "preservation",
+            "ruin"
+          ],
+          "name": "The Scadrian system",
+          "chip": {
+            "border": "rgba(201,163,106,.6)",
+            "color": "#e2c08a"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "selish",
+          "anchor": "mashe",
+          "spirit": [
+            "devotion",
+            "dominion"
+          ],
+          "name": "The Selish system",
+          "chip": {
+            "border": "rgba(143,193,232,.6)",
+            "color": "#b6dbf4"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "threnodite",
+          "anchor": "threnosun",
+          "spirit": [
+            "ambition"
+          ],
+          "name": "The Threnodite system",
+          "chip": {
+            "border": "rgba(232,110,90,.6)",
+            "color": "#f4a89a"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "taldain",
+          "anchor": "aisda",
+          "spirit": [
+            "autonomy"
+          ],
+          "name": "The Taldain system",
+          "chip": {
+            "border": "rgba(220,230,255,.6)",
+            "color": "#e6eeff"
+          },
+          "labelFar": 5,
+          "flyDist": 1.4
+        },
+        {
+          "id": "drominad",
+          "anchor": "drominad",
+          "spirit": [
+            "autonomy"
+          ],
+          "name": "The Drominad system",
+          "chip": {
+            "border": "rgba(160,200,230,.6)",
+            "color": "#c4def0"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        }
+      ],
+      "ordinalRecords": [
+        {
+          "id": "jes",
+          "status": "Gas giant · 4th from the sun",
+          "order": "4th from the sun (1 of the ten gas giants)"
+        },
+        {
+          "id": "nan",
+          "status": "Gas giant · 5th from the sun",
+          "order": "5th from the sun (2 of the ten gas giants)"
+        },
+        {
+          "id": "chach",
+          "status": "Gas giant · 6th from the sun",
+          "order": "6th from the sun (3 of the ten gas giants)"
+        },
+        {
+          "id": "vev",
+          "status": "Gas giant · 7th from the sun",
+          "order": "7th from the sun (4 of the ten gas giants)"
+        },
+        {
+          "id": "palah",
+          "status": "Gas giant · 8th from the sun",
+          "order": "8th from the sun (5 of the ten gas giants)"
+        },
+        {
+          "id": "shash",
+          "status": "Gas giant · 9th from the sun",
+          "order": "9th from the sun (6 of the ten gas giants)"
+        },
+        {
+          "id": "betab",
+          "status": "Gas giant · 10th from the sun",
+          "order": "10th from the sun (7 of the ten gas giants)"
+        },
+        {
+          "id": "kak",
+          "status": "Gas giant · 11th from the sun",
+          "order": "11th from the sun (8 of the ten gas giants)"
+        },
+        {
+          "id": "tanat",
+          "status": "Gas giant · 12th from the sun",
+          "order": "12th from the sun (9 of the ten gas giants)"
+        },
+        {
+          "id": "ishi",
+          "status": "Gas giant · 13th from the sun",
+          "order": "13th from the sun (10 of the ten gas giants)"
+        }
+      ]
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "path": "public/atlas/packs/cosmere.js",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "groups": [
+        {
+          "id": "rosharan",
+          "anchor": "rosharsun",
+          "spirit": [
+            "honor",
+            "cultivation",
+            "odium"
+          ],
+          "name": "The Rosharan system",
+          "chip": {
+            "border": "rgba(111,162,255,.6)",
+            "color": "#a8c6ff"
+          },
+          "labelFar": 7,
+          "flyDist": 2.1
+        },
+        {
+          "id": "scadrian",
+          "anchor": "scadsun",
+          "spirit": [
+            "preservation",
+            "ruin"
+          ],
+          "name": "The Scadrian system",
+          "chip": {
+            "border": "rgba(201,163,106,.6)",
+            "color": "#e2c08a"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "selish",
+          "anchor": "mashe",
+          "spirit": [
+            "devotion",
+            "dominion"
+          ],
+          "name": "The Selish system",
+          "chip": {
+            "border": "rgba(143,193,232,.6)",
+            "color": "#b6dbf4"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "threnodite",
+          "anchor": "threnosun",
+          "spirit": [
+            "ambition"
+          ],
+          "name": "The Threnodite system",
+          "chip": {
+            "border": "rgba(232,110,90,.6)",
+            "color": "#f4a89a"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "taldain",
+          "anchor": "aisda",
+          "spirit": [
+            "autonomy"
+          ],
+          "name": "The Taldain system",
+          "chip": {
+            "border": "rgba(220,230,255,.6)",
+            "color": "#e6eeff"
+          },
+          "labelFar": 5,
+          "flyDist": 1.4
+        },
+        {
+          "id": "drominad",
+          "anchor": "drominad",
+          "spirit": [
+            "autonomy"
+          ],
+          "name": "The Drominad system",
+          "chip": {
+            "border": "rgba(160,200,230,.6)",
+            "color": "#c4def0"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        }
+      ],
+      "ordinalRecords": [
+        {
+          "id": "jes",
+          "status": "Gas giant · 4th from the sun",
+          "order": "4th from the sun (1 of the ten gas giants)"
+        },
+        {
+          "id": "nan",
+          "status": "Gas giant · 5th from the sun",
+          "order": "5th from the sun (2 of the ten gas giants)"
+        },
+        {
+          "id": "chach",
+          "status": "Gas giant · 6th from the sun",
+          "order": "6th from the sun (3 of the ten gas giants)"
+        },
+        {
+          "id": "vev",
+          "status": "Gas giant · 7th from the sun",
+          "order": "7th from the sun (4 of the ten gas giants)"
+        },
+        {
+          "id": "palah",
+          "status": "Gas giant · 8th from the sun",
+          "order": "8th from the sun (5 of the ten gas giants)"
+        },
+        {
+          "id": "shash",
+          "status": "Gas giant · 9th from the sun",
+          "order": "9th from the sun (6 of the ten gas giants)"
+        },
+        {
+          "id": "betab",
+          "status": "Gas giant · 10th from the sun",
+          "order": "10th from the sun (7 of the ten gas giants)"
+        },
+        {
+          "id": "kak",
+          "status": "Gas giant · 11th from the sun",
+          "order": "11th from the sun (8 of the ten gas giants)"
+        },
+        {
+          "id": "tanat",
+          "status": "Gas giant · 12th from the sun",
+          "order": "12th from the sun (9 of the ten gas giants)"
+        },
+        {
+          "id": "ishi",
+          "status": "Gas giant · 13th from the sun",
+          "order": "13th from the sun (10 of the ten gas giants)"
+        }
+      ]
+    },
+    {
+      "pr": 48,
+      "head": "057721011d6b0ba676ab957540b044241681382d",
+      "path": "public/atlas/packs/cosmere.js",
+      "blob": "2b8b9ccbfdca6ce47e8fc627e3fce9c416fbec43",
+      "groups": [
+        {
+          "id": "rosharan",
+          "anchor": "rosharsun",
+          "spirit": [
+            "honor",
+            "cultivation",
+            "odium"
+          ],
+          "name": "The Rosharan system",
+          "chip": {
+            "border": "rgba(111,162,255,.6)",
+            "color": "#a8c6ff"
+          },
+          "labelFar": 7,
+          "flyDist": 2.1
+        },
+        {
+          "id": "scadrian",
+          "anchor": "scadsun",
+          "spirit": [
+            "preservation",
+            "ruin"
+          ],
+          "name": "The Scadrian system",
+          "chip": {
+            "border": "rgba(201,163,106,.6)",
+            "color": "#e2c08a"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "selish",
+          "anchor": "mashe",
+          "spirit": [
+            "devotion",
+            "dominion"
+          ],
+          "name": "The Selish system",
+          "chip": {
+            "border": "rgba(143,193,232,.6)",
+            "color": "#b6dbf4"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "threnodite",
+          "anchor": "threnosun",
+          "spirit": [
+            "ambition"
+          ],
+          "name": "The Threnodite system",
+          "chip": {
+            "border": "rgba(232,110,90,.6)",
+            "color": "#f4a89a"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        },
+        {
+          "id": "taldain",
+          "anchor": "aisda",
+          "spirit": [
+            "autonomy"
+          ],
+          "name": "The Taldain system",
+          "chip": {
+            "border": "rgba(220,230,255,.6)",
+            "color": "#e6eeff"
+          },
+          "labelFar": 5,
+          "flyDist": 1.4
+        },
+        {
+          "id": "drominad",
+          "anchor": "drominad",
+          "spirit": [
+            "autonomy"
+          ],
+          "name": "The Drominad system",
+          "chip": {
+            "border": "rgba(160,200,230,.6)",
+            "color": "#c4def0"
+          },
+          "labelFar": 6,
+          "flyDist": 1.6
+        }
+      ],
+      "worlds": [
+        {
+          "id": "rosharsun",
+          "name": "Roshar’s sun",
+          "group": "rosharan",
+          "first": 4,
+          "books": [
+            4,
+            5,
+            8,
+            9,
+            12
+          ],
+          "status": "Star of the Rosharan system",
+          "blurb": "A large white star, a little smaller than UTol’s. Thirteen planets circle it: three rocky worlds close in, then an asteroid belt, then ten gas giants named with the Vorin numerals.",
+          "facts": [
+            [
+              "Planets",
+              "Ashyn, Roshar, Braize, then ten gas giants"
+            ],
+            [
+              "Colour",
+              "White"
+            ]
+          ],
+          "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+          "map": [
+            -0.898,
+            27.422,
+            0
+          ]
+        },
+        {
+          "id": "ashyn",
+          "name": "Ashyn",
+          "group": "rosharan",
+          "first": 8,
+          "books": [
+            8,
+            12
+          ],
+          "status": "First planet · the Tranquiline Halls of legend",
+          "blurb": "The innermost planet, the world humans came from before Roshar. A global catastrophe, probably from Surges used without restraint, drove most of its people away as refugees. Those who stayed live in floating cities in the sky and a few habitable pockets. The surface is violently volcanic, and the axial tilt gives it seasons. Rosharan myth calls it the Tranquiline Halls.",
+          "facts": [
+            [
+              "Order",
+              "1st from the sun"
+            ],
+            [
+              "Known as",
+              "The Tranquiline Halls"
+            ],
+            [
+              "People",
+              "Floating cities and small refuges"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.9028,
+            27.4088,
+            0
+          ]
+        },
+        {
+          "id": "roshar",
+          "name": "Roshar",
+          "group": "rosharan",
+          "first": 4,
+          "books": [
+            4,
+            5,
+            7,
+            8,
+            9,
+            12
+          ],
+          "status": "Second planet · Shardworld of Honor, Cultivation and Odium",
+          "blurb": "A world of stone and wind scoured by highstorms that roll in from the east every few days. One supercontinent, also called Roshar, holds nearly all its life. Plants pull into the rock when the storm comes, animals carry shells, and spheres left out in a storm fill with Stormlight. The Alethi princes fight an endless war on the Shattered Plains, while old stories speak of Desolations and of the Knights Radiant.",
+          "facts": [
+            [
+              "Order",
+              "2nd from the sun"
+            ],
+            [
+              "Shards",
+              "Honor, Cultivation, Odium"
+            ],
+            [
+              "Moons",
+              "Salas, Nomon, Mishim"
+            ],
+            [
+              "Gravity",
+              "About 0.7 g; no axial tilt"
+            ],
+            [
+              "Day",
+              "20 hours; about 500 days a year"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8905,
+            27.4427,
+            0
+          ]
+        },
+        {
+          "id": "braize",
+          "name": "Braize",
+          "group": "rosharan",
+          "first": 5,
+          "books": [
+            5,
+            8,
+            9
+          ],
+          "status": "Third planet · Odium’s world",
+          "blurb": "The third rocky planet, cold, barren and swept by wind under a thin atmosphere, probably outside the habitable zone. Rosharans call it Damnation. Its metallic core draws in souls and Investiture, which is why Odium, the Fused and the tormented Heralds were bound here between Desolations.",
+          "facts": [
+            [
+              "Order",
+              "3rd from the sun"
+            ],
+            [
+              "Rosharan name",
+              "Damnation"
+            ],
+            [
+              "Bound here",
+              "Odium and the Fused"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.875,
+            27.4027,
+            0
+          ]
+        },
+        {
+          "id": "jes",
+          "name": "Jes",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 5th from the sun",
+          "blurb": "Jes is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "5th from the sun (1 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8616,
+            27.443,
+            0
+          ]
+        },
+        {
+          "id": "nan",
+          "name": "Nan",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 6th from the sun",
+          "blurb": "Nan is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "6th from the sun (2 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8511,
+            27.4162,
+            0
+          ]
+        },
+        {
+          "id": "chach",
+          "name": "Chach",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 7th from the sun",
+          "blurb": "Chach is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "7th from the sun (3 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8602,
+            27.3855,
+            0
+          ]
+        },
+        {
+          "id": "vev",
+          "name": "Vev",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 8th from the sun",
+          "blurb": "Vev is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "8th from the sun (4 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8889,
+            27.3648,
+            0
+          ]
+        },
+        {
+          "id": "palah",
+          "name": "Palah",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 9th from the sun",
+          "blurb": "Palah is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "9th from the sun (5 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.9277,
+            27.3662,
+            0
+          ]
+        },
+        {
+          "id": "shash",
+          "name": "Shash",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 10th from the sun",
+          "blurb": "Shash is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "10th from the sun (6 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.9601,
+            27.3931,
+            0
+          ]
+        },
+        {
+          "id": "betab",
+          "name": "Betab",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 11th from the sun",
+          "blurb": "Betab is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "11th from the sun (7 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.9702,
+            27.4373,
+            0
+          ]
+        },
+        {
+          "id": "kak",
+          "name": "Kak",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 12th from the sun",
+          "blurb": "Kak is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "12th from the sun (8 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.9499,
+            27.4817,
+            0
+          ]
+        },
+        {
+          "id": "tanat",
+          "name": "Tanat",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 13th from the sun",
+          "blurb": "Tanat is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "13th from the sun (9 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.9039,
+            27.5062,
+            0
+          ]
+        },
+        {
+          "id": "ishi",
+          "name": "Ishi",
+          "group": "rosharan",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 14th from the sun",
+          "blurb": "Ishi is one of the ten gas giants beyond the Rosharan asteroid belt, named with the Vorin numerals in order outward from the sun (Jes is one, Ishi is ten). None is habitable, none has known moons or rings, and their faint shadows in Shadesmar suggest no one lives there. Why there are exactly ten, the number Honor holds sacred, is not known. The colour is the one painted on the system chart.",
+          "facts": [
+            [
+              "Order",
+              "14th from the sun (10 of the ten gas giants)"
+            ],
+            [
+              "Moons",
+              "None known"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8491,
+            27.4972,
+            0
+          ]
+        },
+        {
+          "id": "scadsun",
+          "name": "Scadrial’s sun",
+          "group": "scadrian",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            10
+          ],
+          "status": "Star of the Scadrian system",
+          "blurb": "Scadrial’s yellow sun. The planet has been moved toward it and back again: the Lord Ruler pushed Scadrial closer, and Harmony later restored it. The system chart shows both the old orbit and the new. Under the ash in the first trilogy the sun looks red.",
+          "facts": [
+            [
+              "Planets",
+              "Scadrial, Aagal Nod, Aagal Uch, two dwarf planets"
+            ]
+          ],
+          "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+          "map": [
+            -0.334,
+            27.4,
+            0
+          ]
+        },
+        {
+          "id": "scadrial",
+          "name": "Scadrial",
+          "group": "scadrian",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            7,
+            10,
+            12
+          ],
+          "status": "The Final Empire",
+          "blurb": "In the Final Empire, ash falls beneath a red sun. Skaa labor in the fields under the Lord Ruler’s rule, brown-leaved crops struggle to grow, and mists gather as evening falls.",
+          "facts": [
+            [
+              "Ruler",
+              "The Lord Ruler"
+            ]
+          ],
+          "distText": "Illustrative system layout; distances and orbital order are not verified here.",
+          "map": [
+            -0.3211,
+            27.4153,
+            0
+          ]
+        },
+        {
+          "id": "aagalnod",
+          "name": "Aagal Nod",
+          "group": "scadrian",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 2nd from the sun",
+          "blurb": "A blue gas giant with at least six moons, the largest planet in the system. The name comes from the Nelazan people and means Near Eye.",
+          "facts": [
+            [
+              "Order",
+              "2nd from the sun"
+            ],
+            [
+              "Moons",
+              "At least six"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.3224,
+            27.3681,
+            0
+          ]
+        },
+        {
+          "id": "aagaluch",
+          "name": "Aagal Uch",
+          "group": "scadrian",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · 3rd from the sun",
+          "blurb": "A red gas giant with at least five moons and a ring system. Its Nelazan name means Far Eye. A comet belt lies beyond it.",
+          "facts": [
+            [
+              "Order",
+              "3rd from the sun"
+            ],
+            [
+              "Moons",
+              "At least five"
+            ],
+            [
+              "Rings",
+              "Yes"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.3793,
+            27.408,
+            0
+          ]
+        },
+        {
+          "id": "scaddwarf1",
+          "name": "Dwarf planet (inner)",
+          "group": "scadrian",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Dwarf planet beyond the comet belt",
+          "blurb": "One of two unnamed dwarf planets at the edge of the Scadrian system, outside the comet belt.",
+          "facts": [
+            [
+              "Order",
+              "Beyond the comet belt"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.274,
+            27.4,
+            0
+          ]
+        },
+        {
+          "id": "scaddwarf2",
+          "name": "Dwarf planet (outer)",
+          "group": "scadrian",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Dwarf planet beyond the comet belt",
+          "blurb": "The second unnamed dwarf planet at the edge of the Scadrian system, outside the comet belt.",
+          "facts": [
+            [
+              "Order",
+              "Outermost"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.373,
+            27.3443,
+            0
+          ]
+        },
+        {
+          "id": "mashe",
+          "name": "Mashe",
+          "group": "selish",
+          "first": 1,
+          "books": [
+            1,
+            7
+          ],
+          "status": "Star of the Selish system",
+          "blurb": "Sel’s sun. Its name holds the Aon Ashe, light.",
+          "facts": [
+            [
+              "Planets",
+              "Donne, Sel, Ky, Ralen, a dwarf planet"
+            ]
+          ],
+          "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+          "map": [
+            -0.83,
+            27.626,
+            0
+          ]
+        },
+        {
+          "id": "donne",
+          "name": "Donne",
+          "group": "selish",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "1st from Mashe",
+          "blurb": "The innermost planet. It lies in the habitable zone but is barren, very hot and scoured by dust storms.",
+          "facts": [
+            [
+              "Order",
+              "1st from Mashe"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8422,
+            27.6216,
+            0
+          ]
+        },
+        {
+          "id": "sel",
+          "name": "Sel",
+          "group": "selish",
+          "first": 1,
+          "books": [
+            1,
+            7
+          ],
+          "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+          "blurb": "Once the city of Elantris shone, and anyone the Shaod took became a near-immortal with silver skin and power drawn from the Aons, the symbols of their writing. Ten years ago it all failed. Now Elantris is a rotting prison where the newly taken are thrown, Arelon is ruled by a merchant king, and the empire of Fjorden, which holds most of the continent, sends priests to convert what is left.",
+          "facts": [
+            [
+              "Order",
+              "2nd from Mashe"
+            ],
+            [
+              "Moon",
+              "Oem"
+            ],
+            [
+              "Continents",
+              "Opelon (Sycla) and a northern continent"
+            ],
+            [
+              "Magic",
+              "AonDor, drawn from the shape of the land"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.819,
+            27.6451,
+            0
+          ]
+        },
+        {
+          "id": "ky",
+          "name": "Ky",
+          "group": "selish",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · beyond the asteroid belt",
+          "blurb": "The first planet past the Selish asteroid belt, apparently a gas giant with four moons. Its other name, Kii, is the Aon for justice.",
+          "facts": [
+            [
+              "Order",
+              "3rd planet, beyond the asteroid belt"
+            ],
+            [
+              "Moons",
+              "Four"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.811,
+            27.5931,
+            0
+          ]
+        },
+        {
+          "id": "ralen",
+          "name": "Ralen",
+          "group": "selish",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Gas giant · the largest Selish planet",
+          "blurb": "Apparently a gas giant, and the largest planet of the system, with five moons and a ring system. A comet belt lies beyond it.",
+          "facts": [
+            [
+              "Order",
+              "4th planet"
+            ],
+            [
+              "Moons",
+              "Five"
+            ],
+            [
+              "Rings",
+              "Yes"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.8733,
+            27.651,
+            0
+          ]
+        },
+        {
+          "id": "seldwarf",
+          "name": "Dwarf planet",
+          "group": "selish",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "At the system’s edge",
+          "blurb": "A small, unnamed dwarf planet just outside the Selish comet belt, at the edge of the system.",
+          "facts": [
+            [
+              "Order",
+              "Outermost"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -0.7709,
+            27.6364,
+            0
+          ]
+        },
+        {
+          "id": "threnosun",
+          "name": "Threnody’s sun",
+          "group": "threnodite",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Red star of the Threnodite system",
+          "blurb": "A red star. In the empty space of this system the Shards Ambition, Odium and probably Mercy fought; Ambition was mortally wounded, and planets that once orbited here were destroyed. The twisted Investiture on Threnody is at least partly a scar of that battle.",
+          "facts": [
+            [
+              "Planets",
+              "Monody, Elegy, Threnody, Purity"
+            ]
+          ],
+          "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+          "map": [
+            -1.66,
+            25.986,
+            0
+          ]
+        },
+        {
+          "id": "monody",
+          "name": "Monody",
+          "group": "threnodite",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "1st from the sun",
+          "blurb": "The planet closest to the sun, similar in size to Elegy and Threnody.",
+          "facts": [
+            [
+              "Order",
+              "1st from the sun"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -1.6487,
+            25.9901,
+            0
+          ]
+        },
+        {
+          "id": "elegy",
+          "name": "Elegy",
+          "group": "threnodite",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "2nd from the sun",
+          "blurb": "The second planet, with one moon, Coronach.",
+          "facts": [
+            [
+              "Order",
+              "2nd from the sun"
+            ],
+            [
+              "Moon",
+              "Coronach"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -1.6665,
+            25.9681,
+            0
+          ]
+        },
+        {
+          "id": "threnody",
+          "name": "Threnody",
+          "group": "threnodite",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "3rd from the sun · scarred by Ambition’s death",
+          "blurb": "A grim frontier world under a red sun. Humans came from the larger continent, now called the Fallen World, where something known only as the Evil appeared long after the Shards left. On the smaller continent the dead linger as shades in the Forests of Hell. Shed blood draws them, and a shade’s touch kills. Silence Montane runs a waystop for travellers and secretly hunts bounties to keep it afloat.",
+          "facts": [
+            [
+              "Order",
+              "3rd from the sun · no moon"
+            ],
+            [
+              "Shard",
+              "Ambition (its death left its mark)"
+            ],
+            [
+              "Continents",
+              "The Fallen World and the forested continent"
+            ],
+            [
+              "Danger",
+              "Shades in the forests"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -1.6767,
+            26.0059,
+            0
+          ]
+        },
+        {
+          "id": "purity",
+          "name": "Purity",
+          "group": "threnodite",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Outermost planet · much the largest",
+          "blurb": "The outermost planet, much farther out than the other three and much larger than any of them.",
+          "facts": [
+            [
+              "Order",
+              "4th, far out"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -1.5994,
+            25.951,
+            0
+          ]
+        },
+        {
+          "id": "aisda",
+          "name": "AisDa",
+          "group": "taldain",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Blue-white supergiant",
+          "blurb": "The larger star of the Taldain system, a blue-white supergiant, which holds both the Eye of Ridos and Taldain in orbit. Its light is central to how Autonomy Invests the planet.",
+          "facts": [
+            [
+              "Companion",
+              "The Eye of Ridos"
+            ]
+          ],
+          "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+          "map": [
+            -1.416,
+            27.126,
+            0
+          ]
+        },
+        {
+          "id": "ridos",
+          "name": "The Eye of Ridos",
+          "group": "taldain",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "White dwarf behind a particle ring",
+          "blurb": "A faint white dwarf wrapped in a dense ring of particles. Every seven orbits of Taldain’s moon it sends pulses of light and Investiture through the ring.",
+          "facts": [
+            [
+              "Ring",
+              "A dense particle cloud"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -1.366,
+            27.126,
+            0
+          ]
+        },
+        {
+          "id": "taldain",
+          "name": "Taldain",
+          "group": "taldain",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "Sole planet · Shardworld of Autonomy",
+          "blurb": "The only planet of a binary system, held at a Lagrange point between the two stars and tidally locked. Dayside always faces AisDa and is covered in white sand; Darkside always faces the Eye of Ridos, hidden behind its dust. On Dayside the Sand Masters fight with ribbons of sand. After a massacre of the Sand Masters, Kenton believes himself to be the only survivor.",
+          "facts": [
+            [
+              "Shard",
+              "Autonomy"
+            ],
+            [
+              "Moon",
+              "Nizh Da, on a polar orbit over the twilight line"
+            ],
+            [
+              "Magic",
+              "Sand mastery"
+            ],
+            [
+              "Peculiarity",
+              "One face to each star"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            -1.386,
+            27.126,
+            0
+          ]
+        },
+        {
+          "id": "drominad",
+          "name": "Drominad",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7,
+            12
+          ],
+          "status": "Star of the Drominad system",
+          "blurb": "The star of First of the Sun, painted pale blue-white on the system chart. Seven planets circle it, named simply by their order: four small worlds in the habitable zone, an asteroid belt, then three gas giants.",
+          "facts": [
+            [
+              "Planets",
+              "First to Seventh of the Sun"
+            ]
+          ],
+          "distText": "Placed from the Cosmere star chart (direction only; no distances given)",
+          "map": [
+            0.64,
+            28.006,
+            0
+          ]
+        },
+        {
+          "id": "firstsun",
+          "name": "First of the Sun",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7,
+            12
+          ],
+          "status": "1st planet · archipelago world",
+          "blurb": "An ocean world with one large mainland and many islands where the Eelakin live. The greatest island, Patji, is a jungle where almost everything can kill you. Trappers like Dusk survive by knowing its rules and by the Aviar, birds that give their owners talents such as seeing danger coming. Now ships from the Ones Above have arrived in orbit. On this globe the Pantheon islands are drawn about five times larger, and the homeisles three times, so they can be seen.",
+          "facts": [
+            [
+              "Order",
+              "1st from Drominad"
+            ],
+            [
+              "Moon",
+              "First of the First"
+            ],
+            [
+              "People",
+              "The Eelakin"
+            ],
+            [
+              "Magic",
+              "Aviar birds"
+            ],
+            [
+              "Threat",
+              "The Ones Above"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            0.647,
+            28.0181,
+            0
+          ]
+        },
+        {
+          "id": "secondsun",
+          "name": "Second of the Sun",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "2nd planet from Drominad",
+          "blurb": "A habitable-zone world, smaller than First of the Sun, where water is the main surface feature. It may hold fully developed human societies.",
+          "facts": [
+            [
+              "Order",
+              "2 of 7"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            0.6505,
+            27.9878,
+            0
+          ]
+        },
+        {
+          "id": "thirdsun",
+          "name": "Third of the Sun",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "3rd planet from Drominad",
+          "blurb": "Apparently the smallest planet in the system. It may hold human societies.",
+          "facts": [
+            [
+              "Order",
+              "3 of 7"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            0.6134,
+            28.0013,
+            0
+          ]
+        },
+        {
+          "id": "fourthsun",
+          "name": "Fourth of the Sun",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "4th planet from Drominad",
+          "blurb": "The last planet in the habitable zone and the last that might hold fully developed human societies. It appears to have rings. An asteroid belt lies beyond it.",
+          "facts": [
+            [
+              "Order",
+              "4 of 7"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            0.6513,
+            28.037,
+            0
+          ]
+        },
+        {
+          "id": "fifthsun",
+          "name": "Fifth of the Sun",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "5th planet from Drominad",
+          "blurb": "The first gas giant past the asteroid belt, with three major moons and a ring system.",
+          "facts": [
+            [
+              "Order",
+              "5 of 7"
+            ],
+            [
+              "Moons",
+              "3 major"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            0.6832,
+            27.9903,
+            0
+          ]
+        },
+        {
+          "id": "sixthsun",
+          "name": "Sixth of the Sun",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "6th planet from Drominad",
+          "blurb": "A gas giant with four major moons and a ring system, apparently the largest planet in the Drominad system.",
+          "facts": [
+            [
+              "Order",
+              "6 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            0.6027,
+            27.9616,
+            0
+          ]
+        },
+        {
+          "id": "seventhsun",
+          "name": "Seventh of the Sun",
+          "group": "drominad",
+          "first": 7,
+          "books": [
+            7
+          ],
+          "status": "7th planet from Drominad",
+          "blurb": "The outermost planet, a gas giant with four major moons.",
+          "facts": [
+            [
+              "Order",
+              "7 of 7"
+            ],
+            [
+              "Moons",
+              "4 major"
+            ]
+          ],
+          "distText": "System drawn enlarged; planet order from the system chart",
+          "map": [
+            0.605,
+            28.0666,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "proposal": {
+    "scope": "proposal only; no implementation or rendered verification",
+    "sourceMatchCount": 2,
+    "rows": [
+      {
+        "id": "jes",
+        "expected": 4,
+        "before": {
+          "status": "Gas giant · 5th from the sun",
+          "order": "5th from the sun (1 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 4th from the sun",
+          "order": "4th from the sun (1 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "nan",
+        "expected": 5,
+        "before": {
+          "status": "Gas giant · 6th from the sun",
+          "order": "6th from the sun (2 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 5th from the sun",
+          "order": "5th from the sun (2 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "chach",
+        "expected": 6,
+        "before": {
+          "status": "Gas giant · 7th from the sun",
+          "order": "7th from the sun (3 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 6th from the sun",
+          "order": "6th from the sun (3 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "vev",
+        "expected": 7,
+        "before": {
+          "status": "Gas giant · 8th from the sun",
+          "order": "8th from the sun (4 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 7th from the sun",
+          "order": "7th from the sun (4 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "palah",
+        "expected": 8,
+        "before": {
+          "status": "Gas giant · 9th from the sun",
+          "order": "9th from the sun (5 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 8th from the sun",
+          "order": "8th from the sun (5 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "shash",
+        "expected": 9,
+        "before": {
+          "status": "Gas giant · 10th from the sun",
+          "order": "10th from the sun (6 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 9th from the sun",
+          "order": "9th from the sun (6 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "betab",
+        "expected": 10,
+        "before": {
+          "status": "Gas giant · 11th from the sun",
+          "order": "11th from the sun (7 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 10th from the sun",
+          "order": "10th from the sun (7 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "kak",
+        "expected": 11,
+        "before": {
+          "status": "Gas giant · 12th from the sun",
+          "order": "12th from the sun (8 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 11th from the sun",
+          "order": "11th from the sun (8 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "tanat",
+        "expected": 12,
+        "before": {
+          "status": "Gas giant · 13th from the sun",
+          "order": "13th from the sun (9 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 12th from the sun",
+          "order": "12th from the sun (9 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      },
+      {
+        "id": "ishi",
+        "expected": 13,
+        "before": {
+          "status": "Gas giant · 14th from the sun",
+          "order": "14th from the sun (10 of the ten gas giants)"
+        },
+        "after": {
+          "status": "Gas giant · 13th from the sun",
+          "order": "13th from the sun (10 of the ten gas giants)"
+        },
+        "equal24": true,
+        "equal37": true
+      }
+    ],
+    "restoredWholeDataEqual": true
+  },
+  "sourceImages": [
+    {
+      "url": "https://reactormag.com/wp-content/uploads/2016/11/drominad-star-chart.jpg",
+      "sha256": "6586fe2bcd9ff7d76f72a958d449694b3b82a2ba34e6c39e18ae1e9571af7fff",
+      "inspection": "direct visual; publisher-hosted monochrome chart"
+    },
+    {
+      "url": "https://uploads.coppermind.net/Starchart_roshar_color.jpg",
+      "sha256": "f85adcca61db020916376a1f2ad5a0a18b74e65ab43c1a351e3a4a630a183e0e",
+      "inspection": "direct visual; secondary-hosted reproduction attributed by file page to Isaac Stewart and Brandon's site; no physical-edition comparison"
+    }
+  ]
+}

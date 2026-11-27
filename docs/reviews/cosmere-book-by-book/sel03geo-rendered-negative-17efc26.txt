@@ -1,0 +1,65 @@
+FAIL 1440x900 sufficient: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 sufficient: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 sufficient: "passes to Teod" absent from page
+FAIL 1440x900 sufficient: "position in the empire is not given" absent from page
+FAIL 1440x900 sufficient: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 sufficient: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 sufficient: "passes to Teod" absent after opening
+FAIL 1440x900 sufficient: "position in the empire is not given" absent after opening
+FAIL 1440x900 legacy book=7: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 legacy book=7: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 legacy book=7: "passes to Teod" absent from page
+FAIL 1440x900 legacy book=7: "position in the empire is not given" absent from page
+FAIL 1440x900 legacy book=7: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 legacy book=7: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 legacy book=7: "passes to Teod" absent after opening
+FAIL 1440x900 legacy book=7: "position in the empire is not given" absent after opening
+FAIL 1440x900 legacy book=10: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 legacy book=10: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 legacy book=10: "passes to Teod" absent from page
+FAIL 1440x900 legacy book=10: "position in the empire is not given" absent from page
+FAIL 1440x900 legacy book=10: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 legacy book=10: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 legacy book=10: "passes to Teod" absent after opening
+FAIL 1440x900 legacy book=10: "position in the empire is not given" absent after opening
+FAIL 1440x900 All: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 All: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 All: "passes to Teod" absent from page
+FAIL 1440x900 All: "position in the empire is not given" absent from page
+FAIL 1440x900 All: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 1440x900 All: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 1440x900 All: "passes to Teod" absent after opening
+FAIL 1440x900 All: "position in the empire is not given" absent after opening
+FAIL 390x844 sufficient: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 sufficient: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 sufficient: "passes to Teod" absent from page
+FAIL 390x844 sufficient: "position in the empire is not given" absent from page
+FAIL 390x844 sufficient: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 sufficient: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 sufficient: "passes to Teod" absent after opening
+FAIL 390x844 sufficient: "position in the empire is not given" absent after opening
+FAIL 390x844 legacy book=7: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 legacy book=7: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 legacy book=7: "passes to Teod" absent from page
+FAIL 390x844 legacy book=7: "position in the empire is not given" absent from page
+FAIL 390x844 legacy book=7: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 legacy book=7: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 legacy book=7: "passes to Teod" absent after opening
+FAIL 390x844 legacy book=7: "position in the empire is not given" absent after opening
+FAIL 390x844 legacy book=10: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 legacy book=10: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 legacy book=10: "passes to Teod" absent from page
+FAIL 390x844 legacy book=10: "position in the empire is not given" absent from page
+FAIL 390x844 legacy book=10: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 legacy book=10: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 legacy book=10: "passes to Teod" absent after opening
+FAIL 390x844 legacy book=10: "position in the empire is not given" absent after opening
+FAIL 390x844 All: mulladil desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 All: maipon desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 All: "passes to Teod" absent from page
+FAIL 390x844 All: "position in the empire is not given" absent from page
+FAIL 390x844 All: mulladil visible desc = new (A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.)
+FAIL 390x844 All: maipon visible desc = new (Shai’s homeland and the heart of Forgery; its position in the empire is not given.)
+FAIL 390x844 All: "passes to Teod" absent after opening
+FAIL 390x844 All: "position in the empire is not given" absent after opening
+{"pass":114,"fail":64}

@@ -1,0 +1,37 @@
+FAIL 1440x900 wok+wor: e24 dossier text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 1440x900 wok+wor: e24 has no place label (Narak (Stormseat))
+FAIL 1440x900 wok+wor: old copy absent
+FAIL 1440x900 wok+wor: visible open text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 1440x900 wok+wor: old copy absent after open
+FAIL 1440x900 wok+wor: travel dossier item new text, no place label
+FAIL 1440x900 legacy book=5: e24 dossier text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 1440x900 legacy book=5: e24 has no place label (Narak (Stormseat))
+FAIL 1440x900 legacy book=5: old copy absent
+FAIL 1440x900 legacy book=5: visible open text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 1440x900 legacy book=5: old copy absent after open
+FAIL 1440x900 legacy book=5: travel dossier item new text, no place label
+FAIL 1440x900 All: e24 dossier text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 1440x900 All: e24 has no place label (Narak (Stormseat))
+FAIL 1440x900 All: old copy absent
+FAIL 1440x900 All: visible open text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 1440x900 All: old copy absent after open
+FAIL 1440x900 All: travel dossier item new text, no place label
+FAIL 390x844 wok+wor: e24 dossier text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 390x844 wok+wor: e24 has no place label (Narak (Stormseat))
+FAIL 390x844 wok+wor: old copy absent
+FAIL 390x844 wok+wor: visible open text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 390x844 wok+wor: old copy absent after open
+FAIL 390x844 wok+wor: travel dossier item new text, no place label
+FAIL 390x844 legacy book=5: e24 dossier text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 390x844 legacy book=5: e24 has no place label (Narak (Stormseat))
+FAIL 390x844 legacy book=5: old copy absent
+FAIL 390x844 legacy book=5: visible open text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 390x844 legacy book=5: old copy absent after open
+FAIL 390x844 legacy book=5: travel dossier item new text, no place label
+FAIL 390x844 All: e24 dossier text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 390x844 All: e24 has no place label (Narak (Stormseat))
+FAIL 390x844 All: old copy absent
+FAIL 390x844 All: visible open text = new (Kaladin swears to protect even those he hates, and flies.)
+FAIL 390x844 All: old copy absent after open
+FAIL 390x844 All: travel dossier item new text, no place label
+{"pass":84,"fail":36}

@@ -1,0 +1,17 @@
+FAIL 1440x900 OT: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 1440x900 OT: old e11 wording absent from page
+FAIL 1440x900 legacy book=2: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 1440x900 legacy book=2: old e11 wording absent from page
+FAIL 1440x900 legacy book=10: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 1440x900 legacy book=10: old e11 wording absent from page
+FAIL 1440x900 All: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 1440x900 All: old e11 wording absent from page
+FAIL 390x844 OT: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 390x844 OT: old e11 wording absent from page
+FAIL 390x844 legacy book=2: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 390x844 legacy book=2: old e11 wording absent from page
+FAIL 390x844 legacy book=10: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 390x844 legacy book=10: old e11 wording absent from page
+FAIL 390x844 All: e11 text = new wording (Searching for the Lord Ruler’s storehouses, the crew lays siege to Fadrex as the world falls apart.)
+FAIL 390x844 All: old e11 wording absent from page
+{"pass":60,"fail":16}

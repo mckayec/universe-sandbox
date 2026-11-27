@@ -1,0 +1,13 @@
+# The Fires of December — FD01 publication evidence for FD08
+
+2026-11-21. This is a narrow evidence addendum to the [November 9 targeted primary-text checkpoint](fires-of-december-primary-checkpoint-2026-11-09.md). FD01 is the ledger work here; FD08 is the publication finding within that checkpoint, separate from the palace/sword correction also called FD01.
+
+| Date | Scope | Evidence |
+| --- | --- | --- |
+| 2026-09-15 | Dragonsteel reports ebook and audiobook rewards had gone out to campaign backers by this date, not the public retail release. | [Dragonsteel campaign update](https://www.youtube.com/watch?v=fEO5kbowtNk), [campaign fulfillment notice](https://www.backerkit.com/c/projects/dragonsteel/hoids-storybook-collection/updates/52092) |
+| 2026-10-06 | Public digital release: Dragonsteel ebook and audiobook. The OverDrive Dragonsteel EPUB ISBN 9781938570728 matches the ISBN recorded in the primary checkpoint. Macmillan corroborates the audio date under ISBN 9781250505897. | [Dragonsteel announcement](https://www.dragonsteelbooks.com/blogs/the-cognitive-realm/the-fires-of-december-sample-5-and-6), [OverDrive EPUB](https://hcpl.overdrive.com/media/13542014), [Macmillan Audio](https://us.macmillan.com/books/9781250505897/thefiresofdecember/) |
+| 2026-12-08 | Scheduled Tor retail hardcover, ISBN 9781250462657, not the date of the Dragonsteel ebook or of all print formats. | [Tor/Macmillan listing](https://us.macmillan.com/books/9781250462657/thefiresofdecember/) |
+
+**FD08 disposition for the finite handoff:** The October evidence gap is closed for the public digital edition only. At [accepted PR48 head 88e9266](https://github.com/mckayec/universe-sandbox/blob/88e9266c3670fc11991b05b46b8ccd4b73931412/public/atlas/packs/cosmere.js#L815), event `e63` still has an unqualified October publication parenthetical. Remove only that parenthetical from the in-world event when this is handed to the builder; keep the story sentence, location, work mapping and spoiler gates unchanged. Use the table above for bibliography/review metadata rather than injecting real-world dates into the story record. Recheck the actual branch/head before implementation or acceptance.
+
+The original checkpoint cited selected primary passages, not a complete sequential audit. Dragonsteel’s [public sample](https://www.dragonsteelbooks.com/blogs/the-cognitive-realm/the-fires-of-december-sample-chapters) covers chapters 1–8; it does not corroborate later passages, validate map art or establish exhaustive crossover coverage. Edition-year metadata does not imply full canon or release approval. No application edits or rendered tests. FD01 unit 1/2 remains in progress under ChatGPT.

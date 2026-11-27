@@ -1,0 +1,777 @@
+{
+  "schema": "cosmere-bibliography-research-v1",
+  "reviewed_at": "2026-11-10",
+  "scope": "Bibliographic routing only; no story-fact or full-book certification.",
+  "input_heads": {
+    "pr48": "f74622957d0a889001598b3a4ad874181da75763",
+    "pr37": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+    "pr24": "cf25cda66e91c573c421a0f3712623db72737a3b"
+  },
+  "works": [
+    {
+      "id": "elantris",
+      "title": "Elantris",
+      "y": 2005,
+      "bucket": 1
+    },
+    {
+      "id": "the-hope-of-elantris",
+      "title": "The Hope of Elantris",
+      "bucket": 7
+    },
+    {
+      "id": "the-emperors-soul",
+      "title": "The Emperor’s Soul",
+      "y": 2012,
+      "bucket": 7
+    },
+    {
+      "id": "mistborn-the-final-empire",
+      "title": "Mistborn: The Final Empire",
+      "y": 2006,
+      "bucket": 2
+    },
+    {
+      "id": "mistborn-the-well-of-ascension",
+      "title": "The Well of Ascension",
+      "y": 2007,
+      "bucket": 2
+    },
+    {
+      "id": "mistborn-the-hero-of-ages",
+      "title": "The Hero of Ages",
+      "y": 2008,
+      "bucket": 2
+    },
+    {
+      "id": "the-eleventh-metal",
+      "title": "The Eleventh Metal",
+      "y": 2011,
+      "bucket": 7
+    },
+    {
+      "id": "the-alloy-of-law",
+      "title": "The Alloy of Law",
+      "y": 2011,
+      "bucket": 6
+    },
+    {
+      "id": "shadows-of-self",
+      "title": "Shadows of Self",
+      "y": 2015,
+      "bucket": 6
+    },
+    {
+      "id": "the-bands-of-mourning",
+      "title": "The Bands of Mourning",
+      "y": 2016,
+      "bucket": 6
+    },
+    {
+      "id": "allomancer-jak-and-the-pits-of-eltania",
+      "title": "Allomancer Jak and the Pits of Eltania, Episodes 28 through 30",
+      "y": 2014,
+      "bucket": 7
+    },
+    {
+      "id": "mistborn-secret-history",
+      "title": "Mistborn: Secret History",
+      "y": 2016,
+      "bucket": 7
+    },
+    {
+      "id": "the-lost-metal",
+      "title": "The Lost Metal",
+      "y": 2022,
+      "bucket": 10
+    },
+    {
+      "id": "warbreaker",
+      "title": "Warbreaker",
+      "y": 2009,
+      "bucket": 3
+    },
+    {
+      "id": "the-way-of-kings",
+      "title": "The Way of Kings",
+      "y": 2010,
+      "bucket": 4
+    },
+    {
+      "id": "words-of-radiance",
+      "title": "Words of Radiance",
+      "y": 2014,
+      "bucket": 5
+    },
+    {
+      "id": "edgedancer",
+      "title": "Edgedancer",
+      "y": 2016,
+      "bucket": 7
+    },
+    {
+      "id": "oathbringer",
+      "title": "Oathbringer",
+      "y": 2017,
+      "bucket": 8
+    },
+    {
+      "id": "dawnshard",
+      "title": "Dawnshard",
+      "y": 2020,
+      "bucket": 8
+    },
+    {
+      "id": "rhythm-of-war",
+      "title": "Rhythm of War",
+      "y": 2020,
+      "bucket": 9
+    },
+    {
+      "id": "wind-and-truth",
+      "title": "Wind and Truth",
+      "y": 2024,
+      "bucket": 12
+    },
+    {
+      "id": "white-sand-volume-1",
+      "title": "White Sand — Volume 1",
+      "y": 2016,
+      "bucket": 7
+    },
+    {
+      "id": "white-sand-volume-2",
+      "title": "White Sand — Volume 2",
+      "y": 2018,
+      "bucket": 7
+    },
+    {
+      "id": "white-sand-volume-3",
+      "title": "White Sand — Volume 3",
+      "y": 2019,
+      "bucket": 7
+    },
+    {
+      "id": "white-sand-omnibus",
+      "title": "White Sand omnibus — revisions and additions",
+      "bucket": 7
+    },
+    {
+      "id": "shadows-for-silence-in-the-forests-of-hell",
+      "title": "Shadows for Silence in the Forests of Hell",
+      "y": 2013,
+      "bucket": 7
+    },
+    {
+      "id": "sixth-of-the-dusk",
+      "title": "Sixth of the Dusk",
+      "y": 2014,
+      "bucket": 7
+    },
+    {
+      "id": "isles-of-the-emberdark",
+      "title": "Isles of the Emberdark",
+      "y": 2025,
+      "bucket": 12
+    },
+    {
+      "id": "tress-of-the-emerald-sea",
+      "title": "Tress of the Emerald Sea",
+      "y": 2023,
+      "bucket": 11
+    },
+    {
+      "id": "yumi-and-the-nightmare-painter",
+      "title": "Yumi and the Nightmare Painter",
+      "y": 2023,
+      "bucket": 11
+    },
+    {
+      "id": "the-sunlit-man",
+      "title": "The Sunlit Man",
+      "y": 2023,
+      "bucket": 11
+    },
+    {
+      "id": "arcanum-unbounded-system-essays-and-maps",
+      "title": "Arcanum Unbounded — system essays and maps",
+      "y": 2016,
+      "bucket": 7
+    },
+    {
+      "id": "the-fires-of-december",
+      "title": "The Fires of December",
+      "y": 2026,
+      "bucket": 12
+    }
+  ],
+  "presets": [
+    {
+      "id": "mistborn-original-trilogy",
+      "label": "Original Mistborn trilogy (3 books)",
+      "versions": [
+        {
+          "v": 1,
+          "seq": [
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistborn-wax-and-wayne",
+      "label": "Wax and Wayne (4 books)",
+      "versions": [
+        {
+          "v": 1,
+          "seq": [
+            "the-alloy-of-law",
+            "shadows-of-self",
+            "the-bands-of-mourning",
+            "the-lost-metal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stormlight-with-novellas",
+      "label": "Stormlight Archive with novellas (7 works)",
+      "versions": [
+        {
+          "v": 1,
+          "seq": [
+            "the-way-of-kings",
+            "words-of-radiance",
+            "edgedancer",
+            "oathbringer",
+            "dawnshard",
+            "rhythm-of-war",
+            "wind-and-truth"
+          ]
+        }
+      ]
+    }
+  ],
+  "research": [
+    {
+      "ledger": "SEL01",
+      "id": "elantris",
+      "title": "Elantris",
+      "y": 2005,
+      "bucket": 1,
+      "sources": [
+        "S01"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "SEL02",
+      "id": "the-hope-of-elantris",
+      "title": "The Hope of Elantris",
+      "y": null,
+      "bucket": 7,
+      "sources": [
+        "S34"
+      ],
+      "qualification": "year-held"
+    },
+    {
+      "ledger": "SEL03",
+      "id": "the-emperors-soul",
+      "title": "The Emperor’s Soul",
+      "y": 2012,
+      "bucket": 7,
+      "sources": [
+        "S07"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB01",
+      "id": "mistborn-the-final-empire",
+      "title": "Mistborn: The Final Empire",
+      "y": 2006,
+      "bucket": 2,
+      "sources": [
+        "S02"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB02",
+      "id": "mistborn-the-well-of-ascension",
+      "title": "The Well of Ascension",
+      "y": 2007,
+      "bucket": 2,
+      "sources": [
+        "S02"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB03",
+      "id": "mistborn-the-hero-of-ages",
+      "title": "The Hero of Ages",
+      "y": 2008,
+      "bucket": 2,
+      "sources": [
+        "S02"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB04",
+      "id": "the-eleventh-metal",
+      "title": "The Eleventh Metal",
+      "y": 2011,
+      "bucket": 7,
+      "sources": [
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB05",
+      "id": "the-alloy-of-law",
+      "title": "The Alloy of Law",
+      "y": 2011,
+      "bucket": 6,
+      "sources": [
+        "S08"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB06",
+      "id": "shadows-of-self",
+      "title": "Shadows of Self",
+      "y": 2015,
+      "bucket": 6,
+      "sources": [
+        "S13"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB07",
+      "id": "the-bands-of-mourning",
+      "title": "The Bands of Mourning",
+      "y": 2016,
+      "bucket": 6,
+      "sources": [
+        "S13"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB08",
+      "id": "allomancer-jak-and-the-pits-of-eltania",
+      "title": "Allomancer Jak and the Pits of Eltania, Episodes 28 through 30",
+      "y": 2014,
+      "bucket": 7,
+      "sources": [
+        "S11",
+        "S12",
+        "S16"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "MB09",
+      "id": "mistborn-secret-history",
+      "title": "Mistborn: Secret History",
+      "y": 2016,
+      "bucket": 7,
+      "sources": [
+        "S14",
+        "S16",
+        "S02"
+      ],
+      "qualification": "cross-book-hold"
+    },
+    {
+      "ledger": "MB10",
+      "id": "the-lost-metal",
+      "title": "The Lost Metal",
+      "y": 2022,
+      "bucket": 10,
+      "sources": [
+        "S15"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "NA01",
+      "id": "warbreaker",
+      "title": "Warbreaker",
+      "y": 2009,
+      "bucket": 3,
+      "sources": [
+        "S05"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "SA01",
+      "id": "the-way-of-kings",
+      "title": "The Way of Kings",
+      "y": 2010,
+      "bucket": 4,
+      "sources": [
+        "S06"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "SA02",
+      "id": "words-of-radiance",
+      "title": "Words of Radiance",
+      "y": 2014,
+      "bucket": 5,
+      "sources": [
+        "S01"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "SA03",
+      "id": "edgedancer",
+      "title": "Edgedancer",
+      "y": 2016,
+      "bucket": 7,
+      "sources": [
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "qualification": "edition-note"
+    },
+    {
+      "ledger": "SA04",
+      "id": "oathbringer",
+      "title": "Oathbringer",
+      "y": 2017,
+      "bucket": 8,
+      "sources": [
+        "S19"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "SA05",
+      "id": "dawnshard",
+      "title": "Dawnshard",
+      "y": 2020,
+      "bucket": 8,
+      "sources": [
+        "S20",
+        "S21"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "SA06",
+      "id": "rhythm-of-war",
+      "title": "Rhythm of War",
+      "y": 2020,
+      "bucket": 9,
+      "sources": [
+        "S22"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "SA07",
+      "id": "wind-and-truth",
+      "title": "Wind and Truth",
+      "y": 2024,
+      "bucket": 12,
+      "sources": [
+        "S23"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "TA01",
+      "id": "white-sand-volume-1",
+      "title": "White Sand — Volume 1",
+      "y": 2016,
+      "bucket": 7,
+      "sources": [
+        "S24"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "TA02",
+      "id": "white-sand-volume-2",
+      "title": "White Sand — Volume 2",
+      "y": 2018,
+      "bucket": 7,
+      "sources": [
+        "S24"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "TA03",
+      "id": "white-sand-volume-3",
+      "title": "White Sand — Volume 3",
+      "y": 2019,
+      "bucket": 7,
+      "sources": [
+        "S24"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "TA04",
+      "id": "white-sand-omnibus",
+      "title": "White Sand omnibus — revisions and additions",
+      "y": null,
+      "bucket": 7,
+      "sources": [
+        "S24",
+        "S25",
+        "S26"
+      ],
+      "qualification": "edition-year-held"
+    },
+    {
+      "ledger": "TH01",
+      "id": "shadows-for-silence-in-the-forests-of-hell",
+      "title": "Shadows for Silence in the Forests of Hell",
+      "y": 2013,
+      "bucket": 7,
+      "sources": [
+        "S27"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "DR01",
+      "id": "sixth-of-the-dusk",
+      "title": "Sixth of the Dusk",
+      "y": 2014,
+      "bucket": 7,
+      "sources": [
+        "S28"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "DR02",
+      "id": "isles-of-the-emberdark",
+      "title": "Isles of the Emberdark",
+      "y": 2025,
+      "bucket": 12,
+      "sources": [
+        "S29"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "LU01",
+      "id": "tress-of-the-emerald-sea",
+      "title": "Tress of the Emerald Sea",
+      "y": 2023,
+      "bucket": 11,
+      "sources": [
+        "S30"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "KO01",
+      "id": "yumi-and-the-nightmare-painter",
+      "title": "Yumi and the Nightmare Painter",
+      "y": 2023,
+      "bucket": 11,
+      "sources": [
+        "S31"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "CA01",
+      "id": "the-sunlit-man",
+      "title": "The Sunlit Man",
+      "y": 2023,
+      "bucket": 11,
+      "sources": [
+        "S32"
+      ],
+      "qualification": "year-supported"
+    },
+    {
+      "ledger": "AU01",
+      "id": "arcanum-unbounded-system-essays-and-maps",
+      "title": "Arcanum Unbounded — system essays and maps",
+      "y": 2016,
+      "bucket": 7,
+      "sources": [
+        "S16",
+        "S17"
+      ],
+      "qualification": "component-hold"
+    },
+    {
+      "ledger": "FD01",
+      "id": "the-fires-of-december",
+      "title": "The Fires of December",
+      "y": 2026,
+      "bucket": 12,
+      "sources": [
+        "S33",
+        "S35"
+      ],
+      "qualification": "catalogue-only"
+    }
+  ],
+  "sources": {
+    "S01": [
+      "https://www.brandonsanderson.com/pages/about-brandon",
+      "Author biography; Elantris May 2005; Words of Radiance March 2014."
+    ],
+    "S02": [
+      "https://www.brandonsanderson.com/pages/the-mistborn-saga-the-original-trilogy",
+      "Author series page; three titles, years 2006/2007/2008 and sequence; Secret History spoiler warning."
+    ],
+    "S03": [
+      "https://www.brandonsanderson.com/pages/the-mistborn-saga-the-wax-wayne-series",
+      "Author series page; four-book sequence."
+    ],
+    "S04": [
+      "https://www.brandonsanderson.com/pages/the-stormlight-archive-series",
+      "Author series page; five numbered novels, Dawnshard placement."
+    ],
+    "S05": [
+      "https://www.brandonsanderson.com/blogs/blog/another-long-and-rambling-post-on-future-books",
+      "Author retrospective; Warbreaker and The Gathering Storm in 2009."
+    ],
+    "S06": [
+      "https://www.brandonsanderson.com/blogs/blog/brandon-sanderson-newsletter-for-may-2013",
+      "Author newsletter; retrospective The Way of Kings 2010 release."
+    ],
+    "S07": [
+      "https://www.brandonsanderson.com/blogs/blog/hugo-nomination-season",
+      "Author awards post; The Emperor’s Soul, Tachyon, November 2012."
+    ],
+    "S08": [
+      "https://www.brandonsanderson.com/blogs/blog/brandon-sanderson-newsletter-for-november-2011",
+      "Dated author newsletter; The Alloy of Law release; forthcoming RPG includes The Eleventh Metal."
+    ],
+    "S09": [
+      "https://www.brandonsanderson.com/blogs/blog/mistborn-adventure-game-out-now-updates",
+      "Author confirms RPG ebook available; see S10 for dated author-blog syndication."
+    ],
+    "S10": [
+      "https://www.goodreads.com/author/show/38550.Brandon_Sanderson/blog?page=83",
+      "Author-blog syndication, December 19, 2011, same RPG release post. S08–10 jointly support 2011 for The Eleventh Metal; print RPG followed later."
+    ],
+    "S11": [
+      "https://www.brandonsanderson.com/pages/the-alloy-of-law-blogs",
+      "Author index dates the Allomancer Jak supplement post October 21, 2014."
+    ],
+    "S12": [
+      "https://www.brandonsanderson.com/blogs/blog/mistborn-adventure-game-alloy-of-law-supplement-new-allomancer-jak-story-giveaway",
+      "Author identifies new Allomancer Jak story in already released supplement; paired with S11."
+    ],
+    "S13": [
+      "https://www.brandonsanderson.com/blogs/blog/mistborn-releases-award-nomination-season",
+      "Author January 2016 release/award context: Bands just released, Shadows previous October / 2015 award eligibility."
+    ],
+    "S14": [
+      "https://play.google.com/store/books/details/Brandon_Sanderson_Mistborn_Secret_History?id=I6VxCwAAQBAJ",
+      "Publisher-supplied listing, sold by Dragonsteel Entertainment; January 2016. Bibliography, not full text."
+    ],
+    "S15": [
+      "https://www.brandonsanderson.com/blogs/blog/the-lost-metal-is-out-now-weekly-update",
+      "Author release announcement around Dragonsteel 2022."
+    ],
+    "S16": [
+      "https://us.macmillan.com/books/9780765391179/arcanumunboundedthecosmerecollection/",
+      "Publisher; November 22, 2016; contents include Edgedancer, essays/illustrations and a White Sand excerpt."
+    ],
+    "S17": [
+      "https://www.brandonsanderson.com/blogs/blog/arcanum-unbounded-the-cosmere-collection-is-out-today",
+      "Author launch; new Edgedancer, system essays and star charts."
+    ],
+    "S18": [
+      "https://www.brandonsanderson.com/blogs/blog/edgedancer-is-out",
+      "Author standalone release; earlier collection version, added Lift interlude prologue, placement between Stormlight 2 and 3."
+    ],
+    "S19": [
+      "https://www.brandonsanderson.com/blogs/blog/oathbringer-is-finally-out",
+      "Author release post; 2017 award-eligibility context."
+    ],
+    "S20": [
+      "https://www.brandonsanderson.com/blogs/blog/dawnshard-is-out",
+      "Author ebook release; between Oathbringer and Rhythm of War."
+    ],
+    "S21": [
+      "https://www.brandonsanderson.com/pages/the-way-of-kings-blogs",
+      "Author index dates Dawnshard release November 10, 2020."
+    ],
+    "S22": [
+      "https://us.macmillan.com/books/9780765326386/rhythmofwar/",
+      "Publisher; November 17, 2020."
+    ],
+    "S23": [
+      "https://read.macmillan.com/torforge/the-stormlight-archive/",
+      "Publisher launch page; Wind and Truth December 6, 2024."
+    ],
+    "S24": [
+      "https://agenceelianebenisti.com/wp-content/uploads/2025/02/JABBERWOCKY-LBF-2025-Comics-Insert.pdf",
+      "Rights-agent catalogue, PDF page 12: White Sand volumes 1/2/3 dated 2016/2018/2019. Omnibus has updated material, but no first-edition date given."
+    ],
+    "S25": [
+      "https://www.brandonsanderson.com/blogs/blog/state-of-the-sanderson-2023",
+      "Author/team annual report; omnibus already out with added material by 2023."
+    ],
+    "S26": [
+      "https://www.simonandschuster.com/books/Brandon-Sandersons-White-Sand-Omnibus/Brandon-Sanderson/9781524122577",
+      "Publisher/distributor listing for hardcover ISBN 9781524122577: February 13, 2024. This edition date is not a verified first release for all omnibus formats."
+    ],
+    "S27": [
+      "https://georgerrmartin.com/dangerous-women-anthology-released/",
+      "Anthology co-editor’s December 11, 2013 release post: Dangerous Women released December 3; contents name Shadows for Silence."
+    ],
+    "S28": [
+      "https://www.brandonsanderson.com/blogs/blog/introducing-the-writing-excuses-anthology",
+      "Author launch announcement signed June 30, 2014; Sixth of the Dusk in Shadows Beneath."
+    ],
+    "S29": [
+      "https://words-of-radiance-leatherbound.backerkit.com/hosted_preorders/project_updates",
+      "Team Dragonsteel project updates: July 1, 2025 digital Isles of the Emberdark files ready, later fulfillment updates. No full-text read implied."
+    ],
+    "S30": [
+      "https://us.macmillan.com/books/9781250899651/tressoftheemeraldsea/",
+      "Publisher trade edition April 4, 2023; year routing only, not earliest backer-release date."
+    ],
+    "S31": [
+      "https://us.macmillan.com/books/9781250899699/yumiandthenightmarepainter/",
+      "Publisher trade edition October 3, 2023; year routing only."
+    ],
+    "S32": [
+      "https://www.brandonsanderson.com/blogs/blog/lightning-signing-reveal-weekly-update",
+      "Author Secret Project 4 available / book-club update before Dragonsteel 2023; supports Sunlit Man year 2023, not a specific first-edition day."
+    ],
+    "S33": [
+      "https://us.macmillan.com/books/9781250505897/thefiresofdecember/",
+      "Macmillan Audio / Dragonsteel listing ISBN 9781250505897: October 6, 2026. Catalogued year only; availability/completeness of narrative not established here."
+    ],
+    "S34": [
+      "https://www.brandonsanderson.com/blogs/blog/the-hope-of-elantris",
+      "Author-hosted story introduction says written January 2006 and originally sold on Amazon. Writing date is not publication date."
+    ],
+    "S35": [
+      "https://www.brandonsanderson.com/blogs/blog/the-fires-of-december",
+      "Official chapter-one preview; February 2026 preview is not the completed work."
+    ]
+  }
+}

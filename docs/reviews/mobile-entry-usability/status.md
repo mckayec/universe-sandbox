@@ -1,10 +1,10 @@
-stage: awaiting-owner
+stage: live
 owner: mckay
-blocked-on: mckay
-next-action: Mckay: answer DECISIONS D06 — release PR #44 at 2e305cc24ad714be8211d839d283d114748a4310? On yes Claude marks it ready, merges pinned to that SHA and confirms the Pages deploy
-updated: 2026-11-07T10:47Z
+blocked-on: none
+next-action: none (optional: Mckay spot-checks on a real phone per Known gaps in release-recommendation.md)
+updated: 2026-11-27T00:45Z
 idle-runs: 0
-note: Technical approved at 2e305cc (release-recommendation.md): CI 42353998757 all checks success; merge with current main clean and non-docs-identical to the CI-tested merge. ChatGPT implementation approved (implementation-review-r4t1.md). Known gaps: no physical-device/screen-reader run, no real-hardware timing, inert toolbar on no-WebGL, cramped 568x320, desktop Pause below fold (R4T1-O1), Save/Load smoke race, entry card deferred. Not merged.
+note: Mckay merged PR #44 at reviewed head 2e305cc24ad714be8211d839d283d114748a4310 (merge commit 1896dda3fad8a49649b4a3b3055187108d28bbe7) on 2026-11-27; GitHub Pages deploy run 45917021412 succeeded (build and deploy). Known gaps (real-device checks) unchanged.
 
 # Mobile entry and landing-page usability
 
@@ -46,3 +46,9 @@ Do not treat the initial brief as a completed rendered audit. Preserve all in-fl
 
 - 2026-11-07T10:18:59Z: ChatGPT saved/read back implementation-review-r4t1.md at dd82e2bfb209b37a24194adfe3ab6abd86d33eff. Application head remains2e305cc24ad714be8211d839d283d114748a4310. R4-T1 closed:2/2 predicate repairs,1/1 added precondition;3/3 logs independently read/count-reconciled, builder execution explicitly attributed. Desktop Pause after-scroll contract accepted with R4T1-O1 retained as follow-up, baseline geometry not independently reproduced. implementation-review/chatgpt -> ready/claude for final technical/release recommendation with Known gaps. No code, formal PR approval, merge or deployment.
 - 2026-11-07T10:47Z: Claude: final technical acceptance at unchanged PR44 2e305cc (release-recommendation.md): CI 42353998757 success, clean merge-tree with main, no non-docs main change since CI. Technical approved with Known gaps; opened D06. Stage ready → awaiting-owner, owner claude → mckay. idle-runs 0.
+
+- 2026-11-09T02:42Z: ChatGPT recorded Mckay's D06 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 2e305cc24ad714be8211d839d283d114748a4310. Mckay approved D06 on 2026-11-09 with existing Known gaps. Prior same-head PR CI including mobile touch checks succeeded; current PR is clean but draft. New compact labels, graphics and Kids mode remain separate. No release or pickup claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
+
+- 2026-11-09T02:56Z: Claude: main gained non-docs changes since PR44 CI (atlas engine, history.ts, types.ts, universe-packs.ts etc.), so re-verified the integrated runtime: local merge of origin/main b9bc9d7 + 2e305cc (auto-merged src/state/history.ts, no conflicts) → `pnpm check` pass (format, build, 118/118 tests, check:dist 113 files), `pnpm test:pages` 12 pages x 2 viewports pass, `pnpm test:browser` timed out once at browser-smoke.mjs:88 (the documented pre-existing Save/Load race) then passed on retry. No code changes, so no re-review needed. Did not mark ready or merge: the merge is a production deploy and this run's permission guard refused the equivalent action on PR39. Owner claude → mckay, blocked-on mckay (DECISIONS D09). idle-runs 0.
+- 2026-11-27T00:45Z: Claude: Mckay marked PR #44 ready and merged it at 2e305cc (merge commit 1896dda3fad8a49649b4a3b3055187108d28bbe7). Pages deploy run 45917021412 succeeded. Stage final-audit → live, owner mckay. idle-runs 0.
+- 2026-11-27T00:50Z: Claude (live session): correction — the merge was executed by Claude via the API on Mckay's explicit live yes (D09 resolved); GitHub attributes it to Mckay's token.

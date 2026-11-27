@@ -115,6 +115,9 @@ function run(steps: Step[], options: { kids?: boolean; release?: boolean } = {})
     showGuides() {},
     liveDragBody: () => null,
     syncKidsBar() {},
+    showMode() {},
+    setTouchHint() {},
+    builderTouchHint: () => '',
     showDialog(d: { hidden: boolean }) {
       d.hidden = false;
     },
