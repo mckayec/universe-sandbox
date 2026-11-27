@@ -33,6 +33,14 @@
     fontHud: '--ca-f-hud',
   };
 
+  /* Tooltip for an "Editorial label" badge. The default only says the atlas chose the label or grouping; it
+     never claims the source is silent about a name. A record's own `editorialNote` wins over `ui.editorialNote`. */
+  const DEF_EDITORIAL_NOTE = 'This atlas supplies this grouping or display label.';
+  function editorialNote(x, ui) {
+    if (x && typeof x.editorialNote === 'string' && x.editorialNote.trim()) return x.editorialNote;
+    return (ui && ui.editorialNote) || DEF_EDITORIAL_NOTE;
+  }
+
   function fanNotice(M) {
     if (M.notice) return M.notice;
     return (
@@ -74,7 +82,7 @@
     );
     ui.placesTitle = ui.placesTitle || 'Places';
     ui.editorialLabel = ui.editorialLabel || 'Editorial label';
-    ui.editorialNote = ui.editorialNote || 'This name is ours, not the books’: the source gives no name for it.';
+    ui.editorialNote = ui.editorialNote || DEF_EDITORIAL_NOTE;
     ui.lockedLink = ui.lockedLink || 'That link points past the book you chose, so it stays hidden.';
     ui.gateTitle = ui.gateTitle || 'Which book have you finished?';
     ui.gateText =
@@ -201,7 +209,7 @@
         .join('');
     const editorial = x =>
       x.editorial
-        ? ' <span class="ca-ed" title="' + ESC(UI.editorialNote) + '">' + ESC(UI.editorialLabel) + '</span>'
+        ? ' <span class="ca-ed" title="' + ESC(editorialNote(x, UI)) + '">' + ESC(UI.editorialLabel) + '</span>'
         : '';
     const placeName = key => {
       const e = IDX.by[key];
@@ -739,5 +747,5 @@
     return api;
   }
 
-  root.AtlasCards = { version: 1, start, model, fanNotice };
+  root.AtlasCards = { version: 1, start, model, fanNotice, editorialNote };
 })(typeof window !== 'undefined' ? window : globalThis);
