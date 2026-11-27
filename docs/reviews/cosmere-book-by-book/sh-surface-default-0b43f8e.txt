@@ -1,0 +1,16 @@
+ok   default 1440x900: R1–R4 still hold after 30 frames ({"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":4096,"cancelled":false}],"texW":4096,"texH":2048,"bakeHidden":true,"bar":"100%"})
+ok   default 1440x900: HD albedo 4096x2048 = expected 4096x2048
+ok   default 1440x900: capture-time uniforms Cognitive + generic style 4 ({"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"})
+ok   default 1440x900: capture-time colours = global look
+info default 1440x900: R7 centre luma (report only) {"meanLuma":4.7,"litFrac":0.033,"side":540}
+ok   default 1440x900: no held Scadrial Cognitive copy in card
+ok   default 1440x900: no page/console errors 
+ok   default 390x844: R1–R4 still hold after 30 frames ({"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":2048,"cancelled":false}],"texW":2048,"texH":1024,"bakeHidden":true,"bar":"100%"})
+ok   default 390x844: HD albedo 2048x1024 = expected 2048x1024
+ok   default 390x844: capture-time uniforms Cognitive + generic style 4 ({"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"})
+ok   default 390x844: capture-time colours = global look
+info default 390x844: R7 centre luma (report only) {"meanLuma":1.6,"litFrac":0.005,"side":234}
+ok   default 390x844: no held Scadrial Cognitive copy in card
+ok   default 390x844: no page/console errors 
+[{"tag":"default 1440x900","complete":true,"secs":"154.1","W":4096,"readiness":{"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":4096,"cancelled":false}],"texW":4096,"texH":2048,"bakeHidden":true,"bar":"100%"},"uniforms":{"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"},"pixels":{"meanLuma":4.7,"litFrac":0.033,"side":540},"file":"/tmp/shots/sh-surface-default-1440x900.png"},{"tag":"default 390x844","complete":true,"secs":"31.8","W":2048,"readiness":{"view":"world","sel":"scadrial","realm":"cognitive","pl":"scadrial","jobs":[{"pass":3,"row":0,"W":2048,"cancelled":false}],"texW":2048,"texH":1024,"bakeHidden":true,"bar":"100%"},"uniforms":{"realm":1,"style":4,"c1":"#1e1a2c","c2":"#5a5088","c3":"#0e0c14"},"pixels":{"meanLuma":1.6,"litFrac":0.005,"side":234},"file":"/tmp/shots/sh-surface-default-390x844.png"}]
+{"mode":"default","pass":12,"fail":0,"complete":2,"required":2,"incomplete":0}

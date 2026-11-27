@@ -1,0 +1,1989 @@
+{
+  "manifest": {
+    "pr24.js": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+    "pr37.js": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+    "pr48.js": "b10a2f5d0bda2710c38afa5f70f36072207d0bbc",
+    "engine.js": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+    "reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+  },
+  "counts": {
+    "hashes": 5,
+    "selectedTypes": 22,
+    "slots": 66,
+    "present": 48,
+    "absent": 18,
+    "eventSlots": 42,
+    "presentEvents": 26
+  },
+  "inventories": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "file": "pr24.js",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e55",
+          "value": {
+            "id": "e55",
+            "book": 12,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "A contest of champions",
+            "text": "Dalinar and Odium agree on a contest, with ten days for both sides to prepare."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e56",
+          "value": {
+            "id": "e56",
+            "book": 12,
+            "world": "roshar",
+            "site": "shinovar",
+            "title": "Kaladin and Szeth in Shinovar",
+            "text": "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e57",
+          "value": {
+            "id": "e57",
+            "book": 12,
+            "world": "roshar",
+            "site": "thaylen",
+            "title": "Fronts falling",
+            "text": "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e58",
+          "value": {
+            "id": "e58",
+            "book": 12,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "Retribution",
+            "text": "Dalinar renounces Honor’s power. Odium absorbs it, kills the Stormfather and becomes Retribution."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e59",
+          "value": {
+            "id": "e59",
+            "book": 12,
+            "world": "roshar",
+            "title": "Stormfall",
+            "text": "Retribution’s ascension ends the old storms and leaves Roshar isolated in slowed time. Provisional account based on the Coppermind wiki; not independently checked against the book."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e60",
+          "value": {
+            "id": "e60",
+            "book": 12,
+            "world": "scadrial",
+            "title": "Hoid seeks help",
+            "text": "In the epilogue Hoid travels to Scadrial to look for allies against Retribution."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e118",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e119",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e120",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e121",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e122",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e123",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e124",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e125",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "narak",
+          "value": {
+            "id": "narak",
+            "name": "Narak (Stormseat)",
+            "lat": -12,
+            "lon": 59.5,
+            "books": [
+              5,
+              8,
+              12
+            ],
+            "desc": "The old Natanatan capital at the centre of the Plains, the listeners’ stronghold, with an Oathgate on a plateau to its south-west."
+          }
+        },
+        {
+          "type": "site",
+          "id": "shatteredplains",
+          "value": {
+            "id": "shatteredplains",
+            "name": "The Shattered Plains",
+            "lat": -12,
+            "lon": 58,
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave."
+          }
+        },
+        {
+          "type": "site",
+          "id": "pool",
+          "value": {
+            "id": "pool",
+            "name": "Cultivation’s Perpendicularity",
+            "lat": 2,
+            "lon": 15,
+            "books": [
+              9,
+              12
+            ],
+            "desc": "A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth."
+          }
+        },
+        {
+          "type": "site",
+          "id": "kharbranth",
+          "value": {
+            "id": "kharbranth",
+            "name": "Kharbranth",
+            "lat": -27,
+            "lon": 8,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian."
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/12",
+          "value": {
+            "status": "Retribution’s world · cut off in slowed time",
+            "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule. Provisional account based on the Coppermind wiki; not independently checked against the book.",
+            "gfx": {
+              "clouds": 0.7,
+              "cloudCol": "#4a3540",
+              "atmo": "#c04a48",
+              "lights": 0.15
+            }
+          }
+        },
+        {
+          "type": "facts",
+          "id": "roshar",
+          "value": [
+            [
+              "Order",
+              "2nd from the sun"
+            ],
+            [
+              "Shards",
+              "Honor, Cultivation, Odium"
+            ],
+            [
+              "Moons",
+              "Salas, Nomon, Mishim (a fourth broke up long ago)"
+            ],
+            [
+              "Gravity",
+              "About 0.7 g; no axial tilt"
+            ],
+            [
+              "Day",
+              "20 hours; about 500 days a year"
+            ]
+          ]
+        },
+        {
+          "type": "codex",
+          "id": "selected",
+          "value": [
+            {
+              "group": "shards",
+              "name": "Honor",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions.",
+              "more": [
+                [
+                  12,
+                  "Merged with Odium after Dalinar renounced it, forming Retribution."
+                ]
+              ]
+            },
+            {
+              "group": "shards",
+              "name": "Valor",
+              "first": 12,
+              "desc": "A Shard who was active on Miral and founded temples there."
+            },
+            {
+              "group": "shards",
+              "name": "Retribution",
+              "first": 12,
+              "desc": "Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere."
+            },
+            {
+              "group": "people",
+              "name": "Hoid (Wit)",
+              "role": "Worldhopper",
+              "books": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                11,
+                12
+              ],
+              "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+              "more": [
+                [
+                  7,
+                  "He was on Yolen at the Shattering."
+                ],
+                [
+                  11,
+                  "Narrates Tress’s story."
+                ],
+                [
+                  12,
+                  "Goes to Scadrial for help after Roshar falls."
+                ]
+              ]
+            },
+            {
+              "group": "people",
+              "name": "Kelsier",
+              "role": "The Survivor",
+              "books": [
+                2,
+                7,
+                12
+              ],
+              "desc": "Leader of the crew that brings down the Lord Ruler.",
+              "more": [
+                [
+                  7,
+                  "His story continues after death in Secret History."
+                ],
+                [
+                  12,
+                  "Works with the Ghostbloods far from Scadrial."
+                ]
+              ]
+            },
+            {
+              "group": "people",
+              "name": "Kaladin Stormblessed",
+              "role": "Windrunner",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "A soldier made slave who becomes the first of the new Knights Radiant."
+            },
+            {
+              "group": "people",
+              "name": "Shallan Davar",
+              "role": "Lightweaver",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "An artist and scholar hiding a past she won’t remember."
+            },
+            {
+              "group": "people",
+              "name": "Dalinar Kholin",
+              "role": "The Blackthorn",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "A warlord trying to become a better man.",
+              "more": [
+                [
+                  8,
+                  "Becomes the Bondsmith."
+                ],
+                [
+                  12,
+                  "Dies after renouncing Honor’s power."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "registry",
+          "id": "wind-and-truth",
+          "value": null
+        }
+      ]
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "file": "pr37.js",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e55",
+          "value": {
+            "id": "e55",
+            "book": 12,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "A contest of champions",
+            "text": "Dalinar and Odium agree on a contest, with ten days for both sides to prepare."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e56",
+          "value": {
+            "id": "e56",
+            "book": 12,
+            "world": "roshar",
+            "site": "shinovar",
+            "lm": "pass",
+            "title": "Kaladin and Szeth in Shinovar",
+            "text": "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e57",
+          "value": {
+            "id": "e57",
+            "book": 12,
+            "world": "roshar",
+            "site": "thaylen",
+            "title": "Fronts falling",
+            "text": "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e58",
+          "value": {
+            "id": "e58",
+            "book": 12,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "Retribution",
+            "text": "Dalinar renounces Honor’s power. Odium absorbs it, kills the Stormfather and becomes Retribution."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e59",
+          "value": {
+            "id": "e59",
+            "book": 12,
+            "world": "roshar",
+            "title": "Stormfall",
+            "text": "Retribution’s ascension ends the old storms and leaves Roshar isolated in slowed time."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e60",
+          "value": {
+            "id": "e60",
+            "book": 12,
+            "world": "scadrial",
+            "title": "Hoid seeks help",
+            "text": "In the epilogue Hoid travels to Scadrial to look for allies against Retribution."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e118",
+          "value": {
+            "id": "e118",
+            "book": 12,
+            "world": "roshar",
+            "site": "urithiru",
+            "lm": "cistern",
+            "title": "Into the Spiritual Realm",
+            "text": "Dalinar opens a perpendicularity in the tower and goes with Navani into the Spiritual Realm to learn the truth about the past."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e119",
+          "value": {
+            "id": "e119",
+            "book": 12,
+            "world": "roshar",
+            "site": "shinovar",
+            "lm": "stoneward",
+            "title": "Taln’s Honorblade",
+            "text": "At Stoneward Szeth kills a corrupted stone shaman and takes back the first of the stolen Honorblades."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e120",
+          "value": {
+            "id": "e120",
+            "book": 12,
+            "world": "roshar",
+            "site": "shinovar",
+            "lm": "skybreaker",
+            "fx": "duel",
+            "title": "Kaladin and Nale",
+            "text": "Kaladin duels the Herald Nale, who yields his Honorblade and reveals what Ishar has done to Shinovar."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e121",
+          "value": {
+            "id": "e121",
+            "book": 12,
+            "world": "roshar",
+            "site": "shinovar",
+            "lm": "bondsmith",
+            "fx": "battle",
+            "title": "The Fifth Ideal",
+            "text": "Ishar raises corrupted Honorbearers against them. Kaladin speaks the Fifth Ideal and frees Ishar, and Szeth fights with Nightblood."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e122",
+          "value": {
+            "id": "e122",
+            "book": 12,
+            "world": "roshar",
+            "site": "azimir",
+            "lm": "market",
+            "fx": "battle",
+            "title": "The defence of Azimir",
+            "text": "Adolin helps the Azish defend the Oathgate under the Grand Market dome against Odium’s armies and a thunderclast, at terrible cost to himself."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e123",
+          "value": {
+            "id": "e123",
+            "book": 12,
+            "world": "roshar",
+            "site": "narak",
+            "lm": "narakprime",
+            "fx": "battle",
+            "title": "Bridge Four on Narak",
+            "text": "Sigzil and Bridge Four hold four fortresses on Narak. They fall one by one, and Venli’s chasmfiends storm Narak Prime."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e124",
+          "value": {
+            "id": "e124",
+            "book": 12,
+            "world": "roshar",
+            "site": "thaylen",
+            "lm": "palace",
+            "title": "Fen’s choice",
+            "text": "Odium out-argues Jasnah over the contest’s terms, and Queen Fen signs Thaylenah over to him without a battle."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e125",
+          "value": {
+            "id": "e125",
+            "book": 12,
+            "world": "roshar",
+            "site": "kasitor",
+            "lm": "gateway",
+            "title": "Cusicesh speaks",
+            "text": "For the first time, the great spirit of Kasitor speaks to the Iriali and opens a gateway for them to leave Roshar."
+          }
+        },
+        {
+          "type": "site",
+          "id": "narak",
+          "value": {
+            "id": "narak",
+            "name": "Narak (Stormseat)",
+            "lat": -12,
+            "lon": 59.5,
+            "books": [
+              5,
+              8,
+              12
+            ],
+            "desc": "The old Natanatan capital at the centre of the Plains, the listeners’ stronghold, with an Oathgate on a plateau to its south-west.",
+            "scene": {
+              "kind": "ruins",
+              "arch": "ancient",
+              "size": "medium",
+              "tod": "dusk",
+              "weather": "storm",
+              "sky": {
+                "moons": 3
+              },
+              "landmarks": [
+                {
+                  "id": "stormseat",
+                  "name": "The listener city",
+                  "kind": "ruin",
+                  "at": [
+                    0,
+                    0.1
+                  ],
+                  "h": 1.2,
+                  "books": [
+                    5
+                  ],
+                  "desc": "Ruined Natanatan buildings at the heart of the Plains where the listeners make their stronghold. Here Eshonai’s people sing in the new forms that call the Everstorm."
+                },
+                {
+                  "id": "oathgate",
+                  "name": "The Oathgate plateau",
+                  "kind": "portal",
+                  "at": [
+                    -0.6,
+                    -0.5
+                  ],
+                  "h": 1.1,
+                  "books": [
+                    5,
+                    8
+                  ],
+                  "desc": "A round plateau south-west of Narak, its gate hidden under centuries of crem. Shallan finds the mechanism and carries the trapped armies away to Urithiru."
+                },
+                {
+                  "id": "narakone",
+                  "name": "Narak One",
+                  "kind": "keep",
+                  "at": [
+                    0.6,
+                    0.5
+                  ],
+                  "books": [
+                    12
+                  ],
+                  "desc": "One of four fortresses Sigzil and Bridge Four build on Narak to hold the Plains through the ten days of the contest. It is the first to fall."
+                },
+                {
+                  "id": "naraktwo",
+                  "name": "Narak Two",
+                  "kind": "keep",
+                  "at": [
+                    -0.5,
+                    0.55
+                  ],
+                  "books": [
+                    12
+                  ],
+                  "desc": "The fortress Sigzil falls back to after Narak One is lost, and holds while Narak Three falls."
+                },
+                {
+                  "id": "narakthree",
+                  "name": "Narak Three",
+                  "kind": "keep",
+                  "at": [
+                    0.65,
+                    -0.35
+                  ],
+                  "books": [
+                    12
+                  ],
+                  "desc": "The third fortress, lost on the seventh day."
+                },
+                {
+                  "id": "narakprime",
+                  "name": "Narak Prime",
+                  "kind": "citadel",
+                  "at": [
+                    0,
+                    -0.15
+                  ],
+                  "h": 1.3,
+                  "books": [
+                    12
+                  ],
+                  "desc": "The central stronghold and the last line on the Plains, stormed by Venli’s chasmfiends at the end of the defence."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "shatteredplains",
+          "value": {
+            "id": "shatteredplains",
+            "name": "The Shattered Plains",
+            "lat": -12,
+            "lon": 58,
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.",
+            "scene": {
+              "kind": "battlefield",
+              "arch": "ancient",
+              "size": "huge",
+              "tod": "day",
+              "weather": "clear",
+              "sky": {
+                "moons": 3
+              },
+              "landmarks": [
+                {
+                  "id": "plateau",
+                  "name": "The contested plateaus",
+                  "kind": "peak",
+                  "at": [
+                    0.3,
+                    0.2
+                  ],
+                  "h": 1.2,
+                  "books": [
+                    4
+                  ],
+                  "desc": "Chasmfiends climb up onto the plateaus to pupate, and the highprinces race each other across the chasms to cut out the gemhearts. Bridge crews run ahead under listener arrows, carrying the bridges."
+                },
+                {
+                  "id": "chasms",
+                  "name": "The chasms",
+                  "kind": "cliff",
+                  "at": [
+                    0,
+                    -0.2
+                  ],
+                  "h": 1.4,
+                  "books": [
+                    4,
+                    5
+                  ],
+                  "desc": "Deep cracks between the plateaus, flooded by every highstorm. Bridge Four is sent down to scavenge from the dead, and Kaladin secretly trains his men with spears here."
+                },
+                {
+                  "id": "honorchasm",
+                  "name": "The Honor Chasm",
+                  "kind": "cliff",
+                  "at": [
+                    -0.75,
+                    0.35
+                  ],
+                  "h": 0.9,
+                  "books": [
+                    4
+                  ],
+                  "desc": "A chasm a short walk from Sadeas’s warcamp, the one place bridgemen may go unwatched, and where despairing bridgemen jump. Kaladin comes here meaning to end it, and Syl talks him into trying once more."
+                },
+                {
+                  "id": "eastedge",
+                  "name": "The eastern pillars",
+                  "kind": "stones",
+                  "at": [
+                    0.85,
+                    -0.1
+                  ],
+                  "h": 1.6,
+                  "books": [
+                    4
+                  ],
+                  "desc": "Toward the east the chasms widen and the plateaus break into impassable pillars, the way the listeners came and went."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "pool",
+          "value": {
+            "id": "pool",
+            "name": "Cultivation’s Perpendicularity",
+            "lat": 2,
+            "lon": 15,
+            "books": [
+              9,
+              12
+            ],
+            "desc": "A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth.",
+            "scene": {
+              "kind": "crater",
+              "arch": "organic",
+              "size": "small",
+              "tod": "day",
+              "weather": "mist",
+              "landmarks": [
+                {
+                  "id": "perp",
+                  "name": "Cultivation’s Perpendicularity",
+                  "kind": "lake",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "books": [
+                    9,
+                    12
+                  ],
+                  "desc": "A crater lake that opens into Shadesmar, the usual way worldhoppers come to Roshar."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "site",
+          "id": "kharbranth",
+          "value": {
+            "id": "kharbranth",
+            "name": "Kharbranth",
+            "lat": -27,
+            "lon": 8,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian.",
+            "scene": {
+              "kind": "port",
+              "arch": "classical",
+              "size": "medium",
+              "tod": "day",
+              "weather": "clear",
+              "coast": "s",
+              "landmarks": [
+                {
+                  "id": "conclave",
+                  "name": "The Conclave",
+                  "kind": "palace",
+                  "at": [
+                    0,
+                    0.75
+                  ],
+                  "h": 1.4,
+                  "books": [
+                    4,
+                    5,
+                    8
+                  ],
+                  "desc": "The king’s palace, dug into the mountain at the top of the city. Here Taravangian reveals to Szeth that he holds his oathstone and sends him after Dalinar."
+                },
+                {
+                  "id": "palanaeum",
+                  "name": "The Palanaeum",
+                  "kind": "library",
+                  "at": [
+                    -0.2,
+                    0.6
+                  ],
+                  "h": 1.1,
+                  "books": [
+                    4
+                  ],
+                  "desc": "The greatest library on Roshar, beneath the Conclave. Shallan finds Jasnah studying here and talks her way into becoming her ward."
+                },
+                {
+                  "id": "ralinsa",
+                  "name": "The Ralinsa",
+                  "kind": "bridge",
+                  "at": [
+                    0.1,
+                    0.1
+                  ],
+                  "books": [
+                    4
+                  ],
+                  "desc": "The switchback road climbing from the harbour to the Conclave."
+                },
+                {
+                  "id": "harbour",
+                  "name": "The harbour",
+                  "kind": "dock",
+                  "at": [
+                    0,
+                    -0.75
+                  ],
+                  "books": [
+                    4
+                  ],
+                  "desc": "A natural wedge harbour on the Tarat Sea. Shallan arrives here on the Wind’s Pleasure, and leaves on it with Jasnah."
+                },
+                {
+                  "id": "alley",
+                  "name": "The theatre-district alley",
+                  "kind": "plaza",
+                  "at": [
+                    0.5,
+                    -0.2
+                  ],
+                  "h": 0.5,
+                  "books": [
+                    4
+                  ],
+                  "desc": "Jasnah walks into a dark alley knowing she will be attacked, and Soulcasts the four thugs who follow her while Shallan watches."
+                },
+                {
+                  "id": "hospital",
+                  "name": "The hospitals",
+                  "kind": "hall",
+                  "at": [
+                    -0.5,
+                    -0.1
+                  ],
+                  "books": [
+                    4
+                  ],
+                  "desc": "Kharbranth’s hospitals are famous across Roshar, and its surgeons go wherever there is war."
+                },
+                {
+                  "id": "bells",
+                  "name": "The bells",
+                  "kind": "tower",
+                  "at": [
+                    0.45,
+                    0.45
+                  ],
+                  "books": [
+                    4
+                  ],
+                  "desc": "The City of Bells: chimes all over the city ring the hours and warn of highstorms."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/12",
+          "value": {
+            "status": "Retribution’s world · cut off in slowed time",
+            "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Azir, Urithiru and the Shattered Plains resist his rule.",
+            "gfx": {
+              "clouds": 0.7,
+              "cloudCol": "#4a3540",
+              "atmo": "#c04a48",
+              "lights": 0.15
+            }
+          }
+        },
+        {
+          "type": "facts",
+          "id": "roshar",
+          "value": [
+            [
+              "Order",
+              "2nd from the sun"
+            ],
+            [
+              "Shards",
+              "Honor, Cultivation, Odium"
+            ],
+            [
+              "Moons",
+              "Salas, Nomon, Mishim (a fourth broke up long ago)"
+            ],
+            [
+              "Gravity",
+              "About 0.7 g; no axial tilt"
+            ],
+            [
+              "Day",
+              "20 hours; about 500 days a year"
+            ]
+          ]
+        },
+        {
+          "type": "codex",
+          "id": "selected",
+          "value": [
+            {
+              "group": "shards",
+              "name": "Honor",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions.",
+              "more": [
+                [
+                  12,
+                  "Merged with Odium after Dalinar renounced it, forming Retribution."
+                ]
+              ]
+            },
+            {
+              "group": "shards",
+              "name": "Valor",
+              "first": 12,
+              "desc": "A Shard who was active on Miral and founded temples there."
+            },
+            {
+              "group": "shards",
+              "name": "Retribution",
+              "first": 12,
+              "desc": "Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere."
+            },
+            {
+              "group": "people",
+              "name": "Hoid (Wit)",
+              "role": "Worldhopper",
+              "books": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                11,
+                12
+              ],
+              "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+              "more": [
+                [
+                  7,
+                  "He was on Yolen at the Shattering."
+                ],
+                [
+                  11,
+                  "Narrates Tress’s story."
+                ],
+                [
+                  12,
+                  "Goes to Scadrial for help after Roshar falls."
+                ]
+              ]
+            },
+            {
+              "group": "people",
+              "name": "Kelsier",
+              "role": "The Survivor",
+              "books": [
+                2,
+                7,
+                12
+              ],
+              "desc": "Leader of the crew that brings down the Lord Ruler.",
+              "more": [
+                [
+                  7,
+                  "His story continues after death in Secret History."
+                ],
+                [
+                  12,
+                  "Works with the Ghostbloods far from Scadrial."
+                ]
+              ]
+            },
+            {
+              "group": "people",
+              "name": "Kaladin Stormblessed",
+              "role": "Windrunner",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "A soldier made slave who becomes the first of the new Knights Radiant."
+            },
+            {
+              "group": "people",
+              "name": "Shallan Davar",
+              "role": "Lightweaver",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "An artist and scholar hiding a past she won’t remember."
+            },
+            {
+              "group": "people",
+              "name": "Dalinar Kholin",
+              "role": "The Blackthorn",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "A warlord trying to become a better man.",
+              "more": [
+                [
+                  8,
+                  "Becomes the Bondsmith."
+                ],
+                [
+                  12,
+                  "Dies after renouncing Honor’s power."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "registry",
+          "id": "wind-and-truth",
+          "value": null
+        }
+      ]
+    },
+    {
+      "pr": 48,
+      "head": "5c59d326e1e2fb188b75203cdfd594c08c77ef2a",
+      "file": "pr48.js",
+      "rows": [
+        {
+          "type": "event",
+          "id": "e55",
+          "value": {
+            "id": "e55",
+            "book": 12,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "A contest of champions",
+            "text": "Dalinar and Odium agree on a contest, with ten days for both sides to prepare."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e56",
+          "value": {
+            "id": "e56",
+            "book": 12,
+            "world": "roshar",
+            "site": "shinovar",
+            "title": "Kaladin and Szeth in Shinovar",
+            "text": "They cross the storms to Szeth’s homeland and find the Herald Ishar behind its silence."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e57",
+          "value": {
+            "id": "e57",
+            "book": 12,
+            "world": "roshar",
+            "site": "thaylen",
+            "title": "Fronts falling",
+            "text": "Odium’s side gains ground at Thaylenah, Azimir and the Shattered Plains."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e58",
+          "value": {
+            "id": "e58",
+            "book": 12,
+            "world": "roshar",
+            "site": "urithiru",
+            "title": "Retribution",
+            "text": "Dalinar renounces Honor’s power. Odium absorbs it, kills the Stormfather and becomes Retribution."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e59",
+          "value": {
+            "id": "e59",
+            "book": 12,
+            "world": "roshar",
+            "title": "The Night of Sorrows",
+            "text": "Stormlight is withdrawn, the Everstorm covers the world, and time on Roshar slows to a crawl."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e60",
+          "value": {
+            "id": "e60",
+            "book": 12,
+            "world": "scadrial",
+            "title": "Hoid seeks help",
+            "text": "In the epilogue Hoid travels to Scadrial to look for allies against Retribution."
+          }
+        },
+        {
+          "type": "event",
+          "id": "e118",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e119",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e120",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e121",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e122",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e123",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e124",
+          "value": null
+        },
+        {
+          "type": "event",
+          "id": "e125",
+          "value": null
+        },
+        {
+          "type": "site",
+          "id": "narak",
+          "value": {
+            "id": "narak",
+            "name": "Narak (Stormseat)",
+            "lat": -12,
+            "lon": 59.5,
+            "books": [
+              5,
+              8,
+              12
+            ],
+            "desc": "The old Natanatan capital at the centre of the Plains, the listeners’ stronghold, with an Oathgate on a plateau to its south-west."
+          }
+        },
+        {
+          "type": "site",
+          "id": "shatteredplains",
+          "value": {
+            "id": "shatteredplains",
+            "name": "The Shattered Plains",
+            "lat": -12,
+            "lon": 58,
+            "books": [
+              4,
+              5,
+              8,
+              9,
+              12
+            ],
+            "desc": "An expanse of rocky plateaus divided by deep chasms, east of the Alethi warcamps. Kaladin is brought here as a slave."
+          }
+        },
+        {
+          "type": "site",
+          "id": "pool",
+          "value": {
+            "id": "pool",
+            "name": "Cultivation’s Perpendicularity",
+            "lat": 2,
+            "lon": 15,
+            "books": [
+              9,
+              12
+            ],
+            "desc": "A crater lake in the Horneater Peaks: Roshar’s stable doorway into Shadesmar and the usual way worldhoppers arrive. It vanished when Cultivation left in Wind and Truth."
+          }
+        },
+        {
+          "type": "site",
+          "id": "kharbranth",
+          "value": {
+            "id": "kharbranth",
+            "name": "Kharbranth",
+            "lat": -27,
+            "lon": 8,
+            "books": [
+              4,
+              5,
+              8
+            ],
+            "desc": "A city-state built up a mountainside in a wedge harbour on the Tarat Sea, with the Palanaeum library dug beneath it. Shallan finds Jasnah here; its king is Taravangian."
+          }
+        },
+        {
+          "type": "era",
+          "id": "roshar/12",
+          "value": {
+            "status": "Retribution’s world · cut off in slowed time",
+            "blurb": "Dalinar challenged Odium to a contest of champions and, holding Honor’s power at the end, renounced it. Odium took Honor’s power into his own and became Retribution, killed the Stormfather, drew all Stormlight from the world and turned the highstorm into a planet-wide Everstorm. Time on Roshar has slowed, so about a decade there passes for decades elsewhere. Only Azir is spared the storm.",
+            "gfx": {
+              "clouds": 0.7,
+              "cloudCol": "#4a3540",
+              "atmo": "#c04a48",
+              "lights": 0.15
+            }
+          }
+        },
+        {
+          "type": "facts",
+          "id": "roshar",
+          "value": [
+            [
+              "Order",
+              "2nd from the sun"
+            ],
+            [
+              "Shards",
+              "Honor, Cultivation, Odium"
+            ],
+            [
+              "Moons",
+              "Salas, Nomon, Mishim (a fourth broke up long ago)"
+            ],
+            [
+              "Gravity",
+              "About 0.7 g; no axial tilt"
+            ],
+            [
+              "Day",
+              "20 hours; about 500 days a year"
+            ]
+          ]
+        },
+        {
+          "type": "codex",
+          "id": "selected",
+          "value": [
+            {
+              "group": "shards",
+              "name": "Honor",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "Shard of oaths and bonds on Roshar, said to be dead; his voice survives in Dalinar’s visions.",
+              "more": [
+                [
+                  12,
+                  "Merged with Odium after Dalinar renounced it, forming Retribution."
+                ]
+              ]
+            },
+            {
+              "group": "shards",
+              "name": "Valor",
+              "first": 12,
+              "desc": "A Shard who was active on Miral and founded temples there."
+            },
+            {
+              "group": "shards",
+              "name": "Retribution",
+              "first": 12,
+              "desc": "Odium and Honor merged under Taravangian, now one of the greatest threats in the cosmere."
+            },
+            {
+              "group": "people",
+              "name": "Hoid (Wit)",
+              "role": "Worldhopper",
+              "books": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                11,
+                12
+              ],
+              "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+              "more": [
+                [
+                  7,
+                  "He was on Yolen at the Shattering."
+                ],
+                [
+                  11,
+                  "Narrates Tress’s story."
+                ],
+                [
+                  12,
+                  "Goes to Scadrial for help after Roshar falls."
+                ]
+              ]
+            },
+            {
+              "group": "people",
+              "name": "Kelsier",
+              "role": "The Survivor",
+              "books": [
+                2,
+                7,
+                12
+              ],
+              "desc": "Leader of the crew that brings down the Lord Ruler.",
+              "more": [
+                [
+                  7,
+                  "His story continues after death in Secret History."
+                ],
+                [
+                  12,
+                  "Works with the Ghostbloods far from Scadrial."
+                ]
+              ]
+            },
+            {
+              "group": "people",
+              "name": "Kaladin Stormblessed",
+              "role": "Windrunner",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "A soldier made slave who becomes the first of the new Knights Radiant."
+            },
+            {
+              "group": "people",
+              "name": "Shallan Davar",
+              "role": "Lightweaver",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "An artist and scholar hiding a past she won’t remember."
+            },
+            {
+              "group": "people",
+              "name": "Dalinar Kholin",
+              "role": "The Blackthorn",
+              "books": [
+                4,
+                5,
+                8,
+                9,
+                12
+              ],
+              "desc": "A warlord trying to become a better man.",
+              "more": [
+                [
+                  8,
+                  "Brings the three Realms together at Thaylen City."
+                ],
+                [
+                  12,
+                  "Dies after renouncing Honor’s power."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "registry",
+          "id": "wind-and-truth",
+          "value": {
+            "id": "wind-and-truth",
+            "title": "Wind and Truth",
+            "y": 2024,
+            "bucket": 12
+          }
+        }
+      ]
+    }
+  ],
+  "candidate": {
+    "changes": [
+      {
+        "id": "e55",
+        "field": "text",
+        "old": "Dalinar and Odium agree on a contest, with ten days for both sides to prepare.",
+        "replacement": "The agreed contest of champions approaches; its ten-day countdown is already underway."
+      },
+      {
+        "id": "e60",
+        "field": "text",
+        "old": "In the epilogue Hoid travels to Scadrial to look for allies against Retribution.",
+        "replacement": "Hoid recovers on Scadrial in Ulaam’s care. Later, he is hired by the Ladrian household and plans to seek Valor."
+      }
+    ],
+    "otherwiseEqual": true
+  },
+  "checks": [
+    {
+      "label": "All",
+      "state": {
+        "mode": "all"
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": true,
+          "e56": true,
+          "e57": true,
+          "e58": true,
+          "e59": true,
+          "e60": true
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      },
+      "after": {
+        "events": {
+          "e55": true,
+          "e56": true,
+          "e57": true,
+          "e58": true,
+          "e59": true,
+          "e60": true
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      }
+    },
+    {
+      "label": "legacy9",
+      "state": {
+        "mode": "legacy",
+        "book": 9
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      }
+    },
+    {
+      "label": "legacy11",
+      "state": {
+        "mode": "legacy",
+        "book": 11
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      }
+    },
+    {
+      "label": "legacy12",
+      "state": {
+        "mode": "legacy",
+        "book": 12
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": true,
+          "e56": true,
+          "e57": true,
+          "e58": true,
+          "e59": true,
+          "e60": true
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      },
+      "after": {
+        "events": {
+          "e55": true,
+          "e56": true,
+          "e57": true,
+          "e58": true,
+          "e59": true,
+          "e60": true
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      }
+    },
+    {
+      "label": "empty",
+      "state": {
+        "mode": "set",
+        "ids": []
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": true,
+        "scadrialHidden": true
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": true,
+        "scadrialHidden": true
+      }
+    },
+    {
+      "label": "WaT only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "wind-and-truth"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": true,
+        "scadrialHidden": true
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": true,
+        "scadrialHidden": true
+      }
+    },
+    {
+      "label": "WoK+WaT",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "wind-and-truth"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": false,
+        "scadrialHidden": true
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": false,
+        "scadrialHidden": true
+      }
+    },
+    {
+      "label": "WoK+WoR+WaT",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "words-of-radiance",
+          "wind-and-truth"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": true
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": true
+      }
+    },
+    {
+      "label": "WoK+WoR+RoW+WaT",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-way-of-kings",
+          "words-of-radiance",
+          "rhythm-of-war",
+          "wind-and-truth"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": true
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": true
+      }
+    },
+    {
+      "label": "bucket12 only",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "wind-and-truth",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": true,
+        "scadrialHidden": true
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": false,
+        "worldHidden": true,
+        "scadrialHidden": true
+      }
+    },
+    {
+      "label": "all minus WaT",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "warbreaker",
+          "the-way-of-kings",
+          "words-of-radiance",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war",
+          "the-lost-metal",
+          "tress-of-the-emerald-sea",
+          "yumi-and-the-nightmare-painter",
+          "the-sunlit-man",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      },
+      "after": {
+        "events": {
+          "e55": false,
+          "e56": false,
+          "e57": false,
+          "e58": false,
+          "e59": false,
+          "e60": false
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      }
+    },
+    {
+      "label": "all works",
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "warbreaker",
+          "the-way-of-kings",
+          "words-of-radiance",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war",
+          "the-lost-metal",
+          "tress-of-the-emerald-sea",
+          "yumi-and-the-nightmare-painter",
+          "the-sunlit-man",
+          "wind-and-truth",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "eventsCompared": 63,
+      "before": {
+        "events": {
+          "e55": true,
+          "e56": true,
+          "e57": true,
+          "e58": true,
+          "e59": true,
+          "e60": true
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      },
+      "after": {
+        "events": {
+          "e55": true,
+          "e56": true,
+          "e57": true,
+          "e58": true,
+          "e59": true,
+          "e60": true
+        },
+        "site": true,
+        "worldHidden": false,
+        "scadrialHidden": false
+      }
+    }
+  ]
+}

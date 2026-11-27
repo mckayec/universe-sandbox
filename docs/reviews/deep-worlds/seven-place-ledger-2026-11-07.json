@@ -1,0 +1,1631 @@
+{
+  "reviewed_head": "ffc8ba7c6734f38839f3eca974b96c04a1a1c098",
+  "imported_artifact": "Universe-Sandbox-Seven-Place-Source-Review-2026-11-07.zip",
+  "imported_library_id": "libfile_bfa4ac326e248191a0c43c71e60b66f0",
+  "reviewed_at": "2026-11-07",
+  "scope": "Capped source/cut handoff; no whole-book, geometry, implemented-fix or release approval. 11 holds are unverified, not proven false.",
+  "counts": {
+    "inventory": 167,
+    "selected": 28,
+    "unselected": 139,
+    "narrative_compared": 15,
+    "english": 10,
+    "authorized_translation": 5,
+    "narrow_primary": 12,
+    "retain_scoped": 3,
+    "narrow_commentary": 2,
+    "hold": 11,
+    "accepted_leaf_change_instructions": 18,
+    "fully_audited_places": 0
+  },
+  "groups": [
+    {
+      "name": "Arrakeen",
+      "total_targets": 24,
+      "selected": 4,
+      "primary_passage_compared": 1,
+      "actions": {
+        "narrow": 1,
+        "hold": 3
+      },
+      "unselected": [
+        "dune/arrakis/arrakeen/dining",
+        "dune/arrakis/arrakeen/greathall",
+        "dune/arrakis/arrakeen/palms",
+        "dune/arrakis/arrakeen/streets",
+        "dune/arrakis/arrakeen/spaceport",
+        "dune/arrakis/arrakeen/hut",
+        "dune/arrakis/arrakeen/suburb",
+        "dune/arrakis/arrakeen/wall",
+        "dune/event/d3",
+        "dune/event/d26",
+        "dune/event/d17",
+        "dune/event/d4",
+        "dune/event/d21",
+        "dune/event/d23",
+        "dune/event/d24",
+        "dune/event/d25",
+        "dune/event/d12",
+        "dune/event/m8",
+        "dune/event/m4",
+        "dune/event/c1"
+      ]
+    },
+    {
+      "name": "Trantor",
+      "total_targets": 88,
+      "selected": 4,
+      "primary_passage_compared": 4,
+      "actions": {
+        "narrow": 2,
+        "retain": 2
+      },
+      "unselected": [
+        "foundation/trantor/palace/palace",
+        "foundation/trantor/palace/office",
+        "foundation/trantor/palace/gardens",
+        "foundation/trantor/commission/chen",
+        "foundation/trantor/hotel/terminal",
+        "foundation/trantor/hotel/room",
+        "foundation/trantor/seldonoffice/office",
+        "foundation/trantor/library/hall",
+        "foundation/trantor/library/mis",
+        "foundation/trantor/library/zenow",
+        "foundation/trantor/library/rooms",
+        "foundation/trantor/speakers/table",
+        "foundation/trantor/speakers/radiant",
+        "foundation/trantor/speakers/grounds",
+        "foundation/trantor/hamish/fields",
+        "foundation/trantor/hamish/palver",
+        "foundation/trantor/hamish/road",
+        "foundation/trantor/streeling/rooms",
+        "foundation/trantor/streeling/libr",
+        "foundation/trantor/streeling/lift",
+        "foundation/trantor/streeling/project",
+        "foundation/trantor/streeling/office",
+        "foundation/trantor/upperside/station",
+        "foundation/trantor/upperside/domes",
+        "foundation/trantor/mycogen/microfarms",
+        "foundation/trantor/mycogen/lodging",
+        "foundation/trantor/mycogen/gravibus",
+        "foundation/trantor/sacratorium/hall",
+        "foundation/trantor/sacratorium/aerie",
+        "foundation/trantor/sacratorium/robot",
+        "foundation/trantor/dahl/tisalver",
+        "foundation/trantor/dahl/heatsinks",
+        "foundation/trantor/dahl/tunnels",
+        "foundation/trantor/billibotton/street",
+        "foundation/trantor/billibotton/rittah",
+        "foundation/trantor/billibotton/davan",
+        "foundation/trantor/wye/palace",
+        "foundation/trantor/wye/namarti",
+        "foundation/event/f1a3",
+        "foundation/event/f1b2",
+        "foundation/event/f1b3",
+        "foundation/event/f2c",
+        "foundation/event/f2d",
+        "foundation/event/f2j",
+        "foundation/event/f2k",
+        "foundation/event/f3g",
+        "foundation/event/f3h1",
+        "foundation/event/f3j",
+        "foundation/event/f4c0",
+        "foundation/event/f4c1",
+        "foundation/event/f4c",
+        "foundation/event/f6b",
+        "foundation/event/f6c",
+        "foundation/event/f6c2",
+        "foundation/event/f6c3",
+        "foundation/event/f6d",
+        "foundation/event/f6d2",
+        "foundation/event/f6e0",
+        "foundation/event/f6e",
+        "foundation/event/f6e2",
+        "foundation/event/f6f0",
+        "foundation/event/f6f2",
+        "foundation/event/f6f",
+        "foundation/event/f6g0",
+        "foundation/event/f6g",
+        "foundation/event/f6h0",
+        "foundation/event/f6h",
+        "foundation/event/f6h2",
+        "foundation/event/f6h3",
+        "foundation/event/f6i0",
+        "foundation/event/f6i",
+        "foundation/event/f6j",
+        "foundation/event/f7a",
+        "foundation/event/f7b",
+        "foundation/event/f7b1",
+        "foundation/event/f7b2",
+        "foundation/event/f7b3",
+        "foundation/event/f7c",
+        "foundation/event/f7d",
+        "foundation/event/f7e2",
+        "foundation/event/f7f0",
+        "foundation/event/f7f",
+        "foundation/event/f7g",
+        "foundation/event/f7h"
+      ]
+    },
+    {
+      "name": "Medina",
+      "total_targets": 19,
+      "selected": 4,
+      "primary_passage_compared": 0,
+      "actions": {
+        "hold": 4
+      },
+      "unselected": [
+        "expanse/medina/drum/bridge",
+        "expanse/medina/drum/laser",
+        "expanse/medina/drum/brig",
+        "expanse/medina/drum/governor",
+        "expanse/medina/drum/docks",
+        "expanse/event/b3n",
+        "expanse/event/b3g",
+        "expanse/event/b3i",
+        "expanse/event/b4b",
+        "expanse/event/b5h",
+        "expanse/event/b6g",
+        "expanse/event/b7c",
+        "expanse/event/b7p",
+        "expanse/event/b7d",
+        "expanse/event/b7h"
+      ]
+    },
+    {
+      "name": "Luthadel",
+      "total_targets": 11,
+      "selected": 4,
+      "primary_passage_compared": 3,
+      "actions": {
+        "narrow": 4
+      },
+      "unselected": [
+        "cosmere/scadrial/luthadel/fountain",
+        "cosmere/scadrial/luthadel/hasting",
+        "cosmere/scadrial/luthadel/assembly",
+        "cosmere/scadrial/luthadel/channerel",
+        "cosmere/event/e6",
+        "cosmere/event/e69",
+        "cosmere/event/e71"
+      ]
+    },
+    {
+      "name": "Kholinar",
+      "total_targets": 10,
+      "selected": 4,
+      "primary_passage_compared": 3,
+      "actions": {
+        "retain": 1,
+        "narrow": 3
+      },
+      "unselected": [
+        "cosmere/roshar/kholinar/wall",
+        "cosmere/roshar/kholinar/oathgate",
+        "cosmere/roshar/kholinar/yokska",
+        "cosmere/roshar/kholinar/guard",
+        "cosmere/event/e103",
+        "cosmere/event/e38"
+      ]
+    },
+    {
+      "name": "Time Tombs",
+      "total_targets": 9,
+      "selected": 4,
+      "primary_passage_compared": 0,
+      "actions": {
+        "hold": 4
+      },
+      "unselected": [
+        "hyperion/hyperion/tombs/obelisk",
+        "hyperion/hyperion/tombs/monolith",
+        "hyperion/hyperion/tombs/caves",
+        "hyperion/hyperion/tombs/palace",
+        "hyperion/event/b1f3"
+      ]
+    },
+    {
+      "name": "Devil’s Rest",
+      "total_targets": 6,
+      "selected": 4,
+      "primary_passage_compared": 4,
+      "actions": {
+        "narrow": 4
+      },
+      "unselected": [
+        "sun-eater/delos/devilsrest/castle",
+        "sun-eater/event/b1c"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "identity": "dune/arrakis/arrakeen/residency",
+      "pack": "dune",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[0].scene.landmarks[0]",
+      "current_text": "The governor’s mansion that House Atreides takes over from the Harkonnens. Paul is attacked by a hunter-seeker in his bedroom here, and on the night of the attack Dr Yueh brings down its shields.",
+      "replacement": "The Arrakeen residence designated for Duke Leto’s family, formerly the home of Count and Lady Fenring.",
+      "proposed_leaf_changes": [
+        {
+          "field": "desc",
+          "expected_before": "The governor’s mansion that House Atreides takes over from the Harkonnens. Paul is attacked by a hunter-seeker in his bedroom here, and on the night of the attack Dr Yueh brings down its shields.",
+          "after": "The Arrakeen residence designated for Duke Leto’s family, formerly the home of Count and Lady Fenring."
+        }
+      ],
+      "review_id": "SP01",
+      "disposition": "narrow",
+      "evidence_class": "authorized_translation_narrative",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "dune/arrakis/arrakeen/residency",
+        "selector": "worlds[0].sites[0].scene.landmarks[0]",
+        "world": "arrakis",
+        "site": "arrakeen",
+        "id": "residency",
+        "name": "The Residency",
+        "description": "The governor’s mansion that House Atreides takes over from the Harkonnens. Paul is attacked by a hunter-seeker in his bedroom here, and on the night of the attack Dr Yueh brings down its shields.",
+        "gates": {
+          "books": [
+            1
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "first": 1
+          },
+          "site": {
+            "books": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "arrakeen-trantor-tombs/D-DE",
+          "url": "https://content.penguinrandomhouse.de/content/edition/excerpts_extended/Leseprobe_978-3-453-27446-4.pdf",
+          "locator": "Book I, Piter/Baron/Feyd conversation, printed p.36 / PDF page 36 (one-based)."
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "dune/arrakis/arrakeen/conservatory",
+      "pack": "dune",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[0].scene.landmarks[1]",
+      "current_text": "A sealed garden of wet-planet plants left by the last governor’s household, a costly show of water. Jessica finds a hidden warning from Lady Margot Fenring among its leaves.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP02",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "dune/arrakis/arrakeen/conservatory",
+        "selector": "worlds[0].sites[0].scene.landmarks[1]",
+        "world": "arrakis",
+        "site": "arrakeen",
+        "id": "conservatory",
+        "name": "The conservatory",
+        "description": "A sealed garden of wet-planet plants left by the last governor’s household, a costly show of water. Jessica finds a hidden warning from Lady Margot Fenring among its leaves.",
+        "gates": {
+          "books": [
+            1
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "first": 1
+          },
+          "site": {
+            "books": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "dune/event/d15",
+      "pack": "dune",
+      "kind": "event",
+      "selector": "events[4]",
+      "current_text": "On the first night a hunter-seeker, a tiny flying poison needle, comes for Paul in his bedroom. He keeps still until it comes close, then snatches it from the air and crushes it.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP03",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "dune/event/d15",
+        "selector": "events[4]",
+        "id": "d15",
+        "book": 1,
+        "world": "arrakis",
+        "site": "arrakeen",
+        "lm": "residency",
+        "title": "The hunter-seeker",
+        "text": "On the first night a hunter-seeker, a tiny flying poison needle, comes for Paul in his bedroom. He keeps still until it comes close, then snatches it from the air and crushes it.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "dune/event/d16",
+      "pack": "dune",
+      "kind": "event",
+      "selector": "events[5]",
+      "current_text": "In the Residency’s water-wasting conservatory Jessica finds a coded message from Lady Margot Fenring warning of a traitor in the house.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP04",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "dune/event/d16",
+        "selector": "events[5]",
+        "id": "d16",
+        "book": 1,
+        "world": "arrakis",
+        "site": "arrakeen",
+        "lm": "conservatory",
+        "title": "A hidden warning",
+        "text": "In the Residency’s water-wasting conservatory Jessica finds a coded message from Lady Margot Fenring warning of a traitor in the house.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "foundation/trantor/hotel/tower",
+      "pack": "foundation",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[2].scene.landmarks[1]",
+      "current_text": "Gaal rides up to look at Trantor and sees metal to every horizon, and no green at all. A man named Jerril falls into talk with him and sneers at “Raven” Seldon.",
+      "replacement": "Gaal rides up to view Trantor and sees metal stretching to the horizon, with no greenery visible. Jerril talks with him and calls Seldon “Raven.”",
+      "proposed_leaf_changes": [
+        {
+          "field": "desc",
+          "expected_before": "Gaal rides up to look at Trantor and sees metal to every horizon, and no green at all. A man named Jerril falls into talk with him and sneers at “Raven” Seldon.",
+          "after": "Gaal rides up to view Trantor and sees metal stretching to the horizon, with no greenery visible. Jerril talks with him and calls Seldon “Raven.”"
+        }
+      ],
+      "review_id": "SP05",
+      "disposition": "narrow",
+      "evidence_class": "authorized_translation_narrative",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "foundation/trantor/hotel/tower",
+        "selector": "worlds[0].sites[2].scene.landmarks[1]",
+        "world": "trantor",
+        "site": "hotel",
+        "id": "tower",
+        "name": "The observation tower",
+        "description": "Gaal rides up to look at Trantor and sees metal to every horizon, and no green at all. A man named Jerril falls into talk with him and sneers at “Raven” Seldon.",
+        "gates": {
+          "books": [
+            1
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              6,
+              7
+            ],
+            "first": 1
+          },
+          "site": {
+            "books": [
+              1
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "arrakeen-trantor-tombs/F-DE",
+          "url": "https://prestelpublishing.penguinrandomhouse.de/leseprobe/Die-Foundation-Trilogie/leseprobe_9783453318670.pdf",
+          "locator": "Part I ch.3, printed pp.18–23 (PDF pages 18–23 one-based)."
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "foundation/trantor/commission/court",
+      "pack": "foundation",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[1].scene.landmarks[0]",
+      "current_text": "A closed hearing before Imperial officials. Under questioning Seldon explains psychohistory and says plainly that the Empire will fall.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP06",
+      "disposition": "retain",
+      "evidence_class": "authorized_translation_narrative",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "foundation/trantor/commission/court",
+        "selector": "worlds[0].sites[1].scene.landmarks[0]",
+        "world": "trantor",
+        "site": "commission",
+        "id": "court",
+        "name": "The trial chamber",
+        "description": "A closed hearing before Imperial officials. Under questioning Seldon explains psychohistory and says plainly that the Empire will fall.",
+        "gates": {
+          "books": [
+            1
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              6,
+              7
+            ],
+            "first": 1
+          },
+          "site": {
+            "books": [
+              1,
+              7
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "arrakeen-trantor-tombs/F-DE",
+          "url": "https://prestelpublishing.penguinrandomhouse.de/leseprobe/Die-Foundation-Trilogie/leseprobe_9783453318670.pdf",
+          "locator": "Part I ch.6, printed pp.33–39 (PDF pages 33–39 one-based)."
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "foundation/event/f1a2",
+      "pack": "foundation",
+      "kind": "event",
+      "selector": "events[1]",
+      "current_text": "Gaal lands on Trantor and rides up an observation tower to see it: metal to every horizon. A stranger who chats with him there is an Imperial agent.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP07",
+      "disposition": "retain",
+      "evidence_class": "authorized_translation_narrative",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "foundation/event/f1a2",
+        "selector": "events[1]",
+        "id": "f1a2",
+        "book": 1,
+        "world": "trantor",
+        "site": "hotel",
+        "lm": "tower",
+        "title": "The world-city",
+        "text": "Gaal lands on Trantor and rides up an observation tower to see it: metal to every horizon. A stranger who chats with him there is an Imperial agent.",
+        "association": "exact_world_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "arrakeen-trantor-tombs/F-DE",
+          "url": "https://prestelpublishing.penguinrandomhouse.de/leseprobe/Die-Foundation-Trilogie/leseprobe_9783453318670.pdf",
+          "locator": "F-DE Part I ch.2–4, printed pp.13–24; F-EN excerpt ends with terminal departure."
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "foundation/event/f1b",
+      "pack": "foundation",
+      "kind": "event",
+      "selector": "events[3]",
+      "current_text": "The Commission of Public Safety tries Seldon. He predicts Trantor’s ruin within three centuries and thirty thousand years of chaos, which his plan could cut to one thousand. He is exiled with his Encyclopedists, exactly as he intended.",
+      "replacement": "The Commission of Public Safety tries Seldon. He predicts Trantor’s ruin and thirty thousand years of chaos, which his plan could cut to one thousand. He accepts the encyclopedia project’s exile to Terminus, a result he had planned.",
+      "proposed_leaf_changes": [
+        {
+          "field": "text",
+          "expected_before": "The Commission of Public Safety tries Seldon. He predicts Trantor’s ruin within three centuries and thirty thousand years of chaos, which his plan could cut to one thousand. He is exiled with his Encyclopedists, exactly as he intended.",
+          "after": "The Commission of Public Safety tries Seldon. He predicts Trantor’s ruin and thirty thousand years of chaos, which his plan could cut to one thousand. He accepts the encyclopedia project’s exile to Terminus, a result he had planned."
+        }
+      ],
+      "review_id": "SP08",
+      "disposition": "narrow",
+      "evidence_class": "authorized_translation_narrative",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "foundation/event/f1b",
+        "selector": "events[3]",
+        "id": "f1b",
+        "book": 1,
+        "world": "trantor",
+        "site": "commission",
+        "lm": "court",
+        "title": "Seldon on trial",
+        "text": "The Commission of Public Safety tries Seldon. He predicts Trantor’s ruin within three centuries and thirty thousand years of chaos, which his plan could cut to one thousand. He is exiled with his Encyclopedists, exactly as he intended.",
+        "association": "exact_world_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "arrakeen-trantor-tombs/F-DE",
+          "url": "https://prestelpublishing.penguinrandomhouse.de/leseprobe/Die-Foundation-Trilogie/leseprobe_9783453318670.pdf",
+          "locator": "Part I ch.6 printed p.35 and pp.41–42; ch.7 pp.43–46; ch.8 pp.48–50 (same one-based PDF pages)."
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "hyperion/hyperion/tombs/sphinx",
+      "pack": "hyperion",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[9].scene.landmarks[0]",
+      "current_text": "A tomb shaped like a sphinx. Rachel Weintraub was studying it when Merlin’s sickness struck her.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP09",
+      "disposition": "hold",
+      "evidence_class": "edition_design_commentary_name_only",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "hyperion/hyperion/tombs/sphinx",
+        "selector": "worlds[0].sites[9].scene.landmarks[0]",
+        "world": "hyperion",
+        "site": "tombs",
+        "id": "sphinx",
+        "name": "The Sphinx",
+        "description": "A tomb shaped like a sphinx. Rachel Weintraub was studying it when Merlin’s sickness struck her.",
+        "gates": {
+          "books": [
+            1,
+            2,
+            3
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "site": {
+            "books": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "hyperion/hyperion/tombs/jade",
+      "pack": "hyperion",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[9].scene.landmarks[1]",
+      "current_text": "A tomb with walls of translucent green.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP10",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "hyperion/hyperion/tombs/jade",
+        "selector": "worlds[0].sites[9].scene.landmarks[1]",
+        "world": "hyperion",
+        "site": "tombs",
+        "id": "jade",
+        "name": "Jade Tomb",
+        "description": "A tomb with walls of translucent green.",
+        "gates": {
+          "books": [
+            1,
+            2
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "site": {
+            "books": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "hyperion/event/b1n",
+      "pack": "hyperion",
+      "kind": "event",
+      "selector": "events[25]",
+      "current_text": "The six survivors walk into the valley toward the Shrike.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP11",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "hyperion/event/b1n",
+        "selector": "events[25]",
+        "id": "b1n",
+        "book": 1,
+        "world": "hyperion",
+        "site": "tombs",
+        "title": "Down to the Tombs",
+        "text": "The six survivors walk into the valley toward the Shrike.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "hyperion/event/b2b",
+      "pack": "hyperion",
+      "kind": "event",
+      "selector": "events[27]",
+      "current_text": "The Shrike kills Hoyt, and the cruciform rebuilds the body as Father Paul Duré.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP12",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "hyperion/event/b2b",
+        "selector": "events[27]",
+        "id": "b2b",
+        "book": 2,
+        "world": "hyperion",
+        "site": "tombs",
+        "title": "Hoyt dies; Duré returns",
+        "text": "The Shrike kills Hoyt, and the cruciform rebuilds the body as Father Paul Duré.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "expanse/medina/drum/drumring",
+      "pack": "expanse",
+      "kind": "landmark",
+      "selector": "worlds[22].sites[0].scene.landmarks[0]",
+      "current_text": "Built to spin for a generation ship’s farms and homes. After the deceleration, a paralysed Bull spins it up to give the injured gravity, and the Behemoth becomes the slow zone’s hospital.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP13",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "expanse/medina/drum/drumring",
+        "selector": "worlds[22].sites[0].scene.landmarks[0]",
+        "world": "medina",
+        "site": "drum",
+        "id": "drumring",
+        "name": "The habitat drum",
+        "description": "Built to spin for a generation ship’s farms and homes. After the deceleration, a paralysed Bull spins it up to give the injured gravity, and the Behemoth becomes the slow zone’s hospital.",
+        "gates": {
+          "books": [
+            3
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "first": 3
+          },
+          "site": {
+            "books": [
+              3,
+              5,
+              6,
+              7
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": {
+        "ids": [
+          "SM103"
+        ],
+        "result": "Previously unsourced remains unsourced. Preserve prior deceleration/ring-station event split and schematic site qualification."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "expanse/medina/drum/engineering",
+      "pack": "expanse",
+      "kind": "landmark",
+      "selector": "worlds[22].sites[0].scene.landmarks[1]",
+      "current_text": "Where the engineer Sam Rosenberg secretly sabotages Ashford’s weapon and is shot for it, and where Bull holds off armoured attackers with grenades and dies so Holden and Naomi can get through.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP14",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "expanse/medina/drum/engineering",
+        "selector": "worlds[22].sites[0].scene.landmarks[1]",
+        "world": "medina",
+        "site": "drum",
+        "id": "engineering",
+        "name": "Engineering",
+        "description": "Where the engineer Sam Rosenberg secretly sabotages Ashford’s weapon and is shot for it, and where Bull holds off armoured attackers with grenades and dies so Holden and Naomi can get through.",
+        "gates": {
+          "books": [
+            3
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "first": 3
+          },
+          "site": {
+            "books": [
+              3,
+              5,
+              6,
+              7
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": {
+        "ids": [
+          "SM104"
+        ],
+        "result": "Previously unsourced remains unsourced. Preserve prior deceleration/ring-station event split and schematic site qualification."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "expanse/event/b3f",
+      "pack": "expanse",
+      "kind": "event",
+      "selector": "events[34]",
+      "current_text": "Every ship in the slow zone is slammed to a crawl, and many die. Paralysed in the crash, Bull spins up the Behemoth’s drum for gravity, and the ship becomes a hospital and a refuge.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP15",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "expanse/event/b3f",
+        "selector": "events[34]",
+        "id": "b3f",
+        "book": 3,
+        "world": "medina",
+        "site": "drum",
+        "lm": "drumring",
+        "title": "The deceleration",
+        "text": "Every ship in the slow zone is slammed to a crawl, and many die. Paralysed in the crash, Bull spins up the Behemoth’s drum for gravity, and the ship becomes a hospital and a refuge.",
+        "association": "exact_world_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": {
+        "ids": [
+          "b3f/b3l-split-preservation"
+        ],
+        "result": "Previously unsourced remains unsourced. Preserve prior deceleration/ring-station event split and schematic site qualification."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "expanse/event/b3o",
+      "pack": "expanse",
+      "kind": "event",
+      "selector": "events[36]",
+      "current_text": "Ashford retakes the ship and shoots the engineer Sam Rosenberg for sabotaging his weapon. Holden and Bull storm engineering; Bull stays behind with grenades to stop armoured attackers, and dies.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP16",
+      "disposition": "hold",
+      "evidence_class": "target_narrative_uninspected",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "expanse/event/b3o",
+        "selector": "events[36]",
+        "id": "b3o",
+        "book": 3,
+        "world": "medina",
+        "site": "drum",
+        "lm": "engineering",
+        "fx": "battle",
+        "title": "Bull’s last stand",
+        "text": "Ashford retakes the ship and shoots the engineer Sam Rosenberg for sabotaging his weapon. Holden and Bull storm engineering; Bull stays behind with grenades to stop armoured attackers, and dies.",
+        "association": "exact_world_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [],
+      "prior_context": {
+        "ids": [],
+        "result": "Previously unsourced remains unsourced. Preserve prior deceleration/ring-station event split and schematic site qualification."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "sun-eater/delos/devilsrest/bluff",
+      "pack": "sun-eater",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[0].scene.landmarks[1]",
+      "current_text": "The white bluff the castle crowns, dropping to the Apollan Ocean.",
+      "replacement": "The white limestone bluff beneath Devil’s Rest, above Meidua and the sea.",
+      "proposed_leaf_changes": [
+        {
+          "field": "desc",
+          "expected_before": "The white bluff the castle crowns, dropping to the Apollan Ocean.",
+          "after": "The white limestone bluff beneath Devil’s Rest, above Meidua and the sea."
+        }
+      ],
+      "review_id": "SP17",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "sun-eater/delos/devilsrest/bluff",
+        "selector": "worlds[0].sites[0].scene.landmarks[1]",
+        "world": "delos",
+        "site": "devilsrest",
+        "id": "bluff",
+        "name": "The limestone bluff",
+        "description": "The white bluff the castle crowns, dropping to the Apollan Ocean.",
+        "gates": {},
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "first": 1
+          },
+          "site": {
+            "books": [
+              1
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "medina-delos/E",
+          "url": "https://www.everand.com/book/770611117/Empire-of-Silence-The-Sun-Eater-Book-One",
+          "locator": "Fresh public preview inspected in this run: chapter 2 study/ambition; chapter 3 coastal approach and Consortium audience. Stops early chapter 4 at subscription boundary."
+        }
+      ],
+      "prior_context": {
+        "ids": [
+          "SM02"
+        ],
+        "result": "Same Nov5 conservative wording, rechecked against the saved primary preview; no new correction invented."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "sun-eater/delos/devilsrest/study",
+      "pack": "sun-eater",
+      "kind": "landmark",
+      "selector": "worlds[0].sites[0].scene.landmarks[2]",
+      "current_text": "Where Tor Gibson tutors Hadrian in history, languages and the scholiasts’ discipline, and feeds his dream of leaving to join their order.",
+      "replacement": "Gibson’s book-filled study in the scholiasts’ cloister, where Hadrian visits his tutor.",
+      "proposed_leaf_changes": [
+        {
+          "field": "desc",
+          "expected_before": "Where Tor Gibson tutors Hadrian in history, languages and the scholiasts’ discipline, and feeds his dream of leaving to join their order.",
+          "after": "Gibson’s book-filled study in the scholiasts’ cloister, where Hadrian visits his tutor."
+        }
+      ],
+      "review_id": "SP18",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "sun-eater/delos/devilsrest/study",
+        "selector": "worlds[0].sites[0].scene.landmarks[2]",
+        "world": "delos",
+        "site": "devilsrest",
+        "id": "study",
+        "name": "The scholiast’s rooms",
+        "description": "Where Tor Gibson tutors Hadrian in history, languages and the scholiasts’ discipline, and feeds his dream of leaving to join their order.",
+        "gates": {},
+        "parent_gates": {
+          "world": {
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "first": 1
+          },
+          "site": {
+            "books": [
+              1
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "medina-delos/E",
+          "url": "https://www.everand.com/book/770611117/Empire-of-Silence-The-Sun-Eater-Book-One",
+          "locator": "Fresh public preview inspected in this run: chapter 2 study/ambition; chapter 3 coastal approach and Consortium audience. Stops early chapter 4 at subscription boundary."
+        },
+        {
+          "source_key": "medina-delos/P",
+          "url": "https://prhcomics.com/book/?isbn=9780756413002",
+          "locator": "Empire of Silence, chapter 2, Like Distant Thunder, opening study/cloister visit; saved preview lines 1973–1982. PRH chapter 1, curriculum and training-hall exchange, HTML lines 704–720."
+        }
+      ],
+      "prior_context": {
+        "ids": [
+          "SM03"
+        ],
+        "result": "Reuses the Nov5 description-only option. Optional rename is deliberately not included."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "sun-eater/event/b1b",
+      "pack": "sun-eater",
+      "kind": "event",
+      "selector": "events[3]",
+      "current_text": "Heir to the Archon of Meidua, Hadrian is schooled by the scholiast Tor Gibson and dreams of joining the scholiasts rather than ruling.",
+      "replacement": "Heir to the Archon of Meidua, Hadrian is taught by Tor Gibson and hopes to become a scholiast.",
+      "proposed_leaf_changes": [
+        {
+          "field": "text",
+          "expected_before": "Heir to the Archon of Meidua, Hadrian is schooled by the scholiast Tor Gibson and dreams of joining the scholiasts rather than ruling.",
+          "after": "Heir to the Archon of Meidua, Hadrian is taught by Tor Gibson and hopes to become a scholiast."
+        }
+      ],
+      "review_id": "SP19",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "sun-eater/event/b1b",
+        "selector": "events[3]",
+        "id": "b1b",
+        "book": 1,
+        "world": "delos",
+        "site": "devilsrest",
+        "lm": "study",
+        "title": "A boyhood at Devil’s Rest",
+        "text": "Heir to the Archon of Meidua, Hadrian is schooled by the scholiast Tor Gibson and dreams of joining the scholiasts rather than ruling.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "medina-delos/E",
+          "url": "https://www.everand.com/book/770611117/Empire-of-Silence-The-Sun-Eater-Book-One",
+          "locator": "Fresh public preview inspected in this run: chapter 2 study/ambition; chapter 3 coastal approach and Consortium audience. Stops early chapter 4 at subscription boundary."
+        },
+        {
+          "source_key": "medina-delos/P",
+          "url": "https://prhcomics.com/book/?isbn=9780756413002",
+          "locator": "Empire of Silence, PRH chapter 1, heir paragraph and curriculum (HTML lines 688, 704–705); chapter 2 opening ambition reflection in saved preview, line 1978."
+        }
+      ],
+      "prior_context": {
+        "ids": [
+          "SM08",
+          "DW04-preservation"
+        ],
+        "result": "Reuses the Nov5 narrowing without reopening DW04. The accepted castle record is unchanged."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "sun-eater/event/b1k",
+      "pack": "sun-eater",
+      "kind": "event",
+      "selector": "events[4]",
+      "current_text": "House Marlowe does business with the Wong-Hopper Consortium, and Hadrian grows to resent his family’s dealings with it.",
+      "replacement": "House Marlowe does business with the Wong-Hopper Consortium.",
+      "proposed_leaf_changes": [
+        {
+          "field": "text",
+          "expected_before": "House Marlowe does business with the Wong-Hopper Consortium, and Hadrian grows to resent his family’s dealings with it.",
+          "after": "House Marlowe does business with the Wong-Hopper Consortium."
+        }
+      ],
+      "review_id": "SP20",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "sun-eater/event/b1k",
+        "selector": "events[4]",
+        "id": "b1k",
+        "book": 1,
+        "world": "delos",
+        "site": "devilsrest",
+        "lm": "castle",
+        "title": "The Consortium",
+        "text": "House Marlowe does business with the Wong-Hopper Consortium, and Hadrian grows to resent his family’s dealings with it.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "medina-delos/P",
+          "url": "https://prhcomics.com/book/?isbn=9780756413002",
+          "locator": "Empire of Silence, PRH chapter 1 uranium/Consortium paragraph (HTML line 700); saved preview chapter 3, Consortium, castle audience scene (lines 2083–2089)."
+        },
+        {
+          "source_key": "medina-delos/E",
+          "url": "https://www.everand.com/book/770611117/Empire-of-Silence-The-Sun-Eater-Book-One",
+          "locator": "Fresh public preview inspected in this run: chapter 2 study/ambition; chapter 3 coastal approach and Consortium audience. Stops early chapter 4 at subscription boundary."
+        }
+      ],
+      "prior_context": {
+        "ids": [],
+        "result": "New bounded record comparison in this checkpoint; previous Delos ledger did not select b1k."
+      },
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/scadrial/luthadel/venture",
+      "pack": "cosmere",
+      "kind": "landmark",
+      "selector": "worlds[15].sites[0].scene.landmarks[1]",
+      "current_text": "A great noble keep where Vin, disguised as Valette Renoux, attends balls and meets Elend. In The Well of Ascension it is Elend’s palace.",
+      "replacement": "Keep Venture serves as Elend's palace in The Well of Ascension.",
+      "proposed_leaf_changes": [
+        {
+          "field": "desc",
+          "expected_before": "A great noble keep where Vin, disguised as Valette Renoux, attends balls and meets Elend. In The Well of Ascension it is Elend’s palace.",
+          "after": "Keep Venture serves as Elend's palace in The Well of Ascension."
+        }
+      ],
+      "review_id": "SP21",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "cosmere/scadrial/luthadel/venture",
+        "selector": "worlds[15].sites[0].scene.landmarks[1]",
+        "world": "scadrial",
+        "site": "luthadel",
+        "id": "venture",
+        "name": "Keep Venture",
+        "description": "A great noble keep where Vin, disguised as Valette Renoux, attends balls and meets Elend. In The Well of Ascension it is Elend’s palace.",
+        "gates": {
+          "books": [
+            2
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              2,
+              6,
+              7,
+              10,
+              12
+            ],
+            "first": 2
+          },
+          "site": {
+            "books": [
+              2
+            ],
+            "until": 6
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/W2-3",
+          "url": "https://www.brandonsanderson.com/blogs/blog/mistborn-2-chapter-three",
+          "locator": "Chapter Three; retrieved markdown lines 19–57, 133–157"
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/scadrial/luthadel/walls",
+      "pack": "cosmere",
+      "kind": "landmark",
+      "selector": "worlds[15].sites[0].scene.landmarks[4]",
+      "current_text": "High walls with eight gates named for metals. Three armies camp outside them in The Well of Ascension, and the koloss break in.",
+      "replacement": "Luthadel's defensive walls, where Elend watches Straff Venture's approaching army.",
+      "proposed_leaf_changes": [
+        {
+          "field": "desc",
+          "expected_before": "High walls with eight gates named for metals. Three armies camp outside them in The Well of Ascension, and the koloss break in.",
+          "after": "Luthadel's defensive walls, where Elend watches Straff Venture's approaching army."
+        }
+      ],
+      "review_id": "SP22",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "cosmere/scadrial/luthadel/walls",
+        "selector": "worlds[15].sites[0].scene.landmarks[4]",
+        "world": "scadrial",
+        "site": "luthadel",
+        "id": "walls",
+        "name": "The city walls",
+        "description": "High walls with eight gates named for metals. Three armies camp outside them in The Well of Ascension, and the koloss break in.",
+        "gates": {
+          "books": [
+            2
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              2,
+              6,
+              7,
+              10,
+              12
+            ],
+            "first": 2
+          },
+          "site": {
+            "books": [
+              2
+            ],
+            "until": 6
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/W2-1",
+          "url": "https://www.brandonsanderson.com/blogs/blog/mistborn-2-chapter-one",
+          "locator": "Chapter One, opening scene; retrieved markdown lines 19–69"
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/event/e9",
+      "pack": "cosmere",
+      "kind": "event",
+      "selector": "events[10]",
+      "current_text": "Elend Venture tries to rule a free city while three armies camp outside the walls.",
+      "replacement": "Elend tries to hold Luthadel as Straff Venture's army approaches.",
+      "proposed_leaf_changes": [
+        {
+          "field": "text",
+          "expected_before": "Elend Venture tries to rule a free city while three armies camp outside the walls.",
+          "after": "Elend tries to hold Luthadel as Straff Venture's army approaches."
+        },
+        {
+          "field": "title",
+          "expected_before": "Siege of Luthadel",
+          "after": "Straff approaches Luthadel"
+        }
+      ],
+      "review_id": "SP23",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "cosmere/event/e9",
+        "selector": "events[10]",
+        "id": "e9",
+        "book": 2,
+        "world": "scadrial",
+        "site": "luthadel",
+        "lm": "walls",
+        "title": "Siege of Luthadel",
+        "text": "Elend Venture tries to rule a free city while three armies camp outside the walls.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/W2-1",
+          "url": "https://www.brandonsanderson.com/blogs/blog/mistborn-2-chapter-one",
+          "locator": "Chapter One, opening scene; retrieved markdown lines 19–69"
+        },
+        {
+          "source_key": "cosmere/W2-3",
+          "url": "https://www.brandonsanderson.com/blogs/blog/mistborn-2-chapter-three",
+          "locator": "Chapter Three; retrieved markdown lines 19–57, 133–157"
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/event/e70",
+      "pack": "cosmere",
+      "kind": "event",
+      "selector": "events[11]",
+      "current_text": "The Assembly Elend created votes him off the throne in the middle of the siege.",
+      "replacement": "Elend is deposed.",
+      "proposed_leaf_changes": [
+        {
+          "field": "text",
+          "expected_before": "The Assembly Elend created votes him off the throne in the middle of the siege.",
+          "after": "Elend is deposed."
+        },
+        {
+          "field": "title",
+          "expected_before": "Voted out",
+          "after": "Elend is deposed"
+        },
+        {
+          "field": "lm",
+          "expected_before": "assembly",
+          "remove": true
+        }
+      ],
+      "review_id": "SP24",
+      "disposition": "narrow-commentary",
+      "evidence_class": "commentary_or_short_quote_only",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "cosmere/event/e70",
+        "selector": "events[11]",
+        "id": "e70",
+        "book": 2,
+        "world": "scadrial",
+        "site": "luthadel",
+        "lm": "assembly",
+        "title": "Voted out",
+        "text": "The Assembly Elend created votes him off the throne in the middle of the siege.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/A27",
+          "url": "https://www.brandonsanderson.com/blogs/blog/annotation-mistborn-2-chapter-twenty-seven",
+          "locator": "Annotation Chapter Twenty-Seven; section 'Elend Returns and Gets the Letter Deposing Him', retrieved markdown lines 47–53"
+        },
+        {
+          "source_key": "cosmere/W2-3",
+          "url": "https://www.brandonsanderson.com/blogs/blog/mistborn-2-chapter-three",
+          "locator": "Chapter Three; retrieved markdown lines 19–57, 133–157"
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/roshar/kholinar/palace",
+      "pack": "cosmere",
+      "kind": "landmark",
+      "selector": "worlds[2].sites[4].scene.landmarks[0]",
+      "current_text": "The Kholin palace. King Gavilar is murdered here on the night of the treaty feast.",
+      "replacement": null,
+      "proposed_leaf_changes": [],
+      "review_id": "SP25",
+      "disposition": "retain",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "cosmere/roshar/kholinar/palace",
+        "selector": "worlds[2].sites[4].scene.landmarks[0]",
+        "world": "roshar",
+        "site": "kholinar",
+        "id": "palace",
+        "name": "The royal palace",
+        "description": "The Kholin palace. King Gavilar is murdered here on the night of the treaty feast.",
+        "gates": {
+          "books": [
+            4,
+            8,
+            9
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4
+          },
+          "site": {
+            "books": [
+              4,
+              8,
+              9
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/WK",
+          "url": "https://www.brandonsanderson.com/blogs/blog/the-way-of-kings-prologue",
+          "locator": "Prologue, To Kill; retrieved markdown lines 29–63, 119 and 237–265"
+        }
+      ],
+      "prior_context": "SM41 conservative palace wording; no reopening.",
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/roshar/kholinar/windblades",
+      "pack": "cosmere",
+      "kind": "landmark",
+      "selector": "worlds[2].sites[4].scene.landmarks[1]",
+      "current_text": "Giant fins of storm-carved rock that shelter the city from the highstorms. Tunnels are cut through them and people live along their tops.",
+      "replacement": "Sleek, layered rock formations in Kholinar.",
+      "proposed_leaf_changes": [
+        {
+          "field": "desc",
+          "expected_before": "Giant fins of storm-carved rock that shelter the city from the highstorms. Tunnels are cut through them and people live along their tops.",
+          "after": "Sleek, layered rock formations in Kholinar."
+        }
+      ],
+      "review_id": "SP26",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "cosmere/roshar/kholinar/windblades",
+        "selector": "worlds[2].sites[4].scene.landmarks[1]",
+        "world": "roshar",
+        "site": "kholinar",
+        "id": "windblades",
+        "name": "The windblades",
+        "description": "Giant fins of storm-carved rock that shelter the city from the highstorms. Tunnels are cut through them and people live along their tops.",
+        "gates": {
+          "books": [
+            8
+          ]
+        },
+        "parent_gates": {
+          "world": {
+            "books": [
+              4,
+              5,
+              7,
+              8,
+              9,
+              12
+            ],
+            "first": 4
+          },
+          "site": {
+            "books": [
+              4,
+              8,
+              9
+            ]
+          }
+        },
+        "evidence_status": "not_source_checked_in_this_checkpoint"
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/OB1",
+          "url": "https://reactormag.com/oathbringer-brandon-sanderson-chapter-1-3/",
+          "locator": "Chapter 1, Broken and Divided; retrieved markdown lines 79–131. Publisher serialization identification at lines 59–67."
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/event/e17",
+      "pack": "cosmere",
+      "kind": "event",
+      "selector": "events[26]",
+      "current_text": "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge.",
+      "replacement": "Szeth kills King Gavilar in Kholinar on the night of the treaty feast.",
+      "proposed_leaf_changes": [
+        {
+          "field": "text",
+          "expected_before": "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge.",
+          "after": "Szeth kills King Gavilar in Kholinar on the night of the treaty feast."
+        }
+      ],
+      "review_id": "SP27",
+      "disposition": "narrow",
+      "evidence_class": "english_narrative_excerpt",
+      "fresh_narrative_comparison": true,
+      "original_record": {
+        "identity": "cosmere/event/e17",
+        "selector": "events[26]",
+        "id": "e17",
+        "book": 4,
+        "world": "roshar",
+        "site": "kholinar",
+        "lm": "palace",
+        "title": "The assassin in white",
+        "text": "Szeth, bound to obey, kills King Gavilar during a feast, and Alethkar marches to war for revenge.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/WK",
+          "url": "https://www.brandonsanderson.com/blogs/blog/the-way-of-kings-prologue",
+          "locator": "Prologue, To Kill; retrieved markdown lines 29–63, 119 and 237–265"
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    },
+    {
+      "identity": "cosmere/event/e102",
+      "pack": "cosmere",
+      "kind": "event",
+      "selector": "events[68]",
+      "current_text": "In the occupied capital Shallan joins the cultists feasting on the Oathgate dais and finds two Unmade at work in the city.",
+      "replacement": "Shallan seeks to infiltrate the Cult of Moments in Kholinar.",
+      "proposed_leaf_changes": [
+        {
+          "field": "text",
+          "expected_before": "In the occupied capital Shallan joins the cultists feasting on the Oathgate dais and finds two Unmade at work in the city.",
+          "after": "Shallan seeks to infiltrate the Cult of Moments in Kholinar."
+        },
+        {
+          "field": "lm",
+          "expected_before": "oathgate",
+          "remove": true
+        }
+      ],
+      "review_id": "SP28",
+      "disposition": "narrow-commentary",
+      "evidence_class": "commentary_or_short_quote_only",
+      "fresh_narrative_comparison": false,
+      "original_record": {
+        "identity": "cosmere/event/e102",
+        "selector": "events[68]",
+        "id": "e102",
+        "book": 8,
+        "world": "roshar",
+        "site": "kholinar",
+        "lm": "oathgate",
+        "title": "The Cult of Moments",
+        "text": "In the occupied capital Shallan joins the cultists feasting on the Oathgate dais and finds two Unmade at work in the city.",
+        "association": "exact_world_and_site_anchor",
+        "evidence_status": "not_source_checked_in_this_checkpoint",
+        "preservation_note": null
+      },
+      "sources_reopened_2026_11_07": [
+        {
+          "source_key": "cosmere/OB67R",
+          "url": "https://reactormag.com/oathbringer-reread-chapter-sixty-seven/",
+          "locator": "Article Chapter Recap (Kholinar) and Quality Quotations (infiltration intention), before reader comments. Not full chapter inspection."
+        }
+      ],
+      "prior_context": null,
+      "original_packet_locator_note": "Extraction line/page references are packet provenance; chapter/scene controls this review."
+    }
+  ]
+}

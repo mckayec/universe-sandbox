@@ -1,0 +1,154 @@
+{
+  "head": "7155f0acbcfa351c73fb990366b4e0bd163ea3cf",
+  "manifest": {
+    "public/atlas/reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+    "public/atlas/packs/cosmere.js": "317cb58c4996c64f3acee32e7c9db00e95512552",
+    "public/atlas/engine.js": "6ecfb467f2577c2ffe57ee93ba5c06ee85979f52"
+  },
+  "actualObservation": {
+    "read": [
+      "mistborn-the-final-empire",
+      "mistborn-the-well-of-ascension",
+      "mistborn-the-hero-of-ages",
+      "the-way-of-kings"
+    ],
+    "worldVisible": true,
+    "realmOpen": true,
+    "bucket7Reached": false,
+    "subastralFirst": 7,
+    "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Vapors</p><p>Scadrial’s subastral is a world of mist. Physical things look like misty figures, the planet’s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>",
+    "look": {
+      "i": 1,
+      "st": 1,
+      "c1": "#7a808c",
+      "c2": "#eef2f6",
+      "c3": "#2e2b28"
+    }
+  },
+  "cases": [
+    {
+      "label": "unread valid field gate",
+      "mode": "set",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "fieldAllowed": false,
+      "expectedOwn": false,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard",
+          "pass": false
+        },
+        {
+          "surface": "realmLook",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "label": "present invalid field gate",
+      "mode": "set",
+      "gate": {},
+      "fieldAllowed": false,
+      "expectedOwn": false,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard",
+          "pass": false
+        },
+        {
+          "surface": "realmLook",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "label": "satisfied field gate",
+      "mode": "set",
+      "gate": {
+        "req": "the-way-of-kings"
+      },
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "absent field gate inherits visible record",
+      "mode": "set",
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "legacy ignores per-work field gate",
+      "mode": "legacy",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "All ignores per-work field gate",
+      "mode": "all",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "passed": 8,
+  "total": 12,
+  "scope": "Actual source selectors, not rendered browser. Injected field gates are test fixtures only; no proposed factual/earliest-work mapping. Actual unmodified observation separately records differing world/realm/subastral thresholds."
+}

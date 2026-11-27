@@ -1,0 +1,330 @@
+{
+  "head": {
+    "head": "a50f1aa58ce6e26756a5b0e2b4510c8079a81532",
+    "scope": "Actual handlers and helper; state/DOM adapters, not browser; dialog cases explicitly distinguish two pointer identities",
+    "inputs": [
+      {
+        "path": "src/ui/kids.ts",
+        "sha": "f98bdfa5e727b589f1ee7dfe67ce4346b0d98818"
+      },
+      {
+        "path": "src/ui/pointer.ts",
+        "sha": "19ea6562ff0e73371d93756755bacb9f54812347"
+      },
+      {
+        "path": "src/ui/controls.ts",
+        "sha": "d7a530f1381bd0e9438acf4f3fa29679c129bc18"
+      },
+      {
+        "path": "src/kids-mode.ts",
+        "sha": "0422a455628ad5d8292015bcdd9ffba50c1e5505"
+      }
+    ],
+    "passed": 8,
+    "total": 10,
+    "results": [
+      {
+        "id": "held-touch-normal",
+        "expected": 1,
+        "actual": 1,
+        "armedAfter": false,
+        "pass": true
+      },
+      {
+        "id": "held-touch-escape",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": false,
+        "pass": true
+      },
+      {
+        "id": "held-touch-disarm",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": false,
+        "pass": true
+      },
+      {
+        "id": "held-touch-cancel",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": true,
+        "pass": true
+      },
+      {
+        "id": "held-touch-escape-rearm",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-canvas press released over dialog",
+        "expectedBlocked": true,
+        "actualBlocked": true,
+        "pass": true
+      },
+      {
+        "id": "dialog-dialog press and click",
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-keyboard activation",
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-canvas pointer 7 after dialog pointer 8 press",
+        "expectedBlocked": true,
+        "actualBlocked": false,
+        "pass": false
+      },
+      {
+        "id": "dialog-dialog pointer 7 after canvas pointer 8 press",
+        "expectedBlocked": false,
+        "actualBlocked": true,
+        "pass": false
+      }
+    ]
+  },
+  "parent": {
+    "head": "fb6afbb082c114a05a1ec509b9d4e6dbf4de22a4",
+    "scope": "Actual handlers and helper; state/DOM adapters, not browser; dialog cases explicitly distinguish two pointer identities",
+    "inputs": [
+      {
+        "path": "src/ui/kids.ts",
+        "sha": "e39f8848ff9bac1e276e3e5101fb3f38e68e67b4"
+      },
+      {
+        "path": "src/ui/pointer.ts",
+        "sha": "aa649ea0efa37cbccaef42186c15881ecb9d40eb"
+      },
+      {
+        "path": "src/ui/controls.ts",
+        "sha": "7f5674e88b40ace0d07a500dbd89c2f0750a81b3"
+      },
+      {
+        "path": "src/kids-mode.ts",
+        "sha": "616d0a979878250e2cfc3718cf4dd7e11c90c37e"
+      }
+    ],
+    "passed": 5,
+    "total": 10,
+    "results": [
+      {
+        "id": "held-touch-normal",
+        "expected": 1,
+        "actual": 1,
+        "armedAfter": false,
+        "pass": true
+      },
+      {
+        "id": "held-touch-escape",
+        "expected": 0,
+        "actual": 1,
+        "armedAfter": false,
+        "pass": false
+      },
+      {
+        "id": "held-touch-disarm",
+        "expected": 0,
+        "actual": 1,
+        "armedAfter": false,
+        "pass": false
+      },
+      {
+        "id": "held-touch-cancel",
+        "expected": 0,
+        "actual": 0,
+        "armedAfter": true,
+        "pass": true
+      },
+      {
+        "id": "held-touch-escape-rearm",
+        "expected": 0,
+        "actual": 1,
+        "armedAfter": false,
+        "pass": false
+      },
+      {
+        "id": "dialog-canvas press released over dialog",
+        "expectedBlocked": true,
+        "actualBlocked": false,
+        "pass": false
+      },
+      {
+        "id": "dialog-dialog press and click",
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-keyboard activation",
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      },
+      {
+        "id": "dialog-canvas pointer 7 after dialog pointer 8 press",
+        "expectedBlocked": true,
+        "actualBlocked": false,
+        "pass": false
+      },
+      {
+        "id": "dialog-dialog pointer 7 after canvas pointer 8 press",
+        "expectedBlocked": false,
+        "actualBlocked": false,
+        "pass": true
+      }
+    ]
+  },
+  "focused_tests": {
+    "command": "node --test tests/kids-mode.test.ts tests/kids-cancel.test.ts tests/overlay-budget.test.ts",
+    "passed": 17,
+    "total": 17,
+    "limitation": "Two preliminary partial-checkout attempts failed on missing local feed/inspector dependencies; both fetched at exact head before final 17/17 run."
+  },
+  "inputs": [
+    {
+      "path": "src/kids-mode.ts",
+      "sha": "0422a455628ad5d8292015bcdd9ffba50c1e5505"
+    },
+    {
+      "path": "src/main.ts",
+      "sha": "9e1c02057f0703bbf6f95bf4277188e87650a9cb"
+    },
+    {
+      "path": "src/state/app-state.ts",
+      "sha": "aea388e9d6a2ffe126f384572df927eb781a863b"
+    },
+    {
+      "path": "src/ui/controls.ts",
+      "sha": "d7a530f1381bd0e9438acf4f3fa29679c129bc18"
+    },
+    {
+      "path": "src/ui/kids.ts",
+      "sha": "f98bdfa5e727b589f1ee7dfe67ce4346b0d98818"
+    },
+    {
+      "path": "src/ui/pointer.ts",
+      "sha": "19ea6562ff0e73371d93756755bacb9f54812347"
+    },
+    {
+      "path": "tests/kids-cancel.test.ts",
+      "sha": "1833344eac42dda1466e6d4d9b21b698cbd1f3ac"
+    },
+    {
+      "path": "src/ui/overlay-layout.ts",
+      "sha": "79c600e5dffa5960081d974f1f8d4e4b12b5ec37"
+    },
+    {
+      "path": "src/style.css",
+      "sha": "31de37e29802d7ecb4378a2f3697051d4b611531"
+    },
+    {
+      "path": "tests/kids-mode.test.ts",
+      "sha": "2d12ff125642a9d11bd349c948c19cb1983bfa8e"
+    },
+    {
+      "path": "src/overlay-budget.ts",
+      "sha": "e8bd27f8819d9bae98207bcf3c18aacb79182c9b"
+    },
+    {
+      "path": "tests/overlay-budget.test.ts",
+      "sha": "7b5a0567dffb8b82f0a13921c48db0c22ba66fa2"
+    },
+    {
+      "path": "src/feedback.ts",
+      "sha": "726022133be729a20678f68ae5a77027b09874be"
+    },
+    {
+      "path": "src/ui/feed.ts",
+      "sha": "f752bf5ee598904b7c3fa7971db4b15d96aeb42e"
+    },
+    {
+      "path": "src/ui/inspector.ts",
+      "sha": "a55307b572f8f307a3121d02af1f2aade09c0467"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/reviews/simulator-clarity/shots/6d-dialog-held-390x844.jpg",
+      "sha": "309fc64e8f0e8c40f79f3ac703ceaa952835fe0a",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/6d-dialog-held-844x390.jpg",
+      "sha": "314fbac23f36576efa135f82e29db52436ae8398",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/6d-kids-390x844.jpg",
+      "sha": "625449e021b3aaacd01770c2d33be0181283148e",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/6d-kids-844x390.jpg",
+      "sha": "bffabd50e6d7f159c3f153726174a6af7a0bdfd6",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/6d-query-1440x900.jpg",
+      "sha": "bdc6afdccf5cd7bd5067f915f2b85f5a6c58367a",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/6d-query-390x844.jpg",
+      "sha": "91613450011b90e874b6e269ddde42180625e2b2",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/sc6c-o1-binary-stars-390x844.jpg",
+      "sha": "96522f7244372ffcd5f2f8a1cea2b6a1c60d29b4",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/sc6c-o1-binary-stars-zoom200-1440x900-details.jpg",
+      "sha": "c4417d54cc81c55f5d2d366d9a7042f376d52a3f",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/sc6c-o1-binary-stars-zoom200-1440x900.jpg",
+      "sha": "ab86ef5c41d208d793fe1132475e97025011dae3",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/sc6c-o1-collision-lab-reflow-320x568-details.jpg",
+      "sha": "afae1a875b832cdc5a80f3b5fb000ee233f939bc",
+      "inspected": true
+    },
+    {
+      "path": "docs/reviews/simulator-clarity/shots/sc6c-o1-collision-lab-reflow-320x568.jpg",
+      "sha": "57ff1f37287b7bd7cc79f7a3a81abf7ab0cb13ea",
+      "inspected": true
+    }
+  ],
+  "rendered_reviewer_cases": 0,
+  "ci": {
+    "run": 42795357445,
+    "job": 129759057436,
+    "merge": "d29974de699bb5b6c912ad789926333ec8c2f545",
+    "non_docs_matching": 238,
+    "non_docs_total": 238,
+    "units": {
+      "passed": 201,
+      "total": 201
+    },
+    "dist": {
+      "passed": 113,
+      "total": 113
+    },
+    "pages": {
+      "passed": 24,
+      "total": 24
+    },
+    "deploy": "skipped"
+  }
+}

@@ -1,0 +1,29 @@
+target parent-117ecba http://127.0.0.1:4174/
+NOTE 1440x900 cosmere-b10 C0 prime: tour on step 2, pressing Prev
+PASS 1440x900 cosmere-b10 C0 primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming,elendel,bilming)
+PASS 1440x900 cosmere-b10 C0 control: single Next arrives once at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel; hlen 3->3)
+PASS 1440x900 cosmere-b10 C0 page errors: none
+PASS 1440x900 cosmere-b10 R2x primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+NOTE 1440x900 cosmere-b10 R2x first rendered-arrival snapshot: view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=2 / 2 builds=- at +32833ms
+NOTE 1440x900 cosmere-b10 R2x S.ev log: null@+1 e48@+1721 e47@+3877
+NOTE 1440x900 cosmere-b10 R2x timing: clicks 0ms:next 1721ms:next; first fade on +4ms off +3913ms; place build(s) at +nonems; rendered before repeat(s)=bilming; trusted=true; fades=on,off
+PASS 1440x900 cosmere-b10 R2x repeat(s) issued while first entry pending (rendered still bilming)
+FAIL 1440x900 cosmere-b10 R2x 2 identical Next presses arrive exactly once at elendel/e48 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=2 / 2 builds=-)
+PASS 1440x900 cosmere-b10 R2x history length delta 0 equals single-Next control 0
+PASS 1440x900 cosmere-b10 R2x page errors: none
+NOTE 1440x900 cosmere-b10 R3x prime: tour on step 2, pressing Prev
+PASS 1440x900 cosmere-b10 R3x primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming,elendel,bilming)
+NOTE 1440x900 cosmere-b10 R3x first rendered-arrival snapshot: view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=2 / 2 builds=- at +31816ms
+NOTE 1440x900 cosmere-b10 R3x S.ev log: null@+0 e48@+13 e47@+3921
+NOTE 1440x900 cosmere-b10 R3x timing: clicks 0ms:next 13ms:next 1880ms:next; first fade on +4ms off +3954ms; place build(s) at +nonems; rendered before repeat(s)=bilming,bilming; trusted=true; fades=on,off
+PASS 1440x900 cosmere-b10 R3x repeat(s) issued while first entry pending (rendered still bilming)
+FAIL 1440x900 cosmere-b10 R3x 3 identical Next presses arrive exactly once at elendel/e48 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=2 / 2 builds=-)
+PASS 1440x900 cosmere-b10 R3x history length delta 0 equals single-Next control 0
+PASS 1440x900 cosmere-b10 R3x page errors: none
+NOTE 1440x900 cosmere-b10 R6 prime: tour on step 2, pressing Prev
+PASS 1440x900 cosmere-b10 R6 primed: tour step 1 (paused) rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming,bilming)
+HARNESS ERROR page.evaluate: Target page, context or browser has been closed
+    at pair (/home/claude/probe.cjs:315:40)
+    at async /home/claude/probe.cjs:394:67 {
+  log: []
+}

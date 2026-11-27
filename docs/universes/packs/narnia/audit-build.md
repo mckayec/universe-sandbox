@@ -1,0 +1,31 @@
+# Narnia build recheck
+
+**Pack #52 `97a374092325b8d7c294127211c2c27fc687219a` (`pack/narnia`), incorporating engine #49 `eb316b18acb4adfd03efa72795e2e8b6e7ff65c4`. Both returned findings are resolved.**
+
+| ID | Severity | Location | Resolution verified |
+|---|---|---|---|
+| NB-01 | Low | `packs/narnia.js` 97–98 | P16 now describes four siblings leaving London during the air raids. Chapter I introduces the four individually and supports the evacuation. The book-I surname is gone. Digory and Polly's addition stays at VI. [Book I, ch. I](https://www.fadedpage.com/books/201410B2/html.php) · [Book VI](https://www.fadedpage.com/books/201410A8/html.php) |
+| NB-02 | Low | `packs/narnia.js` 84, 93, 107, 229 and `cards.js` editorial note helper | The world-level card explicitly acknowledges Narnia's name and identifies the grouping as editorial. Earth and the country beyond the stable door have distinct display-label explanations. All three flags survive. The helper honors record text, then pack text, then a neutral default. Mr Tumnus names Narnia in chapter II. [Book I, ch. II](https://www.fadedpage.com/books/201410B2/html.php) |
+
+I compared the full pack delta with the 51/51-record audit below and verified the integrated engine's ancestry. All **9/9 Narnia tests** and **10/10 shared gate tests** passed independently. The pack validator returned zero errors and zero warnings. [Exact-head CI](https://github.com/mckayec/universe-sandbox/actions/runs/45937915108) passed build, unit, distribution, standalone pages and touch checks. Claude's [capture and DOM readback](build-fix-97a3740.md) are separate evidence.
+
+The research ledger still records 0/7 whole-book reads, 0/7 paired-edition checks and 3/10 independent corroborations. These two corrections close the build findings. The final canon pass remains outstanding.
+
+# Narnia build audit
+
+Pack PR #52 `c6f8c1a1dadb348a09119aa15c2a27bc2fa227fc` with engine PR #49 `b2935646d09856f7aef98d5d130caa5930a7d286`. **Return for two Low wording corrections.** The two corrections can be made entirely in the pack.
+
+| ID | Severity | Location | Finding | Evidence | Suggested fix |
+|---|---|---|---|---|---|
+| NB-01 | Low | `public/atlas/packs/narnia.js:95` (P16) | The book-I London card gives the children's surname before its cited passage introduces it. The evacuation itself is correct. | Book I, ch. I names the four children individually. Literal searches in the opened I and II transcriptions found no surname. Book III, ch. I explicitly uses it. This is a wording issue at the early gate, not a reason to delay the city. [I](https://www.fadedpage.com/books/201410B2/html.php) · [II](https://www.fadedpage.com/books/201410A9/html.php) · [III](https://www.fadedpage.com/books/201410B3/html.php) | “Four siblings are sent away from London during the wartime air raids.” Keep the later Digory and Polly addition at VI. |
+| NB-02 | Low | `public/atlas/packs/narnia.js:83` (also 91, 104, 224); engine `public/atlas/cards.js:77`, 204, 396 | The default editorial-badge tooltip tells readers that the source gives the place no name. Narnia is explicitly named. The editorial choice is the world-level grouping. The same default is used on Earth and the descriptive stable-door card. | Mr Tumnus names Narnia in [book I, ch. II](https://www.fadedpage.com/books/201410B2/html.php). The engine applies the same title to each flagged card. The pack provides a separate and accurate N00 grouping note. | Override `ui.editorialNote` with “This atlas supplies the grouping or display label.” Keep the three flags and the political-boundary notes. |
+
+## Coverage
+
+Compared the [research ledger](research.md), [addendum](research-addendum.md), [independent review](independent-review.md) and [build report](build-report.md) to the actual pack. Read 23/23 place or container cards, 14/14 events, 7/7 journey sequences, 7/7 codex entries and 7/7 era additions. The 51 IDs and later additions correspond to the bounded seed. No coordinate, measured leg, wolf alias or adaptation-only scene was added. The seven partial journeys preserve the researched stop order and the inter-world paths remain text links. The neutral container language is visible. Coverage and the unofficial fan-work notice are present.
+
+Reopened all seven primary-text transcriptions, checking selected passages against the pack. Book I supports Lucy's encounter and the distinction between the Witch's territorial claim and effective rule. Book II supports the How over the Table, the bridge and the Calormene embassy. Book III supports Bern's appointment, Eustace's transformation and the three sleeping lords. Book IV supports Harfang's relative position and Rilian's identification after release. Book V supports the island city, the Corin mix-up and the relief at Anvard. Book VI distinguishes the two ring directions and identifies Charn. Book VII supports the pool, Stable Hill, the doorway and Peter closing it. [I](https://www.fadedpage.com/books/201410B2/html.php) · [II](https://www.fadedpage.com/books/201410A9/html.php) · [III](https://www.fadedpage.com/books/201410B3/html.php) · [IV](https://www.fadedpage.com/books/201410B0/html.php) · [V](https://www.fadedpage.com/books/201410B1/html.php) · [VI](https://www.fadedpage.com/books/201410A8/html.php) · [VII](https://www.fadedpage.com/books/201410A7/html.php).
+
+I ran the pack's focused suite against its pinned reading-gate code: 8/8 passed. It covers seed counts, publication gates, chronology, guarded links, absent positions, the Stable Hill correction, era/route gates and the world-container notes. Source inspection confirms the Chronicle and journeys check eligibility before rendering their records. The supplied 390×844 book-II How capture shows the connection to the Table and the partial-journey link. The published and chronological selectors have distinct meanings in the [order reference](https://www.cslewis.com/the-narnian-order-of-things/).
+
+The original 0/7 whole-book and paired-edition coverage and 3/10 independent corroboration limits remain. Fresh checks used selected passages. Return the two resolutions at an exact head for final review; this report grants no canon or release sign-off.

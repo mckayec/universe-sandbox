@@ -1,0 +1,7 @@
+# sa05n2-probe.mjs raw summaries (preview of local build; Playwright chromium, swiftshader)
+head 03d7a67b0a3728024a05d143abc299409911f7e3: sa05n2-probe: 26/26 pass
+  1440x900 All / #book=8 / #book=7 and 390x844 All / #book=8 / #book=7:
+    t8 = "Oathbringer & Dawnshard (2017–2020)", t9 = "Rhythm of War (2020)"
+  Reading panel Dawnshard label at both viewports: "Dawnshard (2020)"; 0 console/page errors in 6/6 page loads
+parent 766f7a75d6825b4de88bb3667fde49ab971cbca6 (negative control): sa05n2-probe: 14/26 pass
+  12 expected failures = 6 page loads x (bucket-8 title range, old "(2017)" title absent)

@@ -1,0 +1,646 @@
+{
+  "date": "2026-11-21",
+  "kind": "proposal-only; actual selector/function execution, no implementation or browser",
+  "inputs": {
+    "pr48": "1fdd398a7ac936d21e11ddb9da8de65a895aac9b",
+    "pack48": "0ec8d80d4b9e184dafbc6461867fb9be54c6c631",
+    "pr37": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+    "pack37": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+    "pr24": "cf25cda66e91c573c421a0f3712623db72737a3b",
+    "pack24": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+    "engine": "7c2daaa7bc159e88b6aec6157019780baa7bf209",
+    "reading": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+    "accepted_prior_review": "c53f7f12cc5f0790ebe8e2fcba86e1c079833ad4"
+  },
+  "counts": {
+    "groups": 5,
+    "logical_operations_passed": 7,
+    "logical_operations_total": 7,
+    "whole_pack_restoration_passed": 1,
+    "whole_pack_restoration_total": 1,
+    "paired_states_passed": 10,
+    "paired_states_total": 10,
+    "implemented_cases": 0,
+    "browser_cases": 0
+  },
+  "rows": [
+    {
+      "label": "all",
+      "before": {
+        "worldVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool (Devotion’s perpendicularity)",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "realmOpen": true,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "adonalsiumEntry": true,
+        "devotionEntry": true
+      },
+      "candidate": {
+        "worldVisible": true,
+        "status": "World of Elantris",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "realmOpen": true,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "legacy1",
+      "before": {
+        "worldVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool (Devotion’s perpendicularity)",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "adonalsiumEntry": true,
+        "devotionEntry": true
+      },
+      "candidate": {
+        "worldVisible": true,
+        "status": "World of Elantris",
+        "facts": [
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "legacy7",
+      "before": {
+        "worldVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool (Devotion’s perpendicularity)",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "realmOpen": true,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "adonalsiumEntry": true,
+        "devotionEntry": true
+      },
+      "candidate": {
+        "worldVisible": true,
+        "status": "World of Elantris",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "realmOpen": true,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "none",
+      "before": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      },
+      "candidate": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "safe",
+      "before": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      },
+      "candidate": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "hope",
+      "before": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      },
+      "candidate": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "elantris",
+      "before": {
+        "worldVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool (Devotion’s perpendicularity)",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "adonalsiumEntry": true,
+        "devotionEntry": true
+      },
+      "candidate": {
+        "worldVisible": true,
+        "status": "World of Elantris",
+        "facts": [
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "elantris+hope",
+      "before": {
+        "worldVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool (Devotion’s perpendicularity)",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "adonalsiumEntry": true,
+        "devotionEntry": true
+      },
+      "candidate": {
+        "worldVisible": true,
+        "status": "World of Elantris",
+        "facts": [
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Continents",
+            "Opelon (Sycla) and a northern continent"
+          ],
+          [
+            "Magic",
+            "AonDor, drawn from the shape of the land"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "bucket7-no-elantris",
+      "before": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      },
+      "candidate": {
+        "worldVisible": false,
+        "status": "",
+        "poolVisible": false,
+        "poolName": "An unrevealed place",
+        "poolDesc": "",
+        "realmOpen": false,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    },
+    {
+      "label": "all-works",
+      "before": {
+        "worldVisible": true,
+        "status": "2nd from Mashe · Shardworld of Devotion and Dominion",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool (Devotion’s perpendicularity)",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks. It opens into Sel’s Cognitive Realm.",
+        "realmOpen": true,
+        "look": {
+          "i": 1,
+          "st": 2,
+          "c1": "#ff6a2a",
+          "c2": "#7a2ab8",
+          "c3": "#200a10"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Densities</p><p>Sel’s subastral is all but uninhabitable. The power of the splintered Shards Devotion and Dominion was forced into the Cognitive Realm, where it forms the Dor: a pressurised, plasma-like storm. A few guides can lead travellers through it.</p></div>",
+        "adonalsiumEntry": true,
+        "devotionEntry": true
+      },
+      "candidate": {
+        "worldVisible": true,
+        "status": "World of Elantris",
+        "facts": [
+          [
+            "Order",
+            "2nd from Mashe"
+          ],
+          [
+            "Moon",
+            "Oem"
+          ],
+          [
+            "Shards",
+            "Devotion and Dominion, both splintered"
+          ],
+          [
+            "Magic",
+            "AonDor, Forgery, Dakhor and more, tied to the land"
+          ],
+          [
+            "Nations",
+            "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+          ]
+        ],
+        "poolVisible": true,
+        "poolName": "The Pool",
+        "poolDesc": "A small, deep pool of thick, crystalline blue liquid in the Atad Mountains south-east of Elantris, reached by tunnel or switchbacks.",
+        "realmOpen": true,
+        "look": {
+          "i": 1,
+          "st": 4,
+          "c1": "#1e1a2c",
+          "c2": "#5a5088",
+          "c3": "#0e0c14"
+        },
+        "card": "<div class=\"realmcard\"><p class=\"eyebrow\">The Cognitive Realm</p><p>No world-specific description is provided in this view. The appearance is an illustration, not a verified map.</p></div>",
+        "adonalsiumEntry": false,
+        "devotionEntry": false
+      }
+    }
+  ]
+}

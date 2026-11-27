@@ -1,11 +1,12 @@
 // Render quality scaling, realism/effects preferences, adaptive quality and gravitational lensing.
 import * as THREE from 'three';
 import { setNebulaQuality } from '../nebula-hd.ts';
-import { savePreferences } from '../exhibit-runtime.ts';
+import { adaptiveQualitySample, savePreferences } from '../exhibit-runtime.ts';
 import { bloom, camera, composer, deviceTier, isCompact, lensingPass, preferences, renderer } from './setup.ts';
 import { app, audio, bodies } from '../state/app-state.ts';
 import type { Body } from '../state/types.ts';
 import { toast } from '../ui/feed.ts';
+import { timelineLive } from '../feedback.ts';
 
 // Lowest scale the adaptive loop and the Low setting may reach, and the absolute pixel-ratio floors. Desktop
 // can now drop below 1× so Low quality really renders fewer pixels on DPR-1 displays.
@@ -51,8 +52,13 @@ export function applyExhibitPreferences() {
   document.documentElement.classList.toggle('gentle-effects', app.effectsMode === 'gentle');
   document.querySelector('#realism-mode')!.textContent = `Model: ${app.realismMode}`;
   document.querySelector('#effects-mode')!.textContent = `Effects: ${app.effectsMode}`;
+  const feedbackButton = document.querySelector<HTMLButtonElement>('#feedback-mode')!;
+  feedbackButton.textContent = `Banners: ${app.feedbackMode === 'full' ? 'on' : 'quiet'}`;
+  feedbackButton.setAttribute('aria-pressed', String(app.feedbackMode === 'quiet'));
+  document.querySelector('#event-feed')!.setAttribute('aria-live', timelineLive(app.feedbackMode));
   preferences.realism = app.realismMode;
   preferences.effects = app.effectsMode;
+  preferences.feedback = app.feedbackMode;
   savePreferences(preferences);
 }
 export function cycleRealismMode() {
@@ -74,21 +80,26 @@ export function cycleEffectsMode() {
   audio.play('ui');
   toast(app.effectsMode === 'full' ? 'Full exhibit effects enabled' : 'Gentle effects reduce flashes and particles');
 }
+/** Adult preference: quiet mode drops unsolicited simulation banners; the timeline keeps recording. */
+export function cycleFeedbackMode() {
+  app.feedbackMode = app.feedbackMode === 'full' ? 'quiet' : 'full';
+  applyExhibitPreferences();
+  audio.play('ui');
+  toast(
+    app.feedbackMode === 'quiet'
+      ? 'Quiet: simulation events stay in the timeline without banners'
+      : 'Event banners and sounds on',
+  );
+}
 export function updateAdaptiveQuality(dt: number) {
-  if (app.qualityMode !== 'auto') return;
-  app.qualityTimer += dt;
-  app.qualityFrames++;
-  if (app.qualityTimer < 2.5) return;
-  // Hysteresis: step down quickly when clearly slow, step up slowly and only when comfortably fast, so the
-  // scale does not oscillate around the threshold.
-  const fps = app.qualityFrames / app.qualityTimer,
-    target =
-      fps < 43
-        ? Math.max(QUALITY_FLOOR, app.qualityScale - 0.08)
-        : fps > 57.5
-          ? Math.min(1, app.qualityScale + 0.04)
-          : app.qualityScale;
-  if (Math.abs(target - app.qualityScale) > 0.02) applyQualityScale(target);
+  const window = { timer: app.qualityTimer, frames: app.qualityFrames },
+    target = adaptiveQualitySample(window, dt, app.qualityScale, QUALITY_FLOOR, app.qualityMode);
+  app.qualityTimer = window.timer;
+  app.qualityFrames = window.frames;
+  if (target !== null) applyQualityScale(target);
+}
+/** Discard a partly filled adaptive-quality window (after the page was hidden or shown). */
+export function resetAdaptiveQualityWindow() {
   app.qualityTimer = 0;
   app.qualityFrames = 0;
 }

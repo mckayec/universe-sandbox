@@ -1,0 +1,176 @@
+{
+  "head": "773c35bcaeb727927c9ab6a462a52ab1e9d0e538",
+  "manifest": {
+    "public/atlas/reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+    "public/atlas/reading-ui.js": "99e678933c143ab927d842bcc33e7ce7cc158b83",
+    "public/atlas/packs/cosmere.js": "aebc2fb385bc6e2bfe453c610b48173f11d50916",
+    "public/atlas/engine.js": "6ecfb467f2577c2ffe57ee93ba5c06ee85979f52"
+  },
+  "passed": 84,
+  "total": 84,
+  "checks": [
+    "bucket 1 complete",
+    "bucket 1 missing elantris",
+    "bucket 2 complete",
+    "bucket 2 missing mistborn-the-final-empire",
+    "bucket 2 missing mistborn-the-well-of-ascension",
+    "bucket 2 missing mistborn-the-hero-of-ages",
+    "bucket 3 complete",
+    "bucket 3 missing warbreaker",
+    "bucket 4 complete",
+    "bucket 4 missing the-way-of-kings",
+    "bucket 5 complete",
+    "bucket 5 missing words-of-radiance",
+    "bucket 6 complete",
+    "bucket 6 missing the-alloy-of-law",
+    "bucket 6 missing shadows-of-self",
+    "bucket 6 missing the-bands-of-mourning",
+    "bucket 7 complete",
+    "bucket 7 missing the-hope-of-elantris",
+    "bucket 7 missing the-emperors-soul",
+    "bucket 7 missing the-eleventh-metal",
+    "bucket 7 missing allomancer-jak-and-the-pits-of-eltania",
+    "bucket 7 missing mistborn-secret-history",
+    "bucket 7 missing edgedancer",
+    "bucket 7 missing white-sand-volume-1",
+    "bucket 7 missing white-sand-volume-2",
+    "bucket 7 missing white-sand-volume-3",
+    "bucket 7 missing white-sand-omnibus",
+    "bucket 7 missing shadows-for-silence-in-the-forests-of-hell",
+    "bucket 7 missing sixth-of-the-dusk",
+    "bucket 7 missing arcanum-unbounded-system-essays-and-maps",
+    "bucket 8 complete",
+    "bucket 8 missing oathbringer",
+    "bucket 8 missing dawnshard",
+    "bucket 9 complete",
+    "bucket 9 missing rhythm-of-war",
+    "bucket 10 complete",
+    "bucket 10 missing the-lost-metal",
+    "bucket 11 complete",
+    "bucket 11 missing tress-of-the-emerald-sea",
+    "bucket 11 missing yumi-and-the-nightmare-painter",
+    "bucket 11 missing the-sunlit-man",
+    "bucket 12 complete",
+    "bucket 12 missing wind-and-truth",
+    "bucket 12 missing isles-of-the-emberdark",
+    "bucket 12 missing the-fires-of-december",
+    "e6 actual engine ancestor chain mask 0",
+    "e12 actual engine ancestor chain mask 0",
+    "e6 actual engine ancestor chain mask 1",
+    "e12 actual engine ancestor chain mask 1",
+    "e6 actual engine ancestor chain mask 2",
+    "e12 actual engine ancestor chain mask 2",
+    "e6 actual engine ancestor chain mask 3",
+    "e12 actual engine ancestor chain mask 3",
+    "e6 actual engine ancestor chain mask 4",
+    "e12 actual engine ancestor chain mask 4",
+    "e6 actual engine ancestor chain mask 5",
+    "e12 actual engine ancestor chain mask 5",
+    "e6 actual engine ancestor chain mask 6",
+    "e12 actual engine ancestor chain mask 6",
+    "e6 actual engine ancestor chain mask 7",
+    "e12 actual engine ancestor chain mask 7",
+    "invalid year null",
+    "invalid year 0",
+    "invalid year -1",
+    "invalid year 2006.5",
+    "invalid year 2006",
+    "invalid year NaN",
+    "invalid qualifier {\"id\":\"x\",\"yNote\":\"catalogue listing\"}",
+    "invalid qualifier {\"id\":\"x\",\"y\":2006,\"yNote\":3}",
+    "invalid qualifier {\"id\":\"x\",\"y\":2006,\"yNote\":\"\"}",
+    "years do not change bucket 1",
+    "years do not change bucket 2",
+    "years do not change bucket 3",
+    "years do not change bucket 4",
+    "years do not change bucket 5",
+    "years do not change bucket 6",
+    "years do not change bucket 7",
+    "years do not change bucket 8",
+    "years do not change bucket 9",
+    "years do not change bucket 10",
+    "years do not change bucket 11",
+    "years do not change bucket 12",
+    "all pack data outside spoilers and e6/e12 unchanged",
+    "parent lacks registry negative control"
+  ],
+  "ancestorTruthTable": [
+    {
+      "mask": 0,
+      "read": [],
+      "e6": false,
+      "e12": false
+    },
+    {
+      "mask": 1,
+      "read": [
+        "mistborn-the-final-empire"
+      ],
+      "e6": false,
+      "e12": false
+    },
+    {
+      "mask": 2,
+      "read": [
+        "mistborn-the-well-of-ascension"
+      ],
+      "e6": false,
+      "e12": false
+    },
+    {
+      "mask": 3,
+      "read": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension"
+      ],
+      "e6": false,
+      "e12": false
+    },
+    {
+      "mask": 4,
+      "read": [
+        "mistborn-the-hero-of-ages"
+      ],
+      "e6": false,
+      "e12": false
+    },
+    {
+      "mask": 5,
+      "read": [
+        "mistborn-the-final-empire",
+        "mistborn-the-hero-of-ages"
+      ],
+      "e6": false,
+      "e12": false
+    },
+    {
+      "mask": 6,
+      "read": [
+        "mistborn-the-well-of-ascension",
+        "mistborn-the-hero-of-ages"
+      ],
+      "e6": false,
+      "e12": false
+    },
+    {
+      "mask": 7,
+      "read": [
+        "mistborn-the-final-empire",
+        "mistborn-the-well-of-ascension",
+        "mistborn-the-hero-of-ages"
+      ],
+      "e6": true,
+      "e12": true
+    }
+  ],
+  "parentDelta": {
+    "allowed": [
+      "spoilers",
+      "e6",
+      "e12"
+    ],
+    "otherwiseIdentical": true,
+    "parentRegistryAbsent": true
+  },
+  "scope": "actual-source/helper checks only; not rendered behavior or full canon approval"
+}

@@ -1,0 +1,188 @@
+{
+  "unit": "SEL02/EL01-PORT",
+  "scope": "Proposal-only source/data/actual-selector checks; no implementation or rendered tests",
+  "head": "614a391443a87cd67d27caca255d2836b5f15d37",
+  "pack_blob": "179dfb810f22e3694f7751cf02c1e609ca8992f0",
+  "reading_blob": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+  "engine_blob": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+  "checks": {
+    "unique_string": 1,
+    "target_field": 1,
+    "whole_data_restoration": 1,
+    "paired_selector_states": 10
+  },
+  "lexical_inventory": [
+    {
+      "pr": 24,
+      "hits": []
+    },
+    {
+      "pr": 37,
+      "hits": []
+    },
+    {
+      "pr": 48,
+      "hits": [
+        {
+          "path": "pack.spoilers.works.10.title",
+          "value": "The Hope of Elantris"
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "state": {
+        "mode": "all"
+      },
+      "description_visible": true,
+      "old_claim_visible": true,
+      "proposal_claim_visible": false,
+      "allowed_output": "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."
+    },
+    {
+      "state": {
+        "mode": "legacy",
+        "book": 1
+      },
+      "description_visible": true,
+      "old_claim_visible": true,
+      "proposal_claim_visible": false,
+      "allowed_output": "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."
+    },
+    {
+      "state": {
+        "mode": "legacy",
+        "book": 7
+      },
+      "description_visible": true,
+      "old_claim_visible": true,
+      "proposal_claim_visible": false,
+      "allowed_output": "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."
+    },
+    {
+      "state": {
+        "mode": "none"
+      },
+      "description_visible": false,
+      "old_claim_visible": false,
+      "proposal_claim_visible": false,
+      "allowed_output": ""
+    },
+    {
+      "state": {
+        "mode": "safe",
+        "reason": "test"
+      },
+      "description_visible": false,
+      "old_claim_visible": false,
+      "proposal_claim_visible": false,
+      "allowed_output": ""
+    },
+    {
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-hope-of-elantris"
+        ]
+      },
+      "description_visible": false,
+      "old_claim_visible": false,
+      "proposal_claim_visible": false,
+      "allowed_output": ""
+    },
+    {
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris"
+        ]
+      },
+      "description_visible": true,
+      "old_claim_visible": true,
+      "proposal_claim_visible": false,
+      "allowed_output": "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."
+    },
+    {
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "the-hope-of-elantris"
+        ]
+      },
+      "description_visible": true,
+      "old_claim_visible": true,
+      "proposal_claim_visible": false,
+      "allowed_output": "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."
+    },
+    {
+      "state": {
+        "mode": "set",
+        "ids": [
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps"
+        ]
+      },
+      "description_visible": false,
+      "old_claim_visible": false,
+      "proposal_claim_visible": false,
+      "allowed_output": ""
+    },
+    {
+      "state": {
+        "mode": "set",
+        "ids": [
+          "elantris",
+          "mistborn-the-final-empire",
+          "mistborn-the-well-of-ascension",
+          "mistborn-the-hero-of-ages",
+          "warbreaker",
+          "the-way-of-kings",
+          "words-of-radiance",
+          "the-alloy-of-law",
+          "shadows-of-self",
+          "the-bands-of-mourning",
+          "the-hope-of-elantris",
+          "the-emperors-soul",
+          "the-eleventh-metal",
+          "allomancer-jak-and-the-pits-of-eltania",
+          "mistborn-secret-history",
+          "edgedancer",
+          "white-sand-volume-1",
+          "white-sand-volume-2",
+          "white-sand-volume-3",
+          "white-sand-omnibus",
+          "shadows-for-silence-in-the-forests-of-hell",
+          "sixth-of-the-dusk",
+          "arcanum-unbounded-system-essays-and-maps",
+          "oathbringer",
+          "dawnshard",
+          "rhythm-of-war",
+          "the-lost-metal",
+          "tress-of-the-emerald-sea",
+          "yumi-and-the-nightmare-painter",
+          "the-sunlit-man",
+          "wind-and-truth",
+          "isles-of-the-emberdark",
+          "the-fires-of-december"
+        ]
+      },
+      "description_visible": true,
+      "old_claim_visible": true,
+      "proposal_claim_visible": false,
+      "allowed_output": "The shining city of the Elantrians in north-east Arelon, near the coast and the northern end of the Atad Mountains. After the Reod its walls hold the Shaod’s victims; Raoden is thrown in here at the start of the book."
+    }
+  ]
+}

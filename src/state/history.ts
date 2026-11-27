@@ -5,6 +5,9 @@ import {
   loadUniverse,
   saveUniverse,
   validateSavedBodies,
+  applySavedInfall,
+  assertSavedInfalls,
+  type SavedBody,
   type SandboxSnapshot,
 } from '../sandbox-state.ts';
 import { EXHIBITS, type ExhibitId } from '../exhibits.ts';
@@ -31,6 +34,7 @@ import {
 import type { LifeLevel, Stage, StellarTransition } from './types.ts';
 import { renderExhibitEvents, select, toast } from '../ui/feed.ts';
 import { closeObjectMenu } from '../ui/inspector.ts';
+import { sanitizeReference } from '../black-hole-reference.ts';
 
 export function resetSimulation() {
   closeObjectMenu();
@@ -39,7 +43,7 @@ export function resetSimulation() {
   app.pendingTouchPlacement = null;
   clearGuides();
   app.historySuspended = true;
-  [...bodies].forEach(removeBody);
+  [...bodies].forEach(b => removeBody(b));
   app.historySuspended = false;
   clearGalaxyVisuals();
   cosmicGroups.length = 0;
@@ -95,6 +99,8 @@ export function snapshotUniverse(): SandboxSnapshot {
       stageTransition: body.stageTransition ? { ...body.stageTransition } : undefined,
       debris: body.debris,
       tidalStrain: body.tidalStrain,
+      bhReference: body.bhReference ? { ...body.bhReference } : undefined,
+      infall: body.infall ? { ...body.infall } : undefined,
       nebulaTimer: body.nebulaTimer,
       hostId: body.hostId,
       protoAngle: body.protoAngle,
@@ -126,7 +132,11 @@ function rebuildUniverse(snapshot: SandboxSnapshot) {
   resetSimulation();
   app.historySuspended = true;
   const { bodies: saved, dropped } = validateSavedBodies(snapshot.bodies, KNOWN_KINDS, KNOWN_STAGES);
+  // A capture record whose original hold flag is lost cannot be restored honestly: refuse the whole snapshot so
+  // restoreUniverse falls back to the previous universe and the caller reports it.
+  assertSavedInfalls(saved);
   for (const entry of [...saved].sort((a, b) => a.id - b.id)) restoreBody(entry);
+  restoreInfalls(saved);
   app.nextId = Math.max(snapshot.nextId, ...bodies.map(body => body.id + 1));
   app.nextGroupId = snapshot.nextGroupId;
   cosmicGroups.push(
@@ -146,6 +156,17 @@ function rebuildUniverse(snapshot: SandboxSnapshot) {
     snapshot.exhibit && KNOWN_EXHIBITS.has(snapshot.exhibit) ? (snapshot.exhibit as ExhibitId) : null;
   if (!app.currentExhibit) document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
   return dropped;
+}
+/**
+ * Resume slow-accretion captures once every body exists. A resumed capture always holds evolution; an unusable
+ * record cancels and restores the original hold; a malformed one throws (already refused by assertSavedInfalls).
+ */
+function restoreInfalls(saved: readonly SavedBody[]) {
+  const byId = new Map(bodies.map(body => [body.id, body]));
+  for (const entry of saved) {
+    const body = byId.get(entry.id);
+    if (body) applySavedInfall(body, entry.infall, id => byId.get(id)?.kind);
+  }
 }
 function restoreBody(saved: SandboxSnapshot['bodies'][number]) {
   app.nextId = saved.id;
@@ -170,6 +191,7 @@ function restoreBody(saved: SandboxSnapshot['bodies'][number]) {
     stageTransition: saved.stageTransition ? ({ ...saved.stageTransition } as StellarTransition) : undefined,
     debris: saved.debris,
     tidalStrain: saved.tidalStrain,
+    bhReference: sanitizeReference(saved.bhReference, saved.kind),
     nebulaTimer: saved.nebulaTimer,
     hostId: saved.hostId,
     protoAngle: saved.protoAngle,
@@ -220,8 +242,17 @@ export function restoreUniverse(snapshot: SandboxSnapshot, fallback?: SandboxSna
   return ok;
 }
 export function updateHistoryButtons() {
-  document.querySelector<HTMLButtonElement>('#undo')!.disabled = !undoStack.length;
-  document.querySelector<HTMLButtonElement>('#redo')!.disabled = !redoStack.length;
+  const undo = document.querySelector<HTMLButtonElement>('#undo')!;
+  const redo = document.querySelector<HTMLButtonElement>('#redo')!;
+  const focused = document.activeElement;
+  undo.disabled = !undoStack.length;
+  redo.disabled = !redoStack.length;
+  // A keyboard user who just used the last Undo (or Redo) keeps focus on the neighbouring control
+  // instead of losing it to the page when the button disables itself.
+  if (focused === undo && undo.disabled)
+    (redo.disabled ? document.querySelector<HTMLElement>('#universe-home') : redo)?.focus();
+  else if (focused === redo && redo.disabled)
+    (undo.disabled ? document.querySelector<HTMLElement>('#universe-home') : undo)?.focus();
 }
 export function recordHistory(snapshot = snapshotUniverse()) {
   if (app.historySuspended) return;

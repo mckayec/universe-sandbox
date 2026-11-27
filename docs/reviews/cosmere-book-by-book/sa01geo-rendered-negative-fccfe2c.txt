@@ -1,0 +1,97 @@
+FAIL 1440x900 wayofkings: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 wayofkings: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 wayofkings: "fourth moon" absent from page
+FAIL 1440x900 wayofkings: "North to south" absent from page
+FAIL 1440x900 wayofkings: "Thanadal" absent from page
+FAIL 1440x900 wayofkings: "chasmfiends for gemhearts" absent from page
+FAIL 1440x900 wayofkings: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 wayofkings: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 wayofkings: "fourth moon" absent after opening
+FAIL 1440x900 wayofkings: "North to south" absent after opening
+FAIL 1440x900 wayofkings: "Thanadal" absent after opening
+FAIL 1440x900 wayofkings: "chasmfiends for gemhearts" absent after opening
+FAIL 1440x900 legacy book=4: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 legacy book=4: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 legacy book=4: "fourth moon" absent from page
+FAIL 1440x900 legacy book=4: "North to south" absent from page
+FAIL 1440x900 legacy book=4: "Thanadal" absent from page
+FAIL 1440x900 legacy book=4: "chasmfiends for gemhearts" absent from page
+FAIL 1440x900 legacy book=4: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 legacy book=4: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 legacy book=4: "fourth moon" absent after opening
+FAIL 1440x900 legacy book=4: "North to south" absent after opening
+FAIL 1440x900 legacy book=4: "Thanadal" absent after opening
+FAIL 1440x900 legacy book=4: "chasmfiends for gemhearts" absent after opening
+FAIL 1440x900 legacy book=10: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 legacy book=10: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 legacy book=10: "fourth moon" absent from page
+FAIL 1440x900 legacy book=10: "North to south" absent from page
+FAIL 1440x900 legacy book=10: "Thanadal" absent from page
+FAIL 1440x900 legacy book=10: "chasmfiends for gemhearts" absent from page
+FAIL 1440x900 legacy book=10: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 legacy book=10: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 legacy book=10: "fourth moon" absent after opening
+FAIL 1440x900 legacy book=10: "North to south" absent after opening
+FAIL 1440x900 legacy book=10: "Thanadal" absent after opening
+FAIL 1440x900 legacy book=10: "chasmfiends for gemhearts" absent after opening
+FAIL 1440x900 All: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 All: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 All: "fourth moon" absent from page
+FAIL 1440x900 All: "North to south" absent from page
+FAIL 1440x900 All: "Thanadal" absent from page
+FAIL 1440x900 All: "chasmfiends for gemhearts" absent from page
+FAIL 1440x900 All: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 1440x900 All: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 1440x900 All: "fourth moon" absent after opening
+FAIL 1440x900 All: "North to south" absent after opening
+FAIL 1440x900 All: "Thanadal" absent after opening
+FAIL 1440x900 All: "chasmfiends for gemhearts" absent after opening
+FAIL 390x844 wayofkings: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 wayofkings: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 wayofkings: "fourth moon" absent from page
+FAIL 390x844 wayofkings: "North to south" absent from page
+FAIL 390x844 wayofkings: "Thanadal" absent from page
+FAIL 390x844 wayofkings: "chasmfiends for gemhearts" absent from page
+FAIL 390x844 wayofkings: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 wayofkings: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 wayofkings: "fourth moon" absent after opening
+FAIL 390x844 wayofkings: "North to south" absent after opening
+FAIL 390x844 wayofkings: "Thanadal" absent after opening
+FAIL 390x844 wayofkings: "chasmfiends for gemhearts" absent after opening
+FAIL 390x844 legacy book=4: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 legacy book=4: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 legacy book=4: "fourth moon" absent from page
+FAIL 390x844 legacy book=4: "North to south" absent from page
+FAIL 390x844 legacy book=4: "Thanadal" absent from page
+FAIL 390x844 legacy book=4: "chasmfiends for gemhearts" absent from page
+FAIL 390x844 legacy book=4: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 legacy book=4: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 legacy book=4: "fourth moon" absent after opening
+FAIL 390x844 legacy book=4: "North to south" absent after opening
+FAIL 390x844 legacy book=4: "Thanadal" absent after opening
+FAIL 390x844 legacy book=4: "chasmfiends for gemhearts" absent after opening
+FAIL 390x844 legacy book=10: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 legacy book=10: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 legacy book=10: "fourth moon" absent from page
+FAIL 390x844 legacy book=10: "North to south" absent from page
+FAIL 390x844 legacy book=10: "Thanadal" absent from page
+FAIL 390x844 legacy book=10: "chasmfiends for gemhearts" absent from page
+FAIL 390x844 legacy book=10: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 legacy book=10: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 legacy book=10: "fourth moon" absent after opening
+FAIL 390x844 legacy book=10: "North to south" absent after opening
+FAIL 390x844 legacy book=10: "Thanadal" absent after opening
+FAIL 390x844 legacy book=10: "chasmfiends for gemhearts" absent after opening
+FAIL 390x844 All: shatteredplains desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 All: warcamps desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 All: "fourth moon" absent from page
+FAIL 390x844 All: "North to south" absent from page
+FAIL 390x844 All: "Thanadal" absent from page
+FAIL 390x844 All: "chasmfiends for gemhearts" absent from page
+FAIL 390x844 All: shatteredplains visible desc = new (Plateaus split by deep chasms, where the Alethi warcamps hunt chasmfiends for gemhearts. The fragments of a fourth moon that fell long ago lie beneath. Kaladin runs bridges here as a slave.)
+FAIL 390x844 All: warcamps visible desc = new (Ten craters along the western rim, one per highprince. North to south: Roion, Sadeas, Aladar, Kholin, Vamah, Ruthar, Thanadal, Hatham, Bethab, Sebarial.)
+FAIL 390x844 All: "fourth moon" absent after opening
+FAIL 390x844 All: "North to south" absent after opening
+FAIL 390x844 All: "Thanadal" absent after opening
+FAIL 390x844 All: "chasmfiends for gemhearts" absent after opening
+{"pass":94,"fail":96}

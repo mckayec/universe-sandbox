@@ -1,0 +1,10 @@
+target head-311e9fe http://127.0.0.1:4173/
+FAIL 1440x900 dune-b3 C0 primed: tour step 12 (paused) rendered in place at fane with c6 (view=place sel=arrakis site=tabr rendered=fane ev=null hash=#book=3&world=arrakis&site=tabr&view=place hlen=9 tour=12 / 13 builds=arrakeen,fane,tabr,tabr,fane)
+PASS 1440x900 dune-b3 C0 page errors: none
+HARNESS ERROR page.evaluate: Target page, context or browser has been closed
+    at tourClick (/home/claude/universe-sandbox/docs/reviews/deep-worlds/dwt02-rendered-probe-v2.cjs:143:26)
+    at prime (/home/claude/universe-sandbox/docs/reviews/deep-worlds/dwt02-rendered-probe-v2.cjs:190:13)
+    at async pair (/home/claude/universe-sandbox/docs/reviews/deep-worlds/dwt02-rendered-probe-v2.cjs:257:9)
+    at async /home/claude/universe-sandbox/docs/reviews/deep-worlds/dwt02-rendered-probe-v2.cjs:394:67 {
+  log: []
+}

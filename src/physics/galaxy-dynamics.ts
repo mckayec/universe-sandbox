@@ -2,10 +2,12 @@
 // placed inside a galaxy.
 //
 // Every galaxy carries a dark-matter halo centred on its core. A halo pulls on the core, member stars and
-// tracer stars of every galaxy (not only its own), which is what lets one galaxy tidally tear another. Because
-// all bodies of a galaxy feel the other galaxy's full mass, total momentum is conserved galaxy by galaxy.
-// When halos overlap, dynamical friction drains the cores' relative motion, so an encounter ends in a merger
-// after a pass or two instead of an endless fly-by.
+// tracer stars of every galaxy (not only its own), which is what lets one galaxy tidally tear another. When
+// halos overlap, a prescribed drag (standing in for dynamical friction) drains the cores' relative motion, so an
+// encounter ends in a merger after a pass or two instead of an endless fly-by.
+// Analytic halos and prescribed drag approximate encounter forces. They are not a self-consistent
+// momentum-conserving simulation of stars and dark matter: halos feel no recoil from the bodies they pull,
+// massive members are not counted in a galaxy's mass, and locked cores are external constraints.
 import * as THREE from 'three';
 import { G } from '../celestial-catalog.ts';
 import { app, bodies, bodyGroupIds, cosmicGroups } from '../state/app-state.ts';

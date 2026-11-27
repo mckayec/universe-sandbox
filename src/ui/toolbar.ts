@@ -6,7 +6,7 @@ import { focusCosmicGroup } from '../bodies/groups.ts';
 import { removeBody, replaceVisual, transform } from '../bodies/lifecycle.ts';
 import { planetSubtype } from '../physics/body-math.ts';
 import { fitAllObjects, focusSelected, nudgeCamera, zoomCamera } from '../scene/camera.ts';
-import { cycleEffectsMode, cycleQualityMode, cycleRealismMode } from '../scene/quality.ts';
+import { cycleEffectsMode, cycleFeedbackMode, cycleQualityMode, cycleRealismMode } from '../scene/quality.ts';
 import { renderer } from '../scene/setup.ts';
 import { app, audio } from '../state/app-state.ts';
 import {
@@ -26,13 +26,21 @@ import {
   setInteractionMode,
   setNavigationMode,
   setSimulationSpeed,
+  setTouchHint,
   toggleHabitabilityGuides,
   toggleTrails,
 } from './controls.ts';
 import { hideDialog, openDialog, showDialog, trapFocus } from './dialogs.ts';
 import { exitGuide, loadExhibit, openUniversePack } from './exhibit-flow.ts';
-import { compactLayout, noteActivity, select, session, setToolsCollapsed, toast } from './feed.ts';
-import { closeObjectMenu, orbitNearest, refreshObjectMenu, toggleBuildLock, togglePositionLock } from './inspector.ts';
+import { compactLayout, noteActivity, select, session, setDetailsExpanded, setToolsCollapsed, toast } from './feed.ts';
+import {
+  closeObjectMenu,
+  orbitNearest,
+  refreshObjectMenu,
+  setBlackHoleReference,
+  toggleBuildLock,
+  togglePositionLock,
+} from './inspector.ts';
 import { impactEffect } from '../visuals/effects.ts';
 
 export function bindToolbar() {
@@ -89,7 +97,7 @@ export function bindToolbar() {
     resetSimulation();
     app.currentExhibit = null;
     document.querySelector<HTMLElement>('#guide-card')!.hidden = true;
-    toast('Simulation cleared');
+    toast('Simulation cleared · Undo restores it');
   };
   document.querySelector<HTMLButtonElement>('#orbit-mode')!.onclick = e => {
     app.orbitMode = !app.orbitMode;
@@ -98,6 +106,9 @@ export function bindToolbar() {
     document.querySelector('#hint')!.textContent = app.orbitMode
       ? 'ORBIT MODE · DRAG NEAR A BLUE RING TO ENTER ORBIT'
       : 'INSPECT MODE · CLICK OR DRAG OBJECTS · RIGHT-DRAG TO PAN';
+    setTouchHint(
+      app.orbitMode ? 'Orbit mode · drag a planet near a blue ring' : 'Tap an object to inspect · drag it to move',
+    );
   };
   const universePicker = document.querySelector<HTMLElement>('#universe-picker')!,
     scenarioPicker = document.querySelector<HTMLElement>('#scenario-picker')!;
@@ -162,6 +173,9 @@ export function bindToolbar() {
     if (app.selectedBody) toggleBuildLock(app.selectedBody);
   };
   document.querySelector<HTMLButtonElement>('#universe-home')!.onclick = fitAllObjects;
+  document.querySelector<HTMLSelectElement>('#bh-reference')!.onchange = e => {
+    if (app.selectedBody) setBlackHoleReference(app.selectedBody, (e.currentTarget as HTMLSelectElement).value);
+  };
   document.querySelector<HTMLSelectElement>('#group-select')!.onchange = e => {
     const value = (e.currentTarget as HTMLSelectElement).value;
     focusCosmicGroup(value ? Number(value) : null);
@@ -177,6 +191,7 @@ export function bindToolbar() {
   document.querySelector<HTMLButtonElement>('#quality-mode')!.onclick = cycleQualityMode;
   document.querySelector<HTMLButtonElement>('#realism-mode')!.onclick = cycleRealismMode;
   document.querySelector<HTMLButtonElement>('#effects-mode')!.onclick = cycleEffectsMode;
+  document.querySelector<HTMLButtonElement>('#feedback-mode')!.onclick = cycleFeedbackMode;
   document.querySelector<HTMLButtonElement>('#sound-mode')!.onclick = e => {
     audio.setMuted(!audio.muted);
     (e.currentTarget as HTMLButtonElement).textContent = `Sound: ${audio.muted ? 'off' : 'on'}`;
@@ -278,6 +293,7 @@ export function bindToolbar() {
     .forEach(b => (b.onclick = () => setSimulationSpeed(Number(b.dataset.speed))));
   bindCompactPanels();
   bindToolbarFade();
+  bindTopbarReflow();
 }
 /** Collapsible tool panel and expandable selected-object sheet on compact layouts. */
 function bindCompactPanels() {
@@ -285,15 +301,24 @@ function bindCompactPanels() {
     setToolsCollapsed(!document.querySelector('.shell')!.classList.contains('tools-collapsed'));
   const infoPanel = document.querySelector<HTMLElement>('#info-panel')!,
     expand = document.querySelector<HTMLButtonElement>('#info-expand')!;
-  expand.onclick = () => {
-    const expanded = infoPanel.classList.toggle('expanded');
-    expand.textContent = expanded ? 'Less' : 'Details';
-    expand.setAttribute('aria-expanded', String(expanded));
-  };
+  expand.onclick = () => setDetailsExpanded(!infoPanel.classList.contains('expanded'));
   document.querySelector<HTMLButtonElement>('#info-close')!.onclick = () => select(null);
   document.querySelector<HTMLButtonElement>('#info-life-zones')!.onclick = toggleHabitabilityGuides;
   // Phones start with the body palette collapsed so the playfield stays visible.
   if (compactLayout() && innerHeight < 900) setToolsCollapsed(true);
+}
+/** Publishes how much taller than one row the top bar has wrapped (enlarged text), so the controls
+ *  positioned below it move down instead of being overlapped. */
+function bindTopbarReflow() {
+  const bar = document.querySelector<HTMLElement>('.topbar')!;
+  const root = document.documentElement;
+  const update = () => {
+    const extra = compactLayout() ? Math.max(0, Math.ceil(bar.getBoundingClientRect().height) - 44) : 0;
+    root.style.setProperty('--topbar-extra', `${extra}px`);
+  };
+  new ResizeObserver(update).observe(bar);
+  addEventListener('resize', update);
+  update();
 }
 /** Fades the universe toolbar's edges when more buttons are scrolled out of view. */
 function bindToolbarFade() {

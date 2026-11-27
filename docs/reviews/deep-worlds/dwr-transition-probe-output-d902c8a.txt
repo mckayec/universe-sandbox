@@ -1,0 +1,24 @@
+{"label":"T1 positive uninterrupted","entered":["tree"],"view":"place","site":"tree","event":"b2n","effects":["battle"]}
+{"label":"T2 generation invalidated before transition (openEvent(null))","entered":[],"view":"world","site":"tree","event":null,"effects":[]}
+{"label":"T3 site changed before transition (selectSite other)","entered":[],"view":"world","site":"keats","event":null,"effects":[]}
+{"label":"T4 away-and-back selection before transition","entered":[],"view":"world","site":"tree","event":null,"effects":[]}
+{"label":"T5 fresh navigation after cancellation","entered":["tree"],"view":"place","site":"tree","event":"b2n","effects":["battle"]}
+{"label":"T6 world changed before transition","entered":[],"view":"world","site":"tree","event":null,"effects":[]}
+{"label":"T7 book downgrade before transition","entered":[],"view":"world","site":"tree","event":null,"effects":[]}
+{
+ "pass": 11,
+ "total": 11,
+ "assertions": [
+  "T1 uninterrupted entry builds the intended place, view=place, site matches",
+  "T1 uninterrupted entry plays the event effect once",
+  "T2 invalidated generation: no place built",
+  "T2 invalidated generation: view stays out of place, no event/effect",
+  "T3 site change: stale place not built",
+  "T3 site change: state keeps the newly selected site, view not place, no effect",
+  "T4 away-and-back: pending entry invalidated even though site id matches again",
+  "T5 fresh entry after a cancelled one enters the intended place once",
+  "T5 fresh entry plays its event effect once",
+  "T6 world change: nothing built",
+  "T7 book change: pending entry invalidated"
+ ]
+}

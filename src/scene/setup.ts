@@ -27,11 +27,27 @@ export const camera = new THREE.PerspectiveCamera(52, innerWidth / innerHeight, 
   MAX_CAMERA_DISTANCE = 1100;
 camera.position.set(0, isCompact ? 90 : 34, isCompact ? 120 : 42);
 camera.lookAt(viewTarget);
-export const renderer = new THREE.WebGLRenderer({
-  antialias: deviceTier !== 'mobile',
-  alpha: true,
-  powerPreference: 'high-performance',
-});
+// Without WebGL the simulation cannot start; explain that instead of leaving an empty, silent playfield.
+function createRenderer(): THREE.WebGLRenderer {
+  try {
+    return new THREE.WebGLRenderer({
+      antialias: deviceTier !== 'mobile',
+      alpha: true,
+      powerPreference: 'high-performance',
+    });
+  } catch (error) {
+    const notice = document.createElement('div');
+    notice.className = 'webgl-notice';
+    notice.id = 'webgl-notice';
+    notice.setAttribute('role', 'alert');
+    notice.innerHTML =
+      '<b>3D graphics are unavailable</b><span>This exhibit needs WebGL. Turn on hardware acceleration, ' +
+      'update the browser, or try another device.</span>';
+    document.body.appendChild(notice);
+    throw error;
+  }
+}
+export const renderer = createRenderer();
 renderer.setPixelRatio(
   Math.min(devicePixelRatio, deviceTier === 'performance' ? 2 : deviceTier === 'balanced' ? 1.75 : 1.35),
 );

@@ -1,0 +1,41 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import crypto from 'node:crypto';
+const root=process.env.COS_REVIEW_ROOT||'.';
+const read=p=>fs.readFileSync(root+'/'+p,'utf8');
+const engine=read('public/atlas/engine.js'),reading=read('public/atlas/reading.js');
+function cut(a,b){const i=engine.indexOf(a),j=engine.indexOf(b,i);if(i<0||j<=i)throw Error('marker '+a);return engine.slice(i,j);}
+const results=[];
+function run(id,{world,group,ids=['a'],legacy=false},want){
+ const c={window:{},URLSearchParams,Set,Map,WeakMap,console};vm.createContext(c);vm.runInContext(reading,c);
+ c.RDG=c.window.AtlasReading;c.RREG=c.RDG.normRegistry({spoilers:{works:[{id:'a',title:'A',bucket:1},{id:'b',title:'B',bucket:2}]}});
+ c.RSET=new Set(ids);c.PW=()=>!legacy;c.S={book:1};c.WORLD_BY=world?{w:world}:{};c.GROUP_BY=group?{g:group}:{};
+ c.w=world;c.g=group;
+ vm.runInContext(cut('const GCACHE=new WeakMap();','let SITE_W=null;'),c);
+ vm.runInContext('const firstOf=w=>w.first||1;const worldChain=w=>[gateOf(w,firstOf(w))];const pvis=chain=>RDG.visible(chain,RSET);',c);
+ vm.runInContext(cut('const FCACHE=new WeakMap();','const RD_PH='),c);
+ vm.runInContext(cut('function eraOn(w,k)','/* intro copy'),c);
+ vm.runInContext(cut('function gfxFor(w,book)','\n'),c);
+ vm.runInContext(cut('const GROUP_NAME=g=>','\n'),c);
+ const actual=JSON.parse(JSON.stringify(vm.runInContext(world?'gfxFor(w,1)':'GROUP_NAME("g")',c)));
+ results.push({id,expected:(id==='gfx base unmet field'||id==='gfx base invalid field')?'neutral barren recipe without map/SECRET':want,actual,pass:(id==='gfx base unmet field'||id==='gfx base invalid field') ? actual.type==='barren' && !('map' in actual) && !JSON.stringify(actual).includes('SECRET') : JSON.stringify(actual)===JSON.stringify(want)});
+}
+const W=(gates,eras)=>({id:'w',first:1,gate:{req:'a'},gfx:{map:'SECRET-BASE'},gates,eras});
+run('gfx base unmet field',{world:W({gfx:{req:'b'}})},{});
+run('gfx base invalid field',{world:W({gfx:{req:'unknown'}})},{});
+run('gfx base public field control',{world:W({gfx:{public:true}})},{map:'SECRET-BASE'});
+run('gfx base met field control',{world:W({gfx:{req:'b'}}),ids:['a','b']},{map:'SECRET-BASE'});
+run('gfx legacy control',{world:W({gfx:{req:'b'}}),legacy:true},{map:'SECRET-BASE'});
+run('gfx era field unmet control',{world:{...W({}, {1:{gate:{req:'a'},gfx:{map:'SECRET-ERA'},gates:{gfx:{req:'b'}}}}),gfx:{map:'BASE'}}},{map:'BASE'});
+const G=(gates,era)=>({id:'g',name:'BASE',gates,eras:era?{1:era}:undefined});
+run('group base unmet field',{group:G({name:{req:'b'}})},'');
+run('group base invalid field',{group:G({name:{req:'unknown'}})},'');
+run('group base public control',{group:G({name:{public:true}})},'BASE');
+run('group era unmet record',{group:G({}, {name:'SECRET-ERA',gate:{req:'b'}})},'BASE');
+run('group era invalid record',{group:G({}, {name:'SECRET-ERA',gate:{req:'unknown'}})},'BASE');
+run('group era unmet field control',{group:G({}, {name:'SECRET-ERA',gate:{req:'a'},gates:{name:{req:'b'}}})},'BASE');
+run('group era met record control',{group:G({}, {name:'SECRET-ERA',gate:{req:'b'}}),ids:['a','b']},'SECRET-ERA');
+run('group era legacy control',{group:G({}, {name:'SECRET-ERA',gate:{req:'b'}}),legacy:true},'SECRET-ERA');
+const inputs=['public/atlas/engine.js','public/atlas/reading.js'].map(path=>{const data=fs.readFileSync(root+'/'+path);return {path,git_blob_sha:crypto.createHash('sha1').update('blob '+data.length+'\0').update(data).digest('hex')};});
+console.log(JSON.stringify({head:process.env.COS_REVIEW_HEAD||'unspecified',scope:'Actual extracted field selectors and reading helper; no renderer; synthetic fixtures',inputs,passed:results.filter(r=>r.pass).length,total:results.length,results},null,2));
+process.exitCode=results.some(r=>!r.pass)?1:0;

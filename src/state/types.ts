@@ -4,6 +4,7 @@ import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 import { type StellarStage } from '../simulation-model.ts';
 import { type SavedCosmicGroup } from '../sandbox-state.ts';
 import { type Kind } from '../celestial-catalog.ts';
+import { type BlackHoleReference } from '../black-hole-reference.ts';
 
 export type Stage = StellarStage;
 export type LifeLevel = 'none' | 'habitable' | 'microbial' | 'simple' | 'complex' | 'technological';
@@ -49,6 +50,8 @@ export type Body = {
   satelliteRate?: number;
   tidalVisualAngle?: number;
   tidalPartnerId?: number;
+  /** Black holes only: visitor-chosen reference scale (solar masses per model unit). Explanatory; never read by physics. */
+  bhReference?: BlackHoleReference;
   /** Accumulated Roche-limit strain in [0, 1] (tidal disruption). */
   tidalStrain?: number;
   /** The "Roche limit crossed" warning has been shown for the current strain episode. */
@@ -57,7 +60,7 @@ export type Body = {
   debris?: boolean;
   /** Receiver id → app.elapsed when this donor's tidal transfer toward it was last announced (not saved). */
   tidalAnnounced?: Map<number, number>;
-  /** Being stripped and swallowed gradually by a black hole or pulsar (see physics/infall.ts; not saved). */
+  /** Being stripped and swallowed gradually by a black hole or pulsar (see physics/infall.ts; saved and resumed on load). */
   infall?: {
     eaterId: number;
     age: number;

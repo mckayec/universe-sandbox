@@ -1,0 +1,121 @@
+ok   1440x900 wok+wor: Roshar selected (roshar)
+ok   1440x900 wok+wor: e24 dossier text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   1440x900 wok+wor: e24 has no place label (null)
+ok   1440x900 wok+wor: old copy absent
+ok   1440x900 wok+wor: e24 opened from dossier (e24)
+ok   1440x900 wok+wor: no site selected after dossier open (null)
+ok   1440x900 wok+wor: still on Roshar (roshar)
+ok   1440x900 wok+wor: visible open text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   1440x900 wok+wor: text wraps inside viewport ({"text":"At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 wok+wor: old copy absent after open
+ok   1440x900 wok+wor: no errors (dossier) 
+ok   1440x900 wok+wor: e24 on the Chronicle track
+ok   1440x900 wok+wor: Chronicle travel selects Roshar (roshar)
+ok   1440x900 wok+wor: Chronicle travel selects no site (null)
+ok   1440x900 wok+wor: Chronicle travel opens e24 (e24)
+ok   1440x900 wok+wor: travel dossier item new text, no place label
+ok   1440x900 wok+wor: no errors (chronicle) 
+ok   1440x900 legacy book=5: Roshar selected (roshar)
+ok   1440x900 legacy book=5: e24 dossier text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   1440x900 legacy book=5: e24 has no place label (null)
+ok   1440x900 legacy book=5: old copy absent
+ok   1440x900 legacy book=5: e24 opened from dossier (e24)
+ok   1440x900 legacy book=5: no site selected after dossier open (null)
+ok   1440x900 legacy book=5: still on Roshar (roshar)
+ok   1440x900 legacy book=5: visible open text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   1440x900 legacy book=5: text wraps inside viewport ({"text":"At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 legacy book=5: old copy absent after open
+ok   1440x900 legacy book=5: no errors (dossier) 
+ok   1440x900 legacy book=5: e24 on the Chronicle track
+ok   1440x900 legacy book=5: Chronicle travel selects Roshar (roshar)
+ok   1440x900 legacy book=5: Chronicle travel selects no site (null)
+ok   1440x900 legacy book=5: Chronicle travel opens e24 (e24)
+ok   1440x900 legacy book=5: travel dossier item new text, no place label
+ok   1440x900 legacy book=5: no errors (chronicle) 
+ok   1440x900 All: Roshar selected (roshar)
+ok   1440x900 All: e24 dossier text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   1440x900 All: e24 has no place label (null)
+ok   1440x900 All: old copy absent
+ok   1440x900 All: e24 opened from dossier (e24)
+ok   1440x900 All: no site selected after dossier open (null)
+ok   1440x900 All: still on Roshar (roshar)
+ok   1440x900 All: visible open text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   1440x900 All: text wraps inside viewport ({"text":"At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.","w":356,"right":1403,"vw":1440,"sw":356,"cw":356})
+ok   1440x900 All: old copy absent after open
+ok   1440x900 All: no errors (dossier) 
+ok   1440x900 All: e24 on the Chronicle track
+ok   1440x900 All: Chronicle travel selects Roshar (roshar)
+ok   1440x900 All: Chronicle travel selects no site (null)
+ok   1440x900 All: Chronicle travel opens e24 (e24)
+ok   1440x900 All: travel dossier item new text, no place label
+ok   1440x900 All: no errors (chronicle) 
+ok   1440x900 Way of Kings only: no e24 item (sel=roshar)
+ok   1440x900 Way of Kings only: no e24 text anywhere
+ok   1440x900 Way of Kings only: no errors 
+ok   1440x900 Words of Radiance only: no e24 item (sel=null)
+ok   1440x900 Words of Radiance only: no e24 text anywhere
+ok   1440x900 Words of Radiance only: no errors 
+ok   1440x900 legacy book=4: no e24 item (sel=roshar)
+ok   1440x900 legacy book=4: no e24 text anywhere
+ok   1440x900 legacy book=4: no errors 
+ok   390x844 wok+wor: Roshar selected (roshar)
+ok   390x844 wok+wor: e24 dossier text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   390x844 wok+wor: e24 has no place label (null)
+ok   390x844 wok+wor: old copy absent
+ok   390x844 wok+wor: e24 opened from dossier (e24)
+ok   390x844 wok+wor: no site selected after dossier open (null)
+ok   390x844 wok+wor: still on Roshar (roshar)
+ok   390x844 wok+wor: visible open text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   390x844 wok+wor: text wraps inside viewport ({"text":"At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 wok+wor: old copy absent after open
+ok   390x844 wok+wor: no errors (dossier) 
+ok   390x844 wok+wor: e24 on the Chronicle track
+ok   390x844 wok+wor: Chronicle travel selects Roshar (roshar)
+ok   390x844 wok+wor: Chronicle travel selects no site (null)
+ok   390x844 wok+wor: Chronicle travel opens e24 (e24)
+ok   390x844 wok+wor: travel dossier item new text, no place label
+ok   390x844 wok+wor: no errors (chronicle) 
+ok   390x844 legacy book=5: Roshar selected (roshar)
+ok   390x844 legacy book=5: e24 dossier text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   390x844 legacy book=5: e24 has no place label (null)
+ok   390x844 legacy book=5: old copy absent
+ok   390x844 legacy book=5: e24 opened from dossier (e24)
+ok   390x844 legacy book=5: no site selected after dossier open (null)
+ok   390x844 legacy book=5: still on Roshar (roshar)
+ok   390x844 legacy book=5: visible open text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   390x844 legacy book=5: text wraps inside viewport ({"text":"At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 legacy book=5: old copy absent after open
+ok   390x844 legacy book=5: no errors (dossier) 
+ok   390x844 legacy book=5: e24 on the Chronicle track
+ok   390x844 legacy book=5: Chronicle travel selects Roshar (roshar)
+ok   390x844 legacy book=5: Chronicle travel selects no site (null)
+ok   390x844 legacy book=5: Chronicle travel opens e24 (e24)
+ok   390x844 legacy book=5: travel dossier item new text, no place label
+ok   390x844 legacy book=5: no errors (chronicle) 
+ok   390x844 All: Roshar selected (roshar)
+ok   390x844 All: e24 dossier text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   390x844 All: e24 has no place label (null)
+ok   390x844 All: old copy absent
+ok   390x844 All: e24 opened from dossier (e24)
+ok   390x844 All: no site selected after dossier open (null)
+ok   390x844 All: still on Roshar (roshar)
+ok   390x844 All: visible open text = new (At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.)
+ok   390x844 All: text wraps inside viewport ({"text":"At the king’s palace in the warcamps, Kaladin speaks his Third Ideal while protecting Elhokar. Location is provisional, based on Tor.com’s chapter rereads rather than a checked edition of the novel.","w":322,"right":363,"vw":390,"sw":322,"cw":322})
+ok   390x844 All: old copy absent after open
+ok   390x844 All: no errors (dossier) 
+ok   390x844 All: e24 on the Chronicle track
+ok   390x844 All: Chronicle travel selects Roshar (roshar)
+ok   390x844 All: Chronicle travel selects no site (null)
+ok   390x844 All: Chronicle travel opens e24 (e24)
+ok   390x844 All: travel dossier item new text, no place label
+ok   390x844 All: no errors (chronicle) 
+ok   390x844 Way of Kings only: no e24 item (sel=roshar)
+ok   390x844 Way of Kings only: no e24 text anywhere
+ok   390x844 Way of Kings only: no errors 
+ok   390x844 Words of Radiance only: no e24 item (sel=null)
+ok   390x844 Words of Radiance only: no e24 text anywhere
+ok   390x844 Words of Radiance only: no errors 
+ok   390x844 legacy book=4: no e24 item (sel=roshar)
+ok   390x844 legacy book=4: no e24 text anywhere
+ok   390x844 legacy book=4: no errors 
+{"pass":120,"fail":0}

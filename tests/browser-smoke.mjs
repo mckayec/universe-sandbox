@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
+import { assertSaveLoadRoundTrip } from './browser-persistence.mjs';
 
 const port = 4174;
 const baseURL = `http://127.0.0.1:${port}`;
@@ -79,21 +80,8 @@ try {
   await page.getByRole('button', { name: /Inspect/ }).click();
   assert.equal(await page.locator('#navigation-help').isHidden(), true);
 
-  // The Gododdin exhibit keeps simulating and removes bodies as it plays out, so #count can drop between the
-  // snapshot Save stores and a later read (29 saved, 25 read, on slow software GL). Pause first so the count
-  // compared after Load is the count Save stored, and check Save's own report of that number.
-  await page.locator('#pause').click();
-  assert.equal(await page.locator('#pause').textContent(), 'Resume');
-  const savedCount = await page.locator('#count').textContent();
-  await page.getByRole('button', { name: 'Save' }).click();
-  assert.match(await page.locator('#toast').textContent(), new RegExp(`^Saved ${savedCount} objects`));
-  await page.getByRole('button', { name: 'Clear all' }).click();
-  await page.waitForFunction(() => document.querySelector('#count')?.textContent === '0');
-  assert.equal(await page.locator('#info-panel').evaluate(element => element.classList.contains('empty')), true);
-  await page.getByRole('button', { name: 'Load' }).click();
-  await page.waitForFunction(count => document.querySelector('#count')?.textContent === count, savedCount);
-  await page.locator('#pause').click();
-  assert.equal(await page.locator('#pause').textContent(), 'Pause');
+  const persistence = await assertSaveLoadRoundTrip(page);
+  console.log('Paused Save/Clear/Load round trip:', persistence);
 
   await page.getByRole('button', { name: /Binary stars/ }).click();
   const canvas = page.locator('#viewport canvas');

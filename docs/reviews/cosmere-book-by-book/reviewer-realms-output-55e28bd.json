@@ -1,0 +1,261 @@
+{
+  "head": "55e28bd7af1a7b1074f59765982ccee1f922804b",
+  "manifest": {
+    "public/atlas/reading.js": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+    "public/atlas/packs/cosmere.js": "317cb58c4996c64f3acee32e7c9db00e95512552",
+    "public/atlas/engine.js": "5d09714dd45bc7a0d4b2a688bce7abd7a66d44d8"
+  },
+  "actualObservation": {
+    "read": [
+      "mistborn-the-final-empire",
+      "mistborn-the-well-of-ascension",
+      "mistborn-the-hero-of-ages",
+      "the-way-of-kings"
+    ],
+    "worldVisible": true,
+    "realmOpen": true,
+    "bucket7Reached": false,
+    "subastralFirst": 7,
+    "card": "<div class=\"realmcard\"><p class=\"eyebrow\">Expanse of the Vapors</p><p>Scadrial\u2019s subastral is a world of mist. Physical things look like misty figures, the planet\u2019s water appears as rocky shore and ground, and land becomes a misty fluid that travellers cross by boat. Living beings and all metal glow brightly.</p></div>",
+    "look": {
+      "i": 1,
+      "st": 1,
+      "c1": "#7a808c",
+      "c2": "#eef2f6",
+      "c3": "#2e2b28"
+    }
+  },
+  "cases": [
+    {
+      "label": "unread valid field gate",
+      "mode": "set",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "fieldAllowed": false,
+      "expectedOwn": false,
+      "ownCard": false,
+      "ownLook": false,
+      "checks": [
+        {
+          "surface": "realmCard.name",
+          "pass": true
+        },
+        {
+          "surface": "realmCard.blurb",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "present invalid field gate",
+      "mode": "set",
+      "gate": {},
+      "fieldAllowed": false,
+      "expectedOwn": false,
+      "ownCard": false,
+      "ownLook": false,
+      "checks": [
+        {
+          "surface": "realmCard.name",
+          "pass": true
+        },
+        {
+          "surface": "realmCard.blurb",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "satisfied field gate",
+      "mode": "set",
+      "gate": {
+        "req": "the-way-of-kings"
+      },
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard.name",
+          "pass": true
+        },
+        {
+          "surface": "realmCard.blurb",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "absent field gate inherits visible record",
+      "mode": "set",
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard.name",
+          "pass": true
+        },
+        {
+          "surface": "realmCard.blurb",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "legacy ignores per-work field gate",
+      "mode": "legacy",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard.name",
+          "pass": true
+        },
+        {
+          "surface": "realmCard.blurb",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "label": "All ignores per-work field gate",
+      "mode": "all",
+      "gate": {
+        "req": "mistborn-secret-history"
+      },
+      "fieldAllowed": true,
+      "expectedOwn": true,
+      "ownCard": true,
+      "ownLook": true,
+      "checks": [
+        {
+          "surface": "realmCard.name",
+          "pass": true
+        },
+        {
+          "surface": "realmCard.blurb",
+          "pass": true
+        },
+        {
+          "surface": "realmLook",
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "passed": 18,
+  "total": 18,
+  "scope": "Actual source selectors, not rendered browser. Injected field gates are test fixtures only; no proposed factual/earliest-work mapping. Actual unmodified observation separately records differing world/realm/subastral thresholds.",
+  "verifiedInputs": [
+    {
+      "path": "tests/atlas-reading-engine.test.ts",
+      "sha": "e65ee9f4c1d92f9d6c094abdf1f2385047fe5b21",
+      "match": true
+    },
+    {
+      "path": "tests/atlas-reading-ui.test.ts",
+      "sha": "6d161c927e24f2fa3a34cb127317f2fa3245731b",
+      "match": true
+    },
+    {
+      "path": "tests/atlas-cosmere-registry.test.ts",
+      "sha": "fd22702c5155d8431ed619c6910c8b3972150cfd",
+      "match": true
+    },
+    {
+      "path": "tests/atlas-realms-gate.test.ts",
+      "sha": "e6ebd027554cd9b234ef8b3030a80b202fb5336c",
+      "match": true
+    },
+    {
+      "path": "tests/atlas-reading.test.ts",
+      "sha": "3f27cf037188d59f82d4589942ed0619a84b4d74",
+      "match": true
+    },
+    {
+      "path": "docs/reviews/cosmere-book-by-book/bibliography-2026-11-10.json",
+      "sha": "b65c76a5f5e87452e19b0013da57fd84b16dbc7a",
+      "match": true
+    },
+    {
+      "path": "public/atlas/reading.js",
+      "sha": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+      "match": true
+    },
+    {
+      "path": "public/atlas/engine.js",
+      "sha": "5d09714dd45bc7a0d4b2a688bce7abd7a66d44d8",
+      "match": true
+    },
+    {
+      "path": "public/atlas/reading-ui.js",
+      "sha": "99e678933c143ab927d842bcc33e7ce7cc158b83",
+      "match": true
+    },
+    {
+      "path": "public/atlas/packs/cosmere.js",
+      "sha": "317cb58c4996c64f3acee32e7c9db00e95512552",
+      "match": true
+    },
+    {
+      "path": "tests/fixtures/reading-demo.js",
+      "sha": "de56c1af497d0e6022829da88e862284ef8519a2",
+      "match": true
+    }
+  ],
+  "focusedTests": {
+    "passed": 43,
+    "total": 43,
+    "command": "node --experimental-strip-types --test tests/*.test.ts",
+    "output": "\u2714 registry is valid: 33/33 works, 12/12 nonempty buckets with the handoff counts (1.84847ms)\n\u2714 registry matches the R-A payload row for row (id, title, year, bucket) (0.747444ms)\n\u2714 unknown and qualified years: SEL02/TA04 unverified, FD01 catalogue listing (0.648317ms)\n\u2714 three frozen presets select exactly their strict prefixes and nothing else (0.552296ms)\n\u2714 AU01 essays/maps and the four White Sand units are independent checkboxes (0.489973ms)\n\u2714 bucket fallback: a whole bucket shows its records; missing one work hides them (24/24) (0.50798ms)\n\u2714 all 33 works selected = every pack record visible, as in the All view (3.434391ms)\n\u2714 R-B candidates: e6/e12 narrow copy + own gate, ancestors stay restrictive (0.474951ms)\n\u2714 CBR-01: actual rdParams/storeRd persist a deliberate empty selection; reload never restores the old work (4.204509ms)\n\u2714 CBR-01: the safe state keeps only the rejected parameters captured at start-up, never another entry\u2019s (1.267081ms)\n\u2714 CBR-01: Back/Forward rewrites an older entry\u2019s reading parameter to the current state, leaving others (1.188054ms)\n\u2714 CBR-02: era overrides pass world + era + world-field + era-field gates (actual selectors) (13.912424ms)\n\u2714 CBR-02: legacy/All era selectors are unchanged (numeric rule) (3.04124ms)\n\u2714 CBR-02 residual 1: base gfx obeys the world gfx field gate (actual gfxFor/baseGfx) (9.293794ms)\n\u2714 CBR-02 residual 2: group names obey gates.name, explicit era gates and the group record (actual GROUP_NAME) (13.63232ms)\n\u2714 CBR-03: pending descent re-checks generation, visibility and selection at commit (3.824428ms)\n\u2714 CBR-03: deferred Earth-texture load re-checks before building (1.200393ms)\n\u2714 preset state: checklist mirrors the preset prefix, select shows the chosen work (2.066972ms)\n\u2714 ticking a later work from a preset becomes a custom set and ticks nothing else (0.329337ms)\n\u2714 unticking the last work is the deliberate none state, never All or the invalid-link safe state (0.168399ms)\n\u2714 All, legacy and safe states tick no work; All is pressed only for All (0.182039ms)\n\u2714 works are grouped by bucket in registry order; unbucketed works form their own group (0.190511ms)\n\u2714 unreviewed note only in per-work modes (1.786307ms)\n\u2714 a pack without works has no registry; the fixture registry validates (1.499284ms)\n\u2714 registry errors: duplicates, empty works, bad presets, bad explicit buckets (0.583482ms)\n\u2714 family 3: DNF validity table (design 2a) (0.458847ms)\n\u2714 family 3: AND / OR / needs narrowing / in is descriptive (0.308015ms)\n\u2714 family 3: public marker cannot be combined with req/needs; empty chain grants nothing (0.165665ms)\n\u2714 family 3/5: ancestor and field intersection; absent vs invalid field gates (0.203581ms)\n\u2714 family 4/5: whole-bucket fallback is conservative and marked unreviewed (0.195719ms)\n\u2714 ancestry detects cycles and missing parents (0.227085ms)\n\u2714 family 6: every invalid or conflicting reading link enters the safe state, with empty storage and stored All (1.187413ms)\n\u2714 family 6: valid links, storage and round trips (0.848202ms)\n\u2714 checklist and preset controls: explicit sets, no implied ticks, unticking narrows (0.424527ms)\n\u2714 CBR-01: deliberate empty selection persists and round-trips; invalid links stay safe and write nothing (0.618333ms)\n\u2714 CBR-04 realmCard + realmLook: unread valid field gate (fixture) (12.838508ms)\n\u2714 CBR-04 realmCard + realmLook: present-invalid field gate (fixture) (5.461114ms)\n\u2714 CBR-04 realmCard + realmLook: satisfied field gate (fixture) (3.242187ms)\n\u2714 CBR-04 realmCard + realmLook: absent field gate inherits the visible world (2.933282ms)\n\u2714 CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate (3.007841ms)\n\u2714 CBR-04 realmCard + realmLook: All ignores the per-work field gate (2.658626ms)\n\u2714 CBR-04: allowed \u2192 denied while the world is open downgrades card and look; denied \u2192 allowed restores (3.433029ms)\n\u2714 CBR-04: applyRd re-applies the realm look to the open planet before refresh (0.312862ms)\n\u2139 tests 43\n\u2139 suites 0\n\u2139 pass 43\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 217.120405\n"
+  },
+  "originalReproduction": {
+    "passed": 12,
+    "total": 12,
+    "runner": "reviewer-realms-7155f0a.mjs",
+    "note": "Unchanged runner logic re-executed at 55e28bd; original runner hardcodes old head label; actual engine blob independently verified."
+  },
+  "reviewerBrowser": {
+    "completedCases": 0,
+    "failure": "chromium --headless --no-sandbox --disable-gpu --dump-dom about:blank exited 134 before page load; process_singleton_posix.cc:297 socket() failed: Operation not permitted (1)"
+  },
+  "builderRenderedEvidence": {
+    "independentlyExecuted": false,
+    "headPass": 86,
+    "headTotal": 86,
+    "parentPass": 68,
+    "parentTotal": 86,
+    "screenshotsInspected": 4,
+    "screenshotsAvailable": 4,
+    "limitations": "Initial realm/navigation via JS; transition uses checkbox interaction. Name assertion searches dossier; no separate rendered blurb assertion. Mobile sheet collapsed in supplied stills."
+  }
+}

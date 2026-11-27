@@ -315,6 +315,87 @@
     return h;
   }
 
+  /* ---------- notes and codex entries (PACK_FORMAT 20.5) ---------- */
+
+  /* reading gate for a note or codex entry: `first` (or `book`) hides it until that book in cumulative mode */
+  function readOk(it, cum, book) {
+    if (!cum || !book || !it) return true;
+    const f = it.first != null ? +it.first : it.book != null ? +it.book : null;
+    return f == null || !isFinite(f) || f <= book;
+  }
+
+  /* the place notes to show: each note obeys its own layers, `when` and reading gate */
+  function visibleNotes(notes, active, range, cum, book) {
+    return ARR(notes).filter(
+      (n) => n && n.t && layerOk(n, active) && timeOk(n, range) && readOk(n, cum, book),
+    );
+  }
+
+  /* split a codex list into entries to show and counts hidden by reading order and by the layer/year filter */
+  function codexSplit(list, active, range, cum, book, firstOf) {
+    const shown = [];
+    let locked = 0;
+    let filtered = 0;
+    ARR(list).forEach((x) => {
+      if (!x) return;
+      const f = firstOf ? firstOf(x) : x.first;
+      if (cum && book && f > book) locked++;
+      else if (!layerOk(x, active) || !timeOk(x, range)) filtered++;
+      else shown.push(x);
+    });
+    return { shown, locked, filtered };
+  }
+
+  /* ---------- surface journeys (PACK_FORMAT 20.6) ---------- */
+
+  /* a stop is a site id, {site:id}, or {name:"…"} for a stop with no known location */
+  function stopSite(st) {
+    if (typeof st === 'string') return st;
+    return st && typeof st === 'object' && st.site != null ? String(st.site) : null;
+  }
+
+  /* the legs to draw: consecutive stops that are both placed. An unplaced stop breaks the line, so the
+     map never implies a direct path across a place whose location is unknown. */
+  function routeLegs(route, placed) {
+    const stops = ARR(route && route.stops);
+    const legs = [];
+    for (let i = 1; i < stops.length; i++) {
+      const a = stopSite(stops[i - 1]);
+      const b = stopSite(stops[i]);
+      if (a && b && a !== b && placed(a) && placed(b)) legs.push([a, b]);
+    }
+    return legs;
+  }
+
+  /* points along the great circle from a to b ([lat, lon] in degrees), n segments */
+  function greatCircle(a, b, n) {
+    const R = Math.PI / 180;
+    const v = (p) => {
+      const la = p[0] * R;
+      const lo = p[1] * R;
+      return [Math.cos(la) * Math.cos(lo), Math.cos(la) * Math.sin(lo), Math.sin(la)];
+    };
+    const A = v(a);
+    const B = v(b);
+    const dot = Math.max(-1, Math.min(1, A[0] * B[0] + A[1] * B[1] + A[2] * B[2]));
+    const om = Math.acos(dot);
+    const out = [];
+    const k = Math.max(1, n | 0);
+    for (let i = 0; i <= k; i++) {
+      const t = i / k;
+      let x;
+      if (om < 1e-6) x = A;
+      else {
+        const s = Math.sin(om);
+        const p = Math.sin((1 - t) * om) / s;
+        const q = Math.sin(t * om) / s;
+        x = [p * A[0] + q * B[0], p * A[1] + q * B[1], p * A[2] + q * B[2]];
+      }
+      out.push([Math.asin(Math.max(-1, Math.min(1, x[2]))) / R, Math.atan2(x[1], x[0]) / R]);
+    }
+    return out;
+  }
+
   /* layer swatches and the date line for a place or event, for the details panel */
   function itemMeta(L, T, it) {
     const parts = [];
@@ -323,11 +404,64 @@
         const l = L.by[id];
         if (l) parts.push('<span class="lchip" style="--lc:' + ESC(l.c) + '">' + ESC(l.short) + '</span>');
       });
-    /* whenText: the source's own wording ("eighteenth century", "narrative chronology") wins over the
-       numbers, which then only drive the year filter */
-    const w = it && it.whenText ? String(it.whenText) : fmtWhen(it, T ? T.style : 'BC/AD');
+    // `date` is an attributed date as text ("May 15, 1829, as reported"); it never feeds the year filter.
+    // `whenText` (the source wording, e.g. "eighteenth century") is shown the same way.
+    // When an item has both, the text is shown (it keeps the source's wording) and `when` still filters.
+    const txt = typeof it.date === 'string' ? it.date.trim() : it && it.whenText ? String(it.whenText) : '';
+    const w = txt || fmtWhen(it, T ? T.style : 'BC/AD');
     if (w) parts.push('<span class="lwhen">' + ESC(w) + '</span>');
     return parts.join('');
+  }
+
+  /* ---------- compact work picker (packs with many books) ---------- */
+
+  /* More than 12 books do not fit as a row of buttons, so the chooser becomes one select. */
+  const PICKER_MIN = 13;
+  function usePicker(bookIds, ui) {
+    if (ui && ui.bookPicker === true) return true;
+    if (ui && ui.bookPicker === false) return false;
+    return ARR(bookIds).length >= PICKER_MIN;
+  }
+
+  /* consecutive runs of books sharing books[b].group → [{label, ids}] (label '' = ungrouped) */
+  function pickerGroups(books, bookIds) {
+    const out = [];
+    ARR(bookIds).forEach((b) => {
+      const g = (books[b] && books[b].group) || '';
+      const last = out[out.length - 1];
+      if (last && last.label === g) last.ids.push(b);
+      else out.push({ label: g, ids: [b] });
+    });
+    return out;
+  }
+
+  /* the next/previous book id from cur (0 = All); stays put at either end */
+  function stepBook(bookIds, cur, dir) {
+    const ids = [0].concat(ARR(bookIds));
+    const i = ids.indexOf(cur);
+    const j = Math.max(0, Math.min(ids.length - 1, (i < 0 ? 0 : i) + (dir < 0 ? -1 : 1)));
+    return ids[j];
+  }
+
+  function bookOption(books, b) {
+    const k = books[b] || {};
+    const label = (k.n && k.n !== k.title ? k.n + ' · ' : '') + (k.title || k.n || String(b));
+    return '<option value="' + b + '">' + ESC(label) + '</option>';
+  }
+
+  /* markup placed inside #books: step buttons and a select; the hidden data-b buttons stay for the engine */
+  function renderBookPicker(books, bookIds, opts) {
+    const o = opts || {};
+    let h = '<button type="button" class="bkstep" data-step="-1" aria-label="' + ESC(o.prevLabel || 'Previous') + '">‹</button>';
+    h += '<select class="bkpick" aria-label="' + ESC(o.label || 'Choose') + '">';
+    h += '<option value="0">' + ESC(o.allLabel || 'All') + '</option>';
+    pickerGroups(books, bookIds).forEach((g) => {
+      const opts2 = g.ids.map((b) => bookOption(books, b)).join('');
+      h += g.label ? '<optgroup label="' + ESC(g.label) + '">' + opts2 + '</optgroup>' : opts2;
+    });
+    h += '</select>';
+    h += '<button type="button" class="bkstep" data-step="1" aria-label="' + ESC(o.nextLabel || 'Next') + '">›</button>';
+    return h;
   }
 
   const api = {
@@ -352,7 +486,17 @@
     encodeState,
     decodeState,
     renderBar,
+    usePicker,
+    pickerGroups,
+    stepBook,
+    renderBookPicker,
     itemMeta,
+    readOk,
+    visibleNotes,
+    codexSplit,
+    stopSite,
+    routeLegs,
+    greatCircle,
   };
   root.AtlasLayers = api;
 })(typeof window !== 'undefined' ? window : globalThis);

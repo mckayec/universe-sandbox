@@ -1,0 +1,30 @@
+Atlas: history Back still pending; holding travel until it completes
+T15 observed {"entered":[],"state":{"book":0,"realm":null,"site":"a1","ev":null,"lm":null,"view":"place","sel":"a"},"history":{"st":{"atlasSurface":true,"atlasPlace":true,"atlasEntry":1},"hash":"#world=a&site=a1&view=place"}}
+T21 observed {"entered":[],"state":{"book":0,"realm":null,"site":"a1","ev":null,"lm":null,"view":"place","sel":"a"},"history":{"st":{"atlasSurface":true,"atlasPlace":true,"atlasEntry":1},"hash":"#world=a&site=a1&view=place"}}
+PASS T1 positive: single step from a place on world a to event in b/b1 arrives there
+PASS T2 two rapid steps from a surface (Back pending): no second Back, no document exit, newest wins
+PASS T3 stale ascend continuation after a newer same-world step must not overwrite world/site
+PASS T4 tour Stop supersedes an in-flight step
+PASS T5 two rapid steps from inside a place: one Back, newest wins, no exit
+PASS T6 Stop before a same-world place-entry fade commits builds nothing
+PASS T7 Stop cancels a not-yet-played event effect
+PASS T8 Back still pending after 2 seconds must not permit another Back
+PASS T9 positive: after Stop, a fresh event navigation to the same place builds it and plays its effect
+PASS T10 Stop does not cancel a manual (non-tour) place entry
+PASS T11 positive: one step needing a slow (3000 ms) Back completes once, at the destination
+PASS T12 slow Back (3000 ms) + newer request at 2100 ms: one Back, newest wins, final history is its place
+PASS T13 Stop mid-entry drops the place history marker that entry pushed
+PASS T14 very slow Back (8000 ms) + newer request at 6000 ms: still one Back, newest wins
+PASS T15 Stop before switching places preserves the currently rendered place and its history
+PASS T16 positive uninterrupted switch constructs and selects the new place
+PASS T17 cancelled entry superseded by a newer manual entry: newer entry wins, no rollback over it
+PASS T18 tour step superseded by a newer step on another world: newest wins, history not restored to a1
+PASS T19 positive: after a rolled-back Stop, fresh travel to the same destination builds it
+PASS T20 Stop restores the rendered place's landmark and event selection
+PASS T21 two pending same-world switches then Stop restore the committed rendered place
+PASS T22 positive: latest overlapping same-world entry completes without Stop
+PASS T23 three chained pending switches then Stop restore the committed place with its landmark/event
+PASS T24 newer manual entry during a pending tour switch commits; later Stop does not roll it back
+PASS T25 after a committed switch, a new pending switch + Stop restores the new place (no stale baseline)
+PASS T26 after an overlapping rollback, a further pending switch + Stop still restores a1; fresh travel then builds
+26/26 passed

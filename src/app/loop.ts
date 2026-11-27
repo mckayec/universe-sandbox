@@ -1,5 +1,6 @@
 // The animation loop: fixed-step simulation, visuals, overlays and rendering.
 import * as THREE from 'three';
+import { frameTiming } from '../exhibit-runtime.ts';
 import { saveRecoverySnapshot } from '../sandbox-state.ts';
 import { updateNebulaFrame } from '../nebula-hd.ts';
 import { runFixedSteps } from '../physics-continuity.ts';
@@ -9,7 +10,7 @@ import { MAX_SIM_STEPS, SIM_STEP, simulate } from '../physics/simulate.ts';
 import { updateSlowMotion } from '../physics/tidal-disruption.ts';
 import { updateCameraTransition } from '../scene/camera.ts';
 import { updateScienceOverlays } from '../scene/overlays.ts';
-import { updateAdaptiveQuality, updateLensing } from '../scene/quality.ts';
+import { resetAdaptiveQualityWindow, updateAdaptiveQuality, updateLensing } from '../scene/quality.ts';
 import {
   BASE_BLOOM,
   bloom,
@@ -26,7 +27,16 @@ import {
   viewTarget,
 } from '../scene/setup.ts';
 import { app, audio, bodies, bodyGroupIds } from '../state/app-state.ts';
-import { narrationFacts, recoverySnapshot, reducedMotion, showNarration, updateAttractMode } from '../ui/feed.ts';
+import { labelVisible } from '../feedback.ts';
+import { updateBodyLabel } from '../bodies/registry.ts';
+import {
+  compactLayout,
+  narrationFacts,
+  recoverySnapshot,
+  reducedMotion,
+  showNarration,
+  updateAttractMode,
+} from '../ui/feed.ts';
 import { updateInspector } from '../ui/inspector.ts';
 import { updateTransients } from '../visuals/effects.ts';
 import { updateVisuals } from '../visuals/update-visuals.ts';
@@ -97,22 +107,45 @@ function isEscortShip(body: (typeof bodies)[number]) {
   return body.artificial === 'warship' && body.mass <= body.birthMass;
 }
 function updateLabels() {
-  const viewDistance = camera.position.distanceTo(viewTarget);
+  const viewDistance = camera.position.distanceTo(viewTarget),
+    compact = compactLayout();
+  // Compact layout: at most the selected object's short name; metrics live behind Details.
+  labelRenderer.domElement.classList.toggle('compact-labels', compact);
+  if (compact !== app.compactLabels) {
+    // Resizing across the breakpoint: short names in compact layout, full names again on wider layouts.
+    app.compactLabels = compact;
+    for (const body of bodies) updateBodyLabel(body);
+  }
   for (const body of bodies) {
-    const inFocusedStructure = app.selectedGroupId === null || bodyGroupIds.get(body.id) === app.selectedGroupId;
-    body.label.visible =
-      body === app.selectedBody ||
-      (!body.debris &&
-        !isEscortShip(body) &&
-        inFocusedStructure &&
-        (viewDistance < 170 || (viewDistance < 650 && (body.kind === 'blackhole' || body.kind === 'nebula'))));
+    body.label.visible = labelVisible({
+      compact,
+      selected: body === app.selectedBody,
+      debris: !!body.debris,
+      escort: isEscortShip(body),
+      inFocusedStructure: app.selectedGroupId === null || bodyGroupIds.get(body.id) === app.selectedGroupId,
+      kind: body.kind,
+      viewDistance,
+    });
   }
   return viewDistance;
 }
+/** Reset frame-rate measurement windows whenever the page is hidden or shown again. */
+export function bindFrameTimingReset() {
+  document.addEventListener('visibilitychange', () => {
+    clock.getDelta();
+    app.frameTimingInterrupted = true;
+    performanceMonitor.reset();
+    resetAdaptiveQualityWindow();
+  });
+}
 export function animate() {
   requestAnimationFrame(animate);
-  const realDt = Math.min(clock.getDelta(), 0.03),
+  // Sample the clock once: the capped step drives physics and animation, the uncapped measured time drives the
+  // FPS badge and adaptive quality (a real 0.1 s frame must read as 10 FPS, not 33).
+  const timing = frameTiming(clock.getDelta(), app.frameTimingInterrupted),
+    realDt = timing.step,
     refs = domRefs();
+  app.frameTimingInterrupted = false;
   updateCameraTransition(realDt);
   updateSlowMotion(realDt);
   updateAttractMode(realDt);
@@ -137,8 +170,8 @@ export function animate() {
   updateVisuals(realDt);
   updateScienceOverlays();
   updateLensing();
-  updateAdaptiveQuality(realDt);
-  if (performanceMonitor.update(realDt, droppedSimulationFrame)) {
+  if (timing.measured !== null) updateAdaptiveQuality(timing.measured);
+  if (timing.measured !== null && performanceMonitor.update(timing.measured, droppedSimulationFrame)) {
     setText(refs.perf, `${performanceMonitor.fps} FPS · ${deviceTier.toUpperCase()} · ${bodies.length} OBJECTS`);
     refs.perf.classList.toggle('warning', performanceMonitor.fps < 42);
   }

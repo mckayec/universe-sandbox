@@ -114,6 +114,9 @@ button:focus-visible {
     monospace;
   letter-spacing: 0.05em;
 }
+.touch-hint {
+  display: none;
+}
 .top-actions {
   display: flex;
   gap: 6px;
@@ -418,6 +421,52 @@ button:focus-visible {
 .info-panel:not(.empty) .empty-copy {
   display: none;
 }
+.bh-scales {
+  margin: 4px 0 10px;
+  color: #8290ad;
+  font-size: 10px;
+  line-height: 1.45;
+}
+.bh-scales summary {
+  cursor: pointer;
+  color: #c9d2e8;
+  font-size: 11px;
+  padding: 4px 0;
+}
+.bh-scales ul {
+  list-style: none;
+  margin: 4px 0;
+  padding: 0;
+}
+.bh-scales li {
+  display: grid;
+  gap: 1px;
+  padding: 4px 0;
+  border-top: 1px solid #ffffff0d;
+}
+.bh-scales b {
+  color: #dfe5f3;
+  font-weight: 500;
+}
+.bh-scales p {
+  margin: 6px 0 0;
+}
+.bh-scales small i {
+  display: block;
+  font-style: normal;
+  color: #74809a;
+}
+.bh-scales a {
+  color: #9fc3ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.bh-scales a:focus-visible,
+.bh-scales summary:focus-visible {
+  outline: 2px solid #9fc3ff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 .object-heading {
   display: flex;
   gap: 11px;
@@ -474,6 +523,38 @@ dd {
 }
 #climate-row {
   align-items: flex-start;
+}
+#reference-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  min-width: 0;
+}
+#reference-row dd {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+#bh-reference {
+  width: 100%;
+  max-width: 100%;
+  color: #dfe5f3;
+  background: #121a2c;
+  border: 1px solid #ffffff24;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 10px;
+  padding: 3px 4px;
+  min-height: 24px;
+}
+#bh-reference:focus-visible {
+  outline: 2px solid #9fc3ff;
+  outline-offset: 2px;
+}
+#info-reference {
+  color: #8290ad;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 #info-climate {
   max-width: 128px;
@@ -1795,7 +1876,8 @@ dd {
 }
 
 /* ---------- Compact layout: phones and iPad portrait ---------- */
-@media (max-width: 800px) {
+/* Compact layout: phones (portrait or landscape) and narrow windows. Keep in sync with COMPACT_QUERY in ui/feed.ts. */
+@media (max-width: 800px), (max-height: 500px) and (pointer: coarse) {
   .hint,
   .readout,
   .perf-badge,
@@ -1846,16 +1928,16 @@ dd {
     font-size: 18px;
   }
   .universe-toolbar {
-    top: calc(max(10px, var(--safe-top)) + 50px);
+    top: calc(max(10px, var(--safe-top)) + 50px + var(--topbar-extra, 0px));
     left: max(12px, var(--safe-left));
     right: max(12px, var(--safe-right));
-    height: 44px;
+    height: 54px;
     gap: 6px;
     padding: 5px;
   }
   .universe-toolbar button,
   .universe-toolbar select {
-    height: 34px;
+    height: 44px;
     padding: 0 10px;
     font-size: 11px;
   }
@@ -1864,18 +1946,18 @@ dd {
     max-width: 190px;
   }
   .zoom-controls {
-    top: calc(max(10px, var(--safe-top)) + 102px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     right: max(12px, var(--safe-right));
-    grid-template-columns: 40px 40px;
+    grid-template-columns: 44px 44px;
     gap: 6px;
   }
   .zoom-controls button {
-    height: 40px;
+    height: 44px;
     background: #0a101bdf;
   }
   .zoom-controls #zoom-fit,
   .zoom-controls #zoom-selected {
-    height: 34px;
+    height: 44px;
     font-size: 11px;
     letter-spacing: 0.04em;
   }
@@ -1886,13 +1968,13 @@ dd {
   .science-legend,
   .navigation-help {
     left: max(12px, var(--safe-left));
-    right: calc(max(12px, var(--safe-right)) + 96px);
+    right: calc(max(12px, var(--safe-right)) + 104px);
     width: auto;
     max-width: none;
     transform: none;
   }
   .event-feed {
-    top: calc(max(10px, var(--safe-top)) + 102px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     bottom: auto;
     pointer-events: none;
   }
@@ -1912,7 +1994,7 @@ dd {
     font-size: 11px;
   }
   .guide-card {
-    top: calc(max(10px, var(--safe-top)) + 102px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     padding: 12px 14px;
   }
   .guide-card > span,
@@ -1926,19 +2008,20 @@ dd {
     font-size: 12px;
   }
   .guide-card button {
-    min-height: 40px;
+    min-height: 44px;
     padding: 0 12px;
   }
-  .guide-card:not([hidden]) ~ .event-feed {
+  /* The compact timeline strip shares the overlay band: it steps aside while any overlay card is showing. */
+  .overlay-stack:has(> :not([hidden])) ~ .event-feed {
     display: none;
   }
   .attract-badge {
-    top: calc(max(10px, var(--safe-top)) + 102px);
+    top: calc(max(10px, var(--safe-top)) + 112px + var(--topbar-extra, 0px));
     font-size: 11px;
     text-align: center;
   }
   .narration-card {
-    top: calc(max(10px, var(--safe-top)) + 150px);
+    top: calc(max(10px, var(--safe-top)) + 160px + var(--topbar-extra, 0px));
   }
   .narration-card span {
     font-size: 11px;
@@ -1947,15 +2030,31 @@ dd {
     font-size: 12px;
   }
   .science-legend {
-    top: calc(max(10px, var(--safe-top)) + 190px);
+    top: calc(max(10px, var(--safe-top)) + 212px + var(--topbar-extra, 0px));
     flex-wrap: wrap;
     justify-content: flex-start;
     font-size: 11px;
   }
+  /* The touch hint in the dock carries the navigation instructions on compact screens. */
   .navigation-help {
-    top: calc(max(10px, var(--safe-top)) + 190px);
-    font-size: 11px;
-    text-align: left;
+    display: none;
+  }
+  .dock > .touch-hint {
+    display: block;
+    align-self: center;
+    max-width: 100%;
+    padding: 6px 12px;
+    color: #c4cee6;
+    border: 1px solid #5d6d8f66;
+    border-radius: 999px;
+    background: #0c1220d9;
+    font:
+      11px DM Mono,
+      monospace;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-wrap: balance;
+    pointer-events: none;
   }
   /* The toast lives in the dock, so it stacks just above the panels instead of covering the guide card. */
   .dock > .toast {
@@ -1975,14 +2074,14 @@ dd {
     z-index: 6;
     left: max(12px, var(--safe-left));
     right: max(12px, var(--safe-right));
-    bottom: calc(max(12px, var(--safe-bottom)) + 54px);
+    bottom: calc(max(12px, var(--safe-bottom)) + 56px);
     max-width: 620px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-height: calc(100vh - 230px);
-    max-height: calc(100dvh - 230px - var(--safe-top) - var(--safe-bottom));
+    max-height: calc(100vh - 240px);
+    max-height: calc(100dvh - 240px - var(--safe-top) - var(--safe-bottom));
     pointer-events: none;
   }
   .dock > .panel {
@@ -2020,7 +2119,7 @@ dd {
   }
   .panel-toggle,
   .sheet-buttons button {
-    min-height: 40px;
+    min-height: 44px;
     padding: 0 12px;
     color: #c4cee6;
     border: 1px solid #5d6d8f88;
@@ -2041,7 +2140,7 @@ dd {
   }
   .action {
     flex: 0 0 auto;
-    min-height: 40px;
+    min-height: 44px;
     padding: 0 14px;
     font-size: 12px;
   }
@@ -2050,7 +2149,7 @@ dd {
     margin: 0;
   }
   .interaction-modes button {
-    min-height: 40px;
+    min-height: 44px;
     font-size: 11px;
   }
   .tool-panel-body {
@@ -2064,6 +2163,12 @@ dd {
   }
   .tools-collapsed .tool-panel-body {
     display: none;
+  }
+  /* SC7-O1: with the tools collapsed the tool panel is just the dock's action row (Pause/Resume, Clear all, Show
+     tools). It keeps its full height and never shrinks under an expanded selected-object sheet; the sheet takes the
+     rest of the dock and scrolls inside it. */
+  .tools-collapsed .dock > .tool-panel {
+    flex-shrink: 0;
   }
   .builder-tools {
     grid-template-columns: repeat(3, 1fr);
@@ -2120,6 +2225,7 @@ dd {
   }
   .row input {
     width: 55%;
+    min-height: 44px;
   }
   /* Selected-object sheet */
   .info-panel.empty {
@@ -2138,7 +2244,7 @@ dd {
     gap: 6px;
   }
   .sheet-buttons #info-close {
-    min-width: 40px;
+    min-width: 44px;
     font-size: 18px;
     line-height: 1;
   }
@@ -2156,7 +2262,7 @@ dd {
     font-size: 11px;
   }
   .lock-button {
-    min-height: 40px;
+    min-height: 44px;
   }
   #info-climate {
     max-width: 60%;
@@ -2172,6 +2278,7 @@ dd {
   }
   /* Collapsed sheet: name, mass, velocity and the main actions; Details reveals the rest. */
   .info-panel:not(.expanded) dl div:nth-child(n + 3),
+  .info-panel:not(.expanded) .bh-scales,
   .info-panel:not(.expanded) .lifecycle {
     display: none !important;
   }
@@ -2191,7 +2298,7 @@ dd {
   }
   .speed button {
     min-width: 46px;
-    height: 42px;
+    height: 44px;
     font-size: 13px;
   }
   .scenario-picker,
@@ -2249,7 +2356,7 @@ dd {
   .menu-actions button,
   .change-grid button,
   .menu-remove {
-    min-height: 38px;
+    min-height: 44px;
   }
   .object-label {
     min-width: 0;
@@ -2266,11 +2373,460 @@ dd {
     font-size: 10px;
   }
 }
-@media (max-width: 800px) and (min-width: 600px) {
+@media (max-width: 800px) and (min-width: 600px), (max-height: 500px) and (pointer: coarse) and (min-width: 600px) {
   .builder-tools {
     grid-template-columns: repeat(4, 1fr);
   }
   .palette {
     grid-template-columns: repeat(6, 1fr);
   }
+}
+/* Compact layout: the selected object's label shows only its short name (item 6a). */
+.label-layer.compact-labels .object-label span,
+.label-layer.compact-labels .object-label em {
+  display: none;
+}
+
+/* SC6-O1: the guide card, demo badge, narration, science legend and navigation help share one flow stack, so
+   they never overlap however their text wraps. The stack itself ignores the pointer; the guide card does not. */
+.overlay-stack {
+  position: absolute;
+  z-index: 12;
+  top: 120px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.overlay-stack > .guide-card,
+.overlay-stack > .science-legend,
+.overlay-stack > .navigation-help {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+}
+.overlay-stack > .science-legend {
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc(100vw - 580px);
+}
+.overlay-stack > .attract-badge {
+  top: -42px;
+}
+.overlay-stack > .narration-card {
+  top: 6px;
+}
+/* Landscape phones (short + coarse pointer, wider than 800px) use the same compact stack: the PR44 two-column dock
+   sits in the same short band, so the stack must stay inside the viewport and share the band budget below. */
+@media (max-width: 800px), (max-height: 500px) and (pointer: coarse) {
+  .overlay-stack {
+    top: calc(max(10px, var(--safe-top)) + 102px);
+    left: max(12px, var(--safe-left));
+    right: calc(max(12px, var(--safe-right)) + 96px);
+    align-items: stretch;
+    gap: 6px;
+  }
+  .overlay-stack > .guide-card,
+  .overlay-stack > .attract-badge,
+  .overlay-stack > .narration-card,
+  .overlay-stack > .science-legend,
+  .overlay-stack > .navigation-help {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+  .overlay-stack > .guide-card > div {
+    flex-wrap: wrap;
+  }
+  /* Long objectives (or 200% text) scroll inside the card instead of pushing the stack over the dock. */
+  .overlay-stack > .guide-card > p {
+    max-height: 30vh;
+    max-height: 30dvh;
+    overflow-y: auto;
+  }
+}
+
+/* Landscape phones: the band between the universe toolbar and the time row is about 200 px and is shared by the
+   overlay stack and the two-column dock. Restart / Exit guide sit beside the guide title and objective (the eyebrow
+   hides), the touch hint steps aside while a guide is running (the objective carries the instructions), and an idle
+   toast stops reserving a row. ui/overlay-layout.ts keeps the dock's two control rows. */
+@media (max-height: 500px) and (pointer: coarse) and (min-width: 601px) {
+  .overlay-stack > .guide-card:not([hidden]) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+    align-items: center;
+  }
+  .overlay-stack > .guide-card > span,
+  .overlay-stack > .guide-card > strong,
+  .overlay-stack > .guide-card > p {
+    grid-column: 1;
+  }
+  .overlay-stack > .guide-card > p {
+    margin-bottom: 0;
+  }
+  .overlay-stack > .guide-card > div {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    flex-wrap: nowrap;
+  }
+  .overlay-stack > .guide-card > span {
+    display: none;
+  }
+  .shell:has(#guide-card:not([hidden])) .dock > .touch-hint,
+  .overlay-tight .dock > .toast:not(.show) {
+    display: none;
+  }
+  /* empty grid rows keep no gap, so the dock's share goes to the two panels */
+  .overlay-tight .dock {
+    row-gap: 0;
+  }
+  .overlay-tight .dock > .toast.show,
+  .overlay-tight .dock > .touch-hint {
+    margin-bottom: 8px;
+  }
+}
+/* Short desktop windows (or 200% zoom): the timeline would sit under the guide card, so it steps aside. */
+@media (min-width: 801px) and (max-height: 560px) {
+  .overlay-stack:has(> .guide-card:not([hidden])) ~ .event-feed {
+    display: none;
+  }
+}
+/* Very narrow views (small phones, or 200% zoom): the stack drops below the zoom buttons and uses the full width. */
+@media (max-width: 360px) {
+  .overlay-stack {
+    top: calc(max(10px, var(--safe-top)) + 196px);
+    right: max(12px, var(--safe-right));
+  }
+}
+/* Short compact views: a long objective scrolls after about two lines so Restart / Exit guide and the legend stay
+   in view above the dock. */
+@media (max-width: 800px) and (max-height: 600px), (max-height: 500px) and (pointer: coarse) {
+  .overlay-stack > .guide-card > p {
+    max-height: 3em;
+  }
+}
+/* SC7-O1: short compact landscape (667x375 and similar). With the sheet expanded the dock gets the whole band
+   between the universe toolbar and the time row, kept clear of the zoom column on the right (the one-line event
+   feed steps aside; the sheet shows the last event). With the tools collapsed the action row, the three interaction
+   modes and Show tools share one row instead of a two-row grid, so the sheet keeps most of the height. Pause/Resume,
+   Clear all and Show tools come first; if larger text makes the row too wide, the three modes move together to a
+   second row. */
+@media (max-width: 800px) and (max-height: 430px) {
+  .shell:has(#info-panel.expanded) .dock {
+    right: calc(max(12px, var(--safe-right)) + 96px);
+    max-height: calc(100vh - 176px);
+    max-height: calc(100dvh - 176px - var(--safe-top) - var(--safe-bottom));
+  }
+  .shell:has(#info-panel.expanded) .event-feed {
+    display: none;
+  }
+  /* the SC6-O1 shared budget still wins when the overlay stack (guide, legend, navigation help) needs the band */
+  .overlay-tight .shell:has(#info-panel.expanded) .dock {
+    max-height: var(--dock-max);
+  }
+  .tools-collapsed .tool-panel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .tools-collapsed .tool-panel > .actions {
+    order: 1;
+  }
+  .tools-collapsed .tool-panel .panel-toggle {
+    order: 2;
+  }
+  .tools-collapsed .tool-panel > .interaction-modes {
+    order: 3;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+}
+/* SC6-O1 residual: when the stack and the dock cannot both show in full, ui/overlay-layout.ts splits the band
+   between them (overlay-budget.ts) and each scrolls inside its share, so they never overlap. */
+@media (max-width: 800px), (max-height: 500px) and (pointer: coarse) {
+  .overlay-tight .overlay-stack {
+    max-height: var(--overlay-stack-max);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    pointer-events: auto;
+  }
+  .overlay-tight .dock {
+    max-height: var(--dock-max);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    pointer-events: auto;
+  }
+  .overlay-tight .overlay-stack > *,
+  .overlay-tight .dock > * {
+    flex-shrink: 0;
+  }
+  /* SC7-O1: when the whole dock scrolls, the collapsed action row stays pinned at its top. */
+  .overlay-tight .tools-collapsed .dock > .tool-panel {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+/* Kids mode (item 6b): four large controls and a small grown-up exit. Adult controls are also gated in JS. */
+.kids-bar {
+  position: absolute;
+  z-index: 13;
+  left: 50%;
+  bottom: max(14px, var(--safe-bottom));
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  max-width: calc(100vw - 24px);
+  padding: 10px;
+  transform: translateX(-50%);
+  border: 1px solid #5c6b8866;
+  border-radius: 22px;
+  background: #0b1222eb;
+  box-shadow: 0 16px 45px #0009;
+  backdrop-filter: blur(12px);
+}
+.kids-bar[hidden] {
+  display: none;
+}
+.kids-bar button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 76px;
+  min-height: 68px;
+  padding: 6px 10px;
+  color: #e9efff;
+  border: 1px solid #5c6b8888;
+  border-radius: 16px;
+  background: #151d2c;
+  font:
+    600 15px system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+.kids-bar button b {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+}
+.kids-bar button.active {
+  border-color: #9bb7ff;
+  background: #2a4a8a;
+}
+.kids-bar button:focus-visible,
+.kids-dialog button:focus-visible {
+  outline: 3px solid #ffd36b;
+  outline-offset: 2px;
+}
+.kids-bar .kids-grownups {
+  align-self: center;
+  min-width: 0;
+  min-height: 44px;
+  color: #8c9ab6;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+}
+.kids-mode .universe-toolbar,
+.kids-mode .tool-panel,
+.kids-mode .zoom-controls,
+.kids-mode .speed,
+.kids-mode .event-feed,
+.kids-mode .guide-card,
+.kids-mode .topbar button,
+.kids-mode .info-panel button,
+.kids-mode .perf-badge,
+.kids-mode .touch-hint,
+.kids-mode .readout {
+  display: none !important;
+}
+.kids-dialog {
+  max-width: min(440px, calc(100vw - 32px));
+}
+.kids-dialog-copy {
+  margin: 10px 0 16px;
+  color: #b8c4dc;
+  font:
+    14px/1.5 system-ui,
+    sans-serif;
+}
+.kids-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.kids-dialog-actions button {
+  flex: 1 1 160px;
+  min-height: 48px;
+  padding: 0 14px;
+  color: #e9efff;
+  border: 1px solid #5c6b8888;
+  border-radius: 12px;
+  background: #151d2c;
+  font:
+    600 14px system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .kids-mode .dock {
+    bottom: calc(max(14px, var(--safe-bottom)) + 100px);
+  }
+  .kids-bar {
+    gap: 6px;
+    padding: 8px;
+  }
+  .kids-bar button {
+    min-width: 64px;
+    min-height: 64px;
+  }
+}
+/* Very narrow phones: keep all three top actions on screen (the object count stays; the clock and logo hide). */
+@media (max-width: 360px) {
+  .brand .mark,
+  .sim-state span:last-child {
+    display: none;
+  }
+  .top-actions button {
+    padding: 0 8px;
+  }
+}
+/* Enlarged text (browser text scaling up to 200%): controls may shrink or wrap but never leave the screen
+   or overlap their neighbours. At default text size these rules change nothing. */
+@media (max-width: 800px), (max-height: 500px) and (pointer: coarse) {
+  /* When enlarged text no longer fits on one row, the top bar wraps instead of clipping: the object count
+     and clock keep their full values, and the controls below move down by the extra height
+     (--topbar-extra, set by bindTopbarReflow). At default text size everything fits on one row. */
+  .topbar {
+    gap: 6px;
+    row-gap: 4px;
+    height: auto;
+    min-height: 44px;
+    flex-wrap: wrap;
+  }
+  .sim-state {
+    flex: 0 0 auto;
+    min-height: 32px;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .top-actions {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  /* Labels wrap (breaking inside a word only when one word cannot fit) so the full text stays visible. */
+  .top-actions button {
+    flex: 0 1 auto;
+    min-width: 44px;
+    height: auto;
+    padding: 2px 6px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.05;
+  }
+  .top-actions #fullscreen-button {
+    padding: 0 10px;
+  }
+  .zoom-controls {
+    grid-template-columns: minmax(44px, auto) minmax(44px, auto);
+  }
+  .zoom-controls #zoom-fit,
+  .zoom-controls #zoom-selected {
+    padding: 0 4px;
+  }
+  .actions {
+    min-width: 0;
+  }
+  .action {
+    flex: 0 1 auto;
+    min-width: 44px;
+    padding: 0 10px;
+    white-space: normal;
+    line-height: 1.1;
+  }
+}
+/* Phones in landscape: the tool panel and the selected-object sheet sit side by side so the short screen
+   keeps most of its canvas; zoom controls stack in one column at the right edge, clear of the dock. */
+@media (max-height: 500px) and (pointer: coarse) {
+  .dock {
+    right: calc(max(12px, var(--safe-right)) + 56px);
+    max-width: none;
+    max-height: calc(100vh - 190px);
+    max-height: calc(100dvh - 190px - var(--safe-top) - var(--safe-bottom));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
+    align-items: end;
+  }
+  .dock > .toast {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+  .dock > .touch-hint {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+  .dock > .tool-panel {
+    grid-row: 3;
+    grid-column: 1;
+    max-height: 100%;
+  }
+  .dock > .info-panel {
+    grid-row: 3;
+    grid-column: 2;
+    max-height: 100%;
+  }
+  .tool-panel-body {
+    max-height: 34vh;
+    max-height: 34dvh;
+  }
+  .builder-tools {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .palette {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .zoom-controls {
+    grid-template-columns: 44px;
+  }
+  /* The one-line event feed would sit behind an open sheet; the toast still reports the event. */
+  .shell:has(.info-panel:not(.empty)) .event-feed {
+    display: none;
+  }
+}
+
+.webgl-notice {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60;
+  display: grid;
+  gap: 0.5rem;
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(160, 190, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(8, 12, 28, 0.94);
+  color: #e8eeff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: center;
 }

@@ -1,0 +1,48 @@
+# Full run (build before header fallback; focus/edge/reduced-motion/cross-pack cases unaffected by it)
+[30s] 390x844 ready (no-preference)
+  ok 1 390: labels visible with the sheet collapsed (6)
+  ok 2 390: focus on the worlds button stays put while labels hide (idxBtn)
+  ok 3 390: label "Jerusalem" focused by keyboard API
+    sheet opened: label hidden true, focus -> {"body":false,"id":"","cls":"place sel","site":"jerusalem","label":null,"hidden":false,"opacity":1,"onScreen":true}
+  ok 4 390: focus left the hidden label for a visible control
+  ok 5 390: recovery target is a list row or a navigation control
+  ok 6 390: selected place unchanged by focus recovery
+    globe turned: focus -> {"body":false,"id":"grab","cls":"grab","label":null,"hidden":false,"opacity":1,"onScreen":true}
+  ok 7 390: selected label "Jerusalem" turned out of view
+  ok 8 390: focus recovered to a visible control after the turn
+  ok 9 390: selection kept after the turn
+    sweep: {"flip":2,"dot":0,"text":8,"hidden":39}, worst overflow 0.0px
+  ok 10 390: selected label never runs off a screen edge across 49 camera steps
+  ok 11 390: selected label shown as full text in open view
+  ok 12 390: edge protection (flip or selected pin) exercised
+  ok 13 390: labels visible before rotation
+    rotated to 844x390: focus -> {"body":true}
+  ok 14 844x390: focus is never left on an aria-hidden label after rotation
+[344s] 390x844 ready (reduce)
+  ok 15 390: labels visible with the sheet collapsed (17)
+  ok 16 390: focus on the worlds button stays put while labels hide (idxBtn)
+  ok 17 390: label "Jerusalem" focused by keyboard API
+    sheet opened: label hidden true, focus -> {"body":false,"id":"","cls":"place sel","site":"jerusalem","label":null,"hidden":false,"opacity":1,"onScreen":true}
+  ok 18 390: focus left the hidden label for a visible control
+  ok 19 390: recovery target is a list row or a navigation control
+  ok 20 390: selected place unchanged by focus recovery
+    globe turned: focus -> {"body":false,"id":"grab","cls":"grab","label":null,"hidden":false,"opacity":1,"onScreen":true}
+  ok 21 390: selected label "Jerusalem" turned out of view
+  ok 22 390: focus recovered to a visible control after the turn
+  ok 23 390: selection kept after the turn
+    sweep: {"flip":3,"dot":0,"text":8,"hidden":38}, worst overflow 0.0px
+  ok 24 390: selected label never runs off a screen edge across 49 camera steps
+  ok 25 390: selected label shown as full text in open view
+  ok 26 390: edge protection (flip or selected pin) exercised
+  ok 27 expanse 390: descended to venus, 1 site labels built
+  ok 28 zero console/request/page errors
+[643s] PASS 28 checks
+
+# ONLY=rotate rerun at the committed build (header fallback added)
+[36s] 390x844 ready (no-preference)
+  ok 1 390: labels visible before rotation
+    rotated to 844x390: focus -> {"body":false,"id":"","cls":"gl-home","label":null,"hidden":false,"opacity":1,"onScreen":true}
+  ok 2 844x390: focus is never left on an aria-hidden label after rotation
+  ok 3 844x390: focus lands on a visible control (or stays on a visible label)
+  ok 4 zero console/request/page errors
+[92s] PASS 4 checks

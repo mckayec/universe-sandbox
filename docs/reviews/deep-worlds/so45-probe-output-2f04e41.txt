@@ -1,0 +1,34 @@
+PASS 1440 europa garden removed; villa/keep/hall/seagate/deep kept | villa,keep,hall,seagate,deep,sea,leviathan
+PASS 1440 tyche centralcmd removed; harbor/morningstar kept | harbor,libraries,vespasian,ancestor,oldquarter,harpers,cascades,railguns,morningstar
+PASS 1440 tyche eras: no 4, 5 = control line, 6 unchanged | {"5":"Dark Age. Toggle the Storm Gods to see the flood.","6":"Light Bringer. A drowned and broken capital under the Society."}
+PASS 1440 e9 text exact, refs intact | {"text":"Darrow comes to recruit his old sword teacher. After Tactus betrays them, Lorn executes him and joins Darrow’s cause.","lm":"villa","poi":"lornhome"}
+PASS 1440 d8 flood event intact (harbor, fx flood) | {"lm":"harbor","fx":"flood","poi":"tyche"}
+PASS 1440 Storm Gods toggle kept | storms
+PASS 1440 lornhome/villa/harbor/morningstar static text has no held clause | [{"1":"A castle on an island of Europa’s ocean.","2":"A castle on an island of Europa’s ocean. Lorn au Arcos lives here with his family, far from his wars."},{"1":"Keep and walls on Harmonia’s heights, in the Discordia Sea.","2":"Keep and walls on Harmonia’s heights, in the Discordia Sea. Darrow com
+PASS 1440 book 2 europa: entered (Lorn’s Castle) and no held clause in rendered text | {"cur":"Lorn’s Castle","mode":"site","hit":[]}
+PASS 1440 book 6 europa: entered (Lorn’s Castle) and no held clause in rendered text | {"cur":"Lorn’s Castle","mode":"site","hit":[]}
+PASS 1440 book 0 europa: entered (Lorn’s Castle) and no held clause in rendered text | {"cur":"Lorn’s Castle","mode":"site","hit":[]}
+PASS 1440 book 4 tyche: entered (Tyche) and no held clause in rendered text | {"cur":"Tyche","mode":"site","hit":[]}
+PASS 1440 book 5 tyche: entered (Tyche) and no held clause in rendered text | {"cur":"Tyche","mode":"site","hit":[]}
+PASS 1440 book 6 tyche: entered (Tyche) and no held clause in rendered text | {"cur":"Tyche","mode":"site","hit":[]}
+PASS 1440 book 0 tyche: entered (Tyche) and no held clause in rendered text | {"cur":"Tyche","mode":"site","hit":[]}
+PASS 1440 book 2 gotoEvent e9 resolves to Lorn’s Castle | {"cur":"Lorn’s Castle","mode":"site"}
+PASS 1440 book 5 gotoEvent d8 resolves to Tyche | {"cur":"Tyche","mode":"site"}
+PASS 1440 zero page errors
+PASS 390 europa garden removed; villa/keep/hall/seagate/deep kept | villa,keep,hall,seagate,deep,sea,leviathan
+PASS 390 tyche centralcmd removed; harbor/morningstar kept | harbor,libraries,vespasian,ancestor,oldquarter,harpers,cascades,railguns,morningstar
+PASS 390 tyche eras: no 4, 5 = control line, 6 unchanged | {"5":"Dark Age. Toggle the Storm Gods to see the flood.","6":"Light Bringer. A drowned and broken capital under the Society."}
+PASS 390 e9 text exact, refs intact | {"text":"Darrow comes to recruit his old sword teacher. After Tactus betrays them, Lorn executes him and joins Darrow’s cause.","lm":"villa","poi":"lornhome"}
+PASS 390 d8 flood event intact (harbor, fx flood) | {"lm":"harbor","fx":"flood","poi":"tyche"}
+PASS 390 Storm Gods toggle kept | storms
+PASS 390 lornhome/villa/harbor/morningstar static text has no held clause | [{"1":"A castle on an island of Europa’s ocean.","2":"A castle on an island of Europa’s ocean. Lorn au Arcos lives here with his family, far from his wars."},{"1":"Keep and walls on Harmonia’s heights, in the Discordia Sea.","2":"Keep and walls on Harmonia’s heights, in the Discordia Sea. Darrow com
+PASS 390 book 2 europa: entered (Lorn’s Castle) and no held clause in rendered text | {"cur":"Lorn’s Castle","mode":"site","hit":[]}
+PASS 390 book 6 europa: entered (Lorn’s Castle) and no held clause in rendered text | {"cur":"Lorn’s Castle","mode":"site","hit":[]}
+PASS 390 book 0 europa: entered (Lorn’s Castle) and no held clause in rendered text | {"cur":"Lorn’s Castle","mode":"site","hit":[]}
+PASS 390 book 4 tyche: entered (Tyche) and no held clause in rendered text | {"cur":"Tyche","mode":"site","hit":[]}
+PASS 390 book 0 tyche: entered (Tyche) and no held clause in rendered text | {"cur":"Tyche","mode":"site","hit":[]}
+PASS 390 book 2 gotoEvent e9 resolves to Lorn’s Castle | {"cur":"Lorn’s Castle","mode":"site"}
+PASS 390 book 5 gotoEvent d8 resolves to Tyche | {"cur":"Tyche","mode":"site"}
+PASS 390 zero page errors
+TOTAL 32/32 PASS, 0 FAIL
+exit 0

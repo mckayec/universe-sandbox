@@ -1,0 +1,63 @@
+Independent DWO-S1 review — 03394c32816fcb5c95261bf6a9ea4520381a5838
+Parent: 68d47cebf40b37c345a37cb8b0080590c52a0339
+
+Whole-file patch reconstruction: PASS, +5/-2, exact engine byte match.
+
+HEAD (exit 0):
+engine blob 4a162090ae65154e66248daaeb1fa882008c7b85
+hyperion blob 20587c62f3fc5ddbd24cc4f3cefe527ab198d191
+PASS actual pack removed Sphinx; Tombs survives
+PASS missing site sanitized in world
+PASS missing site and landmark absent from URL world
+PASS missing site sanitized in place
+PASS missing site and landmark absent from URL place
+PASS valid Tombs state and place URL preserved
+PASS synthetic __surface remains supported
+PASS existing future site still hidden below its book
+PASS existing future site visible at its book
+PASS world below first book still clears all selection
+PASS missing site sanitized in All mode
+PASS missing site sanitized outside cumulative mode
+PASS selHidden detects removed site
+PASS asVisible hides removed site during presentation then restores live state
+PASS asVisible restores state after throwing renderer
+PASS direct selectSite invalid clears state and URL and advances generation
+PASS direct selectSite valid preserves state and URL and opens sheet
+PASS selectSite null remains clear
+PASS selectSite __surface stays valid
+PASS delayed removed-site selection clears state and URL
+PASS new selection cancels stale delayed selection
+PASS world switch cancels stale delayed selection
+PASS no selected world retains prior selectSite semantics
+RESULT 23/23 PASS, 0/23 FAIL
+
+PARENT NEGATIVE CONTROL (expected exit 1):
+engine blob e4ae0168bc96e651866031588be0c319a9276406
+hyperion blob 20587c62f3fc5ddbd24cc4f3cefe527ab198d191
+PASS actual pack removed Sphinx; Tombs survives
+FAIL missing site sanitized in world | assertion false
+FAIL missing site and landmark absent from URL world | assertion false
+FAIL missing site sanitized in place | assertion false
+FAIL missing site and landmark absent from URL place | assertion false
+PASS valid Tombs state and place URL preserved
+PASS synthetic __surface remains supported
+PASS existing future site still hidden below its book
+PASS existing future site visible at its book
+PASS world below first book still clears all selection
+FAIL missing site sanitized in All mode | assertion false
+FAIL missing site sanitized outside cumulative mode | assertion false
+FAIL selHidden detects removed site | assertion false
+FAIL asVisible hides removed site during presentation then restores live state | assertion false
+PASS asVisible restores state after throwing renderer
+FAIL direct selectSite invalid clears state and URL and advances generation | assertion false
+PASS direct selectSite valid preserves state and URL and opens sheet
+PASS selectSite null remains clear
+PASS selectSite __surface stays valid
+FAIL delayed removed-site selection clears state and URL | assertion false
+PASS new selection cancels stale delayed selection
+PASS world switch cancels stale delayed selection
+PASS no selected world retains prior selectSite semantics
+RESULT 13/23 PASS, 10/23 FAIL
+
+Execution scope: selected actual engine functions in Node VM; actual Hyperion pack; render, timer, location and history adapters. Renderer, geometry, native history traversal and network are not executed.
+Browser launch attempted: bundled Chromium headless shell 1234 absent; /usr/bin/chromium failed process_singleton socket() with Operation not permitted before page creation. Independent rendered cases: 0.

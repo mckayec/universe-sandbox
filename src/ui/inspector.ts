@@ -1,4 +1,5 @@
 // Selected-object panel, object menu, locks and orbit-nearest.
+import { objectMenuAllowed } from '../kids-mode.ts';
 import * as THREE from 'three';
 import { nextStellarStep, stellarTrackLabel } from '../simulation-model.ts';
 import { orbitalSpeed } from '../physics-continuity.ts';
@@ -15,13 +16,17 @@ import { groupForBody } from '../bodies/groups.ts';
 import {
   brownIgnitionMass,
   formatMass,
+  massText,
   planetSubtype,
   protoIgnitionMass,
   stellarEvolutionRate,
 } from '../physics/body-math.ts';
-import { app, bodies } from '../state/app-state.ts';
+import { app, bodies, matterStreams } from '../state/app-state.ts';
 import { recordHistory } from '../state/history.ts';
 import type { Body } from '../state/types.ts';
+import { describeEncounter } from '../disk-encounter.ts';
+import { describeReference, referenceForPreset, referencePickerValue } from '../black-hole-reference.ts';
+import { diskEncounterOf, transferDiskEncounterOf } from '../visuals/disk-encounters.ts';
 import { select, toast } from './feed.ts';
 
 export function updateInspector() {
@@ -45,7 +50,17 @@ export function updateInspector() {
       : ['moon', 'dwarf', 'rocky', 'gas', 'blackhole', 'nebula'].includes(b.kind)
         ? planetSubtype(b)
         : t.label;
-  document.querySelector('#info-mass')!.textContent = `${formatMass(b.mass)} M⊕`;
+  document.querySelector('#info-mass')!.textContent = massText(b);
+  // Black holes are not to scale and their mass is in legacy model units (item 7a); the reference block shows real sizes.
+  const isHole = b.kind === 'blackhole';
+  document.querySelector<HTMLElement>('#scale-row')!.style.display = isHole ? 'flex' : 'none';
+  document.querySelector<HTMLElement>('#bh-scales')!.hidden = !isHole;
+  document.querySelector<HTMLElement>('#reference-row')!.style.display = isHole ? 'flex' : 'none';
+  if (isHole) {
+    const picker = document.querySelector<HTMLSelectElement>('#bh-reference')!;
+    if (document.activeElement !== picker) picker.value = referencePickerValue(b.bhReference);
+    document.querySelector('#info-reference')!.textContent = describeReference(b.mass, b.bhReference);
+  }
   document.querySelector('#info-velocity')!.textContent = `${b.velocity.length().toFixed(2)} u/s`;
   document.querySelector('#info-age')!.textContent = `${b.age.toFixed(1)} s`;
   const structure = groupForBody(b),
@@ -78,6 +93,18 @@ export function updateInspector() {
   document.querySelector('#info-magnet')!.textContent = `${Math.round(b.magnetosphere * 100)}%`;
   document.querySelector('#info-life')!.textContent = b.lifeLevel === 'none' ? 'None detected' : b.lifeLevel;
   document.querySelector('#info-climate')!.textContent = b.habitatStatus;
+  const ownDisk = b.kind === 'blackhole' || b.kind === 'protostar',
+    // A star, white dwarf or pulsar fed by a companion shows the tide on its visible transfer disk.
+    transfer = ownDisk
+      ? undefined
+      : [...matterStreams.values()].find(
+          s => s.receiverId === b.id && s.outerDisk.visible && transferDiskEncounterOf(s),
+        ),
+    hasDisk = ownDisk || !!transfer,
+    encounter = ownDisk ? diskEncounterOf(b) : transfer && transferDiskEncounterOf(transfer),
+    diskText = encounter ? describeEncounter(encounter, bodies.find(x => x.id === encounter.companionId)?.name) : null;
+  document.querySelector<HTMLElement>('#disk-row')!.style.display = hasDisk ? 'flex' : 'none';
+  document.querySelector('#info-disk')!.textContent = diskText ?? 'Undisturbed';
   document.querySelector('#info-event')!.textContent = b.lastEvent;
   const life = document.querySelector<HTMLElement>('#lifecycle')!;
   life.style.display = ['star', 'protostar', 'asteroid', 'comet', 'moon', 'dwarf', 'rocky', 'gas', 'brown'].includes(
@@ -169,7 +196,7 @@ export function refreshObjectMenu() {
     positionLocked = b.locked && !b.buildLocked;
   document.querySelector('#menu-name')!.textContent = b.name;
   document.querySelector('#menu-type')!.textContent = type;
-  document.querySelector('#menu-mass')!.textContent = `${formatMass(b.mass)} M⊕`;
+  document.querySelector('#menu-mass')!.textContent = massText(b);
   document.querySelector('#menu-diameter')!.textContent = `Ø ${(b.radius * 2).toFixed(1)}u`;
   lock.textContent = positionLocked ? 'Unlock' : 'Position lock';
   lock.classList.toggle('active', positionLocked);
@@ -183,6 +210,8 @@ export function refreshObjectMenu() {
     .forEach(x => x.classList.toggle('active', x.dataset.change === b.kind));
 }
 export function openObjectMenu(b: Body, x: number, y: number) {
+  // Change / remove are adult tools: long-press and right-click do not open them in Kids mode.
+  if (!objectMenuAllowed(app.kidsMode)) return;
   select(b);
   app.menuBody = b;
   refreshObjectMenu();
@@ -230,4 +259,19 @@ export function orbitNearest(b: Body) {
   updateInspector();
   refreshObjectMenu();
   toast(`${b.name} entered orbit around ${center.name}`);
+}
+/**
+ * Gives a black hole a reference scale (item 7b): its current model mass is read as the chosen preset from now on,
+ * and the factor stays fixed so growth and mergers scale the referenced mass linearly. Undoable; physics unchanged.
+ */
+export function setBlackHoleReference(b: Body, presetId: string) {
+  if (b.kind !== 'blackhole' || presetId === referencePickerValue(b.bhReference)) return;
+  recordHistory();
+  b.bhReference = referenceForPreset(presetId, b.mass);
+  updateInspector();
+  toast(
+    b.bhReference
+      ? `${b.name} read as ${describeReference(b.mass, b.bhReference).split(' · ')[0]} (reference only)`
+      : `${b.name} back to model units only`,
+  );
 }

@@ -1,0 +1,16 @@
+# s72 technical recheck at PR33 3e5791ec9ea89bc5f362449f5bf1d07c963073c8 (2026-11-09, Chromium 1243 SwiftShader, Claude)
+# harnesses: s67-final-evidence.mjs (RC64-O1 Reference fit) and s70-technical.mjs (notice/contrast/heap/back link/third-party), unchanged, run from repo root after pnpm check
+## s67 1440x900 / 1280x800: all checks passed (logs in run transcript; see s67 lines below for 390 and 4K)
+## s67 VPS=390x844
+lds 390x844: {"compact":false,"tabsShown":false,"pickShown":true,"head":104,"body":588,"sideways":0}
+lds 390x844 escape: {"hidden":true,"focus":"cxBtn"}
+dune 1440x900: {"compact":false,"tabsShown":true,"pickShown":false,"head":53,"body":685,"sideways":0}
+third-party requests: 0
+s67 final evidence: all checks passed
+## s67 VPS=3840x2160 (full-frame capture succeeded this run)
+lds 3840x2160: {"compact":true,"tabsShown":false,"pickShown":true,"head":108,"body":557,"sideways":0}
+lds 3840x2160 escape: {"hidden":true,"focus":"cxBtn"}
+dune 1440x900: {"compact":false,"tabsShown":true,"pickShown":false,"head":53,"body":685,"sideways":0}
+third-party requests: 0
+s67 final evidence: all checks passed
+## s70 json: see s72/s70-{1440,1280,390}.json (contrast 7.3, clipped false, heap 6 MB flat x5, thirdParty [], errors [], navOk true at all three)

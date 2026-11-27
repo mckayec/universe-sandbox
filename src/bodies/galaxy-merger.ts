@@ -3,6 +3,7 @@
 import { app, bodies, bodyGroupIds, cosmicGroups, galaxyVisuals } from '../state/app-state.ts';
 import type { Body, CosmicGroup } from '../state/types.ts';
 import { galaxyGroupFor } from '../physics/galaxy-dynamics.ts';
+import { passesThrough } from '../galaxy-encounter-model.ts';
 import { museumEvent } from '../ui/feed.ts';
 import { refreshGroupNavigator } from './groups.ts';
 
@@ -42,7 +43,7 @@ export function mergeGalaxies(keep: CosmicGroup, gone: CosmicGroup, core: Body, 
   core.lastEvent = `Merged with the core of ${goneName}`;
   museumEvent(
     'Galaxies merge',
-    `The central black holes of ${keepName} and ${goneName} have merged. Their stars keep orbiting in the combined gravity, scattered into tails and shells that slowly settle into one larger galaxy.`,
+    `The model has combined the cores of ${keepName} and ${goneName}. Their stars continue in the combined gravitational field. The final black-hole binary stages and the long astronomical timescale are not simulated.`,
     '#c9a6ff',
     core,
   );
@@ -68,16 +69,17 @@ export function transferGalaxyCore(eater: Body, food: Body) {
   for (const visual of galaxyVisuals.values()) if (visual.groupId === foodGalaxy.id) visual.anchorId = eater.id;
   museumEvent(
     'A new galactic core',
-    `${eater.name} swallowed the core of ${foodGalaxy.name}; the galaxy's stars now orbit ${eater.name} instead.`,
+    `${eater.name} replaces the core of ${foodGalaxy.name} in this simplified model. Stars continue to respond to the combined core and halo field.`,
     '#c9a6ff',
     eater,
   );
 }
 /**
- * When two galaxies collide their stars almost never hit each other: the gaps between stars are enormous. So
- * bodies of different galaxies pass through one another, a core (its own or the other galaxy's) only captures a
- * star nearly at rest relative to it, and two cores only coalesce once halo friction has slowed them (a fast pass
- * flies through).
+ * Collisionless approximation: when galaxies collide, physical star–star collisions are rare because the gaps
+ * between stars are enormous, so this model suppresses contact between bodies of different galaxies (it does not
+ * claim collisions are impossible, and real galactic gas does collide and shock). A core only captures a star
+ * nearly at rest relative to it, and two model cores only coalesce once the drag rule has slowed them below a
+ * speed cutoff (a fast pass flies through). That coalescence is illustrative, not black-hole binary evolution.
  */
 export function passesThroughInGalaxyCollision(a: Body, b: Body) {
   const ga = galaxyGroupFor(a),
@@ -86,9 +88,5 @@ export function passesThroughInGalaxyCollision(a: Body, b: Body) {
   const coreA = ga.anchorId === a.id,
     coreB = gb.anchorId === b.id,
     relative = a.velocity.distanceTo(b.velocity);
-  // A star on a plunging orbit through its own galaxy's centre is not swallowed on the way through either.
-  if (ga === gb) return (coreA || coreB) && relative > 4;
-  if (coreA && coreB) return relative > 8;
-  if (coreA || coreB) return relative > 4;
-  return true;
+  return passesThrough(ga === gb, coreA, coreB, relative);
 }

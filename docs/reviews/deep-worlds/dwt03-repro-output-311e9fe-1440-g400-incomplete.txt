@@ -1,0 +1,22 @@
+target head-311e9fe 1440x900 gap=400
+after Next 1: step=3 / 13 view=place site=fane rendered=fane ev=null fade=true hash=#book=3&world=arrakis&site=arrakeen&view=surface
+after Next 2: step=4 / 13 view=place site=tabr rendered=tabr ev=null fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 3: step=5 / 13 view=place site=tabr rendered=tabr ev=c12 fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 4: step=6 / 13 view=place site=tabr rendered=tabr ev=c12 fade=true hash=#book=3&world=arrakis&site=tabr&view=surface
+after Next 5: step=7 / 13 view=galaxy site=exile rendered=null ev=null fade=true hash=#book=3&world=salusa&site=exile&view=place
+after Next 6: step=8 / 13 view=place site=jacurutu rendered=jacurutu ev=c5 fade=false hash=#book=3&world=arrakis&site=jacurutu&view=place&lm=caves
+after Next 7: step=9 / 13 view=world site=jacurutu rendered=null ev=c9 fade=false hash=#book=3&world=arrakis&site=jacurutu&view=surface
+after Next 8: step=10 / 13 view=place site=tabr rendered=tabr ev=c10 fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 9: step=11 / 13 view=place site=tabr rendered=tabr ev=c10 fade=true hash=#book=3&world=arrakis&site=tabr&view=surface
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.evaluate: Target page, context or browser has been closed
+    at st (/home/claude/universe-sandbox/docs/reviews/deep-worlds/dwt03-dune-prime-repro.cjs:12:5)
+    at until (/home/claude/universe-sandbox/docs/reviews/deep-worlds/dwt03-dune-prime-repro.cjs:34:43)
+    at async /home/claude/universe-sandbox/docs/reviews/deep-worlds/dwt03-dune-prime-repro.cjs:53:5 {
+  log: []
+}
+
+Node.js v22.23.4

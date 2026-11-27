@@ -1,0 +1,37 @@
+{
+  "head": "8de912810c3fe029b79623f762b5eab325bc1236",
+  "passed": 6,
+  "total": 6,
+  "results": [
+    {
+      "name": "quiet simulation records and updates body without presentation",
+      "pass": true
+    },
+    {
+      "name": "direct exhibit action remains audible and visible in quiet",
+      "pass": true
+    },
+    {
+      "name": "quiet idle start and repeated attract restart produce no unsolicited banner or sound",
+      "pass": true
+    },
+    {
+      "name": "full feedback simulation presents and vibrates",
+      "pass": true
+    },
+    {
+      "name": "history remains bounded after repeated quiet events",
+      "pass": true
+    },
+    {
+      "name": "actual selection resets sheet for rebuilt object with same ID",
+      "pass": true
+    }
+  ],
+  "idleEvidence": {
+    "banners": [],
+    "sounds": [],
+    "attractMode": true
+  },
+  "limitation": "Extracted actual handlers with adapters, no renderer, physical device or audio output"
+}

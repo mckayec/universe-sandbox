@@ -1,0 +1,94 @@
+Exact-head independent validation — 2026-11-07 UTC
+Repository: mckayec/universe-sandbox
+PR33 head: 9d53e7c48eae8469e240e6b61e933e7b5c115d5f
+Node: v24.22.1
+Fetched pack Git blob SHA1: 0e4a2f8105f625daa6e86422717864488a63164d
+
+Command:
+node --test tests/lds-pack.test.ts tests/lds-cs1.test.ts tests/lds-res96c.test.ts tests/lds-res96.test.ts tests/lds-mat61.test.ts tests/lds-semantic-c60.test.ts
+
+Result: exit 0;72/72 pass;0 fail;0 skipped.
+Scope: data/helper/regression evidence; no browser/device/full build claim.
+Setup note: initial expanded54-case run passed53 and failed1 because the review copy had not fetched existing s28-callback-probe.cjs. Fetched exact-head helper a0e789ff528e5880a9d132f2ea86894d001f0976, then completed this72-case run. No test or application code was changed.
+
+✔ CS-1: each of the 33 cards has its intended official source labels (1.93603ms)
+✔ CS-1: every codex card in the pack now has at least one source link (1.246255ms)
+✔ CS-1: paired accounts keep separate sources and gates (0.344758ms)
+✔ MAT61-C1: one source-only 3/bom comparison card with exact locators and no target (2.854233ms)
+✔ MAT61-C1: the copy keeps the condition, the distinct applications and the comparison boundary (0.410344ms)
+✔ MAT61-C1: neighbouring views are unchanged (0.208136ms)
+✔ MAT61-C1: exactly the two BMC-185 reader cues resolve; screen and ledger accounting unchanged (1.34463ms)
+✔ BA01: Lystra and South Pass are held as named unplaced stops, not pins (2.161353ms)
+✔ BA05: each codex account follows only its own layer (1.266375ms)
+✔ BA05 control: Jerusalem keeps its separately layered notes (0.272892ms)
+✔ BA06: the Fayette reference point agrees with its 1829 episodes under time filtering (0.208306ms)
+✔ BA02/BA03: register coordinates and visible qualifications are applied (0.341463ms)
+✔ BA07: 62 specified source views resolve, one work layer each, no dates or pins (4.153115ms)
+✔ R1-C1: Salamis credits its active ToposText point (0.189489ms)
+✔ R1 BA07: Palmyra has a neutral BoM facet; printing history stays with D&C (0.338338ms)
+✔ BA07 round 2: 108 further source views (107 research IDs) resolve with their own gates (5.37887ms)
+✔ Supplementary SC01–SC07: every Book of Mormon SD row maps to one bom-layer card with sources (3.666258ms)
+✔ Supplementary SC08–SC12: every New Testament SD row maps to one nt-layer card with sources (3.26667ms)
+✔ Supplementary SC13–SC17: every Old Testament history SD row maps to one ot-layer card with sources (4.796643ms)
+✔ Supplementary SC18–SC23: Chronicles–Esther rows map to ot-more cards; consolidated rows point at a real card (3.058313ms)
+✔ Supplementary SC25–SC28 and S6-C1: major-prophet rows map to OTM cards; SC22 prose consolidated (2.500943ms)
+✔ Supplementary SC24 and S7-C1/C2: major-prophet places, temple chapter views, OT-only Zedekiah card (2.416829ms)
+✔ Supplementary SC29, SC30, SC33: apparatus rows, poetic place views and JST selections (2.528193ms)
+✔ Supplementary SC31, SC32, SC34 and S9-C1: wisdom and Twelve events, reading limits and chapter notes (2.766454ms)
+✔ Supplementary S3/S4 review fixes: child source views follow their parents and required details are present (1.906087ms)
+✔ Supplementary S10 and S3-C1 (SD0214, SD0240): Dura, chapter sources, JST comparisons, pericope views (0.877041ms)
+✔ Supplementary S11 fixes: parable contexts, Psalm note labels and the two separate genealogies (0.899946ms)
+✔ Supplementary SC35–SC39: D&C place, event, teaching and relationship rows map to dc-layer cards (2.767065ms)
+✔ Supplementary checkpoint 15: S14-C1–C3 copy and SC40 person cards in dc-more (2.521052ms)
+✔ Supplementary checkpoint 16: S15-C1/C2 and SC41 office and companion relations in dc-more (5.892886ms)
+✔ Supplementary checkpoint 17: SC42 ancient participants and SC43 dated events in dc-more (3.737754ms)
+✔ Supplementary checkpoints 18–19: S17-C1/C2 and all 140 SC45 section dossiers in dc-more (3.349161ms)
+✔ Supplementary checkpoint 19: S18-C1–C3 dossier corrections (0.709424ms)
+✔ Supplementary checkpoint 20: S19-C1–C4 dossier corrections (0.269988ms)
+✔ Supplementary checkpoint 20: SC46 QG01–QG16 and SC47 Articles of Faith in pgp-more (2.56016ms)
+✔ Supplementary checkpoint 21: S20-C1/C2, PC06 pointer and SC48 identity constraints (1.718851ms)
+✔ Supplementary checkpoint 22: S21-C1/C2, SC49 Joseph Smith—History views, SC50/SC51 front matter (3.732346ms)
+✔ Supplementary checkpoint 23: S22-C1 FM08/FM09 added sources and owner display naming (0.639281ms)
+✔ Supplementary checkpoint 23: SC52 attributed models and SC53/SC54 consolidated geography source views (2.901532ms)
+✔ Checkpoint 24: shared-identity See-also links for the 12 front-matter people keep every gate (1.724149ms)
+✔ Checkpoint 25: typed See-also links from the integration contract resolve and keep every gate (1.454281ms)
+✔ Checkpoint 26: S25-C1 Eden, Nod and Enoch’s city source views link across accounts and keep their gates (1.481942ms)
+✔ Checkpoint 27: S26 PGM-qg06-zion is a 5/pgp source discussion of Enoch’s city, not another city (0.885534ms)
+✔ Checkpoint 28: S27-C1 queued event focus is cancelled by any intervening codex or navigation change (64.310093ms)
+✔ Checkpoint 29: S28-V1 the completing frame of a jump keeps fades off; fades return after two quiescent frames (0.80089ms)
+✔ Checkpoint 30: DRE office appointments and successions link office and person cards; no parent-of (1.553708ms)
+✔ Checkpoint 31: Seymour Brunson card cites 75:33 and 124:132 (builder answer, review s30) (0.328363ms)
+✔ Checkpoint 32: BMC source views are 3/bom, link one way and are hidden outside the Book of Mormon (3.016983ms)
+✔ Checkpoint 32: bmc-source-views.csv accounts for every BMC key and every name-scan hit (1.857676ms)
+✔ Checkpoint 35: every default BMC omission is reconciled in bmc-omission-rollup.csv (0.758427ms)
+✔ Checkpoint 37: every default BMC omission has a semantic disposition with research locators (1.216441ms)
+✔ Checkpoint 35: every full-read table row in coverage-bom.md is ingested by the omission rollup (1.427973ms)
+✔ Checkpoint 35: S34 builder decisions are implemented as attributed 3/bom source views (1.528501ms)
+✔ Checkpoint 36: the five S35 answers are one-way 3/bom views with the reviewer’s copy and bounded labels (0.731036ms)
+✔ Checkpoint 38: the S37 decisions are 3/bom source views with the reviewer’s copy, locators and bounded labels (1.466439ms)
+✔ Checkpoint 40: timeline/source-vision crosswalk covers every dated item; narrated First Vision year is labelled (94.468394ms)
+✔ S40-C1: keyword candidates are semantically classed; vision-family children are carried by inheritance (4.969131ms)
+✔ Checkpoint 53: SEM-R1–R4 semantic dispositions and VIS-R1 source-grounded vision inclusion (1.801904ms)
+✔ RES96: 76 decisions recorded; the 20 correction keys are not among them (5.952875ms)
+✔ RES96: repaired readings are stated in the recorded decisions (10.147622ms)
+✔ RES96: frozen word screen unchanged in size and state counts; screened roles corrected (0.937371ms)
+✔ RES96: the checkpoint-63 decisions put nothing into the pack (data in docs only) (5.377338ms)
+✔ RES96-C: views carry exact locators, 3/bom gates and one-way earlier-work targets, with no dates or pins (2.162955ms)
+✔ RES96-C: every one of the 20 keys is implemented or consolidated; the semantic ledger is empty (1.463535ms)
+✔ RES96-C: attribution, scene and identity safeguards are visible in the copy (0.73311ms)
+✔ RES96-C: vision crosswalk rows come from the cited source; old rows are kept (0.886505ms)
+✔ RES96-C: screened rows for the corrected keys are labelled checkpoint 64; screen counts unchanged (0.656687ms)
+✔ Checkpoint 60: tranche views carry exact locators, 3/bom gates and one-way earlier-work targets (2.593158ms)
+✔ Checkpoint 60: speaker, scene and claim distinctions are visible in the copy (0.300522ms)
+✔ Checkpoint 60: BC14 carries Moroni 9:25 without a new citation; decisions recorded; ledger shrinks (1.865627ms)
+✔ VIS60-C1: BMV-217 is in the vision crosswalk from Ether 3, not its title; card unchanged (0.782222ms)
+✔ SEM60-C1: the BMC-238 decision names the army of Aaron without a royal title or identity (0.452757ms)
+ℹ tests 72
+ℹ suites 0
+ℹ pass 72
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 493.387353
+

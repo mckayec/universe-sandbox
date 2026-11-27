@@ -1,0 +1,136 @@
+pass  live 1440x900@100%: no horizontal page overflow (1440<=1440)
+pass  live 1440x900@100%: universes-button visible on screen
+pass  live 1440x900@100%: exhibits-button visible on screen
+pass  live 1440x900@100%: fullscreen-button visible on screen
+pass  live 1440x900@100%: count visible on screen
+pass  live 1440x900@100%: Pause reachable
+pass  live 390x844@100%: no horizontal page overflow (390<=390)
+pass  live 390x844@100%: universes-button visible on screen
+pass  live 390x844@100%: exhibits-button visible on screen
+pass  live 390x844@100%: fullscreen-button visible on screen
+pass  live 390x844@100%: count visible on screen
+pass  live 390x844@100%: Pause reachable
+pass  live 390x844@200%: no horizontal page overflow (390<=390)
+pass  live 390x844@200%: universes-button visible on screen
+pass  live 390x844@200%: exhibits-button visible on screen
+pass  live 390x844@200%: fullscreen-button visible on screen
+pass  live 390x844@200%: count visible on screen
+pass  live 390x844@200%: Pause reachable
+pass  live 844x390@200%: no horizontal page overflow (844<=844)
+pass  live 844x390@200%: universes-button visible on screen
+pass  live 844x390@200%: exhibits-button visible on screen
+pass  live 844x390@200%: fullscreen-button visible on screen
+pass  live 844x390@200%: count visible on screen
+pass  live 844x390@200%: Pause reachable
+pass  live 1280x800@200%: no horizontal page overflow (1280<=1280)
+pass  live 1280x800@200%: universes-button visible on screen
+pass  live 1280x800@200%: exhibits-button visible on screen
+pass  live 1280x800@200%: fullscreen-button visible on screen
+pass  live 1280x800@200%: count visible on screen
+pass  live 1280x800@200%: Pause reachable
+pass  live 1280x800@100%: no horizontal page overflow (1280<=1280)
+pass  live 1280x800@100%: universes-button visible on screen
+pass  live 1280x800@100%: exhibits-button visible on screen
+pass  live 1280x800@100%: fullscreen-button visible on screen
+pass  live 1280x800@100%: count visible on screen
+pass  live 1280x800@100%: Pause reachable
+pass  live 320x568@150%: no horizontal page overflow (320<=320)
+pass  live 320x568@150%: universes-button visible on screen
+pass  live 320x568@150%: exhibits-button visible on screen
+pass  live 320x568@150%: fullscreen-button visible on screen
+pass  live 320x568@150%: count visible on screen
+pass  live 320x568@150%: Pause reachable
+pass  live 1440x900@100%: no horizontal page overflow (1440<=1440)
+pass  live 1440x900@100%: universes-button visible on screen
+pass  live 1440x900@100%: exhibits-button visible on screen
+pass  live 1440x900@100%: fullscreen-button visible on screen
+pass  live 1440x900@100%: count visible on screen
+pass  live 1440x900@100%: Pause reachable
+pass  live resize: no console/page errors
+pass  landscape 844x390: no horizontal page overflow (844<=844)
+pass  landscape 844x390: universes-button visible on screen
+pass  landscape 844x390: exhibits-button visible on screen
+pass  landscape 844x390: fullscreen-button visible on screen
+pass  landscape 844x390: count visible on screen
+pass  landscape 844x390: Pause reachable
+pass  landscape 844x390: tools toggle on screen
+pass  landscape 844x390: toggled tool body fits or scrolls ({"top":280,"bottom":412.59375,"h":390,"scrollable":true,"lastOn":true})
+pass  landscape 844x390: last tool button reachable on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): no horizontal page overflow (390<=390)
+pass  landscape 844x390 rotated to portrait (panel toggled): universes-button visible on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): exhibits-button visible on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): fullscreen-button visible on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): count visible on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): Pause reachable
+pass  landscape 844x390 rotated back: no horizontal page overflow (844<=844)
+pass  landscape 844x390 rotated back: universes-button visible on screen
+pass  landscape 844x390 rotated back: exhibits-button visible on screen
+pass  landscape 844x390 rotated back: fullscreen-button visible on screen
+pass  landscape 844x390 rotated back: count visible on screen
+pass  landscape 844x390 rotated back: Pause reachable
+pass  landscape 844x390: no console/page errors
+pass  landscape 667x375: no horizontal page overflow (667<=667)
+pass  landscape 667x375: universes-button visible on screen
+pass  landscape 667x375: exhibits-button visible on screen
+pass  landscape 667x375: fullscreen-button visible on screen
+pass  landscape 667x375: count visible on screen
+pass  landscape 667x375: Pause reachable
+pass  landscape 667x375: tools toggle on screen
+pass  landscape 667x375: toggled tool body fits or scrolls ({"top":280,"bottom":407.5,"h":375,"scrollable":true,"lastOn":true})
+pass  landscape 667x375: last tool button reachable on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): no horizontal page overflow (375<=375)
+pass  landscape 667x375 rotated to portrait (panel toggled): universes-button visible on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): exhibits-button visible on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): fullscreen-button visible on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): count visible on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): Pause reachable
+pass  landscape 667x375 rotated back: no horizontal page overflow (667<=667)
+pass  landscape 667x375 rotated back: universes-button visible on screen
+pass  landscape 667x375 rotated back: exhibits-button visible on screen
+pass  landscape 667x375 rotated back: fullscreen-button visible on screen
+pass  landscape 667x375 rotated back: count visible on screen
+pass  landscape 667x375 rotated back: Pause reachable
+pass  landscape 667x375: no console/page errors
+pass  landscape 568x320: no horizontal page overflow (568<=568)
+pass  landscape 568x320: universes-button visible on screen
+pass  landscape 568x320: exhibits-button visible on screen
+pass  landscape 568x320: fullscreen-button visible on screen
+pass  landscape 568x320: count visible on screen
+pass  landscape 568x320: Pause reachable
+pass  landscape 568x320: tools toggle on screen
+pass  landscape 568x320: toggled tool body fits or scrolls ({"top":280,"bottom":388.796875,"h":320,"scrollable":true,"lastOn":true})
+pass  landscape 568x320: last tool button reachable on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): no horizontal page overflow (320<=320)
+pass  landscape 568x320 rotated to portrait (panel toggled): universes-button visible on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): exhibits-button visible on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): fullscreen-button visible on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): count visible on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): Pause reachable
+pass  landscape 568x320 rotated back: no horizontal page overflow (568<=568)
+pass  landscape 568x320 rotated back: universes-button visible on screen
+pass  landscape 568x320 rotated back: exhibits-button visible on screen
+pass  landscape 568x320 rotated back: fullscreen-button visible on screen
+pass  landscape 568x320 rotated back: count visible on screen
+pass  landscape 568x320 rotated back: Pause reachable
+pass  landscape 568x320: no console/page errors
+pass  universe picker open, rotated to 844x390: close button on screen
+pass  universe picker open, rotated to 390x844: close button on screen
+pass  universe picker closes after rotation
+pass  picker rotation: no console/page errors
+pass  reduced motion: media query active
+pass  reduced motion: toolbar transitions near zero (0s)
+pass  reduced motion 390x844: no horizontal page overflow (390<=390)
+pass  reduced motion 390x844: universes-button visible on screen
+pass  reduced motion 390x844: exhibits-button visible on screen
+pass  reduced motion 390x844: fullscreen-button visible on screen
+pass  reduced motion 390x844: count visible on screen
+pass  reduced motion 390x844: Pause reachable
+pass  reduced motion: no console/page errors
+pass  navigate: repeated taps + long press keep object count (4 -> 4)
+pass  navigate long-press: no console/page errors
+pass  no-WebGL: explanatory notice shown on screen
+pass  no-WebGL: notice names WebGL
+info  no-WebGL: webgl=false ui=true pageerrors=1 ["Error: Error creating WebGL context."]
+info  no-WebGL text: "OBJECTS 0\nMISSION 00:00\nUNIVERSES\nEXHIBITS\nFULLSCREEN\nAll space\nUndo\nRedo\nNamed structures\nSave\nLoad\nRecover\nLife zones: off\nTrails: off\nOverlays: off\nQuality: auto\nModel: exhibit\nEffects: full\nSound:"
+
+132 passed, 0 failed

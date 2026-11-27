@@ -1,0 +1,15 @@
+PASS dune events removed exactly d15,d16
+PASS remaining dune events identical in order and content
+PASS arrakeen landmarks = base minus conservatory, others identical
+PASS arrakeen markers 10 -> 9
+PASS arrakeen events 14 -> 12
+PASS residency retained
+PASS whole dune pack = base minus the three records (no other leaf changed)
+PASS no remaining id references to d15/d16/conservatory in dune pack
+PASS unresolved lm refs in dune: 0
+PASS foundation unchanged
+PASS sun-eater unchanged
+PASS cosmere unchanged
+PASS expanse unchanged
+PASS hyperion unchanged
+ALL PASS

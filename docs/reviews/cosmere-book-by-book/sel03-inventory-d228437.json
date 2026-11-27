@@ -1,0 +1,383 @@
+{
+  "reviewed_at": "2026-11-17",
+  "scope": "SEL03 six core records; inventory is not canon approval",
+  "revisions": {
+    "24": "cf25cda66e91c573c421a0f3712623db72737a3b",
+    "37": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+    "48": "d22843792a983f5b47ceab22c897b8ce5ba37388"
+  },
+  "snapshots": {
+    "24": {
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "sites": [
+        {
+          "id": "roseempire",
+          "name": "The Imperial Seat (Rose Empire)",
+          "lat": 58,
+          "lon": -45,
+          "books": [
+            7
+          ],
+          "desc": "Capital of the Rose Empire on the northern continent, built on seven hills with the Rose Palace on the centre one. Here Shai rebuilds the emperor’s soul in The Emperor’s Soul."
+        },
+        {
+          "id": "mulladil",
+          "name": "Mulla’dil",
+          "lat": 51,
+          "lon": -52,
+          "books": [
+            7
+          ],
+          "desc": "A mountainous province of the Rose Empire whose Strikers guard the passes to Teod."
+        },
+        {
+          "id": "dzhamar",
+          "name": "Dzhamar",
+          "lat": 52.5,
+          "lon": -64,
+          "books": [
+            7
+          ],
+          "desc": "The swampy province of the Bloodsealers."
+        },
+        {
+          "id": "maipon",
+          "name": "MaiPon",
+          "lat": 61,
+          "lon": -25,
+          "books": [
+            7
+          ],
+          "desc": "Shai’s homeland and the heart of Forgery; its position in the empire is not given."
+        }
+      ],
+      "event": {
+        "id": "e30",
+        "book": 7,
+        "world": "sel",
+        "site": "roseempire",
+        "title": "The Emperor’s Soul",
+        "text": "A condemned Forger is given a hundred days to rebuild the soul of a dying emperor."
+      },
+      "shai": {
+        "name": "Shai",
+        "role": "Forger",
+        "books": [
+          7
+        ],
+        "desc": "A thief who rewrites the history of objects, and one emperor."
+      },
+      "related": {
+        "jindo": {
+          "id": "jindo",
+          "name": "JinDo",
+          "lat": 3,
+          "lon": -38,
+          "books": [
+            1
+          ],
+          "desc": "A land south-east of Arelon, related in culture to MaiPon. The city of HaiKo lies in its north-east."
+        },
+        "selShort": "The world of Elantris and The Emperor’s Soul.",
+        "selEra7": {
+          "facts": [
+            [
+              "Order",
+              "2nd from Mashe"
+            ],
+            [
+              "Moon",
+              "Oem"
+            ],
+            [
+              "Shards",
+              "Devotion and Dominion, both splintered"
+            ],
+            [
+              "Magic",
+              "AonDor, Forgery, Dakhor and more, tied to the land"
+            ],
+            [
+              "Nations",
+              "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+            ]
+          ]
+        }
+      }
+    },
+    "37": {
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "sites": [
+        {
+          "id": "roseempire",
+          "name": "The Imperial Seat (Rose Empire)",
+          "lat": 58,
+          "lon": -45,
+          "books": [
+            7
+          ],
+          "desc": "Capital of the Rose Empire on the northern continent, built on seven hills with the Rose Palace on the centre one. Here Shai rebuilds the emperor’s soul in The Emperor’s Soul.",
+          "scene": {
+            "kind": "capital",
+            "arch": "eastern",
+            "size": "large",
+            "tod": "day",
+            "weather": "clear",
+            "landmarks": [
+              {
+                "id": "palace",
+                "name": "The Rose Palace",
+                "kind": "palace",
+                "at": [
+                  0,
+                  0.2
+                ],
+                "h": 1.5,
+                "books": [
+                  7
+                ],
+                "desc": "On the central of the capital’s seven hills: the seat of the emperor and the arbiters."
+              },
+              {
+                "id": "chamber",
+                "name": "Shai’s chamber",
+                "kind": "house",
+                "at": [
+                  0.45,
+                  -0.3
+                ],
+                "h": 0.6,
+                "books": [
+                  7
+                ],
+                "desc": "The guarded room where Shai spends her hundred days carving soulstamps to rebuild the emperor, with the arbiter Gaotona watching."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mulladil",
+          "name": "Mulla’dil",
+          "lat": 51,
+          "lon": -52,
+          "books": [
+            7
+          ],
+          "desc": "A mountainous province of the Rose Empire whose Strikers guard the passes to Teod.",
+          "scene": {
+            "kind": "mountain",
+            "size": "large",
+            "tod": "day",
+            "weather": "clear"
+          }
+        },
+        {
+          "id": "dzhamar",
+          "name": "Dzhamar",
+          "lat": 52.5,
+          "lon": -64,
+          "books": [
+            7
+          ],
+          "desc": "The swampy province of the Bloodsealers.",
+          "scene": {
+            "kind": "wilds",
+            "size": "large",
+            "tod": "day",
+            "weather": "mist"
+          }
+        },
+        {
+          "id": "maipon",
+          "name": "MaiPon",
+          "lat": 61,
+          "lon": -25,
+          "books": [
+            7
+          ],
+          "desc": "Shai’s homeland and the heart of Forgery; its position in the empire is not given.",
+          "scene": {
+            "kind": "wilds",
+            "arch": "eastern",
+            "size": "large",
+            "tod": "day",
+            "weather": "clear"
+          }
+        }
+      ],
+      "event": {
+        "id": "e30",
+        "book": 7,
+        "world": "sel",
+        "site": "roseempire",
+        "lm": "chamber",
+        "title": "The Emperor’s Soul",
+        "text": "A condemned Forger is given a hundred days to rebuild the soul of a dying emperor."
+      },
+      "shai": {
+        "name": "Shai",
+        "role": "Forger",
+        "books": [
+          7
+        ],
+        "desc": "A thief who rewrites the history of objects, and one emperor."
+      },
+      "related": {
+        "jindo": {
+          "id": "jindo",
+          "name": "JinDo",
+          "lat": 3,
+          "lon": -38,
+          "books": [
+            1
+          ],
+          "desc": "A land south-east of Arelon, related in culture to MaiPon. The city of HaiKo lies in its north-east.",
+          "scene": {
+            "kind": "wilds",
+            "arch": "eastern",
+            "size": "large",
+            "tod": "day",
+            "weather": "clear"
+          }
+        },
+        "selShort": "The world of Elantris and The Emperor’s Soul.",
+        "selEra7": {
+          "facts": [
+            [
+              "Order",
+              "2nd from Mashe"
+            ],
+            [
+              "Moon",
+              "Oem"
+            ],
+            [
+              "Shards",
+              "Devotion and Dominion, both splintered"
+            ],
+            [
+              "Magic",
+              "AonDor, Forgery, Dakhor and more, tied to the land"
+            ],
+            [
+              "Nations",
+              "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+            ]
+          ]
+        }
+      }
+    },
+    "48": {
+      "blob": "6d721c972970656396c78efef60f4dd5aceafbed",
+      "sites": [
+        {
+          "id": "roseempire",
+          "name": "The Imperial Seat (Rose Empire)",
+          "lat": 58,
+          "lon": -45,
+          "books": [
+            7
+          ],
+          "desc": "Capital of the Rose Empire on the northern continent, built on seven hills with the Rose Palace on the centre one. Here Shai rebuilds the emperor’s soul in The Emperor’s Soul."
+        },
+        {
+          "id": "mulladil",
+          "name": "Mulla’dil",
+          "lat": 51,
+          "lon": -52,
+          "books": [
+            7
+          ],
+          "desc": "A mountainous province of the Rose Empire whose Strikers guard the passes to Teod."
+        },
+        {
+          "id": "dzhamar",
+          "name": "Dzhamar",
+          "lat": 52.5,
+          "lon": -64,
+          "books": [
+            7
+          ],
+          "desc": "The swampy province of the Bloodsealers."
+        },
+        {
+          "id": "maipon",
+          "name": "MaiPon",
+          "lat": 61,
+          "lon": -25,
+          "books": [
+            7
+          ],
+          "desc": "Shai’s homeland and the heart of Forgery; its position in the empire is not given."
+        }
+      ],
+      "event": {
+        "id": "e30",
+        "book": 7,
+        "world": "sel",
+        "site": "roseempire",
+        "title": "The Emperor’s Soul",
+        "text": "A condemned Forger is given a hundred days to rebuild the soul of a dying emperor."
+      },
+      "shai": {
+        "name": "Shai",
+        "role": "Forger",
+        "books": [
+          7
+        ],
+        "desc": "A thief who rewrites the history of objects, and one emperor."
+      },
+      "related": {
+        "jindo": {
+          "id": "jindo",
+          "name": "JinDo",
+          "lat": 3,
+          "lon": -38,
+          "books": [
+            1
+          ],
+          "desc": "A land south-east of Arelon, related in culture to MaiPon. The city of HaiKo lies in its north-east."
+        },
+        "selShort": "The world of Elantris and The Emperor’s Soul.",
+        "selEra7": {
+          "facts": [
+            [
+              "Order",
+              "2nd from Mashe"
+            ],
+            [
+              "Moon",
+              "Oem"
+            ],
+            [
+              "Shards",
+              "Devotion and Dominion, both splintered"
+            ],
+            [
+              "Magic",
+              "AonDor, Forgery, Dakhor and more, tied to the land"
+            ],
+            [
+              "Nations",
+              "Arelon, Teod, the Fjordell Empire, the Rose Empire"
+            ]
+          ]
+        },
+        "registry": {
+          "id": "the-emperors-soul",
+          "title": "The Emperor’s Soul",
+          "y": 2012,
+          "bucket": 7
+        }
+      }
+    }
+  },
+  "comparison": {
+    "matches": 12,
+    "total": 12,
+    "ignored_fields": [
+      "site.scene (PR37 additions)",
+      "event.lm (PR37 chamber attachment)"
+    ]
+  }
+}

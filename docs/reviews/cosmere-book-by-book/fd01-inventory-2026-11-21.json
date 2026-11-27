@@ -1,0 +1,311 @@
+{
+  "unit": "FD01",
+  "checkpoint": "1/2",
+  "date": "2026-11-21",
+  "purpose": "Selected source inventory and proposal verification; not a complete canon or implementation audit",
+  "status_scan": {
+    "packs": 18,
+    "pack_denominator": 18,
+    "reviews": 8,
+    "review_denominator": 8
+  },
+  "snapshots": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "pack_blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "world_count": 60,
+      "selected_world": {
+        "id": "miral",
+        "fields": [
+          "id",
+          "name",
+          "group",
+          "spirit",
+          "books",
+          "first",
+          "status",
+          "star",
+          "map",
+          "est",
+          "distText",
+          "hero",
+          "blurb",
+          "short",
+          "facts",
+          "sites"
+        ],
+        "site_ids": [
+          "kingseat",
+          "smallport",
+          "duckseat",
+          "rivershore",
+          "riverviolet",
+          "monastery",
+          "southplains",
+          "lark"
+        ],
+        "landmarks": []
+      },
+      "miral_events": [
+        {
+          "id": "e63",
+          "site": "riverviolet",
+          "text": "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)"
+        }
+      ],
+      "selected_codex": [
+        {
+          "section": "shards",
+          "name": "Valor",
+          "first": 12,
+          "desc": "A Shard who was active on Miral and founded temples there."
+        },
+        {
+          "section": "people",
+          "name": "December",
+          "role": "Miral",
+          "books": [
+            12
+          ],
+          "desc": "An orphan who bonds with a demon and tries to warn a kingdom of plague."
+        }
+      ],
+      "registry_entries": [],
+      "indirect_context_event_ids": []
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "pack_blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "world_count": 60,
+      "selected_world": {
+        "id": "miral",
+        "fields": [
+          "id",
+          "name",
+          "group",
+          "spirit",
+          "books",
+          "first",
+          "status",
+          "star",
+          "map",
+          "est",
+          "distText",
+          "hero",
+          "blurb",
+          "short",
+          "facts",
+          "sites"
+        ],
+        "site_ids": [
+          "kingseat",
+          "smallport",
+          "duckseat",
+          "rivershore",
+          "riverviolet",
+          "monastery",
+          "southplains",
+          "lark"
+        ],
+        "landmarks": [
+          {
+            "site": "kingseat",
+            "id": "palace",
+            "name": "The palace and the Ever-Slaying Sword",
+            "desc": "King Beaudilog’s palace, which keeps the Prophet’s sword. December warns the court of plague here and is later caught and imprisoned."
+          },
+          {
+            "site": "kingseat",
+            "id": "megalith",
+            "name": "The Megalith’s heart",
+            "desc": "The skeletal corpse of the demon the Prophet slew eight hundred years ago, with the city grown around it. Its blood runs out in the rivers."
+          },
+          {
+            "site": "kingseat",
+            "id": "hexers",
+            "name": "The hexers’ diggings",
+            "desc": "Hexers mine demonstone from the river here; December spies on them."
+          },
+          {
+            "site": "rivershore",
+            "id": "inn",
+            "name": "The inn",
+            "desc": "Where the orphan December grows up with the innkeeper’s family, and where she first sees Hoid."
+          },
+          {
+            "site": "monastery",
+            "id": "library",
+            "name": "The library",
+            "desc": "The monks’ great library on demons, where December spends years studying."
+          }
+        ]
+      },
+      "miral_events": [
+        {
+          "id": "e126",
+          "site": "rivershore",
+          "lm": "inn",
+          "text": "An orphan raised at a riverside inn sees the river curdle and a plague take her town."
+        },
+        {
+          "id": "e63",
+          "site": "riverviolet",
+          "text": "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)"
+        },
+        {
+          "id": "e127",
+          "site": "kingseat",
+          "lm": "palace",
+          "text": "December warns King Beaudilog’s court of the plague and of the demon; the king’s ministers dismiss her."
+        },
+        {
+          "id": "e128",
+          "site": "kingseat",
+          "lm": "megalith",
+          "text": "The city’s guards turn on each other, and plotters release the Megalith through the palace’s river of demon blood."
+        }
+      ],
+      "selected_codex": [
+        {
+          "section": "shards",
+          "name": "Valor",
+          "first": 12,
+          "desc": "A Shard who was active on Miral and founded temples there."
+        },
+        {
+          "section": "people",
+          "name": "December",
+          "role": "Miral",
+          "books": [
+            12
+          ],
+          "desc": "An orphan who bonds with a demon and tries to warn a kingdom of plague."
+        }
+      ],
+      "registry_entries": [],
+      "indirect_context_event_ids": []
+    },
+    {
+      "pr": 48,
+      "head": "88e9266c3670fc11991b05b46b8ccd4b73931412",
+      "pack_blob": "defcba57faebddc3ac3ba8f683895a6bde09fcc5",
+      "world_count": 60,
+      "selected_world": {
+        "id": "miral",
+        "fields": [
+          "id",
+          "name",
+          "group",
+          "spirit",
+          "books",
+          "first",
+          "status",
+          "star",
+          "map",
+          "est",
+          "distText",
+          "hero",
+          "blurb",
+          "short",
+          "facts",
+          "sites"
+        ],
+        "site_ids": [
+          "kingseat",
+          "smallport",
+          "duckseat",
+          "rivershore",
+          "riverviolet",
+          "monastery",
+          "southplains",
+          "lark"
+        ],
+        "landmarks": []
+      },
+      "miral_events": [
+        {
+          "id": "e63",
+          "site": "riverviolet",
+          "text": "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)"
+        }
+      ],
+      "selected_codex": [
+        {
+          "section": "shards",
+          "name": "Valor",
+          "first": 12,
+          "desc": "A Shard who was active on Miral and founded temples there."
+        },
+        {
+          "section": "people",
+          "name": "December",
+          "role": "Miral",
+          "books": [
+            12
+          ],
+          "desc": "An orphan who bonds with a demon and tries to warn a kingdom of plague."
+        }
+      ],
+      "registry_entries": [
+        {
+          "id": "wind-and-truth",
+          "title": "Wind and Truth",
+          "y": 2024,
+          "bucket": 12
+        },
+        {
+          "id": "isles-of-the-emberdark",
+          "title": "Isles of the Emberdark",
+          "y": 2025,
+          "bucket": 12
+        },
+        {
+          "id": "the-fires-of-december",
+          "title": "The Fires of December",
+          "y": 2026,
+          "yNote": "catalogue listing",
+          "bucket": 12
+        }
+      ],
+      "indirect_context_event_ids": [
+        "e60"
+      ]
+    }
+  ],
+  "proposal": {
+    "finding": "FD01-PUBLICATION-01",
+    "implements": "FD08",
+    "severity": "Low",
+    "pr": 48,
+    "path": "public/atlas/packs/cosmere.js",
+    "target": "events[id=e63].text",
+    "old": "December sets out to warn Kingseat of a coming plague. (The Fires of December, published October 2026.)",
+    "replacement": "December sets out to warn Kingseat of a coming plague.",
+    "implementation": "not performed"
+  },
+  "checks": [
+    {
+      "pr": 24,
+      "unique_source_match": true,
+      "exact_event_replacement": true,
+      "full_source_restore": true,
+      "full_data_restore": true
+    },
+    {
+      "pr": 37,
+      "unique_source_match": true,
+      "exact_event_replacement": true,
+      "full_source_restore": true,
+      "full_data_restore": true
+    },
+    {
+      "pr": 48,
+      "unique_source_match": true,
+      "exact_event_replacement": true,
+      "full_source_restore": true,
+      "full_data_restore": true
+    }
+  ]
+}

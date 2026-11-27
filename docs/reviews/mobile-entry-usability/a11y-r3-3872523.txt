@@ -1,0 +1,199 @@
+pass 390x844@100% tools expanded: #panel-toggle present and visible
+pass 390x844@100% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 390x844@100% tools collapsed: #panel-toggle present and visible
+pass 390x844@100% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 390x844@100% count full value "1288" visible, unclipped, on screen
+pass 390x844@100% elapsed full value "1234:56" visible, unclipped, on screen
+pass 390x844@100% universes-button full label visible (1 line(s), 74x44)
+pass 390x844@100% universes-button label on one line
+pass 390x844@100% exhibits-button full label visible (1 line(s), 67x44)
+pass 390x844@100% exhibits-button label on one line
+pass 390x844@100% no top-bar control off screen
+pass 390x844@100% no overlap
+pass 390x844@100% no horizontal page overflow
+pass 390x844@100% universes-button opens #universe-picker
+pass 390x844@100% #universe-picker closes on Escape
+pass 390x844@100% exhibits-button opens #scenario-picker
+pass 390x844@100% #scenario-picker closes on Escape
+pass 390x844@100% no page errors
+pass 390x844@150% tools expanded: #panel-toggle present and visible
+pass 390x844@150% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 390x844@150% tools collapsed: #panel-toggle present and visible
+pass 390x844@150% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 390x844@150% count full value "1288" visible, unclipped, on screen
+pass 390x844@150% elapsed full value "1234:56" visible, unclipped, on screen
+pass 390x844@150% universes-button full label visible (1 line(s), 103x44)
+pass 390x844@150% universes-button label on one line
+pass 390x844@150% exhibits-button full label visible (1 line(s), 93x44)
+pass 390x844@150% exhibits-button label on one line
+pass 390x844@150% no top-bar control off screen
+pass 390x844@150% no overlap
+pass 390x844@150% no horizontal page overflow
+pass 390x844@150% universes-button opens #universe-picker
+pass 390x844@150% #universe-picker closes on Escape
+pass 390x844@150% exhibits-button opens #scenario-picker
+pass 390x844@150% #scenario-picker closes on Escape
+pass 390x844@150% no page errors
+pass 390x844@200% tools expanded: #panel-toggle present and visible
+pass 390x844@200% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 390x844@200% tools collapsed: #panel-toggle present and visible
+pass 390x844@200% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 390x844@200% count full value "1288" visible, unclipped, on screen
+pass 390x844@200% elapsed full value "1234:56" visible, unclipped, on screen
+pass 390x844@200% universes-button full label visible (1 line(s), 133x44)
+pass 390x844@200% universes-button label on one line
+pass 390x844@200% exhibits-button full label visible (1 line(s), 120x44)
+pass 390x844@200% exhibits-button label on one line
+pass 390x844@200% no top-bar control off screen
+pass 390x844@200% no overlap
+pass 390x844@200% no horizontal page overflow
+pass 390x844@200% universes-button opens #universe-picker
+pass 390x844@200% #universe-picker closes on Escape
+pass 390x844@200% exhibits-button opens #scenario-picker
+pass 390x844@200% #scenario-picker closes on Escape
+pass 390x844@200% no page errors
+pass 844x390@100% tools expanded: #panel-toggle present and visible
+pass 844x390@100% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 844x390@100% tools collapsed: #panel-toggle present and visible
+pass 844x390@100% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 844x390@100% count full value "1288" visible, unclipped, on screen
+pass 844x390@100% elapsed full value "1234:56" visible, unclipped, on screen
+pass 844x390@100% universes-button full label visible (1 line(s), 74x44)
+pass 844x390@100% universes-button label on one line
+pass 844x390@100% exhibits-button full label visible (1 line(s), 67x44)
+pass 844x390@100% exhibits-button label on one line
+pass 844x390@100% no top-bar control off screen
+pass 844x390@100% no overlap
+pass 844x390@100% no horizontal page overflow
+pass 844x390@100% universes-button opens #universe-picker
+pass 844x390@100% #universe-picker closes on Escape
+pass 844x390@100% exhibits-button opens #scenario-picker
+pass 844x390@100% #scenario-picker closes on Escape
+pass 844x390@100% no page errors
+pass 844x390@150% tools expanded: #panel-toggle present and visible
+pass 844x390@150% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 844x390@150% tools collapsed: #panel-toggle present and visible
+pass 844x390@150% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 844x390@150% count full value "1288" visible, unclipped, on screen
+pass 844x390@150% elapsed full value "1234:56" visible, unclipped, on screen
+pass 844x390@150% universes-button full label visible (1 line(s), 103x44)
+pass 844x390@150% universes-button label on one line
+pass 844x390@150% exhibits-button full label visible (1 line(s), 93x44)
+pass 844x390@150% exhibits-button label on one line
+pass 844x390@150% no top-bar control off screen
+pass 844x390@150% no overlap
+pass 844x390@150% no horizontal page overflow
+pass 844x390@150% universes-button opens #universe-picker
+pass 844x390@150% #universe-picker closes on Escape
+pass 844x390@150% exhibits-button opens #scenario-picker
+pass 844x390@150% #scenario-picker closes on Escape
+pass 844x390@150% no page errors
+pass 844x390@200% tools expanded: #panel-toggle present and visible
+pass 844x390@200% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 844x390@200% tools collapsed: #panel-toggle present and visible
+pass 844x390@200% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 844x390@200% count full value "1288" visible, unclipped, on screen
+pass 844x390@200% elapsed full value "1234:56" visible, unclipped, on screen
+pass 844x390@200% universes-button full label visible (1 line(s), 133x44)
+pass 844x390@200% universes-button label on one line
+pass 844x390@200% exhibits-button full label visible (1 line(s), 120x44)
+pass 844x390@200% exhibits-button label on one line
+pass 844x390@200% no top-bar control off screen
+pass 844x390@200% no overlap
+pass 844x390@200% no horizontal page overflow
+pass 844x390@200% universes-button opens #universe-picker
+pass 844x390@200% #universe-picker closes on Escape
+pass 844x390@200% exhibits-button opens #scenario-picker
+pass 844x390@200% #scenario-picker closes on Escape
+pass 844x390@200% no page errors
+pass 320x568@100% tools expanded: #panel-toggle present and visible
+pass 320x568@100% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 320x568@100% tools collapsed: #panel-toggle present and visible
+pass 320x568@100% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 320x568@100% count full value "1288" visible, unclipped, on screen
+pass 320x568@100% clock: pre-existing <=360px hide (dispositioned, not a regression)
+pass 320x568@100% universes-button full label visible (1 line(s), 74x44)
+pass 320x568@100% exhibits-button full label visible (1 line(s), 67x44)
+pass 320x568@100% no top-bar control off screen
+pass 320x568@100% no overlap
+pass 320x568@100% no horizontal page overflow
+pass 320x568@100% universes-button opens #universe-picker
+pass 320x568@100% #universe-picker closes on Escape
+pass 320x568@100% exhibits-button opens #scenario-picker
+pass 320x568@100% #scenario-picker closes on Escape
+pass 320x568@100% no page errors
+pass 320x568@150% tools expanded: #panel-toggle present and visible
+pass 320x568@150% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 320x568@150% tools collapsed: #panel-toggle present and visible
+pass 320x568@150% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 320x568@150% count full value "1288" visible, unclipped, on screen
+pass 320x568@150% clock: pre-existing <=360px hide (dispositioned, not a regression)
+pass 320x568@150% universes-button full label visible (1 line(s), 103x44)
+pass 320x568@150% exhibits-button full label visible (1 line(s), 93x44)
+pass 320x568@150% no top-bar control off screen
+pass 320x568@150% no overlap
+pass 320x568@150% no horizontal page overflow
+pass 320x568@150% universes-button opens #universe-picker
+pass 320x568@150% #universe-picker closes on Escape
+pass 320x568@150% exhibits-button opens #scenario-picker
+pass 320x568@150% #scenario-picker closes on Escape
+pass 320x568@150% no page errors
+pass 320x568@200% tools expanded: #panel-toggle present and visible
+pass 320x568@200% tools expanded: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 320x568@200% tools collapsed: #panel-toggle present and visible
+pass 320x568@200% tools collapsed: Clear all vs panel toggle / top bar no overlap (clear shown=true)
+pass 320x568@200% count full value "1288" visible, unclipped, on screen
+pass 320x568@200% clock: pre-existing <=360px hide (dispositioned, not a regression)
+pass 320x568@200% universes-button full label visible (2 line(s), 125x52)
+pass 320x568@200% exhibits-button full label visible (2 line(s), 113x52)
+pass 320x568@200% no top-bar control off screen
+pass 320x568@200% no overlap
+pass 320x568@200% no horizontal page overflow
+pass 320x568@200% universes-button opens #universe-picker
+pass 320x568@200% #universe-picker closes on Escape
+pass 320x568@200% exhibits-button opens #scenario-picker
+pass 320x568@200% #scenario-picker closes on Escape
+pass 320x568@200% no page errors
+pass compact portrait: DOM order
+pass compact portrait: visual order matches DOM (18,108,163,218)
+pass compact portrait: disabled Undo/Redo skipped (next=group-select)
+pass compact portrait: Undo enabled after Clear all
+pass compact portrait: forward Tab All space -> undo,group-select
+pass compact portrait: Shift+Tab returns to Undo
+pass compact portrait: focused Undo visible with focus style
+pass compact portrait: Enter on Undo restores scene (4 -> 4)
+pass compact portrait: Redo enabled, focus retained (redo, undo enabled=false)
+pass compact portrait: keyboard reaches Redo
+pass compact portrait: Space on Redo re-applies Clear all (count 0)
+pass compact portrait: focus retained after last Redo (undo)
+pass compact portrait: Shift+Tab from Undo -> All space
+pass compact portrait: no page errors
+pass compact landscape: DOM order
+pass compact landscape: visual order matches DOM (18,108,163,218)
+pass compact landscape: disabled Undo/Redo skipped (next=group-select)
+pass compact landscape: Undo enabled after Clear all
+pass compact landscape: forward Tab All space -> undo,group-select
+pass compact landscape: Shift+Tab returns to Undo
+pass compact landscape: focused Undo visible with focus style
+pass compact landscape: Enter on Undo restores scene (4 -> 4)
+pass compact landscape: Redo enabled, focus retained (redo, undo enabled=false)
+pass compact landscape: keyboard reaches Redo
+pass compact landscape: Space on Redo re-applies Clear all (count 0)
+pass compact landscape: focus retained after last Redo (undo)
+pass compact landscape: Shift+Tab from Undo -> All space
+pass compact landscape: no page errors
+pass desktop: DOM order
+pass desktop: visual order matches DOM (275,336,376,415)
+pass desktop: disabled Undo/Redo skipped (next=group-select)
+pass desktop: Undo enabled after Clear all
+pass desktop: forward Tab All space -> undo,group-select
+pass desktop: Shift+Tab returns to Undo
+pass desktop: focused Undo visible with focus style
+pass desktop: Enter on Undo restores scene (4 -> 4)
+pass desktop: Redo enabled, focus retained (redo, undo enabled=false)
+pass desktop: keyboard reaches Redo
+pass desktop: Space on Redo re-applies Clear all (count 0)
+pass desktop: focus retained after last Redo (undo)
+pass desktop: Shift+Tab from Undo -> All space
+pass desktop: no page errors
+198/198 pass

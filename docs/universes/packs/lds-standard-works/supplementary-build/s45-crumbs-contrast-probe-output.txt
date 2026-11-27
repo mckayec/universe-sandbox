@@ -1,0 +1,17 @@
+1440x900 sun-eater visible=true surface=rgba(8, 6, 5, 0.88) items=3 worst-label-over-white=5.84:1 errors=0
+1440x900 hyperion visible=true surface=rgba(5, 7, 14, 0.88) items=3 worst-label-over-white=5.33:1 errors=0
+1440x900 expanse visible=true surface=rgba(5, 7, 11, 0.88) items=3 worst-label-over-white=5.79:1 errors=0
+1440x900 foundation visible=true surface=rgba(5, 8, 13, 0.88) items=3 worst-label-over-white=5.45:1 errors=0
+1440x900 dune visible=true surface=rgba(10, 7, 4, 0.88) items=3 worst-label-over-white=5.58:1 errors=0
+1440x900 cosmere visible=true surface=rgba(7, 5, 14, 0.88) items=3 worst-label-over-white=5.31:1 errors=0
+1440x900 lds-standard-works visible=true surface=rgba(7, 9, 13, 0.88) items=7 worst-label-over-white=5.51:1 focus=true solid 2px ring 9.81:1 errors=0
+390x844 sun-eater visible=true surface=rgba(8, 6, 5, 0.88) items=3 worst-label-over-white=5.84:1 errors=0
+390x844 hyperion visible=true surface=rgba(5, 7, 14, 0.88) items=3 worst-label-over-white=5.33:1 errors=0
+390x844 expanse visible=true surface=rgba(5, 7, 11, 0.88) items=3 worst-label-over-white=5.79:1 errors=0
+390x844 foundation visible=true surface=rgba(5, 8, 13, 0.88) items=3 worst-label-over-white=5.45:1 errors=0
+390x844 dune visible=true surface=rgba(10, 7, 4, 0.88) items=3 worst-label-over-white=5.58:1 errors=0
+390x844 cosmere visible=true surface=rgba(7, 5, 14, 0.88) items=3 worst-label-over-white=5.31:1 errors=0
+390x844 lds-standard-works visible=true surface=rgba(7, 9, 13, 0.88) items=7 worst-label-over-white=5.51:1 focus=true solid 2px ring 9.81:1 errors=0
+min ratios by kind (both backdrops, all packs, both viewports): {"link":5.31,"sep":3.63,"here":7.85}
+PASS
+exit=0

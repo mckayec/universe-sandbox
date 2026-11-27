@@ -233,7 +233,9 @@ test('TL-R07: relationship connectors are undated brackets outside the time axis
   // every drawable relationship whose two ends are dated, laid out on rows 26px apart in list order
   const rows = new Map(v.dated.map((r: any, i: number) => [r.id, 60 + i * 26]));
   const links = v.drawnEdges.filter((e: any) => rows.has(e.from) && rows.has(e.to));
-  assert.equal(links.length, 9, 'nine connectors have two dated endpoints');
+  // six since main's ABR01 audit marked ch-early-communities, ch-baptist, ch-strang-movement and jud-ananites
+  // undated (was nine at PR45 420c1e7, before integration with main)
+  assert.equal(links.length, 6, 'six connectors have two dated endpoints');
   const jts = links.find((e: any) => e.from === 'n:jud-jts' && e.to === 'n:jud-conservative-masorti');
   assert.ok(jts, 'JTS → Conservative/Masorti is drawable');
   assert.ok(jts.when == null, 'the relationship itself carries no date');
@@ -299,11 +301,11 @@ test('folded-row connectors: expanded lanes match the row-only connectors exactl
     out.links.map((l: any) => l.id),
     rowOnly.map((e: any) => e.id),
   );
-  assert.equal(out.links.length, 9);
+  assert.equal(out.links.length, 6);
   assert.ok(out.links.every((l: any) => !l.fa && !l.fb));
   assert.equal(out.inside, 0);
   // every other sourced relationship has an undated (or missing) end and stays off the chart
-  assert.equal(out.offChart, v.drawnEdges.filter((e: any) => e.from !== e.to).length - 9);
+  assert.equal(out.offChart, v.drawnEdges.filter((e: any) => e.from !== e.to).length - 6);
 });
 
 test('folded-row connectors: collapsing any one lane re-attaches its ends to the summary row, never drops them', () => {
@@ -341,7 +343,14 @@ test('folded-row connectors: collapsing any one lane re-attaches its ends to the
       assert.ok(v.byId.get(e.from).when && v.byId.get(e.to).when, l.id + ' has two dated ends');
     });
   }
-  assert.ok(foldedSeen > 0, 'some connector ran to a collapsed lane');
+  // Since main's ABR01 audit undated the one cross-lane pair (Second Temple > early communities), every real dated
+  // connector joins two rows of one lane, so collapsing folds it inside; cross-lane folding (fa/fb on a summary row)
+  // is exercised by the synthetic fixture test below.
+  const crossLane = baseIds.filter((id: string) => {
+    const e = v.drawnEdges.find((x: any) => x.id === id);
+    return v.byId.get(e.from).lane !== v.byId.get(e.to).lane;
+  }).length;
+  assert.equal(foldedSeen, 2 * crossLane, 'each cross-lane connector ran to a collapsed lane once per end lane');
   assert.ok(foldedSeen + insideSeen >= baseIds.length, 'every connector was exercised against a collapse');
 });
 

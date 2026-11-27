@@ -282,11 +282,15 @@
     landP = new Promise(res => {
       const im = new Image();
       im.onload = () => {
+        // The atlas mask is 4096x2048; the solar bake only needs 2048x1024,
+        // which keeps the Float32 copy (and the worker transfer) at 8 MB.
+        const k = Math.min(1, 2048 / im.width);
         const c = document.createElement('canvas');
-        c.width = im.width;
-        c.height = im.height;
+        c.width = Math.round(im.width * k);
+        c.height = Math.round(im.height * k);
         const g = c.getContext('2d');
-        g.drawImage(im, 0, 0);
+        g.imageSmoothingQuality = 'high';
+        g.drawImage(im, 0, 0, c.width, c.height);
         const d = g.getImageData(0, 0, c.width, c.height).data;
         const a = new Float32Array(c.width * c.height);
         for (let i = 0; i < a.length; i++) a[i] = d[i * 4] / 255;

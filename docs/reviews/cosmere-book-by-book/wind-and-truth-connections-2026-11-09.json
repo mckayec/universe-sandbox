@@ -1,0 +1,1830 @@
+{
+  "schema": "cosmere-connection-research-packet/1",
+  "work": {
+    "ledger_id": "SA07",
+    "title": "Wind and Truth",
+    "author": "Brandon Sanderson",
+    "edition_note": "Supplied ebook: eISBN 9781250319173; copyright 2024; back matter identifies First Tor Trade Paperback Edition, 2026. Visual assets not audited."
+  },
+  "date": "2026-11-09",
+  "implementation_snapshot": {
+    "pr": 37,
+    "head": "2f04e416696f0fe32ab5eca7be5d8b578cd129cd",
+    "pack_blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33"
+  },
+  "scope": "Targeted primary-text checkpoint. Not an exhaustive book or corpus graph. Proposed node IDs are research IDs, not established production IDs.",
+  "gate_policy": "SA07 is the existing audit-ledger identifier, not a newly approved runtime work ID. Map it through D08's accepted interface. These claims are attested in Wind and Truth; this packet does not establish their earliest revelation. Do not copy legacy numeric bucket 12 into a per-work prerequisite. Gate each alias, edge, label, snippet and destination field independently.",
+  "evidence_policy": {
+    "shown": "The inspected text depicts or explicitly identifies the scoped claim; this does not validate unstated implications.",
+    "reported": "A named character, historical memory or estimate supplies the claim; preserve that attribution."
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "work": "SA07",
+      "locator": "Prologue",
+      "scope": "Gavilar meets the projected Lord of Scars and recalls Vasher's anti-Light research.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S02",
+      "work": "SA07",
+      "locator": "Interlude 1: Kalak",
+      "scope": "Felt, animated cloth, Ala and instructions to report to Kelsier.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S03",
+      "work": "SA07",
+      "locator": "Hoid's consultation about the champions' contract",
+      "scope": "Hoid reports asking Frost and consulting Frost's unnamed sister through a bone.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S04",
+      "work": "SA07",
+      "locator": "Urithiru cistern trial",
+      "scope": "Hoid supplies an Ashyn stone; Dalinar and Navani test a Connected historical vision and return tether.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S05",
+      "work": "SA07",
+      "locator": "Szeth's conversation with Nightblood about its makers",
+      "scope": "Vasher/Zahel/Warbreaker, Shashara, Honorblades, Yesteel and Vivenna are discussed.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S06",
+      "work": "SA07",
+      "locator": "Stoneward monastery confrontation",
+      "scope": "Szeth kills Rit and recovers Talmut's Honorblade.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S07",
+      "work": "SA07",
+      "locator": "Sigzil's Narak planning and successive defensive withdrawals",
+      "scope": "Prime, Two, Three and Four; Two contains the Oathgate; Four and Three are expendable outer positions.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S08",
+      "work": "SA07",
+      "locator": "Venli listens to the ancient stones beneath the Shattered Plains",
+      "scope": "Stone-memory account of the lost moon and ancient destruction.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S09",
+      "work": "SA07",
+      "locator": "Interlude 9: Zahel",
+      "scope": "Axindweth holds Zahel in an aluminum-lined room; Aviar, Breaths and memory removal.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S10",
+      "work": "SA07",
+      "locator": "Interlude 11: Dyel",
+      "scope": "Demoux, Galladon and Baon visit Dyel's shop; Cusicesh and the Iriali departure.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S11",
+      "work": "SA07",
+      "locator": "Interlude 13: Lift",
+      "scope": "Lift rescues Zahel and the red bird; Zahel identifies a full Feruchemist and discusses training.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S12",
+      "work": "SA07",
+      "locator": "Interlude 15: Rysn",
+      "scope": "Rysn's chair prototypes, Hoid's disguise, two held Dawnshards, and Sleepless.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S13",
+      "work": "SA07",
+      "locator": "Kaladin's confrontation with Nale",
+      "scope": "Initial duel followed by Syl as flute, the Wind, and the retelling of Derethil and the Wandersail.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S14",
+      "work": "SA07",
+      "locator": "Tanavast's historical account: other Shards and the Heralds' creation",
+      "scope": "Kor, Reason/Euridrius, Invention/Chan Ko Sar, Valor/Medelantorius, and requests for help.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S15",
+      "work": "SA07",
+      "locator": "Shallan revisits her mother's death",
+      "scope": "Chana, Nale's remote instructions, Dreder, Testament and the childhood attack.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S16",
+      "work": "SA07",
+      "locator": "Tanavast's historical account: Mishram's imprisonment and Honor's rejection",
+      "scope": "Melishi's trap, consequences, Honor withdrawing, and a portion of Tanavast preserved in the Stormfather.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S17",
+      "work": "SA07",
+      "locator": "Shinovar climax: Szeth's Fifth Ideal and separation from his highspren",
+      "scope": "Szeth chooses his own law, rejects his spren, and Nale's spren uses the word auxiliary.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S18",
+      "work": "SA07",
+      "locator": "Shinovar climax: Kaladin's Fifth Ideal and Nightblood's Connection",
+      "scope": "The Fifth Ideal precedes the new Oathpact; a tether to Ishar and a costly remote connection through Nightblood.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S19",
+      "work": "SA07",
+      "locator": "Shinovar climax: Nightblood stops feeding",
+      "scope": "Szeth and Kaladin are endangered by the drain, which persists after Szeth drops the sword, before Nightblood relents.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S20",
+      "work": "SA07",
+      "locator": "Urithiru rooftop climax: Honor, renunciation and Retribution",
+      "scope": "Dalinar takes Honor, renounces oaths, loses the power; Odium destroys the Stormfather before absorbing Honor.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S21",
+      "work": "SA07",
+      "locator": "Shinovar climax and Stormfall: the renewed Oathpact",
+      "scope": "Kaladin replaces Jezrien; a new Honor spear; ten Heralds protect spren; minds sheltered while souls go to Braize.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S22",
+      "work": "SA07",
+      "locator": "Stormfall aftermath: Navani, Oathgates and Retribution",
+      "scope": "Urithiru protection, Stormlight withdrawal, Cultivation's flight, and the failed absorption of spren.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S23",
+      "work": "SA07",
+      "locator": "Stormfall aftermath: Dalinar and the Blackthorn",
+      "scope": "Dalinar's soul departs; a separate legend-born entity receives memories and agrees to serve Retribution.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S24",
+      "work": "SA07",
+      "locator": "Hoid's last meeting with Sigzil on Roshar",
+      "scope": "Hoid transfers the Dawnshard; Sigzil is sent into Shadesmar as Retribution attacks Hoid.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S25",
+      "work": "SA07",
+      "locator": "Stormfall aftermath: the listeners",
+      "scope": "A new offered Light and a changed pool under Narak.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S26",
+      "work": "SA07",
+      "locator": "Hoid awakens in Ulaam's care on Scadrial",
+      "scope": "Regrowth from preserved cells, Design left on Roshar, unreliable communications and a claimed Taldain message.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S27",
+      "work": "SA07",
+      "locator": "Stormfall aftermath: Adolin and the Unoathed",
+      "scope": "Recovering deadeyes and Blade/Plate use despite loss of ordinary Stormlight.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S28",
+      "work": "SA07",
+      "locator": "Months-later Shadesmar scenes: Shallan and Sigzil",
+      "scope": "Vanished Cultivation perpendicularity, Haka'alaku, Iriali caravan, Vienta's survival and Szeth's former highspren.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S29",
+      "work": "SA07",
+      "locator": "Months-later Shadesmar scene: Shallan negotiates through Ala",
+      "scope": "Kelsier's time estimates, limited truce, Ala's consent and the request to route Olo to Azimir.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S30",
+      "work": "SA07",
+      "locator": "Retribution's hidden Kharbranth",
+      "scope": "Actual inhabitants live in an artificial Spiritual Realm city with altered memories.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S31",
+      "work": "SA07",
+      "locator": "Epilogue",
+      "scope": "Miss Grimes hires Hoid as a Ladrian coachman; finding Valor is his future intention.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S32",
+      "work": "SA07",
+      "locator": "Postlude to The Stormlight Archive",
+      "scope": "Kalak wakes in a protected vision with the Heralds; Kaladin confirms his new role.",
+      "source_type": "user_supplied_published_text"
+    },
+    {
+      "id": "S33",
+      "work": "SA07",
+      "locator": "Thaylen City debate and Jasnah's subsequent encounter with Taravangian",
+      "scope": "Fen negotiates; the council votes and Fen ratifies; Taravangian discloses a separate contingent assassination plan.",
+      "source_type": "user_supplied_published_text"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "wat-thaidakar-kelsier",
+      "label": "Thaidakar / Kelsier"
+    },
+    {
+      "id": "wat-gavilar",
+      "label": "Gavilar"
+    },
+    {
+      "id": "wat-vasher",
+      "label": "Vasher"
+    },
+    {
+      "id": "wat-felt",
+      "label": "Felt"
+    },
+    {
+      "id": "wat-ghostbloods",
+      "label": "Ghostbloods"
+    },
+    {
+      "id": "wat-kalak",
+      "label": "Kalak"
+    },
+    {
+      "id": "wat-ala",
+      "label": "Ala"
+    },
+    {
+      "id": "wat-kelsier",
+      "label": "Kelsier"
+    },
+    {
+      "id": "wat-shallan",
+      "label": "Shallan"
+    },
+    {
+      "id": "wat-hoid",
+      "label": "Hoid"
+    },
+    {
+      "id": "wat-frost",
+      "label": "Frost"
+    },
+    {
+      "id": "wat-frosts-unnamed-sister",
+      "label": "Frost's unnamed sister"
+    },
+    {
+      "id": "wat-ashyn-stone",
+      "label": "Ashyn stone"
+    },
+    {
+      "id": "wat-zahel",
+      "label": "Zahel"
+    },
+    {
+      "id": "wat-warbreaker-name",
+      "label": "Warbreaker (name)"
+    },
+    {
+      "id": "wat-nightblood",
+      "label": "Nightblood"
+    },
+    {
+      "id": "wat-shashara",
+      "label": "Shashara"
+    },
+    {
+      "id": "wat-honorblades",
+      "label": "Honorblades"
+    },
+    {
+      "id": "wat-vivenna",
+      "label": "Vivenna"
+    },
+    {
+      "id": "wat-yesteel",
+      "label": "Yesteel"
+    },
+    {
+      "id": "wat-szeth",
+      "label": "Szeth"
+    },
+    {
+      "id": "wat-talns-honorblade",
+      "label": "Taln's Honorblade"
+    },
+    {
+      "id": "wat-axindweth",
+      "label": "Axindweth"
+    },
+    {
+      "id": "wat-green-aviar",
+      "label": "green Aviar"
+    },
+    {
+      "id": "wat-feruchemy",
+      "label": "Feruchemy"
+    },
+    {
+      "id": "wat-lift",
+      "label": "Lift"
+    },
+    {
+      "id": "wat-red-bird",
+      "label": "red bird"
+    },
+    {
+      "id": "wat-demoux",
+      "label": "Demoux"
+    },
+    {
+      "id": "wat-dyel",
+      "label": "Dyel"
+    },
+    {
+      "id": "wat-galladon",
+      "label": "Galladon"
+    },
+    {
+      "id": "wat-baon",
+      "label": "Baon"
+    },
+    {
+      "id": "wat-stormlight-sphere",
+      "label": "Stormlight sphere"
+    },
+    {
+      "id": "wat-ym",
+      "label": "Ym"
+    },
+    {
+      "id": "wat-cusicesh",
+      "label": "Cusicesh"
+    },
+    {
+      "id": "wat-iriali",
+      "label": "Iriali"
+    },
+    {
+      "id": "wat-rysn",
+      "label": "Rysn"
+    },
+    {
+      "id": "wat-hoids-dawnshard",
+      "label": "Hoid's Dawnshard"
+    },
+    {
+      "id": "wat-rysns-dawnshard",
+      "label": "Rysn's Dawnshard"
+    },
+    {
+      "id": "wat-sleepless",
+      "label": "Sleepless"
+    },
+    {
+      "id": "wat-kaladin",
+      "label": "Kaladin"
+    },
+    {
+      "id": "wat-derethil-and-the-wandersail",
+      "label": "Derethil and the Wandersail"
+    },
+    {
+      "id": "wat-syl",
+      "label": "Syl"
+    },
+    {
+      "id": "wat-tanavast",
+      "label": "Tanavast"
+    },
+    {
+      "id": "wat-kor-cultivation",
+      "label": "Kor / Cultivation"
+    },
+    {
+      "id": "wat-euridrius",
+      "label": "Euridrius"
+    },
+    {
+      "id": "wat-reason",
+      "label": "Reason"
+    },
+    {
+      "id": "wat-chan-ko-sar",
+      "label": "Chan Ko Sar"
+    },
+    {
+      "id": "wat-invention",
+      "label": "Invention"
+    },
+    {
+      "id": "wat-medelantorius",
+      "label": "Medelantorius"
+    },
+    {
+      "id": "wat-valor",
+      "label": "Valor"
+    },
+    {
+      "id": "wat-other-shards",
+      "label": "other Shards"
+    },
+    {
+      "id": "wat-chana",
+      "label": "Chana"
+    },
+    {
+      "id": "wat-nale",
+      "label": "Nale"
+    },
+    {
+      "id": "wat-testament",
+      "label": "Testament"
+    },
+    {
+      "id": "wat-ba-ado-mishram",
+      "label": "Ba-Ado-Mishram"
+    },
+    {
+      "id": "wat-stormfather",
+      "label": "Stormfather"
+    },
+    {
+      "id": "wat-former-highspren",
+      "label": "former highspren"
+    },
+    {
+      "id": "wat-fifth-ideal",
+      "label": "Fifth Ideal"
+    },
+    {
+      "id": "wat-dalinar",
+      "label": "Dalinar"
+    },
+    {
+      "id": "wat-honor",
+      "label": "Honor"
+    },
+    {
+      "id": "wat-taravangian",
+      "label": "Taravangian"
+    },
+    {
+      "id": "wat-retribution",
+      "label": "Retribution"
+    },
+    {
+      "id": "wat-jezriens-oathpact-position",
+      "label": "Jezrien's Oathpact position"
+    },
+    {
+      "id": "wat-renewed-oathpact",
+      "label": "Renewed Oathpact"
+    },
+    {
+      "id": "wat-spren",
+      "label": "spren"
+    },
+    {
+      "id": "wat-navani-and-the-sibling",
+      "label": "Navani and the Sibling"
+    },
+    {
+      "id": "wat-urithiru",
+      "label": "Urithiru"
+    },
+    {
+      "id": "wat-blackthorn-entity",
+      "label": "Blackthorn entity"
+    },
+    {
+      "id": "wat-sigzil",
+      "label": "Sigzil"
+    },
+    {
+      "id": "wat-listeners",
+      "label": "Listeners"
+    },
+    {
+      "id": "wat-new-light",
+      "label": "new Light"
+    },
+    {
+      "id": "wat-ulaam",
+      "label": "Ulaam"
+    },
+    {
+      "id": "wat-design",
+      "label": "Design"
+    },
+    {
+      "id": "wat-taldain-message",
+      "label": "Taldain message"
+    },
+    {
+      "id": "wat-dragon-meditative-realm",
+      "label": "dragon meditative realm"
+    },
+    {
+      "id": "wat-adolin",
+      "label": "Adolin"
+    },
+    {
+      "id": "wat-maya-and-the-unoathed",
+      "label": "Maya and the Unoathed"
+    },
+    {
+      "id": "wat-cultivation",
+      "label": "Cultivation"
+    },
+    {
+      "id": "wat-horneater-perpendicularity",
+      "label": "Horneater perpendicularity"
+    },
+    {
+      "id": "wat-vienta",
+      "label": "Vienta"
+    },
+    {
+      "id": "wat-szeths-former-highspren",
+      "label": "Szeth's former highspren"
+    },
+    {
+      "id": "wat-roshar-time-dilation",
+      "label": "Roshar time dilation"
+    },
+    {
+      "id": "wat-olo",
+      "label": "Olo"
+    },
+    {
+      "id": "wat-kharbranth-inhabitants",
+      "label": "Kharbranth inhabitants"
+    },
+    {
+      "id": "wat-ladrian-household",
+      "label": "Ladrian household"
+    },
+    {
+      "id": "wat-heralds",
+      "label": "Heralds"
+    },
+    {
+      "id": "wat-protected-mind-vision",
+      "label": "protected mind vision"
+    },
+    {
+      "id": "wat-fen-and-thaylen-council",
+      "label": "Fen and Thaylen Council"
+    },
+    {
+      "id": "wat-odiums-empire",
+      "label": "Odium's empire"
+    }
+  ],
+  "edges": [
+    {
+      "id": "WAT-C001",
+      "from": "wat-thaidakar-kelsier",
+      "to": "wat-gavilar",
+      "relation": "contacts",
+      "occurrence": "remote projection",
+      "evidence": "shown",
+      "sources": [
+        "S01"
+      ],
+      "claim": "Gavilar encounters a luminous projected figure, not a demonstrated physical visitor.",
+      "constraint": "Do not animate a physical Kelsier journey to Roshar.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C002",
+      "from": "wat-vasher",
+      "to": "wat-gavilar",
+      "relation": "research contact",
+      "occurrence": "recollection",
+      "evidence": "reported",
+      "sources": [
+        "S01"
+      ],
+      "claim": "Gavilar recalls Vasher's work on anti-Light.",
+      "constraint": "Separate recalled collaboration from a present-scene appearance.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C003",
+      "from": "wat-felt",
+      "to": "wat-ghostbloods",
+      "relation": "serves",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S02",
+        "S29"
+      ],
+      "claim": "Felt captures Kalak and is later confronted as a Ghostblood.",
+      "constraint": "Source of Felt's Scadrian identity requires the earlier-work bridge audit.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C004",
+      "from": "wat-felt",
+      "to": "wat-kalak",
+      "relation": "captures",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S02"
+      ],
+      "claim": "Animated cloth participates in Kalak's capture.",
+      "constraint": "Animation is observed; Awakening as the specific method is an inference here.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C005",
+      "from": "wat-ala",
+      "to": "wat-kelsier",
+      "relation": "reports to",
+      "occurrence": "remote contact",
+      "evidence": "shown",
+      "sources": [
+        "S02"
+      ],
+      "claim": "Felt instructs Ala to report to Kelsier as well as Iyatil.",
+      "constraint": "Do not collapse all Ghostblood decision makers into one actor.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C006",
+      "from": "wat-ala",
+      "to": "wat-shallan",
+      "relation": "deceives, then accepts employment",
+      "occurrence": "remote contact",
+      "evidence": "shown",
+      "sources": [
+        "S02",
+        "S29"
+      ],
+      "claim": "Ala's earlier apparent captivity conceals her spying; she later consents to work for Shallan.",
+      "constraint": "Employment is consensual and permits continued reports to Kelsier.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C007",
+      "from": "wat-hoid",
+      "to": "wat-frost",
+      "relation": "requests assistance",
+      "occurrence": "reported remote consultation",
+      "evidence": "reported",
+      "sources": [
+        "S03"
+      ],
+      "claim": "Hoid reports that Frost refused to intervene.",
+      "constraint": "A reported conversation is not a physical cameo.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C008",
+      "from": "wat-hoid",
+      "to": "wat-frosts-unnamed-sister",
+      "relation": "consults",
+      "occurrence": "remote consultation",
+      "evidence": "reported",
+      "sources": [
+        "S03"
+      ],
+      "claim": "An unnamed sister of Frost assists with interpreting the contract.",
+      "constraint": "Keep her unnamed; do not infer identity from other female dragons.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C009",
+      "from": "wat-hoid",
+      "to": "wat-ashyn-stone",
+      "relation": "provides vision anchor",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S04"
+      ],
+      "claim": "Hoid supplies an old Ashyn stone to connect a controlled vision to the past.",
+      "constraint": "Does not establish physical time travel or editable history.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C010",
+      "from": "wat-vasher",
+      "to": "wat-zahel",
+      "relation": "same identity",
+      "occurrence": "explicit identification",
+      "evidence": "shown",
+      "sources": [
+        "S05"
+      ],
+      "claim": "Szeth explicitly identifies Zahel as Vasher.",
+      "constraint": "Alias reveal must be field-gated outside the WaT reading state.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C011",
+      "from": "wat-vasher",
+      "to": "wat-warbreaker-name",
+      "relation": "also named",
+      "occurrence": "character testimony",
+      "evidence": "reported",
+      "sources": [
+        "S05"
+      ],
+      "claim": "Nightblood uses Warbreaker as a name for Vasher.",
+      "constraint": "This is an alias claim; link to the book only with separately reviewed bridge metadata.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C012",
+      "from": "wat-nightblood",
+      "to": "wat-shashara",
+      "relation": "maker",
+      "occurrence": "character testimony",
+      "evidence": "reported",
+      "sources": [
+        "S05"
+      ],
+      "claim": "Nightblood attributes its creation to Vasher and Shashara.",
+      "constraint": "Preserve attribution to Nightblood.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C013",
+      "from": "wat-nightblood",
+      "to": "wat-vasher",
+      "relation": "maker",
+      "occurrence": "character testimony",
+      "evidence": "reported",
+      "sources": [
+        "S05"
+      ],
+      "claim": "Nightblood discusses Vasher's part in its creation.",
+      "constraint": "Do not treat Nightblood's imprecise recollection as an exact dated chronology.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C014",
+      "from": "wat-nightblood",
+      "to": "wat-honorblades",
+      "relation": "inspiration",
+      "occurrence": "character testimony",
+      "evidence": "reported",
+      "sources": [
+        "S05"
+      ],
+      "claim": "Nightblood says the makers saw Honorblades and sought to make a comparable weapon.",
+      "constraint": "This is a reported design connection, not proof that Nightblood is an Honorblade.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C015",
+      "from": "wat-nightblood",
+      "to": "wat-vivenna",
+      "relation": "mentions",
+      "occurrence": "reference only",
+      "evidence": "reported",
+      "sources": [
+        "S05"
+      ],
+      "claim": "Vivenna is named in the conversation.",
+      "constraint": "No Azure/Vivenna physical cameo was established by this checkpoint.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C016",
+      "from": "wat-nightblood",
+      "to": "wat-yesteel",
+      "relation": "mentions",
+      "occurrence": "reference only",
+      "evidence": "reported",
+      "sources": [
+        "S05"
+      ],
+      "claim": "Yesteel is referenced in the makers discussion.",
+      "constraint": "No physical appearance or active role established.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C017",
+      "from": "wat-szeth",
+      "to": "wat-talns-honorblade",
+      "relation": "recovers",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S06"
+      ],
+      "claim": "Szeth recovers Talmut's blade from Rit at the Stoneward monastery.",
+      "constraint": "Do not invent the identity of the earlier thief from Szeth's reconstruction.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C018",
+      "from": "wat-axindweth",
+      "to": "wat-zahel",
+      "relation": "imprisons",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S09"
+      ],
+      "claim": "Axindweth confines Zahel, controlling access to clothing and Breaths.",
+      "constraint": "The aluminum room's demonstrated effect is bounded to this scene.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C019",
+      "from": "wat-axindweth",
+      "to": "wat-green-aviar",
+      "relation": "accompanied by",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S09"
+      ],
+      "claim": "A green Aviar accompanies her.",
+      "constraint": "Do not equate it with another named character's bird without evidence.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C020",
+      "from": "wat-axindweth",
+      "to": "wat-feruchemy",
+      "relation": "full practitioner",
+      "occurrence": "character testimony",
+      "evidence": "reported",
+      "sources": [
+        "S09",
+        "S11"
+      ],
+      "claim": "Zahel identifies the opponent rescued-from by Lift as a full Feruchemist.",
+      "constraint": "Attribute the technical identification to Zahel; no invented metalmind inventory.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C021",
+      "from": "wat-lift",
+      "to": "wat-red-bird",
+      "relation": "rescues",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S11"
+      ],
+      "claim": "Lift rescues the caged red bird while freeing Zahel.",
+      "constraint": "Other-book names, prior owner and exact powers remain separate bridge claims.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C022",
+      "from": "wat-lift",
+      "to": "wat-zahel",
+      "relation": "rescues and requests training",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S11"
+      ],
+      "claim": "Lift frees Zahel and asks how to begin training.",
+      "constraint": "Do not mark an entire subsequent training curriculum completed.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C023",
+      "from": "wat-demoux",
+      "to": "wat-dyel",
+      "relation": "visits",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S10"
+      ],
+      "claim": "Demoux appears by name in Dyel's shop in Iri.",
+      "constraint": "Mistborn bridge and earliest reveal require separate per-work mapping.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C024",
+      "from": "wat-galladon",
+      "to": "wat-dyel",
+      "relation": "visits",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S10"
+      ],
+      "claim": "Galladon appears by name with Demoux and Baon.",
+      "constraint": "Do not require reading Elantris merely to show a name given in WaT.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C025",
+      "from": "wat-baon",
+      "to": "wat-dyel",
+      "relation": "visits",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S10"
+      ],
+      "claim": "Baon appears by name; Dyel initially mistakes him for Nale.",
+      "constraint": "Baon and Nale are distinct nodes, never aliases.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C026",
+      "from": "wat-galladon",
+      "to": "wat-stormlight-sphere",
+      "relation": "uses in symbol-making",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S10"
+      ],
+      "claim": "Galladon cracks a Stormlight sphere and forms symbols.",
+      "constraint": "The event does not establish unrestricted interchangeability of all Investiture.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C027",
+      "from": "wat-dyel",
+      "to": "wat-ym",
+      "relation": "granddaughter",
+      "occurrence": "family identification",
+      "evidence": "shown",
+      "sources": [
+        "S10"
+      ],
+      "claim": "The interlude connects Dyel's family and shop to Ym.",
+      "constraint": "Prior-book scene details remain separately gated.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C028",
+      "from": "wat-cusicesh",
+      "to": "wat-iriali",
+      "relation": "opens departure gates",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S10"
+      ],
+      "claim": "Cusicesh facilitates the next stage of the Long Trail.",
+      "constraint": "No final destination world is identified in this scene.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C029",
+      "from": "wat-hoid",
+      "to": "wat-rysn",
+      "relation": "meets while holding Dawnshards",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S12"
+      ],
+      "claim": "Hoid and Rysn both presently hold Dawnshards at their meeting.",
+      "constraint": "Hoid is not merely carrying residual effects in this scene.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C030",
+      "from": "wat-hoids-dawnshard",
+      "to": "wat-rysns-dawnshard",
+      "relation": "dangerous proximity",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S12"
+      ],
+      "claim": "Their proximity creates a dangerous attempted convergence that Hoid halts.",
+      "constraint": "Do not invent damage radii, merger recipes or guaranteed controllability.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C031",
+      "from": "wat-rysn",
+      "to": "wat-sleepless",
+      "relation": "protected and advised by",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S12"
+      ],
+      "claim": "Nikli and Alalhawithador participate in the scene.",
+      "constraint": "Preserve distinct individuals instead of a single all-knowing Sleepless character.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C032",
+      "from": "wat-kaladin",
+      "to": "wat-derethil-and-the-wandersail",
+      "relation": "retells",
+      "occurrence": "story connection",
+      "evidence": "shown",
+      "sources": [
+        "S13"
+      ],
+      "claim": "Kaladin uses the story during his attempt to reach Nale after fighting him.",
+      "constraint": "Prior telling, wording and earlier-work gate require separate comparison.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C033",
+      "from": "wat-syl",
+      "to": "wat-kaladin",
+      "relation": "forms flute",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S13"
+      ],
+      "claim": "Syl takes instrument form during the Nale encounter.",
+      "constraint": "The later Honor spear is a separate object.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C034",
+      "from": "wat-tanavast",
+      "to": "wat-kor-cultivation",
+      "relation": "partners",
+      "occurrence": "historical memory",
+      "evidence": "reported",
+      "sources": [
+        "S14"
+      ],
+      "claim": "Tanavast's account depicts his relationship with Kor.",
+      "constraint": "Keep memory-time separate from the contemporary world state.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C035",
+      "from": "wat-euridrius",
+      "to": "wat-reason",
+      "relation": "Vessel of",
+      "occurrence": "historical testimony",
+      "evidence": "reported",
+      "sources": [
+        "S14"
+      ],
+      "claim": "Tanavast names Euridrius as Reason's holder.",
+      "constraint": "Disappearance in that recollection is not proof of death or current location.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C036",
+      "from": "wat-chan-ko-sar",
+      "to": "wat-invention",
+      "relation": "Vessel of",
+      "occurrence": "historical testimony",
+      "evidence": "reported",
+      "sources": [
+        "S14"
+      ],
+      "claim": "Tanavast names Chan Ko Sar with Invention.",
+      "constraint": "No unsupported homeworld or map coordinates.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C037",
+      "from": "wat-medelantorius",
+      "to": "wat-valor",
+      "relation": "Vessel of",
+      "occurrence": "historical testimony",
+      "evidence": "reported",
+      "sources": [
+        "S14"
+      ],
+      "claim": "Tanavast describes Valor's holder as a great dragon and cannot find her.",
+      "constraint": "His speculation about death is not confirmation.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C038",
+      "from": "wat-tanavast",
+      "to": "wat-other-shards",
+      "relation": "requests aid",
+      "occurrence": "historical testimony",
+      "evidence": "reported",
+      "sources": [
+        "S14"
+      ],
+      "claim": "Tanavast recounts seeking help from Leras, Ati, Edgli, Bavadin and Chan Ko Sar.",
+      "constraint": "Show this as his historical account, not a present alliance.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C039",
+      "from": "wat-chana",
+      "to": "wat-shallan",
+      "relation": "mother",
+      "occurrence": "identity reveal",
+      "evidence": "shown",
+      "sources": [
+        "S15"
+      ],
+      "claim": "Shallan's childhood vision identifies her mother as the Herald Chana.",
+      "constraint": "Chana's belief that Shallan inherited the Oathpact is a delusion, not a magic rule.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C040",
+      "from": "wat-nale",
+      "to": "wat-chana",
+      "relation": "orders killing",
+      "occurrence": "remote contact in memory",
+      "evidence": "shown",
+      "sources": [
+        "S15"
+      ],
+      "claim": "A seon relays Nale's order; Dreder is physically present.",
+      "constraint": "Do not put Nale physically in the Davar household.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C041",
+      "from": "wat-testament",
+      "to": "wat-shallan",
+      "relation": "childhood bond",
+      "occurrence": "memory and testimony",
+      "evidence": "shown",
+      "sources": [
+        "S15"
+      ],
+      "claim": "The scene distinguishes Testament from Pattern and depicts Shallan's childhood bond rupture.",
+      "constraint": "Do not collapse her two spren into one alias.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C042",
+      "from": "wat-tanavast",
+      "to": "wat-ba-ado-mishram",
+      "relation": "betrays peace attempt",
+      "occurrence": "historical testimony",
+      "evidence": "reported",
+      "sources": [
+        "S16"
+      ],
+      "claim": "Tanavast's account links his deception, Melishi's trap and catastrophic consequences.",
+      "constraint": "A limited future shown to Radiants was presented as certain; do not repeat that certainty.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C043",
+      "from": "wat-tanavast",
+      "to": "wat-stormfather",
+      "relation": "partial soul and memories preserved in",
+      "occurrence": "historical testimony",
+      "evidence": "reported",
+      "sources": [
+        "S16"
+      ],
+      "claim": "A portion of Tanavast is preserved in the Stormfather.",
+      "constraint": "The Stormfather is not simply the whole surviving human Tanavast.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C044",
+      "from": "wat-szeth",
+      "to": "wat-former-highspren",
+      "relation": "rejects bond",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S17"
+      ],
+      "claim": "Szeth separates from his highspren after his Fifth Ideal.",
+      "constraint": "Do not portray the later spren conversation with Sigzil as already a completed new bond.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C045",
+      "from": "wat-kaladin",
+      "to": "wat-fifth-ideal",
+      "relation": "swears",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S18"
+      ],
+      "claim": "Kaladin speaks the Fifth Ideal before becoming a Herald.",
+      "constraint": "Keep this event; the later Herald oath does not replace it.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C046",
+      "from": "wat-nightblood",
+      "to": "wat-kaladin",
+      "relation": "draws power through Connection",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S18",
+        "S19"
+      ],
+      "claim": "Nightblood draws remotely on Kaladin while Szeth wields it.",
+      "constraint": "Dropping the sword does not immediately end this exceptional drain.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C047",
+      "from": "wat-nightblood",
+      "to": "wat-szeth",
+      "relation": "enables Lashings in climax",
+      "occurrence": "physical interaction",
+      "evidence": "shown",
+      "sources": [
+        "S18",
+        "S19"
+      ],
+      "claim": "Szeth uses Lashings through the exceptional connection involving Nightblood.",
+      "constraint": "Do not grant every Surge or a cost-free permanent power set.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C048",
+      "from": "wat-dalinar",
+      "to": "wat-honor",
+      "relation": "briefly holds",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S20"
+      ],
+      "claim": "Dalinar takes Honor before renouncing his obligations.",
+      "constraint": "A time-indexed holder record; never replace the entire historical holder list.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C049",
+      "from": "wat-taravangian",
+      "to": "wat-stormfather",
+      "relation": "destroys",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S20"
+      ],
+      "claim": "Odium destroys the Stormfather before taking Honor.",
+      "constraint": "Sequence is important.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C050",
+      "from": "wat-taravangian",
+      "to": "wat-retribution",
+      "relation": "holds combined power",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S20",
+        "S22"
+      ],
+      "claim": "Honor and Odium combine under Taravangian.",
+      "constraint": "Combined state does not imply identical behavior to Harmony.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C051",
+      "from": "wat-kaladin",
+      "to": "wat-jezriens-oathpact-position",
+      "relation": "replaces",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S21",
+        "S32"
+      ],
+      "claim": "Kaladin becomes the replacement Herald in the renewed pact.",
+      "constraint": "Distinct from his Windrunner Fifth Ideal.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C052",
+      "from": "wat-renewed-oathpact",
+      "to": "wat-spren",
+      "relation": "protects",
+      "occurrence": "demonstrated consequence",
+      "evidence": "shown",
+      "sources": [
+        "S21",
+        "S22"
+      ],
+      "claim": "Retribution cannot draw in the protected spren after the renewed oath.",
+      "constraint": "Do not promise all forms of harm or future destruction are impossible.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C053",
+      "from": "wat-navani-and-the-sibling",
+      "to": "wat-urithiru",
+      "relation": "protect with Towerlight",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S22",
+        "S27"
+      ],
+      "claim": "Urithiru is an exception to the general loss of ordinary Stormlight access.",
+      "constraint": "Location-specific state; Navani and the Sibling are incapacitated.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C054",
+      "from": "wat-dalinar",
+      "to": "wat-blackthorn-entity",
+      "relation": "memory donor and model",
+      "occurrence": "distinct-entity connection",
+      "evidence": "shown",
+      "sources": [
+        "S23"
+      ],
+      "claim": "The nascent legend/spren draws on Dalinar's memories but is distinct from his departed soul.",
+      "constraint": "Never label this Dalinar resurrected or Dalinar's soul enslaved.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C055",
+      "from": "wat-blackthorn-entity",
+      "to": "wat-retribution",
+      "relation": "agrees to serve",
+      "occurrence": "physical/metaphysical event",
+      "evidence": "shown",
+      "sources": [
+        "S23"
+      ],
+      "claim": "The separate entity accepts service to Retribution.",
+      "constraint": "Do not make this relationship apply to the Dalinar person node.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C056",
+      "from": "wat-hoid",
+      "to": "wat-sigzil",
+      "relation": "transfers Dawnshard to",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S24"
+      ],
+      "claim": "Hoid entrusts the Dawnshard to Sigzil and sends him into Shadesmar.",
+      "constraint": "Later Nomad identity and mechanics require The Sunlit Man bridge audit.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C057",
+      "from": "wat-listeners",
+      "to": "wat-new-light",
+      "relation": "accept",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S25"
+      ],
+      "claim": "Listeners receive a new offered Light in the changed world.",
+      "constraint": "No universal equivalence to Stormlight or unconditional future supply implied.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C058",
+      "from": "wat-ulaam",
+      "to": "wat-hoid",
+      "relation": "preserves cells for regeneration",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S26"
+      ],
+      "claim": "Hoid regrows from the largest surviving portion, a maintained cell culture on Scadrial.",
+      "constraint": "Not ordinary travel and not a general mechanism available to all characters.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C059",
+      "from": "wat-hoid",
+      "to": "wat-design",
+      "relation": "distant bond after separation",
+      "occurrence": "reported condition",
+      "evidence": "shown",
+      "sources": [
+        "S26"
+      ],
+      "claim": "Design remains on Roshar; Hoid senses his powers but cannot summon her as a Blade at this distance.",
+      "constraint": "Do not say Design left Roshar in this scene.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C060",
+      "from": "wat-ulaam",
+      "to": "wat-taldain-message",
+      "relation": "reports receiving",
+      "occurrence": "character testimony",
+      "evidence": "reported",
+      "sources": [
+        "S26"
+      ],
+      "claim": "Ulaam believes a message comes from Taldain and reports Autonomy moving.",
+      "constraint": "The reported crisis is not a completed future invasion.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C061",
+      "from": "wat-hoid",
+      "to": "wat-dragon-meditative-realm",
+      "relation": "consults ancient dead",
+      "occurrence": "metaphysical contact",
+      "evidence": "shown",
+      "sources": [
+        "S26"
+      ],
+      "claim": "Hoid uses a bone and seeks insight from ancient dead in a dragon meditative realm.",
+      "constraint": "Do not merge this locale with Shadesmar or assert a universal Beyond geography.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C062",
+      "from": "wat-adolin",
+      "to": "wat-maya-and-the-unoathed",
+      "relation": "develops distinct bond",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S27"
+      ],
+      "claim": "Recovering deadeyes and the Unoathed use Blade and Plate after Stormfall.",
+      "constraint": "Not proof all deadeyes recover instantly or all Radiants regain power.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C063",
+      "from": "wat-cultivation",
+      "to": "wat-horneater-perpendicularity",
+      "relation": "departure removes route",
+      "occurrence": "aftermath",
+      "evidence": "shown",
+      "sources": [
+        "S22",
+        "S28"
+      ],
+      "claim": "Cultivation leaves and the familiar perpendicularity is gone.",
+      "constraint": "Keep its pre-Stormfall existence visible in earlier-era views.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C064",
+      "from": "wat-sigzil",
+      "to": "wat-vienta",
+      "relation": "former bond; she survives",
+      "occurrence": "aftermath",
+      "evidence": "reported",
+      "sources": [
+        "S28"
+      ],
+      "claim": "Sigzil learns Vienta recovered but will not reunite with him.",
+      "constraint": "Do not mark Vienta permanently dead.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C065",
+      "from": "wat-sigzil",
+      "to": "wat-szeths-former-highspren",
+      "relation": "meets in caravan",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S28"
+      ],
+      "claim": "The spren confirms it formerly bonded Szeth and rejects its old name.",
+      "constraint": "Auxiliary identity is a bridge hypothesis until The Sunlit Man is directly reconciled.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C066",
+      "from": "wat-kelsier",
+      "to": "wat-shallan",
+      "relation": "agrees limited truce",
+      "occurrence": "remote contact",
+      "evidence": "shown",
+      "sources": [
+        "S29"
+      ],
+      "claim": "Kelsier agrees a personal truce through Ala.",
+      "constraint": "Not blanket peace between every Ghostblood and Lightweaver.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C067",
+      "from": "wat-kelsier",
+      "to": "wat-roshar-time-dilation",
+      "relation": "estimates duration",
+      "occurrence": "character estimate",
+      "evidence": "reported",
+      "sources": [
+        "S29"
+      ],
+      "claim": "He estimates roughly seventy to eighty outside years versus about a decade on Roshar before realignment; rate is changing.",
+      "constraint": "Not an exact constant 8:1 law; uncertainty must remain visible.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C068",
+      "from": "wat-ala",
+      "to": "wat-olo",
+      "relation": "asked to contact",
+      "occurrence": "requested action",
+      "evidence": "shown",
+      "sources": [
+        "S29"
+      ],
+      "claim": "Shallan asks Ala to send Olo to Azimir to restore contact with Adolin.",
+      "constraint": "Request is not confirmed arrival or a completed call.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C069",
+      "from": "wat-retribution",
+      "to": "wat-kharbranth-inhabitants",
+      "relation": "conceals in Spiritual city",
+      "occurrence": "physical/metaphysical event",
+      "evidence": "shown",
+      "sources": [
+        "S30"
+      ],
+      "claim": "Real people survive in a manufactured Spiritual Realm city with edited memories.",
+      "constraint": "Distinguish the destroyed physical city, real people and artificial setting.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C070",
+      "from": "wat-hoid",
+      "to": "wat-ladrian-household",
+      "relation": "hired as coachman",
+      "occurrence": "physical appearance",
+      "evidence": "shown",
+      "sources": [
+        "S31"
+      ],
+      "claim": "Miss Grimes hires Hoid in the epilogue.",
+      "constraint": "Specific cross-novel callbacks and exact Scadrian chronology remain separate checks.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C071",
+      "from": "wat-hoid",
+      "to": "wat-valor",
+      "relation": "intends to seek",
+      "occurrence": "future intention",
+      "evidence": "shown",
+      "sources": [
+        "S31"
+      ],
+      "claim": "Hoid plans to find Valor after addressing Scadrial's crisis.",
+      "constraint": "Do not render a meeting or alliance as already completed.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C072",
+      "from": "wat-heralds",
+      "to": "wat-protected-mind-vision",
+      "relation": "sheltered in",
+      "occurrence": "postlude scene",
+      "evidence": "shown",
+      "sources": [
+        "S32"
+      ],
+      "claim": "The Heralds gather in a protected vision while the new pact operates.",
+      "constraint": "Not a newly mapped physical beach, nor an assurance of permanent safety.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    },
+    {
+      "id": "WAT-C073",
+      "from": "wat-fen-and-thaylen-council",
+      "to": "wat-odiums-empire",
+      "relation": "joins by negotiated agreement",
+      "occurrence": "physical event",
+      "evidence": "shown",
+      "sources": [
+        "S33"
+      ],
+      "claim": "Fen negotiates; the council votes and she ratifies the decision.",
+      "constraint": "Do not attribute the polity's entire constitutional action to Fen alone.",
+      "reveal_work": "SA07",
+      "integration_status": "research_only"
+    }
+  ],
+  "cross_work_bridge_holds": [
+    {
+      "works": [
+        "Mistborn",
+        "The Way of Kings",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Demoux",
+        "Felt",
+        "Kelsier"
+      ],
+      "status": "earlier-work source and field-gate mapping incomplete"
+    },
+    {
+      "works": [
+        "Elantris",
+        "The Way of Kings",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Galladon",
+        "seons"
+      ],
+      "status": "earlier-work source and field-gate mapping incomplete"
+    },
+    {
+      "works": [
+        "White Sand",
+        "The Way of Kings",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Baon"
+      ],
+      "status": "edition-specific source and field-gate mapping incomplete"
+    },
+    {
+      "works": [
+        "Warbreaker",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Vasher / Zahel",
+        "Nightblood",
+        "Shashara",
+        "Vivenna",
+        "Yesteel"
+      ],
+      "status": "WaT references verified; counterpart scenes and earliest reveal gates incomplete"
+    },
+    {
+      "works": [
+        "Dawnshard",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Rysn",
+        "Sleepless"
+      ],
+      "status": "counterpart scenes and earliest reveal gates incomplete"
+    },
+    {
+      "works": [
+        "The Sunlit Man",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Sigzil / Nomad",
+        "Szeth's former highspren / Auxiliary",
+        "Dawnshard"
+      ],
+      "status": "highspren connection is a candidate; do not mark unnamed WaT spren explicitly named Auxiliary by this book"
+    },
+    {
+      "works": [
+        "Tress of the Emerald Sea",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Ulaam",
+        "Hoid"
+      ],
+      "status": "counterpart scenes and earliest reveal gates incomplete"
+    },
+    {
+      "works": [
+        "Mistborn Era Two",
+        "Wind and Truth"
+      ],
+      "entities": [
+        "Ladrian coachman",
+        "Miss Grimes",
+        "Autonomy's crisis"
+      ],
+      "status": "chronology and exact callback scenes incomplete"
+    }
+  ],
+  "supplementary_commentary": {
+    "url": "https://wob.coppermind.net/adv_search/?tags=galladon",
+    "kind": "author remarks transcribed by a third-party archive",
+    "scope": "Sanderson identifies the earlier Purelake visitors as Galladon, Baon and Captain Demoux. This supports a cross-work lead, not the entire proposed graph or exact spoiler mapping."
+  },
+  "coverage": {
+    "source_scenes": 33,
+    "nodes": 89,
+    "relationships": 73,
+    "full_book_semantic_read": false,
+    "illustrations_read": false,
+    "runtime_integration": false
+  }
+}

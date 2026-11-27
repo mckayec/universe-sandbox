@@ -1,0 +1,10 @@
+WORLD_ASCEND_CHARACTERIZATION {"book":1,"event":null,"dossier":"later event and place copy","crumbs":"later place breadcrumb","ascend":1,"refresh":0}
+PASS F1 hidden world: event, landmark and place copy cleared before leave
+PASS F1 hidden site on visible world: same immediate cleanup
+PASS F1 missing current site: same immediate cleanup
+PASS F1 active tour: stop, discard queued travel, clear before leave
+PASS Positive: still-visible place rebuilt and eligible landmark retained
+PASS Positive: still-visible place drops ineligible landmark
+PASS Positive: All books continues visible place branch
+PASS Positive: unrelated click leaves current state unchanged
+{"pass":8,"fail":0,"total":8}

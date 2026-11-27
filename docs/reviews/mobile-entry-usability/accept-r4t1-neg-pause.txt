@@ -1,0 +1,157 @@
+pass  live 1440x900@100%: no horizontal page overflow (1440<=1440)
+pass  live 1440x900@100%: universes-button visible on screen
+pass  live 1440x900@100%: exhibits-button visible on screen
+pass  live 1440x900@100%: fullscreen-button visible on screen
+pass  live 1440x900@100%: count visible on screen
+info  live 1440x900@100%: desktop Pause below panel fold initially (pre-existing on main)
+FAIL  live 1440x900@100%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":96.5,"h":29}
+pass  live 390x844@100%: no horizontal page overflow (390<=390)
+pass  live 390x844@100%: universes-button visible on screen
+pass  live 390x844@100%: exhibits-button visible on screen
+pass  live 390x844@100%: fullscreen-button visible on screen
+pass  live 390x844@100%: count visible on screen
+FAIL  live 390x844@100%: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  live 390x844@100%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  live 390x844@200%: no horizontal page overflow (390<=390)
+pass  live 390x844@200%: universes-button visible on screen
+pass  live 390x844@200%: exhibits-button visible on screen
+pass  live 390x844@200%: fullscreen-button visible on screen
+pass  live 390x844@200%: count visible on screen
+FAIL  live 390x844@200%: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  live 390x844@200%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  live 844x390@200%: no horizontal page overflow (844<=844)
+pass  live 844x390@200%: universes-button visible on screen
+pass  live 844x390@200%: exhibits-button visible on screen
+pass  live 844x390@200%: fullscreen-button visible on screen
+pass  live 844x390@200%: count visible on screen
+FAIL  live 844x390@200%: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  live 844x390@200%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  live 1280x800@200%: no horizontal page overflow (1280<=1280)
+pass  live 1280x800@200%: universes-button visible on screen
+pass  live 1280x800@200%: exhibits-button visible on screen
+pass  live 1280x800@200%: fullscreen-button visible on screen
+pass  live 1280x800@200%: count visible on screen
+info  live 1280x800@200%: desktop Pause below panel fold initially (pre-existing on main)
+FAIL  live 1280x800@200%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":96.5,"h":29}
+pass  live 1280x800@100%: no horizontal page overflow (1280<=1280)
+pass  live 1280x800@100%: universes-button visible on screen
+pass  live 1280x800@100%: exhibits-button visible on screen
+pass  live 1280x800@100%: fullscreen-button visible on screen
+pass  live 1280x800@100%: count visible on screen
+info  live 1280x800@100%: desktop Pause below panel fold initially (pre-existing on main)
+FAIL  live 1280x800@100%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":96.5,"h":29}
+pass  live 320x568@150%: no horizontal page overflow (320<=320)
+pass  live 320x568@150%: universes-button visible on screen
+pass  live 320x568@150%: exhibits-button visible on screen
+pass  live 320x568@150%: fullscreen-button visible on screen
+pass  live 320x568@150%: count visible on screen
+FAIL  live 320x568@150%: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  live 320x568@150%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  live 1440x900@100%: no horizontal page overflow (1440<=1440)
+pass  live 1440x900@100%: universes-button visible on screen
+pass  live 1440x900@100%: exhibits-button visible on screen
+pass  live 1440x900@100%: fullscreen-button visible on screen
+pass  live 1440x900@100%: count visible on screen
+info  live 1440x900@100%: desktop Pause below panel fold initially (pre-existing on main)
+FAIL  live 1440x900@100%: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":96.5,"h":29}
+pass  live resize: no console/page errors
+pass  landscape 844x390: no horizontal page overflow (844<=844)
+pass  landscape 844x390: universes-button visible on screen
+pass  landscape 844x390: exhibits-button visible on screen
+pass  landscape 844x390: fullscreen-button visible on screen
+pass  landscape 844x390: count visible on screen
+FAIL  landscape 844x390: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  landscape 844x390: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  landscape 844x390: tools toggle on screen
+pass  landscape 844x390: toggled tool body fits or scrolls ({"top":280,"bottom":412.59375,"h":390,"scrollable":true,"lastOn":true})
+pass  landscape 844x390: last tool button reachable on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): no horizontal page overflow (390<=390)
+pass  landscape 844x390 rotated to portrait (panel toggled): universes-button visible on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): exhibits-button visible on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): fullscreen-button visible on screen
+pass  landscape 844x390 rotated to portrait (panel toggled): count visible on screen
+FAIL  landscape 844x390 rotated to portrait (panel toggled): Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  landscape 844x390 rotated to portrait (panel toggled): Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  landscape 844x390 rotated back: no horizontal page overflow (844<=844)
+pass  landscape 844x390 rotated back: universes-button visible on screen
+pass  landscape 844x390 rotated back: exhibits-button visible on screen
+pass  landscape 844x390 rotated back: fullscreen-button visible on screen
+pass  landscape 844x390 rotated back: count visible on screen
+FAIL  landscape 844x390 rotated back: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  landscape 844x390 rotated back: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  landscape 844x390: no console/page errors
+pass  landscape 667x375: no horizontal page overflow (667<=667)
+pass  landscape 667x375: universes-button visible on screen
+pass  landscape 667x375: exhibits-button visible on screen
+pass  landscape 667x375: fullscreen-button visible on screen
+pass  landscape 667x375: count visible on screen
+FAIL  landscape 667x375: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  landscape 667x375: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  landscape 667x375: tools toggle on screen
+pass  landscape 667x375: toggled tool body fits or scrolls ({"top":280,"bottom":407.5,"h":375,"scrollable":true,"lastOn":true})
+pass  landscape 667x375: last tool button reachable on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): no horizontal page overflow (375<=375)
+pass  landscape 667x375 rotated to portrait (panel toggled): universes-button visible on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): exhibits-button visible on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): fullscreen-button visible on screen
+pass  landscape 667x375 rotated to portrait (panel toggled): count visible on screen
+FAIL  landscape 667x375 rotated to portrait (panel toggled): Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  landscape 667x375 rotated to portrait (panel toggled): Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  landscape 667x375 rotated back: no horizontal page overflow (667<=667)
+pass  landscape 667x375 rotated back: universes-button visible on screen
+pass  landscape 667x375 rotated back: exhibits-button visible on screen
+pass  landscape 667x375 rotated back: fullscreen-button visible on screen
+pass  landscape 667x375 rotated back: count visible on screen
+FAIL  landscape 667x375 rotated back: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  landscape 667x375 rotated back: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  landscape 667x375: no console/page errors
+pass  landscape 568x320: no horizontal page overflow (568<=568)
+pass  landscape 568x320: universes-button visible on screen
+pass  landscape 568x320: exhibits-button visible on screen
+pass  landscape 568x320: fullscreen-button visible on screen
+pass  landscape 568x320: count visible on screen
+FAIL  landscape 568x320: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":47.59375,"h":44}
+FAIL  landscape 568x320: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":47.59375,"h":44}
+pass  landscape 568x320: tools toggle on screen
+pass  landscape 568x320: toggled tool body fits or scrolls ({"top":280,"bottom":388.796875,"h":320,"scrollable":true,"lastOn":true})
+pass  landscape 568x320: last tool button reachable on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): no horizontal page overflow (320<=320)
+pass  landscape 568x320 rotated to portrait (panel toggled): universes-button visible on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): exhibits-button visible on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): fullscreen-button visible on screen
+pass  landscape 568x320 rotated to portrait (panel toggled): count visible on screen
+FAIL  landscape 568x320 rotated to portrait (panel toggled): Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  landscape 568x320 rotated to portrait (panel toggled): Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  landscape 568x320 rotated back: no horizontal page overflow (568<=568)
+pass  landscape 568x320 rotated back: universes-button visible on screen
+pass  landscape 568x320 rotated back: exhibits-button visible on screen
+pass  landscape 568x320 rotated back: fullscreen-button visible on screen
+pass  landscape 568x320 rotated back: count visible on screen
+FAIL  landscape 568x320 rotated back: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":47.59375,"h":44}
+FAIL  landscape 568x320 rotated back: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":47.59375,"h":44}
+pass  landscape 568x320: no console/page errors
+pass  universe picker open, rotated to 844x390: close button on screen
+pass  universe picker open, rotated to 390x844: close button on screen
+pass  universe picker visible before close ({"hiddenAttr":false,"display":"block","visibility":"visible","h":820,"visible":true})
+pass  universe picker closes after rotation ({"hiddenAttr":true,"display":"none","visibility":"visible","h":0,"visible":false})
+pass  picker rotation: no console/page errors
+pass  reduced motion: media query active
+pass  reduced motion: toolbar transitions near zero (0s)
+pass  reduced motion 390x844: no horizontal page overflow (390<=390)
+pass  reduced motion 390x844: universes-button visible on screen
+pass  reduced motion 390x844: exhibits-button visible on screen
+pass  reduced motion 390x844: fullscreen-button visible on screen
+pass  reduced motion 390x844: count visible on screen
+FAIL  reduced motion 390x844: Pause visible without scrolling (shown, on screen, hit target): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+FAIL  reduced motion 390x844: Pause reachable (shown, on screen, hit target after panel scroll): {"id":"pause","shown":true,"on":false,"hit":false,"w":56.828125,"h":44}
+pass  reduced motion: no console/page errors
+pass  navigate: repeated taps + long press keep object count (4 -> 4)
+pass  navigate long-press: no console/page errors
+pass  no-WebGL precondition: WebGL context unavailable
+pass  no-WebGL: explanatory notice shown on screen
+pass  no-WebGL: notice names WebGL
+info  no-WebGL: ui=true pageerrors=1 ["Error: Error creating WebGL context."]
+info  no-WebGL text: "OBJECTS 0\nMISSION 00:00\nUNIVERSES\nEXHIBITS\nFULLSCREEN\nAll space\nUndo\nRedo\nNamed structures\nSave\nLoad\nRecover\nLife zones: off\nTrails: off\nOverlays: off\nQuality: auto\nModel: exhibit\nEffects: full\nSound:"
+
+116 passed, 32 failed
+exit=1

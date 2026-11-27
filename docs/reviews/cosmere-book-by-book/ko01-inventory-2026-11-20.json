@@ -1,0 +1,3162 @@
+{
+  "date": "2026-11-20",
+  "scope": "KO01 selected actual source records; inventory, not certification",
+  "snapshots": {
+    "24": {
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "pack_blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "worlds": [
+        {
+          "id": "utolsun",
+          "name": "UTol’s sun",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "major": true,
+          "status": "Red-orange star",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.08,
+            28.39,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "blurb": "A large red-orange star, bigger than Roshar’s and comparatively close to its inhabited planets. UTol and Komashi orbit it together as a double planet.",
+          "short": "Red-orange star of UTol and Komashi.",
+          "facts": [
+            [
+              "Planets",
+              "UTol and Komashi (a pair)"
+            ]
+          ],
+          "noSurface": true,
+          "gfx": {
+            "type": "lava",
+            "sea": 0.55,
+            "pal": [
+              "#8a1a10",
+              "#b0301a",
+              "#d04a24",
+              "#e86a30",
+              "#f49050",
+              "#ffc090"
+            ],
+            "lava": "#ffa060",
+            "rough": 0.3,
+            "bump": 0.3,
+            "clouds": 0,
+            "atmo": "#ffa060",
+            "atmoK": 1.2,
+            "amb": 0.9,
+            "sw": "#ffa060"
+          }
+        },
+        {
+          "id": "utol",
+          "name": "UTol",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "status": "Ocean world · Komashi’s twin",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.0999,
+            28.4067,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "blurb": "An ocean world with very few landmasses, home to the Sho Del. From Komashi it shines as a pale blue star, the only light that reached through the shroud.",
+          "short": "Ocean twin of Komashi.",
+          "facts": [
+            [
+              "People",
+              "The Sho Del"
+            ],
+            [
+              "Twin",
+              "Komashi"
+            ]
+          ],
+          "gfx": {
+            "type": "ocean",
+            "sea": 0.88,
+            "pal": [
+              "#0a2a6a",
+              "#2a6ac0",
+              "#6a9a7a",
+              "#7aaa8a",
+              "#9ab09a",
+              "#f0f4f8"
+            ],
+            "clouds": 0.4,
+            "atmo": "#9ac8ff",
+            "sw": "#2a6ac0"
+          }
+        },
+        {
+          "id": "komashi",
+          "name": "Komashi",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "status": "Double world with UTol",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.1082,
+            28.4003,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "hero": "kilahito",
+          "blurb": "Half of a double planet circling a big red-orange sun, with its twin UTol shining blue in the sky. In one age, Yumi stacks stones to honour the spirits that warm the land. In another, a black shroud hides the sky, nightmares come out of it, and Nikaro paints them away for a living. A spirit binds the two of them together. The habitable land around Kilahito and Torio is only a few hundred miles across; on this globe it is drawn about six times larger so it can be seen.",
+          "short": "Stone-stacking and nightmare-painting: Yumi and the Nightmare Painter.",
+          "eras": {
+            "12": {
+              "status": "Shroud lifted"
+            }
+          },
+          "facts": [
+            [
+              "Twin",
+              "UTol"
+            ],
+            [
+              "Spirits",
+              "The hijo"
+            ],
+            [
+              "Shard",
+              "Virtuosity splintered nearby"
+            ],
+            [
+              "Nations",
+              "Torio (ancient), Nagadan"
+            ]
+          ],
+          "gfx": {
+            "type": "desert",
+            "sea": 0.32,
+            "freq": 1.4,
+            "pal": [
+              "#0c1a30",
+              "#2a4a6a",
+              "#7a5a40",
+              "#8a6a48",
+              "#a08060",
+              "#e0d8c8"
+            ],
+            "clouds": 0.1,
+            "atmo": "#ffb880",
+            "atmoK": 0.8,
+            "lights": 0.06,
+            "sw": "#8a6a48",
+            "map": {
+              "rough": 0.5,
+              "mtn": 0.3,
+              "land": [
+                [
+                  [
+                    55.8,
+                    5
+                  ],
+                  [
+                    56.1,
+                    15.1
+                  ],
+                  [
+                    55.9,
+                    26.2
+                  ],
+                  [
+                    48.7,
+                    29.1
+                  ],
+                  [
+                    41.3,
+                    28.6
+                  ],
+                  [
+                    34.6,
+                    26.6
+                  ],
+                  [
+                    31.4,
+                    29.2
+                  ],
+                  [
+                    28,
+                    31.7
+                  ],
+                  [
+                    23.7,
+                    30.3
+                  ],
+                  [
+                    20,
+                    27.6
+                  ],
+                  [
+                    16.4,
+                    30
+                  ],
+                  [
+                    11.1,
+                    35.4
+                  ],
+                  [
+                    4.3,
+                    39.4
+                  ],
+                  [
+                    -1.2,
+                    38.2
+                  ],
+                  [
+                    -5.7,
+                    34.9
+                  ],
+                  [
+                    -7.7,
+                    29.2
+                  ],
+                  [
+                    -5.7,
+                    21.5
+                  ],
+                  [
+                    -11.5,
+                    19.5
+                  ],
+                  [
+                    -15.4,
+                    15.6
+                  ],
+                  [
+                    -13.5,
+                    9.9
+                  ],
+                  [
+                    -8.4,
+                    5
+                  ],
+                  [
+                    -2.5,
+                    1.8
+                  ],
+                  [
+                    -0.7,
+                    -0.9
+                  ],
+                  [
+                    -7.5,
+                    -7.5
+                  ],
+                  [
+                    -7.5,
+                    -12.7
+                  ],
+                  [
+                    -8.1,
+                    -19.6
+                  ],
+                  [
+                    -4.2,
+                    -23.1
+                  ],
+                  [
+                    2.3,
+                    -22.6
+                  ],
+                  [
+                    5.6,
+                    -26.6
+                  ],
+                  [
+                    8.3,
+                    -34.4
+                  ],
+                  [
+                    14.1,
+                    -34.6
+                  ],
+                  [
+                    20,
+                    -27
+                  ],
+                  [
+                    23.6,
+                    -19.4
+                  ],
+                  [
+                    25.9,
+                    -14.7
+                  ],
+                  [
+                    31.3,
+                    -19.1
+                  ],
+                  [
+                    36.3,
+                    -19.8
+                  ],
+                  [
+                    38.4,
+                    -14.7
+                  ],
+                  [
+                    43.8,
+                    -13.4
+                  ],
+                  [
+                    46.3,
+                    -8.1
+                  ],
+                  [
+                    48.2,
+                    -1.9
+                  ]
+                ]
+              ],
+              "water": [
+                [
+                  [
+                    20.12,
+                    3.866
+                  ],
+                  [
+                    20.297,
+                    3.788
+                  ],
+                  [
+                    20.37,
+                    3.6
+                  ],
+                  [
+                    20.297,
+                    3.412
+                  ],
+                  [
+                    20.12,
+                    3.334
+                  ],
+                  [
+                    19.943,
+                    3.412
+                  ],
+                  [
+                    19.87,
+                    3.6
+                  ],
+                  [
+                    19.943,
+                    3.788
+                  ]
+                ]
+              ],
+              "rivers": [
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      20,
+                      0.9
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#4fe6ff"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      22.1,
+                      5.4
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#ff4fd8"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      18.8,
+                      6
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#4fe6ff"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      20.9,
+                      7.2
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#ff4fd8"
+                }
+              ],
+              "regions": [
+                {
+                  "poly": [
+                    [
+                      28,
+                      0.6
+                    ],
+                    [
+                      27.87,
+                      2.17
+                    ],
+                    [
+                      27.49,
+                      3.68
+                    ],
+                    [
+                      26.87,
+                      5.07
+                    ],
+                    [
+                      26.03,
+                      6.31
+                    ],
+                    [
+                      25.01,
+                      7.36
+                    ],
+                    [
+                      23.83,
+                      8.17
+                    ],
+                    [
+                      22.55,
+                      8.74
+                    ],
+                    [
+                      21.19,
+                      9.05
+                    ],
+                    [
+                      19.8,
+                      9.11
+                    ],
+                    [
+                      18.42,
+                      8.91
+                    ],
+                    [
+                      17.1,
+                      8.46
+                    ],
+                    [
+                      15.86,
+                      7.8
+                    ],
+                    [
+                      14.75,
+                      6.93
+                    ],
+                    [
+                      13.8,
+                      5.89
+                    ],
+                    [
+                      13.03,
+                      4.7
+                    ],
+                    [
+                      12.46,
+                      3.39
+                    ],
+                    [
+                      12.12,
+                      2.02
+                    ],
+                    [
+                      12,
+                      0.6
+                    ],
+                    [
+                      12.12,
+                      -0.82
+                    ],
+                    [
+                      12.46,
+                      -2.19
+                    ],
+                    [
+                      13.03,
+                      -3.5
+                    ],
+                    [
+                      13.8,
+                      -4.69
+                    ],
+                    [
+                      14.75,
+                      -5.73
+                    ],
+                    [
+                      15.86,
+                      -6.6
+                    ],
+                    [
+                      17.1,
+                      -7.26
+                    ],
+                    [
+                      18.42,
+                      -7.71
+                    ],
+                    [
+                      19.8,
+                      -7.91
+                    ],
+                    [
+                      21.19,
+                      -7.85
+                    ],
+                    [
+                      22.55,
+                      -7.54
+                    ],
+                    [
+                      23.83,
+                      -6.97
+                    ],
+                    [
+                      25.01,
+                      -6.16
+                    ],
+                    [
+                      26.03,
+                      -5.11
+                    ],
+                    [
+                      26.87,
+                      -3.87
+                    ],
+                    [
+                      27.49,
+                      -2.48
+                    ],
+                    [
+                      27.87,
+                      -0.97
+                    ]
+                  ],
+                  "c": "#9a8a6a",
+                  "s": 0.9
+                },
+                {
+                  "poly": [
+                    [
+                      25.4,
+                      0.6
+                    ],
+                    [
+                      25.29,
+                      1.76
+                    ],
+                    [
+                      24.97,
+                      2.88
+                    ],
+                    [
+                      24.46,
+                      3.89
+                    ],
+                    [
+                      23.77,
+                      4.77
+                    ],
+                    [
+                      22.93,
+                      5.47
+                    ],
+                    [
+                      21.98,
+                      5.98
+                    ],
+                    [
+                      20.96,
+                      6.27
+                    ],
+                    [
+                      19.91,
+                      6.34
+                    ],
+                    [
+                      18.86,
+                      6.2
+                    ],
+                    [
+                      17.86,
+                      5.84
+                    ],
+                    [
+                      16.94,
+                      5.29
+                    ],
+                    [
+                      16.14,
+                      4.57
+                    ],
+                    [
+                      15.48,
+                      3.71
+                    ],
+                    [
+                      15,
+                      2.74
+                    ],
+                    [
+                      14.7,
+                      1.69
+                    ],
+                    [
+                      14.6,
+                      0.6
+                    ],
+                    [
+                      14.7,
+                      -0.49
+                    ],
+                    [
+                      15,
+                      -1.54
+                    ],
+                    [
+                      15.48,
+                      -2.51
+                    ],
+                    [
+                      16.14,
+                      -3.37
+                    ],
+                    [
+                      16.94,
+                      -4.09
+                    ],
+                    [
+                      17.86,
+                      -4.64
+                    ],
+                    [
+                      18.86,
+                      -5
+                    ],
+                    [
+                      19.91,
+                      -5.14
+                    ],
+                    [
+                      20.96,
+                      -5.07
+                    ],
+                    [
+                      21.98,
+                      -4.78
+                    ],
+                    [
+                      22.93,
+                      -4.27
+                    ],
+                    [
+                      23.77,
+                      -3.57
+                    ],
+                    [
+                      24.46,
+                      -2.69
+                    ],
+                    [
+                      24.97,
+                      -1.68
+                    ],
+                    [
+                      25.29,
+                      -0.56
+                    ]
+                  ],
+                  "c": "#8a4a2a",
+                  "s": 0.95
+                },
+                {
+                  "poly": [
+                    [
+                      22.1,
+                      0.6
+                    ],
+                    [
+                      22.03,
+                      1.19
+                    ],
+                    [
+                      21.82,
+                      1.73
+                    ],
+                    [
+                      21.48,
+                      2.2
+                    ],
+                    [
+                      21.04,
+                      2.55
+                    ],
+                    [
+                      20.53,
+                      2.77
+                    ],
+                    [
+                      19.99,
+                      2.83
+                    ],
+                    [
+                      19.44,
+                      2.75
+                    ],
+                    [
+                      18.94,
+                      2.52
+                    ],
+                    [
+                      18.51,
+                      2.17
+                    ],
+                    [
+                      18.18,
+                      1.7
+                    ],
+                    [
+                      17.97,
+                      1.17
+                    ],
+                    [
+                      17.9,
+                      0.6
+                    ],
+                    [
+                      17.97,
+                      0.03
+                    ],
+                    [
+                      18.18,
+                      -0.5
+                    ],
+                    [
+                      18.51,
+                      -0.97
+                    ],
+                    [
+                      18.94,
+                      -1.32
+                    ],
+                    [
+                      19.44,
+                      -1.55
+                    ],
+                    [
+                      19.99,
+                      -1.63
+                    ],
+                    [
+                      20.53,
+                      -1.57
+                    ],
+                    [
+                      21.04,
+                      -1.35
+                    ],
+                    [
+                      21.48,
+                      -1
+                    ],
+                    [
+                      21.82,
+                      -0.53
+                    ],
+                    [
+                      22.03,
+                      0.01
+                    ]
+                  ],
+                  "c": "#6f8f4a",
+                  "s": 1
+                }
+              ]
+            },
+            "feat": []
+          },
+          "sites": [
+            {
+              "id": "kilahito",
+              "name": "Kilahito",
+              "lat": 20,
+              "lon": 3.3,
+              "books": [
+                11
+              ],
+              "desc": "A round city in Nagadan laid out in rings and wedges beside a lake, built around a hion line, with the shroud on its west side. Nikaro paints nightmares here."
+            },
+            {
+              "id": "torio",
+              "name": "Torio City",
+              "lat": 20,
+              "lon": 0.9,
+              "books": [
+                11
+              ],
+              "desc": "The ruined capital of old Torio, west of Kilahito, with red roofs, fountains and dragon statues. The machine that made the shroud was switched on here."
+            },
+            {
+              "id": "steamwells",
+              "name": "The steamwell basin",
+              "lat": 19.1,
+              "lon": 1.5,
+              "books": [
+                11
+              ],
+              "desc": "Warm, humid springs where Yumi’s people lived, heated by the hijo under the ground, with gardens floating in the rising air. Beyond them lie the searing barrens and then the cold wastes."
+            },
+            {
+              "id": "futinoro",
+              "name": "Futinoro",
+              "lat": 22.1,
+              "lon": 5.4,
+              "books": [
+                11
+              ],
+              "desc": "A Nagadan city destroyed by nightmares decades before the story."
+            },
+            {
+              "id": "jito",
+              "name": "Jito",
+              "lat": 20.9,
+              "lon": 7.2,
+              "books": [
+                11
+              ],
+              "desc": "A Nagadan city; placed on the coast as a guess."
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e51",
+          "book": 11,
+          "world": "komashi",
+          "site": "kilahito",
+          "title": "Yumi and Nikaro",
+          "text": "A stone-stacker and a nightmare painter are bound together across time and must work out why."
+        },
+        {
+          "id": "e52",
+          "book": 11,
+          "world": "komashi",
+          "site": "torio",
+          "title": "The shroud lifts",
+          "text": "They destroy the machine behind the shroud, and the sun shines on Komashi again."
+        }
+      ],
+      "codex": [
+        {
+          "path": "codex[0].list[11]",
+          "record": {
+            "name": "Virtuosity",
+            "first": 11,
+            "desc": "A Shard who splintered herself near Komashi."
+          }
+        },
+        {
+          "path": "codex[1].list[0]",
+          "record": {
+            "name": "Hoid (Wit)",
+            "role": "Worldhopper",
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              8,
+              9,
+              11,
+              12
+            ],
+            "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+            "more": [
+              [
+                7,
+                "He was on Yolen at the Shattering."
+              ],
+              [
+                11,
+                "Narrates Tress’s story."
+              ],
+              [
+                12,
+                "Goes to Scadrial for help after Roshar falls."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex[1].list[17]",
+          "record": {
+            "name": "Yumi and Nikaro",
+            "role": "Komashi",
+            "books": [
+              11
+            ],
+            "desc": "A spirit-honouring stone-stacker and a nightmare painter."
+          }
+        },
+        {
+          "path": "codex[2].list[2]",
+          "record": {
+            "name": "Worldhoppers",
+            "first": 3,
+            "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+            "more": [
+              [
+                7,
+                "Silverlight is their crossroads, and its codes set rules for visitors."
+              ],
+              [
+                11,
+                "By the 2023 books there are starships as well."
+              ]
+            ]
+          }
+        }
+      ],
+      "links": [],
+      "counts": {
+        "selected_worlds": 3,
+        "total_worlds": 60,
+        "sites": 5,
+        "landmarks": 0,
+        "events": 2,
+        "codex": 4,
+        "links": 0
+      }
+    },
+    "37": {
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "pack_blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "worlds": [
+        {
+          "id": "utolsun",
+          "name": "UTol’s sun",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "major": true,
+          "status": "Red-orange star",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.08,
+            28.39,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "blurb": "A large red-orange star, bigger than Roshar’s and comparatively close to its inhabited planets. UTol and Komashi orbit it together as a double planet.",
+          "short": "Red-orange star of UTol and Komashi.",
+          "facts": [
+            [
+              "Planets",
+              "UTol and Komashi (a pair)"
+            ]
+          ],
+          "noSurface": true,
+          "gfx": {
+            "type": "lava",
+            "sea": 0.55,
+            "pal": [
+              "#8a1a10",
+              "#b0301a",
+              "#d04a24",
+              "#e86a30",
+              "#f49050",
+              "#ffc090"
+            ],
+            "lava": "#ffa060",
+            "rough": 0.3,
+            "bump": 0.3,
+            "clouds": 0,
+            "atmo": "#ffa060",
+            "atmoK": 1.2,
+            "amb": 0.9,
+            "sw": "#ffa060"
+          }
+        },
+        {
+          "id": "utol",
+          "name": "UTol",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "status": "Ocean world · Komashi’s twin",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.0999,
+            28.4067,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "blurb": "An ocean world with very few landmasses, home to the Sho Del. From Komashi it shines as a pale blue star, the only light that reached through the shroud.",
+          "short": "Ocean twin of Komashi.",
+          "facts": [
+            [
+              "People",
+              "The Sho Del"
+            ],
+            [
+              "Twin",
+              "Komashi"
+            ]
+          ],
+          "gfx": {
+            "type": "ocean",
+            "sea": 0.88,
+            "pal": [
+              "#0a2a6a",
+              "#2a6ac0",
+              "#6a9a7a",
+              "#7aaa8a",
+              "#9ab09a",
+              "#f0f4f8"
+            ],
+            "clouds": 0.4,
+            "atmo": "#9ac8ff",
+            "sw": "#2a6ac0"
+          }
+        },
+        {
+          "id": "komashi",
+          "name": "Komashi",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "status": "Double world with UTol",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.1082,
+            28.4003,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "hero": "kilahito",
+          "blurb": "Half of a double planet circling a big red-orange sun, with its twin UTol shining blue in the sky. In one age, Yumi stacks stones to honour the spirits that warm the land. In another, a black shroud hides the sky, nightmares come out of it, and Nikaro paints them away for a living. A spirit binds the two of them together. The habitable land around Kilahito and Torio is only a few hundred miles across; on this globe it is drawn about six times larger so it can be seen.",
+          "short": "Stone-stacking and nightmare-painting: Yumi and the Nightmare Painter.",
+          "eras": {
+            "12": {
+              "status": "Shroud lifted"
+            }
+          },
+          "facts": [
+            [
+              "Twin",
+              "UTol"
+            ],
+            [
+              "Spirits",
+              "The hijo"
+            ],
+            [
+              "Shard",
+              "Virtuosity splintered nearby"
+            ],
+            [
+              "Nations",
+              "Torio (ancient), Nagadan"
+            ]
+          ],
+          "gfx": {
+            "type": "desert",
+            "sea": 0.32,
+            "freq": 1.4,
+            "pal": [
+              "#0c1a30",
+              "#2a4a6a",
+              "#7a5a40",
+              "#8a6a48",
+              "#a08060",
+              "#e0d8c8"
+            ],
+            "clouds": 0.1,
+            "atmo": "#ffb880",
+            "atmoK": 0.8,
+            "lights": 0.06,
+            "sw": "#8a6a48",
+            "map": {
+              "rough": 0.5,
+              "mtn": 0.3,
+              "land": [
+                [
+                  [
+                    55.8,
+                    5
+                  ],
+                  [
+                    56.1,
+                    15.1
+                  ],
+                  [
+                    55.9,
+                    26.2
+                  ],
+                  [
+                    48.7,
+                    29.1
+                  ],
+                  [
+                    41.3,
+                    28.6
+                  ],
+                  [
+                    34.6,
+                    26.6
+                  ],
+                  [
+                    31.4,
+                    29.2
+                  ],
+                  [
+                    28,
+                    31.7
+                  ],
+                  [
+                    23.7,
+                    30.3
+                  ],
+                  [
+                    20,
+                    27.6
+                  ],
+                  [
+                    16.4,
+                    30
+                  ],
+                  [
+                    11.1,
+                    35.4
+                  ],
+                  [
+                    4.3,
+                    39.4
+                  ],
+                  [
+                    -1.2,
+                    38.2
+                  ],
+                  [
+                    -5.7,
+                    34.9
+                  ],
+                  [
+                    -7.7,
+                    29.2
+                  ],
+                  [
+                    -5.7,
+                    21.5
+                  ],
+                  [
+                    -11.5,
+                    19.5
+                  ],
+                  [
+                    -15.4,
+                    15.6
+                  ],
+                  [
+                    -13.5,
+                    9.9
+                  ],
+                  [
+                    -8.4,
+                    5
+                  ],
+                  [
+                    -2.5,
+                    1.8
+                  ],
+                  [
+                    -0.7,
+                    -0.9
+                  ],
+                  [
+                    -7.5,
+                    -7.5
+                  ],
+                  [
+                    -7.5,
+                    -12.7
+                  ],
+                  [
+                    -8.1,
+                    -19.6
+                  ],
+                  [
+                    -4.2,
+                    -23.1
+                  ],
+                  [
+                    2.3,
+                    -22.6
+                  ],
+                  [
+                    5.6,
+                    -26.6
+                  ],
+                  [
+                    8.3,
+                    -34.4
+                  ],
+                  [
+                    14.1,
+                    -34.6
+                  ],
+                  [
+                    20,
+                    -27
+                  ],
+                  [
+                    23.6,
+                    -19.4
+                  ],
+                  [
+                    25.9,
+                    -14.7
+                  ],
+                  [
+                    31.3,
+                    -19.1
+                  ],
+                  [
+                    36.3,
+                    -19.8
+                  ],
+                  [
+                    38.4,
+                    -14.7
+                  ],
+                  [
+                    43.8,
+                    -13.4
+                  ],
+                  [
+                    46.3,
+                    -8.1
+                  ],
+                  [
+                    48.2,
+                    -1.9
+                  ]
+                ]
+              ],
+              "water": [
+                [
+                  [
+                    20.12,
+                    3.866
+                  ],
+                  [
+                    20.297,
+                    3.788
+                  ],
+                  [
+                    20.37,
+                    3.6
+                  ],
+                  [
+                    20.297,
+                    3.412
+                  ],
+                  [
+                    20.12,
+                    3.334
+                  ],
+                  [
+                    19.943,
+                    3.412
+                  ],
+                  [
+                    19.87,
+                    3.6
+                  ],
+                  [
+                    19.943,
+                    3.788
+                  ]
+                ]
+              ],
+              "rivers": [
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      20,
+                      0.9
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#4fe6ff"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      22.1,
+                      5.4
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#ff4fd8"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      18.8,
+                      6
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#4fe6ff"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      20.9,
+                      7.2
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#ff4fd8"
+                }
+              ],
+              "regions": [
+                {
+                  "poly": [
+                    [
+                      28,
+                      0.6
+                    ],
+                    [
+                      27.87,
+                      2.17
+                    ],
+                    [
+                      27.49,
+                      3.68
+                    ],
+                    [
+                      26.87,
+                      5.07
+                    ],
+                    [
+                      26.03,
+                      6.31
+                    ],
+                    [
+                      25.01,
+                      7.36
+                    ],
+                    [
+                      23.83,
+                      8.17
+                    ],
+                    [
+                      22.55,
+                      8.74
+                    ],
+                    [
+                      21.19,
+                      9.05
+                    ],
+                    [
+                      19.8,
+                      9.11
+                    ],
+                    [
+                      18.42,
+                      8.91
+                    ],
+                    [
+                      17.1,
+                      8.46
+                    ],
+                    [
+                      15.86,
+                      7.8
+                    ],
+                    [
+                      14.75,
+                      6.93
+                    ],
+                    [
+                      13.8,
+                      5.89
+                    ],
+                    [
+                      13.03,
+                      4.7
+                    ],
+                    [
+                      12.46,
+                      3.39
+                    ],
+                    [
+                      12.12,
+                      2.02
+                    ],
+                    [
+                      12,
+                      0.6
+                    ],
+                    [
+                      12.12,
+                      -0.82
+                    ],
+                    [
+                      12.46,
+                      -2.19
+                    ],
+                    [
+                      13.03,
+                      -3.5
+                    ],
+                    [
+                      13.8,
+                      -4.69
+                    ],
+                    [
+                      14.75,
+                      -5.73
+                    ],
+                    [
+                      15.86,
+                      -6.6
+                    ],
+                    [
+                      17.1,
+                      -7.26
+                    ],
+                    [
+                      18.42,
+                      -7.71
+                    ],
+                    [
+                      19.8,
+                      -7.91
+                    ],
+                    [
+                      21.19,
+                      -7.85
+                    ],
+                    [
+                      22.55,
+                      -7.54
+                    ],
+                    [
+                      23.83,
+                      -6.97
+                    ],
+                    [
+                      25.01,
+                      -6.16
+                    ],
+                    [
+                      26.03,
+                      -5.11
+                    ],
+                    [
+                      26.87,
+                      -3.87
+                    ],
+                    [
+                      27.49,
+                      -2.48
+                    ],
+                    [
+                      27.87,
+                      -0.97
+                    ]
+                  ],
+                  "c": "#9a8a6a",
+                  "s": 0.9
+                },
+                {
+                  "poly": [
+                    [
+                      25.4,
+                      0.6
+                    ],
+                    [
+                      25.29,
+                      1.76
+                    ],
+                    [
+                      24.97,
+                      2.88
+                    ],
+                    [
+                      24.46,
+                      3.89
+                    ],
+                    [
+                      23.77,
+                      4.77
+                    ],
+                    [
+                      22.93,
+                      5.47
+                    ],
+                    [
+                      21.98,
+                      5.98
+                    ],
+                    [
+                      20.96,
+                      6.27
+                    ],
+                    [
+                      19.91,
+                      6.34
+                    ],
+                    [
+                      18.86,
+                      6.2
+                    ],
+                    [
+                      17.86,
+                      5.84
+                    ],
+                    [
+                      16.94,
+                      5.29
+                    ],
+                    [
+                      16.14,
+                      4.57
+                    ],
+                    [
+                      15.48,
+                      3.71
+                    ],
+                    [
+                      15,
+                      2.74
+                    ],
+                    [
+                      14.7,
+                      1.69
+                    ],
+                    [
+                      14.6,
+                      0.6
+                    ],
+                    [
+                      14.7,
+                      -0.49
+                    ],
+                    [
+                      15,
+                      -1.54
+                    ],
+                    [
+                      15.48,
+                      -2.51
+                    ],
+                    [
+                      16.14,
+                      -3.37
+                    ],
+                    [
+                      16.94,
+                      -4.09
+                    ],
+                    [
+                      17.86,
+                      -4.64
+                    ],
+                    [
+                      18.86,
+                      -5
+                    ],
+                    [
+                      19.91,
+                      -5.14
+                    ],
+                    [
+                      20.96,
+                      -5.07
+                    ],
+                    [
+                      21.98,
+                      -4.78
+                    ],
+                    [
+                      22.93,
+                      -4.27
+                    ],
+                    [
+                      23.77,
+                      -3.57
+                    ],
+                    [
+                      24.46,
+                      -2.69
+                    ],
+                    [
+                      24.97,
+                      -1.68
+                    ],
+                    [
+                      25.29,
+                      -0.56
+                    ]
+                  ],
+                  "c": "#8a4a2a",
+                  "s": 0.95
+                },
+                {
+                  "poly": [
+                    [
+                      22.1,
+                      0.6
+                    ],
+                    [
+                      22.03,
+                      1.19
+                    ],
+                    [
+                      21.82,
+                      1.73
+                    ],
+                    [
+                      21.48,
+                      2.2
+                    ],
+                    [
+                      21.04,
+                      2.55
+                    ],
+                    [
+                      20.53,
+                      2.77
+                    ],
+                    [
+                      19.99,
+                      2.83
+                    ],
+                    [
+                      19.44,
+                      2.75
+                    ],
+                    [
+                      18.94,
+                      2.52
+                    ],
+                    [
+                      18.51,
+                      2.17
+                    ],
+                    [
+                      18.18,
+                      1.7
+                    ],
+                    [
+                      17.97,
+                      1.17
+                    ],
+                    [
+                      17.9,
+                      0.6
+                    ],
+                    [
+                      17.97,
+                      0.03
+                    ],
+                    [
+                      18.18,
+                      -0.5
+                    ],
+                    [
+                      18.51,
+                      -0.97
+                    ],
+                    [
+                      18.94,
+                      -1.32
+                    ],
+                    [
+                      19.44,
+                      -1.55
+                    ],
+                    [
+                      19.99,
+                      -1.63
+                    ],
+                    [
+                      20.53,
+                      -1.57
+                    ],
+                    [
+                      21.04,
+                      -1.35
+                    ],
+                    [
+                      21.48,
+                      -1
+                    ],
+                    [
+                      21.82,
+                      -0.53
+                    ],
+                    [
+                      22.03,
+                      0.01
+                    ]
+                  ],
+                  "c": "#6f8f4a",
+                  "s": 1
+                }
+              ]
+            },
+            "feat": []
+          },
+          "sites": [
+            {
+              "id": "kilahito",
+              "name": "Kilahito",
+              "lat": 20,
+              "lon": 3.3,
+              "books": [
+                11
+              ],
+              "desc": "A round city in Nagadan laid out in rings and wedges beside a lake, built around a hion line, with the shroud on its west side. Nikaro paints nightmares here.",
+              "scene": {
+                "kind": "city",
+                "arch": "eastern",
+                "size": "large",
+                "tod": "night",
+                "weather": "clear",
+                "landmarks": [
+                  {
+                    "id": "shroud",
+                    "name": "The shroud’s edge",
+                    "kind": "wall",
+                    "at": [
+                      -0.85,
+                      0
+                    ],
+                    "h": 1.8,
+                    "books": [
+                      11
+                    ],
+                    "desc": "The black shroud along the city’s west side. Painters patrol it at night and paint away the nightmares that come out; at the end Nikaro gathers thirty-seven painters here against an army of them."
+                  },
+                  {
+                    "id": "noodle",
+                    "name": "The Noodle Pupil",
+                    "kind": "market",
+                    "at": [
+                      0.2,
+                      0.1
+                    ],
+                    "h": 0.5,
+                    "books": [
+                      11
+                    ],
+                    "desc": "Design’s noodle stand, where Nikaro’s friends gather. Later it becomes the Noodle Princess."
+                  },
+                  {
+                    "id": "hion",
+                    "name": "The hion lines",
+                    "kind": "mast",
+                    "at": [
+                      0,
+                      0.5
+                    ],
+                    "books": [
+                      11
+                    ],
+                    "desc": "Glowing lines of power that run through the city and light it."
+                  },
+                  {
+                    "id": "carnival",
+                    "name": "The carnival",
+                    "kind": "arch",
+                    "at": [
+                      0.55,
+                      -0.4
+                    ],
+                    "books": [
+                      11
+                    ],
+                    "desc": "Yumi and Nikaro ride the Jotun Line here."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "torio",
+              "name": "Torio City",
+              "lat": 20,
+              "lon": 0.9,
+              "books": [
+                11
+              ],
+              "desc": "The ruined capital of old Torio, west of Kilahito, with red roofs, fountains and dragon statues. The machine that made the shroud was switched on here.",
+              "scene": {
+                "kind": "ruins",
+                "arch": "eastern",
+                "size": "medium",
+                "tod": "day",
+                "weather": "clear",
+                "landmarks": [
+                  {
+                    "id": "machine",
+                    "name": "The father machine",
+                    "kind": "factory",
+                    "at": [
+                      0,
+                      0.2
+                    ],
+                    "h": 1.4,
+                    "books": [
+                      11
+                    ],
+                    "desc": "In Torio City’s grand exhibit hall: the machine switched on at a Festival of Reveals long ago, which consumed the Torish people and made the shroud. Yumi stacks hundreds of stone towers to draw the spirits away until it stops."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "steamwells",
+              "name": "The steamwell basin",
+              "lat": 19.1,
+              "lon": 1.5,
+              "books": [
+                11
+              ],
+              "desc": "Warm, humid springs where Yumi’s people lived, heated by the hijo under the ground, with gardens floating in the rising air. Beyond them lie the searing barrens and then the cold wastes.",
+              "scene": {
+                "kind": "village",
+                "arch": "eastern",
+                "size": "small",
+                "tod": "day",
+                "weather": "mist",
+                "landmarks": [
+                  {
+                    "id": "ritual",
+                    "name": "The place of ritual",
+                    "kind": "stones",
+                    "at": [
+                      0,
+                      0
+                    ],
+                    "books": [
+                      11
+                    ],
+                    "desc": "Where Yumi stacks stones to draw the hijo, once calling a record thirty-seven at a time."
+                  },
+                  {
+                    "id": "shrine",
+                    "name": "The orchard shrine",
+                    "kind": "shrine",
+                    "at": [
+                      0.5,
+                      0.4
+                    ],
+                    "books": [
+                      11
+                    ],
+                    "desc": "The village shrine where Yumi prays each day before her stacking."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "futinoro",
+              "name": "Futinoro",
+              "lat": 22.1,
+              "lon": 5.4,
+              "books": [
+                11
+              ],
+              "desc": "A Nagadan city destroyed by nightmares decades before the story.",
+              "scene": {
+                "kind": "ruins",
+                "arch": "eastern",
+                "size": "medium",
+                "tod": "night",
+                "weather": "clear"
+              }
+            },
+            {
+              "id": "jito",
+              "name": "Jito",
+              "lat": 20.9,
+              "lon": 7.2,
+              "books": [
+                11
+              ],
+              "desc": "A Nagadan city; placed on the coast as a guess.",
+              "scene": {
+                "kind": "city",
+                "arch": "eastern",
+                "size": "medium",
+                "tod": "night",
+                "weather": "clear",
+                "coast": "e"
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e114",
+          "book": 11,
+          "world": "komashi",
+          "site": "steamwells",
+          "lm": "ritual",
+          "title": "The yoki-hijo",
+          "text": "Yumi spends her days in ritual, stacking stones to call the spirits that warm her people’s land."
+        },
+        {
+          "id": "e51",
+          "book": 11,
+          "world": "komashi",
+          "site": "kilahito",
+          "lm": "noodle",
+          "title": "Yumi and Nikaro",
+          "text": "A stone-stacker and a nightmare painter are bound together across time and must work out why."
+        },
+        {
+          "id": "e115",
+          "book": 11,
+          "world": "komashi",
+          "site": "kilahito",
+          "lm": "shroud",
+          "fx": "battle",
+          "title": "The painters’ stand",
+          "text": "Nikaro gathers painters at the edge of the shroud against an army of nightmares, and paints them back into people."
+        },
+        {
+          "id": "e52",
+          "book": 11,
+          "world": "komashi",
+          "site": "torio",
+          "lm": "machine",
+          "title": "The shroud lifts",
+          "text": "They destroy the machine behind the shroud, and the sun shines on Komashi again."
+        }
+      ],
+      "codex": [
+        {
+          "path": "codex[0].list[9]",
+          "record": {
+            "name": "Virtuosity",
+            "first": 11,
+            "desc": "A Shard who splintered herself near Komashi."
+          }
+        },
+        {
+          "path": "codex[1].list[0]",
+          "record": {
+            "name": "Hoid (Wit)",
+            "role": "Worldhopper",
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              8,
+              9,
+              11,
+              12
+            ],
+            "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+            "more": [
+              [
+                7,
+                "He was on Yolen at the Shattering."
+              ],
+              [
+                11,
+                "Narrates Tress’s story."
+              ],
+              [
+                12,
+                "Goes to Scadrial for help after Roshar falls."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex[1].list[17]",
+          "record": {
+            "name": "Yumi and Nikaro",
+            "role": "Komashi",
+            "books": [
+              11
+            ],
+            "desc": "A spirit-honouring stone-stacker and a nightmare painter."
+          }
+        },
+        {
+          "path": "codex[2].list[2]",
+          "record": {
+            "name": "Worldhoppers",
+            "first": 3,
+            "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+            "more": [
+              [
+                7,
+                "Silverlight is their crossroads, and its codes set rules for visitors."
+              ],
+              [
+                11,
+                "By the 2023 books there are starships as well."
+              ]
+            ]
+          }
+        }
+      ],
+      "links": [],
+      "counts": {
+        "selected_worlds": 3,
+        "total_worlds": 60,
+        "sites": 5,
+        "landmarks": 7,
+        "events": 4,
+        "codex": 4,
+        "links": 0
+      }
+    },
+    "48": {
+      "head": "61e26afb4514f4b9510f33ce9f8b0b7bbe84e964",
+      "pack_blob": "05170eab9f4c10f18c98a6fac51cf825e63c8a56",
+      "worlds": [
+        {
+          "id": "utolsun",
+          "name": "UTol’s sun",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "major": true,
+          "status": "Red-orange star",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.08,
+            28.39,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "blurb": "A large red-orange star, bigger than Roshar’s and comparatively close to its inhabited planets. UTol and Komashi orbit it together as a double planet.",
+          "short": "Red-orange star of UTol and Komashi.",
+          "facts": [
+            [
+              "Planets",
+              "UTol and Komashi (a pair)"
+            ]
+          ],
+          "noSurface": true,
+          "gfx": {
+            "type": "lava",
+            "sea": 0.55,
+            "pal": [
+              "#8a1a10",
+              "#b0301a",
+              "#d04a24",
+              "#e86a30",
+              "#f49050",
+              "#ffc090"
+            ],
+            "lava": "#ffa060",
+            "rough": 0.3,
+            "bump": 0.3,
+            "clouds": 0,
+            "atmo": "#ffa060",
+            "atmoK": 1.2,
+            "amb": 0.9,
+            "sw": "#ffa060"
+          }
+        },
+        {
+          "id": "utol",
+          "name": "UTol",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "status": "Ocean world · Komashi’s twin",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.0999,
+            28.4067,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "blurb": "An ocean world with very few landmasses, home to the Sho Del. From Komashi it shines as a pale blue star, the only light that reached through the shroud.",
+          "short": "Ocean twin of Komashi.",
+          "facts": [
+            [
+              "People",
+              "The Sho Del"
+            ],
+            [
+              "Twin",
+              "Komashi"
+            ]
+          ],
+          "gfx": {
+            "type": "ocean",
+            "sea": 0.88,
+            "pal": [
+              "#0a2a6a",
+              "#2a6ac0",
+              "#6a9a7a",
+              "#7aaa8a",
+              "#9ab09a",
+              "#f0f4f8"
+            ],
+            "clouds": 0.4,
+            "atmo": "#9ac8ff",
+            "sw": "#2a6ac0"
+          }
+        },
+        {
+          "id": "komashi",
+          "name": "Komashi",
+          "group": "utol",
+          "books": [
+            11
+          ],
+          "first": 11,
+          "status": "Double world with UTol",
+          "star": {
+            "name": "UTol’s sun",
+            "col": "#ffb070"
+          },
+          "map": [
+            1.1082,
+            28.4003,
+            0
+          ],
+          "est": true,
+          "distText": "Not on the star chart: position unknown",
+          "hero": "kilahito",
+          "blurb": "Half of a double planet circling a big red-orange sun, with its twin UTol shining blue in the sky. In one age, Yumi stacks stones to honour the spirits that warm the land. In another, a black shroud hides the sky, nightmares come out of it, and Nikaro paints them away for a living. A spirit binds the two of them together. The habitable land around Kilahito and Torio is only a few hundred miles across; on this globe it is drawn about six times larger so it can be seen.",
+          "short": "Stone-stacking and nightmare-painting: Yumi and the Nightmare Painter.",
+          "eras": {
+            "12": {
+              "status": "Shroud lifted"
+            }
+          },
+          "facts": [
+            [
+              "Twin",
+              "UTol"
+            ],
+            [
+              "Spirits",
+              "The hijo"
+            ],
+            [
+              "Shard",
+              "Virtuosity splintered nearby"
+            ],
+            [
+              "Nations",
+              "Torio (ancient), Nagadan"
+            ]
+          ],
+          "gfx": {
+            "type": "desert",
+            "sea": 0.32,
+            "freq": 1.4,
+            "pal": [
+              "#0c1a30",
+              "#2a4a6a",
+              "#7a5a40",
+              "#8a6a48",
+              "#a08060",
+              "#e0d8c8"
+            ],
+            "clouds": 0.1,
+            "atmo": "#ffb880",
+            "atmoK": 0.8,
+            "lights": 0.06,
+            "sw": "#8a6a48",
+            "map": {
+              "rough": 0.5,
+              "mtn": 0.3,
+              "land": [
+                [
+                  [
+                    55.8,
+                    5
+                  ],
+                  [
+                    56.1,
+                    15.1
+                  ],
+                  [
+                    55.9,
+                    26.2
+                  ],
+                  [
+                    48.7,
+                    29.1
+                  ],
+                  [
+                    41.3,
+                    28.6
+                  ],
+                  [
+                    34.6,
+                    26.6
+                  ],
+                  [
+                    31.4,
+                    29.2
+                  ],
+                  [
+                    28,
+                    31.7
+                  ],
+                  [
+                    23.7,
+                    30.3
+                  ],
+                  [
+                    20,
+                    27.6
+                  ],
+                  [
+                    16.4,
+                    30
+                  ],
+                  [
+                    11.1,
+                    35.4
+                  ],
+                  [
+                    4.3,
+                    39.4
+                  ],
+                  [
+                    -1.2,
+                    38.2
+                  ],
+                  [
+                    -5.7,
+                    34.9
+                  ],
+                  [
+                    -7.7,
+                    29.2
+                  ],
+                  [
+                    -5.7,
+                    21.5
+                  ],
+                  [
+                    -11.5,
+                    19.5
+                  ],
+                  [
+                    -15.4,
+                    15.6
+                  ],
+                  [
+                    -13.5,
+                    9.9
+                  ],
+                  [
+                    -8.4,
+                    5
+                  ],
+                  [
+                    -2.5,
+                    1.8
+                  ],
+                  [
+                    -0.7,
+                    -0.9
+                  ],
+                  [
+                    -7.5,
+                    -7.5
+                  ],
+                  [
+                    -7.5,
+                    -12.7
+                  ],
+                  [
+                    -8.1,
+                    -19.6
+                  ],
+                  [
+                    -4.2,
+                    -23.1
+                  ],
+                  [
+                    2.3,
+                    -22.6
+                  ],
+                  [
+                    5.6,
+                    -26.6
+                  ],
+                  [
+                    8.3,
+                    -34.4
+                  ],
+                  [
+                    14.1,
+                    -34.6
+                  ],
+                  [
+                    20,
+                    -27
+                  ],
+                  [
+                    23.6,
+                    -19.4
+                  ],
+                  [
+                    25.9,
+                    -14.7
+                  ],
+                  [
+                    31.3,
+                    -19.1
+                  ],
+                  [
+                    36.3,
+                    -19.8
+                  ],
+                  [
+                    38.4,
+                    -14.7
+                  ],
+                  [
+                    43.8,
+                    -13.4
+                  ],
+                  [
+                    46.3,
+                    -8.1
+                  ],
+                  [
+                    48.2,
+                    -1.9
+                  ]
+                ]
+              ],
+              "water": [
+                [
+                  [
+                    20.12,
+                    3.866
+                  ],
+                  [
+                    20.297,
+                    3.788
+                  ],
+                  [
+                    20.37,
+                    3.6
+                  ],
+                  [
+                    20.297,
+                    3.412
+                  ],
+                  [
+                    20.12,
+                    3.334
+                  ],
+                  [
+                    19.943,
+                    3.412
+                  ],
+                  [
+                    19.87,
+                    3.6
+                  ],
+                  [
+                    19.943,
+                    3.788
+                  ]
+                ]
+              ],
+              "rivers": [
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      20,
+                      0.9
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#4fe6ff"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      22.1,
+                      5.4
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#ff4fd8"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      18.8,
+                      6
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#4fe6ff"
+                },
+                {
+                  "line": [
+                    [
+                      20,
+                      3.3
+                    ],
+                    [
+                      20.9,
+                      7.2
+                    ]
+                  ],
+                  "w": 0.05,
+                  "c": "#ff4fd8"
+                }
+              ],
+              "regions": [
+                {
+                  "poly": [
+                    [
+                      28,
+                      0.6
+                    ],
+                    [
+                      27.87,
+                      2.17
+                    ],
+                    [
+                      27.49,
+                      3.68
+                    ],
+                    [
+                      26.87,
+                      5.07
+                    ],
+                    [
+                      26.03,
+                      6.31
+                    ],
+                    [
+                      25.01,
+                      7.36
+                    ],
+                    [
+                      23.83,
+                      8.17
+                    ],
+                    [
+                      22.55,
+                      8.74
+                    ],
+                    [
+                      21.19,
+                      9.05
+                    ],
+                    [
+                      19.8,
+                      9.11
+                    ],
+                    [
+                      18.42,
+                      8.91
+                    ],
+                    [
+                      17.1,
+                      8.46
+                    ],
+                    [
+                      15.86,
+                      7.8
+                    ],
+                    [
+                      14.75,
+                      6.93
+                    ],
+                    [
+                      13.8,
+                      5.89
+                    ],
+                    [
+                      13.03,
+                      4.7
+                    ],
+                    [
+                      12.46,
+                      3.39
+                    ],
+                    [
+                      12.12,
+                      2.02
+                    ],
+                    [
+                      12,
+                      0.6
+                    ],
+                    [
+                      12.12,
+                      -0.82
+                    ],
+                    [
+                      12.46,
+                      -2.19
+                    ],
+                    [
+                      13.03,
+                      -3.5
+                    ],
+                    [
+                      13.8,
+                      -4.69
+                    ],
+                    [
+                      14.75,
+                      -5.73
+                    ],
+                    [
+                      15.86,
+                      -6.6
+                    ],
+                    [
+                      17.1,
+                      -7.26
+                    ],
+                    [
+                      18.42,
+                      -7.71
+                    ],
+                    [
+                      19.8,
+                      -7.91
+                    ],
+                    [
+                      21.19,
+                      -7.85
+                    ],
+                    [
+                      22.55,
+                      -7.54
+                    ],
+                    [
+                      23.83,
+                      -6.97
+                    ],
+                    [
+                      25.01,
+                      -6.16
+                    ],
+                    [
+                      26.03,
+                      -5.11
+                    ],
+                    [
+                      26.87,
+                      -3.87
+                    ],
+                    [
+                      27.49,
+                      -2.48
+                    ],
+                    [
+                      27.87,
+                      -0.97
+                    ]
+                  ],
+                  "c": "#9a8a6a",
+                  "s": 0.9
+                },
+                {
+                  "poly": [
+                    [
+                      25.4,
+                      0.6
+                    ],
+                    [
+                      25.29,
+                      1.76
+                    ],
+                    [
+                      24.97,
+                      2.88
+                    ],
+                    [
+                      24.46,
+                      3.89
+                    ],
+                    [
+                      23.77,
+                      4.77
+                    ],
+                    [
+                      22.93,
+                      5.47
+                    ],
+                    [
+                      21.98,
+                      5.98
+                    ],
+                    [
+                      20.96,
+                      6.27
+                    ],
+                    [
+                      19.91,
+                      6.34
+                    ],
+                    [
+                      18.86,
+                      6.2
+                    ],
+                    [
+                      17.86,
+                      5.84
+                    ],
+                    [
+                      16.94,
+                      5.29
+                    ],
+                    [
+                      16.14,
+                      4.57
+                    ],
+                    [
+                      15.48,
+                      3.71
+                    ],
+                    [
+                      15,
+                      2.74
+                    ],
+                    [
+                      14.7,
+                      1.69
+                    ],
+                    [
+                      14.6,
+                      0.6
+                    ],
+                    [
+                      14.7,
+                      -0.49
+                    ],
+                    [
+                      15,
+                      -1.54
+                    ],
+                    [
+                      15.48,
+                      -2.51
+                    ],
+                    [
+                      16.14,
+                      -3.37
+                    ],
+                    [
+                      16.94,
+                      -4.09
+                    ],
+                    [
+                      17.86,
+                      -4.64
+                    ],
+                    [
+                      18.86,
+                      -5
+                    ],
+                    [
+                      19.91,
+                      -5.14
+                    ],
+                    [
+                      20.96,
+                      -5.07
+                    ],
+                    [
+                      21.98,
+                      -4.78
+                    ],
+                    [
+                      22.93,
+                      -4.27
+                    ],
+                    [
+                      23.77,
+                      -3.57
+                    ],
+                    [
+                      24.46,
+                      -2.69
+                    ],
+                    [
+                      24.97,
+                      -1.68
+                    ],
+                    [
+                      25.29,
+                      -0.56
+                    ]
+                  ],
+                  "c": "#8a4a2a",
+                  "s": 0.95
+                },
+                {
+                  "poly": [
+                    [
+                      22.1,
+                      0.6
+                    ],
+                    [
+                      22.03,
+                      1.19
+                    ],
+                    [
+                      21.82,
+                      1.73
+                    ],
+                    [
+                      21.48,
+                      2.2
+                    ],
+                    [
+                      21.04,
+                      2.55
+                    ],
+                    [
+                      20.53,
+                      2.77
+                    ],
+                    [
+                      19.99,
+                      2.83
+                    ],
+                    [
+                      19.44,
+                      2.75
+                    ],
+                    [
+                      18.94,
+                      2.52
+                    ],
+                    [
+                      18.51,
+                      2.17
+                    ],
+                    [
+                      18.18,
+                      1.7
+                    ],
+                    [
+                      17.97,
+                      1.17
+                    ],
+                    [
+                      17.9,
+                      0.6
+                    ],
+                    [
+                      17.97,
+                      0.03
+                    ],
+                    [
+                      18.18,
+                      -0.5
+                    ],
+                    [
+                      18.51,
+                      -0.97
+                    ],
+                    [
+                      18.94,
+                      -1.32
+                    ],
+                    [
+                      19.44,
+                      -1.55
+                    ],
+                    [
+                      19.99,
+                      -1.63
+                    ],
+                    [
+                      20.53,
+                      -1.57
+                    ],
+                    [
+                      21.04,
+                      -1.35
+                    ],
+                    [
+                      21.48,
+                      -1
+                    ],
+                    [
+                      21.82,
+                      -0.53
+                    ],
+                    [
+                      22.03,
+                      0.01
+                    ]
+                  ],
+                  "c": "#6f8f4a",
+                  "s": 1
+                }
+              ]
+            },
+            "feat": []
+          },
+          "sites": [
+            {
+              "id": "kilahito",
+              "name": "Kilahito",
+              "lat": 20,
+              "lon": 3.3,
+              "books": [
+                11
+              ],
+              "desc": "A round city in Nagadan laid out in rings and wedges beside a lake, built around a hion line, with the shroud on its west side. Nikaro paints nightmares here."
+            },
+            {
+              "id": "torio",
+              "name": "Torio City",
+              "lat": 20,
+              "lon": 0.9,
+              "books": [
+                11
+              ],
+              "desc": "The ruined capital of old Torio, west of Kilahito, with red roofs, fountains and dragon statues. The machine that made the shroud was switched on here."
+            },
+            {
+              "id": "steamwells",
+              "name": "The steamwell basin",
+              "lat": 19.1,
+              "lon": 1.5,
+              "books": [
+                11
+              ],
+              "desc": "Warm, humid springs where Yumi’s people lived, heated by the hijo under the ground, with gardens floating in the rising air. Beyond them lie the searing barrens and then the cold wastes."
+            },
+            {
+              "id": "futinoro",
+              "name": "Futinoro",
+              "lat": 22.1,
+              "lon": 5.4,
+              "books": [
+                11
+              ],
+              "desc": "A Nagadan city destroyed by nightmares decades before the story."
+            },
+            {
+              "id": "jito",
+              "name": "Jito",
+              "lat": 20.9,
+              "lon": 7.2,
+              "books": [
+                11
+              ],
+              "desc": "A Nagadan city; placed on the coast as a guess."
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "e51",
+          "book": 11,
+          "world": "komashi",
+          "site": "kilahito",
+          "title": "Yumi and Nikaro",
+          "text": "A stone-stacker and a nightmare painter are bound together across time and must work out why."
+        },
+        {
+          "id": "e52",
+          "book": 11,
+          "world": "komashi",
+          "site": "torio",
+          "title": "The shroud lifts",
+          "text": "They destroy the machine behind the shroud, and the sun shines on Komashi again."
+        }
+      ],
+      "codex": [
+        {
+          "path": "codex[0].list[11]",
+          "record": {
+            "name": "Virtuosity",
+            "first": 11,
+            "desc": "A Shard who splintered herself near Komashi."
+          }
+        },
+        {
+          "path": "codex[1].list[0]",
+          "record": {
+            "name": "Hoid (Wit)",
+            "role": "Worldhopper",
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              8,
+              9,
+              11,
+              12
+            ],
+            "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+            "more": [
+              [
+                7,
+                "He was on Yolen at the Shattering."
+              ],
+              [
+                11,
+                "Narrates Tress’s story."
+              ],
+              [
+                12,
+                "Goes to Scadrial for help after Roshar falls."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex[1].list[17]",
+          "record": {
+            "name": "Yumi and Nikaro",
+            "role": "Komashi",
+            "books": [
+              11
+            ],
+            "desc": "A spirit-honouring stone-stacker and a nightmare painter."
+          }
+        },
+        {
+          "path": "codex[2].list[2]",
+          "record": {
+            "name": "Worldhoppers",
+            "first": 3,
+            "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+            "more": [
+              [
+                7,
+                "Silverlight is their crossroads, and its codes set rules for visitors."
+              ],
+              [
+                11,
+                "By the 2023 books there are starships as well."
+              ]
+            ]
+          }
+        }
+      ],
+      "links": [
+        {
+          "id": "h-nomad",
+          "path": [
+            "canticle",
+            "komashi"
+          ],
+          "book": 11,
+          "opacity": {
+            "all": 0.5,
+            "cur": 0.95,
+            "past": 0.35
+          },
+          "curve": 0.12
+        }
+      ],
+      "counts": {
+        "selected_worlds": 3,
+        "total_worlds": 60,
+        "sites": 5,
+        "landmarks": 0,
+        "events": 2,
+        "codex": 4,
+        "links": 1
+      }
+    }
+  },
+  "proposal": {
+    "id": "KO01-TEXT-01",
+    "implementation_target": "PR48 only; PR24/37 comparison snapshots, not edit requests",
+    "candidate": {
+      "world_blurb": "Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected.",
+      "event_text": "Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."
+    },
+    "checks": [
+      {
+        "pr": 24,
+        "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+        "diff": [
+          {
+            "path": "pack.worlds.49.blurb",
+            "before": "Half of a double planet circling a big red-orange sun, with its twin UTol shining blue in the sky. In one age, Yumi stacks stones to honour the spirits that warm the land. In another, a black shroud hides the sky, nightmares come out of it, and Nikaro paints them away for a living. A spirit binds the two of them together. The habitable land around Kilahito and Torio is only a few hundred miles across; on this globe it is drawn about six times larger so it can be seen.",
+            "after": "Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected."
+          },
+          {
+            "path": "pack.events.50.text",
+            "before": "A stone-stacker and a nightmare painter are bound together across time and must work out why.",
+            "after": "Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."
+          }
+        ],
+        "only_two_fields": true,
+        "reversal_equal": true
+      },
+      {
+        "pr": 37,
+        "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+        "diff": [
+          {
+            "path": "pack.worlds.49.blurb",
+            "before": "Half of a double planet circling a big red-orange sun, with its twin UTol shining blue in the sky. In one age, Yumi stacks stones to honour the spirits that warm the land. In another, a black shroud hides the sky, nightmares come out of it, and Nikaro paints them away for a living. A spirit binds the two of them together. The habitable land around Kilahito and Torio is only a few hundred miles across; on this globe it is drawn about six times larger so it can be seen.",
+            "after": "Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected."
+          },
+          {
+            "path": "pack.events.93.text",
+            "before": "A stone-stacker and a nightmare painter are bound together across time and must work out why.",
+            "after": "Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."
+          }
+        ],
+        "only_two_fields": true,
+        "reversal_equal": true
+      },
+      {
+        "pr": 48,
+        "head": "61e26afb4514f4b9510f33ce9f8b0b7bbe84e964",
+        "diff": [
+          {
+            "path": "pack.worlds.49.blurb",
+            "before": "Half of a double planet circling a big red-orange sun, with its twin UTol shining blue in the sky. In one age, Yumi stacks stones to honour the spirits that warm the land. In another, a black shroud hides the sky, nightmares come out of it, and Nikaro paints them away for a living. A spirit binds the two of them together. The habitable land around Kilahito and Torio is only a few hundred miles across; on this globe it is drawn about six times larger so it can be seen.",
+            "after": "Yumi stacks stones in rituals honoring the spirits. In Kilahito, Nikaro works as a nightmare painter beneath glowing hion lines. Their lives become connected."
+          },
+          {
+            "path": "pack.events.50.text",
+            "before": "A stone-stacker and a nightmare painter are bound together across time and must work out why.",
+            "after": "Yumi, a stone-stacker, and Nikaro, a nightmare painter, become linked."
+          }
+        ],
+        "only_two_fields": true,
+        "reversal_equal": true
+      }
+    ],
+    "verification_boundary": "In-memory proposal data comparison only, not implementation tests or rendering."
+  }
+}

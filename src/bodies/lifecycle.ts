@@ -43,6 +43,7 @@ export function transform(b: Body, kind: Kind, mass = b.mass) {
   b.stageAge = 0;
   b.stage = kind === 'star' ? stellarBirthStage(mass) : undefined;
   if (kind !== 'star') b.holdStage = undefined;
+  if (kind !== 'blackhole') b.bhReference = undefined;
   b.stageTransition = undefined;
   b.nebulaTidal = 0;
   b.nebulaCompression = 0;
@@ -82,7 +83,11 @@ function removeMatterStreamsFor(id: number) {
   for (const stream of [...matterStreams.values()])
     if (stream.donorId === id || stream.receiverId === id) removeMatterStream(stream);
 }
-export function removeBody(b: Body) {
+/**
+ * Remove a body. When it was selected, the selection moves to `successor` (the survivor of a merger or
+ * collision) so the inspector never keeps describing a body that no longer exists; otherwise it clears.
+ */
+export function removeBody(b: Body, successor?: Body) {
   if (b.kind === 'nebula') {
     const group = galaxyGroupFor(b),
       anchor = group?.anchorId === undefined ? undefined : bodies.find(body => body.id === group.anchorId);
@@ -124,7 +129,7 @@ export function removeBody(b: Body) {
         for (const visual of galaxyVisuals.values()) if (visual.groupId === group.id) visual.anchorId = group.anchorId;
     }
   }
-  if (app.selectedBody === b) select(null);
+  if (app.selectedBody === b) select(successor && !successor.removed ? successor : null);
   updateCount();
   if (!app.historySuspended) refreshGroupNavigator();
 }

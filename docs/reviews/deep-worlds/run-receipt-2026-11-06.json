@@ -1,0 +1,104 @@
+{
+  "project_id": "mckayec/universe-sandbox",
+  "item_ids": [
+    "PR44-M1-M2",
+    "PR43-R2-C1-C2-reconciliation",
+    "PR24-R4-C1-reconciliation",
+    "PR37-CB01-CB04"
+  ],
+  "actor": "chatgpt",
+  "run_id": "chatgpt-20261106-mobile-516rxvd9p5f",
+  "attempt_id": "1",
+  "observed_start": "2026-11-06T03:18:09Z",
+  "observed_end": "2026-11-06T03:33:56Z",
+  "duration_seconds": 947,
+  "duration_type": "elapsed_run_window",
+  "timestamp_source": "clock__curr_time UTC readings; start is recorded lock-acquisition window, end is final report/status readback checkpoint before receipt publication",
+  "outputs": [
+    {
+      "item_id": "mobile",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/mobile-entry-usability/implementation-review.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/7bbe2947f8e4bbce588051a328a0035e0ad8b3b2/docs/reviews/mobile-entry-usability/implementation-review.md",
+      "commit_sha": "7bbe2947f8e4bbce588051a328a0035e0ad8b3b2",
+      "blob_sha": "d7a44eb1f63041c397c21cfc971ac38b4ff00b2c"
+    },
+    {
+      "item_id": "mobile-status",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/mobile-entry-usability/status.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/6a21a958b481cda58b34cd639d0e43108170c1c6/docs/reviews/mobile-entry-usability/status.md",
+      "commit_sha": "6a21a958b481cda58b34cd639d0e43108170c1c6",
+      "blob_sha": "7f94a4f506a2b5b2d17961cff06ea6acfbb1e2d5"
+    },
+    {
+      "item_id": "dag",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/disks-accretion-galaxies/implementation-review-r2.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/4b6454da564f7ff897de416931389e3a203fc1bd/docs/reviews/disks-accretion-galaxies/implementation-review-r2.md",
+      "commit_sha": "4b6454da564f7ff897de416931389e3a203fc1bd",
+      "blob_sha": "0e9326040dfa7dbee9cb6de5e7ece20eecdc159a"
+    },
+    {
+      "item_id": "dag-status",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/disks-accretion-galaxies/status.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/ad255a30eeff98ba1d01bbbfcb57068ef93f0c62/docs/reviews/disks-accretion-galaxies/status.md",
+      "commit_sha": "ad255a30eeff98ba1d01bbbfcb57068ef93f0c62",
+      "blob_sha": "0b506bb08c521c9f20dfafa9e75a73f32674170e"
+    },
+    {
+      "item_id": "lore",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/lore-corrections/implementation-review-r4.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/9e5790486790beb4d41dcd9def1d50185a67598c/docs/reviews/lore-corrections/implementation-review-r4.md",
+      "commit_sha": "9e5790486790beb4d41dcd9def1d50185a67598c",
+      "blob_sha": "1ff8dd0bd9b1202a078efa5007fa04b361c792e6"
+    },
+    {
+      "item_id": "lore-status",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/lore-corrections/status.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/6160ad579795377cc9e953d5d00861c6b7d4518b/docs/reviews/lore-corrections/status.md",
+      "commit_sha": "6160ad579795377cc9e953d5d00861c6b7d4518b",
+      "blob_sha": "ea7581aee994344f99ed97cbc02ebb78aa29e495"
+    },
+    {
+      "item_id": "dw",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/deep-worlds/audit.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/8933af2be1acd25c1aca3f8fa4f51e023ee96dd3/docs/reviews/deep-worlds/audit.md",
+      "commit_sha": "8933af2be1acd25c1aca3f8fa4f51e023ee96dd3",
+      "blob_sha": "d7631777934515b410449533b3f07f9f8ef2bea3"
+    },
+    {
+      "item_id": "dw-status",
+      "status": "committed-and-readback-verified",
+      "label": "docs/reviews/deep-worlds/status.md",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/8130fca673a3d149e1da5b0daf170dc4c9f88b1c/docs/reviews/deep-worlds/status.md",
+      "commit_sha": "8130fca673a3d149e1da5b0daf170dc4c9f88b1c",
+      "blob_sha": "669de3411a8adfb24259adf340b6a20979794dc7"
+    }
+  ],
+  "measured_usage": {
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "output_tokens": null,
+    "reasoning_output_tokens": null,
+    "total_tokens": null,
+    "credits": null,
+    "estimated_usd": null,
+    "billed_usd": null,
+    "source": null
+  },
+  "coverage_notes": [
+    "Partial observed elapsed window: initial instruction/status triage predates the retained start timestamp; receipt publication and lock release follow observed_end. Not total session duration, active AI time or compute time.",
+    "Mixed interval unallocated across the four work items. CI durations are not added to this interval.",
+    "Provider token/billing counters were unavailable; no estimated costs or credits inferred.",
+    "Mobile: 2/2 return findings closed at source/test/recorded CI level; remaining acceptance to Claude. Disks: 2/2 residual and 4/4 original bounded dispositions carried forward; remaining technical acceptance to Claude. Lore: 2/3 R3 groups closed, 1/3 partial; existing R4-C1 still open and returned to Claude. Deep Worlds: 4/4 CB content repairs accepted, 8/8 isolated gate cases; wider audit remains content-review/chatgpt.",
+    "Cosmere committed browser output is 56 total checks (28 per viewport), correcting builder prose; attributed execution, not independently rerun.",
+    "No new separate Deep Research invocation, browser/device session, merge, deployment or release approval. Source research used opened author-hosted passages.",
+    "Coordination lock was acquired at commit fd5e38fc39091bfe81e746e2fb2a513a7c0c35b7; release is not yet observed in this receipt."
+  ],
+  "recorded_at": "2026-11-06T03:33:56Z"
+}

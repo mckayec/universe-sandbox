@@ -1,0 +1,61 @@
+TAP version 13
+# Subtest: MB06-E27-01 payload: exact e27 record, no gate/gates/lm/fx; only e27.text differs from the parent; old wording gone
+not ok 1 - MB06-E27-01 payload: exact e27 record, no gate/gates/lm/fx; only e27.text differs from the parent; old wording gone
+  ---
+  duration_ms: 12.430119
+  type: 'test'
+  location: '/home/claude/universe-sandbox/tests/atlas-mb06-e27.test.ts:88:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        book: 6,
+        id: 'e27',
+        site: 'elendel',
+    +   text: 'A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.',
+    -   text: 'Wax investigates murders in Elendel as labor unrest grows.',
+        title: 'Shadows of Self',
+        world: 'scadrial'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    id: 'e27'
+    book: 6
+    world: 'scadrial'
+    site: 'elendel'
+    title: 'Shadows of Self'
+    text: 'Wax investigates murders in Elendel as labor unrest grows.'
+  actual:
+    id: 'e27'
+    book: 6
+    world: 'scadrial'
+    site: 'elendel'
+    title: 'Shadows of Self'
+    text: 'A rogue kandra murders her way through the city’s elite, and Harmony’s quiet influence comes into the open.'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/claude/universe-sandbox/tests/atlas-mb06-e27.test.ts:94:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: MB06-E27-01 visibility: identical to the parent pack; e27 never shows without its Scadrial/Elendel parent
+ok 2 - MB06-E27-01 visibility: identical to the parent pack; e27 never shows without its Scadrial/Elendel parent
+  ---
+  duration_ms: 78.995801
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 179.134418

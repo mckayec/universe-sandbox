@@ -1,0 +1,17 @@
+# dwd-flood-probe.cjs head 68d47ce VP=1440x900 — PARTIAL (stopped at run time bound)
+PASS 1440 5 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 1440 5 Storm Gods on raises sea | dom true -6→415.16967434335066
+PASS 1440 5 Storm Gods off returns sea | dom false -6
+PASS 1440 6 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 1440 6 Storm Gods on raises sea | dom true -6→421.1437295094624
+PASS 1440 6 Storm Gods off returns sea | dom false -6
+PASS 1440 no page errors (amplified page)
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.waitForTimeout: Target page, context or browser has been closed
+  log: []
+}
+
+Node.js v22.23.4

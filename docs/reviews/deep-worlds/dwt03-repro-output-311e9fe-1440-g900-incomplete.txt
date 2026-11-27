@@ -1,0 +1,10 @@
+target head-311e9fe 1440x900 gap=900
+after Next 1: step=2 / 13 view=place site=fane rendered=fane ev=null fade=false hash=#book=3&world=arrakis&site=fane&view=place
+after Next 2: step=3 / 13 view=place site=fane rendered=fane ev=c8 fade=true hash=#book=3&world=arrakis&site=arrakeen&view=surface
+after Next 3: step=4 / 13 view=place site=tabr rendered=tabr ev=null fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 4: step=5 / 13 view=place site=tabr rendered=tabr ev=c12 fade=false hash=#book=3&world=arrakis&site=tabr&view=place
+after Next 5: step=6 / 13 view=place site=tabr rendered=tabr ev=c12 fade=true hash=#book=3&world=arrakis&site=tabr&view=surface
+after Next 6: step=7 / 13 view=galaxy site=exile rendered=null ev=null fade=true hash=#book=3&world=salusa&site=exile&view=place
+after Next 7: step=8 / 13 view=world site=null rendered=null ev=null fade=false hash=#book=3&world=salusa&view=surface
+after Next 8: step=9 / 13 view=galaxy site=null rendered=null ev=c9 fade=false hash=#book=3&world=arrakis
+after Next 9: step=10 / 13 view=place site=tabr rendered=tabr ev=null fade=false hash=#book=3&world=arrakis&site=tabr&view=place

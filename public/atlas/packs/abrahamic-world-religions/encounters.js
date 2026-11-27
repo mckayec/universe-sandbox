@@ -133,7 +133,7 @@
       'XE01',
       'The Xi’an stele',
       'A stele erected in 781 records a Christian arrival at Xi’an in 635. The inscription’s date and the date of the arrival it reports are two different dates; no travel road is drawn.',
-      { when: 781, whenText: 'Erected 781; reports an arrival in 635', ref: 'xian', layers: ['enc', 'chr'] },
+      { when: 781, whenText: 'Erected 781; reports an arrival in 635', site: 'xian', layers: ['enc', 'chr'] },
     ),
     ev(
       'XE02',
@@ -157,7 +157,7 @@
       'XE05',
       'Bahá’u’lláh’s announcement',
       'The official Bahá’í history places Bahá’u’lláh’s announcement in Baghdad in 1863. A declared religious claim, not independently certified revelation.',
-      { when: 1863, whenText: '1863 (official Bahá’í history)', ref: 'baghdad' },
+      { when: 1863, whenText: '1863 (official Bahá’í history)', site: 'baghdad' },
     ),
     ev(
       'XE06',

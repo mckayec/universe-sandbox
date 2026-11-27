@@ -1,0 +1,1213 @@
+{
+  "date": "2026-11-20",
+  "scope": "LU01 checkpoint1 selected actual-source inventory; not an exhaustive claim or spoiler audit",
+  "method": "Fetched exact-head cosmere.js content; evaluated data registration without an application renderer. Returned GitHub blob SHAs compared with earlier same-run snapshots; no new local hash recomputation.",
+  "exclusions": [
+    "Full generated world gfx.map polygons are omitted from this inventory; no geometric validation performed.",
+    "No narrative coverage is implied by inventory presence.",
+    "The key12 Dhatri link and era are carried as later-work boundary records."
+  ],
+  "snapshots": [
+    {
+      "pr": 24,
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "worldsTotal": 60,
+      "world": {
+        "id": "lumar",
+        "name": "Lumar",
+        "group": "wider",
+        "books": [
+          11
+        ],
+        "first": 11,
+        "status": "World of the spore seas · near the Drominad system",
+        "star": {
+          "name": "Lumar’s sun",
+          "col": "#fff2dc"
+        },
+        "map": [
+          0.7353,
+          27.951,
+          0.01
+        ],
+        "est": true,
+        "distText": "Not on the star chart. Close to the Drominad system: under a year by sublight starship (moved apart here to be visible)",
+        "blurb": "There is no water to sail here. Twelve moons hang close overhead, and from each one spores rain down to make an ocean: an emerald sea, a crimson sea, a midnight sea and more. Touch spores with water and they burst. Tress, a girl who collects cups on a dull little island, sets out across these seas to rescue the boy she loves from a Sorceress.",
+        "short": "Seas of spores: Tress of the Emerald Sea.",
+        "eras": {
+          "12": {
+            "facts": [
+              [
+                "Moons",
+                "Twelve, each home to an aether"
+              ],
+              [
+                "Seas",
+                "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+              ],
+              [
+                "Network",
+                "Part of the Dhatrian planetary network"
+              ],
+              [
+                "Neighbour",
+                "First of the Sun, under a year by sublight ship"
+              ]
+            ]
+          }
+        },
+        "facts": [
+          [
+            "Moons",
+            "Twelve, each raining its own spore"
+          ],
+          [
+            "Seas",
+            "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+          ],
+          [
+            "Danger",
+            "Spores erupt when wet"
+          ]
+        ],
+        "moons": [
+          {
+            "name": "Emerald moon",
+            "size": 0.16,
+            "dist": 2.2,
+            "speed": 0.05
+          },
+          {
+            "name": "Crimson moon",
+            "size": 0.14,
+            "dist": 2.6,
+            "speed": 0.045
+          },
+          {
+            "name": "Midnight moon",
+            "size": 0.15,
+            "dist": 3,
+            "speed": 0.04
+          },
+          {
+            "name": "Sapphire moon",
+            "size": 0.13,
+            "dist": 3.4,
+            "speed": 0.035
+          },
+          {
+            "name": "Rose moon",
+            "size": 0.12,
+            "dist": 3.8,
+            "speed": 0.03
+          },
+          {
+            "name": "Sunlight moon",
+            "size": 0.14,
+            "dist": 4.2,
+            "speed": 0.025
+          }
+        ],
+        "gfx": {
+          "type": "terran",
+          "sea": 0,
+          "freq": 1.2,
+          "rough": 0.15,
+          "bump": 0.4,
+          "ice": 90,
+          "pal": [
+            "#1a5a3a",
+            "#1a5a3a",
+            "#24804c",
+            "#2a8a52",
+            "#24804c",
+            "#2a8a52"
+          ],
+          "clouds": 0.15,
+          "atmo": "#d0ffe8",
+          "atmoK": 0.7,
+          "sw": "#2a8a52",
+          "feat": []
+        },
+        "sites": [
+          {
+            "id": "rock",
+            "name": "Diggen’s Point (the Rock)",
+            "lat": 27.3,
+            "lon": 0.6,
+            "books": [
+              11
+            ],
+            "desc": "A crooked finger of black saltstone in the Emerald Sea, 50 or 60 miles from the green lunagree, with a small town and the duke’s mansion near the top. Tress works here and collects cups."
+          },
+          {
+            "id": "emerald",
+            "name": "The Emerald Sea",
+            "lat": 26.6,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "The green Verdant Sea, Tress’s home sea, piled highest under its moon’s spore-fall."
+          },
+          {
+            "id": "kingsport",
+            "name": "Kingsport (Core Archipelago)",
+            "lat": 38.2,
+            "lon": -13.6,
+            "books": [
+              11
+            ],
+            "desc": "Probably the royal city of the Verdant king, in the Core Archipelago far from the Rock. Position is our placeholder."
+          },
+          {
+            "id": "crimson",
+            "name": "The Crimson Sea",
+            "lat": -26.6,
+            "lon": 36,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "Red spores that throw up spike-forests in sudden squalls. The dragon Xisis lies in a lair near its lunagree. It borders the Midnight Sea and is one of the few ways in."
+          },
+          {
+            "id": "midnight",
+            "name": "The Midnight Sea",
+            "lat": -26.6,
+            "lon": 108,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "Black, warm spores, walled in by mountains on four sides; the Sorceress’s domain."
+          },
+          {
+            "id": "sorceress",
+            "name": "The Sorceress’s island",
+            "lat": -30,
+            "lon": 76,
+            "books": [
+              11
+            ],
+            "desc": "A small, suspiciously round island in the Midnight Sea near the Crimson border, with a silver tower that is really a starship."
+          },
+          {
+            "id": "rosesea",
+            "name": "The Rose Sea",
+            "lat": 26.6,
+            "lon": -72,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "A pink, inhabited sea bordering the Emerald."
+          },
+          {
+            "id": "sapphire",
+            "name": "The Sapphire Sea",
+            "lat": 75,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "The blue Zephyr Sea in the north, home of the Islands of Lobu and the Zephyr Islands."
+          },
+          {
+            "id": "lobu",
+            "name": "The Islands of Lobu",
+            "lat": 70,
+            "lon": 20,
+            "books": [
+              11
+            ],
+            "desc": "Large islands of the Sapphire Sea with a hunting culture; home of Fort and Salay."
+          }
+        ]
+      },
+      "events": [
+        {
+          "id": "e49",
+          "book": 11,
+          "world": "lumar",
+          "site": "rock",
+          "title": "Tress sets sail",
+          "text": "When the duke’s son is sent off to the Sorceress, Tress leaves her island to get him back."
+        },
+        {
+          "id": "e50",
+          "book": 11,
+          "world": "lumar",
+          "site": "sorceress",
+          "title": "The Sorceress’s island",
+          "text": "With a pirate crew and an unusual narrator, Tress reaches the Midnight Sea and forces the Sorceress to leave the world."
+        }
+      ],
+      "adjacentSites": [
+        {
+          "world": "threnody",
+          "id": "abyss",
+          "name": "The Lilting Abyss",
+          "lat": 10,
+          "lon": -15,
+          "sea": true,
+          "books": [
+            11
+          ],
+          "desc": "An extraordinarily deep trench in the ocean between the continents, mentioned in Tress."
+        }
+      ],
+      "codex": [
+        {
+          "group": "people",
+          "name": "Hoid (Wit)",
+          "role": "Worldhopper",
+          "books": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            11,
+            12
+          ],
+          "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+          "more": [
+            [
+              7,
+              "He was on Yolen at the Shattering."
+            ],
+            [
+              11,
+              "Narrates Tress’s story."
+            ],
+            [
+              12,
+              "Goes to Scadrial for help after Roshar falls."
+            ]
+          ]
+        },
+        {
+          "group": "people",
+          "name": "Tress",
+          "role": "Cup collector",
+          "books": [
+            11
+          ],
+          "desc": "A practical girl from the Rock who becomes a captain."
+        },
+        {
+          "group": "ideas",
+          "name": "Worldhoppers",
+          "first": 3,
+          "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+          "more": [
+            [
+              7,
+              "Silverlight is their crossroads, and its codes set rules for visitors."
+            ],
+            [
+              11,
+              "By the 2023 books there are starships as well."
+            ]
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "h-sel-lum",
+          "pairs": [
+            [
+              "sel",
+              "lumar"
+            ]
+          ],
+          "book": 11,
+          "opacity": {
+            "all": 0.5,
+            "cur": 0.95,
+            "past": 0.35
+          },
+          "curve": 0.12
+        },
+        {
+          "id": "h-dhatri",
+          "pairs": [
+            [
+              "dhatri",
+              "lumar"
+            ]
+          ],
+          "book": 12,
+          "opacity": {
+            "all": 0.35,
+            "cur": 0.7,
+            "past": 0.3
+          },
+          "curve": 0.06
+        }
+      ]
+    },
+    {
+      "pr": 37,
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "worldsTotal": 60,
+      "world": {
+        "id": "lumar",
+        "name": "Lumar",
+        "group": "wider",
+        "books": [
+          11
+        ],
+        "first": 11,
+        "status": "World of the spore seas · near the Drominad system",
+        "star": {
+          "name": "Lumar’s sun",
+          "col": "#fff2dc"
+        },
+        "map": [
+          0.7353,
+          27.951,
+          0.01
+        ],
+        "est": true,
+        "distText": "Not on the star chart. Close to the Drominad system: under a year by sublight starship (moved apart here to be visible)",
+        "blurb": "There is no water to sail here. Twelve moons hang close overhead, and from each one spores rain down to make an ocean: an emerald sea, a crimson sea, a midnight sea and more. Touch spores with water and they burst. Tress, a girl who collects cups on a dull little island, sets out across these seas to rescue the boy she loves from a Sorceress.",
+        "short": "Seas of spores: Tress of the Emerald Sea.",
+        "eras": {
+          "12": {
+            "facts": [
+              [
+                "Moons",
+                "Twelve, each home to an aether"
+              ],
+              [
+                "Seas",
+                "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+              ],
+              [
+                "Network",
+                "Part of the Dhatrian planetary network"
+              ],
+              [
+                "Neighbour",
+                "First of the Sun, under a year by sublight ship"
+              ]
+            ]
+          }
+        },
+        "facts": [
+          [
+            "Moons",
+            "Twelve, each raining its own spore"
+          ],
+          [
+            "Seas",
+            "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+          ],
+          [
+            "Danger",
+            "Spores erupt when wet"
+          ]
+        ],
+        "moons": [
+          {
+            "name": "Emerald moon",
+            "size": 0.16,
+            "dist": 2.2,
+            "speed": 0.05
+          },
+          {
+            "name": "Crimson moon",
+            "size": 0.14,
+            "dist": 2.6,
+            "speed": 0.045
+          },
+          {
+            "name": "Midnight moon",
+            "size": 0.15,
+            "dist": 3,
+            "speed": 0.04
+          },
+          {
+            "name": "Sapphire moon",
+            "size": 0.13,
+            "dist": 3.4,
+            "speed": 0.035
+          },
+          {
+            "name": "Rose moon",
+            "size": 0.12,
+            "dist": 3.8,
+            "speed": 0.03
+          },
+          {
+            "name": "Sunlight moon",
+            "size": 0.14,
+            "dist": 4.2,
+            "speed": 0.025
+          }
+        ],
+        "gfx": {
+          "type": "terran",
+          "sea": 0,
+          "freq": 1.2,
+          "rough": 0.15,
+          "bump": 0.4,
+          "ice": 90,
+          "pal": [
+            "#1a5a3a",
+            "#1a5a3a",
+            "#24804c",
+            "#2a8a52",
+            "#24804c",
+            "#2a8a52"
+          ],
+          "clouds": 0.15,
+          "atmo": "#d0ffe8",
+          "atmoK": 0.7,
+          "sw": "#2a8a52",
+          "feat": []
+        },
+        "sites": [
+          {
+            "id": "rock",
+            "name": "Diggen’s Point (the Rock)",
+            "lat": 27.3,
+            "lon": 0.6,
+            "books": [
+              11
+            ],
+            "desc": "A crooked finger of black saltstone in the Emerald Sea, 50 or 60 miles from the green lunagree, with a small town and the duke’s mansion near the top. Tress works here and collects cups.",
+            "scene": {
+              "kind": "town",
+              "arch": "rustic",
+              "size": "small",
+              "tod": "day",
+              "weather": "spores",
+              "coast": "s",
+              "sky": {
+                "moons": 1
+              },
+              "landmarks": [
+                {
+                  "id": "mansion",
+                  "name": "The duke’s mansion",
+                  "kind": "house",
+                  "at": [
+                    0,
+                    0.6
+                  ],
+                  "h": 1.1,
+                  "books": [
+                    11
+                  ],
+                  "desc": "Near the top of the Rock: home of the duke and his son Charlie, Tress’s friend."
+                },
+                {
+                  "id": "home",
+                  "name": "Tress’s house and cups",
+                  "kind": "house",
+                  "at": [
+                    -0.4,
+                    0
+                  ],
+                  "h": 0.5,
+                  "books": [
+                    11
+                  ],
+                  "desc": "Tress’s family home, where she keeps the cups that sailors trade her."
+                },
+                {
+                  "id": "docks",
+                  "name": "The docks",
+                  "kind": "dock",
+                  "at": [
+                    0.3,
+                    -0.7
+                  ],
+                  "books": [
+                    11
+                  ],
+                  "desc": "Where the ships of the Emerald Sea call. Tress leaves from here as a stowaway to rescue Charlie."
+                }
+              ]
+            }
+          },
+          {
+            "id": "emerald",
+            "name": "The Emerald Sea",
+            "lat": 26.6,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "The green Verdant Sea, Tress’s home sea, piled highest under its moon’s spore-fall.",
+            "scene": {
+              "kind": "sea",
+              "size": "huge",
+              "water": true,
+              "tod": "day",
+              "weather": "spores",
+              "sky": {
+                "moons": 1
+              }
+            }
+          },
+          {
+            "id": "kingsport",
+            "name": "Kingsport (Core Archipelago)",
+            "lat": 38.2,
+            "lon": -13.6,
+            "books": [
+              11
+            ],
+            "desc": "Probably the royal city of the Verdant king, in the Core Archipelago far from the Rock. Position is our placeholder.",
+            "scene": {
+              "kind": "port",
+              "arch": "rustic",
+              "size": "medium",
+              "tod": "day",
+              "weather": "spores"
+            }
+          },
+          {
+            "id": "crimson",
+            "name": "The Crimson Sea",
+            "lat": -26.6,
+            "lon": 36,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "Red spores that throw up spike-forests in sudden squalls. The dragon Xisis lies in a lair near its lunagree. It borders the Midnight Sea and is one of the few ways in.",
+            "scene": {
+              "kind": "sea",
+              "size": "huge",
+              "water": true,
+              "tod": "dusk",
+              "weather": "spores",
+              "pal": {
+                "ground": "#8a1a1a"
+              },
+              "landmarks": [
+                {
+                  "id": "lair",
+                  "name": "Xisis’s lair",
+                  "kind": "cave",
+                  "at": [
+                    0,
+                    0.3
+                  ],
+                  "h": 1.4,
+                  "books": [
+                    11
+                  ],
+                  "desc": "The dragon’s lair near the crimson lunagree. Tress bargains here, and the spore-eating captain Crow is left in the dragon’s service."
+                }
+              ]
+            }
+          },
+          {
+            "id": "midnight",
+            "name": "The Midnight Sea",
+            "lat": -26.6,
+            "lon": 108,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "Black, warm spores, walled in by mountains on four sides; the Sorceress’s domain.",
+            "scene": {
+              "kind": "sea",
+              "size": "huge",
+              "water": true,
+              "tod": "night",
+              "weather": "spores"
+            }
+          },
+          {
+            "id": "sorceress",
+            "name": "The Sorceress’s island",
+            "lat": -30,
+            "lon": 76,
+            "books": [
+              11
+            ],
+            "desc": "A small, suspiciously round island in the Midnight Sea near the Crimson border, with a silver tower that is really a starship.",
+            "scene": {
+              "kind": "ruins",
+              "arch": "alien",
+              "size": "small",
+              "tod": "night",
+              "weather": "spores",
+              "landmarks": [
+                {
+                  "id": "tower",
+                  "name": "The silver tower",
+                  "kind": "tower",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 2,
+                  "books": [
+                    11
+                  ],
+                  "desc": "The Sorceress’s tower, coated in silver, which turns out to be a starship."
+                }
+              ]
+            }
+          },
+          {
+            "id": "rosesea",
+            "name": "The Rose Sea",
+            "lat": 26.6,
+            "lon": -72,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "A pink, inhabited sea bordering the Emerald.",
+            "scene": {
+              "kind": "sea",
+              "size": "huge",
+              "water": true,
+              "tod": "day",
+              "weather": "spores"
+            }
+          },
+          {
+            "id": "sapphire",
+            "name": "The Sapphire Sea",
+            "lat": 75,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "The blue Zephyr Sea in the north, home of the Islands of Lobu and the Zephyr Islands.",
+            "scene": {
+              "kind": "sea",
+              "size": "huge",
+              "water": true,
+              "tod": "day",
+              "weather": "spores"
+            }
+          },
+          {
+            "id": "lobu",
+            "name": "The Islands of Lobu",
+            "lat": 70,
+            "lon": 20,
+            "books": [
+              11
+            ],
+            "desc": "Large islands of the Sapphire Sea with a hunting culture; home of Fort and Salay.",
+            "scene": {
+              "kind": "wilds",
+              "arch": "rustic",
+              "size": "medium",
+              "tod": "day",
+              "weather": "clear"
+            }
+          }
+        ]
+      },
+      "events": [
+        {
+          "id": "e49",
+          "book": 11,
+          "world": "lumar",
+          "site": "rock",
+          "lm": "docks",
+          "title": "Tress sets sail",
+          "text": "When the duke’s son is sent off to the Sorceress, Tress leaves her island to get him back."
+        },
+        {
+          "id": "e113",
+          "book": 11,
+          "world": "lumar",
+          "site": "crimson",
+          "lm": "lair",
+          "title": "The dragon’s bargain",
+          "text": "On the Crimson Sea Tress bargains with the dragon Xisis, and Captain Crow ends up in the dragon’s service."
+        },
+        {
+          "id": "e50",
+          "book": 11,
+          "world": "lumar",
+          "site": "sorceress",
+          "lm": "tower",
+          "title": "The Sorceress’s island",
+          "text": "With a pirate crew and an unusual narrator, Tress reaches the Midnight Sea and forces the Sorceress to leave the world."
+        }
+      ],
+      "adjacentSites": [
+        {
+          "world": "threnody",
+          "id": "abyss",
+          "name": "The Lilting Abyss",
+          "lat": 10,
+          "lon": -15,
+          "sea": true,
+          "books": [
+            11
+          ],
+          "desc": "An extraordinarily deep trench in the ocean between the continents, mentioned in Tress.",
+          "scene": {
+            "kind": "sea",
+            "size": "huge",
+            "water": true,
+            "tod": "night",
+            "weather": "clear"
+          }
+        }
+      ],
+      "codex": [
+        {
+          "group": "people",
+          "name": "Hoid (Wit)",
+          "role": "Worldhopper",
+          "books": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            11,
+            12
+          ],
+          "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+          "more": [
+            [
+              7,
+              "He was on Yolen at the Shattering."
+            ],
+            [
+              11,
+              "Narrates Tress’s story."
+            ],
+            [
+              12,
+              "Goes to Scadrial for help after Roshar falls."
+            ]
+          ]
+        },
+        {
+          "group": "people",
+          "name": "Tress",
+          "role": "Cup collector",
+          "books": [
+            11
+          ],
+          "desc": "A practical girl from the Rock who becomes a captain."
+        },
+        {
+          "group": "ideas",
+          "name": "Worldhoppers",
+          "first": 3,
+          "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+          "more": [
+            [
+              7,
+              "Silverlight is their crossroads, and its codes set rules for visitors."
+            ],
+            [
+              11,
+              "By the 2023 books there are starships as well."
+            ]
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "h-sel-lum",
+          "pairs": [
+            [
+              "sel",
+              "lumar"
+            ]
+          ],
+          "book": 11,
+          "opacity": {
+            "all": 0.5,
+            "cur": 0.95,
+            "past": 0.35
+          },
+          "curve": 0.12
+        },
+        {
+          "id": "h-dhatri",
+          "pairs": [
+            [
+              "dhatri",
+              "lumar"
+            ]
+          ],
+          "book": 12,
+          "opacity": {
+            "all": 0.35,
+            "cur": 0.7,
+            "past": 0.3
+          },
+          "curve": 0.06
+        }
+      ]
+    },
+    {
+      "pr": 48,
+      "head": "61e26afb4514f4b9510f33ce9f8b0b7bbe84e964",
+      "blob": "05170eab9f4c10f18c98a6fac51cf825e63c8a56",
+      "worldsTotal": 60,
+      "world": {
+        "id": "lumar",
+        "name": "Lumar",
+        "group": "wider",
+        "books": [
+          11
+        ],
+        "first": 11,
+        "status": "World of the spore seas · near the Drominad system",
+        "star": {
+          "name": "Lumar’s sun",
+          "col": "#fff2dc"
+        },
+        "map": [
+          0.7353,
+          27.951,
+          0.01
+        ],
+        "est": true,
+        "distText": "Not on the star chart. Close to the Drominad system: under a year by sublight starship (moved apart here to be visible)",
+        "blurb": "There is no water to sail here. Twelve moons hang close overhead, and from each one spores rain down to make an ocean: an emerald sea, a crimson sea, a midnight sea and more. Touch spores with water and they burst. Tress, a girl who collects cups on a dull little island, sets out across these seas to rescue the boy she loves from a Sorceress.",
+        "short": "Seas of spores: Tress of the Emerald Sea.",
+        "eras": {
+          "12": {
+            "facts": [
+              [
+                "Moons",
+                "Twelve, each home to an aether"
+              ],
+              [
+                "Seas",
+                "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+              ],
+              [
+                "Network",
+                "Part of the Dhatrian planetary network"
+              ],
+              [
+                "Neighbour",
+                "First of the Sun, under a year by sublight ship"
+              ]
+            ]
+          }
+        },
+        "facts": [
+          [
+            "Moons",
+            "Twelve, each raining its own spore"
+          ],
+          [
+            "Seas",
+            "Emerald, Crimson, Midnight, Sapphire, Rose and more"
+          ],
+          [
+            "Danger",
+            "Spores erupt when wet"
+          ]
+        ],
+        "moons": [
+          {
+            "name": "Emerald moon",
+            "size": 0.16,
+            "dist": 2.2,
+            "speed": 0.05
+          },
+          {
+            "name": "Crimson moon",
+            "size": 0.14,
+            "dist": 2.6,
+            "speed": 0.045
+          },
+          {
+            "name": "Midnight moon",
+            "size": 0.15,
+            "dist": 3,
+            "speed": 0.04
+          },
+          {
+            "name": "Sapphire moon",
+            "size": 0.13,
+            "dist": 3.4,
+            "speed": 0.035
+          },
+          {
+            "name": "Rose moon",
+            "size": 0.12,
+            "dist": 3.8,
+            "speed": 0.03
+          },
+          {
+            "name": "Sunlight moon",
+            "size": 0.14,
+            "dist": 4.2,
+            "speed": 0.025
+          }
+        ],
+        "gfx": {
+          "type": "terran",
+          "sea": 0,
+          "freq": 1.2,
+          "rough": 0.15,
+          "bump": 0.4,
+          "ice": 90,
+          "pal": [
+            "#1a5a3a",
+            "#1a5a3a",
+            "#24804c",
+            "#2a8a52",
+            "#24804c",
+            "#2a8a52"
+          ],
+          "clouds": 0.15,
+          "atmo": "#d0ffe8",
+          "atmoK": 0.7,
+          "sw": "#2a8a52",
+          "feat": []
+        },
+        "sites": [
+          {
+            "id": "rock",
+            "name": "Diggen’s Point (the Rock)",
+            "lat": 27.3,
+            "lon": 0.6,
+            "books": [
+              11
+            ],
+            "desc": "A crooked finger of black saltstone in the Emerald Sea, 50 or 60 miles from the green lunagree, with a small town and the duke’s mansion near the top. Tress works here and collects cups."
+          },
+          {
+            "id": "emerald",
+            "name": "The Emerald Sea",
+            "lat": 26.6,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "The green Verdant Sea, Tress’s home sea, piled highest under its moon’s spore-fall."
+          },
+          {
+            "id": "kingsport",
+            "name": "Kingsport (Core Archipelago)",
+            "lat": 38.2,
+            "lon": -13.6,
+            "books": [
+              11
+            ],
+            "desc": "Probably the royal city of the Verdant king, in the Core Archipelago far from the Rock. Position is our placeholder."
+          },
+          {
+            "id": "crimson",
+            "name": "The Crimson Sea",
+            "lat": -26.6,
+            "lon": 36,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "Red spores that throw up spike-forests in sudden squalls. The dragon Xisis lies in a lair near its lunagree. It borders the Midnight Sea and is one of the few ways in."
+          },
+          {
+            "id": "midnight",
+            "name": "The Midnight Sea",
+            "lat": -26.6,
+            "lon": 108,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "Black, warm spores, walled in by mountains on four sides; the Sorceress’s domain."
+          },
+          {
+            "id": "sorceress",
+            "name": "The Sorceress’s island",
+            "lat": -30,
+            "lon": 76,
+            "books": [
+              11
+            ],
+            "desc": "A small, suspiciously round island in the Midnight Sea near the Crimson border, with a silver tower that is really a starship."
+          },
+          {
+            "id": "rosesea",
+            "name": "The Rose Sea",
+            "lat": 26.6,
+            "lon": -72,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "A pink, inhabited sea bordering the Emerald."
+          },
+          {
+            "id": "sapphire",
+            "name": "The Sapphire Sea",
+            "lat": 75,
+            "lon": 0,
+            "sea": true,
+            "books": [
+              11
+            ],
+            "desc": "The blue Zephyr Sea in the north, home of the Islands of Lobu and the Zephyr Islands."
+          },
+          {
+            "id": "lobu",
+            "name": "The Islands of Lobu",
+            "lat": 70,
+            "lon": 20,
+            "books": [
+              11
+            ],
+            "desc": "Large islands of the Sapphire Sea with a hunting culture; home of Fort and Salay."
+          }
+        ]
+      },
+      "events": [
+        {
+          "id": "e49",
+          "book": 11,
+          "world": "lumar",
+          "site": "rock",
+          "title": "Tress sets sail",
+          "text": "When the duke’s son is sent off to the Sorceress, Tress leaves her island to get him back."
+        },
+        {
+          "id": "e50",
+          "book": 11,
+          "world": "lumar",
+          "site": "sorceress",
+          "title": "The Sorceress’s island",
+          "text": "With a pirate crew and an unusual narrator, Tress reaches the Midnight Sea and forces the Sorceress to leave the world."
+        }
+      ],
+      "adjacentSites": [
+        {
+          "world": "threnody",
+          "id": "abyss",
+          "name": "The Lilting Abyss",
+          "lat": 10,
+          "lon": -15,
+          "sea": true,
+          "books": [
+            11
+          ],
+          "desc": "An extraordinarily deep trench in the ocean between the continents, mentioned in Tress."
+        }
+      ],
+      "codex": [
+        {
+          "group": "people",
+          "name": "Hoid (Wit)",
+          "role": "Worldhopper",
+          "books": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            11,
+            12
+          ],
+          "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+          "more": [
+            [
+              7,
+              "He was on Yolen at the Shattering."
+            ],
+            [
+              11,
+              "Narrates Tress’s story."
+            ],
+            [
+              12,
+              "Goes to Scadrial for help after Roshar falls."
+            ]
+          ]
+        },
+        {
+          "group": "people",
+          "name": "Tress",
+          "role": "Cup collector",
+          "books": [
+            11
+          ],
+          "desc": "A practical girl from the Rock who becomes a captain."
+        },
+        {
+          "group": "ideas",
+          "name": "Worldhoppers",
+          "first": 3,
+          "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+          "more": [
+            [
+              7,
+              "Silverlight is their crossroads, and its codes set rules for visitors."
+            ],
+            [
+              11,
+              "By the 2023 books there are starships as well."
+            ]
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "h-sel-lum",
+          "pairs": [
+            [
+              "sel",
+              "lumar"
+            ]
+          ],
+          "book": 11,
+          "opacity": {
+            "all": 0.5,
+            "cur": 0.95,
+            "past": 0.35
+          },
+          "curve": 0.12
+        },
+        {
+          "id": "h-dhatri",
+          "pairs": [
+            [
+              "dhatri",
+              "lumar"
+            ]
+          ],
+          "book": 12,
+          "opacity": {
+            "all": 0.35,
+            "cur": 0.7,
+            "past": 0.3
+          },
+          "curve": 0.06
+        }
+      ]
+    }
+  ]
+}

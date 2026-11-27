@@ -1,0 +1,935 @@
+{
+  "scope": "CA01 unit1/2 selected Canticle records; historical exact-head snapshots, not full canon approval",
+  "snapshots": [
+    {
+      "pr": 24,
+      "branch": "fix/lore-corrections",
+      "head": "cf25cda66e91c573c421a0f3712623db72737a3b",
+      "pack_blob": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "canticle": {
+        "id": "canticle",
+        "name": "Canticle",
+        "group": "wider",
+        "books": [
+          11,
+          12
+        ],
+        "first": 11,
+        "status": "Tiny world under a burning sun",
+        "star": {
+          "name": "Canticle’s sun",
+          "col": "#fff0c0"
+        },
+        "map": [
+          1.78,
+          27.49,
+          0
+        ],
+        "est": true,
+        "distText": "Not on the star chart: position unknown",
+        "hero": "union",
+        "blurb": "A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, rings light its night side, and a firestorm sweeps the sunset line. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.",
+        "short": "Cities racing the dawn: The Sunlit Man.",
+        "eras": {
+          "12": {
+            "blurb": "A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then moves on to another world. Identifying Nomad as Sigzil is a provisional account based on the Coppermind wiki; not independently checked against the book."
+          }
+        },
+        "facts": [
+          [
+            "Hazard",
+            "Sunlight that burns"
+          ],
+          [
+            "Power",
+            "Sunhearts"
+          ],
+          [
+            "Ruler",
+            "The Cinder King"
+          ],
+          [
+            "Rings",
+            "Yes, lighting the night side"
+          ]
+        ],
+        "ring": {
+          "inner": 1.5,
+          "outer": 2.3,
+          "c1": "#c8a080",
+          "c2": "#806050",
+          "tilt": 0.2
+        },
+        "gfx": {
+          "type": "lava",
+          "sea": 0.35,
+          "freq": 1.8,
+          "rough": 0.9,
+          "pal": [
+            "#1a0a08",
+            "#3a1a10",
+            "#3a3030",
+            "#4a3a34",
+            "#6a5a50",
+            "#a09088"
+          ],
+          "lava": "#ff7a30",
+          "clouds": 0.15,
+          "cloudCol": "#a08070",
+          "atmo": "#ffa060",
+          "atmoK": 0.7,
+          "lights": 0.3,
+          "sw": "#ff7a30"
+        },
+        "sites": [
+          {
+            "id": "union",
+            "name": "Union",
+            "lat": 20,
+            "lon": 10,
+            "books": [
+              11
+            ],
+            "desc": "The largest flying city, which has swallowed most others under the Cinder King."
+          },
+          {
+            "id": "beacon",
+            "name": "Beacon",
+            "lat": 30,
+            "lon": -30,
+            "books": [
+              11
+            ],
+            "desc": "A smaller flying city that keeps the Chorus, and the heart of the rebellion."
+          },
+          {
+            "id": "scadrianlab",
+            "name": "The Scadrian research facility",
+            "lat": -20,
+            "lon": 40,
+            "books": [
+              11
+            ],
+            "desc": "Offworld scientists studying the sunhearts and trading technology for them."
+          }
+        ]
+      },
+      "events": [
+        {
+          "id": "e53",
+          "book": 11,
+          "world": "canticle",
+          "site": "union",
+          "title": "Nomad lands",
+          "text": "Hunted by the Night Brigade, Nomad arrives on Canticle and is taken prisoner in Union."
+        },
+        {
+          "id": "e54",
+          "book": 11,
+          "world": "canticle",
+          "site": "beacon",
+          "title": "Beacon stands",
+          "text": "Nomad joins Beacon’s rebellion against the Cinder King, racing the sunrise."
+        }
+      ],
+      "codex": [
+        {
+          "path": "codex.1.list.0",
+          "record": {
+            "name": "Hoid (Wit)",
+            "role": "Worldhopper",
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              8,
+              9,
+              11,
+              12
+            ],
+            "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+            "more": [
+              [
+                7,
+                "He was on Yolen at the Shattering."
+              ],
+              [
+                11,
+                "Narrates Tress’s story."
+              ],
+              [
+                12,
+                "Goes to Scadrial for help after Roshar falls."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.1.list.18",
+          "record": {
+            "name": "Nomad",
+            "role": "Worldhopper",
+            "books": [
+              11
+            ],
+            "desc": "A haunted traveller on the run from the Night Brigade.",
+            "more": [
+              [
+                12,
+                "He is Sigzil of Bridge Four. This identification is a provisional account based on the Coppermind wiki; not independently checked against the book."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.2.list.2",
+          "record": {
+            "name": "Worldhoppers",
+            "first": 3,
+            "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+            "more": [
+              [
+                7,
+                "Silverlight is their crossroads, and its codes set rules for visitors."
+              ],
+              [
+                11,
+                "By the 2023 books there are starships as well."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.2.list.5",
+          "record": {
+            "name": "The Night Brigade",
+            "first": 11,
+            "desc": "A crew that hunts Nomad from world to world."
+          }
+        }
+      ],
+      "links": [
+        {
+          "path": "pack.galaxy.links.3",
+          "record": {
+            "id": "h-scad-can",
+            "pairs": [
+              [
+                "scadrial",
+                "canticle"
+              ]
+            ],
+            "book": 11,
+            "opacity": {
+              "all": 0.45,
+              "cur": 0.9,
+              "past": 0.3
+            },
+            "curve": 0.1
+          }
+        },
+        {
+          "path": "pack.galaxy.links.4",
+          "record": {
+            "id": "h-nomad2",
+            "pairs": [
+              [
+                "roshar",
+                "canticle"
+              ]
+            ],
+            "book": 12,
+            "opacity": {
+              "all": 0.5,
+              "cur": 0.95,
+              "past": 0.35
+            },
+            "curve": 0.12
+          }
+        }
+      ],
+      "proposal": {
+        "old": "It spins backwards, rings light its night side, and a firestorm sweeps the sunset line.",
+        "new": "It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning.",
+        "changed_paths": [
+          "pack.worlds.51.blurb"
+        ],
+        "restored_data_equal": true,
+        "single_source_occurrence": 1
+      }
+    },
+    {
+      "pr": 37,
+      "branch": "atlas/deep-worlds",
+      "head": "03394c32816fcb5c95261bf6a9ea4520381a5838",
+      "pack_blob": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "canticle": {
+        "id": "canticle",
+        "name": "Canticle",
+        "group": "wider",
+        "books": [
+          11,
+          12
+        ],
+        "first": 11,
+        "status": "Tiny world under a burning sun",
+        "star": {
+          "name": "Canticle’s sun",
+          "col": "#fff0c0"
+        },
+        "map": [
+          1.78,
+          27.49,
+          0
+        ],
+        "est": true,
+        "distText": "Not on the star chart: position unknown",
+        "hero": "union",
+        "blurb": "A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, rings light its night side, and a firestorm sweeps the sunset line. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.",
+        "short": "Cities racing the dawn: The Sunlit Man.",
+        "eras": {
+          "12": {
+            "blurb": "A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol."
+          }
+        },
+        "facts": [
+          [
+            "Hazard",
+            "Sunlight that burns"
+          ],
+          [
+            "Power",
+            "Sunhearts"
+          ],
+          [
+            "Ruler",
+            "The Cinder King"
+          ],
+          [
+            "Rings",
+            "Yes, lighting the night side"
+          ]
+        ],
+        "ring": {
+          "inner": 1.5,
+          "outer": 2.3,
+          "c1": "#c8a080",
+          "c2": "#806050",
+          "tilt": 0.2
+        },
+        "gfx": {
+          "type": "lava",
+          "sea": 0.35,
+          "freq": 1.8,
+          "rough": 0.9,
+          "pal": [
+            "#1a0a08",
+            "#3a1a10",
+            "#3a3030",
+            "#4a3a34",
+            "#6a5a50",
+            "#a09088"
+          ],
+          "lava": "#ff7a30",
+          "clouds": 0.15,
+          "cloudCol": "#a08070",
+          "atmo": "#ffa060",
+          "atmoK": 0.7,
+          "lights": 0.3,
+          "sw": "#ff7a30"
+        },
+        "sites": [
+          {
+            "id": "union",
+            "name": "Union",
+            "lat": 20,
+            "lon": 10,
+            "books": [
+              11
+            ],
+            "desc": "The largest flying city, which has swallowed most others under the Cinder King.",
+            "scene": {
+              "kind": "city",
+              "arch": "industrial",
+              "size": "large",
+              "tod": "dusk",
+              "weather": "ash",
+              "sky": {
+                "rings": true
+              },
+              "landmarks": [
+                {
+                  "id": "arena",
+                  "name": "The colosseum",
+                  "kind": "arena",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "h": 1.2,
+                  "books": [
+                    11
+                  ],
+                  "desc": "Union reshapes itself into an arena where captives fight the Charred. Nomad is chained and made to fight here."
+                },
+                {
+                  "id": "hall",
+                  "name": "The Hall of Burning",
+                  "kind": "hall",
+                  "at": [
+                    -0.5,
+                    0.4
+                  ],
+                  "books": [
+                    11
+                  ],
+                  "desc": "Where the Cinder King makes the Charred, people with embers for hearts."
+                },
+                {
+                  "id": "deck",
+                  "name": "The command deck",
+                  "kind": "throne",
+                  "at": [
+                    0.5,
+                    0.45
+                  ],
+                  "books": [
+                    11
+                  ],
+                  "desc": "The Cinder King controls the joined cities from here. Nomad faces him on Union’s deck and leaves him to the sunlight."
+                }
+              ]
+            }
+          },
+          {
+            "id": "beacon",
+            "name": "Beacon",
+            "lat": 30,
+            "lon": -30,
+            "books": [
+              11
+            ],
+            "desc": "A smaller flying city that keeps the Chorus, and the heart of the rebellion.",
+            "scene": {
+              "kind": "city",
+              "arch": "industrial",
+              "size": "medium",
+              "tod": "dusk",
+              "weather": "ash",
+              "sky": {
+                "rings": true
+              },
+              "landmarks": [
+                {
+                  "id": "reliquary",
+                  "name": "The Reliquary",
+                  "kind": "shrine",
+                  "at": [
+                    0,
+                    0.3
+                  ],
+                  "books": [
+                    11
+                  ],
+                  "desc": "Home of the Chorus, the shades of Beacon’s dead, who help build its new engines."
+                },
+                {
+                  "id": "engines",
+                  "name": "The engines",
+                  "kind": "reactor",
+                  "at": [
+                    0,
+                    -0.4
+                  ],
+                  "h": 1.2,
+                  "books": [
+                    11
+                  ],
+                  "desc": "Steam engines that use water for thrust, powered by sunhearts, which let Beacon rise above the thin-air limit and outrun the dawn."
+                }
+              ]
+            }
+          },
+          {
+            "id": "scadrianlab",
+            "name": "The Scadrian research facility",
+            "lat": -20,
+            "lon": 40,
+            "books": [
+              11
+            ],
+            "desc": "Offworld scientists studying the sunhearts and trading technology for them.",
+            "scene": {
+              "kind": "underground",
+              "arch": "modern",
+              "size": "small",
+              "tod": "night",
+              "weather": "clear",
+              "under": true,
+              "landmarks": [
+                {
+                  "id": "refuge",
+                  "name": "The Refuge",
+                  "kind": "ship",
+                  "at": [
+                    0,
+                    0
+                  ],
+                  "books": [
+                    11
+                  ],
+                  "desc": "A Scadrian research ship under the surface. Its scientists have worked with the Cinder King and keep a jar of Dor that Nomad needs to escape."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "events": [
+        {
+          "id": "e53",
+          "book": 11,
+          "world": "canticle",
+          "site": "union",
+          "lm": "arena",
+          "fx": "duel",
+          "title": "Nomad lands",
+          "text": "Hunted by the Night Brigade, Nomad arrives on Canticle and is taken prisoner in Union."
+        },
+        {
+          "id": "e54",
+          "book": 11,
+          "world": "canticle",
+          "site": "beacon",
+          "lm": "engines",
+          "title": "Beacon stands",
+          "text": "Nomad joins Beacon’s rebellion against the Cinder King, racing the sunrise."
+        },
+        {
+          "id": "e116",
+          "book": 11,
+          "world": "canticle",
+          "site": "scadrianlab",
+          "lm": "refuge",
+          "title": "The Refuge",
+          "text": "Scadrian scientists hidden under the surface refuse to help Beacon and keep from Nomad the Dor he needs to leave."
+        },
+        {
+          "id": "e117",
+          "book": 11,
+          "world": "canticle",
+          "site": "union",
+          "lm": "deck",
+          "fx": "duel",
+          "title": "The Cinder King falls",
+          "text": "Nomad faces the Cinder King on Union’s deck, drains his power and Skips away as the sunlight takes him."
+        }
+      ],
+      "codex": [
+        {
+          "path": "codex.1.list.0",
+          "record": {
+            "name": "Hoid (Wit)",
+            "role": "Worldhopper",
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              8,
+              9,
+              11,
+              12
+            ],
+            "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+            "more": [
+              [
+                7,
+                "He was on Yolen at the Shattering."
+              ],
+              [
+                11,
+                "Narrates Tress’s story."
+              ],
+              [
+                12,
+                "Goes to Scadrial for help after Roshar falls."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.1.list.18",
+          "record": {
+            "name": "Nomad",
+            "role": "Worldhopper",
+            "books": [
+              11
+            ],
+            "desc": "A haunted traveller on the run from the Night Brigade.",
+            "more": [
+              [
+                12,
+                "He is Sigzil of Bridge Four."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.2.list.2",
+          "record": {
+            "name": "Worldhoppers",
+            "first": 3,
+            "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+            "more": [
+              [
+                7,
+                "Silverlight is their crossroads, and its codes set rules for visitors."
+              ],
+              [
+                11,
+                "By the 2023 books there are starships as well."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.2.list.5",
+          "record": {
+            "name": "The Night Brigade",
+            "first": 11,
+            "desc": "A crew that hunts Nomad from world to world."
+          }
+        }
+      ],
+      "links": [
+        {
+          "path": "pack.galaxy.links.3",
+          "record": {
+            "id": "h-scad-can",
+            "pairs": [
+              [
+                "scadrial",
+                "canticle"
+              ]
+            ],
+            "book": 11,
+            "opacity": {
+              "all": 0.45,
+              "cur": 0.9,
+              "past": 0.3
+            },
+            "curve": 0.1
+          }
+        },
+        {
+          "path": "pack.galaxy.links.4",
+          "record": {
+            "id": "h-nomad2",
+            "pairs": [
+              [
+                "roshar",
+                "canticle"
+              ]
+            ],
+            "book": 12,
+            "opacity": {
+              "all": 0.5,
+              "cur": 0.95,
+              "past": 0.35
+            },
+            "curve": 0.12
+          }
+        }
+      ],
+      "proposal": {
+        "old": "It spins backwards, rings light its night side, and a firestorm sweeps the sunset line.",
+        "new": "It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning.",
+        "changed_paths": [
+          "pack.worlds.51.blurb"
+        ],
+        "restored_data_equal": true,
+        "single_source_occurrence": 1
+      }
+    },
+    {
+      "pr": 48,
+      "branch": "feature/cosmere-reading-state",
+      "head": "b202db06188bc11a694e5232ee0ce983882a7fb8",
+      "pack_blob": "ad08f0d153576859e9d4fa64f691148c6bb9db56",
+      "canticle": {
+        "id": "canticle",
+        "name": "Canticle",
+        "group": "wider",
+        "books": [
+          11,
+          12
+        ],
+        "first": 11,
+        "status": "Tiny world under a burning sun",
+        "star": {
+          "name": "Canticle’s sun",
+          "col": "#fff0c0"
+        },
+        "map": [
+          1.78,
+          27.49,
+          0
+        ],
+        "est": true,
+        "distText": "Not on the star chart: position unknown",
+        "hero": "union",
+        "blurb": "A tiny planet whose sunlight burns anything it touches, so whole cities fly around the world just ahead of the dawn. It spins backwards, rings light its night side, and a firestorm sweeps the sunset line. A stranger called Nomad lands here, hunted from world to world, and is captured by the people of the Cinder King, who rules the cities through power cells called sunhearts.",
+        "short": "Cities racing the dawn: The Sunlit Man.",
+        "eras": {
+          "12": {
+            "blurb": "A tiny planet whose sunlight burns anything it touches, so cities fly around the world ahead of the dawn. The stranger Nomad, who is Sigzil of Bridge Four years after leaving Roshar, helps the people of Beacon overthrow the Cinder King, then Skips on to UTol."
+          }
+        },
+        "facts": [
+          [
+            "Hazard",
+            "Sunlight that burns"
+          ],
+          [
+            "Power",
+            "Sunhearts"
+          ],
+          [
+            "Ruler",
+            "The Cinder King"
+          ],
+          [
+            "Rings",
+            "Yes, lighting the night side"
+          ]
+        ],
+        "ring": {
+          "inner": 1.5,
+          "outer": 2.3,
+          "c1": "#c8a080",
+          "c2": "#806050",
+          "tilt": 0.2
+        },
+        "gfx": {
+          "type": "lava",
+          "sea": 0.35,
+          "freq": 1.8,
+          "rough": 0.9,
+          "pal": [
+            "#1a0a08",
+            "#3a1a10",
+            "#3a3030",
+            "#4a3a34",
+            "#6a5a50",
+            "#a09088"
+          ],
+          "lava": "#ff7a30",
+          "clouds": 0.15,
+          "cloudCol": "#a08070",
+          "atmo": "#ffa060",
+          "atmoK": 0.7,
+          "lights": 0.3,
+          "sw": "#ff7a30"
+        },
+        "sites": [
+          {
+            "id": "union",
+            "name": "Union",
+            "lat": 20,
+            "lon": 10,
+            "books": [
+              11
+            ],
+            "desc": "The largest flying city, which has swallowed most others under the Cinder King."
+          },
+          {
+            "id": "beacon",
+            "name": "Beacon",
+            "lat": 30,
+            "lon": -30,
+            "books": [
+              11
+            ],
+            "desc": "A smaller flying city that keeps the Chorus, and the heart of the rebellion."
+          },
+          {
+            "id": "scadrianlab",
+            "name": "The Scadrian research facility",
+            "lat": -20,
+            "lon": 40,
+            "books": [
+              11
+            ],
+            "desc": "Offworld scientists studying the sunhearts and trading technology for them."
+          }
+        ]
+      },
+      "events": [
+        {
+          "id": "e53",
+          "book": 11,
+          "world": "canticle",
+          "site": "union",
+          "title": "Nomad lands",
+          "text": "Hunted by the Night Brigade, Nomad arrives on Canticle and is taken prisoner in Union."
+        },
+        {
+          "id": "e54",
+          "book": 11,
+          "world": "canticle",
+          "site": "beacon",
+          "title": "Beacon stands",
+          "text": "Nomad joins Beacon’s rebellion against the Cinder King, racing the sunrise."
+        }
+      ],
+      "codex": [
+        {
+          "path": "codex.1.list.0",
+          "record": {
+            "name": "Hoid (Wit)",
+            "role": "Worldhopper",
+            "books": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              8,
+              9,
+              11,
+              12
+            ],
+            "desc": "A storyteller who turns up on almost every world under another name, older than he looks.",
+            "more": [
+              [
+                7,
+                "He was on Yolen at the Shattering."
+              ],
+              [
+                11,
+                "Narrates Tress’s story."
+              ],
+              [
+                12,
+                "Goes to Scadrial for help after Roshar falls."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.1.list.18",
+          "record": {
+            "name": "Nomad",
+            "role": "Worldhopper",
+            "books": [
+              11
+            ],
+            "desc": "A haunted traveller on the run from the Night Brigade.",
+            "more": [
+              [
+                12,
+                "He is Sigzil of Bridge Four."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.2.list.2",
+          "record": {
+            "name": "Worldhoppers",
+            "first": 3,
+            "desc": "People who cross between worlds, usually through the Cognitive Realm.",
+            "more": [
+              [
+                7,
+                "Silverlight is their crossroads, and its codes set rules for visitors."
+              ],
+              [
+                11,
+                "By the 2023 books there are starships as well."
+              ]
+            ]
+          }
+        },
+        {
+          "path": "codex.2.list.5",
+          "record": {
+            "name": "The Night Brigade",
+            "first": 11,
+            "desc": "A crew that hunts Nomad from world to world."
+          }
+        }
+      ],
+      "links": [
+        {
+          "path": "pack.galaxy.links.3",
+          "record": {
+            "id": "h-nomad",
+            "path": [
+              "canticle",
+              "komashi"
+            ],
+            "book": 11,
+            "opacity": {
+              "all": 0.5,
+              "cur": 0.95,
+              "past": 0.35
+            },
+            "curve": 0.12
+          }
+        },
+        {
+          "path": "pack.galaxy.links.4",
+          "record": {
+            "id": "h-scad-can",
+            "pairs": [
+              [
+                "scadrial",
+                "canticle"
+              ]
+            ],
+            "book": 11,
+            "opacity": {
+              "all": 0.45,
+              "cur": 0.9,
+              "past": 0.3
+            },
+            "curve": 0.1
+          }
+        },
+        {
+          "path": "pack.galaxy.links.5",
+          "record": {
+            "id": "h-nomad2",
+            "pairs": [
+              [
+                "roshar",
+                "canticle"
+              ]
+            ],
+            "book": 12,
+            "opacity": {
+              "all": 0.5,
+              "cur": 0.95,
+              "past": 0.35
+            },
+            "curve": 0.12
+          }
+        }
+      ],
+      "proposal": {
+        "old": "It spins backwards, rings light its night side, and a firestorm sweeps the sunset line.",
+        "new": "It spins backwards, and rings light its night side. A powerful storm follows sunset, bringing wind, rain, and lightning.",
+        "changed_paths": [
+          "pack.worlds.51.blurb"
+        ],
+        "restored_data_equal": true,
+        "single_source_occurrence": 1
+      }
+    }
+  ]
+}

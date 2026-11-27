@@ -1,0 +1,132 @@
+# Raw pnpm test:browser stdout. Summary lines: run/start/exit/duration/round trip.
+
+===== 14bbbac UNCOUNTED first attempt (run 5 killed by tool timeout) =====
+--- run 1 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 2 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 3 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 4 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 25, restoredCount: 25, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 5 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+ ELIFECYCLE  Command failed.
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.textContent: Target page, context or browser has been closed
+  log: []
+}
+
+Node.js v22.23.4
+
+===== 14bbbac COUNTED set =====
+run 1 start=21:58:59Z rc=0 dur=130.442730164s Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+run 2 start=22:01:10Z rc=0 dur=133.211252072s Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+run 3 start=22:03:23Z rc=0 dur=135.226171471s Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+run 4 start=22:05:38Z rc=0 dur=132.566828774s Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+run 5 start=22:07:51Z rc=0 dur=131.229709544s Paused Save/Clear/Load round trip: { savedCount: 22, restoredCount: 22, wasRunning: true }
+DONE
+--- run 1 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 2 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 3 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 4 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 5 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/universe-sandbox
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 22, restoredCount: 22, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+
+===== fdec175 (PR47 1acc2ea + repair) COUNTED set =====
+run 1 start=22:11:13Z rc=0 dur=74.578359537s Paused Save/Clear/Load round trip: { savedCount: 25, restoredCount: 25, wasRunning: true }
+run 2 start=22:12:27Z rc=0 dur=76.007332925s Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+run 3 start=22:13:44Z rc=0 dur=71.465877852s Paused Save/Clear/Load round trip: { savedCount: 22, restoredCount: 22, wasRunning: true }
+run 4 start=22:14:55Z rc=0 dur=69.567613043s Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+run 5 start=22:16:05Z rc=0 dur=73.232715665s Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+DONE
+--- run 1 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/int47
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 25, restoredCount: 25, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 2 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/int47
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 3 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/int47
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 22, restoredCount: 22, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 4 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/int47
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+--- run 5 log ---
+
+> universe-sandbox@0.1.0 test:browser /home/claude/int47
+> node tests/browser-smoke.mjs
+
+Paused Save/Clear/Load round trip: { savedCount: 29, restoredCount: 29, wasRunning: true }
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.

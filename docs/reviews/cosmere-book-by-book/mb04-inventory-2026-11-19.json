@@ -1,0 +1,390 @@
+{
+  "scope": "Repository lexical/record inventory and extracted actual-source helper checks only; no full-book or browser audit",
+  "inputHashes": [
+    {
+      "file": "pack48.js",
+      "expected": "a76929639d9cc848e2c52bcaa39622fde3cf239c",
+      "actual": "a76929639d9cc848e2c52bcaa39622fde3cf239c"
+    },
+    {
+      "file": "pack24.js",
+      "expected": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958",
+      "actual": "3ff0aab059fa54e00f6e2ccc7b849d4bd206d958"
+    },
+    {
+      "file": "pack37.js",
+      "expected": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33",
+      "actual": "5a74e300eaf88b2d3c81fa9bc957584cd4708e33"
+    },
+    {
+      "file": "reading.js",
+      "expected": "4d9bc177294e5e33accf6f19825ef467f0bb90d4",
+      "actual": "4d9bc177294e5e33accf6f19825ef467f0bb90d4"
+    },
+    {
+      "file": "engine.js",
+      "expected": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0",
+      "actual": "0bc5357a2043f3939512bc5b091eb4ffbbf1c5d0"
+    }
+  ],
+  "inventory": [
+    {
+      "pr": 48,
+      "counts": {
+        "worlds": 60,
+        "sites": 174,
+        "events": 63,
+        "codex": 41
+      },
+      "sourceMatches": [
+        {
+          "line": 259,
+          "text": "        {id: \"the-eleventh-metal\", title: \"The Eleventh Metal\", y: 2011, bucket: 7},"
+        }
+      ],
+      "contentMatches": [],
+      "bibliography": [
+        {
+          "id": "the-eleventh-metal",
+          "title": "The Eleventh Metal",
+          "y": 2011,
+          "bucket": 7
+        }
+      ],
+      "overlaps": {
+        "scadrial": {
+          "id": "scadrial",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            7,
+            10,
+            12
+          ],
+          "gate": null,
+          "gates": {
+            "blurb": {
+              "in": [
+                "mistborn-the-final-empire"
+              ],
+              "req": "mistborn-the-final-empire"
+            },
+            "short": {
+              "in": [
+                "mistborn-the-final-empire"
+              ],
+              "req": "mistborn-the-final-empire"
+            },
+            "facts": {
+              "in": [
+                "mistborn-the-final-empire"
+              ],
+              "req": "mistborn-the-final-empire"
+            }
+          }
+        },
+        "e7": {
+          "id": "e7",
+          "book": 2,
+          "world": "scadrial",
+          "site": "hathsin",
+          "title": "The survivor of Hathsin",
+          "text": "Kelsier is known as the Survivor of Hathsin; scars cover his hands and arms."
+        },
+        "hathsin": {
+          "id": "hathsin",
+          "name": "Pits of Hathsin",
+          "lat": 74.12,
+          "lon": -1.85,
+          "books": [
+            2
+          ],
+          "desc": "The atium mines, worked by skaa prisoners, where Kelsier survived and Snapped. Ruin’s pool lay below them.",
+          "until": 6
+        },
+        "kelsier": {
+          "name": "Kelsier",
+          "role": "The Survivor",
+          "books": [
+            2,
+            7,
+            12
+          ],
+          "desc": "Leader of the crew that brings down the Lord Ruler.",
+          "more": [
+            [
+              7,
+              "His story continues after death in Secret History."
+            ],
+            [
+              12,
+              "Works with the Ghostbloods far from Scadrial."
+            ]
+          ]
+        },
+        "scadrialBook7": [
+          {
+            "id": "e34",
+            "book": 7,
+            "world": "scadrial",
+            "title": "Mistborn: Secret History",
+            "text": "What Kelsier did after his death, and how he looked into the wider cosmere."
+          }
+        ]
+      }
+    },
+    {
+      "pr": 24,
+      "counts": {
+        "worlds": 60,
+        "sites": 174,
+        "events": 63,
+        "codex": 41
+      },
+      "sourceMatches": [],
+      "contentMatches": [],
+      "bibliography": [],
+      "overlaps": {
+        "scadrial": {
+          "id": "scadrial",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            7,
+            10,
+            12
+          ],
+          "gate": null,
+          "gates": null
+        },
+        "e7": {
+          "id": "e7",
+          "book": 2,
+          "world": "scadrial",
+          "site": "hathsin",
+          "title": "The survivor of Hathsin",
+          "text": "Kelsier’s past: he lived through the Pits when his wife did not, and came out with every Allomantic power."
+        },
+        "hathsin": {
+          "id": "hathsin",
+          "name": "Pits of Hathsin",
+          "lat": 74.12,
+          "lon": -1.85,
+          "books": [
+            2
+          ],
+          "desc": "The atium mines, worked by skaa prisoners, where Kelsier survived and Snapped. Ruin’s pool lay below them.",
+          "until": 6
+        },
+        "kelsier": {
+          "name": "Kelsier",
+          "role": "The Survivor",
+          "books": [
+            2,
+            7,
+            12
+          ],
+          "desc": "Leader of the crew that brings down the Lord Ruler.",
+          "more": [
+            [
+              7,
+              "His story continues after death in Secret History."
+            ],
+            [
+              12,
+              "Works with the Ghostbloods far from Scadrial."
+            ]
+          ]
+        },
+        "scadrialBook7": [
+          {
+            "id": "e34",
+            "book": 7,
+            "world": "scadrial",
+            "title": "Mistborn: Secret History",
+            "text": "What Kelsier did after his death, and how he looked into the wider cosmere."
+          }
+        ]
+      }
+    },
+    {
+      "pr": 37,
+      "counts": {
+        "worlds": 60,
+        "sites": 175,
+        "events": 120,
+        "codex": 57
+      },
+      "sourceMatches": [],
+      "contentMatches": [],
+      "bibliography": [],
+      "overlaps": {
+        "scadrial": {
+          "id": "scadrial",
+          "first": 2,
+          "books": [
+            2,
+            6,
+            7,
+            10,
+            12
+          ],
+          "gate": null,
+          "gates": null
+        },
+        "e7": null,
+        "hathsin": {
+          "id": "hathsin",
+          "name": "Pits of Hathsin",
+          "lat": 74.12,
+          "lon": -1.85,
+          "books": [
+            2
+          ],
+          "desc": "The atium mines, worked by skaa prisoners, where Kelsier survived and Snapped. Ruin’s pool lay below them.",
+          "until": 6,
+          "scene": {
+            "kind": "crater",
+            "arch": "ancient",
+            "size": "medium",
+            "tod": "dusk",
+            "weather": "ash",
+            "landmarks": [
+              {
+                "id": "pits",
+                "name": "The atium cracks",
+                "kind": "crater",
+                "at": [
+                  0,
+                  0
+                ],
+                "h": 1.2,
+                "books": [
+                  2
+                ],
+                "desc": "Prisoners crawl into the cracks to find atium geodes and seldom last a year. Kelsier survived here when his wife did not. At the end of the trilogy Elend makes his last stand here against the koloss."
+              },
+              {
+                "id": "refuge",
+                "name": "The Terris refuge",
+                "kind": "camp",
+                "at": [
+                  0.5,
+                  0.4
+                ],
+                "books": [
+                  2
+                ],
+                "desc": "In The Hero of Ages the Terris people shelter here, and none of them die of the mist sickness."
+              }
+            ]
+          }
+        },
+        "kelsier": {
+          "name": "Kelsier",
+          "role": "The Survivor",
+          "books": [
+            2,
+            7,
+            12
+          ],
+          "desc": "Leader of the crew that brings down the Lord Ruler.",
+          "more": [
+            [
+              7,
+              "His story continues after death in Secret History."
+            ],
+            [
+              12,
+              "Works with the Ghostbloods far from Scadrial."
+            ]
+          ]
+        },
+        "scadrialBook7": [
+          {
+            "id": "e34",
+            "book": 7,
+            "world": "scadrial",
+            "title": "Mistborn: Secret History",
+            "text": "What Kelsier did after his death, and how he looked into the wider cosmere."
+          }
+        ]
+      }
+    }
+  ],
+  "gates": {
+    "registryOK": true,
+    "bucket2": [
+      "mistborn-the-final-empire",
+      "mistborn-the-well-of-ascension",
+      "mistborn-the-hero-of-ages"
+    ],
+    "worldGate": [
+      {
+        "kind": "expr",
+        "req": [
+          [
+            "mistborn-the-final-empire",
+            "mistborn-the-well-of-ascension",
+            "mistborn-the-hero-of-ages"
+          ]
+        ],
+        "needs": null,
+        "unreviewed": true
+      }
+    ],
+    "cases": [
+      [
+        "MB04 only world",
+        false,
+        false
+      ],
+      [
+        "empty world",
+        false,
+        false
+      ],
+      [
+        "MB01 only world",
+        false,
+        false
+      ],
+      [
+        "bucket2 world",
+        true,
+        true
+      ],
+      [
+        "MB04 only hypothetical event",
+        false,
+        false
+      ],
+      [
+        "bucket2 only hypothetical event",
+        false,
+        false
+      ],
+      [
+        "bucket2 plus MB04 hypothetical event",
+        true,
+        true
+      ],
+      [
+        "MB04 isolated hypothetical own gate",
+        true,
+        true
+      ]
+    ]
+  },
+  "checks": {
+    "hashes": "5/5",
+    "gateCases": "8/8"
+  },
+  "limitations": [
+    "Lexical absence does not exclude unnamed or indirect story claims.",
+    "Synthetic event is not an implemented record.",
+    "No full-story reading, independent map verification, browser execution or release approval."
+  ]
+}

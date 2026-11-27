@@ -1,0 +1,411 @@
+{
+  "seed": "ee700d153e91d854e583eb867dd40d0cc21ecfec:AUDIT_CHECKLIST-4",
+  "poolCount": 313,
+  "sample": [
+    {
+      "key": "node:jud-reform-uk-historical",
+      "entry": {
+        "id": "jud-reform-uk-historical",
+        "name": "Movement for Reform Judaism (UK)",
+        "kind": "organization",
+        "layers": [
+          "jud"
+        ],
+        "world": "earth",
+        "blurb": "The British Reform organization, before its 2026 merger. Not world Reform Judaism.",
+        "parent": "judaism",
+        "parentType": "within",
+        "parentRel": "grouped in this overview",
+        "undated": true,
+        "whenText": "Before the 2026 merger"
+      },
+      "rank": "013be88d63aeb7f99a1539e9ef48d4d7f67fe9718a5864a1fa1f716c2119bbd7"
+    },
+    {
+      "key": "codex:places:jud-seesen",
+      "entry": {
+        "id": "jud-seesen",
+        "name": "Seesen",
+        "role": "City · Judaism · no map point",
+        "first": 1,
+        "layers": [
+          "jud"
+        ],
+        "desc": "Israel Jacobson’s temple inauguration in Seesen (1810) is an early Reform milestone."
+      },
+      "rank": "01d578cf2e9b3c66cd2a03183bfb83e89c7ce488c4fc5d2c21360ea7c2c83e4a"
+    },
+    {
+      "key": "node:jud-shalom-center",
+      "entry": {
+        "id": "jud-shalom-center",
+        "name": "The Shalom Center",
+        "kind": "organization",
+        "layers": [
+          "jud"
+        ],
+        "world": "earth",
+        "blurb": "One of the two organizations named in ALEPH’s account of its 1993 formation. No claim that it then ceased all independent activity.",
+        "parent": "judaism",
+        "parentType": "within",
+        "parentRel": "grouped in this overview",
+        "undated": true,
+        "whenText": "Before 1993"
+      },
+      "rank": "023b54c2a11c929a196d5666bdcdaa3c049473ab7e8ddddc1d7983c03b809f6e"
+    },
+    {
+      "key": "codex:places:ISP01",
+      "entry": {
+        "id": "ISP01",
+        "name": "Mecca (Makkah)",
+        "role": "City · Islam · no map point",
+        "first": 1,
+        "layers": [
+          "isl"
+        ],
+        "desc": "Muhammad’s early setting and his point of departure for Medina."
+      },
+      "rank": "024957de951cfb730750afb730aa7c3e171321b3dcc7b1b3490914ebb6d27e21"
+    },
+    {
+      "key": "codex:people:jud-moses",
+      "entry": {
+        "id": "jud-moses",
+        "name": "Moses",
+        "role": "Narrative figure · Judaism",
+        "first": 1,
+        "layers": [
+          "jud"
+        ],
+        "desc": "The mediator of the covenant in Exodus 19."
+      },
+      "rank": "02f8572515b8539a6d09c3fabf6354e85d4d1b2e487b568f04fd0581ca45dbc7"
+    },
+    {
+      "key": "node:jud-orthodox",
+      "entry": {
+        "id": "jud-orthodox",
+        "name": "Orthodox Judaism",
+        "kind": "modern umbrella",
+        "layers": [
+          "jud"
+        ],
+        "world": "earth",
+        "blurb": "Orthodox Judaism includes distinct forms of observance and community. Modern Orthodox and Haredi are useful distinctions in the cited US study, not a complete global taxonomy.",
+        "parent": "judaism",
+        "parentType": "within",
+        "parentRel": "grouped in this overview",
+        "undated": true,
+        "ongoing": true,
+        "whenText": "Modern; no single founder",
+        "notSame": [
+          {
+            "id": "ch-eastern-orthodox",
+            "t": "Eastern Orthodox Christianity: a shared English word does not identify the same religion."
+          }
+        ]
+      },
+      "rank": "02fdafd468f5f2e747ca6f6d764fb6158e7e551cfa9b7de77ca1f541f7aad5e5"
+    },
+    {
+      "key": "event:che-nicaea",
+      "entry": {
+        "id": "che-nicaea",
+        "book": 1,
+        "world": "earth",
+        "layers": [
+          "chr"
+        ],
+        "title": "Council of Nicaea",
+        "text": "Constantine convened the Council of Nicaea. It did not invent Christianity or create the complete biblical canon.",
+        "when": 325,
+        "whenText": "325",
+        "ref": "chp-nicaea"
+      },
+      "rank": "04003442af192d319e45dd4b183ed8d239f2e14b985f2077e51bcae28c1e5fe5"
+    },
+    {
+      "key": "node:ch-millerite-context",
+      "entry": {
+        "id": "ch-millerite-context",
+        "name": "Advent (Millerite) movement",
+        "kind": "historical movement",
+        "layers": [
+          "chr"
+        ],
+        "world": "earth",
+        "blurb": "The nineteenth-century Advent movement: antecedent context, not an institutional parent of every Adventist or Witness body.",
+        "parent": "christianity",
+        "parentType": "within",
+        "parentRel": "grouped in this overview",
+        "undated": true,
+        "whenText": "Nineteenth century"
+      },
+      "rank": "0430eead22bdf60816145c891271f931d75ea3ac191f873ddfef7d6c59c9413a"
+    },
+    {
+      "key": "codex:people:ISH04",
+      "entry": {
+        "id": "ISH04",
+        "name": "Fatima",
+        "role": "Daughter of Muhammad · Islam",
+        "first": 1,
+        "layers": [
+          "isl"
+        ],
+        "desc": "Muhammad’s daughter, married to Ali."
+      },
+      "rank": "04442bb32083652a56042e71e46d1f43e79ceba62661dae4ff7f36059826b78a"
+    },
+    {
+      "key": "node:ist11",
+      "entry": {
+        "id": "ist11",
+        "name": "Hafizi Musta’lis",
+        "kind": "historical Musta’li tradition",
+        "layers": [
+          "isl"
+        ],
+        "world": "earth",
+        "blurb": "Hafizi allegiance supported al-Hafiz and later Fatimid imams.",
+        "parent": "ist09",
+        "parentType": "division",
+        "parentRel": "succession-division",
+        "undated": true,
+        "whenText": "After 1130 / 524 AH",
+        "notes": [
+          {
+            "k": "scholarship",
+            "t": "A historical node, not a current population estimate."
+          }
+        ]
+      },
+      "rank": "053ca4a0b39780f81def5bcd2c745e38a9b19241e135e1ee85bc083580247325"
+    },
+    {
+      "key": "node:jud-aleph",
+      "entry": {
+        "id": "jud-aleph",
+        "name": "ALEPH: Alliance for Jewish Renewal",
+        "kind": "organization",
+        "layers": [
+          "jud"
+        ],
+        "world": "earth",
+        "blurb": "ALEPH describes its formation through the merger of P’nai Or and the Shalom Center in 1993.",
+        "merge": [
+          "jud-pnai-or",
+          "jud-shalom-center"
+        ],
+        "parentRel": "institutional-merger",
+        "when": 1993,
+        "ongoing": true,
+        "notes": [
+          {
+            "k": "scholarship",
+            "t": "An organizational expression of Renewal, not every Renewal participant."
+          }
+        ]
+      },
+      "rank": "0593a1c98b2f11346c580d6593e424c8316ca727013ada9445c6824277f0a59f"
+    },
+    {
+      "key": "codex:places:ISP03",
+      "entry": {
+        "id": "ISP03",
+        "name": "Hira",
+        "role": "Mountain setting near Mecca · Islam · no map point",
+        "first": 1,
+        "layers": [
+          "isl"
+        ],
+        "desc": "The setting of the first-revelation tradition. No cave coordinate is supplied."
+      },
+      "rank": "059477381b96401415ec3bae5481270398ee4962be91f70525a08e43e896390b"
+    },
+    {
+      "key": "event:ISE15",
+      "entry": {
+        "id": "ISE15",
+        "book": 1,
+        "world": "earth",
+        "layers": [
+          "isl"
+        ],
+        "title": "Pakistan’s 1974 classification",
+        "text": "Pakistan’s constitutional amendment classified Ahmadis as non-Muslims. A state action, not a change in adherents’ self-identification.",
+        "when": 1974,
+        "whenText": "1974",
+        "side": "Pakistan · jurisdiction-level reference"
+      },
+      "rank": "05951388bc6f4ab4979f53bf42211dc0b9bd5c05499428f1887cc436576f1b24"
+    },
+    {
+      "key": "codex:journeys:ch-spread-anglican",
+      "entry": {
+        "id": "ch-spread-anglican",
+        "name": "A global Anglican network",
+        "role": "Regional spread · Christianity",
+        "first": 1,
+        "layers": [
+          "chr"
+        ],
+        "desc": "Overseas mission and later provincial autonomy formed a global Anglican network, not one permanent English jurisdiction. Shown as an ordered list, not a drawn route: no surveyed path or geocoded waypoint is supported."
+      },
+      "rank": "05ab100a0649a7e6c6ef5ccd98e3d451c5bcf7a52fd2f55d046cb926bf1b9425"
+    },
+    {
+      "key": "codex:places:baghdad",
+      "entry": {
+        "id": "baghdad",
+        "name": "Baghdad",
+        "role": "City · Encounters · no map point",
+        "first": 1,
+        "layers": [
+          "enc"
+        ],
+        "desc": "The official Bahá’í history places Bahá’u’lláh’s announcement here in 1863. Not the same as ancient Babylon."
+      },
+      "rank": "0601a50961e696305de1c68508d1378a5eae7215f5738890ed527d44e5c8414b"
+    },
+    {
+      "key": "node:jud-reform-progressive",
+      "entry": {
+        "id": "jud-reform-progressive",
+        "name": "Reform / Progressive Judaism",
+        "kind": "family of movements",
+        "layers": [
+          "jud"
+        ],
+        "world": "earth",
+        "blurb": "Reform developed in nineteenth-century Germany and spread internationally, adapting inherited practice to new settings.",
+        "parent": "judaism",
+        "parentType": "within",
+        "parentRel": "grouped in this overview",
+        "emerge": [
+          1801,
+          1900
+        ],
+        "whenText": "Nineteenth-century Germany",
+        "ongoing": true,
+        "notes": [
+          {
+            "k": "scholarship",
+            "t": "An umbrella, not the name of every national organization. Seesen (1810) and Hamburg (1818) are early milestones, not one founding act for all Reform communities."
+          }
+        ]
+      },
+      "rank": "06bd5db9989f46a07942e1fc453236cf3efd901a3f318a8bd672799181f46fd1"
+    },
+    {
+      "key": "node:ism01",
+      "entry": {
+        "id": "ism01",
+        "name": "Ahmadiyya Muslim Community",
+        "kind": "self-identified Islamic revival movement",
+        "layers": [
+          "isl"
+        ],
+        "world": "earth",
+        "blurb": "The Community identifies itself as Muslim and dates its founding by Mirza Ghulam Ahmad to 1889.",
+        "parent": "islam",
+        "parentType": "within",
+        "parentRel": "self-identifies-with (the Community’s own description)",
+        "when": 1889,
+        "ongoing": true,
+        "whenText": "1889 (the Community’s own dating)",
+        "notes": [
+          {
+            "k": "self",
+            "t": "The Community’s self-name and self-identification as Muslim. Its Messiah claim is adherents’ belief."
+          },
+          {
+            "k": "note",
+            "t": "External classification: USCIRF’s 2026 report records Pakistan’s 1974 constitutional classification of Ahmadis as non-Muslims. A dated state classification in one jurisdiction, not a worldwide consensus and not this atlas’s verdict."
+          }
+        ]
+      },
+      "rank": "08cc397dec9b1f790eb2b6bad327e7623a36c99f8483ea951791ab247f526ac1"
+    },
+    {
+      "key": "event:jud-e07",
+      "entry": {
+        "id": "jud-e07",
+        "book": 1,
+        "world": "earth",
+        "layers": [
+          "jud"
+        ],
+        "title": "Hasidism develops",
+        "text": "Hasidism develops as a Jewish mystical movement around Israel Baal Shem Tov and his disciples. Dynastic succession and biographical legends are not set out here.",
+        "when": [
+          1701,
+          1800
+        ],
+        "whenText": "Eighteenth century; no single founding day",
+        "side": "Eastern Europe · regional context, no map point"
+      },
+      "rank": "08d62bd4a8994db9c26994cc32925f4b8da803b2acfb8bcaafc3d8b988378332"
+    },
+    {
+      "key": "node:ist02",
+      "entry": {
+        "id": "ist02",
+        "name": "Sunni Islam",
+        "kind": "tradition",
+        "layers": [
+          "isl"
+        ],
+        "world": "earth",
+        "blurb": "Sunni interpretation gives authority to the Qur’an, prophetic practice and scholarly consensus.",
+        "parent": "islam",
+        "parentType": "within",
+        "parentRel": "tradition-within",
+        "undated": true,
+        "ongoing": true,
+        "whenText": "Developed after the 632 succession question; no single founding date",
+        "notes": [
+          {
+            "k": "scholarship",
+            "t": "A classification, not a shared founding-date claim. Not two complete modern denominations appearing in 632."
+          }
+        ]
+      },
+      "rank": "092786cf7ba2d6979aaea848a073ffec6105010c44eeed54941aae6e118d5663"
+    },
+    {
+      "key": "node:ch-stone-campbell",
+      "entry": {
+        "id": "ch-stone-campbell",
+        "name": "Stone–Campbell movement",
+        "kind": "movement (union)",
+        "layers": [
+          "chr"
+        ],
+        "world": "earth",
+        "blurb": "The Stone and Campbell movements sought Christian unity and restoration through their nineteenth-century movement.",
+        "merge": [
+          "ch-stone-movement",
+          "ch-campbell-movement"
+        ],
+        "parentRel": "merger",
+        "undated": true,
+        "whenText": "31 December 1831 handshake; 1 January 1832 union",
+        "notSame": [
+          {
+            "id": "ch-latter-day-saint",
+            "t": "Joseph Smith’s restoration movement: shared restoration language does not establish a common institutional parent."
+          }
+        ],
+        "notes": [
+          {
+            "k": "scholarship",
+            "t": "The Disciples’ chronology keeps the 31 December handshake and the 1 January union as two dates in one merger history."
+          }
+        ]
+      },
+      "rank": "0989d88ee085c3226b97789688749d5b5efbc1198df9073e26c8297f1c98337f"
+    }
+  ]
+}

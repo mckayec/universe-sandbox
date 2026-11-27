@@ -24,6 +24,8 @@ import { activePointers, app, bodies } from '../state/app-state.ts';
 import { recordHistory, snapshotUniverse } from '../state/history.ts';
 import { noteActivity, select, toast } from './feed.ts';
 import { closeObjectMenu, openObjectMenu } from './inspector.ts';
+import { kidsPlacementDone } from './kids.ts';
+import { pendingPlacementValid } from '../kids-mode.ts';
 
 // Reused per-event temporaries (pointermove fires at display rate during pans and pinches).
 const tmpCenter = new THREE.Vector2(),
@@ -71,6 +73,15 @@ function bodyAtPointer() {
   return hits.length ? fromHit(hits[0].object) : null;
 }
 
+function placementGate() {
+  return {
+    epoch: app.placementEpoch,
+    placementMode: app.placementMode,
+    kidsMode: app.kidsMode,
+    kidsArmed: app.kidsArmed,
+  };
+}
+
 function beginTouchGesture() {
   const points = [...activePointers.values()].slice(0, 2),
     dx = points[1].x - points[0].x,
@@ -95,6 +106,17 @@ function beginTouchGesture() {
 
 export function bindPointerEvents() {
   renderer.domElement.addEventListener('contextmenu', e => e.preventDefault());
+  // A tap on the canvas must never become a click on a control that moved under the finger:
+  // placing a body opens the selected-object sheet, which shifts the compact dock (and Clear all) upward.
+  // Pointer events still drive placement, selection and dragging; only the synthetic click is dropped.
+  // After a drag or pinch the touchend is not cancelable (and no click follows), so leave it alone there.
+  renderer.domElement.addEventListener(
+    'touchend',
+    e => {
+      if (e.cancelable) e.preventDefault();
+    },
+    { passive: false },
+  );
   renderer.domElement.addEventListener('pointerdown', e => {
     noteActivity();
     app.cameraTransition = null;
@@ -121,8 +143,11 @@ export function bindPointerEvents() {
       return;
     }
     if (e.button !== 0) return;
-    if (app.navigationMode) {
+    // Kids Explore (Add not armed): a tap selects, a drag pans; objects are never dragged or flung.
+    const kidsExplore = app.kidsMode && !app.kidsArmed;
+    if (app.navigationMode || kidsExplore) {
       closeObjectMenu();
+      if (kidsExplore && hit) select(hit);
       app.panning = true;
       app.didPan = false;
       app.rightContextBody = null;
@@ -145,9 +170,11 @@ export function bindPointerEvents() {
           pointerId: e.pointerId,
           screen: new THREE.Vector2(e.clientX, e.clientY),
           world: world.clone(),
+          epoch: app.placementEpoch,
         };
       else {
         const placed = placeSelected(world.clone());
+        kidsPlacementDone();
         if (app.selectedBuilder === 'body') {
           app.dragBody = placed;
           dragStart.copy(placed.mesh.position);
@@ -195,6 +222,11 @@ export function bindPointerEvents() {
         return;
       }
       if (
+        app.pendingTouchPlacement?.pointerId === e.pointerId &&
+        !pendingPlacementValid(app.pendingTouchPlacement, placementGate())
+      )
+        app.pendingTouchPlacement = null;
+      if (
         app.placementMode &&
         app.pendingTouchPlacement?.pointerId === e.pointerId &&
         activePointers.size === 1 &&
@@ -203,6 +235,7 @@ export function bindPointerEvents() {
         app.selectedBuilder === 'body'
       ) {
         app.dragBody = placeSelected(app.pendingTouchPlacement.world.clone());
+        kidsPlacementDone();
         dragStart.copy(app.dragBody.mesh.position);
         setPointer(e);
         dragPoint.copy(world);
@@ -257,8 +290,12 @@ export function bindPointerEvents() {
       return;
     }
     if (app.pendingTouchPlacement?.pointerId === e.pointerId) {
-      setPointer(e);
-      placeSelected(world.clone());
+      // Validate immediately before placing: a cancel during the hold must not place on release (SC6-K1).
+      if (pendingPlacementValid(app.pendingTouchPlacement, placementGate())) {
+        setPointer(e);
+        placeSelected(world.clone());
+        kidsPlacementDone();
+      }
       app.pendingTouchPlacement = null;
       if (renderer.domElement.hasPointerCapture(e.pointerId)) renderer.domElement.releasePointerCapture(e.pointerId);
       return;

@@ -1,0 +1,37 @@
+FAIL 1440x900 OT set: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 OT set: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 OT set surface: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 OT set surface: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 OT+bucket6: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 OT+bucket6: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 realm switch cognitive: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 realm switch cognitive: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 realm switch physical: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 realm switch physical: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 legacy book=2: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 legacy book=2: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 legacy book=6: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 legacy book=6: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 legacy book=10: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 legacy book=10: no system-chart order attribution in Scadrial dossier
+FAIL 1440x900 All: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 1440x900 All: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 OT set: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 OT set: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 OT set surface: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 OT set surface: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 OT+bucket6: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 OT+bucket6: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 realm switch cognitive: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 realm switch cognitive: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 realm switch physical: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 realm switch physical: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 legacy book=2: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 legacy book=2: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 legacy book=6: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 legacy book=6: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 legacy book=10: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 legacy book=10: no system-chart order attribution in Scadrial dossier
+FAIL 390x844 All: Distance row is the Scadrial qualifier (System drawn enlarged; planet order from the system chart)
+FAIL 390x844 All: no system-chart order attribution in Scadrial dossier
+{"pass":169,"fail":36}

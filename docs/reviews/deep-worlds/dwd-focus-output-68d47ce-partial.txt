@@ -1,0 +1,6 @@
+PASS 1440 5 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 1440 5 Storm Gods on (rendered click) raises sea | true -6→419.0060622321506
+PASS 1440 5 Storm Gods off returns sea (fast mode) | false -6
+FAIL 1440 stale V→IV inside Tyche (storms on) leaves scene | {"m":"site","c":"Tyche"}
+PASS 1440 6 fresh: toggle unpressed, sea steady | false -6→-6
+PASS 1440 6 Storm Gods on (rendered click) raises sea | true -6→405.01011738471175

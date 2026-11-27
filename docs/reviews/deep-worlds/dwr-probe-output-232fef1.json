@@ -1,0 +1,38 @@
+{
+  "checks": 22,
+  "pass": 22,
+  "fail": 0,
+  "engine_event": {
+    "id": "b2n",
+    "book": 2,
+    "site": "tree",
+    "siteBooks": [
+      1,
+      2
+    ]
+  },
+  "results": [
+    "A1 positive: uninterrupted heliofall fires EMP once",
+    "A2 downgrade: stopFx cancels the pending EMP timer",
+    "A2 downgrade: EMP does not fire",
+    "A3 downgrade then return: stale EMP stays cancelled",
+    "A3 fresh replay after return fires once",
+    "A4 same-book stop: even a leaked callback re-checks the live instance",
+    "A5 replay: old instance callback is inert",
+    "A5 replay: new instance fires once",
+    "A6 generation change without stopFx: callback rejects",
+    "A7 clearForBook bumps navGen and stops effects",
+    "B1 positive: uninterrupted book-II event plays at tree",
+    "B2 II→I during the place transition: no effect, b2n not restored",
+    "B3 II→I inside the 500 ms continuation window: cancelled",
+    "B4 II→I after evInPlace scheduled the effect: playback cancelled",
+    "B5 defence in depth: ineligible event rejected even without a generation bump",
+    "B6 repeated downgrade/return: stale continuation stays cancelled",
+    "B6 fresh entry after return plays",
+    "B7 destination/site change: continuation rejected",
+    "B8 world change: continuation rejected",
+    "B8 selectWorld bumps generation",
+    "B9 book handler bumps generation",
+    "B10 leave/openEvent bump generation"
+  ]
+}

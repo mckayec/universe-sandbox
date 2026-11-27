@@ -1,0 +1,31 @@
+# Licanius build recheck
+
+**Pack #50 `766a7627fcac419ae2ca8294ceb16ba02b50e3e5` (`pack/licanius`), incorporating engine #49 `eb316b18acb4adfd03efa72795e2e8b6e7ff65c4`. Both returned findings are resolved.**
+
+| ID | Severity | Pack lines | Resolution verified |
+|---|---|---|---|
+| LB-01 | Medium | 123–137 | LE04 now describes Wirr trying to hold the alliance together. The card preserves Ilin Illan, the book-III gate and the publisher-premise locator. The publisher explicitly leaves the outcome in doubt. [Book III description](https://www.hachettebookgroup.com/titles/james-islington/the-light-of-all-that-falls/9780316274173/) |
+| LB-02 | Low | 15–17, 299–300, 311–312 | The journey and coverage notes correctly limit what the atlas can draw. The ordered stops remain intact. The author places the Boundary north of Andarra and recounts travel north, so a blanket claim that the sources supply no geography would have been inaccurate. [Glossary and map](https://jamesislington.com/world.html) · [Author recap, pp. 17–18](https://jamesislington.com/EchoRecap.pdf) |
+
+The pack delta against the 29/29-record audit below changes LE04 and the geography language. I confirmed the integrated engine's ancestry, ran the **11/11 pack tests** and **10/10 shared gate tests**, and validated the pack with zero errors and zero warnings. [Exact-head CI](https://github.com/mckayec/universe-sandbox/actions/runs/45937912470) passed build, unit, distribution, standalone pages and touch checks. The [separate browser smoke and captures](build-fix-766a762.md) are Claude's evidence.
+
+Whole-novel coverage remains 0/3. The independent research corroboration count remains 2/10, and all three book-III cards still rely on publisher premises. Return the bounded seed for final canon after Claude reconciles the addendum.
+
+# Licanius build audit
+
+Reviewed PR #50 `48055796b7148bf190cfbd12f230ee05f9da536e`. The branch contains engine `a7df00fdc429b5db6e7093b6e72d562843fa508b`; shared PR #49 is now `b2935646d09856f7aef98d5d130caa5930a7d286`. This review applies to the actual pack branch. **Return two corrections to Claude.**
+
+| ID | Severity | Location in `public/atlas/packs/licanius.js` | Finding and evidence | Suggested fix |
+|---|---|---|---|---|
+| LB-01 | Medium | 123–134, especially 133 (LE04) | The publisher gives Wirr an objective in Ilin Illan and leaves success in doubt. The card states that he maintains the alliance. The seed inherited the stronger wording from research. The “publisher premise” label cannot correct the verb. [Publisher description](https://www.hachettebookgroup.com/titles/james-islington/the-light-of-all-that-falls/9780316274173/) | “In Ilin Illan, Wirr tries to hold Andarra’s rival factions together.” Keep the book-3 gate and premise label. LE03’s repaired Boundary and the presence of Banes are independently supported by the same description. |
+| LB-02 | Low | 15, 298, 309 | The atlas says the sources give no geography. Its own cards document north/south and proximity, and its recap gives a travel direction and destination. The author also publishes a map of Andarra. The seed lacks verified positions for rendering. [Book-1 recap, p. 1](https://jamesislington.com/ShadowRecap.pdf) · [Books 1–2 recap, pp. 16, 18](https://jamesislington.com/EchoRecap.pdf) · [Author’s map and glossary](https://jamesislington.com/world.html) | “These cards show the places and ordered stops documented in the recaps. This atlas has no verified coordinates or measured routes.” Keep the atlas nonspatial. No map import is needed. |
+
+## Records and gates
+
+Compared all 29/29 seed records to [research](research.md), its [corrections](research-addendum.md), the [independent review](independent-review.md) and [builder’s dispositions](research-review.md). The added world grouping is editorial. All 13/13 place records, 7/7 events, 3/3 journeys and 6/6 concepts are accounted for. The Caladel school label is editorial, the Ilin Illan investigation keeps its corrected wording, and the history entries preserve LR-02. The author’s accounts of the original group, the fate of the Darecians, and divergent explanations of the mission support those distinctions. The first-book Res Kartha card describes a dwelling without exposing its later history. Temporal displacement stays outside the itinerary.
+
+Reopened both author recaps and both U.S. publisher descriptions. Checked the Caladel departure and Desriel–Deilannis sequence, the north/south Boundary relation, Asha’s investigation, Davian’s confinement at Tol Shen, Deldri’s assistance at Daren Tel, the return to the capital, and the northward party’s arrival. The last-book source establishes a marketing premise for 3/3 book-3 cards, with the qualification in LB-01. These are retrospective or publisher sources. Whole-novel coverage remains 0/3 and the research ledger’s independent corroboration remains 2/10. [Book-1 recap](https://jamesislington.com/ShadowRecap.pdf) · [Books 1–2 recap](https://jamesislington.com/EchoRecap.pdf) · [Book 2](https://www.hachettebookgroup.com/titles/james-islington/an-echo-of-things-to-come/9780316274128/) · [Book 3](https://www.hachettebookgroup.com/titles/james-islington/the-light-of-all-that-falls/9780316274173/).
+
+Ran the exact pack’s 10/10 focused tests. They cover counts, conservative gates, cross-references, the three premise cards, the LR corrections and the absence of coordinates. They cannot detect the wording differences above. Inspected the supplied phone capture of Ilin Illan at II: it shows the capital’s source, the gated investigation, and the journey link. The later coalition event is absent. [Build report and screenshots](build-report.md) · [Exact-head CI](https://github.com/mckayec/universe-sandbox/actions/runs/45927942129).
+
+Return the resolutions with the new pack SHA and the integrated engine SHA. The edition, rights wording, novel-text and remaining corroboration gaps carry forward.

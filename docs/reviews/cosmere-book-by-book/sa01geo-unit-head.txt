@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+ok 1 - NA01-GEO-01/02 payload: exact two Nalthis descriptions; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 35.162863
+  type: 'test'
+  ...
+# Subtest: NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+ok 2 - NA01-GEO-01/02 visibility: Nalthis and its sites identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 87.531142
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+ok 3 - CBR-04 realmCard + realmLook: unread valid field gate (fixture)
+  ---
+  duration_ms: 10.505777
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+ok 4 - CBR-04 realmCard + realmLook: present-invalid field gate (fixture)
+  ---
+  duration_ms: 3.496049
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+ok 5 - CBR-04 realmCard + realmLook: satisfied field gate (fixture)
+  ---
+  duration_ms: 2.545518
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+ok 6 - CBR-04 realmCard + realmLook: absent field gate inherits the visible world
+  ---
+  duration_ms: 2.551412
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+ok 7 - CBR-04 realmCard + realmLook: legacy book 4 ignores the per-work field gate
+  ---
+  duration_ms: 3.94036
+  type: 'test'
+  ...
+# Subtest: CBR-04 realmCard + realmLook: All ignores the per-work field gate
+ok 8 - CBR-04 realmCard + realmLook: All ignores the per-work field gate
+  ---
+  duration_ms: 5.020616
+  type: 'test'
+  ...
+# Subtest: CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+ok 9 - CBR-04: allowed → denied while the world is open downgrades card and look; denied → allowed restores
+  ---
+  duration_ms: 2.690921
+  type: 'test'
+  ...
+# Subtest: CBR-04: applyRd re-applies the realm look to the open planet before refresh
+ok 10 - CBR-04: applyRd re-applies the realm look to the open planet before refresh
+  ---
+  duration_ms: 0.280734
+  type: 'test'
+  ...
+# Subtest: SA01-GEO-01/02 payload: exact two Roshar descriptions; whole pack otherwise equal to the parent
+ok 11 - SA01-GEO-01/02 payload: exact two Roshar descriptions; whole pack otherwise equal to the parent
+  ---
+  duration_ms: 30.533862
+  type: 'test'
+  ...
+# Subtest: SA01-GEO-01/02 visibility: Roshar and its sites identical to the parent across All, legacy, eligible and insufficient sets
+ok 12 - SA01-GEO-01/02 visibility: Roshar and its sites identical to the parent across All, legacy, eligible and insufficient sets
+  ---
+  duration_ms: 116.346846
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+ok 13 - SEL03-E30-01 payload: exact e30 record, no gate/gates/lm/fx; neighbours, order, site and Sel unchanged; old wording gone
+  ---
+  duration_ms: 10.171961
+  type: 'test'
+  ...
+# Subtest: SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+ok 14 - SEL03-E30-01 visibility: identical to the parent pack across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 76.955028
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+ok 15 - SEL03-GEO-01/02 payload: exact four Sel book-7 sites and order; only the two descriptions differ from the parent
+  ---
+  duration_ms: 30.390419
+  type: 'test'
+  ...
+# Subtest: SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+ok 16 - SEL03-GEO-01/02 visibility: Sel and its four book-7 sites identical to the parent across All, legacy, sufficient and incomplete sets
+  ---
+  duration_ms: 72.923499
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 980.370219

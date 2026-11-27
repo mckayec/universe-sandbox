@@ -1,0 +1,14 @@
+target parent-117ecba http://127.0.0.1:4174/
+PASS 1440x900 cosmere-b10 C0 primed: tour step 1 rendered in place at bilming with e47 (view=place sel=scadrial site=bilming rendered=bilming ev=e47 hash=#book=10&world=scadrial&site=bilming&view=place&lm=shaw hlen=3 tour=1 / 2 builds=bilming)
+PASS 1440x900 cosmere-b10 C0 control: single Next arrives once at elendel/e48 (view=place sel=scadrial site=elendel rendered=elendel ev=e48 hash=#book=10&world=scadrial&site=elendel&view=place hlen=3 tour=2 / 2 builds=elendel; hlen 3->3)
+PASS 1440x900 cosmere-b10 C0 page errors: none
+HARNESS ERROR page.evaluate: Error: control not visible: #tourBox [data-tour="pause"]
+    at eval (eval at evaluate (:311:30), <anonymous>:3:38)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at tourClick (docs/reviews/deep-worlds/dwt02-rendered-probe.cjs:115:26)
+    at prime (docs/reviews/deep-worlds/dwt02-rendered-probe.cjs:128:9)
+    at async pair (docs/reviews/deep-worlds/dwt02-rendered-probe.cjs:183:9)
+    at async docs/reviews/deep-worlds/dwt02-rendered-probe.cjs:300:67 {
+  log: []
+}

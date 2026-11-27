@@ -56,7 +56,28 @@ function csv(file: string): Record<string, string>[] {
   return rows.map(r => Object.fromEntries(head.map((h, i) => [h, r[i] ?? ''])));
 }
 
-test('only the ten approved anchors are map pins, at their source coordinates', () => {
+// Q01 supported reference packages (build-audit/q01-coordinate-continuation-20261101.md, baseline
+// q01-anchor-dispositions.csv at bc7efce): pack id -> [lat, lon, source id]. Antioch is supported but held
+// (no built record names it); the five unresolved packages stay reference cards (Najaf has no card).
+const Q01: Record<string, [number, number, string]> = {
+  ISP01: [21.45, 39.816667, 'TGN 7003870'],
+  ISP02: [24.5, 39.583333, 'TGN 7003869'],
+  ISP06: [32.016667, 44.383333, 'TGN 7018612'],
+  shiraz: [29.633333, 52.566667, 'TGN 7002148'],
+  baghdad: [33.35, 44.416667, 'TGN 7002482'],
+  acre: [32.923611, 35.068889, '1220-007'],
+  'chp-nicaea': [40.4266, 29.7168, '404297PNic'],
+  'chp-ephesus': [37.941389, 27.340556, '1018rev-002'],
+  'chp-chalcedon': [40.9834, 29.0258, '410290PCha'],
+  'jud-alexandria': [31.182, 29.897, '312299PAle'],
+  'jud-new-york': [40.7, -74, 'TGN 7007567'],
+  'jud-philadelphia': [39.95, -75.15, 'TGN 7014406'],
+  'chp-zurich': [47.366667, 8.55, 'TGN 7007302'],
+  'jud-hamburg': [53.55, 10, 'TGN 7005289'],
+  xian: [34.258333, 108.928611, 'TGN 7001810'],
+};
+
+test('only the approved anchors are map pins, at their source coordinates', () => {
   const gaz = csv('gazetteer-evidence.csv');
   const expected: Record<string, [number, number]> = {
     jerusalem: [31.777778, 35.231667],
@@ -64,6 +85,8 @@ test('only the ten approved anchors are map pins, at their source coordinates', 
   };
   for (const g of gaz) expected[g.id] = [Number(g.latitude), Number(g.longitude)];
   assert.equal(Object.keys(expected).length, 10);
+  for (const [id, [lat, lon]] of Object.entries(Q01)) expected[id] = [lat, lon];
+  assert.equal(Object.keys(expected).length, 25);
   assert.deepEqual([...earth.sites.map((s: { id: string }) => s.id)].sort(), Object.keys(expected).sort());
   for (const s of earth.sites) {
     assert.ok(Math.abs(s.lat - expected[s.id][0]) < 1e-6, `${s.id} lat`);
@@ -77,6 +100,25 @@ test('heritage markers say they are heritage references, not event sites', () =>
       s.notes.some((n: { t: string }) => /Heritage reference/.test(n.t)),
       `${s.id} lacks the heritage note`,
     );
+});
+
+test('Q01 markers carry a reference caveat, their source id and no exact-event claim', () => {
+  for (const [id, [, , srcId]] of Object.entries(Q01)) {
+    const s = earth.sites.find((x: { id: string }) => x.id === id);
+    assert.ok(s, id);
+    const text = s.notes.map((n: { t: string }) => n.t).join(' ');
+    assert.match(text, /(Approximate|Heritage) reference/, `${id} caveat`);
+    assert.ok(text.includes('Coordinate source: ') && text.includes(srcId), `${id} source`);
+    assert.ok(s.modern.includes(srcId), `${id} label names its source`);
+  }
+  const cards = new Set(
+    pack.codex.find((t: { id: string }) => t.id === 'places').list.map((c: { id: string }) => c.id),
+  );
+  for (const id of ['ISP05', 'chp-fayette', 'chp-azusa', 'jud-seesen', 'chp-antioch'])
+    assert.ok(cards.has(id) && !earth.sites.some((x: { id: string }) => x.id === id), `${id} stays a card`);
+  assert.ok(!earth.sites.some((x: { name: string }) => /Antioch|Najaf|Karbala/.test(x.name)));
+  for (const e of pack.events.filter((x: { site?: string }) => x.site && Q01[x.site]))
+    assert.ok(!('ref' in e), `${e.id} has both site and ref`);
 });
 
 test('every researched place is either a pin or a reference card without coordinates', () => {
@@ -276,8 +318,9 @@ test('Islam is its own tradition, and no school, order or tradition gets an inve
   assert.equal(nodeBy.get('ist08').when, 1094);
   for (const x of pack.events.filter((v: { id: string }) => /^ISE/.test(v.id))) {
     assert.ok(x.whenText, `${x.id} needs the source wording`);
-    assert.ok(x.site == null, `${x.id}: no coordinates in the Islam dossier`);
-    assert.ok(x.ref || x.side, `${x.id}: a reference card or a reason for no place`);
+    // Islam dossier gives no event coordinates; only Q01 city reference markers may be attached
+    assert.ok(x.site == null || Q01[x.site] != null, `${x.id}: no coordinates in the Islam dossier`);
+    assert.ok(x.site || x.ref || x.side, `${x.id}: a marker, a reference card or a reason for no place`);
   }
   const e = new Map<string, any>(pack.events.map((x: { id: string }) => [x.id, x]));
   assert.match(e.get('ISE14').whenText, /1866/);
@@ -324,7 +367,11 @@ test('every comparative record in the crosswalk is built', () => {
     if (r.entity_type === 'event') assert.ok(evById.has(id), `event ${id}`);
     else if (r.entity_type === 'region-context')
       continue; // Iran: named in XJ01's text, not a place card
-    else assert.ok(codexIds.has(id) || nodeBy.has(id) || nodeBy.has(id.toLowerCase()), `${r.entity_type} ${id}`);
+    else
+      assert.ok(
+        codexIds.has(id) || nodeBy.has(id) || nodeBy.has(id.toLowerCase()) || Q01[id] != null,
+        `${r.entity_type} ${id}`,
+      );
   }
   assert.match((tab('journeys').find(c => c.id === 'XJ01') as any).desc, /Iran/);
   assert.equal(pack.events.filter((e: { id: string }) => /^XE\d+$/.test(e.id)).length, 6);
@@ -371,8 +418,8 @@ test('encounter dates keep different kinds of evidence apart', () => {
   assert.equal(evById.get('XE06').when, 1963);
   for (const id of ['XE01', 'XE02', 'XE03', 'XE04', 'XE05', 'XE06']) {
     const x = evById.get(id);
-    assert.ok(x.site == null, `${id}: no coordinates`);
-    assert.ok(x.ref || x.side, `${id}: a card or a reason`);
+    assert.ok(x.site == null || Q01[x.site] != null, `${id}: no coordinates`);
+    assert.ok(x.site || x.ref || x.side, `${id}: a marker, a card or a reason`);
   }
   const bahai = nodeBy.get('bahai-faith');
   assert.ok(
@@ -395,4 +442,100 @@ test('population estimates carry their year and measure and are never summed', (
   assert.match(pop.find(c => c.id === 'XD07').desc, /not assigned to any one tradition/);
   assert.match(pop.find(c => c.id === 'xd-about').desc, /not added together/);
   assert.ok(!pop.some(c => /total|combined world/i.test(c.name) && c.id !== 'XD07'));
+});
+
+// ABR01–ABR04 (build audit at bc7efce, copy-comparison.md): no invented numeric bounds behind vague dates.
+const engine: { window: Record<string, any> } = { window: {} };
+for (const f of ['layers.js', 'tree-rel.js', 'tree.js'])
+  vm.runInNewContext(readFileSync(new URL('../public/atlas/' + f, import.meta.url), 'utf8'), engine);
+const ELY = engine.window.AtlasLayers;
+const ETR = engine.window.AtlasTree;
+const ELAY = ELY.normLayers(pack);
+const ETL = ELY.normTimeline(pack, []);
+const ET = ETR.normTree(pack, ETL, ELAY);
+const normBy = new Map<string, any>(ET.nodes.map((n: { id: string }) => [n.id, n]));
+
+test('ABR01/ABR03: vague formation dates carry no numeric span and are never filtered out', () => {
+  const cases: [string, string, boolean][] = [
+    ['ch-baptist', 'Early 1600s', true],
+    ['ch-pentecostal', 'Early 1900s', true],
+    ['jud-ananites', 'Eighth century', false],
+    ['ch-early-communities', 'First century CE', false],
+    ['ch-stone-campbell', '31 December 1831 handshake; 1 January 1832 union', false],
+    ['ch-strang-movement', '1844–47 succession period', false],
+  ];
+  for (const [id, text, ongoing] of cases) {
+    const n = nodeBy.get(id);
+    assert.equal(n.emerge, undefined, `${id} has emerge`);
+    assert.equal(n.when, undefined, `${id} has when`);
+    assert.equal(n.undated, true, `${id} is not undated`);
+    assert.equal(n.whenText, text, `${id} lost its source-worded date`);
+    assert.equal(!!n.ongoing, ongoing, `${id} ongoing changed`);
+    const t = normBy.get(id);
+    assert.ok(t, `${id} dropped from the tree`);
+    assert.equal(t.when, null, `${id} has a filter year`);
+    for (const y of [101, 801, 1631, 1833, 1848, 1931, 2000])
+      assert.ok(ELY.timeOk(t, [y, y]), `${id} filtered out at ${y}`);
+  }
+  // the merger structure and the dated Second Temple period are untouched
+  assert.deepEqual([...nodeBy.get('ch-stone-campbell').merge], ['ch-stone-movement', 'ch-campbell-movement']);
+  assert.equal(nodeBy.get('ch-early-communities').site, 'jerusalem');
+});
+
+test('ABR02: the Amman Message relation and the two Shi’i schools are worded as the source gives them', () => {
+  for (const id of ['isl05', 'isl06', 'isl07', 'isl08']) {
+    const n = nodeBy.get(id);
+    assert.equal(n.parentRel, 'legal school named in the Amman Message');
+    assert.equal(n.parent, 'islam');
+    assert.equal(n.undated, true);
+  }
+  assert.equal(
+    nodeBy.get('isl05').blurb,
+    'The Amman Message names the Ja’fari school among its two Shi’i schools of jurisprudence.',
+  );
+  assert.equal(
+    nodeBy.get('isl06').blurb,
+    'The Amman Message names the Zaydi school among its two Shi’i schools of jurisprudence.',
+  );
+  assert.doesNotMatch(JSON.stringify(pack), /no further classification given/);
+  assert.equal(nodeBy.get('isl06').notSame[0].id, 'ist07');
+  assert.equal(nodeBy.get('isl07').notSame[0].id, 'ist04');
+});
+
+test('ABR04: ISE07 and ISE11 keep their qualified wording and have no narrowing filter year', () => {
+  const ev = (id: string) => pack.events.find((e: { id: string }) => e.id === id);
+  assert.equal(ev('ISE07').whenText, 'Traditionally 874–941, then 941 onward');
+  assert.equal(ev('ISE11').whenText, 'After 1130 / 524 AH');
+  for (const id of ['ISE07', 'ISE11']) {
+    assert.equal(ev(id).when, undefined, `${id} has a numeric when`);
+    for (const y of [942, 1131, 1500]) assert.ok(ELY.timeOk(ev(id), [y, y]), `${id} filtered out at ${y}`);
+  }
+  assert.equal(ev('ISE11').ref, 'cairo');
+});
+
+test('Q01-R3-L1: the source note counts match the built markers', () => {
+  const q01 = earth.sites.filter((s: { notes: { t: string }[] }) => s.notes.some(n => /^Coordinate source:/.test(n.t)));
+  assert.equal(earth.sites.length - q01.length, 10);
+  assert.equal(q01.length, 15);
+  assert.match(pack.meta.srcnote, /ten heritage references/);
+  assert.match(pack.meta.srcnote, /fifteen additional city or heritage reference points/);
+  assert.match(pack.meta.srcnote, /6 November 2026/);
+  assert.ok(pack.meta.sources.some((s: string) => s.includes('for the fifteen additional')));
+  assert.ok(!/twelve/.test(pack.meta.srcnote + pack.meta.sources.join(' ')));
+});
+
+test('D02-C1: Antioch is a visible nonspatial Christianity card with its source and identity caveat', () => {
+  const c = pack.codex
+    .find((t: { id: string }) => t.id === 'places')
+    .list.find((x: { id: string }) => x.id === 'chp-antioch');
+  assert.ok(c, 'card exists');
+  assert.equal(c.layers.join(','), 'chr');
+  assert.equal(c.first, 1);
+  assert.match(c.role, /no map point/);
+  assert.ok(c.desc.includes('362362PAnt'), 'source locator');
+  assert.match(c.desc, /Pisidian Antioch/);
+  assert.ok(!earth.sites.some((x: { id: string }) => x.id === 'chp-antioch'));
+  assert.ok(
+    !pack.events.some((e: { ref?: string; site?: string }) => e.ref === 'chp-antioch' || e.site === 'chp-antioch'),
+  );
 });

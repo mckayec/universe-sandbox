@@ -1,0 +1,48 @@
+{
+  "project_id": "mckayec/universe-sandbox",
+  "item_ids": [
+    "mobile-entry-usability",
+    "lore-corrections"
+  ],
+  "actor": "chatgpt",
+  "run_id": "chatgpt-20261106-071455",
+  "attempt_id": "1",
+  "observed_start": "2026-11-06T07:14:55Z",
+  "observed_end": "2026-11-06T07:20:59Z",
+  "duration_seconds": 364,
+  "duration_type": "elapsed_run_window",
+  "timestamp_source": "clock.curr_time; lock-held review interval ending before final publication/status/cleanup",
+  "outputs": [
+    {
+      "item_id": "mobile-entry-usability",
+      "status": "changes_requested",
+      "label": "2/2 A11Y items reviewed; enlarged-label acceptance partial and option b selected",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/d15df60eb42ebc9ec151ac9ad6dbfe4d55a11174/docs/reviews/mobile-entry-usability/implementation-review-a11y.md"
+    },
+    {
+      "item_id": "lore-corrections",
+      "status": "canon_withheld",
+      "label": "40/40 inherited tags reconciled; 21/21 provisional leads listed for finite current-field disposition",
+      "evidence_url": "https://github.com/mckayec/universe-sandbox/blob/a6df690e61e46d1cb98af4eb5a5204a49e0a6fbf/docs/reviews/lore-corrections/final-source-disposition.md"
+    }
+  ],
+  "measured_usage": {
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "output_tokens": null,
+    "reasoning_output_tokens": null,
+    "total_tokens": null,
+    "credits": null,
+    "estimated_usd": null,
+    "billed_usd": null,
+    "source": null
+  },
+  "coverage_notes": [
+    "Partial observed elapsed window excludes preliminary triage and later writes/cleanup; not active compute time.",
+    "Two-item interval not allocated; no overlapping CI/test durations added.",
+    "Provider usage and billing counters not available.",
+    "24/24 current-main statuses inspected (18 universe,6 review). Two owned returns; zero research-ready self-audit candidates. Three downstream universes already active; no new research started.",
+    "No new local test, independent rendered/device pass or primary-book claim certification. CI logs independently inspected; builder evidence kept attributed."
+  ],
+  "recorded_at": "2026-11-06T07:20:59Z"
+}

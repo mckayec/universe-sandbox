@@ -1,0 +1,67 @@
+# dwd-stale-diag.cjs outputs, head 68d47ce / parent 2f04e41, 2026-11-09 (1440 unless noted; __floodH off unless noted)
+## head tyche V→IV storms off (1440)
+before {"m":"site","c":"Tyche","era":5,"fade":""}
+100 {"m":"site","c":"Tyche","era":4,"fade":"on"}
+500 {"m":"globe","c":null,"era":4,"fade":"on"}
+1000 {"m":"globe","c":null,"era":4,"fade":""}
+(also helios V→IV on head and parent: globe by 500 ms)
+## parent tyche IV→III storms on
+before {"m":"site","c":"Tyche","era":4,"fade":""}
+100 {"m":"site","c":"Tyche","era":3,"fade":"on"}
+500 {"m":"globe","c":null,"era":3,"fade":"on"}
+1000 {"m":"globe","c":null,"era":3,"fade":"on"}
+3000 {"m":"globe","c":null,"era":3,"fade":""}
+8000 {"m":"globe","c":null,"era":3,"fade":""}
+errs 
+## head tyche V→IV storms on, run 1
+before {"m":"site","c":"Tyche","era":5,"fade":""}
+100 {"m":"site","c":"Tyche","era":4,"fade":"on"}
+500 {"m":"globe","c":null,"era":4,"fade":"on"}
+1000 {"m":"globe","c":null,"era":4,"fade":"on"}
+3000 {"m":"globe","c":null,"era":4,"fade":""}
+8000 {"m":"globe","c":null,"era":4,"fade":""}
+errs 
+## head tyche V→IV storms on, run 2
+before {"m":"site","c":"Tyche","era":5,"fade":""}
+100 {"m":"site","c":"Tyche","era":4,"fade":"on"}
+500 {"m":"globe","c":null,"era":4,"fade":"on"}
+1000 {"m":"globe","c":null,"era":4,"fade":""}
+3000 {"m":"globe","c":null,"era":4,"fade":""}
+8000 {"m":"globe","c":null,"era":4,"fade":""}
+errs 
+## head tyche V→IV storms on, __floodH=43000
+before {"m":"site","c":"Tyche","era":5,"fade":""}
+100 {"m":"site","c":"Tyche","era":4,"fade":"on"}
+500 {"m":"globe","c":null,"era":4,"fade":"on"}
+1000 {"m":"globe","c":null,"era":4,"fade":"on"}
+3000 {"m":"globe","c":null,"era":4,"fade":""}
+8000 {"m":"globe","c":null,"era":4,"fade":""}
+20000 {"m":"globe","c":null,"era":4,"fade":""}
+40000 {"m":"globe","c":null,"era":4,"fade":""}
+errs 
+## head 390x844 tyche V→IV storms off
+before {"m":"site","c":"Tyche","era":5,"fade":""}
+100 {"m":"site","c":"Tyche","era":4,"fade":"on"}
+500 {"m":"globe","c":null,"era":4,"fade":"on"}
+1000 {"m":"globe","c":null,"era":4,"fade":"on"}
+3000 {"m":"globe","c":null,"era":4,"fade":""}
+8000 {"m":"globe","c":null,"era":4,"fade":""}
+errs 
+## head focus-probe click sequence (on/off/on) with __floodH=43000 — reproduces the earlier FAIL: page starved, exit after ~30 s
+click fallback page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[da
+click fallback page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[da
+before {"m":"site","c":"Tyche","era":5,"fade":"","pr":"true"}
+book(4) returned after 14398 ms
+14398 {"m":"site","c":"Tyche","era":4,"fade":"on","pr":""}
+30465 {"m":"globe","c":null,"era":4,"fade":"on","pr":""}
+42353 {"m":"globe","c":null,"era":4,"fade":"on","pr":""}
+44109 {"m":"globe","c":null,"era":4,"fade":"","pr":""}
+46679 {"m":"globe","c":null,"era":4,"fade":"","pr":""}
+49528 {"m":"globe","c":null,"era":4,"fade":"","pr":""}
+52035 {"m":"globe","c":null,"era":4,"fade":"","pr":""}
+53597 {"m":"globe","c":null,"era":4,"fade":"","pr":""}
+errs 

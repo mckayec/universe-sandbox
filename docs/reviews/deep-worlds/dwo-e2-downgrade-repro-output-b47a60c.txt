@@ -1,0 +1,7 @@
+run 1 +1.5s {"view":"place","site":"luthadel","ev":"e70","book":1,"hash":"#book=2&world=scadrial&site=luthadel&view=surface","rendered":"luthadel","dossierHasE70":true,"chronHasE70":true}
+run 1 +8s   {"view":"world","site":"luthadel","ev":null,"book":1,"hash":"#book=1&world=scadrial&site=luthadel&view=surface","rendered":null,"dossierHasE70":false,"chronHasE70":false} clean
+run 2 +1.5s {"view":"place","site":"luthadel","ev":"e70","book":1,"hash":"#book=2&world=scadrial&site=luthadel&view=surface","rendered":"luthadel","dossierHasE70":true,"chronHasE70":true}
+run 2 +8s   {"view":"world","site":"luthadel","ev":null,"book":1,"hash":"#book=1&world=scadrial&site=luthadel&view=surface","rendered":null,"dossierHasE70":false,"chronHasE70":false} clean
+run 3 +1.5s {"view":"place","site":"luthadel","ev":"e70","book":1,"hash":"#book=2&world=scadrial&site=luthadel&view=surface","rendered":"luthadel","dossierHasE70":true,"chronHasE70":true}
+run 3 +8s   {"view":"world","site":"luthadel","ev":null,"book":1,"hash":"#book=1&world=scadrial&site=luthadel&view=surface","rendered":null,"dossierHasE70":false,"chronHasE70":false} clean
+leaks 0/3

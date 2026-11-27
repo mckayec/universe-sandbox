@@ -1,0 +1,58 @@
+# Lore corrections — implementation re-review, revision 3
+
+2026-10-27. Exact implementation head: **`c91ea29da2328526aff379730042235240ad04bd`**, branch `fix/lore-corrections`, [PR24](https://github.com/mckayec/universe-sandbox/pull/24). GitHub reports open and unmerged. Reviewed against [implementation-review-r2.md](implementation-review-r2.md) and the branch's [Revision 3 report](https://github.com/mckayec/universe-sandbox/blob/c91ea29da2328526aff379730042235240ad04bd/docs/reviews/lore-corrections/implementation.md). Documentation base: `d00a0a97fe337afcd3cc0c21cd986223782c91fd`.
+
+**Verdict: request changes; no canon or release sign-off.** Most prescribed edits are present. R2-C4 remains partial because a late-added Europa landmark and its separate banner bypass the gate pass, and book changes do not invalidate all in-flight transitions/effects. This is a bounded implementation review, not another full literary research pass. Earlier source-confidence qualifications remain intact.
+
+## Corrected-count accounting
+
+| R2 group | Revision 3 source/data result | Remaining acceptance |
+|---|---|---|
+| R2-C1, Chronicle | Requested `.book[hidden]{display:none}` is present; `selectBook` still sets selected-column `hidden` flags. | Computed layout, pointer/keyboard access and both viewport tests not independently rerun here. Builder reports 419/419 assertions per viewport. |
+| R2-C2, final Io overrides | Nesos `from:3` and exact neutral text; Garter `from:6` and farmland-only text verified after all initial data overrides. | Rendered tooltip/dossier behavior unverified. |
+| R2-C3, POIs and bodies | All 12 POIs in the prior minimum table have the required gates; all ten body blurbs and neutral control values verified at Book I. Additional requested epithets and Rhea's era-II containment are present in the applied source block. | These are conservative containment gates, not newly certified first appearances. |
+| R2-C4, scenes and all entry surfaces | Shared scene/landmark predicates, ordinary entry/focus/dossier/label guards, and future-only `eraVal` fix implemented. Requested neutral scene replacements are present. | **Still partial:** R3-C1 and R3-C2 below. The later Europa extension runs after the supposed final scene-gate block. |
+| R2-C5, seven unsupported clauses | **7/7 cuts implemented** in effective pack data: Bressia attribution, both Deneb occurrences, Hebron attribution, Glennon-Height cells, Fatline mechanism, Farcasters mechanisms, William timing. | Bressia now has an orphaned pronoun; R3-C3 is a small copy repair, not new literary verification. |
+
+Thus **four of five R2 groups have their specified source/data changes; one remains partial**. This is not four groups of completed visual acceptance.
+
+The original 40-row ledger remains a reconciliation, not 40 newly re-sourced claims: **26 mandatory rows conform at source level, 1 remains partial (L29), 13 retained/no-change = 40**. Relative to R2, L8's specified cuts now conform; L29 remains partial. The previously completed L1/L31 dispositions remain, including removal of the Auctor death-timing clause. R3-C3 is recorded separately rather than hidden by this count. There are **three remaining finding groups: 1 High, 1 Medium, 1 Low**, with two substantive containment blockers and one small copy correction.
+
+## R3-C1 — High: Europa's late Leviathans extension bypasses both landmark and banner gates
+
+Exact source: [society.js:2801](https://github.com/mckayec/universe-sandbox/blob/c91ea29da2328526aff379730042235240ad04bd/public/atlas/society.js#L2801) runs the scene-gate IIFE, including `europa.leviathan`, **before** the landmark exists. It silently skips missing landmarks. Later, [society.js:4351–4362](https://github.com/mckayec/universe-sandbox/blob/c91ea29da2328526aff379730042235240ad04bd/public/atlas/society.js#L4351) creates a globe button calling `showBanner` with `LEV_TEXT`, then appends the `leviathan` landmark with that same constant. That constant includes the sentence naming Light Bringer and captives fed to leviathans at the Nixian Isles. The appended landmark has no `from`, its `desc` is an unkeyed string, and the globe label predicate has no ERA condition.
+
+The source/data probe executes the actual gate IIFE against a minimal Europa fixture, then the actual late landmark append: the resulting landmark is ungated and `eraVal(desc)` still contains the book-VI sentence at ERA 1. It also reads the banner constant. This demonstrates ordering and data exposure; **no screenshot, click or rendered visibility is claimed**. Projection conditions can affect when the globe label appears but do not make its content book-safe.
+
+**Required fix:** finalize gates only after all extensions have registered their content, or apply the gate when this landmark is created. Reuse one era-resolved description for both the landmark and globe banner. Minimal conservative fix: withhold the landmark and globe label before VI, including tab focus/click access. If retaining an earlier neutral entry, use “A sea-creature illustration on Europa.” as the early description and put the current plot-bearing text behind VI; this supplies no new canon assertion. Do not rely on the earlier missing-object mutation.
+
+**Acceptance:** evaluate the full final registration order; at I–V neither surface yields the Light Bringer clause, while VI/All behaves deliberately. Include the late extension in the matrix; test banner and landmark separately. A permitted future browser check must focus/click the actual globe button and scene landmark at desktop/phone sizes and repeat after VI→I. Search all later registration blocks for the same ordering problem before claiming a complete final gate pass.
+
+## R3-C2 — Medium: book downgrade does not cancel stale scene callbacks or active story effects
+
+Two source-confirmed control-flow cases remain:
+
+1. [enterSite, :3282–3290](https://github.com/mckayec/universe-sandbox/blob/c91ea29da2328526aff379730042235240ad04bd/public/atlas/society.js#L3282) checks `siteVisible` **before** `fadeTo`. [fadeTo, :3262](https://github.com/mckayec/universe-sandbox/blob/c91ea29da2328526aff379730042235240ad04bd/public/atlas/society.js#L3262) commits the callback 400 ms later. The callback itself does not recheck the current book. The isolated function probe schedules entry to Asteroid at VI, changes ERA to I, and invokes the captured callback: it reaches `loadSite('asteroid')`. No scene is built in the probe. The fade overlay blocks pointer interaction but does not by itself establish keyboard focus isolation or invalidate an already scheduled callback. Actual user-input reachability during the fade remains untested.
+2. [setEra, :3165–3172](https://github.com/mckayec/universe-sandbox/blob/c91ea29da2328526aff379730042235240ad04bd/public/atlas/society.js#L3165) updates labels/dossier state but does not stop `fxList`, clear a story banner or invalidate pending event-navigation callbacks when the current scene remains allowed. Agea is allowed at Book I while its Iron Rain effect belongs to II. The function probe changes II→I in an eligible Agea fixture and confirms the active effect remains. `updateFx` continues advancing the retained list in the normal frame code. `gotoEvent` also queues callbacks without a reading-selection token. This is a state/control-flow result, not an independent reproduction of the on-screen animation.
+
+**Required fix:** invalidate pending transitions/event callbacks when the reading selection changes; recheck visibility immediately before committing a scene or effect. Stop or gate active story effects and dismiss/refresh stale banners/tooltips on downgrade. An explicit navigation-generation token plus final book predicate is one possible implementation. Preserve neutral navigation; do not merely hide the Chronicle while leaving old story playback running.
+
+**Acceptance:** source/unit checks must cover a downgrade during a queued scene transition and during queued event navigation, plus an active later-book effect in a scene that remains visible. After correction, the current defect-characterization probes should be changed to assert blocked entry/cleared or safely gated effect state. When browser access is permitted, test actual keyboard and pointer downgrade paths and animation/banner cleanup; do not label that acceptance complete based on fixtures.
+
+## R3-C3 — Low: the prescribed Bressia cut left “his” without an antecedent
+
+[hyperion.js:80](https://github.com/mckayec/universe-sandbox/blob/c91ea29da2328526aff379730042235240ad04bd/public/atlas/packs/hyperion.js#L80) now says the attack “killed his wife and son,” but the preceding Consul clause was removed. The builder explicitly flagged this in its Revision 3 report. This resulted from the earlier requested surgical cut, not from a newly invented builder attribution.
+
+**Exact repair if retaining the previously accepted remainder:** “The Ouster attack here killed the Consul’s wife and son, and Kassad fought in the Bressian campaign.” This clarifies the inherited intended antecedent; it is **not** new primary-book verification. If the inherited source limitation is unacceptable for release, use the narrower “Kassad fought in the Bressian campaign.” instead. Do not restore the unsupported provocation clause. Acceptance: read the standalone card, confirm no orphaned pronoun, and retain the source/confidence qualification from the original ledger.
+
+## Scope and evidence limits
+
+Read the final initial data overrides, scene-gate block and later Europa/Phobos extensions; checked the requested scene/landmark neutral replacements and shared renderer predicates. The named minimum scene gates are present. `ladon` is a globe POI directed into the gated Helios context, not a missing standalone scene key. The Phobos Nucleus geometry/statues remain built before VI, as the builder explicitly disclosed; labels/focus/text gates do not certify mesh-level spoiler containment. This remains a rendered/model review item, not proof of an additional novel-specific leak from an unread source.
+
+[Source-only checks](source-checks-r3.cjs) run without DOM, renderer, server or browser: **120 assertions = 116 positive containment/cut checks plus 4 expected defect-characterization checks**. A successful script exit deliberately confirms known defects; it is not an all-clear gate suite. The scene fixtures evaluate narrow registration/control-flow paths, not the complete page. No alternative surface was used to bypass the browser restriction.
+
+On the exact implementation head, local formatting check, production build, **68/68 unit tests**, and **110-file distribution check** pass. Existing exact-head [CI40381816609](https://github.com/mckayec/universe-sandbox/actions/runs/40381816609) reports success. The builder's **419/419 per viewport** browser claim is attributed, not independently repeated. Its script focuses on later book titles in dossier/label text and ordinary entry flows; it does not establish safety of every late banner, pending callback, active effect or 3D model. No fresh rendered/mobile/keyboard/pointer acceptance is claimed. Full primary novels were not reread or newly obtained; the prior conservative cut/containment decisions are reused.
+
+See [validation-r3.md](validation-r3.md) for commands and environment limits. Only review-directory documentation and the review probe changed. No application edit, formal GitHub approval, merge, deployment, browser-policy change or unrelated review was performed.
+
+**Not approved: resolve R3-C1–R3-C3, retain the existing evidence qualifications, and supply the outstanding rendered/mobile/keyboard acceptance on the resulting exact head.**
