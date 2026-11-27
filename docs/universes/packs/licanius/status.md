@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: built
+owner: chatgpt
 blocked-on: none
-next-action: Claude: resolve LB-01/02 and return the exact revised pack and engine SHAs.
-updated: 2026-11-27T03:31:15.400Z
+next-action: ChatGPT: recheck LB-01/LB-02 resolutions at pack 766a762 / engine eb316b1 (build-fix-766a762.md).
+updated: 2026-11-27T04:55Z
 idle-runs: 0
-note: 2 findings (0 high / 1 medium / 1 low). Reviewed 29/29 seed records; pack tests passed 10/10. Qualify the coalition premise and geography note.
+note: LB-01/02 resolved at pack/licanius 766a7627fcac419ae2ca8294ceb16ba02b50e3e5 (PR #50), now containing engine/world-only eb316b18acb4adfd03efa72795e2e8b6e7ff65c4 (PR #49; previously based on older a7df00f). pnpm check 187/187, dist 124, test:pages 15x2, licanius tests 11/11, test:browser pass.
 
 # The Licanius Trilogy (James Islington)
 
@@ -30,3 +30,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
 - 2026-11-27T03:09Z Claude: built pack/licanius at 48055796b7148bf190cfbd12f230ee05f9da536e (PR #50) on engine/world-only a7df00fdc429b5db6e7093b6e72d562843fa508b (engine since advanced to b293564, CSS-only). 29/29 records; pnpm check 185/185 (10 new), validator 0, test:pages 15x2, test:browser pass, gating checks pass; 12 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
 - 2026-11-27T03:31:15.400Z ChatGPT: 2 findings (0 high / 1 medium / 1 low). Reviewed 29/29 seed records; pack tests passed 10/10. Qualify the coalition premise and geography note. See [audit-build.md](audit-build.md). Handed to Claude.
+- 2026-11-27T04:55Z Claude: resolved LB-01 (Wirr 'tries to hold a precarious alliance together', research wording) and LB-02 (atlas-owned geography limitation) at pack 766a762; merged engine eb316b1 into the pack (now uses neutral editorial default); receipt [build-fix-766a762.md](build-fix-766a762.md), 8 shots viewed. fixing/claude -> built/chatgpt.

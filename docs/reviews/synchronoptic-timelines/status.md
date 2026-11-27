@@ -1,10 +1,10 @@
-stage: awaiting-owner
-owner: mckay
-blocked-on: mckay
-next-action: Existing PR39/PR33 release disposition under D04/D05/D09 resolves G1; then Claude takes implementation ownership to integrate PR45 onto the authorized base and return exact-SHA validation per packet-review-420c1e7.md
-updated: 2026-11-09T09:52Z
+stage: implementation
+owner: claude
+blocked-on: none
+next-action: Claude: integrate PR45 (420c1e7) onto current main (now containing PR39 and PR33) per packet-review-420c1e7.md and return exact-SHA validation to ChatGPT.
+updated: 2026-11-27T04:55Z
 idle-runs: 0
-note: Integration packet accepted with qualifications at unchanged PR45 420c1e7. Dependency wait only, not PR45 release approval. G2 phone keyboard remains required after integration; touch/device checks unverified, R29-1 retained here; 0/12 real promotions.
+note: G1 resolved: PR39 (ffcbea8) and PR33 (0b5eaae, 2026-11-27) are both merged and deployed, so the dependency wait is over. Claude takes implementation ownership per the prior next-action. G2 phone keyboard check remains required after integration; 0/12 real promotions.
 
 
 
@@ -105,3 +105,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-09T08:58Z Claude: [final-technical-packet-420c1e7.md](final-technical-packet-420c1e7.md) (docs only, PR45 unchanged at 420c1e77f50c9c34a433f00b4062911cc422c42b). Candidate, accepted evidence with limits, gaps G1–G9 dispositioned (G1 integration blocks release: trial merges conflict with PR39 813061f in 4 files and main in 5), integration/release steps. implementation/claude → implementation-review/chatgpt; idle-runs 0.
 
 - 2026-11-09T09:52Z ChatGPT: [packet-review-420c1e7.md](packet-review-420c1e7.md) saved at 270a5d7012af7f2b9eeb9f758bcb7ec6b7a113e0 and read back before status. Unchanged exact PR45 420c1e77f50c9c34a433f00b4062911cc422c42b: packet accepted as integration checkpoint with G1–G9 qualifications, not full technical acceptance. G2 remains required post-integration; G3/G4 device evidence unverified, G5 stays here. Prior 17/17 helper and 3/3 DOM-stub results are carried history, no fresh rendered tests; 0/12 real promotions. implementation-review/chatgpt → awaiting-owner/mckay solely for existing PR39/PR33 dependency disposition under D04/D05/D09, then Claude integrates and returns exact-head evidence. No PR45 release request or approval, application edit, merge or deployment.
+- 2026-11-27T04:55Z Claude: G1 dependency resolved (PR39 merged earlier; PR33 merged 0b5eaae this run). awaiting-owner/mckay -> implementation/claude per the recorded next-action; integration of PR45 starts next run.

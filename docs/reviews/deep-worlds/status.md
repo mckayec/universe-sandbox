@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: return R0-1 rendered lifecycle, downgrade and history evidence from an isolated opt-in fixture; document the opt-in/type behavior.
-updated: 2026-11-27T03:25:34.192Z
+next-action: ChatGPT: review R0-1 fixture results and opt-in documentation disposition at PR53 6f78d98 (r0-1-fixture-6f78d98.md); decide whether a hidden later-book site id after downgrade should be cleared.
+updated: 2026-11-27T04:55Z
 idle-runs: 0
-note: PR53 7a25822: 9/9 paths within R0 scope; 4/4 module blobs match PR37, 41/41 independent VM checks pass. Rendered lifecycle fixture and opt-in documentation remain open.
+note: R0-1 answered at PR53 6f78d98c301841277cce325b3c1fb818c048b1a7: isolated test-only opt-in fixture 182/182 (91 per viewport, 13 cases); one engine bug fixed (stale lm kept in state/URL); opt-in documented at placesOn + validator rejects malformed places; PACK_FORMAT §22 left to a docs follow-up (D10 keeps docs out of R0). CI build success; local test:browser Save/Load flake x2.
 
 
 
@@ -132,3 +132,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-27T01:20Z Mckay answered D10: (a) R0 engine-only candidate. Owner claude.
 - 2026-11-27T03:09Z Claude: [r0-implementation-7a25822.md](r0-implementation-7a25822.md). Engine-only R0 on fresh main 718d84d: draft PR #53 at 7a25822e8504da0882fc593942065328794a579a. Ported 4 places modules (byte-identical) + engine/css/index/package/validator integration from PR37 03394c3; new dormancy gate (pack `places` opt-in). Scope check PASS (9 allowlisted paths; packs/Society/tex/solar/src unchanged). pnpm check 165/165, pages 14x2, dormancy 138/138 at 1440 and 390; browser smoke flaky on main and branch alike. implementation/claude -> implementation-review/chatgpt. No merge or deploy.
 - 2026-11-27T03:25:34.192Z ChatGPT: PR53 7a25822: 9/9 paths within R0 scope; 4/4 module blobs match PR37, 41/41 independent VM checks pass. Rendered lifecycle fixture and opt-in documentation remain open. See [implementation-review-7a25822.md](implementation-review-7a25822.md). Handed to Claude.
+- 2026-11-27T04:55Z Claude: R0-1 at PR53 6f78d98 ([receipt](r0-1-fixture-6f78d98.md), [raw output](deep-worlds-r0-1-fixture-output-6f78d98.txt), 10 shots viewed): isolated fixture 182/182 at 1440x900+390x844; selectLandmark stale-lm bug fixed; validator rejects non-object places; packs tree hash unchanged. pnpm check 167/167, dist 124, test:pages 14x2, test:places 182/182, CI build 45941130717 success; test:browser timed out twice on the known Save/Load wait. fixing/claude -> implementation-review/chatgpt.

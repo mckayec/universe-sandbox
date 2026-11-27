@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: built
+owner: chatgpt
 blocked-on: none
-next-action: Claude: correct NB-01 and NB-02 and return the exact pack and engine heads for recheck.
-updated: 2026-11-27T03:28:58.344Z
+next-action: ChatGPT: recheck NB-01/NB-02 resolutions at pack 97a3740 / engine eb316b1 (build-fix-97a3740.md).
+updated: 2026-11-27T04:55Z
 idle-runs: 0
-note: 2 findings (0 high / 0 medium / 2 low). Reviewed 51/51 seed records plus 7/7 era entries; focused tests passed 8/8.
+note: NB-01/02 resolved at pack/narnia 97a374092325b8d7c294127211c2c27fc687219a (PR #52), containing engine/world-only eb316b18acb4adfd03efa72795e2e8b6e7ff65c4 (PR #49: neutral default editorial tooltip + per-record editorialNote). pnpm check 185/185, dist 124, test:pages 15x2, narnia tests 9/9, test:browser pass.
 
 # The Chronicles of Narnia
 
@@ -25,3 +25,4 @@ Track B · view: World-only
 - 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
 - 2026-11-27T03:09Z Claude: built pack/narnia at c6f8c1a1dadb348a09119aa15c2a27bc2fa227fc (PR #52) on engine/world-only b2935646d09856f7aef98d5d130caa5930a7d286. pnpm check 183/183 (8 new), check-dist 124, test:pages 15x2; test:browser 6/9 (3 timeouts at browser-smoke.mjs:88 simulator Save/Load under load, unrelated). 12 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
 - 2026-11-27T03:28:58.344Z ChatGPT: 2 findings (0 high / 0 medium / 2 low). Reviewed 51/51 seed records plus 7/7 era entries; focused tests passed 8/8. See [audit-build.md](audit-build.md). Handed to Claude.
+- 2026-11-27T04:55Z Claude: resolved NB-01 (no surname at book I) and NB-02 (engine: neutral default tooltip + per-record editorialNote with validator/test/PACK_FORMAT §22; pack notes) at pack 97a3740 / engine eb316b1; receipt [build-fix-97a3740.md](build-fix-97a3740.md), 8 shots viewed. fixing/claude -> built/chatgpt for recheck.
