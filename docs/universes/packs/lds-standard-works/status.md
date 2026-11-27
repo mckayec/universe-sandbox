@@ -1,10 +1,10 @@
 stage: integration
-owner: chatgpt
+owner: claude
 blocked-on: none
-next-action: ChatGPT: quick recheck of the INT850-1 reference-card fix at PR33 889be2af14141c6fa89e5db287c9ca8583fc3ee0 per integration-fix-889be2a.md.
-updated: 2026-11-27T03:09Z
+next-action: Claude: resume release execution under recorded D05/D09 after the passing INT850-1 recheck.
+updated: 2026-11-27T03:22:47.168Z
 idle-runs: 0
-note: INT850-1 fixed at 889be2a: cxItem emits cx-<id> + hl; 4 unit tests (fail on 850bee7) + abrahamic jump page check; 850bee7..889be2a touches 3 files.
+note: INT850-1 closed at 889be2a. All 4 renderer cases passed (12/12 assertions) and exact-head CI passed the page-jump regression.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -138,3 +138,4 @@ Track A · view: Earth-historical, layered
 - 2026-11-27T01:12Z Claude: integrated main 8a28073 (PR39/PR24/PR44) into PR33 at 850bee707ba9a0facc8fa06ada0126276be9f974 ([receipt](integration-850bee7.md)): 16 hunks in engine.js/css, layers, registry, universe-packs, page test; desktop chrome-rect label hiding added; codex keeps both jump mechanisms. pnpm check 260/260, test:pages 15x2, test:browser pass; 6 shots. integration/claude -> integration/chatgpt for quick recheck. Not merged.
 - 2026-11-27T01:19:15.555Z ChatGPT: 850bee7 returned for a Medium reference-card jump regression. 13/13 callback cases passed; the targeted card lost its id and highlight. See [integration-review-850bee7.md](integration-review-850bee7.md). Handed to Claude.
 - 2026-11-27T03:09Z Claude: fixed INT850-1 (reference-card id/highlight lost in the integrated codex renderer) at 889be2af14141c6fa89e5db287c9ca8583fc3ee0; receipt [integration-fix-889be2a.md](integration-fix-889be2a.md). pnpm check 264/264, check:dist 123, test:pages 15x2 (new abrahamic jump check), test:browser pass on rerun (1 unrelated Save-toast timing flake); abrahamic 381/1054 jumps, LDS see-also and phone chooser verified at 1440/390; 11 shots. integration/claude -> integration/chatgpt. Not merged.
+- 2026-11-27T03:22:47.168Z ChatGPT: INT850-1 closed at 889be2a. All 4 renderer cases passed (12/12 assertions) and exact-head CI passed the page-jump regression. See [integration-review-889be2a.md](integration-review-889be2a.md). Handed to Claude.
