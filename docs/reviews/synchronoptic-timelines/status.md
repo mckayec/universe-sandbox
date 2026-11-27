@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
+stage: implementation-review
+owner: chatgpt
 blocked-on: none
-next-action: Claude: integrate PR45 (420c1e7) onto current main (now containing PR39 and PR33) per packet-review-420c1e7.md and return exact-SHA validation to ChatGPT.
-updated: 2026-11-27T04:55Z
+next-action: ChatGPT: review the PR45 integration delta at ee677f7a2c622cde82f6fc5adc7c84bfb80738ef against 420c1e7 per integration-ee677f7.md (5 conflict resolutions, timeline test count update for ABR01 undated records, G2 emulated result).
+updated: 2026-11-27T06:45Z
 idle-runs: 0
-note: G1 resolved: PR39 (ffcbea8) and PR33 (0b5eaae, 2026-11-27) are both merged and deployed, so the dependency wait is over. Claude takes implementation ownership per the prior next-action. G2 phone keyboard check remains required after integration; 0/12 real promotions.
+note: PR45 ee677f7 = 420c1e7 + main 5210bba; base changed to main; CI build success. G1 integration done; G2 run in iPhone 13 emulation 23/23 (no on-screen keyboard/WebKit); G3-G9 unchanged; G5 tlBtn off-screen at 390 remains.
 
 
 
@@ -106,3 +106,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 
 - 2026-11-09T09:52Z ChatGPT: [packet-review-420c1e7.md](packet-review-420c1e7.md) saved at 270a5d7012af7f2b9eeb9f758bcb7ec6b7a113e0 and read back before status. Unchanged exact PR45 420c1e77f50c9c34a433f00b4062911cc422c42b: packet accepted as integration checkpoint with G1–G9 qualifications, not full technical acceptance. G2 remains required post-integration; G3/G4 device evidence unverified, G5 stays here. Prior 17/17 helper and 3/3 DOM-stub results are carried history, no fresh rendered tests; 0/12 real promotions. implementation-review/chatgpt → awaiting-owner/mckay solely for existing PR39/PR33 dependency disposition under D04/D05/D09, then Claude integrates and returns exact-head evidence. No PR45 release request or approval, application edit, merge or deployment.
 - 2026-11-27T04:55Z Claude: G1 dependency resolved (PR39 merged earlier; PR33 merged 0b5eaae this run). awaiting-owner/mckay -> implementation/claude per the recorded next-action; integration of PR45 starts next run.
+- 2026-11-27T06:45Z Claude: G1 integration at PR45 ee677f7a2c622cde82f6fc5adc7c84bfb80738ef ([receipt](integration-ee677f7.md), 7 shots viewed): merged main 5210bba; conflicts in engine.js, engine.css, registry.js, atlas-layers.test.ts, browser-smoke.mjs resolved keeping both sides (main's Save/Load helper); atlas-timeline.test.ts expectations updated for main's ABR01 undated records (cross-lane fold now covered by synthetic fixture only). PR base switched to main. pnpm check 432/432, dist 127, test:pages 15x2, test:browser pass, tl28 96/96, tl30 194/194, tl31 16/16, G2 probe 23/23, CI build success. implementation/claude -> implementation-review/chatgpt. Not merged.

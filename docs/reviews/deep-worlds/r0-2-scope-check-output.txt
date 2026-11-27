@@ -1,0 +1,59 @@
+base      5210bbabb43b8b5d00dc9a10d93a6e894fbc4695
+candidate a060de4263ec88870854ed9590da5192d6c35f24
+pr37      03394c32816fcb5c95261bf6a9ea4520381a5838
+--- changed paths (git diff --name-status base..candidate)
+M	package.json
+M	public/atlas/engine.css
+M	public/atlas/engine.js
+M	public/atlas/index.html
+A	public/atlas/places-audio.js
+A	public/atlas/places-fx.js
+A	public/atlas/places-lm.js
+A	public/atlas/places.js
+M	tests/atlas-pack-validator.mjs
+A	tests/atlas-places-fixture.mjs
+A	tests/atlas-places-optin.test.ts
+A	tests/fixtures/places-optin-fixture.js
+ok   package.json
+ok   public/atlas/engine.css
+ok   public/atlas/engine.js
+ok   public/atlas/index.html
+ok   public/atlas/places-audio.js
+ok   public/atlas/places-fx.js
+ok   public/atlas/places-lm.js
+ok   public/atlas/places.js
+ok   tests/atlas-pack-validator.mjs
+FAIL path outside R0 allowlist: tests/atlas-places-fixture.mjs
+FAIL path outside R0 allowlist: tests/atlas-places-optin.test.ts
+FAIL path outside R0 allowlist: tests/fixtures/places-optin-fixture.js
+--- protected trees (git tree hash base vs candidate)
+ok   public/atlas/packs 52bf27df7034f0f2595b62a3215ba1fce6400e13
+ok   public/atlas/society.js 92dee09681be0460f774bed27d68230c37d51033
+ok   public/atlas/society.html 86aafdb08484c2f981661821bb7d3ec6f627a958
+ok   public/atlas/society.css 29323544a2ae3abc12cd2e96efa55d7d46bdb953
+ok   public/atlas/society-fonts.css 6065e99f42758e7f032353ca868fb28c1305cacd
+ok   public/atlas/solar.js ad70f1c4cb1495138c6a3ed7d567352d2ff22d50
+ok   src 0de51f03805c313f5951695711df08db6e7ba26b
+ok   public/atlas/tex absent (as on base)
+--- places modules vs PR37 (blob hash)
+ok   places.js 21f029432bb2ebdc29aaa95b270640452c4e6a6a
+ok   places-lm.js 24c8db29183128db8bdc56cf737120c77ff06661
+ok   places-fx.js 7cc4ec7f2ce060932ebdb5158bfdcd32353bfba0
+ok   places-audio.js 0da58fa8bd3d3256d476110f0cfaefa6fd3cbdbf
+--- pack data: scene/landmark/fx/lm/places keys on candidate (expect none)
+ok   0 pack files carry scene/landmarks/fx/lm/places keys
+--- diff stat
+ package.json                           |    5 +-
+ public/atlas/engine.css                |   25 +
+ public/atlas/engine.js                 |  315 +++-
+ public/atlas/index.html                |    4 +
+ public/atlas/places-audio.js           |  138 ++
+ public/atlas/places-fx.js              |  488 +++++++
+ public/atlas/places-lm.js              |  550 +++++++
+ public/atlas/places.js                 | 2481 ++++++++++++++++++++++++++++++++
+ tests/atlas-pack-validator.mjs         |   72 +-
+ tests/atlas-places-fixture.mjs         |  692 +++++++++
+ tests/atlas-places-optin.test.ts       |   57 +
+ tests/fixtures/places-optin-fixture.js |   79 +
+ 12 files changed, 4858 insertions(+), 48 deletions(-)
+RESULT FAIL

@@ -1,0 +1,26 @@
+INFO device iPhone 13 {"viewport":{"width":390,"height":664},"dpr":3,"isMobile":true,"hasTouch":true}
+PASS year/initial full range — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","focus":"BODY"}
+PASS year/to-1 step [ArrowLeft] — {"range":"-800_2021","yr":"-800_2021","readout":"800 BCE – 2021","from":"-799","to":"2021","focus":"to"} want {"from":"-799","to":"2021","range":"-800_2021","focus":"to","readout":"800 BCE – 2021"}
+PASS year/to back to top [ArrowRight] — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","focus":"to"} want {"from":"-799","to":"2031","range":null,"focus":"to"}
+PASS year/to-1 again [ArrowLeft] — {"range":"-800_2021","yr":"-800_2021","readout":"800 BCE – 2021","from":"-799","to":"2021","focus":"to"} want {"from":"-799","to":"2021","range":"-800_2021","focus":"to","readout":"800 BCE – 2021"}
+PASS year/to End [End] — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","focus":"to"} want {"from":"-799","to":"2031","range":null,"focus":"to"}
+PASS year/from+1 step [ArrowRight] — {"range":"-790_2030","yr":"-790_2030","readout":"790 BCE – 2030","from":"-789","to":"2031","focus":"from"} want {"from":"-789","to":"2031","range":"-790_2030","focus":"from","readout":"790 BCE – 2030"}
+PASS year/from Home [Home] — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","focus":"from"} want {"from":"-799","to":"2031","range":null,"focus":"from"}
+PASS year/explicit 600_1500 loaded — {"range":"600_1500","yr":"600_1500","readout":"600 CE – 1500","from":"601","to":"1501","focus":"BODY"}
+PASS year/explicit to+1 [ArrowRight] — {"range":"600_1511","yr":"600_1511","readout":"600 CE – 1511","from":"601","to":"1511","focus":"to"} want {"from":"601","to":"1511","range":"600_1511","focus":"to","readout":"600 CE – 1511"}
+PASS year/explicit to-1 (back) [ArrowLeft] — {"range":"600_1501","yr":"600_1501","readout":"600 CE – 1501","from":"601","to":"1501","focus":"to"} want {"from":"601","to":"1501","range":"600_1501","focus":"to","readout":"600 CE – 1501"}
+PASS year/explicit to End [End] — {"range":"600_2030","yr":"600_2030","readout":"600 CE – 2030","from":"601","to":"2031","focus":"to"} want {"from":"601","to":"2031","range":"600_2030","focus":"to","readout":"600 CE – 2030"}
+PASS year/explicit from+1 [ArrowRight] — {"range":"611_2030","yr":"611_2030","readout":"611 CE – 2030","from":"611","to":"2031","focus":"from"} want {"from":"611","to":"2031","range":"611_2030","focus":"from","readout":"611 CE – 2030"}
+PASS year/explicit from Home [Home] — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","focus":"from"} want {"from":"-799","to":"2031","range":null,"focus":"from"}
+PASS dialog/Timeline button exists — {"x":384,"right":473,"w":390,"inView":false}
+INFO G5 Timeline button initially within the 390 viewport: false {"x":384,"right":473,"w":390,"inView":false}
+PASS dialog/Enter on Timeline opens it with focus on Close — {"open":true,"focus":"close","hash":"#world=earth&site=jerusalem&view=surface&tl=1"}
+PASS dialog/URL carries tl — #world=earth&site=jerusalem&view=surface&tl=1
+PASS dialog/40 Tab presses never leave the dialog — 17 distinct stops, 0 outside
+PASS dialog/10 Shift+Tab presses never leave the dialog
+PASS dialog/chart has focusable marks — 83
+PASS dialog/ArrowDown moves to the next mark — n:jud-second-temple -> n:jud-karaite
+PASS dialog/Enter selects the mark (tlsel in URL, details shown, focus kept inside) — {"sel":"n:jud-karaite","info":"Karaite JudaismApparently ninth century (consolidation) · movementEmergence wind","focusInside":true}
+PASS dialog/Escape closes and returns focus to the Timeline button — {"open":false,"focus":"tlBtn","hash":"#world=earth&site=jerusalem&view=surface"}
+PASS no page/console errors
+merged-ee677f7 23/23 pass, 0 fail

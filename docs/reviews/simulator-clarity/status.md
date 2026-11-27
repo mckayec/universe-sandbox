@@ -1,10 +1,10 @@
-stage: integration
-owner: claude
+stage: live
+owner: mckay
 blocked-on: none
-next-action: Claude: complete the pinned D12/D09 release handoff at aaa315c195fe05581526ebfcea84de85ac740cc3, checking the live head and mergeability first.
-updated: 2026-11-27T05:16:37.000Z
+next-action: none (live). Mckay may spot-check the simulator clarity changes (ignition, disk, lighting, mobile/quiet/Kids mode, black-hole catalog) on the public site; any follow-up becomes a new review item.
+updated: 2026-11-27T06:45Z
 idle-runs: 0
-note: PR47 integration recheck passed at aaa315c. One divergent path across 2,279 blob paths retained the reviewed smoke test. Independent persistence tests passed 10/10.
+note: PR #47 merged at 5210bba (pinned to approved head aaa315c, D12/D09); Deploy GitHub Pages for 5210bba succeeded. Known gaps per D12 remain (software-GL only, no physical device).
 
 
 
@@ -357,3 +357,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-27T03:23:36.815Z ChatGPT: Landscape control overlap closed at 14c684d. Exact-head overlay suite passed 7/7 and 6/6 recorded stack gaps measured 8 px. Selected-label occlusion and hidden guided landscape touch hints remain disclosed. See [integration-review-14c684d.md](integration-review-14c684d.md). Handed to Claude.
 - 2026-11-27T04:55Z Claude: PR #33 merged first (0b5eaae); PR47 14c684d became dirty (tests/browser-smoke.mjs). Merged main into PR47 at aaa315c keeping PR47's reviewed Save/Load helper ([receipt](integration-aaa315c.md)); pnpm check 381/381, test:pages 15x2, test:browser pass first run, test:touch pass. integration/claude -> integration/chatgpt for quick recheck. Not merged.
 - 2026-11-27T05:16:37.000Z ChatGPT: PR47 integration recheck passed at aaa315c. One divergent path across 2,279 blob paths retained the reviewed smoke test. Independent persistence tests passed 10/10. See [integration-review-aaa315c.md](integration-review-aaa315c.md). Handed to Claude.
+- 2026-11-27T06:45Z Claude: Marked PR #47 ready and merged via REST pinned to aaa315c195fe05581526ebfcea84de85ac740cc3 (main drift docs-only, mergeable clean) -> merge commit 5210bbabb43b8b5d00dc9a10d93a6e894fbc4695; Deploy GitHub Pages success. integration/claude -> live/mckay.

@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: final-audit
+owner: chatgpt
 blocked-on: none
-next-action: Claude: with HB-01 through HB-03 closed, reconcile the addendum and hand the bounded seed to final-audit/chatgpt at this head. No further copy edit requested.
-updated: 2026-11-27T05:19:01.000Z
+next-action: ChatGPT: final canon audit (AUDIT_CHECKLIST §3/§4 canon) of the 40-record seed at PR #51 cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2; record Canon: approved or blockers in audit-final.md.
+updated: 2026-11-27T06:45Z
 idle-runs: 0
-note: Build recheck at cc965cc closed 3/3 Low findings. Open build findings: 0 high / 0 medium / 0 low. The 40-record seed awaits final canon review.
+note: Build findings closed at cc965cc; addendum reconciled (all items dispositioned in research-review.md §2, addendum unchanged since). Awaiting final canon audit at PR #51 cc965cc.
 
 # The Hierarchy series (James Islington)
 
@@ -26,3 +26,4 @@ Track B · view: World-only, with later-book structure under investigation.
 - 2026-11-27T03:32:12.498Z ChatGPT: 3 findings (0 high / 0 medium / 3 low). Reviewed 40/40 seed records. Gate suite passed 9/9 and the actual pack validator reported 0 errors and 0 warnings. See [audit-build.md](audit-build.md). Handed to Claude.
 - 2026-11-27T04:55Z Claude: resolved HB-01 (record IDs + S2/S3 on 8 locators), HB-02 (atlas-owned geography limitation), HB-03 (Res antecedent) at pack cc965cc / engine eb316b1; receipt [build-fix-cc965cc.md](build-fix-cc965cc.md), 10 shots viewed. fixing/claude -> built/chatgpt for recheck.
 - 2026-11-27T05:19:01.000Z ChatGPT: Build recheck at cc965cc closed 3/3 Low findings. Open build findings: 0 high / 0 medium / 0 low. The 40-record seed awaits final canon review. See [audit-build.md](audit-build.md). Handed to Claude.
+- 2026-11-27T06:45Z Claude: Addendum reconciled: research-addendum.md unchanged since before research-review.md; every item has a disposition in research-review.md §2; nothing new to fold in. PR #51 head verified at cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2 (unchanged; no code change this run). fixing/claude -> final-audit/chatgpt.
