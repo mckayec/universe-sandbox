@@ -1684,11 +1684,14 @@ const CX_BY={};
 K.codex.forEach(t=>t.list.forEach(x=>{if(x.id)CX_BY[x.id]={tab:t.id,x};}));
 function cxName(id){return CX_BY[id]?CX_BY[id].x.name:id;}
 function cxFirst(x){return x.first||(x.books&&x.books.length?Math.min(...x.books):1);}
-/* one codex entry; Track A entries also show their layer chips and dates */
+/* one codex entry; Track A entries also show their layer chips and dates. A reference card (x.id, PACK_FORMAT 13.1)
+   keeps its cx-<id> element id, and gets the "hl" class when it is the card a reference-card link asked for
+   (openCodex sets cxHl, then scrolls the codex body to that id). */
 function cxItem(x){const more=ARR(x.more).filter(m=>m&&m[0]<=EFF()).map(m=>m[1]).join(" ");
   const lm=LY&&(x.layers||x.layer||x.when!=null)?'<span class="lmeta">'+LY.itemMeta(LAY,TL,x)+'</span>':"";
   const dk=x.key!=null?' data-key="'+esc(x.key)+'"':"";
-  return '<div class="cx-item"'+dk+'><h3 tabindex="-1">'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p>'+cxSrc(x)+cxSee(x)+'</div>';}
+  const hl=x.id&&x.id===cxHl?" hl":"",id=x.id?' id="cx-'+esc(x.id)+'"':"";
+  return '<div class="cx-item'+hl+'"'+id+dk+'><h3 tabindex="-1">'+esc(x.name)+'</h3>'+(x.role||x.books||lm?'<div class="r">'+esc(x.role||"")+(x.books?" "+bks(x.books):"")+lm+'</div>':"")+'<p>'+esc((x.desc||"")+(more?" "+more:""))+'</p>'+cxSrc(x)+cxSee(x)+'</div>';}
 /* optional source locators on a codex entry: src:[{t:"Moses 2",u:"https://…"}]; only https links are made */
 function cxSrc(x){const s=ARR(x.src).filter(r=>r&&r.t);if(!s.length)return"";
   return '<p class="cx-src">Source: '+s.map(r=>/^https:\/\/[^\s"<>]+$/.test(String(r.u||""))?'<a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.t)+'</a>':esc(r.t)).join(" · ")+'</p>';}
@@ -1723,7 +1726,7 @@ function cxSee(x){
   const lt=later?'<span class="cx-off">'+later+' more unlock'+(later===1?"s":"")+' in later books</span>':"";
   return '<p class="cx-also"><span>See also:</span>'+parts.concat(lt?[lt]:[]).join("")+'</p>';}
 function cxGo(key){const t=CXK.get(String(key));if(!t||cxReach(t.x)!=="ok")return;
-  cxTab=t.tab;renderCodex();
+  cxTab=t.tab;cxHl=null;renderCodex();
   const el=[...$("#cxBody").querySelectorAll(".cx-item[data-key]")].find(e=>e.dataset.key===String(key));if(!el)return;
   el.scrollIntoView({block:"start"});el.classList.add("cx-hit");setTimeout(()=>el.classList.remove("cx-hit"),1600);
   el.querySelector("h3").focus({preventScroll:true});}

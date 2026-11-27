@@ -75,6 +75,43 @@ const PACKS = [
    waits on them before it can report the header, so these get a longer readiness budget. On a real GPU the
    same frames take milliseconds. */
 const SURFACE_START = new Set(['lds-standard-works']);
+/* Extra per-pack interaction checks; each returns a list of problems.
+   INT850-1: a Chronicle event's reference-card link opens the Codex on that card (a non-first card): the card has its
+   cx-<id> element id and the "hl" highlight, and only the Codex body scrolls to it. */
+async function refCardJump(tab) {
+  const r = await tab.evaluate(() => {
+    const ev = document.querySelector('[data-ev="che-1054"]');
+    if (!ev) return { err: 'no Chronicle event che-1054' };
+    ev.click();
+    const btn = document.querySelector('[data-cx="chp-constantinople"]');
+    if (!btn) return { err: 'no reference-card link to chp-constantinople' };
+    const pageY = document.scrollingElement.scrollTop;
+    btn.click();
+    const body = document.querySelector('#cxBody');
+    const el = document.getElementById('cx-chp-constantinople');
+    const items = [...body.querySelectorAll('.cx-item')];
+    const out = {
+      open: !document.querySelector('#codex').hidden,
+      index: el ? items.indexOf(el) : -1,
+      hl: [...body.querySelectorAll('.cx-item.hl')].map(e => e.id),
+      top: el ? Math.round(el.getBoundingClientRect().top - body.getBoundingClientRect().top) : null,
+      bodyScroll: body.scrollTop,
+      pageMoved: document.scrollingElement.scrollTop !== pageY,
+    };
+    document.querySelector('#cxClose').click();
+    return out;
+  });
+  if (r.err) return [r.err];
+  const errs = [];
+  if (!r.open) errs.push('reference-card link did not open the Codex');
+  if (r.index < 1) errs.push(`reference card cx-chp-constantinople not found as a non-first card (index ${r.index})`);
+  if (r.hl.join() !== 'cx-chp-constantinople') errs.push(`highlighted cards: [${r.hl.join(', ')}]`);
+  if (!(r.bodyScroll > 0) || r.top == null || r.top < 0 || r.top > 40)
+    errs.push(`Codex body not scrolled to the card (scrollTop ${r.bodyScroll}, card top ${r.top})`);
+  if (r.pageMoved) errs.push('the page itself scrolled');
+  return errs;
+}
+const PAGE_CHECKS = { 'abrahamic-world-religions': refCardJump };
 const PAGES = [
   { path: 'atlas/', ready: '#chooser', back: '#chooser .gl-home' },
   ...PACKS.map(id => ({
@@ -84,6 +121,7 @@ const PAGES = [
     header: true,
     wait: 2500,
     readyTimeout: SURFACE_START.has(id) ? 240000 : 60000,
+    check: PAGE_CHECKS[id],
   })),
   { path: 'atlas/?pack=nope', ready: '#chooser', back: '#chooser .gl-home' },
   { path: 'atlas/society.html', ready: '#app .top', back: '.top .gl-home', wait: 4000 },
@@ -173,6 +211,7 @@ async function visit(page, vp) {
     const sw = await tab.evaluate(() => document.documentElement.scrollWidth - innerWidth);
     if (sw > 1) errs.push(`page scrolls horizontally by ${sw}px`);
     if (shotsDir) await screenshot(tab, join(shotsDir, `${page.path.replace(/[^\w-]+/g, '_')}-${vp.name}.png`));
+    if (page.check) errs.push(...(await page.check(tab)));
     // header must never be clipped at laptop widths
     if (page.header && vp.name === 'desktop') {
       for (const w of [1440, 1280, 1024]) {
