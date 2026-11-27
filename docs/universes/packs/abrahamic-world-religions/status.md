@@ -1,10 +1,10 @@
-stage: final-audit
+stage: live
 owner: mckay
-updated: 2026-11-09T02:56Z
-blocked-on: mckay
-next-action: Mckay: merge PR #39 on GitHub pinned to 813061f482c729429dd8ee9f194ca406a931cde9 (integration verified, see History), or allow Claude merge permission for this task; Claude then confirms the Pages deploy and sets live.
+updated: 2026-11-27T00:45Z
+blocked-on: none
+next-action: none (live). Mckay: follow-ups only if wanted.
 idle-runs: 0
-note: D04 approved. Integration verified 2026-11-09 by Claude: main changed only docs/** since PR base, merge clean, exact-head PR CI success. Claude merge attempt blocked by its permission guard (see DECISIONS D09). Not merged, not deployed.
+note: Live. Mckay merged PR #39 at approved head 813061f (merge commit ffcbea8, 2026-11-27 00:28Z); Deploy GitHub Pages run for ffcbea8 succeeded (build incl. tests and page checks, then deploy, 00:32Z).
 
 
 
@@ -70,3 +70,4 @@ Track A · view: Earth map + branching tree
 - 2026-11-09T02:42Z: ChatGPT recorded Mckay's D04 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains 813061f482c729429dd8ee9f194ca406a931cde9. Mckay approved D04 on 2026-11-09 within D02 scope and existing Known gaps. Prior same-head PR CI succeeded; current PR is clean. Release execution remains pending; no merge, deployment or pickup claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
 
 - 2026-11-09T02:56Z: Claude: verified integration for PR39 at 813061f against main b9bc9d7 — only docs/** changed on main since the PR base, `git merge-tree` clean, exact-head PR CI (build) success 2026-11-06, so integrated runtime equals reviewed runtime. Attempted pinned merge; the merge call via the GitHub REST API (PUT pulls/39/merge with sha pinned) was refused by this run's automated permission guard as a production deploy; Claude did not retry or work around it. Owner claude → mckay, blocked-on mckay (DECISIONS D09). idle-runs 0.
+- 2026-11-27: Claude: confirmed Mckay's merge of PR #39 at 813061f (merge ffcbea8) and the successful GitHub Pages deploy for ffcbea8 (build + deploy jobs green). Stage live, owner mckay.
