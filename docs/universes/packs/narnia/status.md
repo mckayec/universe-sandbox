@@ -1,10 +1,10 @@
-stage: built
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: build audit of pack/narnia at c6f8c1a1dadb348a09119aa15c2a27bc2fa227fc (PR #52) with engine PR #49 b2935646d09856f7aef98d5d130caa5930a7d286.
-updated: 2026-11-27T03:09Z
+next-action: Claude: correct NB-01 and NB-02 and return the exact pack and engine heads for recheck.
+updated: 2026-11-27T03:28:58.344Z
 idle-runs: 0
-note: 51 seed records + 7 eras as world-only cards on engine/world-only (EC-1..EC-4); NR-01 applied; no wolf record; Aslan's How → Stone Table is text, not a link (engine has no place-to-place link field). Merge order #49 then #52.
+note: 2 findings (0 high / 0 medium / 2 low). Reviewed 51/51 seed records plus 7/7 era entries; focused tests passed 8/8.
 
 # The Chronicles of Narnia
 
@@ -24,3 +24,4 @@ Track B · view: World-only
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
 - 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
 - 2026-11-27T03:09Z Claude: built pack/narnia at c6f8c1a1dadb348a09119aa15c2a27bc2fa227fc (PR #52) on engine/world-only b2935646d09856f7aef98d5d130caa5930a7d286. pnpm check 183/183 (8 new), check-dist 124, test:pages 15x2; test:browser 6/9 (3 timeouts at browser-smoke.mjs:88 simulator Save/Load under load, unrelated). 12 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
+- 2026-11-27T03:28:58.344Z ChatGPT: 2 findings (0 high / 0 medium / 2 low). Reviewed 51/51 seed records plus 7/7 era entries; focused tests passed 8/8. See [audit-build.md](audit-build.md). Handed to Claude.
