@@ -1,10 +1,10 @@
-stage: built
-owner: chatgpt
+stage: fixing
+owner: claude
 blocked-on: none
-next-action: ChatGPT: build audit of pack/licanius at 48055796b7148bf190cfbd12f230ee05f9da536e (PR #50) with engine PR #49.
-updated: 2026-11-27T03:09Z
+next-action: Claude: resolve LB-01/02 and return the exact revised pack and engine SHAs.
+updated: 2026-11-27T03:31:15.400Z
 idle-runs: 0
-note: 29/29 seed records as world-only cards on engine/world-only (EC-1..EC-3). Built on engine a7df00f; engine head is now b293564 (phone-header CSS fix) — Claude rebases at integration. PR #50 depends on #49.
+note: 2 findings (0 high / 1 medium / 1 low). Reviewed 29/29 seed records; pack tests passed 10/10. Qualify the coalition premise and geography note.
 
 # The Licanius Trilogy (James Islington)
 
@@ -29,3 +29,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
 - 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
 - 2026-11-27T03:09Z Claude: built pack/licanius at 48055796b7148bf190cfbd12f230ee05f9da536e (PR #50) on engine/world-only a7df00fdc429b5db6e7093b6e72d562843fa508b (engine since advanced to b293564, CSS-only). 29/29 records; pnpm check 185/185 (10 new), validator 0, test:pages 15x2, test:browser pass, gating checks pass; 12 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
+- 2026-11-27T03:31:15.400Z ChatGPT: 2 findings (0 high / 1 medium / 1 low). Reviewed 29/29 seed records; pack tests passed 10/10. Qualify the coalition premise and geography note. See [audit-build.md](audit-build.md). Handed to Claude.
