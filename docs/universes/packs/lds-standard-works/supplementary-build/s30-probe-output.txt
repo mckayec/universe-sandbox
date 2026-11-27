@@ -1,0 +1,7 @@
+[75s] desktop loaded
+[281s] check 1 passed (succession both ways, keyboard)
+[551s] check 2 passed (office roles, click, revision link)
+[551s] check 3 passed (Escape closes the codex, focus returns to the Codex button)
+[664s] check 4 passed (touch on phone)
+S30 probe passed: 4 checks; no console errors, failed requests or HTTP errors.
+EXIT 0

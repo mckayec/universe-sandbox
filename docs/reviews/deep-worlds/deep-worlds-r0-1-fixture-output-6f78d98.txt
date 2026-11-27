@@ -1,0 +1,214 @@
+
+> universe-sandbox@0.1.0 test:places /home/claude/work/dw
+> node tests/atlas-places-fixture.mjs
+
+atlas-places-fixture: 153.0.8010.12
+PASS [1440x900 L1 valid link] entry fade sampled, no later copy (view=world sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=null/null fade=true hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 L1 valid link] settles in Arrakeen at fxres, render=state (view=place sel=arrakis site=arrakeen lm=fxres ev=null book=1 rendered=arrakeen/fxres fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [1440x900 L1 valid link] dossier shows the landmark; crumbs name Arrakeen
+PASS [1440x900 L1 valid link] announcement "Arrakeen, inside, on Arrakis. Reading Dune"
+PASS [1440x900 L1 valid link] URL view=place&lm=fxres, history marks the place
+PASS [1440x900 L1 valid link] book-1 landmarks exclude fxlater (fxres)
+PASS [1440x900 L1 valid link] settled: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [1440x900 L1 valid link] all: 1 fade sample(s) recorded
+PASS [1440x900 L1 valid link] all fade #1: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 L1 valid link] L1: same document
+PASS [1440x900 L1 valid link] L1: page/console errors: none
+PASS [1440x900 L2 stale lm] mid-fade: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 L2 stale lm] place renders (view=place sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=arrakeen/null fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 L2 stale lm] stale lm dropped in state and render (lm=null, renderedLm=null)
+PASS [1440x900 L2 stale lm] settled: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 L2 stale lm] all: 1 fade sample(s) recorded
+PASS [1440x900 L2 stale lm] all fade #1: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 L2 stale lm] L2: same document
+PASS [1440x900 L2 stale lm] L2: page/console errors: none
+PASS [1440x900 L3 stale later-book site] never enters or shows the hidden/unknown place (sampled every 150 ms for 7 s)
+PASS [1440x900 L3 stale later-book site] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=keep lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [1440x900 L3 stale later-book site] URL rewritten (#book=1&world=arrakis&view=surface)
+PASS [1440x900 L3 stale later-book site] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 L3 stale later-book site] L3: same document
+PASS [1440x900 L3 stale later-book site] L3: page/console errors: none
+PASS [1440x900 L4 stale unknown site] never enters or shows the hidden/unknown place (sampled every 150 ms for 7 s)
+PASS [1440x900 L4 stale unknown site] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [1440x900 L4 stale unknown site] URL rewritten (#book=1&world=arrakis&view=surface)
+PASS [1440x900 L4 stale unknown site] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 L4 stale unknown site] L4: same document
+PASS [1440x900 L4 stale unknown site] L4: page/console errors: none
+PASS [1440x900 B1 downgrade keeps place, drops later lm] positive control: book 2 shows fxlater (view=place sel=arrakis site=arrakeen lm=fxlater ev=null book=2 rendered=arrakeen/fxlater fade=false hash=#book=2&world=arrakis&site=arrakeen&view=place&lm=fxlater)
+PASS [1440x900 B1 downgrade keeps place, drops later lm] immediately after downgrade: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 B1 downgrade keeps place, drops later lm] stays in Arrakeen, lm/ev dropped (view=place sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=arrakeen/null fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 B1 downgrade keeps place, drops later lm] rendered landmarks exclude fxlater (fxres)
+PASS [1440x900 B1 downgrade keeps place, drops later lm] announcement "Arrakeen, inside, on Arrakis. Reading Dune"
+PASS [1440x900 B1 downgrade keeps place, drops later lm] settled: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 B1 downgrade keeps place, drops later lm] B1: same document
+PASS [1440x900 B1 downgrade keeps place, drops later lm] B1: page/console errors: none
+PASS [1440x900 B2 downgrade in later-book place] positive control: Keep place at book 2 (view=place sel=arrakis site=keep lm=null ev=null book=2 rendered=keep/null fade=false hash=#book=2&world=arrakis&site=keep&view=place)
+PASS [1440x900 B2 downgrade in later-book place] leave fade sampled (view=place sel=arrakis site=keep lm=null ev=null book=1 rendered=keep/null fade=true hash=#book=1&world=arrakis&view=surface)
+PASS [1440x900 B2 downgrade in later-book place] mid-fade: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 B2 downgrade in later-book place] mid-fade announcement neutral "Arrakis, on the surface. Reading Dune"
+PASS [1440x900 B2 downgrade in later-book place] settles on the Arrakis surface (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [1440x900 B2 downgrade in later-book place] history no longer on a place entry
+PASS [1440x900 B2 downgrade in later-book place] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 B2 downgrade in later-book place] B2: same document
+PASS [1440x900 B2 downgrade in later-book place] B2: page/console errors: none
+PASS [1440x900 B3 downgrade mid-entry] mid-fade (150 ms into the entry): no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 B3 downgrade mid-entry] cancelled entry never commits or builds the Keep place
+PASS [1440x900 B3 downgrade mid-entry] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=keep lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [1440x900 B3 downgrade mid-entry] place history marker dropped (atlasPlace=false, history +1)
+PASS [1440x900 B3 downgrade mid-entry] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 B3 downgrade mid-entry] B3: same document
+PASS [1440x900 B3 downgrade mid-entry] B3: page/console errors: none
+PASS [1440x900 B4 downgrade mid-leave] mid-fade: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 B4 downgrade mid-leave] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=keep lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [1440x900 B4 downgrade mid-leave] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [1440x900 B4 downgrade mid-leave] B4: same document
+PASS [1440x900 B4 downgrade mid-leave] B4: page/console errors: none
+PASS [1440x900 T1 tour Stop mid-entry] Stop before the entry commits: no place is entered or built
+PASS [1440x900 T1 tour Stop mid-entry] settled, render=state, tour hidden, no place history (view=galaxy sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis)
+PASS [1440x900 T1 tour Stop mid-entry] T1: same document
+PASS [1440x900 T1 tour Stop mid-entry] T1: page/console errors: none
+PASS [1440x900 T2 tour repeated destination] rapid Next lands on d3 in Arrakeen (view=place sel=arrakis site=arrakeen lm=null ev=d3 book=1 rendered=arrakeen/null fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [1440x900 T2 tour repeated destination] tour box and crumbs agree
+PASS [1440x900 T2 tour repeated destination] repeated destination does not re-enter (no fade)
+PASS [1440x900 T2 tour repeated destination] d4 selects fxres in place (view=place sel=arrakis site=arrakeen lm=fxres ev=d4 book=1 rendered=arrakeen/fxres fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [1440x900 T2 tour repeated destination] no extra history entry (8 -> 8); URL lm=fxres
+PASS [1440x900 T2 tour repeated destination] dossier shows d4 / its landmark
+PASS [1440x900 T2 tour repeated destination] queued step lands on d6 in Tabr at fxcave (view=place sel=arrakis site=tabr lm=fxcave ev=d6 book=1 rendered=tabr/fxcave fade=false hash=#book=1&world=arrakis&site=tabr&view=place&lm=fxcave)
+PASS [1440x900 T2 tour repeated destination] crumbs and announcement name Tabr ("Sietch Tabr, inside, on Arrakis. Reading Dune")
+PASS [1440x900 T2 tour repeated destination] Prev/Next back to the same destination settles once on d6 (view=place sel=arrakis site=tabr lm=fxcave ev=d6 book=1 rendered=tabr/fxcave fade=false hash=#book=1&world=arrakis&site=tabr&view=place&lm=fxcave)
+PASS [1440x900 T2 tour repeated destination] Stop settles with render=state (view=place sel=arrakis site=tabr lm=fxcave ev=d6 book=1 rendered=tabr/fxcave fade=false hash=#book=1&world=arrakis&site=tabr&view=place&lm=fxcave)
+PASS [1440x900 T2 tour repeated destination] T2: same document
+PASS [1440x900 T2 tour repeated destination] T2: page/console errors: none
+PASS [1440x900 T3 tour Stop mid-leave] Stop cancels the d2 travel; settled, render=state (view=world sel=caladan site=castle lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=caladan&site=castle&view=surface)
+PASS [1440x900 T3 tour Stop mid-leave] no stale d2 copy without its world
+PASS [1440x900 T3 tour Stop mid-leave] T3: same document
+PASS [1440x900 T3 tour Stop mid-leave] T3: page/console errors: none
+PASS [1440x900 H1 Back during travel] chronicle d4 enters Arrakeen at fxres (view=place sel=arrakis site=arrakeen lm=fxres ev=d4 book=1 rendered=arrakeen/fxres fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [1440x900 H1 Back during travel] hop fade in flight at 1448 ms, Arrakeen still rendered (view=place sel=arrakis site=tabr lm=null ev=null book=1 rendered=arrakeen/fxres fade=true hash=#book=1&world=arrakis&site=tabr&view=place)
+PASS [1440x900 H1 Back during travel] Back popstate at 3457 ms, rendered then tabr (after the hop commit): Tabr built at 3458 ms
+PASS [1440x900 H1 Back during travel] Back settles on the Arrakis surface (view=world sel=arrakis site=tabr lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&site=tabr&view=surface)
+PASS [1440x900 H1 Back during travel] announcement "Arrakis, on the surface. Reading Dune"
+PASS [1440x900 H1 Back during travel] H1: same document
+PASS [1440x900 H1 Back during travel] H1: page/console errors: none
+PASS [1440x900 H2 Back/Forward settled] Back -> surface (view=world sel=arrakis site=tabr lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&site=tabr&view=surface)
+PASS [1440x900 H2 Back/Forward settled] Forward re-enters Tabr (view=place sel=arrakis site=tabr lm=null ev=null book=1 rendered=tabr/null fade=false hash=#book=1&world=arrakis&site=tabr&view=place)
+PASS [1440x900 H2 Back/Forward settled] H2: same document
+PASS [1440x900 H2 Back/Forward settled] H2: page/console errors: none
+PASS [390x844 L1 valid link] entry fade sampled, no later copy (view=world sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=null/null fade=true hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 L1 valid link] settles in Arrakeen at fxres, render=state (view=place sel=arrakis site=arrakeen lm=fxres ev=null book=1 rendered=arrakeen/fxres fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [390x844 L1 valid link] dossier shows the landmark; crumbs name Arrakeen
+PASS [390x844 L1 valid link] announcement "Arrakeen, inside, on Arrakis. Reading Dune"
+PASS [390x844 L1 valid link] URL view=place&lm=fxres, history marks the place
+PASS [390x844 L1 valid link] book-1 landmarks exclude fxlater (fxres)
+PASS [390x844 L1 valid link] settled: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [390x844 L1 valid link] all: 1 fade sample(s) recorded
+PASS [390x844 L1 valid link] all fade #1: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 L1 valid link] L1: same document
+PASS [390x844 L1 valid link] L1: page/console errors: none
+PASS [390x844 L2 stale lm] mid-fade: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 L2 stale lm] place renders (view=place sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=arrakeen/null fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 L2 stale lm] stale lm dropped in state and render (lm=null, renderedLm=null)
+PASS [390x844 L2 stale lm] settled: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 L2 stale lm] all: 1 fade sample(s) recorded
+PASS [390x844 L2 stale lm] all fade #1: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 L2 stale lm] L2: same document
+PASS [390x844 L2 stale lm] L2: page/console errors: none
+PASS [390x844 L3 stale later-book site] never enters or shows the hidden/unknown place (sampled every 150 ms for 7 s)
+PASS [390x844 L3 stale later-book site] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=keep lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 L3 stale later-book site] URL rewritten (#book=1&world=arrakis&view=surface)
+PASS [390x844 L3 stale later-book site] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 L3 stale later-book site] L3: same document
+PASS [390x844 L3 stale later-book site] L3: page/console errors: none
+PASS [390x844 L4 stale unknown site] never enters or shows the hidden/unknown place (sampled every 150 ms for 7 s)
+PASS [390x844 L4 stale unknown site] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 L4 stale unknown site] URL rewritten (#book=1&world=arrakis&view=surface)
+PASS [390x844 L4 stale unknown site] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 L4 stale unknown site] L4: same document
+PASS [390x844 L4 stale unknown site] L4: page/console errors: none
+PASS [390x844 B1 downgrade keeps place, drops later lm] positive control: book 2 shows fxlater (view=place sel=arrakis site=arrakeen lm=fxlater ev=null book=2 rendered=arrakeen/fxlater fade=false hash=#book=2&world=arrakis&site=arrakeen&view=place&lm=fxlater)
+PASS [390x844 B1 downgrade keeps place, drops later lm] immediately after downgrade: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 B1 downgrade keeps place, drops later lm] stays in Arrakeen, lm/ev dropped (view=place sel=arrakis site=arrakeen lm=null ev=null book=1 rendered=arrakeen/null fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 B1 downgrade keeps place, drops later lm] rendered landmarks exclude fxlater (fxres)
+PASS [390x844 B1 downgrade keeps place, drops later lm] announcement "Arrakeen, inside, on Arrakis. Reading Dune"
+PASS [390x844 B1 downgrade keeps place, drops later lm] settled: no later-book copy or URL (#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 B1 downgrade keeps place, drops later lm] B1: same document
+PASS [390x844 B1 downgrade keeps place, drops later lm] B1: page/console errors: none
+PASS [390x844 B2 downgrade in later-book place] positive control: Keep place at book 2 (view=place sel=arrakis site=keep lm=null ev=null book=2 rendered=keep/null fade=false hash=#book=2&world=arrakis&site=keep&view=place)
+PASS [390x844 B2 downgrade in later-book place] leave fade sampled (view=place sel=arrakis site=keep lm=null ev=null book=1 rendered=keep/null fade=true hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 B2 downgrade in later-book place] mid-fade: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B2 downgrade in later-book place] mid-fade announcement neutral "Arrakis, on the surface. Reading Dune"
+PASS [390x844 B2 downgrade in later-book place] settles on the Arrakis surface (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 B2 downgrade in later-book place] history no longer on a place entry
+PASS [390x844 B2 downgrade in later-book place] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B2 downgrade in later-book place] B2: same document
+PASS [390x844 B2 downgrade in later-book place] B2: page/console errors: none
+PASS [390x844 B3 downgrade mid-entry] mid-fade (150 ms into the entry): no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B3 downgrade mid-entry] cancelled entry never commits or builds the Keep place
+PASS [390x844 B3 downgrade mid-entry] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=keep lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 B3 downgrade mid-entry] place history marker dropped (atlasPlace=false, history +1)
+PASS [390x844 B3 downgrade mid-entry] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B3 downgrade mid-entry] B3: same document
+PASS [390x844 B3 downgrade mid-entry] B3: page/console errors: none
+PASS [390x844 B4 downgrade mid-leave] mid-fade: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B4 downgrade mid-leave] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=keep lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 B4 downgrade mid-leave] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B4 downgrade mid-leave] B4: same document
+PASS [390x844 B4 downgrade mid-leave] B4: page/console errors: none
+PASS [390x844 T1 tour Stop mid-entry] Stop before the entry commits: no place is entered or built
+PASS [390x844 T1 tour Stop mid-entry] settled, render=state, tour hidden, no place history (view=galaxy sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis)
+PASS [390x844 T1 tour Stop mid-entry] T1: same document
+PASS [390x844 T1 tour Stop mid-entry] T1: page/console errors: none
+PASS [390x844 T2 tour repeated destination] rapid Next lands on d3 in Arrakeen (view=place sel=arrakis site=arrakeen lm=null ev=d3 book=1 rendered=arrakeen/null fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place)
+PASS [390x844 T2 tour repeated destination] tour box and crumbs agree
+PASS [390x844 T2 tour repeated destination] repeated destination does not re-enter (no fade)
+PASS [390x844 T2 tour repeated destination] d4 selects fxres in place (view=place sel=arrakis site=arrakeen lm=fxres ev=d4 book=1 rendered=arrakeen/fxres fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [390x844 T2 tour repeated destination] no extra history entry (8 -> 8); URL lm=fxres
+PASS [390x844 T2 tour repeated destination] dossier shows d4 / its landmark
+PASS [390x844 T2 tour repeated destination] queued step lands on d6 in Tabr at fxcave (view=place sel=arrakis site=tabr lm=fxcave ev=d6 book=1 rendered=tabr/fxcave fade=false hash=#book=1&world=arrakis&site=tabr&view=place&lm=fxcave)
+PASS [390x844 T2 tour repeated destination] crumbs and announcement name Tabr ("Sietch Tabr, inside, on Arrakis. Reading Dune")
+PASS [390x844 T2 tour repeated destination] Prev/Next back to the same destination settles once on d6 (view=place sel=arrakis site=tabr lm=fxcave ev=d6 book=1 rendered=tabr/fxcave fade=false hash=#book=1&world=arrakis&site=tabr&view=place&lm=fxcave)
+PASS [390x844 T2 tour repeated destination] Stop settles with render=state (view=place sel=arrakis site=tabr lm=fxcave ev=d6 book=1 rendered=tabr/fxcave fade=false hash=#book=1&world=arrakis&site=tabr&view=place&lm=fxcave)
+PASS [390x844 T2 tour repeated destination] T2: same document
+PASS [390x844 T2 tour repeated destination] T2: page/console errors: none
+PASS [390x844 T3 tour Stop mid-leave] Stop cancels the d2 travel; settled, render=state (view=world sel=caladan site=castle lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=caladan&site=castle&view=surface)
+PASS [390x844 T3 tour Stop mid-leave] no stale d2 copy without its world
+PASS [390x844 T3 tour Stop mid-leave] T3: same document
+PASS [390x844 T3 tour Stop mid-leave] T3: page/console errors: none
+PASS [390x844 H1 Back during travel] chronicle d4 enters Arrakeen at fxres (view=place sel=arrakis site=arrakeen lm=fxres ev=d4 book=1 rendered=arrakeen/fxres fade=false hash=#book=1&world=arrakis&site=arrakeen&view=place&lm=fxres)
+PASS [390x844 H1 Back during travel] hop fade in flight at 442 ms, Arrakeen still rendered (view=place sel=arrakis site=tabr lm=null ev=null book=1 rendered=arrakeen/fxres fade=true hash=#book=1&world=arrakis&site=tabr&view=place)
+PASS [390x844 H1 Back during travel] Back popstate at 994 ms, rendered then tabr (after the hop commit): Tabr built at 1357 ms
+PASS [390x844 H1 Back during travel] Back settles on the Arrakis surface (view=world sel=arrakis site=tabr lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&site=tabr&view=surface)
+PASS [390x844 H1 Back during travel] announcement "Arrakis, on the surface. Reading Dune"
+PASS [390x844 H1 Back during travel] H1: same document
+PASS [390x844 H1 Back during travel] H1: page/console errors: none
+PASS [390x844 H2 Back/Forward settled] Back -> surface (view=world sel=arrakis site=tabr lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&site=tabr&view=surface)
+PASS [390x844 H2 Back/Forward settled] Forward re-enters Tabr (view=place sel=arrakis site=tabr lm=null ev=null book=1 rendered=tabr/null fade=false hash=#book=1&world=arrakis&site=tabr&view=place)
+PASS [390x844 H2 Back/Forward settled] H2: same document
+PASS [390x844 H2 Back/Forward settled] H2: page/console errors: none
+  [1440x900 L1 valid link] 11/11
+  [1440x900 L2 stale lm] 8/8
+  [1440x900 L3 stale later-book site] 6/6
+  [1440x900 L4 stale unknown site] 6/6
+  [1440x900 B1 downgrade keeps place, drops later lm] 8/8
+  [1440x900 B2 downgrade in later-book place] 9/9
+  [1440x900 B3 downgrade mid-entry] 7/7
+  [1440x900 B4 downgrade mid-leave] 5/5
+  [1440x900 T1 tour Stop mid-entry] 4/4
+  [1440x900 T2 tour repeated destination] 12/12
+  [1440x900 T3 tour Stop mid-leave] 4/4
+  [1440x900 H1 Back during travel] 7/7
+  [1440x900 H2 Back/Forward settled] 4/4
+  [390x844 L1 valid link] 11/11
+  [390x844 L2 stale lm] 8/8
+  [390x844 L3 stale later-book site] 6/6
+  [390x844 L4 stale unknown site] 6/6
+  [390x844 B1 downgrade keeps place, drops later lm] 8/8
+  [390x844 B2 downgrade in later-book place] 9/9
+  [390x844 B3 downgrade mid-entry] 7/7
+  [390x844 B4 downgrade mid-leave] 5/5
+  [390x844 T1 tour Stop mid-entry] 4/4
+  [390x844 T2 tour repeated destination] 12/12
+  [390x844 T3 tour Stop mid-leave] 4/4
+  [390x844 H1 Back during travel] 7/7
+  [390x844 H2 Back/Forward settled] 4/4
+atlas-places-fixture: 182 passed, 0 failed

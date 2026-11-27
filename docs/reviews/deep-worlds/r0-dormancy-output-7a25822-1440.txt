@@ -1,0 +1,141 @@
+viewport 1440x900; R0 http://127.0.0.1:4601; main http://127.0.0.1:4602
+PASS cosmere: R0 creates no places object (got null)
+PASS cosmere: R0 shows no Tour button
+PASS cosmere: R0 site: view=world, enter/go/hop controls=0
+PASS cosmere: site: R0 view world == main view world
+PASS cosmere: site: dossier/chron/crumbs text identical to main (3/3)
+PASS cosmere: R0 reclick: view=world, enter/go/hop controls=0
+PASS cosmere: reclick: R0 view world == main view world
+PASS cosmere: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS cosmere: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS cosmere: deep: R0 view galaxy == main view galaxy
+PASS cosmere: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS cosmere: deep: URL rewritten like main (#world=ashyn vs #world=ashyn)
+PASS cosmere: R0 console errors: 0
+PASS cosmere: main console errors: 0
+PASS christian-apocrypha: R0 creates no places object (got null)
+PASS christian-apocrypha: R0 shows no Tour button
+PASS christian-apocrypha: R0 site: view=world, enter/go/hop controls=0
+PASS christian-apocrypha: site: R0 view world == main view world
+PASS christian-apocrypha: site: dossier/chron/crumbs text identical to main (3/3)
+PASS christian-apocrypha: R0 reclick: view=world, enter/go/hop controls=0
+PASS christian-apocrypha: reclick: R0 view world == main view world
+PASS christian-apocrypha: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS christian-apocrypha: R0 event: view=world, enter/go/hop controls=0
+PASS christian-apocrypha: event: R0 view world == main view world
+PASS christian-apocrypha: event: dossier/chron/crumbs text identical to main (3/3)
+PASS christian-apocrypha: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS christian-apocrypha: deep: R0 view galaxy == main view galaxy
+PASS christian-apocrypha: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS christian-apocrypha: deep: URL rewritten like main (#world=earth vs #world=earth)
+PASS christian-apocrypha: R0 console errors: 0
+PASS christian-apocrypha: main console errors: 0
+PASS abrahamic-world-religions: R0 creates no places object (got null)
+PASS abrahamic-world-religions: R0 shows no Tour button
+PASS abrahamic-world-religions: R0 site: view=world, enter/go/hop controls=0
+PASS abrahamic-world-religions: site: R0 view world == main view world
+PASS abrahamic-world-religions: site: dossier/chron/crumbs text identical to main (3/3)
+PASS abrahamic-world-religions: R0 reclick: view=world, enter/go/hop controls=0
+PASS abrahamic-world-religions: reclick: R0 view world == main view world
+PASS abrahamic-world-religions: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS abrahamic-world-religions: R0 event: view=world, enter/go/hop controls=0
+PASS abrahamic-world-religions: event: R0 view world == main view world
+PASS abrahamic-world-religions: event: dossier/chron/crumbs text identical to main (3/3)
+PASS abrahamic-world-religions: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS abrahamic-world-religions: deep: R0 view galaxy == main view galaxy
+PASS abrahamic-world-religions: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS abrahamic-world-religions: deep: URL rewritten like main (#world=earth vs #world=earth)
+PASS abrahamic-world-religions: R0 console errors: 0
+PASS abrahamic-world-religions: main console errors: 0
+PASS dune: R0 creates no places object (got null)
+PASS dune: R0 shows no Tour button
+PASS dune: R0 site: view=world, enter/go/hop controls=0
+PASS dune: site: R0 view world == main view world
+PASS dune: site: dossier/chron/crumbs text identical to main (3/3)
+PASS dune: R0 reclick: view=world, enter/go/hop controls=0
+PASS dune: reclick: R0 view world == main view world
+PASS dune: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS dune: R0 event: view=world, enter/go/hop controls=0
+PASS dune: event: R0 view world == main view world
+PASS dune: event: dossier/chron/crumbs text identical to main (3/3)
+PASS dune: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS dune: deep: R0 view galaxy == main view galaxy
+PASS dune: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS dune: deep: URL rewritten like main (#world=arrakis vs #world=arrakis)
+PASS dune: R0 console errors: 0
+PASS dune: main console errors: 0
+PASS foundation: R0 creates no places object (got null)
+PASS foundation: R0 shows no Tour button
+PASS foundation: R0 site: view=world, enter/go/hop controls=0
+PASS foundation: site: R0 view world == main view world
+PASS foundation: site: dossier/chron/crumbs text identical to main (3/3)
+PASS foundation: R0 reclick: view=world, enter/go/hop controls=0
+PASS foundation: reclick: R0 view world == main view world
+PASS foundation: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS foundation: R0 event: view=world, enter/go/hop controls=0
+PASS foundation: event: R0 view world == main view world
+PASS foundation: event: dossier/chron/crumbs text identical to main (3/3)
+PASS foundation: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS foundation: deep: R0 view galaxy == main view galaxy
+PASS foundation: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS foundation: deep: URL rewritten like main (#world=trantor vs #world=trantor)
+PASS foundation: R0 console errors: 0
+PASS foundation: main console errors: 0
+PASS expanse: R0 creates no places object (got null)
+PASS expanse: R0 shows no Tour button
+PASS expanse: R0 site: view=world, enter/go/hop controls=0
+PASS expanse: site: R0 view world == main view world
+PASS expanse: site: dossier/chron/crumbs text identical to main (3/3)
+PASS expanse: R0 reclick: view=world, enter/go/hop controls=0
+PASS expanse: reclick: R0 view world == main view world
+PASS expanse: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS expanse: R0 event: view=world, enter/go/hop controls=0
+PASS expanse: event: R0 view world == main view world
+PASS expanse: event: dossier/chron/crumbs text identical to main (3/3)
+PASS expanse: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS expanse: deep: R0 view galaxy == main view galaxy
+PASS expanse: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS expanse: deep: URL rewritten like main (#world=venus vs #world=venus)
+PASS expanse: R0 console errors: 0
+PASS expanse: main console errors: 0
+PASS hyperion: R0 creates no places object (got null)
+PASS hyperion: R0 shows no Tour button
+PASS hyperion: R0 site: view=world, enter/go/hop controls=0
+PASS hyperion: site: R0 view world == main view world
+PASS hyperion: site: dossier/chron/crumbs text identical to main (3/3)
+PASS hyperion: R0 reclick: view=world, enter/go/hop controls=0
+PASS hyperion: reclick: R0 view world == main view world
+PASS hyperion: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS hyperion: R0 event: view=world, enter/go/hop controls=0
+PASS hyperion: event: R0 view world == main view world
+PASS hyperion: event: dossier/chron/crumbs text identical to main (3/3)
+PASS hyperion: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS hyperion: deep: R0 view galaxy == main view galaxy
+PASS hyperion: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS hyperion: deep: URL rewritten like main (#world=hyperion vs #world=hyperion)
+PASS hyperion: R0 console errors: 0
+PASS hyperion: main console errors: 0
+PASS sun-eater: R0 creates no places object (got null)
+PASS sun-eater: R0 shows no Tour button
+PASS sun-eater: R0 site: view=world, enter/go/hop controls=0
+PASS sun-eater: site: R0 view world == main view world
+PASS sun-eater: site: dossier/chron/crumbs text identical to main (3/3)
+PASS sun-eater: R0 reclick: view=world, enter/go/hop controls=0
+PASS sun-eater: reclick: R0 view world == main view world
+PASS sun-eater: reclick: dossier/chron/crumbs text identical to main (3/3)
+PASS sun-eater: R0 event: view=world, enter/go/hop controls=0
+PASS sun-eater: event: R0 view world == main view world
+PASS sun-eater: event: dossier/chron/crumbs text identical to main (3/3)
+PASS sun-eater: R0 deep: view=galaxy, enter/go/hop controls=0
+PASS sun-eater: deep: R0 view galaxy == main view galaxy
+PASS sun-eater: deep: dossier/chron/crumbs text identical to main (3/3)
+PASS sun-eater: deep: URL rewritten like main (#world=delos vs #world=delos)
+PASS sun-eater: R0 console errors: 0
+PASS sun-eater: main console errors: 0
+PASS fixture dune+places:{} (R0): places object=object, Tour button=true
+PASS fixture: Enter control appears for selected site (1)
+PASS fixture: enterPlace reaches view=place (#world=arrakis&site=arrakeen&view=place)
+PASS fixture: leavePlace returns to view=world
+PASS fixture: console errors 0
+
+138 PASS / 0 FAIL

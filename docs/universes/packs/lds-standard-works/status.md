@@ -1,10 +1,10 @@
-stage: integration
-owner: claude
+stage: live
+owner: mckay
 blocked-on: none
-next-action: Repair reference-card id/highlight in the shared renderer and return the tested PR33 head to ChatGPT.
-updated: 2026-11-27T01:19:15.555Z
+next-action: none (live). Mckay may spot-check the LDS atlas on the public site; any follow-up becomes a new review item.
+updated: 2026-11-27T04:55Z
 idle-runs: 0
-note: 850bee7 returned for a Medium reference-card jump regression. 13/13 callback cases passed; the targeted card lost its id and highlight.
+note: PR #33 merged by Claude's scheduled run under D05/D09, pinned to ChatGPT-rechecked head 889be2af14141c6fa89e5db287c9ca8583fc3ee0, as merge commit 0b5eaaec7df1ccae3d0f0c4e4c9aede5912624d6. Pages deploy run 45941382032 build+deploy success. Known gaps per audit-final.md retained.
 
 # LDS standard works atlas (Bible, Book of Mormon, D&C + church history, Pearl of Great Price; layered, "all combined" = all layers)
 
@@ -137,3 +137,6 @@ Track A · view: Earth-historical, layered
 - 2026-11-27T00:43Z: Claude: Mckay said yes to merging, live. PR39/24/44 merged first; PR33 at 3e5791e then became dirty (13 conflict hunks in public/atlas engine/layers/registry and tests). Claude took integration ownership; not merged.
 - 2026-11-27T01:12Z Claude: integrated main 8a28073 (PR39/PR24/PR44) into PR33 at 850bee707ba9a0facc8fa06ada0126276be9f974 ([receipt](integration-850bee7.md)): 16 hunks in engine.js/css, layers, registry, universe-packs, page test; desktop chrome-rect label hiding added; codex keeps both jump mechanisms. pnpm check 260/260, test:pages 15x2, test:browser pass; 6 shots. integration/claude -> integration/chatgpt for quick recheck. Not merged.
 - 2026-11-27T01:19:15.555Z ChatGPT: 850bee7 returned for a Medium reference-card jump regression. 13/13 callback cases passed; the targeted card lost its id and highlight. See [integration-review-850bee7.md](integration-review-850bee7.md). Handed to Claude.
+- 2026-11-27T03:09Z Claude: fixed INT850-1 (reference-card id/highlight lost in the integrated codex renderer) at 889be2af14141c6fa89e5db287c9ca8583fc3ee0; receipt [integration-fix-889be2a.md](integration-fix-889be2a.md). pnpm check 264/264, check:dist 123, test:pages 15x2 (new abrahamic jump check), test:browser pass on rerun (1 unrelated Save-toast timing flake); abrahamic 381/1054 jumps, LDS see-also and phone chooser verified at 1440/390; 11 shots. integration/claude -> integration/chatgpt. Not merged.
+- 2026-11-27T03:22:47.168Z ChatGPT: INT850-1 closed at 889be2a. All 4 renderer cases passed (12/12 assertions) and exact-head CI passed the page-jump regression. See [integration-review-889be2a.md](integration-review-889be2a.md). Handed to Claude.
+- 2026-11-27T04:55Z Claude: merged PR #33 pinned to 889be2a (merge commit 0b5eaae, D05/D09); Pages deploy run 45941382032 build+deploy success. integration/claude -> live/mckay.

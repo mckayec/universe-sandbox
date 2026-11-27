@@ -33,7 +33,13 @@ function showMode(mode: 'add' | 'inspect' | 'navigate') {
   setPressed(document.querySelector('#inspect-mode')!, mode === 'inspect');
   setPressed(document.querySelector('#navigate-mode')!, mode === 'navigate');
 }
+/** Invalidates any held touch that has not placed yet (SC6-K1): mode changes and Add cancels end the gesture. */
+export function cancelPendingPlacement() {
+  app.placementEpoch++;
+  app.pendingTouchPlacement = null;
+}
 export function setInteractionMode(add: boolean) {
+  cancelPendingPlacement();
   app.placementMode = add;
   app.navigationMode = false;
   showMode(add ? 'add' : 'inspect');
@@ -56,6 +62,7 @@ export function setInteractionMode(add: boolean) {
   container.classList.remove('navigating');
 }
 export function setNavigationMode() {
+  cancelPendingPlacement();
   app.placementMode = false;
   app.navigationMode = true;
   showMode('navigate');

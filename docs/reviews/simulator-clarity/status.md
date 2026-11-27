@@ -1,10 +1,10 @@
 stage: integration
 owner: claude
 blocked-on: none
-next-action: Qualify the combined guide/legend/navigation-help plus selected-sheet state at 844×390 coarse pointer and return exact-head evidence or a fix.
-updated: 2026-11-27T01:20:37.685Z
+next-action: Claude: complete the pinned D12/D09 release handoff at aaa315c195fe05581526ebfcea84de85ac740cc3, checking the live head and mergeability first.
+updated: 2026-11-27T05:16:37.000Z
 idle-runs: 0
-note: Integration 4c3c03d: 22/22 focused tests pass. One combined landscape state lacks rendered or hit-test evidence; returned for targeted qualification.
+note: PR47 integration recheck passed at aaa315c. One divergent path across 2,279 blob paths retained the reviewed smoke test. Independent persistence tests passed 10/10.
 
 
 
@@ -353,3 +353,7 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-27T00:43Z: Claude: Mckay approved D12 live. After PR44 merged, PR47 at fdec175 conflicts (style.css, feed.ts, template.ts). Claude took integration ownership; not merged.
 - 2026-11-27T01:12Z Claude: integrated main 8a28073 (PR39/PR24/PR44) into PR47 at 4c3c03d6ffe918317959c72db32805805170800b ([receipt](integration-4c3c03d.md)): template token-merge, PR44 COMPACT_QUERY, both CSS blocks; Kids hides PR44 touch hint; harness stubs. pnpm check 281/281, test:pages 14x2, test:browser pass; 5 shots viewed. integration/claude -> integration/chatgpt for quick recheck. Not merged.
 - 2026-11-27T01:20:37.685Z ChatGPT: Integration 4c3c03d: 22/22 focused tests pass. One combined landscape state lacks rendered or hit-test evidence; returned for targeted qualification. See [integration-review-4c3c03d.md](integration-review-4c3c03d.md). Handed to Claude.
+- 2026-11-27T03:09Z Claude: [landscape qualification](landscape-qualification-14c684d.md): 844×390 coarse combined guide+legend+nav+sheet state was defective at 4c3c03d. Fixed at PR47 14c684dcd0a7b3ca3252749854af7371d7ef2a7b (style.css, overlay-layout.ts, +1 test). pnpm check 282/282, dist 120, test:pages 14x2, test:browser pass, test:touch pass, harness 102/102 (16 controls × 5 points at 844×390 and 390×844); 8 shots viewed. SC-L1 label-cover residual recorded. integration/claude -> integration/chatgpt. Not merged.
+- 2026-11-27T03:23:36.815Z ChatGPT: Landscape control overlap closed at 14c684d. Exact-head overlay suite passed 7/7 and 6/6 recorded stack gaps measured 8 px. Selected-label occlusion and hidden guided landscape touch hints remain disclosed. See [integration-review-14c684d.md](integration-review-14c684d.md). Handed to Claude.
+- 2026-11-27T04:55Z Claude: PR #33 merged first (0b5eaae); PR47 14c684d became dirty (tests/browser-smoke.mjs). Merged main into PR47 at aaa315c keeping PR47's reviewed Save/Load helper ([receipt](integration-aaa315c.md)); pnpm check 381/381, test:pages 15x2, test:browser pass first run, test:touch pass. integration/claude -> integration/chatgpt for quick recheck. Not merged.
+- 2026-11-27T05:16:37.000Z ChatGPT: PR47 integration recheck passed at aaa315c. One divergent path across 2,279 blob paths retained the reviewed smoke test. Independent persistence tests passed 10/10. See [integration-review-aaa315c.md](integration-review-aaa315c.md). Handed to Claude.

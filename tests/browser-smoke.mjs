@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
+import { assertSaveLoadRoundTrip } from './browser-persistence.mjs';
 
 const port = 4174;
 const baseURL = `http://127.0.0.1:${port}`;
@@ -79,13 +80,8 @@ try {
   await page.getByRole('button', { name: /Inspect/ }).click();
   assert.equal(await page.locator('#navigation-help').isHidden(), true);
 
-  await page.getByRole('button', { name: 'Save' }).click();
-  const savedCount = await page.locator('#count').textContent();
-  await page.getByRole('button', { name: 'Clear all' }).click();
-  await page.waitForFunction(() => document.querySelector('#count')?.textContent === '0');
-  assert.equal(await page.locator('#info-panel').evaluate(element => element.classList.contains('empty')), true);
-  await page.getByRole('button', { name: 'Load' }).click();
-  await page.waitForFunction(count => document.querySelector('#count')?.textContent === count, savedCount);
+  const persistence = await assertSaveLoadRoundTrip(page);
+  console.log('Paused Save/Clear/Load round trip:', persistence);
 
   await page.getByRole('button', { name: /Binary stars/ }).click();
   const canvas = page.locator('#viewport canvas');

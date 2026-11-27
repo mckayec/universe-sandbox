@@ -1,0 +1,82 @@
+browser 153.0.8010.12
+[3s] sun-eater 390x844 ready in 2.8 s
+  ok 1 sun-eater 390x844 round 1: Sky on hides the list (expanded=false)
+    sun-eater 390x844 round 1 after Worlds: {"sky":false,"pressed":"false","skyShown":true,"expanded":"true","indexVisible":true,"worldButtons":52,"view":"galaxy"}
+  ok 2 sun-eater 390x844 round 1: Worlds exits Sky and opens a visible list of 52 worlds (S51-C1)
+  ok 3 sun-eater 390x844 round 1: Worlds again closes the list
+  ok 4 sun-eater 390x844 round 2: Sky on hides the list (expanded=false)
+    sun-eater 390x844 round 2 after Worlds: {"sky":false,"pressed":"false","skyShown":true,"expanded":"true","indexVisible":true,"worldButtons":52,"view":"galaxy"}
+  ok 5 sun-eater 390x844 round 2: Worlds exits Sky and opens a visible list of 52 worlds (S51-C1)
+  ok 6 sun-eater 390x844 round 2: Worlds again closes the list
+  ok 7 sun-eater 390x844: Sky over an open list hides it and reports it closed
+  ok 8 sun-eater 390x844: Enter on Worlds while Sky is on opens the visible list
+  ok 9 sun-eater 390x844: focus stays on Worlds
+  ok 10 sun-eater 390x844: Enter on Sky turns it on
+  ok 11 sun-eater 390x844: Space on Sky turns it off
+  ok 12 sun-eater 390x844: focus stays on Sky through Enter/Space
+  ok 13 sun-eater 844x390: no Worlds toggle in this layout; the worlds list is a visible side panel
+  ok 14 sun-eater 844x390 round 1: Sky on hides the side list
+  ok 15 sun-eater 844x390 round 1: Sky off restores the side list of 52 worlds
+  ok 16 sun-eater 844x390 round 2: Sky on hides the side list
+  ok 17 sun-eater 844x390 round 2: Sky off restores the side list of 52 worlds
+  ok 18 sun-eater 844x390: Enter on Sky turns it on
+  ok 19 sun-eater 844x390: Space on Sky turns it off and the list is back
+  ok 20 sun-eater 844x390: focus stays on Sky through Enter/Space
+    sun-eater 844x390 header: {"scrollW":606,"clientW":490,"left":0,"box":[338,828],"moreL":null,"moreR":[800,14,834,48],"fadeR":true,"fadeL":false,"pageScroll":[0,false],"inView":["All","I","II","III","IV","V","VI","VII","galBtn"],"all":["All","I","II","III","IV","V","VI","VII","galBtn","webBtn","cxBtn"]}
+  ok 21 sun-eater 844x390: header controls overflow (606 > 490 px)
+  ok 22 sun-eater 844x390: right arrow on screen (800,14,834,48) and the hidden side fades
+  ok 23 sun-eater 844x390: no page-level horizontal scroll
+    sun-eater 844x390 after arrow taps: {"left":116,"moreL":[334,14,368,48],"moreR":null}
+  ok 24 sun-eater 844x390: arrow taps bring all 11 header controls wholly on screen
+  ok 25 sun-eater 844x390: at the end, the left arrow shows and the right one is gone
+  ok 26 sun-eater 844x390: tapping the revealed Codex button opens the Codex
+  ok 27 sun-eater 844x390: the left arrow pages back to the start
+  ok 28 sun-eater 844x390: real Tab reaches 11 header-control stops, each wholly on screen
+    sun-eater 390x844 resize to 1280x800 with Sky focused: focus {"id":"button(3)","label":"Sollan Empire","visible":true,"onscreen":true,"ring":true,"hidden":false,"inCodex":false,"name":true}
+  ok 29 sun-eater 390x844: at 1280x800 Sky is gone and off
+  ok 30 sun-eater 390x844: focus recovered to visible button(3) "Sollan Empire" after resize (S51-C2)
+  ok 31 sun-eater 390x844: unrelated focus (Codex button) left alone by the resize
+    sun-eater 390x844 view change to delos with Sky focused: focus {"id":"button(5)","label":"Delos","visible":true,"onscreen":true,"ring":true,"hidden":false,"inCodex":false,"name":true}
+  ok 32 sun-eater 390x844: focus recovered to visible button(5) "Delos" after the view change (S51-C2)
+[174s] lds-standard-works 390x844 ready in 23.8 s
+  ok 33 lds-standard-works 390x844 round 1: Sky on hides the list (expanded=false)
+    lds-standard-works 390x844 round 1 after Worlds: {"sky":false,"pressed":"false","skyShown":true,"expanded":"true","indexVisible":true,"worldButtons":1,"view":"galaxy"}
+  ok 34 lds-standard-works 390x844 round 1: Worlds exits Sky and opens a visible list of 1 worlds (S51-C1)
+  ok 35 lds-standard-works 390x844 round 1: Worlds again closes the list
+  ok 36 lds-standard-works 390x844 round 2: Sky on hides the list (expanded=false)
+    lds-standard-works 390x844 round 2 after Worlds: {"sky":false,"pressed":"false","skyShown":true,"expanded":"true","indexVisible":true,"worldButtons":1,"view":"galaxy"}
+  ok 37 lds-standard-works 390x844 round 2: Worlds exits Sky and opens a visible list of 1 worlds (S51-C1)
+  ok 38 lds-standard-works 390x844 round 2: Worlds again closes the list
+  ok 39 lds-standard-works 390x844: Sky over an open list hides it and reports it closed
+  ok 40 lds-standard-works 390x844: Enter on Worlds while Sky is on opens the visible list
+  ok 41 lds-standard-works 390x844: focus stays on Worlds
+  ok 42 lds-standard-works 390x844: Enter on Sky turns it on
+  ok 43 lds-standard-works 390x844: Space on Sky turns it off
+  ok 44 lds-standard-works 390x844: focus stays on Sky through Enter/Space
+  ok 45 lds-standard-works 844x390: no Worlds toggle in this layout; the worlds list is a visible side panel
+  ok 46 lds-standard-works 844x390 round 1: Sky on hides the side list
+  ok 47 lds-standard-works 844x390 round 1: Sky off restores the side list of 1 worlds
+  ok 48 lds-standard-works 844x390 round 2: Sky on hides the side list
+  ok 49 lds-standard-works 844x390 round 2: Sky off restores the side list of 1 worlds
+  ok 50 lds-standard-works 844x390: Enter on Sky turns it on
+  ok 51 lds-standard-works 844x390: Space on Sky turns it off and the list is back
+  ok 52 lds-standard-works 844x390: focus stays on Sky through Enter/Space
+    lds-standard-works 844x390 header: {"scrollW":522,"clientW":315,"left":0,"box":[513,828],"moreL":null,"moreR":[800,14,834,48],"fadeR":true,"fadeL":false,"pageScroll":[0,false],"inView":["All","OT","NT","BoM","D&C","PGP"],"all":["All","OT","NT","BoM","D&C","PGP","galBtn","webBtn","cxBtn"]}
+  ok 53 lds-standard-works 844x390: header controls overflow (522 > 315 px)
+  ok 54 lds-standard-works 844x390: right arrow on screen (800,14,834,48) and the hidden side fades
+  ok 55 lds-standard-works 844x390: no page-level horizontal scroll
+    lds-standard-works 844x390 after arrow taps: {"left":207,"moreL":[509,14,543,48],"moreR":null}
+  ok 56 lds-standard-works 844x390: arrow taps bring all 9 header controls wholly on screen
+  ok 57 lds-standard-works 844x390: at the end, the left arrow shows and the right one is gone
+  ok 58 lds-standard-works 844x390: tapping the revealed Codex button opens the Codex
+  ok 59 lds-standard-works 844x390: the left arrow pages back to the start
+  ok 60 lds-standard-works 844x390: real Tab reaches 9 header-control stops, each wholly on screen
+    lds-standard-works 390x844 resize to 1280x800 with Sky focused: focus {"id":"button(3)","label":"Earth","visible":true,"onscreen":true,"ring":true,"hidden":false,"inCodex":false,"name":true}
+  ok 61 lds-standard-works 390x844: at 1280x800 Sky is gone and off
+  ok 62 lds-standard-works 390x844: focus recovered to visible button(3) "Earth" after resize (S51-C2)
+  ok 63 lds-standard-works 390x844: unrelated focus (Codex button) left alone by the resize
+    lds-standard-works 390x844 view change to earth with Sky focused: focus {"id":"button(5)","label":"Earth","visible":true,"onscreen":true,"ring":true,"hidden":false,"inCodex":false,"name":true}
+  ok 64 lds-standard-works 390x844: focus recovered to visible button(5) "Earth" after the view change (S51-C2)
+  ok 65 zero console/request/page errors
+PASS 65 checks
+[326s] done
