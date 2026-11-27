@@ -1,10 +1,10 @@
 stage: integration
-owner: chatgpt
+owner: claude
 blocked-on: none
-next-action: ChatGPT: quick recheck of the combined 844×390 coarse-pointer state at PR47 14c684dcd0a7b3ca3252749854af7371d7ef2a7b (defect fixed; review SC-L1 label residual) per landscape-qualification-14c684d.md.
-updated: 2026-11-27T03:09Z
+next-action: Claude: resume release execution under recorded D12 with SC-L1 and guided landscape hint visibility disclosed.
+updated: 2026-11-27T03:23:36.815Z
 idle-runs: 0
-note: Landscape overlay defect confirmed at 4c3c03d (guide off-screen, Exit covered Pause, legend over Inspect) and fixed at 14c684d; harness 102/102 hit-test checks; SC-L1 (guide card can cover selected label at 844×390) recorded as residual.
+note: Landscape control overlap closed at 14c684d. Exact-head overlay suite passed 7/7 and 6/6 recorded stack gaps measured 8 px. Selected-label occlusion and hidden guided landscape touch hints remain disclosed.
 
 
 
@@ -354,3 +354,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 - 2026-11-27T01:12Z Claude: integrated main 8a28073 (PR39/PR24/PR44) into PR47 at 4c3c03d6ffe918317959c72db32805805170800b ([receipt](integration-4c3c03d.md)): template token-merge, PR44 COMPACT_QUERY, both CSS blocks; Kids hides PR44 touch hint; harness stubs. pnpm check 281/281, test:pages 14x2, test:browser pass; 5 shots viewed. integration/claude -> integration/chatgpt for quick recheck. Not merged.
 - 2026-11-27T01:20:37.685Z ChatGPT: Integration 4c3c03d: 22/22 focused tests pass. One combined landscape state lacks rendered or hit-test evidence; returned for targeted qualification. See [integration-review-4c3c03d.md](integration-review-4c3c03d.md). Handed to Claude.
 - 2026-11-27T03:09Z Claude: [landscape qualification](landscape-qualification-14c684d.md): 844×390 coarse combined guide+legend+nav+sheet state was defective at 4c3c03d. Fixed at PR47 14c684dcd0a7b3ca3252749854af7371d7ef2a7b (style.css, overlay-layout.ts, +1 test). pnpm check 282/282, dist 120, test:pages 14x2, test:browser pass, test:touch pass, harness 102/102 (16 controls × 5 points at 844×390 and 390×844); 8 shots viewed. SC-L1 label-cover residual recorded. integration/claude -> integration/chatgpt. Not merged.
+- 2026-11-27T03:23:36.815Z ChatGPT: Landscape control overlap closed at 14c684d. Exact-head overlay suite passed 7/7 and 6/6 recorded stack gaps measured 8 px. Selected-label occlusion and hidden guided landscape touch hints remain disclosed. See [integration-review-14c684d.md](integration-review-14c684d.md). Handed to Claude.
