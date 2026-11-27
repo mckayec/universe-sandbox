@@ -37,7 +37,7 @@
   var P = {
     sun: orb(0, 0, 0),
     venus: orb(0.9, 205), earth: orb(1.3, 150), mars: orb(1.85, 245), eros: orb(1.58, 305),
-    hungaria: orb(2.1, 20), tycho: orb(2.5, 125), ceres: orb(2.72, 92), pallas: orb(2.86, 200), thoth: orb(3.0, 330),
+    hungaria: orb(2.1, 20), tycho: orb(2.5, 125), ceres: orb(2.72, 92), pallas: orb(2.86, 200), thoth: orb(3.0, 330), leuctra: orb(2.7, 265),
     jupiter: orb(4.1, 55), saturn: orb(5.3, 172), uranus: orb(6.35, 280), solring: orb(7.15, 296)
   };
   P.luna = near(P.earth, 0.2, 60, 0.03);
@@ -129,7 +129,7 @@
         ["Sun at centre", "The Sol system, drawn at the Sun’s real place in the galaxy but hugely enlarged and not to scale"],
         ["Outer circle", "The gate systems. The books never say where they really are, so they are placed schematically"],
         ["Above the disc", "The ring space: the slow zone, the Ring Station and Medina, outside normal space"],
-        ["Coloured lines", "Where the crew of the Rocinante goes, one colour per book"],
+        ["Coloured lines", "Where the crew of the Rocinante goes, one colour per book. The stops and order of the book-one route follow SuperSummary’s plot summary, not independently checked against the novel"],
         ["Red lines", "The great attacks: Eros, the rocks thrown at Earth, the Laconian invasion and more"],
         ["Faint lines", "The ring gates, all opening onto the ring space"],
         ["Book buttons", "Choose the book you are reading. Later places, events and people stay hidden"]
@@ -265,7 +265,7 @@
        short: "Fred Johnson’s station.",
        facts: [["Owner", "Tycho Manufacturing and Engineering Concern"], ["Leader", "Fred Johnson"], ["Built", "The Nauvoo, later the Behemoth"]],
        eras: {5: {status: "Attacked", blurb: "In the fifth book the Free Navy strikes Tycho while the Rocinante is in for refit, and in the confusion the last sample of the protomolecule is stolen from Fred Johnson’s safe."},
-              7: {status: "Destroyed", blurb: "By the seventh book Tycho is joined to Pallas. On its march across the system the Laconian battleship Heart of the Tempest destroys it."}},
+              7: {status: "Withdrawn from Pallas", blurb: "Tycho withdraws from the Pallas–Tycho complex before the Tempest destroys Pallas. Provisional account based on the Expanse fan wiki; not independently checked against the novel."}},
        gfx: {type: "city", sea: 0, pal: ["#1a1e24", "#2a3038", "#4a525c", "#5e6670", "#7a828c", "#c8d0d8"], rough: .3, clouds: 0, atmoK: 0, lights: 1, lightCol: "#ffcc88", sw: "#7a828c"}},
 
       {id: "thoth", name: "Thoth Station", group: "belt", books: [1], first: 1, craft: true, status: "Secret Protogen base",
@@ -285,9 +285,16 @@
       {id: "pallas", name: "Pallas", aka: ["Pallas-Tycho"], group: "belt", books: [7], first: 7, status: "Belt station",
        star: {name: "Sol", col: "#fff2d8"}, map: P.pallas,
        distText: "About 2.8 AU from the Sun · " + SCHEM,
-       blurb: "A large asteroid station with refineries. By the seventh book Tycho Station has been moved and joined to it. The Laconian battleship Heart of the Tempest destroys the complex during its advance through the system.",
-       short: "Destroyed by the Tempest.",
+       blurb: "A large asteroid station with refineries. By the seventh book Tycho Station has been moved and joined to it. After Tycho’s section withdraws, the Tempest destroys Pallas Station. Provisional account based on the Expanse fan wiki; not independently checked against the novel.",
+       short: "A refinery station in the Belt.",
        gfx: {type: "barren", sea: 0, pal: ["#26241e", "#36322a", "#524c42", "#645e52", "#767064", "#b4ae9e"], rough: .7, bump: 1.4, clouds: 0, atmoK: 0, lights: .5, sw: "#645e52"}},
+
+      {id: "leuctra", name: "Point Leuctra", group: "belt", books: [7], first: 7, status: "Battle site · schematic marker",
+       star: {name: "Sol", col: "#fff2d8"}, map: P.leuctra, est: true,
+       distText: "In the asteroid belt; marker position schematic · " + SCHEM,
+       blurb: "At Point Leuctra in the asteroid belt, the combined fleet fails to stop the Tempest. Provisional account based on the Expanse fan wiki and SuperSummary; not independently checked against the novel.",
+       short: "A battle site in the Belt.",
+       gfx: {type: "barren", sea: 0, pal: ["#26241e", "#36322a", "#524c42", "#645e52", "#767064", "#b4ae9e"], rough: .7, clouds: 0, atmoK: 0}},
 
       /* ============================ JUPITER ============================ */
       {id: "jupiter", name: "Jupiter", group: "jovian", books: [2, 7, 8], first: 2, status: "Gas giant",
@@ -295,7 +302,7 @@
        distText: "About 5.2 AU from the Sun · " + SCHEM,
        blurb: "The great gas giant, whose moons hold much of the outer system’s population and food. The second book is fought over its moons.",
        short: "The Jovian system.",
-       eras: {7: {blurb: "The great gas giant and its crowded moons. In the seventh book the Heart of the Tempest destroys the combined fleets of Earth, Mars and the Transport Union. When it fires, everyone in the system blacks out for a few minutes."},
+       eras: {7: {blurb: "The great gas giant and its crowded moons."},
               8: {blurb: "The great gas giant and its crowded moons. Under Laconian rule the resistance fights on here, and the Tempest is sent to the Jovian system to hunt the stolen gunship Gathering Storm."}},
        gfx: {type: "gas", pal: ["#6a4a30", "#a8805a", "#e0c8a0", "#f2e6d0", "#c09a70", "#b86a48"], bands: 16, atmo: "#e8d8c0", atmoK: .7, sw: "#c09a70"},
        moons: [{name: "Io", size: .07, dist: 2.2, gfx: {type: "desert", sea: 0, pal: ["#000", "#000", "#c8b040", "#e0d070", "#a87030", "#f0e8b0"], atmoK: 0}},
@@ -418,9 +425,9 @@
       {id: "ilus", name: "Ilus", aka: ["New Terra", "Bering Survey Four"], group: "gates", gate: true, books: [4, 7, 8], first: 4, major: true,
        status: "First human colony beyond the Ring", star: {name: "Ilus’s sun", col: "#fff0dc"}, map: G.ilus, est: true, hero: "landing",
        distText: GATEPOS,
-       blurb: "The fourth world of its star: one great continent, one great ocean, and thirteen dark moons sharing a single orbit. Ganymede refugees get here first and found a lithium-mining town; then a corporate survey arrives with a UN charter. Under the dust the whole planet is an alien machine, built as one huge refinery for the builders’ empire, and it is waking up.",
+       blurb: "The fourth world of its star: one great continent, one great ocean, and thirteen dark moons sharing a single orbit (a detail that follows the Expanse fan wiki; not independently checked against the novel). Ganymede refugees get here first and found a lithium-mining town; then a corporate survey arrives with a UN charter. Under the dust the whole planet is an alien machine, built as one huge refinery for the builders’ empire, and it is waking up.",
        short: "New Terra, where colonists and a corporation fight over a world that is a machine.",
-       facts: [["Charter", "Royal Charter Energy"], ["Settlers", "Belter refugees from Ganymede"], ["Moons", "Thirteen, sharing one orbit (a few are drawn)"]],
+       facts: [["Charter", "Royal Charter Energy"], ["Settlers", "Belter refugees from Ganymede"], ["Moons", "Thirteen, sharing one orbit, per the Expanse fan wiki (a few are drawn)"]],
        eras: {7: {blurb: "The first colony beyond the Ring. Decades on, the Laconian governor of Medina presses Holden about what happened on Ilus, because the sphere of strange matter found after the Tempest fires its weapon matches the one Elvi met here."}},
        gfx: {type: "terran", sea: .62, freq: 1.2, warp: .7, pal: ["#0a1a30", "#2a5a7a", "#4a4a2e", "#6a6a40", "#8a7050", "#e8e4dc"], clouds: .4, atmo: "#9ab8ff", atmoK: 1, lights: .1, sw: "#6a6a40",
              feat: [{k: "continent", at: [20, -20], r: 50, s: .32}, {k: "biome", style: "rock", at: [-5, -45], r: 18, s: .9, c: "#b89868"},
@@ -508,7 +515,7 @@
       {id: "nieuwestad", name: "Nieuwestad", group: "gates", gate: true, books: [9], first: 9, status: "Colony system",
        star: {name: "Nieuwestad’s sun", col: "#fff4e0"}, map: G.nieuwestad, est: true,
        distText: GATEPOS,
-       blurb: "The colony where Alex Kamal’s son Kit takes his family. At the end of the series Alex flies the Rocinante here to be with them.",
+       blurb: "The colony where Alex Kamal’s son Kit takes his family. At the end of the series Alex flies the Rocinante here to be with them. The spelling Nieuwestad follows the Expanse fan wiki; not independently checked against the novel.",
        short: "Alex’s last port.",
        gfx: {type: "terran", sea: .55, freq: 1.7, pal: ["#0a1e34", "#2a6086", "#3a6234", "#68844a", "#72705a", "#f2f2ee"], clouds: .45, atmo: "#8ab0ff", atmoK: 1, lights: .3, sw: "#3a6234"}},
 
@@ -548,7 +555,7 @@
       /* I · Leviathan Wakes */
       {id: "b1a", book: 1, world: "saturn", title: "The Canterbury", text: "The ice hauler Canterbury, out of Saturn’s rings for Ceres, answers a distress call from a derelict ship, the Scopuli. Its executive officer Jim Holden takes four crew to look. While they are away a stealth ship destroys the Canterbury, and Holden broadcasts that Martian technology was involved."},
       {id: "b1b", book: 1, world: "ceres", site: "helix", title: "A side job for Miller", text: "On Ceres, the tired detective Joe Miller is quietly told to find Julie Mao, the runaway daughter of a rich Lunar family, and send her home. Riots follow Holden’s broadcast."},
-      {id: "b1c", book: 1, world: "tycho", title: "The Donnager falls", text: "A Martian battleship takes in the survivors, and is destroyed by more stealth ships. Holden, Naomi, Amos and Alex escape in a Martian corvette, renamed the Rocinante at Fred Johnson’s Tycho Station."},
+      {id: "b1c", book: 1, world: "tycho", title: "The Rocinante reaches Tycho", text: "After escaping the destruction of the Donnager, Holden’s crew reaches Fred Johnson’s station. This leg of the route is a provisional account based on SuperSummary’s plot summary; not independently checked against the novel."},
       {id: "b1d", book: 1, world: "ceres", title: "Miller fired", text: "Miller learns Julie had joined the OPA and was aboard the Scopuli. Warned off, he keeps digging, loses his badge, and buys passage to Eros."},
       {id: "b1e", book: 1, world: "eros", site: "hotel", title: "Julie", text: "Miller meets Holden’s crew on Eros. They find Julie dead in a hotel room, covered in a strange growth, and her records point to the ship that brought the infection."},
       {id: "b1f", book: 1, world: "eros", site: "shelters", title: "The Eros incident", text: "A false radiation alarm herds the people of Eros into shelters, where Protogen seeds them with the protomolecule. Miller and the crew barely get out."},
@@ -611,8 +618,8 @@
       {id: "b7b", book: 7, world: "laconia", title: "Laconia’s fleet", text: "On Laconia, Duarte’s people have used the builders’ orbital platforms and the protomolecule to build warships beyond anything in human space."},
       {id: "b7c", book: 7, world: "medina", title: "The Tempest comes", text: "The battleship Heart of the Tempest comes through the Laconia gate, tears apart the slow zone’s defences and takes Medina. Captain Santiago Singh becomes governor."},
       {id: "b7d", book: 7, world: "medina", site: "drum", title: "The heist", text: "Holden and Naomi, about to retire, join Saba’s resistance. They steal Laconian codes; Holden keeps the alarms going and is caught."},
-      {id: "b7e", book: 7, world: "jupiter", title: "The fleets broken", text: "The Tempest crosses into Sol and destroys the combined fleets. When it fires, the whole system blacks out for minutes, and a sphere of strange matter is found aboard."},
-      {id: "b7f", book: 7, world: "pallas", title: "Pallas-Tycho destroyed", text: "The Tempest destroys the Pallas-Tycho complex during its advance."},
+      {id: "b7e", book: 7, world: "leuctra", title: "The fleets broken", text: "At Point Leuctra in the asteroid belt, the combined fleet fails to stop the Tempest. Provisional account based on the Expanse fan wiki and SuperSummary; not independently checked against the novel."},
+      {id: "b7f", book: 7, world: "pallas", title: "Pallas destroyed", text: "After Tycho’s section withdraws, the Tempest destroys Pallas Station. Provisional account based on the Expanse fan wiki; not independently checked against the novel."},
       {id: "b7g", book: 7, world: "earth", title: "Surrender", text: "After a last stand in the Belt, Drummer surrenders the Union, and Earth and Mars follow."},
       {id: "b7h", book: 7, world: "medina", title: "The breakout", text: "Saba frees the prisoners; Bobbie and Amos take the gunship Gathering Storm while ships flee through the gates. Clarissa dies after saving Naomi, and Singh is shot by his own security chief."},
       {id: "b7i", book: 7, world: "freehold", title: "Hiding on Freehold", text: "The Rocinante escapes the ring space and hides on Freehold."},
@@ -746,7 +753,7 @@
            a single engine `network` link would draw lines to systems the reader has not reached yet) */
         {id: "solgate", path: ["solring", "ringstation"], color: "#a898ff", book: 3, opacity: {all: .35, cur: .6, past: .35}, speed: .3, dash: 1.2, curve: .05},
         /* the crew's road, one colour per book */
-        {id: "r1", path: ["saturn", "tycho", "eros", "thoth", "tycho", "eros", "venus"], book: 1},
+        {id: "r1", path: ["saturn", "tycho", "eros", "tycho", "thoth", "tycho", "eros", "venus"], book: 1, label: "Simplified route"},
         {id: "r1m", path: ["ceres", "eros"], book: 1},
         {id: "r2", path: ["tycho", "ganymede", "tycho", "io", "luna"], book: 2},
         {id: "r2b", path: ["ganymede", "earth", "jupiter", "io"], book: 2},
@@ -767,7 +774,7 @@
         {id: "s2", pairs: [["io", "ganymede"], ["io", "mars"]], color: "#ff4a36", book: 2, opacity: {all: .4, cur: .9, past: .35}, speed: .8, dash: 3, curve: .08},
         {id: "s5", pairs: [[{sol: [1.6, .4, -2.2]}, "earth"], [{sol: [1.6, .4, -2.2]}, "callisto"], [{sol: [1.6, .4, -2.2]}, "tycho"], ["solring", "medina"]], color: "#ff4a36", book: 5, opacity: {all: .4, cur: .9, past: .35}, speed: .8, dash: 3, curve: .08},
         {id: "s6", pairs: [[{sol: [1.6, .4, -2.2]}, "earth"], ["solring", "medina"]], color: "#ff4a36", book: 6, opacity: {all: .4, cur: .9, past: .35}, speed: .8, dash: 3, curve: .08},
-        {id: "s7", pairs: [["laconia", "medina"], ["solring", "jupiter"], ["jupiter", "pallas"], ["pallas", "earth"], ["earth", "mars"]], color: "#ff4a36", book: 7, opacity: {all: .4, cur: .9, past: .35}, speed: .8, dash: 3, curve: .06},
+        {id: "s7", pairs: [["laconia", "medina"], ["solring", "leuctra"], ["leuctra", "pallas"], ["pallas", "earth"], ["earth", "mars"]], color: "#ff4a36", book: 7, opacity: {all: .4, cur: .9, past: .35}, speed: .8, dash: 3, curve: .06},
         {id: "s8", pairs: [["laconia", "tecoma"], ["tecoma", "thanjavur"], [{xyz: [0, 12, 271.4]}, "ringstation"], ["auberon", "laconia"], ["freehold", "laconia"]], color: "#ff4a36", book: 8, opacity: {all: .4, cur: .9, past: .35}, speed: .8, dash: 3, curve: .08},
         {id: "s9", pairs: [[{xyz: [0, 12, 271.4]}, "sanesteban"], ["laconia", "newegypt"], ["laconia", "freehold"]], color: "#ff4a36", book: 9, opacity: {all: .4, cur: .9, past: .35}, speed: .8, dash: 3, curve: .08}
       ]
