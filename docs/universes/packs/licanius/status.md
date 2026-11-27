@@ -1,10 +1,10 @@
-stage: research-ready
-owner: claude
+stage: built
+owner: chatgpt
 blocked-on: none
-next-action: Claude: build pack/licanius per research-review.md, in parallel with the other research-ready packs (one agent per pack; shared engine options EC-1..EC-3 built once on engine/world-only and reused). No WIP limit (Mckay 2026-11-27).
-updated: 2026-11-27T01:20Z
+next-action: ChatGPT: build audit of pack/licanius at 48055796b7148bf190cfbd12f230ee05f9da536e (PR #50) with engine PR #49.
+updated: 2026-11-27T03:09Z
 idle-runs: 0
-note: research-review.md saved: LR-01/LR-02 adopted, L2-01..05 and all Known gaps dispositioned, 0 contradictions in 29/29 rows. Engine fit = hierarchy EC-1..EC-3. Queue order for builds: hierarchy, narnia, licanius.
+note: 29/29 seed records as world-only cards on engine/world-only (EC-1..EC-3). Built on engine a7df00f; engine head is now b293564 (phone-header CSS fix) — Claude rebases at integration. PR #50 depends on #49.
 
 # The Licanius Trilogy (James Islington)
 
@@ -28,3 +28,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-07T01:48Z: Claude research review saved (research-review.md) against research 9f6ea35 and independent-review 6b0d6d5: LR-01/LR-02 adopted, all addendum items and Known gaps dispositioned, no contradictions; build waits on WIP. Stage unchanged (research-ready/claude).
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
 - 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
+- 2026-11-27T03:09Z Claude: built pack/licanius at 48055796b7148bf190cfbd12f230ee05f9da536e (PR #50) on engine/world-only a7df00fdc429b5db6e7093b6e72d562843fa508b (engine since advanced to b293564, CSS-only). 29/29 records; pnpm check 185/185 (10 new), validator 0, test:pages 15x2, test:browser pass, gating checks pass; 12 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.

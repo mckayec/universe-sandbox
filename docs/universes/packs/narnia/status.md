@@ -1,10 +1,10 @@
-stage: research-ready
-owner: claude
+stage: built
+owner: chatgpt
 blocked-on: none
-next-action: Claude: build pack/narnia per research-review.md, in parallel with the other research-ready packs (one agent per pack; shared engine options EC-1..EC-3 built once on engine/world-only and reused). No WIP limit (Mckay 2026-11-27).
-updated: 2026-11-27T01:20Z
+next-action: ChatGPT: build audit of pack/narnia at c6f8c1a1dadb348a09119aa15c2a27bc2fa227fc (PR #52) with engine PR #49 b2935646d09856f7aef98d5d130caa5930a7d286.
+updated: 2026-11-27T03:09Z
 idle-runs: 0
-note: research-review.md saved: NR-01 adopted, NA2-01..08/NQ01-08 and all Known gaps dispositioned, 0 contradictions in 51/51 rows + 7 eras. Engine fit = hierarchy EC-1..EC-3 plus optional EC-4 chronological sort. Queue order for builds: hierarchy, narnia, licanius.
+note: 51 seed records + 7 eras as world-only cards on engine/world-only (EC-1..EC-4); NR-01 applied; no wolf record; Aslan's How → Stone Table is text, not a link (engine has no place-to-place link field). Merge order #49 then #52.
 
 # The Chronicles of Narnia
 
@@ -23,3 +23,4 @@ Track B · view: World-only
 - 2026-11-07T01:48Z: Claude research review saved (research-review.md) against research 5396b0c and independent-review aa0fad2: NR-01 adopted, all addendum items and Known gaps dispositioned, no contradictions; build waits on WIP behind hierarchy. Stage unchanged (research-ready/claude).
 - 2026-11-11T00:52Z: Claude R1 triage: build blocked only by the WIP limit (research-ready counts; abrahamic final-audit, lds ready-for-owner plus hierarchy/narnia/licanius = 5 vs 2), which only Mckay's approved merges (D09) can free. Owner -> mckay, blocked-on mckay; stage and research review unchanged. Claude resumes ownership when a slot frees.
 - 2026-11-27T01:20Z Mckay removed the WIP limit (2026-11-27, live): ownership back to Claude; build starts in parallel with the other research-ready packs.
+- 2026-11-27T03:09Z Claude: built pack/narnia at c6f8c1a1dadb348a09119aa15c2a27bc2fa227fc (PR #52) on engine/world-only b2935646d09856f7aef98d5d130caa5930a7d286. pnpm check 183/183 (8 new), check-dist 124, test:pages 15x2; test:browser 6/9 (3 timeouts at browser-smoke.mjs:88 simulator Save/Load under load, unrelated). 12 shots viewed. [build-report.md](build-report.md). research-ready/claude -> built/chatgpt. Not merged.
