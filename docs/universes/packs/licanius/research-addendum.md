@@ -32,3 +32,19 @@ Independent audit chat reviews checkpoint2 and this self-audit before Claude bui
 
 ## Coordinator terminology correction
 Rechecked the one-sentence gate correction against prior checkpoint2 f384d8932b167f116c09832bc2f646ed69623f4a: a conservative gate is a minimum read-through threshold, not a ceiling. The 29 record contents, IDs, evidence and counts are unchanged. lj01 already cites S1 pp3–6; p6 supplies the actual arrival, while p5 describes the plan. No journey mutation was required. Independent canon approval remains pending.
+
+## Capped R3 return · 27 November 2026 UTC
+
+**5/10 preselected claims independently corroborated for the seed wording.** Two previous confirmations stand (Caladel as the school and Davian’s departure with Wirr). Three are new. No date, map geometry, extra stop or lower spoiler gate follows from these checks. [Prior claim ledger](independent-review.md)
+
+| ID | Independent locator | Decision |
+|---|---|---|
+| andarra | [The Shadow of What Was Lost, Synopsis, first paragraph](https://en.wikipedia.org/wiki/The_Shadow_of_What_Was_Lost) places the Boundary north of Andarra. Compare the [author recap, p. 1](https://www.jamesislington.com/ShadowRecap.pdf). | Complete for the south-of-Boundary relation (C). |
+| ilin-illan | [SuperSummary, Plot Summary, Ilseth's first warning](https://www.supersummary.com/the-shadow-of-what-was-lost/summary/) identifies his home city as the capital. | Complete (C). |
+| le02 | [SuperSummary, Plot Summary, pursuit into Deilannis and separation from the party](https://www.supersummary.com/the-shadow-of-what-was-lost/summary/) explicitly puts Davian in the same city in its past. | Complete for the located displacement (C). No chapter-first claim. |
+| boundary | The study guide describes a magical northern boundary and its function. The author's recap specifically calls it an energy barrier. | Partial. The second description lacks the selected material/energy characterization. |
+| deilannis | The same independent account describes a haunted ancient city encountered on the journey. | Partial. Neither abandonment nor the precise border relation is established there. |
+| lj01 | The study guide covers the departure and passage into Deilannis. Its Desriel passage locates the alleged massacre. | Partial. That passage alone does not place both travelers in Desriel as an intervening stop. |
+| lc02, lc04 | The [author’s combined recap, historical preface](https://jamesislington.com/EchoRecap.pdf) supports the blade and Lyth accounts. The fan-wiki Andrael entry failed to open (HTTP 402). | Both remain incomplete. No second account opened here establishes the complete maker/function or origin/surviving-location assertions. |
+
+**Primary clearance.** The opened author PDFs are retrospective recaps. They provide precise recap locators, but cannot establish when a first-time reader learns each fact in the novels. The [Orbit book-three page](https://www.orbit-books.co.uk/titles/james-islington-2/the-light-of-all-that-falls/9780356507842/) gives edition metadata and premise; its excerpt control has no admitted chapter locator. No complete primary novel was audited (0/3), and no additional earliest chapter was certified. Retain the book-three premise-only treatment and completed-book gates. L2-03 and the remaining five L2-04 checks stay visible under D15.
