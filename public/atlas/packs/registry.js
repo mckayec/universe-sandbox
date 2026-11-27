@@ -8,5 +8,6 @@ window.ATLAS_REGISTRY = [
   {id: "dune", title: "The Dune Atlas", blurb: "Frank Herbert · Arrakis, the spice and the sandworms", accent: "#f0c47e"},
   {id: "cosmere", title: "The Cosmere Atlas", blurb: "Brandon Sanderson · the shattered god, the Shards and the worlds they touched", accent: "#c9b8ff"},
   {id: "christian-apocrypha", title: "Biblical Apocrypha and Related Traditions", blurb: "Deuterocanonical books, expanded Old Testament collections and early Christian gospels, acts and apocalypses", accent: "#d9b45a"},
-  {id: "abrahamic-world-religions", title: "Religious Traditions: Origins and Connections", blurb: "Judaism, Christianity and Islam: how communities developed, divided and met others", accent: "#dcc58e", parts: ["judaism", "christianity", "islam", "encounters"]}
+  {id: "abrahamic-world-religions", title: "Religious Traditions: Origins and Connections", blurb: "Judaism, Christianity and Islam: how communities developed, divided and met others", accent: "#dcc58e", parts: ["judaism", "christianity", "islam", "encounters"]},
+  {id: "licanius", title: "The Licanius Atlas", blurb: "James Islington · Andarra, the Boundary and the places around them, as reference cards", accent: "#e2b877"}
 ];

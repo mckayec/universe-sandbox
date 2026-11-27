@@ -14,6 +14,7 @@ export type UniversePackId =
   | 'powers-of-ten'
   | 'cosmere'
   | 'christian-apocrypha'
+  | 'licanius'
   | 'star-wars';
 export type UniversePackStatus = 'ready' | 'atlas' | 'source-required';
 export type LocationScale = 'universe' | 'galaxy' | 'cluster' | 'system' | 'world' | 'surface';
@@ -241,6 +242,15 @@ export const UNIVERSE_PACKS: readonly UniversePackDefinition[] = [
     '#dcc58e',
     'atlas/?pack=abrahamic-world-religions',
     'Built from cited research dossiers; map markers are UNESCO heritage references, and other places are listed without coordinates.',
+  ),
+  atlasPack(
+    'licanius',
+    'The Licanius Atlas',
+    'Licanius Trilogy',
+    "James Islington's Andarra, the Boundary and the places around them, as spoiler-gated reference cards without a map.",
+    '#e2b877',
+    'atlas/?pack=licanius',
+    'Seed built from author recaps and publisher descriptions, not the novels; no positions are given.',
   ),
   plannedPack(
     'star-wars',
