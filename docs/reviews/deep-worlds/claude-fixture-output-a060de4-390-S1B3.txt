@@ -1,0 +1,38 @@
+atlas-places-fixture: 153.0.8010.12
+PASS [390x844 B3 downgrade mid-entry] mid-fade (150 ms into the entry): no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B3 downgrade mid-entry] immediately after downgrade (entry pending): globe labels carry no later-book text (none)
+PASS [390x844 B3 downgrade mid-entry] immediately after downgrade (entry pending): no later-book label focusable or exposed (none)
+PASS [390x844 B3 downgrade mid-entry] immediately after downgrade (entry pending): book-1 site labels still offered (Arrakeen,Sietch Tabr)
+PASS [390x844 B3 downgrade mid-entry] cancelled entry never commits or builds the Keep place
+PASS [390x844 B3 downgrade mid-entry] during cancellation (20 samples, 100 ms apart) no later-book globe label (none)
+PASS [390x844 B3 downgrade mid-entry] settles on the Arrakis surface, no visible site (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 B3 downgrade mid-entry] place history marker dropped (atlasPlace=false, history +1)
+PASS [390x844 B3 downgrade mid-entry] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 B3 downgrade mid-entry] ineligible Keep selection cleared once settled (site=null)
+PASS [390x844 B3 downgrade mid-entry] settled: globe labels carry no later-book text (none)
+PASS [390x844 B3 downgrade mid-entry] settled: no later-book label focusable or exposed (none)
+PASS [390x844 B3 downgrade mid-entry] settled: book-1 site labels still offered (Arrakeen,Sietch Tabr)
+PASS [390x844 B3 downgrade mid-entry] settled: keyboard walk (90 Tab stops) reaches no later-book name; globe labels reached: Arrakeen,Carthag,Observatory Mountain,The Shield Wall,Old Gap,Rimwall West,Harg Pass,Wind Pass,Funeral Plain,Sietch Tabr,The Great Flat,Cielago Depression,Habbanya Ridge,Tuono
+PASS [390x844 B3 downgrade mid-entry] upgrade to book 2 restores the Keep label (Arrakeen,Carthag,Observatory Mountain,The Shield Wall,Old Gap,Rimwall West,Harg Pass,Wind Pass,Polar Sink,Funeral Plain,Sietch Tabr,The Great Flat,False Wall East,False Wall West,Red Chasm,Cielago Depression,Sihaya Ridge,Habbanya Ridge,Cave of Birds,Palmaries of the South,Paul’s Keep,Temple of Alia,Tuono)
+PASS [390x844 B3 downgrade mid-entry] B3: same document
+PASS [390x844 B3 downgrade mid-entry] B3: page/console errors: none
+PASS [390x844 S1 surface downgrade] positive control: book 2 Keep label shown and focusable (tab=0 aria-hidden=false op=1)
+PASS [390x844 S1 surface downgrade] immediately after downgrade: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 S1 surface downgrade] immediately after downgrade: globe labels carry no later-book text (none)
+PASS [390x844 S1 surface downgrade] immediately after downgrade: no later-book label focusable or exposed (none)
+PASS [390x844 S1 surface downgrade] immediately after downgrade: book-1 site labels still offered (Arrakeen,Sietch Tabr)
+PASS [390x844 S1 surface downgrade] planet mesh unchanged (no re-descent): the R0-2 path
+PASS [390x844 S1 surface downgrade] ineligible Keep selection cleared (view=world sel=arrakis site=null lm=null ev=null book=1 rendered=null/null fade=false hash=#book=1&world=arrakis&view=surface)
+PASS [390x844 S1 surface downgrade] URL #book=1&world=arrakis&view=surface
+PASS [390x844 S1 surface downgrade] settled: no later-book copy or URL (#book=1&world=arrakis&view=surface)
+PASS [390x844 S1 surface downgrade] settled: globe labels carry no later-book text (none)
+PASS [390x844 S1 surface downgrade] settled: no later-book label focusable or exposed (none)
+PASS [390x844 S1 surface downgrade] settled: book-1 site labels still offered (Arrakeen,Sietch Tabr)
+PASS [390x844 S1 surface downgrade] settled: keyboard walk (90 Tab stops) reaches no later-book name; globe labels reached: Arrakeen,Carthag,Observatory Mountain,The Shield Wall,Old Gap,Rimwall West,Harg Pass,Wind Pass,Funeral Plain,Sietch Tabr,The Great Flat,Cielago Depression,Habbanya Ridge,Tuono
+PASS [390x844 S1 surface downgrade] every keyboard-reached globe label is book-1 eligible (Arrakeen,Carthag,Observatory Mountain,The Shield Wall,Old Gap,Rimwall West,Harg Pass,Wind Pass,Funeral Plain,Sietch Tabr,The Great Flat,Cielago Depression,Habbanya Ridge,Tuono)
+PASS [390x844 S1 surface downgrade] upgrade to book 2 restores the Keep label (Arrakeen,Carthag,Observatory Mountain,The Shield Wall,Old Gap,Rimwall West,Harg Pass,Wind Pass,Polar Sink,Funeral Plain,Sietch Tabr,The Great Flat,False Wall East,False Wall West,Red Chasm,Cielago Depression,Sihaya Ridge,Habbanya Ridge,Cave of Birds,Palmaries of the South,Paul’s Keep,Temple of Alia,Tuono)
+PASS [390x844 S1 surface downgrade] S1: same document
+PASS [390x844 S1 surface downgrade] S1: page/console errors: none
+  [390x844 B3 downgrade mid-entry] 17/17
+  [390x844 S1 surface downgrade] 17/17
+atlas-places-fixture: 34 passed, 0 failed

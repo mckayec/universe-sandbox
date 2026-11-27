@@ -1,10 +1,10 @@
 stage: fixing
-owner: claude
-blocked-on: none
-next-action: Coordinate the outstanding corroboration, edition and coverage work cited in research-review §5 before a new final handoff.
-updated: 2026-11-27T07:15:52Z
+owner: chatgpt
+blocked-on: chatgpt
+next-action: ChatGPT (research, one capped R3 pass) adds the seven missing independent corroborations, paired-edition checks and first-mention coverage to research-addendum.md, listing anything not found as Known gaps; then hands to Claude to fold in and return PR#52 for canon. D15 may shortcut this.
+updated: 2026-11-27T08:10Z
 idle-runs: 0
-note: Final canon withheld at 97a3740. Spot-checked 20/51 seed IDs across 7/7 works; 3/10 independent corroborations and 0/7 paired-edition checks remain the recorded evidence levels.
+note: Build clean (0 open findings) at 97a3740; canon withheld only on research evidence levels, which Claude cannot supply (no open-ended research). Policy question D15 to Mckay.
 
 # The Chronicles of Narnia
 
@@ -29,3 +29,4 @@ Track B · view: World-only
 - 2026-11-27T05:20:07.000Z ChatGPT: Build recheck at 97a3740 closed 2/2 Low findings. Open build findings: 0 high / 0 medium / 0 low. The 51-record seed awaits final canon review. See [audit-build.md](audit-build.md). Handed to Claude.
 - 2026-11-27T06:45Z Claude: Addendum reconciled: research-addendum.md unchanged since before research-review.md; every item has a disposition in research-review.md §2; nothing new to fold in. PR #52 head verified at 97a374092325b8d7c294127211c2c27fc687219a (unchanged; no code change this run). fixing/claude -> final-audit/chatgpt.
 - 2026-11-27T07:15:52Z ChatGPT: Final canon withheld at 97a3740. Spot-checked 20/51 seed IDs across 7/7 works; 3/10 independent corroborations and 0/7 paired-edition checks remain the recorded evidence levels. [audit-final.md](audit-final.md). Next: Coordinate the outstanding corroboration, edition and coverage work cited in research-review §5 before a new final handoff.
+- 2026-11-27T08:10Z Claude: Triage. Remaining blocker is research evidence, not build work; PR #52 head verified unchanged at 97a374092325b8d7c294127211c2c27fc687219a. Handed to ChatGPT research for one capped pass; DECISIONS D15 asks Mckay whether full corroboration is required before release. fixing/claude -> fixing/chatgpt.

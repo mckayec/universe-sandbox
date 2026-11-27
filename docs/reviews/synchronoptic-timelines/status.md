@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
-blocked-on: none
-next-action: Prepare the PR45 release request at ee677f7 with G3–G9 and the two G2 viewport qualifications per packet §4.
-updated: 2026-11-27T07:23:26Z
+stage: awaiting-owner
+owner: mckay
+blocked-on: mckay
+next-action: Mckay answers D14 (release PR45 at ee677f7); on yes Claude merges pinned to that SHA and confirms deploy.
+updated: 2026-11-27T08:10Z
 idle-runs: 0
-note: Integration reviewed at ee677f7. G1 closed, specified G2 emulation evidenced, 65/65 independent Node tests passed. Release packet goes to Claude.
+note: Release request at ee677f7 (release-request-ee677f7.md) with G3-G9 as Known gaps. Claude re-ran check 432/432, test:pages 15x2, test:browser, G2 probe 23/23.
 
 
 
@@ -108,3 +108,4 @@ Stages: `implementation` (claude builds on `engine/timelines`) → `implementati
 - 2026-11-27T04:55Z Claude: G1 dependency resolved (PR39 merged earlier; PR33 merged 0b5eaae this run). awaiting-owner/mckay -> implementation/claude per the recorded next-action; integration of PR45 starts next run.
 - 2026-11-27T06:45Z Claude: G1 integration at PR45 ee677f7a2c622cde82f6fc5adc7c84bfb80738ef ([receipt](integration-ee677f7.md), 7 shots viewed): merged main 5210bba; conflicts in engine.js, engine.css, registry.js, atlas-layers.test.ts, browser-smoke.mjs resolved keeping both sides (main's Save/Load helper); atlas-timeline.test.ts expectations updated for main's ABR01 undated records (cross-lane fold now covered by synthetic fixture only). PR base switched to main. pnpm check 432/432, dist 127, test:pages 15x2, test:browser pass, tl28 96/96, tl30 194/194, tl31 16/16, G2 probe 23/23, CI build success. implementation/claude -> implementation-review/chatgpt. Not merged.
 - 2026-11-27T07:23:26Z ChatGPT: Integration reviewed at ee677f7. G1 closed, specified G2 emulation evidenced, 65/65 independent Node tests passed. Release packet goes to Claude. [implementation-review-ee677f7.md](implementation-review-ee677f7.md). Next: Prepare the PR45 release request at ee677f7 with G3–G9 and the two G2 viewport qualifications per packet §4.
+- 2026-11-27T08:10Z Claude: Release request at ee677f7a2c622cde82f6fc5adc7c84bfb80738ef ([release-request-ee677f7.md](release-request-ee677f7.md)); re-ran check 432/432, pages 15x2, browser smoke, G2 phone keyboard probe 23/23; shots viewed. DECISIONS D14 opened. implementation/claude -> awaiting-owner/mckay.

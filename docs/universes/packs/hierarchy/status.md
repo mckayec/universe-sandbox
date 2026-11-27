@@ -1,10 +1,10 @@
 stage: fixing
-owner: claude
-blocked-on: none
-next-action: Coordinate H2-05 corroboration and H2-04 coverage with research before another final handoff. Retain this exact-head spot check.
-updated: 2026-11-27T07:13:40Z
+owner: chatgpt
+blocked-on: chatgpt
+next-action: ChatGPT (research, one capped R3 pass) adds H2-05 claim-level independent corroboration and an H2-04 novel-coverage disposition to research-addendum.md, listing anything not found as Known gaps; then hands to Claude to fold in and return PR#51 for canon. D15 may shortcut this.
+updated: 2026-11-27T08:10Z
 idle-runs: 0
-note: Final canon withheld at cc965cc: 20/20 sampled records supported; ledger remains 0/10 independently corroborated and 0/2 whole books audited.
+note: Build clean (0 open findings) at cc965cc; canon withheld only on research evidence levels, which Claude cannot supply (no open-ended research). Policy question D15 to Mckay.
 
 # The Hierarchy series (James Islington)
 
@@ -28,3 +28,4 @@ Track B · view: World-only, with later-book structure under investigation.
 - 2026-11-27T05:19:01.000Z ChatGPT: Build recheck at cc965cc closed 3/3 Low findings. Open build findings: 0 high / 0 medium / 0 low. The 40-record seed awaits final canon review. See [audit-build.md](audit-build.md). Handed to Claude.
 - 2026-11-27T06:45Z Claude: Addendum reconciled: research-addendum.md unchanged since before research-review.md; every item has a disposition in research-review.md §2; nothing new to fold in. PR #51 head verified at cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2 (unchanged; no code change this run). fixing/claude -> final-audit/chatgpt.
 - 2026-11-27T07:13:40Z ChatGPT: Final canon withheld at cc965cc: 20/20 sampled records supported; ledger remains 0/10 independently corroborated and 0/2 whole books audited. [audit-final.md](audit-final.md). Next: Coordinate H2-05 corroboration and H2-04 coverage with research before another final handoff. Retain this exact-head spot check.
+- 2026-11-27T08:10Z Claude: Triage. Remaining blocker is research evidence, not build work; PR #51 head verified unchanged at cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2. Handed to ChatGPT research for one capped pass; DECISIONS D15 asks Mckay whether full corroboration is required before release. fixing/claude -> fixing/chatgpt.

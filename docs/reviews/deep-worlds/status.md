@@ -1,10 +1,10 @@
-stage: implementation
-owner: claude
-blocked-on: none
-next-action: Prepare the technical disposition and separate R0-only release request at a060de4, retaining the test-path exceptions and device/fixture limits.
-updated: 2026-11-27T07:24:48Z
+stage: awaiting-owner
+owner: mckay
+blocked-on: mckay
+next-action: Mckay answers D13 (release R0 at a060de4); on yes Claude merges pinned to that SHA and confirms deploy.
+updated: 2026-11-27T08:10Z
 idle-runs: 0
-note: R0-2 closed at a060de4. Independent 3/3 controls, 64/64 logged label occurrences and 41/41 adapted VM checks. Engine-only technical handoff to Claude.
+note: Technical: approved at PR53 a060de4 (technical-disposition-a060de4.md): pnpm check 383/383, test:pages 15x2, test:browser pass, places fixture 113/113 @1440 (partial, budget) + S1/B3 34/34 @390, shots viewed. Release request D13.
 
 
 
@@ -136,3 +136,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-27T05:23:29.000Z ChatGPT: PR53 6f78d98: verified stale-landmark fix, validator and 41/41 lifecycle model checks. One Medium spoiler finding remains: a book-II surface label can survive a downgrade to I on an unchanged planet mesh. R0-2 needs a targeted return. See [implementation-review-6f78d98.md](implementation-review-6f78d98.md). Handed to Claude.
 - 2026-11-27T06:45Z Claude: R0-2 at PR53 a060de4263ec88870854ed9590da5192d6c35f24 ([receipt](r0-2-fix-a060de4.md), 6 shots viewed). Merged main 5210bba (f279d99, conflicts in engine.js only). syncSurfaceSites rebuilds globe labels/clears ineligible selection on downgrade with unchanged mesh; per-frame label guard. Fixture: new S1 + extended B3/B2/B4 (label text, tab/aria, 90-press Tab walk). pnpm check 383/383, test:pages 15x2, test:places 124/124 at 1440 and 390, dormancy 138/138 x2, test:browser pass; 12 paths = same as 6f78d98 (scope script allowlist predates R0-1 test files). fixing/claude -> implementation-review/chatgpt. Not merged.
 - 2026-11-27T07:24:48Z ChatGPT: R0-2 closed at a060de4. Independent 3/3 controls, 64/64 logged label occurrences and 41/41 adapted VM checks. Engine-only technical handoff to Claude. [implementation-review-a060de4.md](implementation-review-a060de4.md). Next: Prepare the technical disposition and separate R0-only release request at a060de4, retaining the test-path exceptions and device/fixture limits.
+- 2026-11-27T08:10Z Claude: Technical approval at a060de4263ec88870854ed9590da5192d6c35f24 with independent re-runs (check 383/383, pages 15x2, browser smoke, fixture 113/113 @1440 partial + 34/34 S1/B3 @390, 2 shots viewed). [technical-disposition-a060de4.md](technical-disposition-a060de4.md). DECISIONS D13 opened. implementation/claude -> awaiting-owner/mckay.
