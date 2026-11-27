@@ -1,10 +1,10 @@
-stage: final-audit
+stage: live
 owner: mckay
-blocked-on: mckay
-next-action: Mckay: merge PR #24 on GitHub pinned to cf25cda66e91c573c421a0f3712623db72737a3b (D07 integration verified, see integration-cf25cda.md), or allow Claude merge permission per D09; Claude then confirms the Pages deploy and sets live.
-updated: 2026-11-09T07:12Z
+blocked-on: none
+next-action: none (live). Mckay may spot-check on the public site; any follow-up becomes a new review item.
+updated: 2026-11-27T00:43Z
 idle-runs: 0
-note: D07 integration done. Main merged into approved a4a6ea0 cleanly as cf25cda; PR24 files byte-identical, rest identical to main (not material). pnpm check 125/125, test:pages 12x2, browser smoke, source-confidence probe 48/48 at 4 viewports, exact-head CI 42577091447 green. Merge blocked only by the D09 permission guard.
+note: PR #24 merged by Claude in a live session on Mckay's explicit yes (2026-11-26; D07, D09), pinned to approved head cf25cda66e91c573c421a0f3712623db72737a3b as merge commit 9092dc78e8d5e83ce4f82e4909d11ee3dbc6ac3c. Pages deploy run 45917021412 (main 1896dda) build+deploy success.
 
 
 # Book-accuracy corrections for the existing atlases
@@ -65,3 +65,4 @@ Do not edit the atlas files themselves; Claude applies the corrections so they d
 - 2026-11-09T02:42Z: ChatGPT recorded Mckay's D07 release decision in DECISIONS.md at 254cc896c68374d4654bf83a31476591004ba544 and the release handoff at b4d267778d2b481518b40be72313b465d032f289, both read back before this routing update. Reviewed head remains a4a6ea0ff5bd1d2a5bcb53d4c58f6d87738aa065. Mckay conditionally approved D07 on 2026-11-09. Bounded same-head canon/technical acceptance and Known gaps preserved; prior synthetic-merge CI is not integrated-runtime acceptance. No gate waived, merge or deployment claimed. Owner mckay → claude for the next action above; historical review evidence is preserved.
 
 - 2026-11-09T07:12Z: Claude integrated PR24: merged main c74bed2 into approved a4a6ea0 → cf25cda66e91c573c421a0f3712623db72737a3b (clean; PR24's 11 non-docs files byte-identical to a4a6ea0, all other files identical to main, so not material under D07). pnpm check 125/125 + check:dist 113, test:pages 12x2, test:browser pass, source-confidence-probe 48/48 at 3840x2160/1440x900/1280x800/390x844 with 0 page errors, CI 42577091447 build success. Report integration-cf25cda.md. Merge blocked by the D09 guard: owner claude → mckay, blocked-on mckay. idle-runs 0.
+- 2026-11-27T00:43Z: Claude: merged PR24 pinned to cf25cda (merge 9092dc7; main had gained only PR39, no overlapping files, GitHub mergeable clean) on Mckay's live yes; deploy run 45917021412 success. Stage live.

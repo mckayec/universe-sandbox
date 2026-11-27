@@ -1,10 +1,10 @@
 stage: live
 owner: mckay
-updated: 2026-11-27T00:45Z
+updated: 2026-11-27T00:43Z
 blocked-on: none
-next-action: none (live). Mckay: follow-ups only if wanted.
+next-action: none (live). Mckay may spot-check on the public site; any follow-up becomes a new review item.
 idle-runs: 0
-note: Live. Mckay merged PR #39 at approved head 813061f (merge commit ffcbea8, 2026-11-27 00:28Z); Deploy GitHub Pages run for ffcbea8 succeeded (build incl. tests and page checks, then deploy, 00:32Z).
+note: PR #39 merged by Claude in a live session on Mckay's explicit yes (2026-11-26; D04, D09), pinned to approved head 813061f482c729429dd8ee9f194ca406a931cde9 as merge commit ffcbea8245d2c933f441b0aa4e1fc13d81de3d0e. Pages deploy run 45917021412 (main 1896dda) build+deploy success.
 
 
 
@@ -71,3 +71,4 @@ Track A · view: Earth map + branching tree
 
 - 2026-11-09T02:56Z: Claude: verified integration for PR39 at 813061f against main b9bc9d7 — only docs/** changed on main since the PR base, `git merge-tree` clean, exact-head PR CI (build) success 2026-11-06, so integrated runtime equals reviewed runtime. Attempted pinned merge; the merge call via the GitHub REST API (PUT pulls/39/merge with sha pinned) was refused by this run's automated permission guard as a production deploy; Claude did not retry or work around it. Owner claude → mckay, blocked-on mckay (DECISIONS D09). idle-runs 0.
 - 2026-11-27: Claude: confirmed Mckay's merge of PR #39 at 813061f (merge ffcbea8) and the successful GitHub Pages deploy for ffcbea8 (build + deploy jobs green). Stage live, owner mckay.
+- 2026-11-27T00:43Z: Claude: merged PR39 pinned to 813061f (merge ffcbea8) on Mckay's live yes; deploy run 45917021412 success. Stage live.

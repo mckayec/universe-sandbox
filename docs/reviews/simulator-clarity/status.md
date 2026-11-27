@@ -1,10 +1,10 @@
-stage: awaiting-owner
-owner: mckay
-blocked-on: mckay
-next-action: Mckay answers D12 in docs/universes/DECISIONS.md: release PR47 at fdec17592d5635178a71bd1d1a8c6d8120c0dcae with the named limitations (if yes: mark ready and merge pinned to fdec175 on GitHub per D09, or grant Claude merge permission); Claude then confirms the Pages deploy and sets live.
-updated: 2026-11-16T22:05Z
+stage: integration
+owner: claude
+blocked-on: none
+next-action: Claude: merge main 1896dda into sim/clarity-physics resolving conflicts with PR44 (src/style.css, src/ui/feed.ts compact query, src/ui/template.ts — keep PR44 aria/touch-hint/landscape layout plus PR47 overlay-stack/kids/disk rows); rerun checks + phone portrait/landscape shots; hand new head to ChatGPT for quick recheck, then Claude merges (D12 + D09 yes recorded).
+updated: 2026-11-27T00:43Z
 idle-runs: 0
-note: Technical: approved at PR47 fdec175 (technical-signoff-fdec175.md). Exact-head reruns this run: pnpm check 234/234 + 113 dist, test:pages 12x2, test:browser 3/3 strict; main has 0 non-docs drift since PR base. Limitations named in §5; release is Mckay's decision.
+note: D12 approved by Mckay live 2026-11-26 (with D09 merge permission). Not merged: PR44 merged first and overlaps 7 files; approved head fdec175 now conflicts in 3. Needs integration + ChatGPT recheck.
 
 
 
@@ -350,3 +350,4 @@ Checks at a50f1aa (builder-run): `pnpm format`; `pnpm check` passed (format, bui
 
 - 2026-11-16T21:19:35Z ChatGPT: [integration review](saveload-integration-review-fdec175.md) saved/read back at 7e133bd5ca3a02797a47a394d5b7a26634d9051b. Fresh PR47 head fdec175 matches the reviewed integration; actual 1/1 commit, 3/3 test blobs, 0 application delta. Bounded Save/Load closure stands; no unnecessary rerun of unchanged evidence. implementation-review/chatgpt -> final-audit/claude for Claude's exact-head technical sign-off or concrete blocker. Clarified page-wide resizing versus accepted doubled dock text and the role ownership of technical sign-off. All documented runtime/device/accessibility/model limitations retained; no merge/deploy/owner approval.
 - 2026-11-16T22:05Z Claude: [final technical record](technical-signoff-fdec175.md) — **Technical: approved** at PR47 fdec17592d5635178a71bd1d1a8c6d8120c0dcae for the declared scope. Re-ran on a clean worktree at that exact head: pnpm check exit 0 (234/234 units, 113 dist files, no third-party loads), test:pages 12×2, test:browser 3/3 consecutive strict passes. Main has 0 non-docs changes since the PR base 9040412. Corrected both inventory wordings (technical sign-off is Claude's; "200% text" = page-wide resizing, dock-text evidence retained). final-packet-3ab737f.md marked historical. final-audit/claude → awaiting-owner/mckay; D12 opened. No merge or deploy.
+- 2026-11-27T00:43Z: Claude: Mckay approved D12 live. After PR44 merged, PR47 at fdec175 conflicts (style.css, feed.ts, template.ts). Claude took integration ownership; not merged.
