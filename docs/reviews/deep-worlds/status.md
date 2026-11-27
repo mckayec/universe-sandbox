@@ -1,10 +1,10 @@
-stage: implementation-review
-owner: chatgpt
+stage: implementation
+owner: claude
 blocked-on: none
-next-action: ChatGPT: review PR53 at a060de4263ec88870854ed9590da5192d6c35f24 for R0-2 (S1/B3 globe label text and keyboard checks) and the main merge f279d99; see r0-2-fix-a060de4.md.
-updated: 2026-11-27T06:45Z
+next-action: Prepare the technical disposition and separate R0-only release request at a060de4, retaining the test-path exceptions and device/fixture limits.
+updated: 2026-11-27T07:24:48Z
 idle-runs: 0
-note: PR53 a060de4: main 5210bba merged in (11 engine.js hunks), R0-2 stale surface label fixed for opted-in packs; test:places 248/248, negative control 24 fails without fix; CI build pending at handoff. Non-opted packs keep main's existing behaviour (D10 dormancy).
+note: R0-2 closed at a060de4. Independent 3/3 controls, 64/64 logged label occurrences and 41/41 adapted VM checks. Engine-only technical handoff to Claude.
 
 
 
@@ -135,3 +135,4 @@ Do not edit the pack files yourself; Claude applies the findings on the PR branc
 - 2026-11-27T04:55Z Claude: R0-1 at PR53 6f78d98 ([receipt](r0-1-fixture-6f78d98.md), [raw output](deep-worlds-r0-1-fixture-output-6f78d98.txt), 10 shots viewed): isolated fixture 182/182 at 1440x900+390x844; selectLandmark stale-lm bug fixed; validator rejects non-object places; packs tree hash unchanged. pnpm check 167/167, dist 124, test:pages 14x2, test:places 182/182, CI build 45941130717 success; test:browser timed out twice on the known Save/Load wait. fixing/claude -> implementation-review/chatgpt.
 - 2026-11-27T05:23:29.000Z ChatGPT: PR53 6f78d98: verified stale-landmark fix, validator and 41/41 lifecycle model checks. One Medium spoiler finding remains: a book-II surface label can survive a downgrade to I on an unchanged planet mesh. R0-2 needs a targeted return. See [implementation-review-6f78d98.md](implementation-review-6f78d98.md). Handed to Claude.
 - 2026-11-27T06:45Z Claude: R0-2 at PR53 a060de4263ec88870854ed9590da5192d6c35f24 ([receipt](r0-2-fix-a060de4.md), 6 shots viewed). Merged main 5210bba (f279d99, conflicts in engine.js only). syncSurfaceSites rebuilds globe labels/clears ineligible selection on downgrade with unchanged mesh; per-frame label guard. Fixture: new S1 + extended B3/B2/B4 (label text, tab/aria, 90-press Tab walk). pnpm check 383/383, test:pages 15x2, test:places 124/124 at 1440 and 390, dormancy 138/138 x2, test:browser pass; 12 paths = same as 6f78d98 (scope script allowlist predates R0-1 test files). fixing/claude -> implementation-review/chatgpt. Not merged.
+- 2026-11-27T07:24:48Z ChatGPT: R0-2 closed at a060de4. Independent 3/3 controls, 64/64 logged label occurrences and 41/41 adapted VM checks. Engine-only technical handoff to Claude. [implementation-review-a060de4.md](implementation-review-a060de4.md). Next: Prepare the technical disposition and separate R0-only release request at a060de4, retaining the test-path exceptions and device/fixture limits.
