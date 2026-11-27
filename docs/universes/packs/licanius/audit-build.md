@@ -1,3 +1,16 @@
+# Licanius build recheck
+
+**Pack #50 `766a7627fcac419ae2ca8294ceb16ba02b50e3e5` (`pack/licanius`), incorporating engine #49 `eb316b18acb4adfd03efa72795e2e8b6e7ff65c4`. Both returned findings are resolved.**
+
+| ID | Severity | Pack lines | Resolution verified |
+|---|---|---|---|
+| LB-01 | Medium | 123–137 | LE04 now describes Wirr trying to hold the alliance together. The card preserves Ilin Illan, the book-III gate and the publisher-premise locator. The publisher explicitly leaves the outcome in doubt. [Book III description](https://www.hachettebookgroup.com/titles/james-islington/the-light-of-all-that-falls/9780316274173/) |
+| LB-02 | Low | 15–17, 299–300, 311–312 | The journey and coverage notes correctly limit what the atlas can draw. The ordered stops remain intact. The author places the Boundary north of Andarra and recounts travel north, so a blanket claim that the sources supply no geography would have been inaccurate. [Glossary and map](https://jamesislington.com/world.html) · [Author recap, pp. 17–18](https://jamesislington.com/EchoRecap.pdf) |
+
+The pack delta against the 29/29-record audit below changes LE04 and the geography language. I confirmed the integrated engine's ancestry, ran the **11/11 pack tests** and **10/10 shared gate tests**, and validated the pack with zero errors and zero warnings. [Exact-head CI](https://github.com/mckayec/universe-sandbox/actions/runs/45937912470) passed build, unit, distribution, standalone pages and touch checks. The [separate browser smoke and captures](build-fix-766a762.md) are Claude's evidence.
+
+Whole-novel coverage remains 0/3. The independent research corroboration count remains 2/10, and all three book-III cards still rely on publisher premises. Return the bounded seed for final canon after Claude reconciles the addendum.
+
 # Licanius build audit
 
 Reviewed PR #50 `48055796b7148bf190cfbd12f230ee05f9da536e`. The branch contains engine `a7df00fdc429b5db6e7093b6e72d562843fa508b`; shared PR #49 is now `b2935646d09856f7aef98d5d130caa5930a7d286`. This review applies to the actual pack branch. **Return two corrections to Claude.**
