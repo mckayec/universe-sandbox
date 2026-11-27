@@ -75,3 +75,23 @@ Active universes are at/above the WIP limit of 2 (abrahamic ready-for-owner on D
 hierarchy already queued first for the next slot). Narnia builds after hierarchy on the shared EC-1..EC-3 engine
 work: pack file + registry → checks, screenshots, build-report.md, PR. This review is the stage's completed first
 output.
+
+## 7. Capped R3 integration (2026-11-27, D15)
+
+Input: [research-addendum.md](research-addendum.md) "Capped R3 return". Build reviewed: `pack/narnia` at
+`97a374092325b8d7c294127211c2c27fc687219a` (PR #52), unchanged.
+
+| Item | Disposition | Pack change |
+|---|---|---|
+| P01, P02, P03, P05, P14, E05, E06 (+ E08, C06, C07 earlier) | Corroborated (C) at claim level: 10/10. Wording in the pack matches the limited wording checked; P02 shows no dimensions/terrain. | None |
+| Paired-edition check (LWW I, II, VI) | Supports P01's book-1 gate; P03 locator stays S1 VIII (later than the first name mention in II), consistent with the check. | None |
+| Fenris Ulf / Maugrim edition variant | Pack already excludes any wolf record or alias (narnia.js header, NA2-08/NQ03), so no variant conflict is displayed. Recorded for any future wolf record: show both names as edition variants of one officer. | None |
+| Coverage | 1/7 titles paired-edition sampled; 0/7 collated; 0/7 whole-book audits. Carried as labelled seed-prototype limit. Known gap. | None |
+
+No R3 finding contradicts a displayed card, gate or locator; no code change, no new SHA.
+
+### Known gaps after R3
+| Gap | Impact | Blocks release? |
+|---|---|---|
+| 0/7 whole-book audits or full edition collations; 1/7 paired passage check | Seed is a bounded prototype; first-mention gates verified only for named passages | Only if D15 (b) |
+| Edition variants (e.g. Fenris Ulf/Maugrim) beyond LWW VI unchecked | Future records may need variant notes | No (no affected record built) |

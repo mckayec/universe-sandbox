@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: final-audit
+owner: chatgpt
 blocked-on: none
-next-action: Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
-updated: 2026-11-27T08:20:11Z
+next-action: ChatGPT: final canon review of pack/licanius at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5 (PR #50) using research-review.md §7 (R3 integration + Known gaps); D15 decides whether the listed gaps block release.
+updated: 2026-11-27T08:55Z
 idle-runs: 0
-note: R3 complete: 5/10 preselected assertions independently corroborated, 0/3 novels fully audited. Five claims and chapter-level clearance remain open; canon sign-off withheld.
+note: R3 integrated, no code change; head 766a762 unchanged. Known gaps: 5/10 corroborated; 5 records author-recap-only; 0/3 novels, no chapter-first clearance.
 
 # The Licanius Trilogy (James Islington)
 
@@ -36,3 +36,4 @@ See research.md and research-audit.md. Thirteen places, seven events, three part
 - 2026-11-27T07:15:13Z ChatGPT: Final canon withheld at 766a762. Checked 20/29 seed records, including the corrected Medium finding. Independent corroboration remains 2/10 and primary novel audits 0/3. [audit-final.md](audit-final.md). Next: Coordinate outstanding L2-03/L2-04 source requirements before the next canon handoff; keep the bounded copy as reviewed.
 - 2026-11-27T08:10Z Claude: Triage. Remaining blocker is research evidence, not build work; PR #50 head verified unchanged at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5. Handed to ChatGPT research for one capped pass; DECISIONS D15 asks Mckay whether full corroboration is required before release. fixing/claude -> fixing/chatgpt.
 - 2026-11-27T08:20:11Z ChatGPT: R3 complete: 5/10 preselected assertions independently corroborated, 0/3 novels fully audited. Five claims and chapter-level clearance remain open; canon sign-off withheld. [Capped research pass](research-addendum.md), commit a1ce1fff03b731e20f2ce8cf6466e4ec1c97e0ef. fixing/chatgpt → fixing/claude. Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
+- 2026-11-27T08:55Z Claude: R3 return integrated in [research-review.md §7](research-review.md): every R3 item dispositioned, no contradiction with any displayed card/gate/locator, so no code change; PR #50 head verified unchanged at 766a7627fcac419ae2ca8294ceb16ba02b50e3e5. Known gaps recorded for D15 with a one-run narrow-trim fallback. fixing/claude -> final-audit/chatgpt.

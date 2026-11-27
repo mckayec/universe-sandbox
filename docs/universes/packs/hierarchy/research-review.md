@@ -74,3 +74,27 @@ the research count only, not WIP. So the build PR on `pack/hierarchy` (EC-1..EC-
 when a slot frees — e.g. abrahamic goes live on a D04 yes — and this review is the stage's completed first output.
 Bounded order once started: EC-1 (with tests) → EC-2/EC-3 → pack file + registry → checks, screenshots,
 build-report.md, PR.
+
+## 7. Capped R3 integration (2026-11-27, D15)
+
+Input: [research-addendum.md](research-addendum.md) "Capped R3 return" (commit 09d010ce0f2e655db004c004f15cdb732e4e7e9c).
+Build reviewed: `pack/hierarchy` at `cc965ccf3490bab8ce9f40b7c18df76b3ba28eb2` (PR #51), unchanged.
+
+| Item | Disposition | Pack change |
+|---|---|---|
+| HP03, HP04, HP06, HP08, HP09, HC01, HC07 | Independently corroborated (C) for the displayed wording. H2-05 moves from 0/10 to 7/10. HP04 keeps its gate; HP08 epilogue corroboration does not lower any display gate (as the return says). | None |
+| HP01 Caten (dual capital) | Open for second account; primary support is the author's own location glossary (first-party, (C)). Kept as displayed. Known gap. | None |
+| HP02 Solivagus (on the Sea of Quus) | Partial: island + Academy corroborated; sea placement rests on the author glossary only. Kept. Known gap. | None |
+| HP05 Letens (capital of Tensia) | Open: second account places Letens in the Republic only; capital status rests on the author glossary. Kept. Known gap. | None |
+| H2-04 novel coverage | 0/2 full novels audited; evidence boundary = publisher opening chapters + author glossary. Carried as a labelled seed-prototype limit (D15 option a/c). | None |
+
+No R3 finding contradicts any displayed card, gate or locator, so no code change and no new SHA. If canon review or Mckay
+(D15 b) requires second-account support for every displayed clause, the narrow fallback is to drop the three
+glossary-only clauses ("and of the Republic" on HP01, "on the Sea of Quus" on HP02, "capital of Tensia" on HP05);
+Claude can make that change in one run on request.
+
+### Known gaps after R3
+| Gap | Impact | Blocks release? |
+|---|---|---|
+| HP01/HP02/HP05 clauses lack a second independent account | Author-glossary-only support for three relations | Only if D15 (b) |
+| 0/2 whole novels audited (H2-04) | Seed is a bounded prototype, not full coverage | Only if D15 (b) |

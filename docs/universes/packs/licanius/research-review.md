@@ -62,3 +62,26 @@ books, cumulative spoilers. One shared engine change serves hierarchy, narnia an
 WIP is full (abrahamic ready-for-owner on D04, lds-standard-works fixing); hierarchy then narnia are ahead in the
 queue. Licanius builds third on the shared EC-1..EC-3 engine work. This review is the stage's completed first
 output.
+
+## 7. Capped R3 integration (2026-11-27, D15)
+
+Input: [research-addendum.md](research-addendum.md) "Capped R3 return". Build reviewed: `pack/licanius` at
+`766a7627fcac419ae2ca8294ceb16ba02b50e3e5` (PR #50), unchanged.
+
+| Item | Disposition | Pack change |
+|---|---|---|
+| Caladel, Davian/Wirr departure (earlier), andarra, ilin-illan, le02 | Independently corroborated (C) for the seed wording: 5/10. No date, geometry, extra stop or lower gate follows. | None |
+| boundary (energy barrier) | Partial: second account gives a magical northern boundary; "energy barrier" rests on the author's recap. Kept. Known gap. | None |
+| deilannis (abandoned; border relation) | Partial: second account gives a haunted ancient city only. Kept on author-recap support. Known gap. | None |
+| lj01 (Desriel as intervening stop) | Partial: second account locates the massacre, not both travellers in Desriel. Kept as partial, non-geometric journey. Known gap. | None |
+| lc02, lc04 | Incomplete beyond the author's combined recap (fan wiki HTTP 402, not bypassed). Kept. Known gap. | None |
+| Chapter-level first-reader timing (L2-03) | Author recaps are retrospective; 0/3 novels audited. Existing completed-book gates and book-three premise-only treatment retained. Known gap. | None |
+
+No R3 finding contradicts a displayed card, gate or locator; no code change, no new SHA. Narrow fallback if D15 (b)
+or canon review requires it: trim the five partially corroborated clauses to their corroborated wording (one run).
+
+### Known gaps after R3
+| Gap | Impact | Blocks release? |
+|---|---|---|
+| boundary, deilannis, lj01, lc02, lc04 rest on author recap only | Five records lack a second account for their full wording | Only if D15 (b) |
+| 0/3 novels audited; no chapter-first clearance (L2-03) | Gates are completed-book gates, not chapter-precise | Only if D15 (b) |

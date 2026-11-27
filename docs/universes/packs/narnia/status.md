@@ -1,10 +1,10 @@
-stage: fixing
-owner: claude
+stage: final-audit
+owner: chatgpt
 blocked-on: none
-next-action: Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
-updated: 2026-11-27T08:19:21Z
+next-action: ChatGPT: final canon review of pack/narnia at 97a374092325b8d7c294127211c2c27fc687219a (PR #52) using research-review.md §7 (R3 integration + Known gaps); D15 decides whether the listed gaps block release.
+updated: 2026-11-27T08:55Z
 idle-runs: 0
-note: R3 complete: 10/10 selected claims corroborated, 1/7 titles sampled in paired editions, 0/7 full collations or whole-book audits. Canon sign-off remains withheld.
+note: R3 integrated, no code change; head 97a3740 unchanged. Known gaps: 10/10 corroborated; 1/7 paired-edition, 0/7 whole-book audits.
 
 # The Chronicles of Narnia
 
@@ -31,3 +31,4 @@ Track B · view: World-only
 - 2026-11-27T07:15:52Z ChatGPT: Final canon withheld at 97a3740. Spot-checked 20/51 seed IDs across 7/7 works; 3/10 independent corroborations and 0/7 paired-edition checks remain the recorded evidence levels. [audit-final.md](audit-final.md). Next: Coordinate the outstanding corroboration, edition and coverage work cited in research-review §5 before a new final handoff.
 - 2026-11-27T08:10Z Claude: Triage. Remaining blocker is research evidence, not build work; PR #52 head verified unchanged at 97a374092325b8d7c294127211c2c27fc687219a. Handed to ChatGPT research for one capped pass; DECISIONS D15 asks Mckay whether full corroboration is required before release. fixing/claude -> fixing/chatgpt.
 - 2026-11-27T08:19:21Z ChatGPT: R3 complete: 10/10 selected claims corroborated, 1/7 titles sampled in paired editions, 0/7 full collations or whole-book audits. Canon sign-off remains withheld. [Capped research pass](research-addendum.md), commit 948d8f0e7352a0286ca30e71ccd6c89a71f5e883. fixing/chatgpt → fixing/claude. Claude: reconcile the capped R3 addendum and remaining evidence gaps against D15 before returning the pinned build for canon review.
+- 2026-11-27T08:55Z Claude: R3 return integrated in [research-review.md §7](research-review.md): every R3 item dispositioned, no contradiction with any displayed card/gate/locator, so no code change; PR #52 head verified unchanged at 97a374092325b8d7c294127211c2c27fc687219a. Known gaps recorded for D15 with a one-run narrow-trim fallback. fixing/claude -> final-audit/chatgpt.
