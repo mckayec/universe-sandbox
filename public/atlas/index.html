@@ -52,6 +52,10 @@ body.choosing{overflow:auto;background:#04050b}
     .then(function(){return load("tree.js");})
     .then(function(){return load("tree-view.js");})
     .then(function(){return load("engine.js");})
+    .then(function(){return load("places-lm.js");})
+    .then(function(){return load("places-fx.js");})
+    .then(function(){return load("places-audio.js");})
+    .then(function(){return load("places.js");})
     /* optional data parts (PACK_FORMAT 1.1): packs/<id>/<part>.js, loaded in order before the pack itself */
     .then(function(){return (entry.parts||[]).reduce(function(p,n){return p.then(function(){return load("packs/"+encodeURIComponent(entry.id)+"/"+encodeURIComponent(n)+".js");});},Promise.resolve());})
     .then(function(){return load("packs/"+encodeURIComponent(entry.id)+".js");})
