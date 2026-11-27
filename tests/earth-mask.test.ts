@@ -22,5 +22,17 @@ test('phones get a 2048x1024 copy of the Earth mask', () => {
   assert.equal(png.readUInt32BE(16), 2048);
   assert.equal(png.readUInt32BE(20), 1024);
   const engine = readFileSync(new URL('../public/atlas/engine.js', import.meta.url), 'utf8');
-  assert.match(engine, /SMALL\|\|LOWMEM\|\|MAXTEX<4096\?"earth-base-2048\.png":"earth-base\.png"/);
+  // the mask follows the bake size: phones (2048), low-memory and software-GL devices (1024) get the copy
+  assert.match(engine, /HD<4096\?"earth-base-2048\.png":"earth-base\.png"/);
+  assert.match(engine, /const HD=window\.__HD\|\|Math\.min\(LIGHT\?1024:SMALL\?2048:4096,MAXTEX\)/);
+});
+
+test('software GL gets the light surface path and the bake never runs unbounded strips (T5-1)', () => {
+  const engine = readFileSync(new URL('../public/atlas/engine.js', import.meta.url), 'utf8');
+  assert.match(engine, /swiftshader\|llvmpipe\|softpipe\|software\|basic render/);
+  assert.match(engine, /const LIGHT=LOWMEM\|\|SOFTGL;/);
+  assert.match(engine, /if\(SMALL\|\|LIGHT\)return 2048;/);
+  // a new job starts from a small probe strip, and the next strip scales with the last frame's cost
+  assert.match(engine, /if\(!bakeJobs\.length\)BAKE_SCALE=Math\.min\(BAKE_SCALE,BAKE_PROBE\)/);
+  assert.match(engine, /BAKE_SCALE\*clamp\(20\/Math\.max\(ft,1\),\.1,1\.15\)/);
 });
