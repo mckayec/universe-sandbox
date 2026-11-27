@@ -1,0 +1,222 @@
+{
+ "results": [
+  {
+   "name": "390 coverage counts",
+   "pass": true,
+   "actual": "91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships: 95 with a source locator, 34 overview groupings (not historical claims), 0 without a locator."
+  },
+  {
+   "name": "390 no edge-source gap",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "390 drawn connectors carry a title",
+   "pass": true,
+   "actual": {
+    "paths": 9,
+    "titled": 9
+   }
+  },
+  {
+   "name": "390 list: every relationship cited or editorial",
+   "pass": true,
+   "actual": {
+    "n": 129,
+    "cites": 95,
+    "eds": 34,
+    "gaps": 0
+   }
+  },
+  {
+   "name": "390 citation links are https, new tab, noopener",
+   "pass": true,
+   "actual": 123
+  },
+  {
+   "name": "390 no citation runs off screen",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "390 details: Rabbinic Judaism cites JU-R04",
+   "pass": true,
+   "actual": "Rabbinic Judaism\n\nEarly centuries CE onward · religious and literary development\n\nNo defensible date in the source\n\nRabbinic Judaism gives central importance to"
+  },
+  {
+   "name": "390 Tab x40 stays in the timeline",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "390 Escape closes",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "1280 coverage counts",
+   "pass": true,
+   "actual": "91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships: 95 with a source locator, 34 overview groupings (not historical claims), 0 without a locator."
+  },
+  {
+   "name": "1280 no edge-source gap",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "1280 drawn connectors carry a title",
+   "pass": true,
+   "actual": {
+    "paths": 9,
+    "titled": 9
+   }
+  },
+  {
+   "name": "1280 list: every relationship cited or editorial",
+   "pass": true,
+   "actual": {
+    "n": 129,
+    "cites": 95,
+    "eds": 34,
+    "gaps": 0
+   }
+  },
+  {
+   "name": "1280 citation links are https, new tab, noopener",
+   "pass": true,
+   "actual": 123
+  },
+  {
+   "name": "1280 no citation runs off screen",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "1280 details: Rabbinic Judaism cites JU-R04",
+   "pass": true,
+   "actual": "Rabbinic Judaism\n\nEarly centuries CE onward · religious and literary development\n\nNo defensible date in the source\n\nRabbinic Judaism gives central importance to"
+  },
+  {
+   "name": "1280 Tab x40 stays in the timeline",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "1280 Escape closes",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "1440 coverage counts",
+   "pass": true,
+   "actual": "91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships: 95 with a source locator, 34 overview groupings (not historical claims), 0 without a locator."
+  },
+  {
+   "name": "1440 no edge-source gap",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "1440 drawn connectors carry a title",
+   "pass": true,
+   "actual": {
+    "paths": 9,
+    "titled": 9
+   }
+  },
+  {
+   "name": "1440 list: every relationship cited or editorial",
+   "pass": true,
+   "actual": {
+    "n": 129,
+    "cites": 95,
+    "eds": 34,
+    "gaps": 0
+   }
+  },
+  {
+   "name": "1440 citation links are https, new tab, noopener",
+   "pass": true,
+   "actual": 123
+  },
+  {
+   "name": "1440 no citation runs off screen",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "1440 details: Rabbinic Judaism cites JU-R04",
+   "pass": true,
+   "actual": "Rabbinic Judaism\n\nEarly centuries CE onward · religious and literary development\n\nNo defensible date in the source\n\nRabbinic Judaism gives central importance to"
+  },
+  {
+   "name": "1440 Tab x40 stays in the timeline",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "1440 Escape closes",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "3840 coverage counts",
+   "pass": true,
+   "actual": "91 dated (19 as windows, 2 approximate), 78 undated, 129 relationships: 95 with a source locator, 34 overview groupings (not historical claims), 0 without a locator."
+  },
+  {
+   "name": "3840 no edge-source gap",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "3840 drawn connectors carry a title",
+   "pass": true,
+   "actual": {
+    "paths": 9,
+    "titled": 9
+   }
+  },
+  {
+   "name": "3840 list: every relationship cited or editorial",
+   "pass": true,
+   "actual": {
+    "n": 129,
+    "cites": 95,
+    "eds": 34,
+    "gaps": 0
+   }
+  },
+  {
+   "name": "3840 citation links are https, new tab, noopener",
+   "pass": true,
+   "actual": 123
+  },
+  {
+   "name": "3840 no citation runs off screen",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "3840 details: Rabbinic Judaism cites JU-R04",
+   "pass": true,
+   "actual": "Rabbinic Judaism\n\nEarly centuries CE onward · religious and literary development\n\nNo defensible date in the source\n\nRabbinic Judaism gives central importance to"
+  },
+  {
+   "name": "3840 Tab x40 stays in the timeline",
+   "pass": true,
+   "actual": 0
+  },
+  {
+   "name": "3840 Escape closes",
+   "pass": true,
+   "actual": null
+  },
+  {
+   "name": "no console/request errors",
+   "pass": true,
+   "actual": []
+  }
+ ],
+ "errors": []
+}

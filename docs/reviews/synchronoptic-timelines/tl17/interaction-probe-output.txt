@@ -1,0 +1,98 @@
+PASS 390: first reveal focuses the row in its open panel (work-bom)
+PASS 390: repeated activation keeps selection and focus
+PASS 390: panel closed by hand (round 1)
+PASS 390: reveal reopens a hand-closed panel (round 1)
+PASS 390: panel closed by hand (round 2)
+PASS 390: reveal reopens a hand-closed panel (round 2)
+PASS 390: panel closed by hand (round 3)
+PASS 390: reveal reopens a hand-closed panel (round 3)
+PASS 390: BoM lane collapsed
+PASS 390: reveal expands a collapsed lane and focuses the row
+PASS 390: lane no longer collapsed in state
+PASS 390: list keeps every row
+PASS 390: reveal after a chart/list round trip
+PASS 390: the open BoM list is one Tab stop, on the selected row (330 rows)
+PASS 390: ArrowDown moves to the next row in source order
+PASS 390: ArrowUp moves back
+PASS 390: End reaches the last row
+PASS 390: Home reaches the first row
+PASS 390: one Tab leaves the list (SUMMARY work-dc)
+PASS 390: Shift+Tab returns to the list's current stop
+PASS 390: Tab cycles back to the search field (70 stops)
+PASS 390: Tab never leaves, hides or stalls (bad 0, stuck 0)
+PASS 390: Tab reaches closed panel summaries (5)
+PASS 390: Shift+Tab cycles the same 70 stops in reverse
+PASS 390: Enter and Space toggle a summary, focus stays on it
+PASS 390: gate change moves focus to a visible control (H3 Overview)
+PASS 390: gate-excluded selection cleared
+PASS 390: gated panel and hit gone
+PASS 390: panel counts match the gated view
+PASS 390: excluded record stays hidden
+PASS 390: reveal still works after the gate change
+PASS 390: D&C panel in source order
+PASS 390 r1: BoM record selected and focused
+PASS 390 r1: first refresh keeps focus inside (H3 Overview)
+PASS 390 r1: second refresh keeps focus inside (H3 Overview)
+PASS 390 r1: Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 390 r1: Tab after the two refreshes stays on a visible control (BUTTON List)
+PASS 390 r1: Shift+Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 390 r1: Shift+Tab after the two refreshes stays on a visible control (SUMMARY work-pgp)
+PASS 390 r1: Shift+Tab after the two refreshes stays on a visible control (BUTTON c:works#0)
+PASS 390 r2: BoM record selected and focused
+PASS 390 r2: first refresh keeps focus inside (H3 Overview)
+PASS 390 r2: second refresh keeps focus inside (H3 Overview)
+PASS 390 r2: Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 390 r2: Tab after the two refreshes stays on a visible control (BUTTON List)
+PASS 390 r2: Shift+Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 390 r2: Shift+Tab after the two refreshes stays on a visible control (SUMMARY work-pgp)
+PASS 390 r2: Shift+Tab after the two refreshes stays on a visible control (BUTTON c:works#0)
+PASS 390: no console/page errors 
+PASS 1440: first reveal focuses the row in its open panel (work-bom)
+PASS 1440: repeated activation keeps selection and focus
+PASS 1440: panel closed by hand (round 1)
+PASS 1440: reveal reopens a hand-closed panel (round 1)
+PASS 1440: panel closed by hand (round 2)
+PASS 1440: reveal reopens a hand-closed panel (round 2)
+PASS 1440: panel closed by hand (round 3)
+PASS 1440: reveal reopens a hand-closed panel (round 3)
+PASS 1440: BoM lane collapsed
+PASS 1440: reveal expands a collapsed lane and focuses the row
+PASS 1440: lane no longer collapsed in state
+PASS 1440: list keeps every row
+PASS 1440: reveal after a chart/list round trip
+PASS 1440: the open BoM list is one Tab stop, on the selected row (330 rows)
+PASS 1440: ArrowDown moves to the next row in source order
+PASS 1440: ArrowUp moves back
+PASS 1440: End reaches the last row
+PASS 1440: Home reaches the first row
+PASS 1440: one Tab leaves the list (SUMMARY work-dc)
+PASS 1440: Shift+Tab returns to the list's current stop
+PASS 1440: Tab cycles back to the search field (70 stops)
+PASS 1440: Tab never leaves, hides or stalls (bad 0, stuck 0)
+PASS 1440: Tab reaches closed panel summaries (5)
+PASS 1440: Shift+Tab cycles the same 70 stops in reverse
+PASS 1440: Enter and Space toggle a summary, focus stays on it
+PASS 1440: gate change moves focus to a visible control (H3 Overview)
+PASS 1440: gate-excluded selection cleared
+PASS 1440: gated panel and hit gone
+PASS 1440: panel counts match the gated view
+PASS 1440: excluded record stays hidden
+PASS 1440: reveal still works after the gate change
+PASS 1440: D&C panel in source order
+PASS 1440 r1: BoM record selected and focused
+PASS 1440 r1: first refresh keeps focus inside (H3 Overview)
+PASS 1440 r1: second refresh keeps focus inside (H3 Overview)
+PASS 1440 r1: Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 1440 r1: Tab after the two refreshes stays on a visible control (BUTTON List)
+PASS 1440 r1: Shift+Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 1440 r1: Shift+Tab after the two refreshes stays on a visible control (SUMMARY work-pgp)
+PASS 1440 r1: Shift+Tab after the two refreshes stays on a visible control (BUTTON c:works#0)
+PASS 1440 r2: BoM record selected and focused
+PASS 1440 r2: first refresh keeps focus inside (H3 Overview)
+PASS 1440 r2: second refresh keeps focus inside (H3 Overview)
+PASS 1440 r2: Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 1440 r2: Tab after the two refreshes stays on a visible control (BUTTON List)
+PASS 1440 r2: Shift+Tab after the two refreshes stays on a visible control (BUTTON Chart)
+PASS 1440 r2: Shift+Tab after the two refreshes stays on a visible control (SUMMARY work-pgp)
+PASS 1440 r2: Shift+Tab after the two refreshes stays on a visible control (BUTTON c:works#0)
+PASS 1440: no console/page errors 

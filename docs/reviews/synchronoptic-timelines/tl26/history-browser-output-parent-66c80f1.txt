@@ -1,0 +1,39 @@
+PASS history/1440 load entry 0 (start: chapter 2, timeline closed) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth&site=jerusalem&view=surface","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 link to entry 1 (chapter 2→3 + open + select Karaite (gated at ch 3)) — {"open":false,"ch":"3","hash":"#book=1&ch=3&world=earth&site=jerusalem&view=surface","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 link to entry 2 (chapter 3→2 gates Karaite selection out; tlsel dropped) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 link to entry 3 (chapter 2→5 + lane order/collapse + selection) — {"open":false,"ch":"5","hash":"#book=1&ch=5&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/1440 link to entry 4 (chapter 5→4 closes timeline) — {"open":false,"ch":"4","hash":"#book=1&ch=4&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 link to entry 5 (invalid ch → Not set; Karaite gated out) — {"open":false,"ch":"","hash":"#book=1&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/1440 Back to entry 4 (chapter 5→4 closes timeline) — {"open":false,"ch":"4","hash":"#book=1&ch=4&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 Back to entry 3 (chapter 2→5 + lane order/collapse + selection) — {"open":false,"ch":"5","hash":"#book=1&ch=5&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 Back to entry 2 (chapter 3→2 gates Karaite selection out; tlsel dropped) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 Back to entry 1 (chapter 2→3 + open + select Karaite (gated at ch 3)) — {"open":false,"ch":"3","hash":"#book=1&ch=3&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/1440 Back to entry 0 (start: chapter 2, timeline closed) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth&view=surface","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 Forward to entry 1 (chapter 2→3 + open + select Karaite (gated at ch 3)) — {"open":false,"ch":"3","hash":"#book=1&ch=3&world=earth&view=surface","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 Forward to entry 2 (chapter 3→2 gates Karaite selection out; tlsel dropped) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 Forward to entry 3 (chapter 2→5 + lane order/collapse + selection) — {"open":false,"ch":"5","hash":"#book=1&ch=5&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/1440 Forward to entry 4 (chapter 5→4 closes timeline) — {"open":false,"ch":"4","hash":"#book=1&ch=4&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/1440 Forward to entry 5 (invalid ch → Not set; Karaite gated out) — {"open":false,"ch":"","hash":"#book=1&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/1440 final state (Not set): list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS history/1440 final state (Not set): fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS history/1440 no runtime errors
+PASS history/390 load entry 0 (start: chapter 2, timeline closed) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth&site=jerusalem&view=surface","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 link to entry 1 (chapter 2→3 + open + select Karaite (gated at ch 3)) — {"open":false,"ch":"3","hash":"#book=1&ch=3&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 link to entry 2 (chapter 3→2 gates Karaite selection out; tlsel dropped) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 link to entry 3 (chapter 2→5 + lane order/collapse + selection) — {"open":false,"ch":"5","hash":"#book=1&ch=5&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/390 link to entry 4 (chapter 5→4 closes timeline) — {"open":false,"ch":"4","hash":"#book=1&ch=4&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 link to entry 5 (invalid ch → Not set; Karaite gated out) — {"open":false,"ch":"","hash":"#book=1&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/390 Back to entry 4 (chapter 5→4 closes timeline) — {"open":false,"ch":"4","hash":"#book=1&ch=4&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 Back to entry 3 (chapter 2→5 + lane order/collapse + selection) — {"open":false,"ch":"5","hash":"#book=1&ch=5&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 Back to entry 2 (chapter 3→2 gates Karaite selection out; tlsel dropped) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 Back to entry 1 (chapter 2→3 + open + select Karaite (gated at ch 3)) — {"open":false,"ch":"3","hash":"#book=1&ch=3&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/390 Back to entry 0 (start: chapter 2, timeline closed) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth&view=surface","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 Forward to entry 1 (chapter 2→3 + open + select Karaite (gated at ch 3)) — {"open":false,"ch":"3","hash":"#book=1&ch=3&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 Forward to entry 2 (chapter 3→2 gates Karaite selection out; tlsel dropped) — {"open":false,"ch":"2","hash":"#book=1&ch=2&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 Forward to entry 3 (chapter 2→5 + lane order/collapse + selection) — {"open":false,"ch":"5","hash":"#book=1&ch=5&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/390 Forward to entry 4 (chapter 5→4 closes timeline) — {"open":false,"ch":"4","hash":"#book=1&ch=4&world=earth","tl":null,"tlc":null,"tlsel":null}
+FAIL history/390 Forward to entry 5 (invalid ch → Not set; Karaite gated out) — {"open":false,"ch":"","hash":"#book=1&world=earth","tl":null,"tlc":null,"tlsel":null}
+PASS history/390 final state (Not set): list ids == gated model ids (rows distinct), relationships == gated edges — expected 166/122; DOM 166 distinct (166 rows), missing 0, extra 0; rel 122/122; lib true
+PASS history/390 final state (Not set): fixture records {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false} — {"n:jud-karaite":false,"n:jud-covenant-tradition":false,"n:jud-ananites":false}
+PASS history/390 no runtime errors
+history browser probe: 16 pass, 22 fail

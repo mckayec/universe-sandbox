@@ -457,6 +457,13 @@ function buildShell(K){
   const stops=T.chromeStops||[[0,"#fff7e2"],[.45,"#e8cd8a"],[.68,"#9a7432"],[1,"#f4e2b2"]];
   const defs='<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">'+stops.map(s=>'<stop offset="'+s[0]+'" stop-color="'+s[1]+'"/>').join("")+'</linearGradient></defs>';
   const sig=T.sigil||DEF_SIGIL,ssig=T.splashSigil||sig;const TT=M.title.toUpperCase();
+  /* chapter selector (timeline checkpoint 25): only a cumulative pack with a book that declares `chapters` */
+  const chapterSelHTML=K=>{const T=window.AtlasTimeline;
+    if(K.mode!=="cumulative"||!T||!T.chapterCount||!K.bookIds.some(b=>T.chapterCount(K.books,b)))return "";
+    return '<label class="chsel" id="chapterWrap" hidden><span class="seglbl">Chapter</span>'+
+      '<select id="chapterSel" aria-label="Read through chapter of the selected book"></select></label>';};
+  /* timeline adapter for this pack (timeline.js adapterFor): tree packs and the Standard Works pack; null = no Timeline button */
+  const TLA=window.AtlasTimeline&&window.AtlasTimelineView?window.AtlasTimeline.adapterFor(K.raw):null;
   const BOOK_PICK=!!(window.AtlasLayers&&window.AtlasLayers.usePicker(K.bookIds,U));
   const app=document.createElement("div");app.id="app";if(!U.showCredits)app.classList.add("nocredits");if(U.wrapBooks===true||(U.wrapBooks!==false&&K.bookIds.length>3))app.classList.add("manybooks");if(K.bookIds.length<=1)app.classList.add("onebook");
   /* #labels follows the top bar and side panels in the DOM so keyboard focus reaches those controls before the
@@ -471,9 +478,11 @@ function buildShell(K){
   '<div class="seg'+(BOOK_PICK?" picker":"")+'" id="books" role="group" aria-label="'+esc(U.booksAria)+'"><button data-b="0" aria-pressed="true" title="'+esc(U.allTitle)+'">All</button>'+
   K.bookIds.map(b=>'<button data-b="'+b+'" aria-pressed="false" title="'+esc(K.books[b].title+(K.books[b].y?" ("+K.books[b].y+")":""))+'">'+esc(K.books[b].n)+'</button>').join("")+
   (BOOK_PICK?window.AtlasLayers.renderBookPicker(K.books,K.bookIds,{label:U.booksAria,allLabel:U.pickerAll||"All",prevLabel:U.pickerPrev,nextLabel:U.pickerNext}):"")+'</div>'+
+  chapterSelHTML(K)+
   '<button class="btn" id="galBtn">'+esc(U.galaxyButton)+'</button><button class="btn" id="webBtn">'+esc(U.homeButton)+'</button>'+
   '<button class="btn" id="cxBtn"'+(K.codex.length?"":" hidden")+'>Codex</button>'+
-  (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+'</div></header>'+
+  (K.raw.tree?'<button class="btn" id="trBtn" aria-haspopup="dialog">'+esc(K.raw.tree.button||"Tree")+'</button>':"")+
+  (TLA?'<button class="btn" id="tlBtn" aria-haspopup="dialog">Timeline</button>':"")+'</div></header>'+
 '<nav id="crumbs" aria-label="Location"></nav>'+
 '<button class="btn" id="skyBtn" aria-pressed="false" title="Hide the panels to see the sky" hidden>Sky</button>'+
 '<button class="btn ctl-more" id="ctlMoreL" tabindex="-1" aria-label="Scroll the header controls back" title="Scroll the header controls back">‹</button>'+
@@ -487,7 +496,7 @@ function buildShell(K){
   '<span class="credits">'+(M.credits||"")+' '+esc(fanNotice(M))+'</span></div><div id="track"></div></section>'+
 '<div id="codex" hidden><div class="panel" role="dialog" aria-modal="true" aria-labelledby="cxT"><div class="cx-head"><h2 id="cxT" class="chrome">'+esc(U.codexTitle)+'</h2><span id="cxNote"></span>'+
   '<div class="cx-tabs" id="cxTabs"></div><select class="cx-pick" id="cxPick" aria-label="Codex section"></select><button class="btn" id="cxClose">Close</button></div><div class="cx-body" id="cxBody"></div></div></div>'+
-(K.raw.tree?'<div id="tree" hidden></div>':"")+
+(K.raw.tree?'<div id="tree" hidden></div>':"")+(TLA?'<div id="timeline" hidden></div>':"")+
 '<div id="splash"><div><svg width="'+(T.splashSize||78)+'" height="'+(T.splashSize||78)+'" viewBox="0 0 48 48" aria-hidden="true">'+ssig+'</svg><h1 class="chrome">'+esc(TT)+'</h1>'+
   (M.splash?'<p>'+esc(M.splash)+'</p>':"")+'<div class="ld" id="splashLd">Charting the galaxy</div></div></div>';
   document.body.appendChild(app);
@@ -974,7 +983,7 @@ function updatePlanet(dt,t,spinOn){if(!PL)return;
 }
 
 /* ===================== STATE & SPOILER RULES (PACK_FORMAT 6) ===================== */
-const S={view:"galaxy",sel:null,site:null,book:0,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null,route:null};
+const S={view:"galaxy",sel:null,site:null,book:0,chapter:null,ev:null,hover:null,interacted:false,realm:"physical",layers:null,range:null,route:null};
 /* layers and timeline (PACK_FORMAT 20; helpers in layers.js) */
 const LY=window.AtlasLayers||null;
 const LAY=LY?LY.normLayers(K.raw):null;
@@ -982,7 +991,7 @@ const TL=LY?LY.normTimeline(K.raw,[].concat(WORLDS,EVENTS,...WORLDS.map(w=>w.sit
 if(LAY)S.layers=LY.defaultActive(LAY);
 const filterOk=it=>!LY||(LY.layerOk(it,S.layers)&&LY.timeOk(it,S.range));
 /* the family-tree view (PACK_FORMAT 21), created further down once the panels exist */
-let TRV=null;
+let TRV=null,TLV=null;
 const EV_BY={};EVENTS.forEach((e,i)=>{e.ord=i;EV_BY[e.id]=e;});
 const EFF=()=>S.book||99;
 const firstOf=w=>w.first||(w.books&&w.books.length?Math.min(...w.books):1);
@@ -1883,7 +1892,10 @@ if($("#realms"))$("#realms").addEventListener("click",e=>{const b=e.target.close
 
 /* ===================== LAYERS & TIMELINE (PACK_FORMAT 20) ===================== */
 const filtersEl=$("#filters");let fDrag=false,fPend=false;
-function renderFilters(){if(!filtersEl||!LY||fDrag)return;filtersEl.innerHTML=LY.renderBar(LAY,TL,S.layers,S.range);}
+/* rebuilding the bar keeps keyboard focus on the same control (a year handle or layer chip), so arrow keys keep working */
+function renderFilters(){if(!filtersEl||!LY||fDrag)return;const fa=document.activeElement,ds=fa&&filtersEl.contains(fa)?fa.dataset:null;
+  filtersEl.innerHTML=LY.renderBar(LAY,TL,S.layers,S.range);
+  const k=ds&&(ds.tl?'[data-tl="'+CSS.escape(ds.tl)+'"]':ds.layer?'[data-layer="'+CSS.escape(ds.layer)+'"]':null),n=k&&filtersEl.querySelector(k);if(n)n.focus({preventScroll:true});}
 function applyFilters(){cancelEvFocus();
   if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];if(S.site){const st=(w.sites||[]).find(x=>x.id===S.site);if(st&&!siteSeen(st))S.site=null;}buildSiteLabels(w);}
@@ -1892,7 +1904,7 @@ function applyFilters(){cancelEvFocus();
 /* read the two year handles (they never cross) and update the readout without rebuilding the bar mid-drag */
 function readRange(moved){const ins=filtersEl.querySelectorAll("input[data-tl]");if(ins.length<2)return;let a=+ins[0].value,b=+ins[1].value;
   if(a>b){if(moved===ins[0]){a=b;ins[0].value=b;}else{b=a;ins[1].value=a;}}
-  S.range=LY.clampRange(TL,LY.fromAxis(a),LY.fromAxis(b));const r=S.range||[TL.min,TL.max];
+  S.range=LY.rangeFromHandles(TL,S.range,a,b);const r=S.range||[TL.min,TL.max];
   const mn=+ins[0].min,mx=+ins[0].max,pc=v=>(mx===mn?0:(v-mn)/(mx-mn)*100).toFixed(2)+"%";
   const tr=filtersEl.querySelector(".tl-track");if(tr){tr.style.setProperty("--a",pc(a));tr.style.setProperty("--b",pc(b));}
   ins[0].setAttribute("aria-valuetext",LY.fmtYear(r[0],TL.style));ins[1].setAttribute("aria-valuetext",LY.fmtYear(r[1],TL.style));
@@ -1925,6 +1937,63 @@ TRV=K.raw.tree&&window.AtlasTree?window.AtlasTree.createView({
   onShow:(n,sid)=>goPlace(n.world,sid),
   onChange:()=>syncURL()}):null;
 if(TRV)$("#trBtn").addEventListener("click",()=>TRV.show());
+/* synchronoptic timeline (timeline.js / timeline-view.js): same spoiler and layer gates as the atlas */
+TLV=$("#timeline")&&window.AtlasTimelineView?window.AtlasTimelineView.createView({
+  el:$("#timeline"),pack:K.raw,axis:TL,
+  /* the pack's own adapter (checkpoint 22): Standard Works records keep their book/layer/chapter gates below */
+  model:window.AtlasTimeline.adapterFor(K.raw)(K.raw),
+  /* relationship review sidecar (checkpoint 21): only a pack that declares one opts in; promotions still pass ok() */
+  ...("timelineReview" in K.raw?{sidecar:K.raw.timelineReview,sourceVersion:K.raw.timelineSourceVersion}:{}),
+  /* chapter-aware: S.chapter is null unless the current book declares chapters and the reader chose one, so a
+     record gated to a chapter of the current book stays hidden until then (checkpoint 25) */
+  ok:g=>treeNodeSeen(g)&&(!window.AtlasTimeline||window.AtlasTimeline.chapterOk(g,{book:S.book,chapter:S.chapter,cumulative:CUM}))&&(!LY||LY.layerOk(g,S.layers)),
+  fmt:(y,ap)=>LY?LY.fmtYear(y,TL?TL.style:"BCE/CE",ap):String(y),
+  colorFor:id=>{const l=(K.raw.layers||[]).find(x=>x.id===id);return l&&l.c||"#9db8ff";},
+  /* internal codex references are navigation, never citations (timeline review TL-R01) */
+  refName:id=>CX_BY[id]?(CX_BY[id].x.name||CX_BY[id].x.title||id):null,
+  openRef:id=>{if(CX_BY[id])openCodex(null,id);},
+  onChange:()=>tlChanged()}):null;
+/* Back/Forward: opening the timeline pushes a history entry, so Back closes it and Forward reopens it (with its
+   selection); closing it with its own button or Escape steps back over that entry, keeping the two in step. */
+let tlWasOpen=false,tlFromHistory=false;
+function tlChanged(){const o=!!(TLV&&TLV.open);
+  if(o!==tlWasOpen){tlWasOpen=o;
+    if(urlReady&&!tlFromHistory){
+      if(o){try{history.pushState({atlasTimeline:true},"",urlFor());}catch(e){}return;}
+      if(history.state&&history.state.atlasTimeline){try{history.back();}catch(e){}return;}}}
+  syncURL();}
+/* also restores between two open timeline states (different order/collapse/selection) — TL-R05 */
+function tlKey(q){return ["tl","tlc","tlsel"].map(k=>k+"="+(q.get(k)||"")).join("&");}
+/* `hash` is the incoming URL captured before anything else ran (TL25-R1), so an earlier refresh cannot overwrite it */
+function tlFromURL(hash){if(!TLV)return;if(hash==null)hash=location.hash;const q=new URLSearchParams((hash||"").replace(/^#/,""));const tl=q.has("tl");
+  if(TLV.open===tl&&(!tl||tlKey(q)===tlKey(new URLSearchParams(urlFor().split("#")[1]||""))))return;tlFromHistory=true;try{if(tl)TLV.restore(hash);else TLV.close();}finally{tlFromHistory=false;}}
+/* ===================== CHAPTER SELECTOR (timeline checkpoint 25) =====================
+   Shown only in a cumulative atlas, for a selected book that declares `chapters` (AtlasTimeline.chapterCount).
+   "Not set" (null) is the default and the fail-closed state: the current book's chapter-gated timeline records
+   stay hidden. Changing book resets it; a link's `ch` is accepted only for the book that link names. The atlas's
+   own world/event panels do not gate on chapters (no pack declares chapter gates outside the timeline yet). */
+function chapterPosOf(b,raw){const T=window.AtlasTimeline;return CUM&&T&&T.chapterPos?T.chapterPos(BOOKS,b,raw):null;}
+function chapterCountOf(b){const T=window.AtlasTimeline;return CUM&&b&&T&&T.chapterCount?T.chapterCount(BOOKS,b):0;}
+let chapterSelFor=null;
+function renderChapterSel(){
+  const wrap=$("#chapterWrap"),sel=$("#chapterSel");
+  const n=chapterCountOf(S.book);
+  if(!n)S.chapter=null;
+  else if(S.chapter!=null&&chapterPosOf(S.book,S.chapter)!==S.chapter)S.chapter=null;
+  if(!wrap||!sel)return;
+  wrap.hidden=!n;
+  const key=n?S.book+":"+n:null;
+  if(key!==chapterSelFor){chapterSelFor=key;
+    let h='<option value="">Not set</option>';
+    for(let c=1;c<=n;c++)h+='<option value="'+c+'">Through '+c+'</option>';
+    sel.innerHTML=n?h:"";}
+  sel.value=S.chapter==null?"":String(S.chapter);}
+if($("#chapterSel"))$("#chapterSel").addEventListener("change",e=>{S.chapter=chapterPosOf(S.book,e.target.value);refreshAll();});
+/* same-document link or Back/Forward: apply `ch` only when the link names the book on screen; a missing or invalid
+   `ch` there means "not set" */
+function chapterFromURL(st){if(!S.book||st.book!==S.book)return;const c=chapterPosOf(S.book,st.ch);if(c!==S.chapter){S.chapter=c;refreshAll();}}
+if(TLV)$("#tlBtn").addEventListener("click",()=>TLV.show());
+else if($("#tlBtn"))$("#tlBtn").hidden=true;
 else if($("#trBtn"))$("#trBtn").hidden=true;
 /* "Show in the tree" from an open place */
 dos.addEventListener("click",e=>{const t=e.target.closest("[data-tree-node]");if(!t||!TRV)return;e.stopPropagation();TRV.show(t.dataset.treeNode);},true);
@@ -1933,7 +2002,7 @@ dos.addEventListener("click",e=>{const t=e.target.closest("[data-tree-node]");if
 const HOME=Object.assign({at:{sol:[0,0,0]},dist:58,pitch:.62,dur:2000},G.home||{},MOB&&G.homeMob?G.homeMob:{});
 const OVER=Object.assign({at:{xyz:[0,0,40]},dist:1100,pitch:.95,dur:2200},G.overview||{});
 const HOME_AT=resolvePoint(HOME.at)||SOL.clone(),OVER_AT=resolvePoint(OVER.at)||new THREE.Vector3(0,0,40);
-function refreshAll(){renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();
+function refreshAll(){renderChapterSel();renderRealmBar();renderFilters();renderIndex();renderDossier();renderChron();renderCrumbs();renderLegend();applyBookToScene();if(TRV)TRV.refresh();if(TLV)TLV.refresh();
   if(!$("#codex").hidden)renderCodex();afterRefresh();}
 /* the realm a world (or one of its sites) is visible in, when the current realm hides it */
 function needRealm(w,site){const rr=(site&&(site.realm||site.realms))||(w&&(w.realm||w.realms));if(!RL||!rr||typeof rr!=="string"&&!Array.isArray(rr))return null;const a=ARR(rr);return a.includes(S.realm)?null:a[0];}
@@ -1987,7 +2056,10 @@ function openEvent(id,travel){cancelEvFocus();S.ev=id;if(!id){renderDossier();re
   const it=dos.querySelector('[data-ev="'+id+'"]');if(it&&!MOB)it.scrollIntoView({block:"nearest"});}
 
 /* book filter */
-$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;cancelEvFocus();S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
+$("#books").addEventListener("click",e=>{const b=e.target.closest("[data-b]");if(!b)return;cancelEvFocus();
+  /* another book: its chapter position is unknown until chosen again (fail closed) */
+  if(+b.dataset.b!==S.book)S.chapter=null;
+  S.book=+b.dataset.b;if(S.sel&&!seen(WORLD_BY[S.sel])){if(S.view==="world"){S.book=+b.dataset.b;$("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));ascend(()=>{S.sel=null;refreshAll();});return;}S.sel=null;}S.ev=null;
   $("#books").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];const k1=cacheKey(w,gfxFor(w,S.book));if(!PL||PL.key!==k1){descend(S.sel);return;}}
   refreshAll();});
@@ -2158,31 +2230,57 @@ const BOOK_KEY="atlas-book:"+(K.raw.id||K.meta.title||"pack");
 function storeBook(b){try{localStorage.setItem(BOOK_KEY,String(b||0));}catch(e){}}
 function storedBook(){try{const v=parseInt(localStorage.getItem(BOOK_KEY),10);return BOOKS[v]?v:0;}catch(e){return 0;}}
 function urlFor(o){o=Object.assign({book:S.book,sel:S.sel,site:S.site,realm:S.realm,view:S.view},o||{});
-  const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.sel)q.set("world",o.sel);if(o.site&&o.view==="world")q.set("site",o.site);
+  const q=new URLSearchParams();if(o.book)q.set("book",o.book);if(o.book&&o.book===S.book&&S.chapter!=null)q.set("ch",S.chapter);if(o.sel)q.set("world",o.sel);if(o.site&&o.view==="world")q.set("site",o.site);
   if(o.realm&&o.realm!=="physical")q.set("realm",o.realm);if(o.view==="world")q.set("view","surface");
   if(LY){const f=LY.encodeState(LAY,TL,S.layers,S.range);Object.keys(f).forEach(k=>q.set(k,f[k]));}
   if(TRV&&TRV.open)q.set("tree",TRV.sel||"1");
+  if(TLV&&TLV.open){const lp=TLV.laneParams;q.set("tl",lp.tl);if(lp.tlc)q.set("tlc",lp.tlc);if(TLV.sel)q.set("tlsel",TLV.sel);}
   const h=q.toString();return location.pathname+location.search+(h?"#"+h:"");}
 function parseHash(){const q=new URLSearchParams((location.hash||"").replace(/^#/,""));const b=parseInt(q.get("book"),10);
-  return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface",filters:LY?LY.decodeState(LAY,TL,q):null,tree:q.get("tree")};}
+  return {book:BOOKS[b]?b:null,world:WORLD_BY[q.get("world")]?q.get("world"):null,site:q.get("site"),realm:q.get("realm"),surface:q.get("view")==="surface",filters:LY?LY.decodeState(LAY,TL,q):null,tree:q.get("tree"),ch:q.get("ch")};}
 /* replaceState right away (not debounced): a delayed write could land after descend() pushed its entry and
    overwrite it with the galaxy view */
-function syncURL(){if(!urlReady)return;const u=urlFor();if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
+function syncURL(){if(!urlReady||urlHold)return;const u=urlFor();if(u!==location.pathname+location.search+location.hash){try{history.replaceState(history.state,"",u);}catch(e){}}}
 /* nothing is written to the address bar or storage until the start-up state has been restored from them */
 let urlReady=false,lastBook=null,lastAnn="";
+/* while a Back/Forward entry is being applied, intermediate refreshes must not rewrite the incoming URL (TL25-R1) */
+let urlHold=false;
 function afterRefresh(){
   if(urlReady&&S.book!==lastBook){lastBook=S.book;storeBook(S.book);}
   /* short announcement for screen readers instead of re-reading the whole panel */
-  const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title:"");
+  const w=S.sel&&WORLD_BY[S.sel];const ann=(w?w.name+(S.view==="world"?", on the surface":", selected"):"No world selected")+(S.book?". Reading "+BOOKS[S.book].title+(S.chapter!=null?", through chapter "+S.chapter:""):"");
   if(ann!==lastAnn){lastAnn=ann;const a=$("#announce");if(a)a.textContent=ann;}
   syncURL();}
-addEventListener("popstate",()=>{const st=parseHash();
+/* one transaction: capture the incoming URL, apply the chapter first (so the timeline selection is gated by the
+   incoming chapter), then the timeline state, and write one normalized URL at the end (TL25-R1) */
+/* O-1: a Back/Forward (same-document) entry carries its own layer and year-range state. Apply it after the chapter
+   and before the timeline, so the timeline's gate and selection restore against the incoming filters. A missing key
+   means all layers / the full range, which is exactly what urlFor() leaves out. ascend() is not used here because
+   it may call history.back() in the middle of a popstate; a world hidden by the incoming layers is deselected when
+   the popstate handler ascends (or at once in the galaxy view). */
+const sameLayers=(a,b)=>a===b||!!(a&&b&&a.size===b.size&&[...a].every(x=>b.has(x)));
+const sameRange=(a,b)=>a===b||!!(a&&b&&a[0]===b[0]&&a[1]===b[1]);
+function filtersFromURL(st){if(!LY)return;const f=st.filters||{};
+  const a=f.active!==undefined?f.active:null,r=f.range!==undefined?f.range:null;
+  if(sameLayers(a,S.layers)&&sameRange(r,S.range))return;
+  S.layers=a;S.range=r;
+  if(S.sel&&!seen(WORLD_BY[S.sel])){
+    if(S.view!=="world")S.sel=null;
+    else if(!st.surface){const prev=afterAscend;afterAscend=()=>{S.sel=null;if(prev)prev();else refreshAll();};}}
+  if(S.view==="world"&&S.sel){const w=WORLD_BY[S.sel];if(S.site){const x=(w.sites||[]).find(y=>y.id===S.site);if(x&&!siteSeen(x))S.site=null;}buildSiteLabels(w);}
+  if(S.ev&&EV_BY[S.ev]&&!filterOk(EV_BY[S.ev]))S.ev=null;
+  refreshAll();}
+addEventListener("popstate",()=>{const st=parseHash(),incoming=location.hash;
+  urlHold=true;try{chapterFromURL(st);filtersFromURL(st);tlFromURL(incoming);}finally{urlHold=false;}syncURL();
   if(S.view==="world"&&!st.surface){const a=afterAscend;afterAscend=null;doAscend(a);}
   else if(S.view==="galaxy"&&st.surface&&st.world)descend(st.world,true);});
 function restoreFromURL(){const st=parseHash();const b=st.book!=null?st.book:storedBook();
   if(b&&b!==S.book)API.setBook(b);
+  /* the chapter only counts for the book the link itself names (never for a remembered book) */
+  if(st.book!=null&&st.book===S.book){const c=chapterPosOf(S.book,st.ch);if(c!==S.chapter){S.chapter=c;refreshAll();}}
   if(st.realm&&st.realm!==S.realm)setRealm(st.realm,true);
   if(st.filters){const f=st.filters;if(f.active!==undefined)S.layers=f.active;if(f.range!==undefined)S.range=f.range;if(f.active!==undefined||f.range!==undefined)refreshAll();}
+  if(TLV)TLV.restore(location.hash);
   if(TRV&&st.tree){const tn=TRV.T.by[st.tree];TRV.show(tn&&treeNodeSeen(tn)?tn.id:null);}
   /* pack.start (PACK_FORMAT 20.4) opens straight onto a world when the link names none */
   const ps=K.raw.start;const t=st.world?st:(ps&&WORLD_BY[ps.world]?{world:ps.world,surface:ps.view==="surface",site:ps.site}:null);

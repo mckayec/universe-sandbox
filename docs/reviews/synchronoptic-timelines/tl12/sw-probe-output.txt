@@ -1,0 +1,59 @@
+{
+  "records": 1669,
+  "bySource": {
+    "events": 24,
+    "sites": 34,
+    "routes": 9,
+    "codex": 1602
+  },
+  "dated": 30,
+  "datedBySource": {
+    "events": 13,
+    "sites": 12,
+    "routes": 3,
+    "codex": 2
+  },
+  "lanes": [
+    "sw-history (13)",
+    "sw-places (12)",
+    "sw-journeys (3)",
+    "work-ot (525)",
+    "work-nt (286)",
+    "work-bom (302)",
+    "work-dc (448)",
+    "work-other (1)",
+    "work-pgp (79)"
+  ],
+  "edges": {
+    "travel": 5,
+    "same-entity": 62,
+    "context": 193,
+    "describes": 8,
+    "quotation": 37,
+    "within": 8
+  },
+  "omitted": {
+    "travelLegs": 3,
+    "danglingLinks": 9
+  },
+  "coverage": {
+    "records": 1669,
+    "dated": 30,
+    "windows": 0,
+    "approx": 0,
+    "undated": 1639,
+    "narrative": 1634,
+    "edges": 313,
+    "drawable": 0,
+    "sourced": 0,
+    "editorial": 0,
+    "unsourced": 313,
+    "gaps": [
+      "Family genealogy: no accepted parent/child records yet.",
+      "Succession: no accepted succession records yet.",
+      "Migration or travel: 5 legs of dated routes have no source locator on the route; listed, not drawn.",
+      "313 relationships have no source locator on the relationship itself; listed, not drawn as fact."
+    ]
+  },
+  "fails": []
+}

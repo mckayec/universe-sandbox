@@ -1,0 +1,10 @@
+INFO yr-handles/1440 axis to.max 2031, to.value 2031, from.value -799
+PASS yr-handles/1440 A full range, "to" left+right (change ends where it started): S.range = URL yr = none — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","max":"2031"}
+PASS yr-handles/1440 B full range, "to" left then End (last year reachable): S.range = URL yr = none — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","max":"2031"}
+PASS yr-handles/1440 B full range, "from" right then Home: S.range = URL yr = none — {"range":null,"yr":null,"readout":"All years","from":"-799","to":"2031","max":"2031"}
+PASS yr-handles/1440 D yr=600_1500, "from" right+left (moved end on grid, other end exact): S.range = URL yr = 601_1500 — {"range":"601_1500","yr":"601_1500","readout":"601 CE – 1500","from":"601","to":"1501","max":"2031"}
+PASS yr-handles/1440 E yr=600_1500, one step right on "to" (from end untouched): S.range = URL yr = 600_1511 — {"range":"600_1511","yr":"600_1511","readout":"600 CE – 1511","from":"601","to":"1511","max":"2031"}
+PASS yr-handles/1440 F yr=600_1500, "to" End (top reachable): S.range = URL yr = 600_2030 — {"range":"600_2030","yr":"600_2030","readout":"600 CE – 2030","from":"601","to":"2031","max":"2031"}
+PASS yr-handles/1440 focus stays on the year handle after a change
+PASS yr-handles/1440 no page/console errors
+head 8/8 pass, 0 fail

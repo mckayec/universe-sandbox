@@ -1,0 +1,6 @@
+{"name":"control: unchanged chapter restores selection","pass":true,"incoming":"#book=1&ch=3&tl=1&tlsel=record-b","chapter":3,"open":true,"selection":"record-b","hash":"#book=1&ch=3&tl=1&tlsel=record-b","writes":[],"restores":["#book=1&ch=3&tl=1&tlsel=record-b"]}
+{"name":"changed chapter restores selection","pass":true,"incoming":"#book=1&ch=3&tl=1&tlsel=record-b","chapter":3,"open":true,"selection":"record-b","hash":"#book=1&ch=3&tl=1&tlsel=record-b","writes":[],"restores":["#book=1&ch=3&tl=1&tlsel=record-b"]}
+{"name":"control: unchanged chapter opens timeline","pass":true,"incoming":"#book=1&ch=3&tl=1&tlsel=record-b","chapter":3,"open":true,"selection":"record-b","hash":"#book=1&ch=3&tl=1&tlsel=record-b","writes":[],"restores":["#book=1&ch=3&tl=1&tlsel=record-b"]}
+{"name":"changed chapter opens timeline","pass":true,"incoming":"#book=1&ch=3&tl=1&tlsel=record-b","chapter":3,"open":true,"selection":"record-b","hash":"#book=1&ch=3&tl=1&tlsel=record-b","writes":[],"restores":["#book=1&ch=3&tl=1&tlsel=record-b"]}
+{"name":"changed chapter closes timeline","pass":true,"incoming":"#book=1&ch=3","chapter":3,"open":false,"selection":null,"hash":"#book=1&ch=3","writes":[],"restores":[]}
+5/5 behavioural expectations pass (2 controls; 3 changed-chapter cases).

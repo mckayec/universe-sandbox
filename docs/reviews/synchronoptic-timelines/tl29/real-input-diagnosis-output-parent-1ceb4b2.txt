@@ -1,0 +1,26 @@
+parent 1440 frame cadence: {"frames":2,"maxGapMs":6666,"meanMs":3331}
+parent 1440 hit test: {"box":[1335,66,89,32],"top":"#tlBtn","isBtn":true,"visible":true}
+parent 1440 button box over 6 frames: {"samples":6,"distinct":1}
+parent 1440 page.click: failed after 15010 ms
+parent 1440   log: page.click: Timeout 15000ms exceeded.
+parent 1440   log: Call log:
+parent 1440   log:   - waiting for locator('#tlBtn')
+parent 1440   log:     - locator resolved to <button id="tlBtn" class="btn" aria-haspopup="dialog">Timeline</button>
+parent 1440   log:   - attempting click action
+parent 1440   log:     - waiting for element to be visible, enabled and stable
+parent 1440 panel open after page.click: false
+parent 1440 mouse.click: {"dispatchMs":2494,"openMs":7274,"open":true,"focus":{"inTimeline":true,"el":"BUTTON.btn"}}
+parent 1440 Escape: {"closeMs":2356,"closed":true,"focusAfter":"tlBtn"}
+parent 1440 Enter on focused button: {"openMs":50,"open":true}
+parent 1440 page.click (90 s budget): opened in 13462 ms
+parent 1440 page errors: 0
+parent 390 frame cadence: {"frames":7,"maxGapMs":667,"meanMs":462}
+parent 390 hit test: {"box":[16,220,89,32],"top":"#tlBtn","isBtn":true,"visible":true}
+parent 390 button box over 6 frames: {"samples":6,"distinct":1}
+parent 390 page.click: returned in 6883 ms
+parent 390 panel open after page.click: true
+parent 390 mouse.click: {"dispatchMs":627,"openMs":1687,"open":true,"focus":{"inTimeline":true,"el":"BUTTON.btn"}}
+parent 390 Escape: {"closeMs":2813,"closed":true,"focusAfter":"tlBtn"}
+parent 390 Enter on focused button: {"openMs":2174,"open":true}
+parent 390 page.click (90 s budget): opened in 6715 ms
+parent 390 page errors: 0

@@ -1,0 +1,646 @@
+{
+  "results": [
+    {
+      "name": "390 default: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 default: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "390 default: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 46,
+        "lane": 54,
+        "tick": 123.9546485260771,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "390 default: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390 nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 JTS → Conservative/Masorti joins exactly those two rows, at no year",
+      "pass": true,
+      "actual": {
+        "ys": [
+          247,
+          221
+        ],
+        "jts": 247,
+        "cons": 221
+      }
+    },
+    {
+      "name": "390 zoom x2.5: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 zoom x2.5: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "390 zoom x2.5: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 60.417232513427734,
+        "lane": 54,
+        "tick": 91.5408163265306,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "390 zoom x2.5: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390 zoom keeps nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 first lane collapsed: connectors drawn",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "390 first lane collapsed: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "390 first lane collapsed: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 46,
+        "lane": 54,
+        "tick": 123.9546485260771,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "390 first lane collapsed: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390 collapse removes connectors whose rows are hidden",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "390 re-expanded: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 re-expanded: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "390 re-expanded: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 46,
+        "lane": 54,
+        "tick": 123.9546485260771,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "390 re-expanded: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390 re-expanded: nine again",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 list still has all 129 relationships",
+      "pass": true,
+      "actual": 129
+    },
+    {
+      "name": "390 X08 keeps the inspected proof route and page scope",
+      "pass": true,
+      "actual": 4
+    },
+    {
+      "name": "390 no citation/scope runs off screen",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280 default: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1280 default: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1280 default: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 60.182918548583984,
+        "lane": 54,
+        "tick": 90.17006802721089,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1280 default: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1280 JTS → Conservative/Masorti joins exactly those two rows, at no year",
+      "pass": true,
+      "actual": {
+        "ys": [
+          247,
+          221
+        ],
+        "jts": 247,
+        "cons": 221
+      }
+    },
+    {
+      "name": "1280 zoom x2.5: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1280 zoom x2.5: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1280 zoom x2.5: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 70.20559692382812,
+        "lane": 54,
+        "tick": 148.80272108843536,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1280 zoom x2.5: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 zoom keeps nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1280 first lane collapsed: connectors drawn",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "1280 first lane collapsed: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1280 first lane collapsed: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 60.182918548583984,
+        "lane": 54,
+        "tick": 90.17006802721089,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1280 first lane collapsed: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 collapse removes connectors whose rows are hidden",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "1280 re-expanded: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1280 re-expanded: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1280 re-expanded: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 60.182918548583984,
+        "lane": 54,
+        "tick": 90.17006802721089,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1280 re-expanded: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 re-expanded: nine again",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1280 list still has all 129 relationships",
+      "pass": true,
+      "actual": 129
+    },
+    {
+      "name": "1280 X08 keeps the inspected proof route and page scope",
+      "pass": true,
+      "actual": 4
+    },
+    {
+      "name": "1280 no citation/scope runs off screen",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440 default: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 default: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1440 default: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 61.39229202270508,
+        "lane": 54,
+        "tick": 134.20634920634922,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1440 default: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 JTS → Conservative/Masorti joins exactly those two rows, at no year",
+      "pass": true,
+      "actual": {
+        "ys": [
+          247,
+          221
+        ],
+        "jts": 247,
+        "cons": 221
+      }
+    },
+    {
+      "name": "1440 zoom x2.5: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 zoom x2.5: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1440 zoom x2.5: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 73.2290267944336,
+        "lane": 54,
+        "tick": 166.48979591836735,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1440 zoom x2.5: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 zoom keeps nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 first lane collapsed: connectors drawn",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "1440 first lane collapsed: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1440 first lane collapsed: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 61.39229202270508,
+        "lane": 54,
+        "tick": 134.20634920634922,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1440 first lane collapsed: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 collapse removes connectors whose rows are hidden",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "1440 re-expanded: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 re-expanded: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "1440 re-expanded: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 61.39229202270508,
+        "lane": 54,
+        "tick": 134.20634920634922,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "1440 re-expanded: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 re-expanded: nine again",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 list still has all 129 relationships",
+      "pass": true,
+      "actual": 129
+    },
+    {
+      "name": "1440 X08 keeps the inspected proof route and page scope",
+      "pass": true,
+      "actual": 4
+    },
+    {
+      "name": "1440 no citation/scope runs off screen",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "3840 default: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "3840 default: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "3840 default: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 69.34391021728516,
+        "lane": 54,
+        "tick": 143.76190476190476,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "3840 default: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "3840 JTS → Conservative/Masorti joins exactly those two rows, at no year",
+      "pass": true,
+      "actual": {
+        "ys": [
+          247,
+          221
+        ],
+        "jts": 247,
+        "cons": 221
+      }
+    },
+    {
+      "name": "3840 zoom x2.5: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "3840 zoom x2.5: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "3840 zoom x2.5: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 93.10808563232422,
+        "lane": 54,
+        "tick": 87.2418745275888,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "3840 zoom x2.5: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 zoom keeps nine connectors",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "3840 first lane collapsed: connectors drawn",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "3840 first lane collapsed: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "3840 first lane collapsed: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 69.34391021728516,
+        "lane": 54,
+        "tick": 143.76190476190476,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "3840 first lane collapsed: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 collapse removes connectors whose rows are hidden",
+      "pass": true,
+      "actual": 6
+    },
+    {
+      "name": "3840 re-expanded: connectors drawn",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "3840 re-expanded: every connector stays in the undated gutter",
+      "pass": true,
+      "actual": {
+        "gutter": 42,
+        "maxX": 34
+      }
+    },
+    {
+      "name": "3840 re-expanded: marks, lane titles and ticks start right of the gutter",
+      "pass": true,
+      "actual": {
+        "mark": 69.34391021728516,
+        "lane": 54,
+        "tick": 143.76190476190476,
+        "gutter": 42
+      }
+    },
+    {
+      "name": "3840 re-expanded: titles say the relationship is not dated",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 re-expanded: nine again",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "3840 list still has all 129 relationships",
+      "pass": true,
+      "actual": 129
+    },
+    {
+      "name": "3840 X08 keeps the inspected proof route and page scope",
+      "pass": true,
+      "actual": 4
+    },
+    {
+      "name": "3840 no citation/scope runs off screen",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "zero console/page/request errors",
+      "pass": true,
+      "actual": []
+    }
+  ],
+  "errors": []
+}

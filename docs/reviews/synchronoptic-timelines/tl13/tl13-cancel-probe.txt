@@ -1,0 +1,98 @@
+PASS 390 escape: drag in progress before the cancel null
+PASS 390 escape: drag marks cleared at once 0
+PASS 390 escape: focus returned to the opener "tlBtn"
+PASS 390 escape: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 escape: URL lane order unchanged "1"
+PASS 390 escape: no drag marks after release null
+PASS 390 escape: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 390 escape: ↑ button still moves the lane null
+PASS 390 close: drag in progress before the cancel null
+PASS 390 close: drag marks cleared at once 0
+PASS 390 close: focus returned to the opener "tlBtn"
+PASS 390 close: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 close: URL lane order unchanged "1"
+PASS 390 close: no drag marks after release null
+PASS 390 close: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 390 close: ↑ button still moves the lane null
+PASS 390 pointercancel: drag in progress before the cancel null
+PASS 390 pointercancel: drag marks cleared at once 0
+PASS 390 pointercancel: focus stays inside the timeline null
+PASS 390 pointercancel: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 pointercancel: URL lane order unchanged "1"
+PASS 390 pointercancel: no drag marks after release null
+PASS 390 pointercancel: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 390 pointercancel: ↑ button still moves the lane null
+PASS 390 captureloss: drag in progress before the cancel null
+PASS 390 captureloss: drag marks cleared at once 0
+PASS 390 captureloss: focus stays inside the timeline null
+PASS 390 captureloss: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 captureloss: URL lane order unchanged "1"
+PASS 390 captureloss: no drag marks after release null
+PASS 390 captureloss: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 390 captureloss: ↑ button still moves the lane null
+PASS 390 resize: drag in progress before the cancel null
+PASS 390 resize: drag marks cleared at once 0
+PASS 390 resize: focus stays inside the timeline null
+PASS 390 resize: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 resize: URL lane order unchanged "1"
+PASS 390 resize: no drag marks after release null
+PASS 390 resize: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 390 resize: ↑ button still moves the lane null
+PASS 390 rerender: drag in progress before the cancel null
+PASS 390 rerender: drag marks cleared at once 0
+PASS 390 rerender: focus stays inside the timeline null
+PASS 390 rerender: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 390 rerender: URL lane order unchanged "1"
+PASS 390 rerender: no drag marks after release null
+PASS 390 rerender: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 390 rerender: ↑ button still moves the lane null
+PASS 1440 escape: drag in progress before the cancel null
+PASS 1440 escape: drag marks cleared at once 0
+PASS 1440 escape: focus returned to the opener "tlBtn"
+PASS 1440 escape: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 1440 escape: URL lane order unchanged "1"
+PASS 1440 escape: no drag marks after release null
+PASS 1440 escape: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 1440 escape: ↑ button still moves the lane null
+PASS 1440 close: drag in progress before the cancel null
+PASS 1440 close: drag marks cleared at once 0
+PASS 1440 close: focus returned to the opener "tlBtn"
+PASS 1440 close: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 1440 close: URL lane order unchanged "1"
+PASS 1440 close: no drag marks after release null
+PASS 1440 close: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 1440 close: ↑ button still moves the lane null
+PASS 1440 pointercancel: drag in progress before the cancel null
+PASS 1440 pointercancel: drag marks cleared at once 0
+PASS 1440 pointercancel: focus stays inside the timeline null
+PASS 1440 pointercancel: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 1440 pointercancel: URL lane order unchanged "1"
+PASS 1440 pointercancel: no drag marks after release null
+PASS 1440 pointercancel: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 1440 pointercancel: ↑ button still moves the lane null
+PASS 1440 captureloss: drag in progress before the cancel null
+PASS 1440 captureloss: drag marks cleared at once 0
+PASS 1440 captureloss: focus stays inside the timeline null
+PASS 1440 captureloss: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 1440 captureloss: URL lane order unchanged "1"
+PASS 1440 captureloss: no drag marks after release null
+PASS 1440 captureloss: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 1440 captureloss: ↑ button still moves the lane null
+PASS 1440 resize: drag in progress before the cancel null
+PASS 1440 resize: drag marks cleared at once 0
+PASS 1440 resize: focus stays inside the timeline null
+PASS 1440 resize: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 1440 resize: URL lane order unchanged "1"
+PASS 1440 resize: no drag marks after release null
+PASS 1440 resize: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 1440 resize: ↑ button still moves the lane null
+PASS 1440 rerender: drag in progress before the cancel null
+PASS 1440 rerender: drag marks cleared at once 0
+PASS 1440 rerender: focus stays inside the timeline null
+PASS 1440 rerender: pre-drag order kept ["lane-jud","lane-chr","lane-isl"]
+PASS 1440 rerender: URL lane order unchanged "1"
+PASS 1440 rerender: no drag marks after release null
+PASS 1440 rerender: a normal drop still commits ["lane-chr","lane-isl","lane-jud"]
+PASS 1440 rerender: ↑ button still moves the lane null
+PASS no page errors []
+97/97 passed

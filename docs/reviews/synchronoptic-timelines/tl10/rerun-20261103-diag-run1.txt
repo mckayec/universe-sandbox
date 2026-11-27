@@ -1,0 +1,6 @@
+# 2026-11-03T12:54:03Z diagnostic run 1: tl10/smoke-save-diag.mjs (copied to tests/ so relative paths resolve), tree 178fd7c built; CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome
+DIAG preSave 29 savedCount(DOM after click) 29 saveToast "Saved 29 objects and 1 structures on this device" stored bodies 29 elapsed 2.666666666666662
+DIAG count series after save (100ms) 22,22,22,22,22,22,22,22,22,22,22,22
+LOAD OK 29
+Browser smoke test passed: desktop construction, persistence, controls, and mobile layout.
+exit 0, elapsed 141 s

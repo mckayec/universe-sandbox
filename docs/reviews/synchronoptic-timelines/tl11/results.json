@@ -1,0 +1,297 @@
+{
+  "results": [
+    {
+      "name": "390 every lane chip has a grip",
+      "pass": true,
+      "actual": 8
+    },
+    {
+      "name": "390 grip is at least 32x44 px",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 113,
+        "width": 34,
+        "height": 46
+      }
+    },
+    {
+      "name": "390 dragged first lane lands in slot 3",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-isl",
+        "lane-jud",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "390 URL carries the new order",
+      "pass": true,
+      "actual": "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+    },
+    {
+      "name": "390 focus on the moved lane toggle",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390 no drag marks left behind",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390 ↑ button still moves the lane",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-jud",
+        "lane-isl",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "390 drop on own place is a no-op",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390 reset restores default order",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 every lane chip has a grip",
+      "pass": true,
+      "actual": 8
+    },
+    {
+      "name": "1280 grip is at least 32x44 px",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 158,
+        "width": 34,
+        "height": 46
+      }
+    },
+    {
+      "name": "1280 drop target is marked while dragging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 dragged first lane lands in slot 3",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-isl",
+        "lane-jud",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "1280 URL carries the new order",
+      "pass": true,
+      "actual": "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+    },
+    {
+      "name": "1280 focus on the moved lane toggle",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 no drag marks left behind",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 ↑ button still moves the lane",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-jud",
+        "lane-isl",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "1280 drop on own place is a no-op",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280 reset restores default order",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 every lane chip has a grip",
+      "pass": true,
+      "actual": 8
+    },
+    {
+      "name": "1440 grip is at least 32x44 px",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 124,
+        "width": 34,
+        "height": 46
+      }
+    },
+    {
+      "name": "1440 drop target is marked while dragging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 dragged first lane lands in slot 3",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-isl",
+        "lane-jud",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "1440 URL carries the new order",
+      "pass": true,
+      "actual": "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+    },
+    {
+      "name": "1440 focus on the moved lane toggle",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 no drag marks left behind",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 ↑ button still moves the lane",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-jud",
+        "lane-isl",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "1440 drop on own place is a no-op",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440 reset restores default order",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 every lane chip has a grip",
+      "pass": true,
+      "actual": 8
+    },
+    {
+      "name": "3840 grip is at least 32x44 px",
+      "pass": true,
+      "actual": {
+        "x": 30,
+        "y": 234.59375,
+        "width": 50,
+        "height": 68
+      }
+    },
+    {
+      "name": "3840 drop target is marked while dragging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 dragged first lane lands in slot 3",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-isl",
+        "lane-jud",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "3840 URL carries the new order",
+      "pass": true,
+      "actual": "#world=earth&tl=lane-chr%2Clane-isl%2Clane-jud%2Clane-enc%2Cchron-jud%2Cchron-chr%2Cchron-isl%2Cchron-enc"
+    },
+    {
+      "name": "3840 focus on the moved lane toggle",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 no drag marks left behind",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 ↑ button still moves the lane",
+      "pass": true,
+      "actual": [
+        "lane-chr",
+        "lane-jud",
+        "lane-isl",
+        "lane-enc",
+        "chron-jud",
+        "chron-chr",
+        "chron-isl",
+        "chron-enc"
+      ]
+    },
+    {
+      "name": "3840 drop on own place is a no-op",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "3840 reset restores default order",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "no console/page errors",
+      "pass": true,
+      "actual": []
+    }
+  ],
+  "errors": []
+}

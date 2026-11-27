@@ -1,0 +1,572 @@
+{
+  "pass": 75,
+  "total": 75,
+  "results": [
+    {
+      "name": "1440 expanded: 9 connectors, none folded, no rings",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "1440 expanded: every end on its own row",
+      "pass": true
+    },
+    {
+      "name": "1440 expanded: no fold note",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-jud: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Judaism",
+        "summaryY": 91,
+        "folded": 1,
+        "inside": 2,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-jud: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 2,
+        "noteFolded": "1",
+        "noteInside": "2"
+      }
+    },
+    {
+      "name": "1440 control lane-jud: folded end and ring moved together 26px off the summary bar are rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities from end 117 off summary 91",
+        "l:8:jud-second-temple>ch-early-communities from ring 117 off summary 91"
+      ]
+    },
+    {
+      "name": "1440 control lane-jud: re-render restores an accepted state",
+      "pass": true
+    },
+    {
+      "name": "1440 control lane-jud: ring alone moved 26px is rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities from ring 117 off summary 91"
+      ]
+    },
+    {
+      "name": "1440 expand lane-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-chr: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Christianity",
+        "summaryY": 415,
+        "folded": 1,
+        "inside": 6,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-chr: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 6,
+        "noteFolded": "1",
+        "noteInside": "6"
+      }
+    },
+    {
+      "name": "1440 control lane-chr: folded end and ring moved together 26px off the summary bar are rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities to end 441 off summary 415",
+        "l:8:jud-second-temple>ch-early-communities to ring 441 off summary 415"
+      ]
+    },
+    {
+      "name": "1440 control lane-chr: re-render restores an accepted state",
+      "pass": true
+    },
+    {
+      "name": "1440 control lane-chr: ring alone moved 26px is rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities to ring 441 off summary 415"
+      ]
+    },
+    {
+      "name": "1440 expand lane-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-isl: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Islam",
+        "summaryY": 921,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-isl: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "1440 expand lane-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse lane-enc: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Encounters",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse lane-enc: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "1440 expand lane-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-jud: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Judaism",
+        "summaryY": 1089,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-jud: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "1440 expand chron-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-chr: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Christianity",
+        "summaryY": 1491,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-chr: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "1440 expand chron-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-isl: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Islam",
+        "summaryY": 2101,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-isl: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "1440 expand chron-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 collapse chron-enc: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Encounters",
+        "summaryY": 2529,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "1440 collapse chron-enc: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "1440 expand chron-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 some connector was folded across all lane collapses",
+      "pass": true,
+      "actual": {
+        "foldedTotal": 2,
+        "insideTotal": 8
+      }
+    },
+    {
+      "name": "1440 layer downgrade (isl off, lane collapsed): no drawn connector outside the active layers",
+      "pass": true,
+      "actual": {
+        "active": [
+          "jud",
+          "chr",
+          "enc"
+        ],
+        "before": 7,
+        "after": 7,
+        "outside": []
+      }
+    },
+    {
+      "name": "1440 layer downgrade: rings only on drawn connectors",
+      "pass": true
+    },
+    {
+      "name": "1440 layer restored: connector set equals pre-downgrade",
+      "pass": true
+    },
+    {
+      "name": "390 expanded: 9 connectors, none folded, no rings",
+      "pass": true,
+      "actual": 9
+    },
+    {
+      "name": "390 expanded: every end on its own row",
+      "pass": true
+    },
+    {
+      "name": "390 expanded: no fold note",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-jud: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Judaism",
+        "summaryY": 91,
+        "folded": 1,
+        "inside": 2,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-jud: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 2,
+        "noteFolded": "1",
+        "noteInside": "2"
+      }
+    },
+    {
+      "name": "390 control lane-jud: folded end and ring moved together 26px off the summary bar are rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities from end 117 off summary 91",
+        "l:8:jud-second-temple>ch-early-communities from ring 117 off summary 91"
+      ]
+    },
+    {
+      "name": "390 control lane-jud: re-render restores an accepted state",
+      "pass": true
+    },
+    {
+      "name": "390 control lane-jud: ring alone moved 26px is rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities from ring 117 off summary 91"
+      ]
+    },
+    {
+      "name": "390 expand lane-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-chr: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Christianity",
+        "summaryY": 415,
+        "folded": 1,
+        "inside": 6,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-chr: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 1,
+        "inside": 6,
+        "noteFolded": "1",
+        "noteInside": "6"
+      }
+    },
+    {
+      "name": "390 control lane-chr: folded end and ring moved together 26px off the summary bar are rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities to end 441 off summary 415",
+        "l:8:jud-second-temple>ch-early-communities to ring 441 off summary 415"
+      ]
+    },
+    {
+      "name": "390 control lane-chr: re-render restores an accepted state",
+      "pass": true
+    },
+    {
+      "name": "390 control lane-chr: ring alone moved 26px is rejected",
+      "pass": true,
+      "actual": [
+        "l:8:jud-second-temple>ch-early-communities to ring 441 off summary 415"
+      ]
+    },
+    {
+      "name": "390 expand lane-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-isl: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Islam",
+        "summaryY": 921,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-isl: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "390 expand lane-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse lane-enc: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Encounters",
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse lane-enc: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "390 expand lane-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-jud: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Judaism",
+        "summaryY": 1089,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-jud: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "390 expand chron-jud: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-chr: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Christianity",
+        "summaryY": 1491,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-chr: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "390 expand chron-chr: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-isl: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Islam",
+        "summaryY": 2101,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-isl: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "390 expand chron-isl: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 collapse chron-enc: folded ends and rings on that lane's rendered summary-bar centre, other ends unchanged",
+      "pass": true,
+      "actual": {
+        "laneName": "▾ Chronicle · Encounters",
+        "summaryY": 2529,
+        "folded": 0,
+        "inside": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "390 collapse chron-enc: Overview note numbers equal the folded/inside counts",
+      "pass": true,
+      "actual": {
+        "folded": 0,
+        "inside": 0,
+        "noteFolded": null,
+        "noteInside": null
+      }
+    },
+    {
+      "name": "390 expand chron-enc: back to the 9 row-exact connectors",
+      "pass": true
+    },
+    {
+      "name": "390 some connector was folded across all lane collapses",
+      "pass": true,
+      "actual": {
+        "foldedTotal": 2,
+        "insideTotal": 8
+      }
+    },
+    {
+      "name": "390 layer downgrade (isl off, lane collapsed): no drawn connector outside the active layers",
+      "pass": true,
+      "actual": {
+        "active": [
+          "jud",
+          "chr",
+          "enc"
+        ],
+        "before": 7,
+        "after": 7,
+        "outside": []
+      }
+    },
+    {
+      "name": "390 layer downgrade: rings only on drawn connectors",
+      "pass": true
+    },
+    {
+      "name": "390 layer restored: connector set equals pre-downgrade",
+      "pass": true
+    },
+    {
+      "name": "no page errors",
+      "pass": true,
+      "actual": []
+    }
+  ],
+  "errors": []
+}

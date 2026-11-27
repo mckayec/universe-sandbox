@@ -1,0 +1,558 @@
+{
+  "kind": "atlas-timeline-review-sidecar",
+  "reviewVersion": 1,
+  "pack": "lds-standard-works",
+  "state": "proposed",
+  "note": "Proposed only. Bindings and support fingerprints are current-content consistency checks, not authorization. Acceptance needs explicit per-row review; applying this file promotes nothing because no row is accepted.",
+  "manifest": {
+    "id": "lds-standard-works/timeline-pilot",
+    "revision": 1,
+    "status": "proposed — documented provenance for review; not an approval and not a source-reviewed label for the pack",
+    "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+    "pack": {
+      "path": "public/atlas/packs/lds-standard-works.js",
+      "boundCommit": "3e3701ffcc4131200f0993e52f8f14a509016ced",
+      "boundBlob": "3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "pilotReviewedCommit": "4ea873875f73746a754bd537deaaebb1a58d586b",
+      "pilotReviewedBlob": "6918d1bb10697cc026da6a007247d01519f533ca"
+    },
+    "ledger": {
+      "path": "docs/reviews/synchronoptic-timelines/tl15/see-grounding.csv",
+      "commit": "85ccb8eac2df8e07284e60a62933e449a39f28fc",
+      "blob": "b4b9f10630eee5ae1ec439e8caaece6819ba299d"
+    },
+    "sources": [
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/20?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/17?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/30?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/12?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/bofm/eight?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/13?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/14?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/11?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/30?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/4?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/52?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/5?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/11?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/48?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/53?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      },
+      {
+        "url": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/7?lang=eng",
+        "lang": "eng",
+        "publisher": "The Church of Jesus Christ of Latter-day Saints, official online scriptures",
+        "edition": "unknown — the page exposes no immutable edition identifier",
+        "inspected": "2026-11-04 (ChatGPT pilot reading, HANDOFF_PLAN.md)",
+        "snapshot": "live page; no local snapshot or content hash retained",
+        "contentHash": null
+      }
+    ],
+    "limits": [
+      "Current official English online pages as inspected on 2026-11-04; not an original-manuscript, first-edition or historical collation.",
+      "Headings are editorial apparatus; front matter is a document, not chapter 0.",
+      "A page refresh or any substantive source/pack change needs explicit revalidation; bindings go stale by design.",
+      "Twelve rows only: the pack is not source-reviewed as a whole."
+    ]
+  },
+  "rows": {
+    "x:c:DCM-dcp-shadrach-roundy>c:DCM-dre124k-bishopric-priests": {
+      "v": 1,
+      "pilotRow": 1,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:DCM-dcp-shadrach-roundy",
+      "to": "c:DCM-dre124k-bishopric-priests",
+      "type": "context",
+      "label": "bishopric, if he will receive it",
+      "mode": "shared",
+      "claim": "D&C 124:141 names Shadrach Roundy with the bishopric group, conditionally (\"if he will receive it\").",
+      "scope": "Conditional assignment only; no acceptance, installation, tenure or succession; verse 141 only, not the 141–142 span.",
+      "basis": "Shared verse 141 names Roundy with the bishopric and qualifies his participation.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "src": [
+        {
+          "t": "D&C 124:141",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng"
+        }
+      ],
+      "endpointsUnchangedSincePinned": true,
+      "binding": "a07338d7d6f9ed70"
+    },
+    "x:c:DCM-dcp-simonds-ryder>c:DCM-dcp-heman-basset": {
+      "v": 1,
+      "pilotRow": 2,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:DCM-dcp-simonds-ryder",
+      "to": "c:DCM-dcp-heman-basset",
+      "type": "context",
+      "label": "receives the charge of",
+      "mode": "shared",
+      "claim": "D&C 52:37 takes what had been bestowed on Heman Basset and places it on Simonds Ryder.",
+      "scope": "The expressly transferred charge only; no named office, general succession, kinship or identity.",
+      "basis": "Shared verse 37 supports the existing Ryder → Basset direction.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "src": [
+        {
+          "t": "D&C 52:37",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/52?lang=eng"
+        }
+      ],
+      "endpointsUnchangedSincePinned": true,
+      "binding": "48e9bbcb9eb2df7e"
+    },
+    "x:c:DCM-dcp-peter-whitmer-jr>c:DCM-dre030-whitmer-cowdery": {
+      "v": 1,
+      "pilotRow": 3,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:DCM-dcp-peter-whitmer-jr",
+      "to": "c:DCM-dre030-whitmer-cowdery",
+      "type": "context",
+      "label": "",
+      "mode": "shared",
+      "claim": "D&C 30:5–7 assigns Peter Whitmer Jr. to accompany Oliver Cowdery.",
+      "scope": "Companion assignment only; \"brother\" is not biological kinship; no route completion or missing stop inferred.",
+      "basis": "Shared verses 5–7 carry the assignment; full names come from the section heading, held as separate support.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": true,
+      "support": [
+        {
+          "id": "s3-dc30-heading",
+          "role": "support",
+          "state": "proposed",
+          "purpose": "identity: resolves the full names Peter Whitmer Jr. and Oliver Cowdery",
+          "claim": "The D&C 30 section heading names Peter Whitmer Jr. as a recipient of the revelation.",
+          "src": [
+            {
+              "t": "D&C 30 heading",
+              "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/30?lang=eng"
+            }
+          ],
+          "fingerprint": "116123897f094bd6"
+        }
+      ],
+      "src": [
+        {
+          "t": "D&C 30:5–7",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/30?lang=eng"
+        }
+      ],
+      "endpointsUnchangedSincePinned": true,
+      "binding": "453c0a6e78a8ae03"
+    },
+    "x:c:DCM-dcp-william-law>c:DCM-dre124e-presidency-patriarch": {
+      "v": 1,
+      "pilotRow": 4,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:DCM-dcp-william-law",
+      "to": "c:DCM-dre124e-presidency-patriarch",
+      "type": "context",
+      "label": "counselor in the Presidency",
+      "mode": "shared",
+      "claim": "D&C 124:126 names William Law as a counselor in the Presidency.",
+      "scope": "Verse 126 only, not the broader 91–97 overlap; no succession or identity with Hyrum Smith.",
+      "basis": "Shared verse 126 expressly names Law as counselor.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "src": [
+        {
+          "t": "D&C 124:126",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng"
+        }
+      ],
+      "endpointsUnchangedSincePinned": true,
+      "binding": "f4821b1d1fc9f1c5"
+    },
+    "x:c:BMV-186-sermon-compare-matthew-5>c:NTC-sermon-mountain": {
+      "v": 1,
+      "pilotRow": 5,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:BMV-186-sermon-compare-matthew-5",
+      "to": "c:NTC-sermon-mountain",
+      "type": "context",
+      "label": "compare Matthew 5",
+      "mode": "independent",
+      "claim": "3 Nephi 12:1–12 and Matthew 5:1–12 present the beatitudes in the same order; the discourses are compared.",
+      "scope": "Comparison/context only: not identical quotation, the same event or place; wording, audience and setting differ; direction is navigational, not causal.",
+      "basis": "Independently paired bodies of both texts; the shared Matthew citation alone does not prove a parallel.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "evidence": {
+        "from": [
+          {
+            "t": "3 Nephi 12:1–12",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/12?lang=eng"
+          }
+        ],
+        "to": [
+          {
+            "t": "Matthew 5:1–12",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/nt/matt/5?lang=eng"
+          }
+        ]
+      },
+      "endpointsUnchangedSincePinned": true,
+      "binding": "45cc9b51acc9e254"
+    },
+    "x:c:BMV-052-isaiah-11-righteous-judge>c:OTM-c04-messianic-reception": {
+      "v": 1,
+      "pilotRow": 6,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:BMV-052-isaiah-11-righteous-judge",
+      "to": "c:OTM-c04-messianic-reception",
+      "type": "context",
+      "label": "compare Isaiah 11, in Nephi’s prophecy",
+      "mode": "independent",
+      "claim": "2 Nephi 30:9, 11–15 parallels Isaiah 11:4–9 (30:9 ~ 11:4; 30:11–15 ~ 11:5–9) within Nephi’s prophecy.",
+      "scope": "Only the Isaiah 11 component of the composite target; verse 10 excluded; no harmonized wording; not 2 Nephi 21.",
+      "basis": "Independently paired passages; Nephi’s framing is 30:1–3, 8, 10, 16–18.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "evidence": {
+        "from": [
+          {
+            "t": "2 Nephi 30:9, 11–15",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/30?lang=eng"
+          }
+        ],
+        "to": [
+          {
+            "t": "Isaiah 11:4–9",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/11?lang=eng"
+          }
+        ]
+      },
+      "endpointsUnchangedSincePinned": true,
+      "binding": "9c6ae8cc57fc797b"
+    },
+    "x:c:DCM-dr09-smith-family>c:DCM-dcp-joseph-smith-sr": {
+      "v": 1,
+      "pilotRow": 7,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:DCM-dr09-smith-family",
+      "to": "c:DCM-dcp-joseph-smith-sr",
+      "type": "context",
+      "label": "",
+      "mode": "shared",
+      "claim": "The D&C 4 historical heading names the recipient as the Prophet’s father, Joseph Smith Sr.",
+      "scope": "This context/identity binding only, not every family-card assertion; Sr. stays distinct from Jr. and Joseph F. Smith; heading is its own component.",
+      "basis": "Shared editorial section heading of D&C 4.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "src": [
+        {
+          "t": "D&C 4 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/4?lang=eng"
+        }
+      ],
+      "endpointsUnchangedSincePinned": true,
+      "binding": "576c358f7e2ce917"
+    },
+    "x:c:fm-person-christian-whitmer>c:FM05": {
+      "v": 1,
+      "pilotRow": 8,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:fm-person-christian-whitmer",
+      "to": "c:FM05",
+      "type": "context",
+      "label": "",
+      "mode": "shared",
+      "claim": "Christian Whitmer is a named signatory of the Testimony of Eight Witnesses.",
+      "scope": "Printed testimonial attribution only; not verification of the narrated event, testing, date, venue or kinship; document bofm/eight, not chapter 0.",
+      "basis": "Shared document: declaration paragraphs and the signatory list.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "src": [
+        {
+          "t": "Testimony of Eight Witnesses",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/bofm/eight?lang=eng"
+        }
+      ],
+      "endpointsUnchangedSincePinned": true,
+      "binding": "249c01b47d612174"
+    },
+    "x:c:BMV-080-suffering-servant>c:OTM-c04-messianic-reception": {
+      "v": 1,
+      "pilotRow": 9,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:BMV-080-suffering-servant",
+      "to": "c:OTM-c04-messianic-reception",
+      "type": "quotation",
+      "label": "Isaiah 53, quoted by Abinadi",
+      "mode": "independent",
+      "claim": "Mosiah 14:1–12 represents Isaiah 53:1–12 as quoted by Abinadi (Mosiah 14:1 attributes it to Isaiah).",
+      "scope": "Represented literary quotation with variants, not byte-identical; Isaiah 53 only, not the target’s Isaiah 9/11; no witnessed events or fulfilment.",
+      "basis": "Independently paired passages; Abinadi continuity comes from Mosiah 13, held as separate support.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": true,
+      "support": [
+        {
+          "id": "s9-mosiah13-abinadi",
+          "role": "support",
+          "state": "proposed",
+          "purpose": "attribution: Abinadi/discourse continuity into Mosiah 14",
+          "claim": "Mosiah 13:1–6, 33–35 places the quotation inside Abinadi’s discourse.",
+          "src": [
+            {
+              "t": "Mosiah 13:1–6, 33–35",
+              "u": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/13?lang=eng"
+            }
+          ],
+          "fingerprint": "607944d3e8c52db6"
+        }
+      ],
+      "evidence": {
+        "from": [
+          {
+            "t": "Mosiah 14:1–12",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/14?lang=eng"
+          }
+        ],
+        "to": [
+          {
+            "t": "Isaiah 53:1–12",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/53?lang=eng"
+          }
+        ]
+      },
+      "endpointsUnchangedSincePinned": true,
+      "binding": "3ff07ad09f103350"
+    },
+    "x:c:BMV-020-babylon-quotation>c:OTM-babylon": {
+      "v": 1,
+      "pilotRow": 10,
+      "state": "deferred",
+      "recommendation": "defer",
+      "from": "c:BMV-020-babylon-quotation",
+      "to": "c:OTM-babylon",
+      "type": "quotation",
+      "label": "quoted from Isaiah",
+      "mode": "independent",
+      "claim": "1 Nephi 20:1–22 (esp. 20:20) parallels Isaiah 48:1–22 (esp. 48:20); 1 Nephi 19:23–24 frames the quotation.",
+      "scope": "DEFERRED UNCHANGED: the destination cites Isaiah 13:1, Jeremiah 51:59–64 and Ezekiel 17:12 (Babylon context), not the quoted passage; meaning of the edge must be distinguished first. No Lehite visit.",
+      "basis": "Recorded for completeness; no acceptance is recommended.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "evidence": {
+        "from": [
+          {
+            "t": "1 Nephi 20:1–22",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/20?lang=eng"
+          }
+        ],
+        "to": [
+          {
+            "t": "Isaiah 48:1–22",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/48?lang=eng"
+          }
+        ]
+      },
+      "endpointsUnchangedSincePinned": true,
+      "binding": "c83867b0b4e6c1c7"
+    },
+    "x:c:BMV-039-judah-damascus-samaria>c:OTM-r02-ahaz-crisis": {
+      "v": 1,
+      "pilotRow": 11,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:BMV-039-judah-damascus-samaria",
+      "to": "c:OTM-r02-ahaz-crisis",
+      "type": "same-entity",
+      "label": "same crisis, quoted",
+      "mode": "independent",
+      "claim": "2 Nephi 17:1–9 and Isaiah 7:1–9 name the same participants, attack and centres: the same crisis referent.",
+      "scope": "Same crisis referent only, not record equality; not the Immanuel sign (verses 10–14); no dates transferred; no Nephite geography.",
+      "basis": "Independently paired passages, not shared containment.",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "evidence": {
+        "from": [
+          {
+            "t": "2 Nephi 17:1–9",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/17?lang=eng"
+          }
+        ],
+        "to": [
+          {
+            "t": "Isaiah 7:1–9",
+            "u": "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/7?lang=eng"
+          }
+        ]
+      },
+      "endpointsUnchangedSincePinned": true,
+      "binding": "f40ac717de06507f"
+    },
+    "x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith": {
+      "v": 1,
+      "pilotRow": 12,
+      "state": "proposed",
+      "recommendation": "accept",
+      "from": "c:DCM-dr09-smith-family",
+      "to": "c:DCM-dcp-hyrum-smith",
+      "type": "context",
+      "label": "",
+      "mode": "shared",
+      "claim": "The D&C 11 historical heading identifies Hyrum Smith as the Prophet’s brother.",
+      "scope": "This identity binding only; verse 1 alone does not identify Hyrum; no additional genealogy.",
+      "basis": "Both cards cite the D&C 11 heading (shared-heading component).",
+      "sourceVersion": "lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c",
+      "supportRequired": false,
+      "support": [],
+      "src": [
+        {
+          "t": "D&C 11 heading",
+          "u": "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/11?lang=eng"
+        }
+      ],
+      "endpointsUnchangedSincePinned": true,
+      "binding": "fa1d7e1ca1408793"
+    }
+  }
+}

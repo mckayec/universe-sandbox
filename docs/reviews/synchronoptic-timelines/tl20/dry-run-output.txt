@@ -1,0 +1,29 @@
+pinned pack blob 6918d1bb10697cc026da6a007247d01519f533ca  current pack blob 3d279a757303e6ae7e80c358a6f6e041269eb82c
+sourceVersion lds-standard-works/timeline-pilot@r1;pack-blob:3d279a757303e6ae7e80c358a6f6e041269eb82c
+row  1 proposed shared      mech=eligible endpoints-unchanged=true support=0 x:c:DCM-dcp-shadrach-roundy>c:DCM-dre124k-bishopric-priests
+row  2 proposed shared      mech=eligible endpoints-unchanged=true support=0 x:c:DCM-dcp-simonds-ryder>c:DCM-dcp-heman-basset
+row  3 proposed shared      mech=eligible endpoints-unchanged=true support=1 x:c:DCM-dcp-peter-whitmer-jr>c:DCM-dre030-whitmer-cowdery
+row  4 proposed shared      mech=eligible endpoints-unchanged=true support=0 x:c:DCM-dcp-william-law>c:DCM-dre124e-presidency-patriarch
+row  5 proposed independent mech=eligible endpoints-unchanged=true support=0 x:c:BMV-186-sermon-compare-matthew-5>c:NTC-sermon-mountain
+row  6 proposed independent mech=eligible endpoints-unchanged=true support=0 x:c:BMV-052-isaiah-11-righteous-judge>c:OTM-c04-messianic-reception
+row  7 proposed shared      mech=eligible endpoints-unchanged=true support=0 x:c:DCM-dr09-smith-family>c:DCM-dcp-joseph-smith-sr
+row  8 proposed shared      mech=eligible endpoints-unchanged=true support=0 x:c:fm-person-christian-whitmer>c:FM05
+row  9 proposed independent mech=eligible endpoints-unchanged=true support=1 x:c:BMV-080-suffering-servant>c:OTM-c04-messianic-reception
+row 10 deferred independent mech=NOT (to evidence is not cited by that card) endpoints-unchanged=true support=0 x:c:BMV-020-babylon-quotation>c:OTM-babylon
+row 11 proposed independent mech=eligible endpoints-unchanged=true support=0 x:c:BMV-039-judah-damascus-samaria>c:OTM-r02-ahaz-crisis
+row 12 proposed shared      mech=eligible endpoints-unchanged=true support=0 x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith
+manifest sources 17
+dry-run promoted 0, rejected 12, revoked 0
+  rejected eligible=true x:c:DCM-dcp-shadrach-roundy>c:DCM-dre124k-bishopric-priests — review state is proposed, not accepted
+  rejected eligible=true x:c:DCM-dcp-simonds-ryder>c:DCM-dcp-heman-basset — review state is proposed, not accepted
+  rejected eligible=true x:c:DCM-dcp-peter-whitmer-jr>c:DCM-dre030-whitmer-cowdery — review state is proposed, not accepted
+  rejected eligible=true x:c:DCM-dcp-william-law>c:DCM-dre124e-presidency-patriarch — review state is proposed, not accepted
+  rejected eligible=true x:c:BMV-186-sermon-compare-matthew-5>c:NTC-sermon-mountain — review state is proposed, not accepted
+  rejected eligible=true x:c:BMV-052-isaiah-11-righteous-judge>c:OTM-c04-messianic-reception — review state is proposed, not accepted
+  rejected eligible=true x:c:DCM-dr09-smith-family>c:DCM-dcp-joseph-smith-sr — review state is proposed, not accepted
+  rejected eligible=true x:c:fm-person-christian-whitmer>c:FM05 — review state is proposed, not accepted
+  rejected eligible=true x:c:BMV-080-suffering-servant>c:OTM-c04-messianic-reception — review state is proposed, not accepted
+  rejected eligible=false x:c:BMV-020-babylon-quotation>c:OTM-babylon — to evidence is not cited by that card
+  rejected eligible=true x:c:BMV-039-judah-damascus-samaria>c:OTM-r02-ahaz-crisis — review state is proposed, not accepted
+  rejected eligible=true x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith — review state is proposed, not accepted
+model edges with grounding 0

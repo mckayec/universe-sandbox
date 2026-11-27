@@ -1,0 +1,22 @@
+{
+  "relationships": 335,
+  "classes": {
+    "travel": 5,
+    "no-locator": 5,
+    "cross-text": 229,
+    "shared-chapter": 14,
+    "shared-verse": 73,
+    "same-chapter": 9
+  },
+  "invalidCitationsByReason": {
+    "unsupported locator text \"…\"": 1,
+    "no chapter in the label": 1
+  },
+  "classChanges": [
+    "x:c:BMV-043-jesse-ruler>c:OTM-a01-jesse: cross-text -> no-locator",
+    "x:c:DCM-dr09-smith-family>c:DCM-dcp-hyrum-smith: same-chapter -> shared-chapter",
+    "x:c:DCM-dcp-oliver-cowdery>c:PGM-qg14-cowdery-1834: cross-text -> no-locator"
+  ],
+  "drawable": 0,
+  "promoted": 0
+}

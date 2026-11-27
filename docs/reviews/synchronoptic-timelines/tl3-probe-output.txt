@@ -1,0 +1,5 @@
+[49s] loaded 1440x900
+[127s] 1440 keyboard/click pass
+[294s] shared link pass
+[501s] 3840 + 390 touch pass
+tl3 probe: 4/4 passed; console errors, requestfailed, HTTP>=400: 0

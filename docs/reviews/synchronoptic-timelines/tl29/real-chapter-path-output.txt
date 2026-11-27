@@ -1,0 +1,44 @@
+.. head 1440 real click: book I
+PASS head 1440 real click on book I shows the chapter selector
+.. head 1440 real click: chapter select → 3
+PASS head 1440 real keys set chapter 3 (select value, URL ch=3) — {"book":"1","ch":"3","world":"earth","site":"jerusalem","view":"surface"}
+.. head 1440 real click: Timeline button
+PASS head 1440 real click opens the timeline; focus moves into it
+.. head 1440 real click: List mode
+PASS head 1440 chapter 3: gated row n:jud-karaite listed
+.. head 1440 real click: Karaite row
+PASS head 1440 real click selects Karaite (tlsel + detail) — tlsel=n:jud-karaite
+PASS head 1440 real Escape closes; focus returns to the Timeline button
+.. head 1440 real click: chapter select → Not set
+PASS head 1440 closed: real keys reset chapter to Not set; ch and tlsel leave the URL — {"book":"1","world":"earth","site":"jerusalem","view":"surface"}
+.. head 1440 real click: Timeline button (reopen)
+PASS head 1440 real reopen: Karaite row absent, not selected, no detail — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+.. head 1440 real click: chapter select → 3
+.. head 1440 real click: Timeline button (reopen at chapter 3)
+PASS head 1440 chapter 3 again, real reopen: row listed again, selection not resurrected — {"book":"1","ch":"3","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS head 1440 no page/console errors
+.. head 390 real click: book I
+PASS head 390 real click on book I shows the chapter selector
+.. head 390 real click: chapter select → 3
+PASS head 390 real keys set chapter 3 (select value, URL ch=3) — {"book":"1","ch":"3","world":"earth","site":"jerusalem","view":"surface"}
+.. head 390 wheel-scrolled the strip to reach Timeline button
+.. head 390 real click: Timeline button
+PASS head 390 real click opens the timeline; focus moves into it
+.. head 390 real click: List mode
+PASS head 390 chapter 3: gated row n:jud-karaite listed
+.. head 390 real click: Karaite row
+PASS head 390 real click selects Karaite (tlsel + detail) — tlsel=n:jud-karaite
+PASS head 390 real Escape closes; focus returns to the Timeline button
+.. head 390 wheel-scrolled the strip to reach chapter select → Not set
+.. head 390 real click: chapter select → Not set
+PASS head 390 closed: real keys reset chapter to Not set; ch and tlsel leave the URL — {"book":"1","world":"earth","site":"jerusalem","view":"surface"}
+.. head 390 wheel-scrolled the strip to reach Timeline button (reopen)
+.. head 390 real click: Timeline button (reopen)
+PASS head 390 real reopen: Karaite row absent, not selected, no detail — {"book":"1","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+.. head 390 wheel-scrolled the strip to reach chapter select → 3
+.. head 390 real click: chapter select → 3
+.. head 390 wheel-scrolled the strip to reach Timeline button (reopen at chapter 3)
+.. head 390 real click: Timeline button (reopen at chapter 3)
+PASS head 390 chapter 3 again, real reopen: row listed again, selection not resurrected — {"book":"1","ch":"3","world":"earth","site":"jerusalem","view":"surface","tl":"1"}
+PASS head 390 no page/console errors
+head: 20/20 real-input checks passed
