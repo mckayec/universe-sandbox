@@ -346,7 +346,7 @@
     const o = opts || {};
     let h = '<button type="button" class="bkstep" data-step="-1" aria-label="' + ESC(o.prevLabel || 'Previous') + '">‹</button>';
     h += '<select class="bkpick" aria-label="' + ESC(o.label || 'Choose') + '">';
-    h += '<option value="0">' + ESC(o.allLabel || 'All') + '</option>';
+    if (o.all !== false) h += '<option value="0">' + ESC(o.allLabel || 'All') + '</option>';
     pickerGroups(books, bookIds).forEach((g) => {
       const opts2 = g.ids.map((b) => bookOption(books, b)).join('');
       h += g.label ? '<optgroup label="' + ESC(g.label) + '">' + opts2 + '</optgroup>' : opts2;

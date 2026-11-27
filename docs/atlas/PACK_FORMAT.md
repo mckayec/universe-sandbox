@@ -13,7 +13,7 @@ Contents: 1 file layout · 2 coordinates · 3 top level · 4 meta · 5 theme · 
 7 ui strings · 8 intro · 9 groups · 10 worlds · 11 world surfaces (`gfx`, features, sites) ·
 12 events · 13 codex · 14 galaxy (layout, labels, territories, glows, links) · 15 legend ·
 16 hooks · 17 minimum pack · 18 content rules · 19 realms · 20 layers & timeline (Track A) ·
-21 family tree (Track A).
+21 family tree (Track A) · 22 world-only card layout (EC-2..EC-4).
 
 ---------------------------------------------------------------------------------------------------
 
@@ -242,6 +242,21 @@ hidden.
 * Codex unfiltered.
 
 Optional fine-tuning: `spoilers.dimLabel` (opacity of off-book labels; 0.4 cumulative, 0.35 single)
+
+### 6.1 Reading gate: starting book, "All" and guarded links (optional, EC-1)
+
+```js
+spoilers: {mode:"cumulative", start:"choose", all:false}
+```
+| field | default | effect |
+|---|---|---|
+| `start` | `0` ("All") | the gate a first-time visitor gets. A book number opens at that book. `"choose"` lists nothing until the visitor picks the last book they have completed (card layout, section 22; the galactic view has no chooser and opens at the first book instead) |
+| `all` | `true` | `false` removes the "All" button (and the picker's "All" option); a stored or linked "All" is ignored |
+| `guardLinks` | `true` with `start:"choose"`, else `false` | a `#book=` in a link may lower the visitor's stored gate but never raise it, and with no stored choice it does not choose for them. Places, journeys and other items named in a link that lie past the gate are not opened (the card view says so in a short notice) |
+
+The choice is stored per pack in the browser (`localStorage` key `atlas-book:<id>`), so a reload keeps it. Packs
+that set none of these fields behave exactly as before. The logic lives in `gate.js` (`normSpoilers`,
+`resolveBook`), shared by both views and covered by `tests/atlas-gate.test.ts`.
 and `spoilers.dimMarker` (0.2 / 0.15).
 
 ---------------------------------------------------------------------------------------------------
@@ -820,3 +835,75 @@ node its children are grouped by `kind`, in the order each kind first appears, t
 `world` but no site gets an "Open the map" button marked "no single map point for this entry". Spoiler gating, layer fading
 and selection work the same way in both views. Content rule: a tie says what the sources say and no more; use
 `contact` or `context` rather than a parent when one tradition did not branch from the other.
+
+---------------------------------------------------------------------------------------------------
+
+## 22. World-only card layout: places without coordinates (optional, EC-2..EC-4)
+
+For a series whose sources give names and relations but no defensible geometry, set `layout:"cards"`. The engine
+then draws no galaxy, no surfaces, no pins and no distances: `cards.js` shows linked reference cards instead (Places,
+Chronicle, Journeys, Codex, About), plain DOM, crisp at any size and light on phones. Nothing is ever positioned,
+so nothing has to be invented. Combine it with the reading gate (6.1); only `spoilers.mode:"cumulative"` is
+meaningful here (`first = k` reads as "completed through book k").
+
+```js
+(window.ATLAS_PACKS = window.ATLAS_PACKS || {})["my-series"] = {
+  id:"my-series", layout:"cards",
+  meta:{title:"My Series Atlas", series:"My Series", author:"A. Author", publisher:"A Publisher",
+        notice:"Unofficial, non-commercial fan atlas. … Geography is schematic."},
+  books:{1:{n:"I", title:"Book One", y:2001, chron:2}, 2:{n:"II", title:"Book Two", y:2003, chron:1}},
+  spoilers:{mode:"cumulative", start:"choose", all:false},
+  intro:{text:"…", coverage:"Limited source coverage: …"},
+  groups:[{id:"places", name:"Places"}],
+  worlds:[
+    {id:"setting", name:"First-book setting", group:"places", first:1, editorial:true, blurb:"…",
+     sites:[{id:"city", name:"City", type:"city", first:1, desc:"…", src:"Author glossary"},
+            {id:"prison", name:"Prison", parent:"city", type:"prison", first:1, desc:"…"}]},
+    {id:"far", name:"Far World", group:"places", type:"world", first:2, blurb:"…"}],
+  events:[{id:"e1", book:1, world:"setting", site:"prison", places:["setting/city"], locator:"ch. 1",
+           who:["Hero"], title:"…", text:"…", note:"…"}],
+  journeys:[{id:"j1", book:1, title:"Down the stairs", who:["Hero"], locator:"ch. 1",
+             path:["setting/city", {world:"setting", site:"prison"}], legs:["…", "…"], note:"…"}],
+  codex:[{id:"ideas", title:"Ideas", list:[{id:"x1", name:"Idea", first:1, desc:"…", note:"…", src:"…"}]}]
+};
+```
+
+**Places (EC-2).** `worlds` are the top-level entries and their `sites` the places within them. Neither takes a
+placement: `map`, `gal`, `lat`/`lon`, `rel` and friends are rejected by the validator in this layout, and `gfx` is
+ignored. Fields:
+
+| field | where | notes |
+|---|---|---|
+| `id`, `name` | both | required (`id` is `[a-z0-9_-]`, site ids unique within their world) |
+| `group` | world | a `groups[].id`: headings in the place list (optional) |
+| `blurb` / `desc` | world / site | the card text |
+| `type` or `status` | both | short kind shown on the card and in the list ("city", "world") |
+| `parent` | site | another site of the same world: nests it (any depth); the card shows the breadcrumb chain |
+| `first` / `books` | both | gate. A site never shows before its parent: its effective gate is the largest gate on its chain |
+| `editorial` | both, codex | `true` = the name is the atlas's label, not the books'. Shown as "Editorial label" (`ui.editorialLabel`, `ui.editorialNote`) |
+| `more`, `facts`, `note`, `src`, `aka` | both | gated additions `[[book,text]]`, fact pairs, a visible caveat, a short source line, alternative names (not displayed) |
+
+A place is addressed as `"world"` or `"world/site"` (or `{world, site}`) everywhere below.
+
+**Events.** As section 12, plus `places:[...]` (more place keys), `locator` (chapter or scene label), `who`
+(people), `note`. An event is listed only when its book and every place it names are open; the validator rejects
+an event whose place is gated later than the event's book. The Chronicle groups events by book in array order;
+`ui.chronNote` can say the list is a sample, not a complete timeline.
+
+**Journeys (EC-3).** `journeys:[{id, book, title, path, who, legs, locator, text, note}]`: an ordered list of named
+stops drawn as a numbered sequence of links, never as a line or animation. `legs[i]` is an optional note for stop
+`i`. A journey is shown only when its `book` is reached and every stop is open; the validator rejects a stop gated
+after the journey's book. `ui.journeysNote` adds a caveat at the top of the tab.
+
+**Book order (EC-4).** Give books a numeric `chron` (in-world order) and the header gains a Published /
+Chronological switch (remembered per pack; `ui.order:"chronological"` makes it the default). It reorders the book
+buttons, the gate chooser and the Chronicle's book sections only. Gates still follow the book keys (reading order).
+
+**Strings.** `ui.bookLabel` (default "Completed through"), `ui.booksAria`, `ui.allTitle`, `ui.tabs:{places, chron,
+journeys, codex, about}`, `ui.placesTitle`, `ui.gateTitle`, `ui.gateText`, `ui.gateAbout`, `ui.moreNote`,
+`ui.lockedLink`, `ui.pickHint`, `ui.codexNote`, `ui.backHref`/`ui.backLabel`. The fan-work notice (`meta.notice`,
+section 4) shows in the footer and the About tab; `intro.coverage` adds a visible coverage note to the opening card.
+
+The address keeps the view: `#book=1&place=setting/prison`, `&tab=chron|journeys|codex|about`, `&journey=j1`,
+`&cx=ideas`, all subject to the link guard (6.1). `tests/fixtures/cards-pack/cards-demo.js` is a small working
+example with placeholder data.
